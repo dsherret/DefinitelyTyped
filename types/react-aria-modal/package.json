@@ -1,33 +1,33 @@
 {
-  "private": true,
-  "name": "@types/react-aria-modal",
-  "version": "4.0.9999",
-  "projects": [
-    "https://github.com/davidtheclark/react-aria-modal#readme"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-aria-modal": "workspace:.",
-    "@types/react-dom": "*"
-  },
-  "owners": [
-    {
-      "name": "gabycperezdias",
-      "githubUsername": "gabycperezdias"
+    "private": true,
+    "name": "@types/react-aria-modal",
+    "version": "4.0.9999",
+    "projects": [
+        "https://github.com/davidtheclark/react-aria-modal#readme"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "forabi",
-      "githubUsername": "forabi"
+    "devDependencies": {
+        "@types/react-aria-modal": "workspace:.",
+        "@types/react-dom": "*"
     },
-    {
-      "name": "dkrk",
-      "githubUsername": "grgr-dkrk"
-    },
-    {
-      "name": "Corbin Crutchley",
-      "githubUsername": "crutchcorn"
-    }
-  ]
+    "owners": [
+        {
+            "name": "gabycperezdias",
+            "githubUsername": "gabycperezdias"
+        },
+        {
+            "name": "forabi",
+            "githubUsername": "forabi"
+        },
+        {
+            "name": "dkrk",
+            "githubUsername": "grgr-dkrk"
+        },
+        {
+            "name": "Corbin Crutchley",
+            "githubUsername": "crutchcorn"
+        }
+    ]
 }

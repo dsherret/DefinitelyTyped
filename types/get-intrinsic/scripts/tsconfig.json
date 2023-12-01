@@ -9,7 +9,5 @@
         "useDefineForClassFields": true,
         "forceConsistentCasingInFileNames": true
     },
-    "include": [
-        "*.ts"
-    ]
+    "include": ["*.ts"]
 }

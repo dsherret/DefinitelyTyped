@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/loadable__server",
-  "version": "5.12.9999",
-  "projects": [
-    "https://github.com/smooth-code/loadable-components"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/loadable__server": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Martynas Kadiša",
-      "githubUsername": "martynaskadisa"
+    "private": true,
+    "name": "@types/loadable__server",
+    "version": "5.12.9999",
+    "projects": [
+        "https://github.com/smooth-code/loadable-components"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Luis Herranz",
-      "githubUsername": "luisherranz"
+    "devDependencies": {
+        "@types/loadable__server": "workspace:."
     },
-    {
-      "name": "Arman Sargsyan",
-      "githubUsername": "Armanio"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Martynas Kadiša",
+            "githubUsername": "martynaskadisa"
+        },
+        {
+            "name": "Luis Herranz",
+            "githubUsername": "luisherranz"
+        },
+        {
+            "name": "Arman Sargsyan",
+            "githubUsername": "Armanio"
+        }
+    ]
 }

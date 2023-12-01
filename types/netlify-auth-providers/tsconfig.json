@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "lib": ["es6", "dom"],
-    "module": "commonjs",
-    "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": []
-  },
-  "files": ["index.d.ts", "netlify-auth-providers-tests.ts"]
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["es6", "dom"],
+        "module": "commonjs",
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": []
+    },
+    "files": ["index.d.ts", "netlify-auth-providers-tests.ts"]
 }

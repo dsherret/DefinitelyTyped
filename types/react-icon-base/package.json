@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/react-icon-base",
-  "version": "2.1.9999",
-  "projects": [
-    "https://github.com/gorangajic/react-icon-base#readme"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-icon-base": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Alexandre Paré",
-      "githubUsername": "apare"
+    "private": true,
+    "name": "@types/react-icon-base",
+    "version": "2.1.9999",
+    "projects": [
+        "https://github.com/gorangajic/react-icon-base#readme"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Karol Janyst",
-      "githubUsername": "LKay"
-    }
-  ]
+    "devDependencies": {
+        "@types/react-icon-base": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Alexandre Paré",
+            "githubUsername": "apare"
+        },
+        {
+            "name": "Karol Janyst",
+            "githubUsername": "LKay"
+        }
+    ]
 }

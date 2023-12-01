@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/react-swipeable-views",
-  "version": "0.13.9999",
-  "projects": [
-    "https://github.com/oliviertassinari/react-swipeable-views"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-swipeable-views": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Michael Ledin",
-      "githubUsername": "mxl"
+    "private": true,
+    "name": "@types/react-swipeable-views",
+    "version": "0.13.9999",
+    "projects": [
+        "https://github.com/oliviertassinari/react-swipeable-views"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Deividas Bakanas",
-      "githubUsername": "DeividasBakanas"
-    }
-  ]
+    "devDependencies": {
+        "@types/react-swipeable-views": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Michael Ledin",
+            "githubUsername": "mxl"
+        },
+        {
+            "name": "Deividas Bakanas",
+            "githubUsername": "DeividasBakanas"
+        }
+    ]
 }

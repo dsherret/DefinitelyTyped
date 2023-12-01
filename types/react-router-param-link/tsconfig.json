@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "types": [],
-    "module": "commonjs",
-    "lib": ["es6", "dom"],
-    "jsx": "react",
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true
-  },
-  "files": ["index.d.ts", "react-router-param-link-tests.tsx"]
+    "compilerOptions": {
+        "types": [],
+        "module": "commonjs",
+        "lib": ["es6", "dom"],
+        "jsx": "react",
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true
+    },
+    "files": ["index.d.ts", "react-router-param-link-tests.tsx"]
 }

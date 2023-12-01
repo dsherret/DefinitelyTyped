@@ -1,13 +1,13 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "npm-naming": [
-      true,
-      {
-        "errors": [["NeedsExportEquals", false]],
-        "mode": "code"
-      }
-    ],
-    "prefer-const": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "npm-naming": [
+            true,
+            {
+                "errors": [["NeedsExportEquals", false]],
+                "mode": "code"
+            }
+        ],
+        "prefer-const": false
+    }
 }

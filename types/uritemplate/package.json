@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/uritemplate",
-  "version": "0.3.9999",
-  "projects": [
-    "https://github.com/fxa/uritemplate-js"
-  ],
-  "devDependencies": {
-    "@types/uritemplate": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Chui Tey",
-      "githubUsername": "teyc"
+    "private": true,
+    "name": "@types/uritemplate",
+    "version": "0.3.9999",
+    "projects": [
+        "https://github.com/fxa/uritemplate-js"
+    ],
+    "devDependencies": {
+        "@types/uritemplate": "workspace:."
     },
-    {
-      "name": "Ruben Taelman",
-      "githubUsername": "rubensworks"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Chui Tey",
+            "githubUsername": "teyc"
+        },
+        {
+            "name": "Ruben Taelman",
+            "githubUsername": "rubensworks"
+        }
+    ]
 }

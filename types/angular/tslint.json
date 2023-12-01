@@ -1,11 +1,11 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "class-name": true,
-    "jsdoc-format": false,
-    "no-namespace": false,
-    "no-unnecessary-qualifier": false,
-    "unified-signatures": false,
-    "variable-name": [true, "check-format"]
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "class-name": true,
+        "jsdoc-format": false,
+        "no-namespace": false,
+        "no-unnecessary-qualifier": false,
+        "unified-signatures": false,
+        "variable-name": [true, "check-format"]
+    }
 }

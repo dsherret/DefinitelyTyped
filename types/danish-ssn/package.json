@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/danish-ssn",
-  "version": "2.1.9999",
-  "projects": [
-    "https://github.com/mathiasvr/danish-ssn/"
-  ],
-  "devDependencies": {
-    "@types/danish-ssn": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Yuriy Guzenko",
-      "githubUsername": "yuriyg86"
-    }
-  ]
+    "private": true,
+    "name": "@types/danish-ssn",
+    "version": "2.1.9999",
+    "projects": [
+        "https://github.com/mathiasvr/danish-ssn/"
+    ],
+    "devDependencies": {
+        "@types/danish-ssn": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Yuriy Guzenko",
+            "githubUsername": "yuriyg86"
+        }
+    ]
 }

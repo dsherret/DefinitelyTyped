@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/wreck",
-  "version": "14.0.9999",
-  "projects": [
-    "https://github.com/hapijs/wreck"
-  ],
-  "dependencies": {
-    "@types/boom": "*",
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/wreck": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Marcin Porębski",
-      "githubUsername": "marcinporebski"
+    "private": true,
+    "name": "@types/wreck",
+    "version": "14.0.9999",
+    "projects": [
+        "https://github.com/hapijs/wreck"
+    ],
+    "dependencies": {
+        "@types/boom": "*",
+        "@types/node": "*"
     },
-    {
-      "name": "Rodrigo Saboya",
-      "githubUsername": "saboya"
-    }
-  ]
+    "devDependencies": {
+        "@types/wreck": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Marcin Porębski",
+            "githubUsername": "marcinporebski"
+        },
+        {
+            "name": "Rodrigo Saboya",
+            "githubUsername": "saboya"
+        }
+    ]
 }

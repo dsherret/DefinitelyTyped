@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/isbn-utils",
-  "version": "1.1.9999",
-  "projects": [
-    "https://github.com/GitbookIO/isbn-utils"
-  ],
-  "devDependencies": {
-    "@types/isbn-utils": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Jørgen Elgaard Larsen",
-      "githubUsername": "elhaard"
-    }
-  ]
+    "private": true,
+    "name": "@types/isbn-utils",
+    "version": "1.1.9999",
+    "projects": [
+        "https://github.com/GitbookIO/isbn-utils"
+    ],
+    "devDependencies": {
+        "@types/isbn-utils": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Jørgen Elgaard Larsen",
+            "githubUsername": "elhaard"
+        }
+    ]
 }

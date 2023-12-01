@@ -33,7 +33,7 @@ Although Box2D is a physics engine and therefore has nothing to do with drawing,
 ```typescript
 var debugDraw = new Box2D.Dynamics.b2DebugDraw();
 debugDraw.SetSprite(
-  document.getElementsByTagName("canvas")[0].getContext("2d"),
+    document.getElementsByTagName("canvas")[0].getContext("2d"),
 );
 ```
 
@@ -45,8 +45,8 @@ You have to implement event-interfaces in Box2dFlash. Since Javascript doesn't s
 
 ```typescript
 var world = new Box2D.Dynamics.b2World(
-  new Box2D.Common.Math.b2Vec2(0, 10),
-  true,
+    new Box2D.Common.Math.b2Vec2(0, 10),
+    true,
 );
 
 /* ... add bodies, etc. ... */
@@ -54,7 +54,7 @@ var world = new Box2D.Dynamics.b2World(
 var myListener = new Box2D.Dynamics.b2DestructionListener();
 
 myListener.SayGoodbyeFixture = function (fixture) {
-  alert("goodbye fixture ...");
+    alert("goodbye fixture ...");
 };
 
 world.SetDestructionListener(myListener);
@@ -64,8 +64,8 @@ world.SetDestructionListener(myListener);
 
 ## 2.1a 2013/06/28
 
-- Upgraded to TypeScript v0.9
-- Removed import statements so the user can now declare the smaller namespaces in their code. Before the import statements were not 'exported', so they appeared as 'any' objects.
+-   Upgraded to TypeScript v0.9
+-   Removed import statements so the user can now declare the smaller namespaces in their code. Before the import statements were not 'exported', so they appeared as 'any' objects.
 
 # License
 

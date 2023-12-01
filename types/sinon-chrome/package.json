@@ -1,29 +1,29 @@
 {
-  "private": true,
-  "name": "@types/sinon-chrome",
-  "version": "2.2.9999",
-  "projects": [
-    "https://github.com/vitalets/sinon-chrome"
-  ],
-  "dependencies": {
-    "@types/chrome": "*",
-    "@types/sinon": "*"
-  },
-  "devDependencies": {
-    "@types/sinon-chrome": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Tim Perry",
-      "githubUsername": "pimterry"
+    "private": true,
+    "name": "@types/sinon-chrome",
+    "version": "2.2.9999",
+    "projects": [
+        "https://github.com/vitalets/sinon-chrome"
+    ],
+    "dependencies": {
+        "@types/chrome": "*",
+        "@types/sinon": "*"
     },
-    {
-      "name": "CRIMX",
-      "githubUsername": "crimx"
+    "devDependencies": {
+        "@types/sinon-chrome": "workspace:."
     },
-    {
-      "name": "kobanyan",
-      "githubUsername": "kobanyan"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Tim Perry",
+            "githubUsername": "pimterry"
+        },
+        {
+            "name": "CRIMX",
+            "githubUsername": "crimx"
+        },
+        {
+            "name": "kobanyan",
+            "githubUsername": "kobanyan"
+        }
+    ]
 }

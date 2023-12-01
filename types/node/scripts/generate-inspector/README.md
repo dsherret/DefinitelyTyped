@@ -2,9 +2,9 @@ The entry point to this script is `index.ts`. It takes a single, optional argume
 
 What this does is:
 
-- Get the inspector protocol spec at the given tag
-- Generate type definitions from it
-- Write to `inspector.d.ts`
+-   Get the inspector protocol spec at the given tag
+-   Generate type definitions from it
+-   Write to `inspector.d.ts`
 
 For example, to bump `inspector.d.ts` to what's exposed in v16.0.0:
 

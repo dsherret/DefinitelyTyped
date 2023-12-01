@@ -1,14 +1,8 @@
 {
-    "files": [
-        "index.d.ts",
-        "material-ui-tests.tsx"
-    ],
+    "files": ["index.d.ts", "material-ui-tests.tsx"],
     "compilerOptions": {
         "module": "commonjs",
-        "lib": [
-            "es6",
-            "dom"
-        ],
+        "lib": ["es6", "dom"],
         "noImplicitAny": false,
         "noImplicitThis": true,
         "strictNullChecks": false,

@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/istanbul-lib-report",
-  "version": "3.0.9999",
-  "projects": [
-    "https://istanbul.js.org",
-    "https://github.com/istanbuljs/istanbuljs"
-  ],
-  "dependencies": {
-    "@types/istanbul-lib-coverage": "*"
-  },
-  "devDependencies": {
-    "@types/istanbul-lib-report": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Jason Cheatham",
-      "githubUsername": "jason0x43"
+    "private": true,
+    "name": "@types/istanbul-lib-report",
+    "version": "3.0.9999",
+    "projects": [
+        "https://istanbul.js.org",
+        "https://github.com/istanbuljs/istanbuljs"
+    ],
+    "dependencies": {
+        "@types/istanbul-lib-coverage": "*"
     },
-    {
-      "name": "Zacharias Björngren",
-      "githubUsername": "zache"
-    }
-  ]
+    "devDependencies": {
+        "@types/istanbul-lib-report": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Jason Cheatham",
+            "githubUsername": "jason0x43"
+        },
+        {
+            "name": "Zacharias Björngren",
+            "githubUsername": "zache"
+        }
+    ]
 }

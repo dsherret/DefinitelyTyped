@@ -54,9 +54,9 @@ Por ejemplo, si ejecutas `npm dist-tags @types/react`, observaras que Typescript
 
 #### TypeScript 1.\*
 
-- Descárguelo manualmente desde la `master` branch de este repositorio
-- [Typings](https://github.com/typings/typings)~~ (use las alternativas preferidas, typings es obsoleto)
-- ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ (use las alternativas preferidas, la publicación DT type de nuget ha sido desactivada)
+-   Descárguelo manualmente desde la `master` branch de este repositorio
+-   [Typings](https://github.com/typings/typings)~~ (use las alternativas preferidas, typings es obsoleto)
+-   ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ (use las alternativas preferidas, la publicación DT type de nuget ha sido desactivada)
 
 Tal vez debas añadir manualmente las [referencias](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html).
 
@@ -100,20 +100,20 @@ Primero, [bifurca](https://docs.github.com/es/get-started/quickstart/fork-a-repo
 
 #### Editar un paquete existente
 
-- `cd types/<package to edit>`
-- Haz cambios. Recuerda [editar las pruebas](#my-package-teststs).
-  Si realiza cambios importantes, no olvide [actualizar una versión principal](#quiero-actualizar-un-paquete-a-una-nueva-versión-principal).
-- También puede que quieras añadirle la sección "Definitions by" en el encabezado del paquete.
-  - Esto hará que seas notificado (a través de tu nombre de usuario en GitHub) cada vez que alguien haga un pull request o issue sobre el paquete.
-  - Haz esto añadiendo tu nombre al final de la línea, así como en `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
-  - O si hay más personas, puede ser multiline
-  ```typescript
-  // Definitions by: Alice <https://github.com/alice>
-  //                 Bob <https://github.com/bob>
-  //                 Steve <https://github.com/steve>
-  //                 John <https://github.com/john>
-  ```
-- [Ejecuta `npm test <package to test>`](#running-tests).
+-   `cd types/<package to edit>`
+-   Haz cambios. Recuerda [editar las pruebas](#my-package-teststs).
+    Si realiza cambios importantes, no olvide [actualizar una versión principal](#quiero-actualizar-un-paquete-a-una-nueva-versión-principal).
+-   También puede que quieras añadirle la sección "Definitions by" en el encabezado del paquete.
+    -   Esto hará que seas notificado (a través de tu nombre de usuario en GitHub) cada vez que alguien haga un pull request o issue sobre el paquete.
+    -   Haz esto añadiendo tu nombre al final de la línea, así como en `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
+    -   O si hay más personas, puede ser multiline
+    ```typescript
+    // Definitions by: Alice <https://github.com/alice>
+    //                 Bob <https://github.com/bob>
+    //                 Steve <https://github.com/steve>
+    //                 John <https://github.com/john>
+    ```
+-   [Ejecuta `npm test <package to test>`](#running-tests).
 
 Cuando hagas un PR para editar un paquete existente, `dt-bot` deberá @-mencionar a los autores previos.
 Si no lo hace, puedes hacerlo en el comentario asociado con el PR.
@@ -148,9 +148,9 @@ Cuando un paquete [bundles](https://www.typescriptlang.org/docs/handbook/declara
 
 Se puede remover ejecutando `pnpm run not-needed -- <typingsPackageName> <asOfVersion> [<libraryName>]`.
 
-- `<typingsPackageName>`: Este es el nombre del directorio que tienes que eliminar.
-- `<asOfVersion>`: Un stub será publicado a `@types/<typingsPackageName>` con esta versión. Debería ser más grande que cualquier versión publicada actualmente.
-- `<libraryName>`: Un nombre descriptivo de la librería, p.ej. "Angular 2" en vez de "angular2". (Si es omitido, será idéntico a `<typingsPackageName>`.)
+-   `<typingsPackageName>`: Este es el nombre del directorio que tienes que eliminar.
+-   `<asOfVersion>`: Un stub será publicado a `@types/<typingsPackageName>` con esta versión. Debería ser más grande que cualquier versión publicada actualmente.
+-   `<libraryName>`: Un nombre descriptivo de la librería, p.ej. "Angular 2" en vez de "angular2". (Si es omitido, será idéntico a `<typingsPackageName>`.)
 
 Cualquier otro paquete en Definitely Typed que referencie el paquete eliminado deberá ser actualizado para referenciar los tipos bundled. para hacer esto, [añade `package.json`](#packagejson) con `"dependencies": { "<libraryName>": "x.y.z" }`.
 
@@ -243,42 +243,42 @@ If a file is neither tested nor referenced in `index.d.ts`, add it to a file nam
 
 #### Errores comunes
 
-- Primero, sigue el consejo del [manual](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html).
-- Formatear: Utiliza 4 espacios.
-- `function sum(nums: number[]): number`: Utiliza `ReadonlyArray` si una función no escribe a sus parámetros.
-- `interface Foo { new(): Foo; }`:
-  Este define el tipo de objeto que esten nuevos. Probablemente quieras `declare class Foo { constructor(); }`.
-- `const Class: { new(): IClass; }`:
-  Prefiere usar una declaración de clase `class Class { constructor(); }` En vez de una nueva constante.
-- `getMeAT<T>(): T`:
-  Si un tipo de parámetro no aparece en los tipos de ningún parámetro, no tienes una función genérica, solo tienes un afirmación del tipo disfrazado.
-  Prefiera utilizar una afirmación de tipo real, p.ej. `getMeAT() as number`.
-  Un ejemplo donde un tipo de parámetro es aceptable: `function id<T>(value: T): T;`.
-  Un ejemplo donde no es aceptable: `function parseJson<T>(json: string): T;`.
-  Una excepción: `new Map<string, number>()` está bien.
-- Utilizando los tipos `Function` y `Object` casi nunca es una buena idea. En 99% de los casos es posible especificar un tipo más específico. Los ejemplos son `(x: number) => number` para [funciones](https://www.typescriptlang.org/docs/handbook/functions.html#function-types) y `{ x: number, y: number }` para objetos. Si no hay certeza en lo absoluto del tipo, [`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) es la opción correcta, no `Object`. Si el único hecho conocido sobre el tipo es que es un objecto, usa el tipo [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type), no `Object` o `{ [key: string]: any }`.
-- `var foo: string | any`:
-  Cuando es usado `any` en un tipo de unión, el tipo resultante todavía es `any`. Así que mientras la porción `string` de este tipo de anotación puede _verse_ útil, de hecho, no ofrece ningún typechecking adicional más que un simple `any`.
-  Dependiendo de la intención, una alternativa aceptable puede ser `any`, `string`, o `string | object`.
+-   Primero, sigue el consejo del [manual](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html).
+-   Formatear: Utiliza 4 espacios.
+-   `function sum(nums: number[]): number`: Utiliza `ReadonlyArray` si una función no escribe a sus parámetros.
+-   `interface Foo { new(): Foo; }`:
+    Este define el tipo de objeto que esten nuevos. Probablemente quieras `declare class Foo { constructor(); }`.
+-   `const Class: { new(): IClass; }`:
+    Prefiere usar una declaración de clase `class Class { constructor(); }` En vez de una nueva constante.
+-   `getMeAT<T>(): T`:
+    Si un tipo de parámetro no aparece en los tipos de ningún parámetro, no tienes una función genérica, solo tienes un afirmación del tipo disfrazado.
+    Prefiera utilizar una afirmación de tipo real, p.ej. `getMeAT() as number`.
+    Un ejemplo donde un tipo de parámetro es aceptable: `function id<T>(value: T): T;`.
+    Un ejemplo donde no es aceptable: `function parseJson<T>(json: string): T;`.
+    Una excepción: `new Map<string, number>()` está bien.
+-   Utilizando los tipos `Function` y `Object` casi nunca es una buena idea. En 99% de los casos es posible especificar un tipo más específico. Los ejemplos son `(x: number) => number` para [funciones](https://www.typescriptlang.org/docs/handbook/functions.html#function-types) y `{ x: number, y: number }` para objetos. Si no hay certeza en lo absoluto del tipo, [`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) es la opción correcta, no `Object`. Si el único hecho conocido sobre el tipo es que es un objecto, usa el tipo [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type), no `Object` o `{ [key: string]: any }`.
+-   `var foo: string | any`:
+    Cuando es usado `any` en un tipo de unión, el tipo resultante todavía es `any`. Así que mientras la porción `string` de este tipo de anotación puede _verse_ útil, de hecho, no ofrece ningún typechecking adicional más que un simple `any`.
+    Dependiendo de la intención, una alternativa aceptable puede ser `any`, `string`, o `string | object`.
 
 ### Propietarios de Definiciones
 
 DT tiene el concepto de "Propietarios de Definiciones" que son personas que desean mantener la calidad de los tipos de un módulo en particular.
 
-- Agregarte a la lista hará que recibas notificaciones (a través de tu nombre de usuario de GitHub) cada vez que alguien haga una solicitud de extracción o informe sobre el paquete.
-- Tus revisiones de solicitudes de extracción tendrán una mayor importancia para [el bot](https://github.com/DefinitelyTyped/dt-mergebot) que mantiene este repositorio.
-- Los mantenedores de DT confían en los propietarios de las definiciones para asegurar un ecosistema estable, así que por favor, no te agregues ligeramente.
+-   Agregarte a la lista hará que recibas notificaciones (a través de tu nombre de usuario de GitHub) cada vez que alguien haga una solicitud de extracción o informe sobre el paquete.
+-   Tus revisiones de solicitudes de extracción tendrán una mayor importancia para [el bot](https://github.com/DefinitelyTyped/dt-mergebot) que mantiene este repositorio.
+-   Los mantenedores de DT confían en los propietarios de las definiciones para asegurar un ecosistema estable, así que por favor, no te agregues ligeramente.
 
 Para agregarte como Propietario de Definiciones:
 
-- Agrega tu nombre al final de la línea, como en `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
-- O si hay más personas, puede ser en varias líneas
-  ```typescript
-  // Definitions by: Alice <https://github.com/alice>
-  //                 Bob <https://github.com/bob>
-  //                 Steve <https://github.com/steve>
-  //                 John <https://github.com/john>
-  ```
+-   Agrega tu nombre al final de la línea, como en `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
+-   O si hay más personas, puede ser en varias líneas
+    ```typescript
+    // Definitions by: Alice <https://github.com/alice>
+    //                 Bob <https://github.com/bob>
+    //                 Steve <https://github.com/steve>
+    //                 John <https://github.com/john>
+    ```
 
 Una vez a la semana, los Propietarios de Definiciones se sincronizan con el archivo [.github/CODEOWNERS](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/.github/CODEOWNERS), que es nuestra fuente de verdad.
 
@@ -341,14 +341,14 @@ Por ejemplo [history v2 `tsconfig.json`](https://github.com/%44efinitelyTyped/De
 
 ```json
 {
-  "compilerOptions": {
-    "baseUrl": "../../",
-    "typeRoots": ["../../"],
-    "paths": {
-      "history": ["history/v2"]
-    }
-  },
-  "files": ["index.d.ts", "history-tests.ts"]
+    "compilerOptions": {
+        "baseUrl": "../../",
+        "typeRoots": ["../../"],
+        "paths": {
+            "history": ["history/v2"]
+        }
+    },
+    "files": ["index.d.ts", "history-tests.ts"]
 }
 ```
 
@@ -376,9 +376,9 @@ Cuando `dts-gen` es utilizado como scaffold en un paquete scoped, las propiedade
 
 ```json
 {
-  "paths": {
-    "@foo/*": ["foo__*"]
-  }
+    "paths": {
+        "@foo/*": ["foo__*"]
+    }
 }
 ```
 

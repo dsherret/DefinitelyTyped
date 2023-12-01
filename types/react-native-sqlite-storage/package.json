@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/react-native-sqlite-storage",
-  "version": "6.0.9999",
-  "projects": [
-    "https://github.com/andpor/react-native-sqlite-storage"
-  ],
-  "devDependencies": {
-    "@types/react-native-sqlite-storage": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Sergei Dryganets",
-      "githubUsername": "dryganets"
+    "private": true,
+    "name": "@types/react-native-sqlite-storage",
+    "version": "6.0.9999",
+    "projects": [
+        "https://github.com/andpor/react-native-sqlite-storage"
+    ],
+    "devDependencies": {
+        "@types/react-native-sqlite-storage": "workspace:."
     },
-    {
-      "name": "Deividi Cavarzan",
-      "githubUsername": "cavarzan"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Sergei Dryganets",
+            "githubUsername": "dryganets"
+        },
+        {
+            "name": "Deividi Cavarzan",
+            "githubUsername": "cavarzan"
+        }
+    ]
 }

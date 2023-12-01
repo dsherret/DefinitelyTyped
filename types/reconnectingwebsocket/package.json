@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/reconnectingwebsocket",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/joewalnes/reconnecting-websocket"
-  ],
-  "devDependencies": {
-    "@types/reconnectingwebsocket": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Nicholas Guarracino",
-      "githubUsername": "nguarracino"
+    "private": true,
+    "name": "@types/reconnectingwebsocket",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/joewalnes/reconnecting-websocket"
+    ],
+    "devDependencies": {
+        "@types/reconnectingwebsocket": "workspace:."
     },
-    {
-      "name": "AppLover69",
-      "githubUsername": "AppLover69"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Nicholas Guarracino",
+            "githubUsername": "nguarracino"
+        },
+        {
+            "name": "AppLover69",
+            "githubUsername": "AppLover69"
+        }
+    ]
 }

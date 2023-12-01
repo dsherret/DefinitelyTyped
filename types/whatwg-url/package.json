@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/whatwg-url",
-  "version": "11.0.9999",
-  "projects": [
-    "https://github.com/jsdom/whatwg-url#readme"
-  ],
-  "dependencies": {
-    "@types/webidl-conversions": "*"
-  },
-  "devDependencies": {
-    "@types/whatwg-url": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Alexander Marks",
-      "githubUsername": "aomarks"
+    "private": true,
+    "name": "@types/whatwg-url",
+    "version": "11.0.9999",
+    "projects": [
+        "https://github.com/jsdom/whatwg-url#readme"
+    ],
+    "dependencies": {
+        "@types/webidl-conversions": "*"
     },
-    {
-      "name": "ExE Boss",
-      "githubUsername": "ExE-Boss"
+    "devDependencies": {
+        "@types/whatwg-url": "workspace:."
     },
-    {
-      "name": "BendingBender",
-      "githubUsername": "BendingBender"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Alexander Marks",
+            "githubUsername": "aomarks"
+        },
+        {
+            "name": "ExE Boss",
+            "githubUsername": "ExE-Boss"
+        },
+        {
+            "name": "BendingBender",
+            "githubUsername": "BendingBender"
+        }
+    ]
 }

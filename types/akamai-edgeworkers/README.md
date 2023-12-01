@@ -12,11 +12,11 @@ code generator:
 
 ```json5
 {
-  compilerOptions: {
-    module: "es6",
-    target: "es6",
-    //...
-  },
+    compilerOptions: {
+        module: "es6",
+        target: "es6",
+        //...
+    },
 }
 ```
 
@@ -33,12 +33,12 @@ export function onClientRequest(request: EW.IngressClientRequest) {}
 export function onOriginRequest(request: EW.IngressOriginRequest) {}
 export function responseProvider(request: EW.ResponseProviderRequest) {}
 export function onOriginResponse(
-  request: EW.EgressOriginRequest,
-  response: EW.EgressOriginResponse,
+    request: EW.EgressOriginRequest,
+    response: EW.EgressOriginResponse,
 ) {}
 export function onClientResponse(
-  request: EW.EgressClientRequest,
-  response: EW.EgressClientResponse,
+    request: EW.EgressClientRequest,
+    response: EW.EgressClientResponse,
 ) {}
 ```
 
@@ -49,13 +49,13 @@ namespace.
 
 TypeScript Bindings are available for [built-in modules], including:
 
-- `cookies` - Parsing and manipulation of cookie-related headers
-- `create-response` - Helper for the `reponseProvider()` callback
-- `http-request` - Fetch remote resources via HTTP and HTTPS
-- `log` - Console-style logging
-- `streams` - Compatibility with the WHATWG Streams standard
-- `text-encode-transform` - Compatibility with the WHATWG Encoding standard
-- `url-search-params` - Parsing query parameters
+-   `cookies` - Parsing and manipulation of cookie-related headers
+-   `create-response` - Helper for the `reponseProvider()` callback
+-   `http-request` - Fetch remote resources via HTTP and HTTPS
+-   `log` - Console-style logging
+-   `streams` - Compatibility with the WHATWG Streams standard
+-   `text-encode-transform` - Compatibility with the WHATWG Encoding standard
+-   `url-search-params` - Parsing query parameters
 
 Once you've added the triple-slash reference to `akamai-edgeworkers`
 you can import them normally:
@@ -66,8 +66,8 @@ you can import them normally:
 import { Cookies } from "cookies";
 
 function onClientRequest(request: EW.IngressClientRequest) {
-  const cookie = new Cookies(request.getHeader("cookies") || undefined);
-  //...
+    const cookie = new Cookies(request.getHeader("cookies") || undefined);
+    //...
 }
 ```
 

@@ -24,12 +24,12 @@ import fbt from "fbt";
 const name = "Mary";
 
 function App() {
-  return (
-    <fbt desc="param example">
-      Hello,
-      <fbt:param name="name">{name}</fbt:param>.
-    </fbt>
-  );
+    return (
+        <fbt desc="param example">
+            Hello,
+            <fbt:param name="name">{name}</fbt:param>.
+        </fbt>
+    );
 }
 ```
 
@@ -70,12 +70,12 @@ import { fbt, FbtParam } from "fbt";
 const name = "Mary";
 
 function App() {
-  return (
-    <fbt desc="param example">
-      Hello,
-      <FbtParam name="name">{name}</FbtParam>.
-    </fbt>
-  );
+    return (
+        <fbt desc="param example">
+            Hello,
+            <FbtParam name="name">{name}</FbtParam>.
+        </fbt>
+    );
 }
 ```
 
@@ -89,9 +89,9 @@ Error: App.tsx: Line 8 Column 5: fbt is not bound. Did you forget to require('fb
 
 What happened under hood:
 
-- In JSX `<fbt/>` => in just a function call `React.createElement("fbt")`
-- So, when `@babel/plugin-transform-typescript` check all imports and find that a `fbt` variable never used => remove import (see: [babel-plugin-transform-typescript/src/index.ts](https://github.com/babel/babel/blob/0ca601a86f9c3bf041bf6897d61324ddcc9553aa/packages/babel-plugin-transform-typescript/src/index.ts#L256-L269))
-- After that `babel-plugin-fbt` try transform all `<fbt/>` elements to `fbt._(...)` and as import was removed on previous step it case an error above
+-   In JSX `<fbt/>` => in just a function call `React.createElement("fbt")`
+-   So, when `@babel/plugin-transform-typescript` check all imports and find that a `fbt` variable never used => remove import (see: [babel-plugin-transform-typescript/src/index.ts](https://github.com/babel/babel/blob/0ca601a86f9c3bf041bf6897d61324ddcc9553aa/packages/babel-plugin-transform-typescript/src/index.ts#L256-L269))
+-   After that `babel-plugin-fbt` try transform all `<fbt/>` elements to `fbt._(...)` and as import was removed on previous step it case an error above
 
 How fix this problem:
 
@@ -103,8 +103,8 @@ When enable [`onlyRemoveTypeImports`](https://babeljs.io/docs/en/babel-preset-ty
 // babel.config.js
 
 module.exports = {
-  presets: [["@babel/preset-typescript", { onlyRemoveTypeImports: true }]],
-  plugins,
+    presets: [["@babel/preset-typescript", { onlyRemoveTypeImports: true }]],
+    plugins,
 };
 ```
 
@@ -112,25 +112,25 @@ module.exports = {
 
 Using a [`patch-package`](https://www.npmjs.com/package/patch-package) you can add logic to ignore removing fbt import
 
-- Install `yarn add -D patch-package`
-- Open file `./node_modules/@babel/plugin-transform-typescript/lib/index.js`
-- Find `isImportTypeOnly` function and add the next lines before `if(binding.identifier.name !== pragmaImportName ...` block
+-   Install `yarn add -D patch-package`
+-   Open file `./node_modules/@babel/plugin-transform-typescript/lib/index.js`
+-   Find `isImportTypeOnly` function and add the next lines before `if(binding.identifier.name !== pragmaImportName ...` block
 
-  ```diff
-  +if (binding.identifier.name === 'fbt') {
-  +  return false;
-  +}
+    ```diff
+    +if (binding.identifier.name === 'fbt') {
+    +  return false;
+    +}
 
-  if (binding.identifier.name !== pragmaImportName && binding.identifier.name !== pragmaFragImportName) {
-    return true;
-  }
-  ```
+    if (binding.identifier.name !== pragmaImportName && binding.identifier.name !== pragmaFragImportName) {
+      return true;
+    }
+    ```
 
-- Create a patch `npx patch-package @babel/plugin-transform-typescript`
-- Add `postinstall` script in `package.json`
-  ```diff
-  "scripts": {
-  +  "postinstall": "patch-package"
-  }
-  ```
-- Commit changed & new files
+-   Create a patch `npx patch-package @babel/plugin-transform-typescript`
+-   Add `postinstall` script in `package.json`
+    ```diff
+    "scripts": {
+    +  "postinstall": "patch-package"
+    }
+    ```
+-   Commit changed & new files

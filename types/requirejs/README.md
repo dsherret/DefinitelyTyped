@@ -26,9 +26,9 @@ Reference require.js statically in your html page (normally how you would do thi
 
 ```html
 <script
-  data-main="config.ts"
-  type="text/javascript"
-  src="lib/require.js"
+    data-main="config.ts"
+    type="text/javascript"
+    src="lib/require.js"
 ></script>
 ```
 
@@ -42,35 +42,35 @@ The sample config will load all required shims and AMD modules and then kick off
 ```javascript
 //file config.ts
 require.config({
-  baseUrl: "lib",
+    baseUrl: "lib",
 
-  paths: {
-    jquery: "lib/jquery-x.x.x",
-    underscore: "lib/underscore-x.x.x",
-    backbone: "lib/backbone-x.x.x",
-  },
-
-  shim: {
-    jquery: {
-      exports: "$",
+    paths: {
+        jquery: "lib/jquery-x.x.x",
+        underscore: "lib/underscore-x.x.x",
+        backbone: "lib/backbone-x.x.x",
     },
 
-    underscore: {
-      exports: "_",
-    },
+    shim: {
+        jquery: {
+            exports: "$",
+        },
 
-    backbone: {
-      deps: ["underscore", "jquery"],
-      exports: "Backbone",
+        underscore: {
+            exports: "_",
+        },
+
+        backbone: {
+            deps: ["underscore", "jquery"],
+            exports: "Backbone",
+        },
     },
-  },
 });
 
 // load AMD module main.ts (compiled to main.js)
 // and include shims $, _, Backbone
 
 require(["main"], (main, $, _, Backbone) => {
-  var app = main.AppMain();
-  app.run();
+    var app = main.AppMain();
+    app.run();
 });
 ```

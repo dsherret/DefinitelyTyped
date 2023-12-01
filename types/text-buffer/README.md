@@ -38,9 +38,9 @@ function example(marker: TextBuffer.Marker) {}
 // <<filename>>.d.ts
 
 declare namespace TextBuffer {
-  interface TextBuffer {
-    emitDidStopChangingEvent(): void;
-  }
+    interface TextBuffer {
+        emitDidStopChangingEvent(): void;
+    }
 }
 ```
 

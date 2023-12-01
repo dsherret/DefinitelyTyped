@@ -5,8 +5,6 @@
         "unified-signatures": false
     },
     "cliOptions": {
-      "exclude": [
-          "samples"
-      ]
-  }
+        "exclude": ["samples"]
+    }
 }

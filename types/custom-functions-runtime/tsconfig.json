@@ -1,10 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "lib": [
-            "es6",
-            "dom"
-        ],
+        "lib": ["es6", "dom"],
         "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": false,
@@ -14,8 +11,5 @@
         "forceConsistentCasingInFileNames": true,
         "target": "es6"
     },
-    "files": [
-        "index.d.ts",
-        "custom-functions-runtime-tests.ts"
-    ]
+    "files": ["index.d.ts", "custom-functions-runtime-tests.ts"]
 }

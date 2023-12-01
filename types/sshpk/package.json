@@ -1,29 +1,29 @@
 {
-  "private": true,
-  "name": "@types/sshpk",
-  "version": "1.17.9999",
-  "projects": [
-    "https://github.com/joyent/node-sshpk"
-  ],
-  "dependencies": {
-    "@types/asn1": "*",
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/sshpk": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Meno Abels",
-      "githubUsername": "mabels"
+    "private": true,
+    "name": "@types/sshpk",
+    "version": "1.17.9999",
+    "projects": [
+        "https://github.com/joyent/node-sshpk"
+    ],
+    "dependencies": {
+        "@types/asn1": "*",
+        "@types/node": "*"
     },
-    {
-      "name": "Alexander Lavallee",
-      "githubUsername": "lavalleeale"
+    "devDependencies": {
+        "@types/sshpk": "workspace:."
     },
-    {
-      "name": "Lukáš Cezner",
-      "githubUsername": "coalzombik"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Meno Abels",
+            "githubUsername": "mabels"
+        },
+        {
+            "name": "Alexander Lavallee",
+            "githubUsername": "lavalleeale"
+        },
+        {
+            "name": "Lukáš Cezner",
+            "githubUsername": "coalzombik"
+        }
+    ]
 }

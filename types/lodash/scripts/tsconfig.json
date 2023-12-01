@@ -7,11 +7,7 @@
         "noEmit": true,
         "pretty": true,
         "strict": true,
-        "typeRoots": [
-            "../../"
-        ],
-        "types": [
-            "node"
-        ]
+        "typeRoots": ["../../"],
+        "types": ["node"]
     }
 }

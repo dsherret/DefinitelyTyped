@@ -1,11 +1,11 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["es6"],
-    "strict": true,
-    "types": [],
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "files": ["index.d.ts", "babel__plugin-transform-runtime-tests.ts"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["es6"],
+        "strict": true,
+        "types": [],
+        "noEmit": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "files": ["index.d.ts", "babel__plugin-transform-runtime-tests.ts"]
 }

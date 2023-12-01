@@ -1,15 +1,15 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "arrow-return-shorthand": false,
-    "no-object-literal-type-assertion": false,
-    "no-var-keyword": false,
-    "npm-naming": [
-      true,
-      {
-        "errors": [["NeedsExportEquals", false]],
-        "mode": "code"
-      }
-    ]
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "arrow-return-shorthand": false,
+        "no-object-literal-type-assertion": false,
+        "no-var-keyword": false,
+        "npm-naming": [
+            true,
+            {
+                "errors": [["NeedsExportEquals", false]],
+                "mode": "code"
+            }
+        ]
+    }
 }

@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/globalize",
-  "version": "1.5.9999",
-  "projects": [
-    "https://github.com/jquery/globalize"
-  ],
-  "dependencies": {
-    "@types/cldrjs": "*"
-  },
-  "devDependencies": {
-    "@types/globalize": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Grégoire Castre",
-      "githubUsername": "gcastre"
+    "private": true,
+    "name": "@types/globalize",
+    "version": "1.5.9999",
+    "projects": [
+        "https://github.com/jquery/globalize"
+    ],
+    "dependencies": {
+        "@types/cldrjs": "*"
     },
-    {
-      "name": "Aram Taieb",
-      "githubUsername": "afromogli"
+    "devDependencies": {
+        "@types/globalize": "workspace:."
     },
-    {
-      "name": "Bryan Forbes",
-      "githubUsername": "bryanforbes"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Grégoire Castre",
+            "githubUsername": "gcastre"
+        },
+        {
+            "name": "Aram Taieb",
+            "githubUsername": "afromogli"
+        },
+        {
+            "name": "Bryan Forbes",
+            "githubUsername": "bryanforbes"
+        }
+    ]
 }

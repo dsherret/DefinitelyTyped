@@ -1,6 +1,6 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "no-var-keyword": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "no-var-keyword": false
+    }
 }

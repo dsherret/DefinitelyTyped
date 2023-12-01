@@ -1,9 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "lib": [
-            "es6"
-        ],
+        "lib": ["es6"],
         "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
@@ -12,8 +10,5 @@
         "noEmit": true,
         "forceConsistentCasingInFileNames": true
     },
-    "files": [
-        "index.d.ts",
-        "fibjs-tests.ts"
-    ]
+    "files": ["index.d.ts", "fibjs-tests.ts"]
 }

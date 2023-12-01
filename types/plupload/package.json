@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/plupload",
-  "version": "2.0.9999",
-  "projects": [
-    "http://www.plupload.com/"
-  ],
-  "devDependencies": {
-    "@types/plupload": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Patrick Bußmann",
-      "githubUsername": "patrickbussmann"
-    }
-  ]
+    "private": true,
+    "name": "@types/plupload",
+    "version": "2.0.9999",
+    "projects": [
+        "http://www.plupload.com/"
+    ],
+    "devDependencies": {
+        "@types/plupload": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Patrick Bußmann",
+            "githubUsername": "patrickbussmann"
+        }
+    ]
 }

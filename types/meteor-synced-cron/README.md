@@ -2,8 +2,8 @@
 
 Type definitions for the [Meteor](https://www.meteor.com/) Atmosphere package `littledata:synced-cron`
 
-- Atmosphere package: https://atmospherejs.com/littledata/synced-cron
-- Repository on GitHub: https://github.com/percolatestudio/meteor-synced-cron
+-   Atmosphere package: https://atmospherejs.com/littledata/synced-cron
+-   Repository on GitHub: https://github.com/percolatestudio/meteor-synced-cron
 
 Demo project with these types: https://github.com/runisland/meteor-packages-playground
 

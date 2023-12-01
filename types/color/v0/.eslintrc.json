@@ -1,6 +1,6 @@
 {
-  "rules": {
-    "@definitelytyped/dt-header": "off",
-    "@typescript-eslint/no-invalid-void-type": "off"
-  }
+    "rules": {
+        "@definitelytyped/dt-header": "off",
+        "@typescript-eslint/no-invalid-void-type": "off"
+    }
 }

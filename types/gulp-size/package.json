@@ -1,26 +1,26 @@
 {
-  "private": true,
-  "name": "@types/gulp-size",
-  "version": "4.0.9999",
-  "projects": [
-    "https://github.com/sindresorhus/gulp-size"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/gulp": "*",
-    "@types/gulp-debug": "*",
-    "@types/gulp-size": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Tanguy Krotoff",
-      "githubUsername": "tkrotoff"
+    "private": true,
+    "name": "@types/gulp-size",
+    "version": "4.0.9999",
+    "projects": [
+        "https://github.com/sindresorhus/gulp-size"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Remisery",
-      "githubUsername": "remisery"
-    }
-  ]
+    "devDependencies": {
+        "@types/gulp": "*",
+        "@types/gulp-debug": "*",
+        "@types/gulp-size": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Tanguy Krotoff",
+            "githubUsername": "tkrotoff"
+        },
+        {
+            "name": "Remisery",
+            "githubUsername": "remisery"
+        }
+    ]
 }

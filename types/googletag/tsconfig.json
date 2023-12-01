@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["es6", "dom"],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "types": [],
-    "noEmit": true,
-    "exactOptionalPropertyTypes": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "files": ["index.d.ts", "googletag-tests.ts"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["es6", "dom"],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "types": [],
+        "noEmit": true,
+        "exactOptionalPropertyTypes": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "files": ["index.d.ts", "googletag-tests.ts"]
 }

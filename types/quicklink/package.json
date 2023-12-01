@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/quicklink",
-  "version": "2.3.9999",
-  "projects": [
-    "https://getquick.link/"
-  ],
-  "devDependencies": {
-    "@types/quicklink": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Pimm Hogeling",
-      "githubUsername": "Pimm"
-    }
-  ]
+    "private": true,
+    "name": "@types/quicklink",
+    "version": "2.3.9999",
+    "projects": [
+        "https://getquick.link/"
+    ],
+    "devDependencies": {
+        "@types/quicklink": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Pimm Hogeling",
+            "githubUsername": "Pimm"
+        }
+    ]
 }

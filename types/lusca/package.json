@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/lusca",
-  "version": "1.7.9999",
-  "projects": [
-    "https://github.com/krakenjs/lusca#readme"
-  ],
-  "dependencies": {
-    "@types/express": "*"
-  },
-  "devDependencies": {
-    "@types/lusca": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Corbin Crutchley",
-      "githubUsername": "crutchcorn"
+    "private": true,
+    "name": "@types/lusca",
+    "version": "1.7.9999",
+    "projects": [
+        "https://github.com/krakenjs/lusca#readme"
+    ],
+    "dependencies": {
+        "@types/express": "*"
     },
-    {
-      "name": "Naoto Yokoyama",
-      "githubUsername": "builtinnya"
+    "devDependencies": {
+        "@types/lusca": "workspace:."
     },
-    {
-      "name": "Piotr Błażejewicz",
-      "githubUsername": "peterblazejewicz"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Corbin Crutchley",
+            "githubUsername": "crutchcorn"
+        },
+        {
+            "name": "Naoto Yokoyama",
+            "githubUsername": "builtinnya"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "githubUsername": "peterblazejewicz"
+        }
+    ]
 }

@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/is-github-url",
-  "version": "1.2.9999",
-  "projects": [
-    "https://github.com/alferov/is-github-url"
-  ],
-  "devDependencies": {
-    "@types/is-github-url": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Ivan Nikolić",
-      "githubUsername": "niksy"
-    }
-  ]
+    "private": true,
+    "name": "@types/is-github-url",
+    "version": "1.2.9999",
+    "projects": [
+        "https://github.com/alferov/is-github-url"
+    ],
+    "devDependencies": {
+        "@types/is-github-url": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Ivan Nikolić",
+            "githubUsername": "niksy"
+        }
+    ]
 }

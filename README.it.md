@@ -11,11 +11,11 @@ _Link per il [manuale dell'amministratore](./docs/admin.md)_
 Questa sezione tiene traccia della salute della repository e dello stato di pubblicazione.
 Può tornare utile per i contributori che stanno avendo problemi con le loro PR e package.
 
-- Ultima build [type-checked/linted](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/dtslint) pulita: [![Build Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.DefinitelyTyped?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=1&branchName=master)
-- Tutti i package sono sottoposti a controllo dei tipi e linting con typescript@next: [![Build status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/Nightly%20dtslint)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=8)
-- Tutti i package vengono [pubblicati su npm](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/publisher) in meno di un'ora e mezza: [![Publish Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.types-publisher-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=5&branchName=master)
-- Il [bot di Typescript](https://github.com/typescript-bot) è stato attivo su Definitely Typed [![Activity Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.typescript-bot-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=6&branchName=master)
-- [Aggiornamenti dello stato dell'infrastruttura](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/44317) attuale
+-   Ultima build [type-checked/linted](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/dtslint) pulita: [![Build Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.DefinitelyTyped?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=1&branchName=master)
+-   Tutti i package sono sottoposti a controllo dei tipi e linting con typescript@next: [![Build status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/Nightly%20dtslint)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=8)
+-   Tutti i package vengono [pubblicati su npm](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/publisher) in meno di un'ora e mezza: [![Publish Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.types-publisher-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=5&branchName=master)
+-   Il [bot di Typescript](https://github.com/typescript-bot) è stato attivo su Definitely Typed [![Activity Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.typescript-bot-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=6&branchName=master)
+-   [Aggiornamenti dello stato dell'infrastruttura](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/44317) attuale
 
 Se qualcosa sembra sbagliato o una qualunque delle cose qui in alto fallisce, fatecelo sapere [sul canale di Definitely Typed nel server discord della comunità di Typescript](https://discord.gg/typescript):
 
@@ -74,9 +74,9 @@ Ad esempio se esegui `npm dist-tags @types/react`, vedrai che TypeScript 2.5 pot
 
 #### TypeScript 1.\*
 
-- Scarica manualmente la branch `master` di questa repo e collocala nel tuo progetto.
-- ~~[Typings](https://github.com/typings/typings)~~ (usa altre alternative migliori, in quanto typings è deprecata)
-- ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ (usa altre alternative, in quanto la pubblicazione di tipi su nuget DT non è più possibile)
+-   Scarica manualmente la branch `master` di questa repo e collocala nel tuo progetto.
+-   ~~[Typings](https://github.com/typings/typings)~~ (usa altre alternative migliori, in quanto typings è deprecata)
+-   ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ (usa altre alternative, in quanto la pubblicazione di tipi su nuget DT non è più possibile)
 
 Potresti dover aggiungere manualmente le [reference](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html).
 
@@ -92,8 +92,8 @@ Prima di condividere il tuo miglioramento col mondo intero, utilizza i tipi tu s
 
 ```ts
 declare module "libname" {
-  // Types inside here
-  export function helloWorldMessage(): string;
+    // Types inside here
+    export function helloWorldMessage(): string;
 }
 ```
 
@@ -139,17 +139,17 @@ Per clonare la repo in modo più agibile, clonando _solo_ i package per te rilev
 > :warning: Richiede almeno la [versione di git 2.27.0](https://git-scm.com/downloads), che solitamente è più recente di quelle installate di default. Per le versioni più vecchie sono disponibili procedure più complesse, che non trattiamo qui.
 
 1. `git clone --sparse --filter=blob:none --depth=1 <forkedUrl>`
-   - `--sparse` initializes the sparse-checkout file so the working directory starts with only the files in the root of the repository.
-     - `--filter=blob:none` will exclude files, fetching them only as needed.
-     - `--depth=1` will further improve clone speed by truncating commit history, but it may cause issues as summarized [here](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/).
-   2. `git sparse-checkout add types/<type> types/<dependency-type> ...`
+    - `--sparse` initializes the sparse-checkout file so the working directory starts with only the files in the root of the repository.
+        - `--filter=blob:none` will exclude files, fetching them only as needed.
+        - `--depth=1` will further improve clone speed by truncating commit history, but it may cause issues as summarized [here](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/).
+    2. `git sparse-checkout add types/<type> types/<dependency-type> ...`
 
 #### Modificare un package preesistente
 
-- `cd types/<package to edit>`
-- Fai le tue modifiche. Ricorda di [testle](#mio-package-teststs).
-  Se fai modifiche essenziali, non ti dimenticare di [aggiornare il major della versione](#se-laggiornamento-di-una-libreria-comprende-modifiche-sostanziali-aggiornamento-major-come-faccio-ad-aggiornare-il-suo-pacchetto-types).
-  - [Esegui `npm test <package da testare>`](#eseguire-test).
+-   `cd types/<package to edit>`
+-   Fai le tue modifiche. Ricorda di [testle](#mio-package-teststs).
+    Se fai modifiche essenziali, non ti dimenticare di [aggiornare il major della versione](#se-laggiornamento-di-una-libreria-comprende-modifiche-sostanziali-aggiornamento-major-come-faccio-ad-aggiornare-il-suo-pacchetto-types).
+    -   [Esegui `npm test <package da testare>`](#eseguire-test).
 
 Quando crei una pull request ad un package che esiste già, `dt-bot` dovrebbe @menzionare gli autori precedenti.
 Se non lo fa, puoi farlo direttamente tu nel commento associato alla pull request.
@@ -186,9 +186,9 @@ Quando un package [include](https://www.typescriptlang.org/docs/handbook/declara
 
 Puoi rimuoverli eseguendo `pnpm run not-needed -- <nome-package> <versione> [<nome-libreria>]`.
 
-- `<nome-package>`: È il nome della cartella da rimuovere.
-- `<versione>`: Verrà pubblicato uno stab su `@types/<nome-package>` con questa versione. Dev'essere più alto della versione attualmente pubblicata e deve essere una versione di `<ome-libreria>` su npm.
-- `<nome-libreria>`: Nome del package npm che sostituisce il package DT. Solitamente è identioc a `<nome-package>` e puoi ometterlo.
+-   `<nome-package>`: È il nome della cartella da rimuovere.
+-   `<versione>`: Verrà pubblicato uno stab su `@types/<nome-package>` con questa versione. Dev'essere più alto della versione attualmente pubblicata e deve essere una versione di `<ome-libreria>` su npm.
+-   `<nome-libreria>`: Nome del package npm che sostituisce il package DT. Solitamente è identioc a `<nome-package>` e puoi ometterlo.
 
 Qualunque altro package di Definitely Typed che si riferisce ad un altro package DT eliminato dovrebbe venir aggiornato facendolo riferire ai tipi inclusi nel package stesso.
 Puoi farlo controllando gli errori che escono eseguendo `pnpm run test-all`.
@@ -197,10 +197,10 @@ Ad esempio:
 
 ```json
 {
-  "private": true,
-  "dependencies": {
-    "<nome-libreria>": "^2.6.0"
-  }
+    "private": true,
+    "dependencies": {
+        "<nome-libreria>": "^2.6.0"
+    }
 }
 ```
 
@@ -282,10 +282,10 @@ Proprio come tslint dovresti disabilitare le regole solo per determinate linee:
 ```ts
 // eslint-disable-next-line no-const-enum
 const enum Const {
-  One,
+    One,
 }
 const enum Enum {
-  Two,
+    Two,
 } // eslint-disable-line no-const-enum
 ```
 
@@ -339,30 +339,30 @@ Se un file non è nè testato nè riferito nell'`index.d.ts`, aggiungilo in un f
 
 #### Errori comuni
 
-- Inanzitutto segui i consigli nel [manuale](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html).
-- Formattazione: Usa 4 spazi. Prettier è abilitato su questa repo, quindi puoi eseguire `pnpm run prettier -- --write 'path/to/package/**/*.ts'`. [Quando usi le assertion](https://github.com/SamVerschueren/tsd#assertions), aggiungi `// prettier-ignore` per marcare le linee di codice da escludere quando si fa la formattazione:
+-   Inanzitutto segui i consigli nel [manuale](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html).
+-   Formattazione: Usa 4 spazi. Prettier è abilitato su questa repo, quindi puoi eseguire `pnpm run prettier -- --write 'path/to/package/**/*.ts'`. [Quando usi le assertion](https://github.com/SamVerschueren/tsd#assertions), aggiungi `// prettier-ignore` per marcare le linee di codice da escludere quando si fa la formattazione:
 
-  ```tsx
-    // prettier-ignore
-    // @ts-expect-error
-    const incompleteThemeColorModes: Theme = { colors: { modes: { papaya: {
-  ```
+    ```tsx
+      // prettier-ignore
+      // @ts-expect-error
+      const incompleteThemeColorModes: Theme = { colors: { modes: { papaya: {
+    ```
 
-- `function sum(nums: number[]): number`: Usa `ReadonlyArray` se una funzione non modifica i suoi parametri.
-- `interface Foo { new(): Foo; }`:
-  Definisce un tipo di oggetto su cui si può fare new. Probabilmente ciò che vuoi è `declare class Foo { constructor(); }`.
-- `const Class: { new(): IClass; }`:
-  Preferire sempre la dichiarazione di una classe `class Class { constructor(); }` al posto di una costante new.
-- `getMeAT<T>(): T`:
-  Se il parametro di un tipo non appare nei tipi di un parametro, ciò che vuoi non è una vera funzione generica.
-  È consigliato usare una vera asserzione di tipo, ad esempio `getMeAT() as number`.
-  Esempio dove un parametro è accettabile: `function id<T>(value: T): T;`.
-  Esempio in cui non lo è: `function parseJson<T>(json: string): T;`.
-  Eccezione: `new Map<string, number>()` va bene.
-- Usare i tipi `Function` e `Object` non è quasi mai una buona idea. Nel 99% si può specificare un tipo più preciso. Alcuni esempi sono `(x: number) => number` per le [funzioni](https://www.typescriptlang.org/docs/handbook/functions.html#function-types) e `{ x: number, y: number }` per gli oggetti. Se non si è sicuri del tipo, [`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) è la scelta migliore, non `Object`. Se l'unica cosa di cui si sa è che il tipo è un oggetto di qualche tipo, usa il tipo [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type), non `Object` o `{ [key: string]: any }`.
-- `var foo: string | any`:
-  Quando `any` è usato in un tipo disgiuntipo, il tipo risultanto rimane `any`. Quindi mentre la porzione `string` di questo tipo potrebbe _sembrare_ utile, in realtà non offre nessuna precisazione rispetto ad un banalissimo `any`.
-  In funzione delle tue intenzioni, delle alternative accettabili sono `any`, `string` o `string | object`.
+-   `function sum(nums: number[]): number`: Usa `ReadonlyArray` se una funzione non modifica i suoi parametri.
+-   `interface Foo { new(): Foo; }`:
+    Definisce un tipo di oggetto su cui si può fare new. Probabilmente ciò che vuoi è `declare class Foo { constructor(); }`.
+-   `const Class: { new(): IClass; }`:
+    Preferire sempre la dichiarazione di una classe `class Class { constructor(); }` al posto di una costante new.
+-   `getMeAT<T>(): T`:
+    Se il parametro di un tipo non appare nei tipi di un parametro, ciò che vuoi non è una vera funzione generica.
+    È consigliato usare una vera asserzione di tipo, ad esempio `getMeAT() as number`.
+    Esempio dove un parametro è accettabile: `function id<T>(value: T): T;`.
+    Esempio in cui non lo è: `function parseJson<T>(json: string): T;`.
+    Eccezione: `new Map<string, number>()` va bene.
+-   Usare i tipi `Function` e `Object` non è quasi mai una buona idea. Nel 99% si può specificare un tipo più preciso. Alcuni esempi sono `(x: number) => number` per le [funzioni](https://www.typescriptlang.org/docs/handbook/functions.html#function-types) e `{ x: number, y: number }` per gli oggetti. Se non si è sicuri del tipo, [`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) è la scelta migliore, non `Object`. Se l'unica cosa di cui si sa è che il tipo è un oggetto di qualche tipo, usa il tipo [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type), non `Object` o `{ [key: string]: any }`.
+-   `var foo: string | any`:
+    Quando `any` è usato in un tipo disgiuntipo, il tipo risultanto rimane `any`. Quindi mentre la porzione `string` di questo tipo potrebbe _sembrare_ utile, in realtà non offre nessuna precisazione rispetto ad un banalissimo `any`.
+    In funzione delle tue intenzioni, delle alternative accettabili sono `any`, `string` o `string | object`.
 
 ### Proprietari delle definizioni
 
@@ -370,20 +370,20 @@ Se un file non è nè testato nè riferito nell'`index.d.ts`, aggiungilo in un f
 
 DT ha il concetto di "Proprietari delle definizioni", che sono coloro i quali vogliono mantenere la qualità delle definizioni dei tipi di un certo modulo.
 
-- Aggiungerti da solo farà sì che tu venga notificato (tramite il tuo nome utente GitHub) ogni volta che qualcuno fa una pull request o un issue su quel package.
-- Le tue PR review avranno precedenza maggiore di quelle [dei bot](https://github.com/DefinitelyTyped/dt-mergebot) che mantengono questa repo.
-- I mantenitori di DT stanno ponendo la loro fiducia sui proprietari delle definizioni per mantenere un ecosistema stabile, quindi non aggiungerti senza sapere quello che fai.
+-   Aggiungerti da solo farà sì che tu venga notificato (tramite il tuo nome utente GitHub) ogni volta che qualcuno fa una pull request o un issue su quel package.
+-   Le tue PR review avranno precedenza maggiore di quelle [dei bot](https://github.com/DefinitelyTyped/dt-mergebot) che mantengono questa repo.
+-   I mantenitori di DT stanno ponendo la loro fiducia sui proprietari delle definizioni per mantenere un ecosistema stabile, quindi non aggiungerti senza sapere quello che fai.
 
 Per aggiungerti come pprietario delle definizioni:
 
-- Aggiungi il tuo nome alla fine della riga, come su `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
-- Se ci sono più perone, puoi separarlo in più righe:
-  ```typescript
-  // Definitions by: Alice <https://github.com/alice>
-  //                 Bob <https://github.com/bob>
-  //                 Steve <https://github.com/steve>
-  //                 John <https://github.com/john>
-  ```
+-   Aggiungi il tuo nome alla fine della riga, come su `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`.
+-   Se ci sono più perone, puoi separarlo in più righe:
+    ```typescript
+    // Definitions by: Alice <https://github.com/alice>
+    //                 Bob <https://github.com/bob>
+    //                 Steve <https://github.com/steve>
+    //                 John <https://github.com/john>
+    ```
 
 Una volta alla settimana i proprietari delle definizioni saranno sincronizzati nel file [.github/CODEOWNERS](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/.github/CODEOWNERS) che è la nostra fonte di verità.
 
@@ -449,13 +449,13 @@ Questa [risposta su Stack Overflow](https://stackoverflow.com/questions/39415661
 Risulta preferibile importare un modulo usando la sintassi `import foo = require("foo");`.
 In ogni caso, se vuoi usare un import default come `import foo from "foo";`, hai due possibilità:
 
-- puoi usare l'opzione del traspilatore TypeScript [`--allowSyntheticDefaultImports`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs) se il tuo modulo supporta a ntime
+-   puoi usare l'opzione del traspilatore TypeScript [`--allowSyntheticDefaultImports`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs) se il tuo modulo supporta a ntime
 
 Importare il modulo usando la sintassi `import foo = require("foo");` è più appropriato.
 Comunque, se vuoi usare un default import come `import foo from "foo";` hai due possibilità:
 
-- puoi usare [l'opzione di compilazione `--allowSyntheticDefaultImports`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs) se il tuo ambiente di runtime supporta uno schema interop per moduli non ECMAScript, come nel caso in cui gli import di default sono supportati (Webpack, SystemJS, esm, ...)
-- puoi usare [l'opzione di compilazione `--esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-form-commonjs-modules-with---esmoduleinterop) se sia Typescript ad occuparsi dell'interop di moduli non ECMAScript (da TypeScript 2.7 in su).
+-   puoi usare [l'opzione di compilazione `--allowSyntheticDefaultImports`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs) se il tuo ambiente di runtime supporta uno schema interop per moduli non ECMAScript, come nel caso in cui gli import di default sono supportati (Webpack, SystemJS, esm, ...)
+-   puoi usare [l'opzione di compilazione `--esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-form-commonjs-modules-with---esmoduleinterop) se sia Typescript ad occuparsi dell'interop di moduli non ECMAScript (da TypeScript 2.7 in su).
 
 #### Un package usa `export =`, ma preferirei usare un import di default. Posso cambiare `export =` in `export default`?
 
@@ -476,36 +476,36 @@ Ecco qui un breve esempio per iniziare:
 
 1. Aggiungi un file `package.json` alle definizioni dei tuoi package, con il contenuto seguente.
 
-   ```json
-   {
-     "private": true,
-     "types": "index",
-     "typesVersions": {
-       "<=3.6": { "*": ["ts3.6/*"] }
-     }
-   }
-   ```
+    ```json
+    {
+        "private": true,
+        "types": "index",
+        "typesVersions": {
+            "<=3.6": { "*": ["ts3.6/*"] }
+        }
+    }
+    ```
 
 2. Crea la sottocartella menzionata dal campo `typesVersions` dentro la tua cartella dei tipi (che nel nostro esempio è `ts3.6/`).
    `ts3.6/` suppporterà le versioni uguali o inferiori alla 3.6, quindi copia i tipi esistenti con i test lì.
 
-   Dovrai eliminare l'header delle definizioni da `ts3.6/index.d.ts` dal momento che solo la root `index.d.ts` può averlo.
+    Dovrai eliminare l'header delle definizioni da `ts3.6/index.d.ts` dal momento che solo la root `index.d.ts` può averlo.
 
 3. Cambia le opzioni `baseUrl` e `typeRoots` in `ts3.6/tsconfig.json` per correggere i path, dovrebbe essere simile a:
 
-   ```json
-   {
-     "compilerOptions": {
-       "baseUrl": "../../",
-       "typeRoots": ["../../"]
-     }
-   }
-   ```
+    ```json
+    {
+        "compilerOptions": {
+            "baseUrl": "../../",
+            "typeRoots": ["../../"]
+        }
+    }
+    ```
 
 4. Nel root del package, aggiungi le funzionalità di Typescript 3.7 che vuoi usare.
    Quando il package viene installato, Typescript 3.6 o inferiore partirà da `ts3.6/index.d.ts`, mentre Typescript 3.7 o superiore partirà da `index.d.ts`.
 
-   Dai un'occhiata a [bluebird](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f2512c2cf7cdcf9a487d989e288174e49b7839ab/types/bluebird) per averne un esempio.
+    Dai un'occhiata a [bluebird](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f2512c2cf7cdcf9a487d989e288174e49b7839ab/types/bluebird) per averne un esempio.
 
 #### Voglio aggiungere una API DOM che non è presente di default su Typescript
 
@@ -539,13 +539,13 @@ A volte le versioni delle dichiarazioni dei tipi e quelle dei pacchetti corrispo
 Qui sotto ci sono alcune delle cause più comuni, ordinate in base a quanti inconvenienti causano a chi utilizza la libreria.
 Solitamente, solo l'ultima causa da problemi.
 
-- Come messo precedentemente in evidenza, la parte patch della versione del pacchetto `@types` non è allineata con quella della libreria analoga.
-  Questo permette a Definitely Typed di aggiornare in modo automatico e sicuro le dichiarazioni dei tipi di una libreria che hanno le stesse major/minor.
-- Se aggiorni un pacchetto perchè introduci una nuova funzionalità, ricordati di aggiornare la versione anche sul pacchetto `@types`.
-  Se gli autori dei pacchetti fanno corrispondere le versioni di JavaScript con quelle dei pacchetti `@types` analoghi, `npm update` dovrebbe funzionare alla perfezione.
-- Molto spesso capita che le versioni delle dichiaraizoni dei tipi rimangano indietro rispetto a quelle del pacchetto JavaScript, questo perchè molte volte non sono gli stessi autori dei pacchetti JavaScript
-  a farne anche le dichiarazioni dei tipi ma utenti terzi. Per questo motivo potrebbero esserci dei ritardi di giorni, settimane o perfino mesi prima che arrivi una pull request da qualche benefattore che riallinea il pacchetto `@type` con l'ultima versione JavaScript.
-  Se ti ritrovi in questa situazione, puoi essere tu stesso a fare la differenza ed a risolvere il problema diventando un membro a tutti gli effetti della Community.
+-   Come messo precedentemente in evidenza, la parte patch della versione del pacchetto `@types` non è allineata con quella della libreria analoga.
+    Questo permette a Definitely Typed di aggiornare in modo automatico e sicuro le dichiarazioni dei tipi di una libreria che hanno le stesse major/minor.
+-   Se aggiorni un pacchetto perchè introduci una nuova funzionalità, ricordati di aggiornare la versione anche sul pacchetto `@types`.
+    Se gli autori dei pacchetti fanno corrispondere le versioni di JavaScript con quelle dei pacchetti `@types` analoghi, `npm update` dovrebbe funzionare alla perfezione.
+-   Molto spesso capita che le versioni delle dichiaraizoni dei tipi rimangano indietro rispetto a quelle del pacchetto JavaScript, questo perchè molte volte non sono gli stessi autori dei pacchetti JavaScript
+    a farne anche le dichiarazioni dei tipi ma utenti terzi. Per questo motivo potrebbero esserci dei ritardi di giorni, settimane o perfino mesi prima che arrivi una pull request da qualche benefattore che riallinea il pacchetto `@type` con l'ultima versione JavaScript.
+    Se ti ritrovi in questa situazione, puoi essere tu stesso a fare la differenza ed a risolvere il problema diventando un membro a tutti gli effetti della Community.
 
 :exclamation: Se stai aggiornando le dichiarazioni dei tipi per una libreria, ricordati di cambiare sempre la `major.minor` nella prima riga del `index.d.ts` in modo che con quella della libreria dei cui tipi stai dichiarando! :exclamation:
 
@@ -571,14 +571,14 @@ Nel momento in cui questo README è stato scritto, il [`tsconfig.json` della his
 
 ```json
 {
-  "compilerOptions": {
-    "baseUrl": "../../",
-    "typeRoots": ["../../"],
-    "paths": {
-      "history": ["history/v2"]
-    }
-  },
-  "files": ["index.d.ts", "history-tests.ts"]
+    "compilerOptions": {
+        "baseUrl": "../../",
+        "typeRoots": ["../../"],
+        "paths": {
+            "history": ["history/v2"]
+        }
+    },
+    "files": ["index.d.ts", "history-tests.ts"]
 }
 ```
 
@@ -607,9 +607,9 @@ Quando `dts-gen` viene usato per un pacchetto con scope, nel `tsconfig.json`, la
 
 ```json
 {
-  "paths": {
-    "@foo/*": ["foo__*"]
-  }
+    "paths": {
+        "@foo/*": ["foo__*"]
+    }
 }
 ```
 

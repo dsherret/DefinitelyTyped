@@ -1,7 +1,7 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "only-arrow-functions": false,
-    "object-literal-shorthand": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "only-arrow-functions": false,
+        "object-literal-shorthand": false
+    }
 }

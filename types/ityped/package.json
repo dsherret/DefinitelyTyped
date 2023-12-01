@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/ityped",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/luisvinicius167/ityped"
-  ],
-  "devDependencies": {
-    "@types/ityped": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Daniel Rosenwasser",
-      "githubUsername": "DanielRosenwasser"
+    "private": true,
+    "name": "@types/ityped",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/luisvinicius167/ityped"
+    ],
+    "devDependencies": {
+        "@types/ityped": "workspace:."
     },
-    {
-      "name": "MaySoMusician",
-      "githubUsername": "MaySoMusician"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Daniel Rosenwasser",
+            "githubUsername": "DanielRosenwasser"
+        },
+        {
+            "name": "MaySoMusician",
+            "githubUsername": "MaySoMusician"
+        }
+    ]
 }

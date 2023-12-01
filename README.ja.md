@@ -11,11 +11,11 @@ _[管理マニュアルへのリンク](./docs/admin.md)_
 このセクションではレポジトリと公開プロセスの稼働状況を追跡できます。
 PR やパッケージに何か不具合がある場合は、これらが役に立つかもしれません。
 
-- 直近のビルドの[型チェックと Lint](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/dtslint) が正常終了したか: [![Build Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.DefinitelyTyped?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=1&branchName=master)
-- 次バージョンの TypeScript 上で全パッケージの型チェックと Lint が正常終了したか: [![Build status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/Nightly%20dtslint)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=8)
-- 1時間以内に全パッケージが [npm に公開](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/publisher)されているか: [![Publish Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.types-publisher-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=5&branchName=master)
-- Definitely Typed 上で [typescript-bot](https://github.com/typescript-bot) がアクティブかどうか: [![Activity Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.typescript-bot-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=6&branchName=master)
-- 現在の[運用基盤のステータス更新](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/44317)
+-   直近のビルドの[型チェックと Lint](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/dtslint) が正常終了したか: [![Build Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.DefinitelyTyped?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=1&branchName=master)
+-   次バージョンの TypeScript 上で全パッケージの型チェックと Lint が正常終了したか: [![Build status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/Nightly%20dtslint)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=8)
+-   1時間以内に全パッケージが [npm に公開](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/publisher)されているか: [![Publish Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.types-publisher-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=5&branchName=master)
+-   Definitely Typed 上で [typescript-bot](https://github.com/typescript-bot) がアクティブかどうか: [![Activity Status](https://dev.azure.com/definitelytyped/DefinitelyTyped/_apis/build/status/DefinitelyTyped.typescript-bot-watchdog?branchName=master)](https://dev.azure.com/definitelytyped/DefinitelyTyped/_build/latest?definitionId=6&branchName=master)
+-   現在の[運用基盤のステータス更新](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/44317)
 
 掲載されているもので何かが正常ではなかったり、結果が失敗になっているものがある場合は、 [TypeScript コミュニティの Discord サーバーの Definitely Typed のチャンネル](https://discord.gg/typescript)までご連絡ください。
 
@@ -70,9 +70,9 @@ npm install --save-dev @types/node
 
 #### TypeScript 1.x系
 
-- このレポジトリの `master` ブランチから手動でダウンロードして、開発しているプロジェクトに配置してください。
-- ~~[Typings](https://github.com/typings/typings)~~ （Typings は非推奨になったので、他の方式を使用すること）
-- ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ （NuGet 上の DefinitelyTyped の公開は終了したので、他の方式を使用すること）
+-   このレポジトリの `master` ブランチから手動でダウンロードして、開発しているプロジェクトに配置してください。
+-   ~~[Typings](https://github.com/typings/typings)~~ （Typings は非推奨になったので、他の方式を使用すること）
+-   ~~[NuGet](https://nuget.org/packages?q=DefinitelyTyped)~~ （NuGet 上の DefinitelyTyped の公開は終了したので、他の方式を使用すること）
 
 手動で[リファレンス](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html)を追加する必要があります。
 
@@ -88,8 +88,8 @@ Definitely Typed は、あなたのようなユーザーによるコントリビ
 
 ```ts
 declare module "libname" {
-  // ここに型を記述
-  export function helloWorldMessage(): string;
+    // ここに型を記述
+    export function helloWorldMessage(): string;
 }
 ```
 
@@ -136,19 +136,19 @@ DefinitelyTyped への大量の PR を全てセルフサービス方式で処理
 > :warning: これには最小限の[gitバージョン2.27.0](https://git-scm.com/downloads)が必要ですが、これはほとんどのマシンのデフォルトよりも新しいバージョンです。より複雑な手順が古いバージョンで利用可能ですが、このガイドではカバーされていません。
 
 1. `git clone --sparse --filter=blob:none --depth=1 <forkedUrl>`
-   - `--sparse` はスパースチェックアウトファイルを初期化し、ワーキングディレクトリがリポジトリのルートにあるファイルのみで開始されます。
-   - `--filter=blob:none` はファイルを除外し、必要に応じてそれらを取得します。
-   - `--depth=1` はコミット履歴を切り詰めることでクローン速度をさらに向上させますが、[ここでまとめられているように](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/)問題を引き起こす可能性があります。
+    - `--sparse` はスパースチェックアウトファイルを初期化し、ワーキングディレクトリがリポジトリのルートにあるファイルのみで開始されます。
+    - `--filter=blob:none` はファイルを除外し、必要に応じてそれらを取得します。
+    - `--depth=1` はコミット履歴を切り詰めることでクローン速度をさらに向上させますが、[ここでまとめられているように](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/)問題を引き起こす可能性があります。
 2. `git sparse-checkout add types/<type> types/<dependency-type> ...`
 
 </details>
 
 #### 既存のパッケージを編集する
 
-- `cd types/<編集したいパッケージ名>` を実行。
-- 変更を加える。[テストを編集する](#パッケージ名-teststs)のも忘れずに行う。
-  破壊的な変更を加えるときは、必ず[メジャーバージョンを更新する](#ライブラリが破壊的な変更をしてメジャーバージョンが更新されました型定義パッケージはどのように更新すればよいですか)。
-- [`npm test <テストしたいパッケージ名>` を実行](#テストの実行)。
+-   `cd types/<編集したいパッケージ名>` を実行。
+-   変更を加える。[テストを編集する](#パッケージ名-teststs)のも忘れずに行う。
+    破壊的な変更を加えるときは、必ず[メジャーバージョンを更新する](#ライブラリが破壊的な変更をしてメジャーバージョンが更新されました型定義パッケージはどのように更新すればよいですか)。
+-   [`npm test <テストしたいパッケージ名>` を実行](#テストの実行)。
 
 既存のパッケージを編集する PR を作成すると、 `dt-bot` が今までの型定義作者に@メンションを送ります。
 もしメンションが自動でつかなかった場合は、 PR のコメントにてあなたがメンションを送ってください。
@@ -185,9 +185,9 @@ Definitely Typed のメンバーは常に新しい PR をチェックしてい�
 
 `pnpm run not-needed -- <typingsPackageName> <asOfVersion> [<libraryName>]` を実行するとパッケージを削除できます。.
 
-- `<typingsPackageName>`: 削除したいディレクトリ名。
-- `<asOfVersion>`: `@types/<typingsPackageName>` に対してスタブ（stub）を公開したいバージョン。現在公開中のバージョンより新しく、かつ npm 上の `<libraryName>` のバージョンとあわせる必要があります。
-- `<libraryName>`: Definitely Typed 側の型定義の代わりとなる npm のパッケージ名。基本的に `<typingsPackageName>` と一致し、その場合は省略できます。
+-   `<typingsPackageName>`: 削除したいディレクトリ名。
+-   `<asOfVersion>`: `@types/<typingsPackageName>` に対してスタブ（stub）を公開したいバージョン。現在公開中のバージョンより新しく、かつ npm 上の `<libraryName>` のバージョンとあわせる必要があります。
+-   `<libraryName>`: Definitely Typed 側の型定義の代わりとなる npm のパッケージ名。基本的に `<typingsPackageName>` と一致し、その場合は省略できます。
 
 削除されたパッケージを参照していた、他の Definitely Typed 上のパッケージは全て、ライブラリにバンドルされている型定義を参照するように更新する必要があります。
 `pnpm run test-all` を実行した際のエラーを参照することで、更新が必要なライブラリのリストが確認できます。
@@ -196,10 +196,10 @@ Definitely Typed のメンバーは常に新しい PR をチェックしてい�
 
 ```json
 {
-  "private": true,
-  "dependencies": {
-    "<libraryName>": "^2.6.0"
-  }
+    "private": true,
+    "dependencies": {
+        "<libraryName>": "^2.6.0"
+    }
 }
 ```
 
@@ -286,10 +286,10 @@ tslint と同様に、特定のルールは特定の行に対してのみ無効�
 ```ts
 // eslint-disable-next-line no-const-enum
 const enum Const {
-  One,
+    One,
 }
 const enum Enum {
-  Two,
+    Two,
 } // eslint-disable-line no-const-enum
 ```
 
@@ -344,8 +344,8 @@ DefinitelyTypedのパッケージパブリッシャーは、Definitely Typedの�
 
 ```json
 {
-  "private": true,
-  "type": "module"
+    "private": true,
+    "type": "module"
 }
 ```
 
@@ -357,28 +357,28 @@ DefinitelyTypedのパッケージパブリッシャーは、Definitely Typedの�
 
 #### よくある間違い
 
-- まず、[ハンドブック](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)のアドバイスに従ってください。
-- フォーマット: 4つのスペースを使用してください。このリポジトリではPrettierが設定されているため、`pnpm run prettier -- --write 'path/to/package/**/*.ts'`を実行してフォーマットを適用できます。[アサーションを使用する場合](https://github.com/SamVerschueren/tsd#assertions)、フォーマットから除外するために `// prettier-ignore` を追加して、フォーマットの対象外としてマークすることができます：
-  ```tsx
-  // prettier-ignore
-  // @ts-expect-error
-  const incompleteThemeColorModes: Theme = { colors: { modes: { papaya: {
-  ```
-- `function sum(nums: number[]): number`: パラメータを変更しない場合、`ReadonlyArray` を使用してください。
-- `interface Foo { new(): Foo; }`:
-  これは new できるオブジェクトの型を定義しています。おそらく `declare class Foo { constructor(); }` を使用したいです。
-- `const Class: { new(): IClass; }`:
-  new できる定数の代わりにクラス宣言 `class Class { constructor(); }` を使用することをお勧めします。
-- `getMeAT<T>(): T`:
-  タイプパラメータがどのパラメータの型にも現れない場合、実際にはジェネリック関数ではなく、偽装された型アサーションがあります。
-  実際の型アサーションを使用することをお勧めします。例: `getMeAT() as number`。
-  タイプパラメータが受け入れられる例: `function id<T>(value: T): T;`。
-  タイプパラメータが受け入れられない例: `function parseJson<T>(json: string): T;`。
-  例外: `new Map<string, number>()` は問題ありません。
-- 型 `Function` と `Object` を使用するのはほとんどの場合良いアイデアではありません。99%の場合、より具体的な型を指定できます。関数の場合は [(x: number) => number](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-type-expressions) など、オブジェクトの場合は `{ x: number, y: number }` を指定できます。型について全く確実な情報がない場合は、[`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) を選択すべきです。型について唯一知られている情報が「何らかのオブジェクトである」という場合は、型 [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type) を使用し、`Object` や `{ [key: string]: any }` を使用しないでください。
-- `var foo: string | any`:
-  `any` がユニオン型で使用される場合、結果の型は依然として `any` です。そのため、この型注釈の `string` 部分は有用に見えるかもしれませんが、実際には単に `any` を使用するよりも追加の型チェックを提供しません。
-  意図に応じて、受け入れ可能な代替手段は `any`、`string`、または `string | object` などが考えられます。
+-   まず、[ハンドブック](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)のアドバイスに従ってください。
+-   フォーマット: 4つのスペースを使用してください。このリポジトリではPrettierが設定されているため、`pnpm run prettier -- --write 'path/to/package/**/*.ts'`を実行してフォーマットを適用できます。[アサーションを使用する場合](https://github.com/SamVerschueren/tsd#assertions)、フォーマットから除外するために `// prettier-ignore` を追加して、フォーマットの対象外としてマークすることができます：
+    ```tsx
+    // prettier-ignore
+    // @ts-expect-error
+    const incompleteThemeColorModes: Theme = { colors: { modes: { papaya: {
+    ```
+-   `function sum(nums: number[]): number`: パラメータを変更しない場合、`ReadonlyArray` を使用してください。
+-   `interface Foo { new(): Foo; }`:
+    これは new できるオブジェクトの型を定義しています。おそらく `declare class Foo { constructor(); }` を使用したいです。
+-   `const Class: { new(): IClass; }`:
+    new できる定数の代わりにクラス宣言 `class Class { constructor(); }` を使用することをお勧めします。
+-   `getMeAT<T>(): T`:
+    タイプパラメータがどのパラメータの型にも現れない場合、実際にはジェネリック関数ではなく、偽装された型アサーションがあります。
+    実際の型アサーションを使用することをお勧めします。例: `getMeAT() as number`。
+    タイプパラメータが受け入れられる例: `function id<T>(value: T): T;`。
+    タイプパラメータが受け入れられない例: `function parseJson<T>(json: string): T;`。
+    例外: `new Map<string, number>()` は問題ありません。
+-   型 `Function` と `Object` を使用するのはほとんどの場合良いアイデアではありません。99%の場合、より具体的な型を指定できます。関数の場合は [(x: number) => number](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-type-expressions) など、オブジェクトの場合は `{ x: number, y: number }` を指定できます。型について全く確実な情報がない場合は、[`any`](https://www.typescriptlang.org/docs/handbook/basic-types.html#any) を選択すべきです。型について唯一知られている情報が「何らかのオブジェクトである」という場合は、型 [`object`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type) を使用し、`Object` や `{ [key: string]: any }` を使用しないでください。
+-   `var foo: string | any`:
+    `any` がユニオン型で使用される場合、結果の型は依然として `any` です。そのため、この型注釈の `string` 部分は有用に見えるかもしれませんが、実際には単に `any` を使用するよりも追加の型チェックを提供しません。
+    意図に応じて、受け入れ可能な代替手段は `any`、`string`、または `string | object` などが考えられます。
 
 ### 定義オーナー
 
@@ -386,20 +386,20 @@ DefinitelyTypedのパッケージパブリッシャーは、Definitely Typedの�
 
 DT には「定義オーナー」というコンセプトがあり、特定のモジュールの型の品質を維持したいと考える人々がいます。
 
-- 自分自身をリストに追加すると、誰かがそのパッケージに関するプルリクエストまたは問題を作成したときに通知を受けることができます（GitHub ユーザー名を介して）。
-- あなたのプルリクエストのレビューは、[このリポジトリを管理するボット](https://github.com/DefinitelyTyped/dt-mergebot)にとって重要度が高くなります。
-- DT メンテナーは、安定したエコシステムを確保するために、定義オーナーに信頼を置いていますので、軽率に自分を追加しないでください。
+-   自分自身をリストに追加すると、誰かがそのパッケージに関するプルリクエストまたは問題を作成したときに通知を受けることができます（GitHub ユーザー名を介して）。
+-   あなたのプルリクエストのレビューは、[このリポジトリを管理するボット](https://github.com/DefinitelyTyped/dt-mergebot)にとって重要度が高くなります。
+-   DT メンテナーは、安定したエコシステムを確保するために、定義オーナーに信頼を置いていますので、軽率に自分を追加しないでください。
 
 自分自身を定義オーナーとして追加するには：
 
-- 自分の名前を行の末尾に追加します。例： `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`。
-- または、複数の人がいる場合、複数行にすることもできます。
-  ```typescript
-  // Definitions by: Alice <https://github.com/alice>
-  //                 Bob <https://github.com/bob>
-  //                 Steve <https://github.com/steve>
-  //                 John <https://github.com/john>
-  ```
+-   自分の名前を行の末尾に追加します。例： `// Definitions by: Alice <https://github.com/alice>, Bob <https://github.com/bob>`。
+-   または、複数の人がいる場合、複数行にすることもできます。
+    ```typescript
+    // Definitions by: Alice <https://github.com/alice>
+    //                 Bob <https://github.com/bob>
+    //                 Steve <https://github.com/steve>
+    //                 John <https://github.com/john>
+    ```
 
 型定義のオーナーのリストが、週に1回 [.github/CODEOWNERS](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/.github/CODEOWNERS) に同期されます。このファイルが私たちの信頼の源になります。
 
@@ -479,8 +479,8 @@ npm パッケージは数分で更新されます。もし1時間以上かかっ
 `import foo = require("foo");` 構文を使ってモジュールをインポートするほうが適切でしょう。
 それでもなお `import foo from "foo";` のようなデフォルトインポートを使いたい場合は、2つ選択肢があります:
 
-- モジュールの実行環境で非 ECMAScript モジュール向けの相互運用体系が整っている場合、つまりデフォルトインポートがあなたの環境（ Webpack や SystemJS 、 esm など）で動作する場合は、 [`--allowSyntheticDefaultImports` コンパイラー オプション](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs)が使用できます。
-- TypeScript 側に非 ECMAScript の対応をさせたい場合は、 [`--esModuleInterop` コンパイラー オプション](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-form-commonjs-modules-with---esmoduleinterop)が使用できます（ TypeScript 2.7 以降）。
+-   モジュールの実行環境で非 ECMAScript モジュール向けの相互運用体系が整っている場合、つまりデフォルトインポートがあなたの環境（ Webpack や SystemJS 、 esm など）で動作する場合は、 [`--allowSyntheticDefaultImports` コンパイラー オプション](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-8.html#support-for-default-import-interop-with-systemjs)が使用できます。
+-   TypeScript 側に非 ECMAScript の対応をさせたい場合は、 [`--esModuleInterop` コンパイラー オプション](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-form-commonjs-modules-with---esmoduleinterop)が使用できます（ TypeScript 2.7 以降）。
 
 #### パッケージでは `export =` が使われていますが、デフォルトインポートを使えるようにしたいので、 `export =` を `export default` に変えても良いですか？
 
@@ -502,36 +502,36 @@ npm パッケージでは、モジュールを `node -p 'require("foo")'` でイ
 
 1. `package.json` をパッケージに追加し、次の内容を記述する:
 
-   ```json
-   {
-     "private": true,
-     "types": "index",
-     "typesVersions": {
-       "<=3.6": { "*": ["ts3.6/*"] }
-     }
-   }
-   ```
+    ```json
+    {
+        "private": true,
+        "types": "index",
+        "typesVersions": {
+            "<=3.6": { "*": ["ts3.6/*"] }
+        }
+    }
+    ```
 
 2. 型定義のディレクトリ内に、 `typesVersions` に指定したサブディレクトリ（上の例では `ts3.6/`）を作成する。
    `ts3.6/` が TypeScript 3.6 以下用のディレクトリになるので、既存の型定義とテストをそこにコピーする。
 
-   型定義ファイルのヘッダーは `index.d.ts` のみにあればよいので、 `ts3.6/index.d.ts` からは削除する。
+    型定義ファイルのヘッダーは `index.d.ts` のみにあればよいので、 `ts3.6/index.d.ts` からは削除する。
 
 3. `ts3.6/tsconfig.json` の `baseUrl` ・ `typeRoots` オプションに正しいパスを指定する。次のような値になるはずです:
 
-   ```json
-   {
-     "compilerOptions": {
-       "baseUrl": "../../",
-       "typeRoots": ["../../"]
-     }
-   }
-   ```
+    ```json
+    {
+        "compilerOptions": {
+            "baseUrl": "../../",
+            "typeRoots": ["../../"]
+        }
+    }
+    ```
 
 4. パッケージのルートに戻り、使用したい TypeScript 3.7 の機能を追加する。
    これで、パッケージが使用されるときは、 TypeScript 3.6 以下の場合は `ts3.6/index.d.ts` を、 TypeScript 3.7 以上の場合は `index.d.ts` をそれぞれ読みにいくようになります。
 
-   [bluebird](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f2512c2cf7cdcf9a487d989e288174e49b7839ab/types/bluebird) モジュールを参考にしてください。
+    [bluebird](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f2512c2cf7cdcf9a487d989e288174e49b7839ab/types/bluebird) モジュールを参考にしてください。
 
 #### デフォルトでは TypeScript に存在しない DOM API を追加したいです。
 
@@ -565,13 +565,13 @@ Definitely Typed の各パッケージは npm に公開される際にバージ�
 考えられる原因を、ライブラリ使用者にとって不便に思う順に下記に列挙します<small>（訳注: 一番困るものが一番下）</small>。
 一番下のみが一般的に問題とされます。
 
-- 先述した通り、型定義パッケージのパッチバージョンはライブラリ本体とは無関係です。
-  これにより Definitely Typed 側で、同じメジャー・マイナーバージョン用の型定義を安全に更新することができます。
-- パッケージを新機能で更新したときは、ライブラリ本体のバージョンと合うように、型定義パッケージのバージョン番号を更新してください。
-  JavaScript のパッケージとそれぞれの `@types` パッケージのバージョンが一致することがユーザー側で把握されていれば、 `npm update` は基本的に正常に動作します。
-- 型定義パッケージの更新がライブラリ本体の更新から遅れることはよくあります。これは、ライブラリに新しい機能がリリースされた際に Definitely Typed を更新しているのが、メンテナーではなくライブラリ使用者である場合も多いためです。
-  そのため、面倒見の良いコミュニティメンバーが、新しいリリース用に型定義を更新する PR を送ってくれるまで、数日、数週間、場合によって数か月かかる場合があります。
-  もしこれによってお困りでしたら、「世の中に見たいと思う変化にあなたがなって」あなたがその面倒見の良いコミュニティメンバーになるのはいかがでしょうか？
+-   先述した通り、型定義パッケージのパッチバージョンはライブラリ本体とは無関係です。
+    これにより Definitely Typed 側で、同じメジャー・マイナーバージョン用の型定義を安全に更新することができます。
+-   パッケージを新機能で更新したときは、ライブラリ本体のバージョンと合うように、型定義パッケージのバージョン番号を更新してください。
+    JavaScript のパッケージとそれぞれの `@types` パッケージのバージョンが一致することがユーザー側で把握されていれば、 `npm update` は基本的に正常に動作します。
+-   型定義パッケージの更新がライブラリ本体の更新から遅れることはよくあります。これは、ライブラリに新しい機能がリリースされた際に Definitely Typed を更新しているのが、メンテナーではなくライブラリ使用者である場合も多いためです。
+    そのため、面倒見の良いコミュニティメンバーが、新しいリリース用に型定義を更新する PR を送ってくれるまで、数日、数週間、場合によって数か月かかる場合があります。
+    もしこれによってお困りでしたら、「世の中に見たいと思う変化にあなたがなって」あなたがその面倒見の良いコミュニティメンバーになるのはいかがでしょうか？
 
 :exclamation: ライブラリの型定義を更新する際は、 `index.d.ts` の1行目の `メジャー.マイナー` バージョンを対象のライブラリのバージョンに必ず合わせてください！ :exclamation:
 
@@ -597,14 +597,14 @@ Definitely Typed の各パッケージは npm に公開される際にバージ�
 
 ```json
 {
-  "compilerOptions": {
-    "baseUrl": "../../",
-    "typeRoots": ["../../"],
-    "paths": {
-      "history": ["history/v2"]
-    }
-  },
-  "files": ["index.d.ts", "history-tests.ts"]
+    "compilerOptions": {
+        "baseUrl": "../../",
+        "typeRoots": ["../../"],
+        "paths": {
+            "history": ["history/v2"]
+        }
+    },
+    "files": ["index.d.ts", "history-tests.ts"]
 }
 ```
 
@@ -632,9 +632,9 @@ TypeScript ハンドブックには、[型定義を書くにあたっての一�
 
 ```json
 {
-  "paths": {
-    "@foo/*": ["foo__*"]
-  }
+    "paths": {
+        "@foo/*": ["foo__*"]
+    }
 }
 ```
 

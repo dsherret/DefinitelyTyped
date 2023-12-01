@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/parameterize",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/fyalavuz/node-parameterize#readme"
-  ],
-  "devDependencies": {
-    "@types/parameterize": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Eduardo Turiño",
-      "githubUsername": "eturino"
-    }
-  ]
+    "private": true,
+    "name": "@types/parameterize",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/fyalavuz/node-parameterize#readme"
+    ],
+    "devDependencies": {
+        "@types/parameterize": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Eduardo Turiño",
+            "githubUsername": "eturino"
+        }
+    ]
 }

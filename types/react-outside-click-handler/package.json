@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/react-outside-click-handler",
-  "version": "1.3.9999",
-  "projects": [
-    "https://github.com/airbnb/react-outside-click-handler"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-outside-click-handler": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Ivan Zub",
-      "githubUsername": "zubivan"
+    "private": true,
+    "name": "@types/react-outside-click-handler",
+    "version": "1.3.9999",
+    "projects": [
+        "https://github.com/airbnb/react-outside-click-handler"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "JadowityHerbatnik",
-      "githubUsername": "JadowityHerbatnik"
+    "devDependencies": {
+        "@types/react-outside-click-handler": "workspace:."
     },
-    {
-      "name": "Adam Jones",
-      "githubUsername": "domdomegg"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Ivan Zub",
+            "githubUsername": "zubivan"
+        },
+        {
+            "name": "JadowityHerbatnik",
+            "githubUsername": "JadowityHerbatnik"
+        },
+        {
+            "name": "Adam Jones",
+            "githubUsername": "domdomegg"
+        }
+    ]
 }

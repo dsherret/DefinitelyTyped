@@ -1,12 +1,12 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["es6"],
-    "module": "commonjs",
-    "noEmit": true,
-    "strict": true,
-    "types": []
-  },
-  "files": ["index.d.ts", "react-hyperscript-tests.ts"]
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["es6"],
+        "module": "commonjs",
+        "noEmit": true,
+        "strict": true,
+        "types": []
+    },
+    "files": ["index.d.ts", "react-hyperscript-tests.ts"]
 }

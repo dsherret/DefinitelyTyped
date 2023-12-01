@@ -1,6 +1,6 @@
 {
-  "rules": {
-    "@definitelytyped/strict-export-declare-modifiers": "off",
-    "@typescript-eslint/triple-slash-reference": "off"
-  }
+    "rules": {
+        "@definitelytyped/strict-export-declare-modifiers": "off",
+        "@typescript-eslint/triple-slash-reference": "off"
+    }
 }

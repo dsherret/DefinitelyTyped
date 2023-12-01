@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/promise.allsettled",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/ljharb/promise.allsettled#readme"
-  ],
-  "devDependencies": {
-    "@types/promise.allsettled": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Martin Jurča",
-      "githubUsername": "jurca"
+    "private": true,
+    "name": "@types/promise.allsettled",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/ljharb/promise.allsettled#readme"
+    ],
+    "devDependencies": {
+        "@types/promise.allsettled": "workspace:."
     },
-    {
-      "name": "Elizabeth Lorenz",
-      "githubUsername": "kisaraofpern"
-    },
-    {
-      "name": "Jordan Harband",
-      "githubUsername": "ljharb"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Martin Jurča",
+            "githubUsername": "jurca"
+        },
+        {
+            "name": "Elizabeth Lorenz",
+            "githubUsername": "kisaraofpern"
+        },
+        {
+            "name": "Jordan Harband",
+            "githubUsername": "ljharb"
+        }
+    ]
 }

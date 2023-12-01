@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/angular-translate",
-  "version": "2.19.9999",
-  "projects": [
-    "https://github.com/PascalPrecht/angular-translate"
-  ],
-  "dependencies": {
-    "@types/angular": "*"
-  },
-  "devDependencies": {
-    "@types/angular-translate": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Michel Salib",
-      "githubUsername": "michelsalib"
+    "private": true,
+    "name": "@types/angular-translate",
+    "version": "2.19.9999",
+    "projects": [
+        "https://github.com/PascalPrecht/angular-translate"
+    ],
+    "dependencies": {
+        "@types/angular": "*"
     },
-    {
-      "name": "Gabriel Gil",
-      "githubUsername": "GabrielGil"
+    "devDependencies": {
+        "@types/angular-translate": "workspace:."
     },
-    {
-      "name": "Dmitry Gurovich",
-      "githubUsername": "yrtimiD"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Michel Salib",
+            "githubUsername": "michelsalib"
+        },
+        {
+            "name": "Gabriel Gil",
+            "githubUsername": "GabrielGil"
+        },
+        {
+            "name": "Dmitry Gurovich",
+            "githubUsername": "yrtimiD"
+        }
+    ]
 }

@@ -1,44 +1,44 @@
 {
-  "private": true,
-  "name": "@types/debug",
-  "version": "4.1.9999",
-  "projects": [
-    "https://github.com/debug-js/debug"
-  ],
-  "dependencies": {
-    "@types/ms": "*"
-  },
-  "devDependencies": {
-    "@types/debug": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Seon-Wook Park",
-      "githubUsername": "swook"
+    "private": true,
+    "name": "@types/debug",
+    "version": "4.1.9999",
+    "projects": [
+        "https://github.com/debug-js/debug"
+    ],
+    "dependencies": {
+        "@types/ms": "*"
     },
-    {
-      "name": "Gal Talmor",
-      "githubUsername": "galtalmor"
+    "devDependencies": {
+        "@types/debug": "workspace:."
     },
-    {
-      "name": "John McLaughlin",
-      "githubUsername": "zamb3zi"
-    },
-    {
-      "name": "Brasten Sager",
-      "githubUsername": "brasten"
-    },
-    {
-      "name": "Nicolas Penin",
-      "githubUsername": "npenin"
-    },
-    {
-      "name": "Kristian Brünn",
-      "githubUsername": "kristianmitk"
-    },
-    {
-      "name": "Caleb Gregory",
-      "githubUsername": "calebgregory"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Seon-Wook Park",
+            "githubUsername": "swook"
+        },
+        {
+            "name": "Gal Talmor",
+            "githubUsername": "galtalmor"
+        },
+        {
+            "name": "John McLaughlin",
+            "githubUsername": "zamb3zi"
+        },
+        {
+            "name": "Brasten Sager",
+            "githubUsername": "brasten"
+        },
+        {
+            "name": "Nicolas Penin",
+            "githubUsername": "npenin"
+        },
+        {
+            "name": "Kristian Brünn",
+            "githubUsername": "kristianmitk"
+        },
+        {
+            "name": "Caleb Gregory",
+            "githubUsername": "calebgregory"
+        }
+    ]
 }

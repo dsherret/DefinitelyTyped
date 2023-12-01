@@ -1,6 +1,6 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "no-unnecessary-type-assertion": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "no-unnecessary-type-assertion": false
+    }
 }

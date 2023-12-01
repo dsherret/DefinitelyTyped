@@ -1,36 +1,36 @@
 {
-  "private": true,
-  "name": "@types/ember-feature-flags",
-  "version": "3.0.9999",
-  "projects": [
-    "https://github.com/kategengler/ember-feature-flags#readme"
-  ],
-  "dependencies": {
-    "@types/ember": "^2"
-  },
-  "devDependencies": {
-    "@types/ember-feature-flags": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Frank Tan",
-      "githubUsername": "tansongyang"
+    "private": true,
+    "name": "@types/ember-feature-flags",
+    "version": "3.0.9999",
+    "projects": [
+        "https://github.com/kategengler/ember-feature-flags#readme"
+    ],
+    "dependencies": {
+        "@types/ember": "^2"
     },
-    {
-      "name": "Mike North",
-      "githubUsername": "mike-north"
+    "devDependencies": {
+        "@types/ember-feature-flags": "workspace:."
     },
-    {
-      "name": "Chris Krycho",
-      "githubUsername": "chriskrycho"
-    },
-    {
-      "name": "James C. Davis",
-      "githubUsername": "jamescdavis"
-    },
-    {
-      "name": "Dan Freeman",
-      "githubUsername": "dfreeman"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Frank Tan",
+            "githubUsername": "tansongyang"
+        },
+        {
+            "name": "Mike North",
+            "githubUsername": "mike-north"
+        },
+        {
+            "name": "Chris Krycho",
+            "githubUsername": "chriskrycho"
+        },
+        {
+            "name": "James C. Davis",
+            "githubUsername": "jamescdavis"
+        },
+        {
+            "name": "Dan Freeman",
+            "githubUsername": "dfreeman"
+        }
+    ]
 }

@@ -1,37 +1,37 @@
 {
-  "private": true,
-  "name": "@types/intercom-client",
-  "version": "2.11.9999",
-  "projects": [
-    "https://github.com/intercom/intercom-node"
-  ],
-  "dependencies": {
-    "@types/node": "*",
-    "@types/request": "*"
-  },
-  "devDependencies": {
-    "@types/intercom-client": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Jinesh Shah",
-      "githubUsername": "jineshshah36"
+    "private": true,
+    "name": "@types/intercom-client",
+    "version": "2.11.9999",
+    "projects": [
+        "https://github.com/intercom/intercom-node"
+    ],
+    "dependencies": {
+        "@types/node": "*",
+        "@types/request": "*"
     },
-    {
-      "name": "Josef Hornych",
-      "githubUsername": "peping"
+    "devDependencies": {
+        "@types/intercom-client": "workspace:."
     },
-    {
-      "name": "Mikhail Monchak",
-      "githubUsername": "mikhail-monchak"
-    },
-    {
-      "name": "Chris Doe",
-      "githubUsername": "cdoe"
-    },
-    {
-      "name": "Kroustille",
-      "githubUsername": "kroustille"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Jinesh Shah",
+            "githubUsername": "jineshshah36"
+        },
+        {
+            "name": "Josef Hornych",
+            "githubUsername": "peping"
+        },
+        {
+            "name": "Mikhail Monchak",
+            "githubUsername": "mikhail-monchak"
+        },
+        {
+            "name": "Chris Doe",
+            "githubUsername": "cdoe"
+        },
+        {
+            "name": "Kroustille",
+            "githubUsername": "kroustille"
+        }
+    ]
 }

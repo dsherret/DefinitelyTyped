@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/oidc-token-manager",
-  "version": "0.0.9999",
-  "projects": [
-    "https://github.com/IdentityModel/oidc-token-manager"
-  ],
-  "devDependencies": {
-    "@types/oidc-token-manager": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Sławomir Rosiek",
-      "githubUsername": "rosieks"
-    }
-  ]
+    "private": true,
+    "name": "@types/oidc-token-manager",
+    "version": "0.0.9999",
+    "projects": [
+        "https://github.com/IdentityModel/oidc-token-manager"
+    ],
+    "devDependencies": {
+        "@types/oidc-token-manager": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Sławomir Rosiek",
+            "githubUsername": "rosieks"
+        }
+    ]
 }

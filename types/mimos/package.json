@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/mimos",
-  "version": "3.0.9999",
-  "projects": [
-    "https://github.com/hapijs/mimos"
-  ],
-  "dependencies": {
-    "@types/mime-db": "*"
-  },
-  "devDependencies": {
-    "@types/mimos": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "AJP",
-      "githubUsername": "AJamesPhillips"
+    "private": true,
+    "name": "@types/mimos",
+    "version": "3.0.9999",
+    "projects": [
+        "https://github.com/hapijs/mimos"
+    ],
+    "dependencies": {
+        "@types/mime-db": "*"
     },
-    {
-      "name": "Linus Unnebäck",
-      "githubUsername": "LinusU"
-    }
-  ]
+    "devDependencies": {
+        "@types/mimos": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "AJP",
+            "githubUsername": "AJamesPhillips"
+        },
+        {
+            "name": "Linus Unnebäck",
+            "githubUsername": "LinusU"
+        }
+    ]
 }

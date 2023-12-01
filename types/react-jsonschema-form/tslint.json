@@ -1,7 +1,7 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "array-type": false,
-    "no-void-expression": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "array-type": false,
+        "no-void-expression": false
+    }
 }

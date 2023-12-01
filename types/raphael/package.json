@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/raphael",
-  "version": "2.3.9999",
-  "projects": [
-    "http://raphaeljs.com"
-  ],
-  "devDependencies": {
-    "@types/raphael": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "CheCoxshall",
-      "githubUsername": "CheCoxshall"
+    "private": true,
+    "name": "@types/raphael",
+    "version": "2.3.9999",
+    "projects": [
+        "http://raphaeljs.com"
+    ],
+    "devDependencies": {
+        "@types/raphael": "workspace:."
     },
-    {
-      "name": "blutorange",
-      "githubUsername": "blutorange"
-    }
-  ]
+    "owners": [
+        {
+            "name": "CheCoxshall",
+            "githubUsername": "CheCoxshall"
+        },
+        {
+            "name": "blutorange",
+            "githubUsername": "blutorange"
+        }
+    ]
 }

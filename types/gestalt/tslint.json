@@ -1,6 +1,6 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "no-redundant-undefined": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "no-redundant-undefined": false
+    }
 }

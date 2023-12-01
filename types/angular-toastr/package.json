@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/angular-toastr",
-  "version": "1.6.9999",
-  "projects": [
-    "https://github.com/Foxandxss/angular-toastr"
-  ],
-  "dependencies": {
-    "@types/angular": "*"
-  },
-  "devDependencies": {
-    "@types/angular-toastr": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Niko Kovačič",
-      "githubUsername": "nkovacic"
+    "private": true,
+    "name": "@types/angular-toastr",
+    "version": "1.6.9999",
+    "projects": [
+        "https://github.com/Foxandxss/angular-toastr"
+    ],
+    "dependencies": {
+        "@types/angular": "*"
     },
-    {
-      "name": "Troy McKinnon",
-      "githubUsername": "trodi"
-    }
-  ]
+    "devDependencies": {
+        "@types/angular-toastr": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Niko Kovačič",
+            "githubUsername": "nkovacic"
+        },
+        {
+            "name": "Troy McKinnon",
+            "githubUsername": "trodi"
+        }
+    ]
 }

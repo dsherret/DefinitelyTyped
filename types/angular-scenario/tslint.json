@@ -1,7 +1,7 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "no-unnecessary-qualifier": false,
-    "unified-signatures": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "no-unnecessary-qualifier": false,
+        "unified-signatures": false
+    }
 }

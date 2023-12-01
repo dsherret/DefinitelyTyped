@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/nginstack__orm",
-  "version": "71.0.9999",
-  "projects": [
-    "https://dev.azure.com/nginstack/nginstack"
-  ],
-  "dependencies": {
-    "@types/nginstack__engine": "*"
-  },
-  "devDependencies": {
-    "@types/nginstack__orm": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Renato Ribeiro",
-      "githubUsername": "Henato"
+    "private": true,
+    "name": "@types/nginstack__orm",
+    "version": "71.0.9999",
+    "projects": [
+        "https://dev.azure.com/nginstack/nginstack"
+    ],
+    "dependencies": {
+        "@types/nginstack__engine": "*"
     },
-    {
-      "name": "Paulo Moreno",
-      "githubUsername": "paulocmoreno"
+    "devDependencies": {
+        "@types/nginstack__orm": "workspace:."
     },
-    {
-      "name": "Ricardo Cavalcante",
-      "githubUsername": "oficial"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Renato Ribeiro",
+            "githubUsername": "Henato"
+        },
+        {
+            "name": "Paulo Moreno",
+            "githubUsername": "paulocmoreno"
+        },
+        {
+            "name": "Ricardo Cavalcante",
+            "githubUsername": "oficial"
+        }
+    ]
 }

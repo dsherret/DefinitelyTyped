@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/html-tableify",
-  "version": "0.0.9999",
-  "projects": [
-    "https://github.com/LingyuCoder/html-tableify#readme"
-  ],
-  "devDependencies": {
-    "@types/html-tableify": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Ciarán Ingle",
-      "githubUsername": "inglec-arista"
-    }
-  ]
+    "private": true,
+    "name": "@types/html-tableify",
+    "version": "0.0.9999",
+    "projects": [
+        "https://github.com/LingyuCoder/html-tableify#readme"
+    ],
+    "devDependencies": {
+        "@types/html-tableify": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Ciarán Ingle",
+            "githubUsername": "inglec-arista"
+        }
+    ]
 }

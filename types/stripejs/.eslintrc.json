@@ -1,6 +1,6 @@
 {
-  "rules": {
-    "@definitelytyped/no-single-element-tuple-type": "off",
-    "@typescript-eslint/naming-convention": "off"
-  }
+    "rules": {
+        "@definitelytyped/no-single-element-tuple-type": "off",
+        "@typescript-eslint/naming-convention": "off"
+    }
 }

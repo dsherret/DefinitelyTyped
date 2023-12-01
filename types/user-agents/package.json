@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/user-agents",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/intoli/user-agents#readme"
-  ],
-  "devDependencies": {
-    "@types/user-agents": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Nick Chursin",
-      "githubUsername": "unickq"
+    "private": true,
+    "name": "@types/user-agents",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/intoli/user-agents#readme"
+    ],
+    "devDependencies": {
+        "@types/user-agents": "workspace:."
     },
-    {
-      "name": "Jan Peer Stöcklmair",
-      "githubUsername": "JPeer264"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Nick Chursin",
+            "githubUsername": "unickq"
+        },
+        {
+            "name": "Jan Peer Stöcklmair",
+            "githubUsername": "JPeer264"
+        }
+    ]
 }

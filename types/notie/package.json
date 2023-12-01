@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/notie",
-  "version": "4.3.9999",
-  "projects": [
-    "https://github.com/jaredreich/notie"
-  ],
-  "devDependencies": {
-    "@types/notie": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Mateus Demboski",
-      "githubUsername": "mateusdemboski"
+    "private": true,
+    "name": "@types/notie",
+    "version": "4.3.9999",
+    "projects": [
+        "https://github.com/jaredreich/notie"
+    ],
+    "devDependencies": {
+        "@types/notie": "workspace:."
     },
-    {
-      "name": "Adam Thompson-Sharpe",
-      "githubUsername": "MysteryBlokHed"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Mateus Demboski",
+            "githubUsername": "mateusdemboski"
+        },
+        {
+            "name": "Adam Thompson-Sharpe",
+            "githubUsername": "MysteryBlokHed"
+        }
+    ]
 }

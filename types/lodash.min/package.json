@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/lodash.min",
-  "version": "4.0.9999",
-  "projects": [
-    "https://lodash.com"
-  ],
-  "dependencies": {
-    "@types/lodash": "*"
-  },
-  "devDependencies": {
-    "@types/lodash.min": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Brian Zengel",
-      "githubUsername": "bczengel"
+    "private": true,
+    "name": "@types/lodash.min",
+    "version": "4.0.9999",
+    "projects": [
+        "https://lodash.com"
+    ],
+    "dependencies": {
+        "@types/lodash": "*"
     },
-    {
-      "name": "Ilya Mochalov",
-      "githubUsername": "chrootsu"
-    }
-  ]
+    "devDependencies": {
+        "@types/lodash.min": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Brian Zengel",
+            "githubUsername": "bczengel"
+        },
+        {
+            "name": "Ilya Mochalov",
+            "githubUsername": "chrootsu"
+        }
+    ]
 }

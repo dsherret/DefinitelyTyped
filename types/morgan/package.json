@@ -1,29 +1,29 @@
 {
-  "private": true,
-  "name": "@types/morgan",
-  "version": "1.9.9999",
-  "projects": [
-    "https://github.com/expressjs/morgan"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/express": "*",
-    "@types/morgan": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "James Roland Cabresos",
-      "githubUsername": "staticfunction"
+    "private": true,
+    "name": "@types/morgan",
+    "version": "1.9.9999",
+    "projects": [
+        "https://github.com/expressjs/morgan"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Paolo Scanferla",
-      "githubUsername": "pscanf"
+    "devDependencies": {
+        "@types/express": "*",
+        "@types/morgan": "workspace:."
     },
-    {
-      "name": "Piotr Błażejewicz",
-      "githubUsername": "peterblazejewicz"
-    }
-  ]
+    "owners": [
+        {
+            "name": "James Roland Cabresos",
+            "githubUsername": "staticfunction"
+        },
+        {
+            "name": "Paolo Scanferla",
+            "githubUsername": "pscanf"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "githubUsername": "peterblazejewicz"
+        }
+    ]
 }

@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/iltorb",
-  "version": "2.3.9999",
-  "projects": [
-    "https://github.com/MayhemYDG/iltorb"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/iltorb": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Arturas Molcanovas",
-      "githubUsername": "Alorel"
+    "private": true,
+    "name": "@types/iltorb",
+    "version": "2.3.9999",
+    "projects": [
+        "https://github.com/MayhemYDG/iltorb"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Francis Gulotta",
-      "githubUsername": "reconbot"
-    }
-  ]
+    "devDependencies": {
+        "@types/iltorb": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Arturas Molcanovas",
+            "githubUsername": "Alorel"
+        },
+        {
+            "name": "Francis Gulotta",
+            "githubUsername": "reconbot"
+        }
+    ]
 }

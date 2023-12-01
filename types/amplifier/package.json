@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/amplifier",
-  "version": "1.1.9999",
-  "projects": [
-    "https://github.com/robertohuertasm/amplifier"
-  ],
-  "dependencies": {
-    "@types/jquery": "*"
-  },
-  "devDependencies": {
-    "@types/amplifier": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Jonas Eriksson",
-      "githubUsername": "joeriks"
+    "private": true,
+    "name": "@types/amplifier",
+    "version": "1.1.9999",
+    "projects": [
+        "https://github.com/robertohuertasm/amplifier"
+    ],
+    "dependencies": {
+        "@types/jquery": "*"
     },
-    {
-      "name": "Alexandre Paré",
-      "githubUsername": "superheri"
-    }
-  ]
+    "devDependencies": {
+        "@types/amplifier": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Jonas Eriksson",
+            "githubUsername": "joeriks"
+        },
+        {
+            "name": "Alexandre Paré",
+            "githubUsername": "superheri"
+        }
+    ]
 }

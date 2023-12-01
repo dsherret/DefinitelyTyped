@@ -1,7 +1,7 @@
 {
-  "indentWidth": 4,
-  // NOTE: if extending this list, also update settings.template.json.
-  "plugins": [
-    "../dprint-plugin-prettier/target/release/plugin.json@adce8a3333b70160764d5a66d0693acca453ef33c56d8651324bc5e832ed439b"
-  ]
+    "indentWidth": 4,
+    // NOTE: if extending this list, also update settings.template.json.
+    "plugins": [
+        "../dprint-plugin-prettier/target/release/plugin.json@adce8a3333b70160764d5a66d0693acca453ef33c56d8651324bc5e832ed439b"
+    ]
 }

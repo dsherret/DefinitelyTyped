@@ -1,8 +1,8 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "jsdoc-format": false,
-    "no-void-expression": false,
-    "unified-signatures": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "jsdoc-format": false,
+        "no-void-expression": false,
+        "unified-signatures": false
+    }
 }

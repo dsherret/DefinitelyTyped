@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/jquery.pnotify",
-  "version": "3.0.9999",
-  "projects": [
-    "https://github.com/sciactive/pnotify"
-  ],
-  "dependencies": {
-    "@types/jquery": "*"
-  },
-  "devDependencies": {
-    "@types/jquery.pnotify": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "David Sichau",
-      "githubUsername": "DavidSichau"
+    "private": true,
+    "name": "@types/jquery.pnotify",
+    "version": "3.0.9999",
+    "projects": [
+        "https://github.com/sciactive/pnotify"
+    ],
+    "dependencies": {
+        "@types/jquery": "*"
     },
-    {
-      "name": "Robin Maenhaut",
-      "githubUsername": "FUNExtreme"
-    }
-  ]
+    "devDependencies": {
+        "@types/jquery.pnotify": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "David Sichau",
+            "githubUsername": "DavidSichau"
+        },
+        {
+            "name": "Robin Maenhaut",
+            "githubUsername": "FUNExtreme"
+        }
+    ]
 }

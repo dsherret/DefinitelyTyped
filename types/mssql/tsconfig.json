@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "lib": ["es6"],
-    "noImplicitAny": false,
-    "noImplicitThis": true,
-    "strictNullChecks": false,
-    "strictFunctionTypes": true,
-    "types": [],
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "files": ["index.d.ts", "mssql-tests.ts"]
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "lib": ["es6"],
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "strictNullChecks": false,
+        "strictFunctionTypes": true,
+        "types": [],
+        "noEmit": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "files": ["index.d.ts", "mssql-tests.ts"]
 }

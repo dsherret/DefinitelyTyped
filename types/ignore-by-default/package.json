@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/ignore-by-default",
-  "version": "0.0.9999",
-  "projects": [
-    "https://github.com/novemberborn/ignore-by-default"
-  ],
-  "devDependencies": {
-    "@types/ignore-by-default": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Jakub Mrożek",
-      "githubUsername": "mrozio13pl"
-    }
-  ]
+    "private": true,
+    "name": "@types/ignore-by-default",
+    "version": "0.0.9999",
+    "projects": [
+        "https://github.com/novemberborn/ignore-by-default"
+    ],
+    "devDependencies": {
+        "@types/ignore-by-default": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Jakub Mrożek",
+            "githubUsername": "mrozio13pl"
+        }
+    ]
 }

@@ -13,11 +13,11 @@ you will be able to use them directly:
 
 ```typescript
 if (window.trustedTypes && trustedTypes.createPolicy) {
-  const policy = trustedTypes.createPolicy("my-policy", {
-    createHTML: (val) => val.replace(/\</g, "&lt;"),
-  });
+    const policy = trustedTypes.createPolicy("my-policy", {
+        createHTML: (val) => val.replace(/\</g, "&lt;"),
+    });
 
-  const safe: TrustedHTML = policy.createHTML("<h1>Hello</h1>");
+    const safe: TrustedHTML = policy.createHTML("<h1>Hello</h1>");
 }
 ```
 

@@ -1,33 +1,33 @@
 {
-  "private": true,
-  "name": "@types/requestretry",
-  "version": "1.13.9999",
-  "projects": [
-    "https://github.com/FGRibreau/node-request-retry"
-  ],
-  "dependencies": {
-    "@types/node": "*",
-    "@types/request": "*"
-  },
-  "devDependencies": {
-    "@types/requestretry": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "    Eric Byers",
-      "githubUsername": "EricByers"
+    "private": true,
+    "name": "@types/requestretry",
+    "version": "1.13.9999",
+    "projects": [
+        "https://github.com/FGRibreau/node-request-retry"
+    ],
+    "dependencies": {
+        "@types/node": "*",
+        "@types/request": "*"
     },
-    {
-      "name": "Andrew Throener",
-      "githubUsername": "trainerbill"
+    "devDependencies": {
+        "@types/requestretry": "workspace:."
     },
-    {
-      "name": "Aniket Patel",
-      "githubUsername": "baaka-ani"
-    },
-    {
-      "name": "Aram Elchyan",
-      "githubUsername": "elch-yan"
-    }
-  ]
+    "owners": [
+        {
+            "name": "    Eric Byers",
+            "githubUsername": "EricByers"
+        },
+        {
+            "name": "Andrew Throener",
+            "githubUsername": "trainerbill"
+        },
+        {
+            "name": "Aniket Patel",
+            "githubUsername": "baaka-ani"
+        },
+        {
+            "name": "Aram Elchyan",
+            "githubUsername": "elch-yan"
+        }
+    ]
 }

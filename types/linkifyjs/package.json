@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/linkifyjs",
-  "version": "2.1.9999",
-  "projects": [
-    "https://github.com/SoapBox/linkifyjs#readme"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/linkifyjs": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Gareth Jones",
-      "githubUsername": "g-rath"
+    "private": true,
+    "name": "@types/linkifyjs",
+    "version": "2.1.9999",
+    "projects": [
+        "https://github.com/SoapBox/linkifyjs#readme"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Sean Zhu",
-      "githubUsername": "szhu"
+    "devDependencies": {
+        "@types/linkifyjs": "workspace:."
     },
-    {
-      "name": "Ovidiu Bute",
-      "githubUsername": "ovidiubute"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Gareth Jones",
+            "githubUsername": "g-rath"
+        },
+        {
+            "name": "Sean Zhu",
+            "githubUsername": "szhu"
+        },
+        {
+            "name": "Ovidiu Bute",
+            "githubUsername": "ovidiubute"
+        }
+    ]
 }

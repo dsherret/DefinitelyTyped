@@ -1,8 +1,8 @@
 {
-  "rules": {
-    "@definitelytyped/prefer-declare-function": "off",
-    "@definitelytyped/no-unnecessary-generics": "off",
-    "@definitelytyped/strict-export-declare-modifiers": "off",
-    "@typescript-eslint/consistent-type-definitions": "off"
-  }
+    "rules": {
+        "@definitelytyped/prefer-declare-function": "off",
+        "@definitelytyped/no-unnecessary-generics": "off",
+        "@definitelytyped/strict-export-declare-modifiers": "off",
+        "@typescript-eslint/consistent-type-definitions": "off"
+    }
 }

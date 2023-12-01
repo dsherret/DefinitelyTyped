@@ -1,11 +1,12 @@
 # Meteor Type Definitions
 
-## IMPORTANT: Meteor Built-in types 
+## IMPORTANT: Meteor Built-in types
+
 Starting [v2.8.1](https://docs.meteor.com/changelog.html#v28120221114) Meteor now offers its own types thanks to [zodern:types](https://github.com/zodern/meteor-types), see [migration steps](https://docs.meteor.com/changelog.html#migrationsteps-5) for more information.
 
 ## Description
 
-These are the definitions for version 2.6 of Meteor.  These definitions were long ago (Meteor 1.x days) generated from the same [Meteor data.js file](https://github.com/meteor/meteor/blob/devel/docs/client/data.js) that is used to generate the official [Meteor docs](http://docs.meteor.com/) but are now updated manually.
+These are the definitions for version 2.6 of Meteor. These definitions were long ago (Meteor 1.x days) generated from the same [Meteor data.js file](https://github.com/meteor/meteor/blob/devel/docs/client/data.js) that is used to generate the official [Meteor docs](http://docs.meteor.com/) but are now updated manually.
 
 ## Meteor `typescript` package
 
@@ -17,20 +18,19 @@ From within any Meteor application that is version 1.8.2 or later, install this 
 
 There's also a [community package](https://github.com/Meteor-Community-Packages/meteor-typescript/) that's a continuation of `barbatus:typescript`.
 
-
-##  TypeScript/Meteor coding style
+## TypeScript/Meteor coding style
 
 ### References
 
-Meteor code can run on the client and the server, for this reason you should try to stay away from referencing *file.ts* directly: you may get unexpected results.
+Meteor code can run on the client and the server, for this reason you should try to stay away from referencing _file.ts_ directly: you may get unexpected results.
 
-Rather generate a *file.d.ts* using `tsc --declaration file.ts`, and reference it in your file.
+Rather generate a _file.d.ts_ using `tsc --declaration file.ts`, and reference it in your file.
 
 Compilation will be much faster and code will be cleaner - it's always better to split definition from implementation anyways.
 
 ### Templates
 
-With the exception of the **body** and **head** templates, Meteor's Template dot notation cannot be used (ie. *Template.mytemplate*). Thanks to Typescript static typing checks, you will need to use the *bracket notation* to access the Template.
+With the exception of the **body** and **head** templates, Meteor's Template dot notation cannot be used (ie. _Template.mytemplate_). Thanks to Typescript static typing checks, you will need to use the _bracket notation_ to access the Template.
 
 ```js
 Template['myTemplateName'].helpers({
@@ -45,17 +45,17 @@ Template['myTemplateName'].onRendered(function ( ) { ... });
 The same is true for `Meteor.settings`:
 
 ```ts
-Meteor.settings.public['<some config>']
+Meteor.settings.public["<some config>"];
 ```
 
 ### Form fields
 
 Form fields typically need to be cast to `<HTMLInputElement>`. For instance to read a form field value, use `(<HTMLInputElement>evt.target).value`.
 
-
 ### Global variables
 
 Preface any global variable declarations with a TypeScript `declare var` statement (or place the statement in a definition file):
+
 ```ts
 declare var NavbarHelpers;
 NavbarHelpers = {};
@@ -64,7 +64,7 @@ NavbarHelpers.someMethod = function() {...}
 
 ### Collections
 
-The majority of extra work required to use TypeScript with Meteor is creating and maintaining the collection interfaces.  However, doing so also provides the additional benefit of succinctly documenting collection schema definitions (that are actually enforced).
+The majority of extra work required to use TypeScript with Meteor is creating and maintaining the collection interfaces. However, doing so also provides the additional benefit of succinctly documenting collection schema definitions (that are actually enforced).
 
 To define collections, you will need to create an interface representing the collection and then declare a Collection type variable with that interface type (as a generic):
 

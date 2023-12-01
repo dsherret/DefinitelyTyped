@@ -1,6 +1,6 @@
 {
-  "extends": "@definitelytyped/dtslint/dt.json",
-  "rules": {
-    "no-unnecessary-callback-wrapper": false
-  }
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "no-unnecessary-callback-wrapper": false
+    }
 }

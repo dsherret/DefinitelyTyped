@@ -1,14 +1,14 @@
 {
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "noEmit": true,
-    "types": [],
-    "lib": ["es6", "dom"]
-  },
-  "files": ["nise-tests.ts", "index.d.ts"]
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "noEmit": true,
+        "types": [],
+        "lib": ["es6", "dom"]
+    },
+    "files": ["nise-tests.ts", "index.d.ts"]
 }

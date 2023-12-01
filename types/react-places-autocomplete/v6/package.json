@@ -1,33 +1,33 @@
 {
-  "private": true,
-  "name": "@types/react-places-autocomplete",
-  "version": "6.1.9999",
-  "projects": [
-    "https://github.com/hibiken/react-places-autocomplete/"
-  ],
-  "dependencies": {
-    "@types/google.maps": "*",
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-places-autocomplete": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Guilherme Hübner",
-      "githubUsername": "guilhermehubner"
+    "private": true,
+    "name": "@types/react-places-autocomplete",
+    "version": "6.1.9999",
+    "projects": [
+        "https://github.com/hibiken/react-places-autocomplete/"
+    ],
+    "dependencies": {
+        "@types/google.maps": "*",
+        "@types/react": "*"
     },
-    {
-      "name": "Andrew Makarov",
-      "githubUsername": "r3nya"
+    "devDependencies": {
+        "@types/react-places-autocomplete": "workspace:."
     },
-    {
-      "name": "Nokky Goren",
-      "githubUsername": "ApeNox"
-    },
-    {
-      "name": "Aziz Khambati",
-      "githubUsername": "azizhk"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Guilherme Hübner",
+            "githubUsername": "guilhermehubner"
+        },
+        {
+            "name": "Andrew Makarov",
+            "githubUsername": "r3nya"
+        },
+        {
+            "name": "Nokky Goren",
+            "githubUsername": "ApeNox"
+        },
+        {
+            "name": "Aziz Khambati",
+            "githubUsername": "azizhk"
+        }
+    ]
 }

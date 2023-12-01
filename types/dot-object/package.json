@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/dot-object",
-  "version": "2.1.9999",
-  "projects": [
-    "https://github.com/rhalff/dot-object"
-  ],
-  "devDependencies": {
-    "@types/dot-object": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Niko Kovačič",
-      "githubUsername": "nkovacic"
+    "private": true,
+    "name": "@types/dot-object",
+    "version": "2.1.9999",
+    "projects": [
+        "https://github.com/rhalff/dot-object"
+    ],
+    "devDependencies": {
+        "@types/dot-object": "workspace:."
     },
-    {
-      "name": "Rico Sandyca",
-      "githubUsername": "ricosandyca"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Niko Kovačič",
+            "githubUsername": "nkovacic"
+        },
+        {
+            "name": "Rico Sandyca",
+            "githubUsername": "ricosandyca"
+        }
+    ]
 }

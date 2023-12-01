@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/graphviz",
-  "version": "0.0.9999",
-  "projects": [
-    "https://github.com/glejeune/node-graphviz"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/graphviz": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Matt Frantz",
-      "githubUsername": "mhfrantz"
+    "private": true,
+    "name": "@types/graphviz",
+    "version": "0.0.9999",
+    "projects": [
+        "https://github.com/glejeune/node-graphviz"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Kamontat Chantrachirathumrong",
-      "githubUsername": "kamontat"
+    "devDependencies": {
+        "@types/graphviz": "workspace:."
     },
-    {
-      "name": "Kirill Ivanov",
-      "githubUsername": "koorya"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Matt Frantz",
+            "githubUsername": "mhfrantz"
+        },
+        {
+            "name": "Kamontat Chantrachirathumrong",
+            "githubUsername": "kamontat"
+        },
+        {
+            "name": "Kirill Ivanov",
+            "githubUsername": "koorya"
+        }
+    ]
 }

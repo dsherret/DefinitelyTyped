@@ -28,9 +28,9 @@ function example(keybind: AtomKeymap.KeyBinding) {}
 // <<filename>>.d.ts
 
 declare namespace AtomKeymap {
-  interface KeymapManager {
-    partialMatchTimeout: number;
-  }
+    interface KeymapManager {
+        partialMatchTimeout: number;
+    }
 }
 ```
 

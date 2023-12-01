@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/bootstrap-notify",
-  "version": "3.1.9999",
-  "projects": [
-    "http://bootstrap-notify.remabledesigns.com/"
-  ],
-  "dependencies": {
-    "@types/jquery": "*"
-  },
-  "devDependencies": {
-    "@types/bootstrap-notify": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Blake Niemyjski",
-      "githubUsername": "niemyjski"
+    "private": true,
+    "name": "@types/bootstrap-notify",
+    "version": "3.1.9999",
+    "projects": [
+        "http://bootstrap-notify.remabledesigns.com/"
+    ],
+    "dependencies": {
+        "@types/jquery": "*"
     },
-    {
-      "name": "Robert McIntosh",
-      "githubUsername": "mouse0270"
+    "devDependencies": {
+        "@types/bootstrap-notify": "workspace:."
     },
-    {
-      "name": "Robert Voica",
-      "githubUsername": "robert-voica"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Blake Niemyjski",
+            "githubUsername": "niemyjski"
+        },
+        {
+            "name": "Robert McIntosh",
+            "githubUsername": "mouse0270"
+        },
+        {
+            "name": "Robert Voica",
+            "githubUsername": "robert-voica"
+        }
+    ]
 }

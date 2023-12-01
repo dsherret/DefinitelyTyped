@@ -1,41 +1,41 @@
 {
-  "private": true,
-  "name": "@types/amqplib",
-  "version": "0.10.9999",
-  "projects": [
-    "https://github.com/squaremo/amqp.node",
-    "http://squaremo.github.io/amqp.node"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/amqplib": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Michael Nahkies",
-      "githubUsername": "mnahkies"
+    "private": true,
+    "name": "@types/amqplib",
+    "version": "0.10.9999",
+    "projects": [
+        "https://github.com/squaremo/amqp.node",
+        "http://squaremo.github.io/amqp.node"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Ab Reitsma",
-      "githubUsername": "abreits"
+    "devDependencies": {
+        "@types/amqplib": "workspace:."
     },
-    {
-      "name": "Nicolás Fantone",
-      "githubUsername": "nfantone"
-    },
-    {
-      "name": "Nick Zelei",
-      "githubUsername": "nickzelei"
-    },
-    {
-      "name": "Vincenzo Chianese",
-      "githubUsername": "XVincentX"
-    },
-    {
-      "name": "Seonggwon Yoon",
-      "githubUsername": "seonggwonyoon"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Michael Nahkies",
+            "githubUsername": "mnahkies"
+        },
+        {
+            "name": "Ab Reitsma",
+            "githubUsername": "abreits"
+        },
+        {
+            "name": "Nicolás Fantone",
+            "githubUsername": "nfantone"
+        },
+        {
+            "name": "Nick Zelei",
+            "githubUsername": "nickzelei"
+        },
+        {
+            "name": "Vincenzo Chianese",
+            "githubUsername": "XVincentX"
+        },
+        {
+            "name": "Seonggwon Yoon",
+            "githubUsername": "seonggwonyoon"
+        }
+    ]
 }

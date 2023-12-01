@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/pako",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/nodeca/pako"
-  ],
-  "devDependencies": {
-    "@types/pako": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Caleb Eggensperger",
-      "githubUsername": "calebegg"
+    "private": true,
+    "name": "@types/pako",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/nodeca/pako"
+    ],
+    "devDependencies": {
+        "@types/pako": "workspace:."
     },
-    {
-      "name": "Muhammet Öztürk",
-      "githubUsername": "hlthi"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Caleb Eggensperger",
+            "githubUsername": "calebegg"
+        },
+        {
+            "name": "Muhammet Öztürk",
+            "githubUsername": "hlthi"
+        }
+    ]
 }

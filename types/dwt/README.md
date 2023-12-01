@@ -12,9 +12,9 @@ Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree
 
 ### Additional Details
 
-- Last updated: Wed, 08 Jul 2020 20:03:51 GMT
-- Dependencies: none
-- Global values: none
+-   Last updated: Wed, 08 Jul 2020 20:03:51 GMT
+-   Dependencies: none
+-   Global values: none
 
 # Credits
 

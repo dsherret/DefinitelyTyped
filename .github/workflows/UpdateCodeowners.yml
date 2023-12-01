@@ -5,40 +5,40 @@ name: Update CODEOWNERs
 
 # For production
 on:
-  schedule:
-    # https://crontab.guru/#5_8_*_*_1
-    - cron: "5 8 * * 1"
-  workflow_dispatch:
+    schedule:
+        # https://crontab.guru/#5_8_*_*_1
+        - cron: "5 8 * * 1"
+    workflow_dispatch:
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  update:
-    permissions:
-      contents: write # for Git to git push
-    runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    update:
+        permissions:
+            contents: write # for Git to git push
+        runs-on: ubuntu-latest
+        if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - uses: actions/setup-node@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          run_install: |
-            - args: [--filter, ., --filter, '{./scripts}...']
+            - uses: actions/setup-node@v4
+            - uses: pnpm/action-setup@v2
+              with:
+                  run_install: |
+                      - args: [--filter, ., --filter, '{./scripts}...']
 
-      - run: git config --global user.email "typescriptbot@microsoft.com"
-      - run: git config --global user.name "TypeScript Bot"
+            - run: git config --global user.email "typescriptbot@microsoft.com"
+            - run: git config --global user.name "TypeScript Bot"
 
-      - run: pnpm run update-codeowners
+            - run: pnpm run update-codeowners
 
-      - uses: stefanzweifel/git-auto-commit-action@v5.0.0
-        with:
-          commit_author: "TypeScript Bot <typescriptbot@microsoft.com>"
-          commit_message: "🤖 Update CODEOWNERS"
-          commit_user_email: "typescriptbot@microsoft.com"
-          commit_user_name: "TypeScript Bot"
+            - uses: stefanzweifel/git-auto-commit-action@v5.0.0
+              with:
+                  commit_author: "TypeScript Bot <typescriptbot@microsoft.com>"
+                  commit_message: "🤖 Update CODEOWNERS"
+                  commit_user_email: "typescriptbot@microsoft.com"
+                  commit_user_name: "TypeScript Bot"

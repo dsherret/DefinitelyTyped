@@ -17,9 +17,9 @@ Files were exported from <https://github.com/DefinitelyTyped/DefinitelyTyped/tre
 
 Additional Details
 
-- Last updated: 02/24/2023
-- Dependencies: @types/node
-- Global values: none
+-   Last updated: 02/24/2023
+-   Dependencies: @types/node
+-   Global values: none
 
 ## Credits
 

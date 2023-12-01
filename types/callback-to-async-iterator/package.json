@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/callback-to-async-iterator",
-  "version": "1.1.9999",
-  "projects": [
-    "https://github.com/withspectrum/callback-to-async-iterator#readme"
-  ],
-  "devDependencies": {
-    "@types/callback-to-async-iterator": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Zachary Svoboda",
-      "githubUsername": "zacnomore"
+    "private": true,
+    "name": "@types/callback-to-async-iterator",
+    "version": "1.1.9999",
+    "projects": [
+        "https://github.com/withspectrum/callback-to-async-iterator#readme"
+    ],
+    "devDependencies": {
+        "@types/callback-to-async-iterator": "workspace:."
     },
-    {
-      "name": "Affan Shahid",
-      "githubUsername": "affanshahid"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Zachary Svoboda",
+            "githubUsername": "zacnomore"
+        },
+        {
+            "name": "Affan Shahid",
+            "githubUsername": "affanshahid"
+        }
+    ]
 }

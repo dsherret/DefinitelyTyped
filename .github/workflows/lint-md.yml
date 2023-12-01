@@ -1,19 +1,19 @@
 name: Check Markdown links
 on:
-  pull_request:
-    paths:
-      - "**.md"
+    pull_request:
+        paths:
+            - "**.md"
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  lint-md:
-    runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          run_install: |
-            - args: [--filter, ., --filter, '{./scripts}...']
-      - run: pnpm remark --frail . .github
+    lint-md:
+        runs-on: ubuntu-latest
+        if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v2
+              with:
+                  run_install: |
+                      - args: [--filter, ., --filter, '{./scripts}...']
+            - run: pnpm remark --frail . .github

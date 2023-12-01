@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/slice-source",
-  "version": "0.4.9999",
-  "projects": [
-    "https://github.com/mbostock/slice-source"
-  ],
-  "devDependencies": {
-    "@types/slice-source": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Björn Harrtell",
-      "githubUsername": "bjornharrtell"
-    }
-  ]
+    "private": true,
+    "name": "@types/slice-source",
+    "version": "0.4.9999",
+    "projects": [
+        "https://github.com/mbostock/slice-source"
+    ],
+    "devDependencies": {
+        "@types/slice-source": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Björn Harrtell",
+            "githubUsername": "bjornharrtell"
+        }
+    ]
 }

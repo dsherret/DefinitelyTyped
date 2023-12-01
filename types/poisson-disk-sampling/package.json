@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/poisson-disk-sampling",
-  "version": "2.2.9999",
-  "projects": [
-    "https://github.com/kchapelier/poisson-disk-sampling"
-  ],
-  "devDependencies": {
-    "@types/poisson-disk-sampling": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Aliyss",
-      "githubUsername": "Aliyss"
+    "private": true,
+    "name": "@types/poisson-disk-sampling",
+    "version": "2.2.9999",
+    "projects": [
+        "https://github.com/kchapelier/poisson-disk-sampling"
+    ],
+    "devDependencies": {
+        "@types/poisson-disk-sampling": "workspace:."
     },
-    {
-      "name": "Dmitry Semigradsky",
-      "githubUsername": "Semigradsky"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Aliyss",
+            "githubUsername": "Aliyss"
+        },
+        {
+            "name": "Dmitry Semigradsky",
+            "githubUsername": "Semigradsky"
+        }
+    ]
 }

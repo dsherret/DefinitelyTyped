@@ -1,37 +1,37 @@
 {
-  "private": true,
-  "name": "@types/stripe-v2",
-  "version": "2.0.9999",
-  "projects": [
-    "https://stripe.com/"
-  ],
-  "devDependencies": {
-    "@types/stripe-v2": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Andy Hawkins",
-      "url": "https://github.com/a904guy/,http://a904guy.com"
+    "private": true,
+    "name": "@types/stripe-v2",
+    "version": "2.0.9999",
+    "projects": [
+        "https://stripe.com/"
+    ],
+    "devDependencies": {
+        "@types/stripe-v2": "workspace:."
     },
-    {
-      "name": "Eric J. Smith",
-      "githubUsername": "ejsmith"
-    },
-    {
-      "name": "Amrit Kahlon",
-      "githubUsername": "amritk"
-    },
-    {
-      "name": "Adam Cmiel",
-      "githubUsername": "adamcmiel"
-    },
-    {
-      "name": "Justin Leider",
-      "githubUsername": "jleider"
-    },
-    {
-      "name": "Kamil Gałuszka",
-      "githubUsername": "galuszkak"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Andy Hawkins",
+            "url": "https://github.com/a904guy/,http://a904guy.com"
+        },
+        {
+            "name": "Eric J. Smith",
+            "githubUsername": "ejsmith"
+        },
+        {
+            "name": "Amrit Kahlon",
+            "githubUsername": "amritk"
+        },
+        {
+            "name": "Adam Cmiel",
+            "githubUsername": "adamcmiel"
+        },
+        {
+            "name": "Justin Leider",
+            "githubUsername": "jleider"
+        },
+        {
+            "name": "Kamil Gałuszka",
+            "githubUsername": "galuszkak"
+        }
+    ]
 }

@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/react-form",
-  "version": "4.0.9999",
-  "projects": [
-    "https://github.com/tannerlinsley/react-form"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/react-form": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Cameron McAteer",
-      "githubUsername": "cameron-mcateer"
+    "private": true,
+    "name": "@types/react-form",
+    "version": "4.0.9999",
+    "projects": [
+        "https://github.com/tannerlinsley/react-form"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Mathieu Masy",
-      "githubUsername": "TiuSh"
+    "devDependencies": {
+        "@types/react-form": "workspace:."
     },
-    {
-      "name": "Anatolii Titov",
-      "githubUsername": "Toliak"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Cameron McAteer",
+            "githubUsername": "cameron-mcateer"
+        },
+        {
+            "name": "Mathieu Masy",
+            "githubUsername": "TiuSh"
+        },
+        {
+            "name": "Anatolii Titov",
+            "githubUsername": "Toliak"
+        }
+    ]
 }

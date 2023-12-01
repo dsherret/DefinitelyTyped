@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/facepaint",
-  "version": "1.2.9999",
-  "projects": [
-    "https://github.com/emotion-js/facepaint"
-  ],
-  "devDependencies": {
-    "@types/facepaint": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Ciarán Curley",
-      "githubUsername": "DogPawHat"
+    "private": true,
+    "name": "@types/facepaint",
+    "version": "1.2.9999",
+    "projects": [
+        "https://github.com/emotion-js/facepaint"
+    ],
+    "devDependencies": {
+        "@types/facepaint": "workspace:."
     },
-    {
-      "name": "Anton Samper Rivaya",
-      "githubUsername": "antonsamper"
-    },
-    {
-      "name": "Tim Swalling",
-      "githubUsername": "timswalling"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Ciarán Curley",
+            "githubUsername": "DogPawHat"
+        },
+        {
+            "name": "Anton Samper Rivaya",
+            "githubUsername": "antonsamper"
+        },
+        {
+            "name": "Tim Swalling",
+            "githubUsername": "timswalling"
+        }
+    ]
 }

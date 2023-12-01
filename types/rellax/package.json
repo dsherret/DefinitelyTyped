@@ -1,22 +1,22 @@
 {
-  "private": true,
-  "name": "@types/rellax",
-  "version": "1.7.9999",
-  "projects": [
-    "https://github.com/dixonandmoe/rellax",
-    "https://dixonandmoe.com/rellax"
-  ],
-  "devDependencies": {
-    "@types/rellax": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Rostislav Shermenyov",
-      "githubUsername": "shermendev"
+    "private": true,
+    "name": "@types/rellax",
+    "version": "1.7.9999",
+    "projects": [
+        "https://github.com/dixonandmoe/rellax",
+        "https://dixonandmoe.com/rellax"
+    ],
+    "devDependencies": {
+        "@types/rellax": "workspace:."
     },
-    {
-      "name": "Tomas Achmedovas",
-      "githubUsername": "minvs1"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Rostislav Shermenyov",
+            "githubUsername": "shermendev"
+        },
+        {
+            "name": "Tomas Achmedovas",
+            "githubUsername": "minvs1"
+        }
+    ]
 }

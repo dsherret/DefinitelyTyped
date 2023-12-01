@@ -1,24 +1,24 @@
 {
-  "private": true,
-  "name": "@types/leveldown",
-  "version": "1.7.9999",
-  "projects": [
-    "https://github.com/level/leveldown"
-  ],
-  "dependencies": {
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/leveldown": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Thiago de Arruda",
-      "githubUsername": "tarruda"
+    "private": true,
+    "name": "@types/leveldown",
+    "version": "1.7.9999",
+    "projects": [
+        "https://github.com/level/leveldown"
+    ],
+    "dependencies": {
+        "@types/node": "*"
     },
-    {
-      "name": "Linus Unnebäck",
-      "githubUsername": "LinusU"
-    }
-  ]
+    "devDependencies": {
+        "@types/leveldown": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Thiago de Arruda",
+            "githubUsername": "tarruda"
+        },
+        {
+            "name": "Linus Unnebäck",
+            "githubUsername": "LinusU"
+        }
+    ]
 }

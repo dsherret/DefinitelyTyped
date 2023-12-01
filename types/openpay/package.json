@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/openpay",
-  "version": "1.0.9999",
-  "projects": [
-    "https://github.com/open-pay/openpay-node"
-  ],
-  "devDependencies": {
-    "@types/openpay": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Bruno Jardón",
-      "githubUsername": "bjardon"
-    }
-  ]
+    "private": true,
+    "name": "@types/openpay",
+    "version": "1.0.9999",
+    "projects": [
+        "https://github.com/open-pay/openpay-node"
+    ],
+    "devDependencies": {
+        "@types/openpay": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Bruno Jardón",
+            "githubUsername": "bjardon"
+        }
+    ]
 }

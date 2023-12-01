@@ -8,9 +8,9 @@ The package adds type-checking to the built-in functions, so you can just use so
 
 ```ts
 wp.customize.section("nav").deactivate({
-  completeCallback: () => {
-    wp.customize.section("colors").activate(); // show after nav hides completely
-  },
+    completeCallback: () => {
+        wp.customize.section("colors").activate(); // show after nav hides completely
+    },
 });
 ```
 
@@ -18,11 +18,11 @@ However, if you want to use the types directly, they are exported under the `wor
 
 ```ts
 function fun(section: wordpress__customize.Section): void {
-  section.deactivate({
-    completeCallback: () => {
-      wp.customize.section("colors").activate(); // show after nav hides completely
-    },
-  });
+    section.deactivate({
+        completeCallback: () => {
+            wp.customize.section("colors").activate(); // show after nav hides completely
+        },
+    });
 }
 
 wp.customize.section("nav", fun);

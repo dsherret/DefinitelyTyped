@@ -1,14 +1,14 @@
 {
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["es6"],
-    "module": "commonjs",
-    "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "types": []
-  },
-  "files": ["index.d.ts", "webpack-deadcode-plugin-tests.ts"]
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["es6"],
+        "module": "commonjs",
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "types": []
+    },
+    "files": ["index.d.ts", "webpack-deadcode-plugin-tests.ts"]
 }

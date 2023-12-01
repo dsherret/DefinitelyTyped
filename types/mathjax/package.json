@@ -1,17 +1,17 @@
 {
-  "private": true,
-  "name": "@types/mathjax",
-  "version": "0.0.9999",
-  "projects": [
-    "https://github.com/mathjax/MathJax"
-  ],
-  "devDependencies": {
-    "@types/mathjax": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Roland Zwaga",
-      "githubUsername": "rolandzwaga"
-    }
-  ]
+    "private": true,
+    "name": "@types/mathjax",
+    "version": "0.0.9999",
+    "projects": [
+        "https://github.com/mathjax/MathJax"
+    ],
+    "devDependencies": {
+        "@types/mathjax": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Roland Zwaga",
+            "githubUsername": "rolandzwaga"
+        }
+    ]
 }

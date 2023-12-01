@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/string-similarity",
-  "version": "4.0.9999",
-  "projects": [
-    "https://github.com/aceakash/string-similarity#readme"
-  ],
-  "devDependencies": {
-    "@types/string-similarity": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "ragtime",
-      "githubUsername": "ragtime"
+    "private": true,
+    "name": "@types/string-similarity",
+    "version": "4.0.9999",
+    "projects": [
+        "https://github.com/aceakash/string-similarity#readme"
+    ],
+    "devDependencies": {
+        "@types/string-similarity": "workspace:."
     },
-    {
-      "name": "BendingBender",
-      "githubUsername": "BendingBender"
-    },
-    {
-      "name": "Piotr Błażejewicz",
-      "githubUsername": "peterblazejewicz"
-    }
-  ]
+    "owners": [
+        {
+            "name": "ragtime",
+            "githubUsername": "ragtime"
+        },
+        {
+            "name": "BendingBender",
+            "githubUsername": "BendingBender"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "githubUsername": "peterblazejewicz"
+        }
+    ]
 }

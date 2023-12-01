@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@types/morris.js",
-  "version": "0.5.9999",
-  "projects": [
-    "http://morrisjs.github.io/morris.js/"
-  ],
-  "devDependencies": {
-    "@types/morris.js": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Matthieu Mourisson",
-      "githubUsername": "mareek"
+    "private": true,
+    "name": "@types/morris.js",
+    "version": "0.5.9999",
+    "projects": [
+        "http://morrisjs.github.io/morris.js/"
+    ],
+    "devDependencies": {
+        "@types/morris.js": "workspace:."
     },
-    {
-      "name": "Matanel Sindilevich",
-      "githubUsername": "sindilevich"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Matthieu Mourisson",
+            "githubUsername": "mareek"
+        },
+        {
+            "name": "Matanel Sindilevich",
+            "githubUsername": "sindilevich"
+        }
+    ]
 }

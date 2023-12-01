@@ -2,9 +2,7 @@
     "compilerOptions": {
         "target": "es6",
         "baseUrl": "../..",
-        "typeRoots": [
-            "../../"
-        ],
+        "typeRoots": ["../../"],
         "types": []
     }
 }

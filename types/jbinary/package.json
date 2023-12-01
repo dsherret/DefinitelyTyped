@@ -1,25 +1,25 @@
 {
-  "private": true,
-  "name": "@types/jbinary",
-  "version": "2.1.9999",
-  "projects": [
-    "https://github.com/jDataView/jBinary"
-  ],
-  "dependencies": {
-    "@types/jdataview": "*",
-    "@types/node": "*"
-  },
-  "devDependencies": {
-    "@types/jbinary": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Tim Bureck",
-      "githubUsername": "tbureck"
+    "private": true,
+    "name": "@types/jbinary",
+    "version": "2.1.9999",
+    "projects": [
+        "https://github.com/jDataView/jBinary"
+    ],
+    "dependencies": {
+        "@types/jdataview": "*",
+        "@types/node": "*"
     },
-    {
-      "name": "Krisztián Balla",
-      "githubUsername": "krisztianb"
-    }
-  ]
+    "devDependencies": {
+        "@types/jbinary": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Tim Bureck",
+            "githubUsername": "tbureck"
+        },
+        {
+            "name": "Krisztián Balla",
+            "githubUsername": "krisztianb"
+        }
+    ]
 }

@@ -1,28 +1,28 @@
 {
-  "private": true,
-  "name": "@types/fundamental-react",
-  "version": "0.14.9999",
-  "projects": [
-    "https://sap.github.io/fundamental-react"
-  ],
-  "dependencies": {
-    "@types/react": "*"
-  },
-  "devDependencies": {
-    "@types/fundamental-react": "workspace:."
-  },
-  "owners": [
-    {
-      "name": "Frank Feinbube",
-      "githubUsername": "Feinbube"
+    "private": true,
+    "name": "@types/fundamental-react",
+    "version": "0.14.9999",
+    "projects": [
+        "https://sap.github.io/fundamental-react"
+    ],
+    "dependencies": {
+        "@types/react": "*"
     },
-    {
-      "name": "Milan Proell",
-      "githubUsername": "milanpro"
+    "devDependencies": {
+        "@types/fundamental-react": "workspace:."
     },
-    {
-      "name": "Auryn Engel",
-      "githubUsername": "auryn31"
-    }
-  ]
+    "owners": [
+        {
+            "name": "Frank Feinbube",
+            "githubUsername": "Feinbube"
+        },
+        {
+            "name": "Milan Proell",
+            "githubUsername": "milanpro"
+        },
+        {
+            "name": "Auryn Engel",
+            "githubUsername": "auryn31"
+        }
+    ]
 }

@@ -12,9 +12,9 @@ Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree
 
 ### Additional Details
 
-- Last updated: Tue, 08 Dec 2020 16:28:17 GMT
-- Dependencies: [redux](https://github.com/reduxjs/redux)
-- Global values: none
+-   Last updated: Tue, 08 Dec 2020 16:28:17 GMT
+-   Dependencies: [redux](https://github.com/reduxjs/redux)
+-   Global values: none
 
 # Credits
 

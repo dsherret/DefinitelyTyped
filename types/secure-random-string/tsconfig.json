@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["es6"],
-    "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "types": []
-  },
-  "files": ["index.d.ts", "secure-random-string-tests.ts"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["es6"],
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "types": []
+    },
+    "files": ["index.d.ts", "secure-random-string-tests.ts"]
 }
