@@ -30998,8 +30998,7 @@ export interface ListItem {
     text?: string | undefined;
 
     textMetadata?: /* Metadata about a property. */
-        | PropertyMetadata
-        | undefined;
+    PropertyMetadata | undefined;
     /**
      * Specifies the value that is used when the list item is selected.
      */
