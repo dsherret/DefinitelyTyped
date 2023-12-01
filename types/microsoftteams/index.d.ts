@@ -12,17 +12,30 @@ declare namespace microsoftTeams {
         static parentWindow: Window;
         static childWindow: Window;
     }
-    function initializeCommunication(callback: () => void, validMessageOrigins: string[] | undefined): void;
+    function initializeCommunication(
+        callback: () => void,
+        validMessageOrigins: string[] | undefined,
+    ): void;
     function uninitializeCommunication(): void;
     /**
      * Send a message to parent. Uses nativeInterface on mobile to communicate with parent context
      */
-    function sendMessageToParent(actionName: string, callback?: () => void): void;
+    function sendMessageToParent(
+        actionName: string,
+        callback?: () => void,
+    ): void;
     /**
      * Send a message to parent. Uses nativeInterface on mobile to communicate with parent context
      */
-    function sendMessageToParent(actionName: string, args: any[], callback?: () => void): void;
-    function waitForMessageQueue(targetWindow: Window, callback: () => void): void;
+    function sendMessageToParent(
+        actionName: string,
+        args: any[],
+        callback?: () => void,
+    ): void;
+    function waitForMessageQueue(
+        targetWindow: Window,
+        callback: () => void,
+    ): void;
     /**
      * Send a custom message object that can be sent to child window,
      * instead of a response message to a child
@@ -86,14 +99,28 @@ declare namespace microsoftTeams {
         static printCapabilityEnabled: boolean;
     }
     function initializeHandlers(): void;
-    function callHandler(name: string, args?: any[]): [true, any] | [false, undefined];
-    function registerHandler(name: string, handler: () => void, sendMessage?: boolean, args?: any[]): void;
+    function callHandler(
+        name: string,
+        args?: any[],
+    ): [true, any] | [false, undefined];
+    function registerHandler(
+        name: string,
+        handler: () => void,
+        sendMessage?: boolean,
+        args?: any[],
+    ): void;
     function removeHandler(name: string): void;
-    function registerOnThemeChangeHandler(handler: (theme: string) => void): void;
+    function registerOnThemeChangeHandler(
+        handler: (theme: string) => void,
+    ): void;
     function handleThemeChange(theme: string): void;
     function registerBackButtonHandler(handler: () => boolean): void;
-    function registerOnLoadHandler(handler: (context: LoadContext) => void): void;
-    function registerBeforeUnloadHandler(handler: (readyToUnload: () => void) => boolean): void;
+    function registerOnLoadHandler(
+        handler: (context: LoadContext) => void,
+    ): void;
+    function registerBeforeUnloadHandler(
+        handler: (readyToUnload: () => void) => boolean,
+    ): void;
     /**
      * Hide from docs
      * Shim in definitions used for browser-compat
@@ -150,12 +177,18 @@ declare namespace microsoftTeams {
     /**
      * Helper function to create a blob from media chunks based on their sequence
      */
-    function createFile(assembleAttachment: media.AssembleAttachment[], mimeType: string): Blob;
+    function createFile(
+        assembleAttachment: media.AssembleAttachment[],
+        mimeType: string,
+    ): Blob;
     /**
      * Helper function to convert Media chunks into another object type which can be later assemebled
      * Converts base 64 encoded string to byte array and then into an array of blobs
      */
-    function decodeAttachment(attachment: media.MediaChunk, mimeType: string): media.AssembleAttachment;
+    function decodeAttachment(
+        attachment: media.MediaChunk,
+        mimeType: string,
+    ): media.AssembleAttachment;
     /**
      * Returns true if the mediaInput params are valid and false otherwise
      */
@@ -163,7 +196,11 @@ declare namespace microsoftTeams {
     /**
      * Returns true if the get Media params are valid and false otherwise
      */
-    function validateGetMediaInputs(mimeType: string, format: media.FileFormat, content: string): boolean;
+    function validateGetMediaInputs(
+        mimeType: string,
+        format: media.FileFormat,
+        content: string,
+    ): boolean;
     /**
      * Returns true if the view images param is valid and false otherwise
      */
@@ -171,13 +208,19 @@ declare namespace microsoftTeams {
     /**
      * Returns true if the scan barcode param is valid and false otherwise
      */
-    function validateScanBarCodeInput(barCodeConfig: media.BarCodeConfig): boolean;
+    function validateScanBarCodeInput(
+        barCodeConfig: media.BarCodeConfig,
+    ): boolean;
     /**
      * Returns true if the people picker params are valid and false otherwise
      */
-    function validatePeoplePickerInput(peoplePickerInputs: people.PeoplePickerInputs): boolean;
+    function validatePeoplePickerInput(
+        peoplePickerInputs: people.PeoplePickerInputs,
+    ): boolean;
     function generateRegExpFromUrls(urls: string[]): RegExp;
-    function getGenericOnCompleteHandler(errorMessage?: string): (success: boolean, reason?: string) => void;
+    function getGenericOnCompleteHandler(
+        errorMessage?: string,
+    ): (success: boolean, reason?: string) => void;
     /**
      * Compares SDK versions.
      * @param v1 first version
@@ -294,10 +337,12 @@ declare namespace microsoftTeams {
              */
             query: string;
             commandId?: string | undefined;
-            option?: {
-                skip: number;
-                count: number;
-            } | undefined;
+            option?:
+                | {
+                      skip: number;
+                      count: number;
+                  }
+                | undefined;
         }
         interface QueryResponse {
             data: Results | Auth;
@@ -340,7 +385,9 @@ declare namespace microsoftTeams {
          * --------------
          * Allows the user to start or continue a conversation with each subentity inside the tab
          */
-        function openConversation(openConversationRequest: OpenConversationRequest): void;
+        function openConversation(
+            openConversationRequest: OpenConversationRequest,
+        ): void;
         /**
          * Hide from docs
          * --------------
@@ -482,7 +529,11 @@ declare namespace microsoftTeams {
          */
         function addCloudStorageFolder(
             channelId: string,
-            callback: (error: SdkError, isFolderAdded: boolean, folders: CloudStorageFolder[]) => void,
+            callback: (
+                error: SdkError,
+                isFolderAdded: boolean,
+                folders: CloudStorageFolder[],
+            ) => void,
         ): void;
         /**
          * Hide from docs
@@ -508,7 +559,10 @@ declare namespace microsoftTeams {
         function getCloudStorageFolderContents(
             folder: CloudStorageFolder | CloudStorageFolderItem,
             providerCode: CloudStorageProvider,
-            callback: (error: SdkError, items: CloudStorageFolderItem[]) => void,
+            callback: (
+                error: SdkError,
+                items: CloudStorageFolderItem[],
+            ) => void,
         ): void;
         /**
          * Hide from docs
@@ -521,7 +575,9 @@ declare namespace microsoftTeams {
         function openCloudStorageFile(
             file: CloudStorageFolderItem,
             providerCode: CloudStorageProvider,
-            fileOpenPreference?: FileOpenPreference.Web | FileOpenPreference.Inline,
+            fileOpenPreference?:
+                | FileOpenPreference.Web
+                | FileOpenPreference.Inline,
         ): void;
     }
     /**
@@ -796,7 +852,10 @@ declare namespace microsoftTeams {
          * @param callback Callback to invoke when the meeting room info is fetched.
          */
         function getPairedMeetingRoomInfo(
-            callback: (sdkError: SdkError, meetingRoomInfo: MeetingRoomInfo) => void,
+            callback: (
+                sdkError: SdkError,
+                meetingRoomInfo: MeetingRoomInfo,
+            ) => void,
         ): void;
         /**
          * Hide from docs
@@ -805,7 +864,10 @@ declare namespace microsoftTeams {
          * @param commandName The command name.
          * @param callback Callback to invoke when the command response returns.
          */
-        function sendCommandToPairedMeetingRoom(commandName: string, callback: (sdkError: SdkError) => void): void;
+        function sendCommandToPairedMeetingRoom(
+            commandName: string,
+            callback: (sdkError: SdkError) => void,
+        ): void;
         /**
          * Hide from docs
          *
@@ -822,7 +884,9 @@ declare namespace microsoftTeams {
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when the states of meeting room update.
          */
-        function registerMeetingRoomStatesUpdateHandler(handler: (states: MeetingRoomState) => void): void;
+        function registerMeetingRoomStatesUpdateHandler(
+            handler: (states: MeetingRoomState) => void,
+        ): void;
     }
     /**
      * Namespace to interact with the menu-specific part of the SDK.
@@ -916,13 +980,19 @@ declare namespace microsoftTeams {
          * @param viewConfig List of view configurations. Minimum 1 value is required.
          * @param handler The handler to invoke when the user selects view configuration.
          */
-        function setUpViews(viewConfig: ViewConfiguration[], handler: (id: string) => boolean): void;
+        function setUpViews(
+            viewConfig: ViewConfiguration[],
+            handler: (id: string) => boolean,
+        ): void;
         /**
          * Used to set menu items on the Navigation Bar. If icon is available, icon will be shown, otherwise title will be shown.
          * @param items List of MenuItems for Navigation Bar Menu.
          * @param handler The handler to invoke when the user selects menu item.
          */
-        function setNavBarMenu(items: MenuItem[], handler: (id: string) => boolean): void;
+        function setNavBarMenu(
+            items: MenuItem[],
+            handler: (id: string) => boolean,
+        ): void;
         interface ActionMenuParameters {
             /**
              * Display title for Action Menu
@@ -938,7 +1008,10 @@ declare namespace microsoftTeams {
          * @param params Parameters for Menu Parameters
          * @param handler The handler to invoke when the user selects menu item.
          */
-        function showActionMenu(params: ActionMenuParameters, handler: (id: string) => boolean): void;
+        function showActionMenu(
+            params: ActionMenuParameters,
+            handler: (id: string) => boolean,
+        ): void;
     }
     function initializePrivateApis(): void;
     /**
@@ -949,7 +1022,9 @@ declare namespace microsoftTeams {
      * @param teamInstanceParameters OPTIONAL Flags that specify whether to scope call to favorite teams
      */
     function getUserJoinedTeams(
-        callback: (userJoinedTeamsInformation: UserJoinedTeamsInformation) => void,
+        callback: (
+            userJoinedTeamsInformation: UserJoinedTeamsInformation,
+        ) => void,
         teamInstanceParameters?: TeamInstanceParameters,
     ): void;
     /**
@@ -970,7 +1045,9 @@ declare namespace microsoftTeams {
      * Opens a client-friendly preview of the specified file.
      * @param file The file to preview.
      */
-    function openFilePreview(filePreviewParameters: FilePreviewParameters): void;
+    function openFilePreview(
+        filePreviewParameters: FilePreviewParameters,
+    ): void;
     /**
      * Hide from docs.
      * ------
@@ -978,14 +1055,19 @@ declare namespace microsoftTeams {
      * @param message Notification message.
      * @param notificationType Notification type
      */
-    function showNotification(showNotificationParameters: ShowNotificationParameters): void;
+    function showNotification(
+        showNotificationParameters: ShowNotificationParameters,
+    ): void;
     /**
      * Hide from docs.
      * ------
      * Upload a custom App manifest directly to both team and personal scopes.
      * This method works just for the first party Apps.
      */
-    function uploadCustomApp(manifestBlob: Blob, onComplete?: (status: boolean, reason?: string) => void): void;
+    function uploadCustomApp(
+        manifestBlob: Blob,
+        onComplete?: (status: boolean, reason?: string) => void,
+    ): void;
     /**
      * Internal use only
      * Sends a custom action MessageRequest to Teams or parent window
@@ -994,7 +1076,11 @@ declare namespace microsoftTeams {
      * @param callback Optionally specify a callback to receive response parameters from the parent
      * @returns id of sent message
      */
-    function sendCustomMessage(actionName: string, args?: any[], callback?: (...args: any[]) => void): void;
+    function sendCustomMessage(
+        actionName: string,
+        args?: any[],
+        callback?: (...args: any[]) => void,
+    ): void;
     /**
      * Internal use only
      * Sends a custom action MessageEvent to a child iframe/window, only if you are not using auth popup.
@@ -1010,7 +1096,10 @@ declare namespace microsoftTeams {
      * @param actionName Specifies name of the action message to handle
      * @param customHandler The callback to invoke when the action message is received. The return value is sent to the child
      */
-    function registerCustomHandler(actionName: string, customHandler: (...args: any[]) => any[]): void;
+    function registerCustomHandler(
+        actionName: string,
+        customHandler: (...args: any[]) => any[],
+    ): void;
     /**
      * Hide from docs
      * ------
@@ -1019,7 +1108,9 @@ declare namespace microsoftTeams {
      * be used only as a hint as to who the members are and never as proof of membership.
      * @param callback The callback to invoke when the {@link ChatMembersInformation} object is retrieved.
      */
-    function getChatMembers(callback: (chatMembersInformation: ChatMembersInformation) => void): void;
+    function getChatMembers(
+        callback: (chatMembersInformation: ChatMembersInformation) => void,
+    ): void;
     /**
      * Hide from docs
      * ------
@@ -1027,7 +1118,10 @@ declare namespace microsoftTeams {
      * @param callback The callback to invoke when the value is retrieved.
      * @param key The key for the config setting
      */
-    function getConfigSetting(callback: (value: string) => void, key: string): void;
+    function getConfigSetting(
+        callback: (value: string) => void,
+        key: string,
+    ): void;
     /**
      * register a handler to be called when a user setting changes. The changed setting type & value is provided in the callback.
      * @param settingTypes List of user setting changes to subscribe
@@ -1172,7 +1266,10 @@ declare namespace microsoftTeams {
          * participants: object that contains an array of participants with controllable-cameras
          */
         function getCapableParticipants(
-            callback: (error: SdkError | null, participants: Participant[] | null) => void,
+            callback: (
+                error: SdkError | null,
+                participants: Participant[] | null,
+            ) => void,
         ): void;
         /**
          * Hide from docs
@@ -1186,7 +1283,10 @@ declare namespace microsoftTeams {
          */
         function requestControl(
             participant: Participant,
-            callback: (error: SdkError | null, requestResponse: boolean | null) => void,
+            callback: (
+                error: SdkError | null,
+                requestResponse: boolean | null,
+            ) => void,
         ): void;
         /**
          * Hide from docs
@@ -1195,38 +1295,51 @@ declare namespace microsoftTeams {
          * @param ControlCommand ControlCommand specifies the command for controling the camera.
          * @param callback Callback to invoke when the command response returns.
          */
-        function sendControlCommand(ControlCommand: ControlCommand, callback: (error: SdkError | null) => void): void;
+        function sendControlCommand(
+            ControlCommand: ControlCommand,
+            callback: (error: SdkError | null) => void,
+        ): void;
         /**
          * Hide from docs
          *
          * Terminate the remote  session
          * @param callback Callback to invoke when the command response returns.
          */
-        function terminateSession(callback: (error: SdkError | null) => void): void;
+        function terminateSession(
+            callback: (error: SdkError | null) => void,
+        ): void;
         /**
          * Registers a handler for change in participants with controllable-cameras.
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when the list of participants with controllable-cameras changes.
          */
-        function registerOnCapableParticipantsChangeHandler(handler: (participantChange: Participant[]) => void): void;
+        function registerOnCapableParticipantsChangeHandler(
+            handler: (participantChange: Participant[]) => void,
+        ): void;
         /**
          * Registers a handler for error.
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when there is an error from the camera handler.
          */
-        function registerOnErrorHandler(handler: (error: ErrorReason) => void): void;
+        function registerOnErrorHandler(
+            handler: (error: ErrorReason) => void,
+        ): void;
         /**
          * Registers a handler for device state change.
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when the controlled device changes state.
          */
-        function registerOnDeviceStateChangeHandler(handler: (deviceStateChange: DeviceState) => void): void;
+        function registerOnDeviceStateChangeHandler(
+            handler: (deviceStateChange: DeviceState) => void,
+        ): void;
         /**
          * Registers a handler for session status change.
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when the current session status changes.
          */
-        function registerOnSessionStatusChangeHandler(handler: (sessionStatusChange: SessionStatus) => void): void;
+        function registerOnSessionStatusChangeHandler(
+            handler: (sessionStatusChange: SessionStatus) => void,
+        ): void;
     }
     namespace appInitialization {
         const Messages: {
@@ -1268,11 +1381,15 @@ declare namespace microsoftTeams {
         /**
          * Notifies the frame that app initialization has failed and to show an error page in its place.
          */
-        function notifyFailure(appInitializationFailedRequest: IFailedRequest): void;
+        function notifyFailure(
+            appInitializationFailedRequest: IFailedRequest,
+        ): void;
         /**
          * Notifies the frame that app initialized with some expected errors.
          */
-        function notifyExpectedFailure(expectedFailureRequest: IExpectedFailureRequest): void;
+        function notifyExpectedFailure(
+            expectedFailureRequest: IExpectedFailureRequest,
+        ): void;
     }
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface IAppWindow {
@@ -1280,13 +1397,19 @@ declare namespace microsoftTeams {
         addEventListener(type: string, listener: () => void): void;
     }
     class ChildAppWindow implements IAppWindow {
-        postMessage(message: any, onComplete?: (status: boolean, reason?: string) => void): void;
+        postMessage(
+            message: any,
+            onComplete?: (status: boolean, reason?: string) => void,
+        ): void;
         addEventListener(type: string, listener: (message: any) => void): void;
     }
     class ParentAppWindow implements IAppWindow {
         private static _instance;
         static readonly Instance: IAppWindow;
-        postMessage(message: any, onComplete?: (status: boolean, reason?: string) => void): void;
+        postMessage(
+            message: any,
+            onComplete?: (status: boolean, reason?: string) => void,
+        ): void;
         addEventListener(type: string, listener: (message: any) => void): void;
     }
     /**
@@ -1299,11 +1422,15 @@ declare namespace microsoftTeams {
          * Registers the authentication Communication.handlers
          * @param authenticateParameters A set of values that configure the authentication pop-up.
          */
-        function registerAuthenticationHandlers(authenticateParameters: AuthenticateParameters): void;
+        function registerAuthenticationHandlers(
+            authenticateParameters: AuthenticateParameters,
+        ): void;
         /**
          * Initiates an authentication request, which opens a new window with the specified settings.
          */
-        function authenticate(authenticateParameters?: AuthenticateParameters): void;
+        function authenticate(
+            authenticateParameters?: AuthenticateParameters,
+        ): void;
         /**
          * Requests an Azure AD token to be issued on behalf of the app. The token is acquired from the cache
          * if it is not expired. Otherwise a request is sent to Azure AD to obtain a new token.
@@ -1942,11 +2069,15 @@ declare namespace microsoftTeams {
         /**
          * A function that is called once the conversation Id has been created
          */
-        onStartConversation?: ((conversationResponse: ConversationResponse) => void) | undefined;
+        onStartConversation?:
+            | ((conversationResponse: ConversationResponse) => void)
+            | undefined;
         /**
          * A function that is called if the pane is closed
          */
-        onCloseConversation?: ((conversationResponse: ConversationResponse) => void) | undefined;
+        onCloseConversation?:
+            | ((conversationResponse: ConversationResponse) => void)
+            | undefined;
     }
     /**
      * Hide from docs.
@@ -2105,13 +2236,19 @@ declare namespace microsoftTeams {
          * Fetches current user coordinates or allows user to choose location on map
          * @param callback Callback to invoke when current user location is fetched
          */
-        function getLocation(props: LocationProps, callback: (error: SdkError, location: Location) => void): void;
+        function getLocation(
+            props: LocationProps,
+            callback: (error: SdkError, location: Location) => void,
+        ): void;
         /**
          * Shows the location on map corresponding to the given coordinates
          * @param location {@link Location} which needs to be shown on map
          * @param callback Callback to invoke when the location is opened on map
          */
-        function showLocation(location: Location, callback: (error: SdkError, status: boolean) => void): void;
+        function showLocation(
+            location: Location,
+            callback: (error: SdkError, status: boolean) => void,
+        ): void;
     }
     namespace media {
         /**
@@ -2158,7 +2295,9 @@ declare namespace microsoftTeams {
          * @see File
          * @see SdkError
          */
-        function captureImage(callback: (error: SdkError, files: File[]) => void): void;
+        function captureImage(
+            callback: (error: SdkError, files: File[]) => void,
+        ): void;
         /**
          * Media object returned by the select Media API
          */
@@ -2307,13 +2446,19 @@ declare namespace microsoftTeams {
          * @param mediaInputs The input params to customize the media to be selected
          * @param callback The callback to invoke after fetching the media
          */
-        function selectMedia(mediaInputs: MediaInputs, callback: (error: SdkError, attachments: Media[]) => void): void;
+        function selectMedia(
+            mediaInputs: MediaInputs,
+            callback: (error: SdkError, attachments: Media[]) => void,
+        ): void;
         /**
          * View images using native image viewer
          * @param uriList urilist of images to be viewed - can be content uri or server url. supports upto 10 Images in one go
          * @param callback returns back error if encountered, returns null in case of success
          */
-        function viewImages(uriList: ImageUri[], callback: (error?: SdkError) => void): void;
+        function viewImages(
+            uriList: ImageUri[],
+            callback: (error?: SdkError) => void,
+        ): void;
         /**
          * Barcode configuration supplied to scanBarCode API to customize barcode scanning experience in mobile
          * All properties in BarCodeConfig are optional and have default values in the platform
@@ -2331,7 +2476,10 @@ declare namespace microsoftTeams {
          * @param callback callback to invoke after scanning the barcode
          * @param config optional input configuration to customize the barcode scanning experience
          */
-        function scanBarCode(callback: (error: SdkError, decodedText: string) => void, config?: BarCodeConfig): void;
+        function scanBarCode(
+            callback: (error: SdkError, decodedText: string) => void,
+            config?: BarCodeConfig,
+        ): void;
     }
     namespace meeting {
         /**
@@ -2414,12 +2562,14 @@ declare namespace microsoftTeams {
             /**
              * error object in case there is a failure
              */
-            error?: {
-                /** error code from the streaming service, e.g. IngestionFailure */
-                code: string;
-                /** detailed error message string */
-                message?: string | undefined;
-            } | undefined;
+            error?:
+                | {
+                      /** error code from the streaming service, e.g. IngestionFailure */
+                      code: string;
+                      /** detailed error message string */
+                      message?: string | undefined;
+                  }
+                | undefined;
         }
         enum MeetingType {
             Unknown = "Unknown",
@@ -2436,7 +2586,9 @@ declare namespace microsoftTeams {
          * result can either contain the true/false value, incase of a successful fetch or null when the fetching fails
          * result: True means incoming audio is muted and false means incoming audio is unmuted
          */
-        function getIncomingClientAudioState(callback: (error: SdkError | null, result: boolean | null) => void): void;
+        function getIncomingClientAudioState(
+            callback: (error: SdkError | null, result: boolean | null) => void,
+        ): void;
         /**
          * Allows an app to toggle the incoming audio speaker setting for the meeting user from mute to unmute or vice-versa
          * @param callback Callback contains 2 parameters, error and result.
@@ -2444,7 +2596,9 @@ declare namespace microsoftTeams {
          * result can either contain the true/false value, incase of a successful toggle or null when the toggling fails
          * result: True means incoming audio is muted and false means incoming audio is unmuted
          */
-        function toggleIncomingClientAudio(callback: (error: SdkError | null, result: boolean | null) => void): void;
+        function toggleIncomingClientAudio(
+            callback: (error: SdkError | null, result: boolean | null) => void,
+        ): void;
         /**
          * Hide from docs
          * Allows an app to get the meeting details for the meeting
@@ -2453,7 +2607,10 @@ declare namespace microsoftTeams {
          * result can either contain a IMeetingDetails value, incase of a successful get or null when the get fails
          */
         function getMeetingDetails(
-            callback: (error: SdkError | null, meetingDetails: IMeetingDetails | null) => void,
+            callback: (
+                error: SdkError | null,
+                meetingDetails: IMeetingDetails | null,
+            ) => void,
         ): void;
         /**
          * Allows an app to get the authentication token for the anonymous or guest user in the meeting
@@ -2462,7 +2619,10 @@ declare namespace microsoftTeams {
          * authenticationTokenOfAnonymousUser can either contain a string value, incase of a successful get or null when the get fails
          */
         function getAuthenticationTokenForAnonymousUser(
-            callback: (error: SdkError | null, authenticationTokenOfAnonymousUser: string | null) => void,
+            callback: (
+                error: SdkError | null,
+                authenticationTokenOfAnonymousUser: string | null,
+            ) => void,
         ): void;
         /**
          * Allows an app to get the state of the live stream in the current meeting
@@ -2471,7 +2631,10 @@ declare namespace microsoftTeams {
          * liveStreamState can either contain a LiveStreamState value, or null when operation fails
          */
         function getLiveStreamState(
-            callback: (error: SdkError | null, liveStreamState: LiveStreamState | null) => void,
+            callback: (
+                error: SdkError | null,
+                liveStreamState: LiveStreamState | null,
+            ) => void,
         ): void;
         /**
          * Allows an app to request the live streaming be started at the given streaming url
@@ -2490,13 +2653,17 @@ declare namespace microsoftTeams {
          * @param callback Callback contains error parameter which can be of type SdkError in case of an error, or null when operation is successful
          * Use getLiveStreamState or registerLiveStreamChangedHandler to get updates on the live stream state
          */
-        function requestStopLiveStreaming(callback: (error: SdkError | null) => void): void;
+        function requestStopLiveStreaming(
+            callback: (error: SdkError | null) => void,
+        ): void;
         /**
          * Registers a handler for changes to the live stream.
          * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
          * @param handler The handler to invoke when the live stream state changes
          */
-        function registerLiveStreamChangedHandler(handler: (liveStreamState: LiveStreamState) => void): void;
+        function registerLiveStreamChangedHandler(
+            handler: (liveStreamState: LiveStreamState) => void,
+        ): void;
     }
     /**
      * Navigation specific part of the SDK.
@@ -2510,7 +2677,10 @@ declare namespace microsoftTeams {
      * Navigates the Microsoft Teams app to the specified tab instance.
      * @param tabInstance The tab instance to navigate to.
      */
-    function navigateToTab(tabInstance: TabInstance, onComplete?: (status: boolean, reason?: string) => void): void;
+    function navigateToTab(
+        tabInstance: TabInstance,
+        onComplete?: (status: boolean, reason?: string) => void,
+    ): void;
     /**
      * Navigates the frame to a new cross-domain URL. The domain of this URL must match at least one of the
      * valid domains specified in the validDomains block of the manifest; otherwise, an exception will be
@@ -2519,12 +2689,17 @@ declare namespace microsoftTeams {
      * continue working.
      * @param url The URL to navigate the frame to.
      */
-    function navigateCrossDomain(url: string, onComplete?: (status: boolean, reason?: string) => void): void;
+    function navigateCrossDomain(
+        url: string,
+        onComplete?: (status: boolean, reason?: string) => void,
+    ): void;
     /**
      * Navigates back in the Teams client. See registerBackButtonHandler for more information on when
      * it's appropriate to use this method.
      */
-    function navigateBack(onComplete?: (status: boolean, reason?: string) => void): void;
+    function navigateBack(
+        onComplete?: (status: boolean, reason?: string) => void,
+    ): void;
     namespace people {
         /**
          * Launches a people picker and allows the user to select one or more people from the list
@@ -2587,7 +2762,10 @@ declare namespace microsoftTeams {
      * @param validMessageOrigins Optionally specify a list of cross frame message origins. There must have
      * https: protocol otherwise they will be ignored. Example: https://www.example.com
      */
-    function initialize(callback?: () => void, validMessageOrigins?: string[]): void;
+    function initialize(
+        callback?: () => void,
+        validMessageOrigins?: string[],
+    ): void;
     /**
      * Hide from docs.
      * ------
@@ -2619,13 +2797,17 @@ declare namespace microsoftTeams {
      * @param handler The handler to invoke when the user changes their theme.
      */
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
-    function registerOnThemeChangeHandler(handler: (theme: string) => void): void;
+    function registerOnThemeChangeHandler(
+        handler: (theme: string) => void,
+    ): void;
     /**
      * Registers a handler for changes from or to full-screen view for a tab.
      * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
      * @param handler The handler to invoke when the user toggles full-screen view for a tab.
      */
-    function registerFullScreenHandler(handler: (isFullScreen: boolean) => void): void;
+    function registerFullScreenHandler(
+        handler: (isFullScreen: boolean) => void,
+    ): void;
     /**
      * Registers a handler for clicking the app button.
      * Only one handler can be registered at a time. A subsequent registration replaces an existing registration.
@@ -2658,14 +2840,18 @@ declare namespace microsoftTeams {
      * @param handler The handler to invoke when the page is loaded.
      */
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
-    function registerOnLoadHandler(handler: (context: LoadContext) => void): void;
+    function registerOnLoadHandler(
+        handler: (context: LoadContext) => void,
+    ): void;
     /**
      * Registers a handler to be called before the page is unloaded.
      * @param handler The handler to invoke before the page is unloaded. If this handler returns true the page should
      * invoke the readyToUnload function provided to it once it's ready to be unloaded.
      */
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
-    function registerBeforeUnloadHandler(handler: (readyToUnload: () => void) => boolean): void;
+    function registerBeforeUnloadHandler(
+        handler: (readyToUnload: () => void) => boolean,
+    ): void;
     /**
      * Registers a handler for when the user reconfigurated tab
      * @param handler The handler to invoke when the user click on Settings.
@@ -2699,7 +2885,10 @@ declare namespace microsoftTeams {
      * execute deep link API.
      * @param deepLink deep link.
      */
-    function executeDeepLink(deepLink: string, onComplete?: (status: boolean, reason?: string) => void): void;
+    function executeDeepLink(
+        deepLink: string,
+        onComplete?: (status: boolean, reason?: string) => void,
+    ): void;
     function setFrameContext(frameContext: FrameContext): void;
     function initializeWithFrameContext(
         frameContext: FrameContext,
@@ -2722,13 +2911,18 @@ declare namespace microsoftTeams {
          * Gets the settings for the current instance.
          * @param callback The callback to invoke when the {@link Settings} object is retrieved.
          */
-        function getSettings(callback: (instanceSettings: Settings) => void): void;
+        function getSettings(
+            callback: (instanceSettings: Settings) => void,
+        ): void;
         /**
          * Sets the settings for the current instance.
          * This is an asynchronous operation; calls to getSettings are not guaranteed to reflect the changed state.
          * @param settings The desired settings for this instance.
          */
-        function setSettings(instanceSettings: Settings, onComplete?: (status: boolean, reason?: string) => void): void;
+        function setSettings(
+            instanceSettings: Settings,
+            onComplete?: (status: boolean, reason?: string) => void,
+        ): void;
         /**
          * Registers a handler for when the user attempts to save the settings. This handler should be used
          * to create or update the underlying resource powering the content.
@@ -2744,7 +2938,9 @@ declare namespace microsoftTeams {
          * Only one handler may be registered at a time. Subsequent registrations will override the first.
          * @param handler The handler to invoke when the user selects the remove button.
          */
-        function registerOnRemoveHandler(handler: (evt: RemoveEvent) => void): void;
+        function registerOnRemoveHandler(
+            handler: (evt: RemoveEvent) => void,
+        ): void;
         interface Settings {
             /**
              * A suggested display name for the new content.
@@ -2811,7 +3007,10 @@ declare namespace microsoftTeams {
          * @param taskInfo An object containing the parameters of the task module
          * @param submitHandler Handler to call when the task module is completed
          */
-        function startTask(taskInfo: TaskInfo, submitHandler?: (err: string, result: string) => void): IAppWindow;
+        function startTask(
+            taskInfo: TaskInfo,
+            submitHandler?: (err: string, result: string) => void,
+        ): IAppWindow;
         /**
          * Update height/width task info properties.
          * @param taskInfo An object containing width and height properties
@@ -2822,6 +3021,9 @@ declare namespace microsoftTeams {
          * @param result Contains the result to be sent to the bot or the app. Typically a JSON object or a serialized version of it
          * @param appIds Helps to validate that the call originates from the same appId as the one that invoked the task module
          */
-        function submitTask(result?: string | object, appIds?: string | string[]): void;
+        function submitTask(
+            result?: string | object,
+            appIds?: string | string[],
+        ): void;
     }
 }

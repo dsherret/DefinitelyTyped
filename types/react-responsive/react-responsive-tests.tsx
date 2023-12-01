@@ -12,7 +12,9 @@ class QueryTests extends React.Component {
                         <div>You also have a huge screen</div>
                     </MediaQuery>
                     <MediaQuery maxWidth={1224}>
-                        <div>You are sized like a tablet or mobile phone though</div>
+                        <div>
+                            You are sized like a tablet or mobile phone though
+                        </div>
                     </MediaQuery>
                 </MediaQuery>
                 <MediaQuery maxDeviceWidth={1224}>
@@ -33,7 +35,9 @@ class QueryTests extends React.Component {
                         <div>You also have a huge screen</div>
                     </MediaQuery>
                     <MediaQuery query="(max-width: 1224px)">
-                        <div>You are sized like a tablet or mobile phone though</div>
+                        <div>
+                            You are sized like a tablet or mobile phone though
+                        </div>
                     </MediaQuery>
                 </MediaQuery>
             </div>
@@ -41,9 +45,9 @@ class QueryTests extends React.Component {
     }
 }
 
-const ChildrenPropTest: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
-    <MediaQuery minWidth={992} children={children} />
-);
+const ChildrenPropTest: React.FC<React.PropsWithChildren<{}>> = ({
+    children,
+}) => <MediaQuery minWidth={992} children={children} />;
 
 class PropsTests extends React.Component {
     render() {
@@ -124,7 +128,11 @@ class CallbackTest extends React.Component {
 
     render() {
         return (
-            <MediaQuery minDeviceWidth={700} onBeforeChange={this.onBeforeChange} onChange={this.onChange}>
+            <MediaQuery
+                minDeviceWidth={700}
+                onBeforeChange={this.onBeforeChange}
+                onChange={this.onChange}
+            >
                 Media query matches!
             </MediaQuery>
         );

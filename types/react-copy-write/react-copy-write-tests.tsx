@@ -15,14 +15,13 @@ const incrementNumber = () =>
 const App = () => (
     <Provider>
         <div>
-            <Consumer>
-                {state => <div>Letter: {state.letter}</div>}
-            </Consumer>
+            <Consumer>{(state) => <div>Letter: {state.letter}</div>}</Consumer>
 
             <Consumer
-                render={state => (
+                render={(state) => (
                     <div>
-                        Number (<span onClick={incrementNumber}>increment</span>): {state.number}
+                        Number (<span onClick={incrementNumber}>increment</span>
+                        ): {state.number}
                     </div>
                 )}
             />

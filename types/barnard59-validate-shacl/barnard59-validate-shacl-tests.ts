@@ -3,8 +3,8 @@ import { shacl } from "barnard59-validate-shacl";
 import { ValidationError } from "barnard59-validate-shacl/lib/errors";
 import { Duplex, Readable } from "stream";
 
-const shape: Readable = <any> {};
-const shViolation: NamedNode = <any> {};
+const shape: Readable = <any>{};
+const shViolation: NamedNode = <any>{};
 
 async function test() {
     // shape only
@@ -27,7 +27,9 @@ async function test() {
             }
 
             if (!report.conforms) {
-                return report.results.some(r => shViolation.equals(r.severity));
+                return report.results.some((r) =>
+                    shViolation.equals(r.severity),
+                );
             }
 
             return false;
@@ -35,7 +37,7 @@ async function test() {
     });
 }
 
-const validationError: ValidationError = <any> {};
+const validationError: ValidationError = <any>{};
 const error: Error = validationError;
 // $ExpectType ValidationReport<Factory<Quad, Quad, DatasetCore<Quad, Quad>>>
 const report = validationError.report;

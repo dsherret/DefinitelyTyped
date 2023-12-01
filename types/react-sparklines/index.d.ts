@@ -12,8 +12,12 @@ export interface SparklinesProps {
     width?: number | undefined;
     height?: number | undefined;
     svgWidth?: React.SVGAttributes<React.ReactSVGElement>["width"] | undefined;
-    svgHeight?: React.SVGAttributes<React.ReactSVGElement>["height"] | undefined;
-    preserveAspectRatio?: React.SVGAttributes<React.ReactSVGElement>["preserveAspectRatio"] | undefined;
+    svgHeight?:
+        | React.SVGAttributes<React.ReactSVGElement>["height"]
+        | undefined;
+    preserveAspectRatio?:
+        | React.SVGAttributes<React.ReactSVGElement>["preserveAspectRatio"]
+        | undefined;
     margin?: number | undefined;
     min?: number | undefined;
     max?: number | undefined;
@@ -27,7 +31,9 @@ export interface SparklinesBarsProps {
     style?: React.SVGAttributes<React.ReactSVGElement>["style"] | undefined;
     barWidth?: number | undefined;
     margin?: number | undefined;
-    onMouseMove?: ((p: Point, event: React.MouseEvent<React.ReactSVGElement>) => void) | undefined;
+    onMouseMove?:
+        | ((p: Point, event: React.MouseEvent<React.ReactSVGElement>) => void)
+        | undefined;
 }
 export class SparklinesBars extends React.Component<SparklinesBarsProps> {}
 
@@ -40,7 +46,9 @@ export class SparklinesCurve extends React.Component<SparklinesCurveProps> {}
 export interface SparklinesLineProps {
     color?: React.SVGAttributes<React.ReactSVGElement>["color"] | undefined;
     style?: React.SVGAttributes<React.ReactSVGElement>["style"] | undefined;
-    onMouseMove?: ((event: "enter" | "click", value: number, point: Point) => void) | undefined;
+    onMouseMove?:
+        | ((event: "enter" | "click", value: number, point: Point) => void)
+        | undefined;
 }
 export class SparklinesLine extends React.Component<SparklinesLineProps> {}
 

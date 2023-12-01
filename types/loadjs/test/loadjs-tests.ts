@@ -30,6 +30,15 @@ importedLoadJs(["/path/to/foo.js", "/path/to/bar.js"], "foobar", loadOptions); /
 importedLoadJs.ready("foobar", readyOptions); // $ExpectType typeof loadjs
 
 importedLoadJs("/path/to/foo.js", { ...loadOptions, returnPromise: true }); // $ExpectType Promise<void>
-importedLoadJs(["/path/to/foo.js", "/path/to/bar.js"], { ...loadOptions, returnPromise: true }); // $ExpectType Promise<void>
-importedLoadJs(["/path/to/foo.js", "/path/to/bar.js"], "foobar", { ...loadOptions, returnPromise: true }); // $ExpectType Promise<void>
-importedLoadJs("/path/to/foo.js", "foo", { ...loadOptions, returnPromise: true }); // $ExpectType Promise<void>
+importedLoadJs(["/path/to/foo.js", "/path/to/bar.js"], {
+    ...loadOptions,
+    returnPromise: true,
+}); // $ExpectType Promise<void>
+importedLoadJs(["/path/to/foo.js", "/path/to/bar.js"], "foobar", {
+    ...loadOptions,
+    returnPromise: true,
+}); // $ExpectType Promise<void>
+importedLoadJs("/path/to/foo.js", "foo", {
+    ...loadOptions,
+    returnPromise: true,
+}); // $ExpectType Promise<void>

@@ -21,16 +21,28 @@ export interface LevelDown extends AbstractLevelDOWN<Bytes, Bytes> {
     open(options: LevelDownOpenOptions, cb: ErrorCallback): void;
 
     get(key: Bytes, cb: ErrorValueCallback<Bytes>): void;
-    get(key: Bytes, options: LevelDownGetOptions, cb: ErrorValueCallback<Bytes>): void;
+    get(
+        key: Bytes,
+        options: LevelDownGetOptions,
+        cb: ErrorValueCallback<Bytes>,
+    ): void;
 
     put(key: Bytes, value: Bytes, cb: ErrorCallback): void;
-    put(key: Bytes, value: Bytes, options: LevelDownPutOptions, cb: ErrorCallback): void;
+    put(
+        key: Bytes,
+        value: Bytes,
+        options: LevelDownPutOptions,
+        cb: ErrorCallback,
+    ): void;
 
     del(key: Bytes, cb: ErrorCallback): void;
     del(key: Bytes, options: LevelDownDelOptions, cb: ErrorCallback): void;
 
     batch(): AbstractChainedBatch<Bytes, Bytes>;
-    batch(array: AbstractBatch[], cb: ErrorCallback): AbstractChainedBatch<Bytes, Bytes>;
+    batch(
+        array: AbstractBatch[],
+        cb: ErrorCallback,
+    ): AbstractChainedBatch<Bytes, Bytes>;
     batch(
         array: AbstractBatch[],
         options: LevelDownBatchOptions,
@@ -47,7 +59,7 @@ export interface LevelDown extends AbstractLevelDOWN<Bytes, Bytes> {
 }
 
 interface LevelDownConstructor {
-    new(location: string): LevelDown;
+    new (location: string): LevelDown;
     (location: string): LevelDown;
     destroy(location: string, cb: ErrorCallback): void;
     repair(location: string, cb: ErrorCallback): void;
@@ -79,7 +91,8 @@ export interface LevelDownBatchOptions extends AbstractOptions {
     sync?: boolean | undefined;
 }
 
-export interface LevelDownIteratorOptions extends AbstractIteratorOptions<Bytes> {
+export interface LevelDownIteratorOptions
+    extends AbstractIteratorOptions<Bytes> {
     fillCache?: boolean | undefined;
 }
 

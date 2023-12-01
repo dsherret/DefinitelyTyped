@@ -2,19 +2,23 @@ var connection = $.hubConnection();
 connection.token = "abc123";
 connection.data = "important-stuff";
 var contosoChatHubProxy = connection.createHubProxy("contosoChatHub");
-contosoChatHubProxy.on("addContosoChatMessageToPage", function(name, message) {
+contosoChatHubProxy.on("addContosoChatMessageToPage", function (name, message) {
     console.log(name + " " + message);
 });
 connection
     .start()
-    .done(function() {
+    .done(function () {
         // Wire up Send button to call NewContosoChatMessage on the server.
-        $("#newContosoChatMessage").click(function() {
-            contosoChatHubProxy.invoke("newContosoChatMessage", $("#displayname").val(), $("#message").val());
+        $("#newContosoChatMessage").click(function () {
+            contosoChatHubProxy.invoke(
+                "newContosoChatMessage",
+                $("#displayname").val(),
+                $("#message").val(),
+            );
             $("#message").val("").focus();
         });
     })
-    .fail(function() {
+    .fail(function () {
         console.log("Could not connect");
     });
 
@@ -27,25 +31,29 @@ $.connection.hub.start({ transport: ["webSockets", "longPolling"] });
 connection.start({ transport: "longPolling" });
 connection.start({ transport: ["webSockets", "longPolling"] });
 
-$.connection.hub.start().done(function() {
+$.connection.hub.start().done(function () {
     console.log("Connected, transport = " + $.connection.hub.transport.name);
 });
 
-connection.hub.start().done(function() {
+connection.hub.start().done(function () {
     console.log("Connected, transport = " + connection.transport.name);
 });
 
-$.connection.hub.connectionSlow(function() {
-    console.log("We are currently experiencing difficulties with the connection.");
+$.connection.hub.connectionSlow(function () {
+    console.log(
+        "We are currently experiencing difficulties with the connection.",
+    );
 });
-connection.connectionSlow(function() {
-    console.log("We are currently experiencing difficulties with the connection.");
+connection.connectionSlow(function () {
+    console.log(
+        "We are currently experiencing difficulties with the connection.",
+    );
 });
 
-$.connection.hub.error(function(error) {
+$.connection.hub.error(function (error) {
     console.log("SignalR error: " + error);
 });
-connection.error(function(error) {
+connection.error(function (error) {
     console.log("SignalR error: " + error);
 });
 
@@ -54,35 +62,35 @@ $.connection.hub.logging = true;
 
 function test_client() {
     var connection = $.connection("/echo");
-    connection.received(function(data) {
+    connection.received(function (data) {
         console.log(data);
     });
-    connection.error(function(error) {
+    connection.error(function (error) {
         console.warn(error);
     });
-    connection.stateChanged(function(change) {
+    connection.stateChanged(function (change) {
         if (change.newState === $.signalR.connectionState.reconnecting) {
             console.log("Re-connecting");
         } else if (change.newState === $.signalR.connectionState.connected) {
             console.log("The server is online");
         }
     });
-    connection.reconnected(function() {
+    connection.reconnected(function () {
         console.log("Reconnected");
     });
     connection.start();
-    connection.start(function() {
+    connection.start(function () {
         console.log("connection started!");
     });
     connection.stop();
-    connection.start().done(function() {
+    connection.start().done(function () {
         console.log("connection started!");
     });
     connection.start({ transport: "longPolling" });
     connection.start({ transport: $.signalR.transports.webSockets });
     connection.start({ transport: ["longPolling", "webSockets"] });
     connection.start({ waitForPageLoad: false });
-    connection.start({ transport: "longPolling" }, function() {
+    connection.start({ transport: "longPolling" }, function () {
         console.log("connection started!");
     });
     connection.send("Hello World");
@@ -92,11 +100,11 @@ function test_client() {
 
 function test_connection() {
     var connection = $.connection("/echo");
-    connection.received(function(data) {
+    connection.received(function (data) {
         $("#messages").append("<li>" + data + "</li>");
     });
     connection.start();
-    $("#broadcast").click(function() {
+    $("#broadcast").click(function () {
         connection.send($("#msg").val() as string);
     });
 }
@@ -124,10 +132,10 @@ function test_hubs() {
     var chat = $.connection.chat;
     $.connection.hub
         .start()
-        .done(function() {
+        .done(function () {
             alert("Now connected!");
         })
-        .fail(function() {
+        .fail(function () {
             alert("Could not Connect!");
         });
 
@@ -137,18 +145,18 @@ function test_hubs() {
     function connectionReady() {
         alert("Done calling first hub serverside-function");
     }
-    myHub.SomeFunction = function() {
+    myHub.SomeFunction = function () {
         alert("serverside called 'Clients.SomeClientFunction()'");
     };
-    $.connection.hub.error(function() {
+    $.connection.hub.error(function () {
         alert("An error occured");
     });
     $.connection.hub
         .start()
-        .done(function() {
+        .done(function () {
             myHub.SomeFunction("whatever").done(connectionReady);
         })
-        .fail(function() {
+        .fail(function () {
             alert("Could not Connect!");
         });
 
@@ -162,10 +170,10 @@ function test_hubs() {
         room = "main";
     proxy.invoke("send", msg);
     proxy.invoke("send", msg, room);
-    proxy.invoke("add", 1, 2).done(function(result: any) {
+    proxy.invoke("add", 1, 2).done(function (result: any) {
         console.log("The result is " + result);
     });
-    proxy.on("addMessage", function(msg?) {
+    proxy.on("addMessage", function (msg?) {
         console.log(msg);
     });
     // the second argument to proxy.off is optional
@@ -186,18 +194,18 @@ function test_hubs() {
 }
 
 // Sample from : https://github.com/SignalR/SignalR/wiki/QuickStart-Hubs#javascript--html
-$(function() {
+$(function () {
     // Proxy created on the fly
     var chat = $.connection.chat;
 
     // Declare a function on the chat hub so the server can invoke it
-    chat.client.addMessage = function(message) {
+    chat.client.addMessage = function (message) {
         $("#messages").append("<li>" + message + "</li>");
     };
 
     // Start the connection
-    $.connection.hub.start().done(function() {
-        $("#broadcast").click(function() {
+    $.connection.hub.start().done(function () {
+        $("#broadcast").click(function () {
             // Call the chat method on the server
             chat.server.send($("#msg").val() as string);
         });

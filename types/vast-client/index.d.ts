@@ -262,10 +262,7 @@ export class VASTParser extends EventEmitter {
      * Parses the given xml Object into an array of ads
      * Returns the array or throws an `Error` if an invalid VAST XML is provided
      */
-    parseVastXml(
-        vastXml: Document,
-        options: ParseVastXmlOptions,
-    ): VastAd[];
+    parseVastXml(vastXml: Document, options: ParseVastXmlOptions): VastAd[];
 }
 
 export interface VASTClientCustomStorage {

@@ -80,21 +80,44 @@ export interface FbtOptions {
 }
 
 export interface FbtApi<Output extends { fbt: unknown; params: unknown }> {
-    (text: string | string[], description: string, options?: FbtOptions): Output["fbt"];
+    (
+        text: string | string[],
+        description: string,
+        options?: FbtOptions,
+    ): Output["fbt"];
 
-    param(name: string, value: unknown, options?: ParamOptions): Output["params"];
+    param(
+        name: string,
+        value: unknown,
+        options?: ParamOptions,
+    ): Output["params"];
 
     sameParam(name: string): Output["params"];
 
-    name(tokenName: string, value: unknown, gender: IntlVariationsGender): Output["params"];
+    name(
+        tokenName: string,
+        value: unknown,
+        gender: IntlVariationsGender,
+    ): Output["params"];
 
-    plural(singularPhrase: string, count: number, options?: PluralOptions): Output["params"];
+    plural(
+        singularPhrase: string,
+        count: number,
+        options?: PluralOptions,
+    ): Output["params"];
 
-    enum<Range extends { [enumKey: string]: string }>(enumKey: keyof Range, enumRange: Range): Output["params"];
+    enum<Range extends { [enumKey: string]: string }>(
+        enumKey: keyof Range,
+        enumRange: Range,
+    ): Output["params"];
 
     enum(index: string, range: string[]): Output["params"];
 
-    pronoun(type: PronounType, gender: GenderConst, options?: PronounOptions): Output["params"];
+    pronoun(
+        type: PronounType,
+        gender: GenderConst,
+        options?: PronounOptions,
+    ): Output["params"];
 
     //
     /**
@@ -209,7 +232,10 @@ interface FbtHookRegistrations {
     onTranslationOverride?: (hash: string) => void;
 }
 
-export function init(options: { hooks?: FbtHookRegistrations; translations: TranslationDict }): void;
+export function init(options: {
+    hooks?: FbtHookRegistrations;
+    translations: TranslationDict;
+}): void;
 
 interface FbtOutput {
     fbt: string;
@@ -271,8 +297,12 @@ export interface FbtProps extends FbtOptions {
 
 declare global {
     namespace JSX {
-        type PropsWithChildren<P> = P & { children?: React.ReactNode | undefined };
-        type PropsWithStringChild<P> = P & { children?: string | string[] | undefined };
+        type PropsWithChildren<P> = P & {
+            children?: React.ReactNode | undefined;
+        };
+        type PropsWithStringChild<P> = P & {
+            children?: string | string[] | undefined;
+        };
 
         interface IntrinsicElements {
             fbt: PropsWithChildren<FbtProps>;

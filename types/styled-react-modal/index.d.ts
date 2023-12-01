@@ -1,5 +1,10 @@
 import * as React from "react";
-import { AnyStyledComponent, CSSObject, InterpolationFunction, StyledComponent } from "styled-components";
+import {
+    AnyStyledComponent,
+    CSSObject,
+    InterpolationFunction,
+    StyledComponent,
+} from "styled-components";
 
 declare const BaseModalBackground: StyledComponent<"div", any>;
 
@@ -13,7 +18,9 @@ export interface ModalProps {
     beforeOpen?: Promise<void> | (() => void) | undefined;
     beforeClose?: Promise<void> | (() => void) | undefined;
     onEscapeKeydown?: ((event: Event) => void) | undefined;
-    onBackgroundClick?: ((event: React.MouseEvent<HTMLDivElement>) => void) | undefined;
+    onBackgroundClick?:
+        | ((event: React.MouseEvent<HTMLDivElement>) => void)
+        | undefined;
 }
 
 declare class Modal extends React.Component<ModalProps> {

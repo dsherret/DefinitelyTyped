@@ -27,7 +27,11 @@ type EE = EventEmitter;
 type M = Match;
 type ReqParams = RequestParams;
 
-const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (context, ee, next) => {
+const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (
+    context,
+    ee,
+    next,
+) => {
     context; // $ExpectType ScenarioContext<{ foo: string; }, { bar(baz: string): number; }>
     context.vars.$environment; // $ExpectType string | undefined
     context.vars.$processEnvironment; // $ExpectType Record<string, string>
@@ -65,7 +69,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.addListener("started", () => {}); // $ExpectType EventEmitter
     ee.addListener("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.addListener("error", error => {
+    ee.addListener("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -84,7 +88,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.addListener("foo", bar => {
+    ee.addListener("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -106,7 +110,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.on("started", () => {}); // $ExpectType EventEmitter
     ee.on("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.on("error", error => {
+    ee.on("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -125,7 +129,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.on("foo", bar => {
+    ee.on("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -147,7 +151,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.once("started", () => {}); // $ExpectType EventEmitter
     ee.once("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.once("error", error => {
+    ee.once("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -166,7 +170,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.once("foo", bar => {
+    ee.once("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -188,7 +192,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.removeListener("started", () => {}); // $ExpectType EventEmitter
     ee.removeListener("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.removeListener("error", error => {
+    ee.removeListener("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -207,7 +211,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.removeListener("foo", bar => {
+    ee.removeListener("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -229,7 +233,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.off("started", () => {}); // $ExpectType EventEmitter
     ee.off("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.off("error", error => {
+    ee.off("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -248,7 +252,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.off("foo", bar => {
+    ee.off("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -270,7 +274,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.prependListener("started", () => {}); // $ExpectType EventEmitter
     ee.prependListener("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.prependListener("error", error => {
+    ee.prependListener("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -289,7 +293,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.prependListener("foo", bar => {
+    ee.prependListener("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -311,7 +315,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
     ee.prependOnceListener("started", () => {}); // $ExpectType EventEmitter
     ee.prependOnceListener("request", () => {}); // $ExpectType EventEmitter
     // $ExpectType EventEmitter
-    ee.prependOnceListener("error", error => {
+    ee.prependOnceListener("error", (error) => {
         error; // $ExpectType unknown
     });
     // $ExpectType EventEmitter
@@ -330,7 +334,7 @@ const actionFn: ActionFn<{ foo: string }, { bar(baz: string): number }> = (conte
         uid; // $ExpectType string
     });
     // $ExpectType EventEmitter
-    ee.prependOnceListener("foo", bar => {
+    ee.prependOnceListener("foo", (bar) => {
         bar; // $ExpectType unknown
     });
 
@@ -390,7 +394,13 @@ const beforeRequestFn: BeforeRequestFn = (requestParams, context, ee, next) => {
     next(new Error()); // $ExpectType void
 };
 
-const afterResponseFn: AfterResponseFn = (requestConfig, response, context, ee, next) => {
+const afterResponseFn: AfterResponseFn = (
+    requestConfig,
+    response,
+    context,
+    ee,
+    next,
+) => {
     requestConfig.url; // $ExpectType string | URL | undefined
     requestConfig.method; // $ExpectType Method | undefined
     requestConfig.headers; // $ExpectType Headers | undefined

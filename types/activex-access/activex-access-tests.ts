@@ -4,7 +4,12 @@ let app = new ActiveXObject("Access.Application");
 app.UserControl = true;
 
 // opens a form
-app.DoCmd.OpenForm("MyForm", Access.AcFormView.acNormal, "", "LastName=\"Smith\"");
+app.DoCmd.OpenForm(
+    "MyForm",
+    Access.AcFormView.acNormal,
+    "",
+    'LastName="Smith"',
+);
 
 // change the contents of a textbox
 // tslint:disable-next-line:no-unnecessary-type-assertion

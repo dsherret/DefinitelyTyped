@@ -6,9 +6,18 @@ import { useRef } from "react";
 
 declare const BLOCK_INSTANCE: BlockInstance;
 
-const COLORS = [{ name: "Red", slug: "red", color: "#ff0000" }, { name: "Blue", slug: "blue", color: "#0000ff" }];
-const FONT_SIZES = [{ name: "Small", slug: "small", size: 12 }, { name: "Large", slug: "large", size: 18 }];
-const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }", baseUrl: "https://foo.bar" }];
+const COLORS = [
+    { name: "Red", slug: "red", color: "#ff0000" },
+    { name: "Blue", slug: "blue", color: "#0000ff" },
+];
+const FONT_SIZES = [
+    { name: "Small", slug: "small", size: 12 },
+    { name: "Large", slug: "large", size: 18 },
+];
+const STYLES = [
+    { css: ".foo { color: red; }" },
+    { css: ".bar { color: blue; }", baseUrl: "https://foo.bar" },
+];
 
 //
 // Components
@@ -17,24 +26,36 @@ const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }",
 //
 // alignment-toolbar
 //
-<be.AlignmentToolbar value={undefined} onChange={newValue => newValue && console.log(newValue.toUpperCase())} />;
-<be.AlignmentToolbar value="left" onChange={newValue => newValue && console.log(newValue.toUpperCase())} />;
+<be.AlignmentToolbar
+    value={undefined}
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
+/>;
+<be.AlignmentToolbar
+    value="left"
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
+/>;
 <be.AlignmentToolbar
     alignmentControls={[{ align: "center", icon: "carrot", title: "Center" }]}
     value="left"
-    onChange={newValue => newValue && console.log(newValue.toUpperCase())}
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
 />;
 
 //
 // block-alignment-toolbar
 //
-<be.BlockAlignmentToolbar value={undefined} onChange={newValue => newValue && console.log(newValue.toUpperCase())} />;
-<be.BlockAlignmentToolbar value="left" onChange={newValue => newValue && console.log(newValue.toUpperCase())} />;
+<be.BlockAlignmentToolbar
+    value={undefined}
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
+/>;
+<be.BlockAlignmentToolbar
+    value="left"
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
+/>;
 <be.BlockAlignmentToolbar
     isCollapsed
     value="left"
     controls={["left", "right"]}
-    onChange={newValue => newValue && console.log(newValue.toUpperCase())}
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
 />;
 
 //
@@ -94,7 +115,11 @@ const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }",
 // block-mover
 //
 <be.BlockMover clientIds={["foo", "bar"]} />;
-<be.BlockMover clientIds={["foo", "bar"]} isDraggable onDragStart={() => console.log("dragging")} />;
+<be.BlockMover
+    clientIds={["foo", "bar"]}
+    isDraggable
+    onDragStart={() => console.log("dragging")}
+/>;
 
 //
 // block-navigation/dropdown
@@ -115,7 +140,10 @@ const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }",
 //
 // block-vertical-alignment-toolbar
 //
-<be.BlockVerticalAlignmentToolbar value="top" onChange={newValue => newValue && console.log(newValue.toUpperCase())} />;
+<be.BlockVerticalAlignmentToolbar
+    value="top"
+    onChange={(newValue) => newValue && console.log(newValue.toUpperCase())}
+/>;
 
 //
 // button-block-appender
@@ -134,7 +162,9 @@ const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }",
         <div>
             <h1>Color list</h1>
             <ul>
-                {colors.map((c, i) => <li key={i}>{c.color}</li>)}
+                {colors.map((c, i) => (
+                    <li key={i}>{c.color}</li>
+                ))}
             </ul>
             {foo}
         </div>
@@ -149,7 +179,9 @@ const STYLES = [{ css: ".foo { color: red; }" }, { css: ".bar { color: blue; }",
 //
 
 // $ExpectType ComponentType<any>
-be.createCustomColorsHOC(COLORS)("backgroundColor", "borderColor")(() => <h1>Hello World</h1>);
+be.createCustomColorsHOC(COLORS)("backgroundColor", "borderColor")(() => (
+    <h1>Hello World</h1>
+));
 
 // $ExpectType string
 be.getColorClassName("foo", "bar");
@@ -170,14 +202,21 @@ be.getColorObjectByColorValue(COLORS, "#ff0000");
 be.getColorObjectByColorValue(COLORS, undefined);
 
 // $ExpectType ComponentType<any>
-be.withColors("backgroundColor", { textColor: "color" })(() => <h1>Hello World</h1>);
+be.withColors("backgroundColor", { textColor: "color" })(() => (
+    <h1>Hello World</h1>
+));
 
 //
 // contrast-checker
 //
 <be.ContrastChecker />;
 <be.ContrastChecker fontSize={12} />;
-<be.ContrastChecker backgroundColor="red" fallbackBackgroundColor="blue" fallbackTextColor="yellow" isLargeText />;
+<be.ContrastChecker
+    backgroundColor="red"
+    fallbackBackgroundColor="blue"
+    fallbackTextColor="yellow"
+    isLargeText
+/>;
 
 //
 // font-sizes
@@ -225,19 +264,21 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
 // media-placeholder
 //
 <be.MediaPlaceholder
-    onSelect={item => console.log(item.id)}
+    onSelect={(item) => console.log(item.id)}
     allowedTypes={["image"]}
     labels={{ title: "The Image" }}
 />;
 <be.MediaPlaceholder
     multiple
-    onSelect={items => console.log(items.map(i => i.id).join())}
+    onSelect={(items) => console.log(items.map((i) => i.id).join())}
     allowedTypes={["image"]}
     labels={{ title: "The Image" }}
 />;
 <be.MediaPlaceholder
     multiple={"add"}
-    onSelect={items => console.log(items.map((i: { id: string }) => i.id).join())}
+    onSelect={(items) =>
+        console.log(items.map((i: { id: string }) => i.id).join())
+    }
     allowedTypes={["image"]}
     labels={{ title: "The Image" }}
 />;
@@ -248,17 +289,23 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
 //
 <be.MediaUploadCheck>
     <be.MediaUpload
-        onSelect={media => console.log("selected " + media.id)}
+        onSelect={(media) => console.log("selected " + media.id)}
         allowedTypes={["audio"]}
-        render={({ open }) => <button onClick={open}>Open Media Library</button>}
+        render={({ open }) => (
+            <button onClick={open}>Open Media Library</button>
+        )}
     />
 </be.MediaUploadCheck>;
 <be.MediaUploadCheck fallback={<div>Invalid permissions</div>}>
     <be.MediaUpload
         multiple
-        onSelect={media => console.log("selected " + media.map(m => m.id).join())}
+        onSelect={(media) =>
+            console.log("selected " + media.map((m) => m.id).join())
+        }
         allowedTypes={["audio"]}
-        render={({ open }) => <button onClick={open}>Open Media Library</button>}
+        render={({ open }) => (
+            <button onClick={open}>Open Media Library</button>
+        )}
     />
 </be.MediaUploadCheck>;
 
@@ -311,7 +358,10 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
 //
 // plain-text
 //
-<be.PlainText value="Hello World" onChange={v => console.log(v.toUpperCase())} />;
+<be.PlainText
+    value="Hello World"
+    onChange={(v) => console.log(v.toUpperCase())}
+/>;
 
 //
 // rich-text
@@ -323,13 +373,23 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
     style={{ color: "red" }}
     tagName="p"
     value="Hello World"
-    onChange={nextContent => console.log(nextContent.toUpperCase())}
-    onReplace={blocks => blocks.forEach(b => console.log(b.clientId))}
+    onChange={(nextContent) => console.log(nextContent.toUpperCase())}
+    onReplace={(blocks) => blocks.forEach((b) => console.log(b.clientId))}
     allowedFormats={["core/bold", "core/italic"]}
 />;
 <be.RichText.Content value="foo" />;
-<be.RichText.Content tagName="p" style={{ color: "blue" }} className="foo" value="Hello World" dir="rtl" />;
-<be.RichTextShortcut type="primary" character="b" onUse={() => console.log("Hello World")} />;
+<be.RichText.Content
+    tagName="p"
+    style={{ color: "blue" }}
+    className="foo"
+    value="Hello World"
+    dir="rtl"
+/>;
+<be.RichTextShortcut
+    type="primary"
+    character="b"
+    onUse={() => console.log("Hello World")}
+/>;
 <be.RichTextToolbarButton
     isActive
     name="bold"
@@ -347,7 +407,7 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
     className="wp-block-button__inline-link-input"
     value="https://foo.bar"
     autoFocus={false}
-    onChange={value => console.log(value.toUpperCase())}
+    onChange={(value) => console.log(value.toUpperCase())}
     disableSuggestions
     isFullWidth
     hasBorder
@@ -356,7 +416,10 @@ be.withFontSizes("fontSize")(() => <h1>Hello World</h1>);
 //
 // url-input/button
 //
-<be.URLInputButton url="https://foo.bar" onChange={(url, post) => post && console.log(post.id)} />;
+<be.URLInputButton
+    url="https://foo.bar"
+    onChange={(url, post) => post && console.log(post.id)}
+/>;
 
 //
 // url-popover
@@ -447,8 +510,18 @@ dispatch("core/block-editor").moveBlocksUp(["foo", "baz"], "bar");
 
 // $ExpectType IterableIterator<void>
 dispatch("core/block-editor").moveBlockToPosition("foo", "bar", "baz", 1);
-dispatch("core/block-editor").moveBlockToPosition(undefined, "foo", undefined, 5);
-dispatch("core/block-editor").moveBlockToPosition(undefined, undefined, undefined, 5);
+dispatch("core/block-editor").moveBlockToPosition(
+    undefined,
+    "foo",
+    undefined,
+    5,
+);
+dispatch("core/block-editor").moveBlockToPosition(
+    undefined,
+    undefined,
+    undefined,
+    5,
+);
 
 // $ExpectType void
 dispatch("core/block-editor").multiSelect("foo", "bar");
@@ -514,13 +587,18 @@ dispatch("core/block-editor").toggleSelection();
 dispatch("core/block-editor").toggleSelection(true);
 
 // $ExpectType void
-dispatch("core/block-editor").updateBlock("foo", { attributes: { foo: "bar" }, innerBlocks: [] });
+dispatch("core/block-editor").updateBlock("foo", {
+    attributes: { foo: "bar" },
+    innerBlocks: [],
+});
 
 // $ExpectType void
 dispatch("core/block-editor").updateBlockAttributes("foo", { foo: "bar" });
 
 // $ExpectType void
-dispatch("core/block-editor").updateBlockListSettings("foo", { allowedBlocks: ["core/paragraph"] });
+dispatch("core/block-editor").updateBlockListSettings("foo", {
+    allowedBlocks: ["core/paragraph"],
+});
 
 // $ExpectType void
 dispatch("core/block-editor").updateSettings({
@@ -541,7 +619,8 @@ select("core/block-editor").getAdjacentBlockClientId("foo", -1);
 select("core/block-editor").getAdjacentBlockClientId("foo", 1);
 
 {
-    const blockProps: UseBlockProps.Merged & UseBlockProps.Reserved = be.useBlockProps();
+    const blockProps: UseBlockProps.Merged & UseBlockProps.Reserved =
+        be.useBlockProps();
     blockProps;
 }
 
@@ -564,7 +643,8 @@ be.useBlockProps.save();
 be.useBlockProps.save({ foo: "bar" });
 
 {
-    const innerBlocksProps: UseBlockProps.Merged & UseBlockProps.Reserved = be.useInnerBlocksProps();
+    const innerBlocksProps: UseBlockProps.Merged & UseBlockProps.Reserved =
+        be.useInnerBlocksProps();
     innerBlocksProps;
 }
 

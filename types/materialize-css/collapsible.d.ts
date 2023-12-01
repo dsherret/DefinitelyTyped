@@ -10,12 +10,18 @@ declare namespace M {
         /**
          * Init Collapsible
          */
-        static init(els: Element, options?: Partial<CollapsibleOptions>): Collapsible;
+        static init(
+            els: Element,
+            options?: Partial<CollapsibleOptions>,
+        ): Collapsible;
 
         /**
          * Init Collapsibles
          */
-        static init(els: MElements, options?: Partial<CollapsibleOptions>): Collapsible[];
+        static init(
+            els: MElements,
+            options?: Partial<CollapsibleOptions>,
+        ): Collapsible[];
 
         /**
          * Open collapsible section
@@ -77,6 +83,11 @@ declare namespace M {
 
 interface JQuery {
     collapsible(method: keyof Pick<M.Collapsible, "destroy">): JQuery;
-    collapsible(method: keyof Pick<M.Collapsible, "open"> | keyof Pick<M.Collapsible, "close">, n: number): JQuery;
+    collapsible(
+        method:
+            | keyof Pick<M.Collapsible, "open">
+            | keyof Pick<M.Collapsible, "close">,
+        n: number,
+    ): JQuery;
     collapsible(options?: Partial<M.CollapsibleOptions>): JQuery;
 }

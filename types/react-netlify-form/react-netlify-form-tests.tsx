@@ -8,7 +8,12 @@ class BasicForm extends React.Component {
                 {({ loading, error, success }) => (
                     <div>
                         {loading && <div>Loading...</div>}
-                        {error && <div>Your information was not sent. Please try again later.</div>}
+                        {error && (
+                            <div>
+                                Your information was not sent. Please try again
+                                later.
+                            </div>
+                        )}
                         {success && <div>Thank you for contacting us!</div>}
                         {!loading && !success && (
                             <div>
@@ -37,8 +42,18 @@ class RecaptchaV2Form extends React.Component {
                 {({ loading, error, recaptchaError, success, recaptcha }) => (
                     <div>
                         {loading && <div>Loading...</div>}
-                        {error && <div>Your information was not sent. Please try again later.</div>}
-                        {recaptchaError && <div>Recaptcha did not match. Please make sure the box is checked.</div>}
+                        {error && (
+                            <div>
+                                Your information was not sent. Please try again
+                                later.
+                            </div>
+                        )}
+                        {recaptchaError && (
+                            <div>
+                                Recaptcha did not match. Please make sure the
+                                box is checked.
+                            </div>
+                        )}
                         {success && <div>Thank you for contacting us!</div>}
                         {!loading && !success && (
                             <div>
@@ -68,8 +83,18 @@ class InvisibleRecaptchaForm extends React.Component {
                 {({ loading, error, recaptchaError, success, recaptcha }) => (
                     <div>
                         {loading && <div>Loading...</div>}
-                        {error && <div>Your information was not sent. Please try again later.</div>}
-                        {recaptchaError && <div>Recaptcha did not match. Please make sure the box is checked.</div>}
+                        {error && (
+                            <div>
+                                Your information was not sent. Please try again
+                                later.
+                            </div>
+                        )}
+                        {recaptchaError && (
+                            <div>
+                                Recaptcha did not match. Please make sure the
+                                box is checked.
+                            </div>
+                        )}
                         {success && <div>Thank you for contacting us!</div>}
                         {!loading && !success && (
                             <div>

@@ -41,7 +41,7 @@ function functionSubWorks() {
     };
 
     const newState = merge(state, {
-        age: x => x * 10,
+        age: (x) => x * 10,
         name: (x, m) => {
             return x;
         },
@@ -51,11 +51,13 @@ function functionSubWorks() {
 
 function deepFunctionSubToUncreatedObjectPath() {
     interface State {
-        add?: {
-            stats: {
-                count: number;
-            };
-        } | undefined;
+        add?:
+            | {
+                  stats: {
+                      count: number;
+                  };
+              }
+            | undefined;
         orig: boolean;
     }
 
@@ -63,24 +65,23 @@ function deepFunctionSubToUncreatedObjectPath() {
         orig: true,
     };
 
-    const newState = merge(
-        state,
-        {
-            add: {
-                stats: {
-                    count: x => x + 1,
-                },
+    const newState = merge(state, {
+        add: {
+            stats: {
+                count: (x) => x + 1,
             },
         },
-    );
+    });
 }
 
 function addNestedObject() {
     interface State {
         age: number;
-        add?: {
-            sub: boolean;
-        } | undefined;
+        add?:
+            | {
+                  sub: boolean;
+              }
+            | undefined;
     }
     const state: State = { age: 10 };
     const add = { sub: true };
@@ -105,16 +106,13 @@ function deepMergeObjects() {
         },
     };
 
-    const newState = merge(
-        state,
-        {
+    const newState = merge(state, {
+        sub: {
             sub: {
-                sub: {
-                    newProp: true,
-                },
+                newProp: true,
             },
         },
-    );
+    });
 }
 
 function functionPatch() {
@@ -184,9 +182,9 @@ function deepMergeWithArr() {
 function topLevelFunctionPatch() {
     type State =
         | {
-            age: number;
-            foo: string;
-        }
+              age: number;
+              foo: string;
+          }
         | { replaced: boolean };
     const state = { age: 20, foo: "bar" };
     const replacement = { replaced: true };
@@ -203,13 +201,13 @@ function replacePrimitiveWithObjectAndViceVersa() {
         count:
             | number
             | {
-                prop: boolean;
-            };
+                  prop: boolean;
+              };
         foo:
             | number
             | {
-                prop: boolean;
-            };
+                  prop: boolean;
+              };
     }
     const state: State = { count: 10, foo: { prop: true } };
     const newState = merge(state, { count: { prop: true }, foo: 10 });

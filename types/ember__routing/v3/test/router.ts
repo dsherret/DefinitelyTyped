@@ -4,24 +4,27 @@ import Service, { inject as service } from "@ember/service";
 
 const AppRouter = Router.extend({});
 
-AppRouter.map(function() {
+AppRouter.map(function () {
     this.route("index", { path: "/" });
     this.route("about");
     this.route("favorites", { path: "/favs" });
-    this.route("posts", function() {
+    this.route("posts", function () {
         this.route("index", { path: "/" });
         this.route("new");
         this.route("post", { path: "/post/:post_id", resetNamespace: true });
-        this.route("comments", { resetNamespace: true }, function() {
+        this.route("comments", { resetNamespace: true }, function () {
             this.route("new");
         });
     });
-    this.route("photo", { path: "/photo/:id" }, function() {
+    this.route("photo", { path: "/photo/:id" }, function () {
         this.route("comment", { path: "/comment/:id" });
     });
     this.route("not-found", { path: "/*path" });
     this.mount("my-engine");
-    this.mount("my-engine", { as: "some-other-engine", path: "/some-other-engine" });
+    this.mount("my-engine", {
+        as: "some-other-engine",
+        path: "/some-other-engine",
+    });
 });
 
 const RouterServiceConsumer = Service.extend({
@@ -48,12 +51,14 @@ const RouterServiceConsumer = Service.extend({
     },
     transitionWithModelAndOptions() {
         const model = EmberObject.create();
-        get(this, "router").transitionTo("index", model, { queryParams: { search: "ember" } });
+        get(this, "router").transitionTo("index", model, {
+            queryParams: { search: "ember" },
+        });
     },
     onAndRouteInfo() {
         const router = get(this, "router");
         router
-            .on("routeWillChange", transition => {
+            .on("routeWillChange", (transition) => {
                 const to = transition.to;
                 to.child; // $ExpectType RouteInfo | null
                 to.localName; // $ExpectType string
@@ -62,9 +67,9 @@ const RouterServiceConsumer = Service.extend({
                 to.params.foo; // $ExpectType string | undefined
                 to.parent; // $ExpectType RouteInfo | null
                 to.queryParams.foo; // $ExpectType string | undefined
-                to.find(info => info.name === "foo"); // $ExpectType RouteInfo | undefined
+                to.find((info) => info.name === "foo"); // $ExpectType RouteInfo | undefined
             })
-            .on("routeDidChange", transition => {
+            .on("routeDidChange", (transition) => {
                 const from = transition.from;
                 if (from) {
                     from.child; // $ExpectType RouteInfo | null
@@ -74,7 +79,7 @@ const RouterServiceConsumer = Service.extend({
                     from.params.foo; // $ExpectType string | undefined
                     from.parent; // $ExpectType RouteInfo | null
                     from.queryParams.foo; // $ExpectType string | undefined
-                    from.find(info => info.name === "foo"); // $ExpectType RouteInfo | undefined
+                    from.find((info) => info.name === "foo"); // $ExpectType RouteInfo | undefined
                 }
             });
     },

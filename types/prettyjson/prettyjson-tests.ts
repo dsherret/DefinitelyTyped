@@ -13,7 +13,11 @@ output = prettyjson.render(input);
 
 output = prettyjson.render(input, {}, 4);
 
-output = prettyjson.render(["first string", ["nested 1", "nested 2"], "second string"]);
+output = prettyjson.render([
+    "first string",
+    ["nested 1", "nested 2"],
+    "second string",
+]);
 
 output = prettyjson.render({ param1: "first string", param2: "second string" });
 
@@ -22,4 +26,4 @@ output = prettyjson.render({
     second_param: "second string",
 });
 
-prettyjson.renderString("{name: \"Wael\", nested: {list: [\"a\", \"b\"], int: 3}}");
+prettyjson.renderString('{name: "Wael", nested: {list: ["a", "b"], int: 3}}');

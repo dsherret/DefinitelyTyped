@@ -60,10 +60,11 @@ SwaggerNodeRunner.create(config, (err, runner) => {
         const appRootFromMw = hapiMiddleware.config.swagger.appRoot;
     }
 
-    const pluginAttributes = hapiMiddleware.plugin.register.attributes.name
-        + hapiMiddleware.plugin.register.attributes.version;
+    const pluginAttributes =
+        hapiMiddleware.plugin.register.attributes.name +
+        hapiMiddleware.plugin.register.attributes.version;
 
-    hapiapp.register(hapiMiddleware.plugin, err => {
+    hapiapp.register(hapiMiddleware.plugin, (err) => {
         if (err) {
             console.error("Failed to load plugin:", err);
             return;

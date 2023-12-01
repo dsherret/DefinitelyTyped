@@ -93,7 +93,10 @@ declare namespace GoogleAppsScript {
             fetch(url: string, params: URLFetchRequestOptions): HTTPResponse;
             fetchAll(requests: Array<URLFetchRequest | string>): HTTPResponse[];
             getRequest(url: string): URLFetchRequest;
-            getRequest(url: string, params: URLFetchRequestOptions): URLFetchRequest;
+            getRequest(
+                url: string,
+                params: URLFetchRequestOptions,
+            ): URLFetchRequest;
         }
         interface HttpHeaders {
             [key: string]: string;

@@ -9,7 +9,7 @@ const app = new Koa({
     maxIpsCount: 2,
 });
 
-app.use(ctx => {
+app.use((ctx) => {
     ctx.body = "Hello World";
 });
 

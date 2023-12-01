@@ -7,7 +7,8 @@ export type OAuth2StrategyOptionsWithoutRequiredURLs = Pick<
     Exclude<keyof oauth2._StrategyOptionsBase, "authorizationURL" | "tokenURL">
 >;
 
-export interface _StrategyOptionsBase extends OAuth2StrategyOptionsWithoutRequiredURLs {
+export interface _StrategyOptionsBase
+    extends OAuth2StrategyOptionsWithoutRequiredURLs {
     authorizationURL?: string | undefined;
     callbackURL?: string | undefined;
     clientID: string;
@@ -215,12 +216,21 @@ export interface Profile extends passport.Profile {
     };
 }
 
-export type VerifyCallback = (err?: string | Error | null, user?: Express.User, info?: any) => void;
+export type VerifyCallback = (
+    err?: string | Error | null,
+    user?: Express.User,
+    info?: any,
+) => void;
 
 export class Strategy extends oauth2.Strategy {
     constructor(
         options: StrategyOptions,
-        verify: (accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) => void,
+        verify: (
+            accessToken: string,
+            refreshToken: string,
+            profile: Profile,
+            done: VerifyCallback,
+        ) => void,
     );
     constructor(
         options: StrategyOptions,
@@ -256,7 +266,8 @@ export class Strategy extends oauth2.Strategy {
 }
 
 // additional Google-specific options
-export interface AuthenticateOptionsGoogle extends passport.AuthenticateOptions {
+export interface AuthenticateOptionsGoogle
+    extends passport.AuthenticateOptions {
     accessType?: "offline" | "online" | undefined;
     prompt?: string | undefined;
     loginHint?: string | undefined;

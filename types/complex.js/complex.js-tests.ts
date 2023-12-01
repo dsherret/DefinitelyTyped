@@ -19,7 +19,7 @@ const complexLikes: ComplexLike[] = [
     { phi: 0.8, r: 1 },
 ];
 
-complexLikes.forEach(c => {
+complexLikes.forEach((c) => {
     const z1 = new Complex(c);
 
     const z = new Complex(1, 0);

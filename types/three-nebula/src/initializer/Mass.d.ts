@@ -6,7 +6,12 @@ export default class Mass extends Initializer {
     /**
      * Constructs a Mass initializer instance.
      */
-    constructor(min?: number, max?: number, center?: boolean, isEnabled?: boolean);
+    constructor(
+        min?: number,
+        max?: number,
+        center?: boolean,
+        isEnabled?: boolean,
+    );
     /**
      * Sets the particle's initial mass.
      */

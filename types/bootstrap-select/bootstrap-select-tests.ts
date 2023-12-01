@@ -80,33 +80,36 @@ $selectpicker.selectpicker("destroy", "aa");
  */
 // $ExpectType JQuery<HTMLDivElement>
 $selectpicker
-    .on("show.bs.select", event => {
+    .on("show.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("shown.bs.select", event => {
+    .on("shown.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("hide.bs.select", event => {
+    .on("hide.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("hidden.bs.select", event => {
+    .on("hidden.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("loaded.bs.select", event => {
+    .on("loaded.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("rendered.bs.select", event => {
+    .on("rendered.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("refreshed.bs.select", event => {
+    .on("refreshed.bs.select", (event) => {
         event; // $ExpectType Event
     })
-    .on("changed.bs.select", (event, clickedIndex, isSelected, previousValue) => {
-        event; // $ExpectType Event
-        clickedIndex; // $ExpectType number | null
-        isSelected; // $ExpectType boolean | null
-        previousValue; // $ExpectType string
-    });
+    .on(
+        "changed.bs.select",
+        (event, clickedIndex, isSelected, previousValue) => {
+            event; // $ExpectType Event
+            clickedIndex; // $ExpectType number | null
+            isSelected; // $ExpectType boolean | null
+            previousValue; // $ExpectType string
+        },
+    );
 
 $.fn.selectpicker.Constructor.BootstrapVersion = "4";
 

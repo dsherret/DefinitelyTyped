@@ -8,10 +8,15 @@ declare class ReportVisualizationColumns {
     toArray(): ReportVisualizationColumn[];
     tryGetColumn(name: string): ReportVisualizationColumn;
     forEach(f: (arg0: ReportVisualizationColumn) => void, opt_obj?: any): void;
-    find(f: (arg0: ReportVisualizationColumn) => void, opt_obj?: any): ReportVisualizationColumn;
+    find(
+        f: (arg0: ReportVisualizationColumn) => void,
+        opt_obj?: any,
+    ): ReportVisualizationColumn;
     getColumnOrder(column: string | ReportVisualizationColumn): number;
 }
 declare namespace ReportVisualizationColumns {
-    function fromArray(arr: ReportVisualizationColumn[]): ReportVisualizationColumns;
+    function fromArray(
+        arr: ReportVisualizationColumn[],
+    ): ReportVisualizationColumns;
 }
 import ReportVisualizationColumn = require("./ReportVisualizationColumn.js");

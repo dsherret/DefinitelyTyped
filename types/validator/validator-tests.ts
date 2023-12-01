@@ -49,7 +49,10 @@ import isISINFunc from "validator/lib/isISIN";
 import isISO31661Alpha2Func from "validator/lib/isISO31661Alpha2";
 import isISO31661Alpha3Func from "validator/lib/isISO31661Alpha3";
 import isISO4217Func from "validator/lib/isISO4217";
-import { isFreightContainerID as isFreightContainerIDFunc, isISO6346 as isISO6346Func } from "validator/lib/isISO6346";
+import {
+    isFreightContainerID as isFreightContainerIDFunc,
+    isISO6346 as isISO6346Func,
+} from "validator/lib/isISO6346";
 import isISO6391Func from "validator/lib/isISO6391";
 import isISO8601Func from "validator/lib/isISO8601";
 import isISRCFunc from "validator/lib/isISRC";
@@ -421,7 +424,9 @@ import isIPFuncEs from "validator/es/lib/isIP";
 import isIPRangeFuncEs from "validator/es/lib/isIPRange";
 import isISBNFuncEs from "validator/es/lib/isISBN";
 import isISINFuncEs from "validator/es/lib/isISIN";
-import isISO31661Alpha2FuncEs, { CountryCodes } from "validator/es/lib/isISO31661Alpha2";
+import isISO31661Alpha2FuncEs, {
+    CountryCodes,
+} from "validator/es/lib/isISO31661Alpha2";
 import isISO31661Alpha3FuncEs from "validator/es/lib/isISO31661Alpha3";
 import isISO4217FuncEs, { CurrencyCodes } from "validator/es/lib/isISO4217";
 import isIso6346FuncEs from "validator/es/lib/isISO6346";
@@ -489,8 +494,13 @@ const any: any = null;
 
     result = validator.contains("sample", "sample");
     result = validator.contains("Sample", "sample", { ignoreCase: true });
-    result = validator.contains("sampletestsample", "sample", { minOccurrences: 2 });
-    result = validator.contains("Sampletestsample", "sample", { ignoreCase: true, minOccurrences: 2 });
+    result = validator.contains("sampletestsample", "sample", {
+        minOccurrences: 2,
+    });
+    result = validator.contains("Sampletestsample", "sample", {
+        ignoreCase: true,
+        minOccurrences: 2,
+    });
 
     result = validator.equals("sample", "sample");
 
@@ -599,7 +609,9 @@ const any: any = null;
     result = validator.isAlphanumeric("sample", "sv-SE");
     result = validator.isAlphanumeric("sample", "tr-TR");
     result = validator.isAlphanumeric("sample", "uk-UA");
-    result = validator.isAlphanumeric("sample", undefined, { ignore: /[\s!?]/g });
+    result = validator.isAlphanumeric("sample", undefined, {
+        ignore: /[\s!?]/g,
+    });
     result = validator.isAlphanumeric("sample", "fr-FR", { ignore: /[\s!?]/g });
     result = validator.isAlphanumeric("sample", "fr-FR", { ignore: " !?" });
 
@@ -616,7 +628,10 @@ const any: any = null;
     result = validator.isIBAN("sample");
     result = validator.isIBAN("sample", { whitelist: ["GB", "BR"] });
     result = validator.isIBAN("sample", { blacklist: ["LT", "GL"] });
-    result = validator.isIBAN("sample", { whitelist: ["GB", "BR"], blacklist: ["DK"] });
+    result = validator.isIBAN("sample", {
+        whitelist: ["GB", "BR"],
+        blacklist: ["DK"],
+    });
 
     result = validator.isBIC("SBICKEN1345");
 
@@ -663,7 +678,10 @@ const any: any = null;
 
     result = validator.isEmail("sample");
     result = validator.isEmail("sample", isEmailOptions);
-    result = validator.isEmail("sample", isEmailOptionsWithBlacklistedCharacters);
+    result = validator.isEmail(
+        "sample",
+        isEmailOptionsWithBlacklistedCharacters,
+    );
     result = validator.isEmail("sample", isEmailOptionsWithWhitelistedHosts);
 
     const isEmptyOptions: validator.IsEmptyOptions = {};
@@ -1007,7 +1025,10 @@ const any: any = null;
     // $ExpectType number
     validator.isStrongPassword("sample23#@test", { returnScore: true });
     // $ExpectType number
-    validator.isStrongPassword("sample23#@test", { minLength: 10, returnScore: true });
+    validator.isStrongPassword("sample23#@test", {
+        minLength: 10,
+        returnScore: true,
+    });
 }
 
 {

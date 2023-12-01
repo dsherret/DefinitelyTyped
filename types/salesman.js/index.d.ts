@@ -19,7 +19,11 @@
  * var ordered_points = solution.map(i => points[i]);
  * // ordered_points now contains the points, in the order they ought to be visited.
  */
-export function solve(points: Point[], temp_coeff?: number, callback?: (order: number[]) => void): number[];
+export function solve(
+    points: Point[],
+    temp_coeff?: number,
+    callback?: (order: number[]) => void,
+): number[];
 
 export class Point {
     /**

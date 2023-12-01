@@ -29,10 +29,17 @@ Apptimize.setCustomerUserId("id"); // $ExpectType void
 Apptimize.setOnApptimizeInitializedCallback(() => {}); // $ExpectType void
 Apptimize.setOnEnrolledInExperimentCallback((_variantInfo: VariantInfo) => {}); // $ExpectType void
 Apptimize.setOnMetadataUpdatedCallback(() => {}); // $ExpectType void
-Apptimize.setOnParticipatedInExperimentCallback((_variantInfo: VariantInfo) => {}); // $ExpectType void
-Apptimize.setOnUnenrolledInExperimentCallback((_variantInfo: VariantInfo, _reason: string) => {}); // $ExpectType void
+Apptimize.setOnParticipatedInExperimentCallback(
+    (_variantInfo: VariantInfo) => {},
+); // $ExpectType void
+Apptimize.setOnUnenrolledInExperimentCallback(
+    (_variantInfo: VariantInfo, _reason: string) => {},
+); // $ExpectType void
 Apptimize.setPilotTargetingId("id"); // $ExpectType void
-Apptimize.setup("appKey", { log_level: "LOG_LEVEL_WARN", result_post_delay_ms: 60000 }); // $ExpectType void
+Apptimize.setup("appKey", {
+    log_level: "LOG_LEVEL_WARN",
+    result_post_delay_ms: 60000,
+}); // $ExpectType void
 Apptimize.track("eventName"); // $ExpectType void
 Apptimize.trackValue("eventName", 1); // $ExpectType void
 Apptimize.updateApptimizeMetadataOnce(); // $ExpectType void

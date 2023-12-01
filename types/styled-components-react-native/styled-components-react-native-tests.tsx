@@ -49,7 +49,11 @@ interface ButtonProps {
 
 class MyButton extends React.Component<ButtonProps> {
     render() {
-        return <ReactNative.TouchableOpacity>Custom button</ReactNative.TouchableOpacity>;
+        return (
+            <ReactNative.TouchableOpacity>
+                Custom button
+            </ReactNative.TouchableOpacity>
+        );
     }
 }
 
@@ -68,18 +72,23 @@ async function typedThemes() {
 
     // abuse "await import(...)" to be able to reference the styled-components namespace
     // without actually doing a top level namespace import
-    const { default: styled, css, ThemeProvider, ThemeConsumer } = ((await import(
+    const {
+        default: styled,
+        css,
+        ThemeProvider,
+        ThemeConsumer,
+    } = (await import(
         "styled-components/native"
-    )) as any) as ReactNativeThemedStyledComponentsModule<typeof theme>;
+    )) as any as ReactNativeThemedStyledComponentsModule<typeof theme>;
 
     const ThemedView = styled.View`
         background: ${(props) => {
-        // $ExpectType string
-        props.theme.color;
-        // $ExpectType string | undefined
-        props.testID;
-        return props.theme.color;
-    }};
+            // $ExpectType string
+            props.theme.color;
+            // $ExpectType string | undefined
+            props.testID;
+            return props.theme.color;
+        }};
     `;
     const ThemedView2 = styled.View((props) => {
         // $ExpectType string
@@ -103,12 +112,12 @@ async function typedThemes() {
     });
     const themedCss = css`
         background: ${(props) => {
-        // $ExpectType string
-        props.theme.color;
-        // $ExpectType "theme"
-        type Keys = keyof typeof props;
-        return props.theme.color;
-    }};
+            // $ExpectType string
+            props.theme.color;
+            // $ExpectType "theme"
+            type Keys = keyof typeof props;
+            return props.theme.color;
+        }};
     `;
     //  can't use a FlattenInterpolation as the first argument, would make broken css
     // @ts-expect-error
@@ -161,13 +170,12 @@ async function themeAugmentation() {
         accent: string;
     }
 
-    const base = ((await import(
+    const base = (await import(
         "styled-components/native"
-    )) as any) as ReactNativeThemedStyledComponentsModule<BaseTheme>;
-    const extra = ((await import("styled-components/native")) as any) as ReactNativeThemedStyledComponentsModule<
-        ExtraTheme,
-        BaseTheme
-    >;
+    )) as any as ReactNativeThemedStyledComponentsModule<BaseTheme>;
+    const extra = (await import(
+        "styled-components/native"
+    )) as any as ReactNativeThemedStyledComponentsModule<ExtraTheme, BaseTheme>;
 
     return (
         <base.ThemeProvider

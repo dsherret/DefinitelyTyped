@@ -167,7 +167,9 @@ export const constants: {
 /**
  * @see {@link https://github.com/cadpnq/telnetlib#telnetlibcreateserveroptions-handler}
  */
-export function createServer(connectionListener?: (socket: net.Socket) => void): net.Server;
+export function createServer(
+    connectionListener?: (socket: net.Socket) => void,
+): net.Server;
 export function createServer(
     options?: net.ServerOpts & Options,
     connectionListener?: (socket: net.Socket & TelnetSocket) => void,
@@ -180,10 +182,18 @@ export function createConnection(
     options: (net.NetConnectOpts & Options) | string,
     connectionListener?: () => void,
 ): TelnetSocket;
-export function createConnection(port: number, host?: string, connectionListener?: () => void): TelnetSocket;
+export function createConnection(
+    port: number,
+    host?: string,
+    connectionListener?: () => void,
+): TelnetSocket;
 
 /**
  * @see {@link https://github.com/cadpnq/telnetlib/blob/main/src/options.js}
  */
 export function getOption<T extends TelnetOption>(code: T): T;
-export function defineOption(name: string, code: number, handler?: TelnetOption): void;
+export function defineOption(
+    name: string,
+    code: number,
+    handler?: TelnetOption,
+): void;

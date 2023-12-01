@@ -22,10 +22,19 @@ declare global {
              * Take a screenshot of the targeted HTML element
              * FileName is required if addIteratorToImage option is set to false
              */
-            screenshot(target: string, timeToWait: number, hideSelector: string, fileName?: string): void;
+            screenshot(
+                target: string,
+                timeToWait: number,
+                hideSelector: string,
+                fileName?: string,
+            ): void;
 
             compareAll(exclude: string): void;
-            compareAll(exclude: string, diffList: string[], include: string): void;
+            compareAll(
+                exclude: string,
+                diffList: string[],
+                include: string,
+            ): void;
             compareMatched(match: string, exclude: string): void;
             compareMatched(match: RegExp, exclude: RegExp): void;
             /**
@@ -112,7 +121,9 @@ declare global {
              * Change the output screenshot filenames for your specific
              * integration
              */
-            fileNameGetter?: ((rootPath: string, fileName?: string) => string) | undefined;
+            fileNameGetter?:
+                | ((rootPath: string, fileName?: string) => string)
+                | undefined;
 
             /**
       Mismatch tolerance defaults to  0.05%. Increasing this value
@@ -123,7 +134,13 @@ declare global {
             onPass?: ((test: PhantomCSSTest) => void) | undefined;
             onFail?: ((test: PhantomCSSTest) => void) | undefined;
             onTimeout?: ((test: PhantomCSSTest) => void) | undefined;
-            onComplete?: ((tests: PhantomCSSTest[], noOfFails: number, noOfErrors: number) => void) | undefined;
+            onComplete?:
+                | ((
+                      tests: PhantomCSSTest[],
+                      noOfFails: number,
+                      noOfErrors: number,
+                  ) => void)
+                | undefined;
             /**
       Called when creating new baseline images
       */

@@ -4,7 +4,8 @@ import Zoomist = require("zoomist");
 
 function checkCreateZoomist() {
     const container = document.createElement("div");
-    container.dataset["zoomist-custom-src"] = "https://avatars.githubusercontent.com/u/73490413?v=4";
+    container.dataset["zoomist-custom-src"] =
+        "https://avatars.githubusercontent.com/u/73490413?v=4";
     container.id = "zoomist-container";
 
     document.body.appendChild(container);
@@ -35,7 +36,8 @@ function checkCreateZoomist() {
 
 function checkEventsFromZoomistConfig() {
     const container = document.createElement("div");
-    container.dataset["zoomist-custom-src"] = "https://avatars.githubusercontent.com/u/73490413?v=4";
+    container.dataset["zoomist-custom-src"] =
+        "https://avatars.githubusercontent.com/u/73490413?v=4";
     container.id = "zoomist-container";
 
     document.body.appendChild(container);
@@ -112,7 +114,8 @@ function checkEventsFromZoomistConfig() {
 
 function checkEventsFromZoomistOn() {
     const container = document.createElement("div");
-    container.dataset["zoomist-custom-src"] = "https://avatars.githubusercontent.com/u/73490413?v=4";
+    container.dataset["zoomist-custom-src"] =
+        "https://avatars.githubusercontent.com/u/73490413?v=4";
     container.id = "zoomist-container";
 
     document.body.appendChild(container);

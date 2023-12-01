@@ -28,15 +28,18 @@ const event: SQSEvent = {
     Records: [
         {
             messageId: "c80e8021-a70a-42c7-a470-796e1186f753",
-            receiptHandle: "AQEBJQ+/u6NsnT5t8Q/VbVxgdUl4TMKZ5FqhksRdIQvLBhwNvADoBxYSOVeCBXdnS9P+",
-            body: "{\"foo\":\"bar\"}",
+            receiptHandle:
+                "AQEBJQ+/u6NsnT5t8Q/VbVxgdUl4TMKZ5FqhksRdIQvLBhwNvADoBxYSOVeCBXdnS9P+",
+            body: '{"foo":"bar"}',
             attributes: {
-                AWSTraceHeader: "Root=1-5e58e4c3-71b539e3d6bd4aa29600bf67;Sampled=1",
+                AWSTraceHeader:
+                    "Root=1-5e58e4c3-71b539e3d6bd4aa29600bf67;Sampled=1",
                 ApproximateReceiveCount: "3",
                 SentTimestamp: "1529104986221",
                 SenderId: "594035263019",
                 ApproximateFirstReceiveTimestamp: "1529104986230",
-                DeadLetterQueueSourceArn: "arn:aws:sqs:123456789012:source-queue",
+                DeadLetterQueueSourceArn:
+                    "arn:aws:sqs:123456789012:source-queue",
             },
             messageAttributes: {
                 testAttr: {
@@ -74,7 +77,8 @@ const fifoEvent: SQSEvent = {
                 SenderId: "AIDAIO23YVJENQZJOL4VO",
                 MessageDeduplicationId: "1",
                 ApproximateFirstReceiveTimestamp: "1573251510774",
-                DeadLetterQueueSourceArn: "arn:aws:sqs:123456789012:source-queue",
+                DeadLetterQueueSourceArn:
+                    "arn:aws:sqs:123456789012:source-queue",
             },
             messageAttributes: {},
             md5OfBody: "e4e68fb7bd0e697a0ae8f1bb342846b3",

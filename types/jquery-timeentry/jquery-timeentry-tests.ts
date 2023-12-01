@@ -45,7 +45,12 @@ options.spinnerRepeat = [500, 250];
 options.beforeShow = (input: any): void => {
     console.log(input.id);
 };
-options.beforeSetTime = (oldTime: Date, newTime: Date, minTime: Date, maxTime: Date): Date => {
+options.beforeSetTime = (
+    oldTime: Date,
+    newTime: Date,
+    minTime: Date,
+    maxTime: Date,
+): Date => {
     return newTime;
 };
 

@@ -24,10 +24,13 @@ cm.showHint({
 });
 cm.showHint({
     hint: CodeMirror.hint.sql,
-    tables: ["user", {
-        text: "posts",
-        columns: ["title", "body", "author"],
-    }],
+    tables: [
+        "user",
+        {
+            text: "posts",
+            columns: ["title", "body", "author"],
+        },
+    ],
 });
 
 cm.showHint({

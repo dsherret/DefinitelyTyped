@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/ackee-tracker",
-    "version": "5.0.9999",
-    "projects": [
-        "https://github.com/electerious/ackee-tracker"
-    ],
-    "devDependencies": {
-        "@types/ackee-tracker": "workspace:."
+  "private": true,
+  "name": "@types/ackee-tracker",
+  "version": "5.0.9999",
+  "projects": [
+    "https://github.com/electerious/ackee-tracker"
+  ],
+  "devDependencies": {
+    "@types/ackee-tracker": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Pablo Sáez",
+      "githubUsername": "PabloSzx"
     },
-    "owners": [
-        {
-            "name": "Pablo Sáez",
-            "githubUsername": "PabloSzx"
-        },
-        {
-            "name": "Spencer Elliott",
-            "githubUsername": "elliottsj"
-        },
-        {
-            "name": "Sebastian Krüger",
-            "githubUsername": "mathe42"
-        }
-    ]
+    {
+      "name": "Spencer Elliott",
+      "githubUsername": "elliottsj"
+    },
+    {
+      "name": "Sebastian Krüger",
+      "githubUsername": "mathe42"
+    }
+  ]
 }

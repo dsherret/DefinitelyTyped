@@ -15,7 +15,12 @@ const myExts: Extensions = {
         },
     ],
     ".co": "coco",
-    ".coffee": ["coffeescript/register", "coffee-script/register", "coffeescript", "coffee-script"],
+    ".coffee": [
+        "coffeescript/register",
+        "coffee-script/register",
+        "coffeescript",
+        "coffee-script",
+    ],
     ".esm.js": {
         module: "esm",
         register(hook) {

@@ -19,15 +19,31 @@ export interface VideoJsHotkeysOptions {
     enableInactiveFocus?: boolean | undefined;
     skipInitialFocus?: boolean | undefined;
     captureDocumentHotkeys?: boolean | undefined;
-    documentHotkeysFocusElementFilter?: ((element: HTMLElement) => boolean) | undefined;
+    documentHotkeysFocusElementFilter?:
+        | ((element: HTMLElement) => boolean)
+        | undefined;
     enableJogStyle?: boolean | undefined;
-    playPauseKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    rewindKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    forwardKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    volumeUpKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    volumeDownKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    muteKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
-    fullscreenKey?: ((event: KeyboardEvent, player: VideoJsPlayer) => boolean) | undefined;
+    playPauseKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    rewindKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    forwardKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    volumeUpKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    volumeDownKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    muteKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
+    fullscreenKey?:
+        | ((event: KeyboardEvent, player: VideoJsPlayer) => boolean)
+        | undefined;
     customKeys?: VideoJsCustomHotkeyOptions | undefined;
 }
 
@@ -37,5 +53,9 @@ export interface VideoJsCustomHotkeyOptions {
 
 export interface VideoJsCustomHotkey {
     key: (event: KeyboardEvent, player: VideoJsPlayer) => boolean;
-    handler: (player: VideoJsPlayer, options: VideoJsHotkeysOptions, event: KeyboardEvent) => void;
+    handler: (
+        player: VideoJsPlayer,
+        options: VideoJsHotkeysOptions,
+        event: KeyboardEvent,
+    ) => void;
 }

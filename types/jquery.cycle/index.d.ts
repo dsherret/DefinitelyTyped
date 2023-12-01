@@ -3,7 +3,12 @@
 interface CycleOptions {
     activePagerClass?: string | undefined; // class name used for the active pager link
     after?:
-        | ((currSlideElement: Element, nextSlideElement: Element, options: CycleOptions, forwardFlag: boolean) => void)
+        | ((
+              currSlideElement: Element,
+              nextSlideElement: Element,
+              options: CycleOptions,
+              forwardFlag: boolean,
+          ) => void)
         | undefined; // transition callback (scope set to element that was shown):  function(currSlideElement, nextSlideElement, options, forwardFlag)
     allowPagerClickBubble?: boolean | undefined; // allows or prevents click event on pager anchors from bubbling
     animIn?: any; // properties that define how the slide animates in
@@ -13,7 +18,12 @@ interface CycleOptions {
     autostopCount?: number | undefined; // number of transitions (optionally used with autostop to define X)
     backwards?: boolean | undefined; // true to start slideshow at last slide and move backwards through the stack
     before?:
-        | ((currSlideElement: Element, nextSlideElement: Element, options: CycleOptions, forwardFlag: boolean) => void)
+        | ((
+              currSlideElement: Element,
+              nextSlideElement: Element,
+              options: CycleOptions,
+              forwardFlag: boolean,
+          ) => void)
         | undefined; // transition callback (scope set to element to be shown):     function(currSlideElement, nextSlideElement, options, forwardFlag)
     center?: boolean | undefined; // set to true to have cycle add top/left margin to each slide (use with width and height options)
     cleartype?: boolean | undefined; // true if clearType corrections should be applied (for IE)
@@ -33,22 +43,32 @@ interface CycleOptions {
     fx?: string | undefined; // name of transition effect (or comma separated names, ex: 'fade,scrollUp,shuffle')
     fxFn?:
         | ((
-            currSlideElement: Element,
-            nextSlideElement: Element,
-            options: CycleOptions,
-            afterCalback: Function,
-            forwardFlag: boolean,
-        ) => void)
+              currSlideElement: Element,
+              nextSlideElement: Element,
+              options: CycleOptions,
+              afterCalback: Function,
+              forwardFlag: boolean,
+          ) => void)
         | undefined; // function used to control the transition: function(currSlideElement, nextSlideElement, options, afterCalback, forwardFlag)
     height?: any; // container height (if the 'fit' option is true, the slides will be set to this height as well)
     manualTrump?: boolean | undefined; // causes manual transition to stop an active transition instead of being ignored
     metaAttr?: string | undefined; // data- attribute that holds the option data for the slideshow
     next?: any; // element, jQuery object, or jQuery selector string for the element to use as event trigger for next slide
     nowrap?: boolean | undefined; // true to prevent slideshow from wrapping
-    onPagerEvent?: ((zeroBasedSlideIndex: number, slideElement: Element) => void) | undefined; // callback fn for pager events: function(zeroBasedSlideIndex, slideElement)
-    onPrevNextEvent?: ((isNext: boolean, zeroBasedSlideIndex: number, slideElement: Element) => void) | undefined; // callback fn for prev/next events: function(isNext, zeroBasedSlideIndex, slideElement)
+    onPagerEvent?:
+        | ((zeroBasedSlideIndex: number, slideElement: Element) => void)
+        | undefined; // callback fn for pager events: function(zeroBasedSlideIndex, slideElement)
+    onPrevNextEvent?:
+        | ((
+              isNext: boolean,
+              zeroBasedSlideIndex: number,
+              slideElement: Element,
+          ) => void)
+        | undefined; // callback fn for prev/next events: function(isNext, zeroBasedSlideIndex, slideElement)
     pager?: any; // element, jQuery object, or jQuery selector string for the element to use as pager container
-    pagerAnchorBuilder?: ((index: number, DOMelement: Element) => string) | undefined; // callback fn for building anchor links:  function(index, DOMelement)
+    pagerAnchorBuilder?:
+        | ((index: number, DOMelement: Element) => string)
+        | undefined; // callback fn for building anchor links:  function(index, DOMelement)
     pagerEvent?: string | undefined; // name of event which drives the pager navigation
     pause?: boolean | undefined; // true to enable "pause on hover"
     pauseOnPagerHover?: boolean | undefined; // true to pause when hovering over pager link
@@ -70,9 +90,16 @@ interface CycleOptions {
     sync?: boolean | undefined; // true if in/out transitions should occur simultaneously
     timeout?: number | undefined; // milliseconds between slide transitions (0 to disable auto advance)
     timeoutFn?:
-        | ((currSlideElement: Element, nextSlideElement: Element, options: CycleOptions, forwardFlag: boolean) => void)
+        | ((
+              currSlideElement: Element,
+              nextSlideElement: Element,
+              options: CycleOptions,
+              forwardFlag: boolean,
+          ) => void)
         | undefined; // callback for determining per-slide timeout value:  function(currSlideElement, nextSlideElement, options, forwardFlag)
-    updateActivePagerLink?: ((pager: any, currSlide: number, clsName: string) => void) | undefined; // callback fn invoked to update the active pager link (adds/removes activePagerClass style)
+    updateActivePagerLink?:
+        | ((pager: any, currSlide: number, clsName: string) => void)
+        | undefined; // callback fn invoked to update the active pager link (adds/removes activePagerClass style)
     width?: any; // container width (if the 'fit' option is true, the slides will be set to this width as well)
 }
 
@@ -87,7 +114,13 @@ interface Cycle {
     next: (options?: CycleOptions) => void;
     prev: (options?: CycleOptions) => void;
 
-    transitions: { [key: string]: ($cont: JQuery, $slides: JQuery, options: CycleOptions) => void }; // transition definitions - only fade is defined here, transition pack defines the rest
+    transitions: {
+        [key: string]: (
+            $cont: JQuery,
+            $slides: JQuery,
+            options: CycleOptions,
+        ) => void;
+    }; // transition definitions - only fade is defined here, transition pack defines the rest
     custom: (
         currSlideElement: Element,
         nextSlideElement: Element,
@@ -105,8 +138,18 @@ interface Cycle {
         rev?: boolean,
     ) => void; // reset common props before the next transition
     hopsFromLast: (options: CycleOptions, forwardFlag?: boolean) => number; // helper fn to calculate the number of slides between the current and the next
-    createPagerAnchor: (index: number, DOMElement: Element, $pager: JQuery, els: any, options: CycleOptions) => string;
-    updateActivePagerLink: (pager: any, currSlide: number, clsName: string) => void; // invoked after transition
+    createPagerAnchor: (
+        index: number,
+        DOMElement: Element,
+        $pager: JQuery,
+        els: any,
+        options: CycleOptions,
+    ) => string;
+    updateActivePagerLink: (
+        pager: any,
+        currSlide: number,
+        clsName: string,
+    ) => void; // invoked after transition
     resetState: (options: CycleOptions, fx?: string) => void; // reset internal state; we do this on every pass in order to support multiple effects
 }
 

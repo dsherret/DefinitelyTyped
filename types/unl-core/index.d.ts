@@ -70,7 +70,12 @@ export interface Polyhash {
  *     var locationId = LocationId.encode(52.205, 0.119, 7, { elevation: 9, elevationType: 'floor'}); // => 'u120fxw@9'
  */
 
-export function encode(lat: number, lon: number, precision?: number, options?: EncodeOptions): string;
+export function encode(
+    lat: number,
+    lon: number,
+    precision?: number,
+    options?: EncodeOptions,
+): string;
 
 /**
  * Decode locationId to latitude/longitude and elevation (location is approximate centre of locationId cell,
@@ -123,7 +128,9 @@ export function neighbours(locationId: string): Neighbours;
  * @returns LocationIdWithElevation
  * @throws  Invalid locationId.
  */
-export function excludeElevation(locationIdWithElevation: string): LocationIdWithElevation;
+export function excludeElevation(
+    locationIdWithElevation: string,
+): LocationIdWithElevation;
 
 /**
  * Adds elevation chars and elevation
@@ -150,7 +157,10 @@ export function appendElevation(
  * @param   [precision] - Number of characters to consider for the locationId of a grid cell. Default value is 9.
  * @returns grid lines
  */
-export function gridLines(bounds: Bounds, precision?: number): Array<[[number, number], [number, number]]>;
+export function gridLines(
+    bounds: Bounds,
+    precision?: number,
+): Array<[[number, number], [number, number]]>;
 
 /**
  * Returns the human-readable address of a given location (either coordinates or UNL cell id)
@@ -160,7 +170,12 @@ export function gridLines(bounds: Bounds, precision?: number): Array<[[number, n
  * @param langCode - 2 letter language code of response (default: en)
  * @param count - the number of words in the returned address (only valid for coordinate calls)
  */
-export function toWords(location: string, apiKey: string, langCode: string, count: number): Address;
+export function toWords(
+    location: string,
+    apiKey: string,
+    langCode: string,
+    count: number,
+): Address;
 
 /**
  * Returns the coordinates of a given address
@@ -169,7 +184,11 @@ export function toWords(location: string, apiKey: string, langCode: string, coun
  * @param apiKey - Your UNL API key used to access the location APIs
  * @param langCode - 2 letter language code of response (default: en)
  */
-export function fromWords(words: string, apiKey: string, langCode: string): Address;
+export function fromWords(
+    words: string,
+    apiKey: string,
+    langCode: string,
+): Address;
 
 // Polyhash
 
@@ -180,7 +199,10 @@ export function fromWords(words: string, apiKey: string, langCode: string): Addr
  * @param locationIdPrecision - The precision of the output locationId polygon (Polyhash)
  * @param shouldDeflate - if false, returned Polyhash will have full-length, inflated locationIds (default: false)
  */
-export function toPolyhash(points: number[][], locationIdPrecision: number): Polyhash[];
+export function toPolyhash(
+    points: number[][],
+    locationIdPrecision: number,
+): Polyhash[];
 
 /**
  * Returns an array of coordinates, the polygon represented by the given Polyhash
@@ -209,7 +231,10 @@ export function decompressPolyhash(compressedPolyhash: string): string[];
  * @param points
  * @param locationIdPrecision
  */
-export function toCluster(points: number[][], locationIdPrecision: number): Polyhash[];
+export function toCluster(
+    points: number[][],
+    locationIdPrecision: number,
+): Polyhash[];
 
 /**
  * Convert a list of deflated locationIds into its full-length equivalent

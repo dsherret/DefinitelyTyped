@@ -56,6 +56,9 @@ export interface Parser {
     lex(): Token;
 }
 
-export function parse(code: string, options: Partial<Options> & { wait: true }): Parser;
+export function parse(
+    code: string,
+    options: Partial<Options> & { wait: true },
+): Parser;
 export function parse(code: string, options?: Partial<Options>): ast.Chunk;
 export function parse(options?: Partial<Options>): Parser;

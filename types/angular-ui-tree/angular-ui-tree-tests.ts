@@ -13,17 +13,24 @@ var treeNode2: AngularUITree.ITreeNode = {
 // fake jquery node here so that we can pull a pretend
 // angular scope element out of it
 var dummyJQueryNode: ng.IAugmentedJQuery;
-var fakeScope: ng.IScope | AngularUITree.IParentTreeNodeScope = dummyJQueryNode.scope();
+var fakeScope: ng.IScope | AngularUITree.IParentTreeNodeScope =
+    dummyJQueryNode.scope();
 
-(<AngularUITree.ITreeNodeScope> fakeScope).node = treeNode;
+(<AngularUITree.ITreeNodeScope>fakeScope).node = treeNode;
 
-var treeNodeScope: AngularUITree.ITreeNodeScope = <AngularUITree.ITreeNodeScope> fakeScope;
+var treeNodeScope: AngularUITree.ITreeNodeScope = <
+    AngularUITree.ITreeNodeScope
+>fakeScope;
 
-(<AngularUITree.IParentTreeNodeScope> fakeScope).isParent = (nodeScope: AngularUITree.ITreeNodeScope) => {
+(<AngularUITree.IParentTreeNodeScope>fakeScope).isParent = (
+    nodeScope: AngularUITree.ITreeNodeScope,
+) => {
     return true;
 };
 
-var parentTreeNodeScope: AngularUITree.IParentTreeNodeScope = <AngularUITree.IParentTreeNodeScope> fakeScope;
+var parentTreeNodeScope: AngularUITree.IParentTreeNodeScope = <
+    AngularUITree.IParentTreeNodeScope
+>fakeScope;
 
 var eventSourceInfo: AngularUITree.IEventSourceInfo = {
     cloneModel: {},
@@ -71,7 +78,9 @@ var acceptCallback: AngularUITree.IAcceptCallback = (
     return false;
 };
 
-var droppedCallback: AngularUITree.IDroppedCallback = (eventInfo: AngularUITree.IEventInfo) => {
+var droppedCallback: AngularUITree.IDroppedCallback = (
+    eventInfo: AngularUITree.IEventInfo,
+) => {
     return;
 };
 

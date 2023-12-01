@@ -11,7 +11,7 @@ const style = {
 // Parse using postcss-js parser
 postcss()
     .process(style, { parser: postcssJs.parse })
-    .then(result => {
+    .then((result) => {
         result; // $ExpectType Result_<Document_ | Root_> | Result_<Root_>
     });
 
@@ -34,6 +34,6 @@ postcssJs.sync([])(style); // $ExpectType CssInJs || Record<string, any>
 postcssJs.async([])(style); // $ExpectType Promise<CssInJs> || Promise<Record<string, any>>
 postcssJs
     .async([])(style)
-    .then(result => {
+    .then((result) => {
         result; // $ExpectType CssInJs || Record<string, any>
     });

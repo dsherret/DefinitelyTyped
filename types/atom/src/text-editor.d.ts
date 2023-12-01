@@ -60,16 +60,22 @@ export class TextEditor {
      *  asynchronously 300ms after the last buffer change. This is a good place
      *  to handle changes to the buffer without compromising typing performance.
      */
-    onDidStopChanging(callback: (event: BufferStoppedChangingEvent) => void): Disposable;
+    onDidStopChanging(
+        callback: (event: BufferStoppedChangingEvent) => void,
+    ): Disposable;
 
     /**
      *  Calls your callback when a Cursor is moved. If there are multiple cursors,
      *  your callback will be called for each cursor.
      */
-    onDidChangeCursorPosition(callback: (event: CursorPositionChangedEvent) => void): Disposable;
+    onDidChangeCursorPosition(
+        callback: (event: CursorPositionChangedEvent) => void,
+    ): Disposable;
 
     /** Calls your callback when a selection's screen range changes. */
-    onDidChangeSelectionRange(callback: (event: SelectionChangedEvent) => void): Disposable;
+    onDidChangeSelectionRange(
+        callback: (event: SelectionChangedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback after the buffer is saved to disk. */
     onDidSave(callback: (event: { path: string }) => void): Disposable;
@@ -99,7 +105,9 @@ export class TextEditor {
     onDidRemoveGutter(callback: (name: string) => void): Disposable;
 
     /** Calls your callback when soft wrap was enabled or disabled. */
-    onDidChangeSoftWrapped(callback: (softWrapped: boolean) => void): Disposable;
+    onDidChangeSoftWrapped(
+        callback: (softWrapped: boolean) => void,
+    ): Disposable;
 
     /** Calls your callback when the buffer's encoding has changed. */
     onDidChangeEncoding(callback: (encoding: string) => void): Disposable;
@@ -126,7 +134,9 @@ export class TextEditor {
     onDidConflict(callback: () => void): Disposable;
 
     /** Calls your callback before text has been inserted. */
-    onWillInsertText(callback: (event: { text: string; cancel(): void }) => void): Disposable;
+    onWillInsertText(
+        callback: (event: { text: string; cancel(): void }) => void,
+    ): Disposable;
 
     /** Calls your callback after text has been inserted. */
     onDidInsertText(callback: (event: { text: string }) => void): Disposable;
@@ -165,10 +175,14 @@ export class TextEditor {
     onDidAddDecoration(callback: (decoration: Decoration) => void): Disposable;
 
     /** Calls your callback when a Decoration is removed from the editor. */
-    onDidRemoveDecoration(callback: (decoration: Decoration) => void): Disposable;
+    onDidRemoveDecoration(
+        callback: (decoration: Decoration) => void,
+    ): Disposable;
 
     /** Calls your callback when the placeholder text is changed. */
-    onDidChangePlaceholderText(callback: (placeholderText: string) => void): Disposable;
+    onDidChangePlaceholderText(
+        callback: (placeholderText: string) => void,
+    ): Disposable;
 
     // File Details
     /**
@@ -264,10 +278,17 @@ export class TextEditor {
     setText(text: string, options?: ReadonlyEditOptions): void;
 
     /** Set the text in the given Range in buffer coordinates. */
-    setTextInBufferRange(range: RangeCompatible, text: string, options?: TextEditOptions & ReadonlyEditOptions): Range;
+    setTextInBufferRange(
+        range: RangeCompatible,
+        text: string,
+        options?: TextEditOptions & ReadonlyEditOptions,
+    ): Range;
 
     /* For each selection, replace the selected text with the given text. */
-    insertText(text: string, options?: TextInsertionOptions & ReadonlyEditOptions): Range | false;
+    insertText(
+        text: string,
+        options?: TextInsertionOptions & ReadonlyEditOptions,
+    ): Range | false;
 
     /** For each selection, replace the selected text with a newline. */
     insertNewline(options?: ReadonlyEditOptions): void;
@@ -429,13 +450,17 @@ export class TextEditor {
     /** Convert a position in buffer-coordinates to screen-coordinates. */
     screenPositionForBufferPosition(
         bufferPosition: PointCompatible,
-        options?: { clipDirection?: "backward" | "forward" | "closest" | undefined },
+        options?: {
+            clipDirection?: "backward" | "forward" | "closest" | undefined;
+        },
     ): Point;
 
     /** Convert a position in screen-coordinates to buffer-coordinates. */
     bufferPositionForScreenPosition(
         bufferPosition: PointCompatible,
-        options?: { clipDirection?: "backward" | "forward" | "closest" | undefined },
+        options?: {
+            clipDirection?: "backward" | "forward" | "closest" | undefined;
+        },
     ): Point;
 
     /** Convert a range in buffer-coordinates to screen-coordinates. */
@@ -456,7 +481,9 @@ export class TextEditor {
     /** Clip the given Point to a valid position on screen. */
     clipScreenPosition(
         screenPosition: PointCompatible,
-        options?: { clipDirection?: "backward" | "forward" | "closest" | undefined },
+        options?: {
+            clipDirection?: "backward" | "forward" | "closest" | undefined;
+        },
     ): Point;
 
     /**
@@ -465,7 +492,9 @@ export class TextEditor {
      */
     clipScreenRange(
         range: RangeCompatible,
-        options?: { clipDirection?: "backward" | "forward" | "closest" | undefined },
+        options?: {
+            clipDirection?: "backward" | "forward" | "closest" | undefined;
+        },
     ): Range;
 
     // Decorations
@@ -474,7 +503,10 @@ export class TextEditor {
      *  invalidated, or is destroyed, the decoration will be updated to reflect
      *  the marker's state.
      */
-    decorateMarker(marker: DisplayMarker, decorationParams: DecorationOptions): Decoration;
+    decorateMarker(
+        marker: DisplayMarker,
+        decorationParams: DecorationOptions,
+    ): Decoration;
 
     /**
      *  Add a decoration to every marker in the given marker layer. Can be used to
@@ -513,7 +545,13 @@ export class TextEditor {
         properties?: {
             maintainHistory?: boolean | undefined;
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
         },
     ): DisplayMarker;
 
@@ -528,7 +566,13 @@ export class TextEditor {
         properties?: {
             maintainHistory?: boolean | undefined;
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
         },
     ): DisplayMarker;
 
@@ -539,7 +583,13 @@ export class TextEditor {
     markBufferPosition(
         bufferPosition: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
         },
     ): DisplayMarker;
 
@@ -550,7 +600,13 @@ export class TextEditor {
     markScreenPosition(
         screenPosition: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             clipDirection?: "backward" | "forward" | "closest" | undefined;
         },
     ): DisplayMarker;
@@ -566,9 +622,10 @@ export class TextEditor {
     findMarkers(properties: FindDisplayMarkerOptions): DisplayMarker[];
 
     /** Create a marker layer to group related markers. */
-    addMarkerLayer(
-        options?: { maintainHistory?: boolean | undefined; persistent?: boolean | undefined },
-    ): DisplayMarkerLayer;
+    addMarkerLayer(options?: {
+        maintainHistory?: boolean | undefined;
+        persistent?: boolean | undefined;
+    }): DisplayMarkerLayer;
 
     /** Get a DisplayMarkerLayer by id. */
     getMarkerLayer(id: number): DisplayMarkerLayer | undefined;
@@ -599,7 +656,10 @@ export class TextEditor {
      *  Move the cursor to the given position in buffer coordinates.
      *  If there are multiple cursors, they will be consolidated to a single cursor.
      */
-    setCursorBufferPosition(position: PointCompatible, options?: { autoscroll?: boolean | undefined }): void;
+    setCursorBufferPosition(
+        position: PointCompatible,
+        options?: { autoscroll?: boolean | undefined },
+    ): void;
 
     /** Get a Cursor at given screen coordinates Point. */
     getCursorAtScreenPosition(position: PointCompatible): Cursor | undefined;
@@ -614,10 +674,16 @@ export class TextEditor {
      *  Move the cursor to the given position in screen coordinates.
      *  If there are multiple cursors, they will be consolidated to a single cursor.
      */
-    setCursorScreenPosition(position: PointCompatible, options?: { autoscroll?: boolean | undefined }): void;
+    setCursorScreenPosition(
+        position: PointCompatible,
+        options?: { autoscroll?: boolean | undefined },
+    ): void;
 
     /** Add a cursor at the given position in buffer coordinates. */
-    addCursorAtBufferPosition(bufferPosition: PointCompatible, options?: { autoscroll?: boolean | undefined }): Cursor;
+    addCursorAtBufferPosition(
+        bufferPosition: PointCompatible,
+        options?: { autoscroll?: boolean | undefined },
+    ): Cursor;
 
     /** Add a cursor at the position in screen coordinates. */
     addCursorAtScreenPosition(screenPosition: PointCompatible): Cursor;
@@ -729,7 +795,10 @@ export class TextEditor {
      */
     setSelectedBufferRange(
         bufferRange: RangeCompatible,
-        options?: { reversed?: boolean | undefined; preserveFolds?: boolean | undefined },
+        options?: {
+            reversed?: boolean | undefined;
+            preserveFolds?: boolean | undefined;
+        },
     ): void;
 
     /**
@@ -738,7 +807,10 @@ export class TextEditor {
      */
     setSelectedBufferRanges(
         bufferRanges: readonly RangeCompatible[],
-        options?: { reversed?: boolean | undefined; preserveFolds?: boolean | undefined },
+        options?: {
+            reversed?: boolean | undefined;
+            preserveFolds?: boolean | undefined;
+        },
     ): void;
 
     /** Get the Range of the most recently added selection in screen coordinates. */
@@ -754,7 +826,10 @@ export class TextEditor {
      *  Set the selected range in screen coordinates. If there are multiple selections,
      *  they are reduced to a single selection with the given range.
      */
-    setSelectedScreenRange(screenRange: RangeCompatible, options?: { reversed?: boolean | undefined }): void;
+    setSelectedScreenRange(
+        screenRange: RangeCompatible,
+        options?: { reversed?: boolean | undefined },
+    ): void;
 
     /**
      *  Set the selected ranges in screen coordinates. If there are multiple selections,
@@ -768,13 +843,19 @@ export class TextEditor {
     /** Add a selection for the given range in buffer coordinates. */
     addSelectionForBufferRange(
         bufferRange: RangeCompatible,
-        options?: { reversed?: boolean | undefined; preserveFolds?: boolean | undefined },
+        options?: {
+            reversed?: boolean | undefined;
+            preserveFolds?: boolean | undefined;
+        },
     ): Selection;
 
     /** Add a selection for the given range in screen coordinates. */
     addSelectionForScreenRange(
         screenRange: RangeCompatible,
-        options?: { reversed?: boolean | undefined; preserveFolds?: boolean | undefined },
+        options?: {
+            reversed?: boolean | undefined;
+            preserveFolds?: boolean | undefined;
+        },
     ): Selection;
 
     /**
@@ -963,7 +1044,11 @@ export class TextEditor {
      *
      *  ::scan functions as the replace method as well via the replace.
      */
-    scan(regex: RegExp, options: ScanContextOptions, iterator: (params: ContextualBufferScanResult) => void): void;
+    scan(
+        regex: RegExp,
+        options: ScanContextOptions,
+        iterator: (params: ContextualBufferScanResult) => void,
+    ): void;
     /**
      *  Scan regular expression matches in the entire buffer, calling the given
      *  iterator function on each match.
@@ -976,7 +1061,11 @@ export class TextEditor {
      *  Scan regular expression matches in a given range, calling the given iterator.
      *  function on each match.
      */
-    scanInBufferRange(regex: RegExp, range: RangeCompatible, iterator: (params: BufferScanResult) => void): void;
+    scanInBufferRange(
+        regex: RegExp,
+        range: RangeCompatible,
+        iterator: (params: BufferScanResult) => void,
+    ): void;
 
     /**
      *  Scan regular expression matches in a given range in reverse order, calling the
@@ -1081,13 +1170,17 @@ export class TextEditor {
     getRootScopeDescriptor(): ScopeDescriptor;
 
     /** Get the syntactic scopeDescriptor for the given position in buffer coordinates. */
-    scopeDescriptorForBufferPosition(bufferPosition: PointCompatible): ScopeDescriptor;
+    scopeDescriptorForBufferPosition(
+        bufferPosition: PointCompatible,
+    ): ScopeDescriptor;
 
     /**
      *  Get the syntactic tree {ScopeDescriptor} for the given position in buffer
      *  coordinates or the syntactic {ScopeDescriptor} for TextMate language mode
      */
-    syntaxTreeScopeDescriptorForBufferPosition(bufferPosition: PointCompatible): ScopeDescriptor;
+    syntaxTreeScopeDescriptorForBufferPosition(
+        bufferPosition: PointCompatible,
+    ): ScopeDescriptor;
 
     /**
      *  Get the range in buffer coordinates of all tokens surrounding the cursor
@@ -1200,10 +1293,16 @@ export class TextEditor {
     scrollToCursorPosition(options?: { center?: boolean | undefined }): void;
 
     /** Scrolls the editor to the given buffer position. */
-    scrollToBufferPosition(bufferPosition: PointCompatible, options?: { center?: boolean | undefined }): void;
+    scrollToBufferPosition(
+        bufferPosition: PointCompatible,
+        options?: { center?: boolean | undefined },
+    ): void;
 
     /** Scrolls the editor to the given screen position. */
-    scrollToScreenPosition(screenPosition: PointCompatible, options?: { center?: boolean | undefined }): void;
+    scrollToScreenPosition(
+        screenPosition: PointCompatible,
+        options?: { center?: boolean | undefined },
+    ): void;
 
     // TextEditor Rendering
     /** Retrieves the rendered line height in pixels. */
@@ -1222,5 +1321,8 @@ export class TextEditor {
     bufferRangeForScopeAtPosition(scope: string, point: PointCompatible): Range;
 
     /** Undocumented: Get syntax token at buffer position */
-    tokenForBufferPosition(pos: PointCompatible): { value: string; scopes: string[] };
+    tokenForBufferPosition(pos: PointCompatible): {
+        value: string;
+        scopes: string[];
+    };
 }

@@ -20,7 +20,10 @@ export type DeletePatch = undefined;
  * and the merge function as the second. The return value will be the replacement.
  * The value you return will bypass merging logic and simply overwrite the property.
  */
-export type FunctionPatch<T> = (val: T, merge: Merge<T extends object ? T : never>) => T;
+export type FunctionPatch<T> = (
+    val: T,
+    merge: Merge<T extends object ? T : never>,
+) => T;
 
 /**
  * If you want to replace a array specify new array as the value.
@@ -28,7 +31,9 @@ export type FunctionPatch<T> = (val: T, merge: Merge<T extends object ? T : neve
  * If you want edit array's item or insert new item specify object as the value.
  * Keys of this object are array's indexes, values are patches of array's items.
  */
-export type ArrayPatch<T> = T extends Array<infer V> ? ObjectPatch<Record<number, V>> : never;
+export type ArrayPatch<T> = T extends Array<infer V>
+    ? ObjectPatch<Record<number, V>>
+    : never;
 
 /**
  * Mergerino merges immutably meaning that the target object will never be mutated (changed).
@@ -42,7 +47,12 @@ export type NestedPatch<T> = T extends object ? ObjectPatch<T> : never;
  * 3. Use a function if you want to replace a property based on its current value.
  */
 export type ObjectPatch<S extends object> = {
-    [K in keyof S]?: S[K] | DeletePatch | FunctionPatch<S[K]> | NestedPatch<S[K]> | ArrayPatch<S[K]>;
+    [K in keyof S]?:
+        | S[K]
+        | DeletePatch
+        | FunctionPatch<S[K]>
+        | NestedPatch<S[K]>
+        | ArrayPatch<S[K]>;
 };
 
 /**
@@ -55,13 +65,19 @@ export type Falsy = false | 0 | "" | null | undefined;
  * passed to a specific property. It receives the full state object as the first
  * argument, the merge function as the second.
  */
-export type TopLevelPatch<S extends object> = FunctionPatch<S> | ObjectPatch<S> | ArrayPatch<S> | Falsy;
+export type TopLevelPatch<S extends object> =
+    | FunctionPatch<S>
+    | ObjectPatch<S>
+    | ArrayPatch<S>
+    | Falsy;
 
 /**
  * You can pass multiple patches in a single merge call, array arguments will
  * be flattened before processing.
  */
-export type MultipleTopLevelPatch<S extends object> = TopLevelPatch<S> | DeepArray<TopLevelPatch<S>>;
+export type MultipleTopLevelPatch<S extends object> =
+    | TopLevelPatch<S>
+    | DeepArray<TopLevelPatch<S>>;
 
 /**
  * Main Mergerino function. An immutable merge util for state management.
@@ -69,7 +85,10 @@ export type MultipleTopLevelPatch<S extends object> = TopLevelPatch<S> | DeepArr
  * You can pass multiple patches in a single merge call, array arguments will be flattened before processing.
  * Since falsy patches are ignored.
  */
-export type Merge<S extends object> = (source: S, ...patches: Array<MultipleTopLevelPatch<S>>) => S;
+export type Merge<S extends object> = (
+    source: S,
+    ...patches: Array<MultipleTopLevelPatch<S>>
+) => S;
 
 /**
  * Main Mergerino function. An immutable merge util for state management.
@@ -78,6 +97,9 @@ export type Merge<S extends object> = (source: S, ...patches: Array<MultipleTopL
  * Since falsy patches are ignored.
  */
 // tslint:disable-next-line:npm-naming
-export default function merge<S extends object>(source: S, ...patches: Array<MultipleTopLevelPatch<S>>): S;
+export default function merge<S extends object>(
+    source: S,
+    ...patches: Array<MultipleTopLevelPatch<S>>
+): S;
 // Mergerino uses "default export", but no in minified version which is checked by dtslint.
 // This line supress error: The types for mergerino specify 'export default' but the source does not mention 'default' anywhere.

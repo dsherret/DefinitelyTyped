@@ -57,7 +57,9 @@ declare namespace PromiseSftp {
          * handle password change requests. If this option isn't set, and the
          * server requests a password change, I haven't tested what will happen.
          */
-        changePassword?: ((message: string, language: string) => Promise<string>) | undefined;
+        changePassword?:
+            | ((message: string, language: string) => Promise<string>)
+            | undefined;
 
         /**
          * Whether to attempt to automatically reconnect using the existing
@@ -84,16 +86,16 @@ declare namespace PromiseSftp {
          */
         tryKeyboard?:
             | ((
-                name: string,
-                instructions: string,
-                instructionsLang: string,
-                prompts: Array<{
-                    /** The query to pose to the user */
-                    prompt: string;
-                    /** Whether the user's input should be displayed on-screen */
-                    echo: boolean;
-                }>,
-            ) => Array<string | Promise<string>> | Promise<string[]>)
+                  name: string,
+                  instructions: string,
+                  instructionsLang: string,
+                  prompts: Array<{
+                      /** The query to pose to the user */
+                      prompt: string;
+                      /** Whether the user's input should be displayed on-screen */
+                      echo: boolean;
+                  }>,
+              ) => Array<string | Promise<string>> | Promise<string[]>)
             | undefined;
 
         /** Alias for `username` */
@@ -121,11 +123,13 @@ declare namespace PromiseSftp {
         date: Date;
 
         /** The various permissions for this entry. *NIX only */
-        rights?: {
-            user: string;
-            group: string;
-            other: string;
-        } | undefined;
+        rights?:
+            | {
+                  user: string;
+                  group: string;
+                  other: string;
+              }
+            | undefined;
 
         /** The user name or ID that this entry belongs to. *NIX only */
         owner?: string | undefined;
@@ -155,7 +159,9 @@ declare namespace PromiseSftp {
         chunkSize: number;
 
         /** Called every time a part of a file is transferred */
-        step?: ((totalTransferred: number, chunk: number, total: number) => void) | undefined;
+        step?:
+            | ((totalTransferred: number, chunk: number, total: number) => void)
+            | undefined;
     }
 
     /** From the [statvfs struct](http://linux.die.net/man/2/statvfs). */
@@ -335,15 +341,15 @@ declare class PromiseSftp {
         options?:
             | string
             | {
-                flags?: string | undefined;
-                encoding?: string | undefined;
-                fd?: number | undefined;
-                mode?: number | undefined;
-                autoClose?: boolean | undefined;
-                start?: number | undefined;
-                end?: number | undefined;
-                highWaterMark?: number | undefined;
-            },
+                  flags?: string | undefined;
+                  encoding?: string | undefined;
+                  fd?: number | undefined;
+                  mode?: number | undefined;
+                  autoClose?: boolean | undefined;
+                  start?: number | undefined;
+                  end?: number | undefined;
+                  highWaterMark?: number | undefined;
+              },
     ): Promise<NodeJS.ReadableStream>;
 
     /**
@@ -356,15 +362,15 @@ declare class PromiseSftp {
         options?:
             | string
             | {
-                flags?: string | undefined;
-                encoding?: string | undefined;
-                fd?: number | undefined;
-                mode?: number | undefined;
-                autoClose?: boolean | undefined;
-                start?: number | undefined;
-                end?: number | undefined;
-                highWaterMark?: number | undefined;
-            },
+                  flags?: string | undefined;
+                  encoding?: string | undefined;
+                  fd?: number | undefined;
+                  mode?: number | undefined;
+                  autoClose?: boolean | undefined;
+                  start?: number | undefined;
+                  end?: number | undefined;
+                  highWaterMark?: number | undefined;
+              },
     ): Promise<NodeJS.WritableStream>;
 
     /**
@@ -476,9 +482,7 @@ declare class PromiseSftp {
      * Read a directory on the server.
      * @param location - The path of the directory to read or a handle returned from `#opendir()`.
      */
-    readdir(
-        location: Buffer | string,
-    ): Promise<{
+    readdir(location: Buffer | string): Promise<{
         filename: string;
         longname: string;
         attrs: ssh2Streams.Attributes;

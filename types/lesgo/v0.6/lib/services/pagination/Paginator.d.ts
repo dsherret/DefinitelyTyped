@@ -16,7 +16,12 @@ export interface PaginatorObject<DataT> {
 }
 
 export default class Paginator {
-    constructor(db: AuroraDbService, sql: string, sqlParams: [] | unknown, options?: PaginatorOptions);
+    constructor(
+        db: AuroraDbService,
+        sql: string,
+        sqlParams: [] | unknown,
+        options?: PaginatorOptions,
+    );
 
     count(): Promise<number>;
 

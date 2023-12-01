@@ -1,4 +1,10 @@
-import { ChangeEvent, Component, DragEvent, FocusEvent, ReactElement } from "react";
+import {
+    ChangeEvent,
+    Component,
+    DragEvent,
+    FocusEvent,
+    ReactElement,
+} from "react";
 import { Dispatch } from "redux";
 import { ComponentConstructor, DataShape, FieldValue } from "../index";
 
@@ -22,7 +28,12 @@ interface BaseFieldProps {
      *
      * Required but made optional so interface can be used on decorated components.
      */
-    component?: ComponentConstructor<any> | "input" | "select" | "textarea" | undefined;
+    component?:
+        | ComponentConstructor<any>
+        | "input"
+        | "select"
+        | "textarea"
+        | undefined;
 
     /**
      * Formats the value from the Redux store to be displayed in the field input.
@@ -95,12 +106,17 @@ export type Formatter = (value: FieldValue, name: string) => FieldValue;
 
 export type Parser = (value: FieldValue, name: string) => FieldValue;
 
-export type Validator = (value: FieldValue, allValues?: any, props?: any) => any;
+export type Validator = (
+    value: FieldValue,
+    allValues?: any,
+    props?: any,
+) => any;
 
 /**
  * Declare Field as this interface to specify the generic.
  */
-export interface GenericField<FieldCustomProps, S> extends Component<BaseFieldProps & FieldCustomProps> {
+export interface GenericField<FieldCustomProps, S>
+    extends Component<BaseFieldProps & FieldCustomProps> {
     /**
      * true if the current value is different from the initialized value,
      * false otherwise.

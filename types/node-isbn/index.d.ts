@@ -25,7 +25,11 @@ declare namespace isbn {
          * Resolves book info, given an isbn
          * @param isbn
          */
-        resolve(isbn: string, options: AxiosRequestConfig, callback?: ResolveCallback): void;
+        resolve(
+            isbn: string,
+            options: AxiosRequestConfig,
+            callback?: ResolveCallback,
+        ): void;
         resolve(isbn: string, options?: AxiosRequestConfig): Promise<Book>;
         resolve(isbn: string, callback: ResolveCallback): void;
     }
@@ -37,7 +41,7 @@ declare namespace isbn {
         ISBNDB: "isbndb";
     };
 
-    type Provider = typeof PROVIDER_NAMES[keyof typeof PROVIDER_NAMES];
+    type Provider = (typeof PROVIDER_NAMES)[keyof typeof PROVIDER_NAMES];
     type Providers = Provider[];
 
     type BookLanguage = "en" | "es" | "fr" | "unknown";
@@ -50,10 +54,12 @@ declare namespace isbn {
         authors: string[];
         categories: string[];
         description?: string | undefined;
-        imageLinks?: {
-            smallThumbnail: string;
-            thumbnail: string;
-        } | undefined;
+        imageLinks?:
+            | {
+                  smallThumbnail: string;
+                  thumbnail: string;
+              }
+            | undefined;
         industryIdentifiers: string[];
         infoLink: string;
         language: BookLanguage;

@@ -1,11 +1,11 @@
 import speedTest = require("speedtest-net");
 
-speedTest().then(result => {
+speedTest().then((result) => {
     result;
 });
 
 const cancel = speedTest.makeCancel();
-const progress: speedTest.ProgressFunction = event => {
+const progress: speedTest.ProgressFunction = (event) => {
     if (!event) return;
 
     switch (event.type) {

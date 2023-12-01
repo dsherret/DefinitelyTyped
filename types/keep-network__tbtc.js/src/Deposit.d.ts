@@ -3,7 +3,13 @@ import { EventEmitter } from "events";
 import { FoundTransaction as BitcoinTransaction } from "./BitcoinHelpers.js";
 import Redemption from "./Redemption.js";
 import BN = require("bn.js");
-import type { Contract, DepositBaseClass, KeyPoint, RedemptionDetails, TBTCConfig } from "./CommonTypes";
+import type {
+    Contract,
+    DepositBaseClass,
+    KeyPoint,
+    RedemptionDetails,
+    TBTCConfig,
+} from "./CommonTypes";
 export const DepositStates: {
     START: number;
     AWAITING_SIGNER_SETUP: number;
@@ -59,14 +65,24 @@ export default class Deposit implements DepositBaseClass {
     factory: DepositFactory;
     address: string;
     keepContract: Contract;
-    static forLotSize(factory: DepositFactory, satoshiLotSize: BN): Promise<Deposit>;
-    static forAddress(factory: DepositFactory, address: string): Promise<Deposit>;
+    static forLotSize(
+        factory: DepositFactory,
+        satoshiLotSize: BN,
+    ): Promise<Deposit>;
+    static forAddress(
+        factory: DepositFactory,
+        address: string,
+    ): Promise<Deposit>;
     contract: Contract;
     activeStatePromise: Promise<boolean>;
     publicKeyPoint: Promise<KeyPoint>;
     bitcoinAddress: Promise<string>;
     receivedFundingConfirmationEmitter: EventEmitter;
-    constructor(factory: DepositFactory, depositContract: Contract, keepContract: Contract);
+    constructor(
+        factory: DepositFactory,
+        depositContract: Contract,
+        keepContract: Contract,
+    );
     _fundingTransaction?: Promise<BitcoinTransaction> | undefined;
     get fundingTransaction(): Promise<BitcoinTransaction>;
     _fundingConfirmations?: Promise<FundingConfirmations> | undefined;
@@ -80,7 +96,9 @@ export default class Deposit implements DepositBaseClass {
     getFRT(): Promise<{}>;
     getOwner(): Promise<any>;
     inVendingMachine(): Promise<boolean>;
-    onBitcoinAddressAvailable(bitcoinAddressHandler: (address: string) => void): void;
+    onBitcoinAddressAvailable(
+        bitcoinAddressHandler: (address: string) => void,
+    ): void;
     onActive(activeHandler: (deposit: Deposit) => void): void;
     onReceivedFundingConfirmation(
         onReceivedFundingConfirmationHandler: (fundingConfirmation: {
@@ -104,7 +122,9 @@ export default class Deposit implements DepositBaseClass {
     constructFundingProof(
         bitcoinTransaction: Omit<BitcoinTransaction, "value">,
         confirmations: number,
-    ): Promise<[Buffer, Buffer, Buffer, Buffer, number, Buffer, string, Buffer]>;
+    ): Promise<
+        [Buffer, Buffer, Buffer, Buffer, number, Buffer, string, Buffer]
+    >;
     redemptionDetailsFromEvent(redemptionRequestedEventArgs: {
         _utxoValue: string;
         _redeemerOutputScript: string;
@@ -135,5 +155,11 @@ export default class Deposit implements DepositBaseClass {
         signedDigest: string,
         preimage: string,
     ): Promise<void>;
-    provideECDSAFraudProof(v: number, r: string, s: string, signedDigest: string, preimage: string): Promise<void>;
+    provideECDSAFraudProof(
+        v: number,
+        r: string,
+        s: string,
+        signedDigest: string,
+        preimage: string,
+    ): Promise<void>;
 }

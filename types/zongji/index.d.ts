@@ -70,7 +70,13 @@ declare namespace ZongJi {
         getEventName: () => string;
     }
     class ZongJi {
-        constructor(dsn: string | mysql.ConnectionConfig | mysql.Connection | mysql.Pool);
+        constructor(
+            dsn:
+                | string
+                | mysql.ConnectionConfig
+                | mysql.Connection
+                | mysql.Pool,
+        );
         /**
          * 'ready': This event occurred right after ZongJi successfully established a connection, setup slave status, and set binlog position.
          * 'stopped': Emitted when ZongJi connection is stopped (ZongJi#stop is called).

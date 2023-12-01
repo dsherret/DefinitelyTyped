@@ -32,22 +32,32 @@ mock({
 });
 
 mock({
-    "path/to/real/file.txt": mock.load(path.resolve(__dirname, "OTHER_FILES.txt")),
+    "path/to/real/file.txt": mock.load(
+        path.resolve(__dirname, "OTHER_FILES.txt"),
+    ),
 });
 
 mock({
-    "path/to/real/not-lazy/file.txt": mock.load(path.resolve(__dirname, "OTHER_FILES.txt"), { lazy: false }),
+    "path/to/real/not-lazy/file.txt": mock.load(
+        path.resolve(__dirname, "OTHER_FILES.txt"),
+        { lazy: false },
+    ),
 });
 
 mock({
-    "/tmp": mock.load("/tmp/special_tmp_files", { lazy: false, recursive: false }),
+    "/tmp": mock.load("/tmp/special_tmp_files", {
+        lazy: false,
+        recursive: false,
+    }),
 });
 
 mock({
     "OTHER_FILES.txt": mock.load(path.resolve(__dirname, "OTHER_FILES.txt")),
 });
 
-mock.bypass(() => fs.readFileSync(path.resolve(__dirname, "OTHER_FILES.txt")).toString());
+mock.bypass(() =>
+    fs.readFileSync(path.resolve(__dirname, "OTHER_FILES.txt")).toString(),
+);
 
 mock({
     foo: mock.file({

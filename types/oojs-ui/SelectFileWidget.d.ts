@@ -17,7 +17,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.SelectFileWidget
      */
-    interface SelectFileWidget extends SelectFileWidget.Props, SelectFileWidget.Prototype {}
+    interface SelectFileWidget
+        extends SelectFileWidget.Props,
+            SelectFileWidget.Prototype {}
 
     namespace SelectFileWidget {
         // HACK: See SelectWidget.d.ts
@@ -25,7 +27,9 @@ declare namespace OO.ui {
             change: [value: File | null];
         }
 
-        interface ConfigOptions extends SelectFileInputWidget.ConfigOptions, mixin.PendingElement.ConfigOptions {
+        interface ConfigOptions
+            extends SelectFileInputWidget.ConfigOptions,
+                mixin.PendingElement.ConfigOptions {
             /** Text to display when file support is missing in the browser. */
             notsupported?: string;
             /** Whether to accept files by drag and drop. */
@@ -50,16 +54,23 @@ declare namespace OO.ui {
             isSupported(): boolean;
         }
 
-        interface Props extends SelectFileInputWidget.Props, mixin.PendingElement.Props {}
+        interface Props
+            extends SelectFileInputWidget.Props,
+                mixin.PendingElement.Props {}
 
         // HACK: Fix LSP violation
-        interface Prototype extends
-            Omit<
-                SelectFileInputWidget.Prototype,
-                "getValue" | "setValue" | "on" | "once" | "off" | "connect" | "disconnect"
-            >,
-            mixin.PendingElement.Prototype
-        {
+        interface Prototype
+            extends Omit<
+                    SelectFileInputWidget.Prototype,
+                    | "getValue"
+                    | "setValue"
+                    | "on"
+                    | "once"
+                    | "off"
+                    | "connect"
+                    | "disconnect"
+                >,
+                mixin.PendingElement.Prototype {
             /**
              * Get the current value of the field
              *
@@ -88,7 +99,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -99,7 +113,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -107,7 +124,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -116,11 +136,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -136,7 +168,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): SelectFileWidget;
+            new (config?: ConfigOptions): SelectFileWidget;
             prototype: Prototype;
             static: Static;
             super: SelectFileInputWidget.Constructor;

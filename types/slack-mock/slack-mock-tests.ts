@@ -11,14 +11,13 @@ SlackMock();
 
 // Events
 const eventPayload = {};
-slackMock.events.send("http://localhost:9000/event", eventPayload)
-    .then(() => {
-        slackMock.events.calls.length;
-        slackMock.events.calls[0].statusCode;
-        slackMock.events.calls[0].headers;
-        slackMock.events.calls[0].params;
-        slackMock.events.calls[0].url;
-    });
+slackMock.events.send("http://localhost:9000/event", eventPayload).then(() => {
+    slackMock.events.calls.length;
+    slackMock.events.calls[0].statusCode;
+    slackMock.events.calls[0].headers;
+    slackMock.events.calls[0].params;
+    slackMock.events.calls[0].url;
+});
 
 slackMock.events.reset();
 
@@ -32,7 +31,8 @@ slackMock.interactiveButtons.addResponse({
 });
 
 const interactiveButtonPayload = { text: "abc" };
-slackMock.interactiveButtons.send("http://localhost:9000/button", interactiveButtonPayload)
+slackMock.interactiveButtons
+    .send("http://localhost:9000/button", interactiveButtonPayload)
     .then(() => {
         slackMock.interactiveButtons.calls.length;
         slackMock.interactiveButtons.calls[0].params.text;
@@ -40,19 +40,21 @@ slackMock.interactiveButtons.send("http://localhost:9000/button", interactiveBut
 
 // Outgoing Webhooks
 const outgoingWebhookPayload = { text: "abc" };
-slackMock.outgoingWebhooks.send("http://localhost:9000/outgoing", outgoingWebhookPayload)
+slackMock.outgoingWebhooks
+    .send("http://localhost:9000/outgoing", outgoingWebhookPayload)
     .then(() => {
         slackMock.outgoingWebhooks.calls.length;
         slackMock.outgoingWebhooks.calls[0].params.text;
     });
 
 // RTM
-slackMock.rtm.send("1234", {
-    type: "message",
-    channel: "mockChannel",
-    user: "usr",
-    text: "hello",
-})
+slackMock.rtm
+    .send("1234", {
+        type: "message",
+        channel: "mockChannel",
+        user: "usr",
+        text: "hello",
+    })
     .then(() => {
         slackMock.rtm.calls.length;
         slackMock.rtm.calls[0].message.text;
@@ -62,7 +64,8 @@ slackMock.rtm.stopServer("1234");
 
 // Slash Commands
 const slashCommandPayload = {};
-slackMock.slashCommands.send("http://localhost:9000/slash", slashCommandPayload)
+slackMock.slashCommands
+    .send("http://localhost:9000/slash", slashCommandPayload)
     .then(() => {
         slackMock.slashCommands.calls.length;
         slackMock.slashCommands.calls[0].params.text;

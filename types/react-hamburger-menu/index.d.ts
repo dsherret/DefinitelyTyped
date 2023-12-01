@@ -2,8 +2,7 @@ import * as React from "react";
 
 export default HamburgerMenu;
 
-declare class HamburgerMenu extends React.PureComponent<HamburgerMenuProps> {
-}
+declare class HamburgerMenu extends React.PureComponent<HamburgerMenuProps> {}
 
 export interface HamburgerMenuProps {
     /**

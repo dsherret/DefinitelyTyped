@@ -63,17 +63,19 @@ function hello(): string {
 }
 
 pool.exec(add, [1, 2]).then((c: number) => c);
-pool.exec<typeof add>("add", [1, 2], { on: payload => console.log(payload) }).then((c: number) => c);
+pool.exec<typeof add>("add", [1, 2], {
+    on: (payload) => console.log(payload),
+}).then((c: number) => c);
 pool.exec(hello, []).then((s: string) => s);
 
 const workers = { add, hello };
 type IWorkers = typeof workers;
-pool.proxy<IWorkers>().then(proxy => {
+pool.proxy<IWorkers>().then((proxy) => {
     proxy.add(1, 2);
     proxy.hello();
 });
 
-pool.proxy().then(proxy => {
+pool.proxy().then((proxy) => {
     proxy.add(1, 2);
     proxy.hello();
 });

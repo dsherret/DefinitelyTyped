@@ -64,7 +64,11 @@ export function insertBlocks(
  * @param rootClientId - Root client ID of block list on which to append.
  * @param index - Index where to insert the default block.
  */
-export function insertDefaultBlock(attributes?: Record<string, any>, rootClientId?: string, index?: number): void;
+export function insertDefaultBlock(
+    attributes?: Record<string, any>,
+    rootClientId?: string,
+    index?: number,
+): void;
 
 /**
  * Returns an action object used in signalling that two blocks should be merged.
@@ -72,7 +76,10 @@ export function insertDefaultBlock(attributes?: Record<string, any>, rootClientI
  * @param firstBlockClientId - Client ID of the first block to merge.
  * @param secondBlockClientId - Client ID of the second block to merge.
  */
-export function mergeBlocks(firstBlockClientId: string, secondBlockClientId: string): void;
+export function mergeBlocks(
+    firstBlockClientId: string,
+    secondBlockClientId: string,
+): void;
 
 /**
  * Signals that an indexed block should be moved to a new index.
@@ -89,9 +96,15 @@ export function moveBlockToPosition(
     index: number,
 ): IterableIterator<void>;
 
-export function moveBlocksDown(clientIds: string | string[], rootClientId: string): void;
+export function moveBlocksDown(
+    clientIds: string | string[],
+    rootClientId: string,
+): void;
 
-export function moveBlocksUp(clientIds: string | string[], rootClientId: string): void;
+export function moveBlocksUp(
+    clientIds: string | string[],
+    rootClientId: string,
+): void;
 
 /**
  * Signals that block multi-selection changed.
@@ -124,7 +137,10 @@ export function removeBlock(clientId: string, selectPrevious?: boolean): void;
  * @param selectPrevious - `true` if the previous block should be selected when a block is removed.
  *                          Default: `true`
  */
-export function removeBlocks(clientIds: string | string[], selectPrevious?: boolean): IterableIterator<void>;
+export function removeBlocks(
+    clientIds: string | string[],
+    selectPrevious?: boolean,
+): IterableIterator<void>;
 
 /**
  * Returns an action object signalling that a single block should be replaced
@@ -133,7 +149,10 @@ export function removeBlocks(clientIds: string | string[], selectPrevious?: bool
  * @param clientId - Block client ID to replace.
  * @param block - Replacement block(s).
  */
-export function replaceBlock(clientId: string | string[], block: BlockInstance | BlockInstance[]): void;
+export function replaceBlock(
+    clientId: string | string[],
+    block: BlockInstance | BlockInstance[],
+): void;
 
 /**
  * Signals that a blocks should be replaced with one or more replacement blocks.
@@ -156,7 +175,11 @@ export function replaceBlocks(
  * @param updateSelection - If `true` block selection will be updated. If `false`, block selection
  *                          will not change. Defaults to `true`.
  */
-export function replaceInnerBlocks(rootClientId: string, blocks: BlockInstance[], updateSelection?: boolean): void;
+export function replaceInnerBlocks(
+    rootClientId: string,
+    blocks: BlockInstance[],
+    updateSelection?: boolean,
+): void;
 
 /**
  * Returns an action object used in signalling that blocks state should be reset to the specified
@@ -200,7 +223,12 @@ export function selectPreviousBlock(clientId: string): IterableIterator<void>;
  * @param startOffset - The start offset.
  * @param endOffset - The end offset.
  */
-export function selectionChange(clientId: string, attributeKey: string, startOffset: number, endOffset: number): void;
+export function selectionChange(
+    clientId: string,
+    attributeKey: string,
+    startOffset: number,
+    endOffset: number,
+): void;
 
 /**
  * Resets the template validity.
@@ -262,7 +290,10 @@ export function toggleSelection(isSelectionEnabled?: boolean): void;
  * @param clientId - Block client ID.
  * @param updates - Block attributes to be merged.
  */
-export function updateBlock(clientId: string, updates: Partial<BlockInstance>): void;
+export function updateBlock(
+    clientId: string,
+    updates: Partial<BlockInstance>,
+): void;
 
 /**
  * Signals that the block attributes with the specified client ID has been updated.
@@ -270,7 +301,10 @@ export function updateBlock(clientId: string, updates: Partial<BlockInstance>): 
  * @param clientId - Block client ID.
  * @param attributes - Block attributes to be merged.
  */
-export function updateBlockAttributes(clientId: string, attributes: Record<string, any>): void;
+export function updateBlockAttributes(
+    clientId: string,
+    attributes: Record<string, any>,
+): void;
 
 /**
  * Changes the nested settings of a given block.
@@ -278,7 +312,10 @@ export function updateBlockAttributes(clientId: string, attributes: Record<strin
  * @param clientId - Client ID of the block whose nested setting are being received.
  * @param settings - Object with the new settings for the nested block.
  */
-export function updateBlockListSettings(clientId: string, settings: EditorBlockListSettings): void;
+export function updateBlockListSettings(
+    clientId: string,
+    settings: EditorBlockListSettings,
+): void;
 
 /**
  * Signals that the block editor settings have been updated.

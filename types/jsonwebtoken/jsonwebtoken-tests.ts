@@ -45,60 +45,79 @@ token = jwt.sign(testObject, cert, { algorithm: "RS256" });
 const privKey: Buffer = fs.readFileSync("encrypted_private.key"); // get private key
 const secret = { key: privKey.toString(), passphrase: "keypwd" };
 token = jwt.sign(testObject, secret, { algorithm: "RS256" }); // the algorithm option is mandatory in this case
-token = jwt.sign(testObject, { key: privKey, passphrase: "keypwd" }, { algorithm: "RS256" });
+token = jwt.sign(
+    testObject,
+    { key: privKey, passphrase: "keypwd" },
+    { algorithm: "RS256" },
+);
 
 // sign with secret key (KeyObject)
 secretKey = createSecretKey("shhhhh", "utf-8");
 token = jwt.sign(testObject, secretKey);
 
 // sign with insecure key size
-token = jwt.sign({ foo: "bar" }, "shhhhh", { algorithm: "RS256", allowInsecureKeySizes: true });
+token = jwt.sign({ foo: "bar" }, "shhhhh", {
+    algorithm: "RS256",
+    allowInsecureKeySizes: true,
+});
 
 // sign with invalid asymmetric key type for algorithm
-token = jwt.sign({ foo: "bar" }, "shhhhh", { algorithm: "RS256", allowInvalidAsymmetricKeyTypes: true });
+token = jwt.sign({ foo: "bar" }, "shhhhh", {
+    algorithm: "RS256",
+    allowInvalidAsymmetricKeyTypes: true,
+});
 
 // sign with algorithm none
 token = jwt.sign(testObject, null, { algorithm: "none" });
 // @ts-expect-error
-token = jwt.sign({ foo: "bar" }, null, { algorithm: "RS256", allowInvalidAsymmetricKeyTypes: true });
+token = jwt.sign({ foo: "bar" }, null, {
+    algorithm: "RS256",
+    allowInvalidAsymmetricKeyTypes: true,
+});
 
 // sign asynchronously
-jwt.sign(testObject, cert, { algorithm: "RS256" }, (
-    err: Error | null,
-    token: string | undefined,
-) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
+jwt.sign(
+    testObject,
+    cert,
+    { algorithm: "RS256" },
+    (err: Error | null, token: string | undefined) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
 
-    console.log(token);
-});
+        console.log(token);
+    },
+);
 
 // sign asynchronously with algorithm none
-jwt.sign(testObject, null, { algorithm: "none" }, (
-    err: Error | null,
-    token: string | undefined,
-) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
+jwt.sign(
+    testObject,
+    null,
+    { algorithm: "none" },
+    (err: Error | null, token: string | undefined) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
 
-    console.log(token);
-});
+        console.log(token);
+    },
+);
 // @ts-expect-error
-jwt.sign(testObject, null, { algorithm: "RS256" }, (
-    err: Error | null,
-    token: string | undefined,
-) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
+jwt.sign(
+    testObject,
+    null,
+    { algorithm: "RS256" },
+    (err: Error | null, token: string | undefined) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
 
-    console.log(token);
-});
+        console.log(token);
+    },
+);
 
 /**
  * jwt.verify
@@ -135,11 +154,16 @@ jwt.verify(token, secret, (err, decoded) => {
 });
 
 // verify with invalid asymmetric key type for algorithm
-jwt.verify(token, secret, { allowInvalidAsymmetricKeyTypes: true }, (err, decoded) => {
-    const result = decoded as TestObject;
+jwt.verify(
+    token,
+    secret,
+    { allowInvalidAsymmetricKeyTypes: true },
+    (err, decoded) => {
+        const result = decoded as TestObject;
 
-    console.log(result.foo); // bar
-});
+        console.log(result.foo); // bar
+    },
+);
 
 // verify a token asymmetric
 cert = fs.readFileSync("public.pem"); // get public key
@@ -150,7 +174,10 @@ jwt.verify(token, cert, (err, decoded) => {
 });
 
 // verify a token assymetric with async key fetch function
-function getKeySuccess(header: jwt.JwtHeader, callback: jwt.SigningKeyCallback) {
+function getKeySuccess(
+    header: jwt.JwtHeader,
+    callback: jwt.SigningKeyCallback,
+) {
     cert = fs.readFileSync("public.pem");
 
     callback(null, cert);
@@ -178,18 +205,25 @@ jwt.verify(token, cert, { audience: "urn:foo" }, (err, decoded) => {
 jwt.verify(token, cert, { audience: /urn:f[o]{2}/ }, (err, decoded) => {
     // if audience mismatch, err == invalid audience
 });
-jwt.verify(token, cert, { audience: [/urn:f[o]{2}/, "urn:bar"] }, (err, decoded) => {
-    // if audience mismatch, err == invalid audience
-});
+jwt.verify(
+    token,
+    cert,
+    { audience: [/urn:f[o]{2}/, "urn:bar"] },
+    (err, decoded) => {
+        // if audience mismatch, err == invalid audience
+    },
+);
 
 // verify issuer
 cert = fs.readFileSync("public.pem"); // get public key
-jwt.verify(token, cert, { audience: "urn:foo", issuer: "urn:issuer" }, (
-    err,
-    decoded,
-) => {
-    // if issuer mismatch, err == invalid issuer
-});
+jwt.verify(
+    token,
+    cert,
+    { audience: "urn:foo", issuer: "urn:issuer" },
+    (err, decoded) => {
+        // if issuer mismatch, err == invalid issuer
+    },
+);
 
 // verify algorithm
 cert = fs.readFileSync("public.pem"); // get public key

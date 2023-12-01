@@ -26,7 +26,7 @@ declare namespace signals {
          * <br />- inspired by Robert Penner's AS3 Signals.
          * @author Miller Medeiros
          */
-        new(): Signal<T>;
+        new (): Signal<T>;
 
         /**
          * If Signal is active and should broadcast events.
@@ -53,7 +53,11 @@ declare namespace signals {
          *        Listeners with higher priority will be executed before listeners with lower priority.
          *        Listeners with same priority level will be executed at the same order as they were added. (default = 0)
          */
-        add(listener: (...params: T[]) => void, listenerContext?: any, priority?: Number): SignalBinding<T>;
+        add(
+            listener: (...params: T[]) => void,
+            listenerContext?: any,
+            priority?: Number,
+        ): SignalBinding<T>;
 
         /**
          * Add listener to the signal that should be removed after first execution (will be executed only once).
@@ -64,7 +68,11 @@ declare namespace signals {
          *                 Listeners with higher priority will be executed before listeners with lower priority.
          *                 Listeners with same priority level will be executed at the same order as they were added. (default = 0)
          */
-        addOnce(listener: (...params: T[]) => void, listenerContext?: any, priority?: Number): SignalBinding<T>;
+        addOnce(
+            listener: (...params: T[]) => void,
+            listenerContext?: any,
+            priority?: Number,
+        ): SignalBinding<T>;
 
         /**
          * Dispatch/Broadcast Signal to all listeners added to the queue.

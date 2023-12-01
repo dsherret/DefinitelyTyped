@@ -18,7 +18,11 @@ export const name: "ejs";
  * @param filename parent file path
  * @param isDir whether the parent file path is a directory
  */
-export function resolveInclude(name: string, filename: string, isDir?: boolean): string;
+export function resolveInclude(
+    name: string,
+    filename: string,
+    isDir?: boolean,
+): string;
 
 /**
  * Compile the given `str` of ejs into a template function.
@@ -27,13 +31,22 @@ export function compile(
     template: string,
     opts: Options & { async: true; client?: false | undefined },
 ): AsyncTemplateFunction;
-export function compile(template: string, opts: Options & { async: true; client: true }): AsyncClientFunction;
+export function compile(
+    template: string,
+    opts: Options & { async: true; client: true },
+): AsyncClientFunction;
 export function compile(
     template: string,
     opts?: Options & { async?: false | undefined; client?: false | undefined },
 ): TemplateFunction;
-export function compile(template: string, opts?: Options & { async?: false | undefined; client: true }): ClientFunction;
-export function compile(template: string, opts?: Options): TemplateFunction | AsyncTemplateFunction;
+export function compile(
+    template: string,
+    opts?: Options & { async?: false | undefined; client: true },
+): ClientFunction;
+export function compile(
+    template: string,
+    opts?: Options,
+): TemplateFunction | AsyncTemplateFunction;
 
 /**
  * Render the given `template` of ejs.
@@ -41,10 +54,26 @@ export function compile(template: string, opts?: Options): TemplateFunction | As
  * If you would like to include options but not data, you need to explicitly
  * call this function with `data` being an empty object or `null`.
  */
-export function render(template: string, data?: Data, opts?: Options & { async: false }): string;
-export function render(template: string, data: Data | undefined, opts: Options & { async: true }): Promise<string>;
-export function render(template: string, data: Data | undefined, opts: Options & { async?: never | undefined }): string;
-export function render(template: string, data?: Data, opts?: Options): string | Promise<string>;
+export function render(
+    template: string,
+    data?: Data,
+    opts?: Options & { async: false },
+): string;
+export function render(
+    template: string,
+    data: Data | undefined,
+    opts: Options & { async: true },
+): Promise<string>;
+export function render(
+    template: string,
+    data: Data | undefined,
+    opts: Options & { async?: never | undefined },
+): string;
+export function render(
+    template: string,
+    data?: Data,
+    opts?: Options,
+): string | Promise<string>;
 
 /**
  * Callback for receiving data from `renderFile`.
@@ -61,9 +90,22 @@ export type RenderFileCallback<T> = (err: Error | null, str: string) => T;
  * call this function with `data` being an empty object or `null`.
  */
 export function renderFile<T>(path: string, cb: RenderFileCallback<T>): T;
-export function renderFile<T>(path: string, data: Data, cb: RenderFileCallback<T>): T;
-export function renderFile<T>(path: string, data: Data, opts: Options, cb: RenderFileCallback<T>): T;
-export function renderFile(path: string, data?: Data, opts?: Options): Promise<string>;
+export function renderFile<T>(
+    path: string,
+    data: Data,
+    cb: RenderFileCallback<T>,
+): T;
+export function renderFile<T>(
+    path: string,
+    data: Data,
+    opts: Options,
+    cb: RenderFileCallback<T>,
+): T;
+export function renderFile(
+    path: string,
+    data?: Data,
+    opts?: Options,
+): Promise<string>;
 
 /**
  * Clear intermediate JavaScript cache. Calls {@link Cache#reset}.
@@ -158,7 +200,11 @@ export class Template {
     /**
      * Compiles the EJS template.
      */
-    compile(): TemplateFunction | AsyncTemplateFunction | ClientFunction | AsyncClientFunction;
+    compile():
+        | TemplateFunction
+        | AsyncTemplateFunction
+        | ClientFunction
+        | AsyncClientFunction;
 }
 
 export namespace Template {
@@ -278,7 +324,9 @@ export type IncludeCallback = (path: string, data?: Data) => string;
 /**
  * An object where {@link filename} is the final parsed path or {@link template} is the content of the included template
  */
-export type IncluderResult = { filename: string; template?: never } | { template: string; filename?: never };
+export type IncluderResult =
+    | { filename: string; template?: never }
+    | { template: string; filename?: never };
 
 /**
  * @param originalPath the path as it appears in the include statement
@@ -286,7 +334,10 @@ export type IncluderResult = { filename: string; template?: never } | { template
  *
  * @return An {@link IncluderResult} object containing the filename or template data.
  */
-export type IncluderCallback = (originalPath: string, parsedPath: string) => IncluderResult;
+export type IncluderCallback = (
+    originalPath: string,
+    parsedPath: string,
+) => IncluderResult;
 
 export interface Options {
     /**

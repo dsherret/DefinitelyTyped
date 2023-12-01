@@ -9,12 +9,14 @@ interface BootstrapTreeViewNodeData {
     href?: string | undefined;
     selectable?: boolean | undefined;
     nodeId?: number | undefined;
-    state?: {
-        checked: boolean;
-        disabled: boolean;
-        expanded: boolean;
-        selected: boolean;
-    } | undefined;
+    state?:
+        | {
+              checked: boolean;
+              disabled: boolean;
+              expanded: boolean;
+              selected: boolean;
+          }
+        | undefined;
     tags?: string[] | undefined;
     nodes?: BootstrapTreeViewNodeData[] | undefined;
 }

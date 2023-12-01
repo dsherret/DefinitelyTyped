@@ -16,6 +16,14 @@ customState.html_attr_whitelist.push("");
 customState.html_element_whitelist.push("");
 customState.nofollow = 1;
 customState.target = "";
-const customRenderer = SnuOwnd.createCustomRenderer(customCallbacks, customState);
-const customParser = SnuOwnd.getParser(customRenderer, SnuOwnd.MKDEXT_NO_EMAIL_AUTOLINK, 20, 10);
+const customRenderer = SnuOwnd.createCustomRenderer(
+    customCallbacks,
+    customState,
+);
+const customParser = SnuOwnd.getParser(
+    customRenderer,
+    SnuOwnd.MKDEXT_NO_EMAIL_AUTOLINK,
+    20,
+    10,
+);
 customParser.render(""); // $ExpectType string

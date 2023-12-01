@@ -26,7 +26,7 @@ bundler.addPackager("md", "markdown-packager");
 
 bundler.middleware();
 
-bundler.bundle().then(bundle => bundle.name);
+bundler.bundle().then((bundle) => bundle.name);
 
 bundler.serve(1234, false, "localhost").then((server) => server.close());
 

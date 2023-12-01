@@ -4,21 +4,18 @@ bem("block").cn;
 bem("block").mod("modifier").cn;
 bem("block").mod(["modifier"]).cn;
 bem("block").mod(["modifier", {}]).cn;
-bem("block").mod(["modifier", { a: false, b: 5, c: "c", d: null, e: undefined }]).cn;
+bem("block").mod([
+    "modifier",
+    { a: false, b: 5, c: "c", d: null, e: undefined },
+]).cn;
 
 bem("block").el("element").cn;
 
-bem("block")
-    .el("element")
-    .mod("modifier").cn;
+bem("block").el("element").mod("modifier").cn;
 
-bem("block")
-    .el("element")
-    .mod(["modifier"]).cn;
+bem("block").el("element").mod(["modifier"]).cn;
 
-bem("block")
-    .el("element")
-    .mod(["modifier", {}]).cn;
+bem("block").el("element").mod(["modifier", {}]).cn;
 
 bem("block")
     .el("element")
@@ -26,17 +23,11 @@ bem("block")
 
 bem("block").el(["element1", "element2"]).cn;
 
-bem("block")
-    .el(["element1", "element2"])
-    .mod("modifier").cn;
+bem("block").el(["element1", "element2"]).mod("modifier").cn;
 
-bem("block")
-    .el(["element1", "element2"])
-    .mod(["modifier"]).cn;
+bem("block").el(["element1", "element2"]).mod(["modifier"]).cn;
 
-bem("block")
-    .el(["element1", "element2"])
-    .mod(["modifier", {}]).cn;
+bem("block").el(["element1", "element2"]).mod(["modifier", {}]).cn;
 
 bem("block")
     .el(["element1", "element2"])
@@ -46,21 +37,18 @@ bem(["block1", "block2"]).cn;
 bem(["block1", "block2"]).mod("modifier").cn;
 bem(["block1", "block2"]).mod(["modifier"]).cn;
 bem(["block1", "block2"]).mod(["modifier", {}]).cn;
-bem(["block1", "block2"]).mod(["modifier", { a: false, b: 5, c: "c", d: null, e: undefined }]).cn;
+bem(["block1", "block2"]).mod([
+    "modifier",
+    { a: false, b: 5, c: "c", d: null, e: undefined },
+]).cn;
 
 bem(["block1", "block2"]).el("element").cn;
 
-bem(["block1", "block2"])
-    .el("element")
-    .mod("modifier").cn;
+bem(["block1", "block2"]).el("element").mod("modifier").cn;
 
-bem(["block1", "block2"])
-    .el("element")
-    .mod(["modifier"]).cn;
+bem(["block1", "block2"]).el("element").mod(["modifier"]).cn;
 
-bem(["block1", "block2"])
-    .el("element")
-    .mod(["modifier", {}]).cn;
+bem(["block1", "block2"]).el("element").mod(["modifier", {}]).cn;
 
 bem(["block1", "block2"])
     .el("element")
@@ -68,47 +56,25 @@ bem(["block1", "block2"])
 
 bem(["block1", "block2"]).el(["element1", "element2"]).cn;
 
-bem(["block1", "block2"])
-    .el(["element1", "element2"])
-    .mod("modifier").cn;
+bem(["block1", "block2"]).el(["element1", "element2"]).mod("modifier").cn;
 
-bem(["block1", "block2"])
-    .el(["element1", "element2"])
-    .mod(["modifier"]).cn;
+bem(["block1", "block2"]).el(["element1", "element2"]).mod(["modifier"]).cn;
 
-bem(["block1", "block2"])
-    .el(["element1", "element2"])
-    .mod(["modifier", {}]).cn;
+bem(["block1", "block2"]).el(["element1", "element2"]).mod(["modifier", {}]).cn;
 
 bem(["block1", "block2"])
     .el(["element1", "element2"])
     .mod(["modifier", { a: false, b: 5, c: "c", d: null, e: undefined }]).cn;
 
-bem("block")
-    .el("element")
-    .el("element")
-    .el("element").cn;
+bem("block").el("element").el("element").el("element").cn;
 
-bem("block")
-    .mod("modifier")
-    .mod("modifier")
-    .mod("modifier").cn;
+bem("block").mod("modifier").mod("modifier").mod("modifier").cn;
 
-bem("block")
-    .el("element")
-    .mod("modifier").cn;
+bem("block").el("element").mod("modifier").cn;
 
-bem("block")
-    .el("element")
-    .mod("modifier")
-    .el("element")
-    .mod("modifier").cn;
+bem("block").el("element").mod("modifier").el("element").mod("modifier").cn;
 
-bem("block")
-    .mod("modifier")
-    .el("element")
-    .mod("modifier")
-    .el("element").cn;
+bem("block").mod("modifier").el("element").mod("modifier").el("element").cn;
 
 {
     const className = bem("article")
@@ -141,10 +107,16 @@ bem("block")
 }
 
 {
-    const defaultGlue = bem("element", [{ color: "blue" }], {}, true).el("child");
+    const defaultGlue = bem("element", [{ color: "blue" }], {}, true).el(
+        "child",
+    );
     defaultGlue.cn;
 
-    const customGlue = bem("element", [{ color: "blue" }], {}, true, { el: "_", mod: "-", prop: "--" }).el("child");
+    const customGlue = bem("element", [{ color: "blue" }], {}, true, {
+        el: "_",
+        mod: "-",
+        prop: "--",
+    }).el("child");
     customGlue.cn;
 }
 

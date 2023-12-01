@@ -2,25 +2,20 @@ declare namespace WechatMiniprogram.Page {
     type Instance<
         TData extends DataOption,
         TCustom extends CustomOption,
-    > =
-        & OptionalInterface<ILifetime>
-        & InstanceProperties
-        & InstanceMethods<TData>
-        & Data<TData>
-        & TCustom;
+    > = OptionalInterface<ILifetime> &
+        InstanceProperties &
+        InstanceMethods<TData> &
+        Data<TData> &
+        TCustom;
     type Options<
         TData extends DataOption,
         TCustom extends CustomOption,
-    > =
-        & (
-            & TCustom
-            & Partial<Data<TData>>
-            & Partial<ILifetime>
-            & {
-                options?: Component.ComponentOptions;
-            }
-        )
-        & ThisType<Instance<TData, TCustom>>;
+    > = (TCustom &
+        Partial<Data<TData>> &
+        Partial<ILifetime> & {
+            options?: Component.ComponentOptions;
+        }) &
+        ThisType<Instance<TData, TCustom>>;
     type TrivialInstance = Instance<IAnyObject, IAnyObject>;
     interface Constructor {
         <TData extends DataOption, TCustom extends CustomOption>(
@@ -120,7 +115,9 @@ declare namespace WechatMiniprogram.Page {
          * 监听用户点击右上角菜单“收藏”按钮的行为，并自定义收藏内容。
          * 基础库 2.10.3，安卓 7.0.15 版本起支持，iOS 暂不支持
          */
-        onAddToFavorites(options: IAddToFavoritesOption): IAddToFavoritesContent;
+        onAddToFavorites(
+            options: IAddToFavoritesOption,
+        ): IAddToFavoritesContent;
     }
     interface InstanceProperties {
         /** 页面的文件路径 */

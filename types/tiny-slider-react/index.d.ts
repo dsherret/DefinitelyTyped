@@ -240,7 +240,9 @@ export interface TinySliderInfo {
 
 export type TinySliderProps = React.PropsWithChildren<{
     settings?: TinySliderSettings | undefined;
-    onClick?: ((slideClicked: number, info: string, event: Event) => void) | undefined;
+    onClick?:
+        | ((slideClicked: number, info: string, event: Event) => void)
+        | undefined;
     startIndex?: number | undefined;
     onIndexChanged?: ((info: TinySliderInfo) => void) | undefined;
     onTransitionStart?: ((info: TinySliderInfo) => void) | undefined;

@@ -1,5 +1,11 @@
 import { FC, ReactNode } from "react";
-import { FlatListProps, GestureResponderHandlers, StyleProp, TextInputProps, ViewStyle } from "react-native";
+import {
+    FlatListProps,
+    GestureResponderHandlers,
+    StyleProp,
+    TextInputProps,
+    ViewStyle,
+} from "react-native";
 
 export interface AutocompleteProps<T> extends TextInputProps {
     /**
@@ -54,7 +60,9 @@ export interface AutocompleteProps<T> extends TextInputProps {
      * function
      * onStartShouldSetResponderCapture will be passed to the result list view container (onStartShouldSetResponderCapture).
      */
-    onStartShouldSetResponderCapture?: GestureResponderHandlers["onStartShouldSetResponderCapture"] | undefined;
+    onStartShouldSetResponderCapture?:
+        | GestureResponderHandlers["onStartShouldSetResponderCapture"]
+        | undefined;
 
     /**
      * function

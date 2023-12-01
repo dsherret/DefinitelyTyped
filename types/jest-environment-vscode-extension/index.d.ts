@@ -7,11 +7,9 @@ type Using = <Files extends { [filename: string]: string }>(
             [path: string]: unknown;
         };
     },
-    closure: (
-        mapFileToDoc: {
-            [filename in keyof Files]: vscodeTypes.TextDocument;
-        },
-    ) => Promise<void>,
+    closure: (mapFileToDoc: {
+        [filename in keyof Files]: vscodeTypes.TextDocument;
+    }) => Promise<void>,
 ) => Promise<void>;
 
 declare global {
@@ -33,8 +31,13 @@ declare global {
             position: vscodeTypes.Position,
         ) => Promise<Array<vscodeTypes.Location | vscodeTypes.LocationLink>>;
         documentText: (doc: vscodeTypes.TextDocument) => Promise<string>;
-        documentSymbols: (doc: vscodeTypes.TextDocument) => Promise<vscodeTypes.SymbolInformation[]>;
-        hovers: (doc: vscodeTypes.TextDocument, position: vscodeTypes.Position) => Promise<string[]>;
+        documentSymbols: (
+            doc: vscodeTypes.TextDocument,
+        ) => Promise<vscodeTypes.SymbolInformation[]>;
+        hovers: (
+            doc: vscodeTypes.TextDocument,
+            position: vscodeTypes.Position,
+        ) => Promise<string[]>;
     };
 
     function dedent(templateString: string): string;

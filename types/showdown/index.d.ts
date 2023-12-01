@@ -36,24 +36,33 @@ declare namespace Showdown {
 
     interface ConverterGlobals {
         converter?: Converter | undefined;
-        gDimensions?: {
-            width?: number | undefined;
-            height?: number | undefined;
-        } | undefined;
+        gDimensions?:
+            | {
+                  width?: number | undefined;
+                  height?: number | undefined;
+              }
+            | undefined;
         gHtmlBlocks?: string[] | undefined;
         gHtmlMdBlocks?: string[] | undefined;
         gHtmlSpans?: string[] | undefined;
         gListLevel?: number | undefined;
         gTitles?: { [key: string]: string } | undefined;
         gUrls?: { [key: string]: string } | undefined;
-        ghCodeBlocks?: Array<{ codeblock?: string | undefined; text?: string | undefined }> | undefined;
+        ghCodeBlocks?:
+            | Array<{
+                  codeblock?: string | undefined;
+                  text?: string | undefined;
+              }>
+            | undefined;
         hashLinkCounts?: { [key: string]: number } | undefined;
         langExtensions?: ShowdownExtension[] | undefined;
-        metadata?: {
-            parsed?: { [key: string]: string } | undefined;
-            raw?: string | undefined;
-            format?: string | undefined;
-        } | undefined;
+        metadata?:
+            | {
+                  parsed?: { [key: string]: string } | undefined;
+                  raw?: string | undefined;
+                  format?: string | undefined;
+              }
+            | undefined;
         outputModifiers?: ShowdownExtension[] | undefined;
     }
 
@@ -116,7 +125,13 @@ declare namespace Showdown {
      * ```
      */
     interface FilterExtension extends Extension {
-        filter?: ((text: string, converter: Converter, options?: ConverterOptions) => string) | undefined;
+        filter?:
+            | ((
+                  text: string,
+                  converter: Converter,
+                  options?: ConverterOptions,
+              ) => string)
+            | undefined;
     }
 
     /**
@@ -147,8 +162,9 @@ declare namespace Showdown {
      * };
      * ```
      */
-    interface ShowdownExtension extends RegexReplaceExtension, FilterExtension {
-    }
+    interface ShowdownExtension
+        extends RegexReplaceExtension,
+            FilterExtension {}
 
     /**
      * Showdown extensions store object.
@@ -868,7 +884,12 @@ declare namespace Showdown {
          * Add extensions to the new converter can be showdown extensions or "global" extensions name.
          */
         extensions?:
-            | Array<(() => ShowdownExtension[] | ShowdownExtension) | ShowdownExtension[] | ShowdownExtension | string>
+            | Array<
+                  | (() => ShowdownExtension[] | ShowdownExtension)
+                  | ShowdownExtension[]
+                  | ShowdownExtension
+                  | string
+              >
             | undefined;
     }
 
@@ -980,7 +1001,10 @@ declare namespace Showdown {
          * @param name - The extension name.
          */
         addExtension(
-            extension: (() => ShowdownExtension[] | ShowdownExtension) | ShowdownExtension[] | ShowdownExtension,
+            extension:
+                | (() => ShowdownExtension[] | ShowdownExtension)
+                | ShowdownExtension[]
+                | ShowdownExtension,
             name?: string,
         ): void;
 
@@ -1012,7 +1036,9 @@ declare namespace Showdown {
          * and specify the extensions you wish to use.
          * @param extensions - The extensions to remove.
          */
-        removeExtension(extensions: ShowdownExtension[] | ShowdownExtension): void;
+        removeExtension(
+            extensions: ShowdownExtension[] | ShowdownExtension,
+        ): void;
 
         /**
          * Get all extensions.
@@ -1041,7 +1067,7 @@ declare namespace Showdown {
         /**
          * @param converterOptions - Configuration object, describes which extensions to apply.
          */
-        new(converterOptions?: ConverterOptions): Converter;
+        new (converterOptions?: ConverterOptions): Converter;
     }
 
     /**
@@ -1123,7 +1149,9 @@ declare namespace Showdown {
      * @param [simple=true] - If to returns the default showdown options or the showdown options schema.
      * @returns Returns the options schema if `simple` is `false`, otherwise the default showdown options.
      */
-    function getDefaultOptions(simple?: boolean): ShowdownOptionsSchema | ShowdownOptions;
+    function getDefaultOptions(
+        simple?: boolean,
+    ): ShowdownOptionsSchema | ShowdownOptions;
 
     /**
      * Get a registered subParser.
@@ -1162,7 +1190,10 @@ declare namespace Showdown {
      */
     function extension(
         name: string,
-        ext: (() => ShowdownExtension[] | ShowdownExtension) | ShowdownExtension[] | ShowdownExtension,
+        ext:
+            | (() => ShowdownExtension[] | ShowdownExtension)
+            | ShowdownExtension[]
+            | ShowdownExtension,
     ): void;
 
     /**
@@ -1190,5 +1221,7 @@ declare namespace Showdown {
      * @param ext - The extension to checks.
      * @returns Returns `true` if the extension is valid showdown extension, otherwise `false`.
      */
-    function validateExtension(ext: ShowdownExtension[] | ShowdownExtension): boolean;
+    function validateExtension(
+        ext: ShowdownExtension[] | ShowdownExtension,
+    ): boolean;
 }

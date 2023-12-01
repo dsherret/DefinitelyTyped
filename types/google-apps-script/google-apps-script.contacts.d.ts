@@ -32,27 +32,49 @@ declare namespace GoogleAppsScript {
          * A Contact contains the name, address, and various contact details of a contact.
          */
         interface Contact {
-            addAddress(label: typeof ContactsApp.Field | string, address: string): AddressField;
+            addAddress(
+                label: typeof ContactsApp.Field | string,
+                address: string,
+            ): AddressField;
             addCompany(company: string, title: string): CompanyField;
-            addCustomField(label: typeof ContactsApp.ExtendedField | string, content: any): CustomField;
+            addCustomField(
+                label: typeof ContactsApp.ExtendedField | string,
+                content: any,
+            ): CustomField;
             addDate(
                 label: typeof ContactsApp.Field | string,
                 month: Base.Month,
                 day: Integer,
                 year: Integer,
             ): DateField;
-            addEmail(label: typeof ContactsApp.Field | string, address: string): EmailField;
-            addIM(label: typeof ContactsApp.Field | string, address: string): IMField;
-            addPhone(label: typeof ContactsApp.Field | string, number: string): PhoneField;
+            addEmail(
+                label: typeof ContactsApp.Field | string,
+                address: string,
+            ): EmailField;
+            addIM(
+                label: typeof ContactsApp.Field | string,
+                address: string,
+            ): IMField;
+            addPhone(
+                label: typeof ContactsApp.Field | string,
+                number: string,
+            ): PhoneField;
             addToGroup(group: ContactGroup): Contact;
-            addUrl(label: typeof ContactsApp.Field | string, url: string): UrlField;
+            addUrl(
+                label: typeof ContactsApp.Field | string,
+                url: string,
+            ): UrlField;
             deleteContact(): void;
             getAddresses(): AddressField[];
-            getAddresses(label: typeof ContactsApp.Field | string): AddressField[];
+            getAddresses(
+                label: typeof ContactsApp.Field | string,
+            ): AddressField[];
             getCompanies(): CompanyField[];
             getContactGroups(): ContactGroup[];
             getCustomFields(): CustomField[];
-            getCustomFields(label: typeof ContactsApp.ExtendedField | string): CustomField[];
+            getCustomFields(
+                label: typeof ContactsApp.ExtendedField | string,
+            ): CustomField[];
             getDates(): DateField[];
             getDates(label: typeof ContactsApp.Field | string): DateField[];
             getEmails(): EmailField[];
@@ -95,7 +117,9 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ getHomePhone(): string;
             /** @deprecated DO NOT USE */ getMobilePhone(): string;
             /** @deprecated DO NOT USE */ getPager(): string;
-            /** @deprecated DO NOT USE */ getUserDefinedField(key: string): string;
+            /** @deprecated DO NOT USE */ getUserDefinedField(
+                key: string,
+            ): string;
             /** @deprecated DO NOT USE */ getUserDefinedFields(): object;
             /** @deprecated DO NOT USE */ getWorkAddress(): string;
             /** @deprecated DO NOT USE */ getWorkFax(): string;
@@ -105,8 +129,13 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ setHomePhone(phone: string): void;
             /** @deprecated DO NOT USE */ setMobilePhone(phone: string): void;
             /** @deprecated DO NOT USE */ setPager(phone: string): void;
-            /** @deprecated DO NOT USE */ setPrimaryEmail(primaryEmail: string): void;
-            /** @deprecated DO NOT USE */ setUserDefinedField(key: string, value: string): void;
+            /** @deprecated DO NOT USE */ setPrimaryEmail(
+                primaryEmail: string,
+            ): void;
+            /** @deprecated DO NOT USE */ setUserDefinedField(
+                key: string,
+                value: string,
+            ): void;
             /** @deprecated DO NOT USE */ setUserDefinedFields(o: object): void;
             /** @deprecated DO NOT USE */ setWorkAddress(addr: string): void;
             /** @deprecated DO NOT USE */ setWorkFax(phone: string): void;
@@ -138,7 +167,11 @@ declare namespace GoogleAppsScript {
             Month: typeof Base.Month;
             Priority: typeof Priority;
             Sensitivity: typeof Sensitivity;
-            createContact(givenName: string, familyName: string, email: string): Contact;
+            createContact(
+                givenName: string,
+                familyName: string,
+                email: string,
+            ): Contact;
             createContactGroup(name: string): ContactGroup;
             deleteContact(contact: Contact): void;
             deleteContactGroup(group: ContactGroup): void;
@@ -152,11 +185,32 @@ declare namespace GoogleAppsScript {
             getContactsByAddress(query: string, label: Field): Contact[];
             getContactsByAddress(query: string, label: string): Contact[];
             getContactsByCompany(query: string): Contact[];
-            getContactsByCustomField(query: typeof ContactsApp.ExtendedField | string, label: ExtendedField): Contact[];
-            getContactsByDate(month: Base.Month, day: Integer, label: Field): Contact[];
-            getContactsByDate(month: Base.Month, day: Integer, year: Integer, label: Field): Contact[];
-            getContactsByDate(month: Base.Month, day: Integer, year: Integer, label: string): Contact[];
-            getContactsByDate(month: Base.Month, day: Integer, label: string): Contact[];
+            getContactsByCustomField(
+                query: typeof ContactsApp.ExtendedField | string,
+                label: ExtendedField,
+            ): Contact[];
+            getContactsByDate(
+                month: Base.Month,
+                day: Integer,
+                label: Field,
+            ): Contact[];
+            getContactsByDate(
+                month: Base.Month,
+                day: Integer,
+                year: Integer,
+                label: Field,
+            ): Contact[];
+            getContactsByDate(
+                month: Base.Month,
+                day: Integer,
+                year: Integer,
+                label: string,
+            ): Contact[];
+            getContactsByDate(
+                month: Base.Month,
+                day: Integer,
+                label: string,
+            ): Contact[];
             getContactsByEmailAddress(query: string): Contact[];
             getContactsByEmailAddress(query: string, label: Field): Contact[];
             getContactsByEmailAddress(query: string, label: string): Contact[];
@@ -174,8 +228,12 @@ declare namespace GoogleAppsScript {
             getContactsByUrl(query: string): Contact[];
             getContactsByUrl(query: string, label: Field): Contact[];
             getContactsByUrl(query: string, label: string): Contact[];
-            /** @deprecated DO NOT USE */ findByEmailAddress(email: string): Contact;
-            /** @deprecated DO NOT USE */ findContactGroup(name: string): ContactGroup;
+            /** @deprecated DO NOT USE */ findByEmailAddress(
+                email: string,
+            ): Contact;
+            /** @deprecated DO NOT USE */ findContactGroup(
+                name: string,
+            ): ContactGroup;
             /** @deprecated DO NOT USE */ getAllContacts(): Contact[];
         }
         /**

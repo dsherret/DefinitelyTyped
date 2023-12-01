@@ -48,7 +48,10 @@ declare class CSteamGroup {
      * @param protocol The protocol to use. Possible values for protocol are http://, https://, or // (protocol aware). Default http://.
      * @returns string
      */
-    getAvatarURL(size: string, protocol: "http://" | "https://" | string): string;
+    getAvatarURL(
+        size: string,
+        protocol: "http://" | "https://" | string,
+    ): string;
 
     /**
      * Retrieves a list of all users in this group. For large groups this could take around 30 seconds, possibly longer.
@@ -58,10 +61,7 @@ declare class CSteamGroup {
      */
     getMembers(
         addresses: string[],
-        callback: (
-            err: CallbackError,
-            memebers: SteamID[],
-        ) => any,
+        callback: (err: CallbackError, memebers: SteamID[]) => any,
     ): void;
 
     /**
@@ -101,7 +101,12 @@ declare class CSteamGroup {
      * @param hidden Optional. `true` to post this as a hidden announcement. Default `false`.
      * @param callback Called when the request completes.
      */
-    postAnnouncement(headline: any, content: any, hidden: boolean, callback: Callback): void;
+    postAnnouncement(
+        headline: any,
+        content: any,
+        hidden: boolean,
+        callback: Callback,
+    ): void;
 
     /**
      * Edits an announcement in the group.
@@ -111,7 +116,12 @@ declare class CSteamGroup {
      * @param content The new content for the announcement.
      * @param callback Optional. Called when the request completes.
      */
-    editAnnouncement(annoucementID: string, headline: string, content: string, callback?: Callback): void;
+    editAnnouncement(
+        annoucementID: string,
+        headline: string,
+        content: string,
+        callback?: Callback,
+    ): void;
 
     /**
      * Deletes an announcement in the group.
@@ -205,10 +215,7 @@ declare class CSteamGroup {
      */
     getHistory(
         page: any,
-        callback: (
-            err: CallbackError,
-            history: GroupHistory,
-        ) => any,
+        callback: (err: CallbackError, history: GroupHistory) => any,
     ): void;
 
     /**

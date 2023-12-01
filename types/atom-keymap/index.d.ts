@@ -149,22 +149,34 @@ declare global {
              *  Invoke the given callback when one or more keystrokes completely match a
              *  key binding.
              */
-            onDidMatchBinding(callback: (event: Events.FullKeybindingMatch) => void): Disposable;
+            onDidMatchBinding(
+                callback: (event: Events.FullKeybindingMatch) => void,
+            ): Disposable;
 
             /** Invoke the given callback when one or more keystrokes partially match a binding. */
-            onDidPartiallyMatchBindings(callback: (event: Events.PartialKeybindingMatch) => void): Disposable;
+            onDidPartiallyMatchBindings(
+                callback: (event: Events.PartialKeybindingMatch) => void,
+            ): Disposable;
 
             /** Invoke the given callback when one or more keystrokes fail to match any bindings. */
-            onDidFailToMatchBinding(callback: (event: Events.FailedKeybindingMatch) => void): Disposable;
+            onDidFailToMatchBinding(
+                callback: (event: Events.FailedKeybindingMatch) => void,
+            ): Disposable;
 
             /** Invoke the given callback when a keymap file is reloaded. */
-            onDidReloadKeymap(callback: (event: Events.KeymapLoaded) => void): Disposable;
+            onDidReloadKeymap(
+                callback: (event: Events.KeymapLoaded) => void,
+            ): Disposable;
 
             /** Invoke the given callback when a keymap file is unloaded. */
-            onDidUnloadKeymap(callback: (event: Events.KeymapLoaded) => void): Disposable;
+            onDidUnloadKeymap(
+                callback: (event: Events.KeymapLoaded) => void,
+            ): Disposable;
 
             /** Invoke the given callback when a keymap file not able to be loaded. */
-            onDidFailToReadFile(callback: (error: Events.FailedKeymapFileRead) => void): Disposable;
+            onDidFailToReadFile(
+                callback: (error: Events.FailedKeymapFileRead) => void,
+            ): Disposable;
 
             // Adding and Removing Bindings
             /** Construct KeyBindings from an object grouping them by CSS selector. */
@@ -175,7 +187,11 @@ declare global {
             ): KeyBinding[];
 
             /** Add sets of key bindings grouped by CSS selector. */
-            add(source: string, bindings: { [key: string]: { [key: string]: string } }, priority?: number): Disposable;
+            add(
+                source: string,
+                bindings: { [key: string]: { [key: string]: string } },
+                priority?: number,
+            ): Disposable;
 
             // Accessing Bindings
             /** Get all current key bindings. */
@@ -192,7 +208,10 @@ declare global {
             /** Load the key bindings from the given path. */
             loadKeymap(
                 bindingsPath: string,
-                options?: { watch?: boolean | undefined; priority?: number | undefined },
+                options?: {
+                    watch?: boolean | undefined;
+                    priority?: number | undefined;
+                },
             ): void;
 
             /**
@@ -212,7 +231,9 @@ declare global {
             keystrokeForKeyboardEvent(event: KeyboardEvent): string;
 
             /** Customize translation of raw keyboard events to keystroke strings. */
-            addKeystrokeResolver(resolver: (event: Events.AddedKeystrokeResolver) => string): Disposable;
+            addKeystrokeResolver(
+                resolver: (event: Events.AddedKeystrokeResolver) => string,
+            ): Disposable;
 
             /**
              *  Get the number of milliseconds allowed before pending states caused by
@@ -224,13 +245,18 @@ declare global {
         /** The static side to the KeymapManager class. */
         interface KeymapManagerStatic {
             /** Create a keydown DOM event. */
-            buildKeydownEvent(key: string, options?: Options.BuildKeyEvent): void;
+            buildKeydownEvent(
+                key: string,
+                options?: Options.BuildKeyEvent,
+            ): void;
 
             /** Create a keyup DOM event. */
             buildKeyupEvent(key: string, options?: Options.BuildKeyEvent): void;
 
             /** Create a new KeymapManager. */
-            new(options?: { defaultTarget?: HTMLElement | undefined }): KeymapManager;
+            new (options?: {
+                defaultTarget?: HTMLElement | undefined;
+            }): KeymapManager;
         }
     }
 }

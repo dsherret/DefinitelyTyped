@@ -14,7 +14,11 @@ declare namespace l {
      */
     type CallbackWithoutResult = (err: Error | null) => any;
     type CallbackWithResult<T> = (err: Error | null, result: T) => any;
-    type CallbackWithMultipleResults<T, G> = (err: Error | null, arg0: T, arg1: G) => any;
+    type CallbackWithMultipleResults<T, G> = (
+        err: Error | null,
+        arg0: T,
+        arg1: G,
+    ) => any;
 
     /**
      * The `App` object represents a Loopback application
@@ -111,7 +115,11 @@ declare namespace l {
          */
         model(
             Model: any | string,
-            config: { dataSource: string | any; public?: boolean | undefined; relations?: any },
+            config: {
+                dataSource: string | any;
+                public?: boolean | undefined;
+                relations?: any;
+            },
         ): any;
 
         /**
@@ -244,7 +252,11 @@ declare namespace l {
          * @returns {any} this (fluent API
          * @header app.middleware(name, handler
          */
-        middleware(name: string, paths?: any[] | string | RegExp, handler?: core.Handler): any;
+        middleware(
+            name: string,
+            paths?: any[] | string | RegExp,
+            handler?: core.Handler,
+        ): any;
     }
 
     // interface CookieOptions extends core.CookieOptions { }
@@ -312,7 +324,10 @@ declare namespace l {
          * @header loopback.configureModel(ModelCtor, config
          */
 
-        static configureModel(ModelCtor: Model, config: { dataSource: any; relations?: any }): void;
+        static configureModel(
+            ModelCtor: Model,
+            config: { dataSource: any; relations?: any },
+        ): void;
 
         /**
          * Create a data source with passing the provided options to the connector
@@ -323,7 +338,10 @@ declare namespace l {
          * See the relevant connector documentation
          */
 
-        static createDataSource(name: string, options: { connector: any; properties?: any }): void;
+        static createDataSource(
+            name: string,
+            options: { connector: any; properties?: any },
+        ): void;
 
         /**
          * Create a named vanilla JavaScript class constructor with an attached
@@ -472,7 +490,10 @@ declare namespace l {
          * [relations] Model relations to add/update
          * @header loopback.configureModel(ModelCtor, config
          */
-        configureModel(ModelCtor: Model, config: { dataSource: any; relations?: any }): void;
+        configureModel(
+            ModelCtor: Model,
+            config: { dataSource: any; relations?: any },
+        ): void;
 
         /**
          * Create a data source with passing the provided options to the connector
@@ -482,7 +503,10 @@ declare namespace l {
          * [*] Other&nbsp;connector properties.
          *   See the relevant connector documentation
          */
-        createDataSource(name: string, options: { connector: any; properties?: any }): void;
+        createDataSource(
+            name: string,
+            options: { connector: any; properties?: any },
+        ): void;
 
         /**
          * Create a named vanilla JavaScript class constructor with an attached
@@ -615,7 +639,11 @@ declare namespace l {
          * @param {string} [principalName] The principal name
          * @returns {boolean}
          */
-        addPrincipal(principalType: string, principalId: any, principalName?: string): boolean;
+        addPrincipal(
+            principalType: string,
+            principalId: any,
+            principalName?: string,
+        ): boolean;
 
         /**
          * Get the user id
@@ -685,7 +713,12 @@ declare namespace l {
      * @returns {AccessRequest}
      */
     class AccessRequest {
-        constructor(model: string, property: string, accessType: string, permission: string);
+        constructor(
+            model: string,
+            property: string,
+            accessType: string,
+            permission: string,
+        );
 
         /**
          * Does the given `ACL` apply to this `AccessRequest`
@@ -872,7 +905,17 @@ declare namespace l {
         /**
          *     Argument datatype; must be a Loopback type. Additionally, callback arguments allow a special type "file"; see below.
          */
-        type: "any" | "Array" | "Boolean" | "Buffer" | "Date" | "GeoPoint" | "null" | "Number" | "Object" | "String";
+        type:
+            | "any"
+            | "Array"
+            | "Boolean"
+            | "Buffer"
+            | "Date"
+            | "GeoPoint"
+            | "null"
+            | "Number"
+            | "Object"
+            | "String";
 
         /**
          *    Default value that will be used to populate loopback-explorer input fields and swagger documentation.
@@ -1030,7 +1073,10 @@ declare namespace l {
             getterName: string,
             hooks: boolean,
             options?: {},
-            filterCallback?: (SharedMethod: any, RelationDefinition: any) => void,
+            filterCallback?: (
+                SharedMethod: any,
+                RelationDefinition: any,
+            ) => void,
         ): void;
 
         /**
@@ -1062,12 +1108,20 @@ declare namespace l {
          */
         beforeRemote(
             method: string,
-            callback: (ctx: Context, modelInstanceOrNext: Model | NextFunction, next?: NextFunction) => void,
+            callback: (
+                ctx: Context,
+                modelInstanceOrNext: Model | NextFunction,
+                next?: NextFunction,
+            ) => void,
         ): void;
 
         afterRemote(
             method: string,
-            callback: (ctx: Context, modelInstanceOrNext: Model | NextFunction, next?: NextFunction) => void,
+            callback: (
+                ctx: Context,
+                modelInstanceOrNext: Model | NextFunction,
+                next?: NextFunction,
+            ) => void,
         ): void;
 
         afterRemoteError(method: string, callback: NextFunction): void;
@@ -1192,7 +1246,11 @@ declare namespace l {
          * @param {any} options An optional options object to pass to underlying data-access calls.
          * @param  {() => void} callback Callback function
          */
-        static bulkUpdate(updates: any[], options: any, callback: CallbackWithoutResult): void;
+        static bulkUpdate(
+            updates: any[],
+            options: any,
+            callback: CallbackWithoutResult,
+        ): void;
 
         /**
          * Apply an update list
@@ -1212,7 +1270,11 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {Array} changes An Array of [Change](#change) objects
          */
-        static changes(since: number, filter: any, callback: CallbackWithResult<any>): void;
+        static changes(
+            since: number,
+            filter: any,
+            callback: CallbackWithResult<any>,
+        ): void;
 
         /**
          * Get the changes to a model since the specified checkpoint. Provide a filter object
@@ -1271,7 +1333,10 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {any} models Model instances or null
          */
-        static create<T = any>(data: any | any[], callback: CallbackWithResult<T | T[] | null>): void;
+        static create<T = any>(
+            data: any | any[],
+            callback: CallbackWithResult<T | T[] | null>,
+        ): void;
 
         /**
          * Create new instance of Model, and save to database
@@ -1297,11 +1362,7 @@ declare namespace l {
          * @param {any} options Only changes to models matching this where filter will be included in the ChangeStream.
          * @returns {any} changes
          */
-        static createChangeStream(
-            options: {
-                where: any;
-            },
-        ): Promise<any>;
+        static createChangeStream(options: { where: any }): Promise<any>;
 
         /**
          * Create an update list (for `Model.bulkUpdate()`) from a delta list
@@ -1309,7 +1370,10 @@ declare namespace l {
          * @param  {Array}    deltas
          * @param  {() => void} callback
          */
-        static createUpdates(deltas: any[], callback: CallbackWithoutResult): void;
+        static createUpdates(
+            deltas: any[],
+            callback: CallbackWithoutResult,
+        ): void;
 
         /**
          * Create an update list (for `Model.bulkUpdate()`) from a delta list
@@ -1346,7 +1410,10 @@ declare namespace l {
          * @param {any} info Additional information about the command outcome.
          * @param {number} info.count number of instances (rows, documents) destroyed
          */
-        static destroyAll(where: any, callback: CallbackWithMultipleResults<any, number>): void;
+        static destroyAll(
+            where: any,
+            callback: CallbackWithMultipleResults<any, number>,
+        ): void;
 
         /**
          * Destroy all model instances that match the optional `where` specification
@@ -1359,7 +1426,9 @@ declare namespace l {
          *
          * @returns {Promise<{ count: number }>} number of instances (rows, documents) destroyed
          */
-        static destroyAll(where?: any): Promise<{ info: any; infoCount: number }>;
+        static destroyAll(
+            where?: any,
+        ): Promise<{ info: any; infoCount: number }>;
 
         /**
          * Destroy model instance with the specified ID.
@@ -1384,7 +1453,11 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {any} result any with `deltas` and `conflicts` properties; see [Change.diff()](#change-diff) for details
          */
-        static diff(since: number, remoteChanges: any[], callback: CallbackWithResult<any>): void;
+        static diff(
+            since: number,
+            remoteChanges: any[],
+            callback: CallbackWithResult<any>,
+        ): void;
 
         /**
          * Get a set of deltas and conflicts since the given checkpoint
@@ -1471,16 +1544,14 @@ declare namespace l {
          * <br/>See
          * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
          */
-        static find<T = any>(
-            filter?: {
-                fields?: string | any | any[] | undefined;
-                include?: string | any | any[] | undefined;
-                limit?: number | undefined;
-                order?: string | undefined;
-                skip?: number | undefined;
-                where?: any;
-            },
-        ): Promise<T[] | null>;
+        static find<T = any>(filter?: {
+            fields?: string | any | any[] | undefined;
+            include?: string | any | any[] | undefined;
+            limit?: number | undefined;
+            order?: string | undefined;
+            skip?: number | undefined;
+            where?: any;
+        }): Promise<T[] | null>;
 
         /**
          * Find object by ID with an optional filter for include/fields
@@ -1540,9 +1611,7 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {Array} model First model instance that matches the filter or null if none found
          */
-        static findOne<T = any>(
-            callback: CallbackWithResult<T>,
-        ): void;
+        static findOne<T = any>(callback: CallbackWithResult<T>): void;
 
         /**
          * Find one model instance that matches `filter` specification.
@@ -1598,15 +1667,13 @@ declare namespace l {
          * <br/>See
          * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforqueries)
          */
-        static findOne<T = any>(
-            filter?: {
-                fields?: string | any | any[] | undefined;
-                include?: string | any | any[] | undefined;
-                order?: string | undefined;
-                skip?: number | undefined;
-                where?: any;
-            },
-        ): Promise<T | null>;
+        static findOne<T = any>(filter?: {
+            fields?: string | any | any[] | undefined;
+            include?: string | any | any[] | undefined;
+            order?: string | undefined;
+            skip?: number | undefined;
+            where?: any;
+        }): Promise<T | null>;
 
         /**
          * Finds one record matching the optional filter object. If not found, creates
@@ -1871,8 +1938,7 @@ declare namespace l {
             targetModel?: Model,
             options?: any,
             optionsFilter?: any,
-            callback?: (err: Error, conflicts: Conflict[], param: any) => void,
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+            callback?: (err: Error, conflicts: Conflict[], param: any) => void, // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): Promise<{ conflicts: Conflict[]; params: any }> | void;
 
         /**
@@ -1964,10 +2030,7 @@ declare namespace l {
          * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
          * @param {any} data any containing data to replace matching instances, if any.
          */
-        static updateAll(
-            where?: any,
-            data?: any,
-        ): Promise<number>;
+        static updateAll(where?: any, data?: any): Promise<number>;
 
         /**
          * Update or insert a model instance
@@ -1988,9 +2051,7 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {any} model Updated model instance
          */
-        static upsert<T = any>(
-            data: any,
-        ): Promise<T>;
+        static upsert<T = any>(data: any): Promise<T>;
 
         /**
          * Update or insert a model instance based on the search criteria.
@@ -2026,9 +2087,7 @@ declare namespace l {
          * [Where filter](docs.strongloop.com/display/LB/Where+filter#Wherefilter-Whereclauseforothermethods).
          * @param {any} data The model instance data to insert.
          */
-        static upsertWithWhere<T = any>(
-            data: any,
-        ): Promise<T>;
+        static upsertWithWhere<T = any>(data: any): Promise<T>;
 
         /**
          * Deletes the model from persistence.
@@ -2126,9 +2185,7 @@ declare namespace l {
          * @param {Error} err Error object; see [Error object](docs.strongloop.com/display/LB/Error+object).
          * @param {any} instance Model instance saved or created
          */
-        save<T = any>(
-            callback: CallbackWithResult<T>,
-        ): void;
+        save<T = any>(callback: CallbackWithResult<T>): void;
 
         /**
          * Save model instance. If the instance doesn't have an ID, then calls [create](#persistedmodelcreatedata-cb) instead.
@@ -2157,12 +2214,10 @@ declare namespace l {
          * throws If true, throw a validation error; WARNING: This can crash Node.
          * If false, report the error via callback.  Default is false.
          */
-        save<T = any>(
-            options?: {
-                validate: boolean;
-                throws: boolean;
-            },
-        ): Promise<T>;
+        save<T = any>(options?: {
+            validate: boolean;
+            throws: boolean;
+        }): Promise<T>;
 
         /**
          * Set the correct `id` property for the `PersistedModel`. Uses the `setId` method if the model is attached to
@@ -2193,10 +2248,7 @@ declare namespace l {
          * @param {string} name Name of property.
          * @param {any} value Value of property.
          */
-        updateAttribute<T = any>(
-            name: string,
-            value: any,
-        ): Promise<T>;
+        updateAttribute<T = any>(name: string, value: any): Promise<T>;
 
         /**
          * Update set of attributes.  Performs validation before updating
@@ -2216,9 +2268,7 @@ declare namespace l {
          * Triggers: `validation`, `save` and `update` hooks
          * @param {any} data Data to update.
          */
-        updateAttributes<T = any>(
-            data: any,
-        ): Promise<T>;
+        updateAttributes<T = any>(data: any): Promise<T>;
 
         // **NOTE** Deprecate for v3.x
         // /**
@@ -2349,19 +2399,17 @@ declare namespace l {
      * [currentUserLiteral] string literal for the current user.
      * @header loopback.token([options])
      */
-    function token(
-        options?: {
-            cookies?: any[] | undefined;
-            headers?: any[] | undefined;
-            params?: any[] | undefined;
-            searchDefaultTokenKeys?: boolean | undefined;
-            enableDoublecheck?: boolean | undefined;
-            overwriteExistingToken?: boolean | undefined;
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            model?(): void | string;
-            currentUserLiteral?: string | undefined;
-        },
-    ): RequestHandler;
+    function token(options?: {
+        cookies?: any[] | undefined;
+        headers?: any[] | undefined;
+        params?: any[] | undefined;
+        searchDefaultTokenKeys?: boolean | undefined;
+        enableDoublecheck?: boolean | undefined;
+        overwriteExistingToken?: boolean | undefined;
+        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+        model?(): void | string;
+        currentUserLiteral?: string | undefined;
+    }): RequestHandler;
 
     /**
      * Convert any request not handled so far to a 404 error
@@ -2393,14 +2441,20 @@ declare namespace l {
         created: Date;
 
         /** Extends the `Model.settings` object. */
-        settings: { http: { path: string }; acls: ACL[]; accessTokenIdLength: number };
+        settings: {
+            http: { path: string };
+            acls: ACL[];
+            accessTokenIdLength: number;
+        };
 
         /**
          * Create a cryptographically random access token id
          * @param {Error} err
          * @param {string} toke
          */
-        static createAccessTokenId(callback: (err: Error, token: string) => void): void;
+        static createAccessTokenId(
+            callback: (err: Error, token: string) => void,
+        ): void;
 
         /**
          * Find a token for the given `any`
@@ -2409,7 +2463,11 @@ declare namespace l {
          * @param {Error} err
          * @param {AccessToken} toke
          */
-        static findForRequest(req: any, options?: any, callback?: (err: Error, token: AccessToken) => void): void;
+        static findForRequest(
+            req: any,
+            options?: any,
+            callback?: (err: Error, token: AccessToken) => void,
+        ): void;
 
         /**
          * Validate the token.
@@ -2479,7 +2537,11 @@ declare namespace l {
         principalId: string;
 
         /** settings Extends the `Model.settings` object. */
-        settings: { http: { path: string }; acls: ACL[]; defaultPermission: "DENY" };
+        settings: {
+            http: { path: string };
+            acls: ACL[];
+            defaultPermission: "DENY";
+        };
 
         /**
          * Check if the request has the permission to access.
@@ -2493,7 +2555,13 @@ declare namespace l {
          * @param {() => void} callback Callback functio
          */
         static checkAccessForContext(
-            context: { principals: any[]; model: string | Model; id: any; property: string; accessType: string },
+            context: {
+                principals: any[];
+                model: string | Model;
+                id: any;
+                property: string;
+                accessType: string;
+            },
             callback: () => void,
         ): void;
 
@@ -2563,7 +2631,11 @@ declare namespace l {
          * @param {string|number} id Principal id or name
          * @param {() => void} cb Callback function
          */
-        static resolvePrincipal(type: string, id: string | number, cb: () => void): void;
+        static resolvePrincipal(
+            type: string,
+            id: string | number,
+            cb: () => void,
+        ): void;
 
         /**
          * Get matching score for the given `AccessRequest`.
@@ -2701,7 +2773,11 @@ declare namespace l {
          * - masterKe
          */
 
-        static authenticate(appId: any, key: string, callback: (err: Error, matched: string) => void): void;
+        static authenticate(
+            appId: any,
+            key: string,
+            callback: (err: Error, matched: string) => void,
+        ): void;
 
         /**
          * Register a new application
@@ -2711,7 +2787,12 @@ declare namespace l {
          * @param {() => void} callback  Callback function
          */
 
-        static register(owner: string, name: string, options: any, callback: () => void): void;
+        static register(
+            owner: string,
+            name: string,
+            options: any,
+            callback: () => void,
+        ): void;
 
         /**
          * Reset keys for the application instance
@@ -2768,7 +2849,12 @@ declare namespace l {
          * settings.ignoreErrors By default, when changes are rectified, an error will throw an exception.
          * However, if this setting is true, then errors will not throw exceptions.
          */
-        settings: { http: { path: string }; acls: ACL[]; hashAlgorithm: string; ignoreErrors: boolean };
+        settings: {
+            http: { path: string };
+            acls: ACL[];
+            hashAlgorithm: string;
+            ignoreErrors: boolean;
+        };
 
         /**
          * Are both changes deletes?
@@ -2928,7 +3014,11 @@ declare namespace l {
     class Conflict {
         source: any;
         target: any;
-        constructor(modelId: any, SourceModel: PersistedModel, TargetModel: PersistedModel);
+        constructor(
+            modelId: any,
+            SourceModel: PersistedModel,
+            TargetModel: PersistedModel,
+        );
 
         /**
          * Get the conflicting changes
@@ -2936,7 +3026,13 @@ declare namespace l {
          * @param {Change} sourceChange
          * @param {Change} targetChang
          */
-        changes(callback: (err: Error, sourceChange: Change, targetChange: Change) => void): void;
+        changes(
+            callback: (
+                err: Error,
+                sourceChange: Change,
+                targetChange: Change,
+            ) => void,
+        ): void;
 
         /**
          * Fetch the conflicting models
@@ -2944,7 +3040,13 @@ declare namespace l {
          * @param {PersistedModel} source
          * @param {PersistedModel} targe
          */
-        models(callback: (err: Error, source: PersistedModel, target: PersistedModel) => void): void;
+        models(
+            callback: (
+                err: Error,
+                source: PersistedModel,
+                target: PersistedModel,
+            ) => void,
+        ): void;
 
         /**
          * Resolve the conflict
@@ -3051,7 +3153,13 @@ declare namespace l {
          */
         static send(
             callback: () => void,
-            options: { from: string; to: string; subject: string; text: string; html: string },
+            options: {
+                from: string;
+                to: string;
+                subject: string;
+                text: string;
+                html: string;
+            },
         ): void;
 
         /**
@@ -3079,7 +3187,12 @@ declare namespace l {
          * @param {any} options
          * @param {() => void} callback
          */
-        static expire(key: string, ttl: number, options: any, callback: () => void): PromiseLike<any>;
+        static expire(
+            key: string,
+            ttl: number,
+            options: any,
+            callback: () => void,
+        ): PromiseLike<any>;
 
         /**
          * Return the value associated with a given key.
@@ -3095,7 +3208,11 @@ declare namespace l {
          * @param {any} options
          * @param {() => void} callback
          */
-        static get(key: string, option?: any, callback?: (err: Error, result: any) => void): PromiseLike<any>;
+        static get(
+            key: string,
+            option?: any,
+            callback?: (err: Error, result: any) => void,
+        ): PromiseLike<any>;
 
         /**
          * Asynchronously iterate all keys in the database. Similar to .keys()
@@ -3156,7 +3273,10 @@ declare namespace l {
          * @param {() => void} callback
          * @return {PromiseLike<any>}
          */
-        static keys(filter: { match: string; options: any }, callback: () => void): PromiseLike<any>;
+        static keys(
+            filter: { match: string; options: any },
+            callback: () => void,
+        ): PromiseLike<any>;
 
         /**
          * Persist a value and associate it with the given key.
@@ -3173,7 +3293,12 @@ declare namespace l {
          * @param {number|any} Optional settings for the key-value pair. If a Number is provided, it is set as the TTL (time to live) in ms (milliseconds) for the key-value pair.
          * @param {() => void} callback
          */
-        static set(key: string, value: any, options?: number | any, callback?: (err: Error) => void): PromiseLike<any>;
+        static set(
+            key: string,
+            value: any,
+            options?: number | any,
+            callback?: (err: Error) => void,
+        ): PromiseLike<any>;
 
         /**
          * Return the TTL (time to live) for a given key.
@@ -3187,7 +3312,11 @@ declare namespace l {
          * @param {any} options
          * @param {() => void} callback
          */
-        static ttl(key: string, options?: any, cb?: (error: Error) => void): PromiseLike<any>;
+        static ttl(
+            key: string,
+            options?: any,
+            cb?: (error: Error) => void,
+        ): PromiseLike<any>;
     }
 
     /**
@@ -3202,7 +3331,10 @@ declare namespace l {
          * @param {Error} err Error object.
          * @param {string[]} roles An Array of role IDs
          */
-        static getRoles(context: any, callback: (err: Error, roles: string[]) => void): void;
+        static getRoles(
+            context: any,
+            callback: (err: Error, roles: string[]) => void,
+        ): void;
 
         /**
          * Check if the user ID is authenticated
@@ -3210,7 +3342,10 @@ declare namespace l {
          * @param {Error} err Error object.
          * @param {boolean} isAuthenticated True if the user is authenticated.
          */
-        static isAuthenticated(context: any, callback: (err: Error, isAuthenticated: boolean) => void): void;
+        static isAuthenticated(
+            context: any,
+            callback: (err: Error, isAuthenticated: boolean) => void,
+        ): void;
 
         /**
          * Check if a given principal is in the specified role.
@@ -3220,7 +3355,11 @@ declare namespace l {
          * @param {Error} err Error object.
          * @param {boolean} isInRole True if the principal is in the specified role.
          */
-        static isInRole(role: string, context: any, callback: (err: Error, isInRole: boolean) => void): void;
+        static isInRole(
+            role: string,
+            context: any,
+            callback: (err: Error, isInRole: boolean) => void,
+        ): void;
 
         /**
          * Check if a given user ID is the owner the model instance.
@@ -3229,7 +3368,12 @@ declare namespace l {
          * @param {*} userId The user ID
          * @param {() => void} callback Callback function
          */
-        static isOwner(modelClass: () => void, modelId: any, userId: any, callback: () => void): void;
+        static isOwner(
+            modelClass: () => void,
+            modelId: any,
+            userId: any,
+            callback: () => void,
+        ): void;
 
         /**
          * Add custom handler for roles.
@@ -3270,7 +3414,9 @@ declare namespace l {
          * @param {Error} err
          * @param {Application} application
          */
-        application(callback: (err: Error, application: Application) => void): void;
+        application(
+            callback: (err: Error, application: Application) => void,
+        ): void;
 
         /**
          * Get the child role principal
@@ -3423,7 +3569,10 @@ declare namespace l {
          * @param {any} user The User this token is being generated for.
          * @param {() => void} cb The generator must pass back the new token with this function cal
          */
-        static generateVerificationToken(user: any, callback?: () => void): Promise<void> | void;
+        static generateVerificationToken(
+            user: any,
+            callback?: () => void,
+        ): Promise<void> | void;
 
         /**
          * Login a user by with the given `credentials`
@@ -3444,8 +3593,7 @@ declare namespace l {
         static login(
             credentials: any,
             include?: string[] | string,
-            callback?: (err: Error, token: AccessToken) => void,
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+            callback?: (err: Error, token: AccessToken) => void, // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): Promise<AccessToken> | void;
 
         /**
@@ -3460,7 +3608,10 @@ declare namespace l {
          * @param {string} accessTokenID
          * @param {Error} er
          */
-        static logout(accessTokenID: string, callback?: (err: Error) => void): Promise<void> | void;
+        static logout(
+            accessTokenID: string,
+            callback?: (err: Error) => void,
+        ): Promise<void> | void;
 
         /**
          * Normalize the credentials
@@ -3469,7 +3620,11 @@ declare namespace l {
          * @param {string} realmDelimiter The realm delimiter, if not set, no realm is needed
          * @returns {any} The normalized credential objec
          */
-        static normalizeCredentials(credentials: any, realmRequired: boolean, realmDelimiter: string): any;
+        static normalizeCredentials(
+            credentials: any,
+            realmRequired: boolean,
+            realmDelimiter: string,
+        ): any;
 
         /**
          * Create a short lived acess token for temporary login. Allows users
@@ -3478,7 +3633,10 @@ declare namespace l {
          * email The user's email address
          * @param {Error} er
          */
-        static resetPassword(options: {}, callback?: (err: Error) => void): Promise<void> | void;
+        static resetPassword(
+            options: {},
+            callback?: (err: Error) => void,
+        ): Promise<void> | void;
 
         /**
          * Create access token for the logged in user. This method can be overridden to
@@ -3492,8 +3650,7 @@ declare namespace l {
         createAccessToken(
             ttl: number,
             options?: any,
-            callback?: (err: string | Error, token: AccessToken) => void,
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+            callback?: (err: string | Error, token: AccessToken) => void, // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): Promise<AccessToken> | void;
 
         /**
@@ -3504,7 +3661,10 @@ declare namespace l {
          * @param {boolean} isMatch Returns true if the given `password` matches recor
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        hasPassword(password: string, callback?: (err: Error, isMatch: boolean) => void): Promise<boolean> | void;
+        hasPassword(
+            password: string,
+            callback?: (err: Error, isMatch: boolean) => void,
+        ): Promise<boolean> | void;
 
         /**
          * Verify a user's identity by sending them a confirmation email
@@ -3537,18 +3697,16 @@ declare namespace l {
          *  object, instead simply execute the callback with the token! User saving
          *  and email sending will be handled in the `verify()` method
          */
-        verify(
-            options: {
-                type: string;
-                to: string;
-                from: string;
-                subject: string;
-                text: string;
-                template: string;
-                redirect: string;
-                generateVerificationToken(): void;
-            },
-        ): void;
+        verify(options: {
+            type: string;
+            to: string;
+            from: string;
+            subject: string;
+            text: string;
+            template: string;
+            redirect: string;
+            generateVerificationToken(): void;
+        }): void;
     }
 }
 

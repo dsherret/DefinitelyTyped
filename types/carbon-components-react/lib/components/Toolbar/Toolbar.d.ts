@@ -1,5 +1,9 @@
 import * as React from "react";
-import { ForwardRefReturn, ReactAttr, ReactDivAttr } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    ReactAttr,
+    ReactDivAttr,
+} from "../../../typings/shared";
 
 // Toolbar
 
@@ -46,7 +50,10 @@ export interface ToolbarTitleProps {
 /**
  * @deprecated
  */
-export declare const ToolbarTitle: ForwardRefReturn<HTMLLIElement, ToolbarTitleProps>;
+export declare const ToolbarTitle: ForwardRefReturn<
+    HTMLLIElement,
+    ToolbarTitleProps
+>;
 
 // ToolbarOption
 
@@ -62,7 +69,10 @@ export interface ToolbarOptionProps extends ToolbarOptionInheritedProps {}
 /**
  * @deprecated
  */
-export declare const ToolbarOption: ForwardRefReturn<HTMLLIElement, ToolbarOptionProps>;
+export declare const ToolbarOption: ForwardRefReturn<
+    HTMLLIElement,
+    ToolbarOptionProps
+>;
 
 // ToolbarDivider
 

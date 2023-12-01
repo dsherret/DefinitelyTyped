@@ -143,7 +143,11 @@ declare namespace mDNS {
             rinfo?: RemoteInfoOutgoing,
             callback?: (error: Error | null, bytes?: number) => void,
         ): void;
-        query(query: string, type?: RecordType, callback?: (error: Error | null, bytes?: number) => void): void;
+        query(
+            query: string,
+            type?: RecordType,
+            callback?: (error: Error | null, bytes?: number) => void,
+        ): void;
         query(
             query: string,
             type?: RecordType,
@@ -184,7 +188,10 @@ declare namespace mDNS {
         /**
          * Emitted when a packet is received.
          */
-        on(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
+        on(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a query packet is received.
          *
@@ -195,11 +202,17 @@ declare namespace mDNS {
          *   }
          * });
          */
-        on(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
+        on(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a response packet is received.
          */
-        on(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
+        on(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
         on(event: "error" | "warning", listener: (err: Error) => void): this;
         on(event: string, listener: (...args: any[]) => void): this;
 
@@ -210,15 +223,24 @@ declare namespace mDNS {
         /**
          * Emitted when a packet is received.
          */
-        once(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
+        once(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a query packet is received.
          */
-        once(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
+        once(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a response packet is received.
          */
-        once(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
+        once(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
         once(event: "error" | "warning", listener: (err: Error) => void): this;
         once(event: string, listener: (...args: any[]) => void): this;
 
@@ -229,70 +251,167 @@ declare namespace mDNS {
         /**
          * Emitted when a packet is received.
          */
-        addListener(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
+        addListener(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a query packet is received.
          */
-        addListener(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
+        addListener(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Emitted when a response packet is received.
          */
-        addListener(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
-        addListener(event: "error" | "warning", listener: (err: Error) => void): this;
+        addListener(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
+        addListener(
+            event: "error" | "warning",
+            listener: (err: Error) => void,
+        ): this;
         addListener(event: string, listener: (...args: any[]) => void): this;
 
         prependListener(event: "ready", listener: () => void): this;
-        prependListener(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
-        prependListener(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
-        prependListener(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
-        prependListener(event: "error" | "warning", listener: (err: Error) => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependListener(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependListener(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependListener(
+            event: "error" | "warning",
+            listener: (err: Error) => void,
+        ): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
 
         prependOnceListener(event: "ready", listener: () => void): this;
-        prependOnceListener(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
-        prependOnceListener(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
-        prependOnceListener(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
-        prependOnceListener(event: "error" | "warning", listener: (err: Error) => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependOnceListener(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependOnceListener(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependOnceListener(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
+        prependOnceListener(
+            event: "error" | "warning",
+            listener: (err: Error) => void,
+        ): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
 
         off(event: "ready", listener: () => void): this;
-        off(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
-        off(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
-        off(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
+        off(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        off(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        off(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
         off(event: "error" | "warning", listener: (err: Error) => void): this;
         off(event: string, listener: (...args: any[]) => void): this;
 
         removeListener(event: "ready", listener: () => void): this;
-        removeListener(event: "message", listener: (message: FullPacket, rinfo: RemoteInfo) => void): this;
-        removeListener(event: "query", listener: (query: QueryPacket, rinfo: RemoteInfo) => void): this;
-        removeListener(event: "response", listener: (response: ResponsePacket, rinfo: RemoteInfo) => void): this;
-        removeListener(event: "error" | "warning", listener: (err: Error) => void): this;
+        removeListener(
+            event: "message",
+            listener: (message: FullPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        removeListener(
+            event: "query",
+            listener: (query: QueryPacket, rinfo: RemoteInfo) => void,
+        ): this;
+        removeListener(
+            event: "response",
+            listener: (response: ResponsePacket, rinfo: RemoteInfo) => void,
+        ): this;
+        removeListener(
+            event: "error" | "warning",
+            listener: (err: Error) => void,
+        ): this;
         removeListener(event: string, listener: (...args: any[]) => void): this;
 
-        removeAllListeners(event?: "ready" | "message" | "query" | "response" | "error" | "warning"): this;
+        removeAllListeners(
+            event?:
+                | "ready"
+                | "message"
+                | "query"
+                | "response"
+                | "error"
+                | "warning",
+        ): this;
 
         emit(event: "ready"): boolean;
         emit(event: "message", message: FullPacket, rinfo: RemoteInfo): boolean;
         emit(event: "query", query: QueryPacket, rinfo: RemoteInfo): boolean;
-        emit(event: "response", response: ResponsePacket, rinfo: RemoteInfo): boolean;
+        emit(
+            event: "response",
+            response: ResponsePacket,
+            rinfo: RemoteInfo,
+        ): boolean;
         emit(event: "error" | "warning", err: Error): boolean;
         emit(event: string | symbol, ...args: any[]): boolean;
 
         listeners(event: "ready"): Array<() => void>;
-        listeners(event: "message"): Array<(message: FullPacket, rinfo: RemoteInfo) => void>;
-        listeners(event: "query"): Array<(query: QueryPacket, rinfo: RemoteInfo) => void>;
-        listeners(event: "response"): Array<(response: ResponsePacket, rinfo: RemoteInfo) => void>;
+        listeners(
+            event: "message",
+        ): Array<(message: FullPacket, rinfo: RemoteInfo) => void>;
+        listeners(
+            event: "query",
+        ): Array<(query: QueryPacket, rinfo: RemoteInfo) => void>;
+        listeners(
+            event: "response",
+        ): Array<(response: ResponsePacket, rinfo: RemoteInfo) => void>;
         listeners(event: "error" | "warning"): Array<(err: Error) => void>;
         listeners(event: string): Array<(...args: any[]) => void>;
 
         rawListeners(event: "ready"): Array<() => void>;
-        rawListeners(event: "message"): Array<(message: FullPacket, rinfo: RemoteInfo) => void>;
-        rawListeners(event: "query"): Array<(query: QueryPacket, rinfo: RemoteInfo) => void>;
-        rawListeners(event: "response"): Array<(response: ResponsePacket, rinfo: RemoteInfo) => void>;
+        rawListeners(
+            event: "message",
+        ): Array<(message: FullPacket, rinfo: RemoteInfo) => void>;
+        rawListeners(
+            event: "query",
+        ): Array<(query: QueryPacket, rinfo: RemoteInfo) => void>;
+        rawListeners(
+            event: "response",
+        ): Array<(response: ResponsePacket, rinfo: RemoteInfo) => void>;
         rawListeners(event: "error" | "warning"): Array<(err: Error) => void>;
         rawListeners(event: string): Array<(...args: any[]) => void>;
 
-        eventNames(): Array<"ready" | "message" | "query" | "response" | "error" | "warning">;
-        listenerCount(type: "ready" | "message" | "query" | "response" | "error" | "warning"): number;
+        eventNames(): Array<
+            "ready" | "message" | "query" | "response" | "error" | "warning"
+        >;
+        listenerCount(
+            type:
+                | "ready"
+                | "message"
+                | "query"
+                | "response"
+                | "error"
+                | "warning",
+        ): number;
     }
 }

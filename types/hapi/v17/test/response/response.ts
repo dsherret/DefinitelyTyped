@@ -1,5 +1,11 @@
 // https://github.com/hapijs/hapi/blob/master/API.md#-hresponsevalue
-import { Request, ResponseToolkit, Server, ServerOptions, ServerRoute } from "hapi";
+import {
+    Request,
+    ResponseToolkit,
+    Server,
+    ServerOptions,
+    ServerRoute,
+} from "hapi";
 
 const options: ServerOptions = {
     port: 8000,
@@ -22,7 +28,8 @@ const serverRoutes: ServerRoute[] = [
         path: "/test2",
         method: "GET",
         handler(request, h) {
-            return h.response("success")
+            return h
+                .response("success")
                 .type("text/plain")
                 .header("X-Custom", "some-value");
         },

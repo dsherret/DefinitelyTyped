@@ -1,6 +1,10 @@
 declare namespace google {
     /** Legacy https://developers.google.com/chart/interactive/docs/basic_load_libs#updateloader */
-    function load(visualization: "visualization", version: string | number, options: LoadOptions): void;
+    function load(
+        visualization: "visualization",
+        version: string | number,
+        options: LoadOptions,
+    ): void;
     function setOnLoadCallback(handler: Function): void;
     function setOnLoadCallback(handler: () => void): void;
 
@@ -9,9 +13,16 @@ declare namespace google {
         /** Loads with `safeMode` enabled. */
         function safeLoad(options: LoadOptions): Promise<void>;
         function load(options: LoadOptions): Promise<void>;
-        function load(version: string | number, options: LoadOptions): Promise<void>;
+        function load(
+            version: string | number,
+            options: LoadOptions,
+        ): Promise<void>;
         /** Legacy https://developers.google.com/chart/interactive/docs/basic_load_libs#updateloader */
-        function load(visualization: "visualization", version: string | number, options: LoadOptions): Promise<void>;
+        function load(
+            visualization: "visualization",
+            version: string | number,
+            options: LoadOptions,
+        ): Promise<void>;
 
         function setOnLoadCallback(handler: Function): void;
     }
@@ -33,7 +44,10 @@ declare namespace google {
     // https://developers.google.com/chart/interactive/docs/reference
     namespace visualization {
         export function dataTableToCsv(data: DataTable | DataView): string;
-        export function arrayToDataTable(data: any[], firstRowIsData?: boolean): DataTable;
+        export function arrayToDataTable(
+            data: any[],
+            firstRowIsData?: boolean,
+        ): DataTable;
 
         export interface ChartSpecs {
             chartType: string;
@@ -162,7 +176,11 @@ declare namespace google {
             getFormattedValue(rowIndex: number, columnIndex: number): string;
             getNumberOfColumns(): number;
             getNumberOfRows(): number;
-            getProperty(rowIndex: number, columnIndex: number, name: string): any;
+            getProperty(
+                rowIndex: number,
+                columnIndex: number,
+                name: string,
+            ): any;
             getProperties(rowIndex: number, columnIndex: number): Properties;
             getRowProperties(rowIndex: number): Properties;
             getRowProperty(rowIndex: number, name: string): any;
@@ -173,7 +191,12 @@ declare namespace google {
             getTableProperties(): Properties;
             getTableProperty(name: string): any;
             getValue(rowIndex: number, columnIndex: number): any;
-            insertColumn(columnIndex: number, type: string, label?: string, id?: string): void;
+            insertColumn(
+                columnIndex: number,
+                type: string,
+                label?: string,
+                id?: string,
+            ): void;
             insertRows(rowIndex: number, numberOfEmptyRows: number): void;
             insertRows(rowIndex: number, rows: DataObjectCell[][]): void;
             insertRows(rowIndex: number, rows: any[][]): void;
@@ -189,11 +212,31 @@ declare namespace google {
                 properties?: Properties,
             ): void;
             setColumnLabel(columnIndex: number, label: string): void;
-            setColumnProperty(columnIndex: number, name: string, value: any): void;
-            setColumnProperties(columnIndex: number, properties: Properties): void;
-            setFormattedValue(rowIndex: number, columnIndex: number, formattedValue: string | null): void;
-            setProperty(rowIndex: number, columnIndex: number, name: string, value: any): void;
-            setProperties(rowIndex: number, columnIndex: number, properties: Properties): void;
+            setColumnProperty(
+                columnIndex: number,
+                name: string,
+                value: any,
+            ): void;
+            setColumnProperties(
+                columnIndex: number,
+                properties: Properties,
+            ): void;
+            setFormattedValue(
+                rowIndex: number,
+                columnIndex: number,
+                formattedValue: string | null,
+            ): void;
+            setProperty(
+                rowIndex: number,
+                columnIndex: number,
+                name: string,
+                value: any,
+            ): void;
+            setProperties(
+                rowIndex: number,
+                columnIndex: number,
+                properties: Properties,
+            ): void;
             setRowProperty(rowIndex: number, name: string, value: any): void;
             setRowProperties(rowIndex: number, properties: Properties): void;
             setTableProperty(name: string, value: any): void;
@@ -248,7 +291,14 @@ declare namespace google {
             value?: any;
             minValue?: any;
             maxValue?: any;
-            test?: ((value: any, row?: number, column?: number, data?: DataTable | DataView) => boolean) | undefined;
+            test?:
+                | ((
+                      value: any,
+                      row?: number,
+                      column?: number,
+                      data?: DataTable | DataView,
+                  ) => boolean)
+                | undefined;
         }
 
         export interface DataObjectCell {
@@ -319,7 +369,11 @@ declare namespace google {
             getFormattedValue(rowIndex: number, columnIndex: number): string;
             getNumberOfColumns(): number;
             getNumberOfRows(): number;
-            getProperty(rowIndex: number, columnIndex: number, name: string): any;
+            getProperty(
+                rowIndex: number,
+                columnIndex: number,
+                name: string,
+            ): any;
             getProperties(rowIndex: number, columnIndex: number): Properties;
             getRowProperty(rowIndex: number, name: string): any;
             getSortedRows(sortColumn: number): number[];
@@ -428,15 +482,17 @@ declare namespace google {
             strokeWidth?: number | undefined;
             rx?: number | undefined;
             ry?: number | undefined;
-            gradient?: {
-                color1: string;
-                color2: string;
-                x1: string;
-                y1: string;
-                x2: string;
-                y2: string;
-                useObjectBoundingBoxUnits?: boolean | undefined;
-            } | undefined;
+            gradient?:
+                | {
+                      color1: string;
+                      color2: string;
+                      x1: string;
+                      y1: string;
+                      x2: string;
+                      y2: string;
+                      useObjectBoundingBoxUnits?: boolean | undefined;
+                  }
+                | undefined;
         }
 
         export interface ChartTextStyle {
@@ -451,16 +507,20 @@ declare namespace google {
 
         export interface ChartCrosshair {
             color?: string | undefined;
-            focused?: {
-                color?: string | undefined;
-                opacity?: number | undefined;
-            } | undefined;
+            focused?:
+                | {
+                      color?: string | undefined;
+                      opacity?: number | undefined;
+                  }
+                | undefined;
             opacity?: number | undefined;
             orientation?: ChartOrientation | undefined;
-            selected?: {
-                color?: string | undefined;
-                opacity?: number | undefined;
-            } | undefined;
+            selected?:
+                | {
+                      color?: string | undefined;
+                      opacity?: number | undefined;
+                  }
+                | undefined;
             trigger?: string | undefined;
         }
 
@@ -473,8 +533,7 @@ declare namespace google {
             zoomDelta?: number | undefined;
         }
 
-        export interface ChartStrokeFill extends ChartStroke, ChartFill {
-        }
+        export interface ChartStrokeFill extends ChartStroke, ChartFill {}
 
         export interface ChartStroke {
             stroke?: string | undefined;
@@ -505,7 +564,13 @@ declare namespace google {
 
         export type ChartSelectionMode = "single" | "multiple";
 
-        export type ChartLegendPosition = "bottom" | "left" | "in" | "none" | "right" | "top";
+        export type ChartLegendPosition =
+            | "bottom"
+            | "left"
+            | "in"
+            | "none"
+            | "right"
+            | "top";
         export type ChartLegendAlignment = "start" | "center" | "end";
         export interface ChartLegend {
             alignment?: ChartLegendAlignment | undefined;
@@ -581,7 +646,13 @@ declare namespace google {
             legend?: ChartLegend | undefined;
         }
 
-        export type ChartPointShape = "circle" | "triangle" | "square" | "diamond" | "star" | "polygon";
+        export type ChartPointShape =
+            | "circle"
+            | "triangle"
+            | "square"
+            | "diamond"
+            | "star"
+            | "polygon";
 
         export interface ChartLayoutInterface {
             getBoundingBox(id: string): ChartBoundingBox;
@@ -664,7 +735,10 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/scatterchart
         export class ScatterChart extends CoreChartBase {
-            draw(data: DataTable | DataView, options?: ScatterChartOptions): void;
+            draw(
+                data: DataTable | DataView,
+                options?: ScatterChartOptions,
+            ): void;
         }
 
         export interface ScatterChartOptions {
@@ -728,7 +802,12 @@ declare namespace google {
             fontName?: string | undefined;
             hAxis?: ChartAxis | undefined;
             height?: number | undefined;
-            isStacked?: boolean | "percent" | "relative" | "absolute" | undefined;
+            isStacked?:
+                | boolean
+                | "percent"
+                | "relative"
+                | "absolute"
+                | undefined;
             legend?: ChartLegend | "none" | undefined;
             reverseCategories?: boolean | undefined;
             selectionMode?: ChartSelectionMode | undefined;
@@ -766,7 +845,14 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/intervals#combining-interval-styles
         export interface Intervals {
-            style?: "area" | "bars" | "boxes" | "line" | "points" | "sticks" | undefined;
+            style?:
+                | "area"
+                | "bars"
+                | "boxes"
+                | "line"
+                | "points"
+                | "sticks"
+                | undefined;
             color?: string | undefined;
             barWidth?: number | undefined;
             boxWidth?: number | undefined;
@@ -801,7 +887,10 @@ declare namespace google {
             orientation?: ChartOrientation | undefined;
             reverseCategories?: boolean | undefined;
             selectionMode?: ChartSelectionMode | undefined;
-            series?: LineChartSeriesOptions[] | { [key: number]: LineChartSeriesOptions } | undefined;
+            series?:
+                | LineChartSeriesOptions[]
+                | { [key: number]: LineChartSeriesOptions }
+                | undefined;
             domainAxis?: { type: string } | undefined;
             trendlines?: { [key: number]: ChartTrendlineOptions } | undefined;
             pointShape?: ChartPointShape | undefined;
@@ -840,7 +929,12 @@ declare namespace google {
             hAxes?: any;
             hAxis?: ChartAxis | undefined;
             height?: number | undefined;
-            isStacked?: boolean | "percent" | "relative" | "absolute" | undefined;
+            isStacked?:
+                | boolean
+                | "percent"
+                | "relative"
+                | "absolute"
+                | undefined;
             legend?: ChartLegend | "none" | undefined;
             reverseCategories?: boolean | undefined;
             series?: any;
@@ -884,7 +978,12 @@ declare namespace google {
             histogram?: HistogramHistogramOptions | undefined;
             height?: number | undefined;
             interpolateNulls?: boolean | undefined;
-            isStacked?: boolean | "percent" | "relative" | "absolute" | undefined;
+            isStacked?:
+                | boolean
+                | "percent"
+                | "relative"
+                | "absolute"
+                | undefined;
             legend?: ChartLegend | "none" | undefined;
             orientation?: ChartOrientation | undefined;
             reverseCategories?: boolean | undefined;
@@ -933,7 +1032,12 @@ declare namespace google {
             hAxis?: ChartAxis | undefined;
             height?: number | undefined;
             interpolateNulls?: boolean | undefined;
-            isStacked?: boolean | "percent" | "relative" | "absolute" | undefined;
+            isStacked?:
+                | boolean
+                | "percent"
+                | "relative"
+                | "absolute"
+                | undefined;
             legend?: ChartLegend | "none" | undefined;
             lineWidth?: number | undefined;
             orientation?: ChartOrientation | undefined;
@@ -956,7 +1060,11 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/annotationchart
         export class AnnotationChart extends ChartBaseClearable {
-            draw(data: DataTable | DataView, options: AnnotationChartOptions, state?: any): void;
+            draw(
+                data: DataTable | DataView,
+                options: AnnotationChartOptions,
+                state?: any,
+            ): void;
             setVisibleChartRange(start: Date, end: Date): void;
             getVisibleChartRange(): { start: Date; end: Date };
             hideDataColumns(columnIndexes: number | number[]): void;
@@ -996,7 +1104,10 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/areachart
         export class SteppedAreaChart extends CoreChartBase {
-            draw(data: DataTable | DataView, options: SteppedAreaChartOptions): void;
+            draw(
+                data: DataTable | DataView,
+                options: SteppedAreaChartOptions,
+            ): void;
         }
 
         // https://developers.google.com/chart/interactive/docs/gallery/steppedareachart#configuration-options
@@ -1016,7 +1127,12 @@ declare namespace google {
             hAxis?: ChartAxis | undefined;
             height?: number | undefined;
             interpolateNulls?: boolean | undefined;
-            isStacked?: boolean | "percent" | "relative" | "absolute" | undefined;
+            isStacked?:
+                | boolean
+                | "percent"
+                | "relative"
+                | "absolute"
+                | undefined;
             legend?: ChartLegend | "none" | undefined;
             reverseCategories?: boolean | undefined;
             selectionMode?: ChartSelectionMode | undefined;
@@ -1042,7 +1158,14 @@ declare namespace google {
         export interface PieChartLegend {
             alignment?: ChartLegendAlignment | undefined;
             maxLines?: number | undefined;
-            position?: "bottom" | "labeled" | "left" | "none" | "right" | "top" | undefined;
+            position?:
+                | "bottom"
+                | "labeled"
+                | "left"
+                | "none"
+                | "right"
+                | "top"
+                | undefined;
             textStyle?: ChartTextStyle | undefined;
             numberFormat?: string | undefined;
         }
@@ -1079,7 +1202,10 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/scatterchart
         export class BubbleChart extends CoreChartBase {
-            draw(data: DataTable | DataView, options?: BubbleChartOptions): void;
+            draw(
+                data: DataTable | DataView,
+                options?: BubbleChartOptions,
+            ): void;
         }
 
         export interface BubbleChartOptions {
@@ -1181,7 +1307,13 @@ declare namespace google {
             height?: string | number | undefined;
             page?: string | undefined;
             pageSize?: number | undefined;
-            pagingButtons?: number | "both" | "prev" | "next" | "auto" | undefined;
+            pagingButtons?:
+                | number
+                | "both"
+                | "prev"
+                | "next"
+                | "auto"
+                | undefined;
             rtlTable?: boolean | undefined;
             scrollLeftStartPosition?: number | undefined;
             showRowNumber?: boolean | undefined;
@@ -1230,20 +1362,24 @@ declare namespace google {
             fontSize?: number | undefined;
             forceIFrame?: boolean | undefined;
             height?: number | undefined;
-            timeline?: {
-                barLabelStyle?: LabelStyle | undefined;
-                colorByRowLabel?: boolean | undefined;
-                groupByRowLabel?: boolean | undefined;
-                rowLabelStyle?: LabelStyle | null | undefined;
-                showBarLabels?: boolean | undefined;
-                showRowLabels?: boolean | undefined;
-                singleColor?: string | null | undefined;
-            } | undefined;
-            tooltip?: {
-                isHtml?: boolean | undefined;
-                trigger?: "focus" | "none" | undefined;
-                textStyle?: ChartTextStyle | undefined;
-            } | undefined;
+            timeline?:
+                | {
+                      barLabelStyle?: LabelStyle | undefined;
+                      colorByRowLabel?: boolean | undefined;
+                      groupByRowLabel?: boolean | undefined;
+                      rowLabelStyle?: LabelStyle | null | undefined;
+                      showBarLabels?: boolean | undefined;
+                      showRowLabels?: boolean | undefined;
+                      singleColor?: string | null | undefined;
+                  }
+                | undefined;
+            tooltip?:
+                | {
+                      isHtml?: boolean | undefined;
+                      trigger?: "focus" | "none" | undefined;
+                      textStyle?: ChartTextStyle | undefined;
+                  }
+                | undefined;
             width?: number | undefined;
         }
 
@@ -1258,7 +1394,10 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/candlestickchart
         export class CandlestickChart extends CoreChartBase {
-            draw(data: DataTable | DataView, options: CandlestickChartOptions): void;
+            draw(
+                data: DataTable | DataView,
+                options: CandlestickChartOptions,
+            ): void;
         }
 
         // https://developers.google.com/chart/interactive/docs/gallery/candlestickchart#Configuration_Options
@@ -1401,35 +1540,43 @@ declare namespace google {
 
         // https://developers.google.com/chart/interactive/docs/gallery/calendar#Configuration_Options
         export interface CalendarOptions {
-            calendar?: {
-                cellColor?: ChartStrokeOpacity | undefined;
-                cellSize?: number | undefined;
-                dayOfWeekLabel?: ChartTextStyle | undefined;
-                dayOfWeekRightSpace?: number | undefined;
-                daysOfWeek?: string | undefined;
-                focusedCellColor?: ChartStrokeOpacity | undefined;
-                monthLabel?: ChartTextStyle | undefined;
-                monthOutlineColor?: ChartStrokeOpacity | undefined;
-                underMonthSpace?: number | undefined;
-                underYearSpace?: number | undefined;
-                unusedMonthOutlineColor?: ChartStrokeOpacity | undefined;
-                yearLabel?: ChartTextStyle | undefined;
-            } | undefined;
-            colorAxis?: {
-                colors?: string[] | undefined;
-                maxValue?: number | undefined;
-                minValue?: number | undefined;
-                values?: number[] | undefined;
-            } | undefined;
+            calendar?:
+                | {
+                      cellColor?: ChartStrokeOpacity | undefined;
+                      cellSize?: number | undefined;
+                      dayOfWeekLabel?: ChartTextStyle | undefined;
+                      dayOfWeekRightSpace?: number | undefined;
+                      daysOfWeek?: string | undefined;
+                      focusedCellColor?: ChartStrokeOpacity | undefined;
+                      monthLabel?: ChartTextStyle | undefined;
+                      monthOutlineColor?: ChartStrokeOpacity | undefined;
+                      underMonthSpace?: number | undefined;
+                      underYearSpace?: number | undefined;
+                      unusedMonthOutlineColor?: ChartStrokeOpacity | undefined;
+                      yearLabel?: ChartTextStyle | undefined;
+                  }
+                | undefined;
+            colorAxis?:
+                | {
+                      colors?: string[] | undefined;
+                      maxValue?: number | undefined;
+                      minValue?: number | undefined;
+                      values?: number[] | undefined;
+                  }
+                | undefined;
             forceIFrame?: boolean | undefined;
             height?: number | undefined;
-            noDataPattern?: {
-                backgroundColor: string;
-                color: string;
-            } | undefined;
-            tooltip?: {
-                isHtml: boolean;
-            } | undefined;
+            noDataPattern?:
+                | {
+                      backgroundColor: string;
+                      color: string;
+                  }
+                | undefined;
+            tooltip?:
+                | {
+                      isHtml: boolean;
+                  }
+                | undefined;
             width?: number | undefined;
             title?: string | undefined;
         }
@@ -1467,13 +1614,33 @@ declare namespace google {
         // #region Events
 
         namespace events {
-            function addListener(visualization: any, eventName: string, callback: Function): any;
-            function addListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
-            function addOneTimeListener(visualization: any, eventName: string, callback: Function): any;
-            function addOneTimeListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
+            function addListener(
+                visualization: any,
+                eventName: string,
+                callback: Function,
+            ): any;
+            function addListener(
+                visualization: any,
+                eventName: string,
+                callback: (...args: any[]) => void,
+            ): any;
+            function addOneTimeListener(
+                visualization: any,
+                eventName: string,
+                callback: Function,
+            ): any;
+            function addOneTimeListener(
+                visualization: any,
+                eventName: string,
+                callback: (...args: any[]) => void,
+            ): any;
             function removeListener(listener: any): void;
             function removeAllListeners(visualization: any): void;
-            function trigger(visualization: any, eventName: string, args?: any): void;
+            function trigger(
+                visualization: any,
+                eventName: string,
+                args?: any,
+            ): void;
         }
 
         // #endregion
@@ -1568,7 +1735,13 @@ declare namespace google {
              * @param fromBgColor - The background color for cells holding values at the low end of the gradient. Values can be either '#RRGGBB' values or defined color constants, (example: '#FF0000' or 'red').
              * @param toBgColor - The background color for cells holding values at the high end of the gradient. Values can be either '#RRGGBB' values or defined color constants, (example: '#FF0000' or 'red').
              */
-            addGradientRange(from: any, to: any, color: string, fromBgColor: string, toBgColor: string): void;
+            addGradientRange(
+                from: any,
+                to: any,
+                color: string,
+                fromBgColor: string,
+                toBgColor: string,
+            ): void;
         }
 
         export interface DateFormatOptions {
@@ -1668,7 +1841,11 @@ declare namespace google {
              * @param srcColumnIndices - An array of one or more (zero-based) column indices to pull as the sources from the underlying DataTable. This will be used as a data source for the pattern parameter in the constructor. The column numbers do not have to be in sorted order.
              * @param opt_dstColumnIndex - The destination column to place the output of the pattern manipulation. If not specified, the first element in srcColumIndices will be used as the destination.
              */
-            format(data: DataTable, srcColumnIndices: number[], opt_dstColumnIndex?: number): void;
+            format(
+                data: DataTable,
+                srcColumnIndices: number[],
+                opt_dstColumnIndex?: number,
+            ): void;
         }
 
         // #endregion
@@ -1789,24 +1966,35 @@ declare namespace google {
             width?: number | undefined;
             forceIFrame?: boolean | undefined;
             height?: number | undefined;
-            sankey?: {
-                iterations?: number | undefined;
-                link?: {
-                    color?: string | ChartStrokeFill | undefined;
-                    colorMode?: "none" | "source" | "target" | "gradient" | undefined;
-                    colors?: string[] | undefined;
-                } | undefined;
-                node?: {
-                    colorMode?: "unique" | undefined;
-                    colors?: string[] | undefined;
-                    interactivity?: boolean | undefined;
-                    label?: ChartTextStyle | undefined;
-                    labelPadding?: number | undefined;
-                    nodePadding?: number | undefined;
-                    width?: number | undefined;
-                } | undefined;
-                tooltip?: ChartTooltip | undefined;
-            } | undefined;
+            sankey?:
+                | {
+                      iterations?: number | undefined;
+                      link?:
+                          | {
+                                color?: string | ChartStrokeFill | undefined;
+                                colorMode?:
+                                    | "none"
+                                    | "source"
+                                    | "target"
+                                    | "gradient"
+                                    | undefined;
+                                colors?: string[] | undefined;
+                            }
+                          | undefined;
+                      node?:
+                          | {
+                                colorMode?: "unique" | undefined;
+                                colors?: string[] | undefined;
+                                interactivity?: boolean | undefined;
+                                label?: ChartTextStyle | undefined;
+                                labelPadding?: number | undefined;
+                                nodePadding?: number | undefined;
+                                width?: number | undefined;
+                            }
+                          | undefined;
+                      tooltip?: ChartTooltip | undefined;
+                  }
+                | undefined;
         }
 
         // #endregion

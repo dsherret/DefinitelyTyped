@@ -40,7 +40,9 @@ let testData: TestDatum[] = [
     { x: 70, y: 20 },
 ];
 
-let node: d3Quadtree.QuadtreeInternalNode<TestDatum> | d3Quadtree.QuadtreeLeaf<TestDatum>;
+let node:
+    | d3Quadtree.QuadtreeInternalNode<TestDatum>
+    | d3Quadtree.QuadtreeLeaf<TestDatum>;
 let numberAccessor: (d: TestDatum) => number;
 
 const simpleTestData: Array<[number, number]> = [
@@ -79,8 +81,8 @@ quadtree = d3Quadtree.quadtree<TestDatum>(testData); // explicitly typed to Test
 // test with data AND accessors passed in right away
 quadtree = d3Quadtree.quadtree(
     testData, // data type Array<TestDatum>
-    d => d.x, // x accessor with d of type TestDatum
-    d => d.y, // y accessor with d of type TestDatum
+    (d) => d.x, // x accessor with d of type TestDatum
+    (d) => d.y, // y accessor with d of type TestDatum
 ); // inferred type underlying quadtree TestDatum
 
 quadtree = d3Quadtree.quadtree<TestDatum>(testData); // explicitly typed to TestDatum
@@ -92,19 +94,22 @@ quadtree = d3Quadtree.quadtree<TestDatum>();
 
 // x(...) --------------------------------------------------------------------
 
-quadtree = quadtree.x(d => d.x); // d of type TestDatum
+quadtree = quadtree.x((d) => d.x); // d of type TestDatum
 
 numberAccessor = quadtree.x();
 
 // y(...) --------------------------------------------------------------------
 
-quadtree = quadtree.y(d => d.y); // d of type TestDatum
+quadtree = quadtree.y((d) => d.y); // d of type TestDatum
 
 numberAccessor = quadtree.y();
 
 // extent(...) ---------------------------------------------------------------
 
-quadtree = quadtree.extent([[0, 0], [80, 80]]);
+quadtree = quadtree.extent([
+    [0, 0],
+    [80, 80],
+]);
 extent = quadtree.extent();
 
 // cover(...) ----------------------------------------------------------------
@@ -129,7 +134,10 @@ quadtree = quadtree.remove({ x: 35, y: 35 });
 
 // removeAll(...) ------------------------------------------------------------
 
-quadtree = quadtree.removeAll([{ x: 10, y: 20 }, { x: 30, y: 10 }]);
+quadtree = quadtree.removeAll([
+    { x: 10, y: 20 },
+    { x: 30, y: 10 },
+]);
 
 // Use Quadtree ==============================================================
 
@@ -168,7 +176,9 @@ quadtree = quadtree.visit((node, x0, y0, x1, y1) => {
     bound = x1; // number
     bound = y1; // number
 
-    let nodeRef: d3Quadtree.QuadtreeInternalNode<TestDatum> | d3Quadtree.QuadtreeLeaf<TestDatum>;
+    let nodeRef:
+        | d3Quadtree.QuadtreeInternalNode<TestDatum>
+        | d3Quadtree.QuadtreeLeaf<TestDatum>;
     nodeRef = node;
 
     if (isLeaf(node)) {
@@ -186,7 +196,9 @@ quadtree = quadtree.visit((node, x0, y0, x1, y1) => {
     bound = x1; // number
     bound = y1; // number
 
-    let nodeRef: d3Quadtree.QuadtreeInternalNode<TestDatum> | d3Quadtree.QuadtreeLeaf<TestDatum>;
+    let nodeRef:
+        | d3Quadtree.QuadtreeInternalNode<TestDatum>
+        | d3Quadtree.QuadtreeLeaf<TestDatum>;
     nodeRef = node;
 
     if (isLeaf(node)) {
@@ -210,7 +222,9 @@ quadtree = quadtree.visitAfter((node, x0, y0, x1, y1) => {
     bound = x1; // number
     bound = y1; // number
 
-    let nodeRef: d3Quadtree.QuadtreeInternalNode<TestDatum> | d3Quadtree.QuadtreeLeaf<TestDatum>;
+    let nodeRef:
+        | d3Quadtree.QuadtreeInternalNode<TestDatum>
+        | d3Quadtree.QuadtreeLeaf<TestDatum>;
     nodeRef = node;
 
     if (isLeaf(node)) {
@@ -232,7 +246,10 @@ nextLeaf = leaf.next ? leaf.next : undefined;
 // Test QuadtreeInternalNode =================================================
 
 declare const internalNode: d3Quadtree.QuadtreeInternalNode<TestDatum>;
-let quadNode: d3Quadtree.QuadtreeInternalNode<TestDatum> | d3Quadtree.QuadtreeLeaf<TestDatum> | undefined;
+let quadNode:
+    | d3Quadtree.QuadtreeInternalNode<TestDatum>
+    | d3Quadtree.QuadtreeLeaf<TestDatum>
+    | undefined;
 
 quadNode = internalNode[0];
 quadNode = internalNode[1];

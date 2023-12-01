@@ -18,7 +18,10 @@ export = mock;
  * @param options.createTmp Create a directory for `os.tmpdir()` (defaults to
  *                          `true`).
  */
-declare function mock(config?: FileSystem.DirectoryItems, options?: FileSystem.Options): void;
+declare function mock(
+    config?: FileSystem.DirectoryItems,
+    options?: FileSystem.Options,
+): void;
 
 declare namespace mock {
     /**
@@ -33,7 +36,10 @@ declare namespace mock {
     /**
      * Load a real file/folder into the mock file system.
      */
-    function load(path: string, options?: FileSystem.LoaderOptions): FileSystem.DirectoryItem;
+    function load(
+        path: string,
+        options?: FileSystem.LoaderOptions,
+    ): FileSystem.DirectoryItem;
 
     /**
      * Get hold of the mocked filesystem's 'root'

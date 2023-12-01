@@ -1,4 +1,10 @@
-import { Centroid, Digest, DigestConfiguration, FullCentroid, TDigest } from "tdigest";
+import {
+    Centroid,
+    Digest,
+    DigestConfiguration,
+    FullCentroid,
+    TDigest,
+} from "tdigest";
 import "tdigest/dist/tdigest";
 
 // test type exports

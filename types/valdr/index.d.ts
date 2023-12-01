@@ -11,7 +11,10 @@ declare namespace valdr {
         /**
          * Method to be called to perform custom validation over given value.
          */
-        validate(value: any, validationArguments?: { [argumentName: string]: any }): boolean;
+        validate(
+            value: any,
+            validationArguments?: { [argumentName: string]: any },
+        ): boolean;
     }
 
     interface ValdrConstraintValidator {
@@ -53,7 +56,11 @@ declare namespace valdr {
          * @param value the value to validate.
          * @returns {ValdrValidationResult} the validation result.
          */
-        validate(typeName: string, fieldName: string, value: string): ValdrValidationResult;
+        validate(
+            typeName: string,
+            fieldName: string,
+            value: string,
+        ): ValdrValidationResult;
 
         /**
          * Adds a new list of constraints (JSON Object).

@@ -5,7 +5,8 @@ const client = new CrossStorageClient("http://foo.com", {
     frameId: "null",
 });
 
-client.onConnect()
+client
+    .onConnect()
     .then(() => client.set("foo", "bar"))
     .then(() => client.get("foo"))
     .then(() => client.getKeys())

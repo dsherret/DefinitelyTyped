@@ -21,7 +21,13 @@ const zipkinB3TextMapCodec = new jaegerClient.ZipkinB3TextMapCodec({
     baggagePrefix: "baggage-",
     urlEncoding: false,
 });
-tracer.registerInjector(jaegerClient.opentracing.FORMAT_HTTP_HEADERS, zipkinB3TextMapCodec);
-tracer.registerExtractor(jaegerClient.opentracing.FORMAT_HTTP_HEADERS, zipkinB3TextMapCodec);
+tracer.registerInjector(
+    jaegerClient.opentracing.FORMAT_HTTP_HEADERS,
+    zipkinB3TextMapCodec,
+);
+tracer.registerExtractor(
+    jaegerClient.opentracing.FORMAT_HTTP_HEADERS,
+    zipkinB3TextMapCodec,
+);
 tracer.close(() => {});
 tracer.close();

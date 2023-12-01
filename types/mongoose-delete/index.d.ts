@@ -17,9 +17,10 @@ declare namespace MongooseDelete {
         | "updateOne"
         | "updateMany"
         | "aggregate";
-    interface SoftDeleteModel<T extends Omit<mongoose.Document, "delete">, QueryHelpers = {}>
-        extends mongoose.Model<T, QueryHelpers>
-    {
+    interface SoftDeleteModel<
+        T extends Omit<mongoose.Document, "delete">,
+        QueryHelpers = {},
+    > extends mongoose.Model<T, QueryHelpers> {
         /** Count only deleted documents */
         countDeleted: this["count"];
         /** Count all documents including deleted */
@@ -72,7 +73,11 @@ declare namespace MongooseDelete {
             conditions?: any,
             deleteBy?: any,
             fn?: Callback<T, this>,
-        ): mongoose.Query<ReturnType<mongoose.Model<T>["deleteMany"]>, T, QueryHelpers>;
+        ): mongoose.Query<
+            ReturnType<mongoose.Model<T>["deleteMany"]>,
+            T,
+            QueryHelpers
+        >;
 
         /**
          * Restore documents by conditions
@@ -80,19 +85,34 @@ declare namespace MongooseDelete {
         restore(
             conditions?: any,
             fn?: Callback<T, this>,
-        ): mongoose.Query<ReturnType<mongoose.Model<T>["updateMany"]>, T, QueryHelpers>;
+        ): mongoose.Query<
+            ReturnType<mongoose.Model<T>["updateMany"]>,
+            T,
+            QueryHelpers
+        >;
 
         /**
          * Delete a document by ID
          */
         deleteById(
             id?: string | mongoose.Types.ObjectId | Callback<T, this>,
-            deleteBy?: string | mongoose.Types.ObjectId | mongoose.Document | Callback<T, this>,
+            deleteBy?:
+                | string
+                | mongoose.Types.ObjectId
+                | mongoose.Document
+                | Callback<T, this>,
             fn?: Callback<T, this>,
-        ): mongoose.Query<ReturnType<mongoose.Model<T>["deleteOne"]>, T, QueryHelpers> & QueryHelpers;
+        ): mongoose.Query<
+            ReturnType<mongoose.Model<T>["deleteOne"]>,
+            T,
+            QueryHelpers
+        > &
+            QueryHelpers;
     }
 
-    interface SoftDeleteDocument extends Omit<mongoose.Document, "delete">, SoftDeleteInterface {
+    interface SoftDeleteDocument
+        extends Omit<mongoose.Document, "delete">,
+            SoftDeleteInterface {
         /** Soft delete this document */
         delete(
             deleteBy?: string | mongoose.Types.ObjectId | Callback<this>,
@@ -104,14 +124,21 @@ declare namespace MongooseDelete {
         /** Soft deleted ? */
         deleted?: boolean | undefined;
         deletedAt?: Date | undefined;
-        deletedBy?: mongoose.Types.ObjectId | string | mongoose.Document | undefined;
+        deletedBy?:
+            | mongoose.Types.ObjectId
+            | string
+            | mongoose.Document
+            | undefined;
     }
 }
 interface Options {
     overrideMethods: boolean | "all" | MongooseDelete.overridableMethods[];
     deletedAt: boolean;
     deletedBy: boolean;
-    indexFields: boolean | "all" | Array<keyof MongooseDelete.SoftDeleteInterface>;
+    indexFields:
+        | boolean
+        | "all"
+        | Array<keyof MongooseDelete.SoftDeleteInterface>;
     validateBeforeDelete: boolean;
     validateBeforeRestore: boolean;
     use$neOperator: boolean;
@@ -130,5 +157,8 @@ interface Options {
     deletedByType: any;
 }
 
-declare function MongooseDelete(schema: mongoose.Schema, options?: Partial<Options>): void;
+declare function MongooseDelete(
+    schema: mongoose.Schema,
+    options?: Partial<Options>,
+): void;
 export = MongooseDelete;

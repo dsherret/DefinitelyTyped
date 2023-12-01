@@ -17,7 +17,9 @@ export class BufferedProcess {
      *  call handle() on the object passed to your callback to indicate that you
      *  have handled this error.
      */
-    onWillThrowError(callback: (errorObject: HandleableErrorEvent) => void): Disposable;
+    onWillThrowError(
+        callback: (errorObject: HandleableErrorEvent) => void,
+    ): Disposable;
 
     // Helper Methods
     /** Terminate the process. */

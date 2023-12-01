@@ -72,12 +72,9 @@ export class Layer extends THREE.EventDispatcher<THREE.Event> {
 
 export default Layer;
 
-export const ImageryLayers: { // TODO
-    moveLayerToIndex(
-        layer: any,
-        newIndex: number,
-        imageryLayers: any,
-    ): void;
+export const ImageryLayers: {
+    // TODO
+    moveLayerToIndex(layer: any, newIndex: number, imageryLayers: any): void;
 
     moveLayerDown(layer: any, imageryLayers: any): void;
 

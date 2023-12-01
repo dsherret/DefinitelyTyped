@@ -32,6 +32,9 @@ export { connectScrollTo } from "react-instantsearch-core";
 export { connectSearchBox } from "react-instantsearch-core";
 export { connectRelevantSort } from "react-instantsearch-core";
 export { connectSortBy } from "react-instantsearch-core";
-export { connectStateResults, StateResultsProvided } from "react-instantsearch-core";
+export {
+    connectStateResults,
+    StateResultsProvided,
+} from "react-instantsearch-core";
 export { connectStats } from "react-instantsearch-core";
 export { connectToggleRefinement } from "react-instantsearch-core";

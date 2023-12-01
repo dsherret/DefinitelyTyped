@@ -1,4 +1,7 @@
-import Component, { getComponentTemplate, setComponentTemplate } from "@ember/component";
+import Component, {
+    getComponentTemplate,
+    setComponentTemplate,
+} from "@ember/component";
 import Object, { computed, get } from "@ember/object";
 import hbs from "htmlbars-inline-precompile";
 import { assertType } from "./lib/assert";
@@ -44,7 +47,7 @@ Component.extend({
 Component.extend({
     classNameBindings: ["propertyA", "propertyB"],
     propertyA: "from-a",
-    propertyB: computed(function() {
+    propertyB: computed(function () {
         if (!this.get("propertyA")) {
             return "from-b";
         }
@@ -142,7 +145,11 @@ interface MySig {
 // just to demo that this actually has the expected behavior with a signature
 // and an Ember component
 type GetWithFallback<T, K, Fallback> = K extends keyof T ? T[K] : Fallback;
-type NamedArgsFor<T> = GetWithFallback<GetWithFallback<T, "Args", {}>, "Named", object>;
+type NamedArgsFor<T> = GetWithFallback<
+    GetWithFallback<T, "Args", {}>,
+    "Named",
+    object
+>;
 
 interface SigExample extends NamedArgsFor<MySig> {}
 class SigExample extends Component<MySig> {

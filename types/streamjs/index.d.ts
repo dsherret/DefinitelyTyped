@@ -3,7 +3,10 @@ declare class Stream<T> {
     static from(str: string): Stream<string>;
     static of<T>(...elems: T[]): Stream<T>;
     static range(startInclusive: number, endExclusive: number): Stream<number>;
-    static rangeClosed(startInclusive: number, endInclusive: number): Stream<number>;
+    static rangeClosed(
+        startInclusive: number,
+        endInclusive: number,
+    ): Stream<number>;
     static generate<T>(supplier: Stream.Supplier<T>): Stream<T>;
     static iterate<T>(seed: T, fn: Stream.Function<T, T>): Stream<T>;
 
@@ -35,7 +38,10 @@ declare class Stream<T> {
     groupBy(path: string): Stream.GroupingResult<T>;
     groupingBy(mapper: Stream.Function<T, string>): Stream.GroupingResult<T>;
     groupingBy(path: string): Stream.GroupingResult<T>;
-    indexBy(keyMapper: Stream.Function<T, string>, mergeFunction?: Stream.Accumulator<T>): Stream.Map<T>;
+    indexBy(
+        keyMapper: Stream.Function<T, string>,
+        mergeFunction?: Stream.Accumulator<T>,
+    ): Stream.Map<T>;
     map<U>(mapper: Stream.Function<T, U>): Stream<U>;
     max(): Stream.Optional<T>;
     max(comparator: Stream.Comparator<T>): Stream.Optional<T>;
@@ -83,7 +89,10 @@ declare class Stream<T> {
     takeWhile(sample: Stream.Sample): Stream<T>;
     toArray(): T[];
     toList(): T[];
-    toMap(keyMapper: Stream.Function<T, string>, mergeFunction?: Stream.Accumulator<T>): Stream.Map<T>;
+    toMap(
+        keyMapper: Stream.Function<T, string>,
+        mergeFunction?: Stream.Accumulator<T>,
+    ): Stream.Map<T>;
     toMap(path: string, mergeFunction?: Stream.Accumulator<T>): Stream.Map<T>;
 }
 

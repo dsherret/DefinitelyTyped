@@ -2,10 +2,13 @@
 
 type TypeName = "Array" | "Buffer" | "Uint8Array";
 
-type ObjectType<T> = T extends "Array" ? number[]
-    : T extends "Buffer" ? Buffer
-    : T extends "Uint8Array" ? Uint8Array
-    : never;
+type ObjectType<T> = T extends "Array"
+    ? number[]
+    : T extends "Buffer"
+      ? Buffer
+      : T extends "Uint8Array"
+        ? Uint8Array
+        : never;
 
 declare namespace secureRandom {
     /**
@@ -37,4 +40,7 @@ export = secureRandom;
  *                type can be either Array, Uint8Array, or Buffer.
  *                Buffer is only valid in Node.js or Browserify environments - it will throw an error otherwise.
  */
-declare function secureRandom<T extends TypeName>(byteCount: number, options: { type: T }): ObjectType<T>;
+declare function secureRandom<T extends TypeName>(
+    byteCount: number,
+    options: { type: T },
+): ObjectType<T>;

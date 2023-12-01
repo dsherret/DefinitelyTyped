@@ -76,9 +76,9 @@ export interface FormatOptions {
     type: Format;
     options?:
         | ((
-            options: object,
-            transformPropName?: (name: string) => string,
-        ) => void)
+              options: object,
+              transformPropName?: (name: string) => string,
+          ) => void)
         | undefined;
 }
 

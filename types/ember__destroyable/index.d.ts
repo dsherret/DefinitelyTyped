@@ -1,4 +1,7 @@
-export function associateDestroyableChild<T extends object>(parent: object, child: T): T;
+export function associateDestroyableChild<T extends object>(
+    parent: object,
+    child: T,
+): T;
 
 export function isDestroying(destroyable: object): boolean;
 
@@ -15,4 +18,7 @@ export function registerDestructor<T extends object>(
     destructor: (destroyable: T) => void,
 ): (destroyable: T) => void;
 
-export function unregisterDestructor<T extends object>(destroyable: T, destructor: (destroyable: T) => void): void;
+export function unregisterDestructor<T extends object>(
+    destroyable: T,
+    destructor: (destroyable: T) => void,
+): void;

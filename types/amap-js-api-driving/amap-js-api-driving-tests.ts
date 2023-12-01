@@ -185,7 +185,9 @@ driving.setPolicy(AMap.DrivingPolicy.LEAST_DISTANCE);
 // $ExpectType void
 driving.setAvoidPolygons([[lnglat, lnglat, lnglat, lnglat]]);
 // $ExpectType void
-driving.setAvoidPolygons([[lnglatTuple, lnglatTuple, lnglatTuple, lnglatTuple]]);
+driving.setAvoidPolygons([
+    [lnglatTuple, lnglatTuple, lnglatTuple, lnglatTuple],
+]);
 
 // $ExpectType void
 driving.setAvoidRoad("roadName");

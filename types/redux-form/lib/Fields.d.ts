@@ -25,7 +25,10 @@ export interface GenericFields<P> extends Component<BaseFieldsProps<P> & P> {
     getRenderedComponent(): Component<BaseFieldsProps & WrappedFieldsProps & P>;
 }
 
-export class Fields<P = {}> extends Component<BaseFieldsProps<P> & P> implements GenericFields<P> {
+export class Fields<P = {}>
+    extends Component<BaseFieldsProps<P> & P>
+    implements GenericFields<P>
+{
     dirty: boolean;
     names: string[];
     pristine: boolean;

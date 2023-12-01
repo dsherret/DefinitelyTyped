@@ -100,14 +100,17 @@ tiledMapLayer = new L.esri.TiledMapLayer({
 tiledMapLayer.authenticate("secret");
 tiledMapLayer.metadata((err, metadata) => {});
 
-tiledMapLayer.identify()
+tiledMapLayer
+    .identify()
     .at(latlng)
     .run((error, featureCollection) => {});
-tiledMapLayer.find()
+tiledMapLayer
+    .find()
     .layers("18")
     .text("Colorado")
     .run((error, featureCollection) => {});
-tiledMapLayer.query()
+tiledMapLayer
+    .query()
     .layer(0)
     .within(latlngbounds)
     .run((error, featureCollection, response) => {});
@@ -131,19 +134,21 @@ dynamicMapLayerOptions = {
     maxZoom: 1,
     minZoom: 1,
     disableCache: true,
-    dynamicLayers: [{
-        id: 501,
-        source: {
-            type: "mapLayer",
-            mapLayerId: 0,
+    dynamicLayers: [
+        {
+            id: 501,
+            source: {
+                type: "mapLayer",
+                mapLayerId: 0,
+            },
+            drawingInfo: {
+                showLabels: false,
+            },
+            layerTimeOptions: {
+                useTime: false,
+            },
         },
-        drawingInfo: {
-            showLabels: false,
-        },
-        layerTimeOptions: {
-            useTime: false,
-        },
-    }],
+    ],
     proxy: "//localhost/proxy",
     useCors: true,
     token: "token",
@@ -166,19 +171,21 @@ dynamicMapLayer = L.esri.dynamicMapLayer({
     maxZoom: 1,
     minZoom: 1,
     disableCache: true,
-    dynamicLayers: [{
-        id: 501,
-        source: {
-            type: "mapLayer",
-            mapLayerId: 0,
+    dynamicLayers: [
+        {
+            id: 501,
+            source: {
+                type: "mapLayer",
+                mapLayerId: 0,
+            },
+            drawingInfo: {
+                showLabels: false,
+            },
+            layerTimeOptions: {
+                useTime: false,
+            },
         },
-        drawingInfo: {
-            showLabels: false,
-        },
-        layerTimeOptions: {
-            useTime: false,
-        },
-    }],
+    ],
     proxy: "//localhost/proxy",
     useCors: true,
     token: "token",
@@ -201,19 +208,21 @@ dynamicMapLayer = new L.esri.DynamicMapLayer({
     maxZoom: 1,
     minZoom: 1,
     disableCache: true,
-    dynamicLayers: [{
-        id: 501,
-        source: {
-            type: "mapLayer",
-            mapLayerId: 0,
+    dynamicLayers: [
+        {
+            id: 501,
+            source: {
+                type: "mapLayer",
+                mapLayerId: 0,
+            },
+            drawingInfo: {
+                showLabels: false,
+            },
+            layerTimeOptions: {
+                useTime: false,
+            },
         },
-        drawingInfo: {
-            showLabels: false,
-        },
-        layerTimeOptions: {
-            useTime: false,
-        },
-    }],
+    ],
     proxy: "//localhost/proxy",
     useCors: true,
     token: "token",
@@ -226,14 +235,17 @@ dynamicMapLayer.bindPopup((err, featureCollection, response) => {
 
 dynamicMapLayer.metadata((error, metadata) => {});
 
-dynamicMapLayer.identify()
+dynamicMapLayer
+    .identify()
     .at(latlng)
     .run((error, featureCollection) => {});
-dynamicMapLayer.find()
+dynamicMapLayer
+    .find()
     .layers("18")
     .text("Colorado")
     .run((error, featureCollection) => {});
-dynamicMapLayer.query()
+dynamicMapLayer
+    .query()
     .layer(0)
     .within(latlngbounds)
     .run((error, featureCollection, response) => {});
@@ -318,15 +330,16 @@ featureLayer = new L.esri.FeatureLayer({
 featureLayer.setStyle({
     color: "white",
 });
-featureLayer.setStyle(feature => {
+featureLayer.setStyle((feature) => {
     return {
         weight: feature.properties.pixelWidth,
     };
 });
 
-featureLayer.eachFeature(layer => {});
+featureLayer.eachFeature((layer) => {});
 
-featureLayer.query()
+featureLayer
+    .query()
     .within(latlngbounds)
     .where("Direction = 'WEST'")
     .run((error, featureCollection) => {});
@@ -362,26 +375,31 @@ mapService = new L.esri.MapService({
     timeout: 1000,
 });
 
-mapService.query()
+mapService
+    .query()
     .layer(0)
     .within(latlngbounds)
     .run((error, featureCollection, response) => {});
-mapService.identify()
+mapService
+    .identify()
     .on(map)
     .at(latlng)
     .run((error, featureCollection, response) => {});
-mapService.find()
+mapService
+    .find()
     .layers("18")
     .text("Colorado")
     .fields("name")
     .run((error, featureCollection, response) => {});
 
-mapService.identify()
+mapService
+    .identify()
     .on(map)
     .at([45.543, -122.621])
     .layers("visible:1")
     .run((error, featureCollection, response) => {});
-mapService.find()
+mapService
+    .find()
     .layers("18")
     .text("Colorado")
     .fields("GNIS_NAME")
@@ -436,7 +454,9 @@ featureLayerService = L.esri.featureLayerService({
     timeout: 1000,
 });
 
-featureLayerService = new L.esri.FeatureLayerService(featureLayerServiceOptions);
+featureLayerService = new L.esri.FeatureLayerService(
+    featureLayerServiceOptions,
+);
 featureLayerService = new L.esri.FeatureLayerService({});
 featureLayerService = new L.esri.FeatureLayerService({
     url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/0",
@@ -445,7 +465,8 @@ featureLayerService = new L.esri.FeatureLayerService({
     timeout: 1000,
 });
 
-featureLayerService.query()
+featureLayerService
+    .query()
     .within(latlngbounds)
     .where("Direction = 'WEST'")
     .run((error, featureCollection, response) => {});
@@ -526,7 +547,7 @@ query.where("zone_id='B'").bounds((error, latLngBounds, response) => {});
 
 query.transform(15851);
 query.transform({ wkid: 15851 });
-query.transform({ wkt: "GEOGTRAN[\..." });
+query.transform({ wkt: "GEOGTRAN[..." });
 
 query.format(false);
 
@@ -612,11 +633,8 @@ find = new L.esri.Find({
     timeout: 1000,
 });
 
-find.layers("18")
-    .text("Colorado");
+find.layers("18").text("Colorado");
 find.run((error, featureCollection, response) => {});
 
-find.layers("13")
-    .text("198133")
-    .fields("GNIS_ID");
+find.layers("13").text("198133").fields("GNIS_ID");
 find.run((error, featureCollection, response) => {});

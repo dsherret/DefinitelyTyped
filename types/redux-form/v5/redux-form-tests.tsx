@@ -1,12 +1,26 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import { combineReducers, createStore } from "redux";
-import { reducer as reduxFormReducer, reduxForm, ReduxFormProps } from "redux-form";
+import {
+    reducer as reduxFormReducer,
+    reduxForm,
+    ReduxFormProps,
+} from "redux-form";
 
 namespace SimpleForm {
-    export const fields = ["firstName", "lastName", "email", "sex", "favoriteColor", "employed", "notes"];
+    export const fields = [
+        "firstName",
+        "lastName",
+        "email",
+        "sex",
+        "favoriteColor",
+        "employed",
+        "notes",
+    ];
 
-    class SimpleForm extends React.Component<ReduxFormProps<SimpleForm & HTMLFormElement>> {
+    class SimpleForm extends React.Component<
+        ReduxFormProps<SimpleForm & HTMLFormElement>
+    > {
         static propTypes = {
             fields: PropTypes.object.isRequired,
             handleSubmit: PropTypes.func.isRequired,
@@ -16,7 +30,15 @@ namespace SimpleForm {
 
         render() {
             const {
-                fields: { firstName, lastName, email, sex, favoriteColor, employed, notes },
+                fields: {
+                    firstName,
+                    lastName,
+                    email,
+                    sex,
+                    favoriteColor,
+                    employed,
+                    notes,
+                },
                 handleSubmit,
                 resetForm,
                 submitting,
@@ -26,29 +48,53 @@ namespace SimpleForm {
                     <div>
                         <label>First Name</label>
                         <div>
-                            <input type="text" placeholder="First Name" {...firstName} />
+                            <input
+                                type="text"
+                                placeholder="First Name"
+                                {...firstName}
+                            />
                         </div>
                     </div>
                     <div>
                         <label>Last Name</label>
                         <div>
-                            <input type="text" placeholder="Last Name" {...lastName} />
+                            <input
+                                type="text"
+                                placeholder="Last Name"
+                                {...lastName}
+                            />
                         </div>
                     </div>
                     <div>
                         <label>Email</label>
                         <div>
-                            <input type="email" placeholder="Email" {...email} />
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                {...email}
+                            />
                         </div>
                     </div>
                     <div>
                         <label>Sex</label>
                         <div>
                             <label>
-                                <input type="radio" {...sex} value="male" checked={sex.value === "male"} /> Male
+                                <input
+                                    type="radio"
+                                    {...sex}
+                                    value="male"
+                                    checked={sex.value === "male"}
+                                />{" "}
+                                Male
                             </label>
                             <label>
-                                <input type="radio" {...sex} value="female" checked={sex.value === "female"} /> Female
+                                <input
+                                    type="radio"
+                                    {...sex}
+                                    value="female"
+                                    checked={sex.value === "female"}
+                                />{" "}
+                                Female
                             </label>
                         </div>
                     </div>
@@ -71,10 +117,7 @@ namespace SimpleForm {
                     <div>
                         <label>Notes</label>
                         <div>
-                            <textarea
-                                {...notes}
-                                value={notes.value || ""}
-                            />
+                            <textarea {...notes} value={notes.value || ""} />
                         </div>
                     </div>
                     <div>
@@ -108,7 +151,9 @@ namespace SynchronousValidation {
         }
         if (!values.email) {
             errors.email = "Required";
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+        ) {
             errors.email = "Invalid email address";
         }
         if (!values.age) {
@@ -121,9 +166,9 @@ namespace SynchronousValidation {
         return errors;
     };
 
-    class SynchronousValidationForm
-        extends React.Component<ReduxFormProps<SynchronousValidationForm & HTMLFormElement>>
-    {
+    class SynchronousValidationForm extends React.Component<
+        ReduxFormProps<SynchronousValidationForm & HTMLFormElement>
+    > {
         static propTypes = {
             fields: PropTypes.object.isRequired,
             handleSubmit: PropTypes.func.isRequired,
@@ -132,22 +177,35 @@ namespace SynchronousValidation {
         };
 
         render() {
-            const { fields: { username, email, age }, resetForm, handleSubmit, submitting } = this.props;
+            const {
+                fields: { username, email, age },
+                resetForm,
+                handleSubmit,
+                submitting,
+            } = this.props;
             return (
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Username</label>
                         <div>
-                            <input type="text" placeholder="Username" {...username} />
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                {...username}
+                            />
                         </div>
-                        {username.touched && username.error && <div>{username.error}</div>}
+                        {username.touched && username.error && (
+                            <div>{username.error}</div>
+                        )}
                     </div>
                     <div>
                         <label>Email</label>
                         <div>
                             <input type="text" placeholder="Email" {...email} />
                         </div>
-                        {email.touched && email.error && <div>{email.error}</div>}
+                        {email.touched && email.error && (
+                            <div>{email.error}</div>
+                        )}
                     </div>
                     <div>
                         <label>Age</label>
@@ -182,10 +240,20 @@ namespace SumbitValidation {
     const submit = (values: any, dispatch: any) => {
         return new Promise<void>((resolve, reject) => {
             setTimeout(() => {
-                if (["john", "paul", "george", "ringo"].indexOf(values.username) === -1) {
-                    reject({ username: "User does not exist", _error: "Login failed!" });
+                if (
+                    ["john", "paul", "george", "ringo"].indexOf(
+                        values.username,
+                    ) === -1
+                ) {
+                    reject({
+                        username: "User does not exist",
+                        _error: "Login failed!",
+                    });
                 } else if (values.password !== "redux-form") {
-                    reject({ password: "Wrong password", _error: "Login failed!" });
+                    reject({
+                        password: "Wrong password",
+                        _error: "Login failed!",
+                    });
                 } else {
                     resolve();
                 }
@@ -193,7 +261,9 @@ namespace SumbitValidation {
         });
     };
 
-    class SubmitValidationForm extends React.Component<ReduxFormProps<SubmitValidationForm>> {
+    class SubmitValidationForm extends React.Component<
+        ReduxFormProps<SubmitValidationForm>
+    > {
         static propTypes = {
             fields: PropTypes.object.isRequired,
             handleSubmit: PropTypes.func.isRequired,
@@ -203,22 +273,40 @@ namespace SumbitValidation {
         };
 
         render() {
-            const { fields: { username, password }, error, resetForm, handleSubmit, submitting } = this.props;
+            const {
+                fields: { username, password },
+                error,
+                resetForm,
+                handleSubmit,
+                submitting,
+            } = this.props;
             return (
-                <form onSubmit={submit => handleSubmit(submit as any)}>
+                <form onSubmit={(submit) => handleSubmit(submit as any)}>
                     <div>
                         <label>Username</label>
                         <div>
-                            <input type="text" placeholder="Username" {...username} />
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                {...username}
+                            />
                         </div>
-                        {username.touched && username.error && <div>{username.error}</div>}
+                        {username.touched && username.error && (
+                            <div>{username.error}</div>
+                        )}
                     </div>
                     <div>
                         <label>Password</label>
                         <div>
-                            <input type="password" placeholder="Password" {...password} />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                {...password}
+                            />
                         </div>
-                        {password.touched && password.error && <div>{password.error}</div>}
+                        {password.touched && password.error && (
+                            <div>{password.error}</div>
+                        )}
                     </div>
                     {error && <div>{error}</div>}
                     <div>
@@ -244,7 +332,8 @@ namespace InitializingFromState {
     const LOAD = "redux-form-examples/account/LOAD";
     const loadAccount = (data: any) => ({ type: LOAD, data });
     export const fields = ["firstName", "lastName", "age", "bio"];
-    const data = { // used to populate "account" reducer when "Load" is clicked
+    const data = {
+        // used to populate "account" reducer when "Load" is clicked
         firstName: "John",
         lastName: "Doe",
         age: "42",
@@ -255,7 +344,9 @@ namespace InitializingFromState {
         load(data: any): void;
     }
 
-    class InitializingFromStateForm extends React.Component<Props<InitializingFromStateForm & HTMLFormElement>> {
+    class InitializingFromStateForm extends React.Component<
+        Props<InitializingFromStateForm & HTMLFormElement>
+    > {
         static propTypes = {
             fields: PropTypes.object.isRequired,
             handleSubmit: PropTypes.func.isRequired,
@@ -264,7 +355,12 @@ namespace InitializingFromState {
         };
 
         render() {
-            const { fields: { firstName, lastName, age, bio }, handleSubmit, load, submitting } = this.props;
+            const {
+                fields: { firstName, lastName, age, bio },
+                handleSubmit,
+                load,
+                submitting,
+            } = this.props;
             return (
                 <div>
                     <div>
@@ -274,19 +370,31 @@ namespace InitializingFromState {
                         <div>
                             <label>First Name</label>
                             <div>
-                                <input type="text" placeholder="First Name" {...firstName} />
+                                <input
+                                    type="text"
+                                    placeholder="First Name"
+                                    {...firstName}
+                                />
                             </div>
                         </div>
                         <div>
                             <label>Last Name</label>
                             <div>
-                                <input type="text" placeholder="Last Name" {...lastName} />
+                                <input
+                                    type="text"
+                                    placeholder="Last Name"
+                                    {...lastName}
+                                />
                             </div>
                         </div>
                         <div>
                             <label>Age</label>
                             <div>
-                                <input type="number" placeholder="Age" {...age} />
+                                <input
+                                    type="number"
+                                    placeholder="Age"
+                                    {...age}
+                                />
                             </div>
                         </div>
                         <div>
@@ -296,7 +404,10 @@ namespace InitializingFromState {
                             </div>
                         </div>
                         <div>
-                            <button disabled={submitting} onClick={handleSubmit}>
+                            <button
+                                disabled={submitting}
+                                onClick={handleSubmit}
+                            >
                                 {submitting ? <i /> : <i />} Submit
                             </button>
                         </div>
@@ -306,12 +417,16 @@ namespace InitializingFromState {
         }
     }
 
-    export const Connected = reduxForm({
-        form: "initializing",
-        fields,
-    }, (state: any) => ({ // mapStateToProps
-        initialValues: state.account.data, // will pull state into form's initialValues
-    }), { load: loadAccount } // mapDispatchToProps (will bind action creator to dispatch)
+    export const Connected = reduxForm(
+        {
+            form: "initializing",
+            fields,
+        },
+        (state: any) => ({
+            // mapStateToProps
+            initialValues: state.account.data, // will pull state into form's initialValues
+        }),
+        { load: loadAccount }, // mapDispatchToProps (will bind action creator to dispatch)
     )(InitializingFromStateForm);
 }
 
@@ -319,8 +434,9 @@ namespace NormalizingFormData {
     const reducer = combineReducers({
         // other reducers
         form: reduxFormReducer.normalize({
-            normalizing: { // <--- name of the form
-                upper: value => value && value.toUpperCase(), // normalizer for 'upper' field
+            normalizing: {
+                // <--- name of the form
+                upper: (value) => value && value.toUpperCase(), // normalizer for 'upper' field
             },
         }),
     });

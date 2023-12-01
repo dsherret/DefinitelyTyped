@@ -26,7 +26,10 @@ declare global {
             getRangedRegions(): Q.Promise<Region[]>;
             isRangingAvailable(): Q.Promise<boolean>;
             isMonitoringAvailableForClass(region: Region): Q.Promise<boolean>;
-            startAdvertising(region: Region, measuredPower: boolean): Q.Promise<void>;
+            startAdvertising(
+                region: Region,
+                measuredPower: boolean,
+            ): Q.Promise<void>;
             stopAdvertising(): Q.Promise<void>;
             isAdvertisingAvailable(): Q.Promise<boolean>;
             isAdvertising(): Q.Promise<boolean>;
@@ -55,15 +58,19 @@ declare global {
             didExitRegion(pluginResult: PluginResult): void;
             didEnterRegion(pluginResult: PluginResult): void;
             didRangeBeaconsInRegion(pluginResult: PluginResult): void;
-            peripheralManagerDidStartAdvertising(pluginResult: PluginResult): void;
+            peripheralManagerDidStartAdvertising(
+                pluginResult: PluginResult,
+            ): void;
             peripheralManagerDidUpdateState(pluginResult: PluginResult): void;
             didChangeAuthorizationStatus(authorizationStatus: string): void;
-            monitoringDidFailForRegionWithError(pluginResult: PluginResult): void;
+            monitoringDidFailForRegionWithError(
+                pluginResult: PluginResult,
+            ): void;
         }
 
         export interface Region {
             identifier: string;
-            new(identifier: string): Region;
+            new (identifier: string): Region;
         }
 
         export interface BeaconRegion extends Region {
@@ -71,7 +78,7 @@ declare global {
             major: string;
             minor: string;
             notifyEntryStateOnDisplay: boolean;
-            new(
+            new (
                 identifier: string,
                 uuid: string,
                 major?: number,
@@ -84,7 +91,12 @@ declare global {
             latitude: number;
             longitude: number;
             radius: number;
-            new(identifier: string, latitude: number, longitude: number, radius: number): CircularRegion;
+            new (
+                identifier: string,
+                latitude: number,
+                longitude: number,
+                radius: number,
+            ): CircularRegion;
         }
 
         export interface Beacon {

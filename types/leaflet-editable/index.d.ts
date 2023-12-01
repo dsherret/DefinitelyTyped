@@ -75,7 +75,7 @@ declare module "leaflet" {
      * control editing of geometries. So you can easily build your own UI with your own needs and choices.
      */
     interface EditableStatic {
-        new(map: Map, options: EditableOptions): Editable;
+        new (map: Map, options: EditableOptions): Editable;
     }
 
     /**
@@ -229,7 +229,12 @@ declare module "leaflet" {
 
     let Editable: EditableStatic;
 
-    type Editor = MarkerEditor | PolylineEditor | PolygonEditor | RectangleEditor | CircleEditor;
+    type Editor =
+        | MarkerEditor
+        | PolylineEditor
+        | PolygonEditor
+        | RectangleEditor
+        | CircleEditor;
 
     /**
      * When editing a feature (marker, polyline…), an editor is attached to it.
@@ -424,7 +429,9 @@ declare module "leaflet" {
     type VertexEventHandlerFn = (event: VertexEvent) => void;
     type ShapeEventHandlerFn = (event: ShapeEvent) => void;
     type CancelableEventHandlerFn = (event: CancelableEvent) => void;
-    type CancelableVertexEventHandlerFn = (event: CancelableVertexEvent) => void;
+    type CancelableVertexEventHandlerFn = (
+        event: CancelableVertexEvent,
+    ) => void;
     type CancelableShapeEventHandlerFn = (event: CancelableShapeEvent) => void;
 
     /**
@@ -593,15 +600,31 @@ declare module "leaflet" {
             fn: LeafletEventHandlerFn,
             context?: any,
         ): this;
-        on(type: "editable:drawing:click", fn: CancelableEventHandlerFn, context?: any): this;
-        on(type: "editable:shape:delete", fn: CancelableShapeEventHandlerFn, context?: any): this;
+        on(
+            type: "editable:drawing:click",
+            fn: CancelableEventHandlerFn,
+            context?: any,
+        ): this;
+        on(
+            type: "editable:shape:delete",
+            fn: CancelableShapeEventHandlerFn,
+            context?: any,
+        ): this;
         on(
             type: "editable:vertex:rawclick" | "editable:vertex:click",
             fn: CancelableVertexEventHandlerFn,
             context?: any,
         ): this;
-        on(type: "editable:created", fn: LayerEventHandlerFn, context?: any): this;
-        on(type: "editable:shape:deleted" | "editable:shape:new", fn: ShapeEventHandlerFn, context?: any): this;
+        on(
+            type: "editable:created",
+            fn: LayerEventHandlerFn,
+            context?: any,
+        ): this;
+        on(
+            type: "editable:shape:deleted" | "editable:shape:new",
+            fn: ShapeEventHandlerFn,
+            context?: any,
+        ): this;
         on(
             type:
                 | "editable:middlemarker:mousedown"

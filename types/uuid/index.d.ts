@@ -31,14 +31,25 @@ export type V1Options = V1RandomOptions | V1RngOptions;
 export type V4Options = RandomOptions | RngOptions;
 
 type v1String = (options?: V1Options) => string;
-type v1Buffer = <T extends OutputBuffer>(options: V1Options | null | undefined, buffer: T, offset?: number) => T;
+type v1Buffer = <T extends OutputBuffer>(
+    options: V1Options | null | undefined,
+    buffer: T,
+    offset?: number,
+) => T;
 type v1 = v1Buffer & v1String;
 
 type v4String = (options?: V4Options) => string;
-type v4Buffer = <T extends OutputBuffer>(options: V4Options | null | undefined, buffer: T, offset?: number) => T;
+type v4Buffer = <T extends OutputBuffer>(
+    options: V4Options | null | undefined,
+    buffer: T,
+    offset?: number,
+) => T;
 type v4 = v4Buffer & v4String;
 
-type v3String = (name: string | InputBuffer, namespace: string | InputBuffer) => string;
+type v3String = (
+    name: string | InputBuffer,
+    namespace: string | InputBuffer,
+) => string;
 type v3Buffer = <T extends OutputBuffer>(
     name: string | InputBuffer,
     namespace: string | InputBuffer,
@@ -53,7 +64,10 @@ interface v3Static {
 }
 type v3 = v3Buffer & v3String & v3Static;
 
-type v5String = (name: string | InputBuffer, namespace: string | InputBuffer) => string;
+type v5String = (
+    name: string | InputBuffer,
+    namespace: string | InputBuffer,
+) => string;
 type v5Buffer = <T extends OutputBuffer>(
     name: string | InputBuffer,
     namespace: string | InputBuffer,

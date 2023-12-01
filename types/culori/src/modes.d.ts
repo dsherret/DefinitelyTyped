@@ -32,7 +32,9 @@ import modeYiq from "./yiq/definition";
 
 type Converters = {
     [K1 in Mode]: {
-        [K2 in Mode]: ((c: Omit<FindColorByMode<K1>, "mode">) => FindColorByMode<K2>) | undefined;
+        [K2 in Mode]:
+            | ((c: Omit<FindColorByMode<K1>, "mode">) => FindColorByMode<K2>)
+            | undefined;
     };
 };
 
@@ -71,9 +73,14 @@ type Definition =
     | typeof modeXyz65
     | typeof modeYiq;
 
-type FindDefinitionByMode<M extends Mode, D extends Definition = Definition> = D extends { mode: M } ? D : never;
+type FindDefinitionByMode<
+    M extends Mode,
+    D extends Definition = Definition,
+> = D extends { mode: M } ? D : never;
 
-declare function useMode<D extends Definition>(_definition: D): ConvertFn<D["mode"]>;
+declare function useMode<D extends Definition>(
+    _definition: D,
+): ConvertFn<D["mode"]>;
 
 declare function getMode<M extends Mode>(mode: M): FindDefinitionByMode<M>;
 
@@ -83,4 +90,12 @@ declare function useParser(_parser: Parser): undefined;
 
 declare function removeParser(_parser: Parser): undefined;
 
-export { colorProfiles, converters, getMode, parsers, removeParser, useMode, useParser };
+export {
+    colorProfiles,
+    converters,
+    getMode,
+    parsers,
+    removeParser,
+    useMode,
+    useParser,
+};

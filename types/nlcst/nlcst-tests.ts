@@ -73,14 +73,32 @@ const paragraph: Paragraph = {
 
 const root: Root = {
     type: "RootNode",
-    children: [paragraph, punctuation, sentence, source, symbol, text, whiteSpace, word],
+    children: [
+        paragraph,
+        punctuation,
+        sentence,
+        source,
+        symbol,
+        text,
+        whiteSpace,
+        word,
+    ],
     position,
     data,
 };
 
 const parent: Parent = {
     type: "ParentNode",
-    children: [paragraph, punctuation, sentence, source, symbol, text, whiteSpace, word],
+    children: [
+        paragraph,
+        punctuation,
+        sentence,
+        source,
+        symbol,
+        text,
+        whiteSpace,
+        word,
+    ],
     position,
     data,
 };

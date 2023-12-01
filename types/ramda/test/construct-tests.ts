@@ -1,7 +1,11 @@
 import * as R from "ramda";
 
-(() => {
-    function Circle(this: { r: number; colors: string; area: () => number }, r: number, colors: string) {
+() => {
+    function Circle(
+        this: { r: number; colors: string; area: () => number },
+        r: number,
+        colors: string,
+    ) {
         this.r = r;
         this.colors = colors;
         return this;
@@ -16,11 +20,14 @@ import * as R from "ramda";
 
     // ExpectType {r: number, colors: string, area: () => number}
     const circleObject = circleFactory(10, "red");
-});
+};
 
-(() => {
+() => {
     class Circle {
-        constructor(public r: number, public colors: string) {}
+        constructor(
+            public r: number,
+            public colors: string,
+        ) {}
 
         area() {
             return Math.PI * Math.pow(this.r, 2);
@@ -32,4 +39,4 @@ import * as R from "ramda";
 
     // ExpectType Circle
     const circleObject = circleFactory(10, "red");
-});
+};

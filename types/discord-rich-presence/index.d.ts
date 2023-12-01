@@ -28,7 +28,10 @@ declare namespace createClient {
     interface RP {
         on(event: "error", listener: (err: string) => void): this;
         on(event: "connected", listener: () => void): this;
-        on(event: "join" | "spectate", listener: (secret: string) => void): this;
+        on(
+            event: "join" | "spectate",
+            listener: (secret: string) => void,
+        ): this;
         on(event: "joinRequest", listener: (user: string) => void): this;
     }
 

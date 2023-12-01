@@ -5,11 +5,14 @@ const honey = new Libhoney({
     writeKey: "api-key",
 });
 
-honey.add({
-    "eventName": "foo",
-    "dynamicField": () => 1,
-}).newEvent().send();
+honey
+    .add({
+        eventName: "foo",
+        dynamicField: () => 1,
+    })
+    .newEvent()
+    .send();
 
 honey.sendNow({
-    "eventName": "bar",
+    eventName: "bar",
 });

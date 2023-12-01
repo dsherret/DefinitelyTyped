@@ -26,7 +26,9 @@ declare namespace ReactCrop {
         maxHeight?: number | undefined;
         keepSelection?: boolean | undefined;
         onChange: (crop: Crop, percentCrop: PercentCrop) => void;
-        onComplete?: ((crop: Crop, percentCrop: PercentCrop) => void) | undefined;
+        onComplete?:
+            | ((crop: Crop, percentCrop: PercentCrop) => void)
+            | undefined;
         onImageLoaded?: ((target: HTMLImageElement) => void) | undefined;
         onDragStart?: (() => void) | undefined;
         onDragEnd?: (() => void) | undefined;
@@ -35,7 +37,9 @@ declare namespace ReactCrop {
         children?: ReactNode | undefined;
         style?: CSSProperties | undefined;
         imageStyle?: CSSProperties | undefined;
-        onImageError?: ((event: React.SyntheticEvent<HTMLImageElement>) => void) | undefined;
+        onImageError?:
+            | ((event: React.SyntheticEvent<HTMLImageElement>) => void)
+            | undefined;
         className?: string | undefined;
         locked?: boolean | undefined;
         renderComponent?: ReactNode | undefined;
@@ -44,8 +48,17 @@ declare namespace ReactCrop {
         circularCrop?: boolean | undefined;
     }
 
-    function makeAspectCrop(crop: Crop, imageWidth: number, imageHeight: number): Crop;
-    function containCrop(prevCrop: Crop, crop: Crop, imageWidth: number, imageHeight: number): Crop;
+    function makeAspectCrop(
+        crop: Crop,
+        imageWidth: number,
+        imageHeight: number,
+    ): Crop;
+    function containCrop(
+        prevCrop: Crop,
+        crop: Crop,
+        imageWidth: number,
+        imageHeight: number,
+    ): Crop;
 }
 
 declare class ReactCrop extends Component<ReactCrop.ReactCropProps> {
@@ -60,7 +73,11 @@ declare class ReactCrop extends Component<ReactCrop.ReactCropProps> {
         width: number;
         height: number;
     };
-    resolveCrop: (crop: ReactCrop.Crop, imageWidth: number, imageHeight: number) => ReactCrop.Crop;
+    resolveCrop: (
+        crop: ReactCrop.Crop,
+        imageWidth: number,
+        imageHeight: number,
+    ) => ReactCrop.Crop;
     dragCrop: () => ReactCrop.Crop;
     resizeCrop: () => ReactCrop.Crop;
     straightenYPath: (clientX: number) => number;

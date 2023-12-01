@@ -4,17 +4,21 @@ import { BufferFile } from "vinyl";
 declare class Spritesmith {
     constructor(params?: Spritesmith.SpritesmithParams);
     static run(
-        params:
-            & Spritesmith.SpritesmithParams
-            & Spritesmith.SpritesmithProcessImagesOptions
-            & {
+        params: Spritesmith.SpritesmithParams &
+            Spritesmith.SpritesmithProcessImagesOptions & {
                 src: Spritesmith.SpritesmithCreateImagesSrc;
             },
-        callback: (err: Error | null, result: Spritesmith.SpritesmithResult) => void,
+        callback: (
+            err: Error | null,
+            result: Spritesmith.SpritesmithResult,
+        ) => void,
     ): void;
     createImages(
         src: Spritesmith.SpritesmithCreateImagesSrc,
-        callback: (err: Error | null, images: Spritesmith.SpritesmithImage[]) => void,
+        callback: (
+            err: Error | null,
+            images: Spritesmith.SpritesmithImage[],
+        ) => void,
     ): void;
     processImages(
         images: Spritesmith.SpritesmithImage[],
@@ -43,7 +47,12 @@ declare namespace Spritesmith {
             background?: string;
             [key: string]: unknown;
         };
-        algorithm?: "top-down" | "left-right" | "diagonal" | "alt-diagonal" | "binary-tree";
+        algorithm?:
+            | "top-down"
+            | "left-right"
+            | "diagonal"
+            | "alt-diagonal"
+            | "binary-tree";
         algorithmOpts?: {
             sort?: boolean;
         };
@@ -51,7 +60,10 @@ declare namespace Spritesmith {
 
     interface SpritesmithResult<Image extends Buffer | Transform = Buffer> {
         image: Image;
-        coordinates: Record<string, { x: number; y: number; width: number; height: number }>;
+        coordinates: Record<
+            string,
+            { x: number; y: number; width: number; height: number }
+        >;
         properties: { width: number; height: number };
     }
 }

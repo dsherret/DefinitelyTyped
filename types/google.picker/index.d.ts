@@ -9,7 +9,9 @@ declare namespace google {
             constructor();
 
             // Add a View to the navigation pane.
-            addView(viewOrViewId: DocsView | DocsUploadView | ViewId): PickerBuilder;
+            addView(
+                viewOrViewId: DocsView | DocsUploadView | ViewId,
+            ): PickerBuilder;
 
             // Add a ViewGroup to the top-level navigation pane.
             addViewGroup(viewGroup: ViewGroup): PickerBuilder;
@@ -39,7 +41,9 @@ declare namespace google {
             setAppId(appId: string): PickerBuilder;
 
             // Set the callback method called when the user picks and item (or items), or cancels. The callback method receives a single callback object. The structure of the callback object is described in the JSON Guide.
-            setCallback(method: (result: ResponseObject) => void): PickerBuilder;
+            setCallback(
+                method: (result: ResponseObject) => void,
+            ): PickerBuilder;
 
             // Sets the Browser API key obtained from Google Developers Console. See the Developer's Guide for details on how to obtain the Browser API key.
             setDeveloperKey(key: string): PickerBuilder;
@@ -93,7 +97,11 @@ declare namespace google {
             [Response.ACTION]: Action;
             [Response.DOCUMENTS]: DocumentObject[];
             [Response.PARENTS]?: ParentDocumentObject[] | undefined;
-            [Response.VIEW]: [ViewId, undefined, { query?: string | undefined; parent?: string | undefined }];
+            [Response.VIEW]: [
+                ViewId,
+                undefined,
+                { query?: string | undefined; parent?: string | undefined },
+            ];
         }
 
         export interface DocumentObject {

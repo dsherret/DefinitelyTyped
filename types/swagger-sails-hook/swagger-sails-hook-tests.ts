@@ -6,7 +6,9 @@ const mockSailsApp = {
     conf: {},
     sockets: {},
     hooks: {},
-    lift: () => {/* do nothing */},
+    lift: () => {
+        /* do nothing */
+    },
 };
 
 // create and register hook

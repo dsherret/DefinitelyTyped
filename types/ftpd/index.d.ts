@@ -22,13 +22,19 @@ export interface FtpServerOptions {
      * Typical cases where you would want/need the callback involve retrieving configurations from external datasources and suchlike.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    getInitialCwd: (connection: FtpConnection, callback?: (error: Error, path: string) => void) => void | string;
+    getInitialCwd: (
+        connection: FtpConnection,
+        callback?: (error: Error, path: string) => void,
+    ) => void | string;
     /**
      * Gets the root directory for the user relative to the CWD. Called after getInitialCwd. The user is not able to escape this directory.
      * Typical cases where you would want/need the callback involve retrieving configurations from external datasources and suchlike.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    getRoot: (connection: FtpConnection, callback?: (error: Error, path: string) => void) => void | string;
+    getRoot: (
+        connection: FtpConnection,
+        callback?: (error: Error, path: string) => void,
+    ) => void | string;
     /**
      * If set to true, then files which the client uploads are buffered in memory and then written to disk using writeFile.
      * If false, files are written using writeStream.
@@ -122,89 +128,148 @@ export declare class FtpConnection extends events.EventEmitter {
  * Optional mock fs implementation to set in the command:pass event of FtpConnection
  */
 export interface FtpFileSystem {
-    unlink: (path: string, callback?: (err?: NodeJS.ErrnoException) => void) => void;
-    readdir: (path: string, callback?: (err?: NodeJS.ErrnoException, files?: string[]) => void) => void;
+    unlink: (
+        path: string,
+        callback?: (err?: NodeJS.ErrnoException) => void,
+    ) => void;
+    readdir: (
+        path: string,
+        callback?: (err?: NodeJS.ErrnoException, files?: string[]) => void,
+    ) => void;
     mkdir:
-        | ((path: string, callback?: (err?: NodeJS.ErrnoException) => void) => void)
-        | ((path: string, mode: number, callback?: (err?: NodeJS.ErrnoException) => void) => void)
-        | ((path: string, mode: string, callback?: (err?: NodeJS.ErrnoException) => void) => void);
+        | ((
+              path: string,
+              callback?: (err?: NodeJS.ErrnoException) => void,
+          ) => void)
+        | ((
+              path: string,
+              mode: number,
+              callback?: (err?: NodeJS.ErrnoException) => void,
+          ) => void)
+        | ((
+              path: string,
+              mode: string,
+              callback?: (err?: NodeJS.ErrnoException) => void,
+          ) => void);
     open:
-        | ((path: string, flags: string, callback?: (err?: NodeJS.ErrnoException, fd?: number) => any) => void)
         | ((
-            path: string,
-            flags: string,
-            mode: number,
-            callback?: (err?: NodeJS.ErrnoException, fd?: number) => any,
-        ) => void)
+              path: string,
+              flags: string,
+              callback?: (err?: NodeJS.ErrnoException, fd?: number) => any,
+          ) => void)
         | ((
-            path: string,
-            flags: string,
-            mode: string,
-            callback?: (err?: NodeJS.ErrnoException, fd?: number) => any,
-        ) => void);
-    close: (fd: number, callback?: (err?: NodeJS.ErrnoException) => void) => void;
-    rmdir: (path: string, callback?: (err?: NodeJS.ErrnoException) => void) => void;
-    rename: (oldPath: string, newPath: string, callback?: (err?: NodeJS.ErrnoException) => void) => void;
+              path: string,
+              flags: string,
+              mode: number,
+              callback?: (err?: NodeJS.ErrnoException, fd?: number) => any,
+          ) => void)
+        | ((
+              path: string,
+              flags: string,
+              mode: string,
+              callback?: (err?: NodeJS.ErrnoException, fd?: number) => any,
+          ) => void);
+    close: (
+        fd: number,
+        callback?: (err?: NodeJS.ErrnoException) => void,
+    ) => void;
+    rmdir: (
+        path: string,
+        callback?: (err?: NodeJS.ErrnoException) => void,
+    ) => void;
+    rename: (
+        oldPath: string,
+        newPath: string,
+        callback?: (err?: NodeJS.ErrnoException) => void,
+    ) => void;
     /**
      * specific object properties: { mode, isDirectory(), size, mtime }
      */
-    stat: (path: string, callback?: (err?: NodeJS.ErrnoException, stats?: fs.Stats) => any) => void;
+    stat: (
+        path: string,
+        callback?: (err?: NodeJS.ErrnoException, stats?: fs.Stats) => any,
+    ) => void;
     /**
      * if useReadFile option is not set or is false
      */
     createReadStream?:
-        | ((path: string, options?: {
-            flags?: string | undefined;
-            encoding?: string | undefined;
-            fd?: string | undefined;
-            mode?: string | undefined;
-            bufferSize?: number | undefined;
-        }) => fs.ReadStream)
+        | ((
+              path: string,
+              options?: {
+                  flags?: string | undefined;
+                  encoding?: string | undefined;
+                  fd?: string | undefined;
+                  mode?: string | undefined;
+                  bufferSize?: number | undefined;
+              },
+          ) => fs.ReadStream)
         | undefined;
     /**
      * if useWriteFile option is not set or is false
      */
     createWriteStream?:
-        | ((path: string, options?: {
-            flags?: string | undefined;
-            encoding?: string | undefined;
-            string?: string | undefined;
-        }) => fs.WriteStream)
+        | ((
+              path: string,
+              options?: {
+                  flags?: string | undefined;
+                  encoding?: string | undefined;
+                  string?: string | undefined;
+              },
+          ) => fs.WriteStream)
         | undefined;
     /**
      * if useReadFile option is set to 'true'
      */
     readFile?:
-        | ((filename: string, encoding: string, callback: (err: NodeJS.ErrnoException, data: string) => void) => void)
         | ((
-            filename: string,
-            options: { encoding: string; flag?: string | undefined },
-            callback: (err: NodeJS.ErrnoException, data: string) => void,
-        ) => void)
+              filename: string,
+              encoding: string,
+              callback: (err: NodeJS.ErrnoException, data: string) => void,
+          ) => void)
         | ((
-            filename: string,
-            options: { flag?: string | undefined },
-            callback: (err: NodeJS.ErrnoException, data: Buffer) => void,
-        ) => void)
-        | ((filename: string, callback: (err: NodeJS.ErrnoException, data: Buffer) => void) => void)
+              filename: string,
+              options: { encoding: string; flag?: string | undefined },
+              callback: (err: NodeJS.ErrnoException, data: string) => void,
+          ) => void)
+        | ((
+              filename: string,
+              options: { flag?: string | undefined },
+              callback: (err: NodeJS.ErrnoException, data: Buffer) => void,
+          ) => void)
+        | ((
+              filename: string,
+              callback: (err: NodeJS.ErrnoException, data: Buffer) => void,
+          ) => void)
         | undefined;
     /**
      * if useWriteFile option is set to 'true'
      */
     writeFile?:
-        | ((filename: string, data: any, callback?: (err: NodeJS.ErrnoException) => void) => void)
         | ((
-            filename: string,
-            data: any,
-            options: { encoding?: string | undefined; mode?: number | undefined; flag?: string | undefined },
-            callback?: (err: NodeJS.ErrnoException) => void,
-        ) => void)
+              filename: string,
+              data: any,
+              callback?: (err: NodeJS.ErrnoException) => void,
+          ) => void)
         | ((
-            filename: string,
-            data: any,
-            options: { encoding?: string | undefined; mode?: string | undefined; flag?: string | undefined },
-            callback?: (err: NodeJS.ErrnoException) => void,
-        ) => void)
+              filename: string,
+              data: any,
+              options: {
+                  encoding?: string | undefined;
+                  mode?: number | undefined;
+                  flag?: string | undefined;
+              },
+              callback?: (err: NodeJS.ErrnoException) => void,
+          ) => void)
+        | ((
+              filename: string,
+              data: any,
+              options: {
+                  encoding?: string | undefined;
+                  mode?: string | undefined;
+                  flag?: string | undefined;
+              },
+              callback?: (err: NodeJS.ErrnoException) => void,
+          ) => void)
         | undefined;
 }
 
@@ -229,7 +294,12 @@ export declare class FtpServer extends events.EventEmitter {
     /**
      * Start listening, see net.Server.listen()
      */
-    public listen(port: number, host?: string, backlog?: number, listeningListener?: () => void): void;
+    public listen(
+        port: number,
+        host?: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): void;
 
     /**
      * Stop listening

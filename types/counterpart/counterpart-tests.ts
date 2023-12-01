@@ -7,8 +7,12 @@ counterpart.translate(["translation", "to", "be", "used"]);
 
 counterpart.setSeparator("*");
 
-counterpart.onTranslationNotFound((locale: string, key: string, fallback: string, scope: string) => {});
-counterpart.offTranslationNotFound((locale: string, key: string, fallback: string, scope: string) => {});
+counterpart.onTranslationNotFound(
+    (locale: string, key: string, fallback: string, scope: string) => {},
+);
+counterpart.offTranslationNotFound(
+    (locale: string, key: string, fallback: string, scope: string) => {},
+);
 
 counterpart.setMissingEntryGenerator((value: string) => {});
 

@@ -63,21 +63,31 @@ const secondElement = $("li").eq(1);
 const lastElement = $("li").eq(-1);
 const whichIndex = $("li").index($(".selected"));
 const whichListItemIndex = $("li").eq(3).index();
-$(".elems").is("div").each(ctx => {
-    console.log("This element is a div.");
-});
-$(".elems").isnt("p").each(() => {
-    console.log("This element is not a paragraph tag.");
-});
-$("li").has("p").each(ctx => {
-    console.log("This list item has a paragraph tag.");
-});
-$("li").hasnt("p").each(ctx => {
-    console.log("This list item does not have a paragraph tag.");
-});
-$("ul").find("li").each(ctx => {
-    console.log(ctx);
-});
+$(".elems")
+    .is("div")
+    .each((ctx) => {
+        console.log("This element is a div.");
+    });
+$(".elems")
+    .isnt("p")
+    .each(() => {
+        console.log("This element is not a paragraph tag.");
+    });
+$("li")
+    .has("p")
+    .each((ctx) => {
+        console.log("This list item has a paragraph tag.");
+    });
+$("li")
+    .hasnt("p")
+    .each((ctx) => {
+        console.log("This list item does not have a paragraph tag.");
+    });
+$("ul")
+    .find("li")
+    .each((ctx) => {
+        console.log(ctx);
+    });
 $("li").css("color");
 $("li").css("color", "red");
 $("li").css({ color: "red", "background-color": "yellow" });
@@ -101,7 +111,7 @@ $("ul").insert("<li>1</li><li>2</li><li>3</li>");
 $("ul").html("<li>1</li><li><2/li><li>3</li>");
 $("ul").html("");
 const listContent = $("ul").html();
-$("ul").prepend("<li class=\"title\">The title</li>");
+$("ul").prepend('<li class="title">The title</li>');
 $("ul").append("<li>The Last Item</li>");
 const inputName = $("input").attr("name");
 $("input").attr("name", "wobba");
@@ -146,7 +156,7 @@ $("#list").closest("article").css("margin", "20px");
 $("button").siblings().css("padding", "20px");
 $("button").siblings("p").css("padding", "20px");
 const cloned = $("#list").clone();
-$("#list").wrap("<div class=\"very-special\"></div>");
+$("#list").wrap('<div class="very-special"></div>');
 $("#list").unwrap();
 $("#list").remove();
 $("#list").empty();
@@ -157,8 +167,9 @@ $("#list").removeData("price");
 // Animate:
 $("#list").animate(
     {
-        transform: "rotate3d(30, 150, 200, 180deg) scale(3) translate3d(-50%, -30%, 140%)",
-        opacity: .25,
+        transform:
+            "rotate3d(30, 150, 200, 180deg) scale(3) translate3d(-50%, -30%, 140%)",
+        opacity: 0.25,
         "transform-style": "preserve-3d",
         perspective: 500,
     },
@@ -199,22 +210,40 @@ const isSafari = $.isSafari;
 const isNativeAndroid = $.isNativeAndroid;
 
 // Events:
-$("li").bind("click", () => {
-    $.noop;
-}, false);
-$("li").unbind("click", () => {
-    $.noop;
-}, false);
-$("ul").delegate("click", "li", () => {
-    $.noop;
-}, false);
-$("ul").undelegate("click", "li", () => {
-    $.noop;
-}, false);
+$("li").bind(
+    "click",
+    () => {
+        $.noop;
+    },
+    false,
+);
+$("li").unbind(
+    "click",
+    () => {
+        $.noop;
+    },
+    false,
+);
+$("ul").delegate(
+    "click",
+    "li",
+    () => {
+        $.noop;
+    },
+    false,
+);
+$("ul").undelegate(
+    "click",
+    "li",
+    () => {
+        $.noop;
+    },
+    false,
+);
 $("li").on("click", () => {
     $.noop;
 });
-$("ul").on("click", "li", function() {
+$("ul").on("click", "li", function () {
     console.log($(this).text());
 });
 $("li").off("click");
@@ -236,11 +265,11 @@ myPromise = new Promise((resolve, reject) => {
     // reject('Lost in Space!');
 });
 myPromise.then(
-    value => {
+    (value) => {
         // Success:
         console.log(value);
     }, // Opps! There was a problem:
-    reason => {
+    (reason) => {
         console.log(reason);
     },
 );
@@ -314,7 +343,9 @@ fetch("../controllers/php-put.php", {
     })
     .catch((error: Error) => {
         console.log(error);
-        $("#message_ajax").html("<div class='errorMessage'>Sorry, put was not successful.</div>");
+        $("#message_ajax").html(
+            "<div class='errorMessage'>Sorry, put was not successful.</div>",
+        );
     });
 
 // DELETE:
@@ -330,15 +361,22 @@ fetch("../controllers/php-delete.php", {
     body: file,
 })
     .then($.json)
-    .then((data: any) => {
-        $("#message_ajax").html("<div>DELETE was sent to the server successfully.</div>");
-        $("#message_ajax").append(`<p>${data.result}</p>`);
-    }, (data: any) => {
-        console.log("PROBLEM");
-        console.log(data);
-    })
+    .then(
+        (data: any) => {
+            $("#message_ajax").html(
+                "<div>DELETE was sent to the server successfully.</div>",
+            );
+            $("#message_ajax").append(`<p>${data.result}</p>`);
+        },
+        (data: any) => {
+            console.log("PROBLEM");
+            console.log(data);
+        },
+    )
     .catch((error: any) => {
-        $("#message_ajax").html("<div class='errorMessage'>Sorry, 'DELETE' was not successful.</div>");
+        $("#message_ajax").html(
+            "<div class='errorMessage'>Sorry, 'DELETE' was not successful.</div>",
+        );
         error.reject();
     });
 
@@ -367,12 +405,14 @@ fetch("../controllers/php-post.php", {
         }
     })
     // Catch timeout:
-    .catch(error => {
+    .catch((error) => {
         console.log(error);
     });
 
 // $.jsonp:
-$.jsonp("https://api.github.com/users/rbiggs/repos?name=chipper", { timeout: 10000 })
+$.jsonp("https://api.github.com/users/rbiggs/repos?name=chipper", {
+    timeout: 10000,
+})
     .then($.json)
     .then((obj: any) => {
         console.log(obj);
@@ -412,16 +452,27 @@ const luminaries = {
 };
 const repeaterTmplate2 = "<li>[[= data.firstName ]], [[= data.lastName]]</li>";
 // Pass in the array of persons:
-$.template.repeater($("#objectArrayList"), repeaterTmplate2, luminaries.persons);
+$.template.repeater(
+    $("#objectArrayList"),
+    repeaterTmplate2,
+    luminaries.persons,
+);
 
 // Code for declarative repeater:
-$.template.data["myRepeater"] = [{ name: "Joe" }, { name: "Sally" }, { name: "Tom" }];
+$.template.data["myRepeater"] = [
+    { name: "Joe" },
+    { name: "Sally" },
+    { name: "Tom" },
+];
 $.template.repeater();
 
 // Pub/Sub:
-const newsSubscription = $.subscribe("news/update", (topic: string, data: any) => {
-    $(".list").append(`<li><h3>${topic}</h3><h4>${data}</h4></li>`);
-});
+const newsSubscription = $.subscribe(
+    "news/update",
+    (topic: string, data: any) => {
+        $(".list").append(`<li><h3>${topic}</h3><h4>${data}</h4></li>`);
+    },
+);
 $.publish(
     "news/update",
     "The New York Stock Exchange rose an unprecedented 1000 points in just three minutes. Analysts and investors are confused and uncertain how to respond.",

@@ -18,7 +18,12 @@ fs.createReadStream(path.join(__dirname, "happybirthday.txt"))
 
 const words = ["Awesome", "Good", "Super", "Joyous"];
 
-function replaceFn(match: string, p1: string, offset: number, string: string): string {
+function replaceFn(
+    match: string,
+    p1: string,
+    offset: number,
+    string: string,
+): string {
     return words.shift() || "Happy";
 }
 

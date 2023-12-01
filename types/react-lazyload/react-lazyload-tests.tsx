@@ -26,10 +26,14 @@ class Normal extends React.Component<{}, State> {
             <div>
                 {this.state.arr.map((el, index) => {
                     return (
-                        <LazyLoad once={true} resize={true} key={index} height={200} offset={50}>
-                            <p id={`${index}`}>
-                                count={index + 1}
-                            </p>
+                        <LazyLoad
+                            once={true}
+                            resize={true}
+                            key={index}
+                            height={200}
+                            offset={50}
+                        >
+                            <p id={`${index}`}>count={index + 1}</p>
                         </LazyLoad>
                     );
                 })}

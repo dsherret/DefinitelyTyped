@@ -10,11 +10,9 @@ declare namespace Chai {
         config: Config;
     }
 
-    export interface ExpectStatic extends AssertionStatic {
-    }
+    export interface ExpectStatic extends AssertionStatic {}
 
-    export interface AssertStatic extends Assert {
-    }
+    export interface AssertStatic extends Assert {}
 
     export interface AssertionStatic {
         (target: any, message?: string): Assertion;
@@ -29,16 +27,29 @@ declare namespace Chai {
 
     interface Should extends ShouldAssertion {
         not: ShouldAssertion;
-        fail(actual: any, expected: any, message?: string, operator?: string): void;
+        fail(
+            actual: any,
+            expected: any,
+            message?: string,
+            operator?: string,
+        ): void;
     }
 
     interface ShouldThrow {
         (actual: Function): void;
         (actual: Function, expected: string | RegExp, message?: string): void;
-        (actual: Function, constructor: Error | Function, expected?: string | RegExp, message?: string): void;
+        (
+            actual: Function,
+            constructor: Error | Function,
+            expected?: string | RegExp,
+            message?: string,
+        ): void;
     }
 
-    interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
+    interface Assertion
+        extends LanguageChains,
+            NumericComparison,
+            TypeComparison {
         not: Assertion;
         deep: Deep;
         a: Assertion;
@@ -178,7 +189,12 @@ declare namespace Chai {
          */
         (expression: any, message?: string): void;
 
-        fail(actual?: any, expected?: any, msg?: string, operator?: string): void;
+        fail(
+            actual?: any,
+            expected?: any,
+            msg?: string,
+            operator?: string,
+        ): void;
 
         ok(val: any, msg?: string): void;
         notOk(val: any, msg?: string): void;
@@ -242,8 +258,18 @@ declare namespace Chai {
         propertyVal(obj: Object, prop: string, val: any, msg?: string): void;
         propertyNotVal(obj: Object, prop: string, val: any, msg?: string): void;
 
-        deepPropertyVal(obj: Object, prop: string, val: any, msg?: string): void;
-        deepPropertyNotVal(obj: Object, prop: string, val: any, msg?: string): void;
+        deepPropertyVal(
+            obj: Object,
+            prop: string,
+            val: any,
+            msg?: string,
+        ): void;
+        deepPropertyNotVal(
+            obj: Object,
+            prop: string,
+            val: any,
+            msg?: string,
+        ): void;
 
         lengthOf(exp: any, len: number, msg?: string): void;
         // alias frenzy

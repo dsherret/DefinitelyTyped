@@ -12,7 +12,12 @@ declare namespace OO {
          * @param context Context object for function or method call
          * @throws {Error} Listener argument is not a function or a valid method name
          */
-        on<C = null>(event: string, method: EventHandler<C>, args?: any[], context?: C): this;
+        on<C = null>(
+            event: string,
+            method: EventHandler<C>,
+            args?: any[],
+            context?: C,
+        ): this;
 
         /**
          * Add a one-time listener to a specific event.
@@ -20,7 +25,10 @@ declare namespace OO {
          * @param event Type of event to listen to
          * @param listener Listener to call when event occurs
          */
-        once(event: string, listener: (this: null, ...args: any[]) => void): this;
+        once(
+            event: string,
+            listener: (this: null, ...args: any[]) => void,
+        ): this;
 
         /**
          * Remove a specific listener from a specific event.
@@ -31,7 +39,11 @@ declare namespace OO {
          * @param context Context object function or method call
          * @throws {Error} Listener argument is not a function or a valid method name
          */
-        off<C = null>(event: string, method?: EventHandler<C>, context?: C): this;
+        off<C = null>(
+            event: string,
+            method?: EventHandler<C>,
+            context?: C,
+        ): this;
 
         /**
          * Emit an event.
@@ -79,7 +91,13 @@ declare namespace OO {
          *  arrays containing method name or function followed by a list of arguments to be passed to
          *  callback before emitted arguments.
          */
-        connect<C>(context: C, methods: Record<string, EventHandler<C> | [EventHandler<C>, ...any[]]>): this;
+        connect<C>(
+            context: C,
+            methods: Record<
+                string,
+                EventHandler<C> | [EventHandler<C>, ...any[]]
+            >,
+        ): this;
 
         /**
          * Disconnect event handlers from an object.
@@ -94,11 +112,17 @@ declare namespace OO {
          *  parameters vary), disconnecting one variation of (event name, event listener, parameters)
          *  will disconnect other variations as well.
          */
-        disconnect<C>(context: C, methods?: Record<string, EventHandler<C> | [EventHandler<C>, ...any[]]>): this;
+        disconnect<C>(
+            context: C,
+            methods?: Record<
+                string,
+                EventHandler<C> | [EventHandler<C>, ...any[]]
+            >,
+        ): this;
     }
 
     interface EventEmitterConstructor {
-        new(): EventEmitter;
+        new (): EventEmitter;
         prototype: EventEmitter;
         static: {};
     }

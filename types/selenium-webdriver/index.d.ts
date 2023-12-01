@@ -17,7 +17,12 @@ import { ShadowRootPromise } from "./lib/webdriver";
 import * as safari from "./safari";
 
 export * from "./lib/by";
-export { Browser, Capabilities, Capability, ITimeouts } from "./lib/capabilities";
+export {
+    Browser,
+    Capabilities,
+    Capability,
+    ITimeouts,
+} from "./lib/capabilities";
 export { Actions, Button, Key, Origin } from "./lib/input";
 export { promise } from "./lib/promise";
 export { LogInspector };
@@ -273,7 +278,9 @@ export namespace error {
     /**
      * Checks a legacy response from the Selenium 2.0 wire protocol for an error.
      */
-    function checkLegacyResponse(response: MaybeLegacyResponse): MaybeLegacyResponse;
+    function checkLegacyResponse(
+        response: MaybeLegacyResponse,
+    ): MaybeLegacyResponse;
 
     interface ErrorData {
         error: string | number;
@@ -463,7 +470,11 @@ export class TouchSequence {
      * @param {number} speed The speed to flick at in pixels per second.
      * @return {!TouchSequence} A self reference.
      */
-    flickElement(elem: WebElement, offset: IOffset, speed: number): TouchSequence;
+    flickElement(
+        elem: WebElement,
+        offset: IOffset,
+        speed: number,
+    ): TouchSequence;
 }
 
 /**
@@ -677,7 +688,11 @@ export class Builder {
      *     version may be used.
      * @return {!Builder} A self reference.
      */
-    forBrowser(name: string, opt_version?: string, opt_platform?: string): Builder;
+    forBrowser(
+        name: string,
+        opt_version?: string,
+        opt_platform?: string,
+    ): Builder;
 
     /**
      * Returns the base set of capabilities this instance is currently configured
@@ -938,7 +953,12 @@ export class EventEmitter {
      *    the first event is fired.
      * @return {!EventEmitter} A self reference.
      */
-    addListener(type: string, fn: Function, opt_scope?: any, opt_oneshot?: boolean): EventEmitter;
+    addListener(
+        type: string,
+        fn: Function,
+        opt_scope?: any,
+        opt_oneshot?: boolean,
+    ): EventEmitter;
 
     /**
      * Registers a one-time listener which will be called only the first time an
@@ -1453,10 +1473,12 @@ export class FileDetector {
     handleFile(driver: WebDriver, path: string): Promise<string>;
 }
 
-export type CreateSessionCapabilities = Capabilities | {
-    desired?: Capabilities | undefined;
-    required?: Capabilities | undefined;
-};
+export type CreateSessionCapabilities =
+    | Capabilities
+    | {
+          desired?: Capabilities | undefined;
+          required?: Capabilities | undefined;
+      };
 
 /**
  * Creates a new WebDriver client, which provides control over a browser.
@@ -1611,7 +1633,12 @@ export class WebDriver {
      *
      * @return {!actions.ActionSequence} A new action sequence for this instance.
      */
-    actions(options?: { async: boolean; bridge: boolean } | { async: boolean } | { bridge: boolean }): Actions;
+    actions(
+        options?:
+            | { async: boolean; bridge: boolean }
+            | { async: boolean }
+            | { bridge: boolean },
+    ): Actions;
 
     /**
      * Schedules a command to execute JavaScript in the context of the currently
@@ -1728,7 +1755,10 @@ export class WebDriver {
      *    scripts return value.
      * @template T
      */
-    executeAsyncScript<T>(script: string | Function, ...var_args: any[]): Promise<T>;
+    executeAsyncScript<T>(
+        script: string | Function,
+        ...var_args: any[]
+    ): Promise<T>;
 
     /**
      * Schedules a command to wait for a condition to hold. The condition may be
@@ -1840,7 +1870,11 @@ export class WebDriver {
      * @template T
      */
     wait<T>(
-        condition: PromiseLike<T> | Condition<T> | ((driver: WebDriver) => T | PromiseLike<T>) | Function,
+        condition:
+            | PromiseLike<T>
+            | Condition<T>
+            | ((driver: WebDriver) => T | PromiseLike<T>)
+            | Function,
         opt_timeout?: number,
         opt_message?: string,
         opt_pollTimeout?: number,
@@ -1999,7 +2033,10 @@ export class WebDriver {
      * @return {!Promise<!WebElement>} A promise that will resolve to a list of
      *     WebElements.
      */
-    findElementInternal_(locatorFn: Function, context: WebDriver | WebElement): Promise<WebElement>;
+    findElementInternal_(
+        locatorFn: Function,
+        context: WebDriver | WebElement,
+    ): Promise<WebElement>;
 
     /**
      * @param {!Function} locatorFn The locator function to use.
@@ -2007,7 +2044,10 @@ export class WebDriver {
      * @return {!Promise<!Array<!WebElement>>} A promise that will resolve to an
      *     array of WebElements.
      */
-    findElementsInternal_(locatorFn: Function, context: WebDriver | WebElement): Promise<WebElement[]>;
+    findElementsInternal_(
+        locatorFn: Function,
+        context: WebDriver | WebElement,
+    ): Promise<WebElement[]>;
 
     /**
      * Creates a new WebSocket connection.
@@ -2022,7 +2062,11 @@ export class WebDriver {
      * @param caps
      * @return {string} Returns parsed webSocketDebuggerUrl obtained from the http request
      */
-    getWsUrl(debuggerAddress: string, target: string, caps: Capabilities): Promise<string>;
+    getWsUrl(
+        debuggerAddress: string,
+        target: string,
+        caps: Capabilities,
+    ): Promise<string>;
 
     /**
      * Sets a listener for Fetch.authRequired event from CDP
@@ -2032,7 +2076,11 @@ export class WebDriver {
      * @param {string} password
      * @param connection CDP Connection
      */
-    register(username: string, password: string, connection: any): Promise<void>;
+    register(
+        username: string,
+        password: string,
+        connection: any,
+    ): Promise<void>;
 
     /**
      * Handle Network interception requests
@@ -2041,28 +2089,41 @@ export class WebDriver {
      *                     as well as what should be returned.
      * @param callback callback called when we intercept requests.
      */
-    onIntercept(connection: WebSocket, httpResponse: HttpResponse, callback: () => void): Promise<void>;
+    onIntercept(
+        connection: WebSocket,
+        httpResponse: HttpResponse,
+        callback: () => void,
+    ): Promise<void>;
 
     /**
      * @param connection
      * @param callback
      * @returns {Promise<void>}
      */
-    onLogEvent(connection: WebSocket, callback: (event: any) => void): Promise<void>;
+    onLogEvent(
+        connection: WebSocket,
+        callback: (event: any) => void,
+    ): Promise<void>;
 
     /**
      * @param connection
      * @param callback
      * @returns {Promise<void>}
      */
-    onLogException(connection: WebSocket, callback: (event: any) => void): Promise<void>;
+    onLogException(
+        connection: WebSocket,
+        callback: (event: any) => void,
+    ): Promise<void>;
 
     /**
      * @param connection
      * @param callback
      * @returns {Promise<void>}
      */
-    logMutationEvents(connection: WebSocket, callback: (event: any) => void): Promise<void>;
+    logMutationEvents(
+        connection: WebSocket,
+        callback: (event: any) => void,
+    ): Promise<void>;
     // endregion
 }
 
@@ -2149,7 +2210,10 @@ export class ChromiumWebDriver extends WebDriver {
      * @see <https://w3c.github.io/permissions/#permission-registry> for valid
      *     names
      */
-    setPermission(name: string, state: "granted" | "denied" | "prompt"): Promise<Object>;
+    setPermission(
+        name: string,
+        state: "granted" | "denied" | "prompt",
+    ): Promise<Object>;
 
     /**
      * Sends a DevTools command to change the browser's download directory.
@@ -2321,7 +2385,9 @@ export interface IWebElement {
      * @return {!Promise} A promise that will be resolved when all
      *     keys have been typed.
      */
-    sendKeys(...var_args: Array<number | string | Promise<string | number>>): Promise<void>;
+    sendKeys(
+        ...var_args: Array<number | string | Promise<string | number>>
+    ): Promise<void>;
 
     /**
      * Schedules a command to query for the tag/node name of this element.
@@ -2713,7 +2779,9 @@ export class WebElement implements Serializable<IWebElementId> {
      * @return {!Promise.<void>} A promise that will be resolved
      *     when all keys have been typed.
      */
-    sendKeys(...var_args: Array<string | number | Promise<string | number>>): Promise<void>;
+    sendKeys(
+        ...var_args: Array<string | number | Promise<string | number>>
+    ): Promise<void>;
 
     /**
      * Schedules a command to query for the tag/node name of this element.

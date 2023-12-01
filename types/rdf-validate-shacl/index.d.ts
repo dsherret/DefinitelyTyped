@@ -4,8 +4,12 @@ import { ValidationReport } from "./src/validation-report";
 type Factory<
     OutQuad extends RDF.Quad = RDF.Quad,
     InQuad extends RDF.Quad = RDF.Quad,
-    D extends RDF.DatasetCore<OutQuad, InQuad> = RDF.DatasetCore<OutQuad, InQuad>,
-> = RDF.DataFactory<OutQuad, InQuad> & RDF.DatasetCoreFactory<OutQuad, InQuad, D>;
+    D extends RDF.DatasetCore<OutQuad, InQuad> = RDF.DatasetCore<
+        OutQuad,
+        InQuad
+    >,
+> = RDF.DataFactory<OutQuad, InQuad> &
+    RDF.DatasetCoreFactory<OutQuad, InQuad, D>;
 
 declare namespace SHACLValidator {
     interface Options<F extends Factory> {
@@ -14,7 +18,9 @@ declare namespace SHACLValidator {
     }
 }
 
-declare class SHACLValidator<F extends Factory = RDF.DataFactory & RDF.DatasetCoreFactory> {
+declare class SHACLValidator<
+    F extends Factory = RDF.DataFactory & RDF.DatasetCoreFactory,
+> {
     constructor(shapes: RDF.DatasetCore, options?: SHACLValidator.Options<F>);
     factory: F;
     depth: number;

@@ -1,21 +1,15 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "strictFunctionTypes": true,
-        "strictNullChecks": true,
-        "allowSyntheticDefaultImports": true,
-        "types": [],
-        "noEmit": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "files": [
-        "index.d.ts",
-        "findandreplacedomtext-tests.ts"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [],
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": ["index.d.ts", "findandreplacedomtext-tests.ts"]
 }

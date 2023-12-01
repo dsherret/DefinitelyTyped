@@ -27,7 +27,14 @@ export default class Display {
     clear(): void;
     pending(): boolean;
     flush(): void;
-    fillRect(x: number, y: number, width: number, height: number, color: NvColor, from_queue?: boolean): void;
+    fillRect(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: NvColor,
+        from_queue?: boolean,
+    ): void;
     copyImage(
         old_x: number,
         old_y: number,
@@ -38,8 +45,20 @@ export default class Display {
         from_queue?: boolean,
     ): void;
     imageRect(x: number, y: number, mime: string, arr: number[]): void;
-    startTile(x: number, y: number, width: number, height: number, color: NvColor): void;
-    subTile(x: number, y: number, width: number, height: number, color: NvColor): void;
+    startTile(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: NvColor,
+    ): void;
+    subTile(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: NvColor,
+    ): void;
     finishTile(): void;
     blitImage(
         x: number,
@@ -69,11 +88,22 @@ export default class Display {
         from_queue?: boolean,
     ): void;
     drawImage(img: HTMLImageElement, x: number, y: number): void;
-    changeCursor(pixels: number[], mask: number[], hotx: number, hoty: number, width: number, height: number): void;
+    changeCursor(
+        pixels: number[],
+        mask: number[],
+        hotx: number,
+        hoty: number,
+        width: number,
+        height: number,
+    ): void;
     defaultCursor(): void;
     disableLocalCursor(): void;
     clippingDisplay(): boolean;
-    autoscale(containerWidth: number, containerHeight: number, downscaleOnly: boolean): void;
+    autoscale(
+        containerWidth: number,
+        containerHeight: number,
+        downscaleOnly: boolean,
+    ): void;
 }
 
 export interface NvDisplayDefaults {

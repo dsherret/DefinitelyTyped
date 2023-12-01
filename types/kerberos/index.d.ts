@@ -67,7 +67,10 @@ export class KerberosClient {
      * @return returns Promise if no callback passed
      */
     step(challenge: string): Promise<string>;
-    step(challenge: string, callback: (err: string, clientResponse: string) => any): void;
+    step(
+        challenge: string,
+        callback: (err: string, clientResponse: string) => any,
+    ): void;
 
     /**
      * Perform the client side kerberos wrap step.
@@ -78,8 +81,15 @@ export class KerberosClient {
      * @return returns Promise if no callback passed
      */
     wrap(challenge: string, options?: WrapOptions): Promise<string>;
-    wrap(challenge: string, callback: (err: string, challengeResponse: string) => any): void;
-    wrap(challenge: string, options: WrapOptions, callback: (err: string, challengeResponse: string) => any): void;
+    wrap(
+        challenge: string,
+        callback: (err: string, challengeResponse: string) => any,
+    ): void;
+    wrap(
+        challenge: string,
+        options: WrapOptions,
+        callback: (err: string, challengeResponse: string) => any,
+    ): void;
 
     /**
      * Perform the client side kerberos unwrap step
@@ -89,7 +99,10 @@ export class KerberosClient {
      * @return returns Promise if no callback passed
      */
     unwrap(challenge: string): Promise<string>;
-    unwrap(challenge: string, callback: (err: string, challengeResponse: string) => any): void;
+    unwrap(
+        challenge: string,
+        callback: (err: string, challengeResponse: string) => any,
+    ): void;
 }
 
 export class KerberosServer {
@@ -118,7 +131,10 @@ export class KerberosServer {
      * @return returns Promise if no callback passed
      */
     step(challenge: string): Promise<string>;
-    step(challenge: string, callback: (err: string, serverResponse: string) => any): void;
+    step(
+        challenge: string,
+        callback: (err: string, serverResponse: string) => any,
+    ): void;
 }
 
 /**
@@ -145,8 +161,18 @@ export class KerberosServer {
  * @param callback
  * @return returns Promise if no callback passed
  */
-export function checkPassword(name: string, password: string, service: string, defaultRealm?: string): Promise<void>;
-export function checkPassword(name: string, password: string, service: string, callback: (err: string) => any): void;
+export function checkPassword(
+    name: string,
+    password: string,
+    service: string,
+    defaultRealm?: string,
+): Promise<void>;
+export function checkPassword(
+    name: string,
+    password: string,
+    service: string,
+    callback: (err: string) => any,
+): void;
 export function checkPassword(
     name: string,
     password: string,
@@ -165,7 +191,10 @@ export function checkPassword(
  * @param callback
  * @return returns Promise if no callback passed
  */
-export function principalDetails(service: string, hostname: string): Promise<string>;
+export function principalDetails(
+    service: string,
+    hostname: string,
+): Promise<string>;
 export function principalDetails(
     service: string,
     hostname: string,
@@ -180,8 +209,14 @@ export function principalDetails(
  * @param callback
  * @return returns Promise if no callback passed
  */
-export function initializeClient(service: string, options?: InitializeClientOptions): Promise<KerberosClient>;
-export function initializeClient(service: string, callback: (err: string, client: KerberosClient) => any): void;
+export function initializeClient(
+    service: string,
+    options?: InitializeClientOptions,
+): Promise<KerberosClient>;
+export function initializeClient(
+    service: string,
+    callback: (err: string, client: KerberosClient) => any,
+): void;
 export function initializeClient(
     service: string,
     options: InitializeClientOptions,
@@ -196,4 +231,7 @@ export function initializeClient(
  * @return returns Promise if no callback passed
  */
 export function initializeServer(service: string): Promise<KerberosServer>;
-export function initializeServer(service: string, callback: (err: string, server: KerberosServer) => any): void;
+export function initializeServer(
+    service: string,
+    callback: (err: string, server: KerberosServer) => any,
+): void;

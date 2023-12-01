@@ -41,7 +41,10 @@ export class TextBuffer {
     readonly destroyed: boolean;
 
     /** Create a new buffer backed by the given file path. */
-    static load(filePath: string | TextBufferFileBackend, params?: BufferLoadOptions): Promise<TextBuffer>;
+    static load(
+        filePath: string | TextBufferFileBackend,
+        params?: BufferLoadOptions,
+    ): Promise<TextBuffer>;
 
     /**
      *  Create a new buffer backed by the given file path. For better performance,
@@ -69,7 +72,10 @@ export class TextBuffer {
     });
 
     /** Returns a plain javascript object representation of the TextBuffer. */
-    serialize(options?: { markerLayers?: boolean | undefined; history?: boolean | undefined }): object;
+    serialize(options?: {
+        markerLayers?: boolean | undefined;
+        history?: boolean | undefined;
+    }): object;
 
     /** Returns the unique identifier for this buffer. */
     getId(): string;
@@ -91,13 +97,17 @@ export class TextBuffer {
      *  Invoke the given callback synchronously when a transaction finishes with
      *  a list of all the changes in the transaction.
      */
-    onDidChangeText(callback: (event: BufferStoppedChangingEvent) => void): Disposable;
+    onDidChangeText(
+        callback: (event: BufferStoppedChangingEvent) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback asynchronously following one or more changes after
      *  ::getStoppedChangingDelay milliseconds elapse without an additional change.
      */
-    onDidStopChanging(callback: (event: BufferStoppedChangingEvent) => void): Disposable;
+    onDidStopChanging(
+        callback: (event: BufferStoppedChangingEvent) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback when the in-memory contents of the buffer become
@@ -151,7 +161,9 @@ export class TextBuffer {
     onDidDestroy(callback: () => void): Disposable;
 
     /** Invoke the given callback when there is an error in watching the file. */
-    onWillThrowWatchError(callback: (errorObject: HandleableErrorEvent) => void): Disposable;
+    onWillThrowWatchError(
+        callback: (errorObject: HandleableErrorEvent) => void,
+    ): Disposable;
 
     /**
      *  Get the number of milliseconds that will elapse without a change before
@@ -257,10 +269,18 @@ export class TextBuffer {
     setTextViaDiff(text: string): void;
 
     /** Set the text in the given range. */
-    setTextInRange(range: RangeCompatible, text: string, options?: TextEditOptions): Range;
+    setTextInRange(
+        range: RangeCompatible,
+        text: string,
+        options?: TextEditOptions,
+    ): Range;
 
     /** Insert text at the given position. */
-    insert(position: PointCompatible, text: string, options?: TextEditOptions): Range;
+    insert(
+        position: PointCompatible,
+        text: string,
+        options?: TextEditOptions,
+    ): Range;
 
     /** Append text to the end of the buffer. */
     append(text: string, options?: TextEditOptions): Range;
@@ -284,13 +304,11 @@ export class TextBuffer {
 
     // Markers
     /** Create a layer to contain a set of related markers. */
-    addMarkerLayer(
-        options?: {
-            maintainHistory?: boolean | undefined;
-            persistent?: boolean | undefined;
-            role?: string | undefined;
-        },
-    ): MarkerLayer;
+    addMarkerLayer(options?: {
+        maintainHistory?: boolean | undefined;
+        persistent?: boolean | undefined;
+        role?: string | undefined;
+    }): MarkerLayer;
 
     /**
      *  Get a MarkerLayer by id.
@@ -306,7 +324,13 @@ export class TextBuffer {
         range: RangeCompatible,
         properties?: {
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): Marker;
@@ -315,7 +339,13 @@ export class TextBuffer {
     markPosition(
         position: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): Marker;
@@ -347,7 +377,11 @@ export class TextBuffer {
 
     /** Batch multiple operations as a single undo/redo step. */
     transact<T>(
-        optionsOrInterval: number | ({ groupingInterval?: number | undefined } & HistoryTransactionOptions),
+        optionsOrInterval:
+            | number
+            | ({
+                  groupingInterval?: number | undefined;
+              } & HistoryTransactionOptions),
         fn: () => T,
     ): T;
     /** Batch multiple operations as a single undo/redo step. */
@@ -374,14 +408,20 @@ export class TextBuffer {
      *  Revert the buffer to the state it was in when the given checkpoint was created.
      *  @return A boolean indicating whether the operation succeeded.
      */
-    revertToCheckpoint(checkpoint: number, options?: HistoryTraversalOptions): boolean;
+    revertToCheckpoint(
+        checkpoint: number,
+        options?: HistoryTraversalOptions,
+    ): boolean;
 
     /**
      *  Group all changes since the given checkpoint into a single transaction for
      *  purposes of undo/redo.
      *  @return A boolean indicating whether the operation succeeded.
      */
-    groupChangesSinceCheckpoint(checkpoint: number, options?: HistoryTransactionOptions): boolean;
+    groupChangesSinceCheckpoint(
+        checkpoint: number,
+        options?: HistoryTransactionOptions,
+    ): boolean;
 
     /**
      *  Group the last two text changes for purposes of undo/redo.
@@ -397,9 +437,7 @@ export class TextBuffer {
      *  If the given checkpoint is no longer present in the undo history, this method
      *  will return an empty Array.
      */
-    getChangesSinceCheckpoint(
-        checkpoint: number,
-    ): Array<{
+    getChangesSinceCheckpoint(checkpoint: number): Array<{
         /** A Point representing where the change started. */
         start: Point;
 
@@ -423,13 +461,20 @@ export class TextBuffer {
      *  Scan regular expression matches in the entire buffer, calling the given
      *  iterator function on each match.
      */
-    scan(regex: RegExp, options: ScanContextOptions, iterator: (params: ContextualBufferScanResult) => void): void;
+    scan(
+        regex: RegExp,
+        options: ScanContextOptions,
+        iterator: (params: ContextualBufferScanResult) => void,
+    ): void;
 
     /**
      *  Scan regular expression matches in the entire buffer in reverse order,
      *  calling the given iterator function on each match.
      */
-    backwardsScan(regex: RegExp, iterator: (params: BufferScanResult) => void): void;
+    backwardsScan(
+        regex: RegExp,
+        iterator: (params: BufferScanResult) => void,
+    ): void;
     /**
      *  Scan regular expression matches in the entire buffer in reverse order,
      *  calling the given iterator function on each match.
@@ -444,7 +489,11 @@ export class TextBuffer {
      *  Scan regular expression matches in a given range , calling the given
      *  iterator function on each match.
      */
-    scanInRange(regex: RegExp, range: RangeCompatible, iterator: (params: BufferScanResult) => void): void;
+    scanInRange(
+        regex: RegExp,
+        range: RangeCompatible,
+        iterator: (params: BufferScanResult) => void,
+    ): void;
     /**
      *  Scan regular expression matches in a given range , calling the given
      *  iterator function on each match.
@@ -460,7 +509,11 @@ export class TextBuffer {
      *  Scan regular expression matches in a given range in reverse order,
      *  calling the given iterator function on each match.
      */
-    backwardsScanInRange(regex: RegExp, range: RangeCompatible, iterator: (params: BufferScanResult) => void): void;
+    backwardsScanInRange(
+        regex: RegExp,
+        range: RangeCompatible,
+        iterator: (params: BufferScanResult) => void,
+    ): void;
     /**
      *  Scan regular expression matches in a given range in reverse order,
      *  calling the given iterator function on each match.

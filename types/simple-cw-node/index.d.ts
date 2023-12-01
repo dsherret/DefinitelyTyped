@@ -21,18 +21,37 @@ declare namespace ChatWork {
         init(options: ChatWorkInitOptions): void;
 
         // http://developer.chatwork.com/ja/endpoint_me.html
-        get(api: "me", callback: (err: Error, res: superagent.Response) => void): void;
+        get(
+            api: "me",
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         // http://developer.chatwork.com/ja/endpoint_my.html
-        get(api: "my/status", callback: (err: Error, res: superagent.Response) => void): void;
-        get(api: "my/tasks", callback: (err: Error, res: superagent.Response) => void): void;
+        get(
+            api: "my/status",
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        get(
+            api: "my/tasks",
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         // http://developer.chatwork.com/ja/endpoint_contacts.html
-        get(api: "contacts", callback: (err: Error, res: superagent.Response) => void): void;
+        get(
+            api: "contacts",
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         // http://developer.chatwork.com/ja/endpoint_rooms.html
-        get(api: "rooms", callback: (err: Error, res: superagent.Response) => void): void;
-        post(api: "rooms", args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        get(
+            api: "rooms",
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        post(
+            api: "rooms",
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         // can't create specialized parameter
         // specialized parameter required compile-time constant string literal
@@ -53,24 +72,61 @@ declare namespace ChatWork {
         // General functions
 
         api(method: string, api: string): any; // return same type as _.Deferred()
-        api(method: string, api: string, callback: (err: Error, res: superagent.Response) => void): void;
-        api(method: string, api: string, args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        api(
+            method: string,
+            api: string,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        api(
+            method: string,
+            api: string,
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         get(api: string): any; // return same type as _.Deferred()
-        get(api: string, callback: (err: Error, res: superagent.Response) => void): void;
-        get(api: string, args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        get(
+            api: string,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        get(
+            api: string,
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         post(api: string): any; // return same type as _.Deferred()
-        post(api: string, callback: (err: Error, res: superagent.Response) => void): void;
-        post(api: string, args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        post(
+            api: string,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        post(
+            api: string,
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         put(api: string): any; // return same type as _.Deferred()
-        put(api: string, callback: (err: Error, res: superagent.Response) => void): void;
-        put(api: string, args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        put(
+            api: string,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        put(
+            api: string,
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
 
         del(api: string): any; // return same type as _.Deferred()
-        del(api: string, callback: (err: Error, res: superagent.Response) => void): void;
-        del(api: string, args: any, callback: (err: Error, res: superagent.Response) => void): void;
+        del(
+            api: string,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
+        del(
+            api: string,
+            args: any,
+            callback: (err: Error, res: superagent.Response) => void,
+        ): void;
     }
 }
 

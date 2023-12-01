@@ -24,7 +24,11 @@ function pseudoParse(): Set<number> {
     return new Set([1]);
 }
 
-const url4 = new URL("https://github.com/foo/bar?baz=true", undefined, pseudoParse);
+const url4 = new URL(
+    "https://github.com/foo/bar?baz=true",
+    undefined,
+    pseudoParse,
+);
 url4.hash;
 url4.hostname;
 url4.query.has(3);

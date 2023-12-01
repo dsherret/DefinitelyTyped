@@ -140,7 +140,9 @@ declare namespace dymo.label.framework {
      * @param params A JavaScript object with the following properties
      *   (not all properties must be defined; if a property is not defined, a default value is used)
      */
-    function createLabelRenderParamsXml(params: CreateLabelRenderParamsXmlParams): string;
+    function createLabelRenderParamsXml(
+        params: CreateLabelRenderParamsXmlParams,
+    ): string;
 
     interface CreateLabelWriterPrintParamsXmlParams {
         /** The number of copies to print. */
@@ -163,7 +165,9 @@ declare namespace dymo.label.framework {
      * @param params A JavaScript object with the following properties
      *   (not all properties must be defined; if a property is not defined, a default value is used)
      */
-    function createLabelWriterPrintParamsXml(params: CreateLabelWriterPrintParamsXmlParams): string;
+    function createLabelWriterPrintParamsXml(
+        params: CreateLabelWriterPrintParamsXmlParams,
+    ): string;
 
     interface CreateTapePrintParamsXmlParams {
         /** The number of copies to print. */
@@ -185,7 +189,9 @@ declare namespace dymo.label.framework {
      * @param params A JavaScript object with the following properties
      *   (not all properties must be defined; if a property is not defined, a default value is used)
      */
-    function createTapePrintParamsXml(params: CreateTapePrintParamsXmlParams): string;
+    function createTapePrintParamsXml(
+        params: CreateTapePrintParamsXmlParams,
+    ): string;
 
     interface PrinterInfo {
         /** Indicates whether the Auto-Cut feature is supported by the printer or not. Note: The property is only defined if printerType is "TapePrinter". */
@@ -242,7 +248,9 @@ declare namespace dymo.label.framework {
          *
          * @param replyCallback a function called when the status is available
          */
-        getStatus(replyCallback: (printJobStatusInfo: PrintJobStatusInfo) => any): void;
+        getStatus(
+            replyCallback: (printJobStatusInfo: PrintJobStatusInfo) => any,
+        ): void;
     }
 
     /** Print Job Status Info */
@@ -315,7 +323,11 @@ declare namespace dymo.label.framework {
          *   data, such as multiple addresses. Use the dymo.label.framework.LabelSetBuilder class to create a LabelSet
          *   or construct XML manually according to [LabelSet.xsd]{@link http://labelwriter.com/software/dls/sdk/LabelSet.xsd}.
          */
-        print(printerName: string, printParamsXml: string, labelSetXml: string): void;
+        print(
+            printerName: string,
+            printParamsXml: string,
+            labelSetXml: string,
+        ): void;
 
         /**
          * Prints a label and runs status checking in a loop
@@ -341,7 +353,10 @@ declare namespace dymo.label.framework {
             printerName: string,
             printParamsXml: string,
             labelSetXml: string,
-            statusCallback: (printJob: PrintJob, printJobStatusInfo: PrintJobStatusInfo) => boolean,
+            statusCallback: (
+                printJob: PrintJob,
+                printJobStatusInfo: PrintJobStatusInfo,
+            ) => boolean,
             pollInterval: number,
         ): PrintJob;
 
@@ -368,7 +383,10 @@ declare namespace dymo.label.framework {
          *
          * @returns self
          */
-        setAddressBarcodePosition(addressIndex: number, barcodePosition: AddressBarcodePosition): ILabel;
+        setAddressBarcodePosition(
+            addressIndex: number,
+            barcodePosition: AddressBarcodePosition,
+        ): ILabel;
 
         /**
          * Sets the text content of an Address object.
@@ -412,7 +430,10 @@ declare namespace dymo.label.framework {
          *
          * @returns self
          */
-        setBase64Image(objectName: string, base64Image: string): ILabelSetRecord;
+        setBase64Image(
+            objectName: string,
+            base64Image: string,
+        ): ILabelSetRecord;
 
         /** Adds data to the record specified as plain text.
          *
@@ -476,7 +497,12 @@ declare namespace dymo.label.framework {
      *   create a LabelSet, or construct XML manualy according to
      *   [LabelSet.xsd]{@link http://labelwriter.com/software/dls/sdk/LabelSet.xsd}.
      */
-    function printLabel(printerName: string, printParamsXml: string, labelXml: string, labelSetXml: string): void;
+    function printLabel(
+        printerName: string,
+        printParamsXml: string,
+        labelXml: string,
+        labelSetXml: string,
+    ): void;
 
     /**
      * Prints a label and returns a print job object
@@ -488,7 +514,12 @@ declare namespace dymo.label.framework {
      *   LabelSet to print. LabelSet is used to print multiple labels with same layout but different data, e.g. multiple addresses.
      *   Use LabelSetBuilder to create a LabelSet or construct xml manualy according to [LabelSet.xsd]{@link http://labelwriter.com/software/dls/sdk/LabelSet.xsd}.
      */
-    function printLabel2(printerName: string, printParamsXml: string, labelXml: string, labelSetXml: string): PrintJob;
+    function printLabel2(
+        printerName: string,
+        printParamsXml: string,
+        labelXml: string,
+        labelSetXml: string,
+    ): PrintJob;
 
     /**
      * Prints a label and runs status checking in a loop
@@ -511,7 +542,10 @@ declare namespace dymo.label.framework {
         printParamsXml: string,
         labelXml: string,
         labelSetXml: string,
-        statusCallback: (printJob: PrintJob, printJobStatusInfo: PrintJobStatusInfo) => boolean,
+        statusCallback: (
+            printJob: PrintJob,
+            printJobStatusInfo: PrintJobStatusInfo,
+        ) => boolean,
         pollInterval: number,
     ): PrintJob;
 
@@ -531,7 +565,11 @@ declare namespace dymo.label.framework {
      *
      * @returns A base64-encoded PNG stream of the label image.
      */
-    function renderLabel(labelXml: string, renderParamsXml: string, printerName: string): string;
+    function renderLabel(
+        labelXml: string,
+        renderParamsXml: string,
+        printerName: string,
+    ): string;
 
     /**
      * Undocumented

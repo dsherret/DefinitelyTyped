@@ -67,14 +67,20 @@ const dir_encty = new TLV("61", adf_nameEx1.getTLV() + app_labelEx1.getTLV());
 const issuer_discretionary_data = new TLV("BF0C", dir_encty.getTLV());
 
 // step 4 build FCI Proprietary Template 'A5'
-const fci_proprietary_template = new TLV("A5", issuer_discretionary_data.getTLV());
+const fci_proprietary_template = new TLV(
+    "A5",
+    issuer_discretionary_data.getTLV(),
+);
 
 // step 5 build FCI template '6F'
-const fci_template = new TLV("6F", df_name.getTLV() + fci_proprietary_template.getTLV());
+const fci_template = new TLV(
+    "6F",
+    df_name.getTLV() + fci_proprietary_template.getTLV(),
+);
 
 assert(
-    fci_template.getTLV()
-        === "6F2C840E325041592E5359532E4444463031A51ABF0C1761154F07A0000000031010500A56495341435245444954",
+    fci_template.getTLV() ===
+        "6F2C840E325041592E5359532E4444463031A51ABF0C1761154F07A0000000031010500A56495341435245444954",
 );
 
 // Example for build PSE record
@@ -105,12 +111,15 @@ const app_label = new TLV("50", "4D415354455243415244"); // MASTERCARD
 const app_pref_name = new TLV("9F12", "43495449204D4153544552"); // CITI MASTER
 
 // step 2 build directory entry '61'
-const dir_entry = new TLV("61", `${adf_name}${app_priority}${app_label}${app_pref_name}`);
+const dir_entry = new TLV(
+    "61",
+    `${adf_name}${app_priority}${app_label}${app_pref_name}`,
+);
 
 // step 3 build read record response message template
 const record_template = new TLV("70", dir_entry.getTLV());
 
 assert(
-    record_template.toString()
-        === "702861264F07A0000000041010870101500A4D4153544552434152449F120B43495449204D4153544552",
+    record_template.toString() ===
+        "702861264F07A0000000041010870101500A4D4153544552434152449F120B43495449204D4153544552",
 );

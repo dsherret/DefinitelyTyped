@@ -33,10 +33,22 @@ class TestAll extends React.Component {
 
         return (
             <div>
-                <Collapse isOpened initialStyle={initialStyle} theme={theme} onRest={onRest} onWork={onWork}>
+                <Collapse
+                    isOpened
+                    initialStyle={initialStyle}
+                    theme={theme}
+                    onRest={onRest}
+                    onWork={onWork}
+                >
                     <div />
                 </Collapse>
-                <UnmountClosed isOpened initialStyle={initialStyle} theme={theme} onRest={onRest} onWork={onWork}>
+                <UnmountClosed
+                    isOpened
+                    initialStyle={initialStyle}
+                    theme={theme}
+                    onRest={onRest}
+                    onWork={onWork}
+                >
                     <div />
                 </UnmountClosed>
             </div>

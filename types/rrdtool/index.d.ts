@@ -8,17 +8,27 @@ export interface RrdtoolDataPoint<D extends RrdtoolData> {
     values: D;
 }
 
-export type Duration = number | `${number}${"s" | "m" | "h" | "d" | "w" | "M" | "y"}`;
+export type Duration =
+    | number
+    | `${number}${"s" | "m" | "h" | "d" | "w" | "M" | "y"}`;
 
-type DataSourceType_ = "GAUGE" | "COUNTER" | "DCOUNTER" | "DERIVE" | "DDERIVE" | "ABSOLUTE";
+type DataSourceType_ =
+    | "GAUGE"
+    | "COUNTER"
+    | "DCOUNTER"
+    | "DERIVE"
+    | "DDERIVE"
+    | "ABSOLUTE";
 export type DataSourceType = DataSourceType_ | "COMPUTE";
 
 // DS:ds-name:{GAUGE | COUNTER | DERIVE | DCOUNTER | DDERIVE | ABSOLUTE}:heartbeat:min:max
-type DataSource_<D extends RrdtoolData> = `DS:${keyof D & string}:${DataSourceType_}:${Duration}:${number}:${number}`;
+type DataSource_<D extends RrdtoolData> = `DS:${keyof D &
+    string}:${DataSourceType_}:${Duration}:${number}:${number}`;
 
 // XXX: Enhance rpn-expression type
 // DS:ds-name:COMPUTE:rpn-expression
-type DataSourceCompute<D extends RrdtoolData> = `DS:${keyof D & string}:COMPUTE:${string}`;
+type DataSourceCompute<D extends RrdtoolData> = `DS:${keyof D &
+    string}:COMPUTE:${string}`;
 
 /**
  * https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
@@ -34,28 +44,34 @@ type DataSourceCompute<D extends RrdtoolData> = `DS:${keyof D & string}:COMPUTE:
  *  - `max`: number (data range)
  *  - `rpn-expression`: string
  */
-export type DataSource<D extends RrdtoolData = any> = DataSource_<D> | DataSourceCompute<D>;
+export type DataSource<D extends RrdtoolData = any> =
+    | DataSource_<D>
+    | DataSourceCompute<D>;
 
 type ConsolidationFunction = "AVERAGE" | "MIN" | "MAX" | "LAST";
 
 // RRA:{AVERAGE | MIN | MAX | LAST}:xff:steps:rows
-type RoundRobinArchive_ = `RRA:${ConsolidationFunction}:${number}:${Duration}:${Duration}`;
+type RoundRobinArchive_ =
+    `RRA:${ConsolidationFunction}:${number}:${Duration}:${Duration}`;
 
 // RRA:{HWPREDICT | MHWPREDICT}:rows:alpha:beta:seasonal period[:rra-num]
-type RoundRobinArchiveHWPredict = `RRA:${"HWPREDICT" | "MHWPREDICT"}:${Duration}:${number}:${number}:${Duration}${
+type RoundRobinArchiveHWPredict = `RRA:${
+    | "HWPREDICT"
+    | "MHWPREDICT"}:${Duration}:${number}:${number}:${Duration}${
     | ""
     | `:${number}`}`;
 
 // RRA:{SEASONAL | DEVSEASONAL}:seasonal period:gamma:rra-num[:smoothing-window]
-type RoundRobinArchiveSeasonal = `RRA:${"SEASONAL" | "DEVSEASONAL"}:${Duration}:${number}:${number}${
-    | ""
-    | `:${number}`}`;
+type RoundRobinArchiveSeasonal = `RRA:${
+    | "SEASONAL"
+    | "DEVSEASONAL"}:${Duration}:${number}:${number}${"" | `:${number}`}`;
 
 // RRA:DEVPREDICT:rows:rra-num
 type RoundRobinArchiveDevPredict = `RRA:DEVPREDICT:${Duration}:${number}`;
 
 // RRA:FAILURES:rows:threshold:window length:rra-num
-type RoundRobinArchiveFailures = `RRA:FAILURES:${Duration}:${number}:${number}:${number}`;
+type RoundRobinArchiveFailures =
+    `RRA:FAILURES:${Duration}:${number}:${number}:${number}`;
 
 /**
  * https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
@@ -89,23 +105,43 @@ export type RoundRobinArchive =
 
 // XXX: Not really correct, this would be better but does not work correctly (?):
 // (error: Error, data: undefined) => void | ((error: null, data: Array<DataPoint<A>>) => void)
-type FetchCallback<D extends RrdtoolData> = (error: Error, data: Array<RrdtoolDataPoint<D>>) => void;
+type FetchCallback<D extends RrdtoolData> = (
+    error: Error,
+    data: Array<RrdtoolDataPoint<D>>,
+) => void;
 
 export interface RrdtoolDatabase<D extends RrdtoolData = any> {
     /**
      * Insert data into the database.
      */
-    update(ts: Timestamp, values: Partial<D>, cb?: (error: Error) => void): void;
+    update(
+        ts: Timestamp,
+        values: Partial<D>,
+        cb?: (error: Error) => void,
+    ): void;
     update(values: D, cb?: (error: Error) => void): void;
 
     /**
      * Fetch a span of data from the database.
      */
-    fetch(cf: ConsolidationFunction, start: Timestamp, stop: Timestamp, res: number, cb: FetchCallback<D>): void;
-    fetch(cf: ConsolidationFunction, start: Timestamp, stop: Timestamp, cb: FetchCallback<D>): void;
+    fetch(
+        cf: ConsolidationFunction,
+        start: Timestamp,
+        stop: Timestamp,
+        res: number,
+        cb: FetchCallback<D>,
+    ): void;
+    fetch(
+        cf: ConsolidationFunction,
+        start: Timestamp,
+        stop: Timestamp,
+        cb: FetchCallback<D>,
+    ): void;
 }
 
-export type RrdtoolArgument<D extends RrdtoolData> = DataSource<D> | RoundRobinArchive;
+export type RrdtoolArgument<D extends RrdtoolData> =
+    | DataSource<D>
+    | RoundRobinArchive;
 
 /**
  * Creates a new database.

@@ -1,1 +1,3 @@
-export function countSuggestions(suggestions: Record<string, { results: any[] }>): number;
+export function countSuggestions(
+    suggestions: Record<string, { results: any[] }>,
+): number;

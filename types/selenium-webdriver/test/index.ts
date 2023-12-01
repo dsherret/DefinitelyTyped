@@ -5,10 +5,17 @@ import * as edge from "selenium-webdriver/edge";
 import * as firefox from "selenium-webdriver/firefox";
 import * as http from "selenium-webdriver/http";
 import * as ie from "selenium-webdriver/ie";
-import { PageLoadStrategy, Platform, UserPromptHandler } from "selenium-webdriver/lib/capabilities";
+import {
+    PageLoadStrategy,
+    Platform,
+    UserPromptHandler,
+} from "selenium-webdriver/lib/capabilities";
 import { Command } from "selenium-webdriver/lib/command";
 import Symbols from "selenium-webdriver/lib/symbols";
-import { ShadowRoot, ShadowRootPromise } from "selenium-webdriver/lib/webdriver";
+import {
+    ShadowRoot,
+    ShadowRootPromise,
+} from "selenium-webdriver/lib/webdriver";
 import * as safari from "selenium-webdriver/safari";
 
 function TestBuilder() {
@@ -47,8 +54,13 @@ function TestBuilder() {
 }
 
 function TestTouchSequence() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
-    let element: webdriver.WebElement = new webdriver.WebElement(driver, "elementId");
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
+    let element: webdriver.WebElement = new webdriver.WebElement(
+        driver,
+        "elementId",
+    );
 
     let sequence: webdriver.TouchSequence = new webdriver.TouchSequence(driver);
 
@@ -67,7 +79,9 @@ function TestTouchSequence() {
 }
 
 function TestAlert() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let alert: webdriver.Alert = driver.switchTo().alert();
 
@@ -91,16 +105,25 @@ function TestCapabilities() {
     let capabilities: webdriver.Capabilities = new webdriver.Capabilities();
     capabilities = new webdriver.Capabilities(webdriver.Capabilities.chrome());
     let objCapabilities: any = {};
-    objCapabilities[webdriver.Capability.BROWSER_NAME] = webdriver.Browser.SAFARI;
+    objCapabilities[webdriver.Capability.BROWSER_NAME] =
+        webdriver.Browser.SAFARI;
     capabilities = new webdriver.Capabilities(objCapabilities);
 
-    let anything: any = capabilities.get(webdriver.Capability.ACCEPT_INSECURE_TLS_CERTS);
-    let check: boolean = capabilities.has(webdriver.Capability.ACCEPT_INSECURE_TLS_CERTS);
+    let anything: any = capabilities.get(
+        webdriver.Capability.ACCEPT_INSECURE_TLS_CERTS,
+    );
+    let check: boolean = capabilities.has(
+        webdriver.Capability.ACCEPT_INSECURE_TLS_CERTS,
+    );
     capabilities = capabilities.merge(capabilities);
     capabilities = capabilities.merge(objCapabilities);
-    capabilities = capabilities.set(webdriver.Capability.BROWSER_VERSION, { abc: "def" });
+    capabilities = capabilities.set(webdriver.Capability.BROWSER_VERSION, {
+        abc: "def",
+    });
     capabilities = capabilities.set(webdriver.Capability.BROWSER_VERSION, null);
-    capabilities = capabilities.setLoggingPrefs(new webdriver.logging.Preferences());
+    capabilities = capabilities.setLoggingPrefs(
+        new webdriver.logging.Preferences(),
+    );
     capabilities = capabilities.setLoggingPrefs({ key: "value" });
     capabilities = capabilities.setProxy({ proxyType: "Type" });
     capabilities = capabilities.setPageLoadStrategy(PageLoadStrategy.NORMAL);
@@ -231,7 +254,9 @@ function TestKey() {
 }
 
 function TestBy() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let locator: webdriver.By = new webdriver.By("class name", "class");
 
@@ -264,10 +289,14 @@ function TestBy() {
     let cssEscape = webdriver.escapeCss("css");
     let check = webdriver.checkedLocator(locatorHash);
     let fromTagName = webdriver.withTagName(webdriver.By.tagName("tag"));
-    let fromLocateWith = webdriver.locateWith(webdriver.By.tagName("tag"))
+    let fromLocateWith = webdriver
+        .locateWith(webdriver.By.tagName("tag"))
         .above(webdriver.By.tagName("tag"));
 
-    let relativeLocator: webdriver.RelativeBy = new webdriver.RelativeBy(locator, []);
+    let relativeLocator: webdriver.RelativeBy = new webdriver.RelativeBy(
+        locator,
+        [],
+    );
     relativeLocator = relativeLocator.above(By.tagName("tag"));
     relativeLocator = relativeLocator.below(By.id("id"));
     relativeLocator = relativeLocator.toLeftOf(By.className("class"));
@@ -280,20 +309,28 @@ function TestBy() {
 }
 
 function TestSession() {
-    let session: webdriver.Session = new webdriver.Session("ABC", webdriver.Capabilities.chrome());
+    let session: webdriver.Session = new webdriver.Session(
+        "ABC",
+        webdriver.Capabilities.chrome(),
+    );
     let capabilitiesObj: any = {};
-    capabilitiesObj[webdriver.Capability.BROWSER_NAME] = webdriver.Browser.CHROME;
+    capabilitiesObj[webdriver.Capability.BROWSER_NAME] =
+        webdriver.Browser.CHROME;
     capabilitiesObj[webdriver.Capability.PLATFORM_NAME] = Platform.LINUX;
     session = new webdriver.Session("ABC", capabilitiesObj);
 
     let capabilities: webdriver.Capabilities = session.getCapabilities();
-    let capability: any = session.getCapability(webdriver.Capability.BROWSER_NAME);
+    let capability: any = session.getCapability(
+        webdriver.Capability.BROWSER_NAME,
+    );
     let id: string = session.getId();
     let data: string = session.toJSON();
 }
 
 function TestWebDriverFileDetector() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let fileDetector: webdriver.FileDetector = new webdriver.FileDetector();
 
@@ -301,16 +338,22 @@ function TestWebDriverFileDetector() {
 }
 
 function TestWebDriverLogs() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let logs: webdriver.Logs = new webdriver.Logs(driver);
 
-    logs.get(webdriver.logging.Type.BROWSER).then((entries: webdriver.logging.Entry[]) => {});
+    logs.get(webdriver.logging.Type.BROWSER).then(
+        (entries: webdriver.logging.Entry[]) => {},
+    );
     logs.getAvailableLogTypes().then((types: string[]) => {});
 }
 
 function TestWebDriverNavigation() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let navigation: webdriver.Navigation = new webdriver.Navigation(driver);
 
@@ -321,7 +364,9 @@ function TestWebDriverNavigation() {
 }
 
 function TestWebDriverOptions() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let options: webdriver.Options = new webdriver.Options(driver);
     let promise: Promise<void>;
@@ -338,9 +383,32 @@ function TestWebDriverOptions() {
     promise = options.addCookie({ name, value, path });
     promise = options.addCookie({ name, value, path, domain });
     promise = options.addCookie({ name, value, path, domain, secure });
-    promise = options.addCookie({ name, value, path, domain, secure, httpOnly });
-    promise = options.addCookie({ name, value, path, domain, secure, httpOnly, expiry: 123 });
-    promise = options.addCookie({ name, value, path, domain, secure, httpOnly, expiry: Date.now() });
+    promise = options.addCookie({
+        name,
+        value,
+        path,
+        domain,
+        secure,
+        httpOnly,
+    });
+    promise = options.addCookie({
+        name,
+        value,
+        path,
+        domain,
+        secure,
+        httpOnly,
+        expiry: 123,
+    });
+    promise = options.addCookie({
+        name,
+        value,
+        path,
+        domain,
+        secure,
+        httpOnly,
+        expiry: Date.now(),
+    });
 
     promise = options.deleteAllCookies();
     promise = options.deleteCookie("name");
@@ -354,7 +422,9 @@ function TestWebDriverOptions() {
 }
 
 function TestWebDriverTargetLocator() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let locator: webdriver.TargetLocator = new webdriver.TargetLocator(driver);
     let promise: Promise<void>;
@@ -369,7 +439,9 @@ function TestWebDriverTargetLocator() {
 }
 
 function TestWebDriverWindow() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let window: webdriver.Window = new webdriver.Window(driver);
     let locationPromise: Promise<webdriver.ILocation>;
@@ -391,10 +463,16 @@ declare const booleanCondition: webdriver.Condition<boolean>;
 declare const webElementCondition: webdriver.WebElementCondition;
 
 async function TestWebDriver() {
-    let session: webdriver.Session = new webdriver.Session("ABC", webdriver.Capabilities.chrome());
+    let session: webdriver.Session = new webdriver.Session(
+        "ABC",
+        webdriver.Capabilities.chrome(),
+    );
     let httpClient: http.HttpClient = new http.HttpClient("http://someserver");
     let executor: http.Executor = new http.Executor(httpClient);
-    let driver: webdriver.WebDriver = new webdriver.WebDriver(session, executor);
+    let driver: webdriver.WebDriver = new webdriver.WebDriver(
+        session,
+        executor,
+    );
     driver = new webdriver.WebDriver(sessionPromise, executor);
     let cmdExecutor = driver.getExecutor();
 
@@ -405,7 +483,11 @@ async function TestWebDriver() {
     voidPromise = driver.close();
 
     // executeCommand
-    cmdExecutor.defineCommand("SEND_COMMAND", "POST", `/session/${session.getId()}/chromium/send_command`);
+    cmdExecutor.defineCommand(
+        "SEND_COMMAND",
+        "POST",
+        `/session/${session.getId()}/chromium/send_command`,
+    );
     const cmd = new Command("SEND_COMMAND")
         .setParameter("cmd", "Page.setDownloadBehavior")
         .setParameter("params", { behavior: "allow", downloadPath: "./" });
@@ -429,8 +511,12 @@ async function TestWebDriver() {
     element = driver.findElement(webdriver.By.js("function(){}"));
 
     // findElements
-    driver.findElements(webdriver.By.className("ABC")).then((elements: webdriver.WebElement[]) => {});
-    driver.findElements(webdriver.By.js("function(){}")).then((elements: webdriver.WebElement[]) => {});
+    driver
+        .findElements(webdriver.By.className("ABC"))
+        .then((elements: webdriver.WebElement[]) => {});
+    driver
+        .findElements(webdriver.By.js("function(){}"))
+        .then((elements: webdriver.WebElement[]) => {});
 
     voidPromise = driver.get("http://www.google.com");
     driver.getAllWindowHandles().then((handles: string[]) => {});
@@ -455,8 +541,12 @@ async function TestWebDriver() {
     booleanPromise = driver.wait(booleanPromise);
     booleanPromise = driver.wait(booleanCondition);
     booleanPromise = driver.wait((driver: webdriver.WebDriver) => true);
-    booleanPromise = driver.wait((driver: webdriver.WebDriver) => Promise.resolve(true));
-    booleanPromise = driver.wait((driver: webdriver.WebDriver) => Promise.resolve(true));
+    booleanPromise = driver.wait((driver: webdriver.WebDriver) =>
+        Promise.resolve(true),
+    );
+    booleanPromise = driver.wait((driver: webdriver.WebDriver) =>
+        Promise.resolve(true),
+    );
     booleanPromise = driver.wait(booleanPromise, 123);
     booleanPromise = driver.wait(booleanPromise, 123, "Message");
     booleanPromise = driver.wait(booleanPromise, 123, "Message", 10);
@@ -479,9 +569,16 @@ async function TestWebDriver() {
     await driver.onLogEvent(connection, (event: any) => {});
     await driver.onLogException(connection, (event: any) => {});
     await driver.logMutationEvents(connection, (event: any) => {});
-    let wsUrl: string = await driver.getWsUrl("TargetAddress", "target", await driver.getCapabilities());
+    let wsUrl: string = await driver.getWsUrl(
+        "TargetAddress",
+        "target",
+        await driver.getCapabilities(),
+    );
 
-    driver = webdriver.WebDriver.createSession(executor, webdriver.Capabilities.chrome());
+    driver = webdriver.WebDriver.createSession(
+        executor,
+        webdriver.Capabilities.chrome(),
+    );
 }
 
 declare const serializable: webdriver.Serializable<string>;
@@ -491,7 +588,9 @@ function TestSerializable() {
 }
 
 function TestWebElement() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let element: webdriver.WebElement;
 
@@ -506,7 +605,9 @@ function TestWebElement() {
 
     element = element.findElement(webdriver.By.id("ABC"));
     element = element.findElement({ id: "ABC" });
-    element.findElements({ className: "ABC" }).then((elements: webdriver.WebElement[]) => {});
+    element
+        .findElements({ className: "ABC" })
+        .then((elements: webdriver.WebElement[]) => {});
 
     stringPromise = element.getAttribute("class");
     stringPromise = element.getCssValue("display");
@@ -522,18 +623,30 @@ function TestWebElement() {
     voidPromise = element.sendKeys(1, 2, 3);
     voidPromise = element.sendKeys(webdriver.Key.BACK_SPACE);
     voidPromise = element.sendKeys(stringPromise, stringPromise, stringPromise);
-    voidPromise = element.sendKeys("A", 1, webdriver.Key.BACK_SPACE, stringPromise);
+    voidPromise = element.sendKeys(
+        "A",
+        1,
+        webdriver.Key.BACK_SPACE,
+        stringPromise,
+    );
     voidPromise = element.submit();
     element.getId().then((id: string) => {});
     element.serialize().then((id: webdriver.IWebElementId) => {});
 
-    booleanPromise = webdriver.WebElement.equals(element, new webdriver.WebElement(driver, "elementId"));
+    booleanPromise = webdriver.WebElement.equals(
+        element,
+        new webdriver.WebElement(driver, "elementId"),
+    );
 }
 
 function TestWebElementPromise() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
-    let elementPromise: webdriver.WebElementPromise = driver.findElement(webdriver.By.id("id"));
+    let elementPromise: webdriver.WebElementPromise = driver.findElement(
+        webdriver.By.id("id"),
+    );
 
     elementPromise.then();
     elementPromise.then((element: webdriver.WebElement) => {});
@@ -550,28 +663,34 @@ function TestWebElementPromise() {
 }
 
 function testCondition() {
-    const conditionString = new webdriver.Condition<string>("message", () => (Math.random() > 0.5 ? "foo" : null));
+    const conditionString = new webdriver.Condition<string>("message", () =>
+        Math.random() > 0.5 ? "foo" : null,
+    );
     const conditionStringPromise = new webdriver.Condition<string>(
         "message",
-        async () => Math.random() > 0.5 ? "foo" : null,
+        async () => (Math.random() > 0.5 ? "foo" : null),
     );
 }
 
 declare let stringPromise: Promise<string>;
 
 function TestUntilModule() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
-    let conditionB: webdriver.Condition<boolean> = new webdriver.Condition<boolean>(
-        "message",
-        (driver: webdriver.WebDriver) => true,
-    );
+    let conditionB: webdriver.Condition<boolean> =
+        new webdriver.Condition<boolean>(
+            "message",
+            (driver: webdriver.WebDriver) => true,
+        );
     let conditionBBase: webdriver.Condition<boolean> = conditionB;
     let conditionWebElement: webdriver.WebElementCondition;
     let conditionWebElements: webdriver.Condition<webdriver.WebElement[]>;
 
     conditionB = webdriver.until.ableToSwitchToFrame(5);
-    let conditionAlert: webdriver.Condition<webdriver.Alert> = webdriver.until.alertIsPresent();
+    let conditionAlert: webdriver.Condition<webdriver.Alert> =
+        webdriver.until.alertIsPresent();
     let el: webdriver.WebElement = driver.findElement(webdriver.By.id("id"));
     conditionB = webdriver.until.stalenessOf(el);
     conditionB = webdriver.until.titleContains("text");
@@ -591,11 +710,15 @@ function TestUntilModule() {
     conditionWebElement = webdriver.until.elementTextContains(el, "text");
     conditionWebElement = webdriver.until.elementTextIs(el, "text");
     conditionWebElement = webdriver.until.elementTextMatches(el, /text/);
-    conditionWebElements = webdriver.until.elementsLocated(webdriver.By.className("class"));
+    conditionWebElements = webdriver.until.elementsLocated(
+        webdriver.By.className("class"),
+    );
 }
 
 function TestShadowRoot() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
     let shadowRoot: ShadowRoot;
     let element: webdriver.WebElement;
@@ -603,16 +726,23 @@ function TestShadowRoot() {
 
     element = shadowRoot.findElement(webdriver.By.id("ABC"));
     element = shadowRoot.findElement({ id: "ABC" });
-    shadowRoot.findElements({ className: "ABC" }).then((elements: webdriver.WebElement[]) => {});
+    shadowRoot
+        .findElements({ className: "ABC" })
+        .then((elements: webdriver.WebElement[]) => {});
 
     shadowRoot.getId().then((id: string) => {});
     shadowRoot.serialize().then((id: webdriver.IWebElementId) => {});
 }
 
 function TestShadowRootPromise() {
-    let driver: webdriver.WebDriver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    let driver: webdriver.WebDriver = new webdriver.Builder()
+        .withCapabilities(webdriver.Capabilities.chrome())
+        .build();
 
-    let element: webdriver.WebElement = new webdriver.WebElement(driver, "elementId");
+    let element: webdriver.WebElement = new webdriver.WebElement(
+        driver,
+        "elementId",
+    );
     let shadowRootPromise: ShadowRootPromise = element.getShadowRoot();
 
     shadowRootPromise.then();

@@ -78,10 +78,10 @@ import Alpine, {
     // Alpine.setReactivityEngine
     // $ExpectType void
     Alpine.setReactivityEngine({
-        reactive: val => val,
-        effect: cb => 1,
+        reactive: (val) => val,
+        effect: (cb) => 1,
         release: (id: number) => undefined,
-        raw: val => val,
+        raw: (val) => val,
     });
 }
 
@@ -167,17 +167,18 @@ import Alpine, {
     // inspired by
     // https://github.com/alpinejs/alpine/blob/8d4f1266b25a550d9bd777b8aeb632a6857e89d1/packages/alpinejs/src/directives/x-bind.js
 
-    const startingWith = (s: string, r: string) =>
-    <T>(attribute: {
-        name: string;
-        value: T;
-    }): {
-        name: string;
-        value: T;
-    } => ({
-        name: attribute.name.replace(s, r),
-        value: attribute.value,
-    });
+    const startingWith =
+        (s: string, r: string) =>
+        <T>(attribute: {
+            name: string;
+            value: T;
+        }): {
+            name: string;
+            value: T;
+        } => ({
+            name: attribute.name.replace(s, r),
+            value: attribute.value,
+        });
     const into = (i: string) => i;
 
     // $ExpectType void
@@ -194,7 +195,7 @@ import Alpine, {
     // $resultType (resultCallback: (result: unknown) => void) => void
     const getThingToLog = Alpine.evaluateLater(el, expression);
 
-    getThingToLog(thingToLog => {
+    getThingToLog((thingToLog) => {
         console.log(thingToLog);
     });
 }
@@ -203,12 +204,17 @@ import Alpine, {
     // Alpine.setEvaluator
     // inspired by
     // https://github.com/alpinejs/alpine/blob/b46c41fa240cd8af2dcaa29fb60fb1db0389c95a/packages/alpinejs/src/index.js
-    const justExpressionEvaluator = <T>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
-        el: ElementWithXAttributes,
-        expression?: string | (() => T),
-    ) =>
-    (resultCallback: (result: T) => void) =>
-        resultCallback(typeof expression === "function" ? expression() : Alpine.evaluate<T>(el, expression ?? ""));
+    const justExpressionEvaluator =
+        <T>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
+            el: ElementWithXAttributes,
+            expression?: string | (() => T),
+        ) =>
+        (resultCallback: (result: T) => void) =>
+            resultCallback(
+                typeof expression === "function"
+                    ? expression()
+                    : Alpine.evaluate<T>(el, expression ?? ""),
+            );
 
     Alpine.setEvaluator(justExpressionEvaluator);
 }
@@ -248,7 +254,9 @@ import Alpine, {
     Alpine.interceptor;
 
     Alpine.data("user", () => ({
-        intercepted: Alpine.interceptor((initialValue: "foo") => initialValue)("foo"),
+        intercepted: Alpine.interceptor((initialValue: "foo") => initialValue)(
+            "foo",
+        ),
         init() {
             // $ExpectType "foo"
             this.intercepted;
@@ -338,24 +346,31 @@ import Alpine, {
     // https://alpinejs.dev/advanced/extending#method-signature
 
     // $ExpectType { before(directive: string): void; }
-    Alpine.directive("[name]", (el, { value, modifiers, expression }, { Alpine, effect, cleanup }) => {
-        // $ExpectType ElementWithXAttributes<HTMLElement>
-        el;
-        // $ExpectType string
-        value;
-        // $ExpectType string[]
-        modifiers;
-        // $ExpectType string
-        expression;
-        // $ExpectType Alpine
-        Alpine;
-        // $ExpectType <T>(callback: () => T) => ReactiveEffect<T>
-        effect;
-        // $ExpectType (callback: () => void) => void
-        cleanup;
-    });
+    Alpine.directive(
+        "[name]",
+        (el, { value, modifiers, expression }, { Alpine, effect, cleanup }) => {
+            // $ExpectType ElementWithXAttributes<HTMLElement>
+            el;
+            // $ExpectType string
+            value;
+            // $ExpectType string[]
+            modifiers;
+            // $ExpectType string
+            expression;
+            // $ExpectType Alpine
+            Alpine;
+            // $ExpectType <T>(callback: () => T) => ReactiveEffect<T>
+            effect;
+            // $ExpectType (callback: () => void) => void
+            cleanup;
+        },
+    );
 
-    ((el: Node, { value, modifiers, expression }: DirectiveData, { Alpine, effect, cleanup }: DirectiveUtilities) => {
+    (
+        el: Node,
+        { value, modifiers, expression }: DirectiveData,
+        { Alpine, effect, cleanup }: DirectiveUtilities,
+    ) => {
         // $ExpectType Node
         el;
         // $ExpectType string
@@ -370,7 +385,7 @@ import Alpine, {
         effect;
         // $ExpectType (callback: () => void) => void
         cleanup;
-    });
+    };
 }
 
 {
@@ -414,7 +429,9 @@ import Alpine, {
     const dataProviderContext = {};
 
     // $ExpectType unknown
-    const data = Alpine.evaluate(el, expression, { scope: dataProviderContext });
+    const data = Alpine.evaluate(el, expression, {
+        scope: dataProviderContext,
+    });
 }
 
 {

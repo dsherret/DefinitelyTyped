@@ -16,7 +16,10 @@ interface IOptions {
     /** Whether to sort in ascending order, default is true */
     asc?: boolean | undefined;
     /** Whether to use a custom sort function. */
-    customSortFn?: (files: gulpUtil.File[], comparator?: IComparatorFunction) => gulpUtil.File[];
+    customSortFn?: (
+        files: gulpUtil.File[],
+        comparator?: IComparatorFunction,
+    ) => gulpUtil.File[];
 }
 
 interface IComparatorFunction {
@@ -32,7 +35,9 @@ interface IComparatorFunction {
 
 /** Sort files in stream by path or any custom sort comparator */
 declare function gulpSort(): NodeJS.ReadWriteStream;
-declare function gulpSort(comparator: IComparatorFunction): NodeJS.ReadWriteStream;
+declare function gulpSort(
+    comparator: IComparatorFunction,
+): NodeJS.ReadWriteStream;
 declare function gulpSort(options: IOptions): NodeJS.ReadWriteStream;
 
 declare namespace gulpSort {}

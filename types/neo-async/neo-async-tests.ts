@@ -569,18 +569,26 @@ const dico: async.Dictionary<string> = { dico: "dico" };
 dico.dico;
 
 const IterableCollectionT: async.IterableCollection<string> = ["string"];
-const IterableCollectionDico: async.IterableCollection<string> = { 0: "string" };
+const IterableCollectionDico: async.IterableCollection<string> = {
+    0: "string",
+};
 
 const errorCallback: async.ErrorCallback = (err?: Error | null) => {};
 errorCallback();
 errorCallback(null);
 errorCallback(new Error("error"));
 
-const asyncBooleanResultCallback: async.AsyncBooleanResultCallback = (err?: Error | null, truthValue?: boolean) => {};
+const asyncBooleanResultCallback: async.AsyncBooleanResultCallback = (
+    err?: Error | null,
+    truthValue?: boolean,
+) => {};
 asyncBooleanResultCallback();
 asyncBooleanResultCallback(new Error("error"), true);
 
-const asyncResultCallback: async.AsyncResultCallback<string> = (err?: Error | null, result?: string) => {};
+const asyncResultCallback: async.AsyncResultCallback<string> = (
+    err?: Error | null,
+    result?: string,
+) => {};
 asyncResultCallback();
 asyncResultCallback(new Error("error"), "result");
 
@@ -595,13 +603,23 @@ const asyncResultObjectCallback: async.AsyncResultObjectCallback<string> = (
     err: Error | undefined,
     results: async.Dictionary<string | undefined>,
 ) => {};
-asyncResultObjectCallback(new Error("error"), { value: "string", otherValue: undefined });
+asyncResultObjectCallback(new Error("error"), {
+    value: "string",
+    otherValue: undefined,
+});
 
-const asyncFunction: async.AsyncFunction<string> = (cb: (err?: Error | null, result?: string) => void) => {};
+const asyncFunction: async.AsyncFunction<string> = (
+    cb: (err?: Error | null, result?: string) => void,
+) => {};
 
-const asyncFunctionEx: async.AsyncFunctionEx<string> = (cb: (err?: Error | null, ...results: string[]) => void) => {};
+const asyncFunctionEx: async.AsyncFunctionEx<string> = (
+    cb: (err?: Error | null, ...results: string[]) => void,
+) => {};
 
-const asyncIterator: async.AsyncIterator<string> = (item: string, cb: () => void) => {};
+const asyncIterator: async.AsyncIterator<string> = (
+    item: string,
+    cb: () => void,
+) => {};
 
 const asyncForEachOfIterator: async.AsyncForEachOfIterator<string> = (
     item: string,
@@ -609,7 +627,10 @@ const asyncForEachOfIterator: async.AsyncForEachOfIterator<string> = (
     cb: () => void,
 ) => {};
 
-const asyncResultIterator: async.AsyncResultIterator<string, number> = (item: string, cb: () => void) => {};
+const asyncResultIterator: async.AsyncResultIterator<string, number> = (
+    item: string,
+    cb: () => void,
+) => {};
 
 const asyncMemoIterator: async.AsyncMemoIterator<string, number> = (
     memo: number | undefined,
@@ -617,27 +638,47 @@ const asyncMemoIterator: async.AsyncMemoIterator<string, number> = (
     cb: () => void,
 ) => {};
 
-const asyncBooleanIterator: async.AsyncBooleanIterator<string> = (item: string, cb: () => void) => {};
-
-const asyncWorker: async.AsyncWorker<string> = (task: string, cb: () => void) => {};
-
-const asyncVoidFunction: async.AsyncVoidFunction<string> = (cb: () => void) => {};
-
-const asyncAutoTasks: async.AsyncAutoTasks<{ key: string }, string> = { key: ["key"] };
-
-const asyncAutoTask1: async.AsyncAutoTask<string, { key: string }, number> = ["key"];
-const asyncAutoTask2: async.AsyncAutoTask<string, { key: string }, number> = [() => {}];
-
-const asyncAutoTaskFunctionWithoutDependencies: async.AsyncAutoTaskFunctionWithoutDependencies<string> = (
-    cb: (err?: Error | null, result?: string) => void,
+const asyncBooleanIterator: async.AsyncBooleanIterator<string> = (
+    item: string,
+    cb: () => void,
 ) => {};
 
-const asyncAutoTaskFunction: async.AsyncAutoTaskFunction<string, { key: string }> = (
+const asyncWorker: async.AsyncWorker<string> = (
+    task: string,
+    cb: () => void,
+) => {};
+
+const asyncVoidFunction: async.AsyncVoidFunction<string> = (
+    cb: () => void,
+) => {};
+
+const asyncAutoTasks: async.AsyncAutoTasks<{ key: string }, string> = {
+    key: ["key"],
+};
+
+const asyncAutoTask1: async.AsyncAutoTask<string, { key: string }, number> = [
+    "key",
+];
+const asyncAutoTask2: async.AsyncAutoTask<string, { key: string }, number> = [
+    () => {},
+];
+
+const asyncAutoTaskFunctionWithoutDependencies: async.AsyncAutoTaskFunctionWithoutDependencies<
+    string
+> = (cb: (err?: Error | null, result?: string) => void) => {};
+
+const asyncAutoTaskFunction: async.AsyncAutoTaskFunction<
+    string,
+    { key: string }
+> = (
     result: { key: string },
     cb: (err?: Error | null, result?: string) => void,
 ) => {};
 
-const dataContainer: async.DataContainer<string> = { data: "data", priority: 2 };
+const dataContainer: async.DataContainer<string> = {
+    data: "data",
+    priority: 2,
+};
 
 const callbackContainer: async.CallbackContainer = { callback: () => {} };
 

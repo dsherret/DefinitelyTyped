@@ -34,8 +34,10 @@ var step2Options: TetherShepherd.IShepherdTourStepOptions = {
             text: "Done",
             action: tour.next,
             events: {
-                "mouseover": () => {
-                    console.log("I did not feel like making a function body that pretended to do something else");
+                mouseover: () => {
+                    console.log(
+                        "I did not feel like making a function body that pretended to do something else",
+                    );
                 },
             },
         },

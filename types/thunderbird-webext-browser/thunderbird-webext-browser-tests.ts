@@ -8,12 +8,12 @@ const port = browser.runtime.connect();
 // @ts-expect-error
 port.postMessage();
 port.postMessage({ test: "ok" });
-port.onDisconnect.addListener(p => {
+port.onDisconnect.addListener((p) => {
     if (p.error) {
         console.log(`Disconnected due to an error: ${p.error.message}`);
     }
 });
-port.onMessage.addListener(response => {
+port.onMessage.addListener((response) => {
     console.log("Received: " + response);
 });
 
@@ -34,12 +34,12 @@ messenger.contacts.create("a", "b", { c: null });
 messenger.contacts.create("e", { f: "g" });
 
 // tests from the Firefox version
-browser.proxy.onError.addListener(error => {
+browser.proxy.onError.addListener((error) => {
     console.error(`Proxy error: ${error.message}`);
 });
 
 browser.proxy.onRequest.addListener(
-    d => {
+    (d) => {
         console.log(d.requestId);
     },
     {
@@ -49,7 +49,7 @@ browser.proxy.onRequest.addListener(
 );
 
 browser.webNavigation.onBeforeNavigate.addListener(
-    d => {
+    (d) => {
         console.log(d.url, d.timeStamp);
     },
     {

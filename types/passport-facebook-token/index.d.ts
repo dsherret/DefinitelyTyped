@@ -3,8 +3,14 @@ import * as passport from "passport";
 
 declare namespace PassportFacebookToken {
     interface StrategyStatic {
-        new(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest): StrategyInstance;
-        new(options: StrategyOptions, verify: VerifyFunction): StrategyInstance;
+        new (
+            options: StrategyOptionsWithRequest,
+            verify: VerifyFunctionWithRequest,
+        ): StrategyInstance;
+        new (
+            options: StrategyOptions,
+            verify: VerifyFunction,
+        ): StrategyInstance;
     }
 
     interface StrategyInstance {

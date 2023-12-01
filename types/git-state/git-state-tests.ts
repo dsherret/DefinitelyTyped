@@ -4,7 +4,7 @@ import * as git from "git-state";
 type Options = git.Options;
 type CheckResult = git.CheckResult;
 
-git.isGit("/path", exists => {
+git.isGit("/path", (exists) => {
     exists; // $ExpectType boolean
 });
 git.isGitSync("/path");

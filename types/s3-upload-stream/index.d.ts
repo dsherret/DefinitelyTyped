@@ -5,7 +5,10 @@ import * as stream from "stream";
 
 declare namespace s3Stream {
     interface S3StreamUploader {
-        upload(destinationDetails: AWS.S3.PutObjectRequest, sessionDetails?: any): S3WriteStream;
+        upload(
+            destinationDetails: AWS.S3.PutObjectRequest,
+            sessionDetails?: any,
+        ): S3WriteStream;
     }
 
     interface S3WriteStream extends stream.Writable {

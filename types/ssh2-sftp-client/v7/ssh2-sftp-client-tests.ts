@@ -35,7 +35,9 @@ import * as fs from "fs";
     client.realPath("/remote/path").then(() => null);
 
     client.get("/remote/path").then(() => null);
-    client.get("/remote/path", fs.createWriteStream("/local/path/copy.txt")).then(() => null);
+    client
+        .get("/remote/path", fs.createWriteStream("/local/path/copy.txt"))
+        .then(() => null);
     client
         .get("/remote/path", fs.createWriteStream("/local/path/copy.txt"), {
             readStreamOptions: {
@@ -62,7 +64,9 @@ import * as fs from "fs";
 
     client.put("/local/path", "/remote/path").then(() => null);
     client.put(new Buffer("content"), "/remote/path").then(() => null);
-    client.put(fs.createReadStream("Hello World"), "/remote/path").then(() => null);
+    client
+        .put(fs.createReadStream("Hello World"), "/remote/path")
+        .then(() => null);
     client
         .put(fs.createReadStream("Hello World"), "/remote/path", {
             writeStreamOptions: {

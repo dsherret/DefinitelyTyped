@@ -31,10 +31,7 @@ function test_site() {
     });
     // $ExpectType JQuery<HTMLElement>
     $(selector).site({
-        modules: [
-            "module1",
-            "module2",
-        ],
+        modules: ["module1", "module2"],
         siteNamespace: "siteNamespace",
         namespaceStub: {
             cache: {},

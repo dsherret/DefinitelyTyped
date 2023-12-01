@@ -1,4 +1,7 @@
-declare function styleSearch(options: styleSearch.Options, callback: styleSearch.StyleSearchCallback): void;
+declare function styleSearch(
+    options: styleSearch.Options,
+    callback: styleSearch.StyleSearchCallback,
+): void;
 
 declare namespace styleSearch {
     /**

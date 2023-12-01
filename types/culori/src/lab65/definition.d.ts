@@ -27,6 +27,7 @@ interface Lab65DefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof lab, keyof Lab65DefinitionMixin> & Lab65DefinitionMixin;
+declare const definition: Omit<typeof lab, keyof Lab65DefinitionMixin> &
+    Lab65DefinitionMixin;
 
 export default definition;

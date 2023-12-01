@@ -26,7 +26,8 @@ export type CSSDirection = "top" | "right" | "bottom" | "left";
 
 export type BlockAlignment = "left" | "center" | "right" | "wide" | "full";
 
-export interface BlockEditProps<T extends Record<string, any>> extends BlockSaveProps<T> {
+export interface BlockEditProps<T extends Record<string, any>>
+    extends BlockSaveProps<T> {
     readonly clientId: string;
     readonly isSelected: boolean;
     readonly setAttributes: (attrs: Partial<T>) => void;
@@ -141,10 +142,8 @@ export interface SpacingProps {
  * @see Block.example
  * @see {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/55245#discussion_r692208988}
  */
-type BlockExampleInnerBlock =
-    & Partial<Block>
-    & Pick<Block, "name" | "attributes">
-    & {
+type BlockExampleInnerBlock = Partial<Block> &
+    Pick<Block, "name" | "attributes"> & {
         innerBlocks?: readonly BlockExampleInnerBlock[];
     };
 
@@ -159,7 +158,9 @@ export interface Block<T extends Record<string, any> = {}> {
      * Attributes for the block.
      */
     readonly attributes: {
-        readonly [k in keyof T]: BlockAttribute<T[k] extends Array<infer U> ? U : T[k]>;
+        readonly [k in keyof T]: BlockAttribute<
+            T[k] extends Array<infer U> ? U : T[k]
+        >;
     };
     /**
      * The block category (determines placement in the inserter).
@@ -197,7 +198,9 @@ export interface Block<T extends Record<string, any> = {}> {
      *
      * @see {@link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#example}
      */
-    readonly example?: Readonly<Partial<Block> & { innerBlocks?: readonly BlockExampleInnerBlock[] }>;
+    readonly example?: Readonly<
+        Partial<Block> & { innerBlocks?: readonly BlockExampleInnerBlock[] }
+    >;
     /**
      * Icon for the block.
      */
@@ -277,15 +280,15 @@ export interface Block<T extends Record<string, any> = {}> {
      */
     readonly transforms?:
         | {
-            /**
-             * Transforms from another block type to this block type.
-             */
-            readonly from?: ReadonlyArray<Transform<T>> | undefined;
-            /**
-             * Transforms from this block type to another block type.
-             */
-            readonly to?: readonly Transform[] | undefined;
-        }
+              /**
+               * Transforms from another block type to this block type.
+               */
+              readonly from?: ReadonlyArray<Transform<T>> | undefined;
+              /**
+               * Transforms from this block type to another block type.
+               */
+              readonly to?: readonly Transform[] | undefined;
+          }
         | undefined;
     /**
      * Array of the names of context values to inherit from an ancestor
@@ -312,14 +315,16 @@ export interface Block<T extends Record<string, any> = {}> {
     merge?(attributes: T, attributesToMerge: T): Partial<T>;
 }
 
-export type BlockConfiguration<T extends Record<string, any> = {}> =
-    & Partial<Omit<Block<T>, "icon">>
-    & Pick<Block<T>, "attributes" | "category" | "title">
-    & {
+export type BlockConfiguration<T extends Record<string, any> = {}> = Partial<
+    Omit<Block<T>, "icon">
+> &
+    Pick<Block<T>, "attributes" | "category" | "title"> & {
         icon?: BlockIcon | undefined;
     };
 
-export interface BlockInstance<T extends Record<string, any> = { [k: string]: any }> {
+export interface BlockInstance<
+    T extends Record<string, any> = { [k: string]: any },
+> {
     /**
      * Attributes for the block.
      */
@@ -359,13 +364,19 @@ export interface BlockDeprecation<
      * technically valid even once deprecated, and requires updates to its
      * attributes or inner blocks.
      */
-    isEligible?(attributes: Record<string, any>, innerBlocks: BlockInstance[]): boolean;
+    isEligible?(
+        attributes: Record<string, any>,
+        innerBlocks: BlockInstance[],
+    ): boolean;
     /**
      * A function which, given the old attributes and inner blocks is
      * expected to return either the new attributes or a tuple array of
      * [attributes, innerBlocks] compatible with the block.
      */
-    migrate?(attributes: O, innerBlocks: BlockInstance[]): N | [N, BlockInstance[]];
+    migrate?(
+        attributes: O,
+        innerBlocks: BlockInstance[],
+    ): N | [N, BlockInstance[]];
 }
 
 //
@@ -475,26 +486,24 @@ export interface BlockSupports {
 // ----------------------------------------------------------------------------
 
 export namespace AttributeSource {
-    type Attribute =
-        & {
-            source: "attribute";
-            attribute: string;
-            selector?: string | undefined;
-        }
-        & (
-            | {
-                type: "boolean";
-                default?: boolean | undefined;
-            }
-            | {
-                type: "number";
-                default?: number | undefined;
-            }
-            | {
-                type: "string";
-                default?: string | undefined;
-            }
-        );
+    type Attribute = {
+        source: "attribute";
+        attribute: string;
+        selector?: string | undefined;
+    } & (
+        | {
+              type: "boolean";
+              default?: boolean | undefined;
+          }
+        | {
+              type: "number";
+              default?: number | undefined;
+          }
+        | {
+              type: "string";
+              default?: string | undefined;
+          }
+    );
 
     interface Children {
         source: "children";
@@ -522,7 +531,9 @@ export namespace AttributeSource {
         type: "array";
         selector: string;
         query: {
-            [k in keyof T]: BlockAttribute<T[k] extends Array<infer U> ? U : T[k]>;
+            [k in keyof T]: BlockAttribute<
+                T[k] extends Array<infer U> ? U : T[k]
+            >;
         };
         default?: any[] | undefined;
     }
@@ -535,33 +546,30 @@ export namespace AttributeSource {
     }
 
     type None =
-        | (
-            & {
-                source?: never | undefined;
-            }
-            & (
-                | {
+        | ({
+              source?: never | undefined;
+          } & (
+              | {
                     type: "array";
                     default?: any[] | undefined;
                 }
-                | {
+              | {
                     type: "object";
                     default?: object | undefined;
                 }
-                | {
+              | {
                     type: "boolean";
                     default?: boolean | undefined;
                 }
-                | {
+              | {
                     type: "number";
                     default?: number | undefined;
                 }
-                | {
+              | {
                     type: "string";
                     default?: string | undefined;
                 }
-            )
-        )
+          ))
         | "array"
         | "object"
         | "boolean"
@@ -611,7 +619,10 @@ export interface TransformFiles<T extends Record<string, any>> {
     type: "files";
     priority?: number | undefined;
     isMatch?(files: FileList): boolean;
-    transform(files: FileList, onChange?: (id: string, attrs: T) => void): BlockInstance<Partial<T>>;
+    transform(
+        files: FileList,
+        onChange?: (id: string, attrs: T) => void,
+    ): BlockInstance<Partial<T>>;
 }
 
 export interface TransformPrefix<T extends Record<string, any>> {
@@ -654,11 +665,17 @@ export type Transform<T extends Record<string, any> = Record<string, any>> =
 
 export type BlockAttributes = Record<string, any>;
 
-export type InnerBlockTemplate = [string, BlockAttributes?, InnerBlockTemplate[]?];
+export type InnerBlockTemplate = [
+    string,
+    BlockAttributes?,
+    InnerBlockTemplate[]?,
+];
 
 export type BlockVariationScope = "block" | "inserter" | "transform";
 
-export interface BlockVariation<Attributes extends BlockAttributes = BlockAttributes> {
+export interface BlockVariation<
+    Attributes extends BlockAttributes = BlockAttributes,
+> {
     name: string;
     title: string;
     description?: string;
@@ -670,10 +687,15 @@ export interface BlockVariation<Attributes extends BlockAttributes = BlockAttrib
     example?:
         | BlockExampleInnerBlock
         | {
-            attributes: Attributes;
-            innerBlocks?: InnerBlockTemplate[];
-        };
+              attributes: Attributes;
+              innerBlocks?: InnerBlockTemplate[];
+          };
     scope?: BlockVariationScope[];
     keywords?: string[];
-    isActive?: ((blockAttributes: Attributes, variationAttributes: Attributes) => boolean) | string[];
+    isActive?:
+        | ((
+              blockAttributes: Attributes,
+              variationAttributes: Attributes,
+          ) => boolean)
+        | string[];
 }

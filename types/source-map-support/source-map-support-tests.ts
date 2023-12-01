@@ -22,25 +22,25 @@ sms.install({ overrideRetrieveFile: true }); // $ExpectType void
 sms.install({ overrideRetrieveSourceMap: true }); // $ExpectType void
 // $ExpectType void
 sms.install({
-    retrieveFile: path => {
+    retrieveFile: (path) => {
         path; // $ExpectType string
         return null;
     },
 });
-sms.install({ retrieveFile: path => "" }); // $ExpectType void
+sms.install({ retrieveFile: (path) => "" }); // $ExpectType void
 // @ts-expect-error
-sms.install({ retrieveFile: path => {} });
+sms.install({ retrieveFile: (path) => {} });
 // $ExpectType void
 sms.install({
-    retrieveSourceMap: source => {
+    retrieveSourceMap: (source) => {
         source; // $ExpectType string
         return null;
     },
 });
-sms.install({ retrieveSourceMap: source => ({ map: "foo" }) }); // $ExpectType void
+sms.install({ retrieveSourceMap: (source) => ({ map: "foo" }) }); // $ExpectType void
 // $ExpectType void
 sms.install({
-    retrieveSourceMap: source => {
+    retrieveSourceMap: (source) => {
         return {
             map: {
                 mappings: "",
@@ -56,22 +56,22 @@ sms.install({
     retrieveSourceMap(source) {
         return source
             ? {
-                url: "http://foo",
-                map: {
-                    version: "3",
-                    sources: ["/path/to/foo.js"],
-                    sourcesContent: ["module.exports = 'foo'"],
-                    names: ["module", "exports"],
-                    mappings: "AAAA,a",
-                    file: "/path/to/foo.js",
-                },
-            }
+                  url: "http://foo",
+                  map: {
+                      version: "3",
+                      sources: ["/path/to/foo.js"],
+                      sourcesContent: ["module.exports = 'foo'"],
+                      names: ["module", "exports"],
+                      mappings: "AAAA,a",
+                      file: "/path/to/foo.js",
+                  },
+              }
             : null;
     },
 });
 // $ExpectType void
 sms.install({
-    retrieveSourceMap: source => {
+    retrieveSourceMap: (source) => {
         return {
             map: "foo",
             url: "foo",
@@ -79,7 +79,7 @@ sms.install({
     },
 });
 // @ts-expect-error
-sms.install({ retrieveSourceMap: source => "foo" });
+sms.install({ retrieveSourceMap: (source) => "foo" });
 
 declare const stackFrame: sms.CallSite;
 const position: sms.Position = {

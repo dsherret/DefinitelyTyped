@@ -4,8 +4,15 @@ import { ButtonProps } from "../Button";
 
 // ComposedModal
 
-type ExcludedAttributes = "onBlur" | "onClick" | "onTransitionEnd" | "ref" | "role" | "tabIndex";
-export interface ComposedModalProps extends Omit<ReactDivAttr, ExcludedAttributes> {
+type ExcludedAttributes =
+    | "onBlur"
+    | "onClick"
+    | "onTransitionEnd"
+    | "ref"
+    | "role"
+    | "tabIndex";
+export interface ComposedModalProps
+    extends Omit<ReactDivAttr, ExcludedAttributes> {
     containerClassName?: string | undefined;
     danger?: boolean | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type

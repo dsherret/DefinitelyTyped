@@ -8,7 +8,11 @@ declare namespace Integer {
 
     function fromBits(lowBits: number, highBits?: number): IntClass;
     function fromNumber(val: number, defaultVal?: number | IntClass): IntClass;
-    function fromString(val: string, radix?: number, defaultVal?: string | IntClass): IntClass;
+    function fromString(
+        val: string,
+        radix?: number,
+        defaultVal?: string | IntClass,
+    ): IntClass;
     function isInstance(val: any): boolean;
 
     const MAX_VALUE: IntClass;

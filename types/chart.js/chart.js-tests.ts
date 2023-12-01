@@ -6,7 +6,11 @@ import moment = require("moment");
 // => chartjs.Chart
 
 const plugin = {
-    afterDraw: (chartInstance: Chart, easing: Chart.Easing, options?: any) => {},
+    afterDraw: (
+        chartInstance: Chart,
+        easing: Chart.Easing,
+        options?: any,
+    ) => {},
 };
 
 const ctx = new CanvasRenderingContext2D();
@@ -49,7 +53,7 @@ const chart: Chart = new Chart(ctx, {
             text: ["foo", "bar"],
         },
         tooltips: {
-            filter: data => Number(data.yLabel) > 0,
+            filter: (data) => Number(data.yLabel) > 0,
             intersect: true,
             mode: "index",
             axis: "x",
@@ -61,7 +65,8 @@ const chart: Chart = new Chart(ctx, {
             borderWidth: 1,
             titleAlign: "center",
             callbacks: {
-                title: ([point]) => (point.label ? point.label.substring(0, 2) : "title"),
+                title: ([point]) =>
+                    point.label ? point.label.substring(0, 2) : "title",
                 label(tooltipItem) {
                     const { value, x, y, label } = tooltipItem;
                     return `${label}(${x}, ${y}) = ${value}`;
@@ -103,11 +108,17 @@ const chart: Chart = new Chart(ctx, {
         elements: {
             rectangle: {
                 backgroundColor(ctx) {
-                    if (ctx.dataset && typeof ctx.dataset.backgroundColor === "function") {
+                    if (
+                        ctx.dataset &&
+                        typeof ctx.dataset.backgroundColor === "function"
+                    ) {
                         return ctx.dataset.backgroundColor(ctx);
                     }
 
-                    if (ctx.dataset && Array.isArray(ctx.dataset.backgroundColor)) {
+                    if (
+                        ctx.dataset &&
+                        Array.isArray(ctx.dataset.backgroundColor)
+                    ) {
                         return ctx.dataset.backgroundColor[0] || "red";
                     }
 
@@ -115,7 +126,10 @@ const chart: Chart = new Chart(ctx, {
                         return "red";
                     }
 
-                    return (ctx.dataset.backgroundColor as ChartColor | string) || "red";
+                    return (
+                        (ctx.dataset.backgroundColor as ChartColor | string) ||
+                        "red"
+                    );
                 },
             },
         },
@@ -219,7 +233,14 @@ const radarChartOptions: Chart.RadialChartOptions = {
 const chartConfig: Chart.ChartConfiguration = {
     type: "radar",
     data: {
-        labels: ["#apples", "#pears", "#apricots", "#acorns", "#amigas", "#orics"],
+        labels: [
+            "#apples",
+            "#pears",
+            "#apricots",
+            "#acorns",
+            "#amigas",
+            "#orics",
+        ],
         datasets: [
             {
                 label: "test",
@@ -242,7 +263,10 @@ const chartConfig: Chart.ChartConfiguration = {
         },
     },
 };
-const radialChart: Chart = new Chart(new CanvasRenderingContext2D(), chartConfig);
+const radialChart: Chart = new Chart(
+    new CanvasRenderingContext2D(),
+    chartConfig,
+);
 radialChart.update();
 
 console.log(radialChart.ctx && radialChart.ctx.font);
@@ -274,26 +298,36 @@ const chartWithScriptedOptions = new Chart(new CanvasRenderingContext2D(), {
     type: "bar",
     data: {
         labels: ["a", "b", "c", "d", "e"],
-        datasets: [{
-            label: "test",
-            data: [1, 3, 5, 4, 2],
-            backgroundColor: ({ dataset, dataIndex }): ChartColor => {
-                if (dataset === undefined || dataset.data === undefined || dataIndex === undefined) {
-                    return "black";
-                }
-                const value = dataset.data[dataIndex];
-                if (typeof value !== "number") {
-                    return "black";
-                }
-                return value > 3 ? "red" : "green";
+        datasets: [
+            {
+                label: "test",
+                data: [1, 3, 5, 4, 2],
+                backgroundColor: ({ dataset, dataIndex }): ChartColor => {
+                    if (
+                        dataset === undefined ||
+                        dataset.data === undefined ||
+                        dataIndex === undefined
+                    ) {
+                        return "black";
+                    }
+                    const value = dataset.data[dataIndex];
+                    if (typeof value !== "number") {
+                        return "black";
+                    }
+                    return value > 3 ? "red" : "green";
+                },
+                borderWidth: ({ dataset, dataIndex }): BorderWidth => {
+                    if (
+                        dataset === undefined ||
+                        dataset.data === undefined ||
+                        dataIndex === undefined
+                    ) {
+                        return 1;
+                    }
+                    return { top: 1, right: 1, bottom: 0, left: 1 };
+                },
             },
-            borderWidth: ({ dataset, dataIndex }): BorderWidth => {
-                if (dataset === undefined || dataset.data === undefined || dataIndex === undefined) {
-                    return 1;
-                }
-                return { top: 1, right: 1, bottom: 0, left: 1 };
-            },
-        }],
+        ],
     },
 });
 
@@ -301,41 +335,47 @@ const chartWithScriptedOptions = new Chart(new CanvasRenderingContext2D(), {
 const linearScaleChart: Chart = new Chart(ctx, {
     type: "bar",
     data: {
-        datasets: [{
-            backgroundColor: "#000",
-            borderColor: "#f00",
-            data: [],
-            type: "line",
-        }],
+        datasets: [
+            {
+                backgroundColor: "#000",
+                borderColor: "#f00",
+                data: [],
+                type: "line",
+            },
+        ],
     },
     options: {
         scales: {
             displayFormats: {
                 month: "MMM YYYY",
             },
-            xAxes: [{
-                type: "time",
-                adapters: {
-                    date: {
-                        locale: "de",
+            xAxes: [
+                {
+                    type: "time",
+                    adapters: {
+                        date: {
+                            locale: "de",
+                        },
+                    },
+                    distribution: "series",
+                    ticks: {
+                        source: "data",
+                        autoSkip: true,
+                        sampleSize: 1,
                     },
                 },
-                distribution: "series",
-                ticks: {
-                    source: "data",
-                    autoSkip: true,
-                    sampleSize: 1,
+            ],
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Closing price ($)",
+                    },
+                    afterBuildTicks: (scale, ticks) => {
+                        return [Math.max(...ticks), 10, Math.min(...ticks)];
+                    },
                 },
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: "Closing price ($)",
-                },
-                afterBuildTicks: (scale, ticks) => {
-                    return [Math.max(...ticks), 10, Math.min(...ticks)];
-                },
-            }],
+            ],
         },
         tooltips: {
             intersect: false,
@@ -473,7 +513,8 @@ if (doughnutChart.getDatasetMeta(0).data.length > 0) {
 
 // Testing DoughnutModel properties
 if (doughnutChart.getDatasetMeta(0).data.length > 0) {
-    const doughnutChartModel = doughnutChart.getDatasetMeta(0).data[0]._model as Chart.DoughnutModel;
+    const doughnutChartModel = doughnutChart.getDatasetMeta(0).data[0]
+        ._model as Chart.DoughnutModel;
     console.log(doughnutChartModel.backgroundColor);
     console.log(doughnutChartModel.borderAlign);
     console.log(doughnutChartModel.borderColor);
@@ -486,7 +527,8 @@ if (doughnutChart.getDatasetMeta(0).data.length > 0) {
     console.log(doughnutChartModel.x);
     console.log(doughnutChartModel.y);
 
-    const doughnutChartView = doughnutChart.getDatasetMeta(0).data[0]._view as Chart.DoughnutModel;
+    const doughnutChartView = doughnutChart.getDatasetMeta(0).data[0]
+        ._view as Chart.DoughnutModel;
     console.log(doughnutChartView.backgroundColor);
     console.log(doughnutChartView.borderAlign);
     console.log(doughnutChartView.borderColor);
@@ -502,16 +544,18 @@ if (doughnutChart.getDatasetMeta(0).data.length > 0) {
 
 // Time Cartesian Axis
 const timeAxisChartData: Chart.ChartData = {
-    datasets: [{
-        data: [
-            { x: new Date(), y: 1 },
-            { y: new Date(), t: 1 },
-            { t: new Date(), y: 1 },
-            { x: moment(), y: 1 },
-            { y: moment(), t: 1 },
-            { t: moment(), y: 1 },
-        ],
-    }],
+    datasets: [
+        {
+            data: [
+                { x: new Date(), y: 1 },
+                { y: new Date(), t: 1 },
+                { t: new Date(), y: 1 },
+                { x: moment(), y: 1 },
+                { y: moment(), t: 1 },
+                { t: moment(), y: 1 },
+            ],
+        },
+    ],
 };
 
 // Labels
@@ -540,40 +584,46 @@ chart.getElementsAtXAxis(event);
 const chartWithNumberArrayData: Chart = new Chart(ctx, {
     type: "bar",
     data: {
-        datasets: [{
-            backgroundColor: "#000",
-            borderColor: "#f00",
-            data: [
-                [1, 2],
-                [3, 4],
-                [5, 6],
-            ],
-            type: "line",
-        }],
+        datasets: [
+            {
+                backgroundColor: "#000",
+                borderColor: "#f00",
+                data: [
+                    [1, 2],
+                    [3, 4],
+                    [5, 6],
+                ],
+                type: "line",
+            },
+        ],
     },
     options: {
         scales: {
             displayFormats: {
                 month: "MMM YYYY",
             },
-            xAxes: [{
-                type: "time",
-                distribution: "series",
-                ticks: {
-                    source: "data",
-                    autoSkip: true,
-                    sampleSize: 1,
+            xAxes: [
+                {
+                    type: "time",
+                    distribution: "series",
+                    ticks: {
+                        source: "data",
+                        autoSkip: true,
+                        sampleSize: 1,
+                    },
                 },
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: "Closing price ($)",
+            ],
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Closing price ($)",
+                    },
+                    afterBuildTicks: (scale, ticks) => {
+                        return [Math.max(...ticks), 10, Math.min(...ticks)];
+                    },
                 },
-                afterBuildTicks: (scale, ticks) => {
-                    return [Math.max(...ticks), 10, Math.min(...ticks)];
-                },
-            }],
+            ],
         },
         tooltips: {
             intersect: false,
@@ -591,7 +641,7 @@ const categoryXAxe: Chart.ChartXAxe = {
 // Testing plugin service static methods
 const plugins = Chart.plugins.getAll();
 console.log(plugins);
-const foo = plugins.find(plugin => plugin.id === "foo");
+const foo = plugins.find((plugin) => plugin.id === "foo");
 console.log(foo);
 const pluginCount = Chart.plugins.count();
 console.log(pluginCount);

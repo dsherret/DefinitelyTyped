@@ -8,19 +8,27 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.TabSelectWidget
      */
-    interface TabSelectWidget extends TabSelectWidget.Props, TabSelectWidget.Prototype {}
+    interface TabSelectWidget
+        extends TabSelectWidget.Props,
+            TabSelectWidget.Prototype {}
 
     namespace TabSelectWidget {
-        interface ConfigOptions extends SelectWidget.ConfigOptions, mixin.TabIndexedElement.ConfigOptions {
+        interface ConfigOptions
+            extends SelectWidget.ConfigOptions,
+                mixin.TabIndexedElement.ConfigOptions {
             /** Use framed tabs */
             framed?: boolean;
         }
 
         type Static = SelectWidget.Static;
 
-        interface Props extends SelectWidget.Props, mixin.TabIndexedElement.Props {}
+        interface Props
+            extends SelectWidget.Props,
+                mixin.TabIndexedElement.Props {}
 
-        interface Prototype extends SelectWidget.Prototype, mixin.TabIndexedElement.Prototype {
+        interface Prototype
+            extends SelectWidget.Prototype,
+                mixin.TabIndexedElement.Prototype {
             /**
              * Check if tabs are framed.
              *
@@ -39,7 +47,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): TabSelectWidget;
+            new (config?: ConfigOptions): TabSelectWidget;
             prototype: Prototype;
             static: Static;
             super: SelectWidget.Constructor;

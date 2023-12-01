@@ -11,8 +11,12 @@ export type Callback<T> = (err: any, arg?: T) => any;
 export type CallbackFunction = (...args: any[]) => any;
 export type PromiseFunction = (...args: any[]) => Promise<any>;
 
-export function promisify<T>(original: (cb: Callback<T>) => any): () => Promise<T>;
-export function promisify<T, U>(original: (param1: U, cb: Callback<T>) => any): (param1: U) => Promise<T>;
+export function promisify<T>(
+    original: (cb: Callback<T>) => any,
+): () => Promise<T>;
+export function promisify<T, U>(
+    original: (param1: U, cb: Callback<T>) => any,
+): (param1: U) => Promise<T>;
 export function promisify<T, U, V>(
     original: (param1: U, param2: V, cb: Callback<T>) => any,
 ): (param1: U, param2: V) => Promise<T>;

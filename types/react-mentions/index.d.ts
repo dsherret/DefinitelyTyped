@@ -16,8 +16,10 @@ export const Mention: React.FC<MentionProps>;
  * The properties for the @see MentionsInput component.
  */
 export interface MentionsInputProps
-    extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange" | "onBlur" | "onKeyDown" | "onSelect">
-{
+    extends Omit<
+        React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+        "onChange" | "onBlur" | "onKeyDown" | "onSelect"
+    > {
     /**
      * If set to `true` a regular text input element will be rendered
      * instead of a textarea
@@ -35,21 +37,34 @@ export interface MentionsInputProps
     placeholder?: string | undefined;
     onBlur?:
         | ((
-            event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>,
-            clickedSuggestion: boolean,
-        ) => void)
+              event:
+                  | React.FocusEvent<HTMLInputElement>
+                  | React.FocusEvent<HTMLTextAreaElement>,
+              clickedSuggestion: boolean,
+          ) => void)
         | undefined;
     onSelect?: ((event: React.UIEvent) => void) | undefined;
     onKeyDown?:
-        | ((event: React.KeyboardEvent<HTMLTextAreaElement> | React.KeyboardEvent<HTMLInputElement>) => void)
+        | ((
+              event:
+                  | React.KeyboardEvent<HTMLTextAreaElement>
+                  | React.KeyboardEvent<HTMLInputElement>,
+          ) => void)
         | undefined;
-    children: React.ReactElement<MentionProps> | Array<React.ReactElement<MentionProps>>;
+    children:
+        | React.ReactElement<MentionProps>
+        | Array<React.ReactElement<MentionProps>>;
     className?: string | undefined;
     classNames?: any;
     style?: any;
-    customSuggestionsContainer?: (children: React.ReactNode) => React.ReactNode | undefined;
+    customSuggestionsContainer?: (
+        children: React.ReactNode,
+    ) => React.ReactNode | undefined;
     suggestionsPortalHost?: Element | undefined;
-    inputRef?: React.Ref<HTMLTextAreaElement> | React.Ref<HTMLInputElement> | undefined;
+    inputRef?:
+        | React.Ref<HTMLTextAreaElement>
+        | React.Ref<HTMLInputElement>
+        | undefined;
     /**
      * This label would be exposed to screen readers when suggestion popup appears
      * @default ''
@@ -60,7 +75,8 @@ export interface MentionsInputProps
 /**
  * Exposes the type for use with the @see MentionsInputComponent.wrappedInstance which is added by react-mentions' use of substyle (https://github.com/jfschwarz/substyle).
  */
-export interface MentionsInputComponentUnrwapped extends React.Component<MentionsInputProps> {
+export interface MentionsInputComponentUnrwapped
+    extends React.Component<MentionsInputProps> {
     /**
      * @deprecated since version 2.4.0. Please use @see MentionsInputProps.inputRef
      */
@@ -70,7 +86,8 @@ export interface MentionsInputComponentUnrwapped extends React.Component<Mention
 /**
  * Used with @see React.RefObject<MentionsInputComponent>.
  */
-export interface MentionsInputComponent extends React.Component<MentionsInputProps> {
+export interface MentionsInputComponent
+    extends React.Component<MentionsInputProps> {
     // MentionsInput uses substyle (https://github.com/jfschwarz/substyle) which adds this wrappedInstance
     wrappedInstance?: MentionsInputComponentUnrwapped | undefined;
 }
@@ -78,8 +95,8 @@ export interface MentionsInputComponent extends React.Component<MentionsInputPro
 /**
  * Used to reference MentionsInput element in a TSX file.
  */
-export interface MentionsInputClass extends React.ComponentClass<MentionsInputProps> {
-}
+export interface MentionsInputClass
+    extends React.ComponentClass<MentionsInputProps> {}
 
 /**
  * Props definition for a mention subelement.
@@ -88,12 +105,12 @@ export interface MentionProps {
     onAdd?: ((id: string | number, display: string) => void) | undefined;
     renderSuggestion?:
         | ((
-            suggestion: SuggestionDataItem,
-            search: string,
-            highlightedDisplay: React.ReactNode,
-            index: number,
-            focused: boolean,
-        ) => React.ReactNode)
+              suggestion: SuggestionDataItem,
+              search: string,
+              highlightedDisplay: React.ReactNode,
+              index: number,
+              focused: boolean,
+          ) => React.ReactNode)
         | undefined;
     className?: string | undefined;
     markup?: string | undefined;
@@ -147,4 +164,8 @@ export type DataFunc = (
     query: string,
     callback: (data: SuggestionDataItem[]) => void,
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-) => Promise<void> | void | Promise<SuggestionDataItem[]> | SuggestionDataItem[];
+) =>
+    | Promise<void>
+    | void
+    | Promise<SuggestionDataItem[]>
+    | SuggestionDataItem[];

@@ -28,7 +28,8 @@ export interface Scheme<Options, Request extends WrappableRequest, Response> {
     request(options: Options, callback?: (res: Response) => any): Request;
 }
 
-export interface RedirectableRequest<Request extends WrappableRequest, Response> extends Writable {
+export interface RedirectableRequest<Request extends WrappableRequest, Response>
+    extends Writable {
     setHeader: Request["setHeader"];
     removeHeader: Request["removeHeader"];
     abort: Request["abort"];
@@ -39,7 +40,10 @@ export interface RedirectableRequest<Request extends WrappableRequest, Response>
     setTimeout: Request["setTimeout"];
 
     addListener(event: string, listener: (...args: any[]) => void): this;
-    addListener(event: "response", listener: (response: Response) => void): this;
+    addListener(
+        event: "response",
+        listener: (response: Response) => void,
+    ): this;
     addListener(event: "error", listener: (err: Error) => void): this;
 
     emit(event: string | symbol, ...args: any[]): boolean;
@@ -55,15 +59,28 @@ export interface RedirectableRequest<Request extends WrappableRequest, Response>
     once(event: "error", listener: (err: Error) => void): this;
 
     prependListener(event: string, listener: (...args: any[]) => void): this;
-    prependListener(event: "response", listener: (response: Response) => void): this;
+    prependListener(
+        event: "response",
+        listener: (response: Response) => void,
+    ): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
 
-    prependOnceListener(event: string, listener: (...args: any[]) => void): this;
-    prependOnceListener(event: "response", listener: (response: Response) => void): this;
+    prependOnceListener(
+        event: string,
+        listener: (...args: any[]) => void,
+    ): this;
+    prependOnceListener(
+        event: "response",
+        listener: (response: Response) => void,
+    ): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
 }
 
-export interface RedirectScheme<Options, Request extends WrappableRequest, Response> {
+export interface RedirectScheme<
+    Options,
+    Request extends WrappableRequest,
+    Response,
+> {
     /**
      * This function has two overloads:
      * ```typescript
@@ -73,7 +90,9 @@ export interface RedirectScheme<Options, Request extends WrappableRequest, Respo
      */
     request(
         url: string | URL | (Options & FollowOptions<Options>),
-        options?: (Options & FollowOptions<Options>) | ((res: Response & FollowResponse) => void),
+        options?:
+            | (Options & FollowOptions<Options>)
+            | ((res: Response & FollowResponse) => void),
         callback?: (res: Response & FollowResponse) => void,
     ): RedirectableRequest<Request, Response>;
     /**
@@ -85,7 +104,9 @@ export interface RedirectScheme<Options, Request extends WrappableRequest, Respo
      */
     get(
         url: string | URL | (Options & FollowOptions<Options>),
-        options?: (Options & FollowOptions<Options>) | ((res: Response & FollowResponse) => void),
+        options?:
+            | (Options & FollowOptions<Options>)
+            | ((res: Response & FollowResponse) => void),
         callback?: (res: Response & FollowResponse) => void,
     ): RedirectableRequest<Request, Response>;
 }
@@ -96,13 +117,16 @@ export interface FollowOptions<Options> {
     maxRedirects?: number | undefined;
     maxBodyLength?: number | undefined;
     beforeRedirect?:
-        | ((options: Options & FollowOptions<Options>, responseDetails: ResponseDetails) => void)
+        | ((
+              options: Options & FollowOptions<Options>,
+              responseDetails: ResponseDetails,
+          ) => void)
         | undefined;
     agents?:
         | {
-            http?: coreHttp.Agent | undefined;
-            https?: coreHttps.Agent | undefined;
-        }
+              http?: coreHttp.Agent | undefined;
+              https?: coreHttps.Agent | undefined;
+          }
         | undefined;
     trackRedirects?: boolean | undefined;
 }
@@ -124,11 +148,19 @@ export interface ResponseDetails {
 
 export const http: Override<
     typeof coreHttp,
-    RedirectScheme<coreHttp.RequestOptions, coreHttp.ClientRequest, coreHttp.IncomingMessage>
+    RedirectScheme<
+        coreHttp.RequestOptions,
+        coreHttp.ClientRequest,
+        coreHttp.IncomingMessage
+    >
 >;
 export const https: Override<
     typeof coreHttps,
-    RedirectScheme<coreHttps.RequestOptions, coreHttp.ClientRequest, coreHttp.IncomingMessage>
+    RedirectScheme<
+        coreHttps.RequestOptions,
+        coreHttp.ClientRequest,
+        coreHttp.IncomingMessage
+    >
 >;
 
 export type WrappedScheme<T extends Scheme<any, any, any>> = Override<

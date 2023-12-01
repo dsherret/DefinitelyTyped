@@ -13,7 +13,10 @@ import Predicate from "./Predicate";
  */
 export default abstract class SemanticContext {
     static NONE: Predicate;
-    static andContext(a: SemanticContext | null, b: SemanticContext | null): AND;
+    static andContext(
+        a: SemanticContext | null,
+        b: SemanticContext | null,
+    ): AND;
     static orContext(a: SemanticContext | null, b: SemanticContext | null): OR;
 
     hashCode(): number;
@@ -50,7 +53,10 @@ export default abstract class SemanticContext {
      * - A non-`null` {@link SemanticContext}: the new simplified
      * semantic context after precedence predicates are evaluated.
      */
-    evalPrecedence(parser: Recognizer, outerContext: RuleContext): SemanticContext | null;
+    evalPrecedence(
+        parser: Recognizer,
+        outerContext: RuleContext,
+    ): SemanticContext | null;
 }
 
 /**
@@ -84,7 +90,10 @@ export class OR extends SemanticContext {
 
     evaluate(parser: Recognizer, outerContext: RuleContext): boolean;
 
-    evalPrecedence(parser: Recognizer, outerContext: RuleContext): SemanticContext | null;
+    evalPrecedence(
+        parser: Recognizer,
+        outerContext: RuleContext,
+    ): SemanticContext | null;
 
     toString(): string;
 }

@@ -19,7 +19,11 @@ useVirtual();
 // $ExpectType Model
 useVirtualModel({
     itemCount: 10,
-    getEstimatedItemSize: (itemSizes: number, scrollSize: number, newItemCount?: number) => 5,
+    getEstimatedItemSize: (
+        itemSizes: number,
+        scrollSize: number,
+        newItemCount?: number,
+    ) => 5,
     estimatedWidgetSize: 5,
     overscanCount: 3,
     horizontal: true,
@@ -28,7 +32,11 @@ useVirtualModel({
 // $ExpectType Model
 useVirtual({
     itemCount: 10,
-    getEstimatedItemSize: (itemSizes: number, scrollSize: number, newItemCount?: number) => 5,
+    getEstimatedItemSize: (
+        itemSizes: number,
+        scrollSize: number,
+        newItemCount?: number,
+    ) => 5,
     estimatedWidgetSize: 5,
     overscanCount: 3,
     horizontal: true,

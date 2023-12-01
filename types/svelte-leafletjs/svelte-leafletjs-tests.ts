@@ -1,6 +1,11 @@
 import { Map } from "leaflet";
 import { getContext } from "svelte";
-import { Circle, LeafletContext, LeafletMap, TileLayer } from "svelte-leafletjs";
+import {
+    Circle,
+    LeafletContext,
+    LeafletMap,
+    TileLayer,
+} from "svelte-leafletjs";
 
 //
 // component tests
@@ -15,7 +20,7 @@ import { Circle, LeafletContext, LeafletMap, TileLayer } from "svelte-leafletjs"
     // $ExpectType Map
     mapEl.getMap();
 
-    mapEl.$on("locationfound", e => {
+    mapEl.$on("locationfound", (e) => {
         // $ExpectType LocationEvent
         e;
     });
@@ -58,7 +63,7 @@ import { Circle, LeafletContext, LeafletMap, TileLayer } from "svelte-leafletjs"
     // test that leaflet methods work
     circleEl.getCircle().getBounds();
 
-    circleEl.$on("dblclick", e => {
+    circleEl.$on("dblclick", (e) => {
         // $ExpectType LeafletMouseEvent
         e;
     });
@@ -71,7 +76,11 @@ import { Circle, LeafletContext, LeafletMap, TileLayer } from "svelte-leafletjs"
     const f = () => {
         const mapEl = new LeafletMap({
             target: document.body,
-            props: { options: { center: [-36.84111, 174.7682] }, getMap, events: ["moveend", "zoom", "resize"] },
+            props: {
+                options: { center: [-36.84111, 174.7682] },
+                getMap,
+                events: ["moveend", "zoom", "resize"],
+            },
         });
     };
 }

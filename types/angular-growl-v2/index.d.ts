@@ -71,7 +71,9 @@ declare module "angular" {
              * Set default setting for disabling close button.
              * @param disableCloseButton
              */
-            globalDisableCloseButton(disableCloseButton: boolean): IGrowlProvider;
+            globalDisableCloseButton(
+                disableCloseButton: boolean,
+            ): IGrowlProvider;
             /**
              * Set default setting for disabling icons.
              * @param disableIcons
@@ -144,7 +146,10 @@ declare module "angular" {
              * @param message text to display (or code for angular-translate)
              * @param config additional message configuration
              */
-            warning(message: string, config: IGrowlMessageConfig): IGrowlMessage;
+            warning(
+                message: string,
+                config: IGrowlMessageConfig,
+            ): IGrowlMessage;
 
             /**
              * Show error message.
@@ -180,7 +185,10 @@ declare module "angular" {
              * Show success message.
              * @param message text to display (or code for angular-translate)
              */
-            success(message: string, config: IGrowlMessageConfig): IGrowlMessage;
+            success(
+                message: string,
+                config: IGrowlMessageConfig,
+            ): IGrowlMessage;
 
             /**
              * Show message (generic).
@@ -192,14 +200,21 @@ declare module "angular" {
              * @param message text to display (or code for angular-translate)
              * @param config additional message configuration
              */
-            general(message: string, config: IGrowlMessageConfig): IGrowlMessage;
+            general(
+                message: string,
+                config: IGrowlMessageConfig,
+            ): IGrowlMessage;
             /**
              * Show message (generic).
              * @param message text to display (or code for angular-translate)
              * @param config additional message configuration
              * @param severity message severity (error, warning, success, info).
              */
-            general(message: string, config: IGrowlMessageConfig, severity: string): IGrowlMessage;
+            general(
+                message: string,
+                config: IGrowlMessageConfig,
+                severity: string,
+            ): IGrowlMessage;
 
             /**
              * Get current setting for displaying only unique messages.
@@ -230,7 +245,10 @@ declare module "angular" {
              * @param referenceId
              * @param limitMessages
              */
-            initDirective(referenceId: number, limitMessages: number): angular.IDirective;
+            initDirective(
+                referenceId: number,
+                limitMessages: number,
+            ): angular.IDirective;
 
             /**
              * Get current messages

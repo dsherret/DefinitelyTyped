@@ -13,7 +13,7 @@ const StickyAllOptions: JSX.Element = (
         className="className"
         releasedClass="released"
         innerClass="innerClass"
-        onStateChange={s => s.status === Sticky.StatusCode.STATUS_ORIGINAL}
+        onStateChange={(s) => s.status === Sticky.StatusCode.STATUS_ORIGINAL}
         shouldFreeze={() => false}
     >
         <div />
@@ -34,7 +34,7 @@ const StickyNoOptions: JSX.Element = (
 
 const StickyChildrenFunction: JSX.Element = (
     <Sticky>
-        {status => {
+        {(status) => {
             if (status.status === Sticky.STATUS_FIXED) {
                 return "the component is sticky";
             }

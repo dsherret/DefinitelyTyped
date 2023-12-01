@@ -52,11 +52,16 @@ export function newQuery(
 
 export interface ParameterQuery {
     path(path: SSM.Types.PSParameterName): ParameterQuery;
-    named(nameOrNames: SSM.Types.PSParameterName | SSM.Types.ParameterNameList): ParameterQuery;
+    named(
+        nameOrNames: SSM.Types.PSParameterName | SSM.Types.ParameterNameList,
+    ): ParameterQuery;
     decryption(enabled: boolean): ParameterQuery;
     recursive(enabled: boolean): ParameterQuery;
     execute(): Promise<
-        SSM.Types.ParameterList | SSM.Types.Parameter | SSM.Types.GetParametersResult | SSM.Types.PutParameterResult
+        | SSM.Types.ParameterList
+        | SSM.Types.Parameter
+        | SSM.Types.GetParametersResult
+        | SSM.Types.PutParameterResult
     >;
     executeSync():
         | SSM.Types.ParameterList
@@ -65,4 +70,6 @@ export interface ParameterQuery {
         | SSM.Types.PutParameterResult;
 }
 
-export function parameterQuery(options?: SSM.Types.ClientConfiguration): ParameterQuery;
+export function parameterQuery(
+    options?: SSM.Types.ClientConfiguration,
+): ParameterQuery;

@@ -34,5 +34,4 @@ declare module "gulp-load-plugins" {
 /**
  * Extend this interface to use Gulp plugins in your gulpfile.js
  */
-interface IGulpPlugins {
-}
+interface IGulpPlugins {}

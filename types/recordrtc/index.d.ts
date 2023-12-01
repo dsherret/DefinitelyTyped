@@ -194,7 +194,14 @@ declare namespace RecordRTC {
     }
 
     class RecordRTCPromisesHandler {
-        constructor(stream: MediaStream | HTMLCanvasElement | HTMLVideoElement | HTMLElement, options?: Options);
+        constructor(
+            stream:
+                | MediaStream
+                | HTMLCanvasElement
+                | HTMLVideoElement
+                | HTMLElement,
+            options?: Options,
+        );
         recordRTC: RecordRTC;
         blob: Blob | null;
         version: string;
@@ -253,7 +260,9 @@ declare namespace RecordRTC {
         checkForInactiveTracks?: boolean | undefined;
 
         /** requires timeSlice above */
-        onTimeStamp?: ((timestamp: number, timestamps: number[]) => void) | undefined;
+        onTimeStamp?:
+            | ((timestamp: number, timestamps: number[]) => void)
+            | undefined;
 
         /** both for audio and video tracks */
         bitsPerSecond?: number | undefined;
@@ -302,7 +311,14 @@ declare namespace RecordRTC {
 }
 
 declare class RecordRTC {
-    constructor(stream: MediaStream | HTMLCanvasElement | HTMLVideoElement | HTMLElement, options?: RecordRTC.Options);
+    constructor(
+        stream:
+            | MediaStream
+            | HTMLCanvasElement
+            | HTMLVideoElement
+            | HTMLElement,
+        options?: RecordRTC.Options,
+    );
 
     /** start the recording */
     startRecording(): void;
@@ -321,7 +337,10 @@ declare class RecordRTC {
         onRecordingStopped: (callback: () => void) => void;
     };
     /** auto stop recording after specific duration */
-    setRecordingDuration(milliSeconds: number, onRecordingStopped: () => void): void;
+    setRecordingDuration(
+        milliSeconds: number,
+        onRecordingStopped: () => void,
+    ): void;
 
     /** reset recorder states and remove the data */
     reset(): void;
@@ -351,9 +370,15 @@ declare class RecordRTC {
     writeToDisk(options: RecordRTC.Disk): void;
 
     /** get recorded blob from indexded-db storage */
-    getFromDisk(type: "all" | keyof RecordRTC.Disk, cb: (dataURL: string, type: keyof RecordRTC.Disk) => void): void;
+    getFromDisk(
+        type: "all" | keyof RecordRTC.Disk,
+        cb: (dataURL: string, type: keyof RecordRTC.Disk) => void,
+    ): void;
 
-    getTracks: (stream: MediaStream, kind: RecordRTC.MediaStreamKind) => MediaStreamTrack[];
+    getTracks: (
+        stream: MediaStream,
+        kind: RecordRTC.MediaStreamKind,
+    ) => MediaStreamTrack[];
 
     /** @deprecated */
     setAdvertisementArray(webPImages: Array<{ image: string }>): void;
@@ -398,7 +423,10 @@ declare class RecordRTC {
     /** invokes the browser's Save-As dialog */
     static invokeSaveAsDialog(file: Blob | File, fileName?: string): void;
 
-    static getSeekableBlob(inputBlob: Blob, cb: (outputBlob: Blob) => void): void;
+    static getSeekableBlob(
+        inputBlob: Blob,
+        cb: (outputBlob: Blob) => void,
+    ): void;
 
     /** returns true if running in an Electron environment */
     static isElectron(): boolean;
@@ -406,7 +434,9 @@ declare class RecordRTC {
     /** DiskStorage is a standalone object used by RecordRTC to store recorded blobs in IndexedDB storage. */
     static DiskStorage: {
         init(): void;
-        Fetch(cb: (dataURL: string, type: RecordRTC.DiskStorageType) => void): void;
+        Fetch(
+            cb: (dataURL: string, type: RecordRTC.DiskStorageType) => void,
+        ): void;
         Store(data: { [K in RecordRTC.DiskStorageType]?: Blob }): void;
         onError(error: Error): void;
         dataStoreName: string;

@@ -6,17 +6,14 @@ var options = {
 };
 
 cfgManager.init(options);
-cfgManager.addConfig("db")
-    .addConfig("logger");
+cfgManager.addConfig("db").addConfig("logger");
 
 var appCfgByGetConfig = cfgManager.getConfig("app");
 
-cfgManager.set("configDir", "./config")
-    .set("camelCase", true);
+cfgManager.set("configDir", "./config").set("camelCase", true);
 
 console.log(cfgManager.get("env"));
-cfgManager.removeConfig("app")
-    .removeConfig("logger");
+cfgManager.removeConfig("app").removeConfig("logger");
 
 console.log(cfgManager.count());
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 
-export default function() {
+export default function () {
     return (
         <CalendarHeatmap
             endDate={new Date("2016-04-01")}

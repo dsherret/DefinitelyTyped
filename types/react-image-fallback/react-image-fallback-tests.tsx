@@ -1,5 +1,7 @@
 import * as React from "react";
-import ReactImageFallback, { ReactImageFallbackProps } from "react-image-fallback";
+import ReactImageFallback, {
+    ReactImageFallbackProps,
+} from "react-image-fallback";
 
 class ReactImageFallbackSimple extends React.Component<ReactImageFallbackProps> {
     render() {
@@ -24,11 +26,9 @@ class ReactImageFallbackWithUndefineds extends React.Component<ReactImageFallbac
 }
 
 class ReactImageFallbackWithOptionals extends React.Component<ReactImageFallbackProps> {
-    onLoad(event: React.SyntheticEvent<HTMLImageElement>) {
-    }
+    onLoad(event: React.SyntheticEvent<HTMLImageElement>) {}
 
-    onError(event: React.SyntheticEvent<HTMLImageElement>) {
-    }
+    onError(event: React.SyntheticEvent<HTMLImageElement>) {}
 
     render() {
         return (

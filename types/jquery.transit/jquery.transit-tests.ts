@@ -7,7 +7,7 @@ class TransitOptions implements JQueryTransitOptions {
     scale: any;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     test_translate();
     test_x();
     test_y();
@@ -52,7 +52,11 @@ abstract class Assert {
 
     static AssertionFailed(actual: any, expected: any, test?: string) {
         console.log(
-            (test || "") + " assertion failed -- expected " + expected.toString() + " actual " + actual.toString(),
+            (test || "") +
+                " assertion failed -- expected " +
+                expected.toString() +
+                " actual " +
+                actual.toString(),
         );
     }
 
@@ -89,11 +93,11 @@ function test_signatures() {
     TestObject.transition(options);
     TestObject.transition(options, 500);
     TestObject.transition(options, "in");
-    TestObject.transition(options, function() {
+    TestObject.transition(options, function () {
         var test: boolean = true;
     });
     TestObject.transition(options, 500, "out");
-    TestObject.transition(options, 500, "in-out", function() {
+    TestObject.transition(options, 500, "in-out", function () {
         var test: boolean = true;
     });
 }
@@ -105,8 +109,12 @@ function test_translate() {
     TestObject.transition({
         translate: [60, 30],
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Translate number[] transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Translate number[] transition test",
+            );
         },
     });
     TestObject.css("translate", "60px, 30px");
@@ -114,8 +122,12 @@ function test_translate() {
     TestObject.transition({
         translate: ["60px", "30px"],
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Translate string[] transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Translate string[] transition test",
+            );
         },
     });
     TestObject.css("translate", "60px, 30px");
@@ -123,8 +135,12 @@ function test_translate() {
     TestObject.transition({
         translate: "60px, 30px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Translate string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Translate string transition test",
+            );
         },
     });
 }
@@ -136,8 +152,12 @@ function test_x() {
     TestObject.transition({
         x: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "x string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "x string transition test",
+            );
         },
     });
     TestObject.css("x", 10);
@@ -145,8 +165,12 @@ function test_x() {
     TestObject.transition({
         x: 10,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "x number transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "x number transition test",
+            );
         },
     });
 }
@@ -158,8 +182,12 @@ function test_y() {
     TestObject.transition({
         y: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "y string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "y string transition test",
+            );
         },
     });
     TestObject.css("y", 10);
@@ -167,8 +195,12 @@ function test_y() {
     TestObject.transition({
         y: 10,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "y number transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "y number transition test",
+            );
         },
     });
 }
@@ -180,8 +212,12 @@ function test_width() {
     TestObject.transition({
         width: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "width string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "width string transition test",
+            );
         },
     });
     TestObject.css("width", 10);
@@ -189,8 +225,12 @@ function test_width() {
     TestObject.transition({
         width: 10,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "width number transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "width number transition test",
+            );
         },
     });
 }
@@ -202,8 +242,12 @@ function test_height() {
     TestObject.transition({
         height: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "height string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "height string transition test",
+            );
         },
     });
     TestObject.css("height", 10);
@@ -211,8 +255,12 @@ function test_height() {
     TestObject.transition({
         height: 10,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "height number transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "height number transition test",
+            );
         },
     });
 }
@@ -224,8 +272,12 @@ function test_margin() {
     TestObject.transition({
         margin: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "margin string transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "margin string transition test",
+            );
         },
     });
 }
@@ -237,8 +289,12 @@ function test_marginRight() {
     TestObject.transition({
         marginRight: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "marginRight transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "marginRight transition test",
+            );
         },
     });
 }
@@ -250,8 +306,12 @@ function test_marginLeft() {
     TestObject.transition({
         marginLeft: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "marginLeft transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "marginLeft transition test",
+            );
         },
     });
 }
@@ -263,8 +323,12 @@ function test_marginTop() {
     TestObject.transition({
         marginTop: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "marginTop transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "marginTop transition test",
+            );
         },
     });
 }
@@ -276,8 +340,12 @@ function test_marginBottom() {
     TestObject.transition({
         marginBottom: "10px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "marginBottom transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "marginBottom transition test",
+            );
         },
     });
 }
@@ -289,8 +357,12 @@ function test_skewX() {
     TestObject.transition({
         skewX: "30deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "skewX transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "skewX transition test",
+            );
         },
     });
 }
@@ -302,8 +374,12 @@ function test_skewY() {
     TestObject.transition({
         skewY: "30deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "skewY transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "skewY transition test",
+            );
         },
     });
 }
@@ -315,8 +391,12 @@ function test_perspective() {
     TestObject.transition({
         perspective: "100px",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "perspective transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "perspective transition test",
+            );
         },
     });
 }
@@ -328,8 +408,12 @@ function test_rotate() {
     TestObject.transition({
         rotateY: "20deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "rotateY transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "rotateY transition test",
+            );
         },
     });
 }
@@ -341,8 +425,12 @@ function test_rotateX() {
     TestObject.transition({
         rotateX: "20deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "rotateX transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "rotateX transition test",
+            );
         },
     });
 }
@@ -354,8 +442,12 @@ function test_rotateY() {
     TestObject.transition({
         rotateY: "20deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "rotateY transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "rotateY transition test",
+            );
         },
     });
 }
@@ -367,8 +459,12 @@ function test_rotate3d() {
     TestObject.transition({
         rotate3d: "1, 1, 1, 20deg",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "rotate3d transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "rotate3d transition test",
+            );
         },
     });
 }
@@ -380,8 +476,12 @@ function test_transform() {
     TestObject.transition({
         transform: "scale(0.2)",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "transform transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "transform transition test",
+            );
         },
     });
 }
@@ -393,8 +493,12 @@ function test_transformOrigin() {
     TestObject.transition({
         transformOrigin: "20% 40%",
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "transformOrigin transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "transformOrigin transition test",
+            );
         },
     });
 }
@@ -406,8 +510,12 @@ function test_opacity() {
     TestObject.transition({
         opacity: 25,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Opacity transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Opacity transition test",
+            );
         },
     });
 }
@@ -419,8 +527,12 @@ function test_scale() {
     TestObject.transition({
         scale: 0.5,
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Scale transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Scale transition test",
+            );
         },
     });
     TestObject.css("scale", [2, 3]);
@@ -428,8 +540,12 @@ function test_scale() {
     TestObject.transition({
         scale: [2, 3],
         duration: 1,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Scale transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Scale transition test",
+            );
         },
     });
 }
@@ -441,12 +557,20 @@ function test_duration() {
     TestObject.transition({
         opacity: 75,
         duration: 1000,
-        complete: function() {
-            Assert.Equal(TestObject.attr("style"), cssStyle, "Duration post-transition test");
+        complete: function () {
+            Assert.Equal(
+                TestObject.attr("style"),
+                cssStyle,
+                "Duration post-transition test",
+            );
         },
     });
     // Test the transitions state partway through and assert that we're not to our final state yet.
-    setTimeout(function() {
-        Assert.NotEqual(TestObject.attr("style"), cssStyle, "Duration intra-transition test");
+    setTimeout(function () {
+        Assert.NotEqual(
+            TestObject.attr("style"),
+            cssStyle,
+            "Duration intra-transition test",
+        );
     }, 300);
 }

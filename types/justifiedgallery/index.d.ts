@@ -3,13 +3,26 @@
 declare namespace JustifiedGallery {
     interface Settings {
         sizeRangeSuffixes?: { [size: number]: string };
-        thumbnailPath?: ((imageSrc: string, imgWidth: number, imgHeight: number, image: JQuery) => string) | undefined;
+        thumbnailPath?:
+            | ((
+                  imageSrc: string,
+                  imgWidth: number,
+                  imgHeight: number,
+                  image: JQuery,
+              ) => string)
+            | undefined;
         rowHeight?: number;
         maxRowHeight?: false | number | string;
         maxRowsCount?: number;
         margins?: number;
         border?: number;
-        lastRow?: "justify" | "nojustify" | "left" | "right" | "center" | "hide";
+        lastRow?:
+            | "justify"
+            | "nojustify"
+            | "left"
+            | "right"
+            | "center"
+            | "hide";
         justifyThreshold?: number;
         waitThumbnailsLoad?: boolean;
         captions?: boolean;
@@ -24,7 +37,14 @@ declare namespace JustifiedGallery {
         randomize?: boolean;
         rtl?: boolean;
         sort?: false | ((a: any, b: any) => number);
-        filter?: false | string | ((value: HTMLElement, index: number, array: HTMLElement[]) => boolean);
+        filter?:
+            | false
+            | string
+            | ((
+                  value: HTMLElement,
+                  index: number,
+                  array: HTMLElement[],
+              ) => boolean);
         selector?: string;
         imgSelector?: string;
         triggerEvent?: (event: string | JQuery.Event) => void;
@@ -37,7 +57,10 @@ declare namespace JustifiedGallery {
     }
 }
 
-declare function justifiedGallery(root: Window, jQuery?: JQueryStatic): JQueryStatic | JQuery | HTMLElement;
+declare function justifiedGallery(
+    root: Window,
+    jQuery?: JQueryStatic,
+): JQueryStatic | JQuery | HTMLElement;
 
 declare global {
     interface JQuery<TElement = HTMLElement> {

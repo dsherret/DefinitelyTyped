@@ -12,4 +12,6 @@ export interface ReactHintProps {
     ref?(ref: React.ComponentClass<ReactHintProps, any>): void;
 }
 
-export default function ReactHintFactory(react: typeof React): React.ComponentClass<ReactHintProps, any>;
+export default function ReactHintFactory(
+    react: typeof React,
+): React.ComponentClass<ReactHintProps, any>;

@@ -3,35 +3,75 @@ import * as React from "react";
 export = NumericInput;
 
 declare namespace NumericInput {
-    type BoundsFunctionProp = number | ((component: NumericInput) => number | undefined);
+    type BoundsFunctionProp =
+        | number
+        | ((component: NumericInput) => number | undefined);
     type Omit<T, K> = Pick<T, Exclude<keyof T, K>>; // via TS 2.8 manual
-    interface NumericInputProps extends
-        Omit<
+    interface NumericInputProps
+        extends Omit<
             React.InputHTMLAttributes<HTMLInputElement>,
-            "min" | "max" | "step" | "onChange" | "defaultValue" | "onInvalid" | "style"
-        >
-    {
+            | "min"
+            | "max"
+            | "step"
+            | "onChange"
+            | "defaultValue"
+            | "onInvalid"
+            | "style"
+        > {
         addLabelText?: string | undefined;
         componentClass?: string | undefined;
         defaultValue?: number | string | undefined;
         format?: ((value: number | null) => string) | undefined;
         max?: BoundsFunctionProp | undefined;
         min?: BoundsFunctionProp | undefined;
-        mobile?: boolean | "auto" | ((component: NumericInput) => boolean) | undefined;
+        mobile?:
+            | boolean
+            | "auto"
+            | ((component: NumericInput) => boolean)
+            | undefined;
         noStyle?: boolean | undefined;
         noValidate?: boolean | string | undefined;
-        onBlur?: React.FocusEventHandler<HTMLDivElement | HTMLInputElement> | undefined;
-        onChange?: ((value: number | null, stringValue: string, input: HTMLInputElement) => void) | undefined;
-        onFocus?: React.FocusEventHandler<HTMLDivElement | HTMLInputElement> | undefined;
+        onBlur?:
+            | React.FocusEventHandler<HTMLDivElement | HTMLInputElement>
+            | undefined;
+        onChange?:
+            | ((
+                  value: number | null,
+                  stringValue: string,
+                  input: HTMLInputElement,
+              ) => void)
+            | undefined;
+        onFocus?:
+            | React.FocusEventHandler<HTMLDivElement | HTMLInputElement>
+            | undefined;
         onInput?: React.FormEventHandler<HTMLInputElement> | undefined;
-        onInvalid?: ((error: string, value: number | null, stringValue: string) => void) | undefined;
-        onKeyDown?: React.KeyboardEventHandler<HTMLDivElement | HTMLInputElement> | undefined;
+        onInvalid?:
+            | ((
+                  error: string,
+                  value: number | null,
+                  stringValue: string,
+              ) => void)
+            | undefined;
+        onKeyDown?:
+            | React.KeyboardEventHandler<HTMLDivElement | HTMLInputElement>
+            | undefined;
         onSelect?: React.ReactEventHandler<HTMLInputElement> | undefined;
-        onValid?: ((value: number | null, stringValue: string) => void) | undefined;
+        onValid?:
+            | ((value: number | null, stringValue: string) => void)
+            | undefined;
         parse?: ((stringValue: string) => number | null) | undefined;
-        precision?: number | ((component: NumericInput) => number | null | undefined) | undefined;
+        precision?:
+            | number
+            | ((component: NumericInput) => number | null | undefined)
+            | undefined;
         snap?: boolean | undefined;
-        step?: number | ((component: NumericInput, direction: string) => number | undefined) | undefined;
+        step?:
+            | number
+            | ((
+                  component: NumericInput,
+                  direction: string,
+              ) => number | undefined)
+            | undefined;
         strict?: boolean | undefined;
         style?: { [key: string]: React.CSSProperties } | boolean | undefined;
         value?: number | string | undefined;
@@ -50,7 +90,10 @@ declare namespace NumericInput {
     }
 }
 
-declare class NumericInput extends React.Component<NumericInput.NumericInputProps, NumericInput.NumericInputState> {
+declare class NumericInput extends React.Component<
+    NumericInput.NumericInputProps,
+    NumericInput.NumericInputState
+> {
     static DIRECTION_UP: string;
     static DIRECTION_DOWN: string;
 }

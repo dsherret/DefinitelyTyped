@@ -61,15 +61,15 @@ export interface DeserializerOptions {
 }
 
 export interface DeserializerConstructor {
-    new(opts: DeserializerOptions): Deserializer;
+    new (opts: DeserializerOptions): Deserializer;
 }
 
 export interface SerializerConstructor {
-    new(collectionName: string, opts: SerializerOptions): Serializer;
+    new (collectionName: string, opts: SerializerOptions): Serializer;
 }
 
 export interface ErrorConstructor {
-    new(opts: JSONAPIErrorOptions | JSONAPIErrorOptions[]): JSONAPIError;
+    new (opts: JSONAPIErrorOptions | JSONAPIErrorOptions[]): JSONAPIError;
 }
 
 export interface JSONAPIError {
@@ -82,13 +82,17 @@ export interface JSONAPIErrorOptions {
     code?: string | undefined;
     title?: string | undefined;
     detail?: string | undefined;
-    source?: {
-        pointer?: string | undefined;
-        parameter?: string | undefined;
-    } | undefined;
-    links?: {
-        about?: string | undefined;
-    } | undefined;
+    source?:
+        | {
+              pointer?: string | undefined;
+              parameter?: string | undefined;
+          }
+        | undefined;
+    links?:
+        | {
+              about?: string | undefined;
+          }
+        | undefined;
     meta?: any;
 }
 

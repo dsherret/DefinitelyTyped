@@ -231,7 +231,10 @@ if (DateTime.isDateTime(anything)) {
     anything; // $ExpectType DateTime<true> | DateTime<false>
 }
 
-const { input, result, zone } = DateTime.fromFormatExplain("Aug 6 1982", "MMMM d yyyy");
+const { input, result, zone } = DateTime.fromFormatExplain(
+    "Aug 6 1982",
+    "MMMM d yyyy",
+);
 
 /* Duration */
 const dur = Duration.fromObject({ hours: 2, minutes: 7 }); // $ExpectType Duration<true>
@@ -280,7 +283,7 @@ i.length(); // $ExpectType number
 i.length("years"); // $ExpectType number
 i.contains(DateTime.local(2019)); // $ExpectType boolean
 i.set({ end: DateTime.local(2020) }); // $ExpectType Interval<true> | Interval<false>
-i.mapEndpoints(d => d); // $ExpectType Interval<true> | Interval<false>
+i.mapEndpoints((d) => d); // $ExpectType Interval<true> | Interval<false>
 i.intersection(i); // $ExpectType Interval<boolean> | null
 
 i.invalidReason; // $ExpectType string | null
@@ -361,7 +364,11 @@ dt.toLocaleString({ ...DateTime.DATE_FULL }, { locale: "es" }); // $ExpectType s
 dt.setLocale("fr").toFormat("MMMM dd, yyyy GG"); // $ExpectType string
 dt.toFormat("MMMM dd, yyyy GG", { locale: "de" });
 
-DateTime.fromFormat("septembre 25, 2017 après Jésus-Christ", "MMMM dd, yyyy GG", { locale: "fr" });
+DateTime.fromFormat(
+    "septembre 25, 2017 après Jésus-Christ",
+    "MMMM dd, yyyy GG",
+    { locale: "fr" },
+);
 
 Info.months("long", { locale: "fr" }); // $ExpectType string[]
 Info.weekdays("long", { locale: "fr" }); // $ExpectType string[]
@@ -389,8 +396,14 @@ const iso = DateTime.fromISO("2017-05-15T09:10:23");
 iso.zoneName; // $ExpectType string | null
 iso.toString(); // $ExpectType string
 
-DateTime.fromISO("2017-05-15T09:10:23", { zone: "Europe/Paris", setZone: true }); // $ExpectType DateTime<true> | DateTime<false>
-DateTime.fromFormat("2017-05-15T09:10:23 Europe/Paris", "yyyy-MM-dd'T'HH:mm:ss z"); // $ExpectType DateTime<true> | DateTime<false>
+DateTime.fromISO("2017-05-15T09:10:23", {
+    zone: "Europe/Paris",
+    setZone: true,
+}); // $ExpectType DateTime<true> | DateTime<false>
+DateTime.fromFormat(
+    "2017-05-15T09:10:23 Europe/Paris",
+    "yyyy-MM-dd'T'HH:mm:ss z",
+); // $ExpectType DateTime<true> | DateTime<false>
 
 /* Calendars */
 // prettier-ignore
@@ -401,7 +414,9 @@ dtHebrew.outputCalendar; // $ExpectType string
 dtHebrew.numberingSystem; // $ExpectType string
 dtHebrew.toLocaleString(); // $ExpectType string
 
-DateTime.fromObject({}, { outputCalendar: "buddhist" }).toLocaleString(DateTime.DATE_FULL);
+DateTime.fromObject({}, { outputCalendar: "buddhist" }).toLocaleString(
+    DateTime.DATE_FULL,
+);
 Settings.defaultOutputCalendar = "persian";
 
 /* Formatting */
@@ -439,11 +454,16 @@ DateTime.fromFormat("mai 25 1982", "LLLL dd yyyy", { locale: "fr" }); // $Expect
 
 DateTime.fromFormatExplain("Aug 6 1982", "MMMM d yyyy").regex;
 DateTime.invalid("Timestamp out of range");
-DateTime.invalid("mismatched weekday", "you can't specify both a weekday and a date");
+DateTime.invalid(
+    "mismatched weekday",
+    "you can't specify both a weekday and a date",
+);
 
 /* Math */
 const d1: DateTime = DateTime.local(2017, 2, 13).plus({ days: 30 });
-const d2: DateTime = DateTime.fromISO("2017-04-30").plus({ days: 1 }).plus({ months: 1 });
+const d2: DateTime = DateTime.fromISO("2017-04-30")
+    .plus({ days: 1 })
+    .plus({ months: 1 });
 
 if (d1 < d2 || +d1 === +d2) {
     //

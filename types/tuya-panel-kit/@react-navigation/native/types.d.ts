@@ -54,10 +54,12 @@ export declare type LinkingOptions = {
      * }
      * ```
      */
-    config?: {
-        initialRouteName?: string | undefined;
-        screens: PathConfigMap;
-    } | undefined;
+    config?:
+        | {
+              initialRouteName?: string | undefined;
+              screens: PathConfigMap;
+          }
+        | undefined;
     /**
      * Custom function to get the initial URL used for linking.
      * Uses `Linking.getInitialURL()` by default.
@@ -90,7 +92,9 @@ export declare type LinkingOptions = {
      * ```
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    subscribe?: ((listener: (url: string) => void) => undefined | void | (() => void)) | undefined;
+    subscribe?:
+        | ((listener: (url: string) => void) => undefined | void | (() => void))
+        | undefined;
     /**
      * Custom function to parse the URL to a valid navigation state (advanced).
      */
@@ -104,7 +108,12 @@ export declare type LinkingOptions = {
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type DocumentTitleOptions = {
     enabled?: boolean | undefined;
-    formatter?: ((options: Record<string, any> | undefined, route: Route<string> | undefined) => string) | undefined;
+    formatter?:
+        | ((
+              options: Record<string, any> | undefined,
+              route: Route<string> | undefined,
+          ) => string)
+        | undefined;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type ServerContainerRef = {

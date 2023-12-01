@@ -80,10 +80,13 @@ export interface SyntheticEventData extends OptionalEventProperties {
     which?: number | undefined;
 }
 
-export type EventSimulator = (element: Element | Component<any>, eventData?: SyntheticEventData) => void;
+export type EventSimulator = (
+    element: Element | Component<any>,
+    eventData?: SyntheticEventData,
+) => void;
 
 export interface MockedComponentClass {
-    new(): any;
+    new (): any;
 }
 
 export interface ShallowRenderer {
@@ -195,9 +198,7 @@ export namespace Simulate {
 export function renderIntoDocument<T extends Element>(
     element: DOMElement<any, T>,
 ): T;
-export function renderIntoDocument(
-    element: SFCElement<any>,
-): void;
+export function renderIntoDocument(element: SFCElement<any>): void;
 // If we replace `P` with `any` in this overload, then some tests fail because
 // calls to `renderIntoDocument` choose the last overload on the
 // subtype-relation pass and get an undesirably broad return type.  Using `P`
@@ -248,10 +249,11 @@ export function isElementOfType<P>(
 /**
  * Returns `true` if `element` is a React element whose type is of a React `componentClass`.
  */
-export function isElementOfType<P, T extends Component<P>, C extends ComponentClass<P>>(
-    element: ReactElement,
-    type: ClassType<P, T, C>,
-): element is CElement<P, T>;
+export function isElementOfType<
+    P,
+    T extends Component<P>,
+    C extends ComponentClass<P>,
+>(element: ReactElement, type: ClassType<P, T, C>): element is CElement<P, T>;
 
 /**
  * Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
@@ -260,14 +262,16 @@ export function isDOMComponent(instance: ReactInstance): instance is Element;
 /**
  * Returns `true` if `instance` is a user-defined component, such as a class or a function.
  */
-export function isCompositeComponent(instance: ReactInstance): instance is Component<any>;
+export function isCompositeComponent(
+    instance: ReactInstance,
+): instance is Component<any>;
 /**
  * Returns `true` if `instance` is a component whose type is of a React `componentClass`.
  */
-export function isCompositeComponentWithType<T extends Component<any>, C extends ComponentClass<any>>(
-    instance: ReactInstance,
-    type: ClassType<any, T, C>,
-): boolean;
+export function isCompositeComponentWithType<
+    T extends Component<any>,
+    C extends ComponentClass<any>,
+>(instance: ReactInstance, type: ClassType<any, T, C>): boolean;
 
 /**
  * Traverse all components in `tree` and accumulate all components where
@@ -318,20 +322,20 @@ export function findRenderedDOMComponentWithTag(
 /**
  * Finds all instances of components with type equal to `componentClass`.
  */
-export function scryRenderedComponentsWithType<T extends Component, C extends ComponentClass>(
-    root: Component<any>,
-    type: ClassType<any, T, C>,
-): T[];
+export function scryRenderedComponentsWithType<
+    T extends Component,
+    C extends ComponentClass,
+>(root: Component<any>, type: ClassType<any, T, C>): T[];
 
 /**
  * Same as `scryRenderedComponentsWithType()` but expects there to be one result
  * and returns that one result, or throws exception if there is any other
  * number of matches besides one.
  */
-export function findRenderedComponentWithType<T extends Component, C extends ComponentClass>(
-    root: Component<any>,
-    type: ClassType<any, T, C>,
-): T;
+export function findRenderedComponentWithType<
+    T extends Component,
+    C extends ComponentClass,
+>(root: Component<any>, type: ClassType<any, T, C>): T;
 
 /**
  * Call this in your tests to create a shallow renderer.

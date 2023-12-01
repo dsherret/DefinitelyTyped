@@ -13,7 +13,10 @@ export interface ProxyResult {
 }
 
 export function createServer(
-    requestListener: (request: http.IncomingMessage, response: http.ServerResponse) => void,
+    requestListener: (
+        request: http.IncomingMessage,
+        response: http.ServerResponse,
+    ) => void,
     serverListenCallback?: () => any,
     binaryMimeTypes?: string[],
 ): http.Server;

@@ -60,16 +60,27 @@ class TestView extends Backbone.View<TestModel> {
         this.testCollection = new TestCollection();
         this.gridView = new Backgrid.Grid({
             columns: [
-                new Backgrid.Column({ name: "FirstName", cell: "string", label: "First Name" }),
-                new Backgrid.Column({ name: "LastName", cell: "string", label: "Last Name" }),
-                new Backgrid.Column({ name: "EMail", cell: "string", label: "E-Mail" }),
+                new Backgrid.Column({
+                    name: "FirstName",
+                    cell: "string",
+                    label: "First Name",
+                }),
+                new Backgrid.Column({
+                    name: "LastName",
+                    cell: "string",
+                    label: "Last Name",
+                }),
+                new Backgrid.Column({
+                    name: "EMail",
+                    cell: "string",
+                    label: "E-Mail",
+                }),
             ],
             collection: this.testCollection,
         });
     }
 
-    initialize() {
-    }
+    initialize() {}
 
     render() {
         this.$el.empty();

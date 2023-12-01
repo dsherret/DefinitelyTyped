@@ -1,5 +1,9 @@
 import { BreakManager } from "chromecast-caf-receiver/cast.framework.breaks";
-import { DetailedErrorCode, EventType, MediaFinishedEvent } from "chromecast-caf-receiver/cast.framework.events";
+import {
+    DetailedErrorCode,
+    EventType,
+    MediaFinishedEvent,
+} from "chromecast-caf-receiver/cast.framework.events";
 import {
     HlsSegmentFormat,
     LoadRequestData,
@@ -8,11 +12,16 @@ import {
     StreamType,
     TrackType,
 } from "chromecast-caf-receiver/cast.framework.messages";
-import { ApplicationData, LaunchedFrom } from "chromecast-caf-receiver/cast.framework.system";
+import {
+    ApplicationData,
+    LaunchedFrom,
+} from "chromecast-caf-receiver/cast.framework.system";
 
 // The following test showcases how you can import individual types directly from the namespace:
 
-const mediaMetadata = new MediaMetadata(cast.framework.messages.MetadataType.GENERIC);
+const mediaMetadata = new MediaMetadata(
+    cast.framework.messages.MetadataType.GENERIC,
+);
 mediaMetadata.metadataType = cast.framework.messages.MetadataType.TV_SHOW;
 mediaMetadata.posterUrl = "https://www.foo.bar";
 mediaMetadata.queueItemId = 1;
@@ -25,7 +34,9 @@ mediaMetadata.sectionStartTimeInMedia = 0;
 // the nested namespace style. This is the preferred method as it
 // conforms exactly to the CAF documentation.
 
-const breaksEvent = new cast.framework.events.BreaksEvent(EventType.BREAK_STARTED);
+const breaksEvent = new cast.framework.events.BreaksEvent(
+    EventType.BREAK_STARTED,
+);
 breaksEvent.breakId = "some-break-id";
 breaksEvent.breakClipId = "some-break-clip-id";
 
@@ -47,7 +58,8 @@ pManager.addEventListener(cast.framework.events.category.FINE, () => {});
 pManager.addEventListener(cast.framework.events.category.REQUEST, () => {});
 pManager.addEventListener(
     EventType.MEDIA_FINISHED,
-    (event: MediaFinishedEvent) => `${event.currentMediaTime} ${event.endedReason}`,
+    (event: MediaFinishedEvent) =>
+        `${event.currentMediaTime} ${event.endedReason}`,
 );
 
 const ttManager = new cast.framework.TextTracksManager();
@@ -55,7 +67,8 @@ const qManager = new cast.framework.QueueManager();
 const qBase = new cast.framework.QueueBase();
 const items = qBase.fetchItems(1, 3, 4);
 const breakSeekData = new cast.framework.breaks.BreakSeekData(0, 100, []);
-const breakClipLoadContext = new cast.framework.breaks.BreakClipLoadInterceptorContext(adBreak);
+const breakClipLoadContext =
+    new cast.framework.breaks.BreakClipLoadInterceptorContext(adBreak);
 const breakManager: BreakManager = {
     getBreakById: () => adBreak,
     getBreakClipCurrentTimeSec: () => null,
@@ -101,7 +114,9 @@ const appData: ApplicationData = {
 const readyEvent = new cast.framework.system.ReadyEvent(appData);
 const data = readyEvent.data;
 
-const standbyChangedEvent = new cast.framework.system.StandbyChangedEvent(false);
+const standbyChangedEvent = new cast.framework.system.StandbyChangedEvent(
+    false,
+);
 const sceData = standbyChangedEvent.isStandby;
 
 const pData = new cast.framework.ui.PlayerData();
@@ -114,7 +129,9 @@ pData.isBreakSkippable = false;
 pData.isLive = true;
 pData.isPlayingBreak = false;
 pData.isSeeking = true;
-pData.metadata = new cast.framework.messages.MediaMetadata(cast.framework.messages.MetadataType.GENERIC);
+pData.metadata = new cast.framework.messages.MediaMetadata(
+    cast.framework.messages.MetadataType.GENERIC,
+);
 pData.nextSubtitle = "sub";
 pData.nextThumbnailUrl = "url";
 pData.nextTitle = "title";
@@ -125,13 +142,19 @@ pData.thumbnailUrl = "url";
 pData.title = "title";
 pData.whenSkippable = 321;
 
-const playerDataBinderWithPlayerData = new cast.framework.ui.PlayerDataBinder(pData);
+const playerDataBinderWithPlayerData = new cast.framework.ui.PlayerDataBinder(
+    pData,
+);
 const binder = new cast.framework.ui.PlayerDataBinder({});
-binder.addEventListener(cast.framework.ui.PlayerDataEventType.ANY_CHANGE, e => {});
+binder.addEventListener(
+    cast.framework.ui.PlayerDataEventType.ANY_CHANGE,
+    (e) => {},
+);
 
-const supportedCommands: number = cast.framework.messages.Command.ALL_BASIC_MEDIA
-    | cast.framework.messages.Command.QUEUE_NEXT
-    | cast.framework.messages.Command.QUEUE_PREV;
+const supportedCommands: number =
+    cast.framework.messages.Command.ALL_BASIC_MEDIA |
+    cast.framework.messages.Command.QUEUE_NEXT |
+    cast.framework.messages.Command.QUEUE_PREV;
 
 const playbackConfig = new cast.framework.PlaybackConfig();
 playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
@@ -147,50 +170,82 @@ options.useShakaForHls = true;
 options.shakaVersion = "4.3.5";
 
 cast.framework.CastReceiverContext.getInstance().addEventListener(
-    [cast.framework.system.EventType.SENDER_CONNECTED, cast.framework.system.EventType.SENDER_DISCONNECTED],
+    [
+        cast.framework.system.EventType.SENDER_CONNECTED,
+        cast.framework.system.EventType.SENDER_DISCONNECTED,
+    ],
     () => "¡hola!",
 );
 
 // send custom message to specific sender
-cast.framework.CastReceiverContext.getInstance().sendCustomMessage("custom-namespace", "sender-id", {});
+cast.framework.CastReceiverContext.getInstance().sendCustomMessage(
+    "custom-namespace",
+    "sender-id",
+    {},
+);
 
 // broadcast custom message to all connected senders
-cast.framework.CastReceiverContext.getInstance().sendCustomMessage("custom-namespace", undefined, {});
+cast.framework.CastReceiverContext.getInstance().sendCustomMessage(
+    "custom-namespace",
+    undefined,
+    {},
+);
 
-const loadingError = new cast.framework.events.ErrorEvent(DetailedErrorCode.LOAD_FAILED, "Loading failed!");
+const loadingError = new cast.framework.events.ErrorEvent(
+    DetailedErrorCode.LOAD_FAILED,
+    "Loading failed!",
+);
 
 // PlayerManager message interceptors
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .setMessageInterceptor(cast.framework.messages.MessageType.LOAD, () => new Promise((resolve, reject) => {}));
+    .setMessageInterceptor(
+        cast.framework.messages.MessageType.LOAD,
+        () => new Promise((resolve, reject) => {}),
+    );
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .setMessageInterceptor(cast.framework.messages.MessageType.LOAD, () => new LoadRequestData());
+    .setMessageInterceptor(
+        cast.framework.messages.MessageType.LOAD,
+        () => new LoadRequestData(),
+    );
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .setMessageInterceptor(cast.framework.messages.MessageType.LOAD, () => null);
+    .setMessageInterceptor(
+        cast.framework.messages.MessageType.LOAD,
+        () => null,
+    );
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
     .setMessageInterceptor(cast.framework.messages.MessageType.LOAD, null);
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .setMessageInterceptor(cast.framework.messages.MessageType.CUSTOM_COMMAND, customCommandRequestData => {
-        const data = customCommandRequestData.data;
-        return customCommandRequestData;
-    });
+    .setMessageInterceptor(
+        cast.framework.messages.MessageType.CUSTOM_COMMAND,
+        (customCommandRequestData) => {
+            const data = customCommandRequestData.data;
+            return customCommandRequestData;
+        },
+    );
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .setMessageInterceptor(cast.framework.messages.MessageType.SET_VOLUME, volumeRequestData => {
-        const volume = volumeRequestData.volume;
-        return volumeRequestData;
-    });
+    .setMessageInterceptor(
+        cast.framework.messages.MessageType.SET_VOLUME,
+        (volumeRequestData) => {
+            const volume = volumeRequestData.volume;
+            return volumeRequestData;
+        },
+    );
 
 // PlayerManager event listeners
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .addEventListener(cast.framework.events.EventType.BITRATE_CHANGED, bitrateChangedEvent => {
-        const bitrate = bitrateChangedEvent.totalBitrate;
-    });
+    .addEventListener(
+        cast.framework.events.EventType.BITRATE_CHANGED,
+        (bitrateChangedEvent) => {
+            const bitrate = bitrateChangedEvent.totalBitrate;
+        },
+    );
 
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
@@ -198,21 +253,48 @@ cast.framework.CastReceiverContext.getInstance()
 
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .addEventListener(cast.framework.events.EventType.TIMED_METADATA_CHANGED, timedMetadataEvent => {
-        const { id, dashTimedMetadata, hlsTimedMetadata, startTime, endTime } = timedMetadataEvent.timedMetadataInfo;
-    });
+    .addEventListener(
+        cast.framework.events.EventType.TIMED_METADATA_CHANGED,
+        (timedMetadataEvent) => {
+            const {
+                id,
+                dashTimedMetadata,
+                hlsTimedMetadata,
+                startTime,
+                endTime,
+            } = timedMetadataEvent.timedMetadataInfo;
+        },
+    );
 
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .addEventListener(cast.framework.events.EventType.TIMED_METADATA_ENTER, timedMetadataEvent => {
-        const { id, dashTimedMetadata, hlsTimedMetadata, startTime, endTime } = timedMetadataEvent.timedMetadataInfo;
-    });
+    .addEventListener(
+        cast.framework.events.EventType.TIMED_METADATA_ENTER,
+        (timedMetadataEvent) => {
+            const {
+                id,
+                dashTimedMetadata,
+                hlsTimedMetadata,
+                startTime,
+                endTime,
+            } = timedMetadataEvent.timedMetadataInfo;
+        },
+    );
 
 cast.framework.CastReceiverContext.getInstance()
     .getPlayerManager()
-    .addEventListener(cast.framework.events.EventType.TIMED_METADATA_EXIT, timedMetadataEvent => {
-        const { id, dashTimedMetadata, hlsTimedMetadata, startTime, endTime } = timedMetadataEvent.timedMetadataInfo;
-    });
+    .addEventListener(
+        cast.framework.events.EventType.TIMED_METADATA_EXIT,
+        (timedMetadataEvent) => {
+            const {
+                id,
+                dashTimedMetadata,
+                hlsTimedMetadata,
+                startTime,
+                endTime,
+            } = timedMetadataEvent.timedMetadataInfo;
+        },
+    );
 
 // CastDebugLogger
 const debugLogger = cast.debug.CastDebugLogger.getInstance();
@@ -228,22 +310,36 @@ debugLogger.showDebugLogs(true);
 debugLogger.error(
     "REPORTING",
     "Track could not be reported",
-    cast.framework.CastReceiverContext.getInstance().getPlayerManager().getMediaInformation(),
+    cast.framework.CastReceiverContext.getInstance()
+        .getPlayerManager()
+        .getMediaInformation(),
 );
 
 const controls = cast.framework.ui.Controls.getInstance();
 
-controls.assignButton(cast.framework.ui.ControlsSlot.SLOT_SECONDARY_1, cast.framework.ui.ControlsButton.LIKE);
-controls.assignButton(cast.framework.ui.ControlsSlot.SLOT_SECONDARY_2, cast.framework.ui.ControlsButton.DISLIKE);
+controls.assignButton(
+    cast.framework.ui.ControlsSlot.SLOT_SECONDARY_1,
+    cast.framework.ui.ControlsButton.LIKE,
+);
+controls.assignButton(
+    cast.framework.ui.ControlsSlot.SLOT_SECONDARY_2,
+    cast.framework.ui.ControlsButton.DISLIKE,
+);
 
-const playerManager = cast.framework.CastReceiverContext.getInstance().getPlayerManager();
+const playerManager =
+    cast.framework.CastReceiverContext.getInstance().getPlayerManager();
 
 playerManager.setMessageInterceptor(
     MessageType.CLOUD_STATUS,
-    (messageData: messages.CloudMediaStatus): messages.CloudMediaStatus | messages.ErrorData => {
+    (
+        messageData: messages.CloudMediaStatus,
+    ): messages.CloudMediaStatus | messages.ErrorData => {
         if (Math.random() > 0.5) {
-            const errorData = new cast.framework.messages.ErrorData(cast.framework.messages.ErrorType.INVALID_REQUEST);
-            errorData.reason = cast.framework.messages.ErrorReason.NOT_SUPPORTED;
+            const errorData = new cast.framework.messages.ErrorData(
+                cast.framework.messages.ErrorType.INVALID_REQUEST,
+            );
+            errorData.reason =
+                cast.framework.messages.ErrorReason.NOT_SUPPORTED;
             return errorData;
         }
 
@@ -252,10 +348,15 @@ playerManager.setMessageInterceptor(
 );
 playerManager.setMessageInterceptor(
     MessageType.DISPLAY_STATUS,
-    (messageData: messages.DisplayStatusRequestData): messages.DisplayStatusRequestData | messages.ErrorData => {
+    (
+        messageData: messages.DisplayStatusRequestData,
+    ): messages.DisplayStatusRequestData | messages.ErrorData => {
         if (Math.random() > 0.5) {
-            const errorData = new cast.framework.messages.ErrorData(cast.framework.messages.ErrorType.INVALID_REQUEST);
-            errorData.reason = cast.framework.messages.ErrorReason.NOT_SUPPORTED;
+            const errorData = new cast.framework.messages.ErrorData(
+                cast.framework.messages.ErrorType.INVALID_REQUEST,
+            );
+            errorData.reason =
+                cast.framework.messages.ErrorReason.NOT_SUPPORTED;
             return errorData;
         }
 
@@ -274,11 +375,18 @@ queueItem.orderId = 1;
 queueItem.preloadTime = 4;
 queueItem.startTime = 0;
 
-const userActionState = new cast.framework.messages.UserActionState(cast.framework.messages.UserAction.LIKE);
+const userActionState = new cast.framework.messages.UserActionState(
+    cast.framework.messages.UserAction.LIKE,
+);
 userActionState.customData = {};
 
 const tracksInfo = new cast.framework.messages.TracksInfo();
 tracksInfo.activeTrackIds = [1, 2];
 tracksInfo.language = "en";
 tracksInfo.textTrackStyle = new cast.framework.messages.TextTrackStyle();
-tracksInfo.tracks = [new cast.framework.messages.Track(1, cast.framework.messages.TrackType.AUDIO)];
+tracksInfo.tracks = [
+    new cast.framework.messages.Track(
+        1,
+        cast.framework.messages.TrackType.AUDIO,
+    ),
+];

@@ -38,7 +38,7 @@ interface IQuery<T> {
 }
 
 interface IQueryConstructor<T> {
-    new(_table: Table<T>): IQuery<T>;
+    new (_table: Table<T>): IQuery<T>;
 }
 
 declare class Helper {
@@ -218,8 +218,16 @@ declare class CriteriaBuilder<T> {
     private parentBuilder: CriteriaBuilder<any>;
 
     constructor(primaryTable: Table<T>); // to arxiko apo to Table.ts 9a benei
-    constructor(primaryTable: Table<T>, tableName: string, parentBuilder: CriteriaBuilder<any>); // auta 9a benoun apo to parent select query.
-    constructor(primaryTable: Table<T>, tablePropertyName?: string, parentBuilder?: CriteriaBuilder<any>);
+    constructor(
+        primaryTable: Table<T>,
+        tableName: string,
+        parentBuilder: CriteriaBuilder<any>,
+    ); // auta 9a benoun apo to parent select query.
+    constructor(
+        primaryTable: Table<T>,
+        tablePropertyName?: string,
+        parentBuilder?: CriteriaBuilder<any>,
+    );
 
     except(...columns: string[]): CriteriaBuilder<T>;
 
@@ -238,7 +246,11 @@ declare class CriteriaBuilder<T> {
 
     join(realTableName: string, foreignColumnName: string): CriteriaBuilder<T>;
 
-    joinAs(tableNameProperty: string, realTableName: string, foreignColumnName: string): CriteriaBuilder<T>;
+    joinAs(
+        tableNameProperty: string,
+        realTableName: string,
+        foreignColumnName: string,
+    ): CriteriaBuilder<T>;
 
     at(tableNameProperty: string): CriteriaBuilder<T>;
 
@@ -254,11 +266,15 @@ declare class CriteriaBuilder<T> {
     static from<T>(table: Table<T>): CriteriaBuilder<T>;
 }
 
-declare class SelectQuery<T> implements IQuery<T> { // T for Table's result type.
+declare class SelectQuery<T> implements IQuery<T> {
+    // T for Table's result type.
     _table: Table<T>;
     constructor(_table: Table<T>);
 
-    private parseQueryResult(result: any, criteria: ICriteriaParts): Promise<any>;
+    private parseQueryResult(
+        result: any,
+        criteria: ICriteriaParts,
+    ): Promise<any>;
 
     /**
      * Executes the select and returns the Promise.
@@ -275,13 +291,19 @@ declare class SelectQuery<T> implements IQuery<T> { // T for Table's result type
 declare class SaveQuery<T> implements IQuery<T> {
     _table: Table<T>;
     constructor(_table: Table<T>);
-    execute(criteriaRawJsObject: any, callback?: (_result: T | any) => any): Promise<T | any>;
+    execute(
+        criteriaRawJsObject: any,
+        callback?: (_result: T | any) => any,
+    ): Promise<T | any>;
 }
 
 declare class DeleteQuery<T> implements IQuery<T> {
     _table: Table<T>;
     constructor(_table: Table<T>);
-    execute(criteriaOrID: any | number | string, callback?: (_result: DeleteAnswer) => any): Promise<DeleteAnswer>;
+    execute(
+        criteriaOrID: any | number | string,
+        callback?: (_result: DeleteAnswer) => any,
+    ): Promise<DeleteAnswer>;
 }
 
 declare class PropertyChangedArgs {
@@ -338,7 +360,8 @@ declare class CollectionChangedEventArgs<T> {
     );
 }
 
-declare class BaseCollection<T> { // T=result type of Table
+declare class BaseCollection<T> {
+    // T=result type of Table
     private list: Array<T | (T & ObservableObject)>;
     listeners: Array<(eventArgs: CollectionChangedEventArgs<T>) => void>;
     constructor(table: Table<T>);
@@ -348,50 +371,85 @@ declare class BaseCollection<T> { // T=result type of Table
     findItem(itemId: string | number): T;
     getItem(index: number): T;
     getItemObservable(index: number): T & ObservableObject;
-    addItem(...items: Array<T | (T & ObservableObject)>): T | (T & ObservableObject);
+    addItem(
+        ...items: Array<T | (T & ObservableObject)>
+    ): T | (T & ObservableObject);
     removeItem(...items: Array<T | (T & ObservableObject)>): BaseCollection<T>;
     removeItemById(id: number | string): BaseCollection<T>;
     forgetItem(...items: Array<T | (T & ObservableObject)>): BaseCollection<T>;
     reset(): BaseCollection<T>;
     notifyCollectionChanged(evtArgs: CollectionChangedEventArgs<T>): void;
-    onCollectionChanged(callback: (eventArgs: CollectionChangedEventArgs<T>) => void): void;
+    onCollectionChanged(
+        callback: (eventArgs: CollectionChangedEventArgs<T>) => void,
+    ): void;
 }
 
-declare class ObservableCollection<T> { // auti i klasi 9a xrisimopoieite ws Collection me kapoies paralages mesa sto index.ts.
+declare class ObservableCollection<T> {
+    // auti i klasi 9a xrisimopoieite ws Collection me kapoies paralages mesa sto index.ts.
     local: BaseCollection<T>;
     private _items: Array<T & ObservableObject>;
 
-    constructor(table: Table<T>, fetchAllFromDatabase?: boolean, callbackWhenReady?: Function);
+    constructor(
+        table: Table<T>,
+        fetchAllFromDatabase?: boolean,
+        callbackWhenReady?: Function,
+    );
 
     items: Array<T & ObservableObject>;
 
-    onCollectionChanged(callback: (eventArgs: CollectionChangedEventArgs<T>) => void): void;
+    onCollectionChanged(
+        callback: (eventArgs: CollectionChangedEventArgs<T>) => void,
+    ): void;
 
     startListeningToDatabase(): void;
 
-    find(criteriaRawJsObject?: any, callback?: (_results: T[]) => any): Promise<T[]>;
+    find(
+        criteriaRawJsObject?: any,
+        callback?: (_results: T[]) => any,
+    ): Promise<T[]>;
 
-    findOne(criteriaRawJsObject: any, callback?: (_result: T) => any): Promise<T>;
+    findOne(
+        criteriaRawJsObject: any,
+        callback?: (_result: T) => any,
+    ): Promise<T>;
 
     findById(id: number | string, callback?: (result: T) => any): Promise<T>;
 
-    findAll(tableRules?: RawRules, callback?: (_results: T[]) => any): Promise<T[]>;
+    findAll(
+        tableRules?: RawRules,
+        callback?: (_results: T[]) => any,
+    ): Promise<T[]>;
 
     /**
      * .insert() and .update() do the same thing:  .save();
      */
-    insert(criteriaRawJsObject: any, callback?: (_result: any) => any): Promise<T | any>;
+    insert(
+        criteriaRawJsObject: any,
+        callback?: (_result: any) => any,
+    ): Promise<T | any>;
 
-    update(criteriaRawJsObject: any, callback?: (_result: any) => any): Promise<T | any>;
+    update(
+        criteriaRawJsObject: any,
+        callback?: (_result: any) => any,
+    ): Promise<T | any>;
 
-    save(criteriaRawJsObject: any, callback?: (_result: any) => any): Promise<T | any>;
+    save(
+        criteriaRawJsObject: any,
+        callback?: (_result: any) => any,
+    ): Promise<T | any>;
 
-    remove(criteriaOrID: any | number | string, callback?: (_result: DeleteAnswer) => any): Promise<DeleteAnswer>;
+    remove(
+        criteriaOrID: any | number | string,
+        callback?: (_result: DeleteAnswer) => any,
+    ): Promise<DeleteAnswer>;
 
     /**
      * same thing as .remove();
      */
-    delete(criteriaOrID: any | number | string, callback?: (_result: DeleteAnswer) => any): Promise<DeleteAnswer>;
+    delete(
+        criteriaOrID: any | number | string,
+        callback?: (_result: DeleteAnswer) => any,
+    ): Promise<DeleteAnswer>;
 }
 
 declare class MeteorCollection<T> {
@@ -413,7 +471,14 @@ declare class MeteorCollection<T> {
     // ONLY MONGO/METEOR COLLECTION METHODS START
     allow(options: {
         insert?: ((userId: string, doc: T) => boolean) | undefined;
-        update?: ((userId: string, doc: T, fieldNames: string[], modifier: any) => boolean) | undefined;
+        update?:
+            | ((
+                  userId: string,
+                  doc: T,
+                  fieldNames: string[],
+                  modifier: any,
+              ) => boolean)
+            | undefined;
         remove?: ((userId: string, doc: T) => boolean) | undefined;
         fetch?: string[] | undefined;
         transform?: Function | undefined;
@@ -421,28 +486,41 @@ declare class MeteorCollection<T> {
 
     deny(options: {
         insert?: ((userId: string, doc: T) => boolean) | undefined;
-        update?: ((userId: string, doc: T, fieldNames: string[], modifier: any) => boolean) | undefined;
+        update?:
+            | ((
+                  userId: string,
+                  doc: T,
+                  fieldNames: string[],
+                  modifier: any,
+              ) => boolean)
+            | undefined;
         remove?: ((userId: string, doc: T) => boolean) | undefined;
         fetch?: string[] | undefined;
         transform?: Function | undefined;
     }): boolean;
 
-    find(selector?: any, options?: {
-        sort?: any;
-        skip?: number | undefined;
-        limit?: number | undefined;
-        fields?: any;
-        reactive?: boolean | undefined;
-        transform?: Function | undefined;
-    }): Mongo.Cursor<T>;
+    find(
+        selector?: any,
+        options?: {
+            sort?: any;
+            skip?: number | undefined;
+            limit?: number | undefined;
+            fields?: any;
+            reactive?: boolean | undefined;
+            transform?: Function | undefined;
+        },
+    ): Mongo.Cursor<T>;
 
-    findOne(selector?: any, options?: {
-        sort?: any;
-        skip?: number | undefined;
-        fields?: any;
-        reactive?: boolean | undefined;
-        transform?: Function | undefined;
-    }): T;
+    findOne(
+        selector?: any,
+        options?: {
+            sort?: any;
+            skip?: number | undefined;
+            fields?: any;
+            reactive?: boolean | undefined;
+            transform?: Function | undefined;
+        },
+    ): T;
 
     // ONLY MONGO/METEOR COLLECTION METHODS FINISH.
 }
@@ -476,7 +554,9 @@ declare class Connection extends EventEmitter {
      * @returnType {nothing}
      * @return {nothing}
      */
-    create(connection: string | Mysql.Connection | Mysql.ConnectionConfig): void;
+    create(
+        connection: string | Mysql.Connection | Mysql.ConnectionConfig,
+    ): void;
 
     /**
      * Attach a real connection.
@@ -556,7 +636,11 @@ declare class Connection extends EventEmitter {
      * @returnType {nothing}
      * @return {nothing}
      */
-    watch(tableName: string, evtType: any, callback: (rawRows: any[]) => void): void;
+    watch(
+        tableName: string,
+        evtType: any,
+        callback: (rawRows: any[]) => void,
+    ): void;
 
     /**
      * Removes an event listener/watcher from a table for a specific event type.
@@ -566,7 +650,11 @@ declare class Connection extends EventEmitter {
      * @returnType {nothing}
      * @return {nothing}
      */
-    unwatch(tableName: string, evtType: string, callbackToRemove: (rawResults: any[]) => void): void;
+    unwatch(
+        tableName: string,
+        evtType: string,
+        callbackToRemove: (rawResults: any[]) => void,
+    ): void;
 
     /**
      * Executes a database query.
@@ -576,7 +664,11 @@ declare class Connection extends EventEmitter {
      * @returnType {nothing}
      * @return {nothing}
      */
-    query(queryStr: string, callback: (err: Mysql.MysqlError, results: any) => any, queryArguments?: any[]): void;
+    query(
+        queryStr: string,
+        callback: (err: Mysql.MysqlError, results: any) => any,
+        queryArguments?: any[],
+    ): void;
 
     /**
      * Returns a MysqlTable object from the database factory. (Note: this method doesn't create anything, just finds and returns the correct table, you don't have to create anything at all. Tables are fetched by the library itself.)
@@ -712,24 +804,42 @@ declare class Table<T> {
 
     /** */
     find(criteriaRawJsObject: any): Promise<T[]>; // only criteria
-    find(criteriaRawJsObject: any, callback: (_results: T[]) => any): Promise<T[]>; // criteria and callback
-    find(criteriaRawJsObject: any, callback?: (_results: T[]) => any): Promise<T[]>;
+    find(
+        criteriaRawJsObject: any,
+        callback: (_results: T[]) => any,
+    ): Promise<T[]>; // criteria and callback
+    find(
+        criteriaRawJsObject: any,
+        callback?: (_results: T[]) => any,
+    ): Promise<T[]>;
 
-    findSingle(criteriaRawJsObject: any, callback?: (_result: T) => any): Promise<T>;
+    findSingle(
+        criteriaRawJsObject: any,
+        callback?: (_result: T) => any,
+    ): Promise<T>;
 
     findById(id: number | string): Promise<T>; // without callback
     findById(id: number | string, callback?: (result: T) => any): Promise<T>;
 
     findAll(): Promise<T[]>; // only criteria and promise
     findAll(tableRules: RawRules): Promise<T[]>; // only rules and promise
-    findAll(tableRules?: RawRules, callback?: (_results: T[]) => any): Promise<T[]>;
+    findAll(
+        tableRules?: RawRules,
+        callback?: (_results: T[]) => any,
+    ): Promise<T[]>;
 
     save(criteriaRawJsObject: any): Promise<any>; // without callback
-    save(criteriaRawJsObject: any, callback?: (_result: any) => any): Promise<any>;
+    save(
+        criteriaRawJsObject: any,
+        callback?: (_result: any) => any,
+    ): Promise<any>;
 
     remove(id: number | string): Promise<DeleteAnswer>; // ID without callback
     remove(criteriaRawObject: any): Promise<DeleteAnswer>; // criteria obj without callback
-    remove(criteriaOrID: any | number | string, callback?: (_result: DeleteAnswer) => any): Promise<DeleteAnswer>;
+    remove(
+        criteriaOrID: any | number | string,
+        callback?: (_result: DeleteAnswer) => any,
+    ): Promise<DeleteAnswer>;
 }
 
 declare class MeteorTable<T> {
@@ -740,12 +850,20 @@ declare class MeteorTable<T> {
 
     remove(selector: any, callback?: () => DeleteAnswer): DeleteAnswer;
 
-    update(selector: any, modifier: any, options?: {
-        multi?: boolean | undefined;
-        upsert?: boolean | undefined;
-    }, callback?: (result: T) => any): number;
+    update(
+        selector: any,
+        modifier: any,
+        options?: {
+            multi?: boolean | undefined;
+            upsert?: boolean | undefined;
+        },
+        callback?: (result: T) => any,
+    ): number;
 
-    collection(nameOfCollection?: string, fillWithCriteria?: any): Mongo.Collection<T>;
+    collection(
+        nameOfCollection?: string,
+        fillWithCriteria?: any,
+    ): Mongo.Collection<T>;
 }
 
 declare class Database {
@@ -769,7 +887,11 @@ declare class Database {
     table<T>(tableName: string): Table<T>;
     noticeReady(): void;
     removeReadyListener(callback: () => void): void;
-    query(queryStr: string, callback: (err: Mysql.MysqlError, results: any) => any, queryArguments?: any[]): void;
+    query(
+        queryStr: string,
+        callback: (err: Mysql.MysqlError, results: any) => any,
+        queryArguments?: any[],
+    ): void;
 
     /**
      * Close the entire real connection and remove all event's listeners (if exist).
@@ -790,7 +912,10 @@ declare class Database {
     buildRules(): SelectQueryRules;
     buildRules(parentRules?: SelectQueryRules): SelectQueryRules;
 
-    collection<T>(tableName: string, callbackWhenReady?: Function): ObservableCollection<T>;
+    collection<T>(
+        tableName: string,
+        callbackWhenReady?: Function,
+    ): ObservableCollection<T>;
 
     /**Meteor js feature only: Returns a table which it's collection can make synchronization with the client */
     meteorTable<T>(tableName: string): MeteorTable<T>;

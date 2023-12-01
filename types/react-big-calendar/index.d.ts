@@ -24,51 +24,75 @@ import * as React from "react";
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-export type DayPropGetter = (date: Date, resourceId?: number | string) => React.HTMLAttributes<HTMLDivElement>;
+export type DayPropGetter = (
+    date: Date,
+    resourceId?: number | string,
+) => React.HTMLAttributes<HTMLDivElement>;
 export type EventPropGetter<T> = (
     event: T,
     start: Date,
     end: Date,
     isSelected: boolean,
 ) => { className?: string | undefined; style?: React.CSSProperties };
-export type SlotPropGetter = (date: Date, resourceId?: number | string) => React.HTMLAttributes<HTMLDivElement>;
+export type SlotPropGetter = (
+    date: Date,
+    resourceId?: number | string,
+) => React.HTMLAttributes<HTMLDivElement>;
 export type SlotGroupPropGetter = () => React.HTMLAttributes<HTMLDivElement>;
 
 export type stringOrDate = string | Date; // this isn't documented in the official repo, a thorough review is needed as to where stringOrDate or Date applies
 
 export type ViewKey = "MONTH" | "WEEK" | "WORK_WEEK" | "DAY" | "AGENDA";
 export type View = "month" | "week" | "work_week" | "day" | "agenda";
-export type ViewProps<TEvent extends object = Event, TResource extends object = object> =
-    & Omit<
-        CalendarProps<TEvent, TResource>,
-        "elementProps" | "className" | "style" | "view" | "toolbar" | "components" | "formats" | "messages" | "culture"
-    >
-    & {
-        date: stringOrDate; // date has always a value, in contrast to optional date in CalendarProps
+export type ViewProps<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> = Omit<
+    CalendarProps<TEvent, TResource>,
+    | "elementProps"
+    | "className"
+    | "style"
+    | "view"
+    | "toolbar"
+    | "components"
+    | "formats"
+    | "messages"
+    | "culture"
+> & {
+    date: stringOrDate; // date has always a value, in contrast to optional date in CalendarProps
 
-        // props assigned from Calendar's this.state.context, see there if you want to improve the type defs:
-        accessors: any;
-        components: any;
-        getters: any;
-        localizer: any;
+    // props assigned from Calendar's this.state.context, see there if you want to improve the type defs:
+    accessors: any;
+    components: any;
+    getters: any;
+    localizer: any;
 
-        // props assigned from Calendar instance, see there if you want to improve the type defs:
-        getDrilldownView: any; // = this.getDrilldownView
-        onNavigate: any; // = this.handleNavigate
-        onDrillDown: any; // = this.handleDrillDown
-        onSelectEvent: any; // = this.handleSelectEvent
-        onDoubleClickEvent: any; // = this.handleDoubleClickEvent
-        onSelectSlot: any; // = this.handleSelectSlot
-    };
-export type ViewsProps<TEvent extends object = Event, TResource extends object = object> =
+    // props assigned from Calendar instance, see there if you want to improve the type defs:
+    getDrilldownView: any; // = this.getDrilldownView
+    onNavigate: any; // = this.handleNavigate
+    onDrillDown: any; // = this.handleDrillDown
+    onSelectEvent: any; // = this.handleSelectEvent
+    onDoubleClickEvent: any; // = this.handleDoubleClickEvent
+    onSelectSlot: any; // = this.handleSelectSlot
+};
+export type ViewsProps<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> =
     | View[]
     | {
-        work_week?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
-        day?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
-        agenda?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
-        month?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
-        week?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
-    };
+          work_week?:
+              | boolean
+              | (React.ComponentType<any> & ViewStatic)
+              | undefined;
+          day?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
+          agenda?:
+              | boolean
+              | (React.ComponentType<any> & ViewStatic)
+              | undefined;
+          month?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
+          week?: boolean | (React.ComponentType<any> & ViewStatic) | undefined;
+      };
 export type DayLayoutFunction<TEvent extends object = Event> = (_: {
     events: TEvent[];
     minimumStartDifference: number;
@@ -89,8 +113,16 @@ export interface DateRange {
     end: Date;
 }
 
-export type DateFormatFunction = (date: Date, culture?: Culture, localizer?: DateLocalizer) => string;
-export type DateRangeFormatFunction = (range: DateRange, culture?: Culture, localizer?: DateLocalizer) => string;
+export type DateFormatFunction = (
+    date: Date,
+    culture?: Culture,
+    localizer?: DateLocalizer,
+) => string;
+export type DateRangeFormatFunction = (
+    range: DateRange,
+    culture?: Culture,
+    localizer?: DateLocalizer,
+) => string;
 export type DateFormat = string | DateFormatFunction;
 
 export interface Formats {
@@ -188,7 +220,10 @@ export interface DateCellWrapperProps {
     children: JSX.Element;
 }
 
-export interface Components<TEvent extends object = Event, TResource extends object = object> {
+export interface Components<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> {
     event?: React.ComponentType<EventProps<TEvent>> | undefined;
     eventWrapper?: React.ComponentType<EventWrapperProps<TEvent>> | undefined;
     eventContainerWrapper?: React.ComponentType | undefined;
@@ -200,44 +235,49 @@ export interface Components<TEvent extends object = Event, TResource extends obj
     toolbar?: React.ComponentType<ToolbarProps<TEvent, TResource>> | undefined;
     agenda?:
         | {
-            date?: React.ComponentType | undefined;
-            time?: React.ComponentType | undefined;
-            event?: React.ComponentType<EventProps<TEvent>> | undefined;
-        }
+              date?: React.ComponentType | undefined;
+              time?: React.ComponentType | undefined;
+              event?: React.ComponentType<EventProps<TEvent>> | undefined;
+          }
         | undefined;
     day?:
         | {
-            header?: React.ComponentType<HeaderProps> | undefined;
-            event?: React.ComponentType<EventProps<TEvent>> | undefined;
-        }
+              header?: React.ComponentType<HeaderProps> | undefined;
+              event?: React.ComponentType<EventProps<TEvent>> | undefined;
+          }
         | undefined;
     week?:
         | {
-            header?: React.ComponentType<HeaderProps> | undefined;
-            event?: React.ComponentType<EventProps<TEvent>> | undefined;
-        }
+              header?: React.ComponentType<HeaderProps> | undefined;
+              event?: React.ComponentType<EventProps<TEvent>> | undefined;
+          }
         | undefined;
     work_week?:
         | {
-            header?: React.ComponentType<HeaderProps> | undefined;
-            event?: React.ComponentType<EventProps<TEvent>> | undefined;
-        }
+              header?: React.ComponentType<HeaderProps> | undefined;
+              event?: React.ComponentType<EventProps<TEvent>> | undefined;
+          }
         | undefined;
     month?:
         | {
-            header?: React.ComponentType<HeaderProps> | undefined;
-            dateHeader?: React.ComponentType<DateHeaderProps> | undefined;
-            event?: React.ComponentType<EventProps<TEvent>> | undefined;
-        }
+              header?: React.ComponentType<HeaderProps> | undefined;
+              dateHeader?: React.ComponentType<DateHeaderProps> | undefined;
+              event?: React.ComponentType<EventProps<TEvent>> | undefined;
+          }
         | undefined;
     /**
      * component used as a header for each column in the TimeGridHeader
      */
     header?: React.ComponentType<HeaderProps> | undefined;
-    resourceHeader?: React.ComponentType<ResourceHeaderProps<TResource>> | undefined;
+    resourceHeader?:
+        | React.ComponentType<ResourceHeaderProps<TResource>>
+        | undefined;
 }
 
-export interface ToolbarProps<TEvent extends object = Event, TResource extends object = object> {
+export interface ToolbarProps<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> {
     date: Date;
     view: View;
     views: ViewsProps<TEvent, TResource>;
@@ -313,22 +353,22 @@ export interface SlotInfo {
     /** For "select" action */
     bounds?:
         | {
-            x: number;
-            y: number;
-            top: number;
-            bottom: number;
-            left: number;
-            right: number;
-        }
+              x: number;
+              y: number;
+              top: number;
+              bottom: number;
+              left: number;
+              right: number;
+          }
         | undefined;
     /** For "click" or "doubleClick" actions */
     box?:
         | {
-            x: number;
-            y: number;
-            clientX: number;
-            clientY: number;
-        }
+              x: number;
+              y: number;
+              clientX: number;
+              clientY: number;
+          }
         | undefined;
 }
 
@@ -362,7 +402,11 @@ export interface DateLocalizerSpec {
     lastVisibleDay: (date: Date, localizer: any) => Date;
     visibleDays: (date: Date, localizer: any) => Date[];
 
-    getSlotDate: (date: Date, minutesFromMidnight: number, offset: number) => Date;
+    getSlotDate: (
+        date: Date,
+        minutesFromMidnight: number,
+        offset: number,
+    ) => Date;
     getTimezoneOffset: (date: Date) => number;
     getDstOffset: (date: Date, dateB: Date) => number;
     getTotalMin: (dateA: Date, dateB: Date) => number;
@@ -408,7 +452,11 @@ export class DateLocalizer {
     lastVisibleDay: (date: Date, localizer: any) => Date;
     visibleDays: (date: Date, localizer: any) => Date[];
 
-    getSlotDate: (date: Date, minutesFromMidnight: number, offset: number) => Date;
+    getSlotDate: (
+        date: Date,
+        minutesFromMidnight: number,
+        offset: number,
+    ) => Date;
     getTimezoneOffset: (date: Date) => number;
     getDstOffset: (date: Date, dateB: Date) => number;
     getTotalMin: (dateA: Date, dateB: Date) => number;
@@ -422,7 +470,10 @@ export class DateLocalizer {
     segmentOffset: number;
 }
 
-export interface CalendarProps<TEvent extends object = Event, TResource extends object = object> {
+export interface CalendarProps<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> {
     children?: React.ReactNode;
     ref?: React.LegacyRef<Calendar<TEvent, TResource>> | undefined;
     localizer: DateLocalizer;
@@ -433,23 +484,38 @@ export interface CalendarProps<TEvent extends object = Event, TResource extends 
     events?: TEvent[] | undefined;
     backgroundEvents?: TEvent[] | undefined;
     handleDragStart?: ((event: TEvent) => void) | undefined;
-    onNavigate?: ((newDate: Date, view: View, action: NavigateAction) => void) | undefined;
+    onNavigate?:
+        | ((newDate: Date, view: View, action: NavigateAction) => void)
+        | undefined;
     onView?: ((view: View) => void) | undefined;
     onDrillDown?: ((date: Date, view: View) => void) | undefined;
     onSelectSlot?: ((slotInfo: SlotInfo) => void) | undefined;
-    onDoubleClickEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
-    onSelectEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
-    onKeyPressEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
+    onDoubleClickEvent?:
+        | ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void)
+        | undefined;
+    onSelectEvent?:
+        | ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void)
+        | undefined;
+    onKeyPressEvent?:
+        | ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void)
+        | undefined;
     onSelecting?: (range: { start: Date; end: Date }) => boolean | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    onRangeChange?: (range: Date[] | { start: Date; end: Date }, view?: View) => void | undefined;
+    onRangeChange?: (
+        range: Date[] | { start: Date; end: Date },
+        view?: View,
+    ) => void | undefined;
     showAllEvents?: boolean | undefined;
     selected?: any;
     views?: ViewsProps<TEvent, TResource> | undefined;
     doShowMoreDrillDown?: boolean | undefined;
     drilldownView?: View | null | undefined;
     getDrilldownView?:
-        | ((targetDate: Date, currentViewName: View, configuredViewNames: View[]) => void)
+        | ((
+              targetDate: Date,
+              currentViewName: View,
+              configuredViewNames: View[],
+          ) => void)
         | null
         | undefined;
     length?: number | undefined;
@@ -475,16 +541,29 @@ export interface CalendarProps<TEvent extends object = Event, TResource extends 
     formats?: Formats | undefined;
     components?: Components<TEvent, TResource> | undefined;
     messages?: Messages | undefined;
-    dayLayoutAlgorithm?: DayLayoutAlgorithm | DayLayoutFunction<TEvent> | undefined;
+    dayLayoutAlgorithm?:
+        | DayLayoutAlgorithm
+        | DayLayoutFunction<TEvent>
+        | undefined;
     titleAccessor?: keyof TEvent | ((event: TEvent) => string) | undefined;
-    tooltipAccessor?: keyof TEvent | ((event: TEvent) => string) | null | undefined;
+    tooltipAccessor?:
+        | keyof TEvent
+        | ((event: TEvent) => string)
+        | null
+        | undefined;
     allDayAccessor?: keyof TEvent | ((event: TEvent) => boolean) | undefined;
     startAccessor?: keyof TEvent | ((event: TEvent) => Date) | undefined;
     endAccessor?: keyof TEvent | ((event: TEvent) => Date) | undefined;
     resourceAccessor?: keyof TEvent | ((event: TEvent) => any) | undefined;
     resources?: TResource[] | undefined;
-    resourceIdAccessor?: keyof TResource | ((resource: TResource) => any) | undefined;
-    resourceTitleAccessor?: keyof TResource | ((resource: TResource) => any) | undefined;
+    resourceIdAccessor?:
+        | keyof TResource
+        | ((resource: TResource) => any)
+        | undefined;
+    resourceTitleAccessor?:
+        | keyof TResource
+        | ((resource: TResource) => any)
+        | undefined;
     defaultView?: View | undefined;
     defaultDate?: stringOrDate | undefined;
     className?: string | undefined;
@@ -510,9 +589,10 @@ export interface MoveOptions {
     today: Date;
 }
 
-export class Calendar<TEvent extends object = Event, TResource extends object = object> extends React.Component<
-    CalendarProps<TEvent, TResource>
-> {}
+export class Calendar<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> extends React.Component<CalendarProps<TEvent, TResource>> {}
 
 export interface components {
     timeSlotWrapper: React.ComponentType;
@@ -550,7 +630,10 @@ export const Views: {
 };
 export function move(View: ViewStatic | ViewKey, options: MoveOptions): Date;
 
-export interface TimeGridProps<TEvent extends object = Event, TResource extends object = object> {
+export interface TimeGridProps<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> {
     eventOffset: number;
     events?: TEvent[] | undefined;
     backgroundEvents?: TEvent[] | undefined;
@@ -576,20 +659,29 @@ export interface TimeGridProps<TEvent extends object = Event, TResource extends 
     onSelectSlot?: ((slotInfo: SlotInfo) => void) | undefined;
     onSelectEnd?: ((...args: any[]) => any) | undefined;
     onSelectStart?: ((...args: any[]) => any) | undefined;
-    onSelectEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
-    onDoubleClickEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
+    onSelectEvent?:
+        | ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void)
+        | undefined;
+    onDoubleClickEvent?:
+        | ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void)
+        | undefined;
     onKeyPressEvent?: ((...args: any[]) => any) | undefined;
     onDrillDown?: ((date: Date, view: View) => void) | undefined;
     getDrilldownView?:
-        | ((targetDate: Date, currentViewName: View, configuredViewNames: View[]) => void)
+        | ((
+              targetDate: Date,
+              currentViewName: View,
+              configuredViewNames: View[],
+          ) => void)
         | null
         | undefined;
     dayLayoutAlgorithm?: any;
 }
 
-export class TimeGrid<TEvent extends object = Event, TResource extends object = object> extends React.Component<
-    TimeGridProps<TEvent, TResource>
-> {}
+export class TimeGrid<
+    TEvent extends object = Event,
+    TResource extends object = object,
+> extends React.Component<TimeGridProps<TEvent, TResource>> {}
 
 export interface WorkWeekProps {
     date: Date;

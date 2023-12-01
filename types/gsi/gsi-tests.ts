@@ -7,7 +7,7 @@ google.accounts.id.initialize({
 
 google.accounts.id.initialize({
     client_id: "YOUR_GOOGLE_CLIENT_ID",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.credential;
         // $ExpectType "auto" | "user" | "user_1tap" | "user_2tap" | "btn" | "btn_confirm" | "btn_add_session" | "btn_confirm_add_session"
@@ -32,7 +32,7 @@ google.accounts.id.initialize({
 /**
  * @see https://developers.google.com/identity/gsi/web/reference/js-reference#google.accounts.id.prompt
  */
-google.accounts.id.prompt(notification => {
+google.accounts.id.prompt((notification) => {
     if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
         // continue with another identity provider.
     }
@@ -66,7 +66,7 @@ function onNextButtonClicked() {
 /**
  * @see https://developers.google.com/identity/gsi/web/reference/js-reference#google.accounts.id.revoke
  */
-google.accounts.id.revoke("1618033988749895", done => {
+google.accounts.id.revoke("1618033988749895", (done) => {
     if (done.successful) {
         // ...
     } else {

@@ -63,7 +63,11 @@ declare namespace dnsTxt {
  * @param buffer A buffer to use to encode `data` into. A new buffer will be allocated if not provided.
  * @param [offset=0] Byte offset in `buffer` where `data` should be encoded.
  */
-declare function encode(data: dnsTxt.DataToEncode, buffer?: Buffer, offset?: number): Buffer;
+declare function encode(
+    data: dnsTxt.DataToEncode,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 declare namespace encode {
     /**
      * After encoding, `bytes` is set to the amount of bytes used to
@@ -81,7 +85,11 @@ declare namespace encode {
  * @param [offset=0] The byte offset into `buffer` at which to begin decoding the data object.
  * @param [length=buffer.length] The byte offset into `buffer` at which to stop decoding the data object.
  */
-declare function decode(buffer: Buffer, offset?: number, length?: number): dnsTxt.DecodedData;
+declare function decode(
+    buffer: Buffer,
+    offset?: number,
+    length?: number,
+): dnsTxt.DecodedData;
 declare namespace decode {
     /**
      * After decoding, `bytes` is set to the amount of bytes used to

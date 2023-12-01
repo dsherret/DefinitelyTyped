@@ -9,10 +9,10 @@ const searchControl = L.esri.Geocoding.geosearch().addTo(map);
 const results = L.layerGroup([]).addTo(map);
 
 // listen for the results event and add every result to the map
-searchControl.on("results", data => {
+searchControl.on("results", (data) => {
     results.clearLayers();
-    for (let i = (<any> data).results.length - 1; i >= 0; i--) {
-        results.addLayer(L.marker((<any> data).results[i].latlng));
+    for (let i = (<any>data).results.length - 1; i >= 0; i--) {
+        results.addLayer(L.marker((<any>data).results[i].latlng));
     }
 });
 
@@ -30,29 +30,40 @@ L.esri.Geocoding.geosearch({
     providers: [arcgisOnline, gisDay], // will geocode via ArcGIS Online and search the GIS Day feature service.
 }).addTo(map);
 
-L.esri.Geocoding.geocode().text("380 New York St, Redlands, California, 92373").run((err, results, response) => {
-    console.log(results);
-});
-
-L.esri.Geocoding.geocode().address("380 New York St").city("Redlands").region("California").postal("92373").run(
-    (err, results, response) => {
+L.esri.Geocoding.geocode()
+    .text("380 New York St, Redlands, California, 92373")
+    .run((err, results, response) => {
         console.log(results);
-    },
-);
+    });
+
+L.esri.Geocoding.geocode()
+    .address("380 New York St")
+    .city("Redlands")
+    .region("California")
+    .postal("92373")
+    .run((err, results, response) => {
+        console.log(results);
+    });
 
 const southWest = L.latLng(37.712, -108.227);
 const northEast = L.latLng(41.774, -102.125);
 const bounds = L.latLngBounds(southWest, northEast); // Colorado
 
-L.esri.Geocoding.geocode().text("Denver").within(bounds).run((err, response) => {
-    console.log(response);
-});
+L.esri.Geocoding.geocode()
+    .text("Denver")
+    .within(bounds)
+    .run((err, response) => {
+        console.log(response);
+    });
 
 const denver = L.latLng(37.712, -108.227);
 
-L.esri.Geocoding.geocode().text("Highlands Ranch").nearby(denver, 20000).run((err, response) => {
-    const res: any[] = response.results;
-});
+L.esri.Geocoding.geocode()
+    .text("Highlands Ranch")
+    .nearby(denver, 20000)
+    .run((err, response) => {
+        const res: any[] = response.results;
+    });
 
 L.esri.Geocoding.suggest()
     .text("trea")

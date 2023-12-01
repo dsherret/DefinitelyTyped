@@ -17,7 +17,11 @@ declare class Vivus {
      * @param options Options about the animation
      * @param callback Callback for the end of the animation
      */
-    constructor(element: string | HTMLElement, options?: Vivus.VivusOptions, callback?: (vivusInstance: Vivus) => void);
+    constructor(
+        element: string | HTMLElement,
+        options?: Vivus.VivusOptions,
+        callback?: (vivusInstance: Vivus) => void,
+    );
 
     /**
      * Plays the animation with the speed given in parameter.
@@ -80,7 +84,14 @@ declare namespace Vivus {
          * Can be `'delayed'`, `'sync'`, `'oneByOne'`, `'script'`, `'scenario'`, or `'scenario-sync'`.
          * (default: `'delayed'`)
          */
-        type?: "delayed" | "sync" | "oneByOne" | "script" | "scenario" | "scenario-sync" | undefined;
+        type?:
+            | "delayed"
+            | "sync"
+            | "oneByOne"
+            | "script"
+            | "scenario"
+            | "scenario-sync"
+            | undefined;
         /**
          * Link to the SVG to animate.
          * If set, Vivus will create an object tag and append it to the DOM element given to the constructor.

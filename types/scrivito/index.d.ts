@@ -58,7 +58,10 @@ export class Binary {
     static upload(source: Blob | File, options: UploadOptions): FutureBinary;
     contentLength(): number;
     contentType(): string;
-    copy(options?: { filename?: string | undefined; contentType?: string | undefined }): FutureBinary;
+    copy(options?: {
+        filename?: string | undefined;
+        contentType?: string | undefined;
+    }): FutureBinary;
     filename(): string;
     isPrivate(): boolean;
     metadata(): MetadataCollection;
@@ -107,7 +110,10 @@ interface BackgroundImageTagProps {
     style: CSSPropsWithoutBackground & BackgroundImageBackgroundProp;
     className?: string | undefined;
 }
-export class BackgroundImageTag extends React.Component<BackgroundImageTagProps, any> {}
+export class BackgroundImageTag extends React.Component<
+    BackgroundImageTagProps,
+    any
+> {}
 
 interface ChildListTagProps {
     parent?: Obj | undefined;
@@ -118,7 +124,8 @@ interface ChildListTagProps {
 
 export class ChildListTag extends React.Component<ChildListTagProps, any> {}
 
-interface ContentTagProps extends Omit<React.AllHTMLAttributes<any>, "content"> {
+interface ContentTagProps
+    extends Omit<React.AllHTMLAttributes<any>, "content"> {
     attribute: string;
     content?: Obj | Widget | undefined;
     tag?: string | undefined;
@@ -130,7 +137,8 @@ export class ContentTag extends React.Component<ContentTagProps, any> {}
 
 export class CurrentPage extends React.Component<{}, any> {}
 
-interface ImageTagProps extends Omit<React.HTMLAttributes<HTMLImageElement>, "content"> {
+interface ImageTagProps
+    extends Omit<React.HTMLAttributes<HTMLImageElement>, "content"> {
     attribute?: string | undefined;
     content: Binary | Obj | Widget;
     alt?: string | undefined;
@@ -176,7 +184,9 @@ interface ConfigOptions {
     priority?: Priority | undefined;
     adoptUi?: boolean | undefined;
     baseUrlForSite?: ((siteId: string) => string | undefined) | undefined;
-    siteForUrl?: ((url: string) => { siteId: string; baseUrl: string } | undefined) | undefined;
+    siteForUrl?:
+        | ((url: string) => { siteId: string; baseUrl: string } | undefined)
+        | undefined;
 }
 
 /**
@@ -192,9 +202,11 @@ interface AttributeProps {
     title?: string | undefined;
     description?: string | undefined;
     values?: AttributeValue[] | undefined;
-    options?: {
-        toolbar: string[];
-    } | undefined;
+    options?:
+        | {
+              toolbar: string[];
+          }
+        | undefined;
 }
 
 interface EditingConfigAttributes {
@@ -208,16 +220,26 @@ interface PropertiesGroup {
     properties?: string[] | undefined;
 }
 
-export type ValidationReturnType = { message: string; severity: string } | string | undefined;
+export type ValidationReturnType =
+    | { message: string; severity: string }
+    | string
+    | undefined;
 
 type AttributeValidationCallback = (
     current: any,
-    options?: { obj?: Obj | undefined; widget?: Widget | undefined; content: any; name: string },
+    options?: {
+        obj?: Obj | undefined;
+        widget?: Widget | undefined;
+        content: any;
+        name: string;
+    },
 ) => ValidationReturnType;
 
 export type AttributeBasedValidation = [string, AttributeValidationCallback];
 
-export type ClassBasedValidation = (target: Widget | Obj) => ValidationReturnType;
+export type ClassBasedValidation = (
+    target: Widget | Obj,
+) => ValidationReturnType;
 
 export type Validation = AttributeBasedValidation | ClassBasedValidation;
 
@@ -332,7 +354,9 @@ interface ObjSearchAttributeBasedBoost {
     [key: string]: number;
 }
 
-type OrderParam = ObjSearchSingleAttribute | [ObjSearchSingleAttribute, "asc" | "desc"];
+type OrderParam =
+    | ObjSearchSingleAttribute
+    | [ObjSearchSingleAttribute, "asc" | "desc"];
 
 interface ObjFacetValue {
     count: () => number;
@@ -349,7 +373,10 @@ export interface ObjSearch {
     ) => ObjSearch;
     andNot: (
         attribute: ObjSearchAttribute,
-        operator: Extract<ObjSearchOperator, "equals" | "startsWith" | "isGreaterThan" | "isLessThan">,
+        operator: Extract<
+            ObjSearchOperator,
+            "equals" | "startsWith" | "isGreaterThan" | "isLessThan"
+        >,
         value: ObjSearchValue,
     ) => ObjSearch;
     boost: (
@@ -359,11 +386,20 @@ export interface ObjSearch {
         factor: number,
     ) => ObjSearch;
     count: () => number;
-    facet: (attribute: ObjSearchSingleAttribute, option?: { limit: number; includeObjs: number }) => ObjFacetValue;
+    facet: (
+        attribute: ObjSearchSingleAttribute,
+        option?: { limit: number; includeObjs: number },
+    ) => ObjFacetValue;
     first: () => Obj | null;
     offset: (offSet: number) => ObjSearch;
-    order: (attributeOrAttributes: OrderParam | OrderParam[], direction: "asc" | "desc") => ObjSearch;
-    suggest: (prefix: string, options?: { limit: number; attributes: ObjSearchSingleAttribute[] }) => string[];
+    order: (
+        attributeOrAttributes: OrderParam | OrderParam[],
+        direction: "asc" | "desc",
+    ) => ObjSearch;
+    suggest: (
+        prefix: string,
+        options?: { limit: number; attributes: ObjSearchSingleAttribute[] },
+    ) => string[];
     take: (count?: number) => Obj[];
     toArray: () => Obj[];
 }
@@ -384,7 +420,10 @@ export class Obj {
     // Static methods
     static all(): ObjSearch;
     static create(attributes?: CreateAttributes): Obj;
-    static createFromFile(file: File, attributes: CreateAttributes): Promise<Obj>;
+    static createFromFile(
+        file: File,
+        attributes: CreateAttributes,
+    ): Promise<Obj>;
     static get(id: string): Obj | null;
     static getByPath(path: string): Obj | null;
     static getByPermalink(permalink: string): Obj | null;
@@ -427,7 +466,9 @@ export class Obj {
     update(attributes: any): void;
     widget(id: string): Widget | null;
     widgets(): Widget[];
-    updateReferences(mapping: (refId: string) => string | undefined): Promise<void>;
+    updateReferences(
+        mapping: (refId: string) => string | undefined,
+    ): Promise<void>;
     finishSaving(): Promise<void>;
     onAllSites(): SiteContext;
     onSite(siteId: string): SiteContext;
@@ -445,7 +486,12 @@ interface SiteContext {
     getByPath(path: string): Obj | null;
     getByPermalink(permalink: string): Obj | null;
     root(): Obj | null;
-    where(attribute: ObjSearchSingleAttribute, operator: ObjSearchOperator, value: string, boost?: any): ObjSearch;
+    where(
+        attribute: ObjSearchSingleAttribute,
+        operator: ObjSearchOperator,
+        value: string,
+        boost?: any,
+    ): ObjSearch;
 }
 
 interface ObjClassOptions {
@@ -543,7 +589,10 @@ interface MenuInsertParameters {
     enabled?: boolean | undefined;
 }
 
-type MenuModifyParameters = Pick<MenuInsertParameters, "id" | "group" | "icon" | "position" | "title">;
+type MenuModifyParameters = Pick<
+    MenuInsertParameters,
+    "id" | "group" | "icon" | "position" | "title"
+>;
 
 interface Menu {
     insert: (params: MenuInsertParameters) => void;
@@ -583,18 +632,35 @@ export function navigateTo(
 ): void;
 export function openDialog(name: string): void;
 export function preload(preloadDump: any): Promise<{ dumpLoaded: boolean }>;
-export function provideComponent(className: string, component: WidgetComponent | ObjComponent): void;
-export function provideEditingConfig(name: string, editingConfig: EditingConfig): void;
+export function provideComponent(
+    className: string,
+    component: WidgetComponent | ObjComponent,
+): void;
+export function provideEditingConfig(
+    name: string,
+    editingConfig: EditingConfig,
+): void;
 export function provideAuthGroups(options: AuthGroupsOptions): void;
 export function createObjClass(options: ObjClassOptions): Obj;
-export function createWidgetClass(options: WidgetClassOptions): AbstractWidgetClass;
-export function provideObjClass(name: string, contentClassOrOptions: ObjClassOptions | AbstractObjClass): ObjClass;
+export function createWidgetClass(
+    options: WidgetClassOptions,
+): AbstractWidgetClass;
+export function provideObjClass(
+    name: string,
+    contentClassOrOptions: ObjClassOptions | AbstractObjClass,
+): ObjClass;
 export function provideWidgetClass(
     name: string,
     contentClassOrOptions: WidgetClassOptions | AbstractWidgetClass,
 ): WidgetClass;
-export function registerComponent(name: string, component: WidgetComponent | ObjComponent): void;
-export function renderPage(page: Obj, renderFunction: () => void): Promise<{ result: Obj; preloadDump: any }>;
+export function registerComponent(
+    name: string,
+    component: WidgetComponent | ObjComponent,
+): void;
+export function renderPage(
+    page: Obj,
+    renderFunction: () => void,
+): Promise<{ result: Obj; preloadDump: any }>;
 export function setVisitorIdToken(idToken: string): void;
 export function updateContent(): void;
 export function updateMenuExtensions(): void;
@@ -603,12 +669,17 @@ export function urlFor(
     options?: { query?: string | undefined; hash?: string | undefined },
 ): string;
 export function useHistory(history: History): void;
-export function validationResultsFor(model: Obj | Widget, attribute: string): ValidationResult[];
+export function validationResultsFor(
+    model: Obj | Widget,
+    attribute: string,
+): ValidationResult[];
 export function isComparisonActive(): boolean;
 export function currentWorkspaceId(): string;
 export function currentWorkspace(): Workspace;
 export function currentEditor(): Editor | null;
-export function configureObjClassForContentType(mapping?: { [key: string]: string }): void;
+export function configureObjClassForContentType(mapping?: {
+    [key: string]: string;
+}): void;
 
 // utility types
 

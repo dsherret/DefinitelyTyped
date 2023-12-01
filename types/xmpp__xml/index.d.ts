@@ -4,7 +4,9 @@ import * as ltx from "ltx";
 import * as escape from "ltx/lib/escape";
 import LtxParser = require("ltx/lib/parsers/ltx");
 
-declare function xml(...args: Parameters<typeof ltx.createElement>): ReturnType<typeof ltx.createElement>;
+declare function xml(
+    ...args: Parameters<typeof ltx.createElement>
+): ReturnType<typeof ltx.createElement>;
 
 declare namespace xml {
     type Element = ltx.Element;
@@ -24,7 +26,10 @@ declare namespace xml {
         root: Element | null;
         cursor: Element | null;
 
-        onStartElement(name: string, attrs?: string | { [attrName: string]: any }): void;
+        onStartElement(
+            name: string,
+            attrs?: string | { [attrName: string]: any },
+        ): void;
         onEndElement(name: string): void;
         onText(str: string): void;
     }

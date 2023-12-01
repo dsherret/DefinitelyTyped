@@ -12,13 +12,17 @@ export interface RepeatingLinearGradientNode {
 
 export interface RadialGradientNode {
     type: "radial-gradient";
-    orientation?: Array<ShapeNode | DefaultRadialNode | ExtentKeywordNode> | undefined;
+    orientation?:
+        | Array<ShapeNode | DefaultRadialNode | ExtentKeywordNode>
+        | undefined;
     colorStops: ColorStop[];
 }
 
 export interface RepeatingRadialGradientNode {
     type: "repeating-radial-gradient";
-    orientation?: Array<ShapeNode | DefaultRadialNode | ExtentKeywordNode> | undefined;
+    orientation?:
+        | Array<ShapeNode | DefaultRadialNode | ExtentKeywordNode>
+        | undefined;
     colorStops: ColorStop[];
 }
 
@@ -70,7 +74,13 @@ export interface RgbaNode {
 
 export interface ShapeNode {
     type: "shape";
-    style?: ExtentKeywordNode | PxNode | EmNode | PercentNode | PositionKeywordNode | undefined;
+    style?:
+        | ExtentKeywordNode
+        | PxNode
+        | EmNode
+        | PercentNode
+        | PositionKeywordNode
+        | undefined;
     value: "ellipse" | "circle";
     at?: PositionNode | undefined;
 }
@@ -88,14 +98,30 @@ export interface PositionKeywordNode {
 export interface PositionNode {
     type: "position";
     value: {
-        x: ExtentKeywordNode | PxNode | EmNode | PercentNode | PositionKeywordNode;
-        y: ExtentKeywordNode | PxNode | EmNode | PercentNode | PositionKeywordNode;
+        x:
+            | ExtentKeywordNode
+            | PxNode
+            | EmNode
+            | PercentNode
+            | PositionKeywordNode;
+        y:
+            | ExtentKeywordNode
+            | PxNode
+            | EmNode
+            | PercentNode
+            | PositionKeywordNode;
     };
 }
 
 export interface ExtentKeywordNode {
     type: "extent-keyword";
-    value: "closest-side" | "closest-corner" | "farthest-side" | "farthest-corner" | "contain" | "cover";
+    value:
+        | "closest-side"
+        | "closest-corner"
+        | "farthest-side"
+        | "farthest-corner"
+        | "contain"
+        | "cover";
     at?: PositionNode | undefined;
 }
 

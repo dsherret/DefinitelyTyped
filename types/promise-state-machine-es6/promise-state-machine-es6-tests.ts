@@ -12,10 +12,7 @@ enum Transitions {
 }
 
 class MyFsm extends PromiseStateMachine<State, Transitions> {
-    constructor(props: {
-        initial: State;
-        events: Events<State, Transitions>;
-    }) {
+    constructor(props: { initial: State; events: Events<State, Transitions> }) {
         super(props);
     }
 }

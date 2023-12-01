@@ -528,7 +528,10 @@ declare namespace sn_ws {
          * @param requestorContext
          * @param requestorId
          */
-        setRequestorProfile(requestorContext: string, requestorId: string): void;
+        setRequestorProfile(
+            requestorContext: string,
+            requestorId: string,
+        ): void;
 
         /**
          * Set a REST message function variable with the specified name from the REST message record

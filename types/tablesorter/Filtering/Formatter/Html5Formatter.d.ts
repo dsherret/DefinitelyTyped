@@ -22,7 +22,11 @@ export interface Html5Formatter {
      * @return
      * The jQuery-object of the created control.
      */
-    html5Number(cell: JQuery, index: number, options?: Html5NumberOptions): JQuery;
+    html5Number(
+        cell: JQuery,
+        index: number,
+        options?: Html5NumberOptions,
+    ): JQuery;
 
     /**
      * Creates an html5 range-control.
@@ -39,7 +43,11 @@ export interface Html5Formatter {
      * @return
      * The jQuery-object of the created control.
      */
-    html5Range(cell: JQuery, index: number, options?: Html5RangeOptions): JQuery;
+    html5Range(
+        cell: JQuery,
+        index: number,
+        options?: Html5RangeOptions,
+    ): JQuery;
 
     /**
      * Creates an html5 color-control.
@@ -56,5 +64,9 @@ export interface Html5Formatter {
      * @return
      * The jQuery-object of the created control.
      */
-    html5Color(cell: JQuery, index: number, options?: Html5ColorOptions): JQuery;
+    html5Color(
+        cell: JQuery,
+        index: number,
+        options?: Html5ColorOptions,
+    ): JQuery;
 }

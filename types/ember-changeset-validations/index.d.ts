@@ -16,22 +16,24 @@ export interface ValidatorMapFunc {
 
 export type ValidatorMap =
     | {
-        [s: string]: ValidatorMapFunc | ValidatorMapFunc[] | unknown;
-    }
+          [s: string]: ValidatorMapFunc | ValidatorMapFunc[] | unknown;
+      }
     | null
     | undefined;
 
 export type ValidatorAction =
     | {
-        (params: {
-            key: string;
-            newValue: unknown;
-            oldValue: unknown;
-            changes: unknown;
-            content: object;
-        }): ValidationResult | Promise<ValidationResult>;
-    }
+          (params: {
+              key: string;
+              newValue: unknown;
+              oldValue: unknown;
+              changes: unknown;
+              content: object;
+          }): ValidationResult | Promise<ValidationResult>;
+      }
     | null
     | undefined;
 
-export default function lookupValidator(validationMap: ValidatorMap): ValidatorAction;
+export default function lookupValidator(
+    validationMap: ValidatorMap,
+): ValidatorAction;

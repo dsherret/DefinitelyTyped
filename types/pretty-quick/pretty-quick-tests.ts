@@ -10,15 +10,15 @@ const prettyQuickResult = prettyQuick("./cwd", {
         revision; // $ExpectType string
     },
 
-    onFoundChangedFiles: changedFiles => {
+    onFoundChangedFiles: (changedFiles) => {
         changedFiles; // $ExpectType string[]
     },
 
-    onPartiallyStagedFile: file => {
+    onPartiallyStagedFile: (file) => {
         file; // $ExpectType string
     },
 
-    onWriteFile: file => {
+    onWriteFile: (file) => {
         file; // $ExpectType string
     },
 
@@ -27,7 +27,7 @@ const prettyQuickResult = prettyQuick("./cwd", {
         isFormatted; // $ExpectedType boolean
     },
 
-    onExamineFile: file => {
+    onExamineFile: (file) => {
         file; // $ExpectType string
     },
 });
@@ -35,7 +35,7 @@ const prettyQuickResult = prettyQuick("./cwd", {
 {
     prettyQuick("/sub-directory/", {
         since: "banana",
-        onWriteFile: file => {},
+        onWriteFile: (file) => {},
         ignorePath: "/.ignorePath",
     });
 }

@@ -32,16 +32,24 @@ declare namespace SMTPTransport {
         method: "XOAUTH2";
     }
 
-    type AuthenticationType = AuthenticationTypeLogin | AuthenticationTypeOAuth2;
+    type AuthenticationType =
+        | AuthenticationTypeLogin
+        | AuthenticationTypeOAuth2;
 
     interface MailOptions extends Mail.Options {
         auth?: SMTPConnection.AuthenticationType | undefined;
         dsn?: SMTPConnection.DSNOptions | undefined;
     }
 
-    interface Options extends MailOptions, TransportOptions, SMTPConnection.Options {
+    interface Options
+        extends MailOptions,
+            TransportOptions,
+            SMTPConnection.Options {
         service?: string | undefined;
-        getSocket?(options: Options, callback: (err: Error | null, socketOptions: any) => void): void; // TODO http.ClientRequest?
+        getSocket?(
+            options: Options,
+            callback: (err: Error | null, socketOptions: any) => void,
+        ): void; // TODO http.ClientRequest?
         url?: string | undefined;
     }
 
@@ -57,7 +65,10 @@ declare namespace SMTPTransport {
     }
 }
 
-declare class SMTPTransport extends EventEmitter implements Transport<SMTPTransport.SentMessageInfo> {
+declare class SMTPTransport
+    extends EventEmitter
+    implements Transport<SMTPTransport.SentMessageInfo>
+{
     options: SMTPTransport.Options;
 
     mailer: Mail<SMTPTransport.SentMessageInfo>;
@@ -71,16 +82,24 @@ declare class SMTPTransport extends EventEmitter implements Transport<SMTPTransp
     constructor(options: SMTPTransport.Options | string);
 
     /** Placeholder function for creating proxy sockets. This method immediatelly returns without a socket */
-    getSocket(options: SMTPTransport.Options, callback: (err: Error | null, socketOptions: object) => void): void;
+    getSocket(
+        options: SMTPTransport.Options,
+        callback: (err: Error | null, socketOptions: object) => void,
+    ): void;
 
     getAuth(
-        authOpts: SMTPConnection.AuthenticationTypeLogin | SMTPConnection.AuthenticationTypeOAuth2,
+        authOpts:
+            | SMTPConnection.AuthenticationTypeLogin
+            | SMTPConnection.AuthenticationTypeOAuth2,
     ): SMTPTransport.AuthenticationType;
 
     /** Sends an e-mail using the selected settings */
     send(
         mail: MailMessage<SMTPTransport.SentMessageInfo>,
-        callback: (err: Error | null, info: SMTPTransport.SentMessageInfo) => void,
+        callback: (
+            err: Error | null,
+            info: SMTPTransport.SentMessageInfo,
+        ) => void,
     ): void;
 
     /** Verifies SMTP configuration */

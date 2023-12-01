@@ -20,7 +20,10 @@ export declare function readMetadata(
     callback: (err: Error, result: any) => void,
 ): child_process.ChildProcess;
 
-export declare function convert(args: any, callback: (err: Error, result: any) => void): child_process.ChildProcess;
+export declare function convert(
+    args: any,
+    callback: (err: Error, result: any) => void,
+): child_process.ChildProcess;
 export declare function convert(
     args: any,
     timeout: number,
@@ -34,7 +37,10 @@ export declare function resize(
     options: Options,
     callback: (err: Error, result: any) => void,
 ): child_process.ChildProcess;
-export declare function crop(options: Options, callback: (err: Error, result: any) => void): child_process.ChildProcess;
+export declare function crop(
+    options: Options,
+    callback: (err: Error, result: any) => void,
+): child_process.ChildProcess;
 export declare function resizeArgs(options: Options): ResizeArgs;
 
 export interface Features {

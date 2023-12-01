@@ -5,7 +5,12 @@ declare namespace c {
     interface IUtil {
         // Extend an object (and any object it contains) with one or more objects (and objects contained in them).
         extendDeep(mergeInto: any, mergeFrom: any, depth?: number): any;
-        extendDeep(mergeInto: any, mergeFrom1: any, mergeFrom2: any, depth?: number): any;
+        extendDeep(
+            mergeInto: any,
+            mergeFrom1: any,
+            mergeFrom2: any,
+            depth?: number,
+        ): any;
         extendDeep(mergeInto: any, ...mergeFrom: any): any;
 
         // Return a deep copy of the specified object.
@@ -18,10 +23,18 @@ declare namespace c {
         diffDeep(object1: any, object2: any, depth?: number): any;
 
         // Make a javascript object property immutable (assuring it cannot be changed from the current value).
-        makeImmutable(object: any, propertyName?: string, propertyValue?: string): any;
+        makeImmutable(
+            object: any,
+            propertyName?: string,
+            propertyValue?: string,
+        ): any;
 
         // Make an object property hidden so it doesn't appear when enumerating elements of the object.
-        makeHidden(object: any, propertyName: string, propertyValue?: string): any;
+        makeHidden(
+            object: any,
+            propertyName: string,
+            propertyValue?: string,
+        ): any;
 
         // Get the current value of a config environment variable
         getEnv(varName: string): string;

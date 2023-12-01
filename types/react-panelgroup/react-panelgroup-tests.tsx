@@ -52,7 +52,7 @@ const test5 = (
         borderColor="#FFF"
         panelColor="#FFF"
         spacing={12}
-        onUpdate={data => {}}
+        onUpdate={(data) => {}}
     >
         <div>panel 1</div>
         <div>panel 2</div>

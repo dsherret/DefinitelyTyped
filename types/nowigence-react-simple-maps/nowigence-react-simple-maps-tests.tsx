@@ -1,4 +1,10 @@
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "nowigence-react-simple-maps";
+import {
+    ComposableMap,
+    Geographies,
+    Geography,
+    Marker,
+    ZoomableGroup,
+} from "nowigence-react-simple-maps";
 import * as React from "react";
 
 const Map = () => (
@@ -57,7 +63,8 @@ const Map = () => (
                                 },
                             }}
                         />
-                    ))}
+                    ))
+                }
             </Geographies>
             <Marker coordinates={[1, 1]}>
                 <circle cx={0} cy={0} r={5} style={{ fill: "#D13913" }} />

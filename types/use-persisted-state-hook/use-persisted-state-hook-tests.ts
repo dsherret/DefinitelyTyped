@@ -4,14 +4,20 @@ import usePersistedState = require("use-persisted-state-hook");
 const initialState = {
     drawerOpen: true,
 };
-type HookReturnType = [state: typeof initialState, setState: Dispatch<SetStateAction<typeof initialState>>];
+type HookReturnType = [
+    state: typeof initialState,
+    setState: Dispatch<SetStateAction<typeof initialState>>,
+];
 
 usePersistedState("app-state", initialState);
 
 /**
  * The return array is of correct type
  */
-const [state, setState]: HookReturnType = usePersistedState("app-state", initialState);
+const [state, setState]: HookReturnType = usePersistedState(
+    "app-state",
+    initialState,
+);
 
 /**
  * Both arguments must be provied

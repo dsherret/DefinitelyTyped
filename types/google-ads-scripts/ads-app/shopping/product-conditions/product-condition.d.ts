@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductCondition objects. */
-        interface ProductConditionBuilder extends Base.Builder<ProductConditionOperation> {
+        interface ProductConditionBuilder
+            extends Base.Builder<ProductConditionOperation> {
             /** Specifies the bid of the product condition. */
             withBid(bid: number): this;
             /** Specifies the condition of the new product condition. */
@@ -49,6 +50,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product condition. */
-        interface ProductConditionOperation extends Base.Operation<ProductCondition> {}
+        interface ProductConditionOperation
+            extends Base.Operation<ProductCondition> {}
     }
 }

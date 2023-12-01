@@ -37,7 +37,13 @@ import {
     removeCommentsRecursive,
 } from "./ast-utils";
 import { fixupHtmlDocs, fixupLocalLinks } from "./html-doc-processing";
-import { ClassDocNode, MethodDocNode, ModuleDocNode, PropertyDocNode, SignatureDocNode } from "./node-doc-processing";
+import {
+    ClassDocNode,
+    MethodDocNode,
+    ModuleDocNode,
+    PropertyDocNode,
+    SignatureDocNode,
+} from "./node-doc-processing";
 import { contextDeduper, replaceLineBreaks, wordWrap } from "./utils";
 
 interface ProcessData {
@@ -76,17 +82,26 @@ const ignoreFunctions = new Set(["pseudoRandomBytes", "___promisify__"]);
 const allowedDefaultValueWords = new Set(["true", "false"]);
 
 class TagHelper {
-    constructor(private readonly docContext: DocAugmentationContext) {
-    }
+    constructor(private readonly docContext: DocAugmentationContext) {}
 
     /**
      * This is needed as prettier doesn't really deal with JSDoc
      */
     private fixupCommentFormatting(desc: string, tagName: string): string {
-        const maxWidth = maxLineLength - this.docContext.indent - jsDocLinePrefixLength - tagName.length - 2; // -2 `@<tag> `
+        const maxWidth =
+            maxLineLength -
+            this.docContext.indent -
+            jsDocLinePrefixLength -
+            tagName.length -
+            2; // -2 `@<tag> `
         // TODO: For some reason `createJSDoc` does not create the ` * ` prefix for multi-line tag comments...
-        const lines = wordWrap(fixupLocalLinks(replaceLineBreaks(desc), this.docContext.moduleDocs.name), maxWidth)
-            .split("\n");
+        const lines = wordWrap(
+            fixupLocalLinks(
+                replaceLineBreaks(desc),
+                this.docContext.moduleDocs.name,
+            ),
+            maxWidth,
+        ).split("\n");
         for (let i = 1; i < lines.length; ++i) {
             lines[i] = ` * ${lines[i]}`;
         }
@@ -101,11 +116,18 @@ class TagHelper {
         );
     }
 
-    private createParamTag(name: string, description: string, defaultValue?: string): JSDocParameterTag {
+    private createParamTag(
+        name: string,
+        description: string,
+        defaultValue?: string,
+    ): JSDocParameterTag {
         const { factory } = this.docContext.transformationContext;
         if (defaultValue) {
             const firstIndex = defaultValue.indexOf("`");
-            const secondIdx = firstIndex > -1 ? defaultValue.indexOf("`", firstIndex + 1) : -1;
+            const secondIdx =
+                firstIndex > -1
+                    ? defaultValue.indexOf("`", firstIndex + 1)
+                    : -1;
             if (secondIdx > 0) {
                 defaultValue = defaultValue.slice(0, secondIdx + 1);
             }
@@ -113,8 +135,9 @@ class TagHelper {
             if (defaultValue.length <= 32 && defaultValue !== "undefined") {
                 // sometimes strings are not wrapped correctly.
                 if (
-                    !defaultValue.includes(".") && !/^[0-9']/.test(defaultValue)
-                    && !allowedDefaultValueWords.has(defaultValue)
+                    !defaultValue.includes(".") &&
+                    !/^[0-9']/.test(defaultValue) &&
+                    !allowedDefaultValueWords.has(defaultValue)
                 ) {
                     defaultValue = `'${defaultValue}'`;
                 }
@@ -142,11 +165,17 @@ class TagHelper {
 
     createDeprecatedTag(text: string): JSDocUnknownTag {
         // Would use factory.creatJSDocDeprecated tag but that doesn't work...
-        return this.createUnknownTag("deprecated", this.fixupCommentFormatting(text, "deprecated"));
+        return this.createUnknownTag(
+            "deprecated",
+            this.fixupCommentFormatting(text, "deprecated"),
+        );
     }
 
     createLegacyTag(text: string): JSDocUnknownTag {
-        return this.createUnknownTag("legacy", this.fixupCommentFormatting(text, "legacy"));
+        return this.createUnknownTag(
+            "legacy",
+            this.fixupCommentFormatting(text, "legacy"),
+        );
     }
 
     createSeeLinkTag(url: string, text: string): JSDocSeeTag {
@@ -181,18 +210,32 @@ class TagHelper {
      * Generates common tags eg. `@deprecated` `@experimental` description etc.
      */
     extractCommonTags(
-        { meta, stabilityText, stability }: MethodDocNode | ModuleDocNode | ClassDocNode | PropertyDocNode,
+        {
+            meta,
+            stabilityText,
+            stability,
+        }: MethodDocNode | ModuleDocNode | ClassDocNode | PropertyDocNode,
         moduleName: string,
     ): JSDocTag[] {
         const tags: JSDocTag[] = [];
         if (meta?.added) {
-            tags.push(this.createSinceTag(meta.added.map(a => this.normalizeVersionString(a)).join(", ")));
+            tags.push(
+                this.createSinceTag(
+                    meta.added
+                        .map((a) => this.normalizeVersionString(a))
+                        .join(", "),
+                ),
+            );
         }
         stabilityText = fixupLocalLinks(stabilityText ?? "", moduleName);
         if (meta?.deprecated) {
-            let str = `Since ${meta.deprecated.map(d => this.normalizeVersionString(d)).join()}`;
+            let str = `Since ${meta.deprecated
+                .map((d) => this.normalizeVersionString(d))
+                .join()}`;
             if (stabilityText) {
-                str += ` - ${stabilityText.replace("Deprecated: ", "").replace("Deprecated. ", "")}`;
+                str += ` - ${stabilityText
+                    .replace("Deprecated: ", "")
+                    .replace("Deprecated. ", "")}`;
             }
             tags.push(this.createDeprecatedTag(str));
             return tags;
@@ -201,7 +244,9 @@ class TagHelper {
             case Stability.Deprecated:
                 tags.push(
                     this.createDeprecatedTag(
-                        (stabilityText ?? "").replace("Deprecated: ", "").replace("Deprecated. ", ""),
+                        (stabilityText ?? "")
+                            .replace("Deprecated: ", "")
+                            .replace("Deprecated. ", ""),
                     ),
                 );
                 break;
@@ -211,7 +256,9 @@ class TagHelper {
             case Stability.Legacy:
                 tags.push(
                     this.createLegacyTag(
-                        stabilityText?.replace("Legacy: ", "").replace("Legacy. ", "") ?? "Legacy API",
+                        stabilityText
+                            ?.replace("Legacy: ", "")
+                            .replace("Legacy. ", "") ?? "Legacy API",
                     ),
                 );
                 break;
@@ -227,11 +274,21 @@ class TagHelper {
         const tags: JSDocTag[] = [];
         for (const param of sigDoc.params) {
             if (param.desc || param.default) {
-                tags.push(this.createParamTag((param.name || "").replaceAll(".", ""), param.desc ?? "", param.default));
+                tags.push(
+                    this.createParamTag(
+                        (param.name || "").replaceAll(".", ""),
+                        param.desc ?? "",
+                        param.default,
+                    ),
+                );
             }
         }
         if (sigDoc.return?.desc) {
-            tags.push(this.createReturnTag(fixupLocalLinks(sigDoc.return.desc, moduleName)));
+            tags.push(
+                this.createReturnTag(
+                    fixupLocalLinks(sigDoc.return.desc, moduleName),
+                ),
+            );
         }
         return tags;
     }
@@ -244,8 +301,11 @@ function matchClassOrInterfaceDoc(
     moduleDocs: ModuleDocNode,
     node: ClassDeclaration | InterfaceDeclaration,
 ): ClassDocNode | undefined {
-    return moduleDocs.classes?.find(m =>
-        m.name === node.name?.escapedText || m.name.replace(moduleDocs.name + ".", "") === node.name?.escapedText
+    return moduleDocs.classes?.find(
+        (m) =>
+            m.name === node.name?.escapedText ||
+            m.name.replace(moduleDocs.name + ".", "") ===
+                node.name?.escapedText,
     );
 }
 
@@ -282,27 +342,39 @@ export class NodeProcessingContext {
         this.tagHelper = new TagHelper(context);
     }
 
-    private fixupDescriptionFormatting(desc: string | undefined, moduleName: string): string {
+    private fixupDescriptionFormatting(
+        desc: string | undefined,
+        moduleName: string,
+    ): string {
         if (!desc) {
             return "";
         }
         desc = fixupHtmlDocs(desc, {
             moduleName,
         });
-        const maxWidth = maxLineLength - this.context.indent - jsDocLinePrefixLength;
-        desc = desc.split("\n").map(l => wordWrap(l, maxWidth)).join("\n");
+        const maxWidth =
+            maxLineLength - this.context.indent - jsDocLinePrefixLength;
+        desc = desc
+            .split("\n")
+            .map((l) => wordWrap(l, maxWidth))
+            .join("\n");
         return desc;
     }
 
     /**
      * Generates data that is common for all functions/methods.
      */
-    private getCallSignatureDocData(moduleDocs: ModuleDocNode, methodDoc: MethodDocNode): ProcessData {
+    private getCallSignatureDocData(
+        moduleDocs: ModuleDocNode,
+        methodDoc: MethodDocNode,
+    ): ProcessData {
         const { desc, signatures } = methodDoc;
         let tags = this.tagHelper.extractCommonTags(methodDoc, moduleDocs.name);
         const [sig] = signatures; // TODO: Multi sig
         if (sig) {
-            tags = tags.concat(this.tagHelper.extractParamTags(sig, moduleDocs.name));
+            tags = tags.concat(
+                this.tagHelper.extractParamTags(sig, moduleDocs.name),
+            );
         }
         return {
             text: this.fixupDescriptionFormatting(desc, moduleDocs.name),
@@ -310,7 +382,9 @@ export class NodeProcessingContext {
         };
     }
 
-    private handlePropertyDeclaration(node: PropertyDeclaration | PropertySignature): JSDocResult {
+    private handlePropertyDeclaration(
+        node: PropertyDeclaration | PropertySignature,
+    ): JSDocResult {
         const name = getPropertyName(node.name);
         if (!name) {
             return {
@@ -329,7 +403,10 @@ export class NodeProcessingContext {
         }
 
         if (isClassDeclaration(parent) || isInterfaceDeclaration(parent)) {
-            const classDoc = matchClassOrInterfaceDoc(this.context.moduleDocs, parent);
+            const classDoc = matchClassOrInterfaceDoc(
+                this.context.moduleDocs,
+                parent,
+            );
             if (!classDoc) {
                 return {
                     status: JSDocMatchResult.Ignore,
@@ -341,7 +418,7 @@ export class NodeProcessingContext {
             }
         }
 
-        const propertyDoc = properties?.find(m => {
+        const propertyDoc = properties?.find((m) => {
             // Sometimes property names are just `Type` which is really damn helpful, we can extract an alternative
             // from `textRaw` instead
             if ((m.name === "Type" || m.name === "return") && m.textRaw) {
@@ -349,7 +426,9 @@ export class NodeProcessingContext {
                 if (altMatch) {
                     return name === altMatch[1];
                 }
-                console.warn(`Could not find real name of doc node ${JSON.stringify(m)}`);
+                console.warn(
+                    `Could not find real name of doc node ${JSON.stringify(m)}`,
+                );
             }
             return m.name === name;
         });
@@ -362,7 +441,10 @@ export class NodeProcessingContext {
         const { moduleDocs } = this.context;
 
         const { desc } = propertyDoc;
-        const tags = this.tagHelper.extractCommonTags(propertyDoc, moduleDocs.name);
+        const tags = this.tagHelper.extractCommonTags(
+            propertyDoc,
+            moduleDocs.name,
+        );
         return {
             status: JSDocMatchResult.Ok,
             data: {
@@ -383,7 +465,9 @@ export class NodeProcessingContext {
             };
         }
 
-        const methodDoc = moduleDocs.methods?.find(m => m.name === node.name?.escapedText);
+        const methodDoc = moduleDocs.methods?.find(
+            (m) => m.name === node.name?.escapedText,
+        );
         if (!methodDoc) {
             return {
                 status: JSDocMatchResult.Failed,
@@ -407,11 +491,15 @@ export class NodeProcessingContext {
      */
     private handleModuleDeclaration(): JSDocResult {
         const { moduleDocs } = this.context;
-        const tags = this.tagHelper.extractCommonTags(moduleDocs, moduleDocs.name);
+        const tags = this.tagHelper.extractCommonTags(
+            moduleDocs,
+            moduleDocs.name,
+        );
 
         // Get rid of bloaty source label
         let desc = moduleDocs.desc ?? "";
-        const removeSourceRegex = /<p><strong>Source Code:<\/strong> <a href="(.*?)">.*?<\/a><\/p>/;
+        const removeSourceRegex =
+            /<p><strong>Source Code:<\/strong> <a href="(.*?)">.*?<\/a><\/p>/;
         const match = removeSourceRegex.exec(desc);
         if (match) {
             tags.push(this.tagHelper.createSeeLinkTag(match[1]!, "source"));
@@ -441,13 +529,20 @@ export class NodeProcessingContext {
             };
         }
 
-        const tags = this.tagHelper.extractCommonTags(classDoc, moduleDocs.name);
+        const tags = this.tagHelper.extractCommonTags(
+            classDoc,
+            moduleDocs.name,
+        );
 
         // Get rid of bloaty source label
         return {
             status: JSDocMatchResult.Ok,
             data: {
-                text: this.fixupDescriptionFormatting(classDoc.desc, moduleDocs.name).replace(/\* Extends: `.*?`/, "")
+                text: this.fixupDescriptionFormatting(
+                    classDoc.desc,
+                    moduleDocs.name,
+                )
+                    .replace(/\* Extends: `.*?`/, "")
                     .trim(),
                 tags,
             },
@@ -457,7 +552,9 @@ export class NodeProcessingContext {
     /**
      * Handles both class and interface method declarations
      */
-    private handleMethodDeclaration(node: MethodDeclaration | MethodSignature): JSDocResult {
+    private handleMethodDeclaration(
+        node: MethodDeclaration | MethodSignature,
+    ): JSDocResult {
         const name = getPropertyName(node.name);
         if (!name) {
             return {
@@ -467,7 +564,10 @@ export class NodeProcessingContext {
         const methodName = (node.name as Identifier).escapedText!;
 
         // Suppress event emitter declarations unless we are the events module
-        if (eventEmitterMethods.has(methodName) && this.context.moduleDocs.name !== "events") {
+        if (
+            eventEmitterMethods.has(methodName) &&
+            this.context.moduleDocs.name !== "events"
+        ) {
             return {
                 status: JSDocMatchResult.Ignore,
             };
@@ -481,14 +581,24 @@ export class NodeProcessingContext {
             };
         }
 
-        const isStatic = node.modifiers?.some(m => m.kind === SyntaxKind.StaticKeyword);
+        const isStatic = node.modifiers?.some(
+            (m) => m.kind === SyntaxKind.StaticKeyword,
+        );
         // ignore duplicates by parent and `staticness`
-        if ((isStatic ? processedStaticMethods : processedInstanceMethods)(parent, methodName)) {
+        if (
+            (isStatic ? processedStaticMethods : processedInstanceMethods)(
+                parent,
+                methodName,
+            )
+        ) {
             return {
                 status: JSDocMatchResult.Ignore,
             };
         }
-        const classDoc = matchClassOrInterfaceDoc(this.context.moduleDocs, parent);
+        const classDoc = matchClassOrInterfaceDoc(
+            this.context.moduleDocs,
+            parent,
+        );
         // We already warn about missing class docs, let's not be obnoxious
         if (!classDoc) {
             return {
@@ -496,8 +606,12 @@ export class NodeProcessingContext {
             };
         }
 
-        const methodDocList = isStatic ? classDoc.classMethods : classDoc.methods;
-        const methodDoc = methodDocList?.find(({ name }) => name === methodName);
+        const methodDocList = isStatic
+            ? classDoc.classMethods
+            : classDoc.methods;
+        const methodDoc = methodDocList?.find(
+            ({ name }) => name === methodName,
+        );
         if (!methodDoc) {
             return {
                 status: JSDocMatchResult.Failed,
@@ -505,7 +619,10 @@ export class NodeProcessingContext {
         }
         return {
             status: JSDocMatchResult.Ok,
-            data: this.getCallSignatureDocData(this.context.moduleDocs, methodDoc),
+            data: this.getCallSignatureDocData(
+                this.context.moduleDocs,
+                methodDoc,
+            ),
         };
     }
 
@@ -523,8 +640,11 @@ export class NodeProcessingContext {
         if (isFunctionDeclaration(node)) {
             processRes = this.processFunctionDeclaration(node);
         } else if (
-            isNamedModuleDeclaration(node)
-            && !(node.name.text.startsWith("node:") && node.name.text !== "node:test") // apparently everything is a module
+            isNamedModuleDeclaration(node) &&
+            !(
+                node.name.text.startsWith("node:") &&
+                node.name.text !== "node:test"
+            ) // apparently everything is a module
         ) {
             processRes = this.handleModuleDeclaration();
         } else if (isClassDeclaration(node)) {
@@ -542,20 +662,38 @@ export class NodeProcessingContext {
                 nodeWarning(node, `Skipping doc replace for`);
                 return;
             }
-            if (processRes.data.text === "" && processRes.data.tags.length === 0) {
+            if (
+                processRes.data.text === "" &&
+                processRes.data.tags.length === 0
+            ) {
                 nodeWarning(node, "Skipping docs for");
                 return;
             }
-            const jsdoc = "*" + printer.printNode(
-                EmitHint.Unspecified,
-                transformationContext.factory.createJSDocComment(processRes.data.text, processRes.data.tags),
-                node.getSourceFile(),
-            )
-                .replaceAll("/**", "")
-                .replaceAll("*/", "")
-                .replaceAll(/&lt;(.*?)&gt;/g, "$1");
-            const newNode = removeCommentsRecursive(node, transformationContext, typeChecker);
-            addSyntheticLeadingComment(newNode, SyntaxKind.MultiLineCommentTrivia, jsdoc, true);
+            const jsdoc =
+                "*" +
+                printer
+                    .printNode(
+                        EmitHint.Unspecified,
+                        transformationContext.factory.createJSDocComment(
+                            processRes.data.text,
+                            processRes.data.tags,
+                        ),
+                        node.getSourceFile(),
+                    )
+                    .replaceAll("/**", "")
+                    .replaceAll("*/", "")
+                    .replaceAll(/&lt;(.*?)&gt;/g, "$1");
+            const newNode = removeCommentsRecursive(
+                node,
+                transformationContext,
+                typeChecker,
+            );
+            addSyntheticLeadingComment(
+                newNode,
+                SyntaxKind.MultiLineCommentTrivia,
+                jsdoc,
+                true,
+            );
         } else {
             // console.log(node)
             nodeWarning(node, `Could not match doc for symbol`);

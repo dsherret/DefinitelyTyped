@@ -59,7 +59,8 @@ const geojson: FeatureCollection = {
 };
 
 const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-const attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors";
+const attribution =
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const map = L.map("map", {
     center: [40.76965, -73.97747],

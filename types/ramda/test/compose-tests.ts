@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     function double(x: number): number {
         return x + x;
     }
@@ -38,9 +38,9 @@ import * as R from "ramda";
     const f11 = (str: string) => str;
     // $ExpectType () => string
     const f12 = R.compose(f11, f10);
-});
+};
 
-(() => {
+() => {
     interface Person {
         last: string;
         age: number;
@@ -48,11 +48,14 @@ import * as R from "ramda";
     }
 
     // $ExpectType (args_0: Person) => string
-    const fullName = R.compose<[Person], string[], string>(R.join(" "), ({ first, last }) => [first, last]);
+    const fullName = R.compose<[Person], string[], string>(
+        R.join(" "),
+        ({ first, last }) => [first, last],
+    );
     fullName({ last: "Bullet-Tooth", age: 33, first: "Tony" }); // => 'Tony Bullet-Tooth'
-});
+};
 
-(() => {
+() => {
     // Expected at least 1 arguments, but got 0
     // @ts-expect-error
     const f0 = R.compose();
@@ -71,11 +74,41 @@ import * as R from "ramda";
     // $ExpectType (x: number, y: number) => number
     const f7 = R.compose(R.inc, R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
     // $ExpectType (x: number, y: number) => number
-    const f8 = R.compose(R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
+    const f8 = R.compose(
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.negate,
+        Math.pow,
+    );
     // $ExpectType (x: number, y: number) => number
-    const f9 = R.compose(R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
+    const f9 = R.compose(
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.negate,
+        Math.pow,
+    );
     // $ExpectType (x: number, y: number) => number
-    const f10 = R.compose(R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.inc, R.negate, Math.pow);
+    const f10 = R.compose(
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.inc,
+        R.negate,
+        Math.pow,
+    );
     const x1: number = f1(3, 4);
     const x2: number = f2(3, 4);
     const x3: number = f3(3, 4);
@@ -86,9 +119,9 @@ import * as R from "ramda";
     const x8: number = f3(3, 4);
     const x9: number = f4(3, 4);
     const x10: number = f5(3, 4);
-});
+};
 
-(() => {
+() => {
     function fn(a: string, b: number, c: string) {
         return [a, b, c];
     }
@@ -96,4 +129,4 @@ import * as R from "ramda";
     // $ExpectType (a: string, b: number, c: string) => number
     const gn = R.compose(R.length, fn);
     const x: number = gn("Hello", 4, "world");
-});
+};

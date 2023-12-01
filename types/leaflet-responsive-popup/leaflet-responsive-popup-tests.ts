@@ -2,7 +2,8 @@ import * as L from "leaflet";
 import "leaflet-responsive-popup";
 
 const osmUrl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-const osmAttrib = "&copy; <a href=\"http://openstreetmap.org/copyright\">OpenStreetMap</a> contributors";
+const osmAttrib =
+    '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const osmTile = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib });
 const map = new L.Map("map", {
     layers: [osmTile],

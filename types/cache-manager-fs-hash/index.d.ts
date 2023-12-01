@@ -18,7 +18,9 @@ interface FsHashStoreConstructor {
 }
 
 declare module "cache-manager" {
-    function caching(IConfig: FsHashStoreConfig | (StoreConfig & CacheOptions)): Cache;
+    function caching(
+        IConfig: FsHashStoreConfig | (StoreConfig & CacheOptions),
+    ): Cache;
 }
 
 declare const methods: FsHashStoreConstructor;

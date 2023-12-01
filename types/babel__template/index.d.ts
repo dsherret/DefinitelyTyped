@@ -51,12 +51,18 @@ export interface TemplateBuilder<T> {
     /**
      * Building from a string produces an AST builder function by default.
      */
-    (code: string, opts?: TemplateBuilderOptions): (arg?: PublicReplacements) => T;
+    (
+        code: string,
+        opts?: TemplateBuilderOptions,
+    ): (arg?: PublicReplacements) => T;
 
     /**
      * Building from a template literal produces an AST builder function by default.
      */
-    (tpl: TemplateStringsArray, ...args: unknown[]): (arg?: PublicReplacements) => T;
+    (
+        tpl: TemplateStringsArray,
+        ...args: unknown[]
+    ): (arg?: PublicReplacements) => T;
 
     /**
      * Allow users to explicitly create templates that produce ASTs,

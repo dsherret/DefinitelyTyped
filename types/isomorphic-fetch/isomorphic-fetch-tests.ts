@@ -8,30 +8,33 @@ function test_isomorphicFetchTestCases_ambient() {
         .then((response: Response) => {
             return response.text();
         })
-        .catch((err) => {
-        });
+        .catch((err) => {});
 }
 
 function test_isomorphicFetchTestCases_commonjs() {
-    expectSuccess(fetchImportedViaCommonJS("http://localhost:3000/good"), "Good response");
+    expectSuccess(
+        fetchImportedViaCommonJS("http://localhost:3000/good"),
+        "Good response",
+    );
 
     fetchImportedViaCommonJS("http://localhost:3000/bad")
         .then((response: Response) => {
             return response.text();
         })
-        .catch((err) => {
-        });
+        .catch((err) => {});
 }
 
 function test_isomorphicFetchTestCases_es6() {
-    expectSuccess(fetchImportedViaES6Module("http://localhost:3000/good"), "Good response");
+    expectSuccess(
+        fetchImportedViaES6Module("http://localhost:3000/good"),
+        "Good response",
+    );
 
     fetchImportedViaES6Module("http://localhost:3000/bad")
         .then((response: Response) => {
             return response.text();
         })
-        .catch((err) => {
-        });
+        .catch((err) => {});
 }
 
 function test_whatwgTestCases_ambient() {
@@ -45,7 +48,10 @@ function test_whatwgTestCases_ambient() {
         cache: "default",
     };
 
-    expectSuccess(fetch("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetch("http://localhost:3000/poster", requestOptions),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -54,7 +60,10 @@ function test_whatwgTestCases_ambient() {
         },
     };
 
-    expectSuccess(fetch("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetch("http://localhost:3000/poster", requestOptions),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -62,7 +71,10 @@ function test_whatwgTestCases_ambient() {
             "Content-Type": "application/json",
         },
     };
-    const request: Request = new Request("http://localhost:3000/poster", requestOptions);
+    const request: Request = new Request(
+        "http://localhost:3000/poster",
+        requestOptions,
+    );
 
     expectSuccess(fetch(request), "Post response:");
 }
@@ -78,7 +90,13 @@ function test_whatwgTestCases_commonjs() {
         cache: "default",
     };
 
-    expectSuccess(fetchImportedViaCommonJS("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetchImportedViaCommonJS(
+            "http://localhost:3000/poster",
+            requestOptions,
+        ),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -87,7 +105,13 @@ function test_whatwgTestCases_commonjs() {
         },
     };
 
-    expectSuccess(fetchImportedViaCommonJS("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetchImportedViaCommonJS(
+            "http://localhost:3000/poster",
+            requestOptions,
+        ),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -95,7 +119,10 @@ function test_whatwgTestCases_commonjs() {
             "Content-Type": "application/json",
         },
     };
-    const request: Request = new Request("http://localhost:3000/poster", requestOptions);
+    const request: Request = new Request(
+        "http://localhost:3000/poster",
+        requestOptions,
+    );
 
     expectSuccess(fetchImportedViaCommonJS(request), "Post response:");
 }
@@ -111,7 +138,13 @@ function test_whatwgTestCases_es6() {
         cache: "default",
     };
 
-    expectSuccess(fetchImportedViaES6Module("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetchImportedViaES6Module(
+            "http://localhost:3000/poster",
+            requestOptions,
+        ),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -120,7 +153,13 @@ function test_whatwgTestCases_es6() {
         },
     };
 
-    expectSuccess(fetchImportedViaES6Module("http://localhost:3000/poster", requestOptions), "Post response:");
+    expectSuccess(
+        fetchImportedViaES6Module(
+            "http://localhost:3000/poster",
+            requestOptions,
+        ),
+        "Post response:",
+    );
 
     requestOptions = {
         method: "POST",
@@ -128,15 +167,18 @@ function test_whatwgTestCases_es6() {
             "Content-Type": "application/json",
         },
     };
-    const request: Request = new Request("http://localhost:3000/poster", requestOptions);
+    const request: Request = new Request(
+        "http://localhost:3000/poster",
+        requestOptions,
+    );
 
     expectSuccess(fetchImportedViaES6Module(request), "Post response:");
 }
 
 function expectSuccess(promise: Promise<Response>, responseText: string) {
-    promise.then((response: Response) => {
-        return response.text();
-    })
-        .then((text: string) => {
-        });
+    promise
+        .then((response: Response) => {
+            return response.text();
+        })
+        .then((text: string) => {});
 }

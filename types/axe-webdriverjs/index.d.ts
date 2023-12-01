@@ -85,6 +85,14 @@ export interface BuilderOptions {
 }
 
 export const AxeBuilder: {
-    (driver: WebDriver, source?: string, builderOptions?: BuilderOptions): AxeBuilder;
-    new(driver: WebDriver, source?: string, builderOptions?: BuilderOptions): AxeBuilder;
+    (
+        driver: WebDriver,
+        source?: string,
+        builderOptions?: BuilderOptions,
+    ): AxeBuilder;
+    new (
+        driver: WebDriver,
+        source?: string,
+        builderOptions?: BuilderOptions,
+    ): AxeBuilder;
 };

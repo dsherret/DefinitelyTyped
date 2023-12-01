@@ -55,12 +55,14 @@ declare namespace CliTable2 {
         rowSpan?: number | undefined;
         hAlign?: HorizontalAlignment | undefined;
         vAlign?: VerticalAlignment | undefined;
-        style?: {
-            "padding-left"?: number | undefined;
-            "padding-right"?: number | undefined;
-            head?: string[] | undefined;
-            border?: string[] | undefined;
-        } | undefined;
+        style?:
+            | {
+                  "padding-left"?: number | undefined;
+                  "padding-right"?: number | undefined;
+                  head?: string[] | undefined;
+                  border?: string[] | undefined;
+              }
+            | undefined;
     }
 
     interface GenericTable<T> extends Array<T> {
@@ -86,7 +88,7 @@ declare namespace CliTable2 {
 }
 
 interface CliTable2 {
-    new(options?: CliTable2.TableConstructorOptions): CliTable2.Table;
+    new (options?: CliTable2.TableConstructorOptions): CliTable2.Table;
     readonly prototype: CliTable2.Table;
 }
 

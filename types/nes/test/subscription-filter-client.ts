@@ -6,14 +6,16 @@ var client = new Nes.Client("ws://localhost");
 
 // Authenticate as 'john'
 
-client.connect({ auth: { headers: { authorization: "Basic am9objpzZWNyZXQ=" } } }).then(() => {
-    const handler: Nes.Handler = (update) => {
-        // First publish is not received (filtered due to updater key)
-        // update -> { id: 6, status: 'initial', updater: 'steve' }
-    };
+client
+    .connect({ auth: { headers: { authorization: "Basic am9objpzZWNyZXQ=" } } })
+    .then(() => {
+        const handler: Nes.Handler = (update) => {
+            // First publish is not received (filtered due to updater key)
+            // update -> { id: 6, status: 'initial', updater: 'steve' }
+        };
 
-    return client.subscribe("/items", handler);
-});
+        return client.subscribe("/items", handler);
+    });
 
 // Added in addition to nes doc example code
 
@@ -23,11 +25,13 @@ var client = new NesClient("ws://localhost");
 
 // Authenticate as 'john'
 
-client.connect({ auth: { headers: { authorization: "Basic am9objpzZWNyZXQ=" } } }).then(() => {
-    const handler: NesClient.Handler = (update) => {
-        // First publish is not received (filtered due to updater key)
-        // update -> { id: 6, status: 'initial', updater: 'steve' }
-    };
+client
+    .connect({ auth: { headers: { authorization: "Basic am9objpzZWNyZXQ=" } } })
+    .then(() => {
+        const handler: NesClient.Handler = (update) => {
+            // First publish is not received (filtered due to updater key)
+            // update -> { id: 6, status: 'initial', updater: 'steve' }
+        };
 
-    return client.subscribe("/items", handler);
-});
+        return client.subscribe("/items", handler);
+    });

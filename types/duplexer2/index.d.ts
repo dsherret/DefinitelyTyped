@@ -13,6 +13,9 @@ declare function duplexer2(
     writable: NodeJS.WritableStream,
     readable: NodeJS.ReadableStream,
 ): NodeJS.ReadWriteStream;
-declare function duplexer2(writable: NodeJS.WritableStream, readable: NodeJS.ReadableStream): NodeJS.ReadWriteStream;
+declare function duplexer2(
+    writable: NodeJS.WritableStream,
+    readable: NodeJS.ReadableStream,
+): NodeJS.ReadWriteStream;
 
 export = duplexer2;

@@ -1,7 +1,7 @@
 {
-    "rules": {
-        "@definitelytyped/no-unnecessary-generics": "off",
-        "@definitelytyped/strict-export-declare-modifiers": "off",
-        "@typescript-eslint/naming-convention": "off"
-    }
+  "rules": {
+    "@definitelytyped/no-unnecessary-generics": "off",
+    "@definitelytyped/strict-export-declare-modifiers": "off",
+    "@typescript-eslint/naming-convention": "off"
+  }
 }

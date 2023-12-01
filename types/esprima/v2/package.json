@@ -1,24 +1,24 @@
 {
-    "private": true,
-    "name": "@types/esprima",
-    "version": "2.1.9999",
-    "projects": [
-        "http://esprima.org"
-    ],
-    "dependencies": {
-        "@types/estree": "*"
+  "private": true,
+  "name": "@types/esprima",
+  "version": "2.1.9999",
+  "projects": [
+    "http://esprima.org"
+  ],
+  "dependencies": {
+    "@types/estree": "*"
+  },
+  "devDependencies": {
+    "@types/esprima": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "teppeis",
+      "githubUsername": "teppeis"
     },
-    "devDependencies": {
-        "@types/esprima": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "teppeis",
-            "githubUsername": "teppeis"
-        },
-        {
-            "name": "RReverser",
-            "githubUsername": "RReverser"
-        }
-    ]
+    {
+      "name": "RReverser",
+      "githubUsername": "RReverser"
+    }
+  ]
 }

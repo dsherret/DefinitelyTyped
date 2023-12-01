@@ -14,7 +14,10 @@ declare namespace flowjs {
         ): void;
         assignDrop(node: HTMLElement | readonly HTMLElement[]): void;
         unAssignDrop(node: HTMLElement | readonly HTMLElement[]): void;
-        on<T extends EventName>(event: T, callback: (...args: FlowEventMap[T]) => void): void;
+        on<T extends EventName>(
+            event: T,
+            callback: (...args: FlowEventMap[T]) => void,
+        ): void;
         off(event?: EventName, callback?: () => void): void;
         upload(): void;
         pause(): void;
@@ -48,7 +51,13 @@ declare namespace flowjs {
         testChunks?: boolean;
         preprocess?: (chunk: FlowChunk) => void;
         initFileFn?: (file: FlowFile, chunk: FlowChunk) => void;
-        readFileFn?: (file: FlowFile, startByte: number, endByte: number, fileType: string, chunk: FlowChunk) => void;
+        readFileFn?: (
+            file: FlowFile,
+            startByte: number,
+            endByte: number,
+            fileType: string,
+            chunk: FlowChunk,
+        ) => void;
         generateUniqueIdentifier?: (file: FlowFile) => any;
         maxChunkRetries?: number;
         chunkRetryInterval?: number;
@@ -141,7 +150,8 @@ declare namespace flowjs {
     type FlowEvent = FlowEventMap[keyof FlowEventMap];
 
     type FlowEventFromEventName<T extends EventName> = FlowEventMap[T];
-    type FlowEventTypeFromFlowEvent<T extends FlowEvent> = T extends FlowEventFromEventName<infer U> ? U : never;
+    type FlowEventTypeFromFlowEvent<T extends FlowEvent> =
+        T extends FlowEventFromEventName<infer U> ? U : never;
 
     type FileSuccessCallbackArguments = [FlowFile, string, FlowChunk];
     type FileProgressCallbackArguments = [FlowFile, FlowChunk];

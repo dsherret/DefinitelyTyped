@@ -13,9 +13,9 @@ declare namespace jspreadsheet {
     type SourceValue =
         | CellValue
         | {
-            id: CellValue;
-            name: CellValue;
-        };
+              id: CellValue;
+              name: CellValue;
+          };
 
     interface SourceValueElement<T extends CellValue> {
         id: T;
@@ -36,7 +36,20 @@ declare namespace jspreadsheet {
          * Default: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
          */
         months?:
-            | [string, string, string, string, string, string, string, string, string, string, string, string]
+            | [
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+                  string,
+              ]
             | undefined;
         // eslint-disable-next-line @typescript-eslint/ban-types
         onchange?: Function | undefined;
@@ -58,11 +71,15 @@ declare namespace jspreadsheet {
         /**
          * Default: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
          */
-        weekdays?: [string, string, string, string, string, string, string] | undefined;
+        weekdays?:
+            | [string, string, string, string, string, string, string]
+            | undefined;
         /**
          * Default: ["S", "M", "T", "W", "T", "F", "S"]
          */
-        weekdays_short?: [string, string, string, string, string, string, string] | undefined;
+        weekdays_short?:
+            | [string, string, string, string, string, string, string]
+            | undefined;
     }
 
     interface CellChange {
@@ -392,29 +409,53 @@ declare namespace jspreadsheet {
 
     interface EventsOptions {
         /** After all changes are applied in the table. */
-        onafterchanges?: ((instance: HTMLElement, cellChanges: CellChange[]) => void) | undefined;
+        onafterchanges?:
+            | ((instance: HTMLElement, cellChanges: CellChange[]) => void)
+            | undefined;
         /** Before a column value is changed. NOTE: It is possible to overwrite the original value, by return a new value on this method. v3.4.0+ */
         onbeforechange?:
             | ((
-                instance: HTMLElement,
-                cell: HTMLTableCellElement,
-                columnIndex: number,
-                rowIndex: number,
-                value: CellValue,
-                // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            ) => CellValue | void)
+                  instance: HTMLElement,
+                  cell: HTMLTableCellElement,
+                  columnIndex: number,
+                  rowIndex: number,
+                  value: CellValue,
+                  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+              ) => CellValue | void)
             | undefined;
         /** Before a column is excluded. You can cancel the insert event by returning false. */
-        onbeforedeletecolumn?: ((instance: HTMLElement, startColumnIndex: number, count: number) => void) | undefined;
+        onbeforedeletecolumn?:
+            | ((
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  count: number,
+              ) => void)
+            | undefined;
         /** Before a row is deleted. You can cancel the delete event by returning false. */
-        onbeforedeleterow?: ((instance: HTMLElement, startRowIndex: number, count: number) => void) | undefined;
+        onbeforedeleterow?:
+            | ((
+                  instance: HTMLElement,
+                  startRowIndex: number,
+                  count: number,
+              ) => void)
+            | undefined;
         /** Before a new column is inserted. You can cancel the insert event by returning false. */
         onbeforeinsertcolumn?:
-            | ((instance: HTMLElement, startColumnIndex: number, count: number, isBefore: boolean) => void)
+            | ((
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  count: number,
+                  isBefore: boolean,
+              ) => void)
             | undefined;
         /** Before a new row is inserted. You can cancel the insert event by returning false. */
         onbeforeinsertrow?:
-            | ((instance: HTMLElement, startColumnIndex: number, count: number, isBefore: boolean) => void)
+            | ((
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  count: number,
+                  isBefore: boolean,
+              ) => void)
             | undefined;
         /** Before the paste action is performed. Used to parse any input data, should return the data. */
         // eslint-disable-next-line @typescript-eslint/ban-types
@@ -424,14 +465,14 @@ declare namespace jspreadsheet {
         /** After a column value is changed. */
         onchange?:
             | ((
-                instance: HTMLElement,
-                cell: HTMLTableCellElement,
-                /** (e.g.) "0", "1" ... */
-                columnIndex: string,
-                /** (e.g.) "0", "1" ... */
-                rowIndex: string,
-                value: CellValue,
-            ) => void)
+                  instance: HTMLElement,
+                  cell: HTMLTableCellElement,
+                  /** (e.g.) "0", "1" ... */
+                  columnIndex: string,
+                  /** (e.g.) "0", "1" ... */
+                  rowIndex: string,
+                  value: CellValue,
+              ) => void)
             | undefined;
         /** On header change */
         // eslint-disable-next-line @typescript-eslint/ban-types
@@ -448,44 +489,59 @@ declare namespace jspreadsheet {
         /** After a column is excluded. */
         ondeletecolumn?:
             | ((
-                instance: HTMLElement,
-                startColumnIndex: number,
-                count: number,
-                cells: HTMLTableCellElement[][],
-            ) => void)
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  count: number,
+                  cells: HTMLTableCellElement[][],
+              ) => void)
             | undefined;
         /** After a row is excluded. */
         ondeleterow?:
-            | ((instance: HTMLElement, startRowIndex: number, count: number, cells: HTMLTableCellElement[][]) => void)
+            | ((
+                  instance: HTMLElement,
+                  startRowIndex: number,
+                  count: number,
+                  cells: HTMLTableCellElement[][],
+              ) => void)
             | undefined;
         /** When a closeEditor is called. */
         oneditionend?:
             | ((
-                instance: HTMLElement,
-                cell: HTMLTableCellElement,
-                columnIndex: string,
-                rowIndex: string,
-                value: CellValue,
-            ) => void)
+                  instance: HTMLElement,
+                  cell: HTMLTableCellElement,
+                  columnIndex: string,
+                  rowIndex: string,
+                  value: CellValue,
+              ) => void)
             | undefined;
         /** When a openEditor is called. */
         oneditionstart?:
-            | ((instance: HTMLElement, cell: HTMLTableCellElement, columnIndex: string, rowIndex: string) => void)
+            | ((
+                  instance: HTMLElement,
+                  cell: HTMLTableCellElement,
+                  columnIndex: string,
+                  rowIndex: string,
+              ) => void)
             | undefined;
         /** On table focus */
         onfocus?: ((instance: HTMLElement) => void) | undefined;
         /** After a new column is inserted. */
         oninsertcolumn?:
             | ((
-                instance: HTMLElement,
-                startColumnIndex: number,
-                count: number,
-                cells: HTMLTableCellElement[][],
-            ) => void)
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  count: number,
+                  cells: HTMLTableCellElement[][],
+              ) => void)
             | undefined;
         /** After a new row is inserted. */
         oninsertrow?:
-            | ((instance: HTMLElement, startRowIndex: number, count: number, cells: HTMLTableCellElement[][]) => void)
+            | ((
+                  instance: HTMLElement,
+                  startRowIndex: number,
+                  count: number,
+                  cells: HTMLTableCellElement[][],
+              ) => void)
             | undefined;
         /** This method is called when the method setData */
         onload?: ((instance: HTMLElement) => void) | undefined;
@@ -499,7 +555,9 @@ declare namespace jspreadsheet {
         // eslint-disable-next-line @typescript-eslint/ban-types
         onmoverow?: Function | undefined;
         /** After a paste action is performed in the javascript table. */
-        onpaste?: ((instance: HTMLElement, data: CellValue[][]) => void) | undefined;
+        onpaste?:
+            | ((instance: HTMLElement, data: CellValue[][]) => void)
+            | undefined;
         /** On redo is applied */
         // eslint-disable-next-line @typescript-eslint/ban-types
         onredo?: Function | undefined;
@@ -512,12 +570,12 @@ declare namespace jspreadsheet {
         /** On the selection is changed. */
         onselection?:
             | ((
-                instance: HTMLElement,
-                startColumnIndex: number,
-                startRowIndex: number,
-                endColumnIndex: number,
-                endRowIndex: number,
-            ) => void)
+                  instance: HTMLElement,
+                  startColumnIndex: number,
+                  startRowIndex: number,
+                  endColumnIndex: number,
+                  endRowIndex: number,
+              ) => void)
             | undefined;
         /** After a colum is sorted. */
         // eslint-disable-next-line @typescript-eslint/ban-types
@@ -570,7 +628,10 @@ declare namespace jspreadsheet {
         /** Load header titles from the CSV file: bool */
         csvHeaders?: boolean | undefined;
         /** Load this data into the javascript table: array */
-        data?: CellValue[][] | Array<{ [title in string | number]: CellValue }> | undefined;
+        data?:
+            | CellValue[][]
+            | Array<{ [title in string | number]: CellValue }>
+            | undefined;
         /** Default align for a new column: [center, left, right] */
         defaultColAlign?: "center" | "left" | "right" | undefined;
         /** Default width for a new column: integer */
@@ -590,7 +651,11 @@ declare namespace jspreadsheet {
         /** Meta information: object */
         meta?: Record<string, any> | undefined;
         /** Minimum table dimensions: [cols, rows] */
-        minDimensions?: [number] | [undefined, number] | [number, number] | undefined;
+        minDimensions?:
+            | [number]
+            | [undefined, number]
+            | [number, number]
+            | undefined;
         /** Minimum number of spare cols: [integer] */
         minSpareCols?: number[] | undefined;
         /** Minimum number of spare rows: [integer] */
@@ -598,11 +663,11 @@ declare namespace jspreadsheet {
         /** Define the nested headers, including title, colspan, etc: object */
         nestedHeaders?:
             | Array<
-                Array<{
-                    colspan?: number | undefined;
-                    title?: CellValue | undefined;
-                }>
-            >
+                  Array<{
+                      colspan?: number | undefined;
+                      title?: CellValue | undefined;
+                  }>
+              >
             | undefined;
         /** Break the table by pages */
         pagination?: number | undefined;
@@ -636,7 +701,15 @@ declare namespace jspreadsheet {
         toolbar?: Array<Record<string, any>> | undefined;
         /** Method to config custom script execution. NOTE: This does not work with lazyLoading, Pagination or Search options. */
         updateTable?:
-            | ((instance: any, cell: any, col: any, row: any, val: any, label: any, cellName: any) => void)
+            | ((
+                  instance: any,
+                  cell: any,
+                  col: any,
+                  row: any,
+                  val: any,
+                  label: any,
+                  cellName: any,
+              ) => void)
             | undefined;
         /** Load a external json file from this URL: string */
         url?: string | undefined;
@@ -706,19 +779,21 @@ declare namespace jspreadsheet {
     }
 
     interface UnDocumentOptions {
-        footers?: CellValue[][] | Array<{ [title in string | number]: CellValue }> | undefined;
+        footers?:
+            | CellValue[][]
+            | Array<{ [title in string | number]: CellValue }>
+            | undefined;
     }
 
     /**
      * @see https://bossanova.uk/jspreadsheet/v4/docs/quick-reference
      */
-    type Options =
-        & SharedMethodsInitializationOptions
-        & MethodsOptions
-        & EventsOptions
-        & InitializationOptions
-        & TranslationsOptions
-        & UnDocumentOptions;
+    type Options = SharedMethodsInitializationOptions &
+        MethodsOptions &
+        EventsOptions &
+        InitializationOptions &
+        TranslationsOptions &
+        UnDocumentOptions;
 
     type TabOptions = Options & { sheetName: string };
 
@@ -751,7 +826,11 @@ declare namespace jspreadsheet {
          * @param delimiter - \t default to keep compatibility with excel
          * @return string value
          */
-        copy: (highlighted?: boolean, delimiter?: string, returnData?: boolean) => string;
+        copy: (
+            highlighted?: boolean,
+            delimiter?: string,
+            returnData?: boolean,
+        ) => string;
         /**
          * Helper function to copy data using the corner icon
          */
@@ -825,8 +904,17 @@ declare namespace jspreadsheet {
          * @param object properties - column properties
          * @return void
          */
-        insertColumn: (mixed: any, columnNumber?: number, insertBefore?: boolean, properties?: object) => any;
-        insertRow: (mixed?: any, rowNumber?: number, insertBefore?: boolean) => any;
+        insertColumn: (
+            mixed: any,
+            columnNumber?: number,
+            insertBefore?: boolean,
+            properties?: object,
+        ) => any;
+        insertRow: (
+            mixed?: any,
+            rowNumber?: number,
+            insertBefore?: boolean,
+        ) => any;
         isColMerged: (x: number, insertBefore?: boolean) => any;
         isRowMerged: (y: number, insertBefore?: boolean) => any;
         last: (shiftKey: any, ctrlKey: any) => any;
@@ -876,12 +964,28 @@ declare namespace jspreadsheet {
         setHeader: (column: any, newValue: any) => any;
         setHeight: (row: any, height: any, oldHeight: any) => any;
         setHistory: (changes: any) => any;
-        setMerge: (cellName: any, colspan: any, rowspan: any, ignoreHistoryAndEvents?: any) => any;
+        setMerge: (
+            cellName: any,
+            colspan: any,
+            rowspan: any,
+            ignoreHistoryAndEvents?: any,
+        ) => any;
         setMeta: (o: any, k: any, v: any) => any;
         setRowData: (rowNumber: number, data: any) => any;
-        setStyle: (o: any, k: any, v: any, force?: any, ignoreHistoryAndEvents?: any) => any;
+        setStyle: (
+            o: any,
+            k: any,
+            v: any,
+            force?: any,
+            ignoreHistoryAndEvents?: any,
+        ) => any;
         setValue: (cell: any, value: any, force: any) => any;
-        setValueFromCoords: (x: number, y: number, value: any, force: any) => any;
+        setValueFromCoords: (
+            x: number,
+            y: number,
+            value: any,
+            force: any,
+        ) => any;
         setWidth: (column: any, width: any, oldWidth: any) => any;
         showColumn: (colNumber: number) => any;
         showIndex: () => any;
@@ -893,7 +997,12 @@ declare namespace jspreadsheet {
         toolbar: HTMLDivElement;
         undo: () => any;
         up: (shiftKey: any, ctrlKey: any) => any;
-        updateCell: (x: number, y: number, value?: CellValue, force?: any) => any;
+        updateCell: (
+            x: number,
+            y: number,
+            value?: CellValue,
+            force?: any,
+        ) => any;
         updateCopySelection: (x3: any, y3: any) => any;
         updateCornerPosition: () => any;
         updateFormula: (formula: any, referencesToUpdate: any) => any;
@@ -905,7 +1014,13 @@ declare namespace jspreadsheet {
         updatePagination: () => any;
         updateScroll: (direction: any) => any;
         updateSelection: (el1: any, el2: any, origin: any) => any;
-        updateSelectionFromCoords: (x1: number, y1: number, x2: number, y2: number, origin: any) => any;
+        updateSelectionFromCoords: (
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            origin: any,
+        ) => any;
         updateTable: () => any;
         updateTableReferences: () => any;
         whichPage: (cell: any) => any;

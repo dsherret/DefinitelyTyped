@@ -49,10 +49,10 @@ declare module "@hapi/hapi" {
                 | ModelClass
                 | ModelClass[]
                 | {
-                    knex: Knex | Knex.Config;
-                    models: ModelClass[];
-                    migrationsDir: string;
-                },
+                      knex: Knex | Knex.Config;
+                      models: ModelClass[];
+                      migrationsDir: string;
+                  },
         ) => void;
         knex: () => Knex;
         models: (all?: boolean) => RegisteredModels;

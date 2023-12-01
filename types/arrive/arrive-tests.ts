@@ -1,26 +1,30 @@
 /// <reference types="jquery"/>
 
-document.arrive("a.foobar", function() {
+document.arrive("a.foobar", function () {
     this.getAttribute("href");
 });
 
-document.arrive("a.foobar", { fireOnAttributesModification: true, existing: true, onceOnly: true }, function() {
+document.arrive(
+    "a.foobar",
+    { fireOnAttributesModification: true, existing: true, onceOnly: true },
+    function () {
+        this.getAttribute("href");
+    },
+);
+
+window.arrive("a.foobar", function () {
     this.getAttribute("href");
 });
 
-window.arrive("a.foobar", function() {
+document.getElementsByClassName("foobar").arrive(".fizzbuzz", function () {
     this.getAttribute("href");
 });
 
-document.getElementsByClassName("foobar").arrive(".fizzbuzz", function() {
-    this.getAttribute("href");
-});
-
-$(document).arrive(".test-elem", function() {
+$(document).arrive(".test-elem", function () {
     const $newElem = $(this);
 });
 
-$(".container-1").arrive(".test-elem", function() {
+$(".container-1").arrive(".test-elem", function () {
     const $newElem = $(this);
 });
 
@@ -34,8 +38,7 @@ $(document).unbindArrive();
 
 $(document).unbindArrive(".test-elem");
 
-const callbackFunc = () => {
-};
+const callbackFunc = () => {};
 
 $(document).unbindArrive(callbackFunc);
 

@@ -1,6 +1,13 @@
 /// <reference types="node" />
 
-import { Dirent, MakeDirectoryOptions, PathLike, RmDirOptions, Stats, WriteFileOptions } from "fs";
+import {
+    Dirent,
+    MakeDirectoryOptions,
+    PathLike,
+    RmDirOptions,
+    Stats,
+    WriteFileOptions,
+} from "fs";
 
 export * from "fs";
 
@@ -46,7 +53,10 @@ export function readFile(
  */
 export function readFile(
     path: PathLike | number,
-    options?: { encoding?: string | null | undefined; flag?: string | undefined } | string | null,
+    options?:
+        | { encoding?: string | null | undefined; flag?: string | undefined }
+        | string
+        | null,
 ): Promise<string | Buffer>;
 
 /**
@@ -61,7 +71,11 @@ export function readFile(
  * If `mode` is a string, it is parsed as an octal integer.
  * If `flag` is not supplied, the default of `'w'` is used.
  */
-export function writeFile(path: PathLike | number, data: any, options?: WriteFileOptions): Promise<void>;
+export function writeFile(
+    path: PathLike | number,
+    data: any,
+    options?: WriteFileOptions,
+): Promise<void>;
 
 /**
  * Asynchronously copies src to dest. By default, dest is overwritten if it already exists.
@@ -75,7 +89,11 @@ export function writeFile(path: PathLike | number, data: any, options?: WriteFil
  * The only supported flag is fs.constants.COPYFILE_EXCL,
  * which causes the copy operation to fail if dest already exists.
  */
-export function copyFile(src: PathLike, dst: PathLike, flags?: number): Promise<void>;
+export function copyFile(
+    src: PathLike,
+    dst: PathLike,
+    flags?: number,
+): Promise<void>;
 
 /**
  * Asynchronous close(2) - close a file descriptor.
@@ -88,7 +106,11 @@ export function close(fd: number): Promise<void>;
  * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
  * @param mode A file mode. If a string is passed, it is parsed as an octal integer. If not supplied, defaults to `0o666`.
  */
-export function open(path: PathLike, flags: string | number, mode?: string | number | null): Promise<number>;
+export function open(
+    path: PathLike,
+    flags: string | number,
+    mode?: string | number | null,
+): Promise<number>;
 
 /**
  * @param fd A file descriptor.
@@ -155,7 +177,10 @@ export function rmdir(path: PathLike, options?: RmDirOptions): Promise<void>;
  * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
  * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
  */
-export function mkdir(path: PathLike, options?: number | string | MakeDirectoryOptions | null): Promise<void>;
+export function mkdir(
+    path: PathLike,
+    options?: number | string | MakeDirectoryOptions | null,
+): Promise<void>;
 
 /**
  * Asynchronous readdir(3) - read a directory.
@@ -164,7 +189,10 @@ export function mkdir(path: PathLike, options?: number | string | MakeDirectoryO
  */
 export function readdir(
     path: PathLike,
-    options?: { encoding: BufferEncoding | null; withFileTypes?: false | undefined } | BufferEncoding | null,
+    options?:
+        | { encoding: BufferEncoding | null; withFileTypes?: false | undefined }
+        | BufferEncoding
+        | null,
 ): Promise<string[]>;
 
 /**
@@ -174,7 +202,9 @@ export function readdir(
  */
 export function readdir(
     path: PathLike,
-    options: "buffer" | { encoding: "buffer"; withFileTypes?: false | undefined },
+    options:
+        | "buffer"
+        | { encoding: "buffer"; withFileTypes?: false | undefined },
 ): Promise<Buffer[]>;
 
 /**
@@ -184,7 +214,13 @@ export function readdir(
  */
 export function readdir(
     path: PathLike,
-    options?: { encoding?: string | null | undefined; withFileTypes?: false | undefined } | string | null,
+    options?:
+        | {
+              encoding?: string | null | undefined;
+              withFileTypes?: false | undefined;
+          }
+        | string
+        | null,
 ): Promise<string[] | Buffer[]>;
 
 /**
@@ -227,7 +263,11 @@ export function fstat(fd: number): Promise<Stats>;
  * If `mode` is a string, it is parsed as an octal integer.
  * If `flag` is not supplied, the default of `'a'` is used.
  */
-export function appendFile(file: PathLike | number, data: any, options?: WriteFileOptions): Promise<void>;
+export function appendFile(
+    file: PathLike | number,
+    data: any,
+    options?: WriteFileOptions,
+): Promise<void>;
 
 /**
  * Asynchronous realpath(3) - return the canonicalized absolute pathname.
@@ -236,7 +276,10 @@ export function appendFile(file: PathLike | number, data: any, options?: WriteFi
  */
 export function realpath(
     path: PathLike,
-    options?: { encoding?: BufferEncoding | null | undefined } | BufferEncoding | null,
+    options?:
+        | { encoding?: BufferEncoding | null | undefined }
+        | BufferEncoding
+        | null,
 ): Promise<string>;
 
 /**
@@ -244,7 +287,10 @@ export function realpath(
  * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
  * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
  */
-export function realpath(path: PathLike, options: { encoding: "buffer" } | "buffer"): Promise<Buffer>;
+export function realpath(
+    path: PathLike,
+    options: { encoding: "buffer" } | "buffer",
+): Promise<Buffer>;
 
 /**
  * Asynchronous realpath(3) - return the canonicalized absolute pathname.
@@ -276,7 +322,10 @@ export function unlink(path: PathLike): Promise<void>;
  */
 export function readlink(
     path: PathLike,
-    options?: { encoding?: BufferEncoding | null | undefined } | BufferEncoding | null,
+    options?:
+        | { encoding?: BufferEncoding | null | undefined }
+        | BufferEncoding
+        | null,
 ): Promise<string>;
 
 /**
@@ -284,7 +333,10 @@ export function readlink(
  * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
  * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
  */
-export function readlink(path: PathLike, options: { encoding: "buffer" } | "buffer"): Promise<Buffer>;
+export function readlink(
+    path: PathLike,
+    options: { encoding: "buffer" } | "buffer",
+): Promise<Buffer>;
 
 /**
  * Asynchronous readlink(2) - read value of a symbolic link.
@@ -340,7 +392,11 @@ export function fsync(fd: number): Promise<void>;
  * @param atime The last access time. If a string is provided, it will be coerced to number.
  * @param mtime The last modified time. If a string is provided, it will be coerced to number.
  */
-export function utimes(path: PathLike, atime: string | number | Date, mtime: string | number | Date): Promise<void>;
+export function utimes(
+    path: PathLike,
+    atime: string | number | Date,
+    mtime: string | number | Date,
+): Promise<void>;
 
 /**
  * Asynchronously change file timestamps of the file referenced by the supplied file descriptor.
@@ -348,7 +404,11 @@ export function utimes(path: PathLike, atime: string | number | Date, mtime: str
  * @param atime The last access time. If a string is provided, it will be coerced to number.
  * @param mtime The last modified time. If a string is provided, it will be coerced to number.
  */
-export function futimes(fd: number, atime: string | number | Date, mtime: string | number | Date): Promise<void>;
+export function futimes(
+    fd: number,
+    atime: string | number | Date,
+    mtime: string | number | Date,
+): Promise<void>;
 
 /**
  * Asynchronous ftruncate(2) - Truncate a file to a specified length.

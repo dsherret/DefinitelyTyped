@@ -19,6 +19,8 @@ declare namespace JsReportReports {
     }
 }
 
-declare function JsReportReports(cfg?: JsReportReports.Configuration): ExtensionDefinition;
+declare function JsReportReports(
+    cfg?: JsReportReports.Configuration,
+): ExtensionDefinition;
 
 export = JsReportReports;

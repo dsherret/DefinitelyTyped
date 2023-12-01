@@ -23,7 +23,12 @@ const strategyOptions1: StrategyOptions = {
     tokenURL: "http://www.example.com/token",
 };
 
-function verifyFunction1(_accessToken: string, _refreshToken: string, _profile: any, verifyCallback: VerifyCallback) {
+function verifyFunction1(
+    _accessToken: string,
+    _refreshToken: string,
+    _profile: any,
+    verifyCallback: VerifyCallback,
+) {
     verifyCallback(new Error("unimplemented"));
 }
 
@@ -37,9 +42,15 @@ function verifyFunction2(
     verifyCallback(new Error("unimplemented"));
 }
 
-const strategy1: OAuth2Strategy = new OAuth2Strategy(strategyOptions1, verifyFunction1);
+const strategy1: OAuth2Strategy = new OAuth2Strategy(
+    strategyOptions1,
+    verifyFunction1,
+);
 
-const strategy2: Strategy = new OAuth2Strategy(strategyOptions1, verifyFunction2);
+const strategy2: Strategy = new OAuth2Strategy(
+    strategyOptions1,
+    verifyFunction2,
+);
 
 function verifyFunction3(
     _req: Request,
@@ -70,11 +81,18 @@ const strategyOptions2: StrategyOptionsWithRequest = {
     passReqToCallback: true,
 };
 
-const strategy3: PassportStrategy = new OAuth2Strategy(strategyOptions2, verifyFunction3);
+const strategy3: PassportStrategy = new OAuth2Strategy(
+    strategyOptions2,
+    verifyFunction3,
+);
 
 const strategy4: Strategy = new Strategy(strategyOptions2, verifyFunction4);
 
-const err1 = new AuthorizationError("Description", "invalid_request", undefined);
+const err1 = new AuthorizationError(
+    "Description",
+    "invalid_request",
+    undefined,
+);
 
 const err2 = new TokenError(undefined, "invalid_request", undefined);
 
@@ -82,9 +100,21 @@ const err3 = new InternalOAuthError("Hello", {});
 
 class MyStrategy extends OAuth2Strategy {
     useProtectedProperty() {
-        this._oauth2.get("http://www.example.com/profile", "token", err => err.statusCode);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result) => result);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result, response) => response);
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err) => err.statusCode,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result) => result,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result, response) => response,
+        );
     }
 }
 
@@ -95,7 +125,11 @@ const metadata: Metadata = {
 };
 
 class MyStore implements StateStore {
-    store(req: Request, meta: StateStoreStoreCallback | Metadata, callback?: StateStoreStoreCallback): void {}
+    store(
+        req: Request,
+        meta: StateStoreStoreCallback | Metadata,
+        callback?: StateStoreStoreCallback,
+    ): void {}
     verify(
         req: Request,
         state: string,

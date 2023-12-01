@@ -19,7 +19,10 @@ const ast4 = parser.parse(luaCode, { wait: true });
 console.log(JSON.stringify(ast4));
 
 // $ExpectType Chunk
-const ast5 = parser.parse(luaCode, { comments: false, encodingMode: "pseudo-latin1" });
+const ast5 = parser.parse(luaCode, {
+    comments: false,
+    encodingMode: "pseudo-latin1",
+});
 console.log(JSON.stringify(ast5));
 
 // $ExpectType LabelStatement
@@ -31,7 +34,9 @@ const nod2 = parser.ast.literal(parser.tokenTypes.NumericLiteral, 42, "42");
 console.log(JSON.stringify(nod2));
 
 // $ExpectType Chunk
-const ast6 = parser.parse(luaCode, { onCreateNode: (n: parser.ast.Node) => void n });
+const ast6 = parser.parse(luaCode, {
+    onCreateNode: (n: parser.ast.Node) => void n,
+});
 console.log(JSON.stringify(ast6));
 
 // $ExpectType Comment[] | undefined

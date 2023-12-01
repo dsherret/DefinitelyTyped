@@ -21,11 +21,17 @@ const plugins = [
 ];
 
 gulp.task("build", () => {
-    return gulp.src("*.{gif,jpg,png,svg}").pipe(gulpImagemin()).pipe(gulp.dest("dist"));
+    return gulp
+        .src("*.{gif,jpg,png,svg}")
+        .pipe(gulpImagemin())
+        .pipe(gulp.dest("dist"));
 });
 
 gulp.task("build", () => {
-    return gulp.src("*.{gif,jpg,png,svg}").pipe(gulpImagemin(plugins)).pipe(gulp.dest("dist"));
+    return gulp
+        .src("*.{gif,jpg,png,svg}")
+        .pipe(gulpImagemin(plugins))
+        .pipe(gulp.dest("dist"));
 });
 
 gulp.task("build", () => {

@@ -15,7 +15,11 @@ declare namespace DotNet {
      * @param args Arguments to pass to the method, each of which must be JSON-serializable.
      * @returns The result of the operation.
      */
-    function invokeMethod<T>(assemblyName: string, methodIdentifier: string, ...args: any[]): T;
+    function invokeMethod<T>(
+        assemblyName: string,
+        methodIdentifier: string,
+        ...args: any[]
+    ): T;
     /**
      * Invokes the specified .NET public method asynchronously.
      *
@@ -24,7 +28,11 @@ declare namespace DotNet {
      * @param args Arguments to pass to the method, each of which must be JSON-serializable.
      * @returns A promise representing the result of the operation.
      */
-    function invokeMethodAsync<T>(assemblyName: string, methodIdentifier: string, ...args: any[]): Promise<T>;
+    function invokeMethodAsync<T>(
+        assemblyName: string,
+        methodIdentifier: string,
+        ...args: any[]
+    ): Promise<T>;
     /**
      * Creates a JavaScript object reference that can be passed to .NET via interop calls.
      * @param jsObject The JavaScript Object used to create the JavaScript object reference.
@@ -38,13 +46,17 @@ declare namespace DotNet {
      * @returns The JavaScript data reference (this will be the same instance as the given object).
      * @throws Error if the given value is not an Object or doesn't have a valid byteLength.
      */
-    function createJSStreamReference(streamReference: ArrayBuffer | ArrayBufferView | Blob): JsObjectReference;
+    function createJSStreamReference(
+        streamReference: ArrayBuffer | ArrayBufferView | Blob,
+    ): JsObjectReference;
     /**
      * Disposes the given JavaScript object reference.
      *
      * @param jsObjectReference The JavaScript Object reference.
      */
-    function disposeJSObjectReference(jsObjectReference: JsObjectReference): void;
+    function disposeJSObjectReference(
+        jsObjectReference: JsObjectReference,
+    ): void;
 
     /**
      * Represents the Javascript Object reference.
@@ -73,7 +85,10 @@ declare namespace DotNet {
          * @param args Arguments to pass to the method, each of which must be JSON-serializable.
          * @returns A promise representing the result of the operation.
          */
-        invokeMethodAsync<T>(methodIdentifier: string, ...args: any[]): Promise<T>;
+        invokeMethodAsync<T>(
+            methodIdentifier: string,
+            ...args: any[]
+        ): Promise<T>;
         /**
          * Dispose the specified .NET instance.
          */

@@ -41,7 +41,7 @@ jws.createSign({
     header: { alg: "RS256" },
     privateKey: privateKeyStream,
     payload: payloadStream,
-}).on("done", signature => {});
+}).on("done", (signature) => {});
 
 // jws.createSign no params
 const signer = jws.createSign({
@@ -49,7 +49,7 @@ const signer = jws.createSign({
 });
 privateKeyStream.pipe(signer.privateKey);
 payloadStream.pipe(signer.payload);
-signer.on("done", signature => {});
+signer.on("done", (signature) => {});
 
 // jws.createVerify
 jws.createVerify({

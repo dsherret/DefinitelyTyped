@@ -1,10 +1,22 @@
 import * as React from "react";
-import { Box, BoxProps, Button, Card, Flex, Heading, Image, Link, Text } from "rebass";
+import {
+    Box,
+    BoxProps,
+    Button,
+    Card,
+    Flex,
+    Heading,
+    Image,
+    Link,
+    Text,
+} from "rebass";
 import { Box as StyledBox } from "rebass/styled-components";
 import styled, { css } from "styled-components";
 import "styled-components/macro";
 
-const CustomComponent: React.FunctionComponent<{ children?: React.ReactNode }> = ({ children }) => {
+const CustomComponent: React.FunctionComponent<{
+    children?: React.ReactNode;
+}> = ({ children }) => {
     return <div>{children}</div>;
 };
 
@@ -16,12 +28,9 @@ ExtendedBox.defaultProps = {
     p: 3,
 };
 
-const RefForwardingBox = React.forwardRef<HTMLDivElement, BoxProps>((props, ref) => (
-    <ExtendedBox
-        ref={ref}
-        {...props}
-    />
-));
+const RefForwardingBox = React.forwardRef<HTMLDivElement, BoxProps>(
+    (props, ref) => <ExtendedBox ref={ref} {...props} />,
+);
 
 const boxCss = css`
     background: purple;
@@ -56,7 +65,14 @@ export default () => (
             <Heading fontSize={5} fontWeight="bold" flexShrink={1}>
                 Hi, I'm a heading.
             </Heading>
-            <Text as="p" fontSize={3} lineHeight="1em" letterSpacing="1rem" fontStyle="italic" order={1}>
+            <Text
+                as="p"
+                fontSize={3}
+                lineHeight="1em"
+                letterSpacing="1rem"
+                fontStyle="italic"
+                order={1}
+            >
                 Hi, I'm text.
             </Text>
             <Card
@@ -103,7 +119,7 @@ export default () => (
                 String css prop
             </Box>
             <Button
-                sx={theme => ({
+                sx={(theme) => ({
                     bg: "magenta",
                     border: "1em",
                     borderRadius: "1em",
@@ -115,7 +131,13 @@ export default () => (
 
             <VariantBox />
         </Flex>
-        <StyledBox width={1} css={{ height: "100vh" }} py={[1, 2, 3]} ml="1em" display="block">
+        <StyledBox
+            width={1}
+            css={{ height: "100vh" }}
+            py={[1, 2, 3]}
+            ml="1em"
+            display="block"
+        >
             Styled Box
         </StyledBox>
     </Box>

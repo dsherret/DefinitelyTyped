@@ -10,7 +10,11 @@ export type LocalOrRemoteCommand = (
     callback?: (error: Error, stdout: string, stderr: string) => void,
 ) => PromiseLike<ShipitLocal>;
 export type EmptyCallback = () => void;
-export type TaskExecution = (name: string, depsOrFn: string[] | EmptyCallback, fn: () => void) => any;
+export type TaskExecution = (
+    name: string,
+    depsOrFn: string[] | EmptyCallback,
+    fn: () => void,
+) => any;
 
 export interface Options {
     environment: string;
@@ -35,7 +39,11 @@ export interface Task {
     name: string;
 }
 
-export function blTask(name: string, depsOrFn: string[] | EmptyCallback, fn?: () => void): any;
+export function blTask(
+    name: string,
+    depsOrFn: string[] | EmptyCallback,
+    fn?: () => void,
+): any;
 export function emit(name: string): any;
 export function initConfig(config: {}): typeof shipit;
 export function local(
@@ -61,7 +69,11 @@ export function remoteCopy(
     options?: child_process.ExecOptions,
     callback?: (error: Error, stdout: string, stderr: string) => void,
 ): PromiseLike<ShipitLocal>;
-export function copyToRemote(src: string, dest: string, options?: child_process.ExecOptions): PromiseLike<ShipitLocal>;
+export function copyToRemote(
+    src: string,
+    dest: string,
+    options?: child_process.ExecOptions,
+): PromiseLike<ShipitLocal>;
 export function copyFromRemote(
     src: string,
     dest: string,
@@ -70,7 +82,11 @@ export function copyFromRemote(
 
 export function start(tasks: string | string[]): typeof shipit;
 export function start(...tasks: string[]): typeof shipit;
-export function task(name: string, depsOrFn: string[] | EmptyCallback, fn?: () => void): typeof shipit;
+export function task(
+    name: string,
+    depsOrFn: string[] | EmptyCallback,
+    fn?: () => void,
+): typeof shipit;
 
 export const config: {};
 export const domain: any;

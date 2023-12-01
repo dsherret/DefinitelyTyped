@@ -1,19 +1,14 @@
 {
-    "files": [
-        "index.d.ts",
-        "prop-types-tests.ts"
-    ],
-    "compilerOptions": {
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "types": [],
-        "noEmit": true,
-        "forceConsistentCasingInFileNames": true,
-        "lib": [
-            "es6"
-        ]
-    }
+  "files": ["index.d.ts", "prop-types-tests.ts"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "types": [],
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es6"]
+  }
 }

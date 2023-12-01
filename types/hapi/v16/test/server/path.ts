@@ -2,7 +2,7 @@
 
 import * as Hapi from "hapi";
 
-var register: Hapi.PluginFunction<{}> = function(server, options, next) {
+var register: Hapi.PluginFunction<{}> = function (server, options, next) {
     // Assuming the Inert plugin was registered previously
 
     server.path(__dirname + "../static");

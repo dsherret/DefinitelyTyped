@@ -4,14 +4,14 @@ import "codemirror/addon/hint/show-hint";
 const cm = CodeMirror(document.body, { value: "text" });
 const pos = new CodeMirror.Pos(2, 3);
 CodeMirror.showHint(cm);
-CodeMirror.showHint(cm, cm => {
+CodeMirror.showHint(cm, (cm) => {
     return {
         from: pos,
         list: ["one", "two"],
         to: pos,
     };
 });
-CodeMirror.showHint(cm, cm => {
+CodeMirror.showHint(cm, (cm) => {
     return {
         from: pos,
         list: [

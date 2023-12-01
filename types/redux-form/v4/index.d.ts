@@ -187,7 +187,12 @@ export interface ReduxFormProps<T> {
     handleSubmit?(event: React.SyntheticEvent<T>): void;
     handleSubmit?(event: React.MouseEvent<HTMLButtonElement>): void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    handleSubmit?(submit: (data: FormData, dispatch?: Dispatch<any>) => Promise<any> | void): React.FormEventHandler<T>;
+    handleSubmit?(
+        submit: (
+            data: FormData,
+            dispatch?: Dispatch<any>,
+        ) => Promise<any> | void,
+    ): React.FormEventHandler<T>;
 
     /**
      * Initializes the form data to the given values. All dirty and pristine
@@ -268,10 +273,9 @@ export interface ReduxFormProps<T> {
     values?: FormData | undefined;
 }
 
-declare class ElementClass extends React.Component<any> {
-}
+declare class ElementClass extends React.Component<any> {}
 interface ClassDecorator {
-    <T extends (typeof ElementClass)>(component: T): T;
+    <T extends typeof ElementClass>(component: T): T;
 }
 
 interface MapStateToProps {
@@ -333,7 +337,11 @@ export interface ReduxFormConfig {
      *
      * See Asynchronous Blur Validation Example for more details.
      */
-    asyncValidate?(values: FormData, dispatch: Dispatch<any>, props: {}): Promise<any>;
+    asyncValidate?(
+        values: FormData,
+        dispatch: Dispatch<any>,
+        props: {},
+    ): Promise<any>;
 
     /**
      * Whether or not to automatically destroy your form's state in the Redux
@@ -432,7 +440,10 @@ export interface ReduxFormConfig {
      * { field1: <String>, field2: <String> }.
      * Defaults to (values, props) => ({}).
      */
-    validate?(values: FormData, props: { [fieldName: string]: FieldProp<any> }): {};
+    validate?(
+        values: FormData,
+        props: { [fieldName: string]: FieldProp<any> },
+    ): {};
 }
 
 /**

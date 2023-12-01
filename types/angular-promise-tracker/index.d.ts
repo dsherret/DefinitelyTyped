@@ -13,7 +13,9 @@ declare module "angular" {
             active(): boolean;
             tracking(): boolean;
             trackingCount(): number;
-            addPromise<T>(promise: angular.IPromise<T>): angular.IDeferred<void>;
+            addPromise<T>(
+                promise: angular.IPromise<T>,
+            ): angular.IDeferred<void>;
             createPromise(): angular.IDeferred<void>;
             cancel(): void;
         }
@@ -24,6 +26,9 @@ declare module "angular" {
     }
 
     interface IRequestShortcutConfig {
-        tracker?: angular.promisetracker.PromiseTracker | angular.promisetracker.PromiseTracker[] | undefined;
+        tracker?:
+            | angular.promisetracker.PromiseTracker
+            | angular.promisetracker.PromiseTracker[]
+            | undefined;
     }
 }

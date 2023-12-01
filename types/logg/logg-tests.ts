@@ -16,11 +16,11 @@ logger.warn("But warnings will", new Error("aargg"));
 logger.fine("test", {}, []);
 logger.error("dsfs", {});
 
-logging.registerWatcher(function(logRecord) {
+logging.registerWatcher(function (logRecord) {
     console.log(logRecord);
 });
 
-logger.registerWatcher(function(logRecord) {
+logger.registerWatcher(function (logRecord) {
     console.log(logRecord);
 });
 

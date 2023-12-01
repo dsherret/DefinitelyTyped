@@ -1,5 +1,11 @@
 import { Formats } from "@rdfjs/formats-common";
-import { BaseQuad, DatasetCore, DatasetCoreFactory, Quad, Stream } from "@rdfjs/types";
+import {
+    BaseQuad,
+    DatasetCore,
+    DatasetCoreFactory,
+    Quad,
+    Stream,
+} from "@rdfjs/types";
 
 export interface FormatsInit extends RequestInit {
     formats: Formats;
@@ -26,7 +32,10 @@ export interface DatasetResponse<
     dataset(): Promise<D>;
 }
 
-declare function rdfFetch(url: string, options: FormatsInit): Promise<RdfFetchResponse>;
+declare function rdfFetch(
+    url: string,
+    options: FormatsInit,
+): Promise<RdfFetchResponse>;
 declare function rdfFetch<
     D extends DatasetCore<OutQuad, InQuad>,
     OutQuad extends BaseQuad = Quad,

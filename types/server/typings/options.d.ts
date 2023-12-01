@@ -53,25 +53,27 @@ export interface Options {
     engine?: string | undefined | Record<EngineArgs[0], EngineArgs[1]>;
     env?: string | undefined;
     favicon?: string | undefined;
-    parser?: {
-        json?: bodyParser.OptionsJson | undefined;
-        body?: bodyParser.OptionsUrlencoded | undefined;
-        text?: bodyParser.OptionsText | undefined;
-        data?: DataParserOptions | undefined;
-        cookie?: express.CookieOptions | undefined;
-    } | undefined;
+    parser?:
+        | {
+              json?: bodyParser.OptionsJson | undefined;
+              body?: bodyParser.OptionsUrlencoded | undefined;
+              text?: bodyParser.OptionsText | undefined;
+              data?: DataParserOptions | undefined;
+              cookie?: express.CookieOptions | undefined;
+          }
+        | undefined;
     session?: session.SessionOptions | undefined;
     security?:
         | false
-        | helmet.IHelmetConfiguration & {
-            csrf?: false | CsurfOptions | undefined;
-        }
+        | (helmet.IHelmetConfiguration & {
+              csrf?: false | CsurfOptions | undefined;
+          })
         | undefined;
     log?:
         | LogLevel
         | {
-            level: LogLevel;
-            report: (content: string, type: LogLevel) => void;
-        }
+              level: LogLevel;
+              report: (content: string, type: LogLevel) => void;
+          }
         | undefined;
 }

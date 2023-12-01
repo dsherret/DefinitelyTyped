@@ -1,9 +1,11 @@
 export type Mixed = {};
 export type Maybe<T> = T | null | undefined;
-export type Constructor<T = Mixed> = new(...args: any[]) => T;
+export type Constructor<T = Mixed> = new (...args: any[]) => T;
 export type HTMLElementClass = typeof HTMLElement;
 
-export type ComponentProps<T, E = HTMLElementClass> = { [P in keyof T]: PropOptions<T[P]> };
+export type ComponentProps<T, E = HTMLElementClass> = {
+    [P in keyof T]: PropOptions<T[P]>;
+};
 
 // NOTE:
 // - all classes are just ambient definitions (opaque types like), so consumer cannot use them directly
@@ -12,14 +14,25 @@ export type ComponentProps<T, E = HTMLElementClass> = { [P in keyof T]: PropOpti
  * Implement this interface for any @skatejs/renderer-*
  */
 export interface Renderer<O> {
-    renderer(root: Node | Element | ShadowRoot, html: (props?: Mixed, state?: Mixed) => O): void;
+    renderer(
+        root: Node | Element | ShadowRoot,
+        html: (props?: Mixed, state?: Mixed) => O,
+    ): void;
 }
 
 export interface WithComponent<P = Mixed, S = Mixed, C = Mixed>
-    extends CustomElement, WithChildren, WithLifecycle, WithRenderer, WithUpdate<P, S>, WithContext<C>
-{}
+    extends CustomElement,
+        WithChildren,
+        WithLifecycle,
+        WithRenderer,
+        WithUpdate<P, S>,
+        WithContext<C> {}
 
-export declare class WithComponent<P = Mixed, S = Mixed, C = Mixed> extends HTMLElement {
+export declare class WithComponent<
+    P = Mixed,
+    S = Mixed,
+    C = Mixed,
+> extends HTMLElement {
     static readonly observedAttributes: string[];
 }
 
@@ -28,7 +41,11 @@ export class CustomElement extends HTMLElement {
     static readonly observedAttributes: string[];
     connectedCallback(): void;
     disconnectedCallback(): void;
-    attributeChangedCallback(name: string, oldValue: null | string, newValue: null | string): void;
+    attributeChangedCallback(
+        name: string,
+        oldValue: null | string,
+        newValue: null | string,
+    ): void;
     adoptedCallback?(): void;
 }
 
@@ -46,7 +63,10 @@ export declare class WithContext<C = Mixed> extends HTMLElement {
     context: C;
 }
 
-export declare class WithRenderer<O = Mixed | null> extends HTMLElement implements Renderer<O> {
+export declare class WithRenderer<O = Mixed | null>
+    extends HTMLElement
+    implements Renderer<O>
+{
     // getter for turning off ShadowDOM
     get renderRoot(): this | Mixed;
 
@@ -57,7 +77,10 @@ export declare class WithRenderer<O = Mixed | null> extends HTMLElement implemen
 
     // Default renderer, returns string returned from render and adds it to root via innerHTML
     // -> override to get own renderer
-    renderer(root: Element | Node | ShadowRoot, html: (props?: Mixed) => O): void;
+    renderer(
+        root: Element | Node | ShadowRoot,
+        html: (props?: Mixed) => O,
+    ): void;
 
     // called after render
     rendered?(): void;
@@ -92,7 +115,9 @@ export interface PropOptions<T = any> {
     serialize?: ((value: Maybe<T>) => string | null) | undefined;
 }
 
-export type PropOptionsAttribute = PropOptionsAttributeIdentifier | PropOptionsAttributeIdentifierMap;
+export type PropOptionsAttribute =
+    | PropOptionsAttributeIdentifier
+    | PropOptionsAttributeIdentifierMap;
 export type PropOptionsAttributeIdentifier = boolean | string;
 export type PropOptionsAttributeIdentifierMap = {
     source?: PropOptionsAttributeIdentifier | undefined;

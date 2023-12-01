@@ -3,7 +3,9 @@ import { Disposable } from "../index";
 /** Provides a registry for commands that you'd like to appear in the context menu. */
 export interface ContextMenuManager {
     /** Add context menu items scoped by CSS selectors. */
-    add(itemsBySelector: { [key: string]: readonly ContextMenuOptions[] }): Disposable;
+    add(itemsBySelector: {
+        [key: string]: readonly ContextMenuOptions[];
+    }): Disposable;
 }
 
 export type ContextMenuOptions = ContextMenuItemOptions | { type: "separator" };

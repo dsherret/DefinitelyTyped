@@ -1,4 +1,10 @@
-import { Profile, Strategy, StrategyOptions, VerifyCallback, VerifyFunction } from "passport-deezer";
+import {
+    Profile,
+    Strategy,
+    StrategyOptions,
+    VerifyCallback,
+    VerifyFunction,
+} from "passport-deezer";
 
 const strategyOptions: StrategyOptions = {
     clientID: "client-id",

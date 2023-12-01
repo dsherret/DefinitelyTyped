@@ -17,7 +17,13 @@ declare module "../../" {
         mode: string | ModeSpec<unknown>,
         callback:
             | HTMLElement
-            | ((text: string, style?: string | null, row?: number, column?: number, state?: any) => void),
+            | ((
+                  text: string,
+                  style?: string | null,
+                  row?: number,
+                  column?: number,
+                  state?: any,
+              ) => void),
         options?: { tabSize?: number | undefined; state?: any },
     ): void;
 }

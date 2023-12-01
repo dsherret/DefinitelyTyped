@@ -12,7 +12,11 @@ interface HttpErr {
      *                          is created by the factory. Can be used to process additional
      *                          error-specific configuration parameters.
      */
-    createHttpError(status: number, title: string, init?: (config: Config) => void): HttpErrorStatic;
+    createHttpError(
+        status: number,
+        title: string,
+        init?: (config: Config) => void,
+    ): HttpErrorStatic;
 
     // Error builders by camel-cased name.
     badRequest: ErrorBuilder;
@@ -198,7 +202,7 @@ interface HttpErr {
 
 /** Constructor function for the HttpError class. */
 interface HttpErrorStatic {
-    new(config?: string | Error | Config, extra?: {}): HttpError;
+    new (config?: string | Error | Config, extra?: {}): HttpError;
 }
 
 /** An instance of the HttpError class. */
@@ -268,7 +272,7 @@ interface ErrorBuilder {
      * @param {string | Error | Config} config - If config is a string, it will be treated as config.message.
      *                                           If config is an Error object, it will be treated as config.cause.
      */
-    new(config?: string | Error | Config): HttpError;
+    new (config?: string | Error | Config): HttpError;
 }
 
 // The module value satisfies the HttpErr interface.

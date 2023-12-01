@@ -1,11 +1,19 @@
 import type { Request } from "express";
 
 declare class Strategy {
-    constructor(options: Strategy.StrategyOptions, verify: Strategy.VerifyFunction);
+    constructor(
+        options: Strategy.StrategyOptions,
+        verify: Strategy.VerifyFunction,
+    );
 
     name: string;
     authenticate(req: Request, options?: object): void;
-    static Strategy: { new(options: Strategy.StrategyOptions, verify: Strategy.VerifyFunction): Strategy };
+    static Strategy: {
+        new (
+            options: Strategy.StrategyOptions,
+            verify: Strategy.VerifyFunction,
+        ): Strategy;
+    };
 }
 
 declare namespace Strategy {

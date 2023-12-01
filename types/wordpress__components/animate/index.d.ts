@@ -8,16 +8,27 @@ declare namespace Animate {
 
     interface AppearProps extends BaseProps {
         type: "appear";
-        options?: {
-            origin?: "top" | "top left" | "top right" | "bottom" | "bottom left" | "bottom right" | undefined;
-        } | undefined;
+        options?:
+            | {
+                  origin?:
+                      | "top"
+                      | "top left"
+                      | "top right"
+                      | "bottom"
+                      | "bottom left"
+                      | "bottom right"
+                      | undefined;
+              }
+            | undefined;
     }
 
     interface SlideInProps extends BaseProps {
         type: "slide-in";
-        options?: {
-            origin?: "left" | undefined;
-        } | undefined;
+        options?:
+            | {
+                  origin?: "left" | undefined;
+              }
+            | undefined;
     }
 
     interface LoadingProps extends BaseProps {

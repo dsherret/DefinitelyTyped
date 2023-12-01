@@ -1,12 +1,27 @@
 // Website Monitoring API from Instana (status: 2022-01-11)
 
-declare function ineum(command: "key" | "page" | "reportingUrl" | "traceId", value: string): void;
+declare function ineum(
+    command: "key" | "page" | "reportingUrl" | "traceId",
+    value: string,
+): void;
 
-declare function ineum(command: "user", userId?: string, userName?: string, userEmail?: string): void;
+declare function ineum(
+    command: "user",
+    userId?: string,
+    userName?: string,
+    userEmail?: string,
+): void;
 
-declare function ineum(command: "meta", key: string, value: string | number | boolean): void;
+declare function ineum(
+    command: "meta",
+    key: string,
+    value: string | number | boolean,
+): void;
 
-declare function ineum(command: "ignorePings" | "wrapEventHandlers" | "wrapTimers", value: boolean): void;
+declare function ineum(
+    command: "ignorePings" | "wrapEventHandlers" | "wrapTimers",
+    value: boolean,
+): void;
 
 declare function ineum(
     command: "trackSessions",
@@ -32,9 +47,11 @@ declare function ineum(
     error: Error | string,
     opts?: {
         componentStack?: string | undefined;
-        meta?: {
-            [key: string]: string | number | boolean;
-        } | undefined;
+        meta?:
+            | {
+                  [key: string]: string | number | boolean;
+              }
+            | undefined;
     },
 ): void;
 declare function ineum(
@@ -46,9 +63,11 @@ declare function ineum(
         backendTraceId?: string | undefined;
         error?: Error | undefined;
         componentStack?: string | undefined;
-        meta?: {
-            [key: string]: string | number | boolean;
-        } | undefined;
+        meta?:
+            | {
+                  [key: string]: string | number | boolean;
+              }
+            | undefined;
     },
 ): void;
 

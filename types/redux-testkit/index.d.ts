@@ -19,13 +19,19 @@ export function Reducer(action: Redux.Reducer): ReducerTestkit & {
 };
 
 export function Selector(selector: (state: any, action: any) => any): {
-    expect(state: any, ...args: any[]): {
+    expect(
+        state: any,
+        ...args: any[]
+    ): {
         toReturn(expected: any): void;
     };
     execute(state: any, ...args: any[]): any;
 };
 
-export function Thunk(thunkFunc: ThunkAction<any, any, any, any>, extraArg?: any): ThunkTestkit & {
+export function Thunk(
+    thunkFunc: ThunkAction<any, any, any, any>,
+    extraArg?: any,
+): ThunkTestkit & {
     withState(state: any): ThunkTestkit;
 };
 

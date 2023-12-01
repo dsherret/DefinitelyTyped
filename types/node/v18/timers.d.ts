@@ -90,11 +90,16 @@ declare module "timers" {
         ): NodeJS.Timeout;
         // util.promisify no rest args compability
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        function setTimeout(callback: (args: void) => void, ms?: number): NodeJS.Timeout;
+        function setTimeout(
+            callback: (args: void) => void,
+            ms?: number,
+        ): NodeJS.Timeout;
         namespace setTimeout {
             const __promisify__: typeof setTimeoutPromise;
         }
-        function clearTimeout(timeoutId: NodeJS.Timeout | string | number | undefined): void;
+        function clearTimeout(
+            timeoutId: NodeJS.Timeout | string | number | undefined,
+        ): void;
         function setInterval<TArgs extends any[]>(
             callback: (...args: TArgs) => void,
             ms?: number,
@@ -102,11 +107,16 @@ declare module "timers" {
         ): NodeJS.Timeout;
         // util.promisify no rest args compability
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        function setInterval(callback: (args: void) => void, ms?: number): NodeJS.Timeout;
+        function setInterval(
+            callback: (args: void) => void,
+            ms?: number,
+        ): NodeJS.Timeout;
         namespace setInterval {
             const __promisify__: typeof setIntervalPromise;
         }
-        function clearInterval(intervalId: NodeJS.Timeout | string | number | undefined): void;
+        function clearInterval(
+            intervalId: NodeJS.Timeout | string | number | undefined,
+        ): void;
         function setImmediate<TArgs extends any[]>(
             callback: (...args: TArgs) => void,
             ...args: TArgs
@@ -117,7 +127,9 @@ declare module "timers" {
         namespace setImmediate {
             const __promisify__: typeof setImmediatePromise;
         }
-        function clearImmediate(immediateId: NodeJS.Immediate | undefined): void;
+        function clearImmediate(
+            immediateId: NodeJS.Immediate | undefined,
+        ): void;
         function queueMicrotask(callback: () => void): void;
     }
 }

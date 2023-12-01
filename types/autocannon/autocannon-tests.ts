@@ -15,7 +15,7 @@ autocannon({
     headers: { "accept-language": "en-US" },
     workers: 4,
     debug: true,
-    setupClient: client => {
+    setupClient: (client) => {
         client.setHeaders({ "content-type": "application/json" });
         client.setBody(Buffer.from("ok"));
 
@@ -35,13 +35,17 @@ autocannon({
             },
         ]);
 
-        client.on("body", body => console.log(body.byteLength));
-        client.on("headers", headers => console.log(headers.authorization));
+        client.on("body", (body) => console.log(body.byteLength));
+        client.on("headers", (headers) => console.log(headers.authorization));
         client.on("response", (statusCode, resBytes, responseTime) => {
-            console.log(statusCode.toFixed(), resBytes.toFixed(), responseTime.toFixed());
+            console.log(
+                statusCode.toFixed(),
+                resBytes.toFixed(),
+                responseTime.toFixed(),
+            );
         });
     },
-}).then(result => {
+}).then((result) => {
     console.log(result.start, result.finish);
     console.log(result.latency.mean);
     console.log(result.non2xx);
@@ -72,8 +76,12 @@ instance.on("start", () => {});
 instance.on("tick", () => {});
 instance.on("response", (client, statusCode, resBytes, responseTime) => {
     client.setHeadersAndBody(undefined, undefined);
-    console.log(statusCode.toFixed(), resBytes.toFixed(), responseTime.toFixed());
+    console.log(
+        statusCode.toFixed(),
+        resBytes.toFixed(),
+        responseTime.toFixed(),
+    );
 });
-instance.on("done", result => console.log(result.throughput.p99_99));
-instance.on("error", err => console.error(err));
-instance.on("reqError", err => console.error(err));
+instance.on("done", (result) => console.log(result.throughput.p99_99));
+instance.on("error", (err) => console.error(err));
+instance.on("reqError", (err) => console.error(err));

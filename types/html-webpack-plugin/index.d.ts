@@ -126,7 +126,11 @@ declare namespace HtmlWebpackPlugin {
          */
         templateParameters?:
             | false
-            | ((compilation: compilation.Compilation, assets: TemplateParametersAssets, options: Options) => any)
+            | ((
+                  compilation: compilation.Compilation,
+                  assets: TemplateParametersAssets,
+                  options: Options,
+              ) => any)
             | { [key: string]: any }
             | undefined;
         /**

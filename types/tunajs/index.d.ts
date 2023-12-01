@@ -3,7 +3,11 @@
 // This library monkey-patches globals
 declare global {
     interface AudioNode {
-        connect<T extends AudioNode | Tuna.TunaAudioNode = AudioNode | Tuna.TunaAudioNode>(
+        connect<
+            T extends AudioNode | Tuna.TunaAudioNode =
+                | AudioNode
+                | Tuna.TunaAudioNode,
+        >(
             destinationNode: T,
             output?: number,
             input?: number,
@@ -65,7 +69,12 @@ declare namespace Tuna {
         disconnect(target: AudioNode | TunaAudioNode): void;
         connectInOrder(nodeArray: ArrayLike<AudioNode | TunaAudioNode>): void;
         getDefaults(): object;
-        automate(property: string, value: number, duration?: number, startTime?: number): void;
+        automate(
+            property: string,
+            value: number,
+            duration?: number,
+            startTime?: number,
+        ): void;
     }
 }
 
@@ -81,14 +90,24 @@ declare abstract class Super implements Tuna.TunaAudioNode {
     disconnect(target: AudioNode | Tuna.TunaAudioNode): void;
     connectInOrder(nodeArray: ArrayLike<AudioNode | Tuna.TunaAudioNode>): void;
     abstract getDefaults(): object;
-    abstract automate(property: string, value: number, duration?: number, startTime?: number): void;
+    abstract automate(
+        property: string,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 }
 
 declare class Bitcrusher extends Super {
     readonly name: "Bitcrusher";
     constructor(properties?: Partial<BitcrusherProperties>);
     getDefaults(): BitcrusherProperties;
-    automate(property: keyof BitcrusherProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof BitcrusherProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -128,7 +147,12 @@ declare class Cabinet extends Super {
         >,
     );
     getDefaults(): CabinetProperties;
-    automate(property: keyof CabinetProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof CabinetProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -157,7 +181,12 @@ declare class Chorus extends Super {
     readonly name: "Chorus";
     constructor(properties?: Partial<ChorusProperties>);
     getDefaults(): ChorusProperties;
-    automate(property: keyof ChorusProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof ChorusProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -196,7 +225,12 @@ declare class Compressor extends Super {
     name: "Compressor";
     constructor(properties?: Partial<CompressorProperties>);
     getDefaults(): CompressorProperties;
-    automate(property: keyof CompressorProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof CompressorProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly compNode: DynamicsCompressorNode;
@@ -263,7 +297,12 @@ declare class Convolver extends Super {
         >,
     );
     getDefaults(): ConvolverProperties;
-    automate(property: keyof ConvolverProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof ConvolverProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -333,7 +372,12 @@ declare class Delay extends Super {
     readonly name: "Delay";
     constructor(properties?: Partial<DelayProperties>);
     getDefaults(): DelayProperties;
-    automate(property: keyof DelayProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof DelayProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -405,7 +449,12 @@ declare class EnvelopeFollower<T extends object = object> extends Super {
         >,
     );
     getDefaults(): EnvelopeFollowerProperties;
-    automate(property: keyof EnvelopeFollowerProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof EnvelopeFollowerProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly jsNode: ScriptProcessorNode;
@@ -449,7 +498,12 @@ declare class Filter extends Super {
     readonly name: "Filter";
     constructor(properties?: Partial<FilterProperties>);
     getDefaults(): FilterProperties;
-    automate(property: keyof FilterProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof FilterProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -491,7 +545,12 @@ declare class Gain extends Super {
     readonly name: "Gain";
     constructor(properties?: Partial<GainProperties>);
     getDefaults(): GainProperties;
-    automate(property: keyof GainProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof GainProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -532,7 +591,12 @@ declare class LFO<T extends object = object> extends Super {
         >,
     );
     getDefaults(): LFOProperties;
-    automate(property: keyof LFOProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof LFOProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly output: ScriptProcessorNode;
@@ -574,7 +638,12 @@ declare class MoogFilter extends Super {
     readonly name: "MoogFilter";
     constructor(properties?: Partial<MoogFilterProperties>);
     getDefaults(): MoogFilterProperties;
-    automate(property: keyof MoogFilterProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof MoogFilterProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -603,7 +672,12 @@ declare class Overdrive extends Super {
     readonly name: "Overdrive";
     constructor(properties?: Partial<OverdriveProperties>);
     getDefaults(): OverdriveProperties;
-    automate(property: keyof OverdriveProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof OverdriveProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -644,13 +718,22 @@ interface OverdriveProperties {
 
 type OverdriveAlgorithmIndex = 0 | 1 | 2 | 3 | 4 | 5;
 
-type OverdriveWaveshaperCallback = (amount: number, n_samples: number, ws_table: Float32Array) => void;
+type OverdriveWaveshaperCallback = (
+    amount: number,
+    n_samples: number,
+    ws_table: Float32Array,
+) => void;
 
 declare class Panner extends Super {
     readonly name: "Panner";
     constructor(properties?: Partial<PannerProperties>);
     getDefaults(): PannerProperties;
-    automate(property: keyof PannerProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof PannerProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;
@@ -672,7 +755,12 @@ declare class Phaser extends Super {
     readonly name: "Phaser";
     constructor(properties?: Partial<PhaserProperties>);
     getDefaults(): PhaserProperties;
-    automate(property: keyof PhaserProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof PhaserProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly splitter: ChannelSplitterNode;
@@ -717,7 +805,12 @@ declare class PingPongDelay extends Super {
     readonly name: "PingPongDelay";
     constructor(properties?: Partial<PingPongDelayProperties>);
     getDefaults(): PingPongDelayProperties;
-    automate(property: keyof PingPongDelayProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof PingPongDelayProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly wet: GainNode;
@@ -763,7 +856,12 @@ declare class Tremolo extends Super {
     readonly name: "Tremolo";
     constructor(properties?: Partial<TremoloProperties>);
     getDefaults(): TremoloProperties;
-    automate(property: keyof TremoloProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof TremoloProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly splitter: ChannelSplitterNode;
@@ -794,7 +892,12 @@ declare class WahWah extends Super {
     readonly name: "WahWah";
     constructor(properties?: Partial<WahWahProperties>);
     getDefaults(): WahWahProperties;
-    automate(property: keyof WahWahProperties, value: number, duration?: number, startTime?: number): void;
+    automate(
+        property: keyof WahWahProperties,
+        value: number,
+        duration?: number,
+        startTime?: number,
+    ): void;
 
     readonly input: GainNode;
     readonly activateNode: GainNode;

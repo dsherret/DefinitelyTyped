@@ -20,9 +20,9 @@ getTestNames("specSourceCode"); // $ExpectType Results
 getTestNames("specSourceCode", false); // $ExpectType Results
 const result = getTestNames("specSourceCode", true); // $ExpectType ResultsWithStructure
 setEffectiveTags(result.structure);
-visitEachTest(structure, test => {}); // $ExpectType void
+visitEachTest(structure, (test) => {}); // $ExpectType void
 countTags(structure); // $ExpectType Record<string, number>
-visitEachNode(structure, test => {}, suite); // $ExpectType void
+visitEachNode(structure, (test) => {}, suite); // $ExpectType void
 setParentSuite(structure); // $ExpectType void
 
 formatTestList(structure); // $ExpectType string

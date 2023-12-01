@@ -23,8 +23,12 @@ import subsetFont = require("subset-font");
     const noCharsProvidedError = await subsetFont(mySfntFontBuffer);
 
     // Invalid target format provided, should error
-    const invalidTargetFormatError = await subsetFont(mySfntFontBuffer, "1234", {
-        // @ts-expect-error
-        targetFormat: "eot",
-    });
+    const invalidTargetFormatError = await subsetFont(
+        mySfntFontBuffer,
+        "1234",
+        {
+            // @ts-expect-error
+            targetFormat: "eot",
+        },
+    );
 })();

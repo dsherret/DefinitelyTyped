@@ -74,7 +74,10 @@ declare namespace hyphen {
      * @param options Options for the hyphenation process.
      * @returns The hyphenated text.
      */
-    type HyphenationFunctionSync = (text: string, options?: Readonly<HyphenationOptions>) => string;
+    type HyphenationFunctionSync = (
+        text: string,
+        options?: Readonly<HyphenationOptions>,
+    ) => string;
 
     /**
      * Asynchronous hyphenation function returning a promise for the hyphenated text.
@@ -82,7 +85,10 @@ declare namespace hyphen {
      * @param options Options for the hyphenation process.
      * @returns A promise of the hyphenated text.
      */
-    type HyphenationFunctionAsync = (text: string, options?: Readonly<HyphenationOptions>) => Promise<string>;
+    type HyphenationFunctionAsync = (
+        text: string,
+        options?: Readonly<HyphenationOptions>,
+    ) => Promise<string>;
 }
 
 /**

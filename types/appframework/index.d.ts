@@ -165,7 +165,10 @@ interface appFrameworkStatic {
      * @param {Function} success
      * @title $.get(url,success)
      */
-    get(url: string, fn: (data: any, status?: string, xhr?: XMLHttpRequest) => void): XMLHttpRequest;
+    get(
+        url: string,
+        fn: (data: any, status?: string, xhr?: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * Shorthand call to an Ajax POST request
@@ -202,8 +205,15 @@ interface appFrameworkStatic {
      * @param {Function} [success]
      * @title $.getJSON(url,data,success)
      */
-    getJSON(url: string, fn: (data: any, status?: string, xhr?: XMLHttpRequest) => void): XMLHttpRequest;
-    getJSON(url: string, data: any, fn: (data: any, status: string, xhr: XMLHttpRequest) => void): XMLHttpRequest;
+    getJSON(
+        url: string,
+        fn: (data: any, status?: string, xhr?: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
+    getJSON(
+        url: string,
+        data: any,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * Converts an object into a key/value par with an optional prefix.  Used for converting objects to a query string
@@ -775,7 +785,10 @@ interface appFrameworkCollection {
      * @return {Object} appframework object
      * @title $().replaceClass(old, new)
      */
-    replaceClass(oldClassName: string, newClassName: string): appFrameworkCollection;
+    replaceClass(
+        oldClassName: string,
+        newClassName: string,
+    ): appFrameworkCollection;
 
     /**
      * Checks to see if an element has a class.
@@ -1173,7 +1186,11 @@ interface appFrameworkCollection {
      * @title $().delegate(selector,event,callback)
      */
     delegate(selector: any, eventHash: {}): appFrameworkCollection;
-    delegate(selector: any, eventName: string, fn: (e: Event) => any): appFrameworkCollection;
+    delegate(
+        selector: any,
+        eventName: string,
+        fn: (e: Event) => any,
+    ): appFrameworkCollection;
 
     /**
      * Unbinds events that were registered through delegate.  It acts upon the selector and event.  If a callback is specified, it will remove that one, otherwise it removes all of them.
@@ -1189,7 +1206,11 @@ interface appFrameworkCollection {
      * @title $().undelegate(selector,event,[callback]);
      */
     undelegate(selector: any, eventHash: {}): appFrameworkCollection;
-    undelegate(selector: any, eventName: string, fn: (e: Event) => any): appFrameworkCollection;
+    undelegate(
+        selector: any,
+        eventName: string,
+        fn: (e: Event) => any,
+    ): appFrameworkCollection;
 
     /**
      * Similar to delegate, but the function parameter order is easier to understand.
@@ -1206,7 +1227,11 @@ interface appFrameworkCollection {
      */
     on(eventHash: {}, selector?: any): appFrameworkCollection;
     on(eventName: string, fn: (e: Event) => any): appFrameworkCollection;
-    on(eventName: string, selector: string, fn: (e: Event) => any): appFrameworkCollection;
+    on(
+        eventName: string,
+        selector: string,
+        fn: (e: Event) => any,
+    ): appFrameworkCollection;
 
     /**
      * Removes event listeners for .on()
@@ -1224,7 +1249,11 @@ interface appFrameworkCollection {
      */
     off(eventHash: {}, selector?: any): appFrameworkCollection;
     off(eventName: string, fn: (e: Event) => any): appFrameworkCollection;
-    off(eventName: string, selector: string, fn: (e: Event) => any): appFrameworkCollection;
+    off(
+        eventName: string,
+        selector: string,
+        fn: (e: Event) => any,
+    ): appFrameworkCollection;
 
     /**
      This triggers an event to be dispatched.  Usefull for emulating events, etc.
@@ -1303,9 +1332,15 @@ interface appFrameworkCollection {
 
 interface appFrameworkAjaxSettings {
     type?: string | undefined;
-    beforeSend?: ((xhr: XMLHttpRequest, settings: appFrameworkAjaxSettings) => boolean) | undefined;
-    success?: ((data: any, status: string, xhr: XMLHttpRequest) => void) | undefined;
-    error?: ((xhr: XMLHttpRequest, errorType: string, error: Error) => void) | undefined;
+    beforeSend?:
+        | ((xhr: XMLHttpRequest, settings: appFrameworkAjaxSettings) => boolean)
+        | undefined;
+    success?:
+        | ((data: any, status: string, xhr: XMLHttpRequest) => void)
+        | undefined;
+    error?:
+        | ((xhr: XMLHttpRequest, errorType: string, error: Error) => void)
+        | undefined;
     complete?: ((xhr: XMLHttpRequest, status: string) => void) | undefined;
     timeout?: number | undefined;
     url?: string | undefined;

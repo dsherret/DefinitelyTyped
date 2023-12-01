@@ -17,7 +17,9 @@ declare namespace sanitize {
 
     type Transformer = (tagName: string, attribs: Attributes) => Tag;
 
-    type AllowedAttribute = string | { name: string; multiple?: boolean | undefined; values: string[] };
+    type AllowedAttribute =
+        | string
+        | { name: string; multiple?: boolean | undefined; values: string[] };
 
     type DisallowedTagsModes = "discard" | "escape" | "recursiveEscape";
 
@@ -45,14 +47,24 @@ declare namespace sanitize {
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface IOptions {
-        allowedAttributes?: Record<string, AllowedAttribute[]> | false | undefined;
-        allowedStyles?: { [index: string]: { [index: string]: RegExp[] } } | undefined;
-        allowedClasses?: { [index: string]: boolean | Array<string | RegExp> } | undefined;
+        allowedAttributes?:
+            | Record<string, AllowedAttribute[]>
+            | false
+            | undefined;
+        allowedStyles?:
+            | { [index: string]: { [index: string]: RegExp[] } }
+            | undefined;
+        allowedClasses?:
+            | { [index: string]: boolean | Array<string | RegExp> }
+            | undefined;
         allowedIframeDomains?: string[] | undefined;
         allowedIframeHostnames?: string[] | undefined;
         allowIframeRelativeUrls?: boolean | undefined;
         allowedSchemes?: string[] | boolean | undefined;
-        allowedSchemesByTag?: { [index: string]: string[] } | boolean | undefined;
+        allowedSchemesByTag?:
+            | { [index: string]: string[] }
+            | boolean
+            | undefined;
         allowedSchemesAppliedToAttributes?: string[] | undefined;
         allowedScriptDomains?: string[] | undefined;
         allowedScriptHostnames?: string[] | undefined;
@@ -81,5 +93,9 @@ declare namespace sanitize {
     const defaults: IDefaults;
     const options: IOptions;
 
-    function simpleTransform(tagName: string, attribs: Attributes, merge?: boolean): Transformer;
+    function simpleTransform(
+        tagName: string,
+        attribs: Attributes,
+        merge?: boolean,
+    ): Transformer;
 }

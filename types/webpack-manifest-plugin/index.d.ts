@@ -2,7 +2,7 @@ import { SyncWaterfallHook } from "tapable";
 import { Chunk, Compiler, WebpackPluginInstance } from "webpack";
 
 export const WebpackManifestPlugin: {
-    new(options?: Options): WebpackPluginInstance;
+    new (options?: Options): WebpackPluginInstance;
 };
 
 export interface FileDescriptor {
@@ -39,7 +39,13 @@ export interface Options {
     /**
      * Create the manifest. It can return anything as long as it's serializable by JSON.stringify.
      */
-    generate?: ((seed: object, files: FileDescriptor[], entries: Record<string, string[]>) => object) | undefined;
+    generate?:
+        | ((
+              seed: object,
+              files: FileDescriptor[],
+              entries: Record<string, string[]>,
+          ) => object)
+        | undefined;
 
     /**
      * Modify file details before the manifest is created.
@@ -72,7 +78,9 @@ export interface Options {
     /**
      * Sort files before they are passed to generate.
      */
-    sort?: ((fileA: FileDescriptor, fileB: FileDescriptor) => number) | undefined;
+    sort?:
+        | ((fileA: FileDescriptor, fileB: FileDescriptor) => number)
+        | undefined;
 
     /**
      * If true, the keys specified in the entry property will be used as keys in the manifest.
@@ -87,4 +95,7 @@ export interface Options {
     writeToFileEmit?: boolean | undefined;
 }
 
-export function getCompilerHooks(compiler: Compiler): { afterEmit: SyncWaterfallHook; beforeEmit: SyncWaterfallHook };
+export function getCompilerHooks(compiler: Compiler): {
+    afterEmit: SyncWaterfallHook;
+    beforeEmit: SyncWaterfallHook;
+};

@@ -1,5 +1,11 @@
 declare namespace jsonpatch {
-    type OpPatch = AddPatch | RemovePatch | ReplacePatch | MovePatch | CopyPatch | TestPatch;
+    type OpPatch =
+        | AddPatch
+        | RemovePatch
+        | ReplacePatch
+        | MovePatch
+        | CopyPatch
+        | TestPatch;
     interface Patch {
         path: string;
     }

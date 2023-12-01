@@ -870,10 +870,12 @@ export type CredentialState =
  * {AgentURL} [to.url] The {AgentURL} of the holder.
  */
 export interface Credential {
-    offer?: {
-        attributes: { [key: string]: string };
-        data: string;
-    } | undefined;
+    offer?:
+        | {
+              attributes: { [key: string]: string };
+              data: string;
+          }
+        | undefined;
     schema_name: string;
     schema_version: string;
     state: CredentialState;

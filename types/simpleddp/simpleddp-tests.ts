@@ -10,4 +10,7 @@ class simpleSocketProvider {
     onerror(this: any, event: any) {}
     onclose(this: any, event: any) {}
 }
-const success = new simpleDDP({ endpoint: "", SocketConstructor: simpleSocketProvider }); // $ExpectType simpleDDP
+const success = new simpleDDP({
+    endpoint: "",
+    SocketConstructor: simpleSocketProvider,
+}); // $ExpectType simpleDDP

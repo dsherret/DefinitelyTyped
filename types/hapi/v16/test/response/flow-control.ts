@@ -2,7 +2,10 @@
 
 import * as Hapi from "hapi";
 
-const handler = function(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
+const handler = function (
+    request: Hapi.Request,
+    reply: Hapi.ReplyWithContinue,
+) {
     const response = reply("success").hold();
 
     setTimeout(() => {

@@ -3,7 +3,9 @@ import Transport from "../../transport/transport";
 import { EmitterBase } from "../base";
 import { WebContentsEventMapping } from "../events/webcontents";
 import { FindInPageOptions, PrinterInfo, PrintOptions } from "../window/window";
-export declare class WebContents<T extends WebContentsEventMapping> extends EmitterBase<T> {
+export declare class WebContents<
+    T extends WebContentsEventMapping,
+> extends EmitterBase<T> {
     entityType: string;
     constructor(wire: Transport, identity: Identity, entityType: string);
     executeJavaScript(code: string): Promise<void>;

@@ -12,7 +12,16 @@ export interface URLRecord {
 }
 
 /** https://url.spec.whatwg.org/#concept-ipv6 */
-export type IPv6Address = [number, number, number, number, number, number, number, number];
+export type IPv6Address = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+];
 
 /** https://url.spec.whatwg.org/#url-class */
 export class URL {
@@ -79,7 +88,12 @@ export class URLSearchParams {
     values(): IterableIterator<string>;
     entries(): IterableIterator<[name: string, value: string]>;
     forEach<THIS_ARG = void>(
-        callback: (this: THIS_ARG, value: string, name: string, searchParams: this) => void,
+        callback: (
+            this: THIS_ARG,
+            value: string,
+            name: string,
+            searchParams: this,
+        ) => void,
         thisArg?: THIS_ARG,
     ): void;
 
@@ -88,7 +102,10 @@ export class URLSearchParams {
 }
 
 /** https://url.spec.whatwg.org/#concept-url-parser */
-export function parseURL(input: string, options?: { readonly baseURL?: string | undefined }): URLRecord | null;
+export function parseURL(
+    input: string,
+    options?: { readonly baseURL?: string | undefined },
+): URLRecord | null;
 
 /** https://url.spec.whatwg.org/#concept-basic-url-parser */
 export function basicURLParse(
@@ -125,7 +142,10 @@ export type StateOverride =
     | "fragment";
 
 /** https://url.spec.whatwg.org/#concept-url-serializer */
-export function serializeURL(urlRecord: URLRecord, excludeFragment?: boolean): string;
+export function serializeURL(
+    urlRecord: URLRecord,
+    excludeFragment?: boolean,
+): string;
 
 /** https://url.spec.whatwg.org/#concept-host-serializer */
 export function serializeHost(host: string | number | IPv6Address): string;

@@ -3,10 +3,10 @@ import preq = require("preq");
 // #region preq
 {
     preq("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -16,10 +16,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -31,10 +31,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -47,10 +47,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -60,10 +60,10 @@ import preq = require("preq");
 // #region preq.get
 {
     preq.get("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -73,10 +73,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -87,10 +87,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -102,10 +102,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -115,10 +115,10 @@ import preq = require("preq");
 // #region preq.head
 {
     preq.head("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -128,10 +128,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -142,10 +142,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -157,10 +157,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -170,10 +170,10 @@ import preq = require("preq");
 // #region preq.mkcol
 {
     preq.mkcol("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -183,10 +183,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -197,10 +197,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -212,10 +212,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -225,10 +225,10 @@ import preq = require("preq");
 // #region preq.options
 {
     preq.options("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -238,10 +238,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -252,10 +252,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -267,10 +267,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -280,10 +280,10 @@ import preq = require("preq");
 // #region preq.patch
 {
     preq.patch("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -293,10 +293,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -307,10 +307,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -322,10 +322,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -335,10 +335,10 @@ import preq = require("preq");
 // #region preq.post
 {
     preq.post("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -348,10 +348,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -362,10 +362,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -377,10 +377,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -390,10 +390,10 @@ import preq = require("preq");
 // #region preq.put
 {
     preq.put("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -403,10 +403,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -417,10 +417,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -432,10 +432,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -445,10 +445,10 @@ import preq = require("preq");
 // #region preq.trace
 {
     preq.trace("https://www.example.com").then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -458,10 +458,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -472,10 +472,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );
@@ -487,10 +487,10 @@ import preq = require("preq");
         retries: 2,
         timeout: 1500,
     }).then(
-        resp => {
+        (resp) => {
             resp; // $ExpectType Response
         },
-        error => {
+        (error) => {
             error; // $ExpectType any
         },
     );

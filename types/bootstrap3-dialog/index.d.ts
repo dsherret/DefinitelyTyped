@@ -5,7 +5,7 @@ declare namespace BootstrapDialog {
         BUTTON_SIZES: any;
         BUTTONS_ORDER_CANCEL_OK: string;
         BUTTONS_ORDER_OK_CANCEL: string;
-        DEFAULT_TEXTS: any; /** For text localization. */
+        DEFAULT_TEXTS: any /** For text localization. */;
         ICON_SPINNER: string;
         NAMESPACE: string;
 
@@ -23,7 +23,10 @@ declare namespace BootstrapDialog {
 
         (options: DialogOptions): DialogContext;
         alert(message: string, closeCallback?: () => void): void;
-        confirm(message: string, closeCallback?: (result: boolean) => void): void;
+        confirm(
+            message: string,
+            closeCallback?: (result: boolean) => void,
+        ): void;
         show(options: DialogOptions): DialogInstance;
     }
 
@@ -35,7 +38,11 @@ declare namespace BootstrapDialog {
         /** Dialog title. Either string or JQuery element. */
         title?: string | JQuery | undefined;
         /** Dialog message. Either string, JQuery element, or function that returns either string or JQuery element. */
-        message?: string | JQuery | ((dialog?: DialogContext) => string | JQuery) | undefined;
+        message?:
+            | string
+            | JQuery
+            | ((dialog?: DialogContext) => string | JQuery)
+            | undefined;
         /**
          * When set to true, you can close the dialog by:
          *  - Clicking the close icon in dialog header.

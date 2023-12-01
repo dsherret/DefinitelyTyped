@@ -29,7 +29,11 @@ const fullExample = (
         renderStarIcon={(index: number, value: number, _: string) => {
             return (
                 <span>
-                    <i className={index <= value ? "fas fa-star" : "far fa-star"} />
+                    <i
+                        className={
+                            index <= value ? "fas fa-star" : "far fa-star"
+                        }
+                    />
                 </span>
             );
         }}

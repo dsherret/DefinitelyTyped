@@ -47,5 +47,9 @@ function Age() {
 function AllStore() {
     const [store, update] = useStore();
 
-    return <button onClick={() => update({ age: 31, username: "Aral" })}>Reset</button>;
+    return (
+        <button onClick={() => update({ age: 31, username: "Aral" })}>
+            Reset
+        </button>
+    );
 }

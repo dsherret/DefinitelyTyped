@@ -43,7 +43,9 @@ type ExtendedWindowEventMap = {
 } & WindowEventMap;
 
 type NativeListenerBubbleProps = {
-    [EventName in NativeEvent as `on${EventName}`]?: (event: ExtendedWindowEventMap[Lowercase<EventName>]) => any;
+    [EventName in NativeEvent as `on${EventName}`]?: (
+        event: ExtendedWindowEventMap[Lowercase<EventName>],
+    ) => any;
 };
 
 export type NativeListenerCaptureProps = {
@@ -56,8 +58,13 @@ type NativeListenerStopProps = {
     [EventName in NativeEvent as `stop${EventName}`]?: boolean;
 };
 
-export type NativeListenerProps = NativeListenerBubbleProps | NativeListenerCaptureProps | NativeListenerStopProps;
+export type NativeListenerProps =
+    | NativeListenerBubbleProps
+    | NativeListenerCaptureProps
+    | NativeListenerStopProps;
 
-export default class NativeListener extends Component<NativeListenerProps & { children: ReactElement }> {}
+export default class NativeListener extends Component<
+    NativeListenerProps & { children: ReactElement }
+> {}
 
 export {};

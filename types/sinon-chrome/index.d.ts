@@ -354,12 +354,14 @@ declare namespace SinonChrome.plugins {
         [key: string]: {
             message: string;
             description?: string | undefined;
-            placeholders?: {
-                [key: string]: {
-                    content: string;
-                    example?: string | undefined;
-                };
-            } | undefined;
+            placeholders?:
+                | {
+                      [key: string]: {
+                          content: string;
+                          example?: string | undefined;
+                      };
+                  }
+                | undefined;
         };
     }
     export class I18nPlugin {

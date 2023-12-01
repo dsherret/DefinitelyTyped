@@ -91,7 +91,13 @@ export class EntityManager {
      * @param delay - A time value in millisecond used to delay the message dispatching.
      * @param data - An object for custom data.
      */
-    sendMessage(sender: GameEntity, receiver: GameEntity, message: string, delay: number, data: object): this;
+    sendMessage(
+        sender: GameEntity,
+        receiver: GameEntity,
+        message: string,
+        delay: number,
+        data: object,
+    ): this;
 
     /**
      * Transforms this instance into a JSON object.

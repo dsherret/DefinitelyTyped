@@ -1,7 +1,7 @@
 // Inspired by http://bl.ocks.org/mbostock/4061502
 
 function iqr(k: number) {
-    return function(d: any) {
+    return function (d: any) {
         var q1 = d.quartiles[0],
             q3 = d.quartiles[2],
             iqr = (q3 - q1) * k;
@@ -13,10 +13,7 @@ function iqr(k: number) {
     };
 }
 
-var chart = d3.box()
-    .whiskers(iqr(1.5))
-    .width(100)
-    .height(100);
+var chart = d3.box().whiskers(iqr(1.5)).width(100).height(100);
 
 chart.domain([1, 30]);
 

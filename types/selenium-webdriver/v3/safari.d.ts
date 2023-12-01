@@ -20,7 +20,9 @@ export function createConnectFile(serverUrl: string): any;
  * @param {!Object} desiredCapabilities .
  * @return {!Array<promise.Promise>} A list of promises for the deleted files.
  */
-export function cleanSession(desiredCapabilities: webdriver.Capabilities): any[];
+export function cleanSession(
+    desiredCapabilities: webdriver.Capabilities,
+): any[];
 
 /** @return {string} . */
 export function getRandomString(): string;
@@ -62,7 +64,9 @@ export class Options {
      *     merge these options into, if any.
      * @return {!Capabilities} The capabilities.
      */
-    toCapabilities(opt_capabilities?: webdriver.Capabilities): webdriver.Capabilities;
+    toCapabilities(
+        opt_capabilities?: webdriver.Capabilities,
+    ): webdriver.Capabilities;
 }
 
 /**

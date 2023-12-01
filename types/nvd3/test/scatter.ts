@@ -1,15 +1,17 @@
 namespace nvd3_test_scatter {
-    nv.addGraph(function() {
-        var chart = nv.models.scatter()
+    nv.addGraph(function () {
+        var chart = nv.models
+            .scatter()
             .margin({ top: 20, right: 20, bottom: 20, left: 20 })
-            .pointSize(function(d) {
+            .pointSize(function (d) {
                 return d.z;
             })
             .useVoronoi(false);
 
         d3.select("#test1")
             .datum(randomData())
-            .transition().duration(500)
+            .transition()
+            .duration(500)
             .call(chart);
 
         nv.utils.windowResize(chart.update);
@@ -26,7 +28,11 @@ namespace nvd3_test_scatter {
             });
 
             for (var j = 0; j < 100; j++) {
-                data[i].values.push({ x: Math.random(), y: Math.random(), z: Math.random() });
+                data[i].values.push({
+                    x: Math.random(),
+                    y: Math.random(),
+                    z: Math.random(),
+                });
             }
         }
 

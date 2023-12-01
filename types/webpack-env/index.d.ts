@@ -33,7 +33,11 @@ declare namespace __WebpackModuleApi {
          *
          * This creates a chunk. The chunk can be named. If a chunk with this name already exists, the dependencies are merged into that chunk and that chunk is used.
          */
-        ensure(paths: string[], callback: (require: NodeRequire) => void, chunkName?: string): void;
+        ensure(
+            paths: string[],
+            callback: (require: NodeRequire) => void,
+            chunkName?: string,
+        ): void;
         ensure(
             paths: string[],
             callback: (require: NodeRequire) => void,
@@ -111,9 +115,11 @@ declare namespace __WebpackModuleApi {
         /**
          * For accepted: The location of accept handlers that will handle the update
          */
-        outdatedDependencies?: {
-            [dependencyId: number]: number[];
-        } | undefined;
+        outdatedDependencies?:
+            | {
+                  [dependencyId: number]: number[];
+              }
+            | undefined;
         /**
          * For errors: the thrown error
          */
@@ -143,7 +149,11 @@ declare namespace __WebpackModuleApi {
          * @param callback
          * @param errorHandler
          */
-        accept(dependency: string, callback?: () => void, errorHandler?: (err: Error) => void): void;
+        accept(
+            dependency: string,
+            callback?: () => void,
+            errorHandler?: (err: Error) => void,
+        ): void;
         /**
          * Accept code updates for this module without notification of parents.
          * This should only be used if the module doesn’t export anything.

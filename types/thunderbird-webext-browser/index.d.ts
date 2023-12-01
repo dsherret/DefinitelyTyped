@@ -23,7 +23,9 @@ declare namespace messenger {
      */
     export namespace _manifest {
         /* _manifest types */
-        export type OptionalPermission = OptionalPermissionNoPrompt | _OptionalPermission;
+        export type OptionalPermission =
+            | OptionalPermissionNoPrompt
+            | _OptionalPermission;
 
         export interface ActionManifest {
             /**
@@ -74,7 +76,9 @@ declare namespace messenger {
             action?: ActionManifest | undefined;
             /** Not supported on manifest versions above 2. */
             browser_action?: ActionManifest | undefined;
-            chrome_settings_overrides?: _WebExtensionManifestChromeSettingsOverrides | undefined;
+            chrome_settings_overrides?:
+                | _WebExtensionManifestChromeSettingsOverrides
+                | undefined;
             cloud_file?: _WebExtensionManifestCloudFile | undefined;
             /**
              * A _dictionary object_ defining one or more commands as _name-value_
@@ -88,9 +92,13 @@ declare namespace messenger {
              *   Example:
              *   [manifest.json](https://raw.githubusercontent.com/thundernest/webext-docs/latest-mv2/includes/commands/manifest.json)
              */
-            commands?: { [key: string]: _WebExtensionManifestCommands } | undefined;
+            commands?:
+                | { [key: string]: _WebExtensionManifestCommands }
+                | undefined;
             compose_action?: _WebExtensionManifestComposeAction | undefined;
-            message_display_action?: _WebExtensionManifestMessageDisplayAction | undefined;
+            message_display_action?:
+                | _WebExtensionManifestMessageDisplayAction
+                | undefined;
             /**
              * A theme experiment allows modifying the user interface of Thunderbird
              * beyond what is currently possible using the built-in color, image and
@@ -104,8 +112,12 @@ declare namespace messenger {
              */
             theme_experiment?: ThemeExperiment | undefined;
             /** Needs at least manifest version 3. */
-            declarative_net_request?: _WebExtensionManifestDeclarativeNetRequest | undefined;
-            experiment_apis?: { [key: string]: experiments.ExperimentAPI } | undefined;
+            declarative_net_request?:
+                | _WebExtensionManifestDeclarativeNetRequest
+                | undefined;
+            experiment_apis?:
+                | { [key: string]: experiments.ExperimentAPI }
+                | undefined;
             /** A list of protocol handler definitions. */
             protocol_handlers?: ProtocolHandler[] | undefined;
             default_locale?: string | undefined;
@@ -116,27 +128,27 @@ declare namespace messenger {
             incognito?: _WebExtensionManifestIncognito | undefined;
             background?:
                 | {
-                    page: ExtensionURL;
-                    /** Not supported on manifest versions above 2. */
-                    persistent?: boolean | undefined;
-                }
+                      page: ExtensionURL;
+                      /** Not supported on manifest versions above 2. */
+                      persistent?: boolean | undefined;
+                  }
                 | {
-                    scripts: ExtensionURL[];
-                    /** Not supported on manifest versions above 2. */
-                    persistent?: boolean | undefined;
-                }
+                      scripts: ExtensionURL[];
+                      /** Not supported on manifest versions above 2. */
+                      persistent?: boolean | undefined;
+                  }
                 | {
-                    service_worker: ExtensionURL;
-                }
+                      service_worker: ExtensionURL;
+                  }
                 | undefined;
             options_ui?: _WebExtensionManifestOptionsUi | undefined;
             content_scripts?: ContentScript[] | undefined;
             content_security_policy?:
                 | string
                 | {
-                    /** The Content Security Policy used for extension pages. */
-                    extension_pages?: string | undefined;
-                }
+                      /** The Content Security Policy used for extension pages. */
+                      extension_pages?: string | undefined;
+                  }
                 | undefined;
             permissions?: PermissionOrOrigin[] | Permission[] | undefined;
             granted_host_permissions?: boolean | undefined;
@@ -146,10 +158,10 @@ declare namespace messenger {
             web_accessible_resources?:
                 | string[]
                 | Array<{
-                    resources: string[];
-                    matches?: MatchPattern[] | undefined;
-                    extension_ids?: Array<ExtensionID | "*"> | undefined;
-                }>
+                      resources: string[];
+                      matches?: MatchPattern[] | undefined;
+                      extension_ids?: Array<ExtensionID | "*"> | undefined;
+                  }>
                 | undefined;
             hidden?: boolean | undefined;
             page_action?: _WebExtensionManifestPageAction | undefined;
@@ -181,12 +193,18 @@ declare namespace messenger {
          */
         export type KeyName = string;
 
-        export type PermissionNoPrompt = OptionalPermissionNoPrompt | PermissionPrivileged | _PermissionNoPrompt;
+        export type PermissionNoPrompt =
+            | OptionalPermissionNoPrompt
+            | PermissionPrivileged
+            | _PermissionNoPrompt;
 
         export type OptionalPermissionNoPrompt = _OptionalPermissionNoPrompt;
 
         /** Defines a color value. */
-        export type ThemeColor = string | [number, number, number] | [number, number, number, number];
+        export type ThemeColor =
+            | string
+            | [number, number, number]
+            | [number, number, number, number];
 
         /**
          * Defines additional color, image and property keys to be used in {@link theme.ThemeType},
@@ -275,7 +293,11 @@ declare namespace messenger {
 
         export type PermissionPrivileged = _PermissionPrivileged;
 
-        export type Permission = string | PermissionNoPrompt | OptionalPermission | "declarativeNetRequest";
+        export type Permission =
+            | string
+            | PermissionNoPrompt
+            | OptionalPermission
+            | "declarativeNetRequest";
 
         /** Represents a protocol handler definition. */
         export interface ProtocolHandler {
@@ -385,7 +407,9 @@ declare namespace messenger {
             author?: string | undefined;
             version: string;
             homepage_url?: string | undefined;
-            developer?: _WebExtensionSitePermissionsManifestDeveloper | undefined;
+            developer?:
+                | _WebExtensionSitePermissionsManifestDeveloper
+                | undefined;
         }
 
         export interface ThemeIcons {
@@ -397,7 +421,9 @@ declare namespace messenger {
             size: number;
         }
 
-        export type OptionalPermissionOrOrigin = OptionalPermission | MatchPattern;
+        export type OptionalPermissionOrOrigin =
+            | OptionalPermission
+            | MatchPattern;
 
         export type PermissionOrOrigin = Permission | MatchPattern;
 
@@ -424,7 +450,10 @@ declare namespace messenger {
             gecko?: FirefoxSpecificProperties | undefined;
         }
 
-        export type MatchPattern = MatchPatternRestricted | MatchPatternUnestricted | "<all_urls>";
+        export type MatchPattern =
+            | MatchPatternRestricted
+            | MatchPatternUnestricted
+            | "<all_urls>";
 
         /** Same as MatchPattern above, but excludes<all_urls></all_urls> */
         export type MatchPatternRestricted = string;
@@ -474,14 +503,14 @@ declare namespace messenger {
 
         export type IconPath =
             | {
-                [key: number]: ExtensionFileUrl;
-            }
+                  [key: number]: ExtensionFileUrl;
+              }
             | ExtensionFileUrl;
 
         export type IconImageData =
             | {
-                [key: number]: ImageData;
-            }
+                  [key: number]: ImageData;
+              }
             | ImageData;
 
         export type ImageData = any;
@@ -495,18 +524,18 @@ declare namespace messenger {
         /** Represents a native manifest file */
         export type NativeManifest =
             | {
-                name: string;
-                description: string;
-                path: string;
-                type: "pkcs11" | "stdio";
-                allowed_extensions: ExtensionID[];
-            }
+                  name: string;
+                  description: string;
+                  path: string;
+                  type: "pkcs11" | "stdio";
+                  allowed_extensions: ExtensionID[];
+              }
             | {
-                name: ExtensionID;
-                description: string;
-                data: { [key: string]: any };
-                type: "storage";
-            };
+                  name: ExtensionID;
+                  description: string;
+                  data: { [key: string]: any };
+                  type: "storage";
+              };
 
         export type _OptionalPermission =
             | "accountsRead"
@@ -548,31 +577,32 @@ declare namespace messenger {
         export type _ActionManifestDefaultWindows = "normal" | "messageDisplay";
 
         /** The type of param can be either "purpose" or "pref". */
-        export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition = "purpose" | "pref";
+        export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition =
+            "purpose" | "pref";
 
         /**
          * The context that initiates a search, required if condition is
          * "purpose".
          */
         export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose =
-            | "contextmenu"
-            | "searchbar"
-            | "homepage"
-            | "keyword"
-            | "newtab";
+            "contextmenu" | "searchbar" | "homepage" | "keyword" | "newtab";
 
         export interface _WebExtensionManifestChromeSettingsOverridesSearchProviderParams {
             /** A url parameter name */
             name: string;
             /** The type of param can be either "purpose" or "pref". */
-            condition?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition | undefined;
+            condition?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition
+                | undefined;
             /** The preference to retrieve the value from. */
             pref?: string | undefined;
             /**
              * The context that initiates a search, required if condition is
              * "purpose".
              */
-            purpose?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose | undefined;
+            purpose?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose
+                | undefined;
             /** A url parameter value. */
             value?: string | undefined;
         }
@@ -613,11 +643,15 @@ declare namespace messenger {
              * search url parameters based on how the search is performed in
              * Thunderbird.
              */
-            params?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParams[] | undefined;
+            params?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParams[]
+                | undefined;
         }
 
         export interface _WebExtensionManifestChromeSettingsOverrides {
-            search_provider?: _WebExtensionManifestChromeSettingsOverridesSearchProvider | undefined;
+            search_provider?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProvider
+                | undefined;
         }
 
         export interface _WebExtensionManifestCloudFile {
@@ -689,7 +723,9 @@ declare namespace messenger {
         }
 
         export interface _WebExtensionManifestCommands {
-            suggested_key?: _WebExtensionManifestCommandsSuggestedKey | undefined;
+            suggested_key?:
+                | _WebExtensionManifestCommandsSuggestedKey
+                | undefined;
             description?: string | undefined;
         }
 
@@ -697,7 +733,9 @@ declare namespace messenger {
          * Defines the location the composeAction button will appear. The default
          * location is `maintoolbar`.
          */
-        export type _WebExtensionManifestComposeActionDefaultArea = "maintoolbar" | "formattoolbar";
+        export type _WebExtensionManifestComposeActionDefaultArea =
+            | "maintoolbar"
+            | "formattoolbar";
 
         export interface _WebExtensionManifestComposeAction {
             /**
@@ -734,7 +772,9 @@ declare namespace messenger {
              * Defines the location the composeAction button will appear. The default
              * location is `maintoolbar`.
              */
-            default_area?: _WebExtensionManifestComposeActionDefaultArea | undefined;
+            default_area?:
+                | _WebExtensionManifestComposeActionDefaultArea
+                | undefined;
         }
 
         export interface _WebExtensionManifestMessageDisplayAction {
@@ -1042,7 +1082,11 @@ declare namespace messenger {
             | "right center"
             | "right top";
 
-        export type _ThemeTypeAdditionalBackgroundsTiling = "no-repeat" | "repeat" | "repeat-x" | "repeat-y";
+        export type _ThemeTypeAdditionalBackgroundsTiling =
+            | "no-repeat"
+            | "repeat"
+            | "repeat-x"
+            | "repeat-y";
 
         /**
          * If set, overrides the general theme (context menus, toolbars, content
@@ -1059,8 +1103,12 @@ declare namespace messenger {
          * property keys are supported:
          */
         export interface _ThemeType {
-            additional_backgrounds_alignment?: _ThemeTypeAdditionalBackgroundsAlignment[] | undefined;
-            additional_backgrounds_tiling?: _ThemeTypeAdditionalBackgroundsTiling[] | undefined;
+            additional_backgrounds_alignment?:
+                | _ThemeTypeAdditionalBackgroundsAlignment[]
+                | undefined;
+            additional_backgrounds_tiling?:
+                | _ThemeTypeAdditionalBackgroundsTiling[]
+                | undefined;
             /**
              * If set, overrides the general theme (context menus, toolbars, content
              * area).
@@ -1075,7 +1123,11 @@ declare namespace messenger {
             [key: number]: string;
         }
 
-        export type _PermissionPrivileged = "activityLog" | "mozillaAddons" | "networkStatus" | "telemetry";
+        export type _PermissionPrivileged =
+            | "activityLog"
+            | "mozillaAddons"
+            | "networkStatus"
+            | "telemetry";
 
         export type _ProtocolHandlerProtocol =
             | "bitcoin"
@@ -1115,8 +1167,8 @@ declare namespace messenger {
             [key: string]:
                 | ExtensionURL
                 | {
-                    [key: string]: ExtensionURL;
-                };
+                      [key: string]: ExtensionURL;
+                  };
         }
 
         export interface _WebExtensionLangpackManifestLanguages {
@@ -1211,7 +1263,10 @@ declare namespace messenger {
          * object should included the account's folders.
          * Defaults to `true`.
          */
-        export function get(accountId: string, includeFolders?: boolean): Promise<MailAccount>;
+        export function get(
+            accountId: string,
+            includeFolders?: boolean,
+        ): Promise<MailAccount>;
 
         /**
          * Returns the default account, or `null` if it is not defined.
@@ -1220,7 +1275,9 @@ declare namespace messenger {
          * object should included the account's folders.
          * Defaults to `true`.
          */
-        export function getDefault(includeFolders?: boolean): Promise<MailAccount>;
+        export function getDefault(
+            includeFolders?: boolean,
+        ): Promise<MailAccount>;
 
         /**
          * Sets the default identity for an account.
@@ -1228,7 +1285,10 @@ declare namespace messenger {
          * @deprecated This will be removed. Use {@link identities.setDefault}
          * instead.
          */
-        export function setDefaultIdentity(accountId: string, identityId: string): Promise<any>;
+        export function setDefaultIdentity(
+            accountId: string,
+            identityId: string,
+        ): Promise<any>;
 
         /**
          * Returns the default identity for an account, or `null` if it is not
@@ -1237,11 +1297,15 @@ declare namespace messenger {
          * @deprecated This will be removed. Use {@link identities.getDefault}
          * instead.
          */
-        export function getDefaultIdentity(accountId: string): Promise<identities.MailIdentity>;
+        export function getDefaultIdentity(
+            accountId: string,
+        ): Promise<identities.MailIdentity>;
 
         /* accounts events */
         /** Fired when a new account has been created. */
-        export const onCreated: WebExtEvent<(id: string, account: MailAccount) => void>;
+        export const onCreated: WebExtEvent<
+            (id: string, account: MailAccount) => void
+        >;
 
         /** Fired when an account has been removed. */
         export const onDeleted: WebExtEvent<(id: string) => void>;
@@ -1254,7 +1318,9 @@ declare namespace messenger {
          * assigned as default identity, but not after a property of the default
          * identity has been changed.
          */
-        export const onUpdated: WebExtEvent<(id: string, changedValues: _OnUpdatedChangedValues) => void>;
+        export const onUpdated: WebExtEvent<
+            (id: string, changedValues: _OnUpdatedChangedValues) => void
+        >;
     }
 
     /**
@@ -1324,13 +1390,19 @@ declare namespace messenger {
          * @param [complete] If set to true, results will include contacts and
          * mailing lists for this address book.
          */
-        export function get(id: string, complete?: boolean): Promise<AddressBookNode>;
+        export function get(
+            id: string,
+            complete?: boolean,
+        ): Promise<AddressBookNode>;
 
         /** Creates a new, empty address book. */
         export function create(properties: _CreateProperties): Promise<string>;
 
         /** Renames an address book. */
-        export function update(id: string, properties: _UpdateProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: _UpdateProperties,
+        ): Promise<any>;
 
         /**
          * Removes an address book, and all associated contacts and mailing
@@ -1380,9 +1452,16 @@ declare namespace messenger {
             type AddressBookNode = any;
 
             export interface _AddressBooks_providerOnSearchRequestEvent<
-                TCallback = (node: AddressBookNode, searchString: string, query?: string) => void,
+                TCallback = (
+                    node: AddressBookNode,
+                    searchString: string,
+                    query?: string,
+                ) => void,
             > {
-                addListener(cb: TCallback, parameters: _OnSearchRequestParameters): void;
+                addListener(
+                    cb: TCallback,
+                    parameters: _OnSearchRequestParameters,
+                ): void;
                 removeListener(cb: TCallback): void;
                 hasListener(cb: TCallback): boolean;
             }
@@ -1505,7 +1584,10 @@ declare namespace messenger {
          * terms to search for, or a complex {@link contacts.QueryInfo} search
          * query.
          */
-        export function quickSearch(parentId: string, queryInfo: string | QueryInfo): Promise<ContactNode[]>;
+        export function quickSearch(
+            parentId: string,
+            queryInfo: string | QueryInfo,
+        ): Promise<ContactNode[]>;
         /**
          * Gets all contacts matching `queryInfo` in the address book with the id
          * `parentId`.
@@ -1514,7 +1596,9 @@ declare namespace messenger {
          * terms to search for, or a complex {@link contacts.QueryInfo} search
          * query.
          */
-        export function quickSearch(queryInfo: string | QueryInfo): Promise<ContactNode[]>;
+        export function quickSearch(
+            queryInfo: string | QueryInfo,
+        ): Promise<ContactNode[]>;
 
         /** Gets a single contact. */
         export function get(id: string): Promise<ContactNode>;
@@ -1539,7 +1623,11 @@ declare namespace messenger {
          * contact, an exception is thrown. **Note:** Using individual properties
          * is deprecated, use the `vCard` member instead.
          */
-        export function create(parentId: string, id: string, properties: ContactProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            id: string,
+            properties: ContactProperties,
+        ): Promise<string>;
         /**
          * Adds a new contact to the address book with the id `parentId`.
          *
@@ -1550,7 +1638,10 @@ declare namespace messenger {
          * contact, an exception is thrown. **Note:** Using individual properties
          * is deprecated, use the `vCard` member instead.
          */
-        export function create(parentId: string, properties: ContactProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            properties: ContactProperties,
+        ): Promise<string>;
 
         /**
          * Updates a contact.
@@ -1563,7 +1654,10 @@ declare namespace messenger {
          * Using individual properties is deprecated, use the `vCard` member
          * instead.
          */
-        export function update(id: string, properties: ContactProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: ContactProperties,
+        ): Promise<any>;
 
         /**
          * Removes a contact from the address book. The contact is also removed
@@ -1576,10 +1670,14 @@ declare namespace messenger {
         export const onCreated: WebExtEvent<(node: ContactNode) => void>;
 
         /** Fired when a contact is changed. */
-        export const onUpdated: WebExtEvent<(node: ContactNode, changedProperties: PropertyChange) => void>;
+        export const onUpdated: WebExtEvent<
+            (node: ContactNode, changedProperties: PropertyChange) => void
+        >;
 
         /** Fired when a contact is removed from an address book. */
-        export const onDeleted: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onDeleted: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
     }
 
     /**
@@ -1635,10 +1733,16 @@ declare namespace messenger {
         export function get(id: string): Promise<MailingListNode>;
 
         /** Creates a new mailing list in the address book with id `parentId`. */
-        export function create(parentId: string, properties: _CreateProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            properties: _CreateProperties,
+        ): Promise<string>;
 
         /** Edits the properties of a mailing list. */
-        export function update(id: string, properties: _UpdateProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: _UpdateProperties,
+        ): Promise<any>;
 
         /** Removes the mailing list. */
         function _delete(id: string): Promise<any>;
@@ -1651,13 +1755,18 @@ declare namespace messenger {
         export function addMember(id: string, contactId: string): Promise<any>;
 
         /** Gets all contacts that are members of the mailing list with id `id`. */
-        export function listMembers(id: string): Promise<contacts.ContactNode[]>;
+        export function listMembers(
+            id: string,
+        ): Promise<contacts.ContactNode[]>;
 
         /**
          * Removes a contact from the mailing list with id `id`. This does not
          * delete the contact from the address book.
          */
-        export function removeMember(id: string, contactId: string): Promise<any>;
+        export function removeMember(
+            id: string,
+            contactId: string,
+        ): Promise<any>;
 
         /* mailingLists events */
         /** Fired when a mailing list is created. */
@@ -1667,13 +1776,19 @@ declare namespace messenger {
         export const onUpdated: WebExtEvent<(node: MailingListNode) => void>;
 
         /** Fired when a mailing list is deleted. */
-        export const onDeleted: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onDeleted: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
 
         /** Fired when a contact is added to the mailing list. */
-        export const onMemberAdded: WebExtEvent<(node: contacts.ContactNode) => void>;
+        export const onMemberAdded: WebExtEvent<
+            (node: contacts.ContactNode) => void
+        >;
 
         /** Fired when a contact is removed from the mailing list. */
-        export const onMemberRemoved: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onMemberRemoved: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
     }
 
     /**
@@ -1728,7 +1843,12 @@ declare namespace messenger {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -1953,16 +2073,24 @@ declare namespace messenger {
          * Sets the badge text for the action button. The badge is displayed on
          * top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the action button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the action button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the action button for a tab. By default, an action button is
@@ -1993,7 +2121,9 @@ declare namespace messenger {
          * the action has a popup. This is a user input event handler. For
          * asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -2044,7 +2174,12 @@ declare namespace messenger {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -2269,16 +2404,24 @@ declare namespace messenger {
          * Sets the badge text for the action button. The badge is displayed on
          * top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the action button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the action button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the action button for a tab. By default, an action button is
@@ -2309,7 +2452,9 @@ declare namespace messenger {
          * the action has a popup. This is a user input event handler. For
          * asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -2389,7 +2534,9 @@ declare namespace messenger {
              * If set, the cloud file entry for this upload will include a hint, that
              * the link will only be available for a limited time.
              */
-            download_expiry_date?: _CloudFileTemplateInfoDownloadExpiryDate | undefined;
+            download_expiry_date?:
+                | _CloudFileTemplateInfoDownloadExpiryDate
+                | undefined;
         }
 
         /** Information about a cloud file. */
@@ -2483,7 +2630,9 @@ declare namespace messenger {
          *
          * @param accountId Unique identifier of the account.
          */
-        export function getAccount(accountId: string): Promise<CloudFileAccount>;
+        export function getAccount(
+            accountId: string,
+        ): Promise<CloudFileAccount>;
 
         /**
          * Retrieve all cloud file accounts for the current add-on.
@@ -2554,7 +2703,9 @@ declare namespace messenger {
          * @param tab The tab where the upload was initiated. Currently only
          * available for the message composer.
          */
-        export const onFileUploadAbort: WebExtEvent<(account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void>;
+        export const onFileUploadAbort: WebExtEvent<
+            (account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a previously uploaded file should be renamed.
@@ -2595,14 +2746,18 @@ declare namespace messenger {
          * @param tab The tab where the upload was initiated. Currently only
          * available for the message composer.
          */
-        export const onFileDeleted: WebExtEvent<(account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void>;
+        export const onFileDeleted: WebExtEvent<
+            (account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a cloud file account of this add-on was created.
          *
          * @param account The created account.
          */
-        export const onAccountAdded: WebExtEvent<(account: CloudFileAccount) => void>;
+        export const onAccountAdded: WebExtEvent<
+            (account: CloudFileAccount) => void
+        >;
 
         /**
          * Fired when a cloud file account of this add-on was deleted.
@@ -2678,7 +2833,9 @@ declare namespace messenger {
          *
          * @param tab The details of the active tab while the command occurred.
          */
-        export const onCommand: WebExtEvent<(command: string, tab: tabs.Tab) => void>;
+        export const onCommand: WebExtEvent<
+            (command: string, tab: tabs.Tab) => void
+        >;
     }
 
     /**
@@ -2691,19 +2848,21 @@ declare namespace messenger {
         export type ComposeRecipient =
             | string
             | {
-                /**
-                 * The ID of a contact or mailing list from the
-                 * [contacts](https://webextension-api.thunderbird.net/en/stable/contacts.html)
-                 * and
-                 * [mailingLists](https://webextension-api.thunderbird.net/en/stable/mailingLists.html)
-                 * APIs.
-                 */
-                id: string;
-                /** Which sort of object this ID is for. */
-                type: _UndefinedType;
-            };
+                  /**
+                   * The ID of a contact or mailing list from the
+                   * [contacts](https://webextension-api.thunderbird.net/en/stable/contacts.html)
+                   * and
+                   * [mailingLists](https://webextension-api.thunderbird.net/en/stable/mailingLists.html)
+                   * APIs.
+                   */
+                  id: string;
+                  /** Which sort of object this ID is for. */
+                  type: _UndefinedType;
+              };
 
-        export type ComposeRecipientList = ComposeRecipient | ComposeRecipient[];
+        export type ComposeRecipientList =
+            | ComposeRecipient
+            | ComposeRecipient[];
 
         /** Represent the state of the message composer. */
         export interface ComposeState {
@@ -2865,7 +3024,12 @@ declare namespace messenger {
          * Read-only. The type of the message being composed, depending on how
          * the compose window was opened by the user.
          */
-        export type _ComposeDetailsType = "draft" | "new" | "redirect" | "reply" | "forward";
+        export type _ComposeDetailsType =
+            | "draft"
+            | "new"
+            | "redirect"
+            | "reply"
+            | "forward";
 
         /**
          * Defines the mime format of the sent message (ignored on plain text
@@ -2873,14 +3037,28 @@ declare namespace messenger {
          * text, if they do not include any formatting, and as `both` otherwise
          * (a multipart/mixed message).
          */
-        export type _ComposeDetailsDeliveryFormat = "auto" | "plaintext" | "html" | "both";
+        export type _ComposeDetailsDeliveryFormat =
+            | "auto"
+            | "plaintext"
+            | "html"
+            | "both";
 
         /** The priority of the message. */
-        export type _ComposeDetailsPriority = "lowest" | "low" | "normal" | "high" | "highest";
+        export type _ComposeDetailsPriority =
+            | "lowest"
+            | "low"
+            | "normal"
+            | "high"
+            | "highest";
 
-        export type _BeginReplyReplyType = "replyToSender" | "replyToList" | "replyToAll";
+        export type _BeginReplyReplyType =
+            | "replyToSender"
+            | "replyToList"
+            | "replyToAll";
 
-        export type _BeginForwardForwardType = "forwardInline" | "forwardAsAttachment";
+        export type _BeginForwardForwardType =
+            | "forwardInline"
+            | "forwardAsAttachment";
 
         /** The used send mode. */
         export type _SendMessageReturnReturnMode = "sendNow" | "sendLater";
@@ -2900,7 +3078,10 @@ declare namespace messenger {
             messages: messages.MessageHeader[];
         }
 
-        export type _SendMessageOptionsMode = "default" | "sendNow" | "sendLater";
+        export type _SendMessageOptionsMode =
+            | "default"
+            | "sendNow"
+            | "sendLater";
 
         export interface _SendMessageOptions {
             mode: _SendMessageOptionsMode;
@@ -2981,7 +3162,10 @@ declare namespace messenger {
          * @param messageId If specified, the message or template to edit as a
          * new message.
          */
-        export function beginNew(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginNew(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
         /**
          * Open a new message compose window.
          *
@@ -3046,7 +3230,10 @@ declare namespace messenger {
          * @param messageId The message to reply to, as retrieved using other
          * APIs.
          */
-        export function beginReply(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginReply(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
 
         /**
          * Open a new message compose window forwarding a given message.
@@ -3093,14 +3280,19 @@ declare namespace messenger {
          * @param messageId The message to forward, as retrieved using other
          * APIs.
          */
-        export function beginForward(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginForward(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
 
         /**
          * Fetches the current state of a compose window. Currently only a
          * limited amount of information is available, more will be added in
          * later versions.
          */
-        export function getComposeDetails(tabId: number): Promise<ComposeDetails>;
+        export function getComposeDetails(
+            tabId: number,
+        ): Promise<ComposeDetails>;
 
         /**
          * Updates the compose window. Only fields that are to be changed should
@@ -3114,26 +3306,36 @@ declare namespace messenger {
          * matching `details.body` or `details.plainTextBody` value and ignores
          * the other.
          */
-        export function setComposeDetails(tabId: number, details: ComposeDetails): Promise<any>;
+        export function setComposeDetails(
+            tabId: number,
+            details: ComposeDetails,
+        ): Promise<any>;
 
         /**
          * Returns a {@link compose.ComposeDictionaries} object, listing all
          * installed dictionaries, including the information whether they are
          * currently enabled or not.
          */
-        export function getActiveDictionaries(tabId: number): Promise<ComposeDictionaries>;
+        export function getActiveDictionaries(
+            tabId: number,
+        ): Promise<ComposeDictionaries>;
 
         /**
          * Updates the active dictionaries. Throws if the `activeDictionaries`
          * array contains unknown or invalid language identifiers.
          */
-        export function setActiveDictionaries(tabId: number, activeDictionaries: string[]): Promise<any>;
+        export function setActiveDictionaries(
+            tabId: number,
+            activeDictionaries: string[],
+        ): Promise<any>;
 
         /**
          * Lists all of the attachments of the message being composed in the
          * specified tab.
          */
-        export function listAttachments(tabId: number): Promise<ComposeAttachment[]>;
+        export function listAttachments(
+            tabId: number,
+        ): Promise<ComposeAttachment[]>;
 
         /**
          * Gets the content of a {@link compose.ComposeAttachment} as a {@link File}
@@ -3165,7 +3367,10 @@ declare namespace messenger {
          * Removes an attachment from the message being composed in the specified
          * tab.
          */
-        export function removeAttachment(tabId: number, attachmentId: number): Promise<any>;
+        export function removeAttachment(
+            tabId: number,
+            attachmentId: number,
+        ): Promise<any>;
 
         /**
          * Sends the message currently being composed. If the send mode is not
@@ -3177,7 +3382,10 @@ declare namespace messenger {
          * there has been an error while sending the message to the outgoing mail
          * server.
          */
-        export function sendMessage(tabId: number, options?: _SendMessageOptions): Promise<_SendMessageReturnReturn>;
+        export function sendMessage(
+            tabId: number,
+            options?: _SendMessageOptions,
+        ): Promise<_SendMessageReturnReturn>;
 
         /**
          * Saves the message currently being composed as a draft or as a
@@ -3185,7 +3393,10 @@ declare namespace messenger {
          * as a draft. The returned Promise fulfills once the message has been
          * successfully saved.
          */
-        export function saveMessage(tabId: number, options?: _SaveMessageOptions): Promise<_SaveMessageReturnReturn>;
+        export function saveMessage(
+            tabId: number,
+            options?: _SaveMessageOptions,
+        ): Promise<_SaveMessageReturnReturn>;
 
         /** Returns information about the current state of the message composer. */
         export function getComposeState(tabId: number): Promise<ComposeState>;
@@ -3216,25 +3427,37 @@ declare namespace messenger {
         >;
 
         /** Fired when sending a message succeeded or failed. */
-        export const onAfterSend: WebExtEvent<(tab: tabs.Tab, sendInfo: _OnAfterSendSendInfo) => void>;
+        export const onAfterSend: WebExtEvent<
+            (tab: tabs.Tab, sendInfo: _OnAfterSendSendInfo) => void
+        >;
 
         /** Fired when saving a message as draft or template succeeded or failed. */
-        export const onAfterSave: WebExtEvent<(tab: tabs.Tab, saveInfo: _OnAfterSaveSaveInfo) => void>;
+        export const onAfterSave: WebExtEvent<
+            (tab: tabs.Tab, saveInfo: _OnAfterSaveSaveInfo) => void
+        >;
 
         /** Fired when an attachment is added to a message being composed. */
-        export const onAttachmentAdded: WebExtEvent<(tab: tabs.Tab, attachment: ComposeAttachment) => void>;
+        export const onAttachmentAdded: WebExtEvent<
+            (tab: tabs.Tab, attachment: ComposeAttachment) => void
+        >;
 
         /** Fired when an attachment is removed from a message being composed. */
-        export const onAttachmentRemoved: WebExtEvent<(tab: tabs.Tab, attachmentId: number) => void>;
+        export const onAttachmentRemoved: WebExtEvent<
+            (tab: tabs.Tab, attachmentId: number) => void
+        >;
 
         /**
          * Fired when the user changes the identity that will be used to send a
          * message being composed.
          */
-        export const onIdentityChanged: WebExtEvent<(tab: tabs.Tab, identityId: string) => void>;
+        export const onIdentityChanged: WebExtEvent<
+            (tab: tabs.Tab, identityId: string) => void
+        >;
 
         /** Fired when the state of the message composer changed. */
-        export const onComposeStateChanged: WebExtEvent<(tab: tabs.Tab, state: ComposeState) => void>;
+        export const onComposeStateChanged: WebExtEvent<
+            (tab: tabs.Tab, state: ComposeState) => void
+        >;
 
         /**
          * Fired when one or more dictionaries have been activated or
@@ -3295,7 +3518,12 @@ declare namespace messenger {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -3520,16 +3748,24 @@ declare namespace messenger {
          * Sets the badge text for the composeAction button. The badge is
          * displayed on top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the composeAction button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the composeAction button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the composeAction button for a tab. By default, a
@@ -3560,7 +3796,9 @@ declare namespace messenger {
          * if the composeAction has a popup. This is a user input event handler.
          * For asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -3588,7 +3826,9 @@ declare namespace messenger {
 
         /* composeScripts functions */
         /** Register a compose script programmatically */
-        export function register(composeScriptOptions: RegisteredComposeScriptOptions): Promise<any>;
+        export function register(
+            composeScriptOptions: RegisteredComposeScriptOptions,
+        ): Promise<any>;
     }
 
     /**
@@ -3619,7 +3859,9 @@ declare namespace messenger {
 
         /* messageDisplayScripts functions */
         /** Register a message display script programmatically */
-        export function register(messageDisplayScriptOptions: RegisteredMessageDisplayScriptOptions): Promise<any>;
+        export function register(
+            messageDisplayScriptOptions: RegisteredMessageDisplayScriptOptions,
+        ): Promise<any>;
     }
 
     /**
@@ -3688,10 +3930,16 @@ declare namespace messenger {
          * Creates a new subfolder in the specified folder or at the root of the
          * specified account.
          */
-        export function create(parent: MailFolder | accounts.MailAccount, childName: string): Promise<MailFolder>;
+        export function create(
+            parent: MailFolder | accounts.MailAccount,
+            childName: string,
+        ): Promise<MailFolder>;
 
         /** Renames a folder. */
-        export function rename(folder: MailFolder, newName: string): Promise<MailFolder>;
+        export function rename(
+            folder: MailFolder,
+            newName: string,
+        ): Promise<MailFolder>;
 
         /**
          * Moves the given `sourceFolder` into the given `destination`. Throws if
@@ -3717,7 +3965,9 @@ declare namespace messenger {
         function _delete(folder: MailFolder): Promise<any>;
 
         /** Get additional information about a mail folder. */
-        export function getFolderInfo(folder: MailFolder): Promise<MailFolderInfo>;
+        export function getFolderInfo(
+            folder: MailFolder,
+        ): Promise<MailFolderInfo>;
 
         /**
          * Get all parent folders as a flat ordered array. The first array entry
@@ -3727,7 +3977,10 @@ declare namespace messenger {
          * object for each parent folder should include its
          * nested subfolders . Defaults to `false`.
          */
-        export function getParentFolders(folder: MailFolder, includeSubFolders?: boolean): Promise<MailFolder[]>;
+        export function getParentFolders(
+            folder: MailFolder,
+            includeSubFolders?: boolean,
+        ): Promise<MailFolder[]>;
 
         /**
          * Get the subfolders of the specified folder or account.
@@ -3743,25 +3996,37 @@ declare namespace messenger {
 
         /* folders events */
         /** Fired when a folder has been created. */
-        export const onCreated: WebExtEvent<(createdFolder: MailFolder) => void>;
+        export const onCreated: WebExtEvent<
+            (createdFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been renamed. */
-        export const onRenamed: WebExtEvent<(originalFolder: MailFolder, renamedFolder: MailFolder) => void>;
+        export const onRenamed: WebExtEvent<
+            (originalFolder: MailFolder, renamedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been moved. */
-        export const onMoved: WebExtEvent<(originalFolder: MailFolder, movedFolder: MailFolder) => void>;
+        export const onMoved: WebExtEvent<
+            (originalFolder: MailFolder, movedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been copied. */
-        export const onCopied: WebExtEvent<(originalFolder: MailFolder, copiedFolder: MailFolder) => void>;
+        export const onCopied: WebExtEvent<
+            (originalFolder: MailFolder, copiedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been deleted. */
-        export const onDeleted: WebExtEvent<(deletedFolder: MailFolder) => void>;
+        export const onDeleted: WebExtEvent<
+            (deletedFolder: MailFolder) => void
+        >;
 
         /**
          * Fired when certain information of a folder have changed. Bursts of
          * message count changes are collapsed to a single event.
          */
-        export const onFolderInfoChanged: WebExtEvent<(folder: MailFolder, folderInfo: MailFolderInfo) => void>;
+        export const onFolderInfoChanged: WebExtEvent<
+            (folder: MailFolder, folderInfo: MailFolderInfo) => void
+        >;
     }
 
     /**
@@ -3820,7 +4085,10 @@ declare namespace messenger {
         export function get(identityId: string): Promise<MailIdentity>;
 
         /** Create a new identity in the specified account. */
-        export function create(accountId: string, details: MailIdentity): Promise<MailIdentity>;
+        export function create(
+            accountId: string,
+            details: MailIdentity,
+        ): Promise<MailIdentity>;
 
         /**
          * Attempts to delete the requested identity. Default identities cannot
@@ -3829,7 +4097,10 @@ declare namespace messenger {
         function _delete(identityId: string): Promise<any>;
 
         /** Updates the details of an identity. */
-        export function update(identityId: string, details: MailIdentity): Promise<MailIdentity>;
+        export function update(
+            identityId: string,
+            details: MailIdentity,
+        ): Promise<MailIdentity>;
 
         /**
          * Returns the default identity for the requested account, or `null` if
@@ -3838,7 +4109,10 @@ declare namespace messenger {
         export function getDefault(accountId: string): Promise<MailIdentity>;
 
         /** Sets the default identity for the requested account. */
-        export function setDefault(accountId: string, identityId: string): Promise<any>;
+        export function setDefault(
+            accountId: string,
+            identityId: string,
+        ): Promise<any>;
 
         /* identities events */
         /**
@@ -3846,7 +4120,9 @@ declare namespace messenger {
          * The event also fires for default identities that are created when a
          * new account is added.
          */
-        export const onCreated: WebExtEvent<(identityId: string, identity: MailIdentity) => void>;
+        export const onCreated: WebExtEvent<
+            (identityId: string, identity: MailIdentity) => void
+        >;
 
         /** Fired when an identity has been removed from an account. */
         export const onDeleted: WebExtEvent<(identityId: string) => void>;
@@ -3856,7 +4132,9 @@ declare namespace messenger {
          * The returned {@link identities.MailIdentity} includes only the changed
          * values.
          */
-        export const onUpdated: WebExtEvent<(identityId: string, changedValues: MailIdentity) => void>;
+        export const onUpdated: WebExtEvent<
+            (identityId: string, changedValues: MailIdentity) => void
+        >;
     }
 
     /**
@@ -3939,7 +4217,10 @@ declare namespace messenger {
          */
         export type _MailTabSortOrder = "none" | "ascending" | "descending";
 
-        export type _MailTabViewType = "ungrouped" | "groupedByThread" | "groupedBySortType";
+        export type _MailTabViewType =
+            | "ungrouped"
+            | "groupedByThread"
+            | "groupedBySortType";
 
         export type _MailTabLayout = "standard" | "wide" | "vertical";
 
@@ -3981,16 +4262,25 @@ declare namespace messenger {
             | "correspondent";
 
         /** Sorts the list of messages. `sortType` must also be given. */
-        export type _UpdateUpdatePropertiesSortOrder = "none" | "ascending" | "descending";
+        export type _UpdateUpdatePropertiesSortOrder =
+            | "none"
+            | "ascending"
+            | "descending";
 
-        export type _UpdateUpdatePropertiesViewType = "ungrouped" | "groupedByThread" | "groupedBySortType";
+        export type _UpdateUpdatePropertiesViewType =
+            | "ungrouped"
+            | "groupedByThread"
+            | "groupedBySortType";
 
         /**
          * Sets the arrangement of the folder pane, message list pane, and
          * message display pane. Note that setting this applies it to all mail
          * tabs.
          */
-        export type _UpdateUpdatePropertiesLayout = "standard" | "wide" | "vertical";
+        export type _UpdateUpdatePropertiesLayout =
+            | "standard"
+            | "wide"
+            | "vertical";
 
         export interface _UpdateUpdateProperties {
             /**
@@ -4059,19 +4349,26 @@ declare namespace messenger {
          *
          * @param tabId Defaults to the active tab of the current window.
          */
-        export function update(tabId: number, updateProperties: _UpdateUpdateProperties): Promise<any>;
+        export function update(
+            tabId: number,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<any>;
         /**
          * Modifies the properties of a mail tab. Properties that are not
          * specified in `updateProperties` are not modified.
          */
-        export function update(updateProperties: _UpdateUpdateProperties): Promise<any>;
+        export function update(
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<any>;
 
         /**
          * Lists the selected messages in the current folder.
          *
          * @param [tabId] Defaults to the active tab of the current window.
          */
-        export function getSelectedMessages(tabId?: number): Promise<messages.MessageList>;
+        export function getSelectedMessages(
+            tabId?: number,
+        ): Promise<messages.MessageList>;
 
         /**
          * Selects none, one or multiple messages.
@@ -4083,7 +4380,10 @@ declare namespace messenger {
          * if they belong to different folders. Array can be empty to deselect
          * any currently selected message.
          */
-        export function setSelectedMessages(tabId: number, messageIds: number[]): Promise<any>;
+        export function setSelectedMessages(
+            tabId: number,
+            messageIds: number[],
+        ): Promise<any>;
         /**
          * Selects none, one or multiple messages.
          *
@@ -4103,7 +4403,9 @@ declare namespace messenger {
             tabId: number,
             properties: _SetQuickFilterProperties,
         ): Promise<any>; /** Sets the Quick Filter user interface based on the options specified. */
-        export function setQuickFilter(properties: _SetQuickFilterProperties): Promise<any>;
+        export function setQuickFilter(
+            properties: _SetQuickFilterProperties,
+        ): Promise<any>;
 
         /* mailTabs events */
         /** Fired when the displayed folder changes in any mail tab. */
@@ -4255,7 +4557,9 @@ declare namespace messenger {
              * composed. The <permission>messagesRead</permission> permission is
              * required to return attachments of displayed messages.
              */
-            attachments?: Array<compose.ComposeAttachment | messages.MessageAttachment> | undefined;
+            attachments?:
+                | Array<compose.ComposeAttachment | messages.MessageAttachment>
+                | undefined;
         }
 
         /** Information sent when a context menu item is clicked. */
@@ -4354,7 +4658,9 @@ declare namespace messenger {
              * composed. The <permission>messagesRead</permission> permission is
              * required to return attachments of displayed messages.
              */
-            attachments?: Array<compose.ComposeAttachment | messages.MessageAttachment> | undefined;
+            attachments?:
+                | Array<compose.ComposeAttachment | messages.MessageAttachment>
+                | undefined;
         }
 
         /** An identifier of the clicked Thunderbird UI element, if any. */
@@ -4366,7 +4672,12 @@ declare namespace messenger {
             | "composeReplyTo"
             | "composeNewsgroupTo";
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         /** An identifier of the clicked Thunderbird UI element, if any. */
         export type _OnClickDataFieldId =
@@ -4524,7 +4835,10 @@ declare namespace messenger {
          *
          * @returns The ID of the newly created item.
          */
-        export function create(createProperties: _CreateCreateProperties, callback?: () => void): number | string;
+        export function create(
+            createProperties: _CreateCreateProperties,
+            callback?: () => void,
+        ): number | string;
 
         /**
          * Updates a previously created context menu item.
@@ -4534,7 +4848,10 @@ declare namespace messenger {
          * @param updateProperties The properties to update. Accepts the same
          * values as the create function.
          */
-        export function update(id: number | string, updateProperties: _UpdateUpdateProperties): Promise<void>;
+        export function update(
+            id: number | string,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<void>;
 
         /**
          * Removes a context menu item.
@@ -4551,7 +4868,9 @@ declare namespace messenger {
          * default menu. This should be called during a contextmenu event
          * handler, and only applies to the menu that opens after this event.
          */
-        export function overrideContext(contextOptions: _OverrideContextContextOptions): void;
+        export function overrideContext(
+            contextOptions: _OverrideContextContextOptions,
+        ): void;
 
         /**
          * Updates the extension items in the shown menu, including changes that
@@ -4570,7 +4889,9 @@ declare namespace messenger {
          * {@link menus.onClicked} events.
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        export function getTargetElement(targetElementId: number): Element | void;
+        export function getTargetElement(
+            targetElementId: number,
+        ): Element | void;
 
         /* menus events */
         /**
@@ -4583,7 +4904,9 @@ declare namespace messenger {
          * @param [tab] The details of the tab where the click took place. If the
          * click did not take place in a tab, this parameter will be missing.
          */
-        export const onClicked: WebExtEvent<(info: OnClickData, tab?: tabs.Tab) => void>;
+        export const onClicked: WebExtEvent<
+            (info: OnClickData, tab?: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a menu is shown. The extension can add, modify or remove
@@ -4594,7 +4917,9 @@ declare namespace messenger {
          *
          * @param tab The details of the tab where the menu was opened.
          */
-        export const onShown: WebExtEvent<(info: OnShowData, tab: tabs.Tab) => void>;
+        export const onShown: WebExtEvent<
+            (info: OnShowData, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a menu is hidden. This event is only fired if onShown has
@@ -4658,14 +4983,18 @@ declare namespace messenger {
          * tab itself is currently not visible). It returns `null` if no messages
          * are displayed, or if multiple messages are displayed.
          */
-        export function getDisplayedMessage(tabId: number): Promise<messages.MessageHeader | null>;
+        export function getDisplayedMessage(
+            tabId: number,
+        ): Promise<messages.MessageHeader | null>;
 
         /**
          * Gets an array of the currently displayed messages in the specified tab
          * (even if the tab itself is currently not visible). The array is empty
          * if no messages are displayed.
          */
-        export function getDisplayedMessages(tabId: number): Promise<messages.MessageHeader[]>;
+        export function getDisplayedMessages(
+            tabId: number,
+        ): Promise<messages.MessageHeader[]>;
 
         /**
          * Opens a message in a new tab or in a new window.
@@ -4673,21 +5002,27 @@ declare namespace messenger {
          * @param openProperties Settings for opening the message. Exactly one of
          * messageId or headerMessageId must be specified.
          */
-        export function open(openProperties: _OpenOpenProperties): Promise<tabs.Tab>;
+        export function open(
+            openProperties: _OpenOpenProperties,
+        ): Promise<tabs.Tab>;
 
         /* messageDisplay events */
         /**
          * Fired when a message is displayed, whether in a 3-pane tab, a message
          * tab, or a message window.
          */
-        export const onMessageDisplayed: WebExtEvent<(tab: tabs.Tab, message: messages.MessageHeader) => void>;
+        export const onMessageDisplayed: WebExtEvent<
+            (tab: tabs.Tab, message: messages.MessageHeader) => void
+        >;
 
         /**
          * Fired when either a single message is displayed or when multiple
          * messages are displayed, whether in a 3-pane tab, a message tab, or a
          * message window.
          */
-        export const onMessagesDisplayed: WebExtEvent<(tab: tabs.Tab, messages: messages.MessageHeader[]) => void>;
+        export const onMessagesDisplayed: WebExtEvent<
+            (tab: tabs.Tab, messages: messages.MessageHeader[]) => void
+        >;
     }
 
     /**
@@ -4740,7 +5075,12 @@ declare namespace messenger {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -4969,16 +5309,24 @@ declare namespace messenger {
          * Sets the badge text for the messageDisplayAction button. The badge is
          * displayed on top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the messageDisplayAction button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the messageDisplayAction button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the messageDisplayAction button for a tab. By default, a
@@ -5009,7 +5357,9 @@ declare namespace messenger {
          * not fire if the messageDisplayAction has a popup. This is a user input
          * event handler. For asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -5288,7 +5638,9 @@ declare namespace messenger {
          * [how-to/messageLists](https://webextension-api.thunderbird.net/en/stable/how-to/messageLists.html)
          * for more information.
          */
-        export function continueList(messageListId: string): Promise<MessageList>;
+        export function continueList(
+            messageListId: string,
+        ): Promise<MessageList>;
 
         /** Returns a specified message. */
         export function get(messageId: number): Promise<MessageHeader>;
@@ -5321,13 +5673,18 @@ declare namespace messenger {
         export function getRaw(messageId: number): Promise<string>;
 
         /** Lists the attachments of a message. */
-        export function listAttachments(messageId: number): Promise<MessageAttachment[]>;
+        export function listAttachments(
+            messageId: number,
+        ): Promise<MessageAttachment[]>;
 
         /**
          * Gets the content of a {@link messages.MessageAttachment} as a {@link File}
          * object.
          */
-        export function getAttachmentFile(messageId: number, partName: string): Promise<File>;
+        export function getAttachmentFile(
+            messageId: number,
+            partName: string,
+        ): Promise<File>;
 
         /**
          * Gets all messages that have the specified properties, or all messages
@@ -5339,7 +5696,10 @@ declare namespace messenger {
          * Marks or unmarks a message as junk, read, flagged, or tagged. Updating
          * external messages will throw an _ExtensionError_.
          */
-        export function update(messageId: number, newProperties: MessageProperties): Promise<any>;
+        export function update(
+            messageId: number,
+            newProperties: MessageProperties,
+        ): Promise<any>;
 
         /**
          * Moves messages to a specified folder. If the messages cannot be
@@ -5350,7 +5710,10 @@ declare namespace messenger {
          *
          * @param destination The folder to move the messages to.
          */
-        export function move(messageIds: number[], destination: folders.MailFolder): Promise<any>;
+        export function move(
+            messageIds: number[],
+            destination: folders.MailFolder,
+        ): Promise<any>;
 
         /**
          * Copies messages to a specified folder.
@@ -5359,7 +5722,10 @@ declare namespace messenger {
          *
          * @param destination The folder to copy the messages to.
          */
-        export function copy(messageIds: number[], destination: folders.MailFolder): Promise<any>;
+        export function copy(
+            messageIds: number[],
+            destination: folders.MailFolder,
+        ): Promise<any>;
 
         /**
          * Deletes messages permanently, or moves them to the trash folder
@@ -5377,7 +5743,10 @@ declare namespace messenger {
          * @param [skipTrash] If true, the message will be deleted permanently,
          * regardless of the account's deletion behavior settings.
          */
-        function _delete(messageIds: number[], skipTrash?: boolean): Promise<any>;
+        function _delete(
+            messageIds: number[],
+            skipTrash?: boolean,
+        ): Promise<any>;
 
         /**
          * Imports a message into a local Thunderbird folder. To import a message
@@ -5418,14 +5787,21 @@ declare namespace messenger {
          *
          * @param color Tag color in hex format (i.e.: #000080 for navy blue)
          */
-        export function createTag(key: string, tag: string, color: string): Promise<any>;
+        export function createTag(
+            key: string,
+            tag: string,
+            color: string,
+        ): Promise<any>;
 
         /**
          * Updates a message tag.
          *
          * @param key Unique tag identifier.
          */
-        export function updateTag(key: string, updateProperties: _UpdateTagUpdateProperties): Promise<any>;
+        export function updateTag(
+            key: string,
+            updateProperties: _UpdateTagUpdateProperties,
+        ): Promise<any>;
 
         /**
          * Deletes a message tag, removing it from the list of known tags. Its
@@ -5437,13 +5813,22 @@ declare namespace messenger {
 
         /* messages events */
         /** Fired when one or more properties of a message have been updated. */
-        export const onUpdated: WebExtEvent<(message: MessageHeader, changedProperties: MessageProperties) => void>;
+        export const onUpdated: WebExtEvent<
+            (
+                message: MessageHeader,
+                changedProperties: MessageProperties,
+            ) => void
+        >;
 
         /** Fired when messages have been moved. */
-        export const onMoved: WebExtEvent<(originalMessages: MessageList, movedMessages: MessageList) => void>;
+        export const onMoved: WebExtEvent<
+            (originalMessages: MessageList, movedMessages: MessageList) => void
+        >;
 
         /** Fired when messages have been copied. */
-        export const onCopied: WebExtEvent<(originalMessages: MessageList, copiedMessages: MessageList) => void>;
+        export const onCopied: WebExtEvent<
+            (originalMessages: MessageList, copiedMessages: MessageList) => void
+        >;
 
         /** Fired when messages have been permanently deleted. */
         export const onDeleted: WebExtEvent<(messages: MessageList) => void>;
@@ -5452,7 +5837,9 @@ declare namespace messenger {
          * Fired when a new message is received, and has been through junk
          * classification and message filters.
          */
-        export const onNewMailReceived: WebExtEvent<(folder: folders.MailFolder, messages: MessageList) => void>;
+        export const onNewMailReceived: WebExtEvent<
+            (folder: folders.MailFolder, messages: MessageList) => void
+        >;
     }
 
     /**
@@ -5522,7 +5909,10 @@ declare namespace messenger {
          * @param properties Properties of the new button. The `url` is
          * mandatory.
          */
-        export function addButton(id: string, properties: ButtonProperties): Promise<any>;
+        export function addButton(
+            id: string,
+            properties: ButtonProperties,
+        ): Promise<any>;
 
         /**
          * Removes the specified button from the spaces toolbar. Throws an
@@ -5543,7 +5933,10 @@ declare namespace messenger {
          *
          * @param properties Only specified properties will be updated.
          */
-        export function updateButton(id: string, properties: ButtonProperties): Promise<any>;
+        export function updateButton(
+            id: string,
+            properties: ButtonProperties,
+        ): Promise<any>;
     }
 
     /**
@@ -5790,7 +6183,11 @@ declare namespace messenger {
         }
 
         export interface _TabsOnUpdatedEvent<
-            TCallback = (tabId: number, changeInfo: _OnUpdatedChangeInfo, tab: Tab) => void,
+            TCallback = (
+                tabId: number,
+                changeInfo: _OnUpdatedChangeInfo,
+                tab: Tab,
+            ) => void,
         > {
             addListener(cb: TCallback, filter?: UpdateFilter): void;
             removeListener(cb: TCallback): void;
@@ -5854,7 +6251,10 @@ declare namespace messenger {
          * @returns A port that can be used to communicate with the content
          * scripts running in the specified tab.
          */
-        export function connect(tabId: number, connectInfo?: _ConnectConnectInfo): runtime.Port;
+        export function connect(
+            tabId: number,
+            connectInfo?: _ConnectConnectInfo,
+        ): runtime.Port;
 
         /**
          * Sends a single message to the content script(s) in the specified tab,
@@ -5862,7 +6262,11 @@ declare namespace messenger {
          * runtime.onMessage event is fired in each content script running in the
          * specified tab for the current extension.
          */
-        export function sendMessage(tabId: number, message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            tabId: number,
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
 
         /**
          * Creates a new content tab. Use the {@link messageDisplay_api} to open
@@ -5871,7 +6275,9 @@ declare namespace messenger {
          * @param createProperties Properties for the new tab. Defaults to an
          * empty tab, if no `url` is provided.
          */
-        export function create(createProperties: _CreateCreateProperties): Promise<Tab>;
+        export function create(
+            createProperties: _CreateCreateProperties,
+        ): Promise<Tab>;
 
         /**
          * Duplicates a tab.
@@ -5894,14 +6300,19 @@ declare namespace messenger {
          *
          * @param updateProperties Properties which should to be updated.
          */
-        export function update(tabId: number, updateProperties: _UpdateUpdateProperties): Promise<Tab>;
+        export function update(
+            tabId: number,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<Tab>;
         /**
          * Modifies the properties of a tab. Properties that are not specified in
          * `updateProperties` are not modified.
          *
          * @param updateProperties Properties which should to be updated.
          */
-        export function update(updateProperties: _UpdateUpdateProperties): Promise<Tab>;
+        export function update(
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<Tab>;
 
         /**
          * Moves one or more tabs to a new position within its window, or to a
@@ -5910,7 +6321,10 @@ declare namespace messenger {
          *
          * @param tabIds The tab or list of tabs to move.
          */
-        export function move(tabIds: number | number[], moveProperties: _MoveMoveProperties): Promise<Tab | Tab[]>;
+        export function move(
+            tabIds: number | number[],
+            moveProperties: _MoveMoveProperties,
+        ): Promise<Tab | Tab[]>;
 
         /**
          * Reload a tab.
@@ -5922,7 +6336,9 @@ declare namespace messenger {
             tabId: number,
             reloadProperties?: _ReloadReloadProperties,
         ): Promise<void>; /** Reload a tab. */
-        export function reload(reloadProperties?: _ReloadReloadProperties): Promise<void>;
+        export function reload(
+            reloadProperties?: _ReloadReloadProperties,
+        ): Promise<void>;
 
         /**
          * Closes one or more tabs.
@@ -5940,14 +6356,19 @@ declare namespace messenger {
          *
          * @param details Details of the script to run.
          */
-        export function executeScript(tabId: number, details: extensionTypes.InjectDetails): Promise<any[]>;
+        export function executeScript(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<any[]>;
         /**
          * Injects JavaScript code into a page. For details, see the programmatic
          * injection section of the content scripts doc.
          *
          * @param details Details of the script to run.
          */
-        export function executeScript(details: extensionTypes.InjectDetails): Promise<any[]>;
+        export function executeScript(
+            details: extensionTypes.InjectDetails,
+        ): Promise<any[]>;
 
         /**
          * Injects CSS into a page. For details, see the programmatic injection
@@ -5958,14 +6379,19 @@ declare namespace messenger {
          *
          * @param details Details of the CSS text to insert.
          */
-        export function insertCSS(tabId: number, details: extensionTypes.InjectDetails): Promise<void>;
+        export function insertCSS(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
         /**
          * Injects CSS into a page. For details, see the programmatic injection
          * section of the content scripts doc.
          *
          * @param details Details of the CSS text to insert.
          */
-        export function insertCSS(details: extensionTypes.InjectDetails): Promise<void>;
+        export function insertCSS(
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
 
         /**
          * Removes injected CSS from a page. For details, see the programmatic
@@ -5976,14 +6402,19 @@ declare namespace messenger {
          *
          * @param details Details of the CSS text to remove.
          */
-        export function removeCSS(tabId: number, details: extensionTypes.InjectDetails): Promise<void>;
+        export function removeCSS(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
         /**
          * Removes injected CSS from a page. For details, see the programmatic
          * injection section of the content scripts doc.
          *
          * @param details Details of the CSS text to remove.
          */
-        export function removeCSS(details: extensionTypes.InjectDetails): Promise<void>;
+        export function removeCSS(
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
 
         /* tabs events */
         /**
@@ -6011,29 +6442,39 @@ declare namespace messenger {
          * not fired for the other tabs that must move in response. This event is
          * not fired when a tab is moved between windows. For that, see {@link tabs.onDetached}.
          */
-        export const onMoved: WebExtEvent<(tabId: number, moveInfo: _OnMovedMoveInfo) => void>;
+        export const onMoved: WebExtEvent<
+            (tabId: number, moveInfo: _OnMovedMoveInfo) => void
+        >;
 
         /**
          * Fires when the active tab in a window changes. Note that the tab's URL
          * may not be set at the time this event fired, but you can listen to
          * onUpdated events to be notified when a URL is set.
          */
-        export const onActivated: WebExtEvent<(activeInfo: _OnActivatedActiveInfo) => void>;
+        export const onActivated: WebExtEvent<
+            (activeInfo: _OnActivatedActiveInfo) => void
+        >;
 
         /**
          * Fired when a tab is detached from a window, for example because it is
          * being moved between windows.
          */
-        export const onDetached: WebExtEvent<(tabId: number, detachInfo: _OnDetachedDetachInfo) => void>;
+        export const onDetached: WebExtEvent<
+            (tabId: number, detachInfo: _OnDetachedDetachInfo) => void
+        >;
 
         /**
          * Fired when a tab is attached to a window, for example because it was
          * moved between windows.
          */
-        export const onAttached: WebExtEvent<(tabId: number, attachInfo: _OnAttachedAttachInfo) => void>;
+        export const onAttached: WebExtEvent<
+            (tabId: number, attachInfo: _OnAttachedAttachInfo) => void
+        >;
 
         /** Fired when a tab is closed. */
-        export const onRemoved: WebExtEvent<(tabId: number, removeInfo: _OnRemovedRemoveInfo) => void>;
+        export const onRemoved: WebExtEvent<
+            (tabId: number, removeInfo: _OnRemovedRemoveInfo) => void
+        >;
     }
 
     /**
@@ -6061,7 +6502,9 @@ declare namespace messenger {
          *
          * @param [windowId] The window for which we want the theme.
          */
-        export function getCurrent(windowId?: number): Promise<_manifest.ThemeType>;
+        export function getCurrent(
+            windowId?: number,
+        ): Promise<_manifest.ThemeType>;
 
         /**
          * Make complete updates to the theme. Resolves when the update has
@@ -6072,7 +6515,10 @@ declare namespace messenger {
          *
          * @param details The properties of the theme to update.
          */
-        export function update(windowId: number, details: _manifest.ThemeType): void;
+        export function update(
+            windowId: number,
+            details: _manifest.ThemeType,
+        ): void;
         /**
          * Make complete updates to the theme. Resolves when the update has
          * completed.
@@ -6095,7 +6541,9 @@ declare namespace messenger {
          *
          * @param updateInfo Details of the theme update
          */
-        export const onUpdated: WebExtEvent<(updateInfo: ThemeUpdateInfo) => void>;
+        export const onUpdated: WebExtEvent<
+            (updateInfo: ThemeUpdateInfo) => void
+        >;
     }
 
     /**
@@ -6122,7 +6570,12 @@ declare namespace messenger {
             | "messageDisplay";
 
         /** The state of this window. */
-        export type WindowState = "normal" | "minimized" | "maximized" | "fullscreen" | "docked";
+        export type WindowState =
+            | "normal"
+            | "minimized"
+            | "maximized"
+            | "fullscreen"
+            | "docked";
 
         export interface Window {
             /** The ID of the window. Window IDs are unique within a session. */
@@ -6164,7 +6617,11 @@ declare namespace messenger {
          * Specifies what type of window to create. Thunderbird does not support
          * `panel` and `detached_panel`, they are interpreted as `popup`.
          */
-        export type CreateType = "normal" | "popup" | "panel" | "detached_panel";
+        export type CreateType =
+            | "normal"
+            | "popup"
+            | "panel"
+            | "detached_panel";
 
         /** Specifies additional requirements for the returned windows. */
         export interface GetInfo {
@@ -6291,7 +6748,10 @@ declare namespace messenger {
 
         /* windows functions */
         /** Gets details about a window. */
-        export function get(windowId: number, getInfo?: GetInfo): Promise<Window>;
+        export function get(
+            windowId: number,
+            getInfo?: GetInfo,
+        ): Promise<Window>;
 
         /** Gets the active or topmost window. */
         export function getCurrent(getInfo?: GetInfo): Promise<Window>;
@@ -6315,7 +6775,10 @@ declare namespace messenger {
          * Updates the properties of a window. Specify only the properties that
          * you want to change; unspecified properties will be left unchanged.
          */
-        export function update(windowId: number, updateInfo: _UpdateUpdateInfo): Promise<Window>;
+        export function update(
+            windowId: number,
+            updateInfo: _UpdateUpdateInfo,
+        ): Promise<Window>;
 
         /** Removes (closes) a window, and all the tabs inside it. */
         export function remove(windowId: number): Promise<void>;
@@ -6497,7 +6960,10 @@ declare namespace messenger {
          *
          * @param imageType The type of imageData.
          */
-        export function setImageData(imageData: ArrayBuffer, imageType: _SetImageDataImageType): Promise<void>;
+        export function setImageData(
+            imageData: ArrayBuffer,
+            imageType: _SetImageDataImageType,
+        ): Promise<void>;
     }
 
     /**
@@ -6665,7 +7131,12 @@ declare namespace messenger {
          * cookie was automatically removed due to a "set" call that overwrote
          * it, "cause" will be "overwrite". Plan your response accordingly.
          */
-        export type OnChangedCause = "evicted" | "expired" | "explicit" | "expired_overwrite" | "overwrite";
+        export type OnChangedCause =
+            | "evicted"
+            | "expired"
+            | "explicit"
+            | "expired_overwrite"
+            | "overwrite";
 
         /** Details to identify the cookie being retrieved. */
         export interface _GetDetails {
@@ -6884,7 +7355,9 @@ declare namespace messenger {
          *
          * @param details Information to identify the cookie to remove.
          */
-        export function remove(details: _RemoveDetails): Promise<_RemoveReturnDetails | null>;
+        export function remove(
+            details: _RemoveDetails,
+        ): Promise<_RemoveReturnDetails | null>;
 
         /** Lists all existing cookie stores. */
         export function getAllCookieStores(): Promise<CookieStore[]>;
@@ -6898,7 +7371,9 @@ declare namespace messenger {
          * written with the updated values, generating a second notification with
          * "cause" "explicit".
          */
-        export const onChanged: WebExtEvent<(changeInfo: _OnChangedChangeInfo) => void>;
+        export const onChanged: WebExtEvent<
+            (changeInfo: _OnChangedChangeInfo) => void
+        >;
     }
 
     /**
@@ -6940,7 +7415,10 @@ declare namespace messenger {
 
         /* dns functions */
         /** Resolves a hostname to a DNS record. */
-        export function resolve(hostname: string, flags?: ResolveFlags): Promise<DNSRecord>;
+        export function resolve(
+            hostname: string,
+            flags?: ResolveFlags,
+        ): Promise<DNSRecord>;
     }
 
     /**
@@ -6952,7 +7430,10 @@ declare namespace messenger {
      */
     export namespace downloads {
         /* downloads types */
-        export type FilenameConflictAction = "uniquify" | "overwrite" | "prompt";
+        export type FilenameConflictAction =
+            | "uniquify"
+            | "overwrite"
+            | "prompt";
 
         export type InterruptReason =
             | "FILE_FAILED"
@@ -6991,7 +7472,15 @@ declare namespace messenger {
          * These string constants will never change, however the set of
          * DangerTypes may change.
          */
-        export type DangerType = "file" | "url" | "content" | "uncommon" | "host" | "unwanted" | "safe" | "accepted";
+        export type DangerType =
+            | "file"
+            | "url"
+            | "content"
+            | "uncommon"
+            | "host"
+            | "unwanted"
+            | "safe"
+            | "accepted";
 
         /**
          * _in_progress_: The download is currently receiving data from the
@@ -7356,7 +7845,10 @@ declare namespace messenger {
          *
          * @param downloadId The identifier for the download.
          */
-        export function getFileIcon(downloadId: number, options?: _GetFileIconOptions): Promise<string>;
+        export function getFileIcon(
+            downloadId: number,
+            options?: _GetFileIconOptions,
+        ): Promise<string>;
 
         /** Open the downloaded file. */
         export function open(downloadId: number): Promise<void>;
@@ -7391,7 +7883,9 @@ declare namespace messenger {
 
         /* downloads events */
         /** This event fires with the DownloadItem object when a download begins. */
-        export const onCreated: WebExtEvent<(downloadItem: DownloadItem) => void>;
+        export const onCreated: WebExtEvent<
+            (downloadItem: DownloadItem) => void
+        >;
 
         /**
          * Fires with the `downloadId` when a download is erased from history.
@@ -7405,7 +7899,9 @@ declare namespace messenger {
          * changes, this event fires with the `downloadId` and an object
          * containing the properties that changed.
          */
-        export const onChanged: WebExtEvent<(downloadDelta: _OnChangedDownloadDelta) => void>;
+        export const onChanged: WebExtEvent<
+            (downloadDelta: _OnChangedDownloadDelta) => void
+        >;
     }
 
     /**
@@ -7477,7 +7973,11 @@ declare namespace messenger {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            addRules?(eventName: string, webViewInstanceId: number, rules: Rule[]): Promise<Rule[]>;
+            addRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                rules: Rule[],
+            ): Promise<Rule[]>;
             /**
              * Returns currently registered rules.
              *
@@ -7491,7 +7991,11 @@ declare namespace messenger {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            getRules?(eventName: string, webViewInstanceId: number, ruleIdentifiers?: string[]): Promise<Rule[]>;
+            getRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                ruleIdentifiers?: string[],
+            ): Promise<Rule[]>;
             /**
              * Unregisters currently registered rules.
              *
@@ -7505,7 +8009,11 @@ declare namespace messenger {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            removeRules?(eventName: string, webViewInstanceId: number, ruleIdentifiers?: string[]): Promise<void>;
+            removeRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                ruleIdentifiers?: string[],
+            ): Promise<void>;
         }
 
         /**
@@ -7629,9 +8137,15 @@ declare namespace messenger {
 
         export type APIEvent = "startup";
 
-        export type APIParentScope = "addon_parent" | "content_parent" | "devtools_parent";
+        export type APIParentScope =
+            | "addon_parent"
+            | "content_parent"
+            | "devtools_parent";
 
-        export type APIChildScope = "addon_child" | "content_child" | "devtools_child";
+        export type APIChildScope =
+            | "addon_child"
+            | "content_child"
+            | "devtools_child";
 
         export interface _ExperimentAPIParent {
             events?: APIEvents | undefined;
@@ -7730,7 +8244,9 @@ declare namespace messenger {
          *
          * @returns Array of global objects
          */
-        export function getViews(fetchProperties?: _GetViewsFetchProperties): Window[];
+        export function getViews(
+            fetchProperties?: _GetViewsFetchProperties,
+        ): Window[];
 
         /**
          * Returns the JavaScript 'window' object for the background page running
@@ -7777,7 +8293,13 @@ declare namespace messenger {
          * @deprecated Please use `runtime.onMessage`.
          */
         export const onRequest:
-            | WebExtEvent<(request: any, sender: runtime.MessageSender, sendResponse: (response?: any) => void) => void>
+            | WebExtEvent<
+                  (
+                      request: any,
+                      sender: runtime.MessageSender,
+                      sendResponse: (response?: any) => void,
+                  ) => void
+              >
             | undefined;
 
         /**
@@ -7792,7 +8314,13 @@ declare namespace messenger {
          * @deprecated Please use `runtime.onMessageExternal`.
          */
         export const onRequestExternal:
-            | WebExtEvent<(request: any, sender: runtime.MessageSender, sendResponse: (response?: any) => void) => void>
+            | WebExtEvent<
+                  (
+                      request: any,
+                      sender: runtime.MessageSender,
+                      sendResponse: (response?: any) => void,
+                  ) => void
+              >
             | undefined;
     }
 
@@ -7891,14 +8419,20 @@ declare namespace messenger {
 
         export type ExtensionFileOrCode =
             | {
-                file: _manifest.ExtensionURL;
-            }
+                  file: _manifest.ExtensionURL;
+              }
             | {
-                code: string;
-            };
+                  code: string;
+              };
 
         /** A plain JSON value */
-        export type PlainJSONValue = null | string | number | boolean | _PlainJSONArray | _PlainJSONObject;
+        export type PlainJSONValue =
+            | null
+            | string
+            | number
+            | boolean
+            | _PlainJSONArray
+            | _PlainJSONObject;
 
         /**
          * The area of the document to capture, in CSS pixels, relative to the
@@ -7979,7 +8513,10 @@ declare namespace messenger {
          *
          * @returns Message localized for current locale.
          */
-        export function getMessage(messageName: string, substitutions?: any): string;
+        export function getMessage(
+            messageName: string,
+            substitutions?: any,
+        ): string;
 
         /**
          * Gets the browser UI language of the browser. This is different from
@@ -7994,7 +8531,9 @@ declare namespace messenger {
          *
          * @param text User input string to be translated.
          */
-        export function detectLanguage(text: string): Promise<_DetectLanguageReturnResult>;
+        export function detectLanguage(
+            text: string,
+        ): Promise<_DetectLanguageReturnResult>;
     }
 
     /**
@@ -8057,7 +8596,9 @@ declare namespace messenger {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export function getAuthToken(details?: _GetAuthTokenDetails): Promise<string>;
+        export function getAuthToken(
+            details?: _GetAuthTokenDetails,
+        ): Promise<string>;
 
         /**
          * Retrieves email address and obfuscated gaia id of the user signed into
@@ -8077,7 +8618,9 @@ declare namespace messenger {
         ): Promise<_RemoveCachedAuthTokenReturnUserinfo>;
 
         /** Starts an auth flow at the specified URL. */
-        export function launchWebAuthFlow(details: _LaunchWebAuthFlowDetails): Promise<string>;
+        export function launchWebAuthFlow(
+            details: _LaunchWebAuthFlowDetails,
+        ): Promise<string>;
 
         /**
          * Generates a redirect URL to be used in {@link launchWebAuthFlow}.
@@ -8092,7 +8635,9 @@ declare namespace messenger {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onSignInChanged: WebExtEvent<(account: AccountInfo, signedIn: boolean) => void> | undefined;
+        export const onSignInChanged:
+            | WebExtEvent<(account: AccountInfo, signedIn: boolean) => void>
+            | undefined;
     }
 
     /**
@@ -8118,7 +8663,9 @@ declare namespace messenger {
          * detectionIntervalInSeconds seconds have elapsed since the last user
          * input detected.
          */
-        export function queryState(detectionIntervalInSeconds: number): Promise<IdleState>;
+        export function queryState(
+            detectionIntervalInSeconds: number,
+        ): Promise<IdleState>;
 
         /**
          * Sets the interval, in seconds, used to determine when the system is in
@@ -8166,7 +8713,9 @@ declare namespace messenger {
         }
 
         /** A reason the item is disabled. */
-        export type ExtensionDisabledReason = "unknown" | "permissions_increase";
+        export type ExtensionDisabledReason =
+            | "unknown"
+            | "permissions_increase";
 
         /** The type of this extension, 'extension' or 'theme'. */
         export type ExtensionType = "extension" | "theme";
@@ -8179,7 +8728,11 @@ declare namespace messenger {
          * machine,
          * `other`: The extension was installed by other means.
          */
-        export type ExtensionInstallType = "development" | "normal" | "sideload" | "other";
+        export type ExtensionInstallType =
+            | "development"
+            | "normal"
+            | "sideload"
+            | "other";
 
         /** Information about an installed extension. */
         export interface ExtensionInfo {
@@ -8262,7 +8815,9 @@ declare namespace messenger {
         export function get(id: _manifest.ExtensionID): Promise<ExtensionInfo>;
 
         /** Installs and enables a theme extension from the given url. */
-        export function install(options: _InstallOptions): Promise<_InstallReturnResult>;
+        export function install(
+            options: _InstallOptions,
+        ): Promise<_InstallReturnResult>;
 
         /**
          * Returns information about the calling extension. Note: This function
@@ -8275,7 +8830,9 @@ declare namespace messenger {
          * Uninstalls the calling extension. Note: This function can be used
          * without requesting the 'management' permission in the manifest.
          */
-        export function uninstallSelf(options?: _UninstallSelfOptions): Promise<void>;
+        export function uninstallSelf(
+            options?: _UninstallSelfOptions,
+        ): Promise<void>;
 
         /**
          * Enables or disables the given add-on.
@@ -8431,13 +8988,18 @@ declare namespace messenger {
          *
          * @param options Contents of the notification.
          */
-        export function create(notificationId: string, options: CreateNotificationOptions): Promise<string>;
+        export function create(
+            notificationId: string,
+            options: CreateNotificationOptions,
+        ): Promise<string>;
         /**
          * Creates and displays a notification.
          *
          * @param options Contents of the notification.
          */
-        export function create(options: CreateNotificationOptions): Promise<string>;
+        export function create(
+            options: CreateNotificationOptions,
+        ): Promise<string>;
 
         /**
          * Updates an existing notification.
@@ -8448,7 +9010,10 @@ declare namespace messenger {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export function update(notificationId: string, options: UpdateNotificationOptions): Promise<boolean>;
+        export function update(
+            notificationId: string,
+            options: UpdateNotificationOptions,
+        ): Promise<boolean>;
 
         /**
          * Clears an existing notification.
@@ -8458,7 +9023,9 @@ declare namespace messenger {
         export function clear(notificationId: string): Promise<boolean>;
 
         /** Retrieves all the notifications. */
-        export function getAll(): Promise<{ [key: string]: CreateNotificationOptions }>;
+        export function getAll(): Promise<{
+            [key: string]: CreateNotificationOptions;
+        }>;
 
         /**
          * Retrieves whether the user has enabled notifications from this app or
@@ -8477,7 +9044,9 @@ declare namespace messenger {
          *
          * @param byUser True if the notification was closed by the user.
          */
-        export const onClosed: WebExtEvent<(notificationId: string, byUser: boolean) => void>;
+        export const onClosed: WebExtEvent<
+            (notificationId: string, byUser: boolean) => void
+        >;
 
         /**
          * Fired when the user clicked in a non-button area of the notification.
@@ -8493,7 +9062,9 @@ declare namespace messenger {
          *
          * @param buttonIndex The index of the button clicked by the user.
          */
-        export const onButtonClicked: WebExtEvent<(notificationId: string, buttonIndex: number) => void>;
+        export const onButtonClicked: WebExtEvent<
+            (notificationId: string, buttonIndex: number) => void
+        >;
 
         /**
          * Fired when the user changes the permission level.
@@ -8502,7 +9073,9 @@ declare namespace messenger {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onPermissionLevelChanged: WebExtEvent<(level: PermissionLevel) => void> | undefined;
+        export const onPermissionLevelChanged:
+            | WebExtEvent<(level: PermissionLevel) => void>
+            | undefined;
 
         /**
          * Fired when the user clicked on a link for the app's notification
@@ -8577,7 +9150,10 @@ declare namespace messenger {
         export function isModuleInstalled(name: string): Promise<boolean>;
 
         /** Install a PKCS#11 module with a given name */
-        export function installModule(name: string, flags?: number): Promise<void>;
+        export function installModule(
+            name: string,
+            flags?: number,
+        ): Promise<void>;
 
         /** Remove an installed PKCS#11 module from firefox */
         export function uninstallModule(name: string): Promise<void>;
@@ -8636,13 +9212,26 @@ declare namespace messenger {
             }
 
             /** The mode for https-only mode. */
-            export type HTTPSOnlyModeOption = "always" | "private_browsing" | "never";
+            export type HTTPSOnlyModeOption =
+                | "always"
+                | "private_browsing"
+                | "never";
 
             /** The minimum TLS version supported. */
-            export type _TlsVersionRestrictionConfigMinimum = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+            export type _TlsVersionRestrictionConfigMinimum =
+                | "TLSv1"
+                | "TLSv1.1"
+                | "TLSv1.2"
+                | "TLSv1.3"
+                | "unknown";
 
             /** The maximum TLS version supported. */
-            export type _TlsVersionRestrictionConfigMaximum = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+            export type _TlsVersionRestrictionConfigMaximum =
+                | "TLSv1"
+                | "TLSv1.1"
+                | "TLSv1.2"
+                | "TLSv1.3"
+                | "unknown";
 
             /* privacy.network properties */
             /**
@@ -8716,7 +9305,10 @@ declare namespace messenger {
         export namespace websites {
             /* privacy.websites types */
             /** The mode for tracking protection. */
-            export type TrackingProtectionModeOption = "always" | "never" | "private_browsing";
+            export type TrackingProtectionModeOption =
+                | "always"
+                | "never"
+                | "private_browsing";
 
             /** The settings for cookies. */
             export interface CookieConfig {
@@ -8866,7 +9458,12 @@ declare namespace messenger {
         }
 
         /** The type of proxy to use. */
-        export type _ProxyConfigProxyType = "none" | "autoDetect" | "system" | "manual" | "autoConfig";
+        export type _ProxyConfigProxyType =
+            | "none"
+            | "autoDetect"
+            | "system"
+            | "manual"
+            | "autoConfig";
 
         export interface _OnRequestDetails {
             /**
@@ -8928,8 +9525,14 @@ declare namespace messenger {
             thirdParty: boolean;
         }
 
-        export interface _ProxyOnRequestEvent<TCallback = (details: _OnRequestDetails) => void> {
-            addListener(cb: TCallback, filter: webRequest.RequestFilter, extraInfoSpec?: Array<"requestHeaders">): void;
+        export interface _ProxyOnRequestEvent<
+            TCallback = (details: _OnRequestDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: webRequest.RequestFilter,
+                extraInfoSpec?: Array<"requestHeaders">,
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -9009,10 +9612,24 @@ declare namespace messenger {
         }
 
         /** The operating system the browser is running on. */
-        export type PlatformOs = "mac" | "win" | "android" | "cros" | "linux" | "openbsd";
+        export type PlatformOs =
+            | "mac"
+            | "win"
+            | "android"
+            | "cros"
+            | "linux"
+            | "openbsd";
 
         /** The machine's processor architecture. */
-        export type PlatformArch = "aarch64" | "arm" | "ppc64" | "s390x" | "sparc64" | "x86-32" | "x86-64" | "noarch";
+        export type PlatformArch =
+            | "aarch64"
+            | "arm"
+            | "ppc64"
+            | "s390x"
+            | "sparc64"
+            | "x86-32"
+            | "x86-64"
+            | "noarch";
 
         /** An object containing information about the current platform. */
         export interface PlatformInfo {
@@ -9042,7 +9659,10 @@ declare namespace messenger {
         }
 
         /** Result of the update check. */
-        export type RequestUpdateCheckStatus = "throttled" | "no_update" | "update_available";
+        export type RequestUpdateCheckStatus =
+            | "throttled"
+            | "no_update"
+            | "update_available";
 
         /** The reason that this event is being dispatched. */
         export type OnInstalledReason = "install" | "update" | "browser_update";
@@ -9055,7 +9675,10 @@ declare namespace messenger {
          * the system runs for more than the permitted uptime set in the
          * enterprise policy.
          */
-        export type OnRestartRequiredReason = "app_update" | "os_update" | "periodic";
+        export type OnRestartRequiredReason =
+            | "app_update"
+            | "os_update"
+            | "periodic";
 
         export type PlatformNaclArch = "arm" | "x86-32" | "x86-64";
 
@@ -9231,7 +9854,10 @@ declare namespace messenger {
          * port's `runtime.Port onDisconnect` event is fired if the extension/app
          * does not exist.
          */
-        export function connect(extensionId: string, connectInfo?: _ConnectConnectInfo): Port;
+        export function connect(
+            extensionId: string,
+            connectInfo?: _ConnectConnectInfo,
+        ): Port;
         /**
          * Attempts to connect to connect listeners within an extension/app (such
          * as the background page), or other extensions/apps. This is useful for
@@ -9272,7 +9898,11 @@ declare namespace messenger {
          * If omitted, the message will be sent to your own extension/app.
          * Required if sending messages from a web page for web messaging.
          */
-        export function sendMessage(extensionId: string, message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            extensionId: string,
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
         /**
          * Sends a single message to event listeners within your extension/app or
          * a different extension/app. Similar to `runtime.connect` but only sends
@@ -9282,7 +9912,10 @@ declare namespace messenger {
          * extensions cannot send messages to content scripts using this method.
          * To send messages to content scripts, use `tabs.sendMessage`.
          */
-        export function sendMessage(message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
 
         /**
          * Send a single message to a native application.
@@ -9294,7 +9927,10 @@ declare namespace messenger {
          * @param message The message that will be passed to the native messaging
          * host.
          */
-        export function sendNativeMessage(application: string, message: any): Promise<any>;
+        export function sendNativeMessage(
+            application: string,
+            message: any,
+        ): Promise<any>;
 
         /** Returns information about the current browser. */
         export function getBrowserInfo(): Promise<BrowserInfo>;
@@ -9321,7 +9957,9 @@ declare namespace messenger {
          * updated to a new version, and when the browser is updated to a new
          * version.
          */
-        export const onInstalled: WebExtEvent<(details: _OnInstalledDetails) => void>;
+        export const onInstalled: WebExtEvent<
+            (details: _OnInstalledDetails) => void
+        >;
 
         /**
          * Sent to the event page just before it is unloaded. This gives the
@@ -9354,7 +9992,9 @@ declare namespace messenger {
          *
          * @param details The manifest details of the available update.
          */
-        export const onUpdateAvailable: WebExtEvent<(details: _OnUpdateAvailableDetails) => void>;
+        export const onUpdateAvailable: WebExtEvent<
+            (details: _OnUpdateAvailableDetails) => void
+        >;
 
         /**
          * Fired when an update for the browser is available, but isn't installed
@@ -9362,7 +10002,9 @@ declare namespace messenger {
          *
          * @deprecated Please use `runtime.onRestartRequired`.
          */
-        export const onBrowserUpdateAvailable: WebExtEvent<() => void> | undefined;
+        export const onBrowserUpdateAvailable:
+            | WebExtEvent<() => void>
+            | undefined;
 
         /**
          * Fired when a connection is made from either an extension process or a
@@ -9438,7 +10080,9 @@ declare namespace messenger {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onRestartRequired: WebExtEvent<(reason: OnRestartRequiredReason) => void> | undefined;
+        export const onRestartRequired:
+            | WebExtEvent<(reason: OnRestartRequiredReason) => void>
+            | undefined;
     }
 
     /**
@@ -9467,7 +10111,9 @@ declare namespace messenger {
              * An empty list or object will return an empty result object. Pass in
              * `null` to get the entire contents of storage.
              */
-            get(keys?: string | string[] | { [key: string]: any }): Promise<{ [key: string]: any }>;
+            get(
+                keys?: string | string[] | { [key: string]: any },
+            ): Promise<{ [key: string]: any }>;
             /**
              * Gets the amount of space (in bytes) being used by one or more items.
              *
@@ -9505,7 +10151,9 @@ declare namespace messenger {
              * @param changes Object mapping each key that changed to its
              * corresponding `storage.StorageChange` for that item.
              */
-            onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }) => void>;
+            onChanged: WebExtEvent<
+                (changes: { [key: string]: StorageChange }) => void
+            >;
         }
 
         export interface StorageAreaSync {
@@ -9517,7 +10165,9 @@ declare namespace messenger {
              * An empty list or object will return an empty result object. Pass in
              * `null` to get the entire contents of storage.
              */
-            get(keys?: string | string[] | { [key: string]: any }): Promise<{ [key: string]: any }>;
+            get(
+                keys?: string | string[] | { [key: string]: any },
+            ): Promise<{ [key: string]: any }>;
             /**
              * Gets the amount of space (in bytes) being used by one or more items.
              *
@@ -9553,7 +10203,9 @@ declare namespace messenger {
              * @param changes Object mapping each key that changed to its
              * corresponding `storage.StorageChange` for that item.
              */
-            onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }) => void>;
+            onChanged: WebExtEvent<
+                (changes: { [key: string]: StorageChange }) => void
+            >;
         }
 
         /* storage properties */
@@ -9580,7 +10232,12 @@ declare namespace messenger {
          * @param areaName The name of the storage area (`"sync"`, `"local"` or
          * `"managed"`) the changes are for.
          */
-        export const onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }, areaName: string) => void>;
+        export const onChanged: WebExtEvent<
+            (
+                changes: { [key: string]: StorageChange },
+                areaName: string,
+            ) => void
+        >;
     }
 
     /**
@@ -9608,7 +10265,11 @@ declare namespace messenger {
          *
          * Only `regular` is supported by Firefox at this time.
          */
-        export type SettingScope = "regular" | "regular_only" | "incognito_persistent" | "incognito_session_only";
+        export type SettingScope =
+            | "regular"
+            | "regular_only"
+            | "incognito_persistent"
+            | "incognito_session_only";
 
         /**
          * One of
@@ -9786,7 +10447,9 @@ declare namespace messenger {
          * `userScripts.UserScriptOptions`, and resolves to a
          * `userScripts.RegisteredUserScript` instance
          */
-        export function register(userScriptOptions: UserScriptOptions): Promise<RegisteredUserScript>;
+        export function register(
+            userScriptOptions: UserScriptOptions,
+        ): Promise<RegisteredUserScript>;
 
         /* userScripts events */
         /**
@@ -9794,7 +10457,9 @@ declare namespace messenger {
          *
          * Allowed in: Content scripts only
          */
-        export const onBeforeScript: WebExtEvent<(userScript: _OnBeforeScriptUserScript) => void>;
+        export const onBeforeScript: WebExtEvent<
+            (userScript: _OnBeforeScriptUserScript) => void
+        >;
     }
 
     /**
@@ -9828,7 +10493,11 @@ declare namespace messenger {
             | "keyword"
             | "keyword_generated";
 
-        export type TransitionQualifier = "client_redirect" | "server_redirect" | "forward_back" | "from_address_bar";
+        export type TransitionQualifier =
+            | "client_redirect"
+            | "server_redirect"
+            | "forward_back"
+            | "from_address_bar";
 
         export interface EventUrlFilters {
             url: events.UrlFilter[];
@@ -9928,7 +10597,9 @@ declare namespace messenger {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnBeforeNavigateEvent<TCallback = (details: _OnBeforeNavigateDetails) => void> {
+        export interface _WebNavigationOnBeforeNavigateEvent<
+            TCallback = (details: _OnBeforeNavigateDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -9969,7 +10640,9 @@ declare namespace messenger {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnCommittedEvent<TCallback = (details: _OnCommittedDetails) => void> {
+        export interface _WebNavigationOnCommittedEvent<
+            TCallback = (details: _OnCommittedDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -10029,7 +10702,9 @@ declare namespace messenger {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnCompletedEvent<TCallback = (details: _OnCompletedDetails) => void> {
+        export interface _WebNavigationOnCompletedEvent<
+            TCallback = (details: _OnCompletedDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -10061,7 +10736,9 @@ declare namespace messenger {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnErrorOccurredEvent<TCallback = (details: _OnErrorOccurredDetails) => void> {
+        export interface _WebNavigationOnErrorOccurredEvent<
+            TCallback = (details: _OnErrorOccurredDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -10203,14 +10880,18 @@ declare namespace messenger {
          * @param details Information about the frame to retrieve information
          * about.
          */
-        export function getFrame(details: _GetFrameDetails): Promise<_GetFrameReturnDetails>;
+        export function getFrame(
+            details: _GetFrameDetails,
+        ): Promise<_GetFrameReturnDetails>;
 
         /**
          * Retrieves information about all frames of a given tab.
          *
          * @param details Information about the tab to retrieve all frames from.
          */
-        export function getAllFrames(details: _GetAllFramesDetails): Promise<_GetAllFramesReturnDetails[]>;
+        export function getAllFrames(
+            details: _GetAllFramesDetails,
+        ): Promise<_GetAllFramesReturnDetails[]>;
 
         /* webNavigation events */
         /** Fired when a navigation is about to occur. */
@@ -10259,7 +10940,9 @@ declare namespace messenger {
          * Fired when the contents of the tab is replaced by a different (usually
          * previously pre-rendered) tab.
          */
-        export const onTabReplaced: WebExtEvent<(details: _OnTabReplacedDetails) => void>;
+        export const onTabReplaced: WebExtEvent<
+            (details: _OnTabReplacedDetails) => void
+        >;
 
         /**
          * Fired when the frame's history was updated to a new URL. All future
@@ -10310,7 +10993,10 @@ declare namespace messenger {
 
         export type OnHeadersReceivedOptions = "blocking" | "responseHeaders";
 
-        export type OnAuthRequiredOptions = "responseHeaders" | "blocking" | "asyncBlocking";
+        export type OnAuthRequiredOptions =
+            | "responseHeaders"
+            | "blocking"
+            | "asyncBlocking";
 
         export type OnResponseStartedOptions = "responseHeaders";
 
@@ -10445,7 +11131,9 @@ declare namespace messenger {
              * The type of certificate error that was overridden for this connection,
              * if any.
              */
-            overridableErrorCategory?: _SecurityInfoOverridableErrorCategory | undefined;
+            overridableErrorCategory?:
+                | _SecurityInfoOverridableErrorCategory
+                | undefined;
             /**
              * The domain name does not match the certificate domain.
              *
@@ -10467,7 +11155,9 @@ declare namespace messenger {
              * `https://www.certificate-transparency.org/what-is-ct` for more
              * information.
              */
-            certificateTransparencyStatus?: CertificateTransparencyStatus | undefined;
+            certificateTransparencyStatus?:
+                | CertificateTransparencyStatus
+                | undefined;
             /** True if host uses Strict Transport Security and state is "secure". */
             hsts?: boolean | undefined;
             /** True if host uses Public Key Pinning and state is "secure". */
@@ -10594,10 +11284,19 @@ declare namespace messenger {
             sha256: string;
         }
 
-        export type _SecurityInfoState = "insecure" | "weak" | "broken" | "secure";
+        export type _SecurityInfoState =
+            | "insecure"
+            | "weak"
+            | "broken"
+            | "secure";
 
         /** Protocol version if state is "secure" */
-        export type _SecurityInfoProtocolVersion = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+        export type _SecurityInfoProtocolVersion =
+            | "TLSv1"
+            | "TLSv1.1"
+            | "TLSv1.2"
+            | "TLSv1.3"
+            | "unknown";
 
         /**
          * The type of certificate error that was overridden for this connection,
@@ -10714,9 +11413,15 @@ declare namespace messenger {
 
         export interface _WebRequestOnBeforeRequestEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnBeforeRequestDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnBeforeRequestDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeRequestOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeRequestOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -10781,9 +11486,15 @@ declare namespace messenger {
 
         export interface _WebRequestOnBeforeSendHeadersEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnBeforeSendHeadersDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnBeforeSendHeadersDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeSendHeadersOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeSendHeadersOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -10843,8 +11554,14 @@ declare namespace messenger {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnSendHeadersEvent<TCallback = (details: _OnSendHeadersDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnSendHeadersOptions[]): void;
+        export interface _WebRequestOnSendHeadersEvent<
+            TCallback = (details: _OnSendHeadersDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnSendHeadersOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -10913,9 +11630,15 @@ declare namespace messenger {
 
         export interface _WebRequestOnHeadersReceivedEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnHeadersReceivedDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnHeadersReceivedDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnHeadersReceivedOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnHeadersReceivedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -10999,9 +11722,15 @@ declare namespace messenger {
 
         export interface _WebRequestOnAuthRequiredEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnAuthRequiredDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnAuthRequiredDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnAuthRequiredOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnAuthRequiredOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -11076,8 +11805,14 @@ declare namespace messenger {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnResponseStartedEvent<TCallback = (details: _OnResponseStartedDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnResponseStartedOptions[]): void;
+        export interface _WebRequestOnResponseStartedEvent<
+            TCallback = (details: _OnResponseStartedDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnResponseStartedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -11154,8 +11889,14 @@ declare namespace messenger {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnBeforeRedirectEvent<TCallback = (details: _OnBeforeRedirectDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeRedirectOptions[]): void;
+        export interface _WebRequestOnBeforeRedirectEvent<
+            TCallback = (details: _OnBeforeRedirectDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeRedirectOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -11240,8 +11981,14 @@ declare namespace messenger {
             responseSize: number;
         }
 
-        export interface _WebRequestOnCompletedEvent<TCallback = (details: _OnCompletedDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnCompletedOptions[]): void;
+        export interface _WebRequestOnCompletedEvent<
+            TCallback = (details: _OnCompletedDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnCompletedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -11312,7 +12059,9 @@ declare namespace messenger {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnErrorOccurredEvent<TCallback = (details: _OnErrorOccurredDetails) => void> {
+        export interface _WebRequestOnErrorOccurredEvent<
+            TCallback = (details: _OnErrorOccurredDetails) => void,
+        > {
             addListener(cb: TCallback, filter: RequestFilter): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -11341,7 +12090,10 @@ declare namespace messenger {
          * Retrieves the security information for the request. Returns a promise
          * that will resolve to a SecurityInfo object.
          */
-        export function getSecurityInfo(requestId: string, options?: _GetSecurityInfoOptions): Promise<SecurityInfo>;
+        export function getSecurityInfo(
+            requestId: string,
+            options?: _GetSecurityInfoOptions,
+        ): Promise<SecurityInfo>;
 
         /* webRequest events */
         /**
@@ -11425,7 +12177,9 @@ declare namespace browser {
      */
     export namespace _manifest {
         /* _manifest types */
-        export type OptionalPermission = OptionalPermissionNoPrompt | _OptionalPermission;
+        export type OptionalPermission =
+            | OptionalPermissionNoPrompt
+            | _OptionalPermission;
 
         export interface ActionManifest {
             /**
@@ -11476,7 +12230,9 @@ declare namespace browser {
             action?: ActionManifest | undefined;
             /** Not supported on manifest versions above 2. */
             browser_action?: ActionManifest | undefined;
-            chrome_settings_overrides?: _WebExtensionManifestChromeSettingsOverrides | undefined;
+            chrome_settings_overrides?:
+                | _WebExtensionManifestChromeSettingsOverrides
+                | undefined;
             cloud_file?: _WebExtensionManifestCloudFile | undefined;
             /**
              * A _dictionary object_ defining one or more commands as _name-value_
@@ -11490,9 +12246,13 @@ declare namespace browser {
              *   Example:
              *   [manifest.json](https://raw.githubusercontent.com/thundernest/webext-docs/latest-mv2/includes/commands/manifest.json)
              */
-            commands?: { [key: string]: _WebExtensionManifestCommands } | undefined;
+            commands?:
+                | { [key: string]: _WebExtensionManifestCommands }
+                | undefined;
             compose_action?: _WebExtensionManifestComposeAction | undefined;
-            message_display_action?: _WebExtensionManifestMessageDisplayAction | undefined;
+            message_display_action?:
+                | _WebExtensionManifestMessageDisplayAction
+                | undefined;
             /**
              * A theme experiment allows modifying the user interface of Thunderbird
              * beyond what is currently possible using the built-in color, image and
@@ -11506,8 +12266,12 @@ declare namespace browser {
              */
             theme_experiment?: ThemeExperiment | undefined;
             /** Needs at least manifest version 3. */
-            declarative_net_request?: _WebExtensionManifestDeclarativeNetRequest | undefined;
-            experiment_apis?: { [key: string]: experiments.ExperimentAPI } | undefined;
+            declarative_net_request?:
+                | _WebExtensionManifestDeclarativeNetRequest
+                | undefined;
+            experiment_apis?:
+                | { [key: string]: experiments.ExperimentAPI }
+                | undefined;
             /** A list of protocol handler definitions. */
             protocol_handlers?: ProtocolHandler[] | undefined;
             default_locale?: string | undefined;
@@ -11518,27 +12282,27 @@ declare namespace browser {
             incognito?: _WebExtensionManifestIncognito | undefined;
             background?:
                 | {
-                    page: ExtensionURL;
-                    /** Not supported on manifest versions above 2. */
-                    persistent?: boolean | undefined;
-                }
+                      page: ExtensionURL;
+                      /** Not supported on manifest versions above 2. */
+                      persistent?: boolean | undefined;
+                  }
                 | {
-                    scripts: ExtensionURL[];
-                    /** Not supported on manifest versions above 2. */
-                    persistent?: boolean | undefined;
-                }
+                      scripts: ExtensionURL[];
+                      /** Not supported on manifest versions above 2. */
+                      persistent?: boolean | undefined;
+                  }
                 | {
-                    service_worker: ExtensionURL;
-                }
+                      service_worker: ExtensionURL;
+                  }
                 | undefined;
             options_ui?: _WebExtensionManifestOptionsUi | undefined;
             content_scripts?: ContentScript[] | undefined;
             content_security_policy?:
                 | string
                 | {
-                    /** The Content Security Policy used for extension pages. */
-                    extension_pages?: string | undefined;
-                }
+                      /** The Content Security Policy used for extension pages. */
+                      extension_pages?: string | undefined;
+                  }
                 | undefined;
             permissions?: PermissionOrOrigin[] | Permission[] | undefined;
             granted_host_permissions?: boolean | undefined;
@@ -11548,10 +12312,10 @@ declare namespace browser {
             web_accessible_resources?:
                 | string[]
                 | Array<{
-                    resources: string[];
-                    matches?: MatchPattern[] | undefined;
-                    extension_ids?: Array<ExtensionID | "*"> | undefined;
-                }>
+                      resources: string[];
+                      matches?: MatchPattern[] | undefined;
+                      extension_ids?: Array<ExtensionID | "*"> | undefined;
+                  }>
                 | undefined;
             hidden?: boolean | undefined;
             page_action?: _WebExtensionManifestPageAction | undefined;
@@ -11583,12 +12347,18 @@ declare namespace browser {
          */
         export type KeyName = string;
 
-        export type PermissionNoPrompt = OptionalPermissionNoPrompt | PermissionPrivileged | _PermissionNoPrompt;
+        export type PermissionNoPrompt =
+            | OptionalPermissionNoPrompt
+            | PermissionPrivileged
+            | _PermissionNoPrompt;
 
         export type OptionalPermissionNoPrompt = _OptionalPermissionNoPrompt;
 
         /** Defines a color value. */
-        export type ThemeColor = string | [number, number, number] | [number, number, number, number];
+        export type ThemeColor =
+            | string
+            | [number, number, number]
+            | [number, number, number, number];
 
         /**
          * Defines additional color, image and property keys to be used in {@link theme.ThemeType},
@@ -11677,7 +12447,11 @@ declare namespace browser {
 
         export type PermissionPrivileged = _PermissionPrivileged;
 
-        export type Permission = string | PermissionNoPrompt | OptionalPermission | "declarativeNetRequest";
+        export type Permission =
+            | string
+            | PermissionNoPrompt
+            | OptionalPermission
+            | "declarativeNetRequest";
 
         /** Represents a protocol handler definition. */
         export interface ProtocolHandler {
@@ -11787,7 +12561,9 @@ declare namespace browser {
             author?: string | undefined;
             version: string;
             homepage_url?: string | undefined;
-            developer?: _WebExtensionSitePermissionsManifestDeveloper | undefined;
+            developer?:
+                | _WebExtensionSitePermissionsManifestDeveloper
+                | undefined;
         }
 
         export interface ThemeIcons {
@@ -11799,7 +12575,9 @@ declare namespace browser {
             size: number;
         }
 
-        export type OptionalPermissionOrOrigin = OptionalPermission | MatchPattern;
+        export type OptionalPermissionOrOrigin =
+            | OptionalPermission
+            | MatchPattern;
 
         export type PermissionOrOrigin = Permission | MatchPattern;
 
@@ -11826,7 +12604,10 @@ declare namespace browser {
             gecko?: FirefoxSpecificProperties | undefined;
         }
 
-        export type MatchPattern = MatchPatternRestricted | MatchPatternUnestricted | "<all_urls>";
+        export type MatchPattern =
+            | MatchPatternRestricted
+            | MatchPatternUnestricted
+            | "<all_urls>";
 
         /** Same as MatchPattern above, but excludes<all_urls></all_urls> */
         export type MatchPatternRestricted = string;
@@ -11876,14 +12657,14 @@ declare namespace browser {
 
         export type IconPath =
             | {
-                [key: number]: ExtensionFileUrl;
-            }
+                  [key: number]: ExtensionFileUrl;
+              }
             | ExtensionFileUrl;
 
         export type IconImageData =
             | {
-                [key: number]: ImageData;
-            }
+                  [key: number]: ImageData;
+              }
             | ImageData;
 
         export type ImageData = any;
@@ -11897,18 +12678,18 @@ declare namespace browser {
         /** Represents a native manifest file */
         export type NativeManifest =
             | {
-                name: string;
-                description: string;
-                path: string;
-                type: "pkcs11" | "stdio";
-                allowed_extensions: ExtensionID[];
-            }
+                  name: string;
+                  description: string;
+                  path: string;
+                  type: "pkcs11" | "stdio";
+                  allowed_extensions: ExtensionID[];
+              }
             | {
-                name: ExtensionID;
-                description: string;
-                data: { [key: string]: any };
-                type: "storage";
-            };
+                  name: ExtensionID;
+                  description: string;
+                  data: { [key: string]: any };
+                  type: "storage";
+              };
 
         export type _OptionalPermission =
             | "accountsRead"
@@ -11950,31 +12731,32 @@ declare namespace browser {
         export type _ActionManifestDefaultWindows = "normal" | "messageDisplay";
 
         /** The type of param can be either "purpose" or "pref". */
-        export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition = "purpose" | "pref";
+        export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition =
+            "purpose" | "pref";
 
         /**
          * The context that initiates a search, required if condition is
          * "purpose".
          */
         export type _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose =
-            | "contextmenu"
-            | "searchbar"
-            | "homepage"
-            | "keyword"
-            | "newtab";
+            "contextmenu" | "searchbar" | "homepage" | "keyword" | "newtab";
 
         export interface _WebExtensionManifestChromeSettingsOverridesSearchProviderParams {
             /** A url parameter name */
             name: string;
             /** The type of param can be either "purpose" or "pref". */
-            condition?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition | undefined;
+            condition?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsCondition
+                | undefined;
             /** The preference to retrieve the value from. */
             pref?: string | undefined;
             /**
              * The context that initiates a search, required if condition is
              * "purpose".
              */
-            purpose?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose | undefined;
+            purpose?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParamsPurpose
+                | undefined;
             /** A url parameter value. */
             value?: string | undefined;
         }
@@ -12015,11 +12797,15 @@ declare namespace browser {
              * search url parameters based on how the search is performed in
              * Thunderbird.
              */
-            params?: _WebExtensionManifestChromeSettingsOverridesSearchProviderParams[] | undefined;
+            params?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProviderParams[]
+                | undefined;
         }
 
         export interface _WebExtensionManifestChromeSettingsOverrides {
-            search_provider?: _WebExtensionManifestChromeSettingsOverridesSearchProvider | undefined;
+            search_provider?:
+                | _WebExtensionManifestChromeSettingsOverridesSearchProvider
+                | undefined;
         }
 
         export interface _WebExtensionManifestCloudFile {
@@ -12091,7 +12877,9 @@ declare namespace browser {
         }
 
         export interface _WebExtensionManifestCommands {
-            suggested_key?: _WebExtensionManifestCommandsSuggestedKey | undefined;
+            suggested_key?:
+                | _WebExtensionManifestCommandsSuggestedKey
+                | undefined;
             description?: string | undefined;
         }
 
@@ -12099,7 +12887,9 @@ declare namespace browser {
          * Defines the location the composeAction button will appear. The default
          * location is `maintoolbar`.
          */
-        export type _WebExtensionManifestComposeActionDefaultArea = "maintoolbar" | "formattoolbar";
+        export type _WebExtensionManifestComposeActionDefaultArea =
+            | "maintoolbar"
+            | "formattoolbar";
 
         export interface _WebExtensionManifestComposeAction {
             /**
@@ -12136,7 +12926,9 @@ declare namespace browser {
              * Defines the location the composeAction button will appear. The default
              * location is `maintoolbar`.
              */
-            default_area?: _WebExtensionManifestComposeActionDefaultArea | undefined;
+            default_area?:
+                | _WebExtensionManifestComposeActionDefaultArea
+                | undefined;
         }
 
         export interface _WebExtensionManifestMessageDisplayAction {
@@ -12444,7 +13236,11 @@ declare namespace browser {
             | "right center"
             | "right top";
 
-        export type _ThemeTypeAdditionalBackgroundsTiling = "no-repeat" | "repeat" | "repeat-x" | "repeat-y";
+        export type _ThemeTypeAdditionalBackgroundsTiling =
+            | "no-repeat"
+            | "repeat"
+            | "repeat-x"
+            | "repeat-y";
 
         /**
          * If set, overrides the general theme (context menus, toolbars, content
@@ -12461,8 +13257,12 @@ declare namespace browser {
          * property keys are supported:
          */
         export interface _ThemeType {
-            additional_backgrounds_alignment?: _ThemeTypeAdditionalBackgroundsAlignment[] | undefined;
-            additional_backgrounds_tiling?: _ThemeTypeAdditionalBackgroundsTiling[] | undefined;
+            additional_backgrounds_alignment?:
+                | _ThemeTypeAdditionalBackgroundsAlignment[]
+                | undefined;
+            additional_backgrounds_tiling?:
+                | _ThemeTypeAdditionalBackgroundsTiling[]
+                | undefined;
             /**
              * If set, overrides the general theme (context menus, toolbars, content
              * area).
@@ -12477,7 +13277,11 @@ declare namespace browser {
             [key: number]: string;
         }
 
-        export type _PermissionPrivileged = "activityLog" | "mozillaAddons" | "networkStatus" | "telemetry";
+        export type _PermissionPrivileged =
+            | "activityLog"
+            | "mozillaAddons"
+            | "networkStatus"
+            | "telemetry";
 
         export type _ProtocolHandlerProtocol =
             | "bitcoin"
@@ -12517,8 +13321,8 @@ declare namespace browser {
             [key: string]:
                 | ExtensionURL
                 | {
-                    [key: string]: ExtensionURL;
-                };
+                      [key: string]: ExtensionURL;
+                  };
         }
 
         export interface _WebExtensionLangpackManifestLanguages {
@@ -12613,7 +13417,10 @@ declare namespace browser {
          * object should included the account's folders.
          * Defaults to `true`.
          */
-        export function get(accountId: string, includeFolders?: boolean): Promise<MailAccount>;
+        export function get(
+            accountId: string,
+            includeFolders?: boolean,
+        ): Promise<MailAccount>;
 
         /**
          * Returns the default account, or `null` if it is not defined.
@@ -12622,7 +13429,9 @@ declare namespace browser {
          * object should included the account's folders.
          * Defaults to `true`.
          */
-        export function getDefault(includeFolders?: boolean): Promise<MailAccount>;
+        export function getDefault(
+            includeFolders?: boolean,
+        ): Promise<MailAccount>;
 
         /**
          * Sets the default identity for an account.
@@ -12630,7 +13439,10 @@ declare namespace browser {
          * @deprecated This will be removed. Use {@link identities.setDefault}
          * instead.
          */
-        export function setDefaultIdentity(accountId: string, identityId: string): Promise<any>;
+        export function setDefaultIdentity(
+            accountId: string,
+            identityId: string,
+        ): Promise<any>;
 
         /**
          * Returns the default identity for an account, or `null` if it is not
@@ -12639,11 +13451,15 @@ declare namespace browser {
          * @deprecated This will be removed. Use {@link identities.getDefault}
          * instead.
          */
-        export function getDefaultIdentity(accountId: string): Promise<identities.MailIdentity>;
+        export function getDefaultIdentity(
+            accountId: string,
+        ): Promise<identities.MailIdentity>;
 
         /* accounts events */
         /** Fired when a new account has been created. */
-        export const onCreated: WebExtEvent<(id: string, account: MailAccount) => void>;
+        export const onCreated: WebExtEvent<
+            (id: string, account: MailAccount) => void
+        >;
 
         /** Fired when an account has been removed. */
         export const onDeleted: WebExtEvent<(id: string) => void>;
@@ -12656,7 +13472,9 @@ declare namespace browser {
          * assigned as default identity, but not after a property of the default
          * identity has been changed.
          */
-        export const onUpdated: WebExtEvent<(id: string, changedValues: _OnUpdatedChangedValues) => void>;
+        export const onUpdated: WebExtEvent<
+            (id: string, changedValues: _OnUpdatedChangedValues) => void
+        >;
     }
 
     /**
@@ -12726,13 +13544,19 @@ declare namespace browser {
          * @param [complete] If set to true, results will include contacts and
          * mailing lists for this address book.
          */
-        export function get(id: string, complete?: boolean): Promise<AddressBookNode>;
+        export function get(
+            id: string,
+            complete?: boolean,
+        ): Promise<AddressBookNode>;
 
         /** Creates a new, empty address book. */
         export function create(properties: _CreateProperties): Promise<string>;
 
         /** Renames an address book. */
-        export function update(id: string, properties: _UpdateProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: _UpdateProperties,
+        ): Promise<any>;
 
         /**
          * Removes an address book, and all associated contacts and mailing
@@ -12782,9 +13606,16 @@ declare namespace browser {
             type AddressBookNode = any;
 
             export interface _AddressBooks_providerOnSearchRequestEvent<
-                TCallback = (node: AddressBookNode, searchString: string, query?: string) => void,
+                TCallback = (
+                    node: AddressBookNode,
+                    searchString: string,
+                    query?: string,
+                ) => void,
             > {
-                addListener(cb: TCallback, parameters: _OnSearchRequestParameters): void;
+                addListener(
+                    cb: TCallback,
+                    parameters: _OnSearchRequestParameters,
+                ): void;
                 removeListener(cb: TCallback): void;
                 hasListener(cb: TCallback): boolean;
             }
@@ -12907,7 +13738,10 @@ declare namespace browser {
          * terms to search for, or a complex {@link contacts.QueryInfo} search
          * query.
          */
-        export function quickSearch(parentId: string, queryInfo: string | QueryInfo): Promise<ContactNode[]>;
+        export function quickSearch(
+            parentId: string,
+            queryInfo: string | QueryInfo,
+        ): Promise<ContactNode[]>;
         /**
          * Gets all contacts matching `queryInfo` in the address book with the id
          * `parentId`.
@@ -12916,7 +13750,9 @@ declare namespace browser {
          * terms to search for, or a complex {@link contacts.QueryInfo} search
          * query.
          */
-        export function quickSearch(queryInfo: string | QueryInfo): Promise<ContactNode[]>;
+        export function quickSearch(
+            queryInfo: string | QueryInfo,
+        ): Promise<ContactNode[]>;
 
         /** Gets a single contact. */
         export function get(id: string): Promise<ContactNode>;
@@ -12941,7 +13777,11 @@ declare namespace browser {
          * contact, an exception is thrown. **Note:** Using individual properties
          * is deprecated, use the `vCard` member instead.
          */
-        export function create(parentId: string, id: string, properties: ContactProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            id: string,
+            properties: ContactProperties,
+        ): Promise<string>;
         /**
          * Adds a new contact to the address book with the id `parentId`.
          *
@@ -12952,7 +13792,10 @@ declare namespace browser {
          * contact, an exception is thrown. **Note:** Using individual properties
          * is deprecated, use the `vCard` member instead.
          */
-        export function create(parentId: string, properties: ContactProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            properties: ContactProperties,
+        ): Promise<string>;
 
         /**
          * Updates a contact.
@@ -12965,7 +13808,10 @@ declare namespace browser {
          * Using individual properties is deprecated, use the `vCard` member
          * instead.
          */
-        export function update(id: string, properties: ContactProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: ContactProperties,
+        ): Promise<any>;
 
         /**
          * Removes a contact from the address book. The contact is also removed
@@ -12978,10 +13824,14 @@ declare namespace browser {
         export const onCreated: WebExtEvent<(node: ContactNode) => void>;
 
         /** Fired when a contact is changed. */
-        export const onUpdated: WebExtEvent<(node: ContactNode, changedProperties: PropertyChange) => void>;
+        export const onUpdated: WebExtEvent<
+            (node: ContactNode, changedProperties: PropertyChange) => void
+        >;
 
         /** Fired when a contact is removed from an address book. */
-        export const onDeleted: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onDeleted: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
     }
 
     /**
@@ -13037,10 +13887,16 @@ declare namespace browser {
         export function get(id: string): Promise<MailingListNode>;
 
         /** Creates a new mailing list in the address book with id `parentId`. */
-        export function create(parentId: string, properties: _CreateProperties): Promise<string>;
+        export function create(
+            parentId: string,
+            properties: _CreateProperties,
+        ): Promise<string>;
 
         /** Edits the properties of a mailing list. */
-        export function update(id: string, properties: _UpdateProperties): Promise<any>;
+        export function update(
+            id: string,
+            properties: _UpdateProperties,
+        ): Promise<any>;
 
         /** Removes the mailing list. */
         function _delete(id: string): Promise<any>;
@@ -13053,13 +13909,18 @@ declare namespace browser {
         export function addMember(id: string, contactId: string): Promise<any>;
 
         /** Gets all contacts that are members of the mailing list with id `id`. */
-        export function listMembers(id: string): Promise<contacts.ContactNode[]>;
+        export function listMembers(
+            id: string,
+        ): Promise<contacts.ContactNode[]>;
 
         /**
          * Removes a contact from the mailing list with id `id`. This does not
          * delete the contact from the address book.
          */
-        export function removeMember(id: string, contactId: string): Promise<any>;
+        export function removeMember(
+            id: string,
+            contactId: string,
+        ): Promise<any>;
 
         /* mailingLists events */
         /** Fired when a mailing list is created. */
@@ -13069,13 +13930,19 @@ declare namespace browser {
         export const onUpdated: WebExtEvent<(node: MailingListNode) => void>;
 
         /** Fired when a mailing list is deleted. */
-        export const onDeleted: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onDeleted: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
 
         /** Fired when a contact is added to the mailing list. */
-        export const onMemberAdded: WebExtEvent<(node: contacts.ContactNode) => void>;
+        export const onMemberAdded: WebExtEvent<
+            (node: contacts.ContactNode) => void
+        >;
 
         /** Fired when a contact is removed from the mailing list. */
-        export const onMemberRemoved: WebExtEvent<(parentId: string, id: string) => void>;
+        export const onMemberRemoved: WebExtEvent<
+            (parentId: string, id: string) => void
+        >;
     }
 
     /**
@@ -13130,7 +13997,12 @@ declare namespace browser {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -13355,16 +14227,24 @@ declare namespace browser {
          * Sets the badge text for the action button. The badge is displayed on
          * top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the action button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the action button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the action button for a tab. By default, an action button is
@@ -13395,7 +14275,9 @@ declare namespace browser {
          * the action has a popup. This is a user input event handler. For
          * asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -13446,7 +14328,12 @@ declare namespace browser {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -13671,16 +14558,24 @@ declare namespace browser {
          * Sets the badge text for the action button. The badge is displayed on
          * top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the action button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the action button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the action button for a tab. By default, an action button is
@@ -13711,7 +14606,9 @@ declare namespace browser {
          * the action has a popup. This is a user input event handler. For
          * asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -13791,7 +14688,9 @@ declare namespace browser {
              * If set, the cloud file entry for this upload will include a hint, that
              * the link will only be available for a limited time.
              */
-            download_expiry_date?: _CloudFileTemplateInfoDownloadExpiryDate | undefined;
+            download_expiry_date?:
+                | _CloudFileTemplateInfoDownloadExpiryDate
+                | undefined;
         }
 
         /** Information about a cloud file. */
@@ -13885,7 +14784,9 @@ declare namespace browser {
          *
          * @param accountId Unique identifier of the account.
          */
-        export function getAccount(accountId: string): Promise<CloudFileAccount>;
+        export function getAccount(
+            accountId: string,
+        ): Promise<CloudFileAccount>;
 
         /**
          * Retrieve all cloud file accounts for the current add-on.
@@ -13956,7 +14857,9 @@ declare namespace browser {
          * @param tab The tab where the upload was initiated. Currently only
          * available for the message composer.
          */
-        export const onFileUploadAbort: WebExtEvent<(account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void>;
+        export const onFileUploadAbort: WebExtEvent<
+            (account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a previously uploaded file should be renamed.
@@ -13997,14 +14900,18 @@ declare namespace browser {
          * @param tab The tab where the upload was initiated. Currently only
          * available for the message composer.
          */
-        export const onFileDeleted: WebExtEvent<(account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void>;
+        export const onFileDeleted: WebExtEvent<
+            (account: CloudFileAccount, fileId: number, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a cloud file account of this add-on was created.
          *
          * @param account The created account.
          */
-        export const onAccountAdded: WebExtEvent<(account: CloudFileAccount) => void>;
+        export const onAccountAdded: WebExtEvent<
+            (account: CloudFileAccount) => void
+        >;
 
         /**
          * Fired when a cloud file account of this add-on was deleted.
@@ -14080,7 +14987,9 @@ declare namespace browser {
          *
          * @param tab The details of the active tab while the command occurred.
          */
-        export const onCommand: WebExtEvent<(command: string, tab: tabs.Tab) => void>;
+        export const onCommand: WebExtEvent<
+            (command: string, tab: tabs.Tab) => void
+        >;
     }
 
     /**
@@ -14093,19 +15002,21 @@ declare namespace browser {
         export type ComposeRecipient =
             | string
             | {
-                /**
-                 * The ID of a contact or mailing list from the
-                 * [contacts](https://webextension-api.thunderbird.net/en/stable/contacts.html)
-                 * and
-                 * [mailingLists](https://webextension-api.thunderbird.net/en/stable/mailingLists.html)
-                 * APIs.
-                 */
-                id: string;
-                /** Which sort of object this ID is for. */
-                type: _UndefinedType;
-            };
+                  /**
+                   * The ID of a contact or mailing list from the
+                   * [contacts](https://webextension-api.thunderbird.net/en/stable/contacts.html)
+                   * and
+                   * [mailingLists](https://webextension-api.thunderbird.net/en/stable/mailingLists.html)
+                   * APIs.
+                   */
+                  id: string;
+                  /** Which sort of object this ID is for. */
+                  type: _UndefinedType;
+              };
 
-        export type ComposeRecipientList = ComposeRecipient | ComposeRecipient[];
+        export type ComposeRecipientList =
+            | ComposeRecipient
+            | ComposeRecipient[];
 
         /** Represent the state of the message composer. */
         export interface ComposeState {
@@ -14267,7 +15178,12 @@ declare namespace browser {
          * Read-only. The type of the message being composed, depending on how
          * the compose window was opened by the user.
          */
-        export type _ComposeDetailsType = "draft" | "new" | "redirect" | "reply" | "forward";
+        export type _ComposeDetailsType =
+            | "draft"
+            | "new"
+            | "redirect"
+            | "reply"
+            | "forward";
 
         /**
          * Defines the mime format of the sent message (ignored on plain text
@@ -14275,14 +15191,28 @@ declare namespace browser {
          * text, if they do not include any formatting, and as `both` otherwise
          * (a multipart/mixed message).
          */
-        export type _ComposeDetailsDeliveryFormat = "auto" | "plaintext" | "html" | "both";
+        export type _ComposeDetailsDeliveryFormat =
+            | "auto"
+            | "plaintext"
+            | "html"
+            | "both";
 
         /** The priority of the message. */
-        export type _ComposeDetailsPriority = "lowest" | "low" | "normal" | "high" | "highest";
+        export type _ComposeDetailsPriority =
+            | "lowest"
+            | "low"
+            | "normal"
+            | "high"
+            | "highest";
 
-        export type _BeginReplyReplyType = "replyToSender" | "replyToList" | "replyToAll";
+        export type _BeginReplyReplyType =
+            | "replyToSender"
+            | "replyToList"
+            | "replyToAll";
 
-        export type _BeginForwardForwardType = "forwardInline" | "forwardAsAttachment";
+        export type _BeginForwardForwardType =
+            | "forwardInline"
+            | "forwardAsAttachment";
 
         /** The used send mode. */
         export type _SendMessageReturnReturnMode = "sendNow" | "sendLater";
@@ -14302,7 +15232,10 @@ declare namespace browser {
             messages: messages.MessageHeader[];
         }
 
-        export type _SendMessageOptionsMode = "default" | "sendNow" | "sendLater";
+        export type _SendMessageOptionsMode =
+            | "default"
+            | "sendNow"
+            | "sendLater";
 
         export interface _SendMessageOptions {
             mode: _SendMessageOptionsMode;
@@ -14383,7 +15316,10 @@ declare namespace browser {
          * @param messageId If specified, the message or template to edit as a
          * new message.
          */
-        export function beginNew(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginNew(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
         /**
          * Open a new message compose window.
          *
@@ -14448,7 +15384,10 @@ declare namespace browser {
          * @param messageId The message to reply to, as retrieved using other
          * APIs.
          */
-        export function beginReply(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginReply(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
 
         /**
          * Open a new message compose window forwarding a given message.
@@ -14495,14 +15434,19 @@ declare namespace browser {
          * @param messageId The message to forward, as retrieved using other
          * APIs.
          */
-        export function beginForward(messageId: number, details?: ComposeDetails): Promise<tabs.Tab>;
+        export function beginForward(
+            messageId: number,
+            details?: ComposeDetails,
+        ): Promise<tabs.Tab>;
 
         /**
          * Fetches the current state of a compose window. Currently only a
          * limited amount of information is available, more will be added in
          * later versions.
          */
-        export function getComposeDetails(tabId: number): Promise<ComposeDetails>;
+        export function getComposeDetails(
+            tabId: number,
+        ): Promise<ComposeDetails>;
 
         /**
          * Updates the compose window. Only fields that are to be changed should
@@ -14516,26 +15460,36 @@ declare namespace browser {
          * matching `details.body` or `details.plainTextBody` value and ignores
          * the other.
          */
-        export function setComposeDetails(tabId: number, details: ComposeDetails): Promise<any>;
+        export function setComposeDetails(
+            tabId: number,
+            details: ComposeDetails,
+        ): Promise<any>;
 
         /**
          * Returns a {@link compose.ComposeDictionaries} object, listing all
          * installed dictionaries, including the information whether they are
          * currently enabled or not.
          */
-        export function getActiveDictionaries(tabId: number): Promise<ComposeDictionaries>;
+        export function getActiveDictionaries(
+            tabId: number,
+        ): Promise<ComposeDictionaries>;
 
         /**
          * Updates the active dictionaries. Throws if the `activeDictionaries`
          * array contains unknown or invalid language identifiers.
          */
-        export function setActiveDictionaries(tabId: number, activeDictionaries: string[]): Promise<any>;
+        export function setActiveDictionaries(
+            tabId: number,
+            activeDictionaries: string[],
+        ): Promise<any>;
 
         /**
          * Lists all of the attachments of the message being composed in the
          * specified tab.
          */
-        export function listAttachments(tabId: number): Promise<ComposeAttachment[]>;
+        export function listAttachments(
+            tabId: number,
+        ): Promise<ComposeAttachment[]>;
 
         /**
          * Gets the content of a {@link compose.ComposeAttachment} as a {@link File}
@@ -14567,7 +15521,10 @@ declare namespace browser {
          * Removes an attachment from the message being composed in the specified
          * tab.
          */
-        export function removeAttachment(tabId: number, attachmentId: number): Promise<any>;
+        export function removeAttachment(
+            tabId: number,
+            attachmentId: number,
+        ): Promise<any>;
 
         /**
          * Sends the message currently being composed. If the send mode is not
@@ -14579,7 +15536,10 @@ declare namespace browser {
          * there has been an error while sending the message to the outgoing mail
          * server.
          */
-        export function sendMessage(tabId: number, options?: _SendMessageOptions): Promise<_SendMessageReturnReturn>;
+        export function sendMessage(
+            tabId: number,
+            options?: _SendMessageOptions,
+        ): Promise<_SendMessageReturnReturn>;
 
         /**
          * Saves the message currently being composed as a draft or as a
@@ -14587,7 +15547,10 @@ declare namespace browser {
          * as a draft. The returned Promise fulfills once the message has been
          * successfully saved.
          */
-        export function saveMessage(tabId: number, options?: _SaveMessageOptions): Promise<_SaveMessageReturnReturn>;
+        export function saveMessage(
+            tabId: number,
+            options?: _SaveMessageOptions,
+        ): Promise<_SaveMessageReturnReturn>;
 
         /** Returns information about the current state of the message composer. */
         export function getComposeState(tabId: number): Promise<ComposeState>;
@@ -14618,25 +15581,37 @@ declare namespace browser {
         >;
 
         /** Fired when sending a message succeeded or failed. */
-        export const onAfterSend: WebExtEvent<(tab: tabs.Tab, sendInfo: _OnAfterSendSendInfo) => void>;
+        export const onAfterSend: WebExtEvent<
+            (tab: tabs.Tab, sendInfo: _OnAfterSendSendInfo) => void
+        >;
 
         /** Fired when saving a message as draft or template succeeded or failed. */
-        export const onAfterSave: WebExtEvent<(tab: tabs.Tab, saveInfo: _OnAfterSaveSaveInfo) => void>;
+        export const onAfterSave: WebExtEvent<
+            (tab: tabs.Tab, saveInfo: _OnAfterSaveSaveInfo) => void
+        >;
 
         /** Fired when an attachment is added to a message being composed. */
-        export const onAttachmentAdded: WebExtEvent<(tab: tabs.Tab, attachment: ComposeAttachment) => void>;
+        export const onAttachmentAdded: WebExtEvent<
+            (tab: tabs.Tab, attachment: ComposeAttachment) => void
+        >;
 
         /** Fired when an attachment is removed from a message being composed. */
-        export const onAttachmentRemoved: WebExtEvent<(tab: tabs.Tab, attachmentId: number) => void>;
+        export const onAttachmentRemoved: WebExtEvent<
+            (tab: tabs.Tab, attachmentId: number) => void
+        >;
 
         /**
          * Fired when the user changes the identity that will be used to send a
          * message being composed.
          */
-        export const onIdentityChanged: WebExtEvent<(tab: tabs.Tab, identityId: string) => void>;
+        export const onIdentityChanged: WebExtEvent<
+            (tab: tabs.Tab, identityId: string) => void
+        >;
 
         /** Fired when the state of the message composer changed. */
-        export const onComposeStateChanged: WebExtEvent<(tab: tabs.Tab, state: ComposeState) => void>;
+        export const onComposeStateChanged: WebExtEvent<
+            (tab: tabs.Tab, state: ComposeState) => void
+        >;
 
         /**
          * Fired when one or more dictionaries have been activated or
@@ -14697,7 +15672,12 @@ declare namespace browser {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -14922,16 +15902,24 @@ declare namespace browser {
          * Sets the badge text for the composeAction button. The badge is
          * displayed on top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the composeAction button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the composeAction button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the composeAction button for a tab. By default, a
@@ -14962,7 +15950,9 @@ declare namespace browser {
          * if the composeAction has a popup. This is a user input event handler.
          * For asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -14990,7 +15980,9 @@ declare namespace browser {
 
         /* composeScripts functions */
         /** Register a compose script programmatically */
-        export function register(composeScriptOptions: RegisteredComposeScriptOptions): Promise<any>;
+        export function register(
+            composeScriptOptions: RegisteredComposeScriptOptions,
+        ): Promise<any>;
     }
 
     /**
@@ -15021,7 +16013,9 @@ declare namespace browser {
 
         /* messageDisplayScripts functions */
         /** Register a message display script programmatically */
-        export function register(messageDisplayScriptOptions: RegisteredMessageDisplayScriptOptions): Promise<any>;
+        export function register(
+            messageDisplayScriptOptions: RegisteredMessageDisplayScriptOptions,
+        ): Promise<any>;
     }
 
     /**
@@ -15090,10 +16084,16 @@ declare namespace browser {
          * Creates a new subfolder in the specified folder or at the root of the
          * specified account.
          */
-        export function create(parent: MailFolder | accounts.MailAccount, childName: string): Promise<MailFolder>;
+        export function create(
+            parent: MailFolder | accounts.MailAccount,
+            childName: string,
+        ): Promise<MailFolder>;
 
         /** Renames a folder. */
-        export function rename(folder: MailFolder, newName: string): Promise<MailFolder>;
+        export function rename(
+            folder: MailFolder,
+            newName: string,
+        ): Promise<MailFolder>;
 
         /**
          * Moves the given `sourceFolder` into the given `destination`. Throws if
@@ -15119,7 +16119,9 @@ declare namespace browser {
         function _delete(folder: MailFolder): Promise<any>;
 
         /** Get additional information about a mail folder. */
-        export function getFolderInfo(folder: MailFolder): Promise<MailFolderInfo>;
+        export function getFolderInfo(
+            folder: MailFolder,
+        ): Promise<MailFolderInfo>;
 
         /**
          * Get all parent folders as a flat ordered array. The first array entry
@@ -15129,7 +16131,10 @@ declare namespace browser {
          * object for each parent folder should include its
          * nested subfolders . Defaults to `false`.
          */
-        export function getParentFolders(folder: MailFolder, includeSubFolders?: boolean): Promise<MailFolder[]>;
+        export function getParentFolders(
+            folder: MailFolder,
+            includeSubFolders?: boolean,
+        ): Promise<MailFolder[]>;
 
         /**
          * Get the subfolders of the specified folder or account.
@@ -15145,25 +16150,37 @@ declare namespace browser {
 
         /* folders events */
         /** Fired when a folder has been created. */
-        export const onCreated: WebExtEvent<(createdFolder: MailFolder) => void>;
+        export const onCreated: WebExtEvent<
+            (createdFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been renamed. */
-        export const onRenamed: WebExtEvent<(originalFolder: MailFolder, renamedFolder: MailFolder) => void>;
+        export const onRenamed: WebExtEvent<
+            (originalFolder: MailFolder, renamedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been moved. */
-        export const onMoved: WebExtEvent<(originalFolder: MailFolder, movedFolder: MailFolder) => void>;
+        export const onMoved: WebExtEvent<
+            (originalFolder: MailFolder, movedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been copied. */
-        export const onCopied: WebExtEvent<(originalFolder: MailFolder, copiedFolder: MailFolder) => void>;
+        export const onCopied: WebExtEvent<
+            (originalFolder: MailFolder, copiedFolder: MailFolder) => void
+        >;
 
         /** Fired when a folder has been deleted. */
-        export const onDeleted: WebExtEvent<(deletedFolder: MailFolder) => void>;
+        export const onDeleted: WebExtEvent<
+            (deletedFolder: MailFolder) => void
+        >;
 
         /**
          * Fired when certain information of a folder have changed. Bursts of
          * message count changes are collapsed to a single event.
          */
-        export const onFolderInfoChanged: WebExtEvent<(folder: MailFolder, folderInfo: MailFolderInfo) => void>;
+        export const onFolderInfoChanged: WebExtEvent<
+            (folder: MailFolder, folderInfo: MailFolderInfo) => void
+        >;
     }
 
     /**
@@ -15222,7 +16239,10 @@ declare namespace browser {
         export function get(identityId: string): Promise<MailIdentity>;
 
         /** Create a new identity in the specified account. */
-        export function create(accountId: string, details: MailIdentity): Promise<MailIdentity>;
+        export function create(
+            accountId: string,
+            details: MailIdentity,
+        ): Promise<MailIdentity>;
 
         /**
          * Attempts to delete the requested identity. Default identities cannot
@@ -15231,7 +16251,10 @@ declare namespace browser {
         function _delete(identityId: string): Promise<any>;
 
         /** Updates the details of an identity. */
-        export function update(identityId: string, details: MailIdentity): Promise<MailIdentity>;
+        export function update(
+            identityId: string,
+            details: MailIdentity,
+        ): Promise<MailIdentity>;
 
         /**
          * Returns the default identity for the requested account, or `null` if
@@ -15240,7 +16263,10 @@ declare namespace browser {
         export function getDefault(accountId: string): Promise<MailIdentity>;
 
         /** Sets the default identity for the requested account. */
-        export function setDefault(accountId: string, identityId: string): Promise<any>;
+        export function setDefault(
+            accountId: string,
+            identityId: string,
+        ): Promise<any>;
 
         /* identities events */
         /**
@@ -15248,7 +16274,9 @@ declare namespace browser {
          * The event also fires for default identities that are created when a
          * new account is added.
          */
-        export const onCreated: WebExtEvent<(identityId: string, identity: MailIdentity) => void>;
+        export const onCreated: WebExtEvent<
+            (identityId: string, identity: MailIdentity) => void
+        >;
 
         /** Fired when an identity has been removed from an account. */
         export const onDeleted: WebExtEvent<(identityId: string) => void>;
@@ -15258,7 +16286,9 @@ declare namespace browser {
          * The returned {@link identities.MailIdentity} includes only the changed
          * values.
          */
-        export const onUpdated: WebExtEvent<(identityId: string, changedValues: MailIdentity) => void>;
+        export const onUpdated: WebExtEvent<
+            (identityId: string, changedValues: MailIdentity) => void
+        >;
     }
 
     /**
@@ -15341,7 +16371,10 @@ declare namespace browser {
          */
         export type _MailTabSortOrder = "none" | "ascending" | "descending";
 
-        export type _MailTabViewType = "ungrouped" | "groupedByThread" | "groupedBySortType";
+        export type _MailTabViewType =
+            | "ungrouped"
+            | "groupedByThread"
+            | "groupedBySortType";
 
         export type _MailTabLayout = "standard" | "wide" | "vertical";
 
@@ -15383,16 +16416,25 @@ declare namespace browser {
             | "correspondent";
 
         /** Sorts the list of messages. `sortType` must also be given. */
-        export type _UpdateUpdatePropertiesSortOrder = "none" | "ascending" | "descending";
+        export type _UpdateUpdatePropertiesSortOrder =
+            | "none"
+            | "ascending"
+            | "descending";
 
-        export type _UpdateUpdatePropertiesViewType = "ungrouped" | "groupedByThread" | "groupedBySortType";
+        export type _UpdateUpdatePropertiesViewType =
+            | "ungrouped"
+            | "groupedByThread"
+            | "groupedBySortType";
 
         /**
          * Sets the arrangement of the folder pane, message list pane, and
          * message display pane. Note that setting this applies it to all mail
          * tabs.
          */
-        export type _UpdateUpdatePropertiesLayout = "standard" | "wide" | "vertical";
+        export type _UpdateUpdatePropertiesLayout =
+            | "standard"
+            | "wide"
+            | "vertical";
 
         export interface _UpdateUpdateProperties {
             /**
@@ -15461,19 +16503,26 @@ declare namespace browser {
          *
          * @param tabId Defaults to the active tab of the current window.
          */
-        export function update(tabId: number, updateProperties: _UpdateUpdateProperties): Promise<any>;
+        export function update(
+            tabId: number,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<any>;
         /**
          * Modifies the properties of a mail tab. Properties that are not
          * specified in `updateProperties` are not modified.
          */
-        export function update(updateProperties: _UpdateUpdateProperties): Promise<any>;
+        export function update(
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<any>;
 
         /**
          * Lists the selected messages in the current folder.
          *
          * @param [tabId] Defaults to the active tab of the current window.
          */
-        export function getSelectedMessages(tabId?: number): Promise<messages.MessageList>;
+        export function getSelectedMessages(
+            tabId?: number,
+        ): Promise<messages.MessageList>;
 
         /**
          * Selects none, one or multiple messages.
@@ -15485,7 +16534,10 @@ declare namespace browser {
          * if they belong to different folders. Array can be empty to deselect
          * any currently selected message.
          */
-        export function setSelectedMessages(tabId: number, messageIds: number[]): Promise<any>;
+        export function setSelectedMessages(
+            tabId: number,
+            messageIds: number[],
+        ): Promise<any>;
         /**
          * Selects none, one or multiple messages.
          *
@@ -15505,7 +16557,9 @@ declare namespace browser {
             tabId: number,
             properties: _SetQuickFilterProperties,
         ): Promise<any>; /** Sets the Quick Filter user interface based on the options specified. */
-        export function setQuickFilter(properties: _SetQuickFilterProperties): Promise<any>;
+        export function setQuickFilter(
+            properties: _SetQuickFilterProperties,
+        ): Promise<any>;
 
         /* mailTabs events */
         /** Fired when the displayed folder changes in any mail tab. */
@@ -15657,7 +16711,9 @@ declare namespace browser {
              * composed. The <permission>messagesRead</permission> permission is
              * required to return attachments of displayed messages.
              */
-            attachments?: Array<compose.ComposeAttachment | messages.MessageAttachment> | undefined;
+            attachments?:
+                | Array<compose.ComposeAttachment | messages.MessageAttachment>
+                | undefined;
         }
 
         /** Information sent when a context menu item is clicked. */
@@ -15756,7 +16812,9 @@ declare namespace browser {
              * composed. The <permission>messagesRead</permission> permission is
              * required to return attachments of displayed messages.
              */
-            attachments?: Array<compose.ComposeAttachment | messages.MessageAttachment> | undefined;
+            attachments?:
+                | Array<compose.ComposeAttachment | messages.MessageAttachment>
+                | undefined;
         }
 
         /** An identifier of the clicked Thunderbird UI element, if any. */
@@ -15768,7 +16826,12 @@ declare namespace browser {
             | "composeReplyTo"
             | "composeNewsgroupTo";
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         /** An identifier of the clicked Thunderbird UI element, if any. */
         export type _OnClickDataFieldId =
@@ -15926,7 +16989,10 @@ declare namespace browser {
          *
          * @returns The ID of the newly created item.
          */
-        export function create(createProperties: _CreateCreateProperties, callback?: () => void): number | string;
+        export function create(
+            createProperties: _CreateCreateProperties,
+            callback?: () => void,
+        ): number | string;
 
         /**
          * Updates a previously created context menu item.
@@ -15936,7 +17002,10 @@ declare namespace browser {
          * @param updateProperties The properties to update. Accepts the same
          * values as the create function.
          */
-        export function update(id: number | string, updateProperties: _UpdateUpdateProperties): Promise<void>;
+        export function update(
+            id: number | string,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<void>;
 
         /**
          * Removes a context menu item.
@@ -15953,7 +17022,9 @@ declare namespace browser {
          * default menu. This should be called during a contextmenu event
          * handler, and only applies to the menu that opens after this event.
          */
-        export function overrideContext(contextOptions: _OverrideContextContextOptions): void;
+        export function overrideContext(
+            contextOptions: _OverrideContextContextOptions,
+        ): void;
 
         /**
          * Updates the extension items in the shown menu, including changes that
@@ -15972,7 +17043,9 @@ declare namespace browser {
          * {@link menus.onClicked} events.
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        export function getTargetElement(targetElementId: number): Element | void;
+        export function getTargetElement(
+            targetElementId: number,
+        ): Element | void;
 
         /* menus events */
         /**
@@ -15985,7 +17058,9 @@ declare namespace browser {
          * @param [tab] The details of the tab where the click took place. If the
          * click did not take place in a tab, this parameter will be missing.
          */
-        export const onClicked: WebExtEvent<(info: OnClickData, tab?: tabs.Tab) => void>;
+        export const onClicked: WebExtEvent<
+            (info: OnClickData, tab?: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a menu is shown. The extension can add, modify or remove
@@ -15996,7 +17071,9 @@ declare namespace browser {
          *
          * @param tab The details of the tab where the menu was opened.
          */
-        export const onShown: WebExtEvent<(info: OnShowData, tab: tabs.Tab) => void>;
+        export const onShown: WebExtEvent<
+            (info: OnShowData, tab: tabs.Tab) => void
+        >;
 
         /**
          * Fired when a menu is hidden. This event is only fired if onShown has
@@ -16060,14 +17137,18 @@ declare namespace browser {
          * tab itself is currently not visible). It returns `null` if no messages
          * are displayed, or if multiple messages are displayed.
          */
-        export function getDisplayedMessage(tabId: number): Promise<messages.MessageHeader | null>;
+        export function getDisplayedMessage(
+            tabId: number,
+        ): Promise<messages.MessageHeader | null>;
 
         /**
          * Gets an array of the currently displayed messages in the specified tab
          * (even if the tab itself is currently not visible). The array is empty
          * if no messages are displayed.
          */
-        export function getDisplayedMessages(tabId: number): Promise<messages.MessageHeader[]>;
+        export function getDisplayedMessages(
+            tabId: number,
+        ): Promise<messages.MessageHeader[]>;
 
         /**
          * Opens a message in a new tab or in a new window.
@@ -16075,21 +17156,27 @@ declare namespace browser {
          * @param openProperties Settings for opening the message. Exactly one of
          * messageId or headerMessageId must be specified.
          */
-        export function open(openProperties: _OpenOpenProperties): Promise<tabs.Tab>;
+        export function open(
+            openProperties: _OpenOpenProperties,
+        ): Promise<tabs.Tab>;
 
         /* messageDisplay events */
         /**
          * Fired when a message is displayed, whether in a 3-pane tab, a message
          * tab, or a message window.
          */
-        export const onMessageDisplayed: WebExtEvent<(tab: tabs.Tab, message: messages.MessageHeader) => void>;
+        export const onMessageDisplayed: WebExtEvent<
+            (tab: tabs.Tab, message: messages.MessageHeader) => void
+        >;
 
         /**
          * Fired when either a single message is displayed or when multiple
          * messages are displayed, whether in a 3-pane tab, a message tab, or a
          * message window.
          */
-        export const onMessagesDisplayed: WebExtEvent<(tab: tabs.Tab, messages: messages.MessageHeader[]) => void>;
+        export const onMessagesDisplayed: WebExtEvent<
+            (tab: tabs.Tab, messages: messages.MessageHeader[]) => void
+        >;
     }
 
     /**
@@ -16142,7 +17229,12 @@ declare namespace browser {
             button?: number | undefined;
         }
 
-        export type _OnClickDataModifiers = "Shift" | "Alt" | "Command" | "Ctrl" | "MacCtrl";
+        export type _OnClickDataModifiers =
+            | "Shift"
+            | "Alt"
+            | "Command"
+            | "Ctrl"
+            | "MacCtrl";
 
         export interface _SetTitleDetails {
             /**
@@ -16371,16 +17463,24 @@ declare namespace browser {
          * Sets the badge text for the messageDisplayAction button. The badge is
          * displayed on top of the icon.
          */
-        export function setBadgeText(details: _SetBadgeTextDetails): Promise<void>;
+        export function setBadgeText(
+            details: _SetBadgeTextDetails,
+        ): Promise<void>;
 
         /** Gets the badge text of the messageDisplayAction button. */
-        export function getBadgeText(details: _GetBadgeTextDetails): Promise<string>;
+        export function getBadgeText(
+            details: _GetBadgeTextDetails,
+        ): Promise<string>;
 
         /** Sets the background color for the badge. */
-        export function setBadgeBackgroundColor(details: _SetBadgeBackgroundColorDetails): Promise<void>;
+        export function setBadgeBackgroundColor(
+            details: _SetBadgeBackgroundColorDetails,
+        ): Promise<void>;
 
         /** Gets the badge background color of the messageDisplayAction button. */
-        export function getBadgeBackgroundColor(details: _GetBadgeBackgroundColorDetails): Promise<ColorArray>;
+        export function getBadgeBackgroundColor(
+            details: _GetBadgeBackgroundColorDetails,
+        ): Promise<ColorArray>;
 
         /**
          * Enables the messageDisplayAction button for a tab. By default, a
@@ -16411,7 +17511,9 @@ declare namespace browser {
          * not fire if the messageDisplayAction has a popup. This is a user input
          * event handler. For asynchronous listeners some restrictions apply.
          */
-        export const onClicked: WebExtEvent<(tab: tabs.Tab, info?: OnClickData) => void>;
+        export const onClicked: WebExtEvent<
+            (tab: tabs.Tab, info?: OnClickData) => void
+        >;
     }
 
     /**
@@ -16690,7 +17792,9 @@ declare namespace browser {
          * [how-to/messageLists](https://webextension-api.thunderbird.net/en/stable/how-to/messageLists.html)
          * for more information.
          */
-        export function continueList(messageListId: string): Promise<MessageList>;
+        export function continueList(
+            messageListId: string,
+        ): Promise<MessageList>;
 
         /** Returns a specified message. */
         export function get(messageId: number): Promise<MessageHeader>;
@@ -16723,13 +17827,18 @@ declare namespace browser {
         export function getRaw(messageId: number): Promise<string>;
 
         /** Lists the attachments of a message. */
-        export function listAttachments(messageId: number): Promise<MessageAttachment[]>;
+        export function listAttachments(
+            messageId: number,
+        ): Promise<MessageAttachment[]>;
 
         /**
          * Gets the content of a {@link messages.MessageAttachment} as a {@link File}
          * object.
          */
-        export function getAttachmentFile(messageId: number, partName: string): Promise<File>;
+        export function getAttachmentFile(
+            messageId: number,
+            partName: string,
+        ): Promise<File>;
 
         /**
          * Gets all messages that have the specified properties, or all messages
@@ -16741,7 +17850,10 @@ declare namespace browser {
          * Marks or unmarks a message as junk, read, flagged, or tagged. Updating
          * external messages will throw an _ExtensionError_.
          */
-        export function update(messageId: number, newProperties: MessageProperties): Promise<any>;
+        export function update(
+            messageId: number,
+            newProperties: MessageProperties,
+        ): Promise<any>;
 
         /**
          * Moves messages to a specified folder. If the messages cannot be
@@ -16752,7 +17864,10 @@ declare namespace browser {
          *
          * @param destination The folder to move the messages to.
          */
-        export function move(messageIds: number[], destination: folders.MailFolder): Promise<any>;
+        export function move(
+            messageIds: number[],
+            destination: folders.MailFolder,
+        ): Promise<any>;
 
         /**
          * Copies messages to a specified folder.
@@ -16761,7 +17876,10 @@ declare namespace browser {
          *
          * @param destination The folder to copy the messages to.
          */
-        export function copy(messageIds: number[], destination: folders.MailFolder): Promise<any>;
+        export function copy(
+            messageIds: number[],
+            destination: folders.MailFolder,
+        ): Promise<any>;
 
         /**
          * Deletes messages permanently, or moves them to the trash folder
@@ -16779,7 +17897,10 @@ declare namespace browser {
          * @param [skipTrash] If true, the message will be deleted permanently,
          * regardless of the account's deletion behavior settings.
          */
-        function _delete(messageIds: number[], skipTrash?: boolean): Promise<any>;
+        function _delete(
+            messageIds: number[],
+            skipTrash?: boolean,
+        ): Promise<any>;
 
         /**
          * Imports a message into a local Thunderbird folder. To import a message
@@ -16820,14 +17941,21 @@ declare namespace browser {
          *
          * @param color Tag color in hex format (i.e.: #000080 for navy blue)
          */
-        export function createTag(key: string, tag: string, color: string): Promise<any>;
+        export function createTag(
+            key: string,
+            tag: string,
+            color: string,
+        ): Promise<any>;
 
         /**
          * Updates a message tag.
          *
          * @param key Unique tag identifier.
          */
-        export function updateTag(key: string, updateProperties: _UpdateTagUpdateProperties): Promise<any>;
+        export function updateTag(
+            key: string,
+            updateProperties: _UpdateTagUpdateProperties,
+        ): Promise<any>;
 
         /**
          * Deletes a message tag, removing it from the list of known tags. Its
@@ -16839,13 +17967,22 @@ declare namespace browser {
 
         /* messages events */
         /** Fired when one or more properties of a message have been updated. */
-        export const onUpdated: WebExtEvent<(message: MessageHeader, changedProperties: MessageProperties) => void>;
+        export const onUpdated: WebExtEvent<
+            (
+                message: MessageHeader,
+                changedProperties: MessageProperties,
+            ) => void
+        >;
 
         /** Fired when messages have been moved. */
-        export const onMoved: WebExtEvent<(originalMessages: MessageList, movedMessages: MessageList) => void>;
+        export const onMoved: WebExtEvent<
+            (originalMessages: MessageList, movedMessages: MessageList) => void
+        >;
 
         /** Fired when messages have been copied. */
-        export const onCopied: WebExtEvent<(originalMessages: MessageList, copiedMessages: MessageList) => void>;
+        export const onCopied: WebExtEvent<
+            (originalMessages: MessageList, copiedMessages: MessageList) => void
+        >;
 
         /** Fired when messages have been permanently deleted. */
         export const onDeleted: WebExtEvent<(messages: MessageList) => void>;
@@ -16854,7 +17991,9 @@ declare namespace browser {
          * Fired when a new message is received, and has been through junk
          * classification and message filters.
          */
-        export const onNewMailReceived: WebExtEvent<(folder: folders.MailFolder, messages: MessageList) => void>;
+        export const onNewMailReceived: WebExtEvent<
+            (folder: folders.MailFolder, messages: MessageList) => void
+        >;
     }
 
     /**
@@ -16924,7 +18063,10 @@ declare namespace browser {
          * @param properties Properties of the new button. The `url` is
          * mandatory.
          */
-        export function addButton(id: string, properties: ButtonProperties): Promise<any>;
+        export function addButton(
+            id: string,
+            properties: ButtonProperties,
+        ): Promise<any>;
 
         /**
          * Removes the specified button from the spaces toolbar. Throws an
@@ -16945,7 +18087,10 @@ declare namespace browser {
          *
          * @param properties Only specified properties will be updated.
          */
-        export function updateButton(id: string, properties: ButtonProperties): Promise<any>;
+        export function updateButton(
+            id: string,
+            properties: ButtonProperties,
+        ): Promise<any>;
     }
 
     /**
@@ -17192,7 +18337,11 @@ declare namespace browser {
         }
 
         export interface _TabsOnUpdatedEvent<
-            TCallback = (tabId: number, changeInfo: _OnUpdatedChangeInfo, tab: Tab) => void,
+            TCallback = (
+                tabId: number,
+                changeInfo: _OnUpdatedChangeInfo,
+                tab: Tab,
+            ) => void,
         > {
             addListener(cb: TCallback, filter?: UpdateFilter): void;
             removeListener(cb: TCallback): void;
@@ -17256,7 +18405,10 @@ declare namespace browser {
          * @returns A port that can be used to communicate with the content
          * scripts running in the specified tab.
          */
-        export function connect(tabId: number, connectInfo?: _ConnectConnectInfo): runtime.Port;
+        export function connect(
+            tabId: number,
+            connectInfo?: _ConnectConnectInfo,
+        ): runtime.Port;
 
         /**
          * Sends a single message to the content script(s) in the specified tab,
@@ -17264,7 +18416,11 @@ declare namespace browser {
          * runtime.onMessage event is fired in each content script running in the
          * specified tab for the current extension.
          */
-        export function sendMessage(tabId: number, message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            tabId: number,
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
 
         /**
          * Creates a new content tab. Use the {@link messageDisplay_api} to open
@@ -17273,7 +18429,9 @@ declare namespace browser {
          * @param createProperties Properties for the new tab. Defaults to an
          * empty tab, if no `url` is provided.
          */
-        export function create(createProperties: _CreateCreateProperties): Promise<Tab>;
+        export function create(
+            createProperties: _CreateCreateProperties,
+        ): Promise<Tab>;
 
         /**
          * Duplicates a tab.
@@ -17296,14 +18454,19 @@ declare namespace browser {
          *
          * @param updateProperties Properties which should to be updated.
          */
-        export function update(tabId: number, updateProperties: _UpdateUpdateProperties): Promise<Tab>;
+        export function update(
+            tabId: number,
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<Tab>;
         /**
          * Modifies the properties of a tab. Properties that are not specified in
          * `updateProperties` are not modified.
          *
          * @param updateProperties Properties which should to be updated.
          */
-        export function update(updateProperties: _UpdateUpdateProperties): Promise<Tab>;
+        export function update(
+            updateProperties: _UpdateUpdateProperties,
+        ): Promise<Tab>;
 
         /**
          * Moves one or more tabs to a new position within its window, or to a
@@ -17312,7 +18475,10 @@ declare namespace browser {
          *
          * @param tabIds The tab or list of tabs to move.
          */
-        export function move(tabIds: number | number[], moveProperties: _MoveMoveProperties): Promise<Tab | Tab[]>;
+        export function move(
+            tabIds: number | number[],
+            moveProperties: _MoveMoveProperties,
+        ): Promise<Tab | Tab[]>;
 
         /**
          * Reload a tab.
@@ -17324,7 +18490,9 @@ declare namespace browser {
             tabId: number,
             reloadProperties?: _ReloadReloadProperties,
         ): Promise<void>; /** Reload a tab. */
-        export function reload(reloadProperties?: _ReloadReloadProperties): Promise<void>;
+        export function reload(
+            reloadProperties?: _ReloadReloadProperties,
+        ): Promise<void>;
 
         /**
          * Closes one or more tabs.
@@ -17342,14 +18510,19 @@ declare namespace browser {
          *
          * @param details Details of the script to run.
          */
-        export function executeScript(tabId: number, details: extensionTypes.InjectDetails): Promise<any[]>;
+        export function executeScript(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<any[]>;
         /**
          * Injects JavaScript code into a page. For details, see the programmatic
          * injection section of the content scripts doc.
          *
          * @param details Details of the script to run.
          */
-        export function executeScript(details: extensionTypes.InjectDetails): Promise<any[]>;
+        export function executeScript(
+            details: extensionTypes.InjectDetails,
+        ): Promise<any[]>;
 
         /**
          * Injects CSS into a page. For details, see the programmatic injection
@@ -17360,14 +18533,19 @@ declare namespace browser {
          *
          * @param details Details of the CSS text to insert.
          */
-        export function insertCSS(tabId: number, details: extensionTypes.InjectDetails): Promise<void>;
+        export function insertCSS(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
         /**
          * Injects CSS into a page. For details, see the programmatic injection
          * section of the content scripts doc.
          *
          * @param details Details of the CSS text to insert.
          */
-        export function insertCSS(details: extensionTypes.InjectDetails): Promise<void>;
+        export function insertCSS(
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
 
         /**
          * Removes injected CSS from a page. For details, see the programmatic
@@ -17378,14 +18556,19 @@ declare namespace browser {
          *
          * @param details Details of the CSS text to remove.
          */
-        export function removeCSS(tabId: number, details: extensionTypes.InjectDetails): Promise<void>;
+        export function removeCSS(
+            tabId: number,
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
         /**
          * Removes injected CSS from a page. For details, see the programmatic
          * injection section of the content scripts doc.
          *
          * @param details Details of the CSS text to remove.
          */
-        export function removeCSS(details: extensionTypes.InjectDetails): Promise<void>;
+        export function removeCSS(
+            details: extensionTypes.InjectDetails,
+        ): Promise<void>;
 
         /* tabs events */
         /**
@@ -17413,29 +18596,39 @@ declare namespace browser {
          * not fired for the other tabs that must move in response. This event is
          * not fired when a tab is moved between windows. For that, see {@link tabs.onDetached}.
          */
-        export const onMoved: WebExtEvent<(tabId: number, moveInfo: _OnMovedMoveInfo) => void>;
+        export const onMoved: WebExtEvent<
+            (tabId: number, moveInfo: _OnMovedMoveInfo) => void
+        >;
 
         /**
          * Fires when the active tab in a window changes. Note that the tab's URL
          * may not be set at the time this event fired, but you can listen to
          * onUpdated events to be notified when a URL is set.
          */
-        export const onActivated: WebExtEvent<(activeInfo: _OnActivatedActiveInfo) => void>;
+        export const onActivated: WebExtEvent<
+            (activeInfo: _OnActivatedActiveInfo) => void
+        >;
 
         /**
          * Fired when a tab is detached from a window, for example because it is
          * being moved between windows.
          */
-        export const onDetached: WebExtEvent<(tabId: number, detachInfo: _OnDetachedDetachInfo) => void>;
+        export const onDetached: WebExtEvent<
+            (tabId: number, detachInfo: _OnDetachedDetachInfo) => void
+        >;
 
         /**
          * Fired when a tab is attached to a window, for example because it was
          * moved between windows.
          */
-        export const onAttached: WebExtEvent<(tabId: number, attachInfo: _OnAttachedAttachInfo) => void>;
+        export const onAttached: WebExtEvent<
+            (tabId: number, attachInfo: _OnAttachedAttachInfo) => void
+        >;
 
         /** Fired when a tab is closed. */
-        export const onRemoved: WebExtEvent<(tabId: number, removeInfo: _OnRemovedRemoveInfo) => void>;
+        export const onRemoved: WebExtEvent<
+            (tabId: number, removeInfo: _OnRemovedRemoveInfo) => void
+        >;
     }
 
     /**
@@ -17463,7 +18656,9 @@ declare namespace browser {
          *
          * @param [windowId] The window for which we want the theme.
          */
-        export function getCurrent(windowId?: number): Promise<_manifest.ThemeType>;
+        export function getCurrent(
+            windowId?: number,
+        ): Promise<_manifest.ThemeType>;
 
         /**
          * Make complete updates to the theme. Resolves when the update has
@@ -17474,7 +18669,10 @@ declare namespace browser {
          *
          * @param details The properties of the theme to update.
          */
-        export function update(windowId: number, details: _manifest.ThemeType): void;
+        export function update(
+            windowId: number,
+            details: _manifest.ThemeType,
+        ): void;
         /**
          * Make complete updates to the theme. Resolves when the update has
          * completed.
@@ -17497,7 +18695,9 @@ declare namespace browser {
          *
          * @param updateInfo Details of the theme update
          */
-        export const onUpdated: WebExtEvent<(updateInfo: ThemeUpdateInfo) => void>;
+        export const onUpdated: WebExtEvent<
+            (updateInfo: ThemeUpdateInfo) => void
+        >;
     }
 
     /**
@@ -17524,7 +18724,12 @@ declare namespace browser {
             | "messageDisplay";
 
         /** The state of this window. */
-        export type WindowState = "normal" | "minimized" | "maximized" | "fullscreen" | "docked";
+        export type WindowState =
+            | "normal"
+            | "minimized"
+            | "maximized"
+            | "fullscreen"
+            | "docked";
 
         export interface Window {
             /** The ID of the window. Window IDs are unique within a session. */
@@ -17566,7 +18771,11 @@ declare namespace browser {
          * Specifies what type of window to create. Thunderbird does not support
          * `panel` and `detached_panel`, they are interpreted as `popup`.
          */
-        export type CreateType = "normal" | "popup" | "panel" | "detached_panel";
+        export type CreateType =
+            | "normal"
+            | "popup"
+            | "panel"
+            | "detached_panel";
 
         /** Specifies additional requirements for the returned windows. */
         export interface GetInfo {
@@ -17693,7 +18902,10 @@ declare namespace browser {
 
         /* windows functions */
         /** Gets details about a window. */
-        export function get(windowId: number, getInfo?: GetInfo): Promise<Window>;
+        export function get(
+            windowId: number,
+            getInfo?: GetInfo,
+        ): Promise<Window>;
 
         /** Gets the active or topmost window. */
         export function getCurrent(getInfo?: GetInfo): Promise<Window>;
@@ -17717,7 +18929,10 @@ declare namespace browser {
          * Updates the properties of a window. Specify only the properties that
          * you want to change; unspecified properties will be left unchanged.
          */
-        export function update(windowId: number, updateInfo: _UpdateUpdateInfo): Promise<Window>;
+        export function update(
+            windowId: number,
+            updateInfo: _UpdateUpdateInfo,
+        ): Promise<Window>;
 
         /** Removes (closes) a window, and all the tabs inside it. */
         export function remove(windowId: number): Promise<void>;
@@ -17899,7 +19114,10 @@ declare namespace browser {
          *
          * @param imageType The type of imageData.
          */
-        export function setImageData(imageData: ArrayBuffer, imageType: _SetImageDataImageType): Promise<void>;
+        export function setImageData(
+            imageData: ArrayBuffer,
+            imageType: _SetImageDataImageType,
+        ): Promise<void>;
     }
 
     /**
@@ -18067,7 +19285,12 @@ declare namespace browser {
          * cookie was automatically removed due to a "set" call that overwrote
          * it, "cause" will be "overwrite". Plan your response accordingly.
          */
-        export type OnChangedCause = "evicted" | "expired" | "explicit" | "expired_overwrite" | "overwrite";
+        export type OnChangedCause =
+            | "evicted"
+            | "expired"
+            | "explicit"
+            | "expired_overwrite"
+            | "overwrite";
 
         /** Details to identify the cookie being retrieved. */
         export interface _GetDetails {
@@ -18286,7 +19509,9 @@ declare namespace browser {
          *
          * @param details Information to identify the cookie to remove.
          */
-        export function remove(details: _RemoveDetails): Promise<_RemoveReturnDetails | null>;
+        export function remove(
+            details: _RemoveDetails,
+        ): Promise<_RemoveReturnDetails | null>;
 
         /** Lists all existing cookie stores. */
         export function getAllCookieStores(): Promise<CookieStore[]>;
@@ -18300,7 +19525,9 @@ declare namespace browser {
          * written with the updated values, generating a second notification with
          * "cause" "explicit".
          */
-        export const onChanged: WebExtEvent<(changeInfo: _OnChangedChangeInfo) => void>;
+        export const onChanged: WebExtEvent<
+            (changeInfo: _OnChangedChangeInfo) => void
+        >;
     }
 
     /**
@@ -18342,7 +19569,10 @@ declare namespace browser {
 
         /* dns functions */
         /** Resolves a hostname to a DNS record. */
-        export function resolve(hostname: string, flags?: ResolveFlags): Promise<DNSRecord>;
+        export function resolve(
+            hostname: string,
+            flags?: ResolveFlags,
+        ): Promise<DNSRecord>;
     }
 
     /**
@@ -18354,7 +19584,10 @@ declare namespace browser {
      */
     export namespace downloads {
         /* downloads types */
-        export type FilenameConflictAction = "uniquify" | "overwrite" | "prompt";
+        export type FilenameConflictAction =
+            | "uniquify"
+            | "overwrite"
+            | "prompt";
 
         export type InterruptReason =
             | "FILE_FAILED"
@@ -18393,7 +19626,15 @@ declare namespace browser {
          * These string constants will never change, however the set of
          * DangerTypes may change.
          */
-        export type DangerType = "file" | "url" | "content" | "uncommon" | "host" | "unwanted" | "safe" | "accepted";
+        export type DangerType =
+            | "file"
+            | "url"
+            | "content"
+            | "uncommon"
+            | "host"
+            | "unwanted"
+            | "safe"
+            | "accepted";
 
         /**
          * _in_progress_: The download is currently receiving data from the
@@ -18758,7 +19999,10 @@ declare namespace browser {
          *
          * @param downloadId The identifier for the download.
          */
-        export function getFileIcon(downloadId: number, options?: _GetFileIconOptions): Promise<string>;
+        export function getFileIcon(
+            downloadId: number,
+            options?: _GetFileIconOptions,
+        ): Promise<string>;
 
         /** Open the downloaded file. */
         export function open(downloadId: number): Promise<void>;
@@ -18793,7 +20037,9 @@ declare namespace browser {
 
         /* downloads events */
         /** This event fires with the DownloadItem object when a download begins. */
-        export const onCreated: WebExtEvent<(downloadItem: DownloadItem) => void>;
+        export const onCreated: WebExtEvent<
+            (downloadItem: DownloadItem) => void
+        >;
 
         /**
          * Fires with the `downloadId` when a download is erased from history.
@@ -18807,7 +20053,9 @@ declare namespace browser {
          * changes, this event fires with the `downloadId` and an object
          * containing the properties that changed.
          */
-        export const onChanged: WebExtEvent<(downloadDelta: _OnChangedDownloadDelta) => void>;
+        export const onChanged: WebExtEvent<
+            (downloadDelta: _OnChangedDownloadDelta) => void
+        >;
     }
 
     /**
@@ -18879,7 +20127,11 @@ declare namespace browser {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            addRules?(eventName: string, webViewInstanceId: number, rules: Rule[]): Promise<Rule[]>;
+            addRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                rules: Rule[],
+            ): Promise<Rule[]>;
             /**
              * Returns currently registered rules.
              *
@@ -18893,7 +20145,11 @@ declare namespace browser {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            getRules?(eventName: string, webViewInstanceId: number, ruleIdentifiers?: string[]): Promise<Rule[]>;
+            getRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                ruleIdentifiers?: string[],
+            ): Promise<Rule[]>;
             /**
              * Unregisters currently registered rules.
              *
@@ -18907,7 +20163,11 @@ declare namespace browser {
              *
              * @deprecated Unsupported on Firefox at this time.
              */
-            removeRules?(eventName: string, webViewInstanceId: number, ruleIdentifiers?: string[]): Promise<void>;
+            removeRules?(
+                eventName: string,
+                webViewInstanceId: number,
+                ruleIdentifiers?: string[],
+            ): Promise<void>;
         }
 
         /**
@@ -19031,9 +20291,15 @@ declare namespace browser {
 
         export type APIEvent = "startup";
 
-        export type APIParentScope = "addon_parent" | "content_parent" | "devtools_parent";
+        export type APIParentScope =
+            | "addon_parent"
+            | "content_parent"
+            | "devtools_parent";
 
-        export type APIChildScope = "addon_child" | "content_child" | "devtools_child";
+        export type APIChildScope =
+            | "addon_child"
+            | "content_child"
+            | "devtools_child";
 
         export interface _ExperimentAPIParent {
             events?: APIEvents | undefined;
@@ -19132,7 +20398,9 @@ declare namespace browser {
          *
          * @returns Array of global objects
          */
-        export function getViews(fetchProperties?: _GetViewsFetchProperties): Window[];
+        export function getViews(
+            fetchProperties?: _GetViewsFetchProperties,
+        ): Window[];
 
         /**
          * Returns the JavaScript 'window' object for the background page running
@@ -19179,7 +20447,13 @@ declare namespace browser {
          * @deprecated Please use `runtime.onMessage`.
          */
         export const onRequest:
-            | WebExtEvent<(request: any, sender: runtime.MessageSender, sendResponse: (response?: any) => void) => void>
+            | WebExtEvent<
+                  (
+                      request: any,
+                      sender: runtime.MessageSender,
+                      sendResponse: (response?: any) => void,
+                  ) => void
+              >
             | undefined;
 
         /**
@@ -19194,7 +20468,13 @@ declare namespace browser {
          * @deprecated Please use `runtime.onMessageExternal`.
          */
         export const onRequestExternal:
-            | WebExtEvent<(request: any, sender: runtime.MessageSender, sendResponse: (response?: any) => void) => void>
+            | WebExtEvent<
+                  (
+                      request: any,
+                      sender: runtime.MessageSender,
+                      sendResponse: (response?: any) => void,
+                  ) => void
+              >
             | undefined;
     }
 
@@ -19293,14 +20573,20 @@ declare namespace browser {
 
         export type ExtensionFileOrCode =
             | {
-                file: _manifest.ExtensionURL;
-            }
+                  file: _manifest.ExtensionURL;
+              }
             | {
-                code: string;
-            };
+                  code: string;
+              };
 
         /** A plain JSON value */
-        export type PlainJSONValue = null | string | number | boolean | _PlainJSONArray | _PlainJSONObject;
+        export type PlainJSONValue =
+            | null
+            | string
+            | number
+            | boolean
+            | _PlainJSONArray
+            | _PlainJSONObject;
 
         /**
          * The area of the document to capture, in CSS pixels, relative to the
@@ -19381,7 +20667,10 @@ declare namespace browser {
          *
          * @returns Message localized for current locale.
          */
-        export function getMessage(messageName: string, substitutions?: any): string;
+        export function getMessage(
+            messageName: string,
+            substitutions?: any,
+        ): string;
 
         /**
          * Gets the browser UI language of the browser. This is different from
@@ -19396,7 +20685,9 @@ declare namespace browser {
          *
          * @param text User input string to be translated.
          */
-        export function detectLanguage(text: string): Promise<_DetectLanguageReturnResult>;
+        export function detectLanguage(
+            text: string,
+        ): Promise<_DetectLanguageReturnResult>;
     }
 
     /**
@@ -19459,7 +20750,9 @@ declare namespace browser {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export function getAuthToken(details?: _GetAuthTokenDetails): Promise<string>;
+        export function getAuthToken(
+            details?: _GetAuthTokenDetails,
+        ): Promise<string>;
 
         /**
          * Retrieves email address and obfuscated gaia id of the user signed into
@@ -19479,7 +20772,9 @@ declare namespace browser {
         ): Promise<_RemoveCachedAuthTokenReturnUserinfo>;
 
         /** Starts an auth flow at the specified URL. */
-        export function launchWebAuthFlow(details: _LaunchWebAuthFlowDetails): Promise<string>;
+        export function launchWebAuthFlow(
+            details: _LaunchWebAuthFlowDetails,
+        ): Promise<string>;
 
         /**
          * Generates a redirect URL to be used in {@link launchWebAuthFlow}.
@@ -19494,7 +20789,9 @@ declare namespace browser {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onSignInChanged: WebExtEvent<(account: AccountInfo, signedIn: boolean) => void> | undefined;
+        export const onSignInChanged:
+            | WebExtEvent<(account: AccountInfo, signedIn: boolean) => void>
+            | undefined;
     }
 
     /**
@@ -19520,7 +20817,9 @@ declare namespace browser {
          * detectionIntervalInSeconds seconds have elapsed since the last user
          * input detected.
          */
-        export function queryState(detectionIntervalInSeconds: number): Promise<IdleState>;
+        export function queryState(
+            detectionIntervalInSeconds: number,
+        ): Promise<IdleState>;
 
         /**
          * Sets the interval, in seconds, used to determine when the system is in
@@ -19568,7 +20867,9 @@ declare namespace browser {
         }
 
         /** A reason the item is disabled. */
-        export type ExtensionDisabledReason = "unknown" | "permissions_increase";
+        export type ExtensionDisabledReason =
+            | "unknown"
+            | "permissions_increase";
 
         /** The type of this extension, 'extension' or 'theme'. */
         export type ExtensionType = "extension" | "theme";
@@ -19581,7 +20882,11 @@ declare namespace browser {
          * machine,
          * `other`: The extension was installed by other means.
          */
-        export type ExtensionInstallType = "development" | "normal" | "sideload" | "other";
+        export type ExtensionInstallType =
+            | "development"
+            | "normal"
+            | "sideload"
+            | "other";
 
         /** Information about an installed extension. */
         export interface ExtensionInfo {
@@ -19664,7 +20969,9 @@ declare namespace browser {
         export function get(id: _manifest.ExtensionID): Promise<ExtensionInfo>;
 
         /** Installs and enables a theme extension from the given url. */
-        export function install(options: _InstallOptions): Promise<_InstallReturnResult>;
+        export function install(
+            options: _InstallOptions,
+        ): Promise<_InstallReturnResult>;
 
         /**
          * Returns information about the calling extension. Note: This function
@@ -19677,7 +20984,9 @@ declare namespace browser {
          * Uninstalls the calling extension. Note: This function can be used
          * without requesting the 'management' permission in the manifest.
          */
-        export function uninstallSelf(options?: _UninstallSelfOptions): Promise<void>;
+        export function uninstallSelf(
+            options?: _UninstallSelfOptions,
+        ): Promise<void>;
 
         /**
          * Enables or disables the given add-on.
@@ -19833,13 +21142,18 @@ declare namespace browser {
          *
          * @param options Contents of the notification.
          */
-        export function create(notificationId: string, options: CreateNotificationOptions): Promise<string>;
+        export function create(
+            notificationId: string,
+            options: CreateNotificationOptions,
+        ): Promise<string>;
         /**
          * Creates and displays a notification.
          *
          * @param options Contents of the notification.
          */
-        export function create(options: CreateNotificationOptions): Promise<string>;
+        export function create(
+            options: CreateNotificationOptions,
+        ): Promise<string>;
 
         /**
          * Updates an existing notification.
@@ -19850,7 +21164,10 @@ declare namespace browser {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export function update(notificationId: string, options: UpdateNotificationOptions): Promise<boolean>;
+        export function update(
+            notificationId: string,
+            options: UpdateNotificationOptions,
+        ): Promise<boolean>;
 
         /**
          * Clears an existing notification.
@@ -19860,7 +21177,9 @@ declare namespace browser {
         export function clear(notificationId: string): Promise<boolean>;
 
         /** Retrieves all the notifications. */
-        export function getAll(): Promise<{ [key: string]: CreateNotificationOptions }>;
+        export function getAll(): Promise<{
+            [key: string]: CreateNotificationOptions;
+        }>;
 
         /**
          * Retrieves whether the user has enabled notifications from this app or
@@ -19879,7 +21198,9 @@ declare namespace browser {
          *
          * @param byUser True if the notification was closed by the user.
          */
-        export const onClosed: WebExtEvent<(notificationId: string, byUser: boolean) => void>;
+        export const onClosed: WebExtEvent<
+            (notificationId: string, byUser: boolean) => void
+        >;
 
         /**
          * Fired when the user clicked in a non-button area of the notification.
@@ -19895,7 +21216,9 @@ declare namespace browser {
          *
          * @param buttonIndex The index of the button clicked by the user.
          */
-        export const onButtonClicked: WebExtEvent<(notificationId: string, buttonIndex: number) => void>;
+        export const onButtonClicked: WebExtEvent<
+            (notificationId: string, buttonIndex: number) => void
+        >;
 
         /**
          * Fired when the user changes the permission level.
@@ -19904,7 +21227,9 @@ declare namespace browser {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onPermissionLevelChanged: WebExtEvent<(level: PermissionLevel) => void> | undefined;
+        export const onPermissionLevelChanged:
+            | WebExtEvent<(level: PermissionLevel) => void>
+            | undefined;
 
         /**
          * Fired when the user clicked on a link for the app's notification
@@ -19979,7 +21304,10 @@ declare namespace browser {
         export function isModuleInstalled(name: string): Promise<boolean>;
 
         /** Install a PKCS#11 module with a given name */
-        export function installModule(name: string, flags?: number): Promise<void>;
+        export function installModule(
+            name: string,
+            flags?: number,
+        ): Promise<void>;
 
         /** Remove an installed PKCS#11 module from firefox */
         export function uninstallModule(name: string): Promise<void>;
@@ -20038,13 +21366,26 @@ declare namespace browser {
             }
 
             /** The mode for https-only mode. */
-            export type HTTPSOnlyModeOption = "always" | "private_browsing" | "never";
+            export type HTTPSOnlyModeOption =
+                | "always"
+                | "private_browsing"
+                | "never";
 
             /** The minimum TLS version supported. */
-            export type _TlsVersionRestrictionConfigMinimum = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+            export type _TlsVersionRestrictionConfigMinimum =
+                | "TLSv1"
+                | "TLSv1.1"
+                | "TLSv1.2"
+                | "TLSv1.3"
+                | "unknown";
 
             /** The maximum TLS version supported. */
-            export type _TlsVersionRestrictionConfigMaximum = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+            export type _TlsVersionRestrictionConfigMaximum =
+                | "TLSv1"
+                | "TLSv1.1"
+                | "TLSv1.2"
+                | "TLSv1.3"
+                | "unknown";
 
             /* privacy.network properties */
             /**
@@ -20118,7 +21459,10 @@ declare namespace browser {
         export namespace websites {
             /* privacy.websites types */
             /** The mode for tracking protection. */
-            export type TrackingProtectionModeOption = "always" | "never" | "private_browsing";
+            export type TrackingProtectionModeOption =
+                | "always"
+                | "never"
+                | "private_browsing";
 
             /** The settings for cookies. */
             export interface CookieConfig {
@@ -20268,7 +21612,12 @@ declare namespace browser {
         }
 
         /** The type of proxy to use. */
-        export type _ProxyConfigProxyType = "none" | "autoDetect" | "system" | "manual" | "autoConfig";
+        export type _ProxyConfigProxyType =
+            | "none"
+            | "autoDetect"
+            | "system"
+            | "manual"
+            | "autoConfig";
 
         export interface _OnRequestDetails {
             /**
@@ -20330,8 +21679,14 @@ declare namespace browser {
             thirdParty: boolean;
         }
 
-        export interface _ProxyOnRequestEvent<TCallback = (details: _OnRequestDetails) => void> {
-            addListener(cb: TCallback, filter: webRequest.RequestFilter, extraInfoSpec?: Array<"requestHeaders">): void;
+        export interface _ProxyOnRequestEvent<
+            TCallback = (details: _OnRequestDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: webRequest.RequestFilter,
+                extraInfoSpec?: Array<"requestHeaders">,
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -20411,10 +21766,24 @@ declare namespace browser {
         }
 
         /** The operating system the browser is running on. */
-        export type PlatformOs = "mac" | "win" | "android" | "cros" | "linux" | "openbsd";
+        export type PlatformOs =
+            | "mac"
+            | "win"
+            | "android"
+            | "cros"
+            | "linux"
+            | "openbsd";
 
         /** The machine's processor architecture. */
-        export type PlatformArch = "aarch64" | "arm" | "ppc64" | "s390x" | "sparc64" | "x86-32" | "x86-64" | "noarch";
+        export type PlatformArch =
+            | "aarch64"
+            | "arm"
+            | "ppc64"
+            | "s390x"
+            | "sparc64"
+            | "x86-32"
+            | "x86-64"
+            | "noarch";
 
         /** An object containing information about the current platform. */
         export interface PlatformInfo {
@@ -20444,7 +21813,10 @@ declare namespace browser {
         }
 
         /** Result of the update check. */
-        export type RequestUpdateCheckStatus = "throttled" | "no_update" | "update_available";
+        export type RequestUpdateCheckStatus =
+            | "throttled"
+            | "no_update"
+            | "update_available";
 
         /** The reason that this event is being dispatched. */
         export type OnInstalledReason = "install" | "update" | "browser_update";
@@ -20457,7 +21829,10 @@ declare namespace browser {
          * the system runs for more than the permitted uptime set in the
          * enterprise policy.
          */
-        export type OnRestartRequiredReason = "app_update" | "os_update" | "periodic";
+        export type OnRestartRequiredReason =
+            | "app_update"
+            | "os_update"
+            | "periodic";
 
         export type PlatformNaclArch = "arm" | "x86-32" | "x86-64";
 
@@ -20633,7 +22008,10 @@ declare namespace browser {
          * port's `runtime.Port onDisconnect` event is fired if the extension/app
          * does not exist.
          */
-        export function connect(extensionId: string, connectInfo?: _ConnectConnectInfo): Port;
+        export function connect(
+            extensionId: string,
+            connectInfo?: _ConnectConnectInfo,
+        ): Port;
         /**
          * Attempts to connect to connect listeners within an extension/app (such
          * as the background page), or other extensions/apps. This is useful for
@@ -20674,7 +22052,11 @@ declare namespace browser {
          * If omitted, the message will be sent to your own extension/app.
          * Required if sending messages from a web page for web messaging.
          */
-        export function sendMessage(extensionId: string, message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            extensionId: string,
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
         /**
          * Sends a single message to event listeners within your extension/app or
          * a different extension/app. Similar to `runtime.connect` but only sends
@@ -20684,7 +22066,10 @@ declare namespace browser {
          * extensions cannot send messages to content scripts using this method.
          * To send messages to content scripts, use `tabs.sendMessage`.
          */
-        export function sendMessage(message: any, options?: _SendMessageOptions): Promise<any>;
+        export function sendMessage(
+            message: any,
+            options?: _SendMessageOptions,
+        ): Promise<any>;
 
         /**
          * Send a single message to a native application.
@@ -20696,7 +22081,10 @@ declare namespace browser {
          * @param message The message that will be passed to the native messaging
          * host.
          */
-        export function sendNativeMessage(application: string, message: any): Promise<any>;
+        export function sendNativeMessage(
+            application: string,
+            message: any,
+        ): Promise<any>;
 
         /** Returns information about the current browser. */
         export function getBrowserInfo(): Promise<BrowserInfo>;
@@ -20723,7 +22111,9 @@ declare namespace browser {
          * updated to a new version, and when the browser is updated to a new
          * version.
          */
-        export const onInstalled: WebExtEvent<(details: _OnInstalledDetails) => void>;
+        export const onInstalled: WebExtEvent<
+            (details: _OnInstalledDetails) => void
+        >;
 
         /**
          * Sent to the event page just before it is unloaded. This gives the
@@ -20756,7 +22146,9 @@ declare namespace browser {
          *
          * @param details The manifest details of the available update.
          */
-        export const onUpdateAvailable: WebExtEvent<(details: _OnUpdateAvailableDetails) => void>;
+        export const onUpdateAvailable: WebExtEvent<
+            (details: _OnUpdateAvailableDetails) => void
+        >;
 
         /**
          * Fired when an update for the browser is available, but isn't installed
@@ -20764,7 +22156,9 @@ declare namespace browser {
          *
          * @deprecated Please use `runtime.onRestartRequired`.
          */
-        export const onBrowserUpdateAvailable: WebExtEvent<() => void> | undefined;
+        export const onBrowserUpdateAvailable:
+            | WebExtEvent<() => void>
+            | undefined;
 
         /**
          * Fired when a connection is made from either an extension process or a
@@ -20840,7 +22234,9 @@ declare namespace browser {
          *
          * @deprecated Unsupported on Firefox at this time.
          */
-        export const onRestartRequired: WebExtEvent<(reason: OnRestartRequiredReason) => void> | undefined;
+        export const onRestartRequired:
+            | WebExtEvent<(reason: OnRestartRequiredReason) => void>
+            | undefined;
     }
 
     /**
@@ -20869,7 +22265,9 @@ declare namespace browser {
              * An empty list or object will return an empty result object. Pass in
              * `null` to get the entire contents of storage.
              */
-            get(keys?: string | string[] | { [key: string]: any }): Promise<{ [key: string]: any }>;
+            get(
+                keys?: string | string[] | { [key: string]: any },
+            ): Promise<{ [key: string]: any }>;
             /**
              * Gets the amount of space (in bytes) being used by one or more items.
              *
@@ -20907,7 +22305,9 @@ declare namespace browser {
              * @param changes Object mapping each key that changed to its
              * corresponding `storage.StorageChange` for that item.
              */
-            onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }) => void>;
+            onChanged: WebExtEvent<
+                (changes: { [key: string]: StorageChange }) => void
+            >;
         }
 
         export interface StorageAreaSync {
@@ -20919,7 +22319,9 @@ declare namespace browser {
              * An empty list or object will return an empty result object. Pass in
              * `null` to get the entire contents of storage.
              */
-            get(keys?: string | string[] | { [key: string]: any }): Promise<{ [key: string]: any }>;
+            get(
+                keys?: string | string[] | { [key: string]: any },
+            ): Promise<{ [key: string]: any }>;
             /**
              * Gets the amount of space (in bytes) being used by one or more items.
              *
@@ -20955,7 +22357,9 @@ declare namespace browser {
              * @param changes Object mapping each key that changed to its
              * corresponding `storage.StorageChange` for that item.
              */
-            onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }) => void>;
+            onChanged: WebExtEvent<
+                (changes: { [key: string]: StorageChange }) => void
+            >;
         }
 
         /* storage properties */
@@ -20982,7 +22386,12 @@ declare namespace browser {
          * @param areaName The name of the storage area (`"sync"`, `"local"` or
          * `"managed"`) the changes are for.
          */
-        export const onChanged: WebExtEvent<(changes: { [key: string]: StorageChange }, areaName: string) => void>;
+        export const onChanged: WebExtEvent<
+            (
+                changes: { [key: string]: StorageChange },
+                areaName: string,
+            ) => void
+        >;
     }
 
     /**
@@ -21010,7 +22419,11 @@ declare namespace browser {
          *
          * Only `regular` is supported by Firefox at this time.
          */
-        export type SettingScope = "regular" | "regular_only" | "incognito_persistent" | "incognito_session_only";
+        export type SettingScope =
+            | "regular"
+            | "regular_only"
+            | "incognito_persistent"
+            | "incognito_session_only";
 
         /**
          * One of
@@ -21188,7 +22601,9 @@ declare namespace browser {
          * `userScripts.UserScriptOptions`, and resolves to a
          * `userScripts.RegisteredUserScript` instance
          */
-        export function register(userScriptOptions: UserScriptOptions): Promise<RegisteredUserScript>;
+        export function register(
+            userScriptOptions: UserScriptOptions,
+        ): Promise<RegisteredUserScript>;
 
         /* userScripts events */
         /**
@@ -21196,7 +22611,9 @@ declare namespace browser {
          *
          * Allowed in: Content scripts only
          */
-        export const onBeforeScript: WebExtEvent<(userScript: _OnBeforeScriptUserScript) => void>;
+        export const onBeforeScript: WebExtEvent<
+            (userScript: _OnBeforeScriptUserScript) => void
+        >;
     }
 
     /**
@@ -21230,7 +22647,11 @@ declare namespace browser {
             | "keyword"
             | "keyword_generated";
 
-        export type TransitionQualifier = "client_redirect" | "server_redirect" | "forward_back" | "from_address_bar";
+        export type TransitionQualifier =
+            | "client_redirect"
+            | "server_redirect"
+            | "forward_back"
+            | "from_address_bar";
 
         export interface EventUrlFilters {
             url: events.UrlFilter[];
@@ -21330,7 +22751,9 @@ declare namespace browser {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnBeforeNavigateEvent<TCallback = (details: _OnBeforeNavigateDetails) => void> {
+        export interface _WebNavigationOnBeforeNavigateEvent<
+            TCallback = (details: _OnBeforeNavigateDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -21371,7 +22794,9 @@ declare namespace browser {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnCommittedEvent<TCallback = (details: _OnCommittedDetails) => void> {
+        export interface _WebNavigationOnCommittedEvent<
+            TCallback = (details: _OnCommittedDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -21431,7 +22856,9 @@ declare namespace browser {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnCompletedEvent<TCallback = (details: _OnCompletedDetails) => void> {
+        export interface _WebNavigationOnCompletedEvent<
+            TCallback = (details: _OnCompletedDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -21463,7 +22890,9 @@ declare namespace browser {
             timeStamp: number;
         }
 
-        export interface _WebNavigationOnErrorOccurredEvent<TCallback = (details: _OnErrorOccurredDetails) => void> {
+        export interface _WebNavigationOnErrorOccurredEvent<
+            TCallback = (details: _OnErrorOccurredDetails) => void,
+        > {
             addListener(cb: TCallback, filters?: EventUrlFilters): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -21605,14 +23034,18 @@ declare namespace browser {
          * @param details Information about the frame to retrieve information
          * about.
          */
-        export function getFrame(details: _GetFrameDetails): Promise<_GetFrameReturnDetails>;
+        export function getFrame(
+            details: _GetFrameDetails,
+        ): Promise<_GetFrameReturnDetails>;
 
         /**
          * Retrieves information about all frames of a given tab.
          *
          * @param details Information about the tab to retrieve all frames from.
          */
-        export function getAllFrames(details: _GetAllFramesDetails): Promise<_GetAllFramesReturnDetails[]>;
+        export function getAllFrames(
+            details: _GetAllFramesDetails,
+        ): Promise<_GetAllFramesReturnDetails[]>;
 
         /* webNavigation events */
         /** Fired when a navigation is about to occur. */
@@ -21661,7 +23094,9 @@ declare namespace browser {
          * Fired when the contents of the tab is replaced by a different (usually
          * previously pre-rendered) tab.
          */
-        export const onTabReplaced: WebExtEvent<(details: _OnTabReplacedDetails) => void>;
+        export const onTabReplaced: WebExtEvent<
+            (details: _OnTabReplacedDetails) => void
+        >;
 
         /**
          * Fired when the frame's history was updated to a new URL. All future
@@ -21712,7 +23147,10 @@ declare namespace browser {
 
         export type OnHeadersReceivedOptions = "blocking" | "responseHeaders";
 
-        export type OnAuthRequiredOptions = "responseHeaders" | "blocking" | "asyncBlocking";
+        export type OnAuthRequiredOptions =
+            | "responseHeaders"
+            | "blocking"
+            | "asyncBlocking";
 
         export type OnResponseStartedOptions = "responseHeaders";
 
@@ -21847,7 +23285,9 @@ declare namespace browser {
              * The type of certificate error that was overridden for this connection,
              * if any.
              */
-            overridableErrorCategory?: _SecurityInfoOverridableErrorCategory | undefined;
+            overridableErrorCategory?:
+                | _SecurityInfoOverridableErrorCategory
+                | undefined;
             /**
              * The domain name does not match the certificate domain.
              *
@@ -21869,7 +23309,9 @@ declare namespace browser {
              * `https://www.certificate-transparency.org/what-is-ct` for more
              * information.
              */
-            certificateTransparencyStatus?: CertificateTransparencyStatus | undefined;
+            certificateTransparencyStatus?:
+                | CertificateTransparencyStatus
+                | undefined;
             /** True if host uses Strict Transport Security and state is "secure". */
             hsts?: boolean | undefined;
             /** True if host uses Public Key Pinning and state is "secure". */
@@ -21996,10 +23438,19 @@ declare namespace browser {
             sha256: string;
         }
 
-        export type _SecurityInfoState = "insecure" | "weak" | "broken" | "secure";
+        export type _SecurityInfoState =
+            | "insecure"
+            | "weak"
+            | "broken"
+            | "secure";
 
         /** Protocol version if state is "secure" */
-        export type _SecurityInfoProtocolVersion = "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3" | "unknown";
+        export type _SecurityInfoProtocolVersion =
+            | "TLSv1"
+            | "TLSv1.1"
+            | "TLSv1.2"
+            | "TLSv1.3"
+            | "unknown";
 
         /**
          * The type of certificate error that was overridden for this connection,
@@ -22116,9 +23567,15 @@ declare namespace browser {
 
         export interface _WebRequestOnBeforeRequestEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnBeforeRequestDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnBeforeRequestDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeRequestOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeRequestOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22183,9 +23640,15 @@ declare namespace browser {
 
         export interface _WebRequestOnBeforeSendHeadersEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnBeforeSendHeadersDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnBeforeSendHeadersDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeSendHeadersOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeSendHeadersOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22245,8 +23708,14 @@ declare namespace browser {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnSendHeadersEvent<TCallback = (details: _OnSendHeadersDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnSendHeadersOptions[]): void;
+        export interface _WebRequestOnSendHeadersEvent<
+            TCallback = (details: _OnSendHeadersDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnSendHeadersOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22315,9 +23784,15 @@ declare namespace browser {
 
         export interface _WebRequestOnHeadersReceivedEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnHeadersReceivedDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnHeadersReceivedDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnHeadersReceivedOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnHeadersReceivedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22401,9 +23876,15 @@ declare namespace browser {
 
         export interface _WebRequestOnAuthRequiredEvent<
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            TCallback = (details: _OnAuthRequiredDetails) => BlockingResponse | Promise<BlockingResponse> | void,
+            TCallback = (
+                details: _OnAuthRequiredDetails,
+            ) => BlockingResponse | Promise<BlockingResponse> | void,
         > {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnAuthRequiredOptions[]): void;
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnAuthRequiredOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22478,8 +23959,14 @@ declare namespace browser {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnResponseStartedEvent<TCallback = (details: _OnResponseStartedDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnResponseStartedOptions[]): void;
+        export interface _WebRequestOnResponseStartedEvent<
+            TCallback = (details: _OnResponseStartedDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnResponseStartedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22556,8 +24043,14 @@ declare namespace browser {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnBeforeRedirectEvent<TCallback = (details: _OnBeforeRedirectDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnBeforeRedirectOptions[]): void;
+        export interface _WebRequestOnBeforeRedirectEvent<
+            TCallback = (details: _OnBeforeRedirectDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnBeforeRedirectOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22642,8 +24135,14 @@ declare namespace browser {
             responseSize: number;
         }
 
-        export interface _WebRequestOnCompletedEvent<TCallback = (details: _OnCompletedDetails) => void> {
-            addListener(cb: TCallback, filter: RequestFilter, extraInfoSpec?: OnCompletedOptions[]): void;
+        export interface _WebRequestOnCompletedEvent<
+            TCallback = (details: _OnCompletedDetails) => void,
+        > {
+            addListener(
+                cb: TCallback,
+                filter: RequestFilter,
+                extraInfoSpec?: OnCompletedOptions[],
+            ): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
         }
@@ -22714,7 +24213,9 @@ declare namespace browser {
             thirdParty: boolean;
         }
 
-        export interface _WebRequestOnErrorOccurredEvent<TCallback = (details: _OnErrorOccurredDetails) => void> {
+        export interface _WebRequestOnErrorOccurredEvent<
+            TCallback = (details: _OnErrorOccurredDetails) => void,
+        > {
             addListener(cb: TCallback, filter: RequestFilter): void;
             removeListener(cb: TCallback): void;
             hasListener(cb: TCallback): boolean;
@@ -22743,7 +24244,10 @@ declare namespace browser {
          * Retrieves the security information for the request. Returns a promise
          * that will resolve to a SecurityInfo object.
          */
-        export function getSecurityInfo(requestId: string, options?: _GetSecurityInfoOptions): Promise<SecurityInfo>;
+        export function getSecurityInfo(
+            requestId: string,
+            options?: _GetSecurityInfoOptions,
+        ): Promise<SecurityInfo>;
 
         /* webRequest events */
         /**

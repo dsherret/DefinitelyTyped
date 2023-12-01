@@ -51,7 +51,12 @@ declare namespace echarts {
             /**
              * whether to repeat texture, whose value can be repeat-x, repeat-y, or no-repeat
              */
-            repeat?: "repeat" | "repeat-x" | "repeat-y" | "no-repeat" | undefined;
+            repeat?:
+                | "repeat"
+                | "repeat-x"
+                | "repeat-y"
+                | "no-repeat"
+                | undefined;
         }
 
         type ColorStops = Array<{

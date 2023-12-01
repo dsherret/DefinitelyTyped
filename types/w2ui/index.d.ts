@@ -19,7 +19,9 @@ declare namespace W2UI {
         target: string;
     }
 
-    type W2EventHandler = ((e: W2Event) => void) | ((id: string, e: W2Event) => void);
+    type W2EventHandler =
+        | ((e: W2Event) => void)
+        | ((id: string, e: W2Event) => void);
 
     /* Primitives (first alphabetically, then by documentation order) */
 
@@ -35,7 +37,14 @@ declare namespace W2UI {
         type?: string | undefined;
     }
 
-    type W2Object = W2Layout | W2Grid | W2Toolbar | W2Sidebar | W2Tabs | W2Form | W2Popup;
+    type W2Object =
+        | W2Layout
+        | W2Grid
+        | W2Toolbar
+        | W2Sidebar
+        | W2Tabs
+        | W2Form
+        | W2Popup;
 
     interface W2Panel {
         content?: string | JQuery | undefined;
@@ -79,15 +88,28 @@ declare namespace W2UI {
         resizer: number;
         tmp: Object;
         content(type: string): HTMLElement[] | W2Object;
-        content(type: string, content: HTMLElement | Object, transition?: string): void;
+        content(
+            type: string,
+            content: HTMLElement | Object,
+            transition?: string,
+        ): void;
         el(type: string): HTMLElement;
         get(type: string): W2Panel;
         hide(type: string, immediate?: boolean): void;
         hideTabs(type: string): void;
         hideToolbar(type: string): void;
         html(type: string): string;
-        html(type: string, content?: string | Object, transition?: string): void;
-        load(type: string, url: string, transition?: string, onLoad?: Function): void;
+        html(
+            type: string,
+            content?: string | Object,
+            transition?: string,
+        ): void;
+        load(
+            type: string,
+            url: string,
+            transition?: string,
+            onLoad?: Function,
+        ): void;
         lock(panel: string, message: string, showSpinner?: boolean): void;
         set(type: string, panel: Object): void;
         show(type: string, immediate?: boolean): void;
@@ -147,7 +169,10 @@ declare namespace W2UI {
         url: string;
         add(record: W2Grid.Records | W2Grid.Records[]): number;
         addColumn(column: W2Grid.Columns | W2Grid.Columns[]): number;
-        addColumn(before: string | number, column: W2Grid.Columns | W2Grid.Columns[]): number;
+        addColumn(
+            before: string | number,
+            column: W2Grid.Columns | W2Grid.Columns[],
+        ): number;
         addRange(range: W2Grid.Ranges | W2Grid.Ranges[]): number;
         addSearch(search: Object | Object[]): number;
         addSearch(before: string | number, search: Object | Object[]): number;
@@ -155,26 +180,48 @@ declare namespace W2UI {
         click(recid: string, event?: Object): void;
         collapse(recid: string): boolean;
         columnClick(field: string, event?: Object): boolean;
-        columnOnOff(el: HTMLElement, event: Object, field: string, value: number): void;
+        columnOnOff(
+            el: HTMLElement,
+            event: Object,
+            field: string,
+            value: number,
+        ): void;
         contextMenu(recid: string, event?: Object): void;
         copy(): string;
         dblClick(recid: string, event?: Object): void;
         delete(force: boolean): void;
-        editField(recid: string, column: number, value?: string, event?: Object): void;
+        editField(
+            recid: string,
+            column: number,
+            value?: string,
+            event?: Object,
+        ): void;
         error(msg: string): void;
         expand(recid: string): boolean;
         find(match: Object, returnIndex?: boolean): Object[] | number[];
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         get(recid: string, returnIndex?: boolean): Object | number | void;
-        getCellHTML(index: number, columnIndex: number, summary?: boolean): string;
-        getCellValue(index: number, columnIndex: number, summary?: boolean): string;
+        getCellHTML(
+            index: number,
+            columnIndex: number,
+            summary?: boolean,
+        ): string;
+        getCellValue(
+            index: number,
+            columnIndex: number,
+            summary?: boolean,
+        ): string;
         getChanges(): Object[];
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         getColumn(field: string, returnIndex?: boolean): Object | number | void;
         getColumnsHTML(): string;
         getFooterHTML(): string;
         getRangeData(range: Object, extra?: boolean): Object[][];
-        getRecordHTML(index: number, lineNumber: number, summary?: boolean): string;
+        getRecordHTML(
+            index: number,
+            lineNumber: number,
+            summary?: boolean,
+        ): string;
         getRecordsHTML(): string;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         getSearch(field: string, returnIndex?: boolean): Object | number | void;
@@ -216,7 +263,12 @@ declare namespace W2UI {
         removeColumn(...fields: string[]): number;
         removeRange(...rangeNames: string[]): number;
         removeSearch(...fields: string[]): number;
-        request(cmd: string, params?: Object, url?: string, callback?: Function): void;
+        request(
+            cmd: string,
+            params?: Object,
+            url?: string,
+            callback?: Function,
+        ): void;
         requestComplete(status: string, cmd: string, callback?: Function): void;
         reset(noRefresh?: boolean): void;
         resizeBoxes(): void;
@@ -307,10 +359,18 @@ declare namespace W2UI {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         get(id: string, returnIndex?: boolean): Object | number | void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        get(parent: string, id: string, returnIndex?: boolean): Object | number | void;
+        get(
+            parent: string,
+            id: string,
+            returnIndex?: boolean,
+        ): Object | number | void;
         hide(...ids: string[]): number;
         insert(before: string | Object, nodes: Object | Object[]): Object;
-        insert(parent: string, before: string | Object, nodes: Object | Object[]): Object;
+        insert(
+            parent: string,
+            before: string | Object,
+            nodes: Object | Object[],
+        ): Object;
         keydown(event: Object): void;
         lock(message: string, showSpinner?: boolean): void;
         menuClick(id: string, index: number, event?: Object): void;

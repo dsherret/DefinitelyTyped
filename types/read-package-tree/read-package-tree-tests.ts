@@ -4,8 +4,12 @@ readPackageTree("../", (error, data) => {
     // done
 });
 
-readPackageTree("../", (node, kidName) => {
-    // filter
-}, (error, data) => {
-    // done
-});
+readPackageTree(
+    "../",
+    (node, kidName) => {
+        // filter
+    },
+    (error, data) => {
+        // done
+    },
+);

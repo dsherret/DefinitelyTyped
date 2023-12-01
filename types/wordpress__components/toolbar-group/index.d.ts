@@ -4,8 +4,8 @@ import DropdownMenu from "../dropdown-menu";
 import ToolbarButton from "../toolbar-button";
 
 interface ToolbarGroupProps
-    extends Omit<HTMLProps<HTMLDivElement>, "controls" | "label">, Partial<Pick<DropdownMenu.Props, "icon" | "label">>
-{
+    extends Omit<HTMLProps<HTMLDivElement>, "controls" | "label">,
+        Partial<Pick<DropdownMenu.Props, "icon" | "label">> {
     /**
      * ARIA label for dropdown menu if is collapsed.
      */
@@ -21,7 +21,10 @@ interface ToolbarGroupProps
     /**
      * The controls to render in this toolbar.
      */
-    controls?: readonly Control[] | ReadonlyArray<readonly Control[]> | undefined;
+    controls?:
+        | readonly Control[]
+        | ReadonlyArray<readonly Control[]>
+        | undefined;
 }
 type Control = ToolbarButton.Props;
 declare const ToolbarGroup: ComponentType<ToolbarGroupProps>;

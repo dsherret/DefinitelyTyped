@@ -11,7 +11,11 @@ import { Container } from "../Desktop";
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 export default class MobileGPURenderer extends BaseRenderer {
-    constructor(container: Container, three: Three, options: typeof DEFAULT_RENDERER_OPTIONS | object);
+    constructor(
+        container: Container,
+        three: Three,
+        options: typeof DEFAULT_RENDERER_OPTIONS | object,
+    );
     three: Three;
     camera: THREE.Camera;
     targetPool: Pool;

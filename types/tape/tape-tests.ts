@@ -54,7 +54,7 @@ tape(name, (test: tape.Test) => {
     var actual: any;
     var expected: any;
     var err: any;
-    var fn = function() {};
+    var fn = function () {};
     var msg: string;
     var extra: tape.AssertOptions;
     var regex: RegExp;
@@ -231,19 +231,19 @@ tape(name, (test: tape.Test) => {
     test.doesNotThrow(fn, CustomException, msg);
     test.doesNotThrow(fn, CustomException, msg, extra);
 
-    test.test(name, st => {
+    test.test(name, (st) => {
         t = st;
     });
 
-    test.test(name, async st => {
+    test.test(name, async (st) => {
         t = st;
     });
 
-    test.test(name, topts, st => {
+    test.test(name, topts, (st) => {
         t = st;
     });
 
-    test.test(name, topts, async st => {
+    test.test(name, topts, async (st) => {
         t = st;
     });
 

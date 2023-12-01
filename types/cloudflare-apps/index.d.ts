@@ -64,11 +64,16 @@ declare namespace CloudflareApps {
     }
 
     interface CloudflareAppsMethods {
-        createElement<T extends Element>(options: ElementLocation, previousElement?: T): T;
+        createElement<T extends Element>(
+            options: ElementLocation,
+            previousElement?: T,
+        ): T;
 
         matchPage(patterns: string[]): boolean;
 
-        querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
+        querySelector<K extends keyof ElementTagNameMap>(
+            selectors: K,
+        ): ElementTagNameMap[K] | null;
         querySelector(selectors: string): Element | null;
     }
 

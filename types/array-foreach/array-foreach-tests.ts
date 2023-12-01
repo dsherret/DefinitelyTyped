@@ -17,23 +17,35 @@ arrayForEach(array, (i: number, index: number, array: number[]) => {
 
 const resultThis: Array<{ i: number; that: string }> = [];
 
-arrayForEach(array, function(i) {
-    resultThis.push({
-        i: i,
-        that: this.that,
-    });
-}, { that: "jeff" });
+arrayForEach(
+    array,
+    function (i) {
+        resultThis.push({
+            i: i,
+            that: this.that,
+        });
+    },
+    { that: "jeff" },
+);
 
-arrayForEach(array, function(i, index) {
-    resultThis.push({
-        i: i + index,
-        that: this.that,
-    });
-}, { that: "jeff" });
+arrayForEach(
+    array,
+    function (i, index) {
+        resultThis.push({
+            i: i + index,
+            that: this.that,
+        });
+    },
+    { that: "jeff" },
+);
 
-arrayForEach(array, function(i, index, array) {
-    resultThis.push({
-        i: array[i],
-        that: this.that,
-    });
-}, { that: "jeff" });
+arrayForEach(
+    array,
+    function (i, index, array) {
+        resultThis.push({
+            i: array[i],
+            that: this.that,
+        });
+    },
+    { that: "jeff" },
+);

@@ -69,7 +69,7 @@ interface Animation {
     offsetx: number;
     offsety: number;
 
-    new(options: AnimationOptions): Animation;
+    new (options: AnimationOptions): Animation;
 }
 
 interface GameQuery {
@@ -142,8 +142,18 @@ interface JQuery {
     addSprite(name: string, options: SpriteOptions): JQuery;
     addGroup(name: string, options: GroupOptions): JQuery;
 
-    addTilemap(name: string, tileDescription: number[][], animationList: Animation[], options: TileMapOptions): JQuery;
-    addTilemap(name: string, tileDescription: number[][], animation: Animation, options: TileMapOptions): JQuery;
+    addTilemap(
+        name: string,
+        tileDescription: number[][],
+        animationList: Animation[],
+        options: TileMapOptions,
+    ): JQuery;
+    addTilemap(
+        name: string,
+        tileDescription: number[][],
+        animation: Animation,
+        options: TileMapOptions,
+    ): JQuery;
     addTilemap(
         name: string,
         tileDescription: (i: number, j: number) => number,

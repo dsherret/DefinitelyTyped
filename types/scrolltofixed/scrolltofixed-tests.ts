@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#mydiv").scrollToFixed();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $(".header").scrollToFixed({
-        preFixed: function() {
+        preFixed: function () {
             $(this).find("h1").css("color", "blue");
         },
-        postFixed: function() {
+        postFixed: function () {
             $(this).find("h1").css("color", "");
         },
     });
@@ -15,31 +15,34 @@ $(document).ready(function() {
     $(".footer").scrollToFixed({
         bottom: 0,
         limit: $(".footer").offset().top,
-        preFixed: function() {
+        preFixed: function () {
             $(this).find("h1").css("color", "blue");
         },
-        postFixed: function() {
+        postFixed: function () {
             $(this).find("h1").css("color", "");
         },
     });
 
     $("#summary").scrollToFixed({
         marginTop: $(".header").outerHeight() + 10,
-        limit: function() {
-            var limit = $(".footer").offset().top - $("#summary").outerHeight(true) - 10;
+        limit: function () {
+            var limit =
+                $(".footer").offset().top -
+                $("#summary").outerHeight(true) -
+                10;
             return limit;
         },
         zIndex: 999,
-        preFixed: function() {
+        preFixed: function () {
             $(this).find(".title").css("color", "blue");
         },
-        preAbsolute: function() {
+        preAbsolute: function () {
             $(this).find(".title").css("color", "red");
         },
-        postFixed: function() {
+        postFixed: function () {
             $(this).find(".title").css("color", "");
         },
-        postAbsolute: function() {
+        postAbsolute: function () {
             $(this).find(".title").css("color", "");
         },
     });

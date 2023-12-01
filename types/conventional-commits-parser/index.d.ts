@@ -8,7 +8,9 @@ import * as Stream from "stream";
  *
  * @param options
  */
-declare function conventionalCommitsParser(options?: conventionalCommitsParser.Options): Stream.Transform;
+declare function conventionalCommitsParser(
+    options?: conventionalCommitsParser.Options,
+): Stream.Transform;
 
 declare namespace conventionalCommitsParser {
     /**
@@ -19,9 +21,11 @@ declare namespace conventionalCommitsParser {
      */
     function sync(commit: string, options?: Options): Commit;
 
-    type Commit<Fields extends string | number | symbol = string | number | symbol> =
-        & CommitBase
-        & { [Field in Exclude<Fields, keyof CommitBase>]?: Commit.Field };
+    type Commit<
+        Fields extends string | number | symbol = string | number | symbol,
+    > = CommitBase & {
+        [Field in Exclude<Fields, keyof CommitBase>]?: Commit.Field;
+    };
 
     namespace Commit {
         type Field = string | null;

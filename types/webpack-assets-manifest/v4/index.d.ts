@@ -14,9 +14,16 @@ declare class WebpackAssetsManifest extends Plugin {
          *
          * Refer to https://github.com/webdeveric/webpack-assets-manifest#hooks for details
          */
-        customize: SyncWaterfallHook<WebpackAssetsManifest.Entry, WebpackAssetsManifest.Entry, WebpackAssetsManifest>;
+        customize: SyncWaterfallHook<
+            WebpackAssetsManifest.Entry,
+            WebpackAssetsManifest.Entry,
+            WebpackAssetsManifest
+        >;
 
-        transform: SyncWaterfallHook<WebpackAssetsManifest.Assets, WebpackAssetsManifest>;
+        transform: SyncWaterfallHook<
+            WebpackAssetsManifest.Assets,
+            WebpackAssetsManifest
+        >;
 
         done: AsyncSeriesHook<WebpackAssetsManifest, Stats>;
 
@@ -86,13 +93,19 @@ declare class WebpackAssetsManifest extends Plugin {
     emitAssetsManifest(compilation: compilation.Compilation): Promise<void>;
 
     /** Get assets and hot module replacement files from a compilation object */
-    getCompilationAssets(compilation: compilation.Compilation): { assets: compilation.Asset[]; hmrFiles: Set<string> };
+    getCompilationAssets(compilation: compilation.Compilation): {
+        assets: compilation.Asset[];
+        hmrFiles: Set<string>;
+    };
 
     /** Handle the `emit` event */
     handleEmit(compilation: compilation.Compilation): Promise<void>;
 
     /** Get the parsed output path. [hash] is supported. */
-    getManifestPath(compilation: compilation.Compilation, filename: string): string;
+    getManifestPath(
+        compilation: compilation.Compilation,
+        filename: string,
+    ): string;
 
     /** Write the asset manifest to the file system */
     writeTo(destination: string): Promise<void>;
@@ -172,7 +185,10 @@ declare namespace WebpackAssetsManifest {
         fileExtRegex?: RegExp | null | false | undefined;
 
         /** https://github.com/webdeveric/webpack-assets-manifest#sortmanifest */
-        sortManifest?: boolean | ((this: WebpackAssetsManifest, a: string, b: string) => number) | undefined;
+        sortManifest?:
+            | boolean
+            | ((this: WebpackAssetsManifest, a: string, b: string) => number)
+            | undefined;
 
         /** https://github.com/webdeveric/webpack-assets-manifest#merge */
         merge?: boolean | "customize" | undefined;
@@ -194,19 +210,27 @@ declare namespace WebpackAssetsManifest {
         /** https://github.com/webdeveric/webpack-assets-manifest#customize */
         customize?:
             | ((
-                entry: Entry,
-                original: Entry,
-                manifest: WebpackAssetsManifest,
-                asset: (compilation.Asset & { info: Record<string, any> }) | null,
-            ) => Entry | false)
+                  entry: Entry,
+                  original: Entry,
+                  manifest: WebpackAssetsManifest,
+                  asset:
+                      | (compilation.Asset & { info: Record<string, any> })
+                      | null,
+              ) => Entry | false)
             | null
             | undefined;
 
         /** https://github.com/webdeveric/webpack-assets-manifest#transform */
-        transform?: ((assets: Assets, manifest: WebpackAssetsManifest) => unknown) | null | undefined;
+        transform?:
+            | ((assets: Assets, manifest: WebpackAssetsManifest) => unknown)
+            | null
+            | undefined;
 
         /** https://github.com/webdeveric/webpack-assets-manifest#done */
-        done?: ((manifest: WebpackAssetsManifest, stats: Stats) => void) | null | undefined;
+        done?:
+            | ((manifest: WebpackAssetsManifest, stats: Stats) => void)
+            | null
+            | undefined;
 
         /** https://github.com/webdeveric/webpack-assets-manifest#entrypoints */
         entrypoints?: boolean | undefined;

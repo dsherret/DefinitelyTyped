@@ -19,7 +19,10 @@ export interface RunLoaderOption {
     context: any;
     readResource: (
         filename: string,
-        callback: (err: NodeJS.ErrnoException | null, data: Buffer | null) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            data: Buffer | null,
+        ) => void,
     ) => void;
 }
 
@@ -51,9 +54,11 @@ export interface ExtendedLoaderContext {
     remainingRequest: string;
     currentRequest: string;
     previousRequest: string;
-    query: {
-        [key: string]: any;
-    } | string;
+    query:
+        | {
+              [key: string]: any;
+          }
+        | string;
     data: any;
 }
 
@@ -61,5 +66,8 @@ export function getContext(resource: string): string;
 
 export function runLoaders(
     options: RunLoaderOption,
-    callback: (err: NodeJS.ErrnoException | null, result: RunLoaderResult) => any,
+    callback: (
+        err: NodeJS.ErrnoException | null,
+        result: RunLoaderResult,
+    ) => any,
 ): void;

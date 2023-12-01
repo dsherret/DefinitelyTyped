@@ -5,7 +5,11 @@
  * @param cb A callback that is executed when playback stops
  * @returns a handle to the player, which can then call pause and play functions
  */
-declare function audioPlay(buffer: AudioBuffer, how: audioPlay.Options, cb: () => void): audioPlay.AudioPlayHandle;
+declare function audioPlay(
+    buffer: AudioBuffer,
+    how: audioPlay.Options,
+    cb: () => void,
+): audioPlay.AudioPlayHandle;
 
 declare namespace audioPlay {
     interface AudioPlayHandle {

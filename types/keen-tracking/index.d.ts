@@ -47,11 +47,16 @@ export interface KeenClient {
 }
 
 export default class KeenTracking {
-    constructor(options: { projectId: string; writeKey: string; requestType?: string | undefined });
-    recordEvent(collectionName: string, event: object): Promise<{ created: boolean }>;
-    recordEvents(events: {
-        [collectionName: string]: object[];
-    }): Promise<{
+    constructor(options: {
+        projectId: string;
+        writeKey: string;
+        requestType?: string | undefined;
+    });
+    recordEvent(
+        collectionName: string,
+        event: object,
+    ): Promise<{ created: boolean }>;
+    recordEvents(events: { [collectionName: string]: object[] }): Promise<{
         [collectionName: string]: boolean[];
     }>;
     extendEvents(payload: unknown): KeenClient;

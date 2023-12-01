@@ -24,7 +24,12 @@ declare namespace AMap {
          * @param handler：事件功能函数（必填）
          * @param context：事件上下文（可选，缺省时，handler中this指向参数instance引用的对象，否则this指向context引用的对象）
          */
-        function addDomListener(instance: any, eventName: string, handler: EventCallback, context?: any): EventListener;
+        function addDomListener(
+            instance: any,
+            eventName: string,
+            handler: EventCallback,
+            context?: any,
+        ): EventListener;
 
         /**
          * 注册对象事件：给对象注册事件，并返回eventListener。运行AMap.event.removeListener(eventListener)可以删除该事件的监听器。
@@ -33,7 +38,12 @@ declare namespace AMap {
          * @param handler：事件功能函数（必填）
          * @param context：事件上下文（可选，缺省时，handler中this指向参数instance引用的对象，否则this指向context引用的对象）
          */
-        function addListener(instance: any, eventName: string, handler: EventCallback, context?: any): EventListener;
+        function addListener(
+            instance: any,
+            eventName: string,
+            handler: EventCallback,
+            context?: any,
+        ): EventListener;
 
         /**
          * 类似于addListener，但处理程序会在处理完第一个事件后将自已移除。
@@ -247,7 +257,9 @@ declare namespace AMap {
             tileSize?: number | undefined;
             tileUrl?: string | undefined;
             errorUrl?: string | undefined;
-            getTileUrl?: ((x: number, y: number, z: number) => string) | undefined;
+            getTileUrl?:
+                | ((x: number, y: number, z: number) => string)
+                | undefined;
             zIndex?: number | undefined;
             opacity?: number | undefined;
             zooms?: number[] | undefined;
@@ -266,11 +278,9 @@ declare namespace AMap {
             });
         }
 
-        class Satellite extends MapTypeLayer {
-        }
+        class Satellite extends MapTypeLayer {}
 
-        class RoadNet extends MapTypeLayer {
-        }
+        class RoadNet extends MapTypeLayer {}
 
         class Traffic extends MapTypeLayer {
             constructor(options?: {
@@ -402,7 +412,9 @@ declare namespace AMap {
         setLayers(layers: TileLayer[]): void;
         add(overlayers: any[]): void;
         remove(overlayers: any[]): void;
-        getAllOverlays(type: string): Marker[] | Circle[] | Polygon[] | Polyline[];
+        getAllOverlays(
+            type: string,
+        ): Marker[] | Circle[] | Polygon[] | Polyline[];
         setCenter(position: LngLat): void;
         setZoomAndCenter(zoomLevel: number, center: LngLat): void;
         setCity(city: string, callback: () => void): void;
@@ -506,10 +518,7 @@ declare namespace AMap {
     class Marker extends EventBindable {
         constructor(options?: MarkerOptions);
 
-        markOnAMAP(obj: {
-            name: string;
-            position: LngLat;
-        }): void;
+        markOnAMAP(obj: { name: string; position: LngLat }): void;
 
         getOffset(): Pixel;
         setOffset(offset: Pixel): void;
@@ -551,7 +560,12 @@ declare namespace AMap {
         setContent(content: string | HTMLElement): void;
         getContent(): string;
 
-        moveAlong(lnglatlist: LngLat[], speed?: number, f?: (k: number) => number, circlable?: boolean): void;
+        moveAlong(
+            lnglatlist: LngLat[],
+            speed?: number,
+            f?: (k: number) => number,
+            circlable?: boolean,
+        ): void;
         moveTo(lnglat: LngLat, speed?: number, f?: (k: number) => number): void;
         stopMove(): void;
         setMap(map: Map): void;
@@ -1031,13 +1045,22 @@ declare namespace AMap {
             extensions?: string | undefined;
         });
 
-        getLocation(address: string, callback?: (status?: string, result?: string | GeocodeResult) => void): void;
+        getLocation(
+            address: string,
+            callback?: (
+                status?: string,
+                result?: string | GeocodeResult,
+            ) => void,
+        ): void;
 
         setCity(city: string): void;
 
         getAddress(
             location: LngLat | LngLat[],
-            callback: (status?: string, result?: string | ReGeocodeResult) => void,
+            callback: (
+                status?: string,
+                result?: string | ReGeocodeResult,
+            ) => void,
         ): void;
     }
 
@@ -1088,8 +1111,19 @@ declare namespace AMap {
     }
 
     class CitySearch extends EventBindable {
-        getLocalCity(callback: (status: string, result: string | CitySearchResult) => void): void;
-        getCityByIp(ip: string, callback: (status: string, result: string | CitySearchResult) => void): void;
+        getLocalCity(
+            callback: (
+                status: string,
+                result: string | CitySearchResult,
+            ) => void,
+        ): void;
+        getCityByIp(
+            ip: string,
+            callback: (
+                status: string,
+                result: string | CitySearchResult,
+            ) => void,
+        ): void;
     }
 
     enum DrivingPolicy {
@@ -1164,9 +1198,14 @@ declare namespace AMap {
             showTraffic?: boolean | undefined;
         });
 
-        search(origin: LngLat, destination: LngLat, opts?: {
-            waypoints: LngLat[];
-        }, callback?: (status: string, result: string | DrivingResult) => void): void;
+        search(
+            origin: LngLat,
+            destination: LngLat,
+            opts?: {
+                waypoints: LngLat[];
+            },
+            callback?: (status: string, result: string | DrivingResult) => void,
+        ): void;
 
         search(
             point: Array<{
@@ -1235,14 +1274,20 @@ declare namespace AMap {
          * @param district 支持城市名称/区域编码（如：“杭州市”/“330100”）
          * @param callback 当请求成功时ErrorStatus为null，当请求不成功时ErrorStatus为Obj
          */
-        getLive(district: string, callback: (errorStatus: any, result: WeatherLiveResult) => void): void;
+        getLive(
+            district: string,
+            callback: (errorStatus: any, result: WeatherLiveResult) => void,
+        ): void;
 
         /**
          * 查询四天预报天气，包括查询当天天气信息
          * @param district 支持城市名称/区域编码（如：“杭州市”/“330100”）
          * @param callback 当请求成功时ErrorStatus为null，当请求不成功时ErrorStatus为Obj
          */
-        getForecast(district: string, callback: (errorStatus: any, result: WeatherForecastResult) => void): void;
+        getForecast(
+            district: string,
+            callback: (errorStatus: any, result: WeatherForecastResult) => void,
+        ): void;
     }
 
     interface Tip {
@@ -1266,7 +1311,13 @@ declare namespace AMap {
             input?: string | undefined;
         });
 
-        search(keyword: string, callback: (status: string, result: string | AutocompleteResult) => void): void;
+        search(
+            keyword: string,
+            callback: (
+                status: string,
+                result: string | AutocompleteResult,
+            ) => void,
+        ): void;
     }
 
     interface SelectChangeEvent {
@@ -1355,7 +1406,10 @@ declare namespace AMap {
             autoFitView?: boolean | undefined;
         });
 
-        search(keyword: string, callback: (status: string, result: string | SearchResult) => void): void;
+        search(
+            keyword: string,
+            callback: (status: string, result: string | SearchResult) => void,
+        ): void;
         searchNearBy(
             keyword: string,
             center: LngLat,
@@ -1367,7 +1421,10 @@ declare namespace AMap {
             bounds: Bounds | Polygon,
             callback: (status: string, result: string | SearchResult) => void,
         ): void;
-        getDetails(POIID: string, callback: (status: string, result: string | SearchResult) => void): void;
+        getDetails(
+            POIID: string,
+            callback: (status: string, result: string | SearchResult) => void,
+        ): void;
         setType(type: string): void;
         setCityLimit(p: boolean): void;
         setPageIndex(pageIndex: number): void;
@@ -1407,7 +1464,10 @@ declare namespace AMap {
 
         search(
             keywords: string,
-            callback?: (status: string, result: string | DistrictSearchResult) => void,
+            callback?: (
+                status: string,
+                result: string | DistrictSearchResult,
+            ) => void,
             opts?: DistrictSearchOptions,
         ): void;
         setLevel(level: string): void;

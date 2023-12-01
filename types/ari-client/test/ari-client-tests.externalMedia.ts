@@ -16,7 +16,7 @@ export default class TsgBridge extends EventEmitter {
     async create() {
         this.bridge = this.ariClient.Bridge();
         await this.bridge.create({ type: "video_sfu,mixing" });
-        this.bridge.on("ChannelLeftBridge", event => {
+        this.bridge.on("ChannelLeftBridge", (event) => {
             if (event.bridge.channels.length === 0) {
                 this.emit("empty");
             }
@@ -41,7 +41,10 @@ export default class TsgBridge extends EventEmitter {
             const app: string = config.get("ari.appName");
             const format: string = config.get("rtpServer.format");
 
-            await snoopBridge.create({ type: "mixing", name: `${channel.id}-snooping-bridge` });
+            await snoopBridge.create({
+                type: "mixing",
+                name: `${channel.id}-snooping-bridge`,
+            });
 
             const snoopOptions = {
                 app,
@@ -52,7 +55,8 @@ export default class TsgBridge extends EventEmitter {
             };
 
             // create the external Media channel
-            const snoopChannelRes = await this.ariClient.channels.snoopChannelWithId(snoopOptions);
+            const snoopChannelRes =
+                await this.ariClient.channels.snoopChannelWithId(snoopOptions);
 
             snoopBridge.addChannel({ channel: snoopChannelRes.id });
             snoopChannelRes.on("StasisEnd", () => {
@@ -75,11 +79,14 @@ export default class TsgBridge extends EventEmitter {
 
             const externalMediaOptions = {
                 app,
-                external_host: `${config.get("rtpServer.host")}:${config.get("rtpServer.port")}`,
+                external_host: `${config.get("rtpServer.host")}:${config.get(
+                    "rtpServer.port",
+                )}`,
                 format,
             };
 
-            const externalMediaRes = await externalMediaChannel.externalMedia(externalMediaOptions);
+            const externalMediaRes =
+                await externalMediaChannel.externalMedia(externalMediaOptions);
 
             // set the externalMediaSourcePort
             externalMediaUdpSourcePort = externalMediaRes.channelvars

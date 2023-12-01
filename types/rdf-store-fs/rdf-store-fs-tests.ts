@@ -34,7 +34,7 @@ let multiStore = new StoreFs.MultiFileStore({
 multiStore = new StoreFs.MultiFileStore({ resolver, factory: $rdf });
 
 function store_match() {
-    const term: Term = <any> {};
+    const term: Term = <any>{};
     // $ExpectType Stream<Quad>
     let stream = flatStore.match();
     stream = flatStore.match(term);
@@ -44,20 +44,20 @@ function store_match() {
 }
 
 function store_import() {
-    const stream: Stream = <any> {};
+    const stream: Stream = <any>{};
     // $ExpectType EventEmitter
     let imported = flatStore.import(stream);
     imported = flatStore.import(stream, { truncate: true });
 }
 
 function store_remove() {
-    const stream: Stream = <any> {};
+    const stream: Stream = <any>{};
     // $ExpectType EventEmitter
     const event = flatStore.remove(stream);
 }
 
 function store_removeMatches() {
-    const term: Term = <any> {};
+    const term: Term = <any>{};
     // $ExpectType EventEmitter
     let event = flatStore.removeMatches();
     event = flatStore.removeMatches(term);
@@ -67,20 +67,20 @@ function store_removeMatches() {
 }
 
 function store_deleteGraph() {
-    const graph: Quad_Graph = <any> {};
+    const graph: Quad_Graph = <any>{};
     // $ExpectType EventEmitter
     const event = flatStore.deleteGraph(graph);
 }
 
 async function resolver_graphs() {
-    const graph: Quad_Graph = <any> {};
+    const graph: Quad_Graph = <any>{};
     // $ExpectType Set<Quad_Graph>
     let graphs = await resolver.graphs();
     graphs = await resolver.graphs(graph);
 }
 
 async function resolver_resolve() {
-    const graph: Quad_Graph = <any> {};
+    const graph: Quad_Graph = <any>{};
     // $ExpectType Promise<string>
     const path = resolver.resolve(graph);
 }

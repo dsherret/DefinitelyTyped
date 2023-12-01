@@ -5,7 +5,10 @@ declare module "sqlite3" {
     interface Database {
         allAsync(sql: string): Promise<any[]>;
         closeAsync(): Promise<void>;
-        eachAsync(sql: string, cb?: (this: Statement, err: Error | null, row: any) => void): Promise<number>;
+        eachAsync(
+            sql: string,
+            cb?: (this: Statement, err: Error | null, row: any) => void,
+        ): Promise<number>;
         eachAsync(
             sql: string,
             params: any,

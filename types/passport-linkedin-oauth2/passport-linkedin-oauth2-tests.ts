@@ -6,7 +6,11 @@ import linkedin = require("passport-linkedin-oauth2");
 
 // just some test model
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "james" });
     },
 };

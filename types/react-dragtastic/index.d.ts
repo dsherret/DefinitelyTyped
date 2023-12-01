@@ -1,4 +1,9 @@
-import { Component, MouseEventHandler, ReactNode, TouchEventHandler } from "react";
+import {
+    Component,
+    MouseEventHandler,
+    ReactNode,
+    TouchEventHandler,
+} from "react";
 
 export type Id = string | number;
 export type Type = string | number;

@@ -1,4 +1,8 @@
-import { FeatherIconNames, FeatherStrokeLineCap, FeatherStrokeLineJoin } from "feather-icons";
+import {
+    FeatherIconNames,
+    FeatherStrokeLineCap,
+    FeatherStrokeLineJoin,
+} from "feather-icons";
 
 // Test FeatherIconName type
 // @ts-expect-error

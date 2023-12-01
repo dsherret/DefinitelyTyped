@@ -5,7 +5,7 @@ export interface ScoreFactory {
 }
 
 interface FactoryCtor {
-    new(): ScoreFactory;
+    new (): ScoreFactory;
 }
 declare const factoryCtor: FactoryCtor;
 export default factoryCtor;

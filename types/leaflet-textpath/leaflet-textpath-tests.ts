@@ -51,7 +51,11 @@ const danger = L.polyline(
         opacity: 0.8,
     },
 ).addTo(map);
-danger.setText("\u25BA", { repeat: true, offset: 6, attributes: { fill: "red" } });
+danger.setText("\u25BA", {
+    repeat: true,
+    offset: 6,
+    attributes: { fill: "red" },
+});
 
 const plane = L.polyline(
     [
@@ -65,7 +69,11 @@ const plane = L.polyline(
         dashArray: "2, 2",
     },
 ).addTo(map);
-plane.setText("\u2708     ", { repeat: true, offset: 8, attributes: { "font-weight": "bold", "font-size": "24" } });
+plane.setText("\u2708     ", {
+    repeat: true,
+    offset: 8,
+    attributes: { "font-weight": "bold", "font-size": "24" },
+});
 
 // We have to explicitly cast this value.
 const flightsWE: FeatureCollection = {
@@ -145,7 +153,10 @@ L.geoJSON(flightsEW, {
     onEachFeature: (feature, layer) => {
         // We have to add a check here. This is why TypeScript is useful!
         if (layer instanceof L.Polyline) {
-            layer.setText(feature.properties.flight, { offset: -5, orientation: "flip" });
+            layer.setText(feature.properties.flight, {
+                offset: -5,
+                orientation: "flip",
+            });
         }
     },
     style: {

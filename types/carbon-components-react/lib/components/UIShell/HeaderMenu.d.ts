@@ -10,10 +10,13 @@ interface HeaderMenuProps<RP = {}> extends ReactLIAttr {
 
 declare class HeaderMenu extends React.Component<HeaderMenuProps> {}
 
-export interface HeaderMenuForwardRefProps<RP = {}> extends Omit<HeaderMenuProps<RP>, "focusRef" | "ref"> {
+export interface HeaderMenuForwardRefProps<RP = {}>
+    extends Omit<HeaderMenuProps<RP>, "focusRef" | "ref"> {
     ref?: HeaderMenuProps<RP>["focusRef"] | undefined;
 }
 
-declare function HeaderMenuForwardRef<RP = {}>(props: HeaderMenuForwardRefProps<RP>): FCReturn;
+declare function HeaderMenuForwardRef<RP = {}>(
+    props: HeaderMenuForwardRefProps<RP>,
+): FCReturn;
 
 export default HeaderMenuForwardRef;

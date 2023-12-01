@@ -100,7 +100,11 @@ export declare function register(name: string, tmpl: Template): void;
  * @param name the name used to register the compiled template into the internal cache. See render().
  * @param strip strip whitespaces from the output. Defaults to false.
  */
-export declare function compile(source: string, name: string, strip?: boolean): string;
+export declare function compile(
+    source: string,
+    name: string,
+    strip?: boolean,
+): string;
 
 /**
  * Compiles source directly into a JavaScript function that takes a context and an optional callback (see dust.renderSource). Registers the template under [name] if this argument is supplied.
@@ -119,8 +123,16 @@ export declare function loadSource(compiled: string): Template;
  * @param name the template name.
  * @param context a plain object or an instance of dust.Context.
  */
-export declare function render(name: string, context: any, callback: (err: any, out: string) => any): void;
-export declare function render(name: string, context: Context, callback: (err: any, out: string) => any): void;
+export declare function render(
+    name: string,
+    context: any,
+    callback: (err: any, out: string) => any,
+): void;
+export declare function render(
+    name: string,
+    context: Context,
+    callback: (err: any, out: string) => any,
+): void;
 
 /**
  * Compiles and renders source, invoking callback on completion. If no callback is supplied this function returns a Stream object. Use this function when precompilation is not required.
@@ -130,8 +142,16 @@ export declare function render(name: string, context: Context, callback: (err: a
  */
 export declare function renderSource(source: string, context: any): Stream;
 export declare function renderSource(source: string, context: Context): Stream;
-export declare function renderSource(source: string, context: any, callback: (err: any, out: string) => any): void;
-export declare function renderSource(source: string, context: Context, callback: (err: any, out: string) => any): void;
+export declare function renderSource(
+    source: string,
+    context: any,
+    callback: (err: any, out: string) => any,
+): void;
+export declare function renderSource(
+    source: string,
+    context: Context,
+    callback: (err: any, out: string) => any,
+): void;
 
 /**
  * Streams the named template. context may be a plain object or an instance of dust.Context. Returns an instance of dust.Stream.
@@ -152,7 +172,12 @@ export declare function escapeHtml(html: string): string;
 export declare function escapeJs(js: string): string;
 
 declare var helpers: {
-    [key: string]: (chk: Chunk, ctx: Context, bodies?: any, params?: any) => any;
+    [key: string]: (
+        chk: Chunk,
+        ctx: Context,
+        bodies?: any,
+        params?: any,
+    ) => any;
 };
 
 declare var filters: {

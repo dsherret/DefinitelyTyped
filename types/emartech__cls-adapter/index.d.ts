@@ -40,7 +40,9 @@ declare class ContextFactory {
     /**
      * Returns a function that extends the given object with the current storage.
      */
-    static addContextStorageToInput: () => <T extends {}>(input: T) => T & { requestId: string };
+    static addContextStorageToInput: () => <T extends {}>(
+        input: T,
+    ) => T & { requestId: string };
 
     /**
      * Returns a function that extends the given object with the request identifier set on the current storage.

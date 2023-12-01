@@ -12,12 +12,17 @@ export interface QueueConfig {
     url: string;
 }
 
-export default class SQSService<TQueues extends Record<string, QueueConfig> = Record<string, QueueConfig>> {
+export default class SQSService<
+    TQueues extends Record<string, QueueConfig> = Record<string, QueueConfig>,
+> {
     sqsClient: SQS;
 
     queues: TQueues;
 
     constructor(opts?: SQSServiceParams, queues?: TQueues);
 
-    dispatch(payload: any, queueName: keyof TQueues): Promise<SQS.SendMessageResult>;
+    dispatch(
+        payload: any,
+        queueName: keyof TQueues,
+    ): Promise<SQS.SendMessageResult>;
 }

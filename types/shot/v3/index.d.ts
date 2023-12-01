@@ -10,7 +10,11 @@ import { Readable, Stream } from "stream";
  * @param callback  the callback function @see Callback
  * @see {@link https://github.com/hapijs/shot/blob/master/API.md#shotinjectdispatchfunc-options-callback}
  */
-export function inject(dispatchFunc: Listener, options: RequestOptions, callback: (res: ResponseObject) => void): void;
+export function inject(
+    dispatchFunc: Listener,
+    options: RequestOptions,
+    callback: (res: ResponseObject) => void,
+): void;
 
 /**
  * Checks if given object obj is a Shot Request object.
@@ -24,7 +28,10 @@ export function isInjection(obj: any): boolean;
  *    * res - a simulated response object. Inherits from node's Http.ServerResponse.
  * @see {@link https://github.com/hapijs/shot/blob/master/API.md#shotinjectdispatchfunc-options-callback}
  */
-export type Listener = (req: SimulatedRequestObject, res: SimulatedResponseObject) => void;
+export type Listener = (
+    req: SimulatedRequestObject,
+    res: SimulatedResponseObject,
+) => void;
 
 // disabled for backwards compat
 // tslint:disable:no-empty-interface
@@ -60,16 +67,18 @@ export interface RequestOptions {
     /** an optional request payload. Can be a string, Buffer, Stream or object. */
     payload?: string | Buffer | Stream | object | undefined;
     /** an object containing flags to simulate various conditions: */
-    simulate?: {
-        /** indicates whether the request will fire an end event. Defaults to undefined, meaning an end event will fire. */
-        end?: boolean | undefined;
-        /** indicates whether the request payload will be split into chunks. Defaults to `undefined`, meaning payload will not be chunked. */
-        split?: boolean | undefined;
-        /** whether the request will emit an error event. Defaults to undefined, meaning no error event will be emitted. If set to true, the emitted error will have a message of 'Simulated'. */
-        error?: boolean | undefined;
-        /** whether the request will emit a close event. Defaults to undefined, meaning no close event will be emitted. */
-        close?: boolean | undefined;
-    } | undefined;
+    simulate?:
+        | {
+              /** indicates whether the request will fire an end event. Defaults to undefined, meaning an end event will fire. */
+              end?: boolean | undefined;
+              /** indicates whether the request payload will be split into chunks. Defaults to `undefined`, meaning payload will not be chunked. */
+              split?: boolean | undefined;
+              /** whether the request will emit an error event. Defaults to undefined, meaning no error event will be emitted. If set to true, the emitted error will have a message of 'Simulated'. */
+              error?: boolean | undefined;
+              /** whether the request will emit a close event. Defaults to undefined, meaning no close event will be emitted. */
+              close?: boolean | undefined;
+          }
+        | undefined;
     /** Optional flag to validate this options object. Defaults to true. */
     validate?: boolean | undefined;
 }

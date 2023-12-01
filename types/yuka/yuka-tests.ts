@@ -6,7 +6,11 @@ const astar = new yuka.AStar();
 astar.heuristic = yuka.HeuristicPolicyEuclid;
 
 astar.heuristic = {
-    calculate(graph: yuka.Graph<yuka.Node, yuka.Edge>, source: number, target: number): number {
+    calculate(
+        graph: yuka.Graph<yuka.Node, yuka.Edge>,
+        source: number,
+        target: number,
+    ): number {
         return 0;
     },
 };

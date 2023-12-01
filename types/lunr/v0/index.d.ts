@@ -103,8 +103,17 @@ declare namespace lunr {
          *                   function to a specific event(s).
          */
         addListener(eventName: string, handler: Function): void;
-        addListener(eventName: string, eventName2: string, handler: Function): void;
-        addListener(eventName: string, eventName2: string, eventName3: string, handler: Function): void;
+        addListener(
+            eventName: string,
+            eventName2: string,
+            handler: Function,
+        ): void;
+        addListener(
+            eventName: string,
+            eventName2: string,
+            eventName3: string,
+            handler: Function,
+        ): void;
         addListener(
             eventName: string,
             eventName2: string,
@@ -146,7 +155,11 @@ declare namespace lunr {
         hasHandler(eventName: string): boolean;
     }
 
-    type IPipelineFunction = (token: string, tokenIndex?: number, tokens?: string[]) => string;
+    type IPipelineFunction = (
+        token: string,
+        tokenIndex?: number,
+        tokens?: string[],
+    ) => string;
 
     /**
      * lunr.Pipelines maintain an ordered list of functions to be applied to all tokens in documents
@@ -459,8 +472,19 @@ declare namespace lunr {
          */
         on(eventName: string, handler: Function): void;
         on(eventName: string, eventName2: string, handler: Function): void;
-        on(eventName: string, eventName2: string, eventName3: string, handler: Function): void;
-        on(eventName: string, eventName2: string, eventName3: string, eventName4: string, handler: Function): void;
+        on(
+            eventName: string,
+            eventName2: string,
+            eventName3: string,
+            handler: Function,
+        ): void;
+        on(
+            eventName: string,
+            eventName2: string,
+            eventName3: string,
+            eventName4: string,
+            handler: Function,
+        ): void;
         on(
             eventName: string,
             eventName2: string,
@@ -490,7 +514,10 @@ declare namespace lunr {
          * @param fieldName  The name of the field within the document that
          * @param options    An optional boost that can be applied to terms in this field.
          */
-        field(fieldName: string, options?: { boost?: number | undefined }): Index;
+        field(
+            fieldName: string,
+            options?: { boost?: number | undefined },
+        ): Index;
 
         /**
          * Sets the property used to uniquely identify documents added to the index, by default this

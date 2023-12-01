@@ -2,7 +2,9 @@
 
 import express = require("express");
 
-export type GetAcl = (req: express.Request) => Promise<boolean> | Promise<object>;
+export type GetAcl = (
+    req: express.Request,
+) => Promise<boolean> | Promise<object>;
 export type Actions = string[] | string;
 export type Context = Array<"params" | "query" | "headers" | "body">;
 // Can contain when key that is evaluated during route action
@@ -17,16 +19,32 @@ export const roles: Roles;
 export function role(roleName: string, getAcl?: GetAcl): Role;
 
 // Check if user has role(s) act like as an OR
-export function is(roleNames: string | string[]): Promise<express.RequestHandler>;
+export function is(
+    roleNames: string | string[],
+): Promise<express.RequestHandler>;
 
 // Check if current user can do action(s)
-export function can(actionS: string | string[] | Action | Action[]): Promise<express.RequestHandler>;
+export function can(
+    actionS: string | string[] | Action | Action[],
+): Promise<express.RequestHandler>;
 
-export function evaluateRouteActions(req: express.Request, action: Action[], context: Context): Actions;
+export function evaluateRouteActions(
+    req: express.Request,
+    action: Action[],
+    context: Context,
+): Actions;
 
-export function evaluateRouteAction(req: express.Request, expr: string, key: string, context: Context): string;
+export function evaluateRouteAction(
+    req: express.Request,
+    expr: string,
+    key: string,
+    context: Context,
+): string;
 
-export function evaluateUserActions(req: express.Request, roles: Role[]): Promise<Action[]>;
+export function evaluateUserActions(
+    req: express.Request,
+    roles: Role[],
+): Promise<Action[]>;
 
 export function evaluateUserAction(
     action: RoleParams,
@@ -46,17 +64,31 @@ export class Imperium {
     is(roleNames: string | string[]): Promise<express.RequestHandler>;
 
     // Check if current user can do action(s)
-    can(actionS: string | string[] | Action | Action[]): Promise<express.RequestHandler>;
+    can(
+        actionS: string | string[] | Action | Action[],
+    ): Promise<express.RequestHandler>;
 
     private addRole(roleName: string, getAcl: GetAcl): void;
 
-    evaluateRouteActions(req: express.Request, action: Action[], context: Context): Actions;
+    evaluateRouteActions(
+        req: express.Request,
+        action: Action[],
+        context: Context,
+    ): Actions;
 
-    evaluateRouteAction(req: express.Request, expr: string, key: string, context: Context): string;
+    evaluateRouteAction(
+        req: express.Request,
+        expr: string,
+        key: string,
+        context: Context,
+    ): string;
 
     evaluateUserActions(req: express.Request, roles: Role[]): Promise<Action[]>;
 
-    evaluateUserAction(action: RoleParams, context: { [key: string]: string[] }): { [key: string]: string[] };
+    evaluateUserAction(
+        action: RoleParams,
+        context: { [key: string]: string[] },
+    ): { [key: string]: string[] };
 }
 
 export interface Roles {

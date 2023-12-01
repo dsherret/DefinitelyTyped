@@ -1,7 +1,10 @@
 import _ from "./dist/evaluatex";
 
 declare namespace evaluatex {
-    type IncludeMethods<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? K : never }[keyof T]>;
+    type IncludeMethods<T> = Pick<
+        T,
+        { [K in keyof T]: T[K] extends (_: any) => any ? K : never }[keyof T]
+    >;
 
     type Variable = number;
 
@@ -15,34 +18,49 @@ declare namespace evaluatex {
         latex?: boolean;
     }
 
-    type AbstractSyntaxTreeNode =
-        & (
-            | {
-                type: "FUNCTION";
-                value: { name?: keyof IncludeMethods<Math> } & ((...args: unknown[]) => number);
-                name: string | null;
-            }
-            | { type: "SYMBOL" | "PRODUCT" | "SUM" | "INVERSE" | "NEGATE" | "POWER"; value: string }
-            | { type: "NUMBER"; value: number }
-        )
-        & {
-            children: AbstractSyntaxTreeNode[];
-            name: null | string;
-            evaluate(variables?: Variables): number;
-            simplify(): AbstractSyntaxTreeNode;
-        };
+    type AbstractSyntaxTreeNode = (
+        | {
+              type: "FUNCTION";
+              value: { name?: keyof IncludeMethods<Math> } & ((
+                  ...args: unknown[]
+              ) => number);
+              name: string | null;
+          }
+        | {
+              type:
+                  | "SYMBOL"
+                  | "PRODUCT"
+                  | "SUM"
+                  | "INVERSE"
+                  | "NEGATE"
+                  | "POWER";
+              value: string;
+          }
+        | { type: "NUMBER"; value: number }
+    ) & {
+        children: AbstractSyntaxTreeNode[];
+        name: null | string;
+        evaluate(variables?: Variables): number;
+        simplify(): AbstractSyntaxTreeNode;
+    };
 
     type Token =
         | {
-            type: "NUMBER" | "POWER" | "DIVIDE" | "LPAREN" | "RPAREN" | "COMMAND";
-            value: string | number;
-            name: string | null;
-        }
+              type:
+                  | "NUMBER"
+                  | "POWER"
+                  | "DIVIDE"
+                  | "LPAREN"
+                  | "RPAREN"
+                  | "COMMAND";
+              value: string | number;
+              name: string | null;
+          }
         | {
-            type: "COMMAND";
-            value(params: unknown[]): unknown;
-            name: string | null;
-        }
+              type: "COMMAND";
+              value(params: unknown[]): unknown;
+              name: string | null;
+          }
         | { type: "SYMBOL"; value: string; name: null };
 
     interface EvaluatexResult {

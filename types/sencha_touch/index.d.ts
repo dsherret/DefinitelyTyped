@@ -1,6 +1,5 @@
 declare namespace Ext {
-    export interface IAbstractComponent extends Ext.IEvented {
-    }
+    export interface IAbstractComponent extends Ext.IEvented {}
 }
 declare namespace Ext {
     export interface IAbstractManager extends Ext.IBase {
@@ -53,8 +52,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IAbstractPlugin extends Ext.IBase {
-    }
+    export interface IAbstractPlugin extends Ext.IBase {}
 }
 declare namespace Ext {
     export interface IActionSheet extends Ext.ISheet {
@@ -121,8 +119,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IAjax extends Ext.data.IConnection {
-    }
+    export interface IAjax extends Ext.data.IConnection {}
     export class Ajax {
         /** [Property] (Boolean) */
         static autoAbort: boolean;
@@ -140,14 +137,24 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -159,7 +166,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -167,7 +180,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -198,7 +217,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -304,7 +328,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -319,21 +349,37 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Checks if the response status was successful
          * @param status Number The status code.
          * @param xhr XMLHttpRequest
@@ -352,14 +398,24 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -367,14 +423,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sends an HTTP request to a remote server
          * @param options Object An object which may contain the following properties: (The options object may also contain any other property which might be needed to perform post-processing in a callback because it is passed to callback functions.)
          * @returns Object/null The request object. This may be used to cancel the request.
@@ -471,33 +538,53 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Uploads a form using a hidden iframe
          * @param form String/HTMLElement/Ext.Element The form to upload.
          * @param url String The url to post to.
          * @param params String Any extra parameters to pass.
          * @param options Object The initial options.
          */
-        static upload(form?: any, url?: string, params?: string, options?: any): void;
+        static upload(
+            form?: any,
+            url?: string,
+            params?: string,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext {
-    export interface IAnim extends Ext.IBase {
-    }
+    export interface IAnim extends Ext.IBase {}
     export class Anim {
         /** [Config Option] (Function) */
         static after: any;
@@ -568,8 +655,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IAnimationQueue extends Ext.IBase {
-    }
+    export interface IAnimationQueue extends Ext.IBase {}
     export class AnimationQueue {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -619,8 +705,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IAnims {
-    }
+    export interface IAnims {}
     export class Anims {
         /** [Property] (Object) */
         static cube: any;
@@ -788,7 +873,10 @@ declare namespace Ext.app {
          * @param profileName String Optional profile name. If passed, this is the same as calling getController('profileName.controllerName').
          * @returns Ext.app.Controller controller instance or undefined.
          */
-        getController?(name?: string, profileName?: string): Ext.app.IController;
+        getController?(
+            name?: string,
+            profileName?: string,
+        ): Ext.app.IController;
         /** [Method] Returns the value of controllers
          * @returns Array
          */
@@ -884,7 +972,9 @@ declare namespace Ext.app {
         /** [Method] Sets the value of themeVariationTransitionCls
          * @param themeVariationTransitionCls String The new value.
          */
-        setThemeVariationTransitionCls?(themeVariationTransitionCls?: string): void;
+        setThemeVariationTransitionCls?(
+            themeVariationTransitionCls?: string,
+        ): void;
     }
 }
 declare namespace Ext.app {
@@ -915,14 +1005,24 @@ declare namespace Ext.app {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -934,7 +1034,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -942,7 +1048,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -958,7 +1070,12 @@ declare namespace Ext.app {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -1028,7 +1145,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -1043,7 +1166,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -1075,14 +1204,24 @@ declare namespace Ext.app {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -1090,14 +1229,25 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -1151,7 +1301,13 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -1187,14 +1343,24 @@ declare namespace Ext.app {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -1206,7 +1372,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -1214,7 +1386,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Navigate to the previous active action  */
         back?(): void;
         /** [Method] Removes all listeners for this object  */
@@ -1232,7 +1410,12 @@ declare namespace Ext.app {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -1271,7 +1454,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -1286,7 +1475,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -1313,14 +1508,24 @@ declare namespace Ext.app {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -1328,14 +1533,25 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -1369,7 +1585,13 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -1408,14 +1630,24 @@ declare namespace Ext.app {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -1427,7 +1659,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -1435,7 +1673,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -1451,7 +1695,12 @@ declare namespace Ext.app {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -1512,7 +1761,13 @@ declare namespace Ext.app {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -1527,7 +1782,13 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -1554,14 +1815,24 @@ declare namespace Ext.app {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -1569,14 +1840,25 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -1626,7 +1908,13 @@ declare namespace Ext.app {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -1733,8 +2021,7 @@ declare namespace Ext.app {
     }
 }
 declare namespace Ext {
-    export interface IArray {
-    }
+    export interface IArray {}
     export class Array {
         /** [Method] Filter through an array and remove empty item as defined in Ext isEmpty
          * @param array Array
@@ -1765,14 +2052,23 @@ declare namespace Ext {
          * @param reverse Boolean Reverse the iteration order (loop from the end to the beginning).
          * @returns Boolean See description for the fn parameter.
          */
-        static each(iterable?: any, fn?: any, scope?: any, reverse?: boolean): boolean;
+        static each(
+            iterable?: any,
+            fn?: any,
+            scope?: any,
+            reverse?: boolean,
+        ): boolean;
         /** [Method] Removes items from an array
          * @param array Array The Array on which to replace.
          * @param index Number The index in the array at which to operate.
          * @param removeCount Number The number of items to remove at index.
          * @returns Array The array passed.
          */
-        static erase(array?: any[], index?: number, removeCount?: number): any[];
+        static erase(
+            array?: any[],
+            index?: number,
+            removeCount?: number,
+        ): any[];
         /** [Method] Executes the specified function for each array element until the function returns a falsy value
          * @param array Array
          * @param fn Function Callback function for each item.
@@ -1880,7 +2176,12 @@ declare namespace Ext {
          * @param insert Array An array of items to insert at index.
          * @returns Array The array passed.
          */
-        static replace(array?: any[], index?: number, removeCount?: number, insert?: any[]): any[];
+        static replace(
+            array?: any[],
+            index?: number,
+            removeCount?: number,
+            insert?: any[],
+        ): any[];
         /** [Method] Returns a shallow copy of a part of an array
          * @param array Array The array (or arguments object).
          * @param begin Number The index at which to begin. Negative values are offsets from the end of the array.
@@ -1907,7 +2208,11 @@ declare namespace Ext {
          * @param removeCount Number The number of items to remove at index (can be 0).
          * @returns Array An array containing the removed items.
          */
-        static splice(array?: any[], index?: number, removeCount?: number): any[];
+        static splice(
+            array?: any[],
+            index?: number,
+            removeCount?: number,
+        ): any[];
         /** [Method] Calculates the sum of all items in the given array
          * @param array Array The Array to calculate the sum value of.
          * @returns Number The sum.
@@ -2025,24 +2330,19 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.behavior {
-    export interface IBehavior extends Ext.IBase {
-    }
+    export interface IBehavior extends Ext.IBase {}
 }
 declare namespace Ext.behavior {
-    export interface IDraggable extends Ext.behavior.IBehavior {
-    }
+    export interface IDraggable extends Ext.behavior.IBehavior {}
 }
 declare namespace Ext.behavior {
-    export interface IScrollable extends Ext.behavior.IBehavior {
-    }
+    export interface IScrollable extends Ext.behavior.IBehavior {}
 }
 declare namespace Ext.behavior {
-    export interface ITranslatable extends Ext.behavior.IBehavior {
-    }
+    export interface ITranslatable extends Ext.behavior.IBehavior {}
 }
 declare namespace Ext {
-    export interface IBrowser extends Ext.env.IBrowser {
-    }
+    export interface IBrowser extends Ext.env.IBrowser {}
     export class Browser {
         /** [Property] (String) */
         static engineName: string;
@@ -2782,14 +3082,24 @@ declare namespace Ext.chart.axis {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -2801,7 +3111,13 @@ declare namespace Ext.chart.axis {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -2809,7 +3125,13 @@ declare namespace Ext.chart.axis {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -2825,7 +3147,12 @@ declare namespace Ext.chart.axis {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -2851,7 +3178,12 @@ declare namespace Ext.chart.axis {
          * @param items Ext.util.MixedCollection
          * @returns Number
          */
-        getCoordFor?(value?: any, field?: string, idx?: number, items?: Ext.util.IMixedCollection): number;
+        getCoordFor?(
+            value?: any,
+            field?: string,
+            idx?: number,
+            items?: Ext.util.IMixedCollection,
+        ): number;
         /** [Method] Returns the value of fields
          * @returns Array
          */
@@ -2956,7 +3288,13 @@ declare namespace Ext.chart.axis {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -2971,7 +3309,13 @@ declare namespace Ext.chart.axis {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -3000,14 +3344,24 @@ declare namespace Ext.chart.axis {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -3015,14 +3369,25 @@ declare namespace Ext.chart.axis {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Invokes renderFrame on this axis s surface s  */
         renderFrame?(): void;
         /** [Method] Resumes firing events see suspendEvents
@@ -3139,7 +3504,13 @@ declare namespace Ext.chart.axis {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -3181,8 +3552,8 @@ declare namespace Ext.chart.axis {
     }
 }
 declare namespace Ext.chart.axis.layout {
-    export interface ICombineDuplicate extends Ext.chart.axis.layout.IDiscrete {
-    }
+    export interface ICombineDuplicate
+        extends Ext.chart.axis.layout.IDiscrete {}
 }
 declare namespace Ext.chart.axis.layout {
     export interface IContinuous extends Ext.chart.axis.layout.ILayout {
@@ -3237,7 +3608,12 @@ declare namespace Ext.chart.axis.layout {
          * @param trimMin Object
          * @param trimMax Object
          */
-        trimByRange?(context?: any, out?: any, trimMin?: any, trimMax?: any): void;
+        trimByRange?(
+            context?: any,
+            out?: any,
+            trimMin?: any,
+            trimMax?: any,
+        ): void;
     }
 }
 declare namespace Ext.chart.axis.layout {
@@ -3275,14 +3651,24 @@ declare namespace Ext.chart.axis.layout {
          * @param max Number
          * @param estStepSize Number
          */
-        snapEnds?(context?: any, min?: number, max?: number, estStepSize?: number): void;
+        snapEnds?(
+            context?: any,
+            min?: number,
+            max?: number,
+            estStepSize?: number,
+        ): void;
         /** [Method] Trims the layout of the axis by the defined minimum and maximum
          * @param context Object
          * @param out Object
          * @param trimMin Number
          * @param trimMax Number
          */
-        trimByRange?(context?: any, out?: any, trimMin?: number, trimMax?: number): void;
+        trimByRange?(
+            context?: any,
+            out?: any,
+            trimMin?: number,
+            trimMax?: number,
+        ): void;
     }
 }
 declare namespace Ext.chart.axis {
@@ -3346,7 +3732,12 @@ declare namespace Ext.chart.axis.segmenter {
          * @param data Object
          * @returns Object Return the step size by an object of step x unit.
          */
-        preferredStep?(min?: any, estStepSize?: any, minIdx?: any, data?: any): any;
+        preferredStep?(
+            min?: any,
+            estStepSize?: any,
+            minIdx?: any,
+            data?: any,
+        ): any;
         /** [Method] This method formats the value
          * @param value Object
          * @param context Object
@@ -3500,7 +3891,9 @@ declare namespace Ext.chart.axis.segmenter {
     }
 }
 declare namespace Ext.chart.axis.sprite {
-    export interface IAxis extends Ext.draw.sprite.ISprite, Ext.chart.IMarkerHolder {
+    export interface IAxis
+        extends Ext.draw.sprite.ISprite,
+            Ext.chart.IMarkerHolder {
         /** [Config Option] (Number) */
         The?: number | undefined;
         /** [Config Option] (Ext.chart.axis.Axis) */
@@ -3751,8 +4144,7 @@ declare namespace Ext.chart {
     }
 }
 declare namespace Ext.chart.grid {
-    export interface ICircularGrid extends Ext.draw.sprite.ICircle {
-    }
+    export interface ICircularGrid extends Ext.draw.sprite.ICircle {}
 }
 declare namespace Ext.chart.grid {
     export interface IHorizontalGrid extends Ext.draw.sprite.ISprite {
@@ -3805,14 +4197,24 @@ declare namespace Ext.chart.interactions {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -3824,7 +4226,13 @@ declare namespace Ext.chart.interactions {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -3832,7 +4240,13 @@ declare namespace Ext.chart.interactions {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -3848,7 +4262,12 @@ declare namespace Ext.chart.interactions {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -3899,7 +4318,13 @@ declare namespace Ext.chart.interactions {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -3914,7 +4339,13 @@ declare namespace Ext.chart.interactions {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -3943,14 +4374,24 @@ declare namespace Ext.chart.interactions {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -3958,14 +4399,25 @@ declare namespace Ext.chart.interactions {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -3999,7 +4451,13 @@ declare namespace Ext.chart.interactions {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -4238,8 +4696,7 @@ declare namespace Ext.chart.interactions {
     }
 }
 declare namespace Ext.chart.interactions {
-    export interface IRotatePie3D extends Ext.chart.interactions.IRotate {
-    }
+    export interface IRotatePie3D extends Ext.chart.interactions.IRotate {}
 }
 declare namespace Ext.chart.label {
     export interface ICallout extends Ext.draw.modifier.IModifier {
@@ -4405,7 +4862,11 @@ declare namespace Ext.chart {
          * @param index Mixed
          * @param isWithoutTransform Boolean
          */
-        getMarkerBBoxFor?(category?: string, index?: any, isWithoutTransform?: boolean): void;
+        getMarkerBBoxFor?(
+            category?: string,
+            index?: any,
+            isWithoutTransform?: boolean,
+        ): void;
         /** [Method] Put a marker in the category with additional attributes
          * @param category String
          * @param markerAttr Object
@@ -4772,8 +5233,7 @@ declare namespace Ext.chart.series {
     }
 }
 declare namespace Ext.chart.series {
-    export interface IItemPublisher extends Ext.event.publisher.IPublisher {
-    }
+    export interface IItemPublisher extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.chart.series {
     export interface ILine extends Ext.chart.series.ICartesian {
@@ -5172,14 +5632,24 @@ declare namespace Ext.chart.series {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -5191,7 +5661,13 @@ declare namespace Ext.chart.series {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -5199,7 +5675,13 @@ declare namespace Ext.chart.series {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -5215,7 +5697,12 @@ declare namespace Ext.chart.series {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -5327,7 +5814,13 @@ declare namespace Ext.chart.series {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -5342,7 +5835,13 @@ declare namespace Ext.chart.series {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -5373,14 +5872,24 @@ declare namespace Ext.chart.series {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -5388,14 +5897,25 @@ declare namespace Ext.chart.series {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -5504,7 +6024,13 @@ declare namespace Ext.chart.series {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -5541,7 +6067,12 @@ declare namespace Ext.chart.series.sprite {
          * @param clip Object
          * @param region Object
          */
-        renderClipped?(surface?: any, ctx?: any, clip?: any, region?: any): void;
+        renderClipped?(
+            surface?: any,
+            ctx?: any,
+            clip?: any,
+            region?: any,
+        ): void;
         /** [Method] Sets the value of aggregator
          * @param aggregator Object The new value.
          */
@@ -5558,7 +6089,12 @@ declare namespace Ext.chart.series.sprite {
          * @param clip Object
          * @param clipRegion Object
          */
-        renderClipped?(surface?: any, ctx?: any, clip?: any, clipRegion?: any): void;
+        renderClipped?(
+            surface?: any,
+            ctx?: any,
+            clip?: any,
+            clipRegion?: any,
+        ): void;
     }
 }
 declare namespace Ext.chart.series.sprite {
@@ -5598,7 +6134,9 @@ declare namespace Ext.chart.series.sprite {
     }
 }
 declare namespace Ext.chart.series.sprite {
-    export interface ICartesian extends Ext.draw.sprite.ISprite, Ext.chart.IMarkerHolder {
+    export interface ICartesian
+        extends Ext.draw.sprite.ISprite,
+            Ext.chart.IMarkerHolder {
         /** [Config Option] (Array) */
         Data?: any[] | undefined;
         /** [Config Option] (Boolean) */
@@ -5656,7 +6194,12 @@ declare namespace Ext.chart.series.sprite {
          * @param clip Array
          * @param region Arrary
          */
-        renderClipped?(surface?: Ext.draw.ISurface, ctx?: any, clip?: any[], region?: any[]): void;
+        renderClipped?(
+            surface?: Ext.draw.ISurface,
+            ctx?: any,
+            clip?: any[],
+            region?: any[],
+        ): void;
         /** [Method] Sets the value of field
          * @param field String The new value.
          */
@@ -5684,7 +6227,9 @@ declare namespace Ext.chart.series.sprite {
     }
 }
 declare namespace Ext.chart.series.sprite {
-    export interface IPie3DPart extends Ext.draw.sprite.IPath, Ext.chart.IMarkerHolder {
+    export interface IPie3DPart
+        extends Ext.draw.sprite.IPath,
+            Ext.chart.IMarkerHolder {
         /** [Config Option] (Object) */
         baseColor?: any;
         /** [Config Option] (Number) */
@@ -5729,7 +6274,9 @@ declare namespace Ext.chart.series.sprite {
     }
 }
 declare namespace Ext.chart.series.sprite {
-    export interface IPieSlice extends Ext.draw.sprite.ISector, Ext.chart.IMarkerHolder {
+    export interface IPieSlice
+        extends Ext.draw.sprite.ISector,
+            Ext.chart.IMarkerHolder {
         /** [Config Option] (Boolean) */
         doCallout?: boolean | undefined;
         /** [Config Option] (String) */
@@ -5761,7 +6308,9 @@ declare namespace Ext.chart.series.sprite {
     }
 }
 declare namespace Ext.chart.series.sprite {
-    export interface IPolar extends Ext.draw.sprite.ISprite, Ext.chart.IMarkerHolder {
+    export interface IPolar
+        extends Ext.draw.sprite.ISprite,
+            Ext.chart.IMarkerHolder {
         /** [Config Option] (Array) */
         Data?: any[] | undefined;
         /** [Config Option] (Number) */
@@ -5831,11 +6380,17 @@ declare namespace Ext.chart.series.sprite {
          * @param clip Object
          * @param clipRegion Object
          */
-        renderClipped?(surface?: any, ctx?: any, clip?: any, clipRegion?: any): void;
+        renderClipped?(
+            surface?: any,
+            ctx?: any,
+            clip?: any,
+            clipRegion?: any,
+        ): void;
     }
 }
 declare namespace Ext.chart.series.sprite {
-    export interface IStackedCartesian extends Ext.chart.series.sprite.ICartesian {
+    export interface IStackedCartesian
+        extends Ext.chart.series.sprite.ICartesian {
         /** [Method] Get the nearest item index from point x y
          * @param x Object
          * @param y Object
@@ -5907,8 +6462,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IClassManager {
-    }
+    export interface IClassManager {}
     export class ClassManager {
         /** [Method] Adds a batch of class name to alias mappings
          * @param aliases Object The set of mappings of the form className : [values...]
@@ -5997,7 +6551,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponent extends Ext.IAbstractComponent, Ext.mixin.ITraversable {
+    export interface IComponent
+        extends Ext.IAbstractComponent,
+            Ext.mixin.ITraversable {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Number/String) */
@@ -6338,7 +6894,12 @@ declare namespace Ext {
          * @param prefix String Optional prefix to prepend before each class.
          * @param suffix String Optional suffix to append to each class.
          */
-        replaceCls?(oldCls?: string, newCls?: string, prefix?: string, suffix?: string): void;
+        replaceCls?(
+            oldCls?: string,
+            newCls?: string,
+            prefix?: string,
+            suffix?: string,
+        ): void;
         /** [Method] Resets top right bottom and left configurations to null which will un float this component  */
         resetFloating?(): void;
         /** [Method] Sets the value of baseCls
@@ -6545,7 +7106,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.lib {
-    export interface IComponent extends Ext.IAbstractComponent, Ext.mixin.ITraversable {
+    export interface IComponent
+        extends Ext.IAbstractComponent,
+            Ext.mixin.ITraversable {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Number/String) */
@@ -6886,7 +7449,12 @@ declare namespace Ext.lib {
          * @param prefix String Optional prefix to prepend before each class.
          * @param suffix String Optional suffix to append to each class.
          */
-        replaceCls?(oldCls?: string, newCls?: string, prefix?: string, suffix?: string): void;
+        replaceCls?(
+            oldCls?: string,
+            newCls?: string,
+            prefix?: string,
+            suffix?: string,
+        ): void;
         /** [Method] Resets top right bottom and left configurations to null which will un float this component  */
         resetFloating?(): void;
         /** [Method] Sets the value of baseCls
@@ -7093,8 +7661,7 @@ declare namespace Ext.lib {
     }
 }
 declare namespace Ext {
-    export interface IComponentManager extends Ext.IBase {
-    }
+    export interface IComponentManager extends Ext.IBase {}
     export class ComponentManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -7156,8 +7723,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponentMgr extends Ext.IBase {
-    }
+    export interface IComponentMgr extends Ext.IBase {}
     export class ComponentMgr {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -7219,8 +7785,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponentQuery {
-    }
+    export interface IComponentQuery {}
     export class ComponentQuery {
         /** [Method] Tests whether the passed Component matches the selector string
          * @param component Ext.Component The Component to test.
@@ -7233,7 +7798,10 @@ declare namespace Ext {
          * @param root Ext.Container The Container within which to perform the query. If omitted, all Components within the document are included in the search. This parameter may also be an array of Components to filter according to the selector.
          * @returns Ext.Component[] The matched Components.
          */
-        static query(selector?: string, root?: Ext.IContainer): Ext.IComponent[];
+        static query(
+            selector?: string,
+            root?: Ext.IContainer,
+        ): Ext.IComponent[];
     }
 }
 declare namespace Ext {
@@ -7922,7 +8490,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IBelongsToAssociation extends Ext.data.association.IAssociation {
+    export interface IBelongsToAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (String) */
         foreignKey?: string | undefined;
         /** [Config Option] (String) */
@@ -8032,7 +8601,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IHasManyAssociation extends Ext.data.association.IAssociation {
+    export interface IHasManyAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (Boolean) */
         autoLoad?: boolean | undefined;
         /** [Config Option] (Boolean) */
@@ -8142,7 +8712,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IHasOneAssociation extends Ext.data.association.IAssociation {
+    export interface IHasOneAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (String) */
         foreignKey?: string | undefined;
         /** [Config Option] (String) */
@@ -8213,14 +8784,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -8232,7 +8813,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -8240,7 +8827,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -8256,7 +8849,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -8295,7 +8893,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -8310,7 +8914,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -8339,14 +8949,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -8354,14 +8974,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -8401,7 +9032,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -8450,14 +9087,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -8469,7 +9116,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -8477,7 +9130,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -8493,7 +9152,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -8585,7 +9249,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -8600,7 +9270,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -8633,14 +9309,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -8648,14 +9334,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sends an HTTP request to a remote server
          * @param options Object An object which may contain the following properties: (The options object may also contain any other property which might be needed to perform post-processing in a callback because it is passed to callback functions.)
          * @returns Object/null The request object. This may be used to cancel the request.
@@ -8748,7 +9445,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -9026,8 +9729,7 @@ declare namespace Ext.data.identifier {
     }
 }
 declare namespace Ext.data {
-    export interface IJsonP extends Ext.IBase {
-    }
+    export interface IJsonP extends Ext.IBase {}
     export class JsonP {
         /** [Property] (String) */
         static callbackKey: string;
@@ -9082,8 +9784,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.util {
-    export interface IJSONP extends Ext.IBase {
-    }
+    export interface IJSONP extends Ext.IBase {}
     export class JSONP {
         /** [Property] (String) */
         static callbackKey: string;
@@ -9193,14 +9894,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -9212,7 +9923,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -9220,7 +9937,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Begins an edit  */
         beginEdit?(): void;
         /** [Method] Cancels all changes made in the current edit operation  */
@@ -9260,7 +9983,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -9368,7 +10096,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -9383,7 +10117,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -9414,14 +10154,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -9429,14 +10179,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -9534,7 +10295,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -9640,14 +10407,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -9659,7 +10436,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -9667,7 +10450,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Begins an edit  */
         beginEdit?(): void;
         /** [Method] Cancels all changes made in the current edit operation  */
@@ -9707,7 +10496,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -9815,7 +10609,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -9830,7 +10630,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -9861,14 +10667,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -9876,14 +10692,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -9981,7 +10808,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -10046,8 +10879,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IModelManager extends Ext.IAbstractManager {
-    }
+    export interface IModelManager extends Ext.IAbstractManager {}
     export class ModelManager {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -10142,8 +10974,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext {
-    export interface IModelMgr extends Ext.IAbstractManager {
-    }
+    export interface IModelMgr extends Ext.IAbstractManager {}
     export class ModelMgr {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -10238,8 +11069,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IModelManager extends Ext.IAbstractManager {
-    }
+    export interface IModelManager extends Ext.IAbstractManager {}
     export class ModelManager {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -10403,14 +11233,22 @@ declare namespace Ext.data {
          * @param deep Boolean true to search through nodes deeper than the immediate children.
          * @returns Ext.data.NodeInterface The found child or null if none was found.
          */
-        findChild?(attribute?: string, value?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChild?(
+            attribute?: string,
+            value?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Finds the first child by a custom function
          * @param fn Function A function which must return true if the passed Node is the required Node.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Node being tested.
          * @param deep Boolean True to search through nodes deeper than the immediate children.
          * @returns Ext.data.NodeInterface The found child or null if none was found.
          */
-        findChildBy?(fn?: any, scope?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChildBy?(
+            fn?: any,
+            scope?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Returns the child node at the specified index
          * @param index Number
          * @returns Ext.data.NodeInterface
@@ -10440,7 +11278,10 @@ declare namespace Ext.data {
          * @param refNode Ext.data.NodeInterface The node to insert before (if null the node is appended).
          * @returns Ext.data.NodeInterface The inserted node.
          */
-        insertBefore?(node?: Ext.data.INodeInterface, refNode?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        insertBefore?(
+            node?: Ext.data.INodeInterface,
+            refNode?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Insert a node into this node
          * @param index Number The zero-based index to insert the node at.
          * @param node Ext.data.Model The node to insert.
@@ -10503,13 +11344,19 @@ declare namespace Ext.data {
          * @param destroy Boolean true to destroy the node upon removal.
          * @returns Ext.data.NodeInterface The removed node.
          */
-        removeChild?(node?: Ext.data.INodeInterface, destroy?: boolean): Ext.data.INodeInterface;
+        removeChild?(
+            node?: Ext.data.INodeInterface,
+            destroy?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Replaces one child node in this node with another
          * @param newChild Ext.data.NodeInterface The replacement node.
          * @param oldChild Ext.data.NodeInterface The node to replace.
          * @returns Ext.data.NodeInterface The replaced node.
          */
-        replaceChild?(newChild?: Ext.data.INodeInterface, oldChild?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        replaceChild?(
+            newChild?: Ext.data.INodeInterface,
+            oldChild?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Sorts this nodes children using the supplied sort function
          * @param sortFn Function A function which, when passed two Nodes, returns -1, 0 or 1 depending upon required sort order.
          * @param recursive Boolean Whether or not to apply this sort recursively.
@@ -10630,14 +11477,22 @@ declare namespace Ext.data {
          * @param deep Boolean true to search through nodes deeper than the immediate children.
          * @returns Ext.data.NodeInterface The found child or null if none was found.
          */
-        findChild?(attribute?: string, value?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChild?(
+            attribute?: string,
+            value?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Finds the first child by a custom function
          * @param fn Function A function which must return true if the passed Node is the required Node.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Node being tested.
          * @param deep Boolean True to search through nodes deeper than the immediate children.
          * @returns Ext.data.NodeInterface The found child or null if none was found.
          */
-        findChildBy?(fn?: any, scope?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChildBy?(
+            fn?: any,
+            scope?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Returns the child node at the specified index
          * @param index Number
          * @returns Ext.data.NodeInterface
@@ -10667,7 +11522,10 @@ declare namespace Ext.data {
          * @param refNode Ext.data.NodeInterface The node to insert before (if null the node is appended).
          * @returns Ext.data.NodeInterface The inserted node.
          */
-        insertBefore?(node?: Ext.data.INodeInterface, refNode?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        insertBefore?(
+            node?: Ext.data.INodeInterface,
+            refNode?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Insert a node into this node
          * @param index Number The zero-based index to insert the node at.
          * @param node Ext.data.Model The node to insert.
@@ -10730,13 +11588,19 @@ declare namespace Ext.data {
          * @param destroy Boolean true to destroy the node upon removal.
          * @returns Ext.data.NodeInterface The removed node.
          */
-        removeChild?(node?: Ext.data.INodeInterface, destroy?: boolean): Ext.data.INodeInterface;
+        removeChild?(
+            node?: Ext.data.INodeInterface,
+            destroy?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Replaces one child node in this node with another
          * @param newChild Ext.data.NodeInterface The replacement node.
          * @param oldChild Ext.data.NodeInterface The node to replace.
          * @returns Ext.data.NodeInterface The replaced node.
          */
-        replaceChild?(newChild?: Ext.data.INodeInterface, oldChild?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        replaceChild?(
+            newChild?: Ext.data.INodeInterface,
+            oldChild?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Sorts this nodes children using the supplied sort function
          * @param sortFn Function A function which, when passed two Nodes, returns -1, 0 or 1 depending upon required sort order.
          * @param recursive Boolean Whether or not to apply this sort recursively.
@@ -11190,7 +12054,11 @@ declare namespace Ext.data.proxy {
          * @param scope Object
          * @returns Object
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): any;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): any;
         /** [Method] Returns the value of headers
          * @returns Object
          */
@@ -11258,7 +12126,11 @@ declare namespace Ext.data {
          * @param scope Object
          * @returns Object
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): any;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): any;
         /** [Method] Returns the value of headers
          * @returns Object
          */
@@ -11326,7 +12198,11 @@ declare namespace Ext.data {
          * @param scope Object
          * @returns Object
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): any;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): any;
         /** [Method] Returns the value of headers
          * @returns Object
          */
@@ -11537,7 +12413,11 @@ declare namespace Ext.data.proxy {
          * @param scope Object The scope to execute the callback in.
          * @returns Object
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): any;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): any;
         /** [Method] Returns the value of autoAppendParams
          * @returns Boolean
          */
@@ -11595,7 +12475,11 @@ declare namespace Ext.data {
          * @param scope Object The scope to execute the callback in.
          * @returns Object
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): any;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): any;
         /** [Method] Returns the value of autoAppendParams
          * @returns Boolean
          */
@@ -11631,12 +12515,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data.proxy {
-    export interface ILocalStorage extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ILocalStorage extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data {
-    export interface ILocalStorageProxy extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ILocalStorageProxy extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data.proxy {
     export interface IMemory extends Ext.data.proxy.IClient {
@@ -11649,13 +12531,21 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns the value of data
          * @returns Object
          */
@@ -11665,7 +12555,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function The callback to call when reading has completed
          * @param scope Object The scope to call the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets the value of data
          * @param data Object The new value.
          */
@@ -11675,7 +12569,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -11689,13 +12587,21 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns the value of data
          * @returns Object
          */
@@ -11705,7 +12611,11 @@ declare namespace Ext.data {
          * @param callback Function The callback to call when reading has completed
          * @param scope Object The scope to call the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets the value of data
          * @param data Object The new value.
          */
@@ -11715,7 +12625,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data.proxy {
@@ -11740,13 +12654,21 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns the value of batchActions
          * @returns Boolean
          */
@@ -11772,7 +12694,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets the value of batchActions
          * @param batchActions Boolean The new value.
          */
@@ -11798,7 +12724,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -11823,13 +12753,21 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns the value of batchActions
          * @returns Boolean
          */
@@ -11855,7 +12793,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets the value of batchActions
          * @param batchActions Boolean The new value.
          */
@@ -11881,7 +12823,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -11906,13 +12852,21 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns the value of batchActions
          * @returns Boolean
          */
@@ -11938,7 +12892,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets the value of batchActions
          * @param batchActions Boolean The new value.
          */
@@ -11964,7 +12922,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data.proxy {
@@ -12107,7 +13069,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function The callback function to call when the Operation has completed
          * @param scope Object The scope in which to execute the callback
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Encodes the array of Ext util Filter objects into a string to be sent in the request url
          * @param filters Ext.util.Filter[] The array of Filter objects
          * @returns String The encoded filters
@@ -12317,7 +13283,11 @@ declare namespace Ext.data {
          * @param callback Function The callback function to call when the Operation has completed
          * @param scope Object The scope in which to execute the callback
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Encodes the array of Ext util Filter objects into a string to be sent in the request url
          * @param filters Ext.util.Filter[] The array of Filter objects
          * @returns String The encoded filters
@@ -12472,12 +13442,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data.proxy {
-    export interface ISessionStorage extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ISessionStorage extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data {
-    export interface ISessionStorageProxy extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ISessionStorageProxy extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data.proxy {
     export interface ISql extends Ext.data.proxy.IClient {
@@ -12828,14 +13796,24 @@ declare namespace Ext.data.reader {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -12847,7 +13825,13 @@ declare namespace Ext.data.reader {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -12855,7 +13839,13 @@ declare namespace Ext.data.reader {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -12871,7 +13861,12 @@ declare namespace Ext.data.reader {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -12935,7 +13930,13 @@ declare namespace Ext.data.reader {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -12950,7 +13951,13 @@ declare namespace Ext.data.reader {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -12987,14 +13994,24 @@ declare namespace Ext.data.reader {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -13002,14 +14019,25 @@ declare namespace Ext.data.reader {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -13063,7 +14091,13 @@ declare namespace Ext.data.reader {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -13108,14 +14142,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -13127,7 +14171,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -13135,7 +14185,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -13151,7 +14207,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -13215,7 +14276,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -13230,7 +14297,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -13267,14 +14340,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -13282,14 +14365,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -13343,7 +14437,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -13388,14 +14488,24 @@ declare namespace Ext.data {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -13407,7 +14517,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -13415,7 +14531,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -13431,7 +14553,12 @@ declare namespace Ext.data {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -13495,7 +14622,13 @@ declare namespace Ext.data {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -13510,7 +14643,13 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -13547,14 +14686,24 @@ declare namespace Ext.data {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -13562,14 +14711,25 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -13623,7 +14783,13 @@ declare namespace Ext.data {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -13965,8 +15131,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface ISortTypes extends Ext.IBase {
-    }
+    export interface ISortTypes extends Ext.IBase {}
     export class SortTypes {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -14127,7 +15292,12 @@ declare namespace Ext.data {
          * @param anyMatch Boolean true to allow any match, false to anchor regex beginning with ^.
          * @param caseSensitive Boolean true to make the filtering regex case sensitive.
          */
-        filter?(filters?: any, value?: string, anyMatch?: boolean, caseSensitive?: boolean): void;
+        filter?(
+            filters?: any,
+            value?: string,
+            anyMatch?: boolean,
+            caseSensitive?: boolean,
+        ): void;
         /** [Method] Filter by a function
          * @param fn Function The function to be called. It will be passed the following parameters:
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this Store.
@@ -14163,7 +15333,11 @@ declare namespace Ext.data {
          * @param startIndex Number The index to start searching at.
          * @returns Number The matched index or -1.
          */
-        findExact?(fieldName?: string, value?: any, startIndex?: number): number;
+        findExact?(
+            fieldName?: string,
+            value?: any,
+            startIndex?: number,
+        ): number;
         /** [Method] Finds the first matching Record in this store by a specific field value
          * @param fieldName String The name of the Record field to test.
          * @param value String/RegExp Either a string that the field value should begin with, or a RegExp to test against the field.
@@ -14540,8 +15714,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IStoreManager extends Ext.util.ICollection {
-    }
+    export interface IStoreManager extends Ext.util.ICollection {}
     export class StoreManager {
         /** [Property] (Array) */
         static all: any[];
@@ -14646,7 +15819,12 @@ declare namespace Ext.data {
          * @param caseSensitive Object
          * @returns Array
          */
-        static filter(property?: any, value?: any, anyMatch?: any, caseSensitive?: any): any[];
+        static filter(
+            property?: any,
+            value?: any,
+            anyMatch?: any,
+            caseSensitive?: any,
+        ): any[];
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -14786,7 +15964,11 @@ declare namespace Ext.data {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        static insertSorter(index?: number, sorter?: any, defaultDirection?: string): void;
+        static insertSorter(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @returns Ext.util.Collection this
          */
@@ -14889,8 +16071,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext {
-    export interface IStoreMgr extends Ext.util.ICollection {
-    }
+    export interface IStoreMgr extends Ext.util.ICollection {}
     export class StoreMgr {
         /** [Property] (Array) */
         static all: any[];
@@ -14995,7 +16176,12 @@ declare namespace Ext {
          * @param caseSensitive Object
          * @returns Array
          */
-        static filter(property?: any, value?: any, anyMatch?: any, caseSensitive?: any): any[];
+        static filter(
+            property?: any,
+            value?: any,
+            anyMatch?: any,
+            caseSensitive?: any,
+        ): any[];
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -15135,7 +16321,11 @@ declare namespace Ext {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        static insertSorter(index?: number, sorter?: any, defaultDirection?: string): void;
+        static insertSorter(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @returns Ext.util.Collection this
          */
@@ -15238,8 +16428,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.data {
-    export interface IStoreMgr extends Ext.util.ICollection {
-    }
+    export interface IStoreMgr extends Ext.util.ICollection {}
     export class StoreMgr {
         /** [Property] (Array) */
         static all: any[];
@@ -15344,7 +16533,12 @@ declare namespace Ext.data {
          * @param caseSensitive Object
          * @returns Array
          */
-        static filter(property?: any, value?: any, anyMatch?: any, caseSensitive?: any): any[];
+        static filter(
+            property?: any,
+            value?: any,
+            anyMatch?: any,
+            caseSensitive?: any,
+        ): any[];
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -15484,7 +16678,11 @@ declare namespace Ext.data {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        static insertSorter(index?: number, sorter?: any, defaultDirection?: string): void;
+        static insertSorter(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @returns Ext.util.Collection this
          */
@@ -15587,8 +16785,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext {
-    export interface IStoreManager extends Ext.util.ICollection {
-    }
+    export interface IStoreManager extends Ext.util.ICollection {}
     export class StoreManager {
         /** [Property] (Array) */
         static all: any[];
@@ -15693,7 +16890,12 @@ declare namespace Ext {
          * @param caseSensitive Object
          * @returns Array
          */
-        static filter(property?: any, value?: any, anyMatch?: any, caseSensitive?: any): any[];
+        static filter(
+            property?: any,
+            value?: any,
+            anyMatch?: any,
+            caseSensitive?: any,
+        ): any[];
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -15833,7 +17035,11 @@ declare namespace Ext {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        static insertSorter(index?: number, sorter?: any, defaultDirection?: string): void;
+        static insertSorter(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @returns Ext.util.Collection this
          */
@@ -16023,8 +17229,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface ITypes extends Ext.IBase {
-    }
+    export interface ITypes extends Ext.IBase {}
     export class Types {
         /** [Property] (Object) */
         static AUTO: any;
@@ -16082,8 +17287,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IValidations extends Ext.IBase {
-    }
+    export interface IValidations extends Ext.IBase {}
     export class Validations {
         /** [Property] (String) */
         static emailMessage: string;
@@ -16734,7 +17938,11 @@ declare namespace Ext.dataview {
          * @param keepExisting Boolean
          * @param suppressEvent Boolean Set to false to not fire a select event.
          */
-        doSelect?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        doSelect?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Returns the template node the passed child belongs to or null if it doesn t belong to one  */
         findItemByChild?(): void;
         /** [Method] Returns the template node by the Ext EventObject or null if it is not found  */
@@ -16913,7 +18121,11 @@ declare namespace Ext.dataview {
          * @param keepExisting Boolean If true, the existing selection will be added to (if not, the old selection is replaced).
          * @param suppressEvent Boolean If true, the select event will not be fired.
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Selects all records
          * @param silent Boolean true to suppress all select events.
          */
@@ -16923,7 +18135,11 @@ declare namespace Ext.dataview {
          * @param endRecord Number The index of the last row in the range.
          * @param keepExisting Boolean true to retain existing selections.
          */
-        selectRange?(startRecord?: number, endRecord?: number, keepExisting?: boolean): void;
+        selectRange?(
+            startRecord?: number,
+            endRecord?: number,
+            keepExisting?: boolean,
+        ): void;
         /** [Method] Sets the value of allowDeselect
          * @param allowDeselect Boolean The new value.
          */
@@ -17022,7 +18238,10 @@ declare namespace Ext.dataview {
          * @param newRecord Ext.data.Record
          * @param oldRecord Ext.data.Record
          */
-        updateLastFocused?(newRecord?: Ext.data.IRecord, oldRecord?: Ext.data.IRecord): void;
+        updateLastFocused?(
+            newRecord?: Ext.data.IRecord,
+            oldRecord?: Ext.data.IRecord,
+        ): void;
     }
 }
 declare namespace Ext {
@@ -17112,7 +18331,11 @@ declare namespace Ext {
          * @param keepExisting Boolean
          * @param suppressEvent Boolean Set to false to not fire a select event.
          */
-        doSelect?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        doSelect?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Returns the template node the passed child belongs to or null if it doesn t belong to one  */
         findItemByChild?(): void;
         /** [Method] Returns the template node by the Ext EventObject or null if it is not found  */
@@ -17292,7 +18515,11 @@ declare namespace Ext {
          * @param keepExisting Boolean If true, the existing selection will be added to (if not, the old selection is replaced).
          * @param suppressEvent Boolean If true, the select event will not be fired.
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Selects all records
          * @param silent Boolean true to suppress all select events.
          */
@@ -17302,7 +18529,11 @@ declare namespace Ext {
          * @param endRecord Number The index of the last row in the range.
          * @param keepExisting Boolean true to retain existing selections.
          */
-        selectRange?(startRecord?: number, endRecord?: number, keepExisting?: boolean): void;
+        selectRange?(
+            startRecord?: number,
+            endRecord?: number,
+            keepExisting?: boolean,
+        ): void;
         /** [Method] Sets the value of allowDeselect
          * @param allowDeselect Boolean The new value.
          */
@@ -17401,7 +18632,10 @@ declare namespace Ext {
          * @param newRecord Ext.data.Record
          * @param oldRecord Ext.data.Record
          */
-        updateLastFocused?(newRecord?: Ext.data.IRecord, oldRecord?: Ext.data.IRecord): void;
+        updateLastFocused?(
+            newRecord?: Ext.data.IRecord,
+            oldRecord?: Ext.data.IRecord,
+        ): void;
     }
 }
 declare namespace Ext.dataview.element {
@@ -17733,7 +18967,9 @@ declare namespace Ext.dataview {
         /** [Method] Sets the value of preventSelectionOnDisclose
          * @param preventSelectionOnDisclose Boolean The new value.
          */
-        setPreventSelectionOnDisclose?(preventSelectionOnDisclose?: boolean): void;
+        setPreventSelectionOnDisclose?(
+            preventSelectionOnDisclose?: boolean,
+        ): void;
         /** [Method] Sets the value of refreshHeightOnUpdate
          * @param refreshHeightOnUpdate Boolean The new value.
          */
@@ -17941,7 +19177,9 @@ declare namespace Ext {
         /** [Method] Sets the value of preventSelectionOnDisclose
          * @param preventSelectionOnDisclose Boolean The new value.
          */
-        setPreventSelectionOnDisclose?(preventSelectionOnDisclose?: boolean): void;
+        setPreventSelectionOnDisclose?(
+            preventSelectionOnDisclose?: boolean,
+        ): void;
         /** [Method] Sets the value of refreshHeightOnUpdate
          * @param refreshHeightOnUpdate Boolean The new value.
          */
@@ -18169,7 +19407,9 @@ declare namespace Ext.dataview {
         /** [Method] Sets the value of clearSelectionOnListChange
          * @param clearSelectionOnListChange Boolean The new value.
          */
-        setClearSelectionOnListChange?(clearSelectionOnListChange?: boolean): void;
+        setClearSelectionOnListChange?(
+            clearSelectionOnListChange?: boolean,
+        ): void;
         /** [Method] Sets the value of detailCard
          * @param detailCard Ext.Component The new value.
          */
@@ -18427,7 +19667,9 @@ declare namespace Ext {
         /** [Method] Sets the value of clearSelectionOnListChange
          * @param clearSelectionOnListChange Boolean The new value.
          */
-        setClearSelectionOnListChange?(clearSelectionOnListChange?: boolean): void;
+        setClearSelectionOnListChange?(
+            clearSelectionOnListChange?: boolean,
+        ): void;
         /** [Method] Sets the value of detailCard
          * @param detailCard Ext.Component The new value.
          */
@@ -18499,8 +19741,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IDate extends Ext.IDateExtras {
-    }
+    export interface IDate extends Ext.IDateExtras {}
     export class Date {
         /** [Property] (String) */
         static DAY: string;
@@ -18693,8 +19934,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IDateExtras {
-    }
+    export interface IDateExtras {}
     export class DateExtras {
         /** [Property] (String) */
         static DAY: string;
@@ -18917,16 +20157,15 @@ declare namespace Ext.device.accelerometer {
     }
 }
 declare namespace Ext.device.accelerometer {
-    export interface ICordova extends Ext.device.accelerometer.IAbstract {
-    }
+    export interface ICordova extends Ext.device.accelerometer.IAbstract {}
 }
 declare namespace Ext.device.accelerometer {
-    export interface IPhoneGap extends Ext.device.accelerometer.IAbstract {
-    }
+    export interface IPhoneGap extends Ext.device.accelerometer.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface IAccelerometer extends Ext.IBase, Ext.device.accelerometer.IAbstract {
-    }
+    export interface IAccelerometer
+        extends Ext.IBase,
+            Ext.device.accelerometer.IAbstract {}
     export class Accelerometer {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -18972,8 +20211,7 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.accelerometer {
-    export interface ISimulator extends Ext.device.accelerometer.IAbstract {
-    }
+    export interface ISimulator extends Ext.device.accelerometer.IAbstract {}
 }
 declare namespace Ext.device.browser {
     export interface IAbstract extends Ext.IBase {
@@ -18996,8 +20234,7 @@ declare namespace Ext.device.browser {
     }
 }
 declare namespace Ext.device {
-    export interface IBrowser extends Ext.IBase, Ext.device.browser.IAbstract {
-    }
+    export interface IBrowser extends Ext.IBase, Ext.device.browser.IAbstract {}
     export class Browser {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -19041,12 +20278,10 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.browser {
-    export interface ISimulator extends Ext.IBase {
-    }
+    export interface ISimulator extends Ext.IBase {}
 }
 declare namespace Ext.device.browser {
-    export interface IWindow extends Ext.IEvented {
-    }
+    export interface IWindow extends Ext.IEvented {}
 }
 declare namespace Ext.device.camera {
     export interface IAbstract extends Ext.IBase {
@@ -19085,8 +20320,7 @@ declare namespace Ext.device.camera {
     }
 }
 declare namespace Ext.device {
-    export interface ICamera extends Ext.IBase, Ext.device.camera.IAbstract {
-    }
+    export interface ICamera extends Ext.IBase, Ext.device.camera.IAbstract {}
     export class Camera {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -19188,12 +20422,10 @@ declare namespace Ext.device.capture {
     }
 }
 declare namespace Ext.device.capture {
-    export interface ICordova extends Ext.IBase {
-    }
+    export interface ICordova extends Ext.IBase {}
 }
 declare namespace Ext.device {
-    export interface ICapture extends Ext.IBase, Ext.device.capture.IAbstract {
-    }
+    export interface ICapture extends Ext.IBase, Ext.device.capture.IAbstract {}
     export class Capture {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -19239,16 +20471,13 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.communicator {
-    export interface IAndroid extends Ext.device.communicator.IDefault {
-    }
+    export interface IAndroid extends Ext.device.communicator.IDefault {}
 }
 declare namespace Ext.device.communicator {
-    export interface IDefault extends Ext.IBase {
-    }
+    export interface IDefault extends Ext.IBase {}
 }
 declare namespace Ext.device {
-    export interface ICommunicator extends Ext.IBase {
-    }
+    export interface ICommunicator extends Ext.IBase {}
     export class Communicator {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -19300,16 +20529,13 @@ declare namespace Ext.device.compass {
     }
 }
 declare namespace Ext.device.compass {
-    export interface ICordova extends Ext.device.compass.IAbstract {
-    }
+    export interface ICordova extends Ext.device.compass.IAbstract {}
 }
 declare namespace Ext.device.compass {
-    export interface IPhoneGap extends Ext.device.compass.IAbstract {
-    }
+    export interface IPhoneGap extends Ext.device.compass.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface ICompass extends Ext.IBase, Ext.device.compass.IAbstract {
-    }
+    export interface ICompass extends Ext.IBase, Ext.device.compass.IAbstract {}
     export class Compass {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -19355,8 +20581,7 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.compass {
-    export interface ISimulator extends Ext.device.compass.IAbstract {
-    }
+    export interface ISimulator extends Ext.device.compass.IAbstract {}
 }
 declare namespace Ext.device.connection {
     export interface IAbstract extends Ext.IEvented, Ext.mixin.IObservable {
@@ -19380,14 +20605,24 @@ declare namespace Ext.device.connection {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -19399,7 +20634,13 @@ declare namespace Ext.device.connection {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19407,7 +20648,13 @@ declare namespace Ext.device.connection {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -19423,7 +20670,12 @@ declare namespace Ext.device.connection {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -19462,7 +20714,13 @@ declare namespace Ext.device.connection {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19477,7 +20735,13 @@ declare namespace Ext.device.connection {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -19504,14 +20768,24 @@ declare namespace Ext.device.connection {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -19519,14 +20793,25 @@ declare namespace Ext.device.connection {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -19556,7 +20841,13 @@ declare namespace Ext.device.connection {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -19598,8 +20889,9 @@ declare namespace Ext.device.connection {
     }
 }
 declare namespace Ext.device {
-    export interface IConnection extends Ext.IBase, Ext.device.connection.IAbstract {
-    }
+    export interface IConnection
+        extends Ext.IBase,
+            Ext.device.connection.IAbstract {}
     export class Connection {
         /** [Property] (String) */
         static CELL_2G: string;
@@ -19623,14 +20915,24 @@ declare namespace Ext.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -19642,7 +20944,13 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19650,7 +20958,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -19681,7 +20995,12 @@ declare namespace Ext.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -19734,7 +21053,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19749,21 +21074,37 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param object Object The Observable whose events this object is to relay.
          * @param events String/Array/Object Array of event names to relay.
@@ -19776,14 +21117,24 @@ declare namespace Ext.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -19791,14 +21142,25 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -19832,26 +21194,41 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.device.connection {
-    export interface ISencha extends Ext.device.connection.IAbstract {
-    }
+    export interface ISencha extends Ext.device.connection.IAbstract {}
 }
 declare namespace Ext.device.connection {
     export interface ISimulator extends Ext.device.connection.IAbstract {
@@ -19871,14 +21248,24 @@ declare namespace Ext.device.contacts {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -19890,7 +21277,13 @@ declare namespace Ext.device.contacts {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19898,7 +21291,13 @@ declare namespace Ext.device.contacts {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -19914,7 +21313,12 @@ declare namespace Ext.device.contacts {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -19960,7 +21364,13 @@ declare namespace Ext.device.contacts {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -19975,7 +21385,13 @@ declare namespace Ext.device.contacts {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -20002,14 +21418,24 @@ declare namespace Ext.device.contacts {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -20017,14 +21443,25 @@ declare namespace Ext.device.contacts {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -20050,7 +21487,13 @@ declare namespace Ext.device.contacts {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -20087,9 +21530,10 @@ declare namespace Ext.device.contacts {
 }
 declare namespace Ext.device {
     export interface IContacts
-        extends Ext.IBase, Ext.device.contacts.IAbstract, Ext.device.contacts.ISencha, Ext.device.contacts.ICordova
-    {
-    }
+        extends Ext.IBase,
+            Ext.device.contacts.IAbstract,
+            Ext.device.contacts.ISencha,
+            Ext.device.contacts.ICordova {}
     export class Contacts {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -20099,14 +21543,24 @@ declare namespace Ext.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -20118,7 +21572,13 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20126,7 +21586,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -20157,7 +21623,12 @@ declare namespace Ext.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -20217,7 +21688,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20232,21 +21709,37 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param object Object The Observable whose events this object is to relay.
          * @param events String/Array/Object Array of event names to relay.
@@ -20259,14 +21752,24 @@ declare namespace Ext.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -20274,14 +21777,25 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -20311,21 +21825,37 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.device.contacts {
@@ -20363,14 +21893,24 @@ declare namespace Ext.device.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -20382,7 +21922,13 @@ declare namespace Ext.device.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20390,7 +21936,13 @@ declare namespace Ext.device.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -20406,7 +21958,12 @@ declare namespace Ext.device.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -20433,7 +21990,13 @@ declare namespace Ext.device.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20448,7 +22011,13 @@ declare namespace Ext.device.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -20479,14 +22048,24 @@ declare namespace Ext.device.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -20494,14 +22073,25 @@ declare namespace Ext.device.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -20523,7 +22113,13 @@ declare namespace Ext.device.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -20561,8 +22157,7 @@ declare namespace Ext.device.device {
     }
 }
 declare namespace Ext.device {
-    export interface IDevice extends Ext.IBase, Ext.device.device.IAbstract {
-    }
+    export interface IDevice extends Ext.IBase, Ext.device.device.IAbstract {}
     export class Device {
         /** [Property] (String) */
         static name: string;
@@ -20580,14 +22175,24 @@ declare namespace Ext.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -20599,7 +22204,13 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20607,7 +22218,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -20638,7 +22255,12 @@ declare namespace Ext.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -20679,7 +22301,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -20694,21 +22322,37 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Opens a specified URL
          * @param url String The URL to open
          */
@@ -20725,14 +22369,24 @@ declare namespace Ext.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -20740,14 +22394,25 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -20773,21 +22438,37 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.device.device {
@@ -20799,8 +22480,7 @@ declare namespace Ext.device.device {
     }
 }
 declare namespace Ext.device.device {
-    export interface ISimulator extends Ext.device.device.IAbstract {
-    }
+    export interface ISimulator extends Ext.device.device.IAbstract {}
 }
 declare namespace Ext.device.filesystem {
     export interface IAbstract extends Ext.IBase {
@@ -20999,8 +22679,9 @@ declare namespace Ext.device.filesystem {
     }
 }
 declare namespace Ext.device {
-    export interface IFileSystem extends Ext.IBase, Ext.device.filesystem.ISencha {
-    }
+    export interface IFileSystem
+        extends Ext.IBase,
+            Ext.device.filesystem.ISencha {}
     export class FileSystem {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -21082,8 +22763,7 @@ declare namespace Ext.device.filesystem {
     }
 }
 declare namespace Ext.device.filesystem {
-    export interface ISimulator extends Ext.device.filesystem.IHTML5 {
-    }
+    export interface ISimulator extends Ext.device.filesystem.IHTML5 {}
 }
 declare namespace Ext.device.geolocation {
     export interface IAbstract extends Ext.IBase {
@@ -21168,8 +22848,9 @@ declare namespace Ext.device.geolocation {
     }
 }
 declare namespace Ext.device {
-    export interface IGeolocation extends Ext.IBase, Ext.device.geolocation.IAbstract {
-    }
+    export interface IGeolocation
+        extends Ext.IBase,
+            Ext.device.geolocation.IAbstract {}
     export class Geolocation {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -21284,14 +22965,24 @@ declare namespace Ext.device.globalization {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -21303,7 +22994,13 @@ declare namespace Ext.device.globalization {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21311,7 +23008,13 @@ declare namespace Ext.device.globalization {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -21327,7 +23030,12 @@ declare namespace Ext.device.globalization {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -21378,7 +23086,13 @@ declare namespace Ext.device.globalization {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21393,7 +23107,13 @@ declare namespace Ext.device.globalization {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -21420,14 +23140,24 @@ declare namespace Ext.device.globalization {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -21435,14 +23165,25 @@ declare namespace Ext.device.globalization {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -21488,7 +23229,13 @@ declare namespace Ext.device.globalization {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -21506,16 +23253,13 @@ declare namespace Ext.device.globalization {
     }
 }
 declare namespace Ext.device.globalization {
-    export interface ICordova extends Ext.device.globalization.IAbstract {
-    }
+    export interface ICordova extends Ext.device.globalization.IAbstract {}
 }
 declare namespace Ext.device.globalization {
-    export interface IPhoneGap extends Ext.device.globalization.IAbstract {
-    }
+    export interface IPhoneGap extends Ext.device.globalization.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface IGlobalization extends Ext.IBase {
-    }
+    export interface IGlobalization extends Ext.IBase {}
     export class Globalization {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -21553,8 +23297,7 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.globalization {
-    export interface ISimulator extends Ext.device.globalization.IAbstract {
-    }
+    export interface ISimulator extends Ext.device.globalization.IAbstract {}
 }
 declare namespace Ext.device.media {
     export interface IAbstract extends Ext.IBase, Ext.mixin.IObservable {
@@ -21564,14 +23307,24 @@ declare namespace Ext.device.media {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -21583,7 +23336,13 @@ declare namespace Ext.device.media {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21591,7 +23350,13 @@ declare namespace Ext.device.media {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -21607,7 +23372,12 @@ declare namespace Ext.device.media {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -21638,7 +23408,13 @@ declare namespace Ext.device.media {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21653,7 +23429,13 @@ declare namespace Ext.device.media {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -21680,14 +23462,24 @@ declare namespace Ext.device.media {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -21695,14 +23487,25 @@ declare namespace Ext.device.media {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -21728,7 +23531,13 @@ declare namespace Ext.device.media {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -21758,8 +23567,7 @@ declare namespace Ext.device.media {
     }
 }
 declare namespace Ext.device {
-    export interface IMedia extends Ext.IBase, Ext.device.media.IAbstract {
-    }
+    export interface IMedia extends Ext.IBase, Ext.device.media.IAbstract {}
     export class Media {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -21769,14 +23577,24 @@ declare namespace Ext.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -21788,7 +23606,13 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21796,7 +23620,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -21827,7 +23657,12 @@ declare namespace Ext.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -21872,7 +23707,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -21887,21 +23728,37 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param object Object The Observable whose events this object is to relay.
          * @param events String/Array/Object Array of event names to relay.
@@ -21914,14 +23771,24 @@ declare namespace Ext.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -21929,14 +23796,25 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -21966,21 +23844,37 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.device.notification {
@@ -22018,8 +23912,9 @@ declare namespace Ext.device.notification {
     }
 }
 declare namespace Ext.device {
-    export interface INotification extends Ext.IBase, Ext.device.notification.IAbstract {
-    }
+    export interface INotification
+        extends Ext.IBase,
+            Ext.device.notification.IAbstract {}
     export class Notification {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -22086,14 +23981,24 @@ declare namespace Ext.device.orientation {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -22105,7 +24010,13 @@ declare namespace Ext.device.orientation {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -22113,7 +24024,13 @@ declare namespace Ext.device.orientation {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -22129,7 +24046,12 @@ declare namespace Ext.device.orientation {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -22156,7 +24078,13 @@ declare namespace Ext.device.orientation {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -22171,7 +24099,13 @@ declare namespace Ext.device.orientation {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -22198,14 +24132,24 @@ declare namespace Ext.device.orientation {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -22213,14 +24157,25 @@ declare namespace Ext.device.orientation {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -22242,7 +24197,13 @@ declare namespace Ext.device.orientation {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -22260,12 +24221,12 @@ declare namespace Ext.device.orientation {
     }
 }
 declare namespace Ext.device.orientation {
-    export interface IHTML5 extends Ext.device.orientation.IAbstract {
-    }
+    export interface IHTML5 extends Ext.device.orientation.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface IOrientation extends Ext.IBase, Ext.device.orientation.IAbstract {
-    }
+    export interface IOrientation
+        extends Ext.IBase,
+            Ext.device.orientation.IAbstract {}
     export class Orientation {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -22275,14 +24236,24 @@ declare namespace Ext.device {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -22294,7 +24265,13 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -22302,7 +24279,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Call the original method that was previously overridden with override  This method is deprecated as callParent does
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -22333,7 +24316,12 @@ declare namespace Ext.device {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -22374,7 +24362,13 @@ declare namespace Ext.device {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -22389,21 +24383,37 @@ declare namespace Ext.device {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param object Object The Observable whose events this object is to relay.
          * @param events String/Array/Object Array of event names to relay.
@@ -22416,14 +24426,24 @@ declare namespace Ext.device {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -22431,14 +24451,25 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -22464,30 +24495,46 @@ declare namespace Ext.device {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.device.orientation {
-    export interface ISencha extends Ext.device.orientation.IAbstract {
-    }
+    export interface ISencha extends Ext.device.orientation.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface IPurchases extends Ext.IBase, Ext.device.purchases.ISencha {
-    }
+    export interface IPurchases
+        extends Ext.IBase,
+            Ext.device.purchases.ISencha {}
     export class Purchases {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -22617,8 +24664,7 @@ declare namespace Ext.device.push {
     }
 }
 declare namespace Ext.device {
-    export interface IPush extends Ext.IBase, Ext.device.push.IAbstract {
-    }
+    export interface IPush extends Ext.IBase, Ext.device.push.IAbstract {}
     export class Push {
         /** [Property] (Number) */
         static ALERT: number;
@@ -22672,20 +24718,16 @@ declare namespace Ext.device.push {
     }
 }
 declare namespace Ext.device.splashscreen {
-    export interface IAbstract extends Ext.IBase {
-    }
+    export interface IAbstract extends Ext.IBase {}
 }
 declare namespace Ext.device.splashscreen {
-    export interface ICordova extends Ext.device.splashscreen.IAbstract {
-    }
+    export interface ICordova extends Ext.device.splashscreen.IAbstract {}
 }
 declare namespace Ext.device.splashscreen {
-    export interface IPhoneGap extends Ext.device.splashscreen.IAbstract {
-    }
+    export interface IPhoneGap extends Ext.device.splashscreen.IAbstract {}
 }
 declare namespace Ext.device {
-    export interface ISplashscreen extends Ext.IBase {
-    }
+    export interface ISplashscreen extends Ext.IBase {}
     export class Splashscreen {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -22723,8 +24765,7 @@ declare namespace Ext.device {
     }
 }
 declare namespace Ext.device.splashscreen {
-    export interface ISimulator extends Ext.device.splashscreen.IAbstract {
-    }
+    export interface ISimulator extends Ext.device.splashscreen.IAbstract {}
 }
 declare namespace Ext.device.sqlite {
     export interface IDatabase extends Ext.IBase {
@@ -22747,8 +24788,7 @@ declare namespace Ext.device.sqlite {
     }
 }
 declare namespace Ext.device {
-    export interface ISQLite extends Ext.IBase, Ext.device.sqlite.ISencha {
-    }
+    export interface ISQLite extends Ext.IBase, Ext.device.sqlite.ISencha {}
     export class SQLite {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -22873,12 +24913,10 @@ declare namespace Ext.device.storage {
     }
 }
 declare namespace Ext.device.storage {
-    export interface ICordova extends Ext.device.storage.html5.IHTML5 {
-    }
+    export interface ICordova extends Ext.device.storage.html5.IHTML5 {}
 }
 declare namespace Ext.device.storage {
-    export interface IPhoneGap extends Ext.device.storage.html5.IHTML5 {
-    }
+    export interface IPhoneGap extends Ext.device.storage.html5.IHTML5 {}
 }
 declare namespace Ext.device.storage.html5 {
     export interface IDatabase extends Ext.IBase {
@@ -22891,16 +24929,13 @@ declare namespace Ext.device.storage.html5 {
     }
 }
 declare namespace Ext.device.storage.html5 {
-    export interface IHTML5 extends Ext.device.storage.IAbstract {
-    }
+    export interface IHTML5 extends Ext.device.storage.IAbstract {}
 }
 declare namespace Ext.device.storage.html5 {
-    export interface ISQLStatement extends Ext.IBase {
-    }
+    export interface ISQLStatement extends Ext.IBase {}
 }
 declare namespace Ext.device.storage {
-    export interface ISimulator extends Ext.device.storage.html5.IHTML5 {
-    }
+    export interface ISimulator extends Ext.device.storage.html5.IHTML5 {}
 }
 declare namespace Ext.device.tunnel {
     export interface IAbstract extends Ext.IBase {
@@ -22928,7 +24963,11 @@ declare namespace Ext.device.tunnel {
          * @param foreground Boolean Whether or not to bring the receiver app to the foreground
          * @returns Ext.Promise
          */
-        send?(receiverId?: string, message?: any, foreground?: boolean): Ext.IPromise;
+        send?(
+            receiverId?: string,
+            message?: any,
+            foreground?: boolean,
+        ): Ext.IPromise;
     }
 }
 declare namespace Ext.direct {
@@ -23043,8 +25082,7 @@ declare namespace Ext.direct {
     }
 }
 declare namespace Ext.direct {
-    export interface IManager extends Ext.IBase, Ext.mixin.IObservable {
-    }
+    export interface IManager extends Ext.IBase, Ext.mixin.IObservable {}
     export class Manager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -23054,14 +25092,24 @@ declare namespace Ext.direct {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -23073,7 +25121,13 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23081,7 +25135,13 @@ declare namespace Ext.direct {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds an Ext Direct Provider and creates the proxy or stub methods to execute server side methods
          * @param provider Ext.direct.Provider/Object... Accepts any number of Provider descriptions (an instance or config object for a Provider). Each Provider description instructs Ext.Direct how to create client-side stub methods.
          * @returns Object
@@ -23117,7 +25177,12 @@ declare namespace Ext.direct {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -23163,7 +25228,13 @@ declare namespace Ext.direct {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23178,21 +25249,37 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Parses a direct function
          * @param fn String/Function The direct function
          * @returns Function The function to use in the direct call. Null if not found
@@ -23210,14 +25297,24 @@ declare namespace Ext.direct {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -23225,14 +25322,25 @@ declare namespace Ext.direct {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the provider
          * @param provider String/Ext.direct.Provider The provider instance or the id of the provider.
          * @returns Ext.direct.Provider/null The provider, null if not found.
@@ -23263,26 +25371,41 @@ declare namespace Ext.direct {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext {
-    export interface IDirect extends Ext.IBase, Ext.mixin.IObservable {
-    }
+    export interface IDirect extends Ext.IBase, Ext.mixin.IObservable {}
     export class Direct {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -23292,14 +25415,24 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -23311,7 +25444,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23319,7 +25458,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds an Ext Direct Provider and creates the proxy or stub methods to execute server side methods
          * @param provider Ext.direct.Provider/Object... Accepts any number of Provider descriptions (an instance or config object for a Provider). Each Provider description instructs Ext.Direct how to create client-side stub methods.
          * @returns Object
@@ -23355,7 +25500,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -23401,7 +25551,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23416,21 +25572,37 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Parses a direct function
          * @param fn String/Function The direct function
          * @returns Function The function to use in the direct call. Null if not found
@@ -23448,14 +25620,24 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -23463,14 +25645,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the provider
          * @param provider String/Ext.direct.Provider The provider instance or the id of the provider.
          * @returns Ext.direct.Provider/null The provider, null if not found.
@@ -23501,21 +25694,37 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.direct {
@@ -23572,14 +25781,24 @@ declare namespace Ext.direct {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -23591,7 +25810,13 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23599,7 +25824,13 @@ declare namespace Ext.direct {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method] Abstract methods for subclasses to implement  */
@@ -23619,7 +25850,12 @@ declare namespace Ext.direct {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -23654,7 +25890,13 @@ declare namespace Ext.direct {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -23669,7 +25911,13 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -23696,14 +25944,24 @@ declare namespace Ext.direct {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -23711,14 +25969,25 @@ declare namespace Ext.direct {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -23744,7 +26013,13 @@ declare namespace Ext.direct {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -23999,12 +26274,10 @@ declare namespace Ext.direct {
     }
 }
 declare namespace Ext.dom {
-    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {
-    }
+    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {}
 }
 declare namespace Ext {
-    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {
-    }
+    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {}
 }
 declare namespace Ext.dom {
     export interface ICompositeElementLite extends Ext.IBase, Ext.dom.IElement {
@@ -24022,7 +26295,11 @@ declare namespace Ext.dom {
          * @param suffix String Suffix to append to each class.
          * @returns Ext.dom.Element this
          */
-        addCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        addCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] fixes scope with flyweight
          * @param eventName Object
          * @param handler Object
@@ -24030,7 +26307,12 @@ declare namespace Ext.dom {
          * @param opt Object
          * @returns Ext.dom.CompositeElementLite this
          */
-        addListener?(eventName?: any, handler?: any, scope?: any, opt?: any): Ext.dom.ICompositeElementLite;
+        addListener?(
+            eventName?: any,
+            handler?: any,
+            scope?: any,
+            opt?: any,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Appends the passed element s to this element
          * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
          * @returns Ext.dom.Element This element.
@@ -24065,7 +26347,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean true to return the dom node instead of creating an Element.
          * @returns Ext.dom.Element The new child element.
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Translates an element using CSS 3 in 2D  */
         cssTranslate?(): void;
         /** [Method] Removes this element s DOM reference  */
@@ -24098,14 +26384,22 @@ declare namespace Ext.dom {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParent?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParent?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param simpleSelector String The simple selector to test.
          * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParentNode?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParentNode?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Gets the x y coordinates to align this element with another element
          * @param element Mixed The element to align to.
          * @param position String The position to align to.
@@ -24272,7 +26566,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
          * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test.
          * @returns Boolean true if this element matches the selector, else false.
@@ -24338,13 +26636,20 @@ declare namespace Ext.dom {
          * @param suffix String Suffix to append to each class to be removed.
          * @returns Ext.dom.Element this
          */
-        removeCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        removeCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Removes the specified element s
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite or an array of any of those.
          * @param removeDom Boolean true to also remove the element from the document
          * @returns Ext.dom.CompositeElementLite this
          */
-        removeElement?(el?: any, removeDom?: boolean): Ext.dom.ICompositeElementLite;
+        removeElement?(
+            el?: any,
+            removeDom?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Forces the browser to repaint this element
          * @returns Ext.dom.Element this
          */
@@ -24361,14 +26666,23 @@ declare namespace Ext.dom {
          * @param suffix String Suffix to append to each class to be replaced.
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldName?: string, newName?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldName?: string,
+            newName?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces the specified element with the passed element
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
          * @param replacement String/Ext.Element The id of an element or the Element itself.
          * @param domReplace Boolean true to remove and replace the element in the document too.
          * @returns Ext.dom.CompositeElementLite this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.dom.ICompositeElementLite;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Replaces this element with the passed element
          * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
          * @returns Ext.dom.Element This element.
@@ -24379,7 +26693,10 @@ declare namespace Ext.dom {
          * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
          * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
          */
-        select?(selector?: any, composite?: boolean): Ext.dom.ICompositeElementLite;
+        select?(
+            selector?: any,
+            composite?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Serializes a DOM form into a url encoded string
          * @param form Object The form
          * @returns String The url encoded form
@@ -24546,7 +26863,11 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class.
          * @returns Ext.dom.Element this
          */
-        addCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        addCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] fixes scope with flyweight
          * @param eventName Object
          * @param handler Object
@@ -24554,7 +26875,12 @@ declare namespace Ext {
          * @param opt Object
          * @returns Ext.dom.CompositeElementLite this
          */
-        addListener?(eventName?: any, handler?: any, scope?: any, opt?: any): Ext.dom.ICompositeElementLite;
+        addListener?(
+            eventName?: any,
+            handler?: any,
+            scope?: any,
+            opt?: any,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Appends the passed element s to this element
          * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
          * @returns Ext.dom.Element This element.
@@ -24589,7 +26915,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the dom node instead of creating an Element.
          * @returns Ext.dom.Element The new child element.
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Translates an element using CSS 3 in 2D  */
         cssTranslate?(): void;
         /** [Method] Removes this element s DOM reference  */
@@ -24622,14 +26952,22 @@ declare namespace Ext {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParent?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParent?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param simpleSelector String The simple selector to test.
          * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParentNode?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParentNode?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Gets the x y coordinates to align this element with another element
          * @param element Mixed The element to align to.
          * @param position String The position to align to.
@@ -24796,7 +27134,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
          * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test.
          * @returns Boolean true if this element matches the selector, else false.
@@ -24862,13 +27204,20 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class to be removed.
          * @returns Ext.dom.Element this
          */
-        removeCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        removeCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Removes the specified element s
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite or an array of any of those.
          * @param removeDom Boolean true to also remove the element from the document
          * @returns Ext.dom.CompositeElementLite this
          */
-        removeElement?(el?: any, removeDom?: boolean): Ext.dom.ICompositeElementLite;
+        removeElement?(
+            el?: any,
+            removeDom?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Forces the browser to repaint this element
          * @returns Ext.dom.Element this
          */
@@ -24885,14 +27234,23 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class to be replaced.
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldName?: string, newName?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldName?: string,
+            newName?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces the specified element with the passed element
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
          * @param replacement String/Ext.Element The id of an element or the Element itself.
          * @param domReplace Boolean true to remove and replace the element in the document too.
          * @returns Ext.dom.CompositeElementLite this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.dom.ICompositeElementLite;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Replaces this element with the passed element
          * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
          * @returns Ext.dom.Element This element.
@@ -24903,7 +27261,10 @@ declare namespace Ext {
          * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
          * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
          */
-        select?(selector?: any, composite?: boolean): Ext.dom.ICompositeElementLite;
+        select?(
+            selector?: any,
+            composite?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Serializes a DOM form into a url encoded string
          * @param form Object The form
          * @returns String The url encoded form
@@ -25070,7 +27431,11 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class.
          * @returns Ext.dom.Element this
          */
-        addCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        addCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] fixes scope with flyweight
          * @param eventName Object
          * @param handler Object
@@ -25078,7 +27443,12 @@ declare namespace Ext {
          * @param opt Object
          * @returns Ext.dom.CompositeElementLite this
          */
-        addListener?(eventName?: any, handler?: any, scope?: any, opt?: any): Ext.dom.ICompositeElementLite;
+        addListener?(
+            eventName?: any,
+            handler?: any,
+            scope?: any,
+            opt?: any,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Appends the passed element s to this element
          * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
          * @returns Ext.dom.Element This element.
@@ -25113,7 +27483,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the dom node instead of creating an Element.
          * @returns Ext.dom.Element The new child element.
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Translates an element using CSS 3 in 2D  */
         cssTranslate?(): void;
         /** [Method] Removes this element s DOM reference  */
@@ -25146,14 +27520,22 @@ declare namespace Ext {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParent?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParent?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param simpleSelector String The simple selector to test.
          * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParentNode?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParentNode?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Gets the x y coordinates to align this element with another element
          * @param element Mixed The element to align to.
          * @param position String The position to align to.
@@ -25320,7 +27702,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
          * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test.
          * @returns Boolean true if this element matches the selector, else false.
@@ -25386,13 +27772,20 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class to be removed.
          * @returns Ext.dom.Element this
          */
-        removeCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        removeCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Removes the specified element s
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite or an array of any of those.
          * @param removeDom Boolean true to also remove the element from the document
          * @returns Ext.dom.CompositeElementLite this
          */
-        removeElement?(el?: any, removeDom?: boolean): Ext.dom.ICompositeElementLite;
+        removeElement?(
+            el?: any,
+            removeDom?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Forces the browser to repaint this element
          * @returns Ext.dom.Element this
          */
@@ -25409,14 +27802,23 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class to be replaced.
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldName?: string, newName?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldName?: string,
+            newName?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces the specified element with the passed element
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
          * @param replacement String/Ext.Element The id of an element or the Element itself.
          * @param domReplace Boolean true to remove and replace the element in the document too.
          * @returns Ext.dom.CompositeElementLite this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.dom.ICompositeElementLite;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Replaces this element with the passed element
          * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
          * @returns Ext.dom.Element This element.
@@ -25427,7 +27829,10 @@ declare namespace Ext {
          * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
          * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
          */
-        select?(selector?: any, composite?: boolean): Ext.dom.ICompositeElementLite;
+        select?(
+            selector?: any,
+            composite?: boolean,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Serializes a DOM form into a url encoded string
          * @param form Object The form
          * @returns String The url encoded form
@@ -25598,21 +28003,35 @@ declare namespace Ext.dom {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the given CSS class es to this Element
          * @param names String The CSS class(es) to add to this element.
          * @param prefix String Prefix to prepend to each class.
          * @param suffix String Suffix to append to each class.
          * @returns Ext.dom.Element this
          */
-        addCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        addCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -25624,7 +28043,13 @@ declare namespace Ext.dom {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -25632,7 +28057,13 @@ declare namespace Ext.dom {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends the passed element s to this element
          * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
          * @returns Ext.dom.Element This element.
@@ -25667,7 +28098,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean true to return the dom node instead of creating an Element.
          * @returns Ext.dom.Element The new child element.
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Translates an element using CSS 3 in 2D  */
         cssTranslate?(): void;
         /** [Method] Removes this element s DOM reference  */
@@ -25688,14 +28123,22 @@ declare namespace Ext.dom {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParent?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParent?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param simpleSelector String The simple selector to test.
          * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParentNode?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParentNode?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
          * @param eventName String The name of the event to fire.
          * @param args Array Arguments to pass to handers.
@@ -25703,7 +28146,12 @@ declare namespace Ext.dom {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -25886,7 +28334,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
          * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test.
          * @returns Boolean true if this element matches the selector, else false.
@@ -25920,7 +28372,13 @@ declare namespace Ext.dom {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -25941,7 +28399,13 @@ declare namespace Ext.dom {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -25994,7 +28458,12 @@ declare namespace Ext.dom {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         removeAllListeners?(): void;
         /** [Method] Removes a before event handler
@@ -26003,14 +28472,23 @@ declare namespace Ext.dom {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes the given CSS class es from this Element
          * @param names String The CSS class(es) to remove from this element.
          * @param prefix String Prefix to prepend to each class to be removed.
          * @param suffix String Suffix to append to each class to be removed.
          * @returns Ext.dom.Element this
          */
-        removeCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        removeCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -26018,14 +28496,25 @@ declare namespace Ext.dom {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Forces the browser to repaint this element
          * @returns Ext.dom.Element this
          */
@@ -26042,7 +28531,12 @@ declare namespace Ext.dom {
          * @param suffix String Suffix to append to each class to be replaced.
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldName?: string, newName?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldName?: string,
+            newName?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces this element with the passed element
          * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
          * @returns Ext.dom.Element This element.
@@ -26199,7 +28693,13 @@ declare namespace Ext.dom {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -26323,7 +28823,11 @@ declare namespace Ext.dom {
          * @param root HTMLElement/String The root element of the query or id of the root
          * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
          */
-        static select(selector?: any, composite?: boolean, root?: any): Ext.dom.ICompositeElementLite;
+        static select(
+            selector?: any,
+            composite?: boolean,
+            root?: any,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Serializes a DOM form into a url encoded string
          * @param form Object The form
          * @returns String The url encoded form
@@ -26362,21 +28866,35 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the given CSS class es to this Element
          * @param names String The CSS class(es) to add to this element.
          * @param prefix String Prefix to prepend to each class.
          * @param suffix String Suffix to append to each class.
          * @returns Ext.dom.Element this
          */
-        addCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        addCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -26388,7 +28906,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -26396,7 +28920,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends the passed element s to this element
          * @param element HTMLElement/Ext.dom.Element a DOM Node or an existing Element.
          * @returns Ext.dom.Element This element.
@@ -26431,7 +28961,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the dom node instead of creating an Element.
          * @returns Ext.dom.Element The new child element.
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Translates an element using CSS 3 in 2D  */
         cssTranslate?(): void;
         /** [Method] Removes this element s DOM reference  */
@@ -26452,14 +28986,22 @@ declare namespace Ext {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParent?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParent?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param simpleSelector String The simple selector to test.
          * @param maxDepth Number/String/HTMLElement/Ext.Element The max depth to search as a number or element (defaults to 10 || document.body).
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement/null The matching DOM node (or null if no match was found).
          */
-        findParentNode?(simpleSelector?: string, maxDepth?: any, returnEl?: boolean): any;
+        findParentNode?(
+            simpleSelector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters and execute a function action at the end if there are no liste
          * @param eventName String The name of the event to fire.
          * @param args Array Arguments to pass to handers.
@@ -26467,7 +29009,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -26650,7 +29197,11 @@ declare namespace Ext {
          * @param returnDom Boolean true to return the raw DOM element instead of Ext.dom.Element.
          * @returns Ext.dom.Element The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test.
          * @returns Boolean true if this element matches the selector, else false.
@@ -26684,7 +29235,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -26705,7 +29262,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -26758,7 +29321,12 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         removeAllListeners?(): void;
         /** [Method] Removes a before event handler
@@ -26767,14 +29335,23 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes the given CSS class es from this Element
          * @param names String The CSS class(es) to remove from this element.
          * @param prefix String Prefix to prepend to each class to be removed.
          * @param suffix String Suffix to append to each class to be removed.
          * @returns Ext.dom.Element this
          */
-        removeCls?(names?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        removeCls?(
+            names?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -26782,14 +29359,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Forces the browser to repaint this element
          * @returns Ext.dom.Element this
          */
@@ -26806,7 +29394,12 @@ declare namespace Ext {
          * @param suffix String Suffix to append to each class to be replaced.
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldName?: string, newName?: string, prefix?: string, suffix?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldName?: string,
+            newName?: string,
+            prefix?: string,
+            suffix?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces this element with the passed element
          * @param el String/HTMLElement/Ext.dom.Element/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create.
          * @returns Ext.dom.Element This element.
@@ -26963,7 +29556,13 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -27087,7 +29686,11 @@ declare namespace Ext {
          * @param root HTMLElement/String The root element of the query or id of the root
          * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
          */
-        static select(selector?: any, composite?: boolean, root?: any): Ext.dom.ICompositeElementLite;
+        static select(
+            selector?: any,
+            composite?: boolean,
+            root?: any,
+        ): Ext.dom.ICompositeElementLite;
         /** [Method] Serializes a DOM form into a url encoded string
          * @param form Object The form
          * @returns String The url encoded form
@@ -27263,8 +29866,7 @@ declare namespace Ext.dom {
     }
 }
 declare namespace Ext {
-    export interface IDomQuery extends Ext.dom.IQuery {
-    }
+    export interface IDomQuery extends Ext.dom.IQuery {}
     export class DomQuery {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -27320,8 +29922,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.core {
-    export interface IDomQuery extends Ext.dom.IQuery {
-    }
+    export interface IDomQuery extends Ext.dom.IQuery {}
     export class DomQuery {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -27377,8 +29978,7 @@ declare namespace Ext.core {
     }
 }
 declare namespace Ext.draw {
-    export interface IAnimator extends Ext.IBase {
-    }
+    export interface IAnimator extends Ext.IBase {}
     export class Animator {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -27526,7 +30126,12 @@ declare namespace Ext.draw {
          * @param alpha Number Alpha component (0..1)
          * @returns Ext.draw.Color
          */
-        static create(red?: any, green?: number, blue?: number, alpha?: number): Ext.draw.IColor;
+        static create(
+            red?: any,
+            green?: number,
+            blue?: number,
+            alpha?: number,
+        ): Ext.draw.IColor;
         /** [Method] Create aliases for existing prototype methods
          * @param alias String/Object The new method name, or an object to set multiple aliases. See flexSetter
          * @param origin String/Object The original method name
@@ -27539,7 +30144,12 @@ declare namespace Ext.draw {
          * @param alpha Number Alpha component (0..1)
          * @returns Ext.draw.Color
          */
-        static fly(red?: any, green?: number, blue?: number, alpha?: number): Ext.draw.IColor;
+        static fly(
+            red?: any,
+            green?: number,
+            blue?: number,
+            alpha?: number,
+        ): Ext.draw.IColor;
         /** [Method] Create a new color based on the specified HSL values
          * @param h Number Hue component (0..359)
          * @param s Number Saturation component (0..1)
@@ -27659,8 +30269,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface IDraw extends Ext.IBase {
-    }
+    export interface IDraw extends Ext.IBase {}
     export class Draw {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -27702,7 +30311,11 @@ declare namespace Ext.draw {
          * @param padding Number
          * @returns Boolean
          */
-        static isBBoxIntersect(bbox1?: any, bbox2?: any, padding?: number): boolean;
+        static isBBoxIntersect(
+            bbox1?: any,
+            bbox2?: any,
+            padding?: number,
+        ): boolean;
         /** [Method] Converting degrees to radians
          * @param degrees Number
          * @returns Number
@@ -27864,7 +30477,14 @@ declare namespace Ext.draw.engine {
          * @param x3 Number
          * @param y3 Number
          */
-        bezierCurveTo?(x1?: number, y1?: number, x2?: number, y2?: number, x3?: number, y3?: number): void;
+        bezierCurveTo?(
+            x1?: number,
+            y1?: number,
+            x2?: number,
+            y2?: number,
+            x3?: number,
+            y3?: number,
+        ): void;
         /** [Method] Clears the context  */
         clear?(): void;
         /** [Method] Marks the current subpath as closed and starts a new subpath with a point the same as the start and end of the newly  */
@@ -27876,7 +30496,12 @@ declare namespace Ext.draw.engine {
          * @param y1 Number
          * @returns Ext.draw.engine.SvgContext.Gradient
          */
-        createLinearGradient?(x0?: number, y0?: number, x1?: number, y1?: number): Ext.draw.engine.svgcontext.IGradient;
+        createLinearGradient?(
+            x0?: number,
+            y0?: number,
+            x1?: number,
+            y1?: number,
+        ): Ext.draw.engine.svgcontext.IGradient;
         /** [Method] Returns a CanvasGradient object that represents a radial gradient that paints along the cone given by the circles rep
          * @param x0 Number
          * @param y0 Number
@@ -27944,7 +30569,12 @@ declare namespace Ext.draw.engine {
          * @param width Number
          * @param height Number
          */
-        fillRect?(x?: number, y?: number, width?: number, height?: number): void;
+        fillRect?(
+            x?: number,
+            y?: number,
+            width?: number,
+            height?: number,
+        ): void;
         /** [Method] Note After the method guarantees the transform matrix will be inverted
          * @param attr Object The attribute object
          * @param transformFillStroke Boolean Indicate whether to transform fill and stroke. If this is not given, then uses attr.transformFillStroke instead.
@@ -27985,7 +30615,14 @@ declare namespace Ext.draw.engine {
          * @param dx Number
          * @param dy Number
          */
-        setTransform?(xx?: number, yx?: number, xy?: number, yy?: number, dx?: number, dy?: number): void;
+        setTransform?(
+            xx?: number,
+            yx?: number,
+            xy?: number,
+            yy?: number,
+            dx?: number,
+            dy?: number,
+        ): void;
         /** [Method] Strokes the subpaths of the current default path or the given path with the current stroke style  */
         stroke?(): void;
         /** [Method] Paints the box that outlines the given rectangle onto the canvas using the current stroke style
@@ -27994,7 +30631,12 @@ declare namespace Ext.draw.engine {
          * @param width Number
          * @param height Number
          */
-        strokeRect?(x?: number, y?: number, width?: number, height?: number): void;
+        strokeRect?(
+            x?: number,
+            y?: number,
+            width?: number,
+            height?: number,
+        ): void;
         /** [Method] Strokes the given text at the given position
          * @param text String
          * @param x Number
@@ -28009,7 +30651,14 @@ declare namespace Ext.draw.engine {
          * @param dx Number
          * @param dy Number
          */
-        transform?(xx?: number, yx?: number, xy?: number, yy?: number, dx?: number, dy?: number): void;
+        transform?(
+            xx?: number,
+            yx?: number,
+            xy?: number,
+            yy?: number,
+            dx?: number,
+            dy?: number,
+        ): void;
     }
 }
 declare namespace Ext.draw.gradient {
@@ -28082,7 +30731,12 @@ declare namespace Ext.draw {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Add a list of sprites to group
          * @param sprites Array|Ext.draw.sprite.Sprite
          */
@@ -28093,7 +30747,12 @@ declare namespace Ext.draw {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -28105,7 +30764,13 @@ declare namespace Ext.draw {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -28113,7 +30778,13 @@ declare namespace Ext.draw {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Clear the group
          * @param destroySprite Boolean
          */
@@ -28137,7 +30808,12 @@ declare namespace Ext.draw {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -28186,7 +30862,13 @@ declare namespace Ext.draw {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -28201,7 +30883,13 @@ declare namespace Ext.draw {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -28226,21 +30914,34 @@ declare namespace Ext.draw {
          * @param sprite Ext.draw.sprite.Sprite
          * @param destroySprite Boolean
          */
-        remove?(sprite?: Ext.draw.sprite.ISprite, destroySprite?: boolean): void;
+        remove?(
+            sprite?: Ext.draw.sprite.ISprite,
+            destroySprite?: boolean,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -28248,14 +30949,25 @@ declare namespace Ext.draw {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -28291,7 +31003,13 @@ declare namespace Ext.draw {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -28364,7 +31082,14 @@ declare namespace Ext.draw {
          * @param dy Number Offset of y.
          * @returns Ext.draw.Matrix this
          */
-        append?(xx?: number, xy?: number, yx?: number, yy?: number, dx?: number, dy?: number): Ext.draw.IMatrix;
+        append?(
+            xx?: number,
+            xy?: number,
+            yx?: number,
+            yy?: number,
+            dx?: number,
+            dy?: number,
+        ): Ext.draw.IMatrix;
         /** [Method] Postpend a matrix onto the current
          * @param matrix Ext.draw.Matrix
          * @returns Ext.draw.Matrix this
@@ -28442,7 +31167,14 @@ declare namespace Ext.draw {
          * @param dy Number Offset of y.
          * @returns Ext.draw.Matrix this
          */
-        prepend?(xx?: number, xy?: number, yx?: number, yy?: number, dx?: number, dy?: number): Ext.draw.IMatrix;
+        prepend?(
+            xx?: number,
+            xy?: number,
+            yx?: number,
+            yy?: number,
+            dx?: number,
+            dy?: number,
+        ): Ext.draw.IMatrix;
         /** [Method] Prepend a matrix onto the current
          * @param matrix Ext.draw.Matrix
          * @returns Ext.draw.Matrix this
@@ -28459,14 +31191,23 @@ declare namespace Ext.draw {
          * @param prepend Boolean If true, this will transformation be prepended to the matrix.
          * @returns Ext.draw.Matrix this
          */
-        rotate?(angle?: number, rcx?: any, rcy?: any, prepend?: boolean): Ext.draw.IMatrix;
+        rotate?(
+            angle?: number,
+            rcx?: any,
+            rcy?: any,
+            prepend?: boolean,
+        ): Ext.draw.IMatrix;
         /** [Method] Rotate the matrix by the angle of a vector
          * @param x Number
          * @param y Number
          * @param prepend Boolean If true, this will transformation be prepended to the matrix.
          * @returns Ext.draw.Matrix this
          */
-        rotateFromVector?(x?: number, y?: number, prepend?: boolean): Ext.draw.IMatrix;
+        rotateFromVector?(
+            x?: number,
+            y?: number,
+            prepend?: boolean,
+        ): Ext.draw.IMatrix;
         /** [Method] Scale the matrix
          * @param sx Number
          * @param sy Number
@@ -28475,7 +31216,13 @@ declare namespace Ext.draw {
          * @param prepend Boolean If true, this will transformation be prepended to the matrix.
          * @returns Ext.draw.Matrix this
          */
-        scale?(sx?: number, sy?: number, scx?: number, scy?: number, prepend?: boolean): Ext.draw.IMatrix;
+        scale?(
+            sx?: number,
+            sy?: number,
+            scx?: number,
+            scy?: number,
+            prepend?: boolean,
+        ): Ext.draw.IMatrix;
         /** [Method] Set the elements of a Matrix
          * @param xx Number
          * @param xy Number
@@ -28485,7 +31232,14 @@ declare namespace Ext.draw {
          * @param dy Number
          * @returns Ext.draw.Matrix this
          */
-        set?(xx?: number, xy?: number, yx?: number, yy?: number, dx?: number, dy?: number): Ext.draw.IMatrix;
+        set?(
+            xx?: number,
+            xy?: number,
+            yx?: number,
+            yy?: number,
+            dx?: number,
+            dy?: number,
+        ): Ext.draw.IMatrix;
         /** [Method] Skew the matrix
          * @param angle Number
          * @returns Ext.draw.Matrix this
@@ -28639,7 +31393,9 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw.modifier {
-    export interface IAnimation extends Ext.draw.modifier.IModifier, Ext.mixin.IObservable {
+    export interface IAnimation
+        extends Ext.draw.modifier.IModifier,
+            Ext.mixin.IObservable {
         /** [Config Option] (Object) */
         customDuration?: any;
         /** [Config Option] (Object) */
@@ -28654,14 +31410,24 @@ declare namespace Ext.draw.modifier {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -28673,7 +31439,13 @@ declare namespace Ext.draw.modifier {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -28681,7 +31453,13 @@ declare namespace Ext.draw.modifier {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Remove special easings on the given attributes
          * @param attrs Object The source attributes.
          */
@@ -28705,7 +31483,12 @@ declare namespace Ext.draw.modifier {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -28748,7 +31531,13 @@ declare namespace Ext.draw.modifier {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -28763,7 +31552,13 @@ declare namespace Ext.draw.modifier {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -28805,14 +31600,24 @@ declare namespace Ext.draw.modifier {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -28820,14 +31625,25 @@ declare namespace Ext.draw.modifier {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -28877,7 +31693,13 @@ declare namespace Ext.draw.modifier {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -29034,7 +31856,15 @@ declare namespace Ext.draw {
          * @param x2 Number
          * @param y2 Number
          */
-        arcSvg?(rx?: number, ry?: number, rotation?: number, fA?: number, fS?: number, x2?: number, y2?: number): void;
+        arcSvg?(
+            rx?: number,
+            ry?: number,
+            rotation?: number,
+            fA?: number,
+            fS?: number,
+            x2?: number,
+            y2?: number,
+        ): void;
         /** [Method] Create a elliptic arc curve compatible with SVG s arc to instruction
          * @param x1 Number
          * @param y1 Number
@@ -29044,7 +31874,15 @@ declare namespace Ext.draw {
          * @param ry Number
          * @param rotation Number
          */
-        arcTo?(x1?: number, y1?: number, x2?: number, y2?: number, rx?: number, ry?: number, rotation?: number): void;
+        arcTo?(
+            x1?: number,
+            y1?: number,
+            x2?: number,
+            y2?: number,
+            rx?: number,
+            ry?: number,
+            rotation?: number,
+        ): void;
         /** [Method] A cubic bezier curve to a position
          * @param cx1 Number
          * @param cy1 Number
@@ -29053,7 +31891,14 @@ declare namespace Ext.draw {
          * @param x Number
          * @param y Number
          */
-        bezierCurveTo?(cx1?: number, cy1?: number, cx2?: number, cy2?: number, x?: number, y?: number): void;
+        bezierCurveTo?(
+            cx1?: number,
+            cy1?: number,
+            cx2?: number,
+            cy2?: number,
+            x?: number,
+            y?: number,
+        ): void;
         /** [Method] Clear the path  */
         clear?(): void;
         /** [Method] Clone this path
@@ -29100,7 +31945,10 @@ declare namespace Ext.draw {
          * @param target Object Optional object to receive the result.
          * @returns Object An object with x, y, width and height.
          */
-        getDimensionWithTransform?(matrix?: Ext.draw.IMatrix, target?: any): any;
+        getDimensionWithTransform?(
+            matrix?: Ext.draw.IMatrix,
+            target?: any,
+        ): any;
         /** [Method] Test whether the given point is on or inside the path
          * @param x Number
          * @param y Number
@@ -29123,7 +31971,12 @@ declare namespace Ext.draw {
          * @param x Number
          * @param y Number
          */
-        quadraticCurveTo?(cx?: number, cy?: number, x?: number, y?: number): void;
+        quadraticCurveTo?(
+            cx?: number,
+            cy?: number,
+            x?: number,
+            y?: number,
+        ): void;
         /** [Method] Draw a rectangle and close it
          * @param x Number
          * @param y Number
@@ -29166,7 +32019,13 @@ declare namespace Ext.draw {
          * @param dataLow Number
          * @param dataClose Number
          */
-        setData?(dataX?: number, dataOpen?: number, dataHigh?: number, dataLow?: number, dataClose?: number): void;
+        setData?(
+            dataX?: number,
+            dataOpen?: number,
+            dataHigh?: number,
+            dataLow?: number,
+            dataClose?: number,
+        ): void;
         /** [Method] Sets the value of strategy
          * @param strategy String The new value.
          */
@@ -29174,8 +32033,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface ISolver extends Ext.IBase {
-    }
+    export interface ISolver extends Ext.IBase {}
     export class Solver {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -29200,7 +32058,12 @@ declare namespace Ext.draw {
          * @param c Number
          * @param d Number
          */
-        static cubicFunction(a?: number, b?: number, c?: number, d?: number): void;
+        static cubicFunction(
+            a?: number,
+            b?: number,
+            c?: number,
+            d?: number,
+        ): void;
         /** [Method] Cubic root of number
          * @param number Number
          */
@@ -29235,8 +32098,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw.sprite {
-    export interface IAnimationParser extends Ext.IBase {
-    }
+    export interface IAnimationParser extends Ext.IBase {}
     export class AnimationParser {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -29350,8 +32212,7 @@ declare namespace Ext.draw.sprite {
     }
 }
 declare namespace Ext.draw.sprite {
-    export interface IAttributeParser extends Ext.IBase {
-    }
+    export interface IAttributeParser extends Ext.IBase {}
     export class AttributeParser {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -29494,7 +32355,12 @@ declare namespace Ext.draw.sprite {
          * @param avoidCopy Boolean 'true' to avoid copying.
          * @returns Object The attributes of the instance.
          */
-        createInstance?(config?: any, data?: any, bypassNormalization?: boolean, avoidCopy?: boolean): any;
+        createInstance?(
+            config?: any,
+            data?: any,
+            bypassNormalization?: boolean,
+            avoidCopy?: boolean,
+        ): any;
         /** [Method] Removes the sprite and clears all listeners  */
         destroy?(): void;
         /** [Method] Not supported
@@ -29524,7 +32390,11 @@ declare namespace Ext.draw.sprite {
          * @param changes Object the attributes to change
          * @param bypassNormalization Boolean 'true' to avoid attribute normalization
          */
-        setAttributesFor?(index?: number, changes?: any, bypassNormalization?: boolean): void;
+        setAttributesFor?(
+            index?: number,
+            changes?: any,
+            bypassNormalization?: boolean,
+        ): void;
         /** [Method] Sets the value of template
          * @param template Object The new value.
          */
@@ -29671,14 +32541,24 @@ declare namespace Ext.draw.sprite {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -29690,7 +32570,13 @@ declare namespace Ext.draw.sprite {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -29698,7 +32584,13 @@ declare namespace Ext.draw.sprite {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method] Removes the sprite and clears all listeners  */
@@ -29714,7 +32606,12 @@ declare namespace Ext.draw.sprite {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -29758,7 +32655,13 @@ declare namespace Ext.draw.sprite {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -29773,7 +32676,13 @@ declare namespace Ext.draw.sprite {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -29802,14 +32711,24 @@ declare namespace Ext.draw.sprite {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -29817,14 +32736,25 @@ declare namespace Ext.draw.sprite {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Render method
          * @param surface Ext.draw.Surface The surface.
          * @param ctx Object A context object compatible with CanvasRenderingContext2D.
@@ -29841,12 +32771,19 @@ declare namespace Ext.draw.sprite {
          * @param bypassNormalization Boolean true to avoid normalization of the given changes.
          * @param avoidCopy Boolean true to avoid copying the changes object. The content of object may be destroyed.
          */
-        setAttributes?(changes?: any, bypassNormalization?: boolean, avoidCopy?: boolean): void;
+        setAttributes?(
+            changes?: any,
+            bypassNormalization?: boolean,
+            avoidCopy?: boolean,
+        ): void;
         /** [Method] Set attributes of the sprite assuming the names and values have already been normalized
          * @param changes Object The content of the change.
          * @param avoidCopy Boolean true to avoid copying the changes object. The content of object may be destroyed.
          */
-        setAttributesBypassingNormalization?(changes?: any, avoidCopy?: boolean): void;
+        setAttributesBypassingNormalization?(
+            changes?: any,
+            avoidCopy?: boolean,
+        ): void;
         /** [Method] Sets the value of bubbleEvents
          * @param bubbleEvents String/String[] The new value.
          */
@@ -29872,7 +32809,13 @@ declare namespace Ext.draw.sprite {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -29964,7 +32907,10 @@ declare namespace Ext.draw {
          * @param isWithoutTransform Boolean
          * @returns Object
          */
-        getBBox?(sprite?: Ext.draw.sprite.ISprite, isWithoutTransform?: boolean): any;
+        getBBox?(
+            sprite?: Ext.draw.sprite.ISprite,
+            isWithoutTransform?: boolean,
+        ): any;
         /** [Method] Returns the value of background
          * @returns Object
          */
@@ -29998,7 +32944,10 @@ declare namespace Ext.draw {
          * @param sprite Ext.draw.sprite.Sprite
          * @param destroySprite Boolean
          */
-        remove?(sprite?: Ext.draw.sprite.ISprite, destroySprite?: boolean): void;
+        remove?(
+            sprite?: Ext.draw.sprite.ISprite,
+            destroySprite?: boolean,
+        ): void;
         /** [Method] Remove all sprites from the surface optionally destroying the sprites in the process  */
         removeAll?(): void;
         /** [Method] Triggers the re rendering of the canvas  */
@@ -30072,8 +33021,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface ITextMeasurer extends Ext.IBase {
-    }
+    export interface ITextMeasurer extends Ext.IBase {}
     export class TextMeasurer {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -30123,8 +33071,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface ITimingFunctions extends Ext.IBase {
-    }
+    export interface ITimingFunctions extends Ext.IBase {}
     export class TimingFunctions {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -30185,8 +33132,7 @@ declare namespace Ext.env {
     }
 }
 declare namespace Ext.env {
-    export interface IFeature extends Ext.IBase {
-    }
+    export interface IFeature extends Ext.IBase {}
 }
 declare namespace Ext.env {
     export interface IOS extends Ext.IBase {
@@ -30202,8 +33148,7 @@ declare namespace Ext.env {
     }
 }
 declare namespace Ext.event {
-    export interface IController extends Ext.IBase {
-    }
+    export interface IController extends Ext.IBase {}
 }
 declare namespace Ext.event {
     export interface IDispatcher extends Ext.IBase {
@@ -30241,7 +33186,11 @@ declare namespace Ext.event {
          * @param returnEl Boolean true to return a Ext.Element object instead of DOM node.
          * @returns HTMLElement
          */
-        getTarget?(selector?: string, maxDepth?: any, returnEl?: boolean): HTMLElement;
+        getTarget?(
+            selector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): HTMLElement;
         /** [Method] Returns the time of the event
          * @returns Date
          */
@@ -30299,36 +33248,29 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.event {
-    export interface IListenerStack extends Ext.IBase {
-    }
+    export interface IListenerStack extends Ext.IBase {}
 }
 declare namespace Ext.event.publisher {
-    export interface IComponentDelegation extends Ext.event.publisher.IPublisher {
-    }
+    export interface IComponentDelegation
+        extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IComponentPaint extends Ext.event.publisher.IPublisher {
-    }
+    export interface IComponentPaint extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IComponentSize extends Ext.event.publisher.IPublisher {
-    }
+    export interface IComponentSize extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IDom extends Ext.event.publisher.IPublisher {
-    }
+    export interface IDom extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IElementPaint extends Ext.event.publisher.IPublisher {
-    }
+    export interface IElementPaint extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IElementSize extends Ext.event.publisher.IPublisher {
-    }
+    export interface IElementSize extends Ext.event.publisher.IPublisher {}
 }
 declare namespace Ext.event.publisher {
-    export interface IPublisher extends Ext.IBase {
-    }
+    export interface IPublisher extends Ext.IBase {}
 }
 declare namespace Ext.event.publisher {
     export interface ITouchGesture extends Ext.event.publisher.IDom {
@@ -30389,8 +33331,7 @@ declare namespace Ext.event.recognizer {
     }
 }
 declare namespace Ext.event.recognizer {
-    export interface IHorizontalSwipe extends Ext.event.recognizer.ISwipe {
-    }
+    export interface IHorizontalSwipe extends Ext.event.recognizer.ISwipe {}
 }
 declare namespace Ext.event.recognizer {
     export interface ILongPress extends Ext.event.recognizer.ISingleTouch {
@@ -30405,12 +33346,10 @@ declare namespace Ext.event.recognizer {
     }
 }
 declare namespace Ext.event.recognizer {
-    export interface IMultiTouch extends Ext.event.recognizer.ITouch {
-    }
+    export interface IMultiTouch extends Ext.event.recognizer.ITouch {}
 }
 declare namespace Ext.event.recognizer {
-    export interface IPinch extends Ext.event.recognizer.IMultiTouch {
-    }
+    export interface IPinch extends Ext.event.recognizer.IMultiTouch {}
 }
 declare namespace Ext.event.recognizer {
     export interface IRecognizer extends Ext.IBase, Ext.mixin.IIdentifiable {
@@ -30445,12 +33384,10 @@ declare namespace Ext.event.recognizer {
     }
 }
 declare namespace Ext.event.recognizer {
-    export interface IRotate extends Ext.event.recognizer.IMultiTouch {
-    }
+    export interface IRotate extends Ext.event.recognizer.IMultiTouch {}
 }
 declare namespace Ext.event.recognizer {
-    export interface ISingleTouch extends Ext.event.recognizer.ITouch {
-    }
+    export interface ISingleTouch extends Ext.event.recognizer.ITouch {}
 }
 declare namespace Ext.event.recognizer {
     export interface ISwipe extends Ext.event.recognizer.ISingleTouch {
@@ -30495,16 +33432,13 @@ declare namespace Ext.event.recognizer {
     }
 }
 declare namespace Ext.event.recognizer {
-    export interface ITouch extends Ext.event.recognizer.IRecognizer {
-    }
+    export interface ITouch extends Ext.event.recognizer.IRecognizer {}
 }
 declare namespace Ext.event.recognizer {
-    export interface IVerticalSwipe extends Ext.event.recognizer.ISwipe {
-    }
+    export interface IVerticalSwipe extends Ext.event.recognizer.ISwipe {}
 }
 declare namespace Ext.event {
-    export interface ITouch extends Ext.event.IDom {
-    }
+    export interface ITouch extends Ext.event.IDom {}
 }
 declare namespace Ext {
     export interface IEvented extends Ext.IBase, Ext.mixin.IObservable {
@@ -30514,14 +33448,24 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -30533,7 +33477,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -30541,7 +33491,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -30557,7 +33513,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -30584,7 +33545,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -30599,7 +33566,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -30626,14 +33599,24 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -30641,14 +33624,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -30670,7 +33664,13 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -30695,14 +33695,24 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -30714,7 +33724,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -30722,7 +33738,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -30738,7 +33760,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -30765,7 +33792,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -30780,7 +33813,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -30807,14 +33846,24 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -30822,14 +33871,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -30851,7 +33911,13 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -30869,8 +33935,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IEventManager {
-    }
+    export interface IEventManager {}
     export class EventManager {
         /** [Method] Appends an event handler to an element
          * @param el String/HTMLElement The HTML element or id to assign the event handler to.
@@ -30879,7 +33944,13 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the handler function is executed. Defaults to the Element.
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties:
          */
-        static addListener(el?: any, eventName?: string, handler?: any, scope?: any, options?: any): void;
+        static addListener(
+            el?: any,
+            eventName?: string,
+            handler?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends an event handler to an element
          * @param el String/HTMLElement The html element or id to assign the event handler to.
          * @param eventName String The name of the event to listen for.
@@ -30887,7 +33958,13 @@ declare namespace Ext {
          * @param scope Object (this reference) in which the handler function executes. Defaults to the Element.
          * @param options Object An object containing standard addListener options
          */
-        static on(el?: any, eventName?: string, handler?: any, scope?: any, options?: any): void;
+        static on(
+            el?: any,
+            eventName?: string,
+            handler?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds a listener to be notified when the document is ready before onload and before images are loaded */
         static onDocumentReady(): void;
         /** [Method] Adds a listener to be notified when the browser window is resized and provides resize event buffering 50 millisecond
@@ -30906,7 +33983,12 @@ declare namespace Ext {
          * @param fn Function The handler function to remove. This must be a reference to the function passed into the addListener call.
          * @param scope Object If a scope (this reference) was specified when the listener was added, then this must refer to the same object.
          */
-        static removeListener(el?: any, eventName?: string, fn?: any, scope?: any): void;
+        static removeListener(
+            el?: any,
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes an event handler from an element
          * @param el String/HTMLElement The id or html element from which to remove the listener.
          * @param eventName String The name of the event.
@@ -30917,8 +33999,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IFeature extends Ext.env.IFeature {
-    }
+    export interface IFeature extends Ext.env.IFeature {}
     export class Feature {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -33340,8 +36421,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.field {
-    export interface ITextAreaInput extends Ext.field.IInput {
-    }
+    export interface ITextAreaInput extends Ext.field.IInput {}
 }
 declare namespace Ext.field {
     export interface IToggle extends Ext.field.ISlider {
@@ -33999,8 +37079,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext {
-    export interface IFunction {
-    }
+    export interface IFunction {}
     export class Function {
         /** [Method] Create an alias to the provided method property with name methodName of object
          * @param object Object/Function
@@ -34028,7 +37107,12 @@ declare namespace Ext {
          * @param args Array Override arguments for the call. Defaults to the arguments passed by the caller.
          * @returns Function A function which invokes the passed function after buffering for the specified time.
          */
-        static createBuffered(fn?: any, buffer?: number, scope?: any, args?: any[]): any;
+        static createBuffered(
+            fn?: any,
+            buffer?: number,
+            scope?: any,
+            args?: any[],
+        ): any;
         /** [Method] Creates a delegate callback which when called executes after a specific delay
          * @param fn Function The function which will be called on a delay when the returned function is called. Optionally, a replacement (or additional) argument list may be specified.
          * @param delay Number The number of milliseconds to defer execution by whenever called.
@@ -34037,7 +37121,13 @@ declare namespace Ext {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function A function which, when called, executes the original function after the specified delay.
          */
-        static createDelayed(fn?: any, delay?: number, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelayed(
+            fn?: any,
+            delay?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn change this to the provided scope optionally overrides arguments for the
          * @param fn Function The function to delegate.
          * @param scope Object The scope (this reference) in which the function is executed. If omitted, defaults to the browser window.
@@ -34045,7 +37135,12 @@ declare namespace Ext {
          * @param appendArgs Boolean/Number if true args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function The new function.
          */
-        static createDelegate(fn?: any, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelegate(
+            fn?: any,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Creates an interceptor function
          * @param origFn Function The original function.
          * @param newFn Function The function to call before the original.
@@ -34053,7 +37148,12 @@ declare namespace Ext {
          * @param returnValue Object The value to return if the passed function return false.
          * @returns Function The new function.
          */
-        static createInterceptor(origFn?: any, newFn?: any, scope?: any, returnValue?: any): any;
+        static createInterceptor(
+            origFn?: any,
+            newFn?: any,
+            scope?: any,
+            returnValue?: any,
+        ): any;
         /** [Method] Create a combined function call sequence of the original function  the passed function
          * @param originalFn Function The original function.
          * @param newFn Function The function to sequence.
@@ -34076,7 +37176,13 @@ declare namespace Ext {
          * @param appendArgs Boolean/Number if true, args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Number The timeout id that can be used with clearTimeout().
          */
-        static defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+        static defer(
+            fn?: any,
+            millis?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): number;
         /** [Method] A very commonly used method throughout the framework
          * @param fn Function
          * @returns Function flexSetter
@@ -34089,7 +37195,12 @@ declare namespace Ext {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptAfter(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptAfter(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Adds behavior to an existing method that is executed before the original behavior of the function
          * @param object Object The target object
          * @param methodName String Name of the method to override
@@ -34097,7 +37208,12 @@ declare namespace Ext {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptBefore(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptBefore(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn the arguments of which are pre set to args
          * @param fn Function The original function.
          * @param args Array The arguments to pass to new callback.
@@ -34108,8 +37224,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.util {
-    export interface IFunctions {
-    }
+    export interface IFunctions {}
     export class Functions {
         /** [Method] Create an alias to the provided method property with name methodName of object
          * @param object Object/Function
@@ -34137,7 +37252,12 @@ declare namespace Ext.util {
          * @param args Array Override arguments for the call. Defaults to the arguments passed by the caller.
          * @returns Function A function which invokes the passed function after buffering for the specified time.
          */
-        static createBuffered(fn?: any, buffer?: number, scope?: any, args?: any[]): any;
+        static createBuffered(
+            fn?: any,
+            buffer?: number,
+            scope?: any,
+            args?: any[],
+        ): any;
         /** [Method] Creates a delegate callback which when called executes after a specific delay
          * @param fn Function The function which will be called on a delay when the returned function is called. Optionally, a replacement (or additional) argument list may be specified.
          * @param delay Number The number of milliseconds to defer execution by whenever called.
@@ -34146,7 +37266,13 @@ declare namespace Ext.util {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function A function which, when called, executes the original function after the specified delay.
          */
-        static createDelayed(fn?: any, delay?: number, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelayed(
+            fn?: any,
+            delay?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn change this to the provided scope optionally overrides arguments for the
          * @param fn Function The function to delegate.
          * @param scope Object The scope (this reference) in which the function is executed. If omitted, defaults to the browser window.
@@ -34154,7 +37280,12 @@ declare namespace Ext.util {
          * @param appendArgs Boolean/Number if true args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function The new function.
          */
-        static createDelegate(fn?: any, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelegate(
+            fn?: any,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Creates an interceptor function
          * @param origFn Function The original function.
          * @param newFn Function The function to call before the original.
@@ -34162,7 +37293,12 @@ declare namespace Ext.util {
          * @param returnValue Object The value to return if the passed function return false.
          * @returns Function The new function.
          */
-        static createInterceptor(origFn?: any, newFn?: any, scope?: any, returnValue?: any): any;
+        static createInterceptor(
+            origFn?: any,
+            newFn?: any,
+            scope?: any,
+            returnValue?: any,
+        ): any;
         /** [Method] Create a combined function call sequence of the original function  the passed function
          * @param originalFn Function The original function.
          * @param newFn Function The function to sequence.
@@ -34185,7 +37321,13 @@ declare namespace Ext.util {
          * @param appendArgs Boolean/Number if true, args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Number The timeout id that can be used with clearTimeout().
          */
-        static defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+        static defer(
+            fn?: any,
+            millis?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): number;
         /** [Method] A very commonly used method throughout the framework
          * @param fn Function
          * @returns Function flexSetter
@@ -34198,7 +37340,12 @@ declare namespace Ext.util {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptAfter(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptAfter(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Adds behavior to an existing method that is executed before the original behavior of the function
          * @param object Object The target object
          * @param methodName String Name of the method to override
@@ -34206,7 +37353,12 @@ declare namespace Ext.util {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptBefore(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptBefore(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn the arguments of which are pre set to args
          * @param fn Function The original function.
          * @param args Array The arguments to pass to new callback.
@@ -34749,8 +37901,7 @@ declare namespace Ext.fx.animation {
     }
 }
 declare namespace Ext.fx.animation {
-    export interface ISlideOut extends Ext.fx.animation.ISlide {
-    }
+    export interface ISlideOut extends Ext.fx.animation.ISlide {}
 }
 declare namespace Ext.fx.animation {
     export interface IWipe extends Ext.fx.IAnimation {
@@ -34821,8 +37972,7 @@ declare namespace Ext.fx.animation {
     }
 }
 declare namespace Ext.fx.animation {
-    export interface IWipeOut extends Ext.fx.animation.IWipe {
-    }
+    export interface IWipeOut extends Ext.fx.animation.IWipe {}
 }
 declare namespace Ext.fx.easing {
     export interface IAbstract extends Ext.IBase {
@@ -34973,8 +38123,7 @@ declare namespace Ext.fx.easing {
     }
 }
 declare namespace Ext.fx {
-    export interface IEasing extends Ext.IBase {
-    }
+    export interface IEasing extends Ext.IBase {}
 }
 declare namespace Ext.fx.easing {
     export interface ILinear extends Ext.fx.easing.IAbstract {
@@ -35175,8 +38324,7 @@ declare namespace Ext.fx.layout.card {
     }
 }
 declare namespace Ext.fx.layout {
-    export interface ICard extends Ext.IBase {
-    }
+    export interface ICard extends Ext.IBase {}
 }
 declare namespace Ext.fx.layout.card {
     export interface IPop extends Ext.fx.layout.card.IStyle {
@@ -35239,12 +38387,10 @@ declare namespace Ext.fx.layout.card {
     }
 }
 declare namespace Ext.fx.layout.card {
-    export interface IScrollCover extends Ext.fx.layout.card.IScroll {
-    }
+    export interface IScrollCover extends Ext.fx.layout.card.IScroll {}
 }
 declare namespace Ext.fx.layout.card {
-    export interface IScrollReveal extends Ext.fx.layout.card.IScroll {
-    }
+    export interface IScrollReveal extends Ext.fx.layout.card.IScroll {}
 }
 declare namespace Ext.fx.layout.card {
     export interface ISlide extends Ext.fx.layout.card.IStyle {
@@ -35289,24 +38435,19 @@ declare namespace Ext.fx.layout.card {
     }
 }
 declare namespace Ext.fx.runner {
-    export interface ICss extends Ext.IEvented {
-    }
+    export interface ICss extends Ext.IEvented {}
 }
 declare namespace Ext.fx.runner {
-    export interface ICssAnimation extends Ext.fx.runner.ICss {
-    }
+    export interface ICssAnimation extends Ext.fx.runner.ICss {}
 }
 declare namespace Ext.fx.runner {
-    export interface ICssTransition extends Ext.fx.runner.ICss {
-    }
+    export interface ICssTransition extends Ext.fx.runner.ICss {}
 }
 declare namespace Ext.fx {
-    export interface IRunner extends Ext.IBase {
-    }
+    export interface IRunner extends Ext.IBase {}
 }
 declare namespace Ext.fx {
-    export interface IState extends Ext.IBase {
-    }
+    export interface IState extends Ext.IBase {}
 }
 declare namespace Ext {
     export interface IImg extends Ext.IComponent {
@@ -35375,8 +38516,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IIs {
-    }
+    export interface IIs {}
 }
 declare namespace Ext {
     export interface IItemCollection extends Ext.util.IMixedCollection {
@@ -35428,14 +38568,24 @@ declare namespace Ext {
      * @param appendArgs Boolean/Number if true args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
      * @returns Function The new function.
      */
-    export function bind(fn?: any, scope?: any, args?: any[], appendArgs?: any): any;
+    export function bind(
+        fn?: any,
+        scope?: any,
+        args?: any[],
+        appendArgs?: any,
+    ): any;
     /** [Method] Calls function after specified delay or right away when delay 0
      * @param callback Function The callback to execute.
      * @param scope Object The scope to execute in.
      * @param args Array The arguments to pass to the function.
      * @param delay Number Pass a number to delay the call by a number of milliseconds.
      */
-    export function callback(callback?: any, scope?: any, args?: any[], delay?: number): void;
+    export function callback(
+        callback?: any,
+        scope?: any,
+        args?: any[],
+        delay?: number,
+    ): void;
     /** [Method] Old alias to Ext Array clean
      * @param array Array
      * @returns Array results
@@ -35453,7 +38603,12 @@ declare namespace Ext {
      * @param usePrototypeKeys Boolean Pass true to copy keys off of the prototype as well as the instance.
      * @returns Object The modified object.
      */
-    export function copyTo(dest?: any, source?: any, names?: any, usePrototypeKeys?: boolean): any;
+    export function copyTo(
+        dest?: any,
+        source?: any,
+        names?: any,
+        usePrototypeKeys?: boolean,
+    ): any;
     /** [Method] Instantiate a class by either full name alias or alternate name
      * @param name String
      * @param args Mixed Additional arguments after the name will be passed to the class' constructor.
@@ -35473,7 +38628,12 @@ declare namespace Ext {
      * @param returnValue Object The value to return if the passed function return false.
      * @returns Function The new function.
      */
-    export function createInterceptor(origFn?: any, newFn?: any, scope?: any, returnValue?: any): any;
+    export function createInterceptor(
+        origFn?: any,
+        newFn?: any,
+        scope?: any,
+        returnValue?: any,
+    ): any;
     /** [Method] Old name for widget  */
     export function createWidget(): void;
     /** [Method] Shorthand for Ext JSON decode
@@ -35490,14 +38650,24 @@ declare namespace Ext {
      * @param appendArgs Boolean/Number if true, args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
      * @returns Number The timeout id that can be used with clearTimeout().
      */
-    export function defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+    export function defer(
+        fn?: any,
+        millis?: number,
+        scope?: any,
+        args?: any[],
+        appendArgs?: any,
+    ): number;
     /** [Method] Defines a class or override
      * @param className String The class name to create in string dot-namespaced format, for example: 'My.very.awesome.Class', 'FeedViewer.plugin.CoolPager' It is highly recommended to follow this simple convention: - The root and the class name are 'CamelCased' - Everything else is lower-cased
      * @param data Object The key - value pairs of properties to apply to this class. Property names can be of any valid strings, except those in the reserved listed below:  mixins statics config alias xtype (for Ext.Components only) self singleton alternateClassName override
      * @param createdFn Function Optional callback to execute after the class (or override) is created. The execution scope (this) will be the newly created class itself.
      * @returns Ext.Base
      */
-    export function define(className?: string, data?: any, createdFn?: any): Ext.IBase;
+    export function define(
+        className?: string,
+        data?: any,
+        createdFn?: any,
+    ): Ext.IBase;
     /** [Method] Attempts to destroy any objects passed to it by removing all event listeners removing them from the DOM if applicab
      * @param args Mixed... An Ext.Element, Ext.Component, or an Array of either of these to destroy.
      */
@@ -35511,7 +38681,12 @@ declare namespace Ext {
      * @param reverse Boolean Reverse the iteration order (loop from the end to the beginning).
      * @returns Boolean See description for the fn parameter.
      */
-    export function each(iterable?: any, fn?: any, scope?: any, reverse?: boolean): boolean;
+    export function each(
+        iterable?: any,
+        fn?: any,
+        scope?: any,
+        reverse?: boolean,
+    ): boolean;
     /** [Method] Shorthand for Ext JSON encode
      * @param o Object The variable to encode.
      * @returns String The JSON string.
@@ -35534,7 +38709,12 @@ declare namespace Ext {
      * @param instance Object The instance to update.
      * @param aliasNamespace String
      */
-    export function factory(config?: any, classReference?: string, instance?: any, aliasNamespace?: string): void;
+    export function factory(
+        config?: any,
+        classReference?: string,
+        instance?: any,
+        aliasNamespace?: string,
+    ): void;
     /** [Method] Old alias to Ext Array flatten
      * @param array Array The array to flatten
      * @returns Array The 1-d array.
@@ -35715,7 +38895,11 @@ declare namespace Ext {
      * @param etc String
      * @returns Object The namespace object. If multiple arguments are passed, this will be the last namespace created.
      */
-    export function namespace(namespace1?: string, namespace2?: string, etc?: string): any;
+    export function namespace(
+        namespace1?: string,
+        namespace2?: string,
+        etc?: string,
+    ): any;
     /** [Method] Convenient alias for Ext namespace  */
     export function ns(): void;
     /** [Method] This method is deprecated please use Ext Number from instead */
@@ -35785,13 +38969,21 @@ declare namespace Ext {
      * @param scope Object The execution scope (this) of the callback function.
      * @param excludes String/Array Classes to be excluded, useful when being used with expressions.
      */
-    export function require(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+    export function require(
+        expressions?: any,
+        fn?: any,
+        scope?: any,
+        excludes?: any,
+    ): void;
     /** [Method] Selects elements based on the passed CSS selector to enable Element methods to be applied to many related elements in
      * @param selector String/HTMLElement[] The CSS selector or an array of elements
      * @param composite Boolean Return a CompositeElement as opposed to a CompositeElementLite. Defaults to false.
      * @returns Ext.dom.CompositeElementLite/Ext.dom.CompositeElement
      */
-    export function select(selector?: any, composite?: boolean): Ext.dom.ICompositeElementLite;
+    export function select(
+        selector?: any,
+        composite?: boolean,
+    ): Ext.dom.ICompositeElementLite;
     /** [Method] Ext setup  is the entry point to initialize a Sencha Touch application
      * @param config Object An object with the following config options:
      */
@@ -35807,14 +38999,23 @@ declare namespace Ext {
      * @param scope Object The execution scope (this) of the callback function
      * @param excludes String/Array Classes to be excluded, useful when being used with expressions
      */
-    export function syncRequire(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+    export function syncRequire(
+        expressions?: any,
+        fn?: any,
+        scope?: any,
+        excludes?: any,
+    ): void;
     /** [Method] Converts any iterable numeric indices and a length property into a true array
      * @param iterable Object the iterable object to be turned into a true Array.
      * @param start Number a zero-based index that specifies the start of extraction.
      * @param end Number a zero-based index that specifies the end of extraction.
      * @returns Array
      */
-    export function toArray(iterable?: any, start?: number, end?: number): any[];
+    export function toArray(
+        iterable?: any,
+        start?: number,
+        end?: number,
+    ): any[];
     /** [Method] Old alias to typeOf
      * @param value Object
      * @returns String
@@ -35846,7 +39047,11 @@ declare namespace Ext {
      * @param allowBlank Boolean true to allow zero length strings to qualify as non-empty.
      * @returns Object value, if non-empty, else defaultValue.
      */
-    export function valueFrom(value?: any, defaultValue?: any, allowBlank?: boolean): any;
+    export function valueFrom(
+        value?: any,
+        defaultValue?: any,
+        allowBlank?: boolean,
+    ): any;
     /** [Method] Convenient shorthand to create a widget by its xtype also see Ext ClassManager instantiateByAlias var button  Ext
      * @param name String
      * @returns Object instance
@@ -35854,8 +39059,7 @@ declare namespace Ext {
     export function widget(name?: string): any;
 }
 declare namespace Ext {
-    export interface IJSON {
-    }
+    export interface IJSON {}
     export class JSON {
         /** [Method] Decodes parses a JSON string to an object
          * @param json String The JSON string.
@@ -35899,14 +39103,24 @@ declare namespace Ext.layout {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -35918,7 +39132,13 @@ declare namespace Ext.layout {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -35926,7 +39146,13 @@ declare namespace Ext.layout {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -35942,7 +39168,12 @@ declare namespace Ext.layout {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -35969,7 +39200,13 @@ declare namespace Ext.layout {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -35984,7 +39221,13 @@ declare namespace Ext.layout {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -36011,14 +39254,24 @@ declare namespace Ext.layout {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -36026,14 +39279,25 @@ declare namespace Ext.layout {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -36055,7 +39319,13 @@ declare namespace Ext.layout {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -36118,7 +39388,11 @@ declare namespace Ext.layout {
          * @param isInner Object
          * @param destroying Object
          */
-        onItemInnerStateChange?(item?: any, isInner?: any, destroying?: any): void;
+        onItemInnerStateChange?(
+            item?: any,
+            isInner?: any,
+            destroying?: any,
+        ): void;
     }
 }
 declare namespace Ext.layout {
@@ -36136,7 +39410,11 @@ declare namespace Ext.layout {
          * @param isInner Boolean
          * @param destroying Boolean
          */
-        onItemInnerStateChange?(item?: Ext.IComponent, isInner?: boolean, destroying?: boolean): void;
+        onItemInnerStateChange?(
+            item?: Ext.IComponent,
+            isInner?: boolean,
+            destroying?: boolean,
+        ): void;
         /** [Method] Sets the value of animation
          * @param animation Ext.fx.layout.Card The new value.
          */
@@ -36194,8 +39472,7 @@ declare namespace Ext.layout {
     }
 }
 declare namespace Ext.layout {
-    export interface IHBox extends Ext.layout.IFlexBox {
-    }
+    export interface IHBox extends Ext.layout.IFlexBox {}
 }
 declare namespace Ext.layout {
     export interface IVBox extends Ext.layout.IFlexBox {
@@ -36338,8 +39615,7 @@ declare namespace Ext.layout.wrapper {
     }
 }
 declare namespace Ext {
-    export interface ILoader {
-    }
+    export interface ILoader {}
     export class Loader {
         /** [Config Option] (Boolean) */
         static disableCaching: boolean;
@@ -36383,7 +39659,12 @@ declare namespace Ext {
          * @param scope Object The execution scope (this) of the callback function.
          * @param excludes String/Array Classes to be excluded, useful when being used with expressions.
          */
-        static require(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+        static require(
+            expressions?: any,
+            fn?: any,
+            scope?: any,
+            excludes?: any,
+        ): void;
         /** [Method] Set the configuration for the loader
          * @param name Object/String The config object to override the default values or name of a single config setting when also passing the second parameter.
          * @param value Mixed The value for the config setting.
@@ -36402,7 +39683,12 @@ declare namespace Ext {
          * @param scope Object The execution scope (this) of the callback function
          * @param excludes String/Array Classes to be excluded, useful when being used with expressions
          */
-        static syncRequire(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+        static syncRequire(
+            expressions?: any,
+            fn?: any,
+            scope?: any,
+            excludes?: any,
+        ): void;
     }
 }
 declare namespace Ext {
@@ -36460,8 +39746,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface ILogger {
-    }
+    export interface ILogger {}
     export class Logger {
         /** [Method] Convenience method for log with priority deprecate */
         static deprecate(): void;
@@ -36826,7 +40111,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed. Defaults to: the browser window
          * @returns Ext.MessageBox this
          */
-        alert?(title?: string, message?: string, fn?: any, scope?: any): Ext.IMessageBox;
+        alert?(
+            title?: string,
+            message?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.IMessageBox;
         /** [Method] Displays a confirmation message box with Yes and No buttons comparable to JavaScript s confirm
          * @param title String The title bar text.
          * @param message String The message box body text.
@@ -36834,7 +40124,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed. Defaults to: the browser window
          * @returns Ext.MessageBox this
          */
-        confirm?(title?: string, message?: string, fn?: any, scope?: any): Ext.IMessageBox;
+        confirm?(
+            title?: string,
+            message?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.IMessageBox;
         /** [Method] Returns the value of baseCls
          * @returns String
          */
@@ -36933,8 +40228,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.mixin {
-    export interface IBindable extends Ext.mixin.IMixin {
-    }
+    export interface IBindable extends Ext.mixin.IMixin {}
 }
 declare namespace Ext.mixin {
     export interface IFilterable extends Ext.mixin.IMixin {
@@ -37009,11 +40303,12 @@ declare namespace Ext.mixin {
     }
 }
 declare namespace Ext.mixin {
-    export interface IMixin extends Ext.IBase {
-    }
+    export interface IMixin extends Ext.IBase {}
 }
 declare namespace Ext.mixin {
-    export interface IObservable extends Ext.mixin.IMixin, Ext.mixin.IIdentifiable {
+    export interface IObservable
+        extends Ext.mixin.IMixin,
+            Ext.mixin.IIdentifiable {
         /** [Config Option] (String/String[]) */
         bubbleEvents?: any;
         /** [Config Option] (Object) */
@@ -37024,14 +40319,24 @@ declare namespace Ext.mixin {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -37043,7 +40348,13 @@ declare namespace Ext.mixin {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -37051,7 +40362,13 @@ declare namespace Ext.mixin {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -37067,7 +40384,12 @@ declare namespace Ext.mixin {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -37098,7 +40420,13 @@ declare namespace Ext.mixin {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -37113,7 +40441,13 @@ declare namespace Ext.mixin {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -37140,14 +40474,24 @@ declare namespace Ext.mixin {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -37155,14 +40499,25 @@ declare namespace Ext.mixin {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -37184,7 +40539,13 @@ declare namespace Ext.mixin {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -37202,7 +40563,9 @@ declare namespace Ext.mixin {
     }
 }
 declare namespace Ext.util {
-    export interface IObservable extends Ext.mixin.IMixin, Ext.mixin.IIdentifiable {
+    export interface IObservable
+        extends Ext.mixin.IMixin,
+            Ext.mixin.IIdentifiable {
         /** [Config Option] (String/String[]) */
         bubbleEvents?: any;
         /** [Config Option] (Object) */
@@ -37213,14 +40576,24 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -37232,7 +40605,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -37240,7 +40619,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -37256,7 +40641,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -37287,7 +40677,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -37302,7 +40698,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -37329,14 +40731,24 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -37344,14 +40756,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -37373,7 +40796,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -37487,7 +40916,11 @@ declare namespace Ext.mixin {
          * @param keepExisting Boolean
          * @param suppressEvent Boolean Set to false to not fire a select event.
          */
-        doSelect?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        doSelect?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Returns the value of allowDeselect
          * @returns Boolean
          */
@@ -37542,7 +40975,11 @@ declare namespace Ext.mixin {
          * @param keepExisting Boolean If true, the existing selection will be added to (if not, the old selection is replaced).
          * @param suppressEvent Boolean If true, the select event will not be fired.
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Selects all records
          * @param silent Boolean true to suppress all select events.
          */
@@ -37552,7 +40989,11 @@ declare namespace Ext.mixin {
          * @param endRecord Number The index of the last row in the range.
          * @param keepExisting Boolean true to retain existing selections.
          */
-        selectRange?(startRecord?: number, endRecord?: number, keepExisting?: boolean): void;
+        selectRange?(
+            startRecord?: number,
+            endRecord?: number,
+            keepExisting?: boolean,
+        ): void;
         /** [Method] Sets the value of allowDeselect
          * @param allowDeselect Boolean The new value.
          */
@@ -37575,7 +41016,10 @@ declare namespace Ext.mixin {
          * @param newRecord Ext.data.Record
          * @param oldRecord Ext.data.Record
          */
-        updateLastFocused?(newRecord?: Ext.data.IRecord, oldRecord?: Ext.data.IRecord): void;
+        updateLastFocused?(
+            newRecord?: Ext.data.IRecord,
+            oldRecord?: Ext.data.IRecord,
+        ): void;
     }
 }
 declare namespace Ext.mixin {
@@ -37629,13 +41073,21 @@ declare namespace Ext.mixin {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        insertSorter?(index?: number, sorter?: any, defaultDirection?: string): void;
+        insertSorter?(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @param index Number The index at which to insert the sorters.
          * @param sorters Array Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        insertSorters?(index?: number, sorters?: any[], defaultDirection?: string): void;
+        insertSorters?(
+            index?: number,
+            sorters?: any[],
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method removes a sorter
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          */
@@ -37664,16 +41116,13 @@ declare namespace Ext.mixin {
     }
 }
 declare namespace Ext.mixin {
-    export interface ITemplatable extends Ext.mixin.IMixin {
-    }
+    export interface ITemplatable extends Ext.mixin.IMixin {}
 }
 declare namespace Ext.mixin {
-    export interface ITraversable extends Ext.mixin.IMixin {
-    }
+    export interface ITraversable extends Ext.mixin.IMixin {}
 }
 declare namespace Ext {
-    export interface IMsg extends Ext.IMessageBox {
-    }
+    export interface IMsg extends Ext.IMessageBox {}
     export class Msg {
         /** [Property] (Ext.util.MixedCollection) */
         static items: Ext.util.IMixedCollection;
@@ -37690,7 +41139,12 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds an array of Components to this Container
          * @param items Array The array of items to add to this container.
          * @returns Array The array of items after they have been added.
@@ -37702,7 +41156,12 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds a CSS class or classes to this Component s rendered element
          * @param cls String The CSS class to add.
          * @param prefix String Optional prefix to add to each class.
@@ -37720,7 +41179,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -37728,7 +41193,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Displays a standard read only message box with an OK button comparable to the basic JavaScript alert prompt
          * @param title String The title bar text.
          * @param message String The message box body text.
@@ -37736,7 +41207,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed. Defaults to: the browser window
          * @returns Ext.MessageBox this
          */
-        static alert(title?: string, message?: string, fn?: any, scope?: any): Ext.IMessageBox;
+        static alert(
+            title?: string,
+            message?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.IMessageBox;
         /** [Method] Animates to the supplied activeItem with a specified animation
          * @param activeItem Object/Number The item or item index to make active.
          * @param animation Object/Ext.fx.layout.Card Card animation configuration or instance.
@@ -37776,7 +41252,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed. Defaults to: the browser window
          * @returns Ext.MessageBox this
          */
-        static confirm(title?: string, message?: string, fn?: any, scope?: any): Ext.IMessageBox;
+        static confirm(
+            title?: string,
+            message?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.IMessageBox;
         /** [Method]  */
         static destroy(): void;
         /** [Method] Disables this Component */
@@ -37799,7 +41280,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -38165,7 +41651,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -38180,21 +41672,37 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Displays a message box with OK and Cancel buttons prompting the user to enter some text comparable to JavaScript s p
          * @param title String The title bar text.
          * @param message String The message box body text.
@@ -38237,13 +41745,21 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all items currently in the Container optionally destroying them all
          * @param destroy Boolean If true, destroys each removed Component.
          * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
          * @returns Ext.Component this
          */
-        static removeAll(destroy?: boolean, everything?: boolean): Ext.IComponent;
+        static removeAll(
+            destroy?: boolean,
+            everything?: boolean,
+        ): Ext.IComponent;
         /** [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
          * @param index Number The index of the Component to remove.
          * @returns Ext.Container this
@@ -38255,7 +41771,12 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes the given CSS class es from this Component s rendered element
          * @param cls String The class(es) to remove.
          * @param prefix String Optional prefix to prepend before each class.
@@ -38280,21 +41801,37 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Replaces specified classes with the newly specified classes
          * @param oldCls String The class(es) to remove.
          * @param newCls String The class(es) to add.
          * @param prefix String Optional prefix to prepend before each class.
          * @param suffix String Optional suffix to append to each class.
          */
-        static replaceCls(oldCls?: string, newCls?: string, prefix?: string, suffix?: string): void;
+        static replaceCls(
+            oldCls?: string,
+            newCls?: string,
+            prefix?: string,
+            suffix?: string,
+        ): void;
         /** [Method] Resets top right bottom and left configurations to null which will un float this component  */
         static resetFloating(): void;
         /** [Method] Resumes firing events see suspendEvents
@@ -38607,21 +42144,37 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Convenience method which calls setMasked with a value of false to hide the mask */
         static unmask(): void;
         /** [Method] Walks up the ownerCt axis looking for an ancestor Container which matches the passed simple selector
@@ -38766,7 +42319,9 @@ declare namespace Ext.navigation {
         /** [Method] Sets the value of useTitleForBackButtonText
          * @param useTitleForBackButtonText Boolean The new value.
          */
-        setUseTitleForBackButtonText?(useTitleForBackButtonText?: boolean): void;
+        setUseTitleForBackButtonText?(
+            useTitleForBackButtonText?: boolean,
+        ): void;
     }
 }
 declare namespace Ext {
@@ -38848,12 +42403,13 @@ declare namespace Ext {
         /** [Method] Sets the value of useTitleForBackButtonText
          * @param useTitleForBackButtonText Boolean The new value.
          */
-        setUseTitleForBackButtonText?(useTitleForBackButtonText?: boolean): void;
+        setUseTitleForBackButtonText?(
+            useTitleForBackButtonText?: boolean,
+        ): void;
     }
 }
 declare namespace Ext {
-    export interface INumber {
-    }
+    export interface INumber {}
     export class Number {
         /** [Method] Checks whether or not the passed number is within a desired range
          * @param number Number The number to check
@@ -38875,7 +42431,12 @@ declare namespace Ext {
          * @param maxValue Number The maximum value to which the returned value must be constrained. Overrides the increment..
          * @returns Number The value of the nearest snap target.
          */
-        static snap(value?: number, increment?: number, minValue?: number, maxValue?: number): number;
+        static snap(
+            value?: number,
+            increment?: number,
+            minValue?: number,
+            maxValue?: number,
+        ): number;
         /** [Method] Formats a number using fixed point notation
          * @param value Number The number to format
          * @param precision Number The number of digits to show after the decimal point
@@ -38884,8 +42445,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IObject {
-    }
+    export interface IObject {}
     export class Object {
         /** [Method] Returns a new object with the given object as the prototype chain
          * @param object Object The prototype chain for the new object.
@@ -38939,7 +42499,11 @@ declare namespace Ext {
          * @param recursive Boolean true to recursively encode any sub-objects.
          * @returns Object[] Array of objects with name and value fields.
          */
-        static toQueryObjects(name?: string, value?: any, recursive?: boolean): any[];
+        static toQueryObjects(
+            name?: string,
+            value?: any,
+            recursive?: boolean,
+        ): any[];
         /** [Method] Takes an object and converts it to an encoded query string
          * @param object Object The object to encode.
          * @param recursive Boolean Whether or not to interpret the object in recursive format. (PHP / Ruby on Rails servers and similar).
@@ -38949,8 +42513,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IOs extends Ext.env.IOS {
-    }
+    export interface IOs extends Ext.env.IOS {}
     export class Os {
         /** [Property] (String) */
         static deviceType: string;
@@ -39902,7 +43465,9 @@ declare namespace Ext.plugin {
     }
 }
 declare namespace Ext {
-    export interface IProgressIndicator extends Ext.IContainer, Ext.mixin.IProgressable {
+    export interface IProgressIndicator
+        extends Ext.IContainer,
+            Ext.mixin.IProgressable {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Boolean) */
@@ -40012,12 +43577,10 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IPromise extends Ext.IBase {
-    }
+    export interface IPromise extends Ext.IBase {}
 }
 declare namespace Ext {
-    export interface IRouter {
-    }
+    export interface IRouter {}
     export class Router {
         /** [Method] Application s onDependenciesLoaded has a deprecated wrapped line that calls this
          * @param app Object
@@ -40140,12 +43703,10 @@ declare namespace Ext.scroll.indicator {
     }
 }
 declare namespace Ext.scroll {
-    export interface IIndicator extends Ext.IBase {
-    }
+    export interface IIndicator extends Ext.IBase {}
 }
 declare namespace Ext.util {
-    export interface IIndicator extends Ext.IBase {
-    }
+    export interface IIndicator extends Ext.IBase {}
 }
 declare namespace Ext.scroll.indicator {
     export interface IRounded extends Ext.scroll.indicator.IAbstract {
@@ -40238,14 +43799,22 @@ declare namespace Ext.scroll {
          * @param animation Boolean/Object Whether or not to animate the scrolling to the new position.
          * @returns Ext.scroll.Scroller this
          */
-        scrollBy?(x?: number, y?: number, animation?: any): Ext.scroll.IScroller;
+        scrollBy?(
+            x?: number,
+            y?: number,
+            animation?: any,
+        ): Ext.scroll.IScroller;
         /** [Method] Scrolls to the given location
          * @param x Number The scroll position on the x axis.
          * @param y Number The scroll position on the y axis.
          * @param animation Boolean/Object Whether or not to animate the scrolling to the new position.
          * @returns Ext.scroll.Scroller this
          */
-        scrollTo?(x?: number, y?: number, animation?: any): Ext.scroll.IScroller;
+        scrollTo?(
+            x?: number,
+            y?: number,
+            animation?: any,
+        ): Ext.scroll.IScroller;
         /** [Method] Scrolls to the end of the scrollable view
          * @param animation Object
          * @returns Ext.scroll.Scroller this
@@ -40494,7 +44063,11 @@ declare namespace Ext {
          * @param pressed Boolean If defined, sets the pressed state of the button, otherwise the pressed state is toggled.
          * @param suppressEvents Boolean true to suppress toggle events during the action. If allowMultiple is true, then setPressed will toggle the button state.
          */
-        setPressed?(button?: any, pressed?: boolean, suppressEvents?: boolean): void;
+        setPressed?(
+            button?: any,
+            pressed?: boolean,
+            suppressEvents?: boolean,
+        ): void;
         /** [Method] Sets the value of pressedButtons
          * @param pressedButtons Array The new value.
          */
@@ -40806,8 +44379,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IString {
-    }
+    export interface IString {}
     export class String {
         /** [Method] Capitalize the given string
          * @param string String
@@ -40820,7 +44392,11 @@ declare namespace Ext {
          * @param word Boolean true to try to find a common word break.
          * @returns String The converted text.
          */
-        static ellipsis(value?: string, length?: number, word?: boolean): string;
+        static ellipsis(
+            value?: string,
+            length?: number,
+            word?: boolean,
+        ): string;
         /** [Method] Escapes the passed string for  and
          * @param string String The string to escape.
          * @returns String The escaped string.
@@ -40853,7 +44429,11 @@ declare namespace Ext {
          * @param character String The character with which to pad the original string (defaults to empty string " ").
          * @returns String The padded string.
          */
-        static leftPad(string?: string, size?: number, character?: string): string;
+        static leftPad(
+            string?: string,
+            size?: number,
+            character?: string,
+        ): string;
         /** [Method] Returns a string with a specified number of repetitions a given string pattern
          * @param pattern String The pattern to repeat.
          * @param count Number The number of times to repeat the pattern (may be 0).
@@ -41193,8 +44773,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface ITaskQueue extends Ext.IBase {
-    }
+    export interface ITaskQueue extends Ext.IBase {}
     export class TaskQueue {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -41534,7 +45113,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.util {
-    export interface IAbstractMixedCollection extends Ext.IBase, Ext.mixin.IObservable {
+    export interface IAbstractMixedCollection
+        extends Ext.IBase,
+            Ext.mixin.IObservable {
         /** [Config Option] (Boolean) */
         allowFunctions?: boolean | undefined;
         /** [Method] Adds an item to the collection
@@ -41549,7 +45130,12 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds all elements of an Array or an Object to the collection
          * @param objs Object/Array An Object containing properties which will be added to the collection, or an Array of values, each of which are added to the collection. Functions references will be added to the collection if allowFunctions has been set to true.
          */
@@ -41560,7 +45146,12 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -41572,7 +45163,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -41580,7 +45177,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all items from the collection  */
         clear?(): void;
         /** [Method] Removes all listeners for this object  */
@@ -41629,7 +45232,12 @@ declare namespace Ext.util {
          * @param caseSensitive Boolean true for case sensitive comparison.
          * @returns Ext.util.MixedCollection The new filtered collection
          */
-        filter?(property?: any, value?: any, anyMatch?: boolean, caseSensitive?: boolean): Ext.util.IMixedCollection;
+        filter?(
+            property?: any,
+            value?: any,
+            anyMatch?: boolean,
+            caseSensitive?: boolean,
+        ): Ext.util.IMixedCollection;
         /** [Method] Filter by a function
          * @param fn Function The function to be called, it will receive the args o (the object), k (the key)
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -41650,7 +45258,13 @@ declare namespace Ext.util {
          * @param caseSensitive Boolean true for case sensitive comparison.
          * @returns Number The matched index or -1.
          */
-        findIndex?(property?: string, value?: any, start?: number, anyMatch?: boolean, caseSensitive?: boolean): number;
+        findIndex?(
+            property?: string,
+            value?: any,
+            start?: number,
+            anyMatch?: boolean,
+            caseSensitive?: boolean,
+        ): number;
         /** [Method] Find the index of the first matching object in this collection by a function
          * @param fn Function The function to be called, it will receive the args o (the object), k (the key).
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -41665,7 +45279,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -41747,7 +45366,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -41762,7 +45387,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -41794,7 +45425,12 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Remove all items in the passed array from the collection
          * @param items Array An array of items to be removed.
          * @returns Ext.util.MixedCollection this object
@@ -41816,7 +45452,12 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -41824,14 +45465,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Replaces an item in the collection
          * @param key String The key associated with the item to replace, or the replacement item. If you supplied a getKey implementation for this MixedCollection, or if the key of your stored items is in a property called id, then the MixedCollection will be able to derive the key of the replacement item. If you want to replace an item with one having the same key value, then just pass the replacement item in this parameter.
          * @param o Object If the first parameter passed was a key, the item to associate with that key.
@@ -41857,7 +45509,12 @@ declare namespace Ext.util {
          * @param end Number The record index to end at.
          * @returns Number The total
          */
-        sum?(property?: string, root?: string, start?: number, end?: number): number;
+        sum?(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends the firing of all events  */
         suspendEvents?(): void;
         /** [Method] Alias for removeListener
@@ -41867,7 +45524,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -41885,8 +45548,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IAudio extends Ext.IBase {
-    }
+    export interface IAudio extends Ext.IBase {}
     export class Audio {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -41924,7 +45586,9 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IBufferedCollection extends Ext.util.ICollection, Ext.util.IObservable {
+    export interface IBufferedCollection
+        extends Ext.util.ICollection,
+            Ext.util.IObservable {
         /** [Method] Returns the value of autoFilter
          * @returns Boolean
          */
@@ -41960,7 +45624,10 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface ICollection extends Ext.IBase, Ext.mixin.ISortable, Ext.mixin.IFilterable {
+    export interface ICollection
+        extends Ext.IBase,
+            Ext.mixin.ISortable,
+            Ext.mixin.IFilterable {
         /** [Config Option] (Object[]) */
         filters?: any[] | undefined;
         /** [Config Option] (Object[]) */
@@ -42041,7 +45708,12 @@ declare namespace Ext.util {
          * @param caseSensitive Object
          * @returns Array
          */
-        filter?(property?: any, value?: any, anyMatch?: any, caseSensitive?: any): any[];
+        filter?(
+            property?: any,
+            value?: any,
+            anyMatch?: any,
+            caseSensitive?: any,
+        ): any[];
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -42171,7 +45843,11 @@ declare namespace Ext.util {
          * @param sorter Ext.util.Sorter/String/Function/Object Can be an instance of Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter configuration, or a sort function.
          * @param defaultDirection String The default direction for each sorter in the array. Defaults to the value of defaultSortDirection. Can be either 'ASC' or 'DESC'.
          */
-        insertSorter?(index?: number, sorter?: any, defaultDirection?: string): void;
+        insertSorter?(
+            index?: number,
+            sorter?: any,
+            defaultDirection?: string,
+        ): void;
         /** [Method] This method inserts all the sorters in the passed array at the given index
          * @returns Ext.util.Collection this
          */
@@ -42266,7 +45942,12 @@ declare namespace Ext.util {
          * @param newScope Object Overrides the original scope passed when instantiated. Remember that if no scope is specified, this will refer to the browser window.
          * @param newArgs Array Overrides the original args passed when instantiated.
          */
-        delay?(delay?: number, newFn?: any, newScope?: any, newArgs?: any[]): void;
+        delay?(
+            delay?: number,
+            newFn?: any,
+            newScope?: any,
+            newArgs?: any[],
+        ): void;
         /** [Method] Returns the value of args
          * @returns Object
          */
@@ -42321,14 +46002,24 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -42340,7 +46031,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -42348,7 +46045,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -42372,7 +46075,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -42431,7 +46139,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -42446,7 +46160,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -42473,14 +46193,24 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -42488,14 +46218,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -42549,7 +46290,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -42588,14 +46335,24 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -42607,7 +46364,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -42615,7 +46378,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method]  */
@@ -42635,7 +46404,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -42674,7 +46448,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -42689,7 +46469,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -42716,14 +46502,24 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -42731,14 +46527,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -42764,7 +46571,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -42876,8 +46689,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IFormat extends Ext.IBase {
-    }
+    export interface IFormat extends Ext.IBase {}
     export class Format {
         /** [Property] (String) */
         static defaultDateFormat: string;
@@ -42914,7 +46726,11 @@ declare namespace Ext.util {
          * @param word Boolean True to try to find a common word break.
          * @returns String The converted text.
          */
-        static ellipsis(value?: string, length?: number, word?: boolean): string;
+        static ellipsis(
+            value?: string,
+            length?: number,
+            word?: boolean,
+        ): string;
         /** [Method] Escapes the passed string for  and
          * @param string String The string to escape.
          * @returns String The escaped string.
@@ -43103,14 +46919,24 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -43122,7 +46948,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -43130,7 +46962,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all items from the hash
          * @param initial Object
          * @returns Ext.util.HashMap this
@@ -43171,7 +47009,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -43215,7 +47058,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -43230,7 +47079,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -43262,14 +47117,24 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Remove an item from the hash
          * @param key String The key to remove.
          * @returns Boolean true if the item was successfully removed.
@@ -43282,14 +47147,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Replaces an item in the hash
          * @param key String The key of the item.
          * @param value Object The new value for the item.
@@ -43317,7 +47193,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -43335,8 +47217,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IInflector extends Ext.IBase {
-    }
+    export interface IInflector extends Ext.IBase {}
     export class Inflector {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -43413,8 +47294,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IInputBlocker extends Ext.IBase {
-    }
+    export interface IInputBlocker extends Ext.IBase {}
     export class InputBlocker {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -43465,7 +47345,9 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IMixedCollection extends Ext.util.IAbstractMixedCollection, Ext.util.ISortable {
+    export interface IMixedCollection
+        extends Ext.util.IAbstractMixedCollection,
+            Ext.util.ISortable {
         /** [Method]  */
         destroy?(): void;
         /** [Method] Performs initialization of this mixin  */
@@ -43481,7 +47363,12 @@ declare namespace Ext.util {
          * @param doSort Boolean
          * @returns Ext.util.Sorter[]
          */
-        sort?(sorters?: any, direction?: string, where?: string, doSort?: boolean): Ext.util.ISorter[];
+        sort?(
+            sorters?: any,
+            direction?: string,
+            where?: string,
+            doSort?: boolean,
+        ): Ext.util.ISorter[];
         /** [Method] Sorts the collection by a single sorter function
          * @param sorterFn Function The function to sort by.
          */
@@ -43494,8 +47381,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IOffset extends Ext.IBase {
-    }
+    export interface IOffset extends Ext.IBase {}
 }
 declare namespace Ext.util.paintmonitor {
     export interface IAbstract extends Ext.IBase {
@@ -43536,16 +47422,13 @@ declare namespace Ext.util.paintmonitor {
     }
 }
 declare namespace Ext.util.paintmonitor {
-    export interface ICssAnimation extends Ext.util.paintmonitor.IAbstract {
-    }
+    export interface ICssAnimation extends Ext.util.paintmonitor.IAbstract {}
 }
 declare namespace Ext.util {
-    export interface IPaintMonitor extends Ext.IBase {
-    }
+    export interface IPaintMonitor extends Ext.IBase {}
 }
 declare namespace Ext.util.paintmonitor {
-    export interface IOverflowChange extends Ext.util.paintmonitor.IAbstract {
-    }
+    export interface IOverflowChange extends Ext.util.paintmonitor.IAbstract {}
 }
 declare namespace Ext.util {
     export interface IPoint extends Ext.IBase {
@@ -43663,7 +47546,12 @@ declare namespace Ext.util {
          * @param left Number Left offset
          * @returns Ext.util.Region this
          */
-        adjust?(top?: number, right?: number, bottom?: number, left?: number): Ext.util.IRegion;
+        adjust?(
+            top?: number,
+            right?: number,
+            bottom?: number,
+            left?: number,
+        ): Ext.util.IRegion;
         /** [Method] Modifies the current region to be constrained to the targetRegion
          * @param targetRegion Ext.util.Region
          * @returns Ext.util.Region this
@@ -43822,20 +47710,16 @@ declare namespace Ext.util.sizemonitor {
     }
 }
 declare namespace Ext.util.sizemonitor {
-    export interface IDefault extends Ext.util.sizemonitor.IAbstract {
-    }
+    export interface IDefault extends Ext.util.sizemonitor.IAbstract {}
 }
 declare namespace Ext.util {
-    export interface ISizeMonitor extends Ext.IBase {
-    }
+    export interface ISizeMonitor extends Ext.IBase {}
 }
 declare namespace Ext.util.sizemonitor {
-    export interface IOverflowChange extends Ext.util.sizemonitor.IAbstract {
-    }
+    export interface IOverflowChange extends Ext.util.sizemonitor.IAbstract {}
 }
 declare namespace Ext.util.sizemonitor {
-    export interface IScroll extends Ext.util.sizemonitor.IAbstract {
-    }
+    export interface IScroll extends Ext.util.sizemonitor.IAbstract {}
 }
 declare namespace Ext.util {
     export interface ISortable extends Ext.mixin.IMixin {
@@ -43858,7 +47742,12 @@ declare namespace Ext.util {
          * @param doSort Boolean
          * @returns Ext.util.Sorter[]
          */
-        sort?(sorters?: any, direction?: string, where?: string, doSort?: boolean): Ext.util.ISorter[];
+        sort?(
+            sorters?: any,
+            direction?: string,
+            where?: string,
+            doSort?: boolean,
+        ): Ext.util.ISorter[];
     }
 }
 declare namespace Ext.util {
@@ -43935,14 +47824,24 @@ declare namespace Ext.util {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Appends a before event handler
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        addBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds the specified events to the list of events which this Observable may fire
          * @param eventNames Object/String... Either an object with event names as properties with a value of true or the first event name string if multiple event names are being passed as separate parameters.
          */
@@ -43954,7 +47853,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -43962,7 +47867,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        addManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        addManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all listeners for this object  */
         clearListeners?(): void;
         /** [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
@@ -43976,7 +47887,12 @@ declare namespace Ext.util {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        fireAction?(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        fireAction?(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -44035,7 +47951,13 @@ declare namespace Ext.util {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        mon?(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        mon?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -44050,7 +47972,13 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        on?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        on?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
@@ -44077,14 +48005,24 @@ declare namespace Ext.util {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeAfterListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeAfterListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes a before event handler
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        removeBeforeListener?(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        removeBeforeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes an event handler
          * @param eventName String/String[]/Object The type of event the handler was associated with.
          * @param fn Function/String The handler to remove. This must be a reference to the function passed into the addListener call.
@@ -44092,14 +48030,25 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        removeListener?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        removeListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        removeManagedListener?(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing events see suspendEvents
          * @param discardQueuedEvents Boolean Pass as true to discard any queued events.
          */
@@ -44153,7 +48102,13 @@ declare namespace Ext.util {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        un?(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        un?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
@@ -44233,8 +48188,7 @@ declare namespace Ext.util.translatable {
     }
 }
 declare namespace Ext.util {
-    export interface ITranslatable extends Ext.IBase {
-    }
+    export interface ITranslatable extends Ext.IBase {}
 }
 declare namespace Ext.util.translatable {
     export interface IScrollPosition extends Ext.util.translatable.IDom {
@@ -44251,7 +48205,8 @@ declare namespace Ext.util.translatable {
     }
 }
 declare namespace Ext.util {
-    export interface ITranslatableGroup extends Ext.util.translatable.IAbstract {
+    export interface ITranslatableGroup
+        extends Ext.util.translatable.IAbstract {
         /** [Method] Returns the value of activeIndex
          * @returns Number
          */
@@ -44317,8 +48272,7 @@ declare namespace Ext.ux {
     }
 }
 declare namespace Ext.ux {
-    export interface IContextMenu extends Ext.IMenu {
-    }
+    export interface IContextMenu extends Ext.IMenu {}
 }
 declare namespace Ext.ux.device.analytics {
     export interface IAbstract extends Ext.IBase {
@@ -44357,8 +48311,9 @@ declare namespace Ext.ux.device.analytics {
     }
 }
 declare namespace Ext.ux.device {
-    export interface IAnalytics extends Ext.IBase, Ext.ux.device.analytics.IAbstract {
-    }
+    export interface IAnalytics
+        extends Ext.IBase,
+            Ext.ux.device.analytics.IAbstract {}
     export class Analytics {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -44440,12 +48395,12 @@ declare namespace Ext.ux.device.twitter {
     }
 }
 declare namespace Ext.ux.device.twitter {
-    export interface ICordova extends Ext.IBase {
-    }
+    export interface ICordova extends Ext.IBase {}
 }
 declare namespace Ext.ux.device {
-    export interface ITwitter extends Ext.IBase, Ext.ux.device.twitter.IAbstract {
-    }
+    export interface ITwitter
+        extends Ext.IBase,
+            Ext.ux.device.twitter.IAbstract {}
     export class Twitter {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -44528,7 +48483,12 @@ declare namespace Ext {
          * @param closure Function The callback function to be executed with the specified version is less than the current version.
          * @param scope Object The execution scope (this) if the closure
          */
-        deprecate?(packageName?: string, since?: string, closure?: any, scope?: any): void;
+        deprecate?(
+            packageName?: string,
+            since?: string,
+            closure?: any,
+            scope?: any,
+        ): void;
         /** [Method] Returns whether this version equals to the supplied argument
          * @param target String/Number The version to compare with.
          * @returns Boolean true if this version equals to the target, false otherwise.
@@ -44803,12 +48763,10 @@ declare namespace Ext.viewport {
     }
 }
 declare namespace Ext.viewport {
-    export interface IIos extends Ext.viewport.IDefault {
-    }
+    export interface IIos extends Ext.viewport.IDefault {}
 }
 declare namespace Ext {
-    export interface IViewport extends Ext.viewport.IDefault {
-    }
+    export interface IViewport extends Ext.viewport.IDefault {}
     export class Viewport {
         /** [Property] (Boolean) */
         static isReady: boolean;
@@ -44827,7 +48785,12 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds an array of Components to this Container
          * @param items Array The array of items to add to this container.
          * @returns Array The array of items after they have been added.
@@ -44839,7 +48802,12 @@ declare namespace Ext {
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static addBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds a CSS class or classes to this Component s rendered element
          * @param cls String The CSS class to add.
          * @param prefix String Optional prefix to add to each class.
@@ -44857,7 +48825,13 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -44865,7 +48839,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static addManagedListener(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static addManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Animates to the supplied activeItem with a specified animation
          * @param activeItem Object/Number The item or item index to make active.
          * @param animation Object/Ext.fx.layout.Card Card animation configuration or instance.
@@ -44920,7 +48900,12 @@ declare namespace Ext {
          * @param scope Object Scope of fn.
          * @returns Object
          */
-        static fireAction(eventName?: string, args?: any[], fn?: any, scope?: any): any;
+        static fireAction(
+            eventName?: string,
+            args?: any[],
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Fires the specified event with the passed parameters minus the event name plus the options object passed to addList
          * @param eventName String The name of the event to fire.
          * @param args Object... Variable number of parameters are passed to handlers.
@@ -45279,7 +49264,13 @@ declare namespace Ext {
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          * @param options Object If the eventName parameter was an event name, this is the addListener options.
          */
-        static mon(object?: any, eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static mon(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeManagedListener
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
@@ -45294,21 +49285,37 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  This object may contain any of the following properties:
          * @param order String The order of when the listener should be added into the listener queue. Possible values are before, current and after.
          */
-        static on(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static on(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for addAfterListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for addBeforeListener
          * @param eventName String/String[]/Object The name of the event to listen for.
          * @param fn Function/String The method the event invokes.
          * @param scope Object The scope for fn.
          * @param options Object An object containing handler configuration.
          */
-        static onBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static onBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Retrieves all descendant components which match the passed selector
          * @param selector String Selector complying to an Ext.ComponentQuery selector.
          * @returns Array Ext.Component's which matched the selector.
@@ -45332,13 +49339,21 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeAfterListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeAfterListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes all items currently in the Container optionally destroying them all
          * @param destroy Boolean If true, destroys each removed Component.
          * @param everything Boolean If true, completely remove all items including docked / centered and floating items.
          * @returns Ext.Component this
          */
-        static removeAll(destroy?: boolean, everything?: boolean): Ext.IComponent;
+        static removeAll(
+            destroy?: boolean,
+            everything?: boolean,
+        ): Ext.IComponent;
         /** [Method] Removes the Component at the specified index  myContainer removeAt 0 removes the first item
          * @param index Number The index of the Component to remove.
          * @returns Ext.Container this
@@ -45350,7 +49365,12 @@ declare namespace Ext {
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static removeBeforeListener(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static removeBeforeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Removes the given CSS class es from this Component s rendered element
          * @param cls String The class(es) to remove.
          * @param prefix String Optional prefix to prepend before each class.
@@ -45375,14 +49395,25 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static removeListener(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static removeListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Adds listeners to any Observable object or Element which are automatically removed when this Component is destroyed
          * @param object Ext.mixin.Observable/HTMLElement The item to which to add a listener/listeners.
          * @param eventName Object/String The event name, or an object containing event name properties.
          * @param fn Function If the eventName parameter was an event name, this is the handler function.
          * @param scope Object If the eventName parameter was an event name, this is the scope in which the handler function is executed.
          */
-        static removeManagedListener(object?: any, eventName?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            object?: any,
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes a menu from a specified side
          * @param side String The side to remove the menu from
          */
@@ -45393,7 +49424,12 @@ declare namespace Ext {
          * @param prefix String Optional prefix to prepend before each class.
          * @param suffix String Optional suffix to append to each class.
          */
-        static replaceCls(oldCls?: string, newCls?: string, prefix?: string, suffix?: string): void;
+        static replaceCls(
+            oldCls?: string,
+            newCls?: string,
+            prefix?: string,
+            suffix?: string,
+        ): void;
         /** [Method] Resets top right bottom and left configurations to null which will un float this component  */
         static resetFloating(): void;
         /** [Method] Resumes firing events see suspendEvents
@@ -45673,21 +49709,37 @@ declare namespace Ext {
          * @param options Object Extra options object. See addListener for details.
          * @param order String The order of the listener to remove. Possible values are before, current and after.
          */
-        static un(eventName?: any, fn?: any, scope?: any, options?: any, order?: string): void;
+        static un(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+            order?: string,
+        ): void;
         /** [Method] Alias for removeAfterListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unAfter(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unAfter(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Alias for removeBeforeListener
          * @param eventName String/String[]/Object The name of the event the handler was associated with.
          * @param fn Function/String The handler to remove.
          * @param scope Object The scope originally specified for fn.
          * @param options Object Extra options object.
          */
-        static unBefore(eventName?: any, fn?: any, scope?: any, options?: any): void;
+        static unBefore(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Convenience method which calls setMasked with a value of false to hide the mask */
         static unmask(): void;
         /** [Method] Walks up the ownerCt axis looking for an ancestor Container which matches the passed simple selector
@@ -45705,8 +49757,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.viewport {
-    export interface IViewport extends Ext.IBase {
-    }
+    export interface IViewport extends Ext.IBase {}
 }
 declare namespace Ext.viewport {
     export interface IWindowsPhone extends Ext.viewport.IDefault {

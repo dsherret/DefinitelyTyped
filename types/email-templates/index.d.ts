@@ -95,20 +95,22 @@ declare namespace Email {
         /**
          * Default locals to pass to templates for rendering
          */
-        locals?: {
-            /**
-             * Whether or not to cache templates.
-             * Defaults to false for development and test environments, and true for all others (via process.env.NODE_ENV)
-             */
-            cache?: boolean | undefined;
-            /**
-             * @deprecated
-             * Adds whitespace to the resulting HTML to make it easier for a human to read using '  ' as indentation.
-             * Defaults to true, but is automatically set to false for subject templates and text-based emails
-             */
-            pretty?: boolean | undefined;
-            [key: string]: any;
-        } | undefined;
+        locals?:
+            | {
+                  /**
+                   * Whether or not to cache templates.
+                   * Defaults to false for development and test environments, and true for all others (via process.env.NODE_ENV)
+                   */
+                  cache?: boolean | undefined;
+                  /**
+                   * @deprecated
+                   * Adds whitespace to the resulting HTML to make it easier for a human to read using '  ' as indentation.
+                   * Defaults to true, but is automatically set to false for subject templates and text-based emails
+                   */
+                  pretty?: boolean | undefined;
+                  [key: string]: any;
+              }
+            | undefined;
     }
 
     interface EmailConfig<T = any> {
@@ -174,7 +176,9 @@ declare namespace Email {
          * a function that returns the path to a template file
          * @default (path: string, template: string) => string
          */
-        getPath?: ((path: string, template: string, locals: any) => string) | undefined;
+        getPath?:
+            | ((path: string, template: string, locals: any) => string)
+            | undefined;
     }
 
     type JuiceGlobalConfig = Partial<{

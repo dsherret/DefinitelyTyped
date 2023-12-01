@@ -94,7 +94,10 @@ declare module "diagnostics_channel" {
      * @param onMessage The previous subscribed handler to remove
      * @return `true` if the handler was found, `false` otherwise.
      */
-    function unsubscribe(name: string | symbol, onMessage: ChannelListener): boolean;
+    function unsubscribe(
+        name: string | symbol,
+        onMessage: ChannelListener,
+    ): boolean;
     /**
      * The class `Channel` represents an individual named channel within the data
      * pipeline. It is used to track subscribers and to publish messages when there

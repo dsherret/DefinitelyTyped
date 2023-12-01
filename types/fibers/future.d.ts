@@ -30,7 +30,7 @@ declare global {
 }
 
 interface FutureConstructor {
-    new<T>(): Future<T>;
+    new <T>(): Future<T>;
     /**
      * Wrap a node-style async function to return a future in place of using a callback.
      * A node-style async function is usually in the form (...args: any, cb: (err?: Error, ...cbArgs: any) => any) => any
@@ -50,8 +50,16 @@ interface FutureConstructor {
      *
      * Example usage: Future.wrap(asyncFunction)(arg1).wait()
      */
-    wrap<T>(fnOrObject: (...args: any[]) => T, multi?: boolean, suffix?: string): FutureFunction<T>;
-    wrap<O extends object>(fnOrObject: O, multi?: boolean, suffix?: string): FutureObject<O>;
+    wrap<T>(
+        fnOrObject: (...args: any[]) => T,
+        multi?: boolean,
+        suffix?: string,
+    ): FutureFunction<T>;
+    wrap<O extends object>(
+        fnOrObject: O,
+        multi?: boolean,
+        suffix?: string,
+    ): FutureObject<O>;
     // wrap<O = object, T = FutureObject>(fnOrObject: O, multi?: boolean, suffix?: string): FutureObject & FunctionProperties<O>;
 
     /**
@@ -68,7 +76,11 @@ interface FutureConstructor {
      * }).detach();
      */
     task<T>(fn: (...args: any[]) => T): Future<T>;
-    task<T = any>(fn1: Function, fn2: Function, ...fns: Function[]): Future<T[]>;
+    task<T = any>(
+        fn1: Function,
+        fn2: Function,
+        ...fns: Function[]
+    ): Future<T[]>;
 
     /**
      * Wait on a series of futures and then return. If the futures throw an exception this function

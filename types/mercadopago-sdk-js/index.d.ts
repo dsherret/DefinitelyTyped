@@ -2,7 +2,10 @@
 
 declare namespace mercadopago {
     interface MercadoPago {
-        new(publicKey: string, options?: mercadopagocore.Options): mercadopagocore.MercadoPagoCore;
+        new (
+            publicKey: string,
+            options?: mercadopagocore.Options,
+        ): mercadopagocore.MercadoPagoCore;
     }
 }
 

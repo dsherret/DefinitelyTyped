@@ -4,7 +4,7 @@ declare const Flexmonster: FlexmonsterConstructor;
 export = Flexmonster;
 
 interface FlexmonsterConstructor {
-    new(params: Flexmonster.Params): Flexmonster.Pivot;
+    new (params: Flexmonster.Params): Flexmonster.Pivot;
     (params: Flexmonster.Params): Flexmonster.Pivot;
 }
 
@@ -18,9 +18,15 @@ declare namespace Flexmonster {
         componentFolder?: string | undefined;
         report?: Report | string | undefined;
         global?: Report | undefined;
-        customizeCell?: ((cell: CellBuilder, data: CellData) => void) | undefined;
+        customizeCell?:
+            | ((cell: CellBuilder, data: CellData) => void)
+            | undefined;
         customizeContextMenu?:
-            | ((items: ContextMenuItem[], data: CellData | ChartData, viewType: string) => ContextMenuItem[])
+            | ((
+                  items: ContextMenuItem[],
+                  data: CellData | ChartData,
+                  viewType: string,
+              ) => ContextMenuItem[])
             | undefined;
         // events
         afterchartdraw?: (() => void) | undefined;
@@ -69,15 +75,15 @@ declare namespace Flexmonster {
         addCalculatedMeasure(measure: Measure): void;
         addCondition(condition: ConditionalFormat): void;
         addJSON(json: object[]): void;
-        alert(
-            options: {
-                title?: string | undefined;
-                message?: string | undefined;
-                type?: string | undefined;
-                buttons?: Array<{ label: string; handler?: (() => void) | undefined }> | undefined;
-                blocking?: boolean | undefined;
-            },
-        ): void;
+        alert(options: {
+            title?: string | undefined;
+            message?: string | undefined;
+            type?: string | undefined;
+            buttons?:
+                | Array<{ label: string; handler?: (() => void) | undefined }>
+                | undefined;
+            blocking?: boolean | undefined;
+        }): void;
         clear(): void;
         clearFilter(hierarchyName: string): void;
         clearXMLACache(
@@ -93,7 +99,9 @@ declare namespace Flexmonster {
         collapseAllData(): void;
         collapseData(hierarchyName: string): void;
         connectTo(object: DataSource): void;
-        customizeCell(customizeCellFunction: (cell: CellBuilder, data: CellData) => void): void;
+        customizeCell(
+            customizeCellFunction: (cell: CellBuilder, data: CellData) => void,
+        ): void;
         customizeContextMenu(
             customizeFunction: (
                 items: ContextMenuItem[],
@@ -117,8 +125,18 @@ declare namespace Flexmonster {
         getCondition(id: string): ConditionalFormat;
         getData(
             options: { slice?: Slice | undefined },
-            callbackHandler: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-            updateHandler?: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
+            callbackHandler:
+                | ((
+                      rawData: GetDataValueObject,
+                      error?: GetDataErrorObject,
+                  ) => void)
+                | string,
+            updateHandler?:
+                | ((
+                      rawData: GetDataValueObject,
+                      error?: GetDataErrorObject,
+                  ) => void)
+                | string,
         ): void;
         getFilter(hierarchyName: string): Filter;
         getFormat(measureName: string): Format;
@@ -162,12 +180,23 @@ declare namespace Flexmonster {
             password?: string,
         ): string;
         load(url: string, componentFolder?: string): void;
-        off(eventType: string, handler?: ((...args: any[]) => any) | string): void;
-        on(eventType: string, handler: ((...args: any[]) => any) | string): void;
+        off(
+            eventType: string,
+            handler?: ((...args: any[]) => any) | string,
+        ): void;
+        on(
+            eventType: string,
+            handler: ((...args: any[]) => any) | string,
+        ): void;
         open(): void;
         openCalculatedValueEditor(
             uniqueName?: string,
-            callbackHandler?: ((response: { uniqueName: string; isRemoved: boolean }) => void) | string,
+            callbackHandler?:
+                | ((response: {
+                      uniqueName: string;
+                      isRemoved: boolean;
+                  }) => void)
+                | string,
         ): void;
         openFieldsList(): void;
         openFilter(hierarchyName: string): void;
@@ -190,12 +219,28 @@ declare namespace Flexmonster {
         setFormat(format: Format, measureName: string): void;
         setOptions(options: Options): void;
         setReport(report: Report): void;
-        setSort(hierarchyName: string, sortName: string, customSorting?: string[]): void;
+        setSort(
+            hierarchyName: string,
+            sortName: string,
+            customSorting?: string[],
+        ): void;
         showCharts(type?: string, multiple?: boolean): void;
         showGrid(): void;
-        showGridAndCharts(type?: string, position?: string, multiple?: boolean): void;
-        sortingMethod(hierarchyName: string, compareFunction: (a: string, b: string) => number): void;
-        sortValues(axisName: string, type: string, tuple: number[], measure: MeasureObject): void;
+        showGridAndCharts(
+            type?: string,
+            position?: string,
+            multiple?: boolean,
+        ): void;
+        sortingMethod(
+            hierarchyName: string,
+            compareFunction: (a: string, b: string) => number,
+        ): void;
+        sortValues(
+            axisName: string,
+            type: string,
+            tuple: number[],
+            measure: MeasureObject,
+        ): void;
         toolbar: Toolbar;
         updateData(
             object: DataSource | object[],
@@ -206,49 +251,91 @@ declare namespace Flexmonster {
             },
         ): void;
         version: string;
-        fusioncharts?: {
-            getData(
-                options: {
-                    type: string;
-                    slice?: Slice | undefined;
-                    prepareDataFunction?: ((rawData: any) => any) | undefined;
-                },
-                callbackHandler: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-                updateHandler?: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-            ): void;
-            getNumberFormat(format: object): object;
-        } | undefined;
-        googlecharts?: {
-            getData(
-                options: {
-                    type?: string | undefined;
-                    slice?: Slice | undefined;
-                    prepareDataFunction?: ((rawData: any) => any) | undefined;
-                },
-                callbackHandler: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-                updateHandler?: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-            ): void;
-            getNumberFormat(format: object): object;
-            getNumberFormatPattern(format: object): string;
-        } | undefined;
-        highcharts?: {
-            getData(
-                options: {
-                    type?: string | undefined;
-                    slice?: Slice | undefined;
-                    xAxisType?: string | undefined;
-                    valuesOnly?: boolean | undefined;
-                    withDrilldown?: boolean | undefined;
-                    prepareDataFunction?: ((rawData: any) => any) | undefined;
-                },
-                callbackHandler: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-                updateHandler?: ((rawData: GetDataValueObject, error?: GetDataErrorObject) => void) | string,
-            ): void;
-            getAxisFormat(format: object): string;
-            getPointXFormat(format: object): string;
-            getPointYFormat(format: object): string;
-            getPointZFormat(format: object): string;
-        } | undefined;
+        fusioncharts?:
+            | {
+                  getData(
+                      options: {
+                          type: string;
+                          slice?: Slice | undefined;
+                          prepareDataFunction?:
+                              | ((rawData: any) => any)
+                              | undefined;
+                      },
+                      callbackHandler:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                      updateHandler?:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                  ): void;
+                  getNumberFormat(format: object): object;
+              }
+            | undefined;
+        googlecharts?:
+            | {
+                  getData(
+                      options: {
+                          type?: string | undefined;
+                          slice?: Slice | undefined;
+                          prepareDataFunction?:
+                              | ((rawData: any) => any)
+                              | undefined;
+                      },
+                      callbackHandler:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                      updateHandler?:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                  ): void;
+                  getNumberFormat(format: object): object;
+                  getNumberFormatPattern(format: object): string;
+              }
+            | undefined;
+        highcharts?:
+            | {
+                  getData(
+                      options: {
+                          type?: string | undefined;
+                          slice?: Slice | undefined;
+                          xAxisType?: string | undefined;
+                          valuesOnly?: boolean | undefined;
+                          withDrilldown?: boolean | undefined;
+                          prepareDataFunction?:
+                              | ((rawData: any) => any)
+                              | undefined;
+                      },
+                      callbackHandler:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                      updateHandler?:
+                          | ((
+                                rawData: GetDataValueObject,
+                                error?: GetDataErrorObject,
+                            ) => void)
+                          | string,
+                  ): void;
+                  getAxisFormat(format: object): string;
+                  getPointXFormat(format: object): string;
+                  getPointYFormat(format: object): string;
+                  getPointZFormat(format: object): string;
+              }
+            | undefined;
     }
 
     interface Report {
@@ -257,10 +344,12 @@ declare namespace Flexmonster {
         options?: Options | undefined;
         conditions?: ConditionalFormat[] | undefined;
         formats?: Format[] | undefined;
-        tableSizes?: {
-            columns?: ColumnSize[] | undefined;
-            rows?: RowSize[] | undefined;
-        } | undefined;
+        tableSizes?:
+            | {
+                  columns?: ColumnSize[] | undefined;
+                  rows?: RowSize[] | undefined;
+              }
+            | undefined;
         localization?: object | string | undefined;
         version?: string | undefined;
         creationDate?: string | undefined;
@@ -301,69 +390,113 @@ declare namespace Flexmonster {
         measures?: Measure[] | undefined;
         reportFilters?: Hierarchy[] | undefined;
         rows?: Hierarchy[] | undefined;
-        drills?: {
-            drillAll?: boolean | undefined;
-            columns?: Array<{ tuple: string[]; measure?: MeasureObject | undefined }> | undefined;
-            rows?: Array<{ tuple: string[]; measure?: MeasureObject | undefined }> | undefined;
-        } | undefined;
-        expands?: {
-            expandAll?: boolean | undefined;
-            columns?: Array<{ tuple: string[]; measure?: MeasureObject | undefined }> | undefined;
-            rows?: Array<{ tuple: string[]; measure?: MeasureObject | undefined }> | undefined;
-        } | undefined;
-        sorting?: {
-            column?: Array<{ type: string; tuple: string[]; measure: MeasureObject }> | undefined;
-            row?: Array<{ type: string; tuple: string[]; measure: MeasureObject }> | undefined;
-        } | undefined;
+        drills?:
+            | {
+                  drillAll?: boolean | undefined;
+                  columns?:
+                      | Array<{
+                            tuple: string[];
+                            measure?: MeasureObject | undefined;
+                        }>
+                      | undefined;
+                  rows?:
+                      | Array<{
+                            tuple: string[];
+                            measure?: MeasureObject | undefined;
+                        }>
+                      | undefined;
+              }
+            | undefined;
+        expands?:
+            | {
+                  expandAll?: boolean | undefined;
+                  columns?:
+                      | Array<{
+                            tuple: string[];
+                            measure?: MeasureObject | undefined;
+                        }>
+                      | undefined;
+                  rows?:
+                      | Array<{
+                            tuple: string[];
+                            measure?: MeasureObject | undefined;
+                        }>
+                      | undefined;
+              }
+            | undefined;
+        sorting?:
+            | {
+                  column?:
+                      | Array<{
+                            type: string;
+                            tuple: string[];
+                            measure: MeasureObject;
+                        }>
+                      | undefined;
+                  row?:
+                      | Array<{
+                            type: string;
+                            tuple: string[];
+                            measure: MeasureObject;
+                        }>
+                      | undefined;
+              }
+            | undefined;
         drillThrough?: string[] | undefined;
         flatOrder?: string[] | undefined;
     }
 
     interface Options {
-        chart?: {
-            activeMeasure?: MeasureObject | undefined;
-            activeTupleIndex?: number | undefined;
-            autoRange?: boolean | undefined;
-            labelsHierarchy?: string | undefined;
-            multipleMeasures?: boolean | undefined;
-            oneLevel?: boolean | undefined;
-            showFilter?: boolean | undefined;
-            showLegend?: boolean | undefined;
-            showLegendButton?: boolean | undefined;
-            showMeasures?: boolean | undefined;
-            showWarning?: boolean | undefined;
-            title?: string | undefined;
-            type?: string | undefined;
-            showDataLabels?: boolean | undefined;
-            reversedAxes?: boolean | undefined;
-            showAllLabels?: boolean | undefined;
-            showOneMeasureSelection?: boolean | undefined;
-            position?: string | undefined;
-            pieDataIndex?: string | undefined;
-            axisShortNumberFormat?: boolean | undefined;
-        } | undefined;
-        grid?: {
-            showFilter?: boolean | undefined;
-            showGrandTotals?: string | undefined;
-            showHeaders?: boolean | undefined;
-            showHierarchies?: boolean | undefined;
-            showHierarchyCaptions?: boolean | undefined;
-            showReportFiltersArea?: boolean | undefined;
-            showTotals?: boolean | undefined;
-            showEmptyValues?: boolean | undefined;
-            title?: string | undefined;
-            type?: string | undefined;
-            showAutoCalculationBar?: boolean | undefined;
-            dragging?: boolean | undefined;
-            grandTotalsPosition?: string | undefined;
-            drillThroughMaxRows?: number | undefined;
-        } | undefined;
-        filter?: {
-            timezoneOffset?: number | undefined;
-            weekOffset?: number | undefined;
-            dateFormat?: string | undefined;
-            liveSearch?: boolean | undefined;
-        } | undefined;
+        chart?:
+            | {
+                  activeMeasure?: MeasureObject | undefined;
+                  activeTupleIndex?: number | undefined;
+                  autoRange?: boolean | undefined;
+                  labelsHierarchy?: string | undefined;
+                  multipleMeasures?: boolean | undefined;
+                  oneLevel?: boolean | undefined;
+                  showFilter?: boolean | undefined;
+                  showLegend?: boolean | undefined;
+                  showLegendButton?: boolean | undefined;
+                  showMeasures?: boolean | undefined;
+                  showWarning?: boolean | undefined;
+                  title?: string | undefined;
+                  type?: string | undefined;
+                  showDataLabels?: boolean | undefined;
+                  reversedAxes?: boolean | undefined;
+                  showAllLabels?: boolean | undefined;
+                  showOneMeasureSelection?: boolean | undefined;
+                  position?: string | undefined;
+                  pieDataIndex?: string | undefined;
+                  axisShortNumberFormat?: boolean | undefined;
+              }
+            | undefined;
+        grid?:
+            | {
+                  showFilter?: boolean | undefined;
+                  showGrandTotals?: string | undefined;
+                  showHeaders?: boolean | undefined;
+                  showHierarchies?: boolean | undefined;
+                  showHierarchyCaptions?: boolean | undefined;
+                  showReportFiltersArea?: boolean | undefined;
+                  showTotals?: boolean | undefined;
+                  showEmptyValues?: boolean | undefined;
+                  title?: string | undefined;
+                  type?: string | undefined;
+                  showAutoCalculationBar?: boolean | undefined;
+                  dragging?: boolean | undefined;
+                  grandTotalsPosition?: string | undefined;
+                  drillThroughMaxRows?: number | undefined;
+              }
+            | undefined;
+        filter?:
+            | {
+                  timezoneOffset?: number | undefined;
+                  weekOffset?: number | undefined;
+                  dateFormat?: string | undefined;
+                  liveSearch?: boolean | undefined;
+              }
+            | undefined;
         configuratorActive?: boolean | undefined;
         configuratorButton?: boolean | undefined;
         dateTimezoneOffset?: number | undefined;
@@ -483,7 +616,13 @@ declare namespace Flexmonster {
         members?: string[] | undefined;
         exclude?: string[] | undefined;
         include?: string[] | undefined;
-        query?: NumberQuery | LabelQuery | DateQuery | TimeQuery | ValueQuery | undefined;
+        query?:
+            | NumberQuery
+            | LabelQuery
+            | DateQuery
+            | TimeQuery
+            | ValueQuery
+            | undefined;
         measure?: string | MeasureObject | undefined;
     }
 

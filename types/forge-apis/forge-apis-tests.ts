@@ -54,7 +54,13 @@ authClientTwoLeggedV2.setCredentials(authToken);
 authClientTwoLeggedV2.isAuthorized();
 
 // $ExpectType AuthClientThreeLeggedV2
-const authClientThreeLeggedV2 = new AuthClientThreeLeggedV2("", "", "", [], true);
+const authClientThreeLeggedV2 = new AuthClientThreeLeggedV2(
+    "",
+    "",
+    "",
+    [],
+    true,
+);
 // $ExpectType string
 authClientThreeLeggedV2.generateAuthUrl("");
 // $ExpectType Promise<AuthToken>
@@ -87,7 +93,13 @@ const derivativesApi = new DerivativesApi();
 // $ExpectType Promise<ApiResponse>
 derivativesApi.deleteManifest("", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-derivativesApi.getDerivativeManifest("", "", {}, authClientTwoLegged, authToken);
+derivativesApi.getDerivativeManifest(
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 derivativesApi.getFormats({}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
@@ -97,7 +109,13 @@ derivativesApi.getMetadata("", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
 derivativesApi.getModelviewMetadata("", "", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-derivativesApi.getModelviewProperties("", "", {}, authClientTwoLegged, authToken);
+derivativesApi.getModelviewProperties(
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 derivativesApi.getThumbnail("", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
@@ -146,11 +164,23 @@ foldersApi.getFolderParent("", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
 foldersApi.getFolderRefs("", "", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-foldersApi.getFolderRelationshipsRefs("", "", {}, authClientTwoLegged, authToken);
+foldersApi.getFolderRelationshipsRefs(
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 foldersApi.postFolder("", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-foldersApi.postFolderRelationshipsRef("", "", {}, authClientTwoLegged, authToken);
+foldersApi.postFolderRelationshipsRef(
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 
 // $ExpectType HubsApi
 const hubsApi = new HubsApi();
@@ -174,7 +204,12 @@ itemsApi.getItemTip("", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
 itemsApi.getItemVersions("", "", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-itemsApi.postItem("", { included: [{ type: "", id: "" }] }, authClientTwoLegged, authToken);
+itemsApi.postItem(
+    "",
+    { included: [{ type: "", id: "" }] },
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 itemsApi.postItemRelationshipsRef("", "", {}, authClientTwoLegged, authToken);
 
@@ -183,7 +218,14 @@ const objectsApi = new ObjectsApi();
 // $ExpectType Promise<ApiResponse>
 objectsApi.copyTo("", "", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-objectsApi.createSignedResource("", "", { minutesExpiration: 0 }, {}, authClientTwoLegged, authToken);
+objectsApi.createSignedResource(
+    "",
+    "",
+    { minutesExpiration: 0 },
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 objectsApi.deleteObject("", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
@@ -199,21 +241,54 @@ objectsApi.getSignedResource("", {});
 // $ExpectType Promise<ApiResponse>
 objectsApi.getStatusBySessionId("", "", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-objectsApi.uploadChunk("", "", 0, "", "", "", {}, authClientTwoLegged, authToken);
+objectsApi.uploadChunk(
+    "",
+    "",
+    0,
+    "",
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 objectsApi.uploadObject("", "", 0, "", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
 objectsApi.uploadSignedResource("", 0, "", {});
 // $ExpectType Promise<ApiResponse>
 objectsApi.uploadSignedResourcesChunk("", 0, "", "", {});
-objectsApi.uploadResources("", [{ objectKey: "", data: "" }], {}, authClientTwoLegged, authToken);
+objectsApi.uploadResources(
+    "",
+    [{ objectKey: "", data: "" }],
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 objectsApi.downloadResources("", [], {}, authClientTwoLegged, authToken);
 objectsApi.getS3UploadURL("", "", {}, authClientTwoLegged, authToken);
-objectsApi.getS3UploadURLs("", { requests: [{ objectKey: "" }] }, {}, authClientTwoLegged, authToken);
+objectsApi.getS3UploadURLs(
+    "",
+    { requests: [{ objectKey: "" }] },
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 objectsApi.completeS3Upload("", "", {}, {}, authClientTwoLegged, authToken);
-objectsApi.completeS3Uploads("", { requests: [{ objectKey: "" }] }, authClientTwoLegged, authToken);
+objectsApi.completeS3Uploads(
+    "",
+    { requests: [{ objectKey: "" }] },
+    authClientTwoLegged,
+    authToken,
+);
 objectsApi.getS3DownloadURL("", "", {}, authClientTwoLegged, authToken);
-objectsApi.getS3DownloadURLs("", { requests: [{ objectKey: "" }] }, {}, authClientTwoLegged, authToken);
+objectsApi.getS3DownloadURLs(
+    "",
+    { requests: [{ objectKey: "" }] },
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 
 // $ExpectType ProjectsApi
 const projectsApi = new ProjectsApi();
@@ -266,7 +341,13 @@ versionsApi.getVersionItem("", "", authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
 versionsApi.getVersionRefs("", "", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>
-versionsApi.getVersionRelationshipsRefs("", "", {}, authClientTwoLegged, authToken);
+versionsApi.getVersionRelationshipsRefs(
+    "",
+    "",
+    {},
+    authClientTwoLegged,
+    authToken,
+);
 // $ExpectType Promise<ApiResponse>
 versionsApi.postVersion("", {}, authClientTwoLegged, authToken);
 // $ExpectType Promise<ApiResponse>

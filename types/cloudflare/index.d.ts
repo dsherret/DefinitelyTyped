@@ -60,14 +60,26 @@ declare namespace Cloudflare {
         };
     }
 
-    type DnsRecord = DnsRecordWithPriority | DnsRecordWithoutPriority | SrvDnsRecord;
-    type DnsRecordByType<RecordType extends RecordTypes> = RecordType extends "MX" | "URI" ? DnsRecordWithPriority
-        : RecordType extends "SRV" ? SrvDnsRecord
-        : RecordType extends Exclude<RecordTypes, "MX" | "SRV" | "URI"> ? DnsRecordWithoutPriority
-        : DnsRecord;
+    type DnsRecord =
+        | DnsRecordWithPriority
+        | DnsRecordWithoutPriority
+        | SrvDnsRecord;
+    type DnsRecordByType<RecordType extends RecordTypes> = RecordType extends
+        | "MX"
+        | "URI"
+        ? DnsRecordWithPriority
+        : RecordType extends "SRV"
+          ? SrvDnsRecord
+          : RecordType extends Exclude<RecordTypes, "MX" | "SRV" | "URI">
+            ? DnsRecordWithoutPriority
+            : DnsRecord;
 
     interface DNSRecords {
-        edit(zone_id: string, id: string, record: DnsRecord): ResponseObjectPromise;
+        edit(
+            zone_id: string,
+            id: string,
+            record: DnsRecord,
+        ): ResponseObjectPromise;
         browse<RecordType extends RecordTypes = any>(
             zone_id: string,
             options?: DnsRecordsBrowseOptions<RecordType>,
@@ -115,30 +127,61 @@ declare namespace Cloudflare {
     interface EnterpriseZoneWorkerScripts {
         read(account_id: string, name: string): ResponseObjectPromise;
         browse(account_id: string, name: string): ResponseObjectPromise;
-        edit(account_id: string, name: string, script: string): ResponseObjectPromise;
+        edit(
+            account_id: string,
+            name: string,
+            script: string,
+        ): ResponseObjectPromise;
         del(account_id: string, name: string): ResponseObjectPromise;
     }
 
     interface EnterpriseZoneWorkersRoutes {
         browse(zone_id: string): ResponseObjectPromise;
         del(zone_id: string, id: string): ResponseObjectPromise;
-        add(zone_id: string, config: { pattern: string; script: string }): ResponseObjectPromise;
-        edit(zone_id: string, id: string, config: { pattern: string; script: string }): ResponseObjectPromise;
+        add(
+            zone_id: string,
+            config: { pattern: string; script: string },
+        ): ResponseObjectPromise;
+        edit(
+            zone_id: string,
+            id: string,
+            config: { pattern: string; script: string },
+        ): ResponseObjectPromise;
         read(zone_id: string, id: string): ResponseObjectPromise;
     }
 
     interface EnterpriseZoneWorkersKVNamespaces {
-        edit(account_id: string, id: string, config: { title: string }): ResponseObjectPromise;
+        edit(
+            account_id: string,
+            id: string,
+            config: { title: string },
+        ): ResponseObjectPromise;
         browse(account_id: string): ResponseObjectPromise;
-        add(account_id: string, config: { title: string }): ResponseObjectPromise;
+        add(
+            account_id: string,
+            config: { title: string },
+        ): ResponseObjectPromise;
         del(account_id: string, id: string): ResponseObjectPromise;
     }
 
     interface EnterpriseZoneWorkersKV {
         browse(account_id: string, namespace_id: string): ResponseObjectPromise;
-        add(account_id: string, namespace_id: string, key_name: string, value: string): ResponseObjectPromise;
-        read(account_id: string, namespace_id: string, key_name: string): ResponseObjectPromise;
-        del(account_id: string, namespace_id: string, key_name: string): ResponseObjectPromise;
+        add(
+            account_id: string,
+            namespace_id: string,
+            key_name: string,
+            value: string,
+        ): ResponseObjectPromise;
+        read(
+            account_id: string,
+            namespace_id: string,
+            key_name: string,
+        ): ResponseObjectPromise;
+        del(
+            account_id: string,
+            namespace_id: string,
+            key_name: string,
+        ): ResponseObjectPromise;
         addMulti(
             account_id: string,
             namespace_id: string,
@@ -151,7 +194,11 @@ declare namespace Cloudflare {
                 base64?: boolean;
             }>,
         ): ResponseObjectPromise;
-        delMulti(account_id: string, namespace_id: string, data: string[]): ResponseObjectPromise;
+        delMulti(
+            account_id: string,
+            namespace_id: string,
+            data: string[],
+        ): ResponseObjectPromise;
     }
 
     interface CFIPs {
@@ -229,7 +276,14 @@ declare namespace Cloudflare {
             params: {
                 files?:
                     | string[]
-                    | { url: string; headers: { Origin: string; "CF-IPCountry": string; "CF-Device-Type": string } }
+                    | {
+                          url: string;
+                          headers: {
+                              Origin: string;
+                              "CF-IPCountry": string;
+                              "CF-Device-Type": string;
+                          };
+                      }
                     | undefined;
                 tags?: string[] | undefined;
                 hosts?: string[] | undefined;
@@ -241,7 +295,11 @@ declare namespace Cloudflare {
 
     interface ZoneSettings {
         read(id: string, setting: string): ResponseObjectPromise;
-        edit(id: string, setting: string, value: string | Record<string, unknown>): ResponseObjectPromise;
+        edit(
+            id: string,
+            setting: string,
+            value: string | Record<string, unknown>,
+        ): ResponseObjectPromise;
         editAll(id: string, settings: any): ResponseObjectPromise;
         browse(id: string): ResponseObjectPromise;
     }
@@ -306,9 +364,16 @@ declare namespace Cloudflare {
 
     interface ZoneWorkersRoutes {
         browse(zone_id: string): ResponseObjectPromise;
-        edit(zone_id: string, id: string, config: { pattern: string; script: string }): ResponseObjectPromise;
+        edit(
+            zone_id: string,
+            id: string,
+            config: { pattern: string; script: string },
+        ): ResponseObjectPromise;
         read(zone_id: string, id: string): ResponseObjectPromise;
-        add(zone_id: string, config: { pattern: string; script: string }): ResponseObjectPromise;
+        add(
+            zone_id: string,
+            config: { pattern: string; script: string },
+        ): ResponseObjectPromise;
         del(zone_id: string, id: string): ResponseObjectPromise;
     }
 

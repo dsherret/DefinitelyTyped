@@ -1,11 +1,11 @@
 export type ErrorInstanceOrConstructor =
     | Error
     | {
-        new(...args: any[]): Error;
-    }
+          new (...args: any[]): Error;
+      }
     | {
-        (...args: any[]): Error;
-    };
+          (...args: any[]): Error;
+      };
 
 /**
  * Checks if two instances are compatible (strict equal).
@@ -30,7 +30,10 @@ export function compatibleInstance(thrown: Error, errorLike: Error): boolean;
  * @param thrown - error
  * @param errorLike - object to compare against
  */
-export function compatibleConstructor(thrown: Error, errorLike: ErrorInstanceOrConstructor): boolean;
+export function compatibleConstructor(
+    thrown: Error,
+    errorLike: ErrorInstanceOrConstructor,
+): boolean;
 
 /**
  * Checks if an error's message is compatible with a matcher (String or
@@ -42,7 +45,10 @@ export function compatibleConstructor(thrown: Error, errorLike: ErrorInstanceOrC
  * @param thrown - thrown error
  * @param errMatcher - string/regex to look for in the message
  */
-export function compatibleMessage(thrown: Error | string, errMatcher: string | RegExp): boolean;
+export function compatibleMessage(
+    thrown: Error | string,
+    errMatcher: string | RegExp,
+): boolean;
 
 /**
  * Gets the error message from an error.
@@ -57,4 +63,6 @@ export function getMessage(err: Error | string): string;
 /**
  * Gets the constructor name for an Error instance or constructor itself.
  */
-export function getConstructorName(errorLike: ErrorInstanceOrConstructor): string;
+export function getConstructorName(
+    errorLike: ErrorInstanceOrConstructor,
+): string;

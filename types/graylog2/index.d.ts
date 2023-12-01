@@ -55,8 +55,18 @@ export class graylog extends EventEmitter {
     constructor(config: Readonly<GraylogConfig>);
 
     log(message: string | Error | Record<string, any>): void;
-    log(message: string, fullMessage: string, additionalFields?: Record<string, any>, timestamp?: number): void;
-    log(message: string | Error, additionalFields?: Record<string, any>, _?: undefined, timestamp?: number): void;
+    log(
+        message: string,
+        fullMessage: string,
+        additionalFields?: Record<string, any>,
+        timestamp?: number,
+    ): void;
+    log(
+        message: string | Error,
+        additionalFields?: Record<string, any>,
+        _?: undefined,
+        timestamp?: number,
+    ): void;
     log(
         message: string | Error | Record<string, any>,
         _: undefined,

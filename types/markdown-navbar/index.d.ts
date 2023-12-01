@@ -15,12 +15,18 @@ declare namespace MarkdownNavbar {
         /** Whether the title contains a numerical prefix, such as: 1. 2. 2.2 */
         ordered?: boolean;
         /** The event callback function after clicking navbar item */
-        onNavItemClick?: (event: MouseEvent<HTMLDivElement>, element: HTMLDivElement, hashValue: string) => void;
+        onNavItemClick?: (
+            event: MouseEvent<HTMLDivElement>,
+            element: HTMLDivElement,
+            hashValue: string,
+        ) => void;
         /** The event callback function before the hash value of browser address changing */
         onHashChange?: (newHash: string, oldHash: string) => void;
     }
 }
 
-declare function MarkdownNavbar(options: MarkdownNavbar.MarkdownNavbarProps): JSX.Element;
+declare function MarkdownNavbar(
+    options: MarkdownNavbar.MarkdownNavbarProps,
+): JSX.Element;
 
 export = MarkdownNavbar;

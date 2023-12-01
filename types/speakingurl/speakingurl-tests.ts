@@ -56,10 +56,7 @@ slug = getSlug("Foo and Bar or Baz", {
     },
 });
 slug = getSlug("[Knöpfe]", {
-    custom: [
-        "[",
-        "]",
-    ],
+    custom: ["[", "]"],
 });
 slug = getSlug("NEXUS4 only $299");
 slug = getSlug("NEXUS4 only €299", {

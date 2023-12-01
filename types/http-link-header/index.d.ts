@@ -26,7 +26,10 @@ declare class Link {
     /**
      * Format a given attribute and it's value
      */
-    static formatAttribute(attr: string, value: string | Buffer | Array<string | Buffer>): string;
+    static formatAttribute(
+        attr: string,
+        value: string | Buffer | Array<string | Buffer>,
+    ): string;
     /**
      * Link
      * @param value Link header to parse

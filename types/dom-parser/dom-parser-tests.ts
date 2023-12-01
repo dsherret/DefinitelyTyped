@@ -3,7 +3,7 @@ import DomParser = require("dom-parser");
 const parser = new DomParser();
 
 const exampleHtml =
-    "<html><body><div id=\"one\" class=\"myclass\"></div><div id=\"two\" class=\"myclass\"></div></body></html>";
+    '<html><body><div id="one" class="myclass"></div><div id="two" class="myclass"></div></body></html>';
 
 const dom = parser.parseFromString(exampleHtml); // $ExpectType Dom
 

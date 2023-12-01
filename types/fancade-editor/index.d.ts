@@ -35,7 +35,12 @@ declare function findPrefabs(PrefabName: string): number[];
  * @param z The z position to set the block at
  * @param blockIndex The index of the block to set
  */
-declare function setBlock(x: number, y: number, z: number, blockIndex: number): void;
+declare function setBlock(
+    x: number,
+    y: number,
+    z: number,
+    blockIndex: number,
+): void;
 
 /**
  * Set block value at position `(x, y, z)`.
@@ -93,7 +98,12 @@ declare function connect(
  * @param index The index of the terminal
  * @returns The terminal name (empty string if missing)
  */
-declare function getTerminalName(x: number, y: number, z: number, index: number): string;
+declare function getTerminalName(
+    x: number,
+    y: number,
+    z: number,
+    index: number,
+): string;
 
 /**
  * Get terminal type of block at `(x, y, z)` and terminal index.
@@ -103,7 +113,12 @@ declare function getTerminalName(x: number, y: number, z: number, index: number)
  * @param index The index of the terminal
  * @returns The terminal type (-1 if missing)
  */
-declare function getTerminalType(x: number, y: number, z: number, index: number): TerminalType;
+declare function getTerminalType(
+    x: number,
+    y: number,
+    z: number,
+    index: number,
+): TerminalType;
 /**
  * The type of a terminal.
  */
@@ -195,7 +210,10 @@ interface Events {
  * @param event The name of the event
  * @param listener The callback function
  */
-declare function setEventListener<E extends keyof Events>(eventName: E, listener: (...args: Events[E]) => void): void;
+declare function setEventListener<E extends keyof Events>(
+    eventName: E,
+    listener: (...args: Events[E]) => void,
+): void;
 
 /**
  * Select block. (Beta only)

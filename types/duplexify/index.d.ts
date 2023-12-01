@@ -5,8 +5,12 @@ import * as stream from "stream";
 export = duplexify;
 
 interface DuplexifyConstructor {
-    (writable?: stream.Writable, readable?: stream.Readable, streamOptions?: stream.DuplexOptions): duplexify.Duplexify;
-    new(
+    (
+        writable?: stream.Writable,
+        readable?: stream.Readable,
+        streamOptions?: stream.DuplexOptions,
+    ): duplexify.Duplexify;
+    new (
         writable?: stream.Writable,
         readable?: stream.Readable,
         streamOptions?: stream.DuplexOptions,

@@ -20,5 +20,8 @@ export default class DateRangePicker {
 
     getDates(format?: string): [Date | undefined, Date | undefined];
 
-    setDates(rangeStart: Date | number | string | object, rangeEnd: Date | number | string | object): void;
+    setDates(
+        rangeStart: Date | number | string | object,
+        rangeEnd: Date | number | string | object,
+    ): void;
 }

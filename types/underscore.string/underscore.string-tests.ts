@@ -40,7 +40,12 @@ _.lines("Hello\nWorld");
 
 _.str.reverse("foobar");
 
-_.splice("https://edtsech@bitbucket.org/edtsech/underscore.strings", 30, 7, "epeli");
+_.splice(
+    "https://edtsech@bitbucket.org/edtsech/underscore.strings",
+    30,
+    7,
+    "epeli",
+);
 
 _.startsWith("image.gif", "image");
 
@@ -102,8 +107,8 @@ _.strLeft("This_is_a_test_string", "_");
 
 _.strLeftBack("This_is_a_test_string", "_");
 
-_.stripTags("a <a href=\"#\">link</a>");
-_.stripTags("a <a href=\"#\">link</a><script>alert(\"hello world!\")</script>");
+_.stripTags('a <a href="#">link</a>');
+_.stripTags('a <a href="#">link</a><script>alert("hello world!")</script>');
 
 _.toSentence(["jQuery", "Mootools", "Prototype"]);
 _.toSentence(["jQuery", "Mootools", "Prototype"], ", ", " unt ");
@@ -119,7 +124,7 @@ _.surround("foo", "ab");
 
 _.quote("foo");
 
-_.unquote("\"foo\"");
+_.unquote('"foo"');
 _.unquote("'foo'", "'");
 
 _.slugify("Un éléphant à l'orée du bois");

@@ -21,9 +21,16 @@ moment("2015-02-28T16:00:00Z").subtractWorkingTime(5, "hours");
 // Fri Feb 27 2015 12:00:00 GMT+0000
 moment("2015-02-27T16:00:00Z").subtractWorkingTime(5, "hours", 30, "minutes");
 // Fri Feb 27 2015 10:30:00 GMT+0000
-moment("2015-02-27T16:30:00Z").workingDiff(moment("2015-02-26T12:00:00Z"), "hours");
+moment("2015-02-27T16:30:00Z").workingDiff(
+    moment("2015-02-26T12:00:00Z"),
+    "hours",
+);
 // 12
-moment("2015-02-27T16:30:00Z").workingDiff(moment("2015-02-26T12:00:00Z"), "hours", true);
+moment("2015-02-27T16:30:00Z").workingDiff(
+    moment("2015-02-26T12:00:00Z"),
+    "hours",
+    true,
+);
 // 12.5
 // set opening time to 09:30 and close early on Wednesdays
 moment.updateLocale("en", {
@@ -40,15 +47,11 @@ moment.updateLocale("en", {
 moment("2015-02-25T15:00:00Z").isWorkingTime(); // false
 moment("2015-02-23T09:00:00Z").isWorkingTime(); // false
 moment.updateLocale("en", {
-    holidays: [
-        "2015-05-04",
-    ],
+    holidays: ["2015-05-04"],
 });
 moment("2015-05-04T09:30:00Z").isWorkingDay(); // false
 moment.updateLocale("en", {
-    holidays: [
-        "*-12-25",
-    ],
+    holidays: ["*-12-25"],
 });
 moment("2015-12-25T16:30:00Z").isWorkingDay(); // false
 moment("2016-12-25T16:30:00Z").isWorkingDay(); // false

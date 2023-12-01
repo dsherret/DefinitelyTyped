@@ -29,7 +29,13 @@ interface State {
 
 const geojson: FeatureCollection = {
     type: "FeatureCollection",
-    features: [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: [-122.4, 37.8] } }],
+    features: [
+        {
+            type: "Feature",
+            properties: {},
+            geometry: { type: "Point", coordinates: [-122.4, 37.8] },
+        },
+    ],
 };
 
 class MyMap extends React.Component<{}, State> {
@@ -60,37 +66,45 @@ class MyMap extends React.Component<{}, State> {
                     mapboxApiAccessToken="pk.test"
                     mapboxApiUrl="http://url.test"
                     ref={this.setRefInteractive}
-                    onViewportChange={viewport => this.setState({ viewport })}
-                    onViewStateChange={({ viewState }) => this.setState({ viewport: viewState })}
-                    onClick={e => {
-                        const features = this.map.queryRenderedFeatures(e.point);
+                    onViewportChange={(viewport) => this.setState({ viewport })}
+                    onViewStateChange={({ viewState }) =>
+                        this.setState({ viewport: viewState })
+                    }
+                    onClick={(e) => {
+                        const features = this.map.queryRenderedFeatures(
+                            e.point,
+                        );
                         if (features.length > 0) {
                             console.log(features[0].source);
                         }
                     }}
-                    onContextMenu={event => {
+                    onContextMenu={(event) => {
                         event.preventDefault();
                     }}
                 >
-                    <FullscreenControl className="test-class" container={document.querySelector("body")} />
+                    <FullscreenControl
+                        className="test-class"
+                        container={document.querySelector("body")}
+                    />
                     <GeolocateControl
                         auto={false}
                         className="test-class"
                         style={{ marginTop: "8px" }}
-                        onGeolocate={options => {
+                        onGeolocate={(options) => {
                             console.log(options.enableHighAccuracy);
                         }}
                     />
                     <ScaleControl unit="nautical" />
                     <CanvasOverlay
-                        redraw={opts => {
-                            const { ctx, height, project, unproject, width } = opts;
+                        redraw={(opts) => {
+                            const { ctx, height, project, unproject, width } =
+                                opts;
                             const xy: number[] = unproject(project([20, 20]));
                             ctx.clearRect(0, 0, width, height);
                         }}
                     />
                     <CanvasOverlay
-                        redraw={opts => {}}
+                        redraw={(opts) => {}}
                         captureScroll={true}
                         captureDrag={true}
                         captureClick={true}
@@ -98,7 +112,7 @@ class MyMap extends React.Component<{}, State> {
                     />
                     <SVGOverlay redraw={() => {}} />
                     <SVGOverlay
-                        redraw={opts => {
+                        redraw={(opts) => {
                             const { height, project, unproject, width } = opts;
                             const xy: number[] = unproject(project([20, 20]));
                         }}
@@ -109,7 +123,7 @@ class MyMap extends React.Component<{}, State> {
                     />
                     <HTMLOverlay redraw={() => {}} />
                     <HTMLOverlay
-                        redraw={opts => {
+                        redraw={(opts) => {
                             const { height, project, unproject, width } = opts;
                             const xy: number[] = unproject(project([20, 20]));
                         }}
@@ -147,16 +161,10 @@ class MyMap extends React.Component<{}, State> {
                             maxzoom={22}
                         />
                     </Source>
-                    <Marker
-                        latitude={0}
-                        longitude={0}
-                    >
+                    <Marker latitude={0} longitude={0}>
                         <div>Marker text</div>
                     </Marker>
-                    <Popup
-                        latitude={0}
-                        longitude={0}
-                    >
+                    <Popup latitude={0} longitude={0}>
                         <div>Popup text</div>
                     </Popup>
                 </InteractiveMap>
@@ -173,7 +181,7 @@ class MyMap extends React.Component<{}, State> {
                         const li = new LinearInterpolator({
                             around: nullPoint,
                         });
-                        this.setState(prevState => ({
+                        this.setState((prevState) => ({
                             viewport: {
                                 ...prevState.viewport,
                                 latitude: nullPoint[1],
@@ -188,7 +196,7 @@ class MyMap extends React.Component<{}, State> {
                 </button>
                 <button
                     onClick={() => {
-                        this.setState(prevState => ({
+                        this.setState((prevState) => ({
                             viewport: {
                                 ...prevState.viewport,
                                 width: "100vw",

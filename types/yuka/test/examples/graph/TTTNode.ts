@@ -12,7 +12,10 @@ export class TTTNode extends Node {
     winPlayer: number;
     weight: number;
 
-    constructor(index: number = -1, board: number[] = [9, 9, 9, 9, 9, 9, 9, 9, 9]) {
+    constructor(
+        index: number = -1,
+        board: number[] = [9, 9, 9, 9, 9, 9, 9, 9, 9],
+    ) {
         super(index);
 
         // the board is represented as a flat array
@@ -97,5 +100,5 @@ export class TTTNode extends Node {
 }
 
 function condition(v: number, i: number, a: number[]) {
-    return (a[i] === a[0] && a[i] !== 9);
+    return a[i] === a[0] && a[i] !== 9;
 }

@@ -3,8 +3,7 @@ import { dom, expect, spy } from "mochaccino";
  * spy test
  */
 const obj = {
-    funcName: (): any => {
-    },
+    funcName: (): any => {},
 };
 let s = spy();
 s(1, 2);
@@ -41,8 +40,7 @@ dom.clear();
 const a = 1;
 const b = true;
 const c = 2;
-const f = () => {
-};
+const f = () => {};
 const ErrorType = new Error();
 const regexp = /123/;
 expect(true).toBeTruthy();

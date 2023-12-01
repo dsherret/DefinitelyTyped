@@ -1,4 +1,7 @@
-import MapboxGeocoder, { GeocoderOptions, LngLatLiteral } from "mapbox__mapbox-gl-geocoder";
+import MapboxGeocoder, {
+    GeocoderOptions,
+    LngLatLiteral,
+} from "mapbox__mapbox-gl-geocoder";
 
 const token = "token";
 

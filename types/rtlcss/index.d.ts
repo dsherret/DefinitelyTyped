@@ -40,8 +40,8 @@ declare namespace rtlcss {
          */
         blacklist?:
             | {
-                [pluginName: string]: Record<string, unknown>;
-            }
+                  [pluginName: string]: Record<string, unknown>;
+              }
             | undefined;
         /**
          * Removes directives comments from output CSS.
@@ -58,8 +58,8 @@ declare namespace rtlcss {
         processUrls?:
             | boolean
             | {
-                [key: string]: boolean;
-            }
+                  [key: string]: boolean;
+              }
             | undefined;
         /**
          * The default array of String Map.
@@ -114,7 +114,12 @@ declare namespace rtlcss {
          * @param hooks An object containing pre/post hooks.
          * @returns A string containing the RTLed css.
          */
-        process(css: string, options?: ConfigOptions, plugins?: Plugin[], hooks?: HookOptions): string;
+        process(
+            css: string,
+            options?: ConfigOptions,
+            plugins?: Plugin[],
+            hooks?: HookOptions,
+        ): string;
 
         /**
          * Creates a new instance of RTLCSS using the passed configuration object

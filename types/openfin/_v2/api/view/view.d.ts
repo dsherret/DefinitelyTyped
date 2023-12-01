@@ -6,7 +6,12 @@ import { Base } from "../base";
 import { ViewEvents } from "../events/view";
 import { WebContents } from "../webcontents/webcontents";
 import { _Window } from "../window/window";
-import { Api, ContentNavigation, CustomRequestHeaders, WindowOption } from "../window/windowOption";
+import {
+    Api,
+    ContentNavigation,
+    CustomRequestHeaders,
+    WindowOption,
+} from "../window/windowOption";
 /**
  * @lends View
  */
@@ -184,9 +189,7 @@ export declare class View extends WebContents<ViewEvents> {
      * @tutorial View.focus
      * @experimental
      */
-    focus({ emitSynthFocused }?: {
-        emitSynthFocused: boolean;
-    }): Promise<void>;
+    focus({ emitSynthFocused }?: { emitSynthFocused: boolean }): Promise<void>;
     /**
      * Returns the zoom level of the view.
      * @function getZoomLevel

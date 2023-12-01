@@ -1,4 +1,9 @@
-import register, { DEFAULT_EXTENSIONS, noOp, oldHandlers, restore } from "ignore-styles";
+import register, {
+    DEFAULT_EXTENSIONS,
+    noOp,
+    oldHandlers,
+    restore,
+} from "ignore-styles";
 
 register([".css"], (module, filename) => {}); // $ExpectType void
 register([".css"]); // $ExpectType void

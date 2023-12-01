@@ -6,7 +6,7 @@ function test_parse_options() {
             throw err;
         }
 
-        const origin = config["remote \"origin\""];
+        const origin = config['remote "origin"'];
         if (origin && origin.url) {
             origin.url.split("/");
         }
@@ -19,7 +19,7 @@ function test_parse_cwd() {
             throw err;
         }
 
-        const origin = config["remote \"origin\""];
+        const origin = config['remote "origin"'];
         if (origin && origin.url) {
             origin.url.split("/");
         }
@@ -32,7 +32,7 @@ function test_parse() {
             throw err;
         }
 
-        const origin = config["remote \"origin\""];
+        const origin = config['remote "origin"'];
         if (origin && origin.url) {
             origin.url.split("/");
         }
@@ -44,7 +44,7 @@ async function test_promise_options() {
     config = await parse.promise({ cwd: "foo", path: ".git/config" });
     if (!config) return null;
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -55,7 +55,7 @@ async function test_promise_cwd() {
     config = await parse.promise("foo");
     if (!config) return null;
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -66,7 +66,7 @@ async function test_promise() {
     config = await parse.promise();
     if (!config) return null;
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -75,7 +75,7 @@ async function test_promise() {
 function test_sync_options() {
     const config = parse.sync({ cwd: "foo", path: ".git/config" });
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -84,7 +84,7 @@ function test_sync_options() {
 function test_sync_cwd() {
     const config = parse.sync("foo");
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -93,7 +93,7 @@ function test_sync_cwd() {
 function test_sync() {
     const config = parse.sync();
 
-    const origin = config["remote \"origin\""];
+    const origin = config['remote "origin"'];
     if (origin && origin.url) {
         origin.url.split("/");
     }
@@ -101,8 +101,8 @@ function test_sync() {
 
 function test_expandKeys() {
     const config = {
-        "foo \"bar\"": { doStuff: true },
-        "foo \"baz\"": { doStuff: true },
+        'foo "bar"': { doStuff: true },
+        'foo "baz"': { doStuff: true },
     };
     const keys = parse.expandKeys(config);
 

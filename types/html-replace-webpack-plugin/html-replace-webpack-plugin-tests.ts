@@ -14,9 +14,9 @@ const resource: { [type: string]: any } = {
 };
 
 const tpl: { [type: string]: string } = {
-    img: "<img src=\"%s\">",
-    css: "<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\">",
-    js: "<script type=\"text/javascript\" src=\"%s\"></script>",
+    img: '<img src="%s">',
+    css: '<link rel="stylesheet" type="text/css" href="%s">',
+    js: '<script type="text/javascript" src="%s"></script>',
 };
 
 const webpackConfiguration: Configuration = {
@@ -47,7 +47,9 @@ const webpackConfiguration: Configuration = {
                     const url = resource[type][file];
 
                     // $1==='@@' <--EQ--> $4===undefined
-                    return $4 === undefined ? url : tpl[type].replace("%s", url);
+                    return $4 === undefined
+                        ? url
+                        : tpl[type].replace("%s", url);
                 },
             },
         ]),

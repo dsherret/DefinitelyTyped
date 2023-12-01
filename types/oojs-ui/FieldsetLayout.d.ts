@@ -32,18 +32,20 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.FieldsetLayout
      */
-    interface FieldsetLayout extends FieldsetLayout.Props, FieldsetLayout.Prototype {}
+    interface FieldsetLayout
+        extends FieldsetLayout.Props,
+            FieldsetLayout.Prototype {}
 
     namespace FieldsetLayout {
-        interface EventMap extends mixin.GroupElement.EventMap, mixin.LabelElement.EventMap {}
+        interface EventMap
+            extends mixin.GroupElement.EventMap,
+                mixin.LabelElement.EventMap {}
 
         interface ConfigOptions
-            extends
-                Layout.ConfigOptions,
+            extends Layout.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.LabelElement.ConfigOptions,
-                mixin.GroupElement.ConfigOptions
-        {
+                mixin.GroupElement.ConfigOptions {
             /**
              * An array of fields to add to the fieldset.
              * See OO.ui.FieldLayout for more information about fields.
@@ -72,25 +74,31 @@ declare namespace OO.ui {
             $overlay?: JQuery;
         }
 
-        interface Static extends Layout.Static, mixin.IconElement.Static, mixin.LabelElement.Static {}
+        interface Static
+            extends Layout.Static,
+                mixin.IconElement.Static,
+                mixin.LabelElement.Static {}
 
         interface Props
-            extends Layout.Props, mixin.IconElement.Props, mixin.LabelElement.Props, mixin.GroupElement.Props
-        {
+            extends Layout.Props,
+                mixin.IconElement.Props,
+                mixin.LabelElement.Props,
+                mixin.GroupElement.Props {
             $header: JQuery;
         }
 
         interface Prototype
-            extends
-                Layout.Prototype,
+            extends Layout.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.LabelElement.Prototype,
-                mixin.GroupElement.Prototype
-        {
+                mixin.GroupElement.Prototype {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -101,7 +109,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -109,7 +120,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -118,11 +132,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -138,7 +164,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): FieldsetLayout;
+            new (config?: ConfigOptions): FieldsetLayout;
             prototype: Prototype;
             static: Static;
             super: Layout.Constructor;

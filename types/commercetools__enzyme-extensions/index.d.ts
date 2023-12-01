@@ -6,10 +6,15 @@ declare module "enzyme" {
     }
     interface ShallowWrapper<P = {}> {
         drill(expander: (props: any) => ShallowWrapper): ShallowWrapper<P>;
-        until(selector: EnzymeSelector, options?: UntilOptions): ShallowWrapper<P>;
+        until(
+            selector: EnzymeSelector,
+            options?: UntilOptions,
+        ): ShallowWrapper<P>;
     }
 }
 
-declare function monkeyPatchShallowWrapper(s: typeof enzyme.ShallowWrapper): void;
+declare function monkeyPatchShallowWrapper(
+    s: typeof enzyme.ShallowWrapper,
+): void;
 
 export = monkeyPatchShallowWrapper;

@@ -116,11 +116,19 @@ declare class PizZip {
      * see https://github.com/open-xml-templating/pizzip/blob/master/documentation/api_pizzip/support.md
      * @param options the options to generate the zip file
      */
-    generate(options?: PizZip.GenerateOptions & { type?: "string" | "base64" | undefined }): string;
+    generate(
+        options?: PizZip.GenerateOptions & {
+            type?: "string" | "base64" | undefined;
+        },
+    ): string;
     generate(options: PizZip.GenerateOptions & { type: "blob" }): Blob;
     generate(options: PizZip.GenerateOptions & { type: "nodebuffer" }): Buffer;
-    generate(options: PizZip.GenerateOptions & { type: "arraybuffer" }): ArrayBuffer;
-    generate(options: PizZip.GenerateOptions & { type: "uint8array" }): Uint8Array;
+    generate(
+        options: PizZip.GenerateOptions & { type: "arraybuffer" },
+    ): ArrayBuffer;
+    generate(
+        options: PizZip.GenerateOptions & { type: "uint8array" },
+    ): Uint8Array;
 
     /**
      * Delete a file or folder (recursively).
@@ -270,8 +278,8 @@ declare namespace PizZip {
          */
         compressionOptions?:
             | {
-                level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-            }
+                  level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+              }
             | null
             | undefined;
         /**
@@ -334,8 +342,8 @@ declare namespace PizZip {
          */
         compressionOptions?:
             | {
-                level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-            }
+                  level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+              }
             | null
             | undefined;
         /**
@@ -356,7 +364,14 @@ declare namespace PizZip {
          *
          * @default "base64"
          */
-        type?: "base64" | "string" | "uint8array" | "arraybuffer" | "blob" | "nodebuffer" | undefined;
+        type?:
+            | "base64"
+            | "string"
+            | "uint8array"
+            | "arraybuffer"
+            | "blob"
+            | "nodebuffer"
+            | undefined;
         /**
          * The comment to use for the zip file.
          */

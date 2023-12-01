@@ -3,7 +3,8 @@ import { ReactButtonAttr } from "../../../typings/shared";
 
 type ExcludedAttributes = "title" | "type";
 
-export interface HeaderMenuButtonProps extends Omit<ReactButtonAttr, ExcludedAttributes> {
+export interface HeaderMenuButtonProps
+    extends Omit<ReactButtonAttr, ExcludedAttributes> {
     isActive?: boolean | undefined;
     isCollapsible?: boolean | undefined;
     renderCloseIcon?: React.ReactNode | undefined;

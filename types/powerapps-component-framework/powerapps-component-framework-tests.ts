@@ -7,7 +7,9 @@ interface TOutputs {
     testString: string;
 }
 
-class TestControl implements ComponentFramework.StandardControl<TInputs, TOutputs> {
+class TestControl
+    implements ComponentFramework.StandardControl<TInputs, TOutputs>
+{
     init(
         context: ComponentFramework.Context<TInputs>,
         notifyOutputChanged?: () => void,
@@ -23,14 +25,17 @@ class TestControl implements ComponentFramework.StandardControl<TInputs, TOutput
     }
 }
 
-class TestReactControl implements ComponentFramework.ReactControl<TInputs, TOutputs> {
-    init(context: ComponentFramework.Context<TInputs>, notifyOutputChanged?: () => void) {
-    }
+class TestReactControl
+    implements ComponentFramework.ReactControl<TInputs, TOutputs>
+{
+    init(
+        context: ComponentFramework.Context<TInputs>,
+        notifyOutputChanged?: () => void,
+    ) {}
     updateView(context: ComponentFramework.Context<TInputs>) {
         return React.createElement("div", { id: "test-id" });
     }
-    destroy() {
-    }
+    destroy() {}
     getOutputs() {
         return {
             testString: "",
@@ -45,7 +50,12 @@ const clientTest: ComponentFramework.Client = {
     isOffline: () => false,
 };
 
-const tmpFile: ComponentFramework.FileObject = { fileContent: "", fileName: "", fileSize: 0, mimeType: "" };
+const tmpFile: ComponentFramework.FileObject = {
+    fileContent: "",
+    fileName: "",
+    fileSize: 0,
+    mimeType: "",
+};
 const deviceTest: ComponentFramework.Device = {
     captureAudio: () => Promise.resolve(tmpFile),
     captureImage: () => Promise.resolve(tmpFile),
@@ -79,8 +89,10 @@ const formattingTest: ComponentFramework.Formatting = {
     formatDateYearMonth: (value: Date) => value.toString(),
     formatInteger: (value: number) => value.toString(),
     formatLanguage: (value: number) => value.toString(),
-    formatTime: (value: Date, behavior: ComponentFramework.FormattingApi.Types.DateTimeFieldBehavior) =>
-        value.toString(),
+    formatTime: (
+        value: Date,
+        behavior: ComponentFramework.FormattingApi.Types.DateTimeFieldBehavior,
+    ) => value.toString(),
     getWeekOfYear: (value: Date) => 0,
 };
 
@@ -96,7 +108,11 @@ const modeTest: ComponentFramework.Mode = {
 };
 
 const resourcesTest: ComponentFramework.Resources = {
-    getResource: (id: string, success: (data: string) => void, failure: () => void) => {},
+    getResource: (
+        id: string,
+        success: (data: string) => void,
+        failure: () => void,
+    ) => {},
     getString: (id: string) => "",
 };
 
@@ -114,13 +130,14 @@ const dataSetApiColumn: ComponentFramework.PropertyHelper.DataSetApi.Column = {
     disableSorting: false,
 };
 
-const linkEntityExposeExpression: ComponentFramework.PropertyHelper.DataSetApi.LinkEntityExposedExpression = {
-    name: "",
-    from: "",
-    to: "",
-    linkType: "",
-    alias: "",
-};
+const linkEntityExposeExpression: ComponentFramework.PropertyHelper.DataSetApi.LinkEntityExposedExpression =
+    {
+        name: "",
+        from: "",
+        to: "",
+        linkType: "",
+        alias: "",
+    };
 
 enum ImeMode {
     Auto = 0,
@@ -135,17 +152,18 @@ enum DateTimeFieldBehavior {
     TimeZoneIndependent = 3,
 }
 
-const stringMetadataTest: ComponentFramework.PropertyHelper.FieldPropertyMetadata.DateTimeMetadata = {
-    DisplayName: "",
-    LogicalName: "",
-    RequiredLevel: 0,
-    IsSecured: false,
-    SourceType: 0,
-    Description: "",
-    ImeMode: ImeMode.Inactive,
-    Format: "",
-    Behavior: DateTimeFieldBehavior.TimeZoneIndependent,
-};
+const stringMetadataTest: ComponentFramework.PropertyHelper.FieldPropertyMetadata.DateTimeMetadata =
+    {
+        DisplayName: "",
+        LogicalName: "",
+        RequiredLevel: 0,
+        IsSecured: false,
+        SourceType: 0,
+        Description: "",
+        ImeMode: ImeMode.Inactive,
+        Format: "",
+        Behavior: DateTimeFieldBehavior.TimeZoneIndependent,
+    };
 
 const EntityReferenceTest: ComponentFramework.EntityReference = {
     id: { guid: "" },
@@ -153,14 +171,15 @@ const EntityReferenceTest: ComponentFramework.EntityReference = {
     name: "",
 };
 
-const metadataTest: ComponentFramework.PropertyHelper.FieldPropertyMetadata.Metadata = {
-    DisplayName: "",
-    LogicalName: "",
-    RequiredLevel: -1,
-    IsSecured: false,
-    SourceType: 0,
-    Description: "",
-};
+const metadataTest: ComponentFramework.PropertyHelper.FieldPropertyMetadata.Metadata =
+    {
+        DisplayName: "",
+        LogicalName: "",
+        RequiredLevel: -1,
+        IsSecured: false,
+        SourceType: 0,
+        Description: "",
+    };
 
 const propertyTest: ComponentFramework.PropertyTypes.Property = {
     error: false,
@@ -190,7 +209,8 @@ const webApiTest: ComponentFramework.WebApi = {
     createRecord: () => Promise.resolve(lookupValueTest),
     updateRecord: () => Promise.resolve(lookupValueTest),
     deleteRecord: () => Promise.resolve(lookupValueTest),
-    retrieveMultipleRecords: () => Promise.resolve({ entities: [], nextLink: "" }),
+    retrieveMultipleRecords: () =>
+        Promise.resolve({ entities: [], nextLink: "" }),
     retrieveRecord: () => Promise.resolve({}),
 };
 

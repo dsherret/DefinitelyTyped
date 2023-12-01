@@ -95,18 +95,22 @@ export class ReactAutosuggestBasicTest extends React.Component<any, any> {
         return (
             <Autosuggest
                 suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(
+                    this,
+                )}
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
                 onSuggestionSelected={this.onSuggestionsSelected}
                 alwaysRenderSuggestions={true}
-                shouldRenderSuggestions={(value, reason) => reason !== "input-focused"}
+                shouldRenderSuggestions={(value, reason) =>
+                    reason !== "input-focused"
+                }
                 shouldKeepSuggestionsOnSelect={() => false}
                 inputProps={{
                     placeholder: `Type 'c'`,
                     value,
                     onChange: (e, changeEvent) => this.onChange(e, changeEvent),
-                    onBlur: e => {
+                    onBlur: (e) => {
                         console.log(e.relatedTarget);
                     },
                     ref: this.inputRef,
@@ -123,15 +127,23 @@ export class ReactAutosuggestBasicTest extends React.Component<any, any> {
         event: React.FormEvent<any>,
         data: Autosuggest.SuggestionSelectedEventData<Language>,
     ): void {
-        alert(`Selected language is ${data.suggestion.name} (${data.suggestion.year}).`);
+        alert(
+            `Selected language is ${data.suggestion.name} (${data.suggestion.year}).`,
+        );
     }
 
-    protected renderSuggestion(suggestion: Language, params: Autosuggest.RenderSuggestionParams): JSX.Element {
+    protected renderSuggestion(
+        suggestion: Language,
+        params: Autosuggest.RenderSuggestionParams,
+    ): JSX.Element {
         const className = params.isHighlighted ? "highlighted" : undefined;
         return <span className={className}>{suggestion.name}</span>;
     }
     // endregion region Event handlers
-    protected onChange(event: React.FormEvent<any>, { newValue, method }: Autosuggest.ChangeEvent): void {
+    protected onChange(
+        event: React.FormEvent<any>,
+        { newValue, method }: Autosuggest.ChangeEvent,
+    ): void {
         this.setState({ value: newValue });
     }
 
@@ -150,7 +162,9 @@ export class ReactAutosuggestBasicTest extends React.Component<any, any> {
 
         const regex = new RegExp("^" + escapedValue, "i");
 
-        return ReactAutosuggestBasicTest.languages.filter(language => regex.test(language.name));
+        return ReactAutosuggestBasicTest.languages.filter((language) =>
+            regex.test(language.name),
+        );
     }
 
     protected getSuggestionValue(suggestion: Language): string {
@@ -159,8 +173,12 @@ export class ReactAutosuggestBasicTest extends React.Component<any, any> {
     // endregion
 }
 
-const LanguageAutosuggestSingle = Autosuggest as { new(): Autosuggest<Language> };
-const LanguageAutosuggestMulti = Autosuggest as { new(): Autosuggest<Language, LanguageGroup> };
+const LanguageAutosuggestSingle = Autosuggest as {
+    new (): Autosuggest<Language>;
+};
+const LanguageAutosuggestMulti = Autosuggest as {
+    new (): Autosuggest<Language, LanguageGroup>;
+};
 
 export class ReactAutosuggestTypedTest extends React.Component<any, any> {
     // region Fields
@@ -241,7 +259,9 @@ export class ReactAutosuggestTypedTest extends React.Component<any, any> {
         return (
             <LanguageAutosuggestSingle
                 suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(
+                    this,
+                )}
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
                 onSuggestionSelected={this.onSuggestionsSelected}
@@ -260,15 +280,23 @@ export class ReactAutosuggestTypedTest extends React.Component<any, any> {
         event: React.FormEvent<any>,
         data: Autosuggest.SuggestionSelectedEventData<Language>,
     ): void {
-        alert(`Selected language is ${data.suggestion.name} (${data.suggestion.year}).`);
+        alert(
+            `Selected language is ${data.suggestion.name} (${data.suggestion.year}).`,
+        );
     }
 
-    protected renderSuggestion(suggestion: Language, params: Autosuggest.RenderSuggestionParams): JSX.Element {
+    protected renderSuggestion(
+        suggestion: Language,
+        params: Autosuggest.RenderSuggestionParams,
+    ): JSX.Element {
         const className = params.isHighlighted ? "highlighted" : undefined;
         return <span className={className}>{suggestion.name}</span>;
     }
     // endregion region Event handlers
-    protected onChange(event: React.FormEvent<any>, { newValue, method }: Autosuggest.ChangeEvent): void {
+    protected onChange(
+        event: React.FormEvent<any>,
+        { newValue, method }: Autosuggest.ChangeEvent,
+    ): void {
         this.setState({ value: newValue });
     }
 
@@ -287,7 +315,9 @@ export class ReactAutosuggestTypedTest extends React.Component<any, any> {
 
         const regex = new RegExp("^" + escapedValue, "i");
 
-        return ReactAutosuggestBasicTest.languages.filter(language => regex.test(language.name));
+        return ReactAutosuggestBasicTest.languages.filter((language) =>
+            regex.test(language.name),
+        );
     }
 
     protected getSuggestionValue(suggestion: Language): string {
@@ -408,7 +438,9 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
             <LanguageAutosuggestMulti
                 multiSection={true}
                 suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(
+                    this,
+                )}
                 onSuggestionSelected={this.onSuggestionSelected}
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
@@ -435,7 +467,10 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
         alert(`Selected language is ${language.name} (${language.year}).`);
     }
 
-    protected renderSuggestion(suggestion: Language, params: Autosuggest.RenderSuggestionParams): JSX.Element {
+    protected renderSuggestion(
+        suggestion: Language,
+        params: Autosuggest.RenderSuggestionParams,
+    ): JSX.Element {
         const className = params.isHighlighted ? "highlighted" : undefined;
         return <span className={className}>{suggestion.name}</span>;
     }
@@ -444,7 +479,9 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
         return <strong>{section.title}</strong>;
     }
 
-    protected renderInputComponent(inputProps: Autosuggest.RenderInputComponentProps): JSX.Element {
+    protected renderInputComponent(
+        inputProps: Autosuggest.RenderInputComponentProps,
+    ): JSX.Element {
         return (
             <div>
                 <input {...inputProps} />
@@ -464,7 +501,10 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
         );
     }
     // endregion region Event handlers
-    protected onChange(event: React.FormEvent<any>, { newValue, method }: Autosuggest.ChangeEvent): void {
+    protected onChange(
+        event: React.FormEvent<any>,
+        { newValue, method }: Autosuggest.ChangeEvent,
+    ): void {
         this.setState({ value: newValue });
     }
 
@@ -484,13 +524,15 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
         const regex = new RegExp("^" + escapedValue, "i");
 
         return ReactAutosuggestMultipleTest.languages
-            .map(section => {
+            .map((section) => {
                 return {
                     title: section.title,
-                    languages: section.languages.filter(language => regex.test(language.name)),
+                    languages: section.languages.filter((language) =>
+                        regex.test(language.name),
+                    ),
                 };
             })
-            .filter(section => section.languages.length > 0);
+            .filter((section) => section.languages.length > 0);
     }
 
     protected getSuggestionValue(suggestion: Language) {
@@ -501,7 +543,9 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
         return section.languages;
     }
 
-    protected onSuggestionHighlighted(params: Autosuggest.SuggestionHighlightedParams): void {
+    protected onSuggestionHighlighted(
+        params: Autosuggest.SuggestionHighlightedParams,
+    ): void {
         this.setState({
             highlighted: params.suggestion,
         });
@@ -509,7 +553,10 @@ export class ReactAutosuggestMultipleTest extends React.Component<any, any> {
     // endregion
 }
 
-ReactDOM.render(<ReactAutosuggestMultipleTest />, document.getElementById("app"));
+ReactDOM.render(
+    <ReactAutosuggestMultipleTest />,
+    document.getElementById("app"),
+);
 
 interface Person {
     first: string;
@@ -517,7 +564,7 @@ interface Person {
     twitter: string;
 }
 
-const PersonAutosuggest = Autosuggest as { new(): Autosuggest<Person> };
+const PersonAutosuggest = Autosuggest as { new (): Autosuggest<Person> };
 
 export class ReactAutosuggestCustomTest extends React.Component<any, any> {
     // region Fields
@@ -567,7 +614,10 @@ export class ReactAutosuggestCustomTest extends React.Component<any, any> {
         );
     }
 
-    protected renderSuggestion(suggestion: Person, params: Autosuggest.RenderSuggestionParams): JSX.Element {
+    protected renderSuggestion(
+        suggestion: Person,
+        params: Autosuggest.RenderSuggestionParams,
+    ): JSX.Element {
         const suggestionText = `${suggestion.first} ${suggestion.last}`;
         const query = params.query.trim();
         const parts = suggestionText.split(" ").map((part: string) => {
@@ -581,7 +631,9 @@ export class ReactAutosuggestCustomTest extends React.Component<any, any> {
             <span className={"suggestion-content " + suggestion.twitter}>
                 <span className="name">
                     {parts.map((part, index) => {
-                        const className = part.highlight ? "highlight" : undefined;
+                        const className = part.highlight
+                            ? "highlight"
+                            : undefined;
 
                         return (
                             <span className={className} key={index}>
@@ -594,7 +646,10 @@ export class ReactAutosuggestCustomTest extends React.Component<any, any> {
         );
     }
     // endregion region Event handlers
-    protected onChange(event: React.FormEvent<any>, { newValue, method }: Autosuggest.ChangeEvent): void {
+    protected onChange(
+        event: React.FormEvent<any>,
+        { newValue, method }: Autosuggest.ChangeEvent,
+    ): void {
         this.setState({ value: newValue });
     }
 
@@ -613,7 +668,9 @@ export class ReactAutosuggestCustomTest extends React.Component<any, any> {
 
         const regex = new RegExp("\\b" + escapedValue, "i");
 
-        return ReactAutosuggestCustomTest.people.filter(person => regex.test(this.getSuggestionValue(person)));
+        return ReactAutosuggestCustomTest.people.filter((person) =>
+            regex.test(this.getSuggestionValue(person)),
+        );
     }
 
     protected getSuggestionValue(suggestion: Person): string {
@@ -636,13 +693,13 @@ function testSingleSection() {
     <Autosuggest
         suggestions={suggestions}
         // Required
-        getSuggestionValue={suggestion => suggestion}
+        getSuggestionValue={(suggestion) => suggestion}
         inputProps={{
             onChange: () => {},
             value: "",
         }}
         onSuggestionsFetchRequested={() => {}}
-        renderSuggestion={suggestion => suggestion}
+        renderSuggestion={(suggestion) => suggestion}
     />;
 }
 
@@ -655,7 +712,7 @@ function testMultiSections() {
     <Autosuggest
         multiSection
         suggestions={sections}
-        getSectionSuggestions={section => section.suggestions}
+        getSectionSuggestions={(section) => section.suggestions}
         // Required
         getSuggestionValue={(suggestion: string) => suggestion}
         inputProps={{
@@ -663,11 +720,13 @@ function testMultiSections() {
             value: "",
         }}
         onSuggestionsFetchRequested={() => {}}
-        renderSuggestion={suggestion => suggestion}
+        renderSuggestion={(suggestion) => suggestion}
     />;
 }
 
-const testInputOnChange: Autosuggest.InputProps<{ foo: string }>["onChange"] = event => {
+const testInputOnChange: Autosuggest.InputProps<{ foo: string }>["onChange"] = (
+    event,
+) => {
     const element = event.target;
     // `value` only exists on the input element, but sometimes this function is
     // called with a `target` pointing to a non-input element. For example, when
@@ -678,7 +737,9 @@ const testInputOnChange: Autosuggest.InputProps<{ foo: string }>["onChange"] = e
 };
 
 {
-    const CustomInput: React.FC<Pick<Autosuggest.InputProps<unknown>, "onChange">> = props => null;
+    const CustomInput: React.FC<
+        Pick<Autosuggest.InputProps<unknown>, "onChange">
+    > = (props) => null;
 
     const invalidOnChange = (event: React.FormEvent<HTMLDivElement>) => {};
     const onChange = (event: React.FormEvent<HTMLElement>) => {};
@@ -690,7 +751,9 @@ const testInputOnChange: Autosuggest.InputProps<{ foo: string }>["onChange"] = e
 }
 
 {
-    const CustomInput: React.FC<Pick<Autosuggest.InputProps<unknown>, "onBlur">> = props => null;
+    const CustomInput: React.FC<
+        Pick<Autosuggest.InputProps<unknown>, "onBlur">
+    > = (props) => null;
 
     const invalidOnBlur = (event: React.FocusEvent<HTMLDivElement>) => {};
     const onBlur = (event: React.FocusEvent<HTMLElement>) => {};

@@ -4,7 +4,7 @@ import "codemirror/addon/tern/tern";
 const cm = CodeMirror(document.body);
 
 const options: CodeMirror.TernOptions = {
-    completionTip: data => {
+    completionTip: (data) => {
         const d = data.completions;
         return "";
     },

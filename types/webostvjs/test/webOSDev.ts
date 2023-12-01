@@ -1,4 +1,11 @@
-import { DRMAgent, WifiDirectStatus, WifiPeerInfo, WifiStatus, WifiWfdInfo, WiredStatus } from "webostvjs";
+import {
+    DRMAgent,
+    WifiDirectStatus,
+    WifiPeerInfo,
+    WifiStatus,
+    WifiWfdInfo,
+    WiredStatus,
+} from "webostvjs";
 
 function test_APP_BROWSER() {
     // $ExpectType string
@@ -57,8 +64,7 @@ function test_LGUDID() {
             res; // $ExpectType LGUDIDResponse
             res.id; // $ExpectType string
         },
-        onFailure(error) {
-        },
+        onFailure(error) {},
     });
 }
 
@@ -93,7 +99,9 @@ function test_connection_getStatus() {
 
 function test_drmAgent() {
     // $ExpectType DRMAgent
-    const drmAgent = window.webOSDev.drmAgent(window.webOSDev.DRM.Type.PLAYREADY);
+    const drmAgent = window.webOSDev.drmAgent(
+        window.webOSDev.DRM.Type.PLAYREADY,
+    );
     // $ExpectType string
     drmAgent.getClientId();
     // $ExpectType DrmType
@@ -238,15 +246,21 @@ function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
     wifiStatus.state;
 }
 
-function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus) {
-    wifiDirectStatus.connectedPeers?.forEach(test_connection_getStatus_wifiDirect_WifiPeer);
+function test_connection_getStatus_wifiDirect(
+    wifiDirectStatus: WifiDirectStatus,
+) {
+    wifiDirectStatus.connectedPeers?.forEach(
+        test_connection_getStatus_wifiDirect_WifiPeer,
+    );
     // $ExpectType string | undefined
     wifiDirectStatus.localIp;
     // $ExpectType ConnectionState
     wifiDirectStatus.state;
 }
 
-function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInfo) {
+function test_connection_getStatus_wifiDirect_WifiPeer(
+    wifiPeerInfo: WifiPeerInfo,
+) {
     // $ExpectType number | undefined
     wifiPeerInfo.configMethod;
     // $ExpectType boolean
@@ -267,10 +281,15 @@ function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInf
     wifiPeerInfo.signalLevel;
     // $ExpectType WifiWfdInfo | undefined
     wifiPeerInfo.wfdInfo;
-    wifiPeerInfo.wfdInfo && test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wifiPeerInfo.wfdInfo);
+    wifiPeerInfo.wfdInfo &&
+        test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(
+            wifiPeerInfo.wfdInfo,
+        );
 }
 
-function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
+function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(
+    wfdInfo: WifiWfdInfo,
+) {
     // $ExpectType boolean
     wfdInfo.wfdCpSupport;
     // $ExpectType WfdDeviceType

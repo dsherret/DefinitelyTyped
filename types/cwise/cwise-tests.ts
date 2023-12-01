@@ -3,7 +3,7 @@ import ndarray = require("ndarray");
 import tape = require("tape");
 
 // basic
-tape("only allow same shape", t => {
+tape("only allow same shape", (t) => {
     const op1 = cwise({
         args: ["array"],
         body: (a: number) => {
@@ -42,16 +42,26 @@ tape("only allow same shape", t => {
         op2(ndarray([1, 2, 3], [3]), ndarray([1, 2, 3], [3]));
     });
     t.doesNotThrow(() => {
-        op2(ndarray([1, 2, 3, 4, 5, 6], [3, 2]), ndarray([1, 2, 3, 4, 5, 6], [3, 2]));
+        op2(
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+        );
     });
     t.doesNotThrow(() => {
-        op3(ndarray([1, 2, 3], [3]), ndarray([1, 2, 3], [3]), ndarray([1, 2, 3], [3]));
+        op3(
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3], [3]),
+        );
     });
     t.doesNotThrow(() => {
         op2block_pos(ndarray([1, 2], [2]), ndarray([1, 2, 3, 4, 5, 6], [3, 2]));
     });
     t.doesNotThrow(() => {
-        op2block_neg(ndarray([1, 2, 3], [3]), ndarray([1, 2, 3, 4, 5, 6], [3, 2]));
+        op2block_neg(
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+        );
     });
 
     t.throws(() => {
@@ -64,25 +74,46 @@ tape("only allow same shape", t => {
         op2(ndarray([1, 2, 3, 4, 5, 6], [3, 2]), ndarray([1, 2, 3, 4], [2, 2]));
     });
     t.throws(() => {
-        op3(ndarray([1, 2, 3], [3]), ndarray([1, 2, 3], [3]), ndarray([1, 2], [2]));
+        op3(
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2], [2]),
+        );
     });
     t.throws(() => {
-        op3(ndarray([1, 2, 3], [3]), ndarray([1, 2], [2]), ndarray([1, 2, 3], [3]));
+        op3(
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2], [2]),
+            ndarray([1, 2, 3], [3]),
+        );
     });
     t.throws(() => {
-        op3(ndarray([1, 2], [2]), ndarray([1, 2, 3], [3]), ndarray([1, 2, 3], [3]));
+        op3(
+            ndarray([1, 2], [2]),
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3], [3]),
+        );
     });
     t.throws(() => {
-        op2block_pos(ndarray([1, 2, 3], [3]), ndarray([1, 2, 3, 4, 5, 6], [3, 2]));
+        op2block_pos(
+            ndarray([1, 2, 3], [3]),
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+        );
     });
     t.throws(() => {
         op2block_neg(ndarray([1, 2], [2]), ndarray([1, 2, 3, 4, 5, 6], [3, 2]));
     });
     t.throws(() => {
-        op2block_pos(ndarray([1, 2, 3, 4, 5, 6], [3, 2]), ndarray([1, 2, 3, 4], [2, 2]));
+        op2block_pos(
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+            ndarray([1, 2, 3, 4], [2, 2]),
+        );
     });
     t.throws(() => {
-        op2block_neg(ndarray([1, 2, 3, 4, 5, 6], [3, 2]), ndarray([1, 2, 3, 4], [2, 2]));
+        op2block_neg(
+            ndarray([1, 2, 3, 4, 5, 6], [3, 2]),
+            ndarray([1, 2, 3, 4], [2, 2]),
+        );
     });
 
     t.end();
@@ -104,7 +135,7 @@ class DumbStorage {
     }
 }
 
-tape("binary", t => {
+tape("binary", (t) => {
     const binary = cwise({
         args: ["array", "array", "scalar", "shape", "index"],
         body(a: number, b: number, t: tape.Test, s: number[], idx: number) {
@@ -113,7 +144,11 @@ tape("binary", t => {
         },
     });
 
-    function testBinary1D(P: ndarray.NdArray, Q: ndarray.NdArray, testName: string) {
+    function testBinary1D(
+        P: ndarray.NdArray,
+        Q: ndarray.NdArray,
+        testName: string,
+    ) {
         t.equals(P.shape[0], Q.shape[0], testName + "; shape");
         for (let i = 0; i < P.shape[0]; ++i) {
             Q.set(i, i);
@@ -122,7 +157,11 @@ tape("binary", t => {
         binary(P, Q, t);
         for (let i = 0; i < P.shape[0]; ++i) {
             if (!(P.get(i) === i + 1001)) {
-                t.fail(`${testName}; encountered ${P.get(i)} instead of ${i + 1001} at ${i}`);
+                t.fail(
+                    `${testName}; encountered ${P.get(i)} instead of ${
+                        i + 1001
+                    } at ${i}`,
+                );
                 return;
             }
         }
@@ -132,8 +171,16 @@ tape("binary", t => {
     const A1 = ndarray(new Int32Array(128));
     const B1 = ndarray(new Int32Array(128));
 
-    testBinary1D(ndarray(new Int32Array(0)), ndarray(new Int32Array(0)), "length==0");
-    testBinary1D(ndarray(new Int32Array(1)), ndarray(new Int32Array(1)), "length==1");
+    testBinary1D(
+        ndarray(new Int32Array(0)),
+        ndarray(new Int32Array(0)),
+        "length==0",
+    );
+    testBinary1D(
+        ndarray(new Int32Array(1)),
+        ndarray(new Int32Array(1)),
+        "length==1",
+    );
     testBinary1D(A1, B1, "A, B");
     testBinary1D(A1.lo(32), B1.hi(128 - 32), "A.lo(32), B.hi(128-32)");
     testBinary1D(A1.step(-1), B1, "A.step(-1), B");
@@ -141,8 +188,16 @@ tape("binary", t => {
 
     const A2 = ndarray(new DumbStorage(128) as any);
     const B2 = ndarray(new DumbStorage(128) as any);
-    testBinary1D(ndarray(new DumbStorage(0) as any), ndarray(new DumbStorage(0) as any), "DS; length==0");
-    testBinary1D(ndarray(new DumbStorage(1) as any), ndarray(new DumbStorage(1) as any), "DS; length==0");
+    testBinary1D(
+        ndarray(new DumbStorage(0) as any),
+        ndarray(new DumbStorage(0) as any),
+        "DS; length==0",
+    );
+    testBinary1D(
+        ndarray(new DumbStorage(1) as any),
+        ndarray(new DumbStorage(1) as any),
+        "DS; length==0",
+    );
     testBinary1D(A2, B2, "DS; A, B");
     testBinary1D(A2.lo(32), B2.hi(128 - 32), "DS; A.lo(32), B.hi(128-32)");
     testBinary1D(A2.step(-1), B2, "DS; A.step(-1), B");
@@ -151,7 +206,11 @@ tape("binary", t => {
     const X = ndarray(new Int32Array(64 * 64), [64, 64]);
     const Y = ndarray(new Int32Array(64 * 64), [64, 64]);
 
-    function testBinary2D(P: ndarray.NdArray, Q: ndarray.NdArray, testName: string) {
+    function testBinary2D(
+        P: ndarray.NdArray,
+        Q: ndarray.NdArray,
+        testName: string,
+    ) {
         for (let i = 0; i < X.shape[0]; ++i) {
             for (let j = 0; j < X.shape[1]; ++j) {
                 X.set(i, j, -10000);
@@ -189,9 +248,21 @@ tape("binary", t => {
     testBinary2D(X.hi(32, 32), Y.hi(32, 32), "X.hi(32,32), Y.hi(32,32)");
     testBinary2D(X.hi(31, 31), Y.hi(31, 31), "X.hi(31,31), Y.hi(31,31)");
     testBinary2D(X.hi(0, 32), Y.hi(0, 32), "X.hi(0,32), Y.hi(0,32)");
-    testBinary2D(X.transpose(1, 0).hi(0, 32), Y.hi(0, 32), "X.T.hi(0,32), Y.hi(0,32)");
-    testBinary2D(X.transpose(1, 0).hi(33, 33), Y.hi(33, 33), "X.T.hi(33,33), Y.hi(33,33)");
-    testBinary2D(X.transpose(1, 0).hi(31, 31), Y.hi(31, 31), "X.T.hi(31,31), Y.hi(31,31)");
+    testBinary2D(
+        X.transpose(1, 0).hi(0, 32),
+        Y.hi(0, 32),
+        "X.T.hi(0,32), Y.hi(0,32)",
+    );
+    testBinary2D(
+        X.transpose(1, 0).hi(33, 33),
+        Y.hi(33, 33),
+        "X.T.hi(33,33), Y.hi(33,33)",
+    );
+    testBinary2D(
+        X.transpose(1, 0).hi(31, 31),
+        Y.hi(31, 31),
+        "X.T.hi(31,31), Y.hi(31,31)",
+    );
 
     t.end();
 });
@@ -210,7 +281,7 @@ function bundleCasesFrom(i: number) {
     b.ignore("tape");
     b.add(`${__dirname}/${cases[i]}.js`);
     b.transform(path.normalize(__dirname + "/../cwise.js"));
-    tape(cases[i], t => {
+    tape(cases[i], (t) => {
         // Without nested tests, the asynchronous nature of bundle causes issues with tape...
         b.bundle((err, src) => {
             if (err) {
@@ -237,7 +308,7 @@ function bundleCasesFrom(i: number) {
 }
 
 // fill
-tape("fill", t => {
+tape("fill", (t) => {
     const fill = cwise({
         args: ["index", "array", "scalar"],
         body(idx, out, f) {
@@ -273,16 +344,27 @@ tape("fill", t => {
 });
 
 // offset
-tape("offset", t => {
+tape("offset", (t) => {
     const binary = cwise({
-        args: ["array", "array", { offset: [1], array: 1 }, "scalar", "shape", "index"],
+        args: [
+            "array",
+            "array",
+            { offset: [1], array: 1 },
+            "scalar",
+            "shape",
+            "index",
+        ],
         body(a, b, c, t, s, idx) {
             if (!(a === 0)) t.fail(`idx:${idx}, shape:${s},a:${a}`);
             a = c + b + 1000;
         },
     });
 
-    function testBinary1D(P: ndarray.NdArray, Q: ndarray.NdArray, testName: string) {
+    function testBinary1D(
+        P: ndarray.NdArray,
+        Q: ndarray.NdArray,
+        testName: string,
+    ) {
         t.equals(P.shape[0], Q.shape[0] - 1, testName + "; shape");
         for (let i = 0; i < P.shape[0]; ++i) {
             Q.set(i, i);
@@ -292,7 +374,11 @@ tape("offset", t => {
         binary(P, Q.hi(Q.shape[0] - 1), t);
         for (let i = 0; i < P.shape[0]; ++i) {
             if (!(P.get(i) === 2 * i + 1001)) {
-                t.fail(`${testName}; encountered ${P.get(i)} instead of ${2 * i + 1001} at ${i}`);
+                t.fail(
+                    `${testName}; encountered ${P.get(i)} instead of ${
+                        2 * i + 1001
+                    } at ${i}`,
+                );
                 return;
             }
         }
@@ -302,8 +388,16 @@ tape("offset", t => {
     const A1 = ndarray(new Int32Array(128));
     const B1 = ndarray(new Int32Array(129));
 
-    testBinary1D(ndarray(new Int32Array(0)), ndarray(new Int32Array(1)), "length==0");
-    testBinary1D(ndarray(new Int32Array(1)), ndarray(new Int32Array(2)), "length==1");
+    testBinary1D(
+        ndarray(new Int32Array(0)),
+        ndarray(new Int32Array(1)),
+        "length==0",
+    );
+    testBinary1D(
+        ndarray(new Int32Array(1)),
+        ndarray(new Int32Array(2)),
+        "length==1",
+    );
     testBinary1D(A1, B1, "A, B");
     testBinary1D(A1.lo(32), B1.lo(32), "A.lo(32), B.lo(32)");
     testBinary1D(A1.step(-1), B1, "A.step(-1), B");
@@ -311,8 +405,16 @@ tape("offset", t => {
 
     const A2 = ndarray(new DumbStorage(128) as any);
     const B2 = ndarray(new DumbStorage(129) as any);
-    testBinary1D(ndarray(new DumbStorage(0) as any), ndarray(new DumbStorage(1) as any), "DS; length==0");
-    testBinary1D(ndarray(new DumbStorage(1) as any), ndarray(new DumbStorage(2) as any), "DS; length==1");
+    testBinary1D(
+        ndarray(new DumbStorage(0) as any),
+        ndarray(new DumbStorage(1) as any),
+        "DS; length==0",
+    );
+    testBinary1D(
+        ndarray(new DumbStorage(1) as any),
+        ndarray(new DumbStorage(2) as any),
+        "DS; length==1",
+    );
     testBinary1D(A2, B2, "DS; A, B");
     testBinary1D(A2.lo(32), B2.lo(32), "DS; A.lo(32), B.lo(32)");
     testBinary1D(A2.step(-1), B2, "DS; A.step(-1), B");
@@ -323,7 +425,7 @@ tape("offset", t => {
 
 // unary
 
-tape("unary", t => {
+tape("unary", (t) => {
     const unary = cwise({
         args: ["array"],
         body(a) {
@@ -338,7 +440,11 @@ tape("unary", t => {
         unary(arr);
         for (let i = 0; i < arr.shape[0]; ++i) {
             if (!(arr.get(i) === i + 1)) {
-                t.fail(`${testName}; encountered ${arr.get(i)} instead of ${i + 1} at ${i}`);
+                t.fail(
+                    `${testName}; encountered ${arr.get(i)} instead of ${
+                        i + 1
+                    } at ${i}`,
+                );
                 return;
             }
         }

@@ -46,4 +46,4 @@ export interface Options {
  * @see {@link https://www.npmjs.com/package/roll-a-die|NPM}
  * @see {@link https://codepen.io/chukwuma-ezumezu/pen/qYKOGW|Demo}
  */
-export default function(options: Options): void;
+export default function (options: Options): void;

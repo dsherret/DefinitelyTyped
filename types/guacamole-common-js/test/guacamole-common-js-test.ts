@@ -10,7 +10,9 @@ declare const y: number;
 
 const http: Guacamole.Status.Code = Guacamole.Status.Code.fromHTTPCode(404);
 const ws: Guacamole.Status.Code = Guacamole.Status.Code.fromWebSocketCode(1);
-const checkStatus = (s: Guacamole.Status): [Guacamole.Status.Code, string | undefined, boolean] => [
+const checkStatus = (
+    s: Guacamole.Status,
+): [Guacamole.Status.Code, string | undefined, boolean] => [
     s.code,
     s.message && s.message.trim(),
     s.isError(),
@@ -34,7 +36,7 @@ l2.lineTo(x, y);
 l2.moveTo(x, y);
 
 new Guacamole.Mouse(document);
-const mouse = new Guacamole.Mouse(({} as any) as HTMLElement);
+const mouse = new Guacamole.Mouse({} as any as HTMLElement);
 mouse.on("", (event: Guacamole.Event, target: Guacamole.Event.Target) => {});
 mouse.press("left");
 
@@ -57,8 +59,8 @@ tunnel.uuid && tunnel.uuid.substr(0);
 tunnel.sendMessage();
 tunnel.sendMessage(1);
 tunnel.oninstruction = (code, args) => [code.trim(), args.map];
-tunnel.onstatechange = state => state === Guacamole.Tunnel.State.OPEN;
-tunnel.onerror = s => s.code === Guacamole.Status.Code.fromHTTPCode(500);
+tunnel.onstatechange = (state) => state === Guacamole.Tunnel.State.OPEN;
+tunnel.onerror = (s) => s.code === Guacamole.Status.Code.fromHTTPCode(500);
 tunnel.disconnect();
 // @ts-expect-error
 new Guacamole.WebSocketTunnel(null);
@@ -103,7 +105,7 @@ o$.sendBlob("sdfsd" as null | string);
 
 const i$ = new Guacamole.InputStream(client, 55);
 i$.onend = () => {};
-i$.onblob = x => {
+i$.onblob = (x) => {
     i$.sendAck("sdfsd", Guacamole.Status.Code.SUCCESS);
     x.trim();
 };
@@ -111,37 +113,44 @@ i$.onblob = x => {
 const vp = new Guacamole.VideoPlayer();
 vp.sync();
 
-const httpTunnel = new Guacamole.HTTPTunnel("https://hey.hey", false, { "X-Any": "foobar" });
+const httpTunnel = new Guacamole.HTTPTunnel("https://hey.hey", false, {
+    "X-Any": "foobar",
+});
 new Guacamole.Client(httpTunnel).sendKeyEvent(1 as 1 | 0, 10);
 new Guacamole.Client(tunnel)
     // @ts-expect-error
     .sendKeyEvent(true, 5);
 
-new Guacamole.Client(tunnel).sendMouseState(new Guacamole.Mouse.State(1, 2, false, false, false, false, true), true);
+new Guacamole.Client(tunnel).sendMouseState(
+    new Guacamole.Mouse.State(1, 2, false, false, false, false, true),
+    true,
+);
 // @ts-expect-error
 new Guacamole.Client(tunnel).sendMouseState({ left: true });
 new Guacamole.Client(tunnel).sendTouchState(new Guacamole.Touch.State(), true);
 
-new Guacamole.Event.Target().on("event-type", (event: Guacamole.Event, target: Guacamole.Event.Target) => {});
+new Guacamole.Event.Target().on(
+    "event-type",
+    (event: Guacamole.Event, target: Guacamole.Event.Target) => {},
+);
 
 declare const layout: Guacamole.OnScreenKeyboard.Layout;
 new Guacamole.OnScreenKeyboard(layout);
 
 const state: Guacamole.Client.State = Guacamole.Client.State.IDLE;
 
-client.onjoin = (id: string, username: string) => {
-};
+client.onjoin = (id: string, username: string) => {};
 
-const recording: Guacamole.SessionRecording = new Guacamole.SessionRecording(tunnel);
+const recording: Guacamole.SessionRecording = new Guacamole.SessionRecording(
+    tunnel,
+);
 
 // $ExpectType boolean
 recording.isPlaying();
 
 recording.pause();
-recording.onerror = (message: string) => {
-};
-recording.onprogress = (duration: number, current: number) => {
-};
+recording.onerror = (message: string) => {};
+recording.onprogress = (duration: number, current: number) => {};
 
 declare const element: Element;
 // $ExpectType Position

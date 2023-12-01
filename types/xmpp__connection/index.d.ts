@@ -98,7 +98,10 @@ declare abstract class Connection extends EventEmitter {
         event: TEvent,
         listener: Connection.ConnectionEvents[TEvent],
     ): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     on<TEvent extends keyof Connection.ConnectionEvents>(
         event: TEvent,
@@ -116,19 +119,28 @@ declare abstract class Connection extends EventEmitter {
         event: TEvent,
         listener: Connection.ConnectionEvents[TEvent],
     ): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener<TEvent extends keyof Connection.ConnectionEvents>(
         event: TEvent,
         listener: Connection.ConnectionEvents[TEvent],
     ): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener<TEvent extends keyof Connection.ConnectionEvents>(
         event: TEvent,
         listener: Connection.ConnectionEvents[TEvent],
     ): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     off<TEvent extends keyof Connection.ConnectionEvents>(
         event: TEvent,
@@ -202,7 +214,7 @@ declare namespace Connection {
     }
 
     interface SocketConstructor {
-        new(): SocketBase;
+        new (): SocketBase;
     }
 
     interface SocketBase extends EventEmitter {
@@ -210,22 +222,49 @@ declare namespace Connection {
         write(str: string, cb: (err?: Error) => void): void;
         end(): void;
 
-        addListener<TEvent extends keyof SocketEvents>(event: TEvent, listener: SocketEvents[TEvent]): this;
-        addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        addListener<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            listener: SocketEvents[TEvent],
+        ): this;
+        addListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
-        on<TEvent extends keyof SocketEvents>(event: TEvent, listener: SocketEvents[TEvent]): this;
+        on<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            listener: SocketEvents[TEvent],
+        ): this;
         on(event: string | symbol, listener: (...args: any[]) => void): this;
 
-        once<TEvent extends keyof SocketEvents>(event: TEvent, listener: SocketEvents[TEvent]): this;
+        once<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            listener: SocketEvents[TEvent],
+        ): this;
         once(event: string | symbol, listener: (...args: any[]) => void): this;
 
-        prependListener<TEvent extends keyof SocketEvents>(event: TEvent, listener: SocketEvents[TEvent]): this;
-        prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependListener<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            listener: SocketEvents[TEvent],
+        ): this;
+        prependListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
-        prependOnceListener<TEvent extends keyof SocketEvents>(event: TEvent, listener: SocketEvents[TEvent]): this;
-        prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependOnceListener<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            listener: SocketEvents[TEvent],
+        ): this;
+        prependOnceListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
-        emit<TEvent extends keyof SocketEvents>(event: TEvent, ...args: Parameters<SocketEvents[TEvent]>): boolean;
+        emit<TEvent extends keyof SocketEvents>(
+            event: TEvent,
+            ...args: Parameters<SocketEvents[TEvent]>
+        ): boolean;
         emit(event: string | symbol, ...args: any[]): boolean;
     }
 

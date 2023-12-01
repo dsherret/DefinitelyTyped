@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductBrand objects. */
-        interface ProductBrandBuilder extends Base.Builder<ProductBrandOperation> {
+        interface ProductBrandBuilder
+            extends Base.Builder<ProductBrandOperation> {
             /** Specifies the bid of the product brand. */
             withBid(bid: number): this;
             /** Specifies the name of the new product brand. */

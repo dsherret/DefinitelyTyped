@@ -1,6 +1,8 @@
 import SocketCluster = require("socketcluster");
 
-declare function remotedev(argv: remotedev.Options): Promise<SocketCluster | remotedev.PortUsedError>;
+declare function remotedev(
+    argv: remotedev.Options,
+): Promise<SocketCluster | remotedev.PortUsedError>;
 
 declare namespace remotedev {
     enum LogLevel {

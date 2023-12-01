@@ -1,4 +1,9 @@
-import { LinearGauge, LinearGaugeOptions, RadialGauge, RadialGaugeOptions } from "canvas-gauges";
+import {
+    LinearGauge,
+    LinearGaugeOptions,
+    RadialGauge,
+    RadialGaugeOptions,
+} from "canvas-gauges";
 
 let linearOptions: LinearGaugeOptions = {
     renderTo: document.createElement("canvas"),

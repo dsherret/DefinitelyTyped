@@ -26,9 +26,6 @@ export class Client extends EventEmitter {
     cancelCommands(why: string): void;
     connect(): void;
     command(args: any, done: doneCallback): void;
-    capabilityCheck(
-        caps: Capabilities,
-        done: doneCallback,
-    ): void;
+    capabilityCheck(caps: Capabilities, done: doneCallback): void;
     end(): void;
 }

@@ -18,7 +18,11 @@ export class Job extends EventEmitter {
      * @param job      either this Job's callback or an optional callback function
      * @param callback optional callback that is executed right before the JobCallback
      */
-    constructor(name: string | JobCallback, job?: JobCallback | (() => void), callback?: () => void);
+    constructor(
+        name: string | JobCallback,
+        job?: JobCallback | (() => void),
+        callback?: () => void,
+    );
 
     /**
      * Adds an Invocation to this job. For internal use.
@@ -180,7 +184,13 @@ export class Invocation {
  */
 export function scheduleJob(
     name: string,
-    rule: RecurrenceRule | RecurrenceSpecDateRange | RecurrenceSpecObjLit | Date | string | number,
+    rule:
+        | RecurrenceRule
+        | RecurrenceSpecDateRange
+        | RecurrenceSpecObjLit
+        | Date
+        | string
+        | number,
     callback: JobCallback,
 ): Job;
 
@@ -191,7 +201,13 @@ export function scheduleJob(
  * @param callback callback to be executed on each invocation
  */
 export function scheduleJob(
-    rule: RecurrenceRule | RecurrenceSpecDateRange | RecurrenceSpecObjLit | Date | string | number,
+    rule:
+        | RecurrenceRule
+        | RecurrenceSpecDateRange
+        | RecurrenceSpecObjLit
+        | Date
+        | string
+        | number,
     callback: JobCallback,
 ): Job;
 
@@ -203,7 +219,12 @@ export function scheduleJob(
  */
 export function rescheduleJob(
     job: Job | string,
-    spec: RecurrenceRule | RecurrenceSpecDateRange | RecurrenceSpecObjLit | Date | string,
+    spec:
+        | RecurrenceRule
+        | RecurrenceSpecDateRange
+        | RecurrenceSpecObjLit
+        | Date
+        | string,
 ): Job;
 
 /** Dictionary of all Jobs, accessible by name. */

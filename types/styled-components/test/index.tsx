@@ -77,20 +77,20 @@ const TomatoButton = styled(MyButton)`
 
 const CustomizableButton = styled(MyButton)`
     /* Adapt the colors based on primary prop */
-    background: ${props => (props.primary ? "palevioletred" : "white")};
-    color: ${props => (props.primary ? "white" : "palevioletred")};
+    background: ${(props) => (props.primary ? "palevioletred" : "white")};
+    color: ${(props) => (props.primary ? "white" : "palevioletred")};
 
     font-size: 1em;
     margin: 1em;
     padding: 0.25em 1em;
-    border: 2px solid ${props => props.theme.primary};
+    border: 2px solid ${(props) => props.theme.primary};
     border-radius: 3px;
 `;
 
 const example = css`
     font-size: 1.5em;
     text-align: center;
-    color: ${props => props.theme.primary};
+    color: ${(props) => props.theme.primary};
     border-color: ${"red"};
 `;
 
@@ -148,7 +148,9 @@ class Example extends React.Component {
                 <>
                     <ExampleGlobalStyle />
                     <Wrapper>
-                        <Title>Hello World, this is my first styled component!</Title>
+                        <Title>
+                            Hello World, this is my first styled component!
+                        </Title>
 
                         <Input placeholder="@mxstbr" type="text" />
                         <TomatoButton name="demo" />
@@ -172,11 +174,11 @@ const cssWithValues2 = css`
 
 // css which uses function interpolations with common props
 const cssWithFunc1 = css`
-    font-size: ${props => props.theme.fontSizePt}pt;
+    font-size: ${(props) => props.theme.fontSizePt}pt;
 `;
 const cssWithFunc2 = css`
     ${cssWithFunc1}
-    ${props => cssWithFunc1}
+    ${(props) => cssWithFunc1}
   ${[cssWithFunc1, cssWithValues1]}
 `;
 // such css can be used in styled components
@@ -217,13 +219,15 @@ const Article = styled.section`
     & > ${Link} {
         color: green;
     }
-    ${p => (p.theme.useAlternativeLink ? AlternativeLink : Link)} {
+    ${(p) => (p.theme.useAlternativeLink ? AlternativeLink : Link)} {
         color: black;
     }
 `;
 
 // A Link instance should be backed by an HTMLAnchorElement
-const ComposedLink = () => <Link onClick={(e: React.MouseEvent<HTMLAnchorElement>) => undefined} />;
+const ComposedLink = () => (
+    <Link onClick={(e: React.MouseEvent<HTMLAnchorElement>) => undefined} />
+);
 
 /**
  * construction via string tag
@@ -238,7 +242,11 @@ const LinkFromString = styled("a")`
 `;
 
 // A LinkFromString instance should be backed by an HTMLAnchorElement
-const MyOtherComponent = () => <LinkFromString onClick={(e: React.MouseEvent<HTMLAnchorElement>) => undefined} />;
+const MyOtherComponent = () => (
+    <LinkFromString
+        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => undefined}
+    />
+);
 
 // Create a <LinkFromStringWithProps> react component that renders an <a>
 // which takes extra props
@@ -265,7 +273,7 @@ const MyOtherComponentWithProps = () => (
 const LinkFromStringWithPropsAndGenerics = styled("a")<LinkProps>`
     font-size: 1.5em;
     text-align: center;
-    color: ${a => (a.canClick ? "palevioletred" : "gray")};
+    color: ${(a) => (a.canClick ? "palevioletred" : "gray")};
 `;
 
 // A LinkFromStringWithPropsAndGenerics instance should be backed by an HTMLAnchorElement
@@ -290,15 +298,15 @@ const functionReturningStyleObject = (props: ObjectStyleProps) => ({
 
 const ObjectStylesBox = styled.div`
     ${functionReturningStyleObject} ${{
-    backgroundColor: "red",
+        backgroundColor: "red",
 
-    // Supports nested objects (pseudo selectors, media queries, etc)
-    "@media screen and (min-width: 800px)": {
-        backgroundColor: "blue",
-    },
+        // Supports nested objects (pseudo selectors, media queries, etc)
+        "@media screen and (min-width: 800px)": {
+            backgroundColor: "blue",
+        },
 
-    fontSize: 2,
-}};
+        fontSize: 2,
+    }};
 `;
 <ObjectStylesBox size="big" />;
 
@@ -320,14 +328,14 @@ const AttrsInput = styled.input.attrs({
     border-radius: 3px;
 
     /* here we use the dynamically computed props */
-    margin: ${props => props.margin};
-    padding: ${props => props.padding};
+    margin: ${(props) => props.margin};
+    padding: ${(props) => props.padding};
 `;
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30042
 const AttrsWithOnlyNewProps = styled.h2.attrs({ as: "h1" })`
-    color: ${props => (props.as === "h1" ? "red" : "blue")};
-    font-size: ${props => (props.as === "h1" ? 2 : 1)};
+    color: ${(props) => (props.as === "h1" ? "red" : "blue")};
+    font-size: ${(props) => (props.as === "h1" ? 2 : 1)};
 `;
 
 const AttrsInputExtra = styled(AttrsInput).attrs({ autoComplete: "off" })``;
@@ -357,26 +365,27 @@ styled("div").withConfig<{ myProp: boolean }>({
     shouldForwardProp: (prop, defaultValidatorFn) => prop === "myProp",
 })<{ otherProp: string }>`
     color: red;
-    ${p => {
-    // $ExpectType boolean
-    p.myProp;
-    return css``;
-}}
-    ${p => {
-    // $ExpectType string
-    p.otherProp;
-    return css``;
-}}
+    ${(p) => {
+        // $ExpectType boolean
+        p.myProp;
+        return css``;
+    }}
+    ${(p) => {
+        // $ExpectType string
+        p.otherProp;
+        return css``;
+    }}
 `;
 
 styled("input").withConfig({
-    shouldForwardProp: prop => prop === "disabled",
+    shouldForwardProp: (prop) => prop === "disabled",
 })`
     color: red;
 `;
 
 styled("div").withConfig({
-    shouldForwardProp: (prop, defaultValidatorFn) => ["filterThis"].indexOf(prop) !== -1,
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+        ["filterThis"].indexOf(prop) !== -1,
 })`
     color: red;
 `;
@@ -389,13 +398,15 @@ styled("div").withConfig({
 
 styled("div").withConfig<{ test: boolean }>({
     // @ts-expect-error
-    shouldForwardProp: (prop, defaultValidatorFn) => prop === "invalidProp" && true,
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+        prop === "invalidProp" && true,
 })`
     color: red;
-    ${p => p.test && css``}
+    ${(p) => p.test && css``}
     ${
-    // @ts-expect-error
-    p => p.invalidProp && css``}
+        // @ts-expect-error
+        (p) => p.invalidProp && css``
+    }
 `;
 
 /**
@@ -422,9 +433,9 @@ styled(C); // used to fail; see issue trail linked below
 
 // Define our button, but with the use of props.theme this time
 const ThemedButton = styled.button`
-    color: ${props => props.theme.fg};
-    border: 2px solid ${props => props.theme.fg};
-    background: ${props => props.theme.bg};
+    color: ${(props) => props.theme.fg};
+    border: 2px solid ${(props) => props.theme.fg};
+    background: ${(props) => props.theme.bg};
 
     font-size: 1em;
     margin: 1em;
@@ -473,7 +484,7 @@ class MyComponent extends React.Component<ThemeProps<{}>> {
 const ThemedMyComponent = withTheme(MyComponent);
 
 <ThemedMyComponent
-    ref={ref => {
+    ref={(ref) => {
         // $ExpectType MyComponent | null
         ref;
     }}
@@ -488,15 +499,21 @@ interface WithThemeProps {
     text: string;
 }
 
-const Component = (props: WithThemeProps) => <div style={{ color: props.theme.color }}>{props.text}</div>;
+const Component = (props: WithThemeProps) => (
+    <div style={{ color: props.theme.color }}>{props.text}</div>
+);
 
 const ComponentWithTheme = withTheme(Component);
 <ComponentWithTheme text={"hi"} />; // ok
 <ComponentWithTheme text={"hi"} theme={{ color: "red" }} />; // ok
-<ThemeConsumer>{theme => <Component text="hi" theme={theme} />}</ThemeConsumer>;
+<ThemeConsumer>
+    {(theme) => <Component text="hi" theme={theme} />}
+</ThemeConsumer>;
 
 // should consider default props of a component
-const ComponentWithDefaultProps = ({ text }: WithThemeProps) => <div>{text}</div>;
+const ComponentWithDefaultProps = ({ text }: WithThemeProps) => (
+    <div>{text}</div>
+);
 ComponentWithDefaultProps.defaultProps = { text: "hi" };
 const ComponentWithDefaultPropsAndTheme = withTheme(ComponentWithDefaultProps);
 <ComponentWithDefaultPropsAndTheme />;
@@ -550,7 +567,8 @@ const css2 = sheet2.getStyleElement();
 
 const sheet3 = new ServerStyleSheet();
 const appStream = ReactDOMServer.renderToNodeStream(<Title>Hello world</Title>);
-const wrappedCssStream: NodeJS.ReadableStream = sheet3.interleaveWithNodeStream(appStream);
+const wrappedCssStream: NodeJS.ReadableStream =
+    sheet3.interleaveWithNodeStream(appStream);
 
 /**
  * StyleSheetManager
@@ -609,12 +627,14 @@ const AnchorContainer = () => (
 
 const WithComponentRandomHeading = WithComponentH1.withComponent(Random);
 
-const WithComponentCompA: React.FC<{ a: number; className?: string | undefined }> = ({ className }) => (
-    <div className={className} />
-);
-const WithComponentCompB: React.FC<{ b: number; className?: string | undefined }> = ({ className }) => (
-    <div className={className} />
-);
+const WithComponentCompA: React.FC<{
+    a: number;
+    className?: string | undefined;
+}> = ({ className }) => <div className={className} />;
+const WithComponentCompB: React.FC<{
+    b: number;
+    className?: string | undefined;
+}> = ({ className }) => <div className={className} />;
 const WithComponentStyledA = styled(WithComponentCompA)`
     color: ${(props: { color: string }) => props.color};
 `;
@@ -623,9 +643,12 @@ const WithComponentFirstStyledA = styled(WithComponentStyledA).attrs({
     a: 1,
 })``;
 
-const WithComponentFirstStyledB = WithComponentFirstStyledA.withComponent(WithComponentCompB);
+const WithComponentFirstStyledB =
+    WithComponentFirstStyledA.withComponent(WithComponentCompB);
 
-const WithComponentFirstStyledANew = styled(WithComponentStyledA).attrs(props => ({ a: 1 }))``;
+const WithComponentFirstStyledANew = styled(WithComponentStyledA).attrs(
+    (props) => ({ a: 1 }),
+)``;
 
 const test = () => [
     <WithComponentFirstStyledA color={"black"} />,
@@ -633,7 +656,9 @@ const test = () => [
     <WithComponentFirstStyledANew color={"black"} />,
 ];
 
-const WithComponentRequired = styled((props: { to: string }) => <a href={props.to} />)``;
+const WithComponentRequired = styled((props: { to: string }) => (
+    <a href={props.to} />
+))``;
 // These tests pass in tsservice, but they fail in dtslint. I do not know why.
 // <WithComponentRequired href=''/>; // @ts-expect-error
 // <WithComponentRequired to=''/>;
@@ -676,17 +701,30 @@ const WrappedExternalAsComponent = styled(ExternalAsComponent)``;
 // @ts-expect-error
 const testRequiredProp = <WrappedExternalAsComponent />;
 // @ts-expect-error
-const testRequiredPropWhenForwardedAs = <WrappedExternalAsComponent forwardedAs="h2" />;
+const testRequiredPropWhenForwardedAs = (
+    <WrappedExternalAsComponent forwardedAs="h2" />
+);
 const ForwardedAsWithWrappedExternalTest = (
     <>
         <WrappedExternalAsComponent forwardedAs="h2" type="primitive" />
-        <WrappedExternalAsComponent forwardedAs={WithComponentH2} type="complex" />
+        <WrappedExternalAsComponent
+            forwardedAs={WithComponentH2}
+            type="complex"
+        />
     </>
 );
 const ForwardedAsWithNestedAsExternalTest = (
     <>
-        <ForwardedAsNestedComponent as={ExternalAsComponent} forwardedAs="h2" type="primitive" />
-        <ForwardedAsNestedComponent as={ExternalAsComponent} forwardedAs={WithComponentH2} type="complex" />
+        <ForwardedAsNestedComponent
+            as={ExternalAsComponent}
+            forwardedAs="h2"
+            type="primitive"
+        />
+        <ForwardedAsNestedComponent
+            as={ExternalAsComponent}
+            forwardedAs={WithComponentH2}
+            type="complex"
+        />
     </>
 );
 
@@ -694,15 +732,28 @@ interface OtherExternalComponentProps {
     requiredProp: "test";
 }
 
-const OtherExternalComponent: React.FC<OtherExternalComponentProps> = () => null;
+const OtherExternalComponent: React.FC<OtherExternalComponentProps> = () =>
+    null;
 const HasAttributesOfAsOrForwardedAsComponent = (
     <>
         <WrappedExternalAsComponent as="a" type="primitive" href="/" />
         <WrappedExternalAsComponent forwardedAs="a" type="complex" href="/" />
-        <WrappedExternalAsComponent as={OtherExternalComponent} requiredProp="test" />
+        <WrappedExternalAsComponent
+            as={OtherExternalComponent}
+            requiredProp="test"
+        />
         {/* @ts-expect-error */}
-        <WrappedExternalAsComponent as={OtherExternalComponent} type="primitive" requiredProp="test" /> {}
-        <WrappedExternalAsComponent forwardedAs={OtherExternalComponent} type="complex" requiredProp="test" />
+        <WrappedExternalAsComponent
+            as={OtherExternalComponent}
+            type="primitive"
+            requiredProp="test"
+        />{" "}
+        {}
+        <WrappedExternalAsComponent
+            forwardedAs={OtherExternalComponent}
+            type="complex"
+            requiredProp="test"
+        />
     </>
 );
 
@@ -729,14 +780,19 @@ class Test2Container extends React.Component<Test2ContainerProps> {
 
 const containerTest = <StyledTestContainer as={Test2Container} type="foo" />;
 // @ts-expect-error
-const containerTestFailed = <StyledTestContainer as={Test2Container} type="foo" size="big" />;
-const containerTestTwo = <StyledTestContainer forwardedAs={Test2Container} type="foo" size="big" />;
+const containerTestFailed = (
+    <StyledTestContainer as={Test2Container} type="foo" size="big" />
+);
+const containerTestTwo = (
+    <StyledTestContainer forwardedAs={Test2Container} type="foo" size="big" />
+);
 
 interface GenericComponentProps<T> {
     someProp: T;
 }
-const GenericComponent = <T,>(props: GenericComponentProps<T>): React.ReactElement<GenericComponentProps<T>> | null =>
-    null;
+const GenericComponent = <T,>(
+    props: GenericComponentProps<T>,
+): React.ReactElement<GenericComponentProps<T>> | null => null;
 const StyledGenericComponent = styled(GenericComponent)``;
 const TestStyledGenericComponent = (
     <>
@@ -744,23 +800,40 @@ const TestStyledGenericComponent = (
         <StyledGenericComponent /> {}
         <StyledGenericComponent someProp="someString" />
         <StyledGenericComponent someProp={42} />
-        <StyledGenericComponent<React.FC<GenericComponentProps<string>>> someProp="someString" />
+        <StyledGenericComponent<
+            React.FC<GenericComponentProps<string>>
+        > someProp="someString" />
         {/* @ts-expect-error */}
-        <StyledGenericComponent<React.FC<GenericComponentProps<string>>> someProp={42} /> {}
+        <StyledGenericComponent<React.FC<GenericComponentProps<string>>>
+            someProp={42}
+        />{" "}
+        {}
         <StyledGenericComponent as="h1" />
         {/* @ts-expect-error */}
         <StyledGenericComponent as="h1" someProp="someString" /> {}
-
         {/* @ts-expect-error */}
         <WithComponentH1 as={GenericComponent} /> {}
         <WithComponentH1 as={GenericComponent} someProp="someString" />
         <WithComponentH1 as={GenericComponent} someProp={42} />
         {/* @ts-expect-error */}
-        <WithComponentH1<React.FC<GenericComponentProps<string>>> as={GenericComponent} /> {}
-        <WithComponentH1<React.FC<GenericComponentProps<string>>> as={GenericComponent} someProp="someString" />
-        <WithComponentH1<React.FC<GenericComponentProps<number>>> as={GenericComponent} someProp={42} />
+        <WithComponentH1<React.FC<GenericComponentProps<string>>>
+            as={GenericComponent}
+        />{" "}
+        {}
+        <WithComponentH1<React.FC<GenericComponentProps<string>>>
+            as={GenericComponent}
+            someProp="someString"
+        />
+        <WithComponentH1<React.FC<GenericComponentProps<number>>>
+            as={GenericComponent}
+            someProp={42}
+        />
         {/* @ts-expect-error */}
-        <WithComponentH1<React.FC<GenericComponentProps<string>>> as={GenericComponent} someProp={42} /> {}
+        <WithComponentH1<React.FC<GenericComponentProps<string>>>
+            as={GenericComponent}
+            someProp={42}
+        />{" "}
+        {}
     </>
 );
 
@@ -787,7 +860,7 @@ const StyledA = StyledDiv.withComponent("a");
 // No longer generating a type error as of Feb. 6th, 2019
 // <StyledA ref={divRef} />; // @ts-expect-error
 <StyledA
-    ref={ref => {
+    ref={(ref) => {
         // $ExpectType HTMLAnchorElement | null
         ref;
     }}
@@ -800,20 +873,26 @@ async function typedThemes() {
 
     // abuse "await import(...)" to be able to reference the styled-components namespace
     // without actually doing a top level namespace import
-    const { default: styled, css, createGlobalStyle, ThemeProvider, ThemeConsumer } = ((await import(
+    const {
+        default: styled,
+        css,
+        createGlobalStyle,
+        ThemeProvider,
+        ThemeConsumer,
+    } = (await import(
         "styled-components"
-    )) as any) as ThemedStyledComponentsModule<typeof theme>;
+    )) as any as ThemedStyledComponentsModule<typeof theme>;
 
     const ThemedDiv = styled.div`
-        background: ${props => {
-        // $ExpectType string
-        props.theme.color;
-        // $ExpectType number | undefined
-        props.tabIndex;
-        return props.theme.color;
-    }};
+        background: ${(props) => {
+            // $ExpectType string
+            props.theme.color;
+            // $ExpectType number | undefined
+            props.tabIndex;
+            return props.theme.color;
+        }};
     `;
-    const ThemedDiv2 = styled.div(props => {
+    const ThemedDiv2 = styled.div((props) => {
         // $ExpectType string
         props.theme.color;
         // $ExpectType number | undefined
@@ -823,7 +902,7 @@ async function typedThemes() {
             background: props.theme.color,
         };
     });
-    const ThemedDiv3 = styled.div(props => {
+    const ThemedDiv3 = styled.div((props) => {
         // $ExpectType string
         props.theme.color;
         // $ExpectType number | undefined
@@ -834,19 +913,19 @@ async function typedThemes() {
         `;
     });
     const themedCss = css`
-        background: ${props => {
-        // $ExpectType string
-        props.theme.color;
-        // $ExpectType "theme"
-        type Keys = keyof typeof props;
-        return props.theme.color;
-    }};
+        background: ${(props) => {
+            // $ExpectType string
+            props.theme.color;
+            // $ExpectType "theme"
+            type Keys = keyof typeof props;
+            return props.theme.color;
+        }};
     `;
     //  can't use a FlattenInterpolation as the first argument, would make broken css
     // @ts-expect-error
     const ThemedDiv4 = styled.div(themedCss);
 
-    const themedCssWithNesting = css(props => ({
+    const themedCssWithNesting = css((props) => ({
         color: props.theme.color,
         [ThemedDiv3]: {
             color: "green",
@@ -859,16 +938,16 @@ async function typedThemes() {
 
     const WithProp = styled.div`
         ${({ ok, theme: { color } }: { ok: boolean; theme: typeof theme }) =>
-        ok
-        && css`
+            ok &&
+            css`
                 color: ${color};
             `}
     `;
 
     const WithPropNested = styled.div`
         ${({ ok }: { ok: boolean }) =>
-        ok
-        && css`
+            ok &&
+            css`
                 color: ${({ theme: { color } }) => color};
             `}
     `;
@@ -881,7 +960,7 @@ async function typedThemes() {
                 <ThemedDiv2 />
                 <ThemedDiv3 />
                 <ThemeConsumer>
-                    {theme => {
+                    {(theme) => {
                         // $ExpectType string
                         theme.color;
                         return theme.color;
@@ -916,8 +995,12 @@ async function themeAugmentation() {
         accent: string;
     }
 
-    const base = ((await import("styled-components")) as any) as ThemedStyledComponentsModule<BaseTheme>;
-    const extra = ((await import("styled-components")) as any) as ThemedStyledComponentsModule<ExtraTheme, BaseTheme>;
+    const base = (await import(
+        "styled-components"
+    )) as any as ThemedStyledComponentsModule<BaseTheme>;
+    const extra = (await import(
+        "styled-components"
+    )) as any as ThemedStyledComponentsModule<ExtraTheme, BaseTheme>;
 
     return (
         <base.ThemeProvider
@@ -928,12 +1011,12 @@ async function themeAugmentation() {
             <>
                 <extra.ThemeProvider
                     // @ts-expect-error
-                    theme={base => base}
+                    theme={(base) => base}
                 >
                     <extra.ThemeConsumer>{() => null}</extra.ThemeConsumer>
                 </extra.ThemeProvider>
                 <extra.ThemeProvider
-                    theme={base => ({
+                    theme={(base) => ({
                         ...base,
                         accent: "blue",
                     })}
@@ -993,12 +1076,12 @@ function cssProp() {
             />
             <div
                 css={css`
-                    background: ${props => {
-                    // This requires the DefaultTheme augmentation
-                    // // $ExpectType string
-                    // props.theme.background;
-                    return props.theme.background;
-                }};
+                    background: ${(props) => {
+                        // This requires the DefaultTheme augmentation
+                        // // $ExpectType string
+                        // props.theme.background;
+                        return props.theme.background;
+                    }};
                 `}
             />
             <Custom css="background: blue;" />
@@ -1015,12 +1098,12 @@ function cssProp() {
             />
             <Custom
                 css={css`
-                    background: ${props => {
-                    // This requires the DefaultTheme augmentation
-                    // // $ExpectType string
-                    // props.theme.background;
-                    return props.theme.background;
-                }};
+                    background: ${(props) => {
+                        // This requires the DefaultTheme augmentation
+                        // // $ExpectType string
+                        // props.theme.background;
+                        return props.theme.background;
+                    }};
                 `}
             />
         </>
@@ -1043,36 +1126,31 @@ function validateArgumentsAndReturns() {
         `,
         css(() => ({ color: "blue" })),
         css(
-            () =>
-                css`
-                    color: 'blue';
-                `,
+            () => css`
+                color: "blue";
+            `,
         ),
     ];
 
     // if the first argument is array-like it's always treated as a string[], this breaks things
-    css(
-        // @ts-expect-error
-        css`
-            ${{ color: "blue" }}
-        `,
-    );
+    css(// @ts-expect-error
+    css`
+        ${{ color: "blue" }}
+    `);
     // _technically_ valid as styled-components doesn't look at .raw but best not to support it
     // @ts-expect-error
     css([]);
 
     styled.div({ color: "blue" });
-    styled.div(props => ({ color: props.theme.color }));
+    styled.div((props) => ({ color: props.theme.color }));
     styled.div`
         color: ${"blue"};
     `;
     // These don't work for the same reason css doesn't work
-    styled.div(
-        // @ts-expect-error
-        css`
-            ${{ color: "blue" }}
-        `,
-    );
+    styled.div(// @ts-expect-error
+    css`
+        ${{ color: "blue" }}
+    `);
     // @ts-expect-error
     styled.div([]);
 
@@ -1140,7 +1218,10 @@ function validateDefaultProps() {
 
     // example of a simple helper that sets defaultProps and update the type
     type WithDefaultProps<C, D> = C & { defaultProps: D };
-    function withDefaultProps<C, D>(component: C, defaultProps: D): WithDefaultProps<C, D> {
+    function withDefaultProps<C, D>(
+        component: C,
+        defaultProps: D,
+    ): WithDefaultProps<C, D> {
         (component as WithDefaultProps<C, D>).defaultProps = defaultProps;
         return component as WithDefaultProps<C, D>;
     }
@@ -1170,15 +1251,21 @@ const StyledWrapperClass = styled(WrapperClass)``;
 // @ts-expect-error
 const wrapperClass = <StyledWrapperClass>Text</StyledWrapperClass>;
 
-export class WrapperClassFuncChild extends React.Component<WrapperProps & { children: () => any }> {
+export class WrapperClassFuncChild extends React.Component<
+    WrapperProps & { children: () => any }
+> {
     render() {
         return <div />;
     }
 }
 const StyledWrapperClassFuncChild = styled(WrapperClassFuncChild)``;
-const wrapperClassNoChildrenGood = <StyledWrapperClassFuncChild>{() => "text"}</StyledWrapperClassFuncChild>;
+const wrapperClassNoChildrenGood = (
+    <StyledWrapperClassFuncChild>{() => "text"}</StyledWrapperClassFuncChild>
+);
 // @ts-expect-error
-const wrapperClassNoChildren = <StyledWrapperClassFuncChild>Text</StyledWrapperClassFuncChild>;
+const wrapperClassNoChildren = (
+    <StyledWrapperClassFuncChild>Text</StyledWrapperClassFuncChild>
+);
 
 const WrapperFunction: React.FunctionComponent<WrapperProps> = () => <div />;
 const StyledWrapperFunction = styled(WrapperFunction)``;
@@ -1245,7 +1332,7 @@ function unionTest() {
 
     type SomethingToRead = Book | Magazine;
 
-    const Readable: React.FunctionComponent<SomethingToRead> = props => {
+    const Readable: React.FunctionComponent<SomethingToRead> = (props) => {
         if (props.kind === "magazine") {
             return <div>magazine #{props.issue}</div>;
         }
@@ -1254,7 +1341,7 @@ function unionTest() {
     };
 
     const StyledReadable = styled(Readable)`
-        font-size: ${props => (props.kind === "book" ? 16 : 14)};
+        font-size: ${(props) => (props.kind === "book" ? 16 : 14)};
     `;
 
     <StyledReadable kind="book" author="Hejlsberg" />;
@@ -1266,13 +1353,13 @@ function unionTest2() {
     // Union of two non-overlapping types
     type Props =
         | {
-            foo: number;
-            bar?: undefined;
-        }
+              foo: number;
+              bar?: undefined;
+          }
         | {
-            foo?: undefined;
-            bar: string;
-        };
+              foo?: undefined;
+              bar: string;
+          };
 
     const C = styled.div<Props>``;
 
@@ -1285,18 +1372,32 @@ function unionTest2() {
 }
 
 function unionPerformanceTest() {
-    type ManyUnion =
-        & ({ signal1: "green"; greenTime1?: number } | { signal1: "red"; redTime1: number })
-        & ({ signal2?: "green"; greenTime2?: number } | { signal2: "red"; redTime2: number })
-        & ({ signal3?: "green"; greenTime3?: number } | { signal3: "red"; redTime3: number })
-        & ({ signal4?: "green"; greenTime4?: number } | { signal4: "red"; redTime4: number })
-        & ({ signal5?: "green"; greenTime5?: number } | { signal5: "red"; redTime5: number });
+    type ManyUnion = (
+        | { signal1: "green"; greenTime1?: number }
+        | { signal1: "red"; redTime1: number }
+    ) &
+        (
+            | { signal2?: "green"; greenTime2?: number }
+            | { signal2: "red"; redTime2: number }
+        ) &
+        (
+            | { signal3?: "green"; greenTime3?: number }
+            | { signal3: "red"; redTime3: number }
+        ) &
+        (
+            | { signal4?: "green"; greenTime4?: number }
+            | { signal4: "red"; redTime4: number }
+        ) &
+        (
+            | { signal5?: "green"; greenTime5?: number }
+            | { signal5: "red"; redTime5: number }
+        );
 
     const C = (props: ManyUnion) => null;
 
     const Styled = styled(C)<{ defaultColor?: string }>`
         .signal1 {
-            color: ${props => props.signal1 || "green"};
+            color: ${(props) => props.signal1 || "green"};
         }
     `;
 
@@ -1304,7 +1405,12 @@ function unionPerformanceTest() {
     <Styled signal1="red" redTime1={200} />;
     // @ts-expect-error
     <Styled signal1="red" greenTime1={100} />;
-    <Styled signal1="green" greenTime1={100} signal2="green" greenTime2={100} />;
+    <Styled
+        signal1="green"
+        greenTime1={100}
+        signal2="green"
+        greenTime2={100}
+    />;
     // @ts-expect-error
     <Styled signal1="green" greenTime1={100} signal2="red" greenTime2={100} />;
 }

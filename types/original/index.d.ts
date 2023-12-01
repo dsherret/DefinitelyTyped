@@ -5,7 +5,9 @@
  * @returns The origin.
  * @api public
  */
-declare function origin(url: string | object | { protocol: string; host: string }): string;
+declare function origin(
+    url: string | object | { protocol: string; host: string },
+): string;
 
 declare namespace origin {
     /**

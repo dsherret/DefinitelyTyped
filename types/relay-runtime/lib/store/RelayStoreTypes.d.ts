@@ -214,9 +214,9 @@ export interface CheckOptions {
 
 export type OperationAvailability =
     | {
-        status: "available";
-        fetchTime: number | null | undefined;
-    }
+          status: "available";
+          fetchTime: number | null | undefined;
+      }
     | { status: "stale" }
     | { status: "missing" };
 
@@ -236,7 +236,10 @@ export interface Store {
      * Determine if the operation can be resolved with data in the store (i.e. no
      * fields are missing).
      */
-    check(operation: OperationDescriptor, options?: CheckOptions): OperationAvailability;
+    check(
+        operation: OperationDescriptor,
+        options?: CheckOptions,
+    ): OperationAvailability;
 
     /**
      * Read the results of a selector from in-memory records in the store.
@@ -253,7 +256,10 @@ export interface Store {
      *
      * This method should return an array of the affected fragment owners
      */
-    notify(sourceOperation?: OperationDescriptor, invalidateStore?: boolean): readonly RequestDescriptor[];
+    notify(
+        sourceOperation?: OperationDescriptor,
+        invalidateStore?: boolean,
+    ): readonly RequestDescriptor[];
 
     /**
      * Publish new information (e.g. from the network) to the store, updating its
@@ -274,7 +280,10 @@ export interface Store {
      * when `notify()` is called *and* records have been published that affect the
      * selector results relative to the last `notify()`.
      */
-    subscribe(snapshot: Snapshot, callback: (snapshot: Snapshot) => void): Disposable;
+    subscribe(
+        snapshot: Snapshot,
+        callback: (snapshot: Snapshot) => void,
+    ): Disposable;
 
     /**
      * The method should disable garbage collection until
@@ -307,7 +316,9 @@ export interface Store {
      *     **it has not changed**
      *   - true, if the invalidation state for the given ids has changed
      */
-    checkInvalidationState(previousInvalidationState: InvalidationState): boolean;
+    checkInvalidationState(
+        previousInvalidationState: InvalidationState,
+    ): boolean;
 
     /**
      * Will subscribe the provided callback to the invalidation state of the
@@ -316,7 +327,10 @@ export interface Store {
      * invalidation state.
      * Disposing of the returned disposable will remove the subscription.
      */
-    subscribeToInvalidationState(invalidationState: InvalidationState, callback: () => void): Disposable;
+    subscribeToInvalidationState(
+        invalidationState: InvalidationState,
+        callback: () => void,
+    ): Disposable;
 }
 
 /**
@@ -331,14 +345,19 @@ export type Scheduler = (callback: () => void) => void;
  * allowing different implementations that may e.g. create a changeset of
  * the modifications.
  */
-export type Unarray<T> = T extends Array<infer U> | ReadonlyArray<infer U> ? U : T;
+export type Unarray<T> = T extends Array<infer U> | ReadonlyArray<infer U>
+    ? U
+    : T;
 export type Primitive = string | number | boolean | null | undefined;
 
 export interface RecordProxy<T = {}> {
     copyFieldsFrom(source: RecordProxy): void;
     getDataID(): DataID;
     // If a parent type is provided, provide the child type
-    getLinkedRecord<K extends keyof T>(name: K, args?: Variables | null): RecordProxy<NonNullable<T[K]>>;
+    getLinkedRecord<K extends keyof T>(
+        name: K,
+        args?: Variables | null,
+    ): RecordProxy<NonNullable<T[K]>>;
     // If a hint is provided, the return value is guaranteed to be the hint type
     getLinkedRecord<H = never>(
         name: string,
@@ -351,10 +370,16 @@ export interface RecordProxy<T = {}> {
     getLinkedRecords<H = never>(
         name: string,
         args?: Variables | null,
-    ): [H] extends [never] ? RecordProxy[] | null
-        : NonNullable<H> extends Array<infer U> ? Array<RecordProxy<U>> | (H extends null ? null : never)
-        : never;
-    getOrCreateLinkedRecord(name: string, typeName: string, args?: Variables | null): RecordProxy<T>;
+    ): [H] extends [never]
+        ? RecordProxy[] | null
+        : NonNullable<H> extends Array<infer U>
+          ? Array<RecordProxy<U>> | (H extends null ? null : never)
+          : never;
+    getOrCreateLinkedRecord(
+        name: string,
+        typeName: string,
+        args?: Variables | null,
+    ): RecordProxy<T>;
     getType(): string;
     getValue<K extends keyof T>(name: K, args?: Variables | null): T[K];
     getValue(name: string, args?: Variables | null): Primitive | Primitive[];
@@ -363,7 +388,11 @@ export interface RecordProxy<T = {}> {
         name: K,
         args?: Variables | null,
     ): RecordProxy<T>;
-    setLinkedRecord(record: RecordProxy | null, name: string, args?: Variables | null): RecordProxy;
+    setLinkedRecord(
+        record: RecordProxy | null,
+        name: string,
+        args?: Variables | null,
+    ): RecordProxy;
     setLinkedRecords<K extends keyof T>(
         records: Array<RecordProxy<Unarray<T[K]>> | null> | null | undefined,
         name: K,
@@ -374,15 +403,29 @@ export interface RecordProxy<T = {}> {
         name: string,
         args?: Variables | null,
     ): RecordProxy<T>;
-    setValue<K extends keyof T>(value: T[K], name: K, args?: Variables | null): RecordProxy<T>;
-    setValue(value: Primitive | Primitive[], name: string, args?: Variables | null): RecordProxy;
+    setValue<K extends keyof T>(
+        value: T[K],
+        name: K,
+        args?: Variables | null,
+    ): RecordProxy<T>;
+    setValue(
+        value: Primitive | Primitive[],
+        name: string,
+        args?: Variables | null,
+    ): RecordProxy;
     invalidateRecord(): void;
 }
 
 export interface ReadOnlyRecordProxy {
     getDataID(): DataID;
-    getLinkedRecord(name: string, args?: Variables): RecordProxy | null | undefined;
-    getLinkedRecords(name: string, args?: Variables): Array<RecordProxy | null | undefined> | null | undefined;
+    getLinkedRecord(
+        name: string,
+        args?: Variables,
+    ): RecordProxy | null | undefined;
+    getLinkedRecords(
+        name: string,
+        args?: Variables,
+    ): Array<RecordProxy | null | undefined> | null | undefined;
     getType(): string;
     getValue(name: string, args?: Variables | null): unknown;
 }
@@ -413,7 +456,9 @@ export interface ReadOnlyRecordSourceProxy {
  */
 
 export interface RecordSourceSelectorProxy<T = {}> extends RecordSourceProxy {
-    getRootField<K extends keyof T>(fieldName: K): RecordProxy<NonNullable<T[K]>>;
+    getRootField<K extends keyof T>(
+        fieldName: K,
+    ): RecordProxy<NonNullable<T[K]>>;
     getRootField(fieldName: string): RecordProxy | null;
     getPluralRootField(fieldName: string): Array<RecordProxy<T> | null> | null;
     invalidateStore(): void;
@@ -429,141 +474,141 @@ export interface RecordSourceSelectorProxy<T = {}> extends RecordSourceProxy {
 
 export type LogEvent =
     | Readonly<{
-        name: "suspense.fragment";
-        data: unknown;
-        fragment: ReaderFragment;
-        isRelayHooks: boolean;
-        isMissingData: boolean;
-        isPromiseCached: boolean;
-        pendingOperations: readonly RequestDescriptor[];
-    }>
+          name: "suspense.fragment";
+          data: unknown;
+          fragment: ReaderFragment;
+          isRelayHooks: boolean;
+          isMissingData: boolean;
+          isPromiseCached: boolean;
+          pendingOperations: readonly RequestDescriptor[];
+      }>
     | Readonly<{
-        name: "suspense.query";
-        fetchPolicy: string;
-        isPromiseCached: boolean;
-        operation: OperationDescriptor;
-        queryAvailability?: OperationAvailability | undefined;
-        renderPolicy: RenderPolicy;
-    }>
+          name: "suspense.query";
+          fetchPolicy: string;
+          isPromiseCached: boolean;
+          operation: OperationDescriptor;
+          queryAvailability?: OperationAvailability | undefined;
+          renderPolicy: RenderPolicy;
+      }>
     | Readonly<{
-        name: "queryresource.fetch";
-        /**
-         * ID of this query resource request and will be the same if there is an associated queryresource.retain event.
-         */
-        resourceID: number;
-        operation: OperationDescriptor;
-        profilerContext: unknown;
-        fetchPolicy: FetchPolicy;
-        renderPolicy: RenderPolicy;
-        queryAvailability: OperationAvailability;
-        shouldFetch: boolean;
-    }>
+          name: "queryresource.fetch";
+          /**
+           * ID of this query resource request and will be the same if there is an associated queryresource.retain event.
+           */
+          resourceID: number;
+          operation: OperationDescriptor;
+          profilerContext: unknown;
+          fetchPolicy: FetchPolicy;
+          renderPolicy: RenderPolicy;
+          queryAvailability: OperationAvailability;
+          shouldFetch: boolean;
+      }>
     | Readonly<{
-        name: "queryresource.retain";
-        resourceID: number;
-        // value from ProfilerContext
-        profilerContext: unknown;
-    }>
+          name: "queryresource.retain";
+          resourceID: number;
+          // value from ProfilerContext
+          profilerContext: unknown;
+      }>
     | Readonly<{
-        name: "network.info";
-        networkRequestId: number;
-        info: unknown;
-    }>
+          name: "network.info";
+          networkRequestId: number;
+          info: unknown;
+      }>
     | Readonly<{
-        name: "network.start";
-        networkRequestId: number;
-        params: RequestParameters;
-        variables: Variables;
-        cacheConfig: CacheConfig;
-    }>
+          name: "network.start";
+          networkRequestId: number;
+          params: RequestParameters;
+          variables: Variables;
+          cacheConfig: CacheConfig;
+      }>
     | Readonly<{
-        name: "network.next";
-        networkRequestId: number;
-        response: GraphQLResponse;
-    }>
+          name: "network.next";
+          networkRequestId: number;
+          response: GraphQLResponse;
+      }>
     | Readonly<{
-        name: "network.error";
-        networkRequestId: number;
-        error: Error;
-    }>
+          name: "network.error";
+          networkRequestId: number;
+          error: Error;
+      }>
     | Readonly<{
-        name: "network.complete";
-        networkRequestId: number;
-    }>
+          name: "network.complete";
+          networkRequestId: number;
+      }>
     | Readonly<{
-        name: "network.unsubscribe";
-        networkRequestId: number;
-    }>
+          name: "network.unsubscribe";
+          networkRequestId: number;
+      }>
     | Readonly<{
-        name: "execute.start";
-        executeId: number;
-        params: RequestParameters;
-        variables: Variables;
-        cacheConfig: CacheConfig;
-    }>
+          name: "execute.start";
+          executeId: number;
+          params: RequestParameters;
+          variables: Variables;
+          cacheConfig: CacheConfig;
+      }>
     | Readonly<{
-        name: "execute.next";
-        executeId: number;
-        response: GraphQLResponse;
-        duration: number;
-    }>
+          name: "execute.next";
+          executeId: number;
+          response: GraphQLResponse;
+          duration: number;
+      }>
     | Readonly<{
-        name: "execute.async.module";
-        executeId: number;
-        operationName: string;
-        duration: number;
-    }>
+          name: "execute.async.module";
+          executeId: number;
+          operationName: string;
+          duration: number;
+      }>
     | Readonly<{
-        name: "execute.flight.payload_deserialize";
-        executeId: number;
-        operationName: string;
-        duration: number;
-    }>
+          name: "execute.flight.payload_deserialize";
+          executeId: number;
+          operationName: string;
+          duration: number;
+      }>
     | Readonly<{
-        name: "execute.error";
-        executeId: number;
-        error: Error;
-    }>
+          name: "execute.error";
+          executeId: number;
+          error: Error;
+      }>
     | Readonly<{
-        name: "execute.complete";
-        executeId: number;
-    }>
+          name: "execute.complete";
+          executeId: number;
+      }>
     | Readonly<{
-        name: "store.publish";
-        source: RecordSource;
-        optimistic: boolean;
-    }>
+          name: "store.publish";
+          source: RecordSource;
+          optimistic: boolean;
+      }>
     | Readonly<{
-        name: "store.snapshot";
-    }>
+          name: "store.snapshot";
+      }>
     | Readonly<{
-        name: "store.restore";
-    }>
+          name: "store.restore";
+      }>
     | Readonly<{
-        name: "store.gc";
-        references: DataIDSet;
-    }>
+          name: "store.gc";
+          references: DataIDSet;
+      }>
     | Readonly<{
-        name: "store.notify.start";
-        sourceOperation?: OperationDescriptor | undefined;
-    }>
+          name: "store.notify.start";
+          sourceOperation?: OperationDescriptor | undefined;
+      }>
     | Readonly<{
-        name: "store.notify.complete";
-        sourceOperation?: OperationDescriptor | undefined;
-        updatedRecordIDs: DataIDSet;
-        invalidatedRecordIDs: DataIDSet;
-    }>
+          name: "store.notify.complete";
+          sourceOperation?: OperationDescriptor | undefined;
+          updatedRecordIDs: DataIDSet;
+          invalidatedRecordIDs: DataIDSet;
+      }>
     | Readonly<{
-        name: "store.notify.subscription";
-        sourceOperation?: OperationDescriptor | undefined;
-        snapshot: Snapshot;
-        nextSnapshot: Snapshot;
-    }>
+          name: "store.notify.subscription";
+          sourceOperation?: OperationDescriptor | undefined;
+          snapshot: Snapshot;
+          nextSnapshot: Snapshot;
+      }>
     | Readonly<{
-        name: "entrypoint.root.consume";
-        profilerContext: unknown;
-        rootModuleID: string;
-    }>;
+          name: "entrypoint.root.consume";
+          profilerContext: unknown;
+          rootModuleID: string;
+      }>;
 
 export type LogFunction = (logEvent: LogEvent) => void;
 
@@ -585,14 +630,20 @@ export interface Environment {
      * cache and therefore takes time proportional to the size/complexity of the
      * selector.
      */
-    check(operation: OperationDescriptor, options?: CheckOptions): OperationAvailability;
+    check(
+        operation: OperationDescriptor,
+        options?: CheckOptions,
+    ): OperationAvailability;
 
     /**
      * Subscribe to changes to the results of a selector. The callback is called
      * when data has been committed to the store that would cause the results of
      * the snapshot's selector to change.
      */
-    subscribe(snapshot: Snapshot, callback: (snapshot: Snapshot) => void): Disposable;
+    subscribe(
+        snapshot: Snapshot,
+        callback: (snapshot: Snapshot) => void,
+    ): Disposable;
 
     /**
      * Ensure that all the records necessary to fulfill the given operation are
@@ -623,7 +674,10 @@ export interface Environment {
     /**
      * Commit a payload to the environment using the given operation selector.
      */
-    commitPayload(operationDescriptor: OperationDescriptor, payload: PayloadData): void;
+    commitPayload(
+        operationDescriptor: OperationDescriptor,
+        payload: PayloadData,
+    ): void;
 
     /**
      * Get the environment's internal Network.
@@ -765,7 +819,10 @@ export type DataIDSet = Set<DataID>;
  * field payload.
  */
 export class Handler {
-    update: (store: RecordSourceProxy, fieldPayload: HandleFieldPayload) => void;
+    update: (
+        store: RecordSourceProxy,
+        fieldPayload: HandleFieldPayload,
+    ) => void;
 }
 
 /**
@@ -848,7 +905,9 @@ export interface OperationLoader {
     /**
      * Asynchronously load an operation.
      */
-    load(reference: unknown): Promise<NormalizationSplitOperation | null | undefined>;
+    load(
+        reference: unknown,
+    ): Promise<NormalizationSplitOperation | null | undefined>;
 }
 
 /**
@@ -873,7 +932,9 @@ export type SelectorStoreUpdater<T = object> = (
  * A set of configs that can be used to apply an optimistic update into the
  * store.
  */
-export type OptimisticUpdate = OptimisticUpdateFunction | OptimisticUpdateRelayPayload;
+export type OptimisticUpdate =
+    | OptimisticUpdateFunction
+    | OptimisticUpdateRelayPayload;
 
 export interface OptimisticUpdateFunction {
     readonly storeUpdater: StoreUpdater;
@@ -885,7 +946,9 @@ export interface OptimisticUpdateRelayPayload {
     readonly updater: SelectorStoreUpdater | null | undefined;
 }
 
-export interface OptimisticResponseConfig<TMutation extends MutationParameters = any> {
+export interface OptimisticResponseConfig<
+    TMutation extends MutationParameters = any,
+> {
     readonly operation: OperationDescriptor;
     readonly response: PayloadData | null | undefined;
     readonly updater: SelectorStoreUpdater<TMutation> | null | undefined;
@@ -897,32 +960,32 @@ export interface OptimisticResponseConfig<TMutation extends MutationParameters =
  */
 export type MissingFieldHandler =
     | {
-        kind: "scalar";
-        handle: (
-            field: NormalizationScalarField,
-            parentRecord: ReadOnlyRecordProxy | null | undefined,
-            args: Variables,
-            store: ReadOnlyRecordSourceProxy,
-        ) => unknown;
-    }
+          kind: "scalar";
+          handle: (
+              field: NormalizationScalarField,
+              parentRecord: ReadOnlyRecordProxy | null | undefined,
+              args: Variables,
+              store: ReadOnlyRecordSourceProxy,
+          ) => unknown;
+      }
     | {
-        kind: "linked";
-        handle: (
-            field: NormalizationLinkedField | ReaderLinkedField,
-            parentRecord: ReadOnlyRecordProxy | null | undefined,
-            args: Variables,
-            store: ReadOnlyRecordSourceProxy,
-        ) => DataID | null | undefined;
-    }
+          kind: "linked";
+          handle: (
+              field: NormalizationLinkedField | ReaderLinkedField,
+              parentRecord: ReadOnlyRecordProxy | null | undefined,
+              args: Variables,
+              store: ReadOnlyRecordSourceProxy,
+          ) => DataID | null | undefined;
+      }
     | {
-        kind: "pluralLinked";
-        handle: (
-            field: NormalizationLinkedField | ReaderLinkedField,
-            parentRecord: ReadOnlyRecordProxy | null | undefined,
-            args: Variables,
-            store: ReadOnlyRecordSourceProxy,
-        ) => Array<DataID | null | undefined> | null | undefined;
-    };
+          kind: "pluralLinked";
+          handle: (
+              field: NormalizationLinkedField | ReaderLinkedField,
+              parentRecord: ReadOnlyRecordProxy | null | undefined,
+              args: Variables,
+              store: ReadOnlyRecordSourceProxy,
+          ) => Array<DataID | null | undefined> | null | undefined;
+      };
 
 /**
  * A handler for events related to @required fields or Relay Resolvers. Currently reports missing
@@ -931,21 +994,21 @@ export type MissingFieldHandler =
 export type RequiredFieldLogger = (
     arg:
         | Readonly<{
-            kind: "missing_field.log";
-            owner: string;
-            fieldPath: string;
-        }>
+              kind: "missing_field.log";
+              owner: string;
+              fieldPath: string;
+          }>
         | Readonly<{
-            kind: "missing_field.throw";
-            owner: string;
-            fieldPath: string;
-        }>
+              kind: "missing_field.throw";
+              owner: string;
+              fieldPath: string;
+          }>
         | Readonly<{
-            kind: "relay_resolver.error";
-            owner: string;
-            fieldPath: string;
-            error: Error;
-        }>,
+              kind: "relay_resolver.error";
+              owner: string;
+              fieldPath: string;
+              error: Error;
+          }>,
 ) => void;
 
 /**
@@ -954,7 +1017,10 @@ export type RequiredFieldLogger = (
 export interface RelayResponsePayload {
     readonly errors: PayloadError[] | null | undefined;
     readonly fieldPayloads: HandleFieldPayload[] | null | undefined;
-    readonly incrementalPlaceholders: IncrementalDataPlaceholder[] | null | undefined;
+    readonly incrementalPlaceholders:
+        | IncrementalDataPlaceholder[]
+        | null
+        | undefined;
     readonly moduleImportPayloads: ModuleImportPayload[] | null | undefined;
     readonly source: MutableRecordSource;
     readonly isFinal: boolean;
@@ -1031,7 +1097,9 @@ export interface ReactFlightReachableQuery {
     readonly variables: Variables;
 }
 
-export type ReactFlightPayloadDeserializer = (tree: ReactFlightServerTree) => ReactFlightClientResponse;
+export type ReactFlightPayloadDeserializer = (
+    tree: ReactFlightServerTree,
+) => ReactFlightClientResponse;
 
 interface FieldLocation {
     path: string;
@@ -1052,7 +1120,10 @@ export type RelayResolverErrors = RelayResolverError[];
 /**
  * The return type of calls to store.readUpdatableFragment.
  */
-export interface UpdatableFragmentData<TKey extends HasUpdatableSpread<TData>, TData = unknown> {
+export interface UpdatableFragmentData<
+    TKey extends HasUpdatableSpread<TData>,
+    TData = unknown,
+> {
     readonly updatableData: Required<TKey>[" $data"];
 }
 

@@ -5,7 +5,9 @@
  * An `Error` will also be thrown if the provided string doesn't contain valid environment variables.
  * E.g. if given the string `1a=b`, an error will be thrown because environment variables cannot have a digit as the first character.
  */
-declare function parseEnvString(str: string | null | undefined): { [key: string]: string };
+declare function parseEnvString(str: string | null | undefined): {
+    [key: string]: string;
+};
 
 /**
  * Parse a string containing environment variables to a key/value object.

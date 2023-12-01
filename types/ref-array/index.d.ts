@@ -21,7 +21,7 @@ interface ArrayType<T> extends ref.Type {
         ref(): Buffer;
     };
 
-    new(length?: number): {
+    new (length?: number): {
         [i: number]: T;
         length: number;
         toArray(): T[];
@@ -30,7 +30,10 @@ interface ArrayType<T> extends ref.Type {
         buffer: Buffer;
         ref(): Buffer;
     };
-    new(data: number[], length?: number): {
+    new (
+        data: number[],
+        length?: number,
+    ): {
         [i: number]: T;
         length: number;
         toArray(): T[];
@@ -39,7 +42,10 @@ interface ArrayType<T> extends ref.Type {
         buffer: Buffer;
         ref(): Buffer;
     };
-    new(data: Buffer, length?: number): {
+    new (
+        data: Buffer,
+        length?: number,
+    ): {
         [i: number]: T;
         length: number;
         toArray(): T[];
@@ -57,7 +63,10 @@ interface ArrayType<T> extends ref.Type {
         buffer: Buffer;
         ref(): Buffer;
     };
-    (data: number[], length?: number): {
+    (
+        data: number[],
+        length?: number,
+    ): {
         [i: number]: T;
         length: number;
         toArray(): T[];
@@ -66,7 +75,10 @@ interface ArrayType<T> extends ref.Type {
         buffer: Buffer;
         ref(): Buffer;
     };
-    (data: Buffer, length?: number): {
+    (
+        data: Buffer,
+        length?: number,
+    ): {
         [i: number]: T;
         length: number;
         toArray(): T[];
@@ -83,8 +95,8 @@ interface ArrayType<T> extends ref.Type {
  * TypedArray API.
  */
 declare var ArrayType: {
-    new<T>(type: ref.Type, length?: number): ArrayType<T>;
-    new<T>(type: string, length?: number): ArrayType<T>;
+    new <T>(type: ref.Type, length?: number): ArrayType<T>;
+    new <T>(type: string, length?: number): ArrayType<T>;
     <T>(type: ref.Type, length?: number): ArrayType<T>;
     <T>(type: string, length?: number): ArrayType<T>;
 };

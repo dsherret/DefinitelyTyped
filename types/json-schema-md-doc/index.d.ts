@@ -60,7 +60,12 @@ declare class JSONSchemaMarkdown {
      * @param level Indentation level
      * @param path String describing the path of the property
      */
-    generateChildren(name: string, data: any, level: number, path: string): void;
+    generateChildren(
+        name: string,
+        data: any,
+        level: number,
+        path: string,
+    ): void;
     /**
      * This is the shared template for all other types.
      * You may want to override this method to change the order of information in your documentation.
@@ -243,7 +248,12 @@ declare class JSONSchemaMarkdown {
      * @param path String describing the path of the property
      * @param required Property is required (True or False [default])
      */
-    writePropertyName(prop: string, level: number, path: string, required?: boolean): void;
+    writePropertyName(
+        prop: string,
+        level: number,
+        path: string,
+        required?: boolean,
+    ): void;
     /**
      * Writes a link to the referenced schema
      *

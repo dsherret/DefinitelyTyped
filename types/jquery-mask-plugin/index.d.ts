@@ -20,10 +20,31 @@ declare namespace jQueryMask {
         reverse?: boolean | undefined;
         clearIfNotMatch?: boolean | undefined;
         placeholder?: string | undefined;
-        onComplete?(value: string, e: Event, $element: JQuery, options: Options): void;
-        onKeyPress?(value: string, e: Event, $element: JQuery, options: Options): void;
-        onChange?(value: string, e: Event, $element: JQuery, options: Options): void;
-        onInvalid?(value: string, e: Event, $element: JQuery, invalid: Invalid[], options: Options): void;
+        onComplete?(
+            value: string,
+            e: Event,
+            $element: JQuery,
+            options: Options,
+        ): void;
+        onKeyPress?(
+            value: string,
+            e: Event,
+            $element: JQuery,
+            options: Options,
+        ): void;
+        onChange?(
+            value: string,
+            e: Event,
+            $element: JQuery,
+            options: Options,
+        ): void;
+        onInvalid?(
+            value: string,
+            e: Event,
+            $element: JQuery,
+            invalid: Invalid[],
+            options: Options,
+        ): void;
     }
 
     interface Pattern {
@@ -46,7 +67,10 @@ interface JQuery {
      * @param options should be an options object.
      * @returns The element.
      */
-    mask(mask: ((value: string) => string) | string, options?: jQueryMask.Options): JQuery;
+    mask(
+        mask: ((value: string) => string) | string,
+        options?: jQueryMask.Options,
+    ): JQuery;
 
     /**
      * Seek and destroy.

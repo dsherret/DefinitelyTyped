@@ -11,7 +11,9 @@ export interface CustomFormatterOptions {
     locale: Locale;
 }
 
-export type CustomFormatter = (options: CustomFormatterOptions) => string | undefined;
+export type CustomFormatter = (
+    options: CustomFormatterOptions,
+) => string | undefined;
 
 export interface FormatStyle {
     units?: Unit | undefined;

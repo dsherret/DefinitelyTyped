@@ -1,6 +1,10 @@
 import { RelayObservable } from "../network/RelayObservable";
 import { Environment } from "../store/RelayStoreTypes";
-import { CacheConfig, FetchQueryFetchPolicy, OperationType } from "../util/RelayRuntimeTypes";
+import {
+    CacheConfig,
+    FetchQueryFetchPolicy,
+    OperationType,
+} from "../util/RelayRuntimeTypes";
 import { GraphQLTaggedNode } from "./RelayModernGraphQLTag";
 
 export function fetchQuery<T extends OperationType>(

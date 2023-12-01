@@ -13,15 +13,15 @@ Ari.connect("http://ari.js:8088", "user", "secret", (err, client) => {
     client.on("WebSocketConnected", () => {
         console.log("WebSocket connected");
     });
-    client.on("WebSocketReconnecting", err => {
+    client.on("WebSocketReconnecting", (err) => {
         console.log("WebSocket reconnecting", err);
     });
-    client.on("WebSocketMaxRetries", err => {
+    client.on("WebSocketMaxRetries", (err) => {
         console.log("WebSocket reconnection maximum retries reached", err);
     });
 
     // Listen to API loading error events.
-    client.on("APILoadError", err => {
+    client.on("APILoadError", (err) => {
         console.log("An error occurred while loading API", err);
     });
 
@@ -37,8 +37,8 @@ Ari.connect("http://ari.js:8088", "user", "secret", (err, client) => {
             const digit = event.digit;
             switch (digit) {
                 case "#":
-                    play(channel, "sound:vm-goodbye", err => {
-                        channel.hangup(err => {
+                    play(channel, "sound:vm-goodbye", (err) => {
+                        channel.hangup((err) => {
                             process.exit(0);
                         });
                     });
@@ -51,12 +51,16 @@ Ari.connect("http://ari.js:8088", "user", "secret", (err, client) => {
             }
         });
 
-        incoming.answer(err => {
+        incoming.answer((err) => {
             play(incoming, "sound:hello-world");
         });
     });
 
-    const play = (channel: Channel, sound: string, callback?: (param: any) => void) => {
+    const play = (
+        channel: Channel,
+        sound: string,
+        callback?: (param: any) => void,
+    ) => {
         // Referencing client instance of channel.
         const playback = channel._client.Playback();
 

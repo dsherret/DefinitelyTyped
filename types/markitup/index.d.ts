@@ -231,6 +231,9 @@ interface JQueryStatic {
 
 interface JQuery {
     markItUp(settings?: MarkItUp.Options): JQuery;
-    markItUp(settings?: MarkItUp.Options, extraSettings?: MarkItUp.Options): JQuery;
+    markItUp(
+        settings?: MarkItUp.Options,
+        extraSettings?: MarkItUp.Options,
+    ): JQuery;
     markItUpRemove(): JQuery;
 }

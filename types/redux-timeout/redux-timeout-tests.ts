@@ -1,5 +1,10 @@
 import { AnyAction, applyMiddleware, createStore } from "redux";
-import { addTimeout, reduxTimeout, removeTimeout, WATCH_ALL } from "redux-timeout";
+import {
+    addTimeout,
+    reduxTimeout,
+    removeTimeout,
+    WATCH_ALL,
+} from "redux-timeout";
 
 const reducer = (state = [], action: AnyAction) => state;
 const store = createStore(reducer, applyMiddleware(reduxTimeout()));

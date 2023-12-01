@@ -4,8 +4,14 @@ declare var _spBodyOnLoadFunctions: Array<() => void>;
 declare var _spBodyOnLoadFunctionNames: string[];
 declare var _spBodyOnLoadCalled: boolean;
 declare function ExecuteOrDelayUntilBodyLoaded(initFunc: () => void): void;
-declare function ExecuteOrDelayUntilScriptLoaded(func: () => void, depScriptFileName: string): boolean;
-declare function ExecuteOrDelayUntilEventNotified(func: (...args: any[]) => void, eventName: string): boolean;
+declare function ExecuteOrDelayUntilScriptLoaded(
+    func: () => void,
+    depScriptFileName: string,
+): boolean;
+declare function ExecuteOrDelayUntilEventNotified(
+    func: (...args: any[]) => void,
+    eventName: string,
+): boolean;
 declare function SelectRibbonTab(tabId: string, force: boolean);
 declare function AttachEvent<K extends keyof HTMLElementEventMap>(
     type: K,
@@ -20,7 +26,9 @@ declare function STSScriptEncodeWithQuote(str: string): string;
 declare function ToggleDeveloperDashboard(): void;
 declare function ToggleTrace(): void;
 declare function NotifyEventAndExecuteWaitingJobs(eventName: string): void;
-declare function NotifyScriptLoadedAndExecuteWaitingJobs(scriptFileName: string): void;
+declare function NotifyScriptLoadedAndExecuteWaitingJobs(
+    scriptFileName: string,
+): void;
 declare function NotifyBodyLoadedAndExecuteWaitingJobs(): void;
 declare enum StatusPriority {
     red,
@@ -147,7 +155,12 @@ interface HP {
     GetAuthorsHtml: () => string;
     GetBodySectionContent: () => string;
     GetBodySectionHeading: () => string;
-    GetEmailLink: (title: string, path: string, client: string, url: string) => string;
+    GetEmailLink: (
+        title: string,
+        path: string,
+        client: string,
+        url: string,
+    ) => string;
     GetFriendlyNameForFileType: (fileType: any) => string;
     GetNowDateTimeDifference: () => string;
     GetPeopleFollowingControl: () => string;
@@ -163,7 +176,13 @@ interface HP {
     getDateString: () => string;
     getStringFromDate: () => string;
     ids: HPIds;
-    loadSiteViewer: (id: string, idinner: string, idviewer: string, path: string, idglass: string) => void;
+    loadSiteViewer: (
+        id: string,
+        idinner: string,
+        idviewer: string,
+        path: string,
+        idglass: string,
+    ) => void;
     loadViewer: (
         id: string,
         idinner: string,
@@ -190,14 +209,23 @@ declare namespace SP {
     interface SOD {
         execute(fileName: string, functionName: string, ...args: any[]): void;
         executeFunc(fileName: string, typeName: string, fn: () => void): void;
-        executeOrDelayUntilEventNotified(func: (...args: any[]) => void, eventName: string): boolean;
-        executeOrDelayUntilScriptLoaded(func: () => void, depScriptFileName: string): boolean;
+        executeOrDelayUntilEventNotified(
+            func: (...args: any[]) => void,
+            eventName: string,
+        ): boolean;
+        executeOrDelayUntilScriptLoaded(
+            func: () => void,
+            depScriptFileName: string,
+        ): boolean;
         notifyScriptLoadedAndExecuteWaitingJobs(scriptFileName: string): void;
         notifyEventAndExecuteWaitingJobs(eventName: string, args?: any[]): void;
         registerSod(fileName: string, url: string): void;
         registerSodDep(fileName: string, dependentFileName: string): void;
         loadMultiple(keys: string[], fn: () => void, bSync?: boolean): void;
-        delayUntilEventNotified(func: (...args: any[]) => void, eventName: string): void;
+        delayUntilEventNotified(
+            func: (...args: any[]) => void,
+            eventName: string,
+        ): void;
 
         get_prefetch(): boolean;
         set_prefetch(value: boolean): void;
@@ -235,31 +263,58 @@ declare namespace SP {
     }
 
     class ScriptHelpers {
-        static disableWebpartSelection(context: SPClientTemplates.RenderContext): void;
+        static disableWebpartSelection(
+            context: SPClientTemplates.RenderContext,
+        ): void;
         static getDocumentQueryPairs(): { [index: string]: string };
         static getFieldFromSchema(
             schema: SPClientTemplates.ListSchema,
             fieldName: string,
         ): SPClientTemplates.FieldSchema;
-        static getLayoutsPageUrl(pageName: string, webServerRelativeUrl: string): string;
+        static getLayoutsPageUrl(
+            pageName: string,
+            webServerRelativeUrl: string,
+        ): string;
         static getListLevelPermissionMask(jsonItem: string): number;
-        static getTextAreaElementValue(textAreaElement: HTMLTextAreaElement): string;
+        static getTextAreaElementValue(
+            textAreaElement: HTMLTextAreaElement,
+        ): string;
         static getUrlQueryPairs(docUrl: string): { [index: string]: string };
-        static getUserFieldProperty(item: ListItem, fieldName: string, propertyName: string): any;
-        static hasPermission(listPermissionMask: number, listPermission: ListLevelPermissionMask): boolean;
+        static getUserFieldProperty(
+            item: ListItem,
+            fieldName: string,
+            propertyName: string,
+        ): any;
+        static hasPermission(
+            listPermissionMask: number,
+            listPermission: ListLevelPermissionMask,
+        ): boolean;
         static newGuid(): SP.Guid;
         static isNullOrEmptyString(str: string): boolean;
         static isNullOrUndefined(obj: any): boolean;
         static isNullOrUndefinedOrEmpty(str: string): boolean;
         static isUndefined(obj: any): boolean;
-        static replaceOrAddQueryString(url: string, key: string, value: string): string;
+        static replaceOrAddQueryString(
+            url: string,
+            key: string,
+            value: string,
+        ): string;
         static removeHtml(str: string): string;
         static removeStyleChildren(element: HTMLElement): void;
-        static removeHtmlAndTrimStringWithEllipsis(str: string, maxLength: number): string;
-        static setTextAreaElementValue(textAreaElement: HTMLTextAreaElement, newValue: string): void;
+        static removeHtmlAndTrimStringWithEllipsis(
+            str: string,
+            maxLength: number,
+        ): string;
+        static setTextAreaElementValue(
+            textAreaElement: HTMLTextAreaElement,
+            newValue: string,
+        ): void;
         static truncateToInt(n: number): number;
         static urlCombine(path1: string, path2: string): string;
-        static resizeImageToSquareLength(imgElement: HTMLImageElement, squareLength: number): void;
+        static resizeImageToSquareLength(
+            imgElement: HTMLImageElement,
+            squareLength: number,
+        ): void;
     }
 
     class PageContextInfo {
@@ -299,20 +354,29 @@ declare namespace SP {
         }
         namespace Selection {
             function selectListItem(iid: string, bSelect: boolean): void;
-            function getSelectedItems(): Array<{ id: number; fsObjType: FileSystemObjectType }>;
+            function getSelectedItems(): Array<{
+                id: number;
+                fsObjType: FileSystemObjectType;
+            }>;
             function getSelectedList(): string;
             function getSelectedView(): string;
             function navigateUp(viewId: string): void;
             function deselectAllListItems(iid: string): void;
         }
         namespace Overrides {
-            function overrideDeleteConfirmation(listId: string, overrideText: string): void;
+            function overrideDeleteConfirmation(
+                listId: string,
+                overrideText: string,
+            ): void;
         }
     }
 }
 
 /** Register function to rerun on partial update in MDS-enabled site.*/
-declare function RegisterModuleInit(scriptFileName: string, initFunc: () => void): void;
+declare function RegisterModuleInit(
+    scriptFileName: string,
+    initFunc: () => void,
+): void;
 
 /** Provides access to url and query string parts.*/
 declare class JSRequest {
@@ -427,7 +491,11 @@ declare var _spFriendlyUrlPageContextInfo: _spFriendlyUrlPageContextInfo;
 declare function STSHtmlEncode(value: string): string;
 declare function STSHtmlDecode(value: string): string;
 
-declare function AddEvtHandler(element: HTMLElement, event: string, func: EventListener): void;
+declare function AddEvtHandler(
+    element: HTMLElement,
+    event: string,
+    func: EventListener,
+): void;
 
 /** Gets query string parameter */
 declare function GetUrlKeyValue(key: string): string;
@@ -597,7 +665,11 @@ declare namespace SP {
         attemptLogin(
             returnUrl: string,
             success: (response: ResponseInfo) => void,
-            error?: (response: ResponseInfo, error: RequestExecutorErrors, statusText: string) => void,
+            error?: (
+                response: ResponseInfo,
+                error: RequestExecutorErrors,
+                statusText: string,
+            ) => void,
         ): void;
     }
 
@@ -613,7 +685,11 @@ declare namespace SP {
         binaryStringResponseBody?: boolean | undefined;
         timeout?: number | undefined;
         success?(response: ResponseInfo): void;
-        error?(response: ResponseInfo, error: RequestExecutorErrors, statusText: string): void;
+        error?(
+            response: ResponseInfo,
+            error: RequestExecutorErrors,
+            statusText: string,
+        ): void;
         state?: any;
     }
 
@@ -633,7 +709,9 @@ declare namespace SP {
         constructor(url: string, options?: any);
     }
 
-    class ProxyWebRequestExecutorFactory implements SP.IWebRequestExecutorFactory {
+    class ProxyWebRequestExecutorFactory
+        implements SP.IWebRequestExecutorFactory
+    {
         constructor(url: string, options?: any);
         createWebRequestExecutor(): ProxyWebRequestExecutor;
     }
@@ -641,10 +719,16 @@ declare namespace SP {
 
 interface MQuery {
     (selector: string, context?: any): MQueryResultSetElements;
-    (objectOrElement: MQueryResultSetElements | HTMLElement | HTMLElement[]): MQueryResultSetElements;
+    (
+        objectOrElement: MQueryResultSetElements | HTMLElement | HTMLElement[],
+    ): MQueryResultSetElements;
     <T>(object?: MQueryResultSet<T> | T | T[]): MQueryResultSet<T>;
 
-    throttle<T extends (...args: any[]) => any>(fn: T, interval: number, shouldOverrideThrottle: boolean): T;
+    throttle<T extends (...args: any[]) => any>(
+        fn: T,
+        interval: number,
+        shouldOverrideThrottle: boolean,
+    ): T;
 
     extend(target: any, ...objs: any[]): any;
     extend(deep: boolean, target: any, ...objs: any[]): any;
@@ -671,7 +755,11 @@ interface MQuery {
     ready(callback: () => void): void;
     contains(container: HTMLElement, contained: HTMLElement): boolean;
 
-    proxy(fn: (...args: any[]) => any, context: any, ...args: any[]): (...args: any[]) => any;
+    proxy(
+        fn: (...args: any[]) => any,
+        context: any,
+        ...args: any[]
+    ): (...args: any[]) => any;
     proxy(context: any, name: string, ...args: any[]): any;
 
     every<T>(
@@ -685,7 +773,11 @@ interface MQuery {
         context?: any,
     ): boolean;
 
-    filter<T>(obj: T[], fn: (elementOfArray: T, indexInArray?: number) => boolean, context?: any): T[];
+    filter<T>(
+        obj: T[],
+        fn: (elementOfArray: T, indexInArray?: number) => boolean,
+        context?: any,
+    ): T[];
     filter<T>(
         obj: MQueryResultSet<T>,
         fn: (elementOfArray: T, indexInArray?: number) => boolean,
@@ -698,8 +790,14 @@ interface MQuery {
         context?: any,
     ): void;
 
-    map<T, U>(array: T[], callback: (elementOfArray: T, indexInArray?: number) => U): U[];
-    map<T, U>(array: MQueryResultSet<T>, callback: (elementOfArray: T, indexInArray?: number) => U): MQueryResultSet<U>;
+    map<T, U>(
+        array: T[],
+        callback: (elementOfArray: T, indexInArray?: number) => U,
+    ): U[];
+    map<T, U>(
+        array: MQueryResultSet<T>,
+        callback: (elementOfArray: T, indexInArray?: number) => U,
+    ): MQueryResultSet<U>;
 
     indexOf<T>(obj: T[], object: T, startIndex?: number): number;
     lastIndexOf<T>(obj: T[], object: T, startIndex?: number): number;
@@ -711,12 +809,23 @@ interface MQuery {
 }
 
 interface MQueryResultSetElements extends MQueryResultSet<HTMLElement> {
-    append(node: HTMLElement | MQueryResultSetElements | string): MQueryResultSetElements;
+    append(
+        node: HTMLElement | MQueryResultSetElements | string,
+    ): MQueryResultSetElements;
 
-    bind(eventType: string, handler: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    unbind(eventType: string, handler: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    bind(
+        eventType: string,
+        handler: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    unbind(
+        eventType: string,
+        handler: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
     trigger(eventType: string): MQueryResultSetElements;
-    one(eventType: string, handler: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    one(
+        eventType: string,
+        handler: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
 
     detach(): MQueryResultSetElements;
 
@@ -726,7 +835,10 @@ interface MQueryResultSetElements extends MQueryResultSet<HTMLElement> {
     offset(coordinates: { left: any; top: any }): MQueryResultSetElements;
 
     filter(selector: string): MQueryResultSetElements;
-    filter(fn: (elementOfArray: HTMLElement, indexInArray?: number) => boolean, context?: any): MQueryResultSetElements;
+    filter(
+        fn: (elementOfArray: HTMLElement, indexInArray?: number) => boolean,
+        context?: any,
+    ): MQueryResultSetElements;
 
     not(selector: string): MQueryResultSetElements;
 
@@ -735,7 +847,10 @@ interface MQueryResultSetElements extends MQueryResultSet<HTMLElement> {
     offsetParent(selector?: string): MQueryResultSetElements;
 
     parents(selector?: string): MQueryResultSetElements;
-    parentsUntil(selectorOrElement?: string | HTMLElement, filter?: string): MQueryResultSetElements;
+    parentsUntil(
+        selectorOrElement?: string | HTMLElement,
+        filter?: string,
+    ): MQueryResultSetElements;
 
     position(): { top: number; left: number };
 
@@ -743,7 +858,10 @@ interface MQueryResultSetElements extends MQueryResultSet<HTMLElement> {
     attr(attributeName: string, valueOrDelegate: any): MQueryResultSetElements;
     attr(map: { [key: string]: any }): MQueryResultSetElements;
     // tslint:disable-next-line: unified-signatures
-    attr(attributeName: string, func: (index: number, attr: any) => any): MQueryResultSetElements;
+    attr(
+        attributeName: string,
+        func: (index: number, attr: any) => any,
+    ): MQueryResultSetElements;
 
     addClass(classNames: string): MQueryResultSetElements;
     removeClass(classNames: string): MQueryResultSetElements;
@@ -763,43 +881,95 @@ interface MQueryResultSetElements extends MQueryResultSet<HTMLElement> {
 
     removeData(key: string): MQueryResultSetElements;
 
-    map(callback?: (elementOfArray: HTMLElement, indexInArray: number) => any): MQueryResultSetElements;
+    map(
+        callback?: (elementOfArray: HTMLElement, indexInArray: number) => any,
+    ): MQueryResultSetElements;
 
     blur(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    change(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    change(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
     click(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    dblclick(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    dblclick(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
     error(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
     focus(handler: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    focusin(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    focusout(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    keydown(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    keypress(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    focusin(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    focusout(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    keydown(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    keypress(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
     keyup(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
     load(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mousedown(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mouseenter(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mouseleave(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mousemove(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mouseout(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mouseover(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    mouseup(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    resize(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    scroll(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    select(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    submit(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
-    unload(handler?: (eventObject: MQueryEvent) => any): MQueryResultSetElements;
+    mousedown(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mouseenter(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mouseleave(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mousemove(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mouseout(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mouseover(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    mouseup(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    resize(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    scroll(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    select(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    submit(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
+    unload(
+        handler?: (eventObject: MQueryEvent) => any,
+    ): MQueryResultSetElements;
 }
 
 interface MQueryResultSet<T> {
     [index: number]: T;
     contains(contained: T): boolean;
 
-    filter(fn: (elementOfArray: T, indexInArray?: number) => boolean, context?: any): MQueryResultSet<T>;
-    every(fn: (elementOfArray: T, indexInArray?: number) => boolean, context?: any): boolean;
-    some(fn: (elementOfArray: T, indexInArray?: number) => boolean, context?: any): boolean;
-    map(callback: (elementOfArray: T, indexInArray?: number) => any): MQueryResultSet<T>;
-    forEach(fn: (elementOfArray: T, indexInArray?: number) => void, context?: any): void;
+    filter(
+        fn: (elementOfArray: T, indexInArray?: number) => boolean,
+        context?: any,
+    ): MQueryResultSet<T>;
+    every(
+        fn: (elementOfArray: T, indexInArray?: number) => boolean,
+        context?: any,
+    ): boolean;
+    some(
+        fn: (elementOfArray: T, indexInArray?: number) => boolean,
+        context?: any,
+    ): boolean;
+    map(
+        callback: (elementOfArray: T, indexInArray?: number) => any,
+    ): MQueryResultSet<T>;
+    forEach(
+        fn: (elementOfArray: T, indexInArray?: number) => void,
+        context?: any,
+    ): void;
     indexOf(object: any, startIndex?: number): number;
     lastIndexOf(object: any, startIndex?: number): number;
 }
@@ -853,7 +1023,10 @@ declare class CalloutActionMenuEntry {
         @param wzDesc Description of the menu item */
     constructor(
         text: string,
-        onClickCallback: (actionMenuEntry: CalloutActionMenuEntry, actionMenuEntryIndex: number) => void,
+        onClickCallback: (
+            actionMenuEntry: CalloutActionMenuEntry,
+            actionMenuEntryIndex: number,
+        ) => void,
         wzISrc: string,
         wzIAlt: string,
         wzISeq: number,
@@ -891,7 +1064,10 @@ declare class Callout {
     set(options: CalloutOptions): any;
     /** Adds event handler to the callout.
         @param eventName one of the following: "opened", "opening", "closing", "closed" */
-    addEventCallback(eventName: string, callback: (callout: Callout) => void): void;
+    addEventCallback(
+        eventName: string,
+        callback: (callout: Callout) => void,
+    ): void;
     /** Returns the launch point element of the callout. */
     getLaunchPoint(): HTMLElement;
     /** Returns the ID of the callout. */
@@ -1494,7 +1670,10 @@ declare namespace SPClientTemplates {
         OnPreRender?: RenderCallback | RenderCallback[] | undefined;
         onRefreshFailed?: any;
         RenderBody?(renderContext: RenderContext): string;
-        RenderFieldByName?(renderContext: RenderContext, fieldName: string): string;
+        RenderFieldByName?(
+            renderContext: RenderContext,
+            fieldName: string,
+        ): string;
         RenderFields?(renderContext: RenderContext): string;
         RenderFooter?(renderContext: RenderContext): string;
         RenderGroups?(renderContext: RenderContext): string;
@@ -1506,7 +1685,9 @@ declare namespace SPClientTemplates {
     }
 
     /** Must return null in order to fall back to a more common template or to a system default template */
-    type SingleTemplateCallback = (renderContext: RenderContext_InView) => string;
+    type SingleTemplateCallback = (
+        renderContext: RenderContext_InView,
+    ) => string;
 
     /** Must return null in order to fall back to a more common template or to a system default template */
     type GroupCallback = (renderContext: RenderContext_GroupInView) => string;
@@ -1518,10 +1699,14 @@ declare namespace SPClientTemplates {
     type FieldCallback = (renderContext: RenderContext) => string;
 
     /** Must return null in order to fall back to a more common template or to a system default template */
-    type FieldInFormCallback = (renderContext: RenderContext_FieldInForm) => string;
+    type FieldInFormCallback = (
+        renderContext: RenderContext_FieldInForm,
+    ) => string;
 
     /** Must return null in order to fall back to a more common template or to a system default template */
-    type FieldInViewCallback = (renderContext: RenderContext_FieldInView) => string;
+    type FieldInViewCallback = (
+        renderContext: RenderContext_FieldInView,
+    ) => string;
 
     interface FieldTemplateOverrides {
         /** Defines templates for rendering the field on a display form. */
@@ -1596,7 +1781,9 @@ declare namespace SPClientTemplates {
         BaseViewID?: number | string | undefined;
     }
     class TemplateManager {
-        static RegisterTemplateOverrides(renderCtx: TemplateOverridesOptions): void;
+        static RegisterTemplateOverrides(
+            renderCtx: TemplateOverridesOptions,
+        ): void;
         static GetTemplates(renderCtx: RenderContext): Templates;
     }
 
@@ -1620,11 +1807,21 @@ declare namespace SPClientTemplates {
         Description: string;
     }
     class Utility {
-        static ComputeRegisterTypeInfo(renderCtx: TemplateOverridesOptions): any;
-        static ControlModeToString(mode: SPClientTemplates.ClientControlMode): string;
-        static FileSystemObjectTypeToString(fileSystemObjectType: SPClientTemplates.FileSystemObjectType): string;
-        static ChoiceFormatTypeToString(fileSystemObjectType: SPClientTemplates.ChoiceFormatType): string;
-        static RichTextModeToString(fileSystemObjectType: SPClientTemplates.RichTextMode): string;
+        static ComputeRegisterTypeInfo(
+            renderCtx: TemplateOverridesOptions,
+        ): any;
+        static ControlModeToString(
+            mode: SPClientTemplates.ClientControlMode,
+        ): string;
+        static FileSystemObjectTypeToString(
+            fileSystemObjectType: SPClientTemplates.FileSystemObjectType,
+        ): string;
+        static ChoiceFormatTypeToString(
+            fileSystemObjectType: SPClientTemplates.ChoiceFormatType,
+        ): string;
+        static RichTextModeToString(
+            fileSystemObjectType: SPClientTemplates.RichTextMode,
+        ): string;
         static IsValidControlMode(mode: number): boolean;
         /** Removes leading and trailing spaces */
         static Trim(str: string): string;
@@ -1633,7 +1830,10 @@ declare namespace SPClientTemplates {
         static GetControlOptions(control: HTMLElement): any;
         static TryParseInitialUserValue(userStr: string): ClientUserValue[];
         /** Tries to resolve user names from string. Pushes either ClientUserValue (if resolved successfully) or original string (if not) to the resulting array. */
-        static TryParseUserControlValue(userStr: string, separator: string): any[];
+        static TryParseUserControlValue(
+            userStr: string,
+            separator: string,
+        ): any[];
         static GetPropertiesFromPageContextInfo(context: RenderContext): void;
         /** Replaces tokens "~site/", "~sitecollection/", "~sitecollectionmasterpagegallery", "{lcid}", "{locale}" and "{siteclienttag}" with appropriate context values */
         static ReplaceUrlTokens(tokenUrl: string): string;
@@ -1646,7 +1846,9 @@ declare namespace SPClientTemplates {
             setGroupDesc: boolean,
         ): string;
         static ParseURLValue(value: string): ClientUrlValue;
-        static GetFormContextForCurrentField(context: RenderContext_Form): ClientFormContext;
+        static GetFormContextForCurrentField(
+            context: RenderContext_Form,
+        ): ClientFormContext;
         /** Returns ";#" */
         static UserLookupDelimitString: string;
         /** Returns ";#" */
@@ -1681,21 +1883,35 @@ declare namespace SPClientTemplates {
         };
         registerInitCallback(fieldname: string, callback: () => void): void;
         registerFocusCallback(fieldname: string, callback: () => void): void;
-        registerValidationErrorCallback(fieldname: string, callback: (error: any) => void): void;
+        registerValidationErrorCallback(
+            fieldname: string,
+            callback: (error: any) => void,
+        ): void;
         registerGetValueCallback(fieldname: string, callback: () => any): void;
         updateControlValue(fieldname: string, value: any): void;
-        registerClientValidator(fieldname: string, validator: SPClientForms.ClientValidation.ValidatorSet): void;
-        registerHasValueChangedCallback(fieldname: string, callback: (eventArg?: any) => void): void;
+        registerClientValidator(
+            fieldname: string,
+            validator: SPClientForms.ClientValidation.ValidatorSet,
+        ): void;
+        registerHasValueChangedCallback(
+            fieldname: string,
+            callback: (eventArg?: any) => void,
+        ): void;
     }
 }
 
-declare function GenerateIID(renderCtx: SPClientTemplates.RenderContext_ItemInView): string;
+declare function GenerateIID(
+    renderCtx: SPClientTemplates.RenderContext_ItemInView,
+): string;
 declare function GenerateIIDForListItem(
     renderCtx: SPClientTemplates.RenderContext_InView,
     listItem: SPClientTemplates.Item,
 ): string;
 
-declare function SPFormControl_AppendValidationErrorMessage(nodeId: string, errorResult: any): void;
+declare function SPFormControl_AppendValidationErrorMessage(
+    nodeId: string,
+    errorResult: any,
+): void;
 declare function CoreRender(template: any, context: any): string;
 
 declare namespace SPClientForms {
@@ -1742,7 +1958,11 @@ declare namespace SPClientForms {
         constructor(qualifier: string);
         RenderClientForm(): void;
         SubmitClientForm(): boolean;
-        NotifyControlEvent(eventName: FormManagerEvents, fldName: string, eventArg: any): void;
+        NotifyControlEvent(
+            eventName: FormManagerEvents,
+            fldName: string,
+            eventArg: any,
+        ): void;
     }
 
     class ClientFormManager {
@@ -1754,7 +1974,10 @@ declare namespace SPClientForms {
 
 declare class SPMgr {
     NewGroup(listItem: { [name: string]: any }, fieldName: string): boolean;
-    RenderHeader(renderCtx: SPClientTemplates.RenderContext, field: SPClientTemplates.FieldSchema): string;
+    RenderHeader(
+        renderCtx: SPClientTemplates.RenderContext,
+        field: SPClientTemplates.FieldSchema,
+    ): string;
     RenderField(
         renderCtx: SPClientTemplates.RenderContext,
         field: SPClientTemplates.FieldSchema,
@@ -1771,31 +1994,81 @@ declare class SPMgr {
 
 declare var spMgr: SPMgr;
 
-declare function SPField_FormDisplay_Default(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPField_FormDisplay_DefaultNoEncode(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPField_FormDisplay_Empty(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldText_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldNumber_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldBoolean_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldNote_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldNote_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldFile_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldFile_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldChoice_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldChoice_Dropdown_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldChoice_Radio_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldMultiChoice_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldDateTime_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldDateTime_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldUrl_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldUrl_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldUser_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldUserMulti_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPClientPeoplePickerCSRTemplate(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldLookup_Display(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldLookup_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldLookupMulti_Edit(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
-declare function SPFieldAttachments_Default(ctx: SPClientTemplates.RenderContext_FieldInForm): string;
+declare function SPField_FormDisplay_Default(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPField_FormDisplay_DefaultNoEncode(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPField_FormDisplay_Empty(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldText_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldNumber_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldBoolean_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldNote_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldNote_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldFile_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldFile_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldChoice_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldChoice_Dropdown_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldChoice_Radio_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldMultiChoice_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldDateTime_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldDateTime_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldUrl_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldUrl_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldUser_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldUserMulti_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPClientPeoplePickerCSRTemplate(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldLookup_Display(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldLookup_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldLookupMulti_Edit(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
+declare function SPFieldAttachments_Default(
+    ctx: SPClientTemplates.RenderContext_FieldInForm,
+): string;
 
 declare namespace SPAnimation {
     enum Attribute {
@@ -1858,8 +2131,16 @@ declare namespace SPAnimation {
 
 declare namespace SPAnimationUtility {
     class BasicAnimator {
-        static FadeIn(element: HTMLElement, finishFunc?: (data: any) => void, data?: any): void;
-        static FadeOut(element: HTMLElement, finishFunc?: (data: any) => void, data?: any): void;
+        static FadeIn(
+            element: HTMLElement,
+            finishFunc?: (data: any) => void,
+            data?: any,
+        ): void;
+        static FadeOut(
+            element: HTMLElement,
+            finishFunc?: (data: any) => void,
+            data?: any,
+        ): void;
         static Move(
             element: HTMLElement,
             posX: number,
@@ -2153,7 +2434,11 @@ declare namespace SP {
         ): void;
         static populateDictionaryFromObject(dict: any, parentNode: any): void;
         static fixupTypes(context: SP.ClientRuntimeContext, dict: any): void;
-        static populateArray(context: SP.ClientRuntimeContext, dest: any, jsonArrayFromServer: any): void;
+        static populateArray(
+            context: SP.ClientRuntimeContext,
+            dest: any,
+            jsonArrayFromServer: any,
+        ): void;
         static fixupType(context: SP.ClientRuntimeContext, obj: any): any;
         static writeDictionaryToXml(
             writer: SP.XmlWriter,
@@ -2167,7 +2452,11 @@ declare namespace SP {
             objValue: any,
             serializationContext: SP.SerializationContext,
         ): void;
-        static invokeSetProperty(obj: any, propName: string, propValue: any): void;
+        static invokeSetProperty(
+            obj: any,
+            propName: string,
+            propValue: any,
+        ): void;
         static invokeGetProperty(obj: any, propName: string): any;
         static specifyDateTimeKind(datetime: Date, kind: SP.DateTimeKind): void;
         static getDateTimeKind(datetime: Date): SP.DateTimeKind;
@@ -2207,19 +2496,45 @@ declare namespace SP {
             url: string,
             body: string,
             expectedContentType: string,
-            succeededHandler: (sender: any, args: SP.PageRequestSucceededEventArgs) => void,
-            failedHandler: (sender: any, args: SP.PageRequestFailedEventArgs) => void,
+            succeededHandler: (
+                sender: any,
+                args: SP.PageRequestSucceededEventArgs,
+            ) => void,
+            failedHandler: (
+                sender: any,
+                args: SP.PageRequestFailedEventArgs,
+            ) => void,
         ): void;
         static doGet(
             url: string,
             expectedContentType: string,
-            succeededHandler: (sender: any, args: SP.PageRequestSucceededEventArgs) => void,
-            failedHandler: (sender: any, args: SP.PageRequestFailedEventArgs) => void,
+            succeededHandler: (
+                sender: any,
+                args: SP.PageRequestSucceededEventArgs,
+            ) => void,
+            failedHandler: (
+                sender: any,
+                args: SP.PageRequestFailedEventArgs,
+            ) => void,
         ): void;
-        add_succeeded(value: (sender: any, args: SP.PageRequestSucceededEventArgs) => void): void;
-        remove_succeeded(value: (sender: any, args: SP.PageRequestSucceededEventArgs) => void): void;
-        add_failed(value: (sender: any, args: SP.PageRequestFailedEventArgs) => void): void;
-        remove_failed(value: (sender: any, args: SP.PageRequestFailedEventArgs) => void): void;
+        add_succeeded(
+            value: (
+                sender: any,
+                args: SP.PageRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        remove_succeeded(
+            value: (
+                sender: any,
+                args: SP.PageRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        add_failed(
+            value: (sender: any, args: SP.PageRequestFailedEventArgs) => void,
+        ): void;
+        remove_failed(
+            value: (sender: any, args: SP.PageRequestFailedEventArgs) => void,
+        ): void;
         constructor();
     }
     class ResResources {
@@ -2402,16 +2717,33 @@ declare namespace SP {
         constructor(obj: SP.ClientObject, propName: string, propValue: any);
     }
     class ClientActionSetStaticProperty extends SP.ClientAction {
-        constructor(context: SP.ClientRuntimeContext, typeId: string, propName: string, propValue: any);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            typeId: string,
+            propName: string,
+            propValue: any,
+        );
     }
     class ClientActionInvokeMethod extends SP.ClientAction {
-        constructor(obj: SP.ClientObject, methodName: string, parameters: any[]);
+        constructor(
+            obj: SP.ClientObject,
+            methodName: string,
+            parameters: any[],
+        );
     }
     class ClientActionInvokeStaticMethod extends SP.ClientAction {
-        constructor(context: SP.ClientRuntimeContext, typeId: string, methodName: string, parameters: any[]);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            typeId: string,
+            methodName: string,
+            parameters: any[],
+        );
     }
     class ClientObject {
-        constructor(context: SP.ClientRuntimeContext, objectPath: SP.ObjectPath);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            objectPath: SP.ObjectPath,
+        );
         get_context(): SP.ClientRuntimeContext;
         get_path(): SP.ObjectPath;
         get_objectVersion(): string;
@@ -2434,7 +2766,10 @@ declare namespace SP {
         constructor();
     }
     /** Provides a base class for a collection of objects on a remote client. */
-    class ClientObjectCollection<T> extends SP.ClientObject implements IEnumerable<T> {
+    class ClientObjectCollection<T>
+        extends SP.ClientObject
+        implements IEnumerable<T>
+    {
         constructor();
         get_areItemsAvailable(): boolean;
         /** Gets the data for all of the items in the collection. */
@@ -2449,14 +2784,20 @@ declare namespace SP {
         fromJson(obj: any): void;
     }
     class ClientObjectList<T> extends SP.ClientObjectCollection<T> {
-        constructor(context: SP.ClientRuntimeContext, objectPath: SP.ObjectPath, childItemType: any);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            objectPath: SP.ObjectPath,
+            childItemType: any,
+        );
         fromJson(initValue: any): void;
         customFromJson(initValue: any): boolean;
     }
     class ClientObjectPrototype {
         retrieve(propertyNames?: string[]): void;
         retrieveObject(propertyName: string): SP.ClientObjectPrototype;
-        retrieveCollectionObject(propertyName: string): SP.ClientObjectCollectionPrototype;
+        retrieveCollectionObject(
+            propertyName: string,
+        ): SP.ClientObjectCollectionPrototype;
     }
     class ClientObjectCollectionPrototype extends SP.ClientObjectPrototype {
         retrieveItems(): SP.ClientObjectPrototype;
@@ -2474,10 +2815,24 @@ declare namespace SP {
     class ClientRequest {
         static get_nextSequenceId(): number;
         get_webRequest(): Sys.Net.WebRequest;
-        add_requestSucceeded(value: (sender: any, args: SP.ClientRequestSucceededEventArgs) => void): void;
-        remove_requestSucceeded(value: (sender: any, args: SP.ClientRequestSucceededEventArgs) => void): void;
-        add_requestFailed(value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void): void;
-        remove_requestFailed(value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void): void;
+        add_requestSucceeded(
+            value: (
+                sender: any,
+                args: SP.ClientRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        remove_requestSucceeded(
+            value: (
+                sender: any,
+                args: SP.ClientRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        add_requestFailed(
+            value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void,
+        ): void;
+        remove_requestFailed(
+            value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void,
+        ): void;
         get_navigateWhenServerRedirect(): boolean;
         set_navigateWhenServerRedirect(value: boolean): void;
     }
@@ -2503,8 +2858,7 @@ declare namespace SP {
         get_errorDetails(): any;
         get_errorTraceCorrelationId(): string;
     }
-    class ClientRequestSucceededEventArgs extends SP.ClientRequestEventArgs {
-    }
+    class ClientRequestSucceededEventArgs extends SP.ClientRequestEventArgs {}
     class ClientRuntimeContext implements Sys.IDisposable {
         constructor(serverRelativeUrlOrFullUrl: string);
         get_url(): string;
@@ -2519,22 +2873,52 @@ declare namespace SP {
         get_clientTag(): string;
         set_clientTag(value: string): void;
         get_webRequestExecutorFactory(): SP.IWebRequestExecutorFactory;
-        set_webRequestExecutorFactory(value: SP.IWebRequestExecutorFactory): void;
+        set_webRequestExecutorFactory(
+            value: SP.IWebRequestExecutorFactory,
+        ): void;
         get_pendingRequest(): SP.ClientRequest;
         get_hasPendingRequest(): boolean;
-        add_executingWebRequest(value: (sender: any, args: SP.WebRequestEventArgs) => void): void;
-        remove_executingWebRequest(value: (sender: any, args: SP.WebRequestEventArgs) => void): void;
-        add_requestSucceeded(value: (sender: any, args: SP.ClientRequestSucceededEventArgs) => void): void;
-        remove_requestSucceeded(value: (sender: any, args: SP.ClientRequestSucceededEventArgs) => void): void;
-        add_requestFailed(value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void): void;
-        remove_requestFailed(value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void): void;
-        add_beginningRequest(value: (sender: any, args: SP.ClientRequestEventArgs) => void): void;
-        remove_beginningRequest(value: (sender: any, args: SP.ClientRequestEventArgs) => void): void;
+        add_executingWebRequest(
+            value: (sender: any, args: SP.WebRequestEventArgs) => void,
+        ): void;
+        remove_executingWebRequest(
+            value: (sender: any, args: SP.WebRequestEventArgs) => void,
+        ): void;
+        add_requestSucceeded(
+            value: (
+                sender: any,
+                args: SP.ClientRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        remove_requestSucceeded(
+            value: (
+                sender: any,
+                args: SP.ClientRequestSucceededEventArgs,
+            ) => void,
+        ): void;
+        add_requestFailed(
+            value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void,
+        ): void;
+        remove_requestFailed(
+            value: (sender: any, args: SP.ClientRequestFailedEventArgs) => void,
+        ): void;
+        add_beginningRequest(
+            value: (sender: any, args: SP.ClientRequestEventArgs) => void,
+        ): void;
+        remove_beginningRequest(
+            value: (sender: any, args: SP.ClientRequestEventArgs) => void,
+        ): void;
         get_requestTimeout(): number;
         set_requestTimeout(value: number): void;
         executeQueryAsync(
-            succeededCallback?: (sender: any, args: SP.ClientRequestSucceededEventArgs) => void,
-            failedCallback?: (sender: any, args: SP.ClientRequestFailedEventArgs) => void,
+            succeededCallback?: (
+                sender: any,
+                args: SP.ClientRequestSucceededEventArgs,
+            ) => void,
+            failedCallback?: (
+                sender: any,
+                args: SP.ClientRequestFailedEventArgs,
+            ) => void,
         ): void;
         get_staticObjects(): any;
         castTo(obj: SP.ClientObject, type: any): SP.ClientObject;
@@ -2542,7 +2926,10 @@ declare namespace SP {
         addQueryIdAndResultObject(id: number, obj: any): void;
         parseObjectFromJsonString(json: string, skipTypeFixup?: boolean): any;
         load(clientObject: SP.ClientObject, ...exps: string[]): void;
-        loadQuery<T>(clientObjectCollection: SP.ClientObjectCollection<T>, exp?: string): any;
+        loadQuery<T>(
+            clientObjectCollection: SP.ClientObjectCollection<T>,
+            exp?: string,
+        ): any;
         get_serverSchemaVersion(): string;
         get_serverLibraryVersion(): string;
         get_traceCorrelationId(): string;
@@ -2556,14 +2943,26 @@ declare namespace SP {
     class ClientValueObject {
         fromJson(obj: any): void;
         customFromJson(obj: any): boolean;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
-        customWriteToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): boolean;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
+        customWriteToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): boolean;
         get_typeId(): string;
     }
-    class ClientValueObjectCollection<T> extends SP.ClientValueObject implements IEnumerable<T> {
+    class ClientValueObjectCollection<T>
+        extends SP.ClientValueObject
+        implements IEnumerable<T>
+    {
         get_count(): number;
         getEnumerator(): IEnumerator<T>;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
     }
     class ExceptionHandlingScope {
         constructor(context: SP.ClientRuntimeContext);
@@ -2587,19 +2986,41 @@ declare namespace SP {
         setPendingReplace(): void;
     }
     class ObjectPathProperty extends SP.ObjectPath {
-        constructor(context: SP.ClientRuntimeContext, parent: SP.ObjectPath, propertyName: string);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            parent: SP.ObjectPath,
+            propertyName: string,
+        );
     }
     class ObjectPathStaticProperty extends SP.ObjectPath {
-        constructor(context: SP.ClientRuntimeContext, typeId: string, propertyName: string);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            typeId: string,
+            propertyName: string,
+        );
     }
     class ObjectPathMethod extends SP.ObjectPath {
-        constructor(context: SP.ClientRuntimeContext, parent: SP.ObjectPath, methodName: string, parameters: any[]);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            parent: SP.ObjectPath,
+            methodName: string,
+            parameters: any[],
+        );
     }
     class ObjectPathStaticMethod extends SP.ObjectPath {
-        constructor(context: SP.ClientRuntimeContext, typeId: string, methodName: string, parameters: any[]);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            typeId: string,
+            methodName: string,
+            parameters: any[],
+        );
     }
     class ObjectPathConstructor extends SP.ObjectPath {
-        constructor(context: SP.ClientRuntimeContext, typeId: string, parameters: any[]);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            typeId: string,
+            parameters: any[],
+        );
     }
     class SerializationContext {
         addClientObject(obj: SP.ClientObject): void;
@@ -2785,7 +3206,11 @@ declare namespace SP {
             permType: string,
             permissionLevel: number,
         ): void;
-        static changeRequestStatusBulk(context: SP.ClientRuntimeContext, requestIds: number[], newStatus: number): void;
+        static changeRequestStatusBulk(
+            context: SP.ClientRuntimeContext,
+            requestIds: number[],
+            newStatus: number,
+        ): void;
     }
     enum AddFieldOptions {
         defaultValue,
@@ -2806,19 +3231,27 @@ declare namespace SP {
         get_versionString(): string;
     }
     class AppCatalog {
-        static getAppInstances(context: SP.ClientRuntimeContext, web: SP.Web): SP.ClientObjectList<SP.AppInstance>;
+        static getAppInstances(
+            context: SP.ClientRuntimeContext,
+            web: SP.Web,
+        ): SP.ClientObjectList<SP.AppInstance>;
         static getDeveloperSiteAppInstancesByIds(
             context: SP.ClientRuntimeContext,
             site: SP.Site,
             appInstanceIds: SP.Guid[],
         ): SP.ClientObjectList<SP.AppInstance>;
-        static isAppSideloadingEnabled(context: SP.ClientRuntimeContext): SP.BooleanResult;
+        static isAppSideloadingEnabled(
+            context: SP.ClientRuntimeContext,
+        ): SP.BooleanResult;
     }
     class AppContextSite extends SP.ClientObject {
         constructor(context: SP.ClientRuntimeContext, siteUrl: string);
         get_site(): SP.Site;
         get_web(): SP.Web;
-        static newObject(context: SP.ClientRuntimeContext, siteUrl: string): SP.AppContextSite;
+        static newObject(
+            context: SP.ClientRuntimeContext,
+            siteUrl: string,
+        ): SP.AppContextSite;
     }
     class AppInstance extends SP.ClientObject {
         get_appPrincipalId(): string;
@@ -2882,14 +3315,20 @@ declare namespace SP {
     class AppLicense extends SP.ClientValueObject {
         get_rawXMLLicenseToken(): string;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class AppLicenseCollection extends SP.ClientValueObjectCollection<AppLicense> {
         add(item: SP.AppLicense): void;
         get_item(index: number): SP.AppLicense;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum AppLicenseType {
@@ -2903,7 +3342,8 @@ declare namespace SP {
         get_serverRelativeUrl(): string;
         deleteObject(): void;
     }
-    interface AttachmentCollection extends SP.ClientObjectCollection<Attachment> {
+    interface AttachmentCollection
+        extends SP.ClientObjectCollection<Attachment> {
         itemAt(index: number): SP.Attachment;
         get_item(index: number): SP.Attachment;
         getByFileName(fileName: string): SP.Attachment;
@@ -2914,7 +3354,10 @@ declare namespace SP {
         get_fileName(): string;
         set_fileName(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class BasePermissions extends SP.ClientValueObject {
@@ -2925,7 +3368,10 @@ declare namespace SP {
         equals(perm: SP.BasePermissions): boolean;
         hasPermissions(high: number, low: number): boolean;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     /** Specifies the base type for a list. */
@@ -2981,14 +3427,19 @@ declare namespace SP {
         set_folderServerRelativeUrl(value: string): void;
         get_listItemCollectionPosition(): SP.ListItemCollectionPosition;
         /** Sets a value that specifies the information required to get the next page of data for the list view. */
-        set_listItemCollectionPosition(value: SP.ListItemCollectionPosition): void;
+        set_listItemCollectionPosition(
+            value: SP.ListItemCollectionPosition,
+        ): void;
         /** Gets value that specifies the XML schema that defines the list view. */
         get_viewXml(): string;
         /** Sets value that specifies the XML schema that defines the list view. It must be null, empty, or an XML fragment that conforms to the ViewDefinition type.  */
         set_viewXml(value: string): void;
         /** This member is reserved for internal use and is not intended to be used directly from your code. */
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
     }
     class Change extends SP.ClientObject {
         get_changeToken(): SP.ChangeToken;
@@ -3048,7 +3499,10 @@ declare namespace SP {
         get_viewName(): string;
         set_viewName(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ChangeQuery extends SP.ClientValueObject {
@@ -3115,15 +3569,20 @@ declare namespace SP {
         get_web(): boolean;
         set_web(value: boolean): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
     }
-    class ChangeSite extends SP.Change {
-    }
+    class ChangeSite extends SP.Change {}
     class ChangeToken extends SP.ClientValueObject {
         get_stringValue(): string;
         set_stringValue(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum ChangeType {
@@ -3175,8 +3634,7 @@ declare namespace SP {
         dropdown,
         radioButtons,
     }
-    class CompatibilityRange extends SP.ClientObject {
-    }
+    class CompatibilityRange extends SP.ClientObject {}
     class ContentType extends SP.ClientObject {
         get_description(): string;
         set_description(value: string): void;
@@ -3220,7 +3678,8 @@ declare namespace SP {
         update(updateChildren: boolean): void;
         deleteObject(): void;
     }
-    interface ContentTypeCollection extends SP.ClientObjectCollection<ContentType> {
+    interface ContentTypeCollection
+        extends SP.ClientObjectCollection<ContentType> {
         itemAt(index: number): SP.ContentType;
         get_item(index: number): SP.ContentType;
         getById(contentTypeId: string): SP.ContentType;
@@ -3237,14 +3696,20 @@ declare namespace SP {
         get_parentContentType(): SP.ContentType;
         set_parentContentType(value: SP.ContentType): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ContentTypeId extends SP.ClientValueObject {
         toString(): string;
         get_stringValue(): string;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum CustomizedPageStatus {
@@ -3278,7 +3743,8 @@ declare namespace SP {
         update(): void;
         deleteObject(): void;
     }
-    interface EventReceiverDefinitionCollection extends SP.ClientObjectCollection<EventReceiverDefinition> {
+    interface EventReceiverDefinitionCollection
+        extends SP.ClientObjectCollection<EventReceiverDefinition> {
         itemAt(index: number): SP.EventReceiverDefinition;
         get_item(index: number): SP.EventReceiverDefinition;
         getById(eventReceiverId: SP.Guid): SP.EventReceiverDefinition;
@@ -3302,7 +3768,10 @@ declare namespace SP {
         get_receiverUrl(): string;
         set_receiverUrl(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum EventReceiverSynchronization {
@@ -3395,7 +3864,11 @@ declare namespace SP {
         itemAt(index: number): SP.Feature;
         get_item(index: number): SP.Feature;
         getById(featureId: SP.Guid): SP.Feature;
-        add(featureId: SP.Guid, force: boolean, featdefScope: SP.FeatureDefinitionScope): SP.Feature;
+        add(
+            featureId: SP.Guid,
+            force: boolean,
+            featdefScope: SP.FeatureDefinitionScope,
+        ): SP.Feature;
         remove(featureId: SP.Guid, force: boolean): void;
     }
     enum FeatureDefinitionScope {
@@ -3470,7 +3943,10 @@ declare namespace SP {
     class FieldCalculatedErrorValue extends SP.ClientValueObject {
         get_errorMessage(): string;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class FieldMultiChoice extends SP.Field {
@@ -3491,8 +3967,16 @@ declare namespace SP {
         getByTitle(title: string): SP.Field;
         getById(id: SP.Guid): SP.Field;
         add(field: SP.Field): SP.Field;
-        addDependentLookup(displayName: string, primaryLookupField: SP.Field, lookupField: string): SP.Field;
-        addFieldAsXml(schemaXml: string, addToDefaultView: boolean, options: SP.AddFieldOptions): SP.Field;
+        addDependentLookup(
+            displayName: string,
+            primaryLookupField: SP.Field,
+            lookupField: string,
+        ): SP.Field;
+        addFieldAsXml(
+            schemaXml: string,
+            addToDefaultView: boolean,
+            options: SP.AddFieldOptions,
+        ): SP.Field;
         getByInternalNameOrTitle(strName: string): SP.Field;
     }
     class FieldComputed extends SP.Field {
@@ -3515,10 +3999,11 @@ declare namespace SP {
         get_displayFormat(): SP.DateTimeFieldFormatType;
         set_displayFormat(value: SP.DateTimeFieldFormatType): void;
         get_friendlyDisplayFormat(): SP.DateTimeFieldFriendlyFormatType;
-        set_friendlyDisplayFormat(value: SP.DateTimeFieldFriendlyFormatType): void;
+        set_friendlyDisplayFormat(
+            value: SP.DateTimeFieldFriendlyFormatType,
+        ): void;
     }
-    class FieldGeolocation extends SP.Field {
-    }
+    class FieldGeolocation extends SP.Field {}
     class FieldGeolocationValue extends SP.ClientValueObject {
         get_altitude(): number;
         set_altitude(value: number): void;
@@ -3529,11 +4014,13 @@ declare namespace SP {
         get_measure(): number;
         set_measure(value: number): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
-    class FieldGuid extends SP.Field {
-    }
+    class FieldGuid extends SP.Field {}
     class FieldLink extends SP.ClientObject {
         get_hidden(): boolean;
         set_hidden(value: boolean): void;
@@ -3554,7 +4041,10 @@ declare namespace SP {
         get_field(): SP.Field;
         set_field(value: SP.Field): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class FieldLookup extends SP.Field {
@@ -3571,14 +4061,19 @@ declare namespace SP {
         get_primaryFieldId(): string;
         set_primaryFieldId(value: string): void;
         get_relationshipDeleteBehavior(): SP.RelationshipDeleteBehaviorType;
-        set_relationshipDeleteBehavior(value: SP.RelationshipDeleteBehaviorType): void;
+        set_relationshipDeleteBehavior(
+            value: SP.RelationshipDeleteBehaviorType,
+        ): void;
     }
     class FieldLookupValue extends SP.ClientValueObject {
         get_lookupId(): number;
         set_lookupId(value: number): void;
         get_lookupValue(): string;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class FieldMultiLineText extends SP.Field {
@@ -3615,7 +4110,10 @@ declare namespace SP {
         get_question(): string;
         set_question(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class FieldStringValues extends SP.ClientObject {
@@ -3673,7 +4171,10 @@ declare namespace SP {
         get_url(): string;
         set_url(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class FieldUser extends SP.FieldLookup {
@@ -3693,7 +4194,10 @@ declare namespace SP {
     class FieldUserValue extends SP.FieldLookupValue {
         static fromUser(userName: string): SP.FieldUserValue;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     /** Represents a file in a SharePoint Web site that can be a Web Part Page, an item in a document library, or a file in a folder. */
@@ -3746,8 +4250,13 @@ declare namespace SP {
         approve(comment: string): void;
         /** Denies the file submitted for content approval. */
         deny(comment: string): void;
-        static getContentVerFromTag(context: SP.ClientRuntimeContext, contentTag: string): SP.IntResult;
-        getLimitedWebPartManager(scope: SP.WebParts.PersonalizationScope): SP.WebParts.LimitedWebPartManager;
+        static getContentVerFromTag(
+            context: SP.ClientRuntimeContext,
+            contentTag: string,
+        ): SP.IntResult;
+        getLimitedWebPartManager(
+            scope: SP.WebParts.PersonalizationScope,
+        ): SP.WebParts.LimitedWebPartManager;
         moveTo(newUrl: string, flags: SP.MoveOperations): void;
         copyTo(strNewUrl: string, bOverWrite: boolean): void;
         saveBinary(parameters: SP.FileSaveBinaryInformation): void;
@@ -3761,7 +4270,10 @@ declare namespace SP {
         get_item(index: number): SP.File;
         getByUrl(url: string): SP.File;
         add(parameters: SP.FileCreationInformation): SP.File;
-        addTemplateFile(urlOfFile: string, templateFileType: SP.TemplateFileType): SP.File;
+        addTemplateFile(
+            urlOfFile: string,
+            templateFileType: SP.TemplateFileType,
+        ): SP.File;
     }
     class FileCreationInformation extends SP.ClientValueObject {
         get_content(): SP.Base64EncodedByteArray;
@@ -3771,7 +4283,10 @@ declare namespace SP {
         get_url(): string;
         set_url(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum FileLevel {
@@ -3789,7 +4304,10 @@ declare namespace SP {
         get_fieldValues(): any;
         set_fieldValues(value: any): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum FileSystemObjectType {
@@ -3809,7 +4327,8 @@ declare namespace SP {
         get_versionLabel(): string;
         deleteObject(): void;
     }
-    interface FileVersionCollection extends SP.ClientObjectCollection<FileVersion> {
+    interface FileVersionCollection
+        extends SP.ClientObjectCollection<FileVersion> {
         itemAt(index: number): SP.FileVersion;
         get_item(index: number): SP.FileVersion;
         getById(versionid: number): SP.FileVersion;
@@ -3899,7 +4418,10 @@ declare namespace SP {
         get_title(): string;
         set_title(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class InformationRightsManagementSettings extends SP.ClientObject {
@@ -3939,7 +4461,10 @@ declare namespace SP {
         get_languageTag(): string;
         get_lcid(): number;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class SecurableObject extends SP.ClientObject {
@@ -3947,7 +4472,10 @@ declare namespace SP {
         get_hasUniqueRoleAssignments(): boolean;
         get_roleAssignments(): SP.RoleAssignmentCollection;
         resetRoleInheritance(): void;
-        breakRoleInheritance(copyRoleAssignments: boolean, clearSubscopes: boolean): void;
+        breakRoleInheritance(
+            copyRoleAssignments: boolean,
+            clearSubscopes: boolean,
+        ): void;
     }
     /** Represents display mode for a control or form */
     enum ControlMode {
@@ -4149,13 +4677,22 @@ declare namespace SP {
             @param newName The desired name the user typed
             @param privateView Boolean true when the user wants make a new view that's personal
             @param uri Url that keeps all the adhoc filter/sort inforatmion */
-        saveAsNewView(oldName: string, newName: string, privateView: boolean, uri: string): SP.StringResult;
+        saveAsNewView(
+            oldName: string,
+            newName: string,
+            privateView: boolean,
+            uri: string,
+        ): SP.StringResult;
         /** Returns a collection of lookup fields that use this list as a data source and that have FieldLookup.IsRelationship set to true. */
         getRelatedFields(): SP.RelatedFieldCollection;
         /** This member is reserved for internal use and is not intended to be used directly from your code. */
         getRelatedFieldsExtendedData(): SP.RelatedFieldExtendedDataCollection;
         /** Returns json string which contains all information necessary for rendering the specified list form for the specified itemId. Mode is SP.ControlMode */
-        renderListFormData(itemId: number, formId: string, mode: SP.ControlMode): SP.StringResult;
+        renderListFormData(
+            itemId: number,
+            formId: string,
+            mode: SP.ControlMode,
+        ): SP.StringResult;
         /** Returns the data for the specified query view. */
         renderListData(viewXml: string): SP.StringResult;
         /** This member is reserved for internal use and is not intended to be used directly from your code. */
@@ -4210,20 +4747,29 @@ declare namespace SP {
         get_url(): string;
         set_url(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ListDataSource extends SP.ClientValueObject {
         get_properties(): any;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ListDataValidationExceptionValue extends SP.ClientValueObject {
         get_fieldFailures(): SP.ListDataValidationFailure[];
         get_itemFailure(): SP.ListDataValidationFailure;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ListDataValidationFailure extends SP.ClientValueObject {
@@ -4233,7 +4779,10 @@ declare namespace SP {
         get_reason(): SP.ListDataValidationFailureReason;
         get_validationType(): SP.ListDataValidationType;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum ListDataValidationFailureReason {
@@ -4283,7 +4832,9 @@ declare namespace SP {
         /** Get the list in which the item resides. */
         get_parentList(): SP.List;
         refreshLoad(): void;
-        getWOPIFrameUrl(action: SP.Utilities.SPWOPIFrameAction): SP.StringResult;
+        getWOPIFrameUrl(
+            action: SP.Utilities.SPWOPIFrameAction,
+        ): SP.StringResult;
         /** Commits changed properties of the list item. The actual update is performed during context.executeQueryAsync method call. */
         update(): void;
         /** Deletes the list item */
@@ -4300,7 +4851,8 @@ declare namespace SP {
             bNewDocumentUpdate: boolean,
         ): SP.ListItemFormUpdateValue[];
     }
-    interface ListItemCollection<T = any> extends SP.ClientObjectCollection<ListItem<T>> {
+    interface ListItemCollection<T = any>
+        extends SP.ClientObjectCollection<ListItem<T>> {
         itemAt(index: number): SP.ListItem<T>;
         get_item(index: number): SP.ListItem<T>;
         getById(id: number | string): SP.ListItem<T>;
@@ -4310,7 +4862,10 @@ declare namespace SP {
         get_pagingInfo(): string;
         set_pagingInfo(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     /** Specifies the properties of the new list item. */
@@ -4325,10 +4880,14 @@ declare namespace SP {
         /** Sets a value that specifies whether the new list item is a file or a folder. */
         set_underlyingObjectType(value: SP.FileSystemObjectType): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
-    interface ListItemEntityCollection<T> extends SP.ClientObjectCollection<ListItem<T>> {
+    interface ListItemEntityCollection<T>
+        extends SP.ClientObjectCollection<ListItem<T>> {
         itemAt(index: number): SP.ListItem<T>;
         get_item(index: number): SP.ListItem<T>;
     }
@@ -4342,7 +4901,10 @@ declare namespace SP {
         get_hasException(): boolean;
         set_hasException(value: boolean): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ListTemplate extends SP.ClientObject {
@@ -4359,7 +4921,8 @@ declare namespace SP {
         get_listTemplateTypeKind(): number;
         get_unique(): boolean;
     }
-    interface ListTemplateCollection extends SP.ClientObjectCollection<ListTemplate> {
+    interface ListTemplateCollection
+        extends SP.ClientObjectCollection<ListTemplate> {
         itemAt(index: number): SP.ListTemplate;
         get_item(index: number): SP.ListTemplate;
         getByName(name: string): SP.ListTemplate;
@@ -4453,10 +5016,13 @@ declare namespace SP {
         update(): void;
         deleteObject(): void;
     }
-    interface NavigationNodeCollection extends SP.ClientObjectCollection<NavigationNode> {
+    interface NavigationNodeCollection
+        extends SP.ClientObjectCollection<NavigationNode> {
         itemAt(index: number): SP.NavigationNode;
         get_item(index: number): SP.NavigationNode;
-        add(parameters: SP.NavigationNodeCreationInformation): SP.NavigationNode;
+        add(
+            parameters: SP.NavigationNodeCreationInformation,
+        ): SP.NavigationNode;
     }
     class NavigationNodeCreationInformation extends SP.ClientValueObject {
         get_asLastNode(): boolean;
@@ -4470,7 +5036,10 @@ declare namespace SP {
         get_url(): string;
         set_url(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class ObjectSharingInformation extends SP.ClientObject {
@@ -4571,7 +5140,8 @@ declare namespace SP {
         get_user(): SP.User;
         update(): void;
     }
-    interface PushNotificationSubscriberCollection extends SP.ClientObjectCollection<PushNotificationSubscriber> {
+    interface PushNotificationSubscriberCollection
+        extends SP.ClientObjectCollection<PushNotificationSubscriber> {
         itemAt(index: number): SP.PushNotificationSubscriber;
         get_item(index: number): SP.PushNotificationSubscriber;
         getByStoreId(id: string): SP.PushNotificationSubscriber;
@@ -4595,7 +5165,8 @@ declare namespace SP {
         deleteObject(): void;
         restore(): void;
     }
-    interface RecycleBinItemCollection extends SP.ClientObjectCollection<RecycleBinItem> {
+    interface RecycleBinItemCollection
+        extends SP.ClientObjectCollection<RecycleBinItem> {
         itemAt(index: number): SP.RecycleBinItem;
         get_item(index: number): SP.RecycleBinItem;
         getById(id: SP.Guid): SP.RecycleBinItem;
@@ -4660,7 +5231,8 @@ declare namespace SP {
         get_relationshipDeleteBehavior(): SP.RelationshipDeleteBehaviorType;
         get_webId(): SP.Guid;
     }
-    interface RelatedFieldCollection extends SP.ClientObjectCollection<RelatedField> {
+    interface RelatedFieldCollection
+        extends SP.ClientObjectCollection<RelatedField> {
         itemAt(index: number): SP.RelatedField;
         get_item(index: number): SP.RelatedField;
     }
@@ -4672,7 +5244,8 @@ declare namespace SP {
         get_toolTipDescription(): string;
         get_webId(): SP.Guid;
     }
-    interface RelatedFieldExtendedDataCollection extends SP.ClientObjectCollection<RelatedFieldExtendedData> {
+    interface RelatedFieldExtendedDataCollection
+        extends SP.ClientObjectCollection<RelatedFieldExtendedData> {
         itemAt(index: number): SP.RelatedFieldExtendedData;
         get_item(index: number): SP.RelatedFieldExtendedData;
     }
@@ -4690,7 +5263,10 @@ declare namespace SP {
         get_webId(): string;
         set_webId(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class RelatedItemManager extends SP.ClientObject {
@@ -4755,17 +5331,23 @@ declare namespace SP {
         get_member(): SP.Principal;
         get_principalId(): number;
         get_roleDefinitionBindings(): SP.RoleDefinitionBindingCollection;
-        importRoleDefinitionBindings(roleDefinitionBindings: SP.RoleDefinitionBindingCollection): void;
+        importRoleDefinitionBindings(
+            roleDefinitionBindings: SP.RoleDefinitionBindingCollection,
+        ): void;
         update(): void;
         deleteObject(): void;
     }
-    interface RoleAssignmentCollection extends SP.ClientObjectCollection<RoleAssignment> {
+    interface RoleAssignmentCollection
+        extends SP.ClientObjectCollection<RoleAssignment> {
         itemAt(index: number): SP.RoleAssignment;
         get_item(index: number): SP.RoleAssignment;
         get_groups(): SP.GroupCollection;
         getByPrincipal(principalToFind: SP.Principal): SP.RoleAssignment;
         getByPrincipalId(principalId: number): SP.RoleAssignment;
-        add(principal: SP.Principal, roleBindings: SP.RoleDefinitionBindingCollection): SP.RoleAssignment;
+        add(
+            principal: SP.Principal,
+            roleBindings: SP.RoleDefinitionBindingCollection,
+        ): SP.RoleAssignment;
     }
     class RoleDefinition extends SP.ClientObject {
         get_basePermissions(): SP.BasePermissions;
@@ -4789,13 +5371,18 @@ declare namespace SP {
         add(roleDefinition: SP.RoleDefinition): void;
         remove(roleDefinition: SP.RoleDefinition): void;
         removeAll(): void;
-        static newObject(context: SP.ClientRuntimeContext): SP.RoleDefinitionBindingCollection;
+        static newObject(
+            context: SP.ClientRuntimeContext,
+        ): SP.RoleDefinitionBindingCollection;
     }
-    interface RoleDefinitionCollection extends SP.ClientObjectCollection<RoleDefinition> {
+    interface RoleDefinitionCollection
+        extends SP.ClientObjectCollection<RoleDefinition> {
         itemAt(index: number): SP.RoleDefinition;
         get_item(index: number): SP.RoleDefinition;
         getByName(name: string): SP.RoleDefinition;
-        add(parameters: SP.RoleDefinitionCreationInformation): SP.RoleDefinition;
+        add(
+            parameters: SP.RoleDefinitionCreationInformation,
+        ): SP.RoleDefinition;
         getById(id: number): SP.RoleDefinition;
         getByType(roleType: SP.RoleType): SP.RoleDefinition;
     }
@@ -4809,7 +5396,10 @@ declare namespace SP {
         get_order(): number;
         set_order(value: number): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum RoleType {
@@ -4822,8 +5412,13 @@ declare namespace SP {
         editor,
     }
     class ServerSettings {
-        static getAlternateUrls(context: SP.ClientRuntimeContext): SP.ClientObjectList<SP.AlternateUrl>;
-        static getGlobalInstalledLanguages(context: SP.ClientRuntimeContext, compatibilityLevel: number): SP.Language[];
+        static getAlternateUrls(
+            context: SP.ClientRuntimeContext,
+        ): SP.ClientObjectList<SP.AlternateUrl>;
+        static getGlobalInstalledLanguages(
+            context: SP.ClientRuntimeContext,
+            compatibilityLevel: number,
+        ): SP.Language[];
     }
     class Site extends SP.ClientObject {
         get_allowDesigner(): boolean;
@@ -4861,29 +5456,47 @@ declare namespace SP {
         get_url(): string;
         get_usage(): SP.UsageInfo;
         get_userCustomActions(): SP.UserCustomActionCollection;
-        updateClientObjectModelUseRemoteAPIsPermissionSetting(requireUseRemoteAPIs: boolean): void;
-        needsUpgradeByType(versionUpgrade: boolean, recursive: boolean): SP.BooleanResult;
-        runHealthCheck(ruleId: SP.Guid, bRepair: boolean, bRunAlways: boolean): SP.SiteHealth.SiteHealthSummary;
+        updateClientObjectModelUseRemoteAPIsPermissionSetting(
+            requireUseRemoteAPIs: boolean,
+        ): void;
+        needsUpgradeByType(
+            versionUpgrade: boolean,
+            recursive: boolean,
+        ): SP.BooleanResult;
+        runHealthCheck(
+            ruleId: SP.Guid,
+            bRepair: boolean,
+            bRunAlways: boolean,
+        ): SP.SiteHealth.SiteHealthSummary;
         createPreviewSPSite(upgrade: boolean, sendemail: boolean): void;
-        runUpgradeSiteSession(versionUpgrade: boolean, queueOnly: boolean, sendEmail: boolean): void;
+        runUpgradeSiteSession(
+            versionUpgrade: boolean,
+            queueOnly: boolean,
+            sendEmail: boolean,
+        ): void;
         getChanges(query: SP.ChangeQuery): SP.ChangeCollection;
         openWeb(strUrl: string): SP.Web;
         openWebById(gWebId: SP.Guid): SP.Web;
-        getWebTemplates(LCID: number, overrideCompatLevel: number): SP.WebTemplateCollection;
+        getWebTemplates(
+            LCID: number,
+            overrideCompatLevel: number,
+        ): SP.WebTemplateCollection;
         getCustomListTemplates(web: SP.Web): SP.ListTemplateCollection;
         getCatalog(typeCatalog: number): SP.List;
         extendUpgradeReminderDate(): void;
         invalidate(): void;
     }
-    class SiteUrl extends SP.ClientObject {
-    }
+    class SiteUrl extends SP.ClientObject {}
     class SubwebQuery extends SP.ClientValueObject {
         get_configurationFilter(): number;
         set_configurationFilter(value: number): void;
         get_webTemplateFilter(): number;
         set_webTemplateFilter(value: number): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum TemplateFileType {
@@ -4914,7 +5527,10 @@ declare namespace SP {
         get_daylightBias(): number;
         get_standardBias(): number;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class UpgradeInfo extends SP.ClientValueObject {
@@ -4929,7 +5545,10 @@ declare namespace SP {
         get_upgradeType(): SP.UpgradeType;
         get_warnings(): number;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     enum UpgradeStatus {
@@ -4961,7 +5580,10 @@ declare namespace SP {
         get_storagePercentageUsed(): number;
         get_visits(): number;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class User extends SP.Principal {
@@ -4993,7 +5615,10 @@ declare namespace SP {
         get_title(): string;
         set_title(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class UserCustomAction extends SP.ClientObject {
@@ -5031,7 +5656,8 @@ declare namespace SP {
         update(): void;
         deleteObject(): void;
     }
-    interface UserCustomActionCollection extends SP.ClientObjectCollection<UserCustomAction> {
+    interface UserCustomActionCollection
+        extends SP.ClientObjectCollection<UserCustomAction> {
         itemAt(index: number): SP.UserCustomAction;
         get_item(index: number): SP.UserCustomAction;
         getById(id: SP.Guid): SP.UserCustomAction;
@@ -5055,7 +5681,10 @@ declare namespace SP {
         get_nameId(): string;
         get_nameIdIssuer(): string;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class View extends SP.ClientObject {
@@ -5149,7 +5778,10 @@ declare namespace SP {
         get_viewTypeKind(): SP.ViewType;
         set_viewTypeKind(value: SP.ViewType): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     interface ViewFieldCollection extends SP.ClientObjectCollection<string> {
@@ -5251,20 +5883,39 @@ declare namespace SP {
         get_webTemplate(): string;
         get_workflowAssociations(): SP.Workflow.WorkflowAssociationCollection;
         get_workflowTemplates(): SP.Workflow.WorkflowTemplateCollection;
-        doesUserHavePermissions(permissionMask: SP.BasePermissions): SP.BooleanResult;
+        doesUserHavePermissions(
+            permissionMask: SP.BasePermissions,
+        ): SP.BooleanResult;
         getUserEffectivePermissions(userName: string): SP.BasePermissions;
-        mapToIcon(fileName: string, progId: string, size: SP.Utilities.IconSize): SP.StringResult;
+        mapToIcon(
+            fileName: string,
+            progId: string,
+            size: SP.Utilities.IconSize,
+        ): SP.StringResult;
         registerPushNotificationSubscriber(
             deviceAppInstanceId: SP.Guid,
             serviceToken: string,
         ): SP.PushNotificationSubscriber;
-        unregisterPushNotificationSubscriber(deviceAppInstanceId: SP.Guid): void;
-        getPushNotificationSubscribersByArgs(customArgs: string): SP.PushNotificationSubscriberCollection;
-        getPushNotificationSubscribersByUser(userName: string): SP.PushNotificationSubscriberCollection;
-        doesPushNotificationSubscriberExist(deviceAppInstanceId: SP.Guid): SP.BooleanResult;
-        getPushNotificationSubscriber(deviceAppInstanceId: SP.Guid): SP.PushNotificationSubscriber;
+        unregisterPushNotificationSubscriber(
+            deviceAppInstanceId: SP.Guid,
+        ): void;
+        getPushNotificationSubscribersByArgs(
+            customArgs: string,
+        ): SP.PushNotificationSubscriberCollection;
+        getPushNotificationSubscribersByUser(
+            userName: string,
+        ): SP.PushNotificationSubscriberCollection;
+        doesPushNotificationSubscriberExist(
+            deviceAppInstanceId: SP.Guid,
+        ): SP.BooleanResult;
+        getPushNotificationSubscriber(
+            deviceAppInstanceId: SP.Guid,
+        ): SP.PushNotificationSubscriber;
         getUserById(userId: number): SP.User;
-        getAvailableWebTemplates(lcid: number, doIncludeCrossLanguage: boolean): SP.WebTemplateCollection;
+        getAvailableWebTemplates(
+            lcid: number,
+            doIncludeCrossLanguage: boolean,
+        ): SP.WebTemplateCollection;
         getCatalog(typeCatalog: number): SP.List;
         getChanges(query: SP.ChangeQuery): SP.ChangeCollection;
         applyWebTemplate(webTemplate: string): void;
@@ -5273,17 +5924,26 @@ declare namespace SP {
         getFileByServerRelativeUrl(serverRelativeUrl: string): SP.File;
         getFolderByServerRelativeUrl(serverRelativeUrl: string): SP.Folder;
         getEntity(namespace: string, name: string): SP.BusinessData.Entity;
-        getAppBdcCatalogForAppInstance(appInstanceId: SP.Guid): SP.BusinessData.AppBdcCatalog;
+        getAppBdcCatalogForAppInstance(
+            appInstanceId: SP.Guid,
+        ): SP.BusinessData.AppBdcCatalog;
         getAppBdcCatalog(): SP.BusinessData.AppBdcCatalog;
         getSubwebsForCurrentUser(query: SP.SubwebQuery): SP.WebCollection;
         getAppInstanceById(appInstanceId: SP.Guid): SP.AppInstance;
-        getAppInstancesByProductId(productId: SP.Guid): SP.ClientObjectList<SP.AppInstance>;
+        getAppInstancesByProductId(
+            productId: SP.Guid,
+        ): SP.ClientObjectList<SP.AppInstance>;
         loadAndInstallAppInSpecifiedLocale(
             appPackageStream: SP.Base64EncodedByteArray,
             installationLocaleLCID: number,
         ): SP.AppInstance;
-        loadApp(appPackageStream: SP.Base64EncodedByteArray, installationLocaleLCID: number): SP.AppInstance;
-        loadAndInstallApp(appPackageStream: SP.Base64EncodedByteArray): SP.AppInstance;
+        loadApp(
+            appPackageStream: SP.Base64EncodedByteArray,
+            installationLocaleLCID: number,
+        ): SP.AppInstance;
+        loadAndInstallApp(
+            appPackageStream: SP.Base64EncodedByteArray,
+        ): SP.AppInstance;
         ensureUser(logonName: string): SP.User;
         applyTheme(
             colorPaletteUrl: string,
@@ -5314,7 +5974,10 @@ declare namespace SP {
         get_webTemplate(): string;
         set_webTemplate(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class WebInformation extends SP.ClientObject {
@@ -5330,7 +5993,10 @@ declare namespace SP {
         get_webTemplateId(): number;
     }
     class WebProxy {
-        static invoke(context: SP.ClientRuntimeContext, requestInfo: SP.WebRequestInfo): SP.WebResponseInfo;
+        static invoke(
+            context: SP.ClientRuntimeContext,
+            requestInfo: SP.WebRequestInfo,
+        ): SP.WebResponseInfo;
     }
     class WebRequestInfo extends SP.ClientValueObject {
         get_body(): string;
@@ -5342,7 +6008,10 @@ declare namespace SP {
         get_url(): string;
         set_url(value: string): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class WebResponseInfo extends SP.ClientValueObject {
@@ -5353,7 +6022,10 @@ declare namespace SP {
         get_statusCode(): number;
         set_statusCode(value: number): void;
         get_typeId(): string;
-        writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+        writeToXml(
+            writer: SP.XmlWriter,
+            serializationContext: SP.SerializationContext,
+        ): void;
         constructor();
     }
     class WebTemplate extends SP.ClientObject {
@@ -5368,7 +6040,8 @@ declare namespace SP {
         get_name(): string;
         get_title(): string;
     }
-    interface WebTemplateCollection extends SP.ClientObjectCollection<WebTemplate> {
+    interface WebTemplateCollection
+        extends SP.ClientObjectCollection<WebTemplate> {
         itemAt(index: number): SP.WebTemplate;
         get_item(index: number): SP.WebTemplate;
         getByName(name: string): SP.WebTemplate;
@@ -5377,7 +6050,9 @@ declare namespace SP {
     namespace Application {
         namespace UI {
             interface DefaultFormsInformationRequestor {
-                onDefaultFormsInformationRetrieveSuccess(defaultForms: SP.Application.UI.DefaultFormsInformation): void;
+                onDefaultFormsInformationRetrieveSuccess(
+                    defaultForms: SP.Application.UI.DefaultFormsInformation,
+                ): void;
                 onDefaultFormsInformationRetrieveFailure(): void;
             }
             class FormsInfo {
@@ -5410,7 +6085,9 @@ declare namespace SP {
                 constructor();
             }
             interface ViewInformationRequestor {
-                onViewInformationReturned(viewGroups: SP.Application.UI.ViewSelectorGroups): void;
+                onViewInformationReturned(
+                    viewGroups: SP.Application.UI.ViewSelectorGroups,
+                ): void;
             }
             class ViewSelectorGroups {
                 ModeratedViews: any;
@@ -5441,8 +6118,13 @@ declare namespace SP {
             }
             class ViewSelectorMenuBuilder {
                 static get_filterMenuItemsCallback(): (menuItems: any) => any;
-                static set_filterMenuItemsCallback(value: (menuItems: any) => any): void;
-                static showMenu(elem: HTMLElement, options: SP.Application.UI.ViewSelectorMenuOptions): void;
+                static set_filterMenuItemsCallback(
+                    value: (menuItems: any) => any,
+                ): void;
+                static showMenu(
+                    elem: HTMLElement,
+                    options: SP.Application.UI.ViewSelectorMenuOptions,
+                ): void;
                 static getViewInformation(
                     requestor: SP.Application.UI.ViewInformationRequestor,
                     options: SP.Application.UI.ViewSelectorMenuOptions,
@@ -5460,11 +6142,17 @@ declare namespace SP {
                 initialize(): void;
                 dispose(): void;
                 get_moreColorsPicker(): SP.Application.UI.MoreColorsPicker;
-                set_moreColorsPicker(value: SP.Application.UI.MoreColorsPicker): void;
+                set_moreColorsPicker(
+                    value: SP.Application.UI.MoreColorsPicker,
+                ): void;
             }
             class ThemeWebPage extends Sys.UI.Control {
-                add_themeDisplayUpdated(value: (sender: any, e: Sys.EventArgs) => void): void;
-                remove_themeDisplayUpdated(value: (sender: any, e: Sys.EventArgs) => void): void;
+                add_themeDisplayUpdated(
+                    value: (sender: any, e: Sys.EventArgs) => void,
+                ): void;
+                remove_themeDisplayUpdated(
+                    value: (sender: any, e: Sys.EventArgs) => void,
+                ): void;
                 constructor(e: HTMLElement);
                 initialize(): void;
                 dispose(): void;
@@ -5474,7 +6162,12 @@ declare namespace SP {
                 set_thmxThemes(value: any): void;
             }
             class WikiPageNameInPlaceEditor {
-                constructor(ownerDoc: any, displayElemId: string, editElemId: string, editTextBoxId: string);
+                constructor(
+                    ownerDoc: any,
+                    displayElemId: string,
+                    editElemId: string,
+                    editTextBoxId: string,
+                );
                 editingPageCallback(): void;
                 savingPageCallback(): void;
             }
@@ -5483,7 +6176,11 @@ declare namespace SP {
 
     namespace Analytics {
         class AnalyticsUsageEntry extends SP.ClientObject {
-            static logAnalyticsEvent(context: SP.ClientRuntimeContext, eventTypeId: number, itemId: string): void;
+            static logAnalyticsEvent(
+                context: SP.ClientRuntimeContext,
+                eventTypeId: number,
+                itemId: string,
+            ): void;
             static logAnalyticsEvent2(
                 context: SP.ClientRuntimeContext,
                 eventTypeId: number,
@@ -5528,7 +6225,10 @@ declare namespace SP {
             get_timeStamp(): Date;
             set_timeStamp(value: Date): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         enum SiteHealthStatusType {
@@ -5707,7 +6407,11 @@ declare namespace Microsoft.SharePoint.Client.Search {
 
             /**Runs a query.*/
             executeQuery: (query: Query) => SP.JsonObjectResult;
-            executeQueries: (queryIds: string[], queries: Query[], handleExceptions: boolean) => SP.JsonObjectResult;
+            executeQueries: (
+                queryIds: string[],
+                queries: Query[],
+                handleExceptions: boolean,
+            ) => SP.JsonObjectResult;
             recordPageClick: (
                 pageInfo: string,
                 clickType: string,
@@ -5719,7 +6423,10 @@ declare namespace Microsoft.SharePoint.Client.Search {
                 immediacyTitle: string,
                 immediacyUrl: string,
             ) => void;
-            exportPopularQueries: (web: SP.Web, sourceId: SP.Guid) => SP.JsonObjectResult;
+            exportPopularQueries: (
+                web: SP.Web,
+                sourceId: SP.Guid,
+            ) => SP.JsonObjectResult;
         }
 
         class StringCollection extends SP.ClientObjectCollection<string> {
@@ -5772,7 +6479,10 @@ declare namespace Microsoft.SharePoint.Client.Search {
             get_item: (key: string) => any;
             set_item: (key: string, value: any) => void;
             setQueryPropertyValue: (name: string) => QueryPropertyValue;
-            getQueryPropertyValue: (name: string, value: QueryPropertyValue) => void;
+            getQueryPropertyValue: (
+                name: string,
+                value: QueryPropertyValue,
+            ) => void;
         }
 
         enum QueryPropertyValueType {
@@ -5800,10 +6510,13 @@ declare namespace Microsoft.SharePoint.Client.Search {
 
         class QueryUtility {
             static create: (name: string, val: any) => QueryPropertyValue;
-            static getQueryPropertyValueType: (val: QueryPropertyValue) => QueryPropertyValueType;
+            static getQueryPropertyValueType: (
+                val: QueryPropertyValue,
+            ) => QueryPropertyValueType;
             static queryPropertyValueToObject: (val: QueryPropertyValue) => any;
         }
-        interface ReorderingRuleCollection extends SP.ClientObjectCollection<ReorderingRule> {
+        interface ReorderingRuleCollection
+            extends SP.ClientObjectCollection<ReorderingRule> {
             itemAt(index: number): ReorderingRule;
             get_item(index: number): ReorderingRule;
             get_childItemType(): typeof ReorderingRule;
@@ -5863,7 +6576,9 @@ declare namespace Microsoft.SharePoint.Client.Search {
 
             get_properties: () => { [key: string]: any };
 
-            get_queryErrors: () => { [key: string]: WebControls.ControlMessage };
+            get_queryErrors: () => {
+                [key: string]: WebControls.ControlMessage;
+            };
 
             get_queryId: () => string;
 
@@ -5905,7 +6620,11 @@ declare namespace Microsoft.SharePoint.Client.Search {
         class RankingLabeling extends SP.ClientObject {
             constructor(context: SP.ClientContext);
             getJudgementsForQuery: (query: string) => SP.JsonObjectResult;
-            addJudgment: (userQuery: string, url: string, labelId: number) => void;
+            addJudgment: (
+                userQuery: string,
+                url: string,
+                labelId: number,
+            ) => void;
             normalizeResultUrl: (url: string) => SP.JsonObjectResult;
         }
 
@@ -6034,7 +6753,10 @@ declare namespace Microsoft.SharePoint.Client.Search {
         }
 
         class SearchObjectOwner extends SP.ClientObject {
-            constructor(context: SP.ClientContext, lowestCurrentLevelToUse: SearchObjectLevel);
+            constructor(
+                context: SP.ClientContext,
+                lowestCurrentLevelToUse: SearchObjectLevel,
+            );
         }
 
         enum SearchObjectLevel {
@@ -6050,7 +6772,9 @@ declare namespace Microsoft.SharePoint.Client.Search {
             constructor(context: SP.ClientContext);
             get_importWarnings: () => string;
 
-            exportSearchConfiguration: (owningScope: Administration.SearchObjectOwner) => SP.JsonObjectResult;
+            exportSearchConfiguration: (
+                owningScope: Administration.SearchObjectOwner,
+            ) => SP.JsonObjectResult;
 
             importSearchConfiguration: (
                 owningScope: Administration.SearchObjectOwner,
@@ -6087,7 +6811,10 @@ declare namespace Microsoft.SharePoint.Client.Search {
         }
 
         class UsageAnalytics extends SP.ClientObject {
-            getAnalyticsItemData: <T = any>(eventType: number, listItem: SP.ListItem<T>) => AnalyticsItemData;
+            getAnalyticsItemData: <T = any>(
+                eventType: number,
+                listItem: SP.ListItem<T>,
+            ) => AnalyticsItemData;
 
             getAnalyticsItemDataForApplicationEventType: <T = any>(
                 appEventType: SP.Guid,
@@ -6105,8 +6832,15 @@ declare namespace SP {
     namespace BusinessData {
         class AppBdcCatalog extends SP.ClientObject {
             getEntity(namespace: string, name: string): SP.BusinessData.Entity;
-            getLobSystemProperty(lobSystemName: string, propertyName: string): SP.StringResult;
-            setLobSystemProperty(lobSystemName: string, propertyName: string, propertyValue: string): void;
+            getLobSystemProperty(
+                lobSystemName: string,
+                propertyName: string,
+            ): SP.StringResult;
+            setLobSystemProperty(
+                lobSystemName: string,
+                propertyName: string,
+                propertyValue: string,
+            ): void;
             getLobSystemInstanceProperty(
                 lobSystemName: string,
                 lobSystemInstanceName: string,
@@ -6118,8 +6852,15 @@ declare namespace SP {
                 propertyName: string,
                 propertyValue: string,
             ): void;
-            getConnectionId(lobSystemName: string, lobSystemInstanceName: string): SP.StringResult;
-            setConnectionId(lobSystemName: string, lobSystemInstanceName: string, connectionId: string): void;
+            getConnectionId(
+                lobSystemName: string,
+                lobSystemInstanceName: string,
+            ): SP.StringResult;
+            setConnectionId(
+                lobSystemName: string,
+                lobSystemInstanceName: string,
+                connectionId: string,
+            ): void;
             getPermissibleConnections(): string[];
         }
         class Entity extends SP.ClientObject {
@@ -6129,10 +6870,16 @@ declare namespace SP {
             getIdentifiers(): SP.BusinessData.Collections.EntityIdentifierCollection;
             getIdentifierCount(): SP.IntResult;
             getLobSystem(): SP.BusinessData.LobSystem;
-            getCreatorView(methodInstanceName: string): SP.BusinessData.EntityView;
+            getCreatorView(
+                methodInstanceName: string,
+            ): SP.BusinessData.EntityView;
             getUpdaterView(updaterName: string): SP.BusinessData.EntityView;
-            getFinderView(methodInstanceName: string): SP.BusinessData.EntityView;
-            getSpecificFinderView(specificFinderName: string): SP.BusinessData.EntityView;
+            getFinderView(
+                methodInstanceName: string,
+            ): SP.BusinessData.EntityView;
+            getSpecificFinderView(
+                specificFinderName: string,
+            ): SP.BusinessData.EntityView;
             getDefaultSpecificFinderView(): SP.BusinessData.EntityView;
             findSpecificDefault(
                 identity: SP.BusinessData.Runtime.EntityIdentity,
@@ -6163,13 +6910,17 @@ declare namespace SP {
                 filterList: SP.BusinessData.Collections.FilterCollection,
                 lobSystemInstance: SP.BusinessData.LobSystemInstance,
             ): SP.BusinessData.Collections.EntityInstanceCollection;
-            getFilters(methodInstanceName: string): SP.BusinessData.Collections.FilterCollection;
+            getFilters(
+                methodInstanceName: string,
+            ): SP.BusinessData.Collections.FilterCollection;
             execute(
                 methodInstanceName: string,
                 lobSystemInstance: SP.BusinessData.LobSystemInstance,
                 inputParams: any[],
             ): SP.BusinessData.MethodExecutionResult;
-            getAssociationView(associationName: string): SP.BusinessData.EntityView;
+            getAssociationView(
+                associationName: string,
+            ): SP.BusinessData.EntityView;
             create(
                 fieldValues: SP.BusinessData.Runtime.EntityFieldValueDictionary,
                 lobSystemInstance: SP.BusinessData.LobSystemInstance,
@@ -6207,7 +6958,9 @@ declare namespace SP {
             get_relatedSpecificFinderName(): string;
             getDefaultValues(): SP.BusinessData.Runtime.EntityFieldValueDictionary;
             getXmlSchema(): SP.StringResult;
-            getTypeDescriptor(fieldDotNotation: string): SP.BusinessData.TypeDescriptor;
+            getTypeDescriptor(
+                fieldDotNotation: string,
+            ): SP.BusinessData.TypeDescriptor;
             getType(fieldDotNotation: string): SP.StringResult;
         }
         class Filter extends SP.ClientObject {
@@ -6229,10 +6982,13 @@ declare namespace SP {
             get_returnParameterCollection(): SP.BusinessData.ReturnParameterCollection;
         }
         interface ReturnParameterCollection
-            extends SP.ClientObjectCollection<SP.BusinessData.Runtime.EntityFieldValueDictionary>
-        {
-            itemAt(index: number): SP.BusinessData.Runtime.EntityFieldValueDictionary;
-            get_item(index: number): SP.BusinessData.Runtime.EntityFieldValueDictionary;
+            extends SP.ClientObjectCollection<SP.BusinessData.Runtime.EntityFieldValueDictionary> {
+            itemAt(
+                index: number,
+            ): SP.BusinessData.Runtime.EntityFieldValueDictionary;
+            get_item(
+                index: number,
+            ): SP.BusinessData.Runtime.EntityFieldValueDictionary;
         }
         class TypeDescriptor extends SP.ClientObject {
             get_containsReadOnly(): boolean;
@@ -6249,30 +7005,38 @@ declare namespace SP {
             getParentTypeDescriptor(): SP.BusinessData.TypeDescriptor;
         }
         namespace Collections {
-            interface EntityFieldCollection extends SP.ClientObjectCollection<SP.BusinessData.EntityField> {
+            interface EntityFieldCollection
+                extends SP.ClientObjectCollection<SP.BusinessData.EntityField> {
                 itemAt(index: number): SP.BusinessData.EntityField;
                 get_item(index: number): SP.BusinessData.EntityField;
             }
-            interface EntityIdentifierCollection extends SP.ClientObjectCollection<SP.BusinessData.EntityIdentifier> {
+            interface EntityIdentifierCollection
+                extends SP.ClientObjectCollection<SP.BusinessData.EntityIdentifier> {
                 itemAt(index: number): SP.BusinessData.EntityIdentifier;
                 get_item(index: number): SP.BusinessData.EntityIdentifier;
             }
             interface EntityInstanceCollection
-                extends SP.ClientObjectCollection<SP.BusinessData.Runtime.EntityInstance>
-            {
+                extends SP.ClientObjectCollection<SP.BusinessData.Runtime.EntityInstance> {
                 itemAt(index: number): SP.BusinessData.Runtime.EntityInstance;
                 get_item(index: number): SP.BusinessData.Runtime.EntityInstance;
             }
-            interface FilterCollection extends SP.ClientObjectCollection<SP.BusinessData.Filter> {
+            interface FilterCollection
+                extends SP.ClientObjectCollection<SP.BusinessData.Filter> {
                 itemAt(index: number): SP.BusinessData.Filter;
                 get_item(index: number): SP.BusinessData.Filter;
-                setFilterValue(inputFilterName: string, valueIndex: number, value: any): void;
+                setFilterValue(
+                    inputFilterName: string,
+                    valueIndex: number,
+                    value: any,
+                ): void;
             }
-            interface LobSystemInstanceCollection extends SP.ClientObjectCollection<SP.BusinessData.LobSystemInstance> {
+            interface LobSystemInstanceCollection
+                extends SP.ClientObjectCollection<SP.BusinessData.LobSystemInstance> {
                 itemAt(index: number): SP.BusinessData.LobSystemInstance;
                 get_item(index: number): SP.BusinessData.LobSystemInstance;
             }
-            interface TypeDescriptorCollection extends SP.ClientObjectCollection<SP.BusinessData.TypeDescriptor> {
+            interface TypeDescriptorCollection
+                extends SP.ClientObjectCollection<SP.BusinessData.TypeDescriptor> {
                 itemAt(index: number): SP.BusinessData.TypeDescriptor;
                 get_item(index: number): SP.BusinessData.TypeDescriptor;
             }
@@ -6303,14 +7067,23 @@ declare namespace SP {
                 refreshLoad(): void;
                 fromXml(xml: string): void;
                 toXml(): SP.StringResult;
-                createInstance(fieldInstanceDotNotation: string, fieldDotNotation: string): void;
-                createCollectionInstance(fieldDotNotation: string, size: number): void;
+                createInstance(
+                    fieldInstanceDotNotation: string,
+                    fieldDotNotation: string,
+                ): void;
+                createCollectionInstance(
+                    fieldDotNotation: string,
+                    size: number,
+                ): void;
                 getCollectionSize(fieldDotNotation: string): SP.IntResult;
             }
             class EntityIdentity extends SP.ClientObject {
                 get_fieldValues(): any;
                 get_item(fieldName: string): any;
-                constructor(context: SP.ClientRuntimeContext, identifierValues: any[]);
+                constructor(
+                    context: SP.ClientRuntimeContext,
+                    identifierValues: any[],
+                );
                 get_identifierCount(): number;
                 static newObject(
                     context: SP.ClientRuntimeContext,
@@ -6323,8 +7096,14 @@ declare namespace SP {
                 get_item(fieldName: string): any;
                 set_item(fieldName: string, value: any): void;
                 refreshLoad(): void;
-                createInstance(fieldInstanceDotNotation: string, fieldDotNotation: string): void;
-                createCollectionInstance(fieldDotNotation: string, size: number): void;
+                createInstance(
+                    fieldInstanceDotNotation: string,
+                    fieldDotNotation: string,
+                ): void;
+                createCollectionInstance(
+                    fieldDotNotation: string,
+                    size: number,
+                ): void;
                 getIdentity(): SP.BusinessData.Runtime.EntityIdentity;
                 deleteObject(): void;
                 update(): void;
@@ -6332,7 +7111,10 @@ declare namespace SP {
                 toXml(): SP.StringResult;
             }
             class NotificationCallback extends SP.ClientObject {
-                constructor(context: SP.ClientRuntimeContext, notificationEndpoint: string);
+                constructor(
+                    context: SP.ClientRuntimeContext,
+                    notificationEndpoint: string,
+                );
                 get_notificationContext(): string;
                 set_notificationContext(value: string): void;
                 get_notificationEndpoint(): string;
@@ -6344,7 +7126,11 @@ declare namespace SP {
                 ): SP.BusinessData.Runtime.NotificationCallback;
             }
             class Subscription extends SP.ClientObject {
-                constructor(context: SP.ClientRuntimeContext, id: any, hash: string);
+                constructor(
+                    context: SP.ClientRuntimeContext,
+                    id: any,
+                    hash: string,
+                );
                 get_hash(): string;
                 get_iD(): any;
                 static newObject(
@@ -6360,8 +7146,14 @@ declare namespace SP {
 declare namespace SP {
     namespace Sharing {
         class DocumentSharingManager {
-            static getRoleDefinition(context: SP.ClientRuntimeContext, role: SP.Sharing.Role): SP.RoleDefinition;
-            static isDocumentSharingEnabled(context: SP.ClientRuntimeContext, list: SP.List): SP.BooleanResult;
+            static getRoleDefinition(
+                context: SP.ClientRuntimeContext,
+                role: SP.Sharing.Role,
+            ): SP.RoleDefinition;
+            static isDocumentSharingEnabled(
+                context: SP.ClientRuntimeContext,
+                list: SP.List,
+            ): SP.BooleanResult;
             static updateDocumentSharingInfo(
                 context: SP.ClientRuntimeContext,
                 resourceAddress: string,
@@ -6385,7 +7177,10 @@ declare namespace SP {
             get_userId(): string;
             set_userId(value: string): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         class UserSharingResult extends SP.ClientValueObject {
@@ -6396,7 +7191,10 @@ declare namespace SP {
             get_status(): boolean;
             get_user(): string;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
     }
@@ -6637,13 +7435,17 @@ declare namespace SP {
             /** Specifies the type of object that the attachment contains. */
             get_attachmentKind(): SocialAttachmentKind;
             /** Specifies the type of object that the attachment contains. */
-            set_attachmentKind(value: SocialAttachmentKind): SocialAttachmentKind;
+            set_attachmentKind(
+                value: SocialAttachmentKind,
+            ): SocialAttachmentKind;
             /** Specifies the action to take when the user selects the attachment.
                 This property is only present if the AttachmentKind is Video. */
             get_clickAction(): SocialAttachmentAction;
             /** Specifies the action to take when the user selects the attachment.
                 This property is only present if the AttachmentKind is Video. */
-            set_clickAction(value: SocialAttachmentAction): SocialAttachmentAction;
+            set_clickAction(
+                value: SocialAttachmentAction,
+            ): SocialAttachmentAction;
             /** Specifies the URI of the attachment content. */
             get_contentUri(): string;
             /** Specifies the URI of the attachment content. */
@@ -6684,7 +7486,9 @@ declare namespace SP {
             /** Specifies whether the action is to navigate to a URI or an action that is dependent on the context in which the object is presented to the user. */
             get_actionKind(): SocialAttachmentActionKind;
             /** Specifies whether the action is to navigate to a URI or an action that is dependent on the context in which the object is presented to the user. */
-            set_actionKind(value: SocialAttachmentActionKind): SocialAttachmentActionKind;
+            set_actionKind(
+                value: SocialAttachmentActionKind,
+            ): SocialAttachmentActionKind;
             /** Specifies the URI associated with the action. */
             get_actionUri(): string;
             /** Specifies the URI associated with the action. */
@@ -6780,7 +7584,10 @@ declare namespace SP {
                                 If this parameter is set to a site URL or a site actor identification, the post is created as a root post in the specified site feed.
                                 If this parameter is set to a thread identification, the post is created as a reply post in the specified thread.
                 @param creationData Specifies the format and content of the post. */
-            createPost(targetId: string, creationData: SocialPostCreationData): SocialThread;
+            createPost(
+                targetId: string,
+                creationData: SocialPostCreationData,
+            ): SocialThread;
             /** Deletes the specified post.
                 This method returns a digest of the modified thread.
                 If the entire thread is deleted, this method returns null.
@@ -6795,7 +7602,10 @@ declare namespace SP {
             /** Returns a feed for the current user.
                 The feed consists of an array of message threads.
                 Each thread consists of a root post and an array of reply posts. */
-            getFeed(type: SocialFeedType, options: SocialFeedOptions): SocialFeed;
+            getFeed(
+                type: SocialFeedType,
+                options: SocialFeedOptions,
+            ): SocialFeed;
             /** Returns the public feed for a user or for a site.
                 The feed lists activity by the user and posts created by the server for that user.
                 For example, the feed can include posts indicating the user's birthday or indicating that the user liked a post.
@@ -6805,7 +7615,10 @@ declare namespace SP {
             /** Returns the root post and all reply posts in the thread. */
             getFullThread(threadId: string): SocialThread;
             /** Returns a feed containing mention reference threads from the current user's personal feed. */
-            getMentions(clearUnreadMentions: boolean, options: SocialFeedOptions): SocialFeed;
+            getMentions(
+                clearUnreadMentions: boolean,
+                options: SocialFeedOptions,
+            ): SocialFeed;
             /** Returns the server's count of unread mentions of the current user.
                 The server maintains a count of unread mentions in posts, but does not track which mentions have been read.
                 When a new mention is stored on the server, it increments the unread mention for the user specified by the mention.
@@ -6827,7 +7640,11 @@ declare namespace SP {
             /** Suppresses activity notifications for the current user of updates to the specified thread. */
             suppressThreadNotifications(threadId: string): void;
             /** Creates an image attachment for a future post. */
-            createImageAttachment(name: string, description: string, imageData: any): SocialAttachment;
+            createImageAttachment(
+                name: string,
+                description: string,
+                imageData: any,
+            ): SocialAttachment;
             /** Generates a preview for the content specified by the URL. */
             getPreview(itemUrl: string): SocialAttachment;
             /** Returns the preview image data for an image attachment.
@@ -6942,7 +7759,9 @@ declare namespace SP {
             /** Specifies additional information when creating server-generated posts */
             get_definitionData(): SocialPostDefinitionData;
             /** Specifies additional information when creating server-generated posts */
-            set_definitionData(value: SocialPostDefinitionData): SocialPostDefinitionData;
+            set_definitionData(
+                value: SocialPostDefinitionData,
+            ): SocialPostDefinitionData;
             /** Specifies the link to a web site associated with the application that created the post */
             get_source(): SocialLink;
             /** Specifies the link to a web site associated with the application that created the post */
@@ -6961,7 +7780,9 @@ declare namespace SP {
             This type can only be specified in a server-to-server call. */
         class SocialPostDefinitionData extends SP.ClientValueObject {
             get_items(): SocialPostDefinitionDataItem[];
-            set_items(value: SocialPostDefinitionDataItem[]): SocialPostDefinitionDataItem[];
+            set_items(
+                value: SocialPostDefinitionDataItem[],
+            ): SocialPostDefinitionDataItem[];
             get_name(): string;
             set_name(value: string): string;
         }
@@ -6978,7 +7799,9 @@ declare namespace SP {
             /** Specifies whether the item being formatted is a text element, a user, a document, a site, a tag, or a link. */
             get_itemType(): SocialPostDefinitionDataItemType;
             /** Specifies whether the item being formatted is a text element, a user, a document, a site, a tag, or a link. */
-            set_itemType(value: SocialPostDefinitionDataItemType): SocialPostDefinitionDataItemType;
+            set_itemType(
+                value: SocialPostDefinitionDataItemType,
+            ): SocialPostDefinitionDataItemType;
             /** Specifies the post definition token to be replaced by the item */
             get_placeholderName(): string;
             /** Specifies the post definition token to be replaced by the item */
@@ -7072,10 +7895,14 @@ declare namespace SP {
         }
 
         class TaxonomySession extends SP.ClientObject {
-            static getTaxonomySession(context: SP.ClientContext): TaxonomySession;
+            static getTaxonomySession(
+                context: SP.ClientContext,
+            ): TaxonomySession;
             get_offlineTermStoreNames(): string[];
             get_termStores(): TermStoreCollection;
-            getTerms(labelMatchInformation: LabelMatchInformation): TermCollection;
+            getTerms(
+                labelMatchInformation: LabelMatchInformation,
+            ): TermCollection;
             updateCache(): void;
             getTerm(guid: SP.Guid): Term;
             getTermsById(termIds: SP.Guid[]): TermCollection;
@@ -7097,15 +7924,27 @@ declare namespace SP {
                 trimDeprecated: boolean,
             ): TermCollection;
 
-            getTermsWithCustomProperty(customPropertyName: string, trimUnavailable: boolean): TermCollection;
-            getTermsWithCustomProperty(customPropertyMatchInformation: CustomPropertyMatchInformation): TermCollection;
-            getTermSetsByName(termSetName: string, lcid: number): TermSetCollection;
-            getTermSetsByTermLabel(requiredTermLabels: string[], lcid: number): TermSetCollection;
+            getTermsWithCustomProperty(
+                customPropertyName: string,
+                trimUnavailable: boolean,
+            ): TermCollection;
+            getTermsWithCustomProperty(
+                customPropertyMatchInformation: CustomPropertyMatchInformation,
+            ): TermCollection;
+            getTermSetsByName(
+                termSetName: string,
+                lcid: number,
+            ): TermSetCollection;
+            getTermSetsByTermLabel(
+                requiredTermLabels: string[],
+                lcid: number,
+            ): TermSetCollection;
             getDefaultKeywordsTermStore(): TermStore;
             getDefaultSiteCollectionTermStore(): TermStore;
         }
 
-        interface TermStoreCollection extends SP.ClientObjectCollection<TermStore> {
+        interface TermStoreCollection
+            extends SP.ClientObjectCollection<TermStore> {
             itemAt(index: number): TermStore;
             get_item(index: number): TermStore;
             getById(id: SP.Guid): TermStore;
@@ -7134,18 +7973,36 @@ declare namespace SP {
 
             deleteLanguage(lcid: number): void;
 
-            getChanges(changeInformation: ChangeInformation): ChangedItemCollection;
+            getChanges(
+                changeInformation: ChangeInformation,
+            ): ChangedItemCollection;
 
             getGroup(id: SP.Guid): TermGroup;
             getTerm(termId: SP.Guid): Term;
             getTermInTermSet(termSetId: SP.Guid, termId: SP.Guid): Term;
             getTermsById(termIds: SP.Guid[]): TermCollection;
-            getTerms(termLabel: string, trimUnavailable: boolean): TermCollection;
-            getTerms(labelMatchInformation: LabelMatchInformation): TermCollection;
-            getTermSetsByName(termSetName: string, lcid: number): TermSetCollection;
-            getTermSetsByTermLabel(requiredTermLabels: string[], lcid: number): TermSetCollection;
-            getTermsWithCustomProperty(customPropertyName: string, trimUnavailable: boolean): TermCollection;
-            getTermsWithCustomProperty(customPropertyMatchInformation: CustomPropertyMatchInformation): TermCollection;
+            getTerms(
+                termLabel: string,
+                trimUnavailable: boolean,
+            ): TermCollection;
+            getTerms(
+                labelMatchInformation: LabelMatchInformation,
+            ): TermCollection;
+            getTermSetsByName(
+                termSetName: string,
+                lcid: number,
+            ): TermSetCollection;
+            getTermSetsByTermLabel(
+                requiredTermLabels: string[],
+                lcid: number,
+            ): TermSetCollection;
+            getTermsWithCustomProperty(
+                customPropertyName: string,
+                trimUnavailable: boolean,
+            ): TermCollection;
+            getTermsWithCustomProperty(
+                customPropertyMatchInformation: CustomPropertyMatchInformation,
+            ): TermCollection;
 
             getTermSet(termSetId: SP.Guid): TermSet;
             getTermSetsWithCustomProperty(
@@ -7153,12 +8010,18 @@ declare namespace SP {
             ): TermSetCollection;
             rollbackAll(): void;
             updateCache(): void;
-            getSiteCollectionGroup(currentSite: SP.Site, createIfMissing: boolean): TermGroup;
+            getSiteCollectionGroup(
+                currentSite: SP.Site,
+                createIfMissing: boolean,
+            ): TermGroup;
             updateUsedTermsOnSite(currentSite: SP.Site): void;
         }
 
         class TaxonomyItem extends SP.ClientObject {
-            static normalizeName(context: SP.ClientContext, name: string): SP.StringResult;
+            static normalizeName(
+                context: SP.ClientContext,
+                name: string,
+            ): SP.StringResult;
             get_createdDate(): Date;
             get_id(): SP.Guid;
             get_lastModifiedDate(): Date;
@@ -7168,7 +8031,8 @@ declare namespace SP {
             deleteObject(): void;
         }
 
-        interface TermGroupCollection extends SP.ClientObjectCollection<TermGroup> {
+        interface TermGroupCollection
+            extends SP.ClientObjectCollection<TermGroup> {
             itemAt(index: number): TermGroup;
             get_item(index: number): TermGroup;
             getById(id: SP.Guid): TermGroup;
@@ -7181,9 +8045,15 @@ declare namespace SP {
             get_isSiteCollectionGroup(): boolean;
             get_isSystemGroup(): boolean;
             get_termSets(): TermSetCollection;
-            createTermSet(name: string, newTermSetId: SP.Guid, lcid: number): TermSet;
+            createTermSet(
+                name: string,
+                newTermSetId: SP.Guid,
+                lcid: number,
+            ): TermSet;
             exportObject(): SP.StringResult;
-            getChanges(changeInformation: ChangeInformation): ChangedItemCollection;
+            getChanges(
+                changeInformation: ChangeInformation,
+            ): ChangedItemCollection;
             getTermSetsWithCustomProperty(
                 customPropertyMatchInformation: CustomPropertyMatchInformation,
             ): TermSetCollection;
@@ -7229,12 +8099,24 @@ declare namespace SP {
             deleteStakeholder(stakeholderName: string): void;
             exportObject(): SP.StringResult;
             getAllTerms(): TermCollection;
-            getChanges(changeInformation: ChangeInformation): ChangedItemCollection;
+            getChanges(
+                changeInformation: ChangeInformation,
+            ): ChangedItemCollection;
             getTerm(termId: SP.Guid): Term;
-            getTerms(pagingLimit: number | LabelMatchInformation): TermCollection;
-            getTerms(termLabel: string, trimUnavailable: boolean): TermCollection;
-            getTermsWithCustomProperty(customPropertyName: string, trimUnavailable: boolean): TermCollection;
-            getTermsWithCustomProperty(customPropertyMatchInformation: CustomPropertyMatchInformation): TermCollection;
+            getTerms(
+                pagingLimit: number | LabelMatchInformation,
+            ): TermCollection;
+            getTerms(
+                termLabel: string,
+                trimUnavailable: boolean,
+            ): TermCollection;
+            getTermsWithCustomProperty(
+                customPropertyName: string,
+                trimUnavailable: boolean,
+            ): TermCollection;
+            getTermsWithCustomProperty(
+                customPropertyMatchInformation: CustomPropertyMatchInformation,
+            ): TermCollection;
             move(targetGroup: TermGroup): void;
         }
 
@@ -7266,7 +8148,11 @@ declare namespace SP {
             get_termSet(): TermSet;
             get_termSets(): TermSetCollection;
             copy(doCopyChildren: boolean): Term;
-            createLabel(labelName: string, lcid: number, isDefault: boolean): Label;
+            createLabel(
+                labelName: string,
+                lcid: number,
+                isDefault: boolean,
+            ): Label;
             deleteLocalCustomProperty(name: string): void;
             deleteAllLocalCustomProperties(): void;
             deprecate(doDepricate: boolean): void;
@@ -7356,7 +8242,8 @@ declare namespace SP {
             set_withinTimeSpan(value: number): void;
         }
 
-        interface ChangedItemCollection extends SP.ClientObjectCollection<ChangedItem> {
+        interface ChangedItemCollection
+            extends SP.ClientObjectCollection<ChangedItem> {
             itemAt(index: number): ChangedItem;
             get_item(index: number): ChangedItem;
         }
@@ -7375,8 +8262,7 @@ declare namespace SP {
             get_termSetId(): SP.Guid;
         }
 
-        class ChangedGroup extends ChangedItem {
-        }
+        class ChangedGroup extends ChangedItem {}
 
         class ChangedTerm extends ChangedItem {
             get_changedCustomProperties(): string[];
@@ -7398,7 +8284,11 @@ declare namespace SP {
         }
 
         class TaxonomyField extends SP.FieldLookup {
-            constructor(context: SP.ClientContext, fields: SP.FieldCollection, filedName: string);
+            constructor(
+                context: SP.ClientContext,
+                fields: SP.FieldCollection,
+                filedName: string,
+            );
             get_anchorId(): SP.Guid;
             set_anchorId(value: SP.Guid): void;
             get_createValuesInEditForm(): boolean;
@@ -7422,12 +8312,31 @@ declare namespace SP {
             set_userCreated(value: SP.Guid): void;
 
             getFieldValueAsText(value: TaxonomyFieldValue): SP.StringResult;
-            getFieldValueAsTaxonomyFieldValue(value: string): TaxonomyFieldValue;
-            getFieldValueAsTaxonomyFieldValueCollection(value: string): TaxonomyFieldValueCollection;
-            setFieldValueByTerm<T = any>(listItem: SP.ListItem<T>, term: Term, lcid: number): void;
-            setFieldValueByTermCollection<T = any>(listItem: SP.ListItem<T>, terms: TermCollection, lcid: number): void;
-            setFieldValueByCollection<T = any>(listItem: SP.ListItem<T>, terms: Term[], lcid: number): void;
-            setFieldValueByValue<T = any>(listItem: SP.ListItem<T>, taxValue: TaxonomyFieldValue): void;
+            getFieldValueAsTaxonomyFieldValue(
+                value: string,
+            ): TaxonomyFieldValue;
+            getFieldValueAsTaxonomyFieldValueCollection(
+                value: string,
+            ): TaxonomyFieldValueCollection;
+            setFieldValueByTerm<T = any>(
+                listItem: SP.ListItem<T>,
+                term: Term,
+                lcid: number,
+            ): void;
+            setFieldValueByTermCollection<T = any>(
+                listItem: SP.ListItem<T>,
+                terms: TermCollection,
+                lcid: number,
+            ): void;
+            setFieldValueByCollection<T = any>(
+                listItem: SP.ListItem<T>,
+                terms: Term[],
+                lcid: number,
+            ): void;
+            setFieldValueByValue<T = any>(
+                listItem: SP.ListItem<T>,
+                taxValue: TaxonomyFieldValue,
+            ): void;
             setFieldValueByValueCollection<T = any>(
                 listItem: SP.ListItem<T>,
                 taxValueCollection: TaxonomyFieldValueCollection,
@@ -7437,7 +8346,11 @@ declare namespace SP {
         }
 
         class TaxonomyFieldValueCollection extends SP.ClientObjectCollection<TaxonomyFieldValue> {
-            constructor(context: SP.ClientContext, fieldValue: string, creatingField: SP.Field);
+            constructor(
+                context: SP.ClientContext,
+                fieldValue: string,
+                creatingField: SP.Field,
+            );
             itemAt(index: number): TaxonomyFieldValue;
             get_item(index: number): TaxonomyFieldValue;
             populateFromLabelGuidPairs(text: string): void;
@@ -7520,7 +8433,10 @@ declare namespace SP {
                 videoPath: string,
                 properties: EmbedCodeConfiguration,
             ): StringResult;
-            static migrateVideo<T = any>(context: ClientContext, videoFile: File): SP.ListItem<T>;
+            static migrateVideo<T = any>(
+                context: ClientContext,
+                videoFile: File,
+            ): SP.ListItem<T>;
         }
     }
 }
@@ -7536,7 +8452,9 @@ declare namespace SP {
                 get_selectedEntities(): any;
                 set_selectedEntities(value: any): void;
                 get_callback(): (sender: any, e: Sys.EventArgs) => void;
-                set_callback(value: (sender: any, e: Sys.EventArgs) => void): void;
+                set_callback(
+                    value: (sender: any, e: Sys.EventArgs) => void,
+                ): void;
                 get_scopeKey(): string;
                 get_componentType(): SP.UI.ApplicationPages.SelectorType;
                 revertTo(ent: SP.UI.ApplicationPages.ResolveEntity): void;
@@ -7552,7 +8470,9 @@ declare namespace SP {
             }
             class CalendarSelector extends Sys.Component {
                 static instance(): SP.UI.ApplicationPages.CalendarSelector;
-                registerSelector(selector: SP.UI.ApplicationPages.ISelectorComponent): void;
+                registerSelector(
+                    selector: SP.UI.ApplicationPages.ISelectorComponent,
+                ): void;
                 getSelector(
                     type: SP.UI.ApplicationPages.SelectorType,
                     scopeKey: string,
@@ -7561,20 +8481,36 @@ declare namespace SP {
                     scopeKey: string,
                     people: boolean,
                     resource: boolean,
-                    handler: (sender: any, selection: SP.UI.ApplicationPages.SelectorSelectionEventArgs) => void,
+                    handler: (
+                        sender: any,
+                        selection: SP.UI.ApplicationPages.SelectorSelectionEventArgs,
+                    ) => void,
                 ): void;
-                revertTo(scopeKey: string, ent: SP.UI.ApplicationPages.ResolveEntity): void;
-                removeEntity(scopeKey: string, ent: SP.UI.ApplicationPages.ResolveEntity): void;
+                revertTo(
+                    scopeKey: string,
+                    ent: SP.UI.ApplicationPages.ResolveEntity,
+                ): void;
+                removeEntity(
+                    scopeKey: string,
+                    ent: SP.UI.ApplicationPages.ResolveEntity,
+                ): void;
                 constructor();
             }
-            class BaseSelectorComponent implements SP.UI.ApplicationPages.ISelectorComponent {
-                constructor(key: string, type: SP.UI.ApplicationPages.SelectorType);
+            class BaseSelectorComponent
+                implements SP.UI.ApplicationPages.ISelectorComponent
+            {
+                constructor(
+                    key: string,
+                    type: SP.UI.ApplicationPages.SelectorType,
+                );
                 get_scopeKey(): string;
                 get_componentType(): SP.UI.ApplicationPages.SelectorType;
                 get_selectedEntities(): any;
                 set_selectedEntities(value: any): void;
                 get_callback(): (sender: any, e: Sys.EventArgs) => void;
-                set_callback(value: (sender: any, e: Sys.EventArgs) => void): void;
+                set_callback(
+                    value: (sender: any, e: Sys.EventArgs) => void,
+                ): void;
                 revertTo(ent: SP.UI.ApplicationPages.ResolveEntity): void;
                 removeEntity(ent: SP.UI.ApplicationPages.ResolveEntity): void;
                 setEntity(ent: SP.UI.ApplicationPages.ResolveEntity): void;
@@ -7583,7 +8519,10 @@ declare namespace SP {
             interface ICalendarController {
                 moveToDate(date: string): void;
                 moveToViewType(viewType: string): void;
-                moveToViewDate(scope: SP.UI.ApplicationPages.CalendarScope, date: string): void;
+                moveToViewDate(
+                    scope: SP.UI.ApplicationPages.CalendarScope,
+                    date: string,
+                ): void;
                 moveToView(scope: SP.UI.ApplicationPages.CalendarScope): void;
                 expandAll(): void;
                 collapseAll(): void;
@@ -7605,7 +8544,9 @@ declare namespace SP {
                     instanceId: string,
                     contoller: SP.UI.ApplicationPages.ICalendarController,
                 ): void;
-                static lookupInstance(instanceId: string): SP.UI.ApplicationPages.ICalendarController;
+                static lookupInstance(
+                    instanceId: string,
+                ): SP.UI.ApplicationPages.ICalendarController;
                 static firstInstance(): SP.UI.ApplicationPages.ICalendarController;
             }
             class ResolveEntity {
@@ -7656,7 +8597,10 @@ declare namespace SP {
                 get_webApplicationID(): SP.Guid;
                 set_webApplicationID(value: SP.Guid): void;
                 get_typeId(): string;
-                writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+                writeToXml(
+                    writer: SP.XmlWriter,
+                    serializationContext: SP.SerializationContext,
+                ): void;
                 constructor();
             }
             class ClientPeoplePickerWebServiceInterface {
@@ -7755,16 +8699,32 @@ declare namespace SP {
                 Hide(bNoAnimate: boolean): void;
             }
             class NotificationContainer {
-                constructor(id: number, element: any, layer: number, notificationLimit?: number);
+                constructor(
+                    id: number,
+                    element: any,
+                    layer: number,
+                    notificationLimit?: number,
+                );
                 Clear(): void;
                 GetCount(): number;
-                SetEventHandler(eventId: SPNotifications.EventID, eventHandler: any): void;
+                SetEventHandler(
+                    eventId: SPNotifications.EventID,
+                    eventHandler: any,
+                ): void;
             }
         }
 
         class Status {
-            static addStatus(strTitle: string, strHtml?: string, atBegining?: boolean): string;
-            static appendStatus(sid: string, strTitle: string, strHtml: string): string;
+            static addStatus(
+                strTitle: string,
+                strHtml?: string,
+                atBegining?: boolean,
+            ): string;
+            static appendStatus(
+                sid: string,
+                strTitle: string,
+                strHtml: string,
+            ): string;
             static updateStatus(sid: string, strHtml: string): void;
             static setStatusPriColor(sid: string, strColor: string): void;
             static removeStatus(sid: string): void;
@@ -7796,7 +8756,12 @@ declare namespace SP {
                 description: string,
                 id: string,
             ): SP.UI.Menu;
-            show(relativeElement: HTMLElement, forceRefresh: boolean, flipTopLevelMenu: boolean, yOffset: number): void;
+            show(
+                relativeElement: HTMLElement,
+                forceRefresh: boolean,
+                flipTopLevelMenu: boolean,
+                yOffset: number,
+            ): void;
             showFilterMenu(
                 relativeElement: HTMLElement,
                 forceRefresh: boolean,
@@ -7825,7 +8790,10 @@ declare namespace SP {
             OK,
         }
         /** Callback which processes dialog result value after dialog is closed */
-        type DialogReturnValueCallback = (dialogResult: DialogResult, returnValue: any) => void;
+        type DialogReturnValueCallback = (
+            dialogResult: DialogResult,
+            returnValue: any,
+        ) => void;
         /** Options for dialog creation */
         interface IDialogOptions {
             /** Text displayed in the title bar of the dialog box. If not defined, it will default to the title of the page defined by url property. */
@@ -7913,9 +8881,14 @@ declare namespace SP {
         /** Represents a modal dialog */
         class ModalDialog extends SP.UI.Dialog {
             /** Displays a modal dialog defined by the specified options. */
-            static showModalDialog(options: SP.UI.IDialogOptions): SP.UI.ModalDialog;
+            static showModalDialog(
+                options: SP.UI.IDialogOptions,
+            ): SP.UI.ModalDialog;
             /** Should be called from an existing dialog. */
-            static commonModalDialogClose(dialogResult: SP.UI.DialogResult, returnValue: any): void;
+            static commonModalDialogClose(
+                dialogResult: SP.UI.DialogResult,
+                returnValue: any,
+            ): void;
             /** Shows a modal dialog, specified by url, callback, args, and options. Internally, uses SP.UI.ModalDialog.showModalDialog.
                 @param url overrides options.url
                 @param callback overrides options.dialogResultValueCallback
@@ -8032,7 +9005,9 @@ declare namespace SP {
 
         namespace Workplace {
             function add_resized(handler: (obj: any, args: any) => void): void;
-            function remove_resized(handler: (obj: any, args: any) => void): void;
+            function remove_resized(
+                handler: (obj: any, args: any) => void,
+            ): void;
         }
 
         namespace UIUtility {
@@ -8041,8 +9016,14 @@ declare namespace SP {
             function clearChildNodes(elem: HTMLElement): void;
             function hideElement(elem: HTMLElement): void;
             function showElement(elem: HTMLElement): void;
-            function insertBefore(elem: HTMLElement, targetElement: HTMLElement): void;
-            function insertAfter(elem: HTMLElement, targetElement: HTMLElement): void;
+            function insertBefore(
+                elem: HTMLElement,
+                targetElement: HTMLElement,
+            ): void;
+            function insertAfter(
+                elem: HTMLElement,
+                targetElement: HTMLElement,
+            ): void;
             function removeNode(elem: HTMLElement): void;
             function calculateOffsetLeft(elem: HTMLElement): number;
             function calculateOffsetTop(elem: HTMLElement): number;
@@ -8052,7 +9033,10 @@ declare namespace SP {
             function getInnerText(elem: HTMLElement): string;
             function isTextNode(elem: HTMLElement): boolean;
             function isSvgNode(elem: HTMLElement): boolean;
-            function isNodeOfType(elem: HTMLElement, tagNames: string[]): boolean;
+            function isNodeOfType(
+                elem: HTMLElement,
+                tagNames: string[],
+            ): boolean;
             function focusValidOnThisNode(elem: HTMLElement): boolean;
         }
     }
@@ -8114,7 +9098,10 @@ declare namespace SP {
             }
 
             class Navigation {
-                constructor(placeholderDOMElementId: string, options: INavigationOptions);
+                constructor(
+                    placeholderDOMElementId: string,
+                    options: INavigationOptions,
+                );
                 get_assetId(): string;
                 get_siteTitle(): string;
                 get_siteUrl(): string;
@@ -8211,7 +9198,9 @@ declare namespace SP {
             However, PeopleManager provides some methods that SocialFollowingManager doesn't. */
         class PeopleManager extends SP.ClientObject {
             constructor(context: SP.ClientRuntimeContext);
-            static getTrendingTags(context: SP.ClientRuntimeContext): HashTagCollection;
+            static getTrendingTags(
+                context: SP.ClientRuntimeContext,
+            ): HashTagCollection;
             /** Checks whether the first user is following the second user. */
             static isFollowing(
                 context: SP.ClientRuntimeContext,
@@ -8228,9 +9217,14 @@ declare namespace SP {
             getMyProperties(): PersonProperties;
             getPropertiesFor(accountName: string): PersonProperties;
             /** Gets the specified user profile property for the specified user. */
-            getUserProfilePropertyFor(accountName: string, propertyName: string): string;
+            getUserProfilePropertyFor(
+                accountName: string,
+                propertyName: string,
+            ): string;
             /** Gets the specified user profile properties for the specified user. */
-            getUserProfilePropertiesFor(propertiesForUser: UserProfilePropertiesForUser): any[];
+            getUserProfilePropertiesFor(
+                propertiesForUser: UserProfilePropertiesForUser,
+            ): any[];
             /** Gets suggestions for who the current user might want to follow.
                 Note: The recommended API to use for this task is SocialFollowingManager.getSuggestions.
                 Returns list of PersonProperties objects */
@@ -8247,9 +9241,13 @@ declare namespace SP {
             stopFollowingTag(tagId: string): void;
             amIFollowing(accountName: string): SP.BooleanResult;
             getPeopleFollowedByMe(): SP.ClientObjectList<PersonProperties>;
-            getPeopleFollowedBy(accountName: string): SP.ClientObjectList<PersonProperties>;
+            getPeopleFollowedBy(
+                accountName: string,
+            ): SP.ClientObjectList<PersonProperties>;
             getMyFollowers(): SP.ClientObjectList<PersonProperties>;
-            getFollowersFor(accountName: string): SP.ClientObjectList<PersonProperties>;
+            getFollowersFor(
+                accountName: string,
+            ): SP.ClientObjectList<PersonProperties>;
             amIFollowedBy(accountName: string): SP.BooleanResult;
             /** Uploads and sets the user profile picture.
                 Pictures in bmp, jpg and png formats and up to 5,000,000 bytes are supported.
@@ -8335,7 +9333,9 @@ declare namespace SP {
 
         /** Provides an alternate entry point to user profiles rather than calling methods directly. */
         class ProfileLoader extends SP.ClientObject {
-            static getProfileLoader(context: SP.ClientRuntimeContext): ProfileLoader;
+            static getProfileLoader(
+                context: SP.ClientRuntimeContext,
+            ): ProfileLoader;
             getUserProfile(): UserProfile;
         }
 
@@ -8410,7 +9410,10 @@ declare namespace SP {
             /** Returns an array of zero or more followed items described by the type and subtype parameters.
                 @param options Describes the type of item to return.
                 @param subType Integer that identifies the sites to return by the web template. */
-            getItems(options: FollowedContentQueryOptions, subtype: number): FollowedItem[];
+            getItems(
+                options: FollowedContentQueryOptions,
+                subtype: number,
+            ): FollowedItem[];
             /** Updates the properties for followed item with specified URL.
                 @param url  URL that identifies the followed item.
                             The url parameter can identify an existing document or site using the url property of the original item.
@@ -8577,7 +9580,11 @@ declare namespace SP {
                 @param context Specifies the client context to use.
                 @param accountName Specifies the user by account name.
                 @param propertyNames Specifies an array of strings that specify the properties to retrieve. */
-            constructor(context: SP.ClientContext, accountName: string, propertyNames: string[]);
+            constructor(
+                context: SP.ClientContext,
+                accountName: string,
+                propertyNames: string[],
+            );
 
             /** Specifies the user account name */
             get_accountName(): string;
@@ -8620,8 +9627,13 @@ declare namespace SP {
                 providerName: string,
                 appSubtype: number,
             ): void;
-            static getAppLicenseDeploymentId(context: SP.ClientRuntimeContext): SP.GuidResult;
-            static logCustomAppError(context: SP.ClientRuntimeContext, error: string): SP.IntResult;
+            static getAppLicenseDeploymentId(
+                context: SP.ClientRuntimeContext,
+            ): SP.GuidResult;
+            static logCustomAppError(
+                context: SP.ClientRuntimeContext,
+                error: string,
+            ): SP.IntResult;
             static logCustomRemoteAppError(
                 context: SP.ClientRuntimeContext,
                 productId: SP.Guid,
@@ -8642,8 +9654,16 @@ declare namespace SP {
                 context: SP.ClientRuntimeContext,
                 parent: SP.ListItem<T>,
             ): SP.ListItem<T>;
-            static markDiscussionAsFeatured(context: SP.ClientRuntimeContext, listID: string, topicIDs: string): void;
-            static unmarkDiscussionAsFeatured(context: SP.ClientRuntimeContext, listID: string, topicIDs: string): void;
+            static markDiscussionAsFeatured(
+                context: SP.ClientRuntimeContext,
+                listID: string,
+                topicIDs: string,
+            ): void;
+            static unmarkDiscussionAsFeatured(
+                context: SP.ClientRuntimeContext,
+                listID: string,
+                topicIDs: string,
+            ): void;
             static searchPrincipals(
                 context: SP.ClientRuntimeContext,
                 web: SP.Web,
@@ -8653,8 +9673,13 @@ declare namespace SP {
                 usersContainer: SP.UserCollection,
                 maxCount: number,
             ): SP.Utilities.PrincipalInfo[];
-            static getCurrentUserEmailAddresses(context: SP.ClientRuntimeContext): SP.StringResult;
-            static createEmailBodyForInvitation(context: SP.ClientRuntimeContext, pageAddress: string): SP.StringResult;
+            static getCurrentUserEmailAddresses(
+                context: SP.ClientRuntimeContext,
+            ): SP.StringResult;
+            static createEmailBodyForInvitation(
+                context: SP.ClientRuntimeContext,
+                pageAddress: string,
+            ): SP.StringResult;
             static getPeoplePickerURL(
                 context: SP.ClientRuntimeContext,
                 web: SP.Web,
@@ -8711,7 +9736,10 @@ declare namespace SP {
             get_to(): string[];
             set_to(value: string[]): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         enum IconSize {
@@ -8735,7 +9763,10 @@ declare namespace SP {
             get_principalType(): SP.Utilities.PrincipalType;
             get_sIPAddress(): string;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         enum PrincipalSource {
@@ -8766,13 +9797,22 @@ declare namespace SP {
             get_wikiHtmlContent(): string;
             set_wikiHtmlContent(value: string): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         class DateUtility {
             static isLeapYear(year: number): boolean;
-            static dateToJulianDay(year: number, month: number, day: number): number;
-            static julianDayToDate(julianDay: number): SP.DateTimeUtil.SimpleDate;
+            static dateToJulianDay(
+                year: number,
+                month: number,
+                day: number,
+            ): number;
+            static julianDayToDate(
+                julianDay: number,
+            ): SP.DateTimeUtil.SimpleDate;
             static daysInMonth(year: number, month: number): number;
         }
         class HttpUtility {
@@ -8780,18 +9820,27 @@ declare namespace SP {
             static htmlEncode(stringToEncode: string): string;
             static urlPathEncode(stringToEncode: string): string;
             static urlKeyValueEncode(keyOrValueToEncode: string): string;
-            static ecmaScriptStringLiteralEncode(scriptLiteralToEncode: string): string;
+            static ecmaScriptStringLiteralEncode(
+                scriptLiteralToEncode: string,
+            ): string;
             static navigateTo(url: string): void;
             /** Appends correct "Source" parameter to the specified url, and then navigates to this url.
                 "Source" parameter is recognized in many places in SharePoint, usually to determine "Cancel" behavior. */
             static appendSourceAndNavigateTo(url: string): void;
             static escapeXmlText(stringToEscape: string): string;
-            static navigateHttpFolder(urlSrc: string, frameTarget: string): void;
+            static navigateHttpFolder(
+                urlSrc: string,
+                frameTarget: string,
+            ): void;
         }
         class UrlBuilder {
             constructor(path: string);
             static urlCombine(path1: string, path2: string): string;
-            static replaceOrAddQueryString(url: string, key: string, value: string): string;
+            static replaceOrAddQueryString(
+                url: string,
+                key: string,
+                value: string,
+            ): string;
             static removeQueryString(url: string, key: string): string;
             combinePath(path: string): void;
             addKeyValueQueryString(key: string, value: string): void;
@@ -8802,7 +9851,11 @@ declare namespace SP {
         }
 
         class LocUtility {
-            static getLocalizedCountValue(locText: string, intervals: string, count: number): string;
+            static getLocalizedCountValue(
+                locText: string,
+                intervals: string,
+                count: number,
+            ): string;
         }
 
         class VersionUtility {
@@ -8826,7 +9879,10 @@ declare namespace SP {
             set_era(value: number): void;
             static dateEquals(date1: SimpleDate, date2: SimpleDate): boolean;
             static dateLessEqual(date1: SimpleDate, date2: SimpleDate): boolean;
-            static dateGreaterEqual(date1: SimpleDate, date2: SimpleDate): boolean;
+            static dateGreaterEqual(
+                date1: SimpleDate,
+                date2: SimpleDate,
+            ): boolean;
             static dateLess(date1: SimpleDate, date2: SimpleDate): boolean;
             static dateGreater(date1: SimpleDate, date2: SimpleDate): boolean;
         }
@@ -8839,7 +9895,11 @@ declare namespace SP {
             get_hasPersonalizedParts(): boolean;
             get_scope(): SP.WebParts.PersonalizationScope;
             get_webParts(): SP.WebParts.WebPartDefinitionCollection;
-            addWebPart(webPart: SP.WebParts.WebPart, zoneId: string, zoneIndex: number): SP.WebParts.WebPartDefinition;
+            addWebPart(
+                webPart: SP.WebParts.WebPart,
+                zoneId: string,
+                zoneIndex: number,
+            ): SP.WebParts.WebPartDefinition;
             importWebPart(webPartXml: string): SP.WebParts.WebPartDefinition;
         }
         enum PersonalizationScope {
@@ -8860,7 +9920,10 @@ declare namespace SP {
             get_title(): string;
             set_title(value: string): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         class WebPart extends SP.ClientObject {
@@ -8885,7 +9948,8 @@ declare namespace SP {
             deleteWebPart(): void;
             moveWebPartTo(zoneID: string, zoneIndex: number): void;
         }
-        interface WebPartDefinitionCollection extends SP.ClientObjectCollection<WebPartDefinition> {
+        interface WebPartDefinitionCollection
+            extends SP.ClientObjectCollection<WebPartDefinition> {
             itemAt(index: number): SP.WebParts.WebPartDefinition;
             get_item(index: number): SP.WebParts.WebPartDefinition;
             getById(id: SP.Guid): SP.WebParts.WebPartDefinition;
@@ -8927,11 +9991,14 @@ declare namespace SP {
             update(): void;
             deleteObject(): void;
         }
-        interface WorkflowAssociationCollection extends SP.ClientObjectCollection<WorkflowAssociation> {
+        interface WorkflowAssociationCollection
+            extends SP.ClientObjectCollection<WorkflowAssociation> {
             itemAt(index: number): SP.Workflow.WorkflowAssociation;
             get_item(index: number): SP.Workflow.WorkflowAssociation;
             getById(associationId: SP.Guid): SP.Workflow.WorkflowAssociation;
-            add(parameters: SP.Workflow.WorkflowAssociationCreationInformation): SP.Workflow.WorkflowAssociation;
+            add(
+                parameters: SP.Workflow.WorkflowAssociationCreationInformation,
+            ): SP.Workflow.WorkflowAssociation;
             getByName(name: string): SP.Workflow.WorkflowAssociation;
         }
         class WorkflowAssociationCreationInformation extends SP.ClientValueObject {
@@ -8948,7 +10015,10 @@ declare namespace SP {
             get_template(): SP.Workflow.WorkflowTemplate;
             set_template(value: SP.Workflow.WorkflowTemplate): void;
             get_typeId(): string;
-            writeToXml(writer: SP.XmlWriter, serializationContext: SP.SerializationContext): void;
+            writeToXml(
+                writer: SP.XmlWriter,
+                serializationContext: SP.SerializationContext,
+            ): void;
             constructor();
         }
         class WorkflowTemplate extends SP.ClientObject {
@@ -8962,7 +10032,8 @@ declare namespace SP {
             get_name(): string;
             get_permissionsManual(): SP.BasePermissions;
         }
-        interface WorkflowTemplateCollection extends SP.ClientObjectCollection<WorkflowTemplate> {
+        interface WorkflowTemplateCollection
+            extends SP.ClientObjectCollection<WorkflowTemplate> {
             itemAt(index: number): SP.Workflow.WorkflowTemplate;
             get_item(index: number): SP.Workflow.WorkflowTemplate;
             getById(templateId: SP.Guid): SP.Workflow.WorkflowTemplate;
@@ -8986,7 +10057,10 @@ declare namespace SP.WorkflowServices {
 
     // TODO: comments, types
     class InteropService extends SP.ClientObject {
-        constructor(context: SP.ClientRuntimeContext, objectPath: SP.ObjectPathStaticProperty);
+        constructor(
+            context: SP.ClientRuntimeContext,
+            objectPath: SP.ObjectPathStaticProperty,
+        );
         static getCurrent(context: SP.ClientRuntimeContext): InteropService;
         enableEvents(listId: SP.Guid, itemGuid: SP.Guid): void;
         disableEvents(listId: SP.Guid, itemGuid: SP.Guid): void;
@@ -9064,7 +10138,8 @@ declare namespace SP.WorkflowServices {
     }
 
     /** Represents a collection of WorkflowDefinition objects */
-    interface WorkflowDefinitionCollection extends SP.ClientObjectCollection<WorkflowDefinition> {
+    interface WorkflowDefinitionCollection
+        extends SP.ClientObjectCollection<WorkflowDefinition> {
         itemAt(index: number): WorkflowDefinition;
         get_item(index: number): WorkflowDefinition;
         /** returns SP.WorkflowDefinition class */
@@ -9090,20 +10165,32 @@ declare namespace SP.WorkflowServices {
             @param definitionId The guid identifier of the workflow definition.  */
         deleteDefinition(definitionId: string): void;
         /** Retrieves workflow definitions from the workflow store that match the tags. */
-        enumerateDefinitions(publishedOnly: boolean): WorkflowDefinitionCollection;
+        enumerateDefinitions(
+            publishedOnly: boolean,
+        ): WorkflowDefinitionCollection;
         /** Retrieves a specified workflow definition from the workflow store.
             @param definitionId The guid identifier of the workflow definition.  */
         getDefinition(definitionId: string): WorkflowDefinition;
         /** Saves the collateral file of a workflow definition.
             @param workflowDefinitionId The guid identifier of the workflow definition.*/
-        saveCollateral(workflowDefinitionId: string, leafFileName: string, fileContent: Base64EncodedByteArray): void;
+        saveCollateral(
+            workflowDefinitionId: string,
+            leafFileName: string,
+            fileContent: Base64EncodedByteArray,
+        ): void;
         /** Deletes the URL of a workflow definition's collateral file.
             @param workflowDefinitionId The guid identifier of the workflow definition.  */
-        deleteCollateral(workflowDefinitionId: string, leafFileName: string): void;
+        deleteCollateral(
+            workflowDefinitionId: string,
+            leafFileName: string,
+        ): void;
         /** Retrieves the URL of the collateral file of the workflow definition.
             @param workflowDefinitionId The guid identifier of the workflow definition.
             @param leafFileName The leaf name of the collateral file. */
-        getCollateralUri(workflowDefinitionId: string, leafFileName: string): SP.StringResult;
+        getCollateralUri(
+            workflowDefinitionId: string,
+            leafFileName: string,
+        ): SP.StringResult;
         /** Packages a single workflow definition into a SharePoint solution package (.wsp file) and saves the package to the Site Assets library.
             Returns the URL of the package file in the Site Asset library.
             Remarks:
@@ -9146,7 +10233,8 @@ declare namespace SP.WorkflowServices {
     }
 
     /** Represents a collection of WorkflowInstance objects */
-    interface WorkflowInstanceCollection extends SP.ClientObjectCollection<WorkflowInstance> {
+    interface WorkflowInstanceCollection
+        extends SP.ClientObjectCollection<WorkflowInstance> {
         itemAt(index: number): WorkflowInstance;
         get_item(index: number): WorkflowInstance;
         /** returns SP.WorkflowInstance class */
@@ -9158,7 +10246,10 @@ declare namespace SP.WorkflowServices {
         /** Starts a Workflow Manager Client 1.0 instance specified by the subscription and passes the supplied parameters.
             Returns GUID of the instance object.
             @param payload Object that contains name-value pairs of parameter names and values to pass into the workflow instance. */
-        startWorkflow(subscription: WorkflowSubscription, payload: { [name: string]: any }): SP.GuidResult;
+        startWorkflow(
+            subscription: WorkflowSubscription,
+            payload: { [name: string]: any },
+        ): SP.GuidResult;
         /** Starts a Workflow Manager Client 1.0 instance specified by the subscription and passes the supplied parameters.
             Returns GUID of the instance object.
             @param subscription The subscription associated with the workflow instance.
@@ -9172,11 +10263,19 @@ declare namespace SP.WorkflowServices {
         /** Gets workflow instance specified by the provided instance GUID */
         getInstance(instanceId: string): WorkflowInstance;
         /** Gets a workflow instance collection comprising the 100 most recent workflow instances started by a specified subscription.  */
-        enumerate(parentSubscription: WorkflowSubscription): WorkflowInstanceCollection;
+        enumerate(
+            parentSubscription: WorkflowSubscription,
+        ): WorkflowInstanceCollection;
         /** Gets a workflow instance collection comprising 100 workflow instances starting at the specified offset.  */
-        enumerateWithOffset(parentSubscription: WorkflowSubscription, offset: number): WorkflowInstanceCollection;
+        enumerateWithOffset(
+            parentSubscription: WorkflowSubscription,
+            offset: number,
+        ): WorkflowInstanceCollection;
         /** Gets the list of instances for the specified list item. */
-        enumerateInstancesForListItem(listId: string, itemId: number): WorkflowInstanceCollection;
+        enumerateInstancesForListItem(
+            listId: string,
+            itemId: number,
+        ): WorkflowInstanceCollection;
         /** Gets the list of instances for the specified list item. */
         enumerateInstancesForListItemWithOffset(
             listId: string,
@@ -9186,11 +10285,16 @@ declare namespace SP.WorkflowServices {
         /** Gets the list of instances for the current site. */
         enumerateInstancesForSite(): WorkflowInstanceCollection;
         /** Gets the list of instances for the current site. */
-        enumerateInstancesForSiteWithOffset(offset: number): WorkflowInstanceCollection;
+        enumerateInstancesForSiteWithOffset(
+            offset: number,
+        ): WorkflowInstanceCollection;
         /** Retrieves a count of all the instances of the specified WorkflowSubscription. */
         countInstances(parentSubscription: WorkflowSubscription): SP.IntResult;
         /** Retrieves a count of the instances of the specified WorkflowSubscription that have a specified status. */
-        countInstancesWithStatus(parentSubscription: WorkflowSubscription, status: WorkflowStatus): SP.IntResult;
+        countInstancesWithStatus(
+            parentSubscription: WorkflowSubscription,
+            status: WorkflowStatus,
+        ): SP.IntResult;
         /** Sends a cancel message to the specified workflow instance and permits the instance to execute a cancellation scope. */
         cancelWorkflow(instance: WorkflowInstance): void;
         /** Terminate a workflow instance forcefully by deleting it from memory. The instance is not allowed to execute a cancellation scope */
@@ -9198,14 +10302,21 @@ declare namespace SP.WorkflowServices {
         suspendWorkflow(instance: WorkflowInstance): void;
         resumeWorkflow(instance: WorkflowInstance): void;
         /** Sends a custom event to a running workflow with the event payload. */
-        publishCustomEvent(instance: WorkflowInstance, eventName: string, payload: string): void;
+        publishCustomEvent(
+            instance: WorkflowInstance,
+            eventName: string,
+            payload: string,
+        ): void;
         getDebugInfo(instance: WorkflowInstance): SP.StringResult;
     }
 
     /** Describes the workflow host configuration states and provides service objects that interact with the workflow */
     class WorkflowServicesManager extends SP.ClientObject {
         constructor(context: SP.ClientRuntimeContext, web: SP.Web);
-        static newObject(context: SP.ClientRuntimeContext, web: SP.Web): WorkflowServicesManager;
+        static newObject(
+            context: SP.ClientRuntimeContext,
+            web: SP.Web,
+        ): WorkflowServicesManager;
         /** The current application identifier.*/
         get_appId(): string;
         /** Indicates whether this workflow service is actively connected to a workflow host. */
@@ -9267,7 +10378,8 @@ declare namespace SP.WorkflowServices {
     }
 
     /** Represents a collection of WorkflowSubscription objects */
-    interface WorkflowSubscriptionCollection extends SP.ClientObjectCollection<WorkflowSubscription> {
+    interface WorkflowSubscriptionCollection
+        extends SP.ClientObjectCollection<WorkflowSubscription> {
         itemAt(index: number): WorkflowSubscription;
         get_item(index: number): WorkflowSubscription;
         /** returns SP.WorkflowInstance class */
@@ -9275,15 +10387,23 @@ declare namespace SP.WorkflowServices {
     }
 
     class WorkflowSubscriptionService extends SP.ClientObject {
-        constructor(context: SP.ClientRuntimeContext, objectPath: SP.ObjectPathStaticProperty);
-        static getCurrent(context: SP.ClientRuntimeContext): WorkflowSubscriptionService;
+        constructor(
+            context: SP.ClientRuntimeContext,
+            objectPath: SP.ObjectPathStaticProperty,
+        );
+        static getCurrent(
+            context: SP.ClientRuntimeContext,
+        ): WorkflowSubscriptionService;
         /** Creates a workflow subscription for a workflow, and returns the unique identifier of the new subscription. */
         publishSubscription(subscription: WorkflowSubscription): SP.GuidResult;
         /** Creates a workflow subscription for a workflow and if necessary an event receiver on the specified list.
             Also writes an EventSourceId that matches the list as the event source.
             Returns the unique identifier of the new subscription.
             @param listId Unique identifier (GUID) for the specified list. */
-        publishSubscriptionForList(subscription: WorkflowSubscription, listId: string): SP.GuidResult;
+        publishSubscriptionForList(
+            subscription: WorkflowSubscription,
+            listId: string,
+        ): SP.GuidResult;
         /** Ensures that an event receiver will monitor a list for the specified event.
          * @param listId Unique identifier (GUID) for the specified list.
          * @param eventName eventName The name of the event to be monitored. */
@@ -9297,22 +10417,33 @@ declare namespace SP.WorkflowServices {
         /** Retrieves workflow subscriptions that contains all of the workflow subscriptions on the Web  */
         enumerateSubscriptions(): WorkflowSubscriptionCollection;
         /** Retrieves workflow subscriptions based on workflow definition */
-        enumerateSubscriptionsByDefinition(definitionId: string): WorkflowSubscriptionCollection;
+        enumerateSubscriptionsByDefinition(
+            definitionId: string,
+        ): WorkflowSubscriptionCollection;
         /** Retrieves workflow subscriptions based on the specified EventSourceId */
-        enumerateSubscriptionsByEventSource(eventSourceId: string): WorkflowSubscriptionCollection;
+        enumerateSubscriptionsByEventSource(
+            eventSourceId: string,
+        ): WorkflowSubscriptionCollection;
         /** Retrieves workflow subscriptions based on the specified list.
             @param listId The unique identifier (GUID) of the list on which to filter the subscriptions. */
-        enumerateSubscriptionsByList(listId: string): WorkflowSubscriptionCollection;
+        enumerateSubscriptionsByList(
+            listId: string,
+        ): WorkflowSubscriptionCollection;
     }
 }
 
 declare namespace SP {
     namespace Publishing {
         class PublishingWeb extends ClientObject {
-            static getPublishingWeb(context: ClientContext, web: Web): PublishingWeb;
+            static getPublishingWeb(
+                context: ClientContext,
+                web: Web,
+            ): PublishingWeb;
 
             get_web(): Web;
-            addPublishingPage(pageInformation: PublishingPageInformation): PublishingPage;
+            addPublishingPage(
+                pageInformation: PublishingPageInformation,
+            ): PublishingPage;
         }
 
         class PublishingPageInformation extends ClientValueObject {
@@ -9327,7 +10458,10 @@ declare namespace SP {
         }
 
         class PublishingPage extends ScheduledItem {
-            static getPublishingPage(context: ClientContext, sourceListItem: ListItem): PublishingPage;
+            static getPublishingPage(
+                context: ClientContext,
+                sourceListItem: ListItem,
+            ): PublishingPage;
             addFriendlyUrl(
                 friendlyUrlSegment: string,
                 editableParent: Navigation.NavigationTermSetItem,
@@ -9348,7 +10482,10 @@ declare namespace SP {
         }
 
         class PublishingSite extends ClientObject {
-            static createPageLayout(context: ClientContext, parameters: PageLayoutCreationInformation): void;
+            static createPageLayout(
+                context: ClientContext,
+                parameters: PageLayoutCreationInformation,
+            ): void;
         }
 
         class PageLayoutCreationInformation extends ClientValueObject {
@@ -9369,13 +10506,25 @@ declare namespace SP {
         }
 
         class SiteServicesAddins {
-            static getSettings(context: ClientContext, addinId: Guid): AddinSettings;
-            static setSettings(context: ClientContext, addin: AddinSettings): void;
+            static getSettings(
+                context: ClientContext,
+                addinId: Guid,
+            ): AddinSettings;
+            static setSettings(
+                context: ClientContext,
+                addin: AddinSettings,
+            ): void;
             static deleteSettings(context: ClientContext, addinId: Guid): void;
 
-            static getPlugin(context: ClientContext, pluginName: string): AddinPlugin;
+            static getPlugin(
+                context: ClientContext,
+                pluginName: string,
+            ): AddinPlugin;
             static setPlugin(context: ClientContext, addin: AddinPlugin): void;
-            static deletePlugin(context: ClientContext, pluginName: string): void;
+            static deletePlugin(
+                context: ClientContext,
+                pluginName: string,
+            ): void;
         }
 
         class AddinSettings extends ClientObject {
@@ -9405,7 +10554,9 @@ declare namespace SP {
             set_htmlEndBody(value: string): string;
 
             get_metaTagPagePropertyMappings(): { [key: string]: string };
-            set_metaTagPagePropertyMappings(value: { [key: string]: string }): { [key: string]: string };
+            set_metaTagPagePropertyMappings(value: { [key: string]: string }): {
+                [key: string]: string;
+            };
         }
 
         class AddinPlugin extends ClientObject {
@@ -9422,9 +10573,22 @@ declare namespace SP {
         }
 
         class DesignPackage {
-            static install(context: ClientContext, site: Site, info: DesignPackageInfo, path: string): void;
-            static uninstall(context: ClientContext, site: Site, info: DesignPackageInfo): void;
-            static apply(context: ClientContext, site: Site, info: DesignPackageInfo): void;
+            static install(
+                context: ClientContext,
+                site: Site,
+                info: DesignPackageInfo,
+                path: string,
+            ): void;
+            static uninstall(
+                context: ClientContext,
+                site: Site,
+                info: DesignPackageInfo,
+            ): void;
+            static apply(
+                context: ClientContext,
+                site: Site,
+                info: DesignPackageInfo,
+            ): void;
             static exportEnterprise(
                 context: ClientContext,
                 site: Site,
@@ -9454,7 +10618,10 @@ declare namespace SP {
 
         class SiteImageRenditions {
             static getRenditions(context: ClientContext): ImageRendition[];
-            static setRenditions(context: ClientContext, renditions: ImageRendition[]): void;
+            static setRenditions(
+                context: ClientContext,
+                renditions: ImageRendition[],
+            ): void;
         }
 
         class ImageRendition extends ClientValueObject {
@@ -9472,9 +10639,19 @@ declare namespace SP {
         }
 
         class Variations extends ClientObject {
-            static getLabels(context: ClientContext): ClientObjectList<VariationLabel>;
-            static getPeerUrl(context: ClientContext, currentUrl: string, labelTitle: string): StringResult;
-            static updateListItems(context: ClientContext, listId: Guid, itemIds: number[]): void;
+            static getLabels(
+                context: ClientContext,
+            ): ClientObjectList<VariationLabel>;
+            static getPeerUrl(
+                context: ClientContext,
+                currentUrl: string,
+                labelTitle: string,
+            ): StringResult;
+            static updateListItems(
+                context: ClientContext,
+                listId: Guid,
+                itemIds: number[],
+            ): void;
         }
 
         class VariationLabel extends ClientObject {
@@ -9541,15 +10718,19 @@ declare namespace SP {
 
                 get_view(): NavigationTermSetView;
 
-                createTerm(termName: string, linkType: NavigationLinkType, termId: Guid): Taxonomy.Term;
+                createTerm(
+                    termName: string,
+                    linkType: NavigationLinkType,
+                    termId: Guid,
+                ): Taxonomy.Term;
 
                 getTaxonomyTermStore(): Taxonomy.TermStore;
 
                 getResolvedDisplayUrl(browserQueryString: string): StringResult;
             }
 
-            interface NavigationTermCollection extends ClientObjectCollection<NavigationTerm> {
-            }
+            interface NavigationTermCollection
+                extends ClientObjectCollection<NavigationTerm> {}
 
             class NavigationTerm extends NavigationTermSetItem {
                 get_associatedFolderUrl(): string;
@@ -9587,11 +10768,16 @@ declare namespace SP {
 
                 get_termSet(): NavigationTermSet;
 
-                getAsEditable(taxonomySession: Taxonomy.TaxonomySession): NavigationTerm;
+                getAsEditable(
+                    taxonomySession: Taxonomy.TaxonomySession,
+                ): NavigationTerm;
 
                 getWithNewView(newView: NavigationTermSetView): NavigationTerm;
 
-                getResolvedTargetUrl(browserQueryString: string, remainingUrlSegments: string[]): StringResult;
+                getResolvedTargetUrl(
+                    browserQueryString: string,
+                    remainingUrlSegments: string[],
+                ): StringResult;
 
                 getResolvedTargetUrlWithoutQuery(): StringResult;
 
@@ -9631,9 +10817,13 @@ declare namespace SP {
                 get_termGroupId(): Guid;
                 get_termStoreId(): Guid;
 
-                getAsEditable(taxonomySession: Taxonomy.TaxonomySession): NavigationTermSet;
+                getAsEditable(
+                    taxonomySession: Taxonomy.TaxonomySession,
+                ): NavigationTermSet;
 
-                getWithNewView(newView: NavigationTermSetView): NavigationTermSet;
+                getWithNewView(
+                    newView: NavigationTermSetView,
+                ): NavigationTermSet;
 
                 getTaxonomyTermSet(): Taxonomy.TermSet;
 
@@ -9654,14 +10844,19 @@ declare namespace SP {
                 ): NavigationTermSet;
             }
 
-            interface NavigationTermProviderNameCollection extends ClientObjectCollection<string> {
+            interface NavigationTermProviderNameCollection
+                extends ClientObjectCollection<string> {
                 Add(item: string): void;
                 Clear(): void;
                 Remove(item: string): BooleanResult;
             }
 
             class NavigationTermSetView extends ClientObject {
-                constructor(context: ClientContext, web: Web, siteMapProviderName: string);
+                constructor(
+                    context: ClientContext,
+                    web: Web,
+                    siteMapProviderName: string,
+                );
 
                 get_excludeDeprecatedTerms(): boolean;
                 set_excludeDeprecatedTerms(value: boolean): boolean;
@@ -9684,11 +10879,16 @@ declare namespace SP {
 
                 getCopy(): NavigationTermSetView;
 
-                static createEmptyInstance(context: ClientContext): NavigationTermSetView;
+                static createEmptyInstance(
+                    context: ClientContext,
+                ): NavigationTermSetView;
             }
 
             class TaxonomyNavigation {
-                static getWebNavigationSettings(context: ClientContext, web: Web): WebNavigationSettings;
+                static getWebNavigationSettings(
+                    context: ClientContext,
+                    web: Web,
+                ): WebNavigationSettings;
                 static getTermSetForWeb(
                     context: ClientContext,
                     web: Web,
@@ -9700,9 +10900,18 @@ declare namespace SP {
                     navigationTerm: Taxonomy.Term,
                     crawlAsFriendlyUrlPage: boolean,
                 ): BooleanResult;
-                static getNavigationLcidForWeb(context: ClientContext, web: Web): IntResult;
-                static flushSiteFromCache(context: ClientContext, site: Site): void;
-                static flushWebFromCache(context: ClientContext, web: Web): void;
+                static getNavigationLcidForWeb(
+                    context: ClientContext,
+                    web: Web,
+                ): IntResult;
+                static flushSiteFromCache(
+                    context: ClientContext,
+                    site: Site,
+                ): void;
+                static flushWebFromCache(
+                    context: ClientContext,
+                    web: Web,
+                ): void;
                 static flushTermSetFromCache(
                     context: ClientContext,
                     webForPermissions: Web,
@@ -9736,7 +10945,9 @@ declare namespace SP {
 
                 get_source(): StandardNavigationSource;
 
-                set_source(value: StandardNavigationSource): StandardNavigationSource;
+                set_source(
+                    value: StandardNavigationSource,
+                ): StandardNavigationSource;
             }
         }
     }
@@ -9751,10 +10962,22 @@ declare namespace SP {
         }
 
         class SPContainerId extends ClientObject {
-            static createFromList(context: ClientRuntimeContext, list: List): SPContainerId;
-            static createFromWeb(context: ClientRuntimeContext, web: Web): SPContainerId;
-            static createFromSite(context: ClientRuntimeContext, site: Site): SPContainerId;
-            static create(context: ClientRuntimeContext, containerId: any): SPContainerId;
+            static createFromList(
+                context: ClientRuntimeContext,
+                list: List,
+            ): SPContainerId;
+            static createFromWeb(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): SPContainerId;
+            static createFromSite(
+                context: ClientRuntimeContext,
+                site: Site,
+            ): SPContainerId;
+            static create(
+                context: ClientRuntimeContext,
+                containerId: any,
+            ): SPContainerId;
 
             get_containerType(): ContentType;
             set_containerType(value: ContentType): ContentType;
@@ -9958,14 +11181,25 @@ declare namespace SP {
         class SPPolicyStore extends ClientObject {
             constructor(context: ClientRuntimeContext, web: Web);
 
-            static createPolicyDefinition(context: ClientRuntimeContext): SPPolicyDefinition;
-            static createPolicyBinding(context: ClientRuntimeContext): SPPolicyBinding;
-            static createPolicyAssociation(context: ClientRuntimeContext): SPPolicyAssociation;
-            static createPolicyRule(context: ClientRuntimeContext): SPPolicyRule;
+            static createPolicyDefinition(
+                context: ClientRuntimeContext,
+            ): SPPolicyDefinition;
+            static createPolicyBinding(
+                context: ClientRuntimeContext,
+            ): SPPolicyBinding;
+            static createPolicyAssociation(
+                context: ClientRuntimeContext,
+            ): SPPolicyAssociation;
+            static createPolicyRule(
+                context: ClientRuntimeContext,
+            ): SPPolicyRule;
 
             updatePolicyRule(policyRule: SPPolicyRule): void;
 
-            getPolicyRule(policyRuleId: any, throwIfNull: boolean): SPPolicyRule;
+            getPolicyRule(
+                policyRuleId: any,
+                throwIfNull: boolean,
+            ): SPPolicyRule;
 
             deletePolicyRule(policyRuleId: any): void;
 
@@ -9983,7 +11217,9 @@ declare namespace SP {
 
             deletePolicyDefinition(policyDefinitionId: any): void;
 
-            getPolicyDefinitions(scenario: any): ClientObjectList<SPPolicyDefinition>;
+            getPolicyDefinitions(
+                scenario: any,
+            ): ClientObjectList<SPPolicyDefinition>;
 
             updatePolicyBinding(policyBinding: SPPolicyBinding): void;
 
@@ -9991,11 +11227,15 @@ declare namespace SP {
 
             deletePolicyBinding(policyBindingId: any): void;
 
-            updatePolicyAssociation(policyAssociation: SPPolicyAssociation): void;
+            updatePolicyAssociation(
+                policyAssociation: SPPolicyAssociation,
+            ): void;
 
             getPolicyAssociation(policyAssociationId: any): SPPolicyAssociation;
 
-            getPolicyAssociationForContainer(containerId: SPContainerId): SPPolicyAssociation;
+            getPolicyAssociationForContainer(
+                containerId: SPContainerId,
+            ): SPPolicyAssociation;
 
             deletePolicyAssociation(policyAssociationId: any): void;
         }
@@ -10045,16 +11285,41 @@ declare namespace SP {
             get_name(): string;
             savePolicy(): void;
 
-            static getProjectPolicies(context: ClientRuntimeContext, web: Web): ClientObjectList<ProjectPolicy>;
-            static getCurrentlyAppliedProject(context: ClientRuntimeContext, web: Web): ProjectPolicy;
-            static applyProjectPolicy(context: ClientRuntimeContext, web: Web, projectPolicy: ProjectPolicy): void;
+            static getProjectPolicies(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): ClientObjectList<ProjectPolicy>;
+            static getCurrentlyAppliedProject(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): ProjectPolicy;
+            static applyProjectPolicy(
+                context: ClientRuntimeContext,
+                web: Web,
+                projectPolicy: ProjectPolicy,
+            ): void;
             static openProject(context: ClientRuntimeContext, web: Web): void;
             static closeProject(context: ClientRuntimeContext, web: Web): void;
-            static postponeProject(context: ClientRuntimeContext, web: Web): void;
-            static doesProjectHavePolicy(context: ClientRuntimeContext, web: Web): SP.BooleanResult;
-            static isProjectClosed(context: ClientRuntimeContext, web: Web): SP.BooleanResult;
-            static getProjectCloseDate(context: ClientRuntimeContext, web: Web): SP.DateTimeResult;
-            static getProjectExpirationDate(context: ClientRuntimeContext, web: Web): SP.DateTimeResult;
+            static postponeProject(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): void;
+            static doesProjectHavePolicy(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): SP.BooleanResult;
+            static isProjectClosed(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): SP.BooleanResult;
+            static getProjectCloseDate(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): SP.DateTimeResult;
+            static getProjectExpirationDate(
+                context: ClientRuntimeContext,
+                web: Web,
+            ): SP.DateTimeResult;
         }
     }
 }
@@ -10089,13 +11354,19 @@ declare class SPClientAutoFill {
     AutoFillMinTextLength: number;
     AutoFillTimeout: number;
     AutoFillCallbackTimeoutID: string;
-    FuncOnAutoFillClose: (elmTextId: string, ojData: ISPClientAutoFillData) => void;
+    FuncOnAutoFillClose: (
+        elmTextId: string,
+        ojData: ISPClientAutoFillData,
+    ) => void;
     FuncPopulateAutoFill: (targetElement: HTMLElement) => void;
     AllOptionData: { [key: string]: ISPClientAutoFillData };
 
     PopulateAutoFill(
         jsonObjSuggestions: ISPClientAutoFillData[],
-        fnOnAutoFillCloseFuncName: (elmTextId: string, objData: ISPClientAutoFillData) => void,
+        fnOnAutoFillCloseFuncName: (
+            elmTextId: string,
+            objData: ISPClientAutoFillData,
+        ) => void,
     ): void;
     IsAutoFillOpen(): boolean;
     SetAutoFillHeight(): void;
@@ -10140,15 +11411,25 @@ declare class SPClientPeoplePicker {
     ): void;
     static ParseUserKeyPaste(userKey: string): string;
     static GetTopLevelControl(elmChild: HTMLElement): HTMLElement;
-    static AugmentEntity(entity: ISPClientPeoplePickerEntity): ISPClientPeoplePickerEntity;
+    static AugmentEntity(
+        entity: ISPClientPeoplePickerEntity,
+    ): ISPClientPeoplePickerEntity;
     static AugmentEntitySuggestions(
         pickerObj: SPClientPeoplePicker,
         allEntities: ISPClientPeoplePickerEntity[],
         mergeLocal?: boolean,
     ): ISPClientPeoplePickerEntity[];
-    static PickerObjectFromSubElement(elmSubElement: HTMLElement): SPClientPeoplePicker;
-    static TestLocalMatch(strSearchLower: string, dataEntity: ISPClientPeoplePickerEntity): boolean;
-    static BuildUnresolvedEntity(key: string, dispText: string): ISPClientPeoplePickerEntity;
+    static PickerObjectFromSubElement(
+        elmSubElement: HTMLElement,
+    ): SPClientPeoplePicker;
+    static TestLocalMatch(
+        strSearchLower: string,
+        dataEntity: ISPClientPeoplePickerEntity,
+    ): boolean;
+    static BuildUnresolvedEntity(
+        key: string,
+        dispText: string,
+    ): ISPClientPeoplePickerEntity;
     static AddAutoFillMetaData(
         pickerObj: SPClientPeoplePicker,
         options: ISPClientPeoplePickerEntity[],
@@ -10172,9 +11453,18 @@ declare class SPClientPeoplePicker {
     ForceClaims: boolean; // false,
     AutoFillEnabled: boolean; // true,
     AllowMultipleUsers: boolean; // false,
-    OnValueChangedClientScript: (pickerElementId: string, users: ISPClientPeoplePickerEntity[]) => void;
-    OnUserResolvedClientScript: (pickerElementId: string, users: ISPClientPeoplePickerEntity[]) => void;
-    OnControlValidateClientScript: (pickerElementId: string, users: ISPClientPeoplePickerEntity[]) => void;
+    OnValueChangedClientScript: (
+        pickerElementId: string,
+        users: ISPClientPeoplePickerEntity[],
+    ) => void;
+    OnUserResolvedClientScript: (
+        pickerElementId: string,
+        users: ISPClientPeoplePickerEntity[],
+    ) => void;
+    OnControlValidateClientScript: (
+        pickerElementId: string,
+        users: ISPClientPeoplePickerEntity[],
+    ) => void;
     UrlZone: SP.UrlZone; // null,
     AllUrlZones: boolean; // false,
     SharePointGroupID: number; // 0,
@@ -10208,7 +11498,10 @@ declare class SPClientPeoplePicker {
     WebApplicationID: SP.Guid; // '{00000000-0000-0000-0000-000000000000}',
     GetAllUserInfo(): ISPClientPeoplePickerEntity[];
 
-    SetInitialValue(entities: ISPClientPeoplePickerEntity[], initialErrorMsg?: string): void;
+    SetInitialValue(
+        entities: ISPClientPeoplePickerEntity[],
+        initialErrorMsg?: string,
+    ): void;
     AddUserKeys(userKeys: string, bSearch: boolean): void;
     BatchAddUserKeysOperation(allKeys: string[], numProcessed: number): void;
     ResolveAllUsers(fnContinuation: () => void): void;
@@ -10219,12 +11512,21 @@ declare class SPClientPeoplePicker {
         fnContinuation: () => void,
     ): void;
     AddUnresolvedUserFromEditor(bRunQuery?: boolean): void;
-    AddUnresolvedUser(unresolvedUserObj: ISPClientPeoplePickerEntity, bRunQuery?: boolean): void;
-    UpdateUnresolvedUser(results: SP.StringResult, user: ISPClientPeoplePickerEntity): void;
+    AddUnresolvedUser(
+        unresolvedUserObj: ISPClientPeoplePickerEntity,
+        bRunQuery?: boolean,
+    ): void;
+    UpdateUnresolvedUser(
+        results: SP.StringResult,
+        user: ISPClientPeoplePickerEntity,
+    ): void;
     AddPickerSearchQuery(queryStr: string): string;
     AddPickerResolveQuery(queryStr: string): string;
     GetPeoplePickerQueryParameters(): SP.UI.ApplicationPages.ClientPeoplePickerQueryParameters;
-    AddProcessedUser(userObject: ISPClientPeoplePickerEntity, fResolved?: boolean): string;
+    AddProcessedUser(
+        userObject: ISPClientPeoplePickerEntity,
+        fResolved?: boolean,
+    ): string;
     DeleteProcessedUser(elmToRemove: HTMLElement): void;
     OnControlValueChanged(): void;
     OnControlResolvedUserChanged(): void;
@@ -10242,7 +11544,12 @@ declare class SPClientPeoplePicker {
     GetAllUserKeys(): string;
     GetControlValueAsText(): string;
     IsEmpty(): boolean;
-    IterateEachProcessedUser(fnCallback: (index: number, user: SPClientPeoplePickerProcessedUser) => void): void;
+    IterateEachProcessedUser(
+        fnCallback: (
+            index: number,
+            user: SPClientPeoplePickerProcessedUser,
+        ) => void,
+    ): void;
     HasResolvedUsers(): boolean;
     Validate(): void;
     ValidateCurrentState(): void;
@@ -10258,7 +11565,10 @@ declare class SPClientPeoplePicker {
     AddLoadingSuggestionMenuOption(): void;
     ShowingLocalSuggestions(): boolean;
     ShouldUsePPMRU(): boolean;
-    AddResolvedUserToLocalCache(resolvedEntity: ISPClientPeoplePickerEntity, resolveText: string): void;
+    AddResolvedUserToLocalCache(
+        resolvedEntity: ISPClientPeoplePickerEntity,
+        resolveText: string,
+    ): void;
 }
 
 interface ISPClientPeoplePickerSchema {
@@ -10298,8 +11608,14 @@ interface ISPClientPeoplePickerSchema {
     ResolvePrincipalSource?: SP.Utilities.PrincipalSource | undefined;
     SearchPrincipalSource?: SP.Utilities.PrincipalSource | undefined;
 
-    OnUserResolvedClientScript?(pickerElementId: string, users: ISPClientPeoplePickerEntity[]): void;
-    OnValueChangedClientScript?(pickerElementId: string, users: ISPClientPeoplePickerEntity[]): void;
+    OnUserResolvedClientScript?(
+        pickerElementId: string,
+        users: ISPClientPeoplePickerEntity[],
+    ): void;
+    OnValueChangedClientScript?(
+        pickerElementId: string,
+        users: ISPClientPeoplePickerEntity[],
+    ): void;
 
     /** Number or '100%'*/
     Width?: any;
@@ -10314,7 +11630,10 @@ declare class SPClientPeoplePickerMRU {
     static GetSPClientPeoplePickerMRU(): SPClientPeoplePickerMRU;
 
     GetItems(strKey: string): { Key: string; [name: string]: any };
-    SetItem<T extends { Key: string }>(strSearchTerm: string, objEntity: T): void;
+    SetItem<T extends { Key: string }>(
+        strSearchTerm: string,
+        objEntity: T,
+    ): void;
     ResetCache(): void;
 }
 
@@ -10326,12 +11645,14 @@ interface ISPClientPeoplePickerEntity {
     ProviderDisplayName?: string | undefined;
     ProviderName?: string | undefined;
     IsResolved?: boolean | undefined;
-    EntityData?: {
-        Title: string;
-        MobilePhone: string;
-        Department: string;
-        Email: string;
-    } | undefined;
+    EntityData?:
+        | {
+              Title: string;
+              MobilePhone: string;
+              Department: string;
+              Email: string;
+          }
+        | undefined;
     MultipleMatches: ISPClientPeoplePickerEntity[];
     DomainText?: string | undefined;
     [key: string]: any;
@@ -10350,13 +11671,20 @@ declare class SPClientPeoplePickerProcessedUser {
     Suggestions: ISPClientAutoFillData[]; // null,
     ErrorDescription: string; // '',
     ResolveText: string; // '',
-    UpdateResolvedUser(newUserInfo: ISPClientPeoplePickerEntity, strNewElementId: string): void;
+    UpdateResolvedUser(
+        newUserInfo: ISPClientPeoplePickerEntity,
+        strNewElementId: string,
+    ): void;
     UpdateSuggestions(entity: ISPClientPeoplePickerEntity): void;
     BuildUserHTML(): string;
     UpdateUserMaxWidth(): void;
     ResolvedAsUnverifiedEmail(): string;
 
-    static BuildUserPresenceHtml(elmId: string, strSip: string, bResolved?: boolean): string;
+    static BuildUserPresenceHtml(
+        elmId: string,
+        strSip: string,
+        bResolved?: boolean,
+    ): string;
     static GetUserContainerElement(elmChild: HTMLElement): HTMLElement;
     static HandleProcessedUserClick(ndClicked: HTMLElement): void;
     static DeleteProcessedUser(elmToRemove: HTMLElement): void;
@@ -10370,8 +11698,18 @@ declare namespace Microsoft {
             namespace ReputationModel {
                 class Reputation {
                     constructor();
-                    static setLike(context: SP.ClientContext, listId: string, itemId: number, like: boolean): void;
-                    static setRating(context: SP.ClientContext, listId: string, itemId: number, rating: number): void;
+                    static setLike(
+                        context: SP.ClientContext,
+                        listId: string,
+                        itemId: number,
+                        like: boolean,
+                    ): void;
+                    static setRating(
+                        context: SP.ClientContext,
+                        listId: string,
+                        itemId: number,
+                        rating: number,
+                    ): void;
                 }
             }
         }
@@ -10380,12 +11718,20 @@ declare namespace Microsoft {
 
 /** Available only in SharePoint Online*/
 declare namespace Define {
-    function loadScript(url: string, successCallback: () => void, errCallback: () => void): void;
+    function loadScript(
+        url: string,
+        successCallback: () => void,
+        errCallback: () => void,
+    ): void;
     /** Loads script from _layouts/15/[req].js */
     function require(req: string, callback: (arg: any[]) => void): void;
     /** Loads script from _layouts/15/[req].js */
     function require(req: string[], callback: (...args: any[]) => void): void;
-    function define(name: string, deps: string[], def: (...args: any[]) => any): void;
+    function define(
+        name: string,
+        deps: string[],
+        def: (...args: any[]) => any,
+    ): void;
 }
 
 /** Available only in SharePoint Online*/
@@ -10421,9 +11767,16 @@ declare namespace CSSUtil {
     function pxToFloat(pxString: string): number;
     function pxToNum(px: string): number;
     function numToPx(n: number): string;
-    function getCurrentEltStyleByNames(elem: HTMLElement, styleNames: string[]): string;
+    function getCurrentEltStyleByNames(
+        elem: HTMLElement,
+        styleNames: string[],
+    ): string;
     function getCurrentStyle(elem: HTMLElement, cssStyle: string): string;
-    function getCurrentStyleCorrect(element: HTMLElement, camelStyleName: string, dashStyleName: string): string;
+    function getCurrentStyleCorrect(
+        element: HTMLElement,
+        camelStyleName: string,
+        dashStyleName: string,
+    ): string;
     function getOpacity(element: HTMLElement): number;
     function setOpacity(element: HTMLElement, value: number): void;
 }
@@ -10442,7 +11795,11 @@ declare namespace DOM {
     function PreventDefaultNavigation(evt: Event): void;
     function SetEvent(
         eventName: string,
-        eventFunc: (eventName: string, fnContent: (evt: Event) => void, window?: Window) => void,
+        eventFunc: (
+            eventName: string,
+            fnContent: (evt: Event) => void,
+            window?: Window,
+        ) => void,
         el: HTMLElement,
     ): void;
 }
@@ -10462,7 +11819,11 @@ declare namespace Encoding {
 declare namespace IE8Support {
     function arrayIndexOf<T>(array: T[], item: T, startIdx?: number): number;
     function attachDOMContentLoaded(handler: () => void): void;
-    function getComputedStyle(domObj: HTMLElement, camelStyleName: string, dashStyleName: string): string;
+    function getComputedStyle(
+        domObj: HTMLElement,
+        camelStyleName: string,
+        dashStyleName: string,
+    ): string;
     function stopPropagation(evt: Event): void;
 }
 
@@ -10481,13 +11842,21 @@ declare namespace TypeUtil {
 /** Available only in SharePoint Online*/
 declare namespace Nav {
     const ajaxNavigate: AjaxNavigate;
-    function convertRegularURLtoMDSURL(webUrl: string, fullPath: string): string;
+    function convertRegularURLtoMDSURL(
+        webUrl: string,
+        fullPath: string,
+    ): string;
     function isMDSUrl(url: string): boolean;
     function isPageUrlValid(url: string): boolean;
     function isPortalTemplatePage(url: string): boolean;
     function getAjaxLocationWindow(): string;
     function getSource(defaultSource?: string): string;
-    function getUrlKeyValue(keyName: string, bNoDecode: boolean, url: string, bCaseInsensitive: boolean): string;
+    function getUrlKeyValue(
+        keyName: string,
+        bNoDecode: boolean,
+        url: string,
+        bCaseInsensitive: boolean,
+    ): string;
     function getWindowLocationNoHash(hre: string): string;
     function goToHistoryLink(el: HTMLAnchorElement, strVersion: string): void;
     function getGoToLinkUrl(el: HTMLAnchorElement): string;
@@ -10528,7 +11897,10 @@ declare namespace ListModule {
             useEditFormUrl?: boolean,
             appendSource?: boolean,
         ): string;
-        function createItemPropertiesTitle(renderCtx: SPClientTemplates.RenderContext, listItem: ListItem): string;
+        function createItemPropertiesTitle(
+            renderCtx: SPClientTemplates.RenderContext,
+            listItem: ListItem,
+        ): string;
         function clearSelectedItemsDict(context: any): void;
         function ctxInitItemState(context: any): void;
         function getAttributeFromItemTable(
@@ -10759,27 +12131,64 @@ declare namespace SP {
             /** Determine if the specified record key identifies valid entry row. */
             IsEntryRecord(recordKey: number): boolean;
             /** Determine whether the specified cell is editable. */
-            IsCellEditable(record: IRecord, fieldKey: string, optPaneId?: any): boolean;
+            IsCellEditable(
+                record: IRecord,
+                fieldKey: string,
+                optPaneId?: any,
+            ): boolean;
             /** Adds one of builtin row state indicator icons into the row header.
                 Please pass one of the values of SP.JsGrid.RowHeaderStyleId
                 Row header is the leftmost gray column of the table. */
-            AddBuiltInRowHeaderState(recordKey: number, rowHeaderStateId: string): void;
+            AddBuiltInRowHeaderState(
+                recordKey: number,
+                rowHeaderStateId: string,
+            ): void;
             /** Adds the specified state into the row header.
                 There can be several row header states for one row. Only one is shown (according to the Priority).
                 Row header is the leftmost gray column of the table. */
-            AddRowHeaderState(recordKey: number, rowHeaderState: SP.JsGrid.RowHeaderState): void;
+            AddRowHeaderState(
+                recordKey: number,
+                rowHeaderState: SP.JsGrid.RowHeaderState,
+            ): void;
             /** Removes header state with specified id from the row. */
-            RemoveRowHeaderState(recordKey: number, rowHeaderStateId: string): void;
+            RemoveRowHeaderState(
+                recordKey: number,
+                rowHeaderStateId: string,
+            ): void;
 
             GetCheckSelectionManager(): any;
-            UpdateProperties(propertyUpdates: any, changeName: any, optChangeKey?: any): any;
+            UpdateProperties(
+                propertyUpdates: any,
+                changeName: any,
+                optChangeKey?: any,
+            ): any;
             GetLastRecordKey(): string;
-            InsertProvisionalRecordBefore(beforeRecordKey: number, newRecord: any, initialValues: any): any;
-            InsertProvisionalRecordAfter(afterRecordKey: number, newRecord: any, initialValues: any): any;
+            InsertProvisionalRecordBefore(
+                beforeRecordKey: number,
+                newRecord: any,
+                initialValues: any,
+            ): any;
+            InsertProvisionalRecordAfter(
+                afterRecordKey: number,
+                newRecord: any,
+                initialValues: any,
+            ): any;
             IsProvisionalRecordKey(recordKey: number): boolean;
-            InsertRecordBefore(beforeRecordKey: number, newRecord: any, optChangeKey?: any): any;
-            InsertRecordAfter(afterRecordKey: number, newRecord: any, optChangeKey?: any): any;
-            InsertHiddenRecord(recordKey: number, changeKey: any, optAfterRecordKey?: any): any;
+            InsertRecordBefore(
+                beforeRecordKey: number,
+                newRecord: any,
+                optChangeKey?: any,
+            ): any;
+            InsertRecordAfter(
+                afterRecordKey: number,
+                newRecord: any,
+                optChangeKey?: any,
+            ): any;
+            InsertHiddenRecord(
+                recordKey: number,
+                changeKey: any,
+                optAfterRecordKey?: any,
+            ): any;
             DeleteRecords(recordKeys: any, optChangeKey?: any): any;
             IndentRecords(recordKeys: any, optChangeKey?: any): any;
             OutdentRecords(recordKeys: any, optChangeKey?: any): any;
@@ -10789,7 +12198,11 @@ declare namespace SP {
                 afterRecordKey: number,
                 bSelectAfterwards: boolean,
             ): any;
-            GetContiguousRowSelectionWithoutEntryRecords(): { begin: any; end: any; keys: any };
+            GetContiguousRowSelectionWithoutEntryRecords(): {
+                begin: any;
+                end: any;
+                keys: any;
+            };
             CanMoveRecordsUpByOne(recordKeys: any): boolean;
             CanMoveRecordsDownByOne(recordKeys: any): boolean;
             MoveRecordsUpByOne(recordKeys: any): any;
@@ -10799,7 +12212,10 @@ declare namespace SP {
             ToggleExpandCollapse(recordKey: number): void;
 
             /** Attach event handler to a particular event type */
-            AttachEvent(eventType: JsGrid.EventType, fnOnEvent: (args: IEventArgs) => void): void;
+            AttachEvent(
+                eventType: JsGrid.EventType,
+                fnOnEvent: (args: IEventArgs) => void,
+            ): void;
             /** Detach a previously set event handler */
             DetachEvent(eventType: JsGrid.EventType, fnOnEvent: any): void;
 
@@ -10872,14 +12288,22 @@ declare namespace SP {
             AnyErrorsInRecord(recordKey: number): boolean;
             /** Set error for the specified by recordKey and fieldKey cell.
                 Returns id of the error, so that later you can clear the error using this id. */
-            SetCellError(recordKey: number, fieldKey: string, errorMessage: string): number;
+            SetCellError(
+                recordKey: number,
+                fieldKey: string,
+                errorMessage: string,
+            ): number;
             /** Set error for the specified by recordKey row.
                 In the leftmost column of this row, exclamation mark error indicator will appear.
                 Clicking on this indicator will cause the specified error message appear in form of a reddish tooltip.
                 Returns id of the error, so that later you can clear the error using this id. */
             SetRowError(recordKey: number, errorMessage: string): number;
             /** Clear specified by id error that was previously set on the specified by recordKey and fieldKey cell. */
-            ClearCellError(recordKey: number, fieldKey: string, id: number): void;
+            ClearCellError(
+                recordKey: number,
+                fieldKey: string,
+                id: number,
+            ): void;
             /** Clear all errors in the specified cell. */
             ClearAllErrorsOnCell(recordKey: number, fieldKey: string): void;
             /** Clear specified by id error that was previously set on the specified by recordKey row. */
@@ -10902,7 +12326,11 @@ declare namespace SP {
                 If there aren't any errors, that satisfy the conditions, method does nothing and returns null. */
             ScrollToAndExpandNextError(
                 minId?: number,
-                fnFilter?: (recordKey: number, fieldKey: string, id: number) => boolean,
+                fnFilter?: (
+                    recordKey: number,
+                    fieldKey: string,
+                    id: number,
+                ) => boolean,
             ): any;
             /** Same as ScrollToAndExpandNextError, but searches within the specified record.
                 recordKey should be not null, otherwise you'll get an exception.
@@ -10910,7 +12338,11 @@ declare namespace SP {
             ScrollToAndExpandNextErrorOnRecord(
                 minId?: number,
                 recordKey?: number,
-                fnFilter?: (recordKey: number, fieldKey: string, id: number) => boolean,
+                fnFilter?: (
+                    recordKey: number,
+                    fieldKey: string,
+                    id: number,
+                ) => boolean,
                 bDontExpand?: boolean,
             ): any;
 
@@ -10919,8 +12351,18 @@ declare namespace SP {
             /** Moves cursor to entry record (the row that is used to add new records) */
             JumpToEntryRecord(): void;
 
-            SelectRowRange(rowIdx1: number, rowIdx2: number, bAppend: boolean, optPaneId?: string): void;
-            SelectColumnRange(colIdx1: number, colIdx2: number, bAppend: boolean, optPaneId?: string): void;
+            SelectRowRange(
+                rowIdx1: number,
+                rowIdx2: number,
+                bAppend: boolean,
+                optPaneId?: string,
+            ): void;
+            SelectColumnRange(
+                colIdx1: number,
+                colIdx2: number,
+                bAppend: boolean,
+                optPaneId?: string,
+            ): void;
             SelectCellRange(
                 rowIdx1: number,
                 rowIdx2: number,
@@ -10929,8 +12371,18 @@ declare namespace SP {
                 bAppend: boolean,
                 optPaneId?: string,
             ): void;
-            SelectRowRangeByKey(rowKey1: any, rowKey2: any, bAppend: boolean, optPaneId?: string): void;
-            SelectColumnRangeByKey(colKey1: any, colKey2: any, bAppend: boolean, optPaneId?: string): void;
+            SelectRowRangeByKey(
+                rowKey1: any,
+                rowKey2: any,
+                bAppend: boolean,
+                optPaneId?: string,
+            ): void;
+            SelectColumnRangeByKey(
+                colKey1: any,
+                colKey2: any,
+                bAppend: boolean,
+                optPaneId?: string,
+            ): void;
             SelectCellRangeByKey(
                 recordKey1: string,
                 recordKey2: string,
@@ -10944,13 +12396,22 @@ declare namespace SP {
             GetSelectedRowRanges(optPaneId?: any): any;
             GetSelectedColumnRanges(optPaneId?: any): any;
             GetSelectedRanges(optPaneId?: any): any;
-            MarkPropUpdateInvalid(recordKey: number, fieldKey: any, changeKey: any, optErrorMsg?: any): any;
+            MarkPropUpdateInvalid(
+                recordKey: number,
+                fieldKey: any,
+                changeKey: any,
+                optErrorMsg?: any,
+            ): any;
             GetCurrentChangeKey(): any;
             CreateAndSynchronizeToNewChangeKey(): any;
             CreateDataUpdateCmd(bUseCustomInitialUpdate: boolean): any;
             IsChangeKeyApplied(changeKey: any): any;
             GetChangeKeyForVersion(version: any): any;
-            TryReadPropForChangeKey(recordKey: number, fieldKey: any, changeKey: any): any;
+            TryReadPropForChangeKey(
+                recordKey: number,
+                fieldKey: any,
+                changeKey: any,
+            ): any;
             GetUnfilteredHierarchyMap(): any;
             GetHierarchyState(bDecompressGuidKeys: boolean): any;
             IsGroupingRecordKey(recordKey: number): boolean;
@@ -11066,12 +12527,18 @@ declare namespace SP {
                 img: SP.JsGrid.Image,
                 priority: SP.JsGrid.RowHeaderStatePriorities,
                 tooltip: string,
-                fnOnClick: (eventInfo: Sys.UI.DomEvent, recordKey: number) => void,
+                fnOnClick: (
+                    eventInfo: Sys.UI.DomEvent,
+                    recordKey: number,
+                ) => void,
             );
             GetId(): string;
             GetImg(): SP.JsGrid.Image;
             GetPriority(): SP.JsGrid.RowHeaderStatePriorities;
-            GetOnClick(): (eventInfo: Sys.UI.DomEvent, recordKey: number) => void;
+            GetOnClick(): (
+                eventInfo: Sys.UI.DomEvent,
+                recordKey: number,
+            ) => void;
             GetTooltip(): string;
             toString(): string;
         }
@@ -11094,7 +12561,11 @@ declare namespace SP {
             bIsAnimated: boolean;
             /** Renders the image with specified alternative text and on-click handler.
                 If bHideTooltip == false, then alternative text is also shown as the tooltip (title attribute). */
-            Render(altText: string, clickFn: (eventInfo: Sys.UI.DomEvent) => void, bHideTooltip: boolean): HTMLElement;
+            Render(
+                altText: string,
+                clickFn: (eventInfo: Sys.UI.DomEvent) => void,
+                bHideTooltip: boolean,
+            ): HTMLElement;
         }
         interface IEventArgs {}
         namespace EventArgs {
@@ -11104,7 +12575,12 @@ declare namespace SP {
             }
 
             class CellFocusChanged implements IEventArgs {
-                constructor(newRecordKey: number, newFieldKey: string, oldRecordKey: number, oldFieldKey: string);
+                constructor(
+                    newRecordKey: number,
+                    newFieldKey: string,
+                    oldRecordKey: number,
+                    oldFieldKey: string,
+                );
                 newRecordKey: number;
                 newFieldKey: string;
                 oldRecordKey: number;
@@ -11121,7 +12597,12 @@ declare namespace SP {
                 fieldKey: string;
             }
             class CellEditCompleted implements IEventArgs {
-                constructor(recordKey: number, fieldKey: string, changeKey: JsGrid.IChangeKey, bCancelled: boolean);
+                constructor(
+                    recordKey: number,
+                    fieldKey: string,
+                    changeKey: JsGrid.IChangeKey,
+                    bCancelled: boolean,
+                );
                 recordKey: number;
                 fieldKey: string;
                 changeKey: JsGrid.IChangeKey;
@@ -11158,14 +12639,23 @@ declare namespace SP {
                 validationState: SP.JsGrid.ValidationState;
             }
             class RecordInserted implements IEventArgs {
-                constructor(recordKey: number, recordIdx: number, afterRecordKey: number, changeKey: JsGrid.IChangeKey);
+                constructor(
+                    recordKey: number,
+                    recordIdx: number,
+                    afterRecordKey: number,
+                    changeKey: JsGrid.IChangeKey,
+                );
                 recordKey: number;
                 recordIdx: number;
                 afterRecordKey: number;
                 changeKey: JsGrid.IChangeKey;
             }
             class RecordDeleted implements IEventArgs {
-                constructor(recordKey: number, recordIdx: number, changeKey: JsGrid.IChangeKey);
+                constructor(
+                    recordKey: number,
+                    recordIdx: number,
+                    changeKey: JsGrid.IChangeKey,
+                );
                 recordKey: number;
                 recordIdx: number;
                 changeKey: JsGrid.IChangeKey;
@@ -11208,13 +12698,21 @@ declare namespace SP {
                 message: string;
             }
             class OnEntryRecordCommitted implements IEventArgs {
-                constructor(origRecKey: string, recordKey: number, changeKey: JsGrid.IChangeKey);
+                constructor(
+                    origRecKey: string,
+                    recordKey: number,
+                    changeKey: JsGrid.IChangeKey,
+                );
                 originalRecordKey: number;
                 recordKey: number;
                 changeKey: JsGrid.IChangeKey;
             }
             class SingleCellClick implements IEventArgs {
-                constructor(eventInfo: Sys.UI.DomEvent, recordKey: number, fieldKey: string);
+                constructor(
+                    eventInfo: Sys.UI.DomEvent,
+                    recordKey: number,
+                    fieldKey: string,
+                );
                 eventInfo: Sys.UI.DomEvent;
                 recordKey: number;
                 fieldKey: string;
@@ -11232,7 +12730,11 @@ declare namespace SP {
                 bAnyErrors: boolean;
             }
             class SingleCellKeyDown implements IEventArgs {
-                constructor(eventInfo: Sys.UI.DomEvent, recordKey: number, fieldKey: string);
+                constructor(
+                    eventInfo: Sys.UI.DomEvent,
+                    recordKey: number,
+                    fieldKey: string,
+                );
                 eventInfo: Sys.UI.DomEvent;
                 recordKey: number;
                 fieldKey: string;
@@ -11247,7 +12749,11 @@ declare namespace SP {
                 recordKey: number;
             }
             class OnEndRenameColumn implements IEventArgs {
-                constructor(columnKey: string, originalColumnTitle: string, newColumnTitle: string);
+                constructor(
+                    columnKey: string,
+                    originalColumnTitle: string,
+                    newColumnTitle: string,
+                );
                 columnKey: string;
                 originalColumnTitle: string;
                 newColumnTitle: string;
@@ -11385,13 +12891,31 @@ declare namespace SP {
             widgetDockStyle: IStyleType.Widget;
             widgetDockHoverStyle: IStyleType.Widget;
             widgetDockPressedStyle: IStyleType.Widget;
-            RegisterCellStyle(styleId: string, cellStyle: IStyleType.Cell): void;
+            RegisterCellStyle(
+                styleId: string,
+                cellStyle: IStyleType.Cell,
+            ): void;
             GetCellStyle(styleId: string): IStyleType.Cell;
-            UpdateSplitterStyleFromCss(styleObject: IStyleType.Splitter, splitterStyleNameCollection: any): void;
-            UpdateHeaderStyleFromCss(styleObject: IStyleType.Header, headerStyleNameCol: any): void;
-            UpdateGridPaneStyleFromCss(styleObject: IStyleType.GridPane, gridStyleNameCollection: any): void;
-            UpdateDefaultCellStyleFromCss(styleObject: IStyleType.Cell, cssClass: string): void;
-            UpdateGroupStylesFromCss(styleObject: IStyleType.Cell, prefix: string): void;
+            UpdateSplitterStyleFromCss(
+                styleObject: IStyleType.Splitter,
+                splitterStyleNameCollection: any,
+            ): void;
+            UpdateHeaderStyleFromCss(
+                styleObject: IStyleType.Header,
+                headerStyleNameCol: any,
+            ): void;
+            UpdateGridPaneStyleFromCss(
+                styleObject: IStyleType.GridPane,
+                gridStyleNameCollection: any,
+            ): void;
+            UpdateDefaultCellStyleFromCss(
+                styleObject: IStyleType.Cell,
+                cssClass: string,
+            ): void;
+            UpdateGroupStylesFromCss(
+                styleObject: IStyleType.Cell,
+                prefix: string,
+            ): void;
         }
         interface IStyleType {}
         namespace IStyleType {
@@ -11514,17 +13038,41 @@ declare namespace SP {
             ) => any;
             static CreateStyle: (styleType: IStyleType, styleProps: any) => any;
             static MergeCellStyles: (majorStyle: any, minorStyle: any) => any;
-            static ApplyCellStyle: (td: HTMLTableCellElement, style: any) => void;
+            static ApplyCellStyle: (
+                td: HTMLTableCellElement,
+                style: any,
+            ) => void;
             static ApplyRowHeaderStyle: (
                 domObj: HTMLElement,
                 style: any,
-                fnGetHeaderSibling: (elem: HTMLElement, previousElem: boolean) => void,
+                fnGetHeaderSibling: (
+                    elem: HTMLElement,
+                    previousElem: boolean,
+                ) => void,
             ) => void;
-            static ApplyCornerHeaderBorderStyle: (domObj: HTMLElement, colStyle: any, rowStyle: any) => void;
-            static ApplyHeaderInnerBorderStyle: (domObj: HTMLElement, bIsRowHeader: any, headerObject: any) => void;
-            static ApplyColumnContextMenuStyle: (domObj: HTMLElement, style: any) => void;
-            static ApplySplitterStyle: (domObj: HTMLElement, style: any) => void;
-            static MakeBorderString: (width: number, style: string, color: string) => string;
+            static ApplyCornerHeaderBorderStyle: (
+                domObj: HTMLElement,
+                colStyle: any,
+                rowStyle: any,
+            ) => void;
+            static ApplyHeaderInnerBorderStyle: (
+                domObj: HTMLElement,
+                bIsRowHeader: any,
+                headerObject: any,
+            ) => void;
+            static ApplyColumnContextMenuStyle: (
+                domObj: HTMLElement,
+                style: any,
+            ) => void;
+            static ApplySplitterStyle: (
+                domObj: HTMLElement,
+                style: any,
+            ) => void;
+            static MakeBorderString: (
+                width: number,
+                style: string,
+                color: string,
+            ) => string;
             static GetCellStyleDefaultBackgroundColor: () => string;
         }
 
@@ -11541,7 +13089,12 @@ declare namespace SP {
         }
 
         class ColumnInfo {
-            constructor(name: string, imgSrc: string, key: string, width: number);
+            constructor(
+                name: string,
+                imgSrc: string,
+                key: string,
+                width: number,
+            );
             /** Column title */
             name: string;
             /** Column image URL.
@@ -11581,12 +13134,23 @@ declare namespace SP {
                 localizedValue: any,
             ) => boolean;
             /** if a particular cell is determined as clickable by fnShouldLinkSingleValue, this function will be called when the cell is clicked */
-            fnSingleValueClicked: (record: IRecord, fieldKey: string, dataValue: any, localizedValue: any) => void;
+            fnSingleValueClicked: (
+                record: IRecord,
+                fieldKey: string,
+                dataValue: any,
+                localizedValue: any,
+            ) => void;
             /** this is used when you need to make some of the cells in the column readonly, but at the same time keep others editable */
-            fnGetCellEditMode: (record: IRecord, fieldKey: string) => JsGrid.EditMode;
+            fnGetCellEditMode: (
+                record: IRecord,
+                fieldKey: string,
+            ) => JsGrid.EditMode;
             /** this function should return name of the display control for the given cell in the column
                 the name should be previously associated with the display control via SP.JsGrid.PropertyType.Utils.RegisterDisplayControl method */
-            fnGetDisplayControlName: (record: IRecord, fieldKey: string) => string;
+            fnGetDisplayControlName: (
+                record: IRecord,
+                fieldKey: string,
+            ) => string;
             /** this function should return name of the edit control for the given cell in the column
                 the name should be previously associated with the edit control via SP.JsGrid.PropertyType.Utils.RegisterEditControl method */
             fnGetEditControlName: (record: IRecord, fieldKey: string) => string;
@@ -11596,12 +13160,24 @@ declare namespace SP {
                 it is also possible to create your own widgets
                 usually this function is not used, and instead, widget control names are determined via PropertyType
              */
-            fnGetWidgetControlNames: (record: IRecord, fieldKey: string) => string[];
+            fnGetWidgetControlNames: (
+                record: IRecord,
+                fieldKey: string,
+            ) => string[];
             /** this function should return id of the style for the given cell in the column
                 styles and their ids are registered for a JsGridControl via jsGridParams.styleManager.RegisterCellStyle method */
-            fnGetCellStyleId: (record: IRecord, fieldKey: string, dataValue: any) => string;
+            fnGetCellStyleId: (
+                record: IRecord,
+                fieldKey: string,
+                dataValue: any,
+            ) => string;
             /** set custom tooltip for the given cell in the column. by default, localized value is displayed as the tooltip */
-            fnGetSingleValueTooltip: (record: IRecord, fieldKey: string, dataValue: any, localizedValue: any) => string;
+            fnGetSingleValueTooltip: (
+                record: IRecord,
+                fieldKey: string,
+                dataValue: any,
+                localizedValue: any,
+            ) => string;
         }
 
         interface IRecord {
@@ -11633,10 +13209,18 @@ declare namespace SP {
         }
 
         class RecordFactory {
-            constructor(gridFieldMap: any, keyColumnName: string, fnGetPropType: any);
+            constructor(
+                gridFieldMap: any,
+                keyColumnName: string,
+                fnGetPropType: any,
+            );
             gridFieldMap: any;
             /** Create a new record */
-            MakeRecord(dataPropMap: any, localizedPropMap: any, bKeepRawData: boolean): IRecord;
+            MakeRecord(
+                dataPropMap: any,
+                localizedPropMap: any,
+                bKeepRawData: boolean,
+            ): IRecord;
         }
 
         interface IPropertyBase {
@@ -11716,7 +13300,11 @@ declare namespace SP {
                 fieldKey: string,
                 newValue: any,
                 bIsLocalized: boolean,
-                fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                fnCallback: (args: {
+                    isValid: boolean;
+                    dataValue: any;
+                    normalizedLocValue: string;
+                }) => void,
                 fnError: any,
             ): void;
         }
@@ -11728,7 +13316,11 @@ declare namespace SP {
             GetImageSource(record: IRecord, dataValue: any): string;
             GetStyleId(dataValue: any): string;
             GetIsLimitedToList(): boolean;
-            GetSerializableLookupPropType(): { items: any[]; id: string; bLimitToList: boolean };
+            GetSerializableLookupPropType(): {
+                items: any[];
+                id: string;
+                bLimitToList: boolean;
+            };
         }
 
         interface IMultiValuePropertyType extends IPropertyType {
@@ -11765,7 +13357,10 @@ declare namespace SP {
             ): void;
 
             /** Register a custom property type, where display and edit controls, and also widgets, are derived from the specified parent property type. */
-            static RegisterNewDerivedCustomPropType(propType: IPropertyType, baseTypeName: string): void;
+            static RegisterNewDerivedCustomPropType(
+                propType: IPropertyType,
+                baseTypeName: string,
+            ): void;
         }
         namespace PropertyType {
             class String implements IPropertyType {
@@ -11776,7 +13371,11 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 toString(): string;
@@ -11789,7 +13388,11 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 GetItems(fnCallback: any): void;
@@ -11798,7 +13401,11 @@ declare namespace SP {
                 GetImageSource(record: IRecord, dataValue: any): string;
                 GetStyleId(dataValue: any): string;
                 GetIsLimitedToList(): boolean;
-                GetSerializableLookupPropType(): { items: any[]; id: string; bLimitToList: boolean };
+                GetSerializableLookupPropType(): {
+                    items: any[];
+                    id: string;
+                    bLimitToList: boolean;
+                };
             }
             class CheckBoxBoolean implements IPropertyType {
                 constructor();
@@ -11808,7 +13415,11 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 DataToLocalized(dataValue: any): string;
@@ -11823,7 +13434,11 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 DataToLocalized(dataValue: any): string;
@@ -11837,7 +13452,11 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 bMultiValue: boolean;
@@ -11859,22 +13478,37 @@ declare namespace SP {
                     fieldKey: string,
                     newValue: any,
                     bIsLocalized: boolean,
-                    fnCallback: (args: { isValid: boolean; dataValue: any; normalizedLocValue: string }) => void,
+                    fnCallback: (args: {
+                        isValid: boolean;
+                        dataValue: any;
+                        normalizedLocValue: string;
+                    }) => void,
                     fnError: any,
                 ): void;
                 bHyperlink: boolean;
                 DataToLocalized(dataValue: any): string;
                 GetAddress(dataValue: any): string;
                 /** Returns string like this: '"http:// site.com, Site title"' */
-                GetCopyValue(record: IRecord, dataValue: any, locValue: string): string;
+                GetCopyValue(
+                    record: IRecord,
+                    dataValue: any,
+                    locValue: string,
+                ): string;
                 toString(): string;
             }
 
             class Utils {
-                static RegisterDisplayControl(name: string, singleton: any, requiredFunctionNames: string[]): void;
+                static RegisterDisplayControl(
+                    name: string,
+                    singleton: any,
+                    requiredFunctionNames: string[],
+                ): void;
                 static RegisterEditControl(
                     name: string,
-                    factory: (gridContext: IEditControlGridContext, gridTextInputElement: HTMLElement) => IEditControl,
+                    factory: (
+                        gridContext: IEditControlGridContext,
+                        gridTextInputElement: HTMLElement,
+                    ) => IEditControl,
                     requiredFunctionNames: string[],
                 ): void;
                 static RegisterWidgetControl(
@@ -11883,7 +13517,10 @@ declare namespace SP {
                     requiredFunctionNames: string[],
                 ): void;
 
-                static UpdateDisplayControlForPropType(propTypeName: string, displayControlType: string): void;
+                static UpdateDisplayControlForPropType(
+                    propTypeName: string,
+                    displayControlType: string,
+                ): void;
             }
         }
 
@@ -11922,10 +13559,22 @@ declare namespace SP {
                         bIncludeInvalidPropUpdates: boolean,
                         bLastEndEvent: boolean,
                     ): any;
-                    GetChangesAsJson(changeQuery: any, optfnPreProcessUpdateForSerialize?: any): string;
-                    GetUniquePropertyChanges(changeQuery: any, optfnFilter?: any): any;
-                    RegisterEvent(changeKey: IChangeKey, eventObject: any): void;
-                    UnregisterEvent(changeKey: IChangeKey, eventObject: any): void;
+                    GetChangesAsJson(
+                        changeQuery: any,
+                        optfnPreProcessUpdateForSerialize?: any,
+                    ): string;
+                    GetUniquePropertyChanges(
+                        changeQuery: any,
+                        optfnFilter?: any,
+                    ): any;
+                    RegisterEvent(
+                        changeKey: IChangeKey,
+                        eventObject: any,
+                    ): void;
+                    UnregisterEvent(
+                        changeKey: IChangeKey,
+                        eventObject: any,
+                    ): void;
                 };
                 Clear(): void;
                 NotifySynchronizeToChange(changeKey: IChangeKey): void;
@@ -11947,7 +13596,12 @@ declare namespace SP {
             column: ColumnInfo;
             field: GridField;
             fieldKey: string;
-            cellExpandSpace: { left: number; top: number; fight: number; bottom: number };
+            cellExpandSpace: {
+                left: number;
+                top: number;
+                fight: number;
+                bottom: number;
+            };
             SetCurrentValue(value: any): void;
         }
 
@@ -11962,8 +13616,7 @@ declare namespace SP {
             Hide(element: HTMLElement): void;
         }
 
-        namespace EditControl {
-        }
+        namespace EditControl {}
 
         interface IEditControl {
             SupportedWriteMode?: SP.JsGrid.EditActorWriteType | undefined;
@@ -11987,11 +13640,17 @@ declare namespace SP {
         class StaticDataSource {
             constructor(
                 jsGridData: IGridData,
-                optFnGetPropType?: (recordKey: string, key: string, dataPropMap: { [name: string]: any }) => any,
+                optFnGetPropType?: (
+                    recordKey: string,
+                    key: string,
+                    dataPropMap: { [name: string]: any },
+                ) => any,
             );
             AddColumn(gridField: SP.JsGrid.GridField, values: IValue[]): void;
             RemoveColumn(fieldKey: string): void;
-            InitJsGridParams(optGridParams?: JsGridControl.Parameters): JsGridControl.Parameters;
+            InitJsGridParams(
+                optGridParams?: JsGridControl.Parameters,
+            ): JsGridControl.Parameters;
         }
 
         interface IGridData {
@@ -12062,7 +13721,9 @@ declare namespace SP {
             GroupingPrefix?: string | undefined;
             RecordKeyHash?: string | undefined;
             RecordKeyOrderChanged?: any;
-            GridOperationalConstantsFieldKeyMap?: { [index: number]: string } | undefined;
+            GridOperationalConstantsFieldKeyMap?:
+                | { [index: number]: string }
+                | undefined;
         }
 
         interface IFieldInfo {
@@ -12134,7 +13795,9 @@ declare namespace SP {
 
 declare namespace SP {
     class GanttControl {
-        static WaitForGanttCreation(callack: (control: GanttControl) => void): void;
+        static WaitForGanttCreation(
+            callack: (control: GanttControl) => void,
+        ): void;
         static Instances: GanttControl[];
         static FnGanttCreationCallback: Array<(control: GanttControl) => void>;
 
@@ -12427,10 +14090,19 @@ declare namespace Srch {
 
     class Refinement extends DisplayControl {
         static createRefinementTextbox(name: string): Element;
-        static submitMultiRefinement(name: string, control: Refinement, useContains: boolean, useKQL: boolean): void;
-        static ensureUserSpecifiedRefinerValueHasWhiteSpaceQuotes(inputText: string): string;
+        static submitMultiRefinement(
+            name: string,
+            control: Refinement,
+            useContains: boolean,
+            useKQL: boolean,
+        ): void;
+        static ensureUserSpecifiedRefinerValueHasWhiteSpaceQuotes(
+            inputText: string,
+        ): string;
         static getRefinementLocalizedTitle(propertyName: string): string;
-        static getRefinementTitle(currentRefinemntControl: RefinementControl): string;
+        static getRefinementTitle(
+            currentRefinemntControl: RefinementControl,
+        ): string;
         /** Gets expanded state of the specified filter from cookie */
         static getExpanded(filterName: string): string;
         /** Save expanded state of the specified filter to cookie */
@@ -12445,7 +14117,9 @@ declare namespace Srch {
         constructor(elem: Element);
 
         get_selectedRefinementControls(): RefinementControl[];
-        set_selectedRefinementControls(value: RefinementControl[]): RefinementControl[];
+        set_selectedRefinementControls(
+            value: RefinementControl[],
+        ): RefinementControl[];
         get_useManagedNavigationRefiners(): boolean;
         set_useManagedNavigationRefiners(value: boolean): boolean;
         get_emptyRefinementMessageId(): string;
@@ -12468,11 +14142,22 @@ declare namespace Srch {
             tokenToDisplayValueMap: any,
         ): void;
         updateRefinersJSON(refinersJSON: string): void;
-        updateRefiners(refiners: any[], op: string, useKQL: boolean, tokenToDisplayValueMap: any): void;
+        updateRefiners(
+            refiners: any[],
+            op: string,
+            useKQL: boolean,
+            tokenToDisplayValueMap: any,
+        ): void;
         removeRefinementCategory(rcs: any, filterName: string): void;
-        replaceRefinementFilter(oldRefinementFilter: any, newRefinementFilter: any): void;
+        replaceRefinementFilter(
+            oldRefinementFilter: any,
+            newRefinementFilter: any,
+        ): void;
         hasRefinementFilter(filterName: string, filterToken: string): boolean;
-        hasAllRefinementFilters(filterName: string, filterTokens: string[]): boolean;
+        hasAllRefinementFilters(
+            filterName: string,
+            filterTokens: string[],
+        ): boolean;
         hasRefinementCategory(refinementName: string): boolean;
         getCurrentRefinementCategory(refinementName: string): any;
         /** Gets refinement control with the specified propertyName */
@@ -12484,7 +14169,11 @@ declare namespace Srch {
     }
 
     class RefinementControl {
-        constructor(propertyName: string, spec: string, renderTemplateId: string);
+        constructor(
+            propertyName: string,
+            spec: string,
+            renderTemplateId: string,
+        );
 
         propertyName: string;
         spec: string;
@@ -12517,9 +14206,15 @@ declare namespace Srch {
     }
 
     class Result extends DisplayControl {
-        static parsePropertyMappingWithSlotDisplayNames(mappings: any): { [key: string]: any };
-        static parsePropertyMappingsString(mappings: any): { [key: string]: any };
-        static getSelectedPropertiesFromMappingDictionary(propMappings: any): any[];
+        static parsePropertyMappingWithSlotDisplayNames(mappings: any): {
+            [key: string]: any;
+        };
+        static parsePropertyMappingsString(mappings: any): {
+            [key: string]: any;
+        };
+        static getSelectedPropertiesFromMappingDictionary(
+            propMappings: any,
+        ): any[];
 
         constructor(elem: Element);
 
@@ -12575,7 +14270,9 @@ declare namespace Srch {
         set_useSimplifiedQueryBuilder(value: boolean): boolean;
         get_preloadedItemTemplateIds(): string[];
         set_preloadedItemTemplateIds(value: string[]): string[];
-        processResultReady(resultTableCollection: Microsoft.SharePoint.Client.Search.Query.ResultTableCollection): void;
+        processResultReady(
+            resultTableCollection: Microsoft.SharePoint.Client.Search.Query.ResultTableCollection,
+        ): void;
         render(): void;
         scriptApplication_PreLoad(sender: any, e: any): void;
         sortOrRank(sortRankName: string): void;
@@ -12585,7 +14282,9 @@ declare namespace Srch {
         changeQueryTerm(queryTerm: any): void;
         viewDuplicates(docId: number): void;
         /** Returns true if the specified table has results and is enabled to be shown by this control */
-        shouldShowTable(resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable): boolean;
+        shouldShowTable(
+            resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable,
+        ): boolean;
 
         setAriaCollapsed: (element: HTMLElement) => void;
         get_showQuerySuggestions: () => boolean;
@@ -12812,8 +14511,14 @@ declare namespace Srch {
 
     class RefinementUtil {
         static stringValueToEqualsToken(x: string): string;
-        static peoplePickerApplyIdPrefix(control: Srch.ClientControl | Srch.RefinementControl): string;
-        static peoplePickerPrep(id: string, refiner: Srch.RefinementControl, clientControl: Srch.Refinement): string;
+        static peoplePickerApplyIdPrefix(
+            control: Srch.ClientControl | Srch.RefinementControl,
+        ): string;
+        static peoplePickerPrep(
+            id: string,
+            refiner: Srch.RefinementControl,
+            clientControl: Srch.Refinement,
+        ): string;
     }
 
     type RenderFunction = (ctx: any) => string;
@@ -12835,11 +14540,23 @@ declare namespace Srch {
         static isRTL(): boolean;
 
         /** Ensures that the given value is not null or undefined; throws an exception otherwise. */
-        static ensureNotNullOrUndefined(value: any, context: any, methodName: string, paraName: string): void;
+        static ensureNotNullOrUndefined(
+            value: any,
+            context: any,
+            methodName: string,
+            paraName: string,
+        ): void;
         /** Ensures that the given value is not null, undefined or empty; throws an exception otherwise. */
-        static ensureNotNullOrEmptyString(value: string, context: any, methodName: string, paraName: string): void;
+        static ensureNotNullOrEmptyString(
+            value: string,
+            context: any,
+            methodName: string,
+            paraName: string,
+        ): void;
         /** Returns copy of the passed source dictionary */
-        static copyDictionary(source: { [key: string]: any }): { [key: string]: any };
+        static copyDictionary(source: { [key: string]: any }): {
+            [key: string]: any;
+        };
         /** Returns true if the obj parameter is null, undefined, number or string */
         static isPrimitive(obj: any): boolean;
         /** Returns true if the obj parameter is array */
@@ -12847,13 +14564,24 @@ declare namespace Srch {
         /** Safely pushes item to array (does nothing if the array is null or undefined) */
         static appendArray(array: any[], item: any): void;
         /** Safely sets field of an object (does nothing if either object or fieldName is null/empty); returns true if value was set */
-        static setFieldOnObject(targetObject: any, fieldName: string, fieldValue: any): boolean;
+        static setFieldOnObject(
+            targetObject: any,
+            fieldName: string,
+            fieldValue: any,
+        ): boolean;
         /** Safely gets field of an object (returns null if object is null or undefined) */
         static getFieldOnObject(targetObject: any, fieldName: string): any;
         /** Safely gets field of an object or creates it if it is null or undefined */
-        static getOrCreateFieldOnObject(targetObject: any, fieldName: string, defaultValue: any): any;
+        static getOrCreateFieldOnObject(
+            targetObject: any,
+            fieldName: string,
+            defaultValue: any,
+        ): any;
         /** Safely gets field of an object (returns empty string instead of null as "getFieldOnObject") */
-        static getStringFieldOnObject(targetObject: any, fieldName: string): string;
+        static getStringFieldOnObject(
+            targetObject: any,
+            fieldName: string,
+        ): string;
         /** Returns true if the specified item is found in the specified array (uses '===' for comparing) */
         static isInArray(array: any[], item: any): boolean;
         /** Removes the specified item from the specified array and returns array that has the deleted item */
@@ -12865,7 +14593,13 @@ declare namespace Srch {
         /** Removes the specified CSS class from the element */
         static ensureCSSClassNameNotExist(e: Element, className: string): void;
         /** Adds cookie with specified parameters */
-        static setCookie(name: string, value: string, expires?: Date, domain?: string, path?: string): void;
+        static setCookie(
+            name: string,
+            value: string,
+            expires?: Date,
+            domain?: string,
+            path?: string,
+        ): void;
         /** Gets cookie by name */
         static getCookie(name: string): string;
         /** Returns true if the specified URL belongs to the specified host name */
@@ -12873,11 +14607,24 @@ declare namespace Srch {
         /** Returns the hostname of current page */
         static getHostName(): string;
 
-        static trace(c: Srch.ClientControl, method: string, message: string): void;
-        static traceFormatted(c: Srch.ClientControl, method: string, format: string, ...values: string[]): void;
+        static trace(
+            c: Srch.ClientControl,
+            method: string,
+            message: string,
+        ): void;
+        static traceFormatted(
+            c: Srch.ClientControl,
+            method: string,
+            format: string,
+            ...values: string[]
+        ): void;
 
         /** Same as $addHandler with safety checks */
-        static addHandler(element: Element, eventName: string, handler: (instance: any, eventArgs: any) => void): void;
+        static addHandler(
+            element: Element,
+            eventName: string,
+            handler: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Same as $removeHandler with safety checks */
         static removeHandler(
             element: Element,
@@ -12888,11 +14635,17 @@ declare namespace Srch {
         /** Returns true if the specified element is a descendant of the container element */
         static isDescendant(element: Element, container: Element): boolean;
         /** Returns the closest to startingElement parent of the specified tag name */
-        static getParentElementByName(startingElement: Element, tagName: string): Element;
+        static getParentElementByName(
+            startingElement: Element,
+            tagName: string,
+        ): Element;
         /** Returns the #s4-workspace element or if not found, then the fallback element */
         static getWorkspace(fallback: Element): Element;
         /** Returns specified by attributeName attribute of startingElement or of it's closest parent who has it */
-        static getParentAttributeByName(startingElement: Element, attributeName: string): string;
+        static getParentAttributeByName(
+            startingElement: Element,
+            attributeName: string,
+        ): string;
         /** Returns the ClientControl associated with specified DOM element */
         static getClientComponent(e: Element): ClientControl;
 
@@ -12906,7 +14659,10 @@ declare namespace Srch {
         /** Ensures that the given URL protocol value is allowed. Returns the specified URL value if the protocol is allowed; empty string otherwise. */
         static ensureAllowedProtocol(value: string): string;
         /** Indicates whether the specified protocol is allowed. */
-        static isProtocolAllowed(value: string, allowRelativeUrl: boolean): boolean;
+        static isProtocolAllowed(
+            value: string,
+            allowRelativeUrl: boolean,
+        ): boolean;
 
         /** Returns true if the URL is a relative URL */
         static isUrlRelative(url: string): boolean;
@@ -12933,17 +14689,37 @@ declare namespace Srch {
         /** Returns true if specified by logoUrl image is one of default site logos */
         static isDefaultSiteLogo(logoUrl: string): boolean;
         /** Returns formatted date */
-        static toFormattedDate(dateValue: Date, dateTimeFormatId?: string): string;
+        static toFormattedDate(
+            dateValue: Date,
+            dateTimeFormatId?: string,
+        ): string;
         /** Returns formatted number */
-        static toFormattedNumber(num: number, defaultDecimalPlacesIfNotInt: number): string;
+        static toFormattedNumber(
+            num: number,
+            defaultDecimalPlacesIfNotInt: number,
+        ): string;
         /** If number is more than 1000, rounds up three last digits, e.g. 72389 => '72,000+'. If number is more than 100000, returns '100,000+' */
         static toFriendlyNumber(num: number): string;
         /** Returns human-readable size in kilobytes/megabytes etc. (the captions are localized) */
-        static toFileSizeDisplay(numberOfBytes: number, showDecimalPart: boolean): string;
+        static toFileSizeDisplay(
+            numberOfBytes: number,
+            showDecimalPart: boolean,
+        ): string;
 
-        static getVideoImageWithFallbackSource(valueObject: any, width: number, height: number): string;
-        static getImageSourceWithRendition(imageInfo: any, width: number, height: number): string;
-        static parseTypedRangeToken(rangeFilterToken: string, objToStoreFilterTokenType: any): any;
+        static getVideoImageWithFallbackSource(
+            valueObject: any,
+            width: number,
+            height: number,
+        ): string;
+        static getImageSourceWithRendition(
+            imageInfo: any,
+            width: number,
+            height: number,
+        ): string;
+        static parseTypedRangeToken(
+            rangeFilterToken: string,
+            objToStoreFilterTokenType: any,
+        ): any;
         static modifyMediaDurationRefinementName(resultRow: any): void;
         static getDeepLinks(deeplinks: string, maxRows: number): string;
         static truncateUrl(url: string, maxChars: number): string;
@@ -12956,9 +14732,15 @@ declare namespace Srch {
          *  @param name Identifier of the template. Usually template is registered twice: by URL and by name.
          *  @param template The display template. It can be either string, or function, that gets the CSR context object and returns HTML string
          */
-        static registerRenderTemplateByName(name: string, templateFunction: string | RenderFunction): void;
+        static registerRenderTemplateByName(
+            name: string,
+            templateFunction: string | RenderFunction,
+        ): void;
         /** Returns display template registered (can be either string or function) */
-        static getRenderTemplateByName(name: string, renderCtx: any): string | RenderFunction;
+        static getRenderTemplateByName(
+            name: string,
+            renderCtx: any,
+        ): string | RenderFunction;
 
         static addRenderContextCallback(
             renderCtx: any,
@@ -12967,10 +14749,20 @@ declare namespace Srch {
             enforceUnique: any,
             templateFunction: any,
         ): void;
-        static setItemRenderWrapper(renderCtx: any, itemRenderWrapperFunction: any, templateFunction: any): any;
-        static logRenderingErrorMessageToContext(renderCtx: any, messageText: any, operationName: any): void;
+        static setItemRenderWrapper(
+            renderCtx: any,
+            itemRenderWrapperFunction: any,
+            templateFunction: any,
+        ): any;
+        static logRenderingErrorMessageToContext(
+            renderCtx: any,
+            messageText: any,
+            operationName: any,
+        ): void;
         /** Gets the URL of template based on display template function or the rendering context */
-        static getTemplateUrlFromFunctionOrRenderCtx(templateFunctionOrRenderCtx: any): string;
+        static getTemplateUrlFromFunctionOrRenderCtx(
+            templateFunctionOrRenderCtx: any,
+        ): string;
         static createErrorObjectWithExecContext(
             messageText: any,
             operationName: any,
@@ -12991,7 +14783,11 @@ declare namespace Srch {
         /** Prevents default event action and stops further propagation of the event in the DOM */
         static cancelEvent(e: Event): void;
         /** Prevents default event action or/and stops further propagation of the event in the DOM */
-        static cancelEventEx(e: Event, preventDefault: boolean, stopPropagation: boolean): void;
+        static cancelEventEx(
+            e: Event,
+            preventDefault: boolean,
+            stopPropagation: boolean,
+        ): void;
         /** Gets a value from 'Properties' field object of the specified parent object */
         static getTableProperty(parent: any, propName: string): any;
         /** Concatenates two URL fragments and returns resulting URL */
@@ -13001,43 +14797,90 @@ declare namespace Srch {
         /** Returns URL to the folder.gif image */
         static getFolderIconUrl(): string;
         /** Returns URL of the appropriate file image based on the file type identifier (see getFriendlyNameForFileExtension) */
-        static getIconUrlByFileExtension(item: string, defaultIconPath?: string): string;
+        static getIconUrlByFileExtension(
+            item: string,
+            defaultIconPath?: string,
+        ): string;
 
         /** Returns string that contains safe call to HP.Show, passing over the itemId, hpContainerId and templateUrl parameters, and supplying true for wide parameter. */
-        static getShowHoverPanelCallbackWide(itemId: string, hpContainerId: string, templateUrl: string): string;
+        static getShowHoverPanelCallbackWide(
+            itemId: string,
+            hpContainerId: string,
+            templateUrl: string,
+        ): string;
         /** Returns string that contains safe call to HP.Show, passing over the itemId, hpContainerId and templateUrl parameters, and supplying false for wide parameter. */
-        static getShowHoverPanelCallback(itemId: string, hpContainerId: string, templateUrl: string): string;
+        static getShowHoverPanelCallback(
+            itemId: string,
+            hpContainerId: string,
+            templateUrl: string,
+        ): string;
         /** Returns string that contains safe call to HP.Hide */
         static getHideHoverPanelCallback(): string;
 
-        static getHighlightedProperty(key: string, result: any, property: string): any;
+        static getHighlightedProperty(
+            key: string,
+            result: any,
+            property: string,
+        ): any;
         static processHHXML(pre: string): string;
         static createXMLDocument(xml: string): XMLDocument;
-        static getUnEncodedMultiValuedResults(multiValue: string, maxItems: number, rawDelimiter: string): string;
+        static getUnEncodedMultiValuedResults(
+            multiValue: string,
+            maxItems: number,
+            rawDelimiter: string,
+        ): string;
         static getTrimmedString(value: string, cutOff: number): string;
-        static trimTitle(title: string, maximumLengthInChars: number, numberOfTermsToUse: number): string;
-        static extractReplyTitleFromSummary(hitHighlightedSummary: string, titleLength: number): string;
-        static getTrimmedProcessedHHXMLString(value: string, cutOff: number): string;
+        static trimTitle(
+            title: string,
+            maximumLengthInChars: number,
+            numberOfTermsToUse: number,
+        ): string;
+        static extractReplyTitleFromSummary(
+            hitHighlightedSummary: string,
+            titleLength: number,
+        ): string;
+        static getTrimmedProcessedHHXMLString(
+            value: string,
+            cutOff: number,
+        ): string;
         static getMultipleHHXMLNodeValues(
             xmlDoc: XMLDocument,
             nodeName: string,
             numItems: number,
             rawDelimiter: string,
         ): string;
-        static getSingleHHXMLNodeValue(xmlDoc: XMLDocument, nodeName: string): string;
+        static getSingleHHXMLNodeValue(
+            xmlDoc: XMLDocument,
+            nodeName: string,
+        ): string;
         static isTableTypeof(resultTable: any, tableTypeName: string): boolean;
         static isSubstrateTable(resultTable: any): boolean;
         static getTableOfType(
             tableCollection: Microsoft.SharePoint.Client.Search.Query.ResultTableCollection,
             tableTypeName: string,
         ): Microsoft.SharePoint.Client.Search.Query.ResultTable;
-        static isFirstPromotedBlock(resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable): boolean;
-        static isFirstRankedBlock(resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable): boolean;
-        static isIntentTable(resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable): boolean;
-        static createBehavior(id: string, type: any, properties: any, targetElementId: string): any;
+        static isFirstPromotedBlock(
+            resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable,
+        ): boolean;
+        static isFirstRankedBlock(
+            resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable,
+        ): boolean;
+        static isIntentTable(
+            resultTable: Microsoft.SharePoint.Client.Search.Query.ResultTable,
+        ): boolean;
+        static createBehavior(
+            id: string,
+            type: any,
+            properties: any,
+            targetElementId: string,
+        ): any;
 
         /** Uses SPAnimation to animate an element */
-        static animate(element: Element, animationID: any, finishFunc: any): void;
+        static animate(
+            element: Element,
+            animationID: any,
+            finishFunc: any,
+        ): void;
         static hideElement(element: Element): void;
         static showElement(element: Element): void;
         static positionElement(element: Element, offset: string): void;
@@ -13045,7 +14888,12 @@ declare namespace Srch {
         static shouldAnimate(dp: any): boolean;
         static animateResults(result: Result, userAction: any): void;
 
-        static loadScripts(scriptReferences: string[], success: any, failure: any, timeout: number): void;
+        static loadScripts(
+            scriptReferences: string[],
+            success: any,
+            failure: any,
+            timeout: number,
+        ): void;
         static appendScriptsToLoad(scripts: string[], script: string): void;
         static registerLoadedScripts(scripts: string[]): void;
 
@@ -13067,20 +14915,42 @@ declare namespace Srch {
 
         static includeCSS(templateLink: string, relativeLink: string): void;
         static includeScript(templateLink: string, scriptLink: string): void;
-        static includeLanguageScript(templateLink: string, scriptLink: string): void;
+        static includeLanguageScript(
+            templateLink: string,
+            scriptLink: string,
+        ): void;
 
         static isSPFSKU(): boolean;
         /** Retrieves localized string with the specified id */
         static loadResource(id: string): string;
         /** Retrieves localized string with the specified id */
-        static loadResourceForTemplate(id: string, templateFunc: (ctx: any) => string): string;
+        static loadResourceForTemplate(
+            id: string,
+            templateFunc: (ctx: any) => string,
+        ): string;
         /** Registers in system resources defined by the dictionary object */
-        static registerResourceDictionary(locale: string, dict: { [key: string]: string }): void;
+        static registerResourceDictionary(
+            locale: string,
+            dict: { [key: string]: string },
+        ): void;
 
-        static restorePath(el: Element, originalText: string, selectText: string): void;
+        static restorePath(
+            el: Element,
+            originalText: string,
+            selectText: string,
+        ): void;
         static selectPath(text: string, el: Element): void;
-        static setPath(e: Event, el: Element, text: string, originalText: string): void;
-        static restoreText(el: Element, originalText: string, selectText: string): void;
+        static setPath(
+            e: Event,
+            el: Element,
+            text: string,
+            originalText: string,
+        ): void;
+        static restoreText(
+            el: Element,
+            originalText: string,
+            selectText: string,
+        ): void;
         static selectText(text: string, el: Element): void;
 
         /** Renders datetime value in friendly format into element specified by targetElementID */
@@ -13090,7 +14960,10 @@ declare namespace Srch {
             calendarType?: number,
         ): void;
         /** Returns human-friendly representation of the datetime value, e.g. "A few seconds ago"" */
-        static getFriendlyTimeInterval(dateTimeSince: Date, calendarType: number): string;
+        static getFriendlyTimeInterval(
+            dateTimeSince: Date,
+            calendarType: number,
+        ): string;
         /** Gets calendar type according to the current regional settings */
         static getCalendarType(): any;
 
@@ -13192,23 +15065,35 @@ declare namespace Srch {
         get_pagePath(): string;
 
         /** Adds handler for the preload event */
-        add_preLoad(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        add_preLoad(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Removes handler for the preload event */
-        remove_preLoad(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        remove_preLoad(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Raises the preload event */
         raisePreLoadEvent(): void;
 
         /** Adds handler for the load event */
-        add_load(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        add_load(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Removes handler for the load event */
-        remove_load(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        remove_load(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Raises the load event */
         raiseLoadEvent(): void;
 
         /** Adds handler for the postload event */
-        add_postLoad(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        add_postLoad(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Removes handler for the postload event */
-        remove_postLoad(handlerFunction: (instance: any, eventArgs: any) => void): void;
+        remove_postLoad(
+            handlerFunction: (instance: any, eventArgs: any) => void,
+        ): void;
         /** Raises the postload event */
         raisePostLoadEvent(): void;
 
@@ -13218,7 +15103,9 @@ declare namespace Srch {
         /** Registers DisplayControl, DataProvider or SearchBox in the system.
          * After registration the controls will be correctly processed in the page search context.
          */
-        registerClientControl(clientControl: DisplayControl | DataProvider | SearchBox): void;
+        registerClientControl(
+            clientControl: DisplayControl | DataProvider | SearchBox,
+        ): void;
 
         /** Puts specified hash-key address into the current page location.
          * @param url The hash-key, e.g. '#k=test'
@@ -13916,17 +15803,32 @@ declare function $findResultObjectFromDOM(e: Element, type: string): void;
 declare function $getItemValue(ctx: any, nameToLookup: string): any;
 declare function $getCachedItemValue(ctx: any, nameToLookup: string): any;
 
-declare function $includeScript(templateLink: string, relativeLink: string): void;
+declare function $includeScript(
+    templateLink: string,
+    relativeLink: string,
+): void;
 declare function $includeCSS(templateLink: string, scriptLink: string): void;
-declare function $includeLanguageScript(templateLink: string, scriptLink: string): any;
+declare function $includeLanguageScript(
+    templateLink: string,
+    scriptLink: string,
+): any;
 /** Registers in system resources defined by the dictionary object (alias for Srch.U.registerResourceDictionary) */
-declare function $registerResourceDictionary(locale: string, dict: { [key: string]: string }): void;
+declare function $registerResourceDictionary(
+    locale: string,
+    dict: { [key: string]: string },
+): void;
 /** Retrieves localized string with the specified id */
 declare function $resource(id: string): string;
 /** (calls Srch.U.setItemRenderWrapper) */
-declare function $setItemWrapperCallback(renderCtx: any, itemWrapperFunction: any): void;
+declare function $setItemWrapperCallback(
+    renderCtx: any,
+    itemWrapperFunction: any,
+): void;
 /** (calls Srch.U.addRenderContextCallback) */
-declare function $addRenderContextCallback(renderCtx: any, itemWrapperFunction: any): void;
+declare function $addRenderContextCallback(
+    renderCtx: any,
+    itemWrapperFunction: any,
+): void;
 
 // ------- CUI namespace -------
 declare namespace CUI {
@@ -14202,7 +16104,12 @@ declare namespace CUI {
         _lastHeightUpdate: number;
         _lastTopUpdate: number;
         _lastLeftUpdate: number;
-        constructor(root: CUI.Component, id: string, title: string, description: string);
+        constructor(
+            root: CUI.Component,
+            id: string,
+            title: string,
+            description: string,
+        );
         createChildArray(): void;
         get_id(): string;
         set_id(id: string): void;
@@ -14232,7 +16139,11 @@ declare namespace CUI {
         get_visibleInDOM(): boolean;
         ensureDOMElementAndEmpty(): void;
         appendChildrenToElement(elm: Element): void;
-        raiseCommandEvent(commandId: string, type: CommandType, properties: any);
+        raiseCommandEvent(
+            commandId: string,
+            type: CommandType,
+            properties: any,
+        );
         getTextValue(): string;
         receiveFocus(): void;
         onMenuClosed(): void;
@@ -14244,13 +16155,23 @@ declare namespace CUI {
     class Menu extends CUI.Component {}
 
     class ContextMenu extends CUI.Menu {
-        constructor(root, id: string, title: string, description: string, maxWidth: string);
+        constructor(
+            root,
+            id: string,
+            title: string,
+            description: string,
+            maxWidth: string,
+        );
     }
 
     class ContextMenuDock extends CUI.Component {}
 
     class Control implements Sys.IDisposable, CUI.IMenuItem {
-        constructor(root: CUI.Root, id: string, properties: CUI.ControlProperties);
+        constructor(
+            root: CUI.Root,
+            id: string,
+            properties: CUI.ControlProperties,
+        );
         dispose();
         get_id(): string;
         get_root(): CUI.Root;
@@ -14260,7 +16181,12 @@ declare namespace CUI {
     }
 
     class MenuLauncher extends CUI.Control implements IModalController {
-        constructor(root: CUI.Root, id: string, properties: CUI.ControlProperties, menu);
+        constructor(
+            root: CUI.Root,
+            id: string,
+            properties: CUI.ControlProperties,
+            menu,
+        );
     }
 
     class ContextMenuLauncher extends MenuLauncher {}
@@ -14338,7 +16264,12 @@ declare namespace CUI {
     class DeclarativeTemplate extends CUI.Template {}
 
     class RibbonComponent extends CUI.Component {
-        constructor(ribbon: CUI.Ribbon, id: string, title: string, description: string);
+        constructor(
+            ribbon: CUI.Ribbon,
+            id: string,
+            title: string,
+            description: string,
+        );
         get_ribbon(): CUI.Ribbon;
     }
 
@@ -14400,7 +16331,12 @@ declare namespace CUI {
          * @param type  2 - OneRow, 3 - TwoRow, 4 - ThreeRow.
          * @param alignment 0 - Top, 2  - Middle,
          */
-        constructor(ribbon: CUI.Ribbon, id: string, type: RowType, alignment: Alignment);
+        constructor(
+            ribbon: CUI.Ribbon,
+            id: string,
+            type: RowType,
+            alignment: Alignment,
+        );
         get_cssClass(): string;
         get_type(): number;
         get_alignment(): number;
@@ -14495,7 +16431,11 @@ declare namespace CUI {
     namespace Page {
         class PageComponent implements CUI.Page.ICommandHandler {
             canHandleCommand(commandId: string): boolean;
-            handleCommand(commandId: string, properties: any, sequenceNumber: number): boolean;
+            handleCommand(
+                commandId: string,
+                properties: any,
+                sequenceNumber: number,
+            ): boolean;
             init(): void;
             getGlobalCommands(): string[];
             getFocusedCommands(): string[];
@@ -14506,20 +16446,34 @@ declare namespace CUI {
         }
         interface ICommandHandler {
             canHandleCommand(commandId: string): boolean;
-            handleCommand(commandId: string, properties: any, sequenceNumber: number): boolean;
+            handleCommand(
+                commandId: string,
+                properties: any,
+                sequenceNumber: number,
+            ): boolean;
         }
         class CommandDispatcher {
             executeCommand(commandId: string, properties: any);
         }
-        class FocusManager extends CUI.Page.CommandDispatcher implements CUI.Page.ICommandHandler {
+        class FocusManager
+            extends CUI.Page.CommandDispatcher
+            implements CUI.Page.ICommandHandler
+        {
             canHandleCommand(commandId: string): boolean;
-            handleCommand(commandId: string, properties: any, sequenceNumber: number): boolean;
+            handleCommand(
+                commandId: string,
+                properties: any,
+                sequenceNumber: number,
+            ): boolean;
             requestFocusForComponent(component: CUI.Component);
             releaseFocusFromComponent(component: CUI.Component);
             releaseAllFoci(): boolean;
             getFocusedComponents(): CUI.Component[];
         }
-        class PageManager extends CUI.RootUser implements CUI.Page.ICommandHandler, CUI.IRootBuildClient {
+        class PageManager
+            extends CUI.RootUser
+            implements CUI.Page.ICommandHandler, CUI.IRootBuildClient
+        {
             static createPageManager(): CUI.Page.PageManager;
             static get_instance(): CUI.Page.PageManager;
             static initialize(): void;
@@ -14528,20 +16482,34 @@ declare namespace CUI {
             get_focusManager(): CUI.Page.FocusManager;
             get_undoManager(): CUI.Page.UndoManager;
             canHandleCommand(commandId: string): boolean;
-            handleCommand(commandId: string, properties: any, sequenceNumber: number): boolean;
+            handleCommand(
+                commandId: string,
+                properties: any,
+                sequenceNumber: number,
+            ): boolean;
         }
         class UndoManager implements CUI.Page.ICommandHandler {
             canHandleCommand(commandId: string): boolean;
-            handleCommand(commandId: string, properties: any, sequenceNumber: number): boolean;
+            handleCommand(
+                commandId: string,
+                properties: any,
+                sequenceNumber: number,
+            ): boolean;
         }
     }
 
     namespace Controls {
-        class ContextMenuControlProperties extends CUI.MenuLauncherControlProperties {
-        }
+        class ContextMenuControlProperties extends CUI.MenuLauncherControlProperties {}
 
-        class Button extends CUI.Control implements CUI.IMenuItem, CUI.ISelectableControl {
-            constructor(root: CUI.Root, id: string, properties: ControlProperties);
+        class Button
+            extends CUI.Control
+            implements CUI.IMenuItem, CUI.ISelectableControl
+        {
+            constructor(
+                root: CUI.Root,
+                id: string,
+                properties: ControlProperties,
+            );
             createComponentForDisplayModeInternal(displayMode: string);
             createDOMElementForDisplayMode(displayMode: string);
             onEnabledChanged(enabled: boolean);
@@ -14563,13 +16531,20 @@ declare namespace CUI {
         }
 
         class CheckBoxCommandProperties {}
-        class ToggleButton extends CUI.Control implements CUI.IMenuItem, CUI.ISelectableControl {}
+        class ToggleButton
+            extends CUI.Control
+            implements CUI.IMenuItem, CUI.ISelectableControl {}
         class CheckBox extends CUI.Controls.ToggleButton {}
         class ColorPickerCommandProperties {}
         class ColorPicker extends CUI.Control implements CUI.IMenuItem {}
 
         class DropDown extends CUI.MenuLauncher {
-            constructor(root: CUI.Root, id: string, properties: CUI.ControlProperties, menu);
+            constructor(
+                root: CUI.Root,
+                id: string,
+                properties: CUI.ControlProperties,
+                menu,
+            );
         }
 
         class ComboBox extends CUI.Controls.DropDown {}
@@ -14579,7 +16554,9 @@ declare namespace CUI {
         }
         class FlyoutAnchor extends CUI.MenuLauncher {}
         class GalleryButtonCommandProperties {}
-        class GalleryButton extends CUI.Control implements CUI.ISelectableControl {}
+        class GalleryButton
+            extends CUI.Control
+            implements CUI.ISelectableControl {}
         class InsertTableCommandProperties {}
         class InsertTable extends CUI.Control {}
         class LabelCommandProperties {}
@@ -14636,32 +16613,49 @@ declare namespace SP {
         class CommandUIExtensionPageComponent extends CUI.Page.PageComponent {}
         class ToolbarRibbonAdapterData {}
         class ToolbarRibbonAdapter extends CUI.Page.PageComponent {}
-        class WebPartPageComponentData extends SP.Ribbon.ToolbarRibbonAdapterData {}
+        class WebPartPageComponentData extends SP.Ribbon
+            .ToolbarRibbonAdapterData {}
         class WebPartPageComponent extends SP.Ribbon.ToolbarRibbonAdapter {}
-        class ListViewWebPartPageComponentData extends SP.Ribbon.WebPartPageComponentData {}
+        class ListViewWebPartPageComponentData extends SP.Ribbon
+            .WebPartPageComponentData {}
         class PagingInformation {}
         class ECBMenuItem extends Object {}
         class CLVP {}
         class ListViewWebPartData extends SP.Ribbon.ToolbarRibbonAdapterData {}
-        class ListViewWebPartPageComponent extends SP.Ribbon.WebPartPageComponent
-            implements SP.Application.UI.ViewInformationRequestor, SP.Application.UI.DefaultFormsInformationRequestor
+        class ListViewWebPartPageComponent
+            extends SP.Ribbon.WebPartPageComponent
+            implements
+                SP.Application.UI.ViewInformationRequestor,
+                SP.Application.UI.DefaultFormsInformationRequestor
         {
-            onViewInformationReturned(viewGroups: SP.Application.UI.ViewSelectorGroups): void;
-            onDefaultFormsInformationRetrieveSuccess(defaultForms: SP.Application.UI.DefaultFormsInformation): void;
+            onViewInformationReturned(
+                viewGroups: SP.Application.UI.ViewSelectorGroups,
+            ): void;
+            onDefaultFormsInformationRetrieveSuccess(
+                defaultForms: SP.Application.UI.DefaultFormsInformation,
+            ): void;
             onDefaultFormsInformationRetrieveFailure(): void;
         }
-        class ListFormWebPartPageComponentData extends SP.Ribbon.WebPartPageComponentData {}
-        class ListFormWebPartPageComponent extends SP.Ribbon.WebPartPageComponent {}
-        class DocLibWebPartPageComponent extends SP.Ribbon.ListViewWebPartPageComponent {}
-        class GenericListWebPartPageComponentData extends SP.Ribbon.ListViewWebPartPageComponentData {}
-        class GenericListWebPartPageComponent extends SP.Ribbon.ListViewWebPartPageComponent {}
-        class SolutionsPageComponent extends SP.Ribbon.ListViewWebPartPageComponent {}
+        class ListFormWebPartPageComponentData extends SP.Ribbon
+            .WebPartPageComponentData {}
+        class ListFormWebPartPageComponent extends SP.Ribbon
+            .WebPartPageComponent {}
+        class DocLibWebPartPageComponent extends SP.Ribbon
+            .ListViewWebPartPageComponent {}
+        class GenericListWebPartPageComponentData extends SP.Ribbon
+            .ListViewWebPartPageComponentData {}
+        class GenericListWebPartPageComponent extends SP.Ribbon
+            .ListViewWebPartPageComponent {}
+        class SolutionsPageComponent extends SP.Ribbon
+            .ListViewWebPartPageComponent {}
         class WikiPageComponent extends CUI.Page.PageComponent {}
         class FetchedDocLibItemInfo {}
         class DocLibAspxPageComponent extends CUI.Page.PageComponent {}
         class WebPartComponent extends CUI.Page.PageComponent {
             static get_instance(): SP.Ribbon.WebPartComponent;
-            static registerWithPageManager(initInfo: SP.Ribbon.WebPartComponentInitInfo): void;
+            static registerWithPageManager(
+                initInfo: SP.Ribbon.WebPartComponentInitInfo,
+            ): void;
             selectWebPart(zc: HTMLElement, setNextRibbonTab: boolean): void;
         }
         class FetchListViewWebPartPageComponentWorker {}
@@ -14676,12 +16670,16 @@ declare namespace SP {
         }
         class PageStateActionButton {}
         class RelatedFieldsFetcher {}
-        class RelatedFieldsHelper implements SP.Ribbon.IRelatedFieldsInfoRequestor {}
+        class RelatedFieldsHelper
+            implements SP.Ribbon.IRelatedFieldsInfoRequestor {}
 
         class UsageReportPageComponent extends CUI.Page.PageComponent {}
-        class GroupBoardWebPartPageComponent extends SP.Ribbon.GenericListWebPartPageComponent {}
-        class CalendarPageComponentData extends SP.Ribbon.GenericListWebPartPageComponentData {}
-        class CalendarListPageComponent extends SP.Ribbon.GenericListWebPartPageComponent {}
+        class GroupBoardWebPartPageComponent extends SP.Ribbon
+            .GenericListWebPartPageComponent {}
+        class CalendarPageComponentData extends SP.Ribbon
+            .GenericListWebPartPageComponentData {}
+        class CalendarListPageComponent extends SP.Ribbon
+            .GenericListWebPartPageComponent {}
         class HelpCommandNames {}
         class HelpPageComponent extends CUI.Page.PageComponent {}
         class SaveConflictHandler {}
@@ -14696,7 +16694,9 @@ declare namespace SP {
         namespace PageState {
             class PageStateStrings {}
             class PageStateCommands {}
-            class PageStateHandler extends CUI.Page.PageComponent implements CUI.Page.ICommandHandler {}
+            class PageStateHandler
+                extends CUI.Page.PageComponent
+                implements CUI.Page.ICommandHandler {}
             class StateChangeDialogHandler {}
             class Handlers {}
         }
@@ -14716,4 +16716,8 @@ declare namespace SP {
     class BWsaClient {}
 }
 
-declare function _ribbonStartInit(initialTabId: string, buildMinimized: boolean, e: Event): void;
+declare function _ribbonStartInit(
+    initialTabId: string,
+    buildMinimized: boolean,
+    e: Event,
+): void;

@@ -14,20 +14,25 @@ svgmin();
 
 // $ExpectType Transform
 svgmin({
-    plugins: [{
-        removeDoctype: false,
-    }, {
-        removeComments: false,
-    }, {
-        cleanupNumericValues: {
-            floatPrecision: 2,
+    plugins: [
+        {
+            removeDoctype: false,
         },
-    }, {
-        convertColors: {
-            names2hex: false,
-            rgb2hex: false,
+        {
+            removeComments: false,
         },
-    }],
+        {
+            cleanupNumericValues: {
+                floatPrecision: 2,
+            },
+        },
+        {
+            convertColors: {
+                names2hex: false,
+                rgb2hex: false,
+            },
+        },
+    ],
 });
 
 // $ExpectType Transform
@@ -41,11 +46,13 @@ svgmin({
 svgmin(function getOptions(file) {
     const prefix = basename(file.relative, extname(file.relative));
     return {
-        plugins: [{
-            cleanupIDs: {
-                prefix: prefix + "-",
-                minify: true,
+        plugins: [
+            {
+                cleanupIDs: {
+                    prefix: prefix + "-",
+                    minify: true,
+                },
             },
-        }],
+        ],
     };
 });

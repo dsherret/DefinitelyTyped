@@ -28,10 +28,10 @@ declare module "karma" {
         /** custom prefixes to use when reporting passed/failed/skipped prefixes */
         prefixes?:
             | {
-                success?: string | undefined;
-                failure?: string | undefined;
-                skipped?: string | undefined;
-            }
+                  success?: string | undefined;
+                  failure?: string | undefined;
+                  skipped?: string | undefined;
+              }
             | undefined;
     }
 }

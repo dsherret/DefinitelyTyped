@@ -81,9 +81,8 @@ export interface RackspaceProviderOptions {
     useInternal?: boolean | undefined;
 }
 
-export type ProviderOptions =
-    & BaseProviderOptions
-    & Partial<
+export type ProviderOptions = BaseProviderOptions &
+    Partial<
         | AmazonProviderOptions
         | AzureProviderOptions
         | GoogleProviderOptions

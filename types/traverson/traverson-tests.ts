@@ -3,7 +3,10 @@ import traverson = require("traverson");
 function testTraverson() {
     var mediaTypeHandler: any = {};
 
-    traverson.registerMediaType("application/some-fancy+json", mediaTypeHandler);
+    traverson.registerMediaType(
+        "application/some-fancy+json",
+        mediaTypeHandler,
+    );
 
     traverson
         .from("http://example.api.com/")

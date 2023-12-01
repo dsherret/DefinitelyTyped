@@ -21,7 +21,11 @@ resultBoolean = matcher.match(element, "foo", element);
 
 resultElementArray = matcher.select("foo");
 resultElementArray = matcher.select("foo", element);
-resultElementArray = matcher.select("foo", element, (element: Element) => undefined);
+resultElementArray = matcher.select(
+    "foo",
+    element,
+    (element: Element) => undefined,
+);
 
 resultElementOrNull = matcher.byId("foo");
 resultElementOrNull = matcher.byId("foo", element);

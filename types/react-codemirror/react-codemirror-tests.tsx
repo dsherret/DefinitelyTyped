@@ -17,10 +17,13 @@ class CodemirrorTest extends React.Component {
             readOnly: false,
             mode: "markdown",
         };
-        const onChange = (value: string, change: CodeMirror.EditorChange) => console.log(value, change);
-        const onCursorActivity = (codemirror: CodeMirror.Editor) => console.log(codemirror);
+        const onChange = (value: string, change: CodeMirror.EditorChange) =>
+            console.log(value, change);
+        const onCursorActivity = (codemirror: CodeMirror.Editor) =>
+            console.log(codemirror);
         const onFocusChange = (focused: boolean) => console.log(focused);
-        const onScroll = (scrollInfo: CodeMirror.ScrollInfo) => console.log(scrollInfo.top);
+        const onScroll = (scrollInfo: CodeMirror.ScrollInfo) =>
+            console.log(scrollInfo.top);
 
         return (
             <div>
@@ -37,7 +40,7 @@ class CodemirrorTest extends React.Component {
                     onScroll={onScroll}
                     options={options}
                     preserveScrollPosition={true}
-                    ref={(r: Codemirror | null) => this.editorRef = r}
+                    ref={(r: Codemirror | null) => (this.editorRef = r)}
                     value="foo bar"
                 />
             </div>

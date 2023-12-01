@@ -23,23 +23,51 @@ assert(!rangeCheck.isV6("10.0.1.5")); // False
 // storeIP (same function as searchIP)
 assert(rangeCheck.storeIP("foo") === null); // Invalid address, so null.
 assert(rangeCheck.storeIP("::ffff:127.0.0.1") === "127.0.0.1"); // IPv4 mapped as IPv6, so convert to IPv4.
-assert(rangeCheck.storeIP("2001:0000:0111:0000:0011:0000:0001:0000") === "2001:0:111:0:11:0:1:0"); // Abbreviate IPv6
-assert(rangeCheck.storeIP("2001:0001:0000:0001:0000:0000:0000:0000") === "2001:1:0:1::"); // Abbreviate IPv6
+assert(
+    rangeCheck.storeIP("2001:0000:0111:0000:0011:0000:0001:0000") ===
+        "2001:0:111:0:11:0:1:0",
+); // Abbreviate IPv6
+assert(
+    rangeCheck.storeIP("2001:0001:0000:0001:0000:0000:0000:0000") ===
+        "2001:1:0:1::",
+); // Abbreviate IPv6
 assert(rangeCheck.storeIP("0000:0000:0000:0000:0000:0000:0000:0000") === "::"); // Abbreviate IPv6
 assert(rangeCheck.storeIP("0000:0000:0000:0000:0000:0000:0000:0001") === "::1"); // Abbreviate IPv6
-assert(rangeCheck.storeIP("2041:0000:140F:0000:0000:0000:875B:131B") === "2041:0:140F::875B:131B"); // Abbreviate IPv6
-assert(rangeCheck.storeIP("2001:0001:0002:0003:0004:0005:0006:0007") === "2001:1:2:3:4:5:6:7"); // Abbreviate IPv6
+assert(
+    rangeCheck.storeIP("2041:0000:140F:0000:0000:0000:875B:131B") ===
+        "2041:0:140F::875B:131B",
+); // Abbreviate IPv6
+assert(
+    rangeCheck.storeIP("2001:0001:0002:0003:0004:0005:0006:0007") ===
+        "2001:1:2:3:4:5:6:7",
+); // Abbreviate IPv6
 assert(rangeCheck.storeIP("127.0.0.1") === "127.0.0.1"); // Leave IPv4 addresses alone, so same as input.
 
 // displayIP
 assert(rangeCheck.displayIP(null) === ""); // Null, so return an empty string.
 assert(rangeCheck.displayIP("::ffff:127.0.0.1") === "127.0.0.1"); // IPv4 mapped as IPv6, so convert to IPv4.
-assert(rangeCheck.displayIP("2001:0:111:0:11:0:1:0") === "2001:0000:0111:0000:0011:0000:0001:0000"); // Normalize IPv6
-assert(rangeCheck.displayIP("2001:1:0:1::") === "2001:0001:0000:0001:0000:0000:0000:0000"); // Normalize IPv6
-assert(rangeCheck.displayIP("::") === "0000:0000:0000:0000:0000:0000:0000:0000"); // Normalize IPv6
-assert(rangeCheck.displayIP("::1") === "0000:0000:0000:0000:0000:0000:0000:0001"); // Normalize IPv6
-assert(rangeCheck.displayIP("2041:0:140F::875B:131B") === "2041:0000:140F:0000:0000:0000:875B:131B"); // Normalize IPv6
-assert(rangeCheck.displayIP("2001:1:2:3:4:5:6:7") === "2001:0001:0002:0003:0004:0005:0006:0007"); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("2001:0:111:0:11:0:1:0") ===
+        "2001:0000:0111:0000:0011:0000:0001:0000",
+); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("2001:1:0:1::") ===
+        "2001:0001:0000:0001:0000:0000:0000:0000",
+); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("::") === "0000:0000:0000:0000:0000:0000:0000:0000",
+); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("::1") === "0000:0000:0000:0000:0000:0000:0000:0001",
+); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("2041:0:140F::875B:131B") ===
+        "2041:0000:140F:0000:0000:0000:875B:131B",
+); // Normalize IPv6
+assert(
+    rangeCheck.displayIP("2001:1:2:3:4:5:6:7") ===
+        "2001:0001:0002:0003:0004:0005:0006:0007",
+); // Normalize IPv6
 assert(rangeCheck.displayIP("127.0.0.1") === "127.0.0.1"); // Leave IPv4 addresses alone, so same as input.
 
 // isRange (same function as validRange and valid_range)

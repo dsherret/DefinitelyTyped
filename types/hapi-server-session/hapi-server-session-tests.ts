@@ -17,4 +17,8 @@ server.register({
     },
 });
 
-server.route({ path: "/", method: "GET", handler: (request, _h) => request.session });
+server.route({
+    path: "/",
+    method: "GET",
+    handler: (request, _h) => request.session,
+});

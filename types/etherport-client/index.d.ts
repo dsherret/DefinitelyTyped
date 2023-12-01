@@ -19,4 +19,7 @@ export class EtherPortClient extends EventEmitter {
     constructor(options: EtherPortClientConstructorArgs);
 }
 
-export function chainSerialPorts(clientPort: EtherPortClient, serverPort: Duplex): void;
+export function chainSerialPorts(
+    clientPort: EtherPortClient,
+    serverPort: Duplex,
+): void;

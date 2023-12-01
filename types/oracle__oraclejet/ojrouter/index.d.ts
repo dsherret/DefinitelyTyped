@@ -33,18 +33,23 @@ declare class Router {
         hasChanged: boolean;
     }>;
     configure(
-        option: {
-            [key: string]: RouterState.ConfigOptions;
-        } | ((id: string) => RouterState | undefined | null),
+        option:
+            | {
+                  [key: string]: RouterState.ConfigOptions;
+              }
+            | ((id: string) => RouterState | undefined | null),
     ): any;
     createChildRouter(name: string, parentStateId?: string): Router;
     dispose(): undefined;
     getChildRouter(name: string): Router | undefined;
     getCurrentChildRouter(): Router | undefined;
     getState(stateId: string): RouterState | undefined;
-    go(stateIdPath?: string | string[], options?: {
-        historyUpdate: string;
-    }): Promise<{
+    go(
+        stateIdPath?: string | string[],
+        options?: {
+            historyUpdate: string;
+        },
+    ): Promise<{
         hasChanged: boolean;
     }>;
     retrieve(): any;
@@ -113,7 +118,11 @@ declare class RouterState {
     parameters: object;
     title: string | (() => string | undefined);
     value: any;
-    constructor(id: string, options?: RouterState.ConfigOptions, router?: Router);
+    constructor(
+        id: string,
+        options?: RouterState.ConfigOptions,
+        router?: Router,
+    );
     go(): Promise<{
         hasChanged: boolean;
     }>;

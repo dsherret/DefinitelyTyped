@@ -29,14 +29,31 @@ declare module "react-native" {
         ): EmitterSubscription;
         addListener(
             event: "Orientation",
-            callback: (data: { azimuth: number; pitch: number; roll: number }) => void,
+            callback: (data: {
+                azimuth: number;
+                pitch: number;
+                roll: number;
+            }) => void,
         ): EmitterSubscription;
-        addListener(event: "StepCounter", callback: (data: { steps: number }) => void): EmitterSubscription;
-        addListener(event: "Thermometer", callback: (data: { temp: number }) => void): EmitterSubscription;
-        addListener(event: "LightSensor", callback: (data: { light: number }) => void): EmitterSubscription;
+        addListener(
+            event: "StepCounter",
+            callback: (data: { steps: number }) => void,
+        ): EmitterSubscription;
+        addListener(
+            event: "Thermometer",
+            callback: (data: { temp: number }) => void,
+        ): EmitterSubscription;
+        addListener(
+            event: "LightSensor",
+            callback: (data: { light: number }) => void,
+        ): EmitterSubscription;
         addListener(
             event: "Proximity",
-            callback: (data: { isNear: boolean; value: number; maxRange: number }) => void,
+            callback: (data: {
+                isNear: boolean;
+                value: number;
+                maxRange: number;
+            }) => void,
         ): EmitterSubscription;
     }
 

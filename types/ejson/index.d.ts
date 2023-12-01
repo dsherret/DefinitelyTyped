@@ -63,4 +63,7 @@ interface CustomType {
  *                           match the serialization performed by your
  *                           type's `toJSONValue` method.
  */
-export function addType(name: string, factory: (jsonValue: unknown) => CustomType): void;
+export function addType(
+    name: string,
+    factory: (jsonValue: unknown) => CustomType,
+): void;

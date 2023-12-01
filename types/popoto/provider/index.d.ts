@@ -347,7 +347,10 @@ export interface Node {
      * @param initialQuery contains the query as an object structure.
      * @returns filtered node value query
      */
-    filterNodeValueQuery: (node: Node, initialQuery: any) => typeof initialQuery;
+    filterNodeValueQuery: (
+        node: Node,
+        initialQuery: any,
+    ) => typeof initialQuery;
     /**
      * Filters the query generated to retrieve the values on a node.
      *
@@ -355,7 +358,10 @@ export interface Node {
      * @param initialQuery contains the query as an object structure.
      * @returns filtered node count query
      */
-    filterNodeCountQuery: (node: Node, initialQuery: any) => typeof initialQuery;
+    filterNodeCountQuery: (
+        node: Node,
+        initialQuery: any,
+    ) => typeof initialQuery;
     /**
      * Filters the query used to retrieve the values on a node.
      *
@@ -363,7 +369,10 @@ export interface Node {
      * @param initialQuery contains the query as an object structure.
      * @returns filtered node relation  query
      */
-    filterNodeRelationQuery: (node: Node, initialQuery: any) => typeof initialQuery;
+    filterNodeRelationQuery: (
+        node: Node,
+        initialQuery: any,
+    ) => typeof initialQuery;
 
     /**
      * Customize, in query, the generated constraint for the node.

@@ -19,17 +19,23 @@ declare namespace oauthShim {
     }
 
     interface Request extends express.Request {
-        oauthshim?: {
-            options?: {
-                [key: string]: any;
-                path?: string | undefined;
-            } | undefined;
-            redirect?: string | undefined;
-            data?: {
-                [key: string]: any;
-                access_token?: string | undefined;
-            } | undefined;
-        } | undefined;
+        oauthshim?:
+            | {
+                  options?:
+                      | {
+                            [key: string]: any;
+                            path?: string | undefined;
+                        }
+                      | undefined;
+                  redirect?: string | undefined;
+                  data?:
+                      | {
+                            [key: string]: any;
+                            access_token?: string | undefined;
+                        }
+                      | undefined;
+              }
+            | undefined;
     }
 
     interface Config {

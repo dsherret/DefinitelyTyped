@@ -1,7 +1,14 @@
-import type { CloudFrontEvent, CloudFrontRequest, CloudFrontResultResponse } from "../common/cloudfront";
+import type {
+    CloudFrontEvent,
+    CloudFrontRequest,
+    CloudFrontResultResponse,
+} from "../common/cloudfront";
 import type { Callback, Handler } from "../handler";
 
-export type CloudFrontRequestHandler = Handler<CloudFrontRequestEvent, CloudFrontRequestResult>;
+export type CloudFrontRequestHandler = Handler<
+    CloudFrontRequestEvent,
+    CloudFrontRequestResult
+>;
 export type CloudFrontRequestCallback = Callback<CloudFrontRequestResult>;
 
 export interface CloudFrontRequestEventRecord {
@@ -19,4 +26,8 @@ export interface CloudFrontRequestEvent {
     Records: CloudFrontRequestEventRecord[];
 }
 
-export type CloudFrontRequestResult = undefined | null | CloudFrontResultResponse | CloudFrontRequest;
+export type CloudFrontRequestResult =
+    | undefined
+    | null
+    | CloudFrontResultResponse
+    | CloudFrontRequest;

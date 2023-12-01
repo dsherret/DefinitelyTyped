@@ -8,7 +8,7 @@ const TruncatedText = () => (
         min={1}
         max={100}
         throttle={50}
-        onReady={s => {
+        onReady={(s) => {
             console.log(s);
         }}
     >

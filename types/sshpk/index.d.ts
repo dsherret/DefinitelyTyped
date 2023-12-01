@@ -14,7 +14,20 @@ declare namespace SshPK {
     type ShaHashType = "sha1" | "sha256" | "sha384" | "sha512";
     type AlgorithmHashType = "md5" | ShaHashType;
     type CurveType = "nistp256" | "nistp384" | "nistp521";
-    type AlgorithmPart = "p" | "q" | "g" | "y" | "x" | "n" | "e" | "d" | "iqmp" | "curve" | "Q" | "A" | "k";
+    type AlgorithmPart =
+        | "p"
+        | "q"
+        | "g"
+        | "y"
+        | "x"
+        | "n"
+        | "e"
+        | "d"
+        | "iqmp"
+        | "curve"
+        | "Q"
+        | "A"
+        | "k";
     type KeyType = "public" | "private";
 
     class Algo {
@@ -103,7 +116,10 @@ declare namespace SshPK {
         issuer: Identity;
         subjectKey: Key;
         issuerKey?: Key;
-        signatures: { x509?: Format.x509Signature; openssh?: Format.OpenSshSignature };
+        signatures: {
+            x509?: Format.x509Signature;
+            openssh?: Format.OpenSshSignature;
+        };
         serial: Buffer;
         validFrom: Date;
         validUntil: Date;
@@ -113,9 +129,15 @@ declare namespace SshPK {
 
         constructor(opts: CertificateOptions);
 
-        toBuffer(format: CertificateFormat, options?: Format.WriteOptions): Buffer;
+        toBuffer(
+            format: CertificateFormat,
+            options?: Format.WriteOptions,
+        ): Buffer;
 
-        toString(format: CertificateFormat, options?: Format.WriteOptions): string;
+        toString(
+            format: CertificateFormat,
+            options?: Format.WriteOptions,
+        ): string;
 
         fingerprint(algo?: AlgorithmHashType): Fingerprint;
 
@@ -125,9 +147,13 @@ declare namespace SshPK {
 
         isSignedBy(issuerCert: Certificate): boolean;
 
-        getExtension(keyOrOid: string): Format.OpenSshSignatureExt | Format.x509SignatureExt | undefined;
+        getExtension(
+            keyOrOid: string,
+        ): Format.OpenSshSignatureExt | Format.x509SignatureExt | undefined;
 
-        getExtensions(): Array<Format.OpenSshSignatureExt | Format.x509SignatureExt>;
+        getExtensions(): Array<
+            Format.OpenSshSignatureExt | Format.x509SignatureExt
+        >;
 
         isSignedByKey(issuerKey: Key): boolean;
 
@@ -147,7 +173,11 @@ declare namespace SshPK {
             options?: CertificateCreateOptions,
         ): Certificate;
 
-        static parse(data: string | Buffer, format: CertificateFormat, options?: string | KeyParseOptions): Certificate;
+        static parse(
+            data: string | Buffer,
+            format: CertificateFormat,
+            options?: string | KeyParseOptions,
+        ): Certificate;
 
         static isCertificate(data: string | Buffer, ver: Version): boolean;
     }
@@ -205,9 +235,17 @@ declare namespace SshPK {
         update(data: crypto.BinaryLike): this;
         update(data: string, input_encoding: crypto.Encoding): this;
 
-        sign(private_key: crypto.KeyLike | crypto.SignKeyObjectInput | crypto.SignPrivateKeyInput): Buffer;
         sign(
-            private_key: crypto.KeyLike | crypto.SignKeyObjectInput | crypto.SignPrivateKeyInput,
+            private_key:
+                | crypto.KeyLike
+                | crypto.SignKeyObjectInput
+                | crypto.SignPrivateKeyInput,
+        ): Buffer;
+        sign(
+            private_key:
+                | crypto.KeyLike
+                | crypto.SignKeyObjectInput
+                | crypto.SignPrivateKeyInput,
             output_format: crypto.BinaryToTextEncoding,
         ): string;
         sign(): Signature;
@@ -299,18 +337,30 @@ declare namespace SshPK {
         toString(format?: "hex" | "base64"): string;
         matches(other: Key | PrivateKey | Certificate): boolean;
 
-        static parse(fp: string, options?: string[] | FingerprintParseOptions): Fingerprint;
+        static parse(
+            fp: string,
+            options?: string[] | FingerprintParseOptions,
+        ): Fingerprint;
 
         static isFingerprint(obj: any, ver: Version): boolean;
     }
 
-    function parseFingerprint(fp: string, options?: string[] | FingerprintParseOptions): Fingerprint;
+    function parseFingerprint(
+        fp: string,
+        options?: string[] | FingerprintParseOptions,
+    ): Fingerprint;
 
     // == formats/*.js == //
 
     interface Format {
-        read(buf: string | Buffer, options?: Format.ReadOptions): Key | Certificate;
-        write(keyOrCert: Key | PrivateKey | Certificate, options?: Format.WriteOptions): Buffer;
+        read(
+            buf: string | Buffer,
+            options?: Format.ReadOptions,
+        ): Key | Certificate;
+        write(
+            keyOrCert: Key | PrivateKey | Certificate,
+            options?: Format.WriteOptions,
+        ): Buffer;
     }
 
     namespace Format {
@@ -331,7 +381,10 @@ declare namespace SshPK {
 
         interface DnsSec extends Format {
             read(buf: string | Buffer): Key;
-            write(key: PrivateKey, options?: { hashAlgo?: "sha1" | "sha256" | "sha512" }): Buffer;
+            write(
+                key: PrivateKey,
+                options?: { hashAlgo?: "sha1" | "sha256" | "sha512" },
+            ): Buffer;
         }
 
         interface OpenSshSignatureExt {
@@ -353,20 +406,34 @@ declare namespace SshPK {
             sign(cert: Certificate, key: PrivateKey): boolean;
             signAsync(
                 cert: Certificate,
-                signer: (blob: Buffer, done: (err: Error | undefined, signature: Signature) => void) => void,
+                signer: (
+                    blob: Buffer,
+                    done: (
+                        err: Error | undefined,
+                        signature: Signature,
+                    ) => void,
+                ) => void,
                 done: (err?: Error) => void,
             ): void;
             write(cert: Certificate, options?: { comment?: string }): Buffer;
         }
 
         interface Pem extends Format {
-            read(buf: string | Buffer, options?: ReadOptions, forceType?: "pkcs1" | "pkcs8"): Key;
+            read(
+                buf: string | Buffer,
+                options?: ReadOptions,
+                forceType?: "pkcs1" | "pkcs8",
+            ): Key;
             write(key: Key, options?: any, type?: "pkcs1" | "pkcs8"): Buffer;
         }
 
         interface Pkcs1 extends Format {
             read(buf: string | Buffer, options?: ReadOptions): Key;
-            readPkcs1(alg: "RSA" | "DSA" | "EC" | "ECDSA", type: "public", der: BerReader): Key;
+            readPkcs1(
+                alg: "RSA" | "DSA" | "EC" | "ECDSA",
+                type: "public",
+                der: BerReader,
+            ): Key;
             readPkcs1(
                 alg: "RSA" | "DSA" | "EC" | "ECDSA" | "EDDSA" | "EdDSA",
                 type: "private",
@@ -409,7 +476,11 @@ declare namespace SshPK {
             readPartial(type: KeyType | undefined, buf: string | Buffer): Key;
 
             /* shared with ssh format */
-            readInternal(partial: boolean, type: KeyType | undefined, buf: string | Buffer): Key;
+            readInternal(
+                partial: boolean,
+                type: KeyType | undefined,
+                buf: string | Buffer,
+            ): Key;
             keyTypeToAlg(key: Key): Rfc4253Algorithm;
             algToKeyType(alg: Rfc4253Algorithm): AlgorithmTypeWithCurve;
         }
@@ -428,8 +499,16 @@ declare namespace SshPK {
             | "aes256-gcm@openssh.com";
 
         interface SshPrivate extends Format {
-            read(buf: string | Buffer, options?: ReadOptions, forceType?: "pkcs1" | "pkcs8"): Key;
-            readSSHPrivate(type: KeyType, buf: Buffer, options: { passphrase: string | Buffer }): Key;
+            read(
+                buf: string | Buffer,
+                options?: ReadOptions,
+                forceType?: "pkcs1" | "pkcs8",
+            ): Key;
+            readSSHPrivate(
+                type: KeyType,
+                buf: Buffer,
+                options: { passphrase: string | Buffer },
+            ): Key;
             write(key: Key, options?: ReadOptions): Buffer;
         }
 
@@ -459,7 +538,12 @@ declare namespace SshPK {
             | "ecdsa-sha512"
             | "ed25519-sha512";
 
-        type x509ExtsOid = "2.5.29.35" | "2.5.29.17" | "2.5.29.19" | "2.5.29.15" | "2.5.29.37";
+        type x509ExtsOid =
+            | "2.5.29.35"
+            | "2.5.29.17"
+            | "2.5.29.19"
+            | "2.5.29.15"
+            | "2.5.29.37";
 
         interface x509SignatureExt {
             oid: x509ExtsOid;
@@ -472,7 +556,11 @@ declare namespace SshPK {
         interface x509Signature {
             signature: Signature;
             algo: x509SignAlgorithm;
-            extras: { issuerUniqueID: Buffer; subjectUniqueID: Buffer; exts: x509SignatureExt[] };
+            extras: {
+                issuerUniqueID: Buffer;
+                subjectUniqueID: Buffer;
+                exts: x509SignatureExt[];
+            };
             cache: Buffer;
         }
 
@@ -482,7 +570,13 @@ declare namespace SshPK {
             sign(cert: Certificate, key: PrivateKey): boolean;
             signAsync(
                 cert: Certificate,
-                signer: (blob: Buffer, done: (err: Error | undefined, signature: Signature) => void) => void,
+                signer: (
+                    blob: Buffer,
+                    done: (
+                        err: Error | undefined,
+                        signature: Signature,
+                    ) => void,
+                ) => void,
                 done: (err?: Error) => void,
             ): void;
             write(cert: Certificate): Buffer;
@@ -636,7 +730,10 @@ declare namespace SshPK {
         update(data: string, input_encoding: crypto.Encoding): Verify;
 
         verify(signature: Signature): boolean;
-        verify(signature: string | Buffer, fmt?: crypto.BinaryToTextEncoding): boolean;
+        verify(
+            signature: string | Buffer,
+            fmt?: crypto.BinaryToTextEncoding,
+        ): boolean;
     }
 
     class Key {
@@ -654,13 +751,20 @@ declare namespace SshPK {
         toBuffer(format: KeyFormatType, options?: Format.WriteOptions): Buffer;
         toString(format: KeyFormatType, options?: Format.WriteOptions): string;
         hash(algo: AlgorithmHashType, type?: FingerprintHashType): Buffer;
-        fingerprint(algo?: AlgorithmHashType, type?: FingerprintHashType): Fingerprint;
+        fingerprint(
+            algo?: AlgorithmHashType,
+            type?: FingerprintHashType,
+        ): Fingerprint;
         defaultHashAlgorithm(): ShaHashType;
         createVerify(algo?: AlgorithmHashType): Verify;
         createDiffieHellman(): DiffieHellman;
         createDH(): DiffieHellman;
 
-        static parse(data: string | Buffer, format?: KeyFormatType, options?: string | KeyParseOptions): Key;
+        static parse(
+            data: string | Buffer,
+            format?: KeyFormatType,
+            options?: string | KeyParseOptions,
+        ): Key;
 
         static isKey(obj: any, ver: Version): boolean;
     }
@@ -694,10 +798,19 @@ declare namespace SshPK {
         size: number;
         constructor(opts: KeyOptions);
 
-        toBuffer(format: PrivateKeyFormatType, options?: Format.WriteOptions): Buffer;
-        toString(format: PrivateKeyFormatType, options?: Format.WriteOptions): string;
+        toBuffer(
+            format: PrivateKeyFormatType,
+            options?: Format.WriteOptions,
+        ): Buffer;
+        toString(
+            format: PrivateKeyFormatType,
+            options?: Format.WriteOptions,
+        ): string;
         hash(algo: AlgorithmHashType, type?: FingerprintHashType): Buffer;
-        fingerprint(algo?: AlgorithmHashType, type?: FingerprintHashType): Fingerprint;
+        fingerprint(
+            algo?: AlgorithmHashType,
+            type?: FingerprintHashType,
+        ): Fingerprint;
         defaultHashAlgorithm(): ShaHashType;
         toPublic(): Key;
         derive(newType: "ed25519" | "curve25519"): PrivateKey;
@@ -714,7 +827,10 @@ declare namespace SshPK {
 
         static isPrivateKey(data: any, ver: Version): boolean;
 
-        static generate(type: "ecdsa", options?: { curve?: CurveType }): PrivateKey;
+        static generate(
+            type: "ecdsa",
+            options?: { curve?: CurveType },
+        ): PrivateKey;
         static generate(type: "ed25519"): PrivateKey;
     }
 
@@ -728,7 +844,10 @@ declare namespace SshPK {
         options?: string | KeyParseOptions,
     ): PrivateKey;
 
-    function generatePrivateKey(type: "ecdsa", options?: { curve?: CurveType }): PrivateKey;
+    function generatePrivateKey(
+        type: "ecdsa",
+        options?: { curve?: CurveType },
+    ): PrivateKey;
     function generatePrivateKey(type: "ed25519"): PrivateKey;
 
     // == signature.js == //
@@ -759,12 +878,20 @@ declare namespace SshPK {
         toBuffer(format?: SignatureFormatType): Buffer;
         toString(format?: SignatureFormatType): string;
 
-        static parse(data: string | Buffer, type: AlgorithmType, format: SignatureFormatType): Signature;
+        static parse(
+            data: string | Buffer,
+            type: AlgorithmType,
+            format: SignatureFormatType,
+        ): Signature;
 
         static isSignature(obj: any, ver: Version): boolean;
     }
 
-    function parseSignature(data: string | Buffer, type: AlgorithmType, format: SignatureFormatType): Signature;
+    function parseSignature(
+        data: string | Buffer,
+        type: AlgorithmType,
+        format: SignatureFormatType,
+    ): Signature;
 
     // == ssh-buffer.js == //
 
@@ -819,7 +946,12 @@ declare namespace SshPK {
 
     function countZeros(buf: Buffer): number;
 
-    function assertCompatible(obj: object, klass: any, needVer: Version, name?: string): void;
+    function assertCompatible(
+        obj: object,
+        klass: any,
+        needVer: Version,
+        name?: string,
+    ): void;
 
     function isCompatible(obj: object, klass: any, needVer: Version): boolean;
 
@@ -854,7 +986,9 @@ declare namespace SshPK {
         opensslName: OpenSshCipherName;
     }
 
-    function opensshCipherInfo(cipter: Format.SshPrivateCipher): OpenSshCipherInfo;
+    function opensshCipherInfo(
+        cipter: Format.SshPrivateCipher,
+    ): OpenSshCipherInfo;
 
     function publicFromPrivateECDSA(curveName: CurveType, priv: Buffer): Key;
 

@@ -21,7 +21,11 @@ declare module "moment" {
         }
 
         function toHijri(gy: number, gm: number, gd: number): HijriResult;
-        function toGregorian(hy: number, hm: number, hd: number): GregorianResult;
+        function toGregorian(
+            hy: number,
+            hm: number,
+            hd: number,
+        ): GregorianResult;
     }
 
     interface Moment {

@@ -16,7 +16,7 @@ app.proxyIpHeader = "X-Forwarded-For";
 
 app.maxIpsCount = 0;
 
-app.use(ctx => {
+app.use((ctx) => {
     ctx.body = "Hello World";
 });
 

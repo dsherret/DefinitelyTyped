@@ -12,7 +12,10 @@ const connection = snowflake.createConnection({
     username: "",
 });
 
-const connectCallback = (err: snowflake.SnowflakeError | undefined, conn: snowflake.Connection) => {
+const connectCallback = (
+    err: snowflake.SnowflakeError | undefined,
+    conn: snowflake.Connection,
+) => {
     if (err) {
         err.code; // $ExpectType ErrorCode | undefined
         err.sqlState; // $ExpectType string | undefined
@@ -63,7 +66,7 @@ const connectCallback = (err: snowflake.SnowflakeError | undefined, conn: snowfl
                 fetchAsString: ["Boolean", "JSON", "Buffer"],
             };
             const stream = stmt.streamRows(option);
-            stream.on("data", data => {
+            stream.on("data", (data) => {
                 //
             });
         },
@@ -86,10 +89,14 @@ const connectCallback = (err: snowflake.SnowflakeError | undefined, conn: snowfl
     const statement = conn.execute({
         sqlText: "",
     });
-    const option: snowflake.StreamOptions = { start: 0, end: 100, fetchAsString: ["Number", "Date", "JSON", "Buffer"] };
+    const option: snowflake.StreamOptions = {
+        start: 0,
+        end: 100,
+        fetchAsString: ["Number", "Date", "JSON", "Buffer"],
+    };
     // $ExpectType Readable
     const stream = statement.streamRows(option);
-    stream.on("data", data => {
+    stream.on("data", (data) => {
         //
     });
 };

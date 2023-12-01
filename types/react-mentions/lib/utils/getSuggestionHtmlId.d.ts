@@ -1,1 +1,4 @@
-export function getSuggestionHtmlId(prefix: string, id: string | number): string;
+export function getSuggestionHtmlId(
+    prefix: string,
+    id: string | number,
+): string;

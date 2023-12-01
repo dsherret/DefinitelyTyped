@@ -18,7 +18,7 @@ list.drop();
 list.item(2); // $ExpectType string | undefined
 
 // $ExpectType List<string>
-list.map(function(value, index, list) {
+list.map(function (value, index, list) {
     this; // $ExpectType List<string>
     value; // $ExpectType string
     index; // $ExpectType number
@@ -26,7 +26,7 @@ list.map(function(value, index, list) {
     return value;
 });
 // $ExpectType List<number>
-list.map(function(value, index, list) {
+list.map(function (value, index, list) {
     this; // $ExpectType { foo: string; }
     value; // $ExpectType string
     index; // $ExpectType number
@@ -35,7 +35,7 @@ list.map(function(value, index, list) {
 }, thisArg);
 
 // $ExpectType string
-list.reduce(function(prevVal, value, index, list) {
+list.reduce(function (prevVal, value, index, list) {
     this; // $ExpectType List<string>
     prevVal; // $ExpectType string
     value; // $ExpectType string
@@ -44,7 +44,7 @@ list.reduce(function(prevVal, value, index, list) {
     return prevVal;
 });
 // $ExpectType number
-list.reduce(function(prevVal, value, index, list) {
+list.reduce(function (prevVal, value, index, list) {
     this; // $ExpectType List<string>
     prevVal; // $ExpectType number
     value; // $ExpectType string
@@ -54,7 +54,7 @@ list.reduce(function(prevVal, value, index, list) {
 }, 1);
 // $ExpectType number
 list.reduce(
-    function(prevVal, value, index, list) {
+    function (prevVal, value, index, list) {
         this; // $ExpectType { foo: string; }
         prevVal; // $ExpectType number
         value; // $ExpectType string
@@ -66,27 +66,29 @@ list.reduce(
     thisArg,
 );
 
-list.forEach(function(value, index, list) {
+list.forEach(function (value, index, list) {
     this; // $ExpectType List<string>
     value; // $ExpectType string
     index; // $ExpectType number
     list; // $ExpectType List<string>
 });
-list.forEach(function(value, index, list) {
+list.forEach(function (value, index, list) {
     this; // $ExpectType { foo: string; }
     value; // $ExpectType string
     index; // $ExpectType number
     list; // $ExpectType List<string>
 }, thisArg);
 
-list.filter(function(value, index, list) { // $ExpectType List<string>
+list.filter(function (value, index, list) {
+    // $ExpectType List<string>
     this; // $ExpectType List<string>
     value; // $ExpectType string
     index; // $ExpectType number
     list; // $ExpectType List<string>
     return true;
 });
-list.filter(function(value, index, list) { // $ExpectType List<string>
+list.filter(function (value, index, list) {
+    // $ExpectType List<string>
     this; // $ExpectType { foo: string; }
     value; // $ExpectType string
     index; // $ExpectType number

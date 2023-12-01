@@ -18,9 +18,12 @@ expect({
     equals: () => true,
 }).to.be.oeq({});
 
-assert.oequal({
-    equals: () => true,
-}, {});
+assert.oequal(
+    {
+        equals: () => true,
+    },
+    {},
+);
 assert.oequal(
     {
         customequals: () => true,
@@ -28,9 +31,15 @@ assert.oequal(
     {},
     "customequals",
 );
-assert.oeql({
-    equals: () => true,
-}, {});
-assert.oeq({
-    equals: () => true,
-}, {});
+assert.oeql(
+    {
+        equals: () => true,
+    },
+    {},
+);
+assert.oeq(
+    {
+        equals: () => true,
+    },
+    {},
+);

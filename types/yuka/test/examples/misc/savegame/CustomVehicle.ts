@@ -17,7 +17,10 @@ export class CustomVehicle extends Vehicle {
 
     update(delta: number): this {
         const seekBehavior = this.steering.behaviors[0];
-        if (seekBehavior instanceof SeekBehavior && this.target instanceof CustomEntity) {
+        if (
+            seekBehavior instanceof SeekBehavior &&
+            this.target instanceof CustomEntity
+        ) {
             seekBehavior.target.copy(this.target.position);
         }
 

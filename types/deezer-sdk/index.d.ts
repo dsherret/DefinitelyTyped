@@ -103,8 +103,17 @@ declare namespace DeezerSdk {
          * {@link https://developers.deezer.com/api | API}
          */
         api(path: string, callback: (response: any) => void): void;
-        api(path: string, method: HttpMethod, callback: (response: any) => void): void;
-        api(path: string, method: HttpMethod, data: any, callback: (response: any) => void): void;
+        api(
+            path: string,
+            method: HttpMethod,
+            callback: (response: any) => void,
+        ): void;
+        api(
+            path: string,
+            method: HttpMethod,
+            data: any,
+            callback: (response: any) => void,
+        ): void;
 
         /**
          * Prompt the user to connect on Deezer, and to authorize you application.
@@ -312,7 +321,11 @@ declare namespace DeezerSdk {
     /**
      * See: {@link https://developers.deezer.com/sdk/javascript/getloginstatus | DZ.getLoginStatus}
      */
-    type ConnectionStatus = "connected" | "notConnected" | "unknown" | "not_authorized";
+    type ConnectionStatus =
+        | "connected"
+        | "notConnected"
+        | "unknown"
+        | "not_authorized";
 
     /**
      * See:
@@ -590,7 +603,10 @@ declare namespace DeezerSdk {
          *
          * See: {@link https://developers.deezer.com/sdk/javascript/loadtracks | Load tracks to a player}
          */
-        addToQueue(trackIds: readonly string[], onTracksLoaded?: (playQueue: PlayQueue) => void): void;
+        addToQueue(
+            trackIds: readonly string[],
+            onTracksLoaded?: (playQueue: PlayQueue) => void,
+        ): void;
 
         // #endregion
 
@@ -803,22 +819,49 @@ declare namespace DeezerSdk {
          * See: {@link https://developers.deezer.com/sdk/javascript/events | List of events}
          */
         subscribe(
-            event: "player_loaded" | "player_play" | "player_paused" | "tracklist_changed",
+            event:
+                | "player_loaded"
+                | "player_play"
+                | "player_paused"
+                | "tracklist_changed",
             callback: () => void,
         ): void;
         subscribe(
             event: "player_position",
-            callback: (positionSecondsFloat_durationSecondsInt: [number, number]) => void,
+            callback: (
+                positionSecondsFloat_durationSecondsInt: [number, number],
+            ) => void,
         ): void;
-        subscribe(event: "player_buffering", callback: (loadedPercentInt: number) => void): void;
-        subscribe(event: "volume_changed", callback: (volumePercentInt: number) => void): void;
-        subscribe(event: "shuffle_changed", callback: (shuffle: boolean) => void): void;
-        subscribe(event: "repeat_changed", callback: (repeatMode: RepeatMode) => void): void;
-        subscribe(event: "mute_changed", callback: (mute: boolean) => void): void;
-        subscribe(event: "track_end", callback: (trackPosition: number) => void): void;
+        subscribe(
+            event: "player_buffering",
+            callback: (loadedPercentInt: number) => void,
+        ): void;
+        subscribe(
+            event: "volume_changed",
+            callback: (volumePercentInt: number) => void,
+        ): void;
+        subscribe(
+            event: "shuffle_changed",
+            callback: (shuffle: boolean) => void,
+        ): void;
+        subscribe(
+            event: "repeat_changed",
+            callback: (repeatMode: RepeatMode) => void,
+        ): void;
+        subscribe(
+            event: "mute_changed",
+            callback: (mute: boolean) => void,
+        ): void;
+        subscribe(
+            event: "track_end",
+            callback: (trackPosition: number) => void,
+        ): void;
         subscribe(
             event: "current_track",
-            callback: (currentTrackInfo: { index: number; track: Track }) => void,
+            callback: (currentTrackInfo: {
+                index: number;
+                track: Track;
+            }) => void,
         ): void;
     }
 

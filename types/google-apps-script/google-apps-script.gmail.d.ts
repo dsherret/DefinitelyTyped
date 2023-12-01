@@ -7,8 +7,17 @@ declare namespace GoogleAppsScript {
          * Provides access to Gmail threads, messages, and labels.
          */
         interface GmailApp {
-            createDraft(recipient: string, subject: string, body: string): GmailDraft;
-            createDraft(recipient: string, subject: string, body: string, options: GmailAdvancedOptions): GmailDraft;
+            createDraft(
+                recipient: string,
+                subject: string,
+                body: string,
+            ): GmailDraft;
+            createDraft(
+                recipient: string,
+                subject: string,
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
             createLabel(name: string): GmailLabel;
             deleteLabel(label: GmailLabel): GmailApp;
             getAliases(): string[];
@@ -24,7 +33,10 @@ declare namespace GoogleAppsScript {
             getMessagesForThread(thread: GmailThread): GmailMessage[];
             getMessagesForThreads(threads: GmailThread[]): GmailMessage[][];
             getPriorityInboxThreads(): GmailThread[];
-            getPriorityInboxThreads(start: Integer, max: Integer): GmailThread[];
+            getPriorityInboxThreads(
+                start: Integer,
+                max: Integer,
+            ): GmailThread[];
             getPriorityInboxUnreadCount(): Integer;
             getSpamThreads(): GmailThread[];
             getSpamThreads(start: Integer, max: Integer): GmailThread[];
@@ -65,8 +77,17 @@ declare namespace GoogleAppsScript {
             refreshThreads(threads: GmailThread[]): GmailApp;
             search(query: string): GmailThread[];
             search(query: string, start: Integer, max: Integer): GmailThread[];
-            sendEmail(recipient: string, subject: string, body: string): GmailApp;
-            sendEmail(recipient: string, subject: string, body: string, options: GmailAdvancedOptions): GmailApp;
+            sendEmail(
+                recipient: string,
+                subject: string,
+                body: string,
+            ): GmailApp;
+            sendEmail(
+                recipient: string,
+                subject: string,
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailApp;
             setCurrentMessageAccessToken(accessToken: string): void;
             starMessage(message: GmailMessage): GmailApp;
             starMessages(messages: GmailMessage[]): GmailApp;
@@ -136,11 +157,20 @@ declare namespace GoogleAppsScript {
             /**
              * Replaces the contents of this draft message.
              */
-            update(recipient: string, subject: string, body: string): GmailDraft;
+            update(
+                recipient: string,
+                subject: string,
+                body: string,
+            ): GmailDraft;
             /**
              * Replaces the contents of this draft message using optional arguments.
              */
-            update(recipient: string, subject: string, body: string, options: GmailAdvancedOptions): GmailDraft;
+            update(
+                recipient: string,
+                subject: string,
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
         }
         /**
          * Options for a Gmail draft.
@@ -220,11 +250,20 @@ declare namespace GoogleAppsScript {
          */
         interface GmailMessage {
             createDraftReply(body: string): GmailDraft;
-            createDraftReply(body: string, options: GmailAdvancedOptions): GmailDraft;
+            createDraftReply(
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
             createDraftReplyAll(body: string): GmailDraft;
-            createDraftReplyAll(body: string, options: GmailAdvancedOptions): GmailDraft;
+            createDraftReplyAll(
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
             forward(recipient: string): GmailMessage;
-            forward(recipient: string, options: GmailAdvancedOptions): GmailMessage;
+            forward(
+                recipient: string,
+                options: GmailAdvancedOptions,
+            ): GmailMessage;
             getAttachments(): GmailAttachment[];
             getAttachments(options: GmailAttachmentOptions): GmailAttachment[];
             getBcc(): string;
@@ -264,9 +303,15 @@ declare namespace GoogleAppsScript {
         interface GmailThread {
             addLabel(label: GmailLabel): GmailThread;
             createDraftReply(body: string): GmailDraft;
-            createDraftReply(body: string, options: GmailAdvancedOptions): GmailDraft;
+            createDraftReply(
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
             createDraftReplyAll(body: string): GmailDraft;
-            createDraftReplyAll(body: string, options: GmailAdvancedOptions): GmailDraft;
+            createDraftReplyAll(
+                body: string,
+                options: GmailAdvancedOptions,
+            ): GmailDraft;
             getFirstMessageSubject(): string;
             getId(): string;
             getLabels(): GmailLabel[];

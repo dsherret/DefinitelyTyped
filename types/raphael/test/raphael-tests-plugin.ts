@@ -1,11 +1,23 @@
 // Sample for how to extend Raphael with plugin
 
-import { RaphaelAttributes, RaphaelBaseElement, RaphaelPaper, RaphaelPath, RaphaelSet } from "raphael";
+import {
+    RaphaelAttributes,
+    RaphaelBaseElement,
+    RaphaelPaper,
+    RaphaelPath,
+    RaphaelSet,
+} from "raphael";
 
 declare module "raphael" {
     // Raphael.fn
     interface RaphaelPaper {
-        arrow(x1: number, y1: number, x2: number, y2: number, size: number): RaphaelPath;
+        arrow(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            size: number,
+        ): RaphaelPath;
         myStuff: {
             arrow(flag: boolean): number;
             star(): void;

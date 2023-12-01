@@ -9,11 +9,15 @@ const result = Promise.hash({
     }),
 });
 
-type expectedType = Promise<{ a: number; b: string; c: { d: boolean; e: string } }>;
+type expectedType = Promise<{
+    a: number;
+    b: string;
+    c: { d: boolean; e: string };
+}>;
 type resultIsExpected = typeof result extends expectedType ? true : false; // $ExpectType true
 type expectedIsResult = expectedType extends typeof result ? true : false; // $ExpectType true
 
-const dResult = result.then(x => x.c.d);
+const dResult = result.then((x) => x.c.d);
 dResult; // $ExpectType Promise<boolean>
 
 const result2 = hash({

@@ -1,5 +1,10 @@
 import * as React from "react";
-import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    GestureResponderEvent,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 
 export type AlignTypes = "left" | "right" | "center";
 export type OverlayPointerEventTypes = "auto" | "none";
@@ -51,7 +56,11 @@ export interface DialogProps {
     dialogTitle?: any;
     width?: number | undefined;
     height?: number | undefined;
-    dialogAnimation?: FadeAnimation | ScaleAnimation | SlideAnimation | undefined;
+    dialogAnimation?:
+        | FadeAnimation
+        | ScaleAnimation
+        | SlideAnimation
+        | undefined;
     dialogStyle?: StyleProp<ViewStyle> | undefined;
     containerStyle?: StyleProp<ViewStyle> | undefined;
     animationDuration?: number | undefined;
@@ -71,7 +80,10 @@ export interface DialogProps {
 
 export class FadeAnimation {
     constructor(toValue?: number);
-    constructor(params: { toValue?: number | undefined; animationDuration?: number | undefined });
+    constructor(params: {
+        toValue?: number | undefined;
+        animationDuration?: number | undefined;
+    });
     toValue(toValue: number): void;
     createAnimations(): object;
 }
@@ -84,7 +96,10 @@ export class ScaleAnimation {
 
 export class SlideAnimation {
     constructor(toValue?: number);
-    constructor(params: { toValue?: number | undefined; slideFrom?: SlideFromTypes | undefined });
+    constructor(params: {
+        toValue?: number | undefined;
+        slideFrom?: SlideFromTypes | undefined;
+    });
     toValue(toValue: number): void;
     createAnimations(): object;
 }

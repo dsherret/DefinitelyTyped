@@ -120,7 +120,9 @@ Serializer.register("comment", "only-body", {
 
 Serializer.serialize("article", data, { count: 2 });
 Serializer.serialize("article", data, "default", { count: 2 }, true);
-Serializer.serializeAsync("article", data, "default", { count: 2 }, true).then(() => {});
+Serializer.serializeAsync("article", data, "default", { count: 2 }, true).then(
+    () => {},
+);
 
 const jsonDocument = {
     data: {
@@ -139,13 +141,16 @@ const jsonDocument = {
                 },
             },
             comments: {
-                data: [{
-                    type: "comment",
-                    id: "1",
-                }, {
-                    type: "comment",
-                    id: "2",
-                }],
+                data: [
+                    {
+                        type: "comment",
+                        id: "1",
+                    },
+                    {
+                        type: "comment",
+                        id: "2",
+                    },
+                ],
             },
             photos: {
                 meta: {

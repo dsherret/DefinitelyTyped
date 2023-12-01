@@ -24,7 +24,12 @@ export class Message {
 
     readonly uniqueToken: string;
 
-    constructor(message: any, handle: any, activityManager: ActivityManager, service: Service);
+    constructor(
+        message: any,
+        handle: any,
+        activityManager: ActivityManager,
+        service: Service,
+    );
 
     cancel(response: Record<string, any>): void;
 

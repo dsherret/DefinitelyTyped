@@ -43,16 +43,16 @@ export interface PreferencePaymentMethods {
     /** Métodos de pagamento não são permitidos no fluxo de pagamento (à exceção de account_money). */
     excluded_payment_methods?:
         | Array<{
-            /** Identificador do método de pagamento. */
-            id: string;
-        }>
+              /** Identificador do método de pagamento. */
+              id: string;
+          }>
         | undefined;
     /** Tipos de pagamento não são permitidos no fluxo de pagamento. */
     excluded_payment_types?:
         | Array<{
-            /** Identificador de data_type do meio de pagamento. */
-            id: string;
-        }>
+              /** Identificador de data_type do meio de pagamento. */
+              id: string;
+          }>
         | undefined;
     /** Meio de pagamento preferido. */
     default_payment_method_id?: string | undefined;
@@ -78,9 +78,9 @@ export interface PreferenceShipment {
     /** Oferecer um método de frete grátis (mode:me2 somente). */
     free_methods?:
         | Array<{
-            /** Identificador do método de envio. */
-            id: number;
-        }>
+              /** Identificador do método de envio. */
+              id: number;
+          }>
         | undefined;
     /** Custo do transporte (mode:custom somente). */
     cost?: number | undefined;
@@ -147,20 +147,22 @@ export interface CreatePreferencePayload {
     /** Comissão de Mercado cobrada pelo proprietário do aplicativo. Valor por default: 0 em moeda local */
     marketplace_fee?: number | undefined;
     /** Configuração de preço diferencial para esta preferência. */
-    differential_pricing?: {
-        /** Identificador de preço diferenciado. */
-        id: number;
-    } | undefined;
+    differential_pricing?:
+        | {
+              /** Identificador de preço diferenciado. */
+              id: number;
+          }
+        | undefined;
     /** Quando definido como true, o pagamento só pode ter os status approved ou rejected. Caso contrário, o status in_process é adicionado. */
     binary_mode?: boolean | undefined;
     /** Definição de impostos diferenciados. Disponível apenas para o Mercado Livre Colombia. */
     taxes?:
         | Array<{
-            /** Identificador de imposto */
-            type: "IVA" | "INC";
-            /** Valor do imposto. É suportado no máximo duas casas decimais. Para itens isentos de imposto, zero deve ser relatado. */
-            value: number;
-        }>
+              /** Identificador de imposto */
+              type: "IVA" | "INC";
+              /** Valor do imposto. É suportado no máximo duas casas decimais. Para itens isentos de imposto, zero deve ser relatado. */
+              value: number;
+          }>
         | undefined;
     /** Tracks que serão executados durante a interação do usuário no fluxo de Pagamento. */
     tracks?: PreferenceTrack[] | undefined;

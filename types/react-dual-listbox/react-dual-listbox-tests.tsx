@@ -43,9 +43,21 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
 <DualListBox options={flatOptions} onChange={valuesChange} />;
 <DualListBox options={readonlyFlatOptions} onChange={valuesChange} />;
 <DualListBox options={flatOptions} simpleValue onChange={valuesChange} />;
-<DualListBox options={readonlyFlatOptions} simpleValue onChange={valuesChange} />;
-<DualListBox options={flatOptions} simpleValue={false} onChange={optionsChange} />;
-<DualListBox options={readonlyFlatOptions} simpleValue={false} onChange={optionsChange} />;
+<DualListBox
+    options={readonlyFlatOptions}
+    simpleValue
+    onChange={valuesChange}
+/>;
+<DualListBox
+    options={flatOptions}
+    simpleValue={false}
+    onChange={optionsChange}
+/>;
+<DualListBox
+    options={readonlyFlatOptions}
+    simpleValue={false}
+    onChange={optionsChange}
+/>;
 
 /** Selection error examples. */
 <DualListBox
@@ -73,7 +85,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     options={flatOptions}
     canFilter
     filter={{
-        available: flatOptions.map(o => o.value),
+        available: flatOptions.map((o) => o.value),
         selected: [],
     }}
     onFilterChange={() => {}}
@@ -84,7 +96,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     options={readonlyFlatOptions}
     canFilter
     filter={{
-        available: readonlyFlatOptions.map(o => o.value),
+        available: readonlyFlatOptions.map((o) => o.value),
         selected: [],
     }}
     onFilterChange={() => {}}
@@ -97,7 +109,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
 <DualListBox
     options={flatOptions}
     filter={{
-        available: flatOptions.map(o => o.value),
+        available: flatOptions.map((o) => o.value),
         selected: [],
     }}
     onFilterChange={() => {}}
@@ -109,7 +121,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     options={flatOptions}
     canFilter={false}
     filter={{
-        available: flatOptions.map(o => o.value),
+        available: flatOptions.map((o) => o.value),
         selected: [],
     }}
     onFilterChange={() => {}}
@@ -120,7 +132,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
 /** Section labels. */
 <DualListBox
     options={flatOptions}
-    available={flatOptions.map(o => o.value)}
+    available={flatOptions.map((o) => o.value)}
     lang={{ availableHeader: "Available", selectedHeader: "Selected" }}
 />;
 
@@ -141,7 +153,10 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     options={flatOptions}
     icons={{
         moveLeft: <span className="fa fa-chevron-left" />,
-        moveAllLeft: [<span key={0} className="fa fa-chevron-left" />, <span key={1} className="fa fa-chevron-left" />],
+        moveAllLeft: [
+            <span key={0} className="fa fa-chevron-left" />,
+            <span key={1} className="fa fa-chevron-left" />,
+        ],
         moveRight: <span className="fa fa-chevron-right" />,
         moveAllRight: [
             <span key={0} className="fa fa-chevron-right" />,
@@ -163,10 +178,13 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     selected={[]}
     alignActions={"top"}
     allowDuplicates
-    available={flatOptions.map(o => o.value)}
+    available={flatOptions.map((o) => o.value)}
     icons={{
         moveLeft: <span className="fa fa-chevron-left" />,
-        moveAllLeft: [<span key={0} className="fa fa-chevron-left" />, <span key={1} className="fa fa-chevron-left" />],
+        moveAllLeft: [
+            <span key={0} className="fa fa-chevron-left" />,
+            <span key={1} className="fa fa-chevron-left" />,
+        ],
         moveRight: <span className="fa fa-chevron-right" />,
         moveAllRight: [
             <span key={0} className="fa fa-chevron-right" />,
@@ -183,7 +201,7 @@ const optionsChange = (selectedValues: Array<Option<string>>) => {};
     onChange={optionsChange}
     canFilter
     filter={{
-        available: flatOptions.map(o => o.value),
+        available: flatOptions.map((o) => o.value),
         selected: [],
     }}
     onFilterChange={() => {}}

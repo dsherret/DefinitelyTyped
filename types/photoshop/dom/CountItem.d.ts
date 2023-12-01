@@ -31,10 +31,7 @@ export declare class CountItem {
      * @param position : Object with x and y properties in pixels;
      * @minVersion 24.1
      */
-    move(position: {
-        x: number;
-        y: number;
-    }): void;
+    move(position: { x: number; y: number }): void;
     /**
      * Removes the CountItem from the document.
      * @minVersion 24.1

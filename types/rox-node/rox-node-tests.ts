@@ -50,27 +50,31 @@ function linkTargetGroupAttributes() {
 
     Rox.setCustomBooleanProperty("thisIsATest", true);
     Rox.setCustomBooleanProperty("thisIsATest", () => true);
-    Rox.setCustomBooleanProperty("thisIsATest", (context: any): boolean => context.value);
+    Rox.setCustomBooleanProperty(
+        "thisIsATest",
+        (context: any): boolean => context.value,
+    );
 
     Rox.setCustomNumberProperty("aNumberProperty", 17);
     Rox.setCustomNumberProperty("aNumberProperty", () => 17);
-    Rox.setCustomNumberProperty("aNumberProperty", (context: any): number => context.value);
+    Rox.setCustomNumberProperty(
+        "aNumberProperty",
+        (context: any): number => context.value,
+    );
 }
 
 function dynamicPropertyRuleHandler(propName: string, _context: unknown) {
     return propName === "myPropName";
 }
 
-function impressionHandler(
-    _reporting: Rox.RoxReporting,
-) {
+function impressionHandler(_reporting: Rox.RoxReporting) {
     // If _reporting.targeting is false, it mean there were no dashboard conditions, and default value was used
 }
 
 function configurationFetchedHandler(fetcherResult: Rox.RoxFetcherResult) {
     if (
-        fetcherResult.hasChanges
-        && fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
+        fetcherResult.hasChanges &&
+        fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
     ) {
     }
 }

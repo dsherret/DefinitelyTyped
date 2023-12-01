@@ -56,8 +56,7 @@ export const ceddl: {
 /**
  * Details not for implementer.
  */
-export class Model {
-}
+export class Model {}
 /**
  * Details not for implementer.
  */
@@ -105,7 +104,13 @@ export interface ModelConfig {
     extends?: string;
     fields: {
         [key: string]: {
-            type: StringField | BooleanField | ModelField | ListField | NumberField | ArrayField;
+            type:
+                | StringField
+                | BooleanField
+                | ModelField
+                | ListField
+                | NumberField
+                | ArrayField;
             foreignModel?: string;
             fieldType?: StringField | BooleanField | NumberField; // only used when ArrayField
             required: boolean;

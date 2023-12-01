@@ -1,7 +1,11 @@
 declare function shallowEqual(
     objA: any,
     objB: any,
-    compare?: (objA: any, objB: any, indexOrKey?: number | string) => boolean | undefined,
+    compare?: (
+        objA: any,
+        objB: any,
+        indexOrKey?: number | string,
+    ) => boolean | undefined,
     compareContext?: any,
 ): boolean;
 

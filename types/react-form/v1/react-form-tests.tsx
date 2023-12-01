@@ -15,23 +15,17 @@ import {
 
 <Form />;
 
-<Form>
-    {() => null}
-</Form>;
+<Form>{() => null}</Form>;
 
-<Form>
-    {() => <div />}
-</Form>;
+<Form>{() => <div />}</Form>;
 
-<Form>
-    {({ submitForm }) => <button onClick={submitForm}>Submit</button>}
-</Form>;
+<Form>{({ submitForm }) => <button onClick={submitForm}>Submit</button>}</Form>;
 
 <FormError field="" />;
 
-const CustomInput: React.FC<React.HTMLAttributes<HTMLInputElement> & { field?: string | undefined }> = (
-    { field, ...rest },
-) => {
+const CustomInput: React.FC<
+    React.HTMLAttributes<HTMLInputElement> & { field?: string | undefined }
+> = ({ field, ...rest }) => {
     return (
         <FormInput field={field}>
             {({ setValue, getValue, setTouched }) => {
@@ -49,13 +43,20 @@ const CustomInput: React.FC<React.HTMLAttributes<HTMLInputElement> & { field?: s
 };
 
 const events = {
-    onChange: (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null => null,
-    onBlur: (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null => null,
+    onChange: (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null =>
+        null,
+    onBlur: (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null =>
+        null,
 };
-const onClick = (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null => null;
+const onClick = (e: React.SyntheticEvent<HTMLElement>, cb: () => void): null =>
+    null;
 
 <Select options={[]} />;
-<Select field="" options={[{ label: "", value: "", disabled: false }]} {...events} />;
+<Select
+    field=""
+    options={[{ label: "", value: "", disabled: false }]}
+    {...events}
+/>;
 
 <Checkbox />;
 <Checkbox field="" checked={false} {...events} />;

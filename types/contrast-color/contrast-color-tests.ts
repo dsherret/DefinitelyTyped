@@ -18,7 +18,10 @@ const hasRedBg = contrastColor({ bgColor: "#f00" });
 const hasRedBgWithBlackFg = contrastColor({ bgColor: "#f00", threshold: 76 });
 const hasYellowBg = contrastColor({ bgColor: "yellow" });
 const hasWhiteBgWithGreenFg = contrastColor({ fgDarkColor: "#008000" });
-const hasBlackBgWithLimeFg = contrastColor({ bgColor: "#000000", fgLightColor: "lime" });
+const hasBlackBgWithLimeFg = contrastColor({
+    bgColor: "#000000",
+    fgLightColor: "lime",
+});
 const hasKitchenSink = contrastColor({
     bgColor: "#808080",
     fgDarkColor: "dirty",

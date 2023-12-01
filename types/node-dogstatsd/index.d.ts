@@ -8,7 +8,12 @@ declare module "node-dogstatsd" {
     }
 
     export interface StatsDClient {
-        timing(stat: string, time: number, sample_rate?: number, tags?: string[]): void;
+        timing(
+            stat: string,
+            time: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
 
         increment(stat: string, sample_rate?: number, tags?: string[]): void;
         incrementBy(stat: string, value: number, tags?: string[]): void;
@@ -16,17 +21,37 @@ declare module "node-dogstatsd" {
         decrement(stat: string, sample_rate?: number, tags?: string[]): void;
         decrementBy(stat: string, value: number, tags?: string[]): void;
 
-        gauge(stat: string, value: number, sample_rate?: number, tags?: string[]): void;
+        gauge(
+            stat: string,
+            value: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
 
-        histogram(stat: string, time: number, sample_rate?: number, tags?: string[]): void;
+        histogram(
+            stat: string,
+            time: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
     }
 
     export class StatsD implements StatsDClient {
         public socket: dgram.Socket;
 
-        constructor(host: string, port?: number, socket?: dgram.Socket, options?: StatsDOptions);
+        constructor(
+            host: string,
+            port?: number,
+            socket?: dgram.Socket,
+            options?: StatsDOptions,
+        );
 
-        timing(stat: string, time: number, sample_rate?: number, tags?: string[]): void;
+        timing(
+            stat: string,
+            time: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
 
         increment(stat: string, sample_rate?: number, tags?: string[]): void;
         incrementBy(stat: string, value: number, tags?: string[]): void;
@@ -34,9 +59,19 @@ declare module "node-dogstatsd" {
         decrement(stat: string, sample_rate?: number, tags?: string[]): void;
         decrementBy(stat: string, value: number, tags?: string[]): void;
 
-        gauge(stat: string, value: number, sample_rate?: number, tags?: string[]): void;
+        gauge(
+            stat: string,
+            value: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
 
-        histogram(stat: string, time: number, sample_rate?: number, tags?: string[]): void;
+        histogram(
+            stat: string,
+            time: number,
+            sample_rate?: number,
+            tags?: string[],
+        ): void;
 
         close(): void;
     }

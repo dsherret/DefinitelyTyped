@@ -12,7 +12,14 @@ export type MaybePromiseType<T> = T | Promise<T>;
 
 export type StreamHandlerType = (stream: Readable) => void;
 
-export type ComparisonOperatorType = "<" | ">" | "<=" | ">=" | "=" | "<>" | "!=";
+export type ComparisonOperatorType =
+    | "<"
+    | ">"
+    | "<="
+    | ">="
+    | "="
+    | "<>"
+    | "!=";
 export type LogicalBooleanOperatorType = "AND" | "OR";
 
 //
@@ -44,7 +51,8 @@ export interface SerializableValueObject {
     [x: string]: SerializableValueType;
 }
 
-export interface SerializableValueArray extends ReadonlyArray<SerializableValueType> {}
+export interface SerializableValueArray
+    extends ReadonlyArray<SerializableValueType> {}
 
 export type NamedParameterValuesType = Record<string, ValueExpressionType>;
 
@@ -83,9 +91,15 @@ export interface UnnestSqlTokenType {
     type: typeof SlonikSymbol.UnnestTokenSymbol;
 }
 
-export type PrimitiveValueExpressionType = string | number | boolean | null | PrimitiveValueExpressionTypeArray;
+export type PrimitiveValueExpressionType =
+    | string
+    | number
+    | boolean
+    | null
+    | PrimitiveValueExpressionTypeArray;
 
-export interface PrimitiveValueExpressionTypeArray extends Array<PrimitiveValueExpressionType> {}
+export interface PrimitiveValueExpressionTypeArray
+    extends Array<PrimitiveValueExpressionType> {}
 
 export type SqlTokenType =
     | ArraySqlTokenType
@@ -113,11 +127,16 @@ export type DatabaseTransactionConnectionType = CommonQueryMethodsType & {
 };
 
 export type DatabasePoolConnectionType = CommonQueryMethodsType & {
-    stream: (sql: TaggedTemplateLiteralInvocationType, streamHandler: StreamHandlerType) => Promise<null>;
+    stream: (
+        sql: TaggedTemplateLiteralInvocationType,
+        streamHandler: StreamHandlerType,
+    ) => Promise<null>;
     transaction: <T>(handler: TransactionFunctionType<T>) => Promise<T>;
 };
 
-export type ConnectionRoutineType<T> = (connection: DatabasePoolConnectionType) => Promise<T>;
+export type ConnectionRoutineType<T> = (
+    connection: DatabasePoolConnectionType,
+) => Promise<T>;
 
 export interface PoolStateType {
     activeConnectionCount: number;
@@ -130,11 +149,17 @@ export type DatabasePoolType = CommonQueryMethodsType & {
     connect: <T>(connectionRoutine: ConnectionRoutineType<T>) => Promise<T>;
     end: () => Promise<void>;
     getPoolState: () => PoolStateType;
-    stream: (sql: TaggedTemplateLiteralInvocationType, streamHandler: StreamHandlerType) => Promise<null>;
+    stream: (
+        sql: TaggedTemplateLiteralInvocationType,
+        streamHandler: StreamHandlerType,
+    ) => Promise<null>;
     transaction: <T>(handler: TransactionFunctionType<T>) => Promise<T>;
 };
 
-export type ConnectionTypeType = "EXPLICIT" | "IMPLICIT_QUERY" | "IMPLICIT_TRANSACTION";
+export type ConnectionTypeType =
+    | "EXPLICIT"
+    | "IMPLICIT_QUERY"
+    | "IMPLICIT_TRANSACTION";
 
 export interface ConnectionContextType {
     /**
@@ -152,7 +177,8 @@ export interface ConnectionContextType {
     poolId: string;
 }
 
-export type DatabaseConnectionType = DatabasePoolConnectionType & DatabasePoolType;
+export type DatabaseConnectionType = DatabasePoolConnectionType &
+    DatabasePoolType;
 
 //
 // QUERY
@@ -194,16 +220,32 @@ export type QueryResultRowType<ColumnName extends string = string> = {
     [name in ColumnName]: QueryResultRowColumnType;
 };
 
-export type QueryAnyFirstFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<Array<T[keyof T]>>;
-export type QueryAnyFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<T[]>;
-export type QueryExistsFunctionType = (...args: QueryMethodParams<any>) => Promise<boolean>;
-export type QueryFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<QueryResultType<T>>;
+export type QueryAnyFirstFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<Array<T[keyof T]>>;
+export type QueryAnyFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<T[]>;
+export type QueryExistsFunctionType = (
+    ...args: QueryMethodParams<any>
+) => Promise<boolean>;
+export type QueryFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<QueryResultType<T>>;
 export type QueryManyFirstFunctionType = QueryAnyFirstFunctionType;
 export type QueryManyFunctionType = QueryAnyFunctionType;
-export type QueryMaybeOneFirstFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<T[keyof T] | null>;
-export type QueryMaybeOneFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<T | null>;
-export type QueryOneFirstFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<T[keyof T]>;
-export type QueryOneFunctionType = <T>(...args: QueryMethodParams<T>) => Promise<T>;
+export type QueryMaybeOneFirstFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<T[keyof T] | null>;
+export type QueryMaybeOneFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<T | null>;
+export type QueryOneFirstFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<T[keyof T]>;
+export type QueryOneFunctionType = <T>(
+    ...args: QueryMethodParams<T>
+) => Promise<T>;
 
 export interface CommonQueryMethodsType {
     any: QueryAnyFunctionType;
@@ -265,7 +307,9 @@ export interface QueryContextType {
 //
 // SQL (TAGGED TEMPLATE)
 // ----------------------------------------------------------------------
-export interface TaggedTemplateLiteralInvocationType<Result = QueryResultRowType> {
+export interface TaggedTemplateLiteralInvocationType<
+    Result = QueryResultRowType,
+> {
     sql: string;
     type: typeof SlonikSymbol.SqlTokenSymbol;
     values: ValueExpressionType[];
@@ -279,19 +323,27 @@ export interface SqlTagConfigurationType {
     normalizeIdentifier?: IdentifierNormalizerType | undefined;
 }
 
-export function createSqlTag(configuration?: SqlTagConfigurationType): SqlTaggedTemplateType;
+export function createSqlTag(
+    configuration?: SqlTagConfigurationType,
+): SqlTaggedTemplateType;
 
 export interface SqlTaggedTemplateType {
     // (the sql<Foo>`select foo` is cleaner in this case than casting with 'as')
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    <T = QueryResultRowType>(template: TemplateStringsArray, ...vals: ValueExpressionType[]): SqlSqlTokenType<T>;
+    <T = QueryResultRowType>(
+        template: TemplateStringsArray,
+        ...vals: ValueExpressionType[]
+    ): SqlSqlTokenType<T>;
     array: (
         values: PrimitiveValueExpressionType[],
         memberType: TypeNameIdentifierType | SqlTokenType,
     ) => ArraySqlTokenType;
     identifier: (names: string[]) => IdentifierSqlTokenType;
     json: (value: SerializableValueType) => JsonSqlTokenType;
-    join: (members: readonly ValueExpressionType[], glue: SqlTokenType) => ListSqlTokenType;
+    join: (
+        members: readonly ValueExpressionType[],
+        glue: SqlTokenType,
+    ) => ListSqlTokenType;
     unnest: (
         // Value might be ReadonlyArray<ReadonlyArray<PrimitiveValueExpressionType>>,
         // or it can be infinitely nested array, e.g.
@@ -332,7 +384,9 @@ export function createPool(
 //
 // TRANSACTION
 // ----------------------------------------------------------------------
-export type TransactionFunctionType<T> = (connection: DatabaseTransactionConnectionType) => Promise<T>;
+export type TransactionFunctionType<T> = (
+    connection: DatabaseTransactionConnectionType,
+) => Promise<T>;
 
 //
 // INTERCEPTOR
@@ -340,57 +394,64 @@ export type TransactionFunctionType<T> = (connection: DatabaseTransactionConnect
 export interface InterceptorType {
     afterPoolConnection?:
         | ((
-            connectionContext: ConnectionContextType,
-            connection: DatabasePoolConnectionType,
-        ) => MaybePromiseType<null>)
+              connectionContext: ConnectionContextType,
+              connection: DatabasePoolConnectionType,
+          ) => MaybePromiseType<null>)
         | undefined;
     afterQueryExecution?:
         | ((
-            queryContext: QueryContextType,
-            query: QueryType,
-            result: QueryResultType<QueryResultRowType>,
-        ) => MaybePromiseType<null>)
+              queryContext: QueryContextType,
+              query: QueryType,
+              result: QueryResultType<QueryResultRowType>,
+          ) => MaybePromiseType<null>)
         | undefined;
     beforePoolConnection?:
         | ((
-            connectionContext: PoolContextType,
-        ) => MaybePromiseType<DatabasePoolType | null | undefined>)
+              connectionContext: PoolContextType,
+          ) => MaybePromiseType<DatabasePoolType | null | undefined>)
         | undefined;
     beforePoolConnectionRelease?:
         | ((
-            connectionContext: ConnectionContextType,
-            connection: DatabasePoolConnectionType,
-        ) => MaybePromiseType<null>)
+              connectionContext: ConnectionContextType,
+              connection: DatabasePoolConnectionType,
+          ) => MaybePromiseType<null>)
         | undefined;
     beforeQueryExecution?:
         | ((
-            queryContext: QueryContextType,
-            query: QueryType,
-        ) => MaybePromiseType<QueryResultType<QueryResultRowType> | null>)
+              queryContext: QueryContextType,
+              query: QueryType,
+          ) => MaybePromiseType<QueryResultType<QueryResultRowType> | null>)
         | undefined;
     beforeQueryResult?:
         | ((
-            queryContext: QueryContextType,
-            query: QueryType,
-            result: QueryResultType<QueryResultRowType>,
-        ) => MaybePromiseType<null>)
+              queryContext: QueryContextType,
+              query: QueryType,
+              result: QueryResultType<QueryResultRowType>,
+          ) => MaybePromiseType<null>)
         | undefined;
-    beforeTransformQuery?: ((queryContext: QueryContextType, query: QueryType) => MaybePromiseType<null>) | undefined;
+    beforeTransformQuery?:
+        | ((
+              queryContext: QueryContextType,
+              query: QueryType,
+          ) => MaybePromiseType<null>)
+        | undefined;
     queryExecutionError?:
         | ((
-            queryContext: QueryContextType,
-            query: QueryType,
-            error: SlonikError,
-        ) => MaybePromiseType<null>)
+              queryContext: QueryContextType,
+              query: QueryType,
+              error: SlonikError,
+          ) => MaybePromiseType<null>)
         | undefined;
-    transformQuery?: ((queryContext: QueryContextType, query: QueryType) => QueryType) | undefined;
+    transformQuery?:
+        | ((queryContext: QueryContextType, query: QueryType) => QueryType)
+        | undefined;
     transformRow?:
         | ((
-            queryContext: QueryContextType,
-            query: QueryType,
-            row: QueryResultRowType,
-            fields: FieldType[],
-        ) => QueryResultRowType)
+              queryContext: QueryContextType,
+              query: QueryType,
+              row: QueryResultRowType,
+              fields: FieldType[],
+          ) => QueryResultRowType)
         | undefined;
 }
 
@@ -407,9 +468,9 @@ export function createFieldNameTransformationInterceptor(configuration: {
     format: string;
     test?: ((field: FieldType) => boolean) | undefined;
 }): InterceptorType;
-export function createQueryNormalizationInterceptor(
-    configuration?: { stripComments?: boolean | undefined },
-): InterceptorType;
+export function createQueryNormalizationInterceptor(configuration?: {
+    stripComments?: boolean | undefined;
+}): InterceptorType;
 export function createBenchmarkingInterceptor(): InterceptorType;
 
 //
@@ -425,7 +486,9 @@ export interface TypeParserType<T = unknown> {
 
 export function createBigintTypeParser(): TypeParserType<number>;
 export function createTimestampTypeParser(): TypeParserType<number | null>;
-export function createTimestampWithTimeZoneTypeParser(): TypeParserType<number | null>;
+export function createTimestampWithTimeZoneTypeParser(): TypeParserType<
+    number | null
+>;
 
 /**
  * Default type parsers.

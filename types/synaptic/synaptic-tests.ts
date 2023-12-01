@@ -35,7 +35,7 @@
         const B = new Neuron();
         A.project(B);
 
-        const learningRate = .3;
+        const learningRate = 0.3;
 
         for (let i = 0; i < 20000; i++) {
             // when A activates 1
@@ -96,7 +96,7 @@
         const B = new Layer(2);
         A.project(B);
 
-        const learningRate = .3;
+        const learningRate = 0.3;
 
         for (let i = 0; i < 20000; i++) {
             // when A activates [1, 0, 1, 0, 1]
@@ -194,7 +194,7 @@
     });
 
     // train the network
-    let learningRate = .3;
+    let learningRate = 0.3;
     for (let i = 0; i < 20000; i++) {
         // 0,0 => 0
         myNetwork.activate([0, 0]);
@@ -233,7 +233,7 @@
     // worker
     // ------
     // training set
-    learningRate = .3;
+    learningRate = 0.3;
     const trainingSet = [
         {
             input: [0, 0],
@@ -272,25 +272,31 @@
 
     // activate the network
     function activateWorker(input: number[]) {
-        myWorker.postMessage({
-            action: "activate",
-            input: input,
-            memoryBuffer: myNetwork.optimized.memory,
-        }, [myNetwork.optimized.memory.buffer]);
+        myWorker.postMessage(
+            {
+                action: "activate",
+                input: input,
+                memoryBuffer: myNetwork.optimized.memory,
+            },
+            [myNetwork.optimized.memory.buffer],
+        );
     }
 
     // backpropagate the network
     function propagateWorker(target: number[]) {
-        myWorker.postMessage({
-            action: "propagate",
-            target: target,
-            rate: learningRate,
-            memoryBuffer: myNetwork.optimized.memory,
-        }, [myNetwork.optimized.memory.buffer]);
+        myWorker.postMessage(
+            {
+                action: "propagate",
+                target: target,
+                rate: learningRate,
+                memoryBuffer: myNetwork.optimized.memory,
+            },
+            [myNetwork.optimized.memory.buffer],
+        );
     }
 
     // train the worker
-    myWorker.onmessage = function(e) {
+    myWorker.onmessage = function (e) {
         // give control of the memory back to the network - this is mandatory!
         myNetwork.optimized.ownership(e.data.memoryBuffer);
 
@@ -406,7 +412,13 @@
     const connections = 30;
     const gates = 10;
 
-    const myLiquidStateMachine = new Architect.Liquid(input, pool, output, connections, gates);
+    const myLiquidStateMachine = new Architect.Liquid(
+        input,
+        pool,
+        output,
+        connections,
+        gates,
+    );
 
     // Hopfield
     // --------
@@ -453,18 +465,25 @@
     trainer.train(trainingSet);
 
     const traningOptions = {
-        rate: .1,
+        rate: 0.1,
         iterations: 20000,
-        error: .005,
+        error: 0.005,
         shuffle: true,
         log: 1000,
         cost: Trainer.cost.CROSS_ENTROPY,
         schedule: {
             every: 500, // repeat this task every 500 iterations
-            do: function(data: Synaptic.Trainer.TrainingScheduleDoData) {
+            do: function (data: Synaptic.Trainer.TrainingScheduleDoData) {
                 // custom log
-                console.log("error", data.error, "iterations", data.iterations, "rate", data.rate);
-                if (data.error > .5) {
+                console.log(
+                    "error",
+                    data.error,
+                    "iterations",
+                    data.iterations,
+                    "rate",
+                    data.rate,
+                );
+                if (data.error > 0.5) {
                     return true; // abort/stop training
                 }
             },
@@ -476,7 +495,8 @@
     // trainAsync
     // ----------
     trainer = new Trainer(myNetwork);
-    trainer.trainAsync(trainingSet, traningOptions)
+    trainer
+        .trainAsync(trainingSet, traningOptions)
         .then((results: any) => console.log("done!", results));
 
     myNetwork = new Architect.Perceptron(2, 2, 1);
@@ -501,7 +521,8 @@
         },
     ];
 
-    trainer.trainAsync(trainingSet)
+    trainer
+        .trainAsync(trainingSet)
         .then((results: any) => console.log("done!", results));
 
     // test

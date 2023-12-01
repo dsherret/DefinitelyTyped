@@ -1,11 +1,24 @@
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-declare type HookerPostHookFunction = (result: any, ...args: any[]) => IHookerPostHookResult | void;
+declare type HookerPostHookFunction = (
+    result: any,
+    ...args: any[]
+) => IHookerPostHookResult | void;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-declare type HookerPreHookFunction = (...args: any[]) => IHookerPreHookResult | void;
+declare type HookerPreHookFunction = (
+    ...args: any[]
+) => IHookerPreHookResult | void;
 
 declare module "hooker" {
-    function hook(object: any, props: string | string[], options: IHookerOptions): void;
-    function hook(object: any, props: string | string[], prehookFunction: HookerPreHookFunction): void;
+    function hook(
+        object: any,
+        props: string | string[],
+        options: IHookerOptions,
+    ): void;
+    function hook(
+        object: any,
+        props: string | string[],
+        prehookFunction: HookerPreHookFunction,
+    ): void;
     function unhook(object: any, props?: string | string[]): string[];
     function orig(object: any, props: string | string[]): Function;
     function override(value: any): HookerOverride;
@@ -13,7 +26,9 @@ declare module "hooker" {
     function filter(context: any, args: any[]): HookerFilter;
 }
 
-declare class HookerOverride implements IHookerPostHookResult, IHookerPreHookResult {
+declare class HookerOverride
+    implements IHookerPostHookResult, IHookerPreHookResult
+{
     value: any;
 }
 

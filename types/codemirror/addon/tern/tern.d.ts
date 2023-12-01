@@ -23,7 +23,11 @@ declare module "../../" {
         addDoc(
             name: string,
             doc: Doc,
-        ): { doc: Doc; name: string; changed: { from: number; to: number } | null };
+        ): {
+            doc: Doc;
+            name: string;
+            changed: { from: number; to: number } | null;
+        };
         delDoc(id: string | Editor | Doc): void;
         hideDoc(id: string | Editor | Doc): void;
         complete(cm: Editor): void;
@@ -43,7 +47,10 @@ declare module "../../" {
         request<Q extends Tern.Query["type"]>(
             cm: Doc,
             query: Q,
-            callback: (error?: Error, data?: Tern.QueryRegistry[Q]["result"]) => void,
+            callback: (
+                error?: Error,
+                data?: Tern.QueryRegistry[Q]["result"],
+            ) => void,
             pos?: Position,
         ): void;
         destroy(): void;
@@ -75,7 +82,9 @@ declare module "../../" {
          * Tern — and may return a string, DOM node, or null to indicate that
          * no tip should be shown. By default the docstring is shown.
          */
-        completionTip?(data: Tern.CompletionsQueryResult): string | HTMLElement | null;
+        completionTip?(
+            data: Tern.CompletionsQueryResult,
+        ): string | HTMLElement | null;
         /** Like completionTip, but for the tooltips shown for type queries. */
         typeTip?(data: Tern.TypeQueryResult): string | HTMLElement | null;
         /** This function will be applied to the Tern responses before treating them */

@@ -101,4 +101,7 @@ export interface CountDownState {
     wentBackgroundAt: number | null;
 }
 
-export default class CountDown extends Component<CountDownProps, CountDownState> {}
+export default class CountDown extends Component<
+    CountDownProps,
+    CountDownState
+> {}

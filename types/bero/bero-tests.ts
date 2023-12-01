@@ -6,7 +6,10 @@ const check1 = bem();
 const block1 = bem("block", ["modifier1", undefined, "modifier2"]);
 
 const block2 = bem("block");
-const classesElement2 = join(block2("element", ["modifier"]), "extra-element-class");
+const classesElement2 = join(
+    block2("element", ["modifier"]),
+    "extra-element-class",
+);
 
 const classesElement3 = join(block2("element", ["modifier"]), undefined);
 const classesElement3bis = join(block2("element", ["modifier"]));

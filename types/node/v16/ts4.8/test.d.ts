@@ -38,7 +38,11 @@ declare module "node:test" {
      * @returns A {@link Promise} resolved with `undefined` once the test completes.
      */
     function test(name?: string, fn?: TestFn): Promise<void>;
-    function test(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function test(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function test(options?: TestOptions, fn?: TestFn): Promise<void>;
     function test(fn?: TestFn): Promise<void>;
 

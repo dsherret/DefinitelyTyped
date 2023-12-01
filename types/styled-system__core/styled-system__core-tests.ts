@@ -13,7 +13,4 @@ const customFontStyles = system({
     letterSpacing: true,
 });
 
-const CustomFontGroup = compose(
-    customFontStyles,
-    customFontStyles,
-);
+const CustomFontGroup = compose(customFontStyles, customFontStyles);

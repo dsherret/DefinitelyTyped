@@ -20,5 +20,9 @@ vuePlugin({
 vuePlugin({
     extractCss: true,
     workers: false,
-    assembleOptions: { normalizer: "", styleInjector: "", styleInjectorSSR: "" },
+    assembleOptions: {
+        normalizer: "",
+        styleInjector: "",
+        styleInjectorSSR: "",
+    },
 });

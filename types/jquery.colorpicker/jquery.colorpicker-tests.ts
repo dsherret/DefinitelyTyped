@@ -1,7 +1,7 @@
 /// <reference types="jqueryui" />
 
 // Default options copied from the source
-var colorpicker = $("<input type=\"text\"/>").colorpicker({
+var colorpicker = $('<input type="text"/>').colorpicker({
     alpha: false, // Show alpha controls and mode
     altAlpha: true, // change opacity of altField as well?
     altField: "", // selector for DOM elements which change background color on change.
@@ -71,55 +71,68 @@ colorpicker.colorpicker("setColor", "#deadbeef");
 colorpicker.colorpicker("option", "disabled", true);
 
 // check if all options are optional
-let defaultColorpicker = $("<input type=\"text\"/>").colorpicker({});
+let defaultColorpicker = $('<input type="text"/>').colorpicker({});
 
 // example plugins provided
 
-$.colorpicker.parts["memory"] = function(inst) {
+$.colorpicker.parts["memory"] = function (inst) {
     var that = this,
         container,
-        selectNode = function(node) {
+        selectNode = function (node) {
             inst._setColor($(node).css("backgroundColor"));
             inst._change();
         },
-        deleteNode = function(node) {
+        deleteNode = function (node) {
             node.remove();
         },
-        addNode = function(color) {
-            var $node = $("<div/>").addClass("ui-colorpicker-swatch").css("backgroundColor", color);
-            $node.mousedown(function(e) {
-                e.stopPropagation();
-                switch (e.which) {
-                    case 1:
-                        selectNode(this);
-                        break;
-                    case 3:
-                        deleteNode($node);
-                        setMemory();
-                        break;
-                }
-            }).bind("contextmenu", function(e) {
-                e.preventDefault();
-            });
+        addNode = function (color) {
+            var $node = $("<div/>")
+                .addClass("ui-colorpicker-swatch")
+                .css("backgroundColor", color);
+            $node
+                .mousedown(function (e) {
+                    e.stopPropagation();
+                    switch (e.which) {
+                        case 1:
+                            selectNode(this);
+                            break;
+                        case 3:
+                            deleteNode($node);
+                            setMemory();
+                            break;
+                    }
+                })
+                .bind("contextmenu", function (e) {
+                    e.preventDefault();
+                });
 
             container.append($node);
         },
-        getMemory = function() {
-            return (document.cookie.match(/\bcolorpicker-memory=([^;]*)/) || [0, ""])[1].split(",");
+        getMemory = function () {
+            return (document.cookie.match(/\bcolorpicker-memory=([^;]*)/) || [
+                0,
+                "",
+            ])[1].split(",");
         },
-        setMemory = function() {
+        setMemory = function () {
             var colors = [];
-            $("> *", container).each(function() {
+            $("> *", container).each(function () {
                 colors.push(encodeURIComponent($(this).css("backgroundColor")));
             });
             var expdate = new Date();
-            expdate.setDate(expdate.getDate() + (365 * 10));
-            document.cookie = "colorpicker-memory=" + colors.join() + ";expires=" + expdate.toUTCString();
+            expdate.setDate(expdate.getDate() + 365 * 10);
+            document.cookie =
+                "colorpicker-memory=" +
+                colors.join() +
+                ";expires=" +
+                expdate.toUTCString();
         };
 
-    this.init = function() {
+    this.init = function () {
         container = $("<div/>")
-            .addClass("ui-colorpicker-memory ui-colorpicker-border ui-colorpicker-swatches")
+            .addClass(
+                "ui-colorpicker-memory ui-colorpicker-border ui-colorpicker-swatches",
+            )
             .css({
                 width: 84,
                 height: 84,
@@ -127,11 +140,11 @@ $.colorpicker.parts["memory"] = function(inst) {
             })
             .appendTo($(".ui-colorpicker-memory-container", inst.dialog));
 
-        $.each(getMemory(), function() {
+        $.each(getMemory(), function () {
             addNode(decodeURIComponent(this));
         });
 
-        container.mousedown(function(e) {
+        container.mousedown(function (e) {
             addNode(inst.color.toCSS());
             setMemory();
         });
@@ -140,16 +153,17 @@ $.colorpicker.parts["memory"] = function(inst) {
 
 declare function setGradient(element, startColor, endColor): void;
 
-$.colorpicker.parts["rgbslider"] = function(inst) {
+$.colorpicker.parts["rgbslider"] = function (inst) {
     var that = this,
         sliders = {
-            r: $("<div class=\"ui-colorpicker-slider\"/>"),
-            g: $("<div class=\"ui-colorpicker-slider\"/>"),
-            b: $("<div class=\"ui-colorpicker-slider\"/>"),
+            r: $('<div class="ui-colorpicker-slider"/>'),
+            g: $('<div class="ui-colorpicker-slider"/>'),
+            b: $('<div class="ui-colorpicker-slider"/>'),
         };
 
-    this.init = function() {
-        $("<div class=\"ui-colorpicker-rgbslider\"/>").append(sliders.r, sliders.g, sliders.b)
+    this.init = function () {
+        $('<div class="ui-colorpicker-rgbslider"/>')
+            .append(sliders.r, sliders.g, sliders.b)
             .appendTo($(".ui-colorpicker-rgbslider-container", inst.dialog));
 
         function refresh() {
@@ -161,9 +175,21 @@ $.colorpicker.parts["rgbslider"] = function(inst) {
 
             inst.color.setRGB(r, g, b);
 
-            setGradient(sliders.r, new $.colorpicker.Color(0, g, b), new $.colorpicker.Color(1, g, b));
-            setGradient(sliders.g, new $.colorpicker.Color(r, 0, b), new $.colorpicker.Color(r, 1, b));
-            setGradient(sliders.b, new $.colorpicker.Color(r, g, 0), new $.colorpicker.Color(r, g, 1));
+            setGradient(
+                sliders.r,
+                new $.colorpicker.Color(0, g, b),
+                new $.colorpicker.Color(1, g, b),
+            );
+            setGradient(
+                sliders.g,
+                new $.colorpicker.Color(r, 0, b),
+                new $.colorpicker.Color(r, 1, b),
+            );
+            setGradient(
+                sliders.b,
+                new $.colorpicker.Color(r, g, 0),
+                new $.colorpicker.Color(r, g, 1),
+            );
 
             inst._change();
         }
@@ -177,8 +203,8 @@ $.colorpicker.parts["rgbslider"] = function(inst) {
         });
     };
 
-    this.repaint = function() {
-        $.each(inst.color.getRGB(), function(index, value) {
+    this.repaint = function () {
+        $.each(inst.color.getRGB(), function (index, value) {
             var input = sliders[index];
             value = Math.round(value * 255);
             if (input.slider("value") !== value) {
@@ -187,15 +213,18 @@ $.colorpicker.parts["rgbslider"] = function(inst) {
         });
     };
 
-    this.update = function() {
+    this.update = function () {
         this.repaint();
     };
 };
 
-$.colorpicker.parsers["CMYK"] = function(color) {
-    var m = /^cmyk\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/.exec(color);
+$.colorpicker.parsers["CMYK"] = function (color) {
+    var m =
+        /^cmyk\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/.exec(
+            color,
+        );
     if (m) {
-        return (new $.colorpicker.Color()).setCMYK(
+        return new $.colorpicker.Color().setCMYK(
             parseInt(m[1], 10) / 255,
             parseInt(m[2], 10) / 255,
             parseInt(m[3], 10) / 255,
@@ -204,18 +233,23 @@ $.colorpicker.parsers["CMYK"] = function(color) {
     }
 };
 
-$.colorpicker.parsers["#HEX8"] = function(color) {
-    var m = /^\s*#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})\s*$/i.exec(color);
+$.colorpicker.parsers["#HEX8"] = function (color) {
+    var m =
+        /^\s*#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})\s*$/i.exec(
+            color,
+        );
     if (m) {
-        return (new (<any> $).colorpicker.Color()).setRGB(
-            parseInt(m[2], 16) / 255,
-            parseInt(m[3], 16) / 255,
-            parseInt(m[4], 16) / 255,
-        ).setAlpha(parseInt(m[1], 16) / 255);
+        return new (<any>$).colorpicker.Color()
+            .setRGB(
+                parseInt(m[2], 16) / 255,
+                parseInt(m[3], 16) / 255,
+                parseInt(m[4], 16) / 255,
+            )
+            .setAlpha(parseInt(m[1], 16) / 255);
     }
 };
 
-$.colorpicker.writers["#HEX8"] = function(color, that) {
+$.colorpicker.writers["#HEX8"] = function (color, that) {
     return that._formatColor("#axrxgxbx", color);
 };
 

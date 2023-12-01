@@ -2,7 +2,12 @@
 
 import { Stream } from "stream";
 
-type Appendable = NodeJS.ReadableStream | NodeJS.WritableStream | Buffer | string | NextFunction;
+type Appendable =
+    | NodeJS.ReadableStream
+    | NodeJS.WritableStream
+    | Buffer
+    | string
+    | NextFunction;
 type NextFunction = (next: (stream: Appendable) => any) => any;
 
 interface Options {

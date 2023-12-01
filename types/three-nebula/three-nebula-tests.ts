@@ -156,10 +156,14 @@ emitter.addBehaviour(new Attraction(new Vector3D(1, 2, 3), 1, 2));
 emitter.addBehaviour(new Collision(emitter2, true));
 
 // $ExpectType Emitter
-emitter.addBehaviour(new Color(new THREE.Color(0xff0000), new THREE.Color(0x00ff00)));
+emitter.addBehaviour(
+    new Color(new THREE.Color(0xff0000), new THREE.Color(0x00ff00)),
+);
 
 // $ExpectType Emitter
-emitter.addBehaviour(new CrossZone(new PointZone(new Vector3D(1, 2, 3)), "bound"));
+emitter.addBehaviour(
+    new CrossZone(new PointZone(new Vector3D(1, 2, 3)), "bound"),
+);
 
 // $ExpectType Emitter
 emitter.addBehaviour(new Force(1, 2, 3, Infinity, ease.easeInSine));
@@ -171,7 +175,9 @@ emitter.addBehaviour(new Gravity(1, 2, ease.easeInSine));
 emitter.addBehaviour(new RandomDrift(1, 2, 3, 10, Infinity, ease.easeInSine));
 
 // $ExpectType Emitter
-emitter.addBehaviour(new Repulsion(new Vector3D(1, 2, 3), 1, 2, Infinity, ease.easeInSine));
+emitter.addBehaviour(
+    new Repulsion(new Vector3D(1, 2, 3), 1, 2, Infinity, ease.easeInSine),
+);
 
 // $ExpectType Emitter
 emitter.addBehaviour(new Rotate(1, 2, 3, Infinity, ease.easeInSine));
@@ -215,12 +221,12 @@ ParticleSystem.fromJSONAsync(JSON.parse(testJson), THREE);
 ParticleSystem.fromJSONAsync(JSON.parse(testJson), THREE, { options: true });
 
 // @ts-expect-error - wrong type
-Debug.addEventListener("emitterAdded", emitter => {
+Debug.addEventListener("emitterAdded", (emitter) => {
     console.log(emitter);
 });
 
 // $ExpectType typeof Debug
-Debug.addEventListener(System, emitter => {
+Debug.addEventListener(System, (emitter) => {
     console.log(emitter);
 });
 
@@ -252,7 +258,10 @@ const lineZone = new LineZone(vec3d, vec3d);
 const meshZone = new MeshZone(new THREE.Mesh(), new THREE.BufferGeometry());
 
 // $ExpectType ScreenZone
-const screenZone = new ScreenZone(new THREE.PerspectiveCamera(), new THREE.WebGLRenderer());
+const screenZone = new ScreenZone(
+    new THREE.PerspectiveCamera(),
+    new THREE.WebGLRenderer(),
+);
 
 // $ExpectType (value: number) => number
 const easing = ease.easeInSine;

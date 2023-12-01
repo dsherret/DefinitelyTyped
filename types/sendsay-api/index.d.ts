@@ -254,9 +254,15 @@ declare class Sendsay {
 
     onError(handler: (err: Error) => void): void;
 
-    request(req: SendsayRequest, options?: SendsayRequestOptions): Promise<SendsayResponse>;
+    request(
+        req: SendsayRequest,
+        options?: SendsayRequestOptions,
+    ): Promise<SendsayResponse>;
 
-    performRequest(req: SendsayRequest, options: SendsayRequestOptions): Promise<SendsayResponse>;
+    performRequest(
+        req: SendsayRequest,
+        options: SendsayRequestOptions,
+    ): Promise<SendsayResponse>;
 
     catchConnectionErrors(err: Error): never;
 
@@ -270,7 +276,11 @@ declare class Sendsay {
         options: SendsayRequestOptions,
     ): SendsayResponse;
 
-    checkRedirect(req: SendsayRequest, res: SendsayResponse, options: SendsayRequestOptions): SendsayResponse;
+    checkRedirect(
+        req: SendsayRequest,
+        res: SendsayResponse,
+        options: SendsayRequestOptions,
+    ): SendsayResponse;
 
     callErrorHandler(err: Error): void;
 

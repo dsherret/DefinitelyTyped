@@ -1,6 +1,9 @@
 /// <reference types="jquery" />
 
-type MockJaxLoggingFunction = (message?: any, ...additionalParameters: any[]) => void;
+type MockJaxLoggingFunction = (
+    message?: any,
+    ...additionalParameters: any[]
+) => void;
 
 interface MockJaxStandardLogger {
     error?: MockJaxLoggingFunction | undefined;

@@ -62,7 +62,11 @@ declare namespace HandlebarsWebpackPlugin {
          * Modify the default output path of each entry-template
          */
         getTargetFilepath?:
-            | ((filepath: string, outputTemplate: string, rootFolder: string) => string | undefined)
+            | ((
+                  filepath: string,
+                  outputTemplate: string,
+                  rootFolder: string,
+              ) => string | undefined)
             | undefined;
 
         /**
@@ -78,27 +82,45 @@ declare namespace HandlebarsWebpackPlugin {
         /**
          * onBeforeAddPartials hook, runs before the partials addition to the .html files
          */
-        onBeforeAddPartials?: ((Handlebars: RuntimeOptions, partialsMap: PartialsMap) => any) | undefined;
+        onBeforeAddPartials?:
+            | ((Handlebars: RuntimeOptions, partialsMap: PartialsMap) => any)
+            | undefined;
 
         /**
          * onBeforeCompile hook, runs before the plugin compilation
          */
-        onBeforeCompile?: ((Handlebars: RuntimeOptions, templateContent: string) => any) | undefined;
+        onBeforeCompile?:
+            | ((Handlebars: RuntimeOptions, templateContent: string) => any)
+            | undefined;
 
         /**
          * onBeforeRender hook, runs before rendering of the templates
          */
-        onBeforeRender?: ((Handlebars: RuntimeOptions, data: object, filename: string) => any) | undefined;
+        onBeforeRender?:
+            | ((
+                  Handlebars: RuntimeOptions,
+                  data: object,
+                  filename: string,
+              ) => any)
+            | undefined;
 
         /**
          * onBeforeSave hook, runs before saving
          */
-        onBeforeSave?: ((Handlebars: RuntimeOptions, resultHtml: string, filename: string) => any) | undefined;
+        onBeforeSave?:
+            | ((
+                  Handlebars: RuntimeOptions,
+                  resultHtml: string,
+                  filename: string,
+              ) => any)
+            | undefined;
 
         /**
          * onDone, runs before the final stages of the plugin
          */
-        onDone?: ((Handlebars: RuntimeOptions, filename: string) => any) | undefined;
+        onDone?:
+            | ((Handlebars: RuntimeOptions, filename: string) => any)
+            | undefined;
 
         /**
          * HtmlWebpackPlugin additional configurations

@@ -11,14 +11,27 @@ import * as Constants from "./Constants";
 import { ExecutionContext } from "./CoreModules";
 import { HistoryState } from "./HistoryState";
 import { Layer } from "./Layer";
-import { BMPSaveOptions, GIFSaveOptions, JPEGSaveOptions, PhotoshopSaveOptions, PNGSaveOptions } from "./Objects";
+import {
+    BMPSaveOptions,
+    GIFSaveOptions,
+    JPEGSaveOptions,
+    PhotoshopSaveOptions,
+    PNGSaveOptions,
+} from "./Objects";
 import { Bounds } from "./objects/Bounds";
 import { NoColor } from "./objects/Colors";
-import { BitmapConversionOptions, IndexedConversionOptions } from "./objects/ConversionOptions";
+import {
+    BitmapConversionOptions,
+    IndexedConversionOptions,
+} from "./objects/ConversionOptions";
 import { SolidColor } from "./objects/SolidColor";
 import { Selection } from "./Selection";
 import { CalculationsOptions } from "./types/CalculationsTypes";
-import { GroupLayerCreateOptions, PixelLayerCreateOptions, TextLayerCreateOptions } from "./types/LayerTypes";
+import {
+    GroupLayerCreateOptions,
+    PixelLayerCreateOptions,
+    TextLayerCreateOptions,
+} from "./types/LayerTypes";
 /**
  * Execution Context with the Document injected for modal execution within Document.suspendHistory
  * @ignore
@@ -246,7 +259,12 @@ export declare class Document {
      * @async
      * @minVersion 23.0
      */
-    crop(bounds: Bounds, angle?: number, width?: number, height?: number): Promise<void>;
+    crop(
+        bounds: Bounds,
+        angle?: number,
+        width?: number,
+        height?: number,
+    ): Promise<void>;
     /**
      * Flatten all layers in the document.
      * @async
@@ -292,7 +310,10 @@ export declare class Document {
      * @async
      * @minVersion 23.0
      */
-    changeMode(mode: Constants.ChangeMode, options?: BitmapConversionOptions | IndexedConversionOptions): Promise<void>;
+    changeMode(
+        mode: Constants.ChangeMode,
+        options?: BitmapConversionOptions | IndexedConversionOptions,
+    ): Promise<void>;
     /**
      * Changes the color profile.
      *
@@ -336,7 +357,11 @@ export declare class Document {
      * @async
      * @minVersion 23.0
      */
-    resizeCanvas(width: number, height: number, anchor?: Constants.AnchorPosition): Promise<void>;
+    resizeCanvas(
+        width: number,
+        height: number,
+        anchor?: Constants.AnchorPosition,
+    ): Promise<void>;
     /**
      * Changes the size of the image
      *
@@ -372,7 +397,13 @@ export declare class Document {
      * @async
      * @minVersion 23.0
      */
-    trim(trimType: Constants.TrimType, top?: boolean, left?: boolean, bottom?: boolean, right?: boolean): Promise<void>;
+    trim(
+        trimType: Constants.TrimType,
+        top?: boolean,
+        left?: boolean,
+        bottom?: boolean,
+        right?: boolean,
+    ): Promise<void>;
     /**
      * Rotates the image clockwise in given angle, expanding canvas if necessary. (Previously rotateCanvas)
      * @param angle
@@ -432,7 +463,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        psd(entry: File, saveOptions?: PhotoshopSaveOptions, asCopy?: boolean): Promise<void>;
+        psd(
+            entry: File,
+            saveOptions?: PhotoshopSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
         /**
          * Save the document as a PSB file.
          * @param entry UXP File token generated from the UXP Storage APIs.
@@ -440,7 +475,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        psb(entry: File, saveOptions?: PhotoshopSaveOptions, asCopy?: boolean): Promise<void>;
+        psb(
+            entry: File,
+            saveOptions?: PhotoshopSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
         /**
          * @TODO reenable when we get the green-light to script PSDC
          * Save the document into Cloud Documents (PSDC).
@@ -455,7 +494,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        jpg(entry: File, saveOptions?: JPEGSaveOptions, asCopy?: boolean): Promise<void>;
+        jpg(
+            entry: File,
+            saveOptions?: JPEGSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
         /**
          * Save the document as a GIF file.
          * @param entry UXP File token generated from the UXP Storage APIs.
@@ -463,7 +506,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        gif(entry: File, saveOptions?: GIFSaveOptions, asCopy?: boolean): Promise<void>;
+        gif(
+            entry: File,
+            saveOptions?: GIFSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
         /**
          * Save the document as a PNG file.
          * @param entry UXP File token generated from the UXP Storage APIs.
@@ -471,7 +518,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        png(entry: File, saveOptions?: PNGSaveOptions, asCopy?: boolean): Promise<void>;
+        png(
+            entry: File,
+            saveOptions?: PNGSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
         /**
          * Save the document as a BMP file.
          * @param entry UXP File token generated from the UXP Storage APIs.
@@ -479,7 +530,11 @@ export declare class Document {
          * @param asCopy Whether to save as a copy.
          * @minVersion 23.0
          */
-        bmp(entry: File, saveOptions?: BMPSaveOptions, asCopy?: boolean): Promise<void>;
+        bmp(
+            entry: File,
+            saveOptions?: BMPSaveOptions,
+            asCopy?: boolean,
+        ): Promise<void>;
     };
     /**
      * Duplicates given layer(s), creating all copies above the top most one in layer stack,
@@ -500,7 +555,10 @@ export declare class Document {
      * @async
      * @minVersion 23.0
      */
-    duplicateLayers(layers: Layer[], targetDocument?: Document): Promise<Layer[]>;
+    duplicateLayers(
+        layers: Layer[],
+        targetDocument?: Document,
+    ): Promise<Layer[]>;
     /**
      * Links layers together if possible, and returns a list of linked layers.
      * @param layers array of layers to link together
@@ -531,7 +589,10 @@ export declare class Document {
      * @param options The options for creation, including general layer options and those specific to the layer kind.
      * @minVersion 23.0
      */
-    createLayer(kind: Constants.LayerKind.NORMAL, options?: PixelLayerCreateOptions): Promise<Layer | null>;
+    createLayer(
+        kind: Constants.LayerKind.NORMAL,
+        options?: PixelLayerCreateOptions,
+    ): Promise<Layer | null>;
     /**
      * Create a new layer group.
      *
@@ -543,7 +604,10 @@ export declare class Document {
      * @param options The options for creation, including general layer options and those specific to the layer kind.
      * @minVersion 24.1
      */
-    createLayer(kind: Constants.LayerKind.GROUP, options?: GroupLayerCreateOptions): Promise<Layer | null>;
+    createLayer(
+        kind: Constants.LayerKind.GROUP,
+        options?: GroupLayerCreateOptions,
+    ): Promise<Layer | null>;
     /**
      * Create a pixel layer using options described by [[PixelLayerCreateOptions]].
      *
@@ -612,7 +676,10 @@ export declare class Document {
      * ```
      * @minVersion 23.0
      */
-    suspendHistory(callback: (e: SuspendHistoryContext) => void, historyStateName: string): Promise<void>;
+    suspendHistory(
+        callback: (e: SuspendHistoryContext) => void,
+        historyStateName: string,
+    ): Promise<void>;
     /**
      * Returns a SolidColor object sampled from the document at the given position.
      *
@@ -673,7 +740,9 @@ export declare class Document {
      * @async
      * @minVersion 24.5
      */
-    calculations(calculationsOptions: CalculationsOptions): Promise<Document | Channel | void>;
+    calculations(
+        calculationsOptions: CalculationsOptions,
+    ): Promise<Document | Channel | void>;
     /**
      * All channels in the document.
      * @minVersion 23.0

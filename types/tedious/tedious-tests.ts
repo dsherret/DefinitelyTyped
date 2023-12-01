@@ -40,12 +40,15 @@ connection.transaction(
     "some name",
     tedious.ISOLATION_LEVEL.NO_CHANGE,
 );
-connection.transaction((error: Error, done: (error?: Error) => void): void => {});
+connection.transaction(
+    (error: Error, done: (error?: Error) => void): void => {},
+);
 
-var request = new tedious.Request("SELECT * FROM foo", (error: Error, rowCount: number): void => {
-});
-request.on("row", (row: Record<string, tedious.ColumnValue>): void => {
-});
+var request = new tedious.Request(
+    "SELECT * FROM foo",
+    (error: Error, rowCount: number): void => {},
+);
+request.on("row", (row: Record<string, tedious.ColumnValue>): void => {});
 connection.execSql(request);
 
 var requestError = new tedious.RequestError();

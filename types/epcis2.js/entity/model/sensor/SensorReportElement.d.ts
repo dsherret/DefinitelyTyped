@@ -246,7 +246,9 @@ export default class SensorReportElement extends Entity {
      * Set the coordinate Reference System property
      * @return the sensorReport instance
      */
-    setCoordinateReferenceSystem(coordinateReferenceSystem: string): SensorReportElement;
+    setCoordinateReferenceSystem(
+        coordinateReferenceSystem: string,
+    ): SensorReportElement;
 
     /**
      * Getter for the coordinate Reference System property

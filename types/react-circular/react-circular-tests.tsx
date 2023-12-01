@@ -6,9 +6,11 @@ function ReactCircularTests() {
 
     return (
         <svg height="400" width="400" viewBox="0 0 400 400">
-            {angles.map(angle => (
+            {angles.map((angle) => (
                 <CirclePosition angle={angle} radius={200} adjust={-5}>
-                    {({ x, y }: { x: number; y: number }) => <circle cx={x} cy={y} r="5" />}
+                    {({ x, y }: { x: number; y: number }) => (
+                        <circle cx={x} cy={y} r="5" />
+                    )}
                 </CirclePosition>
             ))}
         </svg>

@@ -6,7 +6,8 @@ GdprConsent.attachBanner(document.body, {
     choices: {
         necessary: {
             label: "Necessary",
-            description: "Necessary cookies help make a website usable by enabling basic functions like...",
+            description:
+                "Necessary cookies help make a website usable by enabling basic functions like...",
             value: true,
         },
     },

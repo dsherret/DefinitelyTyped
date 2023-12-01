@@ -152,7 +152,10 @@ declare namespace tempfs {
      *                 <code>null</code>, <code>dir</code> has the properties of
      *                 {@link dir}.
      */
-    function mkdir(options?: options, callback?: (err: any, dir: dir) => any): any;
+    function mkdir(
+        options?: options,
+        callback?: (err: any, dir: dir) => any,
+    ): any;
 
     /**
      * The synchronous version of {@link mkdir}.
@@ -175,7 +178,10 @@ declare namespace tempfs {
      *                 of {@link file}.
      */
     function open(callback?: (err: any, file: file) => any): any;
-    function open(options?: options, callback?: (err: any, file: file) => any): any;
+    function open(
+        options?: options,
+        callback?: (err: any, file: file) => any,
+    ): any;
 
     /**
      * The synchronous version of {@link open}.

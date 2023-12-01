@@ -9,5 +9,10 @@ export default class LesgoException {
 
     extra: any;
 
-    constructor(message: string, errorCode?: string, httpStatusCode?: number, extra?: any);
+    constructor(
+        message: string,
+        errorCode?: string,
+        httpStatusCode?: number,
+        extra?: any,
+    );
 }

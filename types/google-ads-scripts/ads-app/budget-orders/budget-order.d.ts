@@ -44,6 +44,8 @@ declare namespace GoogleAdsScripts {
          *        .withCondition("Status = ACTIVE")
          *        .get();
          */
-        interface BudgetOrderSelector extends Base.Selector<BudgetOrderIterator>, Base.SelectorWithCondition {}
+        interface BudgetOrderSelector
+            extends Base.Selector<BudgetOrderIterator>,
+                Base.SelectorWithCondition {}
     }
 }

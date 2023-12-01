@@ -9,15 +9,15 @@ Please.make_color({
 
 Please.make_scheme({
     h: 145,
-    s: .7,
-    v: .6,
+    s: 0.7,
+    v: 0.6,
 });
 
 Please.make_scheme(
     {
         h: 145,
-        s: .7,
-        v: .6,
+        s: 0.7,
+        v: 0.6,
     },
     {
         scheme_type: "complement",
@@ -41,8 +41,8 @@ Please.RGB_to_HEX({
 
 Please.HSV_to_RGB({
     h: 145,
-    s: .7,
-    v: .6,
+    s: 0.7,
+    v: 0.6,
 });
 
 Please.RGB_to_HSV({
@@ -53,8 +53,8 @@ Please.RGB_to_HSV({
 
 Please.HSV_to_HEX({
     h: 145,
-    s: .7,
-    v: .6,
+    s: 0.7,
+    v: 0.6,
 });
 
 Please.HEX_to_HSV("#ff0000");

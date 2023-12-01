@@ -183,9 +183,14 @@ declare class Openload {
 
     remoteUpload(obj: RemoteUploadParam): Promise<RemoteUpload>;
 
-    remoteUploadStatus(obj: RemoteUploadStatusParam): Promise<RemoteUploadStatus>;
+    remoteUploadStatus(
+        obj: RemoteUploadStatusParam,
+    ): Promise<RemoteUploadStatus>;
 
-    upload(obj: UploadParam, cb: (progress: UploadProgress) => void): Promise<Upload>;
+    upload(
+        obj: UploadParam,
+        cb: (progress: UploadProgress) => void,
+    ): Promise<Upload>;
 
     getSplashImage(file: string): Promise<string>;
 }

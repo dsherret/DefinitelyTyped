@@ -58,11 +58,11 @@ export interface FooBarResult {
 }
 
 export interface FooBarResultSpecificType {
-    // ...
+  // ...
 }
 
 export interface FooBarCommonType {
-    // ...
+  // ...
 }
 
 // ...
@@ -164,13 +164,13 @@ prepared to make a decently strong case for why this is an exception.
 
 ## Future ideas
 
-* Adding JSDocs for types and properties (copied from AWS docs?). Many
+- Adding JSDocs for types and properties (copied from AWS docs?). Many
   triggers have unintuitive formats and requirements.
 
-* Splitting `import { Context, FooBarHandler, FooCommonType } from "aws-lambda"` into
+- Splitting `import { Context, FooBarHandler, FooCommonType } from "aws-lambda"` into
 
-  * `import { Context } from "@aws-lambda/runtime"` and
-  * `import { BarHandler, CommonType } from "@aws-lambda/foo"`
+  - `import { Context } from "@aws-lambda/runtime"` and
+  - `import { BarHandler, CommonType } from "@aws-lambda/foo"`
 
   With forwarding from the current package to preserve back-compat.
   This would allow not only more fine-grained dependencies, but also
@@ -180,7 +180,7 @@ prepared to make a decently strong case for why this is an exception.
   It's a lot of busywork to do all that renaming though, and ensuring
   compatibility is kept.
 
-* Possibly related to the above, migrating this to, or somehow in support of,
+- Possibly related to the above, migrating this to, or somehow in support of,
   an npm package with runtime support for implementing handlers correctly.
   For example, catching and formatting `ClientError` into an API Gateway
   400 error, or parsing CloudWatch log payloads.

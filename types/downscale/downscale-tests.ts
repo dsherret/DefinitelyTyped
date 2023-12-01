@@ -13,7 +13,11 @@ downscale(string, 0, 0);
 async function doTheTests() {
     const string_returned: string = await downscale(image, 0, 0);
 
-    const canvas_returned: HTMLCanvasElement = await downscale(image, 0, 0, { returnCanvas: true });
+    const canvas_returned: HTMLCanvasElement = await downscale(image, 0, 0, {
+        returnCanvas: true,
+    });
 
-    const blob_returned: Blob = await downscale(image, 0, 0, { returnBlob: true });
+    const blob_returned: Blob = await downscale(image, 0, 0, {
+        returnBlob: true,
+    });
 }

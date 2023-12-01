@@ -32,6 +32,8 @@ declare module "leaflet" {
     }
 
     namespace icon {
-        function glyph(options?: Icon.GlyphOptions | Icon.GlyphIconOptions): Icon.Glyph;
+        function glyph(
+            options?: Icon.GlyphOptions | Icon.GlyphIconOptions,
+        ): Icon.Glyph;
     }
 }

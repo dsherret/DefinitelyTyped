@@ -20,7 +20,15 @@ declare const Koa2Ratelimit: {
 };
 
 declare namespace Koa2Ratelimit {
-    type TimeKey = "ms" | "sec" | "min" | "hour" | "day" | "week" | "month" | "year";
+    type TimeKey =
+        | "ms"
+        | "sec"
+        | "min"
+        | "hour"
+        | "day"
+        | "week"
+        | "month"
+        | "year";
     type TimeKeyObject = {
         [key in TimeKey]?: number;
     };

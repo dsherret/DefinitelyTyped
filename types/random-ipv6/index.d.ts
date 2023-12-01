@@ -1,9 +1,13 @@
-interface Options extends
-    Record<
+interface Options
+    extends Record<
         string | symbol,
-        boolean | undefined | { max?: number | string | undefined; min?: number | string | undefined }
-    >
-{
+        | boolean
+        | undefined
+        | {
+              max?: number | string | undefined;
+              min?: number | string | undefined;
+          }
+    > {
     compressed?: boolean | undefined;
     padded?: boolean | undefined;
 }

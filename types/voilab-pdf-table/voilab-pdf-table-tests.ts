@@ -118,9 +118,10 @@ table
 
 table.pdf; // $ExpectType PDFDocument
 
-const fitColumnCfg: PluginFitColumn.VoilabPdfTablePluginFitColumnConf<SampleDataType> = {
-    column: "price",
-};
+const fitColumnCfg: PluginFitColumn.VoilabPdfTablePluginFitColumnConf<SampleDataType> =
+    {
+        column: "price",
+    };
 
 const rowShaderCfg: PluginRowShader.VoilabPdfTablePluginRowShaderConf = {
     textColor: "#000000",

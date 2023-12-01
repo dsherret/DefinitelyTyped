@@ -5,21 +5,30 @@ import { Props as ReactOutsideClickHandlerProps } from "react-outside-click-hand
 // UTILITY TYPES
 export type RenderMonthProps =
     | {
-        renderMonthText?: ((month: moment.Moment) => React.ReactNode) | null | undefined;
-        renderMonthElement?: never | undefined;
-    }
+          renderMonthText?:
+              | ((month: moment.Moment) => React.ReactNode)
+              | null
+              | undefined;
+          renderMonthElement?: never | undefined;
+      }
     | {
-        renderMonthText?: never | undefined;
-        renderMonthElement?:
-            | ((props: {
-                month: moment.Moment;
-                onMonthSelect: (currentMonth: moment.Moment, newMonthVal: string) => void;
-                onYearSelect: (currentMonth: moment.Moment, newMonthVal: string) => void;
-                isVisible: boolean;
-            }) => React.ReactNode)
-            | null
-            | undefined;
-    };
+          renderMonthText?: never | undefined;
+          renderMonthElement?:
+              | ((props: {
+                    month: moment.Moment;
+                    onMonthSelect: (
+                        currentMonth: moment.Moment,
+                        newMonthVal: string,
+                    ) => void;
+                    onYearSelect: (
+                        currentMonth: moment.Moment,
+                        newMonthVal: string,
+                    ) => void;
+                    isVisible: boolean;
+                }) => React.ReactNode)
+              | null
+              | undefined;
+      };
 
 // SHAPES
 //
@@ -41,10 +50,18 @@ export type DateRangePickerShape = RenderMonthProps & {
     endDateId: string;
     focusedInput: FocusedInputShape | null;
 
-    onDatesChange: (arg: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void;
+    onDatesChange: (arg: {
+        startDate: moment.Moment | null;
+        endDate: moment.Moment | null;
+    }) => void;
     onFocusChange: (arg: FocusedInputShape | null) => void;
 
-    onClose?: ((final: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void) | undefined;
+    onClose?:
+        | ((final: {
+              startDate: moment.Moment | null;
+              endDate: moment.Moment | null;
+          }) => void)
+        | undefined;
 
     // input related props
     startDatePlaceholderText?: string | undefined;
@@ -70,7 +87,10 @@ export type DateRangePickerShape = RenderMonthProps & {
     regular?: boolean | undefined;
     keepFocusOnInput?: boolean | undefined;
     // calendar presentation and interaction related props
-    renderWeekHeaderElement?: ((day: string) => React.ReactNode) | null | undefined;
+    renderWeekHeaderElement?:
+        | ((day: string) => React.ReactNode)
+        | null
+        | undefined;
     orientation?: OrientationShape | undefined;
     anchorDirection?: AnchorDirectionShape | undefined;
     openDirection?: OpenDirectionShape | undefined;
@@ -101,30 +121,35 @@ export type DateRangePickerShape = RenderMonthProps & {
     navNext?: React.ReactNode | undefined;
     renderNavPrevButton?:
         | ((props: {
-            ariaLabel: string;
-            disabled: boolean;
-            onClick?: React.MouseEventHandler | undefined;
-            onKeyUp?: React.KeyboardEventHandler | undefined;
-            onMouseUp?: React.MouseEventHandler | undefined;
-        }) => React.ReactNode)
+              ariaLabel: string;
+              disabled: boolean;
+              onClick?: React.MouseEventHandler | undefined;
+              onKeyUp?: React.KeyboardEventHandler | undefined;
+              onMouseUp?: React.MouseEventHandler | undefined;
+          }) => React.ReactNode)
         | null
         | undefined;
     renderNavNextButton?:
         | ((props: {
-            ariaLabel: string;
-            disabled: boolean;
-            onClick?: React.MouseEventHandler | undefined;
-            onKeyUp?: React.KeyboardEventHandler | undefined;
-            onMouseUp?: React.MouseEventHandler | undefined;
-        }) => React.ReactNode)
+              ariaLabel: string;
+              disabled: boolean;
+              onClick?: React.MouseEventHandler | undefined;
+              onKeyUp?: React.KeyboardEventHandler | undefined;
+              onMouseUp?: React.MouseEventHandler | undefined;
+          }) => React.ReactNode)
         | null
         | undefined;
     onPrevMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
     onNextMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
 
     // day presentation and interaction related props
-    renderCalendarDay?: ((props: CalendarDayShape) => React.ReactNode) | undefined;
-    renderDayContents?: ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode) | null | undefined;
+    renderCalendarDay?:
+        | ((props: CalendarDayShape) => React.ReactNode)
+        | undefined;
+    renderDayContents?:
+        | ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode)
+        | null
+        | undefined;
     minimumNights?: number | undefined;
     minDate?: moment.Moment | undefined;
     maxDate?: moment.Moment | undefined;
@@ -164,7 +189,10 @@ export type OpenDirectionShape = "down" | "up";
 export type OrientationShape = "horizontal" | "vertical";
 
 // shapes/ScrollableOrientationShape.js
-export type ScrollableOrientationShape = "horizontal" | "vertical" | "verticalScrollable";
+export type ScrollableOrientationShape =
+    | "horizontal"
+    | "vertical"
+    | "verticalScrollable";
 
 // shapes/SingleDatePickerShape.js
 export type SingleDatePickerShape = RenderMonthProps & {
@@ -197,7 +225,10 @@ export type SingleDatePickerShape = RenderMonthProps & {
     keepFocusOnInput?: boolean | undefined;
 
     // calendar presentation and interaction related props
-    renderWeekHeaderElement?: ((day: string) => React.ReactNode) | null | undefined;
+    renderWeekHeaderElement?:
+        | ((day: string) => React.ReactNode)
+        | null
+        | undefined;
     orientation?: OrientationShape | undefined;
     anchorDirection?: AnchorDirectionShape | undefined;
     openDirection?: OpenDirectionShape | undefined;
@@ -227,22 +258,22 @@ export type SingleDatePickerShape = RenderMonthProps & {
     navNext?: React.ReactNode | undefined;
     renderNavPrevButton?:
         | ((props: {
-            ariaLabel: string;
-            disabled: boolean;
-            onClick?: React.MouseEventHandler | undefined;
-            onKeyUp?: React.KeyboardEventHandler | undefined;
-            onMouseUp?: React.MouseEventHandler | undefined;
-        }) => React.ReactNode)
+              ariaLabel: string;
+              disabled: boolean;
+              onClick?: React.MouseEventHandler | undefined;
+              onKeyUp?: React.KeyboardEventHandler | undefined;
+              onMouseUp?: React.MouseEventHandler | undefined;
+          }) => React.ReactNode)
         | null
         | undefined;
     renderNavNextButton?:
         | ((props: {
-            ariaLabel: string;
-            disabled: boolean;
-            onClick?: React.MouseEventHandler | undefined;
-            onKeyUp?: React.KeyboardEventHandler | undefined;
-            onMouseUp?: React.MouseEventHandler | undefined;
-        }) => React.ReactNode)
+              ariaLabel: string;
+              disabled: boolean;
+              onClick?: React.MouseEventHandler | undefined;
+              onKeyUp?: React.KeyboardEventHandler | undefined;
+              onMouseUp?: React.MouseEventHandler | undefined;
+          }) => React.ReactNode)
         | null
         | undefined;
     onPrevMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
@@ -250,8 +281,13 @@ export type SingleDatePickerShape = RenderMonthProps & {
     onClose?: ((arg: { date: moment.Moment | null }) => void) | undefined;
 
     // day presentation and interaction related props
-    renderCalendarDay?: ((props: CalendarDayShape) => React.ReactNode) | undefined;
-    renderDayContents?: ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode) | null | undefined;
+    renderCalendarDay?:
+        | ((props: CalendarDayShape) => React.ReactNode)
+        | undefined;
+    renderDayContents?:
+        | ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode)
+        | null
+        | undefined;
     enableOutsideDays?: boolean | undefined;
     isDayBlocked?: ((day: moment.Moment) => boolean) | undefined;
     isOutsideRange?: ((day: moment.Moment) => boolean) | undefined;
@@ -432,10 +468,28 @@ export interface CalendarDayShape {
     modifiers?: ModifiersShape | undefined;
     isFocused?: boolean | undefined;
     tabIndex?: 0 | -1 | undefined;
-    onDayClick?: ((day: moment.Moment, event: React.MouseEvent<HTMLTableDataCellElement>) => void) | undefined;
-    onDayMouseEnter?: ((day: moment.Moment, event: React.MouseEvent<HTMLTableDataCellElement>) => void) | undefined;
-    onDayMouseLeave?: ((day: moment.Moment, event: React.MouseEvent<HTMLTableDataCellElement>) => void) | undefined;
-    renderDayContents?: ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode) | null | undefined;
+    onDayClick?:
+        | ((
+              day: moment.Moment,
+              event: React.MouseEvent<HTMLTableDataCellElement>,
+          ) => void)
+        | undefined;
+    onDayMouseEnter?:
+        | ((
+              day: moment.Moment,
+              event: React.MouseEvent<HTMLTableDataCellElement>,
+          ) => void)
+        | undefined;
+    onDayMouseLeave?:
+        | ((
+              day: moment.Moment,
+              event: React.MouseEvent<HTMLTableDataCellElement>,
+          ) => void)
+        | undefined;
+    renderDayContents?:
+        | ((day: moment.Moment, modifiers: ModifiersShape) => React.ReactNode)
+        | null
+        | undefined;
     ariaLabelFormat?: string | undefined;
 
     // internationalization
@@ -446,24 +500,37 @@ export type CalendarDay = React.ComponentClass<CalendarDayShape>;
 export const CalendarDay: React.ComponentClass<CalendarDayShape>;
 
 // components/CalendarMonth.jsx
-export type CalendarMonthShape =
-    & RenderMonthProps
-    & Pick<
+export type CalendarMonthShape = RenderMonthProps &
+    Pick<
         CalendarDayShape,
-        "daySize" | "onDayClick" | "onDayMouseEnter" | "onDayMouseLeave" | "renderDayContents" | "isFocused" | "phrases"
-    >
-    & {
+        | "daySize"
+        | "onDayClick"
+        | "onDayMouseEnter"
+        | "onDayMouseLeave"
+        | "renderDayContents"
+        | "isFocused"
+        | "phrases"
+    > & {
         month?: moment.Moment | undefined;
         horizontalMonthPadding?: number | undefined;
         isVisible?: boolean | undefined;
         enableOutsideDays?: boolean | undefined;
         modifiers?: Record<string, ModifiersShape> | undefined;
         orientation?: ScrollableOrientationShape | undefined;
-        onMonthSelect?: ((currentMonth: moment.Moment, newMonthVal: string) => void) | undefined;
-        onYearSelect?: ((currentMonth: moment.Moment, newMonthVal: string) => void) | undefined;
-        renderCalendarDay?: ((props: CalendarDayShape) => React.ReactNode) | undefined;
+        onMonthSelect?:
+            | ((currentMonth: moment.Moment, newMonthVal: string) => void)
+            | undefined;
+        onYearSelect?:
+            | ((currentMonth: moment.Moment, newMonthVal: string) => void)
+            | undefined;
+        renderCalendarDay?:
+            | ((props: CalendarDayShape) => React.ReactNode)
+            | undefined;
         firstDayOfWeek?: DayOfWeekShape | null | undefined;
-        setMonthTitleHeight?: ((captionHeight: number) => void) | null | undefined;
+        setMonthTitleHeight?:
+            | ((captionHeight: number) => void)
+            | null
+            | undefined;
         verticalBorderSpacing?: number | undefined;
 
         focusedDate?: moment.Moment | null | undefined; // indicates focusable day
@@ -477,9 +544,8 @@ export type CalendarMonth = React.ComponentClass<CalendarMonthShape>;
 export const CalendarMonth: React.ComponentClass<CalendarMonthShape>;
 
 // components/CalendarMonthGrid.jsx
-export type CalendarMonthGridShape =
-    & RenderMonthProps
-    & Pick<
+export type CalendarMonthGridShape = RenderMonthProps &
+    Pick<
         CalendarMonthShape,
         | "enableOutsideDays"
         | "horizontalMonthPadding"
@@ -497,15 +563,16 @@ export type CalendarMonthGridShape =
         | "monthFormat"
         | "phrases"
         | "dayAriaLabelFormat"
-    >
-    & {
+    > & {
         firstVisibleMonthIndex?: number | undefined;
         initialMonth?: moment.Moment | undefined;
         isAnimating?: boolean | undefined;
         numberOfMonths?: number | undefined;
         modifiers?: Record<string, Record<string, ModifiersShape>> | undefined;
         orientation?: ScrollableOrientationShape | undefined;
-        onMonthTransitionEnd?: ((event?: React.TransitionEvent<HTMLDivElement>) => void) | undefined;
+        onMonthTransitionEnd?:
+            | ((event?: React.TransitionEvent<HTMLDivElement>) => void)
+            | undefined;
         onMonthChange?: ((newMonth: moment.Moment) => void) | undefined;
         onYearChange?: ((newMonth: moment.Moment) => void) | undefined;
         translationValue?: number | null | undefined;
@@ -535,11 +602,17 @@ export interface DateRangePickerInputShape {
     onEndDateFocus?: React.FocusEventHandler<HTMLInputElement> | undefined;
     onStartDateChange?: ((dateString: string) => void) | undefined;
     onEndDateChange?: ((dateString: string) => void) | undefined;
-    onStartDateShiftTab?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
+    onStartDateShiftTab?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
     onEndDateTab?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
     onClearDates?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-    onKeyDownArrowDown?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
-    onKeyDownQuestionMark?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
+    onKeyDownArrowDown?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
+    onKeyDownQuestionMark?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
 
     startDate?: string | undefined;
     endDate?: string | undefined;
@@ -572,12 +645,13 @@ export interface DateRangePickerInputShape {
     isRTL?: boolean | undefined;
 }
 
-export type DateRangePickerInput = React.ComponentClass<DateRangePickerInputShape>;
+export type DateRangePickerInput =
+    React.ComponentClass<DateRangePickerInputShape>;
 export const DateRangePickerInput: React.ComponentClass<DateRangePickerInputShape>;
 
 // components/DateRangePickerInputController.jsx
-export interface DateRangePickerInputControllerShape extends
-    Pick<
+export interface DateRangePickerInputControllerShape
+    extends Pick<
         DateRangePickerInputShape,
         | "startDateId"
         | "startDatePlaceholderText"
@@ -609,8 +683,7 @@ export interface DateRangePickerInputControllerShape extends
         | "isFocused"
         | "phrases"
         | "isRTL"
-    >
-{
+    > {
     startDate?: moment.Moment | null | undefined;
 
     endDate?: moment.Moment | null | undefined;
@@ -623,17 +696,27 @@ export interface DateRangePickerInputControllerShape extends
     displayFormat?: string | (() => string) | undefined;
 
     onFocusChange?: ((arg: FocusedInputShape | null) => void) | undefined;
-    onClose?: ((final: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void) | undefined;
-    onDatesChange?: ((arg: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void) | undefined;
+    onClose?:
+        | ((final: {
+              startDate: moment.Moment | null;
+              endDate: moment.Moment | null;
+          }) => void)
+        | undefined;
+    onDatesChange?:
+        | ((arg: {
+              startDate: moment.Moment | null;
+              endDate: moment.Moment | null;
+          }) => void)
+        | undefined;
 }
 
-export type DateRangePickerInputController = React.ComponentClass<DateRangePickerInputControllerShape>;
+export type DateRangePickerInputController =
+    React.ComponentClass<DateRangePickerInputControllerShape>;
 export const DateRangePickerInputController: React.ComponentClass<DateRangePickerInputControllerShape>;
 
 // components/DayPicker.jsx
-export type DayPickerShape =
-    & RenderMonthProps
-    & Pick<
+export type DayPickerShape = RenderMonthProps &
+    Pick<
         CalendarMonthGridShape,
         | "enableOutsideDays"
         | "firstDayOfWeek"
@@ -650,32 +733,37 @@ export type DayPickerShape =
         | "onDayMouseLeave"
         | "monthFormat"
         | "dayAriaLabelFormat"
-    >
-    & (
+    > &
+    (
         | {
-            orientation?: OrientationShape | undefined;
-            onGetNextScrollableMonths?: never | undefined;
-            onGetPrevScrollableMonths?: never | undefined;
-        }
+              orientation?: OrientationShape | undefined;
+              onGetNextScrollableMonths?: never | undefined;
+              onGetPrevScrollableMonths?: never | undefined;
+          }
         | {
-            orientation: "verticalScrollable";
-            onGetNextScrollableMonths?:
-                | ((
-                    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-                ) => void)
-                | undefined; // VERTICAL_SCROLLABLE daypickers only
-            onGetPrevScrollableMonths?:
-                | ((
-                    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-                ) => void)
-                | undefined; // VERTICAL_SCROLLABLE daypickers only
-        }
-    )
-    & {
+              orientation: "verticalScrollable";
+              onGetNextScrollableMonths?:
+                  | ((
+                        event?:
+                            | React.MouseEvent<HTMLElement>
+                            | React.KeyboardEvent<HTMLElement>,
+                    ) => void)
+                  | undefined; // VERTICAL_SCROLLABLE daypickers only
+              onGetPrevScrollableMonths?:
+                  | ((
+                        event?:
+                            | React.MouseEvent<HTMLElement>
+                            | React.KeyboardEvent<HTMLElement>,
+                    ) => void)
+                  | undefined; // VERTICAL_SCROLLABLE daypickers only
+          }
+    ) & {
         // calendar presentation props
         numberOfMonths?: number | undefined;
         withPortal?: boolean | undefined;
-        onOutsideClick?: ReactOutsideClickHandlerProps["onOutsideClick"] | undefined;
+        onOutsideClick?:
+            | ReactOutsideClickHandlerProps["onOutsideClick"]
+            | undefined;
         hidden?: boolean | undefined;
         initialVisibleMonth?: (() => moment.Moment) | undefined;
         renderCalendarInfo?: (() => React.ReactNode) | null | undefined;
@@ -685,23 +773,28 @@ export type DayPickerShape =
         noBorder?: boolean | undefined;
         renderKeyboardShortcutsButton?:
             | ((props: {
-                ref: React.Ref<HTMLElement>;
-                onClick: React.MouseEventHandler;
-                ariaLabel: string;
-            }) => React.ReactNode)
+                  ref: React.Ref<HTMLElement>;
+                  onClick: React.MouseEventHandler;
+                  ariaLabel: string;
+              }) => React.ReactNode)
             | undefined;
         renderKeyboardShortcutsPanel?:
             | ((props: {
-                closeButtonAriaLabel: string;
-                keyboardShortcuts: Array<Record<"unicode" | "label" | "action", string>>;
-                onCloseButtonClick: React.MouseEventHandler;
-                onKeyDown: React.KeyboardEventHandler;
-                title: string;
-            }) => React.ReactNode)
+                  closeButtonAriaLabel: string;
+                  keyboardShortcuts: Array<
+                      Record<"unicode" | "label" | "action", string>
+                  >;
+                  onCloseButtonClick: React.MouseEventHandler;
+                  onKeyDown: React.KeyboardEventHandler;
+                  title: string;
+              }) => React.ReactNode)
             | undefined;
 
         // navigation props
-        dayPickerNavigationInlineStyles?: Record<string, any> | null | undefined;
+        dayPickerNavigationInlineStyles?:
+            | Record<string, any>
+            | null
+            | undefined;
         disablePrev?: boolean | undefined;
         disableNext?: boolean | undefined;
         navPosition?: NavPositionShape | undefined;
@@ -709,38 +802,48 @@ export type DayPickerShape =
         navNext?: React.ReactNode | undefined;
         renderNavPrevButton?:
             | ((props: {
-                ariaLabel: string;
-                disabled: boolean;
-                onClick?: React.MouseEventHandler | undefined;
-                onKeyUp?: React.KeyboardEventHandler | undefined;
-                onMouseUp?: React.MouseEventHandler | undefined;
-            }) => React.ReactNode)
+                  ariaLabel: string;
+                  disabled: boolean;
+                  onClick?: React.MouseEventHandler | undefined;
+                  onKeyUp?: React.KeyboardEventHandler | undefined;
+                  onMouseUp?: React.MouseEventHandler | undefined;
+              }) => React.ReactNode)
             | null
             | undefined;
         renderNavNextButton?:
             | ((props: {
-                ariaLabel: string;
-                disabled: boolean;
-                onClick?: React.MouseEventHandler | undefined;
-                onKeyUp?: React.KeyboardEventHandler | undefined;
-                onMouseUp?: React.MouseEventHandler | undefined;
-            }) => React.ReactNode)
+                  ariaLabel: string;
+                  disabled: boolean;
+                  onClick?: React.MouseEventHandler | undefined;
+                  onKeyUp?: React.KeyboardEventHandler | undefined;
+                  onMouseUp?: React.MouseEventHandler | undefined;
+              }) => React.ReactNode)
             | null
             | undefined;
         noNavButtons?: boolean | undefined;
         noNavNextButton?: boolean | undefined;
         noNavPrevButton?: boolean | undefined;
-        onPrevMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
-        onNextMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
+        onPrevMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
+        onNextMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
         onMonthChange?: ((newMonth: moment.Moment) => void) | undefined;
         onYearChange?: ((newMonth: moment.Moment) => void) | undefined;
 
         // month props
-        renderWeekHeaderElement?: ((day: string) => React.ReactNode) | null | undefined;
+        renderWeekHeaderElement?:
+            | ((day: string) => React.ReactNode)
+            | null
+            | undefined;
 
         // accessibility props
         isFocused?: boolean | undefined;
-        getFirstFocusableDay?: ((month: moment.Moment) => moment.Moment) | null | undefined;
+        getFirstFocusableDay?:
+            | ((month: moment.Moment) => moment.Moment)
+            | null
+            | undefined;
         onBlur?: React.KeyboardEventHandler<HTMLDivElement> | undefined;
         showKeyboardShortcuts?: boolean | undefined;
         onTab?: React.KeyboardEventHandler<HTMLDivElement> | undefined;
@@ -755,9 +858,8 @@ export type DayPicker = React.ComponentClass<DayPickerShape>;
 export const DayPicker: React.ComponentClass<DayPickerShape>;
 
 // components/DayPickerRangeController.jsx
-export type DayPickerRangeControllerShape =
-    & RenderMonthProps
-    & Pick<
+export type DayPickerRangeControllerShape = RenderMonthProps &
+    Pick<
         DayPickerShape,
         | "renderWeekHeaderElement"
         | "enableOutsideDays"
@@ -797,11 +899,13 @@ export type DayPickerRangeControllerShape =
         | "phrases"
         | "dayAriaLabelFormat"
         | "isRTL"
-    >
-    & {
+    > & {
         startDate: moment.Moment | null;
         endDate: moment.Moment | null;
-        onDatesChange: (arg: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void;
+        onDatesChange: (arg: {
+            startDate: moment.Moment | null;
+            endDate: moment.Moment | null;
+        }) => void;
         startDateOffset?: ((day: moment.Moment) => moment.Moment) | undefined;
         endDateOffset?: ((day: moment.Moment) => moment.Moment) | undefined;
         minDate?: moment.Moment | null | undefined;
@@ -809,7 +913,12 @@ export type DayPickerRangeControllerShape =
 
         focusedInput: FocusedInputShape | null;
         onFocusChange: (arg: FocusedInputShape | null) => void;
-        onClose?: ((final: { startDate: moment.Moment | null; endDate: moment.Moment | null }) => void) | undefined;
+        onClose?:
+            | ((final: {
+                  startDate: moment.Moment | null;
+                  endDate: moment.Moment | null;
+              }) => void)
+            | undefined;
 
         keepOpenOnDateSelect?: boolean | undefined;
         minimumNights?: number | undefined;
@@ -824,17 +933,21 @@ export type DayPickerRangeControllerShape =
         initialVisibleMonth: (() => moment.Moment) | null;
         orientation?: ScrollableOrientationShape | undefined;
 
-        onPrevMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
-        onNextMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
+        onPrevMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
+        onNextMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
     };
 
-export type DayPickerRangeController = React.ComponentClass<DayPickerRangeControllerShape>;
+export type DayPickerRangeController =
+    React.ComponentClass<DayPickerRangeControllerShape>;
 export const DayPickerRangeController: React.ComponentClass<DayPickerRangeControllerShape>;
 
 // components/DayPickerSingleDateController.jsx
-export type DayPickerSingleDateControllerShape =
-    & RenderMonthProps
-    & Pick<
+export type DayPickerSingleDateControllerShape = RenderMonthProps &
+    Pick<
         DayPickerShape,
         | "renderWeekHeaderElement"
         | "enableOutsideDays"
@@ -872,8 +985,7 @@ export type DayPickerSingleDateControllerShape =
         | "phrases"
         | "dayAriaLabelFormat"
         | "isRTL"
-    >
-    & {
+    > & {
         date: moment.Moment | null;
         minDate?: moment.Moment | null | undefined;
         maxDate?: moment.Moment | null | undefined;
@@ -892,11 +1004,16 @@ export type DayPickerSingleDateControllerShape =
         initialVisibleMonth: (() => moment.Moment) | null;
         orientation?: ScrollableOrientationShape | undefined;
 
-        onPrevMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
-        onNextMonthClick?: ((newCurrentMonth: moment.Moment) => void) | undefined;
+        onPrevMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
+        onNextMonthClick?:
+            | ((newCurrentMonth: moment.Moment) => void)
+            | undefined;
     };
 
-export type DayPickerSingleDateController = React.ComponentClass<DayPickerSingleDateControllerShape>;
+export type DayPickerSingleDateController =
+    React.ComponentClass<DayPickerSingleDateControllerShape>;
 export const DayPickerSingleDateController: React.ComponentClass<DayPickerSingleDateControllerShape>;
 
 // components/SingleDatePicker.jsx
@@ -932,10 +1049,16 @@ export interface SingleDatePickerInputShape {
     onChange?: ((dateString: string) => void) | undefined;
     onClearDate?: React.MouseEventHandler<HTMLButtonElement> | undefined;
     onFocus?: React.FocusEventHandler<HTMLInputElement> | undefined;
-    onKeyDownShiftTab?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
+    onKeyDownShiftTab?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
     onKeyDownTab?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
-    onKeyDownArrowDown?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
-    onKeyDownQuestionMark?: React.KeyboardEventHandler<HTMLInputElement> | undefined;
+    onKeyDownArrowDown?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
+    onKeyDownQuestionMark?:
+        | React.KeyboardEventHandler<HTMLInputElement>
+        | undefined;
 
     // i18n
     phrases?: SingleDatePickerInputPhrases | undefined;
@@ -947,9 +1070,15 @@ export const SingleDatePickerInput: React.FC<SingleDatePickerInputShape>;
 // UTILS
 //
 // utils/isInclusivelyAfterDay.js
-export function isInclusivelyAfterDay(a: moment.Moment, b: moment.Moment): boolean;
+export function isInclusivelyAfterDay(
+    a: moment.Moment,
+    b: moment.Moment,
+): boolean;
 // utils/isInclusivelyBeforeDay.js
-export function isInclusivelyBeforeDay(a: moment.Moment, b: moment.Moment): boolean;
+export function isInclusivelyBeforeDay(
+    a: moment.Moment,
+    b: moment.Moment,
+): boolean;
 // utils/isNextDay.js
 export function isNextDay(a: moment.Moment, b: moment.Moment): boolean;
 // utils/isSameDay.js

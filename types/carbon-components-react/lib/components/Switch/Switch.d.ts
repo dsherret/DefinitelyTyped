@@ -8,10 +8,15 @@ export interface SwitchOnKeyDownData {
     text: SwitchProps["text"];
 }
 
-export interface SwitchProps extends Omit<ReactButtonAttr, "onClick" | "onKeyDown" | "name"> {
+export interface SwitchProps
+    extends Omit<ReactButtonAttr, "onClick" | "onKeyDown" | "name"> {
     index?: number | undefined;
     name?: string | number | undefined;
-    onClick?(data: { index: SwitchProps["index"]; name: SwitchProps["name"]; text: SwitchProps["text"] }): void; // required but has default value
+    onClick?(data: {
+        index: SwitchProps["index"];
+        name: SwitchProps["name"];
+        text: SwitchProps["text"];
+    }): void; // required but has default value
     onKeyDown?(data: SwitchOnKeyDownData): void; // required but had default value
     selected?: boolean | undefined;
     text?: string | undefined;

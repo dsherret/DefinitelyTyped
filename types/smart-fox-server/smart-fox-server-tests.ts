@@ -1,6 +1,13 @@
 function test_Vec3D() {
-    var Vec3D: SFS2X.Entities.Data.Vec3D = new SFS2X.Entities.Data.Vec3D(0, 0, 0);
-    var Vec3Dalt: SFS2X.Entities.Data.Vec3D = new SFS2X.Entities.Data.Vec3D(0, 0);
+    var Vec3D: SFS2X.Entities.Data.Vec3D = new SFS2X.Entities.Data.Vec3D(
+        0,
+        0,
+        0,
+    );
+    var Vec3Dalt: SFS2X.Entities.Data.Vec3D = new SFS2X.Entities.Data.Vec3D(
+        0,
+        0,
+    );
 
     var positionX: number = Vec3D.px;
     var positionY: number = Vec3D.py;
@@ -12,15 +19,22 @@ function test_Vec3D() {
 }
 
 function test_MatchExpression() {
-    var exp = new SFS2X.Entities.Match.MatchExpression("rank", SFS2X.Entities.Match.NumberMatch.GREATER_THAN, 5)
-        .and("country", SFS2X.Entities.Match.StringMatch.EQUALS, "Italy");
+    var exp = new SFS2X.Entities.Match.MatchExpression(
+        "rank",
+        SFS2X.Entities.Match.NumberMatch.GREATER_THAN,
+        5,
+    ).and("country", SFS2X.Entities.Match.StringMatch.EQUALS, "Italy");
 
     var exp = new SFS2X.Entities.Match.MatchExpression(
         SFS2X.Entities.Match.RoomProperties.IS_GAME,
         SFS2X.Entities.Match.BoolMatch.EQUALS,
         true,
     )
-        .and(SFS2X.Entities.Match.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X.Entities.Match.BoolMatch.EQUALS, true)
+        .and(
+            SFS2X.Entities.Match.RoomProperties.HAS_FREE_PLAYER_SLOTS,
+            SFS2X.Entities.Match.BoolMatch.EQUALS,
+            true,
+        )
         .and("isGameStarted", SFS2X.Entities.Match.BoolMatch.EQUALS, false);
 
     var exp = new SFS2X.Entities.Match.MatchExpression(
@@ -37,15 +51,10 @@ function test_MatchExpression() {
 }
 
 function test_MMOItemVariable() {
-    var MMOItemVar1: SFS2X.Entities.Variables.MMOItemVariable = new SFS2X.Entities.Variables.MMOItemVariable(
-        "string",
-        "vlaue",
-    );
-    var MMOItemVar2: SFS2X.Entities.Variables.MMOItemVariable = new SFS2X.Entities.Variables.MMOItemVariable(
-        "string",
-        "vlaue",
-        2,
-    );
+    var MMOItemVar1: SFS2X.Entities.Variables.MMOItemVariable =
+        new SFS2X.Entities.Variables.MMOItemVariable("string", "vlaue");
+    var MMOItemVar2: SFS2X.Entities.Variables.MMOItemVariable =
+        new SFS2X.Entities.Variables.MMOItemVariable("string", "vlaue", 2);
 
     var MMOItemTypeName: string = MMOItemVar1.getTypeName(1);
     var MMOItemisNull: boolean = MMOItemVar1.isNull();
@@ -100,7 +109,10 @@ function test_GameCreateSFSGameRequest() {
 }
 
 function test_ErrorCodes() {
-    SFS2X.ErrorCodes.setErrorMessage(13, "Le Groupe demandé n'est pas disponible - Salle: {0}; Groupe: {1}");
+    SFS2X.ErrorCodes.setErrorMessage(
+        13,
+        "Le Groupe demandé n'est pas disponible - Salle: {0}; Groupe: {1}",
+    );
 }
 
 function test_SmartFoxaddEventListener() {
@@ -121,6 +133,10 @@ function test_SmartFoxaddEventListener() {
         }
     }
     sfs.addEventListener(SFS2X.SFSEvent.CONNECTION, onConnection, this);
-    sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, onConnectionLost, this);
+    sfs.addEventListener(
+        SFS2X.SFSEvent.CONNECTION_LOST,
+        onConnectionLost,
+        this,
+    );
     sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, onLoginError, this);
 }

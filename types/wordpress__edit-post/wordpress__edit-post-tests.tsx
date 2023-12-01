@@ -14,7 +14,13 @@ ep.initializeEditor("abc", "post", "123");
 ep.initializeEditor("abc", "post", 123, {});
 
 // $ExpectType void
-ep.initializeEditor("abc", "post", "123", { alignWide: true, disableCustomColors: true }, { foo: "bar" });
+ep.initializeEditor(
+    "abc",
+    "post",
+    "123",
+    { alignWide: true, disableCustomColors: true },
+    { foo: "bar" },
+);
 
 // $ExpectType void
 ep.reinitializeEditor("post", "123", document.createElement("div"));
@@ -23,7 +29,9 @@ ep.reinitializeEditor("post", "123", document.createElement("div"));
 ep.reinitializeEditor("post", 123, document.createElement("div"), {});
 
 // $ExpectType void
-ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingEnabled: true });
+ep.reinitializeEditor("post", 123, document.createElement("div"), {
+    codeEditingEnabled: true,
+});
 
 //
 // PluginBlockSettingsMenuItem
@@ -35,12 +43,18 @@ ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingE
     onClick={() => console.log("clicked")}
 />;
 
-<ep.PluginBlockSettingsMenuItem label="Menu item text" onClick={() => console.log("clicked")} />;
+<ep.PluginBlockSettingsMenuItem
+    label="Menu item text"
+    onClick={() => console.log("clicked")}
+/>;
 
 //
 // PluginDocumentSettingPanel
 //
-<ep.PluginDocumentSettingPanel className="my-document-setting-plugin" title="My Panel">
+<ep.PluginDocumentSettingPanel
+    className="my-document-setting-plugin"
+    title="My Panel"
+>
     <p>My Document Setting Panel</p>
 </ep.PluginDocumentSettingPanel>;
 
@@ -55,12 +69,18 @@ ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingE
     My button title
 </ep.PluginMoreMenuItem>;
 
-<ep.PluginMoreMenuItem href="https://foo.bar">My anchor title</ep.PluginMoreMenuItem>;
+<ep.PluginMoreMenuItem href="https://foo.bar">
+    My anchor title
+</ep.PluginMoreMenuItem>;
 
 //
 // PluginPostPublishPanel
 //
-<ep.PluginPostPublishPanel className="my-plugin-post-publish-panel" title="My panel title" initialOpen={true}>
+<ep.PluginPostPublishPanel
+    className="my-plugin-post-publish-panel"
+    title="My panel title"
+    initialOpen={true}
+>
     My panel content
 </ep.PluginPostPublishPanel>;
 <ep.PluginPostPublishPanel>My panel content</ep.PluginPostPublishPanel>;
@@ -68,13 +88,19 @@ ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingE
 //
 // PluginPostStatusInfo
 //
-<ep.PluginPostStatusInfo className="my-plugin-post-status-info">My post status info</ep.PluginPostStatusInfo>;
+<ep.PluginPostStatusInfo className="my-plugin-post-status-info">
+    My post status info
+</ep.PluginPostStatusInfo>;
 <ep.PluginPostStatusInfo>My post status info</ep.PluginPostStatusInfo>;
 
 //
 // PluginPrePublishPanel
 //
-<ep.PluginPrePublishPanel className="my-plugin-pre-publish-panel" title="My panel title" initialOpen={true}>
+<ep.PluginPrePublishPanel
+    className="my-plugin-pre-publish-panel"
+    title="My panel title"
+    initialOpen={true}
+>
     My panel content
 </ep.PluginPrePublishPanel>;
 <ep.PluginPrePublishPanel>My panel content</ep.PluginPrePublishPanel>;
@@ -82,7 +108,12 @@ ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingE
 //
 // PluginSidebar
 //
-<ep.PluginSidebar name="my-sidebar" isPinnable={false} title="My sidebar title" icon={<i>foo</i>}>
+<ep.PluginSidebar
+    name="my-sidebar"
+    isPinnable={false}
+    title="My sidebar title"
+    icon={<i>foo</i>}
+>
     My sidebar content
 </ep.PluginSidebar>;
 <ep.PluginSidebar name="my-sidebar" title="My sidebar title">
@@ -95,7 +126,9 @@ ep.reinitializeEditor("post", 123, document.createElement("div"), { codeEditingE
 <ep.PluginSidebarMoreMenuItem target="my-sidebar" icon="smiley">
     My sidebar title
 </ep.PluginSidebarMoreMenuItem>;
-<ep.PluginSidebarMoreMenuItem target="my-sidebar">My sidebar title</ep.PluginSidebarMoreMenuItem>;
+<ep.PluginSidebarMoreMenuItem target="my-sidebar">
+    My sidebar title
+</ep.PluginSidebarMoreMenuItem>;
 
 //
 // store

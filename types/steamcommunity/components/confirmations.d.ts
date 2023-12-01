@@ -11,10 +11,7 @@ export interface Confirmations {
     getConfirmations(
         time: number,
         key: string,
-        callback: (
-            err: CallbackError,
-            confirmations: CConfirmation[],
-        ) => any,
+        callback: (err: CallbackError, confirmations: CConfirmation[]) => any,
     ): void;
 
     /**
@@ -24,7 +21,12 @@ export interface Confirmations {
      * @param key - The confirmation key that was generated using the preceeding time and the tag "details" (this key can be reused)
      * @param callback
      */
-    getConfirmationOfferID(confID: number, time: number, key: string, callback: Callback): void;
+    getConfirmationOfferID(
+        confID: number,
+        time: number,
+        key: string,
+        callback: Callback,
+    ): void;
 
     /**
      * Confirm or cancel a given confirmation.
@@ -50,7 +52,11 @@ export interface Confirmations {
      * @param objectID
      * @param callback
      */
-    acceptConfirmationForObject(identitySecret: Buffer | string | null, objectID: any, callback: Callback): any;
+    acceptConfirmationForObject(
+        identitySecret: Buffer | string | null,
+        objectID: any,
+        callback: Callback,
+    ): any;
 
     /**
      * Send a single request to Steam to accept all outstanding confirmations (after loading the list). If one fails, the
@@ -60,14 +66,22 @@ export interface Confirmations {
      * @param allowKey
      * @param callback
      */
-    acceptAllConfirmations(time: number, confKey: string, allowKey: string, callback: Callback): any;
+    acceptAllConfirmations(
+        time: number,
+        confKey: string,
+        allowKey: string,
+        callback: Callback,
+    ): any;
 
     /**
      * Start automatically polling our confirmations for new ones. The `confKeyNeeded` event will be emitted when we need a confirmation key, or `newConfirmation` when we get a new confirmation
      * @param pollInterval - The interval, in milliseconds, at which we will poll for confirmations. This should probably be at least 10,000 to avoid rate-limits.
      * @param [identitySecret=null] - Your identity_secret. If passed, all confirmations will be automatically accepted and nothing will be emitted.
      */
-    startConfirmationChecker(pollInterval: number, identitySecret?: Buffer | string | null): void;
+    startConfirmationChecker(
+        pollInterval: number,
+        identitySecret?: Buffer | string | null,
+    ): void;
 
     /**
      * Stop automatic polling. If you set your `identitySecret` previously, this will delete it.

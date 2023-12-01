@@ -40,7 +40,9 @@ export interface MapboxProps extends Partial<ViewState> {
     attributionControl?: boolean | undefined;
     preserveDrawingBuffer?: boolean | undefined;
     reuseMaps?: boolean | undefined;
-    transformRequest?: ((url?: string, resourceType?: string) => MapRequest) | undefined;
+    transformRequest?:
+        | ((url?: string, resourceType?: string) => MapRequest)
+        | undefined;
     mapOptions?: object | undefined;
     mapStyle?: string | object | undefined;
     visible?: boolean | undefined;
@@ -53,17 +55,21 @@ export interface MapboxProps extends Partial<ViewState> {
 }
 
 export interface StaticMapProps extends MapboxProps {
-    onResize?: ((dimensions: { width: number; height: number }) => void) | undefined;
+    onResize?:
+        | ((dimensions: { width: number; height: number }) => void)
+        | undefined;
     preventStyleDiffing?: boolean | undefined;
     disableTokenWarning?: boolean | undefined;
     className?: string | undefined;
     style?: object | undefined;
-    visibilityConstraints?: {
-        minZoom?: number | undefined;
-        maxZoom?: number | undefined;
-        minPitch?: number | undefined;
-        maxPitch?: number | undefined;
-    } | undefined;
+    visibilityConstraints?:
+        | {
+              minZoom?: number | undefined;
+              maxZoom?: number | undefined;
+              minPitch?: number | undefined;
+              maxPitch?: number | undefined;
+          }
+        | undefined;
 }
 
 export interface QueryRenderedFeaturesParams {
@@ -74,7 +80,9 @@ export interface QueryRenderedFeaturesParams {
 export class StaticMap extends React.PureComponent<StaticMapProps> {
     getMap(): MapboxGL.Map;
     queryRenderedFeatures(
-        geometry?: MapboxGL.PointLike | [MapboxGL.PointLike, MapboxGL.PointLike],
+        geometry?:
+            | MapboxGL.PointLike
+            | [MapboxGL.PointLike, MapboxGL.PointLike],
         parameters?: QueryRenderedFeaturesParams,
     ): MapboxGL.MapboxGeoJSONFeature[];
 }
@@ -148,13 +156,23 @@ export class MapState {
     getViewportProps(): ViewportProps;
     getInteractiveState(): InteractiveState;
     panStart(input: PositionInput): MapState;
-    pan(input: PositionInput & { startPos?: [number, number] | undefined }): MapState;
+    pan(
+        input: PositionInput & { startPos?: [number, number] | undefined },
+    ): MapState;
     panEnd(): MapState;
     rotateStart(input: PositionInput): MapState;
-    rotate(input: { deltaScaleX?: number | undefined; deltaScaleY?: number | undefined }): MapState;
+    rotate(input: {
+        deltaScaleX?: number | undefined;
+        deltaScaleY?: number | undefined;
+    }): MapState;
     rotateEnd(): MapState;
     zoomStart(input: PositionInput): MapState;
-    zoom(input: PositionInput & { scale: number; startPos?: [number, number] | undefined }): MapState;
+    zoom(
+        input: PositionInput & {
+            scale: number;
+            startPos?: [number, number] | undefined;
+        },
+    ): MapState;
     zoomEnd(): MapState;
 }
 
@@ -188,7 +206,11 @@ export class MapController implements BaseMapController {
     getMapState(overrides: Partial<MapState>): MapState;
     setOptions(options: MapControllerOptions): void;
     setState(newState: MapState): void;
-    updateViewport(newMapState: MapState, extraProps: any, extraState: ExtraState): void;
+    updateViewport(
+        newMapState: MapState,
+        extraProps: any,
+        extraState: ExtraState,
+    ): void;
 }
 
 export interface PointerEvent extends MouseEvent {
@@ -248,7 +270,9 @@ export interface ContextViewStateChangeInfo {
 
 export type ViewStateChangeHandler = (info: ViewStateChangeInfo) => void;
 
-export type ContextViewStateChangeHandler = (info: ContextViewStateChangeInfo) => void;
+export type ContextViewStateChangeHandler = (
+    info: ContextViewStateChangeInfo,
+) => void;
 
 export interface InteractiveMapProps extends StaticMapProps {
     children?: React.ReactNode;
@@ -298,7 +322,9 @@ export interface InteractiveMapProps extends StaticMapProps {
 export class InteractiveMap extends React.PureComponent<InteractiveMapProps> {
     getMap(): MapboxGL.Map;
     queryRenderedFeatures(
-        geometry?: MapboxGL.PointLike | [MapboxGL.PointLike, MapboxGL.PointLike],
+        geometry?:
+            | MapboxGL.PointLike
+            | [MapboxGL.PointLike, MapboxGL.PointLike],
         parameters?: QueryRenderedFeaturesParams,
     ): MapboxGL.MapboxGeoJSONFeature[];
 }
@@ -327,7 +353,10 @@ export interface BaseControlProps {
     captureDoubleClick?: boolean | undefined;
 }
 
-export class BaseControl<T extends BaseControlProps, S extends Element> extends React.PureComponent<T> {
+export class BaseControl<
+    T extends BaseControlProps,
+    S extends Element,
+> extends React.PureComponent<T> {
     _containerRef: React.RefObject<S>;
     _context: MapContextProps;
 }
@@ -362,14 +391,20 @@ export interface NavigationControlProps extends BaseControlProps {
     compassLabel?: string | undefined;
 }
 
-export class NavigationControl extends BaseControl<NavigationControlProps, HTMLDivElement> {}
+export class NavigationControl extends BaseControl<
+    NavigationControlProps,
+    HTMLDivElement
+> {}
 
 export interface FullscreenControlProps extends BaseControlProps {
     className?: string | undefined;
     container?: HTMLElement | null | undefined;
 }
 
-export class FullscreenControl extends BaseControl<FullscreenControlProps, HTMLDivElement> {}
+export class FullscreenControl extends BaseControl<
+    FullscreenControlProps,
+    HTMLDivElement
+> {}
 
 // https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
 interface PositionOptions {
@@ -392,14 +427,20 @@ export interface GeolocateControlProps extends BaseControlProps {
     auto?: boolean | undefined;
 }
 
-export class GeolocateControl extends BaseControl<GeolocateControlProps, HTMLDivElement> {}
+export class GeolocateControl extends BaseControl<
+    GeolocateControlProps,
+    HTMLDivElement
+> {}
 
 export interface ScaleControlProps extends BaseControlProps {
     maxWidth?: number | undefined;
     unit?: "imperial" | "metric" | "nautical" | undefined;
 }
 
-export class ScaleControl extends BaseControl<ScaleControlProps, HTMLDivElement> {}
+export class ScaleControl extends BaseControl<
+    ScaleControlProps,
+    HTMLDivElement
+> {}
 
 export interface DragEvent {
     lngLat: [number, number];
@@ -413,7 +454,9 @@ export interface DraggableControlProps extends BaseControlProps {
     onDragStart?: ((event: DragEvent) => void) | undefined;
 }
 
-export class DraggableControl<T extends DraggableControlProps> extends BaseControl<T, HTMLDivElement> {}
+export class DraggableControl<
+    T extends DraggableControlProps,
+> extends BaseControl<T, HTMLDivElement> {}
 
 export interface MarkerProps extends DraggableControlProps {
     className?: string | undefined;
@@ -438,7 +481,10 @@ export interface HTMLOverlayProps extends BaseControlProps {
     style?: React.CSSProperties | undefined;
 }
 
-export class HTMLOverlay extends BaseControl<HTMLOverlayProps, HTMLDivElement> {}
+export class HTMLOverlay extends BaseControl<
+    HTMLOverlayProps,
+    HTMLDivElement
+> {}
 
 export interface CanvasRedrawOptions extends HTMLRedrawOptions {
     ctx: CanvasRenderingContext2D;
@@ -448,7 +494,10 @@ export interface CanvasOverlayProps extends BaseControlProps {
     redraw: (opts: CanvasRedrawOptions) => void;
 }
 
-export class CanvasOverlay extends BaseControl<CanvasOverlayProps, HTMLCanvasElement> {}
+export class CanvasOverlay extends BaseControl<
+    CanvasOverlayProps,
+    HTMLCanvasElement
+> {}
 
 export type SVGRedrawOptions = HTMLRedrawOptions;
 
@@ -471,7 +520,11 @@ export interface SourceProps {
     maxzoom?: number | undefined;
     attribution?: string | undefined;
     encoding?: "terrarium" | "mapbox" | undefined;
-    data?: GeoJSON.Feature<GeoJSON.Geometry> | GeoJSON.FeatureCollection<GeoJSON.Geometry> | string | undefined;
+    data?:
+        | GeoJSON.Feature<GeoJSON.Geometry>
+        | GeoJSON.FeatureCollection<GeoJSON.Geometry>
+        | string
+        | undefined;
     buffer?: number | undefined;
     tolerance?: number | undefined;
     cluster?: boolean | undefined;

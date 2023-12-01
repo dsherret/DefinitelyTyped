@@ -1,19 +1,18 @@
 namespace nvd3_test_sparkLinePlus {
     function defaultChartConfig(containerId, data) {
-        nv.addGraph(function() {
+        nv.addGraph(function () {
             var chart = nv.models.sparklinePlus();
-            chart.margin({ left: 70 })
-                .x(function(d, i) {
+            chart
+                .margin({ left: 70 })
+                .x(function (d, i) {
                     return i;
                 })
                 .showLastValue(true)
-                .xTickFormat(function(d) {
+                .xTickFormat(function (d) {
                     return d3.time.format("%x")(new Date(data[d].x));
                 });
 
-            d3.select(containerId)
-                .datum(data)
-                .call(chart);
+            d3.select(containerId).datum(data).call(chart);
 
             return chart;
         });

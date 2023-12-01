@@ -10,37 +10,43 @@ lock.show();
 lock.hide();
 lock.logout(() => {});
 
-lock.checkSession({}, function(error: auth0.Auth0Error, authResult: AuthResult): void {
-    if (error || !authResult) {
-        lock.show();
-    } else {
-        // user has an active session, so we can use the accessToken directly.
-        lock.getUserInfo(authResult.accessToken, function(error, profile) {
-            console.log(error, profile);
-        });
-    }
-});
+lock.checkSession(
+    {},
+    function (error: auth0.Auth0Error, authResult: AuthResult): void {
+        if (error || !authResult) {
+            lock.show();
+        } else {
+            // user has an active session, so we can use the accessToken directly.
+            lock.getUserInfo(authResult.accessToken, function (error, profile) {
+                console.log(error, profile);
+            });
+        }
+    },
+);
 
-lock.checkSession({
-    access_token: undefined,
-    connection_scope: undefined,
-    device: undefined,
-    nonce: undefined,
-    protocol: undefined,
-    request_id: undefined,
-    scope: undefined,
-    state: undefined,
-    param: undefined,
-}, function(error: auth0.Auth0Error, authResult: AuthResult): void {
-    if (error || !authResult) {
-        lock.show();
-    } else {
-        // user has an active session, so we can use the accessToken directly.
-        lock.getUserInfo(authResult.accessToken, function(error, profile) {
-            console.log(error, profile);
-        });
-    }
-});
+lock.checkSession(
+    {
+        access_token: undefined,
+        connection_scope: undefined,
+        device: undefined,
+        nonce: undefined,
+        protocol: undefined,
+        request_id: undefined,
+        scope: undefined,
+        state: undefined,
+        param: undefined,
+    },
+    function (error: auth0.Auth0Error, authResult: AuthResult): void {
+        if (error || !authResult) {
+            lock.show();
+        } else {
+            // user has an active session, so we can use the accessToken directly.
+            lock.getUserInfo(authResult.accessToken, function (error, profile) {
+                console.log(error, profile);
+            });
+        }
+    },
+);
 
 // Show supports UI arguments
 
@@ -73,20 +79,23 @@ lock.show(showOptions);
 
 // "on" event-driven example
 
-lock.on("authenticated", function(authResult: AuthResult) {
-    lock.getProfile(authResult.idToken, function(error: auth0.Auth0Error, profile: auth0.Auth0UserProfile) {
-        if (error) {
-            // Handle error
-            return;
-        }
+lock.on("authenticated", function (authResult: AuthResult) {
+    lock.getProfile(
+        authResult.idToken,
+        function (error: auth0.Auth0Error, profile: auth0.Auth0UserProfile) {
+            if (error) {
+                // Handle error
+                return;
+            }
 
-        localStorage.setItem("idToken", authResult.idToken);
-        localStorage.setItem("profile", JSON.stringify(profile));
-    });
+            localStorage.setItem("idToken", authResult.idToken);
+            localStorage.setItem("profile", JSON.stringify(profile));
+        },
+    );
 });
 
-lock.on("authenticated", function(authResult: AuthResult) {
-    lock.getUserInfo(authResult.accessToken, function(error, profile) {
+lock.on("authenticated", function (authResult: AuthResult) {
+    lock.getUserInfo(authResult.accessToken, function (error, profile) {
         if (error) {
             // Handle error
             return;
@@ -171,7 +180,8 @@ const multiVariantOptions: Auth0LockConstructorOptions = {
     closable: false,
     language: "en",
     languageDictionary: {
-        signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> ...",
+        signUpTerms:
+            "I agree to the <a href='/terms' target='_new'>terms of service</a> ...",
         title: "My Company",
     },
     autoclose: true,
@@ -187,19 +197,21 @@ new Auth0Lock(CLIENT_ID, DOMAIN, multiVariantOptions);
 // test text-field additional sign up field
 
 const textFieldOptions: Auth0LockConstructorOptions = {
-    additionalSignUpFields: [{
-        name: "address",
-        placeholder: "enter your address",
-        // The following properties are optional
-        icon: "https://example.com/assests/address_icon.png",
-        prefill: "street 123",
-        validator: function(input: string) {
-            return {
-                valid: input.length >= 10,
-                hint: "Must have 10 or more chars", // optional
-            };
+    additionalSignUpFields: [
+        {
+            name: "address",
+            placeholder: "enter your address",
+            // The following properties are optional
+            icon: "https://example.com/assests/address_icon.png",
+            prefill: "street 123",
+            validator: function (input: string) {
+                return {
+                    valid: input.length >= 10,
+                    hint: "Must have 10 or more chars", // optional
+                };
+            },
         },
-    }],
+    ],
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, textFieldOptions);
@@ -207,19 +219,21 @@ new Auth0Lock(CLIENT_ID, DOMAIN, textFieldOptions);
 // test select-field additional sign up field
 
 const selectFieldOptions: Auth0LockConstructorOptions = {
-    additionalSignUpFields: [{
-        type: "select",
-        name: "location",
-        placeholder: "choose your location",
-        options: [
-            { value: "us", label: "United States" },
-            { value: "fr", label: "France" },
-            { value: "ar", label: "Argentina" },
-        ],
-        // The following properties are optional
-        icon: "https://example.com/assests/location_icon.png",
-        prefill: "us",
-    }],
+    additionalSignUpFields: [
+        {
+            type: "select",
+            name: "location",
+            placeholder: "choose your location",
+            options: [
+                { value: "us", label: "United States" },
+                { value: "fr", label: "France" },
+                { value: "ar", label: "Argentina" },
+            ],
+            // The following properties are optional
+            icon: "https://example.com/assests/location_icon.png",
+            prefill: "us",
+        },
+    ],
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, selectFieldOptions);
@@ -227,32 +241,34 @@ new Auth0Lock(CLIENT_ID, DOMAIN, selectFieldOptions);
 // test select-field additional sign up field with callbacks for
 
 const selectFieldOptionsWithCallbacks: Auth0LockConstructorOptions = {
-    additionalSignUpFields: [{
-        type: "select",
-        name: "location",
-        placeholder: "choose your location",
-        options: function(cb) {
-            // obtain options, in case of error you call cb with the error in the
-            // first arg instead of null
+    additionalSignUpFields: [
+        {
+            type: "select",
+            name: "location",
+            placeholder: "choose your location",
+            options: function (cb) {
+                // obtain options, in case of error you call cb with the error in the
+                // first arg instead of null
 
-            const options = [
-                { value: "us", label: "United States" },
-                { value: "fr", label: "France" },
-                { value: "ar", label: "Argentina" },
-            ];
+                const options = [
+                    { value: "us", label: "United States" },
+                    { value: "fr", label: "France" },
+                    { value: "ar", label: "Argentina" },
+                ];
 
-            cb(null, options);
+                cb(null, options);
+            },
+            icon: "https://example.com/assests/location_icon.png",
+            prefill: function (cb) {
+                // obtain prefill, in case of error you call cb with the error in the
+                // first arg instead of null
+
+                const prefill = "us";
+
+                cb(null, prefill);
+            },
         },
-        icon: "https://example.com/assests/location_icon.png",
-        prefill: function(cb) {
-            // obtain prefill, in case of error you call cb with the error in the
-            // first arg instead of null
-
-            const prefill = "us";
-
-            cb(null, prefill);
-        },
-    }],
+    ],
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, selectFieldOptionsWithCallbacks);
@@ -260,12 +276,14 @@ new Auth0Lock(CLIENT_ID, DOMAIN, selectFieldOptionsWithCallbacks);
 // test checkbox-field additional sign up field
 
 const checkboxFieldOptions: Auth0LockConstructorOptions = {
-    additionalSignUpFields: [{
-        type: "checkbox",
-        name: "remember",
-        placeholder: "Remember Me",
-        prefill: "false",
-    }],
+    additionalSignUpFields: [
+        {
+            type: "checkbox",
+            name: "remember",
+            placeholder: "Remember Me",
+            prefill: "false",
+        },
+    ],
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, checkboxFieldOptions);
@@ -282,7 +300,10 @@ const avatarOptions: Auth0LockConstructorOptions = {
 
             cb(null, url);
         },
-        displayName: (email: string, cb: Auth0LockAvatarDisplayNameCallback) => {
+        displayName: (
+            email: string,
+            cb: Auth0LockAvatarDisplayNameCallback,
+        ) => {
             // obtain displayName for email, in case of error you call cb with the
             // error in the first arg instead of null
 

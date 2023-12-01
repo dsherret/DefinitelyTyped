@@ -31,4 +31,6 @@ export interface DbManagerFactoryConfig {
     dbManager: DbManagerConfig;
 }
 
-export function databaseManagerFactory(config: DbManagerFactoryConfig): KnexDbManager;
+export function databaseManagerFactory(
+    config: DbManagerFactoryConfig,
+): KnexDbManager;

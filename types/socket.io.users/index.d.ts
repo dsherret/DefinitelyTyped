@@ -4,7 +4,10 @@ import { SessionOptions } from "express-session";
 import SocketIO = require("socket.io");
 
 declare var CONNECTION_EVENTS: string[];
-declare var Middleware: () => (socket: SocketIO.Socket, next: () => any) => void;
+declare var Middleware: () => (
+    socket: SocketIO.Socket,
+    next: () => any,
+) => void;
 declare var Session: (app: Application, options?: SessionOptions) => void;
 
 type SocketUserList = {

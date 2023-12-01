@@ -8,46 +8,74 @@ import VariableDeclarator = require("./collections/VariableDeclarator");
 type ASTPath<N> = nodePath.NodePath<N, N>;
 
 export interface Collection<N>
-    extends
-        NodeCollection.TraversalMethods,
+    extends NodeCollection.TraversalMethods,
         NodeCollection.MutationMethods<N>,
         VariableDeclarator.GlobalMethods,
         VariableDeclarator.TransformMethods<N>,
         JSXElement.GlobalMethods,
-        JSXElement.TraversalMethods
-{
+        JSXElement.TraversalMethods {
     /**
      * @param paths An array of AST paths
      * @param parent A parent collection
      * @param types An array of types all the paths in the collection
      *  have in common. If not passed, it will be inferred from the paths.
      */
-    new(paths: Array<ASTPath<N>>, parent: Collection<any>, types?: Array<types.Type<any>>): this;
+    new (
+        paths: Array<ASTPath<N>>,
+        parent: Collection<any>,
+        types?: Array<types.Type<any>>,
+    ): this;
 
     /**
      * Returns a new collection containing the nodes for which the callback returns true.
      */
     filter<S extends N>(
-        callback: (path: ASTPath<N>, i: number, paths: Array<ASTPath<N>>) => path is ASTPath<S>,
+        callback: (
+            path: ASTPath<N>,
+            i: number,
+            paths: Array<ASTPath<N>>,
+        ) => path is ASTPath<S>,
     ): Collection<S>;
     filter(
-        callback: (path: ASTPath<N>, i: number, paths: Array<ASTPath<N>>) => boolean,
+        callback: (
+            path: ASTPath<N>,
+            i: number,
+            paths: Array<ASTPath<N>>,
+        ) => boolean,
     ): Collection<N>;
 
     /**
      * Executes callback for each node/path in the collection.
      */
-    forEach(callback: (path: ASTPath<N>, i: number, paths: Array<ASTPath<N>>) => void): this;
+    forEach(
+        callback: (
+            path: ASTPath<N>,
+            i: number,
+            paths: Array<ASTPath<N>>,
+        ) => void,
+    ): this;
 
     /**
      * Tests whether at-least one path passes the test implemented by the provided callback.
      */
-    some(callback: (path: ASTPath<N>, i: number, paths: Array<ASTPath<N>>) => boolean): boolean;
+    some(
+        callback: (
+            path: ASTPath<N>,
+            i: number,
+            paths: Array<ASTPath<N>>,
+        ) => boolean,
+    ): boolean;
 
     /**
      * Tests whether all paths pass the test implemented by the provided callback.
      */
-    every(callback: (path: ASTPath<N>, i: number, paths: Array<ASTPath<N>>) => boolean): boolean;
+    every(
+        callback: (
+            path: ASTPath<N>,
+            i: number,
+            paths: Array<ASTPath<N>>,
+        ) => boolean,
+    ): boolean;
 
     /**
      * Executes the callback for every path in the collection and returns a new

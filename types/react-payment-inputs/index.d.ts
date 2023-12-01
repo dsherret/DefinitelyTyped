@@ -41,7 +41,10 @@ interface CardImages {
     visa: React.ReactElement;
 }
 
-type InputValidationErrorCallback = (error: string, erroredInputs: ErroredInputs) => void;
+type InputValidationErrorCallback = (
+    error: string,
+    erroredInputs: ErroredInputs,
+) => void;
 
 interface usePaymentInputsOptions {
     autoFocus?: boolean;
@@ -94,11 +97,7 @@ interface usePaymentInputsData {
     /**
      * Returns the props to apply to the card image SVG.
      */
-    getCardImageProps: (
-        props?: {
-            images: CardImages;
-        },
-    ) => {
+    getCardImageProps: (props?: { images: CardImages }) => {
         "aria-label": string;
         children: React.ReactElement;
         width: string;
@@ -108,9 +107,13 @@ interface usePaymentInputsData {
     /**
      * Returns the props to apply to the card number input.
      */
-    getCardNumberProps: (
-        props?: { onChange?: any; onBlur?: any; onFocus?: any; onKeyPress?: any; value?: string },
-    ) => {
+    getCardNumberProps: (props?: {
+        onChange?: any;
+        onBlur?: any;
+        onFocus?: any;
+        onKeyPress?: any;
+        value?: string;
+    }) => {
         "aria-label": string;
         autoComplete: string;
         id: string;
@@ -125,22 +128,20 @@ interface usePaymentInputsData {
     /**
      * Returns the props to apply to the expiry date input.
      */
-    getExpiryDateProps: (
-        props?: {
-            onChange?: any;
-            onBlur?: any;
-            onFocus?: any;
-            onKeyDown?: any;
-            onKeyPress?: any;
-        },
-    ) => {
+    getExpiryDateProps: (props?: {
+        onChange?: any;
+        onBlur?: any;
+        onFocus?: any;
+        onKeyDown?: any;
+        onKeyPress?: any;
+    }) => {
         "aria-label": string;
         autoComplete: string;
         id: string;
         name: string;
         placeholder: string;
         type: string;
-        "ref": React.MutableRefObject<any>;
+        ref: React.MutableRefObject<any>;
         onBlur: any;
         onChange: any;
         onFocus: any;
@@ -150,22 +151,20 @@ interface usePaymentInputsData {
     /**
      * Returns the props to apply to the CVC input.
      */
-    getCVCProps: (
-        props?: {
-            onBlur?: any;
-            onChange?: any;
-            onFocus?: any;
-            onKeyPress?: any;
-            onKeyDown?: any;
-        },
-    ) => {
+    getCVCProps: (props?: {
+        onBlur?: any;
+        onChange?: any;
+        onFocus?: any;
+        onKeyPress?: any;
+        onKeyDown?: any;
+    }) => {
         "aria-label": string;
         autoComplete: string;
         id: string;
         name: string;
         placeholder: string;
         type: string;
-        "ref": React.MutableRefObject<any>;
+        ref: React.MutableRefObject<any>;
         onBlur: any;
         onChange: any;
         onFocus: any;
@@ -175,21 +174,19 @@ interface usePaymentInputsData {
     /**
      * Returns the props to apply to the ZIP input.
      */
-    getZipProps: (
-        props?: {
-            onChange?: any;
-            onBlur?: any;
-            onFocus?: any;
-            onKeyDown?: any;
-            onKeyPress?: any;
-        },
-    ) => {
+    getZipProps: (props?: {
+        onChange?: any;
+        onBlur?: any;
+        onFocus?: any;
+        onKeyDown?: any;
+        onKeyPress?: any;
+    }) => {
         autoComplete: string;
         id: string;
         name: string;
         placeholder: string;
         type: string;
-        "ref": React.MutableRefObject<any>;
+        ref: React.MutableRefObject<any>;
         onBlur: any;
         onChange: any;
         onFocus: any;
@@ -280,23 +277,36 @@ interface PaymentInputsWrapperProps {
     };
 }
 
-export function usePaymentInputs(options?: usePaymentInputsOptions): usePaymentInputsData;
+export function usePaymentInputs(
+    options?: usePaymentInputsOptions,
+): usePaymentInputsData;
 
 export function getCardNumberError(
     cardNumber: string,
-    cardNumberValidator: (props: { cardNumber: string; cardType: CardType; errorMessages: ErrorMessages }) => string,
+    cardNumberValidator: (props: {
+        cardNumber: string;
+        cardType: CardType;
+        errorMessages: ErrorMessages;
+    }) => string,
     { errorMessages }: { errorMessages: ErrorMessages },
 ): string;
 
 export function getExpiryDateError(
     expiryDate: string,
-    expiryValidator: (props: { expiryDate: { month: string; year: string }; errorMessages: ErrorMessages }) => string,
+    expiryValidator: (props: {
+        expiryDate: { month: string; year: string };
+        errorMessages: ErrorMessages;
+    }) => string,
     { errorMessages }: { errorMessages: ErrorMessages },
 ): string;
 
 export function getCVCError(
     cvc: string,
-    cvcValidator: (props: { cvc: string; cardType: CardType; errorMessages: ErrorMessages }) => string,
+    cvcValidator: (props: {
+        cvc: string;
+        cardType: CardType;
+        errorMessages: ErrorMessages;
+    }) => string,
     { errorMessages }: { errorMessages: ErrorMessages },
 ): string;
 

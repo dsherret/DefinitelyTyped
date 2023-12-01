@@ -1,4 +1,8 @@
-import { ButtonRenderer, ButtonsRenderer, FundingOption } from "./modules/button";
+import {
+    ButtonRenderer,
+    ButtonsRenderer,
+    FundingOption,
+} from "./modules/button";
 
 import {
     ButtonColorOption,

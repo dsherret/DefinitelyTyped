@@ -1,10 +1,16 @@
 import { ddpBaseFilterOptions } from "../options";
 import { ddpCollection } from "./ddpCollection";
-import { ddpReactiveDocument, ddpReactiveDocumentSettings } from "./ddpReactiveDocument";
+import {
+    ddpReactiveDocument,
+    ddpReactiveDocumentSettings,
+} from "./ddpReactiveDocument";
 import { ddpReducer } from "./ddpReducer";
 
 export class ddpReactiveCollection<T> {
-    constructor(ddpCollection: ddpCollection<T>, skiplimit: ddpBaseFilterOptions);
+    constructor(
+        ddpCollection: ddpCollection<T>,
+        skiplimit: ddpBaseFilterOptions,
+    );
     _updateReactiveObjects(): void;
     count(): object;
     data(): unknown[];
@@ -27,7 +33,12 @@ export class ddpReactiveCollection<T> {
      * @param initialValue Value to use as the first argument to the first call of the function.
      */
     reduce<R, U>(
-        f: (previousValue: U, currentValue: R, currentIndex: number, array: R[]) => U,
+        f: (
+            previousValue: U,
+            currentValue: R,
+            currentIndex: number,
+            array: R[],
+        ) => U,
         initialValue: U,
     ): ddpReducer<U>;
     /**

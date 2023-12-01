@@ -1,4 +1,11 @@
-import { ConflictAll, ConflictThis, ElementHandle, Handle, RecordHandle, wrapper as xelib } from "xelib";
+import {
+    ConflictAll,
+    ConflictThis,
+    ElementHandle,
+    Handle,
+    RecordHandle,
+    wrapper as xelib,
+} from "xelib";
 
 xelib.GetGlobal("foo");
 
@@ -14,7 +21,8 @@ const elHandle = 1 as ElementHandle;
 // @ts-expect-error
 xelib.Name(1);
 
-const [ca, ct]: [keyof typeof ConflictAll, keyof typeof ConflictThis] = xelib.GetConflictData(0, elHandle, true);
+const [ca, ct]: [keyof typeof ConflictAll, keyof typeof ConflictThis] =
+    xelib.GetConflictData(0, elHandle, true);
 xelib.GetConflictData(0, elHandle); // $ExpectType [ConflictAll, ConflictThis]
 
 // $ExpectType { [k: string]: RecordHandle; }

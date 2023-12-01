@@ -8,7 +8,14 @@ interface docCookies {
     @param {string} domain (optional) E.g., "example.com", ".example.com" (includes all subdomains) or "subdomain.example.com"; if not specified, defaults to the host portion of the current document location
     @param {boolean} secure (optional) The cookie will be transmitted only over secure protocol as https
     */
-    setItem(sKey: string, sValue: string, vEnd?: number, sPath?: string, sDomain?: string, bSecure?: boolean): boolean;
+    setItem(
+        sKey: string,
+        sValue: string,
+        vEnd?: number,
+        sPath?: string,
+        sDomain?: string,
+        bSecure?: boolean,
+    ): boolean;
 
     /**
     Create/overwrite a cookie.
@@ -19,7 +26,14 @@ interface docCookies {
     @param {string} domain (optional) E.g., "example.com", ".example.com" (includes all subdomains) or "subdomain.example.com"; if not specified, defaults to the host portion of the current document location
     @param {boolean} secure (optional) The cookie will be transmitted only over secure protocol as https
     */
-    setItem(sKey: string, sValue: string, vEnd?: string, sPath?: string, sDomain?: string, bSecure?: boolean): boolean;
+    setItem(
+        sKey: string,
+        sValue: string,
+        vEnd?: string,
+        sPath?: string,
+        sDomain?: string,
+        bSecure?: boolean,
+    ): boolean;
 
     /**
     Create/overwrite a cookie.
@@ -30,7 +44,14 @@ interface docCookies {
     @param {string} domain (optional) E.g., "example.com", ".example.com" (includes all subdomains) or "subdomain.example.com"; if not specified, defaults to the host portion of the current document location
     @param {boolean} secure (optional) The cookie will be transmitted only over secure protocol as https
     */
-    setItem(sKey: string, sValue: string, vEnd?: Date, sPath?: string, sDomain?: string, bSecure?: boolean): boolean;
+    setItem(
+        sKey: string,
+        sValue: string,
+        vEnd?: Date,
+        sPath?: string,
+        sDomain?: string,
+        bSecure?: boolean,
+    ): boolean;
 
     /**
     Read a cookie. If the cookie doesn't exist a null value will be returned.

@@ -1,6 +1,7 @@
 import { FastRateLimit } from "fast-ratelimit";
 
-const limit = new FastRateLimit({ // $type: FastRateLimit
+const limit = new FastRateLimit({
+    // $type: FastRateLimit
     threshold: 20,
     ttl: 60,
 });

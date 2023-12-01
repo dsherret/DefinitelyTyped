@@ -63,7 +63,10 @@ export class By {
      * @return {function(!./WebDriver): !./Promise}
      *     A new JavaScript-based locator function.
      */
-    static js(script: string | Function, ...var_args: any[]): (webdriver: WebDriver) => Promise<any>;
+    static js(
+        script: string | Function,
+        ...var_args: any[]
+    ): (webdriver: WebDriver) => Promise<any>;
 
     /**
      * Locates elements whose `name` attribute has the given value.

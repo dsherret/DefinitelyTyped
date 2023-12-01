@@ -1,1 +1,4 @@
-export default function withOrientation(target: HTMLElement, vertical: boolean): HTMLElement;
+export default function withOrientation(
+    target: HTMLElement,
+    vertical: boolean,
+): HTMLElement;

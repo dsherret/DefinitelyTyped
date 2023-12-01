@@ -16,7 +16,7 @@ express()
                 gfsicle: true,
             },
             allowedImageSourceContentTypes: ["image/png"],
-            allowOperation: operationName => true,
+            allowOperation: (operationName) => true,
         }),
     )
     .use(processImage())

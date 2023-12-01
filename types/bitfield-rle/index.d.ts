@@ -25,7 +25,11 @@ export function align(n: number): {
  * const enc = rle.encode(Buffer.from(bits.buffer)) // rle encode the bitfield
  * console.log(enc.length) // 6 bytes
  */
-export function encode(bitfield: Buffer, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    bitfield: Buffer,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     const bytes: number;
 }

@@ -22,12 +22,12 @@ if (result) {
     console.log(JSON.stringify(errors, null, 4));
 }
 
-errors.forEach(error =>
+errors.forEach((error) =>
     console.log(
         "code: %s, message: %s, data: %s, path: %s",
         error.code,
         error.message,
         error.data,
         error.path,
-    )
+    ),
 );

@@ -30,16 +30,19 @@ declare namespace AMap {
             rotation?: number | undefined;
         }
 
-        type UIEvent<N extends string, I> = Event<N, {
-            /**
-             * 事件触发目标
-             */
-            target: I;
-            /**
-             * 目标点的数据
-             */
-            data: I extends MassMarks<infer D> ? D : Data;
-        }>;
+        type UIEvent<N extends string, I> = Event<
+            N,
+            {
+                /**
+                 * 事件触发目标
+                 */
+                target: I;
+                /**
+                 * 目标点的数据
+                 */
+                data: I extends MassMarks<infer D> ? D : Data;
+            }
+        >;
 
         interface Options extends Layer.Options {
             /**
@@ -90,7 +93,9 @@ declare namespace AMap {
         /**
          * 获取数据集
          */
-        getData(): Array<Pick<D, Exclude<keyof D, "lnglat">> & { lnglat: LngLat }>;
+        getData(): Array<
+            Pick<D, Exclude<keyof D, "lnglat">> & { lnglat: LngLat }
+        >;
         /**
          * 清除海量点
          */

@@ -5,18 +5,25 @@ mapsforge.embedded.setZoom(15);
 
 // Adding a marker
 var markerKey: number;
-mapsforge.embedded.addMarker([mapsforge.embedded.MARKER_YELLOW, 43.360056, -5.845757], function(key) {
-    markerKey = key;
-});
+mapsforge.embedded.addMarker(
+    [mapsforge.embedded.MARKER_YELLOW, 43.360056, -5.845757],
+    function (key) {
+        markerKey = key;
+    },
+);
 
 // Adding a polyline
 var points = [43.360056, -5.845757, 43.160056, -5.645757, 43.560056, -5.895757];
 var polylineKey: number;
-mapsforge.embedded.addPolyline([mapsforge.embedded.COLOR_GREEN, 10, points], function(key) {
-    polylineKey = key;
-}, function(error) {
-    alert(error);
-});
+mapsforge.embedded.addPolyline(
+    [mapsforge.embedded.COLOR_GREEN, 10, points],
+    function (key) {
+        polylineKey = key;
+    },
+    function (error) {
+        alert(error);
+    },
+);
 
 mapsforge.cache.initialize("/mnt/sdcard/spain.map"); // Initializes the renderer with the offline map
 
@@ -45,21 +52,27 @@ interface Tile {
 }
 
 L.OfflineTileLayer = L.TileLayer.extend({
-    getTileUrl: function(tilePoint: TilePoint, tile: Tile) {
-        var zoom = tilePoint.z, x = tilePoint.x, y = tilePoint.y;
+    getTileUrl: function (tilePoint: TilePoint, tile: Tile) {
+        var zoom = tilePoint.z,
+            x = tilePoint.x,
+            y = tilePoint.y;
 
         if (mapsforge.cache) {
-            mapsforge.cache.getTile([x, y, zoom], function(result) {
-                tile.src = result;
-            }, function() {
-                tile.src = "path to an error image";
-            });
+            mapsforge.cache.getTile(
+                [x, y, zoom],
+                function (result) {
+                    tile.src = result;
+                },
+                function () {
+                    tile.src = "path to an error image";
+                },
+            );
         } else {
             tile.src = "path to an error image";
         }
     },
 
-    _loadTile: function(tile: Tile, tilePoint: TilePoint) {
+    _loadTile: function (tile: Tile, tilePoint: TilePoint) {
         tile._layer = this;
         tile.onload = this._tileOnLoad;
         tile.onerror = this._tileOnError;

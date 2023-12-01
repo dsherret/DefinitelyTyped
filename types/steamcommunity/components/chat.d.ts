@@ -21,5 +21,10 @@ export interface Chat {
      * @param [type]
      * @param [callback]
      */
-    chatMessage(recipient: userid, text: string, type: string, callback: Callback): void;
+    chatMessage(
+        recipient: userid,
+        text: string,
+        type: string,
+        callback: Callback,
+    ): void;
 }

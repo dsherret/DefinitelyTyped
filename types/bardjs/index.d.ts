@@ -69,7 +69,9 @@ declare namespace bard {
     /**
      * Registers a fake route helper provider service that you can spy on
      */
-    function fakeRouteHelperProvider($provide: angular.auto.IProvideService): void;
+    function fakeRouteHelperProvider(
+        $provide: angular.auto.IProvideService,
+    ): void;
 
     /**
      * Stub out the $routeProvider so we avoid
@@ -109,7 +111,10 @@ declare namespace bard {
      *    [strings]   - same string array you'd use to set fn.$inject
      *    (...string) - string arguments turned into a string array
      */
-    function inject(context?: Function | Mocha.Context, ...args: string[]): void;
+    function inject(
+        context?: Function | Mocha.Context,
+        ...args: string[]
+    ): void;
 
     /**
      * Write to console if bard debugging flag is on

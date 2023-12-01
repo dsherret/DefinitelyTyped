@@ -108,27 +108,27 @@ if (glider.arrows.prev) {
 const element = document.querySelector<HTMLDivElement>(".glider");
 
 if (element) {
-    element.addEventListener("glider-add", event => {
+    element.addEventListener("glider-add", (event) => {
         // $ExpectType GliderEvent<{ scroll: () => void; }>
         event;
     });
 
-    element.addEventListener("glider-animated", event => {
+    element.addEventListener("glider-animated", (event) => {
         // $ExpectType GliderEvent<{ value: string | number; type: "arrow" | "dot" | "slide"; }>
         event;
     });
 
-    element.addEventListener("glider-destroy", event => {
+    element.addEventListener("glider-destroy", (event) => {
         // $ExpectType GliderEvent<undefined>
         event;
     });
 
-    element.addEventListener("glider-loaded", event => {
+    element.addEventListener("glider-loaded", (event) => {
         // $ExpectType GliderEvent<undefined>
         event;
     });
 
-    element.addEventListener("glider-refresh", event => {
+    element.addEventListener("glider-refresh", (event) => {
         // $ExpectType GliderEvent<undefined>
         event;
 
@@ -143,22 +143,22 @@ if (element) {
         }
     });
 
-    element.addEventListener("glider-remove", event => {
+    element.addEventListener("glider-remove", (event) => {
         // $ExpectType GliderEvent<undefined>
         event;
     });
 
-    element.addEventListener("glider-slide-hidden", event => {
+    element.addEventListener("glider-slide-hidden", (event) => {
         // $ExpectType GliderEvent<{ slide: number; }>
         event;
     });
 
-    element.addEventListener("glider-slide-visible", event => {
+    element.addEventListener("glider-slide-visible", (event) => {
         // $ExpectType GliderEvent<{ slide: number; }>
         event;
     });
 
-    element.removeEventListener("glider-refresh", event => {
+    element.removeEventListener("glider-refresh", (event) => {
         // $ExpectType GliderEvent<undefined>
         event;
 

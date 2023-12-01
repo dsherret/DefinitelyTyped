@@ -77,7 +77,13 @@ const element: Element = {
     type: "element",
     name: "x",
     attributes,
-    children: [{ type: "element", name: "y", attributes: {}, children: [] }, comment, text, cdata, instruction],
+    children: [
+        { type: "element", name: "y", attributes: {}, children: [] },
+        comment,
+        text,
+        cdata,
+        instruction,
+    ],
 };
 
 const elementWithWrongChild: Element = {

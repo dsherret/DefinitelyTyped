@@ -3,7 +3,9 @@ import { alert, confirm } from "react-bootstrap-confirmation";
 
 const AlertButton: React.FC = () => {
     const display = async () => {
-        await alert("Something very wrong is happening!", { okButtonStyle: "light" }); // undefined
+        await alert("Something very wrong is happening!", {
+            okButtonStyle: "light",
+        }); // undefined
     };
     return (
         <button type="button" className="btn btn-primary" onClick={display}>

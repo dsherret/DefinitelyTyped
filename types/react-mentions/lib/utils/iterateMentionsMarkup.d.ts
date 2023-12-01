@@ -10,7 +10,11 @@ export type MarkupIterateeFunction = (
     start: number,
 ) => void;
 
-export type TextIterateeFunction = (substr: string, start: number, plainTextIndex: number) => void;
+export type TextIterateeFunction = (
+    substr: string,
+    start: number,
+    plainTextIndex: number,
+) => void;
 
 export function iterateMentionsMarkup(
     value: string,

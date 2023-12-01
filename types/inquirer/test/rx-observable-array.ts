@@ -35,10 +35,10 @@ const questions: DistinctQuestion[] = [
 const observable = from(questions);
 
 inquirer.prompt(observable).ui.process.subscribe(
-    ans => {
+    (ans) => {
         console.log("Answer is: ", ans);
     },
-    err => {
+    (err) => {
         console.log("Error: ", err);
     },
     () => {

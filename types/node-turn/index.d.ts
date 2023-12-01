@@ -2,7 +2,15 @@
 
 import { EventEmitter } from "events";
 
-type TurnDebugLevel = "OFF" | "FATAL" | "ERROR" | "WARN" | "INFO" | "DEBUG" | "TRACE" | "ALL";
+type TurnDebugLevel =
+    | "OFF"
+    | "FATAL"
+    | "ERROR"
+    | "WARN"
+    | "INFO"
+    | "DEBUG"
+    | "TRACE"
+    | "ALL";
 
 type TurnAuthMech = "none" | "short-term" | "long-term";
 
@@ -47,7 +55,13 @@ declare class TurnServer extends EventEmitter {
 }
 
 declare namespace TurnServer {
-    export { TurnAuthMech, TurnCredentials, TurnDebugLevel, TurnOptions, TurnProps };
+    export {
+        TurnAuthMech,
+        TurnCredentials,
+        TurnDebugLevel,
+        TurnOptions,
+        TurnProps,
+    };
 }
 
 export = TurnServer;

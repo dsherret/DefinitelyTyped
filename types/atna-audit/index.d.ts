@@ -79,13 +79,24 @@ export const constants: Constants;
 
 export namespace construct {
     class Code {
-        constructor(code: number, originalText: string, codeSystemName: string, displayName?: string);
+        constructor(
+            code: number,
+            originalText: string,
+            codeSystemName: string,
+            displayName?: string,
+        );
 
         toXML(): string;
     }
 
     class EventIdentification {
-        constructor(actionCode: string, datetime: Date, outcome: number, eventID: Code, typeCode?: Code);
+        constructor(
+            actionCode: string,
+            datetime: Date,
+            outcome: number,
+            eventID: Code,
+            typeCode?: Code,
+        );
 
         toXML(): string;
     }
@@ -104,7 +115,11 @@ export namespace construct {
     }
 
     class AuditSourceIdentification {
-        constructor(auditEnterpriseSiteId: string | null | undefined, auditSourceId: string, auditSourceTypeCode: Code);
+        constructor(
+            auditEnterpriseSiteId: string | null | undefined,
+            auditSourceId: string,
+            auditSourceTypeCode: Code,
+        );
 
         toXML(): string;
     }
@@ -155,5 +170,9 @@ export namespace send {
 
     type SendConnDetail = UdpConnDetail | TcpConnDetail | TlsConnDetail;
 
-    function sendAuditEvent(msg: string, connDetail: SendConnDetail, callback?: SendCallback | null): void;
+    function sendAuditEvent(
+        msg: string,
+        connDetail: SendConnDetail,
+        callback?: SendCallback | null,
+    ): void;
 }

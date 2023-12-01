@@ -5,5 +5,9 @@
  * @param maximum The highest possible integer in the range. Inclusive.
  * @param cb Callback function
  */
-declare function randomNumber(minimum: number, maximum: number, cb?: () => void): Promise<number>;
+declare function randomNumber(
+    minimum: number,
+    maximum: number,
+    cb?: () => void,
+): Promise<number>;
 export = randomNumber;

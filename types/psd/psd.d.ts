@@ -150,7 +150,10 @@ export namespace PSD {
         interface Guides {
             id: 1032;
             name: "guides";
-            data: Array<{ location: string; direction: "horizontal" | "vertical" }>;
+            data: Array<{
+                location: string;
+                direction: "horizontal" | "vertical";
+            }>;
         }
     }
 

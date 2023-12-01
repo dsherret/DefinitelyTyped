@@ -41,7 +41,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductCategory objects. */
-        interface ProductCategoryBuilder extends Base.Builder<ProductCategoryOperation> {
+        interface ProductCategoryBuilder
+            extends Base.Builder<ProductCategoryOperation> {
             /** Specifies the bid of the product category. */
             withBid(bid: number): this;
             /** Specifies the name of the new product category. */
@@ -51,6 +52,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product category. */
-        interface ProductCategoryOperation extends Base.Operation<ProductCategory> {}
+        interface ProductCategoryOperation
+            extends Base.Operation<ProductCategory> {}
     }
 }

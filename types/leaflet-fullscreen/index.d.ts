@@ -8,8 +8,8 @@ declare module "leaflet" {
     interface FullscreenControlOptions extends ControlOptions {
         pseudoFullscreen?: boolean;
         title?: {
-            "false": string;
-            "true": string;
+            false: string;
+            true: string;
         };
     }
 

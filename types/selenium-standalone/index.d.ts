@@ -12,10 +12,18 @@ export interface InstallOpts {
     baseURL?: string | undefined;
     basePath?: string | undefined;
     version?: string | undefined;
-    drivers?: {
-        [browser: string]: DriverOptions;
-    } | undefined;
-    progressCb?: ((totalLength: number, progressLength: number, chunkLength: number) => void) | undefined;
+    drivers?:
+        | {
+              [browser: string]: DriverOptions;
+          }
+        | undefined;
+    progressCb?:
+        | ((
+              totalLength: number,
+              progressLength: number,
+              chunkLength: number,
+          ) => void)
+        | undefined;
     logger?: ((message: string) => void) | undefined;
     requestOpts?: http.RequestOptions | string | URL | undefined;
 }
@@ -23,9 +31,11 @@ export interface InstallOpts {
 export interface StartOpts {
     basePath?: string | undefined;
     version?: string | undefined;
-    drivers?: {
-        [browser: string]: DriverOptions;
-    } | undefined;
+    drivers?:
+        | {
+              [browser: string]: DriverOptions;
+          }
+        | undefined;
     seleniumArgs?: string[] | undefined;
     javaArgs?: string[] | undefined;
     spawnOptions?: SpawnOptions | undefined;
@@ -41,26 +51,36 @@ export interface DriverOptions {
 
 export interface FsPaths {
     [x: string]: any;
-    chrome?: {
-        [x: string]: any;
-        installPath: string;
-    } | undefined;
-    ie?: {
-        [x: string]: any;
-        installPath: string;
-    } | undefined;
-    edge?: {
-        [x: string]: any;
-        installPath: string;
-    } | undefined;
-    firefox?: {
-        [x: string]: any;
-        installPath: string;
-    } | undefined;
-    selenium?: {
-        [x: string]: any;
-        installPath: string;
-    } | undefined;
+    chrome?:
+        | {
+              [x: string]: any;
+              installPath: string;
+          }
+        | undefined;
+    ie?:
+        | {
+              [x: string]: any;
+              installPath: string;
+          }
+        | undefined;
+    edge?:
+        | {
+              [x: string]: any;
+              installPath: string;
+          }
+        | undefined;
+    firefox?:
+        | {
+              [x: string]: any;
+              installPath: string;
+          }
+        | undefined;
+    selenium?:
+        | {
+              [x: string]: any;
+              installPath: string;
+          }
+        | undefined;
 }
 
 export { ChildProcess, SpawnOptions } from "child_process";

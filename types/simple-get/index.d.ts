@@ -9,9 +9,12 @@ interface SimpleGetOptions extends RequestOptions {
      * Default value: ```10```
      */
     maxRedirects?: number;
-    body?: string | {
-        [key: string]: unknown;
-    } | Readable;
+    body?:
+        | string
+        | {
+              [key: string]: unknown;
+          }
+        | Readable;
     form?: {
         [key: string]: unknown;
     };
@@ -26,25 +29,50 @@ export = simpleGet;
 
 type Callback = (err: Error | null, res?: IncomingMessage) => void | never;
 
-declare function simpleGet(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+declare function simpleGet(
+    options: string | SimpleGetOptions,
+    cb: Callback,
+): ClientRequest | never;
 
 declare namespace simpleGet {
     export function concat(
         options: string | SimpleGetOptions,
-        cb: (err: Error | null, res?: IncomingMessage, data?: Buffer | object) => void | never,
+        cb: (
+            err: Error | null,
+            res?: IncomingMessage,
+            data?: Buffer | object,
+        ) => void | never,
     ): ClientRequest | never;
 
-    export function get(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    export function get(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
-    export function head(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    export function head(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
-    export function patch(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    export function patch(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
-    export function post(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    export function post(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
-    export function put(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    export function put(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
-    function _delete(options: string | SimpleGetOptions, cb: Callback): ClientRequest | never;
+    function _delete(
+        options: string | SimpleGetOptions,
+        cb: Callback,
+    ): ClientRequest | never;
 
     export { _delete as delete };
 }

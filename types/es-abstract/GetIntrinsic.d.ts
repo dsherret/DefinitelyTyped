@@ -23,7 +23,8 @@ declare function GetIntrinsic(name: string, allowMissing?: boolean): unknown;
 export = GetIntrinsic;
 
 type numeric = number | bigint;
-interface TypedArray<T extends numeric = numeric> extends Readonly<ArrayBufferView> {
+interface TypedArray<T extends numeric = numeric>
+    extends Readonly<ArrayBufferView> {
     /** The length of the array. */
     readonly length: number;
     [index: number]: T;
@@ -31,30 +32,60 @@ interface TypedArray<T extends numeric = numeric> extends Readonly<ArrayBufferVi
 
 interface TypedArrayConstructor {
     readonly prototype: TypedArrayPrototype;
-    new(...args: unknown[]): TypedArrayPrototype;
+    new (...args: unknown[]): TypedArrayPrototype;
 
     /**
      * Returns a new typed array from a set of elements.
      * @param items A set of elements to include in the new typed array object.
      */
-    of(this: new(length: number) => Int8Array, ...items: number[]): Int8Array;
-    of(this: new(length: number) => Uint8Array, ...items: number[]): Uint8Array;
-    of(this: new(length: number) => Uint8ClampedArray, ...items: number[]): Uint8ClampedArray;
+    of(this: new (length: number) => Int8Array, ...items: number[]): Int8Array;
+    of(
+        this: new (length: number) => Uint8Array,
+        ...items: number[]
+    ): Uint8Array;
+    of(
+        this: new (length: number) => Uint8ClampedArray,
+        ...items: number[]
+    ): Uint8ClampedArray;
 
-    of(this: new(length: number) => Int16Array, ...items: number[]): Int16Array;
-    of(this: new(length: number) => Uint16Array, ...items: number[]): Uint16Array;
+    of(
+        this: new (length: number) => Int16Array,
+        ...items: number[]
+    ): Int16Array;
+    of(
+        this: new (length: number) => Uint16Array,
+        ...items: number[]
+    ): Uint16Array;
 
-    of(this: new(length: number) => Int32Array, ...items: number[]): Int32Array;
-    of(this: new(length: number) => Uint32Array, ...items: number[]): Uint32Array;
+    of(
+        this: new (length: number) => Int32Array,
+        ...items: number[]
+    ): Int32Array;
+    of(
+        this: new (length: number) => Uint32Array,
+        ...items: number[]
+    ): Uint32Array;
 
     // For whatever reason, `array-type` considers `bigint` a non-simple type:
     // tslint:disable: array-type
-    of(this: new(length: number) => BigInt64Array, ...items: bigint[]): BigInt64Array;
-    of(this: new(length: number) => BigUint64Array, ...items: bigint[]): BigUint64Array;
+    of(
+        this: new (length: number) => BigInt64Array,
+        ...items: bigint[]
+    ): BigInt64Array;
+    of(
+        this: new (length: number) => BigUint64Array,
+        ...items: bigint[]
+    ): BigUint64Array;
     // tslint:enable: array-type
 
-    of(this: new(length: number) => Float32Array, ...items: number[]): Float32Array;
-    of(this: new(length: number) => Float64Array, ...items: number[]): Float64Array;
+    of(
+        this: new (length: number) => Float32Array,
+        ...items: number[]
+    ): Float32Array;
+    of(
+        this: new (length: number) => Float64Array,
+        ...items: number[]
+    ): Float64Array;
 
     /**
      * Creates a new typed array from an array-like or iterable object.
@@ -62,92 +93,122 @@ interface TypedArrayConstructor {
      * @param mapfn A mapping function to call on every element of the source object.
      * @param thisArg Value of 'this' used to invoke the mapfn.
      */
-    from(this: new(length: number) => Int8Array, source: Iterable<number> | ArrayLike<number>): Int8Array;
+    from(
+        this: new (length: number) => Int8Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Int8Array;
     from<U>(
-        this: new(length: number) => Int8Array,
+        this: new (length: number) => Int8Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Int8Array;
 
-    from(this: new(length: number) => Uint8Array, source: Iterable<number> | ArrayLike<number>): Uint8Array;
+    from(
+        this: new (length: number) => Uint8Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Uint8Array;
     from<U>(
-        this: new(length: number) => Uint8Array,
+        this: new (length: number) => Uint8Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Uint8Array;
 
     from(
-        this: new(length: number) => Uint8ClampedArray,
+        this: new (length: number) => Uint8ClampedArray,
         source: Iterable<number> | ArrayLike<number>,
     ): Uint8ClampedArray;
     from<U>(
-        this: new(length: number) => Uint8ClampedArray,
+        this: new (length: number) => Uint8ClampedArray,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Uint8ClampedArray;
 
-    from(this: new(length: number) => Int16Array, source: Iterable<number> | ArrayLike<number>): Int16Array;
+    from(
+        this: new (length: number) => Int16Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Int16Array;
     from<U>(
-        this: new(length: number) => Int16Array,
+        this: new (length: number) => Int16Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Int16Array;
 
-    from(this: new(length: number) => Uint16Array, source: Iterable<number> | ArrayLike<number>): Uint16Array;
+    from(
+        this: new (length: number) => Uint16Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Uint16Array;
     from<U>(
-        this: new(length: number) => Uint16Array,
+        this: new (length: number) => Uint16Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Uint16Array;
 
-    from(this: new(length: number) => Int32Array, source: Iterable<number> | ArrayLike<number>): Int32Array;
+    from(
+        this: new (length: number) => Int32Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Int32Array;
     from<U>(
-        this: new(length: number) => Int32Array,
+        this: new (length: number) => Int32Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Int32Array;
 
-    from(this: new(length: number) => Uint32Array, source: Iterable<number> | ArrayLike<number>): Uint32Array;
+    from(
+        this: new (length: number) => Uint32Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Uint32Array;
     from<U>(
-        this: new(length: number) => Uint32Array,
+        this: new (length: number) => Uint32Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Uint32Array;
 
-    from(this: new(length: number) => BigInt64Array, source: Iterable<bigint> | ArrayLike<bigint>): BigInt64Array;
+    from(
+        this: new (length: number) => BigInt64Array,
+        source: Iterable<bigint> | ArrayLike<bigint>,
+    ): BigInt64Array;
     from<U>(
-        this: new(length: number) => BigInt64Array,
+        this: new (length: number) => BigInt64Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => bigint,
         thisArg?: unknown,
     ): BigInt64Array;
 
-    from(this: new(length: number) => BigUint64Array, source: Iterable<bigint> | ArrayLike<bigint>): BigUint64Array;
+    from(
+        this: new (length: number) => BigUint64Array,
+        source: Iterable<bigint> | ArrayLike<bigint>,
+    ): BigUint64Array;
     from<U>(
-        this: new(length: number) => BigUint64Array,
+        this: new (length: number) => BigUint64Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => bigint,
         thisArg?: unknown,
     ): BigUint64Array;
 
-    from(this: new(length: number) => Float32Array, source: Iterable<number> | ArrayLike<number>): Float32Array;
+    from(
+        this: new (length: number) => Float32Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Float32Array;
     from<U>(
-        this: new(length: number) => Float32Array,
+        this: new (length: number) => Float32Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
     ): Float32Array;
 
-    from(this: new(length: number) => Float64Array, source: Iterable<number> | ArrayLike<number>): Float64Array;
+    from(
+        this: new (length: number) => Float64Array,
+        source: Iterable<number> | ArrayLike<number>,
+    ): Float64Array;
     from<U>(
-        this: new(length: number) => Float64Array,
+        this: new (length: number) => Float64Array,
         source: Iterable<U> | ArrayLike<U>,
         mapfn: (v: U, k: number) => number,
         thisArg?: unknown,
@@ -173,10 +234,17 @@ interface TypedArrayPrototype {
      * is treated as length+end.
      * @param end If not specified, length of the this object is used as its default value.
      */
-    copyWithin<THIS extends TypedArray>(this: THIS, target: number, start: number, end?: number): THIS;
+    copyWithin<THIS extends TypedArray>(
+        this: THIS,
+        target: number,
+        start: number,
+        end?: number,
+    ): THIS;
 
     /** Yields index, value pairs for every entry in the array. */
-    entries<T extends numeric>(this: TypedArray<T>): IterableIterator<[number, T]>;
+    entries<T extends numeric>(
+        this: TypedArray<T>,
+    ): IterableIterator<[number, T]>;
 
     /**
      * Determines whether all the members of an array satisfy the specified test.
@@ -200,7 +268,12 @@ interface TypedArrayPrototype {
      * @param end index to stop filling the array at. If end is negative, it is treated as
      * length+end.
      */
-    fill<T extends numeric, THIS extends TypedArray<T>>(this: THIS, value: T, start?: number, end?: number): THIS;
+    fill<T extends numeric, THIS extends TypedArray<T>>(
+        this: THIS,
+        value: T,
+        start?: number,
+        end?: number,
+    ): THIS;
 
     /**
      * Returns the elements of an array that meet the condition specified in a callback function.
@@ -263,7 +336,11 @@ interface TypedArrayPrototype {
      * @param searchElement The element to search for.
      * @param fromIndex The position in this array at which to begin searching for searchElement.
      */
-    includes<T extends numeric>(this: TypedArray<T>, searchElement: T, fromIndex?: number): boolean;
+    includes<T extends numeric>(
+        this: TypedArray<T>,
+        searchElement: T,
+        fromIndex?: number,
+    ): boolean;
 
     /**
      * Returns the index of the first occurrence of a value in an array.
@@ -271,7 +348,11 @@ interface TypedArrayPrototype {
      * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the
      * search starts at index 0.
      */
-    indexOf<T extends numeric>(this: TypedArray<T>, searchElement: T, fromIndex?: number): boolean;
+    indexOf<T extends numeric>(
+        this: TypedArray<T>,
+        searchElement: T,
+        fromIndex?: number,
+    ): boolean;
 
     /**
      * Adds all the elements of an array separated by the specified separator string.
@@ -289,7 +370,11 @@ interface TypedArrayPrototype {
      * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the
      * search starts at index 0.
      */
-    lastIndexOf<T extends numeric>(this: TypedArray<T>, searchElement: T, fromIndex?: number): boolean;
+    lastIndexOf<T extends numeric>(
+        this: TypedArray<T>,
+        searchElement: T,
+        fromIndex?: number,
+    ): boolean;
 
     /** The length of the array. */
     readonly length: number;
@@ -320,11 +405,21 @@ interface TypedArrayPrototype {
      */
     reduce<T extends numeric, THIS extends TypedArray<T>>(
         this: THIS,
-        reducer: (previousValue: T, currentValue: T, currentIndex: number, array: THIS) => T,
+        reducer: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: THIS,
+        ) => T,
     ): T;
     reduce<T extends numeric, U, THIS extends TypedArray<T>>(
         this: THIS,
-        reducer: (previousValue: U, currentValue: T, currentIndex: number, array: THIS) => U,
+        reducer: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: THIS,
+        ) => U,
         initialValue: U,
     ): U;
 
@@ -340,11 +435,21 @@ interface TypedArrayPrototype {
      */
     reduceRight<T extends numeric, THIS extends TypedArray<T>>(
         this: THIS,
-        reducer: (previousValue: T, currentValue: T, currentIndex: number, array: THIS) => T,
+        reducer: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: THIS,
+        ) => T,
     ): T;
     reduceRight<T extends numeric, U, THIS extends TypedArray<T>>(
         this: THIS,
-        reducer: (previousValue: U, currentValue: T, currentIndex: number, array: THIS) => U,
+        reducer: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: THIS,
+        ) => U,
         initialValue: U,
     ): U;
 
@@ -356,14 +461,22 @@ interface TypedArrayPrototype {
      * @param array A typed or untyped array of values to set.
      * @param offset The index in the current array at which the values are to be written.
      */
-    set<T extends numeric>(this: TypedArray<T>, array: ArrayLike<T>, offset?: number): void;
+    set<T extends numeric>(
+        this: TypedArray<T>,
+        array: ArrayLike<T>,
+        offset?: number,
+    ): void;
 
     /**
      * Returns a section of an array.
      * @param start The beginning of the specified portion of the array.
      * @param end The end of the specified portion of the array.
      */
-    slice<THIS extends TypedArray>(this: THIS, start?: number, end?: number): THIS;
+    slice<THIS extends TypedArray>(
+        this: THIS,
+        start?: number,
+        end?: number,
+    ): THIS;
 
     /**
      * Determines whether the specified callback function returns true for any element of an array.
@@ -383,7 +496,10 @@ interface TypedArrayPrototype {
      * Sorts the array.
      * @param compareFn The function used to determine the order of the elements. If omitted, the elements are sorted in ascending order.
      */
-    sort<T extends numeric, THIS extends TypedArray<T>>(this: THIS, comparator?: (a: T, b: T) => number): THIS;
+    sort<T extends numeric, THIS extends TypedArray<T>>(
+        this: THIS,
+        comparator?: (a: T, b: T) => number,
+    ): THIS;
 
     /**
      * Gets a new subview of the ArrayBuffer store for this array, referencing the elements
@@ -391,10 +507,18 @@ interface TypedArrayPrototype {
      * @param begin The index of the beginning of the array.
      * @param end The index of the end of the array.
      */
-    subarray<THIS extends TypedArray>(this: THIS, begin?: number, end?: number): THIS;
+    subarray<THIS extends TypedArray>(
+        this: THIS,
+        begin?: number,
+        end?: number,
+    ): THIS;
 
     /** Converts the array to a string by using the current locale. */
-    toLocaleString(this: TypedArray, locales?: string | string[], options?: Intl.NumberFormatOptions): string;
+    toLocaleString(
+        this: TypedArray,
+        locales?: string | string[],
+        options?: Intl.NumberFormatOptions,
+    ): string;
 
     /** Returns a string representation of the array. */
     toString(): string;
@@ -403,7 +527,9 @@ interface TypedArrayPrototype {
     values<T extends numeric>(this: TypedArray<T>): IterableIterator<T>;
 
     /** Yields each value in the array. */
-    [Symbol.iterator]<T extends numeric>(this: TypedArray<T>): IterableIterator<T>;
+    [Symbol.iterator]<T extends numeric>(
+        this: TypedArray<T>,
+    ): IterableIterator<T>;
 
     readonly [Symbol.toStringTag]: string | undefined;
 }

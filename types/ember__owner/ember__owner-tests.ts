@@ -132,9 +132,9 @@ owner.lookup(aTypedName); // $ExpectType unknown
 // correct type.
 declare const justStrings: string[];
 // @ts-expect-error
-justStrings.map(aString => owner.lookup(aString));
+justStrings.map((aString) => owner.lookup(aString));
 declare let typedStrings: FullName[];
-typedStrings.map(aString => owner.lookup(aString));
+typedStrings.map((aString) => owner.lookup(aString));
 
 // Also make sure it keeps working with const bindings
 const aConstName = "type:name";

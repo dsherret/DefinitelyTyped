@@ -1,6 +1,6 @@
 jss.set(".demo", {
     "font-size": "15px",
-    "color": "red",
+    color: "red",
 });
 
 jss.get(".demo");

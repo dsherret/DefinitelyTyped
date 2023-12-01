@@ -1,6 +1,9 @@
 export = modularscale;
 
-declare function modularscale(value: number, ratio?: number | modularscale.RatioLiteral): number;
+declare function modularscale(
+    value: number,
+    ratio?: number | modularscale.RatioLiteral,
+): number;
 
 declare namespace modularscale {
     type RatioLiteral =

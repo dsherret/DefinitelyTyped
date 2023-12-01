@@ -1,13 +1,19 @@
 // Utility functions
 
-import { Documentable, Field, ObjectReference } from "./devtools-protocol-schema";
+import {
+    Documentable,
+    Field,
+    ObjectReference,
+} from "./devtools-protocol-schema";
 
 /**
  * Returns a function suitable for Array#reduce that flattens an array of
  * arrays.
  * @param inBetween A value to insert between groups of flattened values
  */
-export function flattenArgs<T = string>(inBetween?: T): (acc: T[], next: T[]) => T[] {
+export function flattenArgs<T = string>(
+    inBetween?: T,
+): (acc: T[], next: T[]) => T[] {
     if (inBetween != null) {
         return (acc: T[], next: T[]) => {
             if (acc.length > 0) {
@@ -32,13 +38,15 @@ export const hasElements = (a?: any[]): boolean => !!a && a.length > 0;
  * non-null elements.
  * @param a The array to filter.
  */
-export const filterNull = <T>(a: Array<T | null>): T[] => a.filter(x => x != null) as T[];
+export const filterNull = <T>(a: Array<T | null>): T[] =>
+    a.filter((x) => x != null) as T[];
 
 /**
  * Returns the capitalized form of a given string.
  * @param s The string to capitalize
  */
-export const capitalize = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
+export const capitalize = (s: string): string =>
+    s.charAt(0).toUpperCase() + s.slice(1);
 
 /**
  * Returns whether a given object is an ObjectReference.
@@ -54,16 +62,22 @@ export function isObjectReference(t: Field): t is ObjectReference {
  * to populate a comment block.
  * @param documentable A Documentable object.
  */
-export const createDocs = ({ deprecated, description, experimental }: Documentable): string[] => {
+export const createDocs = ({
+    deprecated,
+    description,
+    experimental,
+}: Documentable): string[] => {
     const hasDocs = !!description || deprecated || experimental;
     return hasDocs
         ? filterNull([
-            "/**",
-            ...(description ? description.split(/\r?\n/).map(l => ` * ${l}`) : []),
-            deprecated ? " * @deprecated" : null,
-            experimental ? " * @experimental" : null,
-            " */",
-        ])
+              "/**",
+              ...(description
+                  ? description.split(/\r?\n/).map((l) => ` * ${l}`)
+                  : []),
+              deprecated ? " * @deprecated" : null,
+              experimental ? " * @experimental" : null,
+              " */",
+          ])
         : [];
 };
 
@@ -77,15 +91,16 @@ export const substitute = (
     str: string,
     args: NodeJS.Dict<string[]>,
 ): string => {
-    return str.split("\n")
-        .map(line => {
+    return str
+        .split("\n")
+        .map((line) => {
             const regex = /(\s*)\/\/ # (.*)/;
             const matches = line.match(regex);
             if (matches) {
                 const [_0, prefix, argName] = matches;
                 const arg = args[argName];
                 if (arg) {
-                    return arg.map(l => prefix + l);
+                    return arg.map((l) => prefix + l);
                 }
                 return [];
             }
@@ -97,7 +112,10 @@ export const substitute = (
 
 export const trimRight = (s: string): string => {
     // TODO(kjin): This is terrible
-    const numTrailingSpaces: number = s.split("").reverse().findIndex(c => c !== " ");
+    const numTrailingSpaces: number = s
+        .split("")
+        .reverse()
+        .findIndex((c) => c !== " ");
     if (numTrailingSpaces === -1) {
         return "";
     }

@@ -19,7 +19,10 @@ declare namespace tcp {
      * @param err error if any
      * @param connection issued from the pool
      */
-    type ConnectionCallback = (err: Error, connection: PooledConnection) => void;
+    type ConnectionCallback = (
+        err: Error,
+        connection: PooledConnection,
+    ) => void;
 
     /**
      *  Pool Configuration interface
@@ -66,7 +69,10 @@ declare class tcp extends events.EventEmitter {
      * @param poolConfig the pool configuration
      * @param connectionConfig the connection configuration
      */
-    constructor(poolConfig: tcp.PoolConfig, connectionConfig: tedious.ConnectionConfig);
+    constructor(
+        poolConfig: tcp.PoolConfig,
+        connectionConfig: tedious.ConnectionConfig,
+    );
 
     /**
      * acquires a connection from the pool

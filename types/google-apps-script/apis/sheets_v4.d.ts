@@ -6,7 +6,10 @@ declare namespace GoogleAppsScript {
                     // Returns the developer metadata with the specified ID.
                     // The caller must specify the spreadsheet ID and the developer metadata's
                     // unique metadataId.
-                    get(spreadsheetId: string, metadataId: number): Sheets.Schema.DeveloperMetadata;
+                    get(
+                        spreadsheetId: string,
+                        metadataId: number,
+                    ): Sheets.Schema.DeveloperMetadata;
                     // Returns all developer metadata matching the specified DataFilter.
                     // If the provided DataFilter represents a DeveloperMetadataLookup object,
                     // this will return all DeveloperMetadata entries selected by it. If the
@@ -83,10 +86,15 @@ declare namespace GoogleAppsScript {
                     ): Sheets.Schema.BatchClearValuesByDataFilterResponse;
                     // Returns one or more ranges of values from a spreadsheet.
                     // The caller must specify the spreadsheet ID and one or more ranges.
-                    batchGet(spreadsheetId: string): Sheets.Schema.BatchGetValuesResponse;
+                    batchGet(
+                        spreadsheetId: string,
+                    ): Sheets.Schema.BatchGetValuesResponse;
                     // Returns one or more ranges of values from a spreadsheet.
                     // The caller must specify the spreadsheet ID and one or more ranges.
-                    batchGet(spreadsheetId: string, optionalArgs: object): Sheets.Schema.BatchGetValuesResponse;
+                    batchGet(
+                        spreadsheetId: string,
+                        optionalArgs: object,
+                    ): Sheets.Schema.BatchGetValuesResponse;
                     // Returns one or more ranges of values that match the specified data filters.
                     // The caller must specify the spreadsheet ID and one or more
                     // DataFilters.  Ranges that match any of the data filters in
@@ -122,10 +130,17 @@ declare namespace GoogleAppsScript {
                     ): Sheets.Schema.ClearValuesResponse;
                     // Returns a range of values from a spreadsheet.
                     // The caller must specify the spreadsheet ID and a range.
-                    get(spreadsheetId: string, range: string): Sheets.Schema.ValueRange;
+                    get(
+                        spreadsheetId: string,
+                        range: string,
+                    ): Sheets.Schema.ValueRange;
                     // Returns a range of values from a spreadsheet.
                     // The caller must specify the spreadsheet ID and a range.
-                    get(spreadsheetId: string, range: string, optionalArgs: object): Sheets.Schema.ValueRange;
+                    get(
+                        spreadsheetId: string,
+                        range: string,
+                        optionalArgs: object,
+                    ): Sheets.Schema.ValueRange;
                     // Sets values in a range of a spreadsheet.
                     // The caller must specify the spreadsheet ID, range, and
                     // a valueInputOption.
@@ -146,9 +161,15 @@ declare namespace GoogleAppsScript {
                 }
             }
             interface SpreadsheetsCollection {
-                DeveloperMetadata?: Sheets.Collection.Spreadsheets.DeveloperMetadataCollection | undefined;
-                Sheets?: Sheets.Collection.Spreadsheets.SheetsCollection | undefined;
-                Values?: Sheets.Collection.Spreadsheets.ValuesCollection | undefined;
+                DeveloperMetadata?:
+                    | Sheets.Collection.Spreadsheets.DeveloperMetadataCollection
+                    | undefined;
+                Sheets?:
+                    | Sheets.Collection.Spreadsheets.SheetsCollection
+                    | undefined;
+                Values?:
+                    | Sheets.Collection.Spreadsheets.ValuesCollection
+                    | undefined;
                 // Applies one or more updates to the spreadsheet.
                 // Each request is validated before
                 // being applied. If any request is not valid then the entire request will
@@ -204,7 +225,10 @@ declare namespace GoogleAppsScript {
                 // Multiple ranges can be specified.  Limiting the range will
                 // return only the portions of the spreadsheet that intersect the requested
                 // ranges. Ranges are specified using A1 notation.
-                get(spreadsheetId: string, optionalArgs: object): Sheets.Schema.Spreadsheet;
+                get(
+                    spreadsheetId: string,
+                    optionalArgs: object,
+                ): Sheets.Schema.Spreadsheet;
                 // Returns the spreadsheet at the given ID.
                 // The caller must specify the spreadsheet ID.
                 // This method differs from GetSpreadsheet in that it allows selecting
@@ -292,7 +316,9 @@ declare namespace GoogleAppsScript {
             }
             interface AutoFillRequest {
                 range?: Sheets.Schema.GridRange | undefined;
-                sourceAndDestination?: Sheets.Schema.SourceAndDestination | undefined;
+                sourceAndDestination?:
+                    | Sheets.Schema.SourceAndDestination
+                    | undefined;
                 useAlternateSeries?: boolean | undefined;
             }
             interface AutoResizeDimensionsRequest {
@@ -392,7 +418,9 @@ declare namespace GoogleAppsScript {
                 valueInputOption?: string | undefined;
             }
             interface BatchUpdateValuesByDataFilterResponse {
-                responses?: Sheets.Schema.UpdateValuesByDataFilterResponse[] | undefined;
+                responses?:
+                    | Sheets.Schema.UpdateValuesByDataFilterResponse[]
+                    | undefined;
                 spreadsheetId?: string | undefined;
                 totalUpdatedCells?: number | undefined;
                 totalUpdatedColumns?: number | undefined;
@@ -499,7 +527,9 @@ declare namespace GoogleAppsScript {
                 backgroundColor?: Sheets.Schema.Color | undefined;
                 basicChart?: Sheets.Schema.BasicChartSpec | undefined;
                 bubbleChart?: Sheets.Schema.BubbleChartSpec | undefined;
-                candlestickChart?: Sheets.Schema.CandlestickChartSpec | undefined;
+                candlestickChart?:
+                    | Sheets.Schema.CandlestickChartSpec
+                    | undefined;
                 fontName?: string | undefined;
                 hiddenDimensionStrategy?: string | undefined;
                 histogramChart?: Sheets.Schema.HistogramChartSpec | undefined;
@@ -559,7 +589,9 @@ declare namespace GoogleAppsScript {
             }
             interface DataFilter {
                 a1Range?: string | undefined;
-                developerMetadataLookup?: Sheets.Schema.DeveloperMetadataLookup | undefined;
+                developerMetadataLookup?:
+                    | Sheets.Schema.DeveloperMetadataLookup
+                    | undefined;
                 gridRange?: Sheets.Schema.GridRange | undefined;
             }
             interface DataFilterValueRange {
@@ -590,7 +622,9 @@ declare namespace GoogleAppsScript {
                 dataFilter?: Sheets.Schema.DataFilter | undefined;
             }
             interface DeleteDeveloperMetadataResponse {
-                deletedDeveloperMetadata?: Sheets.Schema.DeveloperMetadata[] | undefined;
+                deletedDeveloperMetadata?:
+                    | Sheets.Schema.DeveloperMetadata[]
+                    | undefined;
             }
             interface DeleteDimensionGroupRequest {
                 range?: Sheets.Schema.DimensionRange | undefined;
@@ -638,7 +672,9 @@ declare namespace GoogleAppsScript {
                 locationType?: string | undefined;
                 metadataId?: number | undefined;
                 metadataKey?: string | undefined;
-                metadataLocation?: Sheets.Schema.DeveloperMetadataLocation | undefined;
+                metadataLocation?:
+                    | Sheets.Schema.DeveloperMetadataLocation
+                    | undefined;
                 metadataValue?: string | undefined;
                 visibility?: string | undefined;
             }
@@ -648,7 +684,9 @@ declare namespace GoogleAppsScript {
                 range?: Sheets.Schema.DimensionRange | undefined;
             }
             interface DimensionProperties {
-                developerMetadata?: Sheets.Schema.DeveloperMetadata[] | undefined;
+                developerMetadata?:
+                    | Sheets.Schema.DeveloperMetadata[]
+                    | undefined;
                 hiddenByFilter?: boolean | undefined;
                 hiddenByUser?: boolean | undefined;
                 pixelSize?: number | undefined;
@@ -745,7 +783,9 @@ declare namespace GoogleAppsScript {
                 sheetId?: number | undefined;
             }
             interface GridData {
-                columnMetadata?: Sheets.Schema.DimensionProperties[] | undefined;
+                columnMetadata?:
+                    | Sheets.Schema.DimensionProperties[]
+                    | undefined;
                 rowData?: Sheets.Schema.RowData[] | undefined;
                 rowMetadata?: Sheets.Schema.DimensionProperties[] | undefined;
                 startColumn?: number | undefined;
@@ -881,8 +921,12 @@ declare namespace GoogleAppsScript {
                 showTotals?: boolean | undefined;
                 sortOrder?: string | undefined;
                 sourceColumnOffset?: number | undefined;
-                valueBucket?: Sheets.Schema.PivotGroupSortValueBucket | undefined;
-                valueMetadata?: Sheets.Schema.PivotGroupValueMetadata[] | undefined;
+                valueBucket?:
+                    | Sheets.Schema.PivotGroupSortValueBucket
+                    | undefined;
+                valueMetadata?:
+                    | Sheets.Schema.PivotGroupValueMetadata[]
+                    | undefined;
             }
             interface PivotGroupRule {
                 dateTimeRule?: Sheets.Schema.DateTimeRule | undefined;
@@ -933,79 +977,165 @@ declare namespace GoogleAppsScript {
             interface Request {
                 addBanding?: Sheets.Schema.AddBandingRequest | undefined;
                 addChart?: Sheets.Schema.AddChartRequest | undefined;
-                addConditionalFormatRule?: Sheets.Schema.AddConditionalFormatRuleRequest | undefined;
-                addDimensionGroup?: Sheets.Schema.AddDimensionGroupRequest | undefined;
+                addConditionalFormatRule?:
+                    | Sheets.Schema.AddConditionalFormatRuleRequest
+                    | undefined;
+                addDimensionGroup?:
+                    | Sheets.Schema.AddDimensionGroupRequest
+                    | undefined;
                 addFilterView?: Sheets.Schema.AddFilterViewRequest | undefined;
                 addNamedRange?: Sheets.Schema.AddNamedRangeRequest | undefined;
-                addProtectedRange?: Sheets.Schema.AddProtectedRangeRequest | undefined;
+                addProtectedRange?:
+                    | Sheets.Schema.AddProtectedRangeRequest
+                    | undefined;
                 addSheet?: Sheets.Schema.AddSheetRequest | undefined;
                 appendCells?: Sheets.Schema.AppendCellsRequest | undefined;
-                appendDimension?: Sheets.Schema.AppendDimensionRequest | undefined;
+                appendDimension?:
+                    | Sheets.Schema.AppendDimensionRequest
+                    | undefined;
                 autoFill?: Sheets.Schema.AutoFillRequest | undefined;
-                autoResizeDimensions?: Sheets.Schema.AutoResizeDimensionsRequest | undefined;
-                clearBasicFilter?: Sheets.Schema.ClearBasicFilterRequest | undefined;
+                autoResizeDimensions?:
+                    | Sheets.Schema.AutoResizeDimensionsRequest
+                    | undefined;
+                clearBasicFilter?:
+                    | Sheets.Schema.ClearBasicFilterRequest
+                    | undefined;
                 copyPaste?: Sheets.Schema.CopyPasteRequest | undefined;
-                createDeveloperMetadata?: Sheets.Schema.CreateDeveloperMetadataRequest | undefined;
+                createDeveloperMetadata?:
+                    | Sheets.Schema.CreateDeveloperMetadataRequest
+                    | undefined;
                 cutPaste?: Sheets.Schema.CutPasteRequest | undefined;
                 deleteBanding?: Sheets.Schema.DeleteBandingRequest | undefined;
-                deleteConditionalFormatRule?: Sheets.Schema.DeleteConditionalFormatRuleRequest | undefined;
-                deleteDeveloperMetadata?: Sheets.Schema.DeleteDeveloperMetadataRequest | undefined;
-                deleteDimension?: Sheets.Schema.DeleteDimensionRequest | undefined;
-                deleteDimensionGroup?: Sheets.Schema.DeleteDimensionGroupRequest | undefined;
-                deleteEmbeddedObject?: Sheets.Schema.DeleteEmbeddedObjectRequest | undefined;
-                deleteFilterView?: Sheets.Schema.DeleteFilterViewRequest | undefined;
-                deleteNamedRange?: Sheets.Schema.DeleteNamedRangeRequest | undefined;
-                deleteProtectedRange?: Sheets.Schema.DeleteProtectedRangeRequest | undefined;
+                deleteConditionalFormatRule?:
+                    | Sheets.Schema.DeleteConditionalFormatRuleRequest
+                    | undefined;
+                deleteDeveloperMetadata?:
+                    | Sheets.Schema.DeleteDeveloperMetadataRequest
+                    | undefined;
+                deleteDimension?:
+                    | Sheets.Schema.DeleteDimensionRequest
+                    | undefined;
+                deleteDimensionGroup?:
+                    | Sheets.Schema.DeleteDimensionGroupRequest
+                    | undefined;
+                deleteEmbeddedObject?:
+                    | Sheets.Schema.DeleteEmbeddedObjectRequest
+                    | undefined;
+                deleteFilterView?:
+                    | Sheets.Schema.DeleteFilterViewRequest
+                    | undefined;
+                deleteNamedRange?:
+                    | Sheets.Schema.DeleteNamedRangeRequest
+                    | undefined;
+                deleteProtectedRange?:
+                    | Sheets.Schema.DeleteProtectedRangeRequest
+                    | undefined;
                 deleteRange?: Sheets.Schema.DeleteRangeRequest | undefined;
                 deleteSheet?: Sheets.Schema.DeleteSheetRequest | undefined;
-                duplicateFilterView?: Sheets.Schema.DuplicateFilterViewRequest | undefined;
-                duplicateSheet?: Sheets.Schema.DuplicateSheetRequest | undefined;
+                duplicateFilterView?:
+                    | Sheets.Schema.DuplicateFilterViewRequest
+                    | undefined;
+                duplicateSheet?:
+                    | Sheets.Schema.DuplicateSheetRequest
+                    | undefined;
                 findReplace?: Sheets.Schema.FindReplaceRequest | undefined;
-                insertDimension?: Sheets.Schema.InsertDimensionRequest | undefined;
+                insertDimension?:
+                    | Sheets.Schema.InsertDimensionRequest
+                    | undefined;
                 insertRange?: Sheets.Schema.InsertRangeRequest | undefined;
                 mergeCells?: Sheets.Schema.MergeCellsRequest | undefined;
                 moveDimension?: Sheets.Schema.MoveDimensionRequest | undefined;
                 pasteData?: Sheets.Schema.PasteDataRequest | undefined;
-                randomizeRange?: Sheets.Schema.RandomizeRangeRequest | undefined;
+                randomizeRange?:
+                    | Sheets.Schema.RandomizeRangeRequest
+                    | undefined;
                 repeatCell?: Sheets.Schema.RepeatCellRequest | undefined;
-                setBasicFilter?: Sheets.Schema.SetBasicFilterRequest | undefined;
-                setDataValidation?: Sheets.Schema.SetDataValidationRequest | undefined;
+                setBasicFilter?:
+                    | Sheets.Schema.SetBasicFilterRequest
+                    | undefined;
+                setDataValidation?:
+                    | Sheets.Schema.SetDataValidationRequest
+                    | undefined;
                 sortRange?: Sheets.Schema.SortRangeRequest | undefined;
                 textToColumns?: Sheets.Schema.TextToColumnsRequest | undefined;
                 unmergeCells?: Sheets.Schema.UnmergeCellsRequest | undefined;
                 updateBanding?: Sheets.Schema.UpdateBandingRequest | undefined;
                 updateBorders?: Sheets.Schema.UpdateBordersRequest | undefined;
                 updateCells?: Sheets.Schema.UpdateCellsRequest | undefined;
-                updateChartSpec?: Sheets.Schema.UpdateChartSpecRequest | undefined;
-                updateConditionalFormatRule?: Sheets.Schema.UpdateConditionalFormatRuleRequest | undefined;
-                updateDeveloperMetadata?: Sheets.Schema.UpdateDeveloperMetadataRequest | undefined;
-                updateDimensionGroup?: Sheets.Schema.UpdateDimensionGroupRequest | undefined;
-                updateDimensionProperties?: Sheets.Schema.UpdateDimensionPropertiesRequest | undefined;
-                updateEmbeddedObjectPosition?: Sheets.Schema.UpdateEmbeddedObjectPositionRequest | undefined;
-                updateFilterView?: Sheets.Schema.UpdateFilterViewRequest | undefined;
-                updateNamedRange?: Sheets.Schema.UpdateNamedRangeRequest | undefined;
-                updateProtectedRange?: Sheets.Schema.UpdateProtectedRangeRequest | undefined;
-                updateSheetProperties?: Sheets.Schema.UpdateSheetPropertiesRequest | undefined;
-                updateSpreadsheetProperties?: Sheets.Schema.UpdateSpreadsheetPropertiesRequest | undefined;
+                updateChartSpec?:
+                    | Sheets.Schema.UpdateChartSpecRequest
+                    | undefined;
+                updateConditionalFormatRule?:
+                    | Sheets.Schema.UpdateConditionalFormatRuleRequest
+                    | undefined;
+                updateDeveloperMetadata?:
+                    | Sheets.Schema.UpdateDeveloperMetadataRequest
+                    | undefined;
+                updateDimensionGroup?:
+                    | Sheets.Schema.UpdateDimensionGroupRequest
+                    | undefined;
+                updateDimensionProperties?:
+                    | Sheets.Schema.UpdateDimensionPropertiesRequest
+                    | undefined;
+                updateEmbeddedObjectPosition?:
+                    | Sheets.Schema.UpdateEmbeddedObjectPositionRequest
+                    | undefined;
+                updateFilterView?:
+                    | Sheets.Schema.UpdateFilterViewRequest
+                    | undefined;
+                updateNamedRange?:
+                    | Sheets.Schema.UpdateNamedRangeRequest
+                    | undefined;
+                updateProtectedRange?:
+                    | Sheets.Schema.UpdateProtectedRangeRequest
+                    | undefined;
+                updateSheetProperties?:
+                    | Sheets.Schema.UpdateSheetPropertiesRequest
+                    | undefined;
+                updateSpreadsheetProperties?:
+                    | Sheets.Schema.UpdateSpreadsheetPropertiesRequest
+                    | undefined;
             }
             interface Response {
                 addBanding?: Sheets.Schema.AddBandingResponse | undefined;
                 addChart?: Sheets.Schema.AddChartResponse | undefined;
-                addDimensionGroup?: Sheets.Schema.AddDimensionGroupResponse | undefined;
+                addDimensionGroup?:
+                    | Sheets.Schema.AddDimensionGroupResponse
+                    | undefined;
                 addFilterView?: Sheets.Schema.AddFilterViewResponse | undefined;
                 addNamedRange?: Sheets.Schema.AddNamedRangeResponse | undefined;
-                addProtectedRange?: Sheets.Schema.AddProtectedRangeResponse | undefined;
+                addProtectedRange?:
+                    | Sheets.Schema.AddProtectedRangeResponse
+                    | undefined;
                 addSheet?: Sheets.Schema.AddSheetResponse | undefined;
-                createDeveloperMetadata?: Sheets.Schema.CreateDeveloperMetadataResponse | undefined;
-                deleteConditionalFormatRule?: Sheets.Schema.DeleteConditionalFormatRuleResponse | undefined;
-                deleteDeveloperMetadata?: Sheets.Schema.DeleteDeveloperMetadataResponse | undefined;
-                deleteDimensionGroup?: Sheets.Schema.DeleteDimensionGroupResponse | undefined;
-                duplicateFilterView?: Sheets.Schema.DuplicateFilterViewResponse | undefined;
-                duplicateSheet?: Sheets.Schema.DuplicateSheetResponse | undefined;
+                createDeveloperMetadata?:
+                    | Sheets.Schema.CreateDeveloperMetadataResponse
+                    | undefined;
+                deleteConditionalFormatRule?:
+                    | Sheets.Schema.DeleteConditionalFormatRuleResponse
+                    | undefined;
+                deleteDeveloperMetadata?:
+                    | Sheets.Schema.DeleteDeveloperMetadataResponse
+                    | undefined;
+                deleteDimensionGroup?:
+                    | Sheets.Schema.DeleteDimensionGroupResponse
+                    | undefined;
+                duplicateFilterView?:
+                    | Sheets.Schema.DuplicateFilterViewResponse
+                    | undefined;
+                duplicateSheet?:
+                    | Sheets.Schema.DuplicateSheetResponse
+                    | undefined;
                 findReplace?: Sheets.Schema.FindReplaceResponse | undefined;
-                updateConditionalFormatRule?: Sheets.Schema.UpdateConditionalFormatRuleResponse | undefined;
-                updateDeveloperMetadata?: Sheets.Schema.UpdateDeveloperMetadataResponse | undefined;
-                updateEmbeddedObjectPosition?: Sheets.Schema.UpdateEmbeddedObjectPositionResponse | undefined;
+                updateConditionalFormatRule?:
+                    | Sheets.Schema.UpdateConditionalFormatRuleResponse
+                    | undefined;
+                updateDeveloperMetadata?:
+                    | Sheets.Schema.UpdateDeveloperMetadataResponse
+                    | undefined;
+                updateEmbeddedObjectPosition?:
+                    | Sheets.Schema.UpdateEmbeddedObjectPositionResponse
+                    | undefined;
             }
             interface RowData {
                 values?: Sheets.Schema.CellData[] | undefined;
@@ -1014,7 +1144,9 @@ declare namespace GoogleAppsScript {
                 dataFilters?: Sheets.Schema.DataFilter[] | undefined;
             }
             interface SearchDeveloperMetadataResponse {
-                matchedDeveloperMetadata?: Sheets.Schema.MatchedDeveloperMetadata[] | undefined;
+                matchedDeveloperMetadata?:
+                    | Sheets.Schema.MatchedDeveloperMetadata[]
+                    | undefined;
             }
             interface SetBasicFilterRequest {
                 filter?: Sheets.Schema.BasicFilter | undefined;
@@ -1028,9 +1160,13 @@ declare namespace GoogleAppsScript {
                 basicFilter?: Sheets.Schema.BasicFilter | undefined;
                 charts?: Sheets.Schema.EmbeddedChart[] | undefined;
                 columnGroups?: Sheets.Schema.DimensionGroup[] | undefined;
-                conditionalFormats?: Sheets.Schema.ConditionalFormatRule[] | undefined;
+                conditionalFormats?:
+                    | Sheets.Schema.ConditionalFormatRule[]
+                    | undefined;
                 data?: Sheets.Schema.GridData[] | undefined;
-                developerMetadata?: Sheets.Schema.DeveloperMetadata[] | undefined;
+                developerMetadata?:
+                    | Sheets.Schema.DeveloperMetadata[]
+                    | undefined;
                 filterViews?: Sheets.Schema.FilterView[] | undefined;
                 merges?: Sheets.Schema.GridRange[] | undefined;
                 properties?: Sheets.Schema.SheetProperties | undefined;
@@ -1061,7 +1197,9 @@ declare namespace GoogleAppsScript {
                 source?: Sheets.Schema.GridRange | undefined;
             }
             interface Spreadsheet {
-                developerMetadata?: Sheets.Schema.DeveloperMetadata[] | undefined;
+                developerMetadata?:
+                    | Sheets.Schema.DeveloperMetadata[]
+                    | undefined;
                 namedRanges?: Sheets.Schema.NamedRange[] | undefined;
                 properties?: Sheets.Schema.SpreadsheetProperties | undefined;
                 sheets?: Sheets.Schema.Sheet[] | undefined;
@@ -1071,7 +1209,9 @@ declare namespace GoogleAppsScript {
             interface SpreadsheetProperties {
                 autoRecalc?: string | undefined;
                 defaultFormat?: Sheets.Schema.CellFormat | undefined;
-                iterativeCalculationSettings?: Sheets.Schema.IterativeCalculationSettings | undefined;
+                iterativeCalculationSettings?:
+                    | Sheets.Schema.IterativeCalculationSettings
+                    | undefined;
                 locale?: string | undefined;
                 timeZone?: string | undefined;
                 title?: string | undefined;
@@ -1165,7 +1305,9 @@ declare namespace GoogleAppsScript {
                 fields?: string | undefined;
             }
             interface UpdateDeveloperMetadataResponse {
-                developerMetadata?: Sheets.Schema.DeveloperMetadata[] | undefined;
+                developerMetadata?:
+                    | Sheets.Schema.DeveloperMetadata[]
+                    | undefined;
             }
             interface UpdateDimensionGroupRequest {
                 dimensionGroup?: Sheets.Schema.DimensionGroup | undefined;
@@ -1239,12 +1381,20 @@ declare namespace GoogleAppsScript {
                 reversed?: boolean | undefined;
             }
             interface WaterfallChartSeries {
-                customSubtotals?: Sheets.Schema.WaterfallChartCustomSubtotal[] | undefined;
+                customSubtotals?:
+                    | Sheets.Schema.WaterfallChartCustomSubtotal[]
+                    | undefined;
                 data?: Sheets.Schema.ChartData | undefined;
                 hideTrailingSubtotal?: boolean | undefined;
-                negativeColumnsStyle?: Sheets.Schema.WaterfallChartColumnStyle | undefined;
-                positiveColumnsStyle?: Sheets.Schema.WaterfallChartColumnStyle | undefined;
-                subtotalColumnsStyle?: Sheets.Schema.WaterfallChartColumnStyle | undefined;
+                negativeColumnsStyle?:
+                    | Sheets.Schema.WaterfallChartColumnStyle
+                    | undefined;
+                positiveColumnsStyle?:
+                    | Sheets.Schema.WaterfallChartColumnStyle
+                    | undefined;
+                subtotalColumnsStyle?:
+                    | Sheets.Schema.WaterfallChartColumnStyle
+                    | undefined;
             }
             interface WaterfallChartSpec {
                 connectorLineStyle?: Sheets.Schema.LineStyle | undefined;

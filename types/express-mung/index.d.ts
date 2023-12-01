@@ -1,11 +1,23 @@
 /// <reference types="node"/>
 
-import { ErrorRequestHandler, Request, RequestHandler, Response } from "express";
+import {
+    ErrorRequestHandler,
+    Request,
+    RequestHandler,
+    Response,
+} from "express";
 
 export type Transform = (body: {}, request: Request, response: Response) => any;
-export type TransformAsync = (body: {}, request: Request, response: Response) => PromiseLike<any>;
+export type TransformAsync = (
+    body: {},
+    request: Request,
+    response: Response,
+) => PromiseLike<any>;
 export type TransformHeader = (request: Request, response: Response) => any;
-export type TransformHeaderAsync = (request: Request, response: Response) => PromiseLike<any>;
+export type TransformHeaderAsync = (
+    request: Request,
+    response: Response,
+) => PromiseLike<any>;
 export type TransformChunk = (
     chunk: string | Buffer,
     encoding: string | null,
@@ -31,7 +43,10 @@ export function json(fn: Transform, options?: Options): RequestHandler;
  * @param options jsonAsync options.
  * @return Middleware to transform the body
  */
-export function jsonAsync(fn: TransformAsync, options?: Options): RequestHandler;
+export function jsonAsync(
+    fn: TransformAsync,
+    options?: Options,
+): RequestHandler;
 
 /**
  * Transform the HTTP headers of the response.

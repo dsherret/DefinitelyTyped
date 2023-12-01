@@ -10,4 +10,8 @@ interface Options {
     debug?: boolean | undefined;
 }
 
-declare function textarea_caret(element: HTMLElement, position: number, options?: Options): Caret;
+declare function textarea_caret(
+    element: HTMLElement,
+    position: number,
+    options?: Options,
+): Caret;

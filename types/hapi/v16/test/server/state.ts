@@ -15,7 +15,7 @@ server.state("session", {
 
 // Set state in route handler
 
-const handler: Hapi.RouteHandler = function(request, reply) {
+const handler: Hapi.RouteHandler = function (request, reply) {
     let session = request.state.session;
     if (!session) {
         session = { user: "joe" };

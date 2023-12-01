@@ -22,7 +22,10 @@ interface LineReader {
         options: LineReaderOptions,
         cb: (err: Error, reader: Reader) => void,
     ): void;
-    open(file: string | NodeJS.ReadableStream, cb: (err: Error, reader: Reader) => void): void;
+    open(
+        file: string | NodeJS.ReadableStream,
+        cb: (err: Error, reader: Reader) => void,
+    ): void;
 
     eachLine(): Function; // For Promise.promisify;
     eachLine(

@@ -34,7 +34,11 @@ export function encodingLength(peers: readonly Peer[]): number;
  *
  * console.log(buf) // 12 byte buffer
  */
-export function encode(peers: readonly Peer[], buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    peers: readonly Peer[],
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     const bytes: number;
 }

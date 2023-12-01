@@ -12,7 +12,7 @@ const connection = {
 async function migrateCallbacks() {
     marvCallbacks.scan(directory, (err, migrations) => {
         if (err) throw err;
-        marvCallbacks.migrate(migrations, driver({ connection }), err => {
+        marvCallbacks.migrate(migrations, driver({ connection }), (err) => {
             if (err) throw err;
         });
     });
@@ -22,6 +22,12 @@ async function migratePromises() {
     const migrations = await marvPromises.scan(directory);
     await marvPromises.migrate(
         migrations,
-        driver({ connection, logger: console, pg, table: "myMigrations", quiet: true }),
+        driver({
+            connection,
+            logger: console,
+            pg,
+            table: "myMigrations",
+            quiet: true,
+        }),
     );
 }

@@ -213,14 +213,22 @@ declare namespace Xrm {
          *
          * @return   Returns an asynchronous promise.
          */
-        refresh(save: boolean): Async.XrmPromise<Async.SuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        refresh(
+            save: boolean,
+        ): Async.XrmPromise<
+            Async.SuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Asynchronously saves the record.
          *
          * @return   Returns an asynchronous promise.
          */
-        save(): Async.XrmPromise<Async.SuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        save(): Async.XrmPromise<
+            Async.SuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Asynchronously saves the record  with the option to set callback functions to be executed after the save operation is completed.
@@ -229,7 +237,12 @@ declare namespace Xrm {
          *
          * @return   Returns an asynchronous promise.
          */
-        save(saveOptions: SaveOptions): Async.XrmPromise<Async.SuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        save(
+            saveOptions: SaveOptions,
+        ): Async.XrmPromise<
+            Async.SuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * The record context of the form.
@@ -302,7 +315,9 @@ declare namespace Xrm {
          *
          * @return  An array of attribute.
          */
-        getAttribute(delegateFunction: Collection.MatchingDelegate<Page.Attribute>): Page.Attribute[];
+        getAttribute(
+            delegateFunction: Collection.MatchingDelegate<Page.Attribute>,
+        ): Page.Attribute[];
 
         /**
          * Gets all controls.
@@ -356,7 +371,9 @@ declare namespace Xrm {
          *
          * @return  An array of control.
          */
-        getControl(delegateFunction: Collection.MatchingDelegate<Page.Control>): Page.Control[];
+        getControl(
+            delegateFunction: Collection.MatchingDelegate<Page.Control>,
+        ): Page.Control[];
     }
 
     /**
@@ -377,7 +394,11 @@ declare namespace Xrm {
          *                                       WARNING Notification will use the system warning icon.
          *                                       INFO    Notification will use the system info icon.
          */
-        setFormNotification(message: string, level: Page.ui.FormNotificationLevel, uniqueId: string): boolean;
+        setFormNotification(
+            message: string,
+            level: Page.ui.FormNotificationLevel,
+            uniqueId: string,
+        ): boolean;
 
         /**
          * Clears the form notification described by uniqueId.
@@ -484,7 +505,11 @@ declare namespace Xrm {
          * @param       yesCloseCallback    The "OK" callback.
          * @param       noCloseCallback     The "Cancel" callback.
          */
-        confirmDialog(message: string, yesCloseCallback: () => void, noCloseCallback: () => void): void;
+        confirmDialog(
+            message: string,
+            yesCloseCallback: () => void,
+            noCloseCallback: () => void,
+        ): void;
 
         /**
          * Query if 'entityType' is an Activity entity.
@@ -510,7 +535,10 @@ declare namespace Xrm {
             entityLogicalName: string,
             createFromEntity?: Page.LookupValue,
             parameters?: Utility.OpenParameters,
-        ): Async.XrmPromise<Async.QuickCreateSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.QuickCreateSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Opens an entity form.
@@ -548,7 +576,12 @@ declare namespace Xrm {
          *                                              data (identical to this method's webResourceData parameter)
          *                                              formid
          */
-        openWebResource(webResourceName: string, webResourceData?: string, width?: number, height?: number): Window;
+        openWebResource(
+            webResourceName: string,
+            webResourceData?: string,
+            width?: number,
+            height?: number,
+        ): Window;
     }
 
     /**
@@ -595,7 +628,10 @@ declare namespace Xrm {
         createRecord(
             entityType: string,
             data: { [attributeName: string]: any },
-        ): Async.XrmPromise<Async.OfflineOperationSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.OfflineOperationSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Retrieves an entity record in mobile clients while working in the offline mode.
@@ -617,7 +653,10 @@ declare namespace Xrm {
             entityType: string,
             id: string,
             options: string,
-        ): Async.XrmPromise<Async.OfflineOperationSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.OfflineOperationSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Retrieves a collection of entity records in mobile clients while working in the offline mode.
@@ -644,7 +683,10 @@ declare namespace Xrm {
             entityType: string,
             options: string,
             maxPageSize: number,
-        ): Async.XrmPromise<Async.OfflineRetrieveMultipleSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.OfflineRetrieveMultipleSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Updates an entity record in mobile clients while working in the offline mode.
@@ -665,7 +707,10 @@ declare namespace Xrm {
             entityType: string,
             id: string,
             data: { [attributeName: string]: any },
-        ): Async.XrmPromise<Async.OfflineOperationSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.OfflineOperationSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
 
         /**
          * Deletes an entity record in mobile clients while working in the offline mode.
@@ -680,7 +725,10 @@ declare namespace Xrm {
         deleteRecord(
             entityType: string,
             id: string,
-        ): Async.XrmPromise<Async.OfflineOperationSuccessCallbackDelegate, Async.ErrorCallbackDelegate>;
+        ): Async.XrmPromise<
+            Async.OfflineOperationSuccessCallbackDelegate,
+            Async.ErrorCallbackDelegate
+        >;
     }
 
     interface Panel {
@@ -718,7 +766,9 @@ declare namespace Xrm {
          *
          * @see {Xrm.Utility.openQuickCreate}
          */
-        type QuickCreateSuccessCallbackDelegate = (record: OpenQuickCreateSuccessCallbackObject) => void;
+        type QuickCreateSuccessCallbackDelegate = (
+            record: OpenQuickCreateSuccessCallbackObject,
+        ) => void;
 
         /**
          * Called when the offline operation is successful.
@@ -727,7 +777,9 @@ declare namespace Xrm {
          *
          * @see {Xrm.Mobile.offline}
          */
-        type OfflineOperationSuccessCallbackDelegate = (record: OfflineOperationSuccessCallbackObject) => void;
+        type OfflineOperationSuccessCallbackDelegate = (
+            record: OfflineOperationSuccessCallbackObject,
+        ) => void;
 
         /**
          * Called when the offline retrieve multiple operation is successful.
@@ -736,7 +788,9 @@ declare namespace Xrm {
          *
          * @see {Xrm.Mobile.offline.retrieveMultipleRecords}
          */
-        type OfflineRetrieveMultipleSuccessCallbackDelegate = (resultSet: Array<{ [key: string]: any }>) => void;
+        type OfflineRetrieveMultipleSuccessCallbackDelegate = (
+            resultSet: Array<{ [key: string]: any }>,
+        ) => void;
 
         /**
          * Called when the operation fails.
@@ -745,7 +799,9 @@ declare namespace Xrm {
          *
          * @see {Xrm.Mobile.offline}
          */
-        type OfflineErrorCallbackDelegate = (error: OfflineErrorCallbackObject) => void;
+        type OfflineErrorCallbackDelegate = (
+            error: OfflineErrorCallbackObject,
+        ) => void;
 
         /**
          * Object passed to ErrorCallbackDelegate.
@@ -810,7 +866,10 @@ declare namespace Xrm {
              * @param      successCallback   The success callback.
              * @param        errorCallback     The error callback.
              */
-            then(successCallback: TSuccessCallback, errorCallback: TErrorCallback): void;
+            then(
+                successCallback: TSuccessCallback,
+                errorCallback: TErrorCallback,
+            ): void;
         }
     }
 
@@ -963,7 +1022,13 @@ declare namespace Xrm {
         /**
          * String attribute formats for Xrm.Page.Attribute.getFormat(), used by StringAttribute.
          */
-        type StringAttributeFormat = "email" | "phone" | "text" | "textarea" | "tickersymbol" | "url";
+        type StringAttributeFormat =
+            | "email"
+            | "phone"
+            | "text"
+            | "textarea"
+            | "tickersymbol"
+            | "url";
 
         /**
          * Attribute types for Xrm.ui.ProcessMonitor Xrm.Page.Attribute.setDisplayState().
@@ -1134,7 +1199,10 @@ declare namespace Xrm {
              *
              * @return The event arguments or null
              */
-            getEventArgs(): SaveEventArguments | StageChangeEventArguments | StageSelectedEventArguments;
+            getEventArgs():
+                | SaveEventArguments
+                | StageChangeEventArguments
+                | StageSelectedEventArguments;
 
             /**
              * Gets a reference to the object for which event occurred.
@@ -1272,7 +1340,9 @@ declare namespace Xrm {
         /**
          * Base interface for standard UI elements.
          */
-        interface UiStandardElement extends UiCanGetVisibleElement, UiLabelElement {
+        interface UiStandardElement
+            extends UiCanGetVisibleElement,
+                UiLabelElement {
             /**
              * Sets the visibility state.
              *
@@ -2064,14 +2134,19 @@ declare namespace Xrm {
                  * @param       processId           The Id of the process to make the active process.
                  * @param     callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setActiveProcess(processId: string, callbackFunction?: ProcessCallbackDelegate): void;
+                setActiveProcess(
+                    processId: string,
+                    callbackFunction?: ProcessCallbackDelegate,
+                ): void;
 
                 /**
                  * Returns all process instances for the entity record that the calling user has access to.
                  *
                  * @param     callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                getProcessInstances(callbackFunction: GetProcessInstancesDelegate): void;
+                getProcessInstances(
+                    callbackFunction: GetProcessInstancesDelegate,
+                ): void;
 
                 /**
                  * Sets a process instance as the active instance
@@ -2079,7 +2154,10 @@ declare namespace Xrm {
                  * @param       processInstanceId           The Id of the process instance to make the active instance.
                  * @param     callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setActiveProcessInstance(processInstanceId: string, callbackFunction: SetProcessInstanceDelegate): void;
+                setActiveProcessInstance(
+                    processInstanceId: string,
+                    callbackFunction: SetProcessInstanceDelegate,
+                ): void;
 
                 /**
                  * Returns a Stage object representing the active stage.
@@ -2094,7 +2172,10 @@ declare namespace Xrm {
                  * @param       stageId             the Id of the stage to make the active stage.
                  * @param     callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setActiveStage(stageId: string, callbackFunction?: ProcessCallbackDelegate): void;
+                setActiveStage(
+                    stageId: string,
+                    callbackFunction?: ProcessCallbackDelegate,
+                ): void;
 
                 /**
                  * Use this method to get a collection of stages currently in the active path with methods to interact with the
@@ -2121,7 +2202,11 @@ declare namespace Xrm {
                  *                                      list of enabled processes is the same ones a user can see in the UI if they
                  *                                      want to change the process manually.
                  */
-                getEnabledProcesses(callbackFunction: (enabledProcesses: ProcessDictionary) => void): void;
+                getEnabledProcesses(
+                    callbackFunction: (
+                        enabledProcesses: ProcessDictionary,
+                    ) => void,
+                ): void;
 
                 /**
                  * Use this method to get the currently selected stage.
@@ -2154,7 +2239,9 @@ declare namespace Xrm {
                  *                                              anonymous function if you may later want to remove the
                  *                                              event handler.
                  */
-                addOnProcessStatusChange(handler: ProcessStatusChangeHandler): void;
+                addOnProcessStatusChange(
+                    handler: ProcessStatusChangeHandler,
+                ): void;
 
                 /**
                  * Use this to add a function as an event handler for the OnStageSelected event so that it will be called
@@ -2176,7 +2263,9 @@ declare namespace Xrm {
                  * @param      handler If an anonymous function is set using the addOnProcessStatusChange method it
                  *                                              cannot be removed using this method.
                  */
-                removeOnProcessStatusChange(handler: ProcessStatusChangeHandler): void;
+                removeOnProcessStatusChange(
+                    handler: ProcessStatusChangeHandler,
+                ): void;
 
                 /**
                  * Use this to remove a function as an event handler for the OnStageChange event.
@@ -2237,7 +2326,10 @@ declare namespace Xrm {
                  * @param     status         The new status for the process
                  * @param     callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setStatus(status: ProcessStatus, callbackFunction: ProcessSetStatusDelegate): void;
+                setStatus(
+                    status: ProcessStatus,
+                    callbackFunction: ProcessSetStatusDelegate,
+                ): void;
             }
 
             /**
@@ -2253,7 +2345,9 @@ declare namespace Xrm {
              *                          ProcessInstanceName
              *                          StatusCodeName
              */
-            type GetProcessInstancesDelegate = (object: ProcessDictionary) => void;
+            type GetProcessInstancesDelegate = (
+                object: ProcessDictionary,
+            ) => void;
 
             /**
              * Called when method to set active process is complete
@@ -2351,7 +2445,10 @@ declare namespace Xrm {
         /**
          * Interface for a standard control.
          */
-        interface StandardControl extends Control, UiStandardElement, UiFocusable {
+        interface StandardControl
+            extends Control,
+                UiStandardElement,
+                UiFocusable {
             /**
              * Clears the notification identified by uniqueId.
              *
@@ -2968,7 +3065,10 @@ declare namespace Xrm {
              *
              * @see {@link https://msdn.microsoft.com/en-us/library/mt736908.aspx#bkmk_isLoaded} for details.
              */
-            interface QuickForm extends Control, UiLabelElement, UiCanGetVisibleElement {
+            interface QuickForm
+                extends Control,
+                    UiLabelElement,
+                    UiCanGetVisibleElement {
                 /**
                  * Gets the constituent controls in a quick view control.
                  *

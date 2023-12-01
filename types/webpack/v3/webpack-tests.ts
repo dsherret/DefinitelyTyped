@@ -1,9 +1,7 @@
 import webpack = require("webpack");
 import { RawSourceMap } from "source-map";
 
-const {
-    optimize,
-} = webpack;
+const { optimize } = webpack;
 
 let plugins: webpack.Plugin[];
 
@@ -15,9 +13,7 @@ let plugins: webpack.Plugin[];
  * optimize
  */
 
-const {
-    AggressiveMergingPlugin,
-} = optimize;
+const { AggressiveMergingPlugin } = optimize;
 
 plugins = [
     new AggressiveMergingPlugin(),
@@ -71,9 +67,7 @@ configuration = {
         filename: "bundle.js",
     },
     module: {
-        loaders: [
-            { test: /\.css$/, loader: "style!css" },
-        ],
+        loaders: [{ test: /\.css$/, loader: "style!css" }],
     },
 };
 
@@ -128,7 +122,7 @@ configuration = {
     externals: [
         // Disable TSLint for allowing non-arrow functions
         /* tslint:disable-next-line:only-arrow-functions */
-        function(context, request, callback) {
+        function (context, request, callback) {
             if (/^yourregex$/.test(request)) {
                 // Disable TSLint for bypassing 'no-void-expression' to align with Webpack documentation
                 /* tslint:disable-next-line:no-void-expression */
@@ -155,7 +149,7 @@ configuration = {
         },
         // Disable TSLint for allowing non-arrow functions
         /* tslint:disable-next-line:only-arrow-functions */
-        function(context, request, callback) {
+        function (context, request, callback) {
             if (/^yourregex$/.test(request)) {
                 // Disable TSLint for bypassing 'no-void-expression' to align with Webpack documentation
                 /* tslint:disable-next-line:no-void-expression */
@@ -215,9 +209,7 @@ configuration = {
 configuration = {
     // ...
     module: {
-        loaders: [
-            { test: /\.css$/, loader: "style-loader!css-loader" },
-        ],
+        loaders: [{ test: /\.css$/, loader: "style-loader!css-loader" }],
     },
 };
 
@@ -246,9 +238,7 @@ configuration = {
     output: {
         filename: "[name].entry.chunk.js",
     },
-    plugins: [
-        new CommonsChunkPlugin({ name: "commons.chunk.js" }),
-    ],
+    plugins: [new CommonsChunkPlugin({ name: "commons.chunk.js" })],
 };
 
 configuration = {
@@ -304,10 +294,7 @@ configuration = { output: { chunkFilename: "[chunkhash].bundle.js" } };
 //
 
 configuration = {
-    entry: [
-        "./entry1",
-        "./entry2",
-    ],
+    entry: ["./entry1", "./entry2"],
 };
 
 configuration = {
@@ -330,9 +317,7 @@ rule = {
         path.resolve(__dirname, "app/src"),
         path.resolve(__dirname, "app/test"),
     ],
-    exclude: [
-        path.resolve(__dirname, "node_modules"),
-    ],
+    exclude: [path.resolve(__dirname, "node_modules")],
     loader: "babel-loader",
 };
 
@@ -340,8 +325,8 @@ declare const require: any;
 declare const path: any;
 configuration = {
     plugins: [
-        function(this: webpack.Compiler) {
-            this.plugin("done", stats => {
+        function (this: webpack.Compiler) {
+            this.plugin("done", (stats) => {
                 require("fs").writeFileSync(
                     path.join(__dirname, "...", "stats.json"),
                     JSON.stringify(stats.toJson()),
@@ -393,11 +378,13 @@ plugin = new webpack.DllPlugin({
     name: "dll-name",
     path: "manifest-path",
 });
-plugin = new webpack.DllPlugin([{
-    context: "dir-context",
-    name: "dll-name",
-    path: "manifest-path",
-}]);
+plugin = new webpack.DllPlugin([
+    {
+        context: "dir-context",
+        name: "dll-name",
+        path: "manifest-path",
+    },
+]);
 plugin = new webpack.DllReferencePlugin({
     content: "dll content",
     context: "dir-context",
@@ -518,9 +505,7 @@ plugin = new webpack.SourceMapDevToolPlugin({
     //// asset matching
     test: /\.js$/,
     // include: Condition | Condition[],
-    exclude: [
-        /node_modules/,
-    ],
+    exclude: [/node_modules/],
     //
     //// file and reference
     filename: null, // | string
@@ -547,7 +532,13 @@ plugin = new webpack.EnvironmentPlugin(["a", "b"]);
 plugin = new webpack.EnvironmentPlugin({ a: true, b: "c" });
 plugin = new webpack.ProgressPlugin((percent: number, message: string) => {});
 plugin = new webpack.ProgressPlugin(
-    (percent: number, message: string, moduleProgress?: string, activeModules?: string, moduleName?: string) => {},
+    (
+        percent: number,
+        message: string,
+        moduleProgress?: string,
+        activeModules?: string,
+        moduleName?: string,
+    ) => {},
 );
 plugin = new webpack.HashedModuleIdsPlugin();
 plugin = new webpack.HashedModuleIdsPlugin({
@@ -561,11 +552,14 @@ plugin = new webpack.HashedModuleIdsPlugin({
 //
 
 // returns a Compiler instance
-webpack({
-    // configuration
-}, (err, stats) => {
-    // ...
-});
+webpack(
+    {
+        // configuration
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 
 // returns a Compiler instance
 let compiler = webpack({
@@ -576,73 +570,88 @@ compiler.run((err, stats) => {
     // ...
 });
 // or
-compiler.watch({ // watch options:
-    aggregateTimeout: 300, // wait so long for more changes
-    poll: true, // use polling instead of native watchers
-    // pass a number to set the polling interval
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        aggregateTimeout: 300, // wait so long for more changes
+        poll: true, // use polling instead of native watchers
+        // pass a number to set the polling interval
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 // or
-compiler.watch({ // watch options:
-    ignored: "foo/**/*",
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        ignored: "foo/**/*",
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 // or
-compiler.watch({ // watch options:
-    ignored: /node_modules/,
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        ignored: /node_modules/,
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 
 declare function handleFatalError(err: Error): void;
 declare function handleSoftErrors(errs: string[]): void;
 declare function handleWarnings(errs: string[]): void;
 declare function successfullyCompiled(): void;
 
-webpack({
-    // configuration
-}, (err, stats) => {
-    if (err) {
-        handleFatalError(err);
-        return;
-    }
-    const jsonStats = stats.toJson();
-    const jsonStatsWithAllOptions = stats.toJson({
-        assets: true,
-        assetsSort: "field",
-        cached: true,
-        children: true,
-        chunks: true,
-        chunkModules: true,
-        chunkOrigins: true,
-        chunksSort: "field",
-        context: "../src/",
-        errors: true,
-        errorDetails: true,
-        hash: true,
-        modules: true,
-        modulesSort: "field",
-        publicPath: true,
-        reasons: true,
-        source: true,
-        timings: true,
-        version: true,
-        warnings: true,
-        warningsFilter: ["filter", /filter/],
-        excludeAssets: ["filter", "excluded"],
-    });
+webpack(
+    {
+        // configuration
+    },
+    (err, stats) => {
+        if (err) {
+            handleFatalError(err);
+            return;
+        }
+        const jsonStats = stats.toJson();
+        const jsonStatsWithAllOptions = stats.toJson({
+            assets: true,
+            assetsSort: "field",
+            cached: true,
+            children: true,
+            chunks: true,
+            chunkModules: true,
+            chunkOrigins: true,
+            chunksSort: "field",
+            context: "../src/",
+            errors: true,
+            errorDetails: true,
+            hash: true,
+            modules: true,
+            modulesSort: "field",
+            publicPath: true,
+            reasons: true,
+            source: true,
+            timings: true,
+            version: true,
+            warnings: true,
+            warningsFilter: ["filter", /filter/],
+            excludeAssets: ["filter", "excluded"],
+        });
 
-    if (jsonStats.errors.length > 0) {
-        handleSoftErrors(jsonStats.errors);
-        return;
-    }
-    if (jsonStats.warnings.length > 0) {
-        handleWarnings(jsonStats.warnings);
-    }
-    successfullyCompiled();
-});
+        if (jsonStats.errors.length > 0) {
+            handleSoftErrors(jsonStats.errors);
+            return;
+        }
+        if (jsonStats.warnings.length > 0) {
+            handleWarnings(jsonStats.warnings);
+        }
+        successfullyCompiled();
+    },
+);
 
 declare const fs: any;
 
@@ -659,10 +668,7 @@ compiler.run((err, stats) => {
 
 rule = {
     test: {
-        or: [
-            require.resolve("./a"),
-            require.resolve("./c"),
-        ],
+        or: [require.resolve("./a"), require.resolve("./c")],
     },
     loader: "./loader",
     options: "third",
@@ -675,18 +681,12 @@ configuration = {
                 oneOf: [
                     {
                         test: {
-                            and: [
-                                /a.\.js$/,
-                                /b\.js$/,
-                            ],
+                            and: [/a.\.js$/, /b\.js$/],
                         },
                         loader: "./loader?first",
                     },
                     {
-                        test: [
-                            require.resolve("./a"),
-                            require.resolve("./c"),
-                        ],
+                        test: [require.resolve("./a"), require.resolve("./c")],
                         issuer: require.resolve("./b"),
                         use: [
                             "./loader?second-1",
@@ -720,9 +720,12 @@ configuration = {
 
 class TestResolvePlugin implements webpack.ResolvePlugin {
     apply(resolver: any) {
-        resolver.plugin("before-existing-directory", (request: any, callback: any) => {
-            callback();
-        });
+        resolver.plugin(
+            "before-existing-directory",
+            (request: any, callback: any) => {
+                callback();
+            },
+        );
     }
 }
 
@@ -730,14 +733,18 @@ const performance: webpack.Options.Performance = {
     hints: "error",
     maxEntrypointSize: 400000,
     maxAssetSize: 100000,
-    assetFilter: assetFilename => assetFilename.endsWith(".js"),
+    assetFilter: (assetFilename) => assetFilename.endsWith(".js"),
 };
 
 configuration = {
     performance,
 };
 
-function loader(this: webpack.loader.LoaderContext, source: string | Buffer, sourcemap?: RawSourceMap): void {
+function loader(
+    this: webpack.loader.LoaderContext,
+    source: string | Buffer,
+    sourcemap?: RawSourceMap,
+): void {
     this.cacheable();
 
     this.async();
@@ -756,6 +763,10 @@ function loader(this: webpack.loader.LoaderContext, source: string | Buffer, sou
 }
 
 (loader as webpack.loader.Loader).raw = true;
-(loader as webpack.loader.Loader).pitch = (remainingRequest: string, precedingRequest: string, data: any) => {};
+(loader as webpack.loader.Loader).pitch = (
+    remainingRequest: string,
+    precedingRequest: string,
+    data: any,
+) => {};
 const loaderRef: webpack.loader.Loader = loader;
 console.log(loaderRef.raw === true);

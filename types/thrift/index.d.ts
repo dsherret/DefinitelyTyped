@@ -69,7 +69,11 @@ export interface TTransport {
 
 export interface TProtocol {
     flush(): void;
-    writeMessageBegin(name: string, type: Thrift.MessageType, seqid: number): void;
+    writeMessageBegin(
+        name: string,
+        type: Thrift.MessageType,
+        seqid: number,
+    ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
@@ -202,7 +206,11 @@ export class WSConnection extends EventEmitter {
 }
 
 export class Multiplexer {
-    createClient<TClient>(serviceName: string, client: TClientConstructor<TClient>, connection: Connection): TClient;
+    createClient<TClient>(
+        serviceName: string,
+        client: TClientConstructor<TClient>,
+        connection: Connection,
+    ): TClient;
 }
 
 export class MultiplexedProcessor {
@@ -219,11 +227,12 @@ export interface ServiceMap<TProcessor, THandler> {
 export interface ServiceOptions<TProcessor, THandler> {
     transport?: TTransportConstructor | undefined;
     protocol?: TProtocolConstructor | undefined;
-    processor?: { new(handler: THandler): TProcessor } | undefined;
+    processor?: { new (handler: THandler): TProcessor } | undefined;
     handler?: THandler | undefined;
 }
 
-export interface ServerOptions<TProcessor, THandler> extends ServiceOptions<TProcessor, THandler> {
+export interface ServerOptions<TProcessor, THandler>
+    extends ServiceOptions<TProcessor, THandler> {
     cors?: string[] | undefined;
     files?: string | undefined;
     headers?: HttpHeaders | undefined;
@@ -255,12 +264,24 @@ export interface WSConnectOptions {
 }
 
 export type TClientConstructor<TClient> =
-    | { new(output: TTransport, pClass: { new(trans: TTransport): TProtocol }): TClient }
-    | { Client: { new(output: TTransport, pClass: { new(trans: TTransport): TProtocol }): TClient } };
+    | {
+          new (
+              output: TTransport,
+              pClass: { new (trans: TTransport): TProtocol },
+          ): TClient;
+      }
+    | {
+          Client: {
+              new (
+                  output: TTransport,
+                  pClass: { new (trans: TTransport): TProtocol },
+              ): TClient;
+          };
+      };
 
 export type TProcessorConstructor<TProcessor, THandler> =
-    | { new(handler: THandler): TProcessor }
-    | { Processor: { new(handler: THandler): TProcessor } };
+    | { new (handler: THandler): TProcessor }
+    | { Processor: { new (handler: THandler): TProcessor } };
 
 export interface WebServerOptions<TProcessor, THandler> {
     services: {
@@ -271,11 +292,31 @@ export interface WebServerOptions<TProcessor, THandler> {
     };
 }
 
-export function createConnection(host: string | undefined, port: number, options?: ConnectOptions): Connection;
-export function createSSLConnection(host: string | undefined, port: number, options?: ConnectOptions): Connection;
-export function createHttpConnection(host: string | undefined, port: number, options?: ConnectOptions): HttpConnection;
-export function createXHRConnection(host: string | undefined, port: number, options?: ConnectOptions): XHRConnection;
-export function createWSConnection(host: string | undefined, port: number, options?: WSConnectOptions): WSConnection;
+export function createConnection(
+    host: string | undefined,
+    port: number,
+    options?: ConnectOptions,
+): Connection;
+export function createSSLConnection(
+    host: string | undefined,
+    port: number,
+    options?: ConnectOptions,
+): Connection;
+export function createHttpConnection(
+    host: string | undefined,
+    port: number,
+    options?: ConnectOptions,
+): HttpConnection;
+export function createXHRConnection(
+    host: string | undefined,
+    port: number,
+    options?: ConnectOptions,
+): XHRConnection;
+export function createWSConnection(
+    host: string | undefined,
+    port: number,
+    options?: WSConnectOptions,
+): WSConnection;
 
 export function createXHRClient<TClient>(
     client: TClientConstructor<TClient>,
@@ -339,7 +380,10 @@ export class TBufferedTransport implements TTransport {
 
 export class TFramedTransport implements TTransport {
     constructor(buffer?: Buffer, callback?: TTransportCallback);
-    static receiver(callback: (trans: TFramedTransport, seqid: number) => void, seqid: number): (data: Buffer) => void;
+    static receiver(
+        callback: (trans: TFramedTransport, seqid: number) => void,
+        seqid: number,
+    ): (data: Buffer) => void;
     commitPosition(): void;
     rollbackPosition(): void;
     isOpen(): boolean;
@@ -358,13 +402,17 @@ export class TFramedTransport implements TTransport {
 }
 
 export interface TTransportConstructor {
-    new(buffer?: Buffer, callback?: TTransportCallback): TTransport;
+    new (buffer?: Buffer, callback?: TTransportCallback): TTransport;
 }
 
 export class TBinaryProtocol implements TProtocol {
     constructor(trans: TTransport, strictRead?: boolean, strictWrite?: boolean);
     flush(): void;
-    writeMessageBegin(name: string, type: Thrift.MessageType, seqid: number): void;
+    writeMessageBegin(
+        name: string,
+        type: Thrift.MessageType,
+        seqid: number,
+    ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
@@ -412,7 +460,11 @@ export class TBinaryProtocol implements TProtocol {
 export class TJSONProtocol implements TProtocol {
     constructor(trans: TTransport);
     flush(): void;
-    writeMessageBegin(name: string, type: Thrift.MessageType, seqid: number): void;
+    writeMessageBegin(
+        name: string,
+        type: Thrift.MessageType,
+        seqid: number,
+    ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
@@ -460,7 +512,11 @@ export class TJSONProtocol implements TProtocol {
 export class TCompactProtocol implements TProtocol {
     constructor(trans: TTransport);
     flush(): void;
-    writeMessageBegin(name: string, type: Thrift.MessageType, seqid: number): void;
+    writeMessageBegin(
+        name: string,
+        type: Thrift.MessageType,
+        seqid: number,
+    ): void;
     writeMessageEnd(): void;
     writeStructBegin(name: string): void;
     writeStructEnd(): void;
@@ -506,7 +562,11 @@ export class TCompactProtocol implements TProtocol {
 }
 
 export interface TProtocolConstructor {
-    new(trans: TTransport, strictRead?: boolean, strictWrite?: boolean): TProtocol;
+    new (
+        trans: TTransport,
+        strictRead?: boolean,
+        strictWrite?: boolean,
+    ): TProtocol;
 }
 
 // thrift.js

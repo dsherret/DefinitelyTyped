@@ -1,5 +1,9 @@
 import { createStore, Reducer, Store } from "redux";
-import { batchedSubscribe, BatchFunction, NotifyFunction } from "redux-batched-subscribe";
+import {
+    batchedSubscribe,
+    BatchFunction,
+    NotifyFunction,
+} from "redux-batched-subscribe";
 
 interface State {
     [key: string]: any;
@@ -23,10 +27,7 @@ const asyncNotify: BatchFunction = (() => {
     };
 })();
 
-const store = createStore(
-    rootReducer,
-    batchedSubscribe(asyncNotify),
-);
+const store = createStore(rootReducer, batchedSubscribe(asyncNotify));
 
 const unsubscribe = store.subscribeImmediate(() => {
     store.getState();

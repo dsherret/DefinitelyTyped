@@ -4,7 +4,9 @@ export type FeatureFlagName =
     | "enable-css-grid"
     | "enable-v11-release";
 
-export type FeatureFlags = Partial<Record<FeatureFlagName, boolean>> | Record<string, boolean>;
+export type FeatureFlags =
+    | Partial<Record<FeatureFlagName, boolean>>
+    | Record<string, boolean>;
 
 export class FeatureFlagScope {
     flags: Map<FeatureFlagName, boolean>;

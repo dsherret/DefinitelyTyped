@@ -15,5 +15,5 @@ import PackageJson = require("@npmcli/package-json");
 
     const pkgJson2 = new PackageJson();
 
-    pkgJson2.fromJSON("{\"name\": \"foo\"}");
+    pkgJson2.fromJSON('{"name": "foo"}');
 })();

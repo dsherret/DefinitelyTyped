@@ -9,10 +9,7 @@ const offcanvasElement = (
         transitionDuration={250}
         position="right"
     >
-        <OffCanvasBody
-            className="foo"
-            style={{ fontSize: "30px" }}
-        >
+        <OffCanvasBody className="foo" style={{ fontSize: "30px" }}>
             <p>body content</p>
         </OffCanvasBody>
         <OffCanvasMenu className="bar">

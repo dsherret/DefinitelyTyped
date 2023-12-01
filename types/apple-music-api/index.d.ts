@@ -38,29 +38,31 @@ declare namespace AppleMusicApi {
     interface Song extends Resource {
         type: "songs";
         // https://developer.apple.com/documentation/applemusicapi/song/attributes
-        attributes?: {
-            albumName: string;
-            artistName: string;
-            artwork?: Artwork | undefined;
-            composerName?: string | undefined;
-            contentRating?: string | undefined;
-            discNumber: number;
-            durationInMillis: number;
-            editorialNotes?: EditorialNotes | undefined;
-            genreNames: string[];
-            hasLyrics: boolean;
-            isrc: string;
-            movementCount?: number | undefined;
-            movementName?: string | undefined;
-            movementNumber?: string | undefined;
-            name: string;
-            playParams?: PlayParameters | undefined;
-            previews: Preview[];
-            releaseDate: string;
-            trackNumber: number;
-            url: string;
-            workName?: string | undefined;
-        } | undefined;
+        attributes?:
+            | {
+                  albumName: string;
+                  artistName: string;
+                  artwork?: Artwork | undefined;
+                  composerName?: string | undefined;
+                  contentRating?: string | undefined;
+                  discNumber: number;
+                  durationInMillis: number;
+                  editorialNotes?: EditorialNotes | undefined;
+                  genreNames: string[];
+                  hasLyrics: boolean;
+                  isrc: string;
+                  movementCount?: number | undefined;
+                  movementName?: string | undefined;
+                  movementNumber?: string | undefined;
+                  name: string;
+                  playParams?: PlayParameters | undefined;
+                  previews: Preview[];
+                  releaseDate: string;
+                  trackNumber: number;
+                  url: string;
+                  workName?: string | undefined;
+              }
+            | undefined;
         relationships?: SongRelationships | undefined;
     }
 
@@ -116,12 +118,14 @@ declare namespace AppleMusicApi {
 
     // https://developer.apple.com/documentation/applemusicapi/artist
     interface Artist extends Resource {
-        attributes?: {
-            editorialNotes?: EditorialNotes | undefined;
-            genreNames: string[];
-            name: string;
-            url: string;
-        } | undefined;
+        attributes?:
+            | {
+                  editorialNotes?: EditorialNotes | undefined;
+                  genreNames: string[];
+                  name: string;
+                  url: string;
+              }
+            | undefined;
         relationships?: ArtistRelationships | undefined;
         type: "artists";
     }
@@ -135,28 +139,30 @@ declare namespace AppleMusicApi {
     // https://developer.apple.com/documentation/applemusicapi/album
     interface Album extends Resource {
         // https://developer.apple.com/documentation/applemusicapi/album/attributes
-        attributes?: {
-            // albumName might not actually be a required attribute of Album.
-            // There may be a typo in Apple's documentation, their data doesn't
-            // actually return this attribute for the example I picked and the description of the field references music videos, further increasingly the likelihood that it's just a typo):
-            albumName?: string | undefined;
-            artistName: string;
-            artwork?: Artwork | undefined;
-            contentRating?: "clean" | "explicit" | undefined;
-            copyright?: string | undefined;
-            editorialNotes?: EditorialNotes | undefined;
-            genreNames: string[];
-            isCompilation: boolean;
-            isComplete: boolean;
-            isSingle: boolean;
-            name: string;
-            playParams?: PlayParameters | undefined;
-            recordLabel: string;
-            releaseDate: string;
-            trackCount: number;
-            url: string;
-            isMasteredForItunes: boolean;
-        } | undefined;
+        attributes?:
+            | {
+                  // albumName might not actually be a required attribute of Album.
+                  // There may be a typo in Apple's documentation, their data doesn't
+                  // actually return this attribute for the example I picked and the description of the field references music videos, further increasingly the likelihood that it's just a typo):
+                  albumName?: string | undefined;
+                  artistName: string;
+                  artwork?: Artwork | undefined;
+                  contentRating?: "clean" | "explicit" | undefined;
+                  copyright?: string | undefined;
+                  editorialNotes?: EditorialNotes | undefined;
+                  genreNames: string[];
+                  isCompilation: boolean;
+                  isComplete: boolean;
+                  isSingle: boolean;
+                  name: string;
+                  playParams?: PlayParameters | undefined;
+                  recordLabel: string;
+                  releaseDate: string;
+                  trackCount: number;
+                  url: string;
+                  isMasteredForItunes: boolean;
+              }
+            | undefined;
         relationships?: AlbumRelationships | undefined;
         type: "albums";
     }
@@ -178,37 +184,49 @@ declare namespace AppleMusicApi {
 
     // https://developer.apple.com/documentation/applemusicapi/playlist
     interface Playlist extends Resource {
-        attributes?: {
-            artwork?: Artwork | undefined;
-            curatorName?: string | undefined;
-            description?: EditorialNotes | undefined;
-            lastModifiedDate: string;
-            // `isChart` is not currently mentioned in the apple music api documentation:
-            isChart?: boolean | undefined;
-            name: string;
-            playParams?: PlayParameters | undefined;
-            playlistType: "user-shared" | "editorial" | "external" | "personal-mix";
-            url: string;
-        } | undefined;
+        attributes?:
+            | {
+                  artwork?: Artwork | undefined;
+                  curatorName?: string | undefined;
+                  description?: EditorialNotes | undefined;
+                  lastModifiedDate: string;
+                  // `isChart` is not currently mentioned in the apple music api documentation:
+                  isChart?: boolean | undefined;
+                  name: string;
+                  playParams?: PlayParameters | undefined;
+                  playlistType:
+                      | "user-shared"
+                      | "editorial"
+                      | "external"
+                      | "personal-mix";
+                  url: string;
+              }
+            | undefined;
 
-        relationships?: {
-            curator: Relationship<Curator>;
-            tracks?: Relationship<Song> | undefined;
-        } | undefined;
+        relationships?:
+            | {
+                  curator: Relationship<Curator>;
+                  tracks?: Relationship<Song> | undefined;
+              }
+            | undefined;
         type: "playlists";
     }
 
     // https://developer.apple.com/documentation/applemusicapi/curator
     interface Curator extends Resource {
-        attributes?: {
-            artwork?: Artwork | undefined;
-            editorialNotes?: EditorialNotes | undefined;
-            name: string;
-            url: string;
-        } | undefined;
-        relationships?: {
-            playlists?: Relationship<Playlist> | undefined;
-        } | undefined;
+        attributes?:
+            | {
+                  artwork?: Artwork | undefined;
+                  editorialNotes?: EditorialNotes | undefined;
+                  name: string;
+                  url: string;
+              }
+            | undefined;
+        relationships?:
+            | {
+                  playlists?: Relationship<Playlist> | undefined;
+              }
+            | undefined;
         type: "curators";
     }
 }

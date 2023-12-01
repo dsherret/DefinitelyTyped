@@ -5,7 +5,7 @@ export interface UrlParam {
 }
 
 export interface PageConstructor {
-    new(): page;
+    new (): page;
 }
 
 export interface PageConfig {

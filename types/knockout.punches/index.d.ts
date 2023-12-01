@@ -19,7 +19,12 @@ interface KnockoutPunchesFilters {
     // is trimmed on the right but can be changed to left or middle through the
     // where option. For example: name | fit:10::'middle' will
     // convert Shakespeare to Shak...are.
-    fit(value: number | string, length?: number, replacement?: string, trimWhere?: string): string;
+    fit(
+        value: number | string,
+        length?: number,
+        replacement?: string,
+        trimWhere?: string,
+    ): string;
 
     // Convert the value to a JSON string using ko.toJSON. You can give a space value to format the JSON output.
     json(rootObject: any, space?: any, replacer?: any): string;

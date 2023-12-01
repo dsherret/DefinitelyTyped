@@ -72,14 +72,16 @@ export interface Node {
     /** A reference to the parent node, or null if the node has no parent. */
     parent?: Node | undefined;
     /** Information about the position in the source string that corresponds to the node. */
-    position?: {
-        start?: Position | undefined;
-        end?: Position | undefined;
-        /** The value of options.source if passed to css.parse. Otherwise undefined. */
-        source?: string | undefined;
-        /** The full source string passed to css.parse. */
-        content?: string | undefined;
-    } | undefined;
+    position?:
+        | {
+              start?: Position | undefined;
+              end?: Position | undefined;
+              /** The value of options.source if passed to css.parse. Otherwise undefined. */
+              source?: string | undefined;
+              /** The full source string passed to css.parse. */
+              content?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface Rule extends Node {
@@ -263,4 +265,7 @@ export function parse(code: string, options?: ParserOptions): Stylesheet;
  * @param {StringifyOptions} options - AST tree to string serializaiton options.
  * @return {string} CSS code.
  */
-export function stringify(stylesheet: Stylesheet, options?: StringifyOptions): string;
+export function stringify(
+    stylesheet: Stylesheet,
+    options?: StringifyOptions,
+): string;

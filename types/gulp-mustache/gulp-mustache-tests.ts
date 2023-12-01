@@ -1,21 +1,18 @@
 import mustache = require("gulp-mustache");
 import { Transform } from "stream";
 
-mustache({ // $ExpectType Transform
+mustache({
+    // $ExpectType Transform
     msg: "Hello Gulp!",
 });
 mustache({
     name: "Chris",
     value: 10000,
-    taxed_value: 10000 - (10000 * 0.4),
+    taxed_value: 10000 - 10000 * 0.4,
     in_ca: true,
 });
 mustache({
-    repo: [
-        { name: "resque" },
-        { name: "hub" },
-        { name: "rip" },
-    ],
+    repo: [{ name: "resque" }, { name: "hub" }, { name: "rip" }],
 });
 mustache({
     name: "Willy",

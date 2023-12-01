@@ -1,4 +1,7 @@
-import shouldForwardProp, { createShouldForwardProp, props } from "@styled-system/should-forward-prop";
+import shouldForwardProp, {
+    createShouldForwardProp,
+    props,
+} from "@styled-system/should-forward-prop";
 
 shouldForwardProp("onClick"); // True
 shouldForwardProp("variant"); // False

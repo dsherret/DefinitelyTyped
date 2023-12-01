@@ -31,7 +31,11 @@ export class BlackjackEnvironment {
         return getState(this.player, this.dealer);
     }
 
-    step(action: number): { state: [number, number, boolean]; reward: number; done: boolean } {
+    step(action: number): {
+        state: [number, number, boolean];
+        reward: number;
+        done: boolean;
+    } {
         const player = this.player;
         if (!player) {
             throw new Error();
@@ -79,7 +83,9 @@ export class BlackjackEnvironment {
 // private
 
 const deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]; // 1 = ace, 2-10 = number cards, jack/queen/king = 10
-const playerStates = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]; // player sum
+const playerStates = [
+    4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+]; // player sum
 const dealerStates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // dealer sum
 const aceStates = [0, 1]; // unusable / usable
 
@@ -109,7 +115,10 @@ function generateObservationSpace() {
     return space;
 }
 
-function getState(player: number[], dealer: number[]): [number, number, boolean] {
+function getState(
+    player: number[],
+    dealer: number[],
+): [number, number, boolean] {
     return [sumHand(player), dealer[0], isUsableAce(player)];
 }
 
@@ -118,11 +127,11 @@ function isBust(hand: number[]): boolean {
 }
 
 function isNatural(hand: number[]): boolean {
-    return (-1 !== hand.indexOf(1)) && (-1 !== hand.indexOf(10));
+    return -1 !== hand.indexOf(1) && -1 !== hand.indexOf(10);
 }
 
 function isUsableAce(hand: number[]): boolean {
-    return (-1 !== hand.indexOf(1)) && sum(hand) + 10 <= 21;
+    return -1 !== hand.indexOf(1) && sum(hand) + 10 <= 21;
 }
 
 function score(hand: number[]): number {

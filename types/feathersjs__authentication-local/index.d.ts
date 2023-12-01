@@ -3,9 +3,10 @@ import { Request } from "express";
 // eslint-disable-next-line @definitelytyped/no-self-import
 import * as self from "@feathersjs/authentication-local";
 
-declare const feathersAuthenticationLocal:
-    & ((options?: Partial<FeathersAuthenticationLocalOptions>) => () => void)
-    & typeof self;
+declare const feathersAuthenticationLocal: ((
+    options?: Partial<FeathersAuthenticationLocalOptions>,
+) => () => void) &
+    typeof self;
 export default feathersAuthenticationLocal;
 
 export interface FeathersAuthenticationLocalOptions {

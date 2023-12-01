@@ -92,7 +92,8 @@ declare namespace GoogleAdsScripts {
             setCpc(cpc: number): void;
         }
 
-        interface ShoppingAdGroupBuilder extends Base.Builder<ShoppingAdGroupOperation> {
+        interface ShoppingAdGroupBuilder
+            extends Base.Builder<ShoppingAdGroupOperation> {
             /** Sets the max CPC bid of the new shopping ad group to the specified value. */
             withCpc(cpc: number): this;
             /** Sets the name of the new shopping ad group to the specified value. */
@@ -110,10 +111,12 @@ declare namespace GoogleAdsScripts {
          *        var shoppingAdGroup = shoppingAdGroupIterator.next();
          *      }
          */
-        interface ShoppingAdGroupIterator extends Base.Iterator<ShoppingAdGroup> {}
+        interface ShoppingAdGroupIterator
+            extends Base.Iterator<ShoppingAdGroup> {}
 
         /** An operation representing creation of a new shopping ad group. */
-        interface ShoppingAdGroupOperation extends Base.Operation<ShoppingAdGroup> {}
+        interface ShoppingAdGroupOperation
+            extends Base.Operation<ShoppingAdGroup> {}
 
         /**
          * Fetches shopping ad groups. Supports filtering and sorting.
@@ -132,14 +135,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ShoppingAdGroupSelector
-            extends
-                Base.Selector<ShoppingAdGroupIterator>,
+            extends Base.Selector<ShoppingAdGroupIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /**
          * Access to ad group-level targeting criteria.
@@ -160,7 +161,10 @@ declare namespace GoogleAdsScripts {
             /** Returns a new user list audience builder for this ad group. */
             newUserListBuilder(): ShoppingAdGroupAudienceBuilder;
             /** Sets the targeting setting for this ad group. */
-            setTargetingSetting(criterionTypeGroup: string, targetingSetting: string): void;
+            setTargetingSetting(
+                criterionTypeGroup: string,
+                targetingSetting: string,
+            ): void;
         }
     }
 }

@@ -23,7 +23,10 @@ function useUse() {
 }
 
 function serverContextTest() {
-    const ServerContext = React.createServerContext<string>("ServerContext", "default");
+    const ServerContext = React.createServerContext<string>(
+        "ServerContext",
+        "default",
+    );
 
     function ServerContextUser() {
         const context = React.useContext(ServerContext);
@@ -51,7 +54,10 @@ function serverContextTest() {
     // readonly arrays work
     React.createServerContext("ReadonlyArrayContext", ["foo", "bar"] as const);
     // nested readonly arrays work
-    React.createServerContext("ReadonlyArrayContext", ["foo", ["bar"]] as const);
+    React.createServerContext("ReadonlyArrayContext", [
+        "foo",
+        ["bar"],
+    ] as const);
     // @ts-expect-error Incompatible with JSON stringify+parse
     React.createServerContext("DateContext", new Date());
     // @ts-expect-error Incompatible with JSON stringify+parse
@@ -68,7 +74,7 @@ function cacheTest() {
 
     React.cache(
         // @ts-expect-error implicit any
-        a => a,
+        (a) => a,
     );
 }
 
@@ -103,7 +109,7 @@ function useAsyncAction() {
 
 function formActionsTest() {
     <form
-        action={formData => {
+        action={(formData) => {
             // $ExpectType FormData
             formData;
         }}
@@ -111,14 +117,14 @@ function formActionsTest() {
         <input type="text" name="title" defaultValue="Hello" />
         <input
             type="submit"
-            formAction={formData => {
+            formAction={(formData) => {
                 // $ExpectType FormData
                 formData;
             }}
             value="Save"
         />
         <button
-            formAction={formData => {
+            formAction={(formData) => {
                 // $ExpectType FormData
                 formData;
             }}
@@ -131,30 +137,39 @@ function formActionsTest() {
 const useOptimistic = React.useOptimistic;
 function Optimistic() {
     const savedCartSize = 0;
-    const [optimisticCartSize, addToOptimisticCart] = useOptimistic(savedCartSize, (prevSize, newItem) => {
-        // This is the default type for un-inferrable generics in TypeScript.
-        // To have a concrete type either type the second parameter in the reducer (see addToOptimisticCartTyped)
-        // or declare the type of the generic (see addToOptimisticCartTyped2)
-        // $ExpectType unknown
-        newItem;
-        console.log("Increment optimistic cart size for " + newItem);
-        return prevSize + 1;
-    });
+    const [optimisticCartSize, addToOptimisticCart] = useOptimistic(
+        savedCartSize,
+        (prevSize, newItem) => {
+            // This is the default type for un-inferrable generics in TypeScript.
+            // To have a concrete type either type the second parameter in the reducer (see addToOptimisticCartTyped)
+            // or declare the type of the generic (see addToOptimisticCartTyped2)
+            // $ExpectType unknown
+            newItem;
+            console.log("Increment optimistic cart size for " + newItem);
+            return prevSize + 1;
+        },
+    );
     // $ExpectType number
     optimisticCartSize;
 
-    const [, addToOptimisticCartTyped] = useOptimistic(savedCartSize, (prevSize, newItem: string) => {
-        // $ExpectType string
-        newItem;
-        console.log("Increment optimistic cart size for " + newItem);
-        return prevSize + 1;
-    });
-    const [, addToOptimisticCartTyped2] = useOptimistic<number, string>(savedCartSize, (prevSize, newItem) => {
-        // $ExpectType string
-        newItem;
-        console.log("Increment optimistic cart size for " + newItem);
-        return prevSize + 1;
-    });
+    const [, addToOptimisticCartTyped] = useOptimistic(
+        savedCartSize,
+        (prevSize, newItem: string) => {
+            // $ExpectType string
+            newItem;
+            console.log("Increment optimistic cart size for " + newItem);
+            return prevSize + 1;
+        },
+    );
+    const [, addToOptimisticCartTyped2] = useOptimistic<number, string>(
+        savedCartSize,
+        (prevSize, newItem) => {
+            // $ExpectType string
+            newItem;
+            console.log("Increment optimistic cart size for " + newItem);
+            return prevSize + 1;
+        },
+    );
 
     const addItemToCart = (item: unknown) => {
         addToOptimisticCart(item);
@@ -174,7 +189,7 @@ function Optimistic() {
     const handleClick = () => {
         setStateDefaultAction(2);
         setStateDefaultAction(() => 3);
-        setStateDefaultAction(n => n + 1);
+        setStateDefaultAction((n) => n + 1);
         // @ts-expect-error string is not assignable to number
         setStateDefaultAction("4");
     };

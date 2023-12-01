@@ -1,7 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { configure, create, getDefaultLasso, lassoPage, transforms, writers } from "lasso";
+import {
+    configure,
+    create,
+    getDefaultLasso,
+    lassoPage,
+    transforms,
+    writers,
+} from "lasso";
 import LassoContext from "lasso/lib/LassoContext";
 import LassoPageResult from "lasso/lib/LassoPageResult";
 import { serveStatic } from "lasso/middleware";
@@ -40,30 +47,32 @@ const lasso = getDefaultLasso();
 lasso;
 
 // $ExpectType Promise<any>
+lassoPage(
+    {
+        name: "my-page",
+        dependencies: ["./style.less", "require-run: ./main"],
+    },
+    (err, lassoPageResult) => {
+        if (err) {
+            console.log("Failed to lasso page: ", err);
+            return;
+        }
+
+        // $ExpectType string
+        lassoPageResult.getHeadHtml();
+
+        // $ExpectType string
+        lassoPageResult.getBodyHtml();
+    },
+);
+
 lassoPage({
-    name: "my-page",
     dependencies: [
-        "./style.less",
-        "require-run: ./main",
+        {
+            path: "./hello-mobile.js",
+            "if-flag": "mobile",
+        },
     ],
-}, (err, lassoPageResult) => {
-    if (err) {
-        console.log("Failed to lasso page: ", err);
-        return;
-    }
-
-    // $ExpectType string
-    lassoPageResult.getHeadHtml();
-
-    // $ExpectType string
-    lassoPageResult.getBodyHtml();
-});
-
-lassoPage({
-    dependencies: [{
-        path: "./hello-mobile.js",
-        "if-flag": "mobile",
-    }],
     flags: ["mobile", "foo", "bar"],
 });
 
@@ -72,7 +81,9 @@ lasso.on("afterLassoPage", (event) => {
     const lassoPageResult: LassoPageResult = event.result;
     const fingerprints = lassoPageResult.getInlineCodeFingerprints();
     // $ExpectType string
-    fingerprints.map(fingerprint => `script-src 'self' 'sha256-${fingerprint}'`).join("; ");
+    fingerprints
+        .map((fingerprint) => `script-src 'self' 'sha256-${fingerprint}'`)
+        .join("; ");
 });
 
 const dependencies = lasso.dependencies;
@@ -80,7 +91,10 @@ const dependencies = lasso.dependencies;
 // Register new types
 
 // $ExpectType void
-dependencies.registerJavaScriptType("my-js-type", require("./dependency-my-js-type")); // tslint:disable-line: no-var-requires
+dependencies.registerJavaScriptType(
+    "my-js-type",
+    require("./dependency-my-js-type"),
+); // tslint:disable-line: no-var-requires
 
 // $ExpectType void
 dependencies.registerJavaScriptType("my-custom-type", {
@@ -90,7 +104,7 @@ dependencies.registerJavaScriptType("my-custom-type", {
 
     init(context: any, callback: any) {
         if (!this.path) {
-            throw new Error("\"path\" is required");
+            throw new Error('"path" is required');
         }
 
         this.path = this.resolvePath(this.path);
@@ -127,7 +141,7 @@ dependencies.registerPackageType("dir", {
         let path = this.path;
 
         if (!path) {
-            callback(new Error("\"path\" is required"));
+            callback(new Error('"path" is required'));
         }
 
         this.path = path = this.resolvePath(path);
@@ -153,7 +167,9 @@ dependencies.registerPackageType("dir", {
                 return callback(err);
             }
 
-            const dependencies = filenames.map(filename => path.join(dir, filename));
+            const dependencies = filenames.map((filename) =>
+                path.join(dir, filename),
+            );
 
             callback(null, dependencies);
         });
@@ -165,9 +181,15 @@ dependencies.registerPackageType("dir", {
 });
 
 // $ExpectType void
-dependencies.registerRequireExtension("test", (path: string, context: any, callback: any) => {
-    callback(null, "exports.sayHello = function() { console.log('Hello!'); }");
-});
+dependencies.registerRequireExtension(
+    "test",
+    (path: string, context: any, callback: any) => {
+        callback(
+            null,
+            "exports.sayHello = function() { console.log('Hello!'); }",
+        );
+    },
+);
 
 // $ExpectType void
 lasso.lassoResource("path/to/foo.png", (err: any, result: any) => {

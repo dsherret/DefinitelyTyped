@@ -30,7 +30,7 @@ const message = xml(
     "message",
     { to: recipient },
     xml("body", {}, "foo"),
-    xml("days", undefined, ...days.map(day => xml("day", {}, day))),
+    xml("days", undefined, ...days.map((day) => xml("day", {}, day))),
 );
 
 message.attrs; // $ExpectType { [attrName: string]: any; }
@@ -44,10 +44,10 @@ Object.assign(message.attrs, { type: "chat" });
 message.getChild("body")!.text("Hello world"); // $ExpectType Element
 message.append(xml("foo")); // $ExpectType void
 message.append("bar"); // $ExpectType void
-message.append(...days.map(day => xml("day", {}, day))); // $ExpectType void
+message.append(...days.map((day) => xml("day", {}, day))); // $ExpectType void
 message.prepend(xml("foo")); // $ExpectType void
 message.prepend("bar"); // $ExpectType void
-message.prepend(...days.map(day => xml("day", {}, day))); // $ExpectType void
+message.prepend(...days.map((day) => xml("day", {}, day))); // $ExpectType void
 const body = message.getChild("body");
 message.remove(body!); // $ExpectType Element
 

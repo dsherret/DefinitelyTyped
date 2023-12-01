@@ -17,7 +17,7 @@ const sx127x = new SX127x({
     txPower: 7,
 });
 
-(async () => {
+async () => {
     await sx127x.open();
 
     await sx127x.setCodingRate("4/5");
@@ -32,4 +32,4 @@ const sx127x = new SX127x({
     await sx127x.write(buffer);
 
     await sx127x.close();
-});
+};

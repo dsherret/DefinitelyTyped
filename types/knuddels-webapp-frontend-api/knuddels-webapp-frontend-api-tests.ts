@@ -4,11 +4,7 @@ const json = {
     someString: "someValue",
     someNumber: 1337,
     someBoolean: true,
-    someArray: [
-        "abc",
-        1337,
-        false,
-    ],
+    someArray: ["abc", 1337, false],
     someObject: {
         anotherKey: "string",
     },
@@ -22,10 +18,13 @@ Client.getHostFrame().setTitle("test");
 Client.getHostFrame().focus();
 Client.getHostFrame().setBackgroundColor(color, 1337);
 Client.addEventListener("test", () => {});
-Client.addEventListener("test", (event: { type: string; data: KnuddelsEvent }) => {
-    const evtInfo = event.type + event.data;
-    console.log(`addEventListener called with ${evtInfo}`);
-});
+Client.addEventListener(
+    "test",
+    (event: { type: string; data: KnuddelsEvent }) => {
+        const evtInfo = event.type + event.data;
+        console.log(`addEventListener called with ${evtInfo}`);
+    },
+);
 Client.removeEventListener("test");
 const connectionTypeChangeListener = (type: string) => {
     const evtInfo = "abc" + type;

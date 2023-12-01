@@ -36,8 +36,18 @@ connection.roster.get(() => console.log("Sent initial roster request"));
 connection.roster.registerRequestCallback(onSubscribeRequest);
 connection.roster.registerCallback(onRosterUpdate);
 
-connection.roster.add("node@domain/resource", "Contact One", ["group1"], onRosterAdd);
-connection.roster.update("node@domain/resource", undefined, ["group1", "group2"]);
-const contactOne: RosterItem = (connection.roster.findItem("node@domain/resource") || undefined)!;
+connection.roster.add(
+    "node@domain/resource",
+    "Contact One",
+    ["group1"],
+    onRosterAdd,
+);
+connection.roster.update("node@domain/resource", undefined, [
+    "group1",
+    "group2",
+]);
+const contactOne: RosterItem = (connection.roster.findItem(
+    "node@domain/resource",
+) || undefined)!;
 contactOne.groups.length === 2;
 connection.roster.remove(contactOne.jid);

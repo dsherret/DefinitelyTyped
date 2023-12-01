@@ -13,7 +13,12 @@ import { Transition } from "d3-transition";
 // Retained ValueMap as type as it works better with IDE support for its intended purpose. It is not meant to be extended. So type is o.k.
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type ValueMap<T extends BaseType, Datum> = {
-    [key: string]: number | string | boolean | null | ValueFn<T, Datum, number | string | boolean | null>;
+    [key: string]:
+        | number
+        | string
+        | boolean
+        | null
+        | ValueFn<T, Datum, number | string | boolean | null>;
 };
 
 declare module "d3-selection" {
@@ -25,7 +30,12 @@ declare module "d3-selection" {
      * The third generic "PElement" refers to the type of the parent element(s) in the D3 selection.
      * The fourth generic "PDatum" refers to the type of the datum of the parent element(s).
      */
-    interface Selection<GElement extends BaseType, Datum, PElement extends BaseType, PDatum> {
+    interface Selection<
+        GElement extends BaseType,
+        Datum,
+        PElement extends BaseType,
+        PDatum,
+    > {
         /**
          * Set multiple attributes on the given selection. Attribute values may be constant or derived from each node and its bound data.
          *
@@ -54,7 +64,10 @@ declare module "d3-selection" {
          * @param style A function that returns an object of style properties and the values to be set.
          * @param priority The CSS priority (either "important" or undefined)
          */
-        styles(style: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>, priority?: "important"): this;
+        styles(
+            style: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>,
+            priority?: "important",
+        ): this;
 
         /**
          * Set multiple object properties directly on the selection's node(s). Property values may be constants or derived from each node and its bound data.
@@ -68,7 +81,9 @@ declare module "d3-selection" {
          *
          * @param props A function that returns an object of properties and their values.
          */
-        properties(props: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>): this;
+        properties(
+            props: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>,
+        ): this;
     }
 }
 
@@ -81,7 +96,12 @@ declare module "d3-transition" {
      * The third generic "PElement" refers to the type of the parent element(s) in the D3 selection in the Transition.
      * The fourth generic "PDatum" refers to the type of the datum of the parent element(s) in the Transition.
      */
-    interface Transition<GElement extends BaseType, Datum, PElement extends BaseType, PDatum> {
+    interface Transition<
+        GElement extends BaseType,
+        Datum,
+        PElement extends BaseType,
+        PDatum,
+    > {
         /**
          * Set multiple attribute values. The transition will animate from the present value to the new value. Attribute values may be constant or derived from each node and its bound data.
          *
@@ -110,6 +130,9 @@ declare module "d3-transition" {
          * @param style A function returning a map of style properties and their values
          * @param priority The CSS priority (either "important" or undefined)
          */
-        styles(style: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>, priority?: "important"): this;
+        styles(
+            style: ValueFn<GElement, Datum, ValueMap<GElement, Datum>>,
+            priority?: "important",
+        ): this;
     }
 }

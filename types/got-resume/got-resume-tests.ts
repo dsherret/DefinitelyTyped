@@ -144,16 +144,16 @@ const stream = gotResume({ url: "http://test.com" });
 stream.cancel(); // $ExpectType void
 stream.transfer; // $ExpectType Transfer
 
-stream.addListener("error", error => {
+stream.addListener("error", (error) => {
     // Fails in TS3.5, assignment can be replaced with commented out version as soon as TS3.5 goes out of test range
     // error; // $ExpectType Error | TransferError | CancelError
     const e: Error | TransferError | CancelError = error;
 });
 stream.addListener("end", () => {});
-stream.addListener("progress", progress => {
+stream.addListener("progress", (progress) => {
     progress; // $ExpectType Progress
 });
-stream.addListener("response", response => {
+stream.addListener("response", (response) => {
     response; // $ExpectType IncomingMessage
 });
 stream.addListener("readable", () => {});

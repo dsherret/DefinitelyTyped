@@ -22,7 +22,11 @@ const testMany = (levelDown: AbstractLevelDOWN<any, string>) => {
     levelDown.put("third", "this is the third value", (err?) => {});
 
     levelDown.getMany(["first", "second", "third"], (err?, value?) => {});
-    levelDown.getMany(["first", "second", "third"], { something: true }, (err?, value?) => {});
+    levelDown.getMany(
+        ["first", "second", "third"],
+        { something: true },
+        (err?, value?) => {},
+    );
 };
 // $ExpectType void
 testMany(new AbstractLevelDOWN("here"));

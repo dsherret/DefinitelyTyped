@@ -38,9 +38,17 @@ declare class FeedParser extends stream.Duplex {
 
     handleError(e: Error): void;
 
-    handleItem(node: FeedParser.Node, type: FeedParser.Type, options: FeedParser.Options): FeedParser.Item;
+    handleItem(
+        node: FeedParser.Node,
+        type: FeedParser.Type,
+        options: FeedParser.Options,
+    ): FeedParser.Item;
 
-    handleMeta(node: FeedParser.Node, type: FeedParser.Type, options: FeedParser.Options): FeedParser.Meta;
+    handleMeta(
+        node: FeedParser.Node,
+        type: FeedParser.Type,
+        options: FeedParser.Options,
+    ): FeedParser.Meta;
 
     handleOpenTag(node: FeedParser.Node): void;
 

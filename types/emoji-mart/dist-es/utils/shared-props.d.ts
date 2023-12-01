@@ -1,16 +1,32 @@
 import React = require("react");
 
-import { CustomEmoji, EmojiData, EmojiSkin } from "./emoji-index/nimble-emoji-index";
+import {
+    CustomEmoji,
+    EmojiData,
+    EmojiSkin,
+} from "./emoji-index/nimble-emoji-index";
 
-export type BackgroundImageFn = (set: EmojiSet, sheetSize: EmojiSheetSize) => string;
-export type EmojiSet = "apple" | "google" | "twitter" | "emojione" | "messenger" | "facebook";
+export type BackgroundImageFn = (
+    set: EmojiSet,
+    sheetSize: EmojiSheetSize,
+) => string;
+export type EmojiSet =
+    | "apple"
+    | "google"
+    | "twitter"
+    | "emojione"
+    | "messenger"
+    | "facebook";
 export type EmojiSheetSize = 16 | 20 | 32 | 64;
 
 export interface EmojiProps {
     onOver?(emoji: EmojiData, e: React.MouseEvent<HTMLElement>): void;
     onLeave?(emoji: EmojiData, e: React.MouseEvent<HTMLElement>): void;
     onClick?(emoji: EmojiData, e: React.MouseEvent<HTMLElement>): void;
-    fallback?(emoji: EmojiData, props: EmojiProps): React.Component | JSX.Element;
+    fallback?(
+        emoji: EmojiData,
+        props: EmojiProps,
+    ): React.Component | JSX.Element;
     /** defaults to returning a png from unpkg.com-hosted emoji-datasource-${set} */
     backgroundImageFn?: BackgroundImageFn | undefined;
     native?: boolean | undefined;
@@ -53,7 +69,11 @@ export interface I18n {
     skintext: string;
 }
 
-export type PartialI18n = Partial<Pick<I18n, "search" | "notfound"> & { categories: Partial<I18n["categories"]> }>;
+export type PartialI18n = Partial<
+    Pick<I18n, "search" | "notfound"> & {
+        categories: Partial<I18n["categories"]>;
+    }
+>;
 
 export interface CustomIcons {
     categories: Record<CategoryName, () => React.ReactNode>;

@@ -27,7 +27,12 @@ SOFTWARE.
 /// <reference path="./bmapgl.control.d.ts" />
 /// <reference path="./bmapgl.overlay.d.ts" />
 declare namespace BMapGL {
-    type DrawingType = "marker" | "polyline" | "polygon" | "rectangle" | "circle";
+    type DrawingType =
+        | "marker"
+        | "polyline"
+        | "polygon"
+        | "rectangle"
+        | "circle";
     interface DrawingManagerOptions {
         isOpen?: boolean | undefined;
         drawingMode?: DrawingType | undefined;

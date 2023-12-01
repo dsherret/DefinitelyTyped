@@ -74,18 +74,39 @@ interface ExpectToClickOptions extends ExpectTimingActions {
 interface ExpectPuppeteer {
     // These must all match the ExpectPuppeteer interface above.
     // We can't extend from it directly because some method names conflict in type-incompatible ways.
-    toClick(selector: string | MatchSelector, options?: ExpectToClickOptions): Promise<void>;
+    toClick(
+        selector: string | MatchSelector,
+        options?: ExpectToClickOptions,
+    ): Promise<void>;
     toDisplayDialog(block: () => Promise<void>): Promise<Dialog>;
-    toFill(selector: string | MatchSelector, value: string, options?: ExpectTimingActions): Promise<void>;
+    toFill(
+        selector: string | MatchSelector,
+        value: string,
+        options?: ExpectTimingActions,
+    ): Promise<void>;
     toFillForm(
         selector: string | MatchSelector,
         value: { [key: string]: any },
         options?: ExpectTimingActions,
     ): Promise<void>;
-    toMatch(selector: string | MatchSelector, options?: ExpectTimingActions): Promise<void>;
-    toMatchElement(selector: string | MatchSelector, options?: ExpectToClickOptions): Promise<void>;
-    toSelect(selector: string | MatchSelector, valueOrText: string, options?: ExpectTimingActions): Promise<void>;
-    toUploadFile(selector: string | MatchSelector, filePath: string, options?: ExpectTimingActions): Promise<void>;
+    toMatch(
+        selector: string | MatchSelector,
+        options?: ExpectTimingActions,
+    ): Promise<void>;
+    toMatchElement(
+        selector: string | MatchSelector,
+        options?: ExpectToClickOptions,
+    ): Promise<void>;
+    toSelect(
+        selector: string | MatchSelector,
+        valueOrText: string,
+        options?: ExpectTimingActions,
+    ): Promise<void>;
+    toUploadFile(
+        selector: string | MatchSelector,
+        filePath: string,
+        options?: ExpectTimingActions,
+    ): Promise<void>;
 }
 
 declare global {
@@ -93,16 +114,29 @@ declare global {
         interface Matchers<R, T> {
             // These must all match the ExpectPuppeteer interface above.
             // We can't extend from it directly because some method names conflict in type-incompatible ways.
-            toClick(selector: string | MatchSelector, options?: ExpectToClickOptions): Promise<void>;
+            toClick(
+                selector: string | MatchSelector,
+                options?: ExpectToClickOptions,
+            ): Promise<void>;
             toDisplayDialog(block: () => Promise<void>): Promise<Dialog>;
-            toFill(selector: string | MatchSelector, value: string, options?: ExpectTimingActions): Promise<void>;
+            toFill(
+                selector: string | MatchSelector,
+                value: string,
+                options?: ExpectTimingActions,
+            ): Promise<void>;
             toFillForm(
                 selector: string | MatchSelector,
                 value: { [key: string]: any },
                 options?: ExpectTimingActions,
             ): Promise<void>;
-            toMatch(matcher: string | RegExp, options?: ExpectTimingActions): Promise<void>;
-            toMatchElement(selector: string | MatchSelector, options?: ExpectToClickOptions): Promise<ElementHandle>;
+            toMatch(
+                matcher: string | RegExp,
+                options?: ExpectTimingActions,
+            ): Promise<void>;
+            toMatchElement(
+                selector: string | MatchSelector,
+                options?: ExpectToClickOptions,
+            ): Promise<ElementHandle>;
             toSelect(
                 selector: string | MatchSelector,
                 valueOrText: string,
@@ -117,7 +151,9 @@ declare global {
     }
 }
 
-declare function expectPuppeteer(instance: ElementHandle | Page): ExpectPuppeteer;
+declare function expectPuppeteer(
+    instance: ElementHandle | Page,
+): ExpectPuppeteer;
 
 declare namespace expectPuppeteer {
     function setDefaultOptions(options: ExpectDefaultOptions): void;

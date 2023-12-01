@@ -17,7 +17,11 @@ declare namespace css {
         output?:
             | boolean
             | string
-            | ((styles: string, styleNodes: Record<string, string>, bundle: OutputBundle) => void)
+            | ((
+                  styles: string,
+                  styleNodes: Record<string, string>,
+                  bundle: OutputBundle,
+              ) => void)
             | null
             | undefined;
     }

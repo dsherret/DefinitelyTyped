@@ -26,8 +26,8 @@ export interface StoreConfig extends CachingConfig {
         | "none"
         | Store
         | {
-            create(...args: any[]): Store;
-        };
+              create(...args: any[]): Store;
+          };
     max?: number;
     maxSize?: number;
     sizeCalculation?: (value: any, key: any) => number;
@@ -58,8 +58,18 @@ export type WrapArgsType<T> =
 export interface Cache {
     set<T>(key: string, value: T, options?: CachingConfig): Promise<T>;
     set<T>(key: string, value: T, ttl: number): Promise<T>;
-    set<T>(key: string, value: T, options: CachingConfig, callback: (error: any) => void): void;
-    set<T>(key: string, value: T, ttl: number, callback: (error: any) => void): void;
+    set<T>(
+        key: string,
+        value: T,
+        options: CachingConfig,
+        callback: (error: any) => void,
+    ): void;
+    set<T>(
+        key: string,
+        value: T,
+        ttl: number,
+        callback: (error: any) => void,
+    ): void;
 
     // 2021-01-14: This could be updated with TypeScript 4.2 https://devblogs.microsoft.com/typescript/announcing-typescript-4-2-beta/#leading-middle-rest-elements-in-tuple-types
     // Because the library accepts multiple keys as arguments but not as an array and rather as individual parameters
@@ -71,7 +81,10 @@ export interface Cache {
     // wrap<T>(...keys: string[], work: (callback: (error: any, result: T) => void) => void): Promise<any>;
     wrap<T>(...args: Array<WrapArgsType<T>>): Promise<T>;
 
-    get<T>(key: string, callback: (error: any, result: T | undefined) => void): void;
+    get<T>(
+        key: string,
+        callback: (error: any, result: T | undefined) => void,
+    ): void;
     get<T>(key: string): Promise<T | undefined>;
 
     del(key: string, callback: (error: any) => void): void;
@@ -86,8 +99,18 @@ export interface Cache {
 export interface MultiCache {
     set<T>(key: string, value: T, options?: CachingConfig): Promise<T>;
     set<T>(key: string, value: T, ttl: number): Promise<T>;
-    set<T>(key: string, value: T, options: CachingConfig, callback: (error: any) => void): void;
-    set<T>(key: string, value: T, ttl: number, callback: (error: any) => void): void;
+    set<T>(
+        key: string,
+        value: T,
+        options: CachingConfig,
+        callback: (error: any) => void,
+    ): void;
+    set<T>(
+        key: string,
+        value: T,
+        ttl: number,
+        callback: (error: any) => void,
+    ): void;
 
     // 2021-01-14: This could be updated with TypeScript 4.2 https://devblogs.microsoft.com/typescript/announcing-typescript-4-2-beta/#leading-middle-rest-elements-in-tuple-types
     // Because the library accepts multiple keys as arguments but not as an array and rather as individual parameters
@@ -99,7 +122,10 @@ export interface MultiCache {
     // wrap<T>(...keys: string[], work: (callback: (error: any, result: T) => void) => void): Promise<any>;
     wrap<T>(...args: Array<WrapArgsType<T>>): Promise<T>;
 
-    get<T>(key: string, callback: (error: any, result: T | undefined) => void): void;
+    get<T>(
+        key: string,
+        callback: (error: any, result: T | undefined) => void,
+    ): void;
     get<T>(key: string): Promise<T | undefined>;
 
     del(key: string, callback: (error: any) => void): void;
@@ -109,4 +135,7 @@ export interface MultiCache {
 }
 
 export function caching(IConfig: StoreConfig & CacheOptions): Cache;
-export function multiCaching(Caches: Cache[], options?: CacheOptions): MultiCache;
+export function multiCaching(
+    Caches: Cache[],
+    options?: CacheOptions,
+): MultiCache;

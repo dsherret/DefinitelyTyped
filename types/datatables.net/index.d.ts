@@ -57,7 +57,11 @@ declare namespace DataTables {
          * @param cellSelector Cell selector.
          * @param Option used to specify how the cells should be ordered, and if paging or filtering
          */
-        cell(rowSelector: any, cellSelector: any, modifier?: ObjectSelectorModifier): CellMethods;
+        cell(
+            rowSelector: any,
+            cellSelector: any,
+            modifier?: ObjectSelectorModifier,
+        ): CellMethods;
 
         /**
          * Select all cells
@@ -72,7 +76,10 @@ declare namespace DataTables {
          * @param cellSelector Cell selector.
          * @param Option used to specify how the cells should be ordered, and if paging or filtering
          */
-        cells(cellSelector: any, modifier?: ObjectSelectorModifier): CellsMethods;
+        cells(
+            cellSelector: any,
+            modifier?: ObjectSelectorModifier,
+        ): CellsMethods;
 
         /**
          * Select cells found by both row and column selectors
@@ -81,7 +88,11 @@ declare namespace DataTables {
          * @param cellSelector Cell selector.
          * @param Option used to specify how the cells should be ordered, and if paging or filtering
          */
-        cells(rowSelector: any, cellSelector: any, modifier?: ObjectSelectorModifier): CellsMethods;
+        cells(
+            rowSelector: any,
+            cellSelector: any,
+            modifier?: ObjectSelectorModifier,
+        ): CellsMethods;
         // #endregion "Cell/Cells"
 
         // #region "Column/Columns"
@@ -168,7 +179,10 @@ declare namespace DataTables {
         /**
          * Get jquery object
          */
-        $(selector: string | Node | Node[] | JQuery, modifier?: ObjectSelectorModifier): JQuery;
+        $(
+            selector: string | Node | Node[] | JQuery,
+            modifier?: ObjectSelectorModifier,
+        ): JQuery;
 
         /**
          * Ajax Methods
@@ -252,7 +266,12 @@ declare namespace DataTables {
          * @param smart Perform smart search.
          * @param caseInsen Do case-insensitive matching (default, true) or not (false).
          */
-        search(input: string, regex?: boolean, smart?: boolean, caseInsen?: boolean): Api;
+        search(
+            input: string,
+            regex?: boolean,
+            smart?: boolean,
+            caseInsen?: boolean,
+        ): Api;
 
         /**
          * Obtain the table's settings object
@@ -317,15 +336,15 @@ declare namespace DataTables {
         /**
          * Get the ordering applied to the table.
          */
-        (): Array<Array<(string | number)>>;
+        (): Array<Array<string | number>>;
 
         /**
          * Set the ordering applied to the table.
          *
          * @param order Order Model
          */
-        (order?: Array<(string | number)> | Array<Array<(string | number)>>): Api;
-        (order: Array<(string | number)>, ...args: any[]): Api;
+        (order?: Array<string | number> | Array<Array<string | number>>): Api;
+        (order: Array<string | number>, ...args: any[]): Api;
 
         /**
          * Get the fixed ordering that is applied to the table. If there is more than one table in the API's context,
@@ -344,7 +363,11 @@ declare namespace DataTables {
          * @param column Column index
          * @param callback Callback function
          */
-        listener(node: string | Node | JQuery, column: number, callback: () => void): Api;
+        listener(
+            node: string | Node | JQuery,
+            column: number,
+            callback: () => void,
+        ): Api;
     }
     // #endregion "order-methods"
 
@@ -422,7 +445,7 @@ declare namespace DataTables {
         time: number;
         start: number;
         length: number;
-        order: Array<Array<(string | number)>>;
+        order: Array<Array<string | number>>;
         search: SearchSettings;
         columns: StateReturnModelColumns[];
     }
@@ -541,7 +564,10 @@ declare namespace DataTables {
          * @param fn Callback function which is called for each item in the API instance result set. The callback is called with four parameters.
          * @param initialValue Value to use as the first argument of the first call to the fn callback.
          */
-        reduce(fn: (current: number, value: any, index: number, dt: Api) => number, initialValue?: any): any;
+        reduce(
+            fn: (current: number, value: any, index: number, dt: Api) => number,
+            initialValue?: any,
+        ): any;
 
         /**
          * Apply a callback function against and accumulator and each element in the Api's result set (right-to-left).
@@ -549,7 +575,10 @@ declare namespace DataTables {
          * @param fn Callback function which is called for each item in the API instance result set. The callback is called with four parameters.
          * @param initialValue Value to use as the first argument of the first call to the fn callback.
          */
-        reduceRight(fn: (current: number, value: any, index: number, dt: Api) => number, initialValue?: any): any;
+        reduceRight(
+            fn: (current: number, value: any, index: number, dt: Api) => number,
+            initialValue?: any,
+        ): any;
 
         /**
          * Reverse the result set of the API instance and return the original array.
@@ -575,7 +604,12 @@ declare namespace DataTables {
          * @param howMany Number of elements to remove from the result set.
          * @param value_1 Item to add to the result set at the index specified by the first parameter.
          */
-        splice(index: number, howMany: number, value_1?: any, ...value_2: any[]): any[];
+        splice(
+            index: number,
+            howMany: number,
+            value_1?: any,
+            ...value_2: any[]
+        ): any[];
 
         /**
          * Convert the API instance to a jQuery object, with the objects from the instance's result set in the jQuery result set.
@@ -787,7 +821,10 @@ declare namespace DataTables {
          * @param cellSelector Cell selector.
          * @param Option used to specify how the cells should be ordered, and if paging or filtering in the table should be taken into account.
          */
-        (columnSelector: any, modifier?: ObjectSelectorModifier): ColumnsMethods;
+        (
+            columnSelector: any,
+            modifier?: ObjectSelectorModifier,
+        ): ColumnsMethods;
 
         /**
          * Recalculate the column widths for layout.
@@ -811,7 +848,14 @@ declare namespace DataTables {
          *
          * @param fn Function to execute for every column selected.
          */
-        every(fn: (this: ColumnMethods, colIdx: number, tableLoop: number, colLoop: number) => void): Api;
+        every(
+            fn: (
+                this: ColumnMethods,
+                colIdx: number,
+                tableLoop: number,
+                colLoop: number,
+            ) => void,
+        ): Api;
 
         /**
          * Get the column indexes of the selected columns.
@@ -857,7 +901,10 @@ declare namespace DataTables {
          * @param data The data to be shown in the child row can be given in multiple different ways.
          * @param className Class name that is added to the td cell node(s) of the child row(s). As of 1.10.1 it is also added to the tr row node of the child row(s).
          */
-        (data: (string | Node | JQuery) | Array<(string | number | JQuery)>, className?: string): RowChildMethods;
+        (
+            data: (string | Node | JQuery) | Array<string | number | JQuery>,
+            className?: string,
+        ): RowChildMethods;
 
         /**
          * Hide the child row(s) of a parent row
@@ -1004,7 +1051,14 @@ declare namespace DataTables {
          *
          * @param fn Function to execute for every row selected.
          */
-        every(fn: (this: RowMethods, rowIdx: number, tableLoop: number, rowLoop: number) => void): Api;
+        every(
+            fn: (
+                this: RowMethods,
+                rowIdx: number,
+                tableLoop: number,
+                rowLoop: number,
+            ) => void,
+        ): Api;
 
         /**
          * Get the ids of the selected rows. Since: 1.10.8
@@ -1156,7 +1210,9 @@ declare namespace DataTables {
          *
          * @param table Selector string for table
          */
-        Api: new(selector: string | Node | Node[] | JQuery | SettingsLegacy) => Api;
+        Api: new (
+            selector: string | Node | Node[] | JQuery | SettingsLegacy,
+        ) => Api;
 
         /**
          * Default Settings
@@ -1361,7 +1417,10 @@ declare namespace DataTables {
         /**
          * Change the options in the page length select list. Since: 1.10
          */
-        lengthMenu?: Array<(number | string)> | Array<Array<(number | string)>> | undefined;
+        lengthMenu?:
+            | Array<number | string>
+            | Array<Array<number | string>>
+            | undefined;
 
         /**
          * Control which cell the order event handler will be applied to in a column. Since: 1.10
@@ -1376,12 +1435,19 @@ declare namespace DataTables {
         /**
          * Initial order (sort) to apply to the table. Since: 1.10
          */
-        order?: Array<(number | string)> | Array<Array<(number | string)>> | undefined;
+        order?:
+            | Array<number | string>
+            | Array<Array<number | string>>
+            | undefined;
 
         /**
          * Ordering to always be applied to the table. Since: 1.10
          */
-        orderFixed?: Array<(number | string)> | Array<Array<(number | string)>> | object | undefined;
+        orderFixed?:
+            | Array<number | string>
+            | Array<Array<number | string>>
+            | object
+            | undefined;
 
         /**
          * Multiple column ordering ability control. Since: 1.10
@@ -1591,9 +1657,16 @@ declare namespace DataTables {
         dataSrc?: string | ((data: any) => any[]) | undefined;
     }
 
-    type FunctionAjax = (data: object, callback: (data: any) => void, settings: SettingsLegacy) => void;
+    type FunctionAjax = (
+        data: object,
+        callback: (data: any) => void,
+        settings: SettingsLegacy,
+    ) => void;
 
-    type FunctionAjaxData = (data: object, settings: Settings) => string | object;
+    type FunctionAjaxData = (
+        data: object,
+        settings: Settings,
+    ) => string | object;
 
     // #endregion "ajax-settings"
 
@@ -1623,7 +1696,13 @@ declare namespace DataTables {
         /**
          * Class to assign to each cell in the column. Since: 1.10
          */
-        data?: number | string | ObjectColumnData | FunctionColumnData | null | undefined;
+        data?:
+            | number
+            | string
+            | ObjectColumnData
+            | FunctionColumnData
+            | null
+            | undefined;
 
         /**
          * Set default, static, content for a column. Since: 1.10
@@ -1667,7 +1746,13 @@ declare namespace DataTables {
         /**
          * Render (process) the data for use in the table. Since: 1.10
          */
-        render?: number | string | ObjectColumnData | FunctionColumnRender | ObjectColumnRender | undefined;
+        render?:
+            | number
+            | string
+            | ObjectColumnData
+            | FunctionColumnRender
+            | ObjectColumnRender
+            | undefined;
 
         /**
          * Enable or disable filtering on the data in this column. Since: 1.10
@@ -1696,14 +1781,25 @@ declare namespace DataTables {
     }
 
     interface ColumnDefsSettings extends ColumnSettings {
-        targets: string | number | Array<(number | string)>;
+        targets: string | number | Array<number | string>;
     }
 
-    type FunctionColumnCreatedCell = (cell: Node, cellData: any, rowData: any, row: number, col: number) => void;
+    type FunctionColumnCreatedCell = (
+        cell: Node,
+        cellData: any,
+        rowData: any,
+        row: number,
+        col: number,
+    ) => void;
 
     interface FunctionColumnData {
         (row: any, t: "set", s: any, meta: CellMetaSettings): void;
-        (row: any, t: "display" | "sort" | "filter" | "type", s: undefined, meta: CellMetaSettings): any;
+        (
+            row: any,
+            t: "display" | "sort" | "filter" | "type",
+            s: undefined,
+            meta: CellMetaSettings,
+        ): any;
     }
 
     interface ObjectColumnData {
@@ -1714,7 +1810,12 @@ declare namespace DataTables {
         sort?: string | number | FunctionColumnData | undefined;
     }
 
-    type FunctionColumnRender = (data: any, type: any, row: any, meta: CellMetaSettings) => any;
+    type FunctionColumnRender = (
+        data: any,
+        type: any,
+        row: any,
+        meta: CellMetaSettings,
+    ) => any;
 
     interface ObjectColumnRender {
         _?: string | number | FunctionColumnRender | undefined;
@@ -1770,15 +1871,32 @@ declare namespace DataTables {
 
     // #region "callback-functions"
 
-    type FunctionCreateRow = (row: Node, data: any[] | object, dataIndex: number, cells: Node[]) => void;
+    type FunctionCreateRow = (
+        row: Node,
+        data: any[] | object,
+        dataIndex: number,
+        cells: Node[],
+    ) => void;
 
     type FunctionDrawCallback = (settings: SettingsLegacy) => void;
 
-    type FunctionFooterCallback = (tfoot: Node, data: any[], start: number, end: number, display: any[]) => void;
+    type FunctionFooterCallback = (
+        tfoot: Node,
+        data: any[],
+        start: number,
+        end: number,
+        display: any[],
+    ) => void;
 
     type FunctionFormatNumber = (formatNumber: number) => void;
 
-    type FunctionHeaderCallback = (thead: Node, data: any[], start: number, end: number, display: any[]) => void;
+    type FunctionHeaderCallback = (
+        thead: Node,
+        data: any[],
+        start: number,
+        end: number,
+        display: any[],
+    ) => void;
 
     type FunctionInfoCallback = (
         settings: SettingsLegacy,
@@ -1789,21 +1907,37 @@ declare namespace DataTables {
         pre: string,
     ) => void;
 
-    type FunctionInitComplete = (settings: SettingsLegacy, json: object) => void;
+    type FunctionInitComplete = (
+        settings: SettingsLegacy,
+        json: object,
+    ) => void;
 
     type FunctionPreDrawCallback = (settings: SettingsLegacy) => void;
 
-    type FunctionRowCallback = (row: Node, data: any[] | object, index: number) => void;
+    type FunctionRowCallback = (
+        row: Node,
+        data: any[] | object,
+        index: number,
+    ) => void;
 
     type FunctionStateLoadCallback = (settings: SettingsLegacy) => void;
 
     type FunctionStateLoaded = (settings: SettingsLegacy, data: object) => void;
 
-    type FunctionStateLoadParams = (settings: SettingsLegacy, data: object) => void;
+    type FunctionStateLoadParams = (
+        settings: SettingsLegacy,
+        data: object,
+    ) => void;
 
-    type FunctionStateSaveCallback = (settings: SettingsLegacy, data: object) => void;
+    type FunctionStateSaveCallback = (
+        settings: SettingsLegacy,
+        data: object,
+    ) => void;
 
-    type FunctionStateSaveParams = (settings: SettingsLegacy, data: object) => void;
+    type FunctionStateSaveParams = (
+        settings: SettingsLegacy,
+        data: object,
+    ) => void;
 
     // #endregion "callback-functions"
 
@@ -2004,7 +2138,13 @@ declare namespace DataTables {
         sWidthOrig: string;
     }
 
-    type CookieCallbackLegacy = (name: string, data: any, expires: string, path: string, cookie: string) => void;
+    type CookieCallbackLegacy = (
+        name: string,
+        data: any,
+        expires: string,
+        path: string,
+        cookie: string,
+    ) => void;
 
     interface LanguageLegacy {
         oAria?: LanguageAriaLegacy | undefined;
@@ -2279,5 +2419,8 @@ declare namespace DataTables {
      * @param data Data from the column cell to be analysed.
      * @param DataTables settings object.
      */
-    type FunctionExtTypeSettingsDetect = (data: any, settings: Settings) => string | null;
+    type FunctionExtTypeSettingsDetect = (
+        data: any,
+        settings: Settings,
+    ) => string | null;
 }

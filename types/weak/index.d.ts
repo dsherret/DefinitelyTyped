@@ -7,7 +7,10 @@ declare class WeakRef<T> {}
  * @param object can be a regular Object, an Array, a Function, a RegExp, or any of the primitive types or constructor function created with new
  * @param callback a callback function to be invoked before the object is garbage collected
  */
-declare function weak<T extends object>(object: T, callback?: () => void): WeakRef<T>;
+declare function weak<T extends object>(
+    object: T,
+    callback?: () => void,
+): WeakRef<T>;
 
 declare namespace weak {
     /**
@@ -39,14 +42,20 @@ declare namespace weak {
      * @param ref weak reference object
      * @param callback function to be called
      */
-    function addCallback(ref: WeakRef<any>, callback: () => void): NodeJS.EventEmitter;
+    function addCallback(
+        ref: WeakRef<any>,
+        callback: () => void,
+    ): NodeJS.EventEmitter;
 
     /**
      * Removes callback from the Array of callback functions that will be invoked before the Object gets garbage collected.
      * @param ref weak reference object
      * @param callback function to be called
      */
-    function removeCallback(ref: WeakRef<any>, callback: () => void): NodeJS.EventEmitter;
+    function removeCallback(
+        ref: WeakRef<any>,
+        callback: () => void,
+    ): NodeJS.EventEmitter;
 
     /**
      * Empties the Array of callback functions that will be invoked before the Object gets garbage collected.
@@ -58,7 +67,7 @@ declare namespace weak {
      * Returns an Array that ref iterates through to invoke the GC callbacks. This utilizes node's EventEmitter#listeners() function and therefore returns a copy in node 0.10 and newer.
      * @param ref weak reference object
      */
-    function callbacks(ref: WeakRef<any>): Array<(() => void)>;
+    function callbacks(ref: WeakRef<any>): Array<() => void>;
 }
 
 export = weak;

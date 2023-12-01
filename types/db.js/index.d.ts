@@ -26,26 +26,25 @@ declare namespace DbJs {
     }
 
     interface KeysQuery<T>
-        extends DescableQuery<T>, ExecutableQuery<T>, FilterableQuery<T>, DistinctableQuery<T>, MappableQuery<T>
-    {
-    }
+        extends DescableQuery<T>,
+            ExecutableQuery<T>,
+            FilterableQuery<T>,
+            DistinctableQuery<T>,
+            MappableQuery<T> {}
 
     interface KeyableQuery<T> {
         keys(): KeysQuery<T>;
     }
 
     interface FilterQuery<T>
-        extends
-            KeyableQuery<T>,
+        extends KeyableQuery<T>,
             ExecutableQuery<T>,
             FilterableQuery<T>,
             DescableQuery<T>,
             DistinctableQuery<T>,
             ModifiableQuery<T>,
             LimitableQuery<T>,
-            MappableQuery<T>
-    {
-    }
+            MappableQuery<T> {}
 
     interface FilterableQuery<T> {
         filter<TValue>(index: string, value: TValue): FilterQuery<T>;
@@ -53,32 +52,26 @@ declare namespace DbJs {
     }
 
     interface DescQuery<T>
-        extends
-            KeyableQuery<T>,
+        extends KeyableQuery<T>,
             CountableQuery<T>,
             ExecutableQuery<T>,
             FilterableQuery<T>,
             DescableQuery<T>,
             ModifiableQuery<T>,
-            MappableQuery<T>
-    {
-    }
+            MappableQuery<T> {}
 
     interface DescableQuery<T> {
         desc(): DescQuery<T>;
     }
 
     interface DistinctQuery<T>
-        extends
-            KeyableQuery<T>,
+        extends KeyableQuery<T>,
             ExecutableQuery<T>,
             FilterableQuery<T>,
             DescableQuery<T>,
             ModifiableQuery<T>,
             MappableQuery<T>,
-            CountableQuery<T>
-    {
-    }
+            CountableQuery<T> {}
 
     interface DistinctableQuery<T> {
         distinct(filter?: (value: T) => boolean): DistinctQuery<T>;
@@ -98,8 +91,7 @@ declare namespace DbJs {
     }
 
     interface Query<T>
-        extends
-            Promise<T>,
+        extends Promise<T>,
             KeyableQuery<T>,
             ExecutableQuery<T>,
             FilterableQuery<T>,
@@ -108,9 +100,7 @@ declare namespace DbJs {
             ModifiableQuery<T>,
             LimitableQuery<T>,
             MappableQuery<T>,
-            CountableQuery<T>
-    {
-    }
+            CountableQuery<T> {}
 
     interface IndexQuery<T> extends Query<T> {
         only(...args: any[]): Query<T>;
@@ -138,14 +128,20 @@ declare namespace DbJs {
     interface ObjectStoreServer {
         add<T>(table: string, entity: T): Promise<T>;
         add<T>(table: string, ...entities: T[]): Promise<T[]>;
-        add<TKey, TValue>(table: string, entity: KeyValuePair<TKey, TValue>): Promise<KeyValuePair<TKey, TValue>>;
+        add<TKey, TValue>(
+            table: string,
+            entity: KeyValuePair<TKey, TValue>,
+        ): Promise<KeyValuePair<TKey, TValue>>;
         add<TKey, TValue>(
             table: string,
             ...entities: Array<KeyValuePair<TKey, TValue>>
         ): Promise<Array<KeyValuePair<TKey, TValue>>>;
         update<T>(table: string, entity: T): Promise<T>;
         update<T>(table: string, ...entities: T[]): Promise<T[]>;
-        update<TKey, TValue>(table: string, entity: KeyValuePair<TKey, TValue>): Promise<KeyValuePair<TKey, TValue>>;
+        update<TKey, TValue>(
+            table: string,
+            entity: KeyValuePair<TKey, TValue>,
+        ): Promise<KeyValuePair<TKey, TValue>>;
         update<TKey, TValue>(
             table: string,
             ...entities: Array<KeyValuePair<TKey, TValue>>
@@ -160,9 +156,15 @@ declare namespace DbJs {
         count(keyOrRange: any): Promise<number>;
         count(table: string, key: any): Promise<number>;
         addEventListener(type: "abort", listener: (ev: Event) => any): void;
-        addEventListener(type: "versionchange", listener: (ev: Event) => any): void;
+        addEventListener(
+            type: "versionchange",
+            listener: (ev: Event) => any,
+        ): void;
         addEventListener(type: "error", listener: (err: Error) => any): void;
-        addEventListener(type: string, listener: EventListener | ErrorListener): void;
+        addEventListener(
+            type: string,
+            listener: EventListener | ErrorListener,
+        ): void;
         abort(listener: (ev: Event) => any): ObjectStoreServer;
         versionchange(listener: (ev: Event) => any): ObjectStoreServer;
         error(listener: (ev: Error) => any): ObjectStoreServer;
@@ -171,11 +173,17 @@ declare namespace DbJs {
     interface TypedObjectStoreServer<T> {
         add(entity: T): Promise<T>;
         add(...entities: T[]): Promise<T[]>;
-        add<TKey, TValue>(entity: KeyValuePair<TKey, TValue>): Promise<KeyValuePair<TKey, TValue>>;
-        add<TKey, TValue>(...entities: Array<KeyValuePair<TKey, TValue>>): Promise<Array<KeyValuePair<TKey, TValue>>>;
+        add<TKey, TValue>(
+            entity: KeyValuePair<TKey, TValue>,
+        ): Promise<KeyValuePair<TKey, TValue>>;
+        add<TKey, TValue>(
+            ...entities: Array<KeyValuePair<TKey, TValue>>
+        ): Promise<Array<KeyValuePair<TKey, TValue>>>;
         update(entity: T): Promise<T>;
         update(...entities: T[]): Promise<T[]>;
-        update<TKey, TValue>(entity: KeyValuePair<TKey, TValue>): Promise<KeyValuePair<TKey, TValue>>;
+        update<TKey, TValue>(
+            entity: KeyValuePair<TKey, TValue>,
+        ): Promise<KeyValuePair<TKey, TValue>>;
         update<TKey, TValue>(
             ...entities: Array<KeyValuePair<TKey, TValue>>
         ): Promise<Array<KeyValuePair<TKey, TValue>>>;
@@ -188,7 +196,9 @@ declare namespace DbJs {
         count(key: any): Promise<number>;
     }
 
-    type Server = DbJs.IndexAccessibleServer & DbJs.ObjectStoreServer & DbJs.BaseServer;
+    type Server = DbJs.IndexAccessibleServer &
+        DbJs.ObjectStoreServer &
+        DbJs.BaseServer;
 }
 
 declare module "db.js" {

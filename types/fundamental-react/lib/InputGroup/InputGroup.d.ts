@@ -16,16 +16,25 @@ export type InputGroupProps = {
     compact?: boolean | undefined;
     disabled?: boolean | undefined;
     disableStyles?: boolean | undefined;
-    validationState?: {
-        state?: "error" | "warning" | "information" | "success" | undefined;
-        text?: string | undefined;
-    } | undefined;
+    validationState?:
+        | {
+              state?:
+                  | "error"
+                  | "warning"
+                  | "information"
+                  | "success"
+                  | undefined;
+              text?: string | undefined;
+          }
+        | undefined;
     props?: any;
 } & { [x: string]: any };
 
 declare class InputGroup extends React.Component<InputGroupProps> {
     static displayName: "InputGroup";
-    static Addon: React.FunctionComponent<InputGroupAddonProps> & { displayName: "InputGroup.Addon" };
+    static Addon: React.FunctionComponent<InputGroupAddonProps> & {
+        displayName: "InputGroup.Addon";
+    };
 }
 
 export default InputGroup;

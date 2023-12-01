@@ -1,9 +1,10 @@
 // Stub mocha functions
 const { describe, it, before, after, beforeEach, afterEach } = null as any as {
-    [s: string]: ((s: string, cb: (done: any) => void) => void) & ((cb: (done: any) => void) => void) & {
-        only: any;
-        skip: any;
-    };
+    [s: string]: ((s: string, cb: (done: any) => void) => void) &
+        ((cb: (done: any) => void) => void) & {
+            only: any;
+            skip: any;
+        };
 };
 
 function test_createFrame() {
@@ -33,7 +34,7 @@ function test_removeFrame() {
         frame = quixote.createFrame(options, done());
     });
 
-    after(function() {
+    after(function () {
         frame.remove();
     });
 }

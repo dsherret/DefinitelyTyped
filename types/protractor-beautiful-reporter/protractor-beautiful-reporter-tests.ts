@@ -25,29 +25,40 @@ new HtmlReporter({
     pathBuilder(spec, descriptions, results, capabilities) {
         // Return '<browser>/<specname>' as path for screenshots:
         // Example: 'firefox/list-should work'.
-        return path.join("firefox", /*capabilities.caps_.browser*/ descriptions.join("-"));
+        return path.join(
+            "firefox",
+            /*capabilities.caps_.browser*/ descriptions.join("-"),
+        );
     },
 });
 
 // Jasmine2 Meta Data Builder (optional)
-const originalJasmine2MetaDataBuilder = new HtmlReporter({ baseDirectory: "./" })["jasmine2MetaDataBuilder"];
+const originalJasmine2MetaDataBuilder = new HtmlReporter({
+    baseDirectory: "./",
+})["jasmine2MetaDataBuilder"];
 jasmine.getEnv().addReporter(
     new HtmlReporter({
         baseDirectory: "tmp/screenshots",
         jasmine2MetaDataBuilder(spec, descriptions, results, capabilities) {
             // filter for pendings with pending() function and "unfail" them
             if (
-                results
-                && results.failedExpectations
-                && results.failedExpectations.length > 0
-                && "Failed: => marked Pending" === results.failedExpectations[0].message
+                results &&
+                results.failedExpectations &&
+                results.failedExpectations.length > 0 &&
+                "Failed: => marked Pending" ===
+                    results.failedExpectations[0].message
             ) {
                 results.pendingReason = "Marked Pending with pending()";
                 results.status = "pending";
                 results.failedExpectations = [];
             }
             // call the original method after my own mods
-            return originalJasmine2MetaDataBuilder(spec, descriptions, results, capabilities);
+            return originalJasmine2MetaDataBuilder(
+                spec,
+                descriptions,
+                results,
+                capabilities,
+            );
         },
         preserveDirectory: false,
     }).getJasmine2Reporter(),
@@ -260,7 +271,7 @@ jasmine.getEnv().addReporter(
             const month = currentDate.getMonth() + 1;
             const year = currentDate.getFullYear();
 
-            const validDescriptions = descriptions.map(description => {
+            const validDescriptions = descriptions.map((description) => {
                 return description.replace("/", "@");
             });
 
@@ -284,7 +295,9 @@ jasmine.getEnv().addReporter(
 
 // https://github.com/Evilweed/protractor-beautiful-reporter/blob/master/app/reporter.js
 function app_reporter_js() {
-    const screenshotReporter: HtmlReporter.HtmlReporterConstructorOptions = { baseDirectory: "tmp/screenshots" };
+    const screenshotReporter: HtmlReporter.HtmlReporterConstructorOptions = {
+        baseDirectory: "tmp/screenshots",
+    };
     const descriptions = ["description"];
     const result: jasmine.SpecResult = {
         passedExpectations: [],
@@ -302,6 +315,16 @@ function app_reporter_js() {
     const capabilities = new Capabilities();
 
     // app/reporter.js always passes a null spec.
-    const baseName = screenshotReporter.pathBuilder?.(null, descriptions, result, capabilities);
-    const metaData = screenshotReporter.jasmine2MetaDataBuilder?.(null, descriptions, result, capabilities);
+    const baseName = screenshotReporter.pathBuilder?.(
+        null,
+        descriptions,
+        result,
+        capabilities,
+    );
+    const metaData = screenshotReporter.jasmine2MetaDataBuilder?.(
+        null,
+        descriptions,
+        result,
+        capabilities,
+    );
 }

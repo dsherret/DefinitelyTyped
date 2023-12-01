@@ -24,24 +24,28 @@ jobs.testMode.exit();
 // user input etc.
 
 function create() {
-    var name = ["tobi", "loki", "jane", "manny"][Math.random() * 4 | 0];
+    var name = ["tobi", "loki", "jane", "manny"][(Math.random() * 4) | 0];
     var job = jobs.create("video conversion", {
         title: "converting " + name + "'s to avi",
         user: 1,
         frames: 200,
     });
 
-    job.on("complete", function() {
+    job.on("complete", function () {
         console.log(" Job complete");
-    }).on("failed", function() {
-        console.log(" Job failed");
-    }).on("progress", function(progress: number) {
-        process.stdout.write("\r  job #" + job.id + " " + progress + "% complete");
-    });
+    })
+        .on("failed", function () {
+            console.log(" Job failed");
+        })
+        .on("progress", function (progress: number) {
+            process.stdout.write(
+                "\r  job #" + job.id + " " + progress + "% complete",
+            );
+        });
 
     job.save();
 
-    kue.Job.get(job.id, function(err: any, _job: kue.Job) {
+    kue.Job.get(job.id, function (err: any, _job: kue.Job) {
         console.log("get job", _job);
 
         _job.created_at;
@@ -50,23 +54,23 @@ function create() {
         _job.failed_at;
         _job.started_at;
     });
-    kue.Job.get(job.id, "video conversion", function(err: any, _job: kue.Job) {
+    kue.Job.get(job.id, "video conversion", function (err: any, _job: kue.Job) {
         console.log("get job", _job);
     });
 
-    setTimeout(create, Math.random() * 2000 | 0);
+    setTimeout(create, (Math.random() * 2000) | 0);
 }
 
 create();
 
 // process video conversion jobs, 1 at a time.
 
-var processCb = function(job: kue.Job, done: kue.DoneCallback) {
+var processCb = function (job: kue.Job, done: kue.DoneCallback) {
     var frames: number = job.data.frames;
 
     function next(i: number) {
         // pretend we are doing some work
-        convertFrame(i, function(err: Error, result: any) {
+        convertFrame(i, function (err: Error, result: any) {
             if (err) return done(err);
             // report progress, i/frames complete
             job.progress(i, frames);
@@ -82,10 +86,10 @@ jobs.process("video conversion", 1, processCb);
 jobs.process("video conversion", processCb);
 
 // Use of WorkerCtx, https://github.com/Automattic/kue#pause-processing
-jobs.process("email", function(job, ctx, done) {
-    ctx.pause(5000, function(err) {
+jobs.process("email", function (job, ctx, done) {
+    ctx.pause(5000, function (err) {
         console.log("Worker is paused...");
-        setTimeout(function() {
+        setTimeout(function () {
             ctx.resume();
         }, 10000);
     });
@@ -99,21 +103,23 @@ function convertFrame(i: number, fn: Function) {
 
 var minute = 60000;
 
-var email = jobs.create("email", {
-    title: "Account renewal required",
-    to: "tj@learnboost.com",
-    template: "renewal-email",
-}).delay(minute)
+var email = jobs
+    .create("email", {
+        title: "Account renewal required",
+        to: "tj@learnboost.com",
+        template: "renewal-email",
+    })
+    .delay(minute)
     .priority("high")
     .save();
 
 console.log("email job priority: ", email.priority());
 
-email.on("promotion", function() {
+email.on("promotion", function () {
     console.log("renewal job promoted");
 });
 
-email.on("complete", function() {
+email.on("complete", function () {
     console.log("renewal job completed");
 });
 
@@ -121,14 +127,15 @@ jobs.create("email", {
     title: "Account expired",
     to: "tj@learnboost.com",
     template: "expired-email",
-}).delay(minute * 10)
+})
+    .delay(minute * 10)
     .priority("high")
     .save();
 
 jobs.promote();
 
-jobs.process("email", 10, function(job: kue.Job, done: Function) {
-    setTimeout(function() {
+jobs.process("email", 10, function (job: kue.Job, done: Function) {
+    setTimeout(function () {
         done();
     }, Math.random() * 5000);
 });

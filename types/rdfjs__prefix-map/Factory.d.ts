@@ -5,7 +5,7 @@ export interface PrefixMapFactory {
 }
 
 interface PrefixMapFactoryCtor {
-    new(): PrefixMapFactory;
+    new (): PrefixMapFactory;
     exports: ["prefixMap"];
 }
 

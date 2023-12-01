@@ -6,7 +6,7 @@ server.connection({ port: 80, host: "example.com" });
 server.route({
     method: "GET",
     path: "/example",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply();
     },
 });

@@ -26,7 +26,12 @@ const forwardOptions: ForwardOptions = {
 
 (async () => {
     try {
-        const [server, client] = await createTunnel(tunnelOptions, serverOptions, sshOptions, forwardOptions);
+        const [server, client] = await createTunnel(
+            tunnelOptions,
+            serverOptions,
+            sshOptions,
+            forwardOptions,
+        );
         client.end();
         server.close();
     } catch (err) {

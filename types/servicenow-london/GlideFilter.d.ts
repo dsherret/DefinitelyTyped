@@ -33,5 +33,9 @@ declare const GlideFilter: {
      *   gs.info('number ' + rec. number + ' is ' + bool);
      * }
      */
-    checkRecord(gr: ScopedGlideRecord, filter: string, matchAll?: object): boolean;
+    checkRecord(
+        gr: ScopedGlideRecord,
+        filter: string,
+        matchAll?: object,
+    ): boolean;
 };

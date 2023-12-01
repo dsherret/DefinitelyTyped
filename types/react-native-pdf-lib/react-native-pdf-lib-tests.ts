@@ -26,4 +26,10 @@ page.drawImage("ph:/some/uri", { x: 10, y: 10, width: 10, height: 10 }); // $Exp
 
 page.drawText("Some string"); // $ExpectType PDFPage
 page.drawText("Some string", {}); // $ExpectType PDFPage
-page.drawText("Some string", { x: 10, y: 10, color: "#fff", fontName: "TimesNewRoman", fontSize: 10 }); // $ExpectType PDFPage
+page.drawText("Some string", {
+    x: 10,
+    y: 10,
+    color: "#fff",
+    fontName: "TimesNewRoman",
+    fontSize: 10,
+}); // $ExpectType PDFPage

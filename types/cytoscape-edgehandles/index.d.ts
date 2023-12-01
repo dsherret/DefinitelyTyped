@@ -11,13 +11,21 @@ declare namespace cytoscapeEdgehandles {
          *
          * Default: Disable self loops
          */
-        canConnect?: ((source: cytoscape.NodeSingular, target: cytoscape.NodeSingular) => boolean) | undefined;
+        canConnect?:
+            | ((
+                  source: cytoscape.NodeSingular,
+                  target: cytoscape.NodeSingular,
+              ) => boolean)
+            | undefined;
         /**
          * for edges between the specified source and target
          * return element object to be passed to cy.add() for edge
          */
         edgeParams?:
-            | ((source: cytoscape.NodeSingular, target: cytoscape.NodeSingular) => cytoscape.ElementDefinition)
+            | ((
+                  source: cytoscape.NodeSingular,
+                  target: cytoscape.NodeSingular,
+              ) => cytoscape.ElementDefinition)
             | undefined;
         /**
          * Time spent hovering over a target node before it is considered selected.

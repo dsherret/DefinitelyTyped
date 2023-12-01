@@ -45,7 +45,10 @@ class World {
 
         const player = new Player();
         player.position.set(6, 0, 35);
-        player.head.setRenderComponent({ matrixWorld: new YUKA.Matrix4() }, syncCamera);
+        player.head.setRenderComponent(
+            { matrixWorld: new YUKA.Matrix4() },
+            syncCamera,
+        );
         const weapon = player.weapon;
         const weaponMesh = { matrix: new YUKA.Matrix4() };
         weapon.setRenderComponent(weaponMesh, sync);
@@ -163,16 +166,20 @@ class World {
 
         let spawningPoint = null;
 
-        const minSqDistance = this.minSpawningDistance * this.minSpawningDistance;
+        const minSqDistance =
+            this.minSpawningDistance * this.minSpawningDistance;
 
         do {
-            const spawningPointIndex = Math.ceil(Math.random() * this.spawningPoints.length - 1);
+            const spawningPointIndex = Math.ceil(
+                Math.random() * this.spawningPoints.length - 1,
+            );
             spawningPoint = this.spawningPoints[spawningPointIndex];
 
             // only pick the spawning point if it is not in use and far enough away from the player
         } while (
-            this.usedSpawningPoints.has(spawningPoint)
-            || spawningPoint.squaredDistanceTo(this.player.position) < minSqDistance
+            this.usedSpawningPoints.has(spawningPoint) ||
+            spawningPoint.squaredDistanceTo(this.player.position) <
+                minSqDistance
         );
 
         this.usedSpawningPoints.add(spawningPoint);
@@ -203,7 +210,9 @@ class World {
                     intersection.normal,
                 ) !== null
             ) {
-                const squaredDistance = intersection.point.squaredDistanceTo(ray.origin);
+                const squaredDistance = intersection.point.squaredDistanceTo(
+                    ray.origin,
+                );
                 if (squaredDistance < minDistance) {
                     minDistance = squaredDistance;
                     closestObstacle = obstalce;
@@ -214,7 +223,7 @@ class World {
             }
         }
 
-        return (closestObstacle === null) ? null : closestObstacle;
+        return closestObstacle === null ? null : closestObstacle;
     }
 
     _initSpawningPoints() {
@@ -223,8 +232,8 @@ class World {
         for (let i = 0; i < 9; i++) {
             const spawningPoint = new YUKA.Vector3();
 
-            spawningPoint.x = 18 - ((i % 3) * 12);
-            spawningPoint.z = 18 - (Math.floor(i / 3) * 12);
+            spawningPoint.x = 18 - (i % 3) * 12;
+            spawningPoint.z = 18 - Math.floor(i / 3) * 12;
 
             spawningPoints.push(spawningPoint);
         }
@@ -250,8 +259,8 @@ class World {
         for (let i = 0; i < 16; i++) {
             const mesh = { matrix: new YUKA.Matrix4(), geometry: {} };
             const obstacle = new CustomObstacle(geometry);
-            const x = 24 - ((i % 4) * 12);
-            const z = 24 - (Math.floor(i / 4) * 12);
+            const x = 24 - (i % 4) * 12;
+            const z = 24 - Math.floor(i / 4) * 12;
             obstacle.position.set(x, 0, z);
             obstacle.boundingRadius = 4;
             obstacle.setRenderComponent(mesh, sync);
@@ -260,11 +269,17 @@ class World {
     }
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }
 
-function syncCamera(entity: YUKA.GameEntity, renderComponent: { matrixWorld: YUKA.Matrix4 }) {
+function syncCamera(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrixWorld: YUKA.Matrix4 },
+) {
     renderComponent.matrixWorld.copy(entity.worldMatrix);
 }
 

@@ -36,7 +36,10 @@ declare namespace Smooch {
     /**
      * Sends a message to the targeted conversation on the user's behalf.
      */
-    function sendMessage(message: SimpleMessage | string, conversationId: string): void;
+    function sendMessage(
+        message: SimpleMessage | string,
+        conversationId: string,
+    ): void;
     /**
      * Sends an event indicating that the user has started typing.
      * Typing updates are automatically throttled, so you may call this method as often as necessary. The typing stop event will automatically fire 10 seconds after the most recent call to this
@@ -77,7 +80,9 @@ declare namespace Smooch {
      *       console.log(currentConversation);
      *     });
      */
-    function getConversationById(conversationId?: string): Promise<Conversation>;
+    function getConversationById(
+        conversationId?: string,
+    ): Promise<Conversation>;
     /**
      * Returns a list of conversations for the current user that were fetched during app initialization as well as the paginated results.
      *
@@ -151,7 +156,9 @@ declare namespace Smooch {
      *         // Your code after receiving the current user's new conversation
      *       });
      */
-    function createConversation(options: Partial<Conversation>): Promise<Conversation>;
+    function createConversation(
+        options: Partial<Conversation>,
+    ): Promise<Conversation>;
     /**
      * Marks all unread messages as read.
      *
@@ -206,49 +213,76 @@ declare namespace Smooch {
      */
     function on(
         event: "participant:added",
-        callback: (participant: ConversationParticipant, data: ConversationData) => void,
+        callback: (
+            participant: ConversationParticipant,
+            data: ConversationData,
+        ) => void,
     ): void;
     /**
      * This event triggers when a participant is removed from a conversation
      */
     function on(
         event: "participant:removed",
-        callback: (participant: ConversationParticipant, data: ConversationData) => void,
+        callback: (
+            participant: ConversationParticipant,
+            data: ConversationData,
+        ) => void,
     ): void;
     /**
      * This event triggers when a conversation is added
      */
     function on(
         event: "conversation:added",
-        callback: (participants: ConversationParticipant[], data: ConversationData) => void,
+        callback: (
+            participants: ConversationParticipant[],
+            data: ConversationData,
+        ) => void,
     ): void;
     /**
      * This event triggers when a participant in a sdkGroup chat reads a message
      */
     function on(
         event: "conversation:read",
-        callback: (payload: ConversationReadEventPayload, data: ConversationData) => void,
+        callback: (
+            payload: ConversationReadEventPayload,
+            data: ConversationData,
+        ) => void,
     ): void;
     /**
      * This event triggers when a conversation is removed
      */
-    function on(event: "conversation:removed", callback: (data: ConversationData) => void): void;
+    function on(
+        event: "conversation:removed",
+        callback: (data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when the user receives a message
      */
-    function on(event: "message:received", callback: (message: Message, data: ConversationData) => void): void;
+    function on(
+        event: "message:received",
+        callback: (message: Message, data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when the user sends a message
      */
-    function on(event: "message:sent", callback: (message: Message, data: ConversationData) => void): void;
+    function on(
+        event: "message:sent",
+        callback: (message: Message, data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when a message was added to the conversation
      */
-    function on(event: "message", callback: (message: Message, data: ConversationData) => void): void;
+    function on(
+        event: "message",
+        callback: (message: Message, data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when the number of unread messages changes
      */
-    function on(event: "unreadCount", callback: (unreadCount: number, data: ConversationData) => void): void;
+    function on(
+        event: "unreadCount",
+        callback: (unreadCount: number, data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when the widget is opened
      */
@@ -265,28 +299,42 @@ declare namespace Smooch {
      * This event triggers when an active connection has been established for the first time,
      * or when the connection has been re-established after a `disconnected` or `reconnecting` event.
      */
-    function on(event: "connected", callback: (data: ConversationData) => void): void;
+    function on(
+        event: "connected",
+        callback: (data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when an active connection is lost
      * While disconnected, the client will not be able to receive messages or load a conversation
      */
-    function on(event: "disconnected", callback: (data: ConversationData) => void): void;
+    function on(
+        event: "disconnected",
+        callback: (data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when an active connection is lost and there is an attempt to reconnect
      * While reconnecting, the client will not be able to receive messages or load a conversation
      */
-    function on(event: "reconnecting", callback: (data: ConversationData) => void): void;
+    function on(
+        event: "reconnecting",
+        callback: (data: ConversationData) => void,
+    ): void;
     /**
      * This event triggers when the business starts typing. The associated conversation is passed in the argument.
      */
     function on(
         event: "typing:start",
-        callback: (data: ConversationData & { avatarUrl: string; name: string }) => void,
+        callback: (
+            data: ConversationData & { avatarUrl: string; name: string },
+        ) => void,
     ): void;
     /**
      * This event triggers when the business stops typing. The associated conversation is passed in the argument.
      */
-    function on(event: "typing:stop", callback: (data: ConversationData) => void): void;
+    function on(
+        event: "typing:stop",
+        callback: (data: ConversationData) => void,
+    ): void;
     // tslint:enable:unified-signatures
 }
 

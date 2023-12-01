@@ -11,7 +11,7 @@ function testRun() {
 
     function destroyApp(application: Ember.Application) {
         Ember.run(application, "destroy");
-        Ember.run(application, function() {
+        Ember.run(application, function () {
             this.destroy();
         });
     }
@@ -51,9 +51,13 @@ function testCancel() {
 
     Ember.run.cancel(runLater);
 
-    const runScheduleOnce = Ember.run.scheduleOnce("afterRender", myContext, () => {
-        // will not be executed
-    });
+    const runScheduleOnce = Ember.run.scheduleOnce(
+        "afterRender",
+        myContext,
+        () => {
+            // will not be executed
+        },
+    );
 
     Ember.run.cancel(runScheduleOnce);
 
@@ -113,7 +117,12 @@ function testDebounce() {
         actions: {
             handleTyping() {
                 // the fetchResults function is passed into the component from its parent
-                Ember.run.debounce(this, this.get("fetchResults"), this.get("searchValue"), 250);
+                Ember.run.debounce(
+                    this,
+                    this.get("fetchResults"),
+                    this.get("searchValue"),
+                    250,
+                );
             },
         },
     });
@@ -138,7 +147,7 @@ function testJoin() {
         });
     });
 
-    new RSVP.Promise(resolve => {
+    new RSVP.Promise((resolve) => {
         Ember.run.later(() => {
             resolve({ msg: "Hold Your Horses" });
         }, 3000);

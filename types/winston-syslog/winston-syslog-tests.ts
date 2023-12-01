@@ -26,7 +26,5 @@ const syslogTransport = new Syslog(syslogOptions);
 winston.add(syslogTransport);
 
 const logger: winston.Logger = winston.createLogger({
-    transports: [
-        syslogTransport,
-    ],
+    transports: [syslogTransport],
 });

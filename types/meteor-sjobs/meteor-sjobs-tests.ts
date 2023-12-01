@@ -4,7 +4,9 @@ Jobs.register({
     sendReminder(message: string) {
         const instance = this;
 
-        const call = HTTP.put("http://www.magic.com/email/send", { content: message });
+        const call = HTTP.put("http://www.magic.com/email/send", {
+            content: message,
+        });
 
         if (call.statusCode !== 200) {
             instance.reschedule({

@@ -6,7 +6,10 @@ declare global {
     function resetScrollOnNewPortal(): void;
 
     function renderPortalDetails(guid: PortalGUID): void;
-    function getPortalMiscDetails(guid: PortalGUID, details?: IITC.PortalDataDetail): string;
+    function getPortalMiscDetails(
+        guid: PortalGUID,
+        details?: IITC.PortalDataDetail,
+    ): string;
 
     /**
      * draws link-range and hack-range circles around the portal with the

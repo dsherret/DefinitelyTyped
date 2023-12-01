@@ -15,7 +15,11 @@ export class TestTriggers<T extends HTMLElement> extends TestMethods<T> {
         this.table.trigger("addRows", [$(), true]);
         this.table.trigger("addRows", [$(), true, this.triggerCallback]);
         this.table.trigger("addRows", [$(), this.sorting]);
-        this.table.trigger("addRows", [$(), this.sorting, this.triggerCallback]);
+        this.table.trigger("addRows", [
+            $(),
+            this.sorting,
+            this.triggerCallback,
+        ]);
         this.table.trigger("addRows", ["", true]);
         this.table.trigger("addRows", ["", true, this.triggerCallback]);
         this.table.trigger("addRows", ["", this.sorting]);
@@ -48,7 +52,10 @@ export class TestTriggers<T extends HTMLElement> extends TestMethods<T> {
         this.table.trigger("sorton", [this.sorting]);
         this.table.trigger("sorton", [this.sorting, this.triggerCallback]);
         this.table.trigger("sorton", [this.relativeSorting]);
-        this.table.trigger("sorton", [this.relativeSorting, this.triggerCallback]);
+        this.table.trigger("sorton", [
+            this.relativeSorting,
+            this.triggerCallback,
+        ]);
         this.table.trigger("sorton", [this.mixedSorting]);
         this.table.trigger("sorton", [this.mixedSorting, this.triggerCallback]);
 
@@ -83,7 +90,11 @@ export class TestTriggers<T extends HTMLElement> extends TestMethods<T> {
         this.table.trigger("updateCell", [$(), true]);
         this.table.trigger("updateCell", [$(), true, this.triggerCallback]);
         this.table.trigger("updateCell", [$(), this.sorting]);
-        this.table.trigger("updateCell", [$(), this.sorting, this.triggerCallback]);
+        this.table.trigger("updateCell", [
+            $(),
+            this.sorting,
+            this.triggerCallback,
+        ]);
 
         this.table.trigger("updateHeaders");
         this.table.trigger("updateHeaders", this.triggerCallback);

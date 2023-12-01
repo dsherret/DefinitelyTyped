@@ -42,7 +42,8 @@ import {
     const tlsSocket = connect(connOpts);
 
     const cert: PeerCertificate | object | null = tlsSocket.getCertificate();
-    const keyInfo: EphemeralKeyInfo | object | null = tlsSocket.getEphemeralKeyInfo();
+    const keyInfo: EphemeralKeyInfo | object | null =
+        tlsSocket.getEphemeralKeyInfo();
     const finishedMsg: Buffer | undefined = tlsSocket.getFinished();
     const peerFinishedMsg: Buffer | undefined = tlsSocket.getPeerFinished();
     const sharedAlgs: string[] = tlsSocket.getSharedSigalgs();
@@ -65,7 +66,11 @@ import {
     const minVersion: string = DEFAULT_MIN_VERSION;
     const cyphers: string = DEFAULT_CIPHERS;
 
-    const buf: Buffer = tlsSocket.exportKeyingMaterial(123, "test", Buffer.from("nope"));
+    const buf: Buffer = tlsSocket.exportKeyingMaterial(
+        123,
+        "test",
+        Buffer.from("nope"),
+    );
 
     tlsSocket.getPeerX509Certificate(); // $ExpectType X509Certificate | undefined
     tlsSocket.getX509Certificate(); // $ExpectType X509Certificate | undefined
@@ -121,16 +126,22 @@ import {
         const _err: Error = err;
         const _tlsSocket: TLSSocket = tlsSocket;
     });
-    _server = _server.addListener("newSession", (sessionId, sessionData, callback) => {
-        const _sessionId: Buffer = sessionId;
-        const _sessionData: Buffer = sessionData;
-        const _func1 = callback;
-    });
-    _server = _server.addListener("OCSPRequest", (certificate, issuer, callback) => {
-        const _certificate: Buffer = certificate;
-        const _issuer: Buffer = issuer;
-        const _callback: Function = callback;
-    });
+    _server = _server.addListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            const _sessionId: Buffer = sessionId;
+            const _sessionData: Buffer = sessionData;
+            const _func1 = callback;
+        },
+    );
+    _server = _server.addListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            const _certificate: Buffer = certificate;
+            const _issuer: Buffer = issuer;
+            const _callback: Function = callback;
+        },
+    );
     _server = _server.addListener("resumeSession", (sessionId, callback) => {
         const _sessionId: Buffer = sessionId;
         const _func2 = callback;
@@ -203,42 +214,63 @@ import {
         const _err: Error = err;
         const _tlsSocket: TLSSocket = tlsSocket;
     });
-    _server = _server.prependListener("newSession", (sessionId, sessionData, callback) => {
-        const _sessionId: Buffer = sessionId;
-        const _sessionData: Buffer = sessionData;
-        const _func1 = callback;
-    });
-    _server = _server.prependListener("OCSPRequest", (certificate, issuer, callback) => {
-        const _certificate: Buffer = certificate;
-        const _issuer: Buffer = issuer;
-        const _callback: Function = callback;
-    });
-    _server = _server.prependListener("resumeSession", (sessionId, callback) => {
-        const _sessionId: Buffer = sessionId;
-        const _func2 = callback;
-    });
+    _server = _server.prependListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            const _sessionId: Buffer = sessionId;
+            const _sessionData: Buffer = sessionData;
+            const _func1 = callback;
+        },
+    );
+    _server = _server.prependListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            const _certificate: Buffer = certificate;
+            const _issuer: Buffer = issuer;
+            const _callback: Function = callback;
+        },
+    );
+    _server = _server.prependListener(
+        "resumeSession",
+        (sessionId, callback) => {
+            const _sessionId: Buffer = sessionId;
+            const _func2 = callback;
+        },
+    );
     _server = _server.prependListener("secureConnection", (tlsSocket) => {
         const _tlsSocket: TLSSocket = tlsSocket;
     });
 
-    _server = _server.prependOnceListener("tlsClientError", (err, tlsSocket) => {
-        const _err: Error = err;
-        const _tlsSocket: TLSSocket = tlsSocket;
-    });
-    _server = _server.prependOnceListener("newSession", (sessionId, sessionData, callback) => {
-        const _sessionId: Buffer = sessionId;
-        const _sessionData: Buffer = sessionData;
-        const _func1 = callback;
-    });
-    _server = _server.prependOnceListener("OCSPRequest", (certificate, issuer, callback) => {
-        const _certificate: Buffer = certificate;
-        const _issuer: Buffer = issuer;
-        const _callback: Function = callback;
-    });
-    _server = _server.prependOnceListener("resumeSession", (sessionId, callback) => {
-        const _sessionId: Buffer = sessionId;
-        const _func2 = callback;
-    });
+    _server = _server.prependOnceListener(
+        "tlsClientError",
+        (err, tlsSocket) => {
+            const _err: Error = err;
+            const _tlsSocket: TLSSocket = tlsSocket;
+        },
+    );
+    _server = _server.prependOnceListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            const _sessionId: Buffer = sessionId;
+            const _sessionData: Buffer = sessionData;
+            const _func1 = callback;
+        },
+    );
+    _server = _server.prependOnceListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            const _certificate: Buffer = certificate;
+            const _issuer: Buffer = issuer;
+            const _callback: Function = callback;
+        },
+    );
+    _server = _server.prependOnceListener(
+        "resumeSession",
+        (sessionId, callback) => {
+            const _sessionId: Buffer = sessionId;
+            const _func2 = callback;
+        },
+    );
     _server = _server.prependOnceListener("secureConnection", (tlsSocket) => {
         const _tlsSocket: TLSSocket = tlsSocket;
     });
@@ -318,7 +350,10 @@ import {
         cert: "SOME CERTIFICATE",
     });
     const _options: TlsOptions = {
-        SNICallback: (servername: string, cb: (err: Error | null, ctx?: SecureContext) => void): void => {
+        SNICallback: (
+            servername: string,
+            cb: (err: Error | null, ctx?: SecureContext) => void,
+        ): void => {
             cb(new Error("Not found"));
             cb(new Error("Not found"), undefined);
             cb(null, undefined);

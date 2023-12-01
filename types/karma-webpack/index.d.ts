@@ -15,9 +15,11 @@ declare module "karma" {
         watchOptions?: Webpack.Options.WatchOptions | undefined;
         publicPath?: string | undefined;
         index?: string | undefined;
-        headers?: {
-            [name: string]: string;
-        } | undefined;
+        headers?:
+            | {
+                  [name: string]: string;
+              }
+            | undefined;
         stats?: Webpack.Options.Stats | undefined;
         reporter?: Reporter | null | undefined;
         serverSideRender?: boolean | undefined;

@@ -3,7 +3,16 @@
 import * as http from "http";
 import * as tls from "tls";
 
-export type StubbyMethod = "GET" | "PUT" | "POST" | "HEAD" | "PATCH" | "TRACE" | "DELETE" | "CONNECT" | "OPTIONS";
+export type StubbyMethod =
+    | "GET"
+    | "PUT"
+    | "POST"
+    | "HEAD"
+    | "PATCH"
+    | "TRACE"
+    | "DELETE"
+    | "CONNECT"
+    | "OPTIONS";
 
 export interface StubbyRequest {
     /**
@@ -123,7 +132,11 @@ export interface StubbyData {
      * portion of the endpoint will be used to assemble a request to the url
      * given as the `response`.
      */
-    response?: string | StubbyResponse | Array<string | StubbyResponse> | undefined;
+    response?:
+        | string
+        | StubbyResponse
+        | Array<string | StubbyResponse>
+        | undefined;
 }
 
 export interface StubbyCommonOptions {
@@ -178,10 +191,15 @@ declare class Endpoints {
         callback: (err: Error | undefined, endpoint: Endpoint) => void,
         datadir: string,
     ): void;
-    retrieve(id: string, callback: (err: Error | undefined, endpoint: Endpoint) => void): void;
+    retrieve(
+        id: string,
+        callback: (err: Error | undefined, endpoint: Endpoint) => void,
+    ): void;
     update(id: string, data: StubbyData, callback: (err?: Error) => void): void;
     delete(id: string, callback: (err?: Error) => void): void;
-    gather(callback: (err: Error | undefined, endpoints: Endpoint[]) => void): void;
+    gather(
+        callback: (err: Error | undefined, endpoints: Endpoint[]) => void,
+    ): void;
 }
 
 export class Stubby {
@@ -198,9 +216,15 @@ export class Stubby {
     stop(callback?: (err?: Error) => void): void;
     /** Simulates a GET request to the admin portal, with the callback receiving the resultant data. */
     get(callback: (err: Error | undefined, endpoints: Endpoints) => void): void;
-    get(id: string, callback: (err: Error | undefined, endpoint: Endpoint) => void): void;
+    get(
+        id: string,
+        callback: (err: Error | undefined, endpoint: Endpoint) => void,
+    ): void;
     /** Simulates a POST request to the admin portal, with the callback receiving the resultant data. */
-    post(data: Endpoint, callback: (err: Error | undefined, endpoint: Endpoint) => void): void;
+    post(
+        data: Endpoint,
+        callback: (err: Error | undefined, endpoint: Endpoint) => void,
+    ): void;
     /** Simulates a PUT request to the admin portal, with the callback receiving the resultant data. */
     put(id: string, data: Endpoint, callback: (err?: Error) => void): void;
     /** Simulates a DELETE request to the admin portal, with the callback receiving the resultant data. */

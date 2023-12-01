@@ -214,4 +214,7 @@ export class RequestSigner {
  * Calculates and populates any necessary AWS headers and/or request options on
  * `requestOptions`. Returns `requestOptions` as a convenience for chaining.
  */
-export function sign(requestOptions: string | Request, credentials?: Credentials): Request;
+export function sign(
+    requestOptions: string | Request,
+    credentials?: Credentials,
+): Request;

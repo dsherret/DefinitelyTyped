@@ -94,9 +94,13 @@ check.nonEmptyString([]);
 
 check.any(check.apply([1, 2, 3, ""], check.string));
 
-check.any(check.map({ foo: 0, bar: "" }, { foo: check.number, bar: check.string }));
+check.any(
+    check.map({ foo: 0, bar: "" }, { foo: check.number, bar: check.string }),
+);
 
-check.all(check.map({ foo: 0, bar: "" }, { foo: check.number, bar: check.string }));
+check.all(
+    check.map({ foo: 0, bar: "" }, { foo: check.number, bar: check.string }),
+);
 
 check.all(check.apply([1, 2, 3, ""], check.string));
 
@@ -134,7 +138,9 @@ check.keyIn(1, { 1: "value" });
 check.keyIn<number>(0, new Map([[0, "value"]]));
 check.keyIn("string".length - 1, "string");
 
-const iterableObject: Iterable<string> = new class implements Iterable<string> {
+const iterableObject: Iterable<string> = new (class
+    implements Iterable<string>
+{
     *[Symbol.iterator]() {
         yield "something";
         yield "value";
@@ -144,7 +150,7 @@ const iterableObject: Iterable<string> = new class implements Iterable<string> {
     values(this: Iterable<string>): Iterator<string> {
         return this[Symbol.iterator]();
     }
-}();
+})();
 
 check.in("value", ["value"]);
 check.in("value", { key: "value" });

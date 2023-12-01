@@ -50,9 +50,7 @@ markerClusterGroup = L.markerClusterGroup(markerClusterGroupOptions);
 let map = L.map("foo");
 
 markerClusterGroup = markerClusterGroup.addTo(map);
-map = map
-    .addLayer(markerClusterGroup)
-    .removeLayer(markerClusterGroup);
+map = map.addLayer(markerClusterGroup).removeLayer(markerClusterGroup);
 
 const latLng: L.LatLng = L.latLng(10, 10);
 
@@ -66,7 +64,8 @@ const layerGroup: L.LayerGroup = L.layerGroup(layers);
 
 marker = markerClusterGroup.getVisibleParent(marker);
 
-const spiderfyEventHandler: L.SpiderfyEventHandlerFn = event => event.cluster.getChildCount() === event.markers.length;
+const spiderfyEventHandler: L.SpiderfyEventHandlerFn = (event) =>
+    event.cluster.getChildCount() === event.markers.length;
 const animationEndEventHandler: L.AnimationEndEventHandlerFn = () => {};
 
 markerClusterGroup = markerClusterGroup

@@ -12,10 +12,14 @@ export = reconnect;
  *
  * Each reconnect will re-use the options provided to the entity `start` method.
  */
-declare function reconnect<TEntity extends Connection>(params: { entity: TEntity }): reconnect.Reconnect<TEntity>;
+declare function reconnect<TEntity extends Connection>(params: {
+    entity: TEntity;
+}): reconnect.Reconnect<TEntity>;
 
 declare namespace reconnect {
-    type Reconnect<TEntity extends Connection> = ReconnectCls<TEntity> & { constructor: typeof ReconnectCls };
+    type Reconnect<TEntity extends Connection> = ReconnectCls<TEntity> & {
+        constructor: typeof ReconnectCls;
+    };
 
     interface ReconnectEvents {
         reconnecting: () => void;
@@ -51,7 +55,10 @@ declare class ReconnectCls<TEntity extends Connection> extends EventEmitter {
         event: TEvent,
         listener: reconnect.ReconnectEvents[TEvent],
     ): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     on<TEvent extends keyof reconnect.ReconnectEvents>(
         event: TEvent,
@@ -69,19 +76,28 @@ declare class ReconnectCls<TEntity extends Connection> extends EventEmitter {
         event: TEvent,
         listener: reconnect.ReconnectEvents[TEvent],
     ): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener<TEvent extends keyof reconnect.ReconnectEvents>(
         event: TEvent,
         listener: reconnect.ReconnectEvents[TEvent],
     ): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener<TEvent extends keyof reconnect.ReconnectEvents>(
         event: TEvent,
         listener: reconnect.ReconnectEvents[TEvent],
     ): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     off<TEvent extends keyof reconnect.ReconnectEvents>(
         event: TEvent,

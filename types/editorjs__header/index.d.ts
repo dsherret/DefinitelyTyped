@@ -16,7 +16,12 @@ interface Level {
 }
 
 declare class Header {
-    constructor(config?: { data: HeaderData; config: HeaderConfig; api: object; readOnly: boolean });
+    constructor(config?: {
+        data: HeaderData;
+        config: HeaderConfig;
+        api: object;
+        readOnly: boolean;
+    });
 
     normalizeData(data: HeaderData): HeaderData;
 

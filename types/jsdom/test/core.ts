@@ -69,7 +69,10 @@ function test_virtualConsole() {
     virtualConsole.sendTo(c, { omitJSDOMErrors: true });
 }
 
-function test_cookieJar(store: MemoryCookieStore, options: ToughCookieJar.Options) {
+function test_cookieJar(
+    store: MemoryCookieStore,
+    options: ToughCookieJar.Options,
+) {
     const cookieJar: CookieJar = new CookieJar(store, options);
     const constructorOptions: ConstructorOptions = { cookieJar };
     const dom = new JSDOM(``, constructorOptions);
@@ -94,11 +97,13 @@ function test_pretendToBeVisual() {
 function test_serialize() {
     const dom = new JSDOM(`<!DOCTYPE html>hello`);
 
-    dom.serialize() === "<!DOCTYPE html><html><head></head><body>hello</body></html>";
+    dom.serialize() ===
+        "<!DOCTYPE html><html><head></head><body>hello</body></html>";
 
     // Contrast with:
     // tslint:disable-next-line no-unnecessary-type-assertion
-    dom.window.document.documentElement!.outerHTML === "<html><head></head><body>hello</body></html>";
+    dom.window.document.documentElement!.outerHTML ===
+        "<html><head></head><body>hello</body></html>";
 }
 
 function test_nodeLocation() {
@@ -145,7 +150,10 @@ function test_reconfigure(myFakeTopForTesting: DOMWindow) {
     dom.window.top === dom.window;
     dom.window.location.href === "about:blank";
 
-    dom.reconfigure({ windowTop: myFakeTopForTesting, url: "https://example.com/" });
+    dom.reconfigure({
+        windowTop: myFakeTopForTesting,
+        url: "https://example.com/",
+    });
 
     dom.window.top === myFakeTopForTesting;
     dom.window.location.href === "https://example.com/";
@@ -154,7 +162,7 @@ function test_reconfigure(myFakeTopForTesting: DOMWindow) {
 function test_fromURL() {
     const options: BaseOptions = {};
 
-    JSDOM.fromURL("https://example.com/", options).then(dom => {
+    JSDOM.fromURL("https://example.com/", options).then((dom) => {
         console.log(dom.serialize());
     });
 
@@ -166,7 +174,7 @@ function test_fromURL() {
 }
 
 function test_fromFile(options: FileOptions) {
-    JSDOM.fromFile("stuff.html", options).then(dom => {
+    JSDOM.fromFile("stuff.html", options).then((dom) => {
         console.log(dom.serialize());
     });
 }
@@ -192,10 +200,14 @@ function test_custom_resource_loader() {
     class CustomResourceLoader extends ResourceLoader {
         fetch(url: string, options: FetchOptions) {
             if (options.element) {
-                console.log(`Element ${options.element.localName} is requesting the url ${url}`);
+                console.log(
+                    `Element ${options.element.localName} is requesting the url ${url}`,
+                );
 
                 if (options.element.localName === "iframe") {
-                    console.log("Ignoring resource requested by iframe element");
+                    console.log(
+                        "Ignoring resource requested by iframe element",
+                    );
                     return null;
                 }
             }

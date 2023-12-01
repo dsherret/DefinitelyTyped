@@ -90,14 +90,21 @@ declare module "." {
         /**
          * Defines the order in which the `SuspenseList` children should be revealed.
          */
-        revealOrder?: Exclude<SuspenseListRevealOrder, DirectionalSuspenseListProps["revealOrder"]> | undefined;
+        revealOrder?:
+            | Exclude<
+                  SuspenseListRevealOrder,
+                  DirectionalSuspenseListProps["revealOrder"]
+              >
+            | undefined;
         /**
          * The tail property is invalid when not using the `forwards` or `backwards` reveal orders.
          */
         tail?: never | undefined;
     }
 
-    export type SuspenseListProps = DirectionalSuspenseListProps | NonDirectionalSuspenseListProps;
+    export type SuspenseListProps =
+        | DirectionalSuspenseListProps
+        | NonDirectionalSuspenseListProps;
 
     /**
      * `SuspenseList` helps coordinate many components that can suspend by orchestrating the order
@@ -113,7 +120,9 @@ declare module "." {
     export const unstable_SuspenseList: ExoticComponent<SuspenseListProps>;
 
     // eslint-disable-next-line @typescript-eslint/ban-types
-    export function experimental_useEffectEvent<T extends Function>(event: T): T;
+    export function experimental_useEffectEvent<T extends Function>(
+        event: T,
+    ): T;
 
     type Reference = object;
     type TaintableUniqueValue = string | bigint | ArrayBufferView;
@@ -122,5 +131,8 @@ declare module "." {
         lifetime: Reference,
         value: TaintableUniqueValue,
     ): void;
-    function experimental_taintObjectReference(message: string | undefined, object: Reference): void;
+    function experimental_taintObjectReference(
+        message: string | undefined,
+        object: Reference,
+    ): void;
 }

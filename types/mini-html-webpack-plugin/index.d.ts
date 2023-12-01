@@ -22,7 +22,9 @@ declare namespace MiniHtmlWebpackPlugin {
         /** Optional, use this for choosing chunks to include to your page. */
         chunks?: string[] | undefined;
         /** define a template function to generate your own code */
-        template?: ((context: PluginContext) => string | Promise<string>) | undefined;
+        template?:
+            | ((context: PluginContext) => string | Promise<string>)
+            | undefined;
     }
 
     interface PluginContext {
@@ -40,7 +42,8 @@ declare namespace MiniHtmlWebpackPlugin {
         publicPath?: string | undefined;
     }
 
-    type GenerateCSSReferencesOptions = GenerateAttributesOptions & FilesOptions;
+    type GenerateCSSReferencesOptions = GenerateAttributesOptions &
+        FilesOptions;
 
     type GenerateJSReferencesOptions = GenerateAttributesOptions & FilesOptions;
 
@@ -55,8 +58,12 @@ declare namespace MiniHtmlWebpackPlugin {
 
     function defaultTemplate(options?: PluginContext): string;
     function generateAttributes(options?: GenerateAttributesOptions): string;
-    function generateCSSReferences(options?: GenerateCSSReferencesOptions): string;
-    function generateJSReferences(options?: GenerateJSReferencesOptions): string;
+    function generateCSSReferences(
+        options?: GenerateCSSReferencesOptions,
+    ): string;
+    function generateJSReferences(
+        options?: GenerateJSReferencesOptions,
+    ): string;
 }
 
 export = MiniHtmlWebpackPlugin;

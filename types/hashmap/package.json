@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/hashmap",
-    "version": "2.3.9999",
-    "projects": [
-        "https://github.com/flesler/hashmap"
-    ],
-    "devDependencies": {
-        "@types/hashmap": "workspace:."
+  "private": true,
+  "name": "@types/hashmap",
+  "version": "2.3.9999",
+  "projects": [
+    "https://github.com/flesler/hashmap"
+  ],
+  "devDependencies": {
+    "@types/hashmap": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Rafał Wrzeszcz",
+      "githubUsername": "rafalwrzeszcz"
     },
-    "owners": [
-        {
-            "name": "Rafał Wrzeszcz",
-            "githubUsername": "rafalwrzeszcz"
-        },
-        {
-            "name": "Vasya Aksyonov",
-            "githubUsername": "outring"
-        },
-        {
-            "name": "Edoardo Morandi",
-            "githubUsername": "dodomorandi"
-        }
-    ]
+    {
+      "name": "Vasya Aksyonov",
+      "githubUsername": "outring"
+    },
+    {
+      "name": "Edoardo Morandi",
+      "githubUsername": "dodomorandi"
+    }
+  ]
 }

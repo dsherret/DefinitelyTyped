@@ -2,7 +2,7 @@ import timeLimit = require("time-limit-promise");
 declare var setTimeout: (cb: () => void, timeout: number) => void;
 
 async function foo(id: number, delay: number): Promise<string> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve("foo" + id);
         }, delay);
@@ -19,10 +19,14 @@ async function foo(id: number, delay: number): Promise<string> {
 
     /* resolveWith provided */
     // $ExpectType string | number
-    const fooOutResolved = await timeLimit(foo(2, 0), 100, { resolveWith: 100 }); // 'foo2'
+    const fooOutResolved = await timeLimit(foo(2, 0), 100, {
+        resolveWith: 100,
+    }); // 'foo2'
 
     // $ExpectType string | number
-    const fooOutResolvedFail = await timeLimit(foo(5, 200), 100, { resolveWith: 100 }); // 100
+    const fooOutResolvedFail = await timeLimit(foo(5, 200), 100, {
+        resolveWith: 100,
+    }); // 100
 
     /* rejectWith provided */
     // $ExpectType string

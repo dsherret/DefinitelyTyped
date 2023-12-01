@@ -28,10 +28,15 @@ declare namespace mailgunTransport {
     class MailgunTransport implements nodemailer.Transport {
         name: string;
         version: string;
-        send(mail: MailMessage, callback: (err: Error | null, info?: Information) => void): void;
+        send(
+            mail: MailMessage,
+            callback: (err: Error | null, info?: Information) => void,
+        ): void;
     }
 }
 
-declare function mailgunTransport(options: mailgunTransport.Options): mailgunTransport.MailgunTransport;
+declare function mailgunTransport(
+    options: mailgunTransport.Options,
+): mailgunTransport.MailgunTransport;
 
 export = mailgunTransport;

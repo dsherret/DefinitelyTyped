@@ -63,7 +63,11 @@ declare namespace browserify {
         // disables converting module ids into numerical indexes. This is useful for preserving the original paths that a bundle was generated with.
         fullPaths?: boolean | undefined;
         // sets the list of built-ins to use, which by default is set in lib/builtins.js in this distribution.
-        builtins?: string[] | { [builtinName: string]: string } | boolean | undefined;
+        builtins?:
+            | string[]
+            | { [builtinName: string]: string }
+            | boolean
+            | undefined;
         // set if external modules should be bundled. Defaults to true.
         bundleExternal?: boolean | undefined;
         // When true, always insert process, global, __filename, and __dirname without analyzing the AST for faster builds but larger output bundles. Default false.
@@ -87,9 +91,9 @@ declare namespace browserify {
         (files: InputFile[], opts?: Options): BrowserifyObject;
         (file: InputFile, opts?: Options): BrowserifyObject;
         (opts?: Options): BrowserifyObject;
-        new(files: InputFile[], opts?: Options): BrowserifyObject;
-        new(file: InputFile, opts?: Options): BrowserifyObject;
-        new(opts?: Options): BrowserifyObject;
+        new (files: InputFile[], opts?: Options): BrowserifyObject;
+        new (file: InputFile, opts?: Options): BrowserifyObject;
+        new (opts?: Options): BrowserifyObject;
     }
 
     interface BrowserifyObject extends NodeJS.EventEmitter {
@@ -97,7 +101,10 @@ declare namespace browserify {
          * Add an entry file from file that will be executed when the bundle loads.
          * If file is an array, each item in file will be added as an entry file.
          */
-        add(file: InputFile | InputFile[], opts?: FileOptions): BrowserifyObject;
+        add(
+            file: InputFile | InputFile[],
+            opts?: FileOptions,
+        ): BrowserifyObject;
         /**
          * Make file available from outside the bundle with require(file).
          * The file param is anything that can be resolved by require.resolve().
@@ -134,7 +141,10 @@ declare namespace browserify {
          * If tr is a function, it will be called with tr(file) and it should return a through-stream that takes the raw file contents and produces the transformed source.
          * If tr is a string, it should be a module name or file path of a transform module
          */
-        transform<T extends CustomOptions>(tr: string, opts?: T): BrowserifyObject;
+        transform<T extends CustomOptions>(
+            tr: string,
+            opts?: T,
+        ): BrowserifyObject;
         transform<T extends CustomOptions>(
             tr: (file: string, opts: T) => NodeJS.ReadWriteStream,
             opts?: T,
@@ -143,8 +153,14 @@ declare namespace browserify {
          * Register a plugin with opts. Plugins can be a string module name or a function the same as transforms.
          * plugin(b, opts) is called with the Browserify instance b.
          */
-        plugin<T extends CustomOptions>(plugin: string, opts?: T): BrowserifyObject;
-        plugin<T extends CustomOptions>(plugin: (b: BrowserifyObject, opts: T) => any, opts?: T): BrowserifyObject;
+        plugin<T extends CustomOptions>(
+            plugin: string,
+            opts?: T,
+        ): BrowserifyObject;
+        plugin<T extends CustomOptions>(
+            plugin: (b: BrowserifyObject, opts: T) => any,
+            opts?: T,
+        ): BrowserifyObject;
         /**
          * Reset the pipeline back to a normal state. This function is called automatically when bundle() is called multiple times.
          * This function triggers a 'reset' event.
@@ -155,7 +171,10 @@ declare namespace browserify {
          * When a file is resolved for the bundle, the bundle emits a 'file' event with the full file path, the id string passed to require(), and the parent object used by browser-resolve.
          * You could use the file event to implement a file watcher to regenerate bundles when files change.
          */
-        on(event: "file", listener: (file: string, id: string, parent: any) => any): this;
+        on(
+            event: "file",
+            listener: (file: string, id: string, parent: any) => any,
+        ): this;
         /**
          * When a package.json file is read, this event fires with the contents.
          * The package directory is available at pkg.__dirname.
@@ -164,7 +183,10 @@ declare namespace browserify {
         /**
          * When .bundle() is called, this event fires with the bundle output stream.
          */
-        on(event: "bundle", listener: (bundle: NodeJS.ReadableStream) => any): this;
+        on(
+            event: "bundle",
+            listener: (bundle: NodeJS.ReadableStream) => any,
+        ): this;
         /**
          * When the .reset() method is called or implicitly called by another call to .bundle(), this event fires.
          */
@@ -172,7 +194,10 @@ declare namespace browserify {
         /**
          * When a transform is applied to a file, the 'transform' event fires on the bundle stream with the transform stream tr and the file that the transform is being applied to.
          */
-        on(event: "transform", listener: (tr: NodeJS.ReadWriteStream, file: string) => any): this;
+        on(
+            event: "transform",
+            listener: (tr: NodeJS.ReadWriteStream, file: string) => any,
+        ): this;
         on(event: string, listener: Function): this;
 
         /**

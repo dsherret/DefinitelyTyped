@@ -17,6 +17,10 @@ export default function useLinkProps({ to, action }: Props): {
     href: string;
     accessibilityRole: "link";
     // tslint:disable-next-line no-redundant-undefined
-    onPress: (e?: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent) => void;
+    onPress: (
+        e?:
+            | React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            | GestureResponderEvent,
+    ) => void;
 };
 export {};

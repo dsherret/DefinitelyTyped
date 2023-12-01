@@ -13,7 +13,10 @@ declare module "rest" {
         export function getDefaultClient(): Client;
         export function resetDefaultClient(): void;
 
-        export function wrap<T>(interceptor: Interceptor<T>, config?: T): Client;
+        export function wrap<T>(
+            interceptor: Interceptor<T>,
+            config?: T,
+        ): Client;
 
         export interface Request {
             method?: string | undefined;
@@ -74,22 +77,40 @@ declare module "rest/interceptor" {
     import when = require("when");
     import rest = require("rest");
 
-    function interceptor<T, U>(config: interceptor.Config<T, U>): rest.Interceptor<T>;
+    function interceptor<T, U>(
+        config: interceptor.Config<T, U>,
+    ): rest.Interceptor<T>;
 
     namespace interceptor {
         interface Config<T, U> {
             init?: ((config: T) => U) | undefined;
             request?:
-                | ((request: rest.Request, config: U, meta: rest.Meta) => rest.Request | when.Promise<rest.Request>)
+                | ((
+                      request: rest.Request,
+                      config: U,
+                      meta: rest.Meta,
+                  ) => rest.Request | when.Promise<rest.Request>)
                 | undefined;
             response?:
-                | ((response: rest.Response, config: U, meta: rest.Meta) => rest.Response | when.Promise<rest.Response>)
+                | ((
+                      response: rest.Response,
+                      config: U,
+                      meta: rest.Meta,
+                  ) => rest.Response | when.Promise<rest.Response>)
                 | undefined;
             success?:
-                | ((response: rest.Response, config: U, meta: rest.Meta) => rest.Response | when.Promise<rest.Response>)
+                | ((
+                      response: rest.Response,
+                      config: U,
+                      meta: rest.Meta,
+                  ) => rest.Response | when.Promise<rest.Response>)
                 | undefined;
             error?:
-                | ((response: rest.Response, config: U, meta: rest.Meta) => rest.Response | when.Promise<rest.Response>)
+                | ((
+                      response: rest.Response,
+                      config: U,
+                      meta: rest.Meta,
+                  ) => rest.Response | when.Promise<rest.Response>)
                 | undefined;
         }
     }
@@ -270,9 +291,11 @@ declare module "rest/interceptor/template" {
     namespace template {
         interface Config {
             template?: string | undefined;
-            params?: {
-                [name: string]: any;
-            } | undefined;
+            params?:
+                | {
+                      [name: string]: any;
+                  }
+                | undefined;
         }
     }
 
@@ -301,11 +324,13 @@ declare module "rest/interceptor/jsonp" {
 
     namespace jsonp {
         interface Config {
-            callback?: {
-                param?: string | undefined;
-                prefix?: string | undefined;
-                name?: string | undefined;
-            } | undefined;
+            callback?:
+                | {
+                      param?: string | undefined;
+                      prefix?: string | undefined;
+                      name?: string | undefined;
+                  }
+                | undefined;
         }
     }
 

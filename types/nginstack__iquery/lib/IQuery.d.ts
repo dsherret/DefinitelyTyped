@@ -7,7 +7,10 @@ declare class IQuery {
     private _leftJoinIQuery;
     private _permissionJoins;
     private userKey;
-    column(field: IClauseSelect | Record<any, any>, ...args: any[]): IClauseSelect;
+    column(
+        field: IClauseSelect | Record<any, any>,
+        ...args: any[]
+    ): IClauseSelect;
     from(classKey: number, alias: any): IQuery;
     private _iClauseFrom;
     innerJoin(iQueryJoin: any): IClauseJoin;

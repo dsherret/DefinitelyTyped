@@ -8,14 +8,22 @@ declare namespace GoogleAppsScript {
          */
         interface Calendar {
             createAllDayEvent(title: string, date: Base.Date): CalendarEvent;
-            createAllDayEvent(title: string, startDate: Base.Date, endDate: Base.Date): CalendarEvent;
+            createAllDayEvent(
+                title: string,
+                startDate: Base.Date,
+                endDate: Base.Date,
+            ): CalendarEvent;
             createAllDayEvent(
                 title: string,
                 startDate: Base.Date,
                 endDate: Base.Date,
                 options: { [key: string]: any },
             ): CalendarEvent;
-            createAllDayEvent(title: string, date: Base.Date, options: { [key: string]: any }): CalendarEvent;
+            createAllDayEvent(
+                title: string,
+                date: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent;
             createAllDayEventSeries(
                 title: string,
                 startDate: Base.Date,
@@ -27,7 +35,11 @@ declare namespace GoogleAppsScript {
                 recurrence: EventRecurrence,
                 options: { [key: string]: any },
             ): CalendarEventSeries;
-            createEvent(title: string, startTime: Base.Date, endTime: Base.Date): CalendarEvent;
+            createEvent(
+                title: string,
+                startTime: Base.Date,
+                endTime: Base.Date,
+            ): CalendarEvent;
             createEvent(
                 title: string,
                 startTime: Base.Date,
@@ -53,10 +65,20 @@ declare namespace GoogleAppsScript {
             getDescription(): string;
             getEventById(iCalId: string): CalendarEvent;
             getEventSeriesById(iCalId: string): CalendarEventSeries;
-            getEvents(startTime: Base.Date, endTime: Base.Date): CalendarEvent[];
-            getEvents(startTime: Base.Date, endTime: Base.Date, options: { [key: string]: any }): CalendarEvent[];
+            getEvents(
+                startTime: Base.Date,
+                endTime: Base.Date,
+            ): CalendarEvent[];
+            getEvents(
+                startTime: Base.Date,
+                endTime: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent[];
             getEventsForDay(date: Base.Date): CalendarEvent[];
-            getEventsForDay(date: Base.Date, options: { [key: string]: any }): CalendarEvent[];
+            getEventsForDay(
+                date: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent[];
             getId(): string;
             getName(): string;
             getTimeZone(): string;
@@ -85,14 +107,22 @@ declare namespace GoogleAppsScript {
             Visibility: typeof Visibility;
             Weekday: typeof Base.Weekday;
             createAllDayEvent(title: string, date: Base.Date): CalendarEvent;
-            createAllDayEvent(title: string, startDate: Base.Date, endDate: Base.Date): CalendarEvent;
+            createAllDayEvent(
+                title: string,
+                startDate: Base.Date,
+                endDate: Base.Date,
+            ): CalendarEvent;
             createAllDayEvent(
                 title: string,
                 startDate: Base.Date,
                 endDate: Base.Date,
                 options: { [key: string]: any },
             ): CalendarEvent;
-            createAllDayEvent(title: string, date: Base.Date, options: { [key: string]: any }): CalendarEvent;
+            createAllDayEvent(
+                title: string,
+                date: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent;
             createAllDayEventSeries(
                 title: string,
                 startDate: Base.Date,
@@ -105,8 +135,15 @@ declare namespace GoogleAppsScript {
                 options: { [key: string]: any },
             ): CalendarEventSeries;
             createCalendar(name: string): Calendar;
-            createCalendar(name: string, options: { [key: string]: any }): Calendar;
-            createEvent(title: string, startTime: Base.Date, endTime: Base.Date): CalendarEvent;
+            createCalendar(
+                name: string,
+                options: { [key: string]: any },
+            ): Calendar;
+            createEvent(
+                title: string,
+                startTime: Base.Date,
+                endTime: Base.Date,
+            ): CalendarEvent;
             createEvent(
                 title: string,
                 startTime: Base.Date,
@@ -136,10 +173,20 @@ declare namespace GoogleAppsScript {
             getDescription(): string;
             getEventById(iCalId: string): CalendarEvent;
             getEventSeriesById(iCalId: string): CalendarEventSeries;
-            getEvents(startTime: Base.Date, endTime: Base.Date): CalendarEvent[];
-            getEvents(startTime: Base.Date, endTime: Base.Date, options: { [key: string]: any }): CalendarEvent[];
+            getEvents(
+                startTime: Base.Date,
+                endTime: Base.Date,
+            ): CalendarEvent[];
+            getEvents(
+                startTime: Base.Date,
+                endTime: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent[];
             getEventsForDay(date: Base.Date): CalendarEvent[];
-            getEventsForDay(date: Base.Date, options: { [key: string]: any }): CalendarEvent[];
+            getEventsForDay(
+                date: Base.Date,
+                options: { [key: string]: any },
+            ): CalendarEvent[];
             getId(): string;
             getName(): string;
             getOwnedCalendarById(id: string): Calendar;
@@ -157,7 +204,10 @@ declare namespace GoogleAppsScript {
             setSelected(selected: boolean): Calendar;
             setTimeZone(timeZone: string): Calendar;
             subscribeToCalendar(id: string): Calendar;
-            subscribeToCalendar(id: string, options: { [key: string]: any }): Calendar;
+            subscribeToCalendar(
+                id: string,
+                options: { [key: string]: any },
+            ): Calendar;
         }
         /**
          * Represents a single calendar event.
@@ -204,11 +254,16 @@ declare namespace GoogleAppsScript {
             removeGuest(email: string): CalendarEvent;
             resetRemindersToDefault(): CalendarEvent;
             setAllDayDate(date: Base.Date): CalendarEvent;
-            setAllDayDates(startDate: Base.Date, endDate: Base.Date): CalendarEvent;
+            setAllDayDates(
+                startDate: Base.Date,
+                endDate: Base.Date,
+            ): CalendarEvent;
             setAnyoneCanAddSelf(anyoneCanAddSelf: boolean): CalendarEvent;
             setColor(color: string): CalendarEvent;
             setDescription(description: string): CalendarEvent;
-            setGuestsCanInviteOthers(guestsCanInviteOthers: boolean): CalendarEvent;
+            setGuestsCanInviteOthers(
+                guestsCanInviteOthers: boolean,
+            ): CalendarEvent;
             setGuestsCanModify(guestsCanModify: boolean): CalendarEvent;
             setGuestsCanSeeGuests(guestsCanSeeGuests: boolean): CalendarEvent;
             setLocation(location: string): CalendarEvent;
@@ -258,13 +313,24 @@ declare namespace GoogleAppsScript {
             setAnyoneCanAddSelf(anyoneCanAddSelf: boolean): CalendarEventSeries;
             setColor(color: string): CalendarEventSeries;
             setDescription(description: string): CalendarEventSeries;
-            setGuestsCanInviteOthers(guestsCanInviteOthers: boolean): CalendarEventSeries;
+            setGuestsCanInviteOthers(
+                guestsCanInviteOthers: boolean,
+            ): CalendarEventSeries;
             setGuestsCanModify(guestsCanModify: boolean): CalendarEventSeries;
-            setGuestsCanSeeGuests(guestsCanSeeGuests: boolean): CalendarEventSeries;
+            setGuestsCanSeeGuests(
+                guestsCanSeeGuests: boolean,
+            ): CalendarEventSeries;
             setLocation(location: string): CalendarEventSeries;
             setMyStatus(status: GuestStatus): CalendarEventSeries;
-            setRecurrence(recurrence: EventRecurrence, startDate: Base.Date): CalendarEventSeries;
-            setRecurrence(recurrence: EventRecurrence, startTime: Base.Date, endTime: Base.Date): CalendarEventSeries;
+            setRecurrence(
+                recurrence: EventRecurrence,
+                startDate: Base.Date,
+            ): CalendarEventSeries;
+            setRecurrence(
+                recurrence: EventRecurrence,
+                startTime: Base.Date,
+                endTime: Base.Date,
+            ): CalendarEventSeries;
             setTag(key: string, value: string): CalendarEventSeries;
             setTitle(title: string): CalendarEventSeries;
             setVisibility(visibility: Visibility): CalendarEventSeries;

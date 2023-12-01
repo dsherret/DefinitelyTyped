@@ -16,7 +16,10 @@ declare abstract class StorageBase {
     constructor();
 
     abstract exists(fileName: string, targetDir?: string): Promise<boolean>;
-    abstract save(image: StorageBase.Image, targetDir?: string): Promise<string>;
+    abstract save(
+        image: StorageBase.Image,
+        targetDir?: string,
+    ): Promise<string>;
     abstract serve(): Handler;
     abstract delete(fileName: string, targetDir?: string): Promise<boolean>;
     abstract read(options?: StorageBase.ReadOptions): Promise<Buffer>;

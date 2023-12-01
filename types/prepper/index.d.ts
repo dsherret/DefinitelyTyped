@@ -49,7 +49,10 @@ export namespace handlers {
     }
 
     class Merge extends EventEmitter implements Handler {
-        constructor(other: Record<string, any>, options?: { key?: PropertyName | PropertyName[]; invert?: boolean });
+        constructor(
+            other: Record<string, any>,
+            options?: { key?: PropertyName | PropertyName[]; invert?: boolean },
+        );
         handle(event: Event): void;
     }
 

@@ -64,7 +64,8 @@ export interface Submittable {
     submit: (connection: Connection) => void;
 }
 
-export interface QueryArrayConfig<I extends any[] = any[]> extends QueryConfig<I> {
+export interface QueryArrayConfig<I extends any[] = any[]>
+    extends QueryConfig<I> {
     rowMode: "array";
 }
 
@@ -89,11 +90,13 @@ export interface QueryResultRow {
     [column: string]: any;
 }
 
-export interface QueryResult<R extends QueryResultRow = any> extends QueryResultBase {
+export interface QueryResult<R extends QueryResultRow = any>
+    extends QueryResultBase {
     rows: R[];
 }
 
-export interface QueryArrayResult<R extends any[] = any[]> extends QueryResultBase {
+export interface QueryArrayResult<R extends any[] = any[]>
+    extends QueryResultBase {
     rows: R[];
 }
 
@@ -103,7 +106,8 @@ export interface Notification {
     payload?: string | undefined;
 }
 
-export interface ResultBuilder<R extends QueryResultRow = any> extends QueryResult<R> {
+export interface ResultBuilder<R extends QueryResultRow = any>
+    extends QueryResult<R> {
     addRow(row: R): void;
 }
 
@@ -169,7 +173,11 @@ export class Pool extends events.EventEmitter {
 
     connect(): Promise<PoolClient>;
     connect(
-        callback: (err: Error | undefined, client: PoolClient | undefined, done: (release?: any) => void) => void,
+        callback: (
+            err: Error | undefined,
+            client: PoolClient | undefined,
+            done: (release?: any) => void,
+        ) => void,
     ): void;
 
     end(): Promise<void>;
@@ -203,8 +211,14 @@ export class Pool extends events.EventEmitter {
     ): void;
     // tslint:enable:no-unnecessary-generics
 
-    on(event: "release" | "error", listener: (err: Error, client: PoolClient) => void): this;
-    on(event: "connect" | "acquire" | "remove", listener: (client: PoolClient) => void): this;
+    on(
+        event: "release" | "error",
+        listener: (err: Error, client: PoolClient) => void,
+    ): this;
+    on(
+        event: "connect" | "acquire" | "remove",
+        listener: (client: PoolClient) => void,
+    ): this;
 }
 
 export class ClientBase extends events.EventEmitter {
@@ -276,12 +290,16 @@ export interface PoolClient extends ClientBase {
     release(err?: Error | boolean): void;
 }
 
-export class Query<R extends QueryResultRow = any, I extends any[] = any> extends events.EventEmitter
+export class Query<R extends QueryResultRow = any, I extends any[] = any>
+    extends events.EventEmitter
     implements Submittable
 {
     constructor(queryTextOrConfig?: string | QueryConfig<I>, values?: I);
     submit: (connection: Connection) => void;
-    on(event: "row", listener: (row: R, result?: ResultBuilder<R>) => void): this;
+    on(
+        event: "row",
+        listener: (row: R, result?: ResultBuilder<R>) => void,
+    ): this;
     on(event: "error", listener: (err: Error) => void): this;
     on(event: "end", listener: (result: ResultBuilder<R>) => void): this;
 }

@@ -48,8 +48,12 @@ declare var MediaStreamTrackProcessor: {
     prototype: MediaStreamTrackProcessor<any>;
 
     /** Constructor overrides based on the type of track. */
-    new(init: MediaStreamTrackProcessorInit & { track: MediaStreamAudioTrack }): MediaStreamTrackProcessor<AudioData>;
-    new(init: MediaStreamTrackProcessorInit & { track: MediaStreamVideoTrack }): MediaStreamTrackProcessor<VideoFrame>;
+    new (
+        init: MediaStreamTrackProcessorInit & { track: MediaStreamAudioTrack },
+    ): MediaStreamTrackProcessor<AudioData>;
+    new (
+        init: MediaStreamTrackProcessorInit & { track: MediaStreamVideoTrack },
+    ): MediaStreamTrackProcessor<VideoFrame>;
 };
 
 interface MediaStreamTrackProcessorInit {
@@ -66,7 +70,8 @@ interface MediaStreamTrackProcessorInit {
 /**
  * Takes video frames as input, and emits control signals that result from subsequent processing.
  */
-interface MediaStreamTrackGenerator<T extends AudioData | VideoFrame> extends MediaStreamTrack {
+interface MediaStreamTrackGenerator<T extends AudioData | VideoFrame>
+    extends MediaStreamTrack {
     /**
      * Allows writing media frames to the MediaStreamTrackGenerator, which is itself a
      * MediaStreamTrack. When a frame is written to writable, the frame’s close() method is
@@ -81,18 +86,26 @@ interface MediaStreamTrackGenerator<T extends AudioData | VideoFrame> extends Me
     readonly readableControl: ReadableStream<MediaStreamTrackSignal>;
 }
 
-type MediaStreamAudioTrackGenerator = MediaStreamTrackGenerator<AudioData> & MediaStreamAudioTrack;
-type MediaStreamVideoTrackGenerator = MediaStreamTrackGenerator<VideoFrame> & MediaStreamVideoTrack;
+type MediaStreamAudioTrackGenerator = MediaStreamTrackGenerator<AudioData> &
+    MediaStreamAudioTrack;
+type MediaStreamVideoTrackGenerator = MediaStreamTrackGenerator<VideoFrame> &
+    MediaStreamVideoTrack;
 
 declare var MediaStreamTrackGenerator: {
     prototype: MediaStreamTrackGenerator<any>;
 
     /** Constructor overrides based on the type of track. */
-    new(
-        init: MediaStreamTrackGeneratorInit & { kind: "audio"; signalTarget?: MediaStreamAudioTrack | undefined },
+    new (
+        init: MediaStreamTrackGeneratorInit & {
+            kind: "audio";
+            signalTarget?: MediaStreamAudioTrack | undefined;
+        },
     ): MediaStreamAudioTrackGenerator;
-    new(
-        init: MediaStreamTrackGeneratorInit & { kind: "video"; signalTarget?: MediaStreamVideoTrack | undefined },
+    new (
+        init: MediaStreamTrackGeneratorInit & {
+            kind: "video";
+            signalTarget?: MediaStreamVideoTrack | undefined;
+        },
     ): MediaStreamVideoTrackGenerator;
 };
 

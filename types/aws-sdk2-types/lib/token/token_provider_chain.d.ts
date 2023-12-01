@@ -8,7 +8,9 @@ export class TokenProviderChain {
     /**
      * Resolves the provider chain by searching for the first set of token in providers.
      */
-    resolve(callback: (err: AWSError | null, token?: Token) => void): TokenProviderChain;
+    resolve(
+        callback: (err: AWSError | null, token?: Token) => void,
+    ): TokenProviderChain;
     /**
      * Return a Promise on resolve() function
      */

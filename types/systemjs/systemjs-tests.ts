@@ -1,8 +1,8 @@
-System.import("./hi.js").then(hi => {
+System.import("./hi.js").then((hi) => {
     hi.someProperty();
 });
 
-System.import<Hi>("./hi.js").then(hi => {
+System.import<Hi>("./hi.js").then((hi) => {
     hi.someExport();
 });
 
@@ -14,10 +14,10 @@ System.register(["foo", "bar"], (_export, _context) => {
 
     return {
         setters: [
-            module => {
+            (module) => {
                 foo = module;
             },
-            module => {
+            (module) => {
                 bar = module;
             },
         ],

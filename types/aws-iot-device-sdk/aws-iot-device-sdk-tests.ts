@@ -21,30 +21,24 @@ const device = new awsIot.device({
 
 device.subscribe("topic_1");
 
-device
-    .on("connect", function() {
-        console.log("connect");
-    });
-device
-    .on("close", function() {
-        console.log("close");
-    });
-device
-    .on("reconnect", function() {
-        console.log("reconnect");
-    });
-device
-    .on("offline", function() {
-        console.log("offline");
-    });
-device
-    .on("error", function(error: Error | string) {
-        console.log("error", error);
-    });
-device
-    .on("message", function(topic: string, payload: any) {
-        console.log("message", topic, payload.toString());
-    });
+device.on("connect", function () {
+    console.log("connect");
+});
+device.on("close", function () {
+    console.log("close");
+});
+device.on("reconnect", function () {
+    console.log("reconnect");
+});
+device.on("offline", function () {
+    console.log("offline");
+});
+device.on("error", function (error: Error | string) {
+    console.log("error", error);
+});
+device.on("message", function (topic: string, payload: any) {
+    console.log("message", topic, payload.toString());
+});
 
 const thingShadows = new awsIot.thingShadow({
     keyPath: "",
@@ -65,44 +59,53 @@ thingShadows.register(
     (err: Error, failedTopics: mqtt.ISubscriptionGrant[]) => {},
 );
 
-thingShadows.subscribe("topic", { qos: 1 }, (error: any, granted: mqtt.ISubscriptionGrant[]) => {});
+thingShadows.subscribe(
+    "topic",
+    { qos: 1 },
+    (error: any, granted: mqtt.ISubscriptionGrant[]) => {},
+);
 
-thingShadows.on("connect", function() {
+thingShadows.on("connect", function () {
     console.log("connected to AWS IoT");
 });
 
-thingShadows.on("close", function() {
+thingShadows.on("close", function () {
     console.log("close");
     thingShadows.unregister("thingName");
 });
 
-thingShadows.on("reconnect", function() {
+thingShadows.on("reconnect", function () {
     console.log("reconnect");
 });
 
-thingShadows.on("offline", function() {
+thingShadows.on("offline", function () {
     console.log("offline");
 });
 
-thingShadows.on("error", function(error: Error) {
+thingShadows.on("error", function (error: Error) {
     console.log("error", error);
 });
 
-thingShadows.on("message", function(topic: string, payload: any) {
+thingShadows.on("message", function (topic: string, payload: any) {
     console.log("message", topic, payload.toString());
 });
 
 thingShadows.on(
     "status",
-    function(thingName: string, stat: "accepted" | "rejected", clientToken: string, stateObject: any) {
-    },
+    function (
+        thingName: string,
+        stat: "accepted" | "rejected",
+        clientToken: string,
+        stateObject: any,
+    ) {},
 );
 
-thingShadows.on("delta", function(thingName: string, stateObject: any) {
-});
+thingShadows.on("delta", function (thingName: string, stateObject: any) {});
 
-thingShadows.on("timeout", function(thingName: string, clientToken: string) {
-});
+thingShadows.on(
+    "timeout",
+    function (thingName: string, clientToken: string) {},
+);
 
 const jobs = new awsIot.jobs({
     keyPath: "",
@@ -132,11 +135,21 @@ jobs.subscribeToJobs("thingname", "operationname", (err, job) => {
         job.status.statusDetails.progress,
     );
 
-    job.inProgress({ progress: "1" }, err => console.error("Job progress error", err));
-    job.failed({ progress: "2" }, err => console.error("Job failed error", err));
-    job.succeeded({ progress: "3" }, err => console.error("Job failed error", err));
+    job.inProgress({ progress: "1" }, (err) =>
+        console.error("Job progress error", err),
+    );
+    job.failed({ progress: "2" }, (err) =>
+        console.error("Job failed error", err),
+    );
+    job.succeeded({ progress: "3" }, (err) =>
+        console.error("Job failed error", err),
+    );
 });
 
-jobs.startJobNotifications("thingname", err => console.error("Start job notification error", err));
+jobs.startJobNotifications("thingname", (err) =>
+    console.error("Start job notification error", err),
+);
 
-jobs.unsubscribeFromJobs("thingname", "operationame", err => console.error("Unsubscribe from jobs error", err));
+jobs.unsubscribeFromJobs("thingname", "operationame", (err) =>
+    console.error("Unsubscribe from jobs error", err),
+);

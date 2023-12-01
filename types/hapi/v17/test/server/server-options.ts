@@ -1,5 +1,11 @@
 // https://github.com/hapijs/hapi/blob/master/API.md#-server-options
-import { Plugin, RouteOptions, Server, ServerOptions, ServerRegisterOptions } from "hapi";
+import {
+    Plugin,
+    RouteOptions,
+    Server,
+    ServerOptions,
+    ServerRegisterOptions,
+} from "hapi";
 import { MimosOptions, MimosOptionsValue } from "mimos";
 
 const mimeOptions: MimosOptions = {
@@ -50,7 +56,11 @@ const routeOptions: RouteOptions = {
         relativeTo: __dirname,
     },
     cors: {
-        origin: ["http://test.example.com", "http://www.example.com", "http://*.a.com"],
+        origin: [
+            "http://test.example.com",
+            "http://www.example.com",
+            "http://*.a.com",
+        ],
     },
 };
 

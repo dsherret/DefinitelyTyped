@@ -222,19 +222,30 @@ declare namespace Less {
         /** Add a path to every generated import and url in output css files. */
         rootpath?: string | undefined;
         /** Math mode options for avoiding symbol conficts on math expressions. */
-        math?: "always" | "strict" | "parens-division" | "parens" | "strict-legacy" | number | undefined;
+        math?:
+            | "always"
+            | "strict"
+            | "parens-division"
+            | "parens"
+            | "strict-legacy"
+            | number
+            | undefined;
         /** If true, stops any warnings from being shown. */
         silent?: boolean | undefined;
         /** Without this option, Less attempts to guess at the output unit when it does maths. */
         strictUnits?: boolean | undefined;
         /** Defines a variable that can be referenced by the file. */
-        globalVars?: {
-            [key: string]: string;
-        } | undefined;
+        globalVars?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
         /** Puts Var declaration at the end of base file. */
-        modifyVars?: {
-            [key: string]: string;
-        } | undefined;
+        modifyVars?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
         /** Read files synchronously in Node.js */
         syncImport?: boolean | undefined;
     }
@@ -273,11 +284,20 @@ interface LessStatic {
 
     refreshStyles(): void;
 
-    render(input: string, callback: (error: Less.RenderError, output: Less.RenderOutput | undefined) => void): void;
+    render(
+        input: string,
+        callback: (
+            error: Less.RenderError,
+            output: Less.RenderOutput | undefined,
+        ) => void,
+    ): void;
     render(
         input: string,
         options: Less.Options,
-        callback: (error: Less.RenderError, output: Less.RenderOutput | undefined) => void,
+        callback: (
+            error: Less.RenderError,
+            output: Less.RenderOutput | undefined,
+        ) => void,
     ): void;
 
     render(input: string): Promise<Less.RenderOutput>;

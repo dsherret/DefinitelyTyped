@@ -24,10 +24,18 @@ declare const WSD: {
     styles: WSD.Style[];
 
     /** @async */
-    diagramURL: (message: string | Buffer, style?: WSD.Style, format?: WSD.OutputType) => Promise<string>;
+    diagramURL: (
+        message: string | Buffer,
+        style?: WSD.Style,
+        format?: WSD.OutputType,
+    ) => Promise<string>;
 
     /** @async */
-    diagram: (message: string | Buffer, style?: WSD.Style, format?: WSD.OutputType) => Promise<WSD.DiagramTuple>;
+    diagram: (
+        message: string | Buffer,
+        style?: WSD.Style,
+        format?: WSD.OutputType,
+    ) => Promise<WSD.DiagramTuple>;
 };
 
 export = WSD;

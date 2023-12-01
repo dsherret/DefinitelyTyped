@@ -12,8 +12,14 @@ declare class Deferred<Tvalue, Treason> {
     resolve(value: Tvalue): void;
     reject(reason: Treason): void;
     catch(onReject?: ((error: any) => any) | null): Promise<any>;
-    then(onFulfill?: ((value: any) => any) | null, onReject?: ((error: any) => any) | null): Promise<any>;
-    done(onFulfill?: ((value: any) => any) | null, onReject?: ((error: any) => any) | null): void;
+    then(
+        onFulfill?: ((value: any) => any) | null,
+        onReject?: ((error: any) => any) | null,
+    ): Promise<any>;
+    done(
+        onFulfill?: ((value: any) => any) | null,
+        onReject?: ((error: any) => any) | null,
+    ): void;
     isSettled(): boolean;
 }
 

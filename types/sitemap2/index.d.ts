@@ -3,7 +3,7 @@ declare var sitemap2: Sitemap;
 export = sitemap2;
 
 interface Sitemap {
-    new(conf?: SitemapConfig): Sitemap;
+    new (conf?: SitemapConfig): Sitemap;
 
     addUrl(urlData: UrlData | UrlData[] | string | string[]): this;
     addSitemap(sm: Sitemap): this;
@@ -33,12 +33,14 @@ interface UrlData {
     lastmod?: Date | undefined;
     lastmodWithTime?: boolean | undefined;
     lastmodInISO?: boolean | undefined;
-    video?: {
-        title: string;
-        description: string;
-        thumbnail_loc: string;
-        content_loc: string;
-    } | undefined;
+    video?:
+        | {
+              title: string;
+              description: string;
+              thumbnail_loc: string;
+              content_loc: string;
+          }
+        | undefined;
 }
 
 interface SitemapXml {

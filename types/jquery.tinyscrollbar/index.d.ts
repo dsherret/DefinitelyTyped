@@ -38,7 +38,9 @@ interface JQuery {
      *
      * @param options The options
      */
-    tinyscrollbar(options?: JQueryTinyScrollbar.JQueryTinyScrollbarOptions): JQuery;
+    tinyscrollbar(
+        options?: JQueryTinyScrollbar.JQueryTinyScrollbarOptions,
+    ): JQuery;
     /**
      * Updates an existing tinyscrollbar with the specified, or default, options.
      *

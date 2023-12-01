@@ -10,35 +10,39 @@ var authConfig: Hapi.RouteAdditionalConfigurationOptions = {
 var extConfigSingle: Hapi.RouteAdditionalConfigurationOptions = {
     ext: {
         type: "onPreAuth",
-        method: function(request, reply) {
+        method: function (request, reply) {
             reply("ok");
         } as Hapi.ServerExtRequestHandler,
     },
 };
 
 var extConfigMulti: Hapi.RouteAdditionalConfigurationOptions = {
-    ext: [{
-        type: "onPreAuth",
-        method: function(request, reply) {
-            reply("ok");
-        } as Hapi.ServerExtRequestHandler,
-    }, {
-        type: "onPostAuth",
-        method: function(request, reply) {
-            reply("ok");
-        } as Hapi.ServerExtRequestHandler,
-    }, {
-        type: "onPostStart",
-        method: function(server, next) {
-            next();
-        } as Hapi.ServerExtFunction,
-    }],
+    ext: [
+        {
+            type: "onPreAuth",
+            method: function (request, reply) {
+                reply("ok");
+            } as Hapi.ServerExtRequestHandler,
+        },
+        {
+            type: "onPostAuth",
+            method: function (request, reply) {
+                reply("ok");
+            } as Hapi.ServerExtRequestHandler,
+        },
+        {
+            type: "onPostStart",
+            method: function (server, next) {
+                next();
+            } as Hapi.ServerExtFunction,
+        },
+    ],
 };
 
 // Handler in config
 const user: Hapi.RouteAdditionalConfigurationOptions = {
     cache: { expiresIn: 5000, statuses: [200, 201] },
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply({ name: "John" });
     },
 };

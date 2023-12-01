@@ -209,7 +209,14 @@ export class Camera {
      * @param height height value to use
      * @param pixelRatio pixelRatio value to use
      */
-    setPerspective(fov: number, near: number, far: number, width: number, height: number, pixelRatio: number): void;
+    setPerspective(
+        fov: number,
+        near: number,
+        far: number,
+        width: number,
+        height: number,
+        pixelRatio: number,
+    ): void;
 
     /**
      * Sets the camera position based on its fov
@@ -447,7 +454,10 @@ export class Renderer {
      * @param cancelClear if we should cancel clearing the frame buffer
      * (typically on init & resize)
      */
-    bindFrameBuffer(frameBuffer: FrameBufferObject, cancelClear?: boolean): void;
+    bindFrameBuffer(
+        frameBuffer: FrameBufferObject,
+        cancelClear?: boolean,
+    ): void;
 
     /**
      * Called to set whether the renderer will handle depth test or not
@@ -1616,7 +1626,11 @@ export class Plane {
      * @example used in Plane properties and transformations cheat sheet,
      * Simple plane, Simple video plane, Simple canvas plane examples.
      */
-    setPerspective(fieldOfView: number, nearPlane?: number, farPlane?: number): void;
+    setPerspective(
+        fieldOfView: number,
+        nearPlane?: number,
+        farPlane?: number,
+    ): void;
 
     /**
      * Sets the plane new render order.
@@ -2037,7 +2051,9 @@ export class Texture {
      * element already loaded by your plane.
      * @example used in Slideshow with a displacement shader example.
      */
-    setSource(sourceElement: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement): void;
+    setSource(
+        sourceElement: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
+    ): void;
 
     /**
      * Set the texture's wrapS value.
@@ -3201,7 +3217,12 @@ export class Mat4 {
      * @param origin origin vector around which to scale and rotate
      * @returns this matrix after transformations.
      */
-    composeFromOrigin(translation: Vec3, quaternion: Quat, scale: Vec3, origin: Vec3): Mat4;
+    composeFromOrigin(
+        translation: Vec3,
+        quaternion: Quat,
+        scale: Vec3,
+        origin: Vec3,
+    ): Mat4;
 
     /**
      * Copy a matrix into this matrix.
@@ -3317,7 +3338,11 @@ export class PingPongPlane extends Plane {
      * @param domElement a HTML element
      * @param params an object containing the PingPongPlane parameters
      */
-    constructor(curtains: Curtains, domElement: Element, params?: PingPongPlaneParams);
+    constructor(
+        curtains: Curtains,
+        domElement: Element,
+        params?: PingPongPlaneParams,
+    );
 
     /**
      * Render target read pass that will be swapped with the write pass at each

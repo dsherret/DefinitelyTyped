@@ -5,7 +5,10 @@ declare function reload(
     app: express.Express,
     opts: reload.OptionsWaitToStartWebSocketServer,
 ): Promise<reload.ReloadWithWebSocketServer>;
-declare function reload(app: express.Express, opts?: reload.Options): Promise<reload.Reload>;
+declare function reload(
+    app: express.Express,
+    opts?: reload.Options,
+): Promise<reload.Reload>;
 
 declare namespace reload {
     interface Options {

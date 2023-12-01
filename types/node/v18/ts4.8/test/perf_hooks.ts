@@ -39,20 +39,28 @@ performance.measure("test", {
     end: 456,
 });
 
-const measure1: PerformanceMeasure = performance.measure("name", startMark.name, "endMark");
+const measure1: PerformanceMeasure = performance.measure(
+    "name",
+    startMark.name,
+    "endMark",
+);
 measure1.toJSON();
 performance.measure("name", startMark.name);
 performance.measure("name");
 
 const timeOrigin: number = performance.timeOrigin;
 
-const performanceObserverCallback: PerformanceObserverCallback = (list, obs) => {
+const performanceObserverCallback: PerformanceObserverCallback = (
+    list,
+    obs,
+) => {
     const entries: PerformanceEntry[] = list.getEntries();
     const duration: number = entries[0].duration;
     const name: string = entries[0].name;
     const startTime: number = entries[0].startTime;
     const entryTypes: EntryType = entries[0].entryType;
-    const detail: NodeGCPerformanceDetail = entries[0].detail as NodeGCPerformanceDetail;
+    const detail: NodeGCPerformanceDetail = entries[0]
+        .detail as NodeGCPerformanceDetail;
     const kind: number | undefined = detail.kind;
     const flags: number | undefined = detail.flags;
 
@@ -89,12 +97,15 @@ const mean: number = monitor.mean;
 const stddev: number = monitor.stddev;
 const exceeds: number = monitor.exceeds;
 
-const eventLoopUtilization1: EventLoopUtilization = performance.eventLoopUtilization();
-const eventLoopUtilization2: EventLoopUtilization = performance.eventLoopUtilization(eventLoopUtilization1);
-const eventLoopUtilization3: EventLoopUtilization = performance.eventLoopUtilization(
-    eventLoopUtilization2,
-    eventLoopUtilization1,
-);
+const eventLoopUtilization1: EventLoopUtilization =
+    performance.eventLoopUtilization();
+const eventLoopUtilization2: EventLoopUtilization =
+    performance.eventLoopUtilization(eventLoopUtilization1);
+const eventLoopUtilization3: EventLoopUtilization =
+    performance.eventLoopUtilization(
+        eventLoopUtilization2,
+        eventLoopUtilization1,
+    );
 
 let histogram: RecordableHistogram = createHistogram({
     figures: 123,

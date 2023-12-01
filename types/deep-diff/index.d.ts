@@ -36,15 +36,26 @@ declare namespace deepDiff {
         item: Diff<LHS, RHS>;
     }
 
-    type Diff<LHS, RHS = LHS> = DiffNew<RHS> | DiffDeleted<LHS> | DiffEdit<LHS, RHS> | DiffArray<LHS, RHS>;
+    type Diff<LHS, RHS = LHS> =
+        | DiffNew<RHS>
+        | DiffDeleted<LHS>
+        | DiffEdit<LHS, RHS>
+        | DiffArray<LHS, RHS>;
 
     type PreFilterFunction = (path: any[], key: any) => boolean;
 
     interface PreFilterObject<LHS, RHS = LHS> {
         prefilter?(path: any[], key: any): boolean;
-        normalize?(currentPath: any, key: any, lhs: LHS, rhs: RHS): [LHS, RHS] | undefined;
+        normalize?(
+            currentPath: any,
+            key: any,
+            lhs: LHS,
+            rhs: RHS,
+        ): [LHS, RHS] | undefined;
     }
-    type PreFilter<LHS, RHS = LHS> = PreFilterFunction | PreFilterObject<LHS, RHS>;
+    type PreFilter<LHS, RHS = LHS> =
+        | PreFilterFunction
+        | PreFilterObject<LHS, RHS>;
 
     interface Accumulator<LHS, RHS = LHS> {
         push(diff: Diff<LHS, RHS>): void;
@@ -53,7 +64,11 @@ declare namespace deepDiff {
 
     type Observer<LHS, RHS = LHS> = (diff: Diff<LHS, RHS>) => void;
 
-    type Filter<LHS, RHS = LHS> = (target: LHS, source: RHS, change: Diff<LHS, RHS>) => boolean;
+    type Filter<LHS, RHS = LHS> = (
+        target: LHS,
+        source: RHS,
+        change: Diff<LHS, RHS>,
+    ) => boolean;
 
     function diff<LHS, RHS = LHS>(
         lhs: LHS,
@@ -94,9 +109,21 @@ declare namespace deepDiff {
         stack: any[],
     ): void;
     function orderIndepHash(object: any): number;
-    function applyDiff<LHS, RHS = LHS>(target: LHS, source: RHS, filter?: Filter<LHS, RHS>): void;
-    function applyChange<LHS>(target: LHS, source: any, change: Diff<LHS, any>): void;
-    function revertChange<LHS>(target: LHS, source: any, change: Diff<LHS, any>): void;
+    function applyDiff<LHS, RHS = LHS>(
+        target: LHS,
+        source: RHS,
+        filter?: Filter<LHS, RHS>,
+    ): void;
+    function applyChange<LHS>(
+        target: LHS,
+        source: any,
+        change: Diff<LHS, any>,
+    ): void;
+    function revertChange<LHS>(
+        target: LHS,
+        source: any,
+        change: Diff<LHS, any>,
+    ): void;
 }
 
 export = deepDiff;

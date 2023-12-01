@@ -1,14 +1,16 @@
 import request = require("request");
 import FeedParser = require("feedparser");
 
-const req = request("https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&output=rss");
+const req = request(
+    "https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&output=rss",
+);
 const feedparser = new FeedParser({});
 
-req.on("error", error => {
+req.on("error", (error) => {
     // handle any request errors
 });
 
-req.on("response", res => {
+req.on("response", (res) => {
     if (res.statusCode !== 200) {
         req.emit("error", new Error("Bad status code"));
     } else {
@@ -26,7 +28,7 @@ feedparser.on("readable", () => {
     const meta = feedparser.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
     let item: FeedParser.Item;
 
-    while (item = stream.read()) {
+    while ((item = stream.read())) {
         console.log(item);
     }
 });

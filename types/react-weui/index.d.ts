@@ -52,7 +52,13 @@ export class CityPicker {
     handleChange(): void;
     parseData(data: any, subKey: any, ...args: any[]): any;
     render(): any;
-    updateGroup(item: any, i: any, groupIndex: any, selected: any, picker: any): void;
+    updateGroup(
+        item: any,
+        i: any,
+        groupIndex: any,
+        selected: any,
+        picker: any,
+    ): void;
     static defaultProps: {
         data: any[];
         dataMap: {
@@ -462,29 +468,113 @@ export function Toptips(props: any): any;
 export function VCode(props: any): any;
 export namespace ActionSheet {
     namespace propTypes {
-        function actions(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function autoDectect(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function menus(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onRequestClose(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function actions(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function autoDectect(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function menus(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onRequestClose(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace actions {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace autoDectect {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace menus {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onRequestClose {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -492,38 +582,115 @@ export namespace ActionSheet {
 export namespace Badge {
     namespace propTypes {
         function dot(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function preset(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function preset(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace dot {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace preset {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Button {
     namespace propTypes {
-        function disabled(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function size(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function disabled(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function size(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace disabled {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace size {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace ButtonArea {
     namespace propTypes {
-        function direction(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function direction(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace direction {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -534,17 +701,59 @@ export namespace Cell {
         link: boolean;
     };
     namespace propTypes {
-        function access(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function component(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function link(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function access(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function component(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function link(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace access {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace component {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace link {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -554,9 +763,23 @@ export namespace CellBody {
         primary: boolean;
     };
     namespace propTypes {
-        function primary(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function primary(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace primary {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -566,9 +789,23 @@ export namespace CellFooter {
         primary: boolean;
     };
     namespace propTypes {
-        function primary(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function primary(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace primary {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -578,9 +815,23 @@ export namespace CellHeader {
         primary: boolean;
     };
     namespace propTypes {
-        function primary(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function primary(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace primary {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -592,43 +843,162 @@ export namespace Cells {
 
 export namespace CityPicker {
     namespace propTypes {
-        function data(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function dataMap(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function selected(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function data(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function dataMap(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function selected(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace dataMap {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace selected {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Dialog {
     namespace propTypes {
-        function autoDectect(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function buttons(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function title(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function autoDectect(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function buttons(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function title(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace autoDectect {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace buttons {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace title {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -638,51 +1008,177 @@ export namespace FlexItem {
         component: string;
     };
     namespace propTypes {
-        function component(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function component(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace component {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Form {
     namespace propTypes {
-        function checkbox(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function radio(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function checkbox(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function radio(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace checkbox {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace radio {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace FormCell {
     namespace propTypes {
-        function checkbox(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function radio(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function select(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function selectPos(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function vcode(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function warn(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function checkbox(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function radio(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function select(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function selectPos(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function vcode(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function warn(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace checkbox {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace radio {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace select {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace selectPos {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace vcode {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace warn {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -693,48 +1189,139 @@ export namespace Gallery {
         src: string;
     };
     namespace propTypes {
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         function src(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace src {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Grid {
     namespace propTypes {
-        function icon(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function label(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function icon(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function label(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace icon {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace label {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Grids {
     namespace propTypes {
-        function data(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function data(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace data {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Icon {
     namespace propTypes {
-        function size(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function value(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function size(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function value(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace size {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace value {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -744,9 +1331,23 @@ export namespace Input {
         defaultValue: any;
     };
     namespace propTypes {
-        function defaultValue(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function defaultValue(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace defaultValue {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -758,195 +1359,685 @@ export namespace LoadMore {
         showLine: boolean;
     };
     namespace propTypes {
-        function loading(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function showDot(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function showLine(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function loading(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function showDot(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function showLine(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace loading {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace showDot {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace showLine {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Mask {
     namespace propTypes {
-        function transparent(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function transparent(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace transparent {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace MediaBox {
     namespace propTypes {
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace MediaBoxInfo {
     namespace propTypes {
-        function data(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function data(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace data {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace MediaBoxInfoMeta {
     namespace propTypes {
-        function extra(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function extra(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace extra {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Msg {
     namespace propTypes {
-        function buttons(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function description(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function extraHref(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function extraText(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function footer(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function title(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function buttons(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function description(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function extraHref(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function extraText(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function footer(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function title(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace buttons {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace description {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace extraHref {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace extraText {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace footer {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace title {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace NavBarItem {
     namespace propTypes {
-        function active(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function label(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function active(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function label(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace active {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace label {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Panel {
     namespace propTypes {
-        function access(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function access(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace access {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Picker {
     namespace propTypes {
-        function actions(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function defaultSelect(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function groups(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function lang(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onCancel(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onGroupChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function actions(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function defaultSelect(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function groups(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function lang(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onCancel(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onGroupChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace actions {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace defaultSelect {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace groups {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace lang {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onCancel {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onGroupChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace PickerGroup {
     namespace propTypes {
-        function aniamtion(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function defaultIndex(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function groupIndex(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function height(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function indicatorHeight(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function indicatorTop(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function itemHeight(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function aniamtion(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function defaultIndex(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function groupIndex(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function height(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function indicatorHeight(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function indicatorTop(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function itemHeight(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace aniamtion {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace defaultIndex {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace groupIndex {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace height {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace indicatorHeight {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace indicatorTop {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace itemHeight {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Popup {
     namespace propTypes {
-        function enableMask(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function enableMask(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace enableMask {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -957,21 +2048,77 @@ export namespace PopupHeader {
         right: string;
     };
     namespace propTypes {
-        function left(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function leftOnClick(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function right(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function rightOnClick(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function left(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function leftOnClick(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function right(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function rightOnClick(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace left {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace leftOnClick {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace right {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace rightOnClick {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -981,9 +2128,23 @@ export namespace PreviewButton {
         primary: boolean;
     };
     namespace propTypes {
-        function primary(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function primary(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace primary {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -994,13 +2155,41 @@ export namespace PreviewItem {
         value: boolean;
     };
     namespace propTypes {
-        function label(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function value(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function label(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function value(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace label {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace value {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -1011,173 +2200,607 @@ export namespace Progress {
         value: number;
     };
     namespace propTypes {
-        function showCancel(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function value(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function showCancel(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function value(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace showCancel {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace value {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace SearchBar {
     namespace propTypes {
-        function lang(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onCancel(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onClear(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onSubmit(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function placeholder(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function searchName(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function lang(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onCancel(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onClear(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onSubmit(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function placeholder(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function searchName(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace lang {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onCancel {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onClear {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onSubmit {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace placeholder {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace searchName {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Select {
     namespace propTypes {
-        function data(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function data(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace data {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Slider {
     namespace propTypes {
-        function defaultValue(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function disabled(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function defaultValue(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function disabled(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         function max(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
         function min(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function showValue(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function snapToValue(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function step(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function value(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function showValue(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function snapToValue(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function step(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function value(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace defaultValue {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace disabled {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace max {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace min {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace showValue {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace snapToValue {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace step {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace value {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Tab {
     namespace propTypes {
-        function defaultIndex(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function defaultIndex(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace defaultIndex {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace TabBarItem {
     namespace propTypes {
-        function active(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function icon(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function label(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function active(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function icon(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function label(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace active {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace icon {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace label {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace TabBodyItem {
     namespace propTypes {
-        function active(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function active(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace active {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace TextArea {
     namespace propTypes {
-        function defaultValue(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function maxLength(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function showCounter(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function defaultValue(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function maxLength(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function showCounter(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace defaultValue {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace maxLength {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace showCounter {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Toast {
     namespace propTypes {
-        function icon(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function iconSize(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function icon(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function iconSize(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace icon {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace iconSize {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
@@ -1188,46 +2811,172 @@ export namespace Toptips {
         type: string;
     };
     namespace propTypes {
-        function show(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function type(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function show(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function type(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace show {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace type {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }
 
 export namespace Uploader {
     namespace propTypes {
-        function files(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function lang(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function maxCount(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function maxWidth(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onChange(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function onError(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
-        function title(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+        function files(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function lang(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function maxCount(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function maxWidth(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onChange(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function onError(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
+        function title(
+            p0: any,
+            p1: any,
+            p2: any,
+            p3: any,
+            p4: any,
+            p5: any,
+        ): any;
         namespace files {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace lang {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace maxCount {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace maxWidth {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onChange {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace onError {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
         namespace title {
-            function isRequired(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any;
+            function isRequired(
+                p0: any,
+                p1: any,
+                p2: any,
+                p3: any,
+                p4: any,
+                p5: any,
+            ): any;
         }
     }
 }

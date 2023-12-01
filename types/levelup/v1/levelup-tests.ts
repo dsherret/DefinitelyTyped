@@ -29,11 +29,9 @@ var db2 = levelup("db2", {
 var db = levelup("./mydb");
 db.open();
 db.close();
-db.open((error) => {
-});
+db.open((error) => {});
 
-db.close((error) => {
-});
+db.close((error) => {});
 
 db.put("key", {});
 db.put("key", {}, (error) => {});
@@ -48,13 +46,18 @@ db.del("key", (error) => {});
 db.del("key", { keyEncoding: "json" }, (error) => {});
 db.del("key", { sync: true }, (error) => {});
 
-db.batch([{
-    type: "put",
-    key: [1, 2, 3],
-    value: { some: "json" },
-    keyEncoding: "binary",
-    valueEncoding: "json",
-}], (error) => {});
+db.batch(
+    [
+        {
+            type: "put",
+            key: [1, 2, 3],
+            value: { some: "json" },
+            keyEncoding: "binary",
+            valueEncoding: "json",
+        },
+    ],
+    (error) => {},
+);
 
 db.batch()
     .del("father")
@@ -62,22 +65,22 @@ db.batch()
     .put("dob", "16 February 1941")
     .put("spouse", "Kim Young-sook")
     .put("occupation", "Clown")
-    .write(function() {
+    .write(function () {
         console.log("Done!");
     });
 
 var open: boolean = db.isOpen();
 var closed: boolean = db.isClosed();
 db.createReadStream()
-    .on("data", function(data: any) {
+    .on("data", function (data: any) {
         console.log(data.key, "=", data.value);
     })
-    .on("error", function(err: any) {
+    .on("error", function (err: any) {
         console.log("Oh my!", err);
     })
-    .on("close", function() {
+    .on("close", function () {
         console.log("Stream closed");
     })
-    .on("end", function() {
+    .on("end", function () {
         console.log("Stream closed");
     });

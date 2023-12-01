@@ -7,6 +7,10 @@ declare namespace similarity {
     }
 }
 
-declare function similarity(left: string, right: string, options?: similarity.Options): number;
+declare function similarity(
+    left: string,
+    right: string,
+    options?: similarity.Options,
+): number;
 
 export = similarity;

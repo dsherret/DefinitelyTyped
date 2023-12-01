@@ -140,8 +140,8 @@ RT.removeFormat(VALUE, "foo", 10);
 //
 RT.replace(VALUE, "foo", "bar");
 RT.replace(VALUE, /foo/, "bar");
-RT.replace(VALUE, "foo", match => `${match}bar`);
-RT.replace(VALUE, /foo/, match => `${match}bar`);
+RT.replace(VALUE, "foo", (match) => `${match}bar`);
+RT.replace(VALUE, /foo/, (match) => `${match}bar`);
 RT.replace(VALUE, "foo", (match, a, b) => `${match} ${a} ${b}`);
 
 //
@@ -198,7 +198,11 @@ select("core/rich-text").getFormatTypeForBareElement("a");
 
 // useAnchor
 RT.useAnchor({ editableContentElement: new HTMLElement(), value: RT.create() });
-RT.useAnchor({ editableContentElement: new HTMLElement(), value: RT.create(), settings: RT.create().formats[0]![0] });
+RT.useAnchor({
+    editableContentElement: new HTMLElement(),
+    value: RT.create(),
+    settings: RT.create().formats[0]![0],
+});
 
 // useAnchorRef
 RT.useAnchorRef({ ref: createRef(), value: VALUE });

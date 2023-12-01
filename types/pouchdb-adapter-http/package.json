@@ -1,29 +1,29 @@
 {
-    "private": true,
-    "name": "@types/pouchdb-adapter-http",
-    "version": "6.1.9999",
-    "projects": [
-        "https://pouchdb.com/",
-        "https://github.com/pouchdb/pouchdb"
-    ],
-    "dependencies": {
-        "@types/pouchdb-core": "*"
+  "private": true,
+  "name": "@types/pouchdb-adapter-http",
+  "version": "6.1.9999",
+  "projects": [
+    "https://pouchdb.com/",
+    "https://github.com/pouchdb/pouchdb"
+  ],
+  "dependencies": {
+    "@types/pouchdb-core": "*"
+  },
+  "devDependencies": {
+    "@types/pouchdb-adapter-http": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Simon Paulger",
+      "githubUsername": "spaulg"
     },
-    "devDependencies": {
-        "@types/pouchdb-adapter-http": "workspace:."
+    {
+      "name": "Brian Geppert",
+      "githubUsername": "geppy"
     },
-    "owners": [
-        {
-            "name": "Simon Paulger",
-            "githubUsername": "spaulg"
-        },
-        {
-            "name": "Brian Geppert",
-            "githubUsername": "geppy"
-        },
-        {
-            "name": "Frederico Galvão",
-            "githubUsername": "fredgalvao"
-        }
-    ]
+    {
+      "name": "Frederico Galvão",
+      "githubUsername": "fredgalvao"
+    }
+  ]
 }

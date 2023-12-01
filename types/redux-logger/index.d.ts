@@ -44,7 +44,11 @@ export interface ReduxLoggerOptions {
     duration?: boolean | undefined;
     timestamp?: boolean | undefined;
     colors?: ColorsObject | false | undefined;
-    titleFormatter?(formattedAction: any, formattedTime: string, took: number): string;
+    titleFormatter?(
+        formattedAction: any,
+        formattedTime: string,
+        took: number,
+    ): string;
     logger?: any;
     logErrors?: boolean | undefined;
     collapsed?: boolean | LoggerPredicate | undefined;

@@ -35,8 +35,24 @@ export interface PlotConfig {
     colors?: Color[] | undefined;
     min?: number | undefined;
     max?: number | undefined;
-    symbols?: [string, string, string, string, string, string, string, string, string, string] | undefined;
+    symbols?:
+        | [
+              string,
+              string,
+              string,
+              string,
+              string,
+              string,
+              string,
+              string,
+              string,
+              string,
+          ]
+        | undefined;
     format?: ((x: number, i: number) => string) | undefined;
 }
 
-export function plot(series: ReadonlyArray<number | number[]>, cfg?: PlotConfig): string;
+export function plot(
+    series: ReadonlyArray<number | number[]>,
+    cfg?: PlotConfig,
+): string;

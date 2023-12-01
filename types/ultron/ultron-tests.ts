@@ -28,7 +28,11 @@ const assignable: Ultron.EventEmitter = ee;
     const ultron = new Ultron(ee);
     const handler = () => {};
 
-    const chained: boolean = ultron.on("event-name", handler).once("event-name", handler).remove().destroy();
+    const chained: boolean = ultron
+        .on("event-name", handler)
+        .once("event-name", handler)
+        .remove()
+        .destroy();
 }
 
 {

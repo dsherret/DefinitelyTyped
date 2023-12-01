@@ -11,10 +11,15 @@ export interface Tag extends Partial<TagIdentifier> {
 }
 
 export interface List {
-    "type": "tag.list";
-    "total_count": number;
-    "tags": (Tag)[];
-    "pages": { "next"?: string | undefined; "page": number; "per_page": number; "total_pages": number };
+    type: "tag.list";
+    total_count: number;
+    tags: Tag[];
+    pages: {
+        next?: string | undefined;
+        page: number;
+        per_page: number;
+        total_pages: number;
+    };
 }
 
 interface TagUsers {

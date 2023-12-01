@@ -185,14 +185,14 @@ declare namespace NextGenEvents {
     type AddListenerOptions =
         | boolean
         | {
-            fn: any;
-            id?: any;
-            once: any;
-            async: any;
-            eventObject: any;
-            nice?: number | undefined;
-            context?: string | undefined;
-        };
+              fn: any;
+              id?: any;
+              once: any;
+              async: any;
+              eventObject: any;
+              nice?: number | undefined;
+              context?: string | undefined;
+          };
 
     const SYNC: number;
     const DESYNC: number;

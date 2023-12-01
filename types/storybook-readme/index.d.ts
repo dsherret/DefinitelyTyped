@@ -37,8 +37,12 @@ export function withReadme(
 
 // WithDocs Types
 export interface CustomComponents {
-    PreviewComponent?: ((props: { children: JSX.Element }) => JSX.Element) | undefined;
-    FooterComponent?: ((props: { children: JSX.Element }) => JSX.Element) | undefined;
+    PreviewComponent?:
+        | ((props: { children: JSX.Element }) => JSX.Element)
+        | undefined;
+    FooterComponent?:
+        | ((props: { children: JSX.Element }) => JSX.Element)
+        | undefined;
 }
 
 export function withDocs(

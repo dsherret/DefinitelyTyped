@@ -2,7 +2,8 @@ import * as angular from "angular";
 
 export type ITagsInputParams = angular.ngTagsInput.TagsInputParams;
 export type IAutocompleteParams = angular.ngTagsInput.AutocompleteParams;
-export type ITagsInputConfigurationProvider = angular.ngTagsInput.TagsInputConfigurationProvider;
+export type ITagsInputConfigurationProvider =
+    angular.ngTagsInput.TagsInputConfigurationProvider;
 
 declare module "angular" {
     namespace ngTagsInput {
@@ -62,11 +63,17 @@ declare module "angular" {
             /**
              * Sets the default configuration option for a directive.
              */
-            setDefaults(directive: string, defaults: ITagsInputParams | IAutocompleteParams): any;
+            setDefaults(
+                directive: string,
+                defaults: ITagsInputParams | IAutocompleteParams,
+            ): any;
             /**
              * Sets active interpolation for a set of options.
              */
-            setActiveInterpolation(directive: string, options: ITagsInputParams | IAutocompleteParams): any;
+            setActiveInterpolation(
+                directive: string,
+                options: ITagsInputParams | IAutocompleteParams,
+            ): any;
             /**
              * Sets the threshold used by the tagsInput directive to re-size the inner input field element based on its contents.
              */

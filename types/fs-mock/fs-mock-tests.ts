@@ -1,14 +1,17 @@
 import FS = require("fs-mock");
 
-var fs: FS = new FS({
-    "Users": {
-        "David": {
-            "password.txt": "my super password",
+var fs: FS = new FS(
+    {
+        Users: {
+            David: {
+                "password.txt": "my super password",
+            },
         },
     },
-}, {
-    windows: true,
-});
+    {
+        windows: true,
+    },
+);
 
 var fsopts: FS.Opts = {
     windows: true,

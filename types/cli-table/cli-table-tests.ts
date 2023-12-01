@@ -33,13 +33,24 @@ table1.push(
 
 /* headless */
 const headless_table = new Table();
-headless_table.push(["v0.1", "Testing something cool", "rauchg@gmail.com", "7 minutes ago"]);
+headless_table.push([
+    "v0.1",
+    "Testing something cool",
+    "rauchg@gmail.com",
+    "7 minutes ago",
+]);
 /* vertical */
 const vertical_table = new Table();
-vertical_table.push({ "Some Key": "Some Value" }, { "Another much longer key": "And its corresponding longer value" });
+vertical_table.push(
+    { "Some Key": "Some Value" },
+    { "Another much longer key": "And its corresponding longer value" },
+);
 /* cross */
 const cross_table = new Table({ head: ["", "Header #1", "Header #2"] });
-cross_table.push({ "Header #3": ["Value 1", "Value 2"] }, { "Header #4": ["Value 3", "Value 4"] });
+cross_table.push(
+    { "Header #3": ["Value 1", "Value 2"] },
+    { "Header #4": ["Value 3", "Value 4"] },
+);
 
 // Initialize rows in constructor
 const table2 = new Table({

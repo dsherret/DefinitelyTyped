@@ -18,17 +18,36 @@ declare namespace QioFS {
     // export function read(path:string, options?:any):Q.Promise<string>;
     // export function read(path:string, options?:any):Q.Promise<Buffer>;
 
-    export function write(path: string, content: Buffer, options?: any): Q.Promise<void>;
-    export function write(path: string, content: string, options?: any): Q.Promise<void>;
+    export function write(
+        path: string,
+        content: Buffer,
+        options?: any,
+    ): Q.Promise<void>;
+    export function write(
+        path: string,
+        content: string,
+        options?: any,
+    ): Q.Promise<void>;
 
-    export function append(path: string, content: Buffer, options?: any): Q.Promise<void>;
-    export function append(path: string, content: string, options?: any): Q.Promise<void>;
+    export function append(
+        path: string,
+        content: Buffer,
+        options?: any,
+    ): Q.Promise<void>;
+    export function append(
+        path: string,
+        content: string,
+        options?: any,
+    ): Q.Promise<void>;
 
     export function copy(source: string, target: string): Q.Promise<void>;
     export function copyTree(source: string, target: string): Q.Promise<void>;
 
     export function list(path: string): Q.Promise<string[]>;
-    export function listTree(path: string, guard?: (path: string, stat: any) => boolean): Q.Promise<string[]>;
+    export function listTree(
+        path: string,
+        guard?: (path: string, stat: any) => boolean,
+    ): Q.Promise<string[]>;
     export function listDirectoryTree(path: string): Q.Promise<string[]>;
 
     export function makeDirectory(path: string, mode?: string): Q.Promise<void>;
@@ -44,10 +63,22 @@ declare namespace QioFS {
 
     export function link(source: string, target: any): Q.Promise<void>;
 
-    export function symbolicCopy(source: string, target: string, type: string): Q.Promise<void>;
-    export function symbolicLink(target: string, link: string, type: string): Q.Promise<void>;
+    export function symbolicCopy(
+        source: string,
+        target: string,
+        type: string,
+    ): Q.Promise<void>;
+    export function symbolicLink(
+        target: string,
+        link: string,
+        type: string,
+    ): Q.Promise<void>;
 
-    export function chown(path: string, uid: number, gid: number): Q.Promise<void>;
+    export function chown(
+        path: string,
+        uid: number,
+        gid: number,
+    ): Q.Promise<void>;
     export function chmod(path: string, mode?: string): Q.Promise<void>;
     export function chmod(path: string, mode?: number): Q.Promise<void>;
 
@@ -81,7 +112,10 @@ declare namespace QioFS {
     export function relative(source: string, target: string): Q.Promise<string>;
 
     export function relativeFromFile(source: string, target: string): string;
-    export function relativeFromDirectory(source: string, target: string): string;
+    export function relativeFromDirectory(
+        source: string,
+        target: string,
+    ): string;
 
     export function isAbsolute(path: string): boolean;
     export function isRelative(path: string): boolean;
@@ -172,8 +206,7 @@ declare namespace QioHTTP {
         [name: string]: any;
         // [name:string]:any[];
     }
-    interface Body extends Qio.Stream {
-    }
+    interface Body extends Qio.Stream {}
     interface Application {
         (req: Request): Q.Promise<any>;
     }
@@ -214,11 +247,10 @@ declare namespace Qio {
         node: any;
     }
 
-    interface BufferReader extends QioBufferReader {
-    }
+    interface BufferReader extends QioBufferReader {}
 }
 interface QioBufferReader {
-    new(): Qio.Reader;
+    new (): Qio.Reader;
     read(stream: Qio.Reader, charset: string): string;
     read(stream: Qio.Reader): Buffer;
     join(buffers: Buffer[]): Buffer;

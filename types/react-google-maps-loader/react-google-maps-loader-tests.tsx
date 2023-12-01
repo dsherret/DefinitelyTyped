@@ -4,14 +4,14 @@ import ReactGoogleMapsLoader from "react-google-maps-loader";
 const ReactGoogleMapsLoaderTest: React.FC = () => (
     <ReactGoogleMapsLoader
         params={{ key: "secret-key" }}
-        render={googleMaps => <div />}
+        render={(googleMaps) => <div />}
     />
 );
 
 const ReactGoogleMapsLoaderWithLibrariesTest: React.FC = () => (
     <ReactGoogleMapsLoader
         params={{ key: "secret-key", libraries: "places" }}
-        render={googleMaps => <div />}
+        render={(googleMaps) => <div />}
     />
 );
 

@@ -10,10 +10,10 @@ ad.start();
 
 var browser = mdns.createBrowser(mdns.tcp("http"));
 
-browser.on("serviceUp", function(service: mdns.Service) {
+browser.on("serviceUp", function (service: mdns.Service) {
     console.log("service up: ", service);
 });
-browser.on("serviceDown", function(service: mdns.Service) {
+browser.on("serviceDown", function (service: mdns.Service) {
     console.log("service down: ", service);
 });
 
@@ -22,22 +22,24 @@ browser.start();
 var r0 = mdns.tcp("http"), // string form: _http._tcp
     r1 = mdns.udp("osc", "api-v1"), // string form: _osc._udp,_api-v1
     r2 = new mdns.ServiceType("http", "tcp"), // string form: _http._tcp
-    r3 = mdns.makeServiceType("https", "tcp") // string form: _https._tcp
-;
-
+    r3 = mdns.makeServiceType("https", "tcp"); // string form: _https._tcp
 var txt_record = {
     name: "bacon",
     chunky: true,
     strips: 5,
 };
-var ad: mdns.Advertisement = mdns.createAdvertisement(mdns.tcp("http"), 4321, { txtRecord: txt_record });
+var ad: mdns.Advertisement = mdns.createAdvertisement(mdns.tcp("http"), 4321, {
+    txtRecord: txt_record,
+});
 
 var sequence = [
     mdns.rst.DNSServiceResolve(),
     mdns.rst.DNSServiceGetAddrInfo({ families: [4] }),
 ];
 
-var browser = mdns.createBrowser(mdns.tcp("http"), { resolverSequence: sequence });
+var browser = mdns.createBrowser(mdns.tcp("http"), {
+    resolverSequence: sequence,
+});
 
 interface HammerTimeService extends mdns.Service {
     hammerTime: Date;
@@ -47,7 +49,7 @@ function MCHammer(options: any) {
     options = options || {};
     return function MCHammer(service: HammerTimeService, next: () => void) {
         console.log("STOP!");
-        setTimeout(function() {
+        setTimeout(function () {
             console.log("hammertime...");
             service.hammerTime = new Date();
             next();
@@ -55,7 +57,9 @@ function MCHammer(options: any) {
     };
 }
 
-var browser = mdns.createBrowser(mdns.tcp("http"), { networkInterface: mdns.loopbackInterface() });
+var browser = mdns.createBrowser(mdns.tcp("http"), {
+    networkInterface: mdns.loopbackInterface(),
+});
 
 var ad: mdns.Advertisement;
 

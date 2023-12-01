@@ -3,7 +3,11 @@ import { Block } from "webpack-blocks";
 declare namespace devServer {
     type InjectClientFunction = (compilerConfig: any) => boolean;
     type PathFunction = () => string;
-    type ProxyFunction = (request: any, response: any, proxy: any) => null | undefined | false | string;
+    type ProxyFunction = (
+        request: any,
+        response: any,
+        proxy: any,
+    ) => null | undefined | false | string;
     type ProxyType = object | ProxyFunction;
     type RewritesToFunction = (context: ContextObject) => string;
     type SetHeadersFunction = (res: object, path: string, stat: object) => void;
@@ -45,7 +49,16 @@ declare namespace devServer {
         allowedHosts?: string[] | undefined;
         before?: StartMiddlewareFunction | undefined;
         bonjour?: boolean | undefined;
-        clientLogLevel?: "silent" | "trace" | "debug" | "info" | "warn" | "error" | "none" | "warning" | undefined;
+        clientLogLevel?:
+            | "silent"
+            | "trace"
+            | "debug"
+            | "info"
+            | "warn"
+            | "error"
+            | "none"
+            | "warning"
+            | undefined;
         compress?: boolean | undefined;
         contentBase?: boolean | string | string[] | number | undefined;
         disableHostCheck?: boolean | undefined;
@@ -67,7 +80,10 @@ declare namespace devServer {
         noInfo?: boolean | undefined;
         open?: boolean | string | undefined;
         openPage?: string | undefined;
-        overlay?: boolean | { errors?: boolean | undefined; warnings?: boolean | undefined } | undefined;
+        overlay?:
+            | boolean
+            | { errors?: boolean | undefined; warnings?: boolean | undefined }
+            | undefined;
         pfx?: string | undefined;
         pfxPassphrase?: string | undefined;
         port?: number | undefined;
@@ -82,7 +98,14 @@ declare namespace devServer {
         socketPath?: string | undefined;
         socketPort?: number | string | undefined;
         staticOptions?: SetHeadersFunction | undefined;
-        stats?: "none" | "errors-only" | "minimal" | "normal" | "verbose" | object | undefined;
+        stats?:
+            | "none"
+            | "errors-only"
+            | "minimal"
+            | "normal"
+            | "verbose"
+            | object
+            | undefined;
         transportMode?: "sockjs" | "ws" | TransportMode | undefined;
         useLocalIp?: boolean | undefined;
         watchContentBase?: boolean | undefined;
@@ -91,6 +114,9 @@ declare namespace devServer {
     }
 }
 
-declare function devServer(options?: devServer.Options, entry?: string | string[]): Block;
+declare function devServer(
+    options?: devServer.Options,
+    entry?: string | string[],
+): Block;
 
 export = devServer;

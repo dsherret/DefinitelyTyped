@@ -8,7 +8,7 @@ const grammar = tracery.createGrammar({
 
 grammar.addModifiers(tracery.baseEngModifiers);
 grammar.addModifiers({
-    custom: s => s,
+    custom: (s) => s,
 });
 
 grammar.flatten("#origin#"); // $ExpectType string

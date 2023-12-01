@@ -29,9 +29,7 @@ function HTML() {
                 {head.link.toComponent()}
             </head>
             <body>
-                <div id="content">
-                    // React stuff here
-                </div>
+                <div id="content">// React stuff here</div>
             </body>
         </html>
     );

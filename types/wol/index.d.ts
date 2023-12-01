@@ -10,6 +10,10 @@ export interface WakeOptions {
 }
 
 export function wake(mac: string, callback: WakeCallback): Promise<boolean>;
-export function wake(mac: string, options?: WakeOptions, callback?: WakeCallback): Promise<boolean>;
+export function wake(
+    mac: string,
+    options?: WakeOptions,
+    callback?: WakeCallback,
+): Promise<boolean>;
 
 export function createMagicPacket(mac: string): Buffer;

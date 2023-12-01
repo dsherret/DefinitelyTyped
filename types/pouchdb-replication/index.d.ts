@@ -86,9 +86,13 @@ declare namespace PouchDB {
             checkpoint?: boolean | "target" | "source" | undefined;
         }
 
-        interface ReplicationEventEmitter<Content extends {}, C, F> extends EventEmitter {
+        interface ReplicationEventEmitter<Content extends {}, C, F>
+            extends EventEmitter {
             on(event: "change", listener: (info: C) => any): this;
-            on(event: "paused" | "denied" | "error", listener: (err: {}) => any): this;
+            on(
+                event: "paused" | "denied" | "error",
+                listener: (err: {}) => any,
+            ): this;
             on(event: "active", listener: () => any): this;
             on(event: "complete", listener: (info: F) => any): this;
 
@@ -96,11 +100,12 @@ declare namespace PouchDB {
         }
 
         interface Replication<Content extends {}>
-            extends
-                ReplicationEventEmitter<Content, ReplicationResult<Content>, ReplicationResultComplete<Content>>,
-                Promise<ReplicationResultComplete<Content>>
-        {
-        }
+            extends ReplicationEventEmitter<
+                    Content,
+                    ReplicationResult<Content>,
+                    ReplicationResultComplete<Content>
+                >,
+                Promise<ReplicationResultComplete<Content>> {}
 
         interface ReplicationResult<Content extends {}> {
             doc_write_failures: number;
@@ -113,7 +118,8 @@ declare namespace PouchDB {
             docs: Array<Core.ExistingDocument<Content>>;
         }
 
-        interface ReplicationResultComplete<Content extends {}> extends ReplicationResult<Content> {
+        interface ReplicationResultComplete<Content extends {}>
+            extends ReplicationResult<Content> {
             end_time: Date;
             status: string;
         }
@@ -124,11 +130,12 @@ declare namespace PouchDB {
         }
 
         interface Sync<Content extends {}>
-            extends
-                ReplicationEventEmitter<Content, SyncResult<Content>, SyncResultComplete<Content>>,
-                Promise<SyncResultComplete<Content>>
-        {
-        }
+            extends ReplicationEventEmitter<
+                    Content,
+                    SyncResult<Content>,
+                    SyncResultComplete<Content>
+                >,
+                Promise<SyncResultComplete<Content>> {}
 
         interface SyncResult<Content extends {}> {
             direction: "push" | "pull";
@@ -152,7 +159,9 @@ declare namespace PouchDB {
             source: string | Database<Content>,
             target: string | Database<Content>,
             options?: Replication.ReplicateOptions,
-            callback?: Core.Callback<Replication.ReplicationResultComplete<Content>>,
+            callback?: Core.Callback<
+                Replication.ReplicationResultComplete<Content>
+            >,
         ): Replication.Replication<Content>;
 
         /**
@@ -183,7 +192,9 @@ declare namespace PouchDB {
             to<Content extends {}>(
                 target: string | Database<Content>,
                 options?: Replication.ReplicateOptions,
-                callback?: Core.Callback<Replication.ReplicationResultComplete<Content>>,
+                callback?: Core.Callback<
+                    Replication.ReplicationResultComplete<Content>
+                >,
             ): Replication.Replication<Content>;
 
             /**
@@ -195,7 +206,9 @@ declare namespace PouchDB {
             from<Content extends {}>(
                 source: string | Database<Content>,
                 options?: Replication.ReplicateOptions,
-                callback?: Core.Callback<Replication.ReplicationResultComplete<Content>>,
+                callback?: Core.Callback<
+                    Replication.ReplicationResultComplete<Content>
+                >,
             ): Replication.Replication<Content>;
         };
 

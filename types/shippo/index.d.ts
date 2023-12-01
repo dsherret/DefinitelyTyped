@@ -312,13 +312,15 @@ declare namespace Shippo {
     type DistanceUnit = "cm" | "in" | "ft" | "mm" | "m" | "yd" | (string & {});
     type MassUnit = "g" | "oz" | "lb" | "kg" | (string & {});
 
-    type Carriers =
-        | "fedex"
-        | "ups"
-        | "usps"
-        | (string & {});
+    type Carriers = "fedex" | "ups" | "usps" | (string & {});
 
-    type TrackingStatuses = "UNKNOWN" | "DELIVERED" | "PRE_TRANSIT" | "TRANSIT" | "FAILURE" | "RETURNED";
+    type TrackingStatuses =
+        | "UNKNOWN"
+        | "DELIVERED"
+        | "PRE_TRANSIT"
+        | "TRANSIT"
+        | "FAILURE"
+        | "RETURNED";
 
     type ObjectState = "VALID" | "INVALID";
 
@@ -381,9 +383,7 @@ declare namespace Shippo {
         is_complete?: boolean | undefined;
         validate?: boolean | undefined;
         metadata?: string | undefined;
-        validation_results?:
-            | Address.ValidationResults
-            | undefined;
+        validation_results?: Address.ValidationResults | undefined;
     }
 
     namespace Address {
@@ -502,7 +502,9 @@ declare namespace Shippo {
         is_return?: boolean | undefined;
         lasership_attrs?: ShipmentExtras.LasershipAttrs | undefined;
         lasership_declared_value?: string | undefined;
-        preferred_delivery_timeframe?: ShipmentExtras.PreferredDeliveryTimeframe | undefined;
+        preferred_delivery_timeframe?:
+            | ShipmentExtras.PreferredDeliveryTimeframe
+            | undefined;
         premium?: boolean | undefined;
         qr_code_requested?: boolean | undefined;
         reference_1?: string | undefined;
@@ -510,11 +512,15 @@ declare namespace Shippo {
         request_retail_rates?: boolean | undefined;
         return_service_type?: ShipmentExtras.ReturnServiceType | undefined;
         saturday_delivery?: boolean | undefined;
-        signature_confirmation?: ShipmentExtras.SignatureConfirmation | undefined;
+        signature_confirmation?:
+            | ShipmentExtras.SignatureConfirmation
+            | undefined;
     }
 
     namespace ShipmentExtras {
-        type AncillaryEndorsement = "FORWARDING_SERVICE_REQUESTED" | "RETURN_SERVICE_REQUESTED";
+        type AncillaryEndorsement =
+            | "FORWARDING_SERVICE_REQUESTED"
+            | "RETURN_SERVICE_REQUESTED";
 
         interface Alcohol {
             contains_alcohol: boolean;
@@ -534,7 +540,11 @@ declare namespace Shippo {
         }
 
         namespace Billing {
-            type Type = "SENDER" | "RECIPIENT" | "THIRD_PARTY" | "THIRD_PARTY_CONSIGNEE";
+            type Type =
+                | "SENDER"
+                | "RECIPIENT"
+                | "THIRD_PARTY"
+                | "THIRD_PARTY_CONSIGNEE";
         }
 
         interface COD {
@@ -547,7 +557,16 @@ declare namespace Shippo {
             type PaymentMethod = "SECURED_FUNDS" | "CASH" | "ANY";
         }
 
-        type DangerousGoodsCode = "01" | "02" | "03" | "04" | "05" | "06" | "07" | "08" | "09";
+        type DangerousGoodsCode =
+            | "01"
+            | "02"
+            | "03"
+            | "04"
+            | "05"
+            | "06"
+            | "07"
+            | "08"
+            | "09";
 
         interface DryIce {
             contains_dry_ice: boolean;
@@ -576,11 +595,26 @@ declare namespace Shippo {
             | "Perishable"
             | "NoRTS";
 
-        type PreferredDeliveryTimeframe = "10001200" | "12001400" | "14001600" | "16001800" | "18002000" | "19002100";
+        type PreferredDeliveryTimeframe =
+            | "10001200"
+            | "12001400"
+            | "14001600"
+            | "16001800"
+            | "18002000"
+            | "19002100";
 
-        type ReturnServiceType = "PRINT_AND_MAIL" | "ATTEMPT_1" | "ATTEMPT_3" | "ELECTRONIC_LABEL";
+        type ReturnServiceType =
+            | "PRINT_AND_MAIL"
+            | "ATTEMPT_1"
+            | "ATTEMPT_3"
+            | "ELECTRONIC_LABEL";
 
-        type SignatureConfirmation = "STANDARD" | "ADULT" | "CERTIFIED" | "INDIRECT" | "CARRIER_CONFIRMATION";
+        type SignatureConfirmation =
+            | "STANDARD"
+            | "ADULT"
+            | "CERTIFIED"
+            | "INDIRECT"
+            | "CARRIER_CONFIRMATION";
     }
 
     type GetRequired<T, P extends Required<T> = Required<T>> = {
@@ -605,11 +639,11 @@ declare namespace Shippo {
         extended_token: string;
         parent_servicelevel:
             | {
-                name: string;
-                token: ServiceLevels;
-                terms: string;
-                extended_token: string;
-            }
+                  name: string;
+                  token: ServiceLevels;
+                  terms: string;
+                  extended_token: string;
+              }
             | string
             | null;
     }
@@ -668,7 +702,14 @@ declare namespace Shippo {
     }
 
     namespace Transaction {
-        type Status = "WAITING" | "QUEUED" | "SUCCESS" | "ERROR" | "REFUNDED" | "REFUNDPENDING" | "REFUNDREJECTED";
+        type Status =
+            | "WAITING"
+            | "QUEUED"
+            | "SUCCESS"
+            | "ERROR"
+            | "REFUNDED"
+            | "REFUNDPENDING"
+            | "REFUNDREJECTED";
     }
 
     interface TransactionCreateInstantRequest {
@@ -772,7 +813,10 @@ declare namespace Shippo {
     }
 
     namespace CustomsDeclaration {
-        type B13aFilingOption = "FILED_ELECTRONICALLY" | "SUMMARY_REPORTING" | "NOT_REQUIRED";
+        type B13aFilingOption =
+            | "FILED_ELECTRONICALLY"
+            | "SUMMARY_REPORTING"
+            | "NOT_REQUIRED";
 
         type ContentsType =
             | "DOCUMENTS"
@@ -784,7 +828,12 @@ declare namespace Shippo {
             | "OTHER"
             | (string & {});
 
-        type EelPfc = "NOEEI_30_37_a" | "NOEEI_30_37_h" | "NOEEI_30_37_f" | "NOEEI_30_36" | "AES_ITN";
+        type EelPfc =
+            | "NOEEI_30_37_a"
+            | "NOEEI_30_37_h"
+            | "NOEEI_30_37_f"
+            | "NOEEI_30_36"
+            | "AES_ITN";
 
         type NonDeliveryOption = "ABANDON" | "RETURN" | (string & {});
     }
@@ -884,7 +933,12 @@ declare namespace Shippo {
     }
 
     namespace Batch {
-        type Status = "VALIDATING" | "VALID" | "INVALID" | "PURCHASING" | "PURCHASED";
+        type Status =
+            | "VALIDATING"
+            | "VALID"
+            | "INVALID"
+            | "PURCHASING"
+            | "PURCHASED";
 
         interface ShipmentListWrapper {
             next?: string | undefined;
@@ -904,7 +958,11 @@ declare namespace Shippo {
         }
 
         namespace Shipment {
-            type Status = "INVALID" | "VALID" | "INCOMPLETE" | "TRANSACTION_FAILED";
+            type Status =
+                | "INVALID"
+                | "VALID"
+                | "INCOMPLETE"
+                | "TRANSACTION_FAILED";
         }
 
         interface ErrorMessage {
@@ -918,7 +976,11 @@ declare namespace Shippo {
             purchase_failed: number;
         }
 
-        type ObjectResult = "creation_succeeded" | "creation_failed" | "purchase_succeeded" | "purchase_failed";
+        type ObjectResult =
+            | "creation_succeeded"
+            | "creation_failed"
+            | "purchase_succeeded"
+            | "purchase_failed";
     }
 
     interface CreateBatchRequest {
@@ -970,18 +1032,30 @@ declare namespace Shippo {
             list: (args?: PaginationArgs) => Promise<PaginatedList<Shipment>>;
         };
         transaction: {
-            create: (request: TransactionCreateInstantRequest | TransactionCreateRateRequest) => Promise<Transaction>;
-            list: (args?: PaginationArgs) => Promise<PaginatedList<Transaction>>;
+            create: (
+                request:
+                    | TransactionCreateInstantRequest
+                    | TransactionCreateRateRequest,
+            ) => Promise<Transaction>;
+            list: (
+                args?: PaginationArgs,
+            ) => Promise<PaginatedList<Transaction>>;
             retrieve: (id: string) => Promise<Transaction>;
         };
         customsitem: {
             create: (request: CreateCustomsItemRequest) => Promise<CustomsItem>;
-            list: (args?: PaginationArgs) => Promise<PaginatedList<CustomsItem>>;
+            list: (
+                args?: PaginationArgs,
+            ) => Promise<PaginatedList<CustomsItem>>;
             retrieve: (id: string) => Promise<CustomsItem>;
         };
         customsdeclaration: {
-            create: (request: CreateCustomsDeclarationRequest) => Promise<CustomsDeclaration>;
-            list: (args?: PaginationArgs) => Promise<PaginatedList<CustomsDeclaration>>;
+            create: (
+                request: CreateCustomsDeclarationRequest,
+            ) => Promise<CustomsDeclaration>;
+            list: (
+                args?: PaginationArgs,
+            ) => Promise<PaginatedList<CustomsDeclaration>>;
             retrieve: (id: string) => Promise<CustomsDeclaration>;
         };
         carrieraccount: {
@@ -1003,21 +1077,34 @@ declare namespace Shippo {
         };
         batch: {
             create: (request: CreateBatchRequest) => Promise<Batch>;
-            retrieve: (id: string, page?: number, filter?: Batch.ObjectResult) => Promise<Batch>;
-            add: (id: string, request: BatchAddShipmentsRequest) => Promise<Batch>;
-            remove: (id: string, request: BatchRemoveShipmentsRequest) => Promise<Batch>;
+            retrieve: (
+                id: string,
+                page?: number,
+                filter?: Batch.ObjectResult,
+            ) => Promise<Batch>;
+            add: (
+                id: string,
+                request: BatchAddShipmentsRequest,
+            ) => Promise<Batch>;
+            remove: (
+                id: string,
+                request: BatchRemoveShipmentsRequest,
+            ) => Promise<Batch>;
             purchase: (id: string) => Promise<Batch>;
         };
         track: {
             create: (request: RegisterTrackRequest) => Promise<Track>;
-            get_status: (carrier: Carriers, trackingNumber: string) => Promise<Track>;
+            get_status: (
+                carrier: Carriers,
+                trackingNumber: string,
+            ) => Promise<Track>;
         };
     }
 }
 
 interface ShippoStatic {
     (token: string): Shippo.Shippo;
-    new(token: string): Shippo.Shippo;
+    new (token: string): Shippo.Shippo;
 }
 
 declare const Shippo: ShippoStatic;

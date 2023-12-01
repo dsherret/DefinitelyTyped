@@ -127,7 +127,9 @@ export namespace DriverService {
          *     current environment.
          * @return {!DriverService.Builder} A self reference.
          */
-        setEnvironment(env: Map<string, string> | { [name: string]: string } | null): this;
+        setEnvironment(
+            env: Map<string, string> | { [name: string]: string } | null,
+        ): this;
 
         /**
          * IO configuration for the spawned server process. For more information,

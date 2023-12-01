@@ -1,4 +1,7 @@
-declare function columnify(data: Record<string, any> | any[], options?: columnify.GlobalOptions): string;
+declare function columnify(
+    data: Record<string, any> | any[],
+    options?: columnify.GlobalOptions,
+): string;
 
 declare namespace columnify {
     interface Options {
@@ -16,14 +19,18 @@ declare namespace columnify {
     interface GlobalOptions extends Options {
         columns?: string[] | undefined;
         columnSplitter?: string | undefined;
-        config?: {
-            [columnName: string]: Options;
-        } | undefined;
+        config?:
+            | {
+                  [columnName: string]: Options;
+              }
+            | undefined;
         maxLineWidth?: number | undefined;
         truncate?: boolean | undefined;
-        widths?: {
-            [columnName: string]: Pick<Options, "minWidth" | "maxWidth">;
-        } | undefined;
+        widths?:
+            | {
+                  [columnName: string]: Pick<Options, "minWidth" | "maxWidth">;
+              }
+            | undefined;
     }
 }
 

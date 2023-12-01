@@ -1,4 +1,6 @@
-declare function localizedCountries(locale: string | object): localizedCountries.LocalizedCountries;
+declare function localizedCountries(
+    locale: string | object,
+): localizedCountries.LocalizedCountries;
 
 declare namespace localizedCountries {
     interface LocalizedCountries {

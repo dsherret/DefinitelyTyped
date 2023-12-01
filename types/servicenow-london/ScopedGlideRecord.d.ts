@@ -21,7 +21,7 @@ interface ScopedGlideRecord {
      *
      * var gr = new GlideRecord('incident');
      */
-    new(tableName: string): ScopedGlideRecord;
+    new (tableName: string): ScopedGlideRecord;
 
     /**
      * Adds a filter to return active records.
@@ -220,7 +220,11 @@ interface ScopedGlideRecord {
      *   //do something....
      * }
      */
-    addQuery(name: string, operator: QueryOperator, value: any): ScopedQueryCondition;
+    addQuery(
+        name: string,
+        operator: QueryOperator,
+        value: any,
+    ): ScopedQueryCondition;
 
     /**
      * Adds a filter to return records using an encoded query string.

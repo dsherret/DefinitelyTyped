@@ -62,7 +62,12 @@ export function toMathMLString(
  * @param rightToLeft - indicates whether the MathML output should be in RTL direction
  * @param throwOnError - indicates whether TeXZilla should throw an exception when parsing fails
  */
-export function toMathML(str: string, displayMode?: boolean, rightToLeft?: boolean, throwOnError?: boolean): Element;
+export function toMathML(
+    str: string,
+    displayMode?: boolean,
+    rightToLeft?: boolean,
+    throwOnError?: boolean,
+): Element;
 
 /**
  * This function first converts a TeX string into a display MathML element which

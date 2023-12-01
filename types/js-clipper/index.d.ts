@@ -159,15 +159,43 @@ declare namespace ClipperLib {
 
         PointsEqual(pt1: IntPoint, pt2: IntPoint): boolean;
         PointIsVertex(pt: IntPoint, pp: JoinRec): boolean;
-        PointInPolygon(pt: IntPoint, pp: JoinRec, UseFulllongRange: boolean): boolean;
+        PointInPolygon(
+            pt: IntPoint,
+            pp: JoinRec,
+            UseFulllongRange: boolean,
+        ): boolean;
         SlopesEqual(e1: TEdge, e2: TEdge, UseFullRange: boolean): boolean;
-        SlopesEqual(pt1: IntPoint, pt2: IntPoint, pt3: IntPoint, UseFullRange: boolean): boolean;
-        SlopesEqual(pt1: IntPoint, pt2: IntPoint, pt3: IntPoint, pt4: IntPoint, UseFullRange: boolean): boolean;
+        SlopesEqual(
+            pt1: IntPoint,
+            pt2: IntPoint,
+            pt3: IntPoint,
+            UseFullRange: boolean,
+        ): boolean;
+        SlopesEqual(
+            pt1: IntPoint,
+            pt2: IntPoint,
+            pt3: IntPoint,
+            pt4: IntPoint,
+            UseFullRange: boolean,
+        ): boolean;
         clear(): void;
         DisposeLocalMinimaList(): void;
-        AddPolygons(ppg: ArrayLike<ArrayLike<IntPoint>>, polyType: PolyType): boolean | string;
-        AddPolygon(pg: ArrayLike<IntPoint>, polyType: PolyType, multiple: boolean): boolean | string;
-        InitEdge(e: TEdge, eNext: TEdge, ePrev: TEdge, pt: IntPoint, polyType: PolyType): void;
+        AddPolygons(
+            ppg: ArrayLike<ArrayLike<IntPoint>>,
+            polyType: PolyType,
+        ): boolean | string;
+        AddPolygon(
+            pg: ArrayLike<IntPoint>,
+            polyType: PolyType,
+            multiple: boolean,
+        ): boolean | string;
+        InitEdge(
+            e: TEdge,
+            eNext: TEdge,
+            ePrev: TEdge,
+            pt: IntPoint,
+            polyType: PolyType,
+        ): void;
         SetDx(e: TEdge): void;
         AddBoundsToLML(e: TEdge): TEdge;
         InsertLocalMinima(newLm: LocalMinima): void;
@@ -198,7 +226,10 @@ declare namespace ClipperLib {
         get_ReverseSolution(): boolean;
         set_ReverseSolution(value: boolean): boolean;
         InsertScanbeam(Y: number): void;
-        Execute(clipType: ClipType, solution: ArrayLike<IntPoint> | ExPolygon): boolean;
+        Execute(
+            clipType: ClipType,
+            solution: ArrayLike<IntPoint> | ExPolygon,
+        ): boolean;
         Execute(
             clipType: ClipType,
             solution: ArrayLike<IntPoint> | ExPolygon,
@@ -254,7 +285,12 @@ declare namespace ClipperLib {
         DoEdge1(edge1: TEdge, edge2: TEdge, pt: OutPt): void;
         DoEdge2(edge1: TEdge, edge2: TEdge, pt: OutPt): void;
         DoBothEdges(edge1: TEdge, edge2: TEdge, pt: OutPt): void;
-        IntersectEdges(e1: TEdge, e2: TEdge, pt: OutPt, protects: Protects): void;
+        IntersectEdges(
+            e1: TEdge,
+            e2: TEdge,
+            pt: OutPt,
+            protects: Protects,
+        ): void;
         DeleteFromAEL(e: TEdge): void;
         DeleteFromSEL(e: TEdge): void;
         UpdateEdgeIntoAEL(e: TEdge): void;
@@ -273,7 +309,10 @@ declare namespace ClipperLib {
         Round(a: number): number;
         TopX(edge: TEdge, currentY: number): number;
         AddIntersectNode(e1: TEdge, e2: TEdge, pt: IntPoint): void;
-        ProcessParam1BeforeParam2(node1: IntersectNode, node2: IntersectNode): boolean;
+        ProcessParam1BeforeParam2(
+            node1: IntersectNode,
+            node2: IntersectNode,
+        ): boolean;
         SwapIntersectNodes(int1: IntersectNode, int2: IntersectNode): void;
         IntersectPoint(edge1: TEdge, edge2: TEdge, ip: IntPoint): boolean;
         DisposeIntersectNodes(): void;

@@ -76,7 +76,15 @@ export interface ColorOptions {
     /** An integer or string which when passed will cause randomColor to return the same color each time. */
     seed?: number | string | undefined;
     /** A string which specifies the format of the generated color. (Defaults to hex) */
-    format?: "rgb" | "rgba" | "rgbArray" | "hsl" | "hsla" | "hslArray" | "hex" | undefined;
+    format?:
+        | "rgb"
+        | "rgba"
+        | "rgbArray"
+        | "hsl"
+        | "hsla"
+        | "hslArray"
+        | "hex"
+        | undefined;
     /**
      * A decimal between 0 and 1.
      * Only relevant when using a format with an alpha channel (rgba and hsla).

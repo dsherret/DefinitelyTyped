@@ -15,7 +15,11 @@ type logMessage = string | readonly string[];
 
 interface SpawnLogFunction {
     (message: logMessage, options?: HumaneMessageOptions): Humane;
-    (message: logMessage, callback?: completionCallback, options?: HumaneMessageOptions): Humane;
+    (
+        message: logMessage,
+        callback?: completionCallback,
+        options?: HumaneMessageOptions,
+    ): Humane;
 }
 
 interface Humane {
@@ -33,7 +37,11 @@ interface Humane {
     spawn(options: HumaneMessageOptions): SpawnLogFunction;
     remove(cb?: completionCallback): void;
     log(message: logMessage, options?: HumaneMessageOptions): Humane;
-    log(message: logMessage, callback?: completionCallback, options?: HumaneMessageOptions): Humane;
+    log(
+        message: logMessage,
+        callback?: completionCallback,
+        options?: HumaneMessageOptions,
+    ): Humane;
 }
 
 declare var humane: Humane;

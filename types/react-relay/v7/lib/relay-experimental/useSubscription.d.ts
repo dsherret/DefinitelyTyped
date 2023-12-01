@@ -1,4 +1,8 @@
-import { GraphQLSubscriptionConfig, OperationType, requestSubscription } from "relay-runtime";
+import {
+    GraphQLSubscriptionConfig,
+    OperationType,
+    requestSubscription,
+} from "relay-runtime";
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
 export function useSubscription<TSubscriptionPayload extends OperationType>(

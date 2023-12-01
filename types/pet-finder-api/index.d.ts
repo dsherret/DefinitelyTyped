@@ -1,14 +1,43 @@
-declare function petFinder(api_key: string, api_secret: string, options?: any): petFinder.PetFinder;
+declare function petFinder(
+    api_key: string,
+    api_secret: string,
+    options?: any,
+): petFinder.PetFinder;
 
 declare namespace petFinder {
     interface PetFinder {
-        getBreedList(animal: string, callback: (err: any, breedArray: string[]) => void): void;
-        getPet(petId: number, options: any, callback: (error: any, pet: Pet) => void): void;
-        getRandomPet(options: any, callback: (error: any, pet: Pet) => void): void;
-        findPet(options: any, callback: (error: any, pets: Pet[]) => void): void;
-        findShelter(location: string, options: any, callback: (error: any, shelters: Shelter[]) => void): void;
-        getShelter(shelterId: string, options: any, callback: (error: any, shelter: Shelter) => void): void;
-        getPetsInShelter(shelterId: string, options: any, callback: (error: any, pets: Pet[]) => void): void;
+        getBreedList(
+            animal: string,
+            callback: (err: any, breedArray: string[]) => void,
+        ): void;
+        getPet(
+            petId: number,
+            options: any,
+            callback: (error: any, pet: Pet) => void,
+        ): void;
+        getRandomPet(
+            options: any,
+            callback: (error: any, pet: Pet) => void,
+        ): void;
+        findPet(
+            options: any,
+            callback: (error: any, pets: Pet[]) => void,
+        ): void;
+        findShelter(
+            location: string,
+            options: any,
+            callback: (error: any, shelters: Shelter[]) => void,
+        ): void;
+        getShelter(
+            shelterId: string,
+            options: any,
+            callback: (error: any, shelter: Shelter) => void,
+        ): void;
+        getPetsInShelter(
+            shelterId: string,
+            options: any,
+            callback: (error: any, pets: Pet[]) => void,
+        ): void;
         getSheltersWithBreeds(
             animal: string,
             breed: string,

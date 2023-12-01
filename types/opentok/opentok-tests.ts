@@ -1,14 +1,10 @@
 import OpenTok = require("opentok");
 
-const client = new OpenTok(
-    "API_KEY",
-    "API_SECRET",
-    {
-        apiUrl: "https://api.opentok.com",
-        uaAddendum: "opentok-node-sdk/2.2.0",
-        timeout: 10000,
-    },
-);
+const client = new OpenTok("API_KEY", "API_SECRET", {
+    apiUrl: "https://api.opentok.com",
+    uaAddendum: "opentok-node-sdk/2.2.0",
+    timeout: 10000,
+});
 
 const sessionOptions: OpenTok.SessionOptions = {
     mediaMode: "routed",
@@ -85,18 +81,32 @@ const patchStream: OpenTok.PatchStream = {
     hasVideo: true,
 };
 
-client.startArchive("SESSION_ID", archiveOptions, (err: Error, archive: OpenTok.Archive) => {
-    if (err) return console.log(err);
-    console.log(archive.id);
-});
+client.startArchive(
+    "SESSION_ID",
+    archiveOptions,
+    (err: Error, archive: OpenTok.Archive) => {
+        if (err) return console.log(err);
+        console.log(archive.id);
+    },
+);
 
-client.addArchiveStream("ARCHIVE_ID", "STREAM_ID", patchStream, (err: Error) => {
-    if (err) return console.log(err);
-});
+client.addArchiveStream(
+    "ARCHIVE_ID",
+    "STREAM_ID",
+    patchStream,
+    (err: Error) => {
+        if (err) return console.log(err);
+    },
+);
 
-client.removeArchiveStream("ARCHIVE_ID", "STREAM_ID", patchStream, (err: Error) => {
-    if (err) return console.log(err);
-});
+client.removeArchiveStream(
+    "ARCHIVE_ID",
+    "STREAM_ID",
+    patchStream,
+    (err: Error) => {
+        if (err) return console.log(err);
+    },
+);
 
 client.stopArchive("ARCHIVE_ID", (err: Error, archive: OpenTok.Archive) => {
     if (err) return console.log(err);
@@ -108,23 +118,40 @@ client.getArchive("ARCHIVE_ID", (err: Error, archive: OpenTok.Archive) => {
     console.log(archive);
 });
 
-client.getBroadcast("BROADCAST_ID", (err: Error, broadcast: OpenTok.Broadcast) => {
-    if (err) return console.log(err);
-    console.log(broadcast);
-});
+client.getBroadcast(
+    "BROADCAST_ID",
+    (err: Error, broadcast: OpenTok.Broadcast) => {
+        if (err) return console.log(err);
+        console.log(broadcast);
+    },
+);
 
-client.addBroadcastStream("BROADCAST_ID", "STREAM_ID", patchStream, (err: Error) => {
-    if (err) return console.log(err);
-});
+client.addBroadcastStream(
+    "BROADCAST_ID",
+    "STREAM_ID",
+    patchStream,
+    (err: Error) => {
+        if (err) return console.log(err);
+    },
+);
 
-client.removeBroadcastStream("BROADCAST_ID", "STREAM_ID", patchStream, (err: Error) => {
-    if (err) return console.log(err);
-});
+client.removeBroadcastStream(
+    "BROADCAST_ID",
+    "STREAM_ID",
+    patchStream,
+    (err: Error) => {
+        if (err) return console.log(err);
+    },
+);
 
-client.getStream("SESSION_ID", "STREAM_ID", (err: Error, stream: OpenTok.Stream) => {
-    if (err) return console.log(err);
-    console.log(stream);
-});
+client.getStream(
+    "SESSION_ID",
+    "STREAM_ID",
+    (err: Error, stream: OpenTok.Stream) => {
+        if (err) return console.log(err);
+        console.log(stream);
+    },
+);
 
 client.deleteArchive("ARCHIVE_ID", (err: Error) => {
     if (err) return console.log(err);
@@ -134,17 +161,21 @@ client.deleteArchive("ARCHIVE_ID", (err: Error) => {
 const listArchivesOptions: OpenTok.ListArchivesOptions = {
     count: 10,
     offset: 5,
-    sessionId: "9_JY17LWC6LeKsGQ2-DXQlBac32PLwRSI7TV0FKOIDEX0PsmejJOGhrRtAW3PWABpEW3C-cp",
+    sessionId:
+        "9_JY17LWC6LeKsGQ2-DXQlBac32PLwRSI7TV0FKOIDEX0PsmejJOGhrRtAW3PWABpEW3C-cp",
 };
 
-client.listArchives(listArchivesOptions, (err: Error, archives: OpenTok.Archive[], totalCount: number) => {
-    if (err) return console.log(err);
+client.listArchives(
+    listArchivesOptions,
+    (err: Error, archives: OpenTok.Archive[], totalCount: number) => {
+        if (err) return console.log(err);
 
-    console.log(totalCount + " archives");
-    for (var i = 0; i < archives.length; i++) {
-        console.log(archives[i].id);
-    }
-});
+        console.log(totalCount + " archives");
+        for (var i = 0; i < archives.length; i++) {
+            console.log(archives[i].id);
+        }
+    },
+);
 
 client.playDTMF("SESSION_ID", "CONNECTION_ID", "0", (err: Error) => {
     if (err) return console.log(err);
@@ -161,15 +192,22 @@ const broadcastOptions: OpenTok.BroadcastOptions = {
     streamMode: "auto",
 };
 
-client.startBroadcast("SESSION_ID", broadcastOptions, (err: Error, broadcast: OpenTok.Broadcast) => {
-    if (err) return console.log(err);
-    console.log(broadcast);
-});
+client.startBroadcast(
+    "SESSION_ID",
+    broadcastOptions,
+    (err: Error, broadcast: OpenTok.Broadcast) => {
+        if (err) return console.log(err);
+        console.log(broadcast);
+    },
+);
 
-client.stopBroadcast("BROADCAST_ID", (err: Error, broadcast: OpenTok.BroadcastStopResponse) => {
-    if (err) return console.log(err);
-    console.log(broadcast);
-});
+client.stopBroadcast(
+    "BROADCAST_ID",
+    (err: Error, broadcast: OpenTok.BroadcastStopResponse) => {
+        if (err) return console.log(err);
+        console.log(broadcast);
+    },
+);
 
 client.listBroadcasts(
     {
@@ -204,9 +242,13 @@ client.setBroadcastLayout("BROADCAST_ID", "custom", "", (err: Error) => {
     if (err) return console.log(err);
 });
 
-client.setStreamClassLists("SESSION_ID", [{ id: "STREAM_ID", layoutClassList: ["class1", "class2"] }], (err: Error) => {
-    if (err) return console.log(err);
-});
+client.setStreamClassLists(
+    "SESSION_ID",
+    [{ id: "STREAM_ID", layoutClassList: ["class1", "class2"] }],
+    (err: Error) => {
+        if (err) return console.log(err);
+    },
+);
 
 const signalOptions: OpenTok.SignalOptions = {
     type: "any",

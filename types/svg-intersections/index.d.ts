@@ -1,4 +1,11 @@
-export type SvgElements = "line" | "rect" | "circle" | "ellipse" | "polygon" | "polyline" | "path";
+export type SvgElements =
+    | "line"
+    | "rect"
+    | "circle"
+    | "ellipse"
+    | "polygon"
+    | "polyline"
+    | "path";
 
 // Svg element properties
 export interface LineProps {
@@ -40,14 +47,21 @@ export interface PathProps {
     d: string;
 }
 
-export type SvgProperties<T extends SvgElements> = T extends "line" ? LineProps
-    : T extends "rect" ? RectProps
-    : T extends "circle" ? CircleProps
-    : T extends "ellipse" ? EllipseProps
-    : T extends "polygon" ? PolygonProps
-    : T extends "polyline" ? PolylineProps
-    : T extends "path" ? PathProps
-    : never;
+export type SvgProperties<T extends SvgElements> = T extends "line"
+    ? LineProps
+    : T extends "rect"
+      ? RectProps
+      : T extends "circle"
+        ? CircleProps
+        : T extends "ellipse"
+          ? EllipseProps
+          : T extends "polygon"
+            ? PolygonProps
+            : T extends "polyline"
+              ? PolylineProps
+              : T extends "path"
+                ? PathProps
+                : never;
 
 export interface Shape {
     type: string;
@@ -74,5 +88,13 @@ export interface Intersection {
     points: Point2D[];
 }
 
-export function shape<T extends SvgElements>(svgElementName: T, svgProps: SvgProperties<T>): Shape;
-export function intersect(shape1: Shape, shape2: Shape, m1?: Matrix2D, m2?: Matrix2D): Intersection;
+export function shape<T extends SvgElements>(
+    svgElementName: T,
+    svgProps: SvgProperties<T>,
+): Shape;
+export function intersect(
+    shape1: Shape,
+    shape2: Shape,
+    m1?: Matrix2D,
+    m2?: Matrix2D,
+): Intersection;

@@ -19,22 +19,22 @@ httpRequest("url", {
     }).pipeThrough(new TextEncoderStream()),
 });
 
-httpRequest("url").then(response => {
+httpRequest("url").then((response) => {
     // Verify the non-body fields
     const status = response.status;
     const ok = response.ok;
 
-    response.text().then(words => words.toUpperCase());
-    response.json().then(obj => JSON.stringify(obj));
+    response.text().then((words) => words.toUpperCase());
+    response.json().then((obj) => JSON.stringify(obj));
 
     response.getHeader("Date");
 
     // Verify getHeaders
     const headers = response.getHeaders();
-    Object.keys(headers).forEach(key => {
+    Object.keys(headers).forEach((key) => {
         key.toUpperCase();
         const values = headers[key];
-        values.forEach(val => val.toUpperCase());
+        values.forEach((val) => val.toUpperCase());
     });
 
     // Verify body

@@ -8,15 +8,23 @@ import {
     TagifySettings,
 } from "@yaireo/tagify";
 
-export function tagTemplate(this: Tagify, tagData: TagData, { settings }: Tagify): string {
+export function tagTemplate(
+    this: Tagify,
+    tagData: TagData,
+    { settings }: Tagify,
+): string {
     return `
     <tag title="${
         tagData.title || tagData.value
-    }" contenteditable="false" spellcheck="false" tabIndex="-1" class="${settings.classNames.tag} ${
-        tagData.class || ""
-    }" ${this.getAttributes(tagData)}>
-        <x class="${settings.classNames.tagX}" role="button" aria-label="remove-tag"></x>
-        <div><span class="${settings.classNames.tagText}">${tagData.value}</span></div>
+    }" contenteditable="false" spellcheck="false" tabIndex="-1" class="${
+        settings.classNames.tag
+    } ${tagData.class || ""}" ${this.getAttributes(tagData)}>
+        <x class="${
+            settings.classNames.tagX
+        }" role="button" aria-label="remove-tag"></x>
+        <div><span class="${settings.classNames.tagText}">${
+            tagData.value
+        }</span></div>
     </tag>`;
 }
 
@@ -53,19 +61,19 @@ const settings: TagifySettings = {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        blur: event => {
+        blur: (event) => {
             // $ExpectType Element
             event.detail.relatedTarget;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        change: event => {
+        change: (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // $ExpectType string
             event.detail.value;
         },
-        click: event => {
+        click: (event) => {
             // $ExpectType TagData
             event.detail.data;
             // $ExpectType number
@@ -77,7 +85,7 @@ const settings: TagifySettings = {
             // $ExpectType MouseEvent
             event.detail.event;
         },
-        dblclick: event => {
+        dblclick: (event) => {
             // $ExpectType TagData | undefined
             event.detail.data;
             // $ExpectType number | undefined
@@ -87,13 +95,13 @@ const settings: TagifySettings = {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        focus: event => {
+        focus: (event) => {
             // $ExpectType Element
             event.detail.relatedTarget;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        input: event => {
+        input: (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // @ts-expect-error
@@ -122,7 +130,7 @@ const settings: TagifySettings = {
                 event.detail.value;
             }
         },
-        invalid: event => {
+        invalid: (event) => {
             // $ExpectType TagData
             event.detail.data;
             // $ExpectType number | undefined
@@ -134,13 +142,13 @@ const settings: TagifySettings = {
             // $ExpectType string | boolean
             event.detail.message;
         },
-        keydown: event => {
+        keydown: (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // $ExpectType KeyboardEvent
             event.detail.event;
         },
-        remove: event => {
+        remove: (event) => {
             // $ExpectType TagData | undefined
             event.detail.data;
             // $ExpectType number | undefined
@@ -150,25 +158,25 @@ const settings: TagifySettings = {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "dropdown:hide": event => {
+        "dropdown:hide": (event) => {
             // $ExpectType HTMLElement | null
             event.detail.parentElement;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "dropdown:scroll": event => {
+        "dropdown:scroll": (event) => {
             // $ExpectType number
             event.detail.percentage;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "dropdown:noMatch": event => {
+        "dropdown:noMatch": (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // $ExpectType string
             event.detail.value;
         },
-        "dropdown:select": event => {
+        "dropdown:select": (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // $ExpectType TagData
@@ -176,19 +184,19 @@ const settings: TagifySettings = {
             // $ExpectType HTMLDivElement
             event.detail.elm;
         },
-        "dropdown:show": event => {
+        "dropdown:show": (event) => {
             // $ExpectType HTMLElement | null
             event.detail.parentElement;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "dropdown:updated": event => {
+        "dropdown:updated": (event) => {
             // $ExpectType HTMLElement | null
             event.detail.parentElement;
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "edit:beforeUpdate": event => {
+        "edit:beforeUpdate": (event) => {
             // $ExpectType TagData | undefined
             event.detail.data;
             // $ExpectType number | undefined
@@ -198,7 +206,7 @@ const settings: TagifySettings = {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
         },
-        "edit:input": event => {
+        "edit:input": (event) => {
             // $ExpectType TagData & { newValue: string; }
             event.detail.data;
             // $ExpectType number
@@ -210,13 +218,13 @@ const settings: TagifySettings = {
             // $ExpectType Event
             event.detail.event;
         },
-        "edit:keydown": event => {
+        "edit:keydown": (event) => {
             // $ExpectType Tagify<TagData>
             event.detail.tagify;
             // $ExpectType KeyboardEvent
             event.detail.event;
         },
-        "edit:start": event => {
+        "edit:start": (event) => {
             // $ExpectType TagData
             event.detail.data;
             // $ExpectType number
@@ -228,7 +236,7 @@ const settings: TagifySettings = {
             // $ExpectType boolean
             event.detail.isValid;
         },
-        "edit:updated": event => {
+        "edit:updated": (event) => {
             event.detail.data;
             // $ExpectType number | undefined
             event.detail.index;
@@ -251,22 +259,29 @@ const settings: TagifySettings = {
         wrapper: (input, settings) => {
             // Can use "as const" in later TS versions
             if (settings.classNames) {
-                const className = settings.mode === "mix"
-                    ? settings.classNames.mixMode
-                    : settings.classNames.selectMode;
+                const className =
+                    settings.mode === "mix"
+                        ? settings.classNames.mixMode
+                        : settings.classNames.selectMode;
                 return `<tags class="${settings.classNames.namespace} ${
                     settings.mode ? `${className}` : ""
                 } ${input.className}"
                         ${settings.readonly ? "readonly" : ""}
                         ${settings.required ? "required" : ""}
                         tabIndex="-1">
-                <span ${!settings.readonly || settings.mode !== "mix" ? "contenteditable" : ""} data-placeholder="${
+                <span ${
+                    !settings.readonly || settings.mode !== "mix"
+                        ? "contenteditable"
+                        : ""
+                } data-placeholder="${
                     settings.placeholder || "&#8203;"
                 }" aria-placeholder="${settings.placeholder || ""}"
                     class="${settings.classNames.input}"
                     role="textbox"
                     aria-autocomplete="both"
-                    aria-multiline="${settings.mode === "mix" ? true : false}"></span>
+                    aria-multiline="${
+                        settings.mode === "mix" ? true : false
+                    }"></span>
             </tags>`;
             }
             return "";
@@ -278,10 +293,12 @@ const settings: TagifySettings = {
                 const isManual = _sd.position === "manual";
                 const className = `${settings.classNames.dropdown}`;
 
-                return `<div class="${
-                    isManual ? "" : className
-                } ${_sd.classname}" role="listbox" aria-labelledby="dropdown">
-                            <div class="${settings.classNames.dropdownWrapper}"></div>
+                return `<div class="${isManual ? "" : className} ${
+                    _sd.classname
+                }" role="listbox" aria-labelledby="dropdown">
+                            <div class="${
+                                settings.classNames.dropdownWrapper
+                            }"></div>
                 </div>`;
             }
             return "";
@@ -292,7 +309,9 @@ const settings: TagifySettings = {
         dropdownItem(item) {
             if (this.settings.classNames) {
                 return `<div ${this.getAttributes(item)}
-            class='${this.settings.classNames.dropdownItem} ${item.class ? item.class : ""}'
+            class='${this.settings.classNames.dropdownItem} ${
+                item.class ? item.class : ""
+            }'
             tabindex="0"
             role="option">${item.value}</div>`;
             }
@@ -301,7 +320,8 @@ const settings: TagifySettings = {
         dropdownHeader: (suggestions) => "",
         dropdownFooter(suggestions) {
             if (this.settings.classNames && this.settings?.dropdown?.maxItems) {
-                const hasMore = suggestions.length - this.settings.dropdown.maxItems;
+                const hasMore =
+                    suggestions.length - this.settings.dropdown.maxItems;
                 return hasMore > 0
                     ? `<footer data-selector='tagify-suggestions-footer' class="${this.settings.classNames.dropdownFooter}">
                    ${hasMore} more items. Refine your search.</footer>`
@@ -374,7 +394,7 @@ const settings: TagifySettings = {
         placeAbove: false,
     },
     hooks: {
-        beforeRemoveTag: tags => {
+        beforeRemoveTag: (tags) => {
             tags[0].node.classList.add("tagify__tag--loading");
             return new Promise((resolve, reject) => {
                 if (confirm(`Remove ${tags[0].data.value} ?`)) {
@@ -417,20 +437,21 @@ interface MyTagData extends BaseTagData {
 const typedSettings: TagifySettings<MyTagData> = {
     templates: {
         tag: (tagData) => `${tagData.name} ${tagData.title.substring(0)}`,
-        dropdownItem: item => `${item.active}`,
+        dropdownItem: (item) => `${item.active}`,
     },
     validate: (tagData) => /^starts-with/.test(tagData.title.substring(0)),
     transformTag: (tagData) => {
         tagData.active = true;
     },
-    originalInputValueFormat: (data) => JSON.stringify(data.map(d => d.title.substring(0))),
+    originalInputValueFormat: (data) =>
+        JSON.stringify(data.map((d) => d.title.substring(0))),
     hooks: {
-        beforeRemoveTag: async tags => {
-            tags.map(t => t.name.substring(0));
+        beforeRemoveTag: async (tags) => {
+            tags.map((t) => t.name.substring(0));
         },
     },
     callbacks: {
-        "edit:start": event => {
+        "edit:start": (event) => {
             // $ExpectType MyTagData
             event.detail.data;
         },
@@ -515,7 +536,8 @@ const tagArray: TagData[] = tagify.value;
 const scopeEl: HTMLElement = tagify.DOM.scope;
 const spanEl: HTMLSpanElement = tagify.DOM.input;
 const dropdownEl: HTMLDivElement = tagify.DOM.dropdown;
-const inputEl: HTMLInputElement | HTMLTextAreaElement = tagify.DOM.originalInput;
+const inputEl: HTMLInputElement | HTMLTextAreaElement =
+    tagify.DOM.originalInput;
 const invalidPatternMessage = tagify.TEXTS.pattern;
 
 if (tagify.suggestedListItems !== undefined) {
@@ -985,7 +1007,9 @@ typedTagify.getWhitelistItem("foo");
 // $ExpectType MyTagData[]
 typedTagify.getWhitelistItem("foo", "title");
 // $ExpectType MyTagData[]
-typedTagify.getWhitelistItem("foo", "title", [{ value: "foo", active: false, name: "", title: "" }]);
+typedTagify.getWhitelistItem("foo", "title", [
+    { value: "foo", active: false, name: "", title: "" },
+]);
 // @ts-expect-error
 typedTagify.getWhitelistItem("foo", "banana");
 // $ExpectType number[]
@@ -1038,18 +1062,32 @@ if (typedTagElement !== undefined) {
     // $ExpectType MyTagData | { active: true; }
     typedTagify.getSetTagData(typedTagElement, { active: true }, undefined);
     // $ExpectType MyTagData
-    typedTagify.getSetTagData(typedTagElement, { active: true, name: "", title: "", value: "" }, true);
+    typedTagify.getSetTagData(
+        typedTagElement,
+        { active: true, name: "", title: "", value: "" },
+        true,
+    );
     // @ts-expect-error
     typedTagify.tagData(typedTagElement, { active: true }, true);
     // @ts-expect-error
     typedTagify.replaceTag(typedTagElement, { value: "bar" });
-    typedTagify.replaceTag(typedTagElement, { value: "bar", title: "", name: "", active: false });
+    typedTagify.replaceTag(typedTagElement, {
+        value: "bar",
+        title: "",
+        name: "",
+        active: false,
+    });
 }
 
 const newTag = tagify.createTagElem({ value: "hello" });
 // @ts-expect-error
 typedTagify.createTagElem({ value: "hello" });
-typedTagify.createTagElem({ value: "hello", title: "", name: "", active: false });
+typedTagify.createTagElem({
+    value: "hello",
+    title: "",
+    name: "",
+    active: false,
+});
 // $ExpectType Tagify<TagData>
 tagify.injectAtCaret(newTag);
 tagify.placeCaretAfterNode(newTag);
@@ -1070,7 +1108,10 @@ tagify.parseTemplate((data) => `<span>${data.value}</span>`, [tags[0]]);
 tagify.parseTemplate((data) => `<span>${data.value}</span>`, [tags]);
 // @ts-expect-error
 typedTagify.parseTemplate("tag", [tags[0], typedTagify]);
-typedTagify.parseTemplate("tag", [{ value: "bar", title: "", name: "", active: false }, typedTagify]);
+typedTagify.parseTemplate("tag", [
+    { value: "bar", title: "", name: "", active: false },
+    typedTagify,
+]);
 tagify.setReadonly(false);
 tagify.setDisabled(false);
 tagify.setDisabled(true);

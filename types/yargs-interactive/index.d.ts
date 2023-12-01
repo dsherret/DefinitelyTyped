@@ -4,7 +4,16 @@ declare function yargsInteractive(): yargsInteractive.Interactive;
 
 declare namespace yargsInteractive {
     interface OptionData {
-        type: "input" | "number" | "confirm" | "list" | "rawlist" | "expand" | "checkbox" | "password" | "editor";
+        type:
+            | "input"
+            | "number"
+            | "confirm"
+            | "list"
+            | "rawlist"
+            | "expand"
+            | "checkbox"
+            | "password"
+            | "editor";
         describe: string;
         default?: string | number | boolean | any[] | undefined;
         prompt?: "always" | "never" | "if-no-arg" | "if-empty" | undefined;

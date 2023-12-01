@@ -83,9 +83,7 @@ const ImageWithCallbacks = () => (
     );
 
     const elWithStyle = (
-        <LazyLoadComponent
-            style={{ marginTop: 100000 }}
-        >
+        <LazyLoadComponent style={{ marginTop: 100000 }}>
             <p>Lorem Ipsum</p>
         </LazyLoadComponent>
     );
@@ -94,7 +92,13 @@ const ImageWithCallbacks = () => (
 {
     // From README.md
 
-    const Gallery = ({ images, scrollPosition }: { images: ImageProps[]; scrollPosition: ScrollPosition }) => (
+    const Gallery = ({
+        images,
+        scrollPosition,
+    }: {
+        images: ImageProps[];
+        scrollPosition: ScrollPosition;
+    }) => (
         <div>
             {images.map((image) => (
                 <LazyLoadImage

@@ -24,7 +24,7 @@ declare module "koa" {
 }
 
 declare const CSRF: {
-    new(opts?: {
+    new (opts?: {
         errorHandler?: (ctx: Context) => never;
         excludedMethods?: string[];
         disableQuery?: boolean;

@@ -10,8 +10,16 @@ export default class Assert {
     ): void;
     static Fail(message?: string): void;
     static IsFalse(actual: boolean, message?: string): void;
-    static IsInstanceOfType(actual: any, expectedType: Function, message?: string): void;
-    static IsNotInstanceOfType(actual: any, wrongType: Function, message?: string): void;
+    static IsInstanceOfType(
+        actual: any,
+        expectedType: Function,
+        message?: string,
+    ): void;
+    static IsNotInstanceOfType(
+        actual: any,
+        wrongType: Function,
+        message?: string,
+    ): void;
     static IsNotNull(actual: any, message?: string): void;
     static IsNull(actual: any, message?: string): void;
     static IsTrue(actual: boolean, message?: string): void;

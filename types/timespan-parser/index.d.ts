@@ -57,9 +57,7 @@ declare namespace timespan {
 }
 
 /** Returns a new `timespan` object with the defaults modified. */
-declare function timespan(
-    defaults?: timespan.Options | timespan.Unit,
-): {
+declare function timespan(defaults?: timespan.Options | timespan.Unit): {
     parse: typeof timespan.parse;
     getString: typeof timespan.getString;
 };

@@ -29,10 +29,7 @@ class ReactabularDndTestComponent extends React.Component<Props> {
                     renderers={this.renderers}
                 >
                     <Table.Header />
-                    <Table.Body
-                        rows={this.props.rows}
-                        rowKey="id"
-                    />
+                    <Table.Body rows={this.props.rows} rowKey="id" />
                 </Table.Provider>
             </div>
         );

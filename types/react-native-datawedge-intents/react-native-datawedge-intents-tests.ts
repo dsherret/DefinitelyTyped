@@ -6,9 +6,7 @@ DataWedgeIntents.registerBroadcastReceiver({
         "com.zebra.reactnativedemo.ACTION",
         "com.symbol.datawedge.api.RESULT_ACTION",
     ],
-    filterCategories: [
-        "android.intent.category.DEFAULT",
-    ],
+    filterCategories: ["android.intent.category.DEFAULT"],
 });
 
 //  Initiate a scan (you could also press the trigger key)

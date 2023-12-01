@@ -37,7 +37,8 @@ function abide_patterns() {
         /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/;
     patterns.time = /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/;
     patterns.dateISO = /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
-    patterns.month_day_year = /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/;
+    patterns.month_day_year =
+        /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/;
     patterns.color = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
     return patterns;
 }
@@ -51,11 +52,19 @@ function abide_options() {
     opts.timeout = 500;
     opts.patterns = abide_patterns();
     opts.validators = {
-        diceRoll: function(el: HTMLInputElement, required: boolean, parent: HTMLElement) {
+        diceRoll: function (
+            el: HTMLInputElement,
+            required: boolean,
+            parent: HTMLElement,
+        ) {
             var possibilities = [true, false];
             return possibilities[Math.round(Math.random())];
         },
-        isAllowed: function(el: HTMLInputElement, required: boolean, parent: HTMLElement) {
+        isAllowed: function (
+            el: HTMLInputElement,
+            required: boolean,
+            parent: HTMLElement,
+        ) {
             var possibilities = ["a@zurb.com", "b.zurb.com"];
             return possibilities.indexOf(el.value) > -1;
         },
@@ -160,15 +169,15 @@ function joyride_options() {
     opts.pre_ride_callback = empty_callback;
     opts.post_expose_callback = empty_callback;
     opts.template = {
-        link: "<a href=\"#close\" class=\"joyride-close-tip\">&times;</a>",
-        timer: "<div class=\"joyride-timer-indicator-wrap\"><span class=\"joyride-timer-indicator\"></span></div>",
-        tip: "<div class=\"joyride-tip-guide\"><span class=\"joyride-nub\"></span></div>",
-        wrapper: "<div class=\"joyride-content-wrapper\"></div>",
-        button: "<a href=\"#\" class=\"small button joyride-next-tip\"></a>",
-        prev_button: "<a href=\"#\" class=\"small button joyride-prev-tip\"></a>",
-        modal: "<div class=\"joyride-modal-bg\"></div>",
-        expose: "<div class=\"joyride-expose-wrapper\"></div>",
-        expose_cover: "<div class=\"joyride-expose-cover\"></div>",
+        link: '<a href="#close" class="joyride-close-tip">&times;</a>',
+        timer: '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
+        tip: '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
+        wrapper: '<div class="joyride-content-wrapper"></div>',
+        button: '<a href="#" class="small button joyride-next-tip"></a>',
+        prev_button: '<a href="#" class="small button joyride-prev-tip"></a>',
+        modal: '<div class="joyride-modal-bg"></div>',
+        expose: '<div class="joyride-expose-wrapper"></div>',
+        expose_cover: '<div class="joyride-expose-cover"></div>',
     };
     opts.expose_add_class = ".expose .class-name";
     return opts;
@@ -294,10 +303,18 @@ function tooltip_options() {
     opts.disable_for_touch = true;
     opts.hover_delay = 100;
     opts.show_on = "all";
-    opts.tip_template = function(selector, content) {
-        return "<span data-selector=\"" + selector + "\" id=\"" + selector + "\" class=\""
-            + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
-            + "\" role=\"tooltip\">" + content + "<span class=\"nub\"></span></span>";
+    opts.tip_template = function (selector, content) {
+        return (
+            '<span data-selector="' +
+            selector +
+            '" id="' +
+            selector +
+            '" class="' +
+            Foundation.libs.tooltip.settings.tooltip_class.substring(1) +
+            '" role="tooltip">' +
+            content +
+            '<span class="nub"></span></span>'
+        );
     };
     return opts;
 }

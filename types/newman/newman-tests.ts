@@ -12,7 +12,12 @@ import {
     NewmanRunTimings,
     run,
 } from "newman";
-import { Collection, CollectionDefinition, VariableScope, VariableScopeDefinition } from "postman-collection";
+import {
+    Collection,
+    CollectionDefinition,
+    VariableScope,
+    VariableScopeDefinition,
+} from "postman-collection";
 
 const collection: CollectionDefinition = {};
 const environment: VariableScopeDefinition = {};
@@ -67,7 +72,9 @@ newman
         },
         () => console.log("done"),
     )
-    .on("console", (e: newman.ConsoleEvent) => console.log(e.cursor.httpRequestId, ...e.messages))
+    .on("console", (e: newman.ConsoleEvent) =>
+        console.log(e.cursor.httpRequestId, ...e.messages),
+    )
     .on(
         "done",
         (

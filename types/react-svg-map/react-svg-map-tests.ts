@@ -6,11 +6,13 @@ const mockFunction = () => null;
 const SVGMapContainer: JSX.Element = React.createElement(SVGMap, {
     map: {
         viewBox: "viewBox",
-        locations: [{
-            path: "path",
-            id: "id",
-            name: "name",
-        }],
+        locations: [
+            {
+                path: "path",
+                id: "id",
+                name: "name",
+            },
+        ],
         label: "label",
     },
     className: "className",
@@ -31,10 +33,12 @@ const SVGMapContainer: JSX.Element = React.createElement(SVGMap, {
 const SVGMapContainerNoOptional: JSX.Element = React.createElement(SVGMap, {
     map: {
         viewBox: "viewBox",
-        locations: [{
-            path: "path",
-            id: "id",
-        }],
+        locations: [
+            {
+                path: "path",
+                id: "id",
+            },
+        ],
         label: "label",
     },
 });

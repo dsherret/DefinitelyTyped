@@ -1,5 +1,11 @@
 /// <reference types="node" />
-import { PassThrough, Readable, ReadableOptions, Writable, WritableOptions } from "stream";
+import {
+    PassThrough,
+    Readable,
+    ReadableOptions,
+    Writable,
+    WritableOptions,
+} from "stream";
 
 export type Chunk = string | Buffer | Uint8Array;
 
@@ -47,7 +53,11 @@ export namespace v2 {
      * Defaults to 0.
      * @returns A new readable stream
      */
-    function fromErroredChunks(err: Error, chunks: Chunk[], timeout?: number): Readable;
+    function fromErroredChunks(
+        err: Error,
+        chunks: Chunk[],
+        timeout?: number,
+    ): Readable;
     /**
      * Create a readable stream streaming 'objects' each after 'timeout'
      * milliseconds, emit 'err,' and then end. Useful for testing objectMode
@@ -58,7 +68,11 @@ export namespace v2 {
      * Defaults to 0.
      * @returns A new readable stream
      */
-    function fromErroredObjects(err: Error, objects: NonNull[], timeout?: number): Readable;
+    function fromErroredObjects(
+        err: Error,
+        objects: NonNull[],
+        timeout?: number,
+    ): Readable;
     /**
      * Create a writable stream collecting written chunks and call the passed
      * callback function when it finishes.

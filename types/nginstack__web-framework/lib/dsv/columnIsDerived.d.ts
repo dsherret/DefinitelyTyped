@@ -1,2 +1,4 @@
 export = columnIsDerived;
-declare function columnIsDerived(col: import("./ReportVisualizationColumnDef")): boolean;
+declare function columnIsDerived(
+    col: import("./ReportVisualizationColumnDef"),
+): boolean;

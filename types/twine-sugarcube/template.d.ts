@@ -54,7 +54,10 @@ export interface TemplateAPI {
      *     return this.name === 'Color' ? color.toUpperFirst() : color;
      * });
      */
-    add(name: string | string[], definition: string | string[] | TemplateExpander | TemplateExpander[]): void;
+    add(
+        name: string | string[],
+        definition: string | string[] | TemplateExpander | TemplateExpander[],
+    ): void;
 
     /**
      * Remove existing template(s).
@@ -77,7 +80,9 @@ export interface TemplateAPI {
      * // Returns the template ?yolo, or null if it doesn't exist.
      * var yolo = Template.get('yolo');
      */
-    get(name: string): string | string[] | TemplateExpander | TemplateExpander[] | null;
+    get(
+        name: string,
+    ): string | string[] | TemplateExpander | TemplateExpander[] | null;
 
     /**
      * Returns whether the named template exists.

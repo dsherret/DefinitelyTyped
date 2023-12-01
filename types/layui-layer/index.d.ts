@@ -407,9 +407,22 @@ declare namespace layer {
          * @param yes
          * @param cancel
          */
-        confirm(content?: string, options?: Options, yes?: callback.Yes, cancel?: callback.Cancel): Index;
-        confirm(content: string, yes: callback.Yes, cancel?: callback.Cancel): Index;
-        confirm(options: Options, yes?: callback.Yes, cancel?: callback.Cancel): Index;
+        confirm(
+            content?: string,
+            options?: Options,
+            yes?: callback.Yes,
+            cancel?: callback.Cancel,
+        ): Index;
+        confirm(
+            content: string,
+            yes: callback.Yes,
+            cancel?: callback.Cancel,
+        ): Index;
+        confirm(
+            options: Options,
+            yes?: callback.Yes,
+            cancel?: callback.Cancel,
+        ): Index;
         confirm(yes: callback.Yes, cancel?: callback.Cancel): Index;
         /**
          * 提示框
@@ -431,7 +444,11 @@ declare namespace layer {
          * @param follow
          * @param options
          */
-        tips(content: string, follow: Selector | HTMLElement, options?: Options): Index;
+        tips(
+            content: string,
+            follow: Selector | HTMLElement,
+            options?: Options,
+        ): Index;
         /**
          * 关闭特定层
          * @param index

@@ -25,8 +25,8 @@ import Factory from "@rdfjs/score/Factory";
 import { DatasetCore, Term } from "@rdfjs/types";
 import { GraphPointer, MultiPointer } from "clownface";
 
-const score: ScoreCb = <any> {};
-const clownfacePointer: MultiPointer = <any> {};
+const score: ScoreCb = <any>{};
+const clownfacePointer: MultiPointer = <any>{};
 const ptrs: Pointers = clownfacePointer;
 
 function test_combine() {
@@ -47,21 +47,26 @@ function test_count() {
     const countSubjects = count()(ptrs);
 
     // $ExpectType Score[]
-    const countAllBut = count({ subject: false, graph: true, object: true, predicate: true })(ptrs);
+    const countAllBut = count({
+        subject: false,
+        graph: true,
+        object: true,
+        predicate: true,
+    })(ptrs);
 }
 
 function test_distinct() {
-    const scores: Score[] = <any> {};
+    const scores: Score[] = <any>{};
 
     // $ExpectType Score[]
     distinct(scores);
 }
 
 function test_exists() {
-    const subject: Term = <any> {};
-    const predicate: Term = <any> {};
-    const object: Term = <any> {};
-    const graph: Term = <any> {};
+    const subject: Term = <any>{};
+    const predicate: Term = <any>{};
+    const object: Term = <any>{};
+    const graph: Term = <any>{};
 
     // @ts-expect-error
     exists({})(ptrs);
@@ -88,7 +93,7 @@ function test_fallback() {
 }
 
 function test_fixed() {
-    const term: Term = <any> {};
+    const term: Term = <any>{};
 
     // $ExpectType Score[]
     fixed(term)(ptrs);
@@ -134,7 +139,7 @@ function test_scale() {
 }
 
 function test_sort() {
-    const scores: Score[] = <any> {};
+    const scores: Score[] = <any>{};
 
     // $ExpectType Score[]
     sort(scores);
@@ -145,8 +150,8 @@ interface SortedObj {
 }
 
 function test_sortObjects() {
-    const dataset: DatasetCore = <any> {};
-    const objects: GraphPointer[] = <any> {};
+    const dataset: DatasetCore = <any>{};
+    const objects: GraphPointer[] = <any>{};
 
     // $ExpectType { term: Term; }[]
     sortObjects({
@@ -155,13 +160,13 @@ function test_sortObjects() {
         score,
     });
 
-    const customObjects: SortedObj[] = <any> {};
+    const customObjects: SortedObj[] = <any>{};
     // $ExpectType SortedObj[]
     sortObjects({
         dataset,
         objects: customObjects,
         score,
-        termCallback: obj => obj.deep.term,
+        termCallback: (obj) => obj.deep.term,
     });
 }
 
@@ -171,7 +176,7 @@ function test_sum() {
 }
 
 function test_type() {
-    const typeTerm: Term = <any> {};
+    const typeTerm: Term = <any>{};
 
     // $ExpectType Score[]
     type(typeTerm)(ptrs);

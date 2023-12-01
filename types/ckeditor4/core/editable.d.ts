@@ -1,6 +1,8 @@
 declare namespace CKEDITOR {
     interface CKEditorStatic {
-        readonly editable: { new(editor: editor, element: HTMLElement | dom.element): editable };
+        readonly editable: {
+            new (editor: editor, element: HTMLElement | dom.element): editable;
+        };
     }
     /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editable.html */
     interface editable extends dom.element {

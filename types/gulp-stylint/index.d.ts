@@ -3,7 +3,10 @@
 interface GulpStylint {
     (options?: GulpStylint.Options): NodeJS.ReadWriteStream;
     reporter(options?: GulpStylint): NodeJS.ReadWriteStream;
-    reporter(identifier: "fail", options?: { failOnWarning: true }): NodeJS.ReadWriteStream;
+    reporter(
+        identifier: "fail",
+        options?: { failOnWarning: true },
+    ): NodeJS.ReadWriteStream;
 }
 
 declare namespace GulpStylint {

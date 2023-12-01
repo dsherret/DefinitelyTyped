@@ -21,7 +21,10 @@ clusterize.destroy();
 
 const contentElement = document.createElement("div");
 const scrollElement = document.createElement("div");
-const optionsv18: Clusterize.Options = { contentElem: contentElement, scrollElem: scrollElement };
+const optionsv18: Clusterize.Options = {
+    contentElem: contentElement,
+    scrollElem: scrollElement,
+};
 const clusterizev18 = new Clusterize(optionsv18);
 
 clusterizev18.append(["<li></li>"]);

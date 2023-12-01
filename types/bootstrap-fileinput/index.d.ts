@@ -23,7 +23,10 @@ interface JQuery<TElement = HTMLElement> {
     /**
      * Refreshes the file input plugin based on options provided
      */
-    fileinput(method: "refresh", options?: BootstrapFileInput.FileInputOptions): this;
+    fileinput(
+        method: "refresh",
+        options?: BootstrapFileInput.FileInputOptions,
+    ): this;
     /**
      * Clear the file input.
      * This method clears the preview of all non-uploaded files, clears the ajax filestack, and also clears the native file input.
@@ -313,7 +316,17 @@ declare namespace BootstrapFileInput {
          * You need to be careful in case you are setting both allowedFileTypes and allowedFileExtensions.
          * In this case, the allowedFileTypes property is validated first and generally precedes the allowedFileExtensions setting (and the latter validation maybe skipped).
          */
-        allowedFileTypes?: Array<"image" | "html" | "text" | "video" | "audio" | "flash" | "object"> | undefined;
+        allowedFileTypes?:
+            | Array<
+                  | "image"
+                  | "html"
+                  | "text"
+                  | "video"
+                  | "audio"
+                  | "flash"
+                  | "object"
+              >
+            | undefined;
         /**
          * the list of allowed file extensions for upload.
          * This by default is set to null which means the plugin supports all file extensions for upload.
@@ -330,7 +343,17 @@ declare namespace BootstrapFileInput {
          * To disable this behavior, you can remove object from the list of allowedPreviewTypes OR fine tune it through allowedPreviewMimeTypes.
          * To disable content preview for all file-types and show the previewIcon instead as a thumbnail, set this to null, empty, or false.
          */
-        allowedPreviewTypes?: Array<"image" | "html" | "text" | "video" | "audio" | "flash" | "object"> | undefined;
+        allowedPreviewTypes?:
+            | Array<
+                  | "image"
+                  | "html"
+                  | "text"
+                  | "video"
+                  | "audio"
+                  | "flash"
+                  | "object"
+              >
+            | undefined;
         /**
          * the list of allowed mime types for preview.
          * This is set to null by default which means all possible mime types are allowed.
@@ -473,7 +496,10 @@ declare namespace BootstrapFileInput {
          *     previewId: the identifier for the preview file container (only available when uploading each thumbnail file)
          *     index: the zero-based sequential index of the loaded file in the preview list (only available when uploading each thumbnail file)
          */
-        uploadExtraData?: {} | ((previewId?: string, index?: number) => {}) | undefined;
+        uploadExtraData?:
+            | {}
+            | ((previewId?: string, index?: number) => {})
+            | undefined;
         /**
          * the minimum allowed image height in px if you are uploading image files.
          * Defaults to null which means no limit on image height.
@@ -1150,14 +1176,30 @@ declare namespace BootstrapFileInput {
     }
 
     interface PreviewSettings {
-        image?: { width?: string | undefined; height?: string | undefined } | undefined;
-        html?: { width?: string | undefined; height?: string | undefined } | undefined;
-        text?: { width?: string | undefined; height?: string | undefined } | undefined;
-        video?: { width?: string | undefined; height?: string | undefined } | undefined;
-        audio?: { width?: string | undefined; height?: string | undefined } | undefined;
-        flash?: { width?: string | undefined; height?: string | undefined } | undefined;
-        object?: { width?: string | undefined; height?: string | undefined } | undefined;
-        other?: { width?: string | undefined; height?: string | undefined } | undefined;
+        image?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        html?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        text?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        video?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        audio?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        flash?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        object?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
+        other?:
+            | { width?: string | undefined; height?: string | undefined }
+            | undefined;
     }
 
     interface FileTypeSettings {

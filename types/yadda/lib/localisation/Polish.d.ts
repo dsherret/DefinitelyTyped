@@ -13,7 +13,10 @@ declare namespace Polish {
     }
 
     interface Library extends English.Library {
-        zakladajac(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        zakladajac(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         zakladajac(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -39,22 +42,43 @@ declare namespace Polish {
         ): this;
         zakladajac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         zakladajac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         zakladajac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         zakladajac(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        zakladajac(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        majac(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        zakladajac(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        majac(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         majac(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -80,22 +104,43 @@ declare namespace Polish {
         ): this;
         majac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         majac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         majac(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         majac(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        majac(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        jezeli(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        majac(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        jezeli(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         jezeli(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -121,22 +166,43 @@ declare namespace Polish {
         ): this;
         jezeli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jezeli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jezeli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jezeli(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        jezeli(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        jesli(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        jezeli(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        jesli(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         jesli(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -162,22 +228,43 @@ declare namespace Polish {
         ): this;
         jesli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jesli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jesli(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         jesli(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        jesli(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        gdy(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        jesli(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        gdy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         gdy(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -203,19 +290,43 @@ declare namespace Polish {
         ): this;
         gdy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         gdy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         gdy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
-        gdy(step: string | string[] | RegExp | RegExp[], fn: (arg1: string, next: (err?: Error) => void) => void): this;
-        gdy(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        kiedy(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        gdy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (arg1: string, next: (err?: Error) => void) => void,
+        ): this;
+        gdy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        kiedy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         kiedy(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -241,22 +352,43 @@ declare namespace Polish {
         ): this;
         kiedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         kiedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         kiedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         kiedy(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        kiedy(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
-        wtedy(step: string | string[] | RegExp | RegExp[], fn: (...args: string[]) => Promise<void>): this;
+        kiedy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
+        wtedy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (...args: string[]) => Promise<void>,
+        ): this;
         wtedy(
             step: string | string[] | RegExp | RegExp[],
             fn: (
@@ -282,21 +414,39 @@ declare namespace Polish {
         ): this;
         wtedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, arg4: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         wtedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, arg3: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         wtedy(
             step: string | string[] | RegExp | RegExp[],
-            fn: (arg1: string, arg2: string, next: (err?: Error) => void) => void,
+            fn: (
+                arg1: string,
+                arg2: string,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         wtedy(
             step: string | string[] | RegExp | RegExp[],
             fn: (arg1: string, next: (err?: Error) => void) => void,
         ): this;
-        wtedy(step: string | string[] | RegExp | RegExp[], fn: (next: (err?: Error) => void) => void): this;
+        wtedy(
+            step: string | string[] | RegExp | RegExp[],
+            fn: (next: (err?: Error) => void) => void,
+        ): this;
     }
 }
 

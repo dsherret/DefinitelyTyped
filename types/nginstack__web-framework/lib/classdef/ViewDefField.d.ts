@@ -6,7 +6,12 @@ declare function ViewDefField(
     ...args: any[]
 ): void;
 declare class ViewDefField {
-    constructor(name: string, type: string, size: number | null, ...args: any[]);
+    constructor(
+        name: string,
+        type: string,
+        size: number | null,
+        ...args: any[]
+    );
     private inheritedClassDefEvents_;
     private superRegisterEvents_;
     private typesThatNotSupportUnderscoreAtName_;
@@ -32,10 +37,10 @@ declare class ViewDefField {
     width: number;
     enterKeyAction:
         | {
-            IGNORE: string;
-            NEWLINE: string;
-            DONE: string;
-        }
+              IGNORE: string;
+              NEWLINE: string;
+              DONE: string;
+          }
         | string;
     private tableViewLabel;
     controlType: string;
@@ -117,7 +122,15 @@ declare class ViewDefField {
     isMasterDetail(): boolean;
 }
 declare namespace ViewDefField {
-    export { Event, FieldAggregator, Grid, Link, ViewDef, VM_LIST, VM_THUMBNAIL };
+    export {
+        Event,
+        FieldAggregator,
+        Grid,
+        Link,
+        ViewDef,
+        VM_LIST,
+        VM_THUMBNAIL,
+    };
 }
 type Grid = import("../grid/Grid");
 type ViewDef = import("./ViewDef");

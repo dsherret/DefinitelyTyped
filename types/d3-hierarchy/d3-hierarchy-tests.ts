@@ -51,21 +51,33 @@ let hierarchyRootDatum: HierarchyDatum = {
 };
 
 let hierarchyNodeArray: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> = [];
-let hierarchyNodeArrayOrUndefined: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> | undefined;
+let hierarchyNodeArrayOrUndefined:
+    | Array<d3Hierarchy.HierarchyNode<HierarchyDatum>>
+    | undefined;
 let hierarchyNode: d3Hierarchy.HierarchyNode<HierarchyDatum>;
-let hierarchyNodeOrUndefined: d3Hierarchy.HierarchyNode<HierarchyDatum> | undefined;
+let hierarchyNodeOrUndefined:
+    | d3Hierarchy.HierarchyNode<HierarchyDatum>
+    | undefined;
 
-let hierarchyPointNodeArray: Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>> = [];
-let hierarchyPointNodeArrayOrUndefined: Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>> | undefined;
+let hierarchyPointNodeArray: Array<
+    d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>
+> = [];
+let hierarchyPointNodeArrayOrUndefined:
+    | Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>>
+    | undefined;
 let hierarchyPointNode: d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>;
 
-let hierarchyRectangularNodeArray: Array<d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>> = [];
+let hierarchyRectangularNodeArray: Array<
+    d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>
+> = [];
 let hierarchyRectangularNodeArrayOrUndefined:
     | Array<d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>>
     | undefined;
 let hierarchyRectangularNode: d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>;
 
-let hierarchyCircularNodeArray: Array<d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>> = [];
+let hierarchyCircularNodeArray: Array<
+    d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>
+> = [];
 let hierarchyCircularNodeArrayOrUndefined:
     | Array<d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>>
     | undefined;
@@ -107,8 +119,10 @@ idString = hierarchyRootNode.id;
 
 // ancestors(), descendants() --------------------------------------------
 
-const ancestors: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> = hierarchyRootNode.ancestors();
-const descendants: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> = hierarchyRootNode.descendants();
+const ancestors: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> =
+    hierarchyRootNode.ancestors();
+const descendants: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> =
+    hierarchyRootNode.descendants();
 
 // leaves() --------------------------------------------------------------
 
@@ -116,13 +130,16 @@ hierarchyNodeArray = hierarchyRootNode.leaves();
 
 // find() --------------------------------------------------------------
 
-hierarchyNodeOrUndefined = hierarchyRootNode.find(node => !!node.value && node.value > 0);
+hierarchyNodeOrUndefined = hierarchyRootNode.find(
+    (node) => !!node.value && node.value > 0,
+);
 
 // path() ----------------------------------------------------------------
 
 hierarchyNode = descendants[descendants.length - 1];
 
-const path: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> = hierarchyRootNode.path(hierarchyNode);
+const path: Array<d3Hierarchy.HierarchyNode<HierarchyDatum>> =
+    hierarchyRootNode.path(hierarchyNode);
 
 // links() and HierarchyLink<...> ----------------------------------------
 
@@ -151,7 +168,12 @@ numOrUndefined = hierarchyRootNode.value;
 // sort ------------------------------------------------------------------
 
 hierarchyRootNode = hierarchyRootNode.sort((a, b) => {
-    console.log("Raw values in data of a and b:", a.data.val, " and ", b.data.val); // a and b are of type HierarchyNode<HierarchyDatum>
+    console.log(
+        "Raw values in data of a and b:",
+        a.data.val,
+        " and ",
+        b.data.val,
+    ); // a and b are of type HierarchyNode<HierarchyDatum>
     return b.height - a.height || b.value! - a.value!;
 });
 
@@ -162,33 +184,42 @@ hierarchyRootNode = hierarchyRootNode.each((node) => {
     console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
 });
 
-hierarchyRootNode = hierarchyRootNode.each(function(node, index, thisNode) {
-    const testProperty: number = this.testThisProperty;
-    console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
-    console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
-}, { testThisProperty: 5 });
+hierarchyRootNode = hierarchyRootNode.each(
+    function (node, index, thisNode) {
+        const testProperty: number = this.testThisProperty;
+        console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
+        console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
+    },
+    { testThisProperty: 5 },
+);
 
 hierarchyRootNode = hierarchyRootNode.eachAfter((node) => {
     console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
     console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
 });
 
-hierarchyRootNode = hierarchyRootNode.eachAfter(function(node, index, thisNode) {
-    const testProperty: number = this.testThisProperty;
-    console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
-    console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
-}, { testThisProperty: 5 });
+hierarchyRootNode = hierarchyRootNode.eachAfter(
+    function (node, index, thisNode) {
+        const testProperty: number = this.testThisProperty;
+        console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
+        console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
+    },
+    { testThisProperty: 5 },
+);
 
 hierarchyRootNode = hierarchyRootNode.eachBefore((node) => {
     console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
     console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
 });
 
-hierarchyRootNode = hierarchyRootNode.eachBefore(function(node, index, thisNode) {
-    const testProperty: number = this.testThisProperty;
-    console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
-    console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
-}, { testThisProperty: 5 });
+hierarchyRootNode = hierarchyRootNode.eachBefore(
+    function (node, index, thisNode) {
+        const testProperty: number = this.testThisProperty;
+        console.log("Raw value of node:", node.data.val); // node type is HierarchyNode<HierarchyDatum>
+        console.log("Aggregated value of node:", node.value); // node type is HierarchyNode<HierarchyDatum>
+    },
+    { testThisProperty: 5 },
+);
 
 // copy() ----------------------------------------------------------------
 
@@ -263,14 +294,19 @@ idStringAccessor = stratificatorizer.parentId();
 stratificatorizer = stratificatorizer.path((d, i, data) => d.name);
 
 let pathStringAccessor:
-    | ((d: TabularHierarchyDatum, i: number, data: TabularHierarchyDatum[]) => string)
+    | ((
+          d: TabularHierarchyDatum,
+          i: number,
+          data: TabularHierarchyDatum[],
+      ) => string)
     | null
     | undefined;
 pathStringAccessor = stratificatorizer.path();
 
 // Use Stratify Operator  ------------------------------------------------
 
-const stratifiedRootNode: d3Hierarchy.HierarchyNode<TabularHierarchyDatum> = stratificatorizer(tabularData);
+const stratifiedRootNode: d3Hierarchy.HierarchyNode<TabularHierarchyDatum> =
+    stratificatorizer(tabularData);
 const pId: string | null = stratifiedRootNode.data.parentId;
 
 // -----------------------------------------------------------------------
@@ -332,7 +368,9 @@ num = clusterRootNode.height;
 hierarchyPointNodeArrayOrUndefined = clusterRootNode.children;
 
 let parentPointNode: d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId> | null;
-parentPointNode = hierarchyPointNodeArray.length ? hierarchyPointNodeArray[0].parent : null;
+parentPointNode = hierarchyPointNodeArray.length
+    ? hierarchyPointNodeArray[0].parent
+    : null;
 parentPointNode = hierarchyPointNodeArray[0].parent;
 
 // id --------------------------------------------------------------------
@@ -341,10 +379,12 @@ idString = clusterRootNode.id;
 
 // ancestors(), descendants() --------------------------------------------
 
-const pointNodeAncestors: Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>> = clusterRootNode
-    .ancestors();
-const pointNodeDescendants: Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>> = clusterRootNode
-    .descendants();
+const pointNodeAncestors: Array<
+    d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>
+> = clusterRootNode.ancestors();
+const pointNodeDescendants: Array<
+    d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>
+> = clusterRootNode.descendants();
 
 // leaves() --------------------------------------------------------------
 
@@ -354,13 +394,15 @@ hierarchyPointNodeArray = clusterRootNode.leaves();
 
 hierarchyPointNode = pointNodeDescendants[pointNodeDescendants.length - 1];
 
-const clusterPath: Array<d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>> = clusterRootNode.path(
-    hierarchyPointNode,
-);
+const clusterPath: Array<
+    d3Hierarchy.HierarchyPointNode<HierarchyDatumWithParentId>
+> = clusterRootNode.path(hierarchyPointNode);
 
 // links() and HierarchyPointLink<...> -----------------------------------
 
-let pointLinks: Array<d3Hierarchy.HierarchyPointLink<HierarchyDatumWithParentId>>;
+let pointLinks: Array<
+    d3Hierarchy.HierarchyPointLink<HierarchyDatumWithParentId>
+>;
 
 pointLinks = clusterRootNode.links();
 
@@ -386,7 +428,12 @@ numOrUndefined = clusterRootNode.value;
 
 clusterRootNode = clusterRootNode.sort((a, b) => {
     console.log("x-coordinates of a:", a.x, " and b:", b.x); // a and b are of type HierarchyPointNode<HierarchyDatumWithParentId>
-    console.log("Raw values in data of a and b:", a.data.val, " and ", b.data.val); // a and b are of type HierarchyPointNode<HierarchyDatumWithParentId>
+    console.log(
+        "Raw values in data of a and b:",
+        a.data.val,
+        " and ",
+        b.data.val,
+    ); // a and b are of type HierarchyPointNode<HierarchyDatumWithParentId>
     return b.height - a.height || b.value! - a.value!;
 });
 
@@ -453,7 +500,9 @@ treeRootNode = treeLayout(stratifiedRootNode);
 // Treemap
 // -----------------------------------------------------------------------
 
-let numberRectangularNodeAccessor: (node: d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>) => number;
+let numberRectangularNodeAccessor: (
+    node: d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>,
+) => number;
 
 // Create treemap layout generator =======================================
 
@@ -618,7 +667,9 @@ num = treemapRootNode.height;
 hierarchyRectangularNodeArrayOrUndefined = treemapRootNode.children;
 
 let parentRectangularNode: d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId> | null;
-parentRectangularNode = hierarchyRectangularNodeArray.length ? hierarchyRectangularNodeArray[0].parent : null;
+parentRectangularNode = hierarchyRectangularNodeArray.length
+    ? hierarchyRectangularNodeArray[0].parent
+    : null;
 parentRectangularNode = hierarchyRectangularNodeArray[0].parent;
 
 // id --------------------------------------------------------------------
@@ -627,10 +678,12 @@ idString = treemapRootNode.id;
 
 // ancestors(), descendants() --------------------------------------------
 
-const rectangularNodeAncestors: Array<d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>> =
-    treemapRootNode.ancestors();
-const rectangularNodeDescendants: Array<d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>> =
-    treemapRootNode.descendants();
+const rectangularNodeAncestors: Array<
+    d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>
+> = treemapRootNode.ancestors();
+const rectangularNodeDescendants: Array<
+    d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>
+> = treemapRootNode.descendants();
 
 // leaves() --------------------------------------------------------------
 
@@ -638,15 +691,18 @@ hierarchyRectangularNodeArray = treemapRootNode.leaves();
 
 // path() ----------------------------------------------------------------
 
-hierarchyRectangularNode = rectangularNodeDescendants[rectangularNodeDescendants.length - 1];
+hierarchyRectangularNode =
+    rectangularNodeDescendants[rectangularNodeDescendants.length - 1];
 
-const treemapPath: Array<d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>> = treemapRootNode.path(
-    hierarchyRectangularNode,
-);
+const treemapPath: Array<
+    d3Hierarchy.HierarchyRectangularNode<HierarchyDatumWithParentId>
+> = treemapRootNode.path(hierarchyRectangularNode);
 
 // links() and HierarchyRectangularLink<...> -----------------------------
 
-let rectangularLinks: Array<d3Hierarchy.HierarchyRectangularLink<HierarchyDatumWithParentId>>;
+let rectangularLinks: Array<
+    d3Hierarchy.HierarchyRectangularLink<HierarchyDatumWithParentId>
+>;
 
 rectangularLinks = treemapRootNode.links();
 
@@ -671,7 +727,12 @@ numOrUndefined = treemapRootNode.value;
 
 treemapRootNode = treemapRootNode.sort((a, b) => {
     console.log("x0-coordinates of a:", a.x0, " and b:", b.x0); // a and b are of type HierarchyRectangularNode<HierarchyDatumWithParentId>
-    console.log("Raw values in data of a and b:", a.data.val, " and ", b.data.val); // a and b are of type HierarchyRectangularNode<HierarchyDatumWithParentId>
+    console.log(
+        "Raw values in data of a and b:",
+        a.data.val,
+        " and ",
+        b.data.val,
+    ); // a and b are of type HierarchyRectangularNode<HierarchyDatumWithParentId>
     return b.height - a.height || b.value! - a.value!;
 });
 
@@ -737,7 +798,9 @@ partitionRootNode = partitionLayout(stratifiedRootNode);
 // Pack
 // -----------------------------------------------------------------------
 
-type CircularAccessor = (node: d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>) => number;
+type CircularAccessor = (
+    node: d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>,
+) => number;
 let numberCircularNodeAccessor: CircularAccessor;
 let numberCircularNodeAccessorOrNull: CircularAccessor | null;
 
@@ -804,7 +867,9 @@ num = packRootNode.height;
 hierarchyCircularNodeArrayOrUndefined = packRootNode.children;
 
 let parentCircularNode: d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId> | null;
-parentCircularNode = hierarchyCircularNodeArray.length ? hierarchyCircularNodeArray[0].parent : null;
+parentCircularNode = hierarchyCircularNodeArray.length
+    ? hierarchyCircularNodeArray[0].parent
+    : null;
 parentCircularNode = hierarchyCircularNodeArray[0].parent;
 
 // id --------------------------------------------------------------------
@@ -813,10 +878,12 @@ idString = packRootNode.id;
 
 // ancestors(), descendants() --------------------------------------------
 
-const circularNodeAncestors: Array<d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>> = packRootNode
-    .ancestors();
-const circularNodeDescendants: Array<d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>> = packRootNode
-    .descendants();
+const circularNodeAncestors: Array<
+    d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>
+> = packRootNode.ancestors();
+const circularNodeDescendants: Array<
+    d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>
+> = packRootNode.descendants();
 
 // leaves() --------------------------------------------------------------
 
@@ -824,15 +891,18 @@ hierarchyCircularNodeArray = packRootNode.leaves();
 
 // path() ----------------------------------------------------------------
 
-hierarchyCircularNode = circularNodeDescendants[circularNodeDescendants.length - 1];
+hierarchyCircularNode =
+    circularNodeDescendants[circularNodeDescendants.length - 1];
 
-const packPath: Array<d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>> = packRootNode.path(
-    hierarchyCircularNode,
-);
+const packPath: Array<
+    d3Hierarchy.HierarchyCircularNode<HierarchyDatumWithParentId>
+> = packRootNode.path(hierarchyCircularNode);
 
 // links() and HierarchyRectangularLink<...> -----------------------------
 
-let circularLinks: Array<d3Hierarchy.HierarchyCircularLink<HierarchyDatumWithParentId>>;
+let circularLinks: Array<
+    d3Hierarchy.HierarchyCircularLink<HierarchyDatumWithParentId>
+>;
 
 circularLinks = packRootNode.links();
 
@@ -858,7 +928,12 @@ numOrUndefined = packRootNode.value;
 
 packRootNode = packRootNode.sort((a, b) => {
     console.log("radius of a:", a.r, " and b:", b.r); // a and b are of type HierarchyCircularNode<HierarchyDatumWithParentId>
-    console.log("Raw values in data of a and b:", a.data.val, " and ", b.data.val); // a and b are of type HierarchyCircularNode<HierarchyDatumWithParentId>
+    console.log(
+        "Raw values in data of a and b:",
+        a.data.val,
+        " and ",
+        b.data.val,
+    ); // a and b are of type HierarchyCircularNode<HierarchyDatumWithParentId>
     return b.height - a.height || b.value! - a.value!;
 });
 

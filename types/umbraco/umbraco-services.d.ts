@@ -141,10 +141,19 @@ declare namespace umbraco.services {
      */
     interface IAppState {
         /** function to validate and set the state on a state object */
-        setState(stateObj: IStateObject, key: string, value: any, stateObjName: string): void;
+        setState(
+            stateObj: IStateObject,
+            key: string,
+            value: any,
+            stateObjName: string,
+        ): void;
 
         /** function to validate and set the state on a state object */
-        getState(stateObj: IStateObject, key: string, stateObjName: string): IStateObject;
+        getState(
+            stateObj: IStateObject,
+            key: string,
+            stateObjName: string,
+        ): IStateObject;
 
         /**
          * @ngdoc function
@@ -311,7 +320,12 @@ declare namespace umbraco.services {
          * @param {Number} timeout in milliseconds
          * @returns {Promise} Promise object which resolves when the file has loaded
          */
-        loadCss(path: string, scope: ng.IScope, attributes: Object, timeout: number): ng.IPromise<any>;
+        loadCss(
+            path: string,
+            scope: ng.IScope,
+            attributes: Object,
+            timeout: number,
+        ): ng.IPromise<any>;
 
         /**
          * @ngdoc method
@@ -327,7 +341,12 @@ declare namespace umbraco.services {
          * @param {Number} timeout in milliseconds
          * @returns {Promise} Promise object which resolves when the file has loaded
          */
-        loadJs(path: string, scope: ng.IScope, attributes: Object, timeout: number): ng.IPromise<any>;
+        loadJs(
+            path: string,
+            scope: ng.IScope,
+            attributes: Object,
+            timeout: number,
+        ): ng.IPromise<any>;
 
         /**
          * @ngdoc method
@@ -483,8 +502,7 @@ declare namespace umbraco.services {
     /**
      * Modal
      */
-    interface IModal {
-    }
+    interface IModal {}
 
     /**
      * Mediapicker dialog options object
@@ -579,8 +597,7 @@ declare namespace umbraco.services {
     /**
      * Dialog options object
      */
-    interface IDialog {
-    }
+    interface IDialog {}
 
     /*
      * Application-wide service for handling modals, overlays and dialogs By default it
@@ -798,14 +815,12 @@ declare namespace umbraco.services {
         app.notAuthenticated
         app.closeDialogs
     */
-    interface IEventService {
-    }
+    interface IEventService {}
 
     /**
      * File
      */
-    interface IFile {
-    }
+    interface IFile {}
 
     /**
      * @ngdoc service
@@ -856,8 +871,7 @@ declare namespace umbraco.services {
     /**
      * Model state
      */
-    interface IModelState {
-    }
+    interface IModelState {}
 
     /**
      * @ngdoc service
@@ -1058,8 +1072,7 @@ declare namespace umbraco.services {
     /**
      * Media model
      */
-    interface IMediaModel {
-    }
+    interface IMediaModel {}
 
     /**
      * Media options
@@ -1072,8 +1085,7 @@ declare namespace umbraco.services {
     /**
      * Media entity
      */
-    interface IMediaEntity {
-    }
+    interface IMediaEntity {}
 
     /**
      * @ngdoc service
@@ -1149,7 +1161,10 @@ declare namespace umbraco.services {
          * @param {object} mediaEntity A media Entity returned from the entityResource
          * @param {boolean} thumbnail Whether to return the thumbnail url or normal url
          */
-        resolveFileFromEntity(mediaEntity: IMediaEntity, thumbnail: boolean): string;
+        resolveFileFromEntity(
+            mediaEntity: IMediaEntity,
+            thumbnail: boolean,
+        ): string;
 
         /**
          * @ngdoc function
@@ -1472,8 +1487,7 @@ declare namespace umbraco.services {
     /**
      * Notification
      */
-    interface INotification {
-    }
+    interface INotification {}
 
     /**
      * Notification Type
@@ -1497,8 +1511,7 @@ declare namespace umbraco.services {
     /**
      * Button Action
      */
-    interface IButtonAction {
-    }
+    interface IButtonAction {}
 
     /**
      * Notification Item
@@ -1709,8 +1722,7 @@ declare namespace umbraco.services {
     /**
      * Search media
      */
-    interface ISearchMedia extends ISearchContent {
-    }
+    interface ISearchMedia extends ISearchContent {}
 
     /**
      * @ngdoc service
@@ -1815,7 +1827,11 @@ declare namespace umbraco.services {
          *  field alias to listen for.
          *  If propertyAlias is null, then this subscription is for a field property (not a user defined property).
          */
-        subscribe(propertyAlias: string, fieldName: string, callback: Function): void;
+        subscribe(
+            propertyAlias: string,
+            fieldName: string,
+            callback: Function,
+        ): void;
 
         /**
          * @ngdoc function
@@ -1861,7 +1877,11 @@ declare namespace umbraco.services {
          * @description
          * Adds an error message for the content property
          */
-        addPropertyError(propertyAlias: string, fieldName: string, errorMsg: string): void;
+        addPropertyError(
+            propertyAlias: string,
+            fieldName: string,
+            errorMsg: string,
+        ): void;
 
         /**
          * @ngdoc function
@@ -1944,8 +1964,7 @@ declare namespace umbraco.services {
     /**
      * TinyMcePlugin
      */
-    interface ITinyMcePlugin {
-    }
+    interface ITinyMcePlugin {}
 
     /**
      * Dimension
@@ -2036,8 +2055,7 @@ declare namespace umbraco.services {
     /**
      * Package Folder
      */
-    interface IPackageFolder {
-    }
+    interface IPackageFolder {}
 
     /**
      * Cache args
@@ -2294,7 +2312,9 @@ declare namespace umbraco.services {
          *
          * @param {Array} queryStrings An array of key/value pairs
          */
-        dictionaryToQueryString(queryStrings: Array<KeyValuePair<string>>): string;
+        dictionaryToQueryString(
+            queryStrings: Array<KeyValuePair<string>>,
+        ): string;
 
         /**
          * @ngdoc method
@@ -2309,7 +2329,11 @@ declare namespace umbraco.services {
          * @param {string} actionName The webapi action name
          * @param {object} queryStrings Can be either a string or an array containing key/value pairs
          */
-        getApiUrl(apiName: string, actionName: string, queryStrings: string | Array<KeyValuePair<string>>): string;
+        getApiUrl(
+            apiName: string,
+            actionName: string,
+            queryStrings: string | Array<KeyValuePair<string>>,
+        ): string;
 
         /**
          * @ngdoc function
@@ -2338,9 +2362,9 @@ declare namespace umbraco.services {
                 | string
                 | { success: ng.IHttpPromiseCallback<T>; errorMsg: string }
                 | {
-                    success: ng.IHttpPromiseCallback<T>;
-                    error: ng.IHttpPromiseCallback<umb.resources.IResourcePromise>;
-                },
+                      success: ng.IHttpPromiseCallback<T>;
+                      error: ng.IHttpPromiseCallback<umb.resources.IResourcePromise>;
+                  },
         ): umb.resources.IResourcePromise | Object;
     }
 }

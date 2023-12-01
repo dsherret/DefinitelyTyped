@@ -45,8 +45,8 @@ theo.registerFormat(
 // Register a custom value transform
 theo.registerValueTransform(
     "relative/pixelValue",
-    prop => prop.get("category") === "sizing",
-    prop => {
+    (prop) => prop.get("category") === "sizing",
+    (prop) => {
         const value = prop.get("value").toString();
         return parseFloat(value.replace(/rem/g, "")) * 16;
     },
@@ -55,8 +55,8 @@ theo.registerValueTransform(
 // Override a custom value transform
 theo.registerValueTransform(
     "relative/pixel",
-    prop => prop.get("category") === "sizing",
-    prop => {
+    (prop) => prop.get("category") === "sizing",
+    (prop) => {
         const value = prop.get("value").toString();
         return `${parseFloat(value.replace(/rem/g, "")) * 16}px`;
     },

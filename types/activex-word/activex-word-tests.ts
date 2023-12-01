@@ -22,7 +22,10 @@ app.ActiveDocument.Content.ParagraphFormat.Space2();
 const activeDoc = app.ActiveDocument;
 (() => {
     const rngTenCharacters = activeDoc.Range(0, 10);
-    const rngThreeWords = activeDoc.Range(activeDoc.Words.Item(1).Start, activeDoc.Words.Item(3).End);
+    const rngThreeWords = activeDoc.Range(
+        activeDoc.Words.Item(1).Start,
+        activeDoc.Words.Item(3).End,
+    );
     const rngParagraphs = activeDoc.Range(
         activeDoc.Paragraphs.Item(2).Range.Start,
         activeDoc.Paragraphs.Item(3).Range.End,
@@ -51,7 +54,8 @@ const activeDoc = app.ActiveDocument;
     activeDoc.Paragraphs.Item(2).Range.Select();
 
     rngParagraphs.Bold = true;
-    rngParagraphs.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+    rngParagraphs.ParagraphFormat.Alignment =
+        Word.WdParagraphAlignment.wdAlignParagraphCenter;
     rngParagraphs.Font.Name = "Stencil";
     rngParagraphs.Font.Size = 15;
 
@@ -61,7 +65,10 @@ const activeDoc = app.ActiveDocument;
     rngParagraph.SetRange(rngParagraph.Start, rngParagraph.End + 10);
 
     rngParagraph = activeDoc.Paragraphs.Item(2).Range;
-    rngParagraph.SetRange(rngParagraph.Start, activeDoc.Paragraphs.Item(3).Range.End);
+    rngParagraph.SetRange(
+        rngParagraph.Start,
+        activeDoc.Paragraphs.Item(3).Range.End,
+    );
     rngParagraph.Select();
     app.Selection.Font.Italic = true;
 })();
@@ -73,8 +80,11 @@ const activeDoc = app.ActiveDocument;
     app.Dialogs.Item(Word.WdWordDialog.wdDialogFileOpen).Show();
     app.Dialogs.Item(Word.WdWordDialog.wdDialogFilePrint).Show();
 
-    let dlg = app.Dialogs.Item(Word.WdWordDialog.wdDialogFormatBordersAndShading);
-    dlg.DefaultTab = Word.WdWordDialogTab.wdDialogFormatBordersAndShadingTabBorders;
+    let dlg = app.Dialogs.Item(
+        Word.WdWordDialog.wdDialogFormatBordersAndShading,
+    );
+    dlg.DefaultTab =
+        Word.WdWordDialogTab.wdDialogFormatBordersAndShadingTabBorders;
     dlg.Show();
 
     dlg = app.Dialogs.Item(Word.WdWordDialog.wdDialogToolsOptionsUserInfo);
@@ -83,7 +93,9 @@ const activeDoc = app.ActiveDocument;
 
     // returning and changing dialog box settings
 
-    const dlgParagraph = app.Dialogs.Item(Word.WdWordDialog.wdDialogFormatParagraph);
+    const dlgParagraph = app.Dialogs.Item(
+        Word.WdWordDialog.wdDialogFormatParagraph,
+    );
     WScript.Echo(`Right indent = ${(dlgParagraph as any).RightIndent}`);
 
     dlg = app.Dialogs.Item(Word.WdWordDialog.wdDialogFormatParagraph);
@@ -120,7 +132,8 @@ const activeDoc = app.ActiveDocument;
         activeDoc.Paragraphs.Item(3).Range.End,
     );
     rngFormat.Font.Name = "Arial";
-    rngFormat.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify;
+    rngFormat.ParagraphFormat.Alignment =
+        Word.WdParagraphAlignment.wdAlignParagraphJustify;
 
     // Inserting text and applying character and paragraph formatting
     rngFormat = activeDoc.Range(0, 0);
@@ -143,8 +156,8 @@ const activeDoc = app.ActiveDocument;
 
     // Increase margins by .5 inches
     const pageSetup = activeDoc.PageSetup;
-    pageSetup.LeftMargin += app.InchesToPoints(.5);
-    pageSetup.RightMargin += app.InchesToPoints(.5);
+    pageSetup.LeftMargin += app.InchesToPoints(0.5);
+    pageSetup.RightMargin += app.InchesToPoints(0.5);
 })();
 
 // Assigning ranges -- https://msdn.microsoft.com/en-us/vba/word-vba/articles/assigning-ranges
@@ -258,18 +271,21 @@ const activeDoc = app.ActiveDocument;
 
 // looping through a collection -- https://msdn.microsoft.com/en-us/vba/word-vba/articles/looping-through-a-collection
 (() => {
-    collectionToArray(app.Documents)
-        .forEach(openDocument => WScript.Echo(openDocument.Name));
+    collectionToArray(app.Documents).forEach((openDocument) =>
+        WScript.Echo(openDocument.Name),
+    );
 
-    const strMarks = collectionToArray<Word.Bookmark>(activeDoc.Bookmarks)
-        .map(bookmark => bookmark.Name);
+    const strMarks = collectionToArray<Word.Bookmark>(activeDoc.Bookmarks).map(
+        (bookmark) => bookmark.Name,
+    );
 
     collectionToArray<Word.Field>(activeDoc.Fields)
-        .filter(dateField => dateField.Code.Text.indexOf("Date", 1) !== -1)
-        .forEach(dateField => dateField.Update());
+        .filter((dateField) => dateField.Code.Text.indexOf("Date", 1) !== -1)
+        .forEach((dateField) => dateField.Update());
 
-    const exists = collectionToArray<Word.AutoTextEntry>(activeDoc.AttachedTemplate.AutoTextEntries)
-        .some(autotextEntry => autotextEntry.Name === "Filename");
+    const exists = collectionToArray<Word.AutoTextEntry>(
+        activeDoc.AttachedTemplate.AutoTextEntries,
+    ).some((autotextEntry) => autotextEntry.Name === "Filename");
     if (exists) {
         WScript.Echo("The Filename AutoText entry exists.");
     }
@@ -288,14 +304,18 @@ const activeDoc = app.ActiveDocument;
     app.Selection.Paragraphs.Borders.Enable = true;
 
     if (app.Selection.Tables.Count >= 1) {
-        app.Selection.Tables.Item(1).Rows.Item(1).Shading.Texture = Word.WdTextureIndex.wdTexture10Percent;
+        app.Selection.Tables.Item(1).Rows.Item(1).Shading.Texture =
+            Word.WdTextureIndex.wdTexture10Percent;
     } else {
         WScript.Echo("Selection doesn't include a table");
     }
 
     if (app.Selection.Tables.Count >= 1) {
-        collectionToArray<Word.Table>(app.Selection.Tables)
-            .forEach(table => table.Rows.Item(1).Shading.Texture = Word.WdTextureIndex.wdTexture30Percent);
+        collectionToArray<Word.Table>(app.Selection.Tables).forEach(
+            (table) =>
+                (table.Rows.Item(1).Shading.Texture =
+                    Word.WdTextureIndex.wdTexture30Percent),
+        );
     }
 })();
 
@@ -311,7 +331,9 @@ const activeDoc = app.ActiveDocument;
     WScript.Echo(app.Selection.Text);
 
     // predefined index values;
-    const border = app.Selection.Paragraphs.Item(1).Borders.Item(Word.WdBorderType.wdBorderBottom);
+    const border = app.Selection.Paragraphs.Item(1).Borders.Item(
+        Word.WdBorderType.wdBorderBottom,
+    );
     border.LineStyle = Word.WdLineStyle.wdLineStyleSingle;
     border.LineWidth = Word.WdLineWidth.wdLineWidth300pt;
     border.Color = Word.WdColor.wdColorBlue;
@@ -360,18 +382,47 @@ const activeDoc = app.ActiveDocument;
     const i = parseInt(activeDoc.Variables.Item("Age").Value, 10);
 
     // document properties
-    activeDoc.CustomDocumentProperties.Add("YourName", false, Office.MsoDocProperties.msoPropertyTypeString);
+    activeDoc.CustomDocumentProperties.Add(
+        "YourName",
+        false,
+        Office.MsoDocProperties.msoPropertyTypeString,
+    );
 
-    activeDoc.AttachedTemplate.AutoTextEntries.Add("MyText", app.Selection.Range);
+    activeDoc.AttachedTemplate.AutoTextEntries.Add(
+        "MyText",
+        app.Selection.Range,
+    );
 
     // no method assignment in Javascript
-    ActiveXObject.set(app.System, "PrivateProfileString", ["C:\\My Documents\\Macro.ini", "DocTracker", "DocNum"], "1");
+    ActiveXObject.set(
+        app.System,
+        "PrivateProfileString",
+        ["C:\\My Documents\\Macro.ini", "DocTracker", "DocNum"],
+        "1",
+    );
 
-    const docNum = parseInt(app.System.PrivateProfileString("C:\\My Documents\\Macro.ini", "DocTracker", "DocNum"), 10);
+    const docNum = parseInt(
+        app.System.PrivateProfileString(
+            "C:\\My Documents\\Macro.ini",
+            "DocTracker",
+            "DocNum",
+        ),
+        10,
+    );
 
-    const section = "HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\12.0\\Word\Options";
-    const programDir = app.System.PrivateProfileString("", section, "PROGRAMDIR");
+    const section =
+        "HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\12.0\\WordOptions";
+    const programDir = app.System.PrivateProfileString(
+        "",
+        section,
+        "PROGRAMDIR",
+    );
     WScript.Echo(`The program directory for Word is ${programDir}`);
 
-    ActiveXObject.set(app.System, "PrivateProfileString", ["", section, "DOC-PATH"], "C:\\My Documents");
+    ActiveXObject.set(
+        app.System,
+        "PrivateProfileString",
+        ["", section, "DOC-PATH"],
+        "C:\\My Documents",
+    );
 })();

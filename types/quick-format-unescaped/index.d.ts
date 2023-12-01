@@ -10,7 +10,11 @@
  * format('hello %s %o', ['world', {obj: true}])
  * // 'hello world {"obj": true}'
  */
-declare function format(fmt: string, parameters: readonly unknown[], options?: format.Options): string;
+declare function format(
+    fmt: string,
+    parameters: readonly unknown[],
+    options?: format.Options,
+): string;
 
 declare namespace format {
     interface Options {

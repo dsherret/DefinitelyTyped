@@ -39,7 +39,11 @@ export function getKeyPairFromSeed(
     options?: Options,
 ): Promise<SimpleKeyPair>;
 
-type Algorithm = ED25519Algorithm | RSAAlgorithm | ED25519Algorithm["id"] | RSAAlgorithm["id"];
+type Algorithm =
+    | ED25519Algorithm
+    | RSAAlgorithm
+    | ED25519Algorithm["id"]
+    | RSAAlgorithm["id"];
 
 interface ED25519Algorithm {
     id: "ed25519";

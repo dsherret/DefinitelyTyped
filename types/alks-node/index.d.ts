@@ -96,7 +96,11 @@ export function getIamRoleTypes(
     opts: object,
     callback: (err: Error, body: any) => void,
 ): void;
-export function generateConsoleUrl(key: AwsKey, opts: object, callback: (err: Error, url: string) => void): void;
+export function generateConsoleUrl(
+    key: AwsKey,
+    opts: object,
+    callback: (err: Error, url: string) => void,
+): void;
 export function deleteIamRole(
     account: Account,
     auth: Auth,

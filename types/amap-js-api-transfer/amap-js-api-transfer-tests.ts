@@ -312,24 +312,27 @@ transfer.search(lnglat, lnglat, (status, result) => {
 });
 
 // $ExpectType void
-transfer.search([{ keyword: "origin" }, { keyword: "destination" }], (status, result) => {
-    const temp: "complete" | "no_data" | "error" = status;
-    if (typeof result !== "string") {
-        // $ExpectType SearchResultExt
-        result;
-        // $ExpectType PoiExt
-        result.start;
-        // $ExpectType string
-        result.originName;
-        // $ExpectType PoiExt
-        result.end;
-        // $ExpectType string
-        result.destinationName;
-    } else {
-        // $ExpectType string
-        result;
-    }
-});
+transfer.search(
+    [{ keyword: "origin" }, { keyword: "destination" }],
+    (status, result) => {
+        const temp: "complete" | "no_data" | "error" = status;
+        if (typeof result !== "string") {
+            // $ExpectType SearchResultExt
+            result;
+            // $ExpectType PoiExt
+            result.start;
+            // $ExpectType string
+            result.originName;
+            // $ExpectType PoiExt
+            result.end;
+            // $ExpectType string
+            result.destinationName;
+        } else {
+            // $ExpectType string
+            result;
+        }
+    },
+);
 
 transfer.on("complete", (event: AMap.Transfer.EventMap["complete"]) => {
     // $ExpectType "complete"

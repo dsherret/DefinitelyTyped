@@ -14,6 +14,8 @@ interface KoaResponseTimeOptions {
  *          Default is `false` to keep back compatible.
  * @api public
  */
-declare function koa_response_time(options?: KoaResponseTimeOptions): Middleware;
+declare function koa_response_time(
+    options?: KoaResponseTimeOptions,
+): Middleware;
 
 export = koa_response_time;

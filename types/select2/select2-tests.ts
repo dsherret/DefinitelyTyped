@@ -100,7 +100,7 @@ $("#mySelect2").select2({
 
             return $request;
         },
-        data: params => {
+        data: (params) => {
             const queryParameters = {
                 q: params.term,
             };
@@ -137,7 +137,7 @@ $("#mySelect2").select2({
             return {
                 results: data.results,
                 pagination: {
-                    more: (params.page * 10) < data.count_filtered,
+                    more: params.page * 10 < data.count_filtered,
                 },
             };
         },
@@ -168,11 +168,13 @@ declare let AjaxSettings2RequestInit: (s: JQueryAjaxSettings) => RequestInit;
 
 $("#mySelect2").select2({
     ajax: {
-        transport: (params: JQueryAjaxSettings, success?: (data: any) => undefined, failure?: () => undefined) => {
+        transport: (
+            params: JQueryAjaxSettings,
+            success?: (data: any) => undefined,
+            failure?: () => undefined,
+        ) => {
             const p = AjaxSettings2RequestInit(params);
-            fetch(params.url!, p)
-                .then(success)
-                .catch(failure);
+            fetch(params.url!, p).then(success).catch(failure);
         },
     },
 });
@@ -212,13 +214,16 @@ $(".js-example-data-ajax").select2<GithubRepositories, GithubApiResult>({
                 page: params.page,
             };
         },
-        processResults: (data: GithubApiResult, params: Select2.QueryOptions) => {
+        processResults: (
+            data: GithubApiResult,
+            params: Select2.QueryOptions,
+        ) => {
             params.page = params.page || 1;
 
             return {
                 results: data.items,
                 pagination: {
-                    more: (params.page * data.items.length) < data.total_count,
+                    more: params.page * data.items.length < data.total_count,
                 },
             };
         },
@@ -238,28 +243,34 @@ function formatRepo(obj: Select2.LoadingData | GithubRepositories) {
 
     const repo = obj as GithubRepositories;
 
-    let markup = "<div class=\"select2-result-repository clearfix\">"
-        + `<div class="select2-result-repository__avatar"><img src="${repo.owner.avatar_url}"></div>`
-        + "<div class=\"select2-result-repository__meta\">"
-        + `<div class="select2-result-repository__title"> ${repo.full_name} </div>`;
+    let markup =
+        '<div class="select2-result-repository clearfix">' +
+        `<div class="select2-result-repository__avatar"><img src="${repo.owner.avatar_url}"></div>` +
+        '<div class="select2-result-repository__meta">' +
+        `<div class="select2-result-repository__title"> ${repo.full_name} </div>`;
 
     if (repo.description) {
         markup += `<div class="select2-result-repository__description">${repo.description}</div>`;
     }
 
-    markup += "<div class=\"select2-result-repository__statistics\">"
-        + `<div class="select2-result-repository__forks"><i class="fa fa-flash"></i> ${repo.forks_count} Forks</div>`
-        + `<div class="select2-result-repository__stargazers"><i class="fa fa-star"></i> ${repo.stargazers_count} Stars</div>`
-        + `<div class="select2-result-repository__watchers"><i class="fa fa-eye"></i> ${repo.watchers_count} Watchers</div>`
-        + "</div>"
-        + "</div></div>";
+    markup +=
+        '<div class="select2-result-repository__statistics">' +
+        `<div class="select2-result-repository__forks"><i class="fa fa-flash"></i> ${repo.forks_count} Forks</div>` +
+        `<div class="select2-result-repository__stargazers"><i class="fa fa-star"></i> ${repo.stargazers_count} Stars</div>` +
+        `<div class="select2-result-repository__watchers"><i class="fa fa-eye"></i> ${repo.watchers_count} Watchers</div>` +
+        "</div>" +
+        "</div></div>";
 
     return markup;
 }
 
-function formatRepoSelection(repo: Select2.IdTextPair | Select2.LoadingData | GithubRepositories) {
-    return (repo as GithubRepositories).full_name
-        || (repo as Select2.IdTextPair | Select2.LoadingData).text;
+function formatRepoSelection(
+    repo: Select2.IdTextPair | Select2.LoadingData | GithubRepositories,
+) {
+    return (
+        (repo as GithubRepositories).full_name ||
+        (repo as Select2.IdTextPair | Select2.LoadingData).text
+    );
 }
 
 // =====================================================
@@ -289,7 +300,9 @@ function formatState(state: Select2.LoadingData | Select2.OptionData) {
     }
     const baseUrl = "/user/pages/images/flags";
     const $state = $(
-        `<span><img src="${baseUrl}/${opt.element.value.toLowerCase()}.png" class="img-flag"> ${opt.text}</span>`,
+        `<span><img src="${baseUrl}/${opt.element.value.toLowerCase()}.png" class="img-flag"> ${
+            opt.text
+        }</span>`,
     );
     return $state;
 }
@@ -430,7 +443,10 @@ $("select").select2({
 // Customizing placeholder appearance
 
 $("select").select2({
-    templateSelection: (data: Select2.IdTextPair | Select2.LoadingData | Select2.OptionData, container: JQuery) => {
+    templateSelection: (
+        data: Select2.IdTextPair | Select2.LoadingData | Select2.OptionData,
+        container: JQuery,
+    ) => {
         if (data.id === "") {
             container.css("background-color", "#f6f6f6");
 
@@ -469,7 +485,10 @@ $(".js-example-matcher").select2({
 
 // Matching grouped options
 
-function matchStart(params: Select2.SearchOptions, data: Select2.OptGroupData | Select2.OptionData) {
+function matchStart(
+    params: Select2.SearchOptions,
+    data: Select2.OptGroupData | Select2.OptionData,
+) {
     if (params.term.trim() === "") {
         return data;
     }
@@ -524,10 +543,13 @@ $("#js-example-basic-hide-search").select2({
 });
 
 $("#js-example-basic-hide-search-multi").select2();
-$("#js-example-basic-hide-search-multi").on("select2:opening select2:closing", function(event) {
-    const $searchfield = $(this).parent().find(".select2-search__field");
-    $searchfield.prop("disabled", true);
-});
+$("#js-example-basic-hide-search-multi").on(
+    "select2:opening select2:closing",
+    function (event) {
+        const $searchfield = $(this).parent().find(".select2-search__field");
+        $searchfield.prop("disabled", true);
+    },
+);
 
 // =====================================================
 // Programmatic control -- Add, select, or clear items
@@ -696,7 +718,13 @@ $eventSelect.on("change", (e) => {
     log("change");
 });
 
-function log(name: string, evt?: Select2.Event<HTMLElement, {} | Select2.IngParams | Select2.DataParams>) {
+function log(
+    name: string,
+    evt?: Select2.Event<
+        HTMLElement,
+        {} | Select2.IngParams | Select2.DataParams
+    >,
+) {
     let args = "{}";
     if (evt) {
         args = JSON.stringify(evt.params, (key, value) => {
@@ -737,14 +765,18 @@ const fr: Select2.Translation = {
     },
     inputTooShort: (args) => {
         const remainingChars = args.minimum - args.input.length;
-        return `Saisissez au moins ${remainingChars} caractère${remainingChars > 1 ? "s" : ""}`;
+        return `Saisissez au moins ${remainingChars} caractère${
+            remainingChars > 1 ? "s" : ""
+        }`;
     },
     loadingMore: () => {
         return "Chargement de résultats supplémentaires…";
     },
     maximumSelected: (args) => {
-        return `Vous pouvez seulement sélectionner ${args.maximum}`
-            + ` élément${args.maximum > 1 ? "s" : ""}`;
+        return (
+            `Vous pouvez seulement sélectionner ${args.maximum}` +
+            ` élément${args.maximum > 1 ? "s" : ""}`
+        );
     },
     noResults: () => {
         return "Aucun résultat trouvé";
@@ -772,9 +804,16 @@ $(".js-example-rtl").select2({
 // See: https://select2.org/advanced
 
 $.fn.select2.amd.require(
-    ["select2/utils", "select2/selection/single", "select2/selection/placeholder"],
+    [
+        "select2/utils",
+        "select2/selection/single",
+        "select2/selection/placeholder",
+    ],
     (Utils: any, SingleSelection: any, Placeholder: any) => {
-        const CustomSelectionAdapter = Utils.Decorate(SingleSelection, Placeholder);
+        const CustomSelectionAdapter = Utils.Decorate(
+            SingleSelection,
+            Placeholder,
+        );
     },
 );
 
@@ -793,17 +832,20 @@ $(".js-multiple").select2({
 
 $(".js-states").select2({
     sorter: (data) => {
-        return data.sort((a, b) => a.text > b.text ? 1 : 0);
+        return data.sort((a, b) => (a.text > b.text ? 1 : 0));
     },
 });
 
-$("#mySelect2").select2({
-    theme: "bootstrap",
-}).on("select2:closing", function() {
-    $(this).val("Bye");
-}).on("select2:close", function() {
-    $(this).trigger("change");
-});
+$("#mySelect2")
+    .select2({
+        theme: "bootstrap",
+    })
+    .on("select2:closing", function () {
+        $(this).val("Bye");
+    })
+    .on("select2:close", function () {
+        $(this).trigger("change");
+    });
 
 const selectedData: Select2.OptionData[] = $("#mySelect2").select2("data");
 // TODO

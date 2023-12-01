@@ -26,5 +26,11 @@ export interface TextSorter<TElement = HTMLElement> {
      *   - If `0`, `x` equals `y`.
      *   - If greater than 0, `x` is greater than `y`.
      */
-    (x: string, y: string, ascending: boolean, index: number, table: TElement): number;
+    (
+        x: string,
+        y: string,
+        ascending: boolean,
+        index: number,
+        table: TElement,
+    ): number;
 }

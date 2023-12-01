@@ -8,20 +8,29 @@ declare class AdmZip {
      * @param fileNameOrRawData If provided, reads an existing archive. Otherwise creates a new, empty archive.
      * @param options Options when initializing the ZIP file
      */
-    constructor(fileNameOrRawData?: string | Buffer, options?: Partial<AdmZip.InitOptions>);
+    constructor(
+        fileNameOrRawData?: string | Buffer,
+        options?: Partial<AdmZip.InitOptions>,
+    );
     /**
      * Extracts the given entry from the archive and returns the content as a Buffer object
      * @param entry ZipEntry object or String with the full path of the entry
      * @param pass Password used for decrypting the file
      * @return Buffer or Null in case of error
      */
-    readFile(entry: string | AdmZip.IZipEntry, pass?: string | Buffer): Buffer | null;
+    readFile(
+        entry: string | AdmZip.IZipEntry,
+        pass?: string | Buffer,
+    ): Buffer | null;
     /**
      * Asynchronous `readFile`.
      * @param entry The full path of the entry or a `IZipEntry` object.
      * @param callback Called with a `Buffer` or `null` in case of error.
      */
-    readFileAsync(entry: string | AdmZip.IZipEntry, callback: (data: Buffer | null, err: string) => void): void;
+    readFileAsync(
+        entry: string | AdmZip.IZipEntry,
+        callback: (data: Buffer | null, err: string) => void,
+    ): void;
     /**
      * Extracts the given entry from the archive and returns the content as
      * plain text in the given encoding.
@@ -85,7 +94,12 @@ declare class AdmZip {
      * @param zipName Name for the file.
      * @param comment Comment to be attached to the file
      */
-    addLocalFile(localPath: string, zipPath?: string, zipName?: string, comment?: string): void;
+    addLocalFile(
+        localPath: string,
+        zipPath?: string,
+        zipName?: string,
+        comment?: string,
+    ): void;
     /**
      * Adds a local directory and all its nested files and directories to the
      * archive.
@@ -93,7 +107,11 @@ declare class AdmZip {
      * @param zipPath Path to a folder in the archive. Default: `""`.
      * @param filter RegExp or Function if files match will be included.
      */
-    addLocalFolder(localPath: string, zipPath?: string, filter?: RegExp | ((filename: string) => boolean)): void;
+    addLocalFolder(
+        localPath: string,
+        zipPath?: string,
+        filter?: RegExp | ((filename: string) => boolean),
+    ): void;
     /**
      * Asynchronous addLocalFile
      * @param localPath
@@ -116,7 +134,10 @@ declare class AdmZip {
      */
     addLocalFolderPromise(
         localPath: string,
-        props: { zipPath?: string; filter?: RegExp | ((filename: string) => boolean) },
+        props: {
+            zipPath?: string;
+            filter?: RegExp | ((filename: string) => boolean);
+        },
     ): Promise<void>;
     /**
      * Allows you to create a entry (file or directory) in the zip file.
@@ -128,7 +149,12 @@ declare class AdmZip {
      * @param comment Comment to add to the entry.
      * @param attr Attribute to add to the entry.
      */
-    addFile(entryName: string, content: Buffer, comment?: string, attr?: number): void;
+    addFile(
+        entryName: string,
+        content: Buffer,
+        comment?: string,
+        attr?: number,
+    ): void;
     /**
      * Returns an array of `IZipEntry` objects representing the files and folders
      * inside the archive.
@@ -215,13 +241,19 @@ declare class AdmZip {
      * if a zip was opened and no `targetFileName` is provided, it will
      * overwrite the opened zip.
      */
-    writeZip(targetFileName?: string, callback?: (error: Error | null) => void): void;
+    writeZip(
+        targetFileName?: string,
+        callback?: (error: Error | null) => void,
+    ): void;
     /**
      * Writes the newly created zip file to disk at the specified location or
      * if a zip was opened and no `targetFileName` is provided, it will
      * overwrite the opened zip.
      */
-    writeZipPromise(targetFileName?: string, props?: { overwrite?: boolean; perm?: number }): Promise<boolean>;
+    writeZipPromise(
+        targetFileName?: string,
+        props?: { overwrite?: boolean; perm?: number },
+    ): Promise<boolean>;
     /**
      * Returns the content of the entire zip file.
      */

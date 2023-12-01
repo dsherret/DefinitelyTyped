@@ -88,7 +88,7 @@ const anumberAggregations = search.data.aggregations["anumber"];
 // $ExpectType string | number
 anumberAggregations.buckets[0].key;
 
-itemsjs<typeof myitems[number]>([]).reindex(myitems);
+itemsjs<(typeof myitems)[number]>([]).reindex(myitems);
 
 const myItemsIds = myitems.map((v, i) => ({ id: i, ...v }));
 

@@ -14,17 +14,28 @@ const crowd = new CrowdClient({
 });
 
 // Create a new user:
-crowd.user.create(new User("John", "Doe", "John Doe", "johndoe@example.com", "johndoe", "secret"));
+crowd.user.create(
+    new User(
+        "John",
+        "Doe",
+        "John Doe",
+        "johndoe@example.com",
+        "johndoe",
+        "secret",
+    ),
+);
 // Remove
 crowd.user.remove("johndoe");
 
 // Authenticate to Crowd:
-crowd.session.create("someusername", "somepassword").then((session: Session) => {
-    // Fetch the user profile:
-    crowd.session.getUser(session.token).then((user: User) => {
-        console.log("Hello, " + user.displayname);
+crowd.session
+    .create("someusername", "somepassword")
+    .then((session: Session) => {
+        // Fetch the user profile:
+        crowd.session.getUser(session.token).then((user: User) => {
+            console.log("Hello, " + user.displayname);
+        });
     });
-});
 
 // Find all active groups (using Crowd Query Language):
 crowd.search.group("active=true").then((groups: string[] | Group[]) => {

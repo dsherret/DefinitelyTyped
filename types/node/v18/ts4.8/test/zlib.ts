@@ -30,9 +30,8 @@ const compressMeString = "compress me!";
 
 // Deflate / Inflate
 
-deflate(
-    compressMe,
-    (err: Error | null, result: Buffer) => inflate(result, (err: Error | null, result: Buffer) => result),
+deflate(compressMe, (err: Error | null, result: Buffer) =>
+    inflate(result, (err: Error | null, result: Buffer) => result),
 );
 deflate(
     compressMe,
@@ -44,9 +43,8 @@ deflate(
             (err: Error | null, result: Buffer) => result,
         ),
 );
-deflate(
-    compressMeString,
-    (err: Error | null, result: Buffer) => inflate(result, (err: Error | null, result: Buffer) => result),
+deflate(compressMeString, (err: Error | null, result: Buffer) =>
+    inflate(result, (err: Error | null, result: Buffer) => result),
 );
 deflate(
     compressMeString,
@@ -61,9 +59,8 @@ deflate(
 const inflated = inflateSync(deflateSync(compressMe));
 const inflatedString = inflateSync(deflateSync(compressMeString));
 
-deflateRaw(
-    compressMe,
-    (err: Error | null, result: Buffer) => inflateRaw(result, (err: Error | null, result: Buffer) => result),
+deflateRaw(compressMe, (err: Error | null, result: Buffer) =>
+    inflateRaw(result, (err: Error | null, result: Buffer) => result),
 );
 deflateRaw(
     compressMe,
@@ -75,22 +72,29 @@ deflateRaw(
             (err: Error | null, result: Buffer) => result,
         ),
 );
-deflateRaw(
-    compressMeString,
-    (err: Error | null, result: Buffer) => inflateRaw(result, (err: Error | null, result: Buffer) => result),
+deflateRaw(compressMeString, (err: Error | null, result: Buffer) =>
+    inflateRaw(result, (err: Error | null, result: Buffer) => result),
 );
 deflateRaw(
     compressMeString,
     { finishFlush: constants.Z_SYNC_FLUSH },
     (err: Error | null, result: Buffer) =>
-        inflateRaw(result, { finishFlush: constants.Z_SYNC_FLUSH }, (err: Error | null, result: Buffer) => result),
+        inflateRaw(
+            result,
+            { finishFlush: constants.Z_SYNC_FLUSH },
+            (err: Error | null, result: Buffer) => result,
+        ),
 );
 const inflatedRaw: Buffer = inflateRawSync(deflateRawSync(compressMe));
-const inflatedRawString: Buffer = inflateRawSync(deflateRawSync(compressMeString));
+const inflatedRawString: Buffer = inflateRawSync(
+    deflateRawSync(compressMeString),
+);
 
 // gzip
 
-gzip(compressMe, (err: Error | null, result: Buffer) => gunzip(result, (err: Error | null, result: Buffer) => result));
+gzip(compressMe, (err: Error | null, result: Buffer) =>
+    gunzip(result, (err: Error | null, result: Buffer) => result),
+);
 gzip(
     compressMe,
     { finishFlush: constants.Z_SYNC_FLUSH },
@@ -104,7 +108,11 @@ gzip(
 const gunzipped: Buffer = gunzipSync(gzipSync(compressMe));
 
 unzip(compressMe, (err: Error | null, result: Buffer) => result);
-unzip(compressMe, { finishFlush: constants.Z_SYNC_FLUSH }, (err: Error | null, result: Buffer) => result);
+unzip(
+    compressMe,
+    { finishFlush: constants.Z_SYNC_FLUSH },
+    (err: Error | null, result: Buffer) => result,
+);
 const unzipped: Buffer = unzipSync(compressMe);
 
 const bOpts: BrotliOptions = {
@@ -125,9 +133,8 @@ let bD: BrotliDecompress = createBrotliDecompress();
 bD = createBrotliDecompress(bOpts);
 // gzip
 
-brotliCompress(
-    compressMe,
-    (err: Error | null, result: Buffer) => gunzip(result, (err: Error | null, result: Buffer) => result),
+brotliCompress(compressMe, (err: Error | null, result: Buffer) =>
+    gunzip(result, (err: Error | null, result: Buffer) => result),
 );
 brotliCompress(
     compressMe,
@@ -170,9 +177,13 @@ brotliDecompress(
 
     (async () => {
         await pBrotliCompress(Buffer.from("buf")); // $ExpectType Buffer
-        await pBrotliCompress(Buffer.from("buf"), { flush: constants.Z_NO_FLUSH }); // $ExpectType Buffer
+        await pBrotliCompress(Buffer.from("buf"), {
+            flush: constants.Z_NO_FLUSH,
+        }); // $ExpectType Buffer
         await pBrotliDecompress(Buffer.from("buf")); // $ExpectType Buffer
-        await pBrotliDecompress(Buffer.from("buf"), { flush: constants.Z_NO_FLUSH }); // $ExpectType Buffer
+        await pBrotliDecompress(Buffer.from("buf"), {
+            flush: constants.Z_NO_FLUSH,
+        }); // $ExpectType Buffer
         await pDeflate(Buffer.from("buf")); // $ExpectType Buffer
         await pDeflate(Buffer.from("buf"), { flush: constants.Z_NO_FLUSH }); // $ExpectType Buffer
         await pDeflateRaw(Buffer.from("buf")); // $ExpectType Buffer

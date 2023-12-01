@@ -47,7 +47,10 @@ const spinners = [
     <Spinner name="wordpress" fadeIn="none" />,
     <Spinner name="wordpress" color="#F00" />,
     <Spinner name="wordpress" color="green" />,
-    <Spinner name="wordpress" overrideSpinnerClassName="my-class-to-override" />,
+    <Spinner
+        name="wordpress"
+        overrideSpinnerClassName="my-class-to-override"
+    />,
     <Spinner name="wordpress" className="my-class" />,
     <Spinner name="wordpress" style={{ margin: "0 auto" }} />,
 ];

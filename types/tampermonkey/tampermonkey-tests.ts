@@ -10,16 +10,16 @@ unsafeWindow.console;
 if (window.onurlchange === null) {
     window.addEventListener("urlchange", ({ url }) => console.log(url));
     // or
-    window.addEventListener("urlchange", info => console.log(info.url));
+    window.addEventListener("urlchange", (info) => console.log(info.url));
 }
 
 // General Listening
-window.addEventListener("click", event => console.log(event));
+window.addEventListener("click", (event) => console.log(event));
 
 // GM_addElement
 
 GM_addElement("script", {
-    textContent: "window.foo = \"bar\";",
+    textContent: 'window.foo = "bar";',
 });
 
 GM_addElement("script", {
@@ -52,9 +52,18 @@ GM_setValue("d", { form: { name: "Bob" } });
 
 // GM_addValueChangeListener
 
-GM_addValueChangeListener("a", (name: string, oldValue: string, newValue: string, remote: boolean) => {});
-GM_addValueChangeListener("b", (name, oldValue: number, newValue: number, remote) => {});
-GM_addValueChangeListener("c", (name, oldValue: boolean, newValue: boolean, remote) => {});
+GM_addValueChangeListener(
+    "a",
+    (name: string, oldValue: string, newValue: string, remote: boolean) => {},
+);
+GM_addValueChangeListener(
+    "b",
+    (name, oldValue: number, newValue: number, remote) => {},
+);
+GM_addValueChangeListener(
+    "c",
+    (name, oldValue: boolean, newValue: boolean, remote) => {},
+);
 const dValueChangeListenerId: number = GM_addValueChangeListener(
     "d",
     (name, oldValue: AppState, newValue: AppState, remote) => {
@@ -153,7 +162,10 @@ GM_xmlhttpRequest({
         let responseXML = response.responseXML;
         // Inject responseXML into existing Object (only appropriate for XML content).
         if (!responseXML) {
-            responseXML = new DOMParser().parseFromString(response.responseText, "text/xml");
+            responseXML = new DOMParser().parseFromString(
+                response.responseText,
+                "text/xml",
+            );
         }
 
         GM_log(
@@ -244,7 +256,7 @@ GM_xmlhttpRequest<RequestContext>({
 GM_xmlhttpRequest({
     method: "GET",
     url: "http://example.com/",
-    onload: response => {
+    onload: (response) => {
         const readyState: number = response.readyState;
         const responseHeaders: string = response.responseHeaders;
         const responseText: string = response.responseText;
@@ -253,7 +265,7 @@ GM_xmlhttpRequest({
         const context: any = response.context;
         const finalUrl: string = response.finalUrl;
     },
-    onprogress: response => {
+    onprogress: (response) => {
         const status: number = response.status;
         const lengthComputable: boolean = response.lengthComputable;
         const loaded: number = response.loaded;
@@ -321,7 +333,7 @@ GM_getTab((savedTabState: TabState) => {
 
 // GM_getTabs
 
-GM_getTabs(tabsMap => {
+GM_getTabs((tabsMap) => {
     GM_log(tabsMap[0]);
 });
 
@@ -337,15 +349,12 @@ GM_openInTab("http://www.example.com/");
 
 GM_openInTab("http://www.example.com/", true);
 
-const openTabObject = GM_openInTab(
-    "http://www.example.com/",
-    {
-        active: true,
-        insert: 2,
-        setParent: true,
-        incognito: true,
-    },
-);
+const openTabObject = GM_openInTab("http://www.example.com/", {
+    active: true,
+    insert: 2,
+    setParent: true,
+    incognito: true,
+});
 
 openTabObject.onclose = () => {
     GM_log("Tab closed", openTabObject.closed);
@@ -381,9 +390,14 @@ GM_notification(textNotification);
 GM_notification(highlightNotification);
 GM_notification(textNotification, textNotification.ondone);
 
-GM_notification("Notification text", "Notification title", "https://tampermonkey.net/favicon.ico", function() {
-    GM_log(`Notification with id ${this.id} is clicked`);
-});
+GM_notification(
+    "Notification text",
+    "Notification title",
+    "https://tampermonkey.net/favicon.ico",
+    function () {
+        GM_log(`Notification with id ${this.id} is clicked`);
+    },
+);
 
 GM_notification("Notification text");
 
@@ -398,16 +412,27 @@ GM_setClipboard("<b>Some text in clipboard</b>", {
 
 // GM_webRequest
 
-GM_webRequest([
-    { selector: "*cancel.me/*", action: "cancel" },
-    { selector: { include: "*", exclude: "http://exclude.me/*" }, action: { redirect: "http://new_static.url" } },
-    {
-        selector: { match: "*://match.me/*" },
-        action: { redirect: { from: "([^:]+)://match.me/(.*)", to: "$1://redirected.to/$2" } },
+GM_webRequest(
+    [
+        { selector: "*cancel.me/*", action: "cancel" },
+        {
+            selector: { include: "*", exclude: "http://exclude.me/*" },
+            action: { redirect: "http://new_static.url" },
+        },
+        {
+            selector: { match: "*://match.me/*" },
+            action: {
+                redirect: {
+                    from: "([^:]+)://match.me/(.*)",
+                    to: "$1://redirected.to/$2",
+                },
+            },
+        },
+    ],
+    (info, message, details) => {
+        console.log(info, message, details);
     },
-], (info, message, details) => {
-    console.log(info, message, details);
-});
+);
 
 // GM_cookie.*
 
@@ -423,24 +448,27 @@ GM_cookie.list({ name: "mycookie" }, (cookies, error) => {
 GM_cookie.list({}, console.log);
 
 // $ExpectType void
-GM_cookie.set({
-    url: "https://example.com",
-    name: "name",
-    value: "value",
-    domain: ".example.com",
-    path: "/",
-    secure: true,
-    httpOnly: true,
-    expirationDate: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 30), // Expires in 30 days
-}, error => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("Cookie set successfully.");
-    }
-});
+GM_cookie.set(
+    {
+        url: "https://example.com",
+        name: "name",
+        value: "value",
+        domain: ".example.com",
+        path: "/",
+        secure: true,
+        httpOnly: true,
+        expirationDate: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // Expires in 30 days
+    },
+    (error) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("Cookie set successfully.");
+        }
+    },
+);
 
-GM_cookie.delete({ name: "cookie_name" }, error => {
+GM_cookie.delete({ name: "cookie_name" }, (error) => {
     if (error) {
         console.error(error);
     } else {
@@ -559,7 +587,7 @@ const exampleInfo2: Tampermonkey.ScriptInfo = window.GM.info;
 // @ts-expect-error
 unsafeWindow.GM;
 
-(async () => {
+async () => {
     // GM.addStyle
 
     // $ExpectType HTMLStyleElement
@@ -594,9 +622,25 @@ unsafeWindow.GM;
     // GM.addValueChangeListener
 
     // $ExpectType number
-    await GM.addValueChangeListener("a", (name: string, oldValue: string, newValue: string, remote: boolean) => {});
+    await GM.addValueChangeListener(
+        "a",
+        (
+            name: string,
+            oldValue: string,
+            newValue: string,
+            remote: boolean,
+        ) => {},
+    );
     // $ExpectType number
-    await GM.addValueChangeListener("a", (name: string, oldValue: number, newValue: number, remote: boolean) => {});
+    await GM.addValueChangeListener(
+        "a",
+        (
+            name: string,
+            oldValue: number,
+            newValue: number,
+            remote: boolean,
+        ) => {},
+    );
 
     // GM.removeValueChangeListener
 
@@ -828,7 +872,12 @@ unsafeWindow.GM;
     // $ExpectType boolean
     await GM.notification(textNotification, textNotification.ondone);
 
-    await GM.notification("text", "title", "https://tampermonkey.net/favicon.ico", () => {});
+    await GM.notification(
+        "text",
+        "title",
+        "https://tampermonkey.net/favicon.ico",
+        () => {},
+    );
 
     // GM.setClipboard
 
@@ -839,4 +888,4 @@ unsafeWindow.GM;
         type: "text",
         mimetype: "text/plain",
     });
-});
+};

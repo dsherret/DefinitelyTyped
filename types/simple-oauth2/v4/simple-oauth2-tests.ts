@@ -75,7 +75,9 @@ const oauth2ResourceOwnerPassword = new oauth2lib.ResourceOwnerPassword(
     // Save the access token
     try {
         const result = await oauth2ResourceOwnerPassword.getToken(tokenConfig);
-        const accessToken = oauth2ResourceOwnerPassword.createToken(result.token);
+        const accessToken = oauth2ResourceOwnerPassword.createToken(
+            result.token,
+        );
     } catch (error) {
         console.log("Access Token Error", error.message);
     }
@@ -173,7 +175,9 @@ TestFnAccessTokenObject(oauth2ResourceOwnerPassword);
     // Save the access token
     try {
         const result = await oauth2ResourceOwnerPassword.getToken(tokenConfig);
-        const accessToken = oauth2ResourceOwnerPassword.createToken(result.token);
+        const accessToken = oauth2ResourceOwnerPassword.createToken(
+            result.token,
+        );
     } catch (error) {
         console.log("Access Token Error", error.message);
     }

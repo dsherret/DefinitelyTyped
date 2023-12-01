@@ -13,6 +13,13 @@ interface Result {
     toString: () => string;
     inspect: () => string;
 }
-declare function falafel(src: string | Buffer | FullOptionsObject, fn: WalkerFunction): Result;
-declare function falafel(src: string | Buffer, opts: OptionsObject, fn: WalkerFunction): Result;
+declare function falafel(
+    src: string | Buffer | FullOptionsObject,
+    fn: WalkerFunction,
+): Result;
+declare function falafel(
+    src: string | Buffer,
+    opts: OptionsObject,
+    fn: WalkerFunction,
+): Result;
 export = falafel;

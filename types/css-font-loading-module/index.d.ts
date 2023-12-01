@@ -74,7 +74,14 @@ declare global {
         // (does not initiate load if not available)
         check(font: string, text?: string): boolean;
 
-        forEach(callbackfn: (value: FontFace, key: FontFace, parent: FontFaceSet) => void, thisArg?: any): void;
+        forEach(
+            callbackfn: (
+                value: FontFace,
+                key: FontFace,
+                parent: FontFaceSet,
+            ) => void,
+            thisArg?: any,
+        ): void;
 
         // async notification that font loading and layout operations are done
         readonly ready: Promise<FontFaceSet>;
@@ -85,7 +92,11 @@ declare global {
 
     var FontFace: {
         prototype: FontFace;
-        new(family: string, source: string | BinaryData, descriptors?: FontFaceDescriptors): FontFace;
+        new (
+            family: string,
+            source: string | BinaryData,
+            descriptors?: FontFaceDescriptors,
+        ): FontFace;
     };
 
     interface FontFaceSetLoadEvent extends Event {
@@ -94,7 +105,10 @@ declare global {
 
     var FontFaceSetLoadEvent: {
         prototype: FontFaceSetLoadEvent;
-        new(type: string, eventInitDict?: FontFaceSetLoadEventInit): FontFaceSetLoadEvent;
+        new (
+            type: string,
+            eventInitDict?: FontFaceSetLoadEventInit,
+        ): FontFaceSetLoadEvent;
     };
 
     interface Document {

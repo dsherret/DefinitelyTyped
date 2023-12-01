@@ -19,18 +19,15 @@ $(() => {
     new Slider("#ex2", {});
 
     const RGBChange = () => {
-        $("#RGB").css("background", `rgb(${r.getValue()},${g.getValue()},${b.getValue()})`);
+        $("#RGB").css(
+            "background",
+            `rgb(${r.getValue()},${g.getValue()},${b.getValue()})`,
+        );
     };
 
-    const r = $("#R").slider()
-        .on("slide", RGBChange)
-        .data("slider");
-    const g = $("#G").slider()
-        .on("slide", RGBChange)
-        .data("slider");
-    const b = $("#B").slider()
-        .on("slide", RGBChange)
-        .data("slider");
+    const r = $("#R").slider().on("slide", RGBChange).data("slider");
+    const g = $("#G").slider().on("slide", RGBChange).data("slider");
+    const b = $("#B").slider().on("slide", RGBChange).data("slider");
 
     $("#ex4").slider({
         reversed: true,
@@ -49,17 +46,18 @@ $(() => {
 
     $("#ex6").slider();
     $("#ex6").on("slide", (slideEvt) => {
-        $("#ex6SliderVal").text(<number> slideEvt.value);
+        $("#ex6SliderVal").text(<number>slideEvt.value);
     });
     slider = new Slider("#ex6");
     slider.on("slide", (sliderValue) => {
-        document.getElementById("ex6SliderVal")!.textContent = sliderValue!.toString();
+        document.getElementById("ex6SliderVal")!.textContent =
+            sliderValue!.toString();
     });
 
     $("#ex7").slider();
     slider = new Slider("#ex7");
 
-    $<HTMLInputElement>("#ex7-enabled").click(function() {
+    $<HTMLInputElement>("#ex7-enabled").click(function () {
         if (this.checked) {
             // With JQuery
             $("#ex7").slider("enable");
@@ -95,11 +93,40 @@ $(() => {
     });
 
     $("#ex12a").slider({ id: "slider12a", min: 0, max: 10, value: 5 });
-    $("#ex12b").slider({ id: "slider12b", min: 0, max: 10, range: true, value: [3, 7] });
-    $("#ex12c").slider({ id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
-    let sliderA = new Slider("#ex12a", { id: "slider12a", min: 0, max: 10, value: 5 });
-    let sliderB = new Slider("#ex12b", { id: "slider12b", min: 0, max: 10, range: true, value: [3, 7] });
-    const sliderC = new Slider("#ex12c", { id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
+    $("#ex12b").slider({
+        id: "slider12b",
+        min: 0,
+        max: 10,
+        range: true,
+        value: [3, 7],
+    });
+    $("#ex12c").slider({
+        id: "slider12c",
+        min: 0,
+        max: 10,
+        range: true,
+        value: [3, 7],
+    });
+    let sliderA = new Slider("#ex12a", {
+        id: "slider12a",
+        min: 0,
+        max: 10,
+        value: 5,
+    });
+    let sliderB = new Slider("#ex12b", {
+        id: "slider12b",
+        min: 0,
+        max: 10,
+        range: true,
+        value: [3, 7],
+    });
+    const sliderC = new Slider("#ex12c", {
+        id: "slider12c",
+        min: 0,
+        max: 10,
+        range: true,
+        value: [3, 7],
+    });
 
     $("#ex13").slider({
         ticks: [0, 100, 200, 300, 400],
@@ -141,7 +168,12 @@ $(() => {
     $("#ex16a").slider({ min: 0, max: 10, value: 0, focus: true });
     $("#ex16b").slider({ min: 0, max: 10, value: [0, 10], focus: true });
     sliderA = new Slider("#ex16a", { min: 0, max: 10, value: 0, focus: true });
-    sliderB = new Slider("#ex16b", { min: 0, max: 10, value: [0, 10], focus: true });
+    sliderB = new Slider("#ex16b", {
+        min: 0,
+        max: 10,
+        value: [0, 10],
+        focus: true,
+    });
 
     $("#ex17a").slider({
         min: 0,
@@ -265,21 +297,7 @@ $(() => {
         const value = mySlider.slider("getValue");
 
         // For non-getter methods, you can chain together commands
-        mySlider
-            .slider("setValue", 5)
-            .slider("setValue", 7);
-    }
-
-    { // Instantiate a slider
-        const mySlider = $("input.slider").bootstrapSlider();
-
-        // Call a method on the slider
-        const value = mySlider.bootstrapSlider("getValue");
-
-        // For non-getter methods, you can chain together commands
-        mySlider
-            .bootstrapSlider("setValue", 5)
-            .bootstrapSlider("setValue", 7);
+        mySlider.slider("setValue", 5).slider("setValue", 7);
     }
 
     {
@@ -290,12 +308,22 @@ $(() => {
         const value = mySlider.bootstrapSlider("getValue");
 
         // For non-getter methods, you can chain together commands
-        mySlider
-            .bootstrapSlider("setValue", 5)
-            .bootstrapSlider("setValue", 7);
+        mySlider.bootstrapSlider("setValue", 5).bootstrapSlider("setValue", 7);
     }
 
-    { // Instantiate a slider
+    {
+        // Instantiate a slider
+        const mySlider = $("input.slider").bootstrapSlider();
+
+        // Call a method on the slider
+        const value = mySlider.bootstrapSlider("getValue");
+
+        // For non-getter methods, you can chain together commands
+        mySlider.bootstrapSlider("setValue", 5).bootstrapSlider("setValue", 7);
+    }
+
+    {
+        // Instantiate a slider
         const mySlider = new Slider("input.slider", {
             // initial options object
         });
@@ -304,8 +332,6 @@ $(() => {
         const value = mySlider.getValue();
 
         // For non-getter methods, you can chain together commands
-        mySlider
-            .setValue(5)
-            .setValue(7);
+        mySlider.setValue(5).setValue(7);
     }
 });

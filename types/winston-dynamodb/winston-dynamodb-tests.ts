@@ -12,13 +12,13 @@ winston.level = "debug";
 var queryOptions: winston.QueryOptions;
 var transportOptions: winston.TransportOptions;
 var loggerOptions: winston.LoggerOptions = {
-    transports: [new (winston.Transport)()],
+    transports: [new winston.Transport()],
     rewriters: [
         (level: string, msg: string, meta: any): any => {
             return meta;
         },
     ],
-    exceptionHandlers: [new (winston.Transport)()],
+    exceptionHandlers: [new winston.Transport()],
     handleExceptions: false,
 };
 
@@ -33,13 +33,15 @@ var readableStream: NodeJS.ReadableStream;
 
 var transportStatic: winston.TransportStatic = winston.Transport;
 
-var transportInstance: winston.TransportInstance = new (winston.Transport)(transportOptions);
-transportInstance = new (winston.Transport)();
+var transportInstance: winston.TransportInstance = new winston.Transport(
+    transportOptions,
+);
+transportInstance = new winston.Transport();
 
-var containerInstance: winston.ContainerInstance = new (winston.Container)(loggerOptions);
-winston.loggers.options.transports = [
-    new (winston.Transport)(),
-];
+var containerInstance: winston.ContainerInstance = new winston.Container(
+    loggerOptions,
+);
+winston.loggers.options.transports = [new winston.Transport()];
 winston.loggers.add("category1", {
     console: {
         level: "silly",
@@ -49,9 +51,7 @@ winston.loggers.add("category1", {
     file: {
         filename: "/path/to/some/file",
     },
-    transports: [
-        new (winston.Transport)(),
-    ],
+    transports: [new winston.Transport()],
 });
 logger = winston.loggers.get("category1");
 
@@ -90,18 +90,20 @@ winston.error(str);
 winston.error(str, metadata);
 winston.error(str, metadata, metadata, metadata);
 
-winston.query(queryOptions, (err: Error, results: any): void => {
-});
-winston.query((err: Error, results: any): void => {
-});
+winston.query(queryOptions, (err: Error, results: any): void => {});
+winston.query((err: Error, results: any): void => {});
 
 logger = winston.add(transport, transportOptions);
 logger = winston.remove(transport);
 logger = winston.add(transport, { filename: "path/to/file.log" });
 
 winston.clear();
-logger = winston.profile(str, str, metadata, (err: Error, level: string, msg: string, meta: any): void => {
-});
+logger = winston.profile(
+    str,
+    str,
+    metadata,
+    (err: Error, level: string, msg: string, meta: any): void => {},
+);
 logger = winston.profile(str);
 profiler = winston.startTimer();
 winston.setLevels({});
@@ -133,10 +135,8 @@ logger.error(str);
 logger.error(str, metadata);
 logger.error(str, metadata, metadata, metadata);
 
-logger.query(queryOptions, (err: Error, results: any): void => {
-});
-logger.query((err: Error, results: any): void => {
-});
+logger.query(queryOptions, (err: Error, results: any): void => {});
+logger.query((err: Error, results: any): void => {});
 
 readableStream = winston.stream(options);
 logger.close();
@@ -149,8 +149,12 @@ logger = logger.add(transport, { filename: "path/to/file.log" });
 logger.clear();
 logger = logger.remove(transport);
 profiler = logger.startTimer();
-logger = logger.profile(str, str, metadata, (err: Error, level: string, msg: string, meta: any): void => {
-});
+logger = logger.profile(
+    str,
+    str,
+    metadata,
+    (err: Error, level: string, msg: string, meta: any): void => {},
+);
 value = logger.setLevels(value);
 logger = logger.cli();
 
@@ -184,9 +188,9 @@ winston.add(winston.transports.DynamoDB, dynamoDBOptions);
  * New Logger instances with transports tests:
  */
 
-var logger: winston.LoggerInstance = new (winston.Logger)({
+var logger: winston.LoggerInstance = new winston.Logger({
     transports: [
-        new (winston.transports.Console)({
+        new winston.transports.Console({
             level: str,
             silent: bool,
             json: bool,
@@ -198,7 +202,7 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             debugStdout: bool,
             depth: num,
         }),
-        new (winston.transports.DailyRotateFile)({
+        new winston.transports.DailyRotateFile({
             level: str,
             silent: bool,
             json: bool,
@@ -214,7 +218,7 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             eol: str,
             stream: writeableStream,
         }),
-        new (winston.transports.File)({
+        new winston.transports.File({
             level: str,
             silent: bool,
             json: bool,
@@ -234,7 +238,7 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             maxFiles: num,
             stream: writeableStream,
         }),
-        new (winston.transports.Http)({
+        new winston.transports.Http({
             level: str,
             host: str,
             port: num,
@@ -242,14 +246,14 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             auth: { username: str, password: str },
             ssl: bool,
         }),
-        new (winston.transports.Loggly)({
+        new winston.transports.Loggly({
             level: str,
             subdomain: str,
             auth: {},
             inputName: str,
             json: bool,
         }),
-        new (winston.transports.Memory)({
+        new winston.transports.Memory({
             level: str,
             json: bool,
             colorize: bool,
@@ -258,7 +262,7 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             timestamp: bool,
             label: str,
         }),
-        new (winston.transports.Webhook)({
+        new winston.transports.Webhook({
             level: str,
             name: str,
             host: str,
@@ -268,6 +272,6 @@ var logger: winston.LoggerInstance = new (winston.Logger)({
             auth: { username: str, password: str },
             ssl: { ca: {} },
         }),
-        new (winston.transports.DynamoDB)(dynamoDBOptions),
+        new winston.transports.DynamoDB(dynamoDBOptions),
     ],
 });

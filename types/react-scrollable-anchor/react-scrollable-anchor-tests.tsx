@@ -1,5 +1,10 @@
 import * as React from "react";
-import ScrollableAnchor, { configureAnchors, goToAnchor, goToTop, removeHash } from "react-scrollable-anchor";
+import ScrollableAnchor, {
+    configureAnchors,
+    goToAnchor,
+    goToTop,
+    removeHash,
+} from "react-scrollable-anchor";
 
 /*
  * goToAnchor
@@ -29,7 +34,11 @@ removeHash(1);
  * configureAnchors
  */
 // $ExpectType void
-configureAnchors({ offset: 500, scrollDuration: 1000, keepLastAnchorHash: true });
+configureAnchors({
+    offset: 500,
+    scrollDuration: 1000,
+    keepLastAnchorHash: true,
+});
 // @ts-expect-error
 configureAnchors();
 // @ts-expect-error

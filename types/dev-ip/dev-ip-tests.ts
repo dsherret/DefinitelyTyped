@@ -7,7 +7,7 @@ function main() {
         return;
     }
 
-    ips.map(ip => `ip: ${ip}`);
+    ips.map((ip) => `ip: ${ip}`);
 }
 
 main();

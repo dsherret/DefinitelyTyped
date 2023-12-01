@@ -145,5 +145,7 @@ interface ActiveXObjectNameMap {
 }
 
 interface EnumeratorConstructor {
-    new(col: DiskQuotaTypeLibrary.DiskQuotaControl): Enumerator<DiskQuotaTypeLibrary.DIDiskQuotaUser>;
+    new (
+        col: DiskQuotaTypeLibrary.DiskQuotaControl,
+    ): Enumerator<DiskQuotaTypeLibrary.DIDiskQuotaUser>;
 }

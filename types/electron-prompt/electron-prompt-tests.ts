@@ -9,7 +9,7 @@ prompt({
     title: "Prompt example",
     type: "input",
     value: "http://example.org",
-}).then(r => {
+}).then((r) => {
     r; // $ExpectType string | null
 });
 

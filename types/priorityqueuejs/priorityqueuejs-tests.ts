@@ -1,6 +1,6 @@
 import PriorityQueue = require("priorityqueuejs");
 
-var queue = new PriorityQueue<{ cash: number; name: string }>(function(a, b) {
+var queue = new PriorityQueue<{ cash: number; name: string }>(function (a, b) {
     return a.cash - b.cash;
 });
 

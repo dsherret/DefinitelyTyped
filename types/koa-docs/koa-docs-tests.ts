@@ -28,18 +28,20 @@ router.route({
     },
 });
 
-app.use(docs.get("/docs", {
-    title: "Awesome API",
-    version: "1.0.0",
-    theme: "paper",
-    routeHandlers: "disabled",
-    groups: [
-        {
-            groupName: "greetings",
-            routes: router.routes,
-        },
-    ],
-}));
+app.use(
+    docs.get("/docs", {
+        title: "Awesome API",
+        version: "1.0.0",
+        theme: "paper",
+        routeHandlers: "disabled",
+        groups: [
+            {
+                groupName: "greetings",
+                routes: router.routes,
+            },
+        ],
+    }),
+);
 
 app.use(router.middleware());
 

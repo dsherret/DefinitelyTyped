@@ -7,4 +7,7 @@ export type RequestIdentifier = string;
  * Returns a stable identifier for the given pair of `RequestParameters` +
  * variables.
  */
-export default function getRequestIdentifier(parameters: RequestParameters, variables: Variables): RequestIdentifier;
+export default function getRequestIdentifier(
+    parameters: RequestParameters,
+    variables: Variables,
+): RequestIdentifier;

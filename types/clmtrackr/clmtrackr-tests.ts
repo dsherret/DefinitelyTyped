@@ -8,7 +8,7 @@ ctracker.init({
     constantVelocity: true,
     searchWindow: 11,
     useWebGL: true,
-    scoreThreshold: 0.50,
+    scoreThreshold: 0.5,
     stopOnConvergence: false,
     /** object with parameters for facedetection : */
     faceDetection: { useWebWorkers: true },

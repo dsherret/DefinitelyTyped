@@ -15,13 +15,17 @@ function FollowerComponent({ followersCount }: { followersCount: number }) {
 interface EventDispatcher<T> {
     value: T;
     addEventListener(eventName: "change", onChange: (newValue: T) => any): void;
-    removeEventListener(eventName: "change", onChange: (newValue: T) => any): void;
+    removeEventListener(
+        eventName: "change",
+        onChange: (newValue: T) => any,
+    ): void;
 }
 
 // Create a wrapper component to manage the subscription.
 // $ExpectType Subscription<EventDispatcher<number>, number>
 const EventHandlerSubscription = createSubscription({
-    getCurrentValue: (eventDispatcher: EventDispatcher<number>) => eventDispatcher.value,
+    getCurrentValue: (eventDispatcher: EventDispatcher<number>) =>
+        eventDispatcher.value,
     subscribe: (eventDispatcher: EventDispatcher<number>, callback) => {
         const onChange = (event: any) => callback(eventDispatcher.value);
         eventDispatcher.addEventListener("change", onChange);
@@ -34,7 +38,7 @@ declare const eventDispatcher: EventDispatcher<number>;
 // Your component can now be used as shown below.
 // In this example, 'eventDispatcher' represents a generic event dispatcher.
 <EventHandlerSubscription source={eventDispatcher}>
-    {value => {
+    {(value) => {
         // $ExpectType number
         const followersCount = value;
         return <FollowerComponent followersCount={followersCount} />;
@@ -47,7 +51,9 @@ declare const eventDispatcher: EventDispatcher<number>;
 // ----------------------------------------------------------------------------
 
 // Start with a simple component.
-const LoadingComponent: React.FC<{ loadingStatus: string | undefined }> = ({ loadingStatus }) => {
+const LoadingComponent: React.FC<{ loadingStatus: string | undefined }> = ({
+    loadingStatus,
+}) => {
     if (loadingStatus === undefined) {
         // Loading
     } else if (loadingStatus === null) {
@@ -63,12 +69,15 @@ const LoadingComponent: React.FC<{ loadingStatus: string | undefined }> = ({ loa
 // It will add and remove subscriptions in an async-safe way when props change.
 // $ExpectType Subscription<Promise<string>, string | undefined>
 const PromiseSubscription = createSubscription({
-    getCurrentValue: promise => {
+    getCurrentValue: (promise) => {
         // There is no way to synchronously read a Promise's value,
         // So this method should return undefined.
         return undefined;
     },
-    subscribe: (promise: Promise<string>, callback: (newValue: string | undefined) => void) => {
+    subscribe: (
+        promise: Promise<string>,
+        callback: (newValue: string | undefined) => void,
+    ) => {
         promise.then(
             // Success
             callback,
@@ -86,7 +95,7 @@ declare const loadingPromise: Promise<string>;
 
 // Your component can now be used as shown below.
 <PromiseSubscription source={loadingPromise}>
-    {value => {
+    {(value) => {
         // $ExpectType string | undefined
         const loadingStatus = value;
         return <LoadingComponent loadingStatus={loadingStatus} />;
@@ -101,17 +110,19 @@ declare const wrongPromise: Promise<number>;
 
 // @ts-expect-error
 <PromiseSubscription source={wrongPromise}>
-    {value => null}
+    {(value) => null}
 </PromiseSubscription>;
 
 const MismatchSubscription = createSubscription({
     // @ts-expect-error
     getCurrentValue: (a: number) => null,
-    subscribe: (a: string, callback) => (() => undefined),
+    subscribe: (a: string, callback) => () => undefined,
 });
 
 const NoUnsubscribe = createSubscription({
     getCurrentValue: (a: number) => a,
     // @ts-expect-error
-    subscribe: (a: number, callback) => {/* oops, should've returned a callback here */},
+    subscribe: (a: number, callback) => {
+        /* oops, should've returned a callback here */
+    },
 });

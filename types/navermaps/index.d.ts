@@ -17,7 +17,9 @@ declare namespace naver.maps {
     type SizeLiteral = SizeArrayLiteral | SizeObjectLiteral;
     type LatLngLiteral = PointLiteral | LatLngObjectLiteral;
     type PointBoundsArrayLiteral = [number, number, number, number];
-    type PointBoundsLiteral = PointBoundsArrayLiteral | PointBoundsObjectLiteral;
+    type PointBoundsLiteral =
+        | PointBoundsArrayLiteral
+        | PointBoundsObjectLiteral;
     type LatLngBoundsLiteral = PointBoundsLiteral | LatLngBoundsObjectLiteral;
     type BoundsLiteral = PointBoundsLiteral | LatLngBoundsLiteral;
     type CoordLiteral = PointLiteral | LatLngLiteral;
@@ -28,8 +30,13 @@ declare namespace naver.maps {
     type ArrayOfCoords = Point[] | LatLng[];
     type ArrayOfBounds = PointBounds[] | LatLngBounds[];
     type ArrayOfBoundsLiteral = PointBoundsLiteral[] | LatLngBoundsLiteral[];
-    type forEachOverlayCallback = (overlay: Marker | Polyline | Polygon, index: number) => void;
-    type GeoJSON = GeoJSON.Feature<GeoJSON.Geometry> | GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+    type forEachOverlayCallback = (
+        overlay: Marker | Polyline | Polygon,
+        index: number,
+    ) => void;
+    type GeoJSON =
+        | GeoJSON.Feature<GeoJSON.Geometry>
+        | GeoJSON.FeatureCollection<GeoJSON.Geometry>;
     // See https://www.topografix.com/gpx.asp
     type GPX = any;
     // See https://developers.google.com/kml/documentation/kml_tut?hl=ko
@@ -98,11 +105,21 @@ declare namespace naver.maps {
         fromOffsetToPoint(offset: Point): Point;
         fromPointToCoord(point: Point): Coord;
         fromPointToOffset(point: Point): Point;
-        getDestinationCoord(fromCoord: Coord, angle: number, meter: number): Coord;
+        getDestinationCoord(
+            fromCoord: Coord,
+            angle: number,
+            meter: number,
+        ): Coord;
         getDistance(coord1: Coord, coord2: Coord): number;
         getProjectionName(): number;
-        scaleDown(operand: number | Point | Size, zoom: number): number | Point | Size;
-        scaleUp(operand: number | Point | Size, zoom: number): number | Point | Size;
+        scaleDown(
+            operand: number | Point | Size,
+            zoom: number,
+        ): number | Point | Size;
+        scaleUp(
+            operand: number | Point | Size,
+            zoom: number,
+        ): number | Point | Size;
     }
 
     /**
@@ -368,7 +385,11 @@ declare namespace naver.maps {
         name: string;
         projection: Projection;
         tileSize: Size;
-        getTile(x: number, y: number, z: number): HTMLElement | CanvasTile | ImageTile | Tile;
+        getTile(
+            x: number,
+            y: number,
+            z: number,
+        ): HTMLElement | CanvasTile | ImageTile | Tile;
     }
     interface Projection {
         fromCoordToPoint(coord: Coord): Point;
@@ -477,7 +498,10 @@ declare namespace naver.maps {
      */
     interface PolygonOptions {
         map?: Map;
-        paths: ArrayOfCoords[] | KVOArray<KVOArrayOfCoords> | ArrayOfCoordsLiteral[];
+        paths:
+            | ArrayOfCoords[]
+            | KVOArray<KVOArrayOfCoords>
+            | ArrayOfCoordsLiteral[];
         strokeWeight?: number;
         strokeOpacity?: number;
         strokeColor?: string;
@@ -650,8 +674,14 @@ declare namespace naver.maps {
         unbind(key: string): void;
         unbindAll(): void;
         setValues(properties: { [key: string]: any }): void;
-        addListener(eventName: string, listener: (event: any) => any): MapEventListener;
-        addListenerOnce(eventName: string, listener: (event: any) => any): MapEventListener;
+        addListener(
+            eventName: string,
+            listener: (event: any) => any,
+        ): MapEventListener;
+        addListenerOnce(
+            eventName: string,
+            listener: (event: any) => any,
+        ): MapEventListener;
         hasListener(eventName: string): boolean;
         removeListener(listeners: MapEventListener | MapEventListener[]): void;
         clearListeners(eventName: string): void;
@@ -675,7 +705,11 @@ declare namespace naver.maps {
         removeAt(index: number): T;
         removeElement(element: T): void;
         setAt(index: number, element: T): void;
-        splice(startIndex: number, deleteCount: number, ...newElement: T[]): T[];
+        splice(
+            startIndex: number,
+            deleteCount: number,
+            ...newElement: T[]
+        ): T[];
     }
 
     /**
@@ -732,7 +766,10 @@ declare namespace naver.maps {
     class PointBounds {
         constructor(minPoint: Point, maxPoint: Point);
         constructor(literal: PointBoundsLiteral);
-        static bounds(point: Coord | PointLiteral, pointN: Coord | PointLiteral): PointBounds;
+        static bounds(
+            point: Coord | PointLiteral,
+            pointN: Coord | PointLiteral,
+        ): PointBounds;
         clone(): PointBounds;
         equals(bounds: Bounds | PointBoundsLiteral): boolean;
         extend(point: Coord | PointLiteral): PointBounds;
@@ -773,7 +810,10 @@ declare namespace naver.maps {
     class LatLngBounds extends PointBounds {
         constructor(sw: LatLng, ne: LatLng);
         constructor(literal: LatLngBoundsLiteral);
-        static bounds(latlng: Coord | LatLngLiteral, latlngN: Coord | LatLngLiteral): LatLngBounds;
+        static bounds(
+            latlng: Coord | LatLngLiteral,
+            latlngN: Coord | LatLngLiteral,
+        ): LatLngBounds;
         clone(): LatLngBounds;
         east(): number;
         equals(bounds: Bounds | LatLngBoundsLiteral): boolean;
@@ -805,7 +845,11 @@ declare namespace naver.maps {
         autoResize(): void;
         destroy(): void;
         fitBounds(
-            bounds: Bounds | BoundsLiteral | ArrayOfCoords | ArrayOfCoordsLiteral,
+            bounds:
+                | Bounds
+                | BoundsLiteral
+                | ArrayOfCoords
+                | ArrayOfCoordsLiteral,
             fitBoundsOptions?: FitBoundsOptions,
         ): void;
         getBounds(): Bounds;
@@ -821,20 +865,38 @@ declare namespace naver.maps {
         getProjection(): MapSystemProjection;
         getSize(): Size;
         getZoom(): number;
-        morph(coord: Coord | CoordLiteral, zoom?: number, transitionOptions?: TransitionOptions): void;
+        morph(
+            coord: Coord | CoordLiteral,
+            zoom?: number,
+            transitionOptions?: TransitionOptions,
+        ): void;
         panBy(offset: Point | PointLiteral): void;
-        panTo(coord: Coord | CoordLiteral, transitionOptions?: TransitionOptions): void;
-        panToBounds(bounds: Bounds | BoundsLiteral, transitionOptions?: TransitionOptions, margin?: Margin): void;
+        panTo(
+            coord: Coord | CoordLiteral,
+            transitionOptions?: TransitionOptions,
+        ): void;
+        panToBounds(
+            bounds: Bounds | BoundsLiteral,
+            transitionOptions?: TransitionOptions,
+            margin?: Margin,
+        ): void;
         refresh(noEffect?: boolean): void;
         removePane(name: string): void;
         setCenter(center: Coord | CoordLiteral): void;
         setCenterPoint(point: Point | PointLiteral): void;
         setMapTypeId(mapTypeId: string): void;
-        setOptions(newOptionsOrKey: { [key: string]: any } | string, value?: any): void;
+        setOptions(
+            newOptionsOrKey: { [key: string]: any } | string,
+            value?: any,
+        ): void;
         setSize(size: Size | SizeLiteral): void;
         setZoom(zoom: number, effect?: boolean): void;
         updateBy(coord: Coord | CoordLiteral, zoom: number): void;
-        zoomBy(deltaZoom: number, zoomOrigin?: Coord | CoordLiteral, effect?: boolean): void;
+        zoomBy(
+            deltaZoom: number,
+            zoomOrigin?: Coord | CoordLiteral,
+            effect?: boolean,
+        ): void;
     }
 
     /**
@@ -931,7 +993,10 @@ declare namespace naver.maps {
     class MapTypeRegistry extends KVO {
         uid?: string;
         VENDOR?: string;
-        constructor(mapTypeInfo?: { [mapTypeId: string]: MapType }, defaultMapTypeId?: string);
+        constructor(
+            mapTypeInfo?: { [mapTypeId: string]: MapType },
+            defaultMapTypeId?: string,
+        );
         getPreviousTypeId(): string;
         getSelectedType(): MapType;
         getSelectedTypeId(): string;
@@ -1042,7 +1107,11 @@ declare namespace naver.maps {
      */
     class Layer extends KVO {
         name: string;
-        constructor(name: string, MapTypeRegistry: MapTypeRegistry, options?: LayerOptions);
+        constructor(
+            name: string,
+            MapTypeRegistry: MapTypeRegistry,
+            options?: LayerOptions,
+        );
         getLayerType(): MapType;
         getLayerTypeId(): string;
         getMap(): Map | null;
@@ -1205,7 +1274,11 @@ declare namespace naver.maps {
      * GroundOverlay
      */
     class GroundOverlay extends OverlayView {
-        constructor(url: string, bounds: Bounds | BoundsLiteral, options?: GroundOverlayOptions);
+        constructor(
+            url: string,
+            bounds: Bounds | BoundsLiteral,
+            options?: GroundOverlayOptions,
+        );
         getBounds(): Bounds;
         getOpacity(): number;
         getUrl(): string;
@@ -1271,10 +1344,20 @@ declare namespace naver.maps {
         getPaths(): ArrayOfCoords[] | KVOArray<KVOArrayOfCoords>;
         getOptions<K extends keyof PolygonOptions>(key: K): PolygonOptions[K];
         getOptions(): PolygonOptions;
-        setOptions<K extends keyof PolygonOptions>(key: K, value: PolygonOptions[K]): void;
+        setOptions<K extends keyof PolygonOptions>(
+            key: K,
+            value: PolygonOptions[K],
+        ): void;
         setOptions(options: PolygonOptions): void;
-        setPath(path: ArrayOfCoords | KVOArrayOfCoords | ArrayOfCoordsLiteral): void;
-        setPaths(paths: ArrayOfCoords[] | KVOArray<KVOArrayOfCoords> | ArrayOfCoordsLiteral[]): void;
+        setPath(
+            path: ArrayOfCoords | KVOArrayOfCoords | ArrayOfCoordsLiteral,
+        ): void;
+        setPaths(
+            paths:
+                | ArrayOfCoords[]
+                | KVOArray<KVOArrayOfCoords>
+                | ArrayOfCoordsLiteral[],
+        ): void;
         setStyles(key: string, value: any): void;
         setStyles(options: PolygonOptions): void;
     }
@@ -1290,7 +1373,9 @@ declare namespace naver.maps {
         getPath(): ArrayOfCoords | KVOArrayOfCoords;
         setOptions(key: string, value: any): void;
         setOptions(options: PolylineOptions): void;
-        setPath(path: ArrayOfCoords | KVOArrayOfCoords | ArrayOfCoordsLiteral): void;
+        setPath(
+            path: ArrayOfCoords | KVOArrayOfCoords | ArrayOfCoordsLiteral,
+        ): void;
         setStyles(key: string, value: any): void;
         setStyles(options: PolylineOptions): void;
     }
@@ -1314,19 +1399,48 @@ declare namespace naver.maps {
     //  static objects
     // --------------------------------------------------------------------------
     namespace Event {
-        function addDOMListener(element: HTMLElement, eventName: string, listener: (event: any) => any): void;
-        function addListener(target: any, eventName: string, listener: (event: any) => any): MapEventListener;
+        function addDOMListener(
+            element: HTMLElement,
+            eventName: string,
+            listener: (event: any) => any,
+        ): void;
+        function addListener(
+            target: any,
+            eventName: string,
+            listener: (event: any) => any,
+        ): MapEventListener;
         function clearInstanceListeners(target: any): void;
         function clearListeners(target: any, fromEventName: string): void;
-        function forward(source: any, fromEventName: string, target: any, toEventName: string): MapEventListener;
+        function forward(
+            source: any,
+            fromEventName: string,
+            target: any,
+            toEventName: string,
+        ): MapEventListener;
         function hasListener(target: any, eventName: string): boolean;
-        function once(target: any, eventName: string, listener: (event: any) => any): MapEventListener;
-        function removeDOMListener(element: HTMLElement, eventName: string, listener: (event: any) => any): void;
-        function removeDOMListener(listeners: DOMEventListener | DOMEventListener[]): void;
-        function removeListener(listeners: MapEventListener | MapEventListener[]): void;
+        function once(
+            target: any,
+            eventName: string,
+            listener: (event: any) => any,
+        ): MapEventListener;
+        function removeDOMListener(
+            element: HTMLElement,
+            eventName: string,
+            listener: (event: any) => any,
+        ): void;
+        function removeDOMListener(
+            listeners: DOMEventListener | DOMEventListener[],
+        ): void;
+        function removeListener(
+            listeners: MapEventListener | MapEventListener[],
+        ): void;
         function resumeDispatch(target: any, eventName: string): void;
         function stopDispatch(target: any, eventName: string): void;
-        function trigger(target: any, eventName: string, eventObject?: any): void;
+        function trigger(
+            target: any,
+            eventName: string,
+            eventObject?: any,
+        ): void;
     }
 
     namespace EPSG3857 {
@@ -1334,7 +1448,11 @@ declare namespace naver.maps {
         function fromLatLngToPoint(latlng: LatLng): Point;
         function fromPointToCoord(point: Point): LatLng;
         function fromPointToLatLng(point: Point): LatLng;
-        function getDestinationCoord(fromLatLng: LatLng, angle: number, meter: number): LatLng;
+        function getDestinationCoord(
+            fromLatLng: LatLng,
+            angle: number,
+            meter: number,
+        ): LatLng;
         function getDistance(latlng1: LatLng, latlng2: LatLng): number;
     }
 
@@ -1351,7 +1469,11 @@ declare namespace naver.maps {
         function fromUTMKToCoord(utmk: Point): LatLng;
         function fromUTMKToLatLng(utmk: Point): LatLng;
         function fromUTMKToPoint(utmk: Point): Point;
-        function getDestinationCoord(fromLatLng: LatLng, angle: number, meter: number): LatLng;
+        function getDestinationCoord(
+            fromLatLng: LatLng,
+            angle: number,
+            meter: number,
+        ): LatLng;
         function getDistance(latlng1: LatLng, latlng2: LatLng): number;
     }
 
@@ -1464,7 +1586,10 @@ declare namespace naver.maps {
     }
 
     class Panorama extends KVO {
-        constructor(panoramaDiv: string | HTMLElement, panoramaOptions: PanoramaOptions);
+        constructor(
+            panoramaDiv: string | HTMLElement,
+            panoramaOptions: PanoramaOptions,
+        );
         getElement(): HTMLElement;
         getLocation(): PanoramaLocation;
         getMaxScale(): number;
@@ -1558,21 +1683,36 @@ declare namespace naver.maps {
         interface DrawingOverlay {
             id: string;
             name: string;
-            setEditable: (editable: boolean, controlPointOptions?: ControlPointOptions) => void;
+            setEditable: (
+                editable: boolean,
+                controlPointOptions?: ControlPointOptions,
+            ) => void;
         }
 
         class DrawingManager extends KVO {
             constructor(options?: DrawingOptions);
-            addDrawing(overlay: DrawingOverlay, drawingMode: DrawingMode, id?: string): void;
-            addListener(eventName: DrawingEvents, listener: (overlay: DrawingOverlay) => void): MapEventListener;
+            addDrawing(
+                overlay: DrawingOverlay,
+                drawingMode: DrawingMode,
+                id?: string,
+            ): void;
+            addListener(
+                eventName: DrawingEvents,
+                listener: (overlay: DrawingOverlay) => void,
+            ): MapEventListener;
             destroy(): void;
             getDrawing(id: string): DrawingOverlay;
             getDrawings(): { [key: string]: DrawingOverlay };
             getMap(): Map | null;
             setMap(map: Map | null): void;
             toGeoJson(): GeoJSON;
-            getOptions<K extends keyof DrawingOptions>(key: K): DrawingOptions[K];
-            setOptions<K extends keyof DrawingOptions>(key: K, value: DrawingOptions[K]): void;
+            getOptions<K extends keyof DrawingOptions>(
+                key: K,
+            ): DrawingOptions[K];
+            setOptions<K extends keyof DrawingOptions>(
+                key: K,
+                value: DrawingOptions[K],
+            ): void;
             setOptions(options: DrawingOptions): void;
         }
     }
@@ -1621,7 +1761,11 @@ declare namespace naver.maps {
             getData(): LatLng[] | PointArrayLiteral[];
             getMap(): Map | null;
             getOptions(key?: string): any; // if key is undefiend, return DotMapOptions
-            addDrawing(overlay: drawing.DrawingOverlay, drawingMode: drawing.DrawingMode, id?: string): void;
+            addDrawing(
+                overlay: drawing.DrawingOverlay,
+                drawingMode: drawing.DrawingMode,
+                id?: string,
+            ): void;
             redraw(): void;
             setData(data: LatLng[] | PointArrayLiteral[]): void;
             setMap(map: Map | null): void;
@@ -1852,7 +1996,10 @@ declare namespace naver.maps {
         ): void;
         function fromCoordToAddr(
             options: ReverseServiceOptions,
-            callback?: (status: Status, response: ReverseGeocodeResponse) => void,
+            callback?: (
+                status: Status,
+                response: ReverseGeocodeResponse,
+            ) => void,
         ): void;
         function geocode(
             options: GeocodeServiceOptions,
@@ -1860,7 +2007,10 @@ declare namespace naver.maps {
         ): void;
         function reverseGeocode(
             options: ReverseServiceOptions,
-            callback?: (status: Status, response: ReverseGeocodeResponse) => void,
+            callback?: (
+                status: Status,
+                response: ReverseGeocodeResponse,
+            ) => void,
         ): void;
     }
 

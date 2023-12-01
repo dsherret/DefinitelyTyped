@@ -1,4 +1,8 @@
-import { DvtDiagramLayoutContext, DvtDiagramLayoutContextLink, DvtDiagramLayoutContextNode } from "../ojdiagram";
+import {
+    DvtDiagramLayoutContext,
+    DvtDiagramLayoutContextLink,
+    DvtDiagramLayoutContextNode,
+} from "../ojdiagram";
 export function getLayout(obj: {
     nodes: {
         id: any;
@@ -15,11 +19,20 @@ export function getLayout(obj: {
     nodeDefaults: {
         labelLayout:
             | LabelLayout
-            | ((context: DvtDiagramLayoutContext, node: DvtDiagramLayoutContextNode) => LabelLayout);
+            | ((
+                  context: DvtDiagramLayoutContext,
+                  node: DvtDiagramLayoutContextNode,
+              ) => LabelLayout);
     };
     linkDefaults: {
-        path: (context: DvtDiagramLayoutContext, link: DvtDiagramLayoutContextLink) => string;
-        labelLayout: (context: DvtDiagramLayoutContext, link: DvtDiagramLayoutContextLink) => LabelLayout;
+        path: (
+            context: DvtDiagramLayoutContext,
+            link: DvtDiagramLayoutContextLink,
+        ) => string;
+        labelLayout: (
+            context: DvtDiagramLayoutContext,
+            link: DvtDiagramLayoutContextLink,
+        ) => LabelLayout;
     };
     viewport: {
         x: number;

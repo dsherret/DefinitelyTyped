@@ -133,14 +133,20 @@ const cy = cytoscape({
 
     elements: {
         nodes: [
-            { data: { id: "a", parent: "b", foo: "bar" }, position: { x: 215, y: 85 } },
+            {
+                data: { id: "a", parent: "b", foo: "bar" },
+                position: { x: 215, y: 85 },
+            },
             { data: { id: "b" } },
             { data: { id: "c", parent: "b" }, position: { x: 300, y: 85 } },
             { data: { id: "d" }, position: { x: 215, y: 175 } },
             { data: { id: "e" } },
             { data: { id: "f", parent: "e" }, position: { x: 300, y: 175 } },
         ],
-        edges: [{ data: { id: "ad", source: "a", target: "d" } }, { data: { id: "eb", source: "e", target: "b" } }],
+        edges: [
+            { data: { id: "ad", source: "a", target: "d" } },
+            { data: { id: "eb", source: "e", target: "b" } },
+        ],
     },
 
     // initial viewport state:
@@ -193,7 +199,7 @@ const cy = cytoscape({
     },
 });
 
-cy.on("zoom", event => {
+cy.on("zoom", (event) => {
     if (cy.zoom() <= 1) {
         cy.nodes("$node > node").style("opacity", 0);
     }
@@ -201,7 +207,10 @@ cy.on("zoom", event => {
 cy.off("zoom");
 // events(cy); - TODO
 
-cy.add({ data: { id: "g", someOtherKey: "value" }, position: { x: 200, y: 150 } });
+cy.add({
+    data: { id: "g", someOtherKey: "value" },
+    position: { x: 200, y: 150 },
+});
 cy.add([{ data: { id: "h" }, position: { x: 250, y: 100 } }]);
 const nodesBeforeDelete = cy.nodes();
 const edgesBeforeDelete = cy.edges();
@@ -210,7 +219,11 @@ const removed = cy.remove("#g #h");
 cy.add(removed);
 const diffNodes = nodesBeforeDelete.diff(cy.nodes());
 const diffEdges = edgesBeforeDelete.diff(cy.edges());
-assert(diffNodes.left.size() === 0 && diffNodes.right.size() === 0 && diffNodes.both.size() === cy.nodes().size());
+assert(
+    diffNodes.left.size() === 0 &&
+        diffNodes.right.size() === 0 &&
+        diffNodes.both.size() === cy.nodes().size(),
+);
 assert(nodesBeforeDelete.same(cy.nodes()));
 assert(edgesBeforeDelete.same(cy.edges()));
 
@@ -265,10 +278,16 @@ anim.stop();
 aliases(cy.layout, cy.createLayout, cy.makeLayout);
 
 // Preconfigured data for layouts (as it could be passed)
-const boundingBox = oneOf({ x1: 0, x2: 100, y1: 0, y2: 100 }, { x1: 0, w: 100, y1: 0, h: 100 });
+const boundingBox = oneOf(
+    { x1: 0, x2: 100, y1: 0, y2: 100 },
+    { x1: 0, w: 100, y1: 0, h: 100 },
+);
 const positions = oneOf(
     { a: { x: 100, y: 100 } },
-    (node: cytoscape.NodeCollection): cytoscape.Position => ({ x: 100, y: 100 }),
+    (node: cytoscape.NodeCollection): cytoscape.Position => ({
+        x: 100,
+        y: 100,
+    }),
 );
 
 // #core/viewport
@@ -517,16 +536,20 @@ eles.restore();
         cytoscape.EdgeSingular,
         cytoscape.EdgeCollection,
     ]
-).forEach(elemType => {
+).forEach((elemType) => {
     aliases(elemType.clone, elemType.copy);
     // events(elemType); - TODO
     aliases(elemType.removeData, elemType.removeAttr);
 });
-([ele, node, edge] as [cytoscape.SingularElementReturnValue, cytoscape.NodeSingular, cytoscape.EdgeSingular]).forEach(
-    elemType => {
-        aliases(elemType.data, elemType.attr);
-    },
-);
+(
+    [ele, node, edge] as [
+        cytoscape.SingularElementReturnValue,
+        cytoscape.NodeSingular,
+        cytoscape.EdgeSingular,
+    ]
+).forEach((elemType) => {
+    aliases(elemType.data, elemType.attr);
+});
 
 // #core/data
 aliases(cy.removeData, cy.removeAttr);
@@ -583,7 +606,9 @@ nodes.shift("x", 100);
 nodes.shift({ x: -100, y: 0 });
 
 aliases(nodes.modelPositions, nodes.positions, nodes.points);
-nodes.positions((node, i) => Object.assign(node.position(), { x: node.position("x") + i }));
+nodes.positions((node, i) =>
+    Object.assign(node.position(), { x: node.position("x") + i }),
+);
 
 aliases(node.renderedPosition, node.renderedPoint);
 getsetPos(node.renderedPoint);
@@ -606,7 +631,12 @@ aliases(eles.renderedBoundingBox, eles.renderedBoundingbox);
 
 node.layoutDimensions({ nodeDimensionsIncludeLabels: true });
 
-const flags: boolean[] = [node.grabbed(), node.grabbable(), node.locked(), ele.active()];
+const flags: boolean[] = [
+    node.grabbed(),
+    node.grabbable(),
+    node.locked(),
+    ele.active(),
+];
 nodes.lock();
 node.lock();
 nodes.unlock();
@@ -626,7 +656,7 @@ const layout = eles.layout({ name: "random" }).run();
 layout.on("layoutstop", () => {
     cy.fit();
 });
-layout.on("layoutstop", {}, obj => {
+layout.on("layoutstop", {}, (obj) => {
     console.log(obj);
 });
 
@@ -648,12 +678,12 @@ eles.flashClass("test flash", oneOf(1000, undefined));
 assert(ele.hasClass("test"));
 
 eles.style("background-color", "green");
-Object.keys(eles.style()).map(key => eles.style(key));
+Object.keys(eles.style()).map((key) => eles.style(key));
 eles.style(eles.style());
 aliases(eles.style, eles.css);
 aliases(ele.renderedCss, ele.renderedStyle);
 
-nodes.forEach(child => {
+nodes.forEach((child) => {
     child.animate({
         position: node.position(),
         duration: 300,
@@ -664,7 +694,7 @@ nodes.forEach(child => {
 });
 
 // position is not required for an animation
-nodes.forEach(child => {
+nodes.forEach((child) => {
     child.animate({
         style: {
             backgroundColor: "#f185dc",
@@ -698,20 +728,54 @@ eles.some((el, i, els) => true);
 eles.every((el, i, els) => true);
 
 aliases(eles.forEach, eles.each);
-const selected: cytoscape.SingularElementArgument[] = [eles.eq(0), eles.first(), eles.last()];
+const selected: cytoscape.SingularElementArgument[] = [
+    eles.eq(0),
+    eles.first(),
+    eles.last(),
+];
 const collSel = cy.collection(selected);
-const selectedNodes: cytoscape.NodeSingular[] = [nodes.eq(0), nodes.first(), nodes.last()];
+const selectedNodes: cytoscape.NodeSingular[] = [
+    nodes.eq(0),
+    nodes.first(),
+    nodes.last(),
+];
 const collNodes = cy.collection(selectedNodes);
-const selectedEdges: cytoscape.EdgeSingular[] = [edges.eq(0), edges.first(), edges.last()];
+const selectedEdges: cytoscape.EdgeSingular[] = [
+    edges.eq(0),
+    edges.first(),
+    edges.last(),
+];
 eles.slice(0, -1);
 eles.toArray();
 
 aliases(eles.getElementById, eles.$id);
 aliases(eles.union, eles.add, eles.or, eles.u, eles["+"], eles["|"]);
-aliases(eles.difference, eles.not, eles.subtract, eles.relativeComplement, eles["\\"], eles["!"], eles["-"]);
+aliases(
+    eles.difference,
+    eles.not,
+    eles.subtract,
+    eles.relativeComplement,
+    eles["\\"],
+    eles["!"],
+    eles["-"],
+);
 aliases(eles.absoluteComplement, eles.abscomp, eles.complement);
-aliases(eles.intersection, eles.intersect, eles.and, eles.n, eles["&"], eles["."]);
-aliases(eles.symmetricDifference, eles.symdiff, eles.xor, eles["^"], eles["(+)"], eles["(-)"]);
+aliases(
+    eles.intersection,
+    eles.intersect,
+    eles.and,
+    eles.n,
+    eles["&"],
+    eles["."],
+);
+aliases(
+    eles.symmetricDifference,
+    eles.symdiff,
+    eles.xor,
+    eles["^"],
+    eles["(+)"],
+    eles["(-)"],
+);
 cy.collection([nodes[0]]).union(nodes[1]).union(eles.$id("g"));
 eles.difference(collNodes).abscomp().intersection(collSel).symdiff(collNodes);
 const diff = collSel.diff(collNodes);
@@ -724,24 +788,30 @@ cy.collection()
 for (const _ of cy.collection([])) {
 }
 
-nodes.map(n => n.degree(false));
-edges.map(e => e.source());
-eles.map(e => e.id());
-eles.map(e => (e.isNode() ? e.degree(false) : e.source()));
-eles.map(e => (e.isEdge() ? e.source() : e.degree(false)));
+nodes.map((n) => n.degree(false));
+edges.map((e) => e.source());
+eles.map((e) => e.id());
+eles.map((e) => (e.isNode() ? e.degree(false) : e.source()));
+eles.map((e) => (e.isEdge() ? e.source() : e.degree(false)));
 
 eles.sort((a, b) => a.id.length - b.id.length).map((ele, i, eles) => [i, ele]);
-eles.reduce<any[]>((prev, ele, i, eles) => [...prev, [ele, i]], []).concat(["finish"]);
+eles.reduce<any[]>((prev, ele, i, eles) => [...prev, [ele, i]], []).concat([
+    "finish",
+]);
 
-const min = eles.min((ele, i, eles) => (ele.isNode() ? ele.degree(false) : ele.source().degree(false)));
+const min = eles.min((ele, i, eles) =>
+    ele.isNode() ? ele.degree(false) : ele.source().degree(false),
+);
 min.ele.scratch("min", min.value).scratch("min").value;
-const max = eles.max((ele, i, eles) => (ele.isEdge() ? ele.source().degree(false) : ele.degree(false)));
+const max = eles.max((ele, i, eles) =>
+    ele.isEdge() ? ele.source().degree(false) : ele.degree(false),
+);
 max.ele.scratch("max", max.value);
 
-nodes.min(n => n.degree(false));
-nodes.max(n => n.degree(false));
-edges.max(n => n.source().id().length);
-edges.max(n => n.source().id().length);
+nodes.min((n) => n.degree(false));
+nodes.max((n) => n.degree(false));
+edges.max((n) => n.source().id().length);
+edges.max((n) => n.source().id().length);
 
 // directly from the doc: http://js.cytoscape.org/#eles.stop
 cy.nodes()
@@ -796,7 +866,10 @@ cy.elements(":grabbable").dfs({ roots: "#1" });
 // TODO: algorithms
 // Cut
 cy.elements().kargerStein();
-aliases(eles.hopcroftTarjanBiconnected, eles.hopcroftTarjanBiconnectedComponents);
+aliases(
+    eles.hopcroftTarjanBiconnected,
+    eles.hopcroftTarjanBiconnectedComponents,
+);
 aliases(eles.hopcroftTarjanBiconnected, eles.htb);
 aliases(eles.hopcroftTarjanBiconnected, eles.htbc);
 aliases(eles.tarjanStronglyConnected, eles.tarjanStronglyConnectedComponents);
@@ -847,7 +920,7 @@ cytoscape("core", "prop", () => {});
 // $ExpectType unknown
 cytoscape("core", "name");
 
-const myExt: cytoscape.Ext = cy => {
+const myExt: cytoscape.Ext = (cy) => {
     // $ExpectType void
     cy("core", "prop", () => {});
     // $ExpectType unknown
@@ -965,7 +1038,7 @@ const gridAllOptions: GridLayoutOptions = {
     condense: true,
     rows: 12,
     cols: 6,
-    position: node => {
+    position: (node) => {
         return { row: 3, col: 2 };
     },
     sort: (a, b) => 1,
@@ -997,8 +1070,8 @@ const concentricAllOptions: ConcentricLayoutOptions = {
     height: 5,
     width: 3,
     spacingFactor: 7,
-    concentric: _node => 6,
-    levelWidth: _nodes => 5,
+    concentric: (_node) => 6,
+    levelWidth: (_nodes) => 5,
     animate: true,
     animationDuration: 50,
     animationEasing: "ease-out",
@@ -1027,10 +1100,10 @@ const coseAllOptions: CoseLayoutOptions = {
     nodeDimensionsIncludeLabels: true,
     randomize: true,
     componentSpacing: 57,
-    nodeRepulsion: node => 32,
+    nodeRepulsion: (node) => 32,
     nodeOverlap: 4,
-    idealEdgeLength: edge => 75,
-    edgeElasticity: edge => 111,
+    idealEdgeLength: (edge) => 75,
+    edgeElasticity: (edge) => 111,
     nestingFactor: 3.8,
     gravity: 9.8,
     numIter: 12000,

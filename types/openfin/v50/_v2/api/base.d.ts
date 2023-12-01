@@ -23,7 +23,9 @@ export declare class EmitterBase<EventTypes extends BaseEventMap> extends Base {
     eventNames: () => Array<string | symbol>;
     emit: <E extends string | symbol | Extract<keyof EventTypes, string>>(
         eventName: E,
-        payload: E extends Extract<keyof EventTypes, string> ? EventTypes[E] : any,
+        payload: E extends Extract<keyof EventTypes, string>
+            ? EventTypes[E]
+            : any,
         ...args: any[]
     ) => boolean;
     private hasEmitter;
@@ -40,40 +42,70 @@ export declare class EmitterBase<EventTypes extends BaseEventMap> extends Base {
     ) => Promise<void | EventEmitter>;
     on: <E extends string | symbol | Extract<keyof EventTypes, string>>(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
-    addListener: <E extends string | symbol | Extract<keyof EventTypes, string>>(
+    addListener: <
+        E extends string | symbol | Extract<keyof EventTypes, string>,
+    >(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
     once: <E extends string | symbol | Extract<keyof EventTypes, string>>(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
-    prependListener: <E extends string | symbol | Extract<keyof EventTypes, string>>(
+    prependListener: <
+        E extends string | symbol | Extract<keyof EventTypes, string>,
+    >(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
-    prependOnceListener: <E extends string | symbol | Extract<keyof EventTypes, string>>(
+    prependOnceListener: <
+        E extends string | symbol | Extract<keyof EventTypes, string>,
+    >(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
-    removeListener: <E extends string | symbol | Extract<keyof EventTypes, string>>(
+    removeListener: <
+        E extends string | symbol | Extract<keyof EventTypes, string>,
+    >(
         eventType: E,
-        listener: (payload: E extends keyof EventTypes ? EventTypes[E] : any, ...args: any[]) => void,
+        listener: (
+            payload: E extends keyof EventTypes ? EventTypes[E] : any,
+            ...args: any[]
+        ) => void,
         options?: SubOptions,
     ) => Promise<this>;
     protected deregisterAllListeners: (
         eventType: string | symbol | Extract<keyof EventTypes, string>,
     ) => Promise<void | EventEmitter>;
-    removeAllListeners: (eventType?: string | symbol | Extract<keyof EventTypes, string>) => Promise<this>;
+    removeAllListeners: (
+        eventType?: string | symbol | Extract<keyof EventTypes, string>,
+    ) => Promise<this>;
 }
-export declare class Reply<TOPIC extends string, TYPE extends string | void> implements Identity {
+export declare class Reply<TOPIC extends string, TYPE extends string | void>
+    implements Identity
+{
     topic: TOPIC;
     type: TYPE;
     uuid: string;

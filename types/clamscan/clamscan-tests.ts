@@ -23,20 +23,22 @@ const fakeVirusUrl = "https://secure.eicar.org/eicar.com.txt";
             responseType: "stream",
         });
 
-        const { isInfected, viruses } = await clamscan.scanStream(data.pipe(new PassThrough()));
+        const { isInfected, viruses } = await clamscan.scanStream(
+            data.pipe(new PassThrough()),
+        );
 
         if (isInfected) {
             console.log(
-                `You've downloaded a virus (${
-                    viruses.join(
-                        "",
-                    )
-                })! Don't worry, it's only a test one and is not malicious...`,
+                `You've downloaded a virus (${viruses.join(
+                    "",
+                )})! Don't worry, it's only a test one and is not malicious...`,
             );
         } else if (isInfected === null) {
             console.log("Something didn't work right...");
         } else if (!isInfected) {
-            console.log(`The file (${fakeVirusUrl}) you downloaded was just fine... Carry on...`);
+            console.log(
+                `The file (${fakeVirusUrl}) you downloaded was just fine... Carry on...`,
+            );
         }
         process.exit(0);
     } catch (err) {

@@ -25,7 +25,11 @@ const k = new KBucket<CustomContact>({
 const peerK = new KBucket();
 
 const array: CustomContact[] = k.toArray();
-const newK: KBucket<CustomContact> = k.add({ id: new Buffer(1), vectorClock: 1, name: "a" });
+const newK: KBucket<CustomContact> = k.add({
+    id: new Buffer(1),
+    vectorClock: 1,
+    name: "a",
+});
 const newK2: CustomContact[] = k.closest(new Buffer(1));
 const count: number = k.count();
 const get: CustomContact | null = k.get(new Buffer(1));

@@ -1,7 +1,12 @@
 import * as R from "ramda";
 
 (() => {
-    function greet(salutation: string, title: string, firstName: string, lastName: string) {
+    function greet(
+        salutation: string,
+        title: string,
+        firstName: string,
+        lastName: string,
+    ) {
         return `${salutation}, ${title} ${firstName} ${lastName}!`;
     }
 

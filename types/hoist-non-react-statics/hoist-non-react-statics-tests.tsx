@@ -4,7 +4,10 @@ import * as React from "react";
 import hoistNonReactStatics = require("hoist-non-react-statics");
 
 function TestClassComponents() {
-    class A extends React.Component<{ x: number; y?: number | null | undefined }> {
+    class A extends React.Component<{
+        x: number;
+        y?: number | null | undefined;
+    }> {
         static a = "a";
 
         static propTypes = {
@@ -64,7 +67,10 @@ function TestClassComponents() {
     // @ts-expect-error
     D.b;
 
-    const DWithType: hoistNonReactStatics.NonReactStatics<typeof B, { a: true; b: true }> = D;
+    const DWithType: hoistNonReactStatics.NonReactStatics<
+        typeof B,
+        { a: true; b: true }
+    > = D;
     // @ts-expect-error
     const DWithTypeError: hoistNonReactStatics.NonReactStatics<typeof B> = D;
 
@@ -76,7 +82,9 @@ function TestClassComponents() {
 // convenience to avoid having to model the component's type with static fields.
 
 function TestFunctionalComponents() {
-    const A = ({ x, y }: { x: number; y?: number | undefined }) => <div>{x + (y || 0)}</div>;
+    const A = ({ x, y }: { x: number; y?: number | undefined }) => (
+        <div>{x + (y || 0)}</div>
+    );
 
     // tslint:disable-next-line:prefer-object-spread
     const AWithStatics = Object.assign(A, {
@@ -112,29 +120,40 @@ function TestFunctionalComponents() {
 
     <C x={1} />;
 
-    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = C;
+    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> =
+        C;
 
     // @ts-expect-error
     CWithType.propTypes;
     // @ts-expect-error
     CWithType.defaultProps;
 
-    const D = hoistNonReactStatics(AWithStatics, BWithStatics, { a: true, b: true });
+    const D = hoistNonReactStatics(AWithStatics, BWithStatics, {
+        a: true,
+        b: true,
+    });
 
     D.a;
     // @ts-expect-error
     D.b;
 
-    const DWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics, { a: true; b: true }> = D;
+    const DWithType: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics,
+        { a: true; b: true }
+    > = D;
     // @ts-expect-error
-    const DWithTypeError: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = D;
+    const DWithTypeError: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics
+    > = D;
 
     // @ts-expect-error
     DWithType.b;
 }
 
 function TestMemoComponents() {
-    const A = ({ x, y }: { x: number; y?: number | undefined }) => <div>{x + (y || 0)}</div>;
+    const A = ({ x, y }: { x: number; y?: number | undefined }) => (
+        <div>{x + (y || 0)}</div>
+    );
 
     // tslint:disable-next-line:prefer-object-spread
     const AWithStatics = Object.assign(A, {
@@ -170,29 +189,40 @@ function TestMemoComponents() {
 
     <C x={1} />;
 
-    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = C;
+    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> =
+        C;
 
     // @ts-expect-error
     CWithType.propTypes;
     // @ts-expect-error
     CWithType.defaultProps;
 
-    const D = hoistNonReactStatics(AWithStatics, BWithStatics, { a: true, b: true });
+    const D = hoistNonReactStatics(AWithStatics, BWithStatics, {
+        a: true,
+        b: true,
+    });
 
     D.a;
     // @ts-expect-error
     D.b;
 
-    const DWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics, { a: true; b: true }> = D;
+    const DWithType: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics,
+        { a: true; b: true }
+    > = D;
     // @ts-expect-error
-    const DWithTypeError: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = D;
+    const DWithTypeError: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics
+    > = D;
 
     // @ts-expect-error
     DWithType.b;
 }
 
 function TestForwardRefComponents() {
-    const A = ({ x, y }: { x: number; y?: number | undefined }) => <div>{x + (y || 0)}</div>;
+    const A = ({ x, y }: { x: number; y?: number | undefined }) => (
+        <div>{x + (y || 0)}</div>
+    );
 
     // tslint:disable-next-line:prefer-object-spread
     const AWithStatics = Object.assign(A, {
@@ -204,7 +234,9 @@ function TestForwardRefComponents() {
     });
 
     const B = React.forwardRef(
-        ({ n }: { n: number }, ref: React.Ref<HTMLDivElement>) => <div ref={ref}>{n}</div>,
+        ({ n }: { n: number }, ref: React.Ref<HTMLDivElement>) => (
+            <div ref={ref}>{n}</div>
+        ),
     );
 
     // tslint:disable-next-line:prefer-object-spread
@@ -230,22 +262,31 @@ function TestForwardRefComponents() {
 
     <C x={1} />;
 
-    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = C;
+    const CWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> =
+        C;
 
     // @ts-expect-error
     CWithType.propTypes;
     // @ts-expect-error
     CWithType.defaultProps;
 
-    const D = hoistNonReactStatics(AWithStatics, BWithStatics, { a: true, b: true });
+    const D = hoistNonReactStatics(AWithStatics, BWithStatics, {
+        a: true,
+        b: true,
+    });
 
     D.a;
     // @ts-expect-error
     D.b;
 
-    const DWithType: hoistNonReactStatics.NonReactStatics<typeof BWithStatics, { a: true; b: true }> = D;
+    const DWithType: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics,
+        { a: true; b: true }
+    > = D;
     // @ts-expect-error
-    const DWithTypeError: hoistNonReactStatics.NonReactStatics<typeof BWithStatics> = D;
+    const DWithTypeError: hoistNonReactStatics.NonReactStatics<
+        typeof BWithStatics
+    > = D;
 
     // @ts-expect-error
     DWithType.b;

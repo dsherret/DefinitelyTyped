@@ -5,7 +5,7 @@ const Crypto = require("crypto");
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const onRequest: Hapi.ServerExtRequestHandler = function(request, reply) {
+const onRequest: Hapi.ServerExtRequestHandler = function (request, reply) {
     const hash = Crypto.createHash("sha1");
     request.on("peek", (chunk) => {
         hash.update(chunk);

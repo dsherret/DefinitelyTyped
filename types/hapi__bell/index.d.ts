@@ -49,7 +49,9 @@ export type Provider =
     | "wordpress"
     | "yahoo";
 
-export type RequestPassThrough = (request: Request) => PromiseLike<AuthCredentials> | AuthCredentials;
+export type RequestPassThrough = (
+    request: Request,
+) => PromiseLike<AuthCredentials> | AuthCredentials;
 
 export interface OptionalOptions {
     /**
@@ -89,7 +91,10 @@ export interface OptionalOptions {
      * * Twitter supports `force_login`, `screen_name`.
      * * Linkedin supports `fields`.
      */
-    providerParams?: StringLikeMap | ((request: Request) => StringLikeMap) | undefined;
+    providerParams?:
+        | StringLikeMap
+        | ((request: Request) => StringLikeMap)
+        | undefined;
     /**
      * allows passing query parameters from a bell protected endpoint to the auth request.
      * It will merge the query params you pass along with the providerParams and any other predefined ones.
@@ -122,7 +127,10 @@ export interface OptionalOptions {
      * See Providers documentation for more information.
      */
     config?:
-        | { extendedProfile?: boolean | undefined; getMethod?: string | undefined }
+        | {
+              extendedProfile?: boolean | undefined;
+              getMethod?: string | undefined;
+          }
         | { uri?: string | undefined }
         | undefined;
     /**
@@ -170,7 +178,9 @@ export interface RequiredProviderOptions {
     clientSecret: string;
 }
 
-export interface KnownProviderOptions extends RequiredProviderOptions, OptionalOptions {
+export interface KnownProviderOptions
+    extends RequiredProviderOptions,
+        OptionalOptions {
     provider: Provider;
 }
 
@@ -178,7 +188,10 @@ export interface KnownProviderOptions extends RequiredProviderOptions, OptionalO
  * @param uri the requested resource URI (bell will add the token or authentication header as needed).
  * @param params any URI query parameters (cannot include them in the URI due to signature requirements).
  */
-export type AuthedRequest = (uri: string, params?: { [key: string]: string }) => Promise<object>;
+export type AuthedRequest = (
+    uri: string,
+    params?: { [key: string]: string },
+) => Promise<object>;
 
 export interface Credentials {
     provider: Provider | "custom";
@@ -217,9 +230,11 @@ export interface CustomProtocol {
      * a headers object with additional headers required by the provider
      * (e.g. GitHub required the 'User-Agent' header which is set by default).
      */
-    headers?: {
-        [key: string]: string;
-    } | undefined;
+    headers?:
+        | {
+              [key: string]: string;
+          }
+        | undefined;
 }
 
 /**
@@ -287,7 +302,9 @@ export interface CustomProtocol2 extends CustomProtocol {
     profile: ProfileGetter<Credentials2>;
 }
 
-export interface CustomProviderOptions extends RequiredProviderOptions, OptionalOptions {
+export interface CustomProviderOptions
+    extends RequiredProviderOptions,
+        OptionalOptions {
     provider: CustomProtocol1 | CustomProtocol2;
 }
 

@@ -1,5 +1,9 @@
 import * as React from "react";
-import { Breadcrumbs, BreadcrumbsItem, BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+import {
+    Breadcrumbs,
+    BreadcrumbsItem,
+    BreadcrumbsProvider,
+} from "react-breadcrumbs-dynamic";
 
 class Test1 extends React.Component {
     render() {
@@ -21,9 +25,7 @@ const customProps = {
 class Test2 extends React.Component {
     render() {
         return (
-            <BreadcrumbsProvider
-                shouldBreadcrumbsUpdate={() => {}}
-            >
+            <BreadcrumbsProvider shouldBreadcrumbsUpdate={() => {}}>
                 <div>
                     <Breadcrumbs
                         container={"nav"}

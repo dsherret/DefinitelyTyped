@@ -12,7 +12,8 @@ const localAddress = "1.2.3.4";
     const tunnelingAgent = tunnel.httpOverHttp({
         maxSockets: poolSize, // Defaults to http.Agent.defaultMaxSockets
 
-        proxy: { // Proxy settings
+        proxy: {
+            // Proxy settings
             host: proxyHost, // Defaults to 'localhost'
             port: proxyPort, // Defaults to 80
             localAddress, // Local interface if necessary
@@ -45,7 +46,8 @@ const localAddress = "1.2.3.4";
         key: fs.readFileSync("origin-server-key.pem"),
         cert: fs.readFileSync("origin-server-cert.pem"),
 
-        proxy: { // Proxy settings
+        proxy: {
+            // Proxy settings
             host: proxyHost, // Defaults to 'localhost'
             port: proxyPort, // Defaults to 80
             localAddress, // Local interface if necessary
@@ -71,7 +73,8 @@ const localAddress = "1.2.3.4";
     const tunnelingAgent = tunnel.httpOverHttps({
         maxSockets: poolSize, // Defaults to http.Agent.defaultMaxSockets
 
-        proxy: { // Proxy settings
+        proxy: {
+            // Proxy settings
             host: proxyHost, // Defaults to 'localhost'
             port: proxyPort, // Defaults to 443
             localAddress, // Local interface if necessary
@@ -114,7 +117,8 @@ const localAddress = "1.2.3.4";
         key: fs.readFileSync("origin-server-key.pem"),
         cert: fs.readFileSync("origin-server-cert.pem"),
 
-        proxy: { // Proxy settings
+        proxy: {
+            // Proxy settings
             host: proxyHost, // Defaults to 'localhost'
             port: proxyPort, // Defaults to 443
             localAddress, // Local interface if necessary

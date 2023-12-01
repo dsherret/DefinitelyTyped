@@ -20,6 +20,7 @@ interface OkhsvDefinitionMixin {
     };
 }
 
-declare const modeOkhsv: Omit<typeof modeHsv, keyof OkhsvDefinitionMixin> & OkhsvDefinitionMixin;
+declare const modeOkhsv: Omit<typeof modeHsv, keyof OkhsvDefinitionMixin> &
+    OkhsvDefinitionMixin;
 
 export default modeOkhsv;

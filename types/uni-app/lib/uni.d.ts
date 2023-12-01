@@ -111,7 +111,9 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/request/websocket?id=onsocketmessage](http://uniapp.dcloud.io/api/request/websocket?id=onsocketmessage)
      */
-    onSocketMessage(callback?: (result: OnSocketMessageCallbackResult) => void): void;
+    onSocketMessage(
+        callback?: (result: OnSocketMessageCallbackResult) => void,
+    ): void;
     /**
      * 关闭 WebSocket 连接
      *
@@ -343,13 +345,17 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/network?id=onnetworkstatuschange](http://uniapp.dcloud.io/api/system/network?id=onnetworkstatuschange)
      */
-    onNetworkStatusChange(callback?: (result: OnNetworkStatusChangeSuccess) => void): void;
+    onNetworkStatusChange(
+        callback?: (result: OnNetworkStatusChangeSuccess) => void,
+    ): void;
     /**
      * 监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 uni.stopAccelerometer 停止监听
      *
      * 参考: [http://uniapp.dcloud.io/api/system/accelerometer?id=onaccelerometerchange](http://uniapp.dcloud.io/api/system/accelerometer?id=onaccelerometerchange)
      */
-    onAccelerometerChange(callback?: (result: OnAccelerometerChangeSuccess) => void): void;
+    onAccelerometerChange(
+        callback?: (result: OnAccelerometerChangeSuccess) => void,
+    ): void;
     /**
      * 开始监听加速度数据
      *
@@ -415,7 +421,9 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/key?id=onkeyboardheightchange](http://uniapp.dcloud.io/api/key?id=onkeyboardheightchange)
      */
-    onKeyboardHeightChange(callback?: (result: OnKeyboardHeightChangeResult) => void): void;
+    onKeyboardHeightChange(
+        callback?: (result: OnKeyboardHeightChangeResult) => void,
+    ): void;
     /**
      * 设置屏幕亮度
      *
@@ -505,19 +513,25 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/bluetooth?id=getconnectedbluetoothdevices](http://uniapp.dcloud.io/api/system/bluetooth?id=getconnectedbluetoothdevices)
      */
-    getConnectedBluetoothDevices(options?: GetConnectedBluetoothDevicesOptions): void;
+    getConnectedBluetoothDevices(
+        options?: GetConnectedBluetoothDevicesOptions,
+    ): void;
     /**
      * 监听蓝牙适配器状态变化事件
      *
      * 参考: [http://uniapp.dcloud.io/api/system/bluetooth?id=onbluetoothadapterstatechange](http://uniapp.dcloud.io/api/system/bluetooth?id=onbluetoothadapterstatechange)
      */
-    onBluetoothAdapterStateChange(callback?: (result: OnBluetoothAdapterStateChangeResult) => void): void;
+    onBluetoothAdapterStateChange(
+        callback?: (result: OnBluetoothAdapterStateChangeResult) => void,
+    ): void;
     /**
      * 监听搜索到新设备的事件
      *
      * 参考: [http://uniapp.dcloud.io/api/system/bluetooth?id=onbluetoothdevicefound](http://uniapp.dcloud.io/api/system/bluetooth?id=onbluetoothdevicefound)
      */
-    onBluetoothDeviceFound(callback?: (result: OnBluetoothDeviceFoundResult) => void): void;
+    onBluetoothDeviceFound(
+        callback?: (result: OnBluetoothDeviceFoundResult) => void,
+    ): void;
     /**
      * 初始化蓝牙模块
      *
@@ -529,13 +543,17 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/bluetooth?id=startbluetoothdevicesdiscovery](http://uniapp.dcloud.io/api/system/bluetooth?id=startbluetoothdevicesdiscovery)
      */
-    startBluetoothDevicesDiscovery(options?: StartBluetoothDevicesDiscoveryOptions): void;
+    startBluetoothDevicesDiscovery(
+        options?: StartBluetoothDevicesDiscoveryOptions,
+    ): void;
     /**
      * 停止搜寻附近的蓝牙外围设备
      *
      * 参考: [http://uniapp.dcloud.io/api/system/bluetooth?id=stopbluetoothdevicesdiscovery](http://uniapp.dcloud.io/api/system/bluetooth?id=stopbluetoothdevicesdiscovery)
      */
-    stopBluetoothDevicesDiscovery(options?: StopBluetoothDevicesDiscoveryOptions): void;
+    stopBluetoothDevicesDiscovery(
+        options?: StopBluetoothDevicesDiscoveryOptions,
+    ): void;
     /**
      * 断开与低功耗蓝牙设备的连接
      *
@@ -553,7 +571,9 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=getbledevicecharacteristics](http://uniapp.dcloud.io/api/system/ble?id=getbledevicecharacteristics)
      */
-    getBLEDeviceCharacteristics(options?: GetBLEDeviceCharacteristicsOptions): void;
+    getBLEDeviceCharacteristics(
+        options?: GetBLEDeviceCharacteristicsOptions,
+    ): void;
     /**
      * 获取蓝牙设备的所有服务
      *
@@ -565,31 +585,41 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=notifyblecharacteristicvaluechange](http://uniapp.dcloud.io/api/system/ble?id=notifyblecharacteristicvaluechange)
      */
-    notifyBLECharacteristicValueChange(options?: NotifyBLECharacteristicValueChangeOptions): void;
+    notifyBLECharacteristicValueChange(
+        options?: NotifyBLECharacteristicValueChangeOptions,
+    ): void;
     /**
      * 监听低功耗蓝牙设备的特征值变化事件
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=onblecharacteristicvaluechange](http://uniapp.dcloud.io/api/system/ble?id=onblecharacteristicvaluechange)
      */
-    onBLECharacteristicValueChange(callback?: (result: OnBLECharacteristicValueChangeSuccess) => void): void;
+    onBLECharacteristicValueChange(
+        callback?: (result: OnBLECharacteristicValueChangeSuccess) => void,
+    ): void;
     /**
      * 监听低功耗蓝牙设备连接状态变化事件
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=onbleconnectionstatechange](http://uniapp.dcloud.io/api/system/ble?id=onbleconnectionstatechange)
      */
-    onBLEConnectionStateChange(callback?: (result: OnBLEConnectionStateChangeSuccess) => void): void;
+    onBLEConnectionStateChange(
+        callback?: (result: OnBLEConnectionStateChangeSuccess) => void,
+    ): void;
     /**
      * 读取低功耗蓝牙设备指定特征值的二进制数据值
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=readblecharacteristicvalue](http://uniapp.dcloud.io/api/system/ble?id=readblecharacteristicvalue)
      */
-    readBLECharacteristicValue(options?: ReadBLECharacteristicValueOptions): void;
+    readBLECharacteristicValue(
+        options?: ReadBLECharacteristicValueOptions,
+    ): void;
     /**
      * 向低功耗蓝牙设备指定特征值写入二进制数据
      *
      * 参考: [http://uniapp.dcloud.io/api/system/ble?id=writeblecharacteristicvalue](http://uniapp.dcloud.io/api/system/ble?id=writeblecharacteristicvalue)
      */
-    writeBLECharacteristicValue(options?: WriteBLECharacteristicValueOptions): void;
+    writeBLECharacteristicValue(
+        options?: WriteBLECharacteristicValueOptions,
+    ): void;
     /**
      * 显示消息提示框
      *
@@ -769,13 +799,18 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/ui/intersection-observer?id=createintersectionobserver](http://uniapp.dcloud.io/api/ui/intersection-observer?id=createintersectionobserver)
      */
-    createIntersectionObserver(options?: CreateIntersectionObserverOptions): IntersectionObserver;
+    createIntersectionObserver(
+        options?: CreateIntersectionObserverOptions,
+    ): IntersectionObserver;
     /**
      * 创建 canvas 绘图上下文
      *
      * 参考: [http://uniapp.dcloud.io/api/ui/canvas?id=createcanvascontext](http://uniapp.dcloud.io/api/ui/canvas?id=createcanvascontext)
      */
-    createCanvasContext(canvasId?: string, componentInstance?: any): CanvasContext;
+    createCanvasContext(
+        canvasId?: string,
+        componentInstance?: any,
+    ): CanvasContext;
     /**
      * 把当前画布指定区域的内容导出生成指定大小的图片
      *
@@ -931,7 +966,9 @@ declare class Uni {
      *
      * 参考: [http://uniapp.dcloud.io/api/system/gyroscope?id=ongyroscopechange](http://uniapp.dcloud.io/api/system/gyroscope?id=ongyroscopechange)
      */
-    onGyroscopeChange(callback?: (result: OnGyroscopeChangeSuccess) => void): void;
+    onGyroscopeChange(
+        callback?: (result: OnGyroscopeChangeSuccess) => void,
+    ): void;
     /**
      * 开始监听陀螺仪数据
      *
@@ -1130,7 +1167,16 @@ interface RequestOptions {
      * 默认为 GET
      * 可以是：OPTIONS，GET，HEAD，POST，PUT，DELETE，TRACE，CONNECT
      */
-    method?: "OPTIONS" | "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "TRACE" | "CONNECT" | undefined;
+    method?:
+        | "OPTIONS"
+        | "GET"
+        | "HEAD"
+        | "POST"
+        | "PUT"
+        | "DELETE"
+        | "TRACE"
+        | "CONNECT"
+        | undefined;
     /**
      * 如果设为json，会尝试对返回的数据做一次 JSON.parse
      */
@@ -1285,7 +1331,9 @@ interface DownloadTask {
     /**
      * 监听下载进度变化
      */
-    onProgressUpdate(callback?: (result: OnProgressDownloadResult) => void): void;
+    onProgressUpdate(
+        callback?: (result: OnProgressDownloadResult) => void,
+    ): void;
     /**
      * 中断下载任务
      */
@@ -1342,7 +1390,16 @@ interface ConnectSocketOption {
      * 默认为 GET
      * 可以是：OPTIONS，GET，HEAD，POST，PUT，DELETE，TRACE，CONNECT
      */
-    method?: "OPTIONS" | "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "TRACE" | "CONNECT" | undefined;
+    method?:
+        | "OPTIONS"
+        | "GET"
+        | "HEAD"
+        | "POST"
+        | "PUT"
+        | "DELETE"
+        | "TRACE"
+        | "CONNECT"
+        | undefined;
     /**
      * 子协议数组
      */
@@ -1479,7 +1536,10 @@ interface ChooseImageSuccessCallbackResult {
     /**
      * 图片的本地文件列表，每一项是一个 File 对象
      */
-    tempFiles?: ChooseImageSuccessCallbackResultFile | ChooseImageSuccessCallbackResultFile[] | undefined;
+    tempFiles?:
+        | ChooseImageSuccessCallbackResultFile
+        | ChooseImageSuccessCallbackResultFile[]
+        | undefined;
 }
 
 interface ChooseImageSuccessCallbackResultFile {
@@ -1768,7 +1828,9 @@ interface GetBackgroundAudioPlayerStateOptions {
     /**
      * 接口调用成功的回调函数
      */
-    success?: ((result: GetBackgroundAudioPlayerStateSuccessData) => void) | undefined;
+    success?:
+        | ((result: GetBackgroundAudioPlayerStateSuccessData) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -2275,7 +2337,9 @@ interface CameraContextStartRecordOptions {
     /**
      * 超过30s或页面onHide时会结束录像
      */
-    timeoutCallback?: ((result: CameraContextStopRecordResult) => void) | undefined;
+    timeoutCallback?:
+        | ((result: CameraContextStopRecordResult) => void)
+        | undefined;
     /**
      * 接口调用成功的回调函数
      */
@@ -3400,7 +3464,9 @@ interface StopBluetoothDevicesDiscoveryOptions {
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success?: ((result: StopBluetoothDevicesDiscoverySuccess) => void) | undefined;
+    success?:
+        | ((result: StopBluetoothDevicesDiscoverySuccess) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -3483,7 +3549,9 @@ interface GetConnectedBluetoothDevicesOptions {
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success?: ((result: GetConnectedBluetoothDevicesSuccess) => void) | undefined;
+    success?:
+        | ((result: GetConnectedBluetoothDevicesSuccess) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -3622,7 +3690,9 @@ interface GetBLEDeviceCharacteristicsOptions {
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success?: ((result: GetBLEDeviceCharacteristicsSuccess) => void) | undefined;
+    success?:
+        | ((result: GetBLEDeviceCharacteristicsSuccess) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -3713,7 +3783,9 @@ interface WriteBLECharacteristicValueOptions {
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success?: ((result: StopBluetoothDevicesDiscoverySuccess) => void) | undefined;
+    success?:
+        | ((result: StopBluetoothDevicesDiscoverySuccess) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -3744,7 +3816,9 @@ interface NotifyBLECharacteristicValueChangeOptions {
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success?: ((result: StopBluetoothDevicesDiscoverySuccess) => void) | undefined;
+    success?:
+        | ((result: StopBluetoothDevicesDiscoverySuccess) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */
@@ -4769,7 +4843,15 @@ interface CreateAnimationOptions {
      * - step-start: 动画第一帧就跳至结束状态直到结束
      * - step-end: 动画一直保持开始状态，最后一帧跳到结束状态
      */
-    timingFunction?: "linear" | "ease" | "ease-in" | "ease-in-out" | "ease-out" | "step-start" | "step-end" | undefined;
+    timingFunction?:
+        | "linear"
+        | "ease"
+        | "ease-in"
+        | "ease-in-out"
+        | "ease-out"
+        | "step-start"
+        | "step-end"
+        | undefined;
     /**
      * 动画延迟时间，单位 ms
      */
@@ -4841,7 +4923,10 @@ interface NodesRef {
     /**
      * 获取节点的相关信息，需要获取的字段在fields中指定
      */
-    fields(fields?: NodeField, callback?: (result: NodeInfo) => void): SelectorQuery;
+    fields(
+        fields?: NodeField,
+        callback?: (result: NodeInfo) => void,
+    ): SelectorQuery;
     /**
      * 添加节点的 Context 对象查询请求
      */
@@ -4892,7 +4977,12 @@ interface NodeInfo {
     /**
      * 节点对应的 Context 对象
      */
-    context?: MapContext | CanvasContext | VideoContext | EditorContext | undefined;
+    context?:
+        | MapContext
+        | CanvasContext
+        | VideoContext
+        | EditorContext
+        | undefined;
 }
 
 interface EditorContext {
@@ -5129,7 +5219,10 @@ interface IntersectionObserver {
     /**
      * 指定目标节点并开始监听相交状态变化情况
      */
-    observe(targetSelector?: string, callback?: (result: ObserveResult) => void): void;
+    observe(
+        targetSelector?: string,
+        callback?: (result: ObserveResult) => void,
+    ): void;
     /**
      * 停止监听
      */
@@ -5286,7 +5379,14 @@ interface Animation {
     /**
      * 矩阵变形
      */
-    matrix(a?: number, b?: number, c?: number, d?: number, tx?: number, ty?: number): void;
+    matrix(
+        a?: number,
+        b?: number,
+        c?: number,
+        d?: number,
+        tx?: number,
+        ty?: number,
+    ): void;
     /**
      * 矩阵变形
      */
@@ -5367,11 +5467,21 @@ interface CanvasContext {
     /**
      * 设置阴影样式
      */
-    setShadow(offsetX?: number, offsetY?: number, blur?: number, color?: string): void;
+    setShadow(
+        offsetX?: number,
+        offsetY?: number,
+        blur?: number,
+        color?: string,
+    ): void;
     /**
      * 创建一个线性的渐变颜色
      */
-    createLinearGradient(x0?: number, y0?: number, x1?: number, y1?: number): CanvasGradient;
+    createLinearGradient(
+        x0?: number,
+        y0?: number,
+        x1?: number,
+        y1?: number,
+    ): CanvasGradient;
     /**
      * 创建一个圆形的渐变颜色
      */
@@ -5439,11 +5549,25 @@ interface CanvasContext {
     /**
      * 画一条弧线
      */
-    arc(x?: number, y?: number, r?: number, sAngle?: number, eAngle?: number, counterclockwise?: boolean): void;
+    arc(
+        x?: number,
+        y?: number,
+        r?: number,
+        sAngle?: number,
+        eAngle?: number,
+        counterclockwise?: boolean,
+    ): void;
     /**
      * 创建三次方贝塞尔曲线路径
      */
-    bezierCurveTo(cp1x?: number, cp1y?: number, cp2x?: number, cp2y?: number, x?: number, y?: number): void;
+    bezierCurveTo(
+        cp1x?: number,
+        cp1y?: number,
+        cp2x?: number,
+        cp2y?: number,
+        x?: number,
+        y?: number,
+    ): void;
     /**
      * 创建二次贝塞尔曲线路径
      */
@@ -5479,12 +5603,20 @@ interface CanvasContext {
     /**
      * 设置文字的水平对齐
      */
-    setTextBaseline(textBaseline?: "top" | "bottom" | "middle" | "normal"): void;
+    setTextBaseline(
+        textBaseline?: "top" | "bottom" | "middle" | "normal",
+    ): void;
     /**
      * 绘制图像到画布
      */
     drawImage(imageResource: string, dx: number, dy: number): void;
-    drawImage(imageResource: string, dx: number, dy: number, dWidth: number, dHeigt: number): void;
+    drawImage(
+        imageResource: string,
+        dx: number,
+        dy: number,
+        dWidth: number,
+        dHeigt: number,
+    ): void;
     drawImage(
         imageResource: string,
         sx: number,
@@ -5519,7 +5651,13 @@ interface CanvasContext {
     /**
      * 根据控制点和半径绘制圆弧路径
      */
-    arcTo(x1?: number, y1?: number, x2?: number, y2?: number, radius?: number): void;
+    arcTo(
+        x1?: number,
+        y1?: number,
+        x2?: number,
+        y2?: number,
+        radius?: number,
+    ): void;
     /**
      * 给定的 (x, y) 位置绘制文本描边的方法
      */
@@ -5527,7 +5665,10 @@ interface CanvasContext {
     /**
      * 对指定的图像创建模式的方法，可在指定的方向上重复元图像
      */
-    createPattern(image?: string, repetition?: "repeat" | "repeat-x" | "repeat-y" | "no-repeat"): CanvasPattern | null;
+    createPattern(
+        image?: string,
+        repetition?: "repeat" | "repeat-x" | "repeat-y" | "no-repeat",
+    ): CanvasPattern | null;
     /**
      * 使用矩阵重新设置（覆盖）当前变换的方法
      */
@@ -5549,8 +5690,7 @@ interface CanvasGradient {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface CanvasPattern {
-}
+interface CanvasPattern {}
 
 interface CanvasTextMetrics {
     /**
@@ -6822,7 +6962,9 @@ interface CheckIsSupportSoterAuthenticationOptions {
     /**
      * 接口调用成功的回调函数
      */
-    success?: ((result: CheckIsSupportSoterAuthenticationRes) => void) | undefined;
+    success?:
+        | ((result: CheckIsSupportSoterAuthenticationRes) => void)
+        | undefined;
     /**
      * 接口调用失败的回调函数
      */

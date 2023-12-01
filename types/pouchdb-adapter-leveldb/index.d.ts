@@ -2,13 +2,14 @@
 
 declare namespace PouchDB {
     namespace LevelDbAdapter {
-        interface LevelDbAdapterConfiguration extends Configuration.LocalDatabaseConfiguration {
+        interface LevelDbAdapterConfiguration
+            extends Configuration.LocalDatabaseConfiguration {
             adapter: "leveldb";
         }
     }
 
     interface Static {
-        new<Content extends {}>(
+        new <Content extends {}>(
             name: string | null,
             options: LevelDbAdapter.LevelDbAdapterConfiguration,
         ): Database<Content>;

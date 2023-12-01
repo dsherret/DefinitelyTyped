@@ -8,7 +8,10 @@ declare namespace AceAjax {
 
     export interface EditorCommand {
         name?: string | undefined;
-        bindKey?: string | { mac?: string | undefined; win?: string | undefined } | undefined;
+        bindKey?:
+            | string
+            | { mac?: string | undefined; win?: string | undefined }
+            | undefined;
         exec: (editor: Editor, args?: any) => void;
         readOnly?: boolean | undefined;
     }
@@ -34,7 +37,11 @@ declare namespace AceAjax {
         setDefaultHandler(name: string, callback: Function): void;
         removeDefaultHandler(name: string, callback: Function): void;
         on(name: string, callback: Function, capturing?: boolean): Function;
-        addEventListener(name: string, callback: Function, capturing?: boolean): void;
+        addEventListener(
+            name: string,
+            callback: Function,
+            capturing?: boolean,
+        ): void;
         off(name: string, callback: Function): void;
         removeListener(name: string, callback: Function): void;
         removeEventListener(name: string, callback: Function): void;
@@ -43,10 +50,15 @@ declare namespace AceAjax {
         replay(editor: Editor): void;
         addCommand(command: EditorCommand): void;
         addCommands(commands: EditorCommand[]): void;
-        removeCommand(command: EditorCommand | string, keepCommand?: boolean): void;
+        removeCommand(
+            command: EditorCommand | string,
+            keepCommand?: boolean,
+        ): void;
         removeCommands(command: EditorCommand[]): void;
         bindKey(
-            key: string | { mac?: string | undefined; win?: string | undefined },
+            key:
+                | string
+                | { mac?: string | undefined; win?: string | undefined },
             command: CommandLike,
             position?: number,
         ): void;
@@ -99,16 +111,37 @@ declare namespace AceAjax {
 
     export interface TextMode {
         getTokenizer(): Tokenizer;
-        toggleCommentLines(state: any, session: IEditSession, startRow: number, endRow: number): void;
-        toggleBlockComment(state: any, session: IEditSession, range: Range, cursor: Position): void;
+        toggleCommentLines(
+            state: any,
+            session: IEditSession,
+            startRow: number,
+            endRow: number,
+        ): void;
+        toggleBlockComment(
+            state: any,
+            session: IEditSession,
+            range: Range,
+            cursor: Position,
+        ): void;
         getNextLineIndent(state: any, line: string, tab: string): string;
         checkOutdent(state: any, line: string, input: string): boolean;
         autoOutdent(state: any, doc: Document, row: number): void;
         createWorker(session: IEditSession): any;
         createModeDelegates(mapping: { [key: string]: string }): void;
-        transformAction(state: string, action: string, editor: Editor, session: IEditSession, text: string): any;
+        transformAction(
+            state: string,
+            action: string,
+            editor: Editor,
+            session: IEditSession,
+            text: string,
+        ): any;
         getKeywords(append?: boolean): Array<string | RegExp>;
-        getCompletions(state: string, session: IEditSession, pos: Position, prefix: string): Completion[];
+        getCompletions(
+            state: string,
+            session: IEditSession,
+            pos: Position,
+            prefix: string,
+        ): Completion[];
     }
 
     export interface OptionProvider {
@@ -130,7 +163,9 @@ declare namespace AceAjax {
         /**
          * Get Configuration Options
          */
-        getOptions(optionNames?: string[] | { [key: string]: any }): { [key: string]: any };
+        getOptions(optionNames?: string[] | { [key: string]: any }): {
+            [key: string]: any;
+        };
     }
 
     ////////////////
@@ -226,7 +261,7 @@ declare namespace AceAjax {
          * @param row The starting row position
          * @param column The starting column position
          */
-        new(doc: Document, row: number, column: number): Anchor;
+        new (doc: Document, row: number, column: number): Anchor;
     };
 
     ////////////////////////////////
@@ -288,7 +323,7 @@ declare namespace AceAjax {
          * @param tokenizer The tokenizer to use
          * @param editor The editor to associate with
          */
-        new(tokenizer: Tokenizer, editor: Editor): BackgroundTokenizer;
+        new (tokenizer: Tokenizer, editor: Editor): BackgroundTokenizer;
     };
 
     ////////////////
@@ -446,7 +481,11 @@ declare namespace AceAjax {
          * @param startColumn The column to start removing at
          * @param endColumn The column to stop removing at
          */
-        removeInLine(row: number, startColumn: number, endColumn: number): Position;
+        removeInLine(
+            row: number,
+            startColumn: number,
+            endColumn: number,
+        ): Position;
 
         /**
          * @deprecated Use the removeFullLines method instead.
@@ -515,12 +554,12 @@ declare namespace AceAjax {
          * Creates a new `Document`. If `text` is included, the `Document` contains those strings; otherwise, it's empty.
          * @param text The starting text
          */
-        new(text?: string): Document;
+        new (text?: string): Document;
         /**
          * Creates a new `Document`. If `text` is included, the `Document` contains those strings; otherwise, it's empty.
          * @param text The starting text
          */
-        new(text?: string[]): Document;
+        new (text?: string[]): Document;
     };
 
     ////////////////////////////////
@@ -556,7 +595,11 @@ declare namespace AceAjax {
 
         screenToDocumentColumn(row: number, column: number): void;
 
-        getFoldDisplayLine(foldLine: any, docRow: number, docColumn: number): any;
+        getFoldDisplayLine(
+            foldLine: any,
+            docRow: number,
+            docColumn: number,
+        ): any;
 
         getFoldsInRange(range: Range): any;
 
@@ -569,7 +612,12 @@ declare namespace AceAjax {
          * @param clazz Set the CSS class for the marker
          * @param inFront Set to `true` to establish a front marker
          */
-        highlightLines(startRow: number, endRow: number, clazz: string, inFront: boolean): Range;
+        highlightLines(
+            startRow: number,
+            endRow: number,
+            clazz: string,
+            inFront: boolean,
+        ): Range;
 
         /**
          * Sets the `EditSession` to point to a new `Document`. If a `BackgroundTokenizer` exists, it also points to `doc`.
@@ -736,7 +784,12 @@ declare namespace AceAjax {
          * @param type Identify the type of the marker
          * @param inFront Set to `true` to establish a front marker
          */
-        addMarker(range: Range, clazz: string, type: Function, inFront: boolean): number;
+        addMarker(
+            range: Range,
+            clazz: string,
+            type: Function,
+            inFront: boolean,
+        ): number;
 
         /**
          * Adds a new marker to the given `Range`. If `inFront` is `true`, a front marker is defined, and the `'changeFrontMarker'` event fires; otherwise, the `'changeBackMarker'` event fires.
@@ -745,7 +798,12 @@ declare namespace AceAjax {
          * @param type Identify the type of the marker
          * @param inFront Set to `true` to establish a front marker
          */
-        addMarker(range: Range, clazz: string, type: string, inFront: boolean): number;
+        addMarker(
+            range: Range,
+            clazz: string,
+            type: string,
+            inFront: boolean,
+        ): number;
 
         /**
          * Adds a dynamic marker to the session.
@@ -948,7 +1006,11 @@ declare namespace AceAjax {
          * @param endRow Ending row
          * @param indentString The indent token
          */
-        indentRows(startRow: number, endRow: number, indentString: string): void;
+        indentRows(
+            startRow: number,
+            endRow: number,
+            indentString: string,
+        ): void;
 
         /**
          * Outdents all the rows defined by the `start` and `end` properties of `range`.
@@ -1025,7 +1087,11 @@ declare namespace AceAjax {
          * @param maxScreenColumn
          * @param screenColumn
          */
-        $getStringScreenWidth(str: string, maxScreenColumn: number, screenColumn: number): number[];
+        $getStringScreenWidth(
+            str: string,
+            maxScreenColumn: number,
+            screenColumn: number,
+        ): number[];
 
         /**
          * Returns number of screenrows in a wrapped line.
@@ -1051,7 +1117,10 @@ declare namespace AceAjax {
          * @param docRow
          * @param docColumn
          */
-        getDocumentLastRowColumnPosition(docRow: number, docColumn: number): number;
+        getDocumentLastRowColumnPosition(
+            docRow: number,
+            docColumn: number,
+        ): number;
 
         /**
          * For the given row, this returns the split data.
@@ -1103,11 +1172,11 @@ declare namespace AceAjax {
          * @param text [If `text` is a `Document`, it associates the `EditSession` with it. Otherwise, a new `Document` is created, with the initial text]{: #textParam}
          * @param mode [The inital language mode to use for the document]{: #modeParam}
          */
-        new(text: string, mode?: TextMode): IEditSession;
+        new (text: string, mode?: TextMode): IEditSession;
 
-        new(content: string, mode?: string): IEditSession;
+        new (content: string, mode?: string): IEditSession;
 
-        new(text: string[], mode?: string): IEditSession;
+        new (text: string[], mode?: string): IEditSession;
     };
 
     ////////////////////////////////
@@ -1122,7 +1191,10 @@ declare namespace AceAjax {
     export interface Editor extends OptionProvider {
         on(ev: string, callback: (e: any) => any): void;
 
-        addEventListener(ev: "change", callback: (ev: EditorChangeEvent) => any): void;
+        addEventListener(
+            ev: "change",
+            callback: (ev: EditorChangeEvent) => any,
+        ): void;
         addEventListener(ev: string, callback: Function): void;
 
         off(ev: string, callback: Function): void;
@@ -1626,7 +1698,12 @@ declare namespace AceAjax {
          * @param animate If `true` animates scrolling
          * @param callback Function to be called when the animation has finished
          */
-        scrollToLine(line: number, center: boolean, animate: boolean, callback: Function): void;
+        scrollToLine(
+            line: number,
+            center: boolean,
+            animate: boolean,
+            callback: Function,
+        ): void;
 
         /**
          * Attempts to center the current selection on the screen.
@@ -1808,7 +1885,7 @@ declare namespace AceAjax {
          * @param renderer Associated `VirtualRenderer` that draws everything
          * @param session The `EditSession` to refer to
          */
-        new(renderer: VirtualRenderer, session?: IEditSession): Editor;
+        new (renderer: VirtualRenderer, session?: IEditSession): Editor;
     };
 
     interface EditorChangeEvent {
@@ -1876,7 +1953,7 @@ declare namespace AceAjax {
          * - @param mainClass (String):
          * - @param othersClass (String):
          */
-        new(
+        new (
             session: Document,
             length: number,
             pos: number,
@@ -1885,7 +1962,12 @@ declare namespace AceAjax {
             othersClass: string,
         ): PlaceHolder;
 
-        new(session: IEditSession, length: number, pos: Position, positions: Position[]): PlaceHolder;
+        new (
+            session: IEditSession,
+            length: number,
+            pos: Position,
+            positions: Position[],
+        ): PlaceHolder;
     };
 
     ////////////////
@@ -1906,7 +1988,7 @@ declare namespace AceAjax {
         substractPoint(pos: Position): void;
     }
     export var RangeList: {
-        new(): IRangeList;
+        new (): IRangeList;
     };
 
     ////////////////
@@ -2108,7 +2190,12 @@ declare namespace AceAjax {
      */
     var Range: {
         fromPoints(pos1: Position, pos2: Position): Range;
-        new(startRow: number, startColumn: number, endRow: number, endColumn: number): Range;
+        new (
+            startRow: number,
+            startColumn: number,
+            endRow: number,
+            endColumn: number,
+        ): Range;
     };
 
     ////////////////
@@ -2117,7 +2204,7 @@ declare namespace AceAjax {
 
     export interface RenderLoop {}
     var RenderLoop: {
-        new(): RenderLoop;
+        new (): RenderLoop;
     };
 
     ////////////////
@@ -2162,7 +2249,7 @@ declare namespace AceAjax {
          * Creates a new `ScrollBar`. `parent` is the owner of the scroll bar.
          * @param parent A DOM element
          */
-        new(parent: HTMLElement): ScrollBar;
+        new (parent: HTMLElement): ScrollBar;
     };
 
     ////////////////
@@ -2224,7 +2311,7 @@ declare namespace AceAjax {
          * - `start`: The starting [[Range]] or cursor position to begin the search
          * - `skipCurrent`: Whether or not to include the current line in the search. Default to `false`.
          */
-        new(): Search;
+        new (): Search;
     };
 
     ////////////////
@@ -2477,7 +2564,11 @@ declare namespace AceAjax {
          * @param column The column to move to
          * @param keepDesiredColumn [If `true`, the cursor move does not respect the previous column]{: #preventUpdateBool}
          */
-        moveCursorTo(row: number, column: number, keepDesiredColumn?: boolean): void;
+        moveCursorTo(
+            row: number,
+            column: number,
+            keepDesiredColumn?: boolean,
+        ): void;
 
         /**
          * Moves the cursor to the screen position indicated by row and column. {:preventUpdateBoolDesc}
@@ -2485,14 +2576,18 @@ declare namespace AceAjax {
          * @param column The column to move to
          * @param keepDesiredColumn {:preventUpdateBool}
          */
-        moveCursorToScreen(row: number, column: number, keepDesiredColumn: boolean): void;
+        moveCursorToScreen(
+            row: number,
+            column: number,
+            keepDesiredColumn: boolean,
+        ): void;
     }
     var Selection: {
         /**
          * Creates a new `Selection` object.
          * @param session The session to use
          */
-        new(session: IEditSession): Selection;
+        new (session: IEditSession): Selection;
     };
 
     ////////////////
@@ -2627,7 +2722,11 @@ declare namespace AceAjax {
          * @param initialRow The row to start the tokenizing at
          * @param initialColumn The column to start the tokenizing at
          */
-        new(session: IEditSession, initialRow: number, initialColumn: number): TokenIterator;
+        new (
+            session: IEditSession,
+            initialRow: number,
+            initialColumn: number,
+        ): TokenIterator;
     };
 
     //////////////////
@@ -2651,7 +2750,7 @@ declare namespace AceAjax {
          * @param rules The highlighting rules
          * @param flag Any additional regular expression flags to pass (like "i" for case insensitive)
          */
-        new(rules: any, flag: string): Tokenizer;
+        new (rules: any, flag: string): Tokenizer;
     };
 
     //////////////////
@@ -2722,7 +2821,7 @@ declare namespace AceAjax {
         /**
          * Resets the current undo state and creates a new `UndoManager`.
          */
-        new(): UndoManager;
+        new (): UndoManager;
     };
 
     ////////////////////
@@ -2741,7 +2840,12 @@ declare namespace AceAjax {
 
         $cursorLayer: Layer.Cursor;
 
-        setScrollMargin(top: number, bottom: number, left: number, right: number): void;
+        setScrollMargin(
+            top: number,
+            bottom: number,
+            left: number,
+            right: number,
+        ): void;
 
         screenToTextCoordinates(left: number, top: number): void;
 
@@ -2780,7 +2884,12 @@ declare namespace AceAjax {
          * @param width The width of the editor in pixels
          * @param height The hiehgt of the editor, in pixels
          */
-        onResize(force: boolean, gutterWidth: number, width: number, height: number): void;
+        onResize(
+            force: boolean,
+            gutterWidth: number,
+            width: number,
+            height: number,
+        ): void;
 
         /**
          * Adjusts the wrap limit, which is the number of characters that can fit within the width of the edit area on screen.
@@ -2978,7 +3087,12 @@ declare namespace AceAjax {
          * @param animate If `true` animates scrolling
          * @param callback Function to be called after the animation has finished
          */
-        scrollToLine(line: number, center: boolean, animate: boolean, callback: Function): void;
+        scrollToLine(
+            line: number,
+            center: boolean,
+            animate: boolean,
+            callback: Function,
+        ): void;
 
         /**
          * Scrolls the editor to the y pixel indicated.
@@ -3074,7 +3188,7 @@ declare namespace AceAjax {
          * @param container The root element of the editor
          * @param theme The starting theme
          */
-        new(container: HTMLElement, theme?: string): VirtualRenderer;
+        new (container: HTMLElement, theme?: string): VirtualRenderer;
     };
 
     export interface Completer {
@@ -3112,7 +3226,10 @@ declare namespace AceAjax {
         docHTML?: string | undefined;
     }
 
-    export type CompletionCallback = (error: Error | null, results: Completion[]) => void;
+    export type CompletionCallback = (
+        error: Error | null,
+        results: Completion[],
+    ) => void;
 
     ////////////////////
     /// Layer

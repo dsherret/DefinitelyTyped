@@ -14,10 +14,15 @@ declare namespace Serializer {
     }
 }
 
-declare class Serializer<Q extends BaseQuad = Quad> implements Sink<Stream<Q>, EventEmitter> {
+declare class Serializer<Q extends BaseQuad = Quad>
+    implements Sink<Stream<Q>, EventEmitter>
+{
     constructor(options?: Serializer.SerializerOptions);
 
-    import(stream: Stream<Q>, options?: Serializer.SerializerOptions): EventEmitter;
+    import(
+        stream: Stream<Q>,
+        options?: Serializer.SerializerOptions,
+    ): EventEmitter;
 }
 
 export = Serializer;

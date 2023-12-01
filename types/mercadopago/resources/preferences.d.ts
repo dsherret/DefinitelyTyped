@@ -12,7 +12,9 @@ export type PreferenceUpdateResponse = MercadoPagoResponse<
     ExecOptions<DefaultConfigurationOmitQs, UpdatePreferencePayload>
 >;
 
-export type PreferenceGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type PreferenceGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
 export interface MercadoPagoPreference {
     create(

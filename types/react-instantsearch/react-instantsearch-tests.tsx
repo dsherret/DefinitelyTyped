@@ -8,10 +8,17 @@ import {
     SearchState,
     StateResultsProvided,
 } from "react-instantsearch/connectors";
-import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-instantsearch/dom";
+import {
+    Highlight,
+    Hits,
+    Index,
+    InstantSearch,
+    Menu,
+    SearchBox,
+} from "react-instantsearch/dom";
 
 // https://community.algolia.com/react-instantsearch/guide/Search_state.html
-(() => {
+() => {
     const searchState: SearchState = {
         range: {
             price: {
@@ -43,9 +50,9 @@ import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-in
         query: "ora",
         page: 2,
     };
-});
+};
 
-(() => {
+() => {
     const searchState: SearchState = {
         query: "ora", // shared state between all indices
         page: 2, // shared state between all indices
@@ -62,7 +69,7 @@ import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-in
             },
         },
     };
-});
+};
 
 // https://community.algolia.com/react-instantsearch/guide/Custom_connectors.html
 // TODO
@@ -223,52 +230,49 @@ import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-in
 // };
 
 // https://community.algolia.com/react-instantsearch/guide/Conditional_display.html
-(() => {
-    const Content = connectStateResults(
-        ({ searchState }) =>
-            searchState && searchState.query
-                ? (
-                    <div>
-                        The query {searchState.query} exists
-                    </div>
-                )
-                : <div>No query</div>,
+() => {
+    const Content = connectStateResults(({ searchState }) =>
+        searchState && searchState.query ? (
+            <div>The query {searchState.query} exists</div>
+        ) : (
+            <div>No query</div>
+        ),
     );
-});
+};
 
-(() => {
-    const Content = connectStateResults(
-        ({ searchState, searchResults }) =>
-            searchResults && searchResults.nbHits !== 0
-                ? <div>Some results</div>
-                : (
-                    <div>
-                        No results has been found for {searchState.query}
-                    </div>
-                ),
+() => {
+    const Content = connectStateResults(({ searchState, searchResults }) =>
+        searchResults && searchResults.nbHits !== 0 ? (
+            <div>Some results</div>
+        ) : (
+            <div>No results has been found for {searchState.query}</div>
+        ),
     );
-});
+};
 
-(() => {
-    const Content = connectStateResults(
-        ({ error }) => error ? <div>Some error</div> : <div>No error</div>,
+() => {
+    const Content = connectStateResults(({ error }) =>
+        error ? <div>Some error</div> : <div>No error</div>,
     );
-});
+};
 
-(() => {
-    const Content = connectStateResults(
-        ({ searching }) => searching ? <div>We are searching</div> : <div>Search finished</div>,
+() => {
+    const Content = connectStateResults(({ searching }) =>
+        searching ? <div>We are searching</div> : <div>Search finished</div>,
     );
-});
+};
 
-(() => {
-    const Content = connectStateResults(
-        ({ searchingForFacetValues }) =>
-            searchingForFacetValues ? <div>We are searching</div> : <div>Search finished</div>,
+() => {
+    const Content = connectStateResults(({ searchingForFacetValues }) =>
+        searchingForFacetValues ? (
+            <div>We are searching</div>
+        ) : (
+            <div>Search finished</div>
+        ),
     );
-});
+};
 
-(() => {
+() => {
     const App = () => (
         <InstantSearch indexName="first" searchClient={{}}>
             <SearchBox />
@@ -304,46 +308,52 @@ import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-in
     );
 
     const IndexResults = connectStateResults(
-        ({ searchState, searchResults, children }: React.PropsWithChildren<StateResultsProvided>) =>
-            searchResults && searchResults.nbHits !== 0
-                ? (
-                    children as React.ReactElement
-                )
-                : (
-                    <div>
-                        No results has been found for {searchState.query} and index{" "}
-                        {searchResults ? searchResults.index : ""}
-                    </div>
-                ),
+        ({
+            searchState,
+            searchResults,
+            children,
+        }: React.PropsWithChildren<StateResultsProvided>) =>
+            searchResults && searchResults.nbHits !== 0 ? (
+                (children as React.ReactElement)
+            ) : (
+                <div>
+                    No results has been found for {searchState.query} and index{" "}
+                    {searchResults ? searchResults.index : ""}
+                </div>
+            ),
     );
 
     const AllResults = connectStateResults(
-        ({ allSearchResults, children }: React.PropsWithChildren<StateResultsProvided>) => {
-            const hasResults = allSearchResults
-                && values(allSearchResults).some(results => results.nbHits > 0);
+        ({
+            allSearchResults,
+            children,
+        }: React.PropsWithChildren<StateResultsProvided>) => {
+            const hasResults =
+                allSearchResults &&
+                values(allSearchResults).some((results) => results.nbHits > 0);
 
-            return !hasResults
-                ? (
-                    <div>
-                        <div>No results in category, products or brand</div>
-                        <Index indexName="first" />
-                        <Index indexName="second" />
-                        <Index indexName="third" />
-                    </div>
-                )
-                : (
-                    children as React.ReactElement
-                );
+            return !hasResults ? (
+                <div>
+                    <div>No results in category, products or brand</div>
+                    <Index indexName="first" />
+                    <Index indexName="second" />
+                    <Index indexName="third" />
+                </div>
+            ) : (
+                (children as React.ReactElement)
+            );
         },
     );
-});
+};
 
-(() => {
-    const RefinementListWithSearchBox = connectRefinementList(props => {
-        const values = props.items.map(item => {
-            const label = item._highlightResult
-                ? <Highlight attribute="label" hit={item} />
-                : item.label;
+() => {
+    const RefinementListWithSearchBox = connectRefinementList((props) => {
+        const values = props.items.map((item) => {
+            const label = item._highlightResult ? (
+                <Highlight attribute="label" hit={item} />
+            ) : (
+                item.label
+            );
 
             return (
                 <li key={item.label}>
@@ -356,28 +366,34 @@ import { Highlight, Hits, Index, InstantSearch, Menu, SearchBox } from "react-in
 
         return (
             <div>
-                <input type="search" onInput={e => props.searchForItems((e.target as HTMLInputElement).value)} />
+                <input
+                    type="search"
+                    onInput={(e) =>
+                        props.searchForItems(
+                            (e.target as HTMLInputElement).value,
+                        )
+                    }
+                />
                 <ul>{values}</ul>
             </div>
         );
     });
 
     return <RefinementListWithSearchBox attribute="products" />;
-});
+};
 
 // https://community.algolia.com/react-instantsearch/guide/Virtual_widgets.html
-(() => {
+() => {
     const VirtualMenu = connectMenu(() => null);
-    const Hoodies = () => <VirtualMenu attribute="clothes" defaultRefinement="hoodies" />;
+    const Hoodies = () => (
+        <VirtualMenu attribute="clothes" defaultRefinement="hoodies" />
+    );
 
     const App = () => (
-        <InstantSearch
-            indexName="..."
-            searchClient={{}}
-        >
+        <InstantSearch indexName="..." searchClient={{}}>
             <SearchBox defaultRefinement="hi" />
             <Hoodies />
             <Menu attribute="fruits" defaultRefinement="Orange" />
         </InstantSearch>
     );
-});
+};

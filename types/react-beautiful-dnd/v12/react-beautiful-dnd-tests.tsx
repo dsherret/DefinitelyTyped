@@ -21,7 +21,7 @@ interface Item {
 }
 
 const getItems = (count: number): Item[] => {
-    return Array.from({ length: count }, (v, k) => k).map(k => ({
+    return Array.from({ length: count }, (v, k) => k).map((k) => ({
         id: `item-${k}`,
         content: `item ${k}`,
     }));
@@ -36,7 +36,11 @@ const reorder = (list: any[], startIndex: number, endIndex: number) => {
 };
 
 const getListStyle = (snapshot: DroppableStateSnapshot) => ({
-    background: snapshot.draggingFromThisWith ? "lightpink" : snapshot.isDraggingOver ? "lightblue" : "lightgrey",
+    background: snapshot.draggingFromThisWith
+        ? "lightpink"
+        : snapshot.isDraggingOver
+          ? "lightblue"
+          : "lightgrey",
     width: 250,
 });
 
@@ -79,12 +83,20 @@ class App extends React.Component<{}, AppState> {
             return;
         }
 
-        const items = reorder(this.state.items, result.source.index, result.destination.index);
+        const items = reorder(
+            this.state.items,
+            result.source.index,
+            result.destination.index,
+        );
 
         this.setState({ items });
     }
 
-    renderItem(provided: DraggableProvided, snapshot: DraggableStateSnapshot, rubric: DraggableRubric) {
+    renderItem(
+        provided: DraggableProvided,
+        snapshot: DraggableStateSnapshot,
+        rubric: DraggableRubric,
+    ) {
         const { innerRef, draggableProps, dragHandleProps } = provided;
         const item = this.state.items[rubric.source.index];
         return (
@@ -97,7 +109,9 @@ class App extends React.Component<{}, AppState> {
                         ...draggableProps.style,
                         userSelect: "none",
                         background: snapshot.isDragging ? "lightgreen" : "grey",
-                        boxShadow: snapshot.isClone ? "inset 0px 0px 0px 2px blue" : "none",
+                        boxShadow: snapshot.isClone
+                            ? "inset 0px 0px 0px 2px blue"
+                            : "none",
                     }}
                 >
                     {item.content}
@@ -123,9 +137,18 @@ class App extends React.Component<{}, AppState> {
                     getContainerForClone={() => document.body}
                 >
                     {(provided, snapshot) => (
-                        <div ref={provided.innerRef} style={getListStyle(snapshot)} {...provided.droppableProps}>
+                        <div
+                            ref={provided.innerRef}
+                            style={getListStyle(snapshot)}
+                            {...provided.droppableProps}
+                        >
                             {this.state.items.map((item, index) => (
-                                <Draggable key={item.id} draggableId={item.id} index={index} shouldRespectForcePress>
+                                <Draggable
+                                    key={item.id}
+                                    draggableId={item.id}
+                                    index={index}
+                                    shouldRespectForcePress
+                                >
                                     {this.renderItem}
                                 </Draggable>
                             ))}

@@ -9,7 +9,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Reveal: React.FunctionComponent<PaginationProps>;
-export interface PaginationProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface PaginationProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     isTiny?: boolean | undefined;
     isSmall?: boolean | undefined;
     isLarge?: boolean | undefined;

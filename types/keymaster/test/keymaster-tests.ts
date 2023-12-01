@@ -33,12 +33,16 @@ key.getScope(); // $ExpectType string
 
 key.deleteScope("foo"); // $ExpectType void
 
-key.filter = event => {
+key.filter = (event) => {
     event; // $ExpectType FilterEvent
     const tagName = event.target!.tagName;
-    return !(tagName === "INPUT" || tagName === "SELECT" || tagName === "TEXTAREA");
+    return !(
+        tagName === "INPUT" ||
+        tagName === "SELECT" ||
+        tagName === "TEXTAREA"
+    );
 };
-key.filter = event => {
+key.filter = (event) => {
     const tagName = event.target!.tagName;
     key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? "input" : "other");
     return true;

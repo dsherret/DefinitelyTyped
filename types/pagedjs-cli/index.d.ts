@@ -34,7 +34,10 @@ export interface RenderInput {
 
 export class Printer extends EventEmitter {
     constructor(options: PrinterOptions);
-    pdf: (input: string | RenderInput, options?: PDFOptions) => Promise<Uint8Array>;
+    pdf: (
+        input: string | RenderInput,
+        options?: PDFOptions,
+    ) => Promise<Uint8Array>;
     html: (input: string | RenderInput, stayopen?: boolean) => Promise<string>;
     preview: (input: string | RenderInput) => Promise<Page>;
     close: () => Promise<boolean>;

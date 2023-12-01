@@ -64,10 +64,12 @@ interface TextStep extends TextProperties {
      * Whether the x or y coordinate should be from its calculated position,
      * ie the position if x or y coordinates were not applied
      */
-    fromCurrentPosition?: {
-        x?: boolean | undefined;
-        y?: boolean | undefined;
-    } | undefined;
+    fromCurrentPosition?:
+        | {
+              x?: boolean | undefined;
+              y?: boolean | undefined;
+          }
+        | undefined;
     /**
      * Delay before the animation starts in milliseconds
      */
@@ -87,7 +89,12 @@ interface TextElements {
 }
 
 declare class VaraType {
-    constructor(queryDom: string, fontJSONSource: string, textStep: TextStep[], textGlobals?: TextProperties);
+    constructor(
+        queryDom: string,
+        fontJSONSource: string,
+        textStep: TextStep[],
+        textGlobals?: TextProperties,
+    );
 
     /**
      * Is used to execute a function when the font is loaded and the elements are created.
@@ -121,14 +128,19 @@ declare class VaraType {
      * @param onEnd callback with the id of the drawn text, and an object containing the group DOM object,
      * this is the same object that is returned when calling the get() method.
      */
-    animationEnd(onEnd: (id: string | number, group: TextElements) => void): void;
+    animationEnd(
+        onEnd: (id: string | number, group: TextElements) => void,
+    ): void;
 
     /**
      * Is used to play the animation of every text block, obeying delay and queue.
      */
     playAll(): void;
 
-    createNode(noneName: string, properties: { [k: string]: string }): SVGElement;
+    createNode(
+        noneName: string,
+        properties: { [k: string]: string },
+    ): SVGElement;
 
     getSVGData(): void;
 
@@ -136,7 +148,12 @@ declare class VaraType {
 
     createText(): void;
 
-    animate(element: SVGElement, duration: number, delay: number, final: number): void;
+    animate(
+        element: SVGElement,
+        duration: number,
+        delay: number,
+        final: number,
+    ): void;
 
     getSectionPathLength(id: string | number): number;
 

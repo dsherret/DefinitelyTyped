@@ -12,7 +12,8 @@ export interface ChildProps {
 // Since component can be essentially any DOM element, HTMLElement is as specific as possible (I think).
 // Also have to omit children, since the List expects specific children.
 // This could probably be improved, but it's a start.
-export interface ListProps extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {
+export interface ListProps
+    extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {
     model: Headless.Model;
     children: React.ComponentType<ChildProps>;
     className?: string;

@@ -111,7 +111,10 @@ declare class Grid {
     private protectState_;
     private unprotectState_;
     private protectedEmit_;
-    protected adaptEvent_(name: string, descriptor: AdapterDescriptor | Record<any, any>): void;
+    protected adaptEvent_(
+        name: string,
+        descriptor: AdapterDescriptor | Record<any, any>,
+    ): void;
     onBeforeEdit: Event;
     onAfterEdit: Event;
     onBeforeInsert: Event;
@@ -159,9 +162,9 @@ declare class Grid {
     name: string;
     help:
         | {
-            overview: string;
-            buttons: Record<string, string>;
-        }
+              overview: string;
+              buttons: Record<string, string>;
+          }
         | string;
     private formatEventId;
     refresh(opt_force?: boolean): void;
@@ -251,7 +254,12 @@ declare class Grid {
     private getRecordCount_;
     private alertKeyNotFoundOnce;
     private alertedKeys_;
-    protected tabSyncBufferUpdate(dsSync: any, records: any, i: any, isCurrentRecord: any): void;
+    protected tabSyncBufferUpdate(
+        dsSync: any,
+        records: any,
+        i: any,
+        isCurrentRecord: any,
+    ): void;
     private getHtmlForLinks_;
     private calculateFirstRecNoOfView;
     private syncDataSetStateToBufferState;
@@ -289,7 +297,12 @@ declare class Grid {
     cancel(): void;
     getFieldsAsStringList(): StringList;
     private checkWordAvailability;
-    field(name: string, opt_type?: string, opt_size?: number, ...args: any[]): Field | ViewDefField;
+    field(
+        name: string,
+        opt_type?: string,
+        opt_size?: number,
+        ...args: any[]
+    ): Field | ViewDefField;
     protected locateField(fieldName: string): Field;
     private declareGetterAndSetter_;
     private _addField;
@@ -301,7 +314,13 @@ declare class Grid {
         opt_processKey?: number,
         opt_newTab?: boolean,
     ): Button;
-    action(name: any, target: any, order: any, processKey: any, newTab: any): Button;
+    action(
+        name: any,
+        target: any,
+        order: any,
+        processKey: any,
+        newTab: any,
+    ): Button;
     visibleButtons: Array<Button | string>;
     visibleActions: Array<Button | string>;
     enabledButtons: Array<Button | string>;
@@ -471,6 +490,7 @@ declare let LOCATE_EXACT: number;
 declare let LOCATE_NEXT: number;
 declare function persist(grids: Grid | Grid[]): number;
 declare let MAX_VISIBLE_RECORD_COUNT: number;
-type AdapterDescriptor = import("@nginstack/engine/lib/event/AdapterDescriptor");
+type AdapterDescriptor =
+    import("@nginstack/engine/lib/event/AdapterDescriptor");
 type ViewDefField = import("../classdef/ViewDefField");
 import MasterDeleteAction = require("@nginstack/engine/lib/classdef/MasterDeleteAction.js");

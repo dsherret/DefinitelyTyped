@@ -6,5 +6,9 @@ declare type Props = Omit<TextProps, "style"> & {
     children?: string | undefined;
     style?: Animated.WithAnimatedValue<StyleProp<TextStyle>> | undefined;
 };
-export default function HeaderTitle({ tintColor, style, ...rest }: Props): JSX.Element;
+export default function HeaderTitle({
+    tintColor,
+    style,
+    ...rest
+}: Props): JSX.Element;
 export {};

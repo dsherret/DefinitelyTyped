@@ -15,7 +15,10 @@ export function strongRound(value: number, precision?: number): number;
 /**
  * Parses a SVG document and extracts metadata from its shapes and paths.
  */
-export function extractMetadata(img: ImageObject, callback: ExtractCallback): Metadata;
+export function extractMetadata(
+    img: ImageObject,
+    callback: ExtractCallback,
+): Metadata;
 
 /**
  * Pack a list of images with width and height into a sprite layout.
@@ -28,12 +31,18 @@ export function generateLayout(
 /**
  * Validates metadata that is parsed from an SVG metadata
  */
-export function validateMetadata(img: ImageSize, metadata: Metadata): null | Error;
+export function validateMetadata(
+    img: ImageSize,
+    metadata: Metadata,
+): null | Error;
 
 /**
  * Generate a PNG image with positioned icons on a sprite.
  */
-export function generateImage(layout: ImgLayout, callback: GenerateImageCallback): void;
+export function generateImage(
+    layout: ImgLayout,
+    callback: GenerateImageCallback,
+): void;
 
 export interface ImageObject {
     /** A string of the SVG. */

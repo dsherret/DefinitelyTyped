@@ -120,7 +120,10 @@ declare namespace KamailioKemi {
     export function is_myself_turi(): boolean;
 
     // Write a log message specifying the level value.
-    export function log(level: "dbg" | "info" | "warn" | "crit" | "err", msg: string): void;
+    export function log(
+        level: "dbg" | "info" | "warn" | "crit" | "err",
+        msg: string,
+    ): void;
 
     // Set the SIP message/transaction flag at the index provided by the parameter. The flag parameter has to be a number from 0 to 31.
     export function setflag(flag: Flag): boolean;
@@ -204,15 +207,28 @@ declare namespace KamailioKemi {
         function enum_i_query_suffix(vsuffix: string): number;
         function enum_pv_query(ve164: string): number;
         function enum_pv_query_suffix(ve164: string, vsuffix: string): number;
-        function enum_pv_query_suffix_service(ve164: string, vsuffix: string, vservice: string): number;
+        function enum_pv_query_suffix_service(
+            ve164: string,
+            vsuffix: string,
+            vservice: string,
+        ): number;
         function enum_query(): number;
         function enum_query_suffix(vsuffix: string): number;
-        function enum_query_suffix_service(vsuffix: string, vservice: string): number;
+        function enum_query_suffix_service(
+            vsuffix: string,
+            vservice: string,
+        ): number;
         function i_enum_query(): number;
-        function i_enum_query_suffix_service(vsuffix: string, vservice: string): number;
+        function i_enum_query_suffix_service(
+            vsuffix: string,
+            vservice: string,
+        ): number;
         function is_from_user_enum(): number;
         function is_from_user_enum_suffix(vsuffix: string): number;
-        function is_from_user_enum_suffix_service(vsuffix: string, vservice: string): number;
+        function is_from_user_enum_suffix_service(
+            vsuffix: string,
+            vservice: string,
+        ): number;
     }
 
     // noinspection ReservedWordAsName
@@ -315,7 +331,12 @@ declare namespace KamailioKemi {
         function run(func: string): number;
         function run_p1(func: string, p1: string): number;
         function run_p2(func: string, p1: string, p2: string): number;
-        function run_p3(func: string, p1: string, p2: string, p3: string): number;
+        function run_p3(
+            func: string,
+            p1: string,
+            p2: string,
+            p3: string,
+        ): number;
         function runstring(script: string): number;
     }
 
@@ -325,7 +346,12 @@ declare namespace KamailioKemi {
         function run(func: string): number;
         function run_p1(func: string, p1: string): number;
         function run_p2(func: string, p1: string, p2: string): number;
-        function run_p3(func: string, p1: string, p2: string, p3: string): number;
+        function run_p3(
+            func: string,
+            p1: string,
+            p2: string,
+            p3: string,
+        ): number;
         function runstring(script: string): number;
     }
 
@@ -343,7 +369,12 @@ declare namespace KamailioKemi {
         function run(func: string): number;
         function run_p1(func: string, p1: string): number;
         function run_p2(func: string, p1: string, p2: string): number;
-        function run_p3(func: string, p1: string, p2: string, p3: string): number;
+        function run_p3(
+            func: string,
+            p1: string,
+            p2: string,
+            p3: string,
+        ): number;
     }
 
     export namespace app_sqlang {
@@ -352,7 +383,12 @@ declare namespace KamailioKemi {
         function run(func: string): number;
         function run_p1(func: string, p1: string): number;
         function run_p2(func: string, p1: string, p2: string): number;
-        function run_p3(func: string, p1: string, p2: string, p3: string): number;
+        function run_p3(
+            func: string,
+            p1: string,
+            p2: string,
+            p3: string,
+        ): number;
         function runstring(script: string): number;
     }
 
@@ -365,16 +401,32 @@ declare namespace KamailioKemi {
         function auth_challenge(realm: string, flags: number): number;
         function consume_credentials(): number;
         function has_credentials(srealm: string): number;
-        function pv_auth_check(srealm: string, spasswd: string, vflags: number, vchecks: number): number;
+        function pv_auth_check(
+            srealm: string,
+            spasswd: string,
+            vflags: number,
+            vchecks: number,
+        ): number;
     }
 
     export namespace auth_db {
-        function auth_check(srealm: string, stable: string, iflags: number): number;
-        function is_subscriber(suri: string, stable: string, iflags: number): number;
+        function auth_check(
+            srealm: string,
+            stable: string,
+            iflags: number,
+        ): number;
+        function is_subscriber(
+            suri: string,
+            stable: string,
+            iflags: number,
+        ): number;
     }
 
     export namespace auth_ephemeral {
-        function autheph_authenticate(susername: string, spassword: string): number;
+        function autheph_authenticate(
+            susername: string,
+            spassword: string,
+        ): number;
         function autheph_check(srealm: string): number;
         function autheph_proxy(srealm: string): number;
         function autheph_www(srealm: string): number;
@@ -389,8 +441,18 @@ declare namespace KamailioKemi {
     }
 
     export namespace auth_xkeys {
-        function auth_xkeys_add(shdr: string, skey: string, salg: string, sdata: string): number;
-        function auth_xkeys_check(shdr: string, skey: string, salg: string, sdata: string): number;
+        function auth_xkeys_add(
+            shdr: string,
+            skey: string,
+            salg: string,
+            sdata: string,
+        ): number;
+        function auth_xkeys_check(
+            shdr: string,
+            skey: string,
+            salg: string,
+            sdata: string,
+        ): number;
     }
 
     export namespace benchmark {
@@ -437,7 +499,13 @@ declare namespace KamailioKemi {
     export namespace cnxcc {
         function get_channel_count(sclient: string, pvname: string): number;
         function set_max_channels(sclient: string, max_chan: number): number;
-        function set_max_credit(sclient: string, scredit: string, scps: string, initp: number, finishp: number): number;
+        function set_max_credit(
+            sclient: string,
+            scredit: string,
+            scps: string,
+            initp: number,
+            finishp: number,
+        ): number;
         function set_max_time(sclient: string, max_secs: number): number;
         function terminate_all(sclient: string): number;
         function update_max_time(sclient: string, secs: number): number;
@@ -485,7 +553,11 @@ declare namespace KamailioKemi {
         function dlg_set_timeout(to: number): number;
         function dlg_set_timeout_id(to: number, he: number, hi: number): number;
         function dlg_setflag(val: number): number;
-        function get_profile_size(sprofile: string, svalue: string, spv: string): number;
+        function get_profile_size(
+            sprofile: string,
+            svalue: string,
+            spv: string,
+        ): number;
         function get_profile_size_static(sprofile: string, spv: string): number;
         function is_in_profile(sprofile: string, svalue: string): number;
         function is_in_profile_static(sprofile: string): number;
@@ -504,7 +576,11 @@ declare namespace KamailioKemi {
     export namespace dispatcher {
         function ds_is_from_list(group: number): number;
         function ds_is_from_list_mode(vset: number, vmode: number): number;
-        function ds_is_from_list_uri(vset: number, vmode: number, vuri: string): number;
+        function ds_is_from_list_uri(
+            vset: number,
+            vmode: number,
+            vuri: string,
+        ): number;
         function ds_is_from_lists(): number;
         function ds_list_exists(set: number): number;
         function ds_load_unset(): number;
@@ -516,12 +592,28 @@ declare namespace KamailioKemi {
         function ds_reload(): number;
         function ds_select(set: number, alg: number): number;
         function ds_select_domain(set: number, alg: number): number;
-        function ds_select_domain_limit(set: number, alg: number, limit: number): number;
+        function ds_select_domain_limit(
+            set: number,
+            alg: number,
+            limit: number,
+        ): number;
         function ds_select_dst(set: number, alg: number): number;
-        function ds_select_dst_limit(set: number, alg: number, limit: number): number;
-        function ds_select_limit(set: number, alg: number, limit: number): number;
+        function ds_select_dst_limit(
+            set: number,
+            alg: number,
+            limit: number,
+        ): number;
+        function ds_select_limit(
+            set: number,
+            alg: number,
+            limit: number,
+        ): number;
         function ds_select_routes(srules: string, smode: string): number;
-        function ds_select_routes_limit(srules: string, smode: string, rlimit: number): number;
+        function ds_select_routes_limit(
+            srules: string,
+            smode: string,
+            rlimit: number,
+        ): number;
         function ds_set_domain(): number;
         function ds_set_dst(): number;
     }
@@ -532,11 +624,20 @@ declare namespace KamailioKemi {
     }
 
     export namespace dmq {
-        function bcast_message(peer_str: string, body_str: string, ct_str: string): number;
+        function bcast_message(
+            peer_str: string,
+            body_str: string,
+            ct_str: string,
+        ): number;
         function handle_message(): number;
         function handle_message_rc(returnval: number): number;
         function is_from_node(): number;
-        function send_message(peer_str: string, to_str: string, body_str: string, ct_str: string): number;
+        function send_message(
+            peer_str: string,
+            to_str: string,
+            body_str: string,
+            ct_str: string,
+        ): number;
         function t_replicate(): number;
         function t_replicate_mode(mode: number): number;
     }
@@ -546,7 +647,10 @@ declare namespace KamailioKemi {
         function is_from_local(): number;
         function is_uri_host_local(): number;
         function lookup_domain(_sdomain: string): number;
-        function lookup_domain_prefix(_sdomain: string, _sprefix: string): number;
+        function lookup_domain_prefix(
+            _sdomain: string,
+            _sprefix: string,
+        ): number;
     }
 
     export namespace drouting {
@@ -590,7 +694,11 @@ declare namespace KamailioKemi {
 
     export namespace htable {
         function sht_has_name(sname: string, sop: string, sval: string): number;
-        function sht_has_str_value(sname: string, sop: string, sval: string): number;
+        function sht_has_str_value(
+            sname: string,
+            sop: string,
+            sval: string,
+        ): number;
         function sht_iterator_end(iname: string): number;
         function sht_iterator_next(iname: string): number;
         function sht_iterator_start(iname: string, hname: string): number;
@@ -601,11 +709,33 @@ declare namespace KamailioKemi {
         function sht_rm_name_re(htname: string, rexp: string): number;
         function sht_rm_value(sname: string, sop: string, sval: string): number;
         function sht_rm_value_re(htname: string, rexp: string): number;
-        function sht_setex(htname: string, itname: string, itval: number): number;
-        function sht_seti(htname: string, itname: string, itval: number): number;
-        function sht_sets(htname: string, itname: string, itval: string): number;
-        function sht_setxi(htname: string, itname: string, itval: number, exval: number): number;
-        function sht_setxs(htname: string, itname: string, itval: string, exval: number): number;
+        function sht_setex(
+            htname: string,
+            itname: string,
+            itval: number,
+        ): number;
+        function sht_seti(
+            htname: string,
+            itname: string,
+            itval: number,
+        ): number;
+        function sht_sets(
+            htname: string,
+            itname: string,
+            itval: string,
+        ): number;
+        function sht_setxi(
+            htname: string,
+            itname: string,
+            itval: number,
+            exval: number,
+        ): number;
+        function sht_setxs(
+            htname: string,
+            itname: string,
+            itval: string,
+            exval: number,
+        ): number;
         function sht_unlock(htname: string, skey: string): number;
     }
 
@@ -615,10 +745,21 @@ declare namespace KamailioKemi {
 
     export namespace http_client {
         function curl_connect(con: string, url: string, dpv: string): number;
-        function curl_connect_post(con: string, url: string, ctype: string, data: string, dpv: string): number;
+        function curl_connect_post(
+            con: string,
+            url: string,
+            ctype: string,
+            data: string,
+            dpv: string,
+        ): number;
         function query(url: string, dpv: string): number;
         function query_post(url: string, post: string, dpv: string): number;
-        function query_post_hdrs(url: string, post: string, hdrs: string, dpv: string): number;
+        function query_post_hdrs(
+            url: string,
+            post: string,
+            hdrs: string,
+            dpv: string,
+        ): number;
     }
 
     export namespace imc {
@@ -669,16 +810,28 @@ declare namespace KamailioKemi {
         function from_any_gw(): number;
         function from_any_gw_addr(addr_str: string, transport: number): number;
         function from_gw(lcr_id: number): number;
-        function from_gw_addr(lcr_id: number, addr_str: string, transport: number): number;
+        function from_gw_addr(
+            lcr_id: number,
+            addr_str: string,
+            transport: number,
+        ): number;
         function inactivate_gw(): number;
         function load_gws(lcr_id: number): number;
-        function load_gws_furi(lcr_id: number, ruri_user: string, from_uri: string): number;
+        function load_gws_furi(
+            lcr_id: number,
+            ruri_user: string,
+            from_uri: string,
+        ): number;
         function load_gws_ruser(lcr_id: number, ruri_user: string): number;
         function next_gw(): number;
         function to_any_gw(): number;
         function to_any_gw_addr(addr_str: string, transport: number): number;
         function to_gw(lcr_id: number): number;
-        function to_gw_addr(lcr_id: number, addr_str: string, transport: number): number;
+        function to_gw_addr(
+            lcr_id: number,
+            addr_str: string,
+            transport: number,
+        ): number;
     }
 
     export namespace log_custom {
@@ -749,7 +902,11 @@ declare namespace KamailioKemi {
 
     export namespace nathelper {
         function add_contact_alias(): number;
-        function add_contact_alias_addr(ip_str: string, port_str: string, proto_str: string): number;
+        function add_contact_alias_addr(
+            ip_str: string,
+            port_str: string,
+            proto_str: string,
+        ): number;
         function add_rcv_param(upos: number): number;
         function fix_nated_contact(): number;
         function fix_nated_register(): number;
@@ -762,19 +919,61 @@ declare namespace KamailioKemi {
     }
 
     export namespace ndb_mongodb {
-        function exec(ssrv: string, sdname: string, scname: string, scmd: string, sres: string): number;
-        function exec_simple(ssrv: string, sdname: string, scname: string, scmd: string, sres: string): number;
-        function find(ssrv: string, sdname: string, scname: string, scmd: string, sres: string): number;
-        function find_one(ssrv: string, sdname: string, scname: string, scmd: string, sres: string): number;
+        function exec(
+            ssrv: string,
+            sdname: string,
+            scname: string,
+            scmd: string,
+            sres: string,
+        ): number;
+        function exec_simple(
+            ssrv: string,
+            sdname: string,
+            scname: string,
+            scmd: string,
+            sres: string,
+        ): number;
+        function find(
+            ssrv: string,
+            sdname: string,
+            scname: string,
+            scmd: string,
+            sres: string,
+        ): number;
+        function find_one(
+            ssrv: string,
+            sdname: string,
+            scname: string,
+            scmd: string,
+            sres: string,
+        ): number;
         function free_reply(name: string): number;
         function next_reply(name: string): number;
     }
 
     export namespace ndb_redis {
         function redis_cmd(srv: string, rcmd: string, sres: string): number;
-        function redis_cmd_p1(srv: string, rcmd: string, p1: string, sres: string): number;
-        function redis_cmd_p2(srv: string, rcmd: string, p1: string, p2: string, sres: string): number;
-        function redis_cmd_p3(srv: string, rcmd: string, p1: string, p2: string, p3: string, sres: string): number;
+        function redis_cmd_p1(
+            srv: string,
+            rcmd: string,
+            p1: string,
+            sres: string,
+        ): number;
+        function redis_cmd_p2(
+            srv: string,
+            rcmd: string,
+            p1: string,
+            p2: string,
+            sres: string,
+        ): number;
+        function redis_cmd_p3(
+            srv: string,
+            rcmd: string,
+            p1: string,
+            p2: string,
+            p3: string,
+            sres: string,
+        ): number;
         function redis_free(name: string): number;
     }
 
@@ -782,7 +981,10 @@ declare namespace KamailioKemi {
         function add_path(): number;
         function add_path_received(): number;
         function add_path_received_user(_user: string): number;
-        function add_path_received_user_params(_user: string, _params: string): number;
+        function add_path_received_user_params(
+            _user: string,
+            _params: string,
+        ): number;
         function add_path_user(_user: string): number;
         function add_path_user_params(_user: string, _params: string): number;
     }
@@ -793,7 +995,11 @@ declare namespace KamailioKemi {
     }
 
     export namespace permissions {
-        function allow_address(addr_group: number, ips: string, port: number): number;
+        function allow_address(
+            addr_group: number,
+            ips: string,
+            port: number,
+        ): number;
         function allow_address_group(_addr: string, _port: number): number;
         function allow_source_address(addr_group: number): number;
         function allow_source_address_group(): number;
@@ -809,7 +1015,11 @@ declare namespace KamailioKemi {
 
     export namespace pipelimit {
         function pl_check(pipeid: string): number;
-        function pl_check_limit(pipeid: string, alg: string, limit: number): number;
+        function pl_check_limit(
+            pipeid: string,
+            alg: string,
+            limit: number,
+        ): number;
         function pl_drop(): number;
         function pl_drop_range(rmin: number, rmax: number): number;
         function pl_drop_retry(rafter: number): number;
@@ -825,9 +1035,16 @@ declare namespace KamailioKemi {
         function handle_publish_uri(sender_uri: string): number;
         function handle_subscribe(): number;
         function handle_subscribe_uri(wuri: string): number;
-        function pres_auth_status(watcher_uri: string, presentity_uri: string): number;
+        function pres_auth_status(
+            watcher_uri: string,
+            presentity_uri: string,
+        ): number;
         function pres_has_subscribers(pres_uri: string, wevent: string): number;
-        function pres_refresh_watchers(pres: string, event: string, type: number): number;
+        function pres_refresh_watchers(
+            pres: string,
+            event: string,
+            type: number,
+        ): number;
         function pres_refresh_watchers_file(
             pres: string,
             event: string,
@@ -839,7 +1056,10 @@ declare namespace KamailioKemi {
     }
 
     export namespace presence_xml {
-        function pres_check_activities(pres_uri: string, activity: string): number;
+        function pres_check_activities(
+            pres_uri: string,
+            activity: string,
+        ): number;
         function pres_check_basic(pres_uri: string, status: string): number;
     }
 
@@ -861,7 +1081,12 @@ declare namespace KamailioKemi {
     }
 
     export namespace rabbitmq {
-        function publish(exchange: string, routingkey: string, contenttype: string, messagebody: string): number;
+        function publish(
+            exchange: string,
+            routingkey: string,
+            contenttype: string,
+            messagebody: string,
+        ): number;
         function publish_consume(
             exchange: string,
             routingkey: string,
@@ -882,17 +1107,34 @@ declare namespace KamailioKemi {
         function lookup_branches(_dtable: string): number;
         function lookup_to_dset(table: string, uri: string): number;
         function lookup_uri(table: string, uri: string): number;
-        function reg_fetch_contacts(dtable: string, uri: string, profile: string): number;
+        function reg_fetch_contacts(
+            dtable: string,
+            uri: string,
+            profile: string,
+        ): number;
         function reg_free_contacts(profile: string): number;
         function registered(table: string): number;
-        function registered_action(_dtable: string, _uri: string, _f: number, _aflags: number): number;
-        function registered_flags(_dtable: string, _uri: string, _f: number): number;
+        function registered_action(
+            _dtable: string,
+            _uri: string,
+            _f: number,
+            _aflags: number,
+        ): number;
+        function registered_flags(
+            _dtable: string,
+            _uri: string,
+            _f: number,
+        ): number;
         function registered_uri(_dtable: string, _uri: string): number;
         function save(table: string, flags: number): number;
         function save_uri(table: string, flags: number, uri: string): number;
         function set_q_override(new_q: string): number;
         function unregister(_dtable: string, _uri: string): number;
-        function unregister_ruid(_dtable: string, _uri: string, _ruid: string): number;
+        function unregister_ruid(
+            _dtable: string,
+            _uri: string,
+            _ruid: string,
+        ): number;
     }
 
     export namespace rls {
@@ -965,7 +1207,11 @@ declare namespace KamailioKemi {
     }
 
     export namespace sca {
-        function call_info_update(update_mask: number, uri_to: string, uri_from: string): number;
+        function call_info_update(
+            update_mask: number,
+            uri_to: string,
+            uri_from: string,
+        ): number;
         function call_info_update_default(): number;
         function call_info_update_mask(umask: number): number;
         function call_info_update_turi(umask: number, sto: string): number;
@@ -994,7 +1240,11 @@ declare namespace KamailioKemi {
         function float2int(_val: string, _coof: string): number;
         function report_capture(_table: string): number;
         function report_capture_cid(_table: string, _cid: string): number;
-        function report_capture_data(_table: string, _cid: string, _data: string): number;
+        function report_capture_data(
+            _table: string,
+            _cid: string,
+            _data: string,
+        ): number;
         function sip_capture(): number;
         function sip_capture_forward(puri: string): number;
         function sip_capture_mode(_table: string, _cmdata: string): number;
@@ -1087,17 +1337,37 @@ declare namespace KamailioKemi {
         function tcp_enable_closed_event_cid(i_conid: number): number;
         function tcp_keepalive_disable(): number;
         function tcp_keepalive_disable_cid(i_con: number): number;
-        function tcp_keepalive_enable(i_idle: number, i_cnt: number, i_intvl: number): number;
-        function tcp_keepalive_enable_cid(i_con: number, i_idle: number, i_cnt: number, i_intvl: number): number;
+        function tcp_keepalive_enable(
+            i_idle: number,
+            i_cnt: number,
+            i_intvl: number,
+        ): number;
+        function tcp_keepalive_enable_cid(
+            i_con: number,
+            i_idle: number,
+            i_cnt: number,
+            i_intvl: number,
+        ): number;
         function tcp_set_connection_lifetime(i_time: number): number;
-        function tcp_set_connection_lifetime_cid(i_conid: number, i_time: number): number;
+        function tcp_set_connection_lifetime_cid(
+            i_conid: number,
+            i_time: number,
+        ): number;
     }
 
     export namespace textops {
         function append_body_part(txt: string, ct: string): number;
-        function append_body_part_cd(txt: string, ct: string, cd: string): number;
+        function append_body_part_cd(
+            txt: string,
+            ct: string,
+            cd: string,
+        ): number;
         function append_body_part_hex(txt: string, ct: string): number;
-        function append_body_part_hex_cd(htxt: string, ct: string, cd: string): number;
+        function append_body_part_hex_cd(
+            htxt: string,
+            ct: string,
+            cd: string,
+        ): number;
         function cmp_istr(s1: string, s2: string): number;
         function cmp_str(s1: string, s2: string): number;
         function filter_body(content_type: string): number;
@@ -1106,7 +1376,11 @@ declare namespace KamailioKemi {
         function has_body(): number;
         function has_body_type(ctype: string): number;
         function in_list(subject: string, list: string, vsep: string): number;
-        function in_list_prefix(subject: string, list: string, vsep: string): number;
+        function in_list_prefix(
+            subject: string,
+            list: string,
+            vsep: string,
+        ): number;
         function is_audio_on_hold(): number;
         function is_present_hf(hname: string): number;
         function is_present_hf_re(ematch: string): number;
@@ -1119,9 +1393,17 @@ declare namespace KamailioKemi {
         function replace_body(sre: string, sval: string): number;
         function replace_body_all(sre: string, sval: string): number;
         function replace_body_atonce(sre: string, sval: string): number;
-        function replace_body_str(mkey: string, rval: string, rmode: string): number;
+        function replace_body_str(
+            mkey: string,
+            rval: string,
+            rmode: string,
+        ): number;
         function replace_hdrs(sre: string, sval: string): number;
-        function replace_hdrs_str(mkey: string, rval: string, rmode: string): number;
+        function replace_hdrs_str(
+            mkey: string,
+            rval: string,
+            rmode: string,
+        ): number;
         function replace_str(mkey: string, rval: string, rmode: string): number;
         function search(sre: string): number;
         function search_append(ematch: string, val: string): number;
@@ -1129,9 +1411,16 @@ declare namespace KamailioKemi {
         function search_body(sre: string): number;
         function search_hf(hname: string, sre: string, flags: string): number;
         function set_body(nb: string, nc: string): number;
-        function set_body_multipart(nbody: string, ctype: string, boundary: string): number;
+        function set_body_multipart(
+            nbody: string,
+            ctype: string,
+            boundary: string,
+        ): number;
         function set_body_multipart_boundary(boundary: string): number;
-        function set_body_multipart_content(nbody: string, ctype: string): number;
+        function set_body_multipart_content(
+            nbody: string,
+            ctype: string,
+        ): number;
         function set_body_multipart_mode(): number;
         function set_reply_body(nb: string, nc: string): number;
         function starts_with(s1: string, s2: string): number;
@@ -1227,14 +1516,30 @@ declare namespace KamailioKemi {
         function match(rv: string): number;
         function match_timestamp(rv: string, ti: number): number;
         function time_period_match(period: string): number;
-        function time_period_match_timestamp(period: string, ti: number): number;
+        function time_period_match_timestamp(
+            period: string,
+            ti: number,
+        ): number;
     }
 
     export namespace tmx {
         function t_cancel_branches(mode: string): number;
-        function t_cancel_callid(callid_s: string, cseq_s: string, fl: number): number;
-        function t_cancel_callid_reason(callid_s: string, cseq_s: string, fl: number, rcode: number): number;
-        function t_continue(tindex: number, tlabel: number, cbname: string): number;
+        function t_cancel_callid(
+            callid_s: string,
+            cseq_s: string,
+            fl: number,
+        ): number;
+        function t_cancel_callid_reason(
+            callid_s: string,
+            cseq_s: string,
+            fl: number,
+            rcode: number,
+        ): number;
+        function t_continue(
+            tindex: number,
+            tlabel: number,
+            cbname: string,
+        ): number;
         function t_flush_flags(): number;
         function t_flush_xflags(): number;
         function t_is_branch_route(): number;
@@ -1242,15 +1547,29 @@ declare namespace KamailioKemi {
         function t_is_reply_route(): number;
         function t_is_request_route(): number;
         function t_precheck_trans(): number;
-        function t_reply_callid(callid_s: string, cseq_s: string, code: number, status_s: string): number;
+        function t_reply_callid(
+            callid_s: string,
+            cseq_s: string,
+            code: number,
+            status_s: string,
+        ): number;
         function t_reuse_branch(): number;
         function t_suspend(): number;
     }
 
     export namespace tsilo {
         function ts_append(_table: string, _ruri: string): number;
-        function ts_append_to(tindex: number, tlabel: number, _table: string): number;
-        function ts_append_to_uri(tindex: number, tlabel: number, _table: string, _uri: string): number;
+        function ts_append_to(
+            tindex: number,
+            tlabel: number,
+            _table: string,
+        ): number;
+        function ts_append_to_uri(
+            tindex: number,
+            tlabel: number,
+            _table: string,
+            _uri: string,
+        ): number;
         function ts_store(): number;
         function ts_store_uri(puri: string): number;
     }
@@ -1274,7 +1593,11 @@ declare namespace KamailioKemi {
 
     export namespace uac_redirect {
         function get_redirects(max_c: number, max_b: number): number;
-        function get_redirects_acc(max_c: number, max_b: number, reason: string): number;
+        function get_redirects_acc(
+            max_c: number,
+            max_b: number,
+            reason: string,
+        ): number;
         function get_redirects_all(): number;
     }
 
@@ -1282,26 +1605,55 @@ declare namespace KamailioKemi {
         function check_from(): number;
         function check_to(): number;
         function check_uri(suri: string): number;
-        function check_uri_realm(suri: string, susername: string, srealm: string): number;
+        function check_uri_realm(
+            suri: string,
+            susername: string,
+            srealm: string,
+        ): number;
         function does_uri_exist(): number;
     }
 
     export namespace userblacklist {
         function check_user_blacklist(suser: string, sdomain: string): number;
-        function check_user_blacklist_number(suser: string, sdomain: string, snumber: string): number;
-        function check_user_blacklist_table(suser: string, sdomain: string, snumber: string, stable: string): number;
+        function check_user_blacklist_number(
+            suser: string,
+            sdomain: string,
+            snumber: string,
+        ): number;
+        function check_user_blacklist_table(
+            suser: string,
+            sdomain: string,
+            snumber: string,
+            stable: string,
+        ): number;
         function check_user_whitelist(suser: string, sdomain: string): number;
-        function check_user_whitelist_number(suser: string, sdomain: string, snumber: string): number;
-        function check_user_whitelist_table(suser: string, sdomain: string, snumber: string, stable: string): number;
+        function check_user_whitelist_number(
+            suser: string,
+            sdomain: string,
+            snumber: string,
+        ): number;
+        function check_user_whitelist_table(
+            suser: string,
+            sdomain: string,
+            snumber: string,
+            stable: string,
+        ): number;
     }
 
     export namespace utils {
-        function xcap_auth_status(watcher_uri: string, presentity_uri: string): number;
+        function xcap_auth_status(
+            watcher_uri: string,
+            presentity_uri: string,
+        ): number;
     }
 
     export namespace websocket {
         function close(): number;
-        function close_conid(status: number, reason: string, con: number): number;
+        function close_conid(
+            status: number,
+            reason: string,
+            con: number,
+        ): number;
         function close_reason(status: number, reason: string): number;
         function handle_handshake(): number;
     }
@@ -1313,7 +1665,12 @@ declare namespace KamailioKemi {
     }
 
     export namespace xhttp {
-        function xhttp_reply(code: number, reason: string, ctype: string, body: string): number;
+        function xhttp_reply(
+            code: number,
+            reason: string,
+            ctype: string,
+            body: string,
+        ): number;
     }
 
     export namespace xhttp_pi {

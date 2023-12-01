@@ -21,9 +21,16 @@ declare namespace MicrosoftJQueryUnobtrusiveValidation {
             maxAttribute?: string,
         ): Adapters;
         addSingleVal(adapterName: string, ruleName: string): Adapters;
-        addSingleVal(adapterName: string, attribute: string, ruleName: string): Adapters;
+        addSingleVal(
+            adapterName: string,
+            attribute: string,
+            ruleName: string,
+        ): Adapters;
         addBool(adapterName: string, ruleName?: string): Adapters;
-        addMethod(adapterName: string, fn: (value: string, element: Element, params: any) => any): Adapters;
+        addMethod(
+            adapterName: string,
+            fn: (value: string, element: Element, params: any) => any,
+        ): Adapters;
     }
 
     interface Validator {

@@ -25,6 +25,9 @@ declare namespace cobe {
     }
 }
 
-declare function cobe(canvas: HTMLCanvasElement, opts: cobe.Options): Phenomenon;
+declare function cobe(
+    canvas: HTMLCanvasElement,
+    opts: cobe.Options,
+): Phenomenon;
 
 export = cobe;

@@ -12,7 +12,10 @@ declare namespace plugin {
 }
 
 declare const plugin: {
-    (options: plugin.PluginOptions): { handler: PluginCreator; config?: Config };
+    (options: plugin.PluginOptions): {
+        handler: PluginCreator;
+        config?: Config;
+    };
     __isOptionsFunction: true;
 };
 

@@ -3,8 +3,13 @@ declare namespace webapis {
 }
 
 interface SAManager {
-    requestSAAgent(success: (agents: SAAgent[]) => void, error?: (err: Error) => void): void;
-    setDeviceStatusListener(callback: (type: SATransport, status: "DETACHED" | "ATTACHED") => void): void;
+    requestSAAgent(
+        success: (agents: SAAgent[]) => void,
+        error?: (err: Error) => void,
+    ): void;
+    setDeviceStatusListener(
+        callback: (type: SATransport, status: "DETACHED" | "ATTACHED") => void,
+    ): void;
 }
 
 interface SAAgent {
@@ -17,11 +22,16 @@ interface SAAgent {
     setServiceConnectionListener(callback: {
         onrequest?: ((peerAgent: SAPeerAgent) => void) | undefined;
         onconnect?: ((socket: SASocket) => void) | undefined;
-        onerror?: ((errorCode: string, peerAgent: SAPeerAgent) => void) | undefined;
+        onerror?:
+            | ((errorCode: string, peerAgent: SAPeerAgent) => void)
+            | undefined;
     }): void;
     authenticatePeerAgent(
         peerAgent: SAPeerAgent,
-        success: (peerAgent: SAPeerAgent, authToken: SAAuthenticationToken) => void,
+        success: (
+            peerAgent: SAPeerAgent,
+            authToken: SAAuthenticationToken,
+        ) => void,
         error?: (e: Error) => void,
     ): void;
     acceptServiceConnectionRequest(peerAgent: SAPeerAgent): void;
@@ -29,7 +39,12 @@ interface SAAgent {
     findPeerAgents(): void;
     setPeerAgentFindListener(callback: {
         onpeeragentfound: (peerAgent: SAPeerAgent) => void;
-        onpeeragentupdated?: ((peerAgent: SAPeerAgent, status: "AVAILABLE" | "UNAVAILABLE") => void) | undefined;
+        onpeeragentupdated?:
+            | ((
+                  peerAgent: SAPeerAgent,
+                  status: "AVAILABLE" | "UNAVAILABLE",
+              ) => void)
+            | undefined;
         onerror?: ((errorCode: string) => void) | undefined;
     }): void;
     getSAFileTransfer(): SAFileTransfer;
@@ -61,8 +76,12 @@ interface SASocket {
     isConnected(): boolean;
     sendData(channelId: number, data: string): void;
     sendSecureData(channelId: number, data: string): void;
-    setDataReceiveListener(dataReceiveCallback: (channelId: number, data: string) => void): void;
-    setSocketStatusListener(socketStatusCallback: (reason: string) => void): void;
+    setDataReceiveListener(
+        dataReceiveCallback: (channelId: number, data: string) => void,
+    ): void;
+    setSocketStatusListener(
+        socketStatusCallback: (reason: string) => void,
+    ): void;
 }
 
 interface SAAuthenticationToken {
@@ -96,7 +115,13 @@ interface SAMessage {
         data: string,
         callback: {
             onsent?: ((peerAgent: SAPeerAgent, id: string) => void) | undefined;
-            onerror?: ((errorCode: string, peerAgent: SAPeerAgent, id: string) => void) | undefined;
+            onerror?:
+                | ((
+                      errorCode: string,
+                      peerAgent: SAPeerAgent,
+                      id: string,
+                  ) => void)
+                | undefined;
         },
     ): void;
     sendSecureData(
@@ -104,10 +129,18 @@ interface SAMessage {
         data: string,
         callback: {
             onsent?: ((peerAgent: SAPeerAgent, id: string) => void) | undefined;
-            onerror?: ((errorCode: string, peerAgent: SAPeerAgent, id: string) => void) | undefined;
+            onerror?:
+                | ((
+                      errorCode: string,
+                      peerAgent: SAPeerAgent,
+                      id: string,
+                  ) => void)
+                | undefined;
         },
     ): void;
-    setMessageReceiveListener(receiveDataCallback: (peerAgent: SAPeerAgent, data: string) => void): void;
+    setMessageReceiveListener(
+        receiveDataCallback: (peerAgent: SAPeerAgent, data: string) => void,
+    ): void;
 }
 
 declare enum SATransport {

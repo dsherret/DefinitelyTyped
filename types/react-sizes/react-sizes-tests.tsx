@@ -13,7 +13,11 @@ const mapSizesToProps = ({ width, height }: Sizes): TestProps => ({
     height,
 });
 
-const TestComponent: React.ComponentType<TestProps> = ({ foo, width, height }) => {
+const TestComponent: React.ComponentType<TestProps> = ({
+    foo,
+    width,
+    height,
+}) => {
     foo; // $ExpectType string
     width; // $ExpectType number
     height; // $ExpectType number

@@ -14,9 +14,9 @@
     function checkAuth() {
         gapi.auth.authorize(
             {
-                "client_id": CLIENT_ID,
-                "scope": SCOPES.join(" "),
-                "immediate": true,
+                client_id: CLIENT_ID,
+                scope: SCOPES.join(" "),
+                immediate: true,
             },
             handleAuthResult,
         );
@@ -76,38 +76,42 @@
      * Print files.
      */
     function listFiles() {
-        gapi.client.drive.files.list({
-            "maxResults": 10,
-        }).then(function(response: any) {
-            appendPre("Files:");
-            var files = response.result.items;
-            if (files && files.length > 0) {
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    appendPre(file.title + " (" + file.id + ")");
+        gapi.client.drive.files
+            .list({
+                maxResults: 10,
+            })
+            .then(function (response: any) {
+                appendPre("Files:");
+                var files = response.result.items;
+                if (files && files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+                        appendPre(file.title + " (" + file.id + ")");
+                    }
+                } else {
+                    appendPre("No files found.");
                 }
-            } else {
-                appendPre("No files found.");
-            }
-        });
+            });
     }
 
     /**
      * Get file.
      */
     function getFile() {
-        gapi.client.drive.files.get({
-            fileId: "1",
-            supportsAllDrives: true,
-            fields: "embedLink, title, mimeType, description",
-        }).then(function(response: any) {
-            appendPre("File:");
-            var file = response.result;
-            if (file) {
-                appendPre(file.title + " (" + file.id + ")");
-            } else {
-                appendPre("No files found.");
-            }
-        });
+        gapi.client.drive.files
+            .get({
+                fileId: "1",
+                supportsAllDrives: true,
+                fields: "embedLink, title, mimeType, description",
+            })
+            .then(function (response: any) {
+                appendPre("File:");
+                var file = response.result;
+                if (file) {
+                    appendPre(file.title + " (" + file.id + ")");
+                } else {
+                    appendPre("No files found.");
+                }
+            });
     }
 }

@@ -194,14 +194,22 @@ declare namespace Six {
                 now(): any;
                 start(key: string): void;
                 end(key: string): number;
-                serialize(between?: string, end?: string, filter?: filter): string;
+                serialize(
+                    between?: string,
+                    end?: string,
+                    filter?: filter,
+                ): string;
             }
 
             type filter = (key: string) => boolean;
         }
 
         namespace view {
-            type render = (name: string, runtimeConf?: runtimeConf | null, data?: object) => Promise<any>;
+            type render = (
+                name: string,
+                runtimeConf?: runtimeConf | null,
+                data?: object,
+            ) => Promise<any>;
 
             interface runtimeConf {
                 codeKey: string;

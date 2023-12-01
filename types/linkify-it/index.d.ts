@@ -3,14 +3,18 @@ declare const LinkifyIt: {
         schemas?: LinkifyIt.SchemaRules | LinkifyIt.Options,
         options?: LinkifyIt.Options,
     ): LinkifyIt.LinkifyIt;
-    new(
+    new (
         schemas?: LinkifyIt.SchemaRules | LinkifyIt.Options,
         options?: LinkifyIt.Options,
     ): LinkifyIt.LinkifyIt;
 };
 
 declare namespace LinkifyIt {
-    type Validate = (text: string, pos: number, self: LinkifyIt) => number | boolean;
+    type Validate = (
+        text: string,
+        pos: number,
+        self: LinkifyIt,
+    ) => number | boolean;
 
     interface FullRule {
         validate: string | RegExp | Validate;

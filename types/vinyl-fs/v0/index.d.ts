@@ -3,7 +3,10 @@
 declare global {
     namespace NodeJS {
         interface WritableStream {
-            write(buffer: any, /* Vinyl.File */ cb?: (err?: Error | null) => void): boolean;
+            write(
+                buffer: any,
+                /* Vinyl.File */ cb?: (err?: Error | null) => void,
+            ): boolean;
         }
     }
 }
@@ -144,7 +147,10 @@ export interface DestOptions {
  * fs.src(['!b*.js', '*.js']) would not exclude any files, but this would: fs.src(['*.js', '!b*.js'])
  * @param opt Options Vinyl source options, changes the way the files are read, found, or stored in the vinyl stream
  */
-export function src(globs: string | string[], opt?: SrcOptions): NodeJS.ReadWriteStream;
+export function src(
+    globs: string | string[],
+    opt?: SrcOptions,
+): NodeJS.ReadWriteStream;
 
 /**
  * This is just a glob-watcher
@@ -196,4 +202,6 @@ export function dest(folder: string, opt?: DestOptions): NodeJS.ReadWriteStream;
  * contents will have it's position reset to the beginning if it is a stream
  * @param getFolderPath function that takes in a file and returns a folder path
  */
-export function dest(getFolderPath: (file: File) => string): NodeJS.ReadWriteStream;
+export function dest(
+    getFolderPath: (file: File) => string,
+): NodeJS.ReadWriteStream;

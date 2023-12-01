@@ -105,5 +105,11 @@ httpAssert.notStrictEqual(3, "3", status, message, options);
 httpAssert.deepEqual({ foo: "foo" }, { bar: "bar" });
 httpAssert.deepEqual({ foo: "foo" }, { bar: "bar" }, status, message, options);
 httpAssert.notDeepEqual({ foo: "foo" }, { bar: "bar" });
-httpAssert.notDeepEqual({ foo: "foo" }, { bar: "bar" }, status, message, options);
+httpAssert.notDeepEqual(
+    { foo: "foo" },
+    { bar: "bar" },
+    status,
+    message,
+    options,
+);
 httpAssert(false, status, message, options);

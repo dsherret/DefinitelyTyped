@@ -1,5 +1,9 @@
 export = SumFieldAggregator;
-declare function SumFieldAggregator(ratioBaseFieldName: any, fieldName: any, dataSet: any): void;
+declare function SumFieldAggregator(
+    ratioBaseFieldName: any,
+    fieldName: any,
+    dataSet: any,
+): void;
 declare class SumFieldAggregator {
     constructor(ratioBaseFieldName: any, fieldName: any, dataSet: any);
     ratioBaseFieldName: any;

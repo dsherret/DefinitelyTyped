@@ -28,6 +28,7 @@ interface OklabDefinitionMixin {
     serialize: "--oklab";
 }
 
-declare const definition: Omit<typeof lab, keyof OklabDefinitionMixin> & OklabDefinitionMixin;
+declare const definition: Omit<typeof lab, keyof OklabDefinitionMixin> &
+    OklabDefinitionMixin;
 
 export default definition;

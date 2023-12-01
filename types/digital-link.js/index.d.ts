@@ -56,7 +56,11 @@ export const Utils: {
      *                                                 key-value pairs.
      * @returns The equivalent compressed URI.
      */
-    compressWebUri(uri: string, useOptimisations?: boolean, compressOtherKeyValuePairs?: boolean): string;
+    compressWebUri(
+        uri: string,
+        useOptimisations?: boolean,
+        compressOtherKeyValuePairs?: boolean,
+    ): string;
 
     /**
      * Use GS1DigitalLinkToolkit to decompress a URI string.

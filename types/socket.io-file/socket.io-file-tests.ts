@@ -18,12 +18,17 @@ app.get("/app.js", (req, res, next) => {
 });
 
 app.get("/socket.io.js", (req, res, next) => {
-    res.sendFile(__dirname + "/node_modules/socket.io-client/dist/socket.io.js");
+    res.sendFile(
+        __dirname + "/node_modules/socket.io-client/dist/socket.io.js",
+    );
     return;
 });
 
 app.get("/socket.io-file-client.js", (req, res, next) => {
-    res.sendFile(__dirname + "/node_modules/socket.io-file-client/socket.io-file-client.js");
+    res.sendFile(
+        __dirname +
+            "/node_modules/socket.io-file-client/socket.io-file-client.js",
+    );
     return;
 });
 

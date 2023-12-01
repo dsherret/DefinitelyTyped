@@ -86,7 +86,10 @@ declare class NodeClam {
     constructor();
 
     init(options: NodeClam.Options): Promise<this>;
-    init(options: NodeClam.Options, cb: (err: Error | null, instance: this) => void): void;
+    init(
+        options: NodeClam.Options,
+        cb: (err: Error | null, instance: this) => void,
+    ): void;
 
     /**
      * Allows one to create a new instances of clamscan with new options.
@@ -94,7 +97,10 @@ declare class NodeClam {
      * @see {@link https://github.com/kylefarris/clamscan/blob/master/index.js#L358}
      */
     reset(options?: NodeClam.Options): Promise<NodeClam>;
-    reset(options?: NodeClam.Options, cb?: (err: NodeClam.NodeClamError | null, clam: NodeClam) => void): void;
+    reset(
+        options?: NodeClam.Options,
+        cb?: (err: NodeClam.NodeClamError | null, clam: NodeClam) => void,
+    ): void;
 
     /**
      * This method allows you to determine the version of ClamAV you are
@@ -104,7 +110,9 @@ declare class NodeClam {
      * @see {@link https://github.com/kylefarris/clamscan#getversioncallback}
      */
     getVersion(): Promise<string>;
-    getVersion(cb: (err: NodeClam.NodeClamError | null, version: string) => void): void;
+    getVersion(
+        cb: (err: NodeClam.NodeClamError | null, version: string) => void,
+    ): void;
 
     /**
      * This method allows you to scan a single file. It supports a callback and
@@ -121,7 +129,12 @@ declare class NodeClam {
     >;
     isInfected(
         file?: string,
-        cb?: (err: NodeClam.NodeClamError | null, file: string, isInfected: boolean | null, viruses: string[]) => void,
+        cb?: (
+            err: NodeClam.NodeClamError | null,
+            file: string,
+            isInfected: boolean | null,
+            viruses: string[],
+        ) => void,
     ): void;
 
     /**
@@ -142,7 +155,12 @@ declare class NodeClam {
     >;
     scanFile(
         file?: string,
-        cb?: (err: NodeClam.NodeClamError | null, file: string, isInfected: boolean, viruses: string[]) => void,
+        cb?: (
+            err: NodeClam.NodeClamError | null,
+            file: string,
+            isInfected: boolean,
+            viruses: string[],
+        ) => void,
     ): void;
 
     /**
@@ -170,7 +188,12 @@ declare class NodeClam {
             badFiles: string[],
             viruses: string[],
         ) => void,
-        fileCb?: (err: NodeClam.NodeClamError | null, file: string, isInfected: boolean, viruses: string[]) => void,
+        fileCb?: (
+            err: NodeClam.NodeClamError | null,
+            file: string,
+            isInfected: boolean,
+            viruses: string[],
+        ) => void,
     ): void;
 
     /**
@@ -197,7 +220,12 @@ declare class NodeClam {
             badFiles: string[],
             viruses: string[],
         ) => void,
-        fileCb?: (err: NodeClam.NodeClamError | null, file: string, isInfected: boolean, viruses: string[]) => void,
+        fileCb?: (
+            err: NodeClam.NodeClamError | null,
+            file: string,
+            isInfected: boolean,
+            viruses: string[],
+        ) => void,
     ): void;
 
     /**
@@ -214,7 +242,10 @@ declare class NodeClam {
             isInfected: boolean;
         }>
     >;
-    scanStream(stream: Readable, cb?: (err: NodeClam.NodeClamError | null, isInfected: boolean) => void): void;
+    scanStream(
+        stream: Readable,
+        cb?: (err: NodeClam.NodeClamError | null, isInfected: boolean) => void,
+    ): void;
 }
 
 export = NodeClam;

@@ -827,7 +827,12 @@ declare namespace OpenDSSengine {
         readonly PopAction: number;
 
         /** Push a control action onto the DSS control queue by time, action code, and device handle (user defined). Returns Control Queue handle. */
-        Push(Hour: number, Seconds: number, ActionCode: number, DeviceHandle: number): number;
+        Push(
+            Hour: number,
+            Seconds: number,
+            ActionCode: number,
+            DeviceHandle: number,
+        ): number;
 
         /** Variant array of strings containing the entire queue in CSV format */
         readonly Queue: any;

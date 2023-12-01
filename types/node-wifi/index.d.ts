@@ -35,7 +35,9 @@ export function init(options: InitConfig): void;
  * Scan networks
  */
 export function scan(): Promise<WiFiNetwork[]>;
-export function scan(cb: (error: Error | null, networks: WiFiNetwork[]) => void): void;
+export function scan(
+    cb: (error: Error | null, networks: WiFiNetwork[]) => void,
+): void;
 
 /**
  * Connect to a network
@@ -56,11 +58,16 @@ export function disconnect(cb: (error: Error | null) => void): void;
  * List the current wifi connections
  */
 export function getCurrentConnections(): Promise<WiFiNetwork[]>;
-export function getCurrentConnections(cb: (error: Error | null, currentConnections: WiFiNetwork[]) => void): void;
+export function getCurrentConnections(
+    cb: (error: Error | null, currentConnections: WiFiNetwork[]) => void,
+): void;
 
 /**
  * Delete a saved network
  * not available on all os for now
  */
-export function deleteConnection(opts: DeletionOpts, cb: (error: Error | null) => void): void;
+export function deleteConnection(
+    opts: DeletionOpts,
+    cb: (error: Error | null) => void,
+): void;
 export function deleteConnection(opts: DeletionOpts): Promise<void>;

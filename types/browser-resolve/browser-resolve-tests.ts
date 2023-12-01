@@ -4,7 +4,9 @@ import resolve = require("browser-resolve");
 
 const fixturesDir = __dirname + "/fixtures/node_modules";
 
-const basic_test_async = (callback: (err?: Error | null, resolved?: string) => void) => {
+const basic_test_async = (
+    callback: (err?: Error | null, resolved?: string) => void,
+) => {
     // $ExpectType void
     resolve("typescript", (error, resolved) => {
         if (error) {

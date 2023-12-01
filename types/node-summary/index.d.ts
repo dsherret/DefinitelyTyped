@@ -24,7 +24,10 @@
  * Ole Henriksen and Marc Jacobs Beauty.“James Vincent, a celebrity makeup artist introduced our product to tons of designers, which resulted in us doing lots of New York Fashion Week
  * shows,”Irene said.
  */
-export function summarizeFromUrl(url: string, callback: (err: Error, summary: string) => void): void;
+export function summarizeFromUrl(
+    url: string,
+    callback: (err: Error, summary: string) => void,
+): void;
 
 /**
  * summarize content generally.

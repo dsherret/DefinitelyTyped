@@ -1,5 +1,8 @@
 export type Handler = (name: string, callback: () => void) => void;
-export type ProfileHandler = (name: string, state?: any) => (error?: Error) => void;
+export type ProfileHandler = (
+    name: string,
+    state?: any,
+) => (error?: Error) => void;
 
 /**
  * Instruments methods to allow profiling various parts of Relay. Profiling code
@@ -49,7 +52,10 @@ export const RelayProfiler: {
      * `attachHandler` and `detachHandler` methods.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    instrumentMethods(object: () => void | object, names: { [key: string]: string }): void;
+    instrumentMethods(
+        object: () => void | object,
+        names: { [key: string]: string },
+    ): void;
 
     /**
      * Wraps the supplied function with one that provides the `attachHandler` and

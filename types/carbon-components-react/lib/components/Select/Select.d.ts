@@ -3,7 +3,11 @@ import { ForwardRefReturn } from "../../../typings/shared";
 
 type ExcludedAttributes = "aria-invalid" | "id" | "ref" | "size";
 
-export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, ExcludedAttributes> {
+export interface SelectProps
+    extends Omit<
+        React.SelectHTMLAttributes<HTMLSelectElement>,
+        ExcludedAttributes
+    > {
     defaultValue?: any;
     helperText?: React.ReactNode | undefined;
     hideLabel?: boolean | undefined;

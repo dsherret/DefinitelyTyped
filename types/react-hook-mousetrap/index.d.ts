@@ -1,3 +1,6 @@
-declare function useMousetrap(keys: string | string[], callback: () => void): void;
+declare function useMousetrap(
+    keys: string | string[],
+    callback: () => void,
+): void;
 
 export default useMousetrap;

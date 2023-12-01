@@ -98,7 +98,7 @@ MultipartParser.stateToString;
 MultipartParser.STATES;
 
 const form = new Formidable(options);
-form.on("data", data => {
+form.on("data", (data) => {
     // $ExpectType EventData
     data;
 
@@ -147,13 +147,13 @@ form.on("data", data => {
         // $ExpectType string
         value;
     })
-    .on("error", err => {
+    .on("error", (err) => {
         // $ExpectType any
         err;
     })
     .on("aborted", () => {})
     .once("end", () => {})
-    .once("error", err => {
+    .once("error", (err) => {
         // $ExpectType any
         err;
     });
@@ -165,11 +165,11 @@ form.use((self, options) => {
     options;
 });
 
-form.onPart = part => {
+form.onPart = (part) => {
     // $ExpectType Part
     part;
 
-    part.on("data", buffer => {
+    part.on("data", (buffer) => {
         // $ExpectType any
         buffer;
     });
@@ -177,11 +177,12 @@ form.onPart = part => {
     form._handlePart(part);
 };
 
-http.createServer(async req => {
+http.createServer(async (req) => {
     // $ExpectType IncomingMessage
     req;
 
-    form.parse(req, (err, fields, files) => { // testing with callback
+    form.parse(req, (err, fields, files) => {
+        // testing with callback
         // $ExpectType any
         err;
         // $ExpectType Fields<string>
@@ -190,14 +191,18 @@ http.createServer(async req => {
         files;
     });
 
-    form.parse<"name" | "age", "avatar" | "document">(req, (err, fields, files) => { // testing with callback and type arguments
-        // $ExpectType any
-        err;
-        // $ExpectType Fields<"name" | "age">
-        fields;
-        // $ExpectType Files<"avatar" | "document"> || Files<"document" | "avatar">
-        files;
-    });
+    form.parse<"name" | "age", "avatar" | "document">(
+        req,
+        (err, fields, files) => {
+            // testing with callback and type arguments
+            // $ExpectType any
+            err;
+            // $ExpectType Fields<"name" | "age">
+            fields;
+            // $ExpectType Files<"avatar" | "document"> || Files<"document" | "avatar">
+            files;
+        },
+    );
 
     form.parse(req); // testing without callback
 
@@ -207,7 +212,10 @@ http.createServer(async req => {
     // $ExpectType Files<string>
     files;
 
-    const [newFields, newFiles] = await form.parse<"name" | "age", "avatar" | "document">(req); // testing with promise and type arguments
+    const [newFields, newFiles] = await form.parse<
+        "name" | "age",
+        "avatar" | "document"
+    >(req); // testing with promise and type arguments
     // $ExpectType Fields<"name" | "age">
     newFields;
     // $ExpectType Files<"avatar" | "document"> || Files<"document" | "avatar">

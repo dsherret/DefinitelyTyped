@@ -21,7 +21,8 @@ function onLayerReady() {
 
     camera.far = 2.0 * size.length();
 
-    const position = eptLayer.root.bbox.min.clone()
+    const position = eptLayer.root.bbox.min
+        .clone()
         .add(size.multiply(new THREE.Vector3(0, 0, size.x / size.z)));
 
     camera.position.copy(position);
@@ -34,17 +35,20 @@ function onLayerReady() {
 }
 
 function readEPTURL() {
-    const url = (document.getElementById("ept_url") as HTMLInputElement).value
-        || new URL(location.href).searchParams.get("ept");
+    const url =
+        (document.getElementById("ept_url") as HTMLInputElement).value ||
+        new URL(location.href).searchParams.get("ept");
 
     if (url) {
         loadEPT(url);
 
         // tslint:disable-next-line:prefer-template
-        (document.getElementById("share") as HTMLDivElement).innerHTML = "<a href=\""
-            + location.href.replace(location.search, "")
-            + "?ept=" + url
-            + "\" target=\"_blank\">Link to share this view</a>";
+        (document.getElementById("share") as HTMLDivElement).innerHTML =
+            '<a href="' +
+            location.href.replace(location.search, "") +
+            "?ept=" +
+            url +
+            '" target="_blank">Link to share this view</a>';
         (document.getElementById("ept_url") as HTMLInputElement).value = url;
     }
 }
@@ -70,11 +74,16 @@ function loadEPT(url: string) {
         for (const p of pick) {
             console.info(
                 // tslint:disable-next-line:prefer-template
-                "Selected point #" + p.index + " in position ("
-                    + p.object.position.x + ", "
-                    + p.object.position.y + ", "
-                    + p.object.position.z
-                    + ") - node " + p.object.userData.node.id,
+                "Selected point #" +
+                    p.index +
+                    " in position (" +
+                    p.object.position.x +
+                    ", " +
+                    p.object.position.y +
+                    ", " +
+                    p.object.position.z +
+                    ") - node " +
+                    p.object.userData.node.id,
             );
         }
     }

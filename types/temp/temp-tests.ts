@@ -3,7 +3,7 @@
 import * as temp from "temp";
 
 async function testCleanup() {
-    temp.cleanup(result => {
+    temp.cleanup((result) => {
         if (typeof result === "boolean") {
             const x = result;
         } else {
@@ -39,11 +39,14 @@ function testCleanupSync() {
 }
 
 async function testOpen() {
-    temp.open({ dir: "tempDir", prefix: "pref", suffix: "suff" }, (err, result) => {
-        const { path, fd } = result;
-        path.length;
-        fd.toPrecision(5);
-    });
+    temp.open(
+        { dir: "tempDir", prefix: "pref", suffix: "suff" },
+        (err, result) => {
+            const { path, fd } = result;
+            path.length;
+            fd.toPrecision(5);
+        },
+    );
 
     temp.open("strPrefix", (err, result) => {
         const { path, fd } = result;
@@ -61,7 +64,11 @@ async function testOpen() {
 }
 
 function testOpenSync() {
-    const f1: temp.OpenFile = temp.openSync({ dir: "tempDir", prefix: "pref", suffix: "suff" });
+    const f1: temp.OpenFile = temp.openSync({
+        dir: "tempDir",
+        prefix: "pref",
+        suffix: "suff",
+    });
     const f2: temp.OpenFile = temp.openSync("str");
 }
 

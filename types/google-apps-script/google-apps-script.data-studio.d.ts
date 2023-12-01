@@ -41,7 +41,11 @@ declare namespace GoogleAppsScript {
          *       .build();
          */
         interface BigQueryConfig {
-            addQueryParameter(name: string, type: BigQueryParameterType, value: string): BigQueryConfig;
+            addQueryParameter(
+                name: string,
+                type: BigQueryParameterType,
+                value: string,
+            ): BigQueryConfig;
             build(): Config;
             printJson(): string;
             setAccessToken(accessToken: string): BigQueryConfig;
@@ -620,7 +624,14 @@ declare namespace GoogleAppsScript {
             /** Whether data matching this filter should be included or excluded from the getData() response. */
             type: "INCLUDE" | "EXCLUDE";
             /** The operator to apply. */
-            operator: "EQUALS" | "CONTAINS" | RegexpOperator | "IN_LIST" | "IS_NULL" | "BETWEEN" | NumericOperator;
+            operator:
+                | "EQUALS"
+                | "CONTAINS"
+                | RegexpOperator
+                | "IN_LIST"
+                | "IS_NULL"
+                | "BETWEEN"
+                | NumericOperator;
         }
     }
 }

@@ -88,13 +88,29 @@ export class Quaternion {
 export class Matrix4x4 {
     constructor(data: number[]);
 
-    static FlipMatrix(flipX: boolean, flipY: boolean, flipZ: boolean): Matrix4x4;
+    static FlipMatrix(
+        flipX: boolean,
+        flipY: boolean,
+        flipZ: boolean,
+    ): Matrix4x4;
     static ScaleMatrix(scale: number | Vector3): Matrix4x4;
     static RotationMatrix(quaternion: Quaternion): Matrix4x4;
     static TranslationMatrix(translation: Vector3): Matrix4x4;
-    static TRS(translation: Vector3, rotation: Quaternion, scale: number | Vector3): Matrix4x4;
-    static LocalToWorldMatrix(position: Vector3, rotation: Quaternion, scale: number | Vector3): Matrix4x4;
-    static WorldToLocalMatrix(position: Vector3, rotation: Quaternion, scale: number | Vector3): Matrix4x4;
+    static TRS(
+        translation: Vector3,
+        rotation: Quaternion,
+        scale: number | Vector3,
+    ): Matrix4x4;
+    static LocalToWorldMatrix(
+        position: Vector3,
+        rotation: Quaternion,
+        scale: number | Vector3,
+    ): Matrix4x4;
+    static WorldToLocalMatrix(
+        position: Vector3,
+        rotation: Quaternion,
+        scale: number | Vector3,
+    ): Matrix4x4;
 
     static identity: Matrix4x4;
     static zero: Matrix4x4;
@@ -152,7 +168,12 @@ export class Transform {
     removeChild(child: Transform): void;
     transformPosition(position: Vector3): Vector3;
     translate(translation: Vector3, relativeTo?: Transform.Space): Transform;
-    rotate(x: number, y: number, z: number, relativeTo?: Transform.Space): Transform;
+    rotate(
+        x: number,
+        y: number,
+        z: number,
+        relativeTo?: Transform.Space,
+    ): Transform;
 }
 
 export namespace Transform {

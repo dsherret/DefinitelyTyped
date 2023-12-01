@@ -2,7 +2,10 @@
  * The main parser for MJML.
  * This version doesn't contain any of the core components registered in the 'mjml' package.
  */
-export default function mjml2html(input: string | MJMLJsonObject, options?: MJMLParsingOptions): MJMLParseResults;
+export default function mjml2html(
+    input: string | MJMLJsonObject,
+    options?: MJMLParsingOptions,
+): MJMLParseResults;
 
 /**
  * Options passed as an object to the mjml2html function
@@ -82,7 +85,9 @@ export interface MJMLParsingOptions {
     /**
      * optional setting when inlining css, see mjml-cli documentation for more info
      */
-    juicePreserveTags?: { [index: string]: { start: string; end: string } } | undefined;
+    juicePreserveTags?:
+        | { [index: string]: { start: string; end: string } }
+        | undefined;
     juiceOptions?: any;
 
     /**
@@ -102,7 +107,7 @@ export interface MJMLParsingOptions {
     /**
      * see mjml-parser-xml
      */
-    preprocessors?: Array<((xml: string) => string)> | undefined;
+    preprocessors?: Array<(xml: string) => string> | undefined;
 }
 
 export interface MJMLMinifyOptions {
@@ -124,7 +129,10 @@ export interface MJMLParseError {
     formattedMessage: string;
 }
 
-export type MJMLJsonObject = MJMLJsonWithChildren | MJMLJsonWithContent | MJMLJsonSelfClosingTag;
+export type MJMLJsonObject =
+    | MJMLJsonWithChildren
+    | MJMLJsonWithContent
+    | MJMLJsonSelfClosingTag;
 
 export interface MJMLJsonWithChildren {
     tagName: string;

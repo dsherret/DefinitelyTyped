@@ -132,17 +132,23 @@ function renderOutTestEmail() {
 // TestMjmlHtmlAttributesTag
 {
     const minProps: React.ReactNode = <MjmlHtmlAttributes />;
-    const maxProps: React.ReactNode = <MjmlHtmlAttributes>child</MjmlHtmlAttributes>;
+    const maxProps: React.ReactNode = (
+        <MjmlHtmlAttributes>child</MjmlHtmlAttributes>
+    );
 }
 // TestMjmlSelectorTag
 {
     const minProps: React.ReactNode = <MjmlSelector path="div.hello" />;
-    const maxProps: React.ReactNode = <MjmlSelector path="div.hello">child</MjmlSelector>;
+    const maxProps: React.ReactNode = (
+        <MjmlSelector path="div.hello">child</MjmlSelector>
+    );
 }
 // TestMjmlHtmlAttributesTag
 {
     const minProps: React.ReactNode = <MjmlHtmlAttribute name="data-testid" />;
-    const maxProps: React.ReactNode = <MjmlHtmlAttribute name="data-testid">child</MjmlHtmlAttribute>;
+    const maxProps: React.ReactNode = (
+        <MjmlHtmlAttribute name="data-testid">child</MjmlHtmlAttribute>
+    );
 }
 // TestMjmlBreakpointTag
 {
@@ -215,9 +221,13 @@ function renderOutTestEmail() {
 {
     const minProps: React.ReactNode = <MjmlColumn />;
     const maxProps: React.ReactNode = <MjmlColumn>child</MjmlColumn>;
-    const innerBackgroundColor: React.ReactNode = <MjmlColumn innerBackgroundColor="#BADA55">child</MjmlColumn>;
+    const innerBackgroundColor: React.ReactNode = (
+        <MjmlColumn innerBackgroundColor="#BADA55">child</MjmlColumn>
+    );
     // @ts-expect-error
-    const innerBackgroundColorError: React.ReactNode = <MjmlColumn innerBackgroundColor={1}>child</MjmlColumn>;
+    const innerBackgroundColorError: React.ReactNode = (
+        <MjmlColumn innerBackgroundColor={1}>child</MjmlColumn>
+    );
 }
 // TestMjmlDividerTag
 {
@@ -268,7 +278,9 @@ function renderOutTestEmail() {
 {
     const minProps: React.ReactNode = <MjmlTable />;
     const maxProps: React.ReactNode = <MjmlTable>child</MjmlTable>;
-    const roleProps: React.ReactNode = <MjmlTable role="presentation">child</MjmlTable>;
+    const roleProps: React.ReactNode = (
+        <MjmlTable role="presentation">child</MjmlTable>
+    );
 }
 // TestMjmlTextTag
 {
@@ -328,7 +340,12 @@ function renderOutTestEmail() {
     {
         const minProps: React.ReactNode = <MjmlAccordionTitle />;
         const maxProps: React.ReactNode = (
-            <MjmlAccordionTitle backgroundColor="#ffffff" color="#000000" fontFamily="Arial" fontSize="20px">
+            <MjmlAccordionTitle
+                backgroundColor="#ffffff"
+                color="#000000"
+                fontFamily="Arial"
+                fontSize="20px"
+            >
                 child
             </MjmlAccordionTitle>
         );
@@ -361,19 +378,27 @@ function renderOutTestEmail() {
     // MjmlCarouselImage
     {
         const minProps: React.ReactNode = <MjmlCarouselImage />;
-        const maxProps: React.ReactNode = <MjmlCarouselImage>child</MjmlCarouselImage>;
+        const maxProps: React.ReactNode = (
+            <MjmlCarouselImage>child</MjmlCarouselImage>
+        );
     }
 }
 // TestMjmlSocialElementTag
 {
     {
         const minProps: React.ReactNode = <MjmlSocialElement />;
-        const maxProps: React.ReactNode = <MjmlSocialElement>child</MjmlSocialElement>;
-        const iconPadProps: React.ReactNode = <MjmlSocialElement iconPadding="5px">child</MjmlSocialElement>;
+        const maxProps: React.ReactNode = (
+            <MjmlSocialElement>child</MjmlSocialElement>
+        );
+        const iconPadProps: React.ReactNode = (
+            <MjmlSocialElement iconPadding="5px">child</MjmlSocialElement>
+        );
     }
     // MjmlSocial
     {
         const minProps: React.ReactNode = <MjmlSocial />;
-        const maxProps: React.ReactNode = <MjmlSocial cssClass="">child</MjmlSocial>;
+        const maxProps: React.ReactNode = (
+            <MjmlSocial cssClass="">child</MjmlSocial>
+        );
     }
 }

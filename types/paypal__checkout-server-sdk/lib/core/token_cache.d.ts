@@ -8,7 +8,10 @@ import paypalhttp = require("@paypal/paypalhttp");
 import { AccessToken } from "./access_token";
 
 declare class TokenCache {
-    static cacheForEnvironment<T extends paypalhttp.Environment>(environment: T, refreshToken?: string): T;
+    static cacheForEnvironment<T extends paypalhttp.Environment>(
+        environment: T,
+        refreshToken?: string,
+    ): T;
 
     constructor();
 

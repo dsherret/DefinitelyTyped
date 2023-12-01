@@ -10,15 +10,23 @@ declare namespace M {
         /**
          * Init CharacterCounter.
          */
-        static init(els: Element, options?: Partial<undefined>): CharacterCounter;
+        static init(
+            els: Element,
+            options?: Partial<undefined>,
+        ): CharacterCounter;
 
         /**
          * Init CharacterCounters.
          */
-        static init(els: MElements, options?: Partial<undefined>): CharacterCounter[];
+        static init(
+            els: MElements,
+            options?: Partial<undefined>,
+        ): CharacterCounter[];
     }
 }
 
 interface JQuery {
-    characterCounter(method?: keyof Pick<M.CharacterCounter, "destroy">): JQuery;
+    characterCounter(
+        method?: keyof Pick<M.CharacterCounter, "destroy">,
+    ): JQuery;
 }

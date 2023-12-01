@@ -12,7 +12,9 @@ class Test extends React.Component {
                         <div>You also have a huge screen</div>
                     </MediaQuery>
                     <MediaQuery maxWidth={1224}>
-                        <div>You are sized like a tablet or mobile phone though</div>
+                        <div>
+                            You are sized like a tablet or mobile phone though
+                        </div>
                     </MediaQuery>
                 </MediaQuery>
                 <MediaQuery maxDeviceWidth={1224}>
@@ -33,7 +35,9 @@ class Test extends React.Component {
                         <div>You also have a huge screen</div>
                     </MediaQuery>
                     <MediaQuery query="(max-width: 1224px)">
-                        <div>You are sized like a tablet or mobile phone though</div>
+                        <div>
+                            You are sized like a tablet or mobile phone though
+                        </div>
                     </MediaQuery>
                 </MediaQuery>
             </div>

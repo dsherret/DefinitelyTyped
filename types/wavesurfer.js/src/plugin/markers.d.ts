@@ -1,4 +1,8 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
 
@@ -9,7 +13,10 @@ declare module "../../wavesurfer" {
     }
 }
 
-export default class MarkersPlugin extends Observer implements WaveSurferPlugin {
+export default class MarkersPlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: MarkersPluginParams, ws: WaveSurfer);
     static create(params: MarkersPluginParams): PluginDefinition;
     destroy(): void;

@@ -27,7 +27,9 @@ function test_somethingSyntax() {
     array2.should.include.something.that.have.property("a");
     array2.should.include.something.that.have.property("a").not.equal("d");
     chai.expect(array2).to.include.something.that.have.property("a");
-    chai.expect(array2).to.include.something.that.have.property("a").not.equal("d");
+    chai.expect(array2)
+        .to.include.something.that.have.property("a")
+        .not.equal("d");
 }
 
 function test_somethingVariantsSyntax() {

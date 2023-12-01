@@ -43,7 +43,14 @@ export type VMLTextElement = VMLElement;
  * The names of the base shapes that can be created on the {@link RaphaelPaper|canvas}. Used, for example, by the
  * {@link RaphaelStatic|Raphael()} constructor.
  */
-export type RaphaelShapeType = "circle" | "ellipse" | "image" | "rect" | "text" | "path" | "set";
+export type RaphaelShapeType =
+    | "circle"
+    | "ellipse"
+    | "image"
+    | "rect"
+    | "text"
+    | "path"
+    | "set";
 
 /**
  * Represents the technology used by Raphaël, depending on the browser support.
@@ -65,7 +72,18 @@ export type RaphaelFontOrigin = "baseline" | "middle";
 /**
  * Represents the stroke dash types supported by Raphaël.
  */
-export type RaphaelDashArrayType = "" | "-" | "." | "-." | "-.." | ". " | "- " | "--" | "- ." | "--." | "--..";
+export type RaphaelDashArrayType =
+    | ""
+    | "-"
+    | "."
+    | "-."
+    | "-.."
+    | ". "
+    | "- "
+    | "--"
+    | "- ."
+    | "--."
+    | "--..";
 
 /**
  * Represents the line cap types supported by Raphaël. See {@link RaphaelBaseElement.attr}.
@@ -239,7 +257,9 @@ export type RaphaelUnwrapElement<
  * Callback that is invoked once an animation is complete.
  * @param ThisContext Type of the argument passed as the this context.
  */
-export type RaphaelOnAnimationCompleteHandler<ThisContext> = (this: ThisContext) => void;
+export type RaphaelOnAnimationCompleteHandler<ThisContext> = (
+    this: ThisContext,
+) => void;
 
 /**
  * A basic event handler for some common events on {@link RaphaelElement}s, such as `click` and `dblclick`.
@@ -281,7 +301,14 @@ export type RaphaelDragOnMoveHandler<ThisContext> =
      * @param mouseY The current vertical position of the mouse.
      * @return A value that is returned as the return value of the `document.addEventListener` callback.
      */
-    (this: ThisContext, deltaX: number, deltaY: number, mouseX: number, mouseY: number, event: DragEvent) => any;
+    (
+        this: ThisContext,
+        deltaX: number,
+        deltaY: number,
+        mouseX: number,
+        mouseY: number,
+        event: DragEvent,
+    ) => any;
 
 /**
  * Represents an event handler for when the pointer moves over another element while dragging. See also
@@ -399,7 +426,10 @@ export type RaphaelCustomAttribute<
      * @param values Numerical values for this custom attribute.
      * @return The SVG attributes for the given values.
      */
-    (this: RaphaelElement<TTechnology>, ...values: TArgs) => Partial<RaphaelAttributes>;
+    (
+        this: RaphaelElement<TTechnology>,
+        ...values: TArgs
+    ) => Partial<RaphaelAttributes>;
 
 /**
  * Represents a result or return value of an operation that can fail, such as due to illegal arguments. For example,
@@ -453,7 +483,10 @@ export type RaphaelPaperPluginRegistry<
     [P in keyof T]: RaphaelPaperPluginMethodOrRegistry<TTechnology, T[P]>;
 };
 
-type RaphaelPaperPluginMethodOrRegistry<TTechnology extends RaphaelTechnology, T> = T extends (...args: any) => any
+type RaphaelPaperPluginMethodOrRegistry<
+    TTechnology extends RaphaelTechnology,
+    T,
+> = T extends (...args: any) => any
     ? RaphaelPaperPluginMethod<TTechnology, Parameters<T>, ReturnType<T>>
     : RaphaelPaperPluginRegistry<TTechnology, T>;
 /**
@@ -474,12 +507,14 @@ type RaphaelPaperPluginMethodOrRegistry<TTechnology extends RaphaelTechnology, T
 export type RaphaelElementPluginRegistry<
     TTechnology extends RaphaelTechnology = "SVG" | "VML",
 > = {
-    [P in keyof RaphaelElement<TTechnology>]: RaphaelElement<TTechnology>[P] extends (...args: any) => any
+    [P in keyof RaphaelElement<TTechnology>]: RaphaelElement<TTechnology>[P] extends (
+        ...args: any
+    ) => any
         ? RaphaelElementPluginMethod<
-            TTechnology,
-            Parameters<RaphaelElement<TTechnology>[P]>,
-            ReturnType<RaphaelElement<TTechnology>[P]>
-        >
+              TTechnology,
+              Parameters<RaphaelElement<TTechnology>[P]>,
+              ReturnType<RaphaelElement<TTechnology>[P]>
+          >
         : never;
 };
 
@@ -507,12 +542,14 @@ export type RaphaelElementPluginRegistry<
 export type RaphaelSetPluginRegistry<
     TTechnology extends RaphaelTechnology = "SVG" | "VML",
 > = {
-    [P in keyof RaphaelSet<TTechnology>]: RaphaelSet<TTechnology>[P] extends (...args: any) => any
+    [P in keyof RaphaelSet<TTechnology>]: RaphaelSet<TTechnology>[P] extends (
+        ...args: any
+    ) => any
         ? RaphaelSetPluginMethod<
-            TTechnology,
-            Parameters<RaphaelSet<TTechnology>[P]>,
-            ReturnType<RaphaelSet<TTechnology>[P]>
-        >
+              TTechnology,
+              Parameters<RaphaelSet<TTechnology>[P]>,
+              ReturnType<RaphaelSet<TTechnology>[P]>
+          >
         : never;
 };
 
@@ -538,7 +575,10 @@ export interface RaphaelElementImplementationMap {
     circle: RaphaelElementByTechnologyMap<SVGCircleElement, VMLCircleElement>;
 
     /** The elements that implement the {@link RaphaelPaper.ellipse} shape. */
-    ellipse: RaphaelElementByTechnologyMap<SVGEllipseElement, VMLEllipseElement>;
+    ellipse: RaphaelElementByTechnologyMap<
+        SVGEllipseElement,
+        VMLEllipseElement
+    >;
 
     /** The elements that implement the {@link RaphaelPaper.image} shape. */
     image: RaphaelElementByTechnologyMap<SVGImageElement, VMLImageElement>;
@@ -577,7 +617,8 @@ export interface RaphaelCartesianCurvePoint extends RaphaelCartesianPoint {
 /**
  * Represents a point on a cubic bezier curve, the result of {@link RaphaelStatic.findDotsAtSegment}.
  */
-export interface RaphaelCubicBezierCurvePointInfo extends RaphaelCartesianCurvePoint {
+export interface RaphaelCubicBezierCurvePointInfo
+    extends RaphaelCartesianCurvePoint {
     /**
      * The end point of the cubic bezier curve.
      */
@@ -661,8 +702,9 @@ export interface RaphaelHslComponentInfo {
  * channels.
  */
 export interface RaphaelFullComponentInfo
-    extends RaphaelRgbComponentInfo, RaphaelHsbComponentInfo, RaphaelHslComponentInfo
-{}
+    extends RaphaelRgbComponentInfo,
+        RaphaelHsbComponentInfo,
+        RaphaelHslComponentInfo {}
 
 /**
  * Represents an axis aligned bounding box, see {@link RaphaelBaseElement.getBBox}.
@@ -1226,7 +1268,10 @@ export interface RaphaelBaseElement<
      * @param attributeValue New value for the attribute.
      * @return this element for chaining.
      */
-    attr<K extends keyof RaphaelAttributes>(attributeName: K, attributeValue: RaphaelAttributes[K] | undefined): this;
+    attr<K extends keyof RaphaelAttributes>(
+        attributeName: K,
+        attributeValue: RaphaelAttributes[K] | undefined,
+    ): this;
 
     /**
      * Finds the current value of the given attribute.
@@ -1234,7 +1279,9 @@ export interface RaphaelBaseElement<
      * @param attributeName Name of the attribute to read.
      * @return The value of the given attribute, or `undefined` if the attribute is unset or does not exist.
      */
-    attr<K extends keyof RaphaelReadAttributes>(attributeName: K): RaphaelReadAttributes[K] | undefined;
+    attr<K extends keyof RaphaelReadAttributes>(
+        attributeName: K,
+    ): RaphaelReadAttributes[K] | undefined;
 
     /**
      * Finds the current value of the given attributes.
@@ -1245,9 +1292,14 @@ export interface RaphaelBaseElement<
     attr<
         // Trick compiler into inferring a tuple type without the consumer having to specify the tuple type explicitly
         // https://github.com/microsoft/TypeScript/issues/22679
-        K extends (Array<keyof RaphaelReadAttributes> & { "0"?: keyof RaphaelReadAttributes | undefined }),
-    >(attributeNames: K): {
-        [P in keyof K]: K[P] extends keyof RaphaelReadAttributes ? RaphaelReadAttributes[K[P]] | undefined
+        K extends Array<keyof RaphaelReadAttributes> & {
+            "0"?: keyof RaphaelReadAttributes | undefined;
+        },
+    >(
+        attributeNames: K,
+    ): {
+        [P in keyof K]: K[P] extends keyof RaphaelReadAttributes
+            ? RaphaelReadAttributes[K[P]] | undefined
             : never;
     };
 
@@ -1263,7 +1315,12 @@ export interface RaphaelBaseElement<
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    click(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    click(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Create a new element with all properties and attributes of this element.
@@ -1290,7 +1347,12 @@ export interface RaphaelBaseElement<
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    dblclick(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    dblclick(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Adds the event handlers for a drag of this element.
@@ -1363,8 +1425,14 @@ export interface RaphaelBaseElement<
         HoverInThisContext = RaphaelUnwrapElement<TTechnology, this>,
         HoverOutThisContext = RaphaelUnwrapElement<TTechnology, this>,
     >(
-        onHoverInHandler: RaphaelBasicEventHandler<HoverInThisContext, MouseEvent>,
-        onHoverOutHandler: RaphaelBasicEventHandler<HoverOutThisContext, MouseEvent>,
+        onHoverInHandler: RaphaelBasicEventHandler<
+            HoverInThisContext,
+            MouseEvent
+        >,
+        onHoverOutHandler: RaphaelBasicEventHandler<
+            HoverOutThisContext,
+            MouseEvent
+        >,
         hoverInThisContext?: HoverInThisContext,
         hoverOutThisContext?: HoverOutThisContext,
     ): this;
@@ -1393,35 +1461,60 @@ export interface RaphaelBaseElement<
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    mousedown(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    mousedown(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the mousemove event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    mousemove(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    mousemove(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the mouseout event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    mouseout(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    mouseout(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the mouseover event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    mouseover(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    mouseover(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the mouseup event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    mouseup(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    mouseup(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Shortcut for assigning an event handler for the `drag.over.<id>` event, where `id` is the ID of the element,
@@ -1429,7 +1522,12 @@ export interface RaphaelBaseElement<
      * @param onDragOverHandler Handler for event, first argument would be the element you are dragging over
      * @return this element for chaining.
      */
-    onDragOver(onDragOverHandler: RaphaelDragOnOverHandler<TTechnology, RaphaelUnwrapElement<TTechnology, this>>): this;
+    onDragOver(
+        onDragOverHandler: RaphaelDragOnOverHandler<
+            TTechnology,
+            RaphaelUnwrapElement<TTechnology, this>
+        >,
+    ): this;
 
     /**
      * Stops an animation of this element with the ability to resume it later on.
@@ -1482,7 +1580,12 @@ export interface RaphaelBaseElement<
      * @param centerY Vertical coordinate of the center of the scaling operation.
      * @return this element for chaining.
      */
-    scale(scaleFactorX: number, scaleFactorY: number, centerX: number, centerY: number): this;
+    scale(
+        scaleFactorX: number,
+        scaleFactorY: number,
+        centerX: number,
+        centerY: number,
+    ): this;
 
     /**
      * Scales this element by the given scale factor. The center of this
@@ -1553,28 +1656,48 @@ export interface RaphaelBaseElement<
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    touchcancel(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    touchcancel(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the touchend event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    touchend(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    touchend(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the touchmove event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    touchmove(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    touchmove(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Adds an event handler for the touchstart event to this element.
      * @param handler Handler for the event.
      * @return this element for chaining.
      */
-    touchstart(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    touchstart(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Returns the current transformation of this element. This transformation is separate to other attributes, i.e.
@@ -1675,14 +1798,24 @@ export interface RaphaelBaseElement<
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unclick(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unclick(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the double click event from this element. See {@link dblclick}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    undblclick(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    undblclick(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes all drag event handlers from this element.
@@ -1706,63 +1839,108 @@ export interface RaphaelBaseElement<
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unmousedown(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unmousedown(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the mousemove event from this element. See {@link mousemove}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unmousemove(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unmousemove(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the mouseout event from this element. See {@link mouseout}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unmouseout(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unmouseout(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the mouseover event from this element. See {@link mouseover}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unmouseover(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unmouseover(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the mouseup event from this element. See {@link mouseup}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    unmouseup(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, MouseEvent>): this;
+    unmouseup(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            MouseEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the touchcancel event from this element. See {@link touchcancel}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    untouchcancel(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    untouchcancel(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the touchend event from this element. See {@link touchend}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    untouchend(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    untouchend(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the touchmove event from this element. See {@link touchmove}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    untouchmove(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    untouchmove(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 
     /**
      * Removes an event handler for the touchstart event from this element. See {@link touchstart}.
      * @param handler A handler to remove.
      * @return this element for chaining.
      */
-    untouchstart(handler: RaphaelBasicEventHandler<RaphaelUnwrapElement<TTechnology, this>, TouchEvent>): this;
+    untouchstart(
+        handler: RaphaelBasicEventHandler<
+            RaphaelUnwrapElement<TTechnology, this>,
+            TouchEvent
+        >,
+    ): this;
 }
 
 /**
@@ -1775,7 +1953,8 @@ export interface RaphaelBaseElement<
  */
 export interface RaphaelElement<
     TTechnology extends RaphaelTechnology = "SVG" | "VML",
-    TNode extends RaphaelElementByTechnologyMap[TTechnology] = RaphaelElementByTechnologyMap[TTechnology],
+    TNode extends
+        RaphaelElementByTechnologyMap[TTechnology] = RaphaelElementByTechnologyMap[TTechnology],
 > extends RaphaelBaseElement<TTechnology> {
     /**
      * Unique id of the element. Especially useful when you want to listen to events of the element, because all
@@ -1813,7 +1992,10 @@ export interface RaphaelElement<
  */
 export interface RaphaelPath<
     TTechnology extends RaphaelTechnology = "SVG" | "VML",
-> extends RaphaelElement<TTechnology, RaphaelElementImplementationMap["path"][TTechnology]> {
+> extends RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["path"][TTechnology]
+    > {
     /**
      * The type of this element, i.e. `path`.
      */
@@ -1847,7 +2029,8 @@ export interface RaphaelPath<
  */
 export interface RaphaelSet<
     TTechnology extends RaphaelTechnology = "SVG" | "VML",
-> extends ArrayLike<RaphaelElement<TTechnology>>, RaphaelBaseElement<TTechnology> {
+> extends ArrayLike<RaphaelElement<TTechnology>>,
+        RaphaelBaseElement<TTechnology> {
     /**
      * Removes all elements from the set
      */
@@ -1872,7 +2055,10 @@ export interface RaphaelSet<
      */
     forEach<ThisContext = Window>(
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        callback: (this: ThisContext, element: RaphaelElement<TTechnology>) => boolean | void,
+        callback: (
+            this: ThisContext,
+            element: RaphaelElement<TTechnology>,
+        ) => boolean | void,
         thisArg?: ThisContext,
     ): this;
 
@@ -1895,7 +2081,11 @@ export interface RaphaelSet<
      * @param elementsToAdd Elements to insert at the given position.
      * @return The set elements that were deleted.
      */
-    splice(index: number, count: number, ...elementsToAdd: Array<RaphaelElement<TTechnology>>): RaphaelSet<TTechnology>;
+    splice(
+        index: number,
+        count: number,
+        ...elementsToAdd: Array<RaphaelElement<TTechnology>>
+    ): RaphaelSet<TTechnology>;
 }
 
 /**
@@ -2068,7 +2258,10 @@ export interface RaphaelPaper<
         x: number,
         y: number,
         radius: number,
-    ): RaphaelElement<TTechnology, RaphaelElementImplementationMap["circle"][TTechnology]>;
+    ): RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["circle"][TTechnology]
+    >;
 
     /**
      * Clears the paper, i.e. removes all the elements.
@@ -2115,7 +2308,10 @@ export interface RaphaelPaper<
      * }
      * ```
      */
-    customAttributes: Record<keyof RaphaelAttributes, RaphaelCustomAttribute<TTechnology>>;
+    customAttributes: Record<
+        keyof RaphaelAttributes,
+        RaphaelCustomAttribute<TTechnology>
+    >;
 
     /**
      * Draws an ellipse.
@@ -2130,7 +2326,10 @@ export interface RaphaelPaper<
         y: number,
         radiusX: number,
         radiusY: number,
-    ): RaphaelElement<TTechnology, RaphaelElementImplementationMap["ellipse"][TTechnology]>;
+    ): RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["ellipse"][TTechnology]
+    >;
 
     /**
      * Executes given function for each element on the paper
@@ -2143,7 +2342,10 @@ export interface RaphaelPaper<
      */
     forEach<T = Window>(
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        callback: (this: T, element: RaphaelElement<TTechnology>) => boolean | void,
+        callback: (
+            this: T,
+            element: RaphaelElement<TTechnology>,
+        ) => boolean | void,
         thisContext?: T,
     ): this;
 
@@ -2181,7 +2383,12 @@ export interface RaphaelPaper<
      * @param stretch Font stretch
      * @return The font object with the given options, or `undefined` if no such font exists.
      */
-    getFont(family: string, weight?: string | number, style?: string, stretch?: string): RaphaelFont | undefined;
+    getFont(
+        family: string,
+        weight?: string | number,
+        style?: string,
+        stretch?: string,
+    ): RaphaelFont | undefined;
 
     /**
      * The height of this pager.
@@ -2208,7 +2415,10 @@ export interface RaphaelPaper<
         y: number,
         width: number,
         height: number,
-    ): RaphaelElement<TTechnology, RaphaelElementImplementationMap["image"][TTechnology]>;
+    ): RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["image"][TTechnology]
+    >;
 
     /**
      * Creates a path element by given path data string.
@@ -2230,7 +2440,12 @@ export interface RaphaelPaper<
      * @param pathString Path string in SVG format.
      * @return The newly created element representing the path.
      */
-    path(pathString?: string | RaphaelPathSegment | readonly RaphaelPathSegment[]): RaphaelPath<TTechnology>;
+    path(
+        pathString?:
+            | string
+            | RaphaelPathSegment
+            | readonly RaphaelPathSegment[],
+    ): RaphaelPath<TTechnology>;
 
     /**
      * Creates set of shapes to represent given font at given position with given size. Result of the method is set
@@ -2281,7 +2496,10 @@ export interface RaphaelPaper<
         width: number,
         height: number,
         r?: number,
-    ): RaphaelElement<TTechnology, RaphaelElementImplementationMap["rect"][TTechnology]>;
+    ): RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["rect"][TTechnology]
+    >;
 
     /**
      * Removes this paper from the DOM.
@@ -2327,7 +2545,9 @@ export interface RaphaelPaper<
      * @param elements Elements to add to the  set.
      * @return A newly created set with the given elements.
      */
-    set(...elements: Array<RaphaelElement<TTechnology>>): RaphaelSet<TTechnology>;
+    set(
+        ...elements: Array<RaphaelElement<TTechnology>>
+    ): RaphaelSet<TTechnology>;
 
     /**
      * See {@link setStart}. This method finishes catching elements and returns the resulting set.
@@ -2380,7 +2600,10 @@ export interface RaphaelPaper<
         x: number,
         y: number,
         text: string,
-    ): RaphaelElement<TTechnology, RaphaelElementImplementationMap["text"][TTechnology]>;
+    ): RaphaelElement<
+        TTechnology,
+        RaphaelElementImplementationMap["text"][TTechnology]
+    >;
 
     /**
      * Points to the topmost element on the paper. `null` when there is no element.
@@ -2496,7 +2719,9 @@ export interface RaphaelStatic<
      * @return A new raphael paper that can be used for drawing shapes to the canvas.
      */
     (
-        all: RaphaelConstructionOptionsArray4 | RaphaelConstructionOptionsArray5,
+        all:
+            | RaphaelConstructionOptionsArray4
+            | RaphaelConstructionOptionsArray5,
         callback?: (this: RaphaelPaper<TTechnology>) => void,
     ): RaphaelSet<TTechnology>;
 
@@ -2517,7 +2742,7 @@ export interface RaphaelStatic<
      * @param callback Callback function which is going to be executed in the context of newly created paper.
      * @return A new raphael paper that can be used for drawing shapes to the canvas.
      */
-    new(
+    new (
         container: HTMLElement | string,
         width: number,
         height: number,
@@ -2535,7 +2760,7 @@ export interface RaphaelStatic<
      * @param callback Callback function which is going to be executed in the context of newly created paper.
      * @return A new raphael paper that can be used for drawing shapes to the canvas.
      */
-    new(
+    new (
         x: number,
         y: number,
         width: number,
@@ -2552,8 +2777,10 @@ export interface RaphaelStatic<
      * @param callback Callback function which is going to be executed in the context of newly created paper.
      * @return A new raphael paper that can be used for drawing shapes to the canvas.
      */
-    new(
-        all: RaphaelConstructionOptionsArray4 | RaphaelConstructionOptionsArray5,
+    new (
+        all:
+            | RaphaelConstructionOptionsArray4
+            | RaphaelConstructionOptionsArray5,
         callback?: (this: RaphaelPaper<TTechnology>) => void,
     ): RaphaelSet<TTechnology>;
 
@@ -2562,7 +2789,7 @@ export interface RaphaelStatic<
      * event via Eve's `DOMLoad` event. In this case the method returns `undefined`.
      * @return A new raphael paper that can be used for drawing shapes to the canvas.
      */
-    new(onReadyCallback?: (this: Window) => void): RaphaelPaper<TTechnology>;
+    new (onReadyCallback?: (this: Window) => void): RaphaelPaper<TTechnology>;
 
     /**
      * Returns angle between two or three points
@@ -2574,7 +2801,14 @@ export interface RaphaelStatic<
      * @param y3 y coordinate of third point
      * @return The angle in degrees.
      */
-    angle(x1: number, y1: number, x2: number, y2: number, x3?: number, y3?: number): number;
+    angle(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3?: number,
+        y3?: number,
+    ): number;
 
     /**
      * Creates an animation object that can be passed to the {@link RaphaelElement.animate} or
@@ -2611,7 +2845,10 @@ export interface RaphaelStatic<
      * Object that contains easing formulas for animation. You could extend it with your own. By default it has
      * the easing methods as defined in {@link RaphaelBuiltinEasingFormula}.
      */
-    easing_formulas: Record<RaphaelBuiltinEasingFormula | RaphaelCustomEasingFormula, RaphaelEasingFormula>;
+    easing_formulas: Record<
+        RaphaelBuiltinEasingFormula | RaphaelCustomEasingFormula,
+        RaphaelEasingFormula
+    >;
 
     /**
      * You can add your own method to elements. This is useful when you want to hack default functionality or want
@@ -2822,7 +3059,11 @@ export interface RaphaelStatic<
      * @param brightness Brightness channel.
      * @return The color in the RGB color system.
      */
-    hsb2rgb(hue: number, saturation: number, brightness: number): RaphaelRgbComponentInfo;
+    hsb2rgb(
+        hue: number,
+        saturation: number,
+        brightness: number,
+    ): RaphaelRgbComponentInfo;
 
     /**
      * Converts HSL values to hex representation of the colour.
@@ -2840,7 +3081,11 @@ export interface RaphaelStatic<
      * @param luminosity Luminosity channel.
      * @return The color in the RGB color system.
      */
-    hsl2rgb(hue: number, saturation: number, luminosity: number): RaphaelRgbComponentInfo;
+    hsl2rgb(
+        hue: number,
+        saturation: number,
+        luminosity: number,
+    ): RaphaelRgbComponentInfo;
 
     /**
      * Handy replacement for typeof operator.
@@ -2940,7 +3185,14 @@ export interface RaphaelStatic<
      * @param f The matrix component at the third row, second column.
      * @return A matrix based on the given parameters.
      */
-    matrix(a: number, b: number, c: number, d: number, e: number, f: number): RaphaelMatrix;
+    matrix(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): RaphaelMatrix;
 
     /**
      * If you want to leave no trace of Raphaël (Well, Raphaël creates only one global variable `Raphael`, but
@@ -2955,7 +3207,9 @@ export interface RaphaelStatic<
      * @param pathString Path string or array of segments (in the last case it will be returned straight away).
      * @return Array of path segments.
      */
-    parsePathString(pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[]): RaphaelPathSegment[];
+    parsePathString(
+        pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[],
+    ): RaphaelPathSegment[];
 
     /**
      * Utility method that parses given path string into an array of transformations.
@@ -2964,7 +3218,10 @@ export interface RaphaelStatic<
      * @return Array of transformations.
      */
     parseTransformString(
-        transformString: string | RaphaelTransformSegment | readonly RaphaelTransformSegment[],
+        transformString:
+            | string
+            | RaphaelTransformSegment
+            | readonly RaphaelTransformSegment[],
     ): RaphaelTransformSegment[];
 
     /**
@@ -2972,14 +3229,18 @@ export interface RaphaelStatic<
      * @param pathString A path string or array of segments.
      * @return Array of path segments.
      */
-    path2curve(pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[]): RaphaelPathSegment[];
+    path2curve(
+        pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[],
+    ): RaphaelPathSegment[];
 
     /**
      * Utility method that converts a path to its relative form.
      * @param pathString A path string or array of segments.
      * @return Array of path segments.
      */
-    pathToRelative(pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[]): RaphaelPathSegment[];
+    pathToRelative(
+        pathString: string | RaphaelPathSegment | readonly RaphaelPathSegment[],
+    ): RaphaelPathSegment[];
 
     /**
      * Transform angle from degrees to radians.
@@ -3039,7 +3300,11 @@ export interface RaphaelStatic<
      * @param tolerance Tolerance for snapping. Default is `10`.
      * @return The adjusted value.
      */
-    snapTo(values: number | readonly number[], value: number, tolerance?: number): number;
+    snapTo(
+        values: number | readonly number[],
+        value: number,
+        tolerance?: number,
+    ): number;
 
     /**
      * Returns `true` if given point is inside the bounding box.
@@ -3048,7 +3313,11 @@ export interface RaphaelStatic<
      * @param y y coordinate of the point
      * @return `true` if point the point is inside
      */
-    isPointInsideBBox(bbox: RaphaelAxisAlignedBoundingBox, x: number, y: number): boolean;
+    isPointInsideBBox(
+        bbox: RaphaelAxisAlignedBoundingBox,
+        x: number,
+        y: number,
+    ): boolean;
 
     /**
      * Returns `true` if two bounding boxes intersect
@@ -3056,7 +3325,10 @@ export interface RaphaelStatic<
      * @param bbox2 second bounding box
      * @return `true` if they intersect
      */
-    isBBoxIntersect(bbox1: RaphaelAxisAlignedBoundingBox, bbox2: RaphaelAxisAlignedBoundingBox): boolean;
+    isBBoxIntersect(
+        bbox1: RaphaelAxisAlignedBoundingBox,
+        bbox2: RaphaelAxisAlignedBoundingBox,
+    ): boolean;
 
     /**
      * You can add your own method to elements and sets. It is wise to add a set method for each element method you

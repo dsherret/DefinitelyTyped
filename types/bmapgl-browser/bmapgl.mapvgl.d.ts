@@ -58,9 +58,11 @@ declare namespace MapVGL {
             type: "Point" | "LineString" | "Polygon";
             coordinates: any[];
         };
-        properties?: {
-            [x: string]: any;
-        } | undefined;
+        properties?:
+            | {
+                  [x: string]: any;
+              }
+            | undefined;
         [x: string]: any;
     }
 

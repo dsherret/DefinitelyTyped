@@ -1,4 +1,8 @@
-import { APIGatewayProxyCallback, APIGatewayProxyEvent, Context } from "aws-lambda";
+import {
+    APIGatewayProxyCallback,
+    APIGatewayProxyEvent,
+    Context,
+} from "aws-lambda";
 
 declare function awsLambdaHttpServer(
     event: APIGatewayProxyEvent,

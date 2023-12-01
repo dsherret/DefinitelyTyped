@@ -135,7 +135,9 @@ export interface ReactPaginateProps {
     /**
      * The method is called to generate the `aria-label` attribute value on each page link
      */
-    ariaLabelBuilder?: ((pageIndex: number, selected: boolean) => string) | undefined;
+    ariaLabelBuilder?:
+        | ((pageIndex: number, selected: boolean) => string)
+        | undefined;
 
     /**
      * The event to listen onto before changing the selected page. Default is: "onClick".

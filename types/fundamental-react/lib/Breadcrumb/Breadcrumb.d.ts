@@ -3,7 +3,10 @@ import * as React from "react";
 export type BreadcrumbProps = {
     disableStyles?: boolean | undefined;
     ref?: React.Ref<HTMLUListElement> | undefined;
-} & Pick<React.HTMLAttributes<HTMLUListElement>, Exclude<keyof React.HTMLAttributes<HTMLUListElement>, "className">>;
+} & Pick<
+    React.HTMLAttributes<HTMLUListElement>,
+    Exclude<keyof React.HTMLAttributes<HTMLUListElement>, "className">
+>;
 
 export type BreadcrumbItemProps = {
     className?: string | undefined;
@@ -13,7 +16,9 @@ export type BreadcrumbItemProps = {
 
 declare const Breadcrumb: React.FunctionComponent<BreadcrumbProps> & {
     displayName: "Breadcrumb";
-    Item: React.FunctionComponent<BreadcrumbItemProps> & { displayName: "Breadcrumb.Item" };
+    Item: React.FunctionComponent<BreadcrumbItemProps> & {
+        displayName: "Breadcrumb.Item";
+    };
 };
 
 export default Breadcrumb;

@@ -84,35 +84,58 @@ import * as url from "node:url";
     https.get("http://www.example.com/xyz");
     https.request("http://www.example.com/xyz");
 
-    https.get("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
-    https.request("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
+    https.get(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
 
     https.get(new url.URL("http://www.example.com/xyz"));
     https.request(new url.URL("http://www.example.com/xyz"));
 
-    https.get(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
-    https.request(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
+    https.get(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
 
     const opts: https.RequestOptions = {
         path: "/some/path",
     };
     https.get(new url.URL("http://www.example.com"), opts);
     https.request(new url.URL("http://www.example.com"), opts);
-    https.get(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
-    https.request(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
+    https.get(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
 
     https.globalAgent.options.ca = [];
 
     {
-        function reqListener(req: http.IncomingMessage, res: http.ServerResponse): void {}
+        function reqListener(
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+        ): void {}
 
         class MyIncomingMessage extends http.IncomingMessage {
             foo: number;
         }
 
-        class MyServerResponse<Request extends http.IncomingMessage = http.IncomingMessage>
-            extends http.ServerResponse<Request>
-        {
+        class MyServerResponse<
+            Request extends http.IncomingMessage = http.IncomingMessage,
+        > extends http.ServerResponse<Request> {
             foo: string;
         }
 
@@ -122,22 +145,32 @@ import * as url from "node:url";
         server = new https.Server(reqListener);
         server = new https.Server({ IncomingMessage: MyIncomingMessage });
 
-        server = new https.Server({
-            IncomingMessage: MyIncomingMessage,
-            ServerResponse: MyServerResponse,
-        }, reqListener);
+        server = new https.Server(
+            {
+                IncomingMessage: MyIncomingMessage,
+                ServerResponse: MyServerResponse,
+            },
+            reqListener,
+        );
 
         server = https.createServer();
         server = https.createServer(reqListener);
         server = https.createServer({ IncomingMessage: MyIncomingMessage });
-        server = https.createServer({ ServerResponse: MyServerResponse }, reqListener);
+        server = https.createServer(
+            { ServerResponse: MyServerResponse },
+            reqListener,
+        );
 
         const timeout: number = server.timeout;
         const listening: boolean = server.listening;
         const keepAliveTimeout: number = server.keepAliveTimeout;
         const maxHeadersCount: number | null = server.maxHeadersCount;
         const headersTimeout: number = server.headersTimeout;
-        server.setTimeout().setTimeout(1000).setTimeout(() => {}).setTimeout(100, () => {});
+        server
+            .setTimeout()
+            .setTimeout(1000)
+            .setTimeout(() => {})
+            .setTimeout(100, () => {});
     }
 }
 
@@ -187,7 +220,11 @@ import * as url from "node:url";
 
 {
     {
-        const b: inspector.Console.ConsoleMessage = { source: "test", text: "test", level: "error" };
+        const b: inspector.Console.ConsoleMessage = {
+            source: "test",
+            text: "test",
+            level: "error",
+        };
         inspector.open();
         inspector.open(0);
         inspector.open(0, "localhost");
@@ -205,26 +242,37 @@ import * as url from "node:url";
         session.post("A.b", (err: Error | null, params?: {}) => {});
         session.post("A.b");
         // Known post method
-        const parameter: inspector.Runtime.EvaluateParameterType = { expression: "2 + 2" };
+        const parameter: inspector.Runtime.EvaluateParameterType = {
+            expression: "2 + 2",
+        };
         session.post(
             "Runtime.evaluate",
             parameter,
-            (err: Error | null, params: inspector.Runtime.EvaluateReturnType) => {},
+            (
+                err: Error | null,
+                params: inspector.Runtime.EvaluateReturnType,
+            ) => {},
         );
-        session.post("Runtime.evaluate", (err: Error, params: inspector.Runtime.EvaluateReturnType) => {
-            const exceptionDetails: inspector.Runtime.ExceptionDetails = params.exceptionDetails!;
-            const resultClassName: string = params.result.className!;
-        });
+        session.post(
+            "Runtime.evaluate",
+            (err: Error, params: inspector.Runtime.EvaluateReturnType) => {
+                const exceptionDetails: inspector.Runtime.ExceptionDetails =
+                    params.exceptionDetails!;
+                const resultClassName: string = params.result.className!;
+            },
+        );
         session.post("Runtime.evaluate");
 
         // General event
-        session.on("inspectorNotification", message => {
+        session.on("inspectorNotification", (message) => {
             message; // $ExpectType InspectorNotification<{}>
         });
         // Known events
         session.on(
             "Debugger.paused",
-            (message: inspector.InspectorNotification<inspector.Debugger.PausedEventDataType>) => {
+            (
+                message: inspector.InspectorNotification<inspector.Debugger.PausedEventDataType>,
+            ) => {
                 const method: string = message.method;
                 const pauseReason: string = message.params.reason;
             },
@@ -238,8 +286,11 @@ import * as url from "node:url";
 ///////////////////////////////////////////////////////////
 
 {
-    const enabledCategories: string | undefined = trace_events.getEnabledCategories();
-    const tracing: trace_events.Tracing = trace_events.createTracing({ categories: ["node", "v8"] });
+    const enabledCategories: string | undefined =
+        trace_events.getEnabledCategories();
+    const tracing: trace_events.Tracing = trace_events.createTracing({
+        categories: ["node", "v8"],
+    });
     const categories: string = tracing.categories;
     const enabled: boolean = tracing.enabled;
     tracing.enable();

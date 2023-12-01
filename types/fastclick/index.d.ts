@@ -23,7 +23,7 @@ interface FastClickOptions {
 }
 
 interface FastClickStatic {
-    new(layer: any, options?: FastClickOptions): FastClickObject;
+    new (layer: any, options?: FastClickOptions): FastClickObject;
     attach(layer: any, options?: FastClickOptions): FastClickObject;
 }
 

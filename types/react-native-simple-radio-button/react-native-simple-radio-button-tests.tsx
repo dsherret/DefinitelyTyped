@@ -1,5 +1,9 @@
 import * as React from "react";
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from "react-native-simple-radio-button";
+import RadioForm, {
+    RadioButton,
+    RadioButtonInput,
+    RadioButtonLabel,
+} from "react-native-simple-radio-button";
 
 const data = [
     { label: "Label1", value: 0 },
@@ -16,7 +20,7 @@ class Example extends React.Component {
                     radio_props={data}
                     initial={0}
                     style={{ backgroundColor: "red" }}
-                    onPress={value => console.log(value)}
+                    onPress={(value) => console.log(value)}
                 />
 
                 <RadioForm formHorizontal={false} animation={true}>
@@ -27,7 +31,7 @@ class Example extends React.Component {
                                 obj={obj}
                                 index={i}
                                 isSelected={true}
-                                onPress={value => console.log(value)}
+                                onPress={(value) => console.log(value)}
                                 buttonInnerColor={"#e74c3c"}
                                 buttonOuterColor={"#2196f3"}
                                 buttonSize={40}
@@ -39,7 +43,7 @@ class Example extends React.Component {
                                 obj={obj}
                                 index={i}
                                 labelHorizontal={true}
-                                onPress={value => console.log(value)}
+                                onPress={(value) => console.log(value)}
                                 labelStyle={{ fontSize: 20, color: "#2ecc71" }}
                                 labelWrapStyle={{}}
                             />

@@ -1,6 +1,12 @@
 export interface OsmToGeoJSON {
-    (data: Document | OsmJSON.OsmJSONObject, options?: Options): GeoJSON.GeoJSONObject;
-    toGeojson(data: Document | OsmJSON.OsmJSONObject, options?: Options): GeoJSON.GeoJSONObject;
+    (
+        data: Document | OsmJSON.OsmJSONObject,
+        options?: Options,
+    ): GeoJSON.GeoJSONObject;
+    toGeojson(
+        data: Document | OsmJSON.OsmJSONObject,
+        options?: Options,
+    ): GeoJSON.GeoJSONObject;
 }
 
 export interface Options {

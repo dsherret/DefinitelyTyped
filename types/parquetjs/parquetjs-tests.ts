@@ -9,9 +9,24 @@ let schema = new parquet.ParquetSchema({
 });
 
 let writeRows = async () => {
-    const writer = await parquet.ParquetWriter.openFile(schema, "fruits.parquet");
-    await writer.appendRow({ name: "apples", quantity: 10, price: 2.5, date: new Date(), in_stock: true });
-    await writer.appendRow({ name: "oranges", quantity: 10, price: 2.5, date: new Date(), in_stock: true });
+    const writer = await parquet.ParquetWriter.openFile(
+        schema,
+        "fruits.parquet",
+    );
+    await writer.appendRow({
+        name: "apples",
+        quantity: 10,
+        price: 2.5,
+        date: new Date(),
+        in_stock: true,
+    });
+    await writer.appendRow({
+        name: "oranges",
+        quantity: 10,
+        price: 2.5,
+        date: new Date(),
+        in_stock: true,
+    });
 };
 
 let readRows = async () => {
@@ -39,7 +54,10 @@ schema = new parquet.ParquetSchema({
 });
 
 writeRows = async () => {
-    const writer = await parquet.ParquetWriter.openFile(schema, "fruits.parquet");
+    const writer = await parquet.ParquetWriter.openFile(
+        schema,
+        "fruits.parquet",
+    );
     await writer.appendRow({ name: "apples", quantity: 10 });
     await writer.appendRow({ name: "banana" });
 };
@@ -57,18 +75,27 @@ schema = new parquet.ParquetSchema({
 });
 
 writeRows = async () => {
-    const writer = await parquet.ParquetWriter.openFile(schema, "fruits.parquet");
+    const writer = await parquet.ParquetWriter.openFile(
+        schema,
+        "fruits.parquet",
+    );
 
     await writer.appendRow({
         name: "banana",
         colours: ["yellow"],
-        stock: [{ price: 2.45, quantity: 16 }, { price: 2.6, quantity: 420 }],
+        stock: [
+            { price: 2.45, quantity: 16 },
+            { price: 2.6, quantity: 420 },
+        ],
     });
 
     await writer.appendRow({
         name: "apple",
         colours: ["red", "green"],
-        stock: [{ price: 1.2, quantity: 42 }, { price: 1.3, quantity: 230 }],
+        stock: [
+            { price: 1.2, quantity: 42 },
+            { price: 1.3, quantity: 230 },
+        ],
     });
 
     await writer.close();
@@ -96,7 +123,10 @@ const writeFile = async () => {
         },
     });
 
-    const writer = await parquet.ParquetWriter.openFile(schema, "fruits.parquet");
+    const writer = await parquet.ParquetWriter.openFile(
+        schema,
+        "fruits.parquet",
+    );
 
     for (let i = 0; i < 100000; i++) {
         await writer.appendRow({
@@ -104,7 +134,7 @@ const writeFile = async () => {
             colours: ["yellow"],
             stock: [
                 { price: 2.45, quantity: 16 },
-                { price: 2.60, quantity: 420 },
+                { price: 2.6, quantity: 420 },
             ],
         });
     }

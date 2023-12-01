@@ -13,11 +13,11 @@ export interface BankAccount {
 export interface FormResponse {
     form?:
         | {
-            formMethod: "GET" | "POST" | "IFRAME";
-            formAction: string;
-            formTarget?: "_blank" | "_self" | undefined;
-            fields: StringMap;
-        }
+              formMethod: "GET" | "POST" | "IFRAME";
+              formAction: string;
+              formTarget?: "_blank" | "_self" | undefined;
+              fields: StringMap;
+          }
         | undefined;
     error?: string | undefined;
 }
@@ -61,7 +61,13 @@ export type BuyCryptoPaymentMethod =
     | "payid"
     | "toss";
 
-export type BuyTradeTag = "renewed" | "alternativeCurrency" | "bestRate" | "favorite" | "wantCrypto" | "widget";
+export type BuyTradeTag =
+    | "renewed"
+    | "alternativeCurrency"
+    | "bestRate"
+    | "favorite"
+    | "wantCrypto"
+    | "widget";
 
 export interface BuyProviderInfo {
     name: string; // simplex
@@ -188,7 +194,12 @@ export type ExchangeMaximum =
     | number // actual maximum amount in 'send' currency
     | "NONE"; // exchange does not have a maximum trade size
 
-export type ExchangeTradeTag = "renewed" | "bestRate" | "favorite" | "kyc" | "widget";
+export type ExchangeTradeTag =
+    | "renewed"
+    | "bestRate"
+    | "favorite"
+    | "kyc"
+    | "widget";
 
 export interface ExchangeProviderInfo {
     name: string; // changenow
@@ -268,12 +279,12 @@ export interface ExchangeTrade {
     swapSlippage?: string | undefined; // swap slippage in percent, for example "1.5"
     dexTx?:
         | {
-            // tx data for approval or swap transaction
-            from: string;
-            to: string;
-            data: string;
-            value: string;
-        }
+              // tx data for approval or swap transaction
+              from: string;
+              to: string;
+              data: string;
+              value: string;
+          }
         | undefined;
     // locally used fields
     offerType?: "bestRate" | "favorite" | undefined;
@@ -322,7 +333,11 @@ export interface CountryInfo {
     fiatCurrency?: string | undefined; // optional field, fiat currency based on country
 }
 
-export type TicketTopic = "Invity.io" | "Buy crypto" | "Exchange crypto" | "Invest in crypto";
+export type TicketTopic =
+    | "Invity.io"
+    | "Buy crypto"
+    | "Exchange crypto"
+    | "Invest in crypto";
 
 export interface SupportTicket {
     name: string;
@@ -386,7 +401,13 @@ export interface SellListResponse {
 
 export type SellCryptoPaymentMethod = "bankTransfer" | "creditCard";
 
-export type SellTradeTag = "renewed" | "alternativeCurrency" | "bestRate" | "favorite" | "wantFiat" | "widget";
+export type SellTradeTag =
+    | "renewed"
+    | "alternativeCurrency"
+    | "bestRate"
+    | "favorite"
+    | "wantFiat"
+    | "widget";
 
 export interface SellFiatTradeQuoteRequest {
     amountInCrypto: boolean; // true for cryptoAmount, false for fiatAmount
@@ -718,7 +739,12 @@ export type SavingsAMLStatus =
     /** AML process passed successfully. */
     | "Verified";
 
-export type PaymentFrequency = "Daily" | "Weekly" | "Biweekly" | "Monthly" | "Quarterly";
+export type PaymentFrequency =
+    | "Daily"
+    | "Weekly"
+    | "Biweekly"
+    | "Monthly"
+    | "Quarterly";
 
 export interface SavingsTradePlannedPayment {
     /** Our id. */
@@ -868,7 +894,9 @@ export interface SavingsKYCInfoSuccessResponse {
     documentTypes: SavingsTradeUserKYCStartDocumentType[];
 }
 
-export type SavingsKYCInfoResponse = SavingsKYCInfoSuccessResponse | SavingsErrorResponse;
+export type SavingsKYCInfoResponse =
+    | SavingsKYCInfoSuccessResponse
+    | SavingsErrorResponse;
 
 export interface SavingsTradeAMLAnswer {
     key: string;
@@ -882,13 +910,16 @@ export interface SavingsAMLAnswersSuccessResponse {
     status: "Success";
 }
 
-export type SavingsAMLAnswersResponse = SavingsAMLAnswersSuccessResponse | SavingsErrorResponse;
+export type SavingsAMLAnswersResponse =
+    | SavingsAMLAnswersSuccessResponse
+    | SavingsErrorResponse;
 
 export interface SavingsTradeKYCStatusSuccessfulResponse {
     kycStatus?: SavingsKYCStatus | undefined;
 }
 
-export interface SavingsTradeKYCStatusErrorResponse extends SavingsErrorResponse {
+export interface SavingsTradeKYCStatusErrorResponse
+    extends SavingsErrorResponse {
     code?:
         | "GetIdentityInfoFailed"
         | "SavingsTransactionNotFound"
@@ -898,8 +929,8 @@ export interface SavingsTradeKYCStatusErrorResponse extends SavingsErrorResponse
 }
 
 export type SavingsTradeKYCStatusResponse =
-    & SavingsTradeKYCStatusSuccessfulResponse
-    & SavingsTradeKYCStatusErrorResponse;
+    SavingsTradeKYCStatusSuccessfulResponse &
+        SavingsTradeKYCStatusErrorResponse;
 
 export type SavingsTradeItemStatus =
     | "Cancelled"
@@ -925,7 +956,8 @@ export interface SavingsTradeItem {
     created: string;
 }
 
-export interface WatchSavingTradeItemErrorResponse extends SavingsErrorResponse {
+export interface WatchSavingTradeItemErrorResponse
+    extends SavingsErrorResponse {
     code?:
         | "SavingsTradeIdRequired"
         | "SavingsTradeItemIdRequired"
@@ -933,12 +965,18 @@ export interface WatchSavingTradeItemErrorResponse extends SavingsErrorResponse 
         | "SavingsTransactionNotFound";
 }
 
-export interface WatchSavingTradeItemResponse extends WatchSavingTradeItemErrorResponse {
+export interface WatchSavingTradeItemResponse
+    extends WatchSavingTradeItemErrorResponse {
     savingsTradeItem?: SavingsTradeItem | undefined;
 }
 
 export interface PartnerInitErrorResponse extends SavingsErrorResponse {
-    code?: "ReturnUrlRequired" | "ExchangeNotFound" | "PartnerInitFailed" | "MissingRequestBody" | undefined;
+    code?:
+        | "ReturnUrlRequired"
+        | "ExchangeNotFound"
+        | "PartnerInitFailed"
+        | "MissingRequestBody"
+        | undefined;
 }
 export interface PartnerInitSuccessResponse {
     form?: {
@@ -949,10 +987,15 @@ export interface PartnerInitSuccessResponse {
     savingsTrade?: SavingsTrade | undefined;
 }
 
-export type PartnerInitResponse = PartnerInitSuccessResponse & PartnerInitErrorResponse;
+export type PartnerInitResponse = PartnerInitSuccessResponse &
+    PartnerInitErrorResponse;
 
 export interface SubmitPhoneNumberResponse extends SavingsErrorResponse {
-    code?: "ExchangeNotFound" | "InternalError" | "SavingsTransactionNotFound" | undefined;
+    code?:
+        | "ExchangeNotFound"
+        | "InternalError"
+        | "SavingsTransactionNotFound"
+        | undefined;
     form?: {
         formMethod: "GET";
         formAction: string;

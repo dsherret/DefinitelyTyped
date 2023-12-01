@@ -1,5 +1,4 @@
-export class RedisError extends Error {
-}
+export class RedisError extends Error {}
 
 export class ParserError extends RedisError {
     buffer: string;

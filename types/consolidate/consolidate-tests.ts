@@ -2,7 +2,7 @@ import cons = require("consolidate");
 
 var path: string = "test/path";
 var options = { user: "tobi" };
-var fn = function(err: Error, html: string) {};
+var fn = function (err: Error, html: string) {};
 (async () => {
     let res: string;
 
@@ -221,34 +221,38 @@ var fn = function(err: Error, html: string) {};
  * https://github.com/tj/consolidate.js/
  */
 // Common use
-cons.swig("views/page.html", { user: "tobi" }, function(err, html) {
+cons.swig("views/page.html", { user: "tobi" }, function (err, html) {
     if (err) throw err;
     console.log(html);
 });
 
 // Options object is optional
-cons.swig("views/page.html", function(err, html) {
+cons.swig("views/page.html", function (err, html) {
     if (err) throw err;
     console.log(html);
 });
 
 // To dynamically pass the engine, simply use the subscript operator and a variable:
-cons["swig"]("views/page.html", { user: "tobi" }, function(err, html) {
+cons["swig"]("views/page.html", { user: "tobi" }, function (err, html) {
     if (err) throw err;
     console.log(html);
 });
 
 // Returns a promise if no is callback passed in:
 cons.swig("views/page.html", { user: "tobi" })
-    .then(function(html) {
+    .then(function (html) {
         console.log(html);
     })
-    .catch(function(err) {
+    .catch(function (err) {
         throw err;
     });
 
 // Caching
-cons.swig("views/page.html", { cache: false, user: "tobi" }, function(err, html) {
-    if (err) throw err;
-    console.log(html);
-});
+cons.swig(
+    "views/page.html",
+    { cache: false, user: "tobi" },
+    function (err, html) {
+        if (err) throw err;
+        console.log(html);
+    },
+);

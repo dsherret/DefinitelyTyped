@@ -24,9 +24,15 @@ export interface ColumnReorderEndEvent {
     reorderColumn: string;
 }
 
-export type ElementOrFunc<P> = string | React.ReactElement | ((props: P) => string | React.ReactElement);
+export type ElementOrFunc<P> =
+    | string
+    | React.ReactElement
+    | ((props: P) => string | React.ReactElement);
 
-export type TableRowEventHandler = (event: React.SyntheticEvent<Table>, rowIndex: number) => void;
+export type TableRowEventHandler = (
+    event: React.SyntheticEvent<Table>,
+    rowIndex: number,
+) => void;
 
 /**
  * Data grid component with fixed or scrollable header and columns.
@@ -357,7 +363,9 @@ export interface TableProps extends React.ClassAttributes<Table> {
      * )
      * ```
      */
-    onColumnResizeEndCallback?: ((newColumnWidth: number, columnKey: string) => void) | undefined;
+    onColumnResizeEndCallback?:
+        | ((newColumnWidth: number, columnKey: string) => void)
+        | undefined;
 
     /**
      * Callback that is called when reordering has been completed
@@ -373,7 +381,9 @@ export interface TableProps extends React.ClassAttributes<Table> {
      * )
      * ```
      */
-    onColumnReorderEndCallback?: ((event: ColumnReorderEndEvent) => void) | undefined;
+    onColumnReorderEndCallback?:
+        | ((event: ColumnReorderEndEvent) => void)
+        | undefined;
 
     /**
      * Whether a column is currently being resized.
@@ -392,8 +402,7 @@ export interface TableProps extends React.ClassAttributes<Table> {
     bufferRowCount?: number | undefined;
 }
 
-export class Table extends React.Component<TableProps> {
-}
+export class Table extends React.Component<TableProps> {}
 
 export interface ColumnHeaderProps {
     columnKey?: string | undefined;
@@ -576,8 +585,7 @@ export interface ColumnProps extends React.ClassAttributes<Column> {
     cellClassName?: string | undefined;
 }
 
-export class Column extends React.Component<ColumnProps> {
-}
+export class Column extends React.Component<ColumnProps> {}
 
 export interface ColumnGroupHeaderProps {
     /* supplied from the groupHeaderHeight */
@@ -624,7 +632,11 @@ export interface ColumnGroupProps extends React.ClassAttributes<ColumnGroup> {
      * You can also pass in a function that returns a react elemnt, with the
      * props object above passed in as the first parameter.
      */
-    header?: string | React.ReactElement | ((props: ColumnGroupHeaderProps) => string | React.ReactElement) | undefined;
+    header?:
+        | string
+        | React.ReactElement
+        | ((props: ColumnGroupHeaderProps) => string | React.ReactElement)
+        | undefined;
 
     /**
      * Extra class for cells in column
@@ -632,8 +644,7 @@ export interface ColumnGroupProps extends React.ClassAttributes<ColumnGroup> {
     cellClassName?: string | undefined;
 }
 
-export class ColumnGroup extends React.Component<ColumnGroupProps> {
-}
+export class ColumnGroup extends React.Component<ColumnGroupProps> {}
 
 /**
  * Component that handles default cell layout and styling.
@@ -686,8 +697,7 @@ export interface CellProps extends React.HTMLAttributes<Cell> {
     rowIndex?: number | undefined;
 }
 
-export class Cell extends React.Component<CellProps> {
-}
+export class Cell extends React.Component<CellProps> {}
 
 export namespace Plugins {
     interface ResizeCellProps extends React.HTMLAttributes<ResizeCell> {
@@ -737,8 +747,7 @@ export namespace Plugins {
         height?: number;
     }
 
-    class ResizeCell extends React.Component<ResizeCellProps> {
-    }
+    class ResizeCell extends React.Component<ResizeCellProps> {}
 
     interface ReorderCellProps extends React.HTMLAttributes<ReorderCell> {
         /**
@@ -802,9 +811,12 @@ export namespace Plugins {
          * function({columnBefore: string, columnAfter: string, reorderColumn: string})
          * ```
          */
-        onColumnReorderEnd: (event: { columnBefore: string; columnAfter: string; reorderColumn: string }) => void;
+        onColumnReorderEnd: (event: {
+            columnBefore: string;
+            columnAfter: string;
+            reorderColumn: string;
+        }) => void;
     }
 
-    class ReorderCell extends React.Component<ReorderCellProps> {
-    }
+    class ReorderCell extends React.Component<ReorderCellProps> {}
 }

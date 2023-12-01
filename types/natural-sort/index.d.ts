@@ -8,5 +8,7 @@ interface Options {
     direction?: "desc" | undefined;
 }
 
-declare function naturalSort(options?: Options): (a: string | number, b: string | number) => number;
+declare function naturalSort(
+    options?: Options,
+): (a: string | number, b: string | number) => number;
 export = naturalSort;

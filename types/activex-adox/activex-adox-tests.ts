@@ -27,12 +27,15 @@ const toConnectionString = (o: { [index: string]: any }) => {
 
 const connectionString = toConnectionString({
     Provider: "Microsoft.Jet.OLEDB.4.0",
-    "Data Source": "c:\\Program Files\\Microsoft Office\\Office\\Samples\\Northwind.mdb",
+    "Data Source":
+        "c:\\Program Files\\Microsoft Office\\Office\\Samples\\Northwind.mdb",
 });
 const connectionStringWithSys = toConnectionString({
     Provider: "Microsoft.Jet.OLEDB.4.0",
-    "Data Source": "c:\\Program Files\\Microsoft Office\\Office\\Samples\\Northwind.mdb",
-    "jet oledb:system database": "c:\\Program Files\\Microsoft Office\\Office\\system.mdw",
+    "Data Source":
+        "c:\\Program Files\\Microsoft Office\\Office\\Samples\\Northwind.mdb",
+    "jet oledb:system database":
+        "c:\\Program Files\\Microsoft Office\\Office\\system.mdw",
 });
 
 const adPermObjTable = ADOX.ObjectTypeEnum.adPermObjTable;
@@ -45,7 +48,9 @@ const adVarChar = ADODB.DataTypeEnum.adVarChar;
 const adOpenKeyset = ADODB.CursorTypeEnum.adOpenKeyset;
 const adLockOptimistic = ADODB.LockTypeEnum.adLockOptimistic;
 
-const tryClose = (obj: { State: ADODB.ObjectStateEnum; Close(): void } | null) => {
+const tryClose = (
+    obj: { State: ADODB.ObjectStateEnum; Close(): void } | null,
+) => {
     // TODO State could also be a combination of multiple values in this enum
     if (obj && obj.State === ADODB.ObjectStateEnum.adStateOpen) {
         obj.Close();
@@ -67,10 +72,10 @@ const tryClose = (obj: { State: ADODB.ObjectStateEnum; Close(): void } | null) =
         tbl.Columns.Append("Column2", adInteger);
         tbl.Columns.Append("Column3", adVarChar, 50);
         cat.Tables.Append(tbl);
-        WScript.Echo("Table \"MyTables\" is added.");
+        WScript.Echo('Table "MyTables" is added.');
 
         cat.Tables.Delete(tbl.Name);
-        WScript.Echo("Table \"MyTable\" is deleted");
+        WScript.Echo('Table "MyTable" is deleted');
 
         cat.ActiveConnection = null;
     } catch (error) {
@@ -136,10 +141,12 @@ const tryClose = (obj: { State: ADODB.ObjectStateEnum; Close(): void } | null) =
     cat.SetObjectOwner("Categories", adPermObjTable, "Accounting");
 
     for (const tblLoop of collectionToArray(cat.Tables)) {
-        WScript.Echo(`
+        WScript.Echo(
+            `
 Table: ${tblLoop.Name}
 Owner: ${cat.GetObjectOwner(tblLoop.Name, adPermObjTable)}
-        `.trim());
+        `.trim(),
+        );
     }
 
     // Restore the original owner of Categories
@@ -153,28 +160,51 @@ Owner: ${cat.GetObjectOwner(tblLoop.Name, adPermObjTable)}
     try {
         cnn = new ActiveXObject("ADODB.Connection");
         cnn.Provider = "Microsoft.Jet.OLEDB.4.0";
-        cnn.Open("Data Source='Northwind.mdb';jet oledb:system database='system.mdw'");
+        cnn.Open(
+            "Data Source='Northwind.mdb';jet oledb:system database='system.mdw'",
+        );
 
         cat = new ActiveXObject("ADOX.Catalog");
         cat.ActiveConnection = cnn;
 
         const displayPermissions = (title: string) =>
-            WScript.Echo(`${title}: ${cat!.Users("admin").GetPermissions("Orders", adPermObjTable)}`);
+            WScript.Echo(
+                `${title}: ${cat!
+                    .Users("admin")
+                    .GetPermissions("Orders", adPermObjTable)}`,
+            );
 
         // Retrieve original permissions
-        const perm = cat.Users("admin").GetPermissions("Orders", adPermObjTable);
+        const perm = cat
+            .Users("admin")
+            .GetPermissions("Orders", adPermObjTable);
         WScript.Echo(`Permissions: ${perm}`);
 
         // Revoke all permissions
-        cat.Users("admin").SetPermissions("Orders", adPermObjTable, ADOX.ActionEnum.adAccessRevoke, adRightFull);
+        cat.Users("admin").SetPermissions(
+            "Orders",
+            adPermObjTable,
+            ADOX.ActionEnum.adAccessRevoke,
+            adRightFull,
+        );
         displayPermissions("Revoked permissions");
 
         // Give the Admin user full rights on the orders object
-        cat.Users("admin").SetPermissions("Orders", adPermObjTable, ADOX.ActionEnum.adAccessSet, adRightFull);
+        cat.Users("admin").SetPermissions(
+            "Orders",
+            adPermObjTable,
+            ADOX.ActionEnum.adAccessSet,
+            adRightFull,
+        );
         displayPermissions("Full permissions");
 
         // Restore original permissions
-        cat.Users("admin").SetPermissions("Orders", adPermObjTable, ADOX.ActionEnum.adAccessSet, perm);
+        cat.Users("admin").SetPermissions(
+            "Orders",
+            adPermObjTable,
+            ADOX.ActionEnum.adAccessSet,
+            perm,
+        );
         displayPermissions("Final permissions");
     } catch (error) {
         WScript.Echo(error);
@@ -276,7 +306,7 @@ Owner: ${cat.GetObjectOwner(tblLoop.Name, adPermObjTable)}
         tbl.Columns.Append("Column2", adInteger);
         tbl.Columns.Append("Column3", adVarChar, 50);
         cat.Tables.Append(tbl);
-        WScript.Echo("Table \"MyTables\" is added.");
+        WScript.Echo('Table "MyTables" is added.');
 
         // Define a multi-column index
         idx = new ActiveXObject("ADOX.Index");
@@ -286,11 +316,11 @@ Owner: ${cat.GetObjectOwner(tblLoop.Name, adPermObjTable)}
 
         // Append the index to the table
         tbl.Indexes.Append(idx);
-        WScript.Echo("The index is appended to table \"MyTable\".");
+        WScript.Echo('The index is appended to table "MyTable".');
 
         // Delete the table as this is a demonstration
         cat.Tables.Delete(tbl.Name);
-        WScript.Echo("Table \"MyTable\" is deleeted.");
+        WScript.Echo('Table "MyTable" is deleeted.');
     } catch (error) {
         WScript.Echo(error);
     } finally {
@@ -487,13 +517,21 @@ Owner: ${cat.GetObjectOwner(tblLoop.Name, adPermObjTable)}
 
         // Open the Employees table for updating as a Recordset
         rstEmployees = new ActiveXObject("ADODB.Recordset");
-        rstEmployees.Open("Employees", cnn, adOpenKeyset, adLockOptimistic, ADODB.CommandTypeEnum.adCmdTable);
+        rstEmployees.Open(
+            "Employees",
+            cnn,
+            adOpenKeyset,
+            adLockOptimistic,
+            ADODB.CommandTypeEnum.adCmdTable,
+        );
 
         // Get user input
-        WScript.Echo(`
+        WScript.Echo(
+            `
 Enter fax number for ${rstEmployees("FirstName")} ${rstEmployees("LastName")}.
 [? - unknown, X - has no fax]
-        `.trim());
+        `.trim(),
+        );
         const strInput = WScript.StdIn.ReadLine().toUpperCase().trim();
         if (strInput) {
             let newValue: string | null;
@@ -517,10 +555,12 @@ Enter fax number for ${rstEmployees("FirstName")} ${rstEmployees("LastName")}.
             } else {
                 faxDisplayString = faxValue;
             }
-            WScript.Echo(`
+            WScript.Echo(
+                `
 Name\t\tFax number
 ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
-            `.trim());
+            `.trim(),
+            );
         }
     } catch (error) {
         WScript.Echo(error);
@@ -570,7 +610,9 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
         for (tblLoop of collectionToArray(cat.Tables)) {
             // Enumerate the indexes
             for (idxLoop of collectionToArray(tblLoop.Indexes)) {
-                WScript.Echo(`${tblLoop.Name} ${idxLoop.Name} ${idxLoop.Clustered}`);
+                WScript.Echo(
+                    `${tblLoop.Name} ${idxLoop.Name} ${idxLoop.Clustered}`,
+                );
             }
         }
     } catch (error) {
@@ -670,7 +712,8 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
         cmd = cat.Views("AllCustomers").Command;
 
         // Update the CommandText of the command
-        cmd.CommandText = "SELECT CustomerId, CompanyName, ContactName FROM Customers";
+        cmd.CommandText =
+            "SELECT CustomerId, CompanyName, ContactName FROM Customers";
 
         // Update the view
         cat.Views("AllCustomers").Command = cmd;
@@ -743,7 +786,13 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
     try {
         // Open a Recordset for the Employees table.
         rstEmployees = new ActiveXObject("ADODB.Recordset");
-        rstEmployees.Open("Employees", connectionString, adOpenKeyset, undefined, ADODB.CommandTypeEnum.adCmdTable);
+        rstEmployees.Open(
+            "Employees",
+            connectionString,
+            adOpenKeyset,
+            undefined,
+            ADODB.CommandTypeEnum.adCmdTable,
+        );
 
         // Open a Catalog for the Northwind database, using same connection as rstEmployees
         catNorthwind = new ActiveXObject("ADOX.Catalog");
@@ -757,7 +806,10 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
         const firstnames: string[] = [];
         for (let i = 0; !rstEmployees.EOF; i++) {
             const firstField = rstEmployees("FirstName");
-            const [firstname, lastname] = [firstField.Value as string, rstEmployees("LastName").Value as string];
+            const [firstname, lastname] = [
+                firstField.Value as string,
+                rstEmployees("LastName").Value as string,
+            ];
             WScript.Echo(`Employee name: ${firstname} ${lastname}`);
             WScript.Echo(`\tFirstName Defined size: ${firstField.DefinedSize}`);
             WScript.Echo(`\tFirstName Actual size: ${firstField.ActualSize}`);
@@ -794,7 +846,11 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
         for (let i = 0; !rstEmployees.EOF; i++) {
             const firstField = rstEmployees("FirstName");
             firstField.Value = firstnames[i];
-            WScript.Echo(`Employee name: ${firstField.Value} ${rstEmployees("LastName").Value}`);
+            WScript.Echo(
+                `Employee name: ${firstField.Value} ${
+                    rstEmployees("LastName").Value
+                }`,
+            );
             WScript.Echo(`\tFirstName Defined size: ${firstField.DefinedSize}`);
             WScript.Echo(`\tFirstName Actual size: ${firstField.ActualSize}`);
             rstEmployees.MoveNext();
@@ -907,7 +963,13 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
 
     const rstEmployees = new ActiveXObject("ADODB.Recordset");
     rstEmployees.Index = idxNew.Name;
-    rstEmployees.Open("Employees", cnn, adOpenKeyset, adLockOptimistic, ADODB.CommandTypeEnum.adCmdTableDirect);
+    rstEmployees.Open(
+        "Employees",
+        cnn,
+        adOpenKeyset,
+        adLockOptimistic,
+        ADODB.CommandTypeEnum.adCmdTableDirect,
+    );
 
     // Add a new record to the Employees table.
     rstEmployees.AddNew();
@@ -921,13 +983,20 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
     // Use the new index to set the order of the records.
     rstEmployees.MoveFirst();
 
-    WScript.Echo(`Index = ${rstEmployees.Index}, IndexNulls = ${idxNew.IndexNulls}`);
+    WScript.Echo(
+        `Index = ${rstEmployees.Index}, IndexNulls = ${idxNew.IndexNulls}`,
+    );
     WScript.Echo("\tCountry - Name");
 
     // Enumerate the Recordset. The value of the IndexNulls property will determine if the newly added record appears in the output.
     while (!rstEmployees.EOF) {
-        const country = rstEmployees("Country").Value as string | null || "[NULL]";
-        WScript.Echo(`\t${country} - ${rstEmployees("FirstName").Value} ${rstEmployees("LastName").Value}`);
+        const country =
+            (rstEmployees("Country").Value as string | null) || "[NULL]";
+        WScript.Echo(
+            `\t${country} - ${rstEmployees("FirstName").Value} ${
+                rstEmployees("LastName").Value
+            }`,
+        );
         rstEmployees.MoveNext();
     }
 
@@ -959,11 +1028,13 @@ ${rstEmployees("FirstName")} ${rstEmployees("LastName")}\t\t${faxDisplayString}
         // Display numeric scale and precision of small integer fields.
         for (colLoop of collectionToArray(tblOD.Columns)) {
             if (colLoop.Type === ADODB.DataTypeEnum.adSmallInt) {
-                WScript.Echo(`
+                WScript.Echo(
+                    `
 Column: ${colLoop.Name}
 Numeric scale: ${colLoop.NumericScale}
 Precision: ${colLoop.Precision}
-                `.trim());
+                `.trim(),
+                );
             }
         }
     } catch (error) {
@@ -1050,16 +1121,22 @@ Precision: ${colLoop.Precision}
         // Append the new table
         catNorthwind.Tables.Append(tblNew);
 
-        WScript.Echo(`${tblNew.Indexes.Count} indexes in '${tblNew.Name}' table`);
+        WScript.Echo(
+            `${tblNew.Indexes.Count} indexes in '${tblNew.Name}' table`,
+        );
 
         // Enumerate Indexes collection.
         for (idxLoop of collectionToArray(tblNew.Indexes)) {
-            WScript.Echo(`
+            WScript.Echo(
+                `
 Index ${idxLoop.Name}
     Primary key = ${idxLoop.PrimaryKey}
     Unique = ${idxLoop.Unique}
-    Columns = ${collectionToArray(idxLoop.Columns).map(colLoop => colLoop.Name).join(", ")}
-            `.trim());
+    Columns = ${collectionToArray(idxLoop.Columns)
+        .map((colLoop) => colLoop.Name)
+        .join(", ")}
+            `.trim(),
+            );
         }
 
         // Delete new table as this is a demonstration.
@@ -1108,9 +1185,9 @@ Index ${idxLoop.Name}
             // Enumerate the Recordset. The value of the IndexNulls property will determine if the newly added record appears in the output.
             while (!rstEmployees.EOF) {
                 WScript.Echo(
-                    `\t${rstEmployees("Country").Value} - ${rstEmployees("FirstName").Value} ${
-                        rstEmployees("LastName").Value
-                    }`,
+                    `\t${rstEmployees("Country").Value} - ${
+                        rstEmployees("FirstName").Value
+                    } ${rstEmployees("LastName").Value}`,
                 );
                 rstEmployees.MoveNext();
             }
@@ -1121,7 +1198,8 @@ Index ${idxLoop.Name}
         // Append Country column to new index.
         idxAscending = new ActiveXObject("ADOX.Index");
         idxAscending.Columns.Append("Country");
-        idxAscending.Columns("Country").SortOrder = ADOX.SortOrderEnum.adSortAscending;
+        idxAscending.Columns("Country").SortOrder =
+            ADOX.SortOrderEnum.adSortAscending;
         idxAscending.Name = "Ascending";
         idxAscending.IndexNulls = ADOX.AllowNullsEnum.adIndexNullsAllow;
 
@@ -1133,7 +1211,8 @@ Index ${idxLoop.Name}
         // Append Country column to new index.
         idxDescending = new ActiveXObject("ADOX.Index");
         idxDescending.Columns.Append("Country");
-        idxDescending.Columns("Country").SortOrder = ADOX.SortOrderEnum.adSortDescending;
+        idxDescending.Columns("Country").SortOrder =
+            ADOX.SortOrderEnum.adSortDescending;
         idxDescending.Name = "Descending";
         idxDescending.IndexNulls = ADOX.AllowNullsEnum.adIndexNullsAllow;
 
@@ -1214,10 +1293,17 @@ const flatten = <T>(arr: T[][], result: T[] = []) => {
     cat.ActiveConnection = connectionString;
 
     let multicolumnIndexes = flatten(
-        collectionToArray(cat.Tables).map(tbl => collectionToArray(tbl.Indexes).map<TableIndex>(idx => ({ tbl, idx }))),
-    ).filter(x => x.idx.Columns.Count > 1);
+        collectionToArray(cat.Tables).map((tbl) =>
+            collectionToArray(tbl.Indexes).map<TableIndex>((idx) => ({
+                tbl,
+                idx,
+            })),
+        ),
+    ).filter((x) => x.idx.Columns.Count > 1);
     for (const x of multicolumnIndexes) {
-        const columns = collectionToArray(x.idx.Columns).map(col => col.Name).join(", ");
+        const columns = collectionToArray(x.idx.Columns)
+            .map((col) => col.Name)
+            .join(", ");
         WScript.Echo(`${x.tbl.Name}.${x.idx.Name} -- ${columns}`);
     }
     multicolumnIndexes = [];

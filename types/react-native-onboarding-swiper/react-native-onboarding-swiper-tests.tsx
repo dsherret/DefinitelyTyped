@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Image, StyleProp, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
+import {
+    Image,
+    StyleProp,
+    TextStyle,
+    TouchableOpacity,
+    View,
+    ViewStyle,
+} from "react-native";
 import Onboarding, {
     DoneButtonProps,
     DotProps,
@@ -17,8 +24,8 @@ const Square: React.FC<DotProps> = ({ isLight, selected }) => {
             ? "rgba(0, 0, 0, 0.8)"
             : "rgba(0, 0, 0, 0.3)"
         : selected
-        ? "#fff"
-        : "rgba(255, 255, 255, 0.5)";
+          ? "#fff"
+          : "rgba(255, 255, 255, 0.5)";
 
     return (
         <View
@@ -95,7 +102,8 @@ const App = () => {
                 onboardingRef.current?.flatList?.scrollToIndex({
                     animated: true,
                     index: 2,
-                })}
+                })
+            }
             titleStyles={{ color: "blue" }} // set default color for the title
             pages={[
                 {
@@ -113,7 +121,8 @@ const App = () => {
                     backgroundColor: "#fe6e58",
                     image: <Image source={require("./images/square.png")} />,
                     title: "The Title",
-                    subtitle: "This is the subtitle that sumplements the title.",
+                    subtitle:
+                        "This is the subtitle that sumplements the title.",
                 },
                 {
                     backgroundColor: "#999",

@@ -25,7 +25,12 @@ export class NormalDistFuzzySet extends FuzzySet {
      * @param [right=0] - Represents the right border of this fuzzy set.
      * @param [standardDeviation=0] - Standard deviation of the normal distribution.
      */
-    constructor(left?: number, midpoint?: number, right?: number, standardDeviation?: number);
+    constructor(
+        left?: number,
+        midpoint?: number,
+        right?: number,
+        standardDeviation?: number,
+    );
 
     /**
      * Computes the degree of membership for the given value.

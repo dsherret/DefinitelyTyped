@@ -16,7 +16,9 @@ export type IDLRootType =
     | NamespaceType
     | TypedefType;
 
-export type IDLCallbackInterfaceMemberType = ConstantMemberType | OperationMemberType;
+export type IDLCallbackInterfaceMemberType =
+    | ConstantMemberType
+    | OperationMemberType;
 
 export type IDLInterfaceMemberType =
     | AttributeMemberType
@@ -25,11 +27,17 @@ export type IDLInterfaceMemberType =
     | DeclarationMemberType
     | OperationMemberType;
 
-export type IDLInterfaceMixinMemberType = AttributeMemberType | ConstantMemberType | OperationMemberType;
+export type IDLInterfaceMixinMemberType =
+    | AttributeMemberType
+    | ConstantMemberType
+    | OperationMemberType;
 
 export type IDLNamespaceMemberType = AttributeMemberType | OperationMemberType;
 
-export type IDLTypeDescription = GenericTypeDescription | SingleTypeDescription | UnionTypeDescription;
+export type IDLTypeDescription =
+    | GenericTypeDescription
+    | SingleTypeDescription
+    | UnionTypeDescription;
 
 export interface ParseOptions {
     /** Boolean indicating whether the result should include EOF node or not. */
@@ -58,7 +66,10 @@ export interface WriteOptions {
          * @param data The definition with the name
          * @param parent The parent of the definition, undefined if absent
          */
-        name?(escaped: string, { data, parent }: { data: any; parent: any }): string;
+        name?(
+            escaped: string,
+            { data, parent }: { data: any; parent: any },
+        ): string;
         /**
          * Called for each type referece, e.g. `Window`, `DOMString`, or `unsigned long`.
          * @param escaped The referenced name. Typically string, but may also be the return
@@ -75,7 +86,10 @@ export interface WriteOptions {
          * Called for each nameless members, e.g. `stringifier` for `stringifier;` and `constructor` for `constructor();`
          * @param keyword The keyword for syntax
          */
-        nameless?(keyword: string, { data, parent }: { data: any; parent: any }): string;
+        nameless?(
+            keyword: string,
+            { data, parent }: { data: any; parent: any },
+        ): string;
         /**
          * Called only once for each types, e.g. `Document`, `Promise<DOMString>`, or `sequence<long>`.
          * @param type The `wrap()`ed result of references and syntatic bracket strings.
@@ -91,7 +105,10 @@ export interface WriteOptions {
          * @param data The original definition object
          * @param parent The parent of the definition, undefined if absent
          */
-        definition?(content: any, { data, parent }: { data: any; parent: any }): any;
+        definition?(
+            content: any,
+            { data, parent }: { data: any; parent: any },
+        ): any;
         /**
          * Called for each extended attribute annotation.
          * @param content The wrapped value of everything the annotation contains.
@@ -186,7 +203,8 @@ interface AbstractNonUnionTypeDescription extends AbstractTypeDescription {
     union: false;
 }
 
-interface AbstractGenericTypeDescription extends AbstractNonUnionTypeDescription {
+interface AbstractGenericTypeDescription
+    extends AbstractNonUnionTypeDescription {
     /**
      * Contains the IDL type description for the type in the sequence,
      * the eventual value of the promise, etc.
@@ -201,12 +219,14 @@ export type GenericTypeDescription =
     | RecordTypeDescription
     | SequenceTypeDescription;
 
-export interface FrozenArrayTypeDescription extends AbstractGenericTypeDescription {
+export interface FrozenArrayTypeDescription
+    extends AbstractGenericTypeDescription {
     generic: "FrozenArray";
     idlType: [IDLTypeDescription];
 }
 
-export interface ObservableArrayTypeDescription extends AbstractGenericTypeDescription {
+export interface ObservableArrayTypeDescription
+    extends AbstractGenericTypeDescription {
     generic: "ObservableArray";
     idlType: [IDLTypeDescription];
 }
@@ -221,7 +241,8 @@ export interface RecordTypeDescription extends AbstractGenericTypeDescription {
     idlType: [IDLTypeDescription, IDLTypeDescription];
 }
 
-export interface SequenceTypeDescription extends AbstractGenericTypeDescription {
+export interface SequenceTypeDescription
+    extends AbstractGenericTypeDescription {
     generic: "sequence";
     idlType: [IDLTypeDescription];
 }
@@ -368,7 +389,11 @@ export interface OperationMemberType extends AbstractBase {
     name: string | null;
     /** An array of arguments for the operation. */
     arguments: Argument[];
-    parent: CallbackInterfaceType | InterfaceMixinType | InterfaceType | NamespaceType;
+    parent:
+        | CallbackInterfaceType
+        | InterfaceMixinType
+        | InterfaceType
+        | NamespaceType;
 }
 
 export interface AttributeMemberType extends AbstractBase {
@@ -417,25 +442,29 @@ export type DeclarationMemberType =
     | MaplikeDeclarationMemberType
     | SetlikeDeclarationMemberType;
 
-export interface IterableDeclarationMemberType extends AbstractDeclarationMemberType {
+export interface IterableDeclarationMemberType
+    extends AbstractDeclarationMemberType {
     type: "iterable";
     idlType: [IDLTypeDescription] | [IDLTypeDescription, IDLTypeDescription];
     async: boolean;
     readonly: false;
 }
 
-interface AbstractCollectionLikeMemberType extends AbstractDeclarationMemberType {
+interface AbstractCollectionLikeMemberType
+    extends AbstractDeclarationMemberType {
     async: false;
     readonly: boolean;
     arguments: [];
 }
 
-export interface MaplikeDeclarationMemberType extends AbstractCollectionLikeMemberType {
+export interface MaplikeDeclarationMemberType
+    extends AbstractCollectionLikeMemberType {
     type: "maplike";
     idlType: [IDLTypeDescription, IDLTypeDescription];
 }
 
-export interface SetlikeDeclarationMemberType extends AbstractCollectionLikeMemberType {
+export interface SetlikeDeclarationMemberType
+    extends AbstractCollectionLikeMemberType {
     type: "setlike";
     idlType: [IDLTypeDescription];
 }
@@ -452,7 +481,11 @@ export interface Argument extends AbstractBase {
     idlType: IDLTypeDescription;
     /** The argument's name. */
     name: string;
-    parent: CallbackType | ConstructorMemberType | ExtendedAttribute | OperationMemberType;
+    parent:
+        | CallbackType
+        | ConstructorMemberType
+        | ExtendedAttribute
+        | OperationMemberType;
 }
 
 export interface ExtendedAttribute extends AbstractBase {

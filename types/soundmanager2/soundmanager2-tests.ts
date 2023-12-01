@@ -7,7 +7,7 @@ const mySoundObject = soundManager.createSound({
     volume: 50,
     autoPlay: true,
     whileloading() {
-        console.log(<string> this.id + " is loading");
+        console.log(<string>this.id + " is loading");
     },
 });
 

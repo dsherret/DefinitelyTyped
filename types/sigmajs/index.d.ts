@@ -1,6 +1,10 @@
 declare namespace SigmaJs {
     interface Animation {
-        camera(camera: Camera, target: { [index: string]: any }, options: { [index: string]: any }): number;
+        camera(
+            camera: Camera,
+            target: { [index: string]: any },
+            options: { [index: string]: any },
+        ): number;
     }
 
     interface Camera {
@@ -16,7 +20,14 @@ declare namespace SigmaJs {
     }
 
     interface Canvas {
-        edges: { [renderType: string]: (edge: Edge, source: Node, target: Node, ...a: any[]) => void };
+        edges: {
+            [renderType: string]: (
+                edge: Edge,
+                source: Node,
+                target: Node,
+                ...a: any[]
+            ) => void;
+        };
         labels: { [renderType: string]: (node: Node, ...a: any[]) => void };
         nodes: { [renderType: string]: (node: Node, ...a: any[]) => void };
     }
@@ -27,8 +38,8 @@ declare namespace SigmaJs {
     }
 
     interface Configurable {
-        new(setting: Settings): Configurable;
-        new(settings: Settings[]): Configurable;
+        new (setting: Settings): Configurable;
+        new (settings: Settings[]): Configurable;
         (key: string): string;
     }
 
@@ -165,10 +176,10 @@ declare namespace SigmaJs {
     }
 
     interface SigmaFactory {
-        new(): Sigma;
-        new(container: string): Sigma;
-        new(container: Element): Sigma;
-        new(configuration: SigmaConfigs): Sigma;
+        new (): Sigma;
+        new (container: string): Sigma;
+        new (container: Element): Sigma;
+        new (configuration: SigmaConfigs): Sigma;
         canvas: Canvas;
         classes: Classes;
         misc: Miscellaneous;

@@ -26,7 +26,9 @@ export interface PickerData {
     iso2: CountriesListItem["iso2"];
 }
 
-export interface ReactNativePhoneInputProps<TextComponentType extends React.ComponentType = typeof TextInput> {
+export interface ReactNativePhoneInputProps<
+    TextComponentType extends React.ComponentType = typeof TextInput,
+> {
     /**
      * Initial selected country
      */

@@ -5,18 +5,22 @@ const world: topojson.WorldAtlas = {
     objects: {
         countries: {
             type: "GeometryCollection",
-            geometries: [{
-                type: "Polygon",
-                arcs: [[]],
-                id: "004",
-            }],
+            geometries: [
+                {
+                    type: "Polygon",
+                    arcs: [[]],
+                    id: "004",
+                },
+            ],
         },
         land: {
             type: "GeometryCollection",
-            geometries: [{
-                type: "MultiPolygon",
-                arcs: [[[]]],
-            }],
+            geometries: [
+                {
+                    type: "MultiPolygon",
+                    arcs: [[[]]],
+                },
+            ],
         },
     },
     arcs: [[]],
@@ -37,26 +41,32 @@ const us: topojson.UsAtlas = {
     objects: {
         counties: {
             type: "GeometryCollection",
-            geometries: [{
-                type: "Polygon",
-                arcs: [[]],
-                id: "05089",
-            }],
+            geometries: [
+                {
+                    type: "Polygon",
+                    arcs: [[]],
+                    id: "05089",
+                },
+            ],
         },
         states: {
             type: "GeometryCollection",
-            geometries: [{
-                type: "MultiPolygon",
-                arcs: [[[]]],
-                id: "11",
-            }],
+            geometries: [
+                {
+                    type: "MultiPolygon",
+                    arcs: [[[]]],
+                    id: "11",
+                },
+            ],
         },
         nation: {
             type: "GeometryCollection",
-            geometries: [{
-                type: "MultiPolygon",
-                arcs: [[[]]],
-            }],
+            geometries: [
+                {
+                    type: "MultiPolygon",
+                    arcs: [[[]]],
+                },
+            ],
         },
     },
     arcs: [[[]]],

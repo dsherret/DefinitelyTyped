@@ -14,7 +14,10 @@ export interface DataFactoryExt extends RDF.DataFactory<QuadExt, RDF.Quad> {
 
     blankNode(value?: string): BlankNodeExt;
 
-    literal(value: string, languageOrDatatype?: string | RDF.NamedNode): LiteralExt;
+    literal(
+        value: string,
+        languageOrDatatype?: string | RDF.NamedNode,
+    ): LiteralExt;
 
     variable(value: string): VariableExt;
 
@@ -27,13 +30,15 @@ export interface DataFactoryExt extends RDF.DataFactory<QuadExt, RDF.Quad> {
         graph?: RDF.Quad_Graph,
     ): QuadExt;
 
-    fromTerm: <T extends RDF.Term>(original: T) => ReturnType<FromTerm<T, this>>;
+    fromTerm: <T extends RDF.Term>(
+        original: T,
+    ) => ReturnType<FromTerm<T, this>>;
 
     fromQuad: (original: RDF.Quad) => ReturnType<FromTerm<RDF.Quad, this>>;
 }
 
 interface DataFactoryExtCtor {
-    new(): DataFactoryExt;
+    new (): DataFactoryExt;
     exports: [
         "namedNode",
         "blankNode",

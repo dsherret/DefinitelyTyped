@@ -31,9 +31,10 @@ export default class App extends React.Component<{}, AppState> {
                 <h2>Portal (stateless)</h2>
                 <button
                     onClick={() =>
-                        this.setState(prevState => ({
+                        this.setState((prevState) => ({
                             isPortalOneActive: !prevState.isPortalOneActive,
-                        }))}
+                        }))
+                    }
                 >
                     Toggle
                 </button>
@@ -46,14 +47,17 @@ export default class App extends React.Component<{}, AppState> {
                 <h2>Portal (stateless, custom node)</h2>
                 <button
                     onClick={() =>
-                        this.setState(prevState => ({
+                        this.setState((prevState) => ({
                             isPortalTwoActive: !prevState.isPortalTwoActive,
-                        }))}
+                        }))
+                    }
                 >
                     Toggle
                 </button>
                 {this.state.isPortalTwoActive && (
-                    <Portal node={document && document.getElementById("user-node")}>
+                    <Portal
+                        node={document && document.getElementById("user-node")}
+                    >
                         <p>This thing was portaled!</p>
                     </Portal>
                 )}
@@ -62,12 +66,15 @@ export default class App extends React.Component<{}, AppState> {
                 <PortalWithState closeOnOutsideClick closeOnEsc>
                     {({ openPortal, closePortal, isOpen, portal }) => [
                         <button key="foo" onClick={openPortal}>
-                            Open Portal {isOpen && "(this counts as an outised click)"}
+                            Open Portal{" "}
+                            {isOpen && "(this counts as an outised click)"}
                         </button>,
                         portal(
                             <p>
-                                This is more advanced Portal. It handles its own state.{" "}
-                                <button onClick={closePortal}>Close me!</button>, hit ESC or click outside of me.
+                                This is more advanced Portal. It handles its own
+                                state.{" "}
+                                <button onClick={closePortal}>Close me!</button>
+                                , hit ESC or click outside of me.
                             </p>,
                         ),
                     ]}

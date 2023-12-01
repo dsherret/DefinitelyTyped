@@ -35,7 +35,12 @@ declare namespace Drop {
 
     interface IDropOptions {
         target?: Element | undefined;
-        content?: Element | string | ((drop?: Drop) => string) | ((drop?: Drop) => Element) | undefined;
+        content?:
+            | Element
+            | string
+            | ((drop?: Drop) => string)
+            | ((drop?: Drop) => Element)
+            | undefined;
         position?: string | undefined;
         openOn?: string | undefined;
         classes?: string | undefined;

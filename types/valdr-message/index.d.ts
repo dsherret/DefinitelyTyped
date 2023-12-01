@@ -34,7 +34,11 @@ declare namespace valdr.message {
          * @param validatorName the name of the validator.
          * @returns {string} the message.
          */
-        getMessage(typeName: string, fieldName: string, validatorName: string): string;
+        getMessage(
+            typeName: string,
+            fieldName: string,
+            validatorName: string,
+        ): string;
     }
 
     interface ValdrMessageProvider {
@@ -63,6 +67,10 @@ declare namespace valdr.message {
          * @param validatorName the name of the validator.
          * @returns {string} the message.
          */
-        getMessage(typeName: string, fieldName: string, validatorName: string): string;
+        getMessage(
+            typeName: string,
+            fieldName: string,
+            validatorName: string,
+        ): string;
     }
 }

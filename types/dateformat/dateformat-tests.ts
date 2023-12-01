@@ -1,4 +1,10 @@
-import dateFormat, { DateFormatI18n, DateFormatMasks, formatTimezone, i18n, masks } from "dateformat";
+import dateFormat, {
+    DateFormatI18n,
+    DateFormatMasks,
+    formatTimezone,
+    i18n,
+    masks,
+} from "dateformat";
 const now = new Date();
 
 // test type exports
@@ -36,7 +42,7 @@ masks.isoDateTime; // $ExpectType string
 masks.isoUtcDateTime; // $ExpectType string
 masks.expiresHeaderFormat; // $ExpectType string
 
-masks.hammerTime = "HH:MM! \"Can't touch this!\"";
+masks.hammerTime = 'HH:MM! "Can\'t touch this!"';
 
 i18n.dayNames = [
     "Sun",

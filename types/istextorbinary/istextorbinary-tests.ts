@@ -1,4 +1,11 @@
-import { getEncoding, getEncodingSync, isBinary, isBinarySync, isText, isTextSync } from "istextorbinary";
+import {
+    getEncoding,
+    getEncodingSync,
+    isBinary,
+    isBinarySync,
+    isText,
+    isTextSync,
+} from "istextorbinary";
 
 isTextSync("foo.txt"); // $ExpectType boolean
 isTextSync("foo.txt", new Buffer(1)); // $ExpectType boolean

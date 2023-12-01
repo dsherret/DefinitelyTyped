@@ -9,7 +9,14 @@ export default class Force extends Behaviour {
     /**
      * Constructs a Force behaviour instance.
      */
-    constructor(fx?: number, fy?: number, fz?: number, life?: number, easing?: EasingFunction, isEnabled?: boolean);
+    constructor(
+        fx?: number,
+        fy?: number,
+        fz?: number,
+        life?: number,
+        easing?: EasingFunction,
+        isEnabled?: boolean,
+    );
 
     /**
      * Resets the behaviour properties.

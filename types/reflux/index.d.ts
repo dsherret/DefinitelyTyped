@@ -29,7 +29,11 @@ export class Store {
     hasListener(listenable: Listenable): boolean;
     listenToMany(listenables: Listenable[]): void;
     validateListening(listenable: Listenable): string;
-    listenTo(listenable: Listenable, callback: Function, defaultCallback?: Function): Subscription;
+    listenTo(
+        listenable: Listenable,
+        callback: Function,
+        defaultCallback?: Function,
+    ): Subscription;
     stopListeningTo(listenable: Listenable): boolean;
     stopListeningToAll(): void;
     fetchInitialState(listenable: Listenable, defaultCallback: Function): void;
@@ -40,20 +44,33 @@ export class Store {
     setState(state: object): void;
 }
 
-export class Component<TOfStore extends typeof Store = typeof Store, P = any, S = any> extends React.Component<P, S> {
+export class Component<
+    TOfStore extends typeof Store = typeof Store,
+    P = any,
+    S = any,
+> extends React.Component<P, S> {
     store: TOfStore;
     stores: TOfStore[];
     storeKeys: string[];
-    mapStoreToState(storeType: TOfStore, mappingFunc: (newState: any) => any): void;
+    mapStoreToState(
+        storeType: TOfStore,
+        mappingFunc: (newState: any) => any,
+    ): void;
 }
 
-export class PureComponent<TOfStore extends typeof Store = typeof Store, P = any, S = any, SS = any>
-    extends React.PureComponent<P, S, SS>
-{
+export class PureComponent<
+    TOfStore extends typeof Store = typeof Store,
+    P = any,
+    S = any,
+    SS = any,
+> extends React.PureComponent<P, S, SS> {
     store: TOfStore;
     stores: TOfStore[];
     storeKeys: string[];
-    mapStoreToState(storeType: TOfStore, mappingFunc: (newState: any) => any): void;
+    mapStoreToState(
+        storeType: TOfStore,
+        mappingFunc: (newState: any) => any,
+    ): void;
 }
 
 export interface ActionParameters {
@@ -78,9 +95,13 @@ export interface Actions {
 
 export function createStore(definition: StoreDefinition): Store;
 
-export function createAction(definition?: ActionDefinition | string | object): any;
+export function createAction(
+    definition?: ActionDefinition | string | object,
+): any;
 
-export function createActions(definitions: string[] | ActionObjectDefinition | ActionDefinition[]): any;
+export function createActions(
+    definitions: string[] | ActionObjectDefinition | ActionDefinition[],
+): any;
 
 export function connect(store: Store, key?: string): void;
 export function listenTo(store: Store, handler: string): void;

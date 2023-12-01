@@ -43,8 +43,17 @@ declare module "leaflet" {
             | "ShadedReliefLabels"
             | "TerrainLabels";
 
-        type LeafletGeometry = Marker | Polygon | Polyline | LatLngExpression | LatLngBounds | GeoJSON;
-        type GeoJSONGeometry = GeoJSON.Point | GeoJSON.Polygon | GeoJSON.LineString;
+        type LeafletGeometry =
+            | Marker
+            | Polygon
+            | Polyline
+            | LatLngExpression
+            | LatLngBounds
+            | GeoJSON;
+        type GeoJSONGeometry =
+            | GeoJSON.Point
+            | GeoJSON.Polygon
+            | GeoJSON.LineString;
         type Geometry = LeafletGeometry | GeoJSONGeometry;
         type SpatialReferenceExpression = number | SpatialReference;
 
@@ -82,12 +91,17 @@ declare module "leaflet" {
          * `L.esri.basemapLayer` is used to display Esri hosted basemaps and attributes data providers appropriately.
          * The Terms of Use for Esri hosted services apply to all Leaflet applications.
          */
-        function basemapLayer(key: Basemaps, options?: BasemapLayerOptions): BasemapLayer;
+        function basemapLayer(
+            key: Basemaps,
+            options?: BasemapLayerOptions,
+        ): BasemapLayer;
 
         /**
          * Options for `L.esri.TiledMapLayer`
          */
-        interface TiledMapLayerOptions extends TileLayerOptions, LayerOptionsBase {
+        interface TiledMapLayerOptions
+            extends TileLayerOptions,
+                LayerOptionsBase {
             /**
              * If correctZoomLevels is enabled this controls the amount of tolerance for the difference at each scale
              * level for remapping tile levels.
@@ -202,7 +216,9 @@ declare module "leaflet" {
         /**
          * Options for `L.esri.DynamicMapLayer`
          */
-        interface DynamicMapLayerOptions extends RasterLayerOptions, LayerOptionsBase {
+        interface DynamicMapLayerOptions
+            extends RasterLayerOptions,
+                LayerOptionsBase {
             /**
              * Output format of the image.
              * @default 'png32'
@@ -256,7 +272,11 @@ declare module "leaflet" {
              * return false.
              */
             bindPopup(
-                fn: FeatureCallbackHandler | ((layer: Layer) => Content) | Content | Popup,
+                fn:
+                    | FeatureCallbackHandler
+                    | ((layer: Layer) => Content)
+                    | Content
+                    | Popup,
                 popupOptions?: PopupOptions,
             ): this;
             /**
@@ -329,7 +349,9 @@ declare module "leaflet" {
          * and pass back the image which was generated on the fly. They also expose capabilities for querying and
          * identifying individual features.
          */
-        function dynamicMapLayer(options: DynamicMapLayerOptions): DynamicMapLayer;
+        function dynamicMapLayer(
+            options: DynamicMapLayerOptions,
+        ): DynamicMapLayer;
 
         /**
          * Options for FeatureLayer
@@ -339,7 +361,9 @@ declare module "leaflet" {
              * Function that will be used for creating layers for GeoJSON points. If the option is not specified, simple
              * markers will be created). For point layers, custom panes should be passed through pointToLayer (example here).
              */
-            pointToLayer?: ((feature: any, latLng: LatLngExpression) => void) | undefined;
+            pointToLayer?:
+                | ((feature: any, latLng: LatLngExpression) => void)
+                | undefined;
             /**
              * Function that will be used to get style options for vector layers created for GeoJSON features.
              */
@@ -461,7 +485,10 @@ declare module "leaflet" {
             /**
              * Changes the style on a specfic feature.
              */
-            setFeatureStyle(id: string | number, style: PathOptions | StyleCallback): this;
+            setFeatureStyle(
+                id: string | number,
+                style: PathOptions | StyleCallback,
+            ): this;
             /**
              * Given the ID of a feature, reset that feature to the original style.
              */
@@ -490,7 +517,11 @@ declare module "leaflet" {
              * Sets the new where option and refreshes the layer to reflect the new where filter. Accepts an optional
              * callback and function context.
              */
-            setWhere(where: string, callback?: FeatureCallbackHandler, context?: any): this;
+            setWhere(
+                where: string,
+                callback?: FeatureCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Returns the current time range as an array like [from, to]
              */
@@ -499,7 +530,12 @@ declare module "leaflet" {
              * Sets the current time filter applied to features. An optional callback is run upon completion if
              * timeFilterMode is set to 'server'. Also accepts function context as the last argument.
              */
-            setTimeRange(from: Date, to: Date, callback?: FeatureCallbackHandler, context?: any): this;
+            setTimeRange(
+                from: Date,
+                to: Date,
+                callback?: FeatureCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Adds a new feature to the feature layer. this also adds the feature to the map if creation is successful.
              *
@@ -510,7 +546,11 @@ declare module "leaflet" {
              * the metadata of your service under capabilities.
              */
             // TODO: GeoJSONFeature<GeoJSON.GeometryObject>
-            addFeature(feature: any, callback?: ResponseCallbackHandler, context?: any): this;
+            addFeature(
+                feature: any,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Update the provided feature on the Feature Layer. This also updates the feature on the map.
              *
@@ -521,7 +561,11 @@ declare module "leaflet" {
              * checking the metadata of your service under capabilities.
              */
             // TODO: GeoJSONFeature<GeoJSON.GeometryObject>
-            updateFeature(feature: any, callback?: ResponseCallbackHandler, context?: any): this;
+            updateFeature(
+                feature: any,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Remove the feature with the provided id from the feature layer. This will also remove the feature from
              * the map if it exists.
@@ -532,7 +576,11 @@ declare module "leaflet" {
              * Requires the Delete capability be enabled on the service. You can check if this operation exists by
              * checking the metadata of your service under capabilities.
              */
-            deleteFeature(id: string | number, callback?: ResponseCallbackHandler, context?: any): this;
+            deleteFeature(
+                id: string | number,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Removes an array of features with the provided ids from the feature layer. This will also remove the
              * features from the map if they exist.
@@ -543,7 +591,11 @@ declare module "leaflet" {
              * Requires the Delete capability be enabled on the service. You can check if this operation exists by
              * checking the metadata of your service under capabilities.
              */
-            deleteFeatures(ids: string[] | number[], callback?: ResponseCallbackHandler, context?: any): this;
+            deleteFeatures(
+                ids: string[] | number[],
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Redraws a feature with the provided id from the feature layer.
              */
@@ -600,13 +652,19 @@ declare module "leaflet" {
          */
         function featureLayer(options: FeatureLayerOptions): FeatureLayer;
 
-        type FeatureCallbackHandler = (error?: any, featureCollection?: any, response?: any) => void;
+        type FeatureCallbackHandler = (
+            error?: any,
+            featureCollection?: any,
+            response?: any,
+        ) => void;
         type ResponseCallbackHandler = (error?: any, response?: any) => void;
 
         /**
          * Options for `L.esri.ImageMapLayer`
          */
-        interface ImageMapLayerOptions extends ImageOverlayOptions, LayerOptionsBase {
+        interface ImageMapLayerOptions
+            extends ImageOverlayOptions,
+                LayerOptionsBase {
             /**
              * If there are multiple bands, you can specify which bands to export
              */
@@ -694,7 +752,12 @@ declare module "leaflet" {
              * (and/or other identify parameters) are passed to the identify service, use L.esri.IdentifyImage.
              */
             bindPopup(
-                fn: LayerCallbackHandler | ((layer: Layer) => Content) | string | HTMLElement | Popup,
+                fn:
+                    | LayerCallbackHandler
+                    | ((layer: Layer) => Content)
+                    | string
+                    | HTMLElement
+                    | Popup,
                 popupOptions?: PopupOptions,
             ): this;
 
@@ -725,7 +788,10 @@ declare module "leaflet" {
              * default is `esriNoDataMatchAny` when `noData` is a number, and `esriNoDataMatchAll` when noData is an array.
              * See Image Service Export Image documentation for more details
              */
-            setNoData(noData: number | number[], noDataInterpretation?: string): this;
+            setNoData(
+                noData: number | number[],
+                noDataInterpretation?: string,
+            ): this;
 
             /**
              * Returns the current no data interpretation value.
@@ -794,7 +860,11 @@ declare module "leaflet" {
          */
         function imageMapLayer(options: ImageMapLayerOptions): ImageMapLayer;
 
-        type LayerCallbackHandler = (error?: any, layer?: any, response?: any) => void;
+        type LayerCallbackHandler = (
+            error?: any,
+            layer?: any,
+            response?: any,
+        ) => void;
 
         /**
          * Options for `L.esri.Service`
@@ -831,12 +901,22 @@ declare module "leaflet" {
              * Makes a GET request to the service. The service's URL will be combined with the path option and
              * parameters will be serialized to a query string. Accepts an optional function context for the callback.
              */
-            get(url: string, params?: any, callback?: CallbackHandler, context?: any): this;
+            get(
+                url: string,
+                params?: any,
+                callback?: CallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Makes a POST request to the service. The service's URL will be combined with the path option and
              * parameters will be serialized. Accepts an optional function context for the callback.
              */
-            post(url: string, params?: any, callback?: CallbackHandler, context?: any): this;
+            post(
+                url: string,
+                params?: any,
+                callback?: CallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Authenticates this service with a new token and runs any pending requests that required a token.
              */
@@ -885,7 +965,12 @@ declare module "leaflet" {
              * Makes a request to the associated service. The service's URL will be combined with the path option and
              * parameters will be serialized. Accepts an optional function context for the callback.
              */
-            request(url: string, params?: any, callback?: any, context?: any): this;
+            request(
+                url: string,
+                params?: any,
+                callback?: any,
+                context?: any,
+            ): this;
             /**
              * Adds a token to this request if the service requires authentication. Will be added automatically if used
              * with a service.
@@ -948,7 +1033,11 @@ declare module "leaflet" {
              * the metadata of your service under capabilities.
              */
             // TODO: GeoJSONFeature<GeoJSON.GeometryObject>
-            addFeature(feature: any, callback?: ResponseCallbackHandler, context?: any): this;
+            addFeature(
+                feature: any,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Update the provided feature on the Feature Layer. This also updates the feature on the map.
              *
@@ -959,7 +1048,11 @@ declare module "leaflet" {
              * checking the metadata of your service under capabilities.
              */
             // TODO: GeoJSONFeature<GeoJSON.GeometryObject>
-            updateFeature(feature: any, callback?: ResponseCallbackHandler, context?: any): this;
+            updateFeature(
+                feature: any,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Remove the feature with the provided id from the feature layer. This will also remove the feature from
              * the map if it exists.
@@ -970,7 +1063,11 @@ declare module "leaflet" {
              * Requires the Delete capability be enabled on the service. You can check if this operation exists by
              * checking the metadata of your service under capabilities.
              */
-            deleteFeature(id: string | number, callback?: ResponseCallbackHandler, context?: any): this;
+            deleteFeature(
+                id: string | number,
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
             /**
              * Removes an array of features with the provided ids from the feature layer. This will also remove the
              * features from the map if they exist.
@@ -981,7 +1078,11 @@ declare module "leaflet" {
              * Requires the Delete capability be enabled on the service. You can check if this operation exists by
              * checking the metadata of your service under capabilities.
              */
-            deleteFeatures(ids: string[] | number[], callback?: ResponseCallbackHandler, context?: any): this;
+            deleteFeatures(
+                ids: string[] | number[],
+                callback?: ResponseCallbackHandler,
+                context?: any,
+            ): this;
         }
 
         /**
@@ -989,7 +1090,9 @@ declare module "leaflet" {
          * and ArcGIS Server that allows you to make requests to the API, as well as query, add, update and remove
          * features from the service.
          */
-        function featureLayerService(options: ServiceOptions): FeatureLayerService;
+        function featureLayerService(
+            options: ServiceOptions,
+        ): FeatureLayerService;
 
         /**
          * `L.esri.Query` is an abstraction for the query API included in Feature Layers and Image Services. It provides
@@ -1205,7 +1308,9 @@ declare module "leaflet" {
          * `L.esri.IdentifyFeatures` is an abstraction for the Identify API found in Map Services. It provides a
          * chainable API for building request parameters and executing the request.
          */
-        function identifyFeatures(options: ServiceOptions | ImageService): IdentifyFeatures;
+        function identifyFeatures(
+            options: ServiceOptions | ImageService,
+        ): IdentifyFeatures;
 
         /**
          * `L.esri.Find` is an abstraction for the find API included in Map Services. It provides a chainable API for
@@ -1353,7 +1458,10 @@ declare module "leaflet" {
             value: any;
         }
         interface IdentifyImageResponse {
-            pixel: GeoJSON.Feature<GeoJSON.Point, IdentifyImageResponseProperties>;
+            pixel: GeoJSON.Feature<
+                GeoJSON.Point,
+                IdentifyImageResponseProperties
+            >;
             catalogItems: GeoJSON.FeatureCollection<GeoJSON.Point>;
         }
         type IdentifyImageCallbackHandler = (
@@ -1365,7 +1473,9 @@ declare module "leaflet" {
         /**
          * Accepts either an `options` object or an instance of ImageService.
          */
-        function identifyImage(options: ServiceOptions | ImageService): IdentifyImage;
+        function identifyImage(
+            options: ServiceOptions | ImageService,
+        ): IdentifyImage;
     }
 }
 

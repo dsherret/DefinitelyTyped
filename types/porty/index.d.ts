@@ -39,6 +39,10 @@ export function find(options?: FindOptions): Promise<number>;
  * @param max The maximum port. Defaults to 10000
  * @param avoids Ports to avoid
  */
-export function find(min?: number, max?: number, avoids?: readonly number[]): Promise<number>;
+export function find(
+    min?: number,
+    max?: number,
+    avoids?: readonly number[],
+): Promise<number>;
 
 export { find as get };

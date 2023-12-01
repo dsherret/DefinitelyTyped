@@ -37,5 +37,9 @@ jsdoc2md.getNamepaths(JsdocDataOptions); // $ExpectType Promise<object>
     await jsdoc2md.getJsdocData(JsdocDataOptions); // $ExpectType object[]
     await jsdoc2md.clear(); // $ExpectType void
     await jsdoc2md.getNamepaths(JsdocDataOptions); // $ExpectType object
-    await jsdoc2md.render({ files: "file.js", "heading-depth": 4, "name-format": "<code>" });
+    await jsdoc2md.render({
+        files: "file.js",
+        "heading-depth": 4,
+        "name-format": "<code>",
+    });
 })();

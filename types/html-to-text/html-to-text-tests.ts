@@ -158,8 +158,9 @@ const headerFormatter: FormatCallback = (elem, walk, builder, options) => {
     walk(elem.children, builder);
     builder.closeBlock({
         trailingLineBreaks: options.trailingLineBreaks || 2,
-        blockTransform: str => {
-            const underline = str.substring(str.lastIndexOf("\n") + 1)
+        blockTransform: (str) => {
+            const underline = str
+                .substring(str.lastIndexOf("\n") + 1)
                 .replace(/./g, "=");
             return `${str}\n${underline}`;
         },
@@ -176,10 +177,15 @@ const htmlOptions: HtmlToTextOptions = {
     },
     formatters: {
         headerFormatter: (elem, walk, builder, options) => {
-            builder.openBlock({ leadingLineBreaks: options.leadingLineBreaks || 2 });
+            builder.openBlock({
+                leadingLineBreaks: options.leadingLineBreaks || 2,
+            });
             walk(elem.children, builder);
             const trailingLineBreaks = options.trailingLineBreaks || 2;
-            builder.closeBlock({ trailingLineBreaks, blockTransform: str => `${str} **hdr**\n` });
+            builder.closeBlock({
+                trailingLineBreaks,
+                blockTransform: (str) => `${str} **hdr**\n`,
+            });
         },
         blockFormatter: (elem, walk, builder, options) => {
             const reservedLineLength = 2;
@@ -187,7 +193,10 @@ const htmlOptions: HtmlToTextOptions = {
             builder.openBlock({ leadingLineBreaks, reservedLineLength });
             walk(elem.children, builder);
             const trailingLineBreaks = options.trailingLineBreaks || 2;
-            builder.closeBlock({ trailingLineBreaks, blockTransform: str => `**blk** ${str}\n` });
+            builder.closeBlock({
+                trailingLineBreaks,
+                blockTransform: (str) => `**blk** ${str}\n`,
+            });
         },
         textFormatter: (elem, walk, builder, options) => {
             builder.options.formatters["heading"](elem, walk, builder, options);
@@ -244,7 +253,8 @@ if (!text.match(/\*\*hdr\*\*/)) {
     console.error("Formatter not called!");
 }
 
-const allElements = "<a>a</a>\
+const allElements =
+    "<a>a</a>\
 <blockquote>b</blockquote>\
 <h1>h</h1>\
 <hr />\
@@ -260,7 +270,7 @@ const elementFormatter: FormatCallback = (elem, walk, builder, options) => {
     // walk(elem.children?, builder);
     builder.closeBlock({
         trailingLineBreaks: options.trailingLineBreaks || 2,
-        blockTransform: str => {
+        blockTransform: (str) => {
             return `--${elem.name}--\n`;
         },
     });
@@ -281,10 +291,11 @@ const fmtOptions: HtmlToTextOptions = {
         unorderedList: elementFormatter,
     },
 };
-console.log("\nEmit all elements with \"--\" wrapping");
+console.log('\nEmit all elements with "--" wrapping');
 console.log(htmlToText(allElements, fmtOptions));
 
-const blockTextTestElements = "<a>a</a>\
+const blockTextTestElements =
+    "<a>a</a>\
 <blockquote>b</blockquote>\
 <p>1234567890123456789012345678901234567890</p>\
 <table></table>";
@@ -292,7 +303,9 @@ const blockTextTestElements = "<a>a</a>\
 const fmtOptionsTable: HtmlToTextOptions = {
     formatters: {
         table: (elem, walk, builder, options) => {
-            builder.openBlock({ leadingLineBreaks: options.leadingLineBreaks || 2 });
+            builder.openBlock({
+                leadingLineBreaks: options.leadingLineBreaks || 2,
+            });
             builder.openTable();
             builder.openTableRow();
             builder.openTableCell({ maxColumnWidth: 22 });
@@ -304,7 +317,9 @@ const fmtOptionsTable: HtmlToTextOptions = {
             builder.closeTableRow();
             builder.closeTable({ tableToString: () => "!!table goes here!!" });
             // walk(elem.children, builder);
-            builder.closeBlock({ trailingLineBreaks: options.trailingLineBreaks || 2 });
+            builder.closeBlock({
+                trailingLineBreaks: options.trailingLineBreaks || 2,
+            });
         },
     },
 };
@@ -344,112 +359,135 @@ const converter = compile(selOptions);
 console.log(converter(allElements));
 
 console.log("\nTest with any tag");
-console.log(htmlToText("<h1>Starting foo test</h1><foo>bar</foo>", {
-    formatters: {
-        fooFormatter: (elem, walk, builder, options) => {
-            builder.addInline("fooFormatter: ", { noWordTransform: false });
-            walk(elem.children, builder);
-        },
-    },
-    selectors: [
-        {
-            selector: "foo",
-            format: "fooFormatter",
-        },
-    ],
-}));
-
-console.log("\nTest with linkBrackets false");
-console.log(htmlToText("<a href=\"https://github.com/DefinitelyTyped\">Link</a>", {
-    selectors: [
-        {
-            selector: "a",
-            options: { linkBrackets: false },
-        },
-    ],
-}));
-
-console.log("\nTest with custom linkBrackets");
-console.log(htmlToText("<a href=\"https://github.com/DefinitelyTyped\">Link</a>", {
-    selectors: [
-        {
-            selector: "a",
-            options: { linkBrackets: ["@", "@"] },
-        },
-    ],
-}));
-
-console.log("\nTest without linkBrackets");
-console.log(htmlToText("<a href=\"https://github.com/DefinitelyTyped\">Link</a>", {
-    selectors: [
-        {
-            selector: "a",
-            options: { linkBrackets: undefined },
-        },
-    ],
-}));
-
-console.log("\nTest with user defined options that should be in output");
-console.log(htmlToText("<h1>Starting foo test</h1><foo>bar</foo>", {
-    formatters: {
-        fooFormatter: (elem, walk, builder, options) => {
-            builder.addInline(`beginning ${options.foo} fooFormatter: `, { noWordTransform: false });
-            walk(elem.children, builder);
-        },
-    },
-    selectors: [
-        {
-            selector: "foo",
-            format: "fooFormatter",
-            options: { foo: "show-me" },
-        },
-    ],
-}));
-
-console.log("\nTest list functions");
-console.log(htmlToText("<h1>Starting list test</h1><my-list><li>first</li><li>second</li></my-list>", {
-    formatters: {
-        listFormatter: (elem, walk, builder, options) => {
-            const prefix = "item: ";
-            const maxPrefixLength = prefix.length;
-
-            const listItems = (elem.children || [])
-                .filter(child => child.type !== "text" || !/^\s*$/.test(child.data || ""))
-                .map((child) => {
-                    if (child.name !== "li") {
-                        return { node: child, prefix: "" };
-                    }
-                    return { node: child, prefix };
-                });
-            if (!listItems.length) return;
-
-            builder.openList({
-                interRowLineBreaks: 1,
-                leadingLineBreaks: options.leadingLineBreaks || 2,
-                maxPrefixLength,
-                prefixAlign: "left",
-            });
-
-            for (const { node, prefix } of listItems) {
-                builder.openListItem({ prefix });
-                walk([node], builder);
-                builder.closeListItem();
-            }
-
-            builder.closeList({ trailingLineBreaks: options.trailingLineBreaks || 2 });
-        },
-    },
-    selectors: [
-        {
-            selector: "h1",
-            options: {
-                uppercase: false,
+console.log(
+    htmlToText("<h1>Starting foo test</h1><foo>bar</foo>", {
+        formatters: {
+            fooFormatter: (elem, walk, builder, options) => {
+                builder.addInline("fooFormatter: ", { noWordTransform: false });
+                walk(elem.children, builder);
             },
         },
-        {
-            selector: "my-list",
-            format: "listFormatter",
-            options: { foo: "show-me" },
+        selectors: [
+            {
+                selector: "foo",
+                format: "fooFormatter",
+            },
+        ],
+    }),
+);
+
+console.log("\nTest with linkBrackets false");
+console.log(
+    htmlToText('<a href="https://github.com/DefinitelyTyped">Link</a>', {
+        selectors: [
+            {
+                selector: "a",
+                options: { linkBrackets: false },
+            },
+        ],
+    }),
+);
+
+console.log("\nTest with custom linkBrackets");
+console.log(
+    htmlToText('<a href="https://github.com/DefinitelyTyped">Link</a>', {
+        selectors: [
+            {
+                selector: "a",
+                options: { linkBrackets: ["@", "@"] },
+            },
+        ],
+    }),
+);
+
+console.log("\nTest without linkBrackets");
+console.log(
+    htmlToText('<a href="https://github.com/DefinitelyTyped">Link</a>', {
+        selectors: [
+            {
+                selector: "a",
+                options: { linkBrackets: undefined },
+            },
+        ],
+    }),
+);
+
+console.log("\nTest with user defined options that should be in output");
+console.log(
+    htmlToText("<h1>Starting foo test</h1><foo>bar</foo>", {
+        formatters: {
+            fooFormatter: (elem, walk, builder, options) => {
+                builder.addInline(`beginning ${options.foo} fooFormatter: `, {
+                    noWordTransform: false,
+                });
+                walk(elem.children, builder);
+            },
         },
-    ],
-}));
+        selectors: [
+            {
+                selector: "foo",
+                format: "fooFormatter",
+                options: { foo: "show-me" },
+            },
+        ],
+    }),
+);
+
+console.log("\nTest list functions");
+console.log(
+    htmlToText(
+        "<h1>Starting list test</h1><my-list><li>first</li><li>second</li></my-list>",
+        {
+            formatters: {
+                listFormatter: (elem, walk, builder, options) => {
+                    const prefix = "item: ";
+                    const maxPrefixLength = prefix.length;
+
+                    const listItems = (elem.children || [])
+                        .filter(
+                            (child) =>
+                                child.type !== "text" ||
+                                !/^\s*$/.test(child.data || ""),
+                        )
+                        .map((child) => {
+                            if (child.name !== "li") {
+                                return { node: child, prefix: "" };
+                            }
+                            return { node: child, prefix };
+                        });
+                    if (!listItems.length) return;
+
+                    builder.openList({
+                        interRowLineBreaks: 1,
+                        leadingLineBreaks: options.leadingLineBreaks || 2,
+                        maxPrefixLength,
+                        prefixAlign: "left",
+                    });
+
+                    for (const { node, prefix } of listItems) {
+                        builder.openListItem({ prefix });
+                        walk([node], builder);
+                        builder.closeListItem();
+                    }
+
+                    builder.closeList({
+                        trailingLineBreaks: options.trailingLineBreaks || 2,
+                    });
+                },
+            },
+            selectors: [
+                {
+                    selector: "h1",
+                    options: {
+                        uppercase: false,
+                    },
+                },
+                {
+                    selector: "my-list",
+                    format: "listFormatter",
+                    options: { foo: "show-me" },
+                },
+            ],
+        },
+    ),
+);

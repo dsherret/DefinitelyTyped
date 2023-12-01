@@ -8,25 +8,34 @@ export = self;
 type Primitives = string | number | boolean | symbol;
 
 declare global {
-    type MappedType<T> = [T] extends [Primitives] ? KnockoutObservable<T>
-        : [T] extends [object] ? KnockoutObservableType<T>
-        : any;
+    type MappedType<T> = [T] extends [Primitives]
+        ? KnockoutObservable<T>
+        : [T] extends [object]
+          ? KnockoutObservableType<T>
+          : any;
 
     type KnockoutObservableType<T> = {
-        [P in keyof T]: T[P] extends Primitives ? KnockoutObservable<T[P]>
-            : T[P] extends any[] ? KnockoutObservableArrayType<T[P][number]>
-            : T[P] extends readonly any[] ? KnockoutReadonlyObservableArrayType<T[P][number]>
-            : MappedType<T[P]>;
+        [P in keyof T]: T[P] extends Primitives
+            ? KnockoutObservable<T[P]>
+            : T[P] extends any[]
+              ? KnockoutObservableArrayType<T[P][number]>
+              : T[P] extends readonly any[]
+                ? KnockoutReadonlyObservableArrayType<T[P][number]>
+                : MappedType<T[P]>;
     };
 
     // Could not get this to return any when T is any. It returns a Union type of the possible values.
-    type KnockoutObservableArrayType<T> = T extends Primitives ? KnockoutObservableArray<T>
+    type KnockoutObservableArrayType<T> = T extends Primitives
+        ? KnockoutObservableArray<T>
         : KnockoutObservableArray<KnockoutObservableType<T>>;
 
-    type KnockoutReadonlyObservableArrayType<T> = T extends Primitives ? KnockoutReadonlyObservableArray<T>
+    type KnockoutReadonlyObservableArrayType<T> = T extends Primitives
+        ? KnockoutReadonlyObservableArray<T>
         : KnockoutReadonlyObservableArray<KnockoutObservableType<T>>;
 
-    type KnockoutMappingOptions<T> = KnockoutMappingSpecificOptions<T> | KnockoutMappingStandardOptions;
+    type KnockoutMappingOptions<T> =
+        | KnockoutMappingSpecificOptions<T>
+        | KnockoutMappingStandardOptions;
 
     interface KnockoutMappingStandardOptions {
         ignore?: string[] | undefined;
@@ -82,7 +91,10 @@ declare global {
          * @param source Array to be mapped.
          * @param target View model object previosly mapped to be updated.
          */
-        fromJS<T>(source: T[], target: KnockoutObservableArrayType<T>): KnockoutObservableArrayType<T>;
+        fromJS<T>(
+            source: T[],
+            target: KnockoutObservableArrayType<T>,
+        ): KnockoutObservableArrayType<T>;
         /**
          * Creates an readonly observable array view model. Objects on the source array are also converted to observables. Primitive types and arrays are not.
          * If 'target' is supplied, instead, target's observable properties are updated.
@@ -111,7 +123,11 @@ declare global {
          * @param options Options on mapping behavior.
          * @param target View model object previosly mapped to be updated.
          */
-        fromJS<T>(source: T, options?: KnockoutMappingOptions<T>, target?: MappedType<T>): MappedType<T>;
+        fromJS<T>(
+            source: T,
+            options?: KnockoutMappingOptions<T>,
+            target?: MappedType<T>,
+        ): MappedType<T>;
         /**
          * Updates target's observable properties with those of the sources.
          * @param source Plain JavaScript object to be mapped.
@@ -125,7 +141,11 @@ declare global {
          * @param options Options on mapping behavior.
          * @param target View model object previosly mapped to be updated.
          */
-        fromJSON(source: string, options?: KnockoutMappingOptions<any>, target?: any): any;
+        fromJSON(
+            source: string,
+            options?: KnockoutMappingOptions<any>,
+            target?: any,
+        ): any;
         /**
          * Updates target's observable properties with those of the sources.
          * @param source JSON of a JavaScript object to be mapped.
@@ -137,9 +157,18 @@ declare global {
          * @param viewModel View model object previosly mapped.
          * @param options Options on mapping behavior.
          */
-        toJS<T>(viewModel: KnockoutObservable<T>, options?: KnockoutMappingOptions<T>): T;
-        toJS<T>(viewModel: KnockoutObservableArray<T>, options?: KnockoutMappingOptions<T>): T[];
-        toJS<T>(viewModel: KnockoutObservableType<T>, options?: KnockoutMappingOptions<T>): T;
+        toJS<T>(
+            viewModel: KnockoutObservable<T>,
+            options?: KnockoutMappingOptions<T>,
+        ): T;
+        toJS<T>(
+            viewModel: KnockoutObservableArray<T>,
+            options?: KnockoutMappingOptions<T>,
+        ): T[];
+        toJS<T>(
+            viewModel: KnockoutObservableType<T>,
+            options?: KnockoutMappingOptions<T>,
+        ): T;
         toJS(viewModel: any, options?: KnockoutMappingOptions<any>): any;
         /**
          * Creates an unmapped object containing only the properties of the mapped object that were part of your original JS object. Stringify the result.
@@ -190,7 +219,8 @@ declare global {
         mappedDestroyAll(): void;
     }
 
-    interface KnockoutStatic { // this is a declaration merging with knockout's interface
+    interface KnockoutStatic {
+        // this is a declaration merging with knockout's interface
         mapping: KnockoutMapping;
     }
 }

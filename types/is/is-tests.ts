@@ -1,6 +1,6 @@
 // #region Type checks
 
-var getArguments = function() {
+var getArguments = function () {
     return arguments;
 };
 var arguments = getArguments();
@@ -400,8 +400,8 @@ is.all.infinite([Infinity, -Infinity, 42.5]);
 
 // #region Object checks
 
-is.propertyCount({ this: "is", "sample": {} }, 2);
-is.propertyCount({ this: "is", "sample": {} }, 3);
+is.propertyCount({ this: "is", sample: {} }, 2);
+is.propertyCount({ this: "is", sample: {} }, 3);
 is.not.propertyCount({}, 2);
 
 is.propertyDefined({ yeap: "yeap" }, "yeap");
@@ -437,7 +437,10 @@ is.sorted([1, 2, 4, 3]);
 is.not.sorted([5, 4, 3]);
 is.all.sorted([1, 2], [3, 4]);
 is.any.sorted([1, 2], [5, 4]);
-is.all.sorted([[1, 2], [5, 4]]);
+is.all.sorted([
+    [1, 2],
+    [5, 4],
+]);
 
 // #endregion
 
@@ -653,7 +656,9 @@ is.inLastMonth(fortyDaysAgo);
 is.not.inLastMonth(fortyDaysAgo);
 
 var twoMonthsAgo = new Date(new Date().setMonth(new Date().getMonth() - 2));
-var thirteenMonthsAgo = new Date(new Date().setMonth(new Date().getMonth() - 13));
+var thirteenMonthsAgo = new Date(
+    new Date().setMonth(new Date().getMonth() - 13),
+);
 is.inLastYear(twoMonthsAgo);
 is.inLastYear(thirteenMonthsAgo);
 is.not.inLastYear(thirteenMonthsAgo);
@@ -671,7 +676,9 @@ is.inNextMonth(fortyDaysLater);
 is.not.inNextMonth(fortyDaysLater);
 
 var twoMonthsLater = new Date(new Date().setMonth(new Date().getMonth() + 2));
-var thirteenMonthsLater = new Date(new Date().setMonth(new Date().getMonth() + 13));
+var thirteenMonthsLater = new Date(
+    new Date().setMonth(new Date().getMonth() + 13),
+);
 is.inNextYear(twoMonthsLater);
 is.inNextYear(thirteenMonthsLater);
 is.not.inNextYear(thirteenMonthsLater);

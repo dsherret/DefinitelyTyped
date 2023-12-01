@@ -6,16 +6,16 @@ declare namespace xmldom {
     var DOMImplementation: DOMImplementationStatic;
 
     interface DOMImplementationStatic {
-        new(): DOMImplementation;
+        new (): DOMImplementation;
     }
 
     interface DOMParserStatic {
-        new(): DOMParser;
-        new(options: Options): DOMParser;
+        new (): DOMParser;
+        new (options: Options): DOMParser;
     }
 
     interface XMLSerializerStatic {
-        new(): XMLSerializer;
+        new (): XMLSerializer;
     }
 
     interface DOMParser {

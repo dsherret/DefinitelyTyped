@@ -1,6 +1,21 @@
 import * as React from "react";
-import { Button, Platform, RefreshControl, ScrollView, StyleSheet, Text, View, ViewStyle } from "react-native";
-import { AdFailedToLoadEvent, AdLoadedEvent, Banner, Interstitial, NativeAdsManager } from "react-native-ad-manager";
+import {
+    Button,
+    Platform,
+    RefreshControl,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+    ViewStyle,
+} from "react-native";
+import {
+    AdFailedToLoadEvent,
+    AdLoadedEvent,
+    Banner,
+    Interstitial,
+    NativeAdsManager,
+} from "react-native-ad-manager";
 import NativeAdView from "./NativeAdView";
 
 const BannerExample: React.FunctionComponent<{
@@ -37,16 +52,24 @@ export default class Example extends React.Component<
         Interstitial.setTestDevices([Interstitial.simulatorId]);
         Interstitial.setAdUnitID("/83069739/jeff");
 
-        Interstitial.addEventListener("adLoaded", () => console.log("Interstitial adLoaded"));
-        Interstitial.addEventListener("adFailedToLoad", error => console.warn(error));
-        Interstitial.addEventListener("adOpened", () => console.log("Interstitial => adOpened"));
+        Interstitial.addEventListener("adLoaded", () =>
+            console.log("Interstitial adLoaded"),
+        );
+        Interstitial.addEventListener("adFailedToLoad", (error) =>
+            console.warn(error),
+        );
+        Interstitial.addEventListener("adOpened", () =>
+            console.log("Interstitial => adOpened"),
+        );
         Interstitial.addEventListener("adClosed", () => {
             console.log("Interstitial => adClosed");
-            Interstitial.requestAd().catch(error => console.warn(error));
+            Interstitial.requestAd().catch((error) => console.warn(error));
         });
-        Interstitial.addEventListener("adLeftApplication", () => console.log("Interstitial => adLeftApplication"));
+        Interstitial.addEventListener("adLeftApplication", () =>
+            console.log("Interstitial => adLeftApplication"),
+        );
 
-        Interstitial.requestAd().catch(error => console.warn(error));
+        Interstitial.requestAd().catch((error) => console.warn(error));
 
         // const adsList = [{type: 'banner'}];
         // this.setState({adsList: adsList});
@@ -57,7 +80,7 @@ export default class Example extends React.Component<
     }
 
     showInterstitial() {
-        Interstitial.showAd().catch(error => console.warn(error));
+        Interstitial.showAd().catch((error) => console.warn(error));
     }
 
     onAdLoaded = (nativeAd: AdLoadedEvent) => {
@@ -73,8 +96,7 @@ export default class Example extends React.Component<
                         { alignItems: "center", width: "100%" },
                     ]}
                 >
-                    {
-                        /*<NativeAdView
+                    {/*<NativeAdView
           targeting={{
             customTargeting: { group: 'nzme_user_test' },
             categoryExclusions: ['media'],
@@ -92,8 +114,7 @@ export default class Example extends React.Component<
           onAdFailedToLoad={error => {
             console.log(error);
           }}
-        />*/
-                    }
+        />*/}
                     <Banner
                         onAdLoaded={this.onAdLoaded}
                         adSize="mediumRectangle"
@@ -155,23 +176,39 @@ export default class Example extends React.Component<
 
     render() {
         // const adsManager = new NativeAdsManager("/6499/example/native", [AdMobInterstitial.simulatorId]);
-        const adsManager = new NativeAdsManager("/83069739/jeff", [Interstitial.simulatorId]);
+        const adsManager = new NativeAdsManager("/83069739/jeff", [
+            Interstitial.simulatorId,
+        ]);
         const { adsList, refreshingScrollView } = this.state;
 
         return (
             <View style={styles.container}>
                 <ScrollView>
                     <BannerExample title="Interstitial">
-                        <Button title="Show Interstitial and preload next" onPress={this.showInterstitial} />
+                        <Button
+                            title="Show Interstitial and preload next"
+                            onPress={this.showInterstitial}
+                        />
                     </BannerExample>
                     {adsList?.map((curItem, index) => {
                         if (curItem.type === "banner") {
-                            return <View key={index}>{this.showBanner(adsManager, index + 1)}</View>;
+                            return (
+                                <View key={index}>
+                                    {this.showBanner(adsManager, index + 1)}
+                                </View>
+                            );
                         } else {
-                            return <View key={index}>{this.showNative(adsManager, index + 1)}</View>;
+                            return (
+                                <View key={index}>
+                                    {this.showNative(adsManager, index + 1)}
+                                </View>
+                            );
                         }
                     })}
-                    <BannerExample title="Add more adds" style={{ paddingBottom: 40 }}>
+                    <BannerExample
+                        title="Add more adds"
+                        style={{ paddingBottom: 40 }}
+                    >
                         <Button
                             title="Add Banner"
                             onPress={() => this.addAd("banner")}

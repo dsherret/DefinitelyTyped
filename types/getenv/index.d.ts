@@ -98,7 +98,8 @@ declare namespace getenv {
     >(
         spec: S,
     ): {
-        [P in keyof S]: S[P][2] extends ParseTypes ? ParseMappings[S[P][2]]
+        [P in keyof S]: S[P][2] extends ParseTypes
+            ? ParseMappings[S[P][2]]
             : string;
     };
 

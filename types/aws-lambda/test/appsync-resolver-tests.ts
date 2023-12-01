@@ -29,7 +29,10 @@ interface TestSource {
     age: number;
 }
 
-const handler: AppSyncResolverHandler<TestArguments, TestEntity> = async (event, context) => {
+const handler: AppSyncResolverHandler<TestArguments, TestEntity> = async (
+    event,
+    context,
+) => {
     str = event.arguments.id;
     str = event.arguments.query;
 
@@ -76,14 +79,18 @@ const handler: AppSyncResolverHandler<TestArguments, TestEntity> = async (event,
     };
 };
 
-const batchHandler: AppSyncBatchResolverHandler<TestArguments, TestEntity> = async (events, context) => {
+const batchHandler: AppSyncBatchResolverHandler<
+    TestArguments,
+    TestEntity
+> = async (events, context) => {
     array = events;
-    events.forEach(event => {
+    events.forEach((event) => {
         str = event.arguments.id;
         str = event.arguments.query;
 
         str = (event.identity as AppSyncIdentityIAM).accountId;
-        str = (event.identity as AppSyncIdentityIAM).cognitoIdentityAuthProvider;
+        str = (event.identity as AppSyncIdentityIAM)
+            .cognitoIdentityAuthProvider;
         str = (event.identity as AppSyncIdentityIAM).cognitoIdentityAuthType;
         str = (event.identity as AppSyncIdentityIAM).cognitoIdentityId;
         str = (event.identity as AppSyncIdentityIAM).cognitoIdentityPoolId;
@@ -128,10 +135,11 @@ const batchHandler: AppSyncBatchResolverHandler<TestArguments, TestEntity> = asy
     ];
 };
 
-const handlerWithDefinedSourceTypes: AppSyncResolverHandler<TestArguments, TestEntity, TestSource> = async (
-    event,
-    context,
-) => {
+const handlerWithDefinedSourceTypes: AppSyncResolverHandler<
+    TestArguments,
+    TestEntity,
+    TestSource
+> = async (event, context) => {
     strOrUndefined = event.source ? event.source.id : undefined;
     strOrUndefined = event.source ? event.source.firstName : undefined;
     strOrUndefined = event.source ? event.source.lastName : undefined;
@@ -144,12 +152,13 @@ const handlerWithDefinedSourceTypes: AppSyncResolverHandler<TestArguments, TestE
     };
 };
 
-const batchHandlerWithDefinedSourceTypes: AppSyncBatchResolverHandler<TestArguments, TestEntity, TestSource> = async (
-    events,
-    context,
-) => {
+const batchHandlerWithDefinedSourceTypes: AppSyncBatchResolverHandler<
+    TestArguments,
+    TestEntity,
+    TestSource
+> = async (events, context) => {
     array = events;
-    events.forEach(event => {
+    events.forEach((event) => {
         strOrUndefined = event.source ? event.source.id : undefined;
         strOrUndefined = event.source ? event.source.firstName : undefined;
         strOrUndefined = event.source ? event.source.lastName : undefined;
@@ -170,7 +179,9 @@ interface AuthorizorTestArguments {
     requestContext: any;
 }
 
-const authorizerHandler: AppSyncAuthorizerHandler<AuthorizorTestArguments> = async (event) => {
+const authorizerHandler: AppSyncAuthorizerHandler<
+    AuthorizorTestArguments
+> = async (event) => {
     str = event.authorizationToken;
     anyObj = event.requestContext;
     str = event.requestContext.accountId;
@@ -178,7 +189,9 @@ const authorizerHandler: AppSyncAuthorizerHandler<AuthorizorTestArguments> = asy
     str = event.requestContext.queryString;
     str = event.requestContext.requestId;
     anyObj = event.requestContext.variables;
-    strOrUndefined = event.requestContext.operationName ? event.requestContext.operationName : undefined;
+    strOrUndefined = event.requestContext.operationName
+        ? event.requestContext.operationName
+        : undefined;
 
     return {
         isAuthorized: true,

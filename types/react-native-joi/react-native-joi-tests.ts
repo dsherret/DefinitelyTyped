@@ -177,10 +177,10 @@ validErrItem = {
     context: obj,
 };
 
-validErrFunc = errs => errs;
-validErrFunc = errs => errs[0];
-validErrFunc = errs => "Some error";
-validErrFunc = errs => err;
+validErrFunc = (errs) => errs;
+validErrFunc = (errs) => errs[0];
+validErrFunc = (errs) => "Some error";
+validErrFunc = (errs) => err;
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -971,9 +971,7 @@ schema = Joi.lazy(() => schema, { once: true });
     {
         let value = { username: "example", password: "example" };
         const schema = Joi.object().keys({
-            username: Joi.string()
-                .max(255)
-                .required(),
+            username: Joi.string().max(255).required(),
             password: Joi.string()
                 .regex(/^[a-zA-Z0-9]{3,255}$/)
                 .required(),
@@ -999,11 +997,11 @@ schema = Joi.lazy(() => schema, { once: true });
         value = schema.validate(value, validOpts, (err, value) => value);
 
         returnValue
-            .then(val => JSON.stringify(val, null, 2))
-            .then(val => {
+            .then((val) => JSON.stringify(val, null, 2))
+            .then((val) => {
                 throw new Error("one error");
             })
-            .catch(e => {});
+            .catch((e) => {});
     }
 }
 

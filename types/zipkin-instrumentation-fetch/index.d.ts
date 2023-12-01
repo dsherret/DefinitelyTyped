@@ -7,6 +7,9 @@ interface Options {
     serviceName?: string;
 }
 
-declare function wrapFetch(rawFetch: typeof fetch, options: Options): typeof fetch;
+declare function wrapFetch(
+    rawFetch: typeof fetch,
+    options: Options,
+): typeof fetch;
 
 export = wrapFetch;

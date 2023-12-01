@@ -6,7 +6,10 @@ export interface TcpPortUsedOptions {
     timeOutMs?: number;
 }
 
-export function check(port: number | TcpPortUsedOptions, host?: string): Promise<boolean>;
+export function check(
+    port: number | TcpPortUsedOptions,
+    host?: string,
+): Promise<boolean>;
 
 export function waitForStatus(
     port: number | TcpPortUsedOptions,

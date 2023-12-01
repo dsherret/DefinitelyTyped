@@ -25,7 +25,7 @@ const validProps: RasaWebchatProps = {
     showFullScreenButton: false,
     displayUnreadCount: false,
     showMessageDate: false,
-    customMessageDelay: message => {
+    customMessageDelay: (message) => {
         let delay = message.length * 30;
         if (delay > 3 * 1000) delay = 3 * 1000;
         if (delay < 800) delay = 800;

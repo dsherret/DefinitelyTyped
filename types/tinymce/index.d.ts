@@ -67,7 +67,12 @@ export interface Settings {
 
     table_default_styles?: object | string | undefined;
 
-    table_sizing_mode?: "fixed" | "relative" | "responsive" | "auto" | undefined;
+    table_sizing_mode?:
+        | "fixed"
+        | "relative"
+        | "responsive"
+        | "auto"
+        | undefined;
 
     table_class_list?: object[] | undefined;
 
@@ -137,7 +142,10 @@ export interface Settings {
 
     branding?: boolean | undefined;
 
-    color_picker_callback?(callback: (hexColor: string) => void, value: string): void;
+    color_picker_callback?(
+        callback: (hexColor: string) => void,
+        value: string,
+    ): void;
 
     custom_ui_selector?: string | undefined;
 
@@ -281,11 +289,20 @@ export interface Settings {
 
     automatic_uploads?: boolean | undefined;
 
-    file_browser_callback?(field_name: string, url: string, type: string, win: Window): void;
+    file_browser_callback?(
+        field_name: string,
+        url: string,
+        type: string,
+        win: Window,
+    ): void;
 
     file_browser_callback_types?: string | undefined;
 
-    file_picker_callback?(callback: (filename: string, metadata: {}) => void, valud: string, meta: {}): void;
+    file_picker_callback?(
+        callback: (filename: string, metadata: {}) => void,
+        valud: string,
+        meta: {},
+    ): void;
 
     file_picker_types?: string | undefined;
 
@@ -297,7 +314,11 @@ export interface Settings {
 
     images_upload_credentials?: boolean | undefined;
 
-    images_upload_handler?(blobInfo: any, success: (msg: string) => void, failure: (msg: string) => void): void;
+    images_upload_handler?(
+        blobInfo: any,
+        success: (msg: string) => void,
+        failure: (msg: string) => void,
+    ): void;
 
     images_upload_url?: string | undefined;
 
@@ -317,7 +338,12 @@ export interface Settings {
 
     remove_script_host?: boolean | undefined;
 
-    urlconverter_callback?(url: string, node: HTMLElement, on_save: boolean, name: string): void;
+    urlconverter_callback?(
+        url: string,
+        node: HTMLElement,
+        on_save: boolean,
+        name: string,
+    ): void;
 
     anchor_bottom?: string | undefined;
 
@@ -386,13 +412,22 @@ export namespace settings {
 }
 
 export interface AddOnManager {
-    add(id: string, addOn: (editor: Editor, url: string) => void): Theme | Plugin;
+    add(
+        id: string,
+        addOn: (editor: Editor, url: string) => void,
+    ): Theme | Plugin;
 
     addComponents(pluginName: string, scripts: string[]): void;
 
     get(name: string): Theme | Plugin;
 
-    load(name: string, addOnUrl: string, success?: () => void, scope?: {}, failure?: () => void): void;
+    load(
+        name: string,
+        addOnUrl: string,
+        success?: () => void,
+        scope?: {},
+        failure?: () => void,
+    ): void;
 
     requireLangPack(name: string, languages?: string): void;
 }
@@ -438,17 +473,33 @@ export class Editor extends util.Observable {
 
     addButton(name: string, settings: {}): void;
 
-    addCommand(name: string, callback: (ui: boolean, value: {}) => boolean, scope?: {}): void;
+    addCommand(
+        name: string,
+        callback: (ui: boolean, value: {}) => boolean,
+        scope?: {},
+    ): void;
 
-    addContextToolbar(predicate: ((el: Node) => boolean) | string, items: string): void;
+    addContextToolbar(
+        predicate: ((el: Node) => boolean) | string,
+        items: string,
+    ): void;
 
     addMenuItem(name: string, settings: {}): void;
 
-    addQueryStateHandler(name: string, callback: () => boolean, scope?: {}): void;
+    addQueryStateHandler(
+        name: string,
+        callback: () => boolean,
+        scope?: {},
+    ): void;
 
     addQueryValueHandler(name: string, callback: () => {}, scope?: {}): void;
 
-    addShortcut(pattern: string, desc: string, cmdFunc: string, sc?: {}): boolean;
+    addShortcut(
+        pattern: string,
+        desc: string,
+        cmdFunc: string,
+        sc?: {},
+    ): boolean;
 
     addSidebar(name: string, settings: {}): void;
 
@@ -697,7 +748,11 @@ export interface Formatter {
 
     canApply(name: string): boolean;
 
-    formatChanged(formats: string, callback: () => void, similar: boolean): void;
+    formatChanged(
+        formats: string,
+        callback: () => void,
+        similar: boolean,
+    ): void;
 
     get(name?: string): any[] | {};
 
@@ -724,7 +779,12 @@ export class Formatter implements Formatter {
 
 export interface Shortcuts {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    add(pattern: string, desc: string, cmdFunc: () => void | string, scope?: {}): boolean;
+    add(
+        pattern: string,
+        desc: string,
+        cmdFunc: () => void | string,
+        scope?: {},
+    ): boolean;
 
     remove(pattern: string): boolean;
 }
@@ -825,13 +885,24 @@ export namespace dom {
     }
 
     interface DOMUtils {
-        add<T>(parentElm: string, name: string, attrs?: {}, html?: string, create?: boolean): Element | T[];
+        add<T>(
+            parentElm: string,
+            name: string,
+            attrs?: {},
+            html?: string,
+            create?: boolean,
+        ): Element | T[];
 
         addClass<T>(elm: string, cls: string): string | T[];
 
         addStyle(cssText: string): void;
 
-        bind(target: Element, name: string, func: () => void, scope?: {}): () => void;
+        bind(
+            target: Element,
+            name: string,
+            func: () => void,
+            scope?: {},
+        ): () => void;
 
         create(name: string, attrs?: {}, html?: string): Element;
 
@@ -899,7 +970,10 @@ export namespace dom {
 
         parseStyle(cssText: string): {};
 
-        remove<T>(node: string | Element, keepChildren?: boolean): Element | T[];
+        remove<T>(
+            node: string | Element,
+            keepChildren?: boolean,
+        ): Element | T[];
 
         removeAllAttribs(e: Element): void;
 
@@ -929,13 +1003,21 @@ export namespace dom {
 
         show(elm: string): void;
 
-        split(parentElm: Element, splitElm: Element, replacementElm?: Element): Element;
+        split(
+            parentElm: Element,
+            splitElm: Element,
+            replacementElm?: Element,
+        ): Element;
 
         toHex(rgbVal: string): string;
 
         toggleClass(elm: Element, cls: string, state?: string): void;
 
-        unbind<T>(target: Element, name: string, func: () => void): boolean | T[];
+        unbind<T>(
+            target: Element,
+            name: string,
+            func: () => void,
+        ): boolean | T[];
 
         uniqueId(prefix?: string): string;
     }
@@ -1063,7 +1145,12 @@ export namespace dom {
     }
 
     interface EventUtils {
-        bind(target: {}, names: string, callback: () => void, scope: {}): () => void;
+        bind(
+            target: {},
+            names: string,
+            callback: () => void,
+            scope: {},
+        ): () => void;
 
         clean(target: {}): EventUtils;
 
@@ -1075,11 +1162,20 @@ export namespace dom {
     interface RangeUtils {
         compareRanges(rng1: Range, rng2: Range): boolean;
 
-        getCaretRangeFromPoint(clientX: number, clientY: number, doc: Document): Range;
+        getCaretRangeFromPoint(
+            clientX: number,
+            clientY: number,
+            doc: Document,
+        ): Range;
     }
 
     interface ScriptLoader {
-        add(url: string, success?: () => void, scope?: {}, failure?: () => void): void;
+        add(
+            url: string,
+            success?: () => void,
+            scope?: {},
+            failure?: () => void,
+        ): void;
 
         isDone(url: string): boolean;
 
@@ -1087,7 +1183,12 @@ export namespace dom {
 
         loadQueue(success?: () => void, failure?: () => void, scope?: {}): void;
 
-        loadScripts(scripts: string[], callback1?: () => void, scope?: {}, callback2?: () => void): void;
+        loadScripts(
+            scripts: string[],
+            callback1?: () => void,
+            scope?: {},
+            callback2?: () => void,
+        ): void;
 
         markDone(url: string): void;
     }
@@ -1127,7 +1228,12 @@ export namespace dom {
     }
 
     class Selection implements Selection {
-        constructor(dom: DOMUtils, win: Window, editor: Editor, serializer: Serializer);
+        constructor(
+            dom: DOMUtils,
+            win: Window,
+            editor: Editor,
+            serializer: Serializer,
+        );
     }
 
     interface Serializer {
@@ -1167,7 +1273,12 @@ export namespace geom {
 
         create(x: number, y: number, w: number, h: number): Rect;
 
-        findBestRelativePosition(rect: Rect, targetRect: Rect, constrainRect: Rect, rels: any[]): void;
+        findBestRelativePosition(
+            rect: Rect,
+            targetRect: Rect,
+            constrainRect: Rect,
+            rels: any[],
+        ): void;
 
         fromClientRect(clientRect: ClientRect): Rect;
 
@@ -1357,11 +1468,18 @@ export namespace util {
 
         debounce(callback: () => void, time: number): () => void;
 
-        requestAnimationFrame(callback: () => void, element?: HTMLElement): void;
+        requestAnimationFrame(
+            callback: () => void,
+            element?: HTMLElement,
+        ): void;
 
         setEditorInterval(callback: () => void, time: number): number;
 
-        setEditorTimeout(editor: Editor, callback: () => void, time: number): number;
+        setEditorTimeout(
+            editor: Editor,
+            callback: () => void,
+            time: number,
+        ): number;
 
         setInterval(callback: () => void, time: number): number;
 

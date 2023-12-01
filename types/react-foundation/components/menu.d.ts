@@ -10,7 +10,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Menu: React.FunctionComponent<MenuProps>;
-export interface MenuProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLUListElement> {
+export interface MenuProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLUListElement> {
     alignment?: MenuAlignments | undefined;
     iconsOnTop?: boolean | undefined;
     isExpanded?: boolean | undefined;
@@ -27,7 +29,9 @@ export interface MenuProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLUL
  * @returns {Object}
  */
 export declare const MenuItem: React.FunctionComponent<MenuItemProps>;
-export interface MenuItemProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLLIElement> {
+export interface MenuItemProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLLIElement> {
     isActive?: boolean | undefined;
 }
 /**

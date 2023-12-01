@@ -6,14 +6,42 @@ declare var Offline: {
     on(event: "up", handler: (e: Event) => any, context?: any): void;
     on(event: "down", handler: (e: Event) => any, context?: any): void;
     on(event: "confirmed-up", handler: (e: Event) => any, context?: any): void;
-    on(event: "confirmed-down", handler: (e: Event) => any, context?: any): void;
+    on(
+        event: "confirmed-down",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
     on(event: "checking", handler: (e: Event) => any, context?: any): void;
-    on(event: "reconnect:started", handler: (e: Event) => any, context?: any): void;
-    on(event: "reconnect:stopped", handler: (e: Event) => any, context?: any): void;
-    on(event: "reconnect:tick", handler: (e: Event) => any, context?: any): void;
-    on(event: "reconnect:connecting", handler: (e: Event) => any, context?: any): void;
-    on(event: "reconnect:failure", handler: (e: Event) => any, context?: any): void;
-    on(event: "requests:flush", handler: (e: Event) => any, context?: any): void;
+    on(
+        event: "reconnect:started",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
+    on(
+        event: "reconnect:stopped",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
+    on(
+        event: "reconnect:tick",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
+    on(
+        event: "reconnect:connecting",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
+    on(
+        event: "reconnect:failure",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
+    on(
+        event: "requests:flush",
+        handler: (e: Event) => any,
+        context?: any,
+    ): void;
     on(event: "requests:hold", handler: (e: Event) => any, context?: any): void;
     on(event: string, handler: (e: Event) => any, context?: any): void;
 

@@ -272,7 +272,10 @@ interface Isotope {
 
 declare const Isotope: {
     prototype: Isotope;
-    new(elementOrSelector: HTMLElement | string, options: Isotope.IsotopeOptions): Isotope;
+    new (
+        elementOrSelector: HTMLElement | string,
+        options: Isotope.IsotopeOptions,
+    ): Isotope;
     /**
      * Get the Isotope instance via its element. Isotope.data() is useful for getting the Isotope instance in JavaScript, after it has been initalized in HTML.
      */
@@ -294,7 +297,11 @@ declare global {
          * @param elements Array of Isotope.Items
          * @param isStill Disables transitions
          */
-        isotope(methodName: "layoutItems", elements: HTMLElement[], isStill: boolean): JQuery;
+        isotope(
+            methodName: "layoutItems",
+            elements: HTMLElement[],
+            isStill: boolean,
+        ): JQuery;
         /**
          * Adds item elements to the Isotope instance. addItems does not lay out items like appended, prepended, or insert.
          * @param elements Element, jQuery Object, NodeList, or Array of Elements
@@ -309,7 +316,10 @@ declare global {
          * Hide items.
          * @param elements Element, jQuery Object, NodeList, or Array of Elements
          */
-        isotope(methodName: "hideItemElements", elements: Isotope.Elements): JQuery;
+        isotope(
+            methodName: "hideItemElements",
+            elements: Isotope.Elements,
+        ): JQuery;
         /**
          * Appends elements into container element, adds elements as items, and arranges items with filtering and sorting.
          * @param elements Element, jQuery Object, NodeList, or Array of Elements
@@ -329,7 +339,10 @@ declare global {
          * Reveals hidden items.
          * @param elements Element, jQuery Object, NodeList, or Array of Elements
          */
-        isotope(methodName: "revealItemElements", elements: Isotope.Elements): JQuery;
+        isotope(
+            methodName: "revealItemElements",
+            elements: Isotope.Elements,
+        ): JQuery;
         /**
          * Stamps elements in the layout. Isotope will lay out item elements around stamped elements.
          * Stamping is only supported by some layout modes: masonry, packery and masonryhorizontal.
@@ -345,7 +358,10 @@ declare global {
          * Updates sort data
          * @param elements Element, jQuery Object, NodeList, or Array of Elements
          */
-        isotope(methodName: "updateSortData", elements: Isotope.Elements): JQuery;
+        isotope(
+            methodName: "updateSortData",
+            elements: Isotope.Elements,
+        ): JQuery;
         /**
          * Removes the Isotope functionality completely. destroy will return the element back to its pre-initialized state.
          */

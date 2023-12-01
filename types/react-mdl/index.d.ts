@@ -170,9 +170,11 @@ declare namespace __ReactMDL {
     interface MDLDOMAttributes<T> {
         // DOMAttributes (minus onClick)
         children?: React.ReactNode | undefined;
-        dangerouslySetInnerHTML?: {
-            __html: string;
-        } | undefined;
+        dangerouslySetInnerHTML?:
+            | {
+                  __html: string;
+              }
+            | undefined;
 
         // Clipboard Events
         onCopy?: React.ClipboardEventHandler<T> | undefined;
@@ -278,7 +280,10 @@ declare namespace __ReactMDL {
 
     class ChipContact extends __MDLComponent<__MDLOtherProps> {}
 
-    interface ButtonProps extends __MDLOtherProps, RippleComponent, CustomRenderedComponent {
+    interface ButtonProps
+        extends __MDLOtherProps,
+            RippleComponent,
+            CustomRenderedComponent {
         accent?: boolean | undefined;
         colored?: boolean | undefined;
         primary?: boolean | undefined;
@@ -319,8 +324,10 @@ declare namespace __ReactMDL {
     class Checkbox extends __MDLComponent<CheckboxProps> {}
 
     interface UndecoratedTableProps
-        extends __MDLClassProps, MDLHTMLAttributes, React.DOMAttributes<UndecoratedTable>, ShadowedComponent
-    {
+        extends __MDLClassProps,
+            MDLHTMLAttributes,
+            React.DOMAttributes<UndecoratedTable>,
+            ShadowedComponent {
         rows: any[];
         rowKeyColumn?: string | undefined;
 
@@ -332,13 +339,20 @@ declare namespace __ReactMDL {
         selectable?: boolean | undefined;
         onSelectionChanged?: ((row: any) => any) | undefined;
     }
-    interface TableHeaderProps extends __MDLClassProps, MDLHTMLAttributes, MDLDOMAttributes<TableHeader> {
+    interface TableHeaderProps
+        extends __MDLClassProps,
+            MDLHTMLAttributes,
+            MDLDOMAttributes<TableHeader> {
         name: string;
         title?: string | undefined;
-        cellFormatter?: ((value: any, row: any, index: number) => React.ReactNode) | undefined;
+        cellFormatter?:
+            | ((value: any, row: any, index: number) => React.ReactNode)
+            | undefined;
         numeric?: boolean | undefined;
         nosort?: boolean | undefined;
-        onClick?: ((e: React.MouseEvent<TableHeader>, name: string) => any) | undefined;
+        onClick?:
+            | ((e: React.MouseEvent<TableHeader>, name: string) => any)
+            | undefined;
         sortFn?: ((a: any, b: any, isAsc: boolean) => number) | undefined;
         tooltip?: React.ReactNode | undefined;
     }
@@ -354,16 +368,24 @@ declare namespace __ReactMDL {
     interface DialogActionsProps extends __MDLOtherProps {
         fullWidth?: boolean | undefined;
     }
-    interface DialogTitleProps extends __MDLOtherProps, CustomRenderedComponent {}
+    interface DialogTitleProps
+        extends __MDLOtherProps,
+            CustomRenderedComponent {}
     class Dialog extends __MDLComponent<DialogProps> {}
     class DialogActions extends __MDLComponent<DialogActionsProps> {}
     class DialogTitle extends __MDLComponent<DialogTitleProps> {}
     class DialogContent extends __MDLBasicComponent {}
 
-    interface GridProps extends __MDLOtherProps, CustomRenderedComponent, ShadowedComponent {
+    interface GridProps
+        extends __MDLOtherProps,
+            CustomRenderedComponent,
+            ShadowedComponent {
         noSpacing?: boolean | undefined;
     }
-    interface CellProps extends __MDLOtherProps, CustomRenderedComponent, ShadowedComponent {
+    interface CellProps
+        extends __MDLOtherProps,
+            CustomRenderedComponent,
+            ShadowedComponent {
         col: number;
         offset?: number | undefined;
         offsetDesktop?: number | undefined;
@@ -427,21 +449,29 @@ declare namespace __ReactMDL {
     class Navigation extends __MDLComponent<NavigationProps> {}
     class Spacer extends __MDLBasicComponent {}
 
-    interface FooterProps extends MDLHTMLAttributes, React.DOMAttributes<Footer> {
+    interface FooterProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<Footer> {
         size?: string | undefined;
 
         title?: string | undefined;
     }
-    interface FooterDropDownSectionProps extends MDLHTMLAttributes, React.DOMAttributes<FooterDropDownSection> {
+    interface FooterDropDownSectionProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<FooterDropDownSection> {
         size?: string | undefined;
         title: React.ReactNode;
     }
-    interface FooterLinkListProps extends MDLHTMLAttributes, React.DOMAttributes<FooterLinkList> {
+    interface FooterLinkListProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<FooterLinkList> {
         size?: string | undefined;
 
         title?: string | undefined;
     }
-    interface FooterSectionProps extends MDLHTMLAttributes, React.DOMAttributes<FooterSection> {
+    interface FooterSectionProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<FooterSection> {
         size?: string | undefined;
         type?: string | undefined;
         logo?: React.ReactNode | undefined;
@@ -460,7 +490,9 @@ declare namespace __ReactMDL {
     interface ListItemActionProps extends __MDLOtherProps {
         info?: string | undefined;
     }
-    interface ListItemContentProps extends MDLHTMLAttributes, React.DOMAttributes<ListItemContent> {
+    interface ListItemContentProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<ListItemContent> {
         avatar?: string | JSX.Element | undefined;
         icon?: string | JSX.Element | undefined;
         subtitle?: React.ReactNode | undefined;
@@ -486,7 +518,10 @@ declare namespace __ReactMDL {
     }
     class ProgressBar extends __MDLComponent<ProgressBarProps> {}
 
-    interface RadioProps extends MDLHTMLAttributes, React.DOMAttributes<Radio>, RippleComponent {
+    interface RadioProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<Radio>,
+            RippleComponent {
         value: string | number;
         checked?: boolean | undefined;
         disabled?: boolean | undefined;
@@ -494,7 +529,9 @@ declare namespace __ReactMDL {
         onChange?: React.FormEventHandler<Radio> | undefined;
         label?: string | undefined;
     }
-    interface RadioGroupProps extends MDLHTMLAttributes, React.DOMAttributes<RadioGroup> {
+    interface RadioGroupProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<RadioGroup> {
         name: string;
         value: string | number;
         childContainer?: string | undefined;
@@ -505,7 +542,9 @@ declare namespace __ReactMDL {
     class Radio extends __MDLComponent<RadioProps> {}
     class RadioGroup extends __MDLComponent<RadioGroupProps> {}
 
-    interface SliderProps extends MDLHTMLAttributes, React.DOMAttributes<Slider> {
+    interface SliderProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<Slider> {
         max: number;
         min: number;
         onChange?: React.FormEventHandler<Slider> | undefined;
@@ -562,7 +601,9 @@ declare namespace __ReactMDL {
     class TabBar extends __MDLComponent<TabBarProps> {}
     class Tabs extends __MDLComponent<TabsProps> {}
 
-    interface TextfieldProps extends MDLHTMLAttributes, React.DOMAttributes<HTMLInputElement> {
+    interface TextfieldProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<HTMLInputElement> {
         label: string;
         disabled?: boolean | undefined;
         error?: React.ReactNode | undefined;
@@ -585,7 +626,9 @@ declare namespace __ReactMDL {
         inputRef?: HTMLInputElement | undefined;
     }
 
-    interface TooltipProps extends MDLHTMLAttributes, React.DOMAttributes<Tooltip> {
+    interface TooltipProps
+        extends MDLHTMLAttributes,
+            React.DOMAttributes<Tooltip> {
         label: React.ReactNode;
         large?: boolean | undefined;
         position?: string | undefined;
@@ -595,5 +638,8 @@ declare namespace __ReactMDL {
     }
     class Tooltip extends __MDLComponent<TooltipProps> {}
 
-    class MDLComponent extends React.Component<{ children: React.ReactElement; recursive?: boolean | undefined }> {}
+    class MDLComponent extends React.Component<{
+        children: React.ReactElement;
+        recursive?: boolean | undefined;
+    }> {}
 }

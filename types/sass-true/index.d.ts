@@ -32,4 +32,7 @@ export interface Module {
 
 export function runSass(sassOptions: Options, trueOptions: TrueOptions): void;
 export function formatFailureMessage(assertion: Readonly<Assertion>): string;
-export function parse(rawCss: Readonly<string>, ctxLines?: Readonly<number>): Module[];
+export function parse(
+    rawCss: Readonly<string>,
+    ctxLines?: Readonly<number>,
+): Module[];

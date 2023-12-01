@@ -125,13 +125,17 @@ export interface NodeProps {
     height?: number | undefined;
     children?: any;
     backbuffering?: boolean | undefined;
-    blendFunc?: {
-        src: () => void;
-        dst: () => void;
-    } | undefined;
-    clear?: {
-        color: Vec4;
-    } | undefined;
+    blendFunc?:
+        | {
+              src: () => void;
+              dst: () => void;
+          }
+        | undefined;
+    clear?:
+        | {
+              color: Vec4;
+          }
+        | undefined;
 
     onDraw?: (() => void) | undefined;
 }
@@ -178,23 +182,37 @@ export namespace Shaders {
 
 export namespace Uniform {
     const Backbuffer: string;
-    function backbufferFrom(node: Node | Bus): { type: string; node: Node | Bus };
+    function backbufferFrom(node: Node | Bus): {
+        type: string;
+        node: Node | Bus;
+    };
     const Resolution: string;
     function textureSize(obj: any): { type: string; obj: any };
-    function textureSizeRatio(obj: any): { type: string; obj: any; ratio: boolean };
+    function textureSizeRatio(obj: any): {
+        type: string;
+        obj: any;
+        ratio: boolean;
+    };
 }
 
 export class Visitor {
     onSurfaceMount(surface: Surface<any>): void;
     onSurfaceUnmount(surface: Surface<any>): void;
-    onSurfaceGLContextChange(surface: Surface<any>, gl?: WebGLRenderingContext): void;
+    onSurfaceGLContextChange(
+        surface: Surface<any>,
+        gl?: WebGLRenderingContext,
+    ): void;
     onSurfaceDrawSkipped(surface: Surface<any>): void;
     onSurfaceDrawStart(surface: Surface<any>): void;
     onSurfaceDrawError(e: Error): boolean;
     onSurfaceDrawEnd(surface: Surface<any>): void;
     onNodeDrawSkipped(node: Node): void;
     onNodeDrawStart(node: Node): void;
-    onNodeSyncDeps(node: Node, additions: Array<Node | Bus>, deletions: Array<Node | Bus>): void;
+    onNodeSyncDeps(
+        node: Node,
+        additions: Array<Node | Bus>,
+        deletions: Array<Node | Bus>,
+    ): void;
     onNodeDraw(node: Node, preparedUniforms: any[]): void;
     onNodeDrawEnd(node: Node): void;
 }

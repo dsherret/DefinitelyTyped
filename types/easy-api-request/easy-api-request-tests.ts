@@ -14,10 +14,10 @@ APIRequest.create({
 
 var app = express();
 
-app.get("/", function(req: any, res: express.Response) {
+app.get("/", function (req: any, res: express.Response) {
     var rMaker = req.testAPI as APIRequest.RequestMaker;
     var r = rMaker();
-    r.get("/", function(err, resp) {
+    r.get("/", function (err, resp) {
         if (err) {
             console.error(err);
         }
@@ -25,14 +25,14 @@ app.get("/", function(req: any, res: express.Response) {
     });
 });
 
-app.get("/", function(req: any, res: express.Response) {
+app.get("/", function (req: any, res: express.Response) {
     var rMaker = req.testAPI as APIRequest.RequestMaker;
     var r = rMaker();
     r.get("/")
-        .then(function(resp) {
+        .then(function (resp) {
             res.json(resp);
         })
-        .catch(function(err) {
+        .catch(function (err) {
             if (err) {
                 console.error(err);
             }

@@ -1,7 +1,9 @@
 import { isArray, isIsoDate, isObject, isString, run } from "node-validator";
 
-let checkChild = isObject()
-    .withRequired("prop", isString({ regex: /^[abc]+$/ }));
+let checkChild = isObject().withRequired(
+    "prop",
+    isString({ regex: /^[abc]+$/ }),
+);
 
 let check = isObject()
     .withRequired("_id", isString({ regex: /^[abc]+$/ }))
@@ -11,10 +13,11 @@ let check = isObject()
 let toValidate = {
     _id: "abababa",
     date: "2013-10-24",
-    children: [{
-        prop: "zxzx",
-    }],
+    children: [
+        {
+            prop: "zxzx",
+        },
+    ],
 };
 
-run(check, toValidate, function(errorCount, errors) {
-});
+run(check, toValidate, function (errorCount, errors) {});

@@ -1,4 +1,9 @@
-import { DuplexConnection, Payload, ReactiveSocket, Responder } from "rsocket-types";
+import {
+    DuplexConnection,
+    Payload,
+    ReactiveSocket,
+    Responder,
+} from "rsocket-types";
 import { PayloadSerializers } from "./RSocketSerialization";
 
 import { Flowable } from "rsocket-flowable";
@@ -10,7 +15,10 @@ export interface TransportServer {
 }
 
 export interface ServerConfig<D, M> {
-    getRequestHandler: (socket: ReactiveSocket<D, M>, payload: Payload<D, M>) => Partial<Responder<D, M>>;
+    getRequestHandler: (
+        socket: ReactiveSocket<D, M>,
+        payload: Payload<D, M>,
+    ) => Partial<Responder<D, M>>;
     serializers?: PayloadSerializers<D, M> | undefined;
     transport: TransportServer;
     errorHandler?: ((e: Error) => void) | undefined;

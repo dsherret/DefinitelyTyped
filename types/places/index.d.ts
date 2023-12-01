@@ -33,8 +33,6 @@ declare namespace places {
     }
 }
 
-declare function places(
-    options: places.PlacesOptions,
-): EventEmitter;
+declare function places(options: places.PlacesOptions): EventEmitter;
 
 export = places;

@@ -3,10 +3,16 @@ declare class Lyricist {
 
     album(
         id: number,
-        opts?: { fetchTracklist?: boolean | undefined; textFormat?: Lyricist.LyricistTextFormat | undefined },
+        opts?: {
+            fetchTracklist?: boolean | undefined;
+            textFormat?: Lyricist.LyricistTextFormat | undefined;
+        },
     ): Promise<Lyricist.Album>;
 
-    artist(id: number, opts: { textFormat?: Lyricist.LyricistTextFormat | undefined }): Promise<Lyricist.Artist>;
+    artist(
+        id: number,
+        opts: { textFormat?: Lyricist.LyricistTextFormat | undefined },
+    ): Promise<Lyricist.Artist>;
 
     artistByName(
         name: string,
@@ -17,12 +23,19 @@ declare class Lyricist {
 
     song(
         id: number,
-        opts?: { fetchLyrics?: boolean | undefined; textFormat?: Lyricist.LyricistTextFormat | undefined },
+        opts?: {
+            fetchLyrics?: boolean | undefined;
+            textFormat?: Lyricist.LyricistTextFormat | undefined;
+        },
     ): Promise<Lyricist.Song>;
 
     songsByArtist(
         id: number,
-        opts?: { page?: number | undefined; perPage?: number | undefined; sort?: "asc" | "desc" | undefined },
+        opts?: {
+            page?: number | undefined;
+            perPage?: number | undefined;
+            sort?: "asc" | "desc" | undefined;
+        },
     ): Promise<Lyricist.SongByArtist[]>;
 }
 

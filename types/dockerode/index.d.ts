@@ -83,7 +83,10 @@ declare namespace Dockerode {
         /** Deprecated since RAPI v1.20 */
         copy(options?: {}): Promise<any>;
 
-        getArchive(options: {}, callback: Callback<NodeJS.ReadableStream>): void;
+        getArchive(
+            options: {},
+            callback: Callback<NodeJS.ReadableStream>,
+        ): void;
         getArchive(options: {}): Promise<NodeJS.ReadableStream>;
 
         infoArchive(options: {}, callback: Callback<any>): void;
@@ -95,22 +98,49 @@ declare namespace Dockerode {
             options: {},
             callback: Callback<NodeJS.WritableStream>,
         ): void;
-        putArchive(file: string | Buffer | NodeJS.ReadableStream, options: {}): Promise<NodeJS.ReadWriteStream>;
+        putArchive(
+            file: string | Buffer | NodeJS.ReadableStream,
+            options: {},
+        ): Promise<NodeJS.ReadWriteStream>;
 
-        logs(options: ContainerLogsOptions & { follow?: false }, callback: Callback<Buffer>): void;
-        logs(options: ContainerLogsOptions & { follow: true }, callback: Callback<NodeJS.ReadableStream>): void;
+        logs(
+            options: ContainerLogsOptions & { follow?: false },
+            callback: Callback<Buffer>,
+        ): void;
+        logs(
+            options: ContainerLogsOptions & { follow: true },
+            callback: Callback<NodeJS.ReadableStream>,
+        ): void;
         logs(callback: Callback<Buffer>): void;
-        logs(options?: ContainerLogsOptions & { follow?: false }): Promise<Buffer>;
-        logs(options?: ContainerLogsOptions & { follow: true }): Promise<NodeJS.ReadableStream>;
+        logs(
+            options?: ContainerLogsOptions & { follow?: false },
+        ): Promise<Buffer>;
+        logs(
+            options?: ContainerLogsOptions & { follow: true },
+        ): Promise<NodeJS.ReadableStream>;
 
-        stats(options: { stream?: false; "one-shot"?: boolean }, callback: Callback<ContainerStats>): void;
-        stats(options: { stream: true }, callback: Callback<NodeJS.ReadableStream>): void;
+        stats(
+            options: { stream?: false; "one-shot"?: boolean },
+            callback: Callback<ContainerStats>,
+        ): void;
+        stats(
+            options: { stream: true },
+            callback: Callback<NodeJS.ReadableStream>,
+        ): void;
         stats(callback: Callback<ContainerStats>): void;
-        stats(options?: { stream?: false; "one-shot"?: boolean }): Promise<ContainerStats>;
+        stats(options?: {
+            stream?: false;
+            "one-shot"?: boolean;
+        }): Promise<ContainerStats>;
         stats(options?: { stream: true }): Promise<NodeJS.ReadableStream>;
 
-        attach(options: ContainerAttachOptions, callback: Callback<NodeJS.ReadWriteStream>): void;
-        attach(options: ContainerAttachOptions): Promise<NodeJS.ReadWriteStream>;
+        attach(
+            options: ContainerAttachOptions,
+            callback: Callback<NodeJS.ReadWriteStream>,
+        ): void;
+        attach(
+            options: ContainerAttachOptions,
+        ): Promise<NodeJS.ReadWriteStream>;
     }
 
     class Image {
@@ -128,7 +158,10 @@ declare namespace Dockerode {
         get(callback: Callback<NodeJS.ReadableStream>): void;
         get(): Promise<NodeJS.ReadableStream>;
 
-        push(options: ImagePushOptions, callback: Callback<NodeJS.ReadableStream>): void;
+        push(
+            options: ImagePushOptions,
+            callback: Callback<NodeJS.ReadableStream>,
+        ): void;
         push(callback: Callback<NodeJS.ReadableStream>): void;
         push(options?: ImagePushOptions): Promise<NodeJS.ReadableStream>;
 
@@ -136,13 +169,21 @@ declare namespace Dockerode {
         tag(callback: Callback<any>): void;
         tag(options?: {}): Promise<any>;
 
-        remove(options: ImageRemoveOptions, callback: Callback<ImageRemoveInfo>): void;
+        remove(
+            options: ImageRemoveOptions,
+            callback: Callback<ImageRemoveInfo>,
+        ): void;
         remove(callback: Callback<ImageRemoveInfo>): void;
         remove(options?: {}): Promise<any>;
 
-        distribution(options: ImageDistributionOptions, callback: Callback<ImageDistributionInfo>): void;
+        distribution(
+            options: ImageDistributionOptions,
+            callback: Callback<ImageDistributionInfo>,
+        ): void;
         distribution(callback: Callback<ImageDistributionInfo>): void;
-        distribution(options?: ImageDistributionOptions): Promise<ImageDistributionInfo>;
+        distribution(
+            options?: ImageDistributionOptions,
+        ): Promise<ImageDistributionInfo>;
     }
 
     class Volume {
@@ -177,7 +218,10 @@ declare namespace Dockerode {
         update(options: {}, callback: Callback<any>): void;
         update(options: {}): Promise<any>;
 
-        logs(options: ContainerLogsOptions, callback: Callback<NodeJS.ReadableStream>): void;
+        logs(
+            options: ContainerLogsOptions,
+            callback: Callback<NodeJS.ReadableStream>,
+        ): void;
         logs(callback: Callback<NodeJS.ReadableStream>): void;
         logs(options?: ContainerLogsOptions): Promise<NodeJS.ReadableStream>;
     }
@@ -302,11 +346,17 @@ declare namespace Dockerode {
         modem: any;
         id: string;
 
-        inspect(options: ExecInspectOptions, callback: Callback<ExecInspectInfo>): void;
+        inspect(
+            options: ExecInspectOptions,
+            callback: Callback<ExecInspectInfo>,
+        ): void;
         inspect(callback: Callback<ExecInspectInfo>): void;
         inspect(options?: ExecInspectOptions): Promise<ExecInspectInfo>;
 
-        start(options: ExecStartOptions, callback: Callback<stream.Duplex>): void;
+        start(
+            options: ExecStartOptions,
+            callback: Callback<stream.Duplex>,
+        ): void;
         start(options: ExecStartOptions): Promise<stream.Duplex>;
 
         resize(options: {}, callback: Callback<any>): void;
@@ -472,9 +522,9 @@ declare namespace Dockerode {
         // Field is sometimes present, and sometimes null
         UsageData?:
             | {
-                Size: number;
-                RefCount: number;
-            }
+                  Size: number;
+                  RefCount: number;
+              }
             | null
             | undefined;
     }
@@ -491,9 +541,9 @@ declare namespace Dockerode {
         // Field is sometimes present, and sometimes null
         UsageData?:
             | {
-                Size: number;
-                RefCount: number;
-            }
+                  Size: number;
+                  RefCount: number;
+              }
             | null
             | undefined;
     }
@@ -517,15 +567,15 @@ declare namespace Dockerode {
             FinishedAt: string;
             Health?:
                 | {
-                    Status: string;
-                    FailingStreak: number;
-                    Log: Array<{
-                        Start: string;
-                        End: string;
-                        ExitCode: number;
-                        Output: string;
-                    }>;
-                }
+                      Status: string;
+                      FailingStreak: number;
+                      Log: Array<{
+                          Start: string;
+                          End: string;
+                          ExitCode: number;
+                          Output: string;
+                      }>;
+                  }
                 | undefined;
         };
         Image: string;
@@ -619,14 +669,14 @@ declare namespace Dockerode {
             };
             Node?:
                 | {
-                    ID: string;
-                    IP: string;
-                    Addr: string;
-                    Name: string;
-                    Cpus: number;
-                    Memory: number;
-                    Labels: any;
-                }
+                      ID: string;
+                      IP: string;
+                      Addr: string;
+                      Name: string;
+                      Cpus: number;
+                      Memory: number;
+                      Labels: any;
+                  }
                 | undefined;
         };
     }
@@ -759,9 +809,9 @@ declare namespace Dockerode {
         ContainerIDFile?: string | undefined;
         LogConfig?:
             | {
-                Type: string;
-                Config: any;
-            }
+                  Type: string;
+                  Config: any;
+              }
             | undefined;
         NetworkMode?: string | undefined;
         PortBindings?: any;
@@ -1079,7 +1129,13 @@ declare namespace Dockerode {
 
     type MountConsistency = "default" | "consistent" | "cached" | "delegated";
 
-    type MountPropagation = "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave";
+    type MountPropagation =
+        | "private"
+        | "rprivate"
+        | "shared"
+        | "rshared"
+        | "slave"
+        | "rslave";
 
     interface MountSettings {
         Target: string;
@@ -1089,24 +1145,24 @@ declare namespace Dockerode {
         Consistency?: MountConsistency | undefined;
         BindOptions?:
             | {
-                Propagation: MountPropagation;
-            }
+                  Propagation: MountPropagation;
+              }
             | undefined;
         VolumeOptions?:
             | {
-                NoCopy: boolean;
-                Labels: { [label: string]: string };
-                DriverConfig: {
-                    Name: string;
-                    Options: { [option: string]: string };
-                };
-            }
+                  NoCopy: boolean;
+                  Labels: { [label: string]: string };
+                  DriverConfig: {
+                      Name: string;
+                      Options: { [option: string]: string };
+                  };
+              }
             | undefined;
         TmpfsOptions?:
             | {
-                SizeBytes: number;
-                Mode: number;
-            }
+                  SizeBytes: number;
+                  Mode: number;
+              }
             | undefined;
     }
 
@@ -1140,8 +1196,8 @@ declare namespace Dockerode {
         HostConfig?: HostConfig | undefined;
         NetworkingConfig?:
             | {
-                EndpointsConfig?: EndpointsConfig | undefined;
-            }
+                  EndpointsConfig?: EndpointsConfig | undefined;
+              }
             | undefined;
         abortSignal?: AbortSignal;
     }
@@ -1184,34 +1240,34 @@ declare namespace Dockerode {
         filters?:
             | string
             | {
-                config?: string | undefined;
-                container?: string[] | undefined;
-                daemon?: string[] | undefined;
-                event?: string[] | undefined;
-                image?: string[] | undefined;
-                label?: string[] | undefined;
-                network?: string[] | undefined;
-                node?: string[] | undefined;
-                plugin?: string[] | undefined;
-                scope?: Array<"local" | "swarm"> | undefined;
-                secret?: string[] | undefined;
-                service?: string[] | undefined;
-                type?:
-                    | Array<
-                        | "container"
-                        | "image"
-                        | "volume"
-                        | "network"
-                        | "daemon"
-                        | "plugin"
-                        | "service"
-                        | "node"
-                        | "secret"
-                        | "config"
-                    >
-                    | undefined;
-                volume?: string[] | undefined;
-            }
+                  config?: string | undefined;
+                  container?: string[] | undefined;
+                  daemon?: string[] | undefined;
+                  event?: string[] | undefined;
+                  image?: string[] | undefined;
+                  label?: string[] | undefined;
+                  network?: string[] | undefined;
+                  node?: string[] | undefined;
+                  plugin?: string[] | undefined;
+                  scope?: Array<"local" | "swarm"> | undefined;
+                  secret?: string[] | undefined;
+                  service?: string[] | undefined;
+                  type?:
+                      | Array<
+                            | "container"
+                            | "image"
+                            | "volume"
+                            | "network"
+                            | "daemon"
+                            | "plugin"
+                            | "service"
+                            | "node"
+                            | "secret"
+                            | "config"
+                        >
+                      | undefined;
+                  volume?: string[] | undefined;
+              }
             | undefined;
         abortSignal?: AbortSignal;
     }
@@ -1263,13 +1319,15 @@ declare namespace Dockerode {
 
     interface Placement {
         Constraints?: string[] | undefined;
-        Preferences?: Array<{ Spread: { SpreadDescriptor: string } }> | undefined;
+        Preferences?:
+            | Array<{ Spread: { SpreadDescriptor: string } }>
+            | undefined;
         MaxReplicas?: number | undefined;
         Platforms?:
             | Array<{
-                Architecture: string;
-                OS: string;
-            }>
+                  Architecture: string;
+                  OS: string;
+              }>
             | undefined;
     }
 
@@ -1282,19 +1340,19 @@ declare namespace Dockerode {
     interface Privileges {
         CredentialSpec?:
             | {
-                Config?: string | undefined;
-                File?: string | undefined;
-                Registry?: string | undefined;
-            }
+                  Config?: string | undefined;
+                  File?: string | undefined;
+                  Registry?: string | undefined;
+              }
             | undefined;
         SELinuxContext?:
             | {
-                Disable?: boolean | undefined;
-                User?: string | undefined;
-                Role?: string | undefined;
-                Type?: string | undefined;
-                Level?: string | undefined;
-            }
+                  Disable?: boolean | undefined;
+                  User?: string | undefined;
+                  Role?: string | undefined;
+                  Type?: string | undefined;
+                  Level?: string | undefined;
+              }
             | undefined;
     }
 
@@ -1315,11 +1373,11 @@ declare namespace Dockerode {
     interface ConfigReference {
         File?:
             | {
-                Name?: string | undefined;
-                UID?: string | undefined;
-                GID?: string | undefined;
-                Mode: number | undefined;
-            }
+                  Name?: string | undefined;
+                  UID?: string | undefined;
+                  GID?: string | undefined;
+                  Mode: number | undefined;
+              }
             | undefined;
         ConfigID?: string | undefined;
         ConfigName?: string | undefined;
@@ -1328,11 +1386,11 @@ declare namespace Dockerode {
     interface SecretReference {
         File?:
             | {
-                Name?: string | undefined;
-                UID?: string | undefined;
-                GID?: string | undefined;
-                Mode?: number | undefined;
-            }
+                  Name?: string | undefined;
+                  UID?: string | undefined;
+                  GID?: string | undefined;
+                  Mode?: number | undefined;
+              }
             | undefined;
         SecretID?: string | undefined;
         SecretName?: string | undefined;
@@ -1379,10 +1437,10 @@ declare namespace Dockerode {
         Remote?: string | undefined;
         Privileges?:
             | {
-                Name?: string | undefined;
-                Description?: string | undefined;
-                Value?: string[] | undefined;
-            }
+                  Name?: string | undefined;
+                  Description?: string | undefined;
+                  Value?: string[] | undefined;
+              }
             | undefined;
         Disabled?: boolean | undefined;
         Env?: string[] | undefined;
@@ -1395,9 +1453,9 @@ declare namespace Dockerode {
         Networks?: NetworkAttachmentConfig[] | undefined;
         LogDriver?:
             | {
-                Name?: string | undefined;
-                Options?: { [key: string]: string } | undefined;
-            }
+                  Name?: string | undefined;
+                  Options?: { [key: string]: string } | undefined;
+              }
             | undefined;
         ForceUpdate?: number | undefined;
         Runtime?: string | undefined;
@@ -1419,16 +1477,19 @@ declare namespace Dockerode {
         };
     }
 
-    type TaskSpec = ContainerTaskSpec | PluginTaskSpec | NetworkAttachmentTaskSpec;
+    type TaskSpec =
+        | ContainerTaskSpec
+        | PluginTaskSpec
+        | NetworkAttachmentTaskSpec;
 
     interface ServiceMode {
         Replicated?: { Replicas?: number | undefined } | undefined;
         Global?: {} | undefined;
         ReplicatedJob?:
             | {
-                MaxConcurrent?: number | undefined;
-                TotalCompletions?: number | undefined;
-            }
+                  MaxConcurrent?: number | undefined;
+                  TotalCompletions?: number | undefined;
+              }
             | undefined;
         GlobalJob?: {} | undefined;
     }
@@ -1483,11 +1544,11 @@ declare namespace Dockerode {
     interface ServiceListOptions {
         filters?:
             | {
-                id?: string[] | undefined;
-                label?: string[] | undefined;
-                mode?: Array<"replicated" | "global"> | undefined;
-                name?: string[] | undefined;
-            }
+                  id?: string[] | undefined;
+                  label?: string[] | undefined;
+                  mode?: Array<"replicated" | "global"> | undefined;
+                  name?: string[] | undefined;
+              }
             | string
             | undefined;
         status?: boolean | undefined;
@@ -1870,21 +1931,50 @@ type Callback<T> = (error?: any, result?: T) => void;
 declare class Dockerode {
     constructor(options?: Dockerode.DockerOptions);
 
-    createContainer(options: Dockerode.ContainerCreateOptions, callback: Callback<Dockerode.Container>): void;
-    createContainer(options: Dockerode.ContainerCreateOptions): Promise<Dockerode.Container>;
+    createContainer(
+        options: Dockerode.ContainerCreateOptions,
+        callback: Callback<Dockerode.Container>,
+    ): void;
+    createContainer(
+        options: Dockerode.ContainerCreateOptions,
+    ): Promise<Dockerode.Container>;
 
     createImage(options: {}, callback: Callback<NodeJS.ReadableStream>): void;
-    createImage(auth: any, options: {}, callback: Callback<NodeJS.ReadableStream>): void;
+    createImage(
+        auth: any,
+        options: {},
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
     createImage(options: {}): Promise<NodeJS.ReadableStream>;
     createImage(auth: any, options: {}): Promise<NodeJS.ReadableStream>;
 
-    loadImage(file: string | NodeJS.ReadableStream, options: {}, callback: Callback<NodeJS.ReadableStream>): void;
-    loadImage(file: string | NodeJS.ReadableStream, callback: Callback<NodeJS.ReadableStream>): void;
-    loadImage(file: string | NodeJS.ReadableStream, options?: {}): Promise<NodeJS.ReadableStream>;
+    loadImage(
+        file: string | NodeJS.ReadableStream,
+        options: {},
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
+    loadImage(
+        file: string | NodeJS.ReadableStream,
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
+    loadImage(
+        file: string | NodeJS.ReadableStream,
+        options?: {},
+    ): Promise<NodeJS.ReadableStream>;
 
-    importImage(file: string | NodeJS.ReadableStream, options: {}, callback: Callback<NodeJS.ReadableStream>): void;
-    importImage(file: string | NodeJS.ReadableStream, callback: Callback<NodeJS.ReadableStream>): void;
-    importImage(file: string | NodeJS.ReadableStream, options?: {}): Promise<NodeJS.ReadableStream>;
+    importImage(
+        file: string | NodeJS.ReadableStream,
+        options: {},
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
+    importImage(
+        file: string | NodeJS.ReadableStream,
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
+    importImage(
+        file: string | NodeJS.ReadableStream,
+        options?: {},
+    ): Promise<NodeJS.ReadableStream>;
 
     checkAuth(options: any, callback: Callback<any>): void;
     checkAuth(options: any): Promise<any>;
@@ -1925,17 +2015,30 @@ declare class Dockerode {
 
     getConfig(id: string): Dockerode.Config;
 
-    listContainers(options: {}, callback: Callback<Dockerode.ContainerInfo[]>): void;
+    listContainers(
+        options: {},
+        callback: Callback<Dockerode.ContainerInfo[]>,
+    ): void;
     listContainers(callback: Callback<Dockerode.ContainerInfo[]>): void;
     listContainers(options?: {}): Promise<Dockerode.ContainerInfo[]>;
 
-    listImages(options: Dockerode.ListImagesOptions, callback: Callback<Dockerode.ImageInfo[]>): void;
+    listImages(
+        options: Dockerode.ListImagesOptions,
+        callback: Callback<Dockerode.ImageInfo[]>,
+    ): void;
     listImages(callback: Callback<Dockerode.ImageInfo[]>): void;
-    listImages(options?: Dockerode.ListImagesOptions): Promise<Dockerode.ImageInfo[]>;
+    listImages(
+        options?: Dockerode.ListImagesOptions,
+    ): Promise<Dockerode.ImageInfo[]>;
 
-    listServices(options: Dockerode.ServiceListOptions, callback: Callback<Dockerode.Service[]>): void;
+    listServices(
+        options: Dockerode.ServiceListOptions,
+        callback: Callback<Dockerode.Service[]>,
+    ): void;
     listServices(callback: Callback<Dockerode.Service[]>): void;
-    listServices(options?: Dockerode.ServiceListOptions): Promise<Dockerode.Service[]>;
+    listServices(
+        options?: Dockerode.ServiceListOptions,
+    ): Promise<Dockerode.Service[]>;
 
     listNodes(options: {}, callback: Callback<any[]>): void;
     listNodes(callback: Callback<any[]>): void;
@@ -1971,7 +2074,10 @@ declare class Dockerode {
         Warnings: string[];
     }>;
 
-    listNetworks(options: {}, callback: Callback<Dockerode.NetworkInspectInfo[]>): void;
+    listNetworks(
+        options: {},
+        callback: Callback<Dockerode.NetworkInspectInfo[]>,
+    ): void;
     listNetworks(callback: Callback<Dockerode.NetworkInspectInfo[]>): void;
     listNetworks(options?: {}): Promise<Dockerode.NetworkInspectInfo[]>;
 
@@ -1988,33 +2094,63 @@ declare class Dockerode {
     createPlugin(options: {}, callback: Callback<any>): void;
     createPlugin(options: {}): Promise<any>;
 
-    createVolume(options: Dockerode.VolumeCreateOptions, callback: Callback<Dockerode.Volume>): void;
+    createVolume(
+        options: Dockerode.VolumeCreateOptions,
+        callback: Callback<Dockerode.Volume>,
+    ): void;
     createVolume(callback: Callback<Dockerode.Volume>): void;
-    createVolume(options?: Dockerode.VolumeCreateOptions): Promise<Dockerode.VolumeCreateResponse>;
+    createVolume(
+        options?: Dockerode.VolumeCreateOptions,
+    ): Promise<Dockerode.VolumeCreateResponse>;
 
-    createService(options: Dockerode.CreateServiceOptions, callback: Callback<Dockerode.Service>): void;
-    createService(options: Dockerode.CreateServiceOptions): Promise<Dockerode.Service>;
-    createService(auth: Dockerode.AuthConfig, options: Dockerode.ServiceSpec): Promise<Dockerode.Service>;
+    createService(
+        options: Dockerode.CreateServiceOptions,
+        callback: Callback<Dockerode.Service>,
+    ): void;
+    createService(
+        options: Dockerode.CreateServiceOptions,
+    ): Promise<Dockerode.Service>;
+    createService(
+        auth: Dockerode.AuthConfig,
+        options: Dockerode.ServiceSpec,
+    ): Promise<Dockerode.Service>;
 
-    createNetwork(options: Dockerode.NetworkCreateOptions, callback: Callback<Dockerode.Network>): void;
-    createNetwork(options: Dockerode.NetworkCreateOptions): Promise<Dockerode.Network>;
+    createNetwork(
+        options: Dockerode.NetworkCreateOptions,
+        callback: Callback<Dockerode.Network>,
+    ): void;
+    createNetwork(
+        options: Dockerode.NetworkCreateOptions,
+    ): Promise<Dockerode.Network>;
 
     searchImages(options: {}, callback: Callback<any>): void;
     searchImages(options: {}): Promise<any>;
 
-    pruneImages(options: {}, callback: Callback<Dockerode.PruneImagesInfo>): void;
+    pruneImages(
+        options: {},
+        callback: Callback<Dockerode.PruneImagesInfo>,
+    ): void;
     pruneImages(callback: Callback<Dockerode.PruneImagesInfo>): void;
     pruneImages(options?: {}): Promise<Dockerode.PruneImagesInfo>;
 
-    pruneContainers(options: {}, callback: Callback<Dockerode.PruneContainersInfo>): void;
+    pruneContainers(
+        options: {},
+        callback: Callback<Dockerode.PruneContainersInfo>,
+    ): void;
     pruneContainers(callback: Callback<Dockerode.PruneContainersInfo>): void;
     pruneContainers(options?: {}): Promise<Dockerode.PruneContainersInfo>;
 
-    pruneVolumes(options: {}, callback: Callback<Dockerode.PruneVolumesInfo>): void;
+    pruneVolumes(
+        options: {},
+        callback: Callback<Dockerode.PruneVolumesInfo>,
+    ): void;
     pruneVolumes(callback: Callback<Dockerode.PruneVolumesInfo>): void;
     pruneVolumes(options?: {}): Promise<Dockerode.PruneVolumesInfo>;
 
-    pruneNetworks(options: {}, callback: Callback<Dockerode.PruneNetworksInfo>): void;
+    pruneNetworks(
+        options: {},
+        callback: Callback<Dockerode.PruneNetworksInfo>,
+    ): void;
     pruneNetworks(callback: Callback<Dockerode.PruneNetworksInfo>): void;
     pruneNetworks(options?: {}): Promise<Dockerode.PruneNetworksInfo>;
 
@@ -2030,11 +2166,21 @@ declare class Dockerode {
     ping(callback: Callback<any>): void;
     ping(): Promise<any>;
 
-    getEvents(options: Dockerode.GetEventsOptions, callback: Callback<NodeJS.ReadableStream>): void;
+    getEvents(
+        options: Dockerode.GetEventsOptions,
+        callback: Callback<NodeJS.ReadableStream>,
+    ): void;
     getEvents(callback: Callback<NodeJS.ReadableStream>): void;
-    getEvents(options?: Dockerode.GetEventsOptions): Promise<NodeJS.ReadableStream>;
+    getEvents(
+        options?: Dockerode.GetEventsOptions,
+    ): Promise<NodeJS.ReadableStream>;
 
-    pull(repoTag: string, options: {}, callback: Callback<any>, auth?: {}): Dockerode.Image;
+    pull(
+        repoTag: string,
+        options: {},
+        callback: Callback<any>,
+        auth?: {},
+    ): Dockerode.Image;
     pull(repoTag: string, options?: {}): Promise<any>;
 
     run(

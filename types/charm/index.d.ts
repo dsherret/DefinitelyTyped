@@ -1,10 +1,21 @@
 /// <reference types="node" />
 
 declare namespace charm {
-    type CharmColorName = "red" | "yellow" | "green" | "blue" | "cyan" | "magenta" | "black" | "white";
+    type CharmColorName =
+        | "red"
+        | "yellow"
+        | "green"
+        | "blue"
+        | "cyan"
+        | "magenta"
+        | "black"
+        | "white";
     type CharmColorHex = number;
     type CharmColor = CharmColorName | CharmColorHex;
-    type CharmAnyStream = NodeJS.WritableStream | NodeJS.ReadableStream | NodeJS.Process;
+    type CharmAnyStream =
+        | NodeJS.WritableStream
+        | NodeJS.ReadableStream
+        | NodeJS.Process;
 
     interface CharmInstance extends NodeJS.WritableStream {
         /** Reset the entire screen, like the /usr/bin/reset command. */
@@ -98,7 +109,16 @@ declare namespace charm {
          *  - reverse
          *  - hidden
          */
-        display(attr: "reset" | "bright" | "dim" | "underscore" | "blink" | "reverse" | "hidden"): this;
+        display(
+            attr:
+                | "reset"
+                | "bright"
+                | "dim"
+                | "underscore"
+                | "blink"
+                | "reverse"
+                | "hidden",
+        ): this;
 
         /**
          * Set the foreground color with the string `color`, which can be:

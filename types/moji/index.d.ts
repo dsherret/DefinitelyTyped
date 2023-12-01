@@ -19,7 +19,10 @@ declare namespace moji {
         toString(): string;
     }
 
-    function addMojisyu(type: string, mojisyu: MojisyuRange | MojisyuRegExp): void;
+    function addMojisyu(
+        type: string,
+        mojisyu: MojisyuRange | MojisyuRegExp,
+    ): void;
 }
 
 declare function moji(moji: string): moji.Moji;

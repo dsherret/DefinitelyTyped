@@ -25,10 +25,11 @@ const map5 = new maptalks.Map("map", {
         new maptalks.TileLayer("base", {
             renderer: "canvas", //  set TileLayer's renderer to canvas
             crossOrigin: "anonymous",
-            urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            urlTemplate:
+                "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
             subdomains: ["a", "b", "c", "d"],
             attribution:
-                "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+                '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
         }),
         new maptalks.WMSTileLayer("wms", {
             urlTemplate: "https:// demo.boundlessgeo.com/geoserver/ows",
@@ -44,7 +45,8 @@ const map5 = new maptalks.Map("map", {
 
     layers: [
         new maptalks.TileLayer("boudaries", {
-            urlTemplate: "https:// {s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
+            urlTemplate:
+                "https:// {s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png",
             subdomains: ["a", "b", "c", "d"],
         }),
         new maptalks.VectorLayer("v"),
@@ -105,7 +107,9 @@ function toCoordinate() {
         markerHeight: 20,
     };
     const coordinate = map5.getCenter().add(0.008, 0.008);
-    (<VectorLayer> map5.getLayer("v")).clear().addGeometry(new maptalks.Marker(coordinate, { symbol }));
+    (<VectorLayer>map5.getLayer("v"))
+        .clear()
+        .addGeometry(new maptalks.Marker(coordinate, { symbol }));
     map5.panTo(coordinate);
 }
 
@@ -141,7 +145,12 @@ getStatus();
 function getStatus(): void {}
 const center = map5.getCenter();
 const polygon2222 = new maptalks.Polygon(
-    [center.add(-0.005, 0.005), center.add(0.005, 0.005), center.add(0.005, -0.005), center.add(-0.005, -0.005)],
+    [
+        center.add(-0.005, 0.005),
+        center.add(0.005, 0.005),
+        center.add(0.005, -0.005),
+        center.add(-0.005, -0.005),
+    ],
     {
         symbol: {
             polygonFill: "#fff",
@@ -149,7 +158,7 @@ const polygon2222 = new maptalks.Polygon(
         },
     },
 );
-(<VectorLayer> map5.getLayer("v")).addGeometry(polygon2222);
+(<VectorLayer>map5.getLayer("v")).addGeometry(polygon2222);
 
 function fitExtent() {
     //  fit map's extent to polygon's
@@ -162,7 +171,7 @@ map5.setMaxExtent(extent);
 
 map5.setZoom(map5.getZoom() - 2, { animation: false });
 
-(<VectorLayer> map5.getLayer("v")).addGeometry(
+(<VectorLayer>map5.getLayer("v")).addGeometry(
     new maptalks.Polygon(extent.toArray(), {
         symbol: { polygonOpacity: 0, lineWidth: 5 },
     }),
@@ -183,10 +192,11 @@ new maptalks.Map("map1", {
     scrollWheelZoom: false, //  disable scroll wheel zoom
     dblClickZoom: false, //  disable doubleclick
     baseLayer: new maptalks.TileLayer("base1", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 
@@ -225,7 +235,9 @@ function update() {
         coorEle.innerHTML = "coordiante info";
     }
 }
-new maptalks.VectorLayer("v", new maptalks.Marker(map5.getCenter())).addTo(map5);
+new maptalks.VectorLayer("v", new maptalks.Marker(map5.getCenter())).addTo(
+    map5,
+);
 //  Export map to an image
 //  External image(tiles, marker images) hosts need to support CORS
 function save() {
@@ -258,11 +270,7 @@ function createMagCircle(imageData: ImageData, size: number) {
     const magImg = document.createElement("canvas");
     const magCircle = document.createElement("canvas");
 
-    magImg.width =
-        magImg.height =
-        magCircle.width =
-        magCircle.height =
-            size;
+    magImg.width = magImg.height = magCircle.width = magCircle.height = size;
     const canvasRenderContext = magImg.getContext("2d");
     if (canvasRenderContext) {
         canvasRenderContext.putImageData(imageData, 0, 0);
@@ -279,29 +287,33 @@ function createMagCircle(imageData: ImageData, size: number) {
 
     return magCircle;
 }
-const arcUrl = "https:// services.arcgisonline.com/arcgis/rest/services/ESRI_Imagery_World_2D/MapServer";
+const arcUrl =
+    "https:// services.arcgisonline.com/arcgis/rest/services/ESRI_Imagery_World_2D/MapServer";
 
-maptalks.SpatialReference.loadArcgis(arcUrl + "?f=pjson", (err: any, conf: any) => {
-    if (err) {
-        throw new Error(err);
-    }
-    const ref = conf.spatialReference;
-    ref.projection = "EPSG:4326";
+maptalks.SpatialReference.loadArcgis(
+    arcUrl + "?f=pjson",
+    (err: any, conf: any) => {
+        if (err) {
+            throw new Error(err);
+        }
+        const ref = conf.spatialReference;
+        ref.projection = "EPSG:4326";
 
-    new maptalks.Map("map", {
-        center: [121, 0],
-        zoom: 1,
-        minZoom: 1,
-        maxZoom: 16,
-        spatialReference: ref,
-        baseLayer: new maptalks.TileLayer("base", {
-            tileSystem: conf.tileSystem,
-            tileSize: conf.tileSize, //  [512, 512]
-            urlTemplate: arcUrl + "/tile/{z}/{y}/{x}",
-            attribution: `&copy; <a target="_blank" href="${arcUrl}">ArcGIS</a>`,
-        }),
-    });
-});
+        new maptalks.Map("map", {
+            center: [121, 0],
+            zoom: 1,
+            minZoom: 1,
+            maxZoom: 16,
+            spatialReference: ref,
+            baseLayer: new maptalks.TileLayer("base", {
+                tileSystem: conf.tileSystem,
+                tileSize: conf.tileSize, //  [512, 512]
+                urlTemplate: arcUrl + "/tile/{z}/{y}/{x}",
+                attribution: `&copy; <a target="_blank" href="${arcUrl}">ArcGIS</a>`,
+            }),
+        });
+    },
+);
 const url =
     "https:// t0.tianditu.gov.cn/vec_c/wmts?request=GetCapabilities&service=wmts&tk=de0dc270a51aaca3dd4e64d4f8c81ff6";
 
@@ -345,10 +357,11 @@ const map28 = new maptalks.Map("map", {
         },
     },
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
         tileSystem: [1, -1, -20037508.34, 20037508.34], //  tile system
         minZoom: 1,
         maxZoom: 20,
@@ -358,7 +371,7 @@ const baseLayer = new maptalks.TileLayer("base", {
     urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     subdomains: ["a", "b", "c", "d"],
     attribution:
-        "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+        '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
 });
 
 // generate tile url
@@ -407,7 +420,7 @@ const map30 = new maptalks.Map("map", {
     zoom: 11,
     attribution: {
         content:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>, &copy ESRI",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>, &copy ESRI',
     },
     baseLayer: new maptalks.TileLayer("base", {
         urlTemplate:
@@ -418,10 +431,11 @@ const map30 = new maptalks.Map("map", {
 map30.addLayer(
     new maptalks.TileLayer("carto", {
         opacity: 0.6, //  TileLayer's opacity, 0-1
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 );
 
@@ -431,27 +445,27 @@ const tileLayer = new maptalks.TileLayer("carto", {
     //  fragment shader from webglfundamentals.org
     //  https:// webglfundamentals.org/webgl/lessons/webgl-image-processing.html
     fragmentShader: [
-        "precision mediump float;"
-        + "uniform sampler2D u_image;"
-        + "uniform vec2 u_textureSize;"
-        + "uniform float u_kernel[9];"
-        + "uniform float u_opacity;"
-        + "uniform float u_kernelWeight;"
-        + "varying vec2 v_texCoord;"
-        + "void main() {"
-        + "vec2 onePixel = vec2(1.0, 1.0) / u_textureSize;"
-        + "vec4 colorSum ="
-        + "texture2D(u_image, v_texCoord + onePixel * vec2(-1, -1)) * u_kernel[0] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 0, -1)) * u_kernel[1] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 1, -1)) * u_kernel[2] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2(-1,  0)) * u_kernel[3] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 0,  0)) * u_kernel[4] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 1,  0)) * u_kernel[5] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2(-1,  1)) * u_kernel[6] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 0,  1)) * u_kernel[7] +"
-        + "texture2D(u_image, v_texCoord + onePixel * vec2( 1,  1)) * u_kernel[8] ;"
-        + "gl_FragColor = vec4((colorSum / u_kernelWeight).rgb, 1) * u_opacity;"
-        + "}",
+        "precision mediump float;" +
+            "uniform sampler2D u_image;" +
+            "uniform vec2 u_textureSize;" +
+            "uniform float u_kernel[9];" +
+            "uniform float u_opacity;" +
+            "uniform float u_kernelWeight;" +
+            "varying vec2 v_texCoord;" +
+            "void main() {" +
+            "vec2 onePixel = vec2(1.0, 1.0) / u_textureSize;" +
+            "vec4 colorSum =" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2(-1, -1)) * u_kernel[0] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 0, -1)) * u_kernel[1] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 1, -1)) * u_kernel[2] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2(-1,  0)) * u_kernel[3] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 0,  0)) * u_kernel[4] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 1,  0)) * u_kernel[5] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2(-1,  1)) * u_kernel[6] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 0,  1)) * u_kernel[7] +" +
+            "texture2D(u_image, v_texCoord + onePixel * vec2( 1,  1)) * u_kernel[8] ;" +
+            "gl_FragColor = vec4((colorSum / u_kernelWeight).rgb, 1) * u_opacity;" +
+            "}",
     ].join("\n"),
 });
 
@@ -461,7 +475,10 @@ tileLayer.on("canvascreate", (e: any) => {
     const program = gl.program;
     const textureSizeLocation = gl.getUniformLocation(program, "u_textureSize");
     const kernelLocation = gl.getUniformLocation(program, "u_kernel[0]");
-    const kernelWeightLocation = gl.getUniformLocation(program, "u_kernelWeight");
+    const kernelWeightLocation = gl.getUniformLocation(
+        program,
+        "u_kernelWeight",
+    );
     // kernels of sobelVertical in the original example
     const kernels = [1, 0, -1, 2, 0, -2, 1, 0, -1];
     gl.uniform2f(textureSizeLocation, 256, 256);
@@ -699,9 +716,11 @@ const map215 = new maptalks.Map("map", {
         projection: "baidu",
     },
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "http:// online{s}.map5.bdimg.com/onlinelabel/?qt=tile&x={x}&y={y}&z={z}&styles=pl&scaler=1&p=1",
+        urlTemplate:
+            "http:// online{s}.map5.bdimg.com/onlinelabel/?qt=tile&x={x}&y={y}&z={z}&styles=pl&scaler=1&p=1",
         subdomains: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        attribution: "&copy; <a target=\"_blank\" href=\"http:// map5.baidu.com\">Baidu</a>",
+        attribution:
+            '&copy; <a target="_blank" href="http:// map5.baidu.com">Baidu</a>',
     }),
 });
 
@@ -737,26 +756,13 @@ new maptalks.Map("map", {
         projection, //  geo projection, defined by proj4js
         resolutions: [
             //  map's zoom levels and resolutions
-            156543.03392804097,
-            78271.51696402048,
-            9135.75848201024,
-            19567.87924100512,
-            9783.93962050256,
-            4891.96981025128,
-            2445.98490512564,
-            1222.99245256282,
-            611.49622628141,
-            305.748113140705,
-            152.8740565703525,
-            76.43702828517625,
-            38.21851414258813,
-            19.109257071294063,
-            9.554628535647032,
-            4.777314267823516,
-            2.388657133911758,
-            1.194328566955879,
-            0.5971642834779395,
-            0.29858214173896974,
+            156543.03392804097, 78271.51696402048, 9135.75848201024,
+            19567.87924100512, 9783.93962050256, 4891.96981025128,
+            2445.98490512564, 1222.99245256282, 611.49622628141,
+            305.748113140705, 152.8740565703525, 76.43702828517625,
+            38.21851414258813, 19.109257071294063, 9.554628535647032,
+            4.777314267823516, 2.388657133911758, 1.194328566955879,
+            0.5971642834779395, 0.29858214173896974,
         ],
         fullExtent: {
             //  map's full extent
@@ -767,10 +773,11 @@ new maptalks.Map("map", {
         },
     },
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 const geometries33333 = maptalks.GeoJSON.toGeometry("");
@@ -780,7 +787,10 @@ const symbol = {
     polygonOpacity: 1,
     polygonFill: "#747474",
 };
-new maptalks.VectorLayer("v", geometries33333, { geometryEvents: false, enableSimplify: false })
+new maptalks.VectorLayer("v", geometries33333, {
+    geometryEvents: false,
+    enableSimplify: false,
+})
     .forEach((geo: Geometry) => {
         geo.setSymbol(symbol);
     })
@@ -798,10 +808,11 @@ new maptalks.Map("map", {
             projection: "EPSG:3857",
             //  other properties necessary for spatial reference
         },
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 new maptalks.Map("map", {
@@ -810,10 +821,11 @@ new maptalks.Map("map", {
     minZoom: 1,
     maxZoom: 19,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
 
         //  css filter
         cssFilter: "sepia(100%) invert(90%)",
@@ -901,14 +913,23 @@ const marker22 = new maptalks.Marker(c.add(-0.018, 0.007), {
     },
 });
 
-const line2 = new maptalks.LineString([c.add(-0.018, 0.005), c.add(0.006, 0.005)], {
-    symbol: {
-        lineColor: "#1bbc9b",
-        lineWidth: 3,
+const line2 = new maptalks.LineString(
+    [c.add(-0.018, 0.005), c.add(0.006, 0.005)],
+    {
+        symbol: {
+            lineColor: "#1bbc9b",
+            lineWidth: 3,
+        },
     },
-});
+);
 const polygon3 = new maptalks.Polygon(
-    [c.add(-0.018, 0.004), c.add(0.006, 0.004), c.add(0.006, -0.001), c.add(-0.018, -0.001), c.add(-0.018, 0.004)],
+    [
+        c.add(-0.018, 0.004),
+        c.add(0.006, 0.004),
+        c.add(0.006, -0.001),
+        c.add(-0.018, -0.001),
+        c.add(-0.018, 0.004),
+    ],
     {
         symbol: {
             lineColor: "#34495e",
@@ -919,7 +940,11 @@ const polygon3 = new maptalks.Polygon(
     },
 );
 
-const collection2 = new maptalks.GeometryCollection([marker22, line2, polygon3]);
+const collection2 = new maptalks.GeometryCollection([
+    marker22,
+    line2,
+    polygon3,
+]);
 
 new maptalks.VectorLayer("vector", collection2).addTo(map5);
 const center2 = new maptalks.Coordinate(-0.113049, 51.498568);
@@ -927,10 +952,11 @@ const map35 = new maptalks.Map("map", {
     center: center2,
     zoom: 14,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 
@@ -1076,7 +1102,9 @@ const ellipse = new maptalks.Ellipse(center.add(0.003, -0.005), 1000, 600, {
     },
 });
 
-new maptalks.VectorLayer("vector").addGeometry([rectangle, circle, sector, ellipse]).addTo(map5);
+new maptalks.VectorLayer("vector")
+    .addGeometry([rectangle, circle, sector, ellipse])
+    .addTo(map5);
 const arc = new maptalks.ArcCurve(
     [
         c.add(-0.0202, 0.0081),
@@ -1325,11 +1353,17 @@ addListen();
 
 function addListen() {
     // mousemove and touchmove is annoying, so not listening to it.
-    marker.on("mousedown mouseup click dblclick contextmenu touchstart touchend", onEvent);
+    marker.on(
+        "mousedown mouseup click dblclick contextmenu touchstart touchend",
+        onEvent,
+    );
 }
 function removeListen() {
     // mousemove and touchmove is annoying, so not listening to it.
-    marker.off("mousedown mouseup click dblclick contextmenu touchstart touchend", onEvent);
+    marker.off(
+        "mousedown mouseup click dblclick contextmenu touchstart touchend",
+        onEvent,
+    );
 }
 
 const events: any[] = [];
@@ -1338,16 +1372,15 @@ function onEvent(param: any) {
     events.push(param);
     let content = "";
     for (let i = events.length - 1; i >= 0; i--) {
-        content += events[i].type
-            + `on
-            ${
-                events[i].coordinate
-                    .toArray()
-                    .map((c: Coordinate) => {
-                        return c.toFixed(5);
-                    })
-                    .join()
-            }
+        content +=
+            events[i].type +
+            `on
+            ${events[i].coordinate
+                .toArray()
+                .map((c: Coordinate) => {
+                    return c.toFixed(5);
+                })
+                .join()}
             <br>`;
     }
     const ele = document.getElementById("events");
@@ -1539,7 +1572,9 @@ const line433 = new maptalks.LineString(
     },
 );
 
-new maptalks.VectorLayer("vector", [line433, line431, line432], { enableAltitude: true }).addTo(map5);
+new maptalks.VectorLayer("vector", [line433, line431, line432], {
+    enableAltitude: true,
+}).addTo(map5);
 
 const line44 = new maptalks.LineString(
     [
@@ -1828,20 +1863,30 @@ new maptalks.Marker([-0.113049, 51.49856], {
         textAlign: "center", // left | right | center | auto
     },
 }).addTo(layer);
-new maptalks.LineString([map5.getCenter().sub(0.1, 0), map5.getCenter().add(0.1, 0)], {
-    symbol: {
-        linePatternFile: "line-pattern.png",
-        lineWidth: 20,
+new maptalks.LineString(
+    [map5.getCenter().sub(0.1, 0), map5.getCenter().add(0.1, 0)],
+    {
+        symbol: {
+            linePatternFile: "line-pattern.png",
+            lineWidth: 20,
+        },
     },
-}).addTo(layer);
-new maptalks.LineString([map5.getCenter().sub(0.1, 0), map5.getCenter().add(0.1, 0), map5.getCenter().add(0.1, -0.1)], {
-    arrowStyle: "classic", //  we only have one arrow style now
-    arrowPlacement: "vertex-firstlast", // vertex-first, vertex-last, vertex-firstlast, point
-    symbol: {
-        lineColor: "#1bbc9b",
-        lineWidth: 8,
+).addTo(layer);
+new maptalks.LineString(
+    [
+        map5.getCenter().sub(0.1, 0),
+        map5.getCenter().add(0.1, 0),
+        map5.getCenter().add(0.1, -0.1),
+    ],
+    {
+        arrowStyle: "classic", //  we only have one arrow style now
+        arrowPlacement: "vertex-firstlast", // vertex-first, vertex-last, vertex-firstlast, point
+        symbol: {
+            lineColor: "#1bbc9b",
+            lineWidth: 8,
+        },
     },
-}).addTo(layer);
+).addTo(layer);
 new maptalks.LineString(
     [
         c.add(-0.0202, 0.0081),
@@ -1909,7 +1954,7 @@ new maptalks.Marker(map5.getCenter(), {
 new maptalks.ui.UIMarker([-0.113049, 51.49856], {
     draggable: true,
     single: false,
-    content: "<div class=\"text_marker\">HTML Marker</div>",
+    content: '<div class="text_marker">HTML Marker</div>',
 });
 marker2.addTo(map5).show();
 new maptalks.Marker(map5.getCenter(), {
@@ -1928,21 +1973,26 @@ map5.addLayer(layer);
 map5.removeLayer(layer);
 layer.show();
 layer.hide();
-const rect11 = new maptalks.Rectangle(map5.getCenter().add(-0.025, 0.005), 1600, 1000, {
-    symbol: [
-        {
-            lineColor: "#34495e",
-            lineWidth: 3,
-            polygonFill: "#1bbc9b",
-        },
-        {
-            textName: "70%",
-            textWeight: "bold",
-            textSize: 30,
-            textFill: "#fff",
-        },
-    ],
-});
+const rect11 = new maptalks.Rectangle(
+    map5.getCenter().add(-0.025, 0.005),
+    1600,
+    1000,
+    {
+        symbol: [
+            {
+                lineColor: "#34495e",
+                lineWidth: 3,
+                polygonFill: "#1bbc9b",
+            },
+            {
+                textName: "70%",
+                textWeight: "bold",
+                textSize: 30,
+                textFill: "#fff",
+            },
+        ],
+    },
+);
 
 const rect2 = rect11
     .copy()
@@ -1971,7 +2021,7 @@ map5.on("mousemove", (e: any) => {
             }),
         );
     } else {
-        (<maptalks.Marker> layer.getMask()).setCoordinates(e.coordinate);
+        (<maptalks.Marker>layer.getMask()).setCoordinates(e.coordinate);
     }
 });
 
@@ -1979,7 +2029,7 @@ const marker55 = new maptalks.Marker(
     center, // .add(-0.018,0.007).toArray(),
     {
         symbol: {
-            textFaceName: "\"microsoft yahei\",arial,sans-serif",
+            textFaceName: '"microsoft yahei",arial,sans-serif',
             textName: "MapTalks",
             textFill: "#34495e",
             textHorizontalAlignment: "right",
@@ -2018,29 +2068,36 @@ const polygon55 = new maptalks.Polygon(
     },
 );
 
-new maptalks.VectorLayer("vector").addGeometry([marker55, polyline55, polygon55]).addTo(map5);
+new maptalks.VectorLayer("vector")
+    .addGeometry([marker55, polyline55, polygon55])
+    .addTo(map5);
 new maptalks.VectorLayer("vector")
     .setStyle({
         filter: ["count", ">=", 0],
         symbol: getSymbol("#747474"),
     })
     .addTo(map5);
-const rect3 = new maptalks.Rectangle(map5.getCenter().sub(0.025, 0.0035), 1200, 1000, {
-    symbol: [
-        {
-            lineColor: "#34495e",
-            lineWidth: 3,
-            polygonFill: "#1bbc9b",
-            polygonOpacity: 1,
-        },
-        {
-            textName: "3",
-            textWeight: "bold",
-            textSize: 30,
-            textFill: "#fff",
-        },
-    ],
-});
+const rect3 = new maptalks.Rectangle(
+    map5.getCenter().sub(0.025, 0.0035),
+    1200,
+    1000,
+    {
+        symbol: [
+            {
+                lineColor: "#34495e",
+                lineWidth: 3,
+                polygonFill: "#1bbc9b",
+                polygonOpacity: 1,
+            },
+            {
+                textName: "3",
+                textWeight: "bold",
+                textSize: 30,
+                textFill: "#fff",
+            },
+        ],
+    },
+);
 
 const rect22 = rect3
     .copy()
@@ -2065,7 +2122,7 @@ function sort2() {
     rect3.setZIndex(1);
 }
 
-(<VectorLayer> map5.getLayer("v")).addGeometry([rect3, rect2, rect1]);
+(<VectorLayer>map5.getLayer("v")).addGeometry([rect3, rect2, rect1]);
 
 const canvasLayer = new maptalks.CanvasLayer("c", {
     forceRenderOnMoving: true,
@@ -2077,7 +2134,7 @@ canvasLayer.prepareToDraw = (/* context */) => {
 };
 
 //  param1 and param2 are prepareToDraw's return values.
-canvasLayer.draw = function(context, view, param1, param2) {
+canvasLayer.draw = function (context, view, param1, param2) {
     const size = map5.getSize();
     const str222 = `${param1},${param2}`;
     context.fillStyle = "#f00";
@@ -2088,7 +2145,7 @@ canvasLayer.draw = function(context, view, param1, param2) {
 };
 
 // draw when map is interacting
-canvasLayer.drawOnInteracting = function(context, view, param1, param2) {
+canvasLayer.drawOnInteracting = function (context, view, param1, param2) {
     this.draw(context, view, param1, param2);
 };
 
@@ -2126,8 +2183,10 @@ new maptalks.Circle(center, 1000, {
 const layerOrder = ["earth", "landuse", "water", "roads", "building"];
 //  draw mapzen's geojson vector tile with CanvasTileLayer
 const canvasTile = new maptalks.CanvasTileLayer("tile", {
-    urlTemplate: "https:// tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.json?api_key=mapzen-cGRKZj",
-    attribution: "&copy; <a href=\"https:// mapzen.com/\" target=\"_blank\">mapzen</a>",
+    urlTemplate:
+        "https:// tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.json?api_key=mapzen-cGRKZj",
+    attribution:
+        '&copy; <a href="https:// mapzen.com/" target="_blank">mapzen</a>',
 });
 canvasTile.drawTile = (canvas, tileContext, onComplete) => {
     maptalks.Ajax.getJSON(tileContext.url, (err: any, data: any) => {
@@ -2151,11 +2210,15 @@ canvasTile.drawTile = (canvas, tileContext, onComplete) => {
             }
             const style = mapzenStyle[name];
             layers.push(
-                new maptalks.VectorLayer(name, maptalks.GeoJSON.toGeometry(data[name]), {
-                    style,
-                    enableSimplify: false,
-                    geometryEvents: false,
-                }).on("layerload", onLayerLoaded),
+                new maptalks.VectorLayer(
+                    name,
+                    maptalks.GeoJSON.toGeometry(data[name]),
+                    {
+                        style,
+                        enableSimplify: false,
+                        geometryEvents: false,
+                    },
+                ).on("layerload", onLayerLoaded),
             );
         }
         // create a map instance on tile's canvas
@@ -2282,7 +2345,7 @@ const layer616 = new maptalks.TileLayer("light", {
     urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     subdomains: ["a", "b", "c", "d"],
     attribution:
-        "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+        '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     //  force layer to render when map is zooming and moving
     forceRenderOnMoving: true,
     forceRenderOnZooming: true,
@@ -2292,7 +2355,8 @@ new maptalks.Map("map", {
     center: [121.4, 37.5],
     zoom: 13,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
     }),
     layers: [layer616],
@@ -2346,12 +2410,18 @@ renderer.getCanvasImage = () => {
 const imageLayer = new maptalks.ImageLayer("images", [
     {
         url: "1.png",
-        extent: [-0.11854216406254636, 51.50043810048564, -0.09081885168461667, 51.50994770979011],
+        extent: [
+            -0.11854216406254636, 51.50043810048564, -0.09081885168461667,
+            51.50994770979011,
+        ],
         opacity: 1,
     },
     {
         url: "2.png",
-        extent: [-0.10343596289067136, 51.50797115663946, -0.07897421667485105, 51.51876102463089],
+        extent: [
+            -0.10343596289067136, 51.50797115663946, -0.07897421667485105,
+            51.51876102463089,
+        ],
         opacity: 1,
     },
 ]);
@@ -2368,10 +2438,11 @@ const map71 = new maptalks.Map("map", {
     touchZoom: false, // disable touchzoom
     doubleClickZoom: false, // disable doubleclick zoom
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 function dragOn() {
@@ -2411,7 +2482,7 @@ const items = [
     ["ScrollWheel", scrollOn, scrollOff],
     ["TouchZoom", touchZoomOn, touchZoomOff],
     ["DblClick", dblClickOn, dblClickOff],
-].map(value => {
+].map((value) => {
     return {
         item: value[0],
         children: [
@@ -2575,7 +2646,7 @@ const itemsc = [
     "Rectangle",
     "FreeHandLineString",
     "FreeHandPolygon",
-].map(value => {
+].map((value) => {
     return {
         item: value,
         click() {
@@ -2608,20 +2679,23 @@ const toolbar = new maptalks.control.Toolbar({
 const marker56 = new maptalks.Marker(center.add(-0.018, 0.007).toArray(), {
     draggable: true,
     symbol: {
-        textFaceName: "\"microsoft yahei\",arial,sans-serif",
+        textFaceName: '"microsoft yahei",arial,sans-serif',
         textName: "Try to Drag Us",
         textFill: "#34495e",
         textHorizontalAlignment: "right",
         textSize: 40,
     },
 });
-const polyline = new maptalks.LineString([center.add(-0.018, 0.005).toArray(), center.add(0.006, 0.005).toArray()], {
-    draggable: true,
-    symbol: {
-        lineColor: "#1bbc9b",
-        lineWidth: 5,
+const polyline = new maptalks.LineString(
+    [center.add(-0.018, 0.005).toArray(), center.add(0.006, 0.005).toArray()],
+    {
+        draggable: true,
+        symbol: {
+            lineColor: "#1bbc9b",
+            lineWidth: 5,
+        },
     },
-});
+);
 const polygon56 = new maptalks.Polygon(
     [
         center.add(-0.018, 0.004).toArray(),
@@ -2772,7 +2846,9 @@ const ellipse3 = new maptalks.Ellipse(center.add(0.003, -0.005), 1000, 600, {
     },
 });
 
-new maptalks.VectorLayer("vector").addGeometry([rectangle, circle, ellipse]).addTo(map5);
+new maptalks.VectorLayer("vector")
+    .addGeometry([rectangle, circle, ellipse])
+    .addTo(map5);
 
 startEditcc();
 
@@ -2867,7 +2943,7 @@ map5.on("click", (e: any) => {
             if (geos.length === 0) {
                 return;
             }
-            geos.forEach(g => {
+            geos.forEach((g) => {
                 g.updateSymbol({
                     markerFill: "#f00",
                 });
@@ -2982,10 +3058,11 @@ new maptalks.Map("map", {
     center: c,
     zoom: 13,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
     layers: [
         new maptalks.VectorLayer("v0", [new maptalks.Marker(cc)]),
@@ -2995,16 +3072,17 @@ new maptalks.Map("map", {
 
 new maptalks.Marker(c);
 new maptalks.Rectangle(c, 1000, 800);
-(<VectorLayer> map5.getLayer("v")).addGeometry(marker, rect);
+(<VectorLayer>map5.getLayer("v")).addGeometry(marker, rect);
 
 const map1 = new maptalks.Map("map1", {
     center: c,
     zoom: 13,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 const newLayer = new maptalks.VectorLayer("v").addTo(map1);
@@ -3063,10 +3141,11 @@ const map = new maptalks.Map("map", {
     center: [-0.113049, 51.49856],
     zoom: 14,
     baseLayer: new maptalks.TileLayer("base", {
-        urlTemplate: "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        urlTemplate:
+            "https:// {s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
         subdomains: ["a", "b", "c", "d"],
         attribution:
-            "&copy; <a href=\"http:// osm.org\">OpenStreetMap</a> contributors, &copy; <a href=\"https:// carto.com/\">CARTO</a>",
+            '&copy; <a href="http:// osm.org">OpenStreetMap</a> contributors, &copy; <a href="https:// carto.com/">CARTO</a>',
     }),
 });
 
@@ -3088,11 +3167,15 @@ function toolbarc(text: string) {
     return toolbar;
 }
 
-toolbarc("<div class=\"attr\">Click to add Marker, right click to clear</div>").addTo(map5);
+toolbarc(
+    '<div class="attr">Click to add Marker, right click to clear</div>',
+).addTo(map5);
 
 class CustomTool extends maptalks.MapTool {
     onEnable() {
-        this._markerLayer = new maptalks.VectorLayer("CustomTool_layer").addTo(this.getMap());
+        this._markerLayer = new maptalks.VectorLayer("CustomTool_layer").addTo(
+            this.getMap(),
+        );
     }
 
     onDisable() {
@@ -3109,11 +3192,13 @@ class CustomTool extends maptalks.MapTool {
     }
 
     _onClick(param: any) {
-        (<VectorLayer> this._markerLayer).addGeometry(new maptalks.Marker(param.coordinate));
+        (<VectorLayer>this._markerLayer).addGeometry(
+            new maptalks.Marker(param.coordinate),
+        );
     }
 
     _onRightClick(param: any) {
-        (<VectorLayer> this._markerLayer).clear();
+        (<VectorLayer>this._markerLayer).clear();
     }
 }
 
@@ -3129,7 +3214,11 @@ const options = {
 class HelloLayer extends maptalks.Layer {
     data: any;
     //  构造函数
-    constructor(id: string | number, data?: any, options?: maptalks.LayerOptions) {
+    constructor(
+        id: string | number,
+        data?: any,
+        options?: maptalks.LayerOptions,
+    ) {
         super(id, options);
         this.data = data;
     }
@@ -3155,7 +3244,10 @@ class HelloLayerRenderer extends maptalks.renderer.CanvasRenderer {
     }
 
     draw() {
-        const drawn = this._drawData(this.layer.getData(), this.layer.options.color);
+        const drawn = this._drawData(
+            this.layer.getData(),
+            this.layer.options.color,
+        );
         // 记录下绘制过的数据
         this._drawnData = drawn;
         // 结束绘制:
@@ -3202,10 +3294,12 @@ class HelloLayerRenderer extends maptalks.renderer.CanvasRenderer {
 
         const containerExtent = map5.getContainerExtent();
         const drawn: any = [];
-        data.forEach(d => {
+        data.forEach((d) => {
             // 将中心点经纬度坐标转化为containerPoint
             // containerPoint是指相对地图容器左上角的像素坐标.
-            const point = map5.coordinateToContainerPoint(new maptalks.Coordinate(d.coord));
+            const point = map5.coordinateToContainerPoint(
+                new maptalks.Coordinate(d.coord),
+            );
             // 如果绘制的点不在屏幕范围内, 则不做绘制以提高性能
             if (!containerExtent.contains(point)) {
                 return;

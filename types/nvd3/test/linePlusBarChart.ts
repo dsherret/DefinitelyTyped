@@ -1,9 +1,9 @@
 namespace nvd3_test_linePlusBarChart {
     var testdata = [
         {
-            "key": "Quantity",
-            "bar": true,
-            "values": <any> [
+            key: "Quantity",
+            bar: true,
+            values: <any>[
                 [1136005200000, 1271000.0],
                 [1138683600000, 1271000.0],
                 [1141102800000, 1271000.0],
@@ -84,8 +84,8 @@ namespace nvd3_test_linePlusBarChart {
             ],
         },
         {
-            "key": "Price",
-            "values": <any> [
+            key: "Price",
+            values: <any>[
                 [1136005200000, 71.89],
                 [1138683600000, 75.51],
                 [1141102800000, 68.49],
@@ -165,41 +165,47 @@ namespace nvd3_test_linePlusBarChart {
                 [1335758400000, 583.98],
             ],
         },
-    ].map(function(series) {
-        series.values = series.values.map(function(d) {
+    ].map(function (series) {
+        series.values = series.values.map(function (d) {
             return { x: d[0], y: d[1] };
         });
         return series;
     });
 
     var chart;
-    nv.addGraph(function() {
-        chart = nv.models.linePlusBarChart()
+    nv.addGraph(function () {
+        chart = nv.models
+            .linePlusBarChart()
             .margin({ top: 50, right: 80, bottom: 30, left: 80 })
             .legendRightAxisHint(" [Using Right Axis]")
             .color(d3.scale.category10().range());
 
-        chart.xAxis.tickFormat(function(d) {
-            return d3.time.format("%x")(new Date(d));
-        })
+        chart.xAxis
+            .tickFormat(function (d) {
+                return d3.time.format("%x")(new Date(d));
+            })
             .showMaxMin(false);
 
-        chart.y1Axis.tickFormat(function(d) {
+        chart.y1Axis.tickFormat(function (d) {
             return "$" + d3.format(",f")(d);
         });
         chart.bars.forceY([0]).padData(false);
 
-        chart.x2Axis.tickFormat(function(d) {
-            return d3.time.format("%x")(new Date(d));
-        }).showMaxMin(false);
+        chart.x2Axis
+            .tickFormat(function (d) {
+                return d3.time.format("%x")(new Date(d));
+            })
+            .showMaxMin(false);
 
         d3.select("#chart1 svg")
             .datum(testdata)
-            .transition().duration(500).call(chart);
+            .transition()
+            .duration(500)
+            .call(chart);
 
         nv.utils.windowResize(chart.update);
 
-        chart.dispatch.on("stateChange", function(e) {
+        chart.dispatch.on("stateChange", function (e) {
             nv.log("New State:", JSON.stringify(e));
         });
 

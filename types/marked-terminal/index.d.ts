@@ -5,7 +5,10 @@ import type { TerminalRendererOptions } from "./index.cjs";
 export { TerminalRendererOptions };
 
 export default class TerminalRenderer extends Renderer {
-    constructor(options?: TerminalRendererOptions, highlightOptions?: CardinalOptions);
+    constructor(
+        options?: TerminalRendererOptions,
+        highlightOptions?: CardinalOptions,
+    );
 }
 
 export function markedTerminal(

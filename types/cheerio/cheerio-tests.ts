@@ -23,7 +23,9 @@ cheerio.load([$("ul").get(0)]);
 const $fromElement = cheerio.load($("ul").get(0));
 
 if ($fromElement("ul > li").length !== 3) {
-    throw new Error("Expecting 3 elements when passing `cheerio.Element` to `load()`");
+    throw new Error(
+        "Expecting 3 elements when passing `cheerio.Element` to `load()`",
+    );
 }
 
 $ = cheerio.load(Buffer.from(html));
@@ -86,7 +88,7 @@ $el.attr("id", "favorite").html();
 // @ts-expect-error
 $el.attr("id", (el, i, attr) => el.tagName + i * 2 + attr).html();
 // @ts-expect-error
-$el.attr("id", el => el.tagName).html();
+$el.attr("id", (el) => el.tagName).html();
 $el.attr({ id: "uniq", class: "big" }).html();
 
 $emptyEl.attr("id") === undefined;
@@ -101,10 +103,8 @@ $el.data("apple-color");
 $el.data("kind", "mac");
 
 // val
-$("input[type=\"text\"]").val();
-$("input[type=\"text\"]")
-    .val("test")
-    .html();
+$('input[type="text"]').val();
+$('input[type="text"]').val("test").html();
 
 // removeAttr
 $el.removeAttr("class").html();
@@ -113,9 +113,7 @@ $el.removeAttr("class").html();
 $el.addClass("class").addClass("test");
 $el.hasClass("test");
 $el.removeClass("class").removeClass("test");
-$el.addClass("red")
-    .removeClass()
-    .html();
+$el.addClass("red").removeClass().html();
 $el.toggleClass("fruit green red").html();
 
 // is
@@ -129,8 +127,8 @@ $el.is(() => {
  * Forms
  */
 // serializeArray
-$("<form><input name=\"foo\" value=\"bar\" /></form>").serializeArray();
-$("<form><input name=\"foo\" value=\"bar\" /></form>").serialize();
+$('<form><input name="foo" value="bar" /></form>').serializeArray();
+$('<form><input name="foo" value="bar" /></form>').serialize();
 
 /**
  * Traversing
@@ -180,9 +178,7 @@ $el.prevUntil();
 $el.prevUntil(".class");
 
 // .slice( start, [end] )
-$el.slice(1)
-    .eq(0)
-    .text();
+$el.slice(1).eq(0).text();
 $el.slice(1, 2).length;
 
 // .siblings([selector])
@@ -232,14 +228,10 @@ $el.has(".class").attr("id");
 $el.has($el[0]).attr("id");
 
 // .first()
-$el.children()
-    .first()
-    .text();
+$el.children().first().text();
 
 // .last()
-$el.children()
-    .last()
-    .text();
+$el.children().last().text();
 
 // .eq( i )
 $el.eq(0).text();
@@ -270,55 +262,51 @@ $el.eq(0).addBack(".class").length;
  * Manipulation
  */
 
-$("<li class=\"plum\">Plum</li>").appendTo($el);
-$el.prependTo($("<li class=\"plum\">Plum</li>"));
+$('<li class="plum">Plum</li>').appendTo($el);
+$el.prependTo($('<li class="plum">Plum</li>'));
 
 // .append( content, [content, ...] )
-$el.append("<li class=\"plum\">Plum</li>").html();
-$el.append("<li class=\"plum\">Plum</li>", "<li class=\"plum\">Plum</li>").html();
+$el.append('<li class="plum">Plum</li>').html();
+$el.append('<li class="plum">Plum</li>', '<li class="plum">Plum</li>').html();
 
 // .prepend( content, [content, ...] )
-$el.prepend("<li class=\"plum\">Plum</li>").html();
-$el.prepend("<li class=\"plum\">Plum</li>", "<li class=\"plum\">Plum</li>").html();
+$el.prepend('<li class="plum">Plum</li>').html();
+$el.prepend('<li class="plum">Plum</li>', '<li class="plum">Plum</li>').html();
 
 // .after( content, [content, ...] )
-$el.after("<li class=\"plum\">Plum</li>").html();
-$el.after("<li class=\"plum\">Plum</li>", "<li class=\"plum\">Plum</li>").html();
+$el.after('<li class="plum">Plum</li>').html();
+$el.after('<li class="plum">Plum</li>', '<li class="plum">Plum</li>').html();
 
 // .insertAfter( content )
-$("<li class=\"plum\">Plum</li>")
-    .insertAfter(".class")
-    .html();
+$('<li class="plum">Plum</li>').insertAfter(".class").html();
 
 // .before( content, [content, ...] )
-$el.before("<li class=\"plum\">Plum</li>").html();
-$el.before("<li class=\"plum\">Plum</li>", "<li class=\"plum\">Plum</li>").html();
+$el.before('<li class="plum">Plum</li>').html();
+$el.before('<li class="plum">Plum</li>', '<li class="plum">Plum</li>').html();
 
 // .insertBefore( content )
-$("<li class=\"plum\">Plum</li>")
-    .insertBefore(".class")
-    .html();
+$('<li class="plum">Plum</li>').insertBefore(".class").html();
 
 // .remove( [selector] )
 $el.remove().html();
 $el.remove(".class").html();
 
 // .replaceWith( content )
-$el.replaceWith($("<li class=\"plum\">Plum</li>")).html();
+$el.replaceWith($('<li class="plum">Plum</li>')).html();
 
 // .empty()
 $el.empty().html();
 
 // .html( [htmlString] )
 $el.html();
-$el.html("<li class=\"mango\">Mango</li>").html();
+$el.html('<li class="mango">Mango</li>').html();
 
 // .text( [textString] )
 $el.text();
 $el.text("text");
 
 // .wrap( content )
-$el.wrap($("<div class=\"red-fruit\"></div>")).html();
+$el.wrap($('<div class="red-fruit"></div>')).html();
 
 // .css
 $el.css();
@@ -346,9 +334,7 @@ $el.clone().html();
  */
 
 // $.root
-$.root()
-    .append("<ul id=\"vegetables\"></ul>")
-    .html();
+$.root().append('<ul id="vegetables"></ul>').html();
 
 // $.contains( container, contained )
 $.contains($el[0], $el[0]);
@@ -369,7 +355,10 @@ cheerio.version;
 
 const doSomething = (element: cheerio.Element): void => {
     if (
-        element.type !== "text" && element.type !== "comment" && element.type !== "script" && element.type !== "style"
+        element.type !== "text" &&
+        element.type !== "comment" &&
+        element.type !== "script" &&
+        element.type !== "style"
     ) {
         // $ExpectType { [attr: string]: string; }
         element.attribs;

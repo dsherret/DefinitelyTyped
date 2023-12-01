@@ -53,7 +53,12 @@ declare namespace CKEDITOR {
         defaultLanguage?: string | undefined;
         devtools_styles?: string | undefined;
         devtools_textCallback?:
-            | ((editor: editor, dialog: dialog, element: dom.element, tabName: string) => string)
+            | ((
+                  editor: editor,
+                  dialog: dialog,
+                  element: dom.element,
+                  tabName: string,
+              ) => string)
             | undefined;
         dialog_backgroundCoverColor?: string | undefined;
         dialog_backgroundCoverOpacity?: number | undefined;
@@ -101,7 +106,10 @@ declare namespace CKEDITOR {
         filebrowserWindowFeatures?: string | undefined;
         filebrowserWindowHeight?: number | string | undefined;
         filebrowserWindowWidth?: number | string | undefined;
-        fillEmptyBlocks?: boolean | ((element: htmlParser.element) => boolean) | undefined;
+        fillEmptyBlocks?:
+            | boolean
+            | ((element: htmlParser.element) => boolean)
+            | undefined;
         find_highlight?: config.styleObject | undefined;
         flashAddEmbedTag?: boolean | undefined;
         flashConvertOnEdit?: boolean | undefined;
@@ -258,14 +266,14 @@ declare namespace CKEDITOR {
         toolbar?:
             | string
             | Array<
-                | string
-                | string[]
-                | {
-                    name: string;
-                    items?: string[] | undefined;
-                    groups?: string[] | undefined;
-                }
-            >
+                  | string
+                  | string[]
+                  | {
+                        name: string;
+                        items?: string[] | undefined;
+                        groups?: string[] | undefined;
+                    }
+              >
             | null
             | undefined;
         toolbarCanCollapse?: boolean | undefined;

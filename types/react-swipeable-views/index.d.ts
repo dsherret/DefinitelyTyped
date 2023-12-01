@@ -1,10 +1,16 @@
 import * as React from "react";
 
-export type OnChangeIndexCallback = (index: number, indexLatest: number) => void;
+export type OnChangeIndexCallback = (
+    index: number,
+    indexLatest: number,
+) => void;
 
 export type OnTransitionEndCallback = () => void;
 
-export type OnSwitchingCallback = (index: number, type: OnSwitchingCallbackTypeDescriptor) => void;
+export type OnSwitchingCallback = (
+    index: number,
+    type: OnSwitchingCallbackTypeDescriptor,
+) => void;
 
 export type OnSwitchingCallbackTypeDescriptor = "move" | "end";
 
@@ -24,7 +30,8 @@ export interface SpringConfig {
     delay: string;
 }
 
-export interface SwipeableViewsProps extends Omit<React.HTMLProps<HTMLDivElement>, "action"> {
+export interface SwipeableViewsProps
+    extends Omit<React.HTMLProps<HTMLDivElement>, "action"> {
     animateHeight?: boolean | undefined;
     animateTransitions?: boolean | undefined;
     axis?: AxisType | undefined;
@@ -59,4 +66,7 @@ export interface SwipeableViewsState {
     displaySameSlide?: boolean | undefined;
 }
 
-export default class SwipeableViews extends React.Component<SwipeableViewsProps, SwipeableViewsState> {}
+export default class SwipeableViews extends React.Component<
+    SwipeableViewsProps,
+    SwipeableViewsState
+> {}

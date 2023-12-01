@@ -143,25 +143,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -207,25 +207,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -271,25 +271,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -335,25 +335,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -399,25 +399,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -463,25 +463,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -527,25 +527,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;
@@ -591,25 +591,25 @@ const Div = customComponents.div!;
             return <div />;
         },
         nested: {
-            components: props => {
+            components: (props) => {
                 // $ExpectType any
                 props;
                 return <div />;
             },
             very: {
-                deeply: props => {
+                deeply: (props) => {
                     // $ExpectType any
                     props;
                     return <div />;
                 },
                 to: {
-                    infinity: props => {
+                    infinity: (props) => {
                         // $ExpectType any
                         props;
                         return <div />;
                     },
                     and: {
-                        beyond: props => {
+                        beyond: (props) => {
                             // $ExpectType any
                             props;
                             return <div />;

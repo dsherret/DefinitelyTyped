@@ -153,7 +153,13 @@ export interface Logger {
     fatal(...args: any[]): void;
 }
 
-export type TraceLevels = "debug" | "path" | "info" | "warning" | "error" | "fatal";
+export type TraceLevels =
+    | "debug"
+    | "path"
+    | "info"
+    | "warning"
+    | "error"
+    | "fatal";
 
 export interface Tracer {
     /**

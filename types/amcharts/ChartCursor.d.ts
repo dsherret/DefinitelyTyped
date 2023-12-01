@@ -118,28 +118,26 @@ export default class ChartCursor {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                chart: AmChart;
-                delta2X?: number | undefined;
-                delta2Y?: number | undefined;
-                deltaX?: number | undefined;
-                deltaY?: number | undefined;
-                end?: number | undefined;
-                finalX?: number | undefined;
-                finalY?: number | undefined;
-                index?: number | undefined;
-                initialX?: number | undefined;
-                initialY?: number | undefined;
-                mostCloseGraph?: AmGraph | undefined;
-                start?: number | undefined;
-                target?: ChartCursor | undefined;
-                type: string;
-                x?: number | undefined;
-                y?: number | undefined;
-                zooming?: boolean | undefined;
-            },
-        ) => void,
+        handler: (e: {
+            chart: AmChart;
+            delta2X?: number | undefined;
+            delta2Y?: number | undefined;
+            deltaX?: number | undefined;
+            deltaY?: number | undefined;
+            end?: number | undefined;
+            finalX?: number | undefined;
+            finalY?: number | undefined;
+            index?: number | undefined;
+            initialX?: number | undefined;
+            initialY?: number | undefined;
+            mostCloseGraph?: AmGraph | undefined;
+            start?: number | undefined;
+            target?: ChartCursor | undefined;
+            type: string;
+            x?: number | undefined;
+            y?: number | undefined;
+            zooming?: boolean | undefined;
+        }) => void,
     ): void;
 
     /**

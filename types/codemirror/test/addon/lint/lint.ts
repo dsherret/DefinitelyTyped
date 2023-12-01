@@ -1,10 +1,19 @@
 import CodeMirror = require("codemirror");
-import { Annotation, LintStateOptions, UpdateLintingCallback } from "codemirror/addon/lint/lint";
+import {
+    Annotation,
+    LintStateOptions,
+    UpdateLintingCallback,
+} from "codemirror/addon/lint/lint";
 
 const asyncLintedCm: CodeMirror.Editor = CodeMirror(document.body, {
     lint: {
         async: true,
-        getAnnotations(content: string, callback, options: any, cm: CodeMirror.Editor) {
+        getAnnotations(
+            content: string,
+            callback,
+            options: any,
+            cm: CodeMirror.Editor,
+        ) {
             callback(cm, [
                 {
                     from: CodeMirror.Pos(0),
@@ -20,7 +29,12 @@ const asyncLintedCm: CodeMirror.Editor = CodeMirror(document.body, {
 const asyncLintedCm3: CodeMirror.Editor = CodeMirror(document.body, {
     lint: {
         async: true,
-        getAnnotations(content: string, callback, options: any, cm: CodeMirror.Editor) {
+        getAnnotations(
+            content: string,
+            callback,
+            options: any,
+            cm: CodeMirror.Editor,
+        ) {
             // @ts-expect-error
             callback(cm);
         },

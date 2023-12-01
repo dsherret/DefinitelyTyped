@@ -16,7 +16,9 @@ declare function webpack(
     options: webpack.Configuration[],
     handler: webpack.MultiCompiler.Handler,
 ): webpack.MultiWatching | webpack.MultiCompiler;
-declare function webpack(options: webpack.Configuration[]): webpack.MultiCompiler;
+declare function webpack(
+    options: webpack.Configuration[],
+): webpack.MultiCompiler;
 
 declare namespace webpack {
     interface Configuration {
@@ -129,7 +131,10 @@ declare namespace webpack {
         /** The filename of the SourceMaps for the JavaScript files. They are inside the output.path directory. */
         sourceMapFilename?: string | undefined;
         /** Filename template string of function for the sources array in a generated SourceMap. */
-        devtoolModuleFilenameTemplate?: string | ((info: DevtoolModuleFilenameTemplateInfo) => string) | undefined;
+        devtoolModuleFilenameTemplate?:
+            | string
+            | ((info: DevtoolModuleFilenameTemplateInfo) => string)
+            | undefined;
         /** Similar to output.devtoolModuleFilenameTemplate, but used in the case of duplicate module identifiers. */
         devtoolFallbackModuleFilenameTemplate?:
             | string
@@ -194,7 +199,10 @@ declare namespace webpack {
         /** The prefix length of the hash digest to use, defaults to 20. */
         hashDigestLength?: number | undefined;
         /** Algorithm used for generation the hash (see node.js crypto package) */
-        hashFunction?: string | ((algorithm: string, options?: any) => any) | undefined;
+        hashFunction?:
+            | string
+            | ((algorithm: string, options?: any) => any)
+            | undefined;
         /** An optional salt to update the hash via Node.JS' hash.update. */
         hashSalt?: string | undefined;
     }
@@ -205,7 +213,11 @@ declare namespace webpack {
         /** A array of applied post loaders. */
         postLoaders?: Rule[] | undefined;
         /** A RegExp or an array of RegExps. Don’t parse files matching. */
-        noParse?: RegExp | RegExp[] | ((content: string) => boolean) | undefined;
+        noParse?:
+            | RegExp
+            | RegExp[]
+            | ((content: string) => boolean)
+            | undefined;
         unknownContextRequest?: string | undefined;
         unknownContextRecursive?: boolean | undefined;
         unknownContextRegExp?: RegExp | undefined;
@@ -344,13 +356,25 @@ declare namespace webpack {
         enforceModuleExtension?: boolean | undefined;
     }
 
-    type ExternalsElement = string | RegExp | ExternalsObjectElement | ExternalsFunctionElement;
+    type ExternalsElement =
+        | string
+        | RegExp
+        | ExternalsObjectElement
+        | ExternalsFunctionElement;
 
     interface ExternalsObjectElement {
-        [key: string]: boolean | string | string[] | Record<string, string | string[]>;
+        [key: string]:
+            | boolean
+            | string
+            | string[]
+            | Record<string, string | string[]>;
     }
 
-    type ExternalsFunctionElement = (context: any, request: any, callback: (error: any, result: any) => void) => any;
+    type ExternalsFunctionElement = (
+        context: any,
+        request: any,
+        callback: (error: any, result: any) => void,
+    ) => any;
 
     interface Node {
         console?: boolean | undefined;
@@ -384,10 +408,19 @@ declare namespace webpack {
         /** The Condition must NOT match. */
         not: Condition;
     }
-    type ConditionSpec = TestConditionSpec | OrConditionSpec | AndConditionSpec | NotConditionSpec;
+    type ConditionSpec =
+        | TestConditionSpec
+        | OrConditionSpec
+        | AndConditionSpec
+        | NotConditionSpec;
 
     interface ConditionArray extends Array<Condition> {}
-    type Condition = string | RegExp | ((absPath: string) => boolean) | ConditionSpec | ConditionArray;
+    type Condition =
+        | string
+        | RegExp
+        | ((absPath: string) => boolean)
+        | ConditionSpec
+        | ConditionArray;
 
     interface OldLoader {
         loader: string;
@@ -562,7 +595,10 @@ declare namespace webpack {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface ICompiler {
         run(handler: ICompiler.Handler): void;
-        watch(watchOptions: ICompiler.WatchOptions, handler: ICompiler.Handler): Watching;
+        watch(
+            watchOptions: ICompiler.WatchOptions,
+            handler: ICompiler.Handler,
+        ): Watching;
     }
 
     namespace ICompiler {
@@ -598,7 +634,10 @@ declare namespace webpack {
         options: Configuration;
         outputFileSystem: any;
         run(handler: Compiler.Handler): void;
-        watch(watchOptions: Compiler.WatchOptions, handler: Compiler.Handler): Compiler.Watching;
+        watch(
+            watchOptions: Compiler.WatchOptions,
+            handler: Compiler.Handler,
+        ): Compiler.Watching;
     }
 
     namespace Compiler {
@@ -606,7 +645,11 @@ declare namespace webpack {
         type WatchOptions = ICompiler.WatchOptions;
 
         class Watching implements Watching {
-            constructor(compiler: Compiler, watchOptions: Watching.WatchOptions, handler: Watching.Handler);
+            constructor(
+                compiler: Compiler,
+                watchOptions: Watching.WatchOptions,
+                handler: Watching.Handler,
+            );
 
             close(callback: () => void): void;
             invalidate(): void;
@@ -621,7 +664,10 @@ declare namespace webpack {
     abstract class MultiCompiler extends Tapable implements ICompiler {
         compilers: ICompiler[];
         run(handler: MultiCompiler.Handler): void;
-        watch(watchOptions: MultiCompiler.WatchOptions, handler: MultiCompiler.Handler): MultiWatching;
+        watch(
+            watchOptions: MultiCompiler.WatchOptions,
+            handler: MultiCompiler.Handler,
+        ): MultiWatching;
     }
 
     namespace MultiCompiler {
@@ -724,7 +770,12 @@ declare namespace webpack {
             /** Show which exports of a module are used */
             usedExports?: boolean | undefined;
             /** Filter warnings to be shown */
-            warningsFilter?: string | RegExp | Array<string | RegExp> | ((warning: string) => boolean) | undefined;
+            warningsFilter?:
+                | string
+                | RegExp
+                | Array<string | RegExp>
+                | ((warning: string) => boolean)
+                | undefined;
             /** Show performance hint when file size exceeds `performance.maxAssetSize` */
             performance?: boolean | undefined;
             /** Show the exports of the modules */
@@ -771,7 +822,12 @@ declare namespace webpack {
     }
 
     class ContextReplacementPlugin extends Plugin {
-        constructor(resourceRegExp: any, newContentResource?: any, newContentRecursive?: any, newContentRegExp?: any);
+        constructor(
+            resourceRegExp: any,
+            newContentResource?: any,
+            newContentRecursive?: any,
+            newContentRegExp?: any,
+        );
     }
 
     class DefinePlugin extends Plugin {
@@ -854,18 +910,23 @@ declare namespace webpack {
     }
 
     class EvalSourceMapDevToolPlugin extends Plugin {
-        constructor(options?: false | string | EvalSourceMapDevToolPlugin.Options);
+        constructor(
+            options?: false | string | EvalSourceMapDevToolPlugin.Options,
+        );
     }
 
     namespace EvalSourceMapDevToolPlugin {
         interface Options {
             append?: false | string | undefined;
             columns?: boolean | undefined;
-            lineToLine?: boolean | {
-                exclude?: Condition | Condition[] | undefined;
-                include?: Condition | Condition[] | undefined;
-                test?: Condition | Condition[] | undefined;
-            } | undefined;
+            lineToLine?:
+                | boolean
+                | {
+                      exclude?: Condition | Condition[] | undefined;
+                      include?: Condition | Condition[] | undefined;
+                      test?: Condition | Condition[] | undefined;
+                  }
+                | undefined;
             module?: boolean | undefined;
             moduleFilenameTemplate?: string | undefined;
             sourceRoot?: string | undefined;
@@ -944,7 +1005,9 @@ declare namespace webpack {
     }
 
     class SourceMapDevToolPlugin extends Plugin {
-        constructor(options?: null | false | string | SourceMapDevToolPlugin.Options);
+        constructor(
+            options?: null | false | string | SourceMapDevToolPlugin.Options,
+        );
     }
 
     namespace SourceMapDevToolPlugin {
@@ -956,11 +1019,14 @@ declare namespace webpack {
             fallbackModuleFilenameTemplate?: string | undefined;
             filename?: null | false | string | undefined;
             include?: Condition | Condition[] | undefined;
-            lineToLine?: boolean | {
-                exclude?: Condition | Condition[] | undefined;
-                include?: Condition | Condition[] | undefined;
-                test?: Condition | Condition[] | undefined;
-            } | undefined;
+            lineToLine?:
+                | boolean
+                | {
+                      exclude?: Condition | Condition[] | undefined;
+                      include?: Condition | Condition[] | undefined;
+                      test?: Condition | Condition[] | undefined;
+                  }
+                | undefined;
             module?: boolean | undefined;
             moduleFilenameTemplate?: string | undefined;
             noSources?: boolean | undefined;
@@ -1086,15 +1152,17 @@ declare namespace webpack {
                 exclude?: Condition | Condition[] | undefined;
                 include?: Condition | Condition[] | undefined;
                 /** Parallelization can speedup your build significantly and is therefore highly recommended. */
-                parallel?: boolean | { cache: boolean; workers: boolean | number } | undefined;
+                parallel?:
+                    | boolean
+                    | { cache: boolean; workers: boolean | number }
+                    | undefined;
                 sourceMap?: boolean | undefined;
                 test?: Condition | Condition[] | undefined;
             }
         }
     }
 
-    namespace dependencies {
-    }
+    namespace dependencies {}
 
     namespace loader {
         interface Loader extends Function {
@@ -1112,7 +1180,11 @@ declare namespace webpack {
              * If a loader delivers a result in the pitch method the process turns around and skips the remaining loaders,
              * continuing with the calls to the more left loaders. data can be passed between pitch and normal call.
              */
-            pitch?(remainingRequest: string, precedingRequest: string, data: any): any;
+            pitch?(
+                remainingRequest: string,
+                precedingRequest: string,
+                data: any,
+            ): any;
 
             /**
              * By default, the resource file is treated as utf-8 string and passed as String to the loader.
@@ -1237,7 +1309,11 @@ declare namespace webpack {
             /**
              * Resolve a request like a require expression.
              */
-            resolve(context: string, request: string, callback: (err: Error, result: string) => void): any;
+            resolve(
+                context: string,
+                request: string,
+                callback: (err: Error, result: string) => void,
+            ): any;
 
             /**
              * Resolve a request like a require expression.
@@ -1326,7 +1402,11 @@ declare namespace webpack {
             /**
              * Emit a file. This is webpack-specific.
              */
-            emitFile(name: string, content: Buffer | string, sourceMap: any): void;
+            emitFile(
+                name: string,
+                content: Buffer | string,
+                sourceMap: any,
+            ): void;
 
             /**
              * Access to the compilation's inputFileSystem property.

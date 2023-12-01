@@ -102,8 +102,8 @@ declare namespace SVGIcons2SVGFontStream {
     interface MetadataOptions {
         prependUnicode?: boolean | undefined;
         startUnicode?: number | undefined;
-        log?: typeof console["log"] | undefined;
-        err?: typeof console["error"] | undefined;
+        log?: (typeof console)["log"] | undefined;
+        err?: (typeof console)["error"] | undefined;
     }
 
     interface MetadataProvider {

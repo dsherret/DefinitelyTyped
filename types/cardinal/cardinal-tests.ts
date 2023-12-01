@@ -4,47 +4,51 @@ import colors = require("ansicolors");
 
 cardinal.highlight("var x = 1;"); // $ExpectType string
 cardinal.highlight("var x = 1;", { theme: defaultTheme }); // $ExpectType string
-cardinal.highlightFile("path/to/file.js", { theme: defaultTheme }, (error, result) => {
-    error; // $ExpectType Error | null
-    result; // $ExpectType string
-});
+cardinal.highlightFile(
+    "path/to/file.js",
+    { theme: defaultTheme },
+    (error, result) => {
+        error; // $ExpectType Error | null
+        result; // $ExpectType string
+    },
+);
 cardinal.highlightFile("path/to/file.js", (error, result) => {
     error; // $ExpectType Error | null
     result; // $ExpectType string
 });
 
 const customTheme = {
-    "Boolean": {
+    Boolean: {
         // changed from default
-        "true": colors.red,
-        "false": undefined,
+        true: colors.red,
+        false: undefined,
         _default: colors.brightRed,
     },
-    "Identifier": {
-        "undefined": colors.brightBlack,
-        "self": colors.brightRed,
-        "console": colors.blue,
+    Identifier: {
+        undefined: colors.brightBlack,
+        self: colors.brightRed,
+        console: colors.blue,
         _default: colors.brightCyan,
     },
-    "Null": {
+    Null: {
         _default: colors.brightBlack,
     },
-    "Numeric": {
+    Numeric: {
         _default: colors.blue,
     },
-    "String": {
+    String: {
         _default: colors.brightGreen,
     },
-    "Keyword": {
-        "break": undefined,
-        "case": undefined,
-        "catch": colors.cyan,
-        "continue": undefined,
-        "debugger": undefined,
-        "default": undefined,
+    Keyword: {
+        break: undefined,
+        case: undefined,
+        catch: colors.cyan,
+        continue: undefined,
+        debugger: undefined,
+        default: undefined,
         _default: colors.brightBlue,
     },
-    "Punctuator": {
+    Punctuator: {
         ";": colors.brightBlack,
         ".": colors.green,
         ",": colors.green,

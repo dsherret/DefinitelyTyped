@@ -83,17 +83,24 @@ export interface ApplyPatchOptions {
      */
     compareLine?:
         | ((
-            lineNumber: number,
-            line: string,
-            operation: "-" | " ",
-            patchContent: string,
-        ) => boolean)
+              lineNumber: number,
+              line: string,
+              operation: "-" | " ",
+              patchContent: string,
+          ) => boolean)
         | undefined;
 }
 
 export interface ApplyPatchesOptions extends ApplyPatchOptions {
-    loadFile(index: ParsedDiff, callback: (err: any, data: string) => void): void;
-    patched(index: ParsedDiff, content: string, callback: (err: any) => void): void;
+    loadFile(
+        index: ParsedDiff,
+        callback: (err: any, data: string) => void,
+    ): void;
+    patched(
+        index: ParsedDiff,
+        content: string,
+        callback: (err: any) => void,
+    ): void;
     complete(err: any): void;
 }
 
@@ -148,7 +155,9 @@ export class Diff {
     diff(
         oldString: string,
         newString: string,
-        options?: Callback | (ArrayOptions<any, any> & Partial<CallbackOptions>),
+        options?:
+            | Callback
+            | (ArrayOptions<any, any> & Partial<CallbackOptions>),
     ): Change[];
 
     pushComponent(components: Change[], added: boolean, removed: boolean): void;
@@ -176,7 +185,11 @@ export class Diff {
  *
  * @returns A list of change objects.
  */
-export function diffChars(oldStr: string, newStr: string, options?: BaseOptions): Change[];
+export function diffChars(
+    oldStr: string,
+    newStr: string,
+    options?: BaseOptions,
+): Change[];
 export function diffChars(
     oldStr: string,
     newStr: string,
@@ -188,7 +201,11 @@ export function diffChars(
  *
  * @returns A list of change objects.
  */
-export function diffWords(oldStr: string, newStr: string, options?: WordsOptions): Change[];
+export function diffWords(
+    oldStr: string,
+    newStr: string,
+    options?: WordsOptions,
+): Change[];
 export function diffWords(
     oldStr: string,
     newStr: string,
@@ -216,7 +233,11 @@ export function diffWordsWithSpace(
  *
  * @returns A list of change objects.
  */
-export function diffLines(oldStr: string, newStr: string, options?: LinesOptions): Change[];
+export function diffLines(
+    oldStr: string,
+    newStr: string,
+    options?: LinesOptions,
+): Change[];
 export function diffLines(
     oldStr: string,
     newStr: string,
@@ -228,7 +249,11 @@ export function diffLines(
  *
  * @returns A list of change objects.
  */
-export function diffTrimmedLines(oldStr: string, newStr: string, options?: LinesOptions): Change[];
+export function diffTrimmedLines(
+    oldStr: string,
+    newStr: string,
+    options?: LinesOptions,
+): Change[];
 export function diffTrimmedLines(
     oldStr: string,
     newStr: string,
@@ -240,7 +265,11 @@ export function diffTrimmedLines(
  *
  * @returns A list of change objects.
  */
-export function diffSentences(oldStr: string, newStr: string, options?: BaseOptions): Change[];
+export function diffSentences(
+    oldStr: string,
+    newStr: string,
+    options?: BaseOptions,
+): Change[];
 export function diffSentences(
     oldStr: string,
     newStr: string,
@@ -252,7 +281,11 @@ export function diffSentences(
  *
  * @returns A list of change objects.
  */
-export function diffCss(oldStr: string, newStr: string, options?: BaseOptions): Change[];
+export function diffCss(
+    oldStr: string,
+    newStr: string,
+    options?: BaseOptions,
+): Change[];
 export function diffCss(
     oldStr: string,
     newStr: string,
@@ -373,14 +406,20 @@ export function applyPatch(
  * Passing an `err` will terminate further patch execution.
  * 3. Once all patches have been applied or an error occurs, the `options.complete(err)` callback is made.
  */
-export function applyPatches(patch: string | ParsedDiff[], options: ApplyPatchesOptions): void;
+export function applyPatches(
+    patch: string | ParsedDiff[],
+    options: ApplyPatchesOptions,
+): void;
 
 /**
  * Parses a patch into structured data.
  *
  * @returns A JSON object representation of the a patch, suitable for use with the `applyPatch()` method.
  */
-export function parsePatch(diffStr: string, options?: { strict?: boolean | undefined }): ParsedDiff[];
+export function parsePatch(
+    diffStr: string,
+    options?: { strict?: boolean | undefined },
+): ParsedDiff[];
 
 /**
  * Converts a list of changes to a serialized XML format.
@@ -390,8 +429,14 @@ export function convertChangesToXML(changes: Change[]): string;
 /**
  * Converts a list of changes to [DMP](http://code.google.com/p/google-diff-match-patch/wiki/API) format.
  */
-export function convertChangesToDMP(changes: Change[]): Array<[1 | 0 | -1, string]>;
+export function convertChangesToDMP(
+    changes: Change[],
+): Array<[1 | 0 | -1, string]>;
 
 export function merge(mine: string, theirs: string, base: string): ParsedDiff;
 
-export function canonicalize(obj: any, stack: any[], replacementStack: any[]): any;
+export function canonicalize(
+    obj: any,
+    stack: any[],
+    replacementStack: any[],
+): any;

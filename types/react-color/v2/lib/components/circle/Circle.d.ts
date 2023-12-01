@@ -11,7 +11,9 @@ export interface CirclePickerProps extends CustomPickerProps {
     width?: string | undefined;
     circleSize?: number | undefined;
     circleSpacing?: number | undefined;
-    onSwatchHover?: ((color: ColorState, event: MouseEvent) => void) | undefined;
+    onSwatchHover?:
+        | ((color: ColorState, event: MouseEvent) => void)
+        | undefined;
     styles?: Partial<Classes<CirclePickerStylesProps>> | undefined;
 }
 

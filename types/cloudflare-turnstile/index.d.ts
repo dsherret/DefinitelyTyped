@@ -8,7 +8,10 @@ declare namespace Turnstile {
          * @param params An object containing render parameters as key=value pairs, for example, {"sitekey": "your_site_key", "theme": "auto"}.
          * @return the ID of the newly created widget, or undefined if invocation is unsuccessful.
          */
-        render(container: string | HTMLElement, params: RenderParameters): string | undefined;
+        render(
+            container: string | HTMLElement,
+            params: RenderParameters,
+        ): string | undefined;
 
         /**
          * Resets a Turnstile widget.

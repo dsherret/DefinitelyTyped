@@ -17,7 +17,10 @@ interface RegistryProxyMixin {
     register(
         fullName: string,
         factory: any,
-        options?: { singleton?: boolean | undefined; instantiate?: boolean | undefined },
+        options?: {
+            singleton?: boolean | undefined;
+            instantiate?: boolean | undefined;
+        },
     ): any;
     /**
      * Unregister a factory.
@@ -55,7 +58,11 @@ interface RegistryProxyMixin {
      * Define a dependency injection onto a specific factory or all factories
      * of a type.
      */
-    inject(factoryNameOrType: string, property: string, injectionName: string): any;
+    inject(
+        factoryNameOrType: string,
+        property: string,
+        injectionName: string,
+    ): any;
 }
 declare const RegistryProxyMixin: Mixin<RegistryProxyMixin>;
 export default RegistryProxyMixin;

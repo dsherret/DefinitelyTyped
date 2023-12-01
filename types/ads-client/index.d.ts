@@ -118,7 +118,10 @@ export interface Datatype {
 export interface Subscription {
     target: string;
     settings: SubscriptionSettings;
-    callback: (callback: SubscriptionCallbackData, subscription: Subscription) => void;
+    callback: (
+        callback: SubscriptionCallbackData,
+        subscription: Subscription,
+    ) => void;
     symbolInfo: object;
     notificationHandle: number;
     lastValue: PLCValue;
@@ -185,7 +188,10 @@ export interface CreateVariableHandleResult {
     type: string;
 }
 
-export type VariableHandleParam = number | CreateVariableHandleResult | CreateVariableHandleMultiResult;
+export type VariableHandleParam =
+    | number
+    | CreateVariableHandleResult
+    | CreateVariableHandleMultiResult;
 
 export interface CreateVariableHandleMultiResult {
     success: boolean;
@@ -263,7 +269,11 @@ export class Client extends EventEmitter {
 
     readSymbol(variableName: string): Promise<SymbolData>;
 
-    writeSymbol(variableName: string, value: PLCValue, autoFill?: boolean): Promise<SymbolData>;
+    writeSymbol(
+        variableName: string,
+        value: PLCValue,
+        autoFill?: boolean,
+    ): Promise<SymbolData>;
 
     subscribe(
         variableName: string,
@@ -287,15 +297,26 @@ export class Client extends EventEmitter {
 
     unsubscribeAll(): Promise<object>;
 
-    readRawByHandle(handle: VariableHandleParam, size?: number): Promise<Buffer>;
+    readRawByHandle(
+        handle: VariableHandleParam,
+        size?: number,
+    ): Promise<Buffer>;
 
     readRawByName(variableName: string): Promise<Buffer>;
 
     readRawBySymbol(symbol: object): Promise<Buffer>;
 
-    readRaw(indexGroup: number, indexOffset: number, size: number, targetAdsPort?: number): Promise<Buffer>;
+    readRaw(
+        indexGroup: number,
+        indexOffset: number,
+        size: number,
+        targetAdsPort?: number,
+    ): Promise<Buffer>;
 
-    readRawMulti(targetArray: ReadRawMultiParam[], targetAdsPort?: number): Promise<ReadRawMultiResult[]>;
+    readRawMulti(
+        targetArray: ReadRawMultiParam[],
+        targetAdsPort?: number,
+    ): Promise<ReadRawMultiResult[]>;
 
     readWriteRaw(
         indexGroup: number,
@@ -305,17 +326,32 @@ export class Client extends EventEmitter {
         targetAdsPort?: number,
     ): Promise<Buffer>;
 
-    writeRawByHandle(handle: VariableHandleParam, dataBuffer: Buffer): Promise<object>;
+    writeRawByHandle(
+        handle: VariableHandleParam,
+        dataBuffer: Buffer,
+    ): Promise<object>;
 
     writeRawBySymbol(symbol: object, dataBuffer: Buffer): Promise<object>;
 
-    writeRaw(indexGroup: number, indexOffset: number, dataBuffer: Buffer, targetAdsPort?: number): Promise<object>;
+    writeRaw(
+        indexGroup: number,
+        indexOffset: number,
+        dataBuffer: Buffer,
+        targetAdsPort?: number,
+    ): Promise<object>;
 
-    writeRawMulti(targetArray: WriteRawMultiParam[], targetAdsPort?: number): Promise<WriteRawMultiResult[]>;
+    writeRawMulti(
+        targetArray: WriteRawMultiParam[],
+        targetAdsPort?: number,
+    ): Promise<WriteRawMultiResult[]>;
 
-    createVariableHandle(variableName: string): Promise<CreateVariableHandleResult>;
+    createVariableHandle(
+        variableName: string,
+    ): Promise<CreateVariableHandleResult>;
 
-    createVariableHandleMulti(targetArray: string[]): Promise<CreateVariableHandleMultiResult[]>;
+    createVariableHandleMulti(
+        targetArray: string[],
+    ): Promise<CreateVariableHandleMultiResult[]>;
 
     deleteVariableHandle(handle: VariableHandleParam): Promise<object>;
 
@@ -325,11 +361,20 @@ export class Client extends EventEmitter {
 
     convertFromRaw(rawData: Buffer, dataTypeName: string): Promise<object>;
 
-    convertToRaw(value: PLCValue, dataTypeName: string, autoFill?: boolean): Promise<Buffer>;
+    convertToRaw(
+        value: PLCValue,
+        dataTypeName: string,
+        autoFill?: boolean,
+    ): Promise<Buffer>;
 
     getEmptyPlcType(dataTypeName: string): Promise<object>;
 
-    writeControl(adsPort: number, adsState: number, deviceState?: number, data?: Buffer): Promise<object>;
+    writeControl(
+        adsPort: number,
+        adsState: number,
+        deviceState?: number,
+        data?: Buffer,
+    ): Promise<object>;
 
     startPlc(adsPort?: number): Promise<object>;
 
@@ -343,7 +388,11 @@ export class Client extends EventEmitter {
 
     restartSystemManager(): Promise<object>;
 
-    invokeRpcMethod(variableName: string, methodName: string, parameters?: object): Promise<RpcMethodResult>;
+    invokeRpcMethod(
+        variableName: string,
+        methodName: string,
+        parameters?: object,
+    ): Promise<RpcMethodResult>;
 
     sendAdsCommand(
         adsCommand: number,

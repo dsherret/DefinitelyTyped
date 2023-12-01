@@ -37,7 +37,7 @@ declare class QRCode {
 declare namespace QRCode {
     type vOption = string | Options;
     const CorrectLevel: { L: 1; M: 0; Q: 3; H: 2 };
-    type CorrectLevelType = typeof CorrectLevel[keyof typeof CorrectLevel];
+    type CorrectLevelType = (typeof CorrectLevel)[keyof typeof CorrectLevel];
     interface Options {
         /** QRCode link data  */
         text?: string | undefined;

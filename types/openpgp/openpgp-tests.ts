@@ -21,58 +21,63 @@ var options: openpgp.KeyOptions = {
 };
 openpgp
     .generateKey(options)
-    .then(function(keypair) {
+    .then(function (keypair) {
         // success
         var privkey = keypair.privateKeyArmored;
         var pubkey = keypair.publicKeyArmored;
     })
-    .catch(function(error) {
+    .catch(function (error) {
         // failure
     });
 
-var spubkey = "-----BEGIN PGP PUBLIC KEY BLOCK ... END PGP PUBLIC KEY BLOCK-----";
+var spubkey =
+    "-----BEGIN PGP PUBLIC KEY BLOCK ... END PGP PUBLIC KEY BLOCK-----";
 
 openpgp.key
     .readArmored(spubkey)
-    .then(function(publicKey) {
+    .then(function (publicKey) {
         return {
             message: openpgp.message.fromText("Hello, World!"),
             publicKeys: publicKey.keys,
         };
     })
     .then(openpgp.encrypt)
-    .then(function(pgpMessage) {
+    .then(function (pgpMessage) {
         // success
     })
-    .catch(function(error) {
+    .catch(function (error) {
         // failure
     });
 
-var sprivkey = "-----BEGIN PGP PRIVATE KEY BLOCK ... END PGP PRIVATE KEY BLOCK-----";
+var sprivkey =
+    "-----BEGIN PGP PRIVATE KEY BLOCK ... END PGP PRIVATE KEY BLOCK-----";
 var pgpMessageStr = "-----BEGIN PGP MESSAGE ... END PGP MESSAGE-----";
 
 openpgp.message
     .readArmored(pgpMessageStr)
-    .then(function(pgpMessage) {
+    .then(function (pgpMessage) {
         const options = {
             message: pgpMessage,
         };
         return openpgp.decrypt(options);
     })
-    .then(function(plaintext) {
+    .then(function (plaintext) {
         // success
     })
-    .catch(function(error) {
+    .catch(function (error) {
         // failure
     });
 
 const promises: [
     Promise<{ keys: openpgp.key.Key[]; err: Error[] | null }>,
     Promise<openpgp.message.Message>,
-] = [openpgp.key.readArmored(sprivkey), openpgp.message.readArmored(pgpMessageStr)];
+] = [
+    openpgp.key.readArmored(sprivkey),
+    openpgp.message.readArmored(pgpMessageStr),
+];
 
 Promise.all(promises)
-    .then(function(values) {
+    .then(function (values) {
         const keyObject: openpgp.key.KeyResult = values[0];
         const pgpMessage: openpgp.message.Message = values[1];
         const privateKey = keyObject.keys[0];
@@ -83,10 +88,10 @@ Promise.all(promises)
         };
         return openpgp.decrypt(options);
     })
-    .then(function(plaintext) {
+    .then(function (plaintext) {
         // success
     })
-    .catch(function(error) {
+    .catch(function (error) {
         // failure
     });
 
@@ -158,14 +163,14 @@ openpgp.initWorker({
             privateKeys: [],
             detached: true,
         })
-        .then(s => s.signature /* as string*/);
+        .then((s) => s.signature /* as string*/);
     openpgp
         .sign({
             message: null,
             privateKeys: [],
             detached: false,
         })
-        .then(s => s.data /* as string*/);
+        .then((s) => s.data /* as string*/);
     openpgp
         .sign({
             message: null,
@@ -173,7 +178,7 @@ openpgp.initWorker({
             armor: false,
             detached: true,
         })
-        .then(s => s.signature /* as openpgp.signature.Signature*/);
+        .then((s) => s.signature /* as openpgp.signature.Signature*/);
     openpgp
         .sign({
             message: null,
@@ -181,7 +186,7 @@ openpgp.initWorker({
             armor: false,
             detached: false,
         })
-        .then(s => s.message /* as openpgp.message.Message*/);
+        .then((s) => s.message /* as openpgp.message.Message*/);
 
     const signature = signed.signature as openpgp.signature.Signature;
     const message = signed.message;
@@ -197,13 +202,13 @@ openpgp.initWorker({
     return verified.signatures[0].valid;
 })();
 
-(async () => {
+async () => {
     const publicKey = await openpgp.key.readArmored(spubkey);
     publicKey.keys[0].getKeys();
     publicKey.keys[0].getSubkeys();
 
     return publicKey.keys[0].primaryKey.getFingerprint(); /* as string*/
-});
+};
 
 // Open PGP Tests
 
@@ -219,8 +224,18 @@ openpgp.cleartext.readArmored("");
 openpgp.crypto.crypto.generateSessionKey(openpgp.enums.symmetric.aes128);
 openpgp.crypto.crypto.getPrefixRandom(openpgp.enums.symmetric.aes128);
 // openpgp.crypto.crypto.getPrivateMpiCount(openpgp.enums.symmetric.aes128);
-openpgp.crypto.crypto.publicKeyDecrypt(openpgp.enums.publicKey.rsa_encrypt, mpis, mpis, "");
-openpgp.crypto.crypto.publicKeyEncrypt(openpgp.enums.publicKey.rsa_encrypt, mpis, mpi, "");
+openpgp.crypto.crypto.publicKeyDecrypt(
+    openpgp.enums.publicKey.rsa_encrypt,
+    mpis,
+    mpis,
+    "",
+);
+openpgp.crypto.crypto.publicKeyEncrypt(
+    openpgp.enums.publicKey.rsa_encrypt,
+    mpis,
+    mpi,
+    "",
+);
 
 openpgp.crypto;
 // API update with no documentation
@@ -263,7 +278,9 @@ openpgp.message.readArmored("");
 
 message.packets.filterByTag(openpgp.enums.packet.literal).write();
 message.packets.indexOfTag(openpgp.enums.packet.literal).filter(() => {});
-message.packets.findPacket(openpgp.enums.packet.literal) as openpgp.packet.Literal;
+message.packets.findPacket(
+    openpgp.enums.packet.literal,
+) as openpgp.packet.Literal;
 openpgp.packet.fromStructuredClone({});
 openpgp.packet.newPacketFromTag("");
 
@@ -280,7 +297,12 @@ openpgp.util.shiftRight(new Uint8Array([1, 0]), 1);
 openpgp.util.str_to_Uint8Array("");
 openpgp.util.Uint8Array_to_str(openpgp.util.str_to_Uint8Array(""));
 
-new openpgp.wkd.WKD().lookup({ email: "test-wkd@metacode.biz", rawBytes: true });
+new openpgp.wkd.WKD().lookup({
+    email: "test-wkd@metacode.biz",
+    rawBytes: true,
+});
 new openpgp.wkd.WKD().lookup({ email: "test-wkd@metacode.biz" });
 
-new openpgp.HKP("https://keyserver.ubuntu.com").lookup({ query: "test@test.com" });
+new openpgp.HKP("https://keyserver.ubuntu.com").lookup({
+    query: "test@test.com",
+});

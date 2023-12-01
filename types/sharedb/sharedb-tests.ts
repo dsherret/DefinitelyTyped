@@ -67,18 +67,30 @@ const backend = new ShareDB({
 console.log(backend.db);
 backend.on("error", (error) => console.error(error));
 backend.on("send", (agent, context) => console.log(agent, context));
-backend.addListener("timing", (type, time, request) => console.log(type, new Date(time), request));
+backend.addListener("timing", (type, time, request) =>
+    console.log(type, new Date(time), request),
+);
 backend.on("someCustomEvent", (arg0: string, arg1: number) => {});
 
 // getOps allows for `from` and `to` to both be `null`:
 // https://github.com/share/sharedb/blob/960f5d152f6a8051ed2dcb00a57681a3ebbd7dc2/README.md#getops
 backend.db.getOps("someCollection", "someId", null, null, {}, () => {});
-backend.db.getSnapshotBulk("someCollection", ["id1", "id2"], null, null, () => {});
+backend.db.getSnapshotBulk(
+    "someCollection",
+    ["id1", "id2"],
+    null,
+    null,
+    () => {},
+);
 
 console.log(backend.pubsub);
 console.log(backend.extraDbs);
 
-backend.addProjection("notes_minimal", "notes", { title: true, creator: true, lastUpdateTime: true });
+backend.addProjection("notes_minimal", "notes", {
+    title: true,
+    creator: true,
+    lastUpdateTime: true,
+});
 const readonlyProjection = backend.projections["notes_minimal"];
 console.log(readonlyProjection.target, readonlyProjection.fields);
 // backend.projections is used by sharedb internally, so they shouldn't be messed with.
@@ -96,7 +108,12 @@ backend.projections["notes_minimal"].fields["title"] = true;
 
 // Exercise middleware (backend.use)
 type SubmitRelatedActions = "afterWrite" | "apply" | "commit" | "submit";
-const submitRelatedActions: SubmitRelatedActions[] = ["afterWrite", "apply", "commit", "submit"];
+const submitRelatedActions: SubmitRelatedActions[] = [
+    "afterWrite",
+    "apply",
+    "commit",
+    "submit",
+];
 for (const action of submitRelatedActions) {
     backend.use(action, (request, callback) => {
         const agent = request.agent as Agent<{
@@ -178,12 +195,7 @@ backend.use("query", (context, callback) => {
     callback();
 });
 backend.use("receive", (context, callback) => {
-    console.log(
-        context.action,
-        context.agent,
-        context.backend,
-        context.data,
-    );
+    console.log(context.action, context.agent, context.backend, context.data);
     callback();
 });
 backend.use("reply", (context, callback) => {
@@ -200,8 +212,9 @@ backend.use("reply", (context, callback) => {
     // In TypeScript 2.2+, `context.reply.data` is OK, as 2.2 added support for
     // dotted property access for types with string index signatures.
     console.log(
-        context.reply && context.reply["data"]
-            && context.reply["data"].someProperty,
+        context.reply &&
+            context.reply["data"] &&
+            context.reply["data"].someProperty,
     );
     callback();
 });
@@ -218,17 +231,11 @@ backend.use("readSnapshots", (context, callback) => {
 });
 
 backend.use("receivePresence", (context, callback) => {
-    console.log(
-        context.presence.ch,
-        context.presence.id,
-    );
+    console.log(context.presence.ch, context.presence.id);
 });
 
 backend.use("sendPresence", (context, callback) => {
-    console.log(
-        context.presence.ch,
-        context.presence.id,
-    );
+    console.log(context.presence.ch, context.presence.id);
     callback();
 });
 
@@ -356,7 +363,10 @@ function startClient(callback) {
         foo: number;
         bar: string;
     }
-    const typedDoc: ShareDBClient.Doc<MyDoc> = connection.get("example", "my-doc");
+    const typedDoc: ShareDBClient.Doc<MyDoc> = connection.get(
+        "example",
+        "my-doc",
+    );
     typedDoc.create({
         foo: 123,
         bar: "abc",
@@ -375,13 +385,23 @@ function startClient(callback) {
     });
 
     // sharedb-mongo query object
-    connection.createSubscribeQuery("examples", { numClicks: { $gte: 5 } }, null, (err, results) => {
-        console.log(err, results);
-    });
+    connection.createSubscribeQuery(
+        "examples",
+        { numClicks: { $gte: 5 } },
+        null,
+        (err, results) => {
+            console.log(err, results);
+        },
+    );
     // SQL-ish query adapter that takes a string query condition
-    const query = connection.createSubscribeQuery<MyDoc>("examples", "numClicks >= 5", null, (err, results) => {
-        results.forEach((result) => result.data.foo > 0);
-    });
+    const query = connection.createSubscribeQuery<MyDoc>(
+        "examples",
+        "numClicks >= 5",
+        null,
+        (err, results) => {
+            results.forEach((result) => result.data.foo > 0);
+        },
+    );
 
     query.on("ready", () => {});
     query.on("error", (error) => console.log(error));
@@ -414,7 +434,9 @@ function startClient(callback) {
         if (doc.hasWritePending()) throw new Error();
     });
 
-    doc.submitOp([{ insert: "foo", attributes: { bold: true } }], { source: { deep: true } });
+    doc.submitOp([{ insert: "foo", attributes: { bold: true } }], {
+        source: { deep: true },
+    });
 
     doc.on("load", () => {});
     doc.on("no write pending", () => {});
@@ -434,43 +456,74 @@ function startClient(callback) {
         console.log(error);
     });
 
-    connection.fetchSnapshot("examples", "foo", 123, (error, snapshot: ShareDBClient.Snapshot) => {
-        if (error) throw error;
-        console.log(snapshot.data);
-    });
+    connection.fetchSnapshot(
+        "examples",
+        "foo",
+        123,
+        (error, snapshot: ShareDBClient.Snapshot) => {
+            if (error) throw error;
+            console.log(snapshot.data);
+        },
+    );
 
-    connection.fetchSnapshot("examples", "foo", null, (error, snapshot: ShareDBClient.Snapshot) => {
-        if (error) throw error;
-        console.log(snapshot.data);
-    });
+    connection.fetchSnapshot(
+        "examples",
+        "foo",
+        null,
+        (error, snapshot: ShareDBClient.Snapshot) => {
+            if (error) throw error;
+            console.log(snapshot.data);
+        },
+    );
 
-    connection.fetchSnapshotByTimestamp("examples", "bar", Date.now(), (error, snapshot) => {
-        if (error) throw error;
-        console.log(snapshot.data);
-    });
+    connection.fetchSnapshotByTimestamp(
+        "examples",
+        "bar",
+        Date.now(),
+        (error, snapshot) => {
+            if (error) throw error;
+            console.log(snapshot.data);
+        },
+    );
 
-    connection.fetchSnapshotByTimestamp("examples", "bar", null, (error, snapshot) => {
-        if (error) throw error;
-        console.log(snapshot.data);
-    });
+    connection.fetchSnapshotByTimestamp(
+        "examples",
+        "bar",
+        null,
+        (error, snapshot) => {
+            if (error) throw error;
+            console.log(snapshot.data);
+        },
+    );
 
     console.log(connection.id + connection.seq);
 
     interface PresenceValue {
         foo: number;
     }
-    const presence: ShareDBClient.Presence<PresenceValue> = connection.getDocPresence("foo", "bar");
+    const presence: ShareDBClient.Presence<PresenceValue> =
+        connection.getDocPresence("foo", "bar");
     presence.subscribe((error) => console.log(error));
-    presence.on("receive", (id, value) => console.log(id, value.foo.toLocaleString()));
+    presence.on("receive", (id, value) =>
+        console.log(id, value.foo.toLocaleString()),
+    );
     const localPresence = presence.create("123");
     localPresence.submit({ foo: 123 });
 
     connection.close();
 }
 
-backend.getOps(agent, "collection", "id", 0, 5, { opsOptions: { metadata: true } }, (error, ops) => {
-    ops.forEach(console.log);
-});
+backend.getOps(
+    agent,
+    "collection",
+    "id",
+    0,
+    5,
+    { opsOptions: { metadata: true } },
+    (error, ops) => {
+        ops.forEach(console.log);
+    },
+);
 
 backend.getOpsBulk(
     agent,

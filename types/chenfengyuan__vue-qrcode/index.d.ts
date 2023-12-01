@@ -11,7 +11,16 @@ interface QrCodePorps {
         // QR Code version.
         version?: number | undefined;
         // Error correction level.
-        errorCorrectionLevel?: "low" | "medium" | "quartile" | "high" | "L" | "M" | "Q" | "H" | undefined;
+        errorCorrectionLevel?:
+            | "low"
+            | "medium"
+            | "quartile"
+            | "high"
+            | "L"
+            | "M"
+            | "Q"
+            | "H"
+            | undefined;
         // Mask pattern used to mask the symbol.
         maskPattern?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | undefined;
         // Define how much wide the quiet zone should be.
@@ -20,10 +29,12 @@ interface QrCodePorps {
         scale?: number | undefined;
         // Forces a specific width for the output image.
         width?: number | undefined;
-        color?: {
-            dark?: string | undefined;
-            light?: string | undefined;
-        } | undefined;
+        color?:
+            | {
+                  dark?: string | undefined;
+                  light?: string | undefined;
+              }
+            | undefined;
     };
     // The tag name of the component's root element.
     tag: string;

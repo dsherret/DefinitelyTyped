@@ -1,4 +1,12 @@
-import { camelize, capitalize, classify, dasherize, decamelize, underscore, w } from "@ember/string";
+import {
+    camelize,
+    capitalize,
+    classify,
+    dasherize,
+    decamelize,
+    underscore,
+    w,
+} from "@ember/string";
 
 // @ts-expect-error
 dasherize();

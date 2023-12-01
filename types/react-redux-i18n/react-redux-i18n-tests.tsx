@@ -24,7 +24,12 @@ class ReactReduxI18nTests_Translate4 extends React.Component {
         return (
             <I18n.Localize
                 value={10 / 3}
-                options={{ style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+                options={{
+                    style: "currency",
+                    currency: "EUR",
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                }}
             />
         );
     }

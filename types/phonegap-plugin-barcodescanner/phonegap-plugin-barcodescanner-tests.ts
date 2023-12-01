@@ -1,15 +1,20 @@
 /// <reference types="cordova"/>
 
 cordova.plugins.barcodeScanner.scan(
-    function(result) {
+    function (result) {
         alert(
-            "We got a barcode\n"
-                + "Result: " + result.text + "\n"
-                + "Format: " + result.format + "\n"
-                + "Cancelled: " + result.cancelled,
+            "We got a barcode\n" +
+                "Result: " +
+                result.text +
+                "\n" +
+                "Format: " +
+                result.format +
+                "\n" +
+                "Cancelled: " +
+                result.cancelled,
         );
     },
-    function(error) {
+    function (error) {
         alert("Scanning failed: " + error);
     },
     {
@@ -30,10 +35,10 @@ cordova.plugins.barcodeScanner.scan(
 cordova.plugins.barcodeScanner.encode(
     cordova.plugins.barcodeScanner.Encode.TEXT_TYPE,
     "http://www.nytimes.com",
-    function(success) {
+    function (success) {
         alert("encode success: " + success);
     },
-    function(fail) {
+    function (fail) {
         alert("encoding failed: " + fail);
     },
 );

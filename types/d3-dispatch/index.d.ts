@@ -44,7 +44,10 @@ export interface Dispatch<T extends object> {
      * To specify multiple typenames, separate typenames with spaces, such as start end or start.foo start.bar.
      * To remove all callbacks for a given name foo, say dispatch.on(".foo", null).
      */
-    on(typenames: string, callback: null | ((this: T, ...args: any[]) => void)): this;
+    on(
+        typenames: string,
+        callback: null | ((this: T, ...args: any[]) => void),
+    ): this;
 }
 
 /**

@@ -21,7 +21,7 @@ s.bind("clickNode", (e) => {
     s.refresh();
 });
 
-sigma.canvas.edges["def"] = function() {};
+sigma.canvas.edges["def"] = function () {};
 sigma.svg.nodes["def"] = {
     create: (obj: SigmaJs.Node) => {
         return new Element();

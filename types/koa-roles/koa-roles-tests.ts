@@ -59,7 +59,8 @@ roles2.middleware();
 function testHandler() {
     const maybePromiseBoolean: boolean | Promise<boolean> = any;
 
-    const handler1: Roles.Handler = (ctx: Koa.Context, action: string) => maybePromiseBoolean;
+    const handler1: Roles.Handler = (ctx: Koa.Context, action: string) =>
+        maybePromiseBoolean;
     const handler2: Roles.Handler<TestState, TestContext, string> = (
         ctx: Koa.ParameterizedContext<TestState, TestContext, string>,
         action: string,
@@ -68,14 +69,22 @@ function testHandler() {
         ctx: Koa.ParameterizedContext<TestState, TestContext, string>,
         action: "action",
     ) => maybePromiseBoolean;
-    const handler4: Roles.Handler = (ctx: Koa.DefaultContextExtends, action: string) => maybePromiseBoolean;
+    const handler4: Roles.Handler = (
+        ctx: Koa.DefaultContextExtends,
+        action: string,
+    ) => maybePromiseBoolean;
 }
 
 function testOptions() {
     const failureHandler1: (ctx: Koa.Context, action: string) => void = any;
-    const failureHandler2: (ctx: Koa.ParameterizedContext<TestState, TestContext, string>, action: string) => void =
-        any;
-    const failureHandler3: (ctx: Koa.DefaultContextExtends, action: string) => void = any;
+    const failureHandler2: (
+        ctx: Koa.ParameterizedContext<TestState, TestContext, string>,
+        action: string,
+    ) => void = any;
+    const failureHandler3: (
+        ctx: Koa.DefaultContextExtends,
+        action: string,
+    ) => void = any;
     const failureHandler4: (ctx: Koa.Context, action: "action") => void = any;
 
     const options1: Roles.Options = {};

@@ -3,12 +3,20 @@ import { Connection, Pool, PoolOptions } from "mysql2";
 
 export = MySQLStore;
 
-declare function MySQLStore(session: typeof expressSession): typeof MySQLStoreClass;
+declare function MySQLStore(
+    session: typeof expressSession,
+): typeof MySQLStoreClass;
 
 declare namespace MySQLStore {
     interface Options
-        extends Pick<PoolOptions, "waitForConnections" | "connectionLimit" | "maxIdle" | "idleTimeout" | "queueLimit">
-    {
+        extends Pick<
+            PoolOptions,
+            | "waitForConnections"
+            | "connectionLimit"
+            | "maxIdle"
+            | "idleTimeout"
+            | "queueLimit"
+        > {
         /**
          * Host name for database connection
          */
@@ -86,7 +94,12 @@ declare namespace MySQLStore {
 declare class MySQLStoreClass extends expressSession.Store {
     constructor(options?: MySQLStore.Options, connection?: Connection | Pool);
 
-    state: "UNINITIALIZED" | "INITIALIZING" | "INITIALIZED" | "CLOSING" | "CLOSED";
+    state:
+        | "UNINITIALIZED"
+        | "INITIALIZING"
+        | "INITIALIZED"
+        | "CLOSING"
+        | "CLOSED";
 
     defaultOptions: MySQLStore.Options;
 

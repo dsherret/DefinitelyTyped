@@ -1,2 +1,5 @@
-declare function ObjectCreate(proto: object | null, internalSlotsList?: readonly []): object;
+declare function ObjectCreate(
+    proto: object | null,
+    internalSlotsList?: readonly [],
+): object;
 export = ObjectCreate;

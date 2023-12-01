@@ -7,9 +7,17 @@ declare namespace RunParallel {
 }
 
 declare function RunParallel<T>(tasks: Array<RunParallel.Task<T>>): T[];
-declare function RunParallel<T>(tasks: Array<RunParallel.Task<T>>, callback: RunParallel.Callback<T[]>): void;
+declare function RunParallel<T>(
+    tasks: Array<RunParallel.Task<T>>,
+    callback: RunParallel.Callback<T[]>,
+): void;
 
-declare function RunParallel<T>(tasks: RunParallel.TaskObj<T>): Record<string, T>;
-declare function RunParallel<T>(tasks: RunParallel.TaskObj<T>, callback: RunParallel.Callback<Record<string, T>>): void;
+declare function RunParallel<T>(
+    tasks: RunParallel.TaskObj<T>,
+): Record<string, T>;
+declare function RunParallel<T>(
+    tasks: RunParallel.TaskObj<T>,
+    callback: RunParallel.Callback<Record<string, T>>,
+): void;
 
 export = RunParallel;

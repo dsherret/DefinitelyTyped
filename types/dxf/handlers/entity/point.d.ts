@@ -4,12 +4,10 @@ import common, { CommonEntityData } from "./common";
 
 export const TYPE: string;
 
-export type PointEntityData =
-    & {
-        thickness?: number;
-    }
-    & Partial<Common.Point3D>
-    & Partial<CommonEntityData>;
+export type PointEntityData = {
+    thickness?: number;
+} & Partial<Common.Point3D> &
+    Partial<CommonEntityData>;
 
 export function process(value: Property): PointEntityData;
 

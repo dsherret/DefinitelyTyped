@@ -63,7 +63,7 @@ import {
     asyncResource.emitDestroy();
 
     AsyncResource.bind(
-        function() {
+        function () {
             this.a; // $ExpectType number
         },
         "test",
@@ -79,9 +79,13 @@ import {
     const exitResult: number = ctx.exit((a: number) => {
         return 42;
     }, 1);
-    const runResult: number = ctx.run("test", (a: number) => {
-        const store: string | undefined = ctx.getStore();
-        return 42;
-    }, 1);
+    const runResult: number = ctx.run(
+        "test",
+        (a: number) => {
+            const store: string | undefined = ctx.getStore();
+            return 42;
+        },
+        1,
+    );
     ctx.enterWith("test");
 }

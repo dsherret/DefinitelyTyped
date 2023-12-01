@@ -18,7 +18,12 @@ tilereduce({
     maxWorkers: 3,
     zoom: 15,
     bbox: bbox,
-    geojson: { "type": "Polygon", "coordinates": [/* coordinates */] },
+    geojson: {
+        type: "Polygon",
+        coordinates: [
+            /* coordinates */
+        ],
+    },
     mapOptions: { bufferSize: 4 },
     sources: [source],
     map: "map.js",

@@ -11,7 +11,12 @@ declare namespace Redlock {
         resource: string;
         value: any;
         expiration: number;
-        constructor(redlock: Redlock, resource: string, value: any, expiration: number);
+        constructor(
+            redlock: Redlock,
+            resource: string,
+            value: any,
+            expiration: number,
+        );
         unlock(callback?: Callback<void>): Promise<void>;
         extend(ttl: number, callback?: Callback<Lock>): Promise<Lock>;
     }
@@ -40,15 +45,37 @@ declare class Redlock {
 
     constructor(clients: any[], options?: Redlock.Options);
 
-    acquire(resource: string, ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
-    lock(resource: string, ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    acquire(
+        resource: string,
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
+    lock(
+        resource: string,
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
-    disposer(resource: string, ttl: number, errorHandler?: Redlock.Callback<void>): Promise.Disposer<Redlock.Lock>; // bluebird Disposer
+    disposer(
+        resource: string,
+        ttl: number,
+        errorHandler?: Redlock.Callback<void>,
+    ): Promise.Disposer<Redlock.Lock>; // bluebird Disposer
 
-    release(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
-    unlock(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
+    release(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
+    unlock(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
 
-    extend(lock: Redlock.Lock, ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    extend(
+        lock: Redlock.Lock,
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
     _lock(
         resource: string,
         value: string,

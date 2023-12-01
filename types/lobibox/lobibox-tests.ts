@@ -33,27 +33,27 @@ class LobiboxTest {
             // Or more powerfull way
             buttons: {
                 ok: {
-                    "class": "btn btn-info",
+                    class: "btn btn-info",
                     closeOnClick: false,
                 },
                 cancel: {
-                    "class": "btn btn-danger",
+                    class: "btn btn-danger",
                     closeOnClick: false,
                 },
                 yes: {
-                    "class": "btn btn-success",
+                    class: "btn btn-success",
                     closeOnClick: false,
                 },
                 no: {
-                    "class": "btn btn-warning",
+                    class: "btn btn-warning",
                     closeOnClick: false,
                 },
                 custom: {
-                    "class": "btn btn-default",
+                    class: "btn btn-default",
                     text: "Custom",
                 },
             },
-            callback: function(lobibox: any, type: string): any {
+            callback: function (lobibox: any, type: string): any {
                 let btnType: string = "";
                 if (type === "no") {
                     btnType = "warning";
@@ -89,9 +89,9 @@ class LobiboxTest {
         Lobibox.progress({
             title: "Please wait",
             label: "Uploading files...",
-            onShow: function($this: any): void {
+            onShow: function ($this: any): void {
                 var i = 0;
-                var inter = setInterval(function(): void {
+                var inter = setInterval(function (): void {
                     window.console.log(i);
                     if (i > 100) {
                         clearInterval(inter);
@@ -106,7 +106,7 @@ class LobiboxTest {
         Lobibox.window({
             title: "Window title",
             // Available types: string, jquery object, function
-            content: function(): any {
+            content: function (): any {
                 return $(".container");
             },
             url: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css",
@@ -126,9 +126,9 @@ class LobiboxTest {
                     closeOnClick: true,
                 },
             },
-            callback: function($this: any, type: string, ev: any): void {
+            callback: function ($this: any, type: string, ev: any): void {
                 if (type === "load") {
-                    $this.load(function(): any {
+                    $this.load(function (): any {
                         // Do something when content is loaded
                     });
                 }

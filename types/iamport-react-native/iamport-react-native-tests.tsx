@@ -19,7 +19,14 @@ const IamportPayment = () => {
         app_scheme: "example",
     };
 
-    return <IMP.Payment userCode={"iamport"} tierCode={"AAA"} data={data} callback={callback} />;
+    return (
+        <IMP.Payment
+            userCode={"iamport"}
+            tierCode={"AAA"}
+            data={data}
+            callback={callback}
+        />
+    );
 };
 
 export default IamportPayment;

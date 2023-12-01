@@ -1,5 +1,8 @@
 export function trim(origin: object, ignore?: (v: any) => boolean): object;
-export function trim(origin: readonly object[], ignore?: (v: any) => boolean): object[];
+export function trim(
+    origin: readonly object[],
+    ignore?: (v: any) => boolean,
+): object[];
 
 export function toCamelcase(origin: object): object;
 export function toCamelcase(origin: readonly object[]): object[];

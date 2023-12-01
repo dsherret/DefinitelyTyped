@@ -1,7 +1,12 @@
 /// <reference types="jquery"/>
 
 declare namespace JQuerySmartwizard {
-    type TransitionAnimation = "none" | "fade" | "slide-horizontal" | "slide-vertical" | "slide-swing";
+    type TransitionAnimation =
+        | "none"
+        | "fade"
+        | "slide-horizontal"
+        | "slide-vertical"
+        | "slide-swing";
     type ToolbarPosition = "none" | "top" | "bottom" | "both";
     type ToolbarButtonPosition = "left" | "right" | "center";
 
@@ -225,14 +230,21 @@ interface JQuery {
      *
      * @see {@link http://techlaboratory.net/jquery-smartwizard#func-setoptions}
      */
-    smartWizard(functionName: "setOptions", options: JQuerySmartwizard.SmartWizardOptions): void;
+    smartWizard(
+        functionName: "setOptions",
+        options: JQuerySmartwizard.SmartWizardOptions,
+    ): void;
 
     /**
      * Change the state of a step
      *
      * @see {@link http://techlaboratory.net/jquery-smartwizard#func-stepstate}
      */
-    smartWizard(functionName: "stepState", steps: number[], action: "disable" | "hide"): void;
+    smartWizard(
+        functionName: "stepState",
+        steps: number[],
+        action: "disable" | "hide",
+    ): void;
 
     smartWizard(functionName?: "next" | "prev" | "reset"): void;
 
@@ -256,6 +268,11 @@ interface JQuery {
 
     on(
         eventName: "showStep" | "stepContent",
-        callback: (e: Event, anchorObject: JQuery<HTMLAnchorElement>, stepIndex: number, stepDirection: string) => void,
+        callback: (
+            e: Event,
+            anchorObject: JQuery<HTMLAnchorElement>,
+            stepIndex: number,
+            stepDirection: string,
+        ) => void,
     ): void;
 }

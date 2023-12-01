@@ -177,12 +177,16 @@ export function createAirService(settings: Settings): {
     book: (params: BookParams) => Promise<any>;
     getBooking: (params: GetBookingParams) => Promise<any>;
     getUniversalRecord: (params: GetUniversalRecordParams) => Promise<any>;
-    getUniversalRecordByPNR: (params: GetUniversalRecordByPNRParams) => Promise<any>;
+    getUniversalRecordByPNR: (
+        params: GetUniversalRecordByPNRParams,
+    ) => Promise<any>;
     ticket: (params: TicketParams) => Promise<any>;
     flightInfo: (params: FlightInfoParams) => Promise<any>;
     getTicket: (params: GetTicketParams) => Promise<any>;
     getTickets: (params: GetTicketsParams) => Promise<any>;
-    searchBookingsByPassengerName: (params: SearchBookingsByPassengerNameParams) => Promise<{
+    searchBookingsByPassengerName: (
+        params: SearchBookingsByPassengerNameParams,
+    ) => Promise<{
         type: string;
         data: string | any[];
     }>;

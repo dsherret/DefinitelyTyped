@@ -1,6 +1,7 @@
 type SparklineNativeEntry = number | { value: number };
 
-type SparklineDatapoint<TEntry> = TEntry extends number ? { x: number; y: number; index: number; value: number }
+type SparklineDatapoint<TEntry> = TEntry extends number
+    ? { x: number; y: number; index: number; value: number }
     : TEntry & { x: number; y: number; index: number };
 
 interface SparklineOptionsFetch<TEntry> {
@@ -14,7 +15,9 @@ interface SparklineOptions<TEntry> {
     /**
      * By setting this callback function, you'll enable the interactive mode (unless you set options.interactive to false).
      */
-    onmousemove?: ((event: MouseEvent, datapoint: SparklineDatapoint<TEntry>) => void) | undefined;
+    onmousemove?:
+        | ((event: MouseEvent, datapoint: SparklineDatapoint<TEntry>) => void)
+        | undefined;
 
     /**
      * This callback function is called every time the mouse leaves the SVG area. You can use it to hide things like tooltips.
@@ -37,8 +40,12 @@ interface SparklineOptions<TEntry> {
     interactive?: boolean | undefined;
 }
 
-type SparklineNativeOptions<TEntry> = SparklineOptions<TEntry> | Partial<SparklineOptionsFetch<TEntry>>;
-type SparklineNonNativeOptions<TEntry> = SparklineOptions<TEntry> | SparklineOptionsFetch<TEntry>;
+type SparklineNativeOptions<TEntry> =
+    | SparklineOptions<TEntry>
+    | Partial<SparklineOptionsFetch<TEntry>>;
+type SparklineNonNativeOptions<TEntry> =
+    | SparklineOptions<TEntry>
+    | SparklineOptionsFetch<TEntry>;
 
 /**
  * Generate SVG sparklines with JavaScript without any external dependency.

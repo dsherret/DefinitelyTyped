@@ -1,6 +1,14 @@
 export = request_debug;
 
-import { CoreOptions, Headers, Request, RequestAPI, RequiredUriUrl, UriOptions, UrlOptions } from "request";
+import {
+    CoreOptions,
+    Headers,
+    Request,
+    RequestAPI,
+    RequiredUriUrl,
+    UriOptions,
+    UrlOptions,
+} from "request";
 
 declare namespace request_debug {
     type LogPhase = "request" | "response" | "redirect" | "auth";
@@ -33,28 +41,44 @@ declare namespace request_debug {
         TOptions extends CoreOptions,
         TUriUrlOptions extends RequiredUriUrl,
     > {
-        (type: "request", data: RequestData, r: RequestAPI<TRequest, TOptions, TUriUrlOptions>): void;
+        (
+            type: "request",
+            data: RequestData,
+            r: RequestAPI<TRequest, TOptions, TUriUrlOptions>,
+        ): void;
     }
     interface LogCallback<
         TRequest extends Request,
         TOptions extends CoreOptions,
         TUriUrlOptions extends RequiredUriUrl,
     > {
-        (type: "response", data: ResponseData, r: RequestAPI<TRequest, TOptions, TUriUrlOptions>): void;
+        (
+            type: "response",
+            data: ResponseData,
+            r: RequestAPI<TRequest, TOptions, TUriUrlOptions>,
+        ): void;
     }
     interface LogCallback<
         TRequest extends Request,
         TOptions extends CoreOptions,
         TUriUrlOptions extends RequiredUriUrl,
     > {
-        (type: "redirect" | "auth", data: RedirectData, r: RequestAPI<TRequest, TOptions, TUriUrlOptions>): void;
+        (
+            type: "redirect" | "auth",
+            data: RedirectData,
+            r: RequestAPI<TRequest, TOptions, TUriUrlOptions>,
+        ): void;
     }
     interface LogCallback<
         TRequest extends Request,
         TOptions extends CoreOptions,
         TUriUrlOptions extends RequiredUriUrl,
     > {
-        (type: LogPhase, data: LogData, r: RequestAPI<TRequest, TOptions, TUriUrlOptions>): void;
+        (
+            type: LogPhase,
+            data: LogData,
+            r: RequestAPI<TRequest, TOptions, TUriUrlOptions>,
+        ): void;
     }
 
     const log: LogCallback<Request, CoreOptions, RequiredUriUrl>;

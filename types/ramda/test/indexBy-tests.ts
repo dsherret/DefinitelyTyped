@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     interface Book {
         id: string;
         title: string;
@@ -14,9 +14,9 @@ import * as R from "ramda";
     // @ts-expect-error
     const a2 = R.indexBy(R.prop("id"))(list);
     const a3 = R.indexBy<{ id: string }>(R.prop("id"))(list);
-});
+};
 
-(() => {
+() => {
     type Id = "xyz" | "abc";
     interface Book {
         id: Id;
@@ -55,4 +55,4 @@ import * as R from "ramda";
     // const b4: Book = a4.abc;
 
     const a5 = R.indexBy<Book, Id>(R.prop("id"))(list);
-});
+};

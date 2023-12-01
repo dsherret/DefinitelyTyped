@@ -11,7 +11,7 @@ WordCloud.stop();
 
 const list = "Grumpy wizards make toxic brew for the evil Queen and Jack"
     .split(" ")
-    .map<[string, number]>(word => [word, word.length * 5]);
+    .map<[string, number]>((word) => [word, word.length * 5]);
 
 function getTestOptions(): WordCloud.Options {
     return {
@@ -109,7 +109,7 @@ test("weightFactor can be set", () => {
 
 test("weightFactor can be set as a function", () => {
     const options = getTestOptions();
-    options.weightFactor = w => Math.sqrt(w);
+    options.weightFactor = (w) => Math.sqrt(w);
 
     WordCloud(element, options);
 });
@@ -180,7 +180,7 @@ test("shape can be set to star", () => {
 
 test("shape can be set to a given polar equation", () => {
     const options = getTestOptions();
-    options.shape = theta => theta / (2 * Math.PI);
+    options.shape = (theta) => theta / (2 * Math.PI);
 
     WordCloud(element, options);
 });

@@ -1,4 +1,7 @@
-import { ForwardRefReturn, RequiresChildrenProps } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    RequiresChildrenProps,
+} from "../../../typings/shared";
 
 export interface SwitcherProps extends RequiresChildrenProps {
     "aria-label"?: string | undefined;

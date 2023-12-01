@@ -19,7 +19,10 @@ export interface Namespace {
     run<T = void>(callback: RunCallbackFn<T>): Context;
     runAndReturn<T>(callback: RunCallbackFn<T>): T;
 
-    bind<T = void>(callback: BindCallbackFn<T>, context?: Context): BindCallbackFn<T>;
+    bind<T = void>(
+        callback: BindCallbackFn<T>,
+        context?: Context,
+    ): BindCallbackFn<T>;
     bindEmitter(emitter: NodeJS.EventEmitter): void;
 
     enter(context: Context): void;

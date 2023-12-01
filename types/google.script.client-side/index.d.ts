@@ -57,7 +57,11 @@ declare namespace google.script {
          * @param hash The string URL fragment appearing after the '#' character.
          * If null or undefined, the current URL fragment is not changed. If empty, the URL fragment is cleared.
          */
-        function replace(stateObject: State, params?: Query, hash?: string): void;
+        function replace(
+            stateObject: State,
+            params?: Query,
+            hash?: string,
+        ): void;
 
         interface HistoryChangeEvent {
             /**
@@ -76,7 +80,9 @@ declare namespace google.script {
          * Sets a callback function to respond to changes in the browser history.
          * @param callback a client-side callback function to run upon a history change event, using the event object as the only argument.
          */
-        function setChangeHandler(handler: (event: HistoryChangeEvent) => void): void;
+        function setChangeHandler(
+            handler: (event: HistoryChangeEvent) => void,
+        ): void;
     }
 
     namespace host {
@@ -127,14 +133,18 @@ declare namespace google.script {
          * @param handler a client-side callback function to run if the server-side function throws an exception;
          * the Error object is passed to the function as the first argument, and the user object (if any) is passed as a second argument
          */
-        withFailureHandler(handler: (error: Error, object?: any) => void): typeof run;
+        withFailureHandler(
+            handler: (error: Error, object?: any) => void,
+        ): typeof run;
 
         /**
          * Sets a callback function to run if the server-side function returns successfully.
          * @param handler a client-side callback function to run if the server-side function returns successfully;
          * the server's return value is passed to the function as the first argument, and the user object (if any) is passed as a second argument
          */
-        withSuccessHandler(handler: (value?: any, object?: any) => void): typeof run;
+        withSuccessHandler(
+            handler: (value?: any, object?: any) => void,
+        ): typeof run;
 
         /**
          * Sets an object to pass as a second parameter to the success and failure handlers.
@@ -149,7 +159,10 @@ declare namespace google.script {
         /**
          * Executes the server-side Apps Script function with the corresponding name.
          */
-        [functionName: string]: (first?: Parameter | HTMLFormElement, ...rest: Parameter[]) => void;
+        [functionName: string]: (
+            first?: Parameter | HTMLFormElement,
+            ...rest: Parameter[]
+        ) => void;
     }
 
     const run: RunnerFunctions & PublicEndpoints;

@@ -2,11 +2,13 @@ import { NamespaceBuilder } from "./index.js";
 
 export interface NamespaceFactory {
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    namespace<TermNames extends string = any>(baseIRI: string): NamespaceBuilder<TermNames>;
+    namespace<TermNames extends string = any>(
+        baseIRI: string,
+    ): NamespaceBuilder<TermNames>;
 }
 
 interface NamespaceFactoryCtor {
-    new(): NamespaceFactory;
+    new (): NamespaceFactory;
     exports: ["namespace"];
 }
 

@@ -26,7 +26,7 @@ var routeConfig: Hapi.RouteConfiguration = {
 var routeConfig: Hapi.RouteConfiguration = {
     path: "/signin",
     method: "PUT",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply("ok");
     },
 };
@@ -37,7 +37,7 @@ server.route(routeConfig);
 // Handler in config
 const user: Hapi.RouteAdditionalConfigurationOptions = {
     cache: { expiresIn: 5000 },
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply({ name: "John" });
     },
 };

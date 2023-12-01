@@ -13,14 +13,20 @@ describe("ReactDOM", () => {
     it("render", () => {
         const rootElement = document.createElement("div");
         ReactDOM.render(React.createElement("div"), rootElement);
-        ReactDOM.render(React.createElement("div"), document.createDocumentFragment());
+        ReactDOM.render(
+            React.createElement("div"),
+            document.createDocumentFragment(),
+        );
         ReactDOM.render(React.createElement("div"), document);
     });
 
     it("hydrate", () => {
         const rootElement = document.createElement("div");
         ReactDOM.hydrate(React.createElement("div"), rootElement);
-        ReactDOM.hydrate(React.createElement("div"), document.createDocumentFragment());
+        ReactDOM.hydrate(
+            React.createElement("div"),
+            document.createDocumentFragment(),
+        );
         ReactDOM.hydrate(React.createElement("div"), document);
     });
 
@@ -58,10 +64,24 @@ describe("ReactDOM", () => {
         ReactDOM.createPortal(<div />, document.createElement("div"), null);
         ReactDOM.createPortal(<div />, document.createElement("div"), "key");
 
-        ReactDOM.createPortal(React.createElement("div"), document.createElement("div"));
-        ReactDOM.createPortal(React.createElement("div"), document.createElement("div"), null);
-        ReactDOM.createPortal(React.createElement("div"), document.createElement("div"), "key");
-        ReactDOM.createPortal(React.createElement("div"), document.createDocumentFragment());
+        ReactDOM.createPortal(
+            React.createElement("div"),
+            document.createElement("div"),
+        );
+        ReactDOM.createPortal(
+            React.createElement("div"),
+            document.createElement("div"),
+            null,
+        );
+        ReactDOM.createPortal(
+            React.createElement("div"),
+            document.createElement("div"),
+            "key",
+        );
+        ReactDOM.createPortal(
+            React.createElement("div"),
+            document.createDocumentFragment(),
+        );
 
         ReactDOM.render(<ClassComponent />, rootElement);
     });
@@ -84,23 +104,34 @@ describe("ReactDOM", () => {
 
 describe("ReactDOMServer", () => {
     it("renderToString", () => {
-        const content: string = ReactDOMServer.renderToString(React.createElement("div"));
+        const content: string = ReactDOMServer.renderToString(
+            React.createElement("div"),
+        );
     });
 
     it("renderToStaticMarkup", () => {
-        const content: string = ReactDOMServer.renderToStaticMarkup(React.createElement("div"));
+        const content: string = ReactDOMServer.renderToStaticMarkup(
+            React.createElement("div"),
+        );
     });
 });
 
 describe("React dom test utils", () => {
     it("Simulate", () => {
         const element = document.createElement("div");
-        const dom = ReactDOM.render(React.createElement("input", { type: "text" }), element) as Element;
+        const dom = ReactDOM.render(
+            React.createElement("input", { type: "text" }),
+            element,
+        ) as Element;
         const node = ReactDOM.findDOMNode(dom) as HTMLInputElement;
 
         node.value = "giraffe";
         ReactTestUtils.Simulate.change(node);
-        ReactTestUtils.Simulate.keyDown(node, { key: "Enter", keyCode: 13, which: 13 });
+        ReactTestUtils.Simulate.keyDown(node, {
+            key: "Enter",
+            keyCode: 13,
+            which: 13,
+        });
     });
 
     it("Simulate all event types", () => {
@@ -220,59 +251,88 @@ describe("React dom test utils", () => {
 
     it("isElementOfType", () => {
         const element = React.createElement(TestComponent);
-        const isReactElement: boolean = ReactTestUtils.isElementOfType(element, TestComponent);
+        const isReactElement: boolean = ReactTestUtils.isElementOfType(
+            element,
+            TestComponent,
+        );
     });
 
     it("isDOMComponent", () => {
         const element = React.createElement("div");
-        const instance = ReactTestUtils.renderIntoDocument(element) as HTMLDivElement;
+        const instance = ReactTestUtils.renderIntoDocument(
+            element,
+        ) as HTMLDivElement;
         const isDOMElement: boolean = ReactTestUtils.isDOMComponent(instance);
     });
 
     it("isCompositeComponent", () => {
         const element = React.createElement(TestComponent);
-        const instance: TestComponent = ReactTestUtils.renderIntoDocument(element);
-        const isCompositeComponent: boolean = ReactTestUtils.isCompositeComponent(instance);
+        const instance: TestComponent =
+            ReactTestUtils.renderIntoDocument(element);
+        const isCompositeComponent: boolean =
+            ReactTestUtils.isCompositeComponent(instance);
     });
 
     it("isCompositeComponentWithType", () => {
         const element = React.createElement(TestComponent);
-        const instance: TestComponent = ReactTestUtils.renderIntoDocument(element);
-        const isCompositeComponent: boolean = ReactTestUtils.isCompositeComponentWithType(instance, TestComponent);
+        const instance: TestComponent =
+            ReactTestUtils.renderIntoDocument(element);
+        const isCompositeComponent: boolean =
+            ReactTestUtils.isCompositeComponentWithType(
+                instance,
+                TestComponent,
+            );
     });
 
     it("findAllInRenderedTree", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
-        ReactTestUtils.findAllInRenderedTree(component, (i: React.ReactInstance) => true);
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
+        ReactTestUtils.findAllInRenderedTree(
+            component,
+            (i: React.ReactInstance) => true,
+        );
     });
 
     it("scryRenderedDOMComponentsWithClass", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.scryRenderedDOMComponentsWithClass(component, "class");
     });
 
     it("findRenderedDOMComponentWithClass", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.findRenderedDOMComponentWithClass(component, "class");
     });
 
     it("scryRenderedDOMComponentsWithTag", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.scryRenderedDOMComponentsWithTag(component, "div");
     });
 
     it("findRenderedDOMComponentWithTag", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.findRenderedDOMComponentWithTag(component, "tag");
     });
 
     it("scryRenderedComponentsWithType", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.scryRenderedComponentsWithType(component, TestComponent);
     });
 
     it("findRenderedComponentWithType", () => {
-        const component = ReactTestUtils.renderIntoDocument(React.createElement(TestComponent));
+        const component = ReactTestUtils.renderIntoDocument(
+            React.createElement(TestComponent),
+        );
         ReactTestUtils.findRenderedComponentWithType(component, TestComponent);
     });
 
@@ -302,7 +362,7 @@ describe("React dom test utils", () => {
             });
             it("accepts a callback that returns a value", () => {
                 const result = ReactTestUtils.act(() => "value");
-                result.then(x => {});
+                result.then((x) => {});
             });
             it("returns void", () => {
                 // tslint:disable-next-line no-void-expression
@@ -323,7 +383,7 @@ describe("React dom test utils", () => {
             });
             it("returns a Promise-like", () => {
                 const result = ReactTestUtils.act(async () => {});
-                result.then(x => {});
+                result.then((x) => {});
             });
         });
     });
@@ -331,7 +391,7 @@ describe("React dom test utils", () => {
 
 async function batchTests() {
     // $ExpectType string
-    const output1 = ReactDOM.unstable_batchedUpdates(input => {
+    const output1 = ReactDOM.unstable_batchedUpdates((input) => {
         // $ExpectType number
         input;
         return "hi";
@@ -350,13 +410,17 @@ function createRoot() {
 }
 
 function hydrateRoot() {
-    const hydrateable = ReactDOMClient.hydrateRoot(document, <div>initial render</div>, {
-        identifierPrefix: "react-18-app",
-        onRecoverableError: (error, errorInfo) => {
-            console.error(error);
-            console.info(errorInfo.componentStack);
+    const hydrateable = ReactDOMClient.hydrateRoot(
+        document,
+        <div>initial render</div>,
+        {
+            identifierPrefix: "react-18-app",
+            onRecoverableError: (error, errorInfo) => {
+                console.error(error);
+                console.info(errorInfo.componentStack);
+            },
         },
-    });
+    );
     hydrateable.render(<div>render update</div>);
     ReactDOMClient.hydrateRoot(document, {
         // Forgot `initialChildren`
@@ -440,9 +504,12 @@ async function readableStreamDocumentedExample() {
             headers: { "Content-Type": "text/html" },
         });
     } catch (error) {
-        return new Response("<!doctype html><p>Loading...</p><script src=\"clientrender.js\"></script>", {
-            status: 500,
-            headers: { "Content-Type": "text/html" },
-        });
+        return new Response(
+            '<!doctype html><p>Loading...</p><script src="clientrender.js"></script>',
+            {
+                status: 500,
+                headers: { "Content-Type": "text/html" },
+            },
+        );
     }
 }

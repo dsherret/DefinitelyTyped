@@ -94,7 +94,9 @@ export function useScrollToTop(): (option?: ScrollOption) => void;
 /**
  * Observe scroll position change by passing a callback function
  */
-export function useObserveScrollPosition(observer: (({ scrollTop }: { scrollTop: number }) => void) | false): void;
+export function useObserveScrollPosition(
+    observer: (({ scrollTop }: { scrollTop: number }) => void) | false,
+): void;
 
 /**
  * `true` if the panel is animating scroll effect

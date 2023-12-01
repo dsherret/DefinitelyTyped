@@ -4,7 +4,9 @@ var response = {
     items: [
         {
             someValue: "wow",
-            someLink: { sys: { type: "Link", linkType: "Entry", id: "suchId" } },
+            someLink: {
+                sys: { type: "Link", linkType: "Entry", id: "suchId" },
+            },
         },
     ],
     includes: {

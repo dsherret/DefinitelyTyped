@@ -4,7 +4,17 @@
 
 import { IncomingMessage } from "http";
 import { EventEmitter } from "stream";
-import { DefaultOptions, EmitData, EventData, Fields, File, Files, Options, Part, PluginFunction } from "./";
+import {
+    DefaultOptions,
+    EmitData,
+    EventData,
+    Fields,
+    File,
+    Files,
+    Options,
+    Part,
+    PluginFunction,
+} from "./";
 
 declare class IncomingForm extends EventEmitter {
     static readonly DEFAULT_OPTIONS: DefaultOptions;
@@ -21,7 +31,11 @@ declare class IncomingForm extends EventEmitter {
     ): Promise<[Fields<FieldKey>, Files<FileKey>]>;
     parse<FieldKey extends string, FileKey extends string>(
         request: IncomingMessage,
-        callback?: (err: any, fields: Fields<FieldKey>, files: Files<FileKey>) => void,
+        callback?: (
+            err: any,
+            fields: Fields<FieldKey>,
+            files: Files<FileKey>,
+        ) => void,
     ): void;
 
     once(eventName: "end", listener: () => void): this;
@@ -29,9 +43,18 @@ declare class IncomingForm extends EventEmitter {
 
     on(eventName: "data", listener: (data: EventData) => void): this;
     on(eventName: "error", listener: (err: any) => void): this;
-    on(eventName: "field", listener: (name: string, value: string) => void): this;
-    on(eventName: "fileBegin" | "file", listener: (formName: string, file: File) => void): this;
-    on(eventName: "progress", listener: (bytesReceived: number, bytesExpected: number) => void): this;
+    on(
+        eventName: "field",
+        listener: (name: string, value: string) => void,
+    ): this;
+    on(
+        eventName: "fileBegin" | "file",
+        listener: (formName: string, file: File) => void,
+    ): this;
+    on(
+        eventName: "progress",
+        listener: (bytesReceived: number, bytesExpected: number) => void,
+    ): this;
     on(eventName: string, listener: () => void): this;
 
     emit(eventName: "data", data: EmitData): boolean;

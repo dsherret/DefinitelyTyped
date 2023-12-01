@@ -40,9 +40,9 @@ export function getFloatingPosition({
     }>;
     offset?:
         | Partial<{
-            left: number;
-            top: number;
-        }>
+              left: number;
+              top: number;
+          }>
         | undefined;
     direction?: string | undefined;
     scrollX?: number | undefined;

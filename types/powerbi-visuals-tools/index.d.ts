@@ -96,7 +96,9 @@ declare namespace powerbi.visuals.plugins {
         name: string;
 
         /** Function to call to create the visual. */
-        create: (options?: extensibility.VisualConstructorOptions) => extensibility.IVisual;
+        create: (
+            options?: extensibility.VisualConstructorOptions,
+        ) => extensibility.IVisual;
 
         /** The class of the plugin.  At the moment it is only used to have a way to indicate the class name that a custom visual has. */
         class: string;
@@ -172,7 +174,9 @@ declare namespace powerbi {
          * Does not resolve until all promises finish (success or failure).
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        allSettled<T>(promises: Array<IPromise2<any, any>>): IPromise<Array<IPromiseResult<T>>>;
+        allSettled<T>(
+            promises: Array<IPromise2<any, any>>,
+        ): IPromise<Array<IPromiseResult<T>>>;
 
         /**
          * Wraps an object that might be a value or a then-able promise into a promise.
@@ -184,8 +188,7 @@ declare namespace powerbi {
     /**
      * Represents an operation, to be completed (resolve/rejected) in the future.
      */
-    interface IPromise<T> extends IPromise2<T, T> {
-    }
+    interface IPromise<T> extends IPromise2<T, T> {}
 
     /**
      * Represents an operation, to be completed (resolve/rejected) in the future.
@@ -202,7 +205,9 @@ declare namespace powerbi {
          * the return value of the successCallback, errorCallback.
          */
         then<TSuccessResult, TErrorResult>(
-            successCallback: (promiseValue: TSuccess) => TSuccessResult | IPromise2<TSuccessResult, TErrorResult>,
+            successCallback: (
+                promiseValue: TSuccess,
+            ) => TSuccessResult | IPromise2<TSuccessResult, TErrorResult>,
             errorCallback?: (reason: TError) => TErrorResult,
         ): IPromise2<TSuccessResult, TErrorResult>;
 
@@ -216,7 +221,9 @@ declare namespace powerbi {
         /**
          * Shorthand for promise.then(null, errorCallback).
          */
-        catch<TErrorResult>(onRejected: (reason: any) => TErrorResult): IPromise2<TSuccess, TErrorResult>;
+        catch<TErrorResult>(
+            onRejected: (reason: any) => TErrorResult,
+        ): IPromise2<TSuccess, TErrorResult>;
 
         /**
          * Allows you to observe either the fulfillment or rejection of a promise,
@@ -232,8 +239,7 @@ declare namespace powerbi {
         finally<T, U>(finallyCallback: () => any): IPromise2<T, U>;
     }
 
-    interface IDeferred<T> extends IDeferred2<T, T> {
-    }
+    interface IDeferred<T> extends IDeferred2<T, T> {}
 
     interface IDeferred2<TSuccess, TError> {
         resolve(value: TSuccess): void;
@@ -248,8 +254,7 @@ declare namespace powerbi {
         pending(): boolean;
     }
 
-    interface RejectablePromise<T> extends RejectablePromise2<T, T> {
-    }
+    interface RejectablePromise<T> extends RejectablePromise2<T, T> {}
 
     interface IResultCallback<T> {
         (result: T, done: boolean): void;
@@ -266,7 +271,10 @@ declare namespace powerbi.visuals {
     import SelectorsByColumn = data.SelectorsByColumn;
 
     interface ISelectionIdBuilder {
-        withCategory(categoryColumn: DataViewCategoryColumn, index: number): this;
+        withCategory(
+            categoryColumn: DataViewCategoryColumn,
+            index: number,
+        ): this;
         withSeries(
             seriesColumn: DataViewValueColumns,
             valueColumn: DataViewValueColumn | DataViewValueColumnGroup,
@@ -503,7 +511,9 @@ declare namespace powerbi {
         value?: PrimitiveValue | undefined;
     }
 
-    interface DataViewTreeNodeMeasureValue extends DataViewTreeNodeValue, DataViewColumnAggregates {
+    interface DataViewTreeNodeMeasureValue
+        extends DataViewTreeNodeValue,
+            DataViewColumnAggregates {
         highlight?: PrimitiveValue | undefined;
     }
 
@@ -547,11 +557,11 @@ declare namespace powerbi {
         children?: DataViewMatrixNode[] | undefined;
 
         /* If this DataViewMatrixNode represents the  inner-most dimension of row groups (i.e. a leaf node), then this property will contain the values at the
-        * matrix intersection under the group. The valueSourceIndex property will contain the position of the column in the select statement to which the
-        * value belongs.
-        *
-        * When this DataViewMatrixNode is used under the context of DataView.matrix.columns, this property is not used.
-        */
+         * matrix intersection under the group. The valueSourceIndex property will contain the position of the column in the select statement to which the
+         * value belongs.
+         *
+         * When this DataViewMatrixNode is used under the context of DataView.matrix.columns, this property is not used.
+         */
         values?: { [id: number]: DataViewMatrixNodeValue } | undefined;
 
         /**
@@ -712,7 +722,9 @@ declare namespace powerbi.data {
 declare namespace powerbi.data {
     import IStringResourceProvider = jsCommon.IStringResourceProvider;
 
-    type DisplayNameGetter = ((resourceProvider: IStringResourceProvider) => string) | string;
+    type DisplayNameGetter =
+        | ((resourceProvider: IStringResourceProvider) => string)
+        | string;
 }
 
 declare namespace powerbi.data {
@@ -775,7 +787,7 @@ declare namespace powerbi.data {
         /* The exprs defining the scope that this Total has been evaluated for
          * It's an array to support expressing Total across a composite group
          * Example: If this represents Total sales of USA across States, the Exprs wil refer to "States"
-        */
+         */
         exprs: ISQExpr[];
 
         key: string;
@@ -812,34 +824,48 @@ declare namespace powerbi {
 
 declare namespace powerbi {
     interface Fill {
-        solid?: {
-            color?: string | undefined;
-        } | undefined;
-        gradient?: {
-            startColor?: string | undefined;
-            endColor?: string | undefined;
-        } | undefined;
-        pattern?: {
-            patternKind?: string | undefined;
-            color?: string | undefined;
-        } | undefined;
+        solid?:
+            | {
+                  color?: string | undefined;
+              }
+            | undefined;
+        gradient?:
+            | {
+                  startColor?: string | undefined;
+                  endColor?: string | undefined;
+              }
+            | undefined;
+        pattern?:
+            | {
+                  patternKind?: string | undefined;
+                  color?: string | undefined;
+              }
+            | undefined;
     }
 
     interface FillTypeDescriptor {
-        solid?: {
-            color?: FillSolidColorTypeDescriptor | undefined;
-        } | undefined;
-        gradient?: {
-            startColor?: boolean | undefined;
-            endColor?: boolean | undefined;
-        } | undefined;
-        pattern?: {
-            patternKind?: boolean | undefined;
-            color?: boolean | undefined;
-        } | undefined;
+        solid?:
+            | {
+                  color?: FillSolidColorTypeDescriptor | undefined;
+              }
+            | undefined;
+        gradient?:
+            | {
+                  startColor?: boolean | undefined;
+                  endColor?: boolean | undefined;
+              }
+            | undefined;
+        pattern?:
+            | {
+                  patternKind?: boolean | undefined;
+                  color?: boolean | undefined;
+              }
+            | undefined;
     }
 
-    type FillSolidColorTypeDescriptor = boolean | FillSolidColorAdvancedTypeDescriptor;
+    type FillSolidColorTypeDescriptor =
+        | boolean
+        | FillSolidColorAdvancedTypeDescriptor;
 
     interface FillSolidColorAdvancedTypeDescriptor {
         /** Indicates whether the color value may be nullable, and a 'no fill' option is appropriate. */
@@ -848,12 +874,15 @@ declare namespace powerbi {
 }
 
 declare namespace powerbi {
-    interface FillRule extends FillRuleGeneric<string, number, string> {
-    }
+    interface FillRule extends FillRuleGeneric<string, number, string> {}
 
     interface FillRuleGeneric<TColor, TValue, TStrategy> {
-        linearGradient2?: LinearGradient2Generic<TColor, TValue, TStrategy> | undefined;
-        linearGradient3?: LinearGradient3Generic<TColor, TValue, TStrategy> | undefined;
+        linearGradient2?:
+            | LinearGradient2Generic<TColor, TValue, TStrategy>
+            | undefined;
+        linearGradient3?:
+            | LinearGradient3Generic<TColor, TValue, TStrategy>
+            | undefined;
 
         // stepped2?
         // ...
@@ -862,13 +891,17 @@ declare namespace powerbi {
     interface LinearGradient2Generic<TColor, TValue, TStrategy> {
         max: RuleColorStopGeneric<TColor, TValue>;
         min: RuleColorStopGeneric<TColor, TValue>;
-        nullColoringStrategy?: NullColoringStrategyGeneric<TStrategy, TColor> | undefined;
+        nullColoringStrategy?:
+            | NullColoringStrategyGeneric<TStrategy, TColor>
+            | undefined;
     }
     interface LinearGradient3Generic<TColor, TValue, TStrategy> {
         max: RuleColorStopGeneric<TColor, TValue>;
         mid: RuleColorStopGeneric<TColor, TValue>;
         min: RuleColorStopGeneric<TColor, TValue>;
-        nullColoringStrategy?: NullColoringStrategyGeneric<TStrategy, TColor> | undefined;
+        nullColoringStrategy?:
+            | NullColoringStrategyGeneric<TStrategy, TColor>
+            | undefined;
     }
 
     interface RuleColorStopGeneric<TColor, TValue> {
@@ -1087,20 +1120,26 @@ declare namespace powerbi {
         selector: Selector;
 
         /** (Optional) Defines the constrained set of valid values for a property. */
-        validValues?: {
-            [propertyName: string]: string[] | ValidationOptions;
-        } | undefined;
+        validValues?:
+            | {
+                  [propertyName: string]: string[] | ValidationOptions;
+              }
+            | undefined;
 
         /** (Optional) VisualObjectInstanceEnumeration category index. */
         containerIdx?: number | undefined;
 
         /** (Optional) Set the required type for particular properties that support variant types. */
-        propertyTypes?: {
-            [propertyName: string]: ValueTypeDescriptor;
-        } | undefined;
+        propertyTypes?:
+            | {
+                  [propertyName: string]: ValueTypeDescriptor;
+              }
+            | undefined;
     }
 
-    type VisualObjectInstanceEnumeration = VisualObjectInstance[] | VisualObjectInstanceEnumerationObject;
+    type VisualObjectInstanceEnumeration =
+        | VisualObjectInstance[]
+        | VisualObjectInstanceEnumerationObject;
 
     interface ValidationOptions {
         numberRange?: NumberRange | undefined;
@@ -1215,13 +1254,18 @@ declare namespace powerbi.extensibility {
         clear(): IPromise<{}>;
         getSelectionIds(): visuals.ISelectionId[];
         applySelectionFilter(): void;
-        registerOnSelectCallback(callback: (ids: visuals.ISelectionId[]) => void): void;
+        registerOnSelectCallback(
+            callback: (ids: visuals.ISelectionId[]) => void,
+        ): void;
     }
 }
 
 declare namespace powerbi.extensibility {
     interface ISelectionIdBuilder {
-        withCategory(categoryColumn: DataViewCategoryColumn, index: number): this;
+        withCategory(
+            categoryColumn: DataViewCategoryColumn,
+            index: number,
+        ): this;
         withSeries(
             seriesColumn: DataViewValueColumns,
             valueColumn: DataViewValueColumn | DataViewValueColumnGroup,
@@ -1315,7 +1359,9 @@ declare namespace powerbi.extensibility.visual {
         update<T>(options: VisualUpdateOptions, viewModel?: T): void;
 
         /** Gets the set of objects that the visual is currently displaying. */
-        enumerateObjectInstances?(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration;
+        enumerateObjectInstances?(
+            options: EnumerateVisualObjectInstancesOptions,
+        ): VisualObjectInstanceEnumeration;
     }
 
     interface IVisualHost extends extensibility.IVisualHost {
@@ -1323,7 +1369,12 @@ declare namespace powerbi.extensibility.visual {
         createSelectionManager: () => ISelectionManager;
         colorPalette: IColorPalette;
         persistProperties: (changes: VisualObjectInstancesToPersist) => void;
-        applyJsonFilter: (filter: IFilter, objectName: string, propertyName: string, action: FilterAction) => void;
+        applyJsonFilter: (
+            filter: IFilter,
+            objectName: string,
+            propertyName: string,
+            action: FilterAction,
+        ) => void;
         tooltipService: ITooltipService;
         telemetry: ITelemetryService;
         authenticationService: IAuthenticationService;
@@ -1341,7 +1392,8 @@ declare namespace powerbi.extensibility.visual {
         editMode?: EditMode | undefined;
     }
 
-    interface VisualConstructorOptions extends extensibility.VisualConstructorOptions {
+    interface VisualConstructorOptions
+        extends extensibility.VisualConstructorOptions {
         element: HTMLElement;
         host: IVisualHost;
     }

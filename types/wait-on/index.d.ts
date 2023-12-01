@@ -4,7 +4,10 @@ import { SecureContextOptions } from "tls";
 export = waitOn;
 
 declare function waitOn(options: waitOn.WaitOnOptions): Promise<void>;
-declare function waitOn(options: waitOn.WaitOnOptions, cb: (err: any) => void): void;
+declare function waitOn(
+    options: waitOn.WaitOnOptions,
+    cb: (err: any) => void,
+): void;
 
 declare namespace waitOn {
     interface WaitOnOptions extends SecureContextOptions {
@@ -96,10 +99,12 @@ declare namespace waitOn {
     interface AxiosProxyConfig {
         host: string;
         port: number;
-        auth?: {
-            username: string;
-            password: string;
-        } | undefined;
+        auth?:
+            | {
+                  username: string;
+                  password: string;
+              }
+            | undefined;
         protocol?: string | undefined;
     }
 }

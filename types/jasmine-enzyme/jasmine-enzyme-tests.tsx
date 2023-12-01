@@ -265,14 +265,16 @@ describe("toHaveHTML", () => {
     describe("matches", () => {
         it("should pass", () => {
             expect(wrapper.find("#child")).toHaveHTML(
-                "<span id=\"child\">Test</span>",
+                '<span id="child">Test</span>',
             );
         });
     });
 
     describe(".not matches", () => {
         it("should pass", () => {
-            expect(wrapper.find("#child")).not.toHaveHTML("<div id=\"child\">Test</span>");
+            expect(wrapper.find("#child")).not.toHaveHTML(
+                '<div id="child">Test</span>',
+            );
         });
     });
 });
@@ -285,10 +287,7 @@ describe("toHaveProp", () => {
     function Fixture() {
         return (
             <div id="root">
-                <User
-                    foo={"baz"}
-                    bar={[1, 2, 3]}
-                />
+                <User foo={"baz"} bar={[1, 2, 3]} />
             </div>
         );
     }
@@ -296,19 +295,19 @@ describe("toHaveProp", () => {
     const wrapper = mount(<Fixture />);
 
     describe("matches", () => {
-        it("should have prop \"foo\"", () => {
+        it('should have prop "foo"', () => {
             expect(wrapper.find(User)).toHaveProp("foo");
             expect(wrapper.find(User)).toHaveProp("foo", "baz");
         });
 
-        it("should have prop \"bar\"", () => {
+        it('should have prop "bar"', () => {
             expect(wrapper.find(User)).toHaveProp("bar");
             expect(wrapper.find(User)).toHaveProp("bar", [1, 2, 3]);
         });
     });
 
     describe(".not matches", () => {
-        it("should not have prop \"baz\"", () => {
+        it('should not have prop "baz"', () => {
             expect(wrapper.find(User)).not.toHaveProp("baz");
         });
     });

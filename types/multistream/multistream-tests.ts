@@ -22,7 +22,7 @@ const streams = [
     () => fs.createWriteStream(".filepath2"),
 ];
 
-const factory: MultiStream.FactoryStream = cb => {
+const factory: MultiStream.FactoryStream = (cb) => {
     cb(null, fs.createReadStream(".filepath"));
 
     cb(null, fs.createReadStream(".filepath"));

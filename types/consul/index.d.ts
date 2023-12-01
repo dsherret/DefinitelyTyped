@@ -121,7 +121,7 @@ declare namespace Consul {
     }
 
     interface AclStatic {
-        new(consul: Consul): Acl;
+        new (consul: Consul): Acl;
     }
 
     namespace Agent {
@@ -167,7 +167,10 @@ declare namespace Consul {
              * Returns the checks the local agent is managing
              */
             list: {
-                <TData>(opts: Check.ListOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.ListOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(callback: Callback<TData>): void;
                 <TData>(opts?: Check.ListOptions): Promise<TData>;
             };
@@ -176,7 +179,10 @@ declare namespace Consul {
              * Registers a new local check
              */
             register: {
-                <TData>(opts: Check.RegisterOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.RegisterOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(opts: Check.RegisterOptions): Promise<TData>;
             };
 
@@ -185,7 +191,10 @@ declare namespace Consul {
              */
             deregister: {
                 <TData>(id: string, callback: Callback<TData>): void;
-                <TData>(opts: Check.DeregisterOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.DeregisterOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(id: string): Promise<TData>;
                 <TData>(opts: Check.DeregisterOptions): Promise<TData>;
             };
@@ -195,7 +204,10 @@ declare namespace Consul {
              */
             pass: {
                 <TData>(id: string, callback: Callback<TData>): void;
-                <TData>(opts: Check.PassOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.PassOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(id: string): Promise<TData>;
                 <TData>(opts: Check.PassOptions): Promise<TData>;
             };
@@ -205,7 +217,10 @@ declare namespace Consul {
              */
             warn: {
                 <TData>(id: string, callback: Callback<TData>): void;
-                <TData>(opts: Check.WarnOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.WarnOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(id: string): Promise<TData>;
                 <TData>(opts: Check.WarnOptions): Promise<TData>;
             };
@@ -215,14 +230,17 @@ declare namespace Consul {
              */
             fail: {
                 <TData>(id: string, callback: Callback<TData>): void;
-                <TData>(opts: Check.FailOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Check.FailOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(id: string): Promise<TData>;
                 <TData>(opts: Check.FailOptions): Promise<TData>;
             };
         }
 
         interface CheckStatic {
-            new(consul: Consul): Check;
+            new (consul: Consul): Check;
         }
 
         namespace Service {
@@ -266,7 +284,10 @@ declare namespace Consul {
              * Returns the services local agent is managing
              */
             list: {
-                <TData>(opts: Service.ListOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.ListOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(callback: Callback<TData>): void;
                 <TData>(opts?: Service.ListOptions): Promise<TData>;
             };
@@ -276,7 +297,10 @@ declare namespace Consul {
              */
             register: {
                 <TData>(name: string, callback: Callback<TData>): void;
-                <TData>(opts: Service.RegisterOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.RegisterOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(name: string): Promise<TData>;
                 <TData>(opts: Service.RegisterOptions): Promise<TData>;
             };
@@ -286,7 +310,10 @@ declare namespace Consul {
              */
             deregister: {
                 <TData>(id: string, callback: Callback<TData>): void;
-                <TData>(opts: Service.DeregisterOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.DeregisterOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(id: string): Promise<TData>;
                 <TData>(opts: Service.DeregisterOptions): Promise<TData>;
             };
@@ -295,13 +322,16 @@ declare namespace Consul {
              * Manages node maintenance mode
              */
             maintenance: {
-                <TData>(opts: Service.MaintenanceOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.MaintenanceOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(opts: Service.MaintenanceOptions): Promise<TData>;
             };
         }
 
         interface ServiceStatic {
-            new(consul: Consul): Service;
+            new (consul: Consul): Service;
         }
 
         interface ChecksOptions extends Check.ListOptions {}
@@ -347,7 +377,10 @@ declare namespace Consul {
          * Returns the services local agent is managing
          */
         services: {
-            <TData>(opts: Agent.ServicesOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Agent.ServicesOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(opts?: Agent.ServicesOptions): Promise<TData>;
         };
@@ -356,7 +389,10 @@ declare namespace Consul {
          * Returns the members as seen by the local consul agent
          */
         members: {
-            <TData>(opts: Agent.MembersOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Agent.MembersOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(opts?: Agent.MembersOptions): Promise<TData>;
         };
@@ -375,7 +411,10 @@ declare namespace Consul {
          */
         maintenance: {
             <TData>(enable: boolean, callback: Callback<TData>): void;
-            <TData>(opts: Agent.MaintenanceOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Agent.MaintenanceOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(enable: boolean): Promise<TData>;
             <TData>(opts: Agent.MaintenanceOptions): Promise<TData>;
         };
@@ -395,14 +434,17 @@ declare namespace Consul {
          */
         forceLeave: {
             <TData>(node: string, callback: Callback<TData>): void;
-            <TData>(opts: Agent.ForceLeaveOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Agent.ForceLeaveOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(node: string): Promise<TData>;
             <TData>(opts: Agent.ForceLeaveOptions): Promise<TData>;
         };
     }
 
     interface AgentStatic {
-        new(consul: Consul): Agent;
+        new (consul: Consul): Agent;
 
         Check: Agent.CheckStatic;
         Service: Agent.ServiceStatic;
@@ -427,7 +469,10 @@ declare namespace Consul {
              */
             list: {
                 <TData>(dc: string, callback: Callback<TData>): void;
-                <TData>(opts: Node.ListOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Node.ListOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(callback: Callback<TData>): void;
                 <TData>(dc?: string): Promise<TData>;
                 <TData>(opts?: Node.ListOptions): Promise<TData>;
@@ -438,14 +483,17 @@ declare namespace Consul {
              */
             services: {
                 <TData>(node: string, callback: Callback<TData>): void;
-                <TData>(opts: Node.ServicesOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Node.ServicesOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(node: string): Promise<TData>;
                 <TData>(opts: Node.ServicesOptions): Promise<TData>;
             };
         }
 
         interface NodeStatic {
-            new(consul: Consul): Node;
+            new (consul: Consul): Node;
         }
 
         namespace Service {
@@ -468,7 +516,10 @@ declare namespace Consul {
              */
             list: {
                 <TData>(dc: string, callback: Callback<TData>): void;
-                <TData>(opts: Service.ListOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.ListOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(callback: Callback<TData>): void;
                 <TData>(dc?: string): Promise<TData>;
                 <TData>(opts?: Service.ListOptions): Promise<TData>;
@@ -479,14 +530,17 @@ declare namespace Consul {
              */
             nodes: {
                 <TData>(service: string, callback: Callback<TData>): void;
-                <TData>(opts: Service.NodesOptions, callback: Callback<TData>): void;
+                <TData>(
+                    opts: Service.NodesOptions,
+                    callback: Callback<TData>,
+                ): void;
                 <TData>(service: string): Promise<TData>;
                 <TData>(opts: Service.NodesOptions): Promise<TData>;
             };
         }
 
         interface ServiceStatic {
-            new(consul: Consul): Service;
+            new (consul: Consul): Service;
         }
 
         interface DatacentersOptions extends CommonOptions {}
@@ -505,7 +559,10 @@ declare namespace Consul {
          * Lists known datacenters
          */
         datacenters: {
-            <TData>(opts: Catalog.DatacentersOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Catalog.DatacentersOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(opts?: Catalog.DatacentersOptions): Promise<TData>;
         };
@@ -515,7 +572,10 @@ declare namespace Consul {
          */
         nodes: {
             <TData>(dc: string, callback: Callback<TData>): void;
-            <TData>(opts: Catalog.NodesOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Catalog.NodesOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(dc?: string): Promise<TData>;
             <TData>(opts?: Catalog.NodesOptions): Promise<TData>;
@@ -526,7 +586,10 @@ declare namespace Consul {
          */
         services: {
             <TData>(dc: string, callback: Callback<TData>): void;
-            <TData>(opts: Catalog.ServicesOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Catalog.ServicesOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(dc?: string): Promise<TData>;
             <TData>(opts?: Catalog.ServicesOptions): Promise<TData>;
@@ -534,7 +597,7 @@ declare namespace Consul {
     }
 
     interface CatalogStatic {
-        new(consul: Consul): Catalog;
+        new (consul: Consul): Catalog;
 
         Node: Catalog.NodeStatic;
         Service: Catalog.ServiceStatic;
@@ -561,7 +624,11 @@ declare namespace Consul {
          * Fires a new user event
          */
         fire: {
-            <TData>(name: string, payload: string | Buffer, callback: Callback<TData>): void;
+            <TData>(
+                name: string,
+                payload: string | Buffer,
+                callback: Callback<TData>,
+            ): void;
             <TData>(name: string, callback: Callback<TData>): void;
             <TData>(opts: Event.FireOptions, callback: Callback<TData>): void;
             <TData>(name: string, payload: string | Buffer): Promise<TData>;
@@ -582,7 +649,7 @@ declare namespace Consul {
     }
 
     interface EventStatic {
-        new(consul: Consul): Event;
+        new (consul: Consul): Event;
     }
 
     namespace Health {
@@ -628,7 +695,10 @@ declare namespace Consul {
          */
         checks: {
             <TData>(service: string, callback: Callback<TData>): void;
-            <TData>(opts: Health.ChecksOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Health.ChecksOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(service: string): Promise<TData>;
             <TData>(opts: Health.ChecksOptions): Promise<TData>;
         };
@@ -638,7 +708,10 @@ declare namespace Consul {
          */
         service: {
             <TData>(service: string, callback: Callback<TData>): void;
-            <TData>(opts: Health.ServiceOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Health.ServiceOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(service: string): Promise<TData>;
             <TData>(opts: Health.ServiceOptions): Promise<TData>;
         };
@@ -655,7 +728,7 @@ declare namespace Consul {
     }
 
     interface HealthStatic {
-        new(consul: Consul): Health;
+        new (consul: Consul): Health;
     }
 
     namespace Kv {
@@ -723,10 +796,23 @@ declare namespace Consul {
          * Set
          */
         set: {
-            <TData>(key: string, value: string | Buffer, opts: Kv.SetOptions, callback: Callback<TData>): void;
-            <TData>(key: string, value: string | Buffer, callback: Callback<TData>): void;
+            <TData>(
+                key: string,
+                value: string | Buffer,
+                opts: Kv.SetOptions,
+                callback: Callback<TData>,
+            ): void;
+            <TData>(
+                key: string,
+                value: string | Buffer,
+                callback: Callback<TData>,
+            ): void;
             <TData>(opts: Kv.SetOptions, callback: Callback<TData>): void;
-            <TData>(key: string, value: string | Buffer, opts: Kv.SetOptions): Promise<TData>;
+            <TData>(
+                key: string,
+                value: string | Buffer,
+                opts: Kv.SetOptions,
+            ): Promise<TData>;
             <TData>(key: string, value: string | Buffer): Promise<TData>;
             <TData>(opts: Kv.SetOptions): Promise<TData>;
         };
@@ -749,7 +835,7 @@ declare namespace Consul {
     }
 
     interface KvStatic {
-        new(consul: Consul): Kv;
+        new (consul: Consul): Kv;
     }
 
     namespace Lock {
@@ -777,7 +863,7 @@ declare namespace Consul {
     }
 
     interface LockStatic {
-        new(consul: Consul, opts: Lock.Options): Lock;
+        new (consul: Consul, opts: Lock.Options): Lock;
     }
 
     namespace Session {
@@ -825,7 +911,10 @@ declare namespace Consul {
          * Creates a new session
          */
         create: {
-            <TData>(opts: Session.CreateOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Session.CreateOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(opts?: Session.CreateOptions): Promise<TData>;
         };
@@ -835,7 +924,10 @@ declare namespace Consul {
          */
         destroy: {
             <TData>(id: string, callback: Callback<TData>): void;
-            <TData>(opts: Session.DestroyOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Session.DestroyOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(id: string): Promise<TData>;
             <TData>(opts: Session.DestroyOptions): Promise<TData>;
         };
@@ -880,14 +972,17 @@ declare namespace Consul {
          */
         renew: {
             <TData>(id: string, callback: Callback<TData>): void;
-            <TData>(opts: Session.RenewOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Session.RenewOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(id: string): Promise<TData>;
             <TData>(opts: Session.RenewOptions): Promise<TData>;
         };
     }
 
     interface SessionStatic {
-        new(consul: Consul): Session;
+        new (consul: Consul): Session;
     }
 
     namespace Status {
@@ -903,7 +998,10 @@ declare namespace Consul {
          * Returns the current Raft leader.
          */
         leader: {
-            <TData>(opts: Status.LeaderOptions, callback: Callback<TData>): void;
+            <TData>(
+                opts: Status.LeaderOptions,
+                callback: Callback<TData>,
+            ): void;
             <TData>(callback: Callback<TData>): void;
             <TData>(opts?: Status.LeaderOptions): Promise<TData>;
         };
@@ -919,7 +1017,7 @@ declare namespace Consul {
     }
 
     interface StatusStatic {
-        new(consul: Consul): Status;
+        new (consul: Consul): Status;
     }
 
     namespace Watch {
@@ -929,7 +1027,7 @@ declare namespace Consul {
 
         interface Options {
             method: Function;
-            options?: CommonOptions & WatchOptions | undefined;
+            options?: (CommonOptions & WatchOptions) | undefined;
             backoffFactor?: number | undefined;
             backoffMax?: number | undefined;
             maxAttempts?: number | undefined;
@@ -956,7 +1054,7 @@ declare namespace Consul {
     }
 
     interface WatchStatic {
-        new(consul: Consul, opts: Watch.Options): Watch;
+        new (consul: Consul, opts: Watch.Options): Watch;
     }
 
     interface ConsulOptions {
@@ -991,7 +1089,7 @@ declare namespace Consul {
 
     interface ConsulStatic {
         (opts?: ConsulOptions): Consul;
-        new(opts?: ConsulOptions): Consul;
+        new (opts?: ConsulOptions): Consul;
 
         Acl: AclStatic;
         Agent: AgentStatic;

@@ -24,7 +24,9 @@ export interface BreakpointConfig {
 
 export function useBreakpoint(): BreakpointsObject;
 
-export function withBreakpoints<P extends BreakpointProps>(Component: React.ComponentType<P>): React.ComponentType<P>;
+export function withBreakpoints<P extends BreakpointProps>(
+    Component: React.ComponentType<P>,
+): React.ComponentType<P>;
 
 export const BreakpointContext: React.Context<QueriesObject>;
 

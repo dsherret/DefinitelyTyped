@@ -88,7 +88,10 @@ interface Layui {
      * @param [tableName]  key键， 为sessionStorage中的一个key
      * @param [row] 存储的json对象数据
      */
-    data(tableName: string, row?: { key: string; value?: any; remove?: boolean } | null): any;
+    data(
+        tableName: string,
+        row?: { key: string; value?: any; remove?: boolean } | null,
+    ): any;
 
     // https://www.layui.com/doc/base/modules.html#extend
     /**
@@ -189,7 +192,12 @@ interface Layui {
      * @param [params] 回调参数，作为绑定的回调函数的参数<br/>&nbsp;
      * @param [fn] 回调函数,不建议用
      */
-    event(modName: string, events: string, params?: any, fn?: (...arg: any) => any): any;
+    event(
+        modName: string,
+        events: string,
+        params?: any,
+        fn?: (...arg: any) => any,
+    ): any;
 
     // https://www.layui.com/doc/base/modules.html#extend
     /**
@@ -218,7 +226,12 @@ interface Layui {
      * 向控制台打印一些异常信息，目前只返回了 error方法：	<br/>&nbsp;
      *   实例：layui.hint().error('出错啦');layui.hint().error('出错啦','warn');
      */
-    hint(): { error: (msg: any, type?: string | "log" | "info" | "error" | "warn" | "debug") => void };
+    hint(): {
+        error: (
+            msg: any,
+            type?: string | "log" | "info" | "error" | "warn" | "debug",
+        ) => void;
+    };
 
     // https://www.layui.com/doc/base/infrastructure.html#other
     /**
@@ -227,7 +240,11 @@ interface Layui {
      * @param [callback]  回调函数，会透出img对象
      * @param [error]
      */
-    img(url: string, callback?: (img: HTMLImageElement) => void, error?: (e: Event | string) => void): any;
+    img(
+        url: string,
+        callback?: (img: HTMLImageElement) => void,
+        error?: (e: Event | string) => void,
+    ): any;
 
     // https://www.layui.com/doc/base/infrastructure.html#link
     /**
@@ -269,7 +286,11 @@ interface Layui {
      * @param [modName]  模块名,比如 layer,table,form等
      * @param [callback] 回调函数
      */
-    on(events: string, modName: string, callback: (obj: any) => any): (...arg: any) => any;
+    on(
+        events: string,
+        modName: string,
+        callback: (obj: any) => any,
+    ): (...arg: any) => any;
 
     // https://www.layui.com/doc/base/infrastructure.html
     /**
@@ -286,7 +307,11 @@ interface Layui {
      * @param [events] 事件名
      * @param [callback]  回调函数
      */
-    onevent(modName: string, events: string, callback: (obj: any) => any): (...arg: any) => any;
+    onevent(
+        modName: string,
+        events: string,
+        callback: (obj: any) => any,
+    ): (...arg: any) => any;
 
     // https://www.layui.com/doc/base/infrastructure.html
     /**
@@ -302,7 +327,10 @@ interface Layui {
      * @param [tableName]  key键， 为sessionStorage中的一个key
      * @param [row] 存储的json对象数据
      */
-    sessionData(tableName: string, row?: { key: string; value?: any; remove?: boolean } | null): any;
+    sessionData(
+        tableName: string,
+        row?: { key: string; value?: any; remove?: boolean } | null,
+    ): any;
 
     // https://www.layui.com/doc/base/infrastructure.html
     /**
@@ -353,7 +381,11 @@ interface Layui {
      * @param [callback]  回调函数
      * @param [exports]  数组，存储对 mods解析后加载的模块
      */
-    use(mods: string, callback: (this: Layui, module: any) => any, exports?: any[]): { v: string };
+    use(
+        mods: string,
+        callback: (this: Layui, module: any) => any,
+        exports?: any[],
+    ): { v: string };
 
     /**
      * 使用多模块
@@ -363,14 +395,24 @@ interface Layui {
      *  2、手动在callback回调中指定类型比如 util:layui.Util
      * @param [exports] 暴露出挂载的对象
      */
-    use(mods: string[], callback: (this: Layui, ...module: any) => any, exports?: any[]): { v: string };
+    use(
+        mods: string[],
+        callback: (this: Layui, ...module: any) => any,
+        exports?: any[],
+    ): { v: string };
 
     /**
      * 使用特定模块
      * @param [callback]  回调函数， 从 layui 2.6 开始，首个参数是callback函数，则表示引用所有内置模块到layui.xx<br/>&nbsp;
      * @param [exports]  无任何用途，可不传
      */
-    use(callback: (this: Layui, module: { config: object; time: number }) => any, exports?: any[]): { v: string };
+    use(
+        callback: (
+            this: Layui,
+            module: { config: object; time: number },
+        ) => any,
+        exports?: any[],
+    ): { v: string };
 
     /**
      * 代码高亮

@@ -48,8 +48,16 @@ export class FirstPersonControls extends EventDispatcher {
     connect() {
         document.addEventListener("mousedown", this._mouseDownHandler, false);
         document.addEventListener("mousemove", this._mouseMoveHandler, false);
-        document.addEventListener("pointerlockchange", this._pointerlockChangeHandler, false);
-        document.addEventListener("pointerlockerror", this._pointerlockErrorHandler, false);
+        document.addEventListener(
+            "pointerlockchange",
+            this._pointerlockChangeHandler,
+            false,
+        );
+        document.addEventListener(
+            "pointerlockerror",
+            this._pointerlockErrorHandler,
+            false,
+        );
         document.addEventListener("keydown", this._keyDownHandler, false);
         document.addEventListener("keyup", this._keyUpHandler, false);
 
@@ -57,10 +65,26 @@ export class FirstPersonControls extends EventDispatcher {
     }
 
     disconnect() {
-        document.removeEventListener("mousedown", this._mouseDownHandler, false);
-        document.removeEventListener("mousemove", this._mouseMoveHandler, false);
-        document.removeEventListener("pointerlockchange", this._pointerlockChangeHandler, false);
-        document.removeEventListener("pointerlockerror", this._pointerlockErrorHandler, false);
+        document.removeEventListener(
+            "mousedown",
+            this._mouseDownHandler,
+            false,
+        );
+        document.removeEventListener(
+            "mousemove",
+            this._mouseMoveHandler,
+            false,
+        );
+        document.removeEventListener(
+            "pointerlockchange",
+            this._pointerlockChangeHandler,
+            false,
+        );
+        document.removeEventListener(
+            "pointerlockerror",
+            this._pointerlockErrorHandler,
+            false,
+        );
         document.removeEventListener("keydown", this._keyDownHandler, false);
         document.removeEventListener("keyup", this._keyUpHandler, false);
     }
@@ -76,8 +100,10 @@ export class FirstPersonControls extends EventDispatcher {
         direction.x = Number(input.left) - Number(input.right);
         direction.normalize();
 
-        if (input.forward || input.backward) velocity.z -= direction.z * this.acceleration * delta;
-        if (input.left || input.right) velocity.x -= direction.x * this.acceleration * delta;
+        if (input.forward || input.backward)
+            velocity.z -= direction.z * this.acceleration * delta;
+        if (input.left || input.right)
+            velocity.x -= direction.x * this.acceleration * delta;
 
         owner.velocity.copy(velocity).applyRotation(owner.rotation);
 

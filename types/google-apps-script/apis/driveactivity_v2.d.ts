@@ -3,7 +3,9 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface ActivityCollection {
                 // Query past activity in Google Drive.
-                query(resource: Schema.QueryDriveActivityRequest): DriveActivity.Schema.QueryDriveActivityResponse;
+                query(
+                    resource: Schema.QueryDriveActivityRequest,
+                ): DriveActivity.Schema.QueryDriveActivityResponse;
             }
         }
         namespace Schema {
@@ -18,14 +20,22 @@ declare namespace GoogleAppsScript {
                 comment?: DriveActivity.Schema.Comment | undefined;
                 create?: DriveActivity.Schema.Create | undefined;
                 delete?: DriveActivity.Schema.Delete | undefined;
-                dlpChange?: DriveActivity.Schema.DataLeakPreventionChange | undefined;
+                dlpChange?:
+                    | DriveActivity.Schema.DataLeakPreventionChange
+                    | undefined;
                 edit?: any;
                 move?: DriveActivity.Schema.Move | undefined;
-                permissionChange?: DriveActivity.Schema.PermissionChange | undefined;
-                reference?: DriveActivity.Schema.ApplicationReference | undefined;
+                permissionChange?:
+                    | DriveActivity.Schema.PermissionChange
+                    | undefined;
+                reference?:
+                    | DriveActivity.Schema.ApplicationReference
+                    | undefined;
                 rename?: DriveActivity.Schema.Rename | undefined;
                 restore?: DriveActivity.Schema.Restore | undefined;
-                settingsChange?: DriveActivity.Schema.SettingsChange | undefined;
+                settingsChange?:
+                    | DriveActivity.Schema.SettingsChange
+                    | undefined;
             }
             interface Actor {
                 administrator?: string | undefined;
@@ -51,7 +61,9 @@ declare namespace GoogleAppsScript {
                 none?: any;
             }
             interface Copy {
-                originalObject?: DriveActivity.Schema.TargetReference | undefined;
+                originalObject?:
+                    | DriveActivity.Schema.TargetReference
+                    | undefined;
             }
             interface Create {
                 copy?: DriveActivity.Schema.Copy | undefined;
@@ -71,7 +83,9 @@ declare namespace GoogleAppsScript {
             interface DriveActivity {
                 actions?: DriveActivity.Schema.Action[] | undefined;
                 actors?: DriveActivity.Schema.Actor[] | undefined;
-                primaryActionDetail?: DriveActivity.Schema.ActionDetail | undefined;
+                primaryActionDetail?:
+                    | DriveActivity.Schema.ActionDetail
+                    | undefined;
                 targets?: DriveActivity.Schema.Target[] | undefined;
                 timeRange?: DriveActivity.Schema.TimeRange | undefined;
                 timestamp?: string | undefined;
@@ -119,8 +133,12 @@ declare namespace GoogleAppsScript {
                 personName?: string | undefined;
             }
             interface Move {
-                addedParents?: DriveActivity.Schema.TargetReference[] | undefined;
-                removedParents?: DriveActivity.Schema.TargetReference[] | undefined;
+                addedParents?:
+                    | DriveActivity.Schema.TargetReference[]
+                    | undefined;
+                removedParents?:
+                    | DriveActivity.Schema.TargetReference[]
+                    | undefined;
             }
             interface Owner {
                 domain?: DriveActivity.Schema.Domain | undefined;
@@ -136,15 +154,21 @@ declare namespace GoogleAppsScript {
                 user?: DriveActivity.Schema.User | undefined;
             }
             interface PermissionChange {
-                addedPermissions?: DriveActivity.Schema.Permission[] | undefined;
-                removedPermissions?: DriveActivity.Schema.Permission[] | undefined;
+                addedPermissions?:
+                    | DriveActivity.Schema.Permission[]
+                    | undefined;
+                removedPermissions?:
+                    | DriveActivity.Schema.Permission[]
+                    | undefined;
             }
             interface Post {
                 subtype?: string | undefined;
             }
             interface QueryDriveActivityRequest {
                 ancestorName?: string | undefined;
-                consolidationStrategy?: DriveActivity.Schema.ConsolidationStrategy | undefined;
+                consolidationStrategy?:
+                    | DriveActivity.Schema.ConsolidationStrategy
+                    | undefined;
                 filter?: string | undefined;
                 itemName?: string | undefined;
                 pageSize?: number | undefined;
@@ -166,7 +190,9 @@ declare namespace GoogleAppsScript {
                 newRestriction?: string | undefined;
             }
             interface SettingsChange {
-                restrictionChanges?: DriveActivity.Schema.RestrictionChange[] | undefined;
+                restrictionChanges?:
+                    | DriveActivity.Schema.RestrictionChange[]
+                    | undefined;
             }
             interface Suggestion {
                 subtype?: string | undefined;

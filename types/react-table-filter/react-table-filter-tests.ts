@@ -11,8 +11,14 @@ class TestApp extends React.Component {
     };
 
     render() {
-        return React.createElement(TableFilter, { onFilterUpdate: this.onFilterUpdate, rows: [] });
+        return React.createElement(TableFilter, {
+            onFilterUpdate: this.onFilterUpdate,
+            rows: [],
+        });
     }
 }
 
-ReactDOM.render(React.createElement(TestApp, {}), document.getElementById("test-app"));
+ReactDOM.render(
+    React.createElement(TestApp, {}),
+    document.getElementById("test-app"),
+);

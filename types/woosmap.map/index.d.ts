@@ -12,7 +12,10 @@ declare namespace woosmap.map {
         /**
          * Adds Drawing Control to a Map.
          */
-        addControl(map: woosmap.map.Map, position?: woosmap.map.ControlPositionType): void;
+        addControl(
+            map: woosmap.map.Map,
+            position?: woosmap.map.ControlPositionType,
+        ): void;
 
         /**
          * Removes Drawing Control to its attached Map.
@@ -22,7 +25,10 @@ declare namespace woosmap.map {
         /**
          * Register Drawing Events
          */
-        addListener(event: MapboxDraw.DrawEventType, handler: (...args: any[]) => any): void;
+        addListener(
+            event: MapboxDraw.DrawEventType,
+            handler: (...args: any[]) => any,
+        ): void;
     }
 }
 declare namespace woosmap.map {
@@ -35,7 +41,10 @@ declare namespace woosmap.map {
         /**
          * Creates a new map inside the given HTML container, which is typically a `DIV` element.
          */
-        constructor(mapDiv: HTMLElement | string, options?: woosmap.map.MapOptions);
+        constructor(
+            mapDiv: HTMLElement | string,
+            options?: woosmap.map.MapOptions,
+        );
 
         /**
          * Sets the viewport to contain the given bounds.
@@ -83,7 +92,10 @@ declare namespace woosmap.map {
         /**
          * Changes the center of the map to the given LatLng.
          */
-        panTo(latLng: woosmap.map.LatLng | woosmap.map.LatLngLiteral, padding?: woosmap.map.Padding): void;
+        panTo(
+            latLng: woosmap.map.LatLng | woosmap.map.LatLngLiteral,
+            padding?: woosmap.map.Padding,
+        ): void;
 
         /**
          * Changes any combination of center, zoom, bearing, and pitch, animating the transition along a curve that evokes
@@ -98,14 +110,19 @@ declare namespace woosmap.map {
          * `{currentMapSizeInPx} - {padding}.`
          */
         panToBounds(
-            latLngBounds: woosmap.map.LatLngBounds | woosmap.map.LatLngBoundsLiteral,
+            latLngBounds:
+                | woosmap.map.LatLngBounds
+                | woosmap.map.LatLngBoundsLiteral,
             padding: number | woosmap.map.Padding,
         ): void;
 
         /**
          * Sets the map center
          */
-        setCenter(center: woosmap.map.LatLng | woosmap.map.LatLngLiteral, padding?: woosmap.map.Padding): void;
+        setCenter(
+            center: woosmap.map.LatLng | woosmap.map.LatLngLiteral,
+            padding?: woosmap.map.Padding,
+        ): void;
 
         /**
          * Sets the compass heading for map measured in degrees from cardinal direction North.
@@ -124,7 +141,13 @@ declare namespace woosmap.map {
         /**
          * Opens the info window.
          */
-        open(map: woosmap.map.Map, anchor: woosmap.map.Marker | woosmap.map.LatLng | woosmap.map.LatLngLiteral): void;
+        open(
+            map: woosmap.map.Map,
+            anchor:
+                | woosmap.map.Marker
+                | woosmap.map.LatLng
+                | woosmap.map.LatLngLiteral,
+        ): void;
 
         /**
          * Closes this InfoWindow by removing it from the DOM structure.
@@ -139,7 +162,12 @@ declare namespace woosmap.map {
         /**
          * Sets the anchor
          */
-        setPosition(positionOrMarker: woosmap.map.Marker | woosmap.map.LatLng | woosmap.map.LatLngLiteral): void;
+        setPosition(
+            positionOrMarker:
+                | woosmap.map.Marker
+                | woosmap.map.LatLng
+                | woosmap.map.LatLngLiteral,
+        ): void;
 
         /**
          * Sets the offset
@@ -295,7 +323,10 @@ declare namespace woosmap.map {
          */
         route(
             request: woosmap.map.DirectionRequest,
-            callback: (result: woosmap.map.DirectionResult, status: string) => any,
+            callback: (
+                result: woosmap.map.DirectionResult,
+                status: string,
+            ) => any,
         ): void;
     }
 }
@@ -324,14 +355,18 @@ declare namespace woosmap.map {
          * The imported features are returned. Throws an exception if the GeoJSON could not be imported.
          */
         addGeoJson(
-            geojson: woosmap.map.GeoJSONFeatureCollection | woosmap.map.GeoJSONFeature,
+            geojson:
+                | woosmap.map.GeoJSONFeatureCollection
+                | woosmap.map.GeoJSONFeature,
             options?: { idPropertyName: string },
         ): void;
 
         /**
          * Exports the features in the collection to a GeoJSON object.
          */
-        toGeoJson(callback: (geojson: woosmap.map.GeoJSONFeatureCollection) => void): void;
+        toGeoJson(
+            callback: (geojson: woosmap.map.GeoJSONFeatureCollection) => void,
+        ): void;
 
         /**
          * Checks whether the given feature is in the collection.
@@ -365,7 +400,9 @@ declare namespace woosmap.map {
          * Pass either an object with the desired style options, or a function that computes the style for each feature.
          * The function will be called every time a feature's properties are updated.
          */
-        setStyle(style: woosmap.map.StyleFunction | woosmap.map.StyleOptions): void;
+        setStyle(
+            style: woosmap.map.StyleFunction | woosmap.map.StyleOptions,
+        ): void;
 
         /**
          * Gets the style for all features in the collection.
@@ -377,7 +414,10 @@ declare namespace woosmap.map {
          * These changes are applied on top of the style specified by `setStyle()`.
          * Style properties set to null revert to the value specified via `setStyle()`.
          */
-        overrideStyle(feature: woosmap.map.data.Feature, style: woosmap.map.StyleOptions): void;
+        overrideStyle(
+            feature: woosmap.map.data.Feature,
+            style: woosmap.map.StyleOptions,
+        ): void;
 
         /**
          * Removes the effect of previous `overrideStyle()` calls.
@@ -402,17 +442,25 @@ declare namespace woosmap.map.data {
         /**
          * Constructs a new Data.Feature
          */
-        constructor(featureData: woosmap.map.FeatureData | woosmap.map.GeoJSONFeature);
+        constructor(
+            featureData: woosmap.map.FeatureData | woosmap.map.GeoJSONFeature,
+        );
 
         /**
          * Returns the feature geometry.
          */
-        getGeometry(): woosmap.map.GeometryCollectionElement | woosmap.map.Data.GeometryCollection;
+        getGeometry():
+            | woosmap.map.GeometryCollectionElement
+            | woosmap.map.Data.GeometryCollection;
 
         /**
          * Set the feature geometry.
          */
-        setGeometry(geometry: woosmap.map.GeometryCollectionElement | woosmap.map.Data.GeometryCollection): void;
+        setGeometry(
+            geometry:
+                | woosmap.map.GeometryCollectionElement
+                | woosmap.map.Data.GeometryCollection,
+        ): void;
 
         /**
          * Returns the feature id.
@@ -437,7 +485,9 @@ declare namespace woosmap.map.data {
         /**
          * Exports the feature to a GeoJSON object.
          */
-        toGeoJson(callback: (geojson: woosmap.map.GeoJSONFeature) => void): void;
+        toGeoJson(
+            callback: (geojson: woosmap.map.GeoJSONFeature) => void,
+        ): void;
     }
 }
 declare namespace woosmap.map.Data {
@@ -445,7 +495,12 @@ declare namespace woosmap.map.Data {
         /**
          * Constructs a Point geometry
          */
-        constructor(point: woosmap.map.LatLng | woosmap.map.Coordinates | woosmap.map.LatLngLiteral);
+        constructor(
+            point:
+                | woosmap.map.LatLng
+                | woosmap.map.Coordinates
+                | woosmap.map.LatLngLiteral,
+        );
 
         /**
          * Returns the point geometry
@@ -465,7 +520,12 @@ declare namespace woosmap.map.Data {
         /**
          * Constructs a Multipoint geometry.
          */
-        constructor(points: woosmap.map.LatLng[] | woosmap.map.Coordinates[] | woosmap.map.LatLngLiteral[]);
+        constructor(
+            points:
+                | woosmap.map.LatLng[]
+                | woosmap.map.Coordinates[]
+                | woosmap.map.LatLngLiteral[],
+        );
 
         /**
          * Returns n-th Point of the MultiPoint.
@@ -495,7 +555,12 @@ declare namespace woosmap.map.Data {
 }
 declare namespace woosmap.map.Data {
     class LineString {
-        constructor(points: woosmap.map.LatLng[] | woosmap.map.Coordinates[] | woosmap.map.LatLngLiteral[]);
+        constructor(
+            points:
+                | woosmap.map.LatLng[]
+                | woosmap.map.Coordinates[]
+                | woosmap.map.LatLngLiteral[],
+        );
 
         /**
          * Returns the n-th Point (as LatLng) of the LineString.
@@ -524,7 +589,10 @@ declare namespace woosmap.map.Data {
          * A MultiLineString is a collection of LineString.
          */
         constructor(
-            linestrings: woosmap.map.Data.LineString[] | woosmap.map.LatLng[][] | woosmap.map.LatLngLiteral[][],
+            linestrings:
+                | woosmap.map.Data.LineString[]
+                | woosmap.map.LatLng[][]
+                | woosmap.map.LatLngLiteral[][],
         );
 
         /**
@@ -547,7 +615,12 @@ declare namespace woosmap.map.Data {
         /**
          * Constructs a linear ring.
          */
-        constructor(points: woosmap.map.LatLng[] | woosmap.map.Coordinates[] | woosmap.map.LatLngLiteral[]);
+        constructor(
+            points:
+                | woosmap.map.LatLng[]
+                | woosmap.map.Coordinates[]
+                | woosmap.map.LatLngLiteral[],
+        );
     }
 }
 declare namespace woosmap.map.Data {
@@ -631,7 +704,9 @@ declare namespace woosmap.map.Data {
         /**
          * Constructs a geometry collection from an array of geometries.
          */
-        constructor(elements: woosmap.map.GeometryArray | woosmap.map.GeoJSONGeometry[]);
+        constructor(
+            elements: woosmap.map.GeometryArray | woosmap.map.GeoJSONGeometry[],
+        );
 
         /**
          * Returns the n-th Geometry of the GeometryCollection.
@@ -708,7 +783,10 @@ declare namespace woosmap.map {
         setOptions(options: woosmap.map.PolylineOptions): void;
 
         setPath(
-            path: woosmap.map.MVCArray<woosmap.map.LatLng> | woosmap.map.LatLng[] | woosmap.map.LatLngLiteral[],
+            path:
+                | woosmap.map.MVCArray<woosmap.map.LatLng>
+                | woosmap.map.LatLng[]
+                | woosmap.map.LatLngLiteral[],
         ): void;
     }
 }
@@ -732,7 +810,9 @@ declare namespace woosmap.map {
         /**
          * Returns all the path that compose the polygon.
          */
-        getPaths(): woosmap.map.MVCArray<woosmap.map.MVCArray<woosmap.map.LatLng>>;
+        getPaths(): woosmap.map.MVCArray<
+            woosmap.map.MVCArray<woosmap.map.LatLng>
+        >;
 
         /**
          * Sets the polygon options.
@@ -743,7 +823,9 @@ declare namespace woosmap.map {
          * Sets the polygon path.
          */
         setPath(
-            path: woosmap.map.MVCArray<woosmap.map.LatLng> | Array<woosmap.map.LatLng | woosmap.map.LatLngLiteral>,
+            path:
+                | woosmap.map.MVCArray<woosmap.map.LatLng>
+                | Array<woosmap.map.LatLng | woosmap.map.LatLngLiteral>,
         ): void;
 
         /**
@@ -767,7 +849,9 @@ declare namespace woosmap.map {
 
         getBounds(): woosmap.map.LatLngBounds;
 
-        setBounds(bounds: woosmap.map.LatLngBounds | woosmap.map.LatLngBoundsLiteral): void;
+        setBounds(
+            bounds: woosmap.map.LatLngBounds | woosmap.map.LatLngBoundsLiteral,
+        ): void;
 
         setOptions(options: woosmap.map.RectangleOptions): void;
     }
@@ -828,7 +912,11 @@ declare namespace woosmap.map {
          * Note the ordering of latitude and longitude.
          */
         constructor(
-            lat: woosmap.map.LatLng | woosmap.map.LatLngLiteral | number | (() => number),
+            lat:
+                | woosmap.map.LatLng
+                | woosmap.map.LatLngLiteral
+                | number
+                | (() => number),
             lng?: number | (() => number),
         );
 
@@ -863,7 +951,9 @@ declare namespace woosmap.map {
         /**
          * Checks if current bounds contain latlng.
          */
-        contains(latlng: woosmap.map.LatLng | woosmap.map.LatLngLiteral): boolean;
+        contains(
+            latlng: woosmap.map.LatLng | woosmap.map.LatLngLiteral,
+        ): boolean;
 
         /**
          * Checks if bounds are intersecting with other.
@@ -992,7 +1082,12 @@ declare namespace woosmap.map {
         /**
          * Binds the property identified by 'key' to the specified target.
          */
-        bindTo(key: string, target: object, targetKey?: string, notify?: boolean): void;
+        bindTo(
+            key: string,
+            target: object,
+            targetKey?: string,
+            notify?: boolean,
+        ): void;
 
         /**
          * Is this property a complex object - is it bound as either observer or target
@@ -1027,7 +1122,10 @@ declare namespace woosmap.map {
         /**
          * Adds a listener for eventName.
          */
-        addListener(eventName: string, handler: (...args: any[]) => any): woosmap.map.MapEventListener;
+        addListener(
+            eventName: string,
+            handler: (...args: any[]) => any,
+        ): woosmap.map.MapEventListener;
     }
 }
 declare namespace woosmap.map {
@@ -1101,17 +1199,23 @@ declare namespace woosmap.map.stores {
         /**
          * Searches stores based on the supplied search request.
          */
-        search(request: woosmap.map.stores.StoresSearchRequest): Promise<woosmap.map.stores.StoresSearchResponse>;
+        search(
+            request: woosmap.map.stores.StoresSearchRequest,
+        ): Promise<woosmap.map.stores.StoresSearchResponse>;
 
         /**
          * Retrieves a store object based on the supplied store ID.
          */
-        getStoreById(storeId: string): Promise<woosmap.map.stores.StoreResponse>;
+        getStoreById(
+            storeId: string,
+        ): Promise<woosmap.map.stores.StoreResponse>;
 
         /**
          * Retrieves bounds of stores based on the supplied bounds search request.
          */
-        getBounds(request: woosmap.map.stores.StoresBoundsRequest): Promise<woosmap.map.stores.StoresBoundsResponse>;
+        getBounds(
+            request: woosmap.map.stores.StoresBoundsRequest,
+        ): Promise<woosmap.map.stores.StoresBoundsResponse>;
     }
 }
 declare namespace woosmap.map.localities {
@@ -1188,7 +1292,11 @@ declare namespace woosmap.map.errors {
     }
 }
 declare namespace woosmap.map {
-    type ControlPositionType = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+    type ControlPositionType =
+        | "top-left"
+        | "top-right"
+        | "bottom-left"
+        | "bottom-right";
 }
 declare namespace woosmap.map {
     interface FlyToOptions {
@@ -1682,7 +1790,10 @@ declare namespace woosmap.map {
 }
 declare namespace woosmap.map {
     interface FeatureData {
-        geometry?: woosmap.map.GeometryClasses | woosmap.map.LatLng | woosmap.map.LatLngLiteral;
+        geometry?:
+            | woosmap.map.GeometryClasses
+            | woosmap.map.LatLng
+            | woosmap.map.LatLngLiteral;
         id?: any;
         properties?: object;
     }
@@ -1726,7 +1837,9 @@ declare namespace woosmap.map {
     type GeometryArray = woosmap.map.GeometryCollectionElement[];
 }
 declare namespace woosmap.map {
-    type GeometryClasses = woosmap.map.GeometryCollectionElement | woosmap.map.Data.GeometryCollection;
+    type GeometryClasses =
+        | woosmap.map.GeometryCollectionElement
+        | woosmap.map.Data.GeometryCollection;
 }
 declare namespace woosmap.map {
     interface IconSequence {
@@ -1776,7 +1889,9 @@ declare namespace woosmap.map {
     }
 }
 declare namespace woosmap.map {
-    type StyleFunction = (feature: woosmap.map.data.Feature) => woosmap.map.StyleOptions;
+    type StyleFunction = (
+        feature: woosmap.map.data.Feature,
+    ) => woosmap.map.StyleOptions;
 }
 declare namespace woosmap.map {
     type GeoJSONPosition = [number, number];
@@ -1788,22 +1903,40 @@ declare namespace woosmap.map {
     }
 }
 declare namespace woosmap.map {
-    type GeoJSONPoint = woosmap.map.GeoJSONRawGeometry<"Point", woosmap.map.GeoJSONPosition>;
+    type GeoJSONPoint = woosmap.map.GeoJSONRawGeometry<
+        "Point",
+        woosmap.map.GeoJSONPosition
+    >;
 }
 declare namespace woosmap.map {
-    type GeoJSONMultiPoint = woosmap.map.GeoJSONRawGeometry<"MultiPoint", woosmap.map.GeoJSONPosition[]>;
+    type GeoJSONMultiPoint = woosmap.map.GeoJSONRawGeometry<
+        "MultiPoint",
+        woosmap.map.GeoJSONPosition[]
+    >;
 }
 declare namespace woosmap.map {
-    type GeoJSONLineString = woosmap.map.GeoJSONRawGeometry<"LineString", woosmap.map.GeoJSONPosition[]>;
+    type GeoJSONLineString = woosmap.map.GeoJSONRawGeometry<
+        "LineString",
+        woosmap.map.GeoJSONPosition[]
+    >;
 }
 declare namespace woosmap.map {
-    type GeoJSONMultiLineString = woosmap.map.GeoJSONRawGeometry<"MultiLineString", woosmap.map.GeoJSONPosition[][]>;
+    type GeoJSONMultiLineString = woosmap.map.GeoJSONRawGeometry<
+        "MultiLineString",
+        woosmap.map.GeoJSONPosition[][]
+    >;
 }
 declare namespace woosmap.map {
-    type GeoJSONPolygon = woosmap.map.GeoJSONRawGeometry<"Polygon", woosmap.map.GeoJSONPosition[][]>;
+    type GeoJSONPolygon = woosmap.map.GeoJSONRawGeometry<
+        "Polygon",
+        woosmap.map.GeoJSONPosition[][]
+    >;
 }
 declare namespace woosmap.map {
-    type GeoJSONMultiPolygon = woosmap.map.GeoJSONRawGeometry<"MultiPolygon", woosmap.map.GeoJSONPosition[][][]>;
+    type GeoJSONMultiPolygon = woosmap.map.GeoJSONRawGeometry<
+        "MultiPolygon",
+        woosmap.map.GeoJSONPosition[][][]
+    >;
 }
 declare namespace woosmap.map {
     type GeoJSONGeometry =
@@ -1864,7 +1997,10 @@ declare namespace woosmap.map {
         /**
          * The path of the polyline.
          */
-        path: (woosmap.map.MVCArray<woosmap.map.LatLng> | null) | woosmap.map.LatLng[] | woosmap.map.LatLngLiteral[];
+        path:
+            | (woosmap.map.MVCArray<woosmap.map.LatLng> | null)
+            | woosmap.map.LatLng[]
+            | woosmap.map.LatLngLiteral[];
     }
 }
 declare namespace woosmap.map {
@@ -1873,7 +2009,9 @@ declare namespace woosmap.map {
          * The paths of the polygon.
          */
         paths:
-            | (woosmap.map.MVCArray<woosmap.map.MVCArray<woosmap.map.LatLng>> | null)
+            | (woosmap.map.MVCArray<
+                  woosmap.map.MVCArray<woosmap.map.LatLng>
+              > | null)
             | woosmap.map.MVCArray<woosmap.map.LatLng>
             | Array<Array<woosmap.map.LatLng | woosmap.map.LatLngLiteral>>
             | Array<woosmap.map.LatLng | woosmap.map.LatLngLiteral>;
@@ -1884,7 +2022,9 @@ declare namespace woosmap.map {
         /**
          * The bounds of the Rectangle.
          */
-        bounds: (woosmap.map.LatLngBounds | null) | (woosmap.map.LatLngBoundsLiteral | null);
+        bounds:
+            | (woosmap.map.LatLngBounds | null)
+            | (woosmap.map.LatLngBoundsLiteral | null);
     }
 }
 declare namespace woosmap.map {
@@ -1892,7 +2032,9 @@ declare namespace woosmap.map {
         /**
          * The center of the circle.
          */
-        center: (woosmap.map.LatLng | null) | (woosmap.map.LatLngLiteral | null);
+        center:
+            | (woosmap.map.LatLng | null)
+            | (woosmap.map.LatLngLiteral | null);
         /**
          * The radius of the circle.
          */
@@ -2912,19 +3054,31 @@ declare namespace woosmap.map.localities {
      * This accuracy is present when type address is returned.
      * `DISTRICT` and `POSTAL_CODE` are for UK only.
      */
-    type LocalitiesDetailsAccuracy = "ROOFTOP" | "DISTRICT" | "POSTAL_CODE" | "ROUTE";
+    type LocalitiesDetailsAccuracy =
+        | "ROOFTOP"
+        | "DISTRICT"
+        | "POSTAL_CODE"
+        | "ROUTE";
 }
 declare namespace woosmap.map.localities {
     /**
      * Defines the type of the returned geocoded element.
      */
-    type LocalitiesGeocodeTypes = "address" | "locality" | "postal_code" | "route";
+    type LocalitiesGeocodeTypes =
+        | "address"
+        | "locality"
+        | "postal_code"
+        | "route";
 }
 declare namespace woosmap.map.localities {
     /**
      * Defines the type of the returned geocoded element.
      */
-    type LocalitiesGeocodeLocationType = "ROOFTOP" | "DISTRICT" | "POSTAL_CODE" | "ROUTE";
+    type LocalitiesGeocodeLocationType =
+        | "ROOFTOP"
+        | "DISTRICT"
+        | "POSTAL_CODE"
+        | "ROUTE";
 }
 declare namespace woosmap.map.localities {
     /**
@@ -2999,7 +3153,11 @@ declare namespace woosmap.map.event {
         eventName: string,
         handler: (...args: any[]) => any,
     ): woosmap.map.MapEventListener;
-    function addDomListener(element: Element, eventName: string, handler: (...args: any[]) => any): void;
+    function addDomListener(
+        element: Element,
+        eventName: string,
+        handler: (...args: any[]) => any,
+    ): void;
     /**
      * Removes the given listener, which should have been returned by addListener above.
      * Equivalent to calling `listener.remove()`.
@@ -3016,7 +3174,11 @@ declare namespace woosmap.map.event {
     /**
      * Triggers the given event. All arguments after eventName are passed as arguments to the listeners.
      */
-    function trigger(instance: object, eventName: string, eventArgs?: any[] | null): void;
+    function trigger(
+        instance: object,
+        eventName: string,
+        eventArgs?: any[] | null,
+    ): void;
 }
 declare namespace woosmap.map.geometry {
     /**
@@ -3079,7 +3241,9 @@ declare namespace woosmap.map {
         /**
          * Call this function to draw a polyline on map.
          */
-        setDirections(directions?: woosmap.map.IndoorDirectionResult | null): void;
+        setDirections(
+            directions?: woosmap.map.IndoorDirectionResult | null,
+        ): void;
 
         /**
          * Sets the distance units.
@@ -3114,7 +3278,13 @@ declare namespace woosmap.map {
         /**
          * Sets the current user location.
          */
-        setUserLocation(lat: number, lng: number, level: number, bearing?: number, forceFocus?: boolean): void;
+        setUserLocation(
+            lat: number,
+            lng: number,
+            level: number,
+            bearing?: number,
+            forceFocus?: boolean,
+        ): void;
 
         /**
          * Sets the navigation mode
@@ -3192,7 +3362,10 @@ declare namespace woosmap.map {
         /**
          * Call this function to draw a polyline on map.
          */
-        setDirections(directions?: woosmap.map.IndoorDirectionResult | null, padding?: number | null): void;
+        setDirections(
+            directions?: woosmap.map.IndoorDirectionResult | null,
+            padding?: number | null,
+        ): void;
 
         /**
          * Highlight the step of the directions
@@ -3249,7 +3422,11 @@ declare namespace woosmap.map {
         /**
          * Renders a map with a POI highlighted by pk or id
          */
-        highlightFeature(featureid: string, silent: boolean, padding?: Padding): void;
+        highlightFeature(
+            featureid: string,
+            silent: boolean,
+            padding?: Padding,
+        ): void;
 
         /**
          * Renders a map with a POI highlighted by ref
@@ -3300,7 +3477,10 @@ declare namespace woosmap.map {
         /**
          * Retrieve detailed venue data
          */
-        venue(venueId: string, callback: (venue: woosmap.map.Venue) => void): void;
+        venue(
+            venueId: string,
+            callback: (venue: woosmap.map.Venue) => void,
+        ): void;
 
         /**
          * Search for features by their names
@@ -3325,7 +3505,11 @@ declare namespace woosmap.map {
         /**
          * Gets feature by feature id
          */
-        feature(venueId: string, featureId: number, callback: (feature: GeoJSONFeature) => void): void;
+        feature(
+            venueId: string,
+            featureId: number,
+            callback: (feature: GeoJSONFeature) => void,
+        ): void;
 
         /**
          * Autocomplete for pois

@@ -57,14 +57,19 @@ declare global {
         }
         enum ERROR_MESSAGE {
             AMOUNT_BAD_FORMAT = "The 'amount' option was unable to be parsed as number.",
-            BAD_ENVIRONMENT = "Invalid environment provided. Expect \"live\" or \"sandbox\".",
+            BAD_ENVIRONMENT = 'Invalid environment provided. Expect "live" or "sandbox".',
             ATTRIBUTE_REQUIRED = "Attribute is required.",
         }
         class StrongholdPayError extends Error {
             type: ERROR_TYPE;
             code: ERROR_CODE;
             property: string | null;
-            constructor(type: ERROR_TYPE, code: ERROR_CODE, message: string, property?: string | null);
+            constructor(
+                type: ERROR_TYPE,
+                code: ERROR_CODE,
+                message: string,
+                property?: string | null,
+            );
         }
         interface ClientOptions {
             environment: ENVIRONMENT;
@@ -72,7 +77,9 @@ declare global {
             host?: string | undefined;
         }
         type AddPaymentSourceOnSuccess = (paymentSource: PaymentSource) => void;
-        type UpdatePaymentSourceOnSuccess = (paymentSource: PaymentSource) => void;
+        type UpdatePaymentSourceOnSuccess = (
+            paymentSource: PaymentSource,
+        ) => void;
         type ChargeOnSuccess = (charge: Charge) => void;
         type TipOnSuccess = (tip: Tip) => void;
         type OnExit = () => void;
@@ -126,11 +133,13 @@ declare global {
              */
             amount: number;
             beneficiaryName: string;
-            details?: {
-                displayMessage?: string | undefined;
-                terminalId?: string | undefined;
-                drawerId?: string | undefined;
-            } | undefined;
+            details?:
+                | {
+                      displayMessage?: string | undefined;
+                      terminalId?: string | undefined;
+                      drawerId?: string | undefined;
+                  }
+                | undefined;
         }
         interface TipDropin extends TipDataDropin {
             chargeId: string;
@@ -168,11 +177,13 @@ declare global {
             created_at: string;
             amount: number;
             beneficiary_name: string;
-            details?: {
-                display_message?: string | undefined;
-                terminal_id?: string | undefined;
-                drawer_id?: string | undefined;
-            } | undefined;
+            details?:
+                | {
+                      display_message?: string | undefined;
+                      terminal_id?: string | undefined;
+                      drawer_id?: string | undefined;
+                  }
+                | undefined;
             charge_id: string;
             payment_source_id: string;
         }
@@ -206,8 +217,14 @@ declare global {
             private buildFrame;
             private addEventListener;
             private setCustomerToken;
-            addPaymentSource(customerToken: string, options: AddPaymentSourceOptions): void;
-            updatePaymentSource(customerToken: string, options: UpdatePaymentSourceOptions): void;
+            addPaymentSource(
+                customerToken: string,
+                options: AddPaymentSourceOptions,
+            ): void;
+            updatePaymentSource(
+                customerToken: string,
+                options: UpdatePaymentSourceOptions,
+            ): void;
             charge(customerToken: string, options: ChargeOptions): void;
             tip(customerToken: string, options: TipOptions): void;
         }

@@ -37,15 +37,25 @@ export interface JwtFromRequestFunction {
 }
 
 export interface SecretOrKeyProvider {
-    (request: express.Request, rawJwtToken: any, done: (err: any, secretOrKey?: string | Buffer) => void): void;
+    (
+        request: express.Request,
+        rawJwtToken: any,
+        done: (err: any, secretOrKey?: string | Buffer) => void,
+    ): void;
 }
 
 export declare namespace ExtractJwt {
     export function fromHeader(header_name: string): JwtFromRequestFunction;
     export function fromBodyField(field_name: string): JwtFromRequestFunction;
-    export function fromUrlQueryParameter(param_name: string): JwtFromRequestFunction;
-    export function fromAuthHeaderWithScheme(auth_scheme: string): JwtFromRequestFunction;
+    export function fromUrlQueryParameter(
+        param_name: string,
+    ): JwtFromRequestFunction;
+    export function fromAuthHeaderWithScheme(
+        auth_scheme: string,
+    ): JwtFromRequestFunction;
     export function fromAuthHeader(): JwtFromRequestFunction;
-    export function fromExtractors(extractors: JwtFromRequestFunction[]): JwtFromRequestFunction;
+    export function fromExtractors(
+        extractors: JwtFromRequestFunction[],
+    ): JwtFromRequestFunction;
     export function fromAuthHeaderAsBearerToken(): JwtFromRequestFunction;
 }

@@ -20,7 +20,7 @@ let $flickity = $("#flickity-selector").flickity({
     arrowShape: "arrow.svg",
     percentPosition: false,
     prevNextButtons: false,
-    selectedAttraction: 0.050,
+    selectedAttraction: 0.05,
     setGallerySize: true,
     watchCSS: true,
     wrapAround: true,
@@ -28,8 +28,7 @@ let $flickity = $("#flickity-selector").flickity({
     rightToLeft: false,
 });
 
-$flickity.flickity("next")
-    .flickity("select", 4);
+$flickity.flickity("next").flickity("select", 4);
 
 // Vanilla jQuery tests
 let flikty: Flickity = new Flickity("#flickity-gallery");
@@ -52,7 +51,7 @@ let flikty2: Flickity = new Flickity("#flickity-gallery", {
     arrowShape: "arrow.svg",
     percentPosition: false,
     prevNextButtons: false,
-    selectedAttraction: 0.050,
+    selectedAttraction: 0.05,
     setGallerySize: true,
     watchCSS: true,
     wrapAround: true,
@@ -140,28 +139,41 @@ function exhaustiveHandlersTest(eventName: Flickity.FlickityEvents) {
             break;
         }
         case "dragStart": {
-            function handleDragStart(event: Event, pointer: Event | Touch): void {}
+            function handleDragStart(
+                event: Event,
+                pointer: Event | Touch,
+            ): void {}
             flikty2.on("dragStart", handleDragStart);
             flikty2.off("dragStart", handleDragStart);
             flikty2.once("dragStart", handleDragStart);
             break;
         }
         case "dragMove": {
-            function handleDragMove(event: Event, pointer: Event | Touch, moveVector: { x: number; y: number }): void {}
+            function handleDragMove(
+                event: Event,
+                pointer: Event | Touch,
+                moveVector: { x: number; y: number },
+            ): void {}
             flikty2.on("dragMove", handleDragMove);
             flikty2.off("dragMove", handleDragMove);
             flikty2.once("dragMove", handleDragMove);
             break;
         }
         case "dragEnd": {
-            function handleDragEnd(event: Event, pointer: Event | Touch): void {}
+            function handleDragEnd(
+                event: Event,
+                pointer: Event | Touch,
+            ): void {}
             flikty2.on("dragEnd", handleDragEnd);
             flikty2.off("dragEnd", handleDragEnd);
             flikty2.once("dragEnd", handleDragEnd);
             break;
         }
         case "pointerDown": {
-            function handlePointerDown(event: Event, pointer: Event | Touch): void {}
+            function handlePointerDown(
+                event: Event,
+                pointer: Event | Touch,
+            ): void {}
             flikty2.on("pointerDown", handlePointerDown);
             flikty2.off("pointerDown", handlePointerDown);
             flikty2.once("pointerDown", handlePointerDown);
@@ -179,7 +191,10 @@ function exhaustiveHandlersTest(eventName: Flickity.FlickityEvents) {
             break;
         }
         case "pointerUp": {
-            function handlePointerUp(event: Event, pointer: Event | Touch): void {}
+            function handlePointerUp(
+                event: Event,
+                pointer: Event | Touch,
+            ): void {}
             flikty2.on("pointerUp", handlePointerUp);
             flikty2.off("pointerUp", handlePointerUp);
             flikty2.once("pointerUp", handlePointerUp);
@@ -205,7 +220,10 @@ function exhaustiveHandlersTest(eventName: Flickity.FlickityEvents) {
             break;
         }
         case "bgLazyLoad": {
-            function handleBgLazyLoad(event: Event, cellElement: Element): void {}
+            function handleBgLazyLoad(
+                event: Event,
+                cellElement: Element,
+            ): void {}
             flikty2.on("bgLazyLoad", handleBgLazyLoad);
             flikty2.off("bgLazyLoad", handleBgLazyLoad);
             flikty2.once("bgLazyLoad", handleBgLazyLoad);
@@ -318,7 +336,7 @@ let fliktyOpts1: Flickity.Options = {
     arrowShape: "arrow.svg",
     percentPosition: false,
     prevNextButtons: false,
-    selectedAttraction: 0.050,
+    selectedAttraction: 0.05,
     setGallerySize: true,
     watchCSS: true,
     wrapAround: true,

@@ -4,7 +4,7 @@ webapis.sa.requestSAAgent(handleSAAgent, handleSAAgentError);
 declare let agent: SAAgent;
 function handleSAAgent(agents: SAAgent[]): void {
     agent = agents[0];
-    agent.channelIds.forEach(x => x !== -1);
+    agent.channelIds.forEach((x) => x !== -1);
     if (agent.id === "id") {
     }
     if (agent.name === "name") {
@@ -31,10 +31,13 @@ agent.setServiceConnectionListener({
     },
     onerror: (errorCode: string, peerAgent: SAPeerAgent) => {},
 });
-agent.authenticatePeerAgent(peer, (peer: SAPeerAgent, token: SAAuthenticationToken) => {
-    token.authenticationType === "14";
-    token.key === "key";
-});
+agent.authenticatePeerAgent(
+    peer,
+    (peer: SAPeerAgent, token: SAAuthenticationToken) => {
+        token.authenticationType === "14";
+        token.key === "key";
+    },
+);
 agent.acceptServiceConnectionRequest(peer);
 agent.rejectServiceConnectionRequest(peer);
 agent.findPeerAgents();
@@ -72,7 +75,10 @@ saMessage.sendSecureData(peer, "Hello Secure World", {
 });
 
 webapis.sa.setDeviceStatusListener(deviceStatusListener);
-function deviceStatusListener(type: SATransport, status: "DETACHED" | "ATTACHED"): void {
+function deviceStatusListener(
+    type: SATransport,
+    status: "DETACHED" | "ATTACHED",
+): void {
     switch (type) {
         case SATransport.TRANSPORT_BLE:
             break;

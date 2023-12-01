@@ -7,7 +7,7 @@ server.connection({ port: 80 });
 server.route({
     method: "*",
     path: "/{p*}",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply("The page was not found").code(404);
     },
 });

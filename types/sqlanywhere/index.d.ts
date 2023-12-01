@@ -8,7 +8,10 @@ export interface SybaseConnection {
     close(cb: (err?: Error) => void): void;
     disconnect(cb: (err?: Error) => void): void;
     connected(): boolean;
-    exec(query: string, cb: (err: Error | undefined, result: any) => void): void;
+    exec(
+        query: string,
+        cb: (err: Error | undefined, result: any) => void,
+    ): void;
     exec(
         query: string,
         placeholders: any[],

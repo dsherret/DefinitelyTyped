@@ -1,7 +1,10 @@
 export as namespace audiosprite;
 export = audiosprite;
 
-declare function audiosprite(files: string[], callback: (error: Error, obj: audiosprite.Result) => void): void;
+declare function audiosprite(
+    files: string[],
+    callback: (error: Error, obj: audiosprite.Result) => void,
+): void;
 declare function audiosprite(
     files: string[],
     option: audiosprite.Option,

@@ -5,18 +5,30 @@
 /// <reference types="activex-dao" />
 
 declare namespace Excel {
-    type AddSheetResult<T> = T extends XlSheetType.xlDialogSheet ? DialogSheet
-        : T extends XlSheetType.xlChart ? Chart
-        : T extends XlSheetType ? Worksheet
-        : T extends undefined ? Sheet
-        : never;
+    type AddSheetResult<T> = T extends XlSheetType.xlDialogSheet
+        ? DialogSheet
+        : T extends XlSheetType.xlChart
+          ? Chart
+          : T extends XlSheetType
+            ? Worksheet
+            : T extends undefined
+              ? Sheet
+              : never;
 
-    type InternationalResult<T> = T extends XlApplicationInternationalStrings ? string
-        : T extends XlApplicationInternationalNumbers ? number
-        : T extends XlApplicationInternationalBooleans ? boolean
-        : any;
+    type InternationalResult<T> = T extends XlApplicationInternationalStrings
+        ? string
+        : T extends XlApplicationInternationalNumbers
+          ? number
+          : T extends XlApplicationInternationalBooleans
+            ? boolean
+            : any;
 
-    type LineStyle = XlLineStyle | Constants.xlGray25 | Constants.xlGray50 | Constants.xlGray75 | Constants.xlAutomatic;
+    type LineStyle =
+        | XlLineStyle
+        | Constants.xlGray25
+        | Constants.xlGray50
+        | Constants.xlGray75
+        | Constants.xlAutomatic;
 
     type HorizontalAlignments =
         | Constants.xlCenter
@@ -32,17 +44,21 @@ declare namespace Excel {
         | Constants.xlJustify
         | Constants.xlTop;
 
-    type PivotTableWizardSourceData<TSourceType> = TSourceType extends XlPivotTableSourceType.xlExternal
-        ? SafeArray<string>
-        : TSourceType extends XlPivotTableSourceType ? Range | SafeArray<Range> | string
-        : TSourceType extends undefined ? undefined
-        : never;
+    type PivotTableWizardSourceData<TSourceType> =
+        TSourceType extends XlPivotTableSourceType.xlExternal
+            ? SafeArray<string>
+            : TSourceType extends XlPivotTableSourceType
+              ? Range | SafeArray<Range> | string
+              : TSourceType extends undefined
+                ? undefined
+                : never;
 
-    type PivotTableWizardAutoPage<TSourceType> = TSourceType extends XlPivotTableSourceType.xlConsolidation ? boolean
-        : undefined;
+    type PivotTableWizardAutoPage<TSourceType> =
+        TSourceType extends XlPivotTableSourceType.xlConsolidation
+            ? boolean
+            : undefined;
 
-    type PrintToFileName<T> = T extends true ? string
-        : undefined;
+    type PrintToFileName<T> = T extends true ? string : undefined;
 
     type Sheet = Worksheet | Chart | DialogSheet;
 
@@ -3249,7 +3265,10 @@ declare namespace Excel {
         readonly ActiveWindow: Window;
         readonly ActiveWorkbook: Workbook;
         AddChartAutoFormat(Chart: any, Name: string, Description?: any): void;
-        AddCustomList(ListArray: SafeArray<string> | Range, ByRow?: boolean): void;
+        AddCustomList(
+            ListArray: SafeArray<string> | Range,
+            ByRow?: boolean,
+        ): void;
         readonly AddIns: AddIns;
         readonly AddIns2: AddIns2;
         AlertBeforeOverwriting: boolean;
@@ -3285,8 +3304,13 @@ declare namespace Excel {
         CentimetersToPoints(Centimeters: number): number;
         readonly Charts: Sheets<Chart>;
         CheckAbort(KeepAbort?: boolean): void;
-        CheckSpelling(Word: string, CustomDictionary?: string, IgnoreUppercase?: boolean): boolean;
-        ClipboardFormats: SafeArray<XlClipboardFormat> & ((Index: number) => XlClipboardFormat);
+        CheckSpelling(
+            Word: string,
+            CustomDictionary?: string,
+            IgnoreUppercase?: boolean,
+        ): boolean;
+        ClipboardFormats: SafeArray<XlClipboardFormat> &
+            ((Index: number) => XlClipboardFormat);
         ClusterConnector: string;
         ColorButtons: boolean;
         readonly Columns: Range;
@@ -3382,7 +3406,16 @@ declare namespace Excel {
             Arg30?: any,
         ): any;
         Dummy14(): void;
-        Dummy2(Arg1?: any, Arg2?: any, Arg3?: any, Arg4?: any, Arg5?: any, Arg6?: any, Arg7?: any, Arg8?: any): any;
+        Dummy2(
+            Arg1?: any,
+            Arg2?: any,
+            Arg3?: any,
+            Arg4?: any,
+            Arg5?: any,
+            Arg6?: any,
+            Arg7?: any,
+            Arg8?: any,
+        ): any;
         Dummy20(grfCompareFunctions: number): any;
         Dummy22: boolean;
         Dummy23: boolean;
@@ -3501,7 +3534,15 @@ declare namespace Excel {
             HelpFile?: string,
             HelpContextID?: number,
             Type?: InputBoxReturnType,
-        ): string | number | boolean | Range | Error | SafeArray<string> | SafeArray<number> | SafeArray<boolean>;
+        ):
+            | string
+            | number
+            | boolean
+            | Range
+            | Error
+            | SafeArray<string>
+            | SafeArray<number>
+            | SafeArray<boolean>;
         Interactive: boolean;
         International: SafeArray & (<T>(Index: T) => InternationalResult<T>);
         Intersect(
@@ -3557,7 +3598,11 @@ declare namespace Excel {
             ArgumentDescriptions?: SafeArray<string>,
         ): void;
         MailLogoff(): void;
-        MailLogon(Name?: string, Password?: string, DownloadNewMail?: boolean): void;
+        MailLogon(
+            Name?: string,
+            Password?: string,
+            DownloadNewMail?: boolean,
+        ): void;
         readonly MailSession: string | null;
         readonly MailSystem: XlMailSystem;
         MapPaperSize: boolean;
@@ -3590,7 +3635,12 @@ declare namespace Excel {
         OnRepeat(Text: string, Procedure: string): void;
         OnSheetActivate: string;
         OnSheetDeactivate: string;
-        OnTime(EarliestTime: any, Procedure: string, LatestTime?: any, Schedule?: boolean): void;
+        OnTime(
+            EarliestTime: any,
+            Procedure: string,
+            LatestTime?: any,
+            Schedule?: boolean,
+        ): void;
         OnUndo(Text: string, Procedure: string): void;
         OnWindow: string;
         readonly OperatingSystem: string;
@@ -3615,7 +3665,10 @@ declare namespace Excel {
         RecordMacro(BasicCode: "", XlmCode: ""): void;
         readonly RecordRelative: boolean;
         ReferenceStyle: XlReferenceStyle;
-        RegisteredFunctions(Index1: string | undefined, Index2?: string): SafeArray | null;
+        RegisteredFunctions(
+            Index1: string | undefined,
+            Index2?: string,
+        ): SafeArray | null;
         RegisterXLL(Filename: string): boolean;
         Repeat(): void;
         ReplaceFormat: CellFormat;
@@ -3969,7 +4022,11 @@ declare namespace Excel {
         /**
          * @param UseStandardFormula [UseStandardFormula=false]
          */
-        Add(Name: string, Formula: string, UseStandardFormula?: boolean): PivotField;
+        Add(
+            Name: string,
+            Formula: string,
+            UseStandardFormula?: boolean,
+        ): PivotField;
         readonly Application: Application;
         readonly Count: number;
         readonly Creator: XlCreator;
@@ -3985,7 +4042,11 @@ declare namespace Excel {
         /**
          * @param UseStandardFormula [UseStandardFormula=false]
          */
-        Add(Name: string, Formula: string, UseStandardFormula?: boolean): PivotItem;
+        Add(
+            Name: string,
+            Formula: string,
+            UseStandardFormula?: boolean,
+        ): PivotItem;
         readonly Application: Application;
         readonly Count: number;
         readonly Creator: XlCreator;
@@ -4015,7 +4076,12 @@ declare namespace Excel {
     }
 
     interface CalculatedMembers {
-        _Add(Name: string, Formula: string, SolveOrder?: any, Type?: any): CalculatedMember;
+        _Add(
+            Name: string,
+            Formula: string,
+            SolveOrder?: any,
+            Type?: any,
+        ): CalculatedMember;
         _Default(Index: any): CalculatedMember;
         Add(
             Name: string,
@@ -4079,7 +4145,23 @@ declare namespace Excel {
         Font: Font;
         FormulaHidden: boolean | null;
         HorizontalAlignment: HorizontalAlignments;
-        IndentLevel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+        IndentLevel:
+            | 0
+            | 1
+            | 2
+            | 3
+            | 4
+            | 5
+            | 6
+            | 7
+            | 8
+            | 9
+            | 10
+            | 11
+            | 12
+            | 13
+            | 14
+            | 15;
         Interior: Interior;
         Locked: boolean | null;
         MergeCells: boolean;
@@ -4121,7 +4203,12 @@ declare namespace Excel {
         ): void;
 
         /** @param Type [Type=2] */
-        _ApplyDataLabels(Type?: XlDataLabelsType, LegendKey?: any, AutoText?: any, HasLeaderLines?: any): void;
+        _ApplyDataLabels(
+            Type?: XlDataLabelsType,
+            LegendKey?: any,
+            AutoText?: any,
+            HasLeaderLines?: any,
+        ): void;
         _CodeName: string;
         _Evaluate(Name: any): any;
         _PrintOut(
@@ -4134,7 +4221,13 @@ declare namespace Excel {
             Collate?: any,
             PrToFileName?: any,
         ): void;
-        _Protect(Password?: any, DrawingObjects?: any, Contents?: any, Scenarios?: any, UserInterfaceOnly?: any): void;
+        _Protect(
+            Password?: any,
+            DrawingObjects?: any,
+            Contents?: any,
+            Scenarios?: any,
+            UserInterfaceOnly?: any,
+        ): void;
         _SaveAs(
             Filename: string,
             FileFormat?: any,
@@ -4164,7 +4257,10 @@ declare namespace Excel {
             ShowBubbleSize?: boolean,
             Separator?: string,
         ): void;
-        ApplyLayout(Layout: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10, ChartType?: XlChartType): void;
+        ApplyLayout(
+            Layout: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
+            ChartType?: XlChartType,
+        ): void;
         Arcs(Index?: any): any;
         readonly Area3DGroup: ChartGroup;
         AreaGroups(Index?: any): any;
@@ -4265,7 +4361,11 @@ declare namespace Excel {
          * @param Format [Format=-4147]
          * @param Size [Size=2]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat, Size?: XlPictureAppearance): void;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+            Size?: XlPictureAppearance,
+        ): void;
         readonly Corners: Corners;
 
         /**
@@ -4295,7 +4395,11 @@ declare namespace Excel {
         Dummy25: boolean;
         Elevation: number;
         Evaluate(Name: string): any;
-        Export(Filename: string, FilterName?: string, Interactive?: boolean): boolean;
+        Export(
+            Filename: string,
+            FilterName?: string,
+            Interactive?: boolean,
+        ): boolean;
         ExportAsFixedFormat(
             Type: XlFixedFormatType,
             Filename?: string,
@@ -4309,7 +4413,13 @@ declare namespace Excel {
         ): void;
         readonly Floor: Floor;
         GapDepth: number;
-        GetChartElement(x: number, y: number, ElementID: number, Arg1: number, Arg2: number): void;
+        GetChartElement(
+            x: number,
+            y: number,
+            ElementID: number,
+            Arg1: number,
+            Arg2: number,
+        ): void;
         GroupBoxes(Index?: any): any;
         GroupObjects(Index?: any): any;
         HasAxis(Index1?: XlAxisType, Index2?: XlAxisGroup): boolean;
@@ -4326,7 +4436,10 @@ declare namespace Excel {
         LineGroups(Index?: any): any;
         Lines(Index?: any): any;
         ListBoxes(Index?: any): any;
-        Location(Where: XlChartLocation.xlLocationAsObject, Name: string): Chart;
+        Location(
+            Where: XlChartLocation.xlLocationAsObject,
+            Name: string,
+        ): Chart;
         Location(Where: XlChartLocation, Name?: string): Chart;
         readonly MailEnvelope: Office.MsoEnvelope;
         Move(Before?: Sheet, After?: Sheet): void;
@@ -4341,7 +4454,12 @@ declare namespace Excel {
         Ovals(Index?: any): any;
         readonly PageSetup: PageSetup;
         readonly Parent: any;
-        Paste(Type?: XlPasteType.xlPasteAll | XlPasteType.xlPasteFormats | XlPasteType.xlPasteFormulas): void;
+        Paste(
+            Type?:
+                | XlPasteType.xlPasteAll
+                | XlPasteType.xlPasteFormats
+                | XlPasteType.xlPasteFormulas,
+        ): void;
         Perspective: number;
         Pictures(Index?: any): any;
         readonly Pie3DGroup: ChartGroup;
@@ -4479,7 +4597,11 @@ declare namespace Excel {
         readonly GradientDegree: number;
         readonly GradientStyle: Office.MsoGradientStyle;
         readonly GradientVariant: number;
-        OneColorGradient(Style: Office.MsoGradientStyle, Variant: number, Degree: number): void;
+        OneColorGradient(
+            Style: Office.MsoGradientStyle,
+            Variant: number,
+            Degree: number,
+        ): void;
         readonly Parent: any;
         readonly Pattern: Office.MsoPatternType;
         Patterned(Pattern: Office.MsoPatternType): void;
@@ -4496,7 +4618,12 @@ declare namespace Excel {
         readonly TextureType: Office.MsoTextureType;
         TwoColorGradient(Style: Office.MsoGradientStyle, Variant: number): void;
         readonly Type: Office.MsoFillType;
-        UserPicture(PictureFile?: any, PictureFormat?: any, PictureStackUnit?: any, PicturePlacement?: any): void;
+        UserPicture(
+            PictureFile?: any,
+            PictureFormat?: any,
+            PictureStackUnit?: any,
+            PicturePlacement?: any,
+        ): void;
         UserTextured(TextureFile: string): void;
         Visible: Office.MsoTriState;
     }
@@ -4578,7 +4705,10 @@ declare namespace Excel {
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Creator: XlCreator;
         Cut(): any;
         Delete(): any;
@@ -4610,7 +4740,12 @@ declare namespace Excel {
     interface ChartObjects {
         _Copy(): any;
         _Default(Index: any): any;
-        Add(Left: number, Top: number, Width: number, Height: number): ChartObject;
+        Add(
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): ChartObject;
         readonly Application: Application;
         readonly Border: Border;
         BringToFront(): any;
@@ -4620,7 +4755,10 @@ declare namespace Excel {
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Count: number;
         readonly Creator: XlCreator;
         Cut(): any;
@@ -4776,7 +4914,10 @@ declare namespace Excel {
                 | XlConditionValueTypes.xlConditionValuePercentile,
             newvalue: number,
         ): void;
-        Modify(newtype: XlConditionValueTypes.xlConditionValueFormula, newvalue: string): void;
+        Modify(
+            newtype: XlConditionValueTypes.xlConditionValueFormula,
+            newvalue: string,
+        ): void;
         Modify(newtype: XlConditionValueTypes, newvalue?: any): void;
         readonly Parent: any;
         readonly Type: XlConditionValueTypes;
@@ -4951,7 +5092,11 @@ declare namespace Excel {
 
     interface CustomViews {
         _Default(ViewName: any): CustomView;
-        Add(ViewName: string, PrintSettings?: boolean, RowColSettings?: boolean): CustomView;
+        Add(
+            ViewName: string,
+            PrintSettings?: boolean,
+            RowColSettings?: boolean,
+        ): CustomView;
         readonly Application: Application;
         readonly Count: number;
         readonly Creator: XlCreator;
@@ -5152,17 +5297,27 @@ declare namespace Excel {
          * @param pos [pos=2]
          * @param nodeType [nodeType=1]
          */
-        AddNode(pos?: Office.MsoRelativeNodePosition, nodeType?: Office.MsoDiagramNodeType): DiagramNode;
+        AddNode(
+            pos?: Office.MsoRelativeNodePosition,
+            nodeType?: Office.MsoDiagramNodeType,
+        ): DiagramNode;
         readonly Application: any;
         readonly Children: DiagramNodeChildren;
 
         /** @param pos [pos=2] */
-        CloneNode(copyChildren: boolean, pTargetNode: DiagramNode, pos?: Office.MsoRelativeNodePosition): DiagramNode;
+        CloneNode(
+            copyChildren: boolean,
+            pTargetNode: DiagramNode,
+            pos?: Office.MsoRelativeNodePosition,
+        ): DiagramNode;
         readonly Creator: number;
         Delete(): void;
         readonly Diagram: Office.IMsoDiagram;
         Layout: Office.MsoOrgChartLayoutType;
-        MoveNode(pTargetNode: DiagramNode, pos: Office.MsoRelativeNodePosition): void;
+        MoveNode(
+            pTargetNode: DiagramNode,
+            pos: Office.MsoRelativeNodePosition,
+        ): void;
         NextNode(): DiagramNode;
         readonly Parent: any;
         PrevNode(): DiagramNode;
@@ -5249,13 +5404,21 @@ declare namespace Excel {
         readonly Application: Application;
         Caption: string;
         Characters(Start?: any, Length?: any): Characters;
-        CheckSpelling(CustomDictionary?: any, IgnoreUppercase?: any, AlwaysSuggest?: any, SpellLang?: any): any;
+        CheckSpelling(
+            CustomDictionary?: any,
+            IgnoreUppercase?: any,
+            AlwaysSuggest?: any,
+            SpellLang?: any,
+        ): any;
 
         /**
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Creator: XlCreator;
         Height: number;
         Left: number;
@@ -5322,7 +5485,13 @@ declare namespace Excel {
             Collate?: any,
             PrToFileName?: any,
         ): void;
-        _Protect(Password?: any, DrawingObjects?: any, Contents?: any, Scenarios?: any, UserInterfaceOnly?: any): void;
+        _Protect(
+            Password?: any,
+            DrawingObjects?: any,
+            Contents?: any,
+            Scenarios?: any,
+            UserInterfaceOnly?: any,
+        ): void;
         _SaveAs(
             Filename: string,
             FileFormat?: any,
@@ -5341,7 +5510,12 @@ declare namespace Excel {
         Buttons(Index?: any): any;
         ChartObjects(Index?: any): any;
         CheckBoxes(Index?: any): any;
-        CheckSpelling(CustomDictionary?: any, IgnoreUppercase?: any, AlwaysSuggest?: any, SpellLang?: any): void;
+        CheckSpelling(
+            CustomDictionary?: any,
+            IgnoreUppercase?: any,
+            AlwaysSuggest?: any,
+            SpellLang?: any,
+        ): void;
         CircleInvalid(): void;
         ClearCircles(): void;
         readonly CodeName: string;
@@ -5664,7 +5838,11 @@ declare namespace Excel {
         readonly GradientStops: Office.GradientStops;
         readonly GradientStyle: Office.MsoGradientStyle;
         readonly GradientVariant: number;
-        OneColorGradient(Style: Office.MsoGradientStyle, Variant: number, Degree: number): void;
+        OneColorGradient(
+            Style: Office.MsoGradientStyle,
+            Variant: number,
+            Degree: number,
+        ): void;
         readonly Parent: any;
         readonly Pattern: Office.MsoPatternType;
         Patterned(Pattern: Office.MsoPatternType): void;
@@ -5777,7 +5955,12 @@ declare namespace Excel {
     class FormatCondition {
         private "Excel.FormatCondition_typekey": FormatCondition;
         private constructor();
-        _Modify(Type: XlFormatConditionType, Operator?: any, Formula1?: any, Formula2?: any): void;
+        _Modify(
+            Type: XlFormatConditionType,
+            Operator?: any,
+            Formula1?: any,
+            Formula2?: any,
+        ): void;
         readonly Application: Application;
         readonly AppliesTo: Range;
         readonly Borders: Borders;
@@ -5788,10 +5971,16 @@ declare namespace Excel {
         readonly Formula1: string;
         readonly Formula2: string;
         readonly Interior: Interior;
-        Modify(Type: XlFormatConditionType.xlExpression, Operator: undefined, Formula1: string): void;
+        Modify(
+            Type: XlFormatConditionType.xlExpression,
+            Operator: undefined,
+            Formula1: string,
+        ): void;
         Modify(
             Type: XlFormatConditionType,
-            Operator: XlFormatConditionOperator.xlBetween | XlFormatConditionOperator.xlNotBetween,
+            Operator:
+                | XlFormatConditionOperator.xlBetween
+                | XlFormatConditionOperator.xlNotBetween,
             Formula1: string,
             Formula2: string,
         ): void;
@@ -5820,10 +6009,16 @@ declare namespace Excel {
 
     interface FormatConditions {
         _Default(Index: any): any;
-        Add(Type: XlFormatConditionType.xlExpression, Operator: undefined, Formula1: string): FormatCondition;
+        Add(
+            Type: XlFormatConditionType.xlExpression,
+            Operator: undefined,
+            Formula1: string,
+        ): FormatCondition;
         Add(
             Type: XlFormatConditionType,
-            Operator: XlFormatConditionOperator.xlBetween | XlFormatConditionOperator.xlNotBetween,
+            Operator:
+                | XlFormatConditionOperator.xlBetween
+                | XlFormatConditionOperator.xlNotBetween,
             Formula1: string,
             Formula2: string,
         ): FormatCondition;
@@ -5924,14 +6119,22 @@ declare namespace Excel {
         readonly Border: Border;
         readonly BottomRightCell: Range;
         BringToFront(): any;
-        CheckSpelling(CustomDictionary?: any, IgnoreUppercase?: any, AlwaysSuggest?: any, SpellLang?: any): any;
+        CheckSpelling(
+            CustomDictionary?: any,
+            IgnoreUppercase?: any,
+            AlwaysSuggest?: any,
+            SpellLang?: any,
+        ): any;
         Copy(): any;
 
         /**
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Creator: XlCreator;
         Cut(): any;
         Delete(): any;
@@ -6026,7 +6229,11 @@ declare namespace Excel {
         Address: string;
         AddToFavorites(): void;
         readonly Application: Application;
-        CreateNewDocument(Filename: string, EditNow: boolean, Overwrite: boolean): void;
+        CreateNewDocument(
+            Filename: string,
+            EditNow: boolean,
+            Overwrite: boolean,
+        ): void;
         readonly Creator: XlCreator;
         Delete(): void;
         EmailSubject: string;
@@ -6588,7 +6795,13 @@ declare namespace Excel {
             PrintToFile?: any,
             Collate?: any,
         ): void;
-        _Protect(Password?: any, DrawingObjects?: any, Contents?: any, Scenarios?: any, UserInterfaceOnly?: any): void;
+        _Protect(
+            Password?: any,
+            DrawingObjects?: any,
+            Contents?: any,
+            Scenarios?: any,
+            UserInterfaceOnly?: any,
+        ): void;
         _SaveAs(
             Filename: string,
             FileFormat?: any,
@@ -6626,7 +6839,13 @@ declare namespace Excel {
             PrintToFile?: any,
             Collate?: any,
         ): void;
-        Protect(Password?: any, DrawingObjects?: any, Contents?: any, Scenarios?: any, UserInterfaceOnly?: any): void;
+        Protect(
+            Password?: any,
+            DrawingObjects?: any,
+            Contents?: any,
+            Scenarios?: any,
+            UserInterfaceOnly?: any,
+        ): void;
         readonly ProtectContents: boolean;
         readonly ProtectionMode: boolean;
         SaveAs(
@@ -6790,7 +7009,11 @@ declare namespace Excel {
         RefreshOnFileOpen: boolean;
         RefreshPeriod: number;
         RobustConnect: XlRobustConnect;
-        SaveAsODC(ODCFileName: string, Description?: string, Keywords?: string): void;
+        SaveAsODC(
+            ODCFileName: string,
+            Description?: string,
+            Keywords?: string,
+        ): void;
         SavePassword: boolean;
         ServerCredentialsMethod: XlCredentialsMethod;
         ServerSSOApplicationID: string;
@@ -6849,7 +7072,11 @@ declare namespace Excel {
         RefreshPeriod: number;
         RetrieveInOfficeUILang: boolean;
         RobustConnect: XlRobustConnect;
-        SaveAsODC(ODCFileName: string, Description?: string, Keywords?: string): void;
+        SaveAsODC(
+            ODCFileName: string,
+            Description?: string,
+            Keywords?: string,
+        ): void;
         SavePassword: boolean;
         ServerCredentialsMethod: XlCredentialsMethod;
         ServerFillColor: boolean;
@@ -6914,7 +7141,10 @@ declare namespace Excel {
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Creator: XlCreator;
         Cut(): any;
         Delete(): any;
@@ -7016,7 +7246,10 @@ declare namespace Excel {
          * @param Appearance [Appearance=2]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Count: number;
         readonly Creator: XlCreator;
         Cut(): any;
@@ -7137,14 +7370,30 @@ declare namespace Excel {
         readonly Application: Application;
         readonly Creator: XlCreator;
         readonly Index: number;
-        LargeScroll(Down?: number, Up?: number, ToRight?: number, ToLeft?: number): any;
+        LargeScroll(
+            Down?: number,
+            Up?: number,
+            ToRight?: number,
+            ToLeft?: number,
+        ): any;
         readonly Parent: any;
         PointsToScreenPixelsX(Points: number): number;
         PointsToScreenPixelsY(Points: number): number;
         ScrollColumn: number;
-        ScrollIntoView(Left: number, Top: number, Width: number, Height: number, Start?: boolean): void;
+        ScrollIntoView(
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+            Start?: boolean,
+        ): void;
         ScrollRow: number;
-        SmallScroll(Down?: number, Up?: number, ToRight?: number, ToLeft?: number): any;
+        SmallScroll(
+            Down?: number,
+            Up?: number,
+            ToRight?: number,
+            ToLeft?: number,
+        ): any;
         readonly VisibleRange: Range;
     }
 
@@ -7284,7 +7533,11 @@ declare namespace Excel {
         RefreshPeriod: number;
         ResetTimer(): void;
         RobustConnect: XlRobustConnect;
-        SaveAsODC(ODCFileName: string, Description?: string, Keywords?: string): void;
+        SaveAsODC(
+            ODCFileName: string,
+            Description?: string,
+            Keywords?: string,
+        ): void;
         SavePassword: boolean;
         SourceConnectionFile: string;
         SourceData: string | SafeArray<string> | PivotTable;
@@ -7303,7 +7556,9 @@ declare namespace Excel {
         readonly Application: Application;
         readonly Count: number;
         Create(
-            SourceType: XlPivotTableSourceType.xlDatabase | XlPivotTableSourceType.xlConsolidation,
+            SourceType:
+                | XlPivotTableSourceType.xlDatabase
+                | XlPivotTableSourceType.xlConsolidation,
             SourceData: string,
             Version?: XlPivotTableVersionList,
         ): PivotCache;
@@ -7351,12 +7606,22 @@ declare namespace Excel {
         AddPageItem(Item: string, ClearList?: boolean): void;
         readonly AllItemsVisible: boolean;
         readonly Application: Application;
-        AutoShow(Type: number, Range: number, Count: number, Field: string): void;
+        AutoShow(
+            Type: number,
+            Range: number,
+            Count: number,
+            Field: string,
+        ): void;
         readonly AutoShowCount: number;
         readonly AutoShowField: string;
         readonly AutoShowRange: number;
         readonly AutoShowType: number;
-        AutoSort(Order: number, Field: string, PivotLine?: any, CustomSubtotal?: any): void;
+        AutoSort(
+            Order: number,
+            Field: string,
+            PivotLine?: any,
+            CustomSubtotal?: any,
+        ): void;
         readonly AutoSortCustomSubtotal: number;
         readonly AutoSortField: string;
         readonly AutoSortOrder: number;
@@ -7430,7 +7695,8 @@ declare namespace Excel {
         readonly SourceName: string;
         StandardFormula: string;
         SubtotalName: string;
-        readonly Subtotals: SafeArray<boolean> & ((Index: PivotFieldSubtotal) => boolean);
+        readonly Subtotals: SafeArray<boolean> &
+            ((Index: PivotFieldSubtotal) => boolean);
         readonly TotalLevels: number;
         UseMemberPropertyAsCaption: boolean;
         Value: string;
@@ -7448,10 +7714,9 @@ declare namespace Excel {
         readonly Parent: PivotTable;
     }
 
-    type PivotFieldsResult =
-        & PivotFields
-        & ((Index: number | string) => PivotField)
-        & ((Indexes: SafeArray<number | string>) => PivotFields);
+    type PivotFieldsResult = PivotFields &
+        ((Index: number | string) => PivotField) &
+        ((Indexes: SafeArray<number | string>) => PivotFields);
 
     class PivotFilter {
         private "Excel.PivotFilter_typekey": PivotFilter;
@@ -7570,15 +7835,19 @@ declare namespace Excel {
         readonly Parent: PivotField;
     }
 
-    type PivotItemsResult =
-        & PivotItems
-        & ((Index: number | string) => PivotItem)
-        & ((Indexes: SafeArray<number | string>) => PivotItems);
+    type PivotItemsResult = PivotItems &
+        ((Index: number | string) => PivotItem) &
+        ((Indexes: SafeArray<number | string>) => PivotItems);
 
     class PivotLayout {
         private "Excel.PivotLayout_typekey": PivotLayout;
         private constructor();
-        AddFields(RowFields?: any, ColumnFields?: any, PageFields?: any, AppendField?: any): void;
+        AddFields(
+            RowFields?: any,
+            ColumnFields?: any,
+            PageFields?: any,
+            AppendField?: any,
+        ): void;
         readonly Application: Application;
         ColumnFields(Index?: any): any;
         readonly Creator: XlCreator;
@@ -7788,7 +8057,11 @@ declare namespace Excel {
         readonly PivotRowAxis: PivotAxis;
 
         /** @param Mode [Mode=0] */
-        PivotSelect(Name: string, Mode?: XlPTSelectionMode, UseStandardName?: boolean): void;
+        PivotSelect(
+            Name: string,
+            Mode?: XlPTSelectionMode,
+            UseStandardName?: boolean,
+        ): void;
         PivotSelection: string;
         PivotSelectionStandard: string;
         PivotTableWizard(): void;
@@ -7908,7 +8181,12 @@ declare namespace Excel {
         private constructor();
 
         /** @param Type [Type=2] */
-        _ApplyDataLabels(Type?: XlDataLabelsType, LegendKey?: any, AutoText?: any, HasLeaderLines?: any): any;
+        _ApplyDataLabels(
+            Type?: XlDataLabelsType,
+            LegendKey?: any,
+            AutoText?: any,
+            HasLeaderLines?: any,
+        ): any;
         readonly Application: Application;
 
         /** @param Type [Type=2] */
@@ -7956,7 +8234,10 @@ declare namespace Excel {
         PictureUnit2: number;
 
         /** @param Index [Index=2] */
-        PieSliceLocation(loc: XlPieSliceLocation, Index?: XlPieSliceIndex): number;
+        PieSliceLocation(
+            loc: XlPieSliceLocation,
+            Index?: XlPieSliceIndex,
+        ): number;
         SecondaryPlot: boolean;
         Select(): any;
         Shadow: boolean;
@@ -8000,7 +8281,12 @@ declare namespace Excel {
         readonly Count: number;
         readonly Creator: XlCreator;
         Item(Index: number | string): ProtectedViewWindow;
-        Open(Filename: string, Password?: string, AddToMru?: boolean, RepairMode?: boolean): ProtectedViewWindow;
+        Open(
+            Filename: string,
+            Password?: string,
+            AddToMru?: boolean,
+            RepairMode?: boolean,
+        ): ProtectedViewWindow;
         readonly Parent: any;
         (Index: number | string): ProtectedViewWindow;
     }
@@ -8106,7 +8392,11 @@ declare namespace Excel {
         readonly ResultRange: Range;
         RobustConnect: XlRobustConnect;
         RowNumbers: boolean;
-        SaveAsODC(ODCFileName: string, Description?: string, Keywords?: string): void;
+        SaveAsODC(
+            ODCFileName: string,
+            Description?: string,
+            Keywords?: string,
+        ): void;
         SaveData: boolean;
         SavePassword: boolean;
         readonly Sort: Sort;
@@ -8144,7 +8434,10 @@ declare namespace Excel {
 
     interface QueryTables {
         _Default(Index: any): QueryTable;
-        Add(Connection: QueryTable | DAO.Recordset | ADODB.Recordset, Destination: Range): QueryTable;
+        Add(
+            Connection: QueryTable | DAO.Recordset | ADODB.Recordset,
+            Destination: Range,
+        ): QueryTable;
         Add(Connection: string, Destination: Range, Sql?: string): QueryTable;
         readonly Application: Application;
         readonly Count: number;
@@ -8169,14 +8462,24 @@ declare namespace Excel {
          * @param Weight [Weight=2]
          * @param ColorIndex [ColorIndex=-4105]
          */
-        _BorderAround(LineStyle: any, Weight?: XlBorderWeight, ColorIndex?: XlColorIndex, Color?: any): any;
+        _BorderAround(
+            LineStyle: any,
+            Weight?: XlBorderWeight,
+            ColorIndex?: XlColorIndex,
+            Color?: any,
+        ): any;
         _Default(RowIndex?: any, ColumnIndex?: any): any;
 
         /**
          * @param Paste [Paste=-4104]
          * @param Operation [Operation=-4142]
          */
-        _PasteSpecial(Paste?: XlPasteType, Operation?: XlPasteSpecialOperation, SkipBlanks?: any, Transpose?: any): any;
+        _PasteSpecial(
+            Paste?: XlPasteType,
+            Operation?: XlPasteSpecialOperation,
+            SkipBlanks?: any,
+            Transpose?: any,
+        ): any;
         _PrintOut(
             From?: any,
             To?: any,
@@ -8214,7 +8517,12 @@ declare namespace Excel {
             CopyToRange?: Range,
             Unique?: boolean,
         ): any;
-        AdvancedFilter(Action: XlFilterAction, CriteriaRange?: Range, CopyToRange?: undefined, Unique?: boolean): any;
+        AdvancedFilter(
+            Action: XlFilterAction,
+            CriteriaRange?: Range,
+            CopyToRange?: undefined,
+            Unique?: boolean,
+        ): any;
         AllocateChanges(): void;
         readonly AllowEdit: boolean;
         readonly Application: Application;
@@ -8300,16 +8608,28 @@ declare namespace Excel {
             CreateLinks?: boolean,
         ): any;
         Copy(Destination?: Range): any;
-        CopyFromRecordset(Data: DAO.Recordset | ADODB.Recordset, MaxRows?: number, MaxColumns?: number): number;
+        CopyFromRecordset(
+            Data: DAO.Recordset | ADODB.Recordset,
+            MaxRows?: number,
+            MaxColumns?: number,
+        ): number;
 
         /**
          * @param Appearance [Appearance=1]
          * @param Format [Format=-4147]
          */
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): any;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): any;
         readonly Count: number;
         readonly CountLarge: number;
-        CreateNames(Top?: boolean, Left?: boolean, Bottom?: boolean, Right?: boolean): any;
+        CreateNames(
+            Top?: boolean,
+            Left?: boolean,
+            Bottom?: boolean,
+            Right?: boolean,
+        ): any;
 
         /** @param Appearance [Appearance=1] */
         CreatePublisher(
@@ -8405,7 +8725,12 @@ declare namespace Excel {
         FormulaR1C1Local: string | SafeArray<string>;
         FunctionWizard(): any;
         GoalSeek(Goal: any, ChangingCell: Range): boolean;
-        Group(Start?: any, End?: any, By?: number, Periods?: SafeArray<boolean>): any;
+        Group(
+            Start?: any,
+            End?: any,
+            By?: number,
+            Periods?: SafeArray<boolean>,
+        ): any;
         readonly HasArray: boolean;
         readonly HasFormula: boolean | null;
         Height: number;
@@ -8413,7 +8738,23 @@ declare namespace Excel {
         HorizontalAlignment: HorizontalAlignments;
         readonly Hyperlinks: Hyperlinks;
         ID: string;
-        IndentLevel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+        IndentLevel:
+            | 0
+            | 1
+            | 2
+            | 3
+            | 4
+            | 5
+            | 6
+            | 7
+            | 8
+            | 9
+            | 10
+            | 11
+            | 12
+            | 13
+            | 14
+            | 15;
         Insert(Shift?: XlInsertShiftDirection, CopyOrigin?: any): any;
         InsertIndent(InsertAmount: number): void;
         readonly Interior: Interior;
@@ -8431,7 +8772,11 @@ declare namespace Excel {
         readonly MergeArea: Range;
         MergeCells: boolean;
         Name: string | Name;
-        NavigateArrow(TowardPrecedent?: boolean, ArrowNumber?: number, LinkNumber?: number): any;
+        NavigateArrow(
+            TowardPrecedent?: boolean,
+            ArrowNumber?: number,
+            LinkNumber?: number,
+        ): any;
         readonly Next: Range;
         NoteText(Text?: string, Start?: number, Length?: number): string;
         NumberFormat: string | null;
@@ -8460,7 +8805,7 @@ declare namespace Excel {
         readonly PivotItem: PivotItem;
         readonly PivotTable: PivotTable;
         readonly Precedents: Range;
-        readonly PrefixCharacter: "'" | "\"" | "^" | "\\" | "";
+        readonly PrefixCharacter: "'" | '"' | "^" | "\\" | "";
         readonly Previous: Range;
         PrintOut<T extends boolean | undefined>(
             From?: number,
@@ -8478,7 +8823,10 @@ declare namespace Excel {
         ReadingOrder: number;
 
         /** @param Header [Header=2] */
-        RemoveDuplicates(Columns: SafeArray<number>, Header?: XlYesNoGuess): void;
+        RemoveDuplicates(
+            Columns: SafeArray<number>,
+            Header?: XlYesNoGuess,
+        ): void;
         RemoveSubtotal(): any;
         Replace(
             What: string,
@@ -8599,7 +8947,9 @@ declare namespace Excel {
         readonly SparklineGroups: SparklineGroups;
         Speak(SpeakDirection?: XlSpeakDirection, SpeakFormulas?: boolean): void;
         SpecialCells(
-            Type: XlCellType.xlCellTypeConstants | XlCellType.xlCellTypeFormulas,
+            Type:
+                | XlCellType.xlCellTypeConstants
+                | XlCellType.xlCellTypeFormulas,
             Value?: XlSpecialCellsValue,
         ): Range;
         SpecialCells(Type: XlCellType): Range;
@@ -8649,7 +8999,8 @@ declare namespace Excel {
         readonly Validation: Validation;
 
         // eslint-disable-next-line @typescript-eslint/ban-types
-        Value: Exclude<any, Function> & ((RangeValueDataType?: XlRangeValueDataType) => any);
+        Value: Exclude<any, Function> &
+            ((RangeValueDataType?: XlRangeValueDataType) => any);
         Value2: any;
         VerticalAlignment: VerticalAlignments;
         readonly Width: number;
@@ -8768,7 +9119,10 @@ declare namespace Excel {
         readonly Count: number;
 
         /** @param ReportType [ReportType=1] */
-        CreateSummary(ReportType?: XlSummaryReportType, ResultCells?: Range): any;
+        CreateSummary(
+            ReportType?: XlSummaryReportType,
+            ResultCells?: Range,
+        ): any;
         readonly Creator: XlCreator;
         Item(Index: number | string): Scenario;
         Merge(Source: string | Worksheet): any;
@@ -8781,7 +9135,12 @@ declare namespace Excel {
         private constructor();
 
         /** @param Type [Type=2] */
-        _ApplyDataLabels(Type?: XlDataLabelsType, LegendKey?: any, AutoText?: any, HasLeaderLines?: any): any;
+        _ApplyDataLabels(
+            Type?: XlDataLabelsType,
+            LegendKey?: any,
+            AutoText?: any,
+            HasLeaderLines?: any,
+        ): any;
         readonly Application: Application;
         ApplyCustomType(ChartType: XlChartType): void;
 
@@ -8960,7 +9319,10 @@ declare namespace Excel {
         readonly ConnectorFormat: ConnectorFormat;
         readonly ControlFormat: ControlFormat;
         Copy(): void;
-        CopyPicture(Appearance?: XlPictureAppearance, Format?: XlCopyPictureFormat): void;
+        CopyPicture(
+            Appearance?: XlPictureAppearance,
+            Format?: XlCopyPictureFormat,
+        ): void;
         readonly Creator: XlCreator;
         Cut(): void;
         Delete(): void;
@@ -9001,8 +9363,16 @@ declare namespace Excel {
         readonly Reflection: Office.ReflectionFormat;
         RerouteConnections(): void;
         Rotation: number;
-        ScaleHeight(Factor: number, RelativeToOriginalSize: Office.MsoTriState, Scale?: Office.MsoScaleFrom): void;
-        ScaleWidth(Factor: number, RelativeToOriginalSize: Office.MsoTriState, Scale?: Office.MsoScaleFrom): void;
+        ScaleHeight(
+            Factor: number,
+            RelativeToOriginalSize: Office.MsoTriState,
+            Scale?: Office.MsoScaleFrom,
+        ): void;
+        ScaleWidth(
+            Factor: number,
+            RelativeToOriginalSize: Office.MsoTriState,
+            Scale?: Office.MsoScaleFrom,
+        ): void;
         readonly Script: Office.Script;
         Select(Replace?: boolean): void;
         SetShapesDefaultProperties(): void;
@@ -9072,7 +9442,10 @@ declare namespace Excel {
     interface ShapeRange {
         _Default(Index: any): Shape;
         readonly Adjustments: Adjustments;
-        Align(AlignCmd: Office.MsoAlignCmd, RelativeTo: Office.MsoTriState): void;
+        Align(
+            AlignCmd: Office.MsoAlignCmd,
+            RelativeTo: Office.MsoTriState,
+        ): void;
         AlternativeText: string;
         readonly Application: Application;
         Apply(): void;
@@ -9095,7 +9468,10 @@ declare namespace Excel {
         Delete(): void;
         readonly Diagram: Diagram;
         readonly DiagramNode: DiagramNode;
-        Distribute(DistributeCmd: Office.MsoDistributeCmd, RelativeTo: Office.MsoTriState): void;
+        Distribute(
+            DistributeCmd: Office.MsoDistributeCmd,
+            RelativeTo: Office.MsoTriState,
+        ): void;
         Duplicate(): ShapeRange;
         readonly Fill: FillFormat;
         Flip(FlipCmd: Office.MsoFlipCmd): void;
@@ -9125,8 +9501,16 @@ declare namespace Excel {
         Regroup(): Shape;
         RerouteConnections(): void;
         Rotation: number;
-        ScaleHeight(Factor: number, RelativeToOriginalSize: Office.MsoTriState, Scale?: Office.MsoScaleFrom): void;
-        ScaleWidth(Factor: number, RelativeToOriginalSize: Office.MsoTriState, Scale?: Office.MsoScaleFrom): void;
+        ScaleHeight(
+            Factor: number,
+            RelativeToOriginalSize: Office.MsoTriState,
+            Scale?: Office.MsoScaleFrom,
+        ): void;
+        ScaleWidth(
+            Factor: number,
+            RelativeToOriginalSize: Office.MsoTriState,
+            Scale?: Office.MsoScaleFrom,
+        ): void;
         Select(Replace?: boolean): void;
         SetShapesDefaultProperties(): void;
         readonly Shadow: ShadowFormat;
@@ -9151,8 +9535,19 @@ declare namespace Excel {
 
     interface Shapes {
         _Default(Index: any): Shape;
-        AddCallout(Type: Office.MsoCalloutType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddCanvas(Left: number, Top: number, Width: number, Height: number): Shape;
+        AddCallout(
+            Type: Office.MsoCalloutType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddCanvas(
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
         AddChart(
             XlChartType?: XlChartType,
             Left?: number,
@@ -9161,10 +9556,28 @@ declare namespace Excel {
             Height?: number,
             NewLayout?: boolean,
         ): Shape;
-        AddConnector(Type: Office.MsoConnectorType, BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddConnector(
+            Type: Office.MsoConnectorType,
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
         AddCurve(SafeArrayOfPoints: SafeArray<number>): Shape;
-        AddDiagram(Type: Office.MsoDiagramType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddFormControl(Type: XlFormControl, Left: number, Top: number, Width: number, Height: number): Shape;
+        AddDiagram(
+            Type: Office.MsoDiagramType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddFormControl(
+            Type: XlFormControl,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
         AddLabel(
             Orientation: Office.MsoTextOrientation,
             Left: number,
@@ -9172,7 +9585,12 @@ declare namespace Excel {
             Width: number,
             Height: number,
         ): Shape;
-        AddLine(BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddLine(
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
         AddOLEObject(
             ClassType: string,
             Filename?: undefined,
@@ -9209,8 +9627,20 @@ declare namespace Excel {
             Height: number,
         ): Shape;
         AddPolyline(SafeArrayOfPoints: SafeArray<number>): Shape;
-        AddShape(Type: Office.MsoAutoShapeType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddSmartArt(Layout: Office.SmartArtLayout, Left?: number, Top?: number, Width?: number, Height?: number): Shape;
+        AddShape(
+            Type: Office.MsoAutoShapeType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddSmartArt(
+            Layout: Office.SmartArtLayout,
+            Left?: number,
+            Top?: number,
+            Width?: number,
+            Height?: number,
+        ): Shape;
         AddTextbox(
             Orientation: Office.MsoTextOrientation,
             Left: number,
@@ -9229,7 +9659,11 @@ declare namespace Excel {
             Top: number,
         ): Shape;
         readonly Application: Application;
-        BuildFreeform(EditingType: Office.MsoEditingType, X1: number, Y1: number): FreeformBuilder;
+        BuildFreeform(
+            EditingType: Office.MsoEditingType,
+            X1: number,
+            Y1: number,
+        ): FreeformBuilder;
         readonly Count: number;
         readonly Creator: XlCreator;
         Item(Index: number | string): Shape;
@@ -9260,7 +9694,12 @@ declare namespace Excel {
             Collate?: any,
             PrToFileName?: any,
         ): void;
-        Add<T>(Before?: Sheet, After?: Sheet, Count?: number, Type?: T): AddSheetResult<T>;
+        Add<T>(
+            Before?: Sheet,
+            After?: Sheet,
+            Count?: number,
+            Type?: T,
+        ): AddSheetResult<T>;
         readonly Application: Application;
         Copy(Before?: Sheet): void;
         Copy(Before: undefined, After: Sheet): void;
@@ -9386,7 +9825,11 @@ declare namespace Excel {
 
     interface SlicerCaches {
         _Default(Index: any): SlicerCache;
-        Add(Source: WorkbookConnection | PivotTable | string, SourceField: any, Name?: any): SlicerCache;
+        Add(
+            Source: WorkbookConnection | PivotTable | string,
+            SourceField: any,
+            Name?: any,
+        ): SlicerCache;
         readonly Application: Application;
         readonly Count: number;
         readonly Creator: XlCreator;
@@ -9576,7 +10019,13 @@ declare namespace Excel {
 
     interface SortFields {
         _Default(Index: any): SortField;
-        Add(Key: Range, SortOn?: any, Order?: any, CustomOrder?: any, DataOption?: any): SortField;
+        Add(
+            Key: Range,
+            SortOn?: any,
+            Order?: any,
+            CustomOrder?: any,
+            DataOption?: any,
+        ): SortField;
         readonly Application: Application;
         Clear(): void;
         readonly Count: number;
@@ -9712,7 +10161,12 @@ declare namespace Excel {
         private "Excel.Speech_typekey": Speech;
         private constructor();
         Direction: XlSpeakDirection;
-        Speak(Text: string, SpeakAsync?: boolean, SpeakXML?: boolean, Purge?: boolean): void;
+        Speak(
+            Text: string,
+            SpeakAsync?: boolean,
+            SpeakXML?: boolean,
+            Purge?: boolean,
+        ): void;
         SpeakCellOnEnter: boolean;
     }
 
@@ -9959,7 +10413,9 @@ declare namespace Excel {
         RotationX: number;
         RotationY: number;
         RotationZ: number;
-        SetExtrusionDirection(PresetExtrusionDirection: Office.MsoPresetExtrusionDirection): void;
+        SetExtrusionDirection(
+            PresetExtrusionDirection: Office.MsoPresetExtrusionDirection,
+        ): void;
         SetPresetCamera(PresetCamera: Office.MsoPresetCamera): void;
         SetThreeDFormat(PresetThreeDFormat: Office.MsoPresetThreeDFormat): void;
         Visible: Office.MsoTriState;
@@ -10231,7 +10687,9 @@ declare namespace Excel {
                 | XlDVType.xlValidateTextLength
                 | XlDVType.xlValidateTime,
             AlertStyle?: XlDVAlertStyle,
-            Operator?: XlFormatConditionOperator.xlBetween | XlFormatConditionOperator.xlNotBetween,
+            Operator?:
+                | XlFormatConditionOperator.xlBetween
+                | XlFormatConditionOperator.xlNotBetween,
             Formula1?: string,
             Formula2?: string,
         ): void;
@@ -10263,7 +10721,9 @@ declare namespace Excel {
                 | XlDVType.xlValidateTextLength
                 | XlDVType.xlValidateTime,
             AlertStyle?: XlDVAlertStyle,
-            Operator?: XlFormatConditionOperator.xlBetween | XlFormatConditionOperator.xlNotBetween,
+            Operator?:
+                | XlFormatConditionOperator.xlBetween
+                | XlFormatConditionOperator.xlNotBetween,
             Formula1?: string,
             Formula2?: string,
         ): void;
@@ -10409,7 +10869,11 @@ declare namespace Excel {
         readonly Application: Application;
         AutoFilterDateGrouping: boolean;
         Caption: string;
-        Close(SaveChanges?: boolean, Filename?: string, RouteWorkbook?: boolean): boolean;
+        Close(
+            SaveChanges?: boolean,
+            Filename?: string,
+            RouteWorkbook?: boolean,
+        ): boolean;
         readonly Creator: XlCreator;
         DisplayFormulas: boolean;
         DisplayGridlines: boolean;
@@ -10428,7 +10892,12 @@ declare namespace Excel {
         GridlineColorIndex: XlColorIndex;
         Height: number;
         readonly Index: number;
-        LargeScroll(Down?: number, Up?: number, ToRight?: number, ToLeft?: number): any;
+        LargeScroll(
+            Down?: number,
+            Up?: number,
+            ToRight?: number,
+            ToLeft?: number,
+        ): any;
         Left: number;
         NewWindow(): Window;
         OnWindow: string;
@@ -10450,14 +10919,28 @@ declare namespace Excel {
         RangeFromPoint(x: number, y: number): Shape | Range | null;
         readonly RangeSelection: Range;
         ScrollColumn: number;
-        ScrollIntoView(Left: number, Top: number, Width: number, Height: number, Start?: boolean): void;
+        ScrollIntoView(
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+            Start?: boolean,
+        ): void;
         ScrollRow: number;
-        ScrollWorkbookTabs(Sheets: 0, Position: Constants.xlFirst | Constants.xlLast): any;
+        ScrollWorkbookTabs(
+            Sheets: 0,
+            Position: Constants.xlFirst | Constants.xlLast,
+        ): any;
         ScrollWorkbookTabs(Sheets: number): any;
         readonly SelectedSheets: Sheets;
         readonly Selection: any;
         readonly SheetViews: SheetViews;
-        SmallScroll(Down?: number, Up?: number, ToRight?: number, ToLeft?: number): any;
+        SmallScroll(
+            Down?: number,
+            Up?: number,
+            ToRight?: number,
+            ToLeft?: number,
+        ): any;
         Split: boolean;
         SplitColumn: number;
         SplitHorizontal: number;
@@ -10570,7 +11053,11 @@ declare namespace Excel {
         readonly BuiltinDocumentProperties: Office.DocumentProperties<Application>;
         readonly CalculationVersion: number;
         CanCheckIn(): boolean;
-        ChangeFileAccess(Mode: XlFileAccess.xlReadWrite, WritePassword?: string, Notify?: boolean): void;
+        ChangeFileAccess(
+            Mode: XlFileAccess.xlReadWrite,
+            WritePassword?: string,
+            Notify?: boolean,
+        ): void;
         ChangeFileAccess(Mode: XlFileAccess): void;
         ChangeHistoryDuration: number;
 
@@ -10578,11 +11065,28 @@ declare namespace Excel {
         ChangeLink(Name: string, NewName: string, Type?: XlLinkType): void;
         readonly Charts: Sheets<Chart>;
         CheckCompatibility: boolean;
-        CheckIn(SaveChanges: true, Comments?: string, MakePublic?: boolean): void;
+        CheckIn(
+            SaveChanges: true,
+            Comments?: string,
+            MakePublic?: boolean,
+        ): void;
         CheckIn(SaveChanges?: any): void;
-        CheckInWithVersion(SaveChanges?: boolean, Comments?: any, MakePublic?: any, VersionType?: any): void;
-        Close(SaveChanges: true, Filename?: string, RouteWorkbook?: boolean): void;
-        Close(SaveChanges?: boolean, Filename?: undefined, RouteWorkbook?: boolean): void;
+        CheckInWithVersion(
+            SaveChanges?: boolean,
+            Comments?: any,
+            MakePublic?: any,
+            VersionType?: any,
+        ): void;
+        Close(
+            SaveChanges: true,
+            Filename?: string,
+            RouteWorkbook?: boolean,
+        ): void;
+        Close(
+            SaveChanges?: boolean,
+            Filename?: undefined,
+            RouteWorkbook?: boolean,
+        ): void;
         readonly CodeName: string;
         Colors: SafeArray<number> & ((Index: number) => number);
         readonly CommandBars: Office.CommandBars;
@@ -10666,7 +11170,12 @@ declare namespace Excel {
         readonly IsInplace: boolean;
         KeepChangeHistory: boolean;
         Keywords: string;
-        LinkInfo(Name: string, LinkInfo: XlLinkInfo, Type?: XlLinkInfoType, EditionRef?: string): any;
+        LinkInfo(
+            Name: string,
+            LinkInfo: XlLinkInfo,
+            Type?: XlLinkInfoType,
+            EditionRef?: string,
+        ): any;
         LinkSources(Type?: XlLink): SafeArray<string>;
         ListChangesOnNewSheet: boolean;
         LockServerFile(): void;
@@ -10725,7 +11234,11 @@ declare namespace Excel {
             IgnorePrintAreas?: boolean,
         ): void;
         PrintPreview(EnableChanges?: boolean): void;
-        Protect(Password?: string, Structure?: boolean, Windows?: boolean): void;
+        Protect(
+            Password?: string,
+            Structure?: boolean,
+            Windows?: boolean,
+        ): void;
         ProtectSharing(
             Filename?: string,
             Password?: string,
@@ -10779,9 +11292,22 @@ declare namespace Excel {
         Saved: boolean;
         SaveLinkValues: boolean;
         sblt(s: string): void;
-        SendFaxOverInternet(Recipients?: string, Subject?: string, ShowMessage?: boolean): void;
-        SendForReview(Recipients?: string, Subject?: string, ShowMessage?: boolean, IncludeAttachment?: boolean): void;
-        SendMail(Recipients: string | SafeArray<string>, Subject?: string, ReturnReceipt?: boolean): void;
+        SendFaxOverInternet(
+            Recipients?: string,
+            Subject?: string,
+            ShowMessage?: boolean,
+        ): void;
+        SendForReview(
+            Recipients?: string,
+            Subject?: string,
+            ShowMessage?: boolean,
+            IncludeAttachment?: boolean,
+        ): void;
+        SendMail(
+            Recipients: string | SafeArray<string>,
+            Subject?: string,
+            ReturnReceipt?: boolean,
+        ): void;
 
         /**
          * Macintosh only
@@ -10832,8 +11358,18 @@ declare namespace Excel {
         WritePassword: string;
         readonly WriteReserved: boolean;
         readonly WriteReservedBy: string;
-        XmlImport(Url: string, ImportMap: XmlMap, Overwrite?: boolean, Destination?: any): XlXmlImportResult;
-        XmlImportXml(Data: string, ImportMap: XmlMap, Overwrite?: boolean, Destination?: any): XlXmlImportResult;
+        XmlImport(
+            Url: string,
+            ImportMap: XmlMap,
+            Overwrite?: boolean,
+            Destination?: any,
+        ): XlXmlImportResult;
+        XmlImportXml(
+            Data: string,
+            ImportMap: XmlMap,
+            Overwrite?: boolean,
+            Destination?: any,
+        ): XlXmlImportResult;
         readonly XmlMaps: XmlMaps;
         readonly XmlNamespaces: XmlNamespaces;
     }
@@ -11025,7 +11561,11 @@ declare namespace Excel {
             TrailingMinusNumbers?: boolean,
             Local?: boolean,
         ): void;
-        OpenXML(Filename: string, Stylesheets?: string | SafeArray<string>, LoadOption?: XlXmlLoadOption): Workbook;
+        OpenXML(
+            Filename: string,
+            Stylesheets?: string | SafeArray<string>,
+            LoadOption?: XlXmlLoadOption,
+        ): Workbook;
         readonly Parent: any;
         (Index: number | string): Workbook;
     }
@@ -11071,7 +11611,13 @@ declare namespace Excel {
             Collate?: any,
             PrToFileName?: any,
         ): void;
-        _Protect(Password?: any, DrawingObjects?: any, Contents?: any, Scenarios?: any, UserInterfaceOnly?: any): void;
+        _Protect(
+            Password?: any,
+            DrawingObjects?: any,
+            Contents?: any,
+            Scenarios?: any,
+            UserInterfaceOnly?: any,
+        ): void;
         _SaveAs(
             Filename: string,
             FileFormat?: any,
@@ -11285,8 +11831,16 @@ declare namespace Excel {
         readonly UsedRange: Range;
         Visible: XlSheetVisibility;
         readonly VPageBreaks: VPageBreaks;
-        XmlDataQuery(XPath: string, SelectionNamespaces?: string, Map?: XmlMap): Range | null;
-        XmlMapQuery(XPath: string, SelectionNamespaces?: string, Map?: XmlMap): Range;
+        XmlDataQuery(
+            XPath: string,
+            SelectionNamespaces?: string,
+            Map?: XmlMap,
+        ): Range | null;
+        XmlMapQuery(
+            XPath: string,
+            SelectionNamespaces?: string,
+            Map?: XmlMap,
+        ): Range;
     }
 
     class WorksheetFunction {
@@ -11324,8 +11878,22 @@ declare namespace Excel {
             Arg29?: any,
             Arg30?: any,
         ): any;
-        AccrInt(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7?: any): number;
-        AccrIntM(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5?: any): number;
+        AccrInt(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7?: any,
+        ): number;
+        AccrIntM(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5?: any,
+        ): number;
         Acos(Arg1: number): number;
         Acosh(Arg1: number): number;
         Aggregate(
@@ -11360,8 +11928,24 @@ declare namespace Excel {
             Arg29?: any,
             Arg30?: any,
         ): number;
-        AmorDegrc(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7?: any): number;
-        AmorLinc(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7?: any): number;
+        AmorDegrc(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7?: any,
+        ): number;
+        AmorLinc(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7?: any,
+        ): number;
         And(
             Arg1: any,
             Arg2?: any,
@@ -11501,16 +12085,51 @@ declare namespace Excel {
         BesselJ(Arg1: any, Arg2: any): number;
         BesselK(Arg1: any, Arg2: any): number;
         BesselY(Arg1: any, Arg2: any): number;
-        Beta_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean, Arg5?: any, Arg6?: any): number;
-        Beta_Inv(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
-        BetaDist(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
-        BetaInv(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
+        Beta_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+            Arg5?: any,
+            Arg6?: any,
+        ): number;
+        Beta_Inv(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
+        BetaDist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
+        BetaInv(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
         Bin2Dec(Arg1: any): string;
         Bin2Hex(Arg1: any, Arg2?: any): string;
         Bin2Oct(Arg1: any, Arg2?: any): string;
-        Binom_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        Binom_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         Binom_Inv(Arg1: number, Arg2: number, Arg3: number): number;
-        BinomDist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        BinomDist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         Ceiling(Arg1: number, Arg2: number): number;
         Ceiling_Precise(Arg1: number, Arg2?: any): number;
         ChiDist(Arg1: number, Arg2: number): number;
@@ -11671,15 +12290,41 @@ declare namespace Excel {
         Covariance_S(Arg1: any, Arg2: any): number;
         readonly Creator: XlCreator;
         CritBinom(Arg1: number, Arg2: number, Arg3: number): number;
-        CumIPmt(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any): number;
-        CumPrinc(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any): number;
+        CumIPmt(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+        ): number;
+        CumPrinc(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+        ): number;
         DAverage(Arg1: Range, Arg2: any, Arg3: any): number;
         Days360(Arg1: any, Arg2: any, Arg3?: any): number;
-        Db(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5?: any): number;
+        Db(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5?: any,
+        ): number;
         Dbcs(Arg1: string): string;
         DCount(Arg1: Range, Arg2: any, Arg3: any): number;
         DCountA(Arg1: Range, Arg2: any, Arg3: any): number;
-        Ddb(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5?: any): number;
+        Ddb(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5?: any,
+        ): number;
         Dec2Bin(Arg1: any, Arg2?: any): string;
         Dec2Hex(Arg1: any, Arg2?: any): string;
         Dec2Oct(Arg1: any, Arg2?: any): string;
@@ -11761,7 +12406,14 @@ declare namespace Excel {
             Arg30?: any,
         ): any;
         Dummy21(Arg1: number, Arg2: number): number;
-        Duration(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6?: any): number;
+        Duration(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6?: any,
+        ): number;
         DVar(Arg1: Range, Arg2: any, Arg3: any): number;
         DVarP(Arg1: Range, Arg2: any, Arg3: any): number;
         EDate(Arg1: any, Arg2: any): number;
@@ -11793,11 +12445,27 @@ declare namespace Excel {
         Forecast(Arg1: number, Arg2: any, Arg3: any): number;
         Frequency(Arg1: any, Arg2: any): any;
         FTest(Arg1: any, Arg2: any): number;
-        Fv(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
+        Fv(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
         FVSchedule(Arg1: any, Arg2: any): number;
-        Gamma_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        Gamma_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         Gamma_Inv(Arg1: number, Arg2: number, Arg3: number): number;
-        GammaDist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        GammaDist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         GammaInv(Arg1: number, Arg2: number, Arg3: number): number;
         GammaLn(Arg1: number): number;
         GammaLn_Precise(Arg1: number): number;
@@ -11903,8 +12571,19 @@ declare namespace Excel {
         Hex2Dec(Arg1: any): string;
         Hex2Oct(Arg1: any, Arg2?: any): string;
         HLookup(Arg1: any, Arg2: any, Arg3: any, Arg4?: any): any;
-        HypGeom_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5: boolean): number;
-        HypGeomDist(Arg1: number, Arg2: number, Arg3: number, Arg4: number): number;
+        HypGeom_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5: boolean,
+        ): number;
+        HypGeomDist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+        ): number;
         IfError(Arg1: any, Arg2: any): any;
         ImAbs(Arg1: any): string;
         Imaginary(Arg1: any): number;
@@ -11988,7 +12667,14 @@ declare namespace Excel {
         Index(Arg1: any, Arg2: number, Arg3?: any, Arg4?: any): any;
         Intercept(Arg1: any, Arg2: any): number;
         IntRate(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5?: any): number;
-        Ipmt(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5?: any, Arg6?: any): number;
+        Ipmt(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5?: any,
+            Arg6?: any,
+        ): number;
         Irr(Arg1: any, Arg2?: any): number;
         IsErr(Arg1: any): boolean;
         IsError(Arg1: any): boolean;
@@ -12073,7 +12759,12 @@ declare namespace Excel {
         Log10(Arg1: number): number;
         LogEst(Arg1: any, Arg2?: any, Arg3?: any, Arg4?: any): any;
         LogInv(Arg1: number, Arg2: number, Arg3: number): number;
-        LogNorm_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        LogNorm_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         LogNorm_Inv(Arg1: number, Arg2: number, Arg3: number): number;
         LogNormDist(Arg1: number, Arg2: number, Arg3: number): number;
         Lookup(Arg1: any, Arg2: any, Arg3?: any): any;
@@ -12111,7 +12802,14 @@ declare namespace Excel {
             Arg30?: any,
         ): number;
         MDeterm(Arg1: any): number;
-        MDuration(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6?: any): number;
+        MDuration(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6?: any,
+        ): number;
         Median(
             Arg1: any,
             Arg2?: any,
@@ -12308,20 +13006,41 @@ declare namespace Excel {
             Arg29?: any,
             Arg30?: any,
         ): number;
-        NegBinom_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        NegBinom_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         NegBinomDist(Arg1: number, Arg2: number, Arg3: number): number;
         NetworkDays(Arg1: any, Arg2: any, Arg3?: any): number;
         NetworkDays_Intl(Arg1: any, Arg2: any, Arg3?: any, Arg4?: any): number;
         Nominal(Arg1: any, Arg2: any): number;
-        Norm_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        Norm_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         Norm_Inv(Arg1: number, Arg2: number, Arg3: number): number;
         Norm_S_Dist(Arg1: number, Arg2: boolean): number;
         Norm_S_Inv(Arg1: number): number;
-        NormDist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        NormDist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         NormInv(Arg1: number, Arg2: number, Arg3: number): number;
         NormSDist(Arg1: number): number;
         NormSInv(Arg1: number): number;
-        NPer(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
+        NPer(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
         Npv(
             Arg1: number,
             Arg2: any,
@@ -12380,8 +13099,26 @@ declare namespace Excel {
             Arg8: any,
             Arg9?: any,
         ): number;
-        OddLPrice(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7: any, Arg8?: any): number;
-        OddLYield(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7: any, Arg8?: any): number;
+        OddLPrice(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7: any,
+            Arg8?: any,
+        ): number;
+        OddLYield(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7: any,
+            Arg8?: any,
+        ): number;
         Or(
             Arg1: any,
             Arg2?: any,
@@ -12425,14 +13162,48 @@ declare namespace Excel {
         Permut(Arg1: number, Arg2: number): number;
         Phonetic(Arg1: Range): string;
         Pi(): number;
-        Pmt(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
+        Pmt(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
         Poisson(Arg1: number, Arg2: number, Arg3: boolean): number;
         Poisson_Dist(Arg1: number, Arg2: number, Arg3: boolean): number;
         Power(Arg1: number, Arg2: number): number;
-        Ppmt(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5?: any, Arg6?: any): number;
-        Price(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6: any, Arg7?: any): number;
-        PriceDisc(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5?: any): number;
-        PriceMat(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6?: any): number;
+        Ppmt(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5?: any,
+            Arg6?: any,
+        ): number;
+        Price(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6: any,
+            Arg7?: any,
+        ): number;
+        PriceDisc(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5?: any,
+        ): number;
+        PriceMat(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6?: any,
+        ): number;
         Prob(Arg1: any, Arg2: any, Arg3: number, Arg4?: any): number;
         Product(
             Arg1: any,
@@ -12467,7 +13238,13 @@ declare namespace Excel {
             Arg30?: any,
         ): number;
         Proper(Arg1: string): string;
-        Pv(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any): number;
+        Pv(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+        ): number;
         Quartile(Arg1: any, Arg2: number): number;
         Quartile_Exc(Arg1: any, Arg2: number): number;
         Quartile_Inc(Arg1: any, Arg2: number): number;
@@ -12477,10 +13254,28 @@ declare namespace Excel {
         Rank(Arg1: number, Arg2: Range, Arg3?: any): number;
         Rank_Avg(Arg1: number, Arg2: Range, Arg3?: any): number;
         Rank_Eq(Arg1: number, Arg2: Range, Arg3?: any): number;
-        Rate(Arg1: number, Arg2: number, Arg3: number, Arg4?: any, Arg5?: any, Arg6?: any): number;
-        Received(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5?: any): number;
+        Rate(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4?: any,
+            Arg5?: any,
+            Arg6?: any,
+        ): number;
+        Received(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5?: any,
+        ): number;
         Replace(Arg1: string, Arg2: number, Arg3: number, Arg4: string): string;
-        ReplaceB(Arg1: string, Arg2: number, Arg3: number, Arg4: string): string;
+        ReplaceB(
+            Arg1: string,
+            Arg2: number,
+            Arg3: number,
+            Arg4: string,
+        ): string;
         Rept(Arg1: string, Arg2: number): string;
         Roman(Arg1: number, Arg2?: any): string;
         Round(Arg1: number, Arg2: number): number;
@@ -12691,7 +13486,12 @@ declare namespace Excel {
             Arg30?: any,
         ): number;
         StEyx(Arg1: any, Arg2: any): number;
-        Substitute(Arg1: string, Arg2: string, Arg3: string, Arg4?: any): string;
+        Substitute(
+            Arg1: string,
+            Arg2: string,
+            Arg3: string,
+            Arg4?: any,
+        ): string;
         Subtotal(
             Arg1: number,
             Arg2: Range,
@@ -13010,19 +13810,50 @@ declare namespace Excel {
             Arg29?: any,
             Arg30?: any,
         ): number;
-        Vdb(Arg1: number, Arg2: number, Arg3: number, Arg4: number, Arg5: number, Arg6?: any, Arg7?: any): number;
+        Vdb(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: number,
+            Arg5: number,
+            Arg6?: any,
+            Arg7?: any,
+        ): number;
         VLookup(Arg1: any, Arg2: any, Arg3: any, Arg4?: any): any;
         Weekday(Arg1: any, Arg2?: any): number;
         WeekNum(Arg1: any, Arg2?: any): number;
-        Weibull(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
-        Weibull_Dist(Arg1: number, Arg2: number, Arg3: number, Arg4: boolean): number;
+        Weibull(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
+        Weibull_Dist(
+            Arg1: number,
+            Arg2: number,
+            Arg3: number,
+            Arg4: boolean,
+        ): number;
         WorkDay(Arg1: any, Arg2: any, Arg3?: any): number;
         WorkDay_Intl(Arg1: any, Arg2: any, Arg3?: any, Arg4?: any): number;
         Xirr(Arg1: any, Arg2: any, Arg3?: any): number;
         Xnpv(Arg1: any, Arg2: any): number;
         YearFrac(Arg1: any, Arg2: any, Arg3?: any): number;
-        YieldDisc(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5?: any): number;
-        YieldMat(Arg1: any, Arg2: any, Arg3: any, Arg4: any, Arg5: any, Arg6?: any): number;
+        YieldDisc(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5?: any,
+        ): number;
+        YieldMat(
+            Arg1: any,
+            Arg2: any,
+            Arg3: any,
+            Arg4: any,
+            Arg5: any,
+            Arg6?: any,
+        ): number;
         Z_Test(Arg1: any, Arg2: number, Arg3?: any): number;
         ZTest(Arg1: any, Arg2: number, Arg3?: any): number;
     }
@@ -13146,7 +13977,12 @@ declare namespace Excel {
         readonly Map: XmlMap;
         readonly Parent: any;
         readonly Repeating: boolean;
-        SetValue(Map: XmlMap, XPath: string, SelectionNamespace?: any, Repeating?: boolean): void;
+        SetValue(
+            Map: XmlMap,
+            XPath: string,
+            SelectionNamespace?: any,
+            Repeating?: boolean,
+        ): void;
         readonly Value: string;
     }
 
@@ -13287,7 +14123,7 @@ declare namespace Excel {
 
 interface EnumeratorConstructor {
     // we need this because there are two overloads for Item on the Sheets object
-    new<T>(sheets: Excel.Sheets<T>): Enumerator<T>;
+    new <T>(sheets: Excel.Sheets<T>): Enumerator<T>;
 }
 
 interface ActiveXObject {
@@ -13312,20 +14148,30 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Application,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Excel.Application, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.Application_Invoke_ArgNames,
-        handler: (this: Excel.Application, parameter: Excel.EventHelperTypes.Application_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: Excel.EventHelperTypes.Application_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -13337,7 +14183,10 @@ interface ActiveXObject {
             | "WorkbookDeactivate"
             | "WorkbookOpen",
         argNames: ["Wb"],
-        handler: (this: Excel.Application, parameter: { readonly Wb: Excel.Workbook }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { readonly Wb: Excel.Workbook },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -13347,7 +14196,10 @@ interface ActiveXObject {
             | "ProtectedViewWindowOpen"
             | "ProtectedViewWindowResize",
         argNames: ["Pvw"],
-        handler: (this: Excel.Application, parameter: { readonly Pvw: Excel.ProtectedViewWindow }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { readonly Pvw: Excel.ProtectedViewWindow },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -13368,20 +14220,29 @@ interface ActiveXObject {
         argNames: ["Pvw", "Cancel"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Pvw: Excel.ProtectedViewWindow; Cancel: boolean },
+            parameter: {
+                readonly Pvw: Excel.ProtectedViewWindow;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Application,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.Application, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
         event: "SheetActivate" | "SheetCalculate" | "SheetDeactivate",
         argNames: ["Sh"],
-        handler: (this: Excel.Application, parameter: { readonly Sh: Excel.Chart | Excel.Worksheet }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { readonly Sh: Excel.Chart | Excel.Worksheet },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -13389,7 +14250,11 @@ interface ActiveXObject {
         argNames: ["Sh", "Target", "Cancel"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Range; Cancel: boolean },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Range;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13398,7 +14263,10 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Range },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Range;
+            },
         ) => void,
     ): void;
     on(
@@ -13407,7 +14275,10 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Hyperlink },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Hyperlink;
+            },
         ) => void,
     ): void;
     on(
@@ -13425,8 +14296,16 @@ interface ActiveXObject {
     ): void;
     on(
         obj: Excel.Application,
-        event: "SheetPivotTableBeforeAllocateChanges" | "SheetPivotTableBeforeCommitChanges",
-        argNames: ["Sh", "TargetPivotTable", "ValueChangeStart", "ValueChangeEnd", "Cancel"],
+        event:
+            | "SheetPivotTableBeforeAllocateChanges"
+            | "SheetPivotTableBeforeCommitChanges",
+        argNames: [
+            "Sh",
+            "TargetPivotTable",
+            "ValueChangeStart",
+            "ValueChangeEnd",
+            "Cancel",
+        ],
         handler: (
             this: Excel.Application,
             parameter: {
@@ -13441,7 +14320,12 @@ interface ActiveXObject {
     on(
         obj: Excel.Application,
         event: "SheetPivotTableBeforeDiscardChanges",
-        argNames: ["Sh", "TargetPivotTable", "ValueChangeStart", "ValueChangeEnd"],
+        argNames: [
+            "Sh",
+            "TargetPivotTable",
+            "ValueChangeStart",
+            "ValueChangeEnd",
+        ],
         handler: (
             this: Excel.Application,
             parameter: {
@@ -13458,7 +14342,10 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.PivotTable },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.PivotTable;
+            },
         ) => void,
     ): void;
     on(
@@ -13467,7 +14354,10 @@ interface ActiveXObject {
         argNames: ["Wb", "Wn"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly Wn: Excel.Window },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly Wn: Excel.Window;
+            },
         ) => void,
     ): void;
     on(
@@ -13476,7 +14366,10 @@ interface ActiveXObject {
         argNames: ["Wb", "Success"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly Success: boolean },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly Success: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13511,7 +14404,10 @@ interface ActiveXObject {
         obj: Excel.Application,
         event: "WorkbookBeforeClose" | "WorkbookBeforePrint",
         argNames: ["Wb", "Cancel"],
-        handler: (this: Excel.Application, parameter: { readonly Wb: Excel.Workbook; Cancel: boolean }) => void,
+        handler: (
+            this: Excel.Application,
+            parameter: { readonly Wb: Excel.Workbook; Cancel: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -13519,7 +14415,11 @@ interface ActiveXObject {
         argNames: ["Wb", "SaveAsUI", "Cancel"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly SaveAsUI: boolean; Cancel: boolean },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly SaveAsUI: boolean;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13557,7 +14457,10 @@ interface ActiveXObject {
         argNames: ["Wb", "Ch"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly Ch: Excel.Chart },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly Ch: Excel.Chart;
+            },
         ) => void,
     ): void;
     on(
@@ -13566,16 +14469,24 @@ interface ActiveXObject {
         argNames: ["Wb", "Sh"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly Sh: Excel.Worksheet },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly Sh: Excel.Worksheet;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Application,
-        event: "WorkbookPivotTableCloseConnection" | "WorkbookPivotTableOpenConnection",
+        event:
+            | "WorkbookPivotTableCloseConnection"
+            | "WorkbookPivotTableOpenConnection",
         argNames: ["Wb", "Target"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly Target: Excel.PivotTable },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly Target: Excel.PivotTable;
+            },
         ) => void,
     ): void;
     on(
@@ -13598,7 +14509,10 @@ interface ActiveXObject {
         argNames: ["Wb", "SyncEventType"],
         handler: (
             this: Excel.Application,
-            parameter: { readonly Wb: Excel.Workbook; readonly SyncEventType: Office.MsoSyncEventType },
+            parameter: {
+                readonly Wb: Excel.Workbook;
+                readonly SyncEventType: Office.MsoSyncEventType;
+            },
         ) => void,
     ): void;
     on(
@@ -13607,7 +14521,12 @@ interface ActiveXObject {
         argNames: ["ElementID", "Arg1", "Arg2", "Cancel"],
         handler: (
             this: Excel.Chart,
-            parameter: { readonly ElementID: number; readonly Arg1: number; readonly Arg2: number; Cancel: boolean },
+            parameter: {
+                readonly ElementID: number;
+                readonly Arg1: number;
+                readonly Arg2: number;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13637,7 +14556,11 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.Chart,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
@@ -13650,7 +14573,10 @@ interface ActiveXObject {
         obj: Excel.Chart,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.Chart_Invoke_ArgNames,
-        handler: (this: Excel.Chart, parameter: Excel.EventHelperTypes.Chart_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.Chart,
+            parameter: Excel.EventHelperTypes.Chart_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.Chart,
@@ -13658,14 +14584,22 @@ interface ActiveXObject {
         argNames: ["Button", "Shift", "x", "y"],
         handler: (
             this: Excel.Chart,
-            parameter: { readonly Button: number; readonly Shift: number; readonly x: number; readonly y: number },
+            parameter: {
+                readonly Button: number;
+                readonly Shift: number;
+                readonly x: number;
+                readonly y: number;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Chart,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.Chart, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.Chart,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.Chart,
@@ -13673,14 +14607,24 @@ interface ActiveXObject {
         argNames: ["ElementID", "Arg1", "Arg2"],
         handler: (
             this: Excel.Chart,
-            parameter: { readonly ElementID: number; readonly Arg1: number; readonly Arg2: number },
+            parameter: {
+                readonly ElementID: number;
+                readonly Arg1: number;
+                readonly Arg2: number;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Chart,
         event: "SeriesChange",
         argNames: ["SeriesIndex", "PointIndex"],
-        handler: (this: Excel.Chart, parameter: { readonly SeriesIndex: number; readonly PointIndex: number }) => void,
+        handler: (
+            this: Excel.Chart,
+            parameter: {
+                readonly SeriesIndex: number;
+                readonly PointIndex: number;
+            },
+        ) => void,
     ): void;
     on(
         obj: Excel.OLEObject,
@@ -13703,38 +14647,57 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.OLEObject,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.OLEObject,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Excel.OLEObject, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Excel.OLEObject,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Excel.OLEObject,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.OLEObject_Invoke_ArgNames,
-        handler: (this: Excel.OLEObject, parameter: Excel.EventHelperTypes.OLEObject_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.OLEObject,
+            parameter: Excel.EventHelperTypes.OLEObject_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.OLEObject,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.OLEObject, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.OLEObject,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
         event: "AfterRefresh",
         argNames: ["Success"],
-        handler: (this: Excel.QueryTable, parameter: { readonly Success: boolean }) => void,
+        handler: (
+            this: Excel.QueryTable,
+            parameter: { readonly Success: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
         event: "BeforeRefresh",
         argNames: ["Cancel"],
-        handler: (this: Excel.QueryTable, parameter: { Cancel: boolean }) => void,
+        handler: (
+            this: Excel.QueryTable,
+            parameter: { Cancel: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
@@ -13757,32 +14720,48 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.QueryTable,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Excel.QueryTable, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Excel.QueryTable,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.QueryTable_Invoke_ArgNames,
-        handler: (this: Excel.QueryTable, parameter: Excel.EventHelperTypes.QueryTable_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.QueryTable,
+            parameter: Excel.EventHelperTypes.QueryTable_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.QueryTable,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.QueryTable, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.QueryTable,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "AfterSave",
         argNames: ["Success"],
-        handler: (this: Excel.Workbook, parameter: { readonly Success: boolean }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly Success: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
@@ -13790,7 +14769,11 @@ interface ActiveXObject {
         argNames: ["Map", "Url", "Result"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Map: Excel.XmlMap; readonly Url: string; readonly Result: Excel.XlXmlExportResult },
+            parameter: {
+                readonly Map: Excel.XmlMap;
+                readonly Url: string;
+                readonly Result: Excel.XlXmlExportResult;
+            },
         ) => void,
     ): void;
     on(
@@ -13816,7 +14799,10 @@ interface ActiveXObject {
         obj: Excel.Workbook,
         event: "BeforeSave",
         argNames: ["SaveAsUI", "Cancel"],
-        handler: (this: Excel.Workbook, parameter: { readonly SaveAsUI: boolean; Cancel: boolean }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly SaveAsUI: boolean; Cancel: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
@@ -13824,7 +14810,11 @@ interface ActiveXObject {
         argNames: ["Map", "Url", "Cancel"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Map: Excel.XmlMap; readonly Url: string; Cancel: boolean },
+            parameter: {
+                readonly Map: Excel.XmlMap;
+                readonly Url: string;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13862,7 +14852,11 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
@@ -13875,31 +14869,50 @@ interface ActiveXObject {
         obj: Excel.Workbook,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.Workbook_Invoke_ArgNames,
-        handler: (this: Excel.Workbook, parameter: Excel.EventHelperTypes.Workbook_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: Excel.EventHelperTypes.Workbook_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "NewChart",
         argNames: ["Ch"],
-        handler: (this: Excel.Workbook, parameter: { readonly Ch: Excel.Chart }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly Ch: Excel.Chart },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
-        event: "NewSheet" | "SheetActivate" | "SheetCalculate" | "SheetDeactivate",
+        event:
+            | "NewSheet"
+            | "SheetActivate"
+            | "SheetCalculate"
+            | "SheetDeactivate",
         argNames: ["Sh"],
-        handler: (this: Excel.Workbook, parameter: { readonly Sh: Excel.Chart | Excel.Worksheet }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly Sh: Excel.Chart | Excel.Worksheet },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "PivotTableCloseConnection" | "PivotTableOpenConnection",
         argNames: ["Target"],
-        handler: (this: Excel.Workbook, parameter: { readonly Target: Excel.PivotTable }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly Target: Excel.PivotTable },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.Workbook, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
@@ -13907,7 +14920,11 @@ interface ActiveXObject {
         argNames: ["Description", "Sheet", "Success"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Description: string; readonly Sheet: string; readonly Success: boolean },
+            parameter: {
+                readonly Description: string;
+                readonly Sheet: string;
+                readonly Success: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13916,7 +14933,11 @@ interface ActiveXObject {
         argNames: ["Sh", "Target", "Cancel"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Range; Cancel: boolean },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Range;
+                Cancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -13925,7 +14946,10 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Range },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Range;
+            },
         ) => void,
     ): void;
     on(
@@ -13934,7 +14958,10 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.Hyperlink },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.Hyperlink;
+            },
         ) => void,
     ): void;
     on(
@@ -13952,8 +14979,16 @@ interface ActiveXObject {
     ): void;
     on(
         obj: Excel.Workbook,
-        event: "SheetPivotTableBeforeAllocateChanges" | "SheetPivotTableBeforeCommitChanges",
-        argNames: ["Sh", "TargetPivotTable", "ValueChangeStart", "ValueChangeEnd", "Cancel"],
+        event:
+            | "SheetPivotTableBeforeAllocateChanges"
+            | "SheetPivotTableBeforeCommitChanges",
+        argNames: [
+            "Sh",
+            "TargetPivotTable",
+            "ValueChangeStart",
+            "ValueChangeEnd",
+            "Cancel",
+        ],
         handler: (
             this: Excel.Workbook,
             parameter: {
@@ -13968,7 +15003,12 @@ interface ActiveXObject {
     on(
         obj: Excel.Workbook,
         event: "SheetPivotTableBeforeDiscardChanges",
-        argNames: ["Sh", "TargetPivotTable", "ValueChangeStart", "ValueChangeEnd"],
+        argNames: [
+            "Sh",
+            "TargetPivotTable",
+            "ValueChangeStart",
+            "ValueChangeEnd",
+        ],
         handler: (
             this: Excel.Workbook,
             parameter: {
@@ -13985,38 +15025,56 @@ interface ActiveXObject {
         argNames: ["Sh", "Target"],
         handler: (
             this: Excel.Workbook,
-            parameter: { readonly Sh: Excel.Worksheet; readonly Target: Excel.PivotTable },
+            parameter: {
+                readonly Sh: Excel.Worksheet;
+                readonly Target: Excel.PivotTable;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "Sync",
         argNames: ["SyncEventType"],
-        handler: (this: Excel.Workbook, parameter: { readonly SyncEventType: Office.MsoSyncEventType }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly SyncEventType: Office.MsoSyncEventType },
+        ) => void,
     ): void;
     on(
         obj: Excel.Workbook,
         event: "WindowActivate" | "WindowDeactivate" | "WindowResize",
         argNames: ["Wn"],
-        handler: (this: Excel.Workbook, parameter: { readonly Wn: Excel.Window }) => void,
+        handler: (
+            this: Excel.Workbook,
+            parameter: { readonly Wn: Excel.Window },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "BeforeDoubleClick" | "BeforeRightClick",
         argNames: ["Target", "Cancel"],
-        handler: (this: Excel.Worksheet, parameter: { readonly Target: Excel.Range; Cancel: boolean }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { readonly Target: Excel.Range; Cancel: boolean },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "Change" | "SelectionChange",
         argNames: ["Target"],
-        handler: (this: Excel.Worksheet, parameter: { readonly Target: Excel.Range }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { readonly Target: Excel.Range },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "FollowHyperlink",
         argNames: ["Target"],
-        handler: (this: Excel.Worksheet, parameter: { readonly Target: Excel.Hyperlink }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { readonly Target: Excel.Hyperlink },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
@@ -14039,20 +15097,30 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Excel.Worksheet,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Excel.Worksheet, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "Invoke",
         argNames: Excel.EventHelperTypes.Worksheet_Invoke_ArgNames,
-        handler: (this: Excel.Worksheet, parameter: Excel.EventHelperTypes.Worksheet_Invoke_Parameter) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: Excel.EventHelperTypes.Worksheet_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
@@ -14060,13 +15128,23 @@ interface ActiveXObject {
         argNames: ["TargetPivotTable", "TargetRange"],
         handler: (
             this: Excel.Worksheet,
-            parameter: { readonly TargetPivotTable: Excel.PivotTable; readonly TargetRange: Excel.Range },
+            parameter: {
+                readonly TargetPivotTable: Excel.PivotTable;
+                readonly TargetRange: Excel.Range;
+            },
         ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
-        event: "PivotTableBeforeAllocateChanges" | "PivotTableBeforeCommitChanges",
-        argNames: ["TargetPivotTable", "ValueChangeStart", "ValueChangeEnd", "Cancel"],
+        event:
+            | "PivotTableBeforeAllocateChanges"
+            | "PivotTableBeforeCommitChanges",
+        argNames: [
+            "TargetPivotTable",
+            "ValueChangeStart",
+            "ValueChangeEnd",
+            "Cancel",
+        ],
         handler: (
             this: Excel.Worksheet,
             parameter: {
@@ -14094,13 +15172,19 @@ interface ActiveXObject {
         obj: Excel.Worksheet,
         event: "PivotTableChangeSync" | "PivotTableUpdate",
         argNames: ["Target"],
-        handler: (this: Excel.Worksheet, parameter: { readonly Target: Excel.PivotTable }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { readonly Target: Excel.PivotTable },
+        ) => void,
     ): void;
     on(
         obj: Excel.Worksheet,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Excel.Worksheet, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Excel.Worksheet,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Excel.Application,
@@ -14109,7 +15193,15 @@ interface ActiveXObject {
     ): void;
     on(
         obj: Excel.Chart,
-        event: "Activate" | "AddRef" | "Calculate" | "Deactivate" | "DragOver" | "DragPlot" | "Release" | "Resize",
+        event:
+            | "Activate"
+            | "AddRef"
+            | "Calculate"
+            | "Deactivate"
+            | "DragOver"
+            | "DragPlot"
+            | "Release"
+            | "Resize",
         handler: (this: Excel.Chart, parameter: {}) => void,
     ): void;
     on(
@@ -14124,7 +15216,14 @@ interface ActiveXObject {
     ): void;
     on(
         obj: Excel.Workbook,
-        event: "Activate" | "AddinInstall" | "AddinUninstall" | "AddRef" | "Deactivate" | "Open" | "Release",
+        event:
+            | "Activate"
+            | "AddinInstall"
+            | "AddinUninstall"
+            | "AddRef"
+            | "Deactivate"
+            | "Open"
+            | "Release",
         handler: (this: Excel.Workbook, parameter: {}) => void,
     ): void;
     on(
@@ -14135,14 +15234,42 @@ interface ActiveXObject {
     set(
         obj: Excel.Chart,
         propertyName: "HasAxis",
-        parameterTypes: [Excel.XlAxisType | undefined, Excel.XlAxisGroup | undefined],
+        parameterTypes: [
+            Excel.XlAxisType | undefined,
+            Excel.XlAxisGroup | undefined,
+        ],
         newValue: boolean,
     ): void;
-    set(obj: Excel.ControlFormat, propertyName: "List", parameterTypes: [number], newValue: string): void;
-    set(obj: Excel.ControlFormat, propertyName: "List", parameterTypes: never[], newValue: SafeArray<string>): void;
-    set(obj: Excel.PageSetup, propertyName: "PrintQuality", parameterTypes: [number], newValue: number): void;
-    set(obj: Excel.Workbook, propertyName: "Colors", parameterTypes: [number], newValue: number): void;
-    set(obj: Excel.Range, propertyName: "Value", parameterTypes: [Excel.XlRangeValueDataType], newValue: any): void;
+    set(
+        obj: Excel.ControlFormat,
+        propertyName: "List",
+        parameterTypes: [number],
+        newValue: string,
+    ): void;
+    set(
+        obj: Excel.ControlFormat,
+        propertyName: "List",
+        parameterTypes: never[],
+        newValue: SafeArray<string>,
+    ): void;
+    set(
+        obj: Excel.PageSetup,
+        propertyName: "PrintQuality",
+        parameterTypes: [number],
+        newValue: number,
+    ): void;
+    set(
+        obj: Excel.Workbook,
+        propertyName: "Colors",
+        parameterTypes: [number],
+        newValue: number,
+    ): void;
+    set(
+        obj: Excel.Range,
+        propertyName: "Value",
+        parameterTypes: [Excel.XlRangeValueDataType],
+        newValue: any,
+    ): void;
     set(
         obj: Excel.PivotField,
         propertyName: "Subtotals",

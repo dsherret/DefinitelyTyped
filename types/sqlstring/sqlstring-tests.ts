@@ -20,17 +20,22 @@ const post = { id: 1, title: "Hello MySQL" };
 const sql4 = SqlString.format("INSERT INTO posts SET ?", post);
 
 const sorter = "date";
-const sql5 = "SELECT * FROM posts ORDER BY " + SqlString.escapeId("posts." + sorter);
+const sql5 =
+    "SELECT * FROM posts ORDER BY " + SqlString.escapeId("posts." + sorter);
 
 const sorter2 = "date.2";
-const sql6 = "SELECT * FROM posts ORDER BY " + SqlString.escapeId(sorter2, true);
+const sql6 =
+    "SELECT * FROM posts ORDER BY " + SqlString.escapeId(sorter2, true);
 
 const userId4 = 1;
 const inserts = ["users", "id", userId4];
 const sql7 = SqlString.format("SELECT * FROM ?? WHERE ?? = ?", inserts);
 
 const CURRENT_TIMESTAMP = SqlString.raw("CURRENT_TIMESTAMP()");
-const sql8 = SqlString.format("UPDATE posts SET modified = ? WHERE id = ?", [CURRENT_TIMESTAMP, 42]);
+const sql8 = SqlString.format("UPDATE posts SET modified = ? WHERE id = ?", [
+    CURRENT_TIMESTAMP,
+    42,
+]);
 
 // Code samples taken from:
 // https://github.com/mysqljs/sqlstring/blob/master/test/unit/test-SqlString.js
@@ -42,7 +47,7 @@ assert.equal(SqlString.escapeId(42), "`42`");
 assert.equal(SqlString.escapeId({}), "`[object Object]`");
 assert.equal(
     SqlString.escapeId({
-        toString: function() {
+        toString: function () {
             return "foo";
         },
     }),
@@ -50,7 +55,7 @@ assert.equal(
 );
 assert.equal(
     SqlString.escapeId({
-        toString: function() {
+        toString: function () {
             return "f`oo";
         },
     }),
@@ -71,11 +76,11 @@ assert.equal(SqlString.escape(true), "true");
 assert.equal(SqlString.escape(5), "5");
 assert.equal(SqlString.escape(SqlString.raw("NOW()")), "NOW()");
 assert.equal(SqlString.escape({ a: "b", c: "d" }), "`a` = 'b', `c` = 'd'");
-assert.equal(SqlString.escape({ a: "b", c: function() {} }), "`a` = 'b'");
+assert.equal(SqlString.escape({ a: "b", c: function () {} }), "`a` = 'b'");
 assert.equal(
     SqlString.escape({
         id: {
-            toSqlString: function() {
+            toSqlString: function () {
                 return "LAST_INSERT_ID()";
             },
         },
@@ -84,7 +89,7 @@ assert.equal(
 );
 assert.equal(
     SqlString.escape({
-        toSqlString: function() {
+        toSqlString: function () {
             return "@foo_id";
         },
     }),
@@ -92,17 +97,20 @@ assert.equal(
 );
 assert.equal(
     SqlString.escape({
-        toSqlString: function() {
+        toSqlString: function () {
             return "CURRENT_TIMESTAMP()";
         },
     }),
     "CURRENT_TIMESTAMP()",
 );
-assert.equal(SqlString.escape({ a: { nested: true } }), "`a` = '[object Object]'");
+assert.equal(
+    SqlString.escape({ a: { nested: true } }),
+    "`a` = '[object Object]'",
+);
 assert.equal(
     SqlString.escape({
         a: {
-            toString: function() {
+            toString: function () {
                 return "foo";
             },
         },
@@ -112,7 +120,7 @@ assert.equal(
 assert.equal(
     SqlString.escape({
         a: {
-            toString: function() {
+            toString: function () {
                 return "f'oo";
             },
         },
@@ -121,16 +129,27 @@ assert.equal(
 );
 assert.equal(SqlString.escape([1, 2, "c"]), "1, 2, 'c'");
 assert.equal(
-    SqlString.escape([[1, 2, 3], [4, 5, 6], ["a", "b", { nested: true }]]),
+    SqlString.escape([
+        [1, 2, 3],
+        [4, 5, 6],
+        ["a", "b", { nested: true }],
+    ]),
     "(1, 2, 3), (4, 5, 6), ('a', 'b', '[object Object]')",
 );
-assert.equal(SqlString.escape([1, { nested: true }, 2]), "1, '[object Object]', 2");
 assert.equal(
-    SqlString.escape([1, {
-        toString: function() {
-            return "foo";
+    SqlString.escape([1, { nested: true }, 2]),
+    "1, '[object Object]', 2",
+);
+assert.equal(
+    SqlString.escape([
+        1,
+        {
+            toString: function () {
+                return "foo";
+            },
         },
-    }, 2]),
+        2,
+    ]),
     "1, 'foo', 2",
 );
 assert.equal(SqlString.escape("Super"), "'Super'");
@@ -150,8 +169,8 @@ assert.equal(SqlString.escape("Sup\u001aer"), "'Sup\\Zer'");
 assert.equal(SqlString.escape("Super\u001a"), "'Super\\Z'");
 assert.equal(SqlString.escape("Sup'er"), "'Sup\\'er'");
 assert.equal(SqlString.escape("Super'"), "'Super\\''");
-assert.equal(SqlString.escape("Sup\"er"), "'Sup\\\"er'");
-assert.equal(SqlString.escape("Super\""), "'Super\\\"'");
+assert.equal(SqlString.escape('Sup"er'), "'Sup\\\"er'");
+assert.equal(SqlString.escape('Super"'), "'Super\\\"'");
 {
     const expected = "2012-05-07 11:42:03.002";
     const date = new Date(2012, 4, 7, 11, 42, 3, 2);
@@ -213,11 +232,19 @@ assert.equal(SqlString.escape(Infinity), "Infinity");
     assert.equal(sql, "'a' and 'b'");
 }
 {
-    const sql = SqlString.format("SELECT * FROM ?? WHERE id = ?", ["table", 42]);
+    const sql = SqlString.format("SELECT * FROM ?? WHERE id = ?", [
+        "table",
+        42,
+    ]);
     assert.equal(sql, "SELECT * FROM `table` WHERE id = 42");
 }
 {
-    const sql = SqlString.format("? or ??? and ?", ["foo", "bar", "fizz", "buzz"]);
+    const sql = SqlString.format("? or ??? and ?", [
+        "foo",
+        "bar",
+        "fizz",
+        "buzz",
+    ]);
     assert.equal(sql, "'foo' or ??? and 'bar'");
 }
 {
@@ -245,19 +272,27 @@ assert.equal(SqlString.escape(Infinity), "Infinity");
     assert.equal(sql, "'[object Object]'");
 }
 {
-    const sql = SqlString.format("?", {
-        toString: function() {
-            return "hello";
+    const sql = SqlString.format(
+        "?",
+        {
+            toString: function () {
+                return "hello";
+            },
         },
-    }, true);
+        true,
+    );
     assert.equal(sql, "'hello'");
 }
 {
-    const sql = SqlString.format("?", {
-        toSqlString: function() {
-            return "@foo";
+    const sql = SqlString.format(
+        "?",
+        {
+            toSqlString: function () {
+                return "@foo";
+            },
         },
-    }, true);
+        true,
+    );
     assert.equal(sql, "@foo");
 }
 {
@@ -272,4 +307,7 @@ assert.equal(SqlString.escape(Infinity), "Infinity");
 // SqlString.raw
 assert.equal(typeof SqlString.raw("NOW()"), "object");
 assert.equal(typeof SqlString.raw("NOW()").toSqlString, "function");
-assert.equal(SqlString.raw("NOW() AS 'current_time'").toSqlString(), "NOW() AS 'current_time'");
+assert.equal(
+    SqlString.raw("NOW() AS 'current_time'").toSqlString(),
+    "NOW() AS 'current_time'",
+);

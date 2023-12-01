@@ -108,7 +108,10 @@ const data2 = {
     key2: "value2",
 };
 
-const nestedliteralParentData: Parent<Literal<string, typeof data1>, typeof data2> = {
+const nestedliteralParentData: Parent<
+    Literal<string, typeof data1>,
+    typeof data2
+> = {
     type: "literalParent",
     data: data2,
     position,

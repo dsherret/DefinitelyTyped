@@ -52,7 +52,11 @@ export interface TreeNodeProps extends React.HTMLAttributes<HTMLLIElement> {
     /** Set to true to make node contents wrap to next line(s). */
     wrapContent?: boolean;
     /** Callback function; triggered when a node's expansion button is clicked. */
-    onExpandToggle?: (event: React.SyntheticEvent, expansion: boolean, nodeData: object) => void;
+    onExpandToggle?: (
+        event: React.SyntheticEvent,
+        expansion: boolean,
+        nodeData: object,
+    ) => void;
     /**
      * Callback function; triggered when a node is selected (if selection is enabled)
      * <br>
@@ -60,7 +64,11 @@ export interface TreeNodeProps extends React.HTMLAttributes<HTMLLIElement> {
      * <br>
      * single: is selected
      */
-    onSelectionChange?: (event: React.SyntheticEvent, checked: boolean, nodeData: object) => void;
+    onSelectionChange?: (
+        event: React.SyntheticEvent,
+        checked: boolean,
+        nodeData: object,
+    ) => void;
 }
 
 declare class Tree extends React.Component<TreeProps> {

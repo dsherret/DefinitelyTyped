@@ -2,7 +2,9 @@ import ES2016 = require("es-abstract/es2016");
 
 const iterableNumbers: Iterable<number> = [1, 2, 3];
 const arrayLikeNumbers: ArrayLike<number> = [1, 2, 3];
-const iterableArrayLikeNumbers: Iterable<number> & ArrayLike<number> = [1, 2, 3];
+const iterableArrayLikeNumbers: Iterable<number> & ArrayLike<number> = [
+    1, 2, 3,
+];
 const recordNumbers: Record<number, number> = [1, 2, 3];
 
 // $ExpectType boolean

@@ -52,7 +52,10 @@ declare class Sha256 {
     /**
      * Digest the hash.
      */
-    digest<TBuf extends Uint8Array = Uint8Array>(enc?: TBuf, offset?: number): TBuf;
+    digest<TBuf extends Uint8Array = Uint8Array>(
+        enc?: TBuf,
+        offset?: number,
+    ): TBuf;
     digest(enc: string): string;
 
     /**
@@ -70,7 +73,10 @@ declare namespace Sha256 {
         outer: Sha256;
         update(input: Uint8Array | readonly number[]): this;
         update(input: string, encoding?: string): this;
-        digest<TBuf extends Uint8Array = Uint8Array>(enc?: TBuf, offset?: number): TBuf;
+        digest<TBuf extends Uint8Array = Uint8Array>(
+            enc?: TBuf,
+            offset?: number,
+        ): TBuf;
         digest(enc: string): string;
     }
 

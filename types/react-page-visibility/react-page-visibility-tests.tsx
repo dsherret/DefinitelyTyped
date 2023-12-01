@@ -1,5 +1,8 @@
 import * as React from "react";
-import PageVisibility, { KnownVisibilityStates, usePageVisibility } from "react-page-visibility";
+import PageVisibility, {
+    KnownVisibilityStates,
+    usePageVisibility,
+} from "react-page-visibility";
 
 const ComponentExpectsBoolean = (props: { isVisible: boolean }) => {
     const { isVisible } = props;
@@ -14,9 +17,12 @@ const VisibilityHookTestComponent = () => {
 
 const VisibilityComponentTest = () => {
     const isVisible = usePageVisibility();
-    const onChangeVisibility = React.useCallback((isVisible: boolean, visibilityState: KnownVisibilityStates) => {
-        return;
-    }, []);
+    const onChangeVisibility = React.useCallback(
+        (isVisible: boolean, visibilityState: KnownVisibilityStates) => {
+            return;
+        },
+        [],
+    );
 
     return (
         <PageVisibility onChange={onChangeVisibility}>

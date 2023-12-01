@@ -6,9 +6,7 @@ declare namespace TouchEventUtils {
      *   https://stackoverflow.com/questions/3666929/
      *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
      */
-    function extractSingleTouch(
-        nativeEvent: Event,
-    ): {
+    function extractSingleTouch(nativeEvent: Event): {
         pageX: number;
         pageY: number;
     } | null;

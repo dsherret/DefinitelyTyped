@@ -11,5 +11,8 @@ export interface AuthenticatorConfig {
 export default class Authenticator {
     constructor(config: Config);
 
-    authenticate(options: AuthenticatorConfig, cb: (err: Error, data: any) => void): void;
+    authenticate(
+        options: AuthenticatorConfig,
+        cb: (err: Error, data: any) => void,
+    ): void;
 }

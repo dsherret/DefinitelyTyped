@@ -5,7 +5,7 @@ export function createInterval<T = number>(
 ): IntervalConstructor<T>;
 
 export interface IntervalConstructor<T = number> {
-    new(from: Endpoint<T>, to: Endpoint<T>): Interval<T>;
+    new (from: Endpoint<T>, to: Endpoint<T>): Interval<T>;
     prototype: Interval<T>;
     empty: Interval<T>;
     whole: Interval<T>;

@@ -6,7 +6,10 @@ declare namespace withNotices {
     interface Props {
         noticeList: readonly NoticeList.Notice[];
         noticeOperations: {
-            createNotice(notice: Partial<NoticeList.Notice> & Pick<NoticeList.Notice, "content">): void;
+            createNotice(
+                notice: Partial<NoticeList.Notice> &
+                    Pick<NoticeList.Notice, "content">,
+            ): void;
             createErrorNotice(message: string): void;
             removeAllNotices(): void;
             removeNotice(noticeId: string): void;

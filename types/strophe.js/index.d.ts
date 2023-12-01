@@ -12,7 +12,10 @@ declare global {
      *  Returns:
      *    @returns A new Strophe.Builder object.
      */
-    function $build(name: string, attrs?: Record<string, string>): globalThis.Strophe.Builder;
+    function $build(
+        name: string,
+        attrs?: Record<string, string>,
+    ): globalThis.Strophe.Builder;
 
     /** Function: $msg
      *  Create a Strophe.Builder with a <message/> element as the root.
@@ -101,29 +104,43 @@ declare global {
          *  allowed tags and their attributes.
          */
         const XHTML: {
-            tags: ["a", "blockquote", "br", "cite", "em", "img", "li", "ol", "p", "span", "strong", "ul", "body"];
+            tags: [
+                "a",
+                "blockquote",
+                "br",
+                "cite",
+                "em",
+                "img",
+                "li",
+                "ol",
+                "p",
+                "span",
+                "strong",
+                "ul",
+                "body",
+            ];
             attributes: {
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "a": ["href"];
+                a: ["href"];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "blockquote": ["style"];
-                "br": [];
+                blockquote: ["style"];
+                br: [];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "cite": ["style"];
-                "em": [];
-                "img": ["src", "alt", "style", "height", "width"];
+                cite: ["style"];
+                em: [];
+                img: ["src", "alt", "style", "height", "width"];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "li": ["style"];
+                li: ["style"];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "ol": ["style"];
+                ol: ["style"];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "p": ["style"];
+                p: ["style"];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "span": ["style"];
-                "strong": [];
+                span: ["style"];
+                strong: [];
                 // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-                "ul": ["style"];
-                "body": [];
+                ul: ["style"];
+                body: [];
             };
             css: [
                 "background-color",
@@ -289,7 +306,11 @@ declare global {
          *    @param func - The function to apply to each child.  This
          *      function should take a single argument, a DOM element. A return value will be ignored.
          */
-        function forEachChild(elem: Element, elemName: string, func: (child: Element) => unknown): void;
+        function forEachChild(
+            elem: Element,
+            elemName: string,
+            func: (child: Element) => unknown,
+        ): void;
 
         /** Function: isTagEqual
          *  Compare an element's tag name with a string.
@@ -575,7 +596,9 @@ declare global {
          *  Returns:
          *    @returns The serialized element tree as a String.
          */
-        function serialize(elem: Element | Builder | { tree: () => Element }): string;
+        function serialize(
+            elem: Element | Builder | { tree: () => Element },
+        ): string;
 
         /** Function: addConnectionPlugin
          *  Extends the Strophe.Connection object with the given plugin.
@@ -584,7 +607,10 @@ declare global {
          *    @param name - The name of the extension.
          *    @param prototypeObject - The plugin's prototype.
          */
-        function addConnectionPlugin(name: string, prototypeObject: object): void;
+        function addConnectionPlugin(
+            name: string,
+            prototypeObject: object,
+        ): void;
 
         /** Class: Strophe.Builder
          *  XML DOM builder.
@@ -694,7 +720,11 @@ declare global {
              *  Returns:
              *    @returns The Strophe.Builder object.
              */
-            c(name: string, attrs?: Record<string, string>, text?: string): Builder;
+            c(
+                name: string,
+                attrs?: Record<string, string>,
+                text?: string,
+            ): Builder;
 
             /** Function: cnode
              *  Add a child to the current element and make it the new current
@@ -774,7 +804,10 @@ declare global {
                 type: string,
                 id: string,
                 from: string,
-                options?: { matchBareFromJid?: boolean; ignoreNamespaceFragment: boolean },
+                options?: {
+                    matchBareFromJid?: boolean;
+                    ignoreNamespaceFragment: boolean;
+                },
             );
 
             /** PrivateFunction: getNamespace
@@ -1119,7 +1152,11 @@ declare global {
              *  Set on connection.
              *  Callback after connecting.
              */
-            connect_callback: (status: number, condition: string, elem: Element) => unknown;
+            connect_callback: (
+                status: number,
+                condition: string,
+                elem: Element,
+            ) => unknown;
 
             disconnection_timeout: number;
 
@@ -1340,7 +1377,11 @@ declare global {
              *  // Triggers HTTP 500 error and onError handler will be called
              *  conn.connect('user_jid@incorrect_jabber_host', 'secret', onConnect);
              */
-            addProtocolErrorHandler(protocol: string, status_code: number, callback: (status: number) => unknown): void;
+            addProtocolErrorHandler(
+                protocol: string,
+                status_code: number,
+                callback: (status: number) => unknown,
+            ): void;
 
             /** Function: connect
              *  Starts the connection process.
@@ -1386,7 +1427,11 @@ declare global {
             connect(
                 jid?: string,
                 pass?: string,
-                callback?: (status: Status, condition: string, elem: Element) => unknown,
+                callback?: (
+                    status: Status,
+                    condition: string,
+                    elem: Element,
+                ) => unknown,
                 wait?: number,
                 hold?: number,
                 route?: string,
@@ -1422,7 +1467,11 @@ declare global {
                 jid: string,
                 sid: string,
                 rid: string,
-                callback?: (status: Status, condition: string, elem: Element) => unknown,
+                callback?: (
+                    status: Status,
+                    condition: string,
+                    elem: Element,
+                ) => unknown,
                 wait?: number,
                 hold?: number,
                 wind?: number,
@@ -1454,7 +1503,11 @@ declare global {
              */
             restore(
                 jid?: string,
-                callback?: (status: Status, condition: string, elem: Element) => unknown,
+                callback?: (
+                    status: Status,
+                    condition: string,
+                    elem: Element,
+                ) => unknown,
                 wait?: number,
                 hold?: number,
                 wind?: number,
@@ -1629,7 +1682,10 @@ declare global {
              *  Returns:
              *    @returns A reference to the handler that can be used to remove it.
              */
-            addTimedHandler(period: number, handler: () => boolean): TimedHandler;
+            addTimedHandler(
+                period: number,
+                handler: () => boolean,
+            ): TimedHandler;
 
             /** Function: deleteTimedHandler
              *  Delete a timed handler for a connection.
@@ -1714,7 +1770,10 @@ declare global {
                 type?: string | string[],
                 id?: string,
                 from?: string,
-                options?: { matchBareFromJid: boolean; ignoreNamespaceFragment: boolean },
+                options?: {
+                    matchBareFromJid: boolean;
+                    ignoreNamespaceFragment: boolean;
+                },
             ): Handler;
 
             /** Function: deleteHandler
@@ -1746,7 +1805,7 @@ declare global {
              *  Parameters:
              *    @param Mechanism - Constructor for an object with a Strophe.SASLMechanism prototype
              */
-            registerSASLMechanism(Mechanism: new() => SASLMechanism): void;
+            registerSASLMechanism(Mechanism: new () => SASLMechanism): void;
 
             /** Function: disconnect
              *  Start the graceful disconnection process.
@@ -1774,7 +1833,9 @@ declare global {
              *  Parameters:
              *    @param mechanisms - Array of SASL mechanisms.
              */
-            sortMechanismsByPriority(mechanisms: SASLMechanism[]): SASLMechanism[];
+            sortMechanismsByPriority(
+                mechanisms: SASLMechanism[],
+            ): SASLMechanism[];
 
             /** Function: authenticate
              * Set up authentication

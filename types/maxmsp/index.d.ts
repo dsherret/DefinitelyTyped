@@ -24,7 +24,11 @@ declare function post(...message: any[]): void;
  * For example, Max receive objects are bound to global symbols.
  * The following code would send the message bang to the named object flower.
  */
-declare function messnamed(object_name: string, message_name: string, ...message_arguments: any[]): void;
+declare function messnamed(
+    object_name: string,
+    message_name: string,
+    ...message_arguments: any[]
+): void;
 declare function arrayfromargs(arguments: IArguments): any[];
 declare function assist(arguments: any): void;
 declare function declareattribute(
@@ -332,7 +336,11 @@ declare class File {
      * which is located at /Library/Application Support/Cycling ’74 on Macintosh and C:\Program Files\Common Files\Cycling ’74 on Windows. By default, typelist is empty.
      * If able to, the File constructor opens the file specified by filename, provided it is one of the types in typelist.
      */
-    constructor(filename: string, access?: "read" | "write" | "readwrite", typelist?: string);
+    constructor(
+        filename: string,
+        access?: "read" | "write" | "readwrite",
+        typelist?: string,
+    );
 
     /**
      * File access permissions: "read", "write", or "readwrite". By default, this value is "read".
@@ -1302,7 +1310,11 @@ declare class Maxobj {
  * The object also provides methods for getting and setting the value of the observed value or attribute.
  */
 declare class MaxobjListener {
-    constructor(object: Maxobj, attribute_name: string, callback: (data: MaxobjListenerData<any>) => void);
+    constructor(
+        object: Maxobj,
+        attribute_name: string,
+        callback: (data: MaxobjListenerData<any>) => void,
+    );
 
     /**
      * The Maxobj to observe.
@@ -1455,24 +1467,44 @@ declare class Patcher {
     /**
      * Creates a new object of class classname in a patcher using the specified parameters and return a Maxobj (see below) that represents it.
      */
-    newdefault(left: number, top: number, classname: string, ...args: any[]): Maxobj;
+    newdefault(
+        left: number,
+        top: number,
+        classname: string,
+        ...args: any[]
+    ): Maxobj;
 
     // TODO: Are from_object: any actually strings, or Maxobjs?
 
     /**
      * Connects two objects (of type Maxobj) in a patcher. Indices for the outlet and inlet arguments start at 0 for the leftmost inlet or outlet.
      */
-    connect(from_object: any, outlet: number, to_object: any, inlet: number): void;
+    connect(
+        from_object: any,
+        outlet: number,
+        to_object: any,
+        inlet: number,
+    ): void;
 
     /**
      * Connects two objects (of type Maxobj) in a patcher with a hidden patch cord. Arguments are the same as for the connect message above.
      */
-    hiddenconnect(from_object: any, outlet: number, to_object: any, inlet: number): void;
+    hiddenconnect(
+        from_object: any,
+        outlet: number,
+        to_object: any,
+        inlet: number,
+    ): void;
 
     /**
      * Disconnects an existing connection between two objects (of type Maxobj) in a patcher. Indices for the outlet and inlet arguments start at 0 for the leftmost inlet or outlet.
      */
-    disconnect(from_object: any, outlet: number, to_object: any, inlet: number): void;
+    disconnect(
+        from_object: any,
+        outlet: number,
+        to_object: any,
+        inlet: number,
+    ): void;
 
     /**
      * For all objects in a patcher, calls the function with the each object's Maxobj as an argument. Does not recurse into subpatchers.
@@ -1882,7 +1914,13 @@ declare class MGraphics {
      * angle1   The starting angle of the arc in radians. Zero radians is center right (positive x axis).
      * angle2   The terminal angle of the arc in radians. Zero radians is center right (positive x axis).
      */
-    arc(x_center: number, y_center: number, radius: number, angle1: number, angle2: number): void;
+    arc(
+        x_center: number,
+        y_center: number,
+        radius: number,
+        angle1: number,
+        angle2: number,
+    ): void;
 
     /**
      * Add a circular, counter-clockwise, arc to the current path.
@@ -1892,7 +1930,13 @@ declare class MGraphics {
      * angle1   The starting angle of the arc in radians. Zero radians is center right (positive x axis).
      * angle2   The terminal angle of the arc in radians. Zero radians is center right (positive x axis).
      */
-    arc_negative(x_center: number, y_center: number, radius: number, angle1: number, angle2: number): void;
+    arc_negative(
+        x_center: number,
+        y_center: number,
+        radius: number,
+        angle1: number,
+        angle2: number,
+    ): void;
 
     /**
      * Add a non-circular arc to the current path.
@@ -1921,7 +1965,14 @@ declare class MGraphics {
      * x3 The destination point.
      * y3 The destination point.
      */
-    curve_to(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
+    curve_to(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3: number,
+        y3: number,
+    ): void;
 
     /**
      * Add a cubic Bezier spline to the current path, using coordinates relative to the current point.
@@ -1932,7 +1983,14 @@ declare class MGraphics {
      * x3 The destination point.
      * y3 The destination point.
      */
-    rel_curve_to(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
+    rel_curve_to(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3: number,
+        y3: number,
+    ): void;
 
     /**
      * Add a line segment to the current path.
@@ -1980,7 +2038,14 @@ declare class MGraphics {
      * ovalwidth  The width of the oval used for the round corners.
      * ovalheight The height of the oval used for the round corners.
      */
-    rectangle_rounded(x: number, y: number, width: number, height: number, ovalwidth: number, ovalheight: number): void;
+    rectangle_rounded(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        ovalwidth: number,
+        ovalheight: number,
+    ): void;
 
     /**
      * Add a closed elliptical path in the context.
@@ -2030,7 +2095,12 @@ declare class MGraphics {
     /**
      * Create a solid color pattern.
      */
-    pattern_create_rgba(red: number, green: number, blue: number, alpha: number): Pattern;
+    pattern_create_rgba(
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): Pattern;
 
     /**
      * Create a pattern using an image for the background. Repeating patterns depends on the extend value set using the set_extend() function.
@@ -2041,13 +2111,25 @@ declare class MGraphics {
      * Create a linear gradient, with an influence point for each gradient section. When in relative_coordinate mode, these influence points still need to be defined in pixels rather than relative
      * coordinates.
      */
-    pattern_create_linear(x1: number, y1: number, x2: number, y2: number): Pattern;
+    pattern_create_linear(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+    ): Pattern;
 
     /**
      * Create a radial gradient, with an influence point for each gradient section. When in relative_coordinate mode, these influence points still need to be defined in pixels rather than relative
      * coordinates.
      */
-    pattern_create_radial(x1: number, y1: number, rad1: number, x2: number, y2: number, rad2: number): Pattern;
+    pattern_create_radial(
+        x1: number,
+        y1: number,
+        rad1: number,
+        x2: number,
+        y2: number,
+        rad2: number,
+    ): Pattern;
 
     /**
      * Modifies the transform matrix by moving it by absolute (positive or negative) delta amounts.
@@ -2069,12 +2151,26 @@ declare class MGraphics {
      * Directly modify the transform matrix (and therefore the user space) using six values. The xx and yy values provide scaling support, xy and yx provide rotational warping, and x0 and y0 provide
      * location offset.
      */
-    transform(xx: number, xy: number, yx: number, yy: number, x0: number, y0: number): void;
+    transform(
+        xx: number,
+        xy: number,
+        yx: number,
+        yy: number,
+        x0: number,
+        y0: number,
+    ): void;
 
     /**
      * Directly set the tranform matrix for the current drawing context.
      */
-    set_matrix(xx: number, xy: number, yx: number, yy: number, x0: number, y0: number): void;
+    set_matrix(
+        xx: number,
+        xy: number,
+        yx: number,
+        yy: number,
+        x0: number,
+        y0: number,
+    ): void;
 
     /**
      * Retrieve the current transform matrix for the current drawing context.
@@ -2131,7 +2227,12 @@ declare class MGraphics {
     /**
      * Set the color and alpha channels to be used for drawing routines.
      */
-    set_source_rgba(red: number, green: number, blue: number, alpha: number): void;
+    set_source_rgba(
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Set the color channels to be used for drawing routines. Since the alpha channel is not provide, it is defaulted to completely opaque.
@@ -2158,7 +2259,12 @@ declare class MGraphics {
      * Create a transform for the color and alpha channels using scale amounts to determine a color multiplier (either positive or negative). Note: One of the set_source_* routines must be called to
      * apply this transform to an actual color.
      */
-    scale_source_rgba(red: number, green: number, blue: number, alpha: number): void;
+    scale_source_rgba(
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Set the color channels to be used for drawing routines. Since the alpha channel is not provide, it is defaulted to completely opaque.
@@ -2169,7 +2275,12 @@ declare class MGraphics {
      * Create a transform for the color and alpha channels by absolute delta amounts to determine a color offset (either positive or negative). Note: One of the set_source_* routines must be called to
      * apply this transform to an actual color.
      */
-    translate_source_rgba(red: number, green: number, blue: number, alpha: number): void;
+    translate_source_rgba(
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Set the appearance of the end-point of a drawn line. The options are butt, round, or square.
@@ -2280,7 +2391,13 @@ declare class Pattern {
     /**
      * A function called on a previously created pattern, the add_color_stop_rgba will define a color value for one of the influence points of the pattern.
      */
-    add_color_stop_rgba(index: number, red: number, green: number, blue: number, alpha: number): void;
+    add_color_stop_rgba(
+        index: number,
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Returns the extend value of the pattern.
@@ -2320,7 +2437,14 @@ declare class Pattern {
     /**
      * set_matrix(xx, xy, yx, yy, x0, y0)
      */
-    set_matrix(xx: number, xy: number, yx: number, yy: number, x0: number, y0: number): void;
+    set_matrix(
+        xx: number,
+        xy: number,
+        yx: number,
+        yy: number,
+        x0: number,
+        y0: number,
+    ): void;
 
     /**
      * Apply a translation transform (spatial offset) on the user space in which the pattern is displayed.
@@ -2375,7 +2499,14 @@ declare class Sketch {
      * Draws a line from the location specified by the x1, y1, and z1 arguments to the location specified by the x2, y2, and z2 arguments. After this method has been called, the drawing position is
      * updated to the location specified by the x2, y2, and z2 arguments.
      */
-    linesegment(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+    linesegment(
+        x1: number,
+        y1: number,
+        z1: number,
+        x2: number,
+        y2: number,
+        z2: number,
+    ): void;
     linesegment(x1: number, y1: number, x2: number, y2: number): void;
 
     /**
@@ -2393,7 +2524,14 @@ declare class Sketch {
         y3: number,
         z3: number,
     ): void;
-    tri(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void;
+    tri(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3: number,
+        y3: number,
+    ): void;
 
     /**
      * Draws a framed triangle with three corners specified by the x1, y1, z1, x2, y2, z2, x3, y3, and z3 arguments. After this method has been called, the drawing position is updated to the location
@@ -2466,13 +2604,24 @@ declare class Sketch {
      * drawing position. If the theta_start and theta_end arguments are specified, then a patch will be drawn instead of a full cylinder. The theta_start and theta_end arguments are in terms of
      * degrees(0-360). The current shapeorient, shapeslice, and shapeprim values will also affect the drawing.
      */
-    cylinder(radius1: number, radius2: number, mag: number, theta_start: number, theta_end: number): void;
+    cylinder(
+        radius1: number,
+        radius2: number,
+        mag: number,
+        theta_start: number,
+        theta_end: number,
+    ): void;
 
     /**
      * Draws a filled ellipse with radii specified by the radius1 and radius2 arguments. If theta_start and theta_end are specified, then an arc will be drawn instead of a full ellipse. The
      * theta_start and theta_end arguments are in terms of degrees(0-360). The current shapeorient, shapeslice, and shapeprim values will also affect the drawing.
      */
-    ellipse(radius1: number, radius2: number, theta_start: number, theta_end: number): void;
+    ellipse(
+        radius1: number,
+        radius2: number,
+        theta_start: number,
+        theta_end: number,
+    ): void;
 
     /**
      * Draws a framed circle with radius specified by the radius argument. If theta_start and theta_end are specified, then an arc will be drawn instead of a full circle. The theta_start and theta_end
@@ -2484,14 +2633,24 @@ declare class Sketch {
      * Draws a framed ellipse with radii specified by the radius1 and radius2 arguments. If theta_start and theta_end are specified, then an arc will be drawn instead of a full ellipse. The
      * theta_start and theta_end arguments are in terms of degrees(0-360). The current shapeorient, shapeslice, and shapeprim values will also affect the drawing.
      */
-    frameellipse(radius1: number, radius2: number, theta_start: number, theta_end: number): void;
+    frameellipse(
+        radius1: number,
+        radius2: number,
+        theta_start: number,
+        theta_end: number,
+    ): void;
 
     /**
      * Draws a plane with top width 2*scale_x1, left height 2*scale_y1, bottom width 2*scale_x2, right height 2*scale_y2, and center point at the current drawing position. If scale_y1 is not
      * specified, it will assume the same value as scale_x1. If scale_x2 and scale_y2 are not specified, they will assume the same values as scale_x1 and scale_y1 respectively. The current
      * shapeorient, shapeslice, and shapeprim values will also affect the drawing.
      */
-    plane(scale_x1: number, scale_y1: number, scale_x2: number, scale_y2: number): void;
+    plane(
+        scale_x1: number,
+        scale_y1: number,
+        scale_x2: number,
+        scale_y2: number,
+    ): void;
 
     /**
      * Draws a rounded plane with width 2*scale_x, and height 2*scale_y and center point at the current drawing position. The size of the rounded portion of the plane is determined by the round_amount
@@ -2504,7 +2663,13 @@ declare class Sketch {
      * specified, then a patch will be drawn instead of a full sphere. The theta1_start, theta1_end, theta2_start, and theta2_end arguments are in terms of degrees(0-360). The current shapeorient,
      * shapeslice, and shapeprim values will also affect the drawing.
      */
-    sphere(radius: number, theta1_start: number, theta1_end: number, theta2_start: number, theta2_end: number): void;
+    sphere(
+        radius: number,
+        theta1_start: number,
+        theta1_end: number,
+        theta2_start: number,
+        theta2_end: number,
+    ): void;
 
     /**
      * Draws a torus with major radius specified by the radius1 argument, minor radius specified by the radius2 argument, and center point at the current drawing position. If theta1_start, theta1_end,
@@ -2524,7 +2689,11 @@ declare class Sketch {
      * Sets the rotation for drawing internal to any of the "shape" drawing methods to the rotation specified by the x_rot, y_rot, and rotation_x, rotation_y, and rotation_z arguments. See
      * documentation for an example.
      */
-    shapeorient(rotation_x: number, rotation_y: number, rotation_z?: number): void;
+    shapeorient(
+        rotation_x: number,
+        rotation_y: number,
+        rotation_z?: number,
+    ): void;
 
     /**
      * Sets the number of slices to use when rendering any of the "shape" drawing methods. Increasing the slice_a and slice_b arguments will increase the quality at which the shape is rendered, while
@@ -2604,7 +2773,14 @@ declare class Sketch {
     /**
      * Sets the pixel value at the specified location. Color values are floating point numbers in the range 0.-1.
      */
-    setpixel(x: number, y: number, red: number, green: number, blue: number, alpha: number): void;
+    setpixel(
+        x: number,
+        y: number,
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Returns an array containing the x, y, and z world coordinates associated with a given screen pixel using the same the depth from the camera as 0,0,0. Optionally a third depth arg may be
@@ -2665,7 +2841,13 @@ declare class Sketch {
     glclear(): void;
     glclearcolor(red: number, green: number, blue: number, alpha: number): void;
     glcleardepth(depth: number): void;
-    glclipplane(plane: number, coeff1: number, coeff2: number, coeff3: number, coeff4: number): void;
+    glclipplane(
+        plane: number,
+        coeff1: number,
+        coeff2: number,
+        coeff3: number,
+        coeff4: number,
+    ): void;
     glcolor(red: number, green: number, blue: number, alpha: number): void;
     glcolormask(red: number, green: number, blue: number, alpha: number): void;
     glcolormaterial(face: number, mode: any[]): void;
@@ -2680,7 +2862,14 @@ declare class Sketch {
     glfinish(): void;
     glflush(): void;
     glfog(parameter_name: string, value: number): void;
-    glfrustum(left: number, right: number, bottom: number, top: number, near: number, far: number): void;
+    glfrustum(
+        left: number,
+        right: number,
+        bottom: number,
+        top: number,
+        near: number,
+        far: number,
+    ): void;
     glhint(target: string, mode: number): void;
     gllight(light: string, parameter_name: string, value: number): void;
     gllightmodel(parameter_name: string, value: number): void;
@@ -2693,7 +2882,14 @@ declare class Sketch {
     glmatrixmode(mode: string): void;
     glmultmatrix(matrix_array: any[]): void;
     glnormal(x: number, y: number, z?: number): void;
-    glortho(left: number, right: number, bottom: number, top: number, near: number, far: number): void;
+    glortho(
+        left: number,
+        right: number,
+        bottom: number,
+        top: number,
+        near: number,
+        far: number,
+    ): void;
     glpointsize(size: number): void;
     glpolygonmode(): void;
     glpolygonoffset(): void;
@@ -2707,9 +2903,28 @@ declare class Sketch {
     glscissor(x: number, y: number, width: number, height: number): void;
     glshademodel(mode: any[]): void;
     gltexcoord(s: number[], t: number[]): void;
-    gltexenv(parameter_name: string, val1: string, val2: string, val3: string, val4: string): void;
-    gltexgen(coord: number[], parameter_name: string, val1: string, val2: string, val3: string, val4: string): void;
-    gltexparameter(parameter_name: string, val1: string, val2: string, val3: string, val4: string): void;
+    gltexenv(
+        parameter_name: string,
+        val1: string,
+        val2: string,
+        val3: string,
+        val4: string,
+    ): void;
+    gltexgen(
+        coord: number[],
+        parameter_name: string,
+        val1: string,
+        val2: string,
+        val3: string,
+        val4: string,
+    ): void;
+    gltexparameter(
+        parameter_name: string,
+        val1: string,
+        val2: string,
+        val3: string,
+        val4: string,
+    ): void;
     gltranslate(delta_x: number, delta_y: number, delta_z?: number): void;
     glulookat(
         eye_x: number,
@@ -2722,9 +2937,21 @@ declare class Sketch {
         up_y: number,
         up_z: number,
     ): void;
-    glulookat(eye_x: number, eye_y: number, center_x: number, center_y: number, up_x: number, up_y: number): void;
+    glulookat(
+        eye_x: number,
+        eye_y: number,
+        center_x: number,
+        center_y: number,
+        up_x: number,
+        up_y: number,
+    ): void;
     gluortho2d(left: number, right: number, bottom: number, top: number): void;
-    gluperspective(fovy: number, aspect: number, near: number, far: number): void;
+    gluperspective(
+        fovy: number,
+        aspect: number,
+        near: number,
+        far: number,
+    ): void;
     glvertex(x: number, y: number, z?: number): void;
     glviewport(x: number, y: number, width: number, height: number): void;
 }
@@ -2765,7 +2992,11 @@ declare class Image {
      * Adjusts all channel values in the image channel specified by the channel argument, by multiplying the channel value by the value specified by the scale argument and then adding the value
      * specified by the bias argument. The resulting channel is clipped to the range 0.-1. Acceptable values for the channel argument are the strings: "red", "green", "blue", or "alpha".
      */
-    adjustchannel(channel: "red" | "green" | "blue" | "alpha", scale: number, bias: number): void;
+    adjustchannel(
+        channel: "red" | "green" | "blue" | "alpha",
+        scale: number,
+        bias: number,
+    ): void;
 
     /**
      * Generates an alpha channel based on the chromatic distance from the specified RGB target color. If no tolerance, fade or minkey arguments are specified they are assumed to be 0. If no maxkey
@@ -2822,7 +3053,10 @@ declare class Image {
      * Sets all channel values in the image channel specified by the channel argument to be the value specified by the value argument. If no value argument is specified, it is assumed to be 0.
      * Acceptable values for the channel argument are the strings: "red", "green", "blue", or "alpha".
      */
-    clearchannel(channel: "red" | "green" | "blue" | "alpha", value: number): void;
+    clearchannel(
+        channel: "red" | "green" | "blue" | "alpha",
+        value: number,
+    ): void;
 
     /**
      * Copies the channel values from the source object's channel specified by the source_channel argument to the destination object's channel specified by the destination_channel argument. The source
@@ -2876,7 +3110,14 @@ declare class Image {
      * Sets the pixel value at the specified location. Color values are floating point numbers in the range 0.-1.
      */
     // tslint:disable-next-line: unified-signatures
-    setpixel(x: number, y: number, red: number, green: number, blue: number, alpha?: number): void;
+    setpixel(
+        x: number,
+        y: number,
+        red: number,
+        green: number,
+        blue: number,
+        alpha?: number,
+    ): void;
 
     /**
      * Sets the pixel value at the specified location. Color values are floating point numbers in the range 0.-1.
@@ -2894,7 +3135,13 @@ declare class Image {
      * Sets the pixel value at the specified location. Color values are floating point numbers in the range 0.-1.
      */
     // tslint:disable-next-line: unified-signatures
-    setpixel(position: number[], red: number, green: number, blue: number, alpha: number): void;
+    setpixel(
+        position: number[],
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ): void;
 
     /**
      * Sets the pixel value at the specified location. Color values are floating point numbers in the range 0.-1.
@@ -2944,11 +3191,40 @@ declare class CanvasRenderingContext2D {
     scale(x: number, y: number): void;
     rotate(x: number): void;
     translate(x: number, y: number): void;
-    transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
-    setTransform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
-    createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
-    createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
-    createPattern(image: Image, repetition: "repeat" | "repeat-x" | "repeat-y" | "no-repeat"): CanvasPattern;
+    transform(
+        m11: number,
+        m12: number,
+        m21: number,
+        m22: number,
+        dx: number,
+        dy: number,
+    ): void;
+    setTransform(
+        m11: number,
+        m12: number,
+        m21: number,
+        m22: number,
+        dx: number,
+        dy: number,
+    ): void;
+    createLinearGradient(
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+    ): CanvasGradient;
+    createRadialGradient(
+        x0: number,
+        y0: number,
+        r0: number,
+        x1: number,
+        y1: number,
+        r1: number,
+    ): CanvasGradient;
+    createPattern(
+        image: Image,
+        repetition: "repeat" | "repeat-x" | "repeat-y" | "no-repeat",
+    ): CanvasPattern;
     clearRect(x: number, y: number, w: number, h: number): void;
     fillRect(x: number, y: number, w: number, h: number): void;
     strokeRect(x: number, y: number, w: number, h: number): void;
@@ -2957,10 +3233,24 @@ declare class CanvasRenderingContext2D {
     moveTo(x: number, y: number): void;
     lineTo(x: number, y: number): void;
     quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
-    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    bezierCurveTo(
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+    ): void;
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
     rect(x: number, y: number, w: number, h: number): void;
-    arc(x: number, y: number, r: number, startAngle: number, endAngle: number, anticlockwise: number): void;
+    arc(
+        x: number,
+        y: number,
+        r: number,
+        startAngle: number,
+        endAngle: number,
+        anticlockwise: number,
+    ): void;
     fill(): void;
     stroke(): void;
     isPointInPath(x: number, y: number): boolean;
@@ -2968,7 +3258,13 @@ declare class CanvasRenderingContext2D {
     strokeText(text: string, x: number, y: number, maxWidth: number): void;
     measureText(text: string): number;
     drawImage(image: Image, dx: number, dy: number): void;
-    drawImage(image: Image, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(
+        image: Image,
+        dx: number,
+        dy: number,
+        dw: number,
+        dh: number,
+    ): void;
     drawImage(
         image: Image,
         sx: number,
@@ -2994,7 +3290,14 @@ declare class CanvasRenderingContext2D {
     ): void;
     redraw(): void;
     paint(): void;
-    roundedRect(x: number, y: number, w: number, h: number, ow: number, oh: number): void;
+    roundedRect(
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        ow: number,
+        oh: number,
+    ): void;
     setTimeout(expression: object, timeout: number): Task;
     clearInterval(task: Task): void;
     setSource(style: CanvasPattern | CanvasGradient | string): void;
@@ -3054,7 +3357,12 @@ declare class RGBAColor {
     toHex(): string;
 }
 
-declare function hslToRgba(h: number, s: number, l: number, a: number): number[];
+declare function hslToRgba(
+    h: number,
+    s: number,
+    l: number,
+    a: number,
+): number[];
 
 /**
  * JitterObject
@@ -3181,7 +3489,13 @@ declare class JitterMatrix extends JitterObject {
     /**
      * Exports a matrix as a QuickTime movie.
      */
-    exportmovie(filename: string, FPS: number, codec: string, quality: string, timescale: number): void;
+    exportmovie(
+        filename: string,
+        FPS: number,
+        codec: string,
+        quality: string,
+        timescale: number,
+    ): void;
 
     /**
      * exprfill(plane, expression)
@@ -3242,7 +3556,13 @@ declare class JitterMatrix extends JitterObject {
     /**
      * Sets the cell specified by position to the value specified by value.
      */
-    setcell(position: number[], plane: number, plane_number: number, val: number | number[], values: number[]): void;
+    setcell(
+        position: number[],
+        plane: number,
+        plane_number: number,
+        val: number | number[],
+        values: number[],
+    ): void;
 
     /**
      * The word setcell1d, followed by a number specifying an x coordinate and a list of values, is similar to the setcell message but without the need to use a
@@ -3299,10 +3619,25 @@ declare class JitterMatrix extends JitterObject {
 declare class JitterReposUtils {
     static interpbits: number;
 
-    static cartopolmatrix2dfloat32(impulse: JitterMatrix, xs: number, ys: number, issigned: boolean): JitterMatrix;
+    static cartopolmatrix2dfloat32(
+        impulse: JitterMatrix,
+        xs: number,
+        ys: number,
+        issigned: boolean,
+    ): JitterMatrix;
     static genkernel2dfloat32(): JitterMatrix;
-    static makemap_cartopol(x: number, y: number, xscale: number, yscale: number): JitterMatrix;
-    static makemap_multi(x: number, y: number, xscale: number, yscale: number): JitterMatrix;
+    static makemap_cartopol(
+        x: number,
+        y: number,
+        xscale: number,
+        yscale: number,
+    ): JitterMatrix;
+    static makemap_multi(
+        x: number,
+        y: number,
+        xscale: number,
+        yscale: number,
+    ): JitterMatrix;
     static makemap_normal(x: number, y: number): JitterMatrix;
     static makemap_pinch(
         x: number,
@@ -3325,7 +3660,11 @@ declare class JitterReposUtils {
         power: number,
     ): JitterMatrix;
     static rel2abs(rela: JitterMatrix): JitterMatrix;
-    static unpack2plane(cero: JitterMatrix, uno: JitterMatrix, dos: JitterMatrix): void;
+    static unpack2plane(
+        cero: JitterMatrix,
+        uno: JitterMatrix,
+        dos: JitterMatrix,
+    ): void;
     static upsample1d(inmat: JitterMatrix, l: number): JitterMatrix;
     static upsample2d(inmat: JitterMatrix, x: number, y: number): JitterMatrix;
 }
@@ -3484,7 +3823,13 @@ declare class Jitter3DUtils {
     /**
      * set p1 to the point on sphere closest to line segment.
      */
-    static closest_line_sphere(line_a: number[], line_b: number[], center: number[], r: number, p1: number[]): void;
+    static closest_line_sphere(
+        line_a: number[],
+        line_b: number[],
+        center: number[],
+        r: number,
+        p1: number[],
+    ): void;
 
     /**
      * return true if the ray defined by the line's two points intersects the quad.

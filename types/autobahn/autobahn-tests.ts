@@ -27,15 +27,21 @@ class MyClass {
 }
 
 function test_client() {
-    var options: autobahn.IConnectionOptions = { url: "ws://127.0.0.1:8080/ws", realm: "realm1" };
+    var options: autobahn.IConnectionOptions = {
+        url: "ws://127.0.0.1:8080/ws",
+        realm: "realm1",
+    };
 
     var connection = new autobahn.Connection(options);
 
-    connection.onopen = session => {
+    connection.onopen = (session) => {
         var myInstance = new MyClass(session);
 
         // 1) subscribe to a topic
-        const fixedHelloSubscription = session.subscribe("com.myapp.hello", myInstance.onEvent);
+        const fixedHelloSubscription = session.subscribe(
+            "com.myapp.hello",
+            myInstance.onEvent,
+        );
         // 1a) subscribe to a topic, while ensuring that a different handler would be able to pick it up
         const randomHelloSubscription = session.subscribe<[string]>(
             "com.myapp.hello2",
@@ -46,25 +52,42 @@ function test_client() {
         session.publish("com.myapp.hello", ["Hello, world!"]);
 
         // 2a) public an event that should be type safe for the receiver
-        session.publish<Parameters<typeof myInstance.onEvent>[0]>("com.myapp.hello", ["Hello, world!"]);
+        session.publish<Parameters<typeof myInstance.onEvent>[0]>(
+            "com.myapp.hello",
+            ["Hello, world!"],
+        );
         session.publish<[string]>("com.myapp.hello2", ["Hello, world!"]);
 
         // 3) register a procedure for remoting
-        const add2reg = session.register("com.myapp.add2", myInstance.add2, { invoke: "roundrobin" });
-        const doGreetingReg = session.register("com.myapp.doGreeting", myInstance.doGreeting, { invoke: "roundrobin" });
+        const add2reg = session.register("com.myapp.add2", myInstance.add2, {
+            invoke: "roundrobin",
+        });
+        const doGreetingReg = session.register(
+            "com.myapp.doGreeting",
+            myInstance.doGreeting,
+            { invoke: "roundrobin" },
+        );
 
         // 4) call a remote procedure
-        session.call<number>("com.myapp.add2", [2, 3]).then(res => {
+        session.call<number>("com.myapp.add2", [2, 3]).then((res) => {
             console.log("Result:", res);
         });
-        session.call<string>("com.myapp.add2", [], { greeting: "hello", who: "world" }).then(res => {
-            console.log("Result:", res);
-        });
+        session
+            .call<string>("com.myapp.add2", [], {
+                greeting: "hello",
+                who: "world",
+            })
+            .then((res) => {
+                console.log("Result:", res);
+            });
 
         // 4a) call a remote procedure that should be type safe for the receiver
         session
-            .call<ReturnType<typeof myInstance.add2>, Parameters<typeof myInstance.add2>[0]>("com.myapp.add2", [2, 3])
-            .then(res => {
+            .call<
+                ReturnType<typeof myInstance.add2>,
+                Parameters<typeof myInstance.add2>[0]
+            >("com.myapp.add2", [2, 3])
+            .then((res) => {
                 console.log("Result:", res);
             });
         session
@@ -73,28 +96,32 @@ function test_client() {
                 Parameters<typeof myInstance.doGreeting>[0],
                 Parameters<typeof myInstance.doGreeting>[1]
             >("com.myapp.add2", [], { greeting: "hello", who: "world" })
-            .then(res => {
+            .then((res) => {
                 console.log("Result:", res);
             });
 
         // 5) unsubscribe
-        fixedHelloSubscription.then(sub => {
+        fixedHelloSubscription.then((sub) => {
             return sub.unsubscribe();
         });
-        randomHelloSubscription.then(sub => {
+        randomHelloSubscription.then((sub) => {
             session.unsubscribe(sub);
         });
 
         // 6) unregister
-        add2reg.then(reg => {
+        add2reg.then((reg) => {
             reg.unregister();
         });
-        doGreetingReg.then(reg => {
+        doGreetingReg.then((reg) => {
             session.unregister(reg);
         });
     };
 
-    if (!connection.isOpen && !connection.isRetrying && connection.session == null) {
+    if (
+        !connection.isOpen &&
+        !connection.isRetrying &&
+        connection.session == null
+    ) {
         connection.open();
     }
 

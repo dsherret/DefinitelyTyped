@@ -11,13 +11,11 @@ import { ToggleableOptions } from "./ToggleableOptions";
  * Provides options for the html5 number control.
  */
 export interface Html5NumberOptions
-    extends
-        IntervalOptions,
+    extends IntervalOptions,
         ControlOptions,
         DefaultValueOptions<number>,
         ComparableOptions,
         ToggleableOptions,
         DelayableOptions,
         StrictOptions,
-        TestableOptions
-{}
+        TestableOptions {}

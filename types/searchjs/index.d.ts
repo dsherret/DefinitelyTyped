@@ -12,7 +12,14 @@ export function setDefaults(options: {
 
 export function resetDefaults(): void;
 
-export function singleMatch(field: any, s: any, text: boolean, word: boolean, start: boolean, end: boolean): any;
+export function singleMatch(
+    field: any,
+    s: any,
+    text: boolean,
+    word: boolean,
+    start: boolean,
+    end: boolean,
+): any;
 
 export function matchArray(ary: any[], search: any): any;
 

@@ -98,7 +98,10 @@ export interface BaseFunction extends BaseNode {
     body: BlockStatement | Expression;
 }
 
-export type Function = FunctionDeclaration | FunctionExpression | ArrowFunctionExpression;
+export type Function =
+    | FunctionDeclaration
+    | FunctionExpression
+    | ArrowFunctionExpression;
 
 export type Statement =
     | ExpressionStatement
@@ -229,11 +232,16 @@ export interface DebuggerStatement extends BaseStatement {
     type: "DebuggerStatement";
 }
 
-export type Declaration = FunctionDeclaration | VariableDeclaration | ClassDeclaration;
+export type Declaration =
+    | FunctionDeclaration
+    | VariableDeclaration
+    | ClassDeclaration;
 
 export interface BaseDeclaration extends BaseStatement {}
 
-export interface MaybeNamedFunctionDeclaration extends BaseFunction, BaseDeclaration {
+export interface MaybeNamedFunctionDeclaration
+    extends BaseFunction,
+        BaseDeclaration {
     type: "FunctionDeclaration";
     /** It is null when a function declaration is a part of the `export default function` statement */
     id: Identifier | null;
@@ -408,7 +416,13 @@ export interface MemberExpression extends BaseExpression, BasePattern {
     optional: boolean;
 }
 
-export type Pattern = Identifier | ObjectPattern | ArrayPattern | RestElement | AssignmentPattern | MemberExpression;
+export type Pattern =
+    | Identifier
+    | ObjectPattern
+    | ArrayPattern
+    | RestElement
+    | AssignmentPattern
+    | MemberExpression;
 
 export interface BasePattern extends BaseNode {}
 
@@ -454,7 +468,14 @@ export interface BigIntLiteral extends BaseNode, BaseExpression {
     raw?: string | undefined;
 }
 
-export type UnaryOperator = "-" | "+" | "!" | "~" | "typeof" | "void" | "delete";
+export type UnaryOperator =
+    | "-"
+    | "+"
+    | "!"
+    | "~"
+    | "typeof"
+    | "void"
+    | "delete";
 
 export type BinaryOperator =
     | "=="
@@ -625,14 +646,20 @@ export type ModuleDeclaration =
     | ExportAllDeclaration;
 export interface BaseModuleDeclaration extends BaseNode {}
 
-export type ModuleSpecifier = ImportSpecifier | ImportDefaultSpecifier | ImportNamespaceSpecifier | ExportSpecifier;
+export type ModuleSpecifier =
+    | ImportSpecifier
+    | ImportDefaultSpecifier
+    | ImportNamespaceSpecifier
+    | ExportSpecifier;
 export interface BaseModuleSpecifier extends BaseNode {
     local: Identifier;
 }
 
 export interface ImportDeclaration extends BaseModuleDeclaration {
     type: "ImportDeclaration";
-    specifiers: Array<ImportSpecifier | ImportDefaultSpecifier | ImportNamespaceSpecifier>;
+    specifiers: Array<
+        ImportSpecifier | ImportDefaultSpecifier | ImportNamespaceSpecifier
+    >;
     source: Literal;
 }
 
@@ -668,7 +695,10 @@ export interface ExportSpecifier extends BaseModuleSpecifier {
 
 export interface ExportDefaultDeclaration extends BaseModuleDeclaration {
     type: "ExportDefaultDeclaration";
-    declaration: MaybeNamedFunctionDeclaration | MaybeNamedClassDeclaration | Expression;
+    declaration:
+        | MaybeNamedFunctionDeclaration
+        | MaybeNamedClassDeclaration
+        | Expression;
 }
 
 export interface ExportAllDeclaration extends BaseModuleDeclaration {

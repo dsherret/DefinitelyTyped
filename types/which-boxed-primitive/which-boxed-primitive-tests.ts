@@ -32,6 +32,6 @@ whichBoxedPrimitive(/a/g); // $ExpectType undefined
 whichBoxedPrimitive(new RegExp("a", "g")); // $ExpectType undefined
 whichBoxedPrimitive(new Date()); // $ExpectType undefined
 whichBoxedPrimitive(() => {}); // $ExpectType undefined
-whichBoxedPrimitive(function*() {}); // $ExpectType undefined
+whichBoxedPrimitive(function* () {}); // $ExpectType undefined
 whichBoxedPrimitive((x: number) => x * x); // $ExpectType undefined
 whichBoxedPrimitive([]); // $ExpectType undefined

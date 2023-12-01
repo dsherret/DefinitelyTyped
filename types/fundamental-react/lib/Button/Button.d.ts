@@ -2,7 +2,13 @@ import * as React from "react";
 
 export type ButtonOptions = "emphasized" | "transparent";
 
-export type ButtonTypes = "standard" | "positive" | "negative" | "medium" | "ghost" | "attention";
+export type ButtonTypes =
+    | "standard"
+    | "positive"
+    | "negative"
+    | "medium"
+    | "ghost"
+    | "attention";
 
 export type ButtonProps = {
     className?: string | undefined;
@@ -19,6 +25,8 @@ export type ButtonProps = {
     iconBeforeText?: boolean;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-declare const Button: React.FunctionComponent<ButtonProps> & { displayName: "Button" };
+declare const Button: React.FunctionComponent<ButtonProps> & {
+    displayName: "Button";
+};
 
 export default Button;

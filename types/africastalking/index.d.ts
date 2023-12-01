@@ -1,11 +1,11 @@
 interface SMSMessageData {
     Message: string;
     Recipients: {
-        "statusCode": number;
-        "number": string;
-        "status": "fulfilled" | "failed";
-        "cost": string;
-        "messageId": string;
+        statusCode: number;
+        number: string;
+        status: "fulfilled" | "failed";
+        cost: string;
+        messageId: string;
     };
 }
 
@@ -38,15 +38,15 @@ interface SMS {
         phoneNumber: string;
         checkoutToken: string;
     }) => Promise<{
-        "description": "Success" | "Failed";
-        "token": string;
+        description: "Success" | "Failed";
+        token: string;
     }>;
 }
 
 interface TOKEN {
     generateAuthToken: () => Promise<{
-        "description": "Success" | "Failed";
-        "token": string;
+        description: "Success" | "Failed";
+        token: string;
     }>;
     createCheckoutToken: (phoneNumber: string) => Promise<{
         description: "Success" | "Failed";
@@ -61,6 +61,7 @@ interface AfricasTalking {
 
 export = africastalking;
 
-declare function africastalking(
-    options: { username: string; apiKey: string },
-): AfricasTalking;
+declare function africastalking(options: {
+    username: string;
+    apiKey: string;
+}): AfricasTalking;

@@ -20,7 +20,10 @@ declare namespace spawn {
  * The `spawn()` method spawns a new process using the given `command`, with
  * command line arguments in `args`. If omitted, `args` defaults to an empty array.
  */
-declare function spawn(command: string, options: child_process.SpawnOptions): child_process.ChildProcess;
+declare function spawn(
+    command: string,
+    options: child_process.SpawnOptions,
+): child_process.ChildProcess;
 declare function spawn(
     command: string,
     args?: readonly string[],

@@ -31,7 +31,10 @@ export interface DeviceDescriptor {
  * If `vendor_id` and `product_id` are both set to `0`, `null` then all HID
  * devices will be returned:
  */
-export function enumerate(vendor_id?: number, product_id?: number): DeviceDescriptor[];
+export function enumerate(
+    vendor_id?: number,
+    product_id?: number,
+): DeviceDescriptor[];
 
 /**
  * Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally
@@ -44,7 +47,11 @@ export function enumerate(vendor_id?: number, product_id?: number): DeviceDescri
  * an error on failure. The device is automatically closed on garbage
  * collection.
  */
-export function open(vendor_id: number, product_id: number, serial_number?: string): OpaqueDevice;
+export function open(
+    vendor_id: number,
+    product_id: number,
+    serial_number?: string,
+): OpaqueDevice;
 
 /**
  * Open a HID device by its path name.
@@ -96,7 +103,11 @@ export function write(device: OpaqueDevice, data: Buffer): number;
  * If no packet was available to be read within the timeout period, this
  * function returns `0`.
  */
-export function read_timeout(device: OpaqueDevice, data: Buffer, milliseconds: number): number;
+export function read_timeout(
+    device: OpaqueDevice,
+    data: Buffer,
+    milliseconds: number,
+): number;
 
 /**
  * Read an Input report from a HID device.
@@ -152,7 +163,11 @@ export function read_timeout_async(
  * with an error. If no packet was available to be read and the handle is in
  * non-blocking mode, this function calls `cb(null, 0)`.
  */
-export function read_async(device: OpaqueDevice, data: Buffer, cb: (error: Error, bytes: number) => void): void;
+export function read_async(
+    device: OpaqueDevice,
+    data: Buffer,
+    cb: (error: Error, bytes: number) => void,
+): void;
 
 /**
  * Set the device handle to be non-blocking.

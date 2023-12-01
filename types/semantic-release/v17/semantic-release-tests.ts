@@ -118,7 +118,8 @@ const context: lib.Context = {
             },
             subject: "fix: encode text to HTML",
             body: "This closes a potential script injection vector.",
-            message: "fix: encode text to HTML\n\nThis closes a potential script injection vector.",
+            message:
+                "fix: encode text to HTML\n\nThis closes a potential script injection vector.",
             hash: "a018aff59995a17c0564fa3fd0cb96223f4d4096",
             committerDate: "2019-10-22",
         },
@@ -175,7 +176,8 @@ const result3: lib.Result = {
             },
             subject: "fix: encode text to HTML",
             body: "This closes a potential script injection vector.",
-            message: "fix: encode text to HTML\n\nThis closes a potential script injection vector.",
+            message:
+                "fix: encode text to HTML\n\nThis closes a potential script injection vector.",
             hash: "a018aff59995a17c0564fa3fd0cb96223f4d4096",
             committerDate: "2019-10-22",
         },

@@ -4,8 +4,8 @@ import { RedisClient } from "redis";
 import { Lock } from "redlock";
 
 let redlock: Redlock;
-const client: RedisClient = <RedisClient> {};
-const lock: Lock = <Lock> {};
+const client: RedisClient = <RedisClient>{};
+const lock: Lock = <Lock>{};
 
 redlock = new Redlock([client]);
 redlock = new Redlock([client], {

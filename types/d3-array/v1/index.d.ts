@@ -520,8 +520,7 @@ export interface HistogramGeneratorDate<Datum, Value extends Date | undefined> e
 }
 
 export interface HistogramGeneratorNumber<Datum, Value extends number | undefined>
-    extends HistogramCommon<Datum, Value>
-{
+    extends HistogramCommon<Datum, Value> {
     domain(): (values: ArrayLike<Value>) => [number, number] | [undefined, undefined];
     domain(domain: [number, number]): this;
     domain(domainAccessor: (values: ArrayLike<Value>) => [number, number] | [undefined, undefined]): this;

@@ -34,7 +34,10 @@ export = hifo;
  * //   { name: 'Bob', age: 30 }
  * // ]
  */
-declare function hifo<T>(compareFn: hifo.CompareFn<T>, size?: number): hifo.Hifo<T>;
+declare function hifo<T>(
+    compareFn: hifo.CompareFn<T>,
+    size?: number,
+): hifo.Hifo<T>;
 
 declare namespace hifo {
     function lowest<

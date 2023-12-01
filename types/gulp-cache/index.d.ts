@@ -22,7 +22,12 @@ declare namespace gc {
         /**
          * The hash generator to use.
          */
-        key?: ((file: File, callback?: (err: any, result: string) => void) => string | Promise<string>) | undefined;
+        key?:
+            | ((
+                  file: File,
+                  callback?: (err: any, result: string) => void,
+              ) => string | Promise<string>)
+            | undefined;
 
         /**
          * Value representing the success of a task.
@@ -32,7 +37,9 @@ declare namespace gc {
         /**
          * Content that is to be cached.
          */
-        value?: ((result: any) => Object | Promise<Object> | string) | undefined;
+        value?:
+            | ((result: any) => Object | Promise<Object> | string)
+            | undefined;
     }
 
     interface ICacheOptions {
@@ -77,7 +84,7 @@ declare namespace gc {
      * Represents a cach store.
      */
     interface IGulpCache {
-        new(options: ICacheOptions): any;
+        new (options: ICacheOptions): any;
     }
 }
 

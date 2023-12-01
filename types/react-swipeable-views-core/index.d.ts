@@ -14,11 +14,12 @@ export const constant: {
     UNCERTAINTY_THRESHOLD: number;
 };
 export function mod(n: number, m: number): number;
-export function getDisplaySameSlide(props: SwipeableViewsProps, nextProps: SwipeableViewsProps): boolean;
+export function getDisplaySameSlide(
+    props: SwipeableViewsProps,
+    nextProps: SwipeableViewsProps,
+): boolean;
 export function checkIndexBounds(props: SwipeableViewsProps): void;
-export function computeIndex(
-    params: ComputeIndexParams,
-): {
+export function computeIndex(params: ComputeIndexParams): {
     index: number;
     startX: number;
 };

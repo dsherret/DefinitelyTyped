@@ -1,7 +1,7 @@
 import { browser } from "k6/experimental/browser";
 
 const url = "http://example.com";
-const selector = "a[href=\"http://example.com\"]";
+const selector = 'a[href="http://example.com"]';
 
 //
 // browser tests
@@ -32,7 +32,9 @@ browser.newContext({ geolocation: { latitude: 0, longitude: 0, accuracy: 1 } });
 // $ExpectType BrowserContext
 browser.newContext({ hasTouch: true });
 // $ExpectType BrowserContext
-browser.newContext({ httpCredentials: { username: "username", password: "password" } });
+browser.newContext({
+    httpCredentials: { username: "username", password: "password" },
+});
 // $ExpectType BrowserContext
 browser.newContext({ ignoreHTTPSErrors: true });
 // $ExpectType BrowserContext
@@ -79,7 +81,9 @@ browser.newPage({ geolocation: { latitude: 0, longitude: 0, accuracy: 1 } });
 // $ExpectType Page
 browser.newPage({ hasTouch: true });
 // $ExpectType Page
-browser.newPage({ httpCredentials: { username: "username", password: "password" } });
+browser.newPage({
+    httpCredentials: { username: "username", password: "password" },
+});
 // $ExpectType Page
 browser.newPage({ ignoreHTTPSErrors: true });
 // $ExpectType Page
@@ -120,25 +124,29 @@ browserContext.browser();
 // @ts-expect-error
 browserContext.addCookies();
 // $ExpectType void
-browserContext.addCookies([{
-    name: "foo",
-    value: "bar",
-    domain: "test.k6.io",
-    path: "/browser.php",
-    url: "https://test.k6.io",
-    expires: 60,
-    httpOnly: false,
-    secure: true,
-    sameSite: "Lax",
-}, {
-    name: "foo",
-    value: "bar",
-    sameSite: "Strict",
-}, {
-    name: "foo",
-    value: "bar",
-    sameSite: "None",
-}]);
+browserContext.addCookies([
+    {
+        name: "foo",
+        value: "bar",
+        domain: "test.k6.io",
+        path: "/browser.php",
+        url: "https://test.k6.io",
+        expires: 60,
+        httpOnly: false,
+        secure: true,
+        sameSite: "Lax",
+    },
+    {
+        name: "foo",
+        value: "bar",
+        sameSite: "Strict",
+    },
+    {
+        name: "foo",
+        value: "bar",
+        sameSite: "None",
+    },
+]);
 // @ts-expect-error
 browserContext.cookies()[0].sameSite = "NotAllowed";
 // @ts-expect-error
@@ -160,7 +168,9 @@ browserContext.grantPermissions();
 // $ExpectType void
 browserContext.grantPermissions(["geolocation", "notifications"]);
 // $ExpectType void
-browserContext.grantPermissions(["geolocation", "notifications"], { origin: "https://test.k6.io" });
+browserContext.grantPermissions(["geolocation", "notifications"], {
+    origin: "https://test.k6.io",
+});
 // $ExpectType Page
 browserContext.newPage();
 // $ExpectType Page[]
@@ -325,7 +335,7 @@ page.evaluate("");
 page.evaluate(() => {});
 // @ExpectType string
 page.evaluate(() => {
-    "";
+    ("");
 });
 // @ExpectType string
 page.evaluate((a: string) => {
@@ -344,7 +354,7 @@ page.evaluateHandle("");
 page.evaluateHandle(() => {});
 // @ExpectType JSHandle
 page.evaluateHandle(() => {
-    "";
+    ("");
 });
 // @ExpectType JSHandle
 page.evaluateHandle((a: string) => {
@@ -526,7 +536,7 @@ page.on("invalid");
 // @ts-expect-error
 page.on("console");
 // $ExpectType void
-page.on("console", msg => {
+page.on("console", (msg) => {
     // $ExpectType JSHandle<any>[]
     msg.args();
     // $ExpectType Page | null
@@ -596,7 +606,10 @@ page.selectOption(selector, { index: 0 });
 // $ExpectType string[]
 page.selectOption(selector, ["option", "option2"]);
 // $ExpectType string[]
-page.selectOption(selector, [page.waitForSelector(selector), page.waitForSelector(selector)]);
+page.selectOption(selector, [
+    page.waitForSelector(selector),
+    page.waitForSelector(selector),
+]);
 // $ExpectType string[]
 page.selectOption(selector, [{ value: "" }, { label: "" }]);
 // $ExpectType string[]
@@ -1154,7 +1167,7 @@ jsHandle.evaluate("");
 jsHandle.evaluate(() => {});
 // @ExpectType string
 jsHandle.evaluate(() => {
-    "";
+    ("");
 });
 // @ExpectType string
 jsHandle.evaluate((a: string) => {
@@ -1173,7 +1186,7 @@ jsHandle.evaluateHandle("");
 jsHandle.evaluateHandle(() => {});
 // @ExpectType JSHandle
 jsHandle.evaluateHandle(() => {
-    "";
+    ("");
 });
 // @ExpectType JSHandle
 jsHandle.evaluateHandle((a: string) => {
@@ -1191,48 +1204,48 @@ jsHandle.jsonValue();
 //
 // Request
 //
-const request = page.goto(url).then(r => r?.request());
+const request = page.goto(url).then((r) => r?.request());
 
 // $ExpectType Promise<Record<string, string> | undefined>
-request.then(r => r?.allHeaders());
+request.then((r) => r?.allHeaders());
 
 // $ExpectType Promise<Frame | undefined>
-request.then(r => r?.frame());
+request.then((r) => r?.frame());
 
 // $ExpectType Promise<Record<string, string> | undefined>
-request.then(r => r?.headers());
+request.then((r) => r?.headers());
 
 // $ExpectType Promise<{ name: string; value: string; }[] | undefined>
-request.then(r => r?.headersArray());
+request.then((r) => r?.headersArray());
 
 // @ts-expect-error
-request.then(r => r?.headerValue());
+request.then((r) => r?.headerValue());
 // $ExpectType Promise<string | null | undefined>
-request.then(r => r?.headerValue("content-type"));
+request.then((r) => r?.headerValue("content-type"));
 
 // $ExpectType Promise<boolean | undefined>
-request.then(r => r?.isNavigationRequest());
+request.then((r) => r?.isNavigationRequest());
 
 // $ExpectType Promise<string | undefined>
-request.then(r => r?.method());
+request.then((r) => r?.method());
 
 // $ExpectType Promise<string | undefined>
-request.then(r => r?.postData());
+request.then((r) => r?.postData());
 
 // $ExpectType Promise<ArrayBuffer | null | undefined>
-request.then(r => r?.postDataBuffer());
+request.then((r) => r?.postDataBuffer());
 
 // $ExpectType Promise<"document" | "stylesheet" | "image" | "media" | "font" | "script" | "texttrack" | "xhr" | "fetch" | "eventsource" | "websocket" | "manifest" | "other" | undefined>
-request.then(r => r?.resourceType());
+request.then((r) => r?.resourceType());
 
 // $ExpectType Promise<Response | null | undefined>
-request.then(r => r?.response());
+request.then((r) => r?.response());
 
 // $ExpectType Promise<{ body: number; headers: number; } | undefined>
-request.then(r => r?.size());
+request.then((r) => r?.size());
 
 // $ExpectType Promise<ResourceTiming | undefined>
-request.then(r => r?.timing());
+request.then((r) => r?.timing());
 
 //
 // Response
@@ -1240,56 +1253,56 @@ request.then(r => r?.timing());
 const response = page.goto(url);
 
 // $ExpectType Promise<Record<string, string> | undefined>
-response.then(r => r?.allHeaders());
+response.then((r) => r?.allHeaders());
 
 // $ExpectType Promise<ArrayBuffer | undefined>
-response.then(r => r?.body());
+response.then((r) => r?.body());
 
 // $ExpectType Promise<Frame | undefined>
-response.then(r => r?.frame());
+response.then((r) => r?.frame());
 
 // $ExpectType Promise<Record<string, string> | undefined>
-response.then(r => r?.headers());
+response.then((r) => r?.headers());
 
 // $ExpectType Promise<{ name: string; value: string; }[] | undefined>
-response.then(r => r?.headersArray());
+response.then((r) => r?.headersArray());
 
 // @ts-expect-error
-response.then(r => r?.headerValue());
+response.then((r) => r?.headerValue());
 // $ExpectType Promise<string | null | undefined>
-response.then(r => r?.headerValue("content-type"));
+response.then((r) => r?.headerValue("content-type"));
 
 // @ts-expect-error
-response.then(r => r?.headerValues());
+response.then((r) => r?.headerValues());
 // $ExpectType Promise<string[] | undefined>
-response.then(r => r?.headerValues("content-type"));
+response.then((r) => r?.headerValues("content-type"));
 
 // $ExpectType Promise<any>
-response.then(r => r?.json());
+response.then((r) => r?.json());
 
 // $ExpectType Promise<boolean | undefined>
-response.then(r => r?.ok());
+response.then((r) => r?.ok());
 
 // $ExpectType Promise<Request | undefined>
-response.then(r => r?.request());
+response.then((r) => r?.request());
 
 // $ExpectType Promise<SecurityDetailsObject | null | undefined>
-response.then(r => r?.securityDetails());
+response.then((r) => r?.securityDetails());
 
 // $ExpectType Promise<{ ipAddress: string; port: number; } | null | undefined>
-response.then(r => r?.serverAddr());
+response.then((r) => r?.serverAddr());
 
 // $ExpectType Promise<number | undefined>
-response.then(r => r?.status());
+response.then((r) => r?.status());
 
 // $ExpectType Promise<string | undefined>
-response.then(r => r?.statusText());
+response.then((r) => r?.statusText());
 
 // $ExpectType Promise<{ body: number; headers: number; } | undefined>
-response.then(r => r?.size());
+response.then((r) => r?.size());
 
 // $ExpectType Promise<string | undefined>
-response.then(r => r?.url());
+response.then((r) => r?.url());
 
 //
 // ElementHandle
@@ -1488,7 +1501,15 @@ elementHandle.uncheck({ strict: true });
 
 // @ts-expect-error
 elementHandle.waitForElementState();
-for (const state of ["visible", "hidden", "stable", "enabled", "disabled", "editable", "disabled"]) {
+for (const state of [
+    "visible",
+    "hidden",
+    "stable",
+    "enabled",
+    "disabled",
+    "editable",
+    "disabled",
+]) {
     // $ExpectType void
     elementHandle.waitForElementState(state as any);
 }
@@ -1731,7 +1752,7 @@ frame.evaluate("");
 frame.evaluate(() => {});
 // @ExpectType string
 frame.evaluate(() => {
-    "";
+    ("");
 });
 // @ExpectType string
 frame.evaluate((a: string) => {
@@ -1750,7 +1771,7 @@ frame.evaluateHandle("");
 frame.evaluateHandle(() => {});
 // @ExpectType JSHandle
 frame.evaluateHandle(() => {
-    "";
+    ("");
 });
 // @ExpectType JSHandle
 frame.evaluateHandle((a: string) => {

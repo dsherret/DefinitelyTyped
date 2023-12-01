@@ -12,7 +12,7 @@ serverOptions = {
     pingTimeout: 60000,
     pingInterval: 25000,
     upgradeTimeout: 10000,
-    maxHttpBufferSize: 10E7,
+    maxHttpBufferSize: 10e7,
     transports: ["polling", "websocket"],
     allowUpgrades: true,
     perMessageDeflate: true,
@@ -131,19 +131,19 @@ server.on("connection", (socket) => {
     socket.on("message", (message) => {
         console.log("MESSAGE", message);
     });
-    socket.on("error", err => {
+    socket.on("error", (err) => {
         console.log("ERROR", err);
     });
-    socket.on("flush", buffer => {
+    socket.on("flush", (buffer) => {
         console.log("FLUSH", buffer);
     });
     socket.on("drain", () => {
         console.log("DRAIN");
     });
-    socket.on("packet", packet => {
+    socket.on("packet", (packet) => {
         console.log("PACKET", packet.type, packet.data);
     });
-    socket.on("packetCreate", packet => {
+    socket.on("packetCreate", (packet) => {
         console.log("PACKETCREATE", packet.type, packet.data);
     });
 

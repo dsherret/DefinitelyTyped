@@ -20,25 +20,33 @@ export interface RealOptions {
     withContext?: boolean | undefined;
 }
 
-export type ComponentConstructor<TProps> = React.ComponentClass<TProps> | React.FunctionComponent<TProps>;
+export type ComponentConstructor<TProps> =
+    | React.ComponentClass<TProps>
+    | React.FunctionComponent<TProps>;
 
 export type StoresList = Array<FluxStore<any>>;
 
 export interface ComponentStatic<TProps, TState, TContext> {
     getStores(maybeProps?: TProps, maybeContext?: TContext): StoresList;
-    calculateState(prevState: TState, maybeProps?: TProps, maybeContext?: TContext): TState;
+    calculateState(
+        prevState: TState,
+        maybeProps?: TProps,
+        maybeContext?: TContext,
+    ): TState;
 }
 
-export type Component<TProps, TState, TContext> =
-    & ComponentConstructor<TProps>
-    & ComponentStatic<TProps, TState, TContext>;
+export type Component<TProps, TState, TContext> = ComponentConstructor<TProps> &
+    ComponentStatic<TProps, TState, TContext>;
 
 /**
  * Create is used to transform a react class into a container
  * that updates its state when relevant stores change.
  * The provided base class must have static methods getStores() and calculateState().
  */
-export function create<TProps>(base: Component<TProps, any, any>, options?: RealOptions): Component<TProps, any, any>;
+export function create<TProps>(
+    base: Component<TProps, any, any>,
+    options?: RealOptions,
+): Component<TProps, any, any>;
 export function create<TProps, TState>(
     base: Component<TProps, TState, any>,
     options?: RealOptions,
@@ -57,7 +65,14 @@ export function create<TProps, TState, TContext, TStatic>(
  */
 export function createFunctional<TProps, TState>(
     viewFn: (props: TState) => React.ReactElement<TState>,
-    getStores: (maybeProps?: TProps, maybeContext?: any) => Array<FluxStore<any>>,
-    calculateState: (prevState?: TState, maybeProps?: TProps, maybeContext?: any) => TState,
+    getStores: (
+        maybeProps?: TProps,
+        maybeContext?: any,
+    ) => Array<FluxStore<any>>,
+    calculateState: (
+        prevState?: TState,
+        maybeProps?: TProps,
+        maybeContext?: any,
+    ) => TState,
     options?: RealOptions,
 ): Component<TProps, TState, any>;

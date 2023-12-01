@@ -35,7 +35,10 @@ interface Stat {
     timestamp: number;
 }
 
-declare function pidusage(pid: number | string, callback: (err: Error | null, stats: Stat) => void): void;
+declare function pidusage(
+    pid: number | string,
+    callback: (err: Error | null, stats: Stat) => void,
+): void;
 declare function pidusage(
     pid: number | string,
     options: { [key: string]: any },
@@ -50,7 +53,10 @@ declare function pidusage(
     options: { [key: string]: any },
     callback: (err: Error | null, stats: { [key: string]: Stat }) => void,
 ): void;
-declare function pidusage(pid: number | string, options?: { [key: string]: any }): Promise<Stat>;
+declare function pidusage(
+    pid: number | string,
+    options?: { [key: string]: any },
+): Promise<Stat>;
 declare function pidusage(
     pids: Array<number | string>,
     options?: { [key: string]: any },

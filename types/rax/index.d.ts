@@ -46,15 +46,17 @@ declare namespace Rax {
      */
     type ElementType<P = any> =
         | {
-            [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never;
-        }[keyof JSX.IntrinsicElements]
+              [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K]
+                  ? K
+                  : never;
+          }[keyof JSX.IntrinsicElements]
         | ComponentType<P>;
 
     type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 
     type JSXElementConstructor<P> =
         | ((props: P) => RaxElement | null)
-        | (new(props: P) => Component<P, any>);
+        | (new (props: P) => Component<P, any>);
 
     type Key = string | number;
 
@@ -85,16 +87,18 @@ declare namespace Rax {
     type ElementRef<
         C extends
             | ForwardRefExoticComponent<any>
-            | { new(props: any): Component<any> }
+            | { new (props: any): Component<any> }
             | ((props: any, context?: any) => RaxElement | null)
             | keyof JSX.IntrinsicElements,
     > =
         // need to check first if `ref` is a valid prop for ts@3.0
         // otherwise it will infer `{}` instead of `never`
-        "ref" extends keyof ComponentPropsWithRef<C> ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends Ref<
-                infer Instance
-            > ? Instance
-            : never
+        "ref" extends keyof ComponentPropsWithRef<C>
+            ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends Ref<
+                  infer Instance
+              >
+                ? Instance
+                : never
             : never;
 
     type ComponentState = any;
@@ -113,7 +117,9 @@ declare namespace Rax {
 
     interface RaxElement<
         P = any,
-        T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>,
+        T extends string | JSXElementConstructor<any> =
+            | string
+            | JSXElementConstructor<any>,
     > {
         type: T;
         props: P;
@@ -122,36 +128,54 @@ declare namespace Rax {
 
     interface RaxComponentElement<
         T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
-        P = Pick<ComponentProps<T>, Exclude<keyof ComponentProps<T>, "key" | "ref">>,
+        P = Pick<
+            ComponentProps<T>,
+            Exclude<keyof ComponentProps<T>, "key" | "ref">
+        >,
     > extends RaxElement<P, T> {}
 
-    interface FunctionComponentElement<P> extends RaxElement<P, FunctionComponent<P>> {
-        ref?: "ref" extends keyof P ? (P extends { ref?: infer R | undefined } ? R : never) : never | undefined;
+    interface FunctionComponentElement<P>
+        extends RaxElement<P, FunctionComponent<P>> {
+        ref?: "ref" extends keyof P
+            ? P extends { ref?: infer R | undefined }
+                ? R
+                : never
+            : never | undefined;
     }
 
-    type CElement<P, T extends Component<P, ComponentState>> = ComponentElement<P, T>;
-    interface ComponentElement<P, T extends Component<P, ComponentState>> extends RaxElement<P, ComponentClass<P>> {
+    type CElement<P, T extends Component<P, ComponentState>> = ComponentElement<
+        P,
+        T
+    >;
+    interface ComponentElement<P, T extends Component<P, ComponentState>>
+        extends RaxElement<P, ComponentClass<P>> {
         ref?: LegacyRef<T> | undefined;
     }
 
     type ClassicElement<P> = CElement<P, ClassicComponent<P, ComponentState>>;
 
     // string fallback for custom web-components
-    interface DOMElement<P extends HTMLAttributes<T> | SVGAttributes<T>, T extends Element>
-        extends RaxElement<P, string>
-    {
+    interface DOMElement<
+        P extends HTMLAttributes<T> | SVGAttributes<T>,
+        T extends Element,
+    > extends RaxElement<P, string> {
         ref: LegacyRef<T>;
     }
 
     // RaxHTML for RaxHTMLElement
-    interface RaxHTMLElement<T extends HTMLElement> extends DetailedRaxHTMLElement<AllHTMLAttributes<T>, T> {}
+    interface RaxHTMLElement<T extends HTMLElement>
+        extends DetailedRaxHTMLElement<AllHTMLAttributes<T>, T> {}
 
-    interface DetailedRaxHTMLElement<P extends HTMLAttributes<T>, T extends HTMLElement> extends DOMElement<P, T> {
+    interface DetailedRaxHTMLElement<
+        P extends HTMLAttributes<T>,
+        T extends HTMLElement,
+    > extends DOMElement<P, T> {
         type: keyof RaxHTML;
     }
 
     // RaxSVG for RaxSVGElement
-    interface RaxSVGElement extends DOMElement<SVGAttributes<SVGElement>, SVGElement> {
+    interface RaxSVGElement
+        extends DOMElement<SVGAttributes<SVGElement>, SVGElement> {
         type: keyof RaxSVG;
     }
 
@@ -166,7 +190,10 @@ declare namespace Rax {
      * ======================================================================
      */
 
-    type Factory<P> = (props?: Attributes & P, ...children: RaxNode[]) => RaxElement<P>;
+    type Factory<P> = (
+        props?: Attributes & P,
+        ...children: RaxNode[]
+    ) => RaxElement<P>;
 
     type FunctionComponentFactory<P> = (
         props?: Attributes & P,
@@ -178,23 +205,36 @@ declare namespace Rax {
         ...children: RaxNode[]
     ) => CElement<P, T>;
 
-    type CFactory<P, T extends Component<P, ComponentState>> = ComponentFactory<P, T>;
+    type CFactory<P, T extends Component<P, ComponentState>> = ComponentFactory<
+        P,
+        T
+    >;
     type ClassicFactory<P> = CFactory<P, ClassicComponent<P, ComponentState>>;
 
     type DOMFactory<P extends DOMAttributes<T>, T extends Element> = (
-        props?: ClassAttributes<T> & P | null,
+        props?: (ClassAttributes<T> & P) | null,
         ...children: RaxNode[]
     ) => DOMElement<P, T>;
 
-    interface HTMLFactory<T extends HTMLElement> extends DetailedHTMLFactory<AllHTMLAttributes<T>, T> {}
+    interface HTMLFactory<T extends HTMLElement>
+        extends DetailedHTMLFactory<AllHTMLAttributes<T>, T> {}
 
-    interface DetailedHTMLFactory<P extends HTMLAttributes<T>, T extends HTMLElement> extends DOMFactory<P, T> {
-        (props?: ClassAttributes<T> & P | null, ...children: RaxNode[]): DetailedRaxHTMLElement<P, T>;
+    interface DetailedHTMLFactory<
+        P extends HTMLAttributes<T>,
+        T extends HTMLElement,
+    > extends DOMFactory<P, T> {
+        (
+            props?: (ClassAttributes<T> & P) | null,
+            ...children: RaxNode[]
+        ): DetailedRaxHTMLElement<P, T>;
     }
 
-    interface SVGFactory extends DOMFactory<SVGAttributes<SVGElement>, SVGElement> {
+    interface SVGFactory
+        extends DOMFactory<SVGAttributes<SVGElement>, SVGElement> {
         (
-            props?: ClassAttributes<SVGElement> & SVGAttributes<SVGElement> | null,
+            props?:
+                | (ClassAttributes<SVGElement> & SVGAttributes<SVGElement>)
+                | null,
             ...children: RaxNode[]
         ): RaxSVGElement;
     }
@@ -210,7 +250,13 @@ declare namespace Rax {
 
     interface RaxNodeArray extends Array<RaxNode> {}
     type RaxFragment = {} | RaxNodeArray;
-    type RaxNode = RaxChild | RaxFragment | RaxPortal | boolean | null | undefined;
+    type RaxNode =
+        | RaxChild
+        | RaxFragment
+        | RaxPortal
+        | boolean
+        | null
+        | undefined;
 
     /**
      * ======================================================================
@@ -222,22 +268,28 @@ declare namespace Rax {
     // TODO: generalize this to everything in `keyof RaxHTML`, not just "input"
     function createElement(
         type: "input",
-        props?: InputHTMLAttributes<HTMLInputElement> & ClassAttributes<HTMLInputElement> | null,
+        props?:
+            | (InputHTMLAttributes<HTMLInputElement> &
+                  ClassAttributes<HTMLInputElement>)
+            | null,
         ...children: RaxNode[]
-    ): DetailedRaxHTMLElement<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    ): DetailedRaxHTMLElement<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
+    >;
     function createElement<P extends HTMLAttributes<T>, T extends HTMLElement>(
         type: keyof RaxHTML,
-        props?: ClassAttributes<T> & P | null,
+        props?: (ClassAttributes<T> & P) | null,
         ...children: RaxNode[]
     ): DetailedRaxHTMLElement<P, T>;
     function createElement<P extends SVGAttributes<T>, T extends SVGElement>(
         type: keyof RaxSVG,
-        props?: ClassAttributes<T> & P | null,
+        props?: (ClassAttributes<T> & P) | null,
         ...children: RaxNode[]
     ): RaxSVGElement;
     function createElement<P extends DOMAttributes<T>, T extends Element>(
         type: string,
-        props?: ClassAttributes<T> & P | null,
+        props?: (ClassAttributes<T> & P) | null,
         ...children: RaxNode[]
     ): DOMElement<P, T>;
 
@@ -245,12 +297,18 @@ declare namespace Rax {
 
     function createElement<P extends {}>(
         type: FunctionComponent<P>,
-        props?: Attributes & P | null,
+        props?: (Attributes & P) | null,
         ...children: RaxNode[]
     ): FunctionComponentElement<P>;
     function createElement<P extends {}>(
-        type: ClassType<P, ClassicComponent<P, ComponentState>, ClassicComponentClass<P>>,
-        props?: ClassAttributes<ClassicComponent<P, ComponentState>> & P | null,
+        type: ClassType<
+            P,
+            ClassicComponent<P, ComponentState>,
+            ClassicComponentClass<P>
+        >,
+        props?:
+            | (ClassAttributes<ClassicComponent<P, ComponentState>> & P)
+            | null,
         ...children: RaxNode[]
     ): CElement<P, ClassicComponent<P, ComponentState>>;
     function createElement<
@@ -259,12 +317,12 @@ declare namespace Rax {
         C extends ComponentClass<P>,
     >(
         type: ClassType<P, T, C>,
-        props?: ClassAttributes<T> & P | null,
+        props?: (ClassAttributes<T> & P) | null,
         ...children: RaxNode[]
     ): CElement<P, T>;
     function createElement<P extends {}>(
         type: FunctionComponent<P> | ComponentClass<P> | string,
-        props?: Attributes & P | null,
+        props?: (Attributes & P) | null,
         ...children: RaxNode[]
     ): RaxElement<P>;
 
@@ -295,7 +353,9 @@ declare namespace Rax {
         propTypes?: WeakValidationMap<P> | undefined;
     }
 
-    type ContextType<C extends Context<any>> = C extends Context<infer T> ? T : never;
+    type ContextType<C extends Context<any>> = C extends Context<infer T>
+        ? T
+        : never;
 
     type Provider<T> = ProviderExoticComponent<ProviderProps<T>>;
     type Consumer<T> = ExoticComponent<ConsumerProps<T>>;
@@ -336,7 +396,9 @@ declare namespace Rax {
         ): Element;
 
         (
-            element: FunctionComponentElement<any> | Array<FunctionComponentElement<any>>,
+            element:
+                | FunctionComponentElement<any>
+                | Array<FunctionComponentElement<any>>,
             container: Element | DocumentFragment | null,
             options?: RenderOption,
             callback?: () => void,
@@ -381,16 +443,21 @@ declare namespace Rax {
     type RaxInstance = Component<any> | Element;
 
     // Base component for plain JS classes
-    interface Component<P = {}, S = {}, SS = any> extends ComponentLifecycle<P, S, SS> {}
+    interface Component<P = {}, S = {}, SS = any>
+        extends ComponentLifecycle<P, S, SS> {}
     class Component<P, S> {
-        readonly props: Readonly<P> & Readonly<{ children?: RaxNode | undefined }>;
+        readonly props: Readonly<P> &
+            Readonly<{ children?: RaxNode | undefined }>;
         state: Readonly<S>;
 
         constructor(props: Readonly<P>);
 
         setState<K extends keyof S>(
             state:
-                | ((prevState: Readonly<S>, props: Readonly<P>) => Pick<S, K> | S | null)
+                | ((
+                      prevState: Readonly<S>,
+                      props: Readonly<P>,
+                  ) => Pick<S, K> | S | null)
                 | (Pick<S, K> | S | null),
             callback?: () => void,
         ): void;
@@ -428,7 +495,10 @@ declare namespace Rax {
         displayName?: string | undefined;
     }
 
-    type ForwardedRef<T> = ((instance: T | null) => void) | MutableRefObject<T | null> | null;
+    type ForwardedRef<T> =
+        | ((instance: T | null) => void)
+        | MutableRefObject<T | null>
+        | null;
 
     interface ForwardRefRenderFunction<T, P = {}> {
         (props: PropsWithChildren<P>, ref: ForwardedRef<T>): RaxElement | null;
@@ -449,10 +519,12 @@ declare namespace Rax {
      * @deprecated Use ForwardRefRenderFunction. forwardRef doesn't accept a
      *             "real" component.
      */
-    interface RefForwardingComponent<T, P = {}> extends ForwardRefRenderFunction<T, P> {}
+    interface RefForwardingComponent<T, P = {}>
+        extends ForwardRefRenderFunction<T, P> {}
 
-    interface ComponentClass<P = {}, S = ComponentState> extends StaticLifecycle<P, S> {
-        new(props: P, context?: any): Component<P, S>;
+    interface ComponentClass<P = {}, S = ComponentState>
+        extends StaticLifecycle<P, S> {
+        new (props: P, context?: any): Component<P, S>;
         propTypes?: WeakValidationMap<P> | undefined;
         contextType?: Context<any> | undefined;
         contextTypes?: ValidationMap<any> | undefined;
@@ -462,7 +534,7 @@ declare namespace Rax {
     }
 
     interface ClassicComponentClass<P = {}> extends ComponentClass<P> {
-        new(props: P, context?: any): ClassicComponent<P, ComponentState>;
+        new (props: P, context?: any): ClassicComponent<P, ComponentState>;
         getDefaultProps?(): P;
     }
 
@@ -471,9 +543,11 @@ declare namespace Rax {
      * a single argument, which is useful for many top-level API defs.
      * See https://github.com/Microsoft/TypeScript/issues/7234 for more info.
      */
-    type ClassType<P, T extends Component<P, ComponentState>, C extends ComponentClass<P>> =
-        & C
-        & (new(props: P, context?: any) => T);
+    type ClassType<
+        P,
+        T extends Component<P, ComponentState>,
+        C extends ComponentClass<P>,
+    > = C & (new (props: P, context?: any) => T);
 
     /**
      * ======================================================================
@@ -523,16 +597,30 @@ declare namespace Rax {
          * Note: the presence of getSnapshotBeforeUpdate prevents any of the deprecated
          * lifecycle events from running.
          */
-        getSnapshotBeforeUpdate?(prevProps: Readonly<P>, prevState: Readonly<S>): SS | null;
+        getSnapshotBeforeUpdate?(
+            prevProps: Readonly<P>,
+            prevState: Readonly<S>,
+        ): SS | null;
         /**
          * Called immediately after updating occurs. Not called for the initial render.
          *
          * The snapshot is only present if getSnapshotBeforeUpdate is present and returns non-null.
          */
-        componentDidUpdate?(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot?: SS): void;
+        componentDidUpdate?(
+            prevProps: Readonly<P>,
+            prevState: Readonly<S>,
+            snapshot?: SS,
+        ): void;
         componentWillMount?(): void;
-        componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
-        componentWillUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): void;
+        componentWillReceiveProps?(
+            nextProps: Readonly<P>,
+            nextContext: any,
+        ): void;
+        componentWillUpdate?(
+            nextProps: Readonly<P>,
+            nextState: Readonly<S>,
+            nextContext: any,
+        ): void;
     }
 
     // Unfortunately, we have no way of declaring that the component constructor must implement this
@@ -560,9 +648,11 @@ declare namespace Rax {
 
     interface Mixin<P, S> extends ComponentLifecycle<P, S> {
         mixins?: Array<Mixin<P, S>> | undefined;
-        statics?: {
-            [key: string]: any;
-        } | undefined;
+        statics?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
 
         displayName?: string | undefined;
         propTypes?: ValidationMap<any> | undefined;
@@ -601,9 +691,12 @@ declare namespace Rax {
         // Just "P extends { ref?: infer R }" looks sufficient, but R will infer as {} if P is {}.
         "ref" extends keyof P
             ? P extends { ref?: infer R | undefined }
-                ? string extends R ? PropsWithoutRef<P> & { ref?: Exclude<R, string> | undefined }
+                ? string extends R
+                    ? PropsWithoutRef<P> & {
+                          ref?: Exclude<R, string> | undefined;
+                      }
+                    : P
                 : P
-            : P
             : P;
 
     type PropsWithChildren<P> = P & { children?: RaxNode | undefined };
@@ -614,27 +707,31 @@ declare namespace Rax {
      */
     type ComponentProps<
         T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
-    > = T extends JSXElementConstructor<infer P> ? P
-        : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T]
-        : {};
-    type ComponentPropsWithRef<T extends ElementType> = T extends ComponentClass<infer P>
-        ? PropsWithoutRef<P> & RefAttributes<InstanceType<T>>
-        : PropsWithRef<ComponentProps<T>>;
-    type ComponentPropsWithoutRef<T extends ElementType> = PropsWithoutRef<ComponentProps<T>>;
+    > = T extends JSXElementConstructor<infer P>
+        ? P
+        : T extends keyof JSX.IntrinsicElements
+          ? JSX.IntrinsicElements[T]
+          : {};
+    type ComponentPropsWithRef<T extends ElementType> =
+        T extends ComponentClass<infer P>
+            ? PropsWithoutRef<P> & RefAttributes<InstanceType<T>>
+            : PropsWithRef<ComponentProps<T>>;
+    type ComponentPropsWithoutRef<T extends ElementType> = PropsWithoutRef<
+        ComponentProps<T>
+    >;
 
     type ComponentRef<T extends ElementType> = T extends NamedExoticComponent<
         ComponentPropsWithoutRef<T> & RefAttributes<infer Method>
-    > ? Method
-        : ComponentPropsWithRef<T> extends RefAttributes<infer Method> ? Method
-        : never;
+    >
+        ? Method
+        : ComponentPropsWithRef<T> extends RefAttributes<infer Method>
+          ? Method
+          : never;
 
     // will show `Memo(${Component.displayName || Component.name})` in devtools by default,
     // but can be given its own specific name
     type MemoExoticComponent<T extends ComponentType<any>> =
-        & NamedExoticComponent<
-            ComponentPropsWithRef<T>
-        >
-        & {
+        NamedExoticComponent<ComponentPropsWithRef<T>> & {
             readonly type: T;
         };
 
@@ -668,8 +765,18 @@ declare namespace Rax {
     type Reducer<S, A> = (prevState: S, action: A) => S;
     // types used to try and prevent the compiler from reducing S
     // to a supertype common with the second argument to useReducer()
-    type ReducerState<R extends Reducer<any, any>> = R extends Reducer<infer S, any> ? S : never;
-    type ReducerAction<R extends Reducer<any, any>> = R extends Reducer<any, infer A> ? A : never;
+    type ReducerState<R extends Reducer<any, any>> = R extends Reducer<
+        infer S,
+        any
+    >
+        ? S
+        : never;
+    type ReducerAction<R extends Reducer<any, any>> = R extends Reducer<
+        any,
+        infer A
+    >
+        ? A
+        : never;
     // The identity check is done with the SameValue algorithm (Object.is), which is stricter than ===
     // TODO (TypeScript 3.0): ReadonlyArray<unknown>
     type DependencyList = readonly any[];
@@ -690,17 +797,22 @@ declare namespace Rax {
      * context value, as given by the nearest context provider for the given context.
      */
     function useContext<T>(
-        context: Context<T>, /* , (not public API) observedBits?: number|boolean */
+        context: Context<T> /* , (not public API) observedBits?: number|boolean */,
     ): T;
     /**
      * Returns a stateful value, and a function to update it.
      */
-    function useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
+    function useState<S>(
+        initialState: S | (() => S),
+    ): [S, Dispatch<SetStateAction<S>>];
     // convenience overload when first argument is ommitted
     /**
      * Returns a stateful value, and a function to update it.
      */
-    function useState<S = undefined>(): [S | undefined, Dispatch<SetStateAction<S | undefined>>];
+    function useState<S = undefined>(): [
+        S | undefined,
+        Dispatch<SetStateAction<S | undefined>>,
+    ];
     /**
      * An alternative to `useState`.
      *
@@ -794,7 +906,10 @@ declare namespace Rax {
      * If you’re migrating code from a class component, `useLayoutEffect` fires in the same phase as
      * `componentDidMount` and `componentDidUpdate`.
      */
-    function useLayoutEffect(effect: EffectCallback, deps?: DependencyList): void;
+    function useLayoutEffect(
+        effect: EffectCallback,
+        deps?: DependencyList,
+    ): void;
     /**
      * Accepts a function that contains imperative, possibly effectful code.
      *
@@ -821,7 +936,10 @@ declare namespace Rax {
      * has changed.
      */
     // TODO (TypeScript 3.0): <T extends (...args: never[]) => unknown>
-    function useCallback<T extends (...args: any[]) => any>(callback: T, deps: DependencyList): T;
+    function useCallback<T extends (...args: any[]) => any>(
+        callback: T,
+        deps: DependencyList,
+    ): T;
     /**
      * `useMemo` will only recompute the memoized value when one of the `deps` has changed.
      *
@@ -872,13 +990,16 @@ declare namespace Rax {
      * This might be a child element to the element on which the event listener is registered.
      * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/pull/12239
      */
-    interface SyntheticEvent<T = Element, E = Event> extends BaseSyntheticEvent<E, EventTarget & T, EventTarget> {}
+    interface SyntheticEvent<T = Element, E = Event>
+        extends BaseSyntheticEvent<E, EventTarget & T, EventTarget> {}
 
-    interface ClipboardEvent<T = Element> extends SyntheticEvent<T, NativeClipboardEvent> {
+    interface ClipboardEvent<T = Element>
+        extends SyntheticEvent<T, NativeClipboardEvent> {
         clipboardData: DataTransfer;
     }
 
-    interface CompositionEvent<T = Element> extends SyntheticEvent<T, NativeCompositionEvent> {
+    interface CompositionEvent<T = Element>
+        extends SyntheticEvent<T, NativeCompositionEvent> {
         data: string;
     }
 
@@ -886,7 +1007,8 @@ declare namespace Rax {
         dataTransfer: DataTransfer;
     }
 
-    interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
+    interface PointerEvent<T = Element>
+        extends MouseEvent<T, NativePointerEvent> {
         pointerId: number;
         pressure: number;
         tiltX: number;
@@ -897,7 +1019,8 @@ declare namespace Rax {
         isPrimary: boolean;
     }
 
-    interface FocusEvent<T = Element> extends SyntheticEvent<T, NativeFocusEvent> {
+    interface FocusEvent<T = Element>
+        extends SyntheticEvent<T, NativeFocusEvent> {
         relatedTarget: EventTarget | null;
         target: EventTarget & T;
     }
@@ -912,7 +1035,8 @@ declare namespace Rax {
         target: EventTarget & T;
     }
 
-    interface KeyboardEvent<T = Element> extends SyntheticEvent<T, NativeKeyboardEvent> {
+    interface KeyboardEvent<T = Element>
+        extends SyntheticEvent<T, NativeKeyboardEvent> {
         altKey: boolean;
         /** @deprecated */
         charCode: number;
@@ -937,7 +1061,8 @@ declare namespace Rax {
         which: number;
     }
 
-    interface MouseEvent<T = Element, E = NativeMouseEvent> extends SyntheticEvent<T, E> {
+    interface MouseEvent<T = Element, E = NativeMouseEvent>
+        extends SyntheticEvent<T, E> {
         altKey: boolean;
         button: number;
         buttons: number;
@@ -959,7 +1084,8 @@ declare namespace Rax {
         shiftKey: boolean;
     }
 
-    interface TouchEvent<T = Element> extends SyntheticEvent<T, NativeTouchEvent> {
+    interface TouchEvent<T = Element>
+        extends SyntheticEvent<T, NativeTouchEvent> {
         altKey: boolean;
         changedTouches: TouchList;
         ctrlKey: boolean;
@@ -985,13 +1111,15 @@ declare namespace Rax {
         deltaZ: number;
     }
 
-    interface AnimationEvent<T = Element> extends SyntheticEvent<T, NativeAnimationEvent> {
+    interface AnimationEvent<T = Element>
+        extends SyntheticEvent<T, NativeAnimationEvent> {
         animationName: string;
         elapsedTime: number;
         pseudoElement: string;
     }
 
-    interface TransitionEvent<T = Element> extends SyntheticEvent<T, NativeTransitionEvent> {
+    interface TransitionEvent<T = Element>
+        extends SyntheticEvent<T, NativeTransitionEvent> {
         elapsedTime: number;
         propertyName: string;
         pseudoElement: string;
@@ -1012,7 +1140,9 @@ declare namespace Rax {
     type RaxEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
     type ClipboardEventHandler<T = Element> = EventHandler<ClipboardEvent<T>>;
-    type CompositionEventHandler<T = Element> = EventHandler<CompositionEvent<T>>;
+    type CompositionEventHandler<T = Element> = EventHandler<
+        CompositionEvent<T>
+    >;
     type DragEventHandler<T = Element> = EventHandler<DragEvent<T>>;
     type FocusEventHandler<T = Element> = EventHandler<FocusEvent<T>>;
     type FormEventHandler<T = Element> = EventHandler<FormEvent<T>>;
@@ -1033,15 +1163,20 @@ declare namespace Rax {
 
     interface HTMLProps<T> extends AllHTMLAttributes<T>, ClassAttributes<T> {}
 
-    type DetailedHTMLProps<E extends HTMLAttributes<T>, T> = ClassAttributes<T> & E;
+    type DetailedHTMLProps<
+        E extends HTMLAttributes<T>,
+        T,
+    > = ClassAttributes<T> & E;
 
     interface SVGProps<T> extends SVGAttributes<T>, ClassAttributes<T> {}
 
     interface DOMAttributes<T> {
         children?: RaxNode | undefined;
-        dangerouslySetInnerHTML?: {
-            __html: string;
-        } | undefined;
+        dangerouslySetInnerHTML?:
+            | {
+                  __html: string;
+              }
+            | undefined;
 
         // weex
         [key: string]: any;
@@ -1293,7 +1428,16 @@ declare namespace Rax {
          */
         "aria-controls"?: string | undefined;
         /** Indicates the element that represents the current item within a container or set of related elements. */
-        "aria-current"?: boolean | "false" | "true" | "page" | "step" | "location" | "date" | "time" | undefined;
+        "aria-current"?:
+            | boolean
+            | "false"
+            | "true"
+            | "page"
+            | "step"
+            | "location"
+            | "date"
+            | "time"
+            | undefined;
         /**
          * Identifies the element (or elements) that describes the object.
          * @see aria-labelledby
@@ -1313,7 +1457,14 @@ declare namespace Rax {
          * Indicates what functions can be performed when a dragged object is released on the drop target.
          * @deprecated in ARIA 1.1
          */
-        "aria-dropeffect"?: "none" | "copy" | "execute" | "link" | "move" | "popup" | undefined;
+        "aria-dropeffect"?:
+            | "none"
+            | "copy"
+            | "execute"
+            | "link"
+            | "move"
+            | "popup"
+            | undefined;
         /**
          * Identifies the element that provides an error message for the object.
          * @see aria-invalid @see aria-describedby.
@@ -1332,7 +1483,16 @@ declare namespace Rax {
          */
         "aria-grabbed"?: boolean | "false" | "true" | undefined;
         /** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
-        "aria-haspopup"?: boolean | "false" | "true" | "menu" | "listbox" | "tree" | "grid" | "dialog" | undefined;
+        "aria-haspopup"?:
+            | boolean
+            | "false"
+            | "true"
+            | "menu"
+            | "listbox"
+            | "tree"
+            | "grid"
+            | "dialog"
+            | undefined;
         /**
          * Indicates whether the element is exposed to an accessibility API.
          * @see aria-disabled.
@@ -1342,7 +1502,13 @@ declare namespace Rax {
          * Indicates the entered value does not conform to the format expected by the application.
          * @see aria-errormessage.
          */
-        "aria-invalid"?: boolean | "false" | "true" | "grammar" | "spelling" | undefined;
+        "aria-invalid"?:
+            | boolean
+            | "false"
+            | "true"
+            | "grammar"
+            | "spelling"
+            | undefined;
         /** Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. */
         "aria-keyshortcuts"?: string | undefined;
         /**
@@ -1397,7 +1563,13 @@ declare namespace Rax {
          * Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
          * @see aria-atomic.
          */
-        "aria-relevant"?: "additions" | "additions text" | "all" | "removals" | "text" | undefined;
+        "aria-relevant"?:
+            | "additions"
+            | "additions text"
+            | "all"
+            | "removals"
+            | "text"
+            | undefined;
         /** Indicates that user input is required on the element before a form may be submitted. */
         "aria-required"?: boolean | "false" | "true" | undefined;
         /** Defines a human-readable, author-localized description for the role of an element. */
@@ -2077,7 +2249,12 @@ declare namespace Rax {
         clipPathUnits?: number | string | undefined;
         clipRule?: number | string | undefined;
         colorInterpolation?: number | string | undefined;
-        colorInterpolationFilters?: "auto" | "sRGB" | "linearRGB" | "inherit" | undefined;
+        colorInterpolationFilters?:
+            | "auto"
+            | "sRGB"
+            | "linearRGB"
+            | "inherit"
+            | undefined;
         colorProfile?: number | string | undefined;
         colorRendering?: number | string | undefined;
         contentScriptType?: number | string | undefined;
@@ -2317,123 +2494,315 @@ declare namespace Rax {
     // ----------------------------------------------------------------------
 
     interface RaxHTML {
-        a: DetailedHTMLFactory<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
+        a: DetailedHTMLFactory<
+            AnchorHTMLAttributes<HTMLAnchorElement>,
+            HTMLAnchorElement
+        >;
         abbr: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         address: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        area: DetailedHTMLFactory<AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>;
+        area: DetailedHTMLFactory<
+            AreaHTMLAttributes<HTMLAreaElement>,
+            HTMLAreaElement
+        >;
         article: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         aside: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        audio: DetailedHTMLFactory<AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>;
+        audio: DetailedHTMLFactory<
+            AudioHTMLAttributes<HTMLAudioElement>,
+            HTMLAudioElement
+        >;
         b: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        base: DetailedHTMLFactory<BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
+        base: DetailedHTMLFactory<
+            BaseHTMLAttributes<HTMLBaseElement>,
+            HTMLBaseElement
+        >;
         bdi: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         bdo: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         big: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        blockquote: DetailedHTMLFactory<BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>;
-        body: DetailedHTMLFactory<HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>;
+        blockquote: DetailedHTMLFactory<
+            BlockquoteHTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
+        body: DetailedHTMLFactory<
+            HTMLAttributes<HTMLBodyElement>,
+            HTMLBodyElement
+        >;
         br: DetailedHTMLFactory<HTMLAttributes<HTMLBRElement>, HTMLBRElement>;
-        button: DetailedHTMLFactory<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-        canvas: DetailedHTMLFactory<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>;
+        button: DetailedHTMLFactory<
+            ButtonHTMLAttributes<HTMLButtonElement>,
+            HTMLButtonElement
+        >;
+        canvas: DetailedHTMLFactory<
+            CanvasHTMLAttributes<HTMLCanvasElement>,
+            HTMLCanvasElement
+        >;
         caption: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         cite: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         code: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        col: DetailedHTMLFactory<ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
-        colgroup: DetailedHTMLFactory<ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
+        col: DetailedHTMLFactory<
+            ColHTMLAttributes<HTMLTableColElement>,
+            HTMLTableColElement
+        >;
+        colgroup: DetailedHTMLFactory<
+            ColgroupHTMLAttributes<HTMLTableColElement>,
+            HTMLTableColElement
+        >;
         data: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        datalist: DetailedHTMLFactory<HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>;
+        datalist: DetailedHTMLFactory<
+            HTMLAttributes<HTMLDataListElement>,
+            HTMLDataListElement
+        >;
         dd: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         del: DetailedHTMLFactory<DelHTMLAttributes<HTMLElement>, HTMLElement>;
-        details: DetailedHTMLFactory<DetailsHTMLAttributes<HTMLElement>, HTMLElement>;
+        details: DetailedHTMLFactory<
+            DetailsHTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
         dfn: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        dialog: DetailedHTMLFactory<DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>;
-        div: DetailedHTMLFactory<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-        dl: DetailedHTMLFactory<HTMLAttributes<HTMLDListElement>, HTMLDListElement>;
+        dialog: DetailedHTMLFactory<
+            DialogHTMLAttributes<HTMLDialogElement>,
+            HTMLDialogElement
+        >;
+        div: DetailedHTMLFactory<
+            HTMLAttributes<HTMLDivElement>,
+            HTMLDivElement
+        >;
+        dl: DetailedHTMLFactory<
+            HTMLAttributes<HTMLDListElement>,
+            HTMLDListElement
+        >;
         dt: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         em: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        embed: DetailedHTMLFactory<EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>;
-        fieldset: DetailedHTMLFactory<FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>;
-        figcaption: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
+        embed: DetailedHTMLFactory<
+            EmbedHTMLAttributes<HTMLEmbedElement>,
+            HTMLEmbedElement
+        >;
+        fieldset: DetailedHTMLFactory<
+            FieldsetHTMLAttributes<HTMLFieldSetElement>,
+            HTMLFieldSetElement
+        >;
+        figcaption: DetailedHTMLFactory<
+            HTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
         figure: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         footer: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        form: DetailedHTMLFactory<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-        h1: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-        h2: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-        h3: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-        h4: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-        h5: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-        h6: DetailedHTMLFactory<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+        form: DetailedHTMLFactory<
+            FormHTMLAttributes<HTMLFormElement>,
+            HTMLFormElement
+        >;
+        h1: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
+        h2: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
+        h3: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
+        h4: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
+        h5: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
+        h6: DetailedHTMLFactory<
+            HTMLAttributes<HTMLHeadingElement>,
+            HTMLHeadingElement
+        >;
         head: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLHeadElement>;
         header: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         hgroup: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         hr: DetailedHTMLFactory<HTMLAttributes<HTMLHRElement>, HTMLHRElement>;
-        html: DetailedHTMLFactory<HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>;
+        html: DetailedHTMLFactory<
+            HtmlHTMLAttributes<HTMLHtmlElement>,
+            HTMLHtmlElement
+        >;
         i: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        iframe: DetailedHTMLFactory<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>;
-        img: DetailedHTMLFactory<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
-        input: DetailedHTMLFactory<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-        ins: DetailedHTMLFactory<InsHTMLAttributes<HTMLModElement>, HTMLModElement>;
+        iframe: DetailedHTMLFactory<
+            IframeHTMLAttributes<HTMLIFrameElement>,
+            HTMLIFrameElement
+        >;
+        img: DetailedHTMLFactory<
+            ImgHTMLAttributes<HTMLImageElement>,
+            HTMLImageElement
+        >;
+        input: DetailedHTMLFactory<
+            InputHTMLAttributes<HTMLInputElement>,
+            HTMLInputElement
+        >;
+        ins: DetailedHTMLFactory<
+            InsHTMLAttributes<HTMLModElement>,
+            HTMLModElement
+        >;
         kbd: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        keygen: DetailedHTMLFactory<KeygenHTMLAttributes<HTMLElement>, HTMLElement>;
-        label: DetailedHTMLFactory<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-        legend: DetailedHTMLFactory<HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>;
+        keygen: DetailedHTMLFactory<
+            KeygenHTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
+        label: DetailedHTMLFactory<
+            LabelHTMLAttributes<HTMLLabelElement>,
+            HTMLLabelElement
+        >;
+        legend: DetailedHTMLFactory<
+            HTMLAttributes<HTMLLegendElement>,
+            HTMLLegendElement
+        >;
         li: DetailedHTMLFactory<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
-        link: DetailedHTMLFactory<LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>;
+        link: DetailedHTMLFactory<
+            LinkHTMLAttributes<HTMLLinkElement>,
+            HTMLLinkElement
+        >;
         main: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        map: DetailedHTMLFactory<MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>;
+        map: DetailedHTMLFactory<
+            MapHTMLAttributes<HTMLMapElement>,
+            HTMLMapElement
+        >;
         mark: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         menu: DetailedHTMLFactory<MenuHTMLAttributes<HTMLElement>, HTMLElement>;
         menuitem: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        meta: DetailedHTMLFactory<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>;
-        meter: DetailedHTMLFactory<MeterHTMLAttributes<HTMLElement>, HTMLElement>;
+        meta: DetailedHTMLFactory<
+            MetaHTMLAttributes<HTMLMetaElement>,
+            HTMLMetaElement
+        >;
+        meter: DetailedHTMLFactory<
+            MeterHTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
         nav: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         noscript: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        object: DetailedHTMLFactory<ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>;
-        ol: DetailedHTMLFactory<OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>;
-        optgroup: DetailedHTMLFactory<OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>;
-        option: DetailedHTMLFactory<OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
-        output: DetailedHTMLFactory<OutputHTMLAttributes<HTMLElement>, HTMLElement>;
-        p: DetailedHTMLFactory<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
-        param: DetailedHTMLFactory<ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>;
+        object: DetailedHTMLFactory<
+            ObjectHTMLAttributes<HTMLObjectElement>,
+            HTMLObjectElement
+        >;
+        ol: DetailedHTMLFactory<
+            OlHTMLAttributes<HTMLOListElement>,
+            HTMLOListElement
+        >;
+        optgroup: DetailedHTMLFactory<
+            OptgroupHTMLAttributes<HTMLOptGroupElement>,
+            HTMLOptGroupElement
+        >;
+        option: DetailedHTMLFactory<
+            OptionHTMLAttributes<HTMLOptionElement>,
+            HTMLOptionElement
+        >;
+        output: DetailedHTMLFactory<
+            OutputHTMLAttributes<HTMLElement>,
+            HTMLElement
+        >;
+        p: DetailedHTMLFactory<
+            HTMLAttributes<HTMLParagraphElement>,
+            HTMLParagraphElement
+        >;
+        param: DetailedHTMLFactory<
+            ParamHTMLAttributes<HTMLParamElement>,
+            HTMLParamElement
+        >;
         picture: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        pre: DetailedHTMLFactory<HTMLAttributes<HTMLPreElement>, HTMLPreElement>;
-        progress: DetailedHTMLFactory<ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
-        q: DetailedHTMLFactory<QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
+        pre: DetailedHTMLFactory<
+            HTMLAttributes<HTMLPreElement>,
+            HTMLPreElement
+        >;
+        progress: DetailedHTMLFactory<
+            ProgressHTMLAttributes<HTMLProgressElement>,
+            HTMLProgressElement
+        >;
+        q: DetailedHTMLFactory<
+            QuoteHTMLAttributes<HTMLQuoteElement>,
+            HTMLQuoteElement
+        >;
         rp: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         rt: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         ruby: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         s: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         samp: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        script: DetailedHTMLFactory<ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
+        script: DetailedHTMLFactory<
+            ScriptHTMLAttributes<HTMLScriptElement>,
+            HTMLScriptElement
+        >;
         section: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        select: DetailedHTMLFactory<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
+        select: DetailedHTMLFactory<
+            SelectHTMLAttributes<HTMLSelectElement>,
+            HTMLSelectElement
+        >;
         small: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        source: DetailedHTMLFactory<SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>;
-        span: DetailedHTMLFactory<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+        source: DetailedHTMLFactory<
+            SourceHTMLAttributes<HTMLSourceElement>,
+            HTMLSourceElement
+        >;
+        span: DetailedHTMLFactory<
+            HTMLAttributes<HTMLSpanElement>,
+            HTMLSpanElement
+        >;
         strong: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        style: DetailedHTMLFactory<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
+        style: DetailedHTMLFactory<
+            StyleHTMLAttributes<HTMLStyleElement>,
+            HTMLStyleElement
+        >;
         sub: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         summary: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
         sup: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        table: DetailedHTMLFactory<TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
-        tbody: DetailedHTMLFactory<HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-        td: DetailedHTMLFactory<TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>;
-        textarea: DetailedHTMLFactory<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
-        tfoot: DetailedHTMLFactory<HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
+        table: DetailedHTMLFactory<
+            TableHTMLAttributes<HTMLTableElement>,
+            HTMLTableElement
+        >;
+        tbody: DetailedHTMLFactory<
+            HTMLAttributes<HTMLTableSectionElement>,
+            HTMLTableSectionElement
+        >;
+        td: DetailedHTMLFactory<
+            TdHTMLAttributes<HTMLTableDataCellElement>,
+            HTMLTableDataCellElement
+        >;
+        textarea: DetailedHTMLFactory<
+            TextareaHTMLAttributes<HTMLTextAreaElement>,
+            HTMLTextAreaElement
+        >;
+        tfoot: DetailedHTMLFactory<
+            HTMLAttributes<HTMLTableSectionElement>,
+            HTMLTableSectionElement
+        >;
         th: DetailedHTMLFactory<
             ThHTMLAttributes<HTMLTableHeaderCellElement>,
             HTMLTableHeaderCellElement
         >;
-        thead: DetailedHTMLFactory<HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
+        thead: DetailedHTMLFactory<
+            HTMLAttributes<HTMLTableSectionElement>,
+            HTMLTableSectionElement
+        >;
         time: DetailedHTMLFactory<TimeHTMLAttributes<HTMLElement>, HTMLElement>;
-        title: DetailedHTMLFactory<HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
-        tr: DetailedHTMLFactory<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>;
-        track: DetailedHTMLFactory<TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>;
+        title: DetailedHTMLFactory<
+            HTMLAttributes<HTMLTitleElement>,
+            HTMLTitleElement
+        >;
+        tr: DetailedHTMLFactory<
+            HTMLAttributes<HTMLTableRowElement>,
+            HTMLTableRowElement
+        >;
+        track: DetailedHTMLFactory<
+            TrackHTMLAttributes<HTMLTrackElement>,
+            HTMLTrackElement
+        >;
         u: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        ul: DetailedHTMLFactory<HTMLAttributes<HTMLUListElement>, HTMLUListElement>;
+        ul: DetailedHTMLFactory<
+            HTMLAttributes<HTMLUListElement>,
+            HTMLUListElement
+        >;
         var: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        video: DetailedHTMLFactory<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
+        video: DetailedHTMLFactory<
+            VideoHTMLAttributes<HTMLVideoElement>,
+            HTMLVideoElement
+        >;
         wbr: DetailedHTMLFactory<HTMLAttributes<HTMLElement>, HTMLElement>;
-        webview: DetailedHTMLFactory<WebViewHTMLAttributes<HTMLWebViewElement>, HTMLWebViewElement>;
+        webview: DetailedHTMLFactory<
+            WebViewHTMLAttributes<HTMLWebViewElement>,
+            HTMLWebViewElement
+        >;
     }
 
     interface RaxSVG {
@@ -2507,9 +2876,11 @@ declare namespace Rax {
     type ValidationMap<T> = PropTypes.ValidationMap<T>;
 
     type WeakValidationMap<T> = {
-        [K in keyof T]?: null extends T[K] ? Validator<T[K] | null | undefined>
-            : undefined extends T[K] ? Validator<T[K] | null | undefined>
-            : Validator<T[K]>;
+        [K in keyof T]?: null extends T[K]
+            ? Validator<T[K] | null | undefined>
+            : undefined extends T[K]
+              ? Validator<T[K] | null | undefined>
+              : Validator<T[K]>;
     };
 
     interface RaxPropTypes {
@@ -2539,8 +2910,13 @@ declare namespace Rax {
         map<T, C>(
             children: C | C[],
             fn: (child: C, index: number) => T,
-        ): C extends null | undefined ? C : Array<Exclude<T, boolean | null | undefined>>;
-        forEach<C>(children: C | C[], fn: (child: C, index: number) => void): void;
+        ): C extends null | undefined
+            ? C
+            : Array<Exclude<T, boolean | null | undefined>>;
+        forEach<C>(
+            children: C | C[],
+            fn: (child: C, index: number) => void,
+        ): void;
         count(children: any): number;
         only<C>(children: C): C extends any[] ? never : C;
         toArray<C>(children: C | C[]): C[];
@@ -2587,7 +2963,9 @@ declare namespace Rax {
 
 // naked 'any' type in a conditional type will short circuit and union both the then/else branches
 // so boolean is only resolved for T = any
-type IsExactlyAny<T> = boolean extends (T extends never ? true : false) ? true : false;
+type IsExactlyAny<T> = boolean extends (T extends never ? true : false)
+    ? true
+    : false;
 
 type ExactlyAnyPropertyKeys<T> = {
     [K in keyof T]: IsExactlyAny<T[K]> extends true ? K : never;
@@ -2598,32 +2976,37 @@ type NotExactlyAnyPropertyKeys<T> = Exclude<keyof T, ExactlyAnyPropertyKeys<T>>;
 type MergePropTypes<P, T> =
     // Distribute over P in case it is a union type
     P extends any // If props is type any, use propTypes definitions
-        ? IsExactlyAny<P> extends true ? T // If declared props have indexed properties, ignore inferred props entirely as keyof gets widened
-        : string extends keyof P ? P // Prefer declared types which are not exactly any
-        :
-            & Pick<P, NotExactlyAnyPropertyKeys<P>>
-            & // For props which are exactly any, use the type inferred from propTypes if present
-            Pick<T, Exclude<keyof T, NotExactlyAnyPropertyKeys<P>>>
-            & // Keep leftover props not specified in propTypes
-            Pick<P, Exclude<keyof P, keyof T>>
+        ? IsExactlyAny<P> extends true
+            ? T // If declared props have indexed properties, ignore inferred props entirely as keyof gets widened
+            : string extends keyof P
+              ? P // Prefer declared types which are not exactly any
+              : Pick<P, NotExactlyAnyPropertyKeys<P>> & // For props which are exactly any, use the type inferred from propTypes if present
+                    Pick<T, Exclude<keyof T, NotExactlyAnyPropertyKeys<P>>> & // Keep leftover props not specified in propTypes
+                    Pick<P, Exclude<keyof P, keyof T>>
         : never;
 
 // Any prop that has a default prop becomes optional, but its type is unchanged
 // Undeclared default props are augmented into the resulting allowable attributes
 // If declared props have indexed properties, ignore default props entirely as keyof gets widened
 // Wrap in an outer-level conditional type to allow distribution over props that are unions
-type Defaultize<P, D> = P extends any ? string extends keyof P ? P
-    :
-        & Pick<P, Exclude<keyof P, keyof D>>
-        & Partial<Pick<P, Extract<keyof P, keyof D>>>
-        & Partial<Pick<D, Exclude<keyof D, keyof P>>>
+type Defaultize<P, D> = P extends any
+    ? string extends keyof P
+        ? P
+        : Pick<P, Exclude<keyof P, keyof D>> &
+              Partial<Pick<P, Extract<keyof P, keyof D>>> &
+              Partial<Pick<D, Exclude<keyof D, keyof P>>>
     : never;
 
-type RaxManagedAttributes<C, P> = C extends { propTypes: infer T; defaultProps: infer D }
+type RaxManagedAttributes<C, P> = C extends {
+    propTypes: infer T;
+    defaultProps: infer D;
+}
     ? Defaultize<MergePropTypes<P, PropTypes.InferProps<T>>, D>
-    : C extends { propTypes: infer T } ? MergePropTypes<P, PropTypes.InferProps<T>>
-    : C extends { defaultProps: infer D } ? Defaultize<P, D>
-    : P;
+    : C extends { propTypes: infer T }
+      ? MergePropTypes<P, PropTypes.InferProps<T>>
+      : C extends { defaultProps: infer D }
+        ? Defaultize<P, D>
+        : P;
 
 declare global {
     namespace JSX {
@@ -2640,9 +3023,12 @@ declare global {
 
         // We can't recurse forever because `type` can't be self-referential;
         // let's assume it's reasonable to do a single Rax.lazy() around a single Rax.memo() / vice-versa
-        type LibraryManagedAttributes<C, P> = C extends Rax.MemoExoticComponent<infer T>
-            ? T extends Rax.MemoExoticComponent<infer U> ? RaxManagedAttributes<U, P>
-            : RaxManagedAttributes<T, P>
+        type LibraryManagedAttributes<C, P> = C extends Rax.MemoExoticComponent<
+            infer T
+        >
+            ? T extends Rax.MemoExoticComponent<infer U>
+                ? RaxManagedAttributes<U, P>
+                : RaxManagedAttributes<T, P>
             : RaxManagedAttributes<C, P>;
 
         interface IntrinsicAttributes extends Rax.Attributes {}
@@ -2650,117 +3036,402 @@ declare global {
 
         interface IntrinsicElements {
             // HTML
-            a: Rax.DetailedHTMLProps<Rax.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
-            abbr: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            address: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            area: Rax.DetailedHTMLProps<Rax.AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>;
-            article: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            aside: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            audio: Rax.DetailedHTMLProps<Rax.AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>;
-            b: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            base: Rax.DetailedHTMLProps<Rax.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
-            bdi: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            bdo: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            big: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            blockquote: Rax.DetailedHTMLProps<Rax.BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>;
-            body: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>;
-            br: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLBRElement>, HTMLBRElement>;
-            button: Rax.DetailedHTMLProps<Rax.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-            canvas: Rax.DetailedHTMLProps<Rax.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>;
-            caption: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            cite: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            code: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            col: Rax.DetailedHTMLProps<Rax.ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
+            a: Rax.DetailedHTMLProps<
+                Rax.AnchorHTMLAttributes<HTMLAnchorElement>,
+                HTMLAnchorElement
+            >;
+            abbr: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            address: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            area: Rax.DetailedHTMLProps<
+                Rax.AreaHTMLAttributes<HTMLAreaElement>,
+                HTMLAreaElement
+            >;
+            article: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            aside: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            audio: Rax.DetailedHTMLProps<
+                Rax.AudioHTMLAttributes<HTMLAudioElement>,
+                HTMLAudioElement
+            >;
+            b: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            base: Rax.DetailedHTMLProps<
+                Rax.BaseHTMLAttributes<HTMLBaseElement>,
+                HTMLBaseElement
+            >;
+            bdi: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            bdo: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            big: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            blockquote: Rax.DetailedHTMLProps<
+                Rax.BlockquoteHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            body: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLBodyElement>,
+                HTMLBodyElement
+            >;
+            br: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLBRElement>,
+                HTMLBRElement
+            >;
+            button: Rax.DetailedHTMLProps<
+                Rax.ButtonHTMLAttributes<HTMLButtonElement>,
+                HTMLButtonElement
+            >;
+            canvas: Rax.DetailedHTMLProps<
+                Rax.CanvasHTMLAttributes<HTMLCanvasElement>,
+                HTMLCanvasElement
+            >;
+            caption: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            cite: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            code: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            col: Rax.DetailedHTMLProps<
+                Rax.ColHTMLAttributes<HTMLTableColElement>,
+                HTMLTableColElement
+            >;
             colgroup: Rax.DetailedHTMLProps<
                 Rax.ColgroupHTMLAttributes<HTMLTableColElement>,
                 HTMLTableColElement
             >;
-            data: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            datalist: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>;
-            dd: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            del: Rax.DetailedHTMLProps<Rax.DelHTMLAttributes<HTMLElement>, HTMLElement>;
-            details: Rax.DetailedHTMLProps<Rax.DetailsHTMLAttributes<HTMLElement>, HTMLElement>;
-            dfn: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            dialog: Rax.DetailedHTMLProps<Rax.DialogHTMLAttributes<HTMLDialogElement>, HTMLDialogElement>;
-            div: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-            dl: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLDListElement>, HTMLDListElement>;
-            dt: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            em: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            embed: Rax.DetailedHTMLProps<Rax.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>;
+            data: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            datalist: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLDataListElement>,
+                HTMLDataListElement
+            >;
+            dd: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            del: Rax.DetailedHTMLProps<
+                Rax.DelHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            details: Rax.DetailedHTMLProps<
+                Rax.DetailsHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            dfn: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            dialog: Rax.DetailedHTMLProps<
+                Rax.DialogHTMLAttributes<HTMLDialogElement>,
+                HTMLDialogElement
+            >;
+            div: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLDivElement>,
+                HTMLDivElement
+            >;
+            dl: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLDListElement>,
+                HTMLDListElement
+            >;
+            dt: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            em: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            embed: Rax.DetailedHTMLProps<
+                Rax.EmbedHTMLAttributes<HTMLEmbedElement>,
+                HTMLEmbedElement
+            >;
             fieldset: Rax.DetailedHTMLProps<
                 Rax.FieldsetHTMLAttributes<HTMLFieldSetElement>,
                 HTMLFieldSetElement
             >;
-            figcaption: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            figure: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            footer: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            form: Rax.DetailedHTMLProps<Rax.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-            h1: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h2: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h3: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h4: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h5: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            h6: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-            head: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>;
-            header: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            hgroup: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            hr: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLHRElement>, HTMLHRElement>;
-            html: Rax.DetailedHTMLProps<Rax.HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>;
-            i: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            iframe: Rax.DetailedHTMLProps<Rax.IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>;
-            img: Rax.DetailedHTMLProps<Rax.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
-            input: Rax.DetailedHTMLProps<Rax.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-            ins: Rax.DetailedHTMLProps<Rax.InsHTMLAttributes<HTMLModElement>, HTMLModElement>;
-            kbd: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            keygen: Rax.DetailedHTMLProps<Rax.KeygenHTMLAttributes<HTMLElement>, HTMLElement>;
-            label: Rax.DetailedHTMLProps<Rax.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-            legend: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>;
-            li: Rax.DetailedHTMLProps<Rax.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
-            link: Rax.DetailedHTMLProps<Rax.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>;
-            main: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            map: Rax.DetailedHTMLProps<Rax.MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>;
-            mark: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            menu: Rax.DetailedHTMLProps<Rax.MenuHTMLAttributes<HTMLElement>, HTMLElement>;
-            menuitem: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            meta: Rax.DetailedHTMLProps<Rax.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>;
-            meter: Rax.DetailedHTMLProps<Rax.MeterHTMLAttributes<HTMLElement>, HTMLElement>;
-            nav: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            noindex: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            noscript: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            object: Rax.DetailedHTMLProps<Rax.ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>;
-            ol: Rax.DetailedHTMLProps<Rax.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>;
+            figcaption: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            figure: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            footer: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            form: Rax.DetailedHTMLProps<
+                Rax.FormHTMLAttributes<HTMLFormElement>,
+                HTMLFormElement
+            >;
+            h1: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            h2: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            h3: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            h4: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            h5: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            h6: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadingElement>,
+                HTMLHeadingElement
+            >;
+            head: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHeadElement>,
+                HTMLHeadElement
+            >;
+            header: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            hgroup: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            hr: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLHRElement>,
+                HTMLHRElement
+            >;
+            html: Rax.DetailedHTMLProps<
+                Rax.HtmlHTMLAttributes<HTMLHtmlElement>,
+                HTMLHtmlElement
+            >;
+            i: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            iframe: Rax.DetailedHTMLProps<
+                Rax.IframeHTMLAttributes<HTMLIFrameElement>,
+                HTMLIFrameElement
+            >;
+            img: Rax.DetailedHTMLProps<
+                Rax.ImgHTMLAttributes<HTMLImageElement>,
+                HTMLImageElement
+            >;
+            input: Rax.DetailedHTMLProps<
+                Rax.InputHTMLAttributes<HTMLInputElement>,
+                HTMLInputElement
+            >;
+            ins: Rax.DetailedHTMLProps<
+                Rax.InsHTMLAttributes<HTMLModElement>,
+                HTMLModElement
+            >;
+            kbd: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            keygen: Rax.DetailedHTMLProps<
+                Rax.KeygenHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            label: Rax.DetailedHTMLProps<
+                Rax.LabelHTMLAttributes<HTMLLabelElement>,
+                HTMLLabelElement
+            >;
+            legend: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLLegendElement>,
+                HTMLLegendElement
+            >;
+            li: Rax.DetailedHTMLProps<
+                Rax.LiHTMLAttributes<HTMLLIElement>,
+                HTMLLIElement
+            >;
+            link: Rax.DetailedHTMLProps<
+                Rax.LinkHTMLAttributes<HTMLLinkElement>,
+                HTMLLinkElement
+            >;
+            main: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            map: Rax.DetailedHTMLProps<
+                Rax.MapHTMLAttributes<HTMLMapElement>,
+                HTMLMapElement
+            >;
+            mark: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            menu: Rax.DetailedHTMLProps<
+                Rax.MenuHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            menuitem: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            meta: Rax.DetailedHTMLProps<
+                Rax.MetaHTMLAttributes<HTMLMetaElement>,
+                HTMLMetaElement
+            >;
+            meter: Rax.DetailedHTMLProps<
+                Rax.MeterHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            nav: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            noindex: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            noscript: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            object: Rax.DetailedHTMLProps<
+                Rax.ObjectHTMLAttributes<HTMLObjectElement>,
+                HTMLObjectElement
+            >;
+            ol: Rax.DetailedHTMLProps<
+                Rax.OlHTMLAttributes<HTMLOListElement>,
+                HTMLOListElement
+            >;
             optgroup: Rax.DetailedHTMLProps<
                 Rax.OptgroupHTMLAttributes<HTMLOptGroupElement>,
                 HTMLOptGroupElement
             >;
-            option: Rax.DetailedHTMLProps<Rax.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
-            output: Rax.DetailedHTMLProps<Rax.OutputHTMLAttributes<HTMLElement>, HTMLElement>;
-            p: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
-            param: Rax.DetailedHTMLProps<Rax.ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>;
-            picture: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            pre: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLPreElement>, HTMLPreElement>;
+            option: Rax.DetailedHTMLProps<
+                Rax.OptionHTMLAttributes<HTMLOptionElement>,
+                HTMLOptionElement
+            >;
+            output: Rax.DetailedHTMLProps<
+                Rax.OutputHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            p: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLParagraphElement>,
+                HTMLParagraphElement
+            >;
+            param: Rax.DetailedHTMLProps<
+                Rax.ParamHTMLAttributes<HTMLParamElement>,
+                HTMLParamElement
+            >;
+            picture: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            pre: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLPreElement>,
+                HTMLPreElement
+            >;
             progress: Rax.DetailedHTMLProps<
                 Rax.ProgressHTMLAttributes<HTMLProgressElement>,
                 HTMLProgressElement
             >;
-            q: Rax.DetailedHTMLProps<Rax.QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
-            rp: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            rt: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            ruby: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            s: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            samp: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            script: Rax.DetailedHTMLProps<Rax.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
-            section: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            select: Rax.DetailedHTMLProps<Rax.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
-            small: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            source: Rax.DetailedHTMLProps<Rax.SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>;
-            span: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-            strong: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            style: Rax.DetailedHTMLProps<Rax.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
-            sub: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            summary: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            sup: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            table: Rax.DetailedHTMLProps<Rax.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
+            q: Rax.DetailedHTMLProps<
+                Rax.QuoteHTMLAttributes<HTMLQuoteElement>,
+                HTMLQuoteElement
+            >;
+            rp: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            rt: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            ruby: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            s: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            samp: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            script: Rax.DetailedHTMLProps<
+                Rax.ScriptHTMLAttributes<HTMLScriptElement>,
+                HTMLScriptElement
+            >;
+            section: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            select: Rax.DetailedHTMLProps<
+                Rax.SelectHTMLAttributes<HTMLSelectElement>,
+                HTMLSelectElement
+            >;
+            small: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            source: Rax.DetailedHTMLProps<
+                Rax.SourceHTMLAttributes<HTMLSourceElement>,
+                HTMLSourceElement
+            >;
+            span: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLSpanElement>,
+                HTMLSpanElement
+            >;
+            strong: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            style: Rax.DetailedHTMLProps<
+                Rax.StyleHTMLAttributes<HTMLStyleElement>,
+                HTMLStyleElement
+            >;
+            sub: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            summary: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            sup: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            table: Rax.DetailedHTMLProps<
+                Rax.TableHTMLAttributes<HTMLTableElement>,
+                HTMLTableElement
+            >;
             tbody: Rax.DetailedHTMLProps<
                 Rax.HTMLAttributes<HTMLTableSectionElement>,
                 HTMLTableSectionElement
@@ -2785,15 +3456,42 @@ declare global {
                 Rax.HTMLAttributes<HTMLTableSectionElement>,
                 HTMLTableSectionElement
             >;
-            time: Rax.DetailedHTMLProps<Rax.TimeHTMLAttributes<HTMLElement>, HTMLElement>;
-            title: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
-            tr: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>;
-            track: Rax.DetailedHTMLProps<Rax.TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>;
-            u: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            ul: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLUListElement>, HTMLUListElement>;
-            var: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
-            video: Rax.DetailedHTMLProps<Rax.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
-            wbr: Rax.DetailedHTMLProps<Rax.HTMLAttributes<HTMLElement>, HTMLElement>;
+            time: Rax.DetailedHTMLProps<
+                Rax.TimeHTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            title: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLTitleElement>,
+                HTMLTitleElement
+            >;
+            tr: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLTableRowElement>,
+                HTMLTableRowElement
+            >;
+            track: Rax.DetailedHTMLProps<
+                Rax.TrackHTMLAttributes<HTMLTrackElement>,
+                HTMLTrackElement
+            >;
+            u: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            ul: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLUListElement>,
+                HTMLUListElement
+            >;
+            var: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
+            video: Rax.DetailedHTMLProps<
+                Rax.VideoHTMLAttributes<HTMLVideoElement>,
+                HTMLVideoElement
+            >;
+            wbr: Rax.DetailedHTMLProps<
+                Rax.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            >;
             webview: Rax.DetailedHTMLProps<
                 Rax.WebViewHTMLAttributes<HTMLWebViewElement>,
                 HTMLWebViewElement
@@ -2880,19 +3578,19 @@ declare global {
             "scroll-view": any;
             "cover-view": any;
             "cover-image": any;
-            "camera": any;
+            camera: any;
             "movable-view": any;
             "movable-area": any;
             "match-media": any;
             icon: any;
             "rich-text": any;
-            "radio": any;
+            radio: any;
             "radio-group": any;
             "picker-view": any;
             picker: any;
             navigator: any;
             "web-view": any;
-            "lifestyle": any;
+            lifestyle: any;
             "contact-button": any;
             "aria-component": any;
             "functional-page-navigator": any;

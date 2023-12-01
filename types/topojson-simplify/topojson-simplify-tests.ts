@@ -5,8 +5,14 @@ declare let us: UsAtlas;
 declare let world: WorldAtlas;
 
 interface UsAtlasObjects extends TopoJSON.Objects {
-    counties: { type: "GeometryCollection"; geometries: Array<TopoJSON.Polygon | TopoJSON.MultiPolygon> };
-    states: { type: "GeometryCollection"; geometries: Array<TopoJSON.Polygon | TopoJSON.MultiPolygon> };
+    counties: {
+        type: "GeometryCollection";
+        geometries: Array<TopoJSON.Polygon | TopoJSON.MultiPolygon>;
+    };
+    states: {
+        type: "GeometryCollection";
+        geometries: Array<TopoJSON.Polygon | TopoJSON.MultiPolygon>;
+    };
     nation: TopoJSON.GeometryCollection;
 }
 
@@ -28,7 +34,10 @@ let filter: topojson.Filter;
 presimplifiedUs = topojson.presimplify(us);
 presimplifiedUs = topojson.presimplify(us, topojson.planarTriangleArea);
 presimplifiedUs = topojson.presimplify(us, topojson.sphericalTriangleArea);
-presimplifiedUs = topojson.presimplify(us, (points: Array<[number, number]>) => 1.5);
+presimplifiedUs = topojson.presimplify(
+    us,
+    (points: Array<[number, number]>) => 1.5,
+);
 
 geomCollection = topojson.presimplify(us).objects.counties;
 geomCollection = topojson.presimplify(us).objects.nation;
@@ -51,28 +60,64 @@ filter = topojson.filterAttached(us);
 filter = topojson.filterAttachedWeight(us);
 filter = topojson.filterAttachedWeight(us, 0.5);
 filter = topojson.filterAttachedWeight(us, 0.5, topojson.planarRingArea);
-filter = topojson.filterAttachedWeight(us, 0.5, (points: Array<[number, number]>) => 1.5);
+filter = topojson.filterAttachedWeight(
+    us,
+    0.5,
+    (points: Array<[number, number]>) => 1.5,
+);
 
 filter = topojson.filterWeight(us);
 filter = topojson.filterWeight(us, 0.5);
 filter = topojson.filterWeight(us, 0.5, topojson.planarRingArea);
-filter = topojson.filterWeight(us, 0.5, (points: Array<[number, number]>) => 1.5);
+filter = topojson.filterWeight(
+    us,
+    0.5,
+    (points: Array<[number, number]>) => 1.5,
+);
 
 aTopology = topojson.filter(us, filter);
-newUs = topojson.filter(us, (ring: topojson.Ring, interior: boolean) => true) as UsAtlas;
+newUs = topojson.filter(
+    us,
+    (ring: topojson.Ring, interior: boolean) => true,
+) as UsAtlas;
 emptyUs = topojson.filter(us, () => false) as TopoJSON.Topology<UsEmpty>;
 
-geomCollectionOrNull = topojson.filter(us, () => Math.random() > 0.9).objects.nation;
-aNullObject = topojson.filter(us, () => false).objects.nation as TopoJSON.NullObject;
-geomCollection = topojson.filter(us, () => true).objects.nation as TopoJSON.GeometryCollection;
+geomCollectionOrNull = topojson.filter(us, () => Math.random() > 0.9).objects
+    .nation;
+aNullObject = topojson.filter(us, () => false).objects
+    .nation as TopoJSON.NullObject;
+geomCollection = topojson.filter(us, () => true).objects
+    .nation as TopoJSON.GeometryCollection;
 
 // Geometry
 
 let area: number;
-area = topojson.planarRingArea([[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]);
-area = topojson.planarTriangleArea([[0, 0], [0, 1], [1, 1]]);
-area = topojson.sphericalRingArea([[0, 0], [0, 90], [90, 180], [0, 0]], true);
-area = topojson.sphericalTriangleArea([[0, 0], [0, 90], [90, 180]]);
+area = topojson.planarRingArea([
+    [0, 0],
+    [0, 1],
+    [1, 1],
+    [1, 0],
+    [0, 0],
+]);
+area = topojson.planarTriangleArea([
+    [0, 0],
+    [0, 1],
+    [1, 1],
+]);
+area = topojson.sphericalRingArea(
+    [
+        [0, 0],
+        [0, 90],
+        [90, 180],
+        [0, 0],
+    ],
+    true,
+);
+area = topojson.sphericalTriangleArea([
+    [0, 0],
+    [0, 90],
+    [90, 180],
+]);
 
 // Fails
 

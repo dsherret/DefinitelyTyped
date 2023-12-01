@@ -27,7 +27,11 @@ declare module "saml2-js" {
         create_login_request_url(
             IdP: IdentityProvider,
             options: CreateLoginRequestUrlOptions,
-            cb: (error: Error | null, login_url: string, request_id: string) => void,
+            cb: (
+                error: Error | null,
+                login_url: string,
+                request_id: string,
+            ) => void,
         ): void;
         /** Gets a SAML response object if the login attempt is valid, used for redirect binding. */
         redirect_assert(
@@ -45,7 +49,11 @@ declare module "saml2-js" {
         create_logout_request_url(
             IdP: IdentityProvider | string,
             options: CreateLogoutRequestUrlOptions,
-            cb: (error: Error | null, request_url: string, request_id: string) => void,
+            cb: (
+                error: Error | null,
+                request_url: string,
+                request_id: string,
+            ) => void,
         ): void;
         /** Creates a SAML Response URL to confirm a successful IdP initiated logout. */
         create_logout_response_url(

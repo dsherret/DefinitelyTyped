@@ -20,11 +20,15 @@ export class LintPackage {
      */
     constructor(rootDir) {
         this.#rootDir = rootDir;
-        this.#program = Linter.createProgram(path.join(this.#rootDir, "tsconfig.json"));
+        this.#program = Linter.createProgram(
+            path.join(this.#rootDir, "tsconfig.json"),
+        );
     }
 
     config() {
-        return Config.readConfigurationFile(path.join(this.#rootDir, "tslint.json"));
+        return Config.readConfigurationFile(
+            path.join(this.#rootDir, "tslint.json"),
+        );
     }
 
     /**
@@ -56,10 +60,14 @@ export class LintPackage {
      * @param {import("tslint").Configuration.RawConfigFile} config
      */
     updateConfig(config) {
-        fs.writeFileSync(path.join(this.#rootDir, "tslint.json"), stringify(config, { space: 4 }), {
-            encoding: "utf8",
-            flag: "w",
-        });
+        fs.writeFileSync(
+            path.join(this.#rootDir, "tslint.json"),
+            stringify(config, { space: 4 }),
+            {
+                encoding: "utf8",
+                flag: "w",
+            },
+        );
     }
 }
 
@@ -69,5 +77,8 @@ export class LintPackage {
  * @param {import("typescript").Program} program
  */
 function ignoreFile(file, dirPath, program) {
-    return program.isSourceFileDefaultLibrary(file) || isExternalDependency(file, path.resolve(dirPath), program);
+    return (
+        program.isSourceFileDefaultLibrary(file) ||
+        isExternalDependency(file, path.resolve(dirPath), program)
+    );
 }

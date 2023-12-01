@@ -44,7 +44,7 @@ jsonFile.remove(Symbol()); // $ExpectType Promise<void>
 // @ts-expect-error
 jsonFile.remove(1);
 // $ExpectType Promise<void>
-jsonFile.remove("foo", err => {
+jsonFile.remove("foo", (err) => {
     err; // $ExpectType Error | null
 });
 
@@ -52,7 +52,7 @@ jsonFile.stringify(); // $ExpectType Buffer
 
 jsonFile.save(); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-jsonFile.save(err => {
+jsonFile.save((err) => {
     err; // $ExpectType Error | null
 });
 

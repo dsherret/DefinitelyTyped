@@ -1,8 +1,8 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "await-promise": [true, "CancellablePromise"],
-        "no-any": true,
-        "invalid-void": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "await-promise": [true, "CancellablePromise"],
+    "no-any": true,
+    "invalid-void": false
+  }
 }

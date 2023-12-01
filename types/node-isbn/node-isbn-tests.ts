@@ -17,37 +17,37 @@ isbn.resolve("0735619670", { timeout: 15000 }, (err, book) => {
 });
 
 isbn.resolve("0735619670")
-    .then(book => {
+    .then((book) => {
         book; // $ExpectType Book
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });
 
 isbn.provider(["openlibrary", "google"])
     .resolve("0735619670")
-    .then(book => {
+    .then((book) => {
         book; // $ExpectType Book
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });
 
 isbn.provider(["google"])
     .resolve("0735619670")
-    .then(book => {
+    .then((book) => {
         book; // $ExpectType Book
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });
 
 isbn.provider([isbn.PROVIDER_NAMES.GOOGLE])
     .resolve("0735619670")
-    .then(book => {
+    .then((book) => {
         book; // $ExpectType Book
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });
 

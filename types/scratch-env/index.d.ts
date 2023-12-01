@@ -82,7 +82,9 @@ type ExtensionMenuMetadata = ExtensionDynamicMenu | ExtensionMenuItems;
 type ExtensionDynamicMenu = string;
 
 /** Items in an extension menu. */
-type ExtensionMenuItems = Array<ExtensionMenuItemSimple | ExtensionMenuItemComplex>;
+type ExtensionMenuItems = Array<
+    ExtensionMenuItemSimple | ExtensionMenuItemComplex
+>;
 
 /** A menu item for which the label and value are identical strings. */
 type ExtensionMenuItemSimple = string;

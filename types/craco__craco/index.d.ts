@@ -2,10 +2,20 @@ import type { Config as JestConfig } from "@jest/types";
 import type { Options as AutoprefixerOptions } from "autoprefixer";
 import type { TransformOptions } from "babel-core";
 import type { Linter } from "eslint";
-import type { Configuration as WebpackConfig, Plugin as WebpackPlugin, RuleSetRule, RuleSetUseItem } from "webpack";
-import type { Configuration as DevServerConfig, ProxyConfigArray } from "webpack-dev-server";
+import type {
+    Configuration as WebpackConfig,
+    Plugin as WebpackPlugin,
+    RuleSetRule,
+    RuleSetUseItem,
+} from "webpack";
+import type {
+    Configuration as DevServerConfig,
+    ProxyConfigArray,
+} from "webpack-dev-server";
 
-export type Configure<Config, Context> = Config | ((config: Config, context: Context) => Config);
+export type Configure<Config, Context> =
+    | Config
+    | ((config: Config, context: Context) => Config);
 
 export interface StyleOptions {
     modules?: {
@@ -20,7 +30,7 @@ export interface StyleOptions {
         loaderOptions?: Configure<any, CracoContext>;
     };
     postcss?: {
-        mode?: typeof POSTCSS_MODES[keyof typeof POSTCSS_MODES];
+        mode?: (typeof POSTCSS_MODES)[keyof typeof POSTCSS_MODES];
         // Additional plugins given in an array are appended to existing config, or you may use the function variant.
         plugins?: any[] | ((plugins: any[]) => any[]);
         env?: {
@@ -38,7 +48,7 @@ export interface StyleOptions {
 
 export interface EsLintOptions {
     enable?: boolean;
-    mode?: typeof ESLINT_MODES[keyof typeof ESLINT_MODES];
+    mode?: (typeof ESLINT_MODES)[keyof typeof ESLINT_MODES];
     // Any eslint configuration options: https://eslint.org/docs/user-guide/configuring.
     configure?: Configure<Linter.Config, CracoContext>;
     // Any eslint plugin configuration options: https://github.com/webpack-contrib/eslint-webpack-plugin#options.
@@ -247,7 +257,10 @@ export function getPlugin(
     match: WebpackPlugin;
 };
 
-export function addPlugins(webpackConfig: WebpackConfig, webpackPlugins: WebpackPlugin[]): void;
+export function addPlugins(
+    webpackConfig: WebpackConfig,
+    webpackPlugins: WebpackPlugin[],
+): void;
 
 export function removePlugins(
     webpackConfig: WebpackConfig,
@@ -332,4 +345,7 @@ export function createDevServerConfigProviderProxy(
     cracoConfig: CracoConfig,
     context?: Partial<CracoContext>,
     options?: CracoOptions,
-): (proxy: ProxyConfigArray | undefined, allowedHost: string) => DevServerConfig;
+): (
+    proxy: ProxyConfigArray | undefined,
+    allowedHost: string,
+) => DevServerConfig;

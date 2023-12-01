@@ -67,29 +67,31 @@ export interface BuildReporterBuild {
      * the module will attempt to detect source control information from .git, .
      * hg and the nearest package.json)
      */
-    sourceControl?: {
-        /**
-         *  The source control provider.
-         */
-        provider:
-            | "github"
-            | "github-enterprise"
-            | "gitlab"
-            | "gitlab-onpremise"
-            | "bitbucket"
-            | "bitbucket-server";
+    sourceControl?:
+        | {
+              /**
+               *  The source control provider.
+               */
+              provider:
+                  | "github"
+                  | "github-enterprise"
+                  | "gitlab"
+                  | "gitlab-onpremise"
+                  | "bitbucket"
+                  | "bitbucket-server";
 
-        /**
-         * A URL (git/ssh/https) pointing to the repository, or webpage representing
-         * the repository
-         */
-        repository: string;
+              /**
+               * A URL (git/ssh/https) pointing to the repository, or webpage representing
+               * the repository
+               */
+              repository: string;
 
-        /**
-         * The unique identifier for the commit (e.g. git SHA)
-         */
-        revision: string;
-    } | undefined;
+              /**
+               * The unique identifier for the commit (e.g. git SHA)
+               */
+              revision: string;
+          }
+        | undefined;
 
     /**
      * The name of the person/machine that created this build (defaults to the
@@ -129,12 +131,14 @@ export interface BuildReporterOptions {
     /**
      * Provide a different logger object
      */
-    logger?: {
-        debug?: any;
-        info?: any;
-        warn?: any;
-        error?: any;
-    } | undefined;
+    logger?:
+        | {
+              debug?: any;
+              info?: any;
+              warn?: any;
+              error?: any;
+          }
+        | undefined;
 
     /**
      * The path to search for source control info

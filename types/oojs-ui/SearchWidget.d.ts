@@ -17,11 +17,12 @@ declare namespace OO.ui {
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.SearchWidget
      */
     interface SearchWidget<T extends InputWidget = SearchInputWidget>
-        extends SearchWidget.Props, SearchWidget.Prototype<T>
-    {}
+        extends SearchWidget.Props,
+            SearchWidget.Prototype<T> {}
 
     namespace SearchWidget {
-        interface ConfigOptions<T extends InputWidget> extends Widget.ConfigOptions {
+        interface ConfigOptions<T extends InputWidget>
+            extends Widget.ConfigOptions {
             /** Placeholder text for query input */
             placeholder?: JQuery | string;
             /** Initial query value */
@@ -40,7 +41,8 @@ declare namespace OO.ui {
             $results: JQuery;
         }
 
-        interface Prototype<T extends InputWidget = InputWidget> extends Widget.Prototype {
+        interface Prototype<T extends InputWidget = InputWidget>
+            extends Widget.Prototype {
             /**
              * Get the query input.
              *
@@ -58,7 +60,9 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new<T extends InputWidget = SearchInputWidget>(config?: ConfigOptions<T>): SearchWidget<T>;
+            new <T extends InputWidget = SearchInputWidget>(
+                config?: ConfigOptions<T>,
+            ): SearchWidget<T>;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

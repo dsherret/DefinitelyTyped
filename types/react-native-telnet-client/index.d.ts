@@ -8,7 +8,11 @@ export type Callback<T> = (err: any, value?: T) => void;
 
 export class Stream extends Duplex {
     constructor(source: Socket, options?: DuplexOptions);
-    _write(data: Buffer | string, encoding?: BufferEncoding, callback?: Callback<void>): void;
+    _write(
+        data: Buffer | string,
+        encoding?: BufferEncoding,
+        callback?: Callback<void>,
+    ): void;
     _read(): void;
 }
 
@@ -87,9 +91,21 @@ export default class Telnet extends EventEmitter {
     connect(opts: ConnectOptions): Promise<void>;
     nextData(): Promise<string | null>;
     shell(callback?: Callback<Stream>): Promise<Stream>;
-    exec(cmd: string, opts?: ExecOptions | Callback<string>, callback?: Callback<string>): Promise<string>;
-    send(data: Buffer | string, opts?: SendOptions | Callback<string>, callback?: Callback<string>): Promise<string>;
-    write(data: Buffer | string, opts?: SendOptions, callback?: Callback<string>): Promise<string>;
+    exec(
+        cmd: string,
+        opts?: ExecOptions | Callback<string>,
+        callback?: Callback<string>,
+    ): Promise<string>;
+    send(
+        data: Buffer | string,
+        opts?: SendOptions | Callback<string>,
+        callback?: Callback<string>,
+    ): Promise<string>;
+    write(
+        data: Buffer | string,
+        opts?: SendOptions,
+        callback?: Callback<string>,
+    ): Promise<string>;
     getSocket(): Socket;
     end(): Promise<void>;
     destroy(): Promise<void>;

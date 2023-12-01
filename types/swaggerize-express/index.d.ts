@@ -10,7 +10,9 @@
  =============================================== */
 
 import express = require("express");
-declare function swaggerize(options: swaggerize.Options): express.RequestHandler;
+declare function swaggerize(
+    options: swaggerize.Options,
+): express.RequestHandler;
 
 declare namespace swaggerize {
     export namespace Swagger {
@@ -63,7 +65,7 @@ declare namespace swaggerize {
             get?: OperationObject | undefined;
             put?: OperationObject | undefined;
             post?: OperationObject | undefined;
-            "delete"?: OperationObject | undefined;
+            delete?: OperationObject | undefined;
             options?: OperationObject | undefined;
             head?: OperationObject | undefined;
             patch?: OperationObject | undefined;
@@ -91,7 +93,7 @@ declare namespace swaggerize {
 
         export interface ResponsesObject {
             [index: string]: Response | any;
-            "default": Response;
+            default: Response;
         }
 
         type Response = ResponseObject | ReferenceObject;
@@ -111,8 +113,7 @@ declare namespace swaggerize {
             [index: string]: HeaderObject;
         }
 
-        export interface HeaderObject extends ItemsObject {
-        }
+        export interface HeaderObject extends ItemsObject {}
 
         export interface ExampleObject {
             [index: string]: any;
@@ -126,7 +127,7 @@ declare namespace swaggerize {
             type: string;
             description?: string | undefined;
             name: string;
-            "in": string;
+            in: string;
             flow: string;
             authorizationUrl: string;
             tokenUrl: string;
@@ -152,7 +153,7 @@ declare namespace swaggerize {
             format?: string | undefined;
             items?: ItemsObject | undefined;
             collectionFormat?: string | undefined;
-            "default"?: any;
+            default?: any;
             maximum?: number | undefined;
             exclusiveMaximum: boolean;
             minimum?: number | undefined;
@@ -163,7 +164,7 @@ declare namespace swaggerize {
             maxItems?: number | undefined;
             minItems?: number | undefined;
             uniqueItems?: boolean | undefined;
-            "enum"?: any[] | undefined;
+            enum?: any[] | undefined;
             multipleOf?: number | undefined;
         }
 
@@ -175,7 +176,7 @@ declare namespace swaggerize {
 
         export interface ParameterObject {
             name: string;
-            "in": string;
+            in: string;
             description?: string | undefined;
             required?: boolean | undefined;
         }
@@ -184,7 +185,9 @@ declare namespace swaggerize {
             schema: SchemaObject;
         }
 
-        export interface GeneralParameterObject extends ParameterObject, ItemsObject {
+        export interface GeneralParameterObject
+            extends ParameterObject,
+                ItemsObject {
             allowEmptyValue?: boolean | undefined;
         }
 
@@ -218,7 +221,10 @@ declare namespace swaggerize {
     }
 
     export interface RouteSegment {
-        [urlSegment: string]: RouteSegment | express.RequestHandler | express.RequestHandler[];
+        [urlSegment: string]:
+            | RouteSegment
+            | express.RequestHandler
+            | express.RequestHandler[];
     }
 
     export interface Options {
@@ -259,19 +265,27 @@ interface IJsonSchema {
     minProperties?: number | undefined;
     required?: string[] | undefined;
     additionalProperties?: boolean | IJsonSchema | undefined;
-    definitions?: {
-        [name: string]: IJsonSchema;
-    } | undefined;
-    properties?: {
-        [name: string]: IJsonSchema;
-    } | undefined;
-    patternProperties?: {
-        [name: string]: IJsonSchema;
-    } | undefined;
-    dependencies?: {
-        [name: string]: IJsonSchema | string[];
-    } | undefined;
-    "enum"?: any[] | undefined;
+    definitions?:
+        | {
+              [name: string]: IJsonSchema;
+          }
+        | undefined;
+    properties?:
+        | {
+              [name: string]: IJsonSchema;
+          }
+        | undefined;
+    patternProperties?:
+        | {
+              [name: string]: IJsonSchema;
+          }
+        | undefined;
+    dependencies?:
+        | {
+              [name: string]: IJsonSchema | string[];
+          }
+        | undefined;
+    enum?: any[] | undefined;
     type?: string | string[] | undefined;
     allOf?: IJsonSchema[] | undefined;
     anyOf?: IJsonSchema[] | undefined;

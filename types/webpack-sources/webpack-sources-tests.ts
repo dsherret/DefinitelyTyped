@@ -69,7 +69,10 @@ class TrackedSource extends Source {
 }
 
 const tests = (options: MapOptions, hash: Hash, sourceMap: RawSourceMap) => {
-    let source: Source = new OriginalSource(Buffer.from(new Array(256)), "file.wasm");
+    let source: Source = new OriginalSource(
+        Buffer.from(new Array(256)),
+        "file.wasm",
+    );
     source = new OriginalSource("TestTestTest", "file.js");
     source = new OriginalSource("😋", "file.js");
     source = new TrackedSource(new OriginalSource("TestTestTest", "file.js"));
@@ -102,7 +105,10 @@ const tests = (options: MapOptions, hash: Hash, sourceMap: RawSourceMap) => {
     concatSource.map(options); // $ExpectType RawSourceMap | null
     concatSource.sourceAndMap(options); // $ExpectType SourceAndMapResult
 
-    const originalSource = new OriginalSource(concatSource.source(), "originalSource");
+    const originalSource = new OriginalSource(
+        concatSource.source(),
+        "originalSource",
+    );
     originalSource.source(); // $ExpectType string
     originalSource.updateHash(hash); // $ExpectType void
     originalSource.map(options); // $ExpectType RawSourceMap | null
@@ -129,7 +135,11 @@ const tests = (options: MapOptions, hash: Hash, sourceMap: RawSourceMap) => {
     replaceSource.map(options); // $ExpectType RawSourceMap | null
     replaceSource.sourceAndMap(options); // $ExpectType SourceAndMapResult
 
-    const sourceMapSource = new SourceMapSource(replaceSource.source(), "sourceMapSource", sourceMap);
+    const sourceMapSource = new SourceMapSource(
+        replaceSource.source(),
+        "sourceMapSource",
+        sourceMap,
+    );
     sourceMapSource.buffer(); // $ExpectType Buffer
     sourceMapSource.source(); // $ExpectType string
     sourceMapSource.updateHash(hash); // $ExpectType void

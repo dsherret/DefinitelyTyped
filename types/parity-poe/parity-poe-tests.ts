@@ -1,4 +1,10 @@
-import { formatInbound, formatOutbound, parseInbound, parseOutbound, POEMessage } from "parity-poe";
+import {
+    formatInbound,
+    formatOutbound,
+    parseInbound,
+    parseOutbound,
+    POEMessage,
+} from "parity-poe";
 
 const buffer = new Buffer("test");
 const message: POEMessage = {

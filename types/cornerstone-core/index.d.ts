@@ -5,7 +5,10 @@
  * @param [scale] The viewport scale
  * @return The current transform
  */
-declare function calculateTransform(enabledElement: any, scale?: number): Transform;
+declare function calculateTransform(
+    enabledElement: any,
+    scale?: number,
+): Transform;
 /**
  * Internal API function to draw an image to a given enabled element
  *
@@ -43,7 +46,7 @@ export function generateLut(
  */
 export function getDefaultViewport(
     canvas: HTMLElement,
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
 ): any;
 export function getTransform(enabledElement: any): Transform;
 /**
@@ -55,7 +58,9 @@ export function getTransform(enabledElement: any): Transform;
  * @return A long integer value, the request id, that uniquely identifies the entry in the callback list. This is a non-zero value, but you may not make any other assumptions about its value.
  * You can pass this value to window.cancelAnimationFrame() to cancel the refresh callback request.
  */
-export function requestAnimationFrame(callback: (timestamp: number) => void): number;
+export function requestAnimationFrame(
+    callback: (timestamp: number) => void,
+): number;
 
 /**
  * Sets new values for `getDefaultViewport`
@@ -73,7 +78,7 @@ export function setDefaultViewport(viewport: Viewport): void;
  * @param canvasImageDataData canvasImageData.data buffer filled with white pixels
  */
 export function storedColorPixelDataToCanvasImageData(
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
     lut: any[],
     canvasImageDataData: Uint8ClampedArray,
 ): void;
@@ -92,7 +97,7 @@ export function storedColorPixelDataToCanvasImageData(
  * @param canvasImageDataData canvasImageData.data buffer filled with white pixels
  */
 export function storedPixelDataToCanvasImageData(
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
     lut: any[],
     canvasImageDataData: Uint8ClampedArray,
 ): void;
@@ -102,7 +107,7 @@ export function storedPixelDataToCanvasImageData(
  * @param canvasImageDataData canvasImageData.data buffer filled with white pixels
  */
 export function storedPixelDataToCanvasImageDataColorLUT(
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
     colorLut: any,
     canvasImageDataData: Uint8ClampedArray,
 ): void;
@@ -128,7 +133,7 @@ export function storedPixelDataToCanvasImageDataPseudocolorLUT(
  * @param canvasImageDataData canvasImageData.data buffer filled with white pixels
  */
 declare function storedPixelDataToCanvasImageDataRGBA(
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
     lut: any[],
     canvasImageDataData: Uint8ClampedArray,
 ): void;
@@ -172,7 +177,10 @@ export namespace internal {
  * @param enabledElement The Cornerstone Enabled Element to redraw
  * @param invalidated - true if pixel data has been invalidated and cached rendering should not be used
  */
-export function renderColorImage(enabledElement: any, invalidated: boolean): void;
+export function renderColorImage(
+    enabledElement: any,
+    invalidated: boolean,
+): void;
 export function addColorLayer(layer: any, invalidated: any): void;
 /**
  * API function to draw a grayscale image to a given enabledElement
@@ -180,7 +188,10 @@ export function addColorLayer(layer: any, invalidated: any): void;
  * @param enabledElement The Cornerstone Enabled Element to redraw
  * @param invalidated - true if pixel data has been invalidated and cached rendering should not be used
  */
-export function renderGrayscaleImage(enabledElement: any, invalidated: boolean): void;
+export function renderGrayscaleImage(
+    enabledElement: any,
+    invalidated: boolean,
+): void;
 /**
  * API function to draw a grayscale image to a given layer
  *
@@ -189,14 +200,21 @@ export function renderGrayscaleImage(enabledElement: any, invalidated: boolean):
  * @param [useAlphaChannel] - Whether or not to render the grayscale image using only the alpha channel.
  * This does not work if this layer is not the first layer in the enabledElement.
  */
-export function addGrayscaleLayer(layer: any, invalidated: boolean, useAlphaChannel?: boolean): void;
+export function addGrayscaleLayer(
+    layer: any,
+    invalidated: boolean,
+    useAlphaChannel?: boolean,
+): void;
 /**
  * API function to draw a label map image to a given enabledElement
  *
  * @param enabledElement The Cornerstone Enabled Element to redraw
  * @param invalidated - true if pixel data has been invalidated and cached rendering should not be used
  */
-export function renderLabelMapImage(enabledElement: any, invalidated: boolean): void;
+export function renderLabelMapImage(
+    enabledElement: any,
+    invalidated: boolean,
+): void;
 /**
  * API function to draw a pseudo-color image to a given layer
  *
@@ -210,7 +228,10 @@ export function addLabelMapLayer(layer: any, invalidated: boolean): void;
  * @param enabledElement The Cornerstone Enabled Element to redraw
  * @param invalidated - true if pixel data has been invalidated and cached rendering should not be used
  */
-export function renderPseudoColorImage(enabledElement: any, invalidated: boolean): void;
+export function renderPseudoColorImage(
+    enabledElement: any,
+    invalidated: boolean,
+): void;
 /**
  * API function to draw a pseudo-color image to a given layer
  *
@@ -225,7 +246,12 @@ export function addPseudoColorLayer(layer: any, invalidated: boolean): void;
  * @param [viewport = null] A set of Cornerstone viewport parameters
  * @param [options = null] Options for rendering the image (e.g. enable webgl by {renderer: 'webgl'})
  */
-export function renderToCanvas(canvas: any, image: any, viewport?: any, options?: any): void;
+export function renderToCanvas(
+    canvas: any,
+    image: any,
+    viewport?: any,
+    options?: any,
+): void;
 /**
  * API function to draw a standard web image (PNG, JPG) to an enabledImage
  *
@@ -243,7 +269,11 @@ export function renderWebImage(enabledElement: any, invalidated: boolean): void;
  * @param image An Image loaded by a Cornerstone Image Loader
  * @param [viewport] A set of Cornerstone viewport parameters
  */
-export function displayImage(element: HTMLElement, image: Image, viewport?: Viewport): void;
+export function displayImage(
+    element: HTMLElement,
+    image: Image,
+    viewport?: Viewport,
+): void;
 
 /**
  * Draws all invalidated enabled elements and clears the invalid flag after drawing it
@@ -331,7 +361,10 @@ export function removeElementData(element: HTMLElement, dataType: string): void;
  * @param baseLayer The base layer
  * @param targetLayer The target layer to rescale
  */
-export function rescaleImage(baseLayer: EnabledElementLayer, targetLayer: EnabledElementLayer): void;
+export function rescaleImage(
+    baseLayer: EnabledElementLayer,
+    targetLayer: EnabledElementLayer,
+): void;
 /**
  * Add a layer to a Cornerstone element
  *
@@ -341,7 +374,11 @@ export function rescaleImage(baseLayer: EnabledElementLayer, targetLayer: Enable
  *
  * @returns layerId The new layer's unique identifier
  */
-export function addLayer(element: HTMLElement, image: Image, options: EnabledElementLayer["options"]): string;
+export function addLayer(
+    element: HTMLElement,
+    image: Image,
+    options: EnabledElementLayer["options"],
+): string;
 /**
  * Remove a layer from a Cornerstone element given a layer ID
  *
@@ -356,7 +393,10 @@ export function removeLayer(element: HTMLElement, layerId: string): void;
  * @param layerId The unique identifier for the layer
  * @return The layer
  */
-export function getLayer(element: HTMLElement, layerId: string): EnabledElementLayer;
+export function getLayer(
+    element: HTMLElement,
+    layerId: string,
+): EnabledElementLayer;
 /**
  * Retrieve all layers for a Cornerstone element
  *
@@ -387,7 +427,11 @@ export function setActiveLayer(element: HTMLElement, layerId: string): void;
  * @param image The image to be displayed in this layer
  * @param [layerId] The unique identifier for the layer
  */
-export function setLayerImage(element: HTMLElement, image: Image, layerId?: string): void;
+export function setLayerImage(
+    element: HTMLElement,
+    image: Image,
+    layerId?: string,
+): void;
 /**
  * Retrieve the currently active layer for a Cornerstone element
  *
@@ -659,7 +703,10 @@ export interface PixelCoordinate extends CoordinateSystem {
  *
  * @returns The transformed point in the pixel coordinate system
  */
-export function canvasToPixel(element: HTMLElement, pt: CanvasCoordinate): PixelCoordinate;
+export function canvasToPixel(
+    element: HTMLElement,
+    pt: CanvasCoordinate,
+): PixelCoordinate;
 
 /**
  * Converts a point in the pixel coordinate system to the canvas coordinate system
@@ -671,7 +718,10 @@ export function canvasToPixel(element: HTMLElement, pt: CanvasCoordinate): Pixel
  *
  * @returns The input point in the canvas coordinate system
  */
-export function pixelToCanvas(element: HTMLElement, pt: PixelCoordinate): CanvasCoordinate;
+export function pixelToCanvas(
+    element: HTMLElement,
+    pt: PixelCoordinate,
+): CanvasCoordinate;
 
 /**
  * Converts a point in the page coordinate system to the pixel coordinate
@@ -683,7 +733,11 @@ export function pixelToCanvas(element: HTMLElement, pt: PixelCoordinate): Canvas
  *
  * @returns The transformed point in the pixel coordinate system
  */
-export function pageToPixel(element: HTMLElement, pageX: number, pageY: number): PixelCoordinate;
+export function pageToPixel(
+    element: HTMLElement,
+    pageX: number,
+    pageY: number,
+): PixelCoordinate;
 
 /**
  * Retrieves the viewport for the specified enabled element
@@ -691,7 +745,9 @@ export function pageToPixel(element: HTMLElement, pageX: number, pageY: number):
  * @param element The DOM element enabled for Cornerstone
  * @returns The Cornerstone Viewport settings for this element, if they exist. Otherwise, undefined
  */
-export function getViewport(element: HTMLElement): Required<Viewport> | undefined;
+export function getViewport(
+    element: HTMLElement,
+): Required<Viewport> | undefined;
 
 /**
  * Sets/updates viewport of a given enabled element
@@ -742,7 +798,7 @@ declare class EventTarget {
  * @returns - Whether or not the image has been converted to a false color image
  */
 export function convertImageToFalseColorImage(
-    image: new(width?: number, height?: number) => HTMLImageElement,
+    image: new (width?: number, height?: number) => HTMLImageElement,
     colormap: unknown,
 ): boolean;
 /**
@@ -751,14 +807,19 @@ export function convertImageToFalseColorImage(
  * @param element The Cornerstone element
  * @param colormap - it can be a colormap object or a colormap id (string)
  */
-export function convertToFalseColorImage(element: HTMLElement, colormap: any): void;
+export function convertToFalseColorImage(
+    element: HTMLElement,
+    colormap: any,
+): void;
 /**
  * Restores a false color image to its original version
  *
  * @param image A Cornerstone Image Object
  * @returns True if the image object had a valid restore function, which was run. Otherwise, false.
  */
-export function restoreImage(image: new(width?: number, height?: number) => HTMLImageElement): boolean;
+export function restoreImage(
+    image: new (width?: number, height?: number) => HTMLImageElement,
+): boolean;
 /**
  * Adjusts an image's scale and translation so the image is centered and all pixels
  * in the image are viewable.
@@ -776,7 +837,10 @@ export function fitToWindow(element: HTMLElement): void;
  *
  * @returns The default viewport for the image
  */
-export function getDefaultViewportForImage(element: HTMLElement, image: Image): Required<Viewport>;
+export function getDefaultViewportForImage(
+    element: HTMLElement,
+    image: Image,
+): Required<Viewport>;
 
 /**
  * Returns the currently displayed image for an element or undefined if no image has
@@ -796,7 +860,13 @@ export function getImage(element: HTMLElement): Image;
  * @param height The height of the of the sampling rectangle in image coordinates
  * @returns The modality pixel value of the pixels in the sampling rectangle
  */
-export function getPixels(element: HTMLElement, x: number, y: number, width: number, height: number): number[];
+export function getPixels(
+    element: HTMLElement,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+): number[];
 /**
  * Retrieves an array of stored pixel values from a rectangular region of an image
  *
@@ -807,7 +877,13 @@ export function getPixels(element: HTMLElement, x: number, y: number, width: num
  * @param height The height of the of the sampling rectangle in image coordinates
  * @returns The stored pixel value of the pixels in the sampling rectangle
  */
-export function getStoredPixels(element: HTMLElement, x: number, y: number, width: number, height: number): number[];
+export function getStoredPixels(
+    element: HTMLElement,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+): number[];
 
 export namespace imageCache {
     /**
@@ -822,7 +898,10 @@ export namespace imageCache {
      * @param imageId ImageId of the image loader
      * @param imageLoadObject The object that is loading or loaded the image
      */
-    function putImageLoadObject(imageId: string, imageLoadObject: ImageLoadObject): void;
+    function putImageLoadObject(
+        imageId: string,
+        imageLoadObject: ImageLoadObject,
+    ): void;
     /**
      * Retuns the object that is loading a given imageId
      *
@@ -864,7 +943,10 @@ export namespace imageCache {
      * @param imageId Image ID
      * @param newCacheSize New image size
      */
-    function changeImageIdCacheSize(imageId: string, newCacheSize: number): void;
+    function changeImageIdCacheSize(
+        imageId: string,
+        newCacheSize: number,
+    ): void;
     const cachedImages: any[];
     const imageCache: {};
 }
@@ -1026,7 +1108,10 @@ export namespace colors {
     }
 }
 export type ImageLoaderOptions = any;
-export type ImageLoader = (imageId: string, options?: ImageLoaderOptions) => ImageLoadObject;
+export type ImageLoader = (
+    imageId: string,
+    options?: ImageLoaderOptions,
+) => ImageLoadObject;
 /**
  * Loads an image given an imageId and optional priority and returns a promise which will resolve to
  * the loaded image object or fail if an error occurred.  The loaded image is not stored in the cache.
@@ -1036,7 +1121,10 @@ export type ImageLoader = (imageId: string, options?: ImageLoaderOptions) => Ima
  *
  * @returns An Object which can be used to act after an image is loaded or loading fails
  */
-export function loadImage(imageId: string, options?: ImageLoaderOptions): Promise<Image>;
+export function loadImage(
+    imageId: string,
+    options?: ImageLoaderOptions,
+): Promise<Image>;
 /**
  * Loads an image given an imageId and optional priority and returns a promise which will resolve to
  * the loaded image object or fail if an error occurred. The image is stored in the cache.
@@ -1046,14 +1134,20 @@ export function loadImage(imageId: string, options?: ImageLoaderOptions): Promis
  *
  * @returns Image Loader Object
  */
-export function loadAndCacheImage(imageId: string, options?: ImageLoaderOptions): Promise<Image>;
+export function loadAndCacheImage(
+    imageId: string,
+    options?: ImageLoaderOptions,
+): Promise<Image>;
 /**
  * Registers an imageLoader plugin with cornerstone for the specified scheme
  *
  * @param scheme The scheme to use for this image loader (e.g. 'dicomweb', 'wadouri', 'http')
  * @param imageLoader A Cornerstone Image Loader function
  */
-export function registerImageLoader(scheme: string, imageLoader: ImageLoader): void;
+export function registerImageLoader(
+    scheme: string,
+    imageLoader: ImageLoader,
+): void;
 /**
  * Registers a new unknownImageLoader and returns the previous one
  *
@@ -1061,7 +1155,9 @@ export function registerImageLoader(scheme: string, imageLoader: ImageLoader): v
  *
  * @returns The previous Unknown Image Loader
  */
-export function registerUnknownImageLoader(imageLoader: ImageLoader): ImageLoader | undefined;
+export function registerUnknownImageLoader(
+    imageLoader: ImageLoader,
+): ImageLoader | undefined;
 
 /**
  * @deprecated This function is superseded by the ability to set the Viewport parameters to include colormaps.
@@ -1071,7 +1167,10 @@ export function registerUnknownImageLoader(imageLoader: ImageLoader): ImageLoade
  * @param image A Cornerstone Image Object
  * @param lookupTable A lookup table Object
  */
-export function pixelDataToFalseColorData(image: Image, lookupTable: colors.LookupTable | number[]): void;
+export function pixelDataToFalseColorData(
+    image: Image,
+    lookupTable: colors.LookupTable | number[],
+): void;
 
 export namespace rendering {
     export { renderColorImage as colorImage };
@@ -1115,7 +1214,11 @@ export function setToPixelCoordinateSystem(
  * @param detail=null The event data to be sent
  * @returns The return value is false if at least one event listener called preventDefault(). Otherwise it returns true.
  */
-export function triggerEvent(el: EventTarget, type: string, detail?: any): boolean;
+export function triggerEvent(
+    el: EventTarget,
+    type: string,
+    detail?: any,
+): boolean;
 
 declare namespace cornerstone {
     export { drawImage };

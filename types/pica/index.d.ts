@@ -52,7 +52,13 @@ declare namespace pica {
          *
          * @default 'mks2013'
          */
-        filter?: "box" | "hamming" | "lanczos2" | "lanczos3" | "mks2013" | undefined;
+        filter?:
+            | "box"
+            | "hamming"
+            | "lanczos2"
+            | "lanczos3"
+            | "mks2013"
+            | undefined;
         /**
          * in percents, >=0.
          *
@@ -107,7 +113,13 @@ declare namespace pica {
          *
          * @default 'mks2013'
          */
-        filter?: "box" | "hamming" | "lanczos2" | "lanczos3" | "mks2013" | undefined;
+        filter?:
+            | "box"
+            | "hamming"
+            | "lanczos2"
+            | "lanczos3"
+            | "mks2013"
+            | undefined;
         /**
          * in percents, >=0.
          *
@@ -147,7 +159,12 @@ declare namespace pica {
          * Pica already knows how to use multiple cores (if browser allows).
          */
         resize(
-            from: HTMLCanvasElement | HTMLImageElement | ImageBitmap | File | Blob,
+            from:
+                | HTMLCanvasElement
+                | HTMLImageElement
+                | ImageBitmap
+                | File
+                | Blob,
             to: HTMLCanvasElement,
             options?: PicaResizeOptions,
         ): Promise<HTMLCanvasElement>;
@@ -155,7 +172,11 @@ declare namespace pica {
         /**
          * Convenience method, similar to canvas.toBlob(), but with promise interface & polyfill for old browsers.
          */
-        toBlob(canvas: HTMLCanvasElement, mimeType: string, quality?: number): Promise<Blob>;
+        toBlob(
+            canvas: HTMLCanvasElement,
+            mimeType: string,
+            quality?: number,
+        ): Promise<Blob>;
 
         /**
          * Supplementary method, not recommended for direct use.
@@ -166,7 +187,7 @@ declare namespace pica {
     }
 
     interface PicaStatic {
-        new(config?: PicaOptions): Pica;
+        new (config?: PicaOptions): Pica;
         (config?: PicaOptions): Pica;
     }
 }

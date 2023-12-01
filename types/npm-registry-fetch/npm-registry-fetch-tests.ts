@@ -29,7 +29,7 @@ const opts: fetch.Options = {
     ignoreBody: true,
     isFromCI: false,
     localAddress: "address.local",
-    mapJSON: obj => obj.toString(),
+    mapJSON: (obj) => obj.toString(),
     maxSockets: 42,
     npmSession: "session",
     preferOffline: false,

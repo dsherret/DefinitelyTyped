@@ -1,4 +1,14 @@
-import { BeginDataType, count, decr, destroy, get, incr, page, ReadonlyBeginDataType, set } from "@begin/data";
+import {
+    BeginDataType,
+    count,
+    decr,
+    destroy,
+    get,
+    incr,
+    page,
+    ReadonlyBeginDataType,
+    set,
+} from "@begin/data";
 
 interface TestData {
     key: string;
@@ -242,7 +252,7 @@ set([{}]);
 })();
 
 // Destroy with callback.
-destroy({ table, key }, err => {
+destroy({ table, key }, (err) => {
     // $ExpectType Error | null | undefined
     err;
 });
@@ -262,7 +272,7 @@ destroy(
         { table, key },
         { table, key },
     ],
-    err => {
+    (err) => {
         // $ExpectType Error | null | undefined
         err;
     },

@@ -10,9 +10,12 @@ export interface DynamoDBTransportOptions {
     dynamoDoc?: boolean | undefined;
 }
 export interface DynamoDBTransportInstance extends TransportInstance {
-    new(options?: DynamoDBTransportOptions): DynamoDBTransportInstance;
+    new (options?: DynamoDBTransportOptions): DynamoDBTransportInstance;
 }
-export declare class DynamoDB extends winston.Transport implements DynamoDBTransportInstance {
+export declare class DynamoDB
+    extends winston.Transport
+    implements DynamoDBTransportInstance
+{
     regions: string[];
     name: string;
     level: string;

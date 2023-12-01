@@ -30,7 +30,9 @@ export function sync(plugins: AcceptedPlugin[]): (input: CssInJs) => CssInJs;
  * @param plugins Plugins to use with PostCSS
  * @returns A processor function that accepts (idk) and returns a CSS-in-JS object
  */
-export function async(plugins: AcceptedPlugin[]): (input: CssInJs) => Promise<CssInJs>;
+export function async(
+    plugins: AcceptedPlugin[],
+): (input: CssInJs) => Promise<CssInJs>;
 
 // Override process method to allow passing CssInJs
 // when the parser is the postcss-js parser.

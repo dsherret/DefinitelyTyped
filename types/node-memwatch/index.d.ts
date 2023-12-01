@@ -21,7 +21,10 @@ declare class HeapDiff {
 declare namespace memwatch {
     interface MemWatch extends EventEmitter {
         on(eventName: "leak", callback: (event: LeakInformation) => void): this;
-        on(eventName: "stats", callback: (event: StatsInformation) => void): this;
+        on(
+            eventName: "stats",
+            callback: (event: StatsInformation) => void,
+        ): this;
 
         /**
          * Force V8 to do a full GC and heap compaction.

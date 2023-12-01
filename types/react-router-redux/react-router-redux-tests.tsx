@@ -27,14 +27,13 @@ interface State {
 }
 
 // For testing, assume the router reducer is the only sub-reducer:
-const reducers: Reducer<State> = combineReducers<State>({ router: routerReducer });
+const reducers: Reducer<State> = combineReducers<State>({
+    router: routerReducer,
+});
 
 // Add the reducer to your store on the `router` key
 // Also apply our middleware for navigating
-const store = createStore(
-    reducers,
-    applyMiddleware(middleware),
-);
+const store = createStore(reducers, applyMiddleware(middleware));
 
 const Home = () => <div>Home</div>;
 ReactDOM.render(

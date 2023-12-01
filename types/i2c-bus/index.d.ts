@@ -8,7 +8,11 @@ type BytesRead = { bytesRead: number; buffer: Buffer };
 
 type CompletionCallback = (error: any) => any;
 
-type BufferCallback = (error: any, bytesReadOrWritten: number, buffer: Buffer) => any;
+type BufferCallback = (
+    error: any,
+    bytesReadOrWritten: number,
+    buffer: Buffer,
+) => any;
 
 type ResultCallback<T> = (error: any, result: T) => any;
 
@@ -95,7 +99,11 @@ export interface I2CBus {
      * @param {ResultCallback<number[]>} callback
      *     Callback that will recieve an array of numbers where each number represents the I2C address of a device which was detected.
      */
-    scan(startAddr: number, endAddr: number, callback: ResultCallback<number[]>): void;
+    scan(
+        startAddr: number,
+        endAddr: number,
+        callback: ResultCallback<number[]>,
+    ): void;
 
     /**
      * Scans the I2C bus synchronously for devices. The default address range 0x03 through 0x77 is the same as the default address range used by the <code>i2cdetect</code> command line tool.
@@ -151,7 +159,12 @@ export interface I2CBus {
      * @param {BufferCallback} callback
      *     Callback that will recieve the number of bytes read and the given buffer.
      */
-    i2cRead(address: number, length: number, buffer: Buffer, callback: BufferCallback): void;
+    i2cRead(
+        address: number,
+        length: number,
+        buffer: Buffer,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Synchronous plain I2C read.
@@ -179,7 +192,12 @@ export interface I2CBus {
      * @param {BufferCallback} callback
      *     Callback that will recieve the number of bytes written and the given buffer.
      */
-    i2cWrite(address: number, length: number, buffer: Buffer, callback: BufferCallback): void;
+    i2cWrite(
+        address: number,
+        length: number,
+        buffer: Buffer,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Synchronous plain I2C write.
@@ -205,7 +223,11 @@ export interface I2CBus {
      * @param {ResultCallback<number>} callback
      *     Callback that will recieve the byte read.
      */
-    readByte(address: number, command: number, callback: ResultCallback<number>): void;
+    readByte(
+        address: number,
+        command: number,
+        callback: ResultCallback<number>,
+    ): void;
 
     /**
      * Synchronous SMBus read byte.
@@ -229,7 +251,11 @@ export interface I2CBus {
      * @param {ResultCallback<number>} callback
      *     Callback that will recieve the word read.
      */
-    readWord(address: number, command: number, callback: ResultCallback<number>): void;
+    readWord(
+        address: number,
+        command: number,
+        callback: ResultCallback<number>,
+    ): void;
 
     /**
      * Synchronous SMBus read word.
@@ -259,7 +285,13 @@ export interface I2CBus {
      * @param {BufferCallback} callback
      *     Callback that will recieve the number of bytes read and the given buffer.
      */
-    readI2cBlock(address: number, command: number, length: number, buffer: Buffer, callback: BufferCallback): void;
+    readI2cBlock(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Synchronous I2C block read (not defined by the SMBus
@@ -277,7 +309,12 @@ export interface I2CBus {
      * @return {number}
      *     The number of bytes read.
      */
-    readI2cBlockSync(address: number, command: number, length: number, buffer: Buffer): number;
+    readI2cBlockSync(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+    ): number;
 
     /**
      * Asynchronous SMBus receive byte.
@@ -333,7 +370,12 @@ export interface I2CBus {
      * @param {CompletionCallback} callback
      *     Completion callback
      */
-    writeByte(address: number, command: number, byte: number, callback: CompletionCallback): void;
+    writeByte(
+        address: number,
+        command: number,
+        byte: number,
+        callback: CompletionCallback,
+    ): void;
 
     /**
      * Synchronous SMBus write byte.
@@ -359,7 +401,12 @@ export interface I2CBus {
      * @param {CompletionCallback} callback
      *     Completion callback
      */
-    writeWord(address: number, command: number, word: number, callback: CompletionCallback): void;
+    writeWord(
+        address: number,
+        command: number,
+        word: number,
+        callback: CompletionCallback,
+    ): void;
 
     /**
      * Synchronous SMBus write word.
@@ -385,7 +432,12 @@ export interface I2CBus {
      * @param {CompletionCallback} callback
      *     Completion callback
      */
-    writeQuick(address: number, command: number, bit: number, callback: CompletionCallback): void;
+    writeQuick(
+        address: number,
+        command: number,
+        bit: number,
+        callback: CompletionCallback,
+    ): void;
 
     /**
      * Synchronous SMBus quick command.  Writes a single bit to the device.
@@ -415,7 +467,13 @@ export interface I2CBus {
      * @param {BufferCallback} callback
      *     Callback that will recieve the number of bytes written and the given buffer.
      */
-    writeI2cBlock(address: number, command: number, length: number, buffer: Buffer, callback: BufferCallback): void;
+    writeI2cBlock(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Synchronous I2C block write (not defined by the SMBus
@@ -433,7 +491,12 @@ export interface I2CBus {
      * @return {number}
      *     The number of bytes written.
      */
-    writeI2cBlockSync(address: number, command: number, length: number, buffer: Buffer): number;
+    writeI2cBlockSync(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+    ): number;
 
     /**
      * Return the PromisifiedBus instance for this Bus instance.
@@ -505,7 +568,11 @@ export interface PromisifiedBus {
      * @return {Promise<BytesRead>}
      *     A Promise that on success will be resolved with an object with a bytesRead property identifying the number of bytes read, and a buffer property that is a reference to the passed in buffer argument. The returned Promise will be rejected if an error occurs.
      */
-    i2cRead(address: number, length: number, buffer: Buffer): Promise<BytesRead>;
+    i2cRead(
+        address: number,
+        length: number,
+        buffer: Buffer,
+    ): Promise<BytesRead>;
 
     /**
      * Asynchronous plain I2C write.
@@ -519,7 +586,11 @@ export interface PromisifiedBus {
      * @return {Promise<BytesWritten>}
      *     A Promise that on success will be resolved with an object with a bytesWritten property identifying the number of bytes written, and a buffer property that is a reference to the passed in buffer argument. The returned promise will be rejected if an error occurs.
      */
-    i2cWrite(address: number, length: number, buffer: Buffer): Promise<BytesWritten>;
+    i2cWrite(
+        address: number,
+        length: number,
+        buffer: Buffer,
+    ): Promise<BytesWritten>;
 
     /**
      * Asynchronous SMBus read byte.
@@ -559,7 +630,12 @@ export interface PromisifiedBus {
      * @return {Promise<BytesRead>}
      *     A Promise that on success will be resolved with an object with a bytesRead property identifying the number of bytes read, and a buffer property that is a reference to the passed in buffer argument. The returned Promise will be rejected if an error occurs.
      */
-    readI2cBlock(address: number, command: number, length: number, buffer: Buffer): Promise<BytesRead>;
+    readI2cBlock(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+    ): Promise<BytesRead>;
 
     /**
      * Asynchronous SMBus receive byte.
@@ -639,7 +715,12 @@ export interface PromisifiedBus {
      * @return {Promise<BytesWritten>}
      *     A Promise that on success will be resolved with an object with a bytesWritten property identifying the number of bytes written, and a buffer property that is a reference to the passed in buffer argument. The returned promise will be rejected if an error occurs.
      */
-    writeI2cBlock(address: number, command: number, length: number, buffer: Buffer): Promise<BytesWritten>;
+    writeI2cBlock(
+        address: number,
+        command: number,
+        length: number,
+        buffer: Buffer,
+    ): Promise<BytesWritten>;
 
     /**
      * Return the Bus instance for this PromisifiedBus instance.
@@ -663,7 +744,11 @@ export interface PromisifiedBus {
  *     A new Bus object.
  */
 export function open(busNumber: number, callback: CompletionCallback): I2CBus;
-export function open(busNumber: number, options: OpenOptions, callback: CompletionCallback): I2CBus;
+export function open(
+    busNumber: number,
+    options: OpenOptions,
+    callback: CompletionCallback,
+): I2CBus;
 
 /**
  * Synchronous open.
@@ -687,4 +772,7 @@ export function openSync(busNumber: number, options?: OpenOptions): I2CBus;
  * @return {Promise<PromisifiedBus>}
  *     A Promise that, when resolved, yields a PromisifiedBus object.
  */
-export function openPromisified(busNumber: number, options?: OpenOptions): Promise<PromisifiedBus>;
+export function openPromisified(
+    busNumber: number,
+    options?: OpenOptions,
+): Promise<PromisifiedBus>;

@@ -1,6 +1,11 @@
 import * as cookie from "cookie";
 // eslint-disable-next-line no-duplicate-imports
-import { CookieParseOptions, CookieSerializeOptions, parse, serialize } from "cookie";
+import {
+    CookieParseOptions,
+    CookieSerializeOptions,
+    parse,
+    serialize,
+} from "cookie";
 
 function test_serialize(): void {
     let retVal: string;
@@ -15,7 +20,7 @@ function test_parse(): void {
     let retVal: Record<string, string>;
 
     retVal = parse("foo=bar; bar=baz;");
-    retVal = cookie.parse("foo=bar; bar=baz", { decode: x => x });
+    retVal = cookie.parse("foo=bar; bar=baz", { decode: (x) => x });
 }
 
 function test_options(): void {

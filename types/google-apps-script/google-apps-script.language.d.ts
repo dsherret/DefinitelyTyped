@@ -14,7 +14,11 @@ declare namespace GoogleAppsScript {
          *     Logger.log(spanish);
          */
         interface LanguageApp {
-            translate(text: string, sourceLanguage: string, targetLanguage: string): string;
+            translate(
+                text: string,
+                sourceLanguage: string,
+                targetLanguage: string,
+            ): string;
             translate(
                 text: string,
                 sourceLanguage: string,

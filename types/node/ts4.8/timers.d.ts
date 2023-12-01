@@ -156,7 +156,10 @@ declare module "timers" {
         ): NodeJS.Timeout;
         // util.promisify no rest args compability
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        function setTimeout(callback: (args: void) => void, ms?: number): NodeJS.Timeout;
+        function setTimeout(
+            callback: (args: void) => void,
+            ms?: number,
+        ): NodeJS.Timeout;
         namespace setTimeout {
             const __promisify__: typeof setTimeoutPromise;
         }
@@ -165,7 +168,9 @@ declare module "timers" {
          * @since v0.0.1
          * @param timeout A `Timeout` object as returned by {@link setTimeout} or the `primitive` of the `Timeout` object as a string or a number.
          */
-        function clearTimeout(timeoutId: NodeJS.Timeout | string | number | undefined): void;
+        function clearTimeout(
+            timeoutId: NodeJS.Timeout | string | number | undefined,
+        ): void;
         /**
          * Schedules repeated execution of `callback` every `delay` milliseconds.
          *
@@ -188,7 +193,10 @@ declare module "timers" {
         ): NodeJS.Timeout;
         // util.promisify no rest args compability
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        function setInterval(callback: (args: void) => void, ms?: number): NodeJS.Timeout;
+        function setInterval(
+            callback: (args: void) => void,
+            ms?: number,
+        ): NodeJS.Timeout;
         namespace setInterval {
             const __promisify__: typeof setIntervalPromise;
         }
@@ -197,7 +205,9 @@ declare module "timers" {
          * @since v0.0.1
          * @param timeout A `Timeout` object as returned by {@link setInterval} or the `primitive` of the `Timeout` object as a string or a number.
          */
-        function clearInterval(intervalId: NodeJS.Timeout | string | number | undefined): void;
+        function clearInterval(
+            intervalId: NodeJS.Timeout | string | number | undefined,
+        ): void;
         /**
          * Schedules the "immediate" execution of the `callback` after I/O events'
          * callbacks.
@@ -231,7 +241,9 @@ declare module "timers" {
          * @since v0.9.1
          * @param immediate An `Immediate` object as returned by {@link setImmediate}.
          */
-        function clearImmediate(immediateId: NodeJS.Immediate | undefined): void;
+        function clearImmediate(
+            immediateId: NodeJS.Immediate | undefined,
+        ): void;
         function queueMicrotask(callback: () => void): void;
     }
 }

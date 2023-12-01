@@ -6,15 +6,17 @@ const params = {
     boundingVolume: "None",
 };
 
-fetch("points.json").then(response => response.json()).then((position: Array<[number, number, number]>) => {
-    // add object to scene
-    for (let i = 0; i < position.length; i += 3) {
-        const x = position[i][0];
-        const y = position[i][1];
-        const z = position[i][2];
-        points.push(new YUKA.Vector3(x, y, z));
-    }
-});
+fetch("points.json")
+    .then((response) => response.json())
+    .then((position: Array<[number, number, number]>) => {
+        // add object to scene
+        for (let i = 0; i < position.length; i += 3) {
+            const x = position[i][0];
+            const y = position[i][1];
+            const z = position[i][2];
+            points.push(new YUKA.Vector3(x, y, z));
+        }
+    });
 
 switch (params.boundingVolume) {
     case "BoundingSphere":

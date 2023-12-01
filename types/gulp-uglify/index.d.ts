@@ -21,6 +21,8 @@ declare namespace GulpUglify {
     }
 }
 
-declare function GulpUglify(options?: GulpUglify.Options): NodeJS.ReadWriteStream;
+declare function GulpUglify(
+    options?: GulpUglify.Options,
+): NodeJS.ReadWriteStream;
 
 export = GulpUglify;

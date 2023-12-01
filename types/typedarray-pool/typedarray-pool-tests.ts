@@ -1,7 +1,7 @@
 import * as pool from "typedarray-pool";
 import tape = require("tape");
 
-tape("typedarray-pool", function(t) {
+tape("typedarray-pool", function (t) {
     pool.clearCache();
 
     for (var i = 1; i < 100; ++i) {
@@ -47,10 +47,13 @@ tape("typedarray-pool", function(t) {
         pool.free(a8);
 
         const a9 = pool.malloc(i, "uint8_clamped");
-        if ((typeof Uint8ClampedArray) !== "undefined") {
+        if (typeof Uint8ClampedArray !== "undefined") {
             t.assert(a9 instanceof Uint8ClampedArray, "uint8_clamped");
         } else {
-            t.assert(a9 instanceof Uint8Array, "unit8_clamped clamped default to uint8");
+            t.assert(
+                a9 instanceof Uint8Array,
+                "unit8_clamped clamped default to uint8",
+            );
         }
         t.assert(a9.length >= i);
         pool.free(a9);
@@ -119,10 +122,13 @@ tape("typedarray-pool", function(t) {
         pool.freeDouble(a8);
 
         const a9 = pool.mallocUint8Clamped(i);
-        if ((typeof Uint8ClampedArray) !== "undefined") {
+        if (typeof Uint8ClampedArray !== "undefined") {
             t.assert(a9 instanceof Uint8ClampedArray, "uint8 clamped");
         } else {
-            t.assert(a9 instanceof Uint8Array, "uint8 clamped defaults to unt8");
+            t.assert(
+                a9 instanceof Uint8Array,
+                "uint8 clamped defaults to unt8",
+            );
         }
         t.assert(a9.length >= i);
         pool.freeUint8Clamped(a9);

@@ -14,7 +14,7 @@ reactMixin(Foo.prototype, someMixin);
 reactMixin(Foo.prototype, someOtherMixin);
 
 var mixin: React.Mixin<any, any> = {
-    getDefaultProps: function(): any {
+    getDefaultProps: function (): any {
         return { b: 2 };
     },
 };
@@ -32,12 +32,11 @@ class Foo2 extends React.Component {
 reactMixin.onClass(Foo2, mixin);
 
 @reactMixin.decorate(mixin)
-class Foo3 extends React.Component {
-}
+class Foo3 extends React.Component {}
 
 function autobind(methodNames: string[]): React.Mixin<any, any> {
     return {
-        componentWillMount: function(): void {
+        componentWillMount: function (): void {
             methodNames.forEach((name) => {
                 this[name] = this[name].bind(this);
             });
@@ -47,5 +46,4 @@ function autobind(methodNames: string[]): React.Mixin<any, any> {
 
 @reactMixin.decorate(mixin)
 @reactMixin.decorate(autobind(Object.keys(mixin)))
-class Foo4 extends React.Component {
-}
+class Foo4 extends React.Component {}

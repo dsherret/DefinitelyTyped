@@ -7,6 +7,9 @@ export interface DndMoveEvent {
     targetLabel: string;
 }
 
-export function moveLabels(columns: Table.Column[], event: DndMoveEvent): Table.Column[];
+export function moveLabels(
+    columns: Table.Column[],
+    event: DndMoveEvent,
+): Table.Column[];
 
 export function Header(props: any): JSX.Element;

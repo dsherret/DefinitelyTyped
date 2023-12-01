@@ -118,14 +118,18 @@ interface MarkerClusterGroupProps {
      *
      * Function used to create the cluster icon.
      */
-    iconCreateFunction?: ((cluster: MarkerCluster) => Icon | DivIcon) | undefined;
+    iconCreateFunction?:
+        | ((cluster: MarkerCluster) => Icon | DivIcon)
+        | undefined;
 
     /**
      * spiderfyShapePositions
      *
      * Function used to override spiderfy default shape positions.
      */
-    spiderfyShapePositions?: ((count: number, centerPt: Point) => Point[]) | undefined;
+    spiderfyShapePositions?:
+        | ((count: number, centerPt: Point) => Point[])
+        | undefined;
 
     /**
      * clusterPane
@@ -168,7 +172,9 @@ interface MarkerClusterGroupProps {
      * Typically used to implement a progress indicator.
      * Defaults to null.
      */
-    chunkProgress?: ((processed: number, total: number, elapsed: number) => void) | null;
+    chunkProgress?:
+        | ((processed: number, total: number, elapsed: number) => void)
+        | null;
 }
 
 declare const MarkerClusterGroup: ComponentType<MarkerClusterGroupProps>;

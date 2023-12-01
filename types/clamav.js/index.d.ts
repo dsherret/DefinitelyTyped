@@ -6,10 +6,18 @@ import { Stream } from "stream";
 export interface ClamScanner {
     port: 3310 | number;
     host: string | "localhost";
-    scan: (object: ReadStream | Stream | string, callback: (error: Error, object: any, result: string) => any) => void;
+    scan: (
+        object: ReadStream | Stream | string,
+        callback: (error: Error, object: any, result: string) => any,
+    ) => void;
 }
 export function createScanner(port: number, host: string): ClamScanner;
-export function ping(port: number, host: string, timeout: number, callback: (error?: Error) => any): void;
+export function ping(
+    port: number,
+    host: string,
+    timeout: number,
+    callback: (error?: Error) => any,
+): void;
 export function version(
     port: number,
     host: string,

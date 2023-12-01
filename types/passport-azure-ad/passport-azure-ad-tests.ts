@@ -43,13 +43,20 @@ const verifyBearer: VerifyBearerFunctionWithReq = (req, token, done) => {
     } else done(new Error("Invalid token"));
 };
 
-const verifyOidc: VerifyOIDCFunctionWithReq = (req: Request, profile: IProfile, done: VerifyCallback) => {
+const verifyOidc: VerifyOIDCFunctionWithReq = (
+    req: Request,
+    profile: IProfile,
+    done: VerifyCallback,
+) => {
     if (!profile.oid) {
         done(null, profile);
     } else done(new Error("Invalid token"));
 };
 
-const verifyOidcWithoutReq: VerifyOIDCFunction = (profile: IProfile, done: VerifyCallback) => {
+const verifyOidcWithoutReq: VerifyOIDCFunction = (
+    profile: IProfile,
+    done: VerifyCallback,
+) => {
     if (!profile.oid) {
         done(null, profile);
     } else done(new Error("Invalid token"));

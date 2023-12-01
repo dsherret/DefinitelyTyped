@@ -5,7 +5,8 @@ import route = require("@xmpp/stream-features/route");
 import { Element } from "@xmpp/xml";
 
 // test type exports
-type StreamFeatures<TEntity extends middleware.Entity> = streamFeatures.StreamFeatures<TEntity>;
+type StreamFeatures<TEntity extends middleware.Entity> =
+    streamFeatures.StreamFeatures<TEntity>;
 
 class Foo extends Connection implements middleware.Entity {
     domain?: string;
@@ -20,7 +21,9 @@ class Foo extends Connection implements middleware.Entity {
     }
 }
 
-const mw = middleware({ entity: new Foo({ service: "foo", domain: "foo.bar" }) });
+const mw = middleware({
+    entity: new Foo({ service: "foo", domain: "foo.bar" }),
+});
 const sf = streamFeatures({ middleware: mw }); // $ExpectType StreamFeatures<Foo>
 // $ExpectType Middleware<IncomingContext<Foo>>
 sf.use("foo", "ns", (ctx, next, features) => {

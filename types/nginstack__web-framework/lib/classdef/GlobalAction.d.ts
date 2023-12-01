@@ -15,7 +15,10 @@ declare class GlobalAction {
     name: string;
     targetKey: number | null;
     visible: boolean;
-    addParameter(param: { name: string; value: string | number | boolean | Date | null }): void;
+    addParameter(param: {
+        name: string;
+        value: string | number | boolean | Date | null;
+    }): void;
     getParameter(paramName: string): {
         name: string;
         value: string | number | boolean | Date | null;

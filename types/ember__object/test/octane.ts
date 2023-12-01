@@ -58,7 +58,7 @@ class Foo extends EmberObject {
     @computed("firstName", "lastName")
     declare badFullName: string;
 
-    @computed("fullName", function(this: Foo) {
+    @computed("fullName", function (this: Foo) {
         return this.fullName.toUpperCase();
     })
     declare bigFullName: string;
@@ -123,7 +123,10 @@ class Bar extends EmberObject {
     // @ts-expect-error
     @deprecatingAlias("firstName")
     declare deprecatingAliasTest2: string;
-    @deprecatingAlias("firstName", { id: "deprecate-everything", until: "v5.0.0" })
+    @deprecatingAlias("firstName", {
+        id: "deprecate-everything",
+        until: "v5.0.0",
+    })
     declare deprecatingAliasTest3: string;
 
     // @ts-expect-error
@@ -159,7 +162,7 @@ class Bar extends EmberObject {
     @filter("firstName", Boolean)
     declare filterTest4: string[];
     // @ts-expect-error
-    @filter("firstName", "secondName", x => x)
+    @filter("firstName", "secondName", (x) => x)
     declare filterTest5: string[];
     @filter("firstName", ["secondName"], Boolean)
     declare filterTest6: string[];
@@ -243,7 +246,7 @@ class Bar extends EmberObject {
     // @ts-expect-error
     @map("firstName")
     declare mapTest3: string[];
-    @map("firstName", x => x)
+    @map("firstName", (x) => x)
     declare mapTest4: string[];
 
     // @ts-expect-error

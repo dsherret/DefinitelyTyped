@@ -35,7 +35,12 @@ interface Popoto {
      * @param radiusParam
      * @param classParam
      */
-    appendFittedText: (selection: any, textParam: string, radiusParam: number, classParam?: any) => void;
+    appendFittedText: (
+        selection: any,
+        textParam: string,
+        radiusParam: number,
+        classParam?: any,
+    ) => void;
 
     /**
      * Function to call to update the graph only.

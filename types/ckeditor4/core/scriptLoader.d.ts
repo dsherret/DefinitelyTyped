@@ -8,7 +8,10 @@ declare namespace CKEDITOR {
     interface scriptLoader {
         load(
             scriptUrls: string | string[],
-            callback: (succeededUrls: boolean | string[], failedUrls: string[]) => void,
+            callback: (
+                succeededUrls: boolean | string[],
+                failedUrls: string[],
+            ) => void,
             scope?: unknown,
             showBusy?: boolean,
         ): void;

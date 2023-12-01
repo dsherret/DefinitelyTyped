@@ -8,7 +8,16 @@ export interface Currency {
 export interface LinkDescription {
     href: string;
     rel: string;
-    method?: "CONNECT" | "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT" | undefined;
+    method?:
+        | "CONNECT"
+        | "DELETE"
+        | "GET"
+        | "HEAD"
+        | "OPTIONS"
+        | "PATCH"
+        | "POST"
+        | "PUT"
+        | undefined;
 }
 export interface PayoutBatchHeader extends PayoutHeader {
     time_completed?: string | undefined;
@@ -59,9 +68,17 @@ export interface PayoutItem {
     receiver: string;
     sender_item_id?: string | undefined;
     recipient_wallet?: RecipientWallet | undefined;
-    alternate_notification_method?: {
-        phone?: { country_code: string; national_number: string; extension_number?: string | undefined } | undefined;
-    } | undefined;
+    alternate_notification_method?:
+        | {
+              phone?:
+                  | {
+                        country_code: string;
+                        national_number: string;
+                        extension_number?: string | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
     notification_language?: string | undefined;
 }
 export interface PayoutItemDetail {
@@ -70,15 +87,17 @@ export interface PayoutItemDetail {
     note?: string | undefined;
     receiver: string;
     sender_item_id?: string | undefined;
-    recipient_name?: {
-        prefix?: string | undefined;
-        given_name?: string | undefined;
-        surname?: string | undefined;
-        middle_name?: string | undefined;
-        suffix?: string | undefined;
-        alternate_full_name?: string | undefined;
-        full_name?: string | undefined;
-    } | undefined;
+    recipient_name?:
+        | {
+              prefix?: string | undefined;
+              given_name?: string | undefined;
+              surname?: string | undefined;
+              middle_name?: string | undefined;
+              suffix?: string | undefined;
+              alternate_full_name?: string | undefined;
+              full_name?: string | undefined;
+          }
+        | undefined;
     recipient_wallet?: RecipientWallet | undefined;
 }
 export interface PayoutSenderBatchHeader {
@@ -131,7 +150,12 @@ declare namespace core {
      * Base class for PayPal environments
      */
     class PayPalEnvironment {
-        constructor(clientId: string, clientSecret: string, baseUrl: string, webUrl: string);
+        constructor(
+            clientId: string,
+            clientSecret: string,
+            baseUrl: string,
+            webUrl: string,
+        );
 
         // Authorization header string for basic authentication with the current client id and secret
         authorizationString(): string;
@@ -156,10 +180,16 @@ declare namespace core {
      */
     class PayPalHttpClient {
         constructor(environment: PayPalEnvironment, refreshToken?: string);
-        execute(request: payouts.PayoutsPostRequest): Promise<HttpResponse<CreateBatchPayoutResponse>>;
-        execute(request: payouts.PayoutsGetRequest): Promise<HttpResponse<GetBatchPayoutResponse>>;
         execute(
-            request: payouts.PayoutsItemGetRequest | payouts.PayoutsItemCancelRequest,
+            request: payouts.PayoutsPostRequest,
+        ): Promise<HttpResponse<CreateBatchPayoutResponse>>;
+        execute(
+            request: payouts.PayoutsGetRequest,
+        ): Promise<HttpResponse<GetBatchPayoutResponse>>;
+        execute(
+            request:
+                | payouts.PayoutsItemGetRequest
+                | payouts.PayoutsItemCancelRequest,
         ): Promise<HttpResponse<GetPayoutsItemResponse>>;
     }
 }

@@ -113,10 +113,12 @@ const version = "";
 const versions: string[] = [];
 const loose = true;
 // $ExpectType SemVer | null
-let sem: semver.SemVer | null = Math.random() < 0.5 ? new semver.SemVer(str, {}) : null;
+let sem: semver.SemVer | null =
+    Math.random() < 0.5 ? new semver.SemVer(str, {}) : null;
 
 // $ExpectType string | SemVer | null | undefined
-const anyVersion = Math.random() < 0.5 ? undefined : Math.random() < 0.5 ? strn : sem;
+const anyVersion =
+    Math.random() < 0.5 ? undefined : Math.random() < 0.5 ? strn : sem;
 
 sem = new semver.SemVer(str, { includePrerelease: false });
 sem = new semver.SemVer(str, { loose: true });
@@ -263,7 +265,10 @@ bool = semver.intersects(str, str, { includePrerelease: false });
 sem = semver.minVersion(str, loose);
 semver.simplifyRange(versions, "1.x"); // $ExpectType string | Range
 semver.simplifyRange(versions, "1.0.0 || 1.0.1 || 1.0.2 || 1.0.3 || 1.0.4"); // $ExpectType string | Range
-semver.simplifyRange(versions, new Range("1.0.0 || 1.0.1 || 1.0.2 || 1.0.3 || 1.0.4")); // $ExpectType string | Range
+semver.simplifyRange(
+    versions,
+    new Range("1.0.0 || 1.0.1 || 1.0.2 || 1.0.3 || 1.0.4"),
+); // $ExpectType string | Range
 semver.simplifyRange(versions, ">=3.0.0 <3.1.0"); // $ExpectType string | Range
 semver.simplifyRange(versions, "3.0.0 || 3.1 || 3.2 || 3.3"); // $ExpectType string | Range
 semver.simplifyRange(versions, "1 || 2 || 3"); // $ExpectType string | Range

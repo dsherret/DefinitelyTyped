@@ -34,7 +34,10 @@ declare namespace NumberPicker {
          * Determines how the NumberPicker parses a number from the localized string representation.
          * You can also provide a parser Function to pair with a custom format.
          */
-        parse?: string[] | ((str: string, culture: string) => number) | undefined;
+        parse?:
+            | string[]
+            | ((str: string, culture: string) => number)
+            | undefined;
         /**
          * The minimum number that the NumberPicker value.
          * @default -Infinity
@@ -97,6 +100,7 @@ declare namespace NumberPicker {
     }
 }
 
-interface NumberPickerClass extends ComponentClass<NumberPicker.NumberPickerProps> {}
+interface NumberPickerClass
+    extends ComponentClass<NumberPicker.NumberPickerProps> {}
 declare var NumberPicker: NumberPickerClass;
 export = NumberPicker;

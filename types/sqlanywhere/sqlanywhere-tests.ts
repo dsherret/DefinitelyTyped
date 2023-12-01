@@ -8,6 +8,6 @@ connection.connect(
         Password: "Test",
         Server: "Test",
     },
-    err => err,
+    (err) => err,
 );
 connection.exec("SELECT * FROM TEST", (err, res) => res);

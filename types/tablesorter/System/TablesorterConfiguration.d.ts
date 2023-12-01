@@ -20,7 +20,8 @@ import { TablesorterHeading } from "./TablesorterHeading";
 /**
  * Represents settings for the `tablesorter`.
  */
-export interface TablesorterConfiguration<TElement = HTMLElement> extends TablesorterConfigBase {
+export interface TablesorterConfiguration<TElement = HTMLElement>
+    extends TablesorterConfigBase {
     /**
      * The namespace of the table.
      */
@@ -64,7 +65,10 @@ export interface TablesorterConfiguration<TElement = HTMLElement> extends Tables
     /**
      * Sortings to append to the current sorting.
      */
-    sortAppend?: SortDefinition[] | { [index: number]: RelativeSortDefinition[] } | undefined;
+    sortAppend?:
+        | SortDefinition[]
+        | { [index: number]: RelativeSortDefinition[] }
+        | undefined;
 
     /**
      * A value indicating whether accent character should be converted to their equivalent characters during sort.
@@ -165,7 +169,11 @@ export interface TablesorterConfiguration<TElement = HTMLElement> extends Tables
     /**
      * The methods for extracting text from cells.
      */
-    textExtraction?: "basic" | TextExtractor<TElement> | MappedSettings<"basic" | TextExtractor<TElement>> | undefined;
+    textExtraction?:
+        | "basic"
+        | TextExtractor<TElement>
+        | MappedSettings<"basic" | TextExtractor<TElement>>
+        | undefined;
 
     /**
      * The attribute to read the text-value from `img`-tags.
@@ -175,7 +183,10 @@ export interface TablesorterConfiguration<TElement = HTMLElement> extends Tables
     /**
      * Either global `Globalize`-settings or per-column `Globalize`-settings to apply.
      */
-    globalize?: GlobalizeSettings | { [index: number]: GlobalizeSettings } | undefined;
+    globalize?:
+        | GlobalizeSettings
+        | { [index: number]: GlobalizeSettings }
+        | undefined;
 
     /**
      * A value indicating whether changes to child-rows are ignored by the table-sorter.
@@ -237,7 +248,10 @@ export interface TablesorterConfiguration<TElement = HTMLElement> extends Tables
     /**
      * The text-sorting to apply.
      */
-    textSorter?: TextSorter<TElement> | MappedSettings<TextSorter<TElement>> | undefined;
+    textSorter?:
+        | TextSorter<TElement>
+        | MappedSettings<TextSorter<TElement>>
+        | undefined;
 
     /**
      * The number-sorting to apply.

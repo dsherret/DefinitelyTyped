@@ -46,7 +46,11 @@ interface RegistryProxyMixin extends Owner {
      * Define a dependency injection onto a specific factory or all factories
      * of a type.
      */
-    inject(factoryNameOrType: string, property: string, injectionName: string): unknown;
+    inject(
+        factoryNameOrType: string,
+        property: string,
+        injectionName: string,
+    ): unknown;
 }
 declare const RegistryProxyMixin: Mixin<RegistryProxyMixin>;
 export default RegistryProxyMixin;

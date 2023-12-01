@@ -10,10 +10,18 @@ const routesMap = new Map<string, express.Handler>([
 
 app.get("/test", versionRouter.route(routesMap));
 
-function respondV1(req: express.Request, res: express.Response, next: express.NextFunction) {
+function respondV1(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+) {
     res.status(200).send("ok v1");
 }
 
-function respondV2(req: express.Request, res: express.Response, next: express.NextFunction) {
+function respondV2(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+) {
     res.status(200).send("ok v2");
 }

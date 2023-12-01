@@ -25,63 +25,110 @@ interface JQuery {
     ): JQuery;
     on(
         methodName: "cycle-bootstrap",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState, API: JQueryCycle2.API) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+            API: JQueryCycle2.API,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-destroyed",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-finished",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-initialized",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-next",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-pager-activated",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-paused",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-post-initialize",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-pre-initialize",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-prev",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-resumed",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-slide-added",
-        callback: (event: JQueryEventObject, jQueryWrappedSlideEl: JQuery) => void,
+        callback: (
+            event: JQueryEventObject,
+            jQueryWrappedSlideEl: JQuery,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-slide-removed",
-        callback: (event: JQueryEventObject, indexOfSlideRemoved: number, removedSlideEl: Element) => void,
+        callback: (
+            event: JQueryEventObject,
+            indexOfSlideRemoved: number,
+            removedSlideEl: Element,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-stopped",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-transition-stopped",
-        callback: (event: JQueryEventObject, optionHash: JQueryCycle2.OptionsWithState) => void,
+        callback: (
+            event: JQueryEventObject,
+            optionHash: JQueryCycle2.OptionsWithState,
+        ) => void,
     ): JQuery;
     on(
         methodName: "cycle-update-view",
@@ -107,7 +154,11 @@ declare namespace JQueryCycle2 {
         (methodName: "remove", index: number): JQuery;
         (methodName: "resume"): JQuery;
         (methodName: "stop"): JQuery;
-        (methodNameDontCallMe: string, arg1DontCallMe: any, arg2DontCallMe: any): JQuery; // catch-all, shouldn't ever be called though
+        (
+            methodNameDontCallMe: string,
+            arg1DontCallMe: any,
+            arg2DontCallMe: any,
+        ): JQuery; // catch-all, shouldn't ever be called though
     }
 
     interface Options {
@@ -185,7 +236,11 @@ declare namespace JQueryCycle2 {
         getSlideIndex(slideElement: Element): number;
         getSlideOpts(slideIndex: number): Options;
         goto(index: number): void;
-        initSlide(slideOptions: Options, slide: any, /*not sure*/ suggestedZindex: number): void;
+        initSlide(
+            slideOptions: Options,
+            slide: any,
+            /*not sure*/ suggestedZindex: number,
+        ): void;
         initSlideshow(): void;
         log(...args: any[]): void;
         next(): void;
@@ -202,7 +257,11 @@ declare namespace JQueryCycle2 {
         stackSlides(currEl: Element, nextEl: Element, fwdFlag: boolean): void;
         stop(): void;
         stopTransition(): void;
-        tmpl(templateString: string, optionHash: Options, slideEl: Element): void;
+        tmpl(
+            templateString: string,
+            optionHash: Options,
+            slideEl: Element,
+        ): void;
         trigger(eventName: String, ...args: any[]): void;
         updateView(): void;
     }

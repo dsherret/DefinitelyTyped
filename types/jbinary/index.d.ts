@@ -52,7 +52,9 @@ declare namespace jBinary {
         read: (this: any, context: any) => unknown;
         write: (this: any, data: any, context: any) => void;
         setParams?: ((this: any, ...params: any[]) => void) | undefined;
-        resolve?: ((this: any, getType: (...params: any[]) => any) => void) | undefined;
+        resolve?:
+            | ((this: any, getType: (...params: any[]) => any) => void)
+            | undefined;
         params?: string[] | undefined;
         typeParams?: string[] | undefined;
     };
@@ -68,7 +70,10 @@ declare class jBinary {
      * @param typeSet Typeset to use for loading the data.
      * @returns Promise with the jBinary object as parameter.
      */
-    static load(source: jBinary.SourceType, typeSet?: jBinary.TypeSet): Promise<jBinary>;
+    static load(
+        source: jBinary.SourceType,
+        typeSet?: jBinary.TypeSet,
+    ): Promise<jBinary>;
 
     /**
      * Loads data from a given source and calls a callback with the jBinary object.
@@ -96,7 +101,10 @@ declare class jBinary {
      */
     static loadData(
         source: jBinary.SourceType,
-        callback: (error: Error | null, data: jBinary.DataType | undefined) => void,
+        callback: (
+            error: Error | null,
+            data: jBinary.DataType | undefined,
+        ) => void,
     ): void;
 
     /**
@@ -173,7 +181,10 @@ declare class jBinary {
      * @param mimeType MIME-Type of the data. @default "application/octet-stream"
      * @returns Promise (with no data) that is fulfilled when the saving was successful.
      */
-    saveAs(destination: jBinary.DestinationType, mimeType?: string): Promise<undefined>;
+    saveAs(
+        destination: jBinary.DestinationType,
+        mimeType?: string,
+    ): Promise<undefined>;
 
     /**
      * Saves binary data to a given destination and calls a callback when finished.
@@ -244,7 +255,11 @@ declare class jBinary {
      * @param offset If provided, write to this offset position, otherwise write it to the current position
      *               and move data pointer forward (streaming mode).
      */
-    write(type: string | [string, string, number?], data: unknown, offset?: number): void;
+    write(
+        type: string | [string, string, number?],
+        data: unknown,
+        offset?: number,
+    ): void;
 
     /**
      * Writes the given data as one value of the type specified by the "jBinary.all" key in the Typeset

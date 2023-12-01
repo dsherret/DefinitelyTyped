@@ -35,8 +35,8 @@ decode("some string", "UTF-8");
 convert("sample", "UTF-8"); // $ExpectType Uint8Array
 convert(int8, "UTF-8"); // $ExpectType Uint8Array
 
-foldLines("Content-Type: multipart/alternative; boundary=\"----zzzz----\""); // $ExpectType string
-foldLines("Content-Type: multipart/alternative; boundary=\"----zzzz----\"", true); // $ExpectType string
+foldLines('Content-Type: multipart/alternative; boundary="----zzzz----"'); // $ExpectType string
+foldLines('Content-Type: multipart/alternative; boundary="----zzzz----"', true); // $ExpectType string
 // @ts-expect-error
 foldLines(int8);
 

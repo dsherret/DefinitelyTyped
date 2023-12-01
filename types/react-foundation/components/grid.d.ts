@@ -8,7 +8,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Row: React.FunctionComponent<RowProps>;
-export interface RowProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface RowProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     upOnSmall?: number | undefined;
     upOnMedium?: number | undefined;
     upOnLarge?: number | undefined;
@@ -34,7 +36,9 @@ export interface RowProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDiv
  * @returns {Object}
  */
 export declare const Column: React.FunctionComponent<ColumnProps>;
-export interface ColumnProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface ColumnProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     upOnSmall?: number | undefined;
     small?: number | undefined;
     medium?: number | undefined;

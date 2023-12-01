@@ -5,4 +5,5 @@ import "react-is/canary";
 
 // Suspense
 ReactIs.isSuspenseList(<React.unstable_SuspenseList children={<div />} />); // true
-ReactIs.typeOf(<React.unstable_SuspenseList children={<div />} />) === ReactIs.SuspenseList; // true
+ReactIs.typeOf(<React.unstable_SuspenseList children={<div />} />) ===
+    ReactIs.SuspenseList; // true

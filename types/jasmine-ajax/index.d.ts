@@ -32,7 +32,9 @@ interface JasmineAjaxRequestTracker {
     mostRecent(): JasmineAjaxRequest;
     at(index: number): JasmineAjaxRequest;
     filter(urlToMatch: RegExp): JasmineAjaxRequest[];
-    filter(urlToMatch: (request: JasmineAjaxRequest) => boolean): JasmineAjaxRequest[];
+    filter(
+        urlToMatch: (request: JasmineAjaxRequest) => boolean,
+    ): JasmineAjaxRequest[];
     filter(urlToMatch: string): JasmineAjaxRequest[];
 }
 
@@ -54,14 +56,20 @@ interface JasmineAjaxRequestStub {
     andReturn(options: JasmineAjaxResponse): void;
     andError(options: JasmineAjaxRequestStubErrorOptions): void;
     andTimeout(): void;
-    andCallFunction(functionToCall: (request: JasmineAjaxRequest) => void): void;
+    andCallFunction(
+        functionToCall: (request: JasmineAjaxRequest) => void,
+    ): void;
     matches(fullUrl: string, data: string, method: string): boolean;
 }
 
 interface JasmineAjaxStubTracker {
     addStub(stub: JasmineAjaxRequestStub): void;
     reset(): void;
-    findStub(url: string, data?: string, method?: string): JasmineAjaxRequestStub;
+    findStub(
+        url: string,
+        data?: string,
+        method?: string,
+    ): JasmineAjaxRequestStub;
 }
 
 interface JasmineAjaxParamParser {
@@ -78,11 +86,27 @@ declare class MockAjax {
     withMock(closure: () => void): void;
     addCustomParamParser(parser: JasmineAjaxParamParser): void;
 
-    stubRequest(url: RegExp, data?: string, method?: string): JasmineAjaxRequestStub;
-    stubRequest(url: string, data?: string, method?: string): JasmineAjaxRequestStub;
+    stubRequest(
+        url: RegExp,
+        data?: string,
+        method?: string,
+    ): JasmineAjaxRequestStub;
+    stubRequest(
+        url: string,
+        data?: string,
+        method?: string,
+    ): JasmineAjaxRequestStub;
 
-    stubRequest(url: RegExp, data?: RegExp, method?: string): JasmineAjaxRequestStub;
-    stubRequest(url: string, data?: RegExp, method?: string): JasmineAjaxRequestStub;
+    stubRequest(
+        url: RegExp,
+        data?: RegExp,
+        method?: string,
+    ): JasmineAjaxRequestStub;
+    stubRequest(
+        url: string,
+        data?: RegExp,
+        method?: string,
+    ): JasmineAjaxRequestStub;
 
     requests: JasmineAjaxRequestTracker;
     stubs: JasmineAjaxStubTracker;

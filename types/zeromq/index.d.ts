@@ -136,14 +136,19 @@ export class Socket extends EventEmitter {
      * @param opt Option
      * @param val Value
      */
-    setsockopt<T extends keyof SocketOptions>(opt: T | number, val: SocketOptions[T]): this;
+    setsockopt<T extends keyof SocketOptions>(
+        opt: T | number,
+        val: SocketOptions[T],
+    ): this;
 
     /**
      * Get socket `opt`.
      *
      * @param opt Option number
      */
-    getsockopt<T extends keyof SocketOptions>(opt: T | number): SocketOptions[T];
+    getsockopt<T extends keyof SocketOptions>(
+        opt: T | number,
+    ): SocketOptions[T];
 
     /**
      * Async bind.
@@ -214,7 +219,11 @@ export class Socket extends EventEmitter {
      * @param flags Message flags
      * @param cb The callback to be called when the message will be sent or fails to be sent
      */
-    send(msg: string | Buffer | any[], flags?: number, cb?: (error?: Error) => void): this;
+    send(
+        msg: string | Buffer | any[],
+        flags?: number,
+        cb?: (error?: Error) => void,
+    ): this;
 
     /**
      * Enable monitoring of a Socket. This enables the following additional events:
@@ -337,4 +346,8 @@ export function curveKeypair(): CurveKeyPair;
  * @param capture If defined, this socket will receive all messages from frontend and backend socket
  *                Capture socket should be a 'pub', 'dealer', 'push' or 'pair' socket.
  */
-export function proxy(frontend: Socket, backend: Socket, capture?: Socket): void;
+export function proxy(
+    frontend: Socket,
+    backend: Socket,
+    capture?: Socket,
+): void;

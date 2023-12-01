@@ -2,7 +2,9 @@
 
 interface JQuery {
     overlay(opts?: JQueryTools.overlay.OverlayOptions): JQuery;
-    overlay<T extends JQueryTools.overlay.Overlay>(opts?: JQueryTools.overlay.OverlayOptions): T;
+    overlay<T extends JQueryTools.overlay.Overlay>(
+        opts?: JQueryTools.overlay.OverlayOptions,
+    ): T;
     data(key: "overlay"): JQueryTools.overlay.Overlay;
 }
 
@@ -20,7 +22,11 @@ declare namespace JQueryTools {
         interface OverlayStatic {
             addEffect(
                 effectName: string,
-                effectFn: (this: Overlay, position: CssOptions, done: () => void) => void,
+                effectFn: (
+                    this: Overlay,
+                    position: CssOptions,
+                    done: () => void,
+                ) => void,
                 closeFn: (this: Overlay, done: () => void) => void,
             ): void;
         }

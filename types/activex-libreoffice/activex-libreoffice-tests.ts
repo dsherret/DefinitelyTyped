@@ -9,23 +9,37 @@
     const serviceManager = new ActiveXObject("com.sun.star.ServiceManager");
 
     // Create the CoreReflection service that is later used to create structs
-    const coreReflection = serviceManager.createInstance("com.sun.star.reflection.CoreReflection");
+    const coreReflection = serviceManager.createInstance(
+        "com.sun.star.reflection.CoreReflection",
+    );
 
     // Create the Desktop
-    const desktop = serviceManager.defaultContext.getByName("/singleton/com.sun.star.frame.theDesktop");
+    const desktop = serviceManager.defaultContext.getByName(
+        "/singleton/com.sun.star.frame.theDesktop",
+    );
 
     // Open a new empty writer document
     const args: any[] = [];
-    const document = desktop.loadComponentFromURL("private:factory/swriter", "_blank", 0, args); // as com.sun.star.text.TextDocument;
+    const document = desktop.loadComponentFromURL(
+        "private:factory/swriter",
+        "_blank",
+        0,
+        args,
+    ); // as com.sun.star.text.TextDocument;
 
     // Create a text object
     const text = document.Text;
 
     // Create a cursor object
-    const cursor = (text.createTextCursor() as any) as com.sun.star.text.TextCursor;
+    const cursor =
+        text.createTextCursor() as any as com.sun.star.text.TextCursor;
 
     // Inserting some Text
-    text.insertString(cursor, "The first line in the newly created text document.\n", false);
+    text.insertString(
+        cursor,
+        "The first line in the newly created text document.\n",
+        false,
+    );
 
     // Inserting a second line
     text.insertString(cursor, "Now we're in the second line", false);
@@ -42,8 +56,14 @@
     const row = rows.getByIndex(0) as com.sun.star.table.TableRow;
 
     // Set the table background color
-    ((table as any) as com.sun.star.beans.XPropertySet).setPropertyValue("BackTransparent", false);
-    ((table as any) as com.sun.star.beans.XPropertySet).setPropertyValue("BackColor", 13421823);
+    (table as any as com.sun.star.beans.XPropertySet).setPropertyValue(
+        "BackTransparent",
+        false,
+    );
+    (table as any as com.sun.star.beans.XPropertySet).setPropertyValue(
+        "BackColor",
+        13421823,
+    );
 
     // Set a different background color for the first row
     row.setPropertyValue("BackTransparent", false);
@@ -79,7 +99,11 @@
     text.insertControlCharacter(cursor, 0, false);
 
     // Inserting colored Text.
-    text.insertString(cursor, " This is a colored Text - blue with shadow\n", false);
+    text.insertString(
+        cursor,
+        " This is a colored Text - blue with shadow\n",
+        false,
+    );
 
     // Create a paragraph break ( ControlCharacter::PARAGRAPH_BREAK).
     text.insertControlCharacter(cursor, 0, false);
@@ -94,7 +118,10 @@
     textFrame.setSize(size);
 
     // TextContentAnchorType.AS_CHARACTER = 1
-    textFrame.setPropertyValue("AnchorType", com.sun.star.text.TextContentAnchorType.AS_CHARACTER);
+    textFrame.setPropertyValue(
+        "AnchorType",
+        com.sun.star.text.TextContentAnchorType.AS_CHARACTER,
+    );
 
     // insert the frame
     text.insertTextContent(cursor, textFrame, false);
@@ -106,8 +133,16 @@
     const objFrameTextCursor = objFrameText.createTextCursor();
 
     // Inserting some Text
-    objFrameText.insertString(objFrameTextCursor, "The first line in the newly created text frame.", false);
-    objFrameText.insertString(objFrameTextCursor, "\nWith this second line the height of the frame raises.", false);
+    objFrameText.insertString(
+        objFrameTextCursor,
+        "The first line in the newly created text frame.",
+        false,
+    );
+    objFrameText.insertString(
+        objFrameTextCursor,
+        "\nWith this second line the height of the frame raises.",
+        false,
+    );
 
     // Create a paragraph break
     // The second argument is a com::sun::star::text::ControlCharacter::PARAGRAPH_BREAK constant
@@ -120,17 +155,26 @@
     // Insert another string
     text.insertString(cursor, " That's all for now !!", false);
 
-    function insertIntoCell(strCellName: string, strText: string, objTable: com.sun.star.text.TextTable) {
-        const objCellText = objTable.getCellByName(strCellName) as com.sun.star.table.Cell;
-        const objCellCursor = (objCellText.createTextCursor() as any) as com.sun.star.text.TextCursor;
+    function insertIntoCell(
+        strCellName: string,
+        strText: string,
+        objTable: com.sun.star.text.TextTable,
+    ) {
+        const objCellText = objTable.getCellByName(
+            strCellName,
+        ) as com.sun.star.table.Cell;
+        const objCellCursor =
+            objCellText.createTextCursor() as any as com.sun.star.text.TextCursor;
         objCellCursor.setPropertyValue("CharColor", 16777215);
         objCellText.insertString(objCellCursor, strText, false);
     }
 
-    function createStruct<K extends keyof LibreOffice.StructNameMap>(strTypeName: K): LibreOffice.StructNameMap[K] {
-        const classSize = coreReflection.forName(strTypeName) as com.sun.star.reflection.XIdlClass<
-            LibreOffice.StructNameMap[K]
-        >;
+    function createStruct<K extends keyof LibreOffice.StructNameMap>(
+        strTypeName: K,
+    ): LibreOffice.StructNameMap[K] {
+        const classSize = coreReflection.forName(
+            strTypeName,
+        ) as com.sun.star.reflection.XIdlClass<LibreOffice.StructNameMap[K]>;
         const aStruct: [LibreOffice.StructNameMap[K]] = [] as any;
         classSize.createObject(aStruct);
         return aStruct[0];
@@ -143,15 +187,26 @@
     const serviceManager = new ActiveXObject("com.sun.star.ServiceManager");
 
     // singleton access
-    const desktop = serviceManager.defaultContext.getByName("/singleton/com.sun.star.frame.theDesktop");
+    const desktop = serviceManager.defaultContext.getByName(
+        "/singleton/com.sun.star.frame.theDesktop",
+    );
 
     // defaultContext property implements XNameAccess
     // sequence is returned as a safearray
-    const elementNames = new VBArray(serviceManager.defaultContext.getElementNames()).toArray().join("\n");
+    const elementNames = new VBArray(
+        serviceManager.defaultContext.getElementNames(),
+    )
+        .toArray()
+        .join("\n");
     WScript.Echo(elementNames);
 
     // get/set methods exposed as properties -- getText => Text, getViewData/setViewData => ViewData
-    const document = desktop.loadComponentFromURL("private:factory/swriter", "_blank", 0, []);
+    const document = desktop.loadComponentFromURL(
+        "private:factory/swriter",
+        "_blank",
+        0,
+        [],
+    );
     const viewData = document.ViewData;
     WScript.Echo(viewData.Count);
     const text = document.Text;
@@ -165,7 +220,9 @@
     const coreReflection = serviceManager.defaultContext.getByName(
         "/singleton/com.sun.star.reflection.theCoreReflection",
     );
-    const classInfo = coreReflection.forName("com.sun.star.accessibility.Accessible");
+    const classInfo = coreReflection.forName(
+        "com.sun.star.accessibility.Accessible",
+    );
     const accessible: [com.sun.star.accessibility.XAccessible] = [] as any;
     classInfo.createObject(accessible);
     accessible[0].acquire();

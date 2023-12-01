@@ -103,7 +103,9 @@ export interface ErrorSource {
 /**
  * Constructs an Error object given the contents of an error frame.
  */
-export function createErrorFromFrame(frame: ErrorFrame): Error & { source: ErrorSource };
+export function createErrorFromFrame(
+    frame: ErrorFrame,
+): Error & { source: ErrorSource };
 /**
  * Given a RSocket error code, returns a human-readable explanation of that
  * code, following the names used in the protocol specification.

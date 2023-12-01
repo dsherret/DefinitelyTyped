@@ -2,7 +2,9 @@ import { ComponentClass } from "react";
 import { AutoFocus, ReactWidgetsCommonDropdownProps } from "./CommonProps";
 
 declare namespace Multiselect {
-    interface MultiselectProps extends ReactWidgetsCommonDropdownProps, AutoFocus {
+    interface MultiselectProps
+        extends ReactWidgetsCommonDropdownProps,
+            AutoFocus {
         /**
          * Enables the list option creation UI. onFilter will only the UI when actively filtering for a list item.
          * @default 'onFilter'
@@ -23,15 +25,15 @@ declare namespace Multiselect {
          */
         onChange?:
             | ((
-                dataItems: any[],
-                metadata: {
-                    dataItem: any;
-                    action: "insert" | "remove";
-                    originalEvent?: any;
-                    lastValue?: any[] | undefined;
-                    searchTerm?: string | undefined;
-                },
-            ) => void)
+                  dataItems: any[],
+                  metadata: {
+                      dataItem: any;
+                      action: "insert" | "remove";
+                      originalEvent?: any;
+                      lastValue?: any[] | undefined;
+                      searchTerm?: string | undefined;
+                  },
+              ) => void)
             | undefined;
         /**
          * This handler fires when an item has been selected from the list. It fires before the
@@ -39,11 +41,11 @@ declare namespace Multiselect {
          */
         onSelect?:
             | ((
-                value: any,
-                metadata: {
-                    originalEvent: any;
-                },
-            ) => void)
+                  value: any,
+                  metadata: {
+                      originalEvent: any;
+                  },
+              ) => void)
             | undefined;
         /**
          * This handler fires when the user chooses to create a new tag, not in the data list. It is
@@ -113,13 +115,13 @@ declare namespace Multiselect {
          */
         onSearch?:
             | ((
-                searchTerm: string,
-                metadata: {
-                    action: "clear" | "input";
-                    lastSearchTerm?: string | undefined;
-                    originalEvent?: any;
-                },
-            ) => void)
+                  searchTerm: string,
+                  metadata: {
+                      action: "clear" | "input";
+                      lastSearchTerm?: string | undefined;
+                      originalEvent?: any;
+                  },
+              ) => void)
             | undefined;
         /**
          * Whether or not the Multiselect is open. When unset (undefined) the Multiselect will
@@ -198,11 +200,23 @@ declare namespace Multiselect {
 
     interface MultiselectMessages {
         open?: string | ((props: MultiselectProps) => string) | undefined;
-        createOption?: string | ((props: MultiselectProps) => string) | undefined;
+        createOption?:
+            | string
+            | ((props: MultiselectProps) => string)
+            | undefined;
         tagsLabel?: string | ((props: MultiselectProps) => string) | undefined;
-        selectedItems?: string | ((props: MultiselectProps) => string) | undefined;
-        noneSelected?: string | ((props: MultiselectProps) => string) | undefined;
-        removeLabel?: string | ((props: MultiselectProps) => string) | undefined;
+        selectedItems?:
+            | string
+            | ((props: MultiselectProps) => string)
+            | undefined;
+        noneSelected?:
+            | string
+            | ((props: MultiselectProps) => string)
+            | undefined;
+        removeLabel?:
+            | string
+            | ((props: MultiselectProps) => string)
+            | undefined;
         /**
          * The text label for creating new tags.
          * @default "(create new tag)"
@@ -217,10 +231,14 @@ declare namespace Multiselect {
          * Text to display when the the current filter does not return any results.
          * @default "The filter returned no results"
          */
-        emptyFilter?: string | ((props: MultiselectProps) => string) | undefined;
+        emptyFilter?:
+            | string
+            | ((props: MultiselectProps) => string)
+            | undefined;
     }
 }
 
-interface MultiselectClass extends ComponentClass<Multiselect.MultiselectProps> {}
+interface MultiselectClass
+    extends ComponentClass<Multiselect.MultiselectProps> {}
 declare var Multiselect: MultiselectClass;
 export = Multiselect;

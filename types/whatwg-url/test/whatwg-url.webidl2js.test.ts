@@ -18,7 +18,9 @@ URL.create(globalObject, ["https://example.org"]); // $ExpectType URL
 URL.create(globalObject, ["foo", "https://example.org"]); // $ExpectType URL
 
 URLSearchParams.create(globalObject, ["?foo=bar&baz=biz"]); // $ExpectType URLSearchParams
-URLSearchParams.create(globalObject, ["?foo=bar&baz=biz"], { doNotStripQMark: true }); // $ExpectType URLSearchParams
+URLSearchParams.create(globalObject, ["?foo=bar&baz=biz"], {
+    doNotStripQMark: true,
+}); // $ExpectType URLSearchParams
 
 // $ExpectType URLSearchParams
 URLSearchParams.create(globalObject, [
@@ -32,7 +34,9 @@ URL.createImpl(globalObject, ["foo"]); // $ExpectType URLImpl
 URL.createImpl(globalObject, ["foo", "someURL"]); // $ExpectType URLImpl
 
 URLSearchParams.createImpl(globalObject, ["?foo=bar&baz=biz"]); // $ExpectType URLSearchParamsImpl
-URLSearchParams.createImpl(globalObject, ["?foo=bar&baz=biz"], { doNotStripQMark: true }); // $ExpectType URLSearchParamsImpl
+URLSearchParams.createImpl(globalObject, ["?foo=bar&baz=biz"], {
+    doNotStripQMark: true,
+}); // $ExpectType URLSearchParamsImpl
 
 // $ExpectType URLSearchParamsImpl
 URLSearchParams.createImpl(globalObject, [
@@ -64,18 +68,32 @@ if (URLSearchParams.isImpl(unknown)) {
     unknown; // $ExpectType URLSearchParamsImpl
 }
 
-URL.setup<whatwgUrl.URL>(Object.create(globalObject.URL.prototype), globalObject, ["https://example.org"]); // $ExpectType URL
-URL.setup<whatwgUrl.URL>(Object.create(globalObject.URL.prototype), globalObject, ["foo", "https://example.org"]); // $ExpectType URL
+URL.setup<whatwgUrl.URL>(
+    Object.create(globalObject.URL.prototype),
+    globalObject,
+    ["https://example.org"],
+); // $ExpectType URL
+URL.setup<whatwgUrl.URL>(
+    Object.create(globalObject.URL.prototype),
+    globalObject,
+    ["foo", "https://example.org"],
+); // $ExpectType URL
 
 // $ExpectType URLSearchParams
-URLSearchParams.setup<whatwgUrl.URLSearchParams>(Object.create(whatwgUrl.URLSearchParams.prototype), globalObject, [
-    "?foo=bar&baz=biz",
-]);
+URLSearchParams.setup<whatwgUrl.URLSearchParams>(
+    Object.create(whatwgUrl.URLSearchParams.prototype),
+    globalObject,
+    ["?foo=bar&baz=biz"],
+);
 
 // $ExpectType URLSearchParams
-URLSearchParams.setup<whatwgUrl.URLSearchParams>(Object.create(whatwgUrl.URLSearchParams.prototype), globalObject, [
+URLSearchParams.setup<whatwgUrl.URLSearchParams>(
+    Object.create(whatwgUrl.URLSearchParams.prototype),
+    globalObject,
     [
-        ["foo", "bar"],
-        ["baz", "biz"],
+        [
+            ["foo", "bar"],
+            ["baz", "biz"],
+        ],
     ],
-]);
+);

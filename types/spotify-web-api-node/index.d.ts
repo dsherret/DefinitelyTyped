@@ -36,8 +36,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the track. Not returned if a callback is given.
      */
-    getTrack(trackId: string, options: MarketOptions, callback: Callback<SpotifyApi.SingleTrackResponse>): void;
-    getTrack(trackId: string, options?: MarketOptions): Promise<Response<SpotifyApi.SingleTrackResponse>>;
+    getTrack(
+        trackId: string,
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.SingleTrackResponse>,
+    ): void;
+    getTrack(
+        trackId: string,
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.SingleTrackResponse>>;
 
     /**
      * Look up several tracks.
@@ -67,8 +74,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the album. Not returned if a callback is given.
      */
-    getAlbum(albumId: string, options: MarketOptions, callback: Callback<SpotifyApi.SingleAlbumResponse>): void;
-    getAlbum(albumId: string, options?: MarketOptions): Promise<Response<SpotifyApi.SingleAlbumResponse>>;
+    getAlbum(
+        albumId: string,
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.SingleAlbumResponse>,
+    ): void;
+    getAlbum(
+        albumId: string,
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.SingleAlbumResponse>>;
 
     /**
      * Look up several albums.
@@ -97,8 +111,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the artist. Not returned if a callback is given.
      */
-    getArtist(artistId: string, callback: Callback<SpotifyApi.SingleArtistResponse>): void;
-    getArtist(artistId: string): Promise<Response<SpotifyApi.SingleArtistResponse>>;
+    getArtist(
+        artistId: string,
+        callback: Callback<SpotifyApi.SingleArtistResponse>,
+    ): void;
+    getArtist(
+        artistId: string,
+    ): Promise<Response<SpotifyApi.SingleArtistResponse>>;
 
     /**
      * Look up several artists.
@@ -108,8 +127,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the artists. Not returned if a callback is given.
      */
-    getArtists(artistIds: readonly string[], callback: Callback<SpotifyApi.MultipleArtistsResponse>): void;
-    getArtists(artistIds: readonly string[]): Promise<Response<SpotifyApi.MultipleArtistsResponse>>;
+    getArtists(
+        artistIds: readonly string[],
+        callback: Callback<SpotifyApi.MultipleArtistsResponse>,
+    ): void;
+    getArtists(
+        artistIds: readonly string[],
+    ): Promise<Response<SpotifyApi.MultipleArtistsResponse>>;
 
     /**
      * Search for music entities of certain types.
@@ -145,8 +169,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchAlbums(query: string, options: SearchOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchAlbums(query: string, options?: SearchOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchAlbums(
+        query: string,
+        options: SearchOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchAlbums(
+        query: string,
+        options?: SearchOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Search for an artist.
@@ -158,8 +189,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchArtists(query: string, options: SearchOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchArtists(query: string, options?: SearchOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchArtists(
+        query: string,
+        options: SearchOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchArtists(
+        query: string,
+        options?: SearchOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Search for a track.
@@ -171,8 +209,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchTracks(query: string, options: SearchOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchTracks(query: string, options?: SearchOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchTracks(
+        query: string,
+        options: SearchOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchTracks(
+        query: string,
+        options?: SearchOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Search for playlists.
@@ -184,8 +229,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchPlaylists(query: string, options: SearchOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchPlaylists(query: string, options?: SearchOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchPlaylists(
+        query: string,
+        options: SearchOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchPlaylists(
+        query: string,
+        options?: SearchOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Get an artist's albums.
@@ -242,7 +294,10 @@ declare class SpotifyWebApi {
         country: string,
         callback: Callback<SpotifyApi.ArtistsTopTracksResponse>,
     ): void;
-    getArtistTopTracks(artistId: string, country: string): Promise<Response<SpotifyApi.ArtistsTopTracksResponse>>;
+    getArtistTopTracks(
+        artistId: string,
+        country: string,
+    ): Promise<Response<SpotifyApi.ArtistsTopTracksResponse>>;
 
     /**
      * Get related artists.
@@ -252,8 +307,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing the
      *          related artists. If the promise is rejected, it contains an error object. Not returned if a callback is given.
      */
-    getArtistRelatedArtists(artistId: string, callback: Callback<SpotifyApi.ArtistsRelatedArtistsResponse>): void;
-    getArtistRelatedArtists(artistId: string): Promise<Response<SpotifyApi.ArtistsRelatedArtistsResponse>>;
+    getArtistRelatedArtists(
+        artistId: string,
+        callback: Callback<SpotifyApi.ArtistsRelatedArtistsResponse>,
+    ): void;
+    getArtistRelatedArtists(
+        artistId: string,
+    ): Promise<Response<SpotifyApi.ArtistsRelatedArtistsResponse>>;
 
     /**
      * Get information about a user.
@@ -264,7 +324,10 @@ declare class SpotifyWebApi {
      *          containing information about the user. If the promise is
      *          rejected, it contains an error object. Not returned if a callback is given.
      */
-    getUser(userId: string, callback: Callback<SpotifyApi.UserProfileResponse>): void;
+    getUser(
+        userId: string,
+        callback: Callback<SpotifyApi.UserProfileResponse>,
+    ): void;
     getUser(userId: string): Promise<Response<SpotifyApi.UserProfileResponse>>;
 
     /**
@@ -295,12 +358,17 @@ declare class SpotifyWebApi {
         options: PaginationOptions,
         callback: Callback<SpotifyApi.ListOfUsersPlaylistsResponse>,
     ): void;
-    getUserPlaylists(options: PaginationOptions, callback: Callback<SpotifyApi.ListOfUsersPlaylistsResponse>): void;
+    getUserPlaylists(
+        options: PaginationOptions,
+        callback: Callback<SpotifyApi.ListOfUsersPlaylistsResponse>,
+    ): void;
     getUserPlaylists(
         userId: string,
         options?: PaginationOptions,
     ): Promise<Response<SpotifyApi.ListOfUsersPlaylistsResponse>>;
-    getUserPlaylists(options?: PaginationOptions): Promise<Response<SpotifyApi.ListOfUsersPlaylistsResponse>>;
+    getUserPlaylists(
+        options?: PaginationOptions,
+    ): Promise<Response<SpotifyApi.ListOfUsersPlaylistsResponse>>;
 
     /**
      * Get a playlist.
@@ -316,7 +384,10 @@ declare class SpotifyWebApi {
         options: GetPlaylistOptions,
         callback: Callback<SpotifyApi.SinglePlaylistResponse>,
     ): void;
-    getPlaylist(playlistId: string, options?: GetPlaylistOptions): Promise<Response<SpotifyApi.SinglePlaylistResponse>>;
+    getPlaylist(
+        playlistId: string,
+        options?: GetPlaylistOptions,
+    ): Promise<Response<SpotifyApi.SinglePlaylistResponse>>;
 
     /**
      * Get tracks in a playlist.
@@ -369,7 +440,10 @@ declare class SpotifyWebApi {
         options: PublicOptions,
         callback: Callback<SpotifyApi.FollowPlaylistReponse>,
     ): void;
-    followPlaylist(playlistId: string, options?: PublicOptions): Promise<Response<SpotifyApi.FollowPlaylistReponse>>;
+    followPlaylist(
+        playlistId: string,
+        options?: PublicOptions,
+    ): Promise<Response<SpotifyApi.FollowPlaylistReponse>>;
 
     /**
      * Unfollow a playlist.
@@ -379,8 +453,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, simply resolves to an empty object. If rejected,
      * it contains an error object. Not returned if a callback is given.
      */
-    unfollowPlaylist(playlistId: string, callback: Callback<SpotifyApi.UnfollowPlaylistReponse>): void;
-    unfollowPlaylist(playlistId: string): Promise<Response<SpotifyApi.UnfollowPlaylistReponse>>;
+    unfollowPlaylist(
+        playlistId: string,
+        callback: Callback<SpotifyApi.UnfollowPlaylistReponse>,
+    ): void;
+    unfollowPlaylist(
+        playlistId: string,
+    ): Promise<Response<SpotifyApi.UnfollowPlaylistReponse>>;
 
     /**
      * Change playlist details.
@@ -536,8 +615,13 @@ declare class SpotifyWebApi {
      *          containing information about the audio features. If the promise is
      *          rejected, it contains an error object. Not returned if a callback is given.
      */
-    getAudioFeaturesForTrack(trackId: string, callback: Callback<SpotifyApi.AudioFeaturesResponse>): void;
-    getAudioFeaturesForTrack(trackId: string): Promise<Response<SpotifyApi.AudioFeaturesResponse>>;
+    getAudioFeaturesForTrack(
+        trackId: string,
+        callback: Callback<SpotifyApi.AudioFeaturesResponse>,
+    ): void;
+    getAudioFeaturesForTrack(
+        trackId: string,
+    ): Promise<Response<SpotifyApi.AudioFeaturesResponse>>;
 
     /**
      * Get audio analysis for a single track identified by its unique Spotify ID.
@@ -548,8 +632,13 @@ declare class SpotifyWebApi {
      *          containing information about the audio analysis. If the promise is
      *          rejected, it contains an error object. Not returned if a callback is given.
      */
-    getAudioAnalysisForTrack(trackId: string, callback: Callback<SpotifyApi.AudioAnalysisResponse>): void;
-    getAudioAnalysisForTrack(trackId: string): Promise<Response<SpotifyApi.AudioAnalysisResponse>>;
+    getAudioAnalysisForTrack(
+        trackId: string,
+        callback: Callback<SpotifyApi.AudioAnalysisResponse>,
+    ): void;
+    getAudioAnalysisForTrack(
+        trackId: string,
+    ): Promise<Response<SpotifyApi.AudioAnalysisResponse>>;
 
     /**
      * Get audio features for multiple tracks identified by their unique Spotify ID.
@@ -591,7 +680,11 @@ declare class SpotifyWebApi {
      * @param showDialog A parameter that you can use to force the user to approve the app on each login rather than being automatically redirected.
      * @returns The URL where the user can give application permissions.
      */
-    createAuthorizeURL(scopes: readonly string[], state: string, showDialog?: boolean): string;
+    createAuthorizeURL(
+        scopes: readonly string[],
+        state: string,
+        showDialog?: boolean,
+    ): string;
 
     /**
      * Retrieve a list of available genres seed parameter values for recommendations.
@@ -601,8 +694,12 @@ declare class SpotifyWebApi {
      *          a list of available genres to be used as seeds for recommendations.
      *          If rejected, it contains an error object. Not returned if a callback is given.
      */
-    getAvailableGenreSeeds(callback: Callback<SpotifyApi.AvailableGenreSeedsResponse>): void;
-    getAvailableGenreSeeds(): Promise<Response<SpotifyApi.AvailableGenreSeedsResponse>>;
+    getAvailableGenreSeeds(
+        callback: Callback<SpotifyApi.AvailableGenreSeedsResponse>,
+    ): void;
+    getAvailableGenreSeeds(): Promise<
+        Response<SpotifyApi.AvailableGenreSeedsResponse>
+    >;
 
     /**
      * Retrieve the tracks that are saved to the authenticated users Your Music library.
@@ -611,8 +708,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves to an object containing a paging object which in turn contains
      *          playlist track objects. Not returned if a callback is given.
      */
-    getMySavedTracks(options: PaginationMarketOptions, callback: Callback<SpotifyApi.UsersSavedTracksResponse>): void;
-    getMySavedTracks(options?: PaginationMarketOptions): Promise<Response<SpotifyApi.UsersSavedTracksResponse>>;
+    getMySavedTracks(
+        options: PaginationMarketOptions,
+        callback: Callback<SpotifyApi.UsersSavedTracksResponse>,
+    ): void;
+    getMySavedTracks(
+        options?: PaginationMarketOptions,
+    ): Promise<Response<SpotifyApi.UsersSavedTracksResponse>>;
 
     /**
      * Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.
@@ -627,7 +729,9 @@ declare class SpotifyWebApi {
         trackIds: readonly string[],
         callback: Callback<SpotifyApi.CheckUsersSavedTracksResponse>,
     ): void;
-    containsMySavedTracks(trackIds: readonly string[]): Promise<Response<SpotifyApi.CheckUsersSavedTracksResponse>>;
+    containsMySavedTracks(
+        trackIds: readonly string[],
+    ): Promise<Response<SpotifyApi.CheckUsersSavedTracksResponse>>;
 
     /**
      * Remove a track from the authenticated user's Your Music library.
@@ -650,8 +754,13 @@ declare class SpotifyWebApi {
      * @param callback Optional callback method to be called instead of the promise.
      * @returns A promise that if successful returns null, otherwise an error. Not returned if a callback is given.
      */
-    addToMySavedTracks(trackIds: readonly string[], callback: Callback<SpotifyApi.SaveTracksForUserResponse>): void;
-    addToMySavedTracks(trackIds: readonly string[]): Promise<Response<SpotifyApi.SaveTracksForUserResponse>>;
+    addToMySavedTracks(
+        trackIds: readonly string[],
+        callback: Callback<SpotifyApi.SaveTracksForUserResponse>,
+    ): void;
+    addToMySavedTracks(
+        trackIds: readonly string[],
+    ): Promise<Response<SpotifyApi.SaveTracksForUserResponse>>;
 
     /**
      * Remove an album from the authenticated user's Your Music library.
@@ -664,7 +773,9 @@ declare class SpotifyWebApi {
         albumIds: readonly string[],
         callback: Callback<SpotifyApi.RemoveAlbumsForUserResponse>,
     ): void;
-    removeFromMySavedAlbums(albumIds: readonly string[]): Promise<Response<SpotifyApi.RemoveAlbumsForUserResponse>>;
+    removeFromMySavedAlbums(
+        albumIds: readonly string[],
+    ): Promise<Response<SpotifyApi.RemoveAlbumsForUserResponse>>;
 
     /**
      * Add an album from the authenticated user's Your Music library.
@@ -672,8 +783,13 @@ declare class SpotifyWebApi {
      * @param callback Optional callback method to be called instead of the promise.
      * @returns A promise that if successful returns null, otherwise an error. Not returned if a callback is given.
      */
-    addToMySavedAlbums(albumIds: readonly string[], callback: Callback<SpotifyApi.SaveAlbumsForUserResponse>): void;
-    addToMySavedAlbums(albumIds: readonly string[]): Promise<Response<SpotifyApi.SaveAlbumsForUserResponse>>;
+    addToMySavedAlbums(
+        albumIds: readonly string[],
+        callback: Callback<SpotifyApi.SaveAlbumsForUserResponse>,
+    ): void;
+    addToMySavedAlbums(
+        albumIds: readonly string[],
+    ): Promise<Response<SpotifyApi.SaveAlbumsForUserResponse>>;
 
     /**
      * Retrieve the albums that are saved to the authenticated users Your Music library.
@@ -682,8 +798,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves to an object containing a paging object which in turn contains
      *          playlist album objects. Not returned if a callback is given.
      */
-    getMySavedAlbums(options: PaginationMarketOptions, callback: Callback<SpotifyApi.UsersSavedAlbumsResponse>): void;
-    getMySavedAlbums(options?: PaginationMarketOptions): Promise<Response<SpotifyApi.UsersSavedAlbumsResponse>>;
+    getMySavedAlbums(
+        options: PaginationMarketOptions,
+        callback: Callback<SpotifyApi.UsersSavedAlbumsResponse>,
+    ): void;
+    getMySavedAlbums(
+        options?: PaginationMarketOptions,
+    ): Promise<Response<SpotifyApi.UsersSavedAlbumsResponse>>;
 
     /**
      * Check if one or more albums is already saved in the current Spotify user’s “Your Music” library.
@@ -698,7 +819,9 @@ declare class SpotifyWebApi {
         albumIds: readonly string[],
         callback: Callback<SpotifyApi.CheckUserSavedAlbumsResponse>,
     ): void;
-    containsMySavedAlbums(albumIds: readonly string[]): Promise<Response<SpotifyApi.CheckUserSavedAlbumsResponse>>;
+    containsMySavedAlbums(
+        albumIds: readonly string[],
+    ): Promise<Response<SpotifyApi.CheckUserSavedAlbumsResponse>>;
 
     /**
      * Get the current user's top artists based on calculated affinity.
@@ -707,8 +830,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into a paging object of artists,
      *          otherwise an error. Not returned if a callback is given.
      */
-    getMyTopArtists(options: GetTopOptions, callback: Callback<SpotifyApi.UsersTopArtistsResponse>): void;
-    getMyTopArtists(options?: GetTopOptions): Promise<Response<SpotifyApi.UsersTopArtistsResponse>>;
+    getMyTopArtists(
+        options: GetTopOptions,
+        callback: Callback<SpotifyApi.UsersTopArtistsResponse>,
+    ): void;
+    getMyTopArtists(
+        options?: GetTopOptions,
+    ): Promise<Response<SpotifyApi.UsersTopArtistsResponse>>;
 
     /**
      * Get the current user's top tracks based on calculated affinity.
@@ -717,8 +845,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into a paging object of tracks,
      *          otherwise an error. Not returned if a callback is given.
      */
-    getMyTopTracks(options: GetTopOptions, callback: Callback<SpotifyApi.UsersTopTracksResponse>): void;
-    getMyTopTracks(options?: GetTopOptions): Promise<Response<SpotifyApi.UsersTopTracksResponse>>;
+    getMyTopTracks(
+        options: GetTopOptions,
+        callback: Callback<SpotifyApi.UsersTopTracksResponse>,
+    ): void;
+    getMyTopTracks(
+        options?: GetTopOptions,
+    ): Promise<Response<SpotifyApi.UsersTopTracksResponse>>;
 
     /**
      * Get the Current User's Recently Played Tracks
@@ -742,7 +875,10 @@ declare class SpotifyWebApi {
      * @param options Options, being device_id.
      * @returns A promise that if successful returns null, otherwise an error.
      */
-    addToQueue(uri: string, options?: DeviceOptions): Promise<Response<SpotifyApi.AddToQueueResponse>>;
+    addToQueue(
+        uri: string,
+        options?: DeviceOptions,
+    ): Promise<Response<SpotifyApi.AddToQueueResponse>>;
 
     /**
      * Get the Current User's Connect Devices
@@ -760,8 +896,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into a paging object of tracks,
      *          otherwise an error. Not returned if a callback is given.
      */
-    getMyCurrentPlayingTrack(options: MarketOptions, callback: Callback<SpotifyApi.CurrentlyPlayingResponse>): void;
-    getMyCurrentPlayingTrack(options?: MarketOptions): Promise<Response<SpotifyApi.CurrentlyPlayingResponse>>;
+    getMyCurrentPlayingTrack(
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.CurrentlyPlayingResponse>,
+    ): void;
+    getMyCurrentPlayingTrack(
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.CurrentlyPlayingResponse>>;
 
     /**
      * Get Information About The User's Current Playback State
@@ -770,8 +911,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into a paging object of tracks,
      *          otherwise an error. Not returned if a callback is given.
      */
-    getMyCurrentPlaybackState(options: MarketOptions, callback: Callback<SpotifyApi.CurrentPlaybackResponse>): void;
-    getMyCurrentPlaybackState(options?: MarketOptions): Promise<Response<SpotifyApi.CurrentPlaybackResponse>>;
+    getMyCurrentPlaybackState(
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.CurrentPlaybackResponse>,
+    ): void;
+    getMyCurrentPlaybackState(
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.CurrentPlaybackResponse>>;
 
     /**
      * Transfer a User's Playback
@@ -787,7 +933,10 @@ declare class SpotifyWebApi {
         options: TransferPlaybackOptions,
         callback: Callback<void>,
     ): void;
-    transferMyPlayback(deviceIds: readonly string[], options?: TransferPlaybackOptions): Promise<Response<void>>;
+    transferMyPlayback(
+        deviceIds: readonly string[],
+        options?: TransferPlaybackOptions,
+    ): Promise<Response<void>>;
 
     /**
      * Starts or Resumes the Current User's Playback
@@ -842,7 +991,11 @@ declare class SpotifyWebApi {
      * one is the error object (null if no error), and the second is the value if the request succeeded.
      * @returns Null if a callback is provided, a Promise otherwise
      */
-    seek(positionMs: number, options: DeviceOptions, callback: Callback<void>): void;
+    seek(
+        positionMs: number,
+        options: DeviceOptions,
+        callback: Callback<void>,
+    ): void;
     seek(positionMs: number, options?: DeviceOptions): Promise<Response<void>>;
 
     /**
@@ -854,8 +1007,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into an empty response,
      *          otherwise an error. Not returned if a callback is given.
      */
-    setRepeat(state: RepeatState, options: DeviceOptions, callback: Callback<void>): void;
-    setRepeat(state: RepeatState, options?: DeviceOptions): Promise<Response<void>>;
+    setRepeat(
+        state: RepeatState,
+        options: DeviceOptions,
+        callback: Callback<void>,
+    ): void;
+    setRepeat(
+        state: RepeatState,
+        options?: DeviceOptions,
+    ): Promise<Response<void>>;
 
     /**
      * Set Shuffle Mode On The Current User's Playback
@@ -866,8 +1026,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into an empty response,
      *          otherwise an error. Not returned if a callback is given.
      */
-    setShuffle(state: boolean, options: DeviceOptions, callback: Callback<void>): void;
-    setShuffle(state: boolean, options?: DeviceOptions): Promise<Response<void>>;
+    setShuffle(
+        state: boolean,
+        options: DeviceOptions,
+        callback: Callback<void>,
+    ): void;
+    setShuffle(
+        state: boolean,
+        options?: DeviceOptions,
+    ): Promise<Response<void>>;
 
     /**
      * Set the volume for the user’s current playback device.
@@ -878,8 +1045,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into an empty response,
      *          otherwise an error. Not returned if a callback is given.
      */
-    setVolume(volumePercent: number, options: DeviceOptions, callback: Callback<void>): void;
-    setVolume(volumePercent: number, options?: DeviceOptions): Promise<Response<void>>;
+    setVolume(
+        volumePercent: number,
+        options: DeviceOptions,
+        callback: Callback<void>,
+    ): void;
+    setVolume(
+        volumePercent: number,
+        options?: DeviceOptions,
+    ): Promise<Response<void>>;
 
     /**
      * Add the current user as a follower of one or more other Spotify users.
@@ -922,7 +1096,10 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, simply resolves to an empty object. If rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    unfollowArtists(artistIds: readonly string[], callback: Callback<void>): void;
+    unfollowArtists(
+        artistIds: readonly string[],
+        callback: Callback<void>,
+    ): void;
     unfollowArtists(artistIds: readonly string[]): Promise<Response<void>>;
 
     /**
@@ -939,7 +1116,9 @@ declare class SpotifyWebApi {
         userIds: readonly string[],
         callback: Callback<SpotifyApi.UserFollowsUsersOrArtistsResponse>,
     ): void;
-    isFollowingUsers(userIds: readonly string[]): Promise<Response<SpotifyApi.UserFollowsUsersOrArtistsResponse>>;
+    isFollowingUsers(
+        userIds: readonly string[],
+    ): Promise<Response<SpotifyApi.UserFollowsUsersOrArtistsResponse>>;
 
     /**
      * Get the current user's followed artists.
@@ -952,7 +1131,9 @@ declare class SpotifyWebApi {
         options: AfterOptions<string>,
         callback: Callback<SpotifyApi.UsersFollowedArtistsResponse>,
     ): void;
-    getFollowedArtists(options?: AfterOptions<string>): Promise<Response<SpotifyApi.UsersFollowedArtistsResponse>>;
+    getFollowedArtists(
+        options?: AfterOptions<string>,
+    ): Promise<Response<SpotifyApi.UsersFollowedArtistsResponse>>;
 
     /**
      * Check if users are following a playlist.
@@ -1000,8 +1181,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves to an object containing a paging object which contains
      * album objects. Not returned if a callback is given.
      */
-    getNewReleases(options: PaginationCountryOptions, callback: Callback<SpotifyApi.ListOfNewReleasesResponse>): void;
-    getNewReleases(options?: PaginationCountryOptions): Promise<Response<SpotifyApi.ListOfNewReleasesResponse>>;
+    getNewReleases(
+        options: PaginationCountryOptions,
+        callback: Callback<SpotifyApi.ListOfNewReleasesResponse>,
+    ): void;
+    getNewReleases(
+        options?: PaginationCountryOptions,
+    ): Promise<Response<SpotifyApi.ListOfNewReleasesResponse>>;
 
     /**
      * Retrieve featured playlists
@@ -1025,8 +1211,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves to an object containing a paging object of categories.
      * Not returned if a callback is given.
      */
-    getCategories(options: PaginationLocaleOptions, callback: Callback<SpotifyApi.MultipleCategoriesResponse>): void;
-    getCategories(options?: PaginationLocaleOptions): Promise<Response<SpotifyApi.MultipleCategoriesResponse>>;
+    getCategories(
+        options: PaginationLocaleOptions,
+        callback: Callback<SpotifyApi.MultipleCategoriesResponse>,
+    ): void;
+    getCategories(
+        options?: PaginationLocaleOptions,
+    ): Promise<Response<SpotifyApi.MultipleCategoriesResponse>>;
 
     /**
      * Retrieve a category.
@@ -1041,7 +1232,10 @@ declare class SpotifyWebApi {
         options: LocaleOptions,
         callback: Callback<SpotifyApi.SingleCategoryResponse>,
     ): void;
-    getCategory(categoryId: string, options?: LocaleOptions): Promise<Response<SpotifyApi.SingleCategoryResponse>>;
+    getCategory(
+        categoryId: string,
+        options?: LocaleOptions,
+    ): Promise<Response<SpotifyApi.SingleCategoryResponse>>;
 
     /**
      * Retrieve playlists for a category.
@@ -1070,8 +1264,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the show. Not returned if a callback is given.
      */
-    getShow(showId: string, options: MarketOptions, callback: Callback<SpotifyApi.SingleShowResponse>): void;
-    getShow(showId: string, options?: MarketOptions): Promise<Response<SpotifyApi.SingleShowResponse>>;
+    getShow(
+        showId: string,
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.SingleShowResponse>,
+    ): void;
+    getShow(
+        showId: string,
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.SingleShowResponse>>;
 
     /**
      * Look up several shows.
@@ -1101,8 +1302,13 @@ declare class SpotifyWebApi {
      * The boolean value of true indicates that the show is part of the user's library, otherwise false.
      * Not returned if a callback is given.
      */
-    containsMySavedShows(showIds: readonly string[], callback: Callback<boolean[]>): void;
-    containsMySavedShows(showIds: readonly string[]): Promise<Response<boolean[]>>;
+    containsMySavedShows(
+        showIds: readonly string[],
+        callback: Callback<boolean[]>,
+    ): void;
+    containsMySavedShows(
+        showIds: readonly string[],
+    ): Promise<Response<boolean[]>>;
 
     /**
      * Remove an show from the authenticated user's Your Music library.
@@ -1111,7 +1317,10 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful returns null, otherwise an error.
      * Not returned if a callback is given.
      */
-    removeFromMySavedShows(showIds: readonly string[], callback: Callback<void>): void;
+    removeFromMySavedShows(
+        showIds: readonly string[],
+        callback: Callback<void>,
+    ): void;
     removeFromMySavedShows(showIds: readonly string[]): Promise<Response<void>>;
 
     /**
@@ -1120,7 +1329,10 @@ declare class SpotifyWebApi {
      * @param callback Optional callback method to be called instead of the promise.
      * @returns A promise that if successful returns null, otherwise an error. Not returned if a callback is given.
      */
-    addToMySavedShows(showIds: readonly string[], callback: Callback<void>): void;
+    addToMySavedShows(
+        showIds: readonly string[],
+        callback: Callback<void>,
+    ): void;
     addToMySavedShows(showIds: readonly string[]): Promise<Response<void>>;
 
     /**
@@ -1130,8 +1342,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves to an object containing a paging object which in turn contains
      *          playlist show objects. Not returned if a callback is given.
      */
-    getMySavedShows(options: PaginationMarketOptions, callback: Callback<SpotifyApi.UsersSavedShowsResponse>): void;
-    getMySavedShows(options?: PaginationMarketOptions): Promise<Response<SpotifyApi.UsersSavedShowsResponse>>;
+    getMySavedShows(
+        options: PaginationMarketOptions,
+        callback: Callback<SpotifyApi.UsersSavedShowsResponse>,
+    ): void;
+    getMySavedShows(
+        options?: PaginationMarketOptions,
+    ): Promise<Response<SpotifyApi.UsersSavedShowsResponse>>;
 
     /**
      * Get the episodes of an show.
@@ -1163,8 +1380,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchShows(query: string, options: PaginationOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchShows(query: string, options?: PaginationOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchShows(
+        query: string,
+        options: PaginationOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchShows(
+        query: string,
+        options?: PaginationOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Search for an episode.
@@ -1176,8 +1400,15 @@ declare class SpotifyWebApi {
      *          search results. The result is paginated. If the promise is rejected,
      *          it contains an error object. Not returned if a callback is given.
      */
-    searchEpisodes(query: string, options: PaginationOptions, callback: Callback<SpotifyApi.SearchResponse>): void;
-    searchEpisodes(query: string, options?: PaginationOptions): Promise<Response<SpotifyApi.SearchResponse>>;
+    searchEpisodes(
+        query: string,
+        options: PaginationOptions,
+        callback: Callback<SpotifyApi.SearchResponse>,
+    ): void;
+    searchEpisodes(
+        query: string,
+        options?: PaginationOptions,
+    ): Promise<Response<SpotifyApi.SearchResponse>>;
 
     /**
      * Look up an episode.
@@ -1188,8 +1419,15 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, returns an object containing information
      *          about the episode. Not returned if a callback is given.
      */
-    getEpisode(episodeId: string, options: MarketOptions, callback: Callback<SpotifyApi.SingleEpisodeResponse>): void;
-    getEpisode(episodeId: string, options?: MarketOptions): Promise<Response<SpotifyApi.SingleEpisodeResponse>>;
+    getEpisode(
+        episodeId: string,
+        options: MarketOptions,
+        callback: Callback<SpotifyApi.SingleEpisodeResponse>,
+    ): void;
+    getEpisode(
+        episodeId: string,
+        options?: MarketOptions,
+    ): Promise<Response<SpotifyApi.SingleEpisodeResponse>>;
 
     /**
      * Look up several episodes.
@@ -1218,8 +1456,13 @@ declare class SpotifyWebApi {
      * @returns A promise that if successful, resolves into an object containing the access token,
      *          token type and time to expiration. If rejected, it contains an error object. Not returned if a callback is given.
      */
-    clientCredentialsGrant(options: {}, callback: Callback<ClientCredentialsGrantResponse>): void;
-    clientCredentialsGrant(options?: {}): Promise<Response<ClientCredentialsGrantResponse>>;
+    clientCredentialsGrant(
+        options: {},
+        callback: Callback<ClientCredentialsGrantResponse>,
+    ): void;
+    clientCredentialsGrant(options?: {}): Promise<
+        Response<ClientCredentialsGrantResponse>
+    >;
 
     /**
      * Request an access token using the Authorization Code flow.
@@ -1230,8 +1473,13 @@ declare class SpotifyWebApi {
      *          refresh token, token type and time to expiration. If rejected, it contains an error object.
      *          Not returned if a callback is given.
      */
-    authorizationCodeGrant(code: string, callback: Callback<AuthorizationCodeGrantResponse>): void;
-    authorizationCodeGrant(code: string): Promise<Response<AuthorizationCodeGrantResponse>>;
+    authorizationCodeGrant(
+        code: string,
+        callback: Callback<AuthorizationCodeGrantResponse>,
+    ): void;
+    authorizationCodeGrant(
+        code: string,
+    ): Promise<Response<AuthorizationCodeGrantResponse>>;
 
     /**
      * Refresh the access token given that it hasn't expired.
@@ -1335,9 +1583,17 @@ interface GetArtistAlbumsOptions extends PaginationCountryOptions {
     include_groups?: string | undefined;
 }
 
-interface GetPlaylistTracksOptions extends PaginationMarketOptions, FieldsOptions {}
+interface GetPlaylistTracksOptions
+    extends PaginationMarketOptions,
+        FieldsOptions {}
 
-type SearchType = "album" | "artist" | "playlist" | "track" | "show" | "episode";
+type SearchType =
+    | "album"
+    | "artist"
+    | "playlist"
+    | "track"
+    | "show"
+    | "episode";
 
 interface SearchOptions extends PaginationMarketOptions {
     include_external?: "audio" | undefined;

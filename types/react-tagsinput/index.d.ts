@@ -3,7 +3,9 @@ import * as React from "react";
 export as namespace ReactTagsInput;
 export = TagsInput;
 
-declare class TagsInput<Tag = any> extends React.Component<TagsInput.ReactTagsInputProps<Tag>> {
+declare class TagsInput<Tag = any> extends React.Component<
+    TagsInput.ReactTagsInputProps<Tag>
+> {
     accept(): any;
     addTag(tag: Tag): any;
     blur(): void;
@@ -18,7 +20,9 @@ declare namespace TagsInput {
 
     interface RenderInputProps<Tag = any> extends InputProps {
         readonly addTag: (tag: Tag) => void;
-        readonly onChange: (e: React.ChangeEvent<{ readonly value: string }>) => void;
+        readonly onChange: (
+            e: React.ChangeEvent<{ readonly value: string }>,
+        ) => void;
         readonly ref: (r: any) => void; // parameter is either a DOM element or a mounted React component
         readonly value: Tag;
     }
@@ -35,13 +39,20 @@ declare namespace TagsInput {
         readonly key: string | number;
     }
 
-    type RenderLayout = (tagElements: React.ReactElement[], inputElement: React.ReactElement) => React.ReactChild;
+    type RenderLayout = (
+        tagElements: React.ReactElement[],
+        inputElement: React.ReactElement,
+    ) => React.ReactChild;
 
     interface ReactTagsInputProps<Tag = any> {
         children?: React.ReactNode;
         ref?: React.LegacyRef<TagsInput<Tag>> | undefined;
         value: Tag[];
-        onChange: (tags: Tag[], changed: Tag[], changedIndexes: number[]) => void;
+        onChange: (
+            tags: Tag[],
+            changed: Tag[],
+            changedIndexes: number[],
+        ) => void;
         onChangeInput?: ((value: string) => void) | undefined;
         addKeys?: number[] | string[] | undefined;
         currentValue?: string | undefined;
@@ -61,8 +72,12 @@ declare namespace TagsInput {
         tagProps?: TagProps | undefined;
         inputProps?: InputProps | undefined;
         tagDisplayProp?: keyof Tag | string | null | undefined;
-        renderTag?: ((props: RenderTagProps<Tag>) => React.ReactNode) | undefined;
-        renderInput?: ((props: RenderInputProps<Tag>) => React.ReactNode) | undefined;
+        renderTag?:
+            | ((props: RenderTagProps<Tag>) => React.ReactNode)
+            | undefined;
+        renderInput?:
+            | ((props: RenderInputProps<Tag>) => React.ReactNode)
+            | undefined;
         renderLayout?: RenderLayout | undefined;
         preventSubmit?: boolean | undefined;
     }

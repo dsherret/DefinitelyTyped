@@ -184,7 +184,8 @@ declare namespace formidable {
     /**
      * @link https://github.com/node-formidable/formidable#file
      */
-    interface FileJSON extends Pick<File, "size" | "path" | "name" | "type" | "hash"> {
+    interface FileJSON
+        extends Pick<File, "size" | "path" | "name" | "type" | "hash"> {
         filename: string;
         length: number;
         mime: string;
@@ -253,10 +254,13 @@ declare namespace formidable {
         value: string;
     }
 
-    type PluginFunction = (formidable: Formidable, options: Partial<Options>) => void;
+    type PluginFunction = (
+        formidable: Formidable,
+        options: Partial<Options>,
+    ) => void;
 
     type MappedParsers = {
-        [P in keyof typeof parsers]: typeof parsers[P];
+        [P in keyof typeof parsers]: (typeof parsers)[P];
     };
 
     type Plugins = ["octetstream", "querystring", "multipart", "json"];

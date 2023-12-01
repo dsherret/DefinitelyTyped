@@ -15,7 +15,9 @@ declare module "../globalize" {
          * type Optional String cardinal (default), or ordinal.
          * @returns {Function} Return a function that returns the value's corresponding plural group: zero, one, two, few, many, or other.
          */
-        pluralGenerator(options?: PluralGeneratorOptions): (value: number) => string;
+        pluralGenerator(
+            options?: PluralGeneratorOptions,
+        ): (value: number) => string;
 
         /**
          * Returns the value's corresponding plural group: zero, one, two, few, many, or other.

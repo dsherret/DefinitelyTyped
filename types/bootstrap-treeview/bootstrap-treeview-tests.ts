@@ -65,7 +65,10 @@ $("#tree").treeview("checkAll", { silent: true });
 $("#tree").treeview("checkNode", [nodeId, { silent: true }]);
 $("#tree").treeview("clearSearch");
 $("#tree").treeview("collapseAll", { silent: true });
-$("#tree").treeview("collapseNode", [nodeId, { silent: true, ignoreChildren: false }]);
+$("#tree").treeview("collapseNode", [
+    nodeId,
+    { silent: true, ignoreChildren: false },
+]);
 $("#tree").treeview("disableAll", { silent: true });
 $("#tree").treeview("disableNode", [nodeId, { silent: true }]);
 $("#tree").treeview("enableAll", { silent: true });
@@ -83,11 +86,14 @@ $("#tree").treeview("getSiblings", node);
 $("#tree").treeview("getUnselected", nodeId);
 $("#tree").treeview("remove");
 $("#tree").treeview("revealNode", [nodeId, { silent: true }]);
-$("#tree").treeview("search", ["Parent", {
-    ignoreCase: true, // case insensitive
-    exactMatch: false, // like or equals
-    revealResults: true, // reveal matching nodes
-}]);
+$("#tree").treeview("search", [
+    "Parent",
+    {
+        ignoreCase: true, // case insensitive
+        exactMatch: false, // like or equals
+        revealResults: true, // reveal matching nodes
+    },
+]);
 $("#tree").treeview("selectNode", [nodeId, { silent: true }]);
 $("#tree").treeview("toggleNodeChecked", [nodeId, { silent: true }]);
 $("#tree").treeview("toggleNodeDisabled", [nodeId, { silent: true }]);
@@ -100,7 +106,9 @@ $("#tree").treeview("unselectNode", [nodeId, { silent: true }]);
 // Test events
 $("#tree").treeview({
     onNodeSelected: (event: any, data: BootstrapTreeViewNodeData) =>
-        void {
-            // Event handler
-        },
+        void (
+            {
+                // Event handler
+            }
+        ),
 });

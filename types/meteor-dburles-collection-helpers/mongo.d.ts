@@ -1,4 +1,10 @@
-import { AllowPartial, Data, Full, Helpers, PartialHelpers } from "meteor/dburles:collection-helpers";
+import {
+    AllowPartial,
+    Data,
+    Full,
+    Helpers,
+    PartialHelpers,
+} from "meteor/dburles:collection-helpers";
 import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 
@@ -22,8 +28,10 @@ declare module "meteor/mongo" {
              * when creating new items.
              */
             // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-            helpers<allowPartial extends (false | AllowPartial) = false>(
-                helpers: allowPartial extends AllowPartial ? PartialHelpers<T> : Helpers<T>,
+            helpers<allowPartial extends false | AllowPartial = false>(
+                helpers: allowPartial extends AllowPartial
+                    ? PartialHelpers<T>
+                    : Helpers<T>,
             ): void;
 
             // modifications:
@@ -31,22 +39,40 @@ declare module "meteor/mongo" {
             // - replaced T with Data<T> everywhere the user provides a T
 
             allow(options: {
-                insert?: ((userId: string, doc: Full<T> & T) => boolean) | undefined;
-                update?:
-                    | ((userId: string, doc: Full<T> & T, fieldNames: string[], modifier: any) => boolean)
+                insert?:
+                    | ((userId: string, doc: Full<T> & T) => boolean)
                     | undefined;
-                remove?: ((userId: string, doc: Full<T> & T) => boolean) | undefined;
+                update?:
+                    | ((
+                          userId: string,
+                          doc: Full<T> & T,
+                          fieldNames: string[],
+                          modifier: any,
+                      ) => boolean)
+                    | undefined;
+                remove?:
+                    | ((userId: string, doc: Full<T> & T) => boolean)
+                    | undefined;
                 fetch?: string[] | undefined;
                 // ditto
                 // eslint-disable-next-line @typescript-eslint/ban-types
                 transform?: Function | null | undefined;
             }): boolean;
             deny(options: {
-                insert?: ((userId: string, doc: Full<T> & T) => boolean) | undefined;
-                update?:
-                    | ((userId: string, doc: Full<T> & T, fieldNames: string[], modifier: any) => boolean)
+                insert?:
+                    | ((userId: string, doc: Full<T> & T) => boolean)
                     | undefined;
-                remove?: ((userId: string, doc: Full<T> & T) => boolean) | undefined;
+                update?:
+                    | ((
+                          userId: string,
+                          doc: Full<T> & T,
+                          fieldNames: string[],
+                          modifier: any,
+                      ) => boolean)
+                    | undefined;
+                remove?:
+                    | ((userId: string, doc: Full<T> & T) => boolean)
+                    | undefined;
                 fetch?: string[] | undefined;
                 // ditto
                 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -73,7 +99,9 @@ declare module "meteor/mongo" {
                 options?: {
                     multi?: boolean | undefined;
                     upsert?: boolean | undefined;
-                    arrayFilters?: Array<{ [identifier: string]: any }> | undefined;
+                    arrayFilters?:
+                        | Array<{ [identifier: string]: any }>
+                        | undefined;
                 },
                 // ditto
                 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -98,9 +126,25 @@ declare module "meteor/mongo" {
         // note: it's not applied for observeChanges; however, ObserveChangesCallbacks uses Partial<T> anyway
         interface Cursor<T> {
             fetch(): Array<Full<T> & T>;
-            forEach(callback: (doc: Full<T> & T, index: number, cursor: Cursor<T>) => void, thisArg?: any): void;
-            map<U>(callback: (doc: Full<T> & T, index: number, cursor: Cursor<T>) => U, thisArg?: any): U[];
-            observe(callbacks: ObserveCallbacks<Full<T> & T>): Meteor.LiveQueryHandle;
+            forEach(
+                callback: (
+                    doc: Full<T> & T,
+                    index: number,
+                    cursor: Cursor<T>,
+                ) => void,
+                thisArg?: any,
+            ): void;
+            map<U>(
+                callback: (
+                    doc: Full<T> & T,
+                    index: number,
+                    cursor: Cursor<T>,
+                ) => U,
+                thisArg?: any,
+            ): U[];
+            observe(
+                callbacks: ObserveCallbacks<Full<T> & T>,
+            ): Meteor.LiveQueryHandle;
         }
     }
 }

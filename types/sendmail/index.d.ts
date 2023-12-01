@@ -1,19 +1,21 @@
 declare namespace sendMailFactory {
     interface Options {
-        logger?: {
-            debug?: (() => void) | undefined;
-            info?: (() => void) | undefined;
-            warn?: (() => void) | undefined;
-            error?: (() => void) | undefined;
-        } | undefined;
+        logger?:
+            | {
+                  debug?: (() => void) | undefined;
+                  info?: (() => void) | undefined;
+                  warn?: (() => void) | undefined;
+                  error?: (() => void) | undefined;
+              }
+            | undefined;
         silent?: boolean | undefined;
         /** Default: False */
         dkim?:
             | boolean
             | {
-                privateKey: string;
-                keySelector: string;
-            }
+                  privateKey: string;
+                  keySelector: string;
+              }
             | undefined;
         /** Default: False */
         devPort?: number | boolean | undefined;
@@ -45,20 +47,23 @@ declare namespace sendMailFactory {
         html?: string | undefined;
         attachments?:
             | Array<{
-                type?: string | undefined;
-                filename?: string | undefined;
-                content?: any;
-                path?: string | undefined;
-                contentType?: string | undefined;
-                encoding?: string | undefined;
-            }>
+                  type?: string | undefined;
+                  filename?: string | undefined;
+                  content?: any;
+                  path?: string | undefined;
+                  contentType?: string | undefined;
+                  encoding?: string | undefined;
+              }>
             | undefined;
     }
 }
 
 type CallbackFn = (err: Error, domain: string) => void;
 
-type SendMailFn = (mail: sendMailFactory.MailInput, callback: CallbackFn) => void;
+type SendMailFn = (
+    mail: sendMailFactory.MailInput,
+    callback: CallbackFn,
+) => void;
 
 declare function sendMailFactory(options: sendMailFactory.Options): SendMailFn;
 

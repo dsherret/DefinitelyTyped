@@ -7,7 +7,7 @@ export interface FormatsFactory {
 }
 
 interface FormatsFactoryCtor {
-    new(): FormatsFactory;
+    new (): FormatsFactory;
 }
 
 declare const formatsFactory: FormatsFactoryCtor;

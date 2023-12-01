@@ -1,9 +1,12 @@
 /// <reference path="./_internal/umd-global.d.ts"/>
 
-type ResolveElementType<T extends string> = string extends T ? Element
-    : T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T]
-    : T extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[T]
-    : Element;
+type ResolveElementType<T extends string> = string extends T
+    ? Element
+    : T extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[T]
+      : T extends keyof SVGElementTagNameMap
+        ? SVGElementTagNameMap[T]
+        : Element;
 
 export = nwsapi;
 declare function nwsapi(global: nwsapi.Global): nwsapi.NWSAPI;
@@ -14,7 +17,10 @@ declare namespace nwsapi {
      * but **TypeScript** doesn't treat `true`, `false` or `null`
      * as constant expressions in enum initializers.
      */
-    type MatcherMode = MatcherMode.SELECT | MatcherMode.MATCH | MatcherMode.USE_COLLECTION_ITEM;
+    type MatcherMode =
+        | MatcherMode.SELECT
+        | MatcherMode.MATCH
+        | MatcherMode.USE_COLLECTION_ITEM;
     // tslint:enable: no-redundant-jsdoc-2
     namespace MatcherMode {
         /**
@@ -47,7 +53,10 @@ declare namespace nwsapi {
 
     interface Global {
         readonly document: Document;
-        readonly DOMException: new(message?: string, name?: string) => DOMException;
+        readonly DOMException: new (
+            message?: string,
+            name?: string,
+        ) => DOMException;
     }
 
     interface Config {
@@ -113,7 +122,10 @@ declare namespace nwsapi {
         // exported engine methods
 
         /** context agnostic `getElementsByClassName` */
-        byTag<T extends string>(tag: T, context: ContextNode): Array<ResolveElementType<T>>;
+        byTag<T extends string>(
+            tag: T,
+            context: ContextNode,
+        ): Array<ResolveElementType<T>>;
 
         /** context agnostic `getElementById` */
         byId(id: string, context: ContextNode): Element[];
@@ -145,7 +157,9 @@ declare namespace nwsapi {
             selector: S,
             context?: ContextNode | null,
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            callback?: ((element: ResolveElementType<S>) => boolean | void) | null,
+            callback?:
+                | ((element: ResolveElementType<S>) => boolean | void)
+                | null,
         ): Array<ResolveElementType<S>>;
 
         /**
@@ -177,9 +191,11 @@ declare namespace nwsapi {
             selector: string,
             mode: M,
             callback?: ((element: E) => void) | null,
-        ): M extends MatcherMode.MATCH ? MatchLambda<E>
-            : M extends MatcherMode.SELECT | MatcherMode.USE_COLLECTION_ITEM ? SelectLambda<E>
-            : never;
+        ): M extends MatcherMode.MATCH
+            ? MatchLambda<E>
+            : M extends MatcherMode.SELECT | MatcherMode.USE_COLLECTION_ITEM
+              ? SelectLambda<E>
+              : never;
 
         /**
          * Returns the configuration object.
@@ -209,7 +225,10 @@ declare namespace nwsapi {
          *
          * @param constructor The error constructor to use, defaults to `DOMException` with a `name` of `"SyntaxError"`.
          */
-        emit(message: string, constructor?: (new(message: string) => Error) | null): void;
+        emit(
+            message: string,
+            constructor?: (new (message: string) => Error) | null,
+        ): void;
 
         /** special handling configuration flags */
         readonly Config: Config;
@@ -229,8 +248,16 @@ declare namespace nwsapi {
             readonly "^=": AttributeOperator & { p1: "^"; p2: ""; p3: "true" };
             readonly "$=": AttributeOperator & { p1: ""; p2: "$"; p3: "true" };
             readonly "*=": AttributeOperator & { p1: ""; p2: ""; p3: "true" };
-            readonly "|=": AttributeOperator & { p1: "^"; p2: "(-|$)"; p3: "true" };
-            readonly "~=": AttributeOperator & { p1: "(^|\\s)"; p2: "(\\s|$)"; p3: "true" };
+            readonly "|=": AttributeOperator & {
+                p1: "^";
+                p2: "(-|$)";
+                p3: "true";
+            };
+            readonly "~=": AttributeOperator & {
+                p1: "(^|\\s)";
+                p2: "(\\s|$)";
+                p3: "true";
+            };
         };
 
         readonly Selectors: {
@@ -238,14 +265,20 @@ declare namespace nwsapi {
         };
 
         /** register a new selector combinator symbol and its related function resolver */
-        registerCombinator(combinator: string, resolver: (match: RegExpMatchArray) => string): void;
+        registerCombinator(
+            combinator: string,
+            resolver: (match: RegExpMatchArray) => string,
+        ): void;
 
         /** register a new attribute operator symbol and its related function resolver */
         registerOperator(operator: string, resolver: AttributeOperator): void;
 
         /** register a new selector symbol and its related function resolver */
         registerSelector<
-            R extends string | RegExp | { [Symbol.match](string: string): RegExpMatchArray | null },
+            R extends
+                | string
+                | RegExp
+                | { [Symbol.match](string: string): RegExpMatchArray | null },
             F extends (
                 this: {
                     readonly Expression: R;
@@ -314,14 +347,20 @@ declare namespace nwsapi {
 
     type ContextNode = Document | DocumentFragment | Element;
 
-    type SelectLambda<T extends Element = Element> = <E extends T, R extends ArrayLike<Element>>(
+    type SelectLambda<T extends Element = Element> = <
+        E extends T,
+        R extends ArrayLike<Element>,
+    >(
         element: ArrayLike<E> | NodeListOf<E> | HTMLCollectionOf<E>,
         callback: ((element: E) => unknown) | undefined,
         context: ContextNode,
         results: R,
     ) => R;
 
-    type MatchLambda<T extends Element = Element> = <E extends T, R extends ArrayLike<Element>>(
+    type MatchLambda<T extends Element = Element> = <
+        E extends T,
+        R extends ArrayLike<Element>,
+    >(
         element: E,
         callback: ((element: E) => void) | undefined,
         context: ContextNode,
@@ -342,7 +381,10 @@ declare namespace nwsapi {
     }
 
     interface CustomSelector {
-        readonly Expression: string | RegExp | { [Symbol.match](string: string): RegExpMatchArray | null };
+        readonly Expression:
+            | string
+            | RegExp
+            | { [Symbol.match](string: string): RegExpMatchArray | null };
         Callback(
             this: this,
             match: RegExpMatchArray,

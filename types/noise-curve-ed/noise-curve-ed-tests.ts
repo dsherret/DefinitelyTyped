@@ -17,7 +17,10 @@ declare let buf: Buffer | Uint8Array;
 const kp = curve.generateKeyPair(); // $ExpectType KeyPair
 curve.generateKeyPair(Buffer.alloc(10)); // $ExpectType KeyPair
 buf = curve.dh(Buffer.alloc(10), { secretKey: Buffer.alloc(10) });
-buf = curve.dh(Buffer.alloc(10), { scalar: Buffer.alloc(10), secretKey: Buffer.alloc(10) });
+buf = curve.dh(Buffer.alloc(10), {
+    scalar: Buffer.alloc(10),
+    secretKey: Buffer.alloc(10),
+});
 buf = curve.dh(Buffer.alloc(10), kp);
 
 new Noise("IK", true, undefined, { curve });

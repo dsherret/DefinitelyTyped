@@ -50,7 +50,13 @@ declare class horseman {
     do(fn: () => void): this;
 
     /** Download a URL. */
-    download(url: string, path: string, binary: boolean, method: string, data: string): this;
+    download(
+        url: string,
+        path: string,
+        binary: boolean,
+        method: string,
+        data: string,
+    ): this;
 
     /** Run a javascript function on the current page and optionally return the results. */
     evaluate(fn: () => void, args?: any[]): this;
@@ -141,11 +147,21 @@ declare class horseman {
     pageMaker(url: any, _page: any, ...args: any[]): any;
 
     /** Save the current page as a pdf. */
-    pdf(path: string, paperSize: {
-        format?: "A3" | "A4" | "A5" | "Legal" | "Letter" | "Tabloid" | undefined;
-        orientation?: "portrait" | "landscape" | undefined;
-        margin?: string | undefined;
-    }): this;
+    pdf(
+        path: string,
+        paperSize: {
+            format?:
+                | "A3"
+                | "A4"
+                | "A5"
+                | "Legal"
+                | "Letter"
+                | "Tabloid"
+                | undefined;
+            orientation?: "portrait" | "landscape" | undefined;
+            margin?: string | undefined;
+        },
+    ): this;
 
     /** Get the plain text for the body of the page. */
     plainText(): string;
@@ -172,7 +188,13 @@ declare class horseman {
     select(selector: string, value: string): any;
 
     /** Change the proxy settings. */
-    setProxy(ip: string, port: string, type: string, username: string, password: string): this;
+    setProxy(
+        ip: string,
+        port: string,
+        type: string,
+        username: string,
+        password: string,
+    ): this;
 
     /** Get the HTTP status of the last opened page. */
     status(): string;

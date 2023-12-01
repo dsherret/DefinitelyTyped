@@ -1,7 +1,9 @@
 import { Redis } from "ioredis";
 import { Context, Middleware } from "koa";
 
-declare function KoaRatelimit(options?: KoaRatelimit.MiddlewareOptions): Middleware;
+declare function KoaRatelimit(
+    options?: KoaRatelimit.MiddlewareOptions,
+): Middleware;
 
 declare namespace KoaRatelimit {
     interface HeaderNameOptions {
@@ -81,12 +83,16 @@ declare namespace KoaRatelimit {
         /**
          * If function returns true, middleware exits before limiting
          */
-        whitelist?: ((context: Context) => boolean | Promise<boolean>) | undefined;
+        whitelist?:
+            | ((context: Context) => boolean | Promise<boolean>)
+            | undefined;
 
         /**
          * If function returns true, 403 error is thrown
          */
-        blacklist?: ((context: Context) => boolean | Promise<boolean>) | undefined;
+        blacklist?:
+            | ((context: Context) => boolean | Promise<boolean>)
+            | undefined;
     }
 }
 

@@ -1,5 +1,10 @@
 import * as Ajv from "ajv";
-import JSONEditor, { AutoCompleteOptions, EditableNode, JSONEditorMode, JSONEditorOptions } from "jsoneditor";
+import JSONEditor, {
+    AutoCompleteOptions,
+    EditableNode,
+    JSONEditorMode,
+    JSONEditorOptions,
+} from "jsoneditor";
 
 const autocomplete: AutoCompleteOptions = {};
 
@@ -12,7 +17,7 @@ autocomplete.confirmKeys = [0];
 autocomplete.filter = undefined;
 autocomplete.filter = "start";
 autocomplete.filter = "contain";
-autocomplete.filter = input => true;
+autocomplete.filter = (input) => true;
 
 autocomplete.getOptions = undefined;
 autocomplete.getOptions = (text, path, type, editor) => [];
@@ -33,13 +38,13 @@ options.onChange = undefined;
 options.onChange = () => {};
 
 options.onChangeJSON = undefined;
-options.onChangeJSON = json => {};
+options.onChangeJSON = (json) => {};
 
 options.onChangeText = undefined;
 options.onChangeText = (json: string) => {};
 
 options.onClassName = undefined;
-options.onClassName = obj => {
+options.onClassName = (obj) => {
     // $ExpectType ReadonlyArray<string>
     obj.path;
     // $ExpectType string
@@ -48,7 +53,7 @@ options.onClassName = obj => {
     obj.value;
     return "";
 };
-options.onClassName = obj => {
+options.onClassName = (obj) => {
     // $ExpectType ReadonlyArray<string>
     obj.path;
     // $ExpectType string
@@ -59,7 +64,7 @@ options.onClassName = obj => {
 };
 
 options.onExpand = undefined;
-options.onExpand = obj => {
+options.onExpand = (obj) => {
     // $ExpectType ReadonlyArray<string>
     obj.path;
     // $ExpectType boolean
@@ -83,7 +88,7 @@ options.onModeChange = undefined;
 options.onModeChange = (newMode: JSONEditorMode, oldMode: JSONEditorMode) => {};
 
 options.onNodeName = undefined;
-options.onNodeName = obj => {
+options.onNodeName = (obj) => {
     // $ExpectType ReadonlyArray<string>
     obj.path;
     // $ExpectType NodeType
@@ -94,7 +99,7 @@ options.onNodeName = obj => {
     obj.value;
     return "";
 };
-options.onNodeName = obj => {
+options.onNodeName = (obj) => {
     // $ExpectType ReadonlyArray<string>
     obj.path;
     // $ExpectType NodeType
@@ -107,11 +112,11 @@ options.onNodeName = obj => {
 };
 
 options.onValidate = undefined;
-options.onValidate = json => [];
-options.onValidate = json => new Promise(() => []);
+options.onValidate = (json) => [];
+options.onValidate = (json) => new Promise(() => []);
 
 options.onValidationError = undefined;
-options.onValidationError = errors => {
+options.onValidationError = (errors) => {
     return;
 };
 
@@ -237,13 +242,13 @@ options.onEvent = (node, event) => {
 };
 
 options.onFocus = undefined;
-options.onFocus = event => {
+options.onFocus = (event) => {
     // $ExpectType Event
     event;
 };
 
 options.onBlur = undefined;
-options.onBlur = event => {
+options.onBlur = (event) => {
     // $ExpectType Event
     event;
 };
@@ -263,7 +268,7 @@ options.onColorPicker = (parent, color, onChange) => {
 
 options.timestampTag = undefined;
 options.timestampTag = false;
-options.timestampTag = node => {
+options.timestampTag = (node) => {
     // $ExpectType string
     node.field;
     // $ExpectType string
@@ -275,7 +280,7 @@ options.timestampTag = node => {
 };
 
 options.timestampFormat = undefined;
-options.timestampFormat = node => {
+options.timestampFormat = (node) => {
     // $ExpectType string
     node.field;
     // $ExpectType string
@@ -285,7 +290,7 @@ options.timestampFormat = node => {
 
     return "";
 };
-options.timestampFormat = node => {
+options.timestampFormat = (node) => {
     // $ExpectType string
     node.field;
     // $ExpectType string
@@ -300,7 +305,10 @@ options.language = undefined;
 options.language = "en";
 
 options.languages = undefined;
-options.languages = { "pt-BR": { auto: "Automático testing" }, en: { auto: "Auto testing" } };
+options.languages = {
+    "pt-BR": { auto: "Automático testing" },
+    en: { auto: "Auto testing" },
+};
 
 options.modalAnchor = undefined;
 options.modalAnchor = new HTMLElement();
@@ -442,7 +450,7 @@ jsonEditor.update(null);
 // $ExpectType void
 jsonEditor.updateText("");
 
-jsonEditor.validate().then(result => {
+jsonEditor.validate().then((result) => {
     // $ExpectType readonly (SchemaValidationError | ParseError)[]
     result;
 });

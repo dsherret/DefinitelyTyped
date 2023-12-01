@@ -25,10 +25,14 @@ export type WindowScrollerProps = {
     children: (params: WindowScrollerChildProps) => React.ReactNode;
 
     /** Callback to be invoked on-resize: ({ height, width }) */
-    onResize?: ((params: { height: number; width: number }) => void) | undefined;
+    onResize?:
+        | ((params: { height: number; width: number }) => void)
+        | undefined;
 
     /** Callback to be invoked on-scroll: ({ scrollLeft, scrollTop }) */
-    onScroll?: ((params: { scrollLeft: number; scrollTop: number }) => void) | undefined;
+    onScroll?:
+        | ((params: { scrollLeft: number; scrollTop: number }) => void)
+        | undefined;
 
     /** Element to attach scroll event listeners. Defaults to window. */
     scrollElement?: typeof window | Element | undefined;
@@ -60,7 +64,10 @@ export type WindowScrollerState = {
     scrollTop: number;
 };
 
-export class WindowScroller extends PureComponent<WindowScrollerProps, WindowScrollerState> {
+export class WindowScroller extends PureComponent<
+    WindowScrollerProps,
+    WindowScrollerState
+> {
     static defaultProps: {
         onResize: () => void;
         onScroll: () => void;

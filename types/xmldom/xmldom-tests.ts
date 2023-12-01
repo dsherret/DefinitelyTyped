@@ -1,11 +1,11 @@
 import * as xmldom from "xmldom";
 
 var doc = new xmldom.DOMParser().parseFromString(
-    "<xml xmlns=\"a\" xmlns:c=\"./lite\">\n"
-        + "\t<child>test</child>\n"
-        + "\t<child></child>\n"
-        + "\t<child/>\n"
-        + "</xml>",
+    '<xml xmlns="a" xmlns:c="./lite">\n' +
+        "\t<child>test</child>\n" +
+        "\t<child></child>\n" +
+        "\t<child/>\n" +
+        "</xml>",
     "text/xml",
 );
 doc.documentElement.setAttribute("x", "y");
@@ -14,8 +14,7 @@ var nsAttr = doc.documentElement.getAttributeNS("./lite", "x");
 console.info(nsAttr);
 console.info(doc);
 
-function callback(w: any) {
-}
+function callback(w: any) {}
 
 // errorHandler is supported
 new xmldom.DOMParser({
@@ -28,7 +27,7 @@ new xmldom.DOMParser({
      * @link http://www.saxproject.org/apidoc/org/xml/sax/ErrorHandler.html
      */
     errorHandler: {
-        warning: function(w: any) {
+        warning: function (w: any) {
             console.warn(w);
         },
         error: callback,

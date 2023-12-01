@@ -3,13 +3,28 @@
 import { SentMessageInfo } from "nodemailer";
 
 declare class Sendcloud {
-    constructor(apiUser: string, apiKey: string, from: string, name?: string, apiUserBatch?: string);
+    constructor(
+        apiUser: string,
+        apiKey: string,
+        from: string,
+        name?: string,
+        apiUserBatch?: string,
+    );
 
     readonly EmailList: EmailList;
     readonly ListMember: ListMember;
 
-    send(to: string, subject: string, html: string, options?: SendOptions): Promise<SuccessResp | ErrorResp>;
-    sendEmailSmtp(to: string, subject: string, data: string): Promise<SentMessageInfo>;
+    send(
+        to: string,
+        subject: string,
+        html: string,
+        options?: SendOptions,
+    ): Promise<SuccessResp | ErrorResp>;
+    sendEmailSmtp(
+        to: string,
+        subject: string,
+        data: string,
+    ): Promise<SentMessageInfo>;
     templateToOne(
         to: string,
         subject: string,
@@ -52,7 +67,10 @@ declare class EmailList {
         name: string,
         options: EmailListCreateOptions,
     ): Promise<EmailListCreateResponse>;
-    updateEmailList(address: string, options: EmailListUpdateOptions): Promise<EmailListUpdateResponse>;
+    updateEmailList(
+        address: string,
+        options: EmailListUpdateOptions,
+    ): Promise<EmailListUpdateResponse>;
     updateListMember(
         mail_list_addr: string,
         member_addr: string,
@@ -75,15 +93,24 @@ declare class ListMember {
     ): Promise<object>;
 
     getData(url: string, data: object): Promise<object>;
-    getListMember(mail_list_addr: string, options: ListMemberListOptions): Promise<ListMemberListResponse>;
+    getListMember(
+        mail_list_addr: string,
+        options: ListMemberListOptions,
+    ): Promise<ListMemberListResponse>;
     addListMember(
         mail_list_addr: string,
         member_addr: string,
         name: string,
         options: ListMemberAddOptions,
     ): Promise<ListMemberAddResposne>;
-    deleteListMember(mail_list_addr: string, member_addr: string): Promise<ListMemberDeleteResposne>;
-    addToOtherList(sourceList: string, targetList: string): Promise<ListMemberAddResposne[]>;
+    deleteListMember(
+        mail_list_addr: string,
+        member_addr: string,
+    ): Promise<ListMemberDeleteResposne>;
+    addToOtherList(
+        sourceList: string,
+        targetList: string,
+    ): Promise<ListMemberAddResposne[]>;
 }
 
 interface EmailListListData {

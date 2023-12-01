@@ -6,14 +6,14 @@ server.connection({ port: 80 });
 
 server.ext({
     type: "onRequest",
-    method: function(request, reply) {
+    method: function (request, reply) {
         // Change all requests to '/test'
         request.setUrl("/test");
         return reply.continue();
     },
 });
 
-var handler: Hapi.RouteHandler = function(request, reply) {
+var handler: Hapi.RouteHandler = function (request, reply) {
     return reply({ status: "ok" });
 };
 
@@ -24,13 +24,13 @@ server.start((err) => {});
 
 // Example 2
 
-server.ext("onRequest", function(request, reply) {
+server.ext("onRequest", function (request, reply) {
     // Change all requests to '/test'
     request.setUrl("/test");
     return reply.continue();
 });
 
-handler = function(request, reply) {
+handler = function (request, reply) {
     return reply({ status: "ok" });
 };
 

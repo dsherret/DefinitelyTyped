@@ -57,7 +57,12 @@ const aes128Gcm: ContentEncoding = supportedContentEncodings.AES_128_GCM;
 // ===========
 
 // $ExpectType EncryptionResult
-const encryptionResult = encrypt("publicKey", "userAuth", "myPayload", supportedContentEncodings.AES_GCM);
+const encryptionResult = encrypt(
+    "publicKey",
+    "userAuth",
+    "myPayload",
+    supportedContentEncodings.AES_GCM,
+);
 
 const buffer: Buffer = anything;
 // $ExpectType EncryptionResult
@@ -79,7 +84,14 @@ encryptionResult.cipherText;
 // ===================
 
 // $ExpectType { Authorization: string; "Crypto-Key": string; }
-getVapidHeaders("audience", "https://subject.com", "publicKey", "privateKey", supportedContentEncodings.AES_GCM, 150);
+getVapidHeaders(
+    "audience",
+    "https://subject.com",
+    "publicKey",
+    "privateKey",
+    supportedContentEncodings.AES_GCM,
+    150,
+);
 // $ExpectType { Authorization: string; }
 getVapidHeaders(
     "audience",
@@ -111,21 +123,57 @@ getVapidHeaders(
 
 // expiration is optional
 // $ExpectType { Authorization: string; "Crypto-Key": string; }
-getVapidHeaders("audience", "https://subject.com", "publicKey", "privateKey", supportedContentEncodings.AES_GCM);
+getVapidHeaders(
+    "audience",
+    "https://subject.com",
+    "publicKey",
+    "privateKey",
+    supportedContentEncodings.AES_GCM,
+);
 // $ExpectType { Authorization: string; }
-getVapidHeaders("audience", "https://subject.com", "publicKey", "privateKey", supportedContentEncodings.AES_128_GCM);
+getVapidHeaders(
+    "audience",
+    "https://subject.com",
+    "publicKey",
+    "privateKey",
+    supportedContentEncodings.AES_128_GCM,
+);
 
 // Allow "string" subjects since we can't verify what they start with
 // $ExpectType { Authorization: string; "Crypto-Key": string; }
-getVapidHeaders("audience", stringValue, "publicKey", "privateKey", supportedContentEncodings.AES_GCM);
+getVapidHeaders(
+    "audience",
+    stringValue,
+    "publicKey",
+    "privateKey",
+    supportedContentEncodings.AES_GCM,
+);
 
 // Buffers are not supported here
 // @ts-expect-error
-getVapidHeaders("audience", buffer, "publicKey", "privateKey", supportedContentEncodings.AES_128_GCM);
+getVapidHeaders(
+    "audience",
+    buffer,
+    "publicKey",
+    "privateKey",
+    supportedContentEncodings.AES_128_GCM,
+);
 // @ts-expect-error
-getVapidHeaders("audience", "https://subject.com", buffer, "privateKey", supportedContentEncodings.AES_128_GCM);
+getVapidHeaders(
+    "audience",
+    "https://subject.com",
+    buffer,
+    "privateKey",
+    supportedContentEncodings.AES_128_GCM,
+);
 // @ts-expect-error
-getVapidHeaders("audience", "https://subject.com", "publicKey", buffer, supportedContentEncodings.AES_128_GCM);
+getVapidHeaders(
+    "audience",
+    "https://subject.com",
+    "publicKey",
+    buffer,
+    supportedContentEncodings.AES_128_GCM,
+);
 
 // =====================
 //  generateVAPIDKeys()
@@ -278,11 +326,17 @@ generateRequestDetails({ endpoint: "endpoint" });
 // @ts-expect-error
 generateRequestDetails({ keys: { p256dh: "p256dh", auth: "auth" } });
 // @ts-expect-error
-generateRequestDetails({ endpoint: null, keys: { p256dh: "p256dh", auth: "auth" } });
+generateRequestDetails({
+    endpoint: null,
+    keys: { p256dh: "p256dh", auth: "auth" },
+});
 // @ts-expect-error
 generateRequestDetails({ endpoint: "endpoint", keys: null });
 
-generateRequestDetails({ endpoint: "endpoint", keys: { p256dh: "p256dh", auth: "auth" } });
+generateRequestDetails({
+    endpoint: "endpoint",
+    keys: { p256dh: "p256dh", auth: "auth" },
+});
 
 // RequestOptions is optional
 generateRequestDetails(pushSubscription, "payload");
@@ -329,11 +383,17 @@ sendNotification({ endpoint: "endpoint" }, "payload");
 // @ts-expect-error
 sendNotification({ keys: { p256dh: "p256dh", auth: "auth" } }, "payload");
 // @ts-expect-error
-sendNotification({ endpoint: null, keys: { p256dh: "p256dh", auth: "auth" } }, "payload");
+sendNotification(
+    { endpoint: null, keys: { p256dh: "p256dh", auth: "auth" } },
+    "payload",
+);
 // @ts-expect-error
 sendNotification({ endpoint: "endpoint", keys: null }, "payload");
 
-sendNotification({ endpoint: "endpoint", keys: { p256dh: "p256dh", auth: "auth" } }, "payload");
+sendNotification(
+    { endpoint: "endpoint", keys: { p256dh: "p256dh", auth: "auth" } },
+    "payload",
+);
 
 // =============
 //  SendResult
@@ -341,7 +401,7 @@ sendNotification({ endpoint: "endpoint", keys: { p256dh: "p256dh", auth: "auth" 
 
 const sendResult = sendNotification(pushSubscription, "payload");
 
-sendResult.then(result => {
+sendResult.then((result) => {
     // ExpectType number
     result.statusCode;
     // $ExpectType string

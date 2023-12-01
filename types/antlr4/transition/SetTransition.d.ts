@@ -7,7 +7,11 @@ export default class SetTransition extends Transition {
 
     constructor(target: ATNState, set: IntervalSet);
 
-    matches(symbol: number, minVocabSymbol: number, maxVocabSymbol: number): boolean;
+    matches(
+        symbol: number,
+        minVocabSymbol: number,
+        maxVocabSymbol: number,
+    ): boolean;
 
     toString(): string;
 }

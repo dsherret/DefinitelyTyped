@@ -4,5 +4,9 @@ declare module "phone-formatter" {
     }
 
     export function normalize(digits: string): string;
-    export function format(digits: string, format: string, options?: FormatOptions): string;
+    export function format(
+        digits: string,
+        format: string,
+        options?: FormatOptions,
+    ): string;
 }

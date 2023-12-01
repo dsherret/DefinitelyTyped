@@ -40,7 +40,8 @@ const spectro2 = new Spectrogram(canvas2, {
         }
 
         for (let i = 0; i < steps; i++) {
-            const v = (Math.sin((frequency * i) + slice) * amplitude + center) >> 0;
+            const v =
+                (Math.sin(frequency * i + slice) * amplitude + center) >> 0;
 
             colors.push(toRGBString(v));
         }

@@ -26,11 +26,7 @@ keysReduce<Attr | null>(
 );
 
 // $ExpectType string[]
-keysReduce(
-    attrs,
-    (arr, key) => [...arr, attrValue(key, attrs[key])],
-    [""],
-);
+keysReduce(attrs, (arr, key) => [...arr, attrValue(key, attrs[key])], [""]);
 
 // $ExpectType TagNode
 const tagNode = TagNode.create("test", { test: 1 }, ["Hello"]);

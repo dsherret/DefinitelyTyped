@@ -1,14 +1,22 @@
 alertify.init();
 
 alertify.alert("This is an alert");
-alertify.alert("This is an alert with a callback", () => {
-    alertify.success("Alert finished");
-}, "myCustomClass");
+alertify.alert(
+    "This is an alert with a callback",
+    () => {
+        alertify.success("Alert finished");
+    },
+    "myCustomClass",
+);
 
 alertify.confirm("This is a confirm request");
-alertify.confirm("This is a confirm request with a callback", () => {
-    alertify.success("Confirm finished");
-}, "myCustomClass");
+alertify.confirm(
+    "This is a confirm request with a callback",
+    () => {
+        alertify.success("Confirm finished");
+    },
+    "myCustomClass",
+);
 
 var custom = alertify.extend("custom");
 

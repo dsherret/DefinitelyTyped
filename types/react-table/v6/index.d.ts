@@ -4,11 +4,20 @@ export type ReactTableFunction = (value?: any) => void;
 export type AccessorFunction<D = any> = (row: D) => any;
 export type Accessor<D = any> = string | string[] | AccessorFunction<D>;
 export type Aggregator = (values: any, rows: any) => any;
-export type TableCellRenderer = ((cellInfo: CellInfo, column: any) => React.ReactNode) | React.ReactNode;
-export type FilterRender = (
-    params: { column: Column; filter: any; onChange: ReactTableFunction; key?: string | undefined },
-) => React.ReactElement;
-export type PivotRenderer = ((cellInfo: CellInfo) => React.ReactNode) | (() => any) | string | React.ReactNode;
+export type TableCellRenderer =
+    | ((cellInfo: CellInfo, column: any) => React.ReactNode)
+    | React.ReactNode;
+export type FilterRender = (params: {
+    column: Column;
+    filter: any;
+    onChange: ReactTableFunction;
+    key?: string | undefined;
+}) => React.ReactElement;
+export type PivotRenderer =
+    | ((cellInfo: CellInfo) => React.ReactNode)
+    | (() => any)
+    | string
+    | React.ReactNode;
 
 export type ComponentPropsGetter0 = (
     finalState: any,
@@ -35,14 +44,37 @@ export type ComponentPropsGetterRC = (
     instance?: any,
 ) => object | undefined;
 
-export type DefaultFilterFunction = (filter: Filter, row: any, column: any) => boolean;
-export type FilterFunction = (filter: Filter, rows: any[], column: any) => any[];
+export type DefaultFilterFunction = (
+    filter: Filter,
+    row: any,
+    column: any,
+) => boolean;
+export type FilterFunction = (
+    filter: Filter,
+    rows: any[],
+    column: any,
+) => any[];
 export type SubComponentFunction = (rowInfo: RowInfo) => React.ReactNode;
 export type PageChangeFunction = (page: number) => void;
-export type PageSizeChangeFunction = (newPageSize: number, newPage: number) => void;
-export type SortedChangeFunction = (newSorted: SortingRule[], column: any, additive: boolean) => void;
-export type FilteredChangeFunction = (newFiltering: Filter[], column: any, value: any) => void;
-export type ExpandedChangeFunction = (column: any, event: any, isTouch: boolean) => void;
+export type PageSizeChangeFunction = (
+    newPageSize: number,
+    newPage: number,
+) => void;
+export type SortedChangeFunction = (
+    newSorted: SortingRule[],
+    column: any,
+    additive: boolean,
+) => void;
+export type FilteredChangeFunction = (
+    newFiltering: Filter[],
+    column: any,
+    value: any,
+) => void;
+export type ExpandedChangeFunction = (
+    column: any,
+    event: any,
+    isTouch: boolean,
+) => void;
 export type ResizedChangeFunction = (newResized: Resize[], event: any) => void;
 export type SortFunction = (a: any, b: any, desc: any) => number;
 
@@ -62,14 +94,12 @@ export interface SortingRule {
 }
 
 export interface TableProps<D = any, ResolvedData = D>
-    extends
-        TextProps,
+    extends TextProps,
         ComponentDecoratorProps,
         ControlledStateCallbackProps,
         PivotingProps,
         ControlledStateOverrideProps,
-        ComponentProps
-{
+        ComponentProps {
     /** Default: [] */
     data: D[];
 
@@ -318,7 +348,10 @@ export interface ControlledStateCallbackProps {
 }
 
 export interface ComponentDecoratorProps {
-    getProps: ComponentPropsGetterRC | ComponentPropsGetterC | ComponentPropsGetter0;
+    getProps:
+        | ComponentPropsGetterRC
+        | ComponentPropsGetterC
+        | ComponentPropsGetter0;
     getTableProps: ComponentPropsGetter0;
     getTheadGroupProps: ComponentPropsGetter0;
     getTheadGroupTrProps: ComponentPropsGetter0;
@@ -388,9 +421,11 @@ export interface TextProps {
 }
 
 export interface GlobalColumn
-    extends Column.Basics, Column.CellProps, Column.FilterProps, Column.FooterProps, Column.HeaderProps
-{
-}
+    extends Column.Basics,
+        Column.CellProps,
+        Column.FilterProps,
+        Column.FooterProps,
+        Column.HeaderProps {}
 
 export namespace Column {
     /** Basic column props */
@@ -557,13 +592,11 @@ export interface PivotDefaults {
 }
 
 export interface Column<D = any>
-    extends
-        Partial<Column.Basics>,
+    extends Partial<Column.Basics>,
         Partial<Column.CellProps>,
         Partial<Column.FilterProps>,
         Partial<Column.FooterProps>,
-        Partial<Column.HeaderProps>
-{
+        Partial<Column.HeaderProps> {
     /**
      * Property name as string or Accessor
      * @example 'myProperty'
@@ -672,7 +705,9 @@ export interface RowInfo {
     original: any;
 }
 
-export interface CellInfo extends RowInfo, Pick<ControlledStateOverrideProps, "resized"> {
+export interface CellInfo
+    extends RowInfo,
+        Pick<ControlledStateOverrideProps, "resized"> {
     /* true if this row is expanded */
     isExpanded: boolean;
 
@@ -730,7 +765,9 @@ export interface FinalState<D = any> extends TableProps<D> {
 }
 
 export const ReactTableDefaults: TableProps;
-export default class ReactTable<D> extends React.Component<Partial<TableProps<D>>> {}
+export default class ReactTable<D> extends React.Component<
+    Partial<TableProps<D>>
+> {}
 
 export interface Instance<D = any> extends ReactTable<D> {
     context: any;

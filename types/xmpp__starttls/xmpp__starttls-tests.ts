@@ -19,7 +19,9 @@ class Foo extends Connection implements middleware.Entity {
     }
 }
 
-const mw = middleware({ entity: new Foo({ service: "foo", domain: "foo.bar" }) });
+const mw = middleware({
+    entity: new Foo({ service: "foo", domain: "foo.bar" }),
+});
 const sf = streamFeatures({ middleware: mw }); // $ExpectType StreamFeatures<Foo>
 
 starttls({ streamFeatures: sf }); // $ExpectType Middleware<IncomingContext<Foo>>

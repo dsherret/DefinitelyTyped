@@ -20,7 +20,11 @@ const app = express();
 app.post(
     "/profile",
     upload.single("avatar"),
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         req.file; // $ExpectType File | undefined
     },
 );
@@ -28,20 +32,40 @@ app.post(
 app.post(
     "/photos/upload",
     upload.array("photos", 12),
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         req.files; // $ExpectType { [fieldname: string]: File[]; } | File[] | undefined
     },
 );
 
-const cpUpload = upload.fields([{ name: "avatar", maxCount: 1 }, { name: "gallery", maxCount: 8 }]);
-app.post("/cool-profile", cpUpload, (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    req.files; // $ExpectType { [fieldname: string]: File[]; } | File[] | undefined
-});
+const cpUpload = upload.fields([
+    { name: "avatar", maxCount: 1 },
+    { name: "gallery", maxCount: 8 },
+]);
+app.post(
+    "/cool-profile",
+    cpUpload,
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
+        req.files; // $ExpectType { [fieldname: string]: File[]; } | File[] | undefined
+    },
+);
 
 app.post(
     "/text-only",
     upload.none(),
-    (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    (
+        err: any,
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         if (err instanceof multer.MulterError) {
             next(new Error(err.code));
         }

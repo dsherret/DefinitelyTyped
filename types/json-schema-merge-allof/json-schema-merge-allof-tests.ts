@@ -25,7 +25,9 @@ mergeAllOf(schemaExtra, {
             values;
             // $ExpectType Options<JSONSchemaExtra>
             options;
-            return values.reduce((prev, next) => (prev || []).concat(next || []))!;
+            return values.reduce((prev, next) =>
+                (prev || []).concat(next || []),
+            )!;
         },
     },
 });

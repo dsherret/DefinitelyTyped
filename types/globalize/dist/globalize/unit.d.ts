@@ -23,7 +23,10 @@ declare module "../globalize" {
          * @param options form: [String] eg. "long", "short" or "narrow".
          * @returns {Function} Returns a function that formats a unit according to the given unit, options, and the default/instance locale.
          */
-        unitFormatter(unit: string, options?: UnitFormatterOptions): (value: number) => string;
+        unitFormatter(
+            unit: string,
+            options?: UnitFormatterOptions,
+        ): (value: number) => string;
 
         /**
          * Alias for .unitFormatter( unit, options )( value ).
@@ -32,7 +35,11 @@ declare module "../globalize" {
          * @param {UnitFormatterOptions} options form: [String] eg. "long", "short" or "narrow".
          * @returns {string} Returns the unit formatted.
          */
-        formatUnit(value: number, unit: string, options?: UnitFormatterOptions): string;
+        formatUnit(
+            value: number,
+            unit: string,
+            options?: UnitFormatterOptions,
+        ): string;
     }
 }
 

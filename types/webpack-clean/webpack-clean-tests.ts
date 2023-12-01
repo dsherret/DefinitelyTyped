@@ -14,16 +14,27 @@ module.exports = {
 };
 
 module.exports = {
-    plugins: [new WebpackCleanPlugin("dist/fileA.js", { basePath: path.join(__dirname, "./") })],
-};
-
-module.exports = {
-    plugins: [new WebpackCleanPlugin(["fileA.js", "fileB.js"], { basePath: path.join(__dirname, "dist") })],
+    plugins: [
+        new WebpackCleanPlugin("dist/fileA.js", {
+            basePath: path.join(__dirname, "./"),
+        }),
+    ],
 };
 
 module.exports = {
     plugins: [
-        new WebpackCleanPlugin(["fileA.js", "fileB.js"], { basePath: path.join(__dirname, "dist"), removeMaps: true }),
+        new WebpackCleanPlugin(["fileA.js", "fileB.js"], {
+            basePath: path.join(__dirname, "dist"),
+        }),
+    ],
+};
+
+module.exports = {
+    plugins: [
+        new WebpackCleanPlugin(["fileA.js", "fileB.js"], {
+            basePath: path.join(__dirname, "dist"),
+            removeMaps: true,
+        }),
     ],
 };
 

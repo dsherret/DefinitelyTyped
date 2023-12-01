@@ -2,7 +2,9 @@ export as namespace regenerate;
 export = regenerate;
 
 type RegenerateArgValue = string | number | regenerate;
-type RegenerateArgValueOrArray = RegenerateArgValue | readonly RegenerateArgValueOrArray[];
+type RegenerateArgValueOrArray =
+    | RegenerateArgValue
+    | readonly RegenerateArgValueOrArray[];
 
 /**
  * The main Regenerate constructor. Calling this function creates a new set that gets a chainable API.
@@ -15,7 +17,9 @@ type RegenerateArgValueOrArray = RegenerateArgValue | readonly RegenerateArgValu
  * It’s also possible to pass in a Regenerate instance.
  * Doing so adds all code points in that instance to the new set.
  */
-declare function regenerate(...values: readonly RegenerateArgValueOrArray[]): regenerate;
+declare function regenerate(
+    ...values: readonly RegenerateArgValueOrArray[]
+): regenerate;
 declare class regenerate {
     constructor(...values: readonly RegenerateArgValueOrArray[]);
 
@@ -28,7 +32,10 @@ declare class regenerate {
      * It’s also possible to pass in a Regenerate instance.
      * Doing so adds all code points in that instance to the current set.
      */
-    add(value: RegenerateArgValueOrArray, ...rest: readonly RegenerateArgValueOrArray[]): this;
+    add(
+        value: RegenerateArgValueOrArray,
+        ...rest: readonly RegenerateArgValueOrArray[]
+    ): this;
 
     /**
      * Any arguments passed to `remove()` are removed from the set.
@@ -39,7 +46,10 @@ declare class regenerate {
      * It’s also possible to pass in a Regenerate instance.
      * Doing so removes all code points in that instance from the current set.
      */
-    remove(value: RegenerateArgValueOrArray, ...rest: readonly RegenerateArgValueOrArray[]): this;
+    remove(
+        value: RegenerateArgValueOrArray,
+        ...rest: readonly RegenerateArgValueOrArray[]
+    ): this;
 
     /**
      * Adds a range of code points from `start` to `end` (inclusive) from the set.

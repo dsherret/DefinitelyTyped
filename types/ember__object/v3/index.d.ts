@@ -17,7 +17,9 @@ import Observable from "@ember/object/observable";
  */
 export default class EmberObject extends CoreObject.extend(Observable) {}
 declare function computed(...deps: string[]): MethodDecorator;
-declare function computed<Get, Set = Get>(cb: ComputedPropertyCallback<Get, Set>): ComputedProperty<Get, Set>;
+declare function computed<Get, Set = Get>(
+    cb: ComputedPropertyCallback<Get, Set>,
+): ComputedProperty<Get, Set>;
 declare function computed<Get, Set = Get>(
     k1: string,
     cb: ComputedPropertyCallback<Get, Set>,
@@ -107,8 +109,15 @@ export { computed };
 /**
  * Specify a method that observes property changes.
  */
-export function observer<Fn extends (target: any, key: string) => void>(key1: string, func: Fn): Fn;
-export function observer<Fn extends (target: any, key: string) => void>(key1: string, key2: string, func: Fn): Fn;
+export function observer<Fn extends (target: any, key: string) => void>(
+    key1: string,
+    func: Fn,
+): Fn;
+export function observer<Fn extends (target: any, key: string) => void>(
+    key1: string,
+    key2: string,
+    func: Fn,
+): Fn;
 export function observer<Fn extends (target: any, key: string) => void>(
     key1: string,
     key2: string,
@@ -141,7 +150,10 @@ export function aliasMethod(methodName: string): ComputedProperty<any>;
  * the function will be invoked. If the property is not defined but the
  * object implements the `unknownProperty` method then that will be invoked.
  */
-export function get<T, K extends keyof T>(obj: T, key: K): UnwrapComputedPropertyGetter<T[K]>;
+export function get<T, K extends keyof T>(
+    obj: T,
+    key: K,
+): UnwrapComputedPropertyGetter<T[K]>;
 export function get(obj: unknown, key: string): unknown;
 
 /**
@@ -171,8 +183,14 @@ export function set<T, K extends keyof T>(obj: T, key: K, value: T[K]): T[K];
  * To get multiple properties at once, call `Ember.getProperties`
  * with an object followed by a list of strings or an array:
  */
-export function getProperties<T, K extends keyof T>(obj: T, list: K[]): Pick<UnwrapComputedPropertyGetters<T>, K>; // for dynamic K
-export function getProperties<T, K extends keyof T>(obj: T, ...list: K[]): Pick<UnwrapComputedPropertyGetters<T>, K>;
+export function getProperties<T, K extends keyof T>(
+    obj: T,
+    list: K[],
+): Pick<UnwrapComputedPropertyGetters<T>, K>; // for dynamic K
+export function getProperties<T, K extends keyof T>(
+    obj: T,
+    ...list: K[]
+): Pick<UnwrapComputedPropertyGetters<T>, K>;
 
 /**
  * Set a list of properties on an object. These properties are set inside
@@ -184,7 +202,10 @@ export function setProperties<T, K extends keyof T>(
     hash: Pick<UnwrapComputedPropertySetters<T>, K>,
 ): Pick<UnwrapComputedPropertyGetters<T>, K>;
 // TODO: in TS2.9 - Pick<UnwrapComputedPropertySetters<T> | T, K>
-export function setProperties<T, K extends keyof T>(obj: T, hash: Pick<T, K>): Pick<T, K>;
+export function setProperties<T, K extends keyof T>(
+    obj: T,
+    hash: Pick<T, K>,
+): Pick<T, K>;
 
 /**
  * Error-tolerant form of `Ember.set`. Will not blow up if any part of the

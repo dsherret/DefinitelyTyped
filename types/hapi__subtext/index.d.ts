@@ -45,4 +45,8 @@ export interface Result {
     mime: string;
 }
 
-export function parse(req: IncomingMessage, tap: null | NodeJS.WritableStream, options: Options): Promise<Result>;
+export function parse(
+    req: IncomingMessage,
+    tap: null | NodeJS.WritableStream,
+    options: Options,
+): Promise<Result>;

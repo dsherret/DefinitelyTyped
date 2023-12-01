@@ -30,26 +30,40 @@ const apiClientWithOutConstructorParams = () => {
 
 const getEnvelope = async (
     envelopeId: string,
-    options: { advancedUpdate?: string | undefined; include?: string | undefined },
+    options: {
+        advancedUpdate?: string | undefined;
+        include?: string | undefined;
+    },
 ) => {
     const params = await getDsRequestParams();
     const client = await getClient(params.token);
     const envelopesApi = new docusign.EnvelopesApi(client);
 
-    const results = await envelopesApi.getEnvelope(params.accountId, envelopeId, options);
+    const results = await envelopesApi.getEnvelope(
+        params.accountId,
+        envelopeId,
+        options,
+    );
     return results;
 };
 
 const getEnvelopeWithStoredConfiguredClient = async (
     envelopeId: string,
-    options: { advancedUpdate?: string | undefined; include?: string | undefined },
+    options: {
+        advancedUpdate?: string | undefined;
+        include?: string | undefined;
+    },
 ) => {
     const params = await getDsRequestParams();
     const client = await getClient(params.token);
     docusign.Configuration.default.setDefaultApiClient(client);
     const envelopesApi = new docusign.EnvelopesApi();
 
-    const results = await envelopesApi.getEnvelope(params.accountId, envelopeId, options);
+    const results = await envelopesApi.getEnvelope(
+        params.accountId,
+        envelopeId,
+        options,
+    );
     return results;
 };
 
@@ -79,7 +93,13 @@ const getAccessToken = async (): Promise<AccessToken> => {
     const integratorKey = "integrator key";
     const apiUserGuid = "api user id";
     const client = apiClient();
-    const results = await client.requestJWTUserToken(integratorKey, apiUserGuid, scopes, privateKey, 3600);
+    const results = await client.requestJWTUserToken(
+        integratorKey,
+        apiUserGuid,
+        scopes,
+        privateKey,
+        3600,
+    );
 
     return {
         jwtToken: results.body.access_token,
@@ -92,14 +112,25 @@ const getUserInfo = async (token: string) => {
     const client = apiClient();
     client.setOAuthBasePath("set oauth base path");
     const results = await client.getUserInfo(token);
-    return results.accounts.find((account: { isDefault: string }) => account.isDefault === "true");
+    return results.accounts.find(
+        (account: { isDefault: string }) => account.isDefault === "true",
+    );
 };
 
-const getDocument = async (envelopeId: string, documentId: string, options: docusign.DocumentOptions) => {
+const getDocument = async (
+    envelopeId: string,
+    documentId: string,
+    options: docusign.DocumentOptions,
+) => {
     const params = await getDsRequestParams();
     const client = apiClient();
     const envelopesApi = new docusign.EnvelopesApi(client);
-    const results = await envelopesApi.getDocument(params.accountId, envelopeId, documentId, options);
+    const results = await envelopesApi.getDocument(
+        params.accountId,
+        envelopeId,
+        documentId,
+        options,
+    );
     return results;
 };
 
@@ -115,10 +146,12 @@ const callback = (error: any, data: any, response: any) => {
     if (error !== null) {
         docusignHeaderData = {
             hourly_rate_limit: error.response?.header["x-ratelimit-limit"],
-            hourly_rate_limit_remaining: error.response?.header["x-ratelimit-remaining"],
+            hourly_rate_limit_remaining:
+                error.response?.header["x-ratelimit-remaining"],
             date: error.response?.header.date,
             burst_limit: error.response?.header["x-burstlimit-limit"],
-            burst_limit_remaining: error.response?.header["x-burstlimit-remaining"],
+            burst_limit_remaining:
+                error.response?.header["x-burstlimit-remaining"],
         };
         console.log(docusignHeaderData);
         rejects(error);
@@ -126,7 +159,8 @@ const callback = (error: any, data: any, response: any) => {
         docusignHeaderData = {
             docusign_esign_url: response.request.url,
             hourly_rate_limit: response.header["x-ratelimit-limit"],
-            hourly_rate_limit_remaining: response.header["x-ratelimit-remaining"],
+            hourly_rate_limit_remaining:
+                response.header["x-ratelimit-remaining"],
             date: response.header.date,
             burst_limit: response.header["x-burstlimit-limit"],
             burst_limit_remaining: response.header["x-burstlimit-remaining"],
@@ -136,10 +170,20 @@ const callback = (error: any, data: any, response: any) => {
     }
 };
 
-const getDocumentWithCallback = async (envelopeId: string, documentId: string, options: docusign.DocumentOptions) => {
+const getDocumentWithCallback = async (
+    envelopeId: string,
+    documentId: string,
+    options: docusign.DocumentOptions,
+) => {
     const params = await getDsRequestParams();
     const client = apiClient();
     const envelopesApi = new docusign.EnvelopesApi(client);
-    const results = await envelopesApi.getDocument(params.accountId, envelopeId, documentId, options, callback);
+    const results = await envelopesApi.getDocument(
+        params.accountId,
+        envelopeId,
+        documentId,
+        options,
+        callback,
+    );
     return results;
 };

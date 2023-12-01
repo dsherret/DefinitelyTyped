@@ -21,9 +21,13 @@ interface Callback {
      * @param lines the array of all lines
      * @param idx the index of the current line
      */
-    (len: number, longest: number, line: string, lines: string[], idx: number):
-        | number
-        | TransformResult;
+    (
+        len: number,
+        longest: number,
+        line: string,
+        lines: string[],
+        idx: number,
+    ): number | TransformResult;
 }
 
 declare function align_text(text: string, fn?: number | Callback): string;

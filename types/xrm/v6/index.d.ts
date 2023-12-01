@@ -154,7 +154,10 @@ declare namespace Xrm {
              * @param   {SuccessCallbackDelegate}   successCallback   The success callback.
              * @param   {ErrorCallbackDelegate}     errorCallback     The error callback.
              */
-            then(successCallback: SuccessCallbackDelegate, errorCallback: ErrorCallbackDelegate): void;
+            then(
+                successCallback: SuccessCallbackDelegate,
+                errorCallback: ErrorCallbackDelegate,
+            ): void;
         }
     }
 
@@ -1512,7 +1515,11 @@ declare namespace Xrm {
              *
              * @return  true if it succeeds, false if it fails.
              */
-            setFormNotification(message: string, level: "ERROR", uniqueId: string): boolean;
+            setFormNotification(
+                message: string,
+                level: "ERROR",
+                uniqueId: string,
+            ): boolean;
 
             /**
              * Sets a form-level notification.
@@ -1523,7 +1530,11 @@ declare namespace Xrm {
              *
              * @return  true if it succeeds, false if it fails.
              */
-            setFormNotification(message: string, level: "WARNING", uniqueId: string): boolean;
+            setFormNotification(
+                message: string,
+                level: "WARNING",
+                uniqueId: string,
+            ): boolean;
 
             /**
              * Sets a form-level notification.
@@ -1534,7 +1545,11 @@ declare namespace Xrm {
              *
              * @return  true if it succeeds, false if it fails.
              */
-            setFormNotification(message: string, level: "INFO", uniqueId: string): boolean;
+            setFormNotification(
+                message: string,
+                level: "INFO",
+                uniqueId: string,
+            ): boolean;
 
             /**
              * Sets a form-level notification.
@@ -1545,7 +1560,11 @@ declare namespace Xrm {
              *
              * @return  true if it succeeds, otherwise false.
              */
-            setFormNotification(message: string, level: string, uniqueId: string): boolean;
+            setFormNotification(
+                message: string,
+                level: string,
+                uniqueId: string,
+            ): boolean;
         }
 
         /**
@@ -1643,7 +1662,9 @@ declare namespace Xrm {
          *
          * @return  The attribute.
          */
-        export function getAttribute<T extends Attribute>(attributeName: string): T;
+        export function getAttribute<T extends Attribute>(
+            attributeName: string,
+        ): T;
 
         /**
          * Gets an attribute matching attributeName.
@@ -1670,7 +1691,9 @@ declare namespace Xrm {
          *
          * @return  An array of attribute.
          */
-        export function getAttribute(delegateFunction: Collection.MatchingDelegate<Attribute>): Attribute[];
+        export function getAttribute(
+            delegateFunction: Collection.MatchingDelegate<Attribute>,
+        ): Attribute[];
 
         /**
          * Gets all controls.
@@ -1714,7 +1737,9 @@ declare namespace Xrm {
          *
          * @return  An array of control.
          */
-        export function getControl(delegateFunction: Collection.MatchingDelegate<Control>): Control[];
+        export function getControl(
+            delegateFunction: Collection.MatchingDelegate<Control>,
+        ): Control[];
     }
 
     /**
@@ -1920,7 +1945,10 @@ declare namespace Xrm {
          * @param   {string}        message         The message.
          * @param   {function()}    onCloseCallback The "OK" callback.
          */
-        export function alertDialog(message: string, onCloseCallback: () => void): void;
+        export function alertDialog(
+            message: string,
+            onCloseCallback: () => void,
+        ): void;
 
         /**
          * Displays a confirmation dialog, with "OK" and "Cancel" buttons.
@@ -1929,7 +1957,11 @@ declare namespace Xrm {
          * @param   {function()}    yesCloseCallback    The "OK" callback.
          * @param   {function()}    noCloseCallback     The "Cancel" callback.
          */
-        export function confirmDialog(message: string, yesCloseCallback: () => void, noCloseCallback: () => void): void;
+        export function confirmDialog(
+            message: string,
+            yesCloseCallback: () => void,
+            noCloseCallback: () => void,
+        ): void;
 
         /**
          * Query if 'entityType' is an Activity entity.
@@ -1947,7 +1979,11 @@ declare namespace Xrm {
          * @param   {string}    id                  (Optional) The unique identifier for the record.
          * @param   {FormParameters}    parameters  (Optional) Options for controlling the operation.
          */
-        export function openEntityForm(name: string, id?: string, parameters?: FormOpenParameters): void;
+        export function openEntityForm(
+            name: string,
+            id?: string,
+            parameters?: FormOpenParameters,
+        ): void;
 
         /**
          * Opens an HTML Web Resource in a new browser window.

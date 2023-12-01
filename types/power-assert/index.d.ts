@@ -26,27 +26,64 @@ declare namespace assert {
         });
     }
 
-    function fail(actual?: unknown, expected?: unknown, message?: string, operator?: string): never;
+    function fail(
+        actual?: unknown,
+        expected?: unknown,
+        message?: string,
+        operator?: string,
+    ): never;
     function ok(value: unknown, message?: string): void;
     function equal(actual: unknown, expected: unknown, message?: string): void;
-    function notEqual(actual: unknown, expected: unknown, message?: string): void;
-    function deepEqual(actual: unknown, expected: unknown, message?: string): void;
-    function notDeepEqual(actual: unknown, expected: unknown, message?: string): void;
-    function strictEqual(actual: unknown, expected: unknown, message?: string): void;
-    function notStrictEqual(actual: unknown, expected: unknown, message?: string): void;
-    function deepStrictEqual(actual: unknown, expected: unknown, message?: string): void;
-    function notDeepStrictEqual(actual: unknown, expected: unknown, message?: string): void;
+    function notEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function deepEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function notDeepEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function strictEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function notStrictEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function deepStrictEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
+    function notDeepStrictEqual(
+        actual: unknown,
+        expected: unknown,
+        message?: string,
+    ): void;
     const throws: {
         (block: () => unknown, message?: string): void;
         (
             block: () => unknown,
-            error: (new() => object) | RegExp | ((err: unknown) => boolean),
+            error: (new () => object) | RegExp | ((err: unknown) => boolean),
             message?: string,
         ): void;
     };
     const doesNotThrow: {
         (block: () => unknown, message?: string): void;
-        (block: () => unknown, error: (new() => object) | RegExp | ((err: any) => boolean), message?: string): void;
+        (
+            block: () => unknown,
+            error: (new () => object) | RegExp | ((err: any) => boolean),
+            message?: string,
+        ): void;
     };
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     function ifError(value: unknown): void | undefined;

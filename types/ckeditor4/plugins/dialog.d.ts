@@ -1,9 +1,12 @@
 declare namespace CKEDITOR {
     interface CKEditorStatic {
         readonly dialog?: {
-            new(editor: editor, dialogName: string): dialog;
+            new (editor: editor, dialogName: string): dialog;
 
-            add(name: string, dialogDefinition: string | dialog.definitionFn): void;
+            add(
+                name: string,
+                dialogDefinition: string | dialog.definitionFn,
+            ): void;
 
             addIframe(
                 name: string,
@@ -21,30 +24,84 @@ declare namespace CKEDITOR {
             exists(name: string | number): void; // NOTE: documentation says object, but it's an array accessor, so really a string or number will work
             getCurrent(): dialog;
 
-            isTabEnabled(editor: editor, dialogName: string, tabName: string): boolean;
+            isTabEnabled(
+                editor: editor,
+                dialogName: string,
+                tabName: string,
+            ): boolean;
 
             okButton(): void;
         };
-        readonly dialogCommand?: { new(dialogName: string, ext?: { tabId?: string | undefined }): dialogCommand };
+        readonly dialogCommand?: {
+            new (
+                dialogName: string,
+                ext?: { tabId?: string | undefined },
+            ): dialogCommand;
+        };
     }
 
     interface CKEditorUIStatic {
         dialog?: {
-            button: ui.dialog.uiElementConstructor<ui.dialog.button, dialog.definition.button>;
-            checkbox: ui.dialog.uiElementConstructor<ui.dialog.checkbox, dialog.definition.checkbox>;
-            fieldset: ui.dialog.uiParentConstructor<ui.dialog.fieldset, dialog.definition.fieldSet>;
-            file: ui.dialog.uiElementConstructor<ui.dialog.file, dialog.definition.file>;
-            fileButton: ui.dialog.uiElementConstructor<ui.dialog.fileButton, dialog.definition.fileButton>;
-            hbox: ui.dialog.uiParentConstructor<ui.dialog.hbox, dialog.definition.hbox>;
-            html: ui.dialog.uiElementConstructor<ui.dialog.html, dialog.definition.html>;
-            iframeElement: ui.dialog.uiElementConstructor<ui.dialog.iframeElement, dialog.definition.uiElement>;
-            labeledElement: ui.dialog.uiElementConstructor<ui.dialog.labeledElement, dialog.definition.file>;
-            radio: ui.dialog.uiElementConstructor<ui.dialog.radio, dialog.definition.radio>;
-            select: ui.dialog.uiElementConstructor<ui.dialog.select, dialog.definition.select>;
-            textarea: ui.dialog.uiElementConstructor<ui.dialog.textarea, dialog.definition.textarea>;
-            textInput: ui.dialog.uiElementConstructor<ui.dialog.textInput, dialog.definition.textInput>;
-            uiElement: ui.dialog.uiElementConstructor<ui.dialog.uiElement, dialog.definition.uiElement>;
-            vbox: ui.dialog.uiParentConstructor<ui.dialog.vbox, dialog.definition.vbox>;
+            button: ui.dialog.uiElementConstructor<
+                ui.dialog.button,
+                dialog.definition.button
+            >;
+            checkbox: ui.dialog.uiElementConstructor<
+                ui.dialog.checkbox,
+                dialog.definition.checkbox
+            >;
+            fieldset: ui.dialog.uiParentConstructor<
+                ui.dialog.fieldset,
+                dialog.definition.fieldSet
+            >;
+            file: ui.dialog.uiElementConstructor<
+                ui.dialog.file,
+                dialog.definition.file
+            >;
+            fileButton: ui.dialog.uiElementConstructor<
+                ui.dialog.fileButton,
+                dialog.definition.fileButton
+            >;
+            hbox: ui.dialog.uiParentConstructor<
+                ui.dialog.hbox,
+                dialog.definition.hbox
+            >;
+            html: ui.dialog.uiElementConstructor<
+                ui.dialog.html,
+                dialog.definition.html
+            >;
+            iframeElement: ui.dialog.uiElementConstructor<
+                ui.dialog.iframeElement,
+                dialog.definition.uiElement
+            >;
+            labeledElement: ui.dialog.uiElementConstructor<
+                ui.dialog.labeledElement,
+                dialog.definition.file
+            >;
+            radio: ui.dialog.uiElementConstructor<
+                ui.dialog.radio,
+                dialog.definition.radio
+            >;
+            select: ui.dialog.uiElementConstructor<
+                ui.dialog.select,
+                dialog.definition.select
+            >;
+            textarea: ui.dialog.uiElementConstructor<
+                ui.dialog.textarea,
+                dialog.definition.textarea
+            >;
+            textInput: ui.dialog.uiElementConstructor<
+                ui.dialog.textInput,
+                dialog.definition.textInput
+            >;
+            uiElement: ui.dialog.uiElementConstructor<
+                ui.dialog.uiElement,
+                dialog.definition.uiElement
+            >;
+            vbox: ui.dialog.uiParentConstructor<
+                ui.dialog.vbox,
+                dialog.definition.vbox
+            >;
         };
     }
 
@@ -68,7 +125,10 @@ declare namespace CKEDITOR {
 
         getButton(id: string): ui.dialog.button;
 
-        getContentElement(pageId: string, elementId: string): ui.dialog.uiElement;
+        getContentElement(
+            pageId: string,
+            elementId: string,
+        ): ui.dialog.uiElement;
 
         getElement(): dom.element;
 
@@ -112,7 +172,12 @@ declare namespace CKEDITOR {
 
         updateStyle(): void;
 
-        add(name: string, dialogDefinition: string | ((editor: editor) => dialog.DialogDefinition)): void;
+        add(
+            name: string,
+            dialogDefinition:
+                | string
+                | ((editor: editor) => dialog.DialogDefinition),
+        ): void;
     }
 
     /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialogCommand.html */
@@ -215,7 +280,11 @@ declare namespace CKEDITOR {
                 onHide?: ((elem: ui.dialog.uiElement) => void) | undefined;
                 onLoad?: ((elem: ui.dialog.uiElement) => void) | undefined;
                 onShow?: ((elem: ui.dialog.uiElement) => void) | undefined;
-                requiredContent?: string | { [key: string]: unknown } | style | undefined;
+                requiredContent?:
+                    | string
+                    | { [key: string]: unknown }
+                    | style
+                    | undefined;
                 setup?: ((widget: plugins.widget) => void) | undefined;
                 style?: string | undefined;
                 title?: string | undefined;
@@ -249,25 +318,37 @@ declare namespace CKEDITOR {
             width?: number | undefined;
 
             getMode?(editor: editor): number;
-            getModel?(editor: editor): dom.element | plugins.widget | unknown | null;
+            getModel?(
+                editor: editor,
+            ): dom.element | plugins.widget | unknown | null;
         }
     }
 
     namespace ui {
         namespace dialog {
-            interface uiElementConstructor<T extends uiElement, U extends CKEDITOR.dialog.definition.uiElement> {
-                new(
+            interface uiElementConstructor<
+                T extends uiElement,
+                U extends CKEDITOR.dialog.definition.uiElement,
+            > {
+                new (
                     dialog: dialog,
                     htmlList: unknown,
                     elementDefinition: U,
                     nodeNameArg?: (() => string) | string,
-                    stylesArg?: (() => { [key: string]: unknown }) | { [key: string]: unknown },
-                    attributesArg?: (() => { [key: string]: unknown }) | { [key: string]: unknown },
+                    stylesArg?:
+                        | (() => { [key: string]: unknown })
+                        | { [key: string]: unknown },
+                    attributesArg?:
+                        | (() => { [key: string]: unknown })
+                        | { [key: string]: unknown },
                     contentsArg?: () => { [key: string]: unknown } | string,
                 ): T;
             }
-            interface uiParentConstructor<T extends uiElement, U extends CKEDITOR.dialog.definition.uiElement> {
-                new(
+            interface uiParentConstructor<
+                T extends uiElement,
+                U extends CKEDITOR.dialog.definition.uiElement,
+            > {
+                new (
                     dialog: dialog,
                     childObjList: uiElement[],
                     childHtmlList: unknown[],
@@ -391,11 +472,16 @@ declare namespace CKEDITOR {
                 isVisible(): boolean;
 
                 // tslint:disable-next-line:no-unnecessary-qualifier
-                registerEvents(definition: CKEDITOR.dialog.definition.uiElement): uiElement;
+                registerEvents(
+                    definition: CKEDITOR.dialog.definition.uiElement,
+                ): uiElement;
 
                 selectParentTab(): uiElement;
 
-                setValue(value: unknown, noChangeEvent: boolean): uiElement | undefined;
+                setValue(
+                    value: unknown,
+                    noChangeEvent: boolean,
+                ): uiElement | undefined;
             }
 
             // eslint-disable-next-line @typescript-eslint/no-empty-interface

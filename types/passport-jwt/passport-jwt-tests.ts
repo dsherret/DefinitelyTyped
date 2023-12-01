@@ -3,7 +3,11 @@
 
 import { Request } from "express";
 import * as passport from "passport";
-import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from "passport-jwt";
+import {
+    ExtractJwt,
+    Strategy as JwtStrategy,
+    StrategyOptions,
+} from "passport-jwt";
 
 let opts: StrategyOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeader(),
@@ -14,8 +18,8 @@ let opts: StrategyOptions = {
 
 passport.use(
     JwtStrategy.name,
-    new JwtStrategy(opts, function(jwt_payload, done) {
-        findUser({ id: jwt_payload.sub }, function(err, user) {
+    new JwtStrategy(opts, function (jwt_payload, done) {
+        findUser({ id: jwt_payload.sub }, function (err, user) {
             if (err) {
                 return done(err, false);
             }
@@ -43,7 +47,8 @@ opts.jwtFromRequest = (req: Request) => {
     return req.query.token as string;
 };
 opts.secretOrKey = new Buffer("secret");
-opts.secretOrKeyProvider = (request, rawJwtToken, done) => done(null, new Buffer("secret"));
+opts.secretOrKeyProvider = (request, rawJwtToken, done) =>
+    done(null, new Buffer("secret"));
 opts.audience = ["example1.org", "example2.org"];
 
 class UserModel {}
@@ -54,4 +59,7 @@ declare global {
         interface User extends UserModel {}
     }
 }
-declare function findUser(condition: { id: string }, callback: (error: any, user: UserModel) => void): void;
+declare function findUser(
+    condition: { id: string },
+    callback: (error: any, user: UserModel) => void,
+): void;

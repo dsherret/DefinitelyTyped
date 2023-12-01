@@ -81,11 +81,14 @@ genericPolicy2.createScript("", true, {});
 // $ExpectType TrustedScriptURL
 genericPolicy2.createScriptURL("", true, {});
 
-const castedAsGenericPolicy: TrustedTypePolicy = tt.createPolicy("castedAsGeneric", {
-    createHTML: (val: string, option1: number, option2: boolean) => val,
-    createScriptURL: (val: string) => val,
-    createScript: (val: string) => val,
-});
+const castedAsGenericPolicy: TrustedTypePolicy = tt.createPolicy(
+    "castedAsGeneric",
+    {
+        createHTML: (val: string, option1: number, option2: boolean) => val,
+        createScriptURL: (val: string) => val,
+        createScript: (val: string) => val,
+    },
+);
 
 // $ExpectType TrustedHTML
 castedAsGenericPolicy.createHTML("", true, {});

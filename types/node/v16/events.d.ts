@@ -44,7 +44,10 @@ declare module "events" {
         captureRejections?: boolean | undefined;
     }
     interface NodeEventTarget {
-        once(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        once(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
     }
     interface DOMEventTarget {
         addEventListener(
@@ -75,7 +78,11 @@ declare module "events" {
     class EventEmitter {
         constructor(options?: EventEmitterOptions);
 
-        [EventEmitter.captureRejectionSymbol]?(error: Error, event: string, ...args: any[]): void;
+        [EventEmitter.captureRejectionSymbol]?(
+            error: Error,
+            event: string,
+            ...args: any[]
+        ): void;
 
         /**
          * Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given
@@ -164,7 +171,11 @@ declare module "events" {
             eventName: string | symbol,
             options?: StaticEventEmitterOptions,
         ): Promise<any[]>;
-        static once(emitter: DOMEventTarget, eventName: string, options?: StaticEventEmitterOptions): Promise<any[]>;
+        static once(
+            emitter: DOMEventTarget,
+            eventName: string,
+            options?: StaticEventEmitterOptions,
+        ): Promise<any[]>;
         /**
          * ```js
          * const { on, EventEmitter } = require('events');
@@ -244,7 +255,10 @@ declare module "events" {
          * @param emitter The emitter to query
          * @param eventName The event name
          */
-        static listenerCount(emitter: NodeJS.EventEmitter, eventName: string | symbol): number;
+        static listenerCount(
+            emitter: NodeJS.EventEmitter,
+            eventName: string | symbol,
+        ): number;
         /**
          * Returns a copy of the array of listeners for the event named `eventName`.
          *
@@ -272,7 +286,10 @@ declare module "events" {
          * ```
          * @since v15.2.0
          */
-        static getEventListeners(emitter: DOMEventTarget | NodeJS.EventEmitter, name: string | symbol): Function[];
+        static getEventListeners(
+            emitter: DOMEventTarget | NodeJS.EventEmitter,
+            name: string | symbol,
+        ): Function[];
         /**
          * ```js
          * const {
@@ -290,7 +307,10 @@ declare module "events" {
          * @param eventsTargets Zero or more {EventTarget} or {EventEmitter} instances. If none are specified, `n` is set as the default max for all newly created {EventTarget} and {EventEmitter}
          * objects.
          */
-        static setMaxListeners(n?: number, ...eventTargets: Array<DOMEventTarget | NodeJS.EventEmitter>): void;
+        static setMaxListeners(
+            n?: number,
+            ...eventTargets: Array<DOMEventTarget | NodeJS.EventEmitter>
+        ): void;
         /**
          * This symbol shall be used to install a listener for only monitoring `'error'`
          * events. Listeners installed using this symbol are called before the regular
@@ -320,11 +340,14 @@ declare module "events" {
             signal?: AbortSignal | undefined;
         }
 
-        export interface EventEmitterReferencingAsyncResource extends AsyncResource {
+        export interface EventEmitterReferencingAsyncResource
+            extends AsyncResource {
             readonly eventEmitter: EventEmitterAsyncResource;
         }
 
-        export interface EventEmitterAsyncResourceOptions extends AsyncResourceOptions, EventEmitterOptions {
+        export interface EventEmitterAsyncResourceOptions
+            extends AsyncResourceOptions,
+                EventEmitterOptions {
             /**
              * The type of async event, this is required when instantiating `EventEmitterAsyncResource`
              * directly rather than as a child class.
@@ -366,12 +389,19 @@ declare module "events" {
     global {
         namespace NodeJS {
             interface EventEmitter {
-                [EventEmitter.captureRejectionSymbol]?(error: Error, event: string, ...args: any[]): void;
+                [EventEmitter.captureRejectionSymbol]?(
+                    error: Error,
+                    event: string,
+                    ...args: any[]
+                ): void;
                 /**
                  * Alias for `emitter.on(eventName, listener)`.
                  * @since v0.1.26
                  */
-                addListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                addListener(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Adds the `listener` function to the end of the listeners array for the
                  * event named `eventName`. No checks are made to see if the `listener` has
@@ -402,7 +432,10 @@ declare module "events" {
                  * @param eventName The name of the event.
                  * @param listener The callback function
                  */
-                on(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                on(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Adds a **one-time**`listener` function for the event named `eventName`. The
                  * next time `eventName` is triggered, this listener is removed and then invoked.
@@ -431,7 +464,10 @@ declare module "events" {
                  * @param eventName The name of the event.
                  * @param listener The callback function
                  */
-                once(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                once(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Removes the specified `listener` from the listener array for the event named`eventName`.
                  *
@@ -511,12 +547,18 @@ declare module "events" {
                  * Returns a reference to the `EventEmitter`, so that calls can be chained.
                  * @since v0.1.26
                  */
-                removeListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                removeListener(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Alias for `emitter.removeListener()`.
                  * @since v10.0.0
                  */
-                off(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                off(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Removes all listeners, or those of the specified `eventName`.
                  *
@@ -651,7 +693,10 @@ declare module "events" {
                  * @param eventName The name of the event.
                  * @param listener The callback function
                  */
-                prependListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                prependListener(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Adds a **one-time**`listener` function for the event named `eventName` to the_beginning_ of the listeners array. The next time `eventName` is triggered, this
                  * listener is removed, and then invoked.
@@ -667,7 +712,10 @@ declare module "events" {
                  * @param eventName The name of the event.
                  * @param listener The callback function
                  */
-                prependOnceListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+                prependOnceListener(
+                    eventName: string | symbol,
+                    listener: (...args: any[]) => void,
+                ): this;
                 /**
                  * Returns an array listing the events for which the emitter has registered
                  * listeners. The values in the array are strings or `Symbol`s.

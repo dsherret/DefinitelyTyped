@@ -17,13 +17,18 @@ declare namespace editorClient {
      * Property definition
      * Read more: https://nodered.org/docs/creating-nodes/properties#property-definitions
      */
-    interface NodePropertyDef<TVal, TInstProps extends NodeProperties = NodeProperties> {
+    interface NodePropertyDef<
+        TVal,
+        TInstProps extends NodeProperties = NodeProperties,
+    > {
         /** The default value the property takes */
         value: TVal | "";
         /** Whether the property is required. If set to true, the property will be invalid if its value is null or an empty string. */
         required?: boolean | undefined;
         /** A function that can be used to validate the value of the property. */
-        validate?: ((this: NodeInstance<TInstProps>, val: string) => boolean) | undefined;
+        validate?:
+            | ((this: NodeInstance<TInstProps>, val: string) => boolean)
+            | undefined;
         /** If this property is a pointer to a configuration node, this identifies the type of the node. */
         type?: string | undefined;
     }
@@ -32,8 +37,13 @@ declare namespace editorClient {
      * Properties definitions (`defaults` object)
      * Read more: https://nodered.org/docs/creating-nodes/properties
      */
-    type NodePropertiesDef<TProps extends NodeProperties, TInstProps extends TProps = TProps> = {
-        [K in keyof TProps]: K extends NodeReservedProperties ? never : NodePropertyDef<TProps[K], TInstProps>;
+    type NodePropertiesDef<
+        TProps extends NodeProperties,
+        TInstProps extends TProps = TProps,
+    > = {
+        [K in keyof TProps]: K extends NodeReservedProperties
+            ? never
+            : NodePropertyDef<TProps[K], TInstProps>;
     };
 
     /**
@@ -87,9 +97,11 @@ declare namespace editorClient {
         | "y"
         | "z";
 
-    type NodeInstance<TProps extends NodeProperties = NodeProperties> =
-        & Omit<TProps, NodeReservedProperties>
-        & Readonly<{
+    type NodeInstance<TProps extends NodeProperties = NodeProperties> = Omit<
+        TProps,
+        NodeReservedProperties
+    > &
+        Readonly<{
             _: I18nTFunction;
             id: string;
             type: string;
@@ -114,7 +126,11 @@ declare namespace editorClient {
      * Node Definition
      * Read more: https://nodered.org/docs/creating-nodes/node-html#node-definition
      */
-    interface NodeDef<TProps extends NodeProperties, TCreds = undefined, TInstProps extends TProps = TProps> {
+    interface NodeDef<
+        TProps extends NodeProperties,
+        TCreds = undefined,
+        TInstProps extends TProps = TProps,
+    > {
         /** The palette category the node appears in. */
         category: "config" | string;
         /**
@@ -144,12 +160,18 @@ declare namespace editorClient {
          * The label to use in the palette.
          * Read more: https://nodered.org/docs/creating-nodes/appearance#palette-label
          */
-        paletteLabel?: string | ((this: NodeInstance<TInstProps>) => string) | undefined;
+        paletteLabel?:
+            | string
+            | ((this: NodeInstance<TInstProps>) => string)
+            | undefined;
         /**
          * The label to use in the workspace.
          * Read more: https://nodered.org/docs/creating-nodes/appearance#node-label
          */
-        label?: string | ((this: NodeInstance<TInstProps>) => string) | undefined;
+        label?:
+            | string
+            | ((this: NodeInstance<TInstProps>) => string)
+            | undefined;
         /**
          * The style to apply to the label.
          * Read more: https://nodered.org/docs/creating-nodes/appearance#label-style
@@ -158,13 +180,18 @@ declare namespace editorClient {
             | "node_label"
             | "node_label_italic"
             | string
-            | ((this: NodeInstance<TInstProps>) => "node_label" | "node_label_italic" | string)
+            | ((
+                  this: NodeInstance<TInstProps>,
+              ) => "node_label" | "node_label_italic" | string)
             | undefined;
         /**
          * Optional label to add on hover to the input port of a node.
          * Read more: https://nodered.org/docs/creating-nodes/appearance#port-labels
          */
-        inputLabels?: string | ((this: NodeInstance<TInstProps>) => string) | undefined;
+        inputLabels?:
+            | string
+            | ((this: NodeInstance<TInstProps>) => string)
+            | undefined;
         /**
          * Optional labels to add on hover to the output ports of a node.
          * Read more: https://nodered.org/docs/creating-nodes/appearance#port-labels
@@ -172,7 +199,10 @@ declare namespace editorClient {
         outputLabels?:
             | string
             | string[]
-            | ((this: NodeInstance<TInstProps>, idx: number) => string | undefined)
+            | ((
+                  this: NodeInstance<TInstProps>,
+                  idx: number,
+              ) => string | undefined)
             | undefined;
         /**
          * The icon to use.
@@ -190,13 +220,17 @@ declare namespace editorClient {
          */
         button?:
             | {
-                /** Called when the button is clicked */
-                onclick: (this: NodeInstance<TInstProps>) => void;
-                /** Function to dynamically enable and disable the button based on the node’s current configuration. */
-                enabled?: ((this: NodeInstance<TInstProps>) => boolean) | undefined;
-                /** Function to determine whether the button should be shown at all. */
-                visible?: ((this: NodeInstance<TInstProps>) => boolean) | undefined;
-            }
+                  /** Called when the button is clicked */
+                  onclick: (this: NodeInstance<TInstProps>) => void;
+                  /** Function to dynamically enable and disable the button based on the node’s current configuration. */
+                  enabled?:
+                      | ((this: NodeInstance<TInstProps>) => boolean)
+                      | undefined;
+                  /** Function to determine whether the button should be shown at all. */
+                  visible?:
+                      | ((this: NodeInstance<TInstProps>) => boolean)
+                      | undefined;
+              }
             | undefined;
         /**
          * Called when the edit dialog is being built.
@@ -222,7 +256,12 @@ declare namespace editorClient {
          * Called when the edit dialog is resized.
          * Read more: https://nodered.org/docs/creating-nodes/properties#custom-edit-behaviour
          */
-        oneditresize?: ((this: NodeInstance<TInstProps>, size: { width: number; height: number }) => void) | undefined;
+        oneditresize?:
+            | ((
+                  this: NodeInstance<TInstProps>,
+                  size: { width: number; height: number },
+              ) => void)
+            | undefined;
         /**
          * Called when the node type is added to the palette.
          * Read more: https://nodered.org/docs/creating-nodes/properties#custom-edit-behaviour
@@ -232,7 +271,9 @@ declare namespace editorClient {
          * Called when the node type is removed from the palette.
          * Read more: https://nodered.org/docs/creating-nodes/properties#custom-edit-behaviour
          */
-        onpaletteremove?: ((this: NodeInstance<TInstProps>) => void) | undefined;
+        onpaletteremove?:
+            | ((this: NodeInstance<TInstProps>) => void)
+            | undefined;
         /**
          * Called when the node type is dragged into workspace.
          */
@@ -254,96 +295,94 @@ declare namespace editorClient {
         emit(evt: string, ...args: any[]): void;
     }
 
-    type HistoryEvent =
-        & {
-            dirty?: boolean | undefined;
-            callback?: ((ev: HistoryEvent) => void) | undefined;
-        }
-        & (
-            | {
-                t: "multi";
-                events: HistoryEvent[];
-            }
-            | {
-                t: "replace";
-                config: object;
-                changed: object;
-                rev: string;
-            }
-            | {
-                t: "add";
-                nodes?: object[] | undefined;
-                links?: object[] | undefined;
-                groups?: object[] | undefined;
-                workspaces?: object[] | undefined;
-                subflows?: object[] | undefined;
-                subflow?: object | undefined;
-                removedLinks?: object[] | undefined;
-            }
-            | {
-                t: "delete";
-                workspaces?: object[] | undefined;
-                subflows?: object[] | undefined;
-                subflowInputs?: object[] | undefined;
-                subflowOutputs?: object[] | undefined;
-                subflow?: object | undefined;
-                groups?: object[] | undefined;
-                nodes?: object[] | undefined;
-                links?: object[] | undefined;
-                createdLinks?: object[] | undefined;
-                changes?: object[] | undefined;
-            }
-            | {
-                t: "move";
-                nodes: object[];
-                links?: object[] | undefined;
-                removedLinks?: object[] | undefined;
-                addToGroup?: object | undefined;
-                removeFromGroup?: object | undefined;
-            }
-            | {
-                t: "edit";
-                node: object;
-                changes: object[];
-                links?: object[] | undefined;
-                createdLinks?: object[] | undefined;
-            }
-            | {
-                t: "createSubflow";
-                nodes?: object[] | undefined;
-                links?: object[] | undefined;
-                subflow: object;
-                removedLinks?: object[] | undefined;
-            }
-            | {
-                t: "deleteSubflow";
-                subflow?: object | undefined;
-                subflows?: object[] | undefined;
-                movedNodes?: object[] | undefined;
-                links?: object[] | undefined;
-                createdLinks?: object[] | undefined;
-            }
-            | {
-                t: "reorder";
-                order?: object | undefined;
-            }
-            | {
-                t: "createGroup";
-                groups?: object[] | undefined;
-            }
-            | {
-                t: "ungroup";
-                groups?: object[] | undefined;
-            }
-            | {
-                t: "addToGroup";
-                nodes?: object[] | undefined;
-            }
-            | {
-                t: "removeFromGroup";
-                nodes?: object[] | undefined;
-            }
-        );
+    type HistoryEvent = {
+        dirty?: boolean | undefined;
+        callback?: ((ev: HistoryEvent) => void) | undefined;
+    } & (
+        | {
+              t: "multi";
+              events: HistoryEvent[];
+          }
+        | {
+              t: "replace";
+              config: object;
+              changed: object;
+              rev: string;
+          }
+        | {
+              t: "add";
+              nodes?: object[] | undefined;
+              links?: object[] | undefined;
+              groups?: object[] | undefined;
+              workspaces?: object[] | undefined;
+              subflows?: object[] | undefined;
+              subflow?: object | undefined;
+              removedLinks?: object[] | undefined;
+          }
+        | {
+              t: "delete";
+              workspaces?: object[] | undefined;
+              subflows?: object[] | undefined;
+              subflowInputs?: object[] | undefined;
+              subflowOutputs?: object[] | undefined;
+              subflow?: object | undefined;
+              groups?: object[] | undefined;
+              nodes?: object[] | undefined;
+              links?: object[] | undefined;
+              createdLinks?: object[] | undefined;
+              changes?: object[] | undefined;
+          }
+        | {
+              t: "move";
+              nodes: object[];
+              links?: object[] | undefined;
+              removedLinks?: object[] | undefined;
+              addToGroup?: object | undefined;
+              removeFromGroup?: object | undefined;
+          }
+        | {
+              t: "edit";
+              node: object;
+              changes: object[];
+              links?: object[] | undefined;
+              createdLinks?: object[] | undefined;
+          }
+        | {
+              t: "createSubflow";
+              nodes?: object[] | undefined;
+              links?: object[] | undefined;
+              subflow: object;
+              removedLinks?: object[] | undefined;
+          }
+        | {
+              t: "deleteSubflow";
+              subflow?: object | undefined;
+              subflows?: object[] | undefined;
+              movedNodes?: object[] | undefined;
+              links?: object[] | undefined;
+              createdLinks?: object[] | undefined;
+          }
+        | {
+              t: "reorder";
+              order?: object | undefined;
+          }
+        | {
+              t: "createGroup";
+              groups?: object[] | undefined;
+          }
+        | {
+              t: "ungroup";
+              groups?: object[] | undefined;
+          }
+        | {
+              t: "addToGroup";
+              nodes?: object[] | undefined;
+          }
+        | {
+              t: "removeFromGroup";
+              nodes?: object[] | undefined;
+          }
+    );
     interface History {
         markAllDirty(): void;
         list(): HistoryEvent[];
@@ -388,7 +427,11 @@ declare namespace editorClient {
          * needed by the editor.
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        registerNodeType<TProps extends NodeProperties, TCreds = undefined, TInstProps extends TProps = TProps>(
+        registerNodeType<
+            TProps extends NodeProperties,
+            TCreds = undefined,
+            TInstProps extends TProps = TProps,
+        >(
             nt: string,
             def: NodeDef<TProps, TCreds, TInstProps>,
         ): void;
@@ -433,7 +476,11 @@ declare namespace editorClient {
         removeLink(l: object): void;
 
         addWorkspace(ws: object, targetIndex?: number): void;
-        removeWorkspace(id: string): { nodes: object[]; links: object[]; groups: object[] };
+        removeWorkspace(id: string): {
+            nodes: object[];
+            links: object[];
+            groups: object[];
+        };
         getWorkspaceOrder(): object[];
         setWorkspaceOrder(): void;
         workspace(): object;
@@ -517,7 +564,13 @@ declare namespace editorClient {
     interface User {
         init(): void;
         login(done: () => void): void;
-        login(opts: { cancelable?: boolean | undefined; updateMenu?: boolean | undefined }, done: () => void): void;
+        login(
+            opts: {
+                cancelable?: boolean | undefined;
+                updateMenu?: boolean | undefined;
+            },
+            done: () => void,
+        ): void;
         logout(): void;
         hasPermission(permission: string | object): boolean;
     }
@@ -621,7 +674,12 @@ declare namespace editorClient {
         remove(name: string): void;
         get(name: string): () => void;
         invoke(name: string, ...args: any): void;
-        list(): Array<{ id: string; scope?: string | undefined; key?: string | undefined; user?: boolean | undefined }>;
+        list(): Array<{
+            id: string;
+            scope?: string | undefined;
+            key?: string | undefined;
+            user?: boolean | undefined;
+        }>;
     }
 
     interface Clipboard {
@@ -665,7 +723,12 @@ declare namespace editorClient {
          * @param id - id of config node to edit. _ADD_ for a new one
          * @param prefix - the input prefix of the parent property
          */
-        editConfig(name: string, type: string, id: string, prefix: string): void;
+        editConfig(
+            name: string,
+            type: string,
+            id: string,
+            prefix: string,
+        ): void;
         editSubflow(subflow: object, defaultTab?: any): void;
         editGroup(group: object, defaultTab?: any): void;
         editJavaScript(options: JavaScriptTypeEditorShowOptions): void;
@@ -674,7 +737,13 @@ declare namespace editorClient {
         editMarkdown(options: MarkdownTypeEditorShowOptions): void;
         editText(options: TextTypeEditorShowOptions): void;
         editBuffer(options: BufferTypeEditorShowOptions): void;
-        buildEditForm(container: JQuery, formId: string, type: string, ns: string, node: unknown): JQuery;
+        buildEditForm(
+            container: JQuery,
+            formId: string,
+            type: string,
+            ns: string,
+            node: unknown,
+        ): JQuery;
         /**
          * Validate a node
          * @param node - the node being validated
@@ -688,7 +757,10 @@ declare namespace editorClient {
          * @param outputMap - (optional) a map of old->new port numbers if wires should be moved
          * @returns the links that were removed due to this update
          */
-        updateNodeProperties(node: object, outputMap?: Record<string, string>): object[];
+        updateNodeProperties(
+            node: object,
+            outputMap?: Record<string, string>,
+        ): object[];
 
         showIconPicker(
             container: JQuery,
@@ -710,7 +782,10 @@ declare namespace editorClient {
          * @param type - the type name
          * @param definition - the editor definition
          */
-        registerTypeEditor(type: string, definition: TypeEditorDefinition): void;
+        registerTypeEditor(
+            type: string,
+            definition: TypeEditorDefinition,
+        ): void;
 
         /**
          * Create a editor ui component
@@ -808,7 +883,11 @@ declare namespace editorClient {
         createGroup(nodes: object[]): object;
         ungroup(g: object): object[];
         addToGroup(group: object, nodes: object | object[]): void;
-        removeFromGroup(group: object, nodes: object | object[], reparent?: boolean): void;
+        removeFromGroup(
+            group: object,
+            nodes: object | object[],
+            reparent?: boolean,
+        ): void;
         getNodes(group: object, recursive: boolean): object[];
         contains(group: object, item: object): boolean;
         markDirty(group: object): void;
@@ -816,7 +895,12 @@ declare namespace editorClient {
 
     interface Keyboard {
         init(): void;
-        add(scope: string, key: string, modifiers: object, ondown: string | (() => void)): void;
+        add(
+            scope: string,
+            key: string,
+            modifiers: object,
+            ondown: string | (() => void),
+        ): void;
         remove(key: string, modifiers?: object): void;
         getShortcut(actionName: string): object;
         revertToDefault(actionName: string): void;
@@ -831,10 +915,10 @@ declare namespace editorClient {
             editor:
                 | AceAjax.Editor
                 | {
-                    // Orion Editor
-                    setText: () => void;
-                    getText: () => void;
-                };
+                      // Orion Editor
+                      setText: () => void;
+                      getText: () => void;
+                  };
             type: string;
             url: string;
             mode?: string | undefined;
@@ -852,7 +936,12 @@ declare namespace editorClient {
             focus(): void;
             data(content: object[], selectFirst?: boolean): void;
         };
-        loadLibraryFolder(library: string, type: string, root: string, done: (items: object[]) => void): void;
+        loadLibraryFolder(
+            library: string,
+            type: string,
+            root: string,
+            done: (items: object[]) => void,
+        ): void;
     }
 
     type NotificationType = "warning" | "compact" | "success" | "error";
@@ -870,20 +959,29 @@ declare namespace editorClient {
                 width?: number | undefined;
                 buttons?:
                     | Array<{
-                        id?: string | undefined;
-                        class?: string | undefined;
-                        text: string;
-                        click: (event: JQuery.Event) => void;
-                    }>
+                          id?: string | undefined;
+                          class?: string | undefined;
+                          text: string;
+                          click: (event: JQuery.Event) => void;
+                      }>
                     | undefined;
             },
         ): HTMLDivElement;
-        notify(msg: string | JQuery, type?: NotificationType, fixed?: boolean, timeout?: number): HTMLDivElement;
+        notify(
+            msg: string | JQuery,
+            type?: NotificationType,
+            fixed?: boolean,
+            timeout?: number,
+        ): HTMLDivElement;
     }
 
     interface PaletteEditor {
         init(): void;
-        install(entry: object, container: object, done: (ret: Error | object) => void): void;
+        install(
+            entry: object,
+            container: object,
+            done: (ret: Error | object) => void,
+        ): void;
     }
 
     interface Palette {
@@ -972,17 +1070,28 @@ declare namespace editorClient {
 
     interface StatusBar {
         init(): void;
-        add(options: { id: string; element: JQuery; align?: "left" | "right" | undefined }): void;
+        add(options: {
+            id: string;
+            element: JQuery;
+            align?: "left" | "right" | undefined;
+        }): void;
     }
 
     interface Subflow {
         init(): void;
         createSubflow(): void;
         convertToSubflow(): void;
-        removeSubflow(id: string): { nodes: object[]; links: object[]; subflows: object[] };
+        removeSubflow(id: string): {
+            nodes: object[];
+            links: object[];
+            subflows: object[];
+        };
         refresh(markChange?: boolean): { instances: object[] } | undefined;
         removeInput(): { subflowInputs: object[]; links: object[] };
-        removeOutput(removeSubflowOutputs?: object[]): { subflowOutputs: object[]; links: object[] };
+        removeOutput(removeSubflowOutputs?: object[]): {
+            subflowOutputs: object[];
+            links: object[];
+        };
         removeStatus(): { links: object[] };
 
         buildEditForm(type: string, node: object): void;
@@ -1046,8 +1155,16 @@ declare namespace editorClient {
     interface Utils {
         createObjectElement(obj: any, options?: object): JQuery;
         getMessageProperty(msg: object, expr: string | string[]): any;
-        setMessageProperty(msg: object, prop: string, value: any, createMissing?: boolean): null | undefined;
-        normalisePropertyExpression(str: string, msg?: registry.NodeMessage): Array<string | number>;
+        setMessageProperty(
+            msg: object,
+            prop: string,
+            value: any,
+            createMissing?: boolean,
+        ): null | undefined;
+        normalisePropertyExpression(
+            str: string,
+            msg?: registry.NodeMessage,
+        ): Array<string | number>;
         validatePropertyExpression(str: string): boolean;
         separateIconPath(icon?: string): {
             module: string;
@@ -1060,20 +1177,30 @@ declare namespace editorClient {
             module: string;
             file: string;
         };
-        getNodeIcon<TProps extends NodeProperties>(def: NodeDef<TProps>, node?: NodeInstance<TProps>): string;
+        getNodeIcon<TProps extends NodeProperties>(
+            def: NodeDef<TProps>,
+            node?: NodeInstance<TProps>,
+        ): string;
         getNodeLabel(node: NodeInstance, defaultLabel?: string): string;
         getNodeColor(type: string, def: NodeDef<NodeProperties>): string;
         clearNodeColorCache(): void;
         addSpinnerOverlay(container: JQuery, contain?: boolean): JQuery;
         decodeObject(payload: string, format: string): any;
-        parseContextKey(key: string): { store?: string | undefined; key: string };
+        parseContextKey(key: string): {
+            store?: string | undefined;
+            key: string;
+        };
         /**
          * Create or update an icon element and append it to iconContainer.
          * @param iconUrl - Url of icon.
          * @param iconContainer - Icon container element with red-ui-palette-icon-container class.
          * @param isLarge - Whether the icon size is large.
          */
-        createIconElement(iconUrl: string, iconContainer: JQuery, isLarge?: boolean): void;
+        createIconElement(
+            iconUrl: string,
+            iconContainer: JQuery,
+            isLarge?: boolean,
+        ): void;
         sanitize(m: string): string;
         renderMarkdown(txt: string): string;
         createNodeIcon(node: NodeInstance): JQuery;
@@ -1117,7 +1244,11 @@ declare namespace editorClient {
          *  - all "selected"
          *  - attached to mouse for placing - "IMPORT_DRAGGING"
          */
-        importNodes(newNodesStr: string, addNewFlow?: boolean, touchImport?: boolean): void;
+        importNodes(
+            newNodesStr: string,
+            addNewFlow?: boolean,
+            touchImport?: boolean,
+        ): void;
         calculateTextWidth(str: string, className: string): number;
         select(selection?: string | object): void;
         selection(): {
@@ -1140,7 +1271,11 @@ declare namespace editorClient {
 
     interface Workspaces {
         init(): void;
-        add(ws: object | false, skipHistoryEntry: boolean, targetIndex: number): object;
+        add(
+            ws: object | false,
+            skipHistoryEntry: boolean,
+            targetIndex: number,
+        ): object;
         remove(ws: object): void;
         order(order: string[]): void;
         edit(id: string): void;
@@ -1220,14 +1355,20 @@ declare namespace editorClient {
     }
 
     interface Menu {
-        init(options: { id?: string | undefined; options: Array<MenuItemOption | null> }): JQuery<HTMLUListElement>;
+        init(options: {
+            id?: string | undefined;
+            options: Array<MenuItemOption | null>;
+        }): JQuery<HTMLUListElement>;
         setSelected(id: string, state: boolean): void;
         isSelected(id: string): boolean;
         toggleSelected(id: string): void;
         setDisabled(id: string, state: boolean): void;
         addItem(id: string, opt: MenuItemOption | null): void;
         removeItem(id: string): void;
-        setAction(id: string, action: string | ((...args: any[]) => void)): void;
+        setAction(
+            id: string,
+            action: string | ((...args: any[]) => void),
+        ): void;
     }
 
     interface PanelsInstance {
@@ -1264,15 +1405,19 @@ declare namespace editorClient {
             width?: string | undefined;
             size?: string | undefined;
         }): PopoverInstance;
-        tooltip(target: JQuery, content: string, action?: string): PopoverInstance;
+        tooltip(
+            target: JQuery,
+            content: string,
+            action?: string,
+        ): PopoverInstance;
         menu(options: {
             style?: "compact" | undefined;
             disposeOnClose?: boolean | undefined;
             onclose?: ((v: boolean) => void) | undefined;
             options?:
                 | Array<{
-                    onselect?: (() => void) | undefined;
-                }>
+                      onselect?: (() => void) | undefined;
+                  }>
                 | undefined;
         }): {
             show(opts: {
@@ -1309,7 +1454,10 @@ declare namespace editorClient {
         isExpanded(): boolean;
     }
     interface StackInstance {
-        add(entry: { collapsible?: boolean | undefined; title: string }): StackInstanceEntry;
+        add(entry: {
+            collapsible?: boolean | undefined;
+            title: string;
+        }): StackInstanceEntry;
         hide(): StackInstance;
         show(): StackInstance;
         resize(): void;
@@ -1638,7 +1786,10 @@ declare namespace editorClient {
          * If the function returns 0, the items are left unchanged.
          * If the function returns a value greater than 0, itemDataA comes after itemDataB.
          */
-        (action: "sort", value: (itemDataA: object, itemDataB: object) => number): void;
+        (
+            action: "sort",
+            value: (itemDataA: object, itemDataB: object) => number,
+        ): void;
         /**
          * Gets the number of list items.
          */
@@ -1680,7 +1831,10 @@ declare namespace editorClient {
         /** An icon to display in the type menu */
         icon?: string | undefined;
         /** If the type has a fixed set of values, this is an array of string options for the value. For example, ["true","false"] for the boolean type. */
-        options?: string[] | Array<{ value: string; label: string }> | undefined;
+        options?:
+            | string[]
+            | Array<{ value: string; label: string }>
+            | undefined;
         /** Set to false if there is no value associated with the type. */
         hasValue?: boolean | undefined;
         /** A function to validate the value for the type. */
@@ -1708,7 +1862,10 @@ declare namespace editorClient {
         /**
          * Sets the list of types offered by the typedInput.
          */
-        (action: "types", value: Array<WidgetTypedInputType | WidgetTypedInputTypeDefinition>): void;
+        (
+            action: "types",
+            value: Array<WidgetTypedInputType | WidgetTypedInputTypeDefinition>,
+        ): void;
         /**
          * Triggers a revalidation of the typedInput’s type/value. This occurs automatically
          * whenever the type or value change, but this method allows it to be run manually.

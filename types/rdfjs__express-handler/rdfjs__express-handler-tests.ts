@@ -4,32 +4,40 @@ import { SinkMap } from "@rdfjs/sink-map";
 import { EventEmitter } from "events";
 import { DatasetCore, DatasetCoreFactory, Stream } from "rdf-js";
 
-const factory: DatasetCoreFactory = <any> {};
+const factory: DatasetCoreFactory = <any>{};
 const formats: {
     parsers: SinkMap<EventEmitter, Stream>;
     serializers: SinkMap<Stream, EventEmitter>;
-} = <any> {};
+} = <any>{};
 
 const app = express();
 
 app.use(rdfHandler());
-app.use(rdfHandler({
-    factory,
-    formats,
-    defaultMediaType: "text/turtle",
-}));
+app.use(
+    rdfHandler({
+        factory,
+        formats,
+        defaultMediaType: "text/turtle",
+    }),
+);
 
-app.use(rdfHandler({
-    baseIriFromRequest: true,
-}));
+app.use(
+    rdfHandler({
+        baseIriFromRequest: true,
+    }),
+);
 
-app.use(rdfHandler({
-    baseIriFromRequest: (req: express.Request) => req.path,
-}));
+app.use(
+    rdfHandler({
+        baseIriFromRequest: (req: express.Request) => req.path,
+    }),
+);
 
-app.use(rdfHandler({
-    baseIriFromRequest: (req: express.Request) => Promise.resolve(req.path),
-}));
+app.use(
+    rdfHandler({
+        baseIriFromRequest: (req: express.Request) => Promise.resolve(req.path),
+    }),
+);
 
 async function streams(req: express.Request, res: express.Response) {
     if (req.quadStream) {

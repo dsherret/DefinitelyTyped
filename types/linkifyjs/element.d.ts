@@ -9,7 +9,12 @@ export interface Options extends CommonOptions {
      *
      * @default null
      */
-    events?: Partial<GlobalEventHandlers> | ((href: string, type: LinkEntityType) => Partial<GlobalEventHandlers>);
+    events?:
+        | Partial<GlobalEventHandlers>
+        | ((
+              href: string,
+              type: LinkEntityType,
+          ) => Partial<GlobalEventHandlers>);
 
     /**
      *  Prevent linkify from trying to parse links in the specified tags.
@@ -21,4 +26,8 @@ export interface Options extends CommonOptions {
     ignoreTags?: string[];
 }
 
-export default function linkifyElement(element: HTMLElement, options?: Options, doc?: HTMLDocument): HTMLElement;
+export default function linkifyElement(
+    element: HTMLElement,
+    options?: Options,
+    doc?: HTMLDocument,
+): HTMLElement;

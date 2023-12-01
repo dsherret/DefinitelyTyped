@@ -103,7 +103,8 @@ const products: Products.ProductCollection = {
                 extra_fields: false,
             },
             checkout_url: {
-                checkout: "https://checkout.chec.io/complexion-cream?checkout=true",
+                checkout:
+                    "https://checkout.chec.io/complexion-cream?checkout=true",
                 display: "https://checkout.chec.io/complexion-cream",
             },
             extra_fields: [],
@@ -124,9 +125,7 @@ const products: Products.ProductCollection = {
                                 formatted_with_symbol: "$0.00",
                                 formatted_with_code: "0.00 USD",
                             },
-                            assets: [
-                                "ast_bO6J5ag49wEjpK",
-                            ],
+                            assets: ["ast_bO6J5ag49wEjpK"],
                             meta: null,
                             created: 1594413988,
                             updated: 1605921891,

@@ -25,7 +25,10 @@ declare namespace UnicodeBidi {
      * This function is supposed to be used in respect to Higher-Level Protocol
      * rule HL1. (http://www.unicode.org/reports/tr9/#HL1)
      */
-    function resolveBlockDir(str: string, fallback: BidiDirection | null | undefined): BidiDirection;
+    function resolveBlockDir(
+        str: string,
+        fallback: BidiDirection | null | undefined,
+    ): BidiDirection;
     /**
      * Returns the direction of a block of text, based on the direction of its
      * first strong character (has Bidi_Class value of L, R, or AL), or a fallback
@@ -40,15 +43,24 @@ declare namespace UnicodeBidi {
      * rule HL1. (http://www.unicode.org/reports/tr9/#HL1)
      */
 
-    function getDirection(str: string, strongFallback: BidiDirection | null): BidiDirection;
+    function getDirection(
+        str: string,
+        strongFallback: BidiDirection | null,
+    ): BidiDirection;
     /**
      * Returns true if getDirection(arguments...) returns LTR.
      */
-    function isDirectionLTR(str: string, strongFallback: BidiDirection | null): boolean;
+    function isDirectionLTR(
+        str: string,
+        strongFallback: BidiDirection | null,
+    ): boolean;
     /**
      * Returns true if getDirection(arguments...) returns RTL.
      */
-    function isDirectionRTL(str: string, strongFallback: BidiDirection | null): boolean;
+    function isDirectionRTL(
+        str: string,
+        strongFallback: BidiDirection | null,
+    ): boolean;
 }
 
 // eslint-disable-next-line @definitelytyped/export-just-namespace

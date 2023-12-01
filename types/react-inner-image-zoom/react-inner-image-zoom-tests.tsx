@@ -9,10 +9,12 @@ const onLoad = () => {};
     moveType="pan"
     zoomType="click"
     src="/path/to/image.jpg"
-    sources={[{
-        srcSet: "/path/to/large-image.jpg, /path/to/large-image-2x.jpg 2x",
-        media: "(min-width: 768px)",
-    }]}
+    sources={[
+        {
+            srcSet: "/path/to/large-image.jpg, /path/to/large-image-2x.jpg 2x",
+            media: "(min-width: 768px)",
+        },
+    ]}
     width={500}
     height={500}
     hasSpacer={true}

@@ -22,15 +22,22 @@ const tracker = mockDb.getTracker();
 tracker.install();
 tracker.on("query", (query, step) => {
     if (query.method === "first" || step === 1) {
-        query.response([{
-            a: 1,
-        }, {
-            a: 2,
-        }, {
-            a: 3,
-        }], {
-            stream: false,
-        });
+        query.response(
+            [
+                {
+                    a: 1,
+                },
+                {
+                    a: 2,
+                },
+                {
+                    a: 3,
+                },
+            ],
+            {
+                stream: false,
+            },
+        );
     } else {
         query.reject(new Error("bad query"));
     }
@@ -46,13 +53,17 @@ if (queries.count() > 0) {
     // $ExpectType string
     queries.last().sql;
 
-    queries.track({ query: "SELECT * FROM table" }, (query) => {
-        // $ExpectType { query: string; }
-        query;
-    }, (error) => {
-        // $ExpectType Error
-        error;
-    });
+    queries.track(
+        { query: "SELECT * FROM table" },
+        (query) => {
+            // $ExpectType { query: string; }
+            query;
+        },
+        (error) => {
+            // $ExpectType Error
+            error;
+        },
+    );
     queries.reset();
 }
 

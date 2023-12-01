@@ -29,16 +29,30 @@ export default class RelayModernStore implements Store {
         },
     );
     getSource(): RecordSource;
-    check(operation: OperationDescriptor, options?: CheckOptions): OperationAvailability;
+    check(
+        operation: OperationDescriptor,
+        options?: CheckOptions,
+    ): OperationAvailability;
     retain(operation: OperationDescriptor): Disposable;
     lookup(selector: SingularReaderSelector): Snapshot;
-    notify(sourceOperation?: OperationDescriptor, invalidateStore?: boolean): readonly RequestDescriptor[];
+    notify(
+        sourceOperation?: OperationDescriptor,
+        invalidateStore?: boolean,
+    ): readonly RequestDescriptor[];
     publish(source: RecordSource, idsMarkedForInvalidation?: Set<DataID>): void;
-    subscribe(snapshot: Snapshot, callback: (snapshot: Snapshot) => void): Disposable;
+    subscribe(
+        snapshot: Snapshot,
+        callback: (snapshot: Snapshot) => void,
+    ): Disposable;
     holdGC(): Disposable;
     lookupInvalidationState(dataIDs: readonly DataID[]): InvalidationState;
-    checkInvalidationState(previousInvalidationState: InvalidationState): boolean;
-    subscribeToInvalidationState(invalidationState: InvalidationState, callback: () => void): Disposable;
+    checkInvalidationState(
+        previousInvalidationState: InvalidationState,
+    ): boolean;
+    subscribeToInvalidationState(
+        invalidationState: InvalidationState,
+        callback: () => void,
+    ): Disposable;
     toJSON(): unknown;
     snapshot(): void;
     restore(): void;

@@ -18,7 +18,10 @@ declare namespace ImagesLoaded {
     }
 
     interface ImagesLoaded {
-        new(elem: ElementSelector, callback: ImagesLoadedCallback): ImagesLoaded;
+        new (
+            elem: ElementSelector,
+            callback: ImagesLoadedCallback,
+        ): ImagesLoaded;
 
         images: LoadingImage[];
 
@@ -39,7 +42,11 @@ declare namespace ImagesLoaded {
          * @param options object that can tell imagesloaded to watch background images as well
          * @param callback function triggered after all images have been loaded
          */
-        (elem: ElementSelector, options: ImagesLoadedOptions, callback?: ImagesLoadedCallback): ImagesLoaded;
+        (
+            elem: ElementSelector,
+            options: ImagesLoadedOptions,
+            callback?: ImagesLoadedCallback,
+        ): ImagesLoaded;
         (elem: ElementSelector, callback?: ImagesLoadedCallback): ImagesLoaded;
     }
 }
@@ -51,7 +58,9 @@ declare module "imagesloaded" {
 }
 
 interface JQuery {
-    imagesLoaded(callback?: ImagesLoaded.ImagesLoadedCallback): JQueryDeferred<ImagesLoaded.ImagesLoaded>;
+    imagesLoaded(
+        callback?: ImagesLoaded.ImagesLoadedCallback,
+    ): JQueryDeferred<ImagesLoaded.ImagesLoaded>;
     imagesLoaded(
         options: ImagesLoaded.ImagesLoadedOptions,
         callback?: ImagesLoaded.ImagesLoadedCallback,

@@ -17,5 +17,9 @@ export interface RenderHeaderEventHandler<TElement = HTMLElement> {
      * @param table
      * The jQuery-object of the table.
      */
-    (index: number, config: TablesorterConfigurationStore<TElement>, table: JQuery<TElement>): void;
+    (
+        index: number,
+        config: TablesorterConfigurationStore<TElement>,
+        table: JQuery<TElement>,
+    ): void;
 }

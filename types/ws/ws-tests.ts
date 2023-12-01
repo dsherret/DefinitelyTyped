@@ -7,7 +7,7 @@ import * as wslib from "ws";
 {
     const ws = new WebSocket("ws://www.host.com/path");
     ws.on("open", () => ws.send("something"));
-    ws.on("message", data => {});
+    ws.on("message", (data) => {});
     // @ts-expect-error
     ws.send({ hello: "world" });
 
@@ -38,13 +38,15 @@ import * as wslib from "ws";
 }
 
 {
-    const wss: wslib.WebSocketServer = new wslib.WebSocketServer({ port: 8081 });
+    const wss: wslib.WebSocketServer = new wslib.WebSocketServer({
+        port: 8081,
+    });
 }
 
 {
     const wss = new WebSocket.Server({ port: 8081 });
     wss.on("connection", (ws, req) => {
-        ws.on("message", message => console.log("received: %s", message));
+        ws.on("message", (message) => console.log("received: %s", message));
         ws.send("something");
         ws.send("something", (error?: Error) => {});
         ws.send("something", {}, (error?: Error) => {});
@@ -61,7 +63,7 @@ import * as wslib from "ws";
     const wss = new WebSocket.Server({ port: 8082 });
 
     const broadcast = (data: string) => {
-        wss.clients.forEach(ws => ws.send(data));
+        wss.clients.forEach((ws) => ws.send(data));
     };
 }
 
@@ -70,12 +72,14 @@ import * as wslib from "ws";
 
     wsc.on("open", () => wsc.send(Date.now().toString(), { mask: true }));
     wsc.on("close", () => console.log("disconnected"));
-    wsc.on("error", error => {
+    wsc.on("error", (error) => {
         console.log(`unexpected response: ${error}`);
     });
 
     wsc.on("message", (data) => {
-        console.log(`Roundtrip time: ${Date.now() - parseInt(data.toString(), 10)} ms`);
+        console.log(
+            `Roundtrip time: ${Date.now() - parseInt(data.toString(), 10)} ms`,
+        );
         setTimeout(() => {
             wsc.send(Date.now().toString(), { mask: true });
         }, 500);
@@ -170,7 +174,13 @@ import * as wslib from "ws";
         console.log(event.error, event.message, event.target, event.type);
     };
     ws.onclose = (event: WebSocket.CloseEvent) => {
-        console.log(event.code, event.reason, event.target, event.wasClean, event.type);
+        console.log(
+            event.code,
+            event.reason,
+            event.target,
+            event.wasClean,
+            event.type,
+        );
     };
     ws.onmessage = (event: WebSocket.MessageEvent) => {
         console.log(event.data, event.target, event.type);
@@ -362,7 +372,10 @@ declare module "ws" {
         }
     }
     const server = new http.Server();
-    const webSocketServer = new WebSocket.WebSocketServer({ WebSocket: CustomWebSocket, noServer: true });
+    const webSocketServer = new WebSocket.WebSocketServer({
+        WebSocket: CustomWebSocket,
+        noServer: true,
+    });
     webSocketServer.on("connection", (ws) => {
         // $ExpectType CustomWebSocket
         ws;
@@ -409,7 +422,10 @@ declare module "ws" {
     class Request extends http.IncomingMessage {}
     class MyWebsocket extends WebSocket {}
     const server = http.createServer({ IncomingMessage: Request });
-    const wss = new WebSocket.WebSocketServer({ WebSocket: MyWebsocket, server });
+    const wss = new WebSocket.WebSocketServer({
+        WebSocket: MyWebsocket,
+        server,
+    });
 
     wss.on("connection", (ws, req) => {
         // $ExpectType MyWebsocket
@@ -463,7 +479,7 @@ declare module "ws" {
         req;
     });
 
-    Array.from(wss.clients).forEach(client => {
+    Array.from(wss.clients).forEach((client) => {
         // $ExpectType MyWebsocket
         client;
     });

@@ -8,20 +8,28 @@ sailthru.enableLogging();
 sailthru.disableLogging();
 
 // send GET request
-sailthru.apiGet("purchase", {
-    purchase_id: "5520b3b39759105e4aa4e69f",
-    purchase_key: "sid",
-}, (err, response) => {
-    // handle response
-});
+sailthru.apiGet(
+    "purchase",
+    {
+        purchase_id: "5520b3b39759105e4aa4e69f",
+        purchase_key: "sid",
+    },
+    (err, response) => {
+        // handle response
+    },
+);
 
 // send POST request
-sailthru.apiPost("blast", {
-    copy_blast: 123,
-    name: "my copy",
-}, (err, response) => {
-    // handle response
-});
+sailthru.apiPost(
+    "blast",
+    {
+        copy_blast: 123,
+        name: "my copy",
+    },
+    (err, response) => {
+        // handle response
+    },
+);
 
 // send DELETE request
 const data = {
@@ -36,18 +44,34 @@ const rateLimitInfo = sailthru.getLastRateLimitInfo("send", "POST");
 const limitResetTime = rateLimitInfo.reset;
 
 // send single message
-sailthru.send("Abandoned Cart Reminder", "example@example.com", (err, response) => {
-    // handle response
-});
-const welcomeOptions = { vars: { color: "blue" }, schedule_time: "tomorrow 5pm" };
-sailthru.send("Welcome", "example@example.com", welcomeOptions, (err, response) => {
-    // handle response
-});
+sailthru.send(
+    "Abandoned Cart Reminder",
+    "example@example.com",
+    (err, response) => {
+        // handle response
+    },
+);
+const welcomeOptions = {
+    vars: { color: "blue" },
+    schedule_time: "tomorrow 5pm",
+};
+sailthru.send(
+    "Welcome",
+    "example@example.com",
+    welcomeOptions,
+    (err, response) => {
+        // handle response
+    },
+);
 
 // send message to multiple emails
-sailthru.multiSend("Abandoned Cart Reminder", "example1@example.com,example2@example.com", (err, response) => {
-    // handle response
-});
+sailthru.multiSend(
+    "Abandoned Cart Reminder",
+    "example1@example.com,example2@example.com",
+    (err, response) => {
+        // handle response
+    },
+);
 const emails = ["example1@example.com", "example2@example.com"];
 const options = {
     evars: {
@@ -85,20 +109,34 @@ sailthru.getUserByKey("example@example.com", "email", (e, r) => {
 });
 
 const fields = { lists: 1 };
-sailthru.getUserByKey("example@example.com", "email", fields, (err, response) => {
-    // handle response
-});
+sailthru.getUserByKey(
+    "example@example.com",
+    "email",
+    fields,
+    (err, response) => {
+        // handle response
+    },
+);
 
 // add var to user profile
 const userData = { vars: { def: 123 } };
-sailthru.saveUserBySid("57e54ddc83ba8895008b4567", userData, (err, response) => {
-    // handle response
-});
+sailthru.saveUserBySid(
+    "57e54ddc83ba8895008b4567",
+    userData,
+    (err, response) => {
+        // handle response
+    },
+);
 
 const userData2 = { vars: { abc: 456 } };
-sailthru.saveUserByKey("example@example.com", "email", userData2, (err, response) => {
-    // handle response
-});
+sailthru.saveUserByKey(
+    "example@example.com",
+    "email",
+    userData2,
+    (err, response) => {
+        // handle response
+    },
+);
 
 // run Jobs
 const exportOptions = { list: "VIP Users" };
@@ -110,9 +148,16 @@ const importOptions = { list: "New List", file: "/path/to/new_users.csv" };
 const report_email = "report@example.com";
 const postback_url = "http://example.com/postback.php";
 const binary_data_params = ["file"];
-sailthru.processJob("import", importOptions, report_email, postback_url, binary_data_params, (err, response) => {
-    // handle response
-});
+sailthru.processJob(
+    "import",
+    importOptions,
+    report_email,
+    postback_url,
+    binary_data_params,
+    (err, response) => {
+        // handle response
+    },
+);
 
 // Look up a blast by blast_id
 sailthru.getBlast(123, (e, r) => {
@@ -154,17 +199,30 @@ sailthru.updateBlast(123, blastOptions, (err, response) => {
 
 // Modify a campaign with data copied from “Welcome” template and send in 2 hours
 const blastList = "clicked";
-sailthru.scheduleBlastFromTemplate(123, "Welcome", blastList, "+2 hours", (err, response) => {
-    // Handle response
-});
+sailthru.scheduleBlastFromTemplate(
+    123,
+    "Welcome",
+    blastList,
+    "+2 hours",
+    (err, response) => {
+        // Handle response
+    },
+);
 
 // Modify a campaign with data copied from “Welcome” template and send in 2 hours, while also setting a report email
 const blastOptions2 = {
     report_email: "example@example.com",
 };
-sailthru.scheduleBlastFromTemplate(123, "Welcome", blastList, "+2 hours", blastOptions2, (err, response) => {
-    // Handle response
-});
+sailthru.scheduleBlastFromTemplate(
+    123,
+    "Welcome",
+    blastList,
+    "+2 hours",
+    blastOptions2,
+    (err, response) => {
+        // Handle response
+    },
+);
 
 // Schedule an existing campaign to send now
 sailthru.scheduleBlastFromBlast(123, "now", (err, response) => {
@@ -285,9 +343,14 @@ const newItems = [
 const purchaseOptions = {
     vars: { coupon_code: "xyz" },
 };
-sailthru.purchase("example@example.com", newItems, purchaseOptions, (err, response) => {
-    // handle response
-});
+sailthru.purchase(
+    "example@example.com",
+    newItems,
+    purchaseOptions,
+    (err, response) => {
+        // handle response
+    },
+);
 
 // Get stats for the performance of the “Welcome” template over a certain month
 const statsData = {
@@ -307,7 +370,11 @@ sailthru.statsList(statsOptions, (err, response) => {
 });
 
 // Get stats for the engagement level performance of campaigns over a certain month
-const statsOptions2 = { start_date: "-3 months", end_date: "today", engagement: 1 };
+const statsOptions2 = {
+    start_date: "-3 months",
+    end_date: "today",
+    engagement: 1,
+};
 sailthru.statsBlast(statsOptions2, (err, response) => {
     // handle response
 });

@@ -12,6 +12,10 @@ export const _ = () => (
     <>
         <ReactHighcharts config={config} />
         <ReactHighcharts config={config} callback={callback} />
-        <ReactHighcharts config={config} callback={callback} isPureConfig={isPureConfig} />
+        <ReactHighcharts
+            config={config}
+            callback={callback}
+            isPureConfig={isPureConfig}
+        />
     </>
 );

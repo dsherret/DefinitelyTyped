@@ -44,14 +44,16 @@ export interface Paddle {
             email: string,
             marketingConsent: boolean,
             callback: (
-                response: {
-                    success: true;
-                    email: string;
-                    user_id: number;
-                } | {
-                    success: false;
-                    error: string;
-                },
+                response:
+                    | {
+                          success: true;
+                          email: string;
+                          user_id: number;
+                      }
+                    | {
+                          success: false;
+                          error: string;
+                      },
             ) => void,
         ): void;
     };
@@ -59,49 +61,50 @@ export interface Paddle {
     Checkout: {
         /** The main Paddle function to open the checkout. */
         open(
-            options:
-                & ({
-                    product: number | string;
-                    override?: string;
-                } | {
-                    product?: number | string;
-                    override: string;
-                })
-                & {
-                    frameTarget?: string;
-                    frameStyle?: string;
-                    frameInitialHeight?: number;
-                    title?: string;
-                    message?: string;
-                    coupon?: string;
-                    email?: string;
-                    marketingConsent?: "0" | "1";
-                    country?: string;
-                    postcode?: string;
-                    allowQuantity?: boolean | "true" | "false";
-                    quantity?: number | string;
-                    disableLogout?: boolean | "true" | "false";
-                    hideTaxLink?: boolean | "true" | "false";
-                    customData?: Paddle.Json;
-                    locale?: string;
-                    passthrough?: string;
-                    referring_domain?: string;
-                    success?: string;
-                    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-                    successCallback?: (data: any) => void | string;
-                    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-                    closeCallback?: (data: any) => void | string;
-                    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-                    loadCallback?: (data: any) => void | string;
-                    upsell?: number | string;
-                    upsellTitle?: string;
-                    upsellText?: string;
-                    upsellAction?: string;
-                    upsellCoupon?: string;
-                    upsellPassthrough?: string;
-                    displayModeTheme?: "light" | "dark";
-                    method?: "inline" | "overlay" | "sdk";
-                },
+            options: (
+                | {
+                      product: number | string;
+                      override?: string;
+                  }
+                | {
+                      product?: number | string;
+                      override: string;
+                  }
+            ) & {
+                frameTarget?: string;
+                frameStyle?: string;
+                frameInitialHeight?: number;
+                title?: string;
+                message?: string;
+                coupon?: string;
+                email?: string;
+                marketingConsent?: "0" | "1";
+                country?: string;
+                postcode?: string;
+                allowQuantity?: boolean | "true" | "false";
+                quantity?: number | string;
+                disableLogout?: boolean | "true" | "false";
+                hideTaxLink?: boolean | "true" | "false";
+                customData?: Paddle.Json;
+                locale?: string;
+                passthrough?: string;
+                referring_domain?: string;
+                success?: string;
+                // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+                successCallback?: (data: any) => void | string;
+                // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+                closeCallback?: (data: any) => void | string;
+                // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+                loadCallback?: (data: any) => void | string;
+                upsell?: number | string;
+                upsellTitle?: string;
+                upsellText?: string;
+                upsellAction?: string;
+                upsellCoupon?: string;
+                upsellPassthrough?: string;
+                displayModeTheme?: "light" | "dark";
+                method?: "inline" | "overlay" | "sdk";
+            },
         ): void;
     };
 
@@ -118,7 +121,11 @@ export interface Paddle {
         DetailsPopup(checkout_id: string, processingMessage: string): void;
 
         /** Returns an order details object, different from above in that it does not open a modal, just provides info */
-        details(checkout_id: string, callback: (data: Paddle.CheckoutOrder) => void, showLoader?: boolean): void;
+        details(
+            checkout_id: string,
+            callback: (data: Paddle.CheckoutOrder) => void,
+            showLoader?: boolean,
+        ): void;
     };
 
     Product: {

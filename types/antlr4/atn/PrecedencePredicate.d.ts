@@ -10,7 +10,10 @@ export default class PrecedencePredicate extends SemanticContext {
 
     evaluate(parser: Parser, outerContext: ParserRuleContext): boolean;
 
-    evalPrecedence(parser: Parser, outerContext: ParserRuleContext): PrecedencePredicate;
+    evalPrecedence(
+        parser: Parser,
+        outerContext: ParserRuleContext,
+    ): PrecedencePredicate;
 
     compareTo(other: PrecedencePredicate): number;
 

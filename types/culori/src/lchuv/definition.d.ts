@@ -14,11 +14,15 @@ declare const definition: {
 
     toMode: {
         luv: typeof convertLchuvToLuv;
-        rgb: (c: Parameters<typeof convertLchuvToLuv>[0]) => ReturnType<typeof convertXyz50ToRgb>;
+        rgb: (
+            c: Parameters<typeof convertLchuvToLuv>[0],
+        ) => ReturnType<typeof convertXyz50ToRgb>;
     };
 
     fromMode: {
-        rgb: (c: Parameters<typeof convertRgbToXyz50>[0]) => ReturnType<typeof convertLuvToLchuv>;
+        rgb: (
+            c: Parameters<typeof convertRgbToXyz50>[0],
+        ) => ReturnType<typeof convertLuvToLchuv>;
         luv: typeof convertLuvToLchuv;
     };
 

@@ -10,4 +10,16 @@ import round = require("./round");
 import scale = require("./scale");
 import within = require("./within");
 
-export { clamp, closest, isMultiple, len, lerp, mod, order, precision, round, scale, within };
+export {
+    clamp,
+    closest,
+    isMultiple,
+    len,
+    lerp,
+    mod,
+    order,
+    precision,
+    round,
+    scale,
+    within,
+};

@@ -14,7 +14,10 @@ declare module "leaflet" {
              * @param options? constructor arguments to pass through to the google layer.
              * @returns Promise for the native Google Maps Layer instance.
              */
-            addGoogleLayer(googleLayerName: string, options?: object): Promise<object>;
+            addGoogleLayer(
+                googleLayerName: string,
+                options?: object,
+            ): Promise<object>;
 
             /**
              * Removes Google Maps layer.

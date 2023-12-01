@@ -1,6 +1,8 @@
 import parsePath = require("parse-path");
 
-const parsed = parsePath("http://domain.com/path/name?foo=bar&bar=42#some-hash");
+const parsed = parsePath(
+    "http://domain.com/path/name?foo=bar&bar=42#some-hash",
+);
 parsed.hash; // $ExpectType string
 parsed.host; // $ExpectType string
 parsed.href; // $ExpectType string

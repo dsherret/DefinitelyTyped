@@ -31,11 +31,13 @@ declare namespace SimplePeer {
         /** if `trickle` is set to `false`, determines how long to wait before providing an offer or answer; default value is 5000 milliseconds  */
         iceCompleteTimeout?: number | undefined;
         /** custom webrtc implementation, mainly useful in node to specify in the [wrtc](https://npmjs.com/package/wrtc) package. */
-        wrtc?: {
-            RTCPeerConnection: typeof RTCPeerConnection;
-            RTCSessionDescription: typeof RTCSessionDescription;
-            RTCIceCandidate: typeof RTCIceCandidate;
-        } | undefined;
+        wrtc?:
+            | {
+                  RTCPeerConnection: typeof RTCPeerConnection;
+                  RTCSessionDescription: typeof RTCSessionDescription;
+                  RTCIceCandidate: typeof RTCIceCandidate;
+              }
+            | undefined;
         /** set to true to create the stream in Object Mode. In this mode, incoming string data is not automatically converted to Buffer objects. */
         objectMode?: boolean | undefined;
     }
@@ -48,7 +50,7 @@ declare namespace SimplePeer {
          *
          * If opts is specified, then the default options (see <https://github.com/feross/simple-peer#peer--new-peeropts>) will be overridden.
          */
-        new(opts?: Options): Instance;
+        new (opts?: Options): Instance;
 
         /** Detect native WebRTC support in the javascript environment. */
         readonly WEBRTC_SUPPORT: boolean;
@@ -86,20 +88,20 @@ declare namespace SimplePeer {
 
     type SignalData =
         | {
-            type: "transceiverRequest";
-            transceiverRequest: {
-                kind: string;
-                init?: RTCRtpTransceiverInit | undefined;
-            };
-        }
+              type: "transceiverRequest";
+              transceiverRequest: {
+                  kind: string;
+                  init?: RTCRtpTransceiverInit | undefined;
+              };
+          }
         | {
-            type: "renegotiate";
-            renegotiate: true;
-        }
+              type: "renegotiate";
+              renegotiate: true;
+          }
         | {
-            type: "candidate";
-            candidate: RTCIceCandidate;
-        }
+              type: "candidate";
+              candidate: RTCIceCandidate;
+          }
         | RTCSessionDescriptionInit;
 
     interface Instance extends stream.Duplex {
@@ -139,7 +141,11 @@ declare namespace SimplePeer {
         removeTrack(track: MediaStreamTrack, stream: MediaStream): void;
 
         /** Replace a `MediaStreamTrack` with another track. Must also pass the `MediaStream` that the old track was attached to. */
-        replaceTrack(oldTrack: MediaStreamTrack, newTrack: MediaStreamTrack, stream: MediaStream): void;
+        replaceTrack(
+            oldTrack: MediaStreamTrack,
+            newTrack: MediaStreamTrack,
+            stream: MediaStream,
+        ): void;
 
         /** Add a `RTCRtpTransceiver` to the connection. Can be used to add transceivers before adding tracks. Automatically called as necessary by `addTrack`. */
         addTransceiver(kind: string, init?: RTCRtpTransceiverInit): void;
@@ -172,70 +178,187 @@ declare namespace SimplePeer {
         // ******
         // events
         // ******
-        addListener(event: "connect" | "close" | "end" | "pause" | "readable" | "resume", listener: () => void): this;
-        addListener(event: "signal", listener: (data: SignalData) => void): this;
-        addListener(event: "stream", listener: (stream: MediaStream) => void): this;
-        addListener(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
+        addListener(
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
+            listener: () => void,
+        ): this;
+        addListener(
+            event: "signal",
+            listener: (data: SignalData) => void,
+        ): this;
+        addListener(
+            event: "stream",
+            listener: (stream: MediaStream) => void,
+        ): this;
+        addListener(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
         addListener(event: "data", listener: (chunk: any) => void): this;
         addListener(event: "error", listener: (err: Error) => void): this;
-        addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        addListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
-        emit(event: "connect" | "close" | "end" | "pause" | "readable" | "resume"): boolean;
+        emit(
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
+        ): boolean;
         emit(event: "signal", data: SignalData): this;
         emit(event: "stream", stream: MediaStream): this;
-        emit(event: "track", track: MediaStreamTrack, stream: MediaStream): this;
+        emit(
+            event: "track",
+            track: MediaStreamTrack,
+            stream: MediaStream,
+        ): this;
         emit(event: "data", chunk: any): boolean;
         emit(event: "error", err: Error): boolean;
         emit(event: string | symbol, ...args: any[]): boolean;
 
-        on(event: "connect" | "close" | "end" | "pause" | "readable" | "resume", listener: () => void): this;
+        on(
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
+            listener: () => void,
+        ): this;
         on(event: "signal", listener: (data: SignalData) => void): this;
         on(event: "stream", listener: (stream: MediaStream) => void): this;
-        on(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
+        on(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
         on(event: "data", listener: (chunk: any) => void): this;
         on(event: "error", listener: (err: Error) => void): this;
         on(event: string | symbol, listener: (...args: any[]) => void): this;
 
-        once(event: "connect" | "close" | "end" | "pause" | "readable" | "resume", listener: () => void): this;
+        once(
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
+            listener: () => void,
+        ): this;
         once(event: "signal", listener: (data: SignalData) => void): this;
         once(event: "stream", listener: (stream: MediaStream) => void): this;
-        once(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
+        once(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
         once(event: "data", listener: (chunk: any) => void): this;
         once(event: "error", listener: (err: Error) => void): this;
         once(event: string | symbol, listener: (...args: any[]) => void): this;
 
         prependListener(
-            event: "connect" | "close" | "end" | "pause" | "readable" | "resume",
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
             listener: () => void,
         ): this;
-        prependListener(event: "signal", listener: (data: SignalData) => void): this;
-        prependListener(event: "stream", listener: (stream: MediaStream) => void): this;
-        prependListener(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
+        prependListener(
+            event: "signal",
+            listener: (data: SignalData) => void,
+        ): this;
+        prependListener(
+            event: "stream",
+            listener: (stream: MediaStream) => void,
+        ): this;
+        prependListener(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
         prependListener(event: "data", listener: (chunk: any) => void): this;
         prependListener(event: "error", listener: (err: Error) => void): this;
-        prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
         prependOnceListener(
-            event: "connect" | "close" | "end" | "pause" | "readable" | "resume",
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
             listener: () => void,
         ): this;
-        prependOnceListener(event: "signal", listener: (data: SignalData) => void): this;
-        prependOnceListener(event: "stream", listener: (stream: MediaStream) => void): this;
-        prependOnceListener(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
-        prependOnceListener(event: "data", listener: (chunk: any) => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
-        prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependOnceListener(
+            event: "signal",
+            listener: (data: SignalData) => void,
+        ): this;
+        prependOnceListener(
+            event: "stream",
+            listener: (stream: MediaStream) => void,
+        ): this;
+        prependOnceListener(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
+        prependOnceListener(
+            event: "data",
+            listener: (chunk: any) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
+        prependOnceListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
 
         removeListener(
-            event: "connect" | "close" | "end" | "pause" | "readable" | "resume",
+            event:
+                | "connect"
+                | "close"
+                | "end"
+                | "pause"
+                | "readable"
+                | "resume",
             listener: () => void,
         ): this;
-        removeListener(event: "signal", listener: (data: SignalData) => void): this;
-        removeListener(event: "stream", listener: (stream: MediaStream) => void): this;
-        removeListener(event: "track", listener: (track: MediaStreamTrack, stream: MediaStream) => void): this;
+        removeListener(
+            event: "signal",
+            listener: (data: SignalData) => void,
+        ): this;
+        removeListener(
+            event: "stream",
+            listener: (stream: MediaStream) => void,
+        ): this;
+        removeListener(
+            event: "track",
+            listener: (track: MediaStreamTrack, stream: MediaStream) => void,
+        ): this;
         removeListener(event: "data", listener: (chunk: any) => void): this;
         removeListener(event: "error", listener: (err: Error) => void): this;
-        removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        removeListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
     }
 }
 

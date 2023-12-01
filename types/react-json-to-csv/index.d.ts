@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface CsvDownloadProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface CsvDownloadProps
+    extends React.HTMLAttributes<HTMLButtonElement> {
     data: object | object[];
     filename?: string | undefined;
     delimiter?: string | undefined;

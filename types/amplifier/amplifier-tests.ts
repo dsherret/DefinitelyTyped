@@ -40,11 +40,15 @@ amplifier.subscribe("priorityexample", (data: any) => {
     alert(data.foo);
 });
 
-amplifier.subscribe("priorityexample", (data: any) => {
-    if (data.foo === "oops") {
-        return false;
-    }
-}, 1);
+amplifier.subscribe(
+    "priorityexample",
+    (data: any) => {
+        if (data.foo === "oops") {
+            return false;
+        }
+    },
+    1,
+);
 
 // Store data with amplify storage picking the default storage technology:
 
@@ -111,13 +115,17 @@ amplifier.request.define("ajaxRESTFulExample", "ajax", {
 });
 
 // later in code
-amplifier.request("ajaxRESTFulExample", {
-    type: "foo",
-    id: "bar",
-}, (data: any) => {
-    // /myRESTFulApi/foo/bar was the URL used
-    data.foo; // bar
-});
+amplifier.request(
+    "ajaxRESTFulExample",
+    {
+        type: "foo",
+        id: "bar",
+    },
+    (data: any) => {
+        // /myRESTFulApi/foo/bar was the URL used
+        data.foo; // bar
+    },
+);
 
 // POST data with Ajax
 
@@ -127,12 +135,16 @@ amplifier.request.define("ajaxPostExample", "ajax", {
 });
 
 // later in code
-amplifier.request("ajaxPostExample", {
-    type: "foo",
-    id: "bar",
-}, (data: any) => {
-    data.foo; // bar
-});
+amplifier.request(
+    "ajaxPostExample",
+    {
+        type: "foo",
+        id: "bar",
+    },
+    (data: any) => {
+        data.foo; // bar
+    },
+);
 // Using data maps
 
 //  When searching Twitter, the key for the search phrase is q.If we want a more descriptive name, such as term, we can use a data map:
@@ -161,7 +173,13 @@ amplifier.request("twitter-mentions", { user: "amplifyjs" });
 
 // Example:
 
-const appEnvelopeDecoder: amplifier.Decoder = (data: any, status: any, xhr: any, success: any, error: any) => {
+const appEnvelopeDecoder: amplifier.Decoder = (
+    data: any,
+    status: any,
+    xhr: any,
+    success: any,
+    error: any,
+) => {
     switch (data.status) {
         case "success":
             success(data.data);
@@ -247,8 +265,6 @@ amplifier.request.define("statusExample1", "ajax", {
 
 amplifier.request({
     resourceId: "statusExample1",
-    success: (data: any, status: any) => {
-    },
-    error: (data: any, status: any) => {
-    },
+    success: (data: any, status: any) => {},
+    error: (data: any, status: any) => {},
 });

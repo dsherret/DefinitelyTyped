@@ -3,8 +3,10 @@ import * as dns from "node:dns";
 import * as net from "node:net";
 
 {
-    let ds: dgram.Socket = dgram.createSocket("udp4", (msg: Buffer, rinfo: dgram.RemoteInfo): void => {
-    });
+    let ds: dgram.Socket = dgram.createSocket(
+        "udp4",
+        (msg: Buffer, rinfo: dgram.RemoteInfo): void => {},
+    );
     ds = ds.bind();
     ds.bind(41234);
     ds.bind(4123, "localhost");
@@ -12,8 +14,14 @@ import * as net from "node:net";
     ds.bind(4123, () => {});
     ds.bind(() => {});
     const addr: net.AddressInfo | string = ds.address();
-    ds.send(new Buffer("hello"), 0, 5, 5000, "127.0.0.1", (error: Error | null, bytes: number): void => {
-    });
+    ds.send(
+        new Buffer("hello"),
+        0,
+        5,
+        5000,
+        "127.0.0.1",
+        (error: Error | null, bytes: number): void => {},
+    );
     ds.send(new Buffer("hello"), 5000, "127.0.0.1");
     ds = ds.close();
     ds.setMulticastInterface("127.0.0.1");

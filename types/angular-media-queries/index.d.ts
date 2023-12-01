@@ -13,16 +13,28 @@ declare module "angular" {
             // Executes the callback function on window resize with the match truthiness as the first argument.
             // Returns the current match truthiness.
             // The 'scope' parameter is optional. If it's not passed in, '$rootScope' is used.
-            on(list: string[] | string, callback: (result: boolean) => void, scope?: angular.IScope): boolean;
+            on(
+                list: string[] | string,
+                callback: (result: boolean) => void,
+                scope?: angular.IScope,
+            ): boolean;
 
             // Executes the callback function ONLY when the match differs from previous match.
             // Returns the current match truthiness.
             // The 'scope' parameter is required for cleanup reasons (destroy event).
-            onChange(scope: angular.IScope, list: string[] | string, callback: (result: boolean) => void): boolean;
+            onChange(
+                scope: angular.IScope,
+                list: string[] | string,
+                callback: (result: boolean) => void,
+            ): boolean;
 
             // Executes the callback only when inside of the particular screensize.
             // The 'scope' parameter is optional. If it's not passed in, '$rootScope' is used.
-            when(list: string[] | string, callback: (result: boolean) => void, scope?: angular.IScope): boolean;
+            when(
+                list: string[] | string,
+                callback: (result: boolean) => void,
+                scope?: angular.IScope,
+            ): boolean;
         }
     }
 }

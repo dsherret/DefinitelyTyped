@@ -20,8 +20,9 @@ newUser.name = {
     last: "Flinstone",
 };
 
-client.push("users", newUser)
-    .then(function(result) {
+client
+    .push("users", newUser)
+    .then(function (result) {
         console.log(result.name);
         var newUser2: User = new User();
         newUser2.name = {
@@ -29,7 +30,8 @@ client.push("users", newUser)
             last: "Rockington",
         };
         return client.update("users/" + result.name, newUser2);
-    }).then(function(result) {
+    })
+    .then(function (result) {
         console.log(result.name.last);
         var newUser3: User = new User();
         newUser3.name = {
@@ -37,12 +39,15 @@ client.push("users", newUser)
             last: "Steel",
         };
         return client.set("users/AXESTEEL", newUser3);
-    }).then(function(result) {
+    })
+    .then(function (result) {
         console.log(result.name.first);
         return client.get();
-    }).then(function(result) {
+    })
+    .then(function (result) {
         console.log(result);
         return client.get<User>("users/AXESTEEL");
-    }).then(function(result) {
+    })
+    .then(function (result) {
         console.log(result.name.first);
     });

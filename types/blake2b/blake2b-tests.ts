@@ -23,8 +23,16 @@ const output = new Uint8Array(64);
 const b2b = blake2b(output.length); // $ExpectType Blake2b
 blake2b(output.length, new Uint8Array(blake2b.KEYBYTES_MIN)); // $ExpectType Blake2b
 blake2b(output.length, Buffer.alloc(blake2b.KEYBYTES_MIN)); // $ExpectType Blake2b
-blake2b(output.length, new Uint8Array(blake2b.KEYBYTES_MIN), new Uint8Array(blake2b.SALTBYTES)); // $ExpectType Blake2b
-blake2b(output.length, new Uint8Array(blake2b.KEYBYTES_MIN), Buffer.alloc(blake2b.SALTBYTES)); // $ExpectType Blake2b
+blake2b(
+    output.length,
+    new Uint8Array(blake2b.KEYBYTES_MIN),
+    new Uint8Array(blake2b.SALTBYTES),
+); // $ExpectType Blake2b
+blake2b(
+    output.length,
+    new Uint8Array(blake2b.KEYBYTES_MIN),
+    Buffer.alloc(blake2b.SALTBYTES),
+); // $ExpectType Blake2b
 // $ExpectType Blake2b
 blake2b(
     output.length,

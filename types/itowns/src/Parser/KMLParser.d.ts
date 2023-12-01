@@ -6,6 +6,9 @@ export interface ParsingOptions {
 }
 
 declare namespace _default {
-    function parse(kmlFile: XMLDocument, options: ParsingOptions): Promise<FeatureCollection>;
+    function parse(
+        kmlFile: XMLDocument,
+        options: ParsingOptions,
+    ): Promise<FeatureCollection>;
 }
 export default _default;

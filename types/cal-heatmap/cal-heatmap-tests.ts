@@ -508,7 +508,7 @@ cal.init({
 });
 
 cal.init({
-    subDomainDateFormat: function(date: Date): string {
+    subDomainDateFormat: function (date: Date): string {
         return date.toString();
     },
 });
@@ -533,7 +533,7 @@ cal.init({
     cellSize: 20,
     range: 1,
     displayLegend: false,
-    subDomainTextFormat: function(date: Date, value: number): number {
+    subDomainTextFormat: function (date: Date, value: number): number {
         return value;
     },
 });
@@ -649,11 +649,13 @@ cal.init({
     range: 5,
     data: "datas-years.json",
     start: new Date(2000, 0),
-    onClick: function(date: Date, nb: number) {
+    onClick: function (date: Date, nb: number) {
         $("#onClick-placeholder").html(
-            "You just clicked <br/>on <b>"
-                + date + "</b> <br/>with <b>"
-                + (nb === null ? "unknown" : nb) + "</b> items",
+            "You just clicked <br/>on <b>" +
+                date +
+                "</b> <br/>with <b>" +
+                (nb === null ? "unknown" : nb) +
+                "</b> items",
         );
     },
 });
@@ -662,15 +664,15 @@ cal.init({
     itemSelector: "#afterLoad-a",
     domain: "day",
     range: 5,
-    afterLoad: function() {},
-    onComplete: function() {},
+    afterLoad: function () {},
+    onComplete: function () {},
 });
 
 cal.init({
     itemSelector: "#afterLoadPreviousDomain-a",
     domain: "day",
     range: 5,
-    afterLoadPreviousDomain: function(date: Date) {},
+    afterLoadPreviousDomain: function (date: Date) {},
     previousSelector: "#afterLoadPreviousDomain-selector",
 });
 
@@ -678,7 +680,7 @@ cal.init({
     itemSelector: "#afterLoadNextDomain-a",
     domain: "day",
     range: 5,
-    afterLoadNextDomain: function(date: Date) {},
+    afterLoadNextDomain: function (date: Date) {},
     nextSelector: "#afterLoadNextDomain-selector",
 });
 
@@ -686,7 +688,7 @@ cal.init({
     itemSelector: "#onComplete-a",
     domain: "day",
     range: 5,
-    onComplete: function() {},
+    onComplete: function () {},
 });
 
 var datas = [
@@ -713,8 +715,8 @@ cal.init({
     start: new Date(2000, 4),
     minDate: new Date(2000, 3),
     maxDate: new Date(2000, 11),
-    onMinDomainReached: function(hit: boolean) {},
-    onMaxDomainReached: function(hit: boolean) {},
+    onMinDomainReached: function (hit: boolean) {},
+    onMaxDomainReached: function (hit: boolean) {},
     nextSelector: "#onMinDomainReached-next",
     previousSelector: "#onMinDomainReached-previous",
     displayLegend: false,

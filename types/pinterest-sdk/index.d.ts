@@ -80,7 +80,12 @@ declare namespace PDK {
      * @param path   URL path
      * @param httpMethod HTTP verb
      */
-    export function request(path: string, httpMethod?: string | HttpMethod, data?: PinData, callback?: Function): void;
+    export function request(
+        path: string,
+        httpMethod?: string | HttpMethod,
+        data?: PinData,
+        callback?: Function,
+    ): void;
 
     /**
      * Show user login dialog, and save access token
@@ -102,7 +107,10 @@ declare namespace PDK {
     /**
      * Save the user specified session
      */
-    export function setSession(session: OauthSession, callback?: (session: OauthSession) => any): void;
+    export function setSession(
+        session: OauthSession,
+        callback?: (session: OauthSession) => any,
+    ): void;
 
     /**
      * Initialize the library.
@@ -153,5 +161,10 @@ declare namespace PDK {
      * @param note     The Pin's description.
      * @param url      The URL the Pin will link to when you click through.
      */
-    export function pin(imageUrl: string, note: string, url: string, callback: Function): void;
+    export function pin(
+        imageUrl: string,
+        note: string,
+        url: string,
+        callback: Function,
+    ): void;
 }

@@ -67,7 +67,7 @@ const LoadDOM = (file: string) => {
 // https://msdn.microsoft.com/en-us/library/ms764656(v=vs.85).aspx
 {
     const doc = LoadDOM("test.xml")!;
-    const xsl = (LoadDOM("test.xsl")! as any) as MSXML2.IXMLDOMNode;
+    const xsl = LoadDOM("test.xsl")! as any as MSXML2.IXMLDOMNode;
 
     const str = doc.transformNode(xsl);
     WScript.Echo("\ndoc.transformNode:\n" + str);
@@ -86,7 +86,10 @@ const LoadDOM = (file: string) => {
     dom.appendChild(node);
 
     // Create a processing instruction targeted for xml-stylesheet.
-    node = dom.createProcessingInstruction("xml-stylesheet", "type='text/xml' href='test.xsl'");
+    node = dom.createProcessingInstruction(
+        "xml-stylesheet",
+        "type='text/xml' href='test.xsl'",
+    );
     dom.appendChild(node);
 
     // Create a comment for the document.
@@ -159,7 +162,9 @@ const LoadDOM = (file: string) => {
         // Query a single node.
         const oNode = dom.selectSingleNode("//stock[1]/*");
         if (oNode != null) {
-            WScript.Echo(`Result from selectSingleNode:\n\tNode, <${oNode.nodeName}>:\n\t${oNode.xml}\n\n`);
+            WScript.Echo(
+                `Result from selectSingleNode:\n\tNode, <${oNode.nodeName}>:\n\t${oNode.xml}\n\n`,
+            );
         }
 
         // Query a node-set.
@@ -169,7 +174,9 @@ const LoadDOM = (file: string) => {
         for (let i = 0; i < oNodes.length; i++) {
             const nextNode = oNodes.nextNode;
             if (nextNode == null) continue;
-            WScript.Echo(`Node (${i}), <${oNode.nodeName} + ">:\n\t${oNode.xml}`);
+            WScript.Echo(
+                `Node (${i}), <${oNode.nodeName} + ">:\n\t${oNode.xml}`,
+            );
         }
     } catch (e) {
         WScript.Echo(e.description);
@@ -179,7 +186,11 @@ const LoadDOM = (file: string) => {
 // https://msdn.microsoft.com/en-us/library/ms757064(v=vs.85).aspx
 {
     const xhr = new ActiveXObject("Msxml2.XMLHTTP.6.0");
-    xhr.open("GET", "http://localhost/sxh/contact.asp?SearchID=John Doe", false);
+    xhr.open(
+        "GET",
+        "http://localhost/sxh/contact.asp?SearchID=John Doe",
+        false,
+    );
     xhr.send();
 
     const doc = xhr.responseXML;
@@ -215,7 +226,8 @@ ${x.xml}
 
 // https://msdn.microsoft.com/en-us/library/ms766449(v=vs.85).aspx
 {
-    const validateFile = (filename: string) => xmlValidation(x => x.load(filename));
+    const validateFile = (filename: string) =>
+        xmlValidation((x) => x.load(filename));
 
     let sOutput = validateFile("nn-valid.xml");
     sOutput = sOutput + validateFile("nn-notValid.xml");
@@ -225,7 +237,7 @@ ${x.xml}
 // https://msdn.microsoft.com/en-us/library/ms767542(v=vs.85).aspx
 {
     const validateFile = (filename: string) =>
-        xmlValidation(x => {
+        xmlValidation((x) => {
             // Configure DOM properties for namespace selection.
             x.setProperty("SelectionLanguage", "XPath");
             const ns = "xmlns:x='urn:book'";
@@ -243,7 +255,7 @@ ${x.xml}
 // https://msdn.microsoft.com/en-us/library/ms766439(v=vs.85).aspx
 {
     const validateFile = (filename: string) =>
-        xmlValidation(xd => {
+        xmlValidation((xd) => {
             // Create a schema cache and add books.xsd to it.
             const xs = new ActiveXObject("Msxml2.XMLSchemaCache");
             xs.add("urn:books", "sc.xsd");
@@ -262,7 +274,7 @@ ${x.xml}
 // https://msdn.microsoft.com/en-us/library/ms767636(v=vs.85).aspx
 {
     const validateFile = (filename: string) =>
-        xmlValidation(x => {
+        xmlValidation((x) => {
             x.setProperty("UseInlineSchema", true);
             x.load(filename);
         });
@@ -319,7 +331,9 @@ ${oError.reason}`;
 
     // validate all children of all book node, //book/*, node by node
     oNodes = oXMLDoc.selectNodes("//book/*");
-    WScript.Echo("Validating all children of all book nodes, \"//book/*, one by one...");
+    WScript.Echo(
+        'Validating all children of all book nodes, "//book/*, one by one...',
+    );
     for (let i = 0; i < oNodes.length; i++) {
         const oNode = oNodes.item(i);
         oError = oXMLDoc.validateNode(oNode);

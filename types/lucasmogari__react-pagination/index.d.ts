@@ -50,4 +50,6 @@ export interface UseNavigationPayload {
     setMaxPageItems: (maxPageItems: number) => void;
 }
 
-export function useNavigation(parameters: UseNavigationParameters): UseNavigationPayload;
+export function useNavigation(
+    parameters: UseNavigationParameters,
+): UseNavigationPayload;

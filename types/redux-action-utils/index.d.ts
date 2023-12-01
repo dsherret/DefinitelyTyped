@@ -13,17 +13,29 @@ export interface OptionsActionCreator<T> {
 /**
  * Creates an action creator which will create an action object with the given type.
  */
-export declare function actionCreator<T>(type: string, ...props: string[]): ActionCreator<T>;
+export declare function actionCreator<T>(
+    type: string,
+    ...props: string[]
+): ActionCreator<T>;
 /**
  * Creates an action creator which will create an action object with the given type.
  */
-export declare function actionCreator<T>(type: string, props: string[]): ActionCreator<T>;
+export declare function actionCreator<T>(
+    type: string,
+    props: string[],
+): ActionCreator<T>;
 
 /**
  * Creates an action creator which takes a single object argument and adds its properties to the action object.
  */
-export declare function optionsActionCreator<T>(type: string, ...props: string[]): OptionsActionCreator<T>;
+export declare function optionsActionCreator<T>(
+    type: string,
+    ...props: string[]
+): OptionsActionCreator<T>;
 /**
  * Creates an action creator which takes a single object argument and adds its properties to the action object.
  */
-export declare function optionsActionCreator<T>(type: string, props: string[]): OptionsActionCreator<T>;
+export declare function optionsActionCreator<T>(
+    type: string,
+    props: string[],
+): OptionsActionCreator<T>;

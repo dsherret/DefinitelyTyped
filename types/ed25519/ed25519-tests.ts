@@ -8,7 +8,11 @@ function signAndValidatePlaintext() {
     const plaintext = Buffer.from("plaintext");
     const signature: Buffer = ed25519.Sign(plaintext, keyPair.privateKey);
 
-    const matches: boolean = ed25519.Verify(plaintext, signature, keyPair.publicKey);
+    const matches: boolean = ed25519.Verify(
+        plaintext,
+        signature,
+        keyPair.publicKey,
+    );
     if (!matches) {
         throw new Error("Sign and verify should work for the same plaintext");
     }

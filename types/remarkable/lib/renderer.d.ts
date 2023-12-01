@@ -18,11 +18,19 @@ declare class Renderer {
      * Render a string of inline HTML with the given `tokens` and
      * `options`.
      */
-    renderInline(tokens: Remarkable.Token[], options: Remarkable.Options, env: Remarkable.Env): string;
+    renderInline(
+        tokens: Remarkable.Token[],
+        options: Remarkable.Options,
+        env: Remarkable.Env,
+    ): string;
 
     /**
      * Render a string of HTML with the given `tokens` and
      * `options`.
      */
-    render(tokens: Remarkable.Token[], options: Remarkable.Options, env: Remarkable.Env): string;
+    render(
+        tokens: Remarkable.Token[],
+        options: Remarkable.Options,
+        env: Remarkable.Env,
+    ): string;
 }

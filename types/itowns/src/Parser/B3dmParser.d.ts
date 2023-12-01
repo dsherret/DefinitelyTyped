@@ -26,12 +26,15 @@ export const glTFLoader: GLTFLoader;
 //     }): any;
 // };
 declare namespace _default {
-    function parse(buffer: ArrayBuffer, options: {
-        gltfUpAxis?: string | undefined;
-        urlBase: string;
-        doNotPatchMaterial?: boolean | undefined;
-        opacity?: any;
-        overrideMaterials?: any;
-    }): Promise<any>;
+    function parse(
+        buffer: ArrayBuffer,
+        options: {
+            gltfUpAxis?: string | undefined;
+            urlBase: string;
+            doNotPatchMaterial?: boolean | undefined;
+            opacity?: any;
+            overrideMaterials?: any;
+        },
+    ): Promise<any>;
 }
 export default _default;

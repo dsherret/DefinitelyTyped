@@ -33,71 +33,128 @@ declare class SCServer extends EventEmitter {
 
     constructor(options?: SCServer.SCServerOptions);
 
-    on(event: "connection", listener: SCServer.connectionListenerFunction): this;
+    on(
+        event: "connection",
+        listener: SCServer.connectionListenerFunction,
+    ): this;
     on(event: "ready", listener: () => void): this;
     on(event: "warning" | "error", listener: (error: Error) => void): this;
-    on(event: "disconnection" | "connectionAbort" | "closure", listener: SCServer.disconnectionListenerFunction): this;
-    on(event: "subscription", listener: SCServer.subscriptionListenerFunction): this;
-    on(event: "unsubscription", listener: SCServer.unsubscriptionListenerFunction): this;
+    on(
+        event: "disconnection" | "connectionAbort" | "closure",
+        listener: SCServer.disconnectionListenerFunction,
+    ): this;
+    on(
+        event: "subscription",
+        listener: SCServer.subscriptionListenerFunction,
+    ): this;
+    on(
+        event: "unsubscription",
+        listener: SCServer.unsubscriptionListenerFunction,
+    ): this;
     on(event: "handshake", listener: SCServer.handshakeListenerFunction): this;
-    on(event: "badSocketAuthToken", listener: SCServer.badSocketAuthTokenListenerFunction): this;
+    on(
+        event: "badSocketAuthToken",
+        listener: SCServer.badSocketAuthTokenListenerFunction,
+    ): this;
 
     addMiddleware(
         type: "handshakeWS",
-        middlewareFn: (req: IncomingMessage, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: IncomingMessage,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "handshakeSC",
-        middlewareFn: (req: SCServer.HandshakeSCRequest, next: SCServer.nextHandshakeSCMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.HandshakeSCRequest,
+            next: SCServer.nextHandshakeSCMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "authenticate",
-        middlewareFn: (req: SCServer.AuthenticateRequest, next: SCServer.nextAuthenticateMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.AuthenticateRequest,
+            next: SCServer.nextAuthenticateMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "subscribe",
-        middlewareFn: (req: SCServer.SubscribeRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.SubscribeRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "publishIn",
-        middlewareFn: (req: SCServer.PublishInRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.PublishInRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "publishOut",
-        middlewareFn: (req: SCServer.PublishOutRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.PublishOutRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     addMiddleware(
         type: "emit",
-        middlewareFn: (req: SCServer.EmitRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.EmitRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
 
     removeMiddleware(
         type: "handshakeWS",
-        middlewareFn: (req: IncomingMessage, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: IncomingMessage,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "handshakeSC",
-        middlewareFn: (req: SCServer.HandshakeSCRequest, next: SCServer.nextHandshakeSCMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.HandshakeSCRequest,
+            next: SCServer.nextHandshakeSCMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "authenticate",
-        middlewareFn: (req: SCServer.AuthenticateRequest, next: SCServer.nextAuthenticateMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.AuthenticateRequest,
+            next: SCServer.nextAuthenticateMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "subscribe",
-        middlewareFn: (req: SCServer.SubscribeRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.SubscribeRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "publishIn",
-        middlewareFn: (req: SCServer.PublishInRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.PublishInRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "publishOut",
-        middlewareFn: (req: SCServer.PublishOutRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.PublishOutRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
     removeMiddleware(
         type: "emit",
-        middlewareFn: (req: SCServer.EmitRequest, next: SCServer.nextMiddlewareFunction) => void,
+        middlewareFn: (
+            req: SCServer.EmitRequest,
+            next: SCServer.nextMiddlewareFunction,
+        ) => void,
     ): void;
 
     setAuthEngine(authEngine: SCAuthEngine): void;
@@ -111,7 +168,10 @@ declare class SCServer extends EventEmitter {
     getPath(): string;
     generateId(): string;
 
-    verifyHandshake(info: SCServer.VerifyHandshakeInfo, cb: SCServer.verifyHandshakeFunction): void;
+    verifyHandshake(
+        info: SCServer.VerifyHandshakeInfo,
+        cb: SCServer.verifyHandshakeFunction,
+    ): void;
     verifyInboundEvent(
         socket: SCServerSocket,
         eventName: string,
@@ -394,14 +454,37 @@ declare namespace SCServer {
     }
 
     type nextMiddlewareFunction = (error?: true | string | Error) => void;
-    type nextHandshakeSCMiddlewareFunction = (error?: true | string | Error | null, statusCode?: number) => void;
-    type nextAuthenticateMiddlewareFunction = (error?: true | string | Error | null, isBadToken?: boolean) => void;
-    type connectionListenerFunction = (scSocket: SCServerSocket, serverSocketStatus: SCServerSocketStatus) => void;
-    type disconnectionListenerFunction = (scSocket: SCServerSocket, code: number, data: any) => void;
-    type subscriptionListenerFunction = (scSocket: SCServerSocket, name: string, options: { channel: string }) => void;
-    type unsubscriptionListenerFunction = (scSocket: SCServerSocket, channel: string) => void;
+    type nextHandshakeSCMiddlewareFunction = (
+        error?: true | string | Error | null,
+        statusCode?: number,
+    ) => void;
+    type nextAuthenticateMiddlewareFunction = (
+        error?: true | string | Error | null,
+        isBadToken?: boolean,
+    ) => void;
+    type connectionListenerFunction = (
+        scSocket: SCServerSocket,
+        serverSocketStatus: SCServerSocketStatus,
+    ) => void;
+    type disconnectionListenerFunction = (
+        scSocket: SCServerSocket,
+        code: number,
+        data: any,
+    ) => void;
+    type subscriptionListenerFunction = (
+        scSocket: SCServerSocket,
+        name: string,
+        options: { channel: string },
+    ) => void;
+    type unsubscriptionListenerFunction = (
+        scSocket: SCServerSocket,
+        channel: string,
+    ) => void;
     type handshakeListenerFunction = (scSocket: SCServerSocket) => void;
-    type badSocketAuthTokenListenerFunction = (scSocket: SCServerSocket, status: badAuthStatus) => void;
+    type badSocketAuthTokenListenerFunction = (
+        scSocket: SCServerSocket,
+        status: badAuthStatus,
+    ) => void;
 
     interface SCCodecEngine {
         decode: (input: any) => any;
@@ -413,5 +496,9 @@ declare namespace SCServer {
         origin?: string | undefined;
     }
 
-    type verifyHandshakeFunction = (success: boolean, errorCode?: number, errorMessage?: string) => void;
+    type verifyHandshakeFunction = (
+        success: boolean,
+        errorCode?: number,
+        errorMessage?: string,
+    ) => void;
 }

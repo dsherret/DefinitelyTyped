@@ -1,7 +1,19 @@
 import { ComponentType, ReactNode } from "react";
-import { Link, LinkProps, NavLinkProps, Route, RouteProps } from "react-router-dom";
+import {
+    Link,
+    LinkProps,
+    NavLinkProps,
+    Route,
+    RouteProps,
+} from "react-router-dom";
 
-export type AriaCurrent = "page" | "step" | "location" | "date" | "time" | "true";
+export type AriaCurrent =
+    | "page"
+    | "step"
+    | "location"
+    | "date"
+    | "time"
+    | "true";
 
 export interface NavTabProps extends NavLinkProps {
     style?: React.CSSProperties | undefined;

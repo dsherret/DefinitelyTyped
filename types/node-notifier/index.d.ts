@@ -8,12 +8,30 @@ import Growl = require("./notifiers/growl");
 
 declare namespace nodeNotifier {
     interface NodeNotifier extends NodeJS.EventEmitter {
-        notify(notification?: NotificationCenter.Notification, callback?: NotificationCallback): NotificationCenter;
-        notify(notification?: WindowsToaster.Notification, callback?: NotificationCallback): WindowsToaster;
-        notify(notification?: WindowsBalloon.Notification, callback?: NotificationCallback): WindowsBalloon;
-        notify(notification?: NotifySend.Notification, callback?: NotificationCallback): NotifySend;
-        notify(notification?: Growl.Notification, callback?: NotificationCallback): Growl;
-        notify(notification?: Notification | string, callback?: NotificationCallback): NodeNotifier;
+        notify(
+            notification?: NotificationCenter.Notification,
+            callback?: NotificationCallback,
+        ): NotificationCenter;
+        notify(
+            notification?: WindowsToaster.Notification,
+            callback?: NotificationCallback,
+        ): WindowsToaster;
+        notify(
+            notification?: WindowsBalloon.Notification,
+            callback?: NotificationCallback,
+        ): WindowsBalloon;
+        notify(
+            notification?: NotifySend.Notification,
+            callback?: NotificationCallback,
+        ): NotifySend;
+        notify(
+            notification?: Growl.Notification,
+            callback?: NotificationCallback,
+        ): Growl;
+        notify(
+            notification?: Notification | string,
+            callback?: NotificationCallback,
+        ): NodeNotifier;
         NotificationCenter: typeof NotificationCenter;
         NotifySend: typeof NotifySend;
         WindowsToaster: typeof WindowsToaster;
@@ -39,7 +57,11 @@ declare namespace nodeNotifier {
     }
 
     interface NotificationCallback {
-        (err: Error | null, response: string, metadata?: NotificationMetadata): void;
+        (
+            err: Error | null,
+            response: string,
+            metadata?: NotificationMetadata,
+        ): void;
     }
 
     interface Option {

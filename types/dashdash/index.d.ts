@@ -29,9 +29,13 @@ export class Parser {
  */
 export function addOptionType(optionType: OptionType): void;
 
-export function bashCompletionFromOptions(args: BashCompletionConfiguration): string;
+export function bashCompletionFromOptions(
+    args: BashCompletionConfiguration,
+): string;
 
-export function bashCompletionSpecFromOptions(args: BashCompletionSpecConfiguration): string;
+export function bashCompletionSpecFromOptions(
+    args: BashCompletionSpecConfiguration,
+): string;
 
 export function createParser(config: ParserConfiguration): Parser;
 

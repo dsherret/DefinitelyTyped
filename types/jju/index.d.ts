@@ -49,7 +49,7 @@ export interface StringifyOptions {
      * - If `mode` is 'json', default is "
      * - Otherwise, default is '
      */
-    quote?: "\"" | "'" | undefined;
+    quote?: '"' | "'" | undefined;
 
     /**
      * Whether keys quoting in objects is required or not.
@@ -73,7 +73,10 @@ export interface StringifyOptions {
      * If a function, used to transform the results.
      * If an array, acts as a approved list for selecting the object properties that will be stringified.
      */
-    replacer?: ((key: string, value: any) => any) | Array<number | string> | undefined;
+    replacer?:
+        | ((key: string, value: any) => any)
+        | Array<number | string>
+        | undefined;
 
     /**
      * Don't output trailing comma. If this option is set, arrays like `[1,2,3,]` will never be generated.
@@ -101,7 +104,13 @@ export interface Token {
     /** Raw text of this token. If you join all raws, you will get the original document. */
     raw: string;
     /** Type of the token. */
-    type: "whitespace" | "comment" | "key" | "literal" | "separator" | "newline";
+    type:
+        | "whitespace"
+        | "comment"
+        | "key"
+        | "literal"
+        | "separator"
+        | "newline";
     /** Path to the current token in the syntax tree. */
     stack: string[];
     /** Value of the token if token is a key or literal. */
@@ -143,7 +152,10 @@ export function parse(text: string, options?: ParseOptions): any;
  * @param reviver A function that transforms the results. This function is called for each member of the object.
  * If a member contains nested objects, the nested objects are transformed before the parent object is.
  */
-export function parse(text: string, reviver?: (key: any, value: any) => any): any;
+export function parse(
+    text: string,
+    reviver?: (key: any, value: any) => any,
+): any;
 
 /**
  * Convert javascript value to an appropriate json/json5 text.
@@ -158,7 +170,11 @@ export function stringify(value: any, options?: StringifyOptions): string;
  * @param replacer A function that transforms the results.
  * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
  */
-export function stringify(value: any, replacer?: (key: string, value: any) => any, space?: string | number): string;
+export function stringify(
+    value: any,
+    replacer?: (key: string, value: any) => any,
+    space?: string | number,
+): string;
 /**
  * Compatibility syntax (follows JSON specification).
  * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
@@ -166,7 +182,11 @@ export function stringify(value: any, replacer?: (key: string, value: any) => an
  * @param replacer An array of strings and numbers that acts as a approved list for selecting the object properties that will be stringified.
  * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
  */
-export function stringify(value: any, replacer?: Array<number | string> | null, space?: string | number): string;
+export function stringify(
+    value: any,
+    replacer?: Array<number | string> | null,
+    space?: string | number,
+): string;
 
 /**
  * Parse json/json5 text and return an array of tokens it consists of.
@@ -204,4 +224,8 @@ export function analyze(text: string, options?: ParseOptions): JsonStyle;
  * var output = jju.update(input, json, {mode: 'json'})
  * // output is '{"foo": "quux", "baz": 123, "hello": "world"}'
  */
-export function update(text: string, new_value: any, options?: ParseOptions & StringifyOptions): string;
+export function update(
+    text: string,
+    new_value: any,
+    options?: ParseOptions & StringifyOptions,
+): string;

@@ -1,7 +1,11 @@
 /// <reference types="node" />
 import type { ExecException } from "node:child_process";
 
-type ExecCallback = (error: ExecException | null, stdout: string, stderr: string) => void;
+type ExecCallback = (
+    error: ExecException | null,
+    stdout: string,
+    stderr: string,
+) => void;
 /**
  * Initializes a new Git repo in `path` asynchronously.
  *

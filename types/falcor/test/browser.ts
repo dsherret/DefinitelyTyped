@@ -1,6 +1,8 @@
-const model = new falcor.Model({ source: new falcor.HttpDataSource("/model.json") });
+const model = new falcor.Model({
+    source: new falcor.HttpDataSource("/model.json"),
+});
 
-model.get("greeting").then(response => {
+model.get("greeting").then((response) => {
     document.write(response.json.greeting);
 });
 

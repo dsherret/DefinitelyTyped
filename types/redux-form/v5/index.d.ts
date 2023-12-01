@@ -233,7 +233,12 @@ export interface ReduxFormProps<T> {
     handleSubmit(event: React.SyntheticEvent<T>): void;
     handleSubmit(event: React.MouseEvent<HTMLButtonElement>): void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    handleSubmit(submit: (data: FormData, dispatch?: Dispatch<any>) => Promise<any> | void): React.FormEventHandler<T>;
+    handleSubmit(
+        submit: (
+            data: FormData,
+            dispatch?: Dispatch<any>,
+        ) => Promise<any> | void,
+    ): React.FormEventHandler<T>;
 
     /**
      * Initializes the form data to the given values. All dirty and pristine
@@ -399,7 +404,11 @@ export interface ReduxFormConfig {
      *
      * See Asynchronous Blur Validation Example for more details.
      */
-    asyncValidate?(values: FormData, dispatch: Dispatch<any>, props: {}): Promise<any>;
+    asyncValidate?(
+        values: FormData,
+        dispatch: Dispatch<any>,
+        props: {},
+    ): Promise<any>;
 
     /**
      * A function that takes the entire Redux state and the reduxMountPoint

@@ -2,17 +2,21 @@ import ES5 = require("es-abstract/es5");
 import { expectType } from "./index.test";
 
 declare const any: unknown;
-const nullableObject: string | object | null | undefined = Math.random() < 0.5
-    ? (Math.random() < 0.5 ? undefined : null)
-    : Object("foo");
+const nullableObject: string | object | null | undefined =
+    Math.random() < 0.5
+        ? Math.random() < 0.5
+            ? undefined
+            : null
+        : Object("foo");
 
-const nullableMaybePromise = Math.random() < 0.5
-    ? Math.random() < 0.5
-        ? undefined
-        : null
-    : Math.random() < 0.5
-    ? ("bar" as string)
-    : Promise.resolve("baz");
+const nullableMaybePromise =
+    Math.random() < 0.5
+        ? Math.random() < 0.5
+            ? undefined
+            : null
+        : Math.random() < 0.5
+          ? ("bar" as string)
+          : Promise.resolve("baz");
 
 ES5.Type(undefined); // $ExpectType "Undefined"
 ES5.Type(null); // $ExpectType "Null"
@@ -24,8 +28,24 @@ ES5.Type({}); // $ExpectType "Object"
 ES5.Type([]); // $ExpectType "Object"
 
 // Can't use '$ExpectType' due to union type ordering weirdness:
-expectType<"String" | "Number" | "Boolean" | "Null" | "Undefined" | "Object" | undefined>(ES5.Type(any));
-expectType<"String" | "Number" | "Boolean" | "Null" | "Undefined" | "Object" | undefined>(ES5.Type<any>(any));
+expectType<
+    | "String"
+    | "Number"
+    | "Boolean"
+    | "Null"
+    | "Undefined"
+    | "Object"
+    | undefined
+>(ES5.Type(any));
+expectType<
+    | "String"
+    | "Number"
+    | "Boolean"
+    | "Null"
+    | "Undefined"
+    | "Object"
+    | undefined
+>(ES5.Type<any>(any));
 
 ES5.ToPrimitive(any); // $ExpectType string | number | bigint | boolean | symbol | null | undefined
 ES5.ToBoolean(any); // $ExpectType boolean

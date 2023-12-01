@@ -32,7 +32,10 @@ export default class Collection<T> {
     stringify(): string;
     sum(property: T extends object ? keyof T : never): number;
     take(count: number): Collection<T>;
-    static macro(name: string, callback: (coll: Collection<unknown>, ...args: unknown[]) => unknown): void;
+    static macro(
+        name: string,
+        callback: (coll: Collection<unknown>, ...args: unknown[]) => unknown,
+    ): void;
     unique(callback?: string | null | ((item: T) => any)): Collection<T>;
     values(): Collection<T>;
     where<K extends keyof T>(key: K, value: T[K]): Collection<T>;

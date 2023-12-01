@@ -1,6 +1,10 @@
 export = normalize;
 
-declare function normalize(data: normalize.Input, warn?: normalize.WarnFn, strict?: boolean): void;
+declare function normalize(
+    data: normalize.Input,
+    warn?: normalize.WarnFn,
+    strict?: boolean,
+): void;
 declare function normalize(data: normalize.Input, strict?: boolean): void;
 
 declare namespace normalize {
@@ -34,7 +38,10 @@ declare namespace normalize {
         engines?: { [type: string]: string } | undefined;
         license?: string | undefined;
         repository?: { type: string; url: string } | undefined;
-        bugs?: { url: string; email?: string | undefined } | { url?: string | undefined; email: string } | undefined;
+        bugs?:
+            | { url: string; email?: string | undefined }
+            | { url?: string | undefined; email: string }
+            | undefined;
         homepage?: string | undefined;
         scripts?: { [k: string]: string } | undefined;
         readme: string;

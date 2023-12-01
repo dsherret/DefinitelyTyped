@@ -12,7 +12,11 @@ rpio.open(12, rpio.OUTPUT, rpio.HIGH);
 rpio.open(13, rpio.OUTPUT);
 
 rpio.mode(12, rpio.INPUT); /* Switch P12 back to input mode */
-rpio.mode(13, rpio.INPUT, rpio.PULL_UP); /* Switch P13 back to input mode with the internal pullup resistor enabled */
+rpio.mode(
+    13,
+    rpio.INPUT,
+    rpio.PULL_UP,
+); /* Switch P13 back to input mode with the internal pullup resistor enabled */
 
 console.log("Pin 12 = %d", rpio.read(12));
 
@@ -31,11 +35,7 @@ rpio.write(13, rpio.HIGH);
 
 /* Write 1 0 1 0 1 0 1 0 to Pin 13 */
 buf = Buffer.alloc(8, rpio.LOW);
-buf[0] =
-    buf[2] =
-    buf[4] =
-    buf[6] =
-        rpio.HIGH;
+buf[0] = buf[2] = buf[4] = buf[6] = rpio.HIGH;
 rpio.writebuf(13, buf);
 
 /* Write 1 0 1 0 to Pin 13 */

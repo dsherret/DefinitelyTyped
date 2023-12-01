@@ -53,10 +53,14 @@ declare module "dgram" {
         sendBufferSize?: number | undefined;
         lookup?:
             | ((
-                hostname: string,
-                options: dns.LookupOneOptions,
-                callback: (err: NodeJS.ErrnoException | null, address: string, family: number) => void,
-            ) => void)
+                  hostname: string,
+                  options: dns.LookupOneOptions,
+                  callback: (
+                      err: NodeJS.ErrnoException | null,
+                      address: string,
+                      family: number,
+                  ) => void,
+              ) => void)
             | undefined;
     }
     /**
@@ -82,8 +86,14 @@ declare module "dgram" {
      * @param options Available options are:
      * @param callback Attached as a listener for `'message'` events. Optional.
      */
-    function createSocket(type: SocketType, callback?: (msg: Buffer, rinfo: RemoteInfo) => void): Socket;
-    function createSocket(options: SocketOptions, callback?: (msg: Buffer, rinfo: RemoteInfo) => void): Socket;
+    function createSocket(
+        type: SocketType,
+        callback?: (msg: Buffer, rinfo: RemoteInfo) => void,
+    ): Socket;
+    function createSocket(
+        options: SocketOptions,
+        callback?: (msg: Buffer, rinfo: RemoteInfo) => void,
+    ): Socket;
     /**
      * Encapsulates the datagram functionality.
      *
@@ -119,7 +129,10 @@ declare module "dgram" {
          * ```
          * @since v0.6.9
          */
-        addMembership(multicastAddress: string, multicastInterface?: string): void;
+        addMembership(
+            multicastAddress: string,
+            multicastInterface?: string,
+        ): void;
         /**
          * Returns an object containing the address information for a socket.
          * For UDP sockets, this object will contain `address`, `family` and `port`properties.
@@ -214,7 +227,10 @@ declare module "dgram" {
          * drop membership on all valid interfaces.
          * @since v0.6.9
          */
-        dropMembership(multicastAddress: string, multicastInterface?: string): void;
+        dropMembership(
+            multicastAddress: string,
+            multicastInterface?: string,
+        ): void;
         /**
          * This method throws `ERR_SOCKET_BUFFER_SIZE` if called on an unbound socket.
          * @since v8.7.0
@@ -518,7 +534,11 @@ declare module "dgram" {
          * port, listening on all interfaces.
          * @since v13.1.0, v12.16.0
          */
-        addSourceSpecificMembership(sourceAddress: string, groupAddress: string, multicastInterface?: string): void;
+        addSourceSpecificMembership(
+            sourceAddress: string,
+            groupAddress: string,
+            multicastInterface?: string,
+        ): void;
         /**
          * Instructs the kernel to leave a source-specific multicast channel at the given`sourceAddress` and `groupAddress` using the `IP_DROP_SOURCE_MEMBERSHIP`socket option. This method is
          * automatically called by the kernel when the
@@ -529,7 +549,11 @@ declare module "dgram" {
          * drop membership on all valid interfaces.
          * @since v13.1.0, v12.16.0
          */
-        dropSourceSpecificMembership(sourceAddress: string, groupAddress: string, multicastInterface?: string): void;
+        dropSourceSpecificMembership(
+            sourceAddress: string,
+            groupAddress: string,
+            multicastInterface?: string,
+        ): void;
         /**
          * events.EventEmitter
          * 1. close
@@ -543,7 +567,10 @@ declare module "dgram" {
         addListener(event: "connect", listener: () => void): this;
         addListener(event: "error", listener: (err: Error) => void): this;
         addListener(event: "listening", listener: () => void): this;
-        addListener(event: "message", listener: (msg: Buffer, rinfo: RemoteInfo) => void): this;
+        addListener(
+            event: "message",
+            listener: (msg: Buffer, rinfo: RemoteInfo) => void,
+        ): this;
         emit(event: string | symbol, ...args: any[]): boolean;
         emit(event: "close"): boolean;
         emit(event: "connect"): boolean;
@@ -555,25 +582,46 @@ declare module "dgram" {
         on(event: "connect", listener: () => void): this;
         on(event: "error", listener: (err: Error) => void): this;
         on(event: "listening", listener: () => void): this;
-        on(event: "message", listener: (msg: Buffer, rinfo: RemoteInfo) => void): this;
+        on(
+            event: "message",
+            listener: (msg: Buffer, rinfo: RemoteInfo) => void,
+        ): this;
         once(event: string, listener: (...args: any[]) => void): this;
         once(event: "close", listener: () => void): this;
         once(event: "connect", listener: () => void): this;
         once(event: "error", listener: (err: Error) => void): this;
         once(event: "listening", listener: () => void): this;
-        once(event: "message", listener: (msg: Buffer, rinfo: RemoteInfo) => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
+        once(
+            event: "message",
+            listener: (msg: Buffer, rinfo: RemoteInfo) => void,
+        ): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependListener(event: "close", listener: () => void): this;
         prependListener(event: "connect", listener: () => void): this;
         prependListener(event: "error", listener: (err: Error) => void): this;
         prependListener(event: "listening", listener: () => void): this;
-        prependListener(event: "message", listener: (msg: Buffer, rinfo: RemoteInfo) => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "message",
+            listener: (msg: Buffer, rinfo: RemoteInfo) => void,
+        ): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
         prependOnceListener(event: "connect", listener: () => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
         prependOnceListener(event: "listening", listener: () => void): this;
-        prependOnceListener(event: "message", listener: (msg: Buffer, rinfo: RemoteInfo) => void): this;
+        prependOnceListener(
+            event: "message",
+            listener: (msg: Buffer, rinfo: RemoteInfo) => void,
+        ): this;
         /**
          * Calls `socket.close()` and returns a promise that fulfills when the socket has closed.
          * @since v18.18.0

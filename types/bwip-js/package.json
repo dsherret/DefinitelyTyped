@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/bwip-js",
-    "version": "3.2.9999",
-    "projects": [
-        "https://github.com/metafloor/bwip-js"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/bwip-js",
+  "version": "3.2.9999",
+  "projects": [
+    "https://github.com/metafloor/bwip-js"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/bwip-js": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "TANAKA Koichi",
+      "githubUsername": "MugeSo"
     },
-    "devDependencies": {
-        "@types/bwip-js": "workspace:."
+    {
+      "name": "Guillaume VanderEst",
+      "githubUsername": "gvanderest"
     },
-    "owners": [
-        {
-            "name": "TANAKA Koichi",
-            "githubUsername": "MugeSo"
-        },
-        {
-            "name": "Guillaume VanderEst",
-            "githubUsername": "gvanderest"
-        },
-        {
-            "name": "Ryan Jentzsch",
-            "githubUsername": "RyanNerd"
-        }
-    ]
+    {
+      "name": "Ryan Jentzsch",
+      "githubUsername": "RyanNerd"
+    }
+  ]
 }

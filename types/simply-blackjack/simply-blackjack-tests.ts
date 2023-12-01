@@ -8,7 +8,7 @@ const game = new Blackjack({
     },
 });
 
-game.on("end", table => {
+game.on("end", (table) => {
     console.log(table);
 });
 

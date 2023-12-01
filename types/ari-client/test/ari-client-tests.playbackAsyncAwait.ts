@@ -5,7 +5,11 @@ import util = require("util");
 
 export default async () => {
     try {
-        const client = await Ari.connect("http://ari.js:8088", "user", "secret");
+        const client = await Ari.connect(
+            "http://ari.js:8088",
+            "user",
+            "secret",
+        );
 
         // Use once to start the application
         client.once("StasisStart", async (event, incoming) => {
@@ -15,11 +19,17 @@ export default async () => {
             const playback = incoming._client.Playback();
 
             // Play demo greeting and register dtmf event listeners
-            const newPlayback = await incoming.play({ media: "sound:demo-congrats" }, playback);
+            const newPlayback = await incoming.play(
+                { media: "sound:demo-congrats" },
+                playback,
+            );
             registerDtmfListeners(newPlayback, incoming);
         });
 
-        const registerDtmfListeners = (playback: Playback, incoming: Channel) => {
+        const registerDtmfListeners = (
+            playback: Playback,
+            incoming: Channel,
+        ) => {
             incoming.on("ChannelDtmfReceived", async (event, channel) => {
                 const digit = event.digit;
                 switch (digit) {

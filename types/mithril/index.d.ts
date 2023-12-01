@@ -2,7 +2,10 @@
 declare function render(el: Element, vnodes: Mithril.Children): void;
 
 /** Mounts a component to a DOM element, enabling it to autoredraw on user events. */
-declare function mount(element: Element, component: Mithril.ComponentTypes<any, any>): void;
+declare function mount(
+    element: Element,
+    component: Mithril.ComponentTypes<any, any>,
+): void;
 /** Unmounts a component from a DOM element. */
 declare function mount(element: Element, component: null): void; // tslint:disable-line unified-signatures
 
@@ -13,14 +16,24 @@ declare function censor<
 >(object: O, extra: E): Omit<Mithril._NoLifecycle<O>, E[number]>;
 
 /** Makes an XHR request and returns a promise. */
-declare function request<T>(options: Mithril.RequestOptions<T> & { url: string }): Promise<T>;
+declare function request<T>(
+    options: Mithril.RequestOptions<T> & { url: string },
+): Promise<T>;
 /** Makes an XHR request and returns a promise. */
-declare function request<T>(url: string, options?: Mithril.RequestOptions<T>): Promise<T>;
+declare function request<T>(
+    url: string,
+    options?: Mithril.RequestOptions<T>,
+): Promise<T>;
 
 /** Makes a JSON-P request and returns a promise. */
-declare function jsonp<T>(options: Mithril.JsonpOptions & { url: string }): Promise<T>; // eslint-disable-line @definitelytyped/no-unnecessary-generics
+declare function jsonp<T>(
+    options: Mithril.JsonpOptions & { url: string },
+): Promise<T>; // eslint-disable-line @definitelytyped/no-unnecessary-generics
 /** Makes a JSON-P request and returns a promise. */
-declare function jsonp<T>(url: string, options?: Mithril.JsonpOptions): Promise<T>; // eslint-disable-line @definitelytyped/no-unnecessary-generics
+declare function jsonp<T>(
+    url: string,
+    options?: Mithril.JsonpOptions,
+): Promise<T>; // eslint-disable-line @definitelytyped/no-unnecessary-generics
 
 declare namespace Mithril {
     interface CommonAttributes<Attrs, State> {
@@ -30,12 +43,19 @@ declare namespace Mithril {
         oncreate?(this: State, vnode: VnodeDOM<Attrs, State>): any;
         /** The onbeforeremove hook is called before a DOM element is detached from the document. If a Promise is returned, Mithril only detaches the DOM element after the promise completes. */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        onbeforeremove?(this: State, vnode: VnodeDOM<Attrs, State>): Promise<any> | void;
+        onbeforeremove?(
+            this: State,
+            vnode: VnodeDOM<Attrs, State>,
+        ): Promise<any> | void;
         /** The onremove hook is called before a DOM element is removed from the document. */
         onremove?(this: State, vnode: VnodeDOM<Attrs, State>): any;
         /** The onbeforeupdate hook is called before a vnode is diffed in a update. */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        onbeforeupdate?(this: State, vnode: Vnode<Attrs, State>, old: VnodeDOM<Attrs, State>): boolean | void;
+        onbeforeupdate?(
+            this: State,
+            vnode: Vnode<Attrs, State>,
+            old: VnodeDOM<Attrs, State>,
+        ): boolean | void;
         /** The onupdate hook is called after a DOM element is updated, while attached to the document. */
         onupdate?(this: State, vnode: VnodeDOM<Attrs, State>): any;
         /** A key to optionally associate with this element. */
@@ -50,9 +70,16 @@ declare namespace Mithril {
             ...args: Children[]
         ): Vnode<Attrs, State>;
         /** Creates a virtual element (Vnode). */
-        (selector: string, attributes: Attributes, ...children: Children[]): Vnode<any, any>;
+        (
+            selector: string,
+            attributes: Attributes,
+            ...children: Children[]
+        ): Vnode<any, any>;
         /** Creates a virtual element (Vnode). */
-        <Attrs, State>(component: ComponentTypes<Attrs, State>, ...args: Children[]): Vnode<Attrs, State>;
+        <Attrs, State>(
+            component: ComponentTypes<Attrs, State>,
+            ...args: Children[]
+        ): Vnode<Attrs, State>;
         /** Creates a virtual element (Vnode). */
         (selector: string, ...children: Children[]): Vnode<any, any>;
         /** Creates a fragment virtual element (Vnode). */
@@ -141,7 +168,7 @@ declare namespace Mithril {
         /** Headers to append to the request before sending it. */
         headers?: { [key: string]: string } | undefined;
         /** A constructor to be applied to each object in the response. */
-        type?: new(o: any) => any;
+        type?: new (o: any) => any;
         /** A serialization method to be applied to data. Defaults to JSON.stringify, or if options.data is an instance of FormData, defaults to the identity function. */
         serialize?(data: any): any;
         /** A deserialization method to be applied to the response. Defaults to a small wrapper around JSON.parse that returns null for empty responses. */
@@ -159,7 +186,14 @@ declare namespace Mithril {
         /** Milliseconds a request can take before automatically being terminated. */
         timeout?: number | undefined;
         /** The expected type of the response, as a legal value of XMLHttpRequest.responseType. */
-        responseType?: "" | "arraybuffer" | "blob" | "document" | "json" | "text" | undefined;
+        responseType?:
+            | ""
+            | "arraybuffer"
+            | "blob"
+            | "document"
+            | "json"
+            | "text"
+            | undefined;
     }
 
     interface JsonpOptions {
@@ -168,7 +202,7 @@ declare namespace Mithril {
         /** The data to be serialized into the request body. */
         body?: any;
         /** A constructor to be applied to each object in the response. */
-        type?: new(o: any) => any;
+        type?: new (o: any) => any;
         /** The name of the function that will be called as the callback. */
         callbackName?: string | undefined;
         /** The name of the querystring parameter name that specifies the callback name. */
@@ -258,9 +292,15 @@ declare namespace Mithril {
      */
     interface Component<Attrs = {}, State = {}> {
         /** The oninit hook is called before a vnode is touched by the virtual DOM engine. */
-        oninit?(this: _NoLifecycle<this & State>, vnode: Vnode<Attrs, _NoLifecycle<this & State>>): any;
+        oninit?(
+            this: _NoLifecycle<this & State>,
+            vnode: Vnode<Attrs, _NoLifecycle<this & State>>,
+        ): any;
         /** The oncreate hook is called after a DOM element is created and attached to the document. */
-        oncreate?(this: _NoLifecycle<this & State>, vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>): any;
+        oncreate?(
+            this: _NoLifecycle<this & State>,
+            vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>,
+        ): any;
         /** The onbeforeremove hook is called before a DOM element is detached from the document. If a Promise is returned, Mithril only detaches the DOM element after the promise completes. */
         onbeforeremove?(
             this: _NoLifecycle<this & State>,
@@ -268,7 +308,10 @@ declare namespace Mithril {
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): Promise<any> | void;
         /** The onremove hook is called before a DOM element is removed from the document. */
-        onremove?(this: _NoLifecycle<this & State>, vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>): any;
+        onremove?(
+            this: _NoLifecycle<this & State>,
+            vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>,
+        ): any;
         /** The onbeforeupdate hook is called before a vnode is diffed in a update. */
         onbeforeupdate?(
             this: _NoLifecycle<this & State>,
@@ -277,10 +320,16 @@ declare namespace Mithril {
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): boolean | void;
         /** The onupdate hook is called after a DOM element is updated, while attached to the document. */
-        onupdate?(this: _NoLifecycle<this & State>, vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>): any;
+        onupdate?(
+            this: _NoLifecycle<this & State>,
+            vnode: VnodeDOM<Attrs, _NoLifecycle<this & State>>,
+        ): any;
         /** Creates a view out of virtual elements. */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        view(this: _NoLifecycle<this & State>, vnode: Vnode<Attrs, _NoLifecycle<this & State>>): Children | null | void;
+        view(
+            this: _NoLifecycle<this & State>,
+            vnode: Vnode<Attrs, _NoLifecycle<this & State>>,
+        ): Children | null | void;
     }
 
     /**
@@ -300,7 +349,10 @@ declare namespace Mithril {
         onremove?(vnode: VnodeDOM<A, this>): any;
         /** The onbeforeupdate hook is called before a vnode is diffed in a update. */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        onbeforeupdate?(vnode: Vnode<A, this>, old: VnodeDOM<A, this>): boolean | void;
+        onbeforeupdate?(
+            vnode: Vnode<A, this>,
+            old: VnodeDOM<A, this>,
+        ): boolean | void;
         /** The onupdate hook is called after a DOM element is updated, while attached to the document. */
         onupdate?(vnode: VnodeDOM<A, this>): any;
         /** Creates a view out of virtual elements. */
@@ -326,12 +378,13 @@ declare namespace Mithril {
      * Components are a mechanism to encapsulate parts of a view to make code easier to organize and/or reuse.
      * Any Javascript object that has a view method is a Mithril component. Components can be consumed via the m() utility.
      */
-    type Comp<Attrs = {}, State = {}> = _NoLifecycle<State> & Component<Attrs, _NoLifecycle<State>>;
+    type Comp<Attrs = {}, State = {}> = _NoLifecycle<State> &
+        Component<Attrs, _NoLifecycle<State>>;
 
     /** Components are a mechanism to encapsulate parts of a view to make code easier to organize and/or reuse. Components can be consumed via the m() utility. */
     type ComponentTypes<A = {}, S = {}> =
         | Component<A, S>
-        | { new(vnode: CVnode<A>): ClassComponent<A> }
+        | { new (vnode: CVnode<A>): ClassComponent<A> }
         | FactoryComponent<A>;
 
     /** This represents the attributes available for configuring virtual elements, beyond the applicable DOM attributes. */

@@ -562,7 +562,9 @@ export interface RNChannelIO {
      *
      * @see  https://developers.channel.io/docs/react-native-callbacks#onpushnotificationclicked
      */
-    onPushNotificationClicked(callback?: (chatId: string, next: () => void) => void): void;
+    onPushNotificationClicked(
+        callback?: (chatId: string, next: () => void) => void,
+    ): void;
 }
 
 /**

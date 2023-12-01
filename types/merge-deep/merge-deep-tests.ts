@@ -34,8 +34,16 @@ moreExtended.test === 2;
 moreExtended.iamone;
 moreExtended.iamtwo;
 
-type DeepExtendedType = typeof objectBase & typeof objectOne & typeof objectTwo & typeof objectThree;
-const deepExtended: DeepExtendedType = merge(objectBase, objectOne, objectTwo, objectThree);
+type DeepExtendedType = typeof objectBase &
+    typeof objectOne &
+    typeof objectTwo &
+    typeof objectThree;
+const deepExtended: DeepExtendedType = merge(
+    objectBase,
+    objectOne,
+    objectTwo,
+    objectThree,
+);
 deepExtended.iamone;
 deepExtended.iamtwo;
 deepExtended.iamthree;

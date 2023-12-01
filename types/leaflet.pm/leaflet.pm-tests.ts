@@ -42,13 +42,21 @@ map.pm.toggleGlobalEditMode(editOptions);
 
 const shapes: string[] = map.pm.Draw.getShapes();
 
-const polygon: L.Polygon = L.polygon([[1.0, 1.0], [2.0, 1.0], [1.0, 2.0]]);
+const polygon: L.Polygon = L.polygon([
+    [1.0, 1.0],
+    [2.0, 1.0],
+    [1.0, 2.0],
+]);
 polygon.pm.enable(editOptions);
 polygon.pm.disable();
 polygon.pm.toggleEdit(editOptions);
 enabled = polygon.pm.enabled();
 
-const polyline: L.Polyline = L.polyline([[1.0, 1.0], [2.0, 1.0], [1.0, 2.0]]);
+const polyline: L.Polyline = L.polyline([
+    [1.0, 1.0],
+    [2.0, 1.0],
+    [1.0, 2.0],
+]);
 polyline.pm.enable(editOptions);
 polyline.pm.disable();
 polyline.pm.toggleEdit(editOptions);

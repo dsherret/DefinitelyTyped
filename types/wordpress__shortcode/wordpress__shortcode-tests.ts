@@ -1,7 +1,7 @@
 import * as shortcode from "@wordpress/shortcode";
 
 // $ExpectType ShortcodeAttrs
-shortcode.attrs("foo=foo bar baz=\"baz\"");
+shortcode.attrs('foo=foo bar baz="baz"');
 
 // $ExpectType void
 shortcode.attrs.clear();
@@ -16,7 +16,7 @@ shortcode.next("foo", "hello [foo] world");
 shortcode.next("foo", "hello [foo] world", 5);
 
 // $ExpectType string
-shortcode.replace("foo", "hello [foo] world", sc => sc.tag);
+shortcode.replace("foo", "hello [foo] world", (sc) => sc.tag);
 
 // $ExpectType string
 shortcode.string({ tag: "foo" });
@@ -29,7 +29,7 @@ shortcode.string({ tag: "foo", attrs: { named: { foo: "bar" } } });
 // ----------------------------------------------------------------------------
 
 // $ExpectType ShortcodeAttrs
-shortcode.default.attrs("foo=foo bar baz=\"baz\"");
+shortcode.default.attrs('foo=foo bar baz="baz"');
 
 // $ExpectType void
 shortcode.default.attrs.clear();
@@ -44,7 +44,7 @@ shortcode.default.next("foo", "hello [foo] world");
 shortcode.default.next("foo", "hello [foo] world", 5);
 
 // $ExpectType string
-shortcode.default.replace("foo", "hello [foo] world", sc => sc.tag);
+shortcode.default.replace("foo", "hello [foo] world", (sc) => sc.tag);
 
 // $ExpectType string
 shortcode.default.string({ tag: "foo" });
@@ -72,7 +72,4 @@ shortcodeInstance.get("foo");
 // $ExpectType string | undefined
 shortcodeInstance.get(0);
 
-shortcodeInstance
-    .set("foo", "bar")
-    .set("baz", "quux")
-    .set(0, "foobar");
+shortcodeInstance.set("foo", "bar").set("baz", "quux").set(0, "foobar");

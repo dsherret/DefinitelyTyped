@@ -9,7 +9,10 @@ const logger1 = bunyan.createLogger({
     stream: formatOut,
 });
 
-const formatOut2: NodeJS.WritableStream = new BunyanFormatWritable({ outputMode: "bunyan", levelInString: true });
+const formatOut2: NodeJS.WritableStream = new BunyanFormatWritable({
+    outputMode: "bunyan",
+    levelInString: true,
+});
 
 const logger2 = bunyan.createLogger({
     name: "formatOut2",
@@ -23,7 +26,10 @@ const logger3 = bunyan.createLogger({
     stream: formatOut3,
 });
 
-const formatOut4: NodeJS.WritableStream = BunyanFormatWritable({ outputMode: "bunyan", levelInString: true });
+const formatOut4: NodeJS.WritableStream = BunyanFormatWritable({
+    outputMode: "bunyan",
+    levelInString: true,
+});
 
 const logger4 = bunyan.createLogger({
     name: "formatOut4",

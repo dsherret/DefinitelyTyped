@@ -11,9 +11,21 @@ declare namespace leveldown {
     type ErrBufferCallback = (error: any, value: Buffer) => void;
     type ErrStringCallback = (error: any, value: string) => void;
     type KeyAsStringCallback = (error: any, key: string, value: Buffer) => void;
-    type ValueAsStringCallback = (error: any, key: Buffer, value: string) => void;
-    type KeyAndValueAsStringCallback = (error: any, key: string, value: string) => void;
-    type KeyAndValueAsBufferCallback = (error: any, key: Buffer, value: Buffer) => void;
+    type ValueAsStringCallback = (
+        error: any,
+        key: Buffer,
+        value: string,
+    ) => void;
+    type KeyAndValueAsStringCallback = (
+        error: any,
+        key: string,
+        value: string,
+    ) => void;
+    type KeyAndValueAsBufferCallback = (
+        error: any,
+        key: Buffer,
+        value: Buffer,
+    ) => void;
 
     interface PutBatch {
         type: "put";
@@ -117,21 +129,46 @@ declare namespace leveldown {
         open(options: OpenOptions, callback: ErrCallback): void;
         close(callback?: ErrCallback): void;
         put(key: Bytes, value: Bytes, callback: ErrCallback): void;
-        put(key: Bytes, value: Bytes, options: WriteOptions, callback: ErrCallback): void;
+        put(
+            key: Bytes,
+            value: Bytes,
+            options: WriteOptions,
+            callback: ErrCallback,
+        ): void;
         get(key: Bytes, callback: ErrBufferCallback): void;
-        get(key: Bytes, options: BufferReadOptions, callback: ErrBufferCallback): void;
-        get(key: Bytes, options: StringReadOptions, callback: ErrStringCallback): void;
+        get(
+            key: Bytes,
+            options: BufferReadOptions,
+            callback: ErrBufferCallback,
+        ): void;
+        get(
+            key: Bytes,
+            options: StringReadOptions,
+            callback: ErrStringCallback,
+        ): void;
         del(key: Bytes, callback?: ErrCallback): void;
         del(key: Bytes, options: WriteOptions, callback?: ErrCallback): void;
         batch(operations: Batch[], callback?: ErrCallback): void;
-        batch(operations: Batch[], options?: WriteOptions, callback?: ErrCallback): void;
-        approximateSize(start: Bytes, end: Bytes, callback: ErrNumberCallback): void;
+        batch(
+            operations: Batch[],
+            options?: WriteOptions,
+            callback?: ErrCallback,
+        ): void;
+        approximateSize(
+            start: Bytes,
+            end: Bytes,
+            callback: ErrNumberCallback,
+        ): void;
         compactRange(start: Bytes, end: Bytes, callback: ErrCallback): void;
         getProperty(property: string): string;
         iterator(options?: KeyAsStringIteratorOptions): KeyAsStringIterator;
         iterator(options?: ValueAsStringIteratorOptions): ValueAsStringIterator;
-        iterator(options?: KeyAndValueAsStringIteratorOptions): KeyAndValueAsStringIterator;
-        iterator(options?: KeyAndValueAsBufferIteratorOptions): KeyAndValueAsBufferIterator;
+        iterator(
+            options?: KeyAndValueAsStringIteratorOptions,
+        ): KeyAndValueAsStringIterator;
+        iterator(
+            options?: KeyAndValueAsBufferIteratorOptions,
+        ): KeyAndValueAsBufferIterator;
     }
 
     interface Constructor {

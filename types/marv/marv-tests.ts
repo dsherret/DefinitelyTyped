@@ -12,14 +12,14 @@ const driver: marv.Driver = {
     ensureMigrations: () => {},
     lockMigrations: () => {},
     unlockMigrations: () => {},
-    getMigrations: cb => cb(null, []),
+    getMigrations: (cb) => cb(null, []),
     runMigration: () => {},
 };
 
 function runMigrations() {
     marv.scan(directory, (err, migrations) => {
         if (err) throw err;
-        marv.migrate(migrations, driver, err => {
+        marv.migrate(migrations, driver, (err) => {
             if (err) throw err;
         });
     });
@@ -28,7 +28,7 @@ function runMigrations() {
 function runCallbackMigrations() {
     marvCallbacks.scan(directory, (err, migrations) => {
         if (err) throw err;
-        marvCallbacks.migrate(migrations, driver, err => {
+        marvCallbacks.migrate(migrations, driver, (err) => {
             if (err) throw err;
         });
     });

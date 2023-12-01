@@ -1,7 +1,11 @@
 /**
  * used to normalize mobile phone numbers into E.164 format
  */
-declare function phone(phoneNumber: string, countryCode?: string, allowLandLine?: boolean): string[];
+declare function phone(
+    phoneNumber: string,
+    countryCode?: string,
+    allowLandLine?: boolean,
+): string[];
 
 declare namespace phone {
     const iso3166_data: PhoneData[];

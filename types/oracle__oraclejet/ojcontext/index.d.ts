@@ -2,9 +2,9 @@ declare class BusyContext {
     addBusyState(options: {
         description:
             | {
-                toString: () => string;
-                [propName: string]: any;
-            }
+                  toString: () => string;
+                  [propName: string]: any;
+              }
             | (() => string)
             | string;
     }): () => void;
@@ -17,16 +17,16 @@ declare class BusyContext {
     }>;
     isReady(): boolean;
     toString(): string;
-    whenReady(timeout?: number): Promise<(boolean | Error)>;
+    whenReady(timeout?: number): Promise<boolean | Error>;
 }
 declare namespace Context {
     interface BusyContext {
         addBusyState(options: {
             description:
                 | {
-                    toString: () => string;
-                    [propName: string]: any;
-                }
+                      toString: () => string;
+                      [propName: string]: any;
+                  }
                 | (() => string)
                 | string;
         }): () => void;
@@ -39,7 +39,7 @@ declare namespace Context {
         }>;
         isReady(): boolean;
         toString(): string;
-        whenReady(timeout?: number): Promise<(boolean | Error)>;
+        whenReady(timeout?: number): Promise<boolean | Error>;
     }
 }
 declare class Context {

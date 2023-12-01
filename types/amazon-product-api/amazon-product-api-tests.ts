@@ -19,11 +19,14 @@ let searchQuery = {
     responseGroup: "ItemAttributes,Offers,Images",
 };
 
-client.itemSearch(searchQuery).then((results) => {
-    console.log(getResultCount(results) + " search results");
-}).catch(function(err) {
-    console.log(err);
-});
+client
+    .itemSearch(searchQuery)
+    .then((results) => {
+        console.log(getResultCount(results) + " search results");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
 
 client.itemSearch(searchQuery, (err, results) => {
     if (err) {
@@ -42,11 +45,14 @@ let lookupQuery = {
     condition: "All",
 };
 
-client.itemLookup(lookupQuery).then((results) => {
-    console.log(getResultCount(results) + " lookup results");
-}).catch(function(err) {
-    console.log(err);
-});
+client
+    .itemLookup(lookupQuery)
+    .then((results) => {
+        console.log(getResultCount(results) + " lookup results");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
 
 client.itemLookup(lookupQuery, (err, results) => {
     if (err) {
@@ -63,11 +69,14 @@ let lookupQueryWithItemIdArray = {
     condition: "All",
 };
 
-client.itemLookup(lookupQueryWithItemIdArray).then((results) => {
-    console.log(getResultCount(results) + " lookup results");
-}).catch(function(err) {
-    console.log(err);
-});
+client
+    .itemLookup(lookupQueryWithItemIdArray)
+    .then((results) => {
+        console.log(getResultCount(results) + " lookup results");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
 
 // Browse Node Lookup
 
@@ -75,11 +84,14 @@ let nodeLookupQuery = {
     browseNodeId: "2625373011",
 };
 
-client.browseNodeLookup(nodeLookupQuery).then((results) => {
-    console.log(getResultCount(results) + " node lookup results");
-}).catch(function(err) {
-    console.log(err);
-});
+client
+    .browseNodeLookup(nodeLookupQuery)
+    .then((results) => {
+        console.log(getResultCount(results) + " node lookup results");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
 
 client.browseNodeLookup(nodeLookupQuery, (err, results) => {
     if (err) {

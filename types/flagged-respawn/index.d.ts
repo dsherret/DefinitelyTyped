@@ -15,5 +15,9 @@ declare function flaggedRespawn(
 ): void;
 
 declare namespace flaggedRespawn {
-    type Callback = (ready: boolean, proc: NodeJS.Process, argv: string[]) => void;
+    type Callback = (
+        ready: boolean,
+        proc: NodeJS.Process,
+        argv: string[],
+    ) => void;
 }

@@ -7,7 +7,12 @@ import { Encodable } from "rsocket-types";
  */
 export interface Encoder<T extends Encodable> {
     byteLength: (value: Encodable) => number;
-    encode: (value: Encodable, buffer: Buffer, start: number, end: number) => number;
+    encode: (
+        value: Encodable,
+        buffer: Buffer,
+        start: number,
+        end: number,
+    ) => number;
     decode: (buffer: Buffer, start: number, end: number) => T;
 }
 

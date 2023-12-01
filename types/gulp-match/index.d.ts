@@ -11,10 +11,20 @@ interface StatFilterCondition {
  *
  * Condition can be a boolean, a function, a regular expression, a glob string (or array of glob strings), or a stat filter object.
  */
-declare function gulpMatch(file: vinyl, condition: gulpMatch.MatchCondition, options?: minimatch.IOptions): boolean;
+declare function gulpMatch(
+    file: vinyl,
+    condition: gulpMatch.MatchCondition,
+    options?: minimatch.IOptions,
+): boolean;
 
 declare namespace gulpMatch {
-    type MatchCondition = boolean | ((fs: vinyl) => boolean) | RegExp | string | string[] | StatFilterCondition;
+    type MatchCondition =
+        | boolean
+        | ((fs: vinyl) => boolean)
+        | RegExp
+        | string
+        | string[]
+        | StatFilterCondition;
 }
 
 export = gulpMatch;

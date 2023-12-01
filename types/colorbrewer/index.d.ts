@@ -15,16 +15,62 @@ declare namespace ColorBrewer {
     }
 
     interface NineColorScheme extends EightColorScheme {
-        9: [string, string, string, string, string, string, string, string, string];
+        9: [
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+        ];
     }
 
     interface ElevenColorScheme extends NineColorScheme {
-        10: [string, string, string, string, string, string, string, string, string, string];
-        11: [string, string, string, string, string, string, string, string, string, string, string];
+        10: [
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+        ];
+        11: [
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+        ];
     }
 
     interface TwelveColorScheme extends ElevenColorScheme {
-        12: [string, string, string, string, string, string, string, string, string, string, string, string];
+        12: [
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+            string,
+        ];
     }
 
     interface Base {

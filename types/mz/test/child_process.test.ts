@@ -13,15 +13,26 @@ cp.exec("node --version", (err, stdout) => {
     stdout; // $ExpectType string
 });
 
-declare function execStringCallback(err: cp.ExecException | null, stdout: string, stderr: string): void;
-declare function execBufferCallback(err: cp.ExecException | null, stdout: Buffer, stderr: Buffer): void;
+declare function execStringCallback(
+    err: cp.ExecException | null,
+    stdout: string,
+    stderr: string,
+): void;
+declare function execBufferCallback(
+    err: cp.ExecException | null,
+    stdout: Buffer,
+    stderr: Buffer,
+): void;
 
 declare const command: string;
 declare const stringEncoding: BufferEncoding;
 declare const bufferEncoding: "buffer" | null | undefined;
 declare const anyEncoding: string | null | undefined;
 
-declare const unknownEncodingObject: { encoding: typeof anyEncoding } | null | undefined;
+declare const unknownEncodingObject:
+    | { encoding: typeof anyEncoding }
+    | null
+    | undefined;
 
 // cp.exec:
 {
@@ -42,8 +53,16 @@ declare const unknownEncodingObject: { encoding: typeof anyEncoding } | null | u
     cp.exec(command, unknownEncodingObject); // $ExpectType Promise<[string | Buffer, string | Buffer]>
 }
 
-declare function execFileStringCallback(err: Error | null, stdout: string, stderr: string): void;
-declare function execFileBufferCallback(err: Error | null, stdout: Buffer, stderr: Buffer): void;
+declare function execFileStringCallback(
+    err: Error | null,
+    stdout: string,
+    stderr: string,
+): void;
+declare function execFileBufferCallback(
+    err: Error | null,
+    stdout: Buffer,
+    stderr: Buffer,
+): void;
 
 declare const args: string[] | null | undefined;
 
@@ -56,11 +75,21 @@ declare const args: string[] | null | undefined;
 
     // `options` with `"buffer"` or `null` for `encoding` means stdout/stderr are definitely `Buffer`.
     cp.execFile(command, { encoding: bufferEncoding }, execFileBufferCallback);
-    cp.execFile(command, args, { encoding: bufferEncoding }, execFileBufferCallback);
+    cp.execFile(
+        command,
+        args,
+        { encoding: bufferEncoding },
+        execFileBufferCallback,
+    );
 
     // `options` with well known `encoding` means stdout/stderr are definitely `string`.
     cp.execFile(command, { encoding: stringEncoding }, execFileStringCallback);
-    cp.execFile(command, args, { encoding: stringEncoding }, execFileStringCallback);
+    cp.execFile(
+        command,
+        args,
+        { encoding: stringEncoding },
+        execFileStringCallback,
+    );
 
     // `options` with an `encoding` whose type is `string` means stdout/stderr could either be `Buffer` or `string`.
     // There is no guarantee the `encoding` is unknown as `string` is a superset of `BufferEncoding`.
@@ -70,11 +99,16 @@ declare const args: string[] | null | undefined;
         stderr; // $ExpectType string | Buffer
     });
 
-    cp.execFile(command, args, { encoding: anyEncoding }, (err, stdout, stderr) => {
-        err; // $ExpectType Error | null
-        stdout; // $ExpectType string | Buffer
-        stderr; // $ExpectType string | Buffer
-    });
+    cp.execFile(
+        command,
+        args,
+        { encoding: anyEncoding },
+        (err, stdout, stderr) => {
+            err; // $ExpectType Error | null
+            stdout; // $ExpectType string | Buffer
+            stderr; // $ExpectType string | Buffer
+        },
+    );
 
     // `options` without an `encoding` means stdout/stderr are definitely `string`.
     cp.execFile(command, {}, execFileStringCallback);

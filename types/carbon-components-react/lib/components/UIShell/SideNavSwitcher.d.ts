@@ -9,6 +9,9 @@ export interface SideNavSwitcherProps {
     options: readonly string[];
 }
 
-declare const SideNavSwitcher: ForwardRefReturn<HTMLSelectElement, SideNavSwitcherProps>;
+declare const SideNavSwitcher: ForwardRefReturn<
+    HTMLSelectElement,
+    SideNavSwitcherProps
+>;
 
 export default SideNavSwitcher;

@@ -5,10 +5,10 @@ const Button = () => {
     const buttonRef = React.useRef<HTMLButtonElement>(null);
 
     useDoubleClick({
-        onSingleClick: e => {
+        onSingleClick: (e) => {
             console.log(e, "single click");
         },
-        onDoubleClick: e => {
+        onDoubleClick: (e) => {
             console.log(e, "double click");
         },
         ref: buttonRef,

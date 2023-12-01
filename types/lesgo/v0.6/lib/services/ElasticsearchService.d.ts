@@ -27,7 +27,11 @@ export interface ElasticsearchServiceParams {
 /**
  * Duplicated from elasticsearch
  */
-export type RequestBody<T = Record<string, any>> = T | string | Buffer | ReadableStream;
+export type RequestBody<T = Record<string, any>> =
+    | T
+    | string
+    | Buffer
+    | ReadableStream;
 
 // export interface AWSConnectionClientOptions {
 //     awsRegion:
@@ -66,17 +70,29 @@ export default class ElasticsearchService {
         options?: Omit<RequestParams.IndicesExists, "index">,
     ): Promise<Record<string, any>["body"]>;
 
-    putMapping(index: string | string[], type: string, body: Record<string, any>): Promise<Record<string, any>>;
+    putMapping(
+        index: string | string[],
+        type: string,
+        body: Record<string, any>,
+    ): Promise<Record<string, any>>;
 
     get(id: string): Promise<Record<string, any>>;
 
-    indexOrCreateById(body: RequestParams.Index["body"], refresh?: "wait_for" | boolean): Promise<Record<string, any>>;
+    indexOrCreateById(
+        body: RequestParams.Index["body"],
+        refresh?: "wait_for" | boolean,
+    ): Promise<Record<string, any>>;
 
     bulkIndex(bodies: RequestBodyWithId[]): Promise<Record<string, any>>;
 
-    create(id: string, body: RequestParams.Index["body"]): Promise<Record<string, any>>;
+    create(
+        id: string,
+        body: RequestParams.Index["body"],
+    ): Promise<Record<string, any>>;
 
     updateById(id: string): Promise<Record<string, any>>;
 
-    protected constructBulkIndex(bodies: RequestBodyWithId[]): Array<Index | RequestBodyWithId[]>;
+    protected constructBulkIndex(
+        bodies: RequestBodyWithId[],
+    ): Array<Index | RequestBodyWithId[]>;
 }

@@ -142,7 +142,11 @@ export class Quaternion {
      * @param targetDirection - Specifies the desired world space direction the object should look at.
      * @param localUp - Specifies the up direction in the local space of the object.
      */
-    lookAt(localForward: Vector3, targetDirection: Vector3, localUp: Vector3): this;
+    lookAt(
+        localForward: Vector3,
+        targetDirection: Vector3,
+        localUp: Vector3,
+    ): this;
 
     /**
      * Spherically interpolates between this quaternion and the given quaternion by t.
@@ -178,7 +182,11 @@ export class Quaternion {
      * @param euler - The resulting euler angles.
      * @return The resulting euler angles.
      */
-    toEuler(euler: { x: number; y: number; z: number }): { x: number; y: number; z: number };
+    toEuler(euler: { x: number; y: number; z: number }): {
+        x: number;
+        y: number;
+        z: number;
+    };
 
     /**
      * Sets the components of this quaternion from the given 3x3 rotation matrix.

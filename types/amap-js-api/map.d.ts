@@ -211,26 +211,29 @@ declare namespace AMap {
              */
             zoomEnable: boolean;
         }
-        type HotspotEvent<N extends string> = Event<N, {
-            /**
-             * 经纬度坐标
-             */
-            lnglat: LngLat;
-            /**
-             * 热点名称
-             */
-            name: string;
-            /**
-             * 热点id
-             */
-            id: string;
+        type HotspotEvent<N extends string> = Event<
+            N,
+            {
+                /**
+                 * 经纬度坐标
+                 */
+                lnglat: LngLat;
+                /**
+                 * 热点名称
+                 */
+                name: string;
+                /**
+                 * 热点id
+                 */
+                id: string;
 
-            // internal
-            /**
-             * 是否室内热点
-             */
-            isIndoorPOI: boolean;
-        }>;
+                // internal
+                /**
+                 * 是否室内热点
+                 */
+                isIndoorPOI: boolean;
+            }
+        >;
         interface EventMap {
             click: MapsEvent<"click", Map>;
             dblclick: MapsEvent<"dblclick", Map>;
@@ -276,12 +279,20 @@ declare namespace AMap {
          * 唤起高德地图客户端marker页
          * @param obj 唤起参数
          */
-        poiOnAMAP(obj: { id: string; location?: LocationValue | undefined; name?: string | undefined }): void;
+        poiOnAMAP(obj: {
+            id: string;
+            location?: LocationValue | undefined;
+            name?: string | undefined;
+        }): void;
         /**
          * 唤起高德地图客户端marker详情页
          * @param obj 唤起参数
          */
-        detailOnAMAP(obj: { id: string; location?: LocationValue | undefined; name?: string | undefined }): void;
+        detailOnAMAP(obj: {
+            id: string;
+            location?: LocationValue | undefined;
+            name?: string | undefined;
+        }): void;
         /**
          * 获取当前地图缩放级别
          */
@@ -392,7 +403,9 @@ declare namespace AMap {
          * 返回添加的覆盖物对象
          * @param type 覆盖物类型
          */
-        getAllOverlays(type?: "marker" | "circle" | "polyline" | "polygon"): Overlay[];
+        getAllOverlays(
+            type?: "marker" | "circle" | "polyline" | "polygon",
+        ): Overlay[];
         /**
          * 设置地图显示的中心点
          * @param center 中心点经纬度
@@ -409,7 +422,14 @@ declare namespace AMap {
          * @param city 城市名称或城市编码
          * @param callback 回调
          */
-        setCity(city: string, callback: (this: this, coord: [string, string], zoom: number) => void): void;
+        setCity(
+            city: string,
+            callback: (
+                this: this,
+                coord: [string, string],
+                zoom: number,
+            ) => void,
+        ): void;
         /**
          * 指定当前地图显示范围
          * @param bound 显示范围

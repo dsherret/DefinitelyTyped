@@ -16,10 +16,15 @@ declare namespace WechatMiniprogram {
     type PromisifySuccessResult<
         P,
         T extends AsyncMethodOptionLike,
-    > = P extends { success: any } ? void
-        : P extends { fail: any } ? void
-        : P extends { complete: any } ? void
-        : Promise<Parameters<Exclude<T["success"], undefined>>[0]>;
+    > = P extends {
+        success: any;
+    }
+        ? void
+        : P extends { fail: any }
+          ? void
+          : P extends { complete: any }
+            ? void
+            : Promise<Parameters<Exclude<T["success"], undefined>>[0]>;
     interface Console {
         /** [console.debug()](https://developers.weixin.qq.com/miniprogram/dev/api/base/debug/console.debug.html)
          *

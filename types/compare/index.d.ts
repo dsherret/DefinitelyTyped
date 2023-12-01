@@ -22,4 +22,7 @@ export = compare;
  * ['cu', 'cs'].sort((a, b) => a.localeCompare(b, 'hu'))
  * ['cu', 'cs'].sort(compare) // This will always sort the same
  */
-declare function compare<T extends number | string>(left: T, right: T): -1 | 0 | 1;
+declare function compare<T extends number | string>(
+    left: T,
+    right: T,
+): -1 | 0 | 1;

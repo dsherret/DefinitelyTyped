@@ -5,7 +5,7 @@ connect.server();
 // Empty options and no callback
 connect.server({});
 // Empty options and callback
-connect.server({}, err => {
+connect.server({}, (err) => {
     if (err) throw err;
 });
 
@@ -47,17 +47,17 @@ connect.server({
 });
 
 // Killing server
-connect.closeServer(result => {
+connect.closeServer((result) => {
     result; // $ExpectType boolean | undefined
 });
 
 // Instance of class
 const connectInstance = new connect();
-connectInstance.server({}, err => {
+connectInstance.server({}, (err) => {
     err; // $ExpectType Error | undefined
     if (err) throw err;
     connectInstance.port; // $ExpectType number
-    connectInstance.closeServer(result => {
+    connectInstance.closeServer((result) => {
         result; // $ExpectType boolean | undefined
     });
 });
@@ -67,17 +67,19 @@ connectInstance.server({}, err => {
 connect.compat.server(
     {
         configCallback(type, collection) {
-            if (type === connect.compat.OPTIONS_SPAWN_OBJ) collection.foo = "bar";
-            else if (type === connect.compat.OPTIONS_PHP_CLI_ARR) collection.push("--foo");
+            if (type === connect.compat.OPTIONS_SPAWN_OBJ)
+                collection.foo = "bar";
+            else if (type === connect.compat.OPTIONS_PHP_CLI_ARR)
+                collection.push("--foo");
 
             return collection;
         },
     },
-    err => {
+    (err) => {
         err; // $ExpectType Error | undefined
         if (err) throw err;
         connect.compat.port; // $ExpectType number
-        connect.compat.closeServer(result => {
+        connect.compat.closeServer((result) => {
             result; // $ExpectType boolean | undefined
         });
     },

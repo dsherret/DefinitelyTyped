@@ -5,18 +5,8 @@ function sinFunction([a, b]: number[]) {
 }
 
 const data = {
-    x: [
-        0,
-        Math.PI / 2,
-        Math.PI,
-        Math.PI * 3 / 2,
-    ],
-    y: [
-        0,
-        1,
-        0,
-        -1,
-    ],
+    x: [0, Math.PI / 2, Math.PI, (Math.PI * 3) / 2],
+    y: [0, 1, 0, -1],
 };
 
 const initialValues = [2, 4];

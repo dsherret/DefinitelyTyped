@@ -11,7 +11,9 @@ interface DrawerProps {
     overlayStyle?: React.CSSProperties | undefined;
     dragHandleStyle?: React.CSSProperties | undefined;
     sidebar?: React.ReactNode | undefined;
-    onOpenChange?: ((open: boolean, overlay?: { overlayClicked: boolean }) => void) | undefined;
+    onOpenChange?:
+        | ((open: boolean, overlay?: { overlayClicked: boolean }) => void)
+        | undefined;
     open?: boolean | undefined;
     position?: "left" | "right" | "top" | "bottom" | undefined;
     docked?: boolean | undefined;
@@ -21,7 +23,6 @@ interface DrawerProps {
     dragToggleDistance?: number | undefined;
 }
 
-declare class Drawer extends React.Component<Partial<DrawerProps>> {
-}
+declare class Drawer extends React.Component<Partial<DrawerProps>> {}
 
 export = Drawer;

@@ -30,12 +30,10 @@ class FocusBlurCallbacks extends React.Component<any, any> {
         return (
             <div>
                 <h3>
-                    State right now <span style={{ color: "blue" }}>{state}</span>
+                    State right now{" "}
+                    <span style={{ color: "blue" }}>{state}</span>
                 </h3>
-                <Editor
-                    onBlur={this.onBlur}
-                    onFocus={this.onFocus}
-                />
+                <Editor onBlur={this.onBlur} onFocus={this.onFocus} />
             </div>
         );
     }

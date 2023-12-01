@@ -61,7 +61,7 @@ function preloadTextures() {
     loader.loadImages(
         images,
         {},
-        texture => {
+        (texture) => {
             textures.push(texture);
 
             texture
@@ -69,7 +69,8 @@ function preloadTextures() {
                 .onSourceUploaded(() => {
                     percentLoaded++;
 
-                    loaderEl.innerText = (percentLoaded / images.length) * 100 + "%";
+                    loaderEl.innerText =
+                        (percentLoaded / images.length) * 100 + "%";
 
                     // we have finished loading our textures
                     if (percentLoaded === images.length) {
@@ -78,7 +79,12 @@ function preloadTextures() {
                 });
         },
         (image, error) => {
-            console.warn("there has been an error", error, " while loading this image", image);
+            console.warn(
+                "there has been an error",
+                error,
+                " while loading this image",
+                image,
+            );
 
             // display site anyway
             document.body.classList.add("site-loaded");
@@ -168,7 +174,9 @@ window.addEventListener("load", () => {
         // set the right texture
         const planeImage = plane.htmlElement.querySelector("img");
         const planeTexture = textures.find(
-            element => element.source && (element.source as HTMLImageElement).src === planeImage?.src,
+            (element) =>
+                element.source &&
+                (element.source as HTMLImageElement).src === planeImage?.src,
         );
 
         // we got a texture that matches the plane img element, add it
@@ -259,7 +267,10 @@ window.addEventListener("load", () => {
             }
 
             // ajax call
-            handleAjaxCall(navButtons[index].getAttribute("href")!, appendContent);
+            handleAjaxCall(
+                navButtons[index].getAttribute("href")!,
+                appendContent,
+            );
 
             // prevent link default behaviour
             e.preventDefault();
@@ -271,7 +282,13 @@ window.addEventListener("load", () => {
         }
 
         // this function will execute our AJAX call and run a callback function
-        function handleAjaxCall(href: string, callback: (href: string, response: XMLHttpRequest["response"]) => void) {
+        function handleAjaxCall(
+            href: string,
+            callback: (
+                href: string,
+                response: XMLHttpRequest["response"],
+            ) => void,
+        ) {
             // set our transition flag
             isTransitioning = true;
 
@@ -279,7 +296,10 @@ window.addEventListener("load", () => {
             const xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0)) {
+                if (
+                    xhr.readyState === 4 &&
+                    (xhr.status === 200 || xhr.status === 0)
+                ) {
                     const response = xhr.response;
                     callback(href, response);
                 }
@@ -290,10 +310,15 @@ window.addEventListener("load", () => {
             xhr.send(null);
 
             // start page transition
-            document.getElementById("page-wrap")!.classList.add("page-transition");
+            document
+                .getElementById("page-wrap")!
+                .classList.add("page-transition");
         }
 
-        function appendContent(href: string, response: XMLHttpRequest["response"]) {
+        function appendContent(
+            href: string,
+            response: XMLHttpRequest["response"],
+        ) {
             // append our response to a div
             const tempHtml = document.createElement("div");
             tempHtml.insertAdjacentHTML("beforeend", response);
@@ -317,10 +342,14 @@ window.addEventListener("load", () => {
                 // empty our content div and append our new content
                 document.getElementById("content")!.innerHTML = "";
                 if (content) {
-                    document.getElementById("content")!.appendChild(content.children[0]);
+                    document
+                        .getElementById("content")!
+                        .appendChild(content.children[0]);
                 }
 
-                document.getElementById("page-wrap")!.classList.remove("page-transition");
+                document
+                    .getElementById("page-wrap")!
+                    .classList.remove("page-transition");
 
                 addPlanes();
 
@@ -472,11 +501,15 @@ window.addEventListener("load", () => {
                 if (activeTexture === 1) {
                     activeTexture = 2;
 
-                    document.getElementById("async-textures-wrapper")!.classList.add("second-image-shown");
+                    document
+                        .getElementById("async-textures-wrapper")!
+                        .classList.add("second-image-shown");
                 } else {
                     activeTexture = 1;
 
-                    document.getElementById("async-textures-wrapper")!.classList.remove("second-image-shown");
+                    document
+                        .getElementById("async-textures-wrapper")!
+                        .classList.remove("second-image-shown");
                 }
             });
         })
@@ -505,7 +538,9 @@ window.addEventListener("load", () => {
         document.getElementById("page-wrap")!.classList.add("load-images");
 
         // get our images in the HTML, but it could be inside an AJAX response
-        const asyncImgElements = document.getElementById("async-textures-wrapper")!.getElementsByTagName("img");
+        const asyncImgElements = document
+            .getElementById("async-textures-wrapper")!
+            .getElementsByTagName("img");
 
         // track image loading
         let imagesLoaded = 0;
@@ -596,9 +631,10 @@ window.addEventListener("load", () => {
                 delta.y = -60;
             }
 
-            scrollEffect = useNativeScroll && Math.abs(delta.y) > Math.abs(scrollEffect)
-                ? curtains.lerp(scrollEffect, delta.y, 0.5)
-                : curtains.lerp(scrollEffect, delta.y * 1.5, 0.5);
+            scrollEffect =
+                useNativeScroll && Math.abs(delta.y) > Math.abs(scrollEffect)
+                    ? curtains.lerp(scrollEffect, delta.y, 0.5)
+                    : curtains.lerp(scrollEffect, delta.y * 1.5, 0.5);
 
             // manually update planes positions
             for (let i = 0; i < planes.length; i++) {
@@ -627,7 +663,7 @@ window.addEventListener("load", () => {
     if (!useNativeScroll) {
         // we'll render only while lerping the scroll
         curtains.disableDrawing();
-        smoothScroll.on("scroll", obj => {
+        smoothScroll.on("scroll", (obj) => {
             updateScroll(obj.scroll.x, obj.scroll.y);
 
             // render scene
@@ -765,12 +801,16 @@ window.addEventListener("load", () => {
         const sceneBoundingRect = curtains.getBoundingRect();
         // get our plane center coordinate
         const planeBoundingRect = planes[index].getBoundingRect();
-        const planeOffsetTop = planeBoundingRect.top + planeBoundingRect.height / 2;
+        const planeOffsetTop =
+            planeBoundingRect.top + planeBoundingRect.height / 2;
         // get a float value based on window height (0 means the plane is centered)
-        const parallaxEffect = (planeOffsetTop - sceneBoundingRect.height / 2) / sceneBoundingRect.height;
+        const parallaxEffect =
+            (planeOffsetTop - sceneBoundingRect.height / 2) /
+            sceneBoundingRect.height;
 
         // apply the parallax effect
-        planes[index].relativeTranslation.y = (parallaxEffect * sceneBoundingRect.height) / 4;
+        planes[index].relativeTranslation.y =
+            (parallaxEffect * sceneBoundingRect.height) / 4;
     }
 });
 
@@ -1029,7 +1069,10 @@ window.addEventListener("load", () => {
         })
         .onAfterResize(() => {
             curtainsBBox = curtains.getBoundingRect();
-            blurPass.uniforms.resolution.value = [curtainsBBox.width, curtainsBBox.height];
+            blurPass.uniforms.resolution.value = [
+                curtainsBBox.width,
+                curtainsBBox.height,
+            ];
         });
 });
 

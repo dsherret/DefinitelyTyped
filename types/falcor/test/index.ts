@@ -1,28 +1,39 @@
 import falcor = require("falcor");
 
 declare const dataSource: falcor.DataSource;
-dataSource.get([["someParam"]]).subscribe(jsonGraphEnvelope => {
+dataSource.get([["someParam"]]).subscribe((jsonGraphEnvelope) => {
     console.log(jsonGraphEnvelope.jsonGraph);
 });
-dataSource.set({
-    jsonGraph: {
-        someParam: "value",
-    },
-    paths: [["someParam"]],
-}).subscribe(jsonGraphEnvelope => {
-    console.log(jsonGraphEnvelope.jsonGraph);
-});
+dataSource
+    .set({
+        jsonGraph: {
+            someParam: "value",
+        },
+        paths: [["someParam"]],
+    })
+    .subscribe((jsonGraphEnvelope) => {
+        console.log(jsonGraphEnvelope.jsonGraph);
+    });
 
 dataSource.call(["items", "push"]);
 dataSource.call(["items", "push"], [{ id: "i003", name: "item003" }]);
-dataSource.call(["items", "push"], [{ id: "i003", name: "item003" }], [["id", "name"]]);
-dataSource.call(["items", "push"], [{ id: "i003", name: "item003" }], [["id", "name"]], [["length"]]).subscribe(
-    jsonGraphEnvelope => {
+dataSource.call(
+    ["items", "push"],
+    [{ id: "i003", name: "item003" }],
+    [["id", "name"]],
+);
+dataSource
+    .call(
+        ["items", "push"],
+        [{ id: "i003", name: "item003" }],
+        [["id", "name"]],
+        [["length"]],
+    )
+    .subscribe((jsonGraphEnvelope) => {
         console.log(jsonGraphEnvelope.jsonGraph);
         console.log(jsonGraphEnvelope.invalidate);
         console.log(jsonGraphEnvelope.paths[0]);
-    },
-);
+    });
 
 new falcor.Model();
 new falcor.Model({});
@@ -61,7 +72,10 @@ model.get(["items", { from: 0, to: 1 }, "name"]);
 model.get(["items", { from: 0, length: 2 }, "name"]);
 model.get("items[0].name", "items[1].name");
 
-model.set({ path: "items[0].name", value: "ITEM 01" }, { path: ["items", 1, "name"], value: "ITEM 27" });
+model.set(
+    { path: "items[0].name", value: "ITEM 01" },
+    { path: ["items", 1, "name"], value: "ITEM 27" },
+);
 model.set({
     itemsById: {
         i01: {
@@ -78,14 +92,19 @@ model.preload(["items", { from: 0, to: 1 }, "name"]);
 model.call("items.push");
 model.call(["items", "push"]);
 model.call("items.push", [{ id: "i02", name: "item02" }], ["length"]);
-model.call("items.push", [{ id: "i02", name: "item02" }], ["name", "length"], []);
+model.call(
+    "items.push",
+    [{ id: "i02", name: "item02" }],
+    ["name", "length"],
+    [],
+);
 
 model.invalidate();
 model.invalidate(["items", 0, "name"]);
 model.invalidate(["items", 0, "name"], ["items", 1, "name"]);
 model.invalidate(["items", { from: 0, to: 1 }, "name"]);
 
-model.get("items[0].[\"name\", \"id\"]").then(res => {
+model.get('items[0].["name", "id"]').then((res) => {
     const derefedModel = model.deref(res.json.items[0]);
     derefedModel.get("name", "id");
 });
@@ -119,16 +138,32 @@ const somePath: falcor.Path = model.getPath();
 const modelResponse = model.get<{ items: { length: number } }>("items.length");
 
 modelResponse.subscribe();
-modelResponse.subscribe(res => res.json.items.length);
-modelResponse.subscribe(res => res.json.items.length, error => console.error.bind(error));
-modelResponse.subscribe(res => res.json.items.length, error => console.error.bind(error), () => null);
+modelResponse.subscribe((res) => res.json.items.length);
+modelResponse.subscribe(
+    (res) => res.json.items.length,
+    (error) => console.error.bind(error),
+);
+modelResponse.subscribe(
+    (res) => res.json.items.length,
+    (error) => console.error.bind(error),
+    () => null,
+);
 
-modelResponse.progressively().subscribe(res => res.json.items.length);
-modelResponse.progressively().subscribe(res => res.json.items.length, error => console.error.bind(error), () => null);
+modelResponse.progressively().subscribe((res) => res.json.items.length);
+modelResponse.progressively().subscribe(
+    (res) => res.json.items.length,
+    (error) => console.error.bind(error),
+    () => null,
+);
 
-const subscription = modelResponse.subscribe(res => res);
+const subscription = modelResponse.subscribe((res) => res);
 subscription.dispose();
 
-modelResponse.then(res => res.json.items.length);
-modelResponse.then(res => res, error => console.error.bind(error));
-modelResponse.then<number>(res => res.json.items.length).then((l: number) => l + 1);
+modelResponse.then((res) => res.json.items.length);
+modelResponse.then(
+    (res) => res,
+    (error) => console.error.bind(error),
+);
+modelResponse
+    .then<number>((res) => res.json.items.length)
+    .then((l: number) => l + 1);

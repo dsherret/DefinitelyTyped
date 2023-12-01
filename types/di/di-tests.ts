@@ -17,4 +17,5 @@ const oldTimeyClass = { prototype: {} };
 
 const instance: {} = fullInjector.instantiate(oldTimeyClass);
 
-const anotherChildInjector: di.Injector = fullInjector.createChild(moduleSpecifications);
+const anotherChildInjector: di.Injector =
+    fullInjector.createChild(moduleSpecifications);

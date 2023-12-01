@@ -18,7 +18,10 @@ var bx = Ix.Enumerable.create(() => {
     );
 });
 
-Ix.Enumerator.create(() => true, () => 1); // without dispose method
+Ix.Enumerator.create(
+    () => true,
+    () => 1,
+); // without dispose method
 
 var cx = Ix.Enumerable.empty<number>();
 
@@ -39,7 +42,11 @@ Ix.Enumerable.sequenceEqual(ax, ex); // default comparer on same type
 
 ax.getEnumerator();
 
-ax.aggregate("", (acc, i) => acc + i, acc => acc.length);
+ax.aggregate(
+    "",
+    (acc, i) => acc + i,
+    (acc) => acc.length,
+);
 ax.aggregate("", (acc, i) => acc + i);
 ax.aggregate((acc, i) => acc + i);
 
@@ -47,26 +54,26 @@ ax.aggregate((acc, i) => acc + i);
 ax.reduce<number>((acc, i) => acc + i, 100);
 ax.reduce((acc, i) => acc + i);
 
-ax.all(item => true);
-ax.all(item => true, bx);
-ax.every(item => true);
-ax.every(item => true, bx);
+ax.all((item) => true);
+ax.all((item) => true, bx);
+ax.every((item) => true);
+ax.every((item) => true, bx);
 
 ax.any();
-ax.any(item => true);
-ax.any(item => true, bx);
+ax.any((item) => true);
+ax.any((item) => true, bx);
 ax.some();
-ax.some(item => true);
-ax.some(item => true, bx);
+ax.some((item) => true);
+ax.some((item) => true, bx);
 
 ax.average();
-bx.average(item => item.length);
+bx.average((item) => item.length);
 ax.min();
-bx.min(item => item.length);
+bx.min((item) => item.length);
 ax.max();
-bx.max(item => item.length);
+bx.max((item) => item.length);
 ax.sum();
-bx.sum(item => item.length);
+bx.sum((item) => item.length);
 
 ax.concat(ax, cx, dx, ex, gx);
 
@@ -74,8 +81,8 @@ ax.contains(10);
 ax.contains("10", ec_ns);
 
 ax.count();
-ax.count(item => false);
-ax.count(item => false, {});
+ax.count((item) => false);
+ax.count((item) => false, {});
 
 cx.defaultIfEmpty();
 cx.defaultIfEmpty(10);
@@ -96,68 +103,133 @@ ax.lastOrDefault();
 ax.single();
 ax.singleOrDefault();
 
-ax.forEach(a => console.log(a));
-ax.forEach(a => console.log(a), cx);
+ax.forEach((a) => console.log(a));
+ax.forEach((a) => console.log(a), cx);
 
-bx.groupBy(b => b.length);
-bx.groupBy(b => b.length, b => "[" + b + "]");
-bx.groupBy(b => b.length, b => "[" + b + "]", (l, values) => l + values.count());
-bx.groupBy(b => b.length, false, (l, values) => l + values.count());
-bx.groupBy(b => b.length, b => "[" + b + "]", (l, values) => l + values.count(), ec_nn);
-bx.groupBy(b => b.length, b => "[" + b + "]", false, (x, y) => x == y);
-bx.groupBy(b => b.length, false, (l, values) => l + values.count(), ec_nn);
-bx.groupBy(b => b.length, false, false, ec_nn);
+bx.groupBy((b) => b.length);
+bx.groupBy(
+    (b) => b.length,
+    (b) => "[" + b + "]",
+);
+bx.groupBy(
+    (b) => b.length,
+    (b) => "[" + b + "]",
+    (l, values) => l + values.count(),
+);
+bx.groupBy(
+    (b) => b.length,
+    false,
+    (l, values) => l + values.count(),
+);
+bx.groupBy(
+    (b) => b.length,
+    (b) => "[" + b + "]",
+    (l, values) => l + values.count(),
+    ec_nn,
+);
+bx.groupBy(
+    (b) => b.length,
+    (b) => "[" + b + "]",
+    false,
+    (x, y) => x == y,
+);
+bx.groupBy(
+    (b) => b.length,
+    false,
+    (l, values) => l + values.count(),
+    ec_nn,
+);
+bx.groupBy((b) => b.length, false, false, ec_nn);
 
-ax.groupJoin(bx, a => a, b => b, (a, b) => [a, b], ec_ns);
-ax.groupJoin(bx, a => a, b => b.length, (a, b) => [a, b]);
+ax.groupJoin(
+    bx,
+    (a) => a,
+    (b) => b,
+    (a, b) => [a, b],
+    ec_ns,
+);
+ax.groupJoin(
+    bx,
+    (a) => a,
+    (b) => b.length,
+    (a, b) => [a, b],
+);
 
-ax.join(bx, a => a, b => b, (a, b) => [a, b], ec_ns);
-ax.join(bx, a => a, b => b.length, (a, b) => [a, b]);
+ax.join(
+    bx,
+    (a) => a,
+    (b) => b,
+    (a, b) => [a, b],
+    ec_ns,
+);
+ax.join(
+    bx,
+    (a) => a,
+    (b) => b.length,
+    (a, b) => [a, b],
+);
 
 ax.intersect(bx, ec_ns);
 ax.intersect(cx);
 ax.union(cx);
 
-ax.orderBy(a => -a).thenBy(a => a);
-ax.orderBy(a => -a, c_nn).thenBy(a => a, c_nn);
-ax.orderByDescending(a => -a).thenByDescending(a => a);
-ax.orderByDescending(a => -a, c_nn).thenByDescending(a => a, c_nn);
+ax.orderBy((a) => -a).thenBy((a) => a);
+ax.orderBy((a) => -a, c_nn).thenBy((a) => a, c_nn);
+ax.orderByDescending((a) => -a).thenByDescending((a) => a);
+ax.orderByDescending((a) => -a, c_nn).thenByDescending((a) => a, c_nn);
 
 ax.reverse();
 
-ax.select(a => a.toString());
-ax.select(a => a.toString(), {});
-ax.map(a => a.toString());
-ax.map(a => a.toString(), {});
+ax.select((a) => a.toString());
+ax.select((a) => a.toString(), {});
+ax.map((a) => a.toString());
+ax.map((a) => a.toString(), {});
 
-ax.selectMany(a => bx);
-ax.selectMany(a => bx, (a, b) => [a, b]);
+ax.selectMany((a) => bx);
+ax.selectMany(
+    (a) => bx,
+    (a, b) => [a, b],
+);
 
 ax.sequenceEqual(fx, ec_ns);
 ax.sequenceEqual(ax, ec_nn);
 ax.sequenceEqual(cx);
 
 ax.skip(10);
-ax.skipWhile(a => a > 10);
+ax.skipWhile((a) => a > 10);
 ax.take(10);
-ax.takeWhile(a => a > 10);
+ax.takeWhile((a) => a > 10);
 
 ax.toArray();
 
-bx.toDictionary(b => b.length, b => 10, ec_nn);
-bx.toDictionary(b => b.length, false, ec_nn);
-bx.toDictionary(b => b.length, b => 10);
-bx.toDictionary(b => b.length);
+bx.toDictionary(
+    (b) => b.length,
+    (b) => 10,
+    ec_nn,
+);
+bx.toDictionary((b) => b.length, false, ec_nn);
+bx.toDictionary(
+    (b) => b.length,
+    (b) => 10,
+);
+bx.toDictionary((b) => b.length);
 
-bx.toLookup(b => b.length, b => 10, ec_nn);
-bx.toLookup(b => b.length, false, ec_nn);
-bx.toLookup(b => b.length, b => 10);
-bx.toLookup(b => b.length);
+bx.toLookup(
+    (b) => b.length,
+    (b) => 10,
+    ec_nn,
+);
+bx.toLookup((b) => b.length, false, ec_nn);
+bx.toLookup(
+    (b) => b.length,
+    (b) => 10,
+);
+bx.toLookup((b) => b.length);
 
-ax.where(a => a > 10, {});
-ax.where(a => a > 10);
-ax.filter(a => a > 10, {});
-ax.filter(a => a > 10);
+ax.where((a) => a > 10, {});
+ax.where((a) => a > 10);
+ax.filter((a) => a > 10, {});
+ax.filter((a) => a > 10);
 
 ax.zip(bx, (a: number, b: string) => [a, b]);
 ax.zip(bx, (a, b) => [a, b]);
@@ -176,7 +248,9 @@ ax.zip(bx, (a, b) => [a, b]);
     var e: Ix.Enumerator<number>;
 
     try {
-        while (e.moveNext()) { var c = e.getCurrent(); }
+        while (e.moveNext()) {
+            var c = e.getCurrent();
+        }
     } finally {
         e.dispose();
     }

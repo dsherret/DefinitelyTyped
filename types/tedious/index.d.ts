@@ -199,7 +199,13 @@ export interface ConnectionOptions {
      * SQL-provided column name on row and meta data objects. This allows you to dynamically convert between
      * naming conventions. (default: null).
      */
-    columnNameReplacer?: ((columnName: string, index: number, columnMetaData: ColumnMetaData) => string) | undefined;
+    columnNameReplacer?:
+        | ((
+              columnName: string,
+              index: number,
+              columnMetaData: ColumnMetaData,
+          ) => string)
+        | undefined;
 
     /**
      * Debug options
@@ -433,7 +439,10 @@ export interface Request {
     /**
      * This event, describing result set columns, will be emitted before row events are emitted. This event may be emited multiple times when more than one recordset is produced by the statement.
      */
-    on(event: "columnMetadata", listener: (columns: ColumnMetaData[]) => void): this;
+    on(
+        event: "columnMetadata",
+        listener: (columns: ColumnMetaData[]) => void,
+    ): this;
 
     /**
      * The request has been prepared and can be used in subsequent calls to execute and unprepare.
@@ -458,27 +467,51 @@ export interface Request {
     /**
      * A row resulting from execution of the SQL statement with `config.options.useColumnNames` set to `true`.
      */
-    on(event: "row", listener: (columns: Record<string, ColumnValue>) => void): this;
+    on(
+        event: "row",
+        listener: (columns: Record<string, ColumnValue>) => void,
+    ): this;
 
     /**
      * All rows from a result set have been provided (through row events). This token is used to indicate the completion of a SQL statement. As multiple SQL statements can be sent to the server in a single SQL batch, multiple done events can be generated. An done event is emited for each SQL statement in the SQL batch except variable declarations. For execution of SQL statements within stored procedures, doneProc and doneInProc events are used in place of done events.
      */
-    on(event: "done", listener: (rowCount: number, more: boolean, rows: any[]) => void): this;
+    on(
+        event: "done",
+        listener: (rowCount: number, more: boolean, rows: any[]) => void,
+    ): this;
 
     /**
      * Indicates the completion status of a SQL statement within a stored procedure. All rows from a statement in a stored procedure have been provided (through row events).
      */
-    on(event: "doneInProc", listener: (rowCount: number, more: boolean, rows: any[]) => void): this;
+    on(
+        event: "doneInProc",
+        listener: (rowCount: number, more: boolean, rows: any[]) => void,
+    ): this;
 
     /**
      * Indicates the completion status of a stored procedure. This is also generated for stored procedures executed through SQL statements.
      */
-    on(event: "doneProc", listener: (rowCount: number, more: boolean, returnStatus: any, rows: any[]) => void): this;
+    on(
+        event: "doneProc",
+        listener: (
+            rowCount: number,
+            more: boolean,
+            returnStatus: any,
+            rows: any[],
+        ) => void,
+    ): this;
 
     /**
      * A value for an output parameter (that was added to the request with addOutputParameter(...)). See also Using Parameters.
      */
-    on(event: "returnValue", listener: (parameterName: string, value: any, metadata: ColumnMetaData) => void): this;
+    on(
+        event: "returnValue",
+        listener: (
+            parameterName: string,
+            value: any,
+            metadata: ColumnMetaData,
+        ) => void,
+    ): this;
 }
 
 /**
@@ -502,7 +535,10 @@ export class Request extends events.EventEmitter {
      *                     rowCount: The number of rows emitted as result of executing the SQL statement.
      *                     rows: Rows as a result of executing the SQL statement. Will only be avaiable if Connection's config.options.rowCollectionOnRequestCompletion is true.
      */
-    constructor(sql: string, callback: (error: Error, rowCount: number, rows: any[]) => void);
+    constructor(
+        sql: string,
+        callback: (error: Error, rowCount: number, rows: any[]) => void,
+    );
 
     /**
      * Add an input parameter to the request.
@@ -511,7 +547,12 @@ export class Request extends events.EventEmitter {
      * @param value The value that the parameter is to be given. The Javascript type of the argument should match that documented for data types.
      * @param options Additional type options. Optional.
      */
-    addParameter(name: string, type: TediousType, value: any, options?: ParameterOptions): void;
+    addParameter(
+        name: string,
+        type: TediousType,
+        value: any,
+        options?: ParameterOptions,
+    ): void;
 
     /**
      * Add an output parameter to the request. The parameter's value will be provide by an emitted returnValue event.
@@ -520,7 +561,12 @@ export class Request extends events.EventEmitter {
      * @param value The value that the parameter is to be given. The Javascript type of the argument should match that documented for data types. Optional.
      * @param options Additional type options. Optional.
      */
-    addOutputParameter(name: string, type: TediousType, value?: any, options?: ParameterOptions): void;
+    addOutputParameter(
+        name: string,
+        type: TediousType,
+        value?: any,
+        options?: ParameterOptions,
+    ): void;
 
     /**
      * Temporarily suspends the flow of data from the database. No more 'row' events will be emitted until request.resume() is called.
@@ -553,7 +599,11 @@ export interface BulkLoad {
      * @param type    One of the supported data types.
      * @param options    Additional column type information. At a minimum, nullable must be set to true or false.
      */
-    addColumn(name: string, type: TediousType, options: BulkLoadColumnOpts): void;
+    addColumn(
+        name: string,
+        type: TediousType,
+        options: BulkLoadColumnOpts,
+    ): void;
 
     /**
      * Adds a row to the bulk insert. This method accepts arguments in three different formats:
@@ -683,7 +733,11 @@ export class Connection extends events.EventEmitter {
      * @param name A string representing a name to associate with the transaction. Optional, and defaults to an empty string. Required when isolationLevel is present.
      * @param isolationLevel The isolation level that the transaction is to be run with.
      */
-    beginTransaction(callback: (error?: Error) => void, name?: string, isolationLevel?: ISOLATION_LEVEL): void;
+    beginTransaction(
+        callback: (error?: Error) => void,
+        name?: string,
+        isolationLevel?: ISOLATION_LEVEL,
+    ): void;
 
     /**
      * Commit a transaction.
@@ -721,7 +775,11 @@ export class Connection extends events.EventEmitter {
     transaction(
         callback: (
             error: Error,
-            done: (error?: Error, doneCallback?: (error?: Error, ...args: any[]) => void, ...args: any[]) => void,
+            done: (
+                error?: Error,
+                doneCallback?: (error?: Error, ...args: any[]) => void,
+                ...args: any[]
+            ) => void,
         ) => void,
         name?: string,
         isolationLevel?: ISOLATION_LEVEL,
@@ -768,7 +826,10 @@ export class Connection extends events.EventEmitter {
      * @param tableName The name of the table to bulk-insert into.
      * @param callback A function which will be called after the BulkLoad finishes executing. rowCount will equal the number of rows inserted.
      */
-    newBulkLoad(tableName: string, callback: (error: Error, rowCount: number) => void): BulkLoad;
+    newBulkLoad(
+        tableName: string,
+        callback: (error: Error, rowCount: number) => void,
+    ): BulkLoad;
 
     /**
      * Executes a BulkLoad.

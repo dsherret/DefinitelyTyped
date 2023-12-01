@@ -70,7 +70,11 @@ export interface AddOptions {
  * arguments will be passed to the callback function:
  * error - Instance of the Error class, or null if no error occurred
  */
-export function add(name: string, opts: AddOptions, callback: (error?: Error) => void): void;
+export function add(
+    name: string,
+    opts: AddOptions,
+    callback: (error?: Error) => void,
+): void;
 export function add(name: string, callback?: (error?: Error) => void): void;
 
 /**

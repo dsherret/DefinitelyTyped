@@ -63,7 +63,9 @@ declare namespace begin {
         /**
          * Callback for transaction
          */
-        callback?: ((error: Error, transaction: Transaction) => void) | undefined;
+        callback?:
+            | ((error: Error, transaction: Transaction) => void)
+            | undefined;
         /**
          * Rollback automatically on error, default true
          */

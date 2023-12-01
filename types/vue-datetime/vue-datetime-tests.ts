@@ -19,8 +19,7 @@ new Vue({
         "vue-datetime": VueDateTime,
     },
     methods: {
-        optionConsumer(option: any) {
-        },
+        optionConsumer(option: any) {},
     },
     template: `
     <vue-datetime :value="value"

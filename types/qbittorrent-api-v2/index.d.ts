@@ -5,7 +5,11 @@
  * @param username - Username used to access the WebUI
  * @param password - Password used to access the WebUI
  */
-export function connect(host: string, username: string, password: string): Promise<QBittorrentApiEndpoint>;
+export function connect(
+    host: string,
+    username: string,
+    password: string,
+): Promise<QBittorrentApiEndpoint>;
 
 export interface QBittorrentApiEndpoint {
     appVersion(): Promise<string>;
@@ -20,7 +24,13 @@ export interface QBittorrentApiEndpoint {
 
     defaultSavePath(): Promise<string>;
 
-    log(normal?: boolean, info?: boolean, warning?: boolean, critical?: boolean, lastKnownId?: number): Promise<Log[]>;
+    log(
+        normal?: boolean,
+        info?: boolean,
+        warning?: boolean,
+        critical?: boolean,
+        lastKnownId?: number,
+    ): Promise<Log[]>;
 
     peerLog(lastKnownId?: number): Promise<PeerLog[]>;
 
@@ -62,7 +72,7 @@ export interface QBittorrentApiEndpoint {
 
     files(hash: string): Promise<Content[]>;
 
-    pieceStates(hash: string): Promise<Array<(0 | 1 | 2)>>;
+    pieceStates(hash: string): Promise<Array<0 | 1 | 2>>;
 
     pieceHashes(hash: string): Promise<string[]>;
 
@@ -92,13 +102,21 @@ export interface QBittorrentApiEndpoint {
 
     minPriority(hashes: string): Promise<void>;
 
-    setFilePriority(hash: string, id: string, priority: 0 | 1 | 6 | 7): Promise<void>;
+    setFilePriority(
+        hash: string,
+        id: string,
+        priority: 0 | 1 | 6 | 7,
+    ): Promise<void>;
 
     downloadLimit(hashes: string): Promise<void>;
 
     setDownloadLimit(hashes: string, limit: string): Promise<void>;
 
-    setShareLimit(hashes: string, ratioLimit: string, seedingTimeLimit: string): Promise<void>;
+    setShareLimit(
+        hashes: string,
+        ratioLimit: string,
+        seedingTimeLimit: string,
+    ): Promise<void>;
 
     uploadLimit(hashes: string): Promise<void>;
 
@@ -140,17 +158,27 @@ export interface QBittorrentApiEndpoint {
 
     renameFile(hash: string, id: number, name: string): Promise<void>;
 
-    startSearch(pattern: string, plugins: string, category: string): Promise<SearchJob>;
+    startSearch(
+        pattern: string,
+        plugins: string,
+        category: string,
+    ): Promise<SearchJob>;
 
     stopSearch(id: number): Promise<void>;
 
     searchStatus(id?: number): Promise<SearchStatus[]>;
 
-    searchResults(id: number, limit?: number, offset?: number): Promise<SearchResults>;
+    searchResults(
+        id: number,
+        limit?: number,
+        offset?: number,
+    ): Promise<SearchResults>;
 
     deleteSearch(id: number): Promise<void>;
 
-    searchCategories(pluginName?: string | "all" | "enabled"): Promise<string[]>;
+    searchCategories(
+        pluginName?: string | "all" | "enabled",
+    ): Promise<string[]>;
 
     searchPlugins(): Promise<SearchPlugin[]>;
 
@@ -458,7 +486,14 @@ export interface SearchPlugin {
     version: string;
 }
 
-export type filterString = "all" | "downloading" | "completed" | "paused" | "active" | "inactive" | "resumed";
+export type filterString =
+    | "all"
+    | "downloading"
+    | "completed"
+    | "paused"
+    | "active"
+    | "inactive"
+    | "resumed";
 
 export type Categories = object;
 

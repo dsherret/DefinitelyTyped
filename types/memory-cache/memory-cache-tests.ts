@@ -8,7 +8,7 @@ let returnedValue: string;
 
 returnedValue = memoryCache.put(key, value);
 returnedValue = memoryCache.put(key, value, num);
-returnedValue = memoryCache.put(key, value, num, key => {});
+returnedValue = memoryCache.put(key, value, num, (key) => {});
 returnedValue = memoryCache.put(key, value, num, (key, value) => {});
 
 let wasDeleted = memoryCache.del(key);

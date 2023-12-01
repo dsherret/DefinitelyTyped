@@ -79,7 +79,9 @@ declare namespace signale {
     }
 
     interface SignaleConstructor {
-        new<TTypes extends string = DefaultMethods>(options?: SignaleOptions<TTypes>): Signale<TTypes>;
+        new <TTypes extends string = DefaultMethods>(
+            options?: SignaleOptions<TTypes>,
+        ): Signale<TTypes>;
     }
 
     interface SignaleBase<TTypes extends string = DefaultMethods> {
@@ -112,7 +114,10 @@ declare namespace signale {
          * @param label Label corresponding to the timer, each timer has its own unique label.
          * @param span Total running time.
          */
-        timeEnd(label?: string, span?: number): { label: string; span?: number | undefined };
+        timeEnd(
+            label?: string,
+            span?: number,
+        ): { label: string; span?: number | undefined };
         /**
          * Disables the logging functionality of all loggers belonging to a specific instance.
          */
@@ -140,10 +145,9 @@ declare namespace signale {
     }
 
     type LoggerFunc = (message?: any, ...optionalArgs: any[]) => void;
-    type Signale<TTypes extends string = DefaultMethods> =
-        & SignaleBase<TTypes>
-        & Record<TTypes, LoggerFunc>
-        & Record<DefaultMethods, LoggerFunc>;
+    type Signale<TTypes extends string = DefaultMethods> = SignaleBase<TTypes> &
+        Record<TTypes, LoggerFunc> &
+        Record<DefaultMethods, LoggerFunc>;
 }
 
 declare const signale: signale.Signale<signale.DefaultMethods> & {

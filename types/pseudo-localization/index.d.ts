@@ -4,7 +4,10 @@ export namespace PseudoLocalization {
         strategy?: "accented" | "bidi" | undefined;
     }
 
-    type Localize = (inputString: string, options?: Omit<Options, "blacklistedNodeNames">) => string;
+    type Localize = (
+        inputString: string,
+        options?: Omit<Options, "blacklistedNodeNames">,
+    ) => string;
     type Start = (options?: Options) => void;
     type Stop = () => void;
 }

@@ -30,15 +30,18 @@ serveIndex(fixtures, {
 });
 
 serveIndex(fixtures, {
-    template: (locals, callback) => callback(null, JSON.stringify(locals.directory)),
+    template: (locals, callback) =>
+        callback(null, JSON.stringify(locals.directory)),
 });
 
 serveIndex(fixtures, {
-    template: (locals, callback) => callback(null, JSON.stringify(locals.displayIcons)),
+    template: (locals, callback) =>
+        callback(null, JSON.stringify(locals.displayIcons)),
 });
 
 serveIndex(fixtures, {
-    template: (locals, callback) => callback(null, JSON.stringify(locals.fileList.map(file => file))),
+    template: (locals, callback) =>
+        callback(null, JSON.stringify(locals.fileList.map((file) => file))),
 });
 
 serveIndex(fixtures, {
@@ -46,11 +49,13 @@ serveIndex(fixtures, {
 });
 
 serveIndex(fixtures, {
-    template: (locals, callback) => callback(null, JSON.stringify(locals.style)),
+    template: (locals, callback) =>
+        callback(null, JSON.stringify(locals.style)),
 });
 
 serveIndex(fixtures, {
-    template: (locals, callback) => callback(null, JSON.stringify(locals.viewName)),
+    template: (locals, callback) =>
+        callback(null, JSON.stringify(locals.viewName)),
 });
 
 serveIndex(fixtures, { stylesheet: __dirname + "/shared/styles.css" });

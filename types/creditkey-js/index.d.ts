@@ -38,7 +38,13 @@ export class Address {
 }
 
 export class Charges {
-    constructor(total: number, shipping: number, tax: number, discount_amount: number, grand_total: number);
+    constructor(
+        total: number,
+        shipping: number,
+        tax: number,
+        discount_amount: number,
+        grand_total: number,
+    );
     validate_charges(): boolean;
     is_valid_money_value(value: number): boolean;
 }
@@ -67,6 +73,11 @@ export class Client {
         merchantData: any,
     ): Promise<CheckoutResponse>;
     is_displayed_in_checkout(cartItems: CartItem[]): Promise<boolean>;
-    get_marketing_display(charges: Charges, type?: Copy, display?: Display, size?: Size): Promise<string>;
+    get_marketing_display(
+        charges: Charges,
+        type?: Copy,
+        display?: Display,
+        size?: Size,
+    ): Promise<string>;
     get_customer(email: string, customer_id: string): Promise<CustomerResponse>;
 }

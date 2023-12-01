@@ -23,7 +23,7 @@ declare namespace Bucks {
         /**
          * Create bucks object.
          */
-        new(): Bucks;
+        new (): Bucks;
 
         /**
          * Catch all errors.

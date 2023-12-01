@@ -65,7 +65,10 @@ import h = require("vhtml");
 
 // -------- Functional Pseudo-Components -------- //
 
-declare function Component(props: { prop1: string; prop2?: number | undefined }): string;
+declare function Component(props: {
+    prop1: string;
+    prop2?: number | undefined;
+}): string;
 
 // $ExpectType string
 <Component prop1="foo" prop2={125} />;
@@ -161,7 +164,9 @@ declare function ZeroOrOneChild(props: { children: [boolean?] }): h.JSX.Element;
 
 // -------- Component accepts arbitrary number of children -------- //
 
-declare function AnyNumberOfChildren(props: { children: string[] }): h.JSX.Element;
+declare function AnyNumberOfChildren(props: {
+    children: string[];
+}): h.JSX.Element;
 
 // $ExpectType string
 <AnyNumberOfChildren />;

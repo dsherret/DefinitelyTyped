@@ -13,4 +13,6 @@ export interface PromiseImplementation<P extends PromiseLike<any>> {
 
 export const run: Run<Promise<any>>;
 
-export function implement<P extends PromiseLike<any>>(implementation: PromiseImplementation<P>): Run<P>;
+export function implement<P extends PromiseLike<any>>(
+    implementation: PromiseImplementation<P>,
+): Run<P>;

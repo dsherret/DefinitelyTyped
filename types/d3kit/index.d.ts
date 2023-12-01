@@ -50,7 +50,11 @@ export class SvgPlate extends AbstractPlate {
 export class AbstractChart extends Base {
     constructor(selector: string | Element, options?: ChartOptions);
     static getCustomEventNames(): string[];
-    addPlate(name: string, plate: AbstractPlate, doNotAppend: boolean): AbstractPlate;
+    addPlate(
+        name: string,
+        plate: AbstractPlate,
+        doNotAppend: boolean,
+    ): AbstractPlate;
     addPlate(name: string, plate: AbstractPlate): this;
     removePlate(name: string): this;
     setupDispatcher(customEventNames?: string[]): this;
@@ -99,7 +103,12 @@ export interface FitOptions {
 // from https://github.com/kristw/slimfit
 export interface WatchOptions {
     mode?: string | undefined;
-    target?: Element | [number, number] | { width: number; height: number } | null | undefined;
+    target?:
+        | Element
+        | [number, number]
+        | { width: number; height: number }
+        | null
+        | undefined;
     interval?: number | undefined;
 }
 
@@ -128,10 +137,15 @@ export class HybridChart extends CanvasChart {
 }
 
 export class LayerOrganizer {
-    constructor(container: d3.Selection<d3.BaseType, any, d3.BaseType, any>, defaultTag?: string);
+    constructor(
+        container: d3.Selection<d3.BaseType, any, d3.BaseType, any>,
+        defaultTag?: string,
+    );
     create(
         layerNames: string | string[] | LayerConfig | LayerConfig[],
-    ): d3.Selection<d3.BaseType, any, d3.BaseType, any> | Array<d3.Selection<d3.BaseType, any, d3.BaseType, any>>;
+    ):
+        | d3.Selection<d3.BaseType, any, d3.BaseType, any>
+        | Array<d3.Selection<d3.BaseType, any, d3.BaseType, any>>;
     get(name: string): d3.Selection<d3.BaseType, any, d3.BaseType, any>;
     has(name: string): boolean;
 }
@@ -141,7 +155,10 @@ export interface LayerConfig {
 }
 
 export namespace helper {
-    function debounce(fn: (...args: any[]) => void, delay: number): (...args: any[]) => void;
+    function debounce(
+        fn: (...args: any[]) => void,
+        delay: number,
+    ): (...args: any[]) => void;
     function deepExtend(dest: any, ...args: any[]): any;
     function extend(dest: any, ...args: any[]): any;
     function functor(value: any): (...args: any[]) => any;
@@ -149,5 +166,8 @@ export namespace helper {
     function isFunction(value: any): boolean;
     function isObject(value: any): boolean;
     function kebabCase(str: string): string;
-    function throttle(fn: (...args: any[]) => void, delay: number): (...args: any[]) => void;
+    function throttle(
+        fn: (...args: any[]) => void,
+        delay: number,
+    ): (...args: any[]) => void;
 }

@@ -102,7 +102,10 @@ declare namespace engine {
         /**
          * whether to let engine.io handle the OPTIONS requests. You can also pass a custom function to handle the requests (true)
          */
-        handlePreflightRequest?: boolean | ((req: http.IncomingMessage, res: http.ServerResponse) => void) | undefined;
+        handlePreflightRequest?:
+            | boolean
+            | ((req: http.IncomingMessage, res: http.ServerResponse) => void)
+            | undefined;
     }
     interface ServerAttachOptions extends ServerOptions, AttachOptions {}
 
@@ -140,11 +143,18 @@ declare namespace engine {
         /**
          * Called internally when a Engine request is intercepted.
          */
-        handleRequest(req: http.IncomingMessage, res: http.ServerResponse): this;
+        handleRequest(
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+        ): this;
         /**
          * Called internally when a Engine ws upgrade is intercepted.
          */
-        handleUpgrade(req: http.IncomingMessage, socket: Duplex, head: Buffer): this;
+        handleUpgrade(
+            req: http.IncomingMessage,
+            socket: Duplex,
+            head: Buffer,
+        ): this;
         /**
          * Attach this Server instance to an http.Server
          * Captures upgrade requests for a http.Server. In other words, makes a regular http.Server WebSocket-compatible.
@@ -185,7 +195,11 @@ declare namespace engine {
         /**
          * Sends a message, performing message = toString(arguments[0]) unless sending binary data, which is sent as is.
          */
-        send(message: Message, opts?: MessageOptions, fn?: (transport: any) => void): void;
+        send(
+            message: Message,
+            opts?: MessageOptions,
+            fn?: (transport: any) => void,
+        ): void;
 
         /**
          * Disconnects the client
@@ -195,7 +209,10 @@ declare namespace engine {
         /**
          * Fired when the client is disconnected.
          */
-        on(ev: "close", fn: (reason: string, description?: Error) => void): this;
+        on(
+            ev: "close",
+            fn: (reason: string, description?: Error) => void,
+        ): this;
         /**
          * Fired when the client sends a message.
          */
@@ -219,10 +236,17 @@ declare namespace engine {
         on(ev: "packet" | "packetCreate", fn: (packet: Packet) => void): this;
     }
     function attach(http: net.Server, opts?: ServerAttachOptions): Server;
-    function listen(port: number, opts?: ServerOptions, fn?: () => void): Server;
+    function listen(
+        port: number,
+        opts?: ServerOptions,
+        fn?: () => void,
+    ): Server;
     const protocol: number;
 }
 
-declare function engine(httpServer?: net.Server, opts?: engine.ServerOptions): engine.Server;
+declare function engine(
+    httpServer?: net.Server,
+    opts?: engine.ServerOptions,
+): engine.Server;
 
 export = engine;

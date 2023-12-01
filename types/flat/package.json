@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/flat",
-    "version": "5.0.9999",
-    "projects": [
-        "https://github.com/hughsk/flat"
-    ],
-    "devDependencies": {
-        "@types/flat": "workspace:."
+  "private": true,
+  "name": "@types/flat",
+  "version": "5.0.9999",
+  "projects": [
+    "https://github.com/hughsk/flat"
+  ],
+  "devDependencies": {
+    "@types/flat": "workspace:."
+  },
+  "owners": [
+    {
+      "name": " Ilya Mochalov",
+      "githubUsername": "chrootsu"
     },
-    "owners": [
-        {
-            "name": " Ilya Mochalov",
-            "githubUsername": "chrootsu"
-        },
-        {
-            "name": "Oz Weiss",
-            "githubUsername": "thewizarodofoz"
-        }
-    ]
+    {
+      "name": "Oz Weiss",
+      "githubUsername": "thewizarodofoz"
+    }
+  ]
 }

@@ -204,12 +204,10 @@ export const HighlightDragExample: React.FC = () => {
         { x0: 6, x: 7, y0: 0, y: 1 },
     ];
 
-    const [selection, setSelection] = useState<
-        {
-            start: number;
-            end: number;
-        } | null
-    >(null);
+    const [selection, setSelection] = useState<{
+        start: number;
+        end: number;
+    } | null>(null);
 
     const updateDragState = (area: HighlightArea | null) => {
         if (!area || area.left === undefined || area.right === undefined) {
@@ -227,21 +225,33 @@ export const HighlightDragExample: React.FC = () => {
                 data={data}
                 stroke="white"
                 colorType="literal"
-                getColor={d => {
+                getColor={(d) => {
                     if (!selection) {
                         return "#1E96BE";
                     }
                     if (typeof d.x === "number" && typeof d.x0 === "number") {
-                        const inX = d.x >= selection.start && d.x <= selection.end;
-                        const inX0 = d.x0 >= selection.start && d.x0 <= selection.end;
-                        const inStart = selection.start >= d.x0 && selection.start <= d.x;
-                        const inEnd = selection.end >= d.x0 && selection.end <= d.x;
-                        return inStart || inEnd || inX || inX0 ? "#12939A" : "#1E96BE";
+                        const inX =
+                            d.x >= selection.start && d.x <= selection.end;
+                        const inX0 =
+                            d.x0 >= selection.start && d.x0 <= selection.end;
+                        const inStart =
+                            selection.start >= d.x0 && selection.start <= d.x;
+                        const inEnd =
+                            selection.end >= d.x0 && selection.end <= d.x;
+                        return inStart || inEnd || inX || inX0
+                            ? "#12939A"
+                            : "#1E96BE";
                     }
                     return "#1E96BE";
                 }}
             />
-            <Highlight color="#829AE3" drag enableY={false} onDrag={updateDragState} onDragEnd={updateDragState} />
+            <Highlight
+                color="#829AE3"
+                drag
+                enableY={false}
+                onDrag={updateDragState}
+                onDragEnd={updateDragState}
+            />
         </XYPlot>
     );
 };
@@ -268,11 +278,25 @@ const treemapData = {
 };
 
 export function TreemapExample(): JSX.Element {
-    return <Treemap data={treemapData} mode={"partition"} height={150} width={150} />;
+    return (
+        <Treemap
+            data={treemapData}
+            mode={"partition"}
+            height={150}
+            width={150}
+        />
+    );
 }
 
 export function SunburstExample(): JSX.Element {
-    return <Sunburst data={treemapData} mode={"partition"} height={150} width={150} />;
+    return (
+        <Sunburst
+            data={treemapData}
+            mode={"partition"}
+            height={150}
+            width={150}
+        />
+    );
 }
 
 export function AreaSeriesExample(): JSX.Element {

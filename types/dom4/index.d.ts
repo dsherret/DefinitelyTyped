@@ -55,11 +55,8 @@ interface Element extends ParentNode {
     matches(selectors: string): boolean;
 }
 
-interface Elements extends ParentNode, Array<Element> {
-}
+interface Elements extends ParentNode, Array<Element> {}
 
-interface Document extends ParentNode {
-}
+interface Document extends ParentNode {}
 
-interface DocumentFragment extends ParentNode {
-}
+interface DocumentFragment extends ParentNode {}

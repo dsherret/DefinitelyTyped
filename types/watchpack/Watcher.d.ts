@@ -8,7 +8,11 @@ declare class Watcher extends EventEmitter {
     path: string;
     startTime: number;
 
-    constructor(directoryWatcher: DirectoryWatcher, filePath: string, startTime: number);
+    constructor(
+        directoryWatcher: DirectoryWatcher,
+        filePath: string,
+        startTime: number,
+    );
 
     checkStartTime(mtime: number, initial: boolean): boolean;
 

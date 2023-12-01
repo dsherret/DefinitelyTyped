@@ -14,7 +14,7 @@ interface Emitter<Event = string> {
 
 declare const Emitter: {
     (obj?: object): Emitter;
-    new(obj?: object): Emitter;
+    new (obj?: object): Emitter;
 };
 
 export = Emitter;

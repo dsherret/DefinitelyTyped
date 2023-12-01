@@ -167,7 +167,12 @@ responseDefault = client.request("post", address, { query: "quokka" });
 responseDefault = client.request("post", address, new ArrayBuffer(8));
 // @ts-expect-error
 client.request("post", address, {}, 5);
-responseBinary = client.request("post", address, {}, { responseType: "binary" });
+responseBinary = client.request(
+    "post",
+    address,
+    {},
+    { responseType: "binary" },
+);
 // @ts-expect-error
 client.request("post", address, {}, {}, 5);
 
@@ -184,10 +189,20 @@ client.asyncRequest("get", addressFromHttpURL);
 responseDefaultPromise = client.asyncRequest("get", address);
 // @ts-expect-error
 client.asyncRequest("post", address, 5);
-responseDefaultPromise = client.asyncRequest("post", address, "welcome to the internet");
+responseDefaultPromise = client.asyncRequest(
+    "post",
+    address,
+    "welcome to the internet",
+);
 responseDefaultPromise = client.asyncRequest("post", address, {});
-responseDefaultPromise = client.asyncRequest("post", address, { query: "quokka" });
-responseDefaultPromise = client.asyncRequest("post", address, new ArrayBuffer(8));
+responseDefaultPromise = client.asyncRequest("post", address, {
+    query: "quokka",
+});
+responseDefaultPromise = client.asyncRequest(
+    "post",
+    address,
+    new ArrayBuffer(8),
+);
 // @ts-expect-error
 client.asyncRequest("post", address, {}, 5);
 // @ts-expect-error

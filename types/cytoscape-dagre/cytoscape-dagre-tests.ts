@@ -12,8 +12,8 @@ const dagreLayout: dagre.DagreLayoutOptions = {
     rankSep: 50,
     rankDir: "TB",
     ranker: "network-simplex",
-    minLen: edge => 1,
-    edgeWeight: edge => 1,
+    minLen: (edge) => 1,
+    edgeWeight: (edge) => 1,
     animate: true,
     animateFilter: (node, i) => true,
     transform: (node, pos) => {

@@ -16,7 +16,7 @@ expect([1, 2, 3]).to.part.include([1, 4]);
 
 expect(10, "Age").to.be.above(5);
 
-const func = function() {
+const func = function () {
     return arguments;
 }; // tslint:disable-line only-arrow-functions
 expect(func()).to.be.arguments();
@@ -133,7 +133,7 @@ expect("a5").to.match(/\w\d/);
 expect(["abc", "def"]).to.match(/^[\w\d,]*$/);
 expect(1).to.match(/^\d$/);
 
-expect("x").to.satisfy(value => value === "x");
+expect("x").to.satisfy((value) => value === "x");
 
 class CustomError extends Error {
     call: (message: string) => Error;
@@ -149,7 +149,9 @@ fail("This should not occur");
 
 expect(count()).to.be.a.number();
 
-expect(incomplete() as null).to.be.null().and.not.be.an.array();
+expect(incomplete() as null)
+    .to.be.null()
+    .and.not.be.an.array();
 
 const error = thrownAt(new Error("oops"));
 expect(error).to.not.be.undefined();

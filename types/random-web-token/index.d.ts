@@ -1,5 +1,17 @@
-type Types = "normal" | "normal+" | "medium" | "medium+" | "extra" | "onlyNumbers";
-export { asyncValidator, genAsync, genSync, syncValidator, withMyOwnCharacters };
+type Types =
+    | "normal"
+    | "normal+"
+    | "medium"
+    | "medium+"
+    | "extra"
+    | "onlyNumbers";
+export {
+    asyncValidator,
+    genAsync,
+    genSync,
+    syncValidator,
+    withMyOwnCharacters,
+};
 /*
  * @description sync token generator
  *
@@ -42,7 +54,10 @@ declare function genAsync(type: Types, length: number): Promise<string>;
  * @example withMyOwnCharacters("abc123", 100)
  * @returns {Promise<string>}
  */
-declare function withMyOwnCharacters(type: string, length: number): Promise<string>;
+declare function withMyOwnCharacters(
+    type: string,
+    length: number,
+): Promise<string>;
 /*
  * @description sync validator for genSync() and genAsync() or other Token
  *
@@ -57,7 +72,12 @@ declare function withMyOwnCharacters(type: string, length: number): Promise<stri
  * @example syncValidator("extra", 50, token, "")
  * @returns {boolean}
  */
-declare function syncValidator(type: Types, length: number, token: string, allowedPlusCharacters?: string): boolean;
+declare function syncValidator(
+    type: Types,
+    length: number,
+    token: string,
+    allowedPlusCharacters?: string,
+): boolean;
 /*
  * @description async validator for genSync() and genAsync() or other Token
  *

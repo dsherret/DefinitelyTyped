@@ -37,7 +37,9 @@ declare namespace Autocomplete {
          * those options are rendered and what their completions should be when
          * selected.
          */
-        options: ((query: string) => PromiseLike<readonly T[]> | readonly T[]) | readonly T[];
+        options:
+            | ((query: string) => PromiseLike<readonly T[]> | readonly T[])
+            | readonly T[];
 
         /**
          * A class name to apply to the autocompletion popup menu.
@@ -120,6 +122,8 @@ declare namespace Autocomplete {
 }
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function Autocomplete<T = any>(props: Autocomplete.Props<T>): JSX.Element;
+declare function Autocomplete<T = any>(
+    props: Autocomplete.Props<T>,
+): JSX.Element;
 
 export default Autocomplete;

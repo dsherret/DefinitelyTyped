@@ -17,6 +17,8 @@ const rounded: svgPathBoundingBox.BoundingBoxView = bbox.round(2);
 const scaled: svgPathBoundingBox.BoundingBoxView = bbox.scale(2);
 const roundedString: string = rounded.toString();
 
-const path = new svgPathBoundingBox.Path("M300,200 h-150 a150,150 0 1,0 150,-150 z");
+const path = new svgPathBoundingBox.Path(
+    "M300,200 h-150 a150,150 0 1,0 150,-150 z",
+);
 const d: string = path.d;
 const bbox2: svgPathBoundingBox.BoundingBoxView = path.getBoundingBox();

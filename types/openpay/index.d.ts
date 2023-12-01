@@ -7,7 +7,11 @@ declare class Openpay {
      * @param privateKey Your private API key
      * @param isProductionReady Optional environment mode flag, set to true to initialize the SDK in production mode. Default is false
      */
-    constructor(merchantId: string, privateKey: string, isProductionReady?: boolean);
+    constructor(
+        merchantId: string,
+        privateKey: string,
+        isProductionReady?: boolean,
+    );
 
     /**
      * Change the merchant ID in runtime
@@ -54,8 +58,16 @@ declare namespace Openpay {
             create(data: any, callback: Callback<any>): void;
             list(data: any, callback: Callback<any>): void;
             get(transactionId: string, callback: Callback<any>): void;
-            capture(transactionId: string, data: any, callback: Callback<any>): void;
-            refund(transactionId: string, data: any, callback: Callback<any>): void;
+            capture(
+                transactionId: string,
+                data: any,
+                callback: Callback<any>,
+            ): void;
+            refund(
+                transactionId: string,
+                data: any,
+                callback: Callback<any>,
+            ): void;
         }
 
         interface Payouts {
@@ -85,45 +97,144 @@ declare namespace Openpay {
 
         namespace Customers {
             interface Charges {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, transactionId: string, callback: Callback<any>): void;
-                capture(customerId: string, transactionId: string, captureRequest: {}, callback: Callback<any>): void;
-                refund(customerId: string, transactionId: string, data: any, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    transactionId: string,
+                    callback: Callback<any>,
+                ): void;
+                capture(
+                    customerId: string,
+                    transactionId: string,
+                    captureRequest: {},
+                    callback: Callback<any>,
+                ): void;
+                refund(
+                    customerId: string,
+                    transactionId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface Transfers {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, transactionId: string, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    transactionId: string,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface Payouts {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, transactionId: string, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    transactionId: string,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface Subscriptions {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, subscriptionId: string, callback: Callback<any>): void;
-                update(customerId: string, subscriptionId: string, data: any, callback: Callback<any>): void;
-                delete(customerId: string, subscriptionId: string, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    subscriptionId: string,
+                    callback: Callback<any>,
+                ): void;
+                update(
+                    customerId: string,
+                    subscriptionId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                delete(
+                    customerId: string,
+                    subscriptionId: string,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface Cards {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, cardId: string, callback: Callback<any>): void;
-                delete(customerId: string, cardId: string, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    cardId: string,
+                    callback: Callback<any>,
+                ): void;
+                delete(
+                    customerId: string,
+                    cardId: string,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface BankAccounts {
-                create(customerId: string, data: any, callback: Callback<any>): void;
-                list(customerId: string, data: any, callback: Callback<any>): void;
-                get(customerId: string, bankId: string, callback: Callback<any>): void;
-                delete(customerId: string, bankId: string, callback: Callback<any>): void;
+                create(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                list(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                get(
+                    customerId: string,
+                    bankId: string,
+                    callback: Callback<any>,
+                ): void;
+                delete(
+                    customerId: string,
+                    bankId: string,
+                    callback: Callback<any>,
+                ): void;
             }
         }
 
@@ -140,12 +251,20 @@ declare namespace Openpay {
             get(planId: string, callback: Callback<any>): void;
             update(planId: string, data: any, callback: Callback<any>): void;
             delete(planId: string, callback: Callback<any>): void;
-            listSubscriptions(planId: string, data: any, callback: Callback<any>): void;
+            listSubscriptions(
+                planId: string,
+                data: any,
+                callback: Callback<any>,
+            ): void;
         }
 
         interface Webhooks {
             create(data: any, callback: Callback<any>): void;
-            verify(webhook_id: string, verification_code: string, callback: Callback<any>): void;
+            verify(
+                webhook_id: string,
+                verification_code: string,
+                callback: Callback<any>,
+            ): void;
             get(webhook_id: string, callback: Callback<any>): void;
             delete(webhook_id: string, callback: Callback<any>): void;
             list(callback: Callback<any>): void;
@@ -158,16 +277,34 @@ declare namespace Openpay {
 
         namespace Groups {
             interface Charges {
-                create(merchantId: string, data: any, callback: Callback<any>): void;
-                capture(merchantId: string, transactionId: string, data: any, callback: Callback<any>): void;
-                refund(merchantId: string, transactionId: string, data: any, callback: Callback<any>): void;
+                create(
+                    merchantId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                capture(
+                    merchantId: string,
+                    transactionId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
+                refund(
+                    merchantId: string,
+                    transactionId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
             }
 
             interface Customers {
                 create(data: any, callback: Callback<any>): void;
                 list(data: any, callback: Callback<any>): void;
                 get(customerId: string, callback: Callback<any>): void;
-                update(customerId: string, data: any, callback: Callback<any>): void;
+                update(
+                    customerId: string,
+                    data: any,
+                    callback: Callback<any>,
+                ): void;
                 delete(customerId: string, callback: Callback<any>): void;
                 cards: Customers.Cards;
                 charges: Customers.Charges;
@@ -176,14 +313,35 @@ declare namespace Openpay {
 
             namespace Customers {
                 interface Cards {
-                    create(customerId: string, data: any, callback: Callback<any>): void;
-                    list(customerId: string, data: any, callback: Callback<any>): void;
-                    get(customerId: string, cardId: string, callback: Callback<any>): void;
-                    delete(customerId: string, cardId: string, callback: Callback<any>): void;
+                    create(
+                        customerId: string,
+                        data: any,
+                        callback: Callback<any>,
+                    ): void;
+                    list(
+                        customerId: string,
+                        data: any,
+                        callback: Callback<any>,
+                    ): void;
+                    get(
+                        customerId: string,
+                        cardId: string,
+                        callback: Callback<any>,
+                    ): void;
+                    delete(
+                        customerId: string,
+                        cardId: string,
+                        callback: Callback<any>,
+                    ): void;
                 }
 
                 interface Charges {
-                    create(merchantId: string, customerId: string, data: any, callback: Callback<any>): void;
+                    create(
+                        merchantId: string,
+                        customerId: string,
+                        data: any,
+                        callback: Callback<any>,
+                    ): void;
                     capture(
                         merchantId: string,
                         customerId: string,
@@ -201,9 +359,24 @@ declare namespace Openpay {
                 }
 
                 interface Subscriptions {
-                    create(merchantId: string, customerId: string, data: any, callback: Callback<any>): void;
-                    list(merchantId: string, customerId: string, data: any, callback: Callback<any>): void;
-                    get(merchantId: string, customerId: string, subscriptionId: string, callback: Callback<any>): void;
+                    create(
+                        merchantId: string,
+                        customerId: string,
+                        data: any,
+                        callback: Callback<any>,
+                    ): void;
+                    list(
+                        merchantId: string,
+                        customerId: string,
+                        data: any,
+                        callback: Callback<any>,
+                    ): void;
+                    get(
+                        merchantId: string,
+                        customerId: string,
+                        subscriptionId: string,
+                        callback: Callback<any>,
+                    ): void;
                     update(
                         merchantId: string,
                         customerId: string,
@@ -226,7 +399,11 @@ declare namespace Openpay {
             list(data: any, callback: Callback<any>): void;
             get(transactionId: string, callback: Callback<any>): void;
             capture(transactionId: string, callback: Callback<any>): void;
-            refund(transactionId: string, data: any, callback: Callback<any>): void;
+            refund(
+                transactionId: string,
+                data: any,
+                callback: Callback<any>,
+            ): void;
         }
 
         interface Transfers {

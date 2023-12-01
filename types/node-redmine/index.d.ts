@@ -69,27 +69,59 @@ export class Redmine {
 
     issues(params: any, callback: (err: any, data: any) => void): Issues;
 
-    get_issue_by_id(id: number, params: any, callback: (err: any, data: any) => void): Issue;
+    get_issue_by_id(
+        id: number,
+        params: any,
+        callback: (err: any, data: any) => void,
+    ): Issue;
 
-    create_issue(issue: IssueData, callback: (err: any, data: any) => void): Issue;
+    create_issue(
+        issue: IssueData,
+        callback: (err: any, data: any) => void,
+    ): Issue;
 
-    update_issue(id: number, issue: IssueData, callback: (err: any, data: any) => void): Issue;
+    update_issue(
+        id: number,
+        issue: IssueData,
+        callback: (err: any, data: any) => void,
+    ): Issue;
 
     delete_issue(id: number, callback: (err: any, data: any) => void): void;
 
-    add_watcher(id: number, params: any, callback: (err: any, data: any) => void): void;
+    add_watcher(
+        id: number,
+        params: any,
+        callback: (err: any, data: any) => void,
+    ): void;
 
-    remove_watcher(id: number, params: any, callback: (err: any, data: any) => void): void;
+    remove_watcher(
+        id: number,
+        params: any,
+        callback: (err: any, data: any) => void,
+    ): void;
 
     /////////////////////////////////////// REST API for Issue Relations(Alpha) ///////////////////////////////////////
 
-    issue_relation_by_issue_id(id: number, callback: (err: any, data: any) => void): void;
+    issue_relation_by_issue_id(
+        id: number,
+        callback: (err: any, data: any) => void,
+    ): void;
 
-    create_issue_relation(id: number, params: any, callback: (err: any, data: any) => void): void;
+    create_issue_relation(
+        id: number,
+        params: any,
+        callback: (err: any, data: any) => void,
+    ): void;
 
-    issue_relation_by_id(id: number, callback: (err: any, data: any) => void): void;
+    issue_relation_by_id(
+        id: number,
+        callback: (err: any, data: any) => void,
+    ): void;
 
-    delete_issue_relation(id: number, callback: (err: any, data: any) => void): void;
+    delete_issue_relation(
+        id: number,
+        callback: (err: any, data: any) => void,
+    ): void;
 
     /////////////////////////////////////// REST API for Common(Alpha) ///////////////////////////////////////
 

@@ -3,7 +3,11 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface LicenseAssignmentsCollection {
                 // Get license assignment of a particular product and sku for a user
-                get(productId: string, skuId: string, userId: string): AdminLicenseManager.Schema.LicenseAssignment;
+                get(
+                    productId: string,
+                    skuId: string,
+                    userId: string,
+                ): AdminLicenseManager.Schema.LicenseAssignment;
                 // Assign License.
                 insert(
                     resource: Schema.LicenseAssignmentInsert,
@@ -11,7 +15,10 @@ declare namespace GoogleAppsScript {
                     skuId: string,
                 ): AdminLicenseManager.Schema.LicenseAssignment;
                 // List license assignments for given product of the customer.
-                listForProduct(productId: string, customerId: string): AdminLicenseManager.Schema.LicenseAssignmentList;
+                listForProduct(
+                    productId: string,
+                    customerId: string,
+                ): AdminLicenseManager.Schema.LicenseAssignmentList;
                 // List license assignments for given product of the customer.
                 listForProduct(
                     productId: string,
@@ -65,14 +72,18 @@ declare namespace GoogleAppsScript {
             }
             interface LicenseAssignmentList {
                 etag?: string | undefined;
-                items?: AdminLicenseManager.Schema.LicenseAssignment[] | undefined;
+                items?:
+                    | AdminLicenseManager.Schema.LicenseAssignment[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
         }
     }
     interface AdminLicenseManager {
-        LicenseAssignments?: AdminLicenseManager.Collection.LicenseAssignmentsCollection | undefined;
+        LicenseAssignments?:
+            | AdminLicenseManager.Collection.LicenseAssignmentsCollection
+            | undefined;
         // Create a new instance of LicenseAssignment
         newLicenseAssignment(): AdminLicenseManager.Schema.LicenseAssignment;
         // Create a new instance of LicenseAssignmentInsert

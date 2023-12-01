@@ -1,6 +1,8 @@
 import * as windows1251 from "windows-1251";
 
-var text: string = "some text", byteString: string, decodedText: string;
+var text: string = "some text",
+    byteString: string,
+    decodedText: string;
 
 var version: string = windows1251.version;
 

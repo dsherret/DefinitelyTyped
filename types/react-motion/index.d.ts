@@ -89,7 +89,9 @@ interface TransitionPlainStyle {
     // same as TransitionStyle, passed as argument to style/children function
     style: PlainStyle;
 }
-type InterpolateFunction = (previousInterpolatedStyles?: TransitionPlainStyle[]) => TransitionStyle[];
+type InterpolateFunction = (
+    previousInterpolatedStyles?: TransitionPlainStyle[],
+) => TransitionStyle[];
 /**
  * Transition properties
  */
@@ -103,7 +105,9 @@ interface TransitionProps {
      * <StaggeredMotion/>
      */
     styles: TransitionStyle[] | InterpolateFunction;
-    children?: ((interpolatedStyles: TransitionPlainStyle[]) => JSX.Element) | undefined;
+    children?:
+        | ((interpolatedStyles: TransitionPlainStyle[]) => JSX.Element)
+        | undefined;
     /**
      * Triggers when a new element will appear
      * @param styleThatEntered
@@ -140,7 +144,10 @@ export declare class StaggeredMotion extends Component<StaggeredMotionProps> {}
 /**
  * Used in conjunction with the components below. Specifies the how to animate to the destination value, e.g. spring(10, {stiffness: 120, damping: 17}) means "animate to value 10, with a spring of stiffness 120 and damping 17".
  */
-export declare function spring(val: number, config?: SpringHelperConfig): OpaqueConfig;
+export declare function spring(
+    val: number,
+    config?: SpringHelperConfig,
+): OpaqueConfig;
 
 export declare class Presets {
     noWobble: OpaqueConfig; // the default, if nothing provided

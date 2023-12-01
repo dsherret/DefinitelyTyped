@@ -196,7 +196,11 @@ export interface VapidKeys {
  * @param  publicKey   The public VAPID key, a URL safe, base64 encoded string.
  * @param  privateKey  The private VAPID key, a URL safe, base64 encoded string.
  */
-export function setVapidDetails(subject: string, publicKey: string, privateKey: string): void;
+export function setVapidDetails(
+    subject: string,
+    publicKey: string,
+    privateKey: string,
+): void;
 
 /**
  * Configuration for a Push Subscription. This can be obtained on the frontend by calling
@@ -237,10 +241,10 @@ export interface RequestOptions {
      */
     vapidDetails?:
         | {
-            subject: string;
-            publicKey: string;
-            privateKey: string;
-        }
+              subject: string;
+              publicKey: string;
+              privateKey: string;
+          }
         | undefined;
     /**
      * A value in milliseconds that specifies the request's socket timeout.
@@ -321,5 +325,11 @@ export class WebPushError extends Error {
     readonly body: string;
     readonly endpoint: string;
 
-    constructor(message: string, statusCode: number, headers: Headers, body: string, endpoint: string);
+    constructor(
+        message: string,
+        statusCode: number,
+        headers: Headers,
+        body: string,
+        endpoint: string,
+    );
 }

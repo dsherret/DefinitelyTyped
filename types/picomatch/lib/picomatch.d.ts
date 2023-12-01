@@ -214,14 +214,33 @@ declare namespace picomatch {
         regex: RegExp,
         options?: PicomatchOptions,
         test?: {},
-    ): { isMatch: boolean; match?: boolean | RegExpExecArray | null | undefined; output: string };
+    ): {
+        isMatch: boolean;
+        match?: boolean | RegExpExecArray | null | undefined;
+        output: string;
+    };
 
-    function matchBase(input: string, glob: RegExp | string, options?: {}, posix?: any): boolean;
+    function matchBase(
+        input: string,
+        glob: RegExp | string,
+        options?: {},
+        posix?: any,
+    ): boolean;
 
-    function isMatch(str: string | string[], patterns: Glob, options?: {}): boolean;
+    function isMatch(
+        str: string | string[],
+        patterns: Glob,
+        options?: {},
+    ): boolean;
 
-    function parse(pattern: string[], options?: { maxLength?: number | undefined }): parseImport.ParseState[];
-    function parse(pattern: string, options?: { maxLength?: number | undefined }): parseImport.ParseState;
+    function parse(
+        pattern: string[],
+        options?: { maxLength?: number | undefined },
+    ): parseImport.ParseState[];
+    function parse(
+        pattern: string,
+        options?: { maxLength?: number | undefined },
+    ): parseImport.ParseState;
     function parse(
         pattern: Glob,
         options?: { maxLength?: number | undefined },

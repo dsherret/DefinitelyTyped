@@ -49,7 +49,10 @@ declare namespace OO {
      * @param originFn
      * @throws {Error} If target already inherits from origin
      */
-    function inheritClass(targetFn: ConstructorLike, originFn: ConstructorLike): void;
+    function inheritClass(
+        targetFn: ConstructorLike,
+        originFn: ConstructorLike,
+    ): void;
 
     /**
      * Copy over *own* prototype properties of a mixin.
@@ -82,7 +85,10 @@ declare namespace OO {
      * @param targetFn
      * @param originFn
      */
-    function mixinClass(targetFn: ConstructorLike, originFn: ConstructorLike): void;
+    function mixinClass(
+        targetFn: ConstructorLike,
+        originFn: ConstructorLike,
+    ): void;
 
     /**
      * Test whether one class is a subclass of another, without instantiating it.
@@ -93,7 +99,10 @@ declare namespace OO {
      * @param baseFn The base class
      * @return Whether testFn is a subclass of baseFn (or equal to it)
      */
-    function isSubclass(testFn: ConstructorLike, baseFn: ConstructorLike): boolean;
+    function isSubclass(
+        testFn: ConstructorLike,
+        baseFn: ConstructorLike,
+    ): boolean;
 
     /**
      * Get a deeply nested property of an object using variadic arguments, protecting against
@@ -108,7 +117,10 @@ declare namespace OO {
      * @param keys
      * @return obj[arguments[1]][arguments[2]].... or undefined
      */
-    function getProp<T extends object, K extends ValidKey[]>(obj: T, ...keys: K): RecursivelyGet<T, K>;
+    function getProp<T extends object, K extends ValidKey[]>(
+        obj: T,
+        ...keys: K
+    ): RecursivelyGet<T, K>;
 
     /**
      * Set a deeply nested property of an object using variadic arguments, protecting against
@@ -183,7 +195,11 @@ declare namespace OO {
      * @param forInsertion If not found, return index where val could be inserted
      * @return Index where val was found, or null if not found
      */
-    function binarySearch<T>(arr: T[], searchFunc: (item: T) => number, forInsertion?: boolean): number | null;
+    function binarySearch<T>(
+        arr: T[],
+        searchFunc: (item: T) => number,
+        forInsertion?: boolean,
+    ): number | null;
 
     /**
      * Recursively compare properties between two objects.
@@ -200,7 +216,11 @@ declare namespace OO {
      *  (i.e. a is a subset of b)
      * @return If the objects contain the same values as each other
      */
-    function compare(a: object | undefined | null, b: object | undefined | null, asymmetrical?: boolean): boolean;
+    function compare(
+        a: object | undefined | null,
+        b: object | undefined | null,
+        asymmetrical?: boolean,
+    ): boolean;
 
     /**
      * Create a plain deep copy of any kind of object.
@@ -281,7 +301,9 @@ declare namespace OO {
      * @param arrays Arrays to union
      * @return Union of the arrays
      */
-    function simpleArrayUnion<T extends any[][]>(...arrays: T): T extends Array<Array<infer R>> ? R[] : never;
+    function simpleArrayUnion<T extends any[][]>(
+        ...arrays: T
+    ): T extends Array<Array<infer R>> ? R[] : never;
 
     /**
      * Compute the intersection of two arrays (items in both arrays).
@@ -292,7 +314,10 @@ declare namespace OO {
      * @param b Second array
      * @return Intersection of arrays
      */
-    function simpleArrayIntersection<T, U>(a: T[], b: U[]): Array<Extract<T, U>>;
+    function simpleArrayIntersection<T, U>(
+        a: T[],
+        b: U[],
+    ): Array<Extract<T, U>>;
 
     /**
      * Compute the difference of two arrays (items in 'a' but not 'b').

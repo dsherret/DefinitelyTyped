@@ -21,7 +21,12 @@ declare class RedisStore {
     /**
      * @summary Sets a key in Redis storage.
      */
-    set(key: string, value: string, lifetime?: number, callback?: (sender: RedisStore) => void): void;
+    set(
+        key: string,
+        value: string,
+        lifetime?: number,
+        callback?: (sender: RedisStore) => void,
+    ): void;
 
     /**
      * @summary Gets a key in Redis storage.
@@ -31,7 +36,11 @@ declare class RedisStore {
     /**
      * @summary Resets a key in Redis storage.
      */
-    reset(key: string, callback?: (err: Error, data: any) => void, ...args: any[]): void;
+    reset(
+        key: string,
+        callback?: (err: Error, data: any) => void,
+        ...args: any[]
+    ): void;
 
     static Redis: any;
 

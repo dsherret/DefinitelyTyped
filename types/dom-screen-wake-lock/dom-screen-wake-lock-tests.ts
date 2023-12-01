@@ -1,5 +1,5 @@
 function tryKeepScreenAlive(minutes: number) {
-    navigator.wakeLock.request("screen").then(lock => {
+    navigator.wakeLock.request("screen").then((lock) => {
         setTimeout(() => lock.release(), minutes * 60 * 1000);
     });
 }

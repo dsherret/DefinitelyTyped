@@ -9,7 +9,10 @@ declare class EventSource {
     static readonly CONNECTING: number;
     static readonly OPEN: number;
 
-    constructor(url: string, eventSourceInitDict?: EventSource.EventSourceInitDict);
+    constructor(
+        url: string,
+        eventSourceInitDict?: EventSource.EventSourceInitDict,
+    );
 
     readonly CLOSED: number;
     readonly CONNECTING: number;
@@ -22,7 +25,10 @@ declare class EventSource {
     onerror: (evt: MessageEvent) => any;
     addEventListener(type: string, listener: (evt: MessageEvent) => void): void;
     dispatchEvent(evt: Event): boolean;
-    removeEventListener(type: string, listener: (evt: MessageEvent) => void): void;
+    removeEventListener(
+        type: string,
+        listener: (evt: MessageEvent) => void,
+    ): void;
     close(): void;
 }
 

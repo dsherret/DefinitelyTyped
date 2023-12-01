@@ -17,5 +17,8 @@ interface Create {
     level?: "error" | "info" | "debug";
 }
 
-export default function create(ptr: GraphPointer, args?: Create): Promise<Runner>;
+export default function create(
+    ptr: GraphPointer,
+    args?: Create,
+): Promise<Runner>;
 export {};

@@ -1,4 +1,11 @@
-import { DefaultFormats, Duration, Formats, Locale, RTFFormatter, TimeUnit } from "./locale";
+import {
+    DefaultFormats,
+    Duration,
+    Formats,
+    Locale,
+    RTFFormatter,
+    TimeUnit,
+} from "./locale";
 import { FormatStyle } from "./style";
 
 export = TimeAgo;
@@ -8,7 +15,11 @@ declare class TimeAgo {
 
     format(input: Date | number, style?: string | FormatStyle): string;
     formatNumber(number: number): string;
-    formatValue(value: Date | number, unit: TimeUnit, localeData: Duration): string;
+    formatValue(
+        value: Date | number,
+        unit: TimeUnit,
+        localeData: Duration,
+    ): string;
     getFormatter(flavor: DefaultFormats): RTFFormatter;
     getLocaleData(format?: Formats): Duration; // Defaults to "long"
     getRule(value: Date | number, unit: TimeUnit, localeData: Duration): string;

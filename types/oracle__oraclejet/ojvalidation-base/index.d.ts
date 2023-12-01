@@ -1,7 +1,7 @@
 import Message = require("../ojmessaging");
 import Color = require("../ojcolor");
 export interface AsyncValidator<V> {
-    hint: Promise<(string | null)>;
+    hint: Promise<string | null>;
     validate(value: V): Promise<boolean>;
 }
 export class ColorConverter implements Converter<Color> {
@@ -42,7 +42,10 @@ export namespace IntlConverterUtils {
     function getConverterInstance<T>(
         converterOption: string | Validation.RegisteredConverter | Converter<T>,
     ): Converter<T> | null;
-    function getInitials(firstName?: string, lastName?: string): string | undefined;
+    function getInitials(
+        firstName?: string,
+        lastName?: string,
+    ): string | undefined;
     function getLocalTimeZoneOffset(): string;
     function isoToDate(isoString: string): Date;
     function isoToLocalDate(isoString: string): Date;
@@ -61,24 +64,32 @@ export namespace LengthValidator {
         countBy?: "codeUnit" | "codePoint" | undefined;
         min?: number | undefined;
         max?: number | undefined;
-        hint?: {
-            max?: string | undefined;
-            min?: string | undefined;
-            inRange?: string | undefined;
-            exact?: string | undefined;
-        } | undefined;
-        messageDetail?: {
-            tooLong?: string | undefined;
-            tooShort?: string | undefined;
-        } | undefined;
-        messageSummary?: {
-            tooLong?: string | undefined;
-            tooShort?: string | undefined;
-        } | undefined;
+        hint?:
+            | {
+                  max?: string | undefined;
+                  min?: string | undefined;
+                  inRange?: string | undefined;
+                  exact?: string | undefined;
+              }
+            | undefined;
+        messageDetail?:
+            | {
+                  tooLong?: string | undefined;
+                  tooShort?: string | undefined;
+              }
+            | undefined;
+        messageSummary?:
+            | {
+                  tooLong?: string | undefined;
+                  tooShort?: string | undefined;
+              }
+            | undefined;
     };
 }
 export interface LengthValidatorFactory {
-    createValidator(options?: LengthValidator.ValidatorOptions): LengthValidator;
+    createValidator(
+        options?: LengthValidator.ValidatorOptions,
+    ): LengthValidator;
 }
 export class RegExpValidator implements Validator<string | number> {
     constructor(options?: RegExpValidator.ValidatorOptions);
@@ -111,7 +122,9 @@ export namespace RequiredValidator {
     };
 }
 export interface RequiredValidatorFactory {
-    createValidator(options?: RequiredValidator.ValidatorOptions): RequiredValidator;
+    createValidator(
+        options?: RequiredValidator.ValidatorOptions,
+    ): RequiredValidator;
 }
 export namespace Validation {
     function converterFactory<CF extends ConverterFactory<any>>(
@@ -119,7 +132,14 @@ export namespace Validation {
         instance?: CF,
     ): CF | null;
     function validatorFactory<VF extends ValidatorFactory<any>>(
-        type: "required" | "regexp" | "numberRange" | "length" | "dateTimeRange" | "dateRestriction" | string,
+        type:
+            | "required"
+            | "regexp"
+            | "numberRange"
+            | "length"
+            | "dateTimeRange"
+            | "dateRestriction"
+            | string,
         instance?: VF,
     ): VF | null;
     // eslint-disable-next-line @typescript-eslint/consistent-type-definitions

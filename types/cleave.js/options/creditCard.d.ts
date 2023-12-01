@@ -16,4 +16,7 @@ export type CreditCardType =
     | "mir"
     | "visa";
 
-export type CreditCardTypeChangeHandler = (this: Cleave, type: CreditCardType) => void;
+export type CreditCardTypeChangeHandler = (
+    this: Cleave,
+    type: CreditCardType,
+) => void;

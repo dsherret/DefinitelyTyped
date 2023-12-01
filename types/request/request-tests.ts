@@ -26,13 +26,17 @@ let req: request.Request = request(uri, function callback() {});
 let res: request.Response;
 let form: FormData;
 
-const bodyArr: request.RequestPart[] = [{
-    body: value,
-}, {
-    body: value,
-}, {
-    body: value,
-}];
+const bodyArr: request.RequestPart[] = [
+    {
+        body: value,
+    },
+    {
+        body: value,
+    },
+    {
+        body: value,
+    },
+];
 
 // Defaults tests
 (() => {
@@ -43,7 +47,10 @@ const bodyArr: request.RequestPart[] = [{
     const defaultUrlRequest = request.defaults({ url: githubUrl });
     defaultUrlRequest();
     defaultUrlRequest.get();
-    const defaultBodyRequest = defaultUrlRequest.defaults({ body: "{}", json: true });
+    const defaultBodyRequest = defaultUrlRequest.defaults({
+        body: "{}",
+        json: true,
+    });
     defaultBodyRequest.get();
     defaultBodyRequest.post();
     defaultBodyRequest.put();
@@ -275,11 +282,17 @@ request("http://www.google.com", (error, response, body) => {
     }
 });
 
-request("http://google.com/doodle.png").pipe(fs.createWriteStream("doodle.png"));
+request("http://google.com/doodle.png").pipe(
+    fs.createWriteStream("doodle.png"),
+);
 
-fs.createReadStream("file.json").pipe(request.put("http://mysite.com/obj.json"));
+fs.createReadStream("file.json").pipe(
+    request.put("http://mysite.com/obj.json"),
+);
 
-request.get("http://google.com/img.png").pipe(request.put("http://mysite.com/img.png"));
+request
+    .get("http://google.com/img.png")
+    .pipe(request.put("http://mysite.com/img.png"));
 
 request
     .get("http://google.com/img.png")
@@ -331,7 +344,12 @@ request.post("http://service.com/upload", { form: { key: "value" } });
 // or
 request.post("http://service.com/upload").form({ key: "value" });
 // or
-request.post({ url: "http://service.com/upload", form: { key: "value" } }, (err, httpResponse, body) => {/* ... */});
+request.post(
+    { url: "http://service.com/upload", form: { key: "value" } },
+    (err, httpResponse, body) => {
+        /* ... */
+    },
+);
 
 const data = {
     // Pass a simple key-value pair
@@ -356,13 +374,16 @@ const data = {
         },
     },
 };
-request.post({ url: "http://service.com/upload", formData: data }, function optionalCallback(err, httpResponse, body) {
-    if (err) {
-        console.error("upload failed:", err);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
+request.post(
+    { url: "http://service.com/upload", formData: data },
+    function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            console.error("upload failed:", err);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
 
 const requestMultipart = request.post(
     "http://service.com/upload",
@@ -371,56 +392,76 @@ const requestMultipart = request.post(
 form = requestMultipart.form();
 form.append("my_field", "my_value");
 form.append("my_buffer", new Buffer([1, 2, 3]));
-form.append("custom_file", fs.createReadStream(__dirname + "/unicycle.jpg"), { filename: "unicycle.jpg" });
+form.append("custom_file", fs.createReadStream(__dirname + "/unicycle.jpg"), {
+    filename: "unicycle.jpg",
+});
 
-request({
-    method: "PUT",
-    preambleCRLF: true,
-    postambleCRLF: true,
-    uri: "http://service.com/upload",
-    multipart: {
-        chunked: false,
-        data: [
+request(
+    {
+        method: "PUT",
+        preambleCRLF: true,
+        postambleCRLF: true,
+        uri: "http://service.com/upload",
+        multipart: {
+            chunked: false,
+            data: [
+                {
+                    "content-type": "application/json",
+                    body: JSON.stringify({
+                        foo: "bar",
+                        _attachments: {
+                            "message.txt": {
+                                follows: true,
+                                length: 18,
+                                content_type: "text/plain",
+                            },
+                        },
+                    }),
+                },
+                { body: "I am an attachment" },
+            ],
+        },
+    },
+    (error, response, body) => {
+        if (error) {
+            console.error("upload failed:", error);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
+request(
+    {
+        method: "PUT",
+        preambleCRLF: true,
+        postambleCRLF: true,
+        uri: "http://service.com/upload",
+        multipart: [
             {
-                "content-type": "application/json",
+                headers: { "content-type": "application/json" },
                 body: JSON.stringify({
                     foo: "bar",
-                    _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
+                    _attachments: {
+                        "message.txt": {
+                            follows: true,
+                            length: 18,
+                            content_type: "text/plain",
+                        },
+                    },
                 }),
             },
             { body: "I am an attachment" },
+            { body: fs.createReadStream("image.png") },
         ],
     },
-}, (error, response, body) => {
-    if (error) {
-        console.error("upload failed:", error);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
-request({
-    method: "PUT",
-    preambleCRLF: true,
-    postambleCRLF: true,
-    uri: "http://service.com/upload",
-    multipart: [
-        {
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                foo: "bar",
-                _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
-            }),
-        },
-        { body: "I am an attachment" },
-        { body: fs.createReadStream("image.png") },
-    ],
-}, (error, response, body) => {
-    if (error) {
-        console.error("upload failed:", error);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
+    (error, response, body) => {
+        if (error) {
+            console.error("upload failed:", error);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
 
 request.get("http://some.server.com/").auth("username", "password", false);
 // or
@@ -491,7 +532,9 @@ request.post({ url, oauth }, (e, r, body) => {
 
     // step 2
     const req_data = qs.parse(body);
-    const uri = `https://api.twitter.com/oauth/authenticate?${qs.stringify({ oauth_token: req_data.oauth_token })}`;
+    const uri = `https://api.twitter.com/oauth/authenticate?${qs.stringify({
+        oauth_token: req_data.oauth_token,
+    })}`;
     // redirect the user to the authorize uri
 
     // step 3
@@ -642,17 +685,28 @@ request(
     {
         method: "PUT",
         uri: "http://mikeal.iriscouch.com/testjs/" + rand,
-        multipart: [{
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                foo: "bar",
-                _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
-            }),
-        }, { body: "I am an attachment" }],
+        multipart: [
+            {
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    foo: "bar",
+                    _attachments: {
+                        "message.txt": {
+                            follows: true,
+                            length: 18,
+                            content_type: "text/plain",
+                        },
+                    },
+                }),
+            },
+            { body: "I am an attachment" },
+        ],
     },
     (error, response, body) => {
         if (response.statusCode === 201) {
-            console.log("document saved as: http://mikeal.iriscouch.com/testjs/" + rand);
+            console.log(
+                "document saved as: http://mikeal.iriscouch.com/testjs/" + rand,
+            );
         } else {
             console.log("error: " + response.statusCode);
             console.log(body);
@@ -681,8 +735,8 @@ request(
                 {
                     "content-type": "image/png",
                     body: Buffer.from(
-                        "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAA3NCSVQICAjb4U/gAAAAX3pUWHRSYXcgcHJvZmlsZSB0eXBlIEFQUDEAAAiZ40pPzUstykxWKCjKT8vMSeVSAANjEy4TSxNL"
-                            + "o0QDAwMLAwgwNDAwNgSSRkC2OVQo0QAFmJibpQGhuVmymSmIzwUAT7oVaBst2IwAAAAWSURBVAiZY/z//z8DAwMTAwMDAwMDACQGAwGaMKL7AAAAAElFTkSuQmCC",
+                        "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAA3NCSVQICAjb4U/gAAAAX3pUWHRSYXcgcHJvZmlsZSB0eXBlIEFQUDEAAAiZ40pPzUstykxWKCjKT8vMSeVSAANjEy4TSxNL" +
+                            "o0QDAwMLAwgwNDAwNgSSRkC2OVQo0QAFmJibpQGhuVmymSmIzwUAT7oVaBst2IwAAAAWSURBVAiZY/z//z8DAwMTAwMDAwMDACQGAwGaMKL7AAAAAElFTkSuQmCC",
                     ),
                 },
             ],
@@ -690,7 +744,9 @@ request(
     },
     (error, response, body) => {
         if (response.statusCode === 201) {
-            console.log("image saved as http://mikeal.iriscouch.com/testjs/" + rand);
+            console.log(
+                "image saved as http://mikeal.iriscouch.com/testjs/" + rand,
+            );
         } else {
             console.log("error: " + response.statusCode);
             console.log(body);
@@ -702,13 +758,17 @@ request(
     { method: "GET", uri: "http://www.google.com", gzip: true },
     (error, response, body) => {
         // body is the decompressed response body
-        console.log("server encoded the data as: " + (response.headers["content-encoding"] || "identity"));
+        console.log(
+            "server encoded the data as: " +
+                (response.headers["content-encoding"] || "identity"),
+        );
         console.log("the decoded data is: " + body);
     },
-).on("data", (data: any) => {
-    // decompressed data as it is received
-    console.log("decoded chunk: " + data);
-})
+)
+    .on("data", (data: any) => {
+        // decompressed data as it is received
+        console.log("decoded chunk: " + data);
+    })
     .on("response", (response: http.IncomingMessage) => {
         // unmodified http.IncomingMessage object
         response.on("data", (data: any[]) => {
@@ -752,9 +812,7 @@ request({ url: "http://www.google.com", jar }, () => {
     // [{key: 'key1', value: 'value1', domain: "www.google.com", ...}, ...]
 });
 
-request(
-    { method: "GET", uri: "http://www.google.com", gzip: true },
-)
+request({ method: "GET", uri: "http://www.google.com", gzip: true })
     .on("request", (req: http.ClientRequest) => {})
     .on("response", (resp: http.IncomingMessage) => {})
     .on("data", (data: Buffer | string) => {})

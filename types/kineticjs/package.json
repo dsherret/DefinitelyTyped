@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/kineticjs",
-    "version": "0.0.9999",
-    "projects": [
-        "http://kineticjs.com/"
-    ],
-    "devDependencies": {
-        "@types/kineticjs": "workspace:."
+  "private": true,
+  "name": "@types/kineticjs",
+  "version": "0.0.9999",
+  "projects": [
+    "http://kineticjs.com/"
+  ],
+  "devDependencies": {
+    "@types/kineticjs": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Basarat Ali Syed",
+      "url": "http://www.github.com/basarat"
     },
-    "owners": [
-        {
-            "name": "Basarat Ali Syed",
-            "url": "http://www.github.com/basarat"
-        },
-        {
-            "name": "Ralph de Ruijter",
-            "url": "http://www.superdopey.nl/techblog/"
-        }
-    ]
+    {
+      "name": "Ralph de Ruijter",
+      "url": "http://www.superdopey.nl/techblog/"
+    }
+  ]
 }

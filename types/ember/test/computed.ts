@@ -10,11 +10,11 @@ const Person = Ember.Object.extend({
 
     noArgs: Ember.computed<string>(() => "test"),
 
-    fullName: Ember.computed<string>("firstName", "lastName", function() {
+    fullName: Ember.computed<string>("firstName", "lastName", function () {
         return `${this.get("firstName")} ${this.get("lastName")}`;
     }),
 
-    fullNameReadonly: Ember.computed<string>("fullName", function() {
+    fullNameReadonly: Ember.computed<string>("fullName", function () {
         return this.get("fullName");
     }).readOnly(),
 
@@ -45,7 +45,7 @@ const Person = Ember.Object.extend({
         },
     }),
 
-    combinators: Ember.computed<string>(function() {
+    combinators: Ember.computed<string>(function () {
         return this.get("firstName");
     })
         .property("firstName")
@@ -84,7 +84,9 @@ assertType<string>(person.get("fullNameSetOnly"));
 assertType<string>(person.get("combinators"));
 assertType<string>(person.get("explicitlyDeclared"));
 
-assertType<{ firstName: string; fullName: string; age: number }>(person.getProperties("firstName", "fullName", "age"));
+assertType<{ firstName: string; fullName: string; age: number }>(
+    person.getProperties("firstName", "fullName", "age"),
+);
 
 const person2 = Person.create({
     fullName: "Fred Smith",
@@ -123,7 +125,7 @@ const objectWithComputedProperties = Ember.Object.extend({
     equalNumber: Ember.computed.equal("foo", 1),
     equalString: Ember.computed.equal("foo", "bar"),
     equalObject: Ember.computed.equal("foo", {}),
-    filter: Ember.computed.filter("foo", item => item === "bar"),
+    filter: Ember.computed.filter("foo", (item) => item === "bar"),
     filterBy1: Ember.computed.filterBy("foo", "bar"),
     filterBy2: Ember.computed.filterBy("foo", "bar", false),
     gt: Ember.computed.gt("foo", 3),

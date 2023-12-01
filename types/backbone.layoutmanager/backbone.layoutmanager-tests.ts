@@ -18,10 +18,10 @@ class View extends Backbone.Layout<Backbone.Model> {
         this.template = "#view";
 
         // When you click the View contents, it will wrap them in a bold tag.
-        this.events = <any> {
-            "click": "wrapElement",
-            "mouseenter": "insertElement",
-            "mouseleave": "removeElement",
+        this.events = <any>{
+            click: "wrapElement",
+            mouseenter: "insertElement",
+            mouseleave: "removeElement",
         };
     }
 
@@ -49,7 +49,7 @@ var layout = new Backbone.Layout<Backbone.Model>({
 
     // Declaratively bind a nested View to the Layout.
     views: {
-        "p": new View(),
+        p: new View(),
     },
 });
 

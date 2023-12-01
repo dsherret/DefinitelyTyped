@@ -11,7 +11,7 @@ const invalidOptions = {
     invalidOption: "foobar",
 };
 
-(() => (
+() => (
     <ReactScrollIntoViewIfNeeded
         active={true}
         options={{
@@ -23,9 +23,9 @@ const invalidOptions = {
     >
         Children
     </ReactScrollIntoViewIfNeeded>
-));
+);
 
-(() => (
+() => (
     <ReactScrollIntoViewIfNeeded
         options={{
             // @ts-expect-error
@@ -34,20 +34,21 @@ const invalidOptions = {
     >
         Children
     </ReactScrollIntoViewIfNeeded>
-));
+);
 
-(() => (
+() => (
     <ReactScrollIntoViewIfNeeded
         // @ts-expect-error
         active={5}
     >
         Children
     </ReactScrollIntoViewIfNeeded>
-));
+);
 
-(() => (
+() => (
     <ReactScrollIntoViewIfNeeded // @ts-expect-error
-     elementType="h8">
+        elementType="h8"
+    >
         Children
     </ReactScrollIntoViewIfNeeded>
-));
+);

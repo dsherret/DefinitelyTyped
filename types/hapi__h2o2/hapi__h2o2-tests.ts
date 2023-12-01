@@ -84,7 +84,10 @@ async function main() {
                 },
 
                 async onRequest(req) {
-                    return req.request("GET", "https://some.upstream.service.com/");
+                    return req.request(
+                        "GET",
+                        "https://some.upstream.service.com/",
+                    );
                 },
 
                 async onResponse(err, res, request, h, settings, ttl) {
@@ -171,5 +174,5 @@ const replyViaToolkit: hapi.ServerRoute = {
 };
 
 if (!module.parent) {
-    main().catch(err => console.error(err.stack));
+    main().catch((err) => console.error(err.stack));
 }

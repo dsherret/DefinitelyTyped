@@ -33,16 +33,33 @@ const apinstance = new CloudmersiveVirusApiClient.ScanApi();
 // $ExpectType any
 apinstance.scanFile(
     Buffer.alloc(10),
-    (error: any, data: CloudmersiveVirusApiClient.VirusScanResult, response: any) => {},
+    (
+        error: any,
+        data: CloudmersiveVirusApiClient.VirusScanResult,
+        response: any,
+    ) => {},
 );
 // $ExpectType any
 apinstance.scanFileAdvanced(
     Buffer.alloc(10),
-    { allowExecutables: false, allowInvalidFiles: false, allowScripts: false, restrictFileTypes: "" },
-    (error: any, data: CloudmersiveVirusApiClient.VirusScanAdvancedResult, response: any) => {},
+    {
+        allowExecutables: false,
+        allowInvalidFiles: false,
+        allowScripts: false,
+        restrictFileTypes: "",
+    },
+    (
+        error: any,
+        data: CloudmersiveVirusApiClient.VirusScanAdvancedResult,
+        response: any,
+    ) => {},
 );
 // $ExpectType any
 apinstance.scanWebsite(
     { Url: "" },
-    (error: any, data: CloudmersiveVirusApiClient.WebsiteScanResult, response: any) => {},
+    (
+        error: any,
+        data: CloudmersiveVirusApiClient.WebsiteScanResult,
+        response: any,
+    ) => {},
 );

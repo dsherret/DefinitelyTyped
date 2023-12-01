@@ -111,6 +111,8 @@ declare module "jsreport-core" {
     }
 }
 
-declare function JsReportChromePdf(options?: Partial<JsReportChromePdf.Options>): ExtensionDefinition;
+declare function JsReportChromePdf(
+    options?: Partial<JsReportChromePdf.Options>,
+): ExtensionDefinition;
 
 export = JsReportChromePdf;

@@ -18,7 +18,10 @@ sodium.ready.then(() => {
         sodium.crypto_secretstream_xchacha20poly1305_TAG_FINAL,
     );
 
-    const state_in = sodium.crypto_secretstream_xchacha20poly1305_init_pull(header, key);
+    const state_in = sodium.crypto_secretstream_xchacha20poly1305_init_pull(
+        header,
+        key,
+    );
     const r1 = sodium.crypto_secretstream_xchacha20poly1305_pull(state_in, c1);
     const [m1, tag1] = [sodium.to_string(r1.message), r1.tag];
     const r2 = sodium.crypto_secretstream_xchacha20poly1305_pull(state_in, c2);

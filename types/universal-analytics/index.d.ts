@@ -380,17 +380,48 @@ declare namespace ua {
 
         pageview(path: PageviewParams | string, callback?: Callback): Visitor;
         pageview(path: string, hostname: string, callback?: Callback): Visitor;
-        pageview(path: string, hostname: string, title: string, callback?: Callback): Visitor;
-        pageview(path: string, hostname: string, title: string, params: PageviewParams, callback?: Callback): Visitor;
+        pageview(
+            path: string,
+            hostname: string,
+            title: string,
+            callback?: Callback,
+        ): Visitor;
+        pageview(
+            path: string,
+            hostname: string,
+            title: string,
+            params: PageviewParams,
+            callback?: Callback,
+        ): Visitor;
 
         pv(path: PageviewParams | string, callback?: Callback): Visitor;
         pv(path: string, hostname: string, callback?: Callback): Visitor;
-        pv(path: string, hostname: string, title: string, callback?: Callback): Visitor;
-        pv(path: string, hostname: string, title: string, params: PageviewParams, callback?: Callback): Visitor;
+        pv(
+            path: string,
+            hostname: string,
+            title: string,
+            callback?: Callback,
+        ): Visitor;
+        pv(
+            path: string,
+            hostname: string,
+            title: string,
+            params: PageviewParams,
+            callback?: Callback,
+        ): Visitor;
 
         screenview(params: ScreenviewParams, callback?: Callback): Visitor;
-        screenview(screenName: string, appName: string, callback?: Callback): Visitor;
-        screenview(screenName: string, appName: string, appVersion: string, callback?: Callback): Visitor;
+        screenview(
+            screenName: string,
+            appName: string,
+            callback?: Callback,
+        ): Visitor;
+        screenview(
+            screenName: string,
+            appName: string,
+            appVersion: string,
+            callback?: Callback,
+        ): Visitor;
         screenview(
             screenName: string,
             appName: string,
@@ -418,8 +449,19 @@ declare namespace ua {
 
         event(params: EventParams, callback?: Callback): Visitor;
         event(category: string, action: string, callback?: Callback): Visitor;
-        event(category: string, action: string, label: string, callback?: Callback): Visitor;
-        event(category: string, action: string, label: string, value: string | number, callback?: Callback): Visitor;
+        event(
+            category: string,
+            action: string,
+            label: string,
+            callback?: Callback,
+        ): Visitor;
+        event(
+            category: string,
+            action: string,
+            label: string,
+            value: string | number,
+            callback?: Callback,
+        ): Visitor;
         event(
             category: string,
             action: string,
@@ -431,8 +473,19 @@ declare namespace ua {
 
         e(params: EventParams, callback?: Callback): Visitor;
         e(category: string, action: string, callback?: Callback): Visitor;
-        e(category: string, action: string, label: string, callback?: Callback): Visitor;
-        e(category: string, action: string, label: string, value: string | number, callback?: Callback): Visitor;
+        e(
+            category: string,
+            action: string,
+            label: string,
+            callback?: Callback,
+        ): Visitor;
+        e(
+            category: string,
+            action: string,
+            label: string,
+            value: string | number,
+            callback?: Callback,
+        ): Visitor;
         e(
             category: string,
             action: string,
@@ -442,9 +495,21 @@ declare namespace ua {
             callback?: Callback,
         ): Visitor;
 
-        transaction(id: TransactionParams | string, callback?: Callback): Visitor;
-        transaction(id: string, revenue: string | number, callback?: Callback): Visitor;
-        transaction(id: string, revenue: string | number, shipping: string | number, callback?: Callback): Visitor;
+        transaction(
+            id: TransactionParams | string,
+            callback?: Callback,
+        ): Visitor;
+        transaction(
+            id: string,
+            revenue: string | number,
+            callback?: Callback,
+        ): Visitor;
+        transaction(
+            id: string,
+            revenue: string | number,
+            shipping: string | number,
+            callback?: Callback,
+        ): Visitor;
         transaction(
             id: string,
             revenue: string | number,
@@ -472,7 +537,12 @@ declare namespace ua {
 
         t(id: TransactionParams | string, callback?: Callback): Visitor;
         t(id: string, revenue: string | number, callback?: Callback): Visitor;
-        t(id: string, revenue: string | number, shipping: string | number, callback?: Callback): Visitor;
+        t(
+            id: string,
+            revenue: string | number,
+            shipping: string | number,
+            callback?: Callback,
+        ): Visitor;
         t(
             id: string,
             revenue: string | number,
@@ -499,8 +569,17 @@ declare namespace ua {
         ): Visitor;
 
         item(price: ItemParams | string | number, callback?: Callback): Visitor;
-        item(price: string | number, quantity: string | number, callback?: Callback): Visitor;
-        item(price: string | number, quantity: string | number, sku: string, callback?: Callback): Visitor;
+        item(
+            price: string | number,
+            quantity: string | number,
+            callback?: Callback,
+        ): Visitor;
+        item(
+            price: string | number,
+            quantity: string | number,
+            sku: string,
+            callback?: Callback,
+        ): Visitor;
         item(
             price: string | number,
             quantity: string | number,
@@ -527,9 +606,24 @@ declare namespace ua {
         ): Visitor;
 
         i(price: ItemParams | string | number, callback?: Callback): Visitor;
-        i(price: string | number, quantity: string | number, callback?: Callback): Visitor;
-        i(price: string | number, quantity: string | number, sku: string, callback?: Callback): Visitor;
-        i(price: string | number, quantity: string | number, sku: string, name: string, callback?: Callback): Visitor;
+        i(
+            price: string | number,
+            quantity: string | number,
+            callback?: Callback,
+        ): Visitor;
+        i(
+            price: string | number,
+            quantity: string | number,
+            sku: string,
+            callback?: Callback,
+        ): Visitor;
+        i(
+            price: string | number,
+            quantity: string | number,
+            sku: string,
+            name: string,
+            callback?: Callback,
+        ): Visitor;
         i(
             price: string | number,
             quantity: string | number,
@@ -548,14 +642,41 @@ declare namespace ua {
             callback?: Callback,
         ): Visitor;
 
-        exception(description: ExceptionParams | string, callback?: Callback): Visitor;
-        exception(description: string, fatal: boolean, callback?: Callback): Visitor;
-        exception(description: string, fatal: boolean, params: ExceptionParams, callback?: Callback): Visitor;
+        exception(
+            description: ExceptionParams | string,
+            callback?: Callback,
+        ): Visitor;
+        exception(
+            description: string,
+            fatal: boolean,
+            callback?: Callback,
+        ): Visitor;
+        exception(
+            description: string,
+            fatal: boolean,
+            params: ExceptionParams,
+            callback?: Callback,
+        ): Visitor;
 
         timing(category: TimingParams | string, callback?: Callback): Visitor;
-        timing(category: string, variable: string, callback?: Callback): Visitor;
-        timing(category: string, variable: string, time: string | number, callback?: Callback): Visitor;
-        timing(category: string, variable: string, time: string | number, label: string, callback?: Callback): Visitor;
+        timing(
+            category: string,
+            variable: string,
+            callback?: Callback,
+        ): Visitor;
+        timing(
+            category: string,
+            variable: string,
+            time: string | number,
+            callback?: Callback,
+        ): Visitor;
+        timing(
+            category: string,
+            variable: string,
+            time: string | number,
+            label: string,
+            callback?: Callback,
+        ): Visitor;
         timing(
             category: string,
             variable: string,
@@ -577,6 +698,13 @@ declare namespace ua {
 }
 
 declare function ua(accountID: ua.VisitorOptions | string): ua.Visitor;
-declare function ua(accountID: string, uuid: ua.VisitorOptions | string): ua.Visitor;
-declare function ua(accountID: string, uuid: string, options: ua.VisitorOptions): ua.Visitor;
+declare function ua(
+    accountID: string,
+    uuid: ua.VisitorOptions | string,
+): ua.Visitor;
+declare function ua(
+    accountID: string,
+    uuid: string,
+    options: ua.VisitorOptions,
+): ua.Visitor;
 export = ua;

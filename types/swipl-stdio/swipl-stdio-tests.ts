@@ -28,4 +28,6 @@ const engine = new Engine();
 // Serialize
 
 // $ExpectType string
-const safe = term.serialize(term.compound("member", [term.variable("X"), term.list([1, 2, 3, 4])]));
+const safe = term.serialize(
+    term.compound("member", [term.variable("X"), term.list([1, 2, 3, 4])]),
+);

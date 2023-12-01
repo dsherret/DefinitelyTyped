@@ -1,7 +1,9 @@
 function testDocument() {
     document.querySelector(".container-a").classList;
     document.querySelectorAll(".container-b")[0].className;
-    document.querySelector(".container-c").append("foo", document.createElement("button"));
+    document
+        .querySelector(".container-c")
+        .append("foo", document.createElement("button"));
 }
 
 function testElement(el: Element) {

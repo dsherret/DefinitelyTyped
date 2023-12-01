@@ -122,15 +122,43 @@ declare namespace GoogleAppsScript {
         interface Page {
             addColumn(name: string): Column;
             addHostedAttachment(blob: Base.BlobSource): Attachment;
-            addHostedAttachment(blob: Base.BlobSource, description: string): Attachment;
+            addHostedAttachment(
+                blob: Base.BlobSource,
+                description: string,
+            ): Attachment;
             addListItem(values: string[]): ListItem;
-            addWebAttachment(title: string, description: string, url: string): Attachment;
+            addWebAttachment(
+                title: string,
+                description: string,
+                url: string,
+            ): Attachment;
             createAnnouncement(title: string, html: string): Page;
-            createAnnouncement(title: string, html: string, asDraft: boolean): Page;
-            createAnnouncementsPage(title: string, name: string, html: string): Page;
-            createFileCabinetPage(title: string, name: string, html: string): Page;
-            createListPage(title: string, name: string, html: string, columnNames: string[]): Page;
-            createPageFromTemplate(title: string, name: string, template: Page): Page;
+            createAnnouncement(
+                title: string,
+                html: string,
+                asDraft: boolean,
+            ): Page;
+            createAnnouncementsPage(
+                title: string,
+                name: string,
+                html: string,
+            ): Page;
+            createFileCabinetPage(
+                title: string,
+                name: string,
+                html: string,
+            ): Page;
+            createListPage(
+                title: string,
+                name: string,
+                html: string,
+                columnNames: string[],
+            ): Page;
+            createPageFromTemplate(
+                title: string,
+                name: string,
+                template: Page,
+            ): Page;
             createWebPage(title: string, name: string, html: string): Page;
             deletePage(): void;
             getAllDescendants(): Page[];
@@ -138,7 +166,10 @@ declare namespace GoogleAppsScript {
             getAnnouncements(): Page[];
             getAnnouncements(optOptions: PageAdvancedParameters): Page[];
             getAttachments(): Attachment[];
-            getAttachments(optOptions: { start?: Integer | undefined; max?: Integer | undefined }): Attachment[];
+            getAttachments(optOptions: {
+                start?: Integer | undefined;
+                max?: Integer | undefined;
+            }): Attachment[];
             getAuthors(): string[];
             getChildByName(name: string): Page;
             getChildren(): Page[];
@@ -150,7 +181,10 @@ declare namespace GoogleAppsScript {
             getLastEdited(): Base.Date;
             getLastUpdated(): Base.Date;
             getListItems(): ListItem[];
-            getListItems(optOptions: { start?: Integer | undefined; max?: Integer | undefined }): ListItem[];
+            getListItems(optOptions: {
+                start?: Integer | undefined;
+                max?: Integer | undefined;
+            }): ListItem[];
             getName(): string;
             getPageType(): PageType;
             getParent(): Page;
@@ -169,9 +203,10 @@ declare namespace GoogleAppsScript {
             setTitle(title: string): Page;
             /** @deprecated DO NOT USE */ addComment(content: string): Comment;
             /** @deprecated DO NOT USE */ getComments(): Comment[];
-            /** @deprecated DO NOT USE */ getComments(
-                optOptions: { start?: Integer | undefined; max?: Integer | undefined },
-            ): Comment[];
+            /** @deprecated DO NOT USE */ getComments(optOptions: {
+                start?: Integer | undefined;
+                max?: Integer | undefined;
+            }): Comment[];
             /** @deprecated DO NOT USE */ getPageName(): string;
             /** @deprecated DO NOT USE */ getSelfLink(): string;
         }
@@ -205,10 +240,27 @@ declare namespace GoogleAppsScript {
             addViewer(emailAddress: string): Site;
             addViewer(user: Base.User): Site;
             addViewers(emailAddresses: string[]): Site;
-            createAnnouncementsPage(title: string, name: string, html: string): Page;
-            createFileCabinetPage(title: string, name: string, html: string): Page;
-            createListPage(title: string, name: string, html: string, columnNames: string[]): Page;
-            createPageFromTemplate(title: string, name: string, template: Page): Page;
+            createAnnouncementsPage(
+                title: string,
+                name: string,
+                html: string,
+            ): Page;
+            createFileCabinetPage(
+                title: string,
+                name: string,
+                html: string,
+            ): Page;
+            createListPage(
+                title: string,
+                name: string,
+                html: string,
+                columnNames: string[],
+            ): Page;
+            createPageFromTemplate(
+                title: string,
+                name: string,
+                template: Page,
+            ): Page;
             createWebPage(title: string, name: string, html: string): Page;
             getAllDescendants(): Page[];
             getAllDescendants(options: PageAdvancedParameters): Page[];
@@ -236,16 +288,30 @@ declare namespace GoogleAppsScript {
             setTheme(theme: string): Site;
             setTitle(title: string): Site;
             /** @deprecated DO NOT USE */ addCollaborator(email: string): Site;
-            /** @deprecated DO NOT USE */ addCollaborator(user: Base.User): Site;
-            /** @deprecated DO NOT USE */ createAnnouncement(title: string, html: string, parent: Page): Page;
-            /** @deprecated DO NOT USE */ createComment(inReplyTo: string, html: string, parent: Page): Comment;
+            /** @deprecated DO NOT USE */ addCollaborator(
+                user: Base.User,
+            ): Site;
+            /** @deprecated DO NOT USE */ createAnnouncement(
+                title: string,
+                html: string,
+                parent: Page,
+            ): Page;
+            /** @deprecated DO NOT USE */ createComment(
+                inReplyTo: string,
+                html: string,
+                parent: Page,
+            ): Comment;
             /** @deprecated DO NOT USE */ createListItem(
                 html: string,
                 columnNames: string[],
                 values: string[],
                 parent: Page,
             ): ListItem;
-            /** @deprecated DO NOT USE */ createWebAttachment(title: string, url: string, parent: Page): Attachment;
+            /** @deprecated DO NOT USE */ createWebAttachment(
+                title: string,
+                url: string,
+                parent: Page,
+            ): Attachment;
             /** @deprecated DO NOT USE */ deleteSite(): void;
             /** @deprecated DO NOT USE */ getAnnouncements(): Page[];
             /** @deprecated DO NOT USE */ getAnnouncementsPages(): Page[];
@@ -259,8 +325,12 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ getSiteName(): string;
             /** @deprecated DO NOT USE */ getWebAttachments(): Attachment[];
             /** @deprecated DO NOT USE */ getWebPages(): Page[];
-            /** @deprecated DO NOT USE */ removeCollaborator(email: string): Site;
-            /** @deprecated DO NOT USE */ removeCollaborator(user: Base.User): Site;
+            /** @deprecated DO NOT USE */ removeCollaborator(
+                email: string,
+            ): Site;
+            /** @deprecated DO NOT USE */ removeCollaborator(
+                user: Base.User,
+            ): Site;
         }
         /**
          * Create and access Google Sites.
@@ -272,8 +342,19 @@ declare namespace GoogleAppsScript {
         interface SitesApp {
             AttachmentType: typeof AttachmentType;
             PageType: typeof PageType;
-            copySite(domain: string, name: string, title: string, summary: string, site: Site): Site;
-            createSite(domain: string, name: string, title: string, summary: string): Site;
+            copySite(
+                domain: string,
+                name: string,
+                title: string,
+                summary: string,
+                site: Site,
+            ): Site;
+            createSite(
+                domain: string,
+                name: string,
+                title: string,
+                summary: string,
+            ): Site;
             getActivePage(): Page;
             getActiveSite(): Site;
             getAllSites(domain: string): Site[];

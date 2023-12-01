@@ -8,14 +8,14 @@ const {
     CodeGeneratorResponseError,
 } = protocPlugin;
 
-protocPlugin(filesToGenerate => {
+protocPlugin((filesToGenerate) => {
     const files: FileObject[] = [];
     files.push({ name: "my_file.ts.d", content: "example" });
     return files;
 });
 
 CodeGeneratorRequest()
-    .then(req => {
+    .then((req) => {
         const files: FileObject[] = [];
         files.push({ name: "my_file.ts.d", content: "example" });
         return files;

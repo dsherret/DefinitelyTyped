@@ -190,7 +190,11 @@ export interface ObjectIdAndType {
     objectType: ObjectIdActionType;
 }
 
-export type ShareContent = ShareLinkContent | SharePhotoContent | ShareVideoContent | ShareOpenGraphContent;
+export type ShareContent =
+    | ShareLinkContent
+    | SharePhotoContent
+    | ShareVideoContent
+    | ShareOpenGraphContent;
 /**
  * A base interface for content to be shared.
  */
@@ -276,7 +280,11 @@ export interface OpenGraphValue {
     value: any;
 }
 
-export type OpenGraphValueType = "number" | "open-graph-object" | "photo" | "string";
+export type OpenGraphValueType =
+    | "number"
+    | "open-graph-object"
+    | "photo"
+    | "string";
 
 export interface ShareOpenGraphValueContainer {
     /**
@@ -640,7 +648,11 @@ export namespace AppEventsLogger {
     /**
      * Logs a purchase. See http://en.wikipedia.org/wiki/ISO_4217 for currencyCode.
      */
-    function logPurchase(purchaseAmount: number, currencyCode: string, parameters?: object): void;
+    function logPurchase(
+        purchaseAmount: number,
+        currencyCode: string,
+        parameters?: object,
+    ): void;
 
     /**
      * Logs an app event that tracks that the application was open via Push Notification.
@@ -755,7 +767,11 @@ export class GraphRequest {
     /**
      * Constructs a new Graph API request.
      */
-    constructor(graphPath: string, config?: GraphRequestConfig | null, callback?: GraphRequestCallback);
+    constructor(
+        graphPath: string,
+        config?: GraphRequestConfig | null,
+        callback?: GraphRequestCallback,
+    );
 
     /**
      * Adds a string parameter to the request.
@@ -888,7 +904,9 @@ export namespace LoginManager {
     /**
      * Logs the user in with the requested permissions.
      */
-    function logInWithPermissions(permissions: Permissions[]): Promise<LoginResult>;
+    function logInWithPermissions(
+        permissions: Permissions[],
+    ): Promise<LoginResult>;
 
     /**
      * Getter for the login behavior.
@@ -1031,5 +1049,8 @@ export namespace Settings {
     /**
      * Set data processing options
      */
-    function setDataProcessingOptions(options: Array<string | "LDU">, ...args: number[]): void;
+    function setDataProcessingOptions(
+        options: Array<string | "LDU">,
+        ...args: number[]
+    ): void;
 }

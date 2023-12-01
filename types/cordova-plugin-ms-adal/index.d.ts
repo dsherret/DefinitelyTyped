@@ -24,7 +24,10 @@ declare namespace Microsoft {
         }
 
         interface Promise {
-            then(doneCallBack: () => any, failCallBack?: (message: string) => any): any;
+            then(
+                doneCallBack: () => any,
+                failCallBack?: (message: string) => any,
+            ): any;
         }
 
         interface PromiseTokenCacheItems {
@@ -81,11 +84,17 @@ declare namespace Microsoft {
         }
 
         interface PromiseAuthenticationResult {
-            then(doneCallBack: (context: AuthenticationResult) => any, failCallBack?: (message: string) => any): any;
+            then(
+                doneCallBack: (context: AuthenticationResult) => any,
+                failCallBack?: (message: string) => any,
+            ): any;
         }
 
         interface PromiseAuthenticationContext {
-            then(doneCallBack: (context: AuthenticationContext) => any, failCallBack?: (message: string) => any): any;
+            then(
+                doneCallBack: (context: AuthenticationContext) => any,
+                failCallBack?: (message: string) => any,
+            ): any;
         }
 
         class AuthenticationContext {
@@ -117,7 +126,10 @@ declare namespace Microsoft {
              *
              * @returns {Promise}  Promise either fulfilled with newly created authentication context or rejected with error
              */
-            static createAsync(authority: string, validateAuthority?: boolean): PromiseAuthenticationContext;
+            static createAsync(
+                authority: string,
+                validateAuthority?: boolean,
+            ): PromiseAuthenticationContext;
 
             /**
              * Acquires token using interactive flow if needed. It checks the cache to return existing result
@@ -153,7 +165,11 @@ declare namespace Microsoft {
              *
              * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
              */
-            acquireTokenSilentAsync(resourceUrl: string, clientId: string, userId: string): PromiseAuthenticationResult;
+            acquireTokenSilentAsync(
+                resourceUrl: string,
+                clientId: string,
+                userId: string,
+            ): PromiseAuthenticationResult;
         }
     }
 }

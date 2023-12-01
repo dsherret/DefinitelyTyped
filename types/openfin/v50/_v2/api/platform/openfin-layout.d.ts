@@ -21,8 +21,13 @@ export declare class LayoutManager {
     createLayout: (layout: GoldenLayout.Config, container: HTMLElement) => void;
     setContainer: (container: HTMLElement) => void;
     setupDragDropRegions: () => void;
-    replaceLayout: (layout: GoldenLayout.Config, container: HTMLElement) => Promise<void>;
-    onViewDetached: (e: ViewDetached<"window", "view-detached">) => Promise<void>;
+    replaceLayout: (
+        layout: GoldenLayout.Config,
+        container: HTMLElement,
+    ) => Promise<void>;
+    onViewDetached: (
+        e: ViewDetached<"window", "view-detached">,
+    ) => Promise<void>;
     setupLayoutListeners: () => void;
     registerViewComponent: () => void;
     setupWindowListeners: () => void;
@@ -46,7 +51,10 @@ export declare class LayoutManager {
             height: any;
         },
     ) => Promise<void>;
-    onTabDrag: (dragListener: GoldenLayout.EventEmitter, parentTab: GoldenLayout.Tab) => Promise<void>;
+    onTabDrag: (
+        dragListener: GoldenLayout.EventEmitter,
+        parentTab: GoldenLayout.Tab,
+    ) => Promise<void>;
     addView: (viewConfig: ViewState) => Promise<View>;
     removeView: (viewConfig: any) => Promise<View>;
     closeView: (viewConfig: any) => Promise<void>;
@@ -57,9 +65,7 @@ export declare class LayoutManager {
     }) => ViewComponent;
     getViewComponents: () => ViewComponent[];
     hideHighlight: () => void;
-    getOfViewFromComponentState: (componentState: {
-        name: any;
-    }) => View;
+    getOfViewFromComponentState: (componentState: { name: any }) => View;
     hideAllViews: () => void;
     showAllViews: (resize?: boolean) => Promise<any[]>;
     initializeLayoutViews: () => Promise<void>;

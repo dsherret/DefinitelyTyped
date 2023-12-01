@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 import Tooltip from "./tooltip";
 
 declare class Popover extends BaseComponent {
@@ -8,7 +11,10 @@ declare class Popover extends BaseComponent {
      * Static method which allows you to get the popover instance associated with
      *  a DOM element, or create a new one in case it wasn’t initialised
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Popover, Partial<Popover.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Popover,
+        Partial<Popover.Options>
+    >;
 
     static jQueryInterface: Popover.jQueryInterface;
 
@@ -87,7 +93,12 @@ declare class Popover extends BaseComponent {
     /**
      * Gives a way to change the popover’s content after its initialization.
      */
-    setContent(content?: Record<string, string | Element | Tooltip.SetContentFunction | null>): void;
+    setContent(
+        content?: Record<
+            string,
+            string | Element | Tooltip.SetContentFunction | null
+        >,
+    ): void;
 }
 
 declare namespace Popover {
@@ -131,7 +142,11 @@ declare namespace Popover {
          *
          * @default ''
          */
-        content: string | Element | JQuery | ((this: HTMLElement) => string | Element | JQuery);
+        content:
+            | string
+            | Element
+            | JQuery
+            | ((this: HTMLElement) => string | Element | JQuery);
     }
 
     type jQueryInterface = (

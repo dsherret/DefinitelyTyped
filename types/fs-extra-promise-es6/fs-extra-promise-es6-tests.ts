@@ -45,9 +45,14 @@ let writeStream: stream.Writable;
 let isDirectory: boolean;
 
 fs.copy(src, dest, errorCallback);
-fs.copy(src, dest, (src: string) => {
-    return false;
-}, errorCallback);
+fs.copy(
+    src,
+    dest,
+    (src: string) => {
+        return false;
+    },
+    errorCallback,
+);
 fs.copySync(src, dest);
 fs.copySync(src, dest, (src: string) => {
     return false;
@@ -119,12 +124,9 @@ fs.link(srcpath, dstpath, errorCallback);
 fs.linkSync(srcpath, dstpath);
 fs.symlink(srcpath, dstpath, symlinkType, errorCallback);
 fs.symlinkSync(srcpath, dstpath, symlinkType);
-fs.readlink(path, (err: Error, linkString: string) => {
-});
-fs.realpath(path, (err: Error, resolvedPath: string) => {
-});
-fs.realpath(path, cache, (err: Error, resolvedPath: string) => {
-});
+fs.readlink(path, (err: Error, linkString: string) => {});
+fs.realpath(path, (err: Error, resolvedPath: string) => {});
+fs.realpath(path, cache, (err: Error, resolvedPath: string) => {});
 str = fs.realpathSync(path, cacheBool);
 fs.unlink(path, errorCallback);
 fs.unlinkSync(path);
@@ -134,13 +136,11 @@ fs.mkdir(path, modeNum, errorCallback);
 fs.mkdir(path, modeStr, errorCallback);
 fs.mkdirSync(path, modeNum);
 fs.mkdirSync(path, modeStr);
-fs.readdir(path, (err: Error, files: string[]) => {
-});
+fs.readdir(path, (err: Error, files: string[]) => {});
 strArr = fs.readdirSync(path);
 fs.close(fd, errorCallback);
 fs.closeSync(fd);
-fs.open(path, flags, modeStr, (err: Error, fd: number) => {
-});
+fs.open(path, flags, modeStr, (err: Error, fd: number) => {});
 num = fs.openSync(path, flags, modeStr);
 fs.utimes(path, atime, mtime, errorCallback);
 fs.utimesSync(path, atime, mtime);
@@ -148,20 +148,28 @@ fs.futimes(fd, atime, mtime, errorCallback);
 fs.futimesSync(fd, atime, mtime);
 fs.fsync(fd, errorCallback);
 fs.fsyncSync(fd);
-fs.write(fd, buffer, offset, length, position, (err: Error, written: number, buffer: Buffer) => {
-});
+fs.write(
+    fd,
+    buffer,
+    offset,
+    length,
+    position,
+    (err: Error, written: number, buffer: Buffer) => {},
+);
 num = fs.writeSync(fd, buffer, offset, length, position);
-fs.read(fd, buffer, offset, length, position, (err: Error, bytesRead: number, buffer: Buffer) => {
-});
+fs.read(
+    fd,
+    buffer,
+    offset,
+    length,
+    position,
+    (err: Error, bytesRead: number, buffer: Buffer) => {},
+);
 num = fs.readSync(fd, buffer, offset, length, position);
-fs.readFile(filename, (err: Error, data: Buffer) => {
-});
-fs.readFile(filename, encoding, (err: Error, data: string) => {
-});
-fs.readFile(filename, openOpts, (err: Error, data: string) => {
-});
-fs.readFile(filename, (err: Error, data: Buffer) => {
-});
+fs.readFile(filename, (err: Error, data: Buffer) => {});
+fs.readFile(filename, encoding, (err: Error, data: string) => {});
+fs.readFile(filename, openOpts, (err: Error, data: string) => {});
+fs.readFile(filename, (err: Error, data: Buffer) => {});
 buffer = fs.readFileSync(filename);
 str = fs.readFileSync(filename, encoding);
 str = fs.readFileSync(filename, openOpts);
@@ -184,18 +192,24 @@ fs.watchFile(filename, {
     curr: stats,
     prev: stats,
 });
-fs.watchFile(filename, {
-    persistent: bool,
-    interval: num,
-}, {
-    curr: stats,
-    prev: stats,
-});
+fs.watchFile(
+    filename,
+    {
+        persistent: bool,
+        interval: num,
+    },
+    {
+        curr: stats,
+        prev: stats,
+    },
+);
 fs.unwatchFile(filename);
-watcher = fs.watch(filename, { persistent: bool }, (event: string, filename: string) => {
-});
-fs.exists(path, (exists: boolean) => {
-});
+watcher = fs.watch(
+    filename,
+    { persistent: bool },
+    (event: string, filename: string) => {},
+);
+fs.exists(path, (exists: boolean) => {});
 bool = fs.existsSync(path);
 
 readStream = fs.createReadStream(path);

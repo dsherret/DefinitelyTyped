@@ -1,6 +1,8 @@
-let $container: JQueryNotifyWidget = $("<div style='display:none' class='noprint'><div></div></div>").appendTo(
-    document.body,
-).notify();
+let $container: JQueryNotifyWidget = $(
+    "<div style='display:none' class='noprint'><div></div></div>",
+)
+    .appendTo(document.body)
+    .notify();
 
 let notification: JQueryNotifyInstance = $container.notify(
     "create",

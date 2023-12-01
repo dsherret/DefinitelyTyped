@@ -64,7 +64,12 @@ declare module "moment" {
         load(locales: string | string[]): HolidayModifier;
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        extendParser(parserFunc: (m: Moment, date: string) => Moment | Moment[] | false | void): HolidayModifier;
+        extendParser(
+            parserFunc: (
+                m: Moment,
+                date: string,
+            ) => Moment | Moment[] | false | void,
+        ): HolidayModifier;
     }
 
     let holidays: Holidays;

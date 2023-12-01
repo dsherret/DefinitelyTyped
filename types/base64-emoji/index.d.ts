@@ -15,7 +15,11 @@
  *
  * console.log(encoded.toString()) // => 🍕📙🕡🌵🎎📙🚢😮🕡🐗🏦🕤🎎📙🕖📫
  */
-export function encode(obj: string | Buffer, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    obj: string | Buffer,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     /**
      * The number of encoded bytes after a call to `encode`.
@@ -38,7 +42,11 @@ export namespace encode {
  *
  * console.log(decoded.toString()) // => Hello World
  */
-export function decode(buffer: string | Buffer, offset?: number, length?: number): Buffer;
+export function decode(
+    buffer: string | Buffer,
+    offset?: number,
+    length?: number,
+): Buffer;
 export namespace decode {
     /**
      * The number of decoded bytes after a call to `decode`.

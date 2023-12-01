@@ -17,10 +17,28 @@ import { PassThrough } from "stream";
  * @return         A merged duplex stream
  */
 declare function merge2(options?: merge2.Options): merge2.Merge2Stream;
-declare function merge2(a: Streams, options?: merge2.Options): merge2.Merge2Stream;
-declare function merge2(a: Streams, b: Streams, options?: merge2.Options): merge2.Merge2Stream;
-declare function merge2(a: Streams, b: Streams, c: Streams, options?: merge2.Options): merge2.Merge2Stream;
-declare function merge2(a: Streams, b: Streams, c: Streams, d: Streams, options?: merge2.Options): merge2.Merge2Stream;
+declare function merge2(
+    a: Streams,
+    options?: merge2.Options,
+): merge2.Merge2Stream;
+declare function merge2(
+    a: Streams,
+    b: Streams,
+    options?: merge2.Options,
+): merge2.Merge2Stream;
+declare function merge2(
+    a: Streams,
+    b: Streams,
+    c: Streams,
+    options?: merge2.Options,
+): merge2.Merge2Stream;
+declare function merge2(
+    a: Streams,
+    b: Streams,
+    c: Streams,
+    d: Streams,
+    options?: merge2.Options,
+): merge2.Merge2Stream;
 declare function merge2(
     a: Streams,
     b: Streams,

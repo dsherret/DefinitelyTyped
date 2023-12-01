@@ -21,7 +21,7 @@ declare namespace MDNS {
     }
 
     interface AdvertisementCreatable {
-        new(
+        new (
             serviceType: ServiceType,
             port: number,
             options?: AdvertisementOptions,
@@ -37,7 +37,9 @@ declare namespace MDNS {
     // --- Browser ---
 
     interface BrowserOptions {
-        resolverSequence?: Array<(service: Service, next: () => void) => boolean> | undefined;
+        resolverSequence?:
+            | Array<(service: Service, next: () => void) => boolean>
+            | undefined;
         interfaceIndex?: number | undefined;
         networkInterface?: string | undefined;
         domain?: any;
@@ -54,8 +56,10 @@ declare namespace MDNS {
     }
 
     interface BrowserStatic {
-        new(serviceType: ServiceType, options?: BrowserOptions): Browser;
-        defaultResolverSequence: Array<(service: Service, next: () => void) => boolean>;
+        new (serviceType: ServiceType, options?: BrowserOptions): Browser;
+        defaultResolverSequence: Array<
+            (service: Service, next: () => void) => boolean
+        >;
     }
 
     // --- Services ---
@@ -76,13 +80,19 @@ declare namespace MDNS {
     }
 
     interface ServiceType {
-        new(serviceTypeIdentifier: string): ServiceType;
-        new(name: string, protocol: string, ...subtypes: string[]): ServiceType;
-        new(serviceTypeIdentifier: string[]): ServiceType;
-        new(
-            serviceTypeIdentifier: { name: string; protocol: string; subtypes?: string[] | undefined },
+        new (serviceTypeIdentifier: string): ServiceType;
+        new (
+            name: string,
+            protocol: string,
+            ...subtypes: string[]
         ): ServiceType;
-        new(serviceType: ServiceType): ServiceType;
+        new (serviceTypeIdentifier: string[]): ServiceType;
+        new (serviceTypeIdentifier: {
+            name: string;
+            protocol: string;
+            subtypes?: string[] | undefined;
+        }): ServiceType;
+        new (serviceType: ServiceType): ServiceType;
 
         fullyQualified: boolean;
         name: string;
@@ -95,22 +105,35 @@ declare namespace MDNS {
         toArray(): string[];
         fromArray(serviceTypeIdentifier: string[]): ServiceType;
 
-        fromJSON(
-            serviceTypeIdentifier: { name: string; protocol: string; subtypes?: string[] | undefined },
-        ): ServiceType;
+        fromJSON(serviceTypeIdentifier: {
+            name: string;
+            protocol: string;
+            subtypes?: string[] | undefined;
+        }): ServiceType;
         fromJSON(serviceType: ServiceType): ServiceType;
     }
 
     // interface for extending with custom resolvers
-    interface MDNSResolverSequenceTasks {
-    }
+    interface MDNSResolverSequenceTasks {}
 
     interface DefaultResolverSequenceTasks extends MDNSResolverSequenceTasks {
-        DNSServiceResolve(options?: { flags: any }): (service: Service, next: () => void) => boolean;
-        DNSServiceGetAddrInfo(options?: any): (service: Service, next: () => void) => boolean;
-        getaddrinfo(options?: any): (service: Service, next: () => void) => boolean;
+        DNSServiceResolve(options?: {
+            flags: any;
+        }): (service: Service, next: () => void) => boolean;
+        DNSServiceGetAddrInfo(
+            options?: any,
+        ): (service: Service, next: () => void) => boolean;
+        getaddrinfo(
+            options?: any,
+        ): (service: Service, next: () => void) => boolean;
         makeAddressesUnique(): (service: Service, next: () => void) => boolean;
-        filterAddresses(fn: (address: string, index?: number, addresses?: string[]) => boolean): void;
+        filterAddresses(
+            fn: (
+                address: string,
+                index?: number,
+                addresses?: string[],
+            ) => boolean,
+        ): void;
         logService(): void;
     }
 
@@ -128,19 +151,28 @@ declare namespace MDNS {
 
     function udp(name: string, ...subtypes: string[]): ServiceType;
 
-    function makeServiceType(name: string, protocol: string, ...subtypes: string[]): ServiceType;
+    function makeServiceType(
+        name: string,
+        protocol: string,
+        ...subtypes: string[]
+    ): ServiceType;
 
     function makeServiceType(serviceTypeIdentifier: string): ServiceType;
 
     function makeServiceType(serviceTypeIdentifier: string[]): ServiceType;
 
-    function makeServiceType(
-        serviceTypeIdentifier: { name: string; protocol: string; subtypes?: string[] | undefined },
-    ): ServiceType;
+    function makeServiceType(serviceTypeIdentifier: {
+        name: string;
+        protocol: string;
+        subtypes?: string[] | undefined;
+    }): ServiceType;
 
     function makeServiceType(serviceType: ServiceType): ServiceType;
 
-    function createBrowser(serviceType: ServiceType, options?: BrowserOptions): Browser;
+    function createBrowser(
+        serviceType: ServiceType,
+        options?: BrowserOptions,
+    ): Browser;
 
     function createAdvertisement(
         serviceType: ServiceType,

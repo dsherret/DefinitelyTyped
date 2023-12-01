@@ -12,16 +12,23 @@ declare namespace Rx {
             subscribedAt: number,
             disposedAt: number,
         ): MockObserver<T>;
-        startWithDispose<T>(create: () => Observable<T>, disposedAt: number): MockObserver<T>;
+        startWithDispose<T>(
+            create: () => Observable<T>,
+            disposedAt: number,
+        ): MockObserver<T>;
         startWithCreate<T>(create: () => Observable<T>): MockObserver<T>;
     }
 
     const TestScheduler: {
-        new(): TestScheduler;
+        new (): TestScheduler;
     };
 
     class Recorded {
-        constructor(time: number, value: any, equalityComparer?: (x: any, y: any) => boolean);
+        constructor(
+            time: number,
+            value: any,
+            equalityComparer?: (x: any, y: any) => boolean,
+        );
         equals(other: Recorded): boolean;
         toString(): string;
         time: number;
@@ -50,7 +57,7 @@ declare namespace Rx {
     }
 
     interface MockObserverStatic extends ObserverStatic {
-        new<T>(scheduler: IScheduler): MockObserver<T>;
+        new <T>(scheduler: IScheduler): MockObserver<T>;
     }
 
     const MockObserver: MockObserverStatic;

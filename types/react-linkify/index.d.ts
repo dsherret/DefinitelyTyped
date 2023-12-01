@@ -33,7 +33,13 @@ export interface Props {
      * Default to using exisint <a> tag with the provided href={decoratedHref}, key={key}
      * and children={decoratedText}, without additional styling
      */
-    componentDecorator?: ((decoratedHref: string, decoratedText: string, key: number) => React.ReactNode) | undefined;
+    componentDecorator?:
+        | ((
+              decoratedHref: string,
+              decoratedText: string,
+              key: number,
+          ) => React.ReactNode)
+        | undefined;
     /**
      * Custom href decorator or mapper on the matched (url) href
      * Default to no transformation

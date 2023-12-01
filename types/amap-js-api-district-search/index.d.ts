@@ -84,7 +84,10 @@ declare namespace AMap {
          */
         search(
             keyword: string,
-            callback: (status: DistrictSearch.SearchStatus, result: DistrictSearch.SearchResult | string) => void,
+            callback: (
+                status: DistrictSearch.SearchStatus,
+                result: DistrictSearch.SearchResult | string,
+            ) => void,
         ): void;
         /**
          * 设置关键字对应的行政区级别或商圈

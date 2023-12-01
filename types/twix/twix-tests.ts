@@ -62,7 +62,9 @@ iter.next().format("LT"); // => '4:00 PM'
 iter.next().format("LT"); // => '6:30 PM'
 iter.next().format("LT"); // => '9:00 PM'
 
-var iter2 = moment("1982-05-24T5:00").twix("1982-05-27T6:00").iterateInner("days");
+var iter2 = moment("1982-05-24T5:00")
+    .twix("1982-05-27T6:00")
+    .iterateInner("days");
 iter.hasNext(); // => true
 iter.next(); // => moment("1982-05-25")
 iter.next(); // => moment("1982-05-26")
@@ -118,7 +120,7 @@ splits[1].format({ showDate: false }); // => '6:01 - 7:01 AM'
 splits[2].format({ showDate: false }); // => '7:01 - 7:30 AM'
 
 // other signatures
-range.split(moment.duration({ "h": 1 })).length; // => 3
+range.split(moment.duration({ h: 1 })).length; // => 3
 range.split(moment("1982-05-25T06:00")).length; // => 2
 range.split(moment("1982-05-25T06:00"), moment("1982-05-25T07:00")).length; // => 3
 
@@ -153,12 +155,12 @@ range.simpleFormat(null, { allDay: "-- all day! --" }); // => '1982-05-25T00:00:
 range.simpleFormat(null, { allDay: null }); // => '1982-05-25T00:00:00-04:00 - 1982-05-26T00:00:00-04:00'
 
 range.simpleFormat("HH:mm", {
-    template: function(left, right) {
+    template: function (left, right) {
         return left + " | " + right;
     },
 }); // => '16:21 | 17:21'
 
-moment.twixClass.formatTemplate = function(left, right) {
+moment.twixClass.formatTemplate = function (left, right) {
     return left + " | " + right;
 };
 range.simpleFormat("HH:mm"); // => '16:29 | 17:29'
@@ -184,18 +186,24 @@ twix.format({ implicitMinutes: false, groupMeridiems: false }); // => May 25, 9:
 var twix = moment().twix(moment().add("days", 1));
 twix.format({ implicitYear: false }); // => Mar 28, 1:13 AM - Mar 29, 1:13 AM, 2013
 
-moment("2012-05-25T16:00").twix("2012-05-25T17:00").format({ twentyFourHour: true }); // => May 25, 16:00 - 17:00
+moment("2012-05-25T16:00")
+    .twix("2012-05-25T17:00")
+    .format({ twentyFourHour: true }); // => May 25, 16:00 - 17:00
 
 moment("2012-01-25T8:00").twix("2012-01-25T17:00").format({
     monthFormat: "MMMM",
     dayFormat: "Do",
 });
 
-moment("2012-05-25T8:00").twix("2012-05-25T17:00").format({ spaceBeforeMeridiem: false }); // => May 25, 8AM - 5PM
+moment("2012-05-25T8:00")
+    .twix("2012-05-25T17:00")
+    .format({ spaceBeforeMeridiem: false }); // => May 25, 8AM - 5PM
 
 moment("2012-05-25T8:00").twix("2012-05-25T17:00").format({ showDate: false }); // => 8 AM - 5 PM
 
-moment("2012-01-25").twix("2012-01-25", { allDay: true }).format({ showDate: false }); // => All day
+moment("2012-01-25")
+    .twix("2012-01-25", { allDay: true })
+    .format({ showDate: false }); // => All day
 
 moment.lang("fr");
 moment().twix(moment().add(3, "month")).simpleFormat("MMMM"); // => 'juillet - octobre'

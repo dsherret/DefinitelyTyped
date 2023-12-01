@@ -9,10 +9,12 @@ declare namespace createServer {
         agreeTos: boolean;
         domains: DomainList | (() => DomainList | Promise<DomainList>);
         dir?: string | undefined;
-        ports?: {
-            http?: number | undefined;
-            https?: number | undefined;
-        } | undefined;
+        ports?:
+            | {
+                  http?: number | undefined;
+                  https?: number | undefined;
+              }
+            | undefined;
         debug?: boolean | undefined;
     }
 }

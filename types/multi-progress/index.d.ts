@@ -17,7 +17,10 @@ declare class MultiProgress {
     /**
      * Add a new bar
      */
-    newBar: (format: string, options: ProgressBar.ProgressBarOptions) => ProgressBar;
+    newBar: (
+        format: string,
+        options: ProgressBar.ProgressBarOptions,
+    ) => ProgressBar;
 
     /**
      * Close all bars

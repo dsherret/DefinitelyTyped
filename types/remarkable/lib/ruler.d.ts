@@ -18,12 +18,22 @@ declare class Ruler<RULE> {
     /**
      * Add a rule to the chain before given the `ruleName`.
      */
-    before(beforeName: string, ruleName: string, fn: RULE, options: Remarkable.Options): void;
+    before(
+        beforeName: string,
+        ruleName: string,
+        fn: RULE,
+        options: Remarkable.Options,
+    ): void;
 
     /**
      * Add a rule to the chain after the given `ruleName`.
      */
-    after(afterName: string, ruleName: string, fn: RULE, options: Remarkable.Options): void;
+    after(
+        afterName: string,
+        ruleName: string,
+        fn: RULE,
+        options: Remarkable.Options,
+    ): void;
 
     /**
      * Add a rule to the end of chain.

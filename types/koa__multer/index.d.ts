@@ -33,12 +33,18 @@ import * as Koa from "koa";
 declare module "koa" {
     interface DefaultContext {
         file: multer.File;
-        files: { [fieldname: string]: multer.File[] } | multer.File[] | undefined;
+        files:
+            | { [fieldname: string]: multer.File[] }
+            | multer.File[]
+            | undefined;
     }
 
     interface Request {
         file: multer.File;
-        files: { [fieldname: string]: multer.File[] } | multer.File[] | undefined;
+        files:
+            | { [fieldname: string]: multer.File[] }
+            | multer.File[]
+            | undefined;
     }
 }
 
@@ -67,9 +73,11 @@ declare namespace multer {
     interface MulterIncomingMessage extends IncomingMessage {
         body: any;
         file: File;
-        files: {
-            [fieldname: string]: File[];
-        } | File[];
+        files:
+            | {
+                  [fieldname: string]: File[];
+              }
+            | File[];
     }
 
     interface Field {
@@ -88,24 +96,26 @@ declare namespace multer {
          * An object specifying the size limits of the following optional properties. This object is passed to busboy
          * directly, and the details of properties can be found on https://github.com/mscdex/busboy#busboy-methods
          */
-        limits?: {
-            /** Max field name size (Default: 100 bytes) */
-            fieldNameSize?: number | undefined;
-            /** Max field value size (Default: 1MB) */
-            fieldSize?: number | undefined;
-            /** Max number of non- file fields (Default: Infinity) */
-            fields?: number | undefined;
-            /** For multipart forms, the max file size (in bytes)(Default: Infinity) */
-            fileSize?: number | undefined;
-            /** For multipart forms, the max number of file fields (Default: Infinity) */
-            files?: number | undefined;
-            /** For multipart forms, the max number of parts (fields + files)(Default: Infinity) */
-            parts?: number | undefined;
-            /** For multipart forms, the max number of header key=> value pairs to parse Default: 2000(same as node's http). */
-            headerPairs?: number | undefined;
-            /** Keep the full path of files instead of just the base name (Default: false) */
-            preservePath?: boolean | undefined;
-        } | undefined;
+        limits?:
+            | {
+                  /** Max field name size (Default: 100 bytes) */
+                  fieldNameSize?: number | undefined;
+                  /** Max field value size (Default: 1MB) */
+                  fieldSize?: number | undefined;
+                  /** Max number of non- file fields (Default: Infinity) */
+                  fields?: number | undefined;
+                  /** For multipart forms, the max file size (in bytes)(Default: Infinity) */
+                  fileSize?: number | undefined;
+                  /** For multipart forms, the max number of file fields (Default: Infinity) */
+                  files?: number | undefined;
+                  /** For multipart forms, the max number of parts (fields + files)(Default: Infinity) */
+                  parts?: number | undefined;
+                  /** For multipart forms, the max number of header key=> value pairs to parse Default: 2000(same as node's http). */
+                  headerPairs?: number | undefined;
+                  /** Keep the full path of files instead of just the base name (Default: false) */
+                  preservePath?: boolean | undefined;
+              }
+            | undefined;
         /** A function to control which files to upload and which to skip. */
         fileFilter?(
             req: IncomingMessage,
@@ -115,18 +125,34 @@ declare namespace multer {
     }
 
     interface StorageEngine {
-        _handleFile(req: IncomingMessage, file: File, callback: (error?: any, info?: File) => void): void;
-        _removeFile(req: IncomingMessage, file: File, callback: (error: Error) => void): void;
+        _handleFile(
+            req: IncomingMessage,
+            file: File,
+            callback: (error?: any, info?: File) => void,
+        ): void;
+        _removeFile(
+            req: IncomingMessage,
+            file: File,
+            callback: (error: Error) => void,
+        ): void;
     }
 
     interface DiskStorageOptions {
         /** A function used to determine within which folder the uploaded files should be stored. Defaults to the system's default temporary directory. */
         destination?:
             | string
-            | ((req: IncomingMessage, file: File, callback: (error: Error | null, destination: string) => void) => void)
+            | ((
+                  req: IncomingMessage,
+                  file: File,
+                  callback: (error: Error | null, destination: string) => void,
+              ) => void)
             | undefined;
         /** A function used to determine what the file should be named inside the folder. Defaults to a random name with no file extension. */
-        filename?(req: IncomingMessage, file: File, callback: (error: Error | null, filename: string) => void): void;
+        filename?(
+            req: IncomingMessage,
+            file: File,
+            callback: (error: Error | null, filename: string) => void,
+        ): void;
     }
 
     interface Instance {

@@ -28,7 +28,10 @@ export function isHotkey(
     options?: HotKeyOptions,
 ): (event: KeyboardEventLike) => boolean;
 
-export function isHotkey(hotkey: string | readonly string[], event: KeyboardEventLike): boolean;
+export function isHotkey(
+    hotkey: string | readonly string[],
+    event: KeyboardEventLike,
+): boolean;
 
 export function isHotkey(
     hotkey: string | readonly string[],
@@ -36,11 +39,21 @@ export function isHotkey(
     event: KeyboardEventLike,
 ): boolean;
 
-export function isCodeHotkey(hotkey: string | readonly string[]): (event: KeyboardEventLike) => boolean;
-export function isCodeHotkey(hotkey: string | readonly string[], event: KeyboardEventLike): boolean;
+export function isCodeHotkey(
+    hotkey: string | readonly string[],
+): (event: KeyboardEventLike) => boolean;
+export function isCodeHotkey(
+    hotkey: string | readonly string[],
+    event: KeyboardEventLike,
+): boolean;
 
-export function isKeyHotkey(hotkey: string | readonly string[]): (event: KeyboardEventLike) => boolean;
-export function isKeyHotkey(hotkey: string | readonly string[], event: KeyboardEventLike): boolean;
+export function isKeyHotkey(
+    hotkey: string | readonly string[],
+): (event: KeyboardEventLike) => boolean;
+export function isKeyHotkey(
+    hotkey: string | readonly string[],
+    event: KeyboardEventLike,
+): boolean;
 
 /**
  * Parse.
@@ -50,7 +63,10 @@ export function parseHotkey(hotkey: string, options?: HotKeyOptions): HotKey;
 /**
  * Compare.
  */
-export function compareHotkey(object: HotKey, event: KeyboardEventLike): boolean;
+export function compareHotkey(
+    object: HotKey,
+    event: KeyboardEventLike,
+): boolean;
 
 /**
  * Utils.

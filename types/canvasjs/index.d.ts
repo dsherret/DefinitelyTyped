@@ -63,7 +63,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: ChartOptions, updateChart?: boolean): void;
+        set(
+            propertyName: string,
+            value: ChartOptions,
+            updateChart?: boolean,
+        ): void;
         /**
          * Adds a new element of given type to the specified array. For example, it can be used to add new Axis to axisY array.
          * Notes:
@@ -76,7 +80,10 @@ declare namespace CanvasJS {
          */
         addTo(
             propertyName: string,
-            options: ChartAxisXOptions | ChartAxisYOptions | ChartDataSeriesOptions,
+            options:
+                | ChartAxisXOptions
+                | ChartAxisYOptions
+                | ChartDataSeriesOptions,
             index?: number,
             updateChart?: boolean,
         ): void;
@@ -84,9 +91,11 @@ declare namespace CanvasJS {
          * Export the chart as image (jpg / png).
          * @param options Setting when export
          */
-        exportChart(
-            options: { format: "jpg" | "png"; toDataURL?: boolean | undefined; fileName?: string | undefined },
-        ): void;
+        exportChart(options: {
+            format: "jpg" | "png";
+            toDataURL?: boolean | undefined;
+            fileName?: string | undefined;
+        }): void;
         /**
          * Prints the Chart.
          * Chart should be rendered before you can use this method.
@@ -120,14 +129,22 @@ declare namespace CanvasJS {
      * @param formatString Default formatString is “#,##0.##” .
      * @param culture Default culture is “en”
      */
-    function formatNumber(number: number, formatString?: string, culture?: string): string;
+    function formatNumber(
+        number: number,
+        formatString?: string,
+        culture?: string,
+    ): string;
     /**
      * Formats date/timestamp according to the given formatString(optional) & culture(optional).
      * @param date Date type or timestamp number.
      * @param formatString Default formatString is “DD MMM YYYY”.
      * @param culture Default culture is “en”.
      */
-    function formatDate(date: Date | number, formatString?: string, culture?: string): void;
+    function formatDate(
+        date: Date | number,
+        formatString?: string,
+        culture?: string,
+    ): void;
 
     interface CultureInfo {
         /**
@@ -527,7 +544,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: string | number | boolean, updateChart: boolean): void;
+        set(
+            propertyName: string,
+            value: string | number | boolean,
+            updateChart: boolean,
+        ): void;
         /**
          * Removes title of the chart.
          */
@@ -659,14 +680,12 @@ declare namespace CanvasJS {
         /**
          * A custom formatter function that returns text to be displayed inside individual legend items.
          */
-        itemTextFormatter?(
-            e?: {
-                chart: Chart;
-                legend: ChartLegendOptions;
-                dataSeries: ChartDataSeriesOptions;
-                dataPoint: ChartDataPoint;
-            },
-        ): string;
+        itemTextFormatter?(e?: {
+            chart: Chart;
+            legend: ChartLegendOptions;
+            dataSeries: ChartDataSeriesOptions;
+            dataPoint: ChartDataPoint;
+        }): string;
         /**
          * When dockInsidePlotArea is set to true, legend renders inside the plot area there by giving more space to plot area.
          * Default: false
@@ -687,7 +706,11 @@ declare namespace CanvasJS {
          * @param value Name of the property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: number | string | boolean, updateChart?: boolean): void;
+        set(
+            propertyName: string,
+            value: number | string | boolean,
+            updateChart?: boolean,
+        ): void;
     }
 
     interface ChartEvent {
@@ -927,7 +950,11 @@ declare namespace CanvasJS {
         /**
          * A custom formatter function that returns stripLine’s label.
          */
-        labelFormatter?(e?: { chart: Chart; axis: ChartAxisYOptions; stripline: ChartStripLinesOptions }): string;
+        labelFormatter?(e?: {
+            chart: Chart;
+            axis: ChartAxisYOptions;
+            stripline: ChartStripLinesOptions;
+        }): string;
     }
 
     interface ChartStrip extends ChartStripLinesOptions {
@@ -942,7 +969,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: number | string | boolean, updateChart: boolean): void;
+        set(
+            propertyName: string,
+            value: number | string | boolean,
+            updateChart: boolean,
+        ): void;
         /**
          * Removes specified stripLine from stripLines Array.
          */
@@ -1125,12 +1156,20 @@ declare namespace CanvasJS {
          * 1.labelFormatter function should return a string.
          * 2.You can use formatNumber and formatDate functions to format number/date values inside the formatter function.
          */
-        labelFormatter?(e: { chart: Chart; axis: ChartAxisYOptions; value: number; label: string }): string;
+        labelFormatter?(e: {
+            chart: Chart;
+            axis: ChartAxisYOptions;
+            value: number;
+            label: string;
+        }): string;
         /**
          * Strip Lines / Trend Lines are vertical or horizontal lines used to highlight/mark a certain region on the plot area.
          * You can choose whether to draw a line at a specific position or shade a region on the plot area. Strip Lines are also referred to as Trend Lines.
          */
-        stripLines?: ChartStripLinesOptions | ChartStripLinesOptions[] | undefined;
+        stripLines?:
+            | ChartStripLinesOptions
+            | ChartStripLinesOptions[]
+            | undefined;
     }
 
     interface ChartAxisX extends ChartAxisXOptions {
@@ -1145,7 +1184,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: string | number | boolean, updateChart: boolean): void;
+        set(
+            propertyName: string,
+            value: string | number | boolean,
+            updateChart: boolean,
+        ): void;
         /**
          * Removes specified axis from axis Array.
          */
@@ -1157,7 +1200,12 @@ declare namespace CanvasJS {
          * @param index Index of the array where the new element is to be added. Defaults to the length (end) of array.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        addTo(propertyName: string, options: ChartStripLinesOptions, index?: number, updateChart?: boolean): void;
+        addTo(
+            propertyName: string,
+            options: ChartStripLinesOptions,
+            index?: number,
+            updateChart?: boolean,
+        ): void;
         /**
          * Return the pixel coordinate of the given value over axis.
          * @param value Numeric value over Axis
@@ -1192,7 +1240,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: string | number | boolean, updateChart: boolean): void;
+        set(
+            propertyName: string,
+            value: string | number | boolean,
+            updateChart: boolean,
+        ): void;
         /**
          * Removes specified axis from axis Array.
          */
@@ -1204,7 +1256,12 @@ declare namespace CanvasJS {
          * @param index Index of the array where the new element is to be added. Defaults to the length (end) of array.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        addTo(propertyName: string, options: ChartStripLinesOptions, index?: number, updateChart?: boolean): void;
+        addTo(
+            propertyName: string,
+            options: ChartStripLinesOptions,
+            index?: number,
+            updateChart?: boolean,
+        ): void;
         /**
          * Return the pixel coordinate of the given value over axis.
          * @param value Numeric value over Axis
@@ -1301,13 +1358,14 @@ declare namespace CanvasJS {
         /**
          * A custom formatter function that returns the content (text/html) to be displayed inside the toolTip.
          */
-        contentFormatter?(
-            e: {
-                chart: Chart;
-                toolTip: ChartToolTipOptions;
-                entries: Array<{ dataPoint: ChartDataPoint; dataSeries: ChartDataSeriesOptions }>;
-            },
-        ): string;
+        contentFormatter?(e: {
+            chart: Chart;
+            toolTip: ChartToolTipOptions;
+            entries: Array<{
+                dataPoint: ChartDataPoint;
+                dataSeries: ChartDataSeriesOptions;
+            }>;
+        }): string;
         /**
          * Sets the background color of toolTip. Values can be “HTML Color Name” or “hex” code.
          * Default: white
@@ -1328,7 +1386,11 @@ declare namespace CanvasJS {
          * @param value Name of the property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: number | string | boolean, updateChart?: boolean): void;
+        set(
+            propertyName: string,
+            value: number | string | boolean,
+            updateChart?: boolean,
+        ): void;
     }
 
     interface ChartDataCommon {
@@ -1715,7 +1777,11 @@ declare namespace CanvasJS {
          * @param value value to be set on property.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        set(propertyName: string, value: boolean | string | number | ChartDataPoint, updateChart: boolean): void;
+        set(
+            propertyName: string,
+            value: boolean | string | number | ChartDataPoint,
+            updateChart: boolean,
+        ): void;
         /**
          * Adds a new element of given type to the specified array. For example, it can be used to add new dataPoint to datPoints array.
          * @param propertyName Name of the property
@@ -1723,7 +1789,12 @@ declare namespace CanvasJS {
          * @param index Index of the array where the new element is to be added. Defaults to the length (end) of array.
          * @param updateChart When true, Updates the chart automatically after setting the value. Defaults to true.
          */
-        addTo(propertyName: string, options: ChartDataPoint, index?: number, updateChart?: boolean): void;
+        addTo(
+            propertyName: string,
+            options: ChartDataPoint,
+            index?: number,
+            updateChart?: boolean,
+        ): void;
         /**
          * Removes specified dataSeries from data Array.
          */

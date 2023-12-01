@@ -1,6 +1,6 @@
 import yj = require("yieldable-json");
 
-const str = "{\"name\":\"Ila Gould\",\"age\":22,\"gender\":\"female\"}";
+const str = '{"name":"Ila Gould","age":22,"gender":"female"}';
 
 const reviver: yj.Reviver = (key, value) => {
     // Change the value if type is number

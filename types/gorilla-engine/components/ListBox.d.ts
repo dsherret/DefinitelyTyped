@@ -1,5 +1,13 @@
 declare namespace GorillaEngine.UI {
-    interface ListBoxProps extends Common, Bounds, Font, Clickable, Background, Scrollable, Highlight, MIDILearn {
+    interface ListBoxProps
+        extends Common,
+            Bounds,
+            Font,
+            Clickable,
+            Background,
+            Scrollable,
+            Highlight,
+            MIDILearn {
         items?: string[];
         horizontalMargin?: number;
         cellColor?: string;

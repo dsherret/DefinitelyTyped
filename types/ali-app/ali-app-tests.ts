@@ -730,9 +730,9 @@
     ctx.draw();
 
     ctx.strokeRect(200, 20, 180, 150);
-    ctx.rotate(30 * Math.PI / 180);
+    ctx.rotate((30 * Math.PI) / 180);
     ctx.strokeRect(200, 20, 180, 150);
-    ctx.rotate(30 * Math.PI / 180);
+    ctx.rotate((30 * Math.PI) / 180);
     ctx.strokeRect(200, 20, 180, 150);
 
     ctx.draw();
@@ -762,7 +762,13 @@
 
     ctx.draw();
 
-    ctx.drawImage("https://img.alicdn.com/tfs/TB1GvVMj2BNTKJjy0FdXXcPpVXa-520-280.jpg", 2, 2, 250, 80);
+    ctx.drawImage(
+        "https://img.alicdn.com/tfs/TB1GvVMj2BNTKJjy0FdXXcPpVXa-520-280.jpg",
+        2,
+        2,
+        250,
+        80,
+    );
     ctx.draw();
 
     ctx.setFillStyle("yellow");
@@ -783,7 +789,7 @@
 
     ctx.draw();
 
-    ctx.rotate(45 * Math.PI / 180);
+    ctx.rotate((45 * Math.PI) / 180);
     ctx.setFillStyle("red");
     ctx.fillRect(70, 0, 100, 30);
 
@@ -793,7 +799,7 @@
 
     ctx.draw();
 
-    ctx.rotate(45 * Math.PI / 180);
+    ctx.rotate((45 * Math.PI) / 180);
     ctx.setFillStyle("red");
     ctx.fillRect(70, 0, 100, 30);
 
@@ -861,12 +867,19 @@
     Page({
         onReady() {
             my.createSelectorQuery()
-                .select("#non-exists").boundingClientRect()
-                .select("#one").boundingClientRect()
-                .selectAll(".all").boundingClientRect()
-                .select("#scroll").scrollOffset()
-                .selectViewport().boundingClientRect()
-                .selectViewport().scrollOffset().exec((ret) => {
+                .select("#non-exists")
+                .boundingClientRect()
+                .select("#one")
+                .boundingClientRect()
+                .selectAll(".all")
+                .boundingClientRect()
+                .select("#scroll")
+                .scrollOffset()
+                .selectViewport()
+                .boundingClientRect()
+                .selectViewport()
+                .scrollOffset()
+                .exec((ret) => {
                     console.log(JSON.stringify(ret, null, 2));
                 });
         },
@@ -1062,8 +1075,11 @@
                 switch (resultStatus) {
                     case "9000":
                         const callbackData = result.callbackData;
-                        const decodedCallbackData = decodeURIComponent(callbackData);
-                        const json = JSON.parse(decodedCallbackData.match(/{.*}/)!.toString());
+                        const decodedCallbackData =
+                            decodeURIComponent(callbackData);
+                        const json = JSON.parse(
+                            decodedCallbackData.match(/{.*}/)!.toString(),
+                        );
                         const jsonStr = JSON.stringify(json, null, 4);
                         if (json.success === true || json.success === "true") {
                             // 创建订单成功, 此时可以跳转到订单详情页面
@@ -1187,7 +1203,7 @@
         format: "QRCODE",
         width: 200,
         correctLevel: "H",
-        success: res => {
+        success: (res) => {
             console.log(res.image);
         },
         fail(res) {
@@ -1216,7 +1232,9 @@
         filePath: "https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg",
     });
     my.compressImage({
-        apFilePaths: ["https://resource/apmlcc0ed184daffc5a0d8da86b2f518cf7b.image"],
+        apFilePaths: [
+            "https://resource/apmlcc0ed184daffc5a0d8da86b2f518cf7b.image",
+        ],
         // level: 1,
         success: (res) => {
             console.log(JSON.stringify(res));
@@ -1322,14 +1340,16 @@
         },
     });
     my.getFileInfo({
-        apFilePath: "https://resource/apml953bb093ebd2834530196f50a4413a87.video",
+        apFilePath:
+            "https://resource/apml953bb093ebd2834530196f50a4413a87.video",
         digestAlgorithm: "sha1",
         success: (res) => {
             console.log(JSON.stringify(res));
         },
     });
     my.getSavedFileInfo({
-        apFilePath: "https://resource/apml953bb093ebd2834530196f50a4413a87.video",
+        apFilePath:
+            "https://resource/apml953bb093ebd2834530196f50a4413a87.video",
         success: (res) => {
             console.log(JSON.stringify(res));
         },
@@ -1450,8 +1470,7 @@
         onUnload() {
             my.offSocketOpen(this.callback);
         },
-        callback() {
-        },
+        callback() {},
     });
     my.connectSocket({
         url: "开发者的服务器地址",
@@ -1476,7 +1495,9 @@
             my.sendSocketMessage({
                 data: this.data.toSendMessage, // 需要发送的内容
                 success: (res) => {
-                    my.alert({ content: "数据发送！" + this.data.toSendMessage });
+                    my.alert({
+                        content: "数据发送！" + this.data.toSendMessage,
+                    });
                 },
             });
         },
@@ -1725,25 +1746,21 @@
     // https://docs.alipay.com/mini/api/screen-brightness
     my.setKeepScreenOn({
         keepScreenOn: true,
-        success: (res) => {
-        },
-        fail: (res) => {
-        },
+        success: (res) => {},
+        fail: (res) => {},
     });
     my.getScreenBrightness({
         success: (res) => {
             console.log(JSON.stringify(res));
         },
-        fail: (res) => {
-        },
+        fail: (res) => {},
     });
     my.setScreenBrightness({
         brightness: 0.5,
         success: (res) => {
             console.log(JSON.stringify(res));
         },
-        fail: (res) => {
-        },
+        fail: (res) => {},
     });
 })();
 
@@ -1786,20 +1803,16 @@
                 success: (res) => {
                     console.log(res);
                 },
-                fail: (res) => {
-                },
-                complete: (res) => {
-                },
+                fail: (res) => {},
+                complete: (res) => {},
             });
             // 停止搜索
             my.stopBluetoothDevicesDiscovery({
                 success: (res) => {
                     console.log(res);
                 },
-                fail: (res) => {
-                },
-                complete: (res) => {
-                },
+                fail: (res) => {},
+                complete: (res) => {},
             });
         },
     });
@@ -1819,10 +1832,8 @@
                     success: (res) => {
                         console.log(res);
                     },
-                    fail: (res) => {
-                    },
-                    complete: (res) => {
-                    },
+                    fail: (res) => {},
+                    complete: (res) => {},
                 });
             }
         },
@@ -1839,10 +1850,8 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
 
     // 断开连接
@@ -1851,10 +1860,8 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
 
     // 注销事件
@@ -1864,78 +1871,59 @@
 
     // 退出蓝牙模块
     my.closeBluetoothAdapter({
-        success: (res) => {
-        },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
     });
 })();
 
 (() => {
     // https://docs.alipay.com/mini/api/bluetooth-api
     my.openBluetoothAdapter({
-        success: (res) => {
-        },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.closeBluetoothAdapter({
-        success: (res) => {
-        },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.getBluetoothAdapterState({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.startBluetoothDevicesDiscovery({
         services: ["fff0"],
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.stopBluetoothDevicesDiscovery({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.getBluetoothDevices({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.getConnectedBluetoothDevices({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     const deviceId = "test";
     const serviceId = "test";
@@ -1946,20 +1934,16 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.disconnectBLEDevice({
         deviceId,
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.writeBLECharacteristicValue({
         deviceId,
@@ -1969,10 +1953,8 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.readBLECharacteristicValue({
         deviceId,
@@ -1981,10 +1963,8 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.notifyBLECharacteristicValueChange({
         deviceId,
@@ -1993,20 +1973,16 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.getBLEDeviceServices({
         deviceId,
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     my.getBLEDeviceCharacteristics({
         deviceId,
@@ -2014,10 +1990,8 @@
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
     Page({
         onLoad() {
@@ -2056,40 +2030,32 @@
         success: (res) => {
             console.log(res);
         },
-        fail: () => {
-        },
-        complete: () => {
-        },
+        fail: () => {},
+        complete: () => {},
     });
 
     my.stopBeaconDiscovery({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
 
     my.getBeacons({
         success: (res) => {
             console.log(res);
         },
-        fail: (res) => {
-        },
-        complete: (res) => {
-        },
+        fail: (res) => {},
+        complete: (res) => {},
     });
 
     my.onBeaconUpdate({
-        success: (res) => {
-        },
+        success: (res) => {},
     });
 
     my.onBeaconServiceChange({
-        success: (res) => {
-        },
+        success: (res) => {},
     });
 })();
 
@@ -2125,19 +2091,20 @@
                 text: this.data.inputValue,
                 // 设置私钥
                 // tslint:disable-next-line:prefer-template
-                key: "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMqaLR1RJVDTiEvo\n"
-                    + "ZkY8wUrz53obO6VqA/bupJQFjEgl8TTgpP44dV4UVvor7ydYN5rmaSZmsiCnTbbN\n"
-                    + "lUOB1Y80zrbei4HAeWx+bZ6R7Lw+lDF9dqPyWEz23ysmULgURzSzxCntDn+5iujB\n"
-                    + "BtP2bq3sEUrd6A47bE4rMulhKp9tAgMBAAECgYBjsfRLPdfn6v9hou1Y2KKg+F5K\n"
-                    + "ZsY2AnIK+6l+sTAzfIAx7e0ir7OJZObb2eyn5rAOCB1r6RL0IH+MWaN+gZANNG9g\n"
-                    + "pXvRgcZzFY0oqdMZDuSJjpMTj7OEUlPyoGncBfvjAg0zdt9QGAG1at9Jr3i0Xr4X\n"
-                    + "6WrFhtfVlmQUY1VsoQJBAPK2Qj/ClkZNtrSDfoD0j083LcNICqFIIGkNQ+XeuTwl\n"
-                    + "+Gq4USTyaTOEe68MHluiciQ+QKvRAUd4E1zeZRZ02ikCQQDVscINBPTtTJt1JfAo\n"
-                    + "wRfTzA0Lvgig136xLLeQXREcgq1lzgkf+tGyUGYoy9BXsV0mOuYAT9ldja4jhJeq\n"
-                    + "cEulAkEAuSJ5KjV9dyb0RIFAz5C8d8o5KAodwaRIxJkPv5nCZbT45j6t9qbJxDg8\n"
-                    + "N+vghDlHI4owvl5wwVlAO8iQBy8e8QJBAJe9CVXFV0XJR/n/XnER66FxGzJjVi0f\n"
-                    + "185nOlFARI5CHG5VxxT2PUCo5mHBl8ctIj+rQvalvGs515VQ6YEVDCECQE3S0AU2\n"
-                    + "BKyFVNtTpPiTyRUWqig4EbSXwjXdr8iBBJDLsMpdWsq7DCwv/ToBoLg+cQ4Crc5/\n5DChU8P30EjOiEo=",
+                key:
+                    "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMqaLR1RJVDTiEvo\n" +
+                    "ZkY8wUrz53obO6VqA/bupJQFjEgl8TTgpP44dV4UVvor7ydYN5rmaSZmsiCnTbbN\n" +
+                    "lUOB1Y80zrbei4HAeWx+bZ6R7Lw+lDF9dqPyWEz23ysmULgURzSzxCntDn+5iujB\n" +
+                    "BtP2bq3sEUrd6A47bE4rMulhKp9tAgMBAAECgYBjsfRLPdfn6v9hou1Y2KKg+F5K\n" +
+                    "ZsY2AnIK+6l+sTAzfIAx7e0ir7OJZObb2eyn5rAOCB1r6RL0IH+MWaN+gZANNG9g\n" +
+                    "pXvRgcZzFY0oqdMZDuSJjpMTj7OEUlPyoGncBfvjAg0zdt9QGAG1at9Jr3i0Xr4X\n" +
+                    "6WrFhtfVlmQUY1VsoQJBAPK2Qj/ClkZNtrSDfoD0j083LcNICqFIIGkNQ+XeuTwl\n" +
+                    "+Gq4USTyaTOEe68MHluiciQ+QKvRAUd4E1zeZRZ02ikCQQDVscINBPTtTJt1JfAo\n" +
+                    "wRfTzA0Lvgig136xLLeQXREcgq1lzgkf+tGyUGYoy9BXsV0mOuYAT9ldja4jhJeq\n" +
+                    "cEulAkEAuSJ5KjV9dyb0RIFAz5C8d8o5KAodwaRIxJkPv5nCZbT45j6t9qbJxDg8\n" +
+                    "N+vghDlHI4owvl5wwVlAO8iQBy8e8QJBAJe9CVXFV0XJR/n/XnER66FxGzJjVi0f\n" +
+                    "185nOlFARI5CHG5VxxT2PUCo5mHBl8ctIj+rQvalvGs515VQ6YEVDCECQE3S0AU2\n" +
+                    "BKyFVNtTpPiTyRUWqig4EbSXwjXdr8iBBJDLsMpdWsq7DCwv/ToBoLg+cQ4Crc5/\n5DChU8P30EjOiEo=",
                 success: (result) => {
                     this.setData({ outputValue: result.text });
                 },

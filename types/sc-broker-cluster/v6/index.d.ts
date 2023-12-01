@@ -11,16 +11,29 @@ import { ClientCluster } from "./clientcluster";
 export class AbstractDataClient extends EventEmitter {
     constructor(dataClient: ClientCluster);
 
-    set(keyChain: KeyChain, value: any, getValue?: boolean, callback?: (err?: Error) => void): void;
+    set(
+        keyChain: KeyChain,
+        value: any,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     set(keyChain: KeyChain, value: any, callback?: (err?: Error) => void): void;
 
     expire(keys: Keys, seconds: number, callback?: (err?: Error) => void): void;
     unexpire(keys: Keys, callback?: (err?: Error) => void): void;
 
-    add(keyChain: KeyChain, value: any, getValue?: boolean, callback?: (err?: Error) => void): void;
+    add(
+        keyChain: KeyChain,
+        value: any,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     add(keyChain: KeyChain, value: any, callback?: (err?: Error) => void): void;
 
-    get(keyChain: KeyChain, callback: (err: Error | null, value: any) => void): void;
+    get(
+        keyChain: KeyChain,
+        callback: (err: Error | null, value: any) => void,
+    ): void;
 
     getRange(
         keyChain: KeyChain,
@@ -28,13 +41,24 @@ export class AbstractDataClient extends EventEmitter {
         toIndex: number,
         callback: (err: Error | null, value: any) => void,
     ): void;
-    getRange(keyChain: KeyChain, fromIndex: number, callback: (err: Error | null, value: any) => void): void;
+    getRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        callback: (err: Error | null, value: any) => void,
+    ): void;
 
     getAll(callback: (err: Error | null, value: any[] | object) => void): void;
 
-    count(keyChain: KeyChain, callback: (err: Error | null, value: number) => void): void;
+    count(
+        keyChain: KeyChain,
+        callback: (err: Error | null, value: number) => void,
+    ): void;
 
-    remove(keyChain: KeyChain, getValue?: boolean, callback?: (err?: Error) => void): void;
+    remove(
+        keyChain: KeyChain,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     remove(keyChain: KeyChain, callback?: (err?: Error) => void): void;
 
     removeRange(
@@ -44,17 +68,36 @@ export class AbstractDataClient extends EventEmitter {
         getValue?: boolean,
         callback?: (err?: Error) => void,
     ): void;
-    removeRange(keyChain: KeyChain, fromIndex: number, toIndex?: number, callback?: (err?: Error) => void): void;
-    removeRange(keyChain: KeyChain, fromIndex: number, callback?: (err?: Error) => void): void;
+    removeRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        toIndex?: number,
+        callback?: (err?: Error) => void,
+    ): void;
+    removeRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        callback?: (err?: Error) => void,
+    ): void;
 
     removeAll(callback?: (err: Error) => void): void;
 
-    splice(keyChain: KeyChain, options?: SpliceOptions, callback?: (err?: Error) => void): void;
+    splice(
+        keyChain: KeyChain,
+        options?: SpliceOptions,
+        callback?: (err?: Error) => void,
+    ): void;
     splice(keyChain: KeyChain, callback?: (err?: Error) => void): void;
 
-    pop(keyChain: KeyChain, callback: (err: Error | null, data: any) => void): void;
+    pop(
+        keyChain: KeyChain,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
 
-    hasKey(keyChain: KeyChain, callback: (err: Error | null, data: boolean) => void): void;
+    hasKey(
+        keyChain: KeyChain,
+        callback: (err: Error | null, data: boolean) => void,
+    ): void;
 
     extractKeys(keyChain: KeyChain): string[];
 
@@ -65,22 +108,41 @@ export class AbstractDataClient extends EventEmitter {
         options?: QueryOptions,
         callback?: (err: Error | null, data: any) => void,
     ): void;
-    exec(query: (datamap: FlexiMap) => void, callback: (err: Error | null, data: any) => void): void;
+    exec(
+        query: (datamap: FlexiMap) => void,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
 }
 
 export type handlerFunction = (data: any) => void;
 
-export type mapperFunction = (keyChain: KeyChain, method: string, clientIds: number[]) => number | number[];
+export type mapperFunction = (
+    keyChain: KeyChain,
+    method: string,
+    clientIds: number[],
+) => number | number[];
 
 /**
  * The exchange object is a top-level SCBrokerClient which lets you publish events and manipulate data within your brokers - It represents a cluster of 1 or more brokers.
  */
 export class SCExchange extends AbstractDataClient {
-    constructor(privateClientCluster: ClientCluster, publicClientCluster: ClientCluster, ioClusterClient: Client);
+    constructor(
+        privateClientCluster: ClientCluster,
+        publicClientCluster: ClientCluster,
+        ioClusterClient: Client,
+    );
 
-    send(data: any, mapIndex: number | string | string[] | null, callback?: AsyncResultArrayCallback<any>): void;
+    send(
+        data: any,
+        mapIndex: number | string | string[] | null,
+        callback?: AsyncResultArrayCallback<any>,
+    ): void;
 
-    publish(channelName: string, data: any, callback?: (err?: Error) => void): void;
+    publish(
+        channelName: string,
+        data: any,
+        callback?: (err?: Error) => void,
+    ): void;
 
     subscribe(channelName: string): SCChannel;
     unsubscribe(channelName: string): void;
@@ -98,7 +160,10 @@ export class SCExchange extends AbstractDataClient {
     setMapper(mapper: mapperFunction): void;
     getMapper(): mapperFunction;
 
-    map(keyChain: KeyChain, method: string): { type: string; targets: Client[] };
+    map(
+        keyChain: KeyChain,
+        method: string,
+    ): { type: string; targets: Client[] };
 
     destroy(): void;
 }
@@ -120,16 +185,30 @@ export interface SCBrokerClusterServerOptions {
 export class Server extends EventEmitter {
     constructor(options: SCBrokerClusterServerOptions);
 
-    on(event: "brokerStart", listener: (brokerInfo: BrokerStartInfo) => void): this;
-    on(event: "brokerExit", listener: (brokerInfo: BrokerExitInfo) => void): this;
+    on(
+        event: "brokerStart",
+        listener: (brokerInfo: BrokerStartInfo) => void,
+    ): this;
+    on(
+        event: "brokerExit",
+        listener: (brokerInfo: BrokerExitInfo) => void,
+    ): this;
     on(
         event: "brokerMessage",
-        listener: (brokerId: string, data: any, callback: (err: Error | null, data: any) => void) => void,
+        listener: (
+            brokerId: string,
+            data: any,
+            callback: (err: Error | null, data: any) => void,
+        ) => void,
     ): this;
     on(event: "ready", listener: () => void): this;
     on(event: "error", listener: (err?: Error) => void): this;
 
-    sendToBroker(brokerId: string, data: any, callback?: (err: Error | null, data: any) => void): void;
+    sendToBroker(
+        brokerId: string,
+        data: any,
+        callback?: (err: Error | null, data: any) => void,
+    ): void;
     killBrokers(): void;
     destroy(): void;
 }
@@ -165,8 +244,16 @@ export class Client extends EventEmitter {
     unsubscribeAll(callback?: AsyncResultArrayCallback<any>): void;
     isSubscribed(channel: string, includePending?: boolean): boolean;
 
-    subscribeSocket(socket: SCServerSocket, channel: string, callback?: (err?: Error) => void): void;
-    unsubscribeSocket(socket: SCServerSocket, channel: string, callback?: () => void): void;
+    subscribeSocket(
+        socket: SCServerSocket,
+        channel: string,
+        callback?: (err?: Error) => void,
+    ): void;
+    unsubscribeSocket(
+        socket: SCServerSocket,
+        channel: string,
+        callback?: () => void,
+    ): void;
 
     setSCServer(scServer: SCServer): void;
 }

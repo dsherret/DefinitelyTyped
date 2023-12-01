@@ -12,7 +12,10 @@ console.log(ecparams.G.getEncoded().toString("hex")); // getEncoded() returns ty
 console.log(ecparams.h.toString(16));
 // => 1
 
-const privateKey = new Buffer("1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd", "hex");
+const privateKey = new Buffer(
+    "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+    "hex",
+);
 
 ecparams = ecurve.getCurveByName("secp256k1");
 const curvePt = ecparams.G.multiply(BigInteger.fromBuffer(privateKey));

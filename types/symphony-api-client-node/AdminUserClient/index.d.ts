@@ -35,4 +35,7 @@ export interface AdminUserInfo {
 }
 
 export function getUser(id: string): Promise<AdminUserInfo>;
-export function listUsers(skip: number, limit: number): Promise<AdminUserInfo[]>;
+export function listUsers(
+    skip: number,
+    limit: number,
+): Promise<AdminUserInfo[]>;

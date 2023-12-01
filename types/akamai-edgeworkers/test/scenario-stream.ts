@@ -4,7 +4,11 @@
 // in question doesn't matter.
 import { createResponse } from "create-response";
 import { httpRequest } from "http-request";
-import { ReadableStream, ReadableStreamDefaultController, WritableStream } from "streams";
+import {
+    ReadableStream,
+    ReadableStreamDefaultController,
+    WritableStream,
+} from "streams";
 import { TextDecoderStream, TextEncoderStream } from "text-encode-transform";
 
 class ToUpperCaseStream {
@@ -39,15 +43,21 @@ class ToUpperCaseStream {
 }
 
 export function responseProvider(request: EW.ResponseProviderRequest) {
-    return httpRequest("http://www.mofroyo.co/us/en/index.html").then(response => {
-        const responseHeader = JSON.stringify(request.getHeaders()); // get headers from response provider event
-        const httpRequestHeader = JSON.stringify(response.getHeaders()); // get headers from httprequest
-        return createResponse(
-            response.status,
-            { "resp-header": responseHeader, "httpreq-header": httpRequestHeader }, // passing both these headers should return them in response
-            response.body.pipeThrough(new TextDecoderStream()).pipeThrough(new ToUpperCaseStream()).pipeThrough(
-                new TextEncoderStream(),
-            ),
-        );
-    });
+    return httpRequest("http://www.mofroyo.co/us/en/index.html").then(
+        (response) => {
+            const responseHeader = JSON.stringify(request.getHeaders()); // get headers from response provider event
+            const httpRequestHeader = JSON.stringify(response.getHeaders()); // get headers from httprequest
+            return createResponse(
+                response.status,
+                {
+                    "resp-header": responseHeader,
+                    "httpreq-header": httpRequestHeader,
+                }, // passing both these headers should return them in response
+                response.body
+                    .pipeThrough(new TextDecoderStream())
+                    .pipeThrough(new ToUpperCaseStream())
+                    .pipeThrough(new TextEncoderStream()),
+            );
+        },
+    );
 }

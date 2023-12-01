@@ -43,4 +43,6 @@ export type TOC<S> = TemplateOnlyComponent<S>;
 // class definition and extension, it is used by external tools and should not
 // be removed.
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export default function templateOnly<S>(moduleName?: string): TemplateOnlyComponent<S>;
+export default function templateOnly<S>(
+    moduleName?: string,
+): TemplateOnlyComponent<S>;

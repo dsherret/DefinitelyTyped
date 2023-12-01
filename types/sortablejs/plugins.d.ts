@@ -21,14 +21,14 @@ export interface AutoScrollOptions {
      */
     scrollFn?:
         | ((
-            this: Sortable,
-            offsetX: number,
-            offsetY: number,
-            originalEvent: Event,
-            touchEvt: TouchEvent,
-            hoverTargetEl: HTMLElement,
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        ) => "continue" | void)
+              this: Sortable,
+              offsetX: number,
+              offsetY: number,
+              originalEvent: Event,
+              touchEvt: TouchEvent,
+              hoverTargetEl: HTMLElement,
+              // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+          ) => "continue" | void)
         | undefined;
     /**
      * `px`, how near the mouse must be to an edge to start scrolling.

@@ -7,9 +7,16 @@ declare module "jsreport-core" {
         body(): Promise<Buffer>;
     }
     interface Client {
-        render(req: Partial<Request>, options?: object): Promise<ClientRenderResponse>;
+        render(
+            req: Partial<Request>,
+            options?: object,
+        ): Promise<ClientRenderResponse>;
     }
 }
 
-declare function CreateJsReportClient(url: string, username?: string, password?: string): JsReport.Client;
+declare function CreateJsReportClient(
+    url: string,
+    username?: string,
+    password?: string,
+): JsReport.Client;
 export = CreateJsReportClient;

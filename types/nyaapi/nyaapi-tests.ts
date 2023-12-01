@@ -10,7 +10,10 @@ import { pantsu, si } from "nyaapi";
     si.searchByUser("Judas", "clannad", 1, { category: "1_1", filter: 2 });
     si.searchAllByUser("Judas", "clannad", { category: "1_1", filter: 2 });
     si.searchPage("clannad", 1, { category: "1_1", filter: 2 });
-    si.searchByUserAndByPage("Judas", "clannad", 1, 10, { category: "1_1", filter: 2 });
+    si.searchByUserAndByPage("Judas", "clannad", 1, 10, {
+        category: "1_1",
+        filter: 2,
+    });
     si.upload({
         credentials: {
             username: "my_super_username",
@@ -19,10 +22,11 @@ import { pantsu, si } from "nyaapi";
         torrent: "/path/to/my/torrent/file.torrent",
         name: "Hello.mkv.torrent",
         category: "1_2",
-        description: "A movie saying \"Hello\" to everyone",
+        description: 'A movie saying "Hello" to everyone',
         information: "my_website.com",
         complete: true,
-    }).then((data) => console.log(data))
+    })
+        .then((data) => console.log(data))
         .catch((err) => console.error(err));
 
     pantsu.config.updateBaseUrl("https://nyaa.whatever");

@@ -4,7 +4,7 @@ let room = HBInit({
     geo: { code: "DE", lat: 50, lon: 50 },
 });
 
-room.onPlayerJoin = p => {
+room.onPlayerJoin = (p) => {
     const cf = room.CollisionFlags;
     room.setPlayerDiscProperties(p.id, { cGroup: cf.ball });
     room.sendAnnouncement(`${p.name} has joined.`);

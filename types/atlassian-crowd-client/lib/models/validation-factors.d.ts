@@ -4,7 +4,9 @@ declare class ValidationFactors {
 
     constructor(validationFactorPairs: any);
     toCrowd(): ValidationFactorsObj;
-    static fromCrowd(validationFactorsObj: ValidationFactorsObj): ValidationFactors;
+    static fromCrowd(
+        validationFactorsObj: ValidationFactorsObj,
+    ): ValidationFactors;
 }
 
 interface ValidationFactorsObj {

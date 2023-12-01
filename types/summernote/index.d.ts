@@ -11,7 +11,10 @@ declare global {
             codeviewFilterRegex?: string | undefined;
             codeviewIframeWhitelistSrc?: string[] | undefined;
             codeviewIframeFilter?: boolean | undefined;
-            callbacks?: SummernoteCallbacks | SummernoteUndocumentedCallbacks | undefined; // todo
+            callbacks?:
+                | SummernoteCallbacks
+                | SummernoteUndocumentedCallbacks
+                | undefined; // todo
             codemirror?: CodemirrorOptions | undefined;
             colors?: colorsDef | undefined;
             dialogsInBody?: boolean | undefined;
@@ -46,7 +49,12 @@ declare global {
             width?: number | undefined;
         }
 
-        type toolbarStyleGroupOptions = "style" | "bold" | "italic" | "underline" | "clear";
+        type toolbarStyleGroupOptions =
+            | "style"
+            | "bold"
+            | "italic"
+            | "underline"
+            | "clear";
         type toolbarFontGroupOptions =
             | "fontname"
             | "fontsize"
@@ -63,13 +71,28 @@ declare global {
             | "clear";
         type toolbarFontsizeGroupOptions = "fontsize" | "fontname" | "color";
         type toolbarColorGroupOptions = "color";
-        type toolbarParaGroupOptions = "ul" | "ol" | "paragraph" | "style" | "height";
+        type toolbarParaGroupOptions =
+            | "ul"
+            | "ol"
+            | "paragraph"
+            | "style"
+            | "height";
         type toolbarHeightGroupOptions = "height";
         type toolbarTableGroupOptions = "table";
-        type toolbarInsertGroupOptions = "link" | "picture" | "hr" | "table" | "video";
+        type toolbarInsertGroupOptions =
+            | "link"
+            | "picture"
+            | "hr"
+            | "table"
+            | "video";
         type toolbarViewGroupOptions = "fullscreen" | "codeview" | "help";
         type toolbarHelpGroupOptions = "help";
-        type miscGroupOptions = "fullscreen" | "codeview" | "undo" | "redo" | "help";
+        type miscGroupOptions =
+            | "fullscreen"
+            | "codeview"
+            | "undo"
+            | "redo"
+            | "help";
         // type toolbarDef = [string, string[]][]
         type toolbarDef = Array<
             | ["style", toolbarStyleGroupOptions[]]
@@ -87,7 +110,16 @@ declare global {
         >;
 
         type colorsDef = Array<[string[]]>;
-        type styleTagsOptions = "p" | "blockquote" | "pre" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+        type styleTagsOptions =
+            | "p"
+            | "blockquote"
+            | "pre"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6";
 
         interface InsertTableMaxSizeOptions {
             col: number;
@@ -117,7 +149,10 @@ declare global {
             words?: string[] | undefined;
             mentions?: string[] | undefined;
             match: RegExp;
-            search: (keyword: string, callback: (plausibleItems: string[]) => void) => void;
+            search: (
+                keyword: string,
+                callback: (plausibleItems: string[]) => void,
+            ) => void;
             template?: ((item: string) => htmlElement) | undefined;
             content?: ((item: string) => htmlElement | JQuery.Node) | undefined;
         }
@@ -129,8 +164,14 @@ declare global {
             theme?: string | undefined;
         }
 
-        type popoverImageOptionsImagesize = "imageSize100" | "imageSize50" | "imageSize25";
-        type popoverImageOptionsFloat = "floatLeft" | "floatRight" | "floatNone";
+        type popoverImageOptionsImagesize =
+            | "imageSize100"
+            | "imageSize50"
+            | "imageSize25";
+        type popoverImageOptionsFloat =
+            | "floatLeft"
+            | "floatRight"
+            | "floatNone";
         type popoverImageOptionsRemove = "removeMedia";
         type popoverImageDef = [
             ["imagesize", popoverImageOptionsImagesize[]],
@@ -139,9 +180,7 @@ declare global {
         ];
 
         type popoverLinkLinkOptions = "linkDialogShow" | "unlink";
-        type popoverLinkDef = [
-            ["link", popoverLinkLinkOptions[]],
-        ];
+        type popoverLinkDef = [["link", popoverLinkLinkOptions[]]];
 
         type popoverAirOptionsColor = "color";
         type popoverAirOptionsFont = "bold" | "underline" | "clear";
@@ -198,7 +237,9 @@ declare global {
         }
 
         type SummernoteUndocumentedCallbacks = {
-            [key in Exclude<keyof SummernoteCallbacks, string>]: (...args: any[]) => void;
+            [key in Exclude<keyof SummernoteCallbacks, string>]: (
+                ...args: any[]
+            ) => void;
         };
     }
 
@@ -209,12 +250,19 @@ declare global {
         summernote(command: string, markupString: string): JQuery;
         summernote(command: string, value: number): JQuery;
         summernote(command: string, node: JQuery.Node): JQuery;
-        summernote(command: string, url: string, filename?: string | Summernote.EditImageCallback): JQuery;
+        summernote(
+            command: string,
+            url: string,
+            filename?: string | Summernote.EditImageCallback,
+        ): JQuery;
 
         summernote(command: "destroy"): JQuery;
         summernote(command: "code"): string;
         summernote(command: "code", markupStr: string): undefined;
-        summernote(command: "editor.pasteHTML" | "pasteHTML", markup: string): JQuery;
+        summernote(
+            command: "editor.pasteHTML" | "pasteHTML",
+            markup: string,
+        ): JQuery;
 
         // Basic API
         summernote(command: "editor.createRange" | "createRange"): JQuery;
@@ -238,15 +286,22 @@ declare global {
         summernote(command: "backColor", color: string): JQuery;
         summernote(command: "foreColor", color: string): JQuery;
         summernote(command: "fontName", fontName: string): JQuery;
-        summernote(command: "editor.fontSize" | "fontSize", fontSize: number): JQuery;
+        summernote(
+            command: "editor.fontSize" | "fontSize",
+            fontSize: number,
+        ): JQuery;
         // Paragraph API
         summernote(command: "editor.justifyLeft" | "justifyLeft"): JQuery;
         summernote(command: "editor.justifyRight" | "justifyRight"): JQuery;
         summernote(command: "editor.justifyCenter" | "justifyCenter"): JQuery;
         summernote(command: "editor.justifyFull" | "justifyFull"): JQuery;
         summernote(command: "insertParagraph"): JQuery;
-        summernote(command: "editor.insertOrderedList" | "insertOrderedList"): JQuery;
-        summernote(command: "editor.insertUnorderedList" | "insertUnorderedList"): JQuery;
+        summernote(
+            command: "editor.insertOrderedList" | "insertOrderedList",
+        ): JQuery;
+        summernote(
+            command: "editor.insertUnorderedList" | "insertUnorderedList",
+        ): JQuery;
         summernote(command: "editor.indent" | "indent"): JQuery;
         summernote(command: "editor.outdent" | "outdent"): JQuery;
         summernote(command: "formatPara"): JQuery;
@@ -262,9 +317,18 @@ declare global {
             url: string,
             filename?: string | Summernote.EditImageCallback,
         ): JQuery;
-        summernote(command: "editor.insertNode" | "insertNode", node: JQuery.Node): JQuery;
-        summernote(command: "editor.insertText" | "insertText", text: string): JQuery;
-        summernote(command: "createLink", options: Summernote.CreateLinkOptions): JQuery;
+        summernote(
+            command: "editor.insertNode" | "insertNode",
+            node: JQuery.Node,
+        ): JQuery;
+        summernote(
+            command: "editor.insertText" | "insertText",
+            text: string,
+        ): JQuery;
+        summernote(
+            command: "createLink",
+            options: Summernote.CreateLinkOptions,
+        ): JQuery;
         // TODO: Callbacks
 
         // TODO: Editor

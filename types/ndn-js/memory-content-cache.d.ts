@@ -1,5 +1,10 @@
 import { Data } from "./data";
-import { Face, ForwardingFlags, InterestFilter, OnInterestCallback } from "./face";
+import {
+    Face,
+    ForwardingFlags,
+    InterestFilter,
+    OnInterestCallback,
+} from "./face";
 import { Interest } from "./interest";
 import { Name } from "./name";
 
@@ -16,7 +21,10 @@ export class MemoryContentCache {
         onDataNotFound?: OnInterestCallback,
         flags?: ForwardingFlags,
     ): void;
-    setInterestFilter(filter: InterestFilter | Name, onDataNotFound?: OnInterestCallback): void;
+    setInterestFilter(
+        filter: InterestFilter | Name,
+        onDataNotFound?: OnInterestCallback,
+    ): void;
     setMinimumCacheLifetime(minimumCacheLifetime: number): void;
     storePendingInterest(interest: Interest, face: Face): void;
     unregisterAll(): void;

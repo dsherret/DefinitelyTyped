@@ -58,7 +58,7 @@ declare var RANDOM_GLOBAL_VARIABLE: true;
     // types included in globals.d.ts are designed to be empty
     // merges when lib.dom.d.ts is included. This test ensures
     // the merge works, but the types observed are from lib.dom.d.ts.
-    fetch("https://example.com").then(response => {
+    fetch("https://example.com").then((response) => {
         response.arrayBuffer(); // $ExpectType Promise<ArrayBuffer>
         response.blob(); // $ExpectType Promise<Blob>
         response.formData(); // $ExpectType Promise<FormData>

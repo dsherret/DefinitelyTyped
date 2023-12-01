@@ -95,7 +95,10 @@ declare namespace angular.map {
          * @param  {PositionOptions}                      options optional
          * @return {angular.IPromise<google.maps.LatLng>}         Latitude ang longitude of the address
          */
-        getGeoLocation(address: string, options?: PositionOptions): ng.IPromise<google.maps.LatLng>;
+        getGeoLocation(
+            address: string,
+            options?: PositionOptions,
+        ): ng.IPromise<google.maps.LatLng>;
         /**
          * Get map from the pool of all shown maps.
          * @param  {IGetMapOptions}                    options optional

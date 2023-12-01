@@ -10,7 +10,14 @@ new TestExclude();
 // $ExpectType TestExclude
 new TestExclude({});
 // $ExpectType TestExclude
-new TestExclude({ cwd: "", exclude: "", excludeNodeModules: false, extension: "", include: "", relativePath: false });
+new TestExclude({
+    cwd: "",
+    exclude: "",
+    excludeNodeModules: false,
+    extension: "",
+    include: "",
+    relativePath: false,
+});
 // $ExpectType TestExclude
 const exclude = new TestExclude({
     cwd: "",

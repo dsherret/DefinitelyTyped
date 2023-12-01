@@ -58,7 +58,10 @@ export type ES2015Builtins =
     | "Symbol"
     | "TypedArrays"
     | "new.target";
-export type ES2016Builtins = "__all" | "Array.prototype.includes" | "TypedArray.prototype.includes";
+export type ES2016Builtins =
+    | "__all"
+    | "Array.prototype.includes"
+    | "TypedArray.prototype.includes";
 export type ES2017Builtins =
     | "__all"
     | "Atomics"
@@ -90,14 +93,26 @@ export type ES2015Syntax =
     | "Computed property"
     | "Block level function declaration"
     | "class";
-export type ES2016Syntax = "__all" | "Exponentiation operator" | "Rest destructuring";
-export type ES2017Syntax = "__all" | "async/await" | "Trailing parameter commas";
-export function builtins(): Record<ES2015Builtins | ES2016Builtins | ES2017Builtins, boolean> & {
+export type ES2016Syntax =
+    | "__all"
+    | "Exponentiation operator"
+    | "Rest destructuring";
+export type ES2017Syntax =
+    | "__all"
+    | "async/await"
+    | "Trailing parameter commas";
+export function builtins(): Record<
+    ES2015Builtins | ES2016Builtins | ES2017Builtins,
+    boolean
+> & {
     es2015: Record<ES2015Builtins, boolean>;
     es2016: Record<ES2016Builtins, boolean>;
     es2017: Record<ES2017Builtins, boolean>;
 };
-export function syntax(): Record<ES2015Syntax | ES2016Syntax | ES2017Syntax, boolean> & {
+export function syntax(): Record<
+    ES2015Syntax | ES2016Syntax | ES2017Syntax,
+    boolean
+> & {
     es2015: Record<ES2015Syntax, boolean>;
     es2016: Record<ES2016Syntax, boolean>;
     es2017: Record<ES2017Syntax, boolean>;

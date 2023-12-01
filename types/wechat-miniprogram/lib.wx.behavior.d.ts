@@ -13,13 +13,12 @@ declare namespace WechatMiniprogram.Behavior {
         TProperty extends PropertyOption,
         TMethod extends MethodOption,
         TCustomInstanceProperty extends IAnyObject = Record<string, never>,
-    > =
-        & Partial<Data<TData>>
-        & Partial<Property<TProperty>>
-        & Partial<Method<TMethod>>
-        & Partial<OtherOption>
-        & Partial<Lifetimes>
-        & ThisType<Instance<TData, TProperty, TMethod, TCustomInstanceProperty>>;
+    > = Partial<Data<TData>> &
+        Partial<Property<TProperty>> &
+        Partial<Method<TMethod>> &
+        Partial<OtherOption> &
+        Partial<Lifetimes> &
+        ThisType<Instance<TData, TProperty, TMethod, TCustomInstanceProperty>>;
     interface Constructor {
         <
             TData extends DataOption,
@@ -27,7 +26,12 @@ declare namespace WechatMiniprogram.Behavior {
             TMethod extends MethodOption,
             TCustomInstanceProperty extends IAnyObject = Record<string, never>,
         >(
-            options: Options<TData, TProperty, TMethod, TCustomInstanceProperty>,
+            options: Options<
+                TData,
+                TProperty,
+                TMethod,
+                TCustomInstanceProperty
+            >,
         ): BehaviorIdentifier;
     }
 

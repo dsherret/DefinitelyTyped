@@ -6,7 +6,7 @@ interface RoomConfigObject {
     password?: string;
     maxPlayers?: number;
     public?: boolean;
-    geo?: { "code": string; "lat": number; "lon": number };
+    geo?: { code: string; lat: number; lon: number };
     token?: string;
     noPlayer?: boolean;
 }
@@ -23,25 +23,42 @@ declare class RoomObject {
     setCustomStadium(stadiumFileContents: string): void;
     setDefaultStadium(stadiumName: string): void;
     setTeamsLock(locked: boolean): void;
-    setTeamColors(team: TeamID, angle: number, textColor: number, colors: readonly number[]): void;
+    setTeamColors(
+        team: TeamID,
+        angle: number,
+        textColor: number,
+        colors: readonly number[],
+    ): void;
     startGame(): void;
     stopGame(): void;
     pauseGame(pauseState: boolean): void;
     getPlayer(playerId: number): PlayerObject;
     getPlayerList(): PlayerObject[];
     getScores(): ScoresObject;
-    getBallPosition(): { "x": number; "y": number };
+    getBallPosition(): { x: number; y: number };
     startRecording(): void;
     stopRecording(): Uint8Array;
     setPassword(pass: string): void;
     setRequireCaptcha(required: boolean): void;
     reorderPlayers(playerIdList: readonly number[], moveToTop: boolean): void;
-    sendAnnouncement(msg: string, targetId?: number, color?: number, style?: string, sound?: number): void;
+    sendAnnouncement(
+        msg: string,
+        targetId?: number,
+        color?: number,
+        style?: string,
+        sound?: number,
+    ): void;
     setKickRateLimit(min: number, rate: number, burst: number): void;
     setPlayerAvatar(playerId: number, avatar: string): void;
-    setDiscProperties(discIndex: number, properties: Partial<DiscPropertiesObject>): void;
+    setDiscProperties(
+        discIndex: number,
+        properties: Partial<DiscPropertiesObject>,
+    ): void;
     getDiscProperties(discIndex: number): DiscPropertiesObject;
-    setPlayerDiscProperties(playerId: number, properties: Partial<DiscPropertiesObject>): void;
+    setPlayerDiscProperties(
+        playerId: number,
+        properties: Partial<DiscPropertiesObject>,
+    ): void;
     getPlayerDiscProperties(playerId: number): DiscPropertiesObject;
     getDiscCount(): number;
     CollisionFlags: CollisionFlagsObject;
@@ -53,9 +70,20 @@ declare class RoomObject {
     onTeamGoal(team: TeamID): void;
     onGameStart(byPlayer: PlayerObject): void;
     onGameStop(byPlayer: PlayerObject): void;
-    onPlayerAdminChange(changedPlayer: PlayerObject, byPlayer: PlayerObject): void;
-    onPlayerTeamChange(changedPlayer: PlayerObject, byPlayer: PlayerObject): void;
-    onPlayerKicked(kickedPlayer: PlayerObject, reason: string, ban: boolean, byPlayer: PlayerObject): void;
+    onPlayerAdminChange(
+        changedPlayer: PlayerObject,
+        byPlayer: PlayerObject,
+    ): void;
+    onPlayerTeamChange(
+        changedPlayer: PlayerObject,
+        byPlayer: PlayerObject,
+    ): void;
+    onPlayerKicked(
+        kickedPlayer: PlayerObject,
+        reason: string,
+        ban: boolean,
+        byPlayer: PlayerObject,
+    ): void;
     onGameTick(): void;
     onGamePause(byPlayer: PlayerObject): void;
     onGameUnpause(byPlayer: PlayerObject): void;
@@ -63,7 +91,12 @@ declare class RoomObject {
     onPlayerActivity(player: PlayerObject): void;
     onStadiumChange(newStadiumName: string, byPlayer: PlayerObject): void;
     onRoomLink(url: string): void;
-    onKickRateLimitSet(min: number, rate: number, burst: number, byPlayer: PlayerObject): void;
+    onKickRateLimitSet(
+        min: number,
+        rate: number,
+        burst: number,
+        byPlayer: PlayerObject,
+    ): void;
 }
 
 declare class PlayerObject {
@@ -71,7 +104,7 @@ declare class PlayerObject {
     name: string;
     team: TeamID;
     admin: boolean;
-    position: { "x": number; "y": number };
+    position: { x: number; y: number };
     auth: string;
     conn: string;
 }
@@ -103,17 +136,17 @@ declare class DiscPropertiesObject {
 }
 
 interface CollisionFlagsObject {
-    "ball": number;
-    "red": number;
-    "blue": number;
-    "redKO": number;
-    "blueKO": number;
-    "wall": number;
-    "all": number;
-    "kick": number;
-    "score": number;
-    "c0": number;
-    "c1": number;
-    "c2": number;
-    "c3": number;
+    ball: number;
+    red: number;
+    blue: number;
+    redKO: number;
+    blueKO: number;
+    wall: number;
+    all: number;
+    kick: number;
+    score: number;
+    c0: number;
+    c1: number;
+    c2: number;
+    c3: number;
 }

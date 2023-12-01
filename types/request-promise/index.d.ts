@@ -14,7 +14,11 @@ declare namespace requestPromise {
 
     interface RequestPromiseOptions extends request.CoreOptions {
         simple?: boolean | undefined;
-        transform?(body: any, response: request.Response, resolveWithFullResponse?: boolean): any;
+        transform?(
+            body: any,
+            response: request.Response,
+            resolveWithFullResponse?: boolean,
+        ): any;
         transform2xxOnly?: boolean | undefined;
         resolveWithFullResponse?: boolean | undefined;
     }

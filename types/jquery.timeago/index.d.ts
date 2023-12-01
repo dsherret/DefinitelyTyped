@@ -3,28 +3,30 @@
 interface TimeagoSetings {
     refreshMillis?: number | undefined;
     allowFuture?: boolean | undefined;
-    strings?: {
-        prefixAgo?: string | undefined;
-        prefixFromNow?: string | undefined;
-        suffixAgo?: string | undefined;
-        suffixFromNow?: string | undefined;
+    strings?:
+        | {
+              prefixAgo?: string | undefined;
+              prefixFromNow?: string | undefined;
+              suffixAgo?: string | undefined;
+              suffixFromNow?: string | undefined;
 
-        // Those can be string or Function
-        seconds?: any;
-        minute?: any;
-        minutes?: any;
-        hour?: any;
-        hours?: any;
-        day?: any;
-        days?: any;
-        month?: any;
-        months?: any;
-        year?: any;
-        years?: any;
+              // Those can be string or Function
+              seconds?: any;
+              minute?: any;
+              minutes?: any;
+              hour?: any;
+              hours?: any;
+              day?: any;
+              days?: any;
+              month?: any;
+              months?: any;
+              year?: any;
+              years?: any;
 
-        wordSeparator?: string | undefined;
-        numbers?: any[] | undefined;
-    } | undefined;
+              wordSeparator?: string | undefined;
+              numbers?: any[] | undefined;
+          }
+        | undefined;
 }
 
 interface TimeagoStatic {

@@ -162,7 +162,11 @@ declare namespace Pickadate {
         onStop?: ((event: any) => void) | undefined;
     }
 
-    type MinOrMaxDateOption = Date | [number, number, number] | number | boolean;
+    type MinOrMaxDateOption =
+        | Date
+        | [number, number, number]
+        | number
+        | boolean;
     type MinOrMaxTimeOption = Date | [number, number] | number | boolean;
 
     export interface DateOptions extends Options {
@@ -357,7 +361,11 @@ declare namespace Pickadate {
         format?: string | undefined;
     }
 
-    interface Picker<TPickerObject, TItemObject extends Item, TOptions extends SetObject> {
+    interface Picker<
+        TPickerObject,
+        TItemObject extends Item,
+        TOptions extends SetObject,
+    > {
         /**
          * The picker's relative input element wrapped as a jQuery object.
          */
@@ -497,8 +505,10 @@ declare namespace Pickadate {
         trigger(event: string, data?: any): TPickerObject;
     }
 
-    export interface DatePicker extends Picker<DatePicker, DateItem, SetObject> {}
-    export interface TimePicker extends Picker<TimePicker, TimeItem, TimeSetObject> {}
+    export interface DatePicker
+        extends Picker<DatePicker, DateItem, SetObject> {}
+    export interface TimePicker
+        extends Picker<TimePicker, TimeItem, TimeSetObject> {}
 
     interface Pickadate {
         defaults: DateOptions;

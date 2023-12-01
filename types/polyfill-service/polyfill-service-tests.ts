@@ -24,15 +24,15 @@ o2.minify = false;
 o2.unknown = "polyfill";
 o2.unknown = "ignore";
 
-svc.listAllPolyfills().then(v => {
+svc.listAllPolyfills().then((v) => {
     v[0].toLocaleLowerCase();
 });
 
-svc.getPolyfillString(o2).then(s => {
+svc.getPolyfillString(o2).then((s) => {
     s.toLocaleUpperCase();
 });
 
-svc.getPolyfills(o).then(r => {
+svc.getPolyfills(o).then((r) => {
     const p = r.Symbol;
     p.flags.clear();
 

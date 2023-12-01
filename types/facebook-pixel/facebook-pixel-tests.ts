@@ -1,7 +1,10 @@
 fbq("init", "<FB_PIXEL_ID>");
 
 // https://developers.facebook.com/ads/blog/post/2017/11/28/event-tracking-with-multiple-pixels-tracksingle/
-var viewContentParam: facebook.Pixel.ViewContentParameters = { currency: "EUR", value: 15.23 };
+var viewContentParam: facebook.Pixel.ViewContentParameters = {
+    currency: "EUR",
+    value: 15.23,
+};
 fbq("trackSingle", "<FB_PIXEL_ID>", "ViewContent", viewContentParam);
 fbq("trackSingleCustom", "<FB_PIXEL>", "CustomContent", {});
 
@@ -9,7 +12,10 @@ fbq("track", "PageView");
 
 // Standard event (can be used for conversion tracking
 // and optimizing in addition to audience building)
-var purchaseParam: facebook.Pixel.PurchaseParameters = { currency: "EUR", value: 15.23 };
+var purchaseParam: facebook.Pixel.PurchaseParameters = {
+    currency: "EUR",
+    value: 15.23,
+};
 fbq("track", "Purchase", purchaseParam);
 
 // Legacy conversion event (can only be used for conversion
@@ -30,7 +36,7 @@ fbq("track", "ViewContent", {
     content_category: "Apparel & Accessories > Shoes",
     content_ids: ["1234"],
     content_type: "product",
-    value: 0.50,
+    value: 0.5,
     currency: "USD",
 });
 
@@ -40,16 +46,20 @@ fbq("track", "ViewContent", {
 fbq("track", "ViewContent", {
     content_name: "The Avengers Trailer",
     content_category: "Entertainment",
-    value: 1.50,
+    value: 1.5,
     currency: "USD",
 });
 
 fbq("track", "CompleteRegistration", { currency: "USD", value: 0.75 });
 
-fbq("track", "CompleteRegistration", { currency: "USD", value: 0.75, status: false });
+fbq("track", "CompleteRegistration", {
+    currency: "USD",
+    value: 0.75,
+    status: false,
+});
 
 fbq("track", "Purchase", {
-    value: 115.00,
+    value: 115.0,
     currency: "USD",
     contents: [
         {
@@ -68,13 +78,20 @@ fbq("track", "Purchase", {
 // https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events
 fbq("track", "PageView", {}, { eventID: "my-event-id" });
 
-fbq("track", "ViewContent", {
-    content_name: "The Avengers Trailer",
-    content_category: "Entertainment",
-    value: 1.50,
-    currency: "USD",
-}, { eventID: "my-event-id" });
+fbq(
+    "track",
+    "ViewContent",
+    {
+        content_name: "The Avengers Trailer",
+        content_category: "Entertainment",
+        value: 1.5,
+        currency: "USD",
+    },
+    { eventID: "my-event-id" },
+);
 
-fbq("trackSingle", "<FB_PIXEL_ID>", "ViewContent", viewContentParam, { eventID: "my-event-id" });
+fbq("trackSingle", "<FB_PIXEL_ID>", "ViewContent", viewContentParam, {
+    eventID: "my-event-id",
+});
 
 fbq("trackCustom", "MyCustomEvent", custom_params, { eventID: "my-event-id" });

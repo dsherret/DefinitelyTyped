@@ -29,6 +29,8 @@ export interface InvalidSessionAction {
 
 export function getSessionSuccess(): GetSessionSuccessAction;
 export function getSessionError(): GetSessionErrorAction;
-export function getUserSessionSuccess<UserType>(user: UserType): GetUserSessionSuccessAction<UserType>;
+export function getUserSessionSuccess<UserType>(
+    user: UserType,
+): GetUserSessionSuccessAction<UserType>;
 export function getUserSessionError(): GetUserSessionErrorAction;
 export function invalidSession(): InvalidSessionAction;

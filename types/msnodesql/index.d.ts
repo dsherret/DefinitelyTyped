@@ -2,11 +2,25 @@
 
 import events = require("events");
 
-export declare function open(connectionString: string, callback?: OpenCallback): Connection;
+export declare function open(
+    connectionString: string,
+    callback?: OpenCallback,
+): Connection;
 
-export declare function query(connectionString: string, query: string): StreamEvents;
-export declare function query(connectionString: string, query: string, callback: QueryCallback<any>): StreamEvents;
-export declare function query(connectionString: string, query: string, params: any[]): StreamEvents;
+export declare function query(
+    connectionString: string,
+    query: string,
+): StreamEvents;
+export declare function query(
+    connectionString: string,
+    query: string,
+    callback: QueryCallback<any>,
+): StreamEvents;
+export declare function query(
+    connectionString: string,
+    query: string,
+    params: any[],
+): StreamEvents;
 export declare function query(
     connectionString: string,
     query: string,
@@ -14,7 +28,11 @@ export declare function query(
     callback: QueryCallback<any>,
 ): StreamEvents;
 
-export declare function query<T>(connectionString: string, query: string, callback: QueryCallback<T>): StreamEvents;
+export declare function query<T>(
+    connectionString: string,
+    query: string,
+    callback: QueryCallback<T>,
+): StreamEvents;
 export declare function query<T>(
     connectionString: string,
     query: string,
@@ -22,9 +40,20 @@ export declare function query<T>(
     callback: QueryCallback<T>,
 ): StreamEvents;
 
-export declare function queryRaw(connectionString: string, query: string): StreamEvents;
-export declare function queryRaw(connectionString: string, query: string, callback: QueryRawCallback): StreamEvents;
-export declare function queryRaw(connectionString: string, query: string, params: any[]): StreamEvents;
+export declare function queryRaw(
+    connectionString: string,
+    query: string,
+): StreamEvents;
+export declare function queryRaw(
+    connectionString: string,
+    query: string,
+    callback: QueryRawCallback,
+): StreamEvents;
+export declare function queryRaw(
+    connectionString: string,
+    query: string,
+    params: any[],
+): StreamEvents;
 export declare function queryRaw(
     connectionString: string,
     query: string,
@@ -61,15 +90,27 @@ interface Connection {
     query(query: string): StreamEvents;
     query(query: string, callback: QueryCallback<any>): StreamEvents;
     query(query: string, params: any[]): StreamEvents;
-    query(query: string, params: any[], callback: QueryCallback<any>): StreamEvents;
+    query(
+        query: string,
+        params: any[],
+        callback: QueryCallback<any>,
+    ): StreamEvents;
 
     query<T>(query: string, callback: QueryCallback<T>): StreamEvents;
-    query<T>(query: string, params: any[], callback: QueryCallback<T>): StreamEvents;
+    query<T>(
+        query: string,
+        params: any[],
+        callback: QueryCallback<T>,
+    ): StreamEvents;
 
     queryRaw(query: string): StreamEvents;
     queryRaw(query: string, callback: QueryRawCallback): StreamEvents;
     queryRaw(query: string, params: any[]): StreamEvents;
-    queryRaw(query: string, params: any[], callback: QueryRawCallback): StreamEvents;
+    queryRaw(
+        query: string,
+        params: any[],
+        callback: QueryRawCallback,
+    ): StreamEvents;
 
     beginTransaction(callback?: ErrorCallback);
     commit(callback?: ErrorCallback);

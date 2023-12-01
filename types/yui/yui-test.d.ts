@@ -54,12 +54,17 @@ declare namespace YUITest {
     }
 
     interface TestCase {
-        new(template: Object): TestCase;
+        new (template: Object): TestCase;
         DEFAULT_WAIT: number;
         callback(...args: any[]): Function;
         resume(segment?: Function): void;
         wait(segment?: Function, delay?: number): void;
-        waitFor(condition: Function, segment: Function, timeout?: number, increment?: number): void;
+        waitFor(
+            condition: Function,
+            segment: Function,
+            timeout?: number,
+            increment?: number,
+        ): void;
         assert(condition: boolean, message: string): void;
         fail(message?: string): void;
         init(): void;
@@ -86,14 +91,34 @@ declare namespace YUITest {
         isArray(actual: Object, message?: string): void;
         isBoolean(actual: Object, message?: string): void;
         isFunction(actual: Object, message?: string): void;
-        isInstanceOf(expected: Function, actual: Object, message?: string): void;
+        isInstanceOf(
+            expected: Function,
+            actual: Object,
+            message?: string,
+        ): void;
         isNumber(actual: Object, message?: string): void;
         isObject(actual: Object, message?: string): void;
         isString(actual: Object, message?: string): void;
-        isTypeOf(expectedType: string, actualValue: Object, message?: string): void;
+        isTypeOf(
+            expectedType: string,
+            actualValue: Object,
+            message?: string,
+        ): void;
 
-        throwsError(expectedError: string, method: Object, message?: string): void;
-        throwsError(expectedError: Function, method: Object, message?: string): void;
-        throwsError(expectedError: Object, method: Object, message?: string): void;
+        throwsError(
+            expectedError: string,
+            method: Object,
+            message?: string,
+        ): void;
+        throwsError(
+            expectedError: Function,
+            method: Object,
+            message?: string,
+        ): void;
+        throwsError(
+            expectedError: Object,
+            method: Object,
+            message?: string,
+        ): void;
     }
 }

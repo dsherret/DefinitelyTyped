@@ -6,5 +6,8 @@
  *
  * @throws {TypeError} If `target` is nullish.
  */
-declare function hasOwnProperty<P extends PropertyKey>(target: {}, property: P): target is { [K in P]: unknown };
+declare function hasOwnProperty<P extends PropertyKey>(
+    target: {},
+    property: P,
+): target is { [K in P]: unknown };
 export = hasOwnProperty;

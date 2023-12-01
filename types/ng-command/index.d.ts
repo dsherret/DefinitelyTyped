@@ -26,7 +26,11 @@ declare namespace ngCommand {
 
         isExecuting: boolean;
         canExecute: boolean;
-        constructor($scope: angular.IScope, execute: () => angular.IPromise<any>, canExecute?: () => boolean);
+        constructor(
+            $scope: angular.IScope,
+            execute: () => angular.IPromise<any>,
+            canExecute?: () => boolean,
+        );
         execute(): angular.IPromise<any>;
     }
 
@@ -40,6 +44,10 @@ declare namespace ngCommand {
          * @param execute The execute function when the command is executed.
          * @param canExecute Additional function which determines whether the command can executes.
          */
-        ($scope: angular.IScope, execute: () => angular.IPromise<any>, canExecute?: () => boolean): ICommand;
+        (
+            $scope: angular.IScope,
+            execute: () => angular.IPromise<any>,
+            canExecute?: () => boolean,
+        ): ICommand;
     }
 }

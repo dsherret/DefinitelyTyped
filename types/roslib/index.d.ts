@@ -41,19 +41,31 @@ declare namespace ROSLIB {
         constructor(options: {
             url?: string | undefined;
             groovyCompatibility?: boolean | undefined;
-            transportLibrary?: "websocket" | "workersocket" | "socket.io" | RTCPeerConnection | undefined;
+            transportLibrary?:
+                | "websocket"
+                | "workersocket"
+                | "socket.io"
+                | RTCPeerConnection
+                | undefined;
             transportOptions?: RTCDataChannelInit | undefined;
         });
 
         readonly isConnected: boolean;
 
-        readonly transportLibrary: "websocket" | "workersocket" | "socket.io" | RTCPeerConnection;
+        readonly transportLibrary:
+            | "websocket"
+            | "workersocket"
+            | "socket.io"
+            | RTCPeerConnection;
 
         readonly transportOptions: RTCDataChannelInit | {};
 
         on(eventName: string, callback: (event: any) => void): this;
 
-        on(eventName: "connection" | "close" | "error", callback: (event: Event) => void): this;
+        on(
+            eventName: "connection" | "close" | "error",
+            callback: (event: Event) => void,
+        ): this;
 
         /**
          * Connect to the specified WebSocket.
@@ -119,7 +131,10 @@ declare namespace ROSLIB {
          * @param {function} [failedCallback] - The callback function when the service call failed with params:
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
-        getActionServers(callback: (actionservers: string[]) => void, failedCallback?: (error: string) => void): void;
+        getActionServers(
+            callback: (actionservers: string[]) => void,
+            failedCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Retrieve a list of topics in ROS as an array.
@@ -159,7 +174,10 @@ declare namespace ROSLIB {
          * @param {function} [failedCallback] - The callback function when the service call failed with params:
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
-        getServices(callback: (services: string[]) => void, failedCallback?: (error: string) => void): void;
+        getServices(
+            callback: (services: string[]) => void,
+            failedCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Retrieve a list of services in ROS as an array as specific type.
@@ -216,7 +234,10 @@ declare namespace ROSLIB {
          * @param {function} [failedCallback] - The callback function when the service call failed with params:
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
-        getNodes(callback: (nodes: string[]) => void, failedCallback?: (error: string) => void): void;
+        getNodes(
+            callback: (nodes: string[]) => void,
+            failedCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Retrieve a list of subscribed topics, publishing topics and services of a specific node.
@@ -235,7 +256,11 @@ declare namespace ROSLIB {
         // tslint:disable-next-line:unified-signatures
         getNodeDetails(
             node: string,
-            callback: (subscriptions: string[], publications: string[], services: string[]) => void,
+            callback: (
+                subscriptions: string[],
+                publications: string[],
+                services: string[],
+            ) => void,
             failedCallback?: (error: string) => void,
         ): void;
 
@@ -257,7 +282,11 @@ declare namespace ROSLIB {
             node: string,
             // Note: Use type overloading instead to provide better readability of the available function signatures of getNodeDetails
             // tslint:disable-next-line:unified-signatures
-            callback: (result: { subscribing: string[]; publishing: string[]; services: string[] }) => void,
+            callback: (result: {
+                subscribing: string[];
+                publishing: string[];
+                services: string[];
+            }) => void,
             failedCallback?: (error: string) => void,
         ): void;
 
@@ -269,7 +298,10 @@ declare namespace ROSLIB {
          * @param {function} [failedCallback] - The callback function when the service call failed with params:
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
-        getParams(callback: (params: string[]) => void, failedCallback?: (error: string) => void): void;
+        getParams(
+            callback: (params: string[]) => void,
+            failedCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Retrieve the type of a ROS topic.
@@ -280,7 +312,11 @@ declare namespace ROSLIB {
          * @param {function} [failedCallback] - The callback function when the service call failed with params:
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
-        getTopicType(topic: string, callback: (type: string) => void, failedCallback?: (error: string) => void): void;
+        getTopicType(
+            topic: string,
+            callback: (type: string) => void,
+            failedCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Retrieve the type of a ROS service.
@@ -331,7 +367,11 @@ declare namespace ROSLIB {
          * @param {string} failedCallback.error - The error message reported by ROS.
          */
         getTopicsAndRawTypes(
-            callback: (result: { topics: string[]; types: string[]; typedefs_full_text: string[] }) => void,
+            callback: (result: {
+                topics: string[];
+                types: string[];
+                typedefs_full_text: string[];
+            }) => void,
             failedCallback?: (error: string) => void,
         ): void;
     }
@@ -422,7 +462,12 @@ declare namespace ROSLIB {
          *     It should return true if the service has finished successfully,
          *     i.e., without any fatal errors.
          */
-        advertise(callback: (request: TServiceRequest, response: TServiceResponse) => void): void;
+        advertise(
+            callback: (
+                request: TServiceRequest,
+                response: TServiceResponse,
+            ) => void,
+        ): void;
 
         /**
          * Unadvertise a previously advertised service.
@@ -578,7 +623,10 @@ declare namespace ROSLIB {
          * @param {function} callback - Function with the following params:
          * @param {Transform} callback.transform - The transform data.
          */
-        subscribe(frameId: string, callback: (transform: Transform) => void): void;
+        subscribe(
+            frameId: string,
+            callback: (transform: Transform) => void,
+        ): void;
 
         /**
          * Unsubscribe from the given TF frame.
@@ -586,7 +634,10 @@ declare namespace ROSLIB {
          * @param {string} frameID - The TF frame to unsubscribe from.
          * @param {function} callback - The callback function to remove.
          */
-        unsubscribe(frameId: string, callback: (transform: Transform) => void): void;
+        unsubscribe(
+            frameId: string,
+            callback: (transform: Transform) => void,
+        ): void;
 
         /**
          * Create and send a new goal (or service request) to the tf2_web_republisher
@@ -798,17 +849,15 @@ declare namespace ROSLIB {
          * @param {boolean} [options.omitStatus] - The flag to indicate whether to omit the status channel or not.
          * @param {boolean} [options.omitResult] - The flag to indicate whether to omit the result channel or not.
          */
-        constructor(
-            options: {
-                ros: Ros;
-                serverName: string;
-                actionName: string;
-                timeout?: number;
-                omitFeedback?: boolean;
-                omitStatus?: boolean;
-                omitResult?: boolean;
-            },
-        );
+        constructor(options: {
+            ros: Ros;
+            serverName: string;
+            actionName: string;
+            timeout?: number;
+            omitFeedback?: boolean;
+            omitStatus?: boolean;
+            omitResult?: boolean;
+        });
 
         /**
          * Cancel all goals associated with this ActionClient.
@@ -835,7 +884,11 @@ declare namespace ROSLIB {
          * @param {string} options.serverName - The action server name, like '/fibonacci'.
          * @param {string} options.actionName - The action message name, like 'actionlib_tutorials/FibonacciAction'.
          */
-        constructor(options: { ros: Ros; serverName: string; actionName: string });
+        constructor(options: {
+            ros: Ros;
+            serverName: string;
+            actionName: string;
+        });
     }
 
     export class Goal {
@@ -857,7 +910,10 @@ declare namespace ROSLIB {
          * @param {string} eventName - Name of event ('timeout', 'status', 'feedback', 'result').
          * @param {function} callback - Callback function executed on connected event.
          */
-        on(eventName: "timeout" | "status" | "feedback" | "result", callback: (event: any) => void): void;
+        on(
+            eventName: "timeout" | "status" | "feedback" | "result",
+            callback: (event: any) => void,
+        ): void;
 
         /**
          * Send the goal to the action server.
@@ -885,7 +941,11 @@ declare namespace ROSLIB {
          * @param {string} options.serverName - The action server name, like '/fibonacci'.
          * @param {string} options.actionName - The action message name, like 'actionlib_tutorials/FibonacciAction'.
          */
-        constructor(options: { ros: Ros; serverName: string; actionName: string });
+        constructor(options: {
+            ros: Ros;
+            serverName: string;
+            actionName: string;
+        });
 
         /**
          * Set action state to succeeded and return to client.
@@ -1063,6 +1123,10 @@ declare namespace ROSLIB {
          * @param {Node} options.xml - The XML element to parse.
          * @param {string} options.string - The XML element to parse as a string.
          */
-        constructor(options: { xml: Node; string?: string | null | undefined } | { string: string });
+        constructor(
+            options:
+                | { xml: Node; string?: string | null | undefined }
+                | { string: string },
+        );
     }
 }

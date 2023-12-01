@@ -17,6 +17,12 @@ export interface DecompressOptions {
     options?: ExtractOptions | undefined;
 }
 
-export function compress(options: CompressOptions, cb: (error: Error | null) => void): void;
+export function compress(
+    options: CompressOptions,
+    cb: (error: Error | null) => void,
+): void;
 
-export function decompress(options: DecompressOptions, cb: (error: Error | null) => void): void;
+export function decompress(
+    options: DecompressOptions,
+    cb: (error: Error | null) => void,
+): void;

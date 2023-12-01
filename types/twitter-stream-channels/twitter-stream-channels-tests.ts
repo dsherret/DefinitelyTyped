@@ -8,7 +8,7 @@ const tsc = new TwitterStreamChannels({
 
 let channels = {
     "js-frameworks": ["angularjs", "jquery", "backbone", "emberjs"],
-    "web": ["javascript", "nodejs", "html5", "css", "angularjs"],
+    web: ["javascript", "nodejs", "html5", "css", "angularjs"],
 };
 
 tsc.streamChannels({ track: channels });

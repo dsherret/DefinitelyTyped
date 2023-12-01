@@ -89,7 +89,11 @@ declare namespace mariasql {
         end(): void;
         destroy(): void;
         escape(query: string): string;
-        query(q: string, placeHolders?: Dictionary, useArray?: boolean): MariaQuery;
+        query(
+            q: string,
+            placeHolders?: Dictionary,
+            useArray?: boolean,
+        ): MariaQuery;
         query(q: string, placeHolders?: any[], useArray?: boolean): MariaQuery;
         query(q: string, useArray?: boolean): MariaQuery;
         prepare(query: string): MariaPreparedQuery;
@@ -103,7 +107,7 @@ declare namespace mariasql {
     }
 
     export interface Client {
-        new(): MariaClient;
+        new (): MariaClient;
         (): MariaClient;
         prototype: MariaClient;
     }

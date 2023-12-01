@@ -25,6 +25,9 @@ interface MongooseIdValidatorOptions {
     allowDuplicates?: boolean | undefined;
 }
 
-declare function mongooseIdValidator(schema: Schema, options?: MongooseIdValidatorOptions): void;
+declare function mongooseIdValidator(
+    schema: Schema,
+    options?: MongooseIdValidatorOptions,
+): void;
 
 export = mongooseIdValidator;

@@ -2,9 +2,15 @@ import Environment from "@rdfjs/environment/Environment";
 import fetch from "@rdfjs/fetch-lite";
 import FetchFactory from "@rdfjs/fetch-lite/Factory";
 import { Formats } from "@rdfjs/formats-common";
-import { Dataset, DatasetCore, DatasetCoreFactory, Quad, Stream } from "@rdfjs/types";
+import {
+    Dataset,
+    DatasetCore,
+    DatasetCoreFactory,
+    Quad,
+    Stream,
+} from "@rdfjs/types";
 
-const formats: Formats = <any> {};
+const formats: Formats = <any>{};
 
 async function fetchString(): Promise<string> {
     const response = await fetch("http://example.com", { formats });
@@ -23,7 +29,7 @@ interface QuadExt extends Quad {
 interface DatasetX extends Dataset<QuadExt> {
     toCanonical(): string;
 }
-const factory: DatasetCoreFactory<QuadExt, QuadExt, DatasetX> = <any> {};
+const factory: DatasetCoreFactory<QuadExt, QuadExt, DatasetX> = <any>{};
 
 async function fetchDataset(): Promise<DatasetX> {
     const response = await fetch("http://example.com", { formats, factory });
@@ -36,9 +42,7 @@ async function fetchTypedStream(): Promise<Stream<QuadExt>> {
 }
 
 async function environmentRawFetch(): Promise<Stream> {
-    const environmentTest = new Environment([
-        FetchFactory,
-    ]);
+    const environmentTest = new Environment([FetchFactory]);
 
     environmentTest.fetch.config("foo", "bar");
     // $ExpectType Headers
@@ -54,14 +58,11 @@ interface TestDataset extends DatasetCore {
 async function environmentDatasetFetch(): Promise<DatasetCore> {
     class DatasetFactory {
         dataset(): TestDataset {
-            return <any> {};
+            return <any>{};
         }
         exports: ["dataset"];
     }
-    const environmentTest = new Environment([
-        FetchFactory,
-        DatasetFactory,
-    ]);
+    const environmentTest = new Environment([FetchFactory, DatasetFactory]);
     const res = await environmentTest.fetch("foo", { formats });
     return res.dataset();
 }

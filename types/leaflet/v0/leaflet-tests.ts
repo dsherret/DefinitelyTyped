@@ -128,7 +128,7 @@ var layer = L.tileLayer("http://{s}.example.net/{x}/{y}/{z}.png");
 
 map.addLayer(layer);
 map.addLayer(layer, false);
-map.eachLayer(l => {});
+map.eachLayer((l) => {});
 
 map.removeLayer(layer);
 map.hasLayer(layer);
@@ -146,8 +146,8 @@ map.closePopup();
 map.addControl(L.control.attribution({ position: "bottomright" }));
 map.removeControl(L.control.attribution({ position: "bottomright" }));
 
-L.control.layers({ "Base": layer }).addTo(map);
-map.on("baseLayerChange", function(e: L.LeafletLayersControlEvent) {
+L.control.layers({ Base: layer }).addTo(map);
+map.on("baseLayerChange", function (e: L.LeafletLayersControlEvent) {
     alert(e.name);
 });
 
@@ -288,13 +288,15 @@ var tileLayer = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}", {
     bounds: null,
 });
 
-tileLayer.on("loading", L.Util.falseFn)
+tileLayer
+    .on("loading", L.Util.falseFn)
     .off("loading", L.Util.falseFn)
     .once("tileload", L.Util.falseFn);
 
 tileLayer.addTo(map);
 
-tileLayer.bringToBack()
+tileLayer
+    .bringToBack()
     .bringToFront()
     .setOpacity(0.7)
     .setZIndex(9)
@@ -312,18 +314,18 @@ interface CustomControl extends L.Control {
     getTitle(): string;
     setTitle(title: string): CustomControl;
 }
-var CustomControl: { new(options: CustomControl.Options): CustomControl };
+var CustomControl: { new (options: CustomControl.Options): CustomControl };
 CustomControl = L.Control.extend<CustomControl.Options, CustomControl>({
-    initialize: function(options: CustomControl.Options) {
+    initialize: function (options: CustomControl.Options) {
         L.Control.prototype.initialize.call(this, {
             position: options.position || "bottomleft",
         });
         this.title = options.title;
     },
-    getTitle: function() {
+    getTitle: function () {
         return this.title;
     },
-    setTitle: function(title: string) {
+    setTitle: function (title: string) {
         this.title = title;
     },
 });
@@ -331,7 +333,10 @@ CustomControl = L.Control.extend<CustomControl.Options, CustomControl>({
 // Different latLng and latLngBounds expressions
 var latLngLiteral = [10, 20];
 var latLngObjectLiteral = { lat: 10, lng: 10 };
-var boundsLiteral = [[10, 20], [20, 20]];
+var boundsLiteral = [
+    [10, 20],
+    [20, 20],
+];
 var boundLiteralOfLatLngObjects = [latLngObjectLiteral, latLngObjectLiteral];
 
 var circle: L.Circle = L.circle(latLngLiteral, 4);

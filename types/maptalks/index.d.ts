@@ -184,7 +184,9 @@ export interface ConnectorLineOptions extends LineStringOptions {
     showOn?: string | undefined;
 }
 
-export interface ArcConnectorLineOptions extends ConnectorLineOptions, ArcCurveOptions {}
+export interface ArcConnectorLineOptions
+    extends ConnectorLineOptions,
+        ArcCurveOptions {}
 
 export interface EllipseOptions extends PathOptions {
     numberOfShellPoints?: number | undefined;
@@ -202,7 +204,12 @@ export interface DrawToolOptions {
 export interface DrawToolModeActionOptions {
     action: string[];
     create: (projection: object, clickCoords: object, event: object) => object;
-    update: (projection: object, path: object, geometry: object, event: object) => void;
+    update: (
+        projection: object,
+        path: object,
+        geometry: object,
+        event: object,
+    ) => void;
     generate: (geometry: object, extraData: { drawTool: DrawTool }) => object;
 }
 
@@ -647,7 +654,10 @@ export namespace ui {
 
     type flashCallbackFun = (...param: any[]) => any;
     class UIMarker extends UIComponent {
-        constructor(coordinate: Coordinate | number[], options: UIMarkerOptions);
+        constructor(
+            coordinate: Coordinate | number[],
+            options: UIMarkerOptions,
+        );
 
         /**
          * Sets the coordinates
@@ -694,7 +704,12 @@ export namespace ui {
          * @param context          - callback context
          * @return  this
          */
-        flash(interval?: number, count?: number, cb?: flashCallbackFun, context?: any): this;
+        flash(
+            interval?: number,
+            count?: number,
+            cb?: flashCallbackFun,
+            context?: any,
+        ): this;
 
         /**
          * A callback method to build UIMarker's HTMLElement
@@ -858,7 +873,11 @@ export namespace animation {
          * @param  options     - animation options
          * @param  onFrame  - callback function for animation steps
          */
-        constructor(animation: PlayerAnimationFun, options: object, onFrame: FrameStepFun);
+        constructor(
+            animation: PlayerAnimationFun,
+            options: object,
+            onFrame: FrameStepFun,
+        );
 
         /**
          * Start or resume the animation
@@ -899,7 +918,10 @@ export namespace animation {
          * @param   [options.easing=null]  - animation easing
          * @return  framing function helps to generate animation frames.
          */
-        framing(styles: object[], options?: AnimationOptions): PlayerAnimationFun;
+        framing(
+            styles: object[],
+            options?: AnimationOptions,
+        ): PlayerAnimationFun;
 
         /**
          * Create an animation player
@@ -928,7 +950,11 @@ export namespace measurer {
 
     interface Identity extends Common {
         measure: string;
-        _rotate: (c: Coordinate, pivot: Coordinate, angle: number) => Coordinate;
+        _rotate: (
+            c: Coordinate,
+            pivot: Coordinate,
+            angle: number,
+        ) => Coordinate;
 
         /**
          * Measure the length between 2 coordinates.
@@ -1600,7 +1626,10 @@ export namespace Util {
      * @return            - resource urls
      *  Util
      */
-    function getExternalResources(symbol: object, toAbsolute: boolean): string[];
+    function getExternalResources(
+        symbol: object,
+        toAbsolute: boolean,
+    ): string[];
 
     /**
      * Whether the color is a gradient
@@ -1633,7 +1662,10 @@ export namespace Util {
      * @return      new symbol or symbols
      *  Util
      */
-    function lowerSymbolOpacity(symbol: object | object[], ratio: number): object | object[];
+    function lowerSymbolOpacity(
+        symbol: object | object[],
+        ratio: number,
+    ): object | object[];
 
     /**
      * Merges the properties of sources into the symbol. <br>
@@ -1677,7 +1709,10 @@ export namespace Util {
     function computeDegree(p1: Point, p2: Point): number;
 }
 
-export type DomEventHandlerFun = (context: HTMLElement | object, e: Event) => void;
+export type DomEventHandlerFun = (
+    context: HTMLElement | object,
+    e: Event,
+) => void;
 export namespace DomUtil {
     /**
      * Vendor-prefixed fransform style name (e.g. `'webkitTransform'` for WebKit).
@@ -1717,7 +1752,11 @@ export namespace DomUtil {
      * @return
      *  DomUtil
      */
-    function createElOn(tagName: string, style: string, container: HTMLElement): HTMLElement;
+    function createElOn(
+        tagName: string,
+        style: string,
+        container: HTMLElement,
+    ): HTMLElement;
 
     /**
      * Adds a event listener to the dom element.
@@ -1727,7 +1766,12 @@ export namespace DomUtil {
      * @param  context      - function context
      *  DomUtil
      */
-    function addDomEvent(obj: HTMLElement, typeArr: string, handler: DomEventHandlerFun, context: object): void;
+    function addDomEvent(
+        obj: HTMLElement,
+        typeArr: string,
+        handler: DomEventHandlerFun,
+        context: object,
+    ): void;
 
     /**
      * Removes event listener from a dom element
@@ -1736,7 +1780,11 @@ export namespace DomUtil {
      * @param  handler        - listening function
      *  DomUtil
      */
-    function removeDomEvent(obj: HTMLElement, typeArr: string, handler: DomEventHandlerFun): void;
+    function removeDomEvent(
+        obj: HTMLElement,
+        typeArr: string,
+        handler: DomEventHandlerFun,
+    ): void;
 
     /**
      * Check if event type of the dom is listened by the handler
@@ -1746,7 +1794,11 @@ export namespace DomUtil {
      * @return  - the handler's index in the listener chain, returns -1 if not.
      *  DomUtil
      */
-    function listensDomEvent(obj: HTMLElement, typeArr: string, handler: DomEventHandlerFun): number;
+    function listensDomEvent(
+        obj: HTMLElement,
+        typeArr: string,
+        handler: DomEventHandlerFun,
+    ): number;
 
     /**
      * Prevent default behavior of the browser. <br/>
@@ -1892,7 +1944,11 @@ export namespace StringUtil {
      * @return
      *  StringUtil
      */
-    function splitContent(content: string, font: string, wrapWidth: number): string[];
+    function splitContent(
+        content: string,
+        font: string,
+        wrapWidth: number,
+    ): string[];
     /**
      * Replace variables wrapped by square brackets ({foo}) with actual values in props.
      * @example
@@ -1913,7 +1969,11 @@ export namespace StringUtil {
      * @return
      *  StringUtil
      */
-    function getAlignPoint(size: Size, horizontalAlignment: string, verticalAlignment: string): Point;
+    function getAlignPoint(
+        size: Size,
+        horizontalAlignment: string,
+        verticalAlignment: string,
+    ): Point;
 
     /**
      * Returns CSS Font from a symbol with text styles.
@@ -2084,7 +2144,11 @@ export class Eventable extends Renderable {
      * @return this
      *  Eventable.addEventListener
      */
-    addEventListener(eventTypes: string, handler: EvenableHandlerFun, context?: object): this;
+    addEventListener(
+        eventTypes: string,
+        handler: EvenableHandlerFun,
+        context?: object,
+    ): this;
 
     /**
      * Same as on, except the listener will only get fired once and then removed.
@@ -2097,7 +2161,11 @@ export class Eventable extends Renderable {
      * foo.once('mousedown mousemove mouseup', onMouseEvent, foo);
      *  Eventable.once
      */
-    once(eventTypes: string, handler: EvenableHandlerFun, context?: object): this;
+    once(
+        eventTypes: string,
+        handler: EvenableHandlerFun,
+        context?: object,
+    ): this;
 
     /**
      * Unregister the event handler for the specified event types.
@@ -2121,7 +2189,11 @@ export class Eventable extends Renderable {
      * @return  this
      *  Eventable.removeEventListener
      */
-    removeEventListener(eventTypes: string, handler: EvenableHandlerFun, context?: object): this;
+    removeEventListener(
+        eventTypes: string,
+        handler: EvenableHandlerFun,
+        context?: object,
+    ): this;
 
     /**
      * Returns listener's count registered for the event type.
@@ -2132,7 +2204,11 @@ export class Eventable extends Renderable {
      * @return
      *  Eventable.listens
      */
-    listens(eventType: string, handler: EvenableHandlerFun, context?: object): number;
+    listens(
+        eventType: string,
+        handler: EvenableHandlerFun,
+        context?: object,
+    ): number;
 
     /**
      * Get all the listening event types
@@ -2250,7 +2326,11 @@ export interface Map extends Handlerable, ui.Menuable {
     addOnLoadHook(fn: () => void): Map;
 
     /** Reproduce a map from map's profile JSON. */
-    fromJSON(container: string | HTMLElement, mapJSON: object, options?: MapJsonOptions): Map;
+    fromJSON(
+        container: string | HTMLElement,
+        mapJSON: object,
+        options?: MapJsonOptions,
+    ): Map;
 
     /** Whether the map is loaded or not. */
     isLoaded(): boolean;
@@ -2307,7 +2387,11 @@ export interface Map extends Handlerable, ui.Menuable {
     getZoom(): number;
 
     /** Caculate the target zoom if scaling from "fromZoom" by "scale" */
-    getZoomForScale(scale: number, fromZoom: number, isFraction: boolean): number;
+    getZoomForScale(
+        scale: number,
+        fromZoom: number,
+        isFraction: boolean,
+    ): number;
 
     /** Sets zoom of the map */
     setZoom(zoom: number, options?: object): this;
@@ -2448,7 +2532,11 @@ export interface Map extends Handlerable, ui.Menuable {
     getViewPoint(): Point;
 
     /** Converts a coordinate to the 2D point in current zoom or in the specific zoom. */
-    coordinateToPoint(coordinate: Coordinate, zoom?: number, out?: Point): Point;
+    coordinateToPoint(
+        coordinate: Coordinate,
+        zoom?: number,
+        out?: Point,
+    ): Point;
 
     /** Converts a 2D point in current zoom or a specific zoom to a coordinate. Usually used in plugin development. */
     pointToCoordinate(point: Point, zoom: number, out?: Coordinate): Coordinate;
@@ -2460,7 +2548,11 @@ export interface Map extends Handlerable, ui.Menuable {
     viewPointToCoordinate(viewPoint: Point, out?: Coordinate): Coordinate;
 
     /** Convert a geographical coordinate to the container point. */
-    coordinateToContainerPoint(coordinate: Coordinate, zoom?: number, out?: Point): Point;
+    coordinateToContainerPoint(
+        coordinate: Coordinate,
+        zoom?: number,
+        out?: Point,
+    ): Point;
 
     /** Converts a container point to geographical coordinate. */
     containerPointToCoordinate(point: Point, out?: Coordinate): Coordinate;
@@ -2484,7 +2576,11 @@ export interface Map extends Handlerable, ui.Menuable {
     locateByPoint(coordinate: Coordinate, px: number, py: number): Coordinate;
 
     /** Update map's view with animation. */
-    animateTo(view: object, options?: object, step?: animation.FrameStepFun): this;
+    animateTo(
+        view: object,
+        options?: object,
+        step?: animation.FrameStepFun,
+    ): this;
 
     /** Whether the map is animating with .animateTo */
     isAnimating(): boolean;
@@ -2526,7 +2622,10 @@ export interface Map extends Handlerable, ui.Menuable {
     toJSON(options?: object): object;
 
     /** Caculate distance of two coordinates. */
-    computeLength(coord1: number[] | Coordinate, coord2: number[] | Coordinate): number;
+    computeLength(
+        coord1: number[] | Coordinate,
+        coord2: number[] | Coordinate,
+    ): number;
 
     /** Caculate a geometry's length. */
     computeGeometryLength(geometry: Geometry): number;
@@ -2562,7 +2661,7 @@ export interface Map extends Handlerable, ui.Menuable {
 }
 
 export interface MapStatic {
-    new(container: string | HTMLElement, opts?: MapOptions): Map;
+    new (container: string | HTMLElement, opts?: MapOptions): Map;
 }
 
 export const Map: MapStatic;
@@ -2770,8 +2869,8 @@ export interface TileSystem {
 }
 
 export interface TileSystemStatic {
-    new(sx: number, sy: number, ox: number, oy: number): TileSystem;
-    new(sx: number[]): TileSystem;
+    new (sx: number, sy: number, ox: number, oy: number): TileSystem;
+    new (sx: number[]): TileSystem;
 }
 
 export const TileSystem: TileSystemStatic;
@@ -2828,7 +2927,7 @@ export interface TileLayer extends Layer {
 }
 
 export interface TileLayerInstanceStatic {
-    new(id: string | number, options?: TileLayerOptions): TileLayer;
+    new (id: string | number, options?: TileLayerOptions): TileLayer;
 }
 
 export const TileLayer: TileLayerInstanceStatic;
@@ -2842,7 +2941,11 @@ export interface GroupTileLayer extends TileLayer {
 }
 
 export interface GroupTileLayerStatic {
-    new(id: string | number, layers: TileLayer[], options?: TileLayerOptions): GroupTileLayer;
+    new (
+        id: string | number,
+        layers: TileLayer[],
+        options?: TileLayerOptions,
+    ): GroupTileLayer;
 }
 
 export const GroupTileLayer: GroupTileLayerStatic;
@@ -2852,7 +2955,7 @@ export interface WMSTileLayer extends TileLayer {
 }
 
 export interface WMSTileLayerStatic {
-    new(id: string | number, options?: WMSTileLayerOptions): WMSTileLayer;
+    new (id: string | number, options?: WMSTileLayerOptions): WMSTileLayer;
 }
 
 export const WMSTileLayer: WMSTileLayerStatic;
@@ -2864,10 +2967,13 @@ export interface CanvasTileLayer extends TileLayer {
      * @param   options current options
      * @param   options current options
      */
-    drawTile(canvas: HTMLCanvasElement, ...options: any[] /*canvas, options*/): void;
+    drawTile(
+        canvas: HTMLCanvasElement,
+        ...options: any[] /*canvas, options*/
+    ): void;
 }
 export interface CanvasTileLayerStatic {
-    new(id: string | number, options?: TileLayerOptions): CanvasTileLayer;
+    new (id: string | number, options?: TileLayerOptions): CanvasTileLayer;
 }
 export const CanvasTileLayer: CanvasTileLayerStatic;
 
@@ -2885,7 +2991,10 @@ export interface OverlayLayer extends Layer {
      * @param  [context=undefined]   - context of the filter function, value to use as this when executing filter.
      * @return
      */
-    getGeometries(filter?: (geometry: Geometry, context?: any) => boolean, context?: object): Geometry[];
+    getGeometries(
+        filter?: (geometry: Geometry, context?: any) => boolean,
+        context?: object,
+    ): Geometry[];
 
     /**
      * Get the first geometry, the geometry at the bottom.
@@ -2917,7 +3026,10 @@ export interface OverlayLayer extends Layer {
      * @param  context   - callback's context, value to use as this when executing callback.
      * @return  this
      */
-    forEach(fn: (geometry: Geometry, idx: number, context?: any) => void, context?: any): OverlayLayer;
+    forEach(
+        fn: (geometry: Geometry, idx: number, context?: any) => void,
+        context?: any,
+    ): OverlayLayer;
 
     /**
      * Creates a GeometryCollection with all the geometries that pass the test implemented by the provided function.
@@ -2925,7 +3037,10 @@ export interface OverlayLayer extends Layer {
      * @param  context  - Function's context, value to use as this when executing function.
      * @return  A GeometryCollection with all the geometries that pass the test
      */
-    filter(fn: (geometry: Geometry, context?: any) => boolean, context?: any): GeometryCollection;
+    filter(
+        fn: (geometry: Geometry, context?: any) => boolean,
+        context?: any,
+    ): GeometryCollection;
 
     /**
      * Whether the layer is empty.
@@ -2942,7 +3057,10 @@ export interface OverlayLayer extends Layer {
      * @param  [fitView.step=null]  - step function during animation, animation frame as the parameter
      * @return  this
      */
-    addGeometry(geometries: Geometry | Geometry[], fitView?: boolean | object): OverlayLayer;
+    addGeometry(
+        geometries: Geometry | Geometry[],
+        fitView?: boolean | object,
+    ): OverlayLayer;
 
     /**
      * Get minimum zindex of geometries
@@ -2959,7 +3077,9 @@ export interface OverlayLayer extends Layer {
      * @param   geometries - geometry ids or geometries to remove
      * @returns  this
      */
-    removeGeometry(geometries: string | string[] | Geometry | Geometry[]): OverlayLayer;
+    removeGeometry(
+        geometries: string | string[] | Geometry | Geometry[],
+    ): OverlayLayer;
 
     /**
      * Clear all geometries in this layer
@@ -3020,7 +3140,11 @@ export interface VectorLayer extends OverlayLayer {
 }
 
 export interface VectorLayerStatic {
-    new(id: string | number, geometries?: Geometry | Geometry[] | null, options?: VectorLayerOptions): VectorLayer;
+    new (
+        id: string | number,
+        geometries?: Geometry | Geometry[] | null,
+        options?: VectorLayerOptions,
+    ): VectorLayer;
 }
 export const VectorLayer: VectorLayerStatic;
 
@@ -3046,7 +3170,10 @@ export interface CanvasLayer extends Layer {
      * @param   context - CanvasRenderingContext2D of the layer canvas.
      * @param  params - parameters returned by function prepareToDraw(context).
      */
-    drawOnInteracting(context: CanvasRenderingContext2D, ...params: any[]): void;
+    drawOnInteracting(
+        context: CanvasRenderingContext2D,
+        ...params: any[]
+    ): void;
 
     /**
      * Redraw the layer
@@ -3144,11 +3271,14 @@ export interface CanvasLayer extends Layer {
      * @param   bufferContext CanvasRenderingContext2D of double buffer of the layer canvas.
      * @param   context CanvasRenderingContext2D of the layer canvas.
      */
-    doubleBuffer(bufferContext: CanvasRenderingContext2D, context: CanvasRenderingContext2D /*, context*/): this;
+    doubleBuffer(
+        bufferContext: CanvasRenderingContext2D,
+        context: CanvasRenderingContext2D /*, context*/,
+    ): this;
 }
 
 export interface CanvasLayerStatic {
-    new(id: string | number, options: CanvasLayerOptions): CanvasLayer;
+    new (id: string | number, options: CanvasLayerOptions): CanvasLayer;
 }
 export const CanvasLayer: CanvasLayerStatic;
 
@@ -3161,7 +3291,7 @@ export interface ParticleLayer extends CanvasLayer {
 }
 
 export interface ParticleLayerStatic {
-    new(id: string, options?: CanvasLayerOptions): ParticleLayer;
+    new (id: string, options?: CanvasLayerOptions): ParticleLayer;
 }
 export const ParticleLayer: ParticleLayerStatic;
 
@@ -3181,7 +3311,11 @@ export interface ImageLayer extends Layer {
 }
 
 export interface ImageLayerStatic {
-    new(id: string | number, images?: object[], options?: ImageLayerOptions): ImageLayer;
+    new (
+        id: string | number,
+        images?: object[],
+        options?: ImageLayerOptions,
+    ): ImageLayer;
 }
 export const ImageLayer: ImageLayerStatic;
 
@@ -3471,7 +3605,10 @@ export abstract class Position {
      * @param  [y=undefined] - optional, coordinate to add
      * @return  result
      */
-    substract(x: Coordinate | Point | any[] | number, y?: number): Coordinate | Point;
+    substract(
+        x: Coordinate | Point | any[] | number,
+        y?: number,
+    ): Coordinate | Point;
 
     /**
      * Returns the result of multiplication of the current coordinate by the given number.
@@ -3528,7 +3665,9 @@ export class Coordinate extends Position {
      * //  result is [[100,0], [101,1]]
      * var numCoords = Coordinate.toNumberArrays([new Coordinate(100,0), new Coordinate(101,1)]);
      */
-    static toNumberArrays(coordinates: Coordinate | Coordinate[]): number[] | number[][];
+    static toNumberArrays(
+        coordinates: Coordinate | Coordinate[],
+    ): number[] | number[][];
 
     /**
      * Convert one or more GeoJSON style coordiantes to Coordinate objects
@@ -3537,7 +3676,9 @@ export class Coordinate extends Position {
      * @example
      * var coordinates = Coordinate.toCoordinates([[100,0], [101,1]]);
      */
-    static toCoordinates(coordinates: number[] | number[][]): Coordinate | Coordinate[];
+    static toCoordinates(
+        coordinates: number[] | number[][],
+    ): Coordinate | Coordinate[];
 }
 
 export class Point extends Position {
@@ -3850,7 +3991,12 @@ export interface Geometry extends Handlerable, JSONAble, ui.Menuable {
      * @param context          - callback context
      * @return  this
      */
-    flash(interval?: number, count?: number, cb?: (context?: any) => void, context?: any): this;
+    flash(
+        interval?: number,
+        count?: number,
+        cb?: (context?: any) => void,
+        context?: any,
+    ): this;
 
     /**
      * Returns a copy of the geometry without the event listeners.
@@ -3973,7 +4119,11 @@ export interface Geometry extends Handlerable, JSONAble, ui.Menuable {
      * });
      * player.pause();
      */
-    animate(styles: object, options?: object, step?: animation.FrameStepFun): animation.Player;
+    animate(
+        styles: object,
+        options?: object,
+        step?: animation.FrameStepFun,
+    ): animation.Player;
 
     /**
      * Set an InfoWindow to the geometry
@@ -4060,7 +4210,7 @@ export interface Path extends Geometry {
 export interface Marker extends Geometry, CenterAble {}
 
 export interface MarkerStatic {
-    new(coordinates: Coordinate | number[], options?: MarkerOptions): Marker;
+    new (coordinates: Coordinate | number[], options?: MarkerOptions): Marker;
 }
 
 export const Marker: MarkerStatic;
@@ -4109,7 +4259,11 @@ export interface Label extends TextMarker, TextEditable {
 }
 
 export interface LabelStatic {
-    new(contetn: string, coordinates: Coordinate | number[], options?: LabelOptions): Label;
+    new (
+        contetn: string,
+        coordinates: Coordinate | number[],
+        options?: LabelOptions,
+    ): Label;
 }
 export const Label: LabelStatic;
 
@@ -4168,7 +4322,7 @@ export interface TextBox extends TextMarker, TextEditable {
 }
 
 export interface TextBoxStatic {
-    new(
+    new (
         content: string,
         coordinates: Coordinate | number[],
         width: number,
@@ -4227,7 +4381,10 @@ export interface Polygon extends Path {
 }
 
 export interface PolygonStatic {
-    new(coordinates: number[][] | number[][][] | Coordinate[] | Coordinate[][], options?: PathOptions): Polygon;
+    new (
+        coordinates: number[][] | number[][][] | Coordinate[] | Coordinate[][],
+        options?: PathOptions,
+    ): Polygon;
 }
 export const Polygon: PolygonStatic;
 
@@ -4258,7 +4415,10 @@ export interface LineString extends Path {
 }
 
 export interface LineStringStatic {
-    new(coordinates: Coordinate[] | number[][] | any[], options?: LineStringOptions): LineString;
+    new (
+        coordinates: Coordinate[] | number[][] | any[],
+        options?: LineStringOptions,
+    ): LineString;
 }
 export const LineString: LineStringStatic;
 
@@ -4271,7 +4431,10 @@ export interface ArcCurve extends Curve {
 }
 
 export interface ArcCurveStatic {
-    new(coordinates: Coordinate[] | number[][], options?: ArcCurveOptions): ArcCurve;
+    new (
+        coordinates: Coordinate[] | number[][],
+        options?: ArcCurveOptions,
+    ): ArcCurve;
 }
 
 export const ArcCurve: ArcCurveStatic;
@@ -4281,7 +4444,10 @@ export interface QuadBezierCurve extends Curve {
 }
 
 export interface QuadBezierCurveStatic {
-    new(coordinates: Coordinate[] | number[][], options?: LineStringOptions): QuadBezierCurve;
+    new (
+        coordinates: Coordinate[] | number[][],
+        options?: LineStringOptions,
+    ): QuadBezierCurve;
 }
 
 export const QuadBezierCurve: QuadBezierCurveStatic;
@@ -4290,7 +4456,10 @@ export interface CubicBezierCurve extends Curve {
     _cubicBezierCurve: string;
 }
 export interface CubicBezierCurveStatic {
-    new(coordinates: Coordinate[] | number[][], options?: LineStringOptions): CubicBezierCurve;
+    new (
+        coordinates: Coordinate[] | number[][],
+        options?: LineStringOptions,
+    ): CubicBezierCurve;
 }
 
 export const CubicBezierCurve: CubicBezierCurveStatic;
@@ -4330,7 +4499,7 @@ export interface Connectable {
 export interface ConnectorLine extends Connectable, LineString {}
 
 export interface ConnectorLineStatic {
-    new(
+    new (
         src: Geometry | control.Control | ui.UIComponent,
         target: Geometry | control.Control | ui.UIComponent,
         options?: ConnectorLineOptions,
@@ -4342,7 +4511,7 @@ export const ConnectorLine: ConnectorLineStatic;
 export interface ArcConnectorLine extends Connectable, LineString {}
 
 export interface ArcConnectorLineStatic {
-    new(
+    new (
         src: Geometry | control.Control | ui.UIComponent,
         target: Geometry | control.Control | ui.UIComponent,
         options?: ArcConnectorLineOptions,
@@ -4421,7 +4590,12 @@ export interface Ellipse extends Polygon, CenterAble {
 }
 
 export interface EllipseStatic {
-    new(center: Coordinate | number[], width: number, height: number, options?: EllipseOptions): Ellipse;
+    new (
+        center: Coordinate | number[],
+        width: number,
+        height: number,
+        options?: EllipseOptions,
+    ): Ellipse;
 }
 export const Ellipse: EllipseStatic;
 
@@ -4482,7 +4656,11 @@ export interface Circle extends Polygon, CenterAble {
 }
 
 export interface CircleStatic {
-    new(center: Coordinate | number[], radius: number, options?: EllipseOptions): Circle;
+    new (
+        center: Coordinate | number[],
+        radius: number,
+        options?: EllipseOptions,
+    ): Circle;
 }
 export const Circle: CircleStatic;
 
@@ -4523,7 +4701,7 @@ export interface Sector extends Circle {
 }
 
 export interface SectorStatic {
-    new(
+    new (
         center: Coordinate | number[],
         radius: number,
         startAngle: number,
@@ -4595,7 +4773,12 @@ export interface Rectangle extends Polygon {
 }
 
 export interface RectangleStatic {
-    new(coordinates: Coordinate | number[], width: number, height: number, options?: PathOptions): Rectangle;
+    new (
+        coordinates: Coordinate | number[],
+        width: number,
+        height: number,
+        options?: PathOptions,
+    ): Rectangle;
 }
 export const Rectangle: RectangleStatic;
 
@@ -4632,7 +4815,10 @@ export interface GeometryCollection extends Geometry {
      * @example
      * var filtered = collection.filter(geometry => geometry.getProperties().foo === 'bar');
      */
-    filter(fn: ((geometry: Geometry, context?: any) => boolean) | any[], context?: any): GeometryCollection;
+    filter(
+        fn: ((geometry: Geometry, context?: any) => boolean) | any[],
+        context?: any,
+    ): GeometryCollection;
 
     /**
      * Translate or move the geometry collection by the given offset.
@@ -4664,7 +4850,7 @@ export interface GeometryCollectionStatic {
      * @param  geometries - GeometryCollection's geometries
      * @param  [options=null] - options defined in [nGeometryCollection]{@link GeometryCollection#options}
      */
-    new(geometries: Geometry[], options?: object): GeometryCollection;
+    new (geometries: Geometry[], options?: object): GeometryCollection;
 }
 export const GeometryCollection: GeometryCollectionStatic;
 
@@ -4681,10 +4867,17 @@ export interface MultiGeometry extends GeometryCollection {
      * @returns  this
      * @fires maptalk.Geometry#shapechange
      */
-    setCoordinates(coordinates: Coordinate[] | Coordinate[][] | Coordinate[][][]): this;
+    setCoordinates(
+        coordinates: Coordinate[] | Coordinate[][] | Coordinate[][][],
+    ): this;
 }
 export interface MultiGeometryStatic {
-    new(geoType: Class, type: string, data: Geometry[], options?: GeometryOptions): any;
+    new (
+        geoType: Class,
+        type: string,
+        data: Geometry[],
+        options?: GeometryOptions,
+    ): any;
 }
 export const MultiGeometry: MultiGeometryStatic;
 
@@ -4697,7 +4890,10 @@ export interface MultiPoint extends MultiGeometry {
     findClosest(coordinate: Coordinate): Coordinate;
 }
 export interface MultiPointStatic {
-    new(data: number[][] | Coordinate[] | Marker[], options?: GeometryOptions): MultiPoint;
+    new (
+        data: number[][] | Coordinate[] | Marker[],
+        options?: GeometryOptions,
+    ): MultiPoint;
 }
 
 export const MultiPoint: MultiPointStatic;
@@ -4707,7 +4903,10 @@ export interface MultiLineString extends MultiGeometry {
 }
 
 export interface MultiLineStringStatic {
-    new(data: number[][][] | Coordinate[][] | LineString[], options?: LineStringOptions): MultiLineString;
+    new (
+        data: number[][][] | Coordinate[][] | LineString[],
+        options?: LineStringOptions,
+    ): MultiLineString;
 }
 export const MultiLineString: MultiLineStringStatic;
 
@@ -4716,7 +4915,10 @@ export interface MultiPolygon extends MultiGeometry {
 }
 
 export interface MultiPolygonStatic {
-    new(data: number[][][][] | Coordinate[][][] | Polygon[], options?: GeometryOptions): MultiPolygon;
+    new (
+        data: number[][][][] | Coordinate[][][] | Polygon[],
+        options?: GeometryOptions,
+    ): MultiPolygon;
 }
 
 export const MultiPolygon: MultiPolygonStatic;
@@ -4765,7 +4967,10 @@ export namespace GeoJSON {
      *  //  A geometry array.
      *  const geometries = GeoJSON.toGeometry(collection, geometry => { geometry.config('draggable', true); });
      */
-    function toGeometry(geoJSON: string | object | object[], foreachFn?: (geometry: Geometry) => void): Geometry;
+    function toGeometry(
+        geoJSON: string | object | object[],
+        foreachFn?: (geometry: Geometry) => void,
+    ): Geometry;
 }
 
 export class MapTool extends Eventable {
@@ -4819,7 +5024,10 @@ export class DrawTool extends MapTool {
      * @example
      * Register "CubicBezierCurve" mode to draw Cubic Bezier Curves.
      */
-    static registerMode(name: string, modeAction: DrawToolModeActionOptions): void;
+    static registerMode(
+        name: string,
+        modeAction: DrawToolModeActionOptions,
+    ): void;
 
     /**
      * Get mode actions by mode name
@@ -4987,7 +5195,11 @@ export interface Transformation {
      * @param   scale                              - transform scale
      * @return  2d point.
      */
-    transform(coordinates: number[] | Coordinate, scale: number, out?: Point): Point;
+    transform(
+        coordinates: number[] | Coordinate,
+        scale: number,
+        out?: Point,
+    ): Point;
 
     /**
      * Transform a 2d point to a projected coordinate.
@@ -5010,7 +5222,7 @@ export interface TransformationStatic {
      * e.g.: Transformation parameters for Google map: [1, -1, -20037508.34, 20037508.34] <br>
      * @param   matrix transformation array
      */
-    new(matrix: number[]): Transformation;
+    new (matrix: number[]): Transformation;
 }
 export const Transformation: TransformationStatic;
 
@@ -5039,7 +5251,15 @@ export abstract class DragHandler extends Handler {}
 export namespace SpatialReference {
     function getProjectionInstance(prjName: string): any;
 
-    function loadArcgis(url: string, cb: (err: any, spatialRef: any) => void, options?: object): void;
+    function loadArcgis(
+        url: string,
+        cb: (err: any, spatialRef: any) => void,
+        options?: object,
+    ): void;
 
-    function loadWMTS(url: string, cb: (err: any, spatialRef: any) => void, options?: object): void;
+    function loadWMTS(
+        url: string,
+        cb: (err: any, spatialRef: any) => void,
+        options?: object,
+    ): void;
 }

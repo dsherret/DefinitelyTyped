@@ -211,7 +211,9 @@ declare namespace jasmine {
          * Toma elementos `input`, `select` y `textarea`; excepto de `input` de tipo `checkbox` y `radio`,
          * los cuales pueden ser matcheados usando `toBeChecked` o `toHaveFormValues`.
          */
-        toHaveDisplayValue(value: string | RegExp | Array<string | RegExp>): boolean;
+        toHaveDisplayValue(
+            value: string | RegExp | Array<string | RegExp>,
+        ): boolean;
         /**
          * @description
          * 🇬🇧
@@ -267,7 +269,10 @@ declare namespace jasmine {
          *
          * Para matchear todo el contenido, puedes usar una `RegExp`.
          */
-        toHaveTextContent(text: string | RegExp, options?: { normalizeWhitespace: boolean }): boolean;
+        toHaveTextContent(
+            text: string | RegExp,
+            options?: { normalizeWhitespace: boolean },
+        ): boolean;
         /**
          * @description
          * 🇬🇧
@@ -323,7 +328,10 @@ declare namespace jasmine {
          * [testing-library/jasmine-dom#tohaveaccessibledescription](https://github.com/testing-library/jasmine-dom#tohaveaccessibledescription)
          */
         toHaveAccessibleDescription(
-            expectedAccessibleDescription: string | RegExp | AsymmetricMatcher<string>,
+            expectedAccessibleDescription:
+                | string
+                | RegExp
+                | AsymmetricMatcher<string>,
         ): boolean;
         /**
          * @description
@@ -356,7 +364,9 @@ declare namespace jasmine {
          * @see
          * [testing-library/jasmine-dom#tohaveaccessiblename](https://github.com/testing-library/jasmine-dom#tohaveaccessiblename)
          */
-        toHaveAccessibleName(expectedAccessibleName: string | RegExp | AsymmetricMatcher<string>): boolean;
+        toHaveAccessibleName(
+            expectedAccessibleName: string | RegExp | AsymmetricMatcher<string>,
+        ): boolean;
         /**
          * @description
          *
@@ -396,6 +406,8 @@ declare namespace jasmine {
          * @see
          * [testing-library/jasmine-dom#tohaveerrormessage](https://github.com/testing-library/jasmine-dom#tohaveerrormessage)
          */
-        toHaveErrorMessage(checkWith: string | RegExp | AsymmetricMatcher<string>): boolean;
+        toHaveErrorMessage(
+            checkWith: string | RegExp | AsymmetricMatcher<string>,
+        ): boolean;
     }
 }

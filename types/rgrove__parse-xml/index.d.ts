@@ -1,4 +1,7 @@
-declare function parseXml(name: string, options?: parseXml.ParseOptions): parseXml.Document;
+declare function parseXml(
+    name: string,
+    options?: parseXml.ParseOptions,
+): parseXml.Document;
 
 declare namespace parseXml {
     interface NodeBase {

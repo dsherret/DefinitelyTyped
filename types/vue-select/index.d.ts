@@ -47,16 +47,23 @@ export interface VueSelectProps {
     tabindex: number | null;
     pushTags: boolean;
     filterable: boolean;
-    filterBy: (option: VueSelectOption, label: string, search: string) => boolean;
-    filter: (options: readonly VueSelectOption[], search: string) => VueSelectOption[];
+    filterBy: (
+        option: VueSelectOption,
+        label: string,
+        search: string,
+    ) => boolean;
+    filter: (
+        options: readonly VueSelectOption[],
+        search: string,
+    ) => VueSelectOption[];
     createOption: (option: string) => VueSelectOption;
     resetOnOptionsChange:
         | boolean
         | ((
-            newOptions: readonly VueSelectOption[],
-            oldOptions: readonly VueSelectOption[],
-            selectedValue: readonly VueSelectOption[],
-        ) => boolean);
+              newOptions: readonly VueSelectOption[],
+              oldOptions: readonly VueSelectOption[],
+              selectedValue: readonly VueSelectOption[],
+          ) => boolean);
     clearSearchOnBlur: (parameters: ClearSearchOnBlurParameters) => boolean;
     noDrop: boolean;
     inputId: string | null;
@@ -182,7 +189,7 @@ export interface VueSelectSlotScope {
             disabled: VueSelectProps["disabled"];
             placeholder: VueSelectProps["placeholder"];
             tabindex: VueSelectProps["tabindex"];
-            "readonly": boolean;
+            readonly: boolean;
             id: VueSelectProps["inputId"];
             "aria-autocomplete": "list";
             "aria-labelledby": string;
@@ -194,12 +201,12 @@ export interface VueSelectSlotScope {
             "aria-activedescendant"?: string | undefined;
         };
         events: {
-            "compositionstart": () => any;
-            "compositionend": () => any;
-            "keydown": VueSelectMethods["onSearchKeyDown"];
-            "blur": VueSelectMethods["onSearchBlur"];
-            "focus": VueSelectMethods["onSearchFocus"];
-            "input": (event: KeyboardEvent) => any;
+            compositionstart: () => any;
+            compositionend: () => any;
+            keydown: VueSelectMethods["onSearchKeyDown"];
+            blur: VueSelectMethods["onSearchBlur"];
+            focus: VueSelectMethods["onSearchFocus"];
+            input: (event: KeyboardEvent) => any;
         };
     };
     spinner: {
@@ -212,9 +219,9 @@ export interface VueSelectSlotScope {
     };
     openIndicator: {
         attributes: {
-            "ref": "openIndicator";
-            "role": "presentation";
-            "class": "vs__open-indicator";
+            ref: "openIndicator";
+            role: "presentation";
+            class: "vs__open-indicator";
         };
     };
     listHeader: ListSlotScope;
@@ -245,15 +252,21 @@ type ComputedValues = {
     [K in keyof VueSelectComputed]: ReturnType<VueSelectComputed[K]>;
 };
 
-export type VueSelectInstance =
-    & InstanceType<ExtendedVue<Vue, VueSelectData, VueSelectMethods, ComputedValues, VueSelectProps>>
-    & {
-        $refs: {
-            search: HTMLInputElement;
-            toggle: HTMLDivElement;
-            selectedOptions: HTMLDivElement;
-            actions: HTMLDivElement;
-            clearButton: HTMLButtonElement;
-            dropdownMenu: HTMLUListElement | undefined;
-        };
+export type VueSelectInstance = InstanceType<
+    ExtendedVue<
+        Vue,
+        VueSelectData,
+        VueSelectMethods,
+        ComputedValues,
+        VueSelectProps
+    >
+> & {
+    $refs: {
+        search: HTMLInputElement;
+        toggle: HTMLDivElement;
+        selectedOptions: HTMLDivElement;
+        actions: HTMLDivElement;
+        clearButton: HTMLButtonElement;
+        dropdownMenu: HTMLUListElement | undefined;
     };
+};

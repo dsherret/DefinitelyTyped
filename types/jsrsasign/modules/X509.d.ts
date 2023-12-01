@@ -17,23 +17,23 @@ declare namespace jsrsasign {
 
     type GeneralName =
         | {
-            rfc822: string;
-        }
+              rfc822: string;
+          }
         | {
-            dns: string;
-        }
+              dns: string;
+          }
         | {
-            uri: string;
-        }
+              uri: string;
+          }
         | {
-            ip: string;
-        }
+              ip: string;
+          }
         | {
-            dn: X500Name;
-        }
+              dn: X500Name;
+          }
         | {
-            other: ASN1HEXParseResult;
-        }
+              other: ASN1HEXParseResult;
+          }
         | undefined;
 
     interface DistributionPointName {
@@ -56,11 +56,17 @@ declare namespace jsrsasign {
     interface CertificateTBSParams {
         version?: number; // this can be omitted, the default is 3.
         serial: Hex | { int: number } | { bigint: number } | number; // DERInteger parameter
-        issuer: { array: IdentityArray } | { str: string } | { array: IdentityArray; str: string }; // X500Name parameter
+        issuer:
+            | { array: IdentityArray }
+            | { str: string }
+            | { array: IdentityArray; str: string }; // X500Name parameter
         sigalg?: string;
         notbefore: string; // string, passed to Time
         notafter: string; // string, passed to Time
-        subject: { array: IdentityArray } | { str: string } | { array: IdentityArray; str: string }; // X500Name parameter
+        subject:
+            | { array: IdentityArray }
+            | { str: string }
+            | { array: IdentityArray; str: string }; // X500Name parameter
         sbjpubkey:
             | RSAKey
             | ECCPrivateKey
@@ -107,11 +113,11 @@ declare namespace jsrsasign {
 
     type PolicyQualifierInfo =
         | {
-            cps: string;
-        }
+              cps: string;
+          }
         | {
-            unotice: UserNotice;
-        }
+              unotice: UserNotice;
+          }
         | {};
 
     interface PolicyInformation {
@@ -119,7 +125,9 @@ declare namespace jsrsasign {
         array?: PolicyQualifierInfo[];
     }
 
-    type GeneralSubtree = (GeneralName & { min: number }) | (GeneralName & { max: number });
+    type GeneralSubtree =
+        | (GeneralName & { min: number })
+        | (GeneralName & { max: number });
 
     interface ExtSubjectKeyIdentifier {
         extname: "subjectKeyIdentifier";
@@ -147,8 +155,16 @@ declare namespace jsrsasign {
         pathLen?: number;
     }
     type ExtNameConstraints =
-        | { extname: "nameConstraints"; critical?: boolean; permit: GeneralSubtree[] }
-        | { extname: "nameConstraints"; critical?: boolean; exclude: GeneralSubtree[] };
+        | {
+              extname: "nameConstraints";
+              critical?: boolean;
+              permit: GeneralSubtree[];
+          }
+        | {
+              extname: "nameConstraints";
+              critical?: boolean;
+              exclude: GeneralSubtree[];
+          };
     interface ExtCRLDistributionPoints {
         extname: "cRLDistributionPoints";
         array: DistributionPoint[];
@@ -175,14 +191,12 @@ declare namespace jsrsasign {
         extname: "authorityInfoAccess";
         critical?: boolean;
         array: Array<
-            (
-                | {
-                    ocsp: string;
-                }
-                | {
-                    caissuer: string;
-                }
-            )
+            | {
+                  ocsp: string;
+              }
+            | {
+                  caissuer: string;
+              }
         >;
     }
     interface ExtCRLNumber {
@@ -213,12 +227,12 @@ declare namespace jsrsasign {
 
     type ExtParam =
         | {
-            [key: string]: any;
-            extname: string;
-            extn: string;
-            critical?: boolean;
-            code?: number;
-        }
+              [key: string]: any;
+              extname: string;
+              extn: string;
+              critical?: boolean;
+              code?: number;
+          }
         | ExtSubjectKeyIdentifier
         | ExtKeyUsage
         | ExtSubjectAltName
@@ -674,7 +688,14 @@ declare namespace jsrsasign {
          * x.readCertPEM(pemCert);
          * x.verifySignature(pubKey) &rarr; true, false or raising exception
          */
-        verifySignature(pubKey: string | RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA | ECCPrivateKey): boolean;
+        verifySignature(
+            pubKey:
+                | string
+                | RSAKey
+                | KJUR.crypto.DSA
+                | KJUR.crypto.ECDSA
+                | ECCPrivateKey,
+        ): boolean;
 
         /**
          * set array of X.509v3 and CSR extesion information such as extension OID, criticality and value index. (DEPRECATED)<br/>
@@ -761,7 +782,10 @@ declare namespace jsrsasign {
          * x.readCertPEM(sCertPEM); // parseExt() will also be called internally.
          * x.getExtBasicConstraints() &rarr; {cA:true,pathLen:3,critical:true}
          */
-        getExtBasicConstraints(hExtV?: string, critical?: boolean): ExtBasicConstraints;
+        getExtBasicConstraints(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtBasicConstraints;
 
         /**
          * get NameConstraints extension value as object in the certificate<br/>
@@ -794,7 +818,10 @@ declare namespace jsrsasign {
          *   exclude: [{dn: {...X500Name parameter...}}]
          * }
          */
-        getExtNameConstraints(hExtV?: string, critical?: boolean): ExtNameConstraints;
+        getExtNameConstraints(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtNameConstraints;
 
         /**
          * get GeneralSubtree ASN.1 structure parameter as JSON object<br/>
@@ -1009,7 +1036,10 @@ declare namespace jsrsasign {
          *   sn: {hex: "1234..."},
          *   critical: true}
          */
-        getExtAuthorityKeyIdentifier(hExtV?: string, critical?: boolean): AuthorityKeyIdentifierResult;
+        getExtAuthorityKeyIdentifier(
+            hExtV?: string,
+            critical?: boolean,
+        ): AuthorityKeyIdentifierResult;
 
         /**
          * get extKeyUsage value as JSON object
@@ -1101,7 +1131,10 @@ declare namespace jsrsasign {
          * x.getExtSubjectAltName("3026...") &rarr;
          * { array: [{ip: "192.168.1.1"}] }
          */
-        getExtSubjectAltName(hExtV?: string, critical?: boolean): ExtSubjectAltName;
+        getExtSubjectAltName(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtSubjectAltName;
 
         /**
          * get issuerAltName value as array of string in the certificate
@@ -1140,7 +1173,10 @@ declare namespace jsrsasign {
          * x.getExtIssuerAltName("3026...") &rarr;
          * { array: [{ip: "192.168.1.1"}] }
          */
-        getExtIssuerAltName(hExtV?: string, critical?: boolean): ExtIssuerAltName;
+        getExtIssuerAltName(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtIssuerAltName;
 
         /**
          * get GeneralNames ASN.1 structure parameter as JSON object
@@ -1288,7 +1324,10 @@ declare namespace jsrsasign {
          *  ],
          *  critical: true}
          */
-        getExtCRLDistributionPoints(hExtV?: string, critical?: boolean): ExtCRLDistributionPoints;
+        getExtCRLDistributionPoints(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtCRLDistributionPoints;
 
         /**
          * get DistributionPoint ASN.1 structure parameter as JSON object
@@ -1414,7 +1453,10 @@ declare namespace jsrsasign {
          * x.getExtAuthorityInfoAccesss("306230...")
          * x.getExtAuthorityInfoAccesss("306230...", true)
          */
-        getExtAuthorityInfoAccess(hExtV?: string, critical?: boolean): ExtAuthorityInfoAccess;
+        getExtAuthorityInfoAccess(
+            hExtV?: string,
+            critical?: boolean,
+        ): ExtAuthorityInfoAccess;
 
         /**
          * get CertificatePolicies extension value as JSON object
@@ -1784,7 +1826,10 @@ declare namespace jsrsasign {
          * x.getExtAdobeTimeStamp(<<extn hex value >>) &rarr;
          * { extname: "adobeTimeStamp", uri: "http://tsa.example.com/" reqauth: true }
          */
-        getExtAdobeTimeStamp(hExtV: string, critical: boolean): ExtAdobeTimeStamp;
+        getExtAdobeTimeStamp(
+            hExtV: string,
+            critical: boolean,
+        ): ExtAdobeTimeStamp;
 
         getX500NameRule(
             aDN: Array<Array<{ type: string; value: string; ds: string }>>,
@@ -2346,7 +2391,9 @@ declare namespace jsrsasign {
          * @return returns RSAKey/KJUR.crypto.{ECDSA,DSA} object of public key
          * @since jsrasign 7.1.0 x509 1.1.11
          */
-        static getPublicKeyFromCertHex(h: string): RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA;
+        static getPublicKeyFromCertHex(
+            h: string,
+        ): RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA;
 
         /**
          * get RSA/DSA/ECDSA public key object from PEM certificate string
@@ -2359,7 +2406,9 @@ declare namespace jsrsasign {
          * @description
          * NOTE: DSA is also supported since x509 1.1.2.
          */
-        static getPublicKeyFromCertPEM(sCertPEM: string): RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA;
+        static getPublicKeyFromCertPEM(
+            sCertPEM: string,
+        ): RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA;
 
         /**
          * get public key information from PEM certificate
@@ -2378,7 +2427,9 @@ declare namespace jsrsasign {
          * </ul>
          * NOTE: X509v1 certificate is also supported since x509.js 1.1.9.
          */
-        static getPublicKeyInfoPropOfCertPEM(sCertPEM: string): PublicKeyInfoPropOfCertPEMResult;
+        static getPublicKeyInfoPropOfCertPEM(
+            sCertPEM: string,
+        ): PublicKeyInfoPropOfCertPEMResult;
 
         static KEYUSAGE_NAME: string[];
     }

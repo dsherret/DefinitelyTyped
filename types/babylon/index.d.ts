@@ -2,7 +2,10 @@ import { Expression, File } from "babel-types";
 
 export function parse(code: string, opts?: BabylonOptions): File;
 
-export function parseExpression(input: string, options?: BabylonOptions): Expression;
+export function parseExpression(
+    input: string,
+    options?: BabylonOptions,
+): Expression;
 
 export interface BabylonOptions {
     /**

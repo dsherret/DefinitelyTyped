@@ -1,7 +1,10 @@
 import { Languages } from "prismjs";
 
 declare class CodeFlask {
-    constructor(selectorOrElement: string | HTMLElement, opts: CodeFlask.options);
+    constructor(
+        selectorOrElement: string | HTMLElement,
+        opts: CodeFlask.options,
+    );
     onUpdate(callback: (code: string) => void): void;
     updateCode(newCode: string): void;
     getCode(): string;

@@ -30,9 +30,16 @@ interface WikitudePlugin {
     // test type ok?
     callJavaScript(js: any): void;
 
-    setOnUrlInvokeCallback(onUrlInvokeCallback: (success: string) => void): void;
+    setOnUrlInvokeCallback(
+        onUrlInvokeCallback: (success: string) => void,
+    ): void;
 
-    setLocation(latitude: any, longitude: any, altitude: any, accuracy: any): void;
+    setLocation(
+        latitude: any,
+        longitude: any,
+        altitude: any,
+        accuracy: any,
+    ): void;
 
     captureScreen(
         successCallback: (success: string) => void,
@@ -51,7 +58,9 @@ interface WikitudePlugin {
         finishedCalibrationHandler: (message: string) => void,
     ): void;
 
-    setBackButtonCallback(onBackButtonCallback: (message: string) => void): void;
+    setBackButtonCallback(
+        onBackButtonCallback: (message: string) => void,
+    ): void;
 
     /* Lifecycle updates */
 

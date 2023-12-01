@@ -20,7 +20,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.TextInputWidget
      */
-    interface TextInputWidget extends TextInputWidget.Props, TextInputWidget.Prototype {}
+    interface TextInputWidget
+        extends TextInputWidget.Props,
+            TextInputWidget.Prototype {}
 
     namespace TextInputWidget {
         interface Range {
@@ -33,25 +35,28 @@ declare namespace OO.ui {
          */
         type Flag = "invalid";
 
-        interface EventMap extends InputWidget.EventMap, mixin.LabelElement.EventMap, mixin.FlaggedElement.EventMap {
+        interface EventMap
+            extends InputWidget.EventMap,
+                mixin.LabelElement.EventMap,
+                mixin.FlaggedElement.EventMap {
             enter: [];
         }
 
         interface ConfigOptions
-            extends
-                InputWidget.ConfigOptions,
+            extends InputWidget.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.IndicatorElement.ConfigOptions,
                 mixin.PendingElement.ConfigOptions,
                 mixin.LabelElement.ConfigOptions,
                 mixin.FlaggedElement.ConfigOptions,
-                mixin.RequiredElement.ConfigOptions
-        {
+                mixin.RequiredElement.ConfigOptions {
             /**
              * The value of the HTML `type` attribute: 'text', 'password' 'email', 'url' or 'number'.
              * Subclasses might support other types.
              */
-            type?: LiteralUnion<"text" | "password" | "email" | "url" | "number">;
+            type?: LiteralUnion<
+                "text" | "password" | "email" | "url" | "number"
+            >;
 
             /** Placeholder text */
             placeholder?: string;
@@ -100,43 +105,40 @@ declare namespace OO.ui {
              * receiving the value as parameter that must return true, or promise resolving to true,
              * for it to be considered valid.
              */
-            validate?: RegExp | string | ((value: string) => boolean | JQuery.Promise<boolean>);
+            validate?:
+                | RegExp
+                | string
+                | ((value: string) => boolean | JQuery.Promise<boolean>);
 
             flags?: LiteralUnion<Flag> | Array<LiteralUnion<Flag>>;
         }
 
         interface Static
-            extends
-                InputWidget.Static,
+            extends InputWidget.Static,
                 mixin.IconElement.Static,
                 mixin.IndicatorElement.Static,
                 mixin.LabelElement.Static,
-                mixin.FlaggedElement.Static
-        {
+                mixin.FlaggedElement.Static {
             validationPatterns: Record<string, RegExp>;
         }
 
         interface Props
-            extends
-                InputWidget.Props,
+            extends InputWidget.Props,
                 mixin.IconElement.Props,
                 mixin.IndicatorElement.Props,
                 mixin.PendingElement.Props,
                 mixin.LabelElement.Props,
                 mixin.FlaggedElement.Props,
-                mixin.RequiredElement.Props
-        {}
+                mixin.RequiredElement.Props {}
 
         interface Prototype
-            extends
-                InputWidget.Prototype,
+            extends InputWidget.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.IndicatorElement.Prototype,
                 mixin.PendingElement.Prototype,
                 mixin.LabelElement.Prototype,
                 mixin.FlaggedElement.Prototype,
-                mixin.RequiredElement.Prototype
-        {
+                mixin.RequiredElement.Prototype {
             /**
              * Check if the input is {@link ConfigOptions.readOnly read-only}.
              *
@@ -234,7 +236,11 @@ declare namespace OO.ui {
              *  (either ‘integer’ or ‘non-empty’) defined by the class.
              */
             setValidation(
-                validate: null | RegExp | string | ((value: string) => boolean | JQuery.Promise<boolean>),
+                validate:
+                    | null
+                    | RegExp
+                    | string
+                    | ((value: string) => boolean | JQuery.Promise<boolean>),
             ): void;
 
             /**
@@ -277,7 +283,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -288,7 +297,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -296,7 +308,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -305,11 +320,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -325,7 +352,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): TextInputWidget;
+            new (config?: ConfigOptions): TextInputWidget;
             prototype: Prototype;
             static: Static;
             super: InputWidget.Constructor;

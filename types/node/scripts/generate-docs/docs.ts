@@ -24,17 +24,28 @@ import { NodeProcessingContext } from "./ast-processing";
 import { isNamedModuleDeclaration, nodeInfo, nodeWarning } from "./ast-utils";
 import { DocRoot, loadDocs } from "./node-doc-processing";
 
-function processModule(processingContext: NodeProcessingContext, node: ModuleDeclaration): ModuleDeclaration {
-    const visit: Visitor = node => {
+function processModule(
+    processingContext: NodeProcessingContext,
+    node: ModuleDeclaration,
+): ModuleDeclaration {
+    const visit: Visitor = (node) => {
         processingContext.processNode(node);
-        return visitEachChild(node, visit, processingContext.getTransformationContext());
+        return visitEachChild(
+            node,
+            visit,
+            processingContext.getTransformationContext(),
+        );
     };
     return visitNode(node, visit);
 }
 
-function transformer(printer: Printer, typeChecker: TypeChecker, rootDocs: DocRoot): TransformerFactory<Node> {
-    return transformationContext => {
-        const visit: Visitor = node => {
+function transformer(
+    printer: Printer,
+    typeChecker: TypeChecker,
+    rootDocs: DocRoot,
+): TransformerFactory<Node> {
+    return (transformationContext) => {
+        const visit: Visitor = (node) => {
             if (isSourceFile(node)) {
                 return visitEachChild(node, visit, transformationContext);
             }
@@ -50,9 +61,14 @@ function transformer(printer: Printer, typeChecker: TypeChecker, rootDocs: DocRo
 
             nodeInfo(node, `Processing module ${moduleName}`);
 
-            const moduleDocs = rootDocs.modules.find(({ name }) => name === moduleName)!;
+            const moduleDocs = rootDocs.modules.find(
+                ({ name }) => name === moduleName,
+            )!;
             if (!moduleDocs) {
-                nodeWarning(node, `Could not match module "${moduleName}" to documented module`);
+                nodeWarning(
+                    node,
+                    `Could not match module "${moduleName}" to documented module`,
+                );
                 return node;
             }
             const context = new NodeProcessingContext({
@@ -64,7 +80,7 @@ function transformer(printer: Printer, typeChecker: TypeChecker, rootDocs: DocRo
             });
             return processModule(context, node);
         };
-        return node => visitNode(node, visit);
+        return (node) => visitNode(node, visit);
     };
 }
 
@@ -110,7 +126,9 @@ function format(contents: string) {
 async function main() {
     const docs = await loadDocs();
 
-    const { compilerOptions } = require(join(__dirname, "../../tsconfig.json")) as {
+    const { compilerOptions } = require(
+        join(__dirname, "../../tsconfig.json"),
+    ) as {
         compilerOptions: CompilerOptions;
     };
 
@@ -132,14 +150,23 @@ async function main() {
     const transformers = [transformer(printer, typeChecker, docs)];
     for (const f of prog.getSourceFiles()) {
         const fileName = f.fileName;
-        if (fileName.includes("typescript") || ignoreFiles.has(basename(fileName))) {
+        if (
+            fileName.includes("typescript") ||
+            ignoreFiles.has(basename(fileName))
+        ) {
             continue;
         }
         nodeInfo(f, "Processing file");
         const transformRes = transform(f, transformers);
         writeFileSync(
             fileName,
-            format(printer.printBundle(factory.createBundle(transformRes.transformed as SourceFile[]))),
+            format(
+                printer.printBundle(
+                    factory.createBundle(
+                        transformRes.transformed as SourceFile[],
+                    ),
+                ),
+            ),
         );
     }
 }

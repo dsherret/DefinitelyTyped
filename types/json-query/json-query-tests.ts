@@ -25,7 +25,9 @@ data = {
         ],
     },
 };
-const result: any = jsonQuery("grouped_people[**][*country=NZ]", { data }).value;
+const result: any = jsonQuery("grouped_people[**][*country=NZ]", {
+    data,
+}).value;
 
 // Inner Queries
 data = {
@@ -73,7 +75,14 @@ data = {
     },
 };
 jsonQuery("user:greetingName", { data, locals }).value; // => "Matt"
-jsonQuery(["is_fullscreen:and({is_playing}):then(?, ?)", "Playing big!", "Not so much"], { data, locals }).value; // => "Not so much"
+jsonQuery(
+    [
+        "is_fullscreen:and({is_playing}):then(?, ?)",
+        "Playing big!",
+        "Not so much",
+    ],
+    { data, locals },
+).value; // => "Not so much"
 jsonQuery(":text(This displays text cos we made it so)", { locals }).value; // => "This displays text cos we made it so"
 jsonQuery("people:select(name, country)", {
     data,
@@ -81,12 +90,15 @@ jsonQuery("people:select(name, country)", {
         select: (input: jsonQuery.Context, ...keys: string[]) => {
             if (Array.isArray(input)) {
                 return input.map((item: any) => {
-                    return Object.keys(item).reduce((result: { [p: string]: any }, key: string) => {
-                        if (~keys.indexOf(key)) {
-                            result[key] = item[key];
-                        }
-                        return result;
-                    }, {});
+                    return Object.keys(item).reduce(
+                        (result: { [p: string]: any }, key: string) => {
+                            if (~keys.indexOf(key)) {
+                                result[key] = item[key];
+                            }
+                            return result;
+                        },
+                        {},
+                    );
                 });
             }
         },
@@ -96,7 +108,7 @@ jsonQuery("people[*:recentlyUpdated]", {
     data,
     locals: {
         recentlyUpdated: (item: { updatedAt: number }) => {
-            return item.updatedAt < Date.now() - (30 * 24 * 60 * 60 * 1000);
+            return item.updatedAt < Date.now() - 30 * 24 * 60 * 60 * 1000;
         },
     },
 });
@@ -112,7 +124,7 @@ jsonQuery("people[*:recentlyUpdated]", {
     },
     locals: {
         recentlyUpdated: (item: { updatedAt: number }) => {
-            return item.updatedAt < Date.now() - (30 * 24 * 60 * 60 * 1000);
+            return item.updatedAt < Date.now() - 30 * 24 * 60 * 60 * 1000;
         },
     },
 });
@@ -130,7 +142,10 @@ data = {
 };
 let pageHtml = "";
 data.paragraphs.forEach((paragraph: { content: string; style: string }) => {
-    const style = jsonQuery("styles[{.style}]", { data, source: paragraph }).value;
+    const style = jsonQuery("styles[{.style}]", {
+        data,
+        source: paragraph,
+    }).value;
     const content = jsonQuery(".content", { data, source: paragraph }).value; // pretty pointless :)
     pageHtml += `<p style='${style}'>${content}</p>`;
 });

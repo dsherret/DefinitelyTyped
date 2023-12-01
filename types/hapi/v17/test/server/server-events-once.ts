@@ -22,7 +22,7 @@ const server = new Server({
 server.route(serverRoute);
 server.event("test1");
 server.event("test2");
-server.events.once("test1", update => {
+server.events.once("test1", (update) => {
     console.log(update);
 });
 server.events.once("test2", (...args) => {

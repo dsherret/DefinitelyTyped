@@ -1,5 +1,9 @@
 import * as React from "react";
-import HelmetDefaultExport, { Helmet, HelmetData, HelmetsOpenedVisor } from "react-helmet-with-visor";
+import HelmetDefaultExport, {
+    Helmet,
+    HelmetData,
+    HelmetsOpenedVisor,
+} from "react-helmet-with-visor";
 
 const Application = () => (
     <div className="application">
@@ -73,8 +77,7 @@ function HTML() {
                 {helmet.link.toComponent()}
             </head>
             <body {...bodyAttrs}>
-                <div id="content">
-                </div>
+                <div id="content"></div>
             </body>
         </html>
     );
@@ -90,7 +93,9 @@ function HTML() {
 
     <body className="root" />
 
-    <title itemProp="name" lang="en">My Title</title>
+    <title itemProp="name" lang="en">
+        My Title
+    </title>
 
     <base target="_blank" href="http://mysite.com/" />
 
@@ -98,8 +103,15 @@ function HTML() {
     <meta property="og:type" content="article" />
 
     <link rel="canonical" href="http://mysite.com/example" />
-    <link rel="apple-touch-icon" href="http://mysite.com/img/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="http://mysite.com/img/apple-touch-icon-72x72.png" />
+    <link
+        rel="apple-touch-icon"
+        href="http://mysite.com/img/apple-touch-icon-57x57.png"
+    />
+    <link
+        rel="apple-touch-icon"
+        sizes="72x72"
+        href="http://mysite.com/img/apple-touch-icon-72x72.png"
+    />
 
     <script src="http://include.com/pathtojs.js" type="text/javascript" />
 

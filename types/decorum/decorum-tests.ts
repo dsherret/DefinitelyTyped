@@ -22,7 +22,9 @@ class MyModel {
 
     @FieldName("Email address")
     @Email()
-    @Required("Your email address will be used to send you a confirmation email. You must fill it out")
+    @Required(
+        "Your email address will be used to send you a confirmation email. You must fill it out",
+    )
     emailAddress = "";
 
     @Required()
@@ -43,13 +45,21 @@ class MyModel {
     @Length(6, "Alias must be 6 characters long")
     alias: string;
 
-    @Alpha((opts: IMessageOpts) =>
-        "Message overridden for field " + opts.property + " with friendly name " + opts.friendlyName
+    @Alpha(
+        (opts: IMessageOpts) =>
+            "Message overridden for field " +
+            opts.property +
+            " with friendly name " +
+            opts.friendlyName,
     )
     alpha: string;
 
-    @AlphaNumeric((opts: IMessageOpts) =>
-        "Message overridden for field " + opts.property + " with friendly name " + opts.friendlyName
+    @AlphaNumeric(
+        (opts: IMessageOpts) =>
+            "Message overridden for field " +
+            opts.property +
+            " with friendly name " +
+            opts.friendlyName,
     )
     alphaNumeric: string;
 }
@@ -86,13 +96,8 @@ function MyOtherModel() {
 }
 
 Validator.decorate(MyOtherModel, {
-    foo: [
-        decorum.Required(),
-    ],
-    bar: [
-        decorum.Pattern(/^[a-z][0-9]$/i),
-        decorum.FieldName("My bar"),
-    ],
+    foo: [decorum.Required()],
+    bar: [decorum.Pattern(/^[a-z][0-9]$/i), decorum.FieldName("My bar")],
 });
 
 var otherValidator = Validator.new(MyOtherModel());
@@ -105,8 +110,13 @@ class MyValidator extends BaseValidator {
     }
 
     getMessage(opts: IMessageOpts): string {
-        return opts.friendlyName + " is not a valid thing because of value " + opts.value
-            + "! Fyi... its property name is " + opts.property;
+        return (
+            opts.friendlyName +
+            " is not a valid thing because of value " +
+            opts.value +
+            "! Fyi... its property name is " +
+            opts.property
+        );
     }
 
     isValid(value: any, model: any): boolean {
@@ -116,4 +126,8 @@ class MyValidator extends BaseValidator {
 
 // Message overrides
 MessageHandlers["alpha"] = (opts: IMessageOpts) =>
-    "The value " + opts.value + " for property " + opts.property + " is invalid!";
+    "The value " +
+    opts.value +
+    " for property " +
+    opts.property +
+    " is invalid!";

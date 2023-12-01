@@ -16,7 +16,11 @@ class HashringBalance extends nodeRal.Balance {
     getName() {
         return "hashring";
     }
-    fetchServer(balanceContext: nodeRal.Balance.BalanceContextClass, conf: {}, prevBackend: nodeRal.Server) {
+    fetchServer(
+        balanceContext: nodeRal.Balance.BalanceContextClass,
+        conf: {},
+        prevBackend: nodeRal.Server,
+    ) {
         return {} as nodeRal.Server;
     }
 }
@@ -43,7 +47,7 @@ class DefaultConfigNormalizer extends nodeRal.ConfigNormalizer {
 }
 
 const runner = nodeRal.RAL("test", {});
-runner.on("data", function() {
+runner.on("data", function () {
     // yeap
 });
 runner.doRequest();

@@ -79,7 +79,11 @@ declare namespace jsuri {
          * @param  {string} [oldVal]    replace only one specific value (otherwise replaces all)
          * @return {Uri}                returns self for fluent chaining
          */
-        replaceQueryParam(key: string, newVal: Primitive, oldVal?: Primitive): Uri;
+        replaceQueryParam(
+            key: string,
+            newVal: Primitive,
+            oldVal?: Primitive,
+        ): Uri;
 
         /**
          * Define fluent setter methods (setProtocol, setHasAuthorityPrefix, etc)

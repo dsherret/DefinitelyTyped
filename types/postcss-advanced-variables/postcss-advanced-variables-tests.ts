@@ -13,7 +13,10 @@ advancedVariables({
 });
 
 advancedVariables({ disable: "@mixin", importPaths: "foo" });
-advancedVariables({ disable: ["@mixin"] as const, importPaths: ["foo"] as const });
+advancedVariables({
+    disable: ["@mixin"] as const,
+    importPaths: ["foo"] as const,
+});
 
 advancedVariables({ importFilter: /foo/ });
 advancedVariables({

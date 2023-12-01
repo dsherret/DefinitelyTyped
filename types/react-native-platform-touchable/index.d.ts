@@ -24,7 +24,10 @@ export class Touchable extends React.Component<PlatformTouchableProps> {
     // TouchableNativeFeedback (default Android)
     static SelectableBackground(): ThemeAttributeBackgroundPropType;
     static SelectableBackgroundBorderless(): ThemeAttributeBackgroundPropType;
-    static Ripple(color: string, borderless?: boolean): RippleBackgroundPropType;
+    static Ripple(
+        color: string,
+        borderless?: boolean,
+    ): RippleBackgroundPropType;
     static canUseNativeForeground(): boolean;
 }
 

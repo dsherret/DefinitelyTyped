@@ -12,7 +12,7 @@ const server = new RSocketServer<Buffer, null>({
     getRequestHandler: (socket, payload) => {
         console.log("connect payload", payload);
         socket.connectionStatus().subscribe({
-            onNext: value => {
+            onNext: (value) => {
                 console.log("connection", value);
             },
         });
@@ -23,7 +23,7 @@ const server = new RSocketServer<Buffer, null>({
             requestResponse: (incomingRequest: Payload<Buffer, null>) => {
                 console.log("->", incomingRequest);
                 // Echo the request back
-                return new Single(subscriber => {
+                return new Single((subscriber) => {
                     subscriber.onSubscribe(() => {});
                     console.log("<-", incomingRequest);
                     subscriber.onComplete(incomingRequest);

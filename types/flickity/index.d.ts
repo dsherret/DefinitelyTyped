@@ -213,7 +213,17 @@ declare namespace Flickity {
          * Draws the shape of the arrows in the previous & next buttons.
          * javascript dictionary of points or path to SVG file
          */
-        arrowShape?: string | { x0: number; x1: number; y1: number; x2: number; y2: number; x3: number } | undefined;
+        arrowShape?:
+            | string
+            | {
+                  x0: number;
+                  x1: number;
+                  y1: number;
+                  x2: number;
+                  y2: number;
+                  x3: number;
+              }
+            | undefined;
 
         /**
          * Bind events within Flickity's options by setting on to an Object. The object's keys should match the event names. on is useful for capturing events as Flickity is initialized, like ready
@@ -253,10 +263,7 @@ declare namespace Flickity {
          * Triggered when dragging starts and the slider starts moving.
          */
         dragStart?:
-            | ((
-                event: Event,
-                pointer: Event | Touch,
-            ) => void)
+            | ((event: Event, pointer: Event | Touch) => void)
             | undefined;
 
         /**
@@ -264,30 +271,22 @@ declare namespace Flickity {
          */
         dragMove?:
             | ((
-                event: Event,
-                pointer: Event | Touch,
-                moveVector: { x: number; y: number },
-            ) => void)
+                  event: Event,
+                  pointer: Event | Touch,
+                  moveVector: { x: number; y: number },
+              ) => void)
             | undefined;
 
         /**
          * Triggered when dragging ends.
          */
-        dragEnd?:
-            | ((
-                event: Event,
-                pointer: Event | Touch,
-            ) => void)
-            | undefined;
+        dragEnd?: ((event: Event, pointer: Event | Touch) => void) | undefined;
 
         /**
          * Triggered when the user's pointer (mouse, touch, pointer) presses down.
          */
         pointerDown?:
-            | ((
-                event: Event,
-                pointer: Event | Touch,
-            ) => void)
+            | ((event: Event, pointer: Event | Touch) => void)
             | undefined;
 
         /**
@@ -295,20 +294,17 @@ declare namespace Flickity {
          */
         pointerMove?:
             | ((
-                event: Event,
-                pointer: Event | Touch,
-                moveVector: { x: number; y: number },
-            ) => void)
+                  event: Event,
+                  pointer: Event | Touch,
+                  moveVector: { x: number; y: number },
+              ) => void)
             | undefined;
 
         /**
          * Triggered when the user's pointer unpresses.
          */
         pointerUp?:
-            | ((
-                event: Event,
-                pointer: Event | Touch,
-            ) => void)
+            | ((event: Event, pointer: Event | Touch) => void)
             | undefined;
 
         /**
@@ -318,32 +314,22 @@ declare namespace Flickity {
          */
         staticClick?:
             | ((
-                event: Event,
-                pointer: Event | Touch,
-                cellElement: Element,
-                cellIndex: number,
-            ) => void)
+                  event: Event,
+                  pointer: Event | Touch,
+                  cellElement: Element,
+                  cellIndex: number,
+              ) => void)
             | undefined;
 
         /**
          * Triggered after an image has been loaded with lazyLoad.
          */
-        lazyLoad?:
-            | ((
-                event: Event,
-                cellElement: Element,
-            ) => void)
-            | undefined;
+        lazyLoad?: ((event: Event, cellElement: Element) => void) | undefined;
 
         /**
          * Triggered after a background image has been loaded with bgLazyLoad.
          */
-        bgLazyLoad?:
-            | ((
-                event: Event,
-                element: Element,
-            ) => void)
-            | undefined;
+        bgLazyLoad?: ((event: Event, element: Element) => void) | undefined;
 
         /**
          * Triggered after entering or exiting fullscreen view.
@@ -441,7 +427,11 @@ declare class Flickity {
      * @param isWrapped If true, the last slide will be selected if at the first slide.
      * @param isInstant If true, immediately view the selected slide without animation.
      */
-    selectCell(index: number | string, isWrapped?: boolean, isInstant?: boolean): void;
+    selectCell(
+        index: number | string,
+        isWrapped?: boolean,
+        isInstant?: boolean,
+    ): void;
 
     /**
      * Resize the gallery and re-position cells.
@@ -474,7 +464,10 @@ declare class Flickity {
      * @param elements Element[], Element, or NodeList
      * @param index Integer: Zero-based index to insert elements.
      */
-    insert(elements: JQuery | Element[] | Element | NodeList, index: number): void;
+    insert(
+        elements: JQuery | Element[] | Element | NodeList,
+        index: number,
+    ): void;
 
     /**
      * Remove cells from gallery and remove elements from DOM.

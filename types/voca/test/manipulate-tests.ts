@@ -46,7 +46,11 @@ repeat("w", 3);
 replace();
 replace("swan", "wa", "u");
 replace("domestic duck", /domestic\s/, "");
-replace("nice duck", /(nice)(duck)/, (match: string, nice: string, duck: string) => `the ${duck} is ${nice}`);
+replace(
+    "nice duck",
+    /(nice)(duck)/,
+    (match: string, nice: string, duck: string) => `the ${duck} is ${nice}`,
+);
 
 replaceAll();
 replaceAll("good morning", "o", "*");

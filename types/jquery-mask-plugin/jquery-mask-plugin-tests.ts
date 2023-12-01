@@ -48,7 +48,12 @@ let options: jQueryMask.Options = {
     onComplete(cep: Object) {
         alert("CEP Completed!:" + cep);
     },
-    onKeyPress(cep: Object, event: Event, currentField: JQuery, options: jQueryMask.Options) {
+    onKeyPress(
+        cep: Object,
+        event: Event,
+        currentField: JQuery,
+        options: jQueryMask.Options,
+    ) {
         console.log(
             "An key was pressed!:",
             cep,
@@ -63,7 +68,13 @@ let options: jQueryMask.Options = {
     onChange(cep: Object) {
         console.log("cep changed! ", cep);
     },
-    onInvalid(val: Object, e: Event, f: JQuery, invalid: jQueryMask.Invalid[], options: jQueryMask.Options) {
+    onInvalid(
+        val: Object,
+        e: Event,
+        f: JQuery,
+        invalid: jQueryMask.Invalid[],
+        options: jQueryMask.Options,
+    ) {
         const error = invalid[0];
         console.log(
             "Digit: ",
@@ -82,7 +93,7 @@ $(".cep_with_callback").mask("00000-000", options);
 options = {
     onKeyPress(cep, e, field, options) {
         const masks: string[] = ["00000-000", "0-00-00-00"];
-        const mask: string = (cep.length > 7) ? masks[1] : masks[0];
+        const mask: string = cep.length > 7 ? masks[1] : masks[0];
         $(".crazy_cep").mask(mask, options);
     },
 };
@@ -90,12 +101,19 @@ options = {
 $(".crazy_cep").mask("00000-000", options);
 
 // mask as a function
-let maskBehavior: (value: string) => string = val => {
-    return val.replace(/\D/g, "").length === 11 ? "(00) 00000-0000" : "(00) 0000-00009";
+let maskBehavior: (value: string) => string = (val) => {
+    return val.replace(/\D/g, "").length === 11
+        ? "(00) 00000-0000"
+        : "(00) 0000-00009";
 };
 
 options = {
-    onKeyPress(val: string, e: Event, field: JQuery, options: jQueryMask.Options) {
+    onKeyPress(
+        val: string,
+        e: Event,
+        field: JQuery,
+        options: jQueryMask.Options,
+    ) {
         field.mask(maskBehavior.apply({}, arguments), options);
     },
 };
@@ -105,13 +123,17 @@ $(".sp_celphones").mask(maskBehavior, options);
 // translation
 // now the digit 0 on your mask pattern will be interpreted
 // as valid characters like 0,1,2,3,4,5,6,7,8,9 and *
-$(".your-field").mask("00/00/0000", { translation: { 0: { pattern: /[0-9*]/ } } });
+$(".your-field").mask("00/00/0000", {
+    translation: { 0: { pattern: /[0-9*]/ } },
+});
 
 // optional digits
 // way 1
 $(".ip_address").mask("099.099.099.099");
 // way 2
-$(".ip_address").mask("0ZZ.0ZZ.0ZZ.0ZZ", { translation: { Z: { pattern: /[0-9]/, optional: true } } });
+$(".ip_address").mask("0ZZ.0ZZ.0ZZ.0ZZ", {
+    translation: { Z: { pattern: /[0-9]/, optional: true } },
+});
 
 // recursive digits
 $(".money_example").mask("#.##0,00", { reverse: true });

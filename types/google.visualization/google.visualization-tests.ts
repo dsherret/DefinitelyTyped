@@ -6,7 +6,7 @@ function test_arrayToDataTable() {
         ["Naples", 959574, 117.27],
         ["Turin", 907563, 130.17],
         ["Palermo", 655875, 158.9],
-        ["Genoa", 607906, 243.60],
+        ["Genoa", 607906, 243.6],
         ["Bologna", 380181, 140.7],
         ["Florence", 371282, 102.41],
         ["Fiumicino", 67370, 213.44],
@@ -70,7 +70,10 @@ function test_calendarChart() {
     var options = {
         title: "Test Calendar",
         height: 350,
-        colorAxis: { colors: ["red", "white", "green"], values: [-250, 0, 250] },
+        colorAxis: {
+            colors: ["red", "white", "green"],
+            values: [-250, 0, 250],
+        },
         calendar: {
             yearLabel: { color: "black", bold: true, italic: false },
         },
@@ -136,12 +139,22 @@ function test_barChart() {
         ["Element", "Density", { role: "style" }],
         ["Copper", 8.94, "#b87333"],
         ["Silver", 10.49, "silver"],
-        ["Gold", 19.30, "gold"],
+        ["Gold", 19.3, "gold"],
         ["Platinum", 21.45, "color: #e5e4e2"],
     ]);
 
     var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1, { calc: "stringify", sourceColumn: 1, type: "string", role: "annotation" }, 2]);
+    view.setColumns([
+        0,
+        1,
+        {
+            calc: "stringify",
+            sourceColumn: 1,
+            type: "string",
+            role: "annotation",
+        },
+        2,
+    ]);
 
     var options: google.visualization.BarChartOptions = {
         title: "Density of Precious Metals, in g/cm^3",
@@ -331,7 +344,12 @@ function test_bubbleChart() {
 function test_treemap() {
     // Create and populate the data table.
     var data = google.visualization.arrayToDataTable([
-        ["Location", "Parent", "Market trade volume (size)", "Market increase/decrease (color)"],
+        [
+            "Location",
+            "Parent",
+            "Market trade volume (size)",
+            "Market increase/decrease (color)",
+        ],
         ["Global", null, 0, 0],
         ["America", "Global", 0, 0],
         ["Europe", "Global", 0, 0],
@@ -450,14 +468,17 @@ function test_timeline() {
 }
 
 function test_candlestickChart() {
-    var data = google.visualization.arrayToDataTable([
-        ["Mon", 20, 28, 38, 45],
-        ["Tue", 31, 38, 55, 66],
-        ["Wed", 50, 55, 77, 80],
-        ["Thu", 77, 77, 66, 50],
-        ["Fri", 68, 66, 22, 15],
-        // Treat first row as data as well.
-    ], true);
+    var data = google.visualization.arrayToDataTable(
+        [
+            ["Mon", 20, 28, 38, 45],
+            ["Tue", 31, 38, 55, 66],
+            ["Wed", 50, 55, 77, 80],
+            ["Thu", 77, 77, 66, 50],
+            ["Fri", 68, 66, 22, 15],
+            // Treat first row as data as well.
+        ],
+        true,
+    );
 
     var options: google.visualization.CandlestickChartOptions = {
         legend: "none",
@@ -514,7 +535,12 @@ function test_formatter_BarFormat() {
         var formatter = new google.visualization.BarFormat({ width: 120 });
         formatter.format(data, 1); // Apply formatter to second column
 
-        table.draw(data, { allowHtml: true, showRowNumber: true, width: "100%", height: "100%" });
+        table.draw(data, {
+            allowHtml: true,
+            showRowNumber: true,
+            width: "100%",
+            height: "100%",
+        });
     }
 }
 
@@ -540,7 +566,12 @@ function test_formatter_ColorFormat() {
         formatter.addRange(20000, null, "red", "#33ff33");
         formatter.format(data, 1); // Apply formatter to second column
 
-        table.draw(data, { allowHtml: true, showRowNumber: true, width: "100%", height: "100%" });
+        table.draw(data, {
+            allowHtml: true,
+            showRowNumber: true,
+            width: "100%",
+            height: "100%",
+        });
     }
 }
 
@@ -558,14 +589,30 @@ function test_formatter_DateFormat() {
                 new Date(2008, 1, 28, 0, 31, 26),
                 new Date(2008, 1, 28, 0, 31, 26),
             ],
-            ["Bob", new Date(2007, 5, 1, 0), new Date(2007, 5, 1, 0), new Date(2007, 5, 1, 0)],
-            ["Alice", new Date(2006, 7, 16), new Date(2006, 7, 16), new Date(2006, 7, 16)],
+            [
+                "Bob",
+                new Date(2007, 5, 1, 0),
+                new Date(2007, 5, 1, 0),
+                new Date(2007, 5, 1, 0),
+            ],
+            [
+                "Alice",
+                new Date(2006, 7, 16),
+                new Date(2006, 7, 16),
+                new Date(2006, 7, 16),
+            ],
         ]);
 
         // Create three formatters in three styles.
-        var formatter_long = new google.visualization.DateFormat({ formatType: "long" });
-        var formatter_medium = new google.visualization.DateFormat({ formatType: "medium" });
-        var formatter_short = new google.visualization.DateFormat({ formatType: "short" });
+        var formatter_long = new google.visualization.DateFormat({
+            formatType: "long",
+        });
+        var formatter_medium = new google.visualization.DateFormat({
+            formatType: "medium",
+        });
+        var formatter_short = new google.visualization.DateFormat({
+            formatType: "short",
+        });
 
         // Reformat our data.
         formatter_long.format(data, 1);
@@ -576,7 +623,11 @@ function test_formatter_DateFormat() {
         var container = document.getElementById("dateformat_div");
         if (container) {
             var table = new google.visualization.Table(container);
-            table.draw(data, { showRowNumber: true, width: "100%", height: "100%" });
+            table.draw(data, {
+                showRowNumber: true,
+                width: "100%",
+                height: "100%",
+            });
         }
     }
 }
@@ -598,12 +649,19 @@ function test_formatter_NumberFormat() {
     if (container) {
         var table = new google.visualization.Table(container);
 
-        var formatter = new google.visualization.NumberFormat(
-            { prefix: "$", negativeColor: "red", negativeParens: true },
-        );
+        var formatter = new google.visualization.NumberFormat({
+            prefix: "$",
+            negativeColor: "red",
+            negativeParens: true,
+        });
         formatter.format(data, 1); // Apply formatter to second column
 
-        table.draw(data, { allowHtml: true, showRowNumber: true, width: "100%", height: "100%" });
+        table.draw(data, {
+            allowHtml: true,
+            showRowNumber: true,
+            width: "100%",
+            height: "100%",
+        });
     }
 }
 
@@ -623,7 +681,7 @@ function test_formatter_PatternFormat() {
         var table = new google.visualization.Table(container);
 
         var formatter = new google.visualization.PatternFormat(
-            "<a href=\"mailto:{1}\">{0}</a>",
+            '<a href="mailto:{1}">{0}</a>',
         );
         // Apply formatter and set the formatted value of the first column.
         formatter.format(data, [0, 1]);
@@ -631,12 +689,19 @@ function test_formatter_PatternFormat() {
         var view = new google.visualization.DataView(data);
         view.setColumns([0]); // Create a view with the first column only.
 
-        table.draw(view, { allowHtml: true, showRowNumber: true, width: "100%", height: "100%" });
+        table.draw(view, {
+            allowHtml: true,
+            showRowNumber: true,
+            width: "100%",
+            height: "100%",
+        });
     }
 }
 
 function test_ChartsLoadWithCallback() {
-    google.charts.load("current", { packages: ["corechart", "table", "sankey"] });
+    google.charts.load("current", {
+        packages: ["corechart", "table", "sankey"],
+    });
 
     function drawChart() {
         var data = new google.visualization.DataTable();
@@ -678,7 +743,9 @@ function test_ChartsLoadWithPromise() {
         }
     }
 
-    google.charts.load("current", { packages: ["corechart", "table", "sankey"] }).then(drawChart);
+    google.charts
+        .load("current", { packages: ["corechart", "table", "sankey"] })
+        .then(drawChart);
 }
 
 function test_ChartsSafeLoad() {
@@ -791,8 +858,22 @@ function test_OrgChart() {
 
     // For each orgchart box, provide the name, manager, and tooltip to show.
     data.addRows([
-        [{ v: "Mike", f: "Mike<div style=\"color:red; font-style:italic\">President</div>" }, "", "The President"],
-        [{ v: "Jim", f: "Jim<div style=\"color:red; font-style:italic\">Vice President</div>" }, "Mike", "VP"],
+        [
+            {
+                v: "Mike",
+                f: 'Mike<div style="color:red; font-style:italic">President</div>',
+            },
+            "",
+            "The President",
+        ],
+        [
+            {
+                v: "Jim",
+                f: 'Jim<div style="color:red; font-style:italic">Vice President</div>',
+            },
+            "Mike",
+            "VP",
+        ],
         ["Alice", "Mike", ""],
         ["Bob", "Jim", "Bob Sponge"],
         ["Carol", "Bob", ""],
@@ -916,11 +997,51 @@ function test_GanttChart() {
     }
 
     data.addRows([
-        ["Research", "Find sources", new Date(2015, 0, 1), new Date(2015, 0, 5), null, 100, null],
-        ["Write", "Write paper", null, new Date(2015, 0, 9), daysToMilliseconds(3), 25, "Research,Outline"],
-        ["Cite", "Create bibliography", null, new Date(2015, 0, 7), daysToMilliseconds(1), 20, "Research"],
-        ["Complete", "Hand in paper", null, new Date(2015, 0, 10), daysToMilliseconds(1), 0, "Cite,Write"],
-        ["Outline", "Outline paper", null, new Date(2015, 0, 6), daysToMilliseconds(1), 100, "Research"],
+        [
+            "Research",
+            "Find sources",
+            new Date(2015, 0, 1),
+            new Date(2015, 0, 5),
+            null,
+            100,
+            null,
+        ],
+        [
+            "Write",
+            "Write paper",
+            null,
+            new Date(2015, 0, 9),
+            daysToMilliseconds(3),
+            25,
+            "Research,Outline",
+        ],
+        [
+            "Cite",
+            "Create bibliography",
+            null,
+            new Date(2015, 0, 7),
+            daysToMilliseconds(1),
+            20,
+            "Research",
+        ],
+        [
+            "Complete",
+            "Hand in paper",
+            null,
+            new Date(2015, 0, 10),
+            daysToMilliseconds(1),
+            0,
+            "Cite,Write",
+        ],
+        [
+            "Outline",
+            "Outline paper",
+            null,
+            new Date(2015, 0, 6),
+            daysToMilliseconds(1),
+            100,
+            "Research",
+        ],
     ]);
 
     var container = document.getElementById("chart_div");
@@ -1062,13 +1183,26 @@ function test_dataNamespace() {
     dt.addColumn("number", "x");
     dt.addColumn("number", "y");
 
-    dt = google.visualization.data.group(dt, [0], [{
-        column: 1,
-        aggregation: google.visualization.data.sum,
-        type: "number",
-    }]);
+    dt = google.visualization.data.group(
+        dt,
+        [0],
+        [
+            {
+                column: 1,
+                aggregation: google.visualization.data.sum,
+                type: "number",
+            },
+        ],
+    );
 
-    dt = google.visualization.data.join(dt, dt, "inner", [["x", 0]], [1], ["y"]);
+    dt = google.visualization.data.join(
+        dt,
+        dt,
+        "inner",
+        [["x", 0]],
+        [1],
+        ["y"],
+    );
 }
 
 function test_chartSelection() {

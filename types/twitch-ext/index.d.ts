@@ -37,7 +37,9 @@ declare namespace Twitch.ext {
          *
          * @see https://dev.twitch.tv/docs/extensions/reference/#onfollow
          */
-        function onFollow(callback: (didFollow: boolean, channelName: string) => void): void;
+        function onFollow(
+            callback: (didFollow: boolean, channelName: string) => void,
+        ): void;
 
         /**
          * This function opens a prompt for users to share their identity.
@@ -81,14 +83,21 @@ declare namespace Twitch.ext {
          * @param version The version of configuration with which the segment is stored.
          * @param content The string-encoded configuration.
          */
-        function set(segment: "broadcaster", version: string, content: string): void;
+        function set(
+            segment: "broadcaster",
+            version: string,
+            content: string,
+        ): void;
     }
 
     /**
      * @see https://dev.twitch.tv/docs/extensions/reference/#twitch-extension-feature-flags
      */
     namespace features {
-        type ChangedKey = "isBitsEnabled" | "isChatEnabled" | "isSubscriptionStatusAvailable";
+        type ChangedKey =
+            | "isBitsEnabled"
+            | "isChatEnabled"
+            | "isSubscriptionStatusAvailable";
 
         /**
          * If this flag is true, Bits in Extensions features will work in your extension on the current channel.
@@ -115,7 +124,9 @@ declare namespace Twitch.ext {
          *
          * @param callback The callback is called with an array of feature flags which were updated.
          */
-        function onChanged(callback: (changed: readonly ChangedKey[]) => void): void;
+        function onChanged(
+            callback: (changed: readonly ChangedKey[]) => void,
+        ): void;
     }
 
     /**
@@ -148,7 +159,9 @@ declare namespace Twitch.ext {
          *
          * @see https://dev.twitch.tv/docs/extensions/bits/#ontransactioncompletecallbacktransactionobject
          */
-        function onTransactionComplete(callback: (transaction: BitsTransaction) => void): void;
+        function onTransactionComplete(
+            callback: (transaction: BitsTransaction) => void,
+        ): void;
 
         /**
          * This function sets the state of the extension helper, so it does not call live services for
@@ -212,7 +225,10 @@ declare namespace Twitch.ext {
      * @see https://dev.twitch.tv/docs/extensions/reference/#oncontext
      */
     function onContext(
-        contextCallback: <T extends Partial<Context>>(context: T, changed: ReadonlyArray<keyof T>) => void,
+        contextCallback: <T extends Partial<Context>>(
+            context: T,
+            changed: ReadonlyArray<keyof T>,
+        ) => void,
     ): void;
 
     /**
@@ -231,7 +247,9 @@ declare namespace Twitch.ext {
      * @param callback This callback is called whenever the extension is or is no longer highlighted by the user.
      * @see https://dev.twitch.tv/docs/extensions/reference/#onhighlightchanged
      */
-    function onHighlightChanged(callback: (isHighlighted: boolean) => void): void;
+    function onHighlightChanged(
+        callback: (isHighlighted: boolean) => void,
+    ): void;
 
     /**
      * This function registers a callback that gets called whenever an extension changes position in the player. This
@@ -240,7 +258,9 @@ declare namespace Twitch.ext {
      * @param callback This callback is called whenever an extension changes position in the player.
      * @see https://dev.twitch.tv/docs/extensions/reference/#onpositionchanged
      */
-    function onPositionChanged(callback: (position: { x: number; y: number }) => void): void;
+    function onPositionChanged(
+        callback: (position: { x: number; y: number }) => void,
+    ): void;
 
     /**
      * This function registers a callback that gets called whenever an extension is hidden/re-shown. (This occurs only
@@ -251,7 +271,9 @@ declare namespace Twitch.ext {
      * @see https://dev.twitch.tv/docs/extensions/reference/#onvisibilitychanged
      */
     function onVisibilityChanged(
-        callback: ((isVisible: false) => void) | ((isVisible: true, context: Partial<Context>) => void),
+        callback:
+            | ((isVisible: false) => void)
+            | ((isVisible: true, context: Partial<Context>) => void),
     ): void;
 
     /**
@@ -262,7 +284,11 @@ declare namespace Twitch.ext {
      * @param message Either an object that will be automatically serialized as JSON or a string.
      * @see https://dev.twitch.tv/docs/extensions/reference/#send
      */
-    function send(target: string, contentType: string, message: object | string): void;
+    function send(
+        target: string,
+        contentType: string,
+        message: object | string,
+    ): void;
 
     /**
      * This function binds the callback to listen to the target topic.
@@ -271,7 +297,14 @@ declare namespace Twitch.ext {
      * @param callback These fields correspond to the values in the send() message, except the message is always a string.
      * @see https://dev.twitch.tv/docs/extensions/reference/#listen
      */
-    function listen(target: string, callback: (target: string, contentType: string, message: string) => void): void;
+    function listen(
+        target: string,
+        callback: (
+            target: string,
+            contentType: string,
+            message: string,
+        ) => void,
+    ): void;
 
     /**
      * This function unbinds the listen callback from the target.
@@ -280,7 +313,14 @@ declare namespace Twitch.ext {
      * @param callback These fields correspond to the values in the send() message, except the message is always a string.
      * @see https://dev.twitch.tv/docs/extensions/reference/#unlisten
      */
-    function unlisten(target: string, callback: (target: string, contentType: string, message: string) => void): void;
+    function unlisten(
+        target: string,
+        callback: (
+            target: string,
+            contentType: string,
+            message: string,
+        ) => void,
+    ): void;
 
     interface BitsProductCost {
         /**
@@ -499,16 +539,16 @@ declare namespace Twitch.ext {
          */
         hostingInfo?:
             | {
-                /**
-                 * Numeric ID of the channel being hosted by the currently visible channel
-                 */
-                hostedChannelId: string;
+                  /**
+                   * Numeric ID of the channel being hosted by the currently visible channel
+                   */
+                  hostedChannelId: string;
 
-                /**
-                 * Numeric ID of the host channel
-                 */
-                hostingChannelId: string;
-            }
+                  /**
+                   * Numeric ID of the host channel
+                   */
+                  hostingChannelId: string;
+              }
             | undefined;
 
         /**

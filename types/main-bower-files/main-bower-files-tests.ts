@@ -2,8 +2,7 @@ import gulp = require("gulp");
 import mainBowerFiles = require("main-bower-files");
 
 gulp.task("main-bower-files:simple", () => {
-    gulp.src(mainBowerFiles())
-        .pipe(gulp.dest("dist/bower"));
+    gulp.src(mainBowerFiles()).pipe(gulp.dest("dist/bower"));
 });
 
 mainBowerFiles(undefined, (_: Error | null) => {});
@@ -25,6 +24,7 @@ gulp.task("main-bower-files:options", () => {
         },
     });
 
-    gulp.src(files, { base: "path/to/bower_components" })
-        .pipe(gulp.dest("dist/bower"));
+    gulp.src(files, { base: "path/to/bower_components" }).pipe(
+        gulp.dest("dist/bower"),
+    );
 });

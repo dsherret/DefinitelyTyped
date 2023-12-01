@@ -15,16 +15,22 @@ const d: jiff.JSONObject = {
         { id: "2", value: "original2" },
     ],
 };
-const e: jiff.JSONPatch = [{ op: "replace", path: "/list/2/value", value: "replaced", context: "2" }];
+const e: jiff.JSONPatch = [
+    { op: "replace", path: "/list/2/value", value: "replaced", context: "2" },
+];
 const f = jiff.patch(e, d, {
     findContext(index, array, context) {
-        return array.findIndex((value, index, array) => value["id"] === context);
+        return array.findIndex(
+            (value, index, array) => value["id"] === context,
+        );
     },
 });
 
 jiff.patchInPlace(e, d, {
     findContext(index, array, context) {
-        return array.findIndex((value, index, array) => value["id"] === context);
+        return array.findIndex(
+            (value, index, array) => value["id"] === context,
+        );
     },
 });
 

@@ -2,7 +2,7 @@ import ShareMenu, { ShareMenuReactView } from "react-native-share-menu";
 
 ShareMenu.getSharedText(() => {});
 
-ShareMenu.getSharedText(share => {
+ShareMenu.getSharedText((share) => {
     const mimeType = share?.mimeType;
     const data = share?.data;
     const extraData = share?.extraData;
@@ -10,7 +10,7 @@ ShareMenu.getSharedText(share => {
 
 ShareMenu.getInitialShare(() => {});
 
-ShareMenu.getInitialShare(share => {
+ShareMenu.getInitialShare((share) => {
     const mimeType = share?.mimeType;
     const data = share?.data;
     const extraData = share?.extraData;
@@ -19,7 +19,7 @@ ShareMenu.getInitialShare(share => {
 const shareListener1 = ShareMenu.addNewShareListener(() => {});
 shareListener1.remove();
 
-const shareListener2 = ShareMenu.addNewShareListener(share => {
+const shareListener2 = ShareMenu.addNewShareListener((share) => {
     const mimeType = share?.mimeType;
     const data = share?.data;
     const extraData = share?.extraData;
@@ -36,7 +36,7 @@ ShareMenuReactView.continueInApp({});
 ShareMenuReactView.continueInApp({ extraData: "extra" });
 const data = ShareMenuReactView.data();
 data.then(() => {});
-data.then(share => {
+data.then((share) => {
     const mimeType = share.mimeType;
     const data = share.data;
 });

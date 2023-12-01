@@ -1,7 +1,10 @@
 import semver = require("../index");
 
 declare class SemVer {
-    constructor(version: string | SemVer, optionsOrLoose?: boolean | semver.RangeOptions);
+    constructor(
+        version: string | SemVer,
+        optionsOrLoose?: boolean | semver.RangeOptions,
+    );
 
     raw: string;
     loose: boolean;

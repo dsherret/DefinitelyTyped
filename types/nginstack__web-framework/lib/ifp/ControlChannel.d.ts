@@ -15,7 +15,11 @@ declare class ControlChannel {
     lockScreen(): void;
     requestScreenLock(): void;
     isScreenLockPending(): boolean;
-    unlockSessionByNavigator(userName: string, password: string, newPassword?: string): string;
+    unlockSessionByNavigator(
+        userName: string,
+        password: string,
+        newPassword?: string,
+    ): string;
     isScreenLocked(): boolean;
     getScreenLockedAt(): number;
     getScreenUnlockedAt(): number;
@@ -39,7 +43,9 @@ declare class ControlChannel {
         retry: any,
         disableContinueOptimization: any,
     ): any;
-    handleNavigatorResponse(ctrlMessage: any): "ctrl:continue" | "ctrl:stop:-1" | "ctrl:setok";
+    handleNavigatorResponse(
+        ctrlMessage: any,
+    ): "ctrl:continue" | "ctrl:stop:-1" | "ctrl:setok";
 }
 declare namespace ControlChannel {
     function formatErrorPayload(

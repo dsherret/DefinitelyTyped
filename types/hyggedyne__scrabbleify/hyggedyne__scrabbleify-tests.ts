@@ -1,4 +1,9 @@
-import { numbers, punctuation, scrabbleify, symbols } from "@hyggedyne/scrabbleify";
+import {
+    numbers,
+    punctuation,
+    scrabbleify,
+    symbols,
+} from "@hyggedyne/scrabbleify";
 
 const loremIpsum = `Lorem Ipsum is simply ....  of Lorem Ipsum.`;
 

@@ -1,5 +1,7 @@
 export function compare(size1: SCREEN_RANGE, size2: SCREEN_RANGE): number;
-export function getFrameworkQuery(frameworkQueryKey: FRAMEWORK_QUERY_KEY): string | null;
+export function getFrameworkQuery(
+    frameworkQueryKey: FRAMEWORK_QUERY_KEY,
+): string | null;
 export type FRAMEWORK_QUERY_KEY =
     | "sm-up"
     | "md-up"

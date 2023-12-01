@@ -15,13 +15,18 @@ export type EndHandler<RefElement extends undefined | HTMLElement> = RefHandler<
     (done: () => void) => void
 >;
 
-export type EnterHandler<RefElement extends undefined | HTMLElement> = RefHandler<
-    RefElement,
-    (node: HTMLElement, isAppearing: boolean) => void,
-    (isAppearing: boolean) => void
->;
+export type EnterHandler<RefElement extends undefined | HTMLElement> =
+    RefHandler<
+        RefElement,
+        (node: HTMLElement, isAppearing: boolean) => void,
+        (isAppearing: boolean) => void
+    >;
 
-export type ExitHandler<E extends undefined | HTMLElement> = RefHandler<E, (node: HTMLElement) => void, () => void>;
+export type ExitHandler<E extends undefined | HTMLElement> = RefHandler<
+    E,
+    (node: HTMLElement) => void,
+    () => void
+>;
 
 export const UNMOUNTED = "unmounted";
 export const EXITED = "exited";
@@ -134,12 +139,21 @@ interface BaseTransitionProps<RefElement extends undefined | HTMLElement> {
     [prop: string]: any;
 }
 
-export type TransitionStatus = typeof ENTERING | typeof ENTERED | typeof EXITING | typeof EXITED | typeof UNMOUNTED;
+export type TransitionStatus =
+    | typeof ENTERING
+    | typeof ENTERED
+    | typeof EXITING
+    | typeof EXITED
+    | typeof UNMOUNTED;
 export type TransitionChildren =
     | ReactNode
-    | ((status: TransitionStatus, childProps?: Record<string, unknown>) => ReactNode);
+    | ((
+          status: TransitionStatus,
+          childProps?: Record<string, unknown>,
+      ) => ReactNode);
 
-export interface TimeoutProps<RefElement extends undefined | HTMLElement> extends BaseTransitionProps<RefElement> {
+export interface TimeoutProps<RefElement extends undefined | HTMLElement>
+    extends BaseTransitionProps<RefElement> {
     /**
      * The duration of the transition, in milliseconds. Required unless addEndListener is provided.
      *
@@ -159,7 +173,13 @@ export interface TimeoutProps<RefElement extends undefined | HTMLElement> extend
      * - enter defaults to `0`
      * - exit defaults to `0`
      */
-    timeout: number | { appear?: number | undefined; enter?: number | undefined; exit?: number | undefined };
+    timeout:
+        | number
+        | {
+              appear?: number | undefined;
+              enter?: number | undefined;
+              exit?: number | undefined;
+          };
 
     /**
      * Add a custom transition end trigger. Called with the transitioning DOM
@@ -169,7 +189,8 @@ export interface TimeoutProps<RefElement extends undefined | HTMLElement> extend
     addEndListener?: EndHandler<RefElement> | undefined;
 }
 
-export interface EndListenerProps<Ref extends undefined | HTMLElement> extends BaseTransitionProps<Ref> {
+export interface EndListenerProps<Ref extends undefined | HTMLElement>
+    extends BaseTransitionProps<Ref> {
     /**
      * The duration of the transition, in milliseconds. Required unless addEndListener is provided.
      *
@@ -191,7 +212,11 @@ export interface EndListenerProps<Ref extends undefined | HTMLElement> extends B
      */
     timeout?:
         | number
-        | { appear?: number | undefined; enter?: number | undefined; exit?: number | undefined }
+        | {
+              appear?: number | undefined;
+              enter?: number | undefined;
+              exit?: number | undefined;
+          }
         | undefined;
     /**
      * Add a custom transition end trigger. Called with the transitioning DOM
@@ -201,9 +226,9 @@ export interface EndListenerProps<Ref extends undefined | HTMLElement> extends B
     addEndListener: EndHandler<Ref>;
 }
 
-export type TransitionProps<RefElement extends undefined | HTMLElement = undefined> =
-    | TimeoutProps<RefElement>
-    | EndListenerProps<RefElement>;
+export type TransitionProps<
+    RefElement extends undefined | HTMLElement = undefined,
+> = TimeoutProps<RefElement> | EndListenerProps<RefElement>;
 
 /**
  * The Transition component lets you describe a transition from one component
@@ -245,6 +270,8 @@ export type TransitionProps<RefElement extends undefined | HTMLElement = undefin
  * );
  * ```
  */
-declare class Transition<RefElement extends HTMLElement | undefined> extends Component<TransitionProps<RefElement>> {}
+declare class Transition<
+    RefElement extends HTMLElement | undefined,
+> extends Component<TransitionProps<RefElement>> {}
 
 export default Transition;

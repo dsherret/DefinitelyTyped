@@ -91,15 +91,17 @@ resolve.dns!.lookupSrvs(resolvedSrvRecords).then(([rec]) => {
 });
 
 resolve.dns!.resolveSrv("foo", { service: "foo", protocol: "tcp" }); // $ExpectType Promise<ResolvedSrvRecord[]>
-resolve.dns!.resolveSrv("foo", { service: "foo", protocol: "tcp" }).then(([rec]) => {
-    rec; // $ExpectType ResolvedSrvRecord
-    rec.name; // $ExpectType string
-    rec.port; // $ExpectType number
-    rec.priority; // $ExpectType number
-    rec.protocol; // $ExpectType string
-    rec.service; // $ExpectType string
-    rec.weight; // $ExpectType number
-});
+resolve
+    .dns!.resolveSrv("foo", { service: "foo", protocol: "tcp" })
+    .then(([rec]) => {
+        rec; // $ExpectType ResolvedSrvRecord
+        rec.name; // $ExpectType string
+        rec.port; // $ExpectType number
+        rec.priority; // $ExpectType number
+        rec.protocol; // $ExpectType string
+        rec.service; // $ExpectType string
+        rec.weight; // $ExpectType number
+    });
 
 resolve.dns!.sortSrv(resolvedSrvRecords); // $ExpectType ResolvedSrvRecord[]
 

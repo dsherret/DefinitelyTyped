@@ -19,10 +19,12 @@ class ClassComponent extends React.Component<CompProps> {
 const FunctionComponent = () => React.createElement("div");
 
 const ForwardRefComponent = React.forwardRef((props, ref) =>
-    React.createElement(ClassComponent, { forwardedRef: ref, ...props })
+    React.createElement(ClassComponent, { forwardedRef: ref, ...props }),
 );
 
-const LazyComponent = React.lazy(() => Promise.resolve({ default: ForwardRefComponent }));
+const LazyComponent = React.lazy(() =>
+    Promise.resolve({ default: ForwardRefComponent }),
+);
 
 const MemoComponent = React.memo(FunctionComponent);
 
@@ -47,10 +49,17 @@ ReactIs.isValidElementType(MemoComponent);
 // Context
 const ThemeContext = React.createContext("blue");
 
-ReactIs.isContextConsumer(<ThemeContext.Consumer children={FunctionComponent} />); // true
-ReactIs.isContextProvider(<ThemeContext.Provider children={<FunctionComponent />} value="black" />); // true
-ReactIs.typeOf(<ThemeContext.Consumer children={FunctionComponent} />) === ReactIs.ContextConsumer; // true
-ReactIs.typeOf(<ThemeContext.Provider children={<FunctionComponent />} value="black" />) === ReactIs.ContextProvider; // true
+ReactIs.isContextConsumer(
+    <ThemeContext.Consumer children={FunctionComponent} />,
+); // true
+ReactIs.isContextProvider(
+    <ThemeContext.Provider children={<FunctionComponent />} value="black" />,
+); // true
+ReactIs.typeOf(<ThemeContext.Consumer children={FunctionComponent} />) ===
+    ReactIs.ContextConsumer; // true
+ReactIs.typeOf(
+    <ThemeContext.Provider children={<FunctionComponent />} value="black" />,
+) === ReactIs.ContextProvider; // true
 
 // Element
 ReactIs.isElement(<div />); // true
@@ -93,4 +102,5 @@ ReactIs.typeOf(MemoComponent) === ReactIs.Memo; // true
 
 // Suspense
 ReactIs.isForwardRef(<React.Suspense fallback={<FunctionComponent />} />); // true
-ReactIs.typeOf(<React.Suspense fallback={<FunctionComponent />} />) === ReactIs.Suspense; // true
+ReactIs.typeOf(<React.Suspense fallback={<FunctionComponent />} />) ===
+    ReactIs.Suspense; // true

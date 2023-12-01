@@ -16,7 +16,15 @@ interface CreateTransactionArg {
     expiryHeight?: Buffer | undefined;
     useTrustedInputForSegwit?: boolean | undefined;
     onDeviceStreaming?:
-        | (({ progress, total, index }: { progress: number; total: number; index: number }) => void)
+        | (({
+              progress,
+              total,
+              index,
+          }: {
+              progress: number;
+              total: number;
+              index: number;
+          }) => void)
         | undefined;
     onDeviceSignatureRequested?: (() => void) | undefined;
     onDeviceSignatureGranted?: (() => void) | undefined;
@@ -62,14 +70,22 @@ declare class AppBtc {
 
     getWalletPublicKey(
         path: string,
-        opts?: boolean | { verify?: boolean | undefined; format?: AddressFormat | undefined },
+        opts?:
+            | boolean
+            | {
+                  verify?: boolean | undefined;
+                  format?: AddressFormat | undefined;
+              },
     ): Promise<{
         publicKey: string;
         bitcoinAddress: string;
         chainCode: string;
     }>;
 
-    signMessageNew(path: string, messageHex: string): Promise<{ v: number; r: string; s: string }>;
+    signMessageNew(
+        path: string,
+        messageHex: string,
+    ): Promise<{ v: number; r: string; s: string }>;
 
     createPaymentTransactionNew(arg: CreateTransactionArg): Promise<string>;
 
@@ -85,9 +101,17 @@ declare class AppBtc {
 
     serializeTransactionOutputs(t: Transaction): Buffer;
 
-    getTrustedInput(indexLookup: number, transaction: Transaction, additionals?: string[]): Promise<string>;
+    getTrustedInput(
+        indexLookup: number,
+        transaction: Transaction,
+        additionals?: string[],
+    ): Promise<string>;
 
-    getTrustedInputBIP143(indexLookup: number, transaction: Transaction, additionals?: string[]): string;
+    getTrustedInputBIP143(
+        indexLookup: number,
+        transaction: Transaction,
+        additionals?: string[],
+    ): string;
 
     startUntrustedHashTransactionInputRaw(
         newTransaction: boolean,

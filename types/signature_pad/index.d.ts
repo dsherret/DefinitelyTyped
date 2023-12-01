@@ -27,11 +27,22 @@ declare namespace SignaturePad {
         startWidth: number;
         endWidth: number;
 
-        constructor(startPoint: Point, control1: Point, control2: Point, endPoint: Point);
+        constructor(
+            startPoint: Point,
+            control1: Point,
+            control2: Point,
+            endPoint: Point,
+        );
 
         length(): number;
 
-        _point(t: number, start: number, c1: number, c2: number, end: number): number;
+        _point(
+            t: number,
+            start: number,
+            c1: number,
+            c2: number,
+            end: number,
+        ): number;
     }
 
     interface SignaturePadOptions {
@@ -190,7 +201,10 @@ declare class SignaturePad {
     ) => void;
     _toSVG: () => string;
 
-    constructor(canvas: HTMLCanvasElement, options?: SignaturePad.SignaturePadOptions);
+    constructor(
+        canvas: HTMLCanvasElement,
+        options?: SignaturePad.SignaturePadOptions,
+    );
 }
 
 export = SignaturePad;

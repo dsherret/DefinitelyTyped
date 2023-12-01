@@ -24,7 +24,7 @@ flightplan.target("production", [
 ]);
 
 // run with `fly dynamic-hosts`
-flightplan.target("dynamic-hosts", function(done) {
+flightplan.target("dynamic-hosts", function (done) {
     done("test");
 });
 
@@ -44,12 +44,12 @@ flightplan.target("production", [
 ]);
 
 // flightplan.local
-flightplan.local(function(local) {
+flightplan.local(function (local) {
     local.echo("hello from your localhost.");
 });
 
 // flightplan.remote
-flightplan.remote(function(remote) {
+flightplan.remote(function (remote) {
     remote.echo("hello from the remote host.");
 });
 
@@ -57,15 +57,16 @@ flightplan.remote(function(remote) {
 flightplan.abort("Severe turbulences over the atlantic ocean!");
 
 // transport.exec
-flightplan.local(function(local) {
+flightplan.local(function (local) {
     local.echo("Shell.echo() called");
 });
 
-flightplan.remote(function(remote) {
+flightplan.remote(function (remote) {
     remote.echo("SSH.echo() called");
 });
 
-flightplan.remote(function(transport) { // applies to local flights as well
+flightplan.remote(function (transport) {
+    // applies to local flights as well
     // Flightplan specific information
     console.log(flightplan.runtime.task); // 'default'
     console.log(flightplan.runtime.target); // 'production'
@@ -76,7 +77,7 @@ flightplan.remote(function(transport) { // applies to local flights as well
     console.log(transport.runtime); // { host: 'www1.example.com', port: 22 }
 });
 
-flightplan.local(function(transport) {
+flightplan.local(function (transport) {
     // output of `ls -al` is suppressed
     transport.ls("-al", { silent: true });
 
@@ -96,7 +97,7 @@ flightplan.local(function(transport) {
     transport.ls("-al", { exec: { pty: true } });
 });
 
-flightplan.remote(function(transport) {
+flightplan.remote(function (transport) {
     // output of `ls -al` is suppressed
     transport.ls("-al", { silent: true });
 
@@ -117,7 +118,7 @@ flightplan.remote(function(transport) {
 });
 
 // transport.sudo
-flightplan.local(function(transport) {
+flightplan.local(function (transport) {
     // will run: sudo -u root -i bash -c 'Hello world'
     transport.sudo("echo Hello world");
 
@@ -125,10 +126,14 @@ flightplan.local(function(transport) {
     transport.sudo("echo Hello world", { user: "www" });
 
     // further options passed (see `exec()`)
-    transport.sudo("echo Hello world", { user: "www", silent: true, failsafe: true });
+    transport.sudo("echo Hello world", {
+        user: "www",
+        silent: true,
+        failsafe: true,
+    });
 });
 
-flightplan.remote(function(transport) {
+flightplan.remote(function (transport) {
     // will run: sudo -u root -i bash -c 'Hello world'
     transport.sudo("echo Hello world");
 
@@ -136,11 +141,15 @@ flightplan.remote(function(transport) {
     transport.sudo("echo Hello world", { user: "www" });
 
     // further options passed (see `exec()`)
-    transport.sudo("echo Hello world", { user: "www", silent: true, failsafe: true });
+    transport.sudo("echo Hello world", {
+        user: "www",
+        silent: true,
+        failsafe: true,
+    });
 });
 
 // transport.files
-flightplan.local(function(transport) {
+flightplan.local(function (transport) {
     var files = ["path/to/file1", "path/to/file2"];
     transport.transfer(files, "/tmp/foo");
 
@@ -149,18 +158,25 @@ flightplan.local(function(transport) {
     transport.transfer(files2, "/tmp/foo");
 
     // use zero-terminated result from a previous command
-    var files3 = transport.exec("(git ls-files -z;find node_modules -type f -print0)", { silent: true });
+    var files3 = transport.exec(
+        "(git ls-files -z;find node_modules -type f -print0)",
+        { silent: true },
+    );
     transport.transfer(files3, "/tmp/foo");
 
     // use results from multiple commands
-    var result1 = transport.git("ls-files", { silent: true }).stdout.split("\n");
-    var result2 = transport.find("node_modules -type f", { silent: true }).stdout.split("\n");
+    var result1 = transport
+        .git("ls-files", { silent: true })
+        .stdout.split("\n");
+    var result2 = transport
+        .find("node_modules -type f", { silent: true })
+        .stdout.split("\n");
     var files4 = result1.concat(result2);
     files4.push("path/to/another/file");
     transport.transfer(files4, "/tmp/foo");
 });
 
-flightplan.remote(function(transport) {
+flightplan.remote(function (transport) {
     var files = ["path/to/file1", "path/to/file2"];
     transport.transfer(files, "/tmp/foo");
 
@@ -169,19 +185,26 @@ flightplan.remote(function(transport) {
     transport.transfer(files2, "/tmp/foo");
 
     // use zero-terminated result from a previous command
-    var files3 = transport.exec("(git ls-files -z;find node_modules -type f -print0)", { silent: true });
+    var files3 = transport.exec(
+        "(git ls-files -z;find node_modules -type f -print0)",
+        { silent: true },
+    );
     transport.transfer(files3, "/tmp/foo");
 
     // use results from multiple commands
-    var result1 = transport.git("ls-files", { silent: true }).stdout.split("\n");
-    var result2 = transport.find("node_modules -type f", { silent: true }).stdout.split("\n");
+    var result1 = transport
+        .git("ls-files", { silent: true })
+        .stdout.split("\n");
+    var result2 = transport
+        .find("node_modules -type f", { silent: true })
+        .stdout.split("\n");
     var files4 = result1.concat(result2);
     files4.push("path/to/another/file");
     transport.transfer(files4, "/tmp/foo");
 });
 
 // transport.prompt
-flightplan.local(function(transport) {
+flightplan.local(function (transport) {
     var input = transport.prompt("Are you sure you want to continue? [yes]");
     if (input.indexOf("yes") === -1) {
         flightplan.abort("User canceled flight");
@@ -192,14 +215,16 @@ flightplan.local(function(transport) {
 
     // prompt when deploying to a specific target
     if (flightplan.runtime.target === "production") {
-        var input = transport.prompt("Ready for deploying to production? [yes]");
+        var input = transport.prompt(
+            "Ready for deploying to production? [yes]",
+        );
         if (input.indexOf("yes") === -1) {
             flightplan.abort("User canceled flight");
         }
     }
 });
 
-flightplan.remote(function(transport) {
+flightplan.remote(function (transport) {
     var input = transport.prompt("Are you sure you want to continue? [yes]");
     if (input.indexOf("yes") === -1) {
         flightplan.abort("User canceled flight");
@@ -210,7 +235,9 @@ flightplan.remote(function(transport) {
 
     // prompt when deploying to a specific target
     if (flightplan.runtime.target === "production") {
-        var input = transport.prompt("Ready for deploying to production? [yes]");
+        var input = transport.prompt(
+            "Ready for deploying to production? [yes]",
+        );
         if (input.indexOf("yes") === -1) {
             flightplan.abort("User canceled flight");
         }
@@ -218,8 +245,8 @@ flightplan.remote(function(transport) {
 });
 
 // transport.waitFor
-flightplan.local(function(transport) {
-    var result = transport.waitFor(function(done) {
+flightplan.local(function (transport) {
+    var result = transport.waitFor(function (done) {
         done("sent!");
     });
     console.log(result); // 'sent!'

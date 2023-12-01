@@ -85,7 +85,11 @@ declare module "node:console" {
              * @param value The value tested for being truthy.
              * @param message All arguments besides `value` are used as error message.
              */
-            assert(value: any, message?: string, ...optionalParams: any[]): void;
+            assert(
+                value: any,
+                message?: string,
+                ...optionalParams: any[]
+            ): void;
             /**
              * When `stdout` is a TTY, calling `console.clear()` will attempt to clear the
              * TTY. When `stdout` is not a TTY, this method does nothing.
@@ -402,8 +406,12 @@ declare module "node:console" {
             }
             interface ConsoleConstructor {
                 prototype: Console;
-                new(stdout: NodeJS.WritableStream, stderr?: NodeJS.WritableStream, ignoreErrors?: boolean): Console;
-                new(options: ConsoleConstructorOptions): Console;
+                new (
+                    stdout: NodeJS.WritableStream,
+                    stderr?: NodeJS.WritableStream,
+                    ignoreErrors?: boolean,
+                ): Console;
+                new (options: ConsoleConstructorOptions): Console;
             }
         }
         var console: Console;

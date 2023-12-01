@@ -24,7 +24,11 @@ export interface PublicApi {
      * @param options
      * Additional options for the icon.
      */
-    icon(id: string, urlConfig: UrlConfig<undefined>, options?: ImageIcon | SvgIcon): this;
+    icon(
+        id: string,
+        urlConfig: UrlConfig<undefined>,
+        options?: ImageIcon | SvgIcon,
+    ): this;
 
     /**
      * Adds an icon-set.
@@ -38,7 +42,11 @@ export interface PublicApi {
      * @param options
      * Additional options for the icon-set.
      */
-    svgSet(id: string, urlConfig: UrlConfig<undefined>, options?: SvgIconSet): this;
+    svgSet(
+        id: string,
+        urlConfig: UrlConfig<undefined>,
+        options?: SvgIconSet,
+    ): this;
 
     /**
      * Adds an icon-set.
@@ -52,7 +60,11 @@ export interface PublicApi {
      * @param options
      * Additional options for the icon-set.
      */
-    svgSet(id: string, urlConfig: UrlConfig<string[]>, options?: SvgCumulativeIconSet): this;
+    svgSet(
+        id: string,
+        urlConfig: UrlConfig<string[]>,
+        options?: SvgCumulativeIconSet,
+    ): this;
 
     /**
      * An alias of the `svgSet`-method.
@@ -71,7 +83,11 @@ export interface PublicApi {
      * @param options
      * Additional options for the icon-set.
      */
-    font(id: string, cssClassConfig: CssClassConfig, options?: CssIconSet): this;
+    font(
+        id: string,
+        cssClassConfig: CssClassConfig,
+        options?: CssIconSet,
+    ): this;
 
     /**
      * Adds a sprite icon-set.
@@ -85,7 +101,11 @@ export interface PublicApi {
      * @param options
      * Additional options for the icon-set.
      */
-    sprite(id: string, cssClassConfig: CssClassConfig, options?: CssIconSet): this;
+    sprite(
+        id: string,
+        cssClassConfig: CssClassConfig,
+        options?: CssIconSet,
+    ): this;
 
     /**
      * Adds a link to the `alias` icon-set.
@@ -112,7 +132,10 @@ export interface PublicApi {
      * @param options
      * Additional options for the svg-set.
      */
-    defaultIconSetUrl(url: string, options?: SvgIconSet | SvgCumulativeIconSet): this;
+    defaultIconSetUrl(
+        url: string,
+        options?: SvgIconSet | SvgCumulativeIconSet,
+    ): this;
 
     /**
      * An alias of the `defaultSvgSetUrl`-method.
@@ -162,7 +185,10 @@ export interface PublicApi {
      * @param eventHandler
      * A callback for handling the icon-loader `Promise`.
      */
-    preload(names: string | string[] | boolean, eventHandler?: IconLoadedEventHandler): this;
+    preload(
+        names: string | string[] | boolean,
+        eventHandler?: IconLoadedEventHandler,
+    ): this;
 
     /**
      * Adds an event-handler to the `ready`-event.

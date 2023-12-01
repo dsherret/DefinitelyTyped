@@ -20,15 +20,27 @@ declare module "mitm" {
             bypass(): void;
         }
 
-        type SocketConnectCallback = (socket: BypassableSocket, opts: SocketOptions) => void;
+        type SocketConnectCallback = (
+            socket: BypassableSocket,
+            opts: SocketOptions,
+        ) => void;
 
-        type SocketConnectionCallback = (socket: net.Socket, opts: SocketOptions) => void;
+        type SocketConnectionCallback = (
+            socket: net.Socket,
+            opts: SocketOptions,
+        ) => void;
 
-        type HttpCallback = (request: http.IncomingMessage, response: http.ServerResponse) => void;
+        type HttpCallback = (
+            request: http.IncomingMessage,
+            response: http.ServerResponse,
+        ) => void;
 
         type Event = "connect" | "connection" | "request";
 
-        type Callback = SocketConnectCallback | SocketConnectionCallback | HttpCallback;
+        type Callback =
+            | SocketConnectCallback
+            | SocketConnectionCallback
+            | HttpCallback;
 
         interface Mitm {
             disable(): void;

@@ -27,7 +27,11 @@ declare class WebpackDeadcodePlugin extends Plugin {
 
     constructor(options?: Options);
 
-    handleAfterEmit(options: Required<Options>, compilation: compilation.Compilation, callback: () => void): void;
+    handleAfterEmit(
+        options: Required<Options>,
+        compilation: compilation.Compilation,
+        callback: () => void,
+    ): void;
 }
 
 export = WebpackDeadcodePlugin;

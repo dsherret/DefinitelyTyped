@@ -24,7 +24,7 @@ piWifi.connect("myTestNetwork", "MyTestPassword", (err) => {
     if (err) {
         return err.message;
     }
-    "Successful connection!";
+    ("Successful connection!");
 });
 piWifi.connectOpen("myTestNetwork", (err) => {
     if (err) {
@@ -32,12 +32,17 @@ piWifi.connectOpen("myTestNetwork", (err) => {
     }
     return "Successful connection!";
 });
-piWifi.connectEAP("myTestNetwork", "MyTestUsername", "MyTestPassword", (err) => {
-    if (err) {
-        return err.message;
-    }
-    return "Successful connection!";
-});
+piWifi.connectEAP(
+    "myTestNetwork",
+    "MyTestUsername",
+    "MyTestPassword",
+    (err) => {
+        if (err) {
+            return err.message;
+        }
+        return "Successful connection!";
+    },
+);
 piWifi.disconnect((err) => {
     if (err) {
         return err.message;
@@ -93,7 +98,11 @@ piWifi.status("wlan0", (err, status) => {
     return status;
 });
 piWifi.startSupplicant(
-    { iface: "wlan0", config: "/etc/wpa_supplicant/wpa_supplicant.conf", dns: "/etc/resolv.conf" },
+    {
+        iface: "wlan0",
+        config: "/etc/wpa_supplicant/wpa_supplicant.conf",
+        dns: "/etc/resolv.conf",
+    },
     (err) => {
         if (err) {
             return err.message;

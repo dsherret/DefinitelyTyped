@@ -21,22 +21,38 @@ expectType<typeof RemovedKeysActual>(RemovedKeys);
 
 declare const ExpectedKeys: ExpectedKeys;
 
-declare const AddedKeysActual: Exclude<keyof ES2019Operations, keyof ES2018Operations | keyof ES2019>;
+declare const AddedKeysActual: Exclude<
+    keyof ES2019Operations,
+    keyof ES2018Operations | keyof ES2019
+>;
 export declare const AddedKeys: AddedKeys;
 
-declare const AllAddedKeysActual: Exclude<keyof ES2019Operations, keyof ES2018Operations>;
+declare const AllAddedKeysActual: Exclude<
+    keyof ES2019Operations,
+    keyof ES2018Operations
+>;
 export declare const AllAddedKeys: AllAddedKeys;
 
-declare const RemovedKeysActual: Exclude<keyof ES2018Operations, keyof ES2019Operations>;
+declare const RemovedKeysActual: Exclude<
+    keyof ES2018Operations,
+    keyof ES2019Operations
+>;
 export declare const RemovedKeys: RemovedKeys;
 
 // ## Long types:
 // #region RemovedKeys
-export type RemovedKeys = "ModuleDeclarationEnvironmentSetup" | "ModuleExecution" | "WakeWaiter";
+export type RemovedKeys =
+    | "ModuleDeclarationEnvironmentSetup"
+    | "ModuleExecution"
+    | "WakeWaiter";
 // #endregion
 
 // #region AddedKeys
-export type AllAddedKeys = AddedKeys | "AddEntriesFromIterable" | "FlattenIntoArray" | "TrimString";
+export type AllAddedKeys =
+    | AddedKeys
+    | "AddEntriesFromIterable"
+    | "FlattenIntoArray"
+    | "TrimString";
 
 export type AddedKeys =
     | "AsyncFromSyncIteratorContinuation"

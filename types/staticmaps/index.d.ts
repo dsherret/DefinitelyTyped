@@ -1,4 +1,10 @@
-import { FitEnum, JpegOptions, OutputOptions, PngOptions, WebpOptions } from "sharp";
+import {
+    FitEnum,
+    JpegOptions,
+    OutputOptions,
+    PngOptions,
+    WebpOptions,
+} from "sharp";
 
 declare class StaticMaps {
     constructor(options: StaticMaps.StaticMapsOptions);
@@ -15,8 +21,14 @@ declare class StaticMaps {
 
 declare class StaticMapsImage {
     image: Buffer;
-    save: (fileName?: string, outputOptions?: OutputOptions | PngOptions | JpegOptions | WebpOptions) => Promise<void>;
-    buffer: (mime?: string, outputOptions?: OutputOptions | PngOptions | JpegOptions | WebpOptions) => Promise<Buffer>;
+    save: (
+        fileName?: string,
+        outputOptions?: OutputOptions | PngOptions | JpegOptions | WebpOptions,
+    ) => Promise<void>;
+    buffer: (
+        mime?: string,
+        outputOptions?: OutputOptions | PngOptions | JpegOptions | WebpOptions,
+    ) => Promise<Buffer>;
 }
 
 declare namespace StaticMaps {
@@ -70,9 +82,9 @@ declare namespace StaticMaps {
          */
         zoomRange?:
             | {
-                min?: ZoomLevel | undefined;
-                max?: ZoomLevel | undefined;
-            }
+                  min?: ZoomLevel | undefined;
+                  max?: ZoomLevel | undefined;
+              }
             | undefined;
         /** @deprecated Use zoomRange.max instead: */
         maxZoom?: number | undefined;

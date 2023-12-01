@@ -47,7 +47,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.WindowManager
      */
-    interface WindowManager extends WindowManager.Props, WindowManager.Prototype {}
+    interface WindowManager
+        extends WindowManager.Props,
+            WindowManager.Prototype {}
 
     namespace WindowManager {
         interface WindowOpeningState {
@@ -81,7 +83,11 @@ declare namespace OO.ui {
                 >,
                 data: unknown,
             ];
-            closing: [win: Window, closed: JQuery.Promise<unknown, Error, WindowClosingState>, data: unknown];
+            closing: [
+                win: Window,
+                closed: JQuery.Promise<unknown, Error, WindowClosingState>,
+                data: unknown,
+            ];
             resize: [win: Window];
         }
 
@@ -246,11 +252,23 @@ declare namespace OO.ui {
             openWindow(
                 win: Window | string,
                 data?: WindowOpeningData,
-            ): WindowInstance & DeprecatedPromise<JQuery.Promise<void>, undefined | Error, WindowOpeningState, unknown>;
+            ): WindowInstance &
+                DeprecatedPromise<
+                    JQuery.Promise<void>,
+                    undefined | Error,
+                    WindowOpeningState,
+                    unknown
+                >;
             openWindow<T>(
                 win: Window | string,
                 data?: T extends object ? never : T,
-            ): WindowInstance & DeprecatedPromise<JQuery.Promise<void>, undefined | Error, WindowOpeningState, unknown>;
+            ): WindowInstance &
+                DeprecatedPromise<
+                    JQuery.Promise<void>,
+                    undefined | Error,
+                    WindowOpeningState,
+                    unknown
+                >;
 
             /**
              * Close a window.
@@ -264,7 +282,8 @@ declare namespace OO.ui {
             closeWindow(
                 win: Window | string,
                 data?: any,
-            ): WindowInstance & DeprecatedPromise<unknown, Error, WindowClosingState>;
+            ): WindowInstance &
+                DeprecatedPromise<unknown, Error, WindowClosingState>;
 
             /**
              * Add windows to the window manager.
@@ -356,7 +375,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -367,7 +389,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -375,7 +400,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -384,11 +412,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -404,7 +444,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): WindowManager;
+            new (config?: ConfigOptions): WindowManager;
             prototype: Prototype;
             static: Static;
             super: Element.Constructor;

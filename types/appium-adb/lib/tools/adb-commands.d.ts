@@ -166,7 +166,10 @@ interface AdbCommands {
      * @return Fully qualified name of the launchable activity
      * @throws {Error} If there was an error while resolving the activity name
      */
-    resolveLaunchableActivity(pkg: string, opts?: ResolveActivityOptions): Promise<string>;
+    resolveLaunchableActivity(
+        pkg: string,
+        opts?: ResolveActivityOptions,
+    ): Promise<string>;
 
     /**
      * Force application to stop on the device under test.
@@ -213,7 +216,10 @@ interface AdbCommands {
      * @param permissions - The list of permissions to be granted.
      * @throws If there was an error while changing permissions.
      */
-    grantPermissions(pkg: string, permissions: readonly string[]): Promise<void>;
+    grantPermissions(
+        pkg: string,
+        permissions: readonly string[],
+    ): Promise<void>;
 
     /**
      * Grant single permission for the particular package.
@@ -242,7 +248,10 @@ interface AdbCommands {
      * @return The list of granted permissions or an empty list.
      * @throws If there was an error while changing permissions.
      */
-    getGrantedPermissions(pkg: string, cmdOutput?: string | null): Promise<string[]>;
+    getGrantedPermissions(
+        pkg: string,
+        cmdOutput?: string | null,
+    ): Promise<string[]>;
 
     /**
      * Retrieve the list of denied permissions for the particular package.
@@ -252,7 +261,10 @@ interface AdbCommands {
      *                                    _dumpsys package_ command. It may speed up the method execution.
      * @return The list of denied permissions or an empty list.
      */
-    getDeniedPermissions(pkg: string, cmdOutput?: string | null): Promise<string[]>;
+    getDeniedPermissions(
+        pkg: string,
+        cmdOutput?: string | null,
+    ): Promise<string[]>;
 
     /**
      * Retrieve the list of requested permissions for the particular package.
@@ -262,7 +274,10 @@ interface AdbCommands {
      *                                    _dumpsys package_ command. It may speed up the method execution.
      * @return The list of requested permissions or an empty list.
      */
-    getReqPermissions(pkg: string, cmdOutput?: string | null): Promise<string[]>;
+    getReqPermissions(
+        pkg: string,
+        cmdOutput?: string | null,
+    ): Promise<string[]>;
 
     /**
      * Retrieve the list of location providers for the device under test.
@@ -304,7 +319,10 @@ interface AdbCommands {
      * @throws If there was an error and ignoreError was true while executing 'adb shell settings put global'
      *                 command on the device under test.
      */
-    setHiddenApiPolicy(value: number | string, ignoreError?: boolean): Promise<void>;
+    setHiddenApiPolicy(
+        value: number | string,
+        ignoreError?: boolean,
+    ): Promise<void>;
 
     /**
      * Reset access to non-SDK APIs to its default setting.
@@ -517,7 +535,11 @@ interface AdbCommands {
      *                        _exec_ method options, for more information about available
      *                        options.
      */
-    push(localPath: string, remotePath: string, opts?: TeenProcessExecOptions): Promise<void>;
+    push(
+        localPath: string,
+        remotePath: string,
+        opts?: TeenProcessExecOptions,
+    ): Promise<void>;
 
     /**
      * Receive a file from the device under test.
@@ -529,7 +551,11 @@ interface AdbCommands {
      *                        _exec_ method options, for more information about available
      *                        options.
      */
-    pull(remotePath: string, localPath: string, opts?: TeenProcessExecOptions): Promise<void>;
+    pull(
+        remotePath: string,
+        localPath: string,
+        opts?: TeenProcessExecOptions,
+    ): Promise<void>;
 
     /**
      * Check whether the process with the particular name is running on the device
@@ -553,7 +579,10 @@ interface AdbCommands {
      * @param systemPort - The number of the local system port.
      * @param devicePort - The number of the remote device port.
      */
-    forwardPort(systemPort: string | number, devicePort: string | number): Promise<void>;
+    forwardPort(
+        systemPort: string | number,
+        devicePort: string | number,
+    ): Promise<void>;
 
     /**
      * Remove TCP port forwarding with adb on the device under test. The forwarding
@@ -577,7 +606,10 @@ interface AdbCommands {
      * @param devicePort - The number of the remote device port.
      * @param systemPort - The number of the local system port.
      */
-    reversePort(devicePort: string | number, systemPort: string | number): Promise<void>;
+    reversePort(
+        devicePort: string | number,
+        systemPort: string | number,
+    ): Promise<void>;
 
     /**
      * Remove TCP port forwarding with adb on the device under test. The forwarding
@@ -596,7 +628,10 @@ interface AdbCommands {
      * @param systemPort - The number of the local system port.
      * @param devicePort - The number of the remote device port.
      */
-    forwardAbstractPort(systemPort: string | number, devicePort: string | number): Promise<void>;
+    forwardAbstractPort(
+        systemPort: string | number,
+        devicePort: string | number,
+    ): Promise<void>;
 
     /**
      * Execute ping shell command on the device under test.
@@ -732,7 +767,11 @@ interface AdbCommands {
      *                                  the activity with.
      * @throws If any exception is reported by adb shell.
      */
-    instrument(pkg: string, activity: string, instrumentWith: string): Promise<void>;
+    instrument(
+        pkg: string,
+        activity: string,
+        instrumentWith: string,
+    ): Promise<void>;
 
     /**
      * Collect Android coverage by instrumenting the particular activity.
@@ -744,7 +783,11 @@ interface AdbCommands {
      * @return The promise is successfully resolved if the instrumentation starts
      *                   without errors.
      */
-    androidCoverage(instrumentClass: string, waitPkg: string, waitActivity: string): Promise<void>;
+    androidCoverage(
+        instrumentClass: string,
+        waitPkg: string,
+        waitActivity: string,
+    ): Promise<void>;
 
     /**
      * Get the particular property of the device under test.
@@ -765,7 +808,11 @@ interface AdbCommands {
      *
      * @throws If _setprop_ utility fails to change property value.
      */
-    setDeviceProperty(prop: string, val: string, opts?: SetPropOptions): Promise<void>;
+    setDeviceProperty(
+        prop: string,
+        val: string,
+        opts?: SetPropOptions,
+    ): Promise<void>;
 
     /**
      * @return Current system language on the device under test.
@@ -847,7 +894,11 @@ interface AdbCommands {
      * @param value - property value.
      * @return command output.
      */
-    setSetting(namespace: string, setting: string, value: string | number): Promise<string>;
+    setSetting(
+        namespace: string,
+        setting: string,
+        value: string | number,
+    ): Promise<string>;
 
     /**
      * Get device property.
@@ -876,7 +927,10 @@ interface AdbCommands {
      * @param options [{}]
      * @returns screenrecord process, which can be then controlled by the client code
      */
-    screenrecord(destination: string, options?: ScreenrecordOptions): SubProcess;
+    screenrecord(
+        destination: string,
+        options?: ScreenrecordOptions,
+    ): SubProcess;
 
     /**
      * Executes the given function with the given input method context

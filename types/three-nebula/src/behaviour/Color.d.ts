@@ -10,7 +10,13 @@ export default class Color extends Behaviour {
     /**
      * Constructs a Color behaviour instance.
      */
-    constructor(colorA: THREE.Color, colorB: THREE.Color, life?: number, easing?: EasingFunction, isEnabled?: boolean);
+    constructor(
+        colorA: THREE.Color,
+        colorB: THREE.Color,
+        life?: number,
+        easing?: EasingFunction,
+        isEnabled?: boolean,
+    );
 
     /**
      * Gets the _same property which determines if the alpha are the same.
@@ -24,7 +30,12 @@ export default class Color extends Behaviour {
     /**
      * Resets the behaviour's parameters.
      */
-    reset(colorA: THREE.Color, colorB: THREE.Color, life?: number, easing?: EasingFunction): void;
+    reset(
+        colorA: THREE.Color,
+        colorB: THREE.Color,
+        life?: number,
+        easing?: EasingFunction,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
     /**
      * Initializes the behaviour's properties for a given particle.

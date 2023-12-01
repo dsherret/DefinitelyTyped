@@ -29,4 +29,8 @@ const g2: GeoJSON.Polygon = {
 eq.compare(g1, g2);
 
 new GeojsonEquality({ precision: 6 });
-new GeojsonEquality({ precision: 6, direction: true, objectComparator: (_a, _b) => true });
+new GeojsonEquality({
+    precision: 6,
+    direction: true,
+    objectComparator: (_a, _b) => true,
+});

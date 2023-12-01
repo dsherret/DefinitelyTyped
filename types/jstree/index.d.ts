@@ -77,7 +77,10 @@ interface JSTreeStatic {
      * @param {Object} options options for this instance (extends `$.jstree.defaults`)
      * @return {jsTree} the new instance
      */
-    create(el: HTMLElement | JQuery | string, options?: JSTreeStaticDefaults): JSTree;
+    create(
+        el: HTMLElement | JQuery | string,
+        options?: JSTreeStaticDefaults,
+    ): JSTree;
 
     /**
      * remove all traces of jstree from the DOM and destroy all instances
@@ -448,15 +451,15 @@ interface JSTreeStaticDefaultsCoreThemes {
 
 interface JSTreeStaticDefaultsCoreKeyboard {
     "ctrl-space": (e: Event) => void;
-    "enter": (e: Event) => void;
-    "left": (e: Event) => void;
-    "up": (e: Event) => void;
-    "right": (e: Event) => void;
-    "down": (e: Event) => void;
+    enter: (e: Event) => void;
+    left: (e: Event) => void;
+    up: (e: Event) => void;
+    right: (e: Event) => void;
+    down: (e: Event) => void;
     "*": (e: Event) => void;
-    "home": (e: Event) => void;
-    "end": (e: Event) => void;
-    "f2": (e: Event) => void;
+    home: (e: Event) => void;
+    end: (e: Event) => void;
+    f2: (e: Event) => void;
 }
 
 interface JSTreeStaticDefaultsCheckbox {
@@ -1077,7 +1080,10 @@ interface JSTree extends JQuery {
      * @return {Boolean}
      * @trigger load_node.jstree
      */
-    load_node: (obj: any, callback: (node: any, status: boolean) => void) => boolean;
+    load_node: (
+        obj: any,
+        callback: (node: any, status: boolean) => void,
+    ) => boolean;
 
     /**
      * load an array of nodes (will also load unavailable nodes as soon as they appear in the structure). Used internally.
@@ -1127,7 +1133,11 @@ interface JSTree extends JQuery {
      * @param {function} callback function which takes boolean flag executes after append (AP: originally lack of comment)
      * @trigger model.jstree, changed.jstree
      */
-    _append_html_data: (dom: any, data: string, cb: (flag: boolean) => void) => void;
+    _append_html_data: (
+        dom: any,
+        data: string,
+        cb: (flag: boolean) => void,
+    ) => void;
 
     /**
      * appends JSON content to the tree. Used internally.
@@ -1138,7 +1148,12 @@ interface JSTree extends JQuery {
      * @param  {Boolean} force_processing internal param - do not set
      * @trigger model.jstree, changed.jstree
      */
-    _append_json_data: (dom: any, data: string, cb: (flag: boolean) => void, force_processing: boolean) => void;
+    _append_json_data: (
+        dom: any,
+        data: string,
+        cb: (flag: boolean) => void,
+        force_processing: boolean,
+    ) => void;
 
     /**
      * parses a node from a jQuery object and appends them to the in memory tree model. Used internally.
@@ -1200,7 +1215,12 @@ interface JSTree extends JQuery {
      * @param {Boolean} is_callback is this a recursion call
      * @param {Boolean} force_render should children of closed parents be drawn anyway
      */
-    redraw_node: (node: any, deep: boolean, is_callback: boolean, force_render: boolean) => void;
+    redraw_node: (
+        node: any,
+        deep: boolean,
+        is_callback: boolean,
+        force_render: boolean,
+    ) => void;
 
     /**
      * opens a node, revealing its children. If the node is not loaded it will be loaded and opened once ready.
@@ -1352,7 +1372,12 @@ interface JSTree extends JQuery {
      * @param {Boolean} prevent_open if set to `true` parents of the selected node won't be opened
      * @trigger select_node.jstree, changed.jstree
      */
-    select_node: (obj: any, supress_event?: boolean, prevent_open?: boolean, e?: any) => any;
+    select_node: (
+        obj: any,
+        supress_event?: boolean,
+        prevent_open?: boolean,
+        e?: any,
+    ) => any;
 
     /**
      * deselect a node
@@ -1486,7 +1511,11 @@ interface JSTree extends JQuery {
      * @param  {Boolean} options.flat return flat JSON instead of nested
      * @return {Object}
      */
-    get_json: (obj?: any, options?: JSTreeGetJsonOptions, flat?: boolean) => any;
+    get_json: (
+        obj?: any,
+        options?: JSTreeGetJsonOptions,
+        flat?: boolean,
+    ) => any;
 
     /**
      * create a new node (do not confuse with load_node)
@@ -1499,7 +1528,13 @@ interface JSTree extends JQuery {
      * @return {String}            the ID of the newly create node
      * @trigger model.jstree, create_node.jstree
      */
-    create_node: (par?: any, node?: any, pos?: any, callback?: any, is_loaded?: boolean) => string;
+    create_node: (
+        par?: any,
+        node?: any,
+        pos?: any,
+        callback?: any,
+        is_loaded?: boolean,
+    ) => string;
 
     /**
      * set the text value of a node
@@ -1638,7 +1673,11 @@ interface JSTree extends JQuery {
      * it is called in the instance's scope and receives the node, a status parameter (true if the rename is successful, false otherwise)
      * and a boolean indicating if the user cancelled the edit. You can access the node's title using .text
      */
-    edit: (obj: any, default_text?: string, callback?: (node: any, status: boolean, canceled: boolean) => void) => void;
+    edit: (
+        obj: any,
+        default_text?: string,
+        callback?: (node: any, status: boolean, canceled: boolean) => void,
+    ) => void;
 
     /**
      * changes the theme

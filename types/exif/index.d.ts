@@ -154,10 +154,17 @@ declare namespace Exif {
     }
 
     type ExifImageCallback = (error: Error | null, data: ExifData) => void;
-    type ExifCallback = (error: Error | null, data: ExifData, dataPath: string) => void;
+    type ExifCallback = (
+        error: Error | null,
+        data: ExifData,
+        dataPath: string,
+    ) => void;
 
     class ExifImage {
-        constructor(options: ExifOptions | string | Buffer, callback: ExifImageCallback);
+        constructor(
+            options: ExifOptions | string | Buffer,
+            callback: ExifImageCallback,
+        );
         constructor();
         loadImage(file: string | Buffer, callback: ExifImageCallback): void;
     }

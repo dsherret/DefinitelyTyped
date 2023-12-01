@@ -14,7 +14,13 @@ type TupleValue<V extends number[]> = V & {
     set: (values: V, time?: number) => void;
 };
 
-declare function Ola<V extends number[]>(values: V, time?: number): TupleValue<V>;
-declare function Ola<K extends string>(values: Record<K, number>, time?: number): MultiValue<Record<K, number>>;
+declare function Ola<V extends number[]>(
+    values: V,
+    time?: number,
+): TupleValue<V>;
+declare function Ola<K extends string>(
+    values: Record<K, number>,
+    time?: number,
+): MultiValue<Record<K, number>>;
 declare function Ola(values: number, time?: number): SingleValue;
 export = Ola;

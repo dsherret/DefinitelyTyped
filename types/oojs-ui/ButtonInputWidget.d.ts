@@ -19,26 +19,24 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ButtonInputWidget
      */
-    interface ButtonInputWidget extends ButtonInputWidget.Props, ButtonInputWidget.Prototype {}
+    interface ButtonInputWidget
+        extends ButtonInputWidget.Props,
+            ButtonInputWidget.Prototype {}
 
     namespace ButtonInputWidget {
         interface EventMap
-            extends
-                InputWidget.EventMap,
+            extends InputWidget.EventMap,
                 mixin.ButtonElement.EventMap,
                 mixin.LabelElement.EventMap,
-                mixin.FlaggedElement.EventMap
-        {}
+                mixin.FlaggedElement.EventMap {}
 
         interface ConfigOptions
-            extends
-                InputWidget.ConfigOptions,
+            extends InputWidget.ConfigOptions,
                 mixin.ButtonElement.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.IndicatorElement.ConfigOptions,
                 mixin.LabelElement.ConfigOptions,
-                mixin.FlaggedElement.ConfigOptions
-        {
+                mixin.FlaggedElement.ConfigOptions {
             /** The value of the HTML `'type'` attribute: 'button', 'submit' or 'reset'. */
             type?: "button" | "submit" | "reset";
 
@@ -52,38 +50,34 @@ declare namespace OO.ui {
              */
             useInputTag?: boolean;
 
-            flags?: LiteralUnion<mixin.ButtonElement.Flag> | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
+            flags?:
+                | LiteralUnion<mixin.ButtonElement.Flag>
+                | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
         }
 
         interface Static
-            extends
-                InputWidget.Static,
+            extends InputWidget.Static,
                 mixin.ButtonElement.Static,
                 mixin.IconElement.Static,
                 mixin.IndicatorElement.Static,
                 mixin.LabelElement.Static,
-                mixin.FlaggedElement.Static
-        {}
+                mixin.FlaggedElement.Static {}
 
         interface Props
-            extends
-                InputWidget.Props,
+            extends InputWidget.Props,
                 mixin.ButtonElement.Props,
                 mixin.IconElement.Props,
                 mixin.IndicatorElement.Props,
                 mixin.LabelElement.Props,
-                mixin.FlaggedElement.Props
-        {}
+                mixin.FlaggedElement.Props {}
 
         interface Prototype
-            extends
-                InputWidget.Prototype,
+            extends InputWidget.Prototype,
                 mixin.ButtonElement.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.IndicatorElement.Prototype,
                 mixin.LabelElement.Prototype,
-                mixin.FlaggedElement.Prototype
-        {
+                mixin.FlaggedElement.Prototype {
             /**
              * Set label value.
              *
@@ -111,7 +105,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -122,7 +119,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -130,7 +130,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -139,11 +142,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -159,7 +174,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ButtonInputWidget;
+            new (config?: ConfigOptions): ButtonInputWidget;
             prototype: Prototype;
             static: Static;
             super: InputWidget.Constructor;

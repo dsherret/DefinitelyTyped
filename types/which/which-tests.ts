@@ -8,14 +8,14 @@ const promise2: Promise<string[]> = which("cat", { all: true });
 const promise3: Promise<string> = which("cat", { nothrow: true });
 
 which("node")
-    .then(resolvedPath => {
+    .then((resolvedPath) => {
         resolvedPath; // $ExpectType string
     })
-    .catch(er => {});
+    .catch((er) => {});
 
-(async () => {
+async () => {
     const path = await which("cat");
-});
+};
 
 const paths = which.sync("cat", { all: true });
 for (const path of paths) {
@@ -29,5 +29,8 @@ if (paths2 !== null) {
     }
 }
 
-const path2 = which.sync("cat", { path: "replacement path", pathExt: "replacement pathext" });
+const path2 = which.sync("cat", {
+    path: "replacement path",
+    pathExt: "replacement pathext",
+});
 which.sync("cat"); // $ExpectType string

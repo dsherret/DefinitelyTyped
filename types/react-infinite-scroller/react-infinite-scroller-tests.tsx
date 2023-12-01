@@ -4,9 +4,7 @@ import InfiniteScroll = require("react-infinite-scroller");
 class Test1 extends React.Component {
     render() {
         return (
-            <InfiniteScroll
-                loadMore={(page) => {}}
-            >
+            <InfiniteScroll loadMore={(page) => {}}>
                 <div>Test 1</div>
             </InfiniteScroll>
         );

@@ -15,7 +15,9 @@ declare module "leaflet" {
         options: TileProps["tileSize"],
     ];
 
-    type TileFactoryFunction<T extends Canvas.Tile | SVG.Tile> = (...args: TileParameters) => T;
+    type TileFactoryFunction<T extends Canvas.Tile | SVG.Tile> = (
+        ...args: TileParameters
+    ) => T;
 
     namespace Canvas {
         class Tile extends Canvas {
@@ -67,9 +69,10 @@ declare module "leaflet" {
         const tile: TileFactoryFunction<SVG.Tile>;
     }
 
-    interface VectorGridOptions<T extends Canvas.Tile | SVG.Tile = Canvas.Tile | SVG.Tile>
-        extends geojsonvt.Options, GridLayerOptions
-    {
+    interface VectorGridOptions<
+        T extends Canvas.Tile | SVG.Tile = Canvas.Tile | SVG.Tile,
+    > extends geojsonvt.Options,
+            GridLayerOptions {
         /** A factory method which will be used to instantiate the per-tile renderers. */
         rendererFactory?: TileFactoryFunction<T>;
         /** A data structure holding initial symbolizer definitions for the vector features. */
@@ -90,14 +93,18 @@ declare module "leaflet" {
          */
         filter?: (properties: geojsonvt.Feature, zoom: number) => boolean;
     }
-    type GetVectorGridRendererHelper<T extends HTMLCanvasElement | SVGViewElement> = T extends
-        | HTMLCanvasElement
-        | SVGViewElement ? Canvas.Tile | SVG.Tile
-        : T extends HTMLCanvasElement ? Canvas.Tile
-        : SVG.Tile;
+    type GetVectorGridRendererHelper<
+        T extends HTMLCanvasElement | SVGViewElement,
+    > = T extends HTMLCanvasElement | SVGViewElement
+        ? Canvas.Tile | SVG.Tile
+        : T extends HTMLCanvasElement
+          ? Canvas.Tile
+          : SVG.Tile;
 
     class VectorGrid<
-        T extends HTMLCanvasElement | SVGViewElement = HTMLCanvasElement | SVGViewElement,
+        T extends HTMLCanvasElement | SVGViewElement =
+            | HTMLCanvasElement
+            | SVGViewElement,
     > extends GridLayer {
         constructor(props: VectorGridOptions<GetVectorGridRendererHelper<T>>);
 
@@ -130,7 +137,11 @@ declare module "leaflet" {
             renderer: GetVectorGridRendererHelper<T>,
             styleOptions: Record<string, PathOptions>,
         ): void;
-        _createLayer(feat: geojsonvt.Feature, pxPerExtent: number, layerStyle: PathOptions): Layer;
+        _createLayer(
+            feat: geojsonvt.Feature,
+            pxPerExtent: number,
+            layerStyle: PathOptions,
+        ): Layer;
     }
     namespace VectorGrid {
         interface SlicerOptions extends VectorGridOptions, geojsonvt.Options {
@@ -170,12 +181,21 @@ declare module "leaflet" {
             _getSubdomain: any;
 
             _isCurrentTile(coords: Coords, tileBounds: TileLayer.WMS): boolean;
-            _getVectorTilePromise(coords: any, tileBounds: any): Promise<TileLayer>;
+            _getVectorTilePromise(
+                coords: any,
+                tileBounds: any,
+            ): Promise<TileLayer>;
         }
     }
     namespace vectorGrid {
-        function slicer(data: geojson.GeoJSON, options?: VectorGrid.SlicerOptions): VectorGrid.Slicer;
-        function protobuf(url: string, options?: VectorGrid.ProtobufOptions): VectorGrid.Protobuf;
+        function slicer(
+            data: geojson.GeoJSON,
+            options?: VectorGrid.SlicerOptions,
+        ): VectorGrid.Slicer;
+        function protobuf(
+            url: string,
+            options?: VectorGrid.ProtobufOptions,
+        ): VectorGrid.Protobuf;
     }
 }
 

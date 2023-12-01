@@ -98,14 +98,20 @@ interface EinsModal {
      * @param modalElementOrId
      * @param options
      */
-    open(modalElementOrId: string | HTMLElement | JQuery, options?: EinsModalOptions | null): void;
+    open(
+        modalElementOrId: string | HTMLElement | JQuery,
+        options?: EinsModalOptions | null,
+    ): void;
 
     /**
      * Close a modal.
      * @param modalElementOrId
      * @param options
      */
-    close(modalElementOrId?: string | HTMLElement | JQuery, options?: EinsModalOptions | null): void;
+    close(
+        modalElementOrId?: string | HTMLElement | JQuery,
+        options?: EinsModalOptions | null,
+    ): void;
 
     /**
      * Override default options.

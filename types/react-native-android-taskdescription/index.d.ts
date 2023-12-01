@@ -5,6 +5,4 @@ export interface ReactNativeAndroidTaskDescriptionProps {
     label?: string | undefined;
 }
 
-export default class ReactNativeAndroidTaskDescription
-    extends React.Component<ReactNativeAndroidTaskDescriptionProps>
-{}
+export default class ReactNativeAndroidTaskDescription extends React.Component<ReactNativeAndroidTaskDescriptionProps> {}

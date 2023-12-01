@@ -75,7 +75,12 @@ declare namespace SFS2X {
                  * @param {number}  secondsForAnswer The number of seconds available to the invitee to reply to the invitation.
                  * @param {Object}  params           An object containing a custom set of parameters representing the invitation details.
                  */
-                constructor(inviter: SFSUser, invitee: SFSUser, secondsForAnswer: number, params: Object);
+                constructor(
+                    inviter: SFSUser,
+                    invitee: SFSUser,
+                    secondsForAnswer: number,
+                    params: Object,
+                );
             }
 
             // #endregion
@@ -378,7 +383,12 @@ declare namespace SFS2X {
              * @param {boolean} [isBlocked=false] If true, the buddy is blocked by the current user.
              * @param {boolean} [isTemp=false]    If true, the buddy is just temporary in the current user's buddy list.
              */
-            constructor(id: number, name: string, isBlocked?: boolean, isTemp?: boolean);
+            constructor(
+                id: number,
+                name: string,
+                isBlocked?: boolean,
+                isTemp?: boolean,
+            );
             /**
              * Indicates whether this user has the specified Buddy Variable set or not.
              * @param  {string}  varName The name of the Buddy Variable whose existance must be checked.
@@ -1126,7 +1136,11 @@ declare namespace SFS2X {
                  * @param {Entities.SFSBuddy} targetBuddy The SFSBuddy object corresponding to the message recipient.
                  * @param {Object}            [parms=null]       An object containing additional custom parameters (e.g. the message color, an emoticon id, etc).
                  */
-                constructor(message: string, targetBuddy: Entities.SFSBuddy, parms?: Object);
+                constructor(
+                    message: string,
+                    targetBuddy: Entities.SFSBuddy,
+                    parms?: Object,
+                );
             }
             // #endregion
             // #region GoOnlineRequest
@@ -1169,7 +1183,9 @@ declare namespace SFS2X {
                  * Creates a new SetBuddyVariablesRequest instance.
                  * @param {Entities.Variables.SFSBuddyVariable[]} buddyVariables A list of SFSBuddyVariable objects representing the Buddy Variables to set.
                  */
-                constructor(buddyVariables: Entities.Variables.SFSBuddyVariable[]);
+                constructor(
+                    buddyVariables: Entities.Variables.SFSBuddyVariable[],
+                );
             }
             // #endregion
         }
@@ -1199,7 +1215,11 @@ declare namespace SFS2X {
                  * @param {number}      invitationReply The answer to be sent to the inviter, among those available as constants in the InvitationReply class.
                  * @param {Object}      [params=null]          An object containing custom parameters to be returned to the inviter together with the reply (for example a message describing the reason of refusal).
                  */
-                constructor(invitation: IINVITATION, invitationReply: number, params?: Object);
+                constructor(
+                    invitation: IINVITATION,
+                    invitationReply: number,
+                    params?: Object,
+                );
             }
             // #endregion
             // #region InviteUsersRequest
@@ -1212,7 +1232,11 @@ declare namespace SFS2X {
                  * @param {number}             secondsForAnswer The number of seconds available to each invited user to reply to the invitation (recommended range: 15 to 40 seconds).
                  * @param {Object}             [params=null]           An object containing custom parameters containing additional invitation details.
                  */
-                constructor(invitedUsers: Entities.SFSUser[], secondsForAnswer: number, params?: Object);
+                constructor(
+                    invitedUsers: Entities.SFSUser[],
+                    secondsForAnswer: number,
+                    params?: Object,
+                );
             }
             // #endregion
             // #region QuickJoinGameRequest
@@ -1224,7 +1248,10 @@ declare namespace SFS2X {
                  * @param {Entities.SFSRoom[]} whereToSearch An array of SFSRoom objects or an array of Group names to which the matching expression should be applied. The maximum number of elements that this array can contain is 32.
                  * @param {Entities.SFSRoom}   [roomToLeave=null]   A SFSRoom object representing the Room that the user should leave when joining the game.
                  */
-                constructor(whereToSearch: Entities.SFSRoom[], roomToLeave?: Entities.SFSRoom);
+                constructor(
+                    whereToSearch: Entities.SFSRoom[],
+                    roomToLeave?: Entities.SFSRoom,
+                );
                 /**
                  * Creates a new QuickJoinGameRequest instance.
                  * @param {Entities.Match.MatchExpression} matchExpression A matching expression that the system will use to search a Game Room where to join the current user.
@@ -1315,7 +1342,10 @@ declare namespace SFS2X {
                  * @param {Entities.Data.Vec3D} lowerLimit
                  * @param {Entities.Data.Vec3D} higherLimit
                  */
-                constructor(lowerLimit: Entities.Data.Vec3D, higherLimit: Entities.Data.Vec3D);
+                constructor(
+                    lowerLimit: Entities.Data.Vec3D,
+                    higherLimit: Entities.Data.Vec3D,
+                );
             }
             // #endregion
             // #region MMORoomSettings
@@ -1349,7 +1379,10 @@ declare namespace SFS2X {
                  * @param {Entities.Data.Vec3D} pos        The user position.
                  * @param {Entities.MMORoom}    [targetRoom=null] The MMORoom object corresponding to the Room where the position should be set; if null, the last Room joined by the user is used.
                  */
-                constructor(pos: Entities.Data.Vec3D, targetRoom?: Entities.MMORoom);
+                constructor(
+                    pos: Entities.Data.Vec3D,
+                    targetRoom?: Entities.MMORoom,
+                );
             }
             // #endregion
         }
@@ -1459,7 +1492,11 @@ declare namespace SFS2X {
                  * @param {MessageRecipientMode} recipientMode An instance of MessageRecipientMode containing the target to which the message should be delivered.
                  * @param {Object}               [params=null]        An object containing custom parameters to be sent to the recipient user/s.
                  */
-                constructor(message: string, recipientMode: MessageRecipientMode, params?: Object);
+                constructor(
+                    message: string,
+                    recipientMode: MessageRecipientMode,
+                    params?: Object,
+                );
             }
             // #endregion
             // #region BanUserRequest
@@ -1493,7 +1530,11 @@ declare namespace SFS2X {
                  * @param {number}           newMaxUsers The new maximum number of users/players who can join the Room; the -1 value can be passed not to change the Room.maxUsers property.
                  * @param {number}           newMaxSpect The new maximum number of spectators who can join the Room (for Game Rooms only); the -1 value can be passed not to change the Room.maxSpectators property.
                  */
-                constructor(room: Entities.SFSRoom, newMaxUsers: number, newMaxSpect: number);
+                constructor(
+                    room: Entities.SFSRoom,
+                    newMaxUsers: number,
+                    newMaxSpect: number,
+                );
             }
             // #endregion
             // #region ChangeRoomNameRequest
@@ -1530,7 +1571,11 @@ declare namespace SFS2X {
                  * @param {boolean}          {autoJoin=false}    If true, the Room is joined as soon as it is created.
                  * @param {Entities.SFSRoom} {roomToLeave=null} A SFSRoom object representing the Room that should be left if the new Room is auto-joined.
                  */
-                constructor(settings: RoomSettings, autoJoin?: boolean, roomToLeave?: Entities.SFSRoom);
+                constructor(
+                    settings: RoomSettings,
+                    autoJoin?: boolean,
+                    roomToLeave?: Entities.SFSRoom,
+                );
             }
             // #endregion
             // #region ExtensionRequest
@@ -1543,7 +1588,11 @@ declare namespace SFS2X {
                  * @param {Object}           {params=null} An object containing custom data to be sent to the Extension. Can be null if no data needs to be sent.
                  * @param {Entities.SFSRoom} {room=null}   If null, the specified command is sent to the current Zone server-side Extension; if not null, the command is sent to the server-side Extension attached to the passed Room.
                  */
-                constructor(extCmd: string, params?: Object, room?: Entities.SFSRoom);
+                constructor(
+                    extCmd: string,
+                    params?: Object,
+                    room?: Entities.SFSRoom,
+                );
             }
             // #endregion
             // #region FindRoomsRequest
@@ -1556,7 +1605,11 @@ declare namespace SFS2X {
                  * @param {string}                         {groupId=null} The name of the Group where to search for matching Rooms; if null, the search is performed in the whole Zone.
                  * @param {number}                         [limit=0]   The maximum size of the list of Rooms that will be returned by the roomFindResult event. If 0, all the found Rooms are returned.
                  */
-                constructor(expr: Entities.Match.MatchExpression, groupId?: string, limit?: number);
+                constructor(
+                    expr: Entities.Match.MatchExpression,
+                    groupId?: string,
+                    limit?: number,
+                );
             }
             // #endregion
             // #region FindUsersRequest
@@ -1569,7 +1622,11 @@ declare namespace SFS2X {
                  * @param {any}                            [target=null] The name of a Group or a single SFSRoom object where to search for matching users; if null, the search is performed in the whole Zone.
                  * @param {number}                         [limit=0]  The maximum size of the list of users that will be returned by the userFindResult event. If 0, all the found users are returned.
                  */
-                constructor(expr: Entities.Match.MatchExpression, target?: any, limit?: number);
+                constructor(
+                    expr: Entities.Match.MatchExpression,
+                    target?: any,
+                    limit?: number,
+                );
             }
             // #endregion
             // #region JoinRoomRequest
@@ -1583,7 +1640,12 @@ declare namespace SFS2X {
                  * @param {number}  [roomIdToLeave] The id of a previously joined Room that the user should leave when joining the new Room. By default, the last joined Room is left; if a negative number is passed, no previous Room is left.
                  * @param {boolean} [asSpect=false]       true to join the Room as a spectator (in Game Rooms only).
                  */
-                constructor(room: any, password?: string, roomIdToLeave?: number, asSpect?: boolean);
+                constructor(
+                    room: any,
+                    password?: string,
+                    roomIdToLeave?: number,
+                    asSpect?: boolean,
+                );
             }
             // #endregion
             // #region KickUserRequest
@@ -1596,7 +1658,11 @@ declare namespace SFS2X {
                  * @param {string} [message=null]      A custom message to be delivered to the user before kicking them; if null, the default message configured in the SmartFoxServer 2X Administration Tool is used.
                  * @param {number} [delaySeconds=5] The number of seconds after which the user is kicked after receiving the kick message.
                  */
-                constructor(userId: number, message?: string, delaySeconds?: number);
+                constructor(
+                    userId: number,
+                    message?: string,
+                    delaySeconds?: number,
+                );
             }
             // #endregion
             // #region LeaveRoomRequest
@@ -1621,7 +1687,12 @@ declare namespace SFS2X {
                  * @param {Object} [params]   An object containing custom parameters to be passed to the Zone Extension (requires a custom login system to be in place).
                  * @param {string} [zoneName] The name (case-sensitive) of the server Zone to login to; if a Zone name is not specified, the client will use the setting passed to the SmartFox class constructor.
                  */
-                constructor(userName: string, password?: string, params?: Object, zoneName?: string);
+                constructor(
+                    userName: string,
+                    password?: string,
+                    params?: Object,
+                    zoneName?: string,
+                );
             }
             // #endregion
             // #region LogoutRequest
@@ -1644,7 +1715,11 @@ declare namespace SFS2X {
                  * @param {MessageRecipientMode} recipientMode An instance of MessageRecipientMode containing the target to which the message should be delivered.
                  * @param {Object}               [params=null]        An object containing custom parameters to be sent to the recipient user/s.
                  */
-                constructor(message: string, recipientMode: MessageRecipientMode, params?: Object);
+                constructor(
+                    message: string,
+                    recipientMode: MessageRecipientMode,
+                    params?: Object,
+                );
             }
             // #endregion
             // #region ObjectMessageRequest
@@ -1657,7 +1732,11 @@ declare namespace SFS2X {
                  * @param {Entities.SFSRoom}   [targetRoom=null] The SFSRoom object corresponding to the Room where the message should be dispatched; if null, the last Room joined by the user is used.
                  * @param {Entities.SFSUser[]} [recipients=null] A list of SFSUser objects corresponding to the message recipients; if null, the message is sent to all users in the target Room (except the sender themselves).
                  */
-                constructor(obj: Object, targetRoom?: Entities.SFSRoom, recipients?: Entities.SFSUser[]);
+                constructor(
+                    obj: Object,
+                    targetRoom?: Entities.SFSRoom,
+                    recipients?: Entities.SFSUser[],
+                );
             }
             // #endregion
             // #region PlayerToSpectatorRequest
@@ -1681,7 +1760,11 @@ declare namespace SFS2X {
                  * @param {number} recipientId The id of the user to which the message is to be sent.
                  * @param {Object} [params=null]      An object containing additional custom parameters to be sent to the message recipient (for example the color of the text, etc).
                  */
-                constructor(message: string, recipientId: number, params?: Object);
+                constructor(
+                    message: string,
+                    recipientId: number,
+                    params?: Object,
+                );
             }
             // #endregion
             // #region PublicMessageRequest
@@ -1694,7 +1777,11 @@ declare namespace SFS2X {
                  * @param {Object}           [params=null]     An object containing additional custom parameters to be sent to the message recipients (for example the color of the text, etc).
                  * @param {Entities.SFSRoom} [targetRoom=null] The SFSRoom object corresponding to the Room where the message should be dispatched; if null, the last Room joined by the user is used.
                  */
-                constructor(message: string, params?: Object, targetRoom?: Entities.SFSRoom);
+                constructor(
+                    message: string,
+                    params?: Object,
+                    targetRoom?: Entities.SFSRoom,
+                );
             }
             // #endregion
             // #region SetRoomVariablesRequest
@@ -1706,7 +1793,10 @@ declare namespace SFS2X {
                  * @param {Entities.Variables.SFSRoomVariable[]} roomVariables A list of SFSRoomVariable objects representing the Room Variables to be set.
                  * @param {Entities.SFSRoom}                     [room=null]          A SFSRoom object representing the Room where to set the Room Variables; if null, the last Room joined by the current user is used.
                  */
-                constructor(roomVariables: Entities.Variables.SFSRoomVariable[], room: Entities.SFSRoom);
+                constructor(
+                    roomVariables: Entities.Variables.SFSRoomVariable[],
+                    room: Entities.SFSRoom,
+                );
             }
             // #endregion
             // #region SetUserVariablesRequest
@@ -1959,8 +2049,7 @@ declare namespace SFS2X {
         errorCode: number;
     }
 
-    interface ILOGOUT {
-    }
+    interface ILOGOUT {}
 
     interface IMMOITEM_VARIABLES_UPDATE {
         room: Entities.MMORoom;
@@ -2167,7 +2256,11 @@ declare namespace SFS2X {
          * @param {Function} listener The listener function that processes the event. This function should accept an object as its only parameter, which in turn contains the event parameters.
          * @param {number}   scope    The object that acts as a context for the event listener: it is the object that acts as a "parent scope" for the callback function, thus providing context (i.e. access to variables and other mehtods) to the function itself.
          */
-        addEventListener(evtType: string, listener: Function, scope: number): void;
+        addEventListener(
+            evtType: string,
+            listener: Function,
+            scope: number,
+        ): void;
         /**
          * Establishes a connection between the client and a SmartFoxServer 2X instance.
          * @param {string}  [host]   The address of the server to connect to.
@@ -2185,7 +2278,11 @@ declare namespace SFS2X {
          * @param {number}  [interval=4]  The amount of seconds to wait between each query (recommended 3-4s).
          * @param {number}  [queueSize=10] The amount of values stored temporarily and used to calculate the average lag.
          */
-        enableLagMonitor(enabled: boolean, interval?: number, queueSize?: number): void;
+        enableLagMonitor(
+            enabled: boolean,
+            interval?: number,
+            queueSize?: number,
+        ): void;
         /**
          * Returns a list of SFSRoom objects representing the Rooms currently joined by the client.
          * @return {Entities.SFSRoom[]} Returns: The list of SFSRoom objects representing the Rooms joined by the client.

@@ -103,7 +103,10 @@ export interface Native {
      * @param params.color    -颜色，格式为 #ffffff
      * @param cb 功能处理后的回调函数
      */
-    setBackgroundColor(params: any, cb: (res: CallbackResultNoData) => void): void;
+    setBackgroundColor(
+        params: any,
+        cb: (res: CallbackResultNoData) => void,
+    ): void;
     /**
      * 通过js接口控制导航栏标题
      * @param params - 接口入参
@@ -198,21 +201,30 @@ export interface Native {
      * @param params.screenOrientation    -    landscape_left:左横屏  landscape_right：右横屏 portrait：竖屏
      * @param cb 功能处理后的回调函数
      */
-    setScreenOrientation(params: any, cb: (res: CallbackResultNoData) => void): void;
+    setScreenOrientation(
+        params: any,
+        cb: (res: CallbackResultNoData) => void,
+    ): void;
     /**
      * 通过js接口设置屏幕可旋转方向
      * @param params - 接口入参
      * @param params.supportScreenOrientation    -    以数组形式，添加可设置方向。
      * @param cb 功能处理后的回调函数
      */
-    setSupportScreenOrientation(params: any, cb: (res: CallbackResult) => void): void;
+    setSupportScreenOrientation(
+        params: any,
+        cb: (res: CallbackResult) => void,
+    ): void;
     /**
      * 通过js接口控制是否隐藏状态栏
      * @param params - 接口入参
      * @param params.hidden    -是否隐藏
      * @param cb 功能处理后的回调函数
      */
-    setSystemStatusBar(params: any, cb: (res: CallbackResultNoData) => void): void;
+    setSystemStatusBar(
+        params: any,
+        cb: (res: CallbackResultNoData) => void,
+    ): void;
     /**
      * 通过js接口获取APP状态栏高度
      * @param params - 接口入参
@@ -391,7 +403,10 @@ export interface Native {
      * @param params - 接口入参
      * @param cb
      */
-    pushGetRegistrationID(params: null, cb: (res: CallbackResult) => void): void;
+    pushGetRegistrationID(
+        params: null,
+        cb: (res: CallbackResult) => void,
+    ): void;
     /**
      * 当前用户添加标签
      * @deprecated
@@ -559,7 +574,10 @@ export interface Native {
      * @param params.type -关闭的键盘类型（price:交易价格键盘 volume:交易量键盘 search:股票代码搜索键盘）
      * @param cb
      */
-    tradekeyboardHide(params: any, cb: (res: CallbackResultNoData) => void): void;
+    tradekeyboardHide(
+        params: any,
+        cb: (res: CallbackResultNoData) => void,
+    ): void;
     /**
      * 通过js分享内容到各平台
      * @param params - 接口入参

@@ -115,7 +115,11 @@ declare namespace ADOX {
             UserName: string,
             ObjectTypeId: any,
         ): void;
-        SetObjectOwner(ObjectName: string, ObjectType: ObjectTypeEnum, UserName: string): void;
+        SetObjectOwner(
+            ObjectName: string,
+            ObjectType: ObjectTypeEnum,
+            UserName: string,
+        ): void;
         readonly Tables: Tables;
         readonly Users: Users;
         readonly Views: Views;
@@ -141,7 +145,11 @@ declare namespace ADOX {
          * @param Type [Type=202]
          * @param DefinedSize [DefinedSize=0]
          */
-        Append(Item: Column | string, Type?: ADODB.DataTypeEnum, DefinedSize?: number): void;
+        Append(
+            Item: Column | string,
+            Type?: ADODB.DataTypeEnum,
+            DefinedSize?: number,
+        ): void;
         readonly Count: number;
         Delete(Item: string | number): void;
         Item(Item: string | number): Column;
@@ -162,7 +170,10 @@ declare namespace ADOX {
             ObjectType: ObjectTypeEnum.adPermObjProviderSpecific,
             ObjectTypeId: any,
         ): RightsEnum;
-        GetPermissions(Name: string | null, ObjectType: ObjectTypeEnum): RightsEnum;
+        GetPermissions(
+            Name: string | null,
+            ObjectType: ObjectTypeEnum,
+        ): RightsEnum;
         Name: string;
         ParentCatalog: Catalog;
         readonly Properties: ADODB.Properties;
@@ -212,7 +223,10 @@ declare namespace ADOX {
     }
 
     interface Indexes {
-        Append(Item: Index | string, Columns?: string | SafeArray<string>): void; // is this actually two overloads, one with [Index] and one with [string,string | SafeArray<string>]?
+        Append(
+            Item: Index | string,
+            Columns?: string | SafeArray<string>,
+        ): void; // is this actually two overloads, one with [Index] and one with [string,string | SafeArray<string>]?
         readonly Count: number;
         Delete(Item: string | number): void;
         Item(Item: string | number): Index;
@@ -306,7 +320,10 @@ declare namespace ADOX {
             ObjectType: ObjectTypeEnum.adPermObjProviderSpecific,
             ObjectTypeId: any,
         ): RightsEnum;
-        GetPermissions(Name: string | null, ObjectType: ObjectTypeEnum): RightsEnum;
+        GetPermissions(
+            Name: string | null,
+            ObjectType: ObjectTypeEnum,
+        ): RightsEnum;
         readonly Groups: Groups;
         Name: string;
         ParentCatalog: Catalog;

@@ -20,7 +20,12 @@ export class Attr {
      * @param name - The name of the attribute to look up.
      * @returns - Output of the value of the attribute. Use the GIT_ATTR_...
      */
-    static get(repo: Repository, flags: number, path: string, name: string): Promise<string>;
+    static get(
+        repo: Repository,
+        flags: number,
+        path: string,
+        name: string,
+    ): Promise<string>;
     /**
      * @param repo - The repository containing the path.
      * @param flags - A combination of GIT_ATTR_CHECK... flags.
@@ -29,7 +34,13 @@ export class Attr {
      * @param numAttr - The number of attributes being looked up
      * @param names - An array of num_attr strings containing attribute names.
      */
-    static getMany(repo: Repository, flags: number, path: string, numAttr: number, names: string): any[];
+    static getMany(
+        repo: Repository,
+        flags: number,
+        path: string,
+        numAttr: number,
+        names: string,
+    ): any[];
     /**
      * @param attr - The attribute
      * @returns - the value type for the attribute

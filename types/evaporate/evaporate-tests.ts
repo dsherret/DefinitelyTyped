@@ -6,9 +6,9 @@ const newEvaporate = new Evaporate({
 
 Evaporate.create({
     bucket: "abc",
-})
-    .then((evaporate) => {
-        evaporate.add({
+}).then((evaporate) => {
+    evaporate
+        .add({
             name: "gwejlf",
             file: new File(["abcd"], "efg"),
             started: (file_key) => {
@@ -21,10 +21,10 @@ Evaporate.create({
                 evaporate.cancel(file_key);
             },
         })
-            .then((awsS3ObjectKey) => {
-                console.log(awsS3ObjectKey + "!!!");
-            });
-    });
+        .then((awsS3ObjectKey) => {
+            console.log(awsS3ObjectKey + "!!!");
+        });
+});
 
 Evaporate.create({
     bucket: "test",

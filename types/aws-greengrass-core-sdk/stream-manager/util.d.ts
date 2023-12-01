@@ -16,6 +16,9 @@ interface FromMap<T> {
  * @param type instance type
  * @return object
  */
-export function deserializeJsonBytesToObj<T>(bytes: Buffer, type: FromMap<T>): T;
+export function deserializeJsonBytesToObj<T>(
+    bytes: Buffer,
+    type: FromMap<T>,
+): T;
 
 export {};

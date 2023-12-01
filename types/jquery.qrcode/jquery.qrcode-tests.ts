@@ -2,16 +2,16 @@
 $(".container").qrcode();
 
 $(".container").qrcode({
-    "size": 100,
-    "fill": "#3a3",
-    "text": "http://larsjung.de/qrcode",
+    size: 100,
+    fill: "#3a3",
+    text: "http://larsjung.de/qrcode",
 });
 
 $(".container").qrcode({
-    "render": "div",
-    "size": 100,
-    "fill": "#3a3",
-    "text": "http://larsjung.de/qrcode",
+    render: "div",
+    size: 100,
+    fill: "#3a3",
+    text: "http://larsjung.de/qrcode",
 });
 
 // defaults

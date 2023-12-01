@@ -63,10 +63,7 @@ export class ReactFlagsSelectTest extends React.Component {
                     defaultCountry="GB"
                     onSelect={this.onSelectFlag}
                 />
-                <ReactFlagsSelect
-                    ref="userFlag"
-                    defaultCountry="FR"
-                />
+                <ReactFlagsSelect ref="userFlag" defaultCountry="FR" />
             </div>
         );
     }

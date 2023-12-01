@@ -7,7 +7,12 @@
  * @param height - image height
  * @param radius - blur radius
  */
-declare function blurMono16(src: Uint16Array, width: number, height: number, radius: number): void;
+declare function blurMono16(
+    src: Uint16Array,
+    width: number,
+    height: number,
+    radius: number,
+): void;
 
 /**
  * Fast gaussian blur in pure JavaScript via IIR filer.

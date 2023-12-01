@@ -251,7 +251,12 @@ declare namespace echarts {
              *
              * @default 'mousemove|click'
              */
-            triggerOn?: "mousemove" | "click" | "mousemove|click" | "none" | undefined;
+            triggerOn?:
+                | "mousemove"
+                | "click"
+                | "mousemove|click"
+                | "none"
+                | undefined;
 
             /**
              * Delay time for showing tooltip, in ms.
@@ -337,7 +342,11 @@ declare namespace echarts {
 
         namespace Tooltip {
             namespace Position {
-                type Type = Position.Str | Position.Obj | Array<number | string> | Position.Fn;
+                type Type =
+                    | Position.Str
+                    | Position.Obj
+                    | Array<number | string>
+                    | Position.Fn;
 
                 type Str = "inside" | "top" | "left" | "right" | "bottom";
 
@@ -386,7 +395,11 @@ declare namespace echarts {
              * }
              */
             interface Formatter {
-                (params: Format | Format[], ticket: string, callback: (ticket: string, html: string) => void): string;
+                (
+                    params: Format | Format[],
+                    ticket: string,
+                    callback: (ticket: string, html: string) => void,
+                ): string;
             }
 
             interface Format {
@@ -452,14 +465,16 @@ declare namespace echarts {
                 z?: number | undefined;
                 label?: BasicComponents.CartesianAxis.PointerLabel | undefined;
                 lineStyle?: LineStyle | undefined;
-                shadowStyle?: {
-                    color?: string | undefined;
-                    shadowBlur?: number | undefined;
-                    shadowColor?: string | undefined;
-                    shadowOffsetX?: number | undefined;
-                    shadowOffsetY?: number | undefined;
-                    opacity?: number | undefined;
-                } | undefined;
+                shadowStyle?:
+                    | {
+                          color?: string | undefined;
+                          shadowBlur?: number | undefined;
+                          shadowColor?: string | undefined;
+                          shadowOffsetX?: number | undefined;
+                          shadowOffsetY?: number | undefined;
+                          opacity?: number | undefined;
+                      }
+                    | undefined;
                 // It is valid when axisPointer.type is 'cross'.
                 crossStyle?: LineStyle | undefined;
                 animation?: boolean | undefined;

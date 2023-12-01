@@ -11,7 +11,7 @@ download("http://unicorn.com/foo.jpg", "dist", { filename: "foo" }); // $ExpectT
 download("http://unicorn.com/foo.jpg", { extract: true }); // $ExpectType Promise<Buffer> & GotEmitter & Duplex
 download("http://unicorn.com/foo.jpg", { filename: "foo" }); // $ExpectType Promise<Buffer> & GotEmitter & Duplex
 
-download("http://unicorn.com/foo.jpg").then(data => {
+download("http://unicorn.com/foo.jpg").then((data) => {
     fs.writeFileSync("dist/foo.jpg", data);
 });
 
@@ -33,8 +33,8 @@ download("unicorn.com/foo.jpg", "dest", {
 
 // Decompress options
 download("unicorn.com/foo.jpg", "dest", {
-    filter: file => true,
-    map: file => file,
+    filter: (file) => true,
+    map: (file) => file,
     plugins: [],
     strip: 1,
 });

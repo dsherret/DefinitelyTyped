@@ -1,7 +1,10 @@
 /// <reference types="node" />
 export = firstline;
 
-declare function firstline(filePath: string, opts?: firstline.Options): Promise<string>;
+declare function firstline(
+    filePath: string,
+    opts?: firstline.Options,
+): Promise<string>;
 
 declare namespace firstline {
     interface Options {

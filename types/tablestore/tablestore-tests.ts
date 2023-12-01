@@ -274,8 +274,14 @@ function putRow() {
 
     const putParams: TableStore.PutRowParams = {
         tableName,
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
-        primaryKey: [{ stringPK: "pk1" }, { autoIncPK: TableStore.PK_AUTO_INCR }],
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.IGNORE,
+            null,
+        ),
+        primaryKey: [
+            { stringPK: "pk1" },
+            { autoIncPK: TableStore.PK_AUTO_INCR },
+        ],
         attributeColumns: [{ col1: "col1val" }],
         returnContent: { returnType: TableStore.ReturnType.Primarykey },
     };
@@ -286,7 +292,10 @@ function putRow() {
             return;
         }
 
-        console.log("put row success,autoIncrement pk value:" + JSON.stringify(data.row?.primaryKey));
+        console.log(
+            "put row success,autoIncrement pk value:" +
+                JSON.stringify(data.row?.primaryKey),
+        );
     });
 }
 
@@ -294,15 +303,35 @@ function putRow() {
 const updateTableWithCondition = () => {
     const Long = TableStore.Long;
 
-    const condition = new TableStore.CompositeCondition(TableStore.LogicalOperator.AND);
-    condition.addSubCondition(new TableStore.SingleColumnCondition("name", "john", TableStore.ComparatorType.EQUAL));
-    condition.addSubCondition(new TableStore.SingleColumnCondition("addr", "china", TableStore.ComparatorType.EQUAL));
+    const condition = new TableStore.CompositeCondition(
+        TableStore.LogicalOperator.AND,
+    );
+    condition.addSubCondition(
+        new TableStore.SingleColumnCondition(
+            "name",
+            "john",
+            TableStore.ComparatorType.EQUAL,
+        ),
+    );
+    condition.addSubCondition(
+        new TableStore.SingleColumnCondition(
+            "addr",
+            "china",
+            TableStore.ComparatorType.EQUAL,
+        ),
+    );
 
     const params: TableStore.UpdateRowParams = {
         tableName: "sampleTable",
-        primaryKey: [{ gid: Long.fromNumber(20013) }, { uid: Long.fromNumber(20013) }],
+        primaryKey: [
+            { gid: Long.fromNumber(20013) },
+            { uid: Long.fromNumber(20013) },
+        ],
         updateOfAttributeColumns: [{ PUT: [{ col1: "test6" }] }],
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.EXPECT_EXIST, condition),
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.EXPECT_EXIST,
+            condition,
+        ),
     };
 
     client.updateRow(params, (err, data) => {
@@ -332,7 +361,10 @@ const updateTableWithCondition = () => {
 
         await client.putRow({
             tableName,
-            condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
+            condition: new TableStore.Condition(
+                TableStore.RowExistenceExpectation.IGNORE,
+                null,
+            ),
             primaryKey,
             attributeColumns: [
                 {
@@ -366,7 +398,10 @@ const updateTableWithCondition = () => {
 
         await client.putRow({
             tableName,
-            condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
+            condition: new TableStore.Condition(
+                TableStore.RowExistenceExpectation.IGNORE,
+                null,
+            ),
             primaryKey,
             attributeColumns: [
                 {
@@ -388,9 +423,14 @@ const attributeIncrement = () => {
     const Long = TableStore.Long;
     const params: TableStore.UpdateRowParams = {
         tableName: "<Your-Table-Name>",
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.EXPECT_EXIST, null),
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.EXPECT_EXIST,
+            null,
+        ),
         primaryKey: [{ pk0: Long.fromNumber(1) }],
-        updateOfAttributeColumns: [{ INCREMENT: [{ price: Long.fromNumber(10) }] }],
+        updateOfAttributeColumns: [
+            { INCREMENT: [{ price: Long.fromNumber(10) }] },
+        ],
         returnContent: {
             returnColumns: ["price"],
             returnType: TableStore.ReturnType.AfterModify,
@@ -409,7 +449,12 @@ const attributeIncrement = () => {
 
 // filter
 function getRowWithCondition() {
-    const condition = new TableStore.SingleColumnCondition("col1", "表格存储", TableStore.ComparatorType.EQUAL, true);
+    const condition = new TableStore.SingleColumnCondition(
+        "col1",
+        "表格存储",
+        TableStore.ComparatorType.EQUAL,
+        true,
+    );
 
     client.getRow(
         {
@@ -429,12 +474,22 @@ function getRowWithCondition() {
 
 function getRowWithCompositeCondition() {
     const Long = TableStore.Long;
-    const condition = new TableStore.CompositeCondition(TableStore.LogicalOperator.AND);
-    condition.addSubCondition(
-        new TableStore.SingleColumnCondition("col1", "表格存储", TableStore.ComparatorType.EQUAL),
+    const condition = new TableStore.CompositeCondition(
+        TableStore.LogicalOperator.AND,
     );
     condition.addSubCondition(
-        new TableStore.SingleColumnCondition("col5", Long.fromNumber(123456789), TableStore.ComparatorType.EQUAL),
+        new TableStore.SingleColumnCondition(
+            "col1",
+            "表格存储",
+            TableStore.ComparatorType.EQUAL,
+        ),
+    );
+    condition.addSubCondition(
+        new TableStore.SingleColumnCondition(
+            "col5",
+            Long.fromNumber(123456789),
+            TableStore.ComparatorType.EQUAL,
+        ),
     );
 
     client.getRow(
@@ -459,8 +514,14 @@ const putARow = () => {
     const currentTimeStamp = Date.now();
     const params: TableStore.PutRowParams = {
         tableName: "sampleTable",
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
-        primaryKey: [{ gid: Long.fromNumber(20013) }, { uid: Long.fromNumber(20013) }],
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.IGNORE,
+            null,
+        ),
+        primaryKey: [
+            { gid: Long.fromNumber(20013) },
+            { uid: Long.fromNumber(20013) },
+        ],
         attributeColumns: [
             { col1: "表格存储" },
             { col2: "2", timestamp: currentTimeStamp },
@@ -485,12 +546,29 @@ const getARow = () => {
     const Long = TableStore.Long;
     const params: TableStore.GetRowParams = {
         tableName: "sampleTable",
-        primaryKey: [{ gid: Long.fromNumber(20004) }, { uid: Long.fromNumber(20004) }],
+        primaryKey: [
+            { gid: Long.fromNumber(20004) },
+            { uid: Long.fromNumber(20004) },
+        ],
         maxVersions: 2,
     };
-    const condition = new TableStore.CompositeCondition(TableStore.LogicalOperator.AND);
-    condition.addSubCondition(new TableStore.SingleColumnCondition("name", "john", TableStore.ComparatorType.EQUAL));
-    condition.addSubCondition(new TableStore.SingleColumnCondition("addr", "china", TableStore.ComparatorType.EQUAL));
+    const condition = new TableStore.CompositeCondition(
+        TableStore.LogicalOperator.AND,
+    );
+    condition.addSubCondition(
+        new TableStore.SingleColumnCondition(
+            "name",
+            "john",
+            TableStore.ComparatorType.EQUAL,
+        ),
+    );
+    condition.addSubCondition(
+        new TableStore.SingleColumnCondition(
+            "addr",
+            "china",
+            TableStore.ComparatorType.EQUAL,
+        ),
+    );
 
     params.columnFilter = condition;
 
@@ -507,10 +585,19 @@ const updateARow = () => {
     const Long = TableStore.Long;
     const params: TableStore.UpdateRowParams = {
         tableName: "sampleTable",
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.IGNORE,
+            null,
+        ),
         primaryKey: [{ gid: Long.fromNumber(9) }, { uid: Long.fromNumber(90) }],
         updateOfAttributeColumns: [
-            { PUT: [{ col4: Long.fromNumber(4) }, { col5: "5" }, { col6: Long.fromNumber(6) }] },
+            {
+                PUT: [
+                    { col4: Long.fromNumber(4) },
+                    { col5: "5" },
+                    { col6: Long.fromNumber(6) },
+                ],
+            },
             { DELETE: [{ col1: Long.fromNumber(1496826473186) }] },
             { DELETE_ALL: ["col2"] },
         ],
@@ -530,7 +617,10 @@ const deleteARow = () => {
     const Long = TableStore.Long;
     const params: TableStore.DeleteRowParams = {
         tableName: "sampleTable",
-        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
+        condition: new TableStore.Condition(
+            TableStore.RowExistenceExpectation.IGNORE,
+            null,
+        ),
         primaryKey: [{ gid: Long.fromNumber(8) }, { uid: Long.fromNumber(80) }],
     };
 
@@ -554,22 +644,47 @@ const wraiteMutipleRows = () => {
                 rows: [
                     {
                         type: "UPDATE",
-                        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
-                        primaryKey: [{ gid: Long.fromNumber(20010) }, { uid: Long.fromNumber(20010) }],
-                        attributeColumns: [{ PUT: [{ col1: "test3" }, { col2: "test4" }] }],
+                        condition: new TableStore.Condition(
+                            TableStore.RowExistenceExpectation.IGNORE,
+                            null,
+                        ),
+                        primaryKey: [
+                            { gid: Long.fromNumber(20010) },
+                            { uid: Long.fromNumber(20010) },
+                        ],
+                        attributeColumns: [
+                            { PUT: [{ col1: "test3" }, { col2: "test4" }] },
+                        ],
                         returnContent: { returnType: 1 },
                     },
                     {
                         type: "PUT",
-                        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
-                        primaryKey: [{ gid: Long.fromNumber(20020) }, { uid: Long.fromNumber(20020) }],
-                        attributeColumns: [{ col1: "test1" }, { col2: "test2" }],
-                        returnContent: { returnType: TableStore.ReturnType.Primarykey },
+                        condition: new TableStore.Condition(
+                            TableStore.RowExistenceExpectation.IGNORE,
+                            null,
+                        ),
+                        primaryKey: [
+                            { gid: Long.fromNumber(20020) },
+                            { uid: Long.fromNumber(20020) },
+                        ],
+                        attributeColumns: [
+                            { col1: "test1" },
+                            { col2: "test2" },
+                        ],
+                        returnContent: {
+                            returnType: TableStore.ReturnType.Primarykey,
+                        },
                     },
                     {
                         type: "DELETE",
-                        condition: new TableStore.Condition(TableStore.RowExistenceExpectation.IGNORE, null),
-                        primaryKey: [{ gid: Long.fromNumber(20018) }, { uid: Long.fromNumber(20018) }],
+                        condition: new TableStore.Condition(
+                            TableStore.RowExistenceExpectation.IGNORE,
+                            null,
+                        ),
+                        primaryKey: [
+                            { gid: Long.fromNumber(20018) },
+                            { uid: Long.fromNumber(20018) },
+                        ],
                     },
                 ],
             },
@@ -593,15 +708,26 @@ const getMultipleRows = () => {
             {
                 tableName: "sampleTable",
                 primaryKey: [
-                    [{ gid: Long.fromNumber(20013) }, { uid: Long.fromNumber(20013) }],
-                    [{ gid: Long.fromNumber(20015) }, { uid: Long.fromNumber(20015) }],
+                    [
+                        { gid: Long.fromNumber(20013) },
+                        { uid: Long.fromNumber(20013) },
+                    ],
+                    [
+                        { gid: Long.fromNumber(20015) },
+                        { uid: Long.fromNumber(20015) },
+                    ],
                 ],
                 startColumn: "col2",
                 endColumn: "col4",
             },
             {
                 tableName: "notExistTable",
-                primaryKey: [[{ gid: Long.fromNumber(10001) }, { uid: Long.fromNumber(10001) }]],
+                primaryKey: [
+                    [
+                        { gid: Long.fromNumber(10001) },
+                        { uid: Long.fromNumber(10001) },
+                    ],
+                ],
             },
         ],
     };
@@ -631,7 +757,8 @@ const getMultipleRows = () => {
                         const pko = row.primaryKey;
                         for (const k of pko) {
                             const { name, value } = k;
-                            const kp: { [key: string]: TableStore.CellValue } = {};
+                            const kp: { [key: string]: TableStore.CellValue } =
+                                {};
                             kp[name] = value;
                             pks.push(kp);
                         }
@@ -661,8 +788,14 @@ const getRange = () => {
     const params: TableStore.GetRangeParams = {
         tableName: "sampleTable",
         direction: TableStore.Direction.FORWARD,
-        inclusiveStartPrimaryKey: [{ gid: TableStore.INF_MIN }, { uid: TableStore.INF_MIN }],
-        exclusiveEndPrimaryKey: [{ gid: TableStore.INF_MAX }, { uid: TableStore.INF_MAX }],
+        inclusiveStartPrimaryKey: [
+            { gid: TableStore.INF_MIN },
+            { uid: TableStore.INF_MIN },
+        ],
+        exclusiveEndPrimaryKey: [
+            { gid: TableStore.INF_MAX },
+            { uid: TableStore.INF_MAX },
+        ],
         limit: 50,
     };
 
@@ -684,7 +817,7 @@ TableStore.events.on("a", () => {});
 // index and search
 const TABLE_NAME = "table_name";
 const INDEX_NAME = "index_name";
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -713,9 +846,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -741,9 +874,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -772,9 +905,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -806,9 +939,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -837,9 +970,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -869,9 +1002,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -900,9 +1033,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -931,9 +1064,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -968,9 +1101,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: "sampleTable",
@@ -988,7 +1121,9 @@ const INDEX_NAME = "index_name";
                                 query: {
                                     shouldQueries: [
                                         {
-                                            queryType: TableStore.QueryType.RANGE_QUERY,
+                                            queryType:
+                                                TableStore.QueryType
+                                                    .RANGE_QUERY,
                                             query: {
                                                 fieldName: "col2",
                                                 rangeTo: 4,
@@ -1009,18 +1144,22 @@ const INDEX_NAME = "index_name";
                                 query: {
                                     mustQueries: [
                                         {
-                                            queryType: TableStore.QueryType.TERM_QUERY,
+                                            queryType:
+                                                TableStore.QueryType.TERM_QUERY,
                                             query: {
                                                 fieldName: "col2",
                                                 term: 4,
                                             },
                                         },
                                         {
-                                            queryType: TableStore.QueryType.BOOL_QUERY,
+                                            queryType:
+                                                TableStore.QueryType.BOOL_QUERY,
                                             query: {
                                                 shouldQueries: [
                                                     {
-                                                        queryType: TableStore.QueryType.TERM_QUERY,
+                                                        queryType:
+                                                            TableStore.QueryType
+                                                                .TERM_QUERY,
                                                         query: {
                                                             fieldName: "col3",
                                                             term: 5,
@@ -1057,9 +1196,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -1088,9 +1227,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     const sorters: TableStore.Sorter[] = [
         {
             scoreSort: {
@@ -1128,9 +1267,9 @@ const INDEX_NAME = "index_name";
             },
         },
     ];
-});
+};
 
-(() => {
+() => {
     client.search(
         {
             tableName: TABLE_NAME,
@@ -1155,9 +1294,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     const params: TableStore.SearchParams = {
         tableName: TABLE_NAME,
         indexName: INDEX_NAME,
@@ -1207,9 +1346,9 @@ const INDEX_NAME = "index_name";
             });
         }
     });
-});
+};
 
-(() => {
+() => {
     client.createSearchIndex(
         {
             tableName: TABLE_NAME,
@@ -1294,9 +1433,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", data);
         },
     );
-});
+};
 
-(() => {
+() => {
     client.deleteSearchIndex(
         {
             tableName: TABLE_NAME,
@@ -1310,9 +1449,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", data);
         },
     );
-});
+};
 
-(() => {
+() => {
     client.listSearchIndex(
         {
             tableName: TABLE_NAME,
@@ -1325,9 +1464,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.describeSearchIndex(
         {
             tableName: TABLE_NAME,
@@ -1341,9 +1480,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.createIndex(
         {
             mainTableName: "sdkGlobalIndexTest",
@@ -1364,9 +1503,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     const Long = TableStore.Long;
 
     const params: TableStore.GetRowParams = {
@@ -1381,15 +1520,21 @@ const INDEX_NAME = "index_name";
         }
         console.log("success:", JSON.stringify(data, null, 2));
     });
-});
+};
 
-(() => {
+() => {
     const params: TableStore.GetRangeParams = {
         tableName: "sdkIndex1",
         direction: TableStore.Direction.FORWARD,
         maxVersions: 10,
-        inclusiveStartPrimaryKey: [{ pk2: TableStore.INF_MIN }, { pk1: TableStore.INF_MIN }],
-        exclusiveEndPrimaryKey: [{ pk2: TableStore.INF_MAX }, { pk1: TableStore.INF_MAX }],
+        inclusiveStartPrimaryKey: [
+            { pk2: TableStore.INF_MIN },
+            { pk1: TableStore.INF_MIN },
+        ],
+        exclusiveEndPrimaryKey: [
+            { pk2: TableStore.INF_MAX },
+            { pk1: TableStore.INF_MAX },
+        ],
         limit: 2,
     };
 
@@ -1416,9 +1561,9 @@ const INDEX_NAME = "index_name";
     };
 
     getRange();
-});
+};
 
-(() => {
+() => {
     client.dropIndex(
         {
             mainTableName: "sdkGlobalTest",
@@ -1432,9 +1577,9 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     client.createIndex(
         {
             mainTableName: "sdkLocalIndexTest",
@@ -1455,14 +1600,18 @@ const INDEX_NAME = "index_name";
             console.log("success:", JSON.stringify(data, null, 2));
         },
     );
-});
+};
 
-(() => {
+() => {
     const Long = TableStore.Long;
 
     const params: TableStore.GetRowParams = {
         tableName: "sdkLocalIndex",
-        primaryKey: [{ pk1: Long.fromNumber(1) }, { col1: Long.fromNumber(2) }, { pk2: Long.fromNumber(2) }],
+        primaryKey: [
+            { pk1: Long.fromNumber(1) },
+            { col1: Long.fromNumber(2) },
+            { pk2: Long.fromNumber(2) },
+        ],
     };
 
     client.getRow(params, (err, data) => {
@@ -1472,9 +1621,9 @@ const INDEX_NAME = "index_name";
         }
         console.log("success:", JSON.stringify(data, null, 2));
     });
-});
+};
 
-(() => {
+() => {
     const params: TableStore.GetRangeParams = {
         tableName: "sdkLocalIndex",
         direction: TableStore.Direction.FORWARD,
@@ -1516,4 +1665,4 @@ const INDEX_NAME = "index_name";
     };
 
     getRange();
-});
+};

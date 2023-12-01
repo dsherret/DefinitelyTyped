@@ -1,5 +1,8 @@
 declare namespace loadImage {
-    type LoadImageCallback = (eventOrImage: Event | HTMLCanvasElement | HTMLImageElement, data?: MetaData) => void;
+    type LoadImageCallback = (
+        eventOrImage: Event | HTMLCanvasElement | HTMLImageElement,
+        data?: MetaData,
+    ) => void;
     type LoadImageResult = MetaData & {
         image: HTMLImageElement | HTMLCanvasElement;
     };
@@ -13,7 +16,14 @@ declare namespace loadImage {
     interface Exif {
         [tag: number]: ExifTagValue;
         map: Record<string, number>;
-        get: (tagName: "Orientation" | "Thumbnail" | "Exif" | "GPSInfo" | "Interoperability") => ExifTagValue;
+        get: (
+            tagName:
+                | "Orientation"
+                | "Thumbnail"
+                | "Exif"
+                | "GPSInfo"
+                | "Interoperability",
+        ) => ExifTagValue;
     }
 
     interface Iptc {
@@ -114,7 +124,10 @@ declare namespace loadImage {
         excludeIptcTags?: Record<number, boolean> | undefined;
     }
 
-    type LoadImageOptions = BasicOptions & CanvasOptions & CropOptions & MetaOptions;
+    type LoadImageOptions = BasicOptions &
+        CanvasOptions &
+        CropOptions &
+        MetaOptions;
 }
 
 interface ParseMetadata {
@@ -132,7 +145,11 @@ interface ParseMetadata {
 }
 
 interface ReplaceHead {
-    (blob: Blob, head: ArrayBuffer | Uint8Array, callback: (blob: Blob | null) => void): void;
+    (
+        blob: Blob,
+        head: ArrayBuffer | Uint8Array,
+        callback: (blob: Blob | null) => void,
+    ): void;
     (blob: Blob, head: ArrayBuffer | Uint8Array): Promise<Blob | null>;
 }
 
@@ -140,16 +157,22 @@ interface Scale {
     <O extends loadImage.LoadImageOptions>(
         image: HTMLImageElement | HTMLCanvasElement,
         options?: O,
-    ): O extends loadImage.CanvasTrueOptions ? HTMLCanvasElement : HTMLImageElement;
+    ): O extends loadImage.CanvasTrueOptions
+        ? HTMLCanvasElement
+        : HTMLImageElement;
 }
 
 // loadImage is implemented as a callable object.
 interface LoadImage {
-    (file: File | Blob | string, callback: loadImage.LoadImageCallback, options: loadImage.LoadImageOptions):
-        | HTMLImageElement
-        | FileReader
-        | false;
-    (file: File | Blob | string, options: loadImage.LoadImageOptions): Promise<loadImage.LoadImageResult>;
+    (
+        file: File | Blob | string,
+        callback: loadImage.LoadImageCallback,
+        options: loadImage.LoadImageOptions,
+    ): HTMLImageElement | FileReader | false;
+    (
+        file: File | Blob | string,
+        options: loadImage.LoadImageOptions,
+    ): Promise<loadImage.LoadImageResult>;
 
     parseMetaData: ParseMetadata;
 
@@ -171,7 +194,13 @@ interface LoadImage {
     // Internal functions, undocumented
     requiresMetaData: (options: loadImage.LoadImageOptions) => boolean;
     fetchBlob: (url: string, callback: () => void) => void;
-    transform: (img: unknown, options: unknown, callback: () => void, file: unknown, data: unknown) => void;
+    transform: (
+        img: unknown,
+        options: unknown,
+        callback: () => void,
+        file: unknown,
+        data: unknown,
+    ) => void;
     global: Window;
     readFile: unknown;
     isInstanceOf: unknown;

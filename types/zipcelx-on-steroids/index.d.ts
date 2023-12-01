@@ -51,4 +51,7 @@ export interface ZipCelXConfig {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export default function zipcelx(config: ZipCelXConfig, target: "export" | "blob"): Promise<Blob> | void;
+export default function zipcelx(
+    config: ZipCelXConfig,
+    target: "export" | "blob",
+): Promise<Blob> | void;

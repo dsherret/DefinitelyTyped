@@ -5,9 +5,9 @@ require.config({
 
     // Requires versions afaik
     paths: {
-        "jquery": "../Definitions/jquery",
-        "underscore": "../Definitions/underscore",
-        "backbone": "../Definitions/backbone",
+        jquery: "../Definitions/jquery",
+        underscore: "../Definitions/underscore",
+        backbone: "../Definitions/backbone",
     },
 
     shim: {
@@ -35,7 +35,9 @@ require(["main"], (main: any, $: any, _: any, Backbone: any) => {
 });
 
 var recOne = require.config({ baseUrl: "js" });
-recOne(["core"], function(core: any) {/*some code*/});
+recOne(["core"], function (core: any) {
+    /*some code*/
+});
 
 // Tests for 'module' magic module typings
 // (Using 'module' only actually makes sense in an external module)

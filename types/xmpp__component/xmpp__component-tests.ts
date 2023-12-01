@@ -9,7 +9,7 @@ const c = component({}); // $ExpectType Component
 component({ password: "foo" }); // $ExpectType Component
 // $ExpectType Component
 component({
-    password: async auth => {
+    password: async (auth) => {
         auth; // $ExpectType (password: string) => Promise<void>
         await auth("foo");
     },

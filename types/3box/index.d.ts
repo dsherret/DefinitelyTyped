@@ -17,7 +17,9 @@ declare namespace Box {
     }
 
     interface Storage {
-        all(opts?: { metadata?: boolean | undefined }): Promise<any[] | undefined>;
+        all(opts?: {
+            metadata?: boolean | undefined;
+        }): Promise<any[] | undefined>;
         get(key: string): Promise<any>;
         log(): StorageLog[];
         getMetadata(key: string): Promise<any>;
@@ -53,12 +55,20 @@ declare namespace Box {
                 ghostBacklogLimit?: number | undefined;
             },
         ): Promise<Thread>;
-        joinThreadByAddress(address: string, name: string, opts?: { noAutoSub?: boolean | undefined }): Promise<Thread>;
+        joinThreadByAddress(
+            address: string,
+            name: string,
+            opts?: { noAutoSub?: boolean | undefined },
+        ): Promise<Thread>;
         createConfidentialThread(name: string): Promise<Thread>;
         subscribeThread(
             address: string,
             config: object,
-            opts?: { name?: string | undefined; firstModerator?: string | undefined; members?: string | undefined },
+            opts?: {
+                name?: string | undefined;
+                firstModerator?: string | undefined;
+                members?: string | undefined;
+            },
         ): Promise<Thread>;
         unsubscribeThread(address?: string): void;
         subscribedThreads(): void;
@@ -76,11 +86,20 @@ declare namespace Box {
 }
 
 declare class Box {
-    static getConfig(address: string, opts?: { profileServer?: string | undefined }): Promise<object>;
+    static getConfig(
+        address: string,
+        opts?: { profileServer?: string | undefined },
+    ): Promise<object>;
     static idUtils: {
-        verifyClaim(claim: string, opts?: { audience?: string | undefined }): Promise<object>;
+        verifyClaim(
+            claim: string,
+            opts?: { audience?: string | undefined },
+        ): Promise<object>;
         isMuportDID(address: string): Promise<boolean>;
-        isClaim(claim: string, opts?: { audience?: string | undefined }): Promise<boolean>;
+        isClaim(
+            claim: string,
+            opts?: { audience?: string | undefined },
+        ): Promise<boolean>;
     };
 
     DID: string;
@@ -107,7 +126,10 @@ declare class Box {
 
     openSpace(
         name: string,
-        opts?: { consentCallback?: (() => void) | undefined; onSyncDone?: (() => void) | undefined },
+        opts?: {
+            consentCallback?: (() => void) | undefined;
+            onSyncDone?: (() => void) | undefined;
+        },
     ): Promise<Box.Space>;
     auth(space: string[], user: { address: string }): void;
     syncDone: Promise<Box.Space>;
@@ -125,16 +147,29 @@ declare class Box {
             profileServer?: string | undefined;
         },
     ): Promise<any>;
-    static getProfiles(address: string, opts?: { profileServer?: string | undefined }): Promise<object>;
-    static profileGraphQL(query: object, opts?: { graphqlServer?: string | undefined }): Promise<object>;
+    static getProfiles(
+        address: string,
+        opts?: { profileServer?: string | undefined },
+    ): Promise<object>;
+    static profileGraphQL(
+        query: object,
+        opts?: { graphqlServer?: string | undefined },
+    ): Promise<object>;
     static getVerifiedAccounts(profile: object): Promise<object>;
 
     static getSpace(
         address: string,
         name: string,
-        opts?: { blocklist?: any; metadata?: string | undefined; profileServer?: string | undefined },
+        opts?: {
+            blocklist?: any;
+            metadata?: string | undefined;
+            profileServer?: string | undefined;
+        },
     ): Promise<object>;
-    static listSpaces(address: string, opts?: { profileServer?: string | undefined }): Promise<object>;
+    static listSpaces(
+        address: string,
+        opts?: { profileServer?: string | undefined },
+    ): Promise<object>;
 
     public: Storage;
     private: Storage;

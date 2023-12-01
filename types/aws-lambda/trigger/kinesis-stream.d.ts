@@ -1,7 +1,10 @@
 import { Handler } from "../handler";
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type KinesisStreamHandler = Handler<KinesisStreamEvent, KinesisStreamBatchResponse | void>;
+export type KinesisStreamHandler = Handler<
+    KinesisStreamEvent,
+    KinesisStreamBatchResponse | void
+>;
 
 export type KinesisStreamTumblingWindowHandler = Handler<
     KinesisStreamTumblingWindowEvent,
@@ -42,7 +45,8 @@ export interface KinesisStreamTumblingWindowEvent extends KinesisStreamEvent {
     isWindowTerminatedEarly: boolean;
 }
 
-export interface KinesisStreamStateResponse extends Partial<KinesisStreamBatchResponse> {
+export interface KinesisStreamStateResponse
+    extends Partial<KinesisStreamBatchResponse> {
     state: { [key: string]: any };
 }
 

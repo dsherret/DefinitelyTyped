@@ -1,4 +1,10 @@
-import { AnyAction, Middleware, Reducer, ReducersMapObject, Store } from "redux";
+import {
+    AnyAction,
+    Middleware,
+    Reducer,
+    ReducersMapObject,
+    Store,
+} from "redux";
 import { Task } from "redux-saga";
 
 export type SagaFunction = (...args: any[]) => any;
@@ -7,7 +13,9 @@ export interface SagaTesterOptions<StateType> {
     initialState?: StateType | undefined;
     reducers?: ReducersMapObject | Reducer<StateType> | undefined;
     middlewares?: Middleware[] | undefined;
-    combineReducers?: ((map: ReducersMapObject) => Reducer<StateType>) | undefined;
+    combineReducers?:
+        | ((map: ReducersMapObject) => Reducer<StateType>)
+        | undefined;
     ignoreReduxActions?: boolean | undefined;
     options?: object | undefined;
 }

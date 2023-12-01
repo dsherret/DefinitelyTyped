@@ -2,7 +2,7 @@ import { clear, run } from "macrotask";
 
 const token = run(() => {});
 // @ts-expect-error
-run(arg1 => {});
+run((arg1) => {});
 
 run(
     (arg1, arg2) => {

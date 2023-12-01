@@ -14,12 +14,20 @@ declare namespace SMS {
 }
 
 declare namespace Meteor {
-    function loginWithPhoneAndPassword(selector: Object | String, password: String, callback?: Function): void;
+    function loginWithPhoneAndPassword(
+        selector: Object | String,
+        password: String,
+        callback?: Function,
+    ): void;
 }
 
 declare module "meteor/meteor" {
     namespace Meteor {
-        function loginWithPhoneAndPassword(selector: Object | String, password: String, callback?: Function): void;
+        function loginWithPhoneAndPassword(
+            selector: Object | String,
+            password: String,
+            callback?: Function,
+        ): void;
     }
 }
 
@@ -37,7 +45,12 @@ declare namespace Accounts {
 
     function createUserWithPhone(options: Object, callback?: Function): void;
     function requestPhoneVerification(phone: string, callback?: Function): void;
-    function verifyPhone(phone: string, code: string, newPassword?: string | Function, callback?: Function): void;
+    function verifyPhone(
+        phone: string,
+        code: string,
+        newPassword?: string | Function,
+        callback?: Function,
+    ): void;
     function isPhoneVerified(): boolean;
     function onPhoneVerification(func: Function): void;
 }
@@ -55,9 +68,20 @@ declare module "meteor/accounts-base" {
             adminPhoneNumbers?: string[] | undefined;
         };
 
-        function createUserWithPhone(options: Object, callback?: Function): void;
-        function requestPhoneVerification(phone: string, callback?: Function): void;
-        function verifyPhone(phone: string, code: string, newPassword?: string | Function, callback?: Function): void;
+        function createUserWithPhone(
+            options: Object,
+            callback?: Function,
+        ): void;
+        function requestPhoneVerification(
+            phone: string,
+            callback?: Function,
+        ): void;
+        function verifyPhone(
+            phone: string,
+            code: string,
+            newPassword?: string | Function,
+            callback?: Function,
+        ): void;
         function isPhoneVerified(): boolean;
         function onPhoneVerification(func: Function): void;
     }

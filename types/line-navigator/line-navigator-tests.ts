@@ -7,7 +7,11 @@ lineNavigator = new LineNavigator(file, {});
 lineNavigator = new LineNavigator(file, { chunkSize: 12345 });
 lineNavigator = new LineNavigator(file, { encoding: "cp-1250" });
 lineNavigator = new LineNavigator(file, { throwOnLongLines: false });
-lineNavigator = new LineNavigator(file, { chunkSize: 12345, encoding: "cp-1250", throwOnLongLines: false });
+lineNavigator = new LineNavigator(file, {
+    chunkSize: 12345,
+    encoding: "cp-1250",
+    throwOnLongLines: false,
+});
 
 const findCallback: LineNavigator.FindCallback = (
     err: any,

@@ -114,7 +114,9 @@ export default class TransformationEvent extends Event {
      * @param quantityList - the quantities to remove
      * @return the transformation event instance
      */
-    removeInputQuantityList(quantityList: QuantityElement[]): TransformationEvent;
+    removeInputQuantityList(
+        quantityList: QuantityElement[],
+    ): TransformationEvent;
     /**
      * Getter for the inputQuantityList property
      * @return the transformation event instance
@@ -149,7 +151,9 @@ export default class TransformationEvent extends Event {
      * @param quantityList - the quantities to remove
      * @return the transformation event instance
      */
-    removeOutputQuantityList(quantityList: QuantityElement[]): TransformationEvent;
+    removeOutputQuantityList(
+        quantityList: QuantityElement[],
+    ): TransformationEvent;
     /**
      * Getter for the outputQuantityList property
      * @return the transformation event instance

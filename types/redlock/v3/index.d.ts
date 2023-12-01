@@ -11,7 +11,12 @@ declare namespace Redlock {
         resource: string;
         value: string | null;
         expiration: number;
-        constructor(redlock: Redlock, resource: string, value: string | null, expiration: number);
+        constructor(
+            redlock: Redlock,
+            resource: string,
+            value: string | null,
+            expiration: number,
+        );
         unlock(callback?: Callback<void>): Promise<void>;
         extend(ttl: number, callback?: Callback<Lock>): Promise<Lock>;
     }
@@ -34,7 +39,10 @@ declare namespace Redlock {
     type EvalArg = string | number;
 
     interface CompatibleRedisClient {
-        eval(args: EvalArg[], callback?: (err: Error | null, res: any) => void): any;
+        eval(
+            args: EvalArg[],
+            callback?: (err: Error | null, res: any) => void,
+        ): any;
     }
 }
 
@@ -47,17 +55,42 @@ declare class Redlock extends EventEmitter {
     retryJitter: number;
     servers: Redlock.CompatibleRedisClient[];
 
-    constructor(clients: Redlock.CompatibleRedisClient[], options?: Redlock.Options);
+    constructor(
+        clients: Redlock.CompatibleRedisClient[],
+        options?: Redlock.Options,
+    );
 
-    acquire(resource: string | string[], ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
-    lock(resource: string | string[], ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    acquire(
+        resource: string | string[],
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
+    lock(
+        resource: string | string[],
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
-    disposer(resource: string, ttl: number, errorHandler?: Redlock.Callback<void>): Promise.Disposer<Redlock.Lock>;
+    disposer(
+        resource: string,
+        ttl: number,
+        errorHandler?: Redlock.Callback<void>,
+    ): Promise.Disposer<Redlock.Lock>;
 
-    release(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
-    unlock(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
+    release(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
+    unlock(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
 
-    extend(lock: Redlock.Lock, ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    extend(
+        lock: Redlock.Lock,
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
     addListener(event: "clientError", listener: (err: any) => void): this;
     on(event: "clientError", listener: (err: any) => void): this;

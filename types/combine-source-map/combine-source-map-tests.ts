@@ -2,7 +2,8 @@ import combine = require("combine-source-map");
 
 const sourcemap = combine.create();
 
-sourcemap.addFile({ sourceFile: "file.js", source: "return 123" })
+sourcemap
+    .addFile({ sourceFile: "file.js", source: "return 123" })
     .addFile({ sourceFile: "source.js", source: "return 'abc'" });
 
 const res: string = sourcemap.base64();

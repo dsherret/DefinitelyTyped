@@ -17,15 +17,21 @@ interface SharedProps {
     wrapperClassName?: string | undefined;
 }
 
-export interface OverflowMenuItemButtonProps extends Omit<ReactButtonAttr, ExcludedAttributes>, SharedProps {
+export interface OverflowMenuItemButtonProps
+    extends Omit<ReactButtonAttr, ExcludedAttributes>,
+        SharedProps {
     href?: null | undefined;
 }
 
-export interface OverflowMenuItemAnchorProps extends Omit<ReactAnchorAttr, ExcludedAttributes>, SharedProps {
+export interface OverflowMenuItemAnchorProps
+    extends Omit<ReactAnchorAttr, ExcludedAttributes>,
+        SharedProps {
     href: string;
 }
 
-export type AllOverflowMenuItemProps = OverflowMenuItemAnchorProps | OverflowMenuItemButtonProps;
+export type AllOverflowMenuItemProps =
+    | OverflowMenuItemAnchorProps
+    | OverflowMenuItemButtonProps;
 
 declare class OverflowMenuItem extends React.Component<AllOverflowMenuItemProps> {}
 

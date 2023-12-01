@@ -22,7 +22,20 @@ namespace Module {
     // $ExpectType Readable
     conventionalChangelogCore(options, context, gitRawCommitsOpts, parserOpts);
     // $ExpectType Readable
-    conventionalChangelogCore(options, context, gitRawCommitsOpts, parserOpts, writerOpts);
+    conventionalChangelogCore(
+        options,
+        context,
+        gitRawCommitsOpts,
+        parserOpts,
+        writerOpts,
+    );
     // $ExpectType Readable
-    conventionalChangelogCore(options, context, gitRawCommitsOpts, parserOpts, writerOpts, execOpts);
+    conventionalChangelogCore(
+        options,
+        context,
+        gitRawCommitsOpts,
+        parserOpts,
+        writerOpts,
+        execOpts,
+    );
 }

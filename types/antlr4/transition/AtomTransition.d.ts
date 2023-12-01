@@ -10,7 +10,11 @@ export default class AtomTransition extends Transition {
 
     makeLabel(): IntervalSet;
 
-    matches(symbol: number, minVocabSymbol: number, maxVocabSymbol: number): boolean;
+    matches(
+        symbol: number,
+        minVocabSymbol: number,
+        maxVocabSymbol: number,
+    ): boolean;
 
     toString(): string;
 }

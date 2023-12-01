@@ -55,10 +55,7 @@ export declare class CountItems extends Array<CountItem> {
      * @param position.y: The y coordinate of the new CountItem in pixels.
      * @minVersion 24.1
      */
-    add(position: {
-        x: number;
-        y: number;
-    }): CountItem;
+    add(position: { x: number; y: number }): CountItem;
     /**
      * Clears all [[CountItem]] objects from this collection.
      *

@@ -59,10 +59,22 @@ declare class FileManager extends EventEmitter {
      */
     readFiles(filenames: string[]): Promise<ReadFilesResult[]>;
 
-    on<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
-    once<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
-    off<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
-    removeListener<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
+    on<K extends keyof Events>(
+        event: K,
+        listener: (...args: Events[K]) => void,
+    ): this;
+    once<K extends keyof Events>(
+        event: K,
+        listener: (...args: Events[K]) => void,
+    ): this;
+    off<K extends keyof Events>(
+        event: K,
+        listener: (...args: Events[K]) => void,
+    ): this;
+    removeListener<K extends keyof Events>(
+        event: K,
+        listener: (...args: Events[K]) => void,
+    ): this;
     removeAllListeners(event?: keyof Events): this;
 }
 
@@ -77,6 +89,13 @@ interface ReadFilesResult {
 }
 
 interface Events {
-    read: [filename: string, callback: (error: Error | null, contents?: Buffer) => void];
-    save: [filename: string, contents: Buffer, callback: (error: Error | null) => void];
+    read: [
+        filename: string,
+        callback: (error: Error | null, contents?: Buffer) => void,
+    ];
+    save: [
+        filename: string,
+        contents: Buffer,
+        callback: (error: Error | null) => void,
+    ];
 }

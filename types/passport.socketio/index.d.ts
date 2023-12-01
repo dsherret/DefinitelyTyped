@@ -28,15 +28,27 @@ export interface PassportSocketIoOptions {
     /**
      * callback on success.
      */
-    success?: ((data: any, accept: (err?: any, accepted?: boolean) => void) => void) | undefined;
+    success?:
+        | ((data: any, accept: (err?: any, accepted?: boolean) => void) => void)
+        | undefined;
 
     /**
      * callback on fail/error.
      */
     fail?:
-        | ((data: any, message: string, critical: boolean, accept: (err?: any, accepted?: boolean) => void) => void)
+        | ((
+              data: any,
+              message: string,
+              critical: boolean,
+              accept: (err?: any, accepted?: boolean) => void,
+          ) => void)
         | undefined;
 }
 
-export function authorize(options: PassportSocketIoOptions): (socket: Socket, fn: (err?: any) => void) => void;
-export function filterSocketsByUser(io: Server, filter: (user: any) => boolean): Socket[];
+export function authorize(
+    options: PassportSocketIoOptions,
+): (socket: Socket, fn: (err?: any) => void) => void;
+export function filterSocketsByUser(
+    io: Server,
+    filter: (user: any) => boolean,
+): Socket[];

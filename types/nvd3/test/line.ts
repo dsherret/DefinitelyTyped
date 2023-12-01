@@ -1,15 +1,16 @@
 namespace nvd3_test_line {
     nv.addGraph({
-        generate: function() {
+        generate: function () {
             var width = nv.utils.windowSize().width - 40,
                 height = nv.utils.windowSize().height - 40;
 
-            var chart = nv.models.line()
+            var chart = nv.models
+                .line()
                 .width(width)
                 .height(height)
                 .margin({ top: 20, right: 20, bottom: 20, left: 20 });
 
-            chart.dispatch.on("renderEnd", function() {
+            chart.dispatch.on("renderEnd", function () {
                 console.log("render complete");
             });
 
@@ -21,8 +22,8 @@ namespace nvd3_test_line {
 
             return chart;
         },
-        callback: function(graph: any) {
-            window.onresize = function() {
+        callback: function (graph: any) {
+            window.onresize = function () {
                 var width = nv.utils.windowSize().width - 40,
                     height = nv.utils.windowSize().height - 40,
                     margin = graph.margin();
@@ -51,7 +52,7 @@ namespace nvd3_test_line {
 
         for (var i = 0; i < 100; i++) {
             sin.push({ x: i, y: Math.sin(i / 10) });
-            cos.push({ x: i, y: .5 * Math.cos(i / 10) });
+            cos.push({ x: i, y: 0.5 * Math.cos(i / 10) });
         }
 
         return [

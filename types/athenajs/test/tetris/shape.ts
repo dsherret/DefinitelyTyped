@@ -139,7 +139,9 @@ class Shape extends Sprite {
     moveToTop(): void {
         if (this.shape) {
             const map = this.currentMap;
-            const col = Math.floor(((map.width - this.shape.width) / 2) / map.tileWidth);
+            const col = Math.floor(
+                (map.width - this.shape.width) / 2 / map.tileWidth,
+            );
 
             this.moveTo(col * map.tileWidth, 0);
         }
@@ -151,7 +153,9 @@ class Shape extends Sprite {
     setShape(name: string, rotation: number): void {
         this.shapeName = name;
         this.rotation = rotation;
-        this.shape = this.shapes.find((shape) => shape.name === this.shapeName) || this.shapes[0];
+        this.shape =
+            this.shapes.find((shape) => shape.name === this.shapeName) ||
+            this.shapes[0];
         this.setAnimation(`${name}${rotation}`);
     }
 
@@ -159,8 +163,8 @@ class Shape extends Sprite {
      * Pick a new random shape
      */
     setRandomShape(): void {
-        const shapeName = this.shapes[Math.random() * 7 | 0].name;
-        const rotation = Math.random() * 4 | 0;
+        const shapeName = this.shapes[(Math.random() * 7) | 0].name;
+        const rotation = (Math.random() * 4) | 0;
 
         console.log(`[Shape] setRandomShape() - ${shapeName}`);
 
@@ -193,7 +197,12 @@ class Shape extends Sprite {
      * Move the shape on the map by a certain number of tiles, optionnaly sending an event
      * of a collision is detected
      */
-    snapTile(horizontal = 0, vertical = 0, notify = true, noSound = false): boolean {
+    snapTile(
+        horizontal = 0,
+        vertical = 0,
+        notify = true,
+        noSound = false,
+    ): boolean {
         const map = this.currentMap;
         const buffer = this.getMatrix();
         const tilePos = map.getTileIndexFromPixel(this.x, this.y);
@@ -201,7 +210,15 @@ class Shape extends Sprite {
         const newY = tilePos.y + vertical;
 
         // first check there is no collision with walls
-        if (!map.checkMatrixForCollision(buffer, this.shape.width, newX, newY, Tile.TYPE.WALL)) {
+        if (
+            !map.checkMatrixForCollision(
+                buffer,
+                this.shape.width,
+                newX,
+                newY,
+                Tile.TYPE.WALL,
+            )
+        ) {
             this.x += horizontal * map.tileWidth;
             this.y += vertical * map.tileHeight;
 
@@ -242,7 +259,15 @@ class Shape extends Sprite {
         // get current shape + position matrix
         matrix = this.getMatrix(newRotation);
 
-        if (!map.checkMatrixForCollision(matrix, this.shape.width, tilePos.x, tilePos.y, Tile.TYPE.WALL)) {
+        if (
+            !map.checkMatrixForCollision(
+                matrix,
+                this.shape.width,
+                tilePos.x,
+                tilePos.y,
+                Tile.TYPE.WALL,
+            )
+        ) {
             // change shape rotation if no collision detected
             this.setShape(this.shapeName, newRotation);
             AM.play("rotate");

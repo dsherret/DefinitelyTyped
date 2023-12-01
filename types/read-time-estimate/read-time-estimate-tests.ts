@@ -11,7 +11,13 @@ const IMAGE_TAGS = ["img", "Image"];
 readTimeEstimate(string, WORD_TIME);
 readTimeEstimate(string, WORD_TIME, IMAGE_TIME);
 readTimeEstimate(string, WORD_TIME, IMAGE_TIME, CHINESE_KOREAN_READ_TIME);
-readTimeEstimate(string, WORD_TIME, IMAGE_TIME, CHINESE_KOREAN_READ_TIME, IMAGE_TAGS);
+readTimeEstimate(
+    string,
+    WORD_TIME,
+    IMAGE_TIME,
+    CHINESE_KOREAN_READ_TIME,
+    IMAGE_TAGS,
+);
 
 const {
     humanizedDuration,
@@ -22,4 +28,10 @@ const {
     imageTime,
     otherLanguageTimeCharacters,
     otherLanguageTime,
-} = readTimeEstimate(string, WORD_TIME, IMAGE_TIME, CHINESE_KOREAN_READ_TIME, IMAGE_TAGS);
+} = readTimeEstimate(
+    string,
+    WORD_TIME,
+    IMAGE_TIME,
+    CHINESE_KOREAN_READ_TIME,
+    IMAGE_TAGS,
+);

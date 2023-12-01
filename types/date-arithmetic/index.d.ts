@@ -23,7 +23,11 @@ export function date(date: Date, value: number): Date;
 export function day(date: Date): number;
 export function day(date: Date, value: number): Date;
 export function weekday(date: Date, value: Date): number;
-export function weekday(date: Date, value: Date, firstOfWeek: StartOfWeek): Date;
+export function weekday(
+    date: Date,
+    value: Date,
+    firstOfWeek: StartOfWeek,
+): Date;
 export function month(date: Date): number;
 export function month(date: Date, value: number): Date;
 export function year(date: Date): number;
@@ -45,7 +49,11 @@ export function endOf(date: Date, unit: Exclude<Unit, "week">): Date;
  * Return a new date with the relevant date parts zero'd out.
  * You only need to provide a firstOfWeek when the unit is 'week'
  */
-export function startOf(date: Date, unit: "week", firstOfWeek: StartOfWeek): Date;
+export function startOf(
+    date: Date,
+    unit: "week",
+    firstOfWeek: StartOfWeek,
+): Date;
 export function startOf(date: Date, unit: Exclude<Unit, "week">): Date;
 
 /** Subtract specified amount of units from a provided date and return new date as a result */
@@ -79,6 +87,11 @@ export function min(...dates: Date[]): Date;
 export function max(...dates: Date[]): Date;
 
 /** Return difference between two dates in provided units */
-export function diff(date1: Date, date2: Date, unit: Unit, asFloat?: boolean): number;
+export function diff(
+    date1: Date,
+    date2: Date,
+    unit: Unit,
+    asFloat?: boolean,
+): number;
 
 export type StartOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;

@@ -27,8 +27,14 @@ declare namespace reconnect {
         readonly connected: boolean;
         reconnect: boolean;
 
-        on(event: "backoff", cb: (n: number, delay: number, err?: any) => void): this;
-        on(event: "connect" | "connection", cb: (con: ConnectionType) => void): this;
+        on(
+            event: "backoff",
+            cb: (n: number, delay: number, err?: any) => void,
+        ): this;
+        on(
+            event: "connect" | "connection",
+            cb: (con: ConnectionType) => void,
+        ): this;
         on(event: "disconnect", cb: (err?: any) => void): this;
         on(event: "error" | "fail", cb: (err: any) => void): this;
         on(event: "reconnect", cb: (n: number, delay: number) => void): this;

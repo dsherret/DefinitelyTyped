@@ -36,7 +36,10 @@ declare namespace UnicodeBidiDirection {
      * `null`.
      */
 
-    function getHTMLDirIfDifferent(dir: BidiDirection, otherDir: BidiDirection): HTMLDir | null | undefined;
+    function getHTMLDirIfDifferent(
+        dir: BidiDirection,
+        otherDir: BidiDirection,
+    ): HTMLDir | null | undefined;
     // Global Direction
     /**
      * Set the global direction.

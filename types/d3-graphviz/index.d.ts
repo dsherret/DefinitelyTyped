@@ -6,20 +6,29 @@ import { ZoomBehavior } from "d3-zoom";
  * Define methods which act as extensions to d3-selection
  */
 declare module "d3-selection" {
-    interface Selection<GElement extends BaseType, Datum, PElement extends BaseType, PDatum> {
+    interface Selection<
+        GElement extends BaseType,
+        Datum,
+        PElement extends BaseType,
+        PDatum,
+    > {
         /**
          * Returns a new graphviz renderer instance on the first element in the given selection. If a graphviz renderer instance already exists
          * on that element, instead returns the existing graphviz renderer instance.
          * @param options either a GraphvizOptions object representing the options of the graphviz renderer or a boolean representing the
          *                  useWorker option.
          */
-        graphviz(options?: GraphvizOptions | boolean): Graphviz<GElement, Datum, PElement, PDatum>;
+        graphviz(
+            options?: GraphvizOptions | boolean,
+        ): Graphviz<GElement, Datum, PElement, PDatum>;
 
         /**
          * For each selected element, selects the first descendant element that matches the specified selector string in the same ways as
          * d3-selection.select, but does not propagate any associated data from the current element to the corresponding selected element.
          */
-        selectWithoutDataPropagation(name: string): Selection<BaseType, Datum, PElement, PDatum>;
+        selectWithoutDataPropagation(
+            name: string,
+        ): Selection<BaseType, Datum, PElement, PDatum>;
     }
 }
 
@@ -39,7 +48,12 @@ export function graphviz(
  * Interface representing the Graphviz Renderer. Methods generally return the instance of the
  * object they were called on (i.e this) in order to allow for easy method chaining.
  */
-export interface Graphviz<GElement extends BaseType, Datum, PElement extends BaseType, PDatum> {
+export interface Graphviz<
+    GElement extends BaseType,
+    Datum,
+    PElement extends BaseType,
+    PDatum,
+> {
     // Options
     /**
      * Gets the currently set options object on the renderer
@@ -107,7 +121,11 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
      *               given as numbers, points (pt) are used.
      * @param height the height of the image, which follows the same unit rules as width.
      */
-    addImage(path: string, width: number | string, height: number | string): this;
+    addImage(
+        path: string,
+        width: number | string,
+        height: number | string,
+    ): this;
 
     // Creating Transitions
     /**
@@ -255,7 +273,9 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
      * Resets any transformations made by panning and zooming.
      * @param transition an optional transition to apply during reset.
      */
-    resetZoom(transition?: string | Transition<GElement, Datum, PElement, PDatum>): this;
+    resetZoom(
+        transition?: string | Transition<GElement, Datum, PElement, PDatum>,
+    ): this;
 
     // Maintaining Object Constancy
     /**
@@ -288,7 +308,14 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
      * @param attributes object containing DOT attributes
      * @param options object containing the options used when drawing the edge
      */
-    drawEdge(x1: number, y1: number, x2: number, y2: number, attributes?: DotAttributes, options?: EdgeOptions): this;
+    drawEdge(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        attributes?: DotAttributes,
+        options?: EdgeOptions,
+    ): this;
 
     /**
      * Updates properties and attributes of the edge currently drawn with {@link drawEdge},
@@ -351,7 +378,13 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
      * @param attributes object containing DOT attributes
      * @param options object containing the options used when drawing the node, currently unused
      */
-    drawNode(x: number, y: number, nodeId: string, attributes?: DotAttributes, options?: any): this;
+    drawNode(
+        x: number,
+        y: number,
+        nodeId: string,
+        attributes?: DotAttributes,
+        options?: any,
+    ): this;
 
     /**
      * Updates properties and attributes of the node currently drawn with {@link drawNode},
@@ -363,7 +396,13 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
      * @param attributes object containing DOT attributes
      * @param options object containing the options used when drawing the node, currently unused
      */
-    updateDrawnNode(x: number, y: number, nodeId: string, attributes?: DotAttributes, options?: any): this;
+    updateDrawnNode(
+        x: number,
+        y: number,
+        nodeId: string,
+        attributes?: DotAttributes,
+        options?: any,
+    ): this;
 
     /**
      * Updates the position of the upper left corner of the node currently drawn
@@ -407,7 +446,14 @@ export interface Graphviz<GElement extends BaseType, Datum, PElement extends Bas
 /**
  * Enum defining the valid strings that can be passed in as an engine
  */
-export type Engine = "circo" | "dot" | "fdp" | "neato" | "osage" | "patchwork" | "twopi";
+export type Engine =
+    | "circo"
+    | "dot"
+    | "fdp"
+    | "neato"
+    | "osage"
+    | "patchwork"
+    | "twopi";
 
 /**
  * Enum defining the valid strings that can be passed as TypeNames

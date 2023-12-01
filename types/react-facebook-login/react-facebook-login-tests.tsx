@@ -5,7 +5,9 @@ import FacebookLogin, {
     ReactFacebookLoginInfo,
     ReactFacebookLoginProps,
 } from "react-facebook-login";
-import FacebookLoginRender, { RenderProps } from "react-facebook-login/dist/facebook-login-render-props";
+import FacebookLoginRender, {
+    RenderProps,
+} from "react-facebook-login/dist/facebook-login-render-props";
 
 const responseFacebook = (response: ReactFacebookLoginInfo) => {
     console.log(response);
@@ -15,7 +17,9 @@ const failureResponseFacebook = (response: ReactFacebookFailureResponse) => {
     console.log(response);
 };
 
-const loginInfoOrFailureResponse = (response: ReactFacebookLoginInfo | ReactFacebookLoginInfo) => {
+const loginInfoOrFailureResponse = (
+    response: ReactFacebookLoginInfo | ReactFacebookLoginInfo,
+) => {
     console.log(response);
 };
 
@@ -52,7 +56,9 @@ ReactDOM.render(
         fields="name,email,picture"
         onClick={componentClicked}
         callback={responseFacebook}
-        render={(props: RenderProps) => <button onClick={props.onClick}>Facebook</button>}
+        render={(props: RenderProps) => (
+            <button onClick={props.onClick}>Facebook</button>
+        )}
     />,
     document.getElementById("demo"),
 );
@@ -151,8 +157,13 @@ class MyComponent2 extends React.Component {
     }
 }
 
-type FacebookLoginWrapperProps = ReactFacebookLoginProps & { className?: string | undefined };
+type FacebookLoginWrapperProps = ReactFacebookLoginProps & {
+    className?: string | undefined;
+};
 
-export const FacebookLoginWrapper = ({ className, ...props }: FacebookLoginWrapperProps) => (
+export const FacebookLoginWrapper = ({
+    className,
+    ...props
+}: FacebookLoginWrapperProps) => (
     <FacebookLogin {...props} cssClass={className} />
 );

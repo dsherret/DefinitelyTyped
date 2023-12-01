@@ -1,4 +1,9 @@
-import { FileConfiguration, Logger, LoggerConfiguration, SourcesConfiguration } from "system-logger";
+import {
+    FileConfiguration,
+    Logger,
+    LoggerConfiguration,
+    SourcesConfiguration,
+} from "system-logger";
 
 export {
     FileConfiguration,
@@ -12,12 +17,16 @@ export {
 export interface ServiceConfiguration {
     log: {
         config: LoggerConfiguration;
-        file?: {
-            source?: FileConfiguration | undefined;
-        } | undefined;
-        source?: {
-            source?: SourcesConfiguration | undefined;
-        } | undefined;
+        file?:
+            | {
+                  source?: FileConfiguration | undefined;
+              }
+            | undefined;
+        source?:
+            | {
+                  source?: SourcesConfiguration | undefined;
+              }
+            | undefined;
     };
 }
 
@@ -40,7 +49,10 @@ export class SystemService {
     messageConsumer: MessageConsumer;
     logger: Logger;
 
-    constructor(config?: ServiceConfiguration, messageConsumer?: MessageConsumer);
+    constructor(
+        config?: ServiceConfiguration,
+        messageConsumer?: MessageConsumer,
+    );
     validateMessage(message: any): void;
     processMessage(message: any): void;
     start(): void;

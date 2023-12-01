@@ -25,8 +25,8 @@ slack.send({
     link_names: 1,
 });
 
-app.post("/yesman", function(req, res) {
-    var reply = slack.respond(req.body, function(hook: any) {
+app.post("/yesman", function (req, res) {
+    var reply = slack.respond(req.body, function (hook: any) {
         return {
             text: "Good point, " + hook.user_name,
             username: "Bot",

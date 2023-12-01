@@ -8,7 +8,11 @@ import { AnyAction, Middleware } from "redux";
  * @param toCall Function to call when timeout is triggered.
  * @return Returns an add timeout action.
  */
-export function addTimeout(timeout: number, action: string | string[], toCall: (...args: any) => void): AnyAction;
+export function addTimeout(
+    timeout: number,
+    action: string | string[],
+    toCall: (...args: any) => void,
+): AnyAction;
 
 /**
  * Remove a timeout

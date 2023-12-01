@@ -1,6 +1,11 @@
 import * as React from "react";
 import { render } from "react-dom";
-import SimpleReactLightbox, { Elements, SRLWrapper, SRLWrapperOptions, useLightbox } from "simple-react-lightbox";
+import SimpleReactLightbox, {
+    Elements,
+    SRLWrapper,
+    SRLWrapperOptions,
+    useLightbox,
+} from "simple-react-lightbox";
 
 const elements: Elements = [
     {
@@ -18,7 +23,8 @@ const elements: Elements = [
     },
     {
         src: "https://vimeo.com/458698330",
-        thumbnail: "https://www.simple-react-lightbox.dev/docs/gallery/thumbnails/unsplash05.jpg",
+        thumbnail:
+            "https://www.simple-react-lightbox.dev/docs/gallery/thumbnails/unsplash05.jpg",
         caption: "Vimeo video",
         autoplay: false,
         showControls: true,
@@ -140,19 +146,19 @@ closeLightbox();
 // Test readonly callback parameters
 <SRLWrapper
     callbacks={{
-        onCountSlides: object => {
+        onCountSlides: (object) => {
             // @ts-expect-error
             object.totalSlide = 2;
         },
-        onLightboxOpened: object => {
+        onLightboxOpened: (object) => {
             // @ts-expect-error
             object.opened = 2;
         },
-        onLightboxClosed: object => {
+        onLightboxClosed: (object) => {
             // @ts-expect-error
             object.currentSlide = 2;
         },
-        onSlideChange: object => {
+        onSlideChange: (object) => {
             // @ts-expect-error
             object.index = 2;
         },

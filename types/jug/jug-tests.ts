@@ -5,9 +5,7 @@ Example 1.
  */
 var root = jug.init();
 
-root
-    .seed()
-    .seed();
+root.seed().seed();
 
 root.data({
     interest: {

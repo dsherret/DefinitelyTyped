@@ -158,7 +158,9 @@ export interface SnowflakeError extends SnowflakeErrorExternal {
 export interface StreamOptions {
     start?: number;
     end?: number;
-    fetchAsString?: Array<"String" | "Boolean" | "Number" | "Date" | "JSON" | "Buffer"> | undefined;
+    fetchAsString?:
+        | Array<"String" | "Boolean" | "Number" | "Date" | "JSON" | "Buffer">
+        | undefined;
 }
 
 /**
@@ -455,7 +457,9 @@ export interface Statement {
      * Cancels this statement if possible.
      * @param fn The callback to use.
      */
-    cancel(fn: (err: SnowflakeError | undefined, stmt: Statement) => void): void;
+    cancel(
+        fn: (err: SnowflakeError | undefined, stmt: Statement) => void,
+    ): void;
 
     /**
      * Streams the rows in this statement's result. If start and end values are
@@ -540,7 +544,9 @@ export type Connection = NodeJS.EventEmitter & {
      * `https://<okta_account_name>.okta.com` (in order to use native SSO through Okta), call the {@link connectAsync}
      * method.
      */
-    connect(fn: (err: SnowflakeError | undefined, conn: Connection) => void): void;
+    connect(
+        fn: (err: SnowflakeError | undefined, conn: Connection) => void,
+    ): void;
 
     /**
      * Establishes a connection if not in a fatal state.
@@ -549,7 +555,9 @@ export type Connection = NodeJS.EventEmitter & {
      * `https://<okta_account_name>.okta.com` (in order to use native SSO through Okta), call the {@link connect}
      * method.
      */
-    connectAsync(fn: (err: SnowflakeError | undefined, conn: Connection) => void): Promise<void>;
+    connectAsync(
+        fn: (err: SnowflakeError | undefined, conn: Connection) => void,
+    ): Promise<void>;
 
     /**
      * ### Related Docs
@@ -568,8 +576,16 @@ export type Connection = NodeJS.EventEmitter & {
          * ### Related Docs
          * - {@link https://docs.snowflake.com/en/developer-guide/node-js/nodejs-driver-consume#fetching-data-types-as-strings Fetching Data Types As Strings}
          */
-        fetchAsString?: Array<"String" | "Boolean" | "Number" | "Date" | "JSON" | "Buffer"> | undefined;
-        complete?: (err: SnowflakeError | undefined, stmt: Statement, rows: any[] | undefined) => void;
+        fetchAsString?:
+            | Array<
+                  "String" | "Boolean" | "Number" | "Date" | "JSON" | "Buffer"
+              >
+            | undefined;
+        complete?: (
+            err: SnowflakeError | undefined,
+            stmt: Statement,
+            rows: any[] | undefined,
+        ) => void;
     }): Statement;
 
     /**
@@ -581,7 +597,9 @@ export type Connection = NodeJS.EventEmitter & {
      * Immediately terminates the connection without waiting for
      * currently executing statements to complete.
      */
-    destroy(fn: (err: SnowflakeError | undefined, conn: Connection) => void): void;
+    destroy(
+        fn: (err: SnowflakeError | undefined, conn: Connection) => void,
+    ): void;
 
     /**
      * Returns a serialized version of this connection.
@@ -623,7 +641,10 @@ export function createConnection(options: ConnectionOptions): Connection;
 /**
  * Deserializes a serialized connection.
  */
-export function deserializeConnection(options: ConnectionOptions, serializedConnection: string): Connection;
+export function deserializeConnection(
+    options: ConnectionOptions,
+    serializedConnection: string,
+): Connection;
 
 /**
  * Serializes a given connection.
@@ -638,4 +659,7 @@ export function configure(options?: ConfigureOptions): void;
 /**
  * Creates a connection pool for Snowflake connections.
  */
-export function createPool(options: ConnectionOptions, poolOptions?: PoolOptions): Pool<Connection>;
+export function createPool(
+    options: ConnectionOptions,
+    poolOptions?: PoolOptions,
+): Pool<Connection>;

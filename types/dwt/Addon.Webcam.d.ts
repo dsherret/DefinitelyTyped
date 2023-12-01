@@ -15,10 +15,7 @@ export interface Webcam {
      */
     CaptureImage(
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Return a list of all available cameras.

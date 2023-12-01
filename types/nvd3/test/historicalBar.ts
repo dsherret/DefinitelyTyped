@@ -1,5 +1,5 @@
 nv.addGraph({
-    generate: function() {
+    generate: function () {
         var chart = nv.models.historicalBar();
 
         d3.select("#test1")
@@ -10,8 +10,8 @@ nv.addGraph({
 
         return chart;
     },
-    callback: function(graph) {
-        graph.dispatch.on("elementMouseover", function(e) {
+    callback: function (graph) {
+        graph.dispatch.on("elementMouseover", function (e) {
             var offsetElement = document.getElementById("chart"),
                 left = e.pos[0],
                 top = e.pos[1];
@@ -20,7 +20,7 @@ nv.addGraph({
             nv.tooltip.show([left, top], content, e.value < 0 ? "n" : "s");
         });
 
-        graph.dispatch.on("elementMouseout", function(e) {
+        graph.dispatch.on("elementMouseout", function (e) {
             nv.tooltip.cleanup();
         });
     },
@@ -33,7 +33,7 @@ function sinAndCos() {
 
     for (var i = 0; i < 100; i++) {
         sin.push({ x: i, y: Math.sin(i / 10) });
-        cos.push({ x: i, y: .5 * Math.cos(i / 10) });
+        cos.push({ x: i, y: 0.5 * Math.cos(i / 10) });
     }
 
     return [
@@ -49,9 +49,11 @@ function sinData() {
         sin.push({ x: i, y: Math.sin(i / 10) });
     }
 
-    return [{
-        values: sin,
-        key: "Sine Wave",
-        color: "#ff7f0e",
-    }];
+    return [
+        {
+            values: sin,
+            key: "Sine Wave",
+            color: "#ff7f0e",
+        },
+    ];
 }

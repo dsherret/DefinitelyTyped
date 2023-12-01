@@ -164,7 +164,11 @@ declare namespace Domain {
      * @param events are all loaded events in an array
      * @param aggregateData represents the aggregateData after applying the resulting events
      */
-    type defineSnapshotNeedHandler = (loadingTime: number, events: any[], aggregateData: any) => boolean;
+    type defineSnapshotNeedHandler = (
+        loadingTime: number,
+        events: any[],
+        aggregateData: any,
+    ) => boolean;
 
     interface AggregateVersion {
         version: number;
@@ -174,7 +178,9 @@ declare namespace Domain {
         /**
          * optionally, define snapshot need algorithm...
          */
-        defineSnapshotNeed(cb: defineSnapshotNeedHandler): DefineAggregateResult;
+        defineSnapshotNeed(
+            cb: defineSnapshotNeedHandler,
+        ): DefineAggregateResult;
 
         /**
          * optionally, define if snapshot should be ignored
@@ -182,9 +188,7 @@ declare namespace Domain {
          */
         defineIgnoreSnapshot(
             version: AggregateVersion,
-            cb?:
-                | ((data: any) => boolean)
-                | boolean,
+            cb?: ((data: any) => boolean) | boolean,
         ): DefineAggregateResult;
 
         /**
@@ -201,9 +205,7 @@ declare namespace Domain {
          * optionally, define idGenerator function for new aggregate ids
          */
         defineAggregateIdGenerator(
-            cb:
-                | (() => string)
-                | ((callback: generateIdCallback) => string),
+            cb: (() => string) | ((callback: generateIdCallback) => string),
         ): DefineAggregateResult;
 
         /**
@@ -215,7 +217,10 @@ declare namespace Domain {
         ): DefineAggregateResult;
     }
 
-    function defineAggregate(options: DefineAggregateOptions, initializationData?: any): DefineAggregateResult;
+    function defineAggregate(
+        options: DefineAggregateOptions,
+        initializationData?: any,
+    ): DefineAggregateResult;
 
     // endregion
 
@@ -267,7 +272,10 @@ declare namespace Domain {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ) => void | string | Error;
 
-    function definePreLoadCondition(options: DefinePreLoadConditionOptions, handler: preLoadConditionHandler): void;
+    function definePreLoadCondition(
+        options: DefinePreLoadConditionOptions,
+        handler: preLoadConditionHandler,
+    ): void;
 
     // endregion
 
@@ -315,7 +323,10 @@ declare namespace Domain {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ) => void | string | Error;
 
-    function definePreCondition(options: DefinePreConditionOptions, handler: preConditionHandler): void;
+    function definePreCondition(
+        options: DefinePreConditionOptions,
+        handler: preConditionHandler,
+    ): void;
 
     // endregion
 
@@ -339,7 +350,10 @@ declare namespace Domain {
         defineEventStreamsToLoad(cb: defineEventStreamsToLoadHandler): void;
     }
 
-    function defineCommand(options: DefineCommandOptions, handler: commandHandler): DefineCommandResult;
+    function defineCommand(
+        options: DefineCommandOptions,
+        handler: commandHandler,
+    ): DefineCommandResult;
 
     // endregion
 
@@ -353,7 +367,10 @@ declare namespace Domain {
 
     type eventHandler = (data: any, aggregate: AggregateModel) => void;
 
-    function defineEvent(options: DefineEventOptions, handler: eventHandler): void;
+    function defineEvent(
+        options: DefineEventOptions,
+        handler: eventHandler,
+    ): void;
 
     // endregion
 
@@ -391,7 +408,10 @@ declare namespace Domain {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ) => void | string | Error;
 
-    function defineBusinessRule(options: DefineBusinessRuleOptions, handler: businessRuleHandler): void;
+    function defineBusinessRule(
+        options: DefineBusinessRuleOptions,
+        handler: businessRuleHandler,
+    ): void;
 
     // endregion
 
@@ -427,7 +447,10 @@ declare namespace Domain {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ) => void | string | Error;
 
-    function defineCommandHandler(options: DefineCommandHandlerOptions, handler: commandHandlerHandler): void;
+    function defineCommandHandler(
+        options: DefineCommandHandlerOptions,
+        handler: commandHandlerHandler,
+    ): void;
 
     // endregion
 
@@ -581,7 +604,12 @@ declare namespace Domain {
             cmd: any,
             cb?:
                 | ((err: Error) => void)
-                | ((err: Error, events: any[], aggregateData: any, metaInfos: HandleMetaInfos) => void),
+                | ((
+                      err: Error,
+                      events: any[],
+                      aggregateData: any,
+                      metaInfos: HandleMetaInfos,
+                  ) => void),
         ): void;
 
         /**
@@ -606,9 +634,7 @@ declare namespace Domain {
          * @returns to be able to chain...
          */
         idGenerator(
-            cb:
-                | (() => string)
-                | ((callback: generateIdCallback) => string),
+            cb: (() => string) | ((callback: generateIdCallback) => string),
         ): CqrsDomain;
 
         /**
@@ -617,9 +643,7 @@ declare namespace Domain {
          * @returns to be able to chain...
          */
         aggregateIdGenerator(
-            cb:
-                | (() => string)
-                | ((callback: generateIdCallback) => string),
+            cb: (() => string) | ((callback: generateIdCallback) => string),
         ): CqrsDomain;
 
         /**
@@ -646,11 +670,21 @@ declare namespace Domain {
             eventsToDispatch: any[],
             aggregateData: any,
             meta: any,
-            callback: (err: Error, evts: any[], aggregateData: any, meta: any) => void,
+            callback: (
+                err: Error,
+                evts: any[],
+                aggregateData: any,
+                meta: any,
+            ) => void,
         ): void;
     }
 
-    type SupportedDBTypes = "mongodb" | "redis" | "tingodb" | "azuretable" | "inmemory";
+    type SupportedDBTypes =
+        | "mongodb"
+        | "redis"
+        | "tingodb"
+        | "azuretable"
+        | "inmemory";
 
     interface CreateDomainOptions {
         /**
@@ -688,35 +722,39 @@ declare namespace Domain {
          * currently supports: mongodb, redis, tingodb, azuretable and inmemory
          * hint: [eventstore](https://github.com/adrai/node-eventstore#provide-implementation-for-storage)
          */
-        eventStore?: {
-            type: SupportedDBTypes;
-            host?: string | undefined;
-            port?: number | undefined;
-            dbName?: string | undefined;
-            eventsCollectionName?: string | undefined;
-            snapshotsCollectionName?: string | undefined;
-            transactionsCollectionName?: string | undefined;
-            timeout?: number | undefined;
-            authSource?: string | undefined;
-            username?: string | undefined;
-            password?: string | undefined;
-            url?: string | undefined;
-        } | undefined;
+        eventStore?:
+            | {
+                  type: SupportedDBTypes;
+                  host?: string | undefined;
+                  port?: number | undefined;
+                  dbName?: string | undefined;
+                  eventsCollectionName?: string | undefined;
+                  snapshotsCollectionName?: string | undefined;
+                  transactionsCollectionName?: string | undefined;
+                  timeout?: number | undefined;
+                  authSource?: string | undefined;
+                  username?: string | undefined;
+                  password?: string | undefined;
+                  url?: string | undefined;
+              }
+            | undefined;
 
         /**
          * optional, default is in-memory
          * currently supports: mongodb, redis, tingodb, couchdb, azuretable, dynamodb and inmemory
          * hint settings like: [eventstore](https://github.com/adrai/node-eventstore#provide-implementation-for-storage)
          */
-        aggregateLock?: {
-            type: SupportedDBTypes;
-            host?: string | undefined;
-            port?: number | undefined;
-            db: number;
-            prefix?: string | undefined;
-            timeout?: number | undefined;
-            password?: string | undefined;
-        } | undefined;
+        aggregateLock?:
+            | {
+                  type: SupportedDBTypes;
+                  host?: string | undefined;
+                  port?: number | undefined;
+                  db: number;
+                  prefix?: string | undefined;
+                  timeout?: number | undefined;
+                  password?: string | undefined;
+              }
+            | undefined;
 
         /**
          * optional, default is not set
@@ -724,16 +762,18 @@ declare namespace Domain {
          * currently supports: mongodb, redis, tingodb and inmemory
          * hint settings like: [eventstore](https://github.com/adrai/node-eventstore#provide-implementation-for-storage)
          */
-        deduplication?: {
-            type: "mongodb" | "redis" | "tingodb" | "inmemory";
-            ttl?: number | undefined;
-            host?: string | undefined;
-            port?: number | undefined;
-            db?: number | undefined;
-            prefix?: string | undefined;
-            timeout?: number | undefined;
-            password?: string | undefined;
-        } | undefined;
+        deduplication?:
+            | {
+                  type: "mongodb" | "redis" | "tingodb" | "inmemory";
+                  ttl?: number | undefined;
+                  host?: string | undefined;
+                  port?: number | undefined;
+                  db?: number | undefined;
+                  prefix?: string | undefined;
+                  timeout?: number | undefined;
+                  password?: string | undefined;
+              }
+            | undefined;
 
         /**
          * optional, default false

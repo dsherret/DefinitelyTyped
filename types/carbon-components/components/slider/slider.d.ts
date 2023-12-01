@@ -14,11 +14,13 @@ interface SliderOptions {
 declare const Slider_base: any;
 declare class Slider extends Slider_base {
     constructor(element: HTMLElement, options?: Partial<SliderOptions>);
-    _changeState: (state: string, detail: { value: number }, callback?: () => void) => void;
+    _changeState: (
+        state: string,
+        detail: { value: number },
+        callback?: () => void,
+    ) => void;
     _updatePosition(evt?: MouseEvent): void;
-    _calcValue(
-        evt?: MouseEvent,
-    ): {
+    _calcValue(evt?: MouseEvent): {
         left: number;
         newValue: number;
     };

@@ -23,7 +23,10 @@ declare namespace structuredClone {
      *  like JSON stringify would behave. Symbol and Function will be discarded.
      * @returns an array of SerializedRecord
      */
-    function serialize(serializable: any, options?: { lossy?: boolean }): SerializedRecord;
+    function serialize(
+        serializable: any,
+        options?: { lossy?: boolean },
+    ): SerializedRecord;
 
     /**
      * Deserialize the output.

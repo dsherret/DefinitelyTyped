@@ -1,4 +1,11 @@
-import { bytesBuffer, bytesBufferIndex, generateId, getRandomBytes, isGeneratingBytes, sequenceNumber } from "base64id";
+import {
+    bytesBuffer,
+    bytesBufferIndex,
+    generateId,
+    getRandomBytes,
+    isGeneratingBytes,
+    sequenceNumber,
+} from "base64id";
 
 const sampleId = generateId();
 const sampleRandomBytes = getRandomBytes(10);

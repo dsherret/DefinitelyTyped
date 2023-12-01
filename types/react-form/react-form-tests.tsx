@@ -3,10 +3,17 @@
 
 import * as React from "react";
 
-import { splitFormProps, useField, UseFieldInstance, UseFieldInstanceMeta, UseFieldOptions, useForm } from "react-form";
+import {
+    splitFormProps,
+    useField,
+    UseFieldInstance,
+    UseFieldInstanceMeta,
+    UseFieldOptions,
+    useForm,
+} from "react-form";
 
 async function sendToFakeServer(values: Record<string, string>) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     return values;
 }
 
@@ -17,14 +24,17 @@ function validateAddressStreet(value: string): string | false {
     return false;
 }
 
-async function validateName(name: string, instance: UseFieldInstance<any, any, any, any, any, any>): Promise<any> {
+async function validateName(
+    name: string,
+    instance: UseFieldInstance<any, any, any, any, any, any>,
+): Promise<any> {
     if (!name) {
         return "A name is required";
     }
 
     return instance.debounce(async () => {
         console.log("checking name");
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         // All names are valid, so return a false error
         return false;
     }, 500);
@@ -41,7 +51,11 @@ function NameField() {
     return (
         <>
             <input {...getInputProps()} />{" "}
-            {isValidating ? <em>Validating...</em> : isTouched && error ? <em>{error}</em> : null}
+            {isValidating ? (
+                <em>Validating...</em>
+            ) : isTouched && error ? (
+                <em>{error}</em>
+            ) : null}
         </>
     );
 }
@@ -57,7 +71,11 @@ function AddressStreetField() {
     return (
         <>
             <input {...getInputProps()} />{" "}
-            {isValidating ? <em>Validating...</em> : isTouched && error ? <em>{error}</em> : null}
+            {isValidating ? (
+                <em>Validating...</em>
+            ) : isTouched && error ? (
+                <em>{error}</em>
+            ) : null}
         </>
     );
 }
@@ -109,14 +127,17 @@ function App() {
 
 // https://codesandbox.io/s/react-form-demo-wrybd?file=/src/index.js:86-2387
 
-async function fakeCheckValidName(name: string, instance: UseFieldInstance<any, any, any, any, any, any>) {
+async function fakeCheckValidName(
+    name: string,
+    instance: UseFieldInstance<any, any, any, any, any, any>,
+) {
     if (!name) {
         return "A name is required";
     }
 
     return instance.debounce(async () => {
         console.log("checking name");
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         // All names are valid, so return a false error
         return false;
     }, 500);
@@ -124,7 +145,9 @@ async function fakeCheckValidName(name: string, instance: UseFieldInstance<any, 
 
 type InputFieldProps = React.PropsWithChildren<{
     field: string;
-    validate?: UseFieldOptions<any, any, any, any, any, any>["validate"] | undefined;
+    validate?:
+        | UseFieldOptions<any, any, any, any, any, any>["validate"]
+        | undefined;
 }>;
 
 const InputField = React.forwardRef((props: InputFieldProps, ref) => {
@@ -142,7 +165,11 @@ const InputField = React.forwardRef((props: InputFieldProps, ref) => {
     return (
         <>
             <input {...getInputProps({ ref, ...rest })} />{" "}
-            {isValidating ? <em>Validating...</em> : isTouched && error ? <em>{error}</em> : null}
+            {isValidating ? (
+                <em>Validating...</em>
+            ) : isTouched && error ? (
+                <em>{error}</em>
+            ) : null}
         </>
     );
 });
@@ -166,12 +193,20 @@ function SecondMyForm() {
         <Form>
             <div>
                 <label>
-                    Name: <InputField field="name" validate={fakeCheckValidName as any} />
+                    Name:{" "}
+                    <InputField
+                        field="name"
+                        validate={fakeCheckValidName as any}
+                    />
                 </label>
             </div>
             <div>
                 <label>
-                    Address Street: <InputField field="address.street" validate={validateAddressStreet} />
+                    Address Street:{" "}
+                    <InputField
+                        field="address.street"
+                        validate={validateAddressStreet}
+                    />
                 </label>
             </div>
 
@@ -213,27 +248,28 @@ const InputFieldThird = React.forwardRef((props: InputFieldThirdProps, ref) => {
     const {
         meta: { error, isTouched, isValidating, message },
         getInputProps,
-    } = useField<string, string, unknown, InputFieldThirdMeta>(field, fieldOptions);
+    } = useField<string, string, unknown, InputFieldThirdMeta>(
+        field,
+        fieldOptions,
+    );
 
     // Build the field
     return (
         <>
             <input {...getInputProps({ ref, ...rest })} />
 
-            {
-                /*
+            {/*
         Let's inline some validation and error information
         for our field
-      */
-            }
+      */}
 
-            {isValidating
-                ? <em>Validating...</em>
-                : isTouched && error
-                ? <strong>{error}</strong>
-                : message
-                ? <small>{message}</small>
-                : null}
+            {isValidating ? (
+                <em>Validating...</em>
+            ) : isTouched && error ? (
+                <strong>{error}</strong>
+            ) : message ? (
+                <small>{message}</small>
+            ) : null}
         </>
     );
 });
@@ -256,14 +292,14 @@ function ThirdApp() {
         meta: { isSubmitting, isSubmitted, canSubmit, error },
     } = useForm<string | string[]>({
         defaultValues,
-        validate: values => {
+        validate: (values) => {
             if (values.name === "tanner" && values.age !== "29") {
                 return "This is not tanner's correct age";
             }
             return false;
         },
         onSubmit: async (values, instance) => {
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 1000));
             console.log(values);
         },
         debugForm: true,
@@ -273,7 +309,11 @@ function ThirdApp() {
         <Form>
             <div>
                 <label>
-                    Name: <InputFieldThird field="name" validate={value => (!value ? "Required" : false)} />
+                    Name:{" "}
+                    <InputFieldThird
+                        field="name"
+                        validate={(value) => (!value ? "Required" : false)}
+                    />
                 </label>
             </div>
             <div>
@@ -282,7 +322,11 @@ function ThirdApp() {
                     <InputFieldThird
                         field="age"
                         type="number"
-                        validate={value => (value < 10 ? "You must be at least 10 years old" : false)}
+                        validate={(value) =>
+                            value < 10
+                                ? "You must be at least 10 years old"
+                                : false
+                        }
                         min="1"
                     />
                 </label>
@@ -292,7 +336,7 @@ function ThirdApp() {
                     Email:{" "}
                     <InputFieldThird
                         field="email"
-                        validate={async value => {
+                        validate={async (value) => {
                             if (!value) {
                                 return "Email is required";
                             }
@@ -304,9 +348,13 @@ function ThirdApp() {
                             console.log(`Checking email: ${value}...`);
 
                             // We're going to mock that for now
-                            await new Promise(resolve => setTimeout(resolve, 2000));
+                            await new Promise((resolve) =>
+                                setTimeout(resolve, 2000),
+                            );
 
-                            return value === "tanner@gmail.com" ? "Email is already being used" : false;
+                            return value === "tanner@gmail.com"
+                                ? "Email is already being used"
+                                : false;
                         }}
                     />
                 </label>
@@ -316,29 +364,43 @@ function ThirdApp() {
                     Username:{" "}
                     <InputFieldThird
                         field="username"
-                        validate={((value: string, { debounce, setMeta }: any) => {
-                            console.log("checkusername");
-                            if (!value) {
-                                return "Username is required";
-                            }
-
-                            return debounce(async () => {
-                                console.log("Checking username...");
-                                await new Promise(resolve => setTimeout(resolve, 2000));
-                                if (value === "tanner") {
-                                    setMeta({ error: "Username is unavailable", message: null });
-                                    return;
+                        validate={
+                            ((value: string, { debounce, setMeta }: any) => {
+                                console.log("checkusername");
+                                if (!value) {
+                                    return "Username is required";
                                 }
 
-                                setMeta({ error: null, message: "Username is available!" });
-                            }, 2000);
-                        }) as any}
+                                return debounce(async () => {
+                                    console.log("Checking username...");
+                                    await new Promise((resolve) =>
+                                        setTimeout(resolve, 2000),
+                                    );
+                                    if (value === "tanner") {
+                                        setMeta({
+                                            error: "Username is unavailable",
+                                            message: null,
+                                        });
+                                        return;
+                                    }
+
+                                    setMeta({
+                                        error: null,
+                                        message: "Username is available!",
+                                    });
+                                }, 2000);
+                            }) as any
+                        }
                     />
                 </label>
             </div>
             <div>
                 <label>
-                    Notes: <InputFieldThird field="other.notes" defaultValue="This is a note." />
+                    Notes:{" "}
+                    <InputFieldThird
+                        field="other.notes"
+                        defaultValue="This is a note."
+                    />
                 </label>
             </div>
             <div>
@@ -352,14 +414,23 @@ function ThirdApp() {
                     {(values.friends as string[]).map((friend, i) => (
                         <div key={i}>
                             <label>
-                                Friend: <InputFieldThird field={`friends.${i}`} />{" "}
-                                <button type="button" onClick={() => removeFieldValue("friends", i)}>
+                                Friend:{" "}
+                                <InputFieldThird field={`friends.${i}`} />{" "}
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        removeFieldValue("friends", i)
+                                    }
+                                >
                                     X
                                 </button>
                             </label>
                         </div>
                     ))}
-                    <button type="button" onClick={() => pushFieldValue("friends", "")}>
+                    <button
+                        type="button"
+                        onClick={() => pushFieldValue("friends", "")}
+                    >
                         Add Friend
                     </button>
                 </div>
@@ -369,17 +440,15 @@ function ThirdApp() {
 
             {error ? <strong>{error}</strong> : null}
 
-            {isSubmitting
-                ? (
-                    "Submitting..."
-                )
-                : (
-                    <div>
-                        <button type="submit" disabled={!canSubmit}>
-                            Submit
-                        </button>
-                    </div>
-                )}
+            {isSubmitting ? (
+                "Submitting..."
+            ) : (
+                <div>
+                    <button type="submit" disabled={!canSubmit}>
+                        Submit
+                    </button>
+                </div>
+            )}
         </Form>
     );
 }
@@ -431,15 +500,20 @@ function MultiSelectField(props: any) {
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selected = Array.from(e.target.options)
-            .filter(option => option.selected)
-            .map(option => option.value);
+            .filter((option) => option.selected)
+            .map((option) => option.value);
 
         setValue(selected);
     };
 
     return (
         <>
-            <select {...rest} value={value} onChange={handleSelectChange} multiple>
+            <select
+                {...rest}
+                value={value}
+                onChange={handleSelectChange}
+                multiple
+            >
                 <option disabled value="" />
                 {options.map((option: string) => (
                     <option key={option} value={option}>
@@ -458,7 +532,7 @@ function FourthMyForm() {
         meta: { canSubmit },
     } = useForm({
         debugForm: true,
-        onSubmit: values => {
+        onSubmit: (values) => {
             console.log("Huzzah!", values);
         },
     });
@@ -471,7 +545,9 @@ function FourthMyForm() {
                     <SelectField
                         field="favoriteColor"
                         options={["Red", "Blue", "Green", "Yellow"]}
-                        validate={(value: string) => (!value ? "This is required!" : false)}
+                        validate={(value: string) =>
+                            !value ? "This is required!" : false
+                        }
                     />
                 </label>
             </div>
@@ -482,7 +558,11 @@ function FourthMyForm() {
                     <MultiSelectField
                         field="favoriteColors"
                         options={["Red", "Blue", "Green", "Yellow"]}
-                        validate={(value: string) => (value.length < 2 ? "At least 2 colors are required!" : false)}
+                        validate={(value: string) =>
+                            value.length < 2
+                                ? "At least 2 colors are required!"
+                                : false
+                        }
                     />
                 </label>
             </div>
@@ -515,9 +595,11 @@ export function EmailField(props: any): JSX.Element {
     return (
         <div>
             <input {...inputProps} />
-            {data.meta.error || props.defaultError
-                ? <div className="error">{data.meta.error || props.defaultError}</div>
-                : null}
+            {data.meta.error || props.defaultError ? (
+                <div className="error">
+                    {data.meta.error || props.defaultError}
+                </div>
+            ) : null}
         </div>
     );
 }

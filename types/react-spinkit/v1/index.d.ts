@@ -32,8 +32,7 @@ declare namespace spinner {
         className?: string | undefined;
     }
 
-    export interface Spinner extends React.ComponentClass<SpinnerProps> {
-    }
+    export interface Spinner extends React.ComponentClass<SpinnerProps> {}
 }
 
 declare const spinner: spinner.Spinner;

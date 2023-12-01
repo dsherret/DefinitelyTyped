@@ -19,8 +19,8 @@ class Spacecraft extends View {
 }
 
 var view = new Spacecraft();
-(<JQuery> <any> view).find("ol").append("<li>Star Destroyer</li>");
+(<JQuery>(<any>view)).find("ol").append("<li>Star Destroyer</li>");
 
-(<JQuery> <any> view).on("click", "li", function() {
+(<JQuery>(<any>view)).on("click", "li", function () {
     alert("They clicked on " + $(this).text());
 });

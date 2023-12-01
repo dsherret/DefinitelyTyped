@@ -52,12 +52,30 @@ new ConsoleErrorListener();
 const diagnosticErrorListener = new DiagnosticErrorListener(false);
 diagnosticErrorListener.exactOnly; // $ExpectType boolean
 diagnosticErrorListener.getDecisionDescription(parserInstance, dfaInstance); // $ExpectType string
-diagnosticErrorListener.getConflictingAlts(bitsetInstance, atnConfigSetInstance); // $ExpectType BitSet
+diagnosticErrorListener.getConflictingAlts(
+    bitsetInstance,
+    atnConfigSetInstance,
+); // $ExpectType BitSet
 
 // ErrorListener
 const errorListenerInstance = new ErrorListener();
-errorListenerInstance.syntaxError(parserInstance, tokenInstance, 0, 0, "", recognitionException); // $ExpectType void
-errorListenerInstance.reportAmbiguity(parserInstance, dfaInstance, 0, 0, false, bitsetInstance, atnConfigSetInstance); // $ExpectType void
+errorListenerInstance.syntaxError(
+    parserInstance,
+    tokenInstance,
+    0,
+    0,
+    "",
+    recognitionException,
+); // $ExpectType void
+errorListenerInstance.reportAmbiguity(
+    parserInstance,
+    dfaInstance,
+    0,
+    0,
+    false,
+    bitsetInstance,
+    atnConfigSetInstance,
+); // $ExpectType void
 // $ExpectType void
 errorListenerInstance.reportAttemptingFullContext(
     parserInstance,
@@ -67,7 +85,14 @@ errorListenerInstance.reportAttemptingFullContext(
     bitsetInstance,
     atnConfigSetInstance,
 );
-errorListenerInstance.reportContextSensitivity(parserInstance, dfaInstance, 0, 0, undefined, atnConfigSetInstance); // $ExpectType void
+errorListenerInstance.reportContextSensitivity(
+    parserInstance,
+    dfaInstance,
+    0,
+    0,
+    undefined,
+    atnConfigSetInstance,
+); // $ExpectType void
 
 // ErrorStrategy
 const errorStrategy = new ErrorStrategy();
@@ -79,7 +104,11 @@ errorStrategy.inErrorRecoveryMode(parserInstance); // $ExpectType void
 errorStrategy.reportError(parserInstance, recognitionException); // $ExpectType void
 
 // FailedPredicateException
-const failedPredicateException = new FailedPredicateException(parserInstance, "", "");
+const failedPredicateException = new FailedPredicateException(
+    parserInstance,
+    "",
+    "",
+);
 failedPredicateException.ruleIndex; // $ExpectType number
 failedPredicateException.predicateIndex; // $ExpectType number
 failedPredicateException.predicate; // $ExpectType string
@@ -111,9 +140,27 @@ const noViableAltException = new NoViableAltException(
     undefined,
     atnConfigSetInstance,
 );
-new NoViableAltException(parserInstance, inputStreamInstance, undefined, undefined, atnConfigSetInstance);
-new NoViableAltException(parserInstance, undefined, tokenInstance, undefined, atnConfigSetInstance);
-new NoViableAltException(parserInstance, undefined, undefined, tokenInstance, atnConfigSetInstance);
+new NoViableAltException(
+    parserInstance,
+    inputStreamInstance,
+    undefined,
+    undefined,
+    atnConfigSetInstance,
+);
+new NoViableAltException(
+    parserInstance,
+    undefined,
+    tokenInstance,
+    undefined,
+    atnConfigSetInstance,
+);
+new NoViableAltException(
+    parserInstance,
+    undefined,
+    undefined,
+    tokenInstance,
+    atnConfigSetInstance,
+);
 new NoViableAltException(
     parserInstance,
     undefined,
@@ -164,9 +211,18 @@ defaultErrorStrategyInstance.inErrorRecoveryMode(parserInstance); // $ExpectType
 defaultErrorStrategyInstance.endErrorCondition(parserInstance); // $ExpectType void
 defaultErrorStrategyInstance.reportMatch(parserInstance); // $ExpectType void
 defaultErrorStrategyInstance.reportError(parserInstance, recognitionException); // $ExpectType void
-defaultErrorStrategyInstance.reportNoViableAlternative(parserInstance, noViableAltException); // $ExpectType void
-defaultErrorStrategyInstance.reportInputMismatch(parserInstance, inputMismatchExceptionInstance); // $ExpectType void
-defaultErrorStrategyInstance.reportFailedPredicate(parserInstance, failedPredicateException); // $ExpectType void
+defaultErrorStrategyInstance.reportNoViableAlternative(
+    parserInstance,
+    noViableAltException,
+); // $ExpectType void
+defaultErrorStrategyInstance.reportInputMismatch(
+    parserInstance,
+    inputMismatchExceptionInstance,
+); // $ExpectType void
+defaultErrorStrategyInstance.reportFailedPredicate(
+    parserInstance,
+    failedPredicateException,
+); // $ExpectType void
 defaultErrorStrategyInstance.reportUnwantedToken(parserInstance); // $ExpectType void
 defaultErrorStrategyInstance.reportMissingToken(parserInstance); // $ExpectType void
 defaultErrorStrategyInstance.recoverInline(parserInstance); // $ExpectType Token

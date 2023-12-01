@@ -5,7 +5,11 @@ declare class FuzzySearch<T extends object | string> {
 
     static isMatch(item: string, query: string, caseSensitive: boolean): number;
 
-    constructor(haystack: readonly T[], keys?: readonly string[], options?: FuzzySearch.Options);
+    constructor(
+        haystack: readonly T[],
+        keys?: readonly string[],
+        options?: FuzzySearch.Options,
+    );
     search(needle?: string): T[];
 }
 

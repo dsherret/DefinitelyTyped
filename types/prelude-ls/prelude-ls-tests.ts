@@ -16,22 +16,28 @@ prelude.replicate(0, "a"); // => []
 
 // List
 
-var eachRes: string[][] = prelude.each(x => x.push("boom"), [["a"], ["b"], ["c"]]);
+var eachRes: string[][] = prelude.each(
+    (x) => x.push("boom"),
+    [["a"], ["b"], ["c"]],
+);
 // => [["a", "boom"], ["b", "boom"], ["c", "boom"]]
 
-var mapRes: string[] = prelude.map(x => x.toString(), [1, 2, 3, 4, 5]); // => ["1", "2", "3", "4", "5"]
+var mapRes: string[] = prelude.map((x) => x.toString(), [1, 2, 3, 4, 5]); // => ["1", "2", "3", "4", "5"]
 
-prelude.map(x => x.toUpperCase(), ["ha", "ma"]); // => ["HA", "MA"]
-prelude.map(x => x.num, [{ num: 3 }, { num: 1 }]); // => [3, 1]
+prelude.map((x) => x.toUpperCase(), ["ha", "ma"]); // => ["HA", "MA"]
+prelude.map((x) => x.num, [{ num: 3 }, { num: 1 }]); // => [3, 1]
 
 var compactRes: any[] = prelude.compact([0, 1, false, true, "", "ha"]); // => [1, true, "ha"]
 
-var filterRes: number[] = prelude.filter(x => x < 3, [1, 2, 3, 4, 5]); // => [1, 2]
+var filterRes: number[] = prelude.filter((x) => x < 3, [1, 2, 3, 4, 5]); // => [1, 2]
 prelude.filter(prelude.even, [3, 4, 0]); // => [4, 0]
 
 var rejectRes: number[] = prelude.reject(prelude.odd, [1, 2, 3, 4, 5]); // => [2, 4]
 
-var partitionRes: number[][] = prelude.partition(x => x > 60, [49, 58, 76, 43, 88, 77, 90]);
+var partitionRes: number[][] = prelude.partition(
+    (x) => x > 60,
+    [49, 58, 76, 43, 88, 77, 90],
+);
 // => [[76, 88, 77, 90], [49, 58, 43]]
 
 var findRes: number = prelude.find(prelude.odd, [2, 4, 6, 7, 8, 9, 10]); // => 7
@@ -50,24 +56,38 @@ var reverseRes: number[] = prelude.reverse([1, 2, 3]); // => [3, 2, 1]
 
 var uniqueRes: number[] = prelude.unique([1, 1, 1, 3, 3, 6, 7, 8]); // => [1, 3, 6, 7, 8]
 
-var uniqueByRes: string[] = prelude.uniqueBy(x => x.length, ["and", "here", "are", "some", "words"]); // => ["and", "here", "words"]
+var uniqueByRes: string[] = prelude.uniqueBy(
+    (x) => x.length,
+    ["and", "here", "are", "some", "words"],
+); // => ["and", "here", "words"]
 
-var foldRes: number = prelude.fold(x => y => x + y, 0, [1, 2, 3, 4, 5]); // => 15
+var foldRes: number = prelude.fold((x) => (y) => x + y, 0, [1, 2, 3, 4, 5]); // => 15
 
-var fold1Res: number = prelude.fold1(x => y => x + y, [1, 2, 3]); // => 6
+var fold1Res: number = prelude.fold1((x) => (y) => x + y, [1, 2, 3]); // => 6
 
-var foldrRes: number = prelude.foldr(x => y => x - y, 9, [1, 2, 3, 4]); // => 7
+var foldrRes: number = prelude.foldr((x) => (y) => x - y, 9, [1, 2, 3, 4]); // => 7
 
-var foldrStrRes: string = prelude.foldr(x => y => x + y, "e", ["a", "b", "c", "d"]); // => "abcde"
+var foldrStrRes: string = prelude.foldr((x) => (y) => x + y, "e", [
+    "a",
+    "b",
+    "c",
+    "d",
+]); // => "abcde"
 
-var foldr1Res: number = prelude.foldr1(x => y => x - y, [1, 2, 3, 4, 9]); // => 7
+var foldr1Res: number = prelude.foldr1((x) => (y) => x - y, [1, 2, 3, 4, 9]); // => 7
 
-var unfoldrRes: number[] = prelude.unfoldr(x => x === 0 ? null : [x, x - 1], 10);
+var unfoldrRes: number[] = prelude.unfoldr(
+    (x) => (x === 0 ? null : [x, x - 1]),
+    10,
+);
 // => [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 var concatRes: number[] = prelude.concat([[1], [2, 3], [4]]); // => [1, 2, 3, 4]
 
-var concatMapRes: any[] = prelude.concatMap(x => ["hoge", x, x + 2], [1, 2, 3]);
+var concatMapRes: any[] = prelude.concatMap(
+    (x) => ["hoge", x, x + 2],
+    [1, 2, 3],
+);
 // => ["hoge", 1, 3, "hoge", 2, 4, "hoge", 3, 5]
 
 var flattenRes: number[] = prelude.flatten([1, [[2], 3], [4, [[5]]]]); // => [1, 2, 3, 4, 5]
@@ -76,7 +96,12 @@ var differenceRes: number[] = prelude.difference([1, 2, 3], [1]); // => [2, 3]
 prelude.difference([1, 2, 3, 4, 5], [5, 2, 10], [9]); // => [1, 3, 4]
 
 prelude.intersection([2, 3], [9, 8], [12, 1], [99]); // => []
-var intersectionRes: number[] = prelude.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1], [-1, 0, 1, 2]);
+var intersectionRes: number[] = prelude.intersection(
+    [1, 2, 3],
+    [101, 2, 1, 10],
+    [2, 1],
+    [-1, 0, 1, 2],
+);
 // => [1, 2]
 prelude.intersection([1, 2, 3], [2, 1, 3], [3, 1, 2]); // => [1, 2, 3]
 
@@ -84,11 +109,11 @@ var unionRes: number[] = prelude.union([1, 5, 7], [3, 5], []); // => [1, 5, 7, 3
 
 var countByRes: Object = prelude.countBy(prelude.floor, [4.2, 6.1, 6.4]);
 // => {4: 1, 6: 2}
-prelude.countBy(x => x.length, ["one", "two", "three"]); // => {3: 2, 5: 1}
+prelude.countBy((x) => x.length, ["one", "two", "three"]); // => {3: 2, 5: 1}
 
 var groupByRes: Object = prelude.groupBy(prelude.floor, [4.2, 6.1, 6.4]);
 // => {4: [4.2], 6: [6.1, 6.4]}
-prelude.groupBy(x => x.length, ["one", "two", "three"]);
+prelude.groupBy((x) => x.length, ["one", "two", "three"]);
 // => {3: ["one", "two"], 5: ["three"]}
 
 var andListRes: boolean = prelude.andList([true, 2 + 2 == 4]); // => true
@@ -109,32 +134,35 @@ var sortRes: number[] = prelude.sort([3, 1, 5, 2, 4, 6]);
 // => [1, 2, 3, 4, 5, 6]
 
 var f = (x: string) => (y: string) =>
-    x.length > y.length
-        ? 1
-        : x.length < y.length
-        ? -1
-        : 0;
+    x.length > y.length ? 1 : x.length < y.length ? -1 : 0;
 
 var sortWithRes: string[] = prelude.sortWith(f, ["three", "one", "two"]);
 // => ["one", "two", "three"]
 
-var sortByRes: string[] = prelude.sortBy(x => x.length, ["there", "hey", "a", "ha"]);
+var sortByRes: string[] = prelude.sortBy(
+    (x) => x.length,
+    ["there", "hey", "a", "ha"],
+);
 // => ["a", "ha", "hey", "there"]
 
 var table: Array<{
     id: number;
     name: string;
-}> = [{
-    id: 1,
-    name: "george",
-}, {
-    id: 2,
-    name: "mike",
-}, {
-    id: 3,
-    name: "donald",
-}];
-prelude.sortBy(x => x.name, table);
+}> = [
+    {
+        id: 1,
+        name: "george",
+    },
+    {
+        id: 2,
+        name: "mike",
+    },
+    {
+        id: 3,
+        name: "donald",
+    },
+];
+prelude.sortBy((x) => x.name, table);
 // => [{"id": 3, "name": "donald"},
 //    {"id": 1, "name": "george"},
 //    {"id": 2, "name": "mike"}]
@@ -151,19 +179,22 @@ var maximumRes: number = prelude.maximum([4, 1, 9, 3]); // => 9
 
 var minimumRes: string = prelude.minimum(["c", "e", "a", "d", "b"]); // => "a"
 
-var maximumByRes: string = prelude.maximumBy(x => x.length, ["hi", "there", "I", "am", "looooong"]);
+var maximumByRes: string = prelude.maximumBy(
+    (x) => x.length,
+    ["hi", "there", "I", "am", "looooong"],
+);
 // => "looooong"
 
-var scanRes: number[] = prelude.scan(x => y => x + y, 0, [1, 2, 3]);
+var scanRes: number[] = prelude.scan((x) => (y) => x + y, 0, [1, 2, 3]);
 // => [0, 1, 3, 6]
 
-var scan1Res: number[] = prelude.scan1(x => y => x + y, [1, 2, 3]);
+var scan1Res: number[] = prelude.scan1((x) => (y) => x + y, [1, 2, 3]);
 // => [1, 3, 6]
 
-var scanrRes: number[] = prelude.scanr(x => y => x + y, 0, [1, 2, 3]);
+var scanrRes: number[] = prelude.scanr((x) => (y) => x + y, 0, [1, 2, 3]);
 // => [6, 5, 3, 0]
 
-var scanr1Res: number[] = prelude.scanr1(x => y => x + y, [1, 2, 3]);
+var scanr1Res: number[] = prelude.scanr1((x) => (y) => x + y, [1, 2, 3]);
 // => [6, 5, 3]
 
 var sliceRes: number[] = prelude.slice(2, 4, [1, 2, 3, 4, 5]); // => [3, 4]
@@ -174,22 +205,37 @@ var dropRes: number[] = prelude.drop(2, [1, 2, 3, 4, 5]); // => [3, 4, 5]
 
 var splitAtRes: number[][] = prelude.splitAt(2, [1, 2, 3, 4, 5]); // => [[1, 2], [3, 4, 5]]
 
-var takeWhileRes: number[] = prelude.takeWhile(prelude.odd, [1, 3, 5, 4, 8, 7, 9]); // => [1, 3, 5]
+var takeWhileRes: number[] = prelude.takeWhile(
+    prelude.odd,
+    [1, 3, 5, 4, 8, 7, 9],
+); // => [1, 3, 5]
 
 var dropWhileRes: number[] = prelude.dropWhile(prelude.even, [2, 4, 5, 6]); // => [5, 6]
 
 var spanRes: number[][] = prelude.span(prelude.even, [2, 4, 5, 6]); // => [[2, 4], [5, 6]]
 
-var breakListRes: number[][] = prelude.breakList(x => x == 3, [1, 2, 3, 4, 5]); // => [[1, 2], [3, 4, 5]]
+var breakListRes: number[][] = prelude.breakList(
+    (x) => x == 3,
+    [1, 2, 3, 4, 5],
+); // => [[1, 2], [3, 4, 5]]
 
 var zipRes: number[][] = prelude.zip([1, 2, 3], [4, 5, 6]);
 // => [[1, 4], [2, 5], [3, 6]]
 
-var zipWithRes: number[] = prelude.zipWith(x => y => x + y, [1, 2, 3], [4, 5, 6]); // => [5, 7, 9]
+var zipWithRes: number[] = prelude.zipWith(
+    (x) => (y) => x + y,
+    [1, 2, 3],
+    [4, 5, 6],
+); // => [5, 7, 9]
 
 var zipAllRes: number[][] = prelude.zipAll([1, 2, 3], [4, 5, 6], [7, 8, 9]); // => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
 
-var zipAllWithRes: number[] = prelude.zipAllWith((a, b, c) => a + b + c, [1, 2, 3], [3, 2, 1], [1, 1, 1]); // => [5, 5, 5]
+var zipAllWithRes: number[] = prelude.zipAllWith(
+    (a, b, c) => a + b + c,
+    [1, 2, 3],
+    [3, 2, 1],
+    [1, 1, 1],
+); // => [5, 5, 5]
 
 var atRes: number = prelude.at(2, [1, 2, 3, 4]); // => 3
 prelude.at(-3, [1, 2, 3, 4]); // => 2
@@ -210,9 +256,17 @@ var keysRes: string[] = prelude.keys({ a: 2, b: 3, c: 9 });
 var valuesRes: number[] = prelude.values({ a: 2, b: 3, c: 9 });
 // => [2, 3, 9]
 
-var pairsToObjRes: Object = prelude.pairsToObj<string | number>([["a", "b"], ["c", "d"], ["e", 1]]); // => {a: "b", c: "d", e: 1}
+var pairsToObjRes: Object = prelude.pairsToObj<string | number>([
+    ["a", "b"],
+    ["c", "d"],
+    ["e", 1],
+]); // => {a: "b", c: "d", e: 1}
 
-var objToPairsRes: Array<Array<string | number>> = prelude.objToPairs({ a: "b", c: "d", e: 1 });
+var objToPairsRes: Array<Array<string | number>> = prelude.objToPairs({
+    a: "b",
+    c: "d",
+    e: 1,
+});
 // => [["a", "b"], ["c", "d"], ["e", 1]]
 
 var listsToObjRes: Object = prelude.listsToObj(["a", "b", "c"], [1, 2, 3]); // => {a: 1, b: 2, c: 3}
@@ -223,18 +277,18 @@ var objToListsRes = prelude.objToLists({ a: 1, b: 2, c: 3 });
 var objEmptyRes: boolean = prelude.Obj.empty({}); // => true
 
 var count = 4;
-prelude.Obj.each(x => count += x, { a: 1, b: 2, c: 3 });
+prelude.Obj.each((x) => (count += x), { a: 1, b: 2, c: 3 });
 count; // => 10
 
-prelude.Obj.map(x => x + 2, { a: 2, b: 3, c: 4 }); // => {a: 4, b: 5, c: 6}
+prelude.Obj.map((x) => x + 2, { a: 2, b: 3, c: 4 }); // => {a: 4, b: 5, c: 6}
 
 prelude.Obj.compact({ a: 0, b: 1, c: false, d: "", e: "ha" }); // => {b: 1, e: "ha"}
 
 prelude.Obj.filter(prelude.even, { a: 3, b: 4, c: 0 }); // => {b: 4, c: 0}
 
-prelude.Obj.reject(x => x == 2, { a: 1, b: 2 }); // => {a: 1}
+prelude.Obj.reject((x) => x == 2, { a: 1, b: 2 }); // => {a: 1}
 
-prelude.Obj.partition(x => x == 2, { a: 1, b: 2, c: 3 }); // => [{b: 2}, {a: 1, c: 3}]
+prelude.Obj.partition((x) => x == 2, { a: 1, b: 2, c: 3 }); // => [{b: 2}, {a: 1, c: 3}]
 
 prelude.Obj.find(prelude.even, { a: 1, b: 2, c: 3, d: 4 }); // => 2
 
@@ -283,13 +337,16 @@ prelude.drop(1, "goat"); // => "oat"
 
 prelude.splitAt(4, "hello"); // => ["hell", "o"]
 
-prelude.takeWhile(x => !prelude.empty(prelude.elemIndices(x, ["a", "b", "c", "d"])), "cabdek"); // => "cabd"
+prelude.takeWhile(
+    (x) => !prelude.empty(prelude.elemIndices(x, ["a", "b", "c", "d"])),
+    "cabdek",
+); // => "cabd"
 
-prelude.dropWhile(x => x === "m", "mmmmmhmm"); // => "hmm"
+prelude.dropWhile((x) => x === "m", "mmmmmhmm"); // => "hmm"
 
-prelude.span(x => x === "m", "mmmmmhmm"); // => ["mmmmm", "hmm"]
+prelude.span((x) => x === "m", "mmmmmhmm"); // => ["mmmmm", "hmm"]
 
-prelude.Str.breakStr(x => x === "h", "mmmmmhmm"); // => ["mmmmm", "hmm"]
+prelude.Str.breakStr((x) => x === "h", "mmmmmhmm"); // => ["mmmmm", "hmm"]
 
 // Func
 
@@ -300,18 +357,24 @@ var addCurried = prelude.curry(add);
 var addFour = addCurried(4);
 addFour(2); // => 6
 
-var flipRes: (x: number) => (y: number) => number = prelude.flip<number, number, number>(x => y => Math.pow(x, y));
+var flipRes: (x: number) => (y: number) => number = prelude.flip<
+    number,
+    number,
+    number
+>((x) => (y) => Math.pow(x, y));
 
 var fixRes: number = prelude.fix(
     (fib: (n: number) => number) => (n: number) =>
-        n <= 1
-            ? 1
-            : fib(n - 1) + fib(n - 2),
+        n <= 1 ? 1 : fib(n - 1) + fib(n - 2),
 )(9); // => 55
 
-var sameLength: (x: string, y: string) => boolean = prelude.over<string, number, boolean>(
+var sameLength: (x: string, y: string) => boolean = prelude.over<
+    string,
+    number,
+    boolean
+>(
     (x, y) => x == y,
-    x => x.length,
+    (x) => x.length,
 );
 sameLength("hi", "me"); // => true
 sameLength("one", "boom"); // => false

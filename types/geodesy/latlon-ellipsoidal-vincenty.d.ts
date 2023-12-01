@@ -8,7 +8,10 @@ declare class LatLonEllipsoidal_Vincenty extends LatLonEllipsoidal {
     distanceTo(point: LatLonEllipsoidal_Vincenty): number;
     initialBearingTo(point: LatLonEllipsoidal_Vincenty): number;
     finalBearingTo(point: LatLonEllipsoidal_Vincenty): number;
-    destinationPoint(distance: number, initialBearing: number): LatLonEllipsoidal_Vincenty;
+    destinationPoint(
+        distance: number,
+        initialBearing: number,
+    ): LatLonEllipsoidal_Vincenty;
     finalBearingOn(distance: number, initialBearing: number): number;
     direct(
         distance: number,
@@ -18,9 +21,7 @@ declare class LatLonEllipsoidal_Vincenty extends LatLonEllipsoidal {
         finalBearing: number;
         iterations: number;
     };
-    inverse(
-        point: LatLonEllipsoidal_Vincenty,
-    ): {
+    inverse(point: LatLonEllipsoidal_Vincenty): {
         distance: number;
         initialBearing: number;
         finalBearing: number;

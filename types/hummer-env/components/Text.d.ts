@@ -18,5 +18,5 @@ declare const Text: {
     /**
      * 文本展示控件。
      */
-    new(): Text;
+    new (): Text;
 };

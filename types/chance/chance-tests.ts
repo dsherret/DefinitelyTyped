@@ -19,16 +19,25 @@ const strArr: string[] = chance.n(chance.string, 42);
 const strArr2: string[] = chance.n((a) => a.value, 42, { value: "test" });
 
 const uniqInts: number[] = chance.unique(chance.integer, 99);
-const uniqInts2: number[] = chance.unique(a => chance.integer({ min: 0, max: 999 }) + a.value, 99, { value: 1000 });
+const uniqInts2: number[] = chance.unique(
+    (a) => chance.integer({ min: 0, max: 999 }) + a.value,
+    99,
+    { value: 1000 },
+);
 
 interface currencyType {
     name: string;
     code: string;
 }
 
-const currencyComparator = (arr: currencyType[], value: currencyType): boolean =>
-    arr.findIndex(x => x.code === value.code && x.name === value.name) > -1;
-const uniqCurrencies: currencyType[] = chance.unique(chance.currency, 2, { comparator: currencyComparator });
+const currencyComparator = (
+    arr: currencyType[],
+    value: currencyType,
+): boolean =>
+    arr.findIndex((x) => x.code === value.code && x.name === value.name) > -1;
+const uniqCurrencies: currencyType[] = chance.unique(chance.currency, 2, {
+    comparator: currencyComparator,
+});
 
 const currencyPair = chance.currency_pair();
 const firstCurrency = currencyPair[0];
@@ -146,7 +155,13 @@ char = chance.character({ casing: "upper" });
 char = chance.character({ alpha: true });
 char = chance.character({ numeric: true });
 char = chance.character({ symbols: true });
-char = chance.character({ pool: "abcdef", casing: "lower", alpha: true, numeric: true, symbols: true });
+char = chance.character({
+    pool: "abcdef",
+    casing: "lower",
+    alpha: true,
+    numeric: true,
+    symbols: true,
+});
 
 chance.falsy(); // $ExpectType FalsyType
 chance.falsy({ pool: [NaN, undefined] }); // $ExpectType FalsyType

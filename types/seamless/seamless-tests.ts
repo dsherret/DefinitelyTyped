@@ -50,7 +50,7 @@ var defaults = {
 $("#myiframe").seamless(defaults);
 
 /* Connect Child Page to Parent Page */
-(function() {
+(function () {
     $.seamless.connect({
         url: "index.html",
     });
@@ -61,7 +61,7 @@ $("#myiframe").seamless(defaults);
 })();
 
 /* Communicate to the Child page from the Parent page. */
-(function() {
+(function () {
     var child = $("#myiframe").seamless();
     child.show();
     // Send a message
@@ -70,14 +70,14 @@ $("#myiframe").seamless(defaults);
     });
 
     // Receive a message
-    child.receive(function(data, event) {
+    child.receive(function (data, event) {
         // Print out the data that was received.
         console.log(data);
     });
 })();
 
 /* Communicate to the Parent page from the Child page. */
-(function() {
+(function () {
     var parent = $.seamless.connect({
         url: "index.html",
     });
@@ -88,21 +88,21 @@ $("#myiframe").seamless(defaults);
     });
 
     // Receive a message
-    parent.receive(function(data, event) {
+    parent.receive(function (data, event) {
         // Print out the data that was received.
         console.log(data);
     });
 })();
 
 /* Send Responses */
-(function() {
+(function () {
     var child = $("#myiframe").seamless();
 
     child.send({
         data: {
             mydata: "This is a message",
         },
-        success: function(data: any) {
+        success: function (data: any) {
             // 'data' is what was returned from the child 'receive' function.
             console.log(data);
         },
@@ -113,7 +113,7 @@ $("#myiframe").seamless(defaults);
         url: "index.html",
     });
 
-    parent.receive(function(data, event) {
+    parent.receive(function (data, event) {
         // Print out the data that was received.
         console.log(data);
 

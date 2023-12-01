@@ -29,5 +29,7 @@ interface WindowEventMap {
 
 interface Window {
     onappinstalled?: ((this: Window, ev: Event) => any) | null;
-    onbeforeinstallprompt?: ((this: Window, ev: BeforeInstallPromptEvent) => any) | null;
+    onbeforeinstallprompt?:
+        | ((this: Window, ev: BeforeInstallPromptEvent) => any)
+        | null;
 }

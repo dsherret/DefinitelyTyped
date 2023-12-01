@@ -1,8 +1,16 @@
 import { Handler } from "../handler";
 
-export type CodePipelineCloudWatchStageHandler = Handler<CodePipelineCloudWatchStageEvent, void>;
+export type CodePipelineCloudWatchStageHandler = Handler<
+    CodePipelineCloudWatchStageEvent,
+    void
+>;
 
-export type CodePipelineStageState = "STARTED" | "SUCCEEDED" | "RESUMED" | "FAILED" | "CANCELED";
+export type CodePipelineStageState =
+    | "STARTED"
+    | "SUCCEEDED"
+    | "RESUMED"
+    | "FAILED"
+    | "CANCELED";
 
 export interface CodePipelineCloudWatchStageEvent {
     version: string;

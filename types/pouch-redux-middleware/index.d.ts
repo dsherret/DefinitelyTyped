@@ -9,10 +9,17 @@ export interface Path<T extends {} = { [field: string]: any }> {
     scheduleRemove?(doc: Document<T>): void;
     scheduleInset?(doc: Document<T>): void;
     propagateDelete?(doc: Document<T>, dispatch: Dispatch<any>): void;
-    propagateBatchInsert?(doc: Array<Document<T>>, dispatch: Dispatch<any>): void;
+    propagateBatchInsert?(
+        doc: Array<Document<T>>,
+        dispatch: Dispatch<any>,
+    ): void;
     propagateInsert?(doc: Document<T>, dispatch: Dispatch<any>): void;
     propagateUpdate?(doc: Document<T>, dispatch: Dispatch<any>): void;
-    handleResponse?(err: Error, data: any, errorCallback: (err: Error) => void): void;
+    handleResponse?(
+        err: Error,
+        data: any,
+        errorCallback: (err: Error) => void,
+    ): void;
     initialBatchDispatched?(err?: Error): void;
     queue?(...args: any[]): any;
     docs?: any;
@@ -24,6 +31,6 @@ export interface Path<T extends {} = { [field: string]: any }> {
     };
 }
 
-export default function PouchMiddlewareFactory<T extends {} = { [field: string]: any }>(
-    paths?: Array<Path<T>> | Path<T>,
-): Middleware;
+export default function PouchMiddlewareFactory<
+    T extends {} = { [field: string]: any },
+>(paths?: Array<Path<T>> | Path<T>): Middleware;

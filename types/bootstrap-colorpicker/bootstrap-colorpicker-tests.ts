@@ -8,9 +8,11 @@ $(() => {
         format: "rgb",
     });
 
-    $("#cp4").colorpicker().on("changeColor", (e) => {
-        $("body")[0].style.backgroundColor = e.color.toString("rgba");
-    });
+    $("#cp4")
+        .colorpicker()
+        .on("changeColor", (e) => {
+            $("body")[0].style.backgroundColor = e.color.toString("rgba");
+        });
 
     $("#cp5").colorpicker({
         color: "transparent",

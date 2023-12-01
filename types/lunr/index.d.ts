@@ -132,7 +132,9 @@ declare namespace lunr {
             fieldName: string,
             attributes?: {
                 boost?: number | undefined;
-                extractor?: ((doc: object) => string | object | object[]) | undefined;
+                extractor?:
+                    | ((doc: object) => string | object | object[])
+                    | undefined;
             },
         ): void;
 

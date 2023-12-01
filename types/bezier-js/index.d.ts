@@ -86,12 +86,32 @@ declare module "bezier-js" {
         dimlen: number;
         constructor(points: Point[]);
         constructor(coords: number[]);
-        constructor(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, x4?: number, y4?: number);
+        constructor(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            x3: number,
+            y3: number,
+            x4?: number,
+            y4?: number,
+        );
         constructor(p1: Point, p2: Point, p3: Point, p4?: Point);
         static fromSVG(svgString: string): Bezier;
         static getABC(n: number, S: Point, B: Point, E: Point, t: number): ABC;
-        static quadraticFromPoints(p1: Point, p2: Point, p3: Point, t?: number): Bezier;
-        static cubicFromPoints(S: Point, B: Point, E: Point, t?: number, d1?: number): Bezier;
+        static quadraticFromPoints(
+            p1: Point,
+            p2: Point,
+            p3: Point,
+            t?: number,
+        ): Bezier;
+        static cubicFromPoints(
+            S: Point,
+            B: Point,
+            E: Point,
+            t?: number,
+            d1?: number,
+        ): Bezier;
         static getUtils(): utils;
         getUtils(): utils;
         valueOf(): string;
@@ -125,12 +145,23 @@ declare module "bezier-js" {
         scale(d: Function): Bezier;
         scale(d: number): Bezier;
         outline(d1: number, d2?: number, d3?: number, d4?: number): PolyBezier;
-        outlineshapes(d1: number, d2: number, curveIntersectionThreshold?: number): Shape[];
-        intersects(curve: Bezier, curveIntersectionThreshold?: number): string[] | number[];
+        outlineshapes(
+            d1: number,
+            d2: number,
+            curveIntersectionThreshold?: number,
+        ): Shape[];
+        intersects(
+            curve: Bezier,
+            curveIntersectionThreshold?: number,
+        ): string[] | number[];
         intersects(curve: Line): string[] | number[];
         lineIntersects(line: Line): number[];
         selfintersects(curveIntersectionThreshold?: number): string[];
-        curveintersects(c1: Bezier[], c2: Bezier[], curveIntersectionThreshold?: number): string[];
+        curveintersects(
+            c1: Bezier[],
+            c2: Bezier[],
+            curveIntersectionThreshold?: number,
+        ): string[];
         arcs(errorThreshold?: number): Arc[];
         private _error(pc, np1, s, e);
         private _iterate(errorThreshold, circles);
@@ -157,7 +188,16 @@ declare module "bezier-js" {
         closest(LUT: Point[], point: Point): Closest;
         abcratio(t: number, n: number): number;
         projectionratio(t: number, n: number): number;
-        lli8(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, x4: number, y4: number): Point;
+        lli8(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            x3: number,
+            y3: number,
+            x4: number,
+            y4: number,
+        ): Point;
         lli4(p1: Point, p2: Point, p3: Point, p4: Point): Point;
         lli(v1: Offset, v2: Offset): Point;
         makeline(p1: Point, p2: Point): Bezier;
@@ -169,7 +209,11 @@ declare module "bezier-js" {
             bbox2: BBox,
             curveIntersectionThreshold?: number,
         ): string[][] | number[][];
-        makeshape(forward: Bezier, back: Bezier, curveIntersectionThreshold?: number): Shape;
+        makeshape(
+            forward: Bezier,
+            back: Bezier,
+            curveIntersectionThreshold?: number,
+        ): Shape;
         getminmax(curve: Bezier, d: string, list: number[]): MinMax;
         align(points: Point[], line: Line): Point[];
         roots(points: Point[], line: Line): number[];
@@ -177,7 +221,11 @@ declare module "bezier-js" {
         inflections(points: Point[]): number[];
         bboxoverlap(b1: BBox, b2: BBox): boolean;
         expandbox(bbox: BBox, _bbox: BBox): void;
-        pairiteration(c1: Bezier, c2: Bezier, curveIntersectionThreshold?: number): string[];
+        pairiteration(
+            c1: Bezier,
+            c2: Bezier,
+            curveIntersectionThreshold?: number,
+        ): string[];
         getccenter(p1: Point, p2: Point, p3: Point): Arc;
     }
 

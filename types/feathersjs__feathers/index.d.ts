@@ -46,7 +46,13 @@ declare namespace feathers {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type Hook = (hook: HookContext) => Promise<HookContext | SkipSymbol | void> | HookContext | SkipSymbol | void;
+    type Hook = (
+        hook: HookContext,
+    ) =>
+        | Promise<HookContext | SkipSymbol | void>
+        | HookContext
+        | SkipSymbol
+        | void;
 
     type SkipSymbol = symbol | "__feathersSkipHooks";
 
@@ -141,7 +147,10 @@ declare namespace feathers {
 
         get(id: Id, params?: Params): Promise<T>;
 
-        create(data: Partial<T> | Array<Partial<T>>, params?: Params): Promise<T | T[]>;
+        create(
+            data: Partial<T> | Array<Partial<T>>,
+            params?: Params,
+        ): Promise<T | T[]>;
 
         update(id: NullableId, data: T, params?: Params): Promise<T>;
 
@@ -159,14 +168,20 @@ declare namespace feathers {
 
         create(data: Partial<T>, params?: Params): Promise<T>;
 
-        patch(id: NullableId, data: Pick<T, keyof T>, params?: Params): Promise<T>;
+        patch(
+            id: NullableId,
+            data: Pick<T, keyof T>,
+            params?: Params,
+        ): Promise<T>;
     }
 
     interface ServiceAddons<T> extends EventEmitter {
         hooks(hooks: Partial<HooksObject>): this;
     }
 
-    type Service<T> = ServiceOverloads<T> & ServiceAddons<T> & ServiceMethods<T>;
+    type Service<T> = ServiceOverloads<T> &
+        ServiceAddons<T> &
+        ServiceMethods<T>;
 
     interface Application<ServiceTypes = {}> extends EventEmitter {
         get(name: string): any;
@@ -187,11 +202,21 @@ declare namespace feathers {
 
         setup(server?: any): this;
 
-        service<L extends keyof ServiceTypes>(location: L): Service<ServiceTypes[L]>;
+        service<L extends keyof ServiceTypes>(
+            location: L,
+        ): Service<ServiceTypes[L]>;
 
-        service(location: string): keyof ServiceTypes extends never ? Service<any> : never;
+        service(
+            location: string,
+        ): keyof ServiceTypes extends never ? Service<any> : never;
 
-        use(path: string, service: Partial<ServiceMethods<any> & SetupMethod> | Application<any>, options?: any): this;
+        use(
+            path: string,
+            service:
+                | Partial<ServiceMethods<any> & SetupMethod>
+                | Application<any>,
+            options?: any,
+        ): this;
 
         version: string;
     }

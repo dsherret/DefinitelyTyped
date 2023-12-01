@@ -10,6 +10,8 @@ declare namespace sesTransport {
     }
 }
 
-declare function sesTransport(options: sesTransport.SesOptions): nodemailer.Transport;
+declare function sesTransport(
+    options: sesTransport.SesOptions,
+): nodemailer.Transport;
 
 export = sesTransport;

@@ -10,7 +10,10 @@ declare namespace dush {
 
     interface Emitter {
         _allEvents: Array<{ [eventName: string]: Handler[] }>;
-        use: (plugin: (app: Emitter, options: any) => void, options?: any) => Emitter;
+        use: (
+            plugin: (app: Emitter, options: any) => void,
+            options?: any,
+        ) => Emitter;
         on(type: string, handler: Handler): Emitter;
         on(type: "*", handler: WildcardHandler): Emitter;
         once(type: string, handler: Handler): Emitter;

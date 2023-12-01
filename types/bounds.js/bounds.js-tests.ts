@@ -3,8 +3,8 @@ import { WatchCallback } from "bounds.js";
 
 const boundary = Bound();
 const image = document.querySelector("img");
-const onImgEnter: WatchCallback = ratio => {};
-const onImgLeave: WatchCallback = ratio => {};
+const onImgEnter: WatchCallback = (ratio) => {};
+const onImgLeave: WatchCallback = (ratio) => {};
 boundary.watch(image, onImgEnter, onImgLeave);
 boundary.check(document.querySelector(".container")); // $ExpectType boolean
 boundary.unWatch(image).clear();
@@ -18,8 +18,8 @@ Bound({
         top: 0,
     },
     threshold: 0.5,
-    onEmit: actions => {
-        if (actions.some(action => action.inside)) {
+    onEmit: (actions) => {
+        if (actions.some((action) => action.inside)) {
             console.log("At least one element is inside my boundary");
         }
     },

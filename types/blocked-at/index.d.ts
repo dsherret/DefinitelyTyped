@@ -11,7 +11,11 @@
 export = blockedAt;
 
 declare function blockedAt(
-    fn: (time: number, stack: string[], resource: blockedAt.Resource) => unknown,
+    fn: (
+        time: number,
+        stack: string[],
+        resource: blockedAt.Resource,
+    ) => unknown,
     options?: blockedAt.Options,
 ): blockedAt.Return;
 

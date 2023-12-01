@@ -17,7 +17,7 @@ JsonPointer.remove({ example: "hello" }, "/example"); // $ExpectType void
 JsonPointer.remove({ example: "hello" }, ["example"]); // $ExpectType void
 JsonPointer.dict({ example: "hello" }); // $ExpectType Record<string, any>
 // $ExpectType Record<string, any>
-JsonPointer.dict({ example: "hello" }, value => {
+JsonPointer.dict({ example: "hello" }, (value) => {
     value; // $ExpectType any
     return false;
 });
@@ -33,7 +33,7 @@ JsonPointer.walk(
         value; // $ExpectType any
         ref; // $ExpectType string
     },
-    value => {
+    (value) => {
         value; // $ExpectType any
         return false;
     },
@@ -64,7 +64,7 @@ bound.remove("/example"); // $ExpectType void
 bound.remove(["example"]); // $ExpectType void
 bound.dict(); // $ExpectType Record<string, any>
 // $ExpectType Record<string, any>
-bound.dict(value => {
+bound.dict((value) => {
     value; // $ExpectType any
     return false;
 });
@@ -79,7 +79,7 @@ bound.walk(
         value; // $ExpectType any
         ref; // $ExpectType string
     },
-    value => {
+    (value) => {
         value; // $ExpectType any
         return false;
     },

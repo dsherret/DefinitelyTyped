@@ -21,6 +21,8 @@ declare module "jsreport-core" {
     }
 }
 
-declare function JsReportXlsx(options?: Partial<JsReportXlsx.Options>): ExtensionDefinition;
+declare function JsReportXlsx(
+    options?: Partial<JsReportXlsx.Options>,
+): ExtensionDefinition;
 
 export = JsReportXlsx;

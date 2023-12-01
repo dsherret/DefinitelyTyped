@@ -105,7 +105,10 @@ declare namespace audit {
         levels?: StatusCodeMap | undefined;
     }
 
-    type StatusCodeMap = Record<string, "trace" | "debug" | "info" | "warn" | "error">;
+    type StatusCodeMap = Record<
+        string,
+        "trace" | "debug" | "info" | "warn" | "error"
+    >;
 
     interface Logger {
         info(obj: object, ...params: any[]): void;

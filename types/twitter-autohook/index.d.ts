@@ -41,7 +41,11 @@ export class Autohook extends EventEmitter {
      * Subscribes to a user's activity
      * @async
      */
-    subscribe(options: { oauth_token: string; oauth_token_secret: string; screen_name?: string }): Promise<true>;
+    subscribe(options: {
+        oauth_token: string;
+        oauth_token_secret: string;
+        screen_name?: string;
+    }): Promise<true>;
 
     /** @async */
     unsubscribe(userId: string): Promise<true>;
@@ -50,13 +54,24 @@ export class Autohook extends EventEmitter {
 export class WebhookURIError extends TwitterError {}
 
 declare class TwitterError extends Error {
-    constructor(basicInfo: { body: any; statusCode?: any }, message?: string, code?: any);
+    constructor(
+        basicInfo: { body: any; statusCode?: any },
+        message?: string,
+        code?: any,
+    );
 }
 
 export class UserSubscriptionError extends TwitterError {}
 export class TooManySubscriptionsError extends TwitterError {}
 
-export function validateWebhook(token: string, auth: unknown): { response_token: string };
+export function validateWebhook(
+    token: string,
+    auth: unknown,
+): { response_token: string };
 
-export function validateSignature(header: object, auth: object, body: object): boolean;
+export function validateSignature(
+    header: object,
+    auth: object,
+    body: object,
+): boolean;
 export {};

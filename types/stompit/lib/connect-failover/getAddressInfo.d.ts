@@ -1,6 +1,8 @@
 import { ConnectOptions } from "../connect";
 
-declare function getAddressInfo(args: ConnectOptions): getAddressInfo.AddressInfo;
+declare function getAddressInfo(
+    args: ConnectOptions,
+): getAddressInfo.AddressInfo;
 
 export = getAddressInfo;
 

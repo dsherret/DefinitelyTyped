@@ -5,7 +5,10 @@ interface ZIndex {
 type Graph<T> = dagre.graphlib.Graph<T>;
 const Graph = dagre.graphlib.Graph;
 
-let gDagre: Graph<ZIndex> = new Graph<ZIndex>({ compound: true, multigraph: false });
+let gDagre: Graph<ZIndex> = new Graph<ZIndex>({
+    compound: true,
+    multigraph: false,
+});
 gDagre = gDagre.setGraph({});
 gDagre = gDagre.setGraph({});
 gDagre = gDagre.setDefaultEdgeLabel(() => ({}));
@@ -41,7 +44,7 @@ gDagre = gDagre.removeEdge("a", "b", "edgeName");
 dagre.graphlib.json.read(dagre.graphlib.json.write(gDagre));
 
 dagre.graphlib.alg.components(gDagre);
-dagre.graphlib.alg.dijkstra(gDagre, "a", edge => 5);
+dagre.graphlib.alg.dijkstra(gDagre, "a", (edge) => 5);
 dagre.graphlib.alg.dijkstraAll(gDagre);
 dagre.graphlib.alg.findCycles(gDagre);
 dagre.graphlib.alg.floydWarchall(gDagre);

@@ -49,8 +49,14 @@ function Comp() {
     }, []);
 
     return (
-        <View overflow="hidden" style={{ overflow: "hidden", collapsable: true }}>
-            <View overflow="visible" style={{ overflow: "visible", collapsable: false }} />
+        <View
+            overflow="hidden"
+            style={{ overflow: "hidden", collapsable: true }}
+        >
+            <View
+                overflow="visible"
+                style={{ overflow: "visible", collapsable: false }}
+            />
             <Text>
                 'test'
                 <Text>'nested'</Text>

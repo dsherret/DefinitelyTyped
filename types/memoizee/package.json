@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/memoizee",
-    "version": "0.4.9999",
-    "projects": [
-        "https://github.com/medikoo/memoizee"
-    ],
-    "devDependencies": {
-        "@types/memoizee": "workspace:."
+  "private": true,
+  "name": "@types/memoizee",
+  "version": "0.4.9999",
+  "projects": [
+    "https://github.com/medikoo/memoizee"
+  ],
+  "devDependencies": {
+    "@types/memoizee": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Juan Picado",
+      "githubUsername": "juanpicado"
     },
-    "owners": [
-        {
-            "name": "Juan Picado",
-            "githubUsername": "juanpicado"
-        },
-        {
-            "name": "Patrick Muff",
-            "githubUsername": "dislick"
-        }
-    ]
+    {
+      "name": "Patrick Muff",
+      "githubUsername": "dislick"
+    }
+  ]
 }

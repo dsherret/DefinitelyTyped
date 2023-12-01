@@ -21,7 +21,10 @@ const mapOptions = expectType({
         },
     ],
 }) as woosmap.map.MapOptions;
-const map = new woosmap.map.Map(document.getElementById("mapContainer") as HTMLElement, mapOptions);
+const map = new woosmap.map.Map(
+    document.getElementById("mapContainer") as HTMLElement,
+    mapOptions,
+);
 
 // $ExpectType LatLngBounds
 const bounds = map.getBounds({ left: 100 });
@@ -32,13 +35,25 @@ const tilt = map.getTilt();
 // $ExpectType number
 const zoom = map.getZoom();
 // $ExpectType void
-map.fitBounds(new woosmap.map.LatLngBounds({ lat: 43.3, lng: 3.3 }, { lat: 48.3, lng: 2.3 }), { left: 100 });
+map.fitBounds(
+    new woosmap.map.LatLngBounds(
+        { lat: 43.3, lng: 3.3 },
+        { lat: 48.3, lng: 2.3 },
+    ),
+    { left: 100 },
+);
 // $ExpectType void
 map.panBy(100, 50);
 // $ExpectType void
 map.panTo({ lat: 43.3, lng: 3.3 });
 // $ExpectType void
-map.panToBounds(new woosmap.map.LatLngBounds({ lat: 43.3, lng: 3.3 }, { lat: 48.3, lng: 2.3 }), { left: 100 });
+map.panToBounds(
+    new woosmap.map.LatLngBounds(
+        { lat: 43.3, lng: 3.3 },
+        { lat: 48.3, lng: 2.3 },
+    ),
+    { left: 100 },
+);
 // $ExpectType void
 map.setZoom(12);
 
@@ -144,7 +159,7 @@ const events = [
     "rightclick",
     "zoom_changed",
 ];
-events.forEach(eventName => () => {
+events.forEach((eventName) => () => {
     // $ExpectType MapEventListener
     map.addListener(eventName, () => {
         console.log(eventName);
@@ -197,7 +212,7 @@ const rules = expectType(style.rules[0]) as woosmap.map.TypedStyleRule;
 const defaultStyle = expectType(style.default) as woosmap.map.StyleRule;
 
 const storesOverlay = new woosmap.map.StoresOverlay(style);
-storesOverlay.setQuery("type:\"click_and_collect\"");
+storesOverlay.setQuery('type:"click_and_collect"');
 storesOverlay.setMap(map);
 
 /**
@@ -266,7 +281,7 @@ const feature = expectType({
 
 map.data.add(feature);
 map.data.loadGeoJson("https://demo.woosmap.com/misc/data/europe.geojson.json");
-map.data.setStyle(feature => {
+map.data.setStyle((feature) => {
     let color = "#b71c1c";
     if (feature.getProperty("highlighted")) {
         color = "#C51162";
@@ -280,7 +295,8 @@ map.data.setStyle(feature => {
 });
 
 map.data.addListener("click", (event: any) => {
-    const feature: woosmap.map.data.Feature | null = map.data.getFeatureById("ID_1234");
+    const feature: woosmap.map.data.Feature | null =
+        map.data.getFeatureById("ID_1234");
     feature?.setProperty("highlighted", false);
     event.feature?.setProperty("highlighted", true);
 });
@@ -350,7 +366,10 @@ listener.remove(); // $ExpectType void
 /**
  * woosmap.map.geometry
  */
-const isContained = woosmap.map.geometry.containsLocation({ lat: 43.3, lng: 3.3 }, polygon); // $ExpectType boolean
+const isContained = woosmap.map.geometry.containsLocation(
+    { lat: 43.3, lng: 3.3 },
+    polygon,
+); // $ExpectType boolean
 
 /**
  * Drawing tool
@@ -365,19 +384,19 @@ draw.add({
     features: [],
 });
 // $ExpectType void
-draw.addListener("draw.create", e => {});
+draw.addListener("draw.create", (e) => {});
 // $ExpectType void
-draw.addListener("draw.create", e => {});
+draw.addListener("draw.create", (e) => {});
 // $ExpectType void
-draw.addListener("draw.delete", e => {});
+draw.addListener("draw.delete", (e) => {});
 // $ExpectType void
-draw.addListener("draw.modechange", e => {});
+draw.addListener("draw.modechange", (e) => {});
 // $ExpectType void
-draw.addListener("draw.selectionchange", e => {});
+draw.addListener("draw.selectionchange", (e) => {});
 // $ExpectType void
-draw.addListener("draw.update", e => {});
+draw.addListener("draw.update", (e) => {});
 // @ts-expect-error
-draw.addListener("draw.unknown_event", e => {});
+draw.addListener("draw.unknown_event", (e) => {});
 // $ExpectType Drawing
 draw.delete("1");
 // $ExpectType Drawing

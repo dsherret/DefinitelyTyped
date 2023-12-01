@@ -42,10 +42,10 @@ tryer({ interval: "notNumber" });
 tryer({});
 
 tryer({
-    action: done => {
+    action: (done) => {
         done();
     },
-    fail: error => {
+    fail: (error) => {
         error.message;
         error.name;
     },

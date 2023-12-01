@@ -1,24 +1,24 @@
 {
-    "private": true,
-    "name": "@types/uikit",
-    "version": "2.27.9999",
-    "projects": [
-        "https://getuikit.com"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/uikit",
+  "version": "2.27.9999",
+  "projects": [
+    "https://getuikit.com"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/uikit": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Giovanni Silva",
+      "githubUsername": "giovannicandido"
     },
-    "devDependencies": {
-        "@types/uikit": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Giovanni Silva",
-            "githubUsername": "giovannicandido"
-        },
-        {
-            "name": "Ivo Senner",
-            "githubUsername": "s0x"
-        }
-    ]
+    {
+      "name": "Ivo Senner",
+      "githubUsername": "s0x"
+    }
+  ]
 }

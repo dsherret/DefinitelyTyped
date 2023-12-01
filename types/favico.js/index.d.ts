@@ -1,6 +1,6 @@
 declare namespace favicojs {
     interface FavicoJsStatic {
-        new(opt?: FavicoJsOptions): Favico;
+        new (opt?: FavicoJsOptions): Favico;
     }
 
     interface FavicoJsOptions {

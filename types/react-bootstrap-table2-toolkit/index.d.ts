@@ -103,7 +103,9 @@ export interface ExportCSVButtonProps {
 }
 
 export namespace CSVExport {
-    function ExportCSVButton(props: ExportCSVButtonProps): React.ReactElement | null;
+    function ExportCSVButton(
+        props: ExportCSVButtonProps,
+    ): React.ReactElement | null;
 }
 
 export interface SearchBarProps<T = any> extends SearchProps<T> {
@@ -122,10 +124,14 @@ export interface ClearSearchButtonProps {
 
 export namespace Search {
     function SearchBar(props: SearchBarProps): React.ReactElement | null;
-    function ClearSearchButton(props: ClearSearchButtonProps): React.ReactElement | null;
+    function ClearSearchButton(
+        props: ClearSearchButtonProps,
+    ): React.ReactElement | null;
 }
 
 export const ToolkitContext: React.Context<ToolkitContextType>;
 
-declare function ToolkitProvider(props: TableToolkitProps): React.ReactElement | null;
+declare function ToolkitProvider(
+    props: TableToolkitProps,
+): React.ReactElement | null;
 export default ToolkitProvider;

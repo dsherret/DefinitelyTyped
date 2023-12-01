@@ -31,9 +31,18 @@ declare module "strophe.js" {
                 join(
                     room: string,
                     nick: string,
-                    msg_handler_cb: (stanza: Element, room: XmppRoom) => boolean,
-                    pres_handler_cb: (stanza: Element, room: XmppRoom) => boolean,
-                    roster_cb: (occupants: OccupantMap, room: XmppRoom) => boolean,
+                    msg_handler_cb: (
+                        stanza: Element,
+                        room: XmppRoom,
+                    ) => boolean,
+                    pres_handler_cb: (
+                        stanza: Element,
+                        room: XmppRoom,
+                    ) => boolean,
+                    roster_cb: (
+                        occupants: OccupantMap,
+                        room: XmppRoom,
+                    ) => boolean,
                     password?: string,
                     history_attrs?: any,
                     extended_presence?: Element,
@@ -97,11 +106,7 @@ declare module "strophe.js" {
                  * @param reason - Optional reason for joining the room.
                  * @return msgiq - the unique id used to send the invitation
                  */
-                invite(
-                    room: string,
-                    receiver: string,
-                    reason?: string,
-                ): string;
+                invite(room: string, receiver: string, reason?: string): string;
 
                 /**
                  * Send a mediated multiple invitation.
@@ -545,7 +550,10 @@ declare module "strophe.js" {
 
                 saveConfiguration(config: any): string;
 
-                queryOccupants(success_cb: (stanza: Element) => any, error_cb: (stanza: Element) => any): void;
+                queryOccupants(
+                    success_cb: (stanza: Element) => any,
+                    error_cb: (stanza: Element) => any,
+                ): void;
 
                 setTopic(topic: string): string;
 

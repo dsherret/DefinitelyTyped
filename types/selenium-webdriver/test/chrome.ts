@@ -71,5 +71,7 @@ function TestServiceBuilder() {
 
 function TestChromeModule() {
     let service: any = chrome.getDefaultService();
-    chrome.setDefaultService(new remote.DriverService("executable", new chrome.Options()));
+    chrome.setDefaultService(
+        new remote.DriverService("executable", new chrome.Options()),
+    );
 }

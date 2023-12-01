@@ -200,12 +200,15 @@ interface AudioData {
     allocationSize(options: AudioDataCopyToOptions): number;
     clone(): AudioData;
     close(): void;
-    copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+    copyTo(
+        destination: AllowSharedBufferSource,
+        options: AudioDataCopyToOptions,
+    ): void;
 }
 
 declare var AudioData: {
     prototype: AudioData;
-    new(init: AudioDataInit): AudioData;
+    new (init: AudioDataInit): AudioData;
 };
 
 /** Available only in secure contexts. */
@@ -221,7 +224,7 @@ interface AudioDecoder {
 
 declare var AudioDecoder: {
     prototype: AudioDecoder;
-    new(init: AudioDecoderInit): AudioDecoder;
+    new (init: AudioDecoderInit): AudioDecoder;
     isConfigSupported(config: AudioDecoderConfig): Promise<AudioDecoderSupport>;
 };
 
@@ -238,7 +241,7 @@ interface AudioEncoder {
 
 declare var AudioEncoder: {
     prototype: AudioEncoder;
-    new(init: AudioEncoderInit): AudioEncoder;
+    new (init: AudioEncoderInit): AudioEncoder;
     isConfigSupported(config: AudioEncoderConfig): Promise<AudioEncoderSupport>;
 };
 
@@ -252,7 +255,7 @@ interface EncodedAudioChunk {
 
 declare var EncodedAudioChunk: {
     prototype: EncodedAudioChunk;
-    new(init: EncodedAudioChunkInit): EncodedAudioChunk;
+    new (init: EncodedAudioChunkInit): EncodedAudioChunk;
 };
 
 interface EncodedVideoChunk {
@@ -265,7 +268,7 @@ interface EncodedVideoChunk {
 
 declare var EncodedVideoChunk: {
     prototype: EncodedVideoChunk;
-    new(init: EncodedVideoChunkInit): EncodedVideoChunk;
+    new (init: EncodedVideoChunkInit): EncodedVideoChunk;
 };
 
 /** Available only in secure contexts. */
@@ -281,7 +284,7 @@ interface ImageDecoder {
 
 declare var ImageDecoder: {
     prototype: ImageDecoder;
-    new(init: ImageDecoderInit): ImageDecoder;
+    new (init: ImageDecoderInit): ImageDecoder;
     isTypeSupported(type: string): Promise<boolean>;
 };
 
@@ -294,7 +297,7 @@ interface ImageTrack {
 
 declare var ImageTrack: {
     prototype: ImageTrack;
-    new(): ImageTrack;
+    new (): ImageTrack;
 };
 
 interface ImageTrackList {
@@ -307,7 +310,7 @@ interface ImageTrackList {
 
 declare var ImageTrackList: {
     prototype: ImageTrackList;
-    new(): ImageTrackList;
+    new (): ImageTrackList;
 };
 
 interface VideoColorSpace {
@@ -320,7 +323,7 @@ interface VideoColorSpace {
 
 declare var VideoColorSpace: {
     prototype: VideoColorSpace;
-    new(init?: VideoColorSpaceInit): VideoColorSpace;
+    new (init?: VideoColorSpaceInit): VideoColorSpace;
 };
 
 /** Available only in secure contexts. */
@@ -336,7 +339,7 @@ interface VideoDecoder {
 
 declare var VideoDecoder: {
     prototype: VideoDecoder;
-    new(init: VideoDecoderInit): VideoDecoder;
+    new (init: VideoDecoderInit): VideoDecoder;
     isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
 };
 
@@ -353,7 +356,7 @@ interface VideoEncoder {
 
 declare var VideoEncoder: {
     prototype: VideoEncoder;
-    new(init: VideoEncoderInit): VideoEncoder;
+    new (init: VideoEncoderInit): VideoEncoder;
     isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
 };
 
@@ -371,13 +374,16 @@ interface VideoFrame {
     allocationSize(options?: VideoFrameCopyToOptions): number;
     clone(): VideoFrame;
     close(): void;
-    copyTo(destination: AllowSharedBufferSource, options?: VideoFrameCopyToOptions): Promise<PlaneLayout[]>;
+    copyTo(
+        destination: AllowSharedBufferSource,
+        options?: VideoFrameCopyToOptions,
+    ): Promise<PlaneLayout[]>;
 }
 
 declare var VideoFrame: {
     prototype: VideoFrame;
-    new(source: CanvasImageSource, init?: VideoFrameInit): VideoFrame;
-    new(data: AllowSharedBufferSource, init: VideoFrameBufferInit): VideoFrame;
+    new (source: CanvasImageSource, init?: VideoFrameInit): VideoFrame;
+    new (data: AllowSharedBufferSource, init: VideoFrameBufferInit): VideoFrame;
 };
 
 interface AudioDataOutputCallback {
@@ -404,12 +410,23 @@ interface WebCodecsErrorCallback {
 // type BitrateMode = "constant" | "variable";
 type ImageBufferSource = ArrayBuffer | ArrayBufferView | ReadableStream;
 // type AlphaOption = "discard" | "keep";
-type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
+type AudioSampleFormat =
+    | "f32"
+    | "f32-planar"
+    | "s16"
+    | "s16-planar"
+    | "s32"
+    | "s32-planar"
+    | "u8"
+    | "u8-planar";
 // type AvcBitstreamFormat = "annexb" | "avc";
 // type CodecState = "closed" | "configured" | "unconfigured";
 type EncodedAudioChunkType = "delta" | "key";
 // type EncodedVideoChunkType = "delta" | "key";
-type HardwarePreference = "no-preference" | "prefer-hardware" | "prefer-software";
+type HardwarePreference =
+    | "no-preference"
+    | "prefer-hardware"
+    | "prefer-software";
 // type LatencyMode = "quality" | "realtime";
 // type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
 // type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";

@@ -24,23 +24,32 @@ export interface ProviderOptions {
     invalidTokenUrl?: string | undefined;
     keysetUrl?: string | undefined;
     https?: boolean | undefined;
-    ssl?: {
-        key: string;
-        cert: string;
-    } | undefined;
+    ssl?:
+        | {
+              key: string;
+              cert: string;
+          }
+        | undefined;
     staticPath?: string | undefined;
     logger?: boolean | undefined;
     cors?: boolean | undefined;
     serverAddon?: ServerAddonFunction | undefined;
-    cookies?: {
-        secure?: boolean | undefined;
-        sameSite?: string | undefined;
-    } | undefined;
+    cookies?:
+        | {
+              secure?: boolean | undefined;
+              sameSite?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface OnConnectCallback {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    (connection: IdToken, request: Request, response: Response, next: NextFunction): Response | void;
+    (
+        connection: IdToken,
+        request: Request,
+        response: Response,
+        next: NextFunction,
+    ): Response | void;
 }
 
 export interface UnregisteredPlatformCallback {
@@ -49,8 +58,12 @@ export interface UnregisteredPlatformCallback {
 }
 
 export interface OnConnectOptions {
-    sessionTimeout?: ((request: Request, response: Response) => Response) | undefined;
-    invalidToken?: ((request: Request, response: Response) => Response) | undefined;
+    sessionTimeout?:
+        | ((request: Request, response: Response) => Response)
+        | undefined;
+    invalidToken?:
+        | ((request: Request, response: Response) => Response)
+        | undefined;
 }
 
 export interface RedirectOptions {
@@ -66,17 +79,29 @@ declare class Provider {
     DeepLinking: DeepLinkingService;
     NamesAndRoles: NamesAndRolesService;
 
-    setup(encryptionKey: string, database: DatabaseOptions, options?: ProviderOptions): Provider;
+    setup(
+        encryptionKey: string,
+        database: DatabaseOptions,
+        options?: ProviderOptions,
+    ): Provider;
 
     deploy(options?: DeploymentOptions): Promise<true | undefined>;
 
     close(): Promise<boolean>;
 
-    onConnect(_connectCallback: OnConnectCallback, options?: OnConnectOptions): true;
+    onConnect(
+        _connectCallback: OnConnectCallback,
+        options?: OnConnectOptions,
+    ): true;
 
-    onDeepLinking(_connectCallback: OnConnectCallback, options?: OnConnectOptions): true;
+    onDeepLinking(
+        _connectCallback: OnConnectCallback,
+        options?: OnConnectOptions,
+    ): true;
 
-    onUnregisteredPlatform(_unregisteredPlatformCallback: UnregisteredPlatformCallback): true;
+    onUnregisteredPlatform(
+        _unregisteredPlatformCallback: UnregisteredPlatformCallback,
+    ): true;
 
     loginUrl(): string;
 

@@ -37,6 +37,8 @@ declare namespace DuplicatePackageCheckerWebpackPlugin {
          * @param instance The instance of a package being evaluated for exclusion.
          * @returns true to exclude the instance, false otherwise
          */
-        exclude?: ((instance: PackageInstanceProperties) => boolean) | undefined;
+        exclude?:
+            | ((instance: PackageInstanceProperties) => boolean)
+            | undefined;
     }
 }

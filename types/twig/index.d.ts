@@ -2,15 +2,32 @@
 
 interface Exports {
     twig(params: Twig.Parameters): Twig.Template;
-    extendFilter(name: string, definition: (left: any, params: any[] | false) => string): void;
-    extendFunction(name: string, definition: (...params: any[]) => string): void;
+    extendFilter(
+        name: string,
+        definition: (left: any, params: any[] | false) => string,
+    ): void;
+    extendFunction(
+        name: string,
+        definition: (...params: any[]) => string,
+    ): void;
     extendTest(name: string, definition: (value: any) => boolean): void;
     extendTag(definition: Twig.ExtendTagOptions): void;
     extend(extension: (twig: Twig.Twig) => void): void;
-    compile(markup: string, options: Twig.CompileOptions): (context: any) => any;
-    renderFile(path: string, options: Twig.RenderOptions, fn: (err: Error, result: any) => void): void;
+    compile(
+        markup: string,
+        options: Twig.CompileOptions,
+    ): (context: any) => any;
+    renderFile(
+        path: string,
+        options: Twig.RenderOptions,
+        fn: (err: Error, result: any) => void,
+    ): void;
     renderFile(path: string, fn: (err: Error, result: any) => void): void;
-    __express(path: string, options: Twig.CompileOptions, fn: (err: Error, result: any) => void): void;
+    __express(
+        path: string,
+        options: Twig.CompileOptions,
+        fn: (err: Error, result: any) => void,
+    ): void;
     cache(value: boolean): void;
 }
 
@@ -35,7 +52,11 @@ declare namespace Twig {
 
         render(context?: any, params?: any, allow_async?: false): string;
 
-        render(context?: any, params?: any, allow_async?: boolean): string | Promise<string>;
+        render(
+            context?: any,
+            params?: any,
+            allow_async?: boolean,
+        ): string | Promise<string>;
 
         renderAsync(context?: any, params?: any): Promise<string>;
 
@@ -64,9 +85,9 @@ declare namespace Twig {
         allowAsync?: boolean | undefined;
         settings?:
             | {
-                views: any;
-                "twig options": any;
-            }
+                  views: any;
+                  "twig options": any;
+              }
             | undefined;
     }
 
@@ -115,7 +136,9 @@ declare namespace Twig {
              *
              * @return The compiled token
              */
-            compile<T>(rawToken: { value: unknown } & T): { stack: CompiledToken[] } & Omit<T, "value">;
+            compile<T>(
+                rawToken: { value: unknown } & T,
+            ): { stack: CompiledToken[] } & Omit<T, "value">;
             /**
              * Parse an RPN expression stack within a context.
              *
@@ -172,22 +195,40 @@ declare namespace Twig {
         value: TValue;
     }
 
-    interface CompiledGenericTokenWithMatch<TType, TValue> extends CompiledGenericToken<TType, TValue> {
+    interface CompiledGenericTokenWithMatch<TType, TValue>
+        extends CompiledGenericToken<TType, TValue> {
         match: Array<string | undefined | unknown>;
     }
 
     interface CompiledSubexpressionToken
-        extends CompiledGenericTokenWithMatch<"Twig.expression.type.subexpression.end", ")">
-    {
+        extends CompiledGenericTokenWithMatch<
+            "Twig.expression.type.subexpression.end",
+            ")"
+        > {
         expression: boolean;
         params: CompiledToken[];
     }
 
-    type BinaryOperator = "*" | "**" | "%" | "+" | "-" | "/" | "<" | ">" | "==" | "!=" | ">=" | "<=";
+    type BinaryOperator =
+        | "*"
+        | "**"
+        | "%"
+        | "+"
+        | "-"
+        | "/"
+        | "<"
+        | ">"
+        | "=="
+        | "!="
+        | ">="
+        | "<=";
 
-    interface CompiledBinaryOperatorToken<TOperator extends BinaryOperator = BinaryOperator>
-        extends CompiledGenericTokenWithMatch<"Twig.expression.type.operator.binary", TOperator>
-    {
+    interface CompiledBinaryOperatorToken<
+        TOperator extends BinaryOperator = BinaryOperator,
+    > extends CompiledGenericTokenWithMatch<
+            "Twig.expression.type.operator.binary",
+            TOperator
+        > {
         precidence: number;
         associativity: "leftToRight" | string;
         operator: TOperator;
@@ -209,12 +250,17 @@ declare namespace Twig {
     }
 
     type CompiledTokenWithoutMatch<
-        TType extends keyof CompiledTokenTypesWithoutMatchMap = keyof CompiledTokenTypesWithoutMatchMap,
+        TType extends
+            keyof CompiledTokenTypesWithoutMatchMap = keyof CompiledTokenTypesWithoutMatchMap,
     > = CompiledGenericToken<TType, CompiledTokenTypesWithoutMatchMap[TType]>;
 
     type CompiledTokenWithMatch<
-        TType extends keyof CompiledTokenTypesWithMatchMap = keyof CompiledTokenTypesWithMatchMap,
-    > = CompiledGenericTokenWithMatch<TType, CompiledTokenTypesWithMatchMap[TType]>;
+        TType extends
+            keyof CompiledTokenTypesWithMatchMap = keyof CompiledTokenTypesWithMatchMap,
+    > = CompiledGenericTokenWithMatch<
+        TType,
+        CompiledTokenTypesWithMatchMap[TType]
+    >;
 
     type CompiledToken =
         | CompiledTokenWithoutMatch
@@ -238,7 +284,11 @@ declare namespace Twig {
         /** Called on matched tokens when the template is loaded, once per template */
         compile?: (token: TagToken) => TagToken;
         /** Runs when the template is rendered */
-        parse?: (token: TagToken, context: ParseContext, chain: boolean) => TagParseOutput;
+        parse?: (
+            token: TagToken,
+            context: ParseContext,
+            chain: boolean,
+        ) => TagParseOutput;
     }
 }
 

@@ -7,7 +7,12 @@ export namespace crypto {
 
     namespace ECDSA {
         function sign(message: Buffer, key: PrivateKey): Signature;
-        function verify(hashbuf: Buffer, sig: Signature, pubkey: PublicKey, endian?: "little"): boolean;
+        function verify(
+            hashbuf: Buffer,
+            sig: Signature,
+            pubkey: PublicKey,
+            endian?: "little",
+        ): boolean;
     }
 
     namespace Hash {
@@ -152,7 +157,10 @@ export class HDPrivateKey {
 
     derive(arg: string | number, hardened?: boolean): HDPrivateKey;
     deriveChild(arg: string | number, hardened?: boolean): HDPrivateKey;
-    deriveNonCompliantChild(arg: string | number, hardened?: boolean): HDPrivateKey;
+    deriveNonCompliantChild(
+        arg: string | number,
+        hardened?: boolean,
+    ): HDPrivateKey;
 
     toString(): string;
     toObject(): object;
@@ -178,16 +186,37 @@ export namespace Script {
     const types: {
         DATA_OUT: string;
     };
-    function buildMultisigOut(publicKeys: PublicKey[], threshold: number, opts: object): Script;
+    function buildMultisigOut(
+        publicKeys: PublicKey[],
+        threshold: number,
+        opts: object,
+    ): Script;
     function buildWitnessMultisigOutFromScript(script: Script): Script;
-    function buildMultisigIn(pubkeys: PublicKey[], threshold: number, signatures: Buffer[], opts: object): Script;
-    function buildP2SHMultisigIn(pubkeys: PublicKey[], threshold: number, signatures: Buffer[], opts: object): Script;
+    function buildMultisigIn(
+        pubkeys: PublicKey[],
+        threshold: number,
+        signatures: Buffer[],
+        opts: object,
+    ): Script;
+    function buildP2SHMultisigIn(
+        pubkeys: PublicKey[],
+        threshold: number,
+        signatures: Buffer[],
+        opts: object,
+    ): Script;
     function buildPublicKeyHashOut(address: Address): Script;
     function buildPublicKeyOut(pubkey: PublicKey): Script;
     function buildDataOut(data: string | Buffer, encoding?: string): Script;
     function buildScriptHashOut(script: Script): Script;
-    function buildPublicKeyIn(signature: crypto.Signature | Buffer, sigtype: number): Script;
-    function buildPublicKeyHashIn(publicKey: PublicKey, signature: crypto.Signature | Buffer, sigtype: number): Script;
+    function buildPublicKeyIn(
+        signature: crypto.Signature | Buffer,
+        sigtype: number,
+    ): Script;
+    function buildPublicKeyHashIn(
+        publicKey: PublicKey,
+        signature: crypto.Signature | Buffer,
+        sigtype: number,
+    ): Script;
 
     function fromAddress(address: string | Address): Script;
 
@@ -279,7 +308,10 @@ export namespace Networks {
 
     function add(data: any): Network;
     function remove(network: Network): void;
-    function get(args: string | number | Network, keys: string | string[]): Network;
+    function get(
+        args: string | number | Network,
+        keys: string | string[],
+    ): Network;
 }
 
 export class Address {
@@ -287,7 +319,11 @@ export class Address {
     readonly network: Networks.Network;
     readonly type: string;
 
-    constructor(data: Buffer | Uint8Array | string | object, network?: Networks.Network, type?: string);
+    constructor(
+        data: Buffer | Uint8Array | string | object,
+        network?: Networks.Network,
+        type?: string,
+    );
 }
 
 export class Unit {

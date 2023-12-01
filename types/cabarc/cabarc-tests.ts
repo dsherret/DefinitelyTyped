@@ -1,7 +1,7 @@
 import { Archive, Cabinet } from "cabarc";
 
 const cab = new Archive();
-cab.open("path/to/filename.cab", error => {
+cab.open("path/to/filename.cab", (error) => {
     if (error) {
         throw error;
     }

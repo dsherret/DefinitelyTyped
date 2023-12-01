@@ -85,34 +85,37 @@ riding.search(lnglat, lnglat, (status, result) => {
 });
 
 riding.search([{ keyword: "origin" }, { keyword: "destination" }]);
-riding.search([{ keyword: "origin" }, { keyword: "destination" }], (status, result) => {
-    const statusTemp: "complete" | "error" | "no_data" = status;
-    if (typeof result !== "string") {
-        // $ExpectType SearchResultExt
-        result;
-        // $ExpectType number
-        result.count;
-        // $ExpectType LngLat
-        result.destination;
-        // $ExpectType string
-        result.destinationName;
-        // $ExpectType PoiExt
-        result.end;
-        // $ExpectType string
-        result.info;
-        // $ExpectType LngLat
-        result.origin;
-        // $ExpectType string
-        result.originName;
-        // $ExpectType RideRoute[]
-        result.routes;
-        // $ExpectType PoiExt
-        result.start;
-    } else {
-        // $ExpectType string
-        result;
-    }
-});
+riding.search(
+    [{ keyword: "origin" }, { keyword: "destination" }],
+    (status, result) => {
+        const statusTemp: "complete" | "error" | "no_data" = status;
+        if (typeof result !== "string") {
+            // $ExpectType SearchResultExt
+            result;
+            // $ExpectType number
+            result.count;
+            // $ExpectType LngLat
+            result.destination;
+            // $ExpectType string
+            result.destinationName;
+            // $ExpectType PoiExt
+            result.end;
+            // $ExpectType string
+            result.info;
+            // $ExpectType LngLat
+            result.origin;
+            // $ExpectType string
+            result.originName;
+            // $ExpectType RideRoute[]
+            result.routes;
+            // $ExpectType PoiExt
+            result.start;
+        } else {
+            // $ExpectType string
+            result;
+        }
+    },
+);
 
 // $ExpectType void
 riding.clear();

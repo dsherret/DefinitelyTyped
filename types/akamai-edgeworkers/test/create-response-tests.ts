@@ -12,5 +12,8 @@ export function someFun() {
     createResponse("a body");
     createResponse("a body", {});
     createResponse("a body", { headers: { "Accept-Encoding": "rocks" } });
-    createResponse("a body", { headers: { "Accept-Encoding": ["rocks", "blocks"] }, denyReason: "deny reason" });
+    createResponse("a body", {
+        headers: { "Accept-Encoding": ["rocks", "blocks"] },
+        denyReason: "deny reason",
+    });
 }

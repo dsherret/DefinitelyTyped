@@ -9,12 +9,12 @@ const zongji = new ZongJi({
 
 zongji.on("ready", () => {});
 
-zongji.on("binlog", event => {
+zongji.on("binlog", (event) => {
     event.dump();
     const eventName: string = event.getEventName();
 });
 
-zongji.on("error", error => {
+zongji.on("error", (error) => {
     const fatal: boolean = error.fatal;
 });
 

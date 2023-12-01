@@ -1,7 +1,12 @@
 export class Tween extends Component {
     static set defaultEase(arg: (arg0: number) => number);
     static get defaultEase(): (arg0: number) => number;
-    constructor(values: any, duration?: number, properties?: any, plugins?: any);
+    constructor(
+        values: any,
+        duration?: number,
+        properties?: any,
+        plugins?: any,
+    );
     private mValues;
     private mDuration;
     private mProperties;

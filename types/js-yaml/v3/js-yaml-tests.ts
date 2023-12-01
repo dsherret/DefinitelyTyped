@@ -23,7 +23,7 @@ const typeConstructorOptions: TypeConstructorOptions = {
     resolve: fn,
     construct: fn,
     instanceOf: obj,
-    predicate: obj => false,
+    predicate: (obj) => false,
     represent: fn,
     defaultStyle: str,
     styleAliases: map,
@@ -145,13 +145,13 @@ value = yaml.safeLoadAll(str, null, loadOpts);
 value = yaml.safeLoadAll(str, undefined, loadOpts);
 
 // $ExpectType void
-yaml.safeLoadAll(str, doc => {
+yaml.safeLoadAll(str, (doc) => {
     value = doc;
 });
 // $ExpectType void
 yaml.safeLoadAll(
     str,
-    doc => {
+    (doc) => {
         value = doc;
     },
     loadOpts,
@@ -165,13 +165,13 @@ value = yaml.loadAll(str, null, loadOpts);
 value = yaml.loadAll(str, undefined, loadOpts);
 
 // $ExpectType void
-yaml.loadAll(str, doc => {
+yaml.loadAll(str, (doc) => {
     value = doc;
 });
 // $ExpectType void
 yaml.loadAll(
     str,
-    doc => {
+    (doc) => {
         value = doc;
     },
     loadOpts,

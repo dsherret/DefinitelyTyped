@@ -15,15 +15,15 @@ export interface RebaseOptions<PayloadType = any> {
     checkoutOptions?: CheckoutOptions | null;
     commitCreateCb?:
         | ((
-            author: Signature,
-            committer: Signature,
-            message_encoding: string,
-            message: string,
-            tree: Tree,
-            parent_count: number,
-            parents: Oid[],
-            payload?: PayloadType,
-        ) => Oid)
+              author: Signature,
+              committer: Signature,
+              message_encoding: string,
+              message: string,
+              tree: Tree,
+              parent_count: number,
+              parents: Oid[],
+              payload?: PayloadType,
+          ) => Oid)
         | null;
     payload?: PayloadType | null;
 }

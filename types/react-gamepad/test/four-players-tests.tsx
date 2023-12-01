@@ -77,7 +77,11 @@ class PlayerCube extends React.Component<Props, State> {
         });
     }
 
-    axisChangeHandler(axisName: Axis, value: number, previousValue: number): void {
+    axisChangeHandler(
+        axisName: Axis,
+        value: number,
+        previousValue: number,
+    ): void {
         if (axisName === "LeftStickX") {
             this.setState({
                 speedX: value,

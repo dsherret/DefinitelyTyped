@@ -188,11 +188,9 @@ gm(src)
     .monochrome()
     .montage(src)
     .morph(src, dest)
-    .morph(src, dest, (err, stdout, stderr, cmd) => {
-    })
+    .morph(src, dest, (err, stdout, stderr, cmd) => {})
     .morph(images, dest)
-    .morph(images, dest, (err, stdout, stderr, cmd) => {
-    })
+    .morph(images, dest, (err, stdout, stderr, cmd) => {})
     .mosaic()
     .motionBlur(radius)
     .motionBlur(radius, sigma)
@@ -272,12 +270,16 @@ gm(src)
     .texture(file)
     .threshold(threshold)
     .threshold(threshold, usePercent)
-    .thumb(width, height, dest, (err, stdout, stderr, cmd) => {
-    })
-    .thumb(width, height, dest, quality, (err, stdout, stderr, cmd) => {
-    })
-    .thumb(width, height, dest, quality, align, (err, stdout, stderr, cmd) => {
-    })
+    .thumb(width, height, dest, (err, stdout, stderr, cmd) => {})
+    .thumb(width, height, dest, quality, (err, stdout, stderr, cmd) => {})
+    .thumb(
+        width,
+        height,
+        dest,
+        quality,
+        align,
+        (err, stdout, stderr, cmd) => {},
+    )
     .thumbnail(width, height)
     .thumbnail(width, height, options)
     .tile(file)
@@ -305,40 +307,23 @@ gm(src)
     .whiteThreshold(r, g, b, opacity)
     .window(name)
     .windowGroup()
-    .color((err, color) => {
-    })
-    .color({ bufferStream: true }, (err, color) => {
-    })
-    .depth((err, bitdepth) => {
-    })
-    .depth({ bufferStream: true }, (err, bitdepth) => {
-    })
-    .filesize((err, size) => {
-    })
-    .filesize({ bufferStream: true }, (err, size) => {
-    })
-    .format((err, format) => {
-    })
-    .format({ bufferStream: true }, (err, format) => {
-    })
-    .identify((err, info) => {
-    })
-    .identify(customFormat, (err, info) => {
-    })
-    .identify({ bufferStream: true }, (err, info) => {
-    })
-    .res((err, resolution) => {
-    })
-    .res({ bufferStream: true }, (err, resolution) => {
-    })
-    .size((err, size) => {
-    })
-    .size({ bufferStream: true }, (err, size) => {
-    })
-    .orientation((err, orient) => {
-    })
-    .orientation({ bufferStream: true }, (err, orient) => {
-    })
+    .color((err, color) => {})
+    .color({ bufferStream: true }, (err, color) => {})
+    .depth((err, bitdepth) => {})
+    .depth({ bufferStream: true }, (err, bitdepth) => {})
+    .filesize((err, size) => {})
+    .filesize({ bufferStream: true }, (err, size) => {})
+    .format((err, format) => {})
+    .format({ bufferStream: true }, (err, format) => {})
+    .identify((err, info) => {})
+    .identify(customFormat, (err, info) => {})
+    .identify({ bufferStream: true }, (err, info) => {})
+    .res((err, resolution) => {})
+    .res({ bufferStream: true }, (err, resolution) => {})
+    .size((err, size) => {})
+    .size({ bufferStream: true }, (err, size) => {})
+    .orientation((err, orient) => {})
+    .orientation({ bufferStream: true }, (err, orient) => {})
     .draw(options)
     .drawArc(x, y, x, y, radius, radius)
     .drawBezier([x, y], [x, y])
@@ -363,26 +348,19 @@ gm(src)
     .stroke(color)
     .stroke(color, width)
     .setDraw(type, x, y, method)
-    .write(dest, (err, stdout, stderr, cmd) => {
-    });
+    .write(dest, (err, stdout, stderr, cmd) => {});
 
-gm.compare(file, file, (err, isEqual, equality, raw) => {
-});
+gm.compare(file, file, (err, isEqual, equality, raw) => {});
 
 readStream = gm(src).stream();
 readStream = gm(src).stream(format);
-readStream = gm(src).stream(format, (err, stdout, stderr, cmd) => {
-});
+readStream = gm(src).stream(format, (err, stdout, stderr, cmd) => {});
 
-gm(src).toBuffer((err, buffer) => {
-});
-gm(src).toBuffer(format, (err, buffer) => {
-});
+gm(src).toBuffer((err, buffer) => {});
+gm(src).toBuffer(format, (err, buffer) => {});
 
 const imageMagick = gm.subClass({ imageMagick: true });
-readStream = imageMagick(src)
-    .adjoin()
-    .stream();
+readStream = imageMagick(src).adjoin().stream();
 
 const customGm = gm.subClass({ imageMagick: "7+", appPath: "" });
 readStream = customGm(src).stream();
@@ -397,7 +375,9 @@ const passStream = imageMagick(readStream).stream();
 
 const buffers: Buffer[] = [];
 let buffer: Buffer;
-passStream.on("data", (chunk) => buffers.push(chunk as Buffer)).on("close", () => {
-    buffer = Buffer.concat(buffers);
-    const readstream = imageMagick(buffer).stream();
-});
+passStream
+    .on("data", (chunk) => buffers.push(chunk as Buffer))
+    .on("close", () => {
+        buffer = Buffer.concat(buffers);
+        const readstream = imageMagick(buffer).stream();
+    });

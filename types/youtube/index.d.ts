@@ -183,7 +183,10 @@ declare namespace YT {
     /**
      * Which type of content loads in the player.
      */
-    export type ListType = ListTypeSearch | ListTypeUserUploads | ListTypePlaylist;
+    export type ListType =
+        | ListTypeSearch
+        | ListTypeUserUploads
+        | ListTypePlaylist;
 
     /**
      * A search area should be shown in the player.
@@ -571,12 +574,16 @@ declare namespace YT {
         /**
          * Event fired when the playback quality of the player changes.
          */
-        onPlaybackQualityChange?: PlayerEventHandler<OnPlaybackQualityChangeEvent> | undefined;
+        onPlaybackQualityChange?:
+            | PlayerEventHandler<OnPlaybackQualityChangeEvent>
+            | undefined;
 
         /**
          * Event fired when the playback rate of the player changes.
          */
-        onPlaybackRateChange?: PlayerEventHandler<OnPlaybackRateChangeEvent> | undefined;
+        onPlaybackRateChange?:
+            | PlayerEventHandler<OnPlaybackRateChangeEvent>
+            | undefined;
 
         /**
          * Event fired when an error in the player occurs
@@ -623,7 +630,8 @@ declare namespace YT {
     /**
      * Settings to play or queue a video by media content URL.
      */
-    export interface VideoByMediaContentUrlSettings extends VideoOrPlaylistSettings {
+    export interface VideoByMediaContentUrlSettings
+        extends VideoOrPlaylistSettings {
         /**
          * Fully qualified player URL.
          */
@@ -689,7 +697,11 @@ declare namespace YT {
          * @param startSeconds   Time from which the video should start playing.
          * @param suggestedQuality   Suggested video player quality.
          */
-        cueVideoById(videoId: string, startSeconds?: number, suggestedQuality?: SuggestedVideoQuality): void;
+        cueVideoById(
+            videoId: string,
+            startSeconds?: number,
+            suggestedQuality?: SuggestedVideoQuality,
+        ): void;
 
         /**
          * Queues a video by ID.
@@ -705,7 +717,11 @@ declare namespace YT {
          * @param startSeconds   Time from which the video should start playing.
          * @param suggestedQuality   Suggested video player quality.
          */
-        loadVideoById(videoId: string, startSeconds?: number, suggestedQuality?: SuggestedVideoQuality): void;
+        loadVideoById(
+            videoId: string,
+            startSeconds?: number,
+            suggestedQuality?: SuggestedVideoQuality,
+        ): void;
 
         /**
          * Loads and plays a video by ID.
@@ -721,7 +737,11 @@ declare namespace YT {
          * @param startSeconds   Time from which the video should start playing.
          * @param suggestedQuality   Suggested video player quality.
          */
-        cueVideoByUrl(mediaContentUrl: string, startSeconds?: number, suggestedQuality?: SuggestedVideoQuality): void;
+        cueVideoByUrl(
+            mediaContentUrl: string,
+            startSeconds?: number,
+            suggestedQuality?: SuggestedVideoQuality,
+        ): void;
 
         /**
          * Queues a video by media content URL.
@@ -737,21 +757,23 @@ declare namespace YT {
          * @param startSeconds   Time from which the video should start playing.
          * @param suggestedQuality   Suggested video player quality.
          */
-        loadVideoByUrl(mediaContentUrl: string, startSeconds?: number, suggestedQuality?: SuggestedVideoQuality): void;
+        loadVideoByUrl(
+            mediaContentUrl: string,
+            startSeconds?: number,
+            suggestedQuality?: SuggestedVideoQuality,
+        ): void;
 
         /**
          * Loads a video by media content URL.
          *
          * @param args   Settings to play the video.
          */
-        loadVideoByUrl(
-            args: {
-                mediaContentUrl: string;
-                startSeconds?: number | undefined;
-                endSeconds?: number | undefined;
-                suggestedQuality?: SuggestedVideoQuality | undefined;
-            },
-        ): void;
+        loadVideoByUrl(args: {
+            mediaContentUrl: string;
+            startSeconds?: number | undefined;
+            endSeconds?: number | undefined;
+            suggestedQuality?: SuggestedVideoQuality | undefined;
+        }): void;
 
         /**
          * Queues a playlist of videos.
@@ -979,7 +1001,10 @@ declare namespace YT {
          * @param eventName   Name of the event.
          * @param listener   Handler for the event.
          */
-        addEventListener<TEvent extends PlayerEvent>(eventName: keyof Events, listener: (event: TEvent) => void): void;
+        addEventListener<TEvent extends PlayerEvent>(
+            eventName: keyof Events,
+            listener: (event: TEvent) => void,
+        ): void;
 
         /**
          * Remove an event listener for the specified event.

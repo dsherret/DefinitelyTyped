@@ -1,5 +1,9 @@
 export = Column;
-declare function Column(simpleLayout: SimpleLayout, name: string, options?: any): void;
+declare function Column(
+    simpleLayout: SimpleLayout,
+    name: string,
+    options?: any,
+): void;
 declare class Column {
     constructor(simpleLayout: SimpleLayout, name: string, options?: any);
     simpleLayout: SimpleLayout;
@@ -28,7 +32,10 @@ declare class Column {
     private bufferStartIndexToMerge_;
     private lastValue_;
     private lastGroups_;
-    checkIfMerge(values: { content: string | number | Date; groups: string }): boolean;
+    checkIfMerge(values: {
+        content: string | number | Date;
+        groups: string;
+    }): boolean;
     private gId;
     link: Link;
     writeLinkPerRecord: boolean;
@@ -90,7 +97,15 @@ declare class Column {
     private writeTotal;
 }
 declare namespace Column {
-    export { AngleFormat, DateFormat, LatitudeFormat, Link, LongitudeFormat, TextAligns, VerticalAligns };
+    export {
+        AngleFormat,
+        DateFormat,
+        LatitudeFormat,
+        Link,
+        LongitudeFormat,
+        TextAligns,
+        VerticalAligns,
+    };
 }
 import SimpleLayout = require("./SimpleLayout.js");
 import LegacyEvent = require("@nginstack/engine/lib/event/LegacyEvent.js");
@@ -98,7 +113,8 @@ import AnchorCollection = require("../anchor/AnchorCollection.js");
 type Link = import("../anchor/Link");
 import DateFormat = require("@nginstack/engine/lib/date/DateFormat.js");
 type LatitudeFormat = typeof import("@nginstack/engine/lib/geo/LatitudeFormat");
-type LongitudeFormat = typeof import("@nginstack/engine/lib/geo/LongitudeFormat");
+type LongitudeFormat =
+    typeof import("@nginstack/engine/lib/geo/LongitudeFormat");
 type AngleFormat = typeof import("@nginstack/engine/lib/geo/AngleFormat");
 import CssExtractor = require("../css/CssExtractor.js");
 declare namespace VerticalAligns {

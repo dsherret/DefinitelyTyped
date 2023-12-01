@@ -16,11 +16,9 @@ const extent = new itowns.Extent(
 const viewerDiv = document.getElementById("viewerDiv") as HTMLDivElement;
 
 // Instanciate PlanarView*
-const view = new itowns.PlanarView(
-    viewerDiv,
-    extent,
-    { placement: { heading: 49.6, range: 6200, tilt: 17 } },
-);
+const view = new itowns.PlanarView(viewerDiv, extent, {
+    placement: { heading: 49.6, range: 6200, tilt: 17 },
+});
 
 // Add a WMS imagery source
 const wmsImagerySource = new itowns.WMSSource({

@@ -18,17 +18,28 @@ app.use(
     ),
 );
 
-app.use(function list(req: express.Request, res: express.Response, next: Function) {
-    req.getConnection(function(err: mysql.MysqlError, connection: mysql.Connection) {
+app.use(function list(
+    req: express.Request,
+    res: express.Response,
+    next: Function,
+) {
+    req.getConnection(function (
+        err: mysql.MysqlError,
+        connection: mysql.Connection,
+    ) {
         if (err) return next(err);
 
-        connection.query("SELECT 1 AS RESULT", [], function(err: mysql.MysqlError, results: any) {
-            if (err) return next(err);
+        connection.query(
+            "SELECT 1 AS RESULT",
+            [],
+            function (err: mysql.MysqlError, results: any) {
+                if (err) return next(err);
 
-            results[0].RESULT;
-            // -> 1
+                results[0].RESULT;
+                // -> 1
 
-            res.send(200);
-        });
+                res.send(200);
+            },
+        );
     });
 });

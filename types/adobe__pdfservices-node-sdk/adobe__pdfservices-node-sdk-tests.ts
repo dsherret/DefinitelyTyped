@@ -46,8 +46,8 @@ function combineFiles() {
 
     combineFilesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/CombinedPDF.pdf"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/CombinedPDF.pdf"))
+        .catch((err) => {});
 }
 function compressPDF() {
     const credentials = Credentials.serviceAccountCredentialsBuilder()
@@ -64,8 +64,8 @@ function compressPDF() {
 
     compressPdfOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/compressOutput.pdf"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/compressOutput.pdf"))
+        .catch((err) => {});
 }
 function createPDF() {
     const credentials = Credentials.serviceAccountCredentialsBuilder()
@@ -82,9 +82,12 @@ function createPDF() {
 
     createPDFOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/createPDF.pdf"))
-        .catch(err => {
-            if (err instanceof Error.ServiceApiError || err instanceof Error.ServiceUsageError) {
+        .then((result) => result.saveAsFile("output/createPDF.pdf"))
+        .catch((err) => {
+            if (
+                err instanceof Error.ServiceApiError ||
+                err instanceof Error.ServiceUsageError
+            ) {
             } else {
             }
         });
@@ -99,15 +102,20 @@ function deletePages() {
     const pageRanges = new PageRanges();
 
     deletePagesOperation.setInput(
-        FileRef.createFromLocalFile("~/Documents/deletePagesOperationInput.pdf", DeletePages.SupportedSourceFormat.pdf),
+        FileRef.createFromLocalFile(
+            "~/Documents/deletePagesOperationInput.pdf",
+            DeletePages.SupportedSourceFormat.pdf,
+        ),
     );
     pageRanges.addSinglePage(1);
     deletePagesOperation.setPageRanges(pageRanges);
 
     deletePagesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/deletePagesOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/deletePagesOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function documentMerge() {
@@ -116,8 +124,13 @@ function documentMerge() {
         .build();
     const executionContext = ExecutionContext.create(credentials);
     const documentMergeOptions = DocumentMerge.options;
-    const jsonDataForMerge = JSON.parse("{\"customerName\": \"James\", \"customerVisits\": 100}");
-    const options = new DocumentMergeOptions(jsonDataForMerge, documentMergeOptions.OutputFormat.PDF);
+    const jsonDataForMerge = JSON.parse(
+        '{"customerName": "James", "customerVisits": 100}',
+    );
+    const options = new DocumentMergeOptions(
+        jsonDataForMerge,
+        documentMergeOptions.OutputFormat.PDF,
+    );
     const documentMergeOperation = DocumentMerge.Operation.createNew(options);
     const input = FileRef.createFromLocalFile(
         "~/Documents/DocumentMergeOperationInput.docx",
@@ -128,8 +141,10 @@ function documentMerge() {
 
     documentMergeOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/DocumentMergeOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/DocumentMergeOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function exportPDF() {
@@ -137,15 +152,20 @@ function exportPDF() {
         .fromFile("pdfservices-api-credentials.json")
         .build();
     const executionContext = ExecutionContext.create(credentials);
-    const exportPdfOperation = ExportPDF.Operation.createNew(ExportPDF.SupportedTargetFormats.DOCX);
-    const input = FileRef.createFromLocalFile("test/resources/PDF.pdf", ExportPDF.SupportedSourceFormat.pdf);
+    const exportPdfOperation = ExportPDF.Operation.createNew(
+        ExportPDF.SupportedTargetFormats.DOCX,
+    );
+    const input = FileRef.createFromLocalFile(
+        "test/resources/PDF.pdf",
+        ExportPDF.SupportedSourceFormat.pdf,
+    );
 
     exportPdfOperation.setInput(input);
 
     exportPdfOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/exportPdf.docx"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/exportPdf.docx"))
+        .catch((err) => {});
 }
 
 function exportPdfToImages() {
@@ -153,21 +173,30 @@ function exportPdfToImages() {
         .fromFile("pdfservices-api-credentials.json")
         .build();
     const executionContext = ExecutionContext.create(credentials);
-    const exportPDFToImages = ExportPDFToImages.Operation.createNew(ExportPDFToImages.SupportedTargetFormats.JPEG);
-    const input = FileRef.createFromLocalFile("test/resources/PDF.pdf", ExportPDFToImages.SupportedSourceFormat.pdf);
+    const exportPDFToImages = ExportPDFToImages.Operation.createNew(
+        ExportPDFToImages.SupportedTargetFormats.JPEG,
+    );
+    const input = FileRef.createFromLocalFile(
+        "test/resources/PDF.pdf",
+        ExportPDFToImages.SupportedSourceFormat.pdf,
+    );
 
     exportPDFToImages.setInput(input);
 
     exportPDFToImages
         .execute(executionContext)
-        .then(result => {
+        .then((result) => {
             const saveFilesPromises = [];
             for (let i = 0; i < result.length; i++) {
-                saveFilesPromises.push(result[i].saveAsFile(`output/exportPDFToJPEGOutput_${i}.jpeg`));
+                saveFilesPromises.push(
+                    result[i].saveAsFile(
+                        `output/exportPDFToJPEGOutput_${i}.jpeg`,
+                    ),
+                );
             }
             return Promise.all(saveFilesPromises);
         })
-        .catch(err => {});
+        .catch((err) => {});
 }
 
 function extractPdf() {
@@ -176,13 +205,20 @@ function extractPdf() {
             .fromFile("pdfservices-api-credentials.json")
             .build();
 
-        const clientConfig = ClientConfig.clientConfigBuilder().fromFile("pdfservices-api-client-config.json").build();
+        const clientConfig = ClientConfig.clientConfigBuilder()
+            .fromFile("pdfservices-api-client-config.json")
+            .build();
 
-        const clientContext = ExecutionContext.create(credentials, clientConfig);
+        const clientContext = ExecutionContext.create(
+            credentials,
+            clientConfig,
+        );
 
         const options = new ExtractPDF.options.ExtractPdfOptions.Builder()
             .addElementsToExtract(ExtractPDF.options.ExtractElementType.TEXT)
-            .addElementsToExtractRenditions(ExtractPDF.options.ExtractRenditionsElementType.TABLES)
+            .addElementsToExtractRenditions(
+                ExtractPDF.options.ExtractRenditionsElementType.TABLES,
+            )
             .addCharInfo(true)
             .addTableStructureFormat(ExtractPDF.options.TableStructureType.CSV)
             .build();
@@ -198,8 +234,8 @@ function extractPdf() {
 
         extractPDFOperation
             .execute(clientContext)
-            .then(result => result.saveAsFile("output/extractPdf.zip"))
-            .catch(err => {});
+            .then((result) => result.saveAsFile("output/extractPdf.zip"))
+            .catch((err) => {});
     } catch (err) {
         throw err;
     }
@@ -228,8 +264,10 @@ function insertPages() {
 
     insertPagesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/insertPagesOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/insertPagesOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function linearizePdf() {
@@ -247,8 +285,8 @@ function linearizePdf() {
 
     linearizePdfOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/linearizeOutput.pdf"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/linearizeOutput.pdf"))
+        .catch((err) => {});
 }
 function ocr() {
     const credentials = Credentials.serviceAccountCredentialsBuilder()
@@ -256,14 +294,17 @@ function ocr() {
         .build();
     const executionContext = ExecutionContext.create(credentials);
     const ocrOperation = OCR.Operation.createNew();
-    const input = FileRef.createFromLocalFile("test/resources/ocrInput.pdf", OCR.SupportedSourceFormat.pdf);
+    const input = FileRef.createFromLocalFile(
+        "test/resources/ocrInput.pdf",
+        OCR.SupportedSourceFormat.pdf,
+    );
 
     ocrOperation.setInput(input);
 
     ocrOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/ocrOutput.pdf"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/ocrOutput.pdf"))
+        .catch((err) => {});
 }
 
 function pdfProperties() {
@@ -281,8 +322,8 @@ function pdfProperties() {
 
     pdfPropertiesOperation
         .execute(clientContext)
-        .then(result => {})
-        .catch(err => {});
+        .then((result) => {})
+        .catch((err) => {});
 }
 
 async function protectPDF() {
@@ -294,7 +335,9 @@ async function protectPDF() {
     const permissions = protectPDFOptions.Permissions.createNew();
 
     permissions.addPermission(protectPDFOptions.Permission.PRINT_LOW_QUALITY);
-    permissions.addPermission(protectPDFOptions.Permission.EDIT_DOCUMENT_ASSEMBLY);
+    permissions.addPermission(
+        protectPDFOptions.Permission.EDIT_DOCUMENT_ASSEMBLY,
+    );
     permissions.addPermission(protectPDFOptions.Permission.COPY_CONTENT);
 
     const options = new protectPDFOptions.PasswordProtectOptions.Builder()
@@ -302,17 +345,22 @@ async function protectPDF() {
         .setOwnerPassword("permissionspassword")
         .setPermissions(permissions)
         .setEncryptionAlgorithm(protectPDFOptions.EncryptionAlgorithm.AES_256)
-        .setContentEncryption(protectPDFOptions.ContentEncryption.ALL_CONTENT_EXCEPT_METADATA)
+        .setContentEncryption(
+            protectPDFOptions.ContentEncryption.ALL_CONTENT_EXCEPT_METADATA,
+        )
         .build();
     const protectPDFOperation = ProtectPDF.Operation.createNew(options);
-    const input = FileRef.createFromLocalFile("~/Documents/protectPDFInput.pdf", ProtectPDF.SupportedSourceFormat.pdf);
+    const input = FileRef.createFromLocalFile(
+        "~/Documents/protectPDFInput.pdf",
+        ProtectPDF.SupportedSourceFormat.pdf,
+    );
 
     protectPDFOperation.setInput(input);
 
     protectPDFOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/protectPDFOutput.pdf"))
-        .catch(err => {});
+        .then((result) => result.saveAsFile("output/protectPDFOutput.pdf"))
+        .catch((err) => {});
 }
 
 function removeProtection() {
@@ -331,8 +379,10 @@ function removeProtection() {
 
     removeProtectionOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/removeProtectionOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/removeProtectionOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function reorderPage() {
@@ -355,8 +405,10 @@ function reorderPage() {
 
     reorderPagesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/reorderPagesOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/reorderPagesOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function replacePages() {
@@ -382,8 +434,10 @@ function replacePages() {
 
     replacePagesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/replacePagesOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/replacePagesOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function rotatePages() {
@@ -394,14 +448,19 @@ function rotatePages() {
     const rotatePagesOperation = RotatePages.Operation.createNew();
 
     rotatePagesOperation.setInput(
-        FileRef.createFromLocalFile("~/Documents/rotatePagesOperationInput.pdf", RotatePages.SupportedSourceFormat.pdf),
+        FileRef.createFromLocalFile(
+            "~/Documents/rotatePagesOperationInput.pdf",
+            RotatePages.SupportedSourceFormat.pdf,
+        ),
     );
     rotatePagesOperation.setAngleToRotatePagesBy(RotatePages.Angle._90);
 
     rotatePagesOperation
         .execute(executionContext)
-        .then(result => result.saveAsFile("output/rotatePagesOperationOutput.pdf"))
-        .catch(err => {});
+        .then((result) =>
+            result.saveAsFile("output/rotatePagesOperationOutput.pdf"),
+        )
+        .catch((err) => {});
 }
 
 function spitPages() {
@@ -412,18 +471,23 @@ function spitPages() {
     const splitPDFOperation = SplitPDF.Operation.createNew();
 
     splitPDFOperation.setInput(
-        FileRef.createFromLocalFile("~/Documents/splitPDFInput.pdf", SplitPDF.SupportedSourceFormat.pdf),
+        FileRef.createFromLocalFile(
+            "~/Documents/splitPDFInput.pdf",
+            SplitPDF.SupportedSourceFormat.pdf,
+        ),
     );
     splitPDFOperation.setPageCount(2);
 
     splitPDFOperation
         .execute(executionContext)
-        .then(result => {
+        .then((result) => {
             const saveFilesPromises = [];
             for (let i = 0; i < result.length; i++) {
-                saveFilesPromises.push(result[i].saveAsFile(`output/splitPDFOutput_${i}.pdf`));
+                saveFilesPromises.push(
+                    result[i].saveAsFile(`output/splitPDFOutput_${i}.pdf`),
+                );
             }
             return Promise.all(saveFilesPromises);
         })
-        .catch(err => {});
+        .catch((err) => {});
 }

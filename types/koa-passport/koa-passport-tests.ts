@@ -19,15 +19,18 @@ app.use(async (ctx): Promise<void> => {
 });
 
 app.use(async (ctx, next) => {
-    return passport.authenticate("local", (user: any, info: any, status: any) => {
-        if (user === false) {
-            ctx.status = 401;
-            ctx.body = { success: false };
-        } else {
-            ctx.body = { success: true };
-            return ctx.login(user);
-        }
-    })(ctx, next);
+    return passport.authenticate(
+        "local",
+        (user: any, info: any, status: any) => {
+            if (user === false) {
+                ctx.status = 401;
+                ctx.body = { success: false };
+            } else {
+                ctx.body = { success: true };
+                return ctx.login(user);
+            }
+        },
+    )(ctx, next);
 });
 
 app.use(

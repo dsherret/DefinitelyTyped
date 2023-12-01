@@ -18,28 +18,50 @@ function Page(props: PaginationComponentProps) {
     );
 }
 
-function PageWithExtraProps(props: PaginationComponentProps & { color: "red" }) {
+function PageWithExtraProps(
+    props: PaginationComponentProps & { color: "red" },
+) {
     return <button style={{ color: props.color }}>5</button>;
 }
 
 function Ellipsis(props: PaginationComponentProps) {
-    return <button onClick={props.onClick} disabled={props.isDisabled}>...</button>;
+    return (
+        <button onClick={props.onClick} disabled={props.isDisabled}>
+            ...
+        </button>
+    );
 }
 
 function FirstPageLink(props: PaginationComponentProps) {
-    return <button onClick={props.onClick} disabled={props.isDisabled}>First</button>;
+    return (
+        <button onClick={props.onClick} disabled={props.isDisabled}>
+            First
+        </button>
+    );
 }
 
 function PreviousPageLink(props: PaginationComponentProps) {
-    return <button onClick={props.onClick} disabled={props.isDisabled}>Previous</button>;
+    return (
+        <button onClick={props.onClick} disabled={props.isDisabled}>
+            Previous
+        </button>
+    );
 }
 
 function NextPageLink(props: PaginationComponentProps) {
-    return <button onClick={props.onClick} disabled={props.isDisabled}>Next</button>;
+    return (
+        <button onClick={props.onClick} disabled={props.isDisabled}>
+            Next
+        </button>
+    );
 }
 
 function LastPageLink(props: PaginationComponentProps) {
-    return <button onClick={props.onClick} disabled={props.isDisabled}>Last</button>;
+    return (
+        <button onClick={props.onClick} disabled={props.isDisabled}>
+            Last
+        </button>
+    );
 }
 
 function Wrapper(props: { children: React.ReactNode }) {
@@ -71,7 +93,10 @@ const itemTypeToComponent3: Partial<ItemTypeToComponent> = {
     [ITEM_TYPES.PAGE]: PageWithExtraProps,
 };
 
-const UltimatePagination = createUltimatePagination({ itemTypeToComponent, WrapperComponent: Wrapper }); // $ExpectType ComponentType<UltimatePaginationProps>
+const UltimatePagination = createUltimatePagination({
+    itemTypeToComponent,
+    WrapperComponent: Wrapper,
+}); // $ExpectType ComponentType<UltimatePaginationProps>
 
 // With required props
 <UltimatePagination currentPage={0} totalPages={5} />;

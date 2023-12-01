@@ -1,25 +1,28 @@
 import screenshot = require("screenshot-desktop");
 
-screenshot().then((img) => {
-    // img: Buffer filled with jpg goodness
-    // ...
-}).catch((err) => {
-    // ...
-});
+screenshot()
+    .then((img) => {
+        // img: Buffer filled with jpg goodness
+        // ...
+    })
+    .catch((err) => {
+        // ...
+    });
 
-screenshot({ format: "png" }).then((img) => {
-    // img: Buffer filled with png goodness
-    // ...
-}).catch((err) => {
-    // ...
-});
+screenshot({ format: "png" })
+    .then((img) => {
+        // img: Buffer filled with png goodness
+        // ...
+    })
+    .catch((err) => {
+        // ...
+    });
 
 screenshot.listDisplays().then((displays) => {
     // displays: [{ id, name }, { id, name }]
-    screenshot({ screen: displays[displays.length - 1].id })
-        .then((img) => {
-            // img: Buffer of screenshot of the last display
-        });
+    screenshot({ screen: displays[displays.length - 1].id }).then((img) => {
+        // img: Buffer of screenshot of the last display
+    });
 });
 
 screenshot.all().then((imgs) => {

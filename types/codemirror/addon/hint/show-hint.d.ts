@@ -9,10 +9,22 @@ declare module "../../" {
      * from and to give the start and end of the token that is being completed as {line, ch} objects. An optional
      * selectedHint property (an integer) can be added to the completion object to control the initially selected hint.
      */
-    function showHint(cm: Editor, hinter?: HintFunction, options?: ShowHintOptions): void;
+    function showHint(
+        cm: Editor,
+        hinter?: HintFunction,
+        options?: ShowHintOptions,
+    ): void;
 
-    function on<T extends keyof CompletionEventMap>(hints: Hints, eventName: T, handler: CompletionEventMap[T]): void;
-    function off<T extends keyof CompletionEventMap>(hints: Hints, eventName: T, handler: CompletionEventMap[T]): void;
+    function on<T extends keyof CompletionEventMap>(
+        hints: Hints,
+        eventName: T,
+        handler: CompletionEventMap[T],
+    ): void;
+    function off<T extends keyof CompletionEventMap>(
+        hints: Hints,
+        eventName: T,
+        handler: CompletionEventMap[T],
+    ): void;
     function signal<T extends keyof CompletionEventMap>(
         hints: Hints,
         eventName: T,
@@ -43,7 +55,9 @@ declare module "../../" {
         from?: Position | undefined;
         /** Called if a completion is picked. If provided *you* are responsible for applying the completion */
         hint?: ((cm: Editor, data: Hints, cur: Hint) => void) | undefined;
-        render?: ((element: HTMLLIElement, data: Hints, cur: Hint) => void) | undefined;
+        render?:
+            | ((element: HTMLLIElement, data: Hints, cur: Hint) => void)
+            | undefined;
         to?: Position | undefined;
     }
 
@@ -63,11 +77,18 @@ declare module "../../" {
     }
 
     interface HintFunction {
-        (cm: Editor, options: ShowHintOptions): Hints | null | undefined | PromiseLike<Hints | null | undefined>;
+        (
+            cm: Editor,
+            options: ShowHintOptions,
+        ): Hints | null | undefined | PromiseLike<Hints | null | undefined>;
     }
 
     interface AsyncHintFunction {
-        (cm: Editor, callback: (hints: Hints | null | undefined) => void, options: ShowHintOptions): void;
+        (
+            cm: Editor,
+            callback: (hints: Hints | null | undefined) => void,
+            options: ShowHintOptions,
+        ): void;
         async: true;
     }
 
@@ -77,7 +98,11 @@ declare module "../../" {
 
     interface ShowHintOptions {
         completeSingle?: boolean | undefined;
-        hint?: HintFunction | AsyncHintFunction | HintFunctionResolver | undefined;
+        hint?:
+            | HintFunction
+            | AsyncHintFunction
+            | HintFunctionResolver
+            | undefined;
         alignWithWord?: boolean | undefined;
         closeCharacters?: RegExp | undefined;
         closeOnPick?: boolean | undefined;
@@ -86,10 +111,21 @@ declare module "../../" {
         completeOnSingleClick?: boolean | undefined;
         container?: HTMLElement | null | undefined;
         customKeys?:
-            | { [key: string]: ((editor: Editor, handle: CompletionHandle) => void) | string }
+            | {
+                  [key: string]:
+                      | ((editor: Editor, handle: CompletionHandle) => void)
+                      | string;
+              }
             | null
             | undefined;
-        extraKeys?: { [key: string]: ((editor: Editor, handle: CompletionHandle) => void) | string } | null | undefined;
+        extraKeys?:
+            | {
+                  [key: string]:
+                      | ((editor: Editor, handle: CompletionHandle) => void)
+                      | string;
+              }
+            | null
+            | undefined;
         scrollMargin?: number | undefined;
         paddingForScrollbar?: boolean | undefined;
         moveOnOverlap?: boolean | undefined;

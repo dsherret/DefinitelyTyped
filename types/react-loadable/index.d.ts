@@ -9,7 +9,9 @@ declare namespace LoadableExport {
         retry: () => void;
     }
 
-    type Options<Props, Exports extends object> = OptionsWithoutRender<Props> | OptionsWithRender<Props, Exports>;
+    type Options<Props, Exports extends object> =
+        | OptionsWithoutRender<Props>
+        | OptionsWithRender<Props, Exports>;
 
     interface CommonOptions {
         /**
@@ -64,10 +66,13 @@ declare namespace LoadableExport {
          *
          * Resulting React component receives all the props passed to the generated component.
          */
-        loader(): Promise<React.ComponentType<Props> | { default: React.ComponentType<Props> }>;
+        loader(): Promise<
+            React.ComponentType<Props> | { default: React.ComponentType<Props> }
+        >;
     }
 
-    interface OptionsWithRender<Props, Exports extends object> extends CommonOptions {
+    interface OptionsWithRender<Props, Exports extends object>
+        extends CommonOptions {
         /**
          * Function returning a promise which returns an object to be passed to `render` on success.
          */
@@ -95,7 +100,8 @@ declare namespace LoadableExport {
         // that has a component as its `default` export.
     }
 
-    interface OptionsWithMap<Props, Exports extends { [key: string]: any }> extends CommonOptions {
+    interface OptionsWithMap<Props, Exports extends { [key: string]: any }>
+        extends CommonOptions {
         /**
          * An object containing functions which return promises, which resolve to an object to be passed to `render` on success.
          */

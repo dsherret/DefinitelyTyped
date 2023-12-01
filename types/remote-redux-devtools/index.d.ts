@@ -1,4 +1,9 @@
-import { Action, ActionCreator, ActionCreatorsMapObject, StoreEnhancer } from "redux";
+import {
+    Action,
+    ActionCreator,
+    ActionCreatorsMapObject,
+    StoreEnhancer,
+} from "redux";
 
 export interface RemoteReduxDevToolsOptions {
     /** The instance name to be showed on the monitor page. */
@@ -67,7 +72,10 @@ export interface RemoteReduxDevToolsOptions {
      */
     sendTo?: string | undefined;
     /** Action creators functions to be available in the dispatcher. */
-    actionCreators?: Array<ActionCreator<any>> | ActionCreatorsMapObject | undefined;
+    actionCreators?:
+        | Array<ActionCreator<any>>
+        | ActionCreatorsMapObject
+        | undefined;
     /**
      * If specified as `false`, it will not record the changes till clicking on
      * *Start recording* button. Available only for Redux enhancer, for others
@@ -98,6 +106,10 @@ export interface RemoteReduxDevToolsOptions {
     id?: string | undefined;
 }
 
-export default function devToolsEnhancer(options?: RemoteReduxDevToolsOptions): StoreEnhancer;
-export function composeWithDevTools(options?: RemoteReduxDevToolsOptions): (...funcs: StoreEnhancer[]) => StoreEnhancer;
+export default function devToolsEnhancer(
+    options?: RemoteReduxDevToolsOptions,
+): StoreEnhancer;
+export function composeWithDevTools(
+    options?: RemoteReduxDevToolsOptions,
+): (...funcs: StoreEnhancer[]) => StoreEnhancer;
 export function composeWithDevTools(...funcs: StoreEnhancer[]): StoreEnhancer;

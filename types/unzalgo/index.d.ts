@@ -33,6 +33,9 @@ export function isZalgo(string: string, threshold?: number): boolean;
  * The result is guaranteed to have a zalgo-character density that is less than or equal to the one provided.
  * @returns A cleaned, more readable string.
  */
-export function clean(string: string, options?: { detectionThreshold?: number; targetDensity?: number }): string;
+export function clean(
+    string: string,
+    options?: { detectionThreshold?: number; targetDensity?: number },
+): string;
 
 export default clean;

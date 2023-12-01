@@ -1,7 +1,7 @@
 var renderer: AceAjax.VirtualRenderer;
 var mode: any;
 const aceEditorTextEditTests = {
-    "test: delete line from the middle": function() {
+    "test: delete line from the middle": function () {
         var session = new AceAjax.EditSession(["a", "b", "c", "d"].join("\n"));
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -27,7 +27,7 @@ const aceEditorTextEditTests = {
         assert.position(editor.getCursorPosition(), 0, 0);
     },
 
-    "test: delete multiple selected lines": function() {
+    "test: delete multiple selected lines": function () {
         var session = new AceAjax.EditSession(["a", "b", "c", "d"].join("\n"));
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -39,7 +39,7 @@ const aceEditorTextEditTests = {
         assert.position(editor.getCursorPosition(), 1, 0);
     },
 
-    "test: delete first line": function() {
+    "test: delete first line": function () {
         var session = new AceAjax.EditSession(["a", "b", "c"].join("\n"));
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -49,23 +49,28 @@ const aceEditorTextEditTests = {
         assert.position(editor.getCursorPosition(), 0, 0);
     },
 
-    "test: delete last should also delete the new line of the previous line": function() {
-        var session = new AceAjax.EditSession(["a", "b", "c", ""].join("\n"));
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: delete last should also delete the new line of the previous line":
+        function () {
+            var session = new AceAjax.EditSession(
+                ["a", "b", "c", ""].join("\n"),
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(3, 0);
+            editor.moveCursorTo(3, 0);
 
-        editor.removeLines();
-        assert.equal(session.toString(), "a\nb\nc");
-        assert.position(editor.getCursorPosition(), 2, 1);
+            editor.removeLines();
+            assert.equal(session.toString(), "a\nb\nc");
+            assert.position(editor.getCursorPosition(), 2, 1);
 
-        editor.removeLines();
-        assert.equal(session.toString(), "a\nb");
-        assert.position(editor.getCursorPosition(), 1, 1);
-    },
+            editor.removeLines();
+            assert.equal(session.toString(), "a\nb");
+            assert.position(editor.getCursorPosition(), 1, 1);
+        },
 
-    "test: indent block": function() {
-        var session = new AceAjax.EditSession(["a12345", "b12345", "c12345"].join("\n"));
+    "test: indent block": function () {
+        var session = new AceAjax.EditSession(
+            ["a12345", "b12345", "c12345"].join("\n"),
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(1, 3);
@@ -73,7 +78,10 @@ const aceEditorTextEditTests = {
 
         editor.indent();
 
-        assert.equal(["a12345", "    b12345", "    c12345"].join("\n"), session.toString());
+        assert.equal(
+            ["a12345", "    b12345", "    c12345"].join("\n"),
+            session.toString(),
+        );
 
         assert.position(editor.getCursorPosition(), 2, 7);
 
@@ -82,18 +90,23 @@ const aceEditorTextEditTests = {
         assert.position(range.end, 2, 7);
     },
 
-    "test: indent selected lines": function() {
-        var session = new AceAjax.EditSession(["a12345", "b12345", "c12345"].join("\n"));
+    "test: indent selected lines": function () {
+        var session = new AceAjax.EditSession(
+            ["a12345", "b12345", "c12345"].join("\n"),
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(1, 0);
         editor.getSelection().selectDown();
 
         editor.indent();
-        assert.equal(["a12345", "    b12345", "c12345"].join("\n"), session.toString());
+        assert.equal(
+            ["a12345", "    b12345", "c12345"].join("\n"),
+            session.toString(),
+        );
     },
 
-    "test: no auto indent if cursor is before the {": function() {
+    "test: no auto indent if cursor is before the {": function () {
         var session = new AceAjax.EditSession("{", mode);
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -102,8 +115,10 @@ const aceEditorTextEditTests = {
         assert.equal(["", "{"].join("\n"), session.toString());
     },
 
-    "test: outdent block": function() {
-        var session = new AceAjax.EditSession(["        a12345", "    b12345", "        c12345"].join("\n"));
+    "test: outdent block": function () {
+        var session = new AceAjax.EditSession(
+            ["        a12345", "    b12345", "        c12345"].join("\n"),
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(0, 5);
@@ -111,7 +126,10 @@ const aceEditorTextEditTests = {
         editor.getSelection().selectDown();
 
         editor.blockOutdent();
-        assert.equal(session.toString(), ["    a12345", "b12345", "    c12345"].join("\n"));
+        assert.equal(
+            session.toString(),
+            ["    a12345", "b12345", "    c12345"].join("\n"),
+        );
 
         assert.position(editor.getCursorPosition(), 2, 1);
 
@@ -120,14 +138,17 @@ const aceEditorTextEditTests = {
         assert.position(range.end, 2, 1);
 
         editor.blockOutdent();
-        assert.equal(session.toString(), ["a12345", "b12345", "c12345"].join("\n"));
+        assert.equal(
+            session.toString(),
+            ["a12345", "b12345", "c12345"].join("\n"),
+        );
 
         var range = editor.getSelectionRange();
         assert.position(range.start, 0, 0);
         assert.position(range.end, 2, 0);
     },
 
-    "test: outent without a selection should update cursor": function() {
+    "test: outent without a selection should update cursor": function () {
         var session = new AceAjax.EditSession("        12");
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -138,8 +159,11 @@ const aceEditorTextEditTests = {
         assert.position(editor.getCursorPosition(), 0, 0);
     },
 
-    "test: comment lines should perserve selection": function() {
-        var session = new AceAjax.EditSession(["  abc", "cde"].join("\n"), mode);
+    "test: comment lines should perserve selection": function () {
+        var session = new AceAjax.EditSession(
+            ["  abc", "cde"].join("\n"),
+            mode,
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(0, 2);
@@ -153,8 +177,11 @@ const aceEditorTextEditTests = {
         assert.position(selection.end, 1, 4);
     },
 
-    "test: uncomment lines should perserve selection": function() {
-        var session = new AceAjax.EditSession(["//  abc", "//cde"].join("\n"), mode);
+    "test: uncomment lines should perserve selection": function () {
+        var session = new AceAjax.EditSession(
+            ["//  abc", "//cde"].join("\n"),
+            mode,
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(0, 1);
@@ -168,44 +195,54 @@ const aceEditorTextEditTests = {
         assert.range(editor.getSelectionRange(), 0, 0, 1, 1);
     },
 
-    "test: toggle comment lines twice should return the original text": function() {
-        var session = new AceAjax.EditSession(["  abc", "cde", "fg"], mode);
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: toggle comment lines twice should return the original text":
+        function () {
+            var session = new AceAjax.EditSession(["  abc", "cde", "fg"], mode);
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(0, 0);
-        editor.getSelection().selectDown();
-        editor.getSelection().selectDown();
+            editor.moveCursorTo(0, 0);
+            editor.getSelection().selectDown();
+            editor.getSelection().selectDown();
 
-        editor.toggleCommentLines();
-        editor.toggleCommentLines();
+            editor.toggleCommentLines();
+            editor.toggleCommentLines();
 
-        assert.equal(["  abc", "cde", "fg"].join("\n"), session.toString());
-    },
+            assert.equal(["  abc", "cde", "fg"].join("\n"), session.toString());
+        },
 
-    "test: comment lines - if the selection end is at the line start it should stay there": function() {
-        // select down
-        var session = new AceAjax.EditSession(["abc", "cde"].join("\n"), mode);
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: comment lines - if the selection end is at the line start it should stay there":
+        function () {
+            // select down
+            var session = new AceAjax.EditSession(
+                ["abc", "cde"].join("\n"),
+                mode,
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(0, 0);
-        editor.getSelection().selectDown();
+            editor.moveCursorTo(0, 0);
+            editor.getSelection().selectDown();
 
-        editor.toggleCommentLines();
-        assert.range(editor.getSelectionRange(), 0, 2, 1, 0);
+            editor.toggleCommentLines();
+            assert.range(editor.getSelectionRange(), 0, 2, 1, 0);
 
-        // select up
-        var session = new AceAjax.EditSession(["abc", "cde"].join("\n"), mode);
-        var editor = new AceAjax.Editor(renderer, session);
+            // select up
+            var session = new AceAjax.EditSession(
+                ["abc", "cde"].join("\n"),
+                mode,
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(1, 0);
-        editor.getSelection().selectUp();
+            editor.moveCursorTo(1, 0);
+            editor.getSelection().selectUp();
 
-        editor.toggleCommentLines();
-        assert.range(editor.getSelectionRange(), 0, 2, 1, 0);
-    },
+            editor.toggleCommentLines();
+            assert.range(editor.getSelectionRange(), 0, 2, 1, 0);
+        },
 
-    "test: move lines down should select moved lines": function() {
-        var session = new AceAjax.EditSession(["11", "22", "33", "44"].join("\n"));
+    "test: move lines down should select moved lines": function () {
+        var session = new AceAjax.EditSession(
+            ["11", "22", "33", "44"].join("\n"),
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(0, 1);
@@ -231,8 +268,10 @@ const aceEditorTextEditTests = {
         assert.position(editor.getSelection().getSelectionLead(), 2, 0);
     },
 
-    "test: move lines up should select moved lines": function() {
-        var session = new AceAjax.EditSession(["11", "22", "33", "44"].join("\n"));
+    "test: move lines up should select moved lines": function () {
+        var session = new AceAjax.EditSession(
+            ["11", "22", "33", "44"].join("\n"),
+        );
         var editor = new AceAjax.Editor(renderer, session);
 
         editor.moveCursorTo(2, 1);
@@ -251,55 +290,76 @@ const aceEditorTextEditTests = {
         assert.position(editor.getSelection().getSelectionLead(), 0, 0);
     },
 
-    "test: move line without active selection should not move cursor relative to the moved line": function() {
-        var session = new AceAjax.EditSession(["11", "22", "33", "44"].join("\n"));
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: move line without active selection should not move cursor relative to the moved line":
+        function () {
+            var session = new AceAjax.EditSession(
+                ["11", "22", "33", "44"].join("\n"),
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(1, 1);
-        editor.clearSelection();
+            editor.moveCursorTo(1, 1);
+            editor.clearSelection();
 
-        editor.moveLinesDown();
-        assert.equal(["11", "33", "22", "44"].join("\n"), session.toString());
-        assert.position(editor.getCursorPosition(), 2, 1);
+            editor.moveLinesDown();
+            assert.equal(
+                ["11", "33", "22", "44"].join("\n"),
+                session.toString(),
+            );
+            assert.position(editor.getCursorPosition(), 2, 1);
 
-        editor.clearSelection();
+            editor.clearSelection();
 
-        editor.moveLinesUp();
-        assert.equal(["11", "22", "33", "44"].join("\n"), session.toString());
-        assert.position(editor.getCursorPosition(), 1, 1);
-    },
+            editor.moveLinesUp();
+            assert.equal(
+                ["11", "22", "33", "44"].join("\n"),
+                session.toString(),
+            );
+            assert.position(editor.getCursorPosition(), 1, 1);
+        },
 
-    "test: copy lines down should select lines and place cursor at the selection start": function() {
-        var session = new AceAjax.EditSession(["11", "22", "33", "44"].join("\n"));
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: copy lines down should select lines and place cursor at the selection start":
+        function () {
+            var session = new AceAjax.EditSession(
+                ["11", "22", "33", "44"].join("\n"),
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(1, 1);
-        editor.getSelection().selectDown();
+            editor.moveCursorTo(1, 1);
+            editor.getSelection().selectDown();
 
-        editor.copyLinesDown();
-        assert.equal(["11", "22", "33", "22", "33", "44"].join("\n"), session.toString());
+            editor.copyLinesDown();
+            assert.equal(
+                ["11", "22", "33", "22", "33", "44"].join("\n"),
+                session.toString(),
+            );
 
-        assert.position(editor.getCursorPosition(), 3, 0);
-        assert.position(editor.getSelection().getSelectionAnchor(), 5, 0);
-        assert.position(editor.getSelection().getSelectionLead(), 3, 0);
-    },
+            assert.position(editor.getCursorPosition(), 3, 0);
+            assert.position(editor.getSelection().getSelectionAnchor(), 5, 0);
+            assert.position(editor.getSelection().getSelectionLead(), 3, 0);
+        },
 
-    "test: copy lines up should select lines and place cursor at the selection start": function() {
-        var session = new AceAjax.EditSession(["11", "22", "33", "44"].join("\n"));
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: copy lines up should select lines and place cursor at the selection start":
+        function () {
+            var session = new AceAjax.EditSession(
+                ["11", "22", "33", "44"].join("\n"),
+            );
+            var editor = new AceAjax.Editor(renderer, session);
 
-        editor.moveCursorTo(1, 1);
-        editor.getSelection().selectDown();
+            editor.moveCursorTo(1, 1);
+            editor.getSelection().selectDown();
 
-        editor.copyLinesUp();
-        assert.equal(["11", "22", "33", "22", "33", "44"].join("\n"), session.toString());
+            editor.copyLinesUp();
+            assert.equal(
+                ["11", "22", "33", "22", "33", "44"].join("\n"),
+                session.toString(),
+            );
 
-        assert.position(editor.getCursorPosition(), 1, 0);
-        assert.position(editor.getSelection().getSelectionAnchor(), 3, 0);
-        assert.position(editor.getSelection().getSelectionLead(), 1, 0);
-    },
+            assert.position(editor.getCursorPosition(), 1, 0);
+            assert.position(editor.getSelection().getSelectionAnchor(), 3, 0);
+            assert.position(editor.getSelection().getSelectionLead(), 1, 0);
+        },
 
-    "test: input a tab with soft tab should convert it to spaces": function() {
+    "test: input a tab with soft tab should convert it to spaces": function () {
         var session = new AceAjax.EditSession("");
         var editor = new AceAjax.Editor(renderer, session);
 
@@ -314,17 +374,18 @@ const aceEditorTextEditTests = {
         assert.equal(session.toString(), "       ");
     },
 
-    "test: input tab without soft tabs should keep the tab character": function() {
-        var session = new AceAjax.EditSession("");
-        var editor = new AceAjax.Editor(renderer, session);
+    "test: input tab without soft tabs should keep the tab character":
+        function () {
+            var session = new AceAjax.EditSession("");
+            var editor = new AceAjax.Editor(renderer, session);
 
-        session.setUseSoftTabs(false);
+            session.setUseSoftTabs(false);
 
-        editor.onTextInput("\t");
-        assert.equal(session.toString(), "\t");
-    },
+            editor.onTextInput("\t");
+            assert.equal(session.toString(), "\t");
+        },
 
-    "test: undo/redo for delete line": function() {
+    "test: undo/redo for delete line": function () {
         var session = new AceAjax.EditSession(["111", "222", "333"]);
         var undoManager = new AceAjax.UndoManager();
         session.setUndoManager(undoManager);
@@ -357,36 +418,39 @@ const aceEditorTextEditTests = {
         assert.equal(session.toString(), initialText);
     },
 
-    "test: remove left should remove character left of the cursor": function() {
-        var session = new AceAjax.EditSession(["123", "456"]);
+    "test: remove left should remove character left of the cursor":
+        function () {
+            var session = new AceAjax.EditSession(["123", "456"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 1);
-        editor.remove("left");
-        assert.equal(session.toString(), "123\n56");
-    },
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 1);
+            editor.remove("left");
+            assert.equal(session.toString(), "123\n56");
+        },
 
-    "test: remove left should remove line break if cursor is at line start": function() {
-        var session = new AceAjax.EditSession(["123", "456"]);
+    "test: remove left should remove line break if cursor is at line start":
+        function () {
+            var session = new AceAjax.EditSession(["123", "456"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 0);
-        editor.remove("left");
-        assert.equal(session.toString(), "123456");
-    },
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 0);
+            editor.remove("left");
+            assert.equal(session.toString(), "123456");
+        },
 
-    "test: remove left should remove tabsize spaces if cursor is on a tab stop and preceeded by spaces": function() {
-        var session = new AceAjax.EditSession(["123", "        456"]);
-        session.setUseSoftTabs(true);
-        session.setTabSize(4);
+    "test: remove left should remove tabsize spaces if cursor is on a tab stop and preceeded by spaces":
+        function () {
+            var session = new AceAjax.EditSession(["123", "        456"]);
+            session.setUseSoftTabs(true);
+            session.setTabSize(4);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 8);
-        editor.remove("left");
-        assert.equal(session.toString(), "123\n    456");
-    },
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 8);
+            editor.remove("left");
+            assert.equal(session.toString(), "123\n    456");
+        },
 
-    "test: transpose at line start should be a noop": function() {
+    "test: transpose at line start should be a noop": function () {
         var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -396,27 +460,29 @@ const aceEditorTextEditTests = {
         assert.equal(session.getValue(), ["123", "4567", "89"].join("\n"));
     },
 
-    "test: transpose in line should swap the charaters before and after the cursor": function() {
-        var session = new AceAjax.EditSession(["123", "4567", "89"]);
+    "test: transpose in line should swap the charaters before and after the cursor":
+        function () {
+            var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 2);
-        editor.transposeLetters();
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 2);
+            editor.transposeLetters();
 
-        assert.equal(session.getValue(), ["123", "4657", "89"].join("\n"));
-    },
+            assert.equal(session.getValue(), ["123", "4657", "89"].join("\n"));
+        },
 
-    "test: transpose at line end should swap the last two characters": function() {
-        var session = new AceAjax.EditSession(["123", "4567", "89"]);
+    "test: transpose at line end should swap the last two characters":
+        function () {
+            var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 4);
-        editor.transposeLetters();
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 4);
+            editor.transposeLetters();
 
-        assert.equal(session.getValue(), ["123", "4576", "89"].join("\n"));
-    },
+            assert.equal(session.getValue(), ["123", "4576", "89"].join("\n"));
+        },
 
-    "test: transpose with non empty selection should be a noop": function() {
+    "test: transpose with non empty selection should be a noop": function () {
         var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -427,16 +493,17 @@ const aceEditorTextEditTests = {
         assert.equal(session.getValue(), ["123", "4567", "89"].join("\n"));
     },
 
-    "test: transpose should move the cursor behind the last swapped character": function() {
-        var session = new AceAjax.EditSession(["123", "4567", "89"]);
+    "test: transpose should move the cursor behind the last swapped character":
+        function () {
+            var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 2);
-        editor.transposeLetters();
-        assert.position(editor.getCursorPosition(), 1, 3);
-    },
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 2);
+            editor.transposeLetters();
+            assert.position(editor.getCursorPosition(), 1, 3);
+        },
 
-    "test: remove to line end": function() {
+    "test: remove to line end": function () {
         var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -445,17 +512,18 @@ const aceEditorTextEditTests = {
         assert.equal(session.getValue(), ["123", "45", "89"].join("\n"));
     },
 
-    "test: remove to line end at line end should remove the new line": function() {
-        var session = new AceAjax.EditSession(["123", "4567", "89"]);
+    "test: remove to line end at line end should remove the new line":
+        function () {
+            var session = new AceAjax.EditSession(["123", "4567", "89"]);
 
-        var editor = new AceAjax.Editor(renderer, session);
-        editor.moveCursorTo(1, 4);
-        editor.removeToLineEnd();
-        assert.position(editor.getCursorPosition(), 1, 4);
-        assert.equal(session.getValue(), ["123", "456789"].join("\n"));
-    },
+            var editor = new AceAjax.Editor(renderer, session);
+            editor.moveCursorTo(1, 4);
+            editor.removeToLineEnd();
+            assert.position(editor.getCursorPosition(), 1, 4);
+            assert.equal(session.getValue(), ["123", "456789"].join("\n"));
+        },
 
-    "test: transform selection to uppercase": function() {
+    "test: transform selection to uppercase": function () {
         var session = new AceAjax.EditSession(["ajax", "dot", "org"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -465,7 +533,7 @@ const aceEditorTextEditTests = {
         assert.equal(session.getValue(), ["ajax", "DOT", "org"].join("\n"));
     },
 
-    "test: transform word to uppercase": function() {
+    "test: transform word to uppercase": function () {
         var session = new AceAjax.EditSession(["ajax", "dot", "org"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -475,7 +543,7 @@ const aceEditorTextEditTests = {
         assert.position(editor.getCursorPosition(), 1, 0);
     },
 
-    "test: transform selection to lowercase": function() {
+    "test: transform selection to lowercase": function () {
         var session = new AceAjax.EditSession(["AJAX", "DOT", "ORG"]);
 
         var editor = new AceAjax.Editor(renderer, session);
@@ -485,7 +553,7 @@ const aceEditorTextEditTests = {
         assert.equal(session.getValue(), ["AJAX", "dot", "ORG"].join("\n"));
     },
 
-    "test: transform word to lowercase": function() {
+    "test: transform word to lowercase": function () {
         var session = new AceAjax.EditSession(["AJAX", "DOT", "ORG"]);
 
         var editor = new AceAjax.Editor(renderer, session);

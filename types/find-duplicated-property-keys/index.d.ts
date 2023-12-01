@@ -2,7 +2,9 @@
  * A package for detecting all duplicated property keys of a JSON string.
  * It can either be used as a standalone tool for validating JSON files or as a submodule for other Node.js projects.
  */
-declare function findDuplicatedPropertyKeys(content: string): findDuplicatedPropertyKeys.PropertyInfo[];
+declare function findDuplicatedPropertyKeys(
+    content: string,
+): findDuplicatedPropertyKeys.PropertyInfo[];
 
 declare namespace findDuplicatedPropertyKeys {
     interface PropertyInfo {

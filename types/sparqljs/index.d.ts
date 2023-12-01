@@ -1,7 +1,7 @@
 import * as RdfJs from "rdf-js";
 
 export const Parser: {
-    new(options?: ParserOptions): SparqlParser;
+    new (options?: ParserOptions): SparqlParser;
 };
 
 export interface ParserOptions {
@@ -12,7 +12,7 @@ export interface ParserOptions {
 }
 
 export const Generator: {
-    new(options?: GeneratorOptions): SparqlGenerator;
+    new (options?: GeneratorOptions): SparqlGenerator;
 };
 
 export interface GeneratorOptions {
@@ -62,10 +62,12 @@ export interface SelectQuery extends BaseQuery {
     queryType: "SELECT";
     variables: Variable[] | [Wildcard];
     distinct?: boolean | undefined;
-    from?: {
-        default: IriTerm[];
-        named: IriTerm[];
-    } | undefined;
+    from?:
+        | {
+              default: IriTerm[];
+              named: IriTerm[];
+          }
+        | undefined;
     reduced?: boolean | undefined;
     group?: Grouping[] | undefined;
     having?: Expression[] | undefined;

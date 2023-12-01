@@ -8,7 +8,12 @@ declare class Consumer<T> implements ConsumableStream.Consumer<T> {
     currentNode: Consumer.Node<T>;
     timeout: number;
 
-    constructor(stream: WritableConsumableStream<T>, id: number, startNode: Consumer.Node<T>, timeout: number);
+    constructor(
+        stream: WritableConsumableStream<T>,
+        id: number,
+        startNode: Consumer.Node<T>,
+        timeout: number,
+    );
 
     getStats(): Consumer.ConsumerStats;
 

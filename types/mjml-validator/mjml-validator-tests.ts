@@ -1,4 +1,8 @@
-import { formatValidationError, registerDependencies, registerRule } from "mjml-validator";
+import {
+    formatValidationError,
+    registerDependencies,
+    registerRule,
+} from "mjml-validator";
 
 registerRule((element) => {
     return formatValidationError("Custom error!", element);

@@ -34,7 +34,9 @@ declare class Polygon {
     /**
      * Something like Array.forEach on points
      */
-    each(fn: (prev: Vec2, current: Vec2, next: Vec2, idx: number) => any): Polygon;
+    each(
+        fn: (prev: Vec2, current: Vec2, next: Vec2, idx: number) => any,
+    ): Polygon;
 
     /**
      * Returns the point at index `idx`. note: this will wrap in both directions

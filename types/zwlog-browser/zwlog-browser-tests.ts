@@ -1,4 +1,4 @@
-(async () => {
+async () => {
     const zwlog = new ZwLog({ _user_id: "用户 ID", _user_nick: "用户昵称" });
     zwlog.onReady(() => {
         zwlog.init();
@@ -16,6 +16,9 @@
         zwlog.metaInfo;
         zwlog.readyFlag;
         zwlog.record("__CLICK__", "CLK", { dd: "gg" });
-        zwlog.sendAliMonitor({ name: "cj", obj: { title: "余额查询", c1: "taSR", url: "/pages/index/" } });
+        zwlog.sendAliMonitor({
+            name: "cj",
+            obj: { title: "余额查询", c1: "taSR", url: "/pages/index/" },
+        });
     });
-});
+};

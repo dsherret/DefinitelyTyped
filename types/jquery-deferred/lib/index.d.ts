@@ -4,7 +4,10 @@ export function isArray(obj: any): boolean;
 export function isFunction(obj: any): boolean;
 export function isPlainObject(obj: any): boolean;
 export function noop(): any;
-export function each(collection: any, callback: (indexInArray: any, valueOfElement: any) => any): any;
+export function each(
+    collection: any,
+    callback: (indexInArray: any, valueOfElement: any) => any,
+): any;
 export function extend(target: any, ...objs: any[]): object;
 export function extend(deep: boolean, target: any, ...objs: any[]): object;
 
@@ -27,10 +30,18 @@ export interface JQueryCallback {
 export interface JQueryPromise {
     state(): string;
     always(...alwaysCallbacks: any[]): JQueryDeferred;
-    then(doneCallbacks: any, failCallbacks?: any, progressCallbacks?: any): JQueryDeferred;
+    then(
+        doneCallbacks: any,
+        failCallbacks?: any,
+        progressCallbacks?: any,
+    ): JQueryDeferred;
     done(...doneCallbacks: any[]): JQueryDeferred;
     fail(...failCallbacks: any[]): JQueryDeferred;
-    pipe(doneFilter?: (x: any) => any, failFilter?: (x: any) => any, progressFilter?: (x: any) => any): JQueryPromise;
+    pipe(
+        doneFilter?: (x: any) => any,
+        failFilter?: (x: any) => any,
+        progressFilter?: (x: any) => any,
+    ): JQueryPromise;
     promise(): JQueryPromise;
 }
 
@@ -49,7 +60,9 @@ export interface JQueryDeferred extends JQueryPromise {
 export function Callbacks(flags: any): JQueryCallback;
 
 // Deferred
-export function Deferred(beforeStart?: (deferred: JQueryDeferred) => any): JQueryDeferred;
+export function Deferred(
+    beforeStart?: (deferred: JQueryDeferred) => any,
+): JQueryDeferred;
 
 // Helpers
 export function when(...deferreds: any[]): JQueryPromise;

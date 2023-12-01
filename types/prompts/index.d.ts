@@ -60,7 +60,9 @@ declare namespace prompts {
     }
 
     interface Options {
-        onSubmit?: ((prompt: PromptObject, answer: any, answers: any[]) => void) | undefined;
+        onSubmit?:
+            | ((prompt: PromptObject, answer: any, answers: any[]) => void)
+            | undefined;
         onCancel?: ((prompt: PromptObject, answers: any) => void) | undefined;
     }
 
@@ -68,10 +70,15 @@ declare namespace prompts {
         type: PromptType | Falsy | PrevCaller<T, PromptType | Falsy>;
         name: ValueOrFunc<T>;
         message?: ValueOrFunc<string> | undefined;
-        initial?: InitialReturnValue | PrevCaller<T, InitialReturnValue | Promise<InitialReturnValue>> | undefined;
+        initial?:
+            | InitialReturnValue
+            | PrevCaller<T, InitialReturnValue | Promise<InitialReturnValue>>
+            | undefined;
         style?: string | PrevCaller<T, string | Falsy> | undefined;
         format?: PrevCaller<T, void> | undefined;
-        validate?: PrevCaller<T, boolean | string | Promise<boolean | string>> | undefined;
+        validate?:
+            | PrevCaller<T, boolean | string | Promise<boolean | string>>
+            | undefined;
         onState?: PrevCaller<T, void> | undefined;
         onRender?: ((kleur: Kleur) => void) | undefined;
         min?: number | PrevCaller<T, number | Falsy> | undefined;

@@ -125,7 +125,12 @@ interface GanttTemplates {
      * @param to the id of the target task( 'null' or 'undefined', if the target task isn't specified yet)
      * @param to_start <i>true</i>, if the link is being dragged to the start of the target task, <i>false</i> - if <br> to the end of the task
      */
-    drag_link(from: string | number, from_start: boolean, to: string | number, to_start: boolean): string;
+    drag_link(
+        from: string | number,
+        from_start: boolean,
+        to: string | number,
+        to_start: boolean,
+    ): string;
 
     /**
      * specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
@@ -134,7 +139,12 @@ interface GanttTemplates {
      * @param to the id of the target task( 'null' or 'undefined', if the target task isn't specified yet)
      * @param to_start <i>true</i>, if the link is being dragged to the start of the target task, <i>false</i> - if <br> to the end of the task
      */
-    drag_link_class(from: string | number, from_start: boolean, to: string | number, to_start: boolean): string;
+    drag_link_class(
+        from: string | number,
+        from_start: boolean,
+        to: string | number,
+        to_start: boolean,
+    ): string;
 
     /**
      * specifies the custom content inserted before the labels of child items in the tree column
@@ -194,7 +204,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to the specified resource and overlap start/end dates of the cell
      */
-    histogram_cell_allocated(start_date: Date, end_date: Date, resource: any, tasks: any[]): void;
+    histogram_cell_allocated(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): void;
 
     /**
      * specifies the height of the line that defines the available capacity of the resource
@@ -203,7 +218,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to the specified resource and overlap start/end dates of the cell
      */
-    histogram_cell_capacity(start_date: Date, end_date: Date, resource: any, tasks: any[]): void;
+    histogram_cell_capacity(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): void;
 
     /**
      * defines the CSS class which is applied to a cell of the resource panel
@@ -212,7 +232,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to the specified resource and overlap start/end dates of the cell
      */
-    histogram_cell_class(start_date: Date, end_date: Date, resource: any, tasks: any[]): void;
+    histogram_cell_class(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): void;
 
     /**
      * defines the label inside a cell
@@ -221,7 +246,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to the specified resource and overlap start/end dates of the cell
      */
-    histogram_cell_label(start_date: Date, end_date: Date, resource: any, tasks: any[]): void;
+    histogram_cell_label(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): void;
 
     /**
      * specifies the CSS class that will be applied to a link
@@ -282,7 +312,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to specified resource and overlap start/end dates of the cell
      */
-    resource_cell_class(start_date: Date, end_date: Date, resource: any, tasks: any[]): string;
+    resource_cell_class(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): string;
 
     /**
      * defines the HTML content of resource timeline cells
@@ -291,7 +326,12 @@ interface GanttTemplates {
      * @param resource the resource object
      * @param tasks tasks that are assigned to specified resource and overlap start/end dates of the cell
      */
-    resource_cell_value(start_date: Date, end_date: Date, resource: any, tasks: any[]): string;
+    resource_cell_value(
+        start_date: Date,
+        end_date: Date,
+        resource: any,
+        tasks: any[],
+    ): string;
 
     /**
      * specifies the CSS class that will be applied to cells of the time scale of the timeline area
@@ -1513,7 +1553,11 @@ interface GanttStatic {
      * @param startTask the id of the item the parent tasks of which should be iterated over
      * @param master optional, the object, that 'this'  will refer to
      */
-    eachParent(code: GanttCallback, startTask: string | number, master?: any): void;
+    eachParent(
+        code: GanttCallback,
+        startTask: string | number,
+        master?: any,
+    ): void;
 
     /**
      * iterates over all selected tasks in the Gantt chart
@@ -1536,7 +1580,12 @@ interface GanttStatic {
      * @param handler the event handler
      * @param options optional, optional, the value of either the <i>useCapture</i> or <i>options</i> parameter. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">Read details</a>
      */
-    event(node: HTMLElement | string, event: string, handler: GanttCallback, options?: any): void;
+    event(
+        node: HTMLElement | string,
+        event: string,
+        handler: GanttCallback,
+        options?: any,
+    ): void;
 
     /**
      * removes an event handler from an HTML element
@@ -1545,7 +1594,12 @@ interface GanttStatic {
      * @param handler the event handler
      * @param options optional, optional, the value of either the <i>useCapture</i> or <i>options</i> parameter. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener">Read details</a>
      */
-    eventRemove(node: HTMLElement | string, event: string, handler: GanttCallback, options?: any): void;
+    eventRemove(
+        node: HTMLElement | string,
+        event: string,
+        handler: GanttCallback,
+        options?: any,
+    ): void;
 
     /**
      * expands gantt to the full screen mode
@@ -2115,7 +2169,11 @@ interface GanttStatic {
      * @param tindex the index of the position that the task will be moved to <br> (the index within a branch)
      * @param parent optional, the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
      */
-    moveTask(sid: string | number, tindex: number, parent?: string | number): void;
+    moveTask(
+        sid: string | number,
+        tindex: number,
+        parent?: string | number,
+    ): void;
 
     /**
      * opens the branch with the specified id
@@ -2302,7 +2360,12 @@ interface GanttStatic {
      * @param parent optional, the id of the parent task. Specify the parameter if you want to sort tasks only in the branch of the specified parent.
      * @param silent optional, specifies whether rendering should be invoked after reordering items
      */
-    sort(field: string | GanttCallback, desc?: boolean, parent?: string | number, silent?: boolean): void;
+    sort(
+        field: string | GanttCallback,
+        desc?: boolean,
+        parent?: string | number,
+        silent?: boolean,
+    ): void;
 
     /**
      * selects the specified task if it was unselected and vice versa

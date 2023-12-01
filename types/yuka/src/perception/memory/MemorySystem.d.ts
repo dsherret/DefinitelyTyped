@@ -66,7 +66,9 @@ export class MemorySystem {
      * @param entity - The game entity.
      * @return Whether the game entity has a memory record or not.
      */
-    hasRecord(entity: GameEntity): this is { getRecord(entity: GameEntity): MemoryRecord } & this;
+    hasRecord(
+        entity: GameEntity,
+    ): this is { getRecord(entity: GameEntity): MemoryRecord } & this;
 
     /**
      * Removes all memory records from the memory system.
@@ -80,7 +82,10 @@ export class MemorySystem {
      * @param result - The result array.
      * @return The result array.
      */
-    getValidMemoryRecords(currentTime: number, result: MemoryRecord[]): MemoryRecord[];
+    getValidMemoryRecords(
+        currentTime: number,
+        result: MemoryRecord[],
+    ): MemoryRecord[];
 
     /**
      * Transforms this instance into a JSON object.

@@ -1,7 +1,11 @@
 import { Plugin, Stats } from "webpack";
 
-declare class ServiceWorkerWebpackPlugin<T = ServiceWorkerWebpackPlugin.ServiceWorkerDefaultOption> extends Plugin {
-    constructor(options: ServiceWorkerWebpackPlugin.ServiceWorkerWebpackPluginOptions<T>);
+declare class ServiceWorkerWebpackPlugin<
+    T = ServiceWorkerWebpackPlugin.ServiceWorkerDefaultOption,
+> extends Plugin {
+    constructor(
+        options: ServiceWorkerWebpackPlugin.ServiceWorkerWebpackPluginOptions<T>,
+    );
 }
 
 declare namespace ServiceWorkerWebpackPlugin {
@@ -15,7 +19,9 @@ declare namespace ServiceWorkerWebpackPlugin {
         assets: string[];
     }
 
-    interface ServiceWorkerWebpackPluginOptions<T = ServiceWorkerDefaultOption> {
+    interface ServiceWorkerWebpackPluginOptions<
+        T = ServiceWorkerDefaultOption,
+    > {
         /**
          * Path to the actual service worker implementation.
          */
@@ -57,7 +63,9 @@ declare namespace ServiceWorkerWebpackPlugin {
         /**
          * This callback function receives a raw `serviceWorkerOption` argument. The `jsonStats` key contains all the webpack build information.
          */
-        transformOptions?: ((serviceWorkerOption: ServiceWorkerOption) => T) | undefined;
+        transformOptions?:
+            | ((serviceWorkerOption: ServiceWorkerOption) => T)
+            | undefined;
 
         /**
          * Whether to minimize output.

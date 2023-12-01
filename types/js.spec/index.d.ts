@@ -190,7 +190,11 @@ export namespace spec {
      * @param spec the spec to apply to values in the collection
      * @param options symbol.count or symbol.minCount / symbol.maxCount
      */
-    function collection(name: string, spec: SpecInput, options?: { [option: string]: number }): Spec;
+    function collection(
+        name: string,
+        spec: SpecInput,
+        options?: { [option: string]: number },
+    ): Spec;
 
     /**
      * Used to define collections with items of possibly different types. Works only with arrays as order is important.

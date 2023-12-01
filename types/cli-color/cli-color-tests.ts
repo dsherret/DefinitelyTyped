@@ -21,10 +21,16 @@ text = clc.red("red") + " plain " + clc.blue("blue");
 text = clc.red("red " + clc.blue("blue") + " red");
 text = clc.bold.italic.underline.blink.inverse.strike(text);
 text = clc.black.red.green.yellow.blue.magenta.cyan.white(text);
-text = clc.bgBlack.bgRed.bgGreen.bgYellow.bgBlack.bgMagenta.bgCyan.bgWhite(text);
-text = clc.blackBright.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(text);
-text = clc.bgBlackBright.bgRedBright.bgGreenBright.bgYellowBright.bgBlueBright.bgMagentaBright.bgCyanBright
-    .bgWhiteBright(text);
+text =
+    clc.bgBlack.bgRed.bgGreen.bgYellow.bgBlack.bgMagenta.bgCyan.bgWhite(text);
+text =
+    clc.blackBright.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(
+        text,
+    );
+text =
+    clc.bgBlackBright.bgRedBright.bgGreenBright.bgYellowBright.bgBlueBright.bgMagentaBright.bgCyanBright.bgWhiteBright(
+        text,
+    );
 
 const error: clc.Format = clc.red.bold;
 const warn: clc.Format = clc.yellow;
@@ -87,23 +93,33 @@ text = clc.columns([
     { [0]: "Jan", [1]: "Kowalski", [2]: 30, length: 3 },
 ]);
 
-text = clc.columns([
-    [clc.bold("First Name"), clc.bold("Last Name"), clc.bold("Age")],
-    ["John", "Doe", 34],
-    ["Martha", "Smith", 20],
-    ["Jan", "Kowalski", 30],
-], { sep: "|" });
-text = clc.columns([
-    [clc.bold("First Name"), clc.bold("Last Name"), clc.bold("Age")],
-    ["John", "Doe", 34],
-    ["Martha", "Smith", 20],
-    ["Jan", "Kowalski", 30],
-], { columns: [{ align: "right" }, null, { align: "left" }] });
+text = clc.columns(
+    [
+        [clc.bold("First Name"), clc.bold("Last Name"), clc.bold("Age")],
+        ["John", "Doe", 34],
+        ["Martha", "Smith", 20],
+        ["Jan", "Kowalski", 30],
+    ],
+    { sep: "|" },
+);
+text = clc.columns(
+    [
+        [clc.bold("First Name"), clc.bold("Last Name"), clc.bold("Age")],
+        ["John", "Doe", 34],
+        ["Martha", "Smith", 20],
+        ["Jan", "Kowalski", 30],
+    ],
+    { columns: [{ align: "right" }, null, { align: "left" }] },
+);
 
 // Test cli-color/throbber
 var throbber: setupThrobber.Throbber;
 throbber = setupThrobber(process.stdout.write.bind(process.stdout), period);
-throbber = setupThrobber(process.stdout.write.bind(process.stdout), period, clc.red);
+throbber = setupThrobber(
+    process.stdout.write.bind(process.stdout),
+    period,
+    clc.red,
+);
 
 throbber.start();
 throbber.stop();

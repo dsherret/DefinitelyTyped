@@ -17,7 +17,17 @@ declare namespace chroma {
         gl: [number, number, number, number];
     }
 
-    type InterpolationMode = "rgb" | "hsl" | "hsv" | "hsi" | "lab" | "oklab" | "lch" | "oklch" | "hcl" | "lrgb";
+    type InterpolationMode =
+        | "rgb"
+        | "hsl"
+        | "hsv"
+        | "hsi"
+        | "lab"
+        | "oklab"
+        | "lch"
+        | "oklch"
+        | "hcl"
+        | "lrgb";
 
     interface ChromaStatic {
         /**
@@ -35,9 +45,20 @@ declare namespace chroma {
          * @param colorSpace The color space to use. Defaults to "rgb".
          * @return the color object.
          */
-        (a: number, b: number, c: number, colorSpace?: keyof ColorSpaces): Color;
+        (
+            a: number,
+            b: number,
+            c: number,
+            colorSpace?: keyof ColorSpaces,
+        ): Color;
 
-        (a: number, b: number, c: number, d: number, colorSpace?: keyof ColorSpaces): Color;
+        (
+            a: number,
+            b: number,
+            c: number,
+            d: number,
+            colorSpace?: keyof ColorSpaces,
+        ): Color;
 
         /**
          * Create a color in the specified color space using values.
@@ -98,18 +119,32 @@ declare namespace chroma {
          * @example chroma.mix('red', 'blue', 0.25) // => #bf0040
          * @example chroma.mix('red', 'blue', 0.5, 'hsl') // => #ff00ff
          */
-        mix(color1: string | Color, color2: string | Color, f?: number, colorSpace?: InterpolationMode): Color;
+        mix(
+            color1: string | Color,
+            color2: string | Color,
+            f?: number,
+            colorSpace?: InterpolationMode,
+        ): Color;
 
         /**
          * Alias for {@see mix}.
          */
-        interpolate(color1: string | Color, color2: string | Color, f?: number, colorSpace?: InterpolationMode): Color;
+        interpolate(
+            color1: string | Color,
+            color2: string | Color,
+            f?: number,
+            colorSpace?: InterpolationMode,
+        ): Color;
 
         /**
          * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
          * channel.
          */
-        average(colors: Array<string | Color>, colorSpace?: InterpolationMode, weights?: number[]): Color;
+        average(
+            colors: Array<string | Color>,
+            colorSpace?: InterpolationMode,
+            weights?: number[],
+        ): Color;
 
         /**
          * Blends two colors using RGB channel-wise blend functions.
@@ -117,7 +152,14 @@ declare namespace chroma {
         blend(
             color1: string | Color,
             color2: string | Color,
-            blendMode: "multiply" | "darken" | "lighten" | "screen" | "overlay" | "burn" | "dodge",
+            blendMode:
+                | "multiply"
+                | "darken"
+                | "lighten"
+                | "screen"
+                | "overlay"
+                | "burn"
+                | "dodge",
         ): Color;
 
         /**
@@ -136,7 +178,11 @@ declare namespace chroma {
          * Computes the eucledian distance between two colors in a given color space (default is 'lab').
          * {@link https://en.wikipedia.org/wiki/Euclidean_distance#Three_dimensions}
          */
-        distance(color1: string | Color, color2: string | Color, colorSpace?: keyof ColorSpaces): number;
+        distance(
+            color1: string | Color,
+            color2: string | Color,
+            colorSpace?: keyof ColorSpaces,
+        ): number;
 
         /**
          * Computes color difference {@link https://en.wikipedia.org/wiki/Color_difference#CMC_l:c_.281984.29} as
@@ -145,7 +191,12 @@ declare namespace chroma {
          * {@link https://web.archive.org/web/20160306044036/http://www.brucelindbloom.com/javascript/ColorDiff.js}
          * The parameters L (default 1) and C (default 1) are weighting factors for lightness and chromacity.
          */
-        deltaE(color1: string | Color, color2: string | Color, L?: number, C?: number): number;
+        deltaE(
+            color1: string | Color,
+            color2: string | Color,
+            L?: number,
+            C?: number,
+        ): number;
 
         /**
          * chroma.brewer is an map of ColorBrewer scales that are included in chroma.js for convenience.
@@ -200,7 +251,11 @@ declare namespace chroma {
          *  [k-means clustering algorithm]{@link https://en.wikipedia.org/wiki/K-means_clustering} to find (roughly) n
          *  groups of "similar" values. Note that this k-means implementation does not guarantee to find exactly n groups.
          */
-        limits(data: number[], mode: "e" | "q" | "l" | "k", c: number): number[];
+        limits(
+            data: number[],
+            mode: "e" | "q" | "l" | "k",
+            c: number,
+        ): number[];
 
         /**
          * Returns a function that
@@ -230,7 +285,11 @@ declare namespace chroma {
 
         darken(f?: number): Color;
 
-        mix(targetColor: string | Color, f?: number, colorSpace?: keyof ColorSpaces): Color;
+        mix(
+            targetColor: string | Color,
+            f?: number,
+            colorSpace?: keyof ColorSpaces,
+        ): Color;
 
         brighten(f?: number): Color;
 
@@ -479,10 +538,23 @@ declare namespace chroma {
          */
         colors(
             c: number | undefined,
-            format: undefined | null | "alpha" | "darken" | "brighten" | "saturate" | "desaturate",
+            format:
+                | undefined
+                | null
+                | "alpha"
+                | "darken"
+                | "brighten"
+                | "saturate"
+                | "desaturate",
         ): Color[];
-        colors(c: number | undefined, format: "luminance" | "temperature"): number[];
-        colors<K extends keyof ColorSpaces>(c: number | undefined, format: K): Array<ColorSpaces[K]>;
+        colors(
+            c: number | undefined,
+            format: "luminance" | "temperature",
+        ): number[];
+        colors<K extends keyof ColorSpaces>(
+            c: number | undefined,
+            format: K,
+        ): Array<ColorSpaces[K]>;
         colors(c: number | undefined, format?: "hex" | "name"): string[];
 
         /**

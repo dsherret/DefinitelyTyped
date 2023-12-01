@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface ActionHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ActionHeaderProps
+    extends React.HTMLAttributes<HTMLDivElement> {
     /**
      * Optionally sets the heading level. One of `1`, `2`, `3`, `4`, `5`, `6`. Default `level=1`. This helps screen readers to announce appropriate heading levels.
      * Changing 'level' will not visually change the style of the content.

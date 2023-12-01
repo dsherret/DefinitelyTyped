@@ -25,7 +25,10 @@ export interface Simmer {
  * the error object to it. Simmer will then handle the error as per its
  * configuration.
  */
-export type QueryEngine = (selector: string, onError: (error: any) => void) => ArrayLike<Element>;
+export type QueryEngine = (
+    selector: string,
+    onError: (error: any) => void,
+) => ArrayLike<Element>;
 
 /**
  * A document or element with `querySelectorAll()`.
@@ -89,7 +92,10 @@ export interface Options {
      *  - _a function callback will be called with two parameters_: the
      *    exception and the element being analyzed
      */
-    errorHandling?: boolean | ((error: any, element: Element) => void) | undefined;
+    errorHandling?:
+        | boolean
+        | ((error: any, element: Element) => void)
+        | undefined;
 }
 
 interface SimmerConstructor {
@@ -109,7 +115,7 @@ interface SimmerConstructor {
      * another custom function, such as your own tweaked version of jQuery, you
      * can do so by passing the third argument to the Simmer constructor.
      */
-    new(scope?: Scope, options?: Options, query?: QueryEngine): Simmer;
+    new (scope?: Scope, options?: Options, query?: QueryEngine): Simmer;
 
     /**
      * @param scope The context in which Simmer should query for elements.

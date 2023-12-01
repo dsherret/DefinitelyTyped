@@ -1,6 +1,8 @@
 /// <reference types="node"/>
 
-declare function gulpStylus(options?: gulpStylus.Options): NodeJS.ReadWriteStream;
+declare function gulpStylus(
+    options?: gulpStylus.Options,
+): NodeJS.ReadWriteStream;
 
 declare namespace gulpStylus {
     interface VariableDefinitions {

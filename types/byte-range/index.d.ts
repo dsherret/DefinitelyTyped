@@ -5,7 +5,10 @@ export = byteRange;
  *
  * @param bytes Number of bytes to return the integer range for. Must be a positive integer.
  */
-declare function byteRange(bytes: number, options?: byteRange.Options): byteRange.ByteRange;
+declare function byteRange(
+    bytes: number,
+    options?: byteRange.Options,
+): byteRange.ByteRange;
 
 declare namespace byteRange {
     /**

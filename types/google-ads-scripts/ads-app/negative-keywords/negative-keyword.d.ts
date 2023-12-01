@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
          *    var negativeKeyword = negativeKeywordIterator.next();
          *  }
          */
-        interface NegativeKeywordIterator extends Base.Iterator<NegativeKeyword> {}
+        interface NegativeKeywordIterator
+            extends Base.Iterator<NegativeKeyword> {}
 
         /**
          * Fetches negative keywords (except from shared libraries).
@@ -55,11 +56,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface NegativeKeywordSelector
-            extends
-                Base.Selector<NegativeKeywordIterator>,
+            extends Base.Selector<NegativeKeywordIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

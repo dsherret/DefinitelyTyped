@@ -80,7 +80,12 @@ declare namespace dottie {
          * dottie.set(values, ['some.dot.included', 'value'], someValue);
          * dottie.set(values, 'some.nested.object', someValue, { force: true });
          */
-        set(obj: object, path: DottiePath, value: any, options?: SetOptions): void;
+        set(
+            obj: object,
+            path: DottiePath,
+            value: any,
+            options?: SetOptions,
+        ): void;
 
         /**
          * Set the default value if path does not exist

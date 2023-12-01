@@ -17,7 +17,10 @@ interface JustifiedLayoutOptions {
      * individual values to each side.
      * @default 10
      */
-    containerPadding?: number | { top: number; right: number; left: number; bottom: number } | undefined;
+    containerPadding?:
+        | number
+        | { top: number; right: number; left: number; bottom: number }
+        | undefined;
     /**
      * Provide a single integer to apply spacing both horizontally and vertically or provide an
      * object to apply individual values to each axis.

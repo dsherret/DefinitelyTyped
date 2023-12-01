@@ -10,23 +10,45 @@ declare class Twitter {
     readonly allow_promise: boolean;
     readonly request: typeof request;
 
-    constructor(options: Twitter.AccessTokenOptions | Twitter.BearerTokenOptions);
+    constructor(
+        options: Twitter.AccessTokenOptions | Twitter.BearerTokenOptions,
+    );
 
-    get(path: string, params: Twitter.RequestParams, callback: Twitter.Callback): void;
+    get(
+        path: string,
+        params: Twitter.RequestParams,
+        callback: Twitter.Callback,
+    ): void;
     get(path: string, callback: Twitter.Callback): void;
-    get(path: string, params?: Twitter.RequestParams): Promise<Twitter.ResponseData>;
+    get(
+        path: string,
+        params?: Twitter.RequestParams,
+    ): Promise<Twitter.ResponseData>;
 
-    post(path: string, params: Twitter.RequestParams, callback: Twitter.Callback): void;
+    post(
+        path: string,
+        params: Twitter.RequestParams,
+        callback: Twitter.Callback,
+    ): void;
     post(path: string, callback: Twitter.Callback): void;
-    post(path: string, params?: Twitter.RequestParams): Promise<Twitter.ResponseData>;
+    post(
+        path: string,
+        params?: Twitter.RequestParams,
+    ): Promise<Twitter.ResponseData>;
 
     stream(
         method: "user" | "site" | string,
         params: { [key: string]: any },
         callback: (stream: EventEmitter) => void,
     ): void;
-    stream(method: "user" | "site" | string, callback: (stream: EventEmitter) => void): void;
-    stream(method: "user" | "site" | string, params?: { [key: string]: any }): EventEmitter;
+    stream(
+        method: "user" | "site" | string,
+        callback: (stream: EventEmitter) => void,
+    ): void;
+    stream(
+        method: "user" | "site" | string,
+        params?: { [key: string]: any },
+    ): EventEmitter;
 }
 
 declare namespace Twitter {
@@ -50,7 +72,11 @@ declare namespace Twitter {
         bearer_token: string;
     }
 
-    type Callback = (error: any, data: ResponseData, response: request.Response) => void;
+    type Callback = (
+        error: any,
+        data: ResponseData,
+        response: request.Response,
+    ) => void;
 
     interface RequestParams {
         [key: string]: any;

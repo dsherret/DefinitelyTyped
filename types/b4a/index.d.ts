@@ -40,7 +40,10 @@ export function compare(buf1: Uint8Array, buf2: Uint8Array): -1 | 0 | 1;
 /**
  * See https://nodejs.org/api/buffer.html#static-method-bufferconcatlist-totallength
  */
-export function concat(list: readonly Uint8Array[], totalLength?: number): Buffer | Uint8Array;
+export function concat(
+    list: readonly Uint8Array[],
+    totalLength?: number,
+): Buffer | Uint8Array;
 /**
  * See https://nodejs.org/api/buffer.html#bufcopytarget-targetstart-sourcestart-sourceend
  */
@@ -81,12 +84,16 @@ export function from(data: Uint8Array | readonly number[]): Buffer | Uint8Array;
  * See https://nodejs.org/api/buffer.html#static-method-bufferfromarray
  */
 // tslint:disable-next-line unified-signatures
-export function from(data: WithImplicitCoercion<Uint8Array | readonly number[] | string>): Buffer | Uint8Array;
+export function from(
+    data: WithImplicitCoercion<Uint8Array | readonly number[] | string>,
+): Buffer | Uint8Array;
 /**
  * See https://nodejs.org/api/buffer.html#static-method-bufferfromstring-encoding
  */
 export function from(
-    str: WithImplicitCoercion<string> | { [Symbol.toPrimitive](hint: "string"): string },
+    str:
+        | WithImplicitCoercion<string>
+        | { [Symbol.toPrimitive](hint: "string"): string },
     encoding?: BufferEncoding,
 ): Buffer | Uint8Array;
 /**
@@ -140,12 +147,26 @@ export function toBuffer(buffer: Uint8Array): Uint8Array | Buffer;
 /**
  * See https://nodejs.org/api/buffer.html#buftostringencoding-start-end
  */
-export function toString(buffer: Uint8Array, encoding?: BufferEncoding, start?: number, end?: number): string;
+export function toString(
+    buffer: Uint8Array,
+    encoding?: BufferEncoding,
+    start?: number,
+    end?: number,
+): string;
 /**
  * See https://nodejs.org/api/buffer.html#bufwritestring-offset-length-encoding
  */
-export function write(buffer: Uint8Array, string: string, encoding?: BufferEncoding): number;
-export function write(buffer: Uint8Array, string: string, offset: number, encoding?: BufferEncoding): number;
+export function write(
+    buffer: Uint8Array,
+    string: string,
+    encoding?: BufferEncoding,
+): number;
+export function write(
+    buffer: Uint8Array,
+    string: string,
+    offset: number,
+    encoding?: BufferEncoding,
+): number;
 export function write(
     buffer: Uint8Array,
     string: string,
@@ -156,19 +177,35 @@ export function write(
 /**
  * See https://nodejs.org/api/buffer.html#bufwritedoublelevalue-offset
  */
-export function writeDoubleLE(buffer: Uint8Array, value: number, offset?: number): number;
+export function writeDoubleLE(
+    buffer: Uint8Array,
+    value: number,
+    offset?: number,
+): number;
 /**
  * See https://nodejs.org/api/buffer.html#bufwritefloatlevalue-offset
  */
-export function writeFloatLE(buffer: Uint8Array, value: number, offset?: number): number;
+export function writeFloatLE(
+    buffer: Uint8Array,
+    value: number,
+    offset?: number,
+): number;
 /**
  * See https://nodejs.org/api/buffer.html#bufwriteuint32levalue-offset
  */
-export function writeUInt32LE(buffer: Uint8Array, value: number, offset?: number): number;
+export function writeUInt32LE(
+    buffer: Uint8Array,
+    value: number,
+    offset?: number,
+): number;
 /**
  * See https://nodejs.org/api/buffer.html#bufwriteint32levalue-offset
  */
-export function writeInt32LE(buffer: Uint8Array, value: number, offset?: number): number;
+export function writeInt32LE(
+    buffer: Uint8Array,
+    value: number,
+    offset?: number,
+): number;
 /**
  * See https://nodejs.org/api/buffer.html#bufreaddoubleleoffset
  */

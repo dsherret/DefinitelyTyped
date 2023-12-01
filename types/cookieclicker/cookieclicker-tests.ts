@@ -40,11 +40,17 @@ new Game.Object(
 
 new Game.Upgrade("Example upgrade", "Does <b>nothing</b>.", 456, [1, 2]);
 // Custom icon source
-new Game.Upgrade("Example upgrade", "Does <b>nothing</b>.", 456, [1, 2, "https://example.com/icons.png"]);
+new Game.Upgrade("Example upgrade", "Does <b>nothing</b>.", 456, [
+    1,
+    2,
+    "https://example.com/icons.png",
+]);
 
 // Invalid tier type
 // @ts-expect-error
-Game.SynergyUpgrade("Example synergy", "Example", "Cursor", "Grandma", { hello: "there" });
+Game.SynergyUpgrade("Example synergy", "Example", "Cursor", "Grandma", {
+    hello: "there",
+});
 
 Game.GrandmaSynergy("Example grandmas", "A nice example", "Example building");
 
@@ -105,8 +111,7 @@ Game.LoadSave();
 // A live example of ascension modes, commented out it the code
 Game.ascensionModes[2] = {
     name: "Trigger finger",
-    desc:
-        `In this run, scrolling your mouse wheel on the cookie counts as clicking it. Some upgrades introduce new clicking behaviors.<br>
+    desc: `In this run, scrolling your mouse wheel on the cookie counts as clicking it. Some upgrades introduce new clicking behaviors.<br>
 No clicking achievements may be obtained in this mode.
 <div class="line"></div>
 Reaching 1 quadrillion cookies in this mode unlocks a special heavenly upgrade.`,
@@ -114,17 +119,25 @@ Reaching 1 quadrillion cookies in this mode unlocks a special heavenly upgrade.`
     dname: loc("Trigger finger"),
 };
 
-const selector: Game.SelectorSwitchChoice = { name: "Example choice", icon: [10, 0] };
+const selector: Game.SelectorSwitchChoice = {
+    name: "Example choice",
+    icon: [10, 0],
+};
 
 // `TickerEffect` can also be 0
 // @ts-expect-error
 Game.TickerEffect.type;
 
-const coolUpgrade = new Game.Upgrade("Example upgrade", "Does <b>nothing</b>.", 456, [1, 2]);
+const coolUpgrade = new Game.Upgrade(
+    "Example upgrade",
+    "Does <b>nothing</b>.",
+    456,
+    [1, 2],
+);
 
 coolUpgrade.parents.push(Game.UpgradesById[17]);
 
-Game.registerHook("reset", hard => {
+Game.registerHook("reset", (hard) => {
     alert(`This reset is ${hard ? "" : "not "}hard!`);
 });
 
@@ -132,7 +145,7 @@ const tiered = Game.TieredUpgrade("Cool socks", "", "Grandma", 10);
 
 // One of the many real use cases of :2260:9 type parameter hack
 
-tiered.power = me => me.buildingTie1.price;
+tiered.power = (me) => me.buildingTie1.price;
 
 Game.Objects.Cursor.tieredUpgrades[10] = tiered;
 
@@ -161,7 +174,14 @@ Game.tooltip.tta.removeChild(Game.tooltip.tt);
 
 Game.UnlockTiered(Game.Objects.Factory);
 
-const buildingPicture: Game.BuildingArtPicture = { frame: 0, id: 0, pic: "icons.png", x: 0, y: 0, z: 0 };
+const buildingPicture: Game.BuildingArtPicture = {
+    frame: 0,
+    id: 0,
+    pic: "icons.png",
+    x: 0,
+    y: 0,
+    z: 0,
+};
 
 // @ts-expect-error
 Game.effs.cps + 1;
@@ -178,7 +198,8 @@ const buffType = new Game.buffType("type definitions", (time, arg1) => ({
 
 const gainedBuff = Game.gainBuff("type definitons", 60);
 
-if (gainedBuff.time === gainedBuff.maxTime && gainedBuff.arg1) console.log(gainedBuff.pow === gainedBuff.arg1 * 10);
+if (gainedBuff.time === gainedBuff.maxTime && gainedBuff.arg1)
+    console.log(gainedBuff.pow === gainedBuff.arg1 * 10);
 
 gainedBuff.type === buffType;
 
@@ -186,14 +207,20 @@ console.log(SimpleBeautify(1e6));
 
 console.log(loc("%1 types", LBeautify(10)));
 
-AddLanguage("TS", "TypeScript", { Game: "{PseudoNull:0}", "": { "plural-forms": "", language: "unused" } });
+AddLanguage("TS", "TypeScript", {
+    Game: "{PseudoNull:0}",
+    "": { "plural-forms": "", language: "unused" },
+});
 
 if (App) {
     App.gotAchiev(Game.Achievements["Wake and bake"].id);
     App.modsPopup();
 }
 
-alert(Game.Upgrades["Reinforced index finger"].dname + Game.Upgrades["Reinforced index finger"].ddesc);
+alert(
+    Game.Upgrades["Reinforced index finger"].dname +
+        Game.Upgrades["Reinforced index finger"].ddesc,
+);
 
 Game.ToggleFullscreen();
 
@@ -231,15 +258,18 @@ Game.YouCustomizer.offsetGene("acc2", -1);
 let currentGenes = Game.YouCustomizer.save();
 Game.YouCustomizer.load(currentGenes);
 
-let someChoice: [number, number] = Game.YouCustomizer.genesById["hair"].choices[5];
+let someChoice: [number, number] =
+    Game.YouCustomizer.genesById["hair"].choices[5];
 let someChoice2: number = Game.YouCustomizer.genesById["hairCol"].choices[5];
 
 // Support modded genes
-let someChoice3: number | [number, number] = Game.YouCustomizer.genesById["moddedGene"].choices[5];
+let someChoice3: number | [number, number] =
+    Game.YouCustomizer.genesById["moddedGene"].choices[5];
 // @ts-expect-error - but we don't know the type of the gene
 let someChoice4: number = Game.YouCustomizer.genesById["moddedGene"].choices[5];
 // @ts-expect-error
-let someChoice5: [number, number] = Game.YouCustomizer.genesById["moddedGene"].choices[5];
+let someChoice5: [number, number] =
+    Game.YouCustomizer.genesById["moddedGene"].choices[5];
 
 // offsetGene cannot handle numbers except -1, 0, 1
 // @ts-expect-error

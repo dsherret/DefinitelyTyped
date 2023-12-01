@@ -1,5 +1,12 @@
 import { Component, ReactNode } from "react";
-import { ImageProps, ImageSourcePropType, ImageStyle, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    ImageProps,
+    ImageSourcePropType,
+    ImageStyle,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 
 export type FunctionWithZeroArgs = () => void;
 
@@ -9,7 +16,10 @@ export type ImageHandler = (attributes: ImageProps) => void;
 
 export type ColorHandler = (color: string) => void;
 
-export type LinkDialogHandler = (optionalTitle: string, optionalUrl: string) => void;
+export type LinkDialogHandler = (
+    optionalTitle: string,
+    optionalUrl: string,
+) => void;
 
 export type PlaceHolderHandler = (placeholder: string) => void;
 
@@ -139,7 +149,8 @@ export interface RichTextToolbarOptionalProps {
     iconMap: IconsMap;
 }
 
-export interface RichTextToolbarProps extends Partial<RichTextToolbarOptionalProps> {
+export interface RichTextToolbarProps
+    extends Partial<RichTextToolbarOptionalProps> {
     // Must provide a function that returns a ref to a RichTextEditor component.
     getEditor: () => RichTextEditor;
 }

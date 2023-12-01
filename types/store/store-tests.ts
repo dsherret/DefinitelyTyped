@@ -28,7 +28,7 @@ store.remove("user");
 store.clearAll();
 
 // Loop over all stored values
-store.each(function(value, key) {
+store.each(function (value, key) {
     console.log(key, "==", value);
 });
 
@@ -41,16 +41,16 @@ declare global {
     }
 }
 
-const versionHistoryPlugin = function(this: StoreJsAPI) {
+const versionHistoryPlugin = function (this: StoreJsAPI) {
     const historyStore = this.namespace("history");
     return {
-        set: function(super_fn: () => any, key: string, value: any) {
+        set: function (super_fn: () => any, key: string, value: any) {
             const history = historyStore.get(key) || [];
             history.push(value);
             historyStore.set(key, history);
             return super_fn();
         },
-        getHistory: function(key: string) {
+        getHistory: function (key: string) {
             return historyStore.get(key);
         },
     };

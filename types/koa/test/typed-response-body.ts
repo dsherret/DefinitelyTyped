@@ -7,7 +7,11 @@ interface CustomResponseBody {
     b: string;
 }
 
-const middleware: Koa.Middleware<Koa.DefaultState, Koa.DefaultContext, CustomResponseBody> = (ctx, next) => {
+const middleware: Koa.Middleware<
+    Koa.DefaultState,
+    Koa.DefaultContext,
+    CustomResponseBody
+> = (ctx, next) => {
     ctx.body.a = 1;
     ctx.body.b = "text";
 

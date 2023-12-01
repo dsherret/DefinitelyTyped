@@ -7,10 +7,10 @@ interface InitOptions {
     env:
         | string
         | {
-            database: string;
-            storage: string;
-            functions: string;
-        };
+              database: string;
+              storage: string;
+              functions: string;
+          };
 }
 
 declare function getWXContext(): {
@@ -149,9 +149,7 @@ interface CountCollectionResult {
 interface Document {
     get(): Promise<{ data: any }>;
     update(options: CommonOption): Promise<{ stats: { updated: 0 | 1 } }>;
-    set(
-        options: CommonOption,
-    ): Promise<{
+    set(options: CommonOption): Promise<{
         _id: string | number;
         stats: { updated: 0 | 1; created: 0 | 1 };
     }>;

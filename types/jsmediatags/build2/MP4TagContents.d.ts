@@ -19,7 +19,15 @@ export default class MP4TagContents {
 
     static createAtom(atomName: string): Atom;
 
-    static createContainerAtom(atomName: string, atoms: Atom[], data?: ByteArray): Atom;
+    static createContainerAtom(
+        atomName: string,
+        atoms: Atom[],
+        data?: ByteArray,
+    ): Atom;
 
-    static createMetadataAtom(atomName: string, type: string, data: ByteArray): Atom;
+    static createMetadataAtom(
+        atomName: string,
+        type: string,
+        data: ByteArray,
+    ): Atom;
 }

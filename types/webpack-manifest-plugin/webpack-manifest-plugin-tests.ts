@@ -5,10 +5,14 @@ import { Options, WebpackManifestPlugin } from "webpack-manifest-plugin";
 const options: Options = {
     basePath: "/src/",
     fileName: "manifest.json",
-    filter: file => file.isInitial,
+    filter: (file) => file.isInitial,
     generate: (seed, files, entries) =>
-        files.reduce((manifest, { name, path }) => (name ? { ...manifest, [name]: path } : manifest), seed),
-    map: file => {
+        files.reduce(
+            (manifest, { name, path }) =>
+                name ? { ...manifest, [name]: path } : manifest,
+            seed,
+        ),
+    map: (file) => {
         if (file.name) {
             file.name = path.join(path.dirname(file.path), file.name);
         }
@@ -19,7 +23,7 @@ const options: Options = {
     seed: {
         name: "Hello world",
     },
-    serialize: manifest => JSON.stringify(manifest, null, 2),
+    serialize: (manifest) => JSON.stringify(manifest, null, 2),
     sort: (a, b) => a.path.localeCompare(b.path),
     useEntryKeys: true,
     writeToFileEmit: false,

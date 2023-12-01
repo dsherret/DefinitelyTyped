@@ -1,6 +1,3 @@
-declare function nanoEqual(
-    a: any,
-    b: any,
-): boolean;
+declare function nanoEqual(a: any, b: any): boolean;
 
 export = nanoEqual;

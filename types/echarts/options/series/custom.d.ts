@@ -343,191 +343,197 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle
              */
-            itemStyle?: {
-                /**
-                 * color. Color is taken from
-                 * [option.color Palette](https://echarts.apache.org/en/option.html#color)
-                 * by default.
-                 *
-                 * > Color can be represented in RGB, for example `'rgb(128,
-                 * 128, 128)'`.
-                 * RGBA can be used when you need alpha channel, for example
-                 * `'rgba(128, 128, 128, 0.5)'`.
-                 * You may also use hexadecimal format, for example `'#ccc'`.
-                 * Gradient color and texture are also supported besides single
-                 * colors.
-                 * >
-                 * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.color
-                 */
-                color?: EChartOption.Color | undefined;
+            itemStyle?:
+                | {
+                      /**
+                       * color. Color is taken from
+                       * [option.color Palette](https://echarts.apache.org/en/option.html#color)
+                       * by default.
+                       *
+                       * > Color can be represented in RGB, for example `'rgb(128,
+                       * 128, 128)'`.
+                       * RGBA can be used when you need alpha channel, for example
+                       * `'rgba(128, 128, 128, 0.5)'`.
+                       * You may also use hexadecimal format, for example `'#ccc'`.
+                       * Gradient color and texture are also supported besides single
+                       * colors.
+                       * >
+                       * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.color
+                       */
+                      color?: EChartOption.Color | undefined;
 
-                /**
-                 * border color, whose format is similar to that of `color`.
-                 *
-                 * @default
-                 * "#000"
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderColor
-                 */
-                borderColor?: EChartOption.Color | undefined;
+                      /**
+                       * border color, whose format is similar to that of `color`.
+                       *
+                       * @default
+                       * "#000"
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderColor
+                       */
+                      borderColor?: EChartOption.Color | undefined;
 
-                /**
-                 * border width. No border when it is set to be 0.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderWidth
-                 */
-                borderWidth?: number | undefined;
+                      /**
+                       * border width. No border when it is set to be 0.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderWidth
+                       */
+                      borderWidth?: number | undefined;
 
-                /**
-                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                 * `'solid'` by default.
-                 *
-                 * @default
-                 * "solid"
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderType
-                 */
-                borderType?: string | undefined;
+                      /**
+                       * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                       * `'solid'` by default.
+                       *
+                       * @default
+                       * "solid"
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.borderType
+                       */
+                      borderType?: string | undefined;
 
-                /**
-                 * Size of shadow blur.
-                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                 * `shadowOffsetY` to set shadow to component.
-                 *
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Size of shadow blur.
+                       * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                       * `shadowOffsetY` to set shadow to component.
+                       *
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow color. Support same format as `color`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowColor
-                 */
-                shadowColor?: EChartOption.Color | undefined;
+                      /**
+                       * Shadow color. Support same format as `color`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowColor
+                       */
+                      shadowColor?: EChartOption.Color | undefined;
 
-                /**
-                 * Offset distance on the horizontal direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Offset distance on the horizontal direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Offset distance on the vertical direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Offset distance on the vertical direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Opacity of the component.
-                 * Supports value from 0 to 1, and the component will not be
-                 * drawn when set to 0.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.opacity
-                 */
-                opacity?: number | undefined;
-            } | undefined;
+                      /**
+                       * Opacity of the component.
+                       * Supports value from 0 to 1, and the component will not be
+                       * drawn when set to 0.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-custom.itemStyle.opacity
+                       */
+                      opacity?: number | undefined;
+                  }
+                | undefined;
 
             /**
              * @see https://echarts.apache.org/en/option.html#series-custom.emphasis
              */
-            emphasis?: {
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle
-                 */
-                itemStyle?: {
-                    /**
-                     * color.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.emphasis.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
+            emphasis?:
+                | {
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle
+                       */
+                      itemStyle?:
+                          | {
+                                /**
+                                 * color.
+                                 *
+                                 * > Color can be represented in RGB, for example `'rgb(128,
+                                 * 128, 128)'`.
+                                 * RGBA can be used when you need alpha channel, for example
+                                 * `'rgba(128, 128, 128, 0.5)'`.
+                                 * You may also use hexadecimal format, for example `'#ccc'`.
+                                 * Gradient color and texture are also supported besides
+                                 * single colors.
+                                 * >
+                                 * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.emphasis.itemStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.color
+                                 */
+                                color?: EChartOption.Color | undefined;
 
-                    /**
-                     * border color, whose format is similar to that of `color`.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderColor
-                     */
-                    borderColor?: EChartOption.Color | undefined;
+                                /**
+                                 * border color, whose format is similar to that of `color`.
+                                 *
+                                 * @default
+                                 * "#000"
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderColor
+                                 */
+                                borderColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * border width. No border when it is set to be 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                                /**
+                                 * border width. No border when it is set to be 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderWidth
+                                 */
+                                borderWidth?: number | undefined;
 
-                    /**
-                     * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                     * `'solid'` by default.
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderType
-                     */
-                    borderType?: string | undefined;
+                                /**
+                                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                                 * `'solid'` by default.
+                                 *
+                                 * @default
+                                 * "solid"
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.borderType
+                                 */
+                                borderType?: string | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.emphasis.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                                /**
+                                 * Size of shadow blur.
+                                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                 * `shadowOffsetY` to set shadow to component.
+                                 *
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.emphasis.itemStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
+                                /**
+                                 * Shadow color. Support same format as `color`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowColor
+                                 */
+                                shadowColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                                /**
+                                 * Offset distance on the horizontal direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                                /**
+                                 * Offset distance on the vertical direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
-            } | undefined;
+                                /**
+                                 * Opacity of the component.
+                                 * Supports value from 0 to 1, and the component will not
+                                 * be drawn when set to 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-custom.emphasis.itemStyle.opacity
+                                 */
+                                opacity?: number | undefined;
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * `dimensions` can be used to define dimension info for `series.data`
@@ -950,191 +956,201 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle
                  */
-                itemStyle?: {
-                    /**
-                     * color.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
+                itemStyle?:
+                    | {
+                          /**
+                           * color.
+                           *
+                           * > Color can be represented in RGB, for example `'rgb(128,
+                           * 128, 128)'`.
+                           * RGBA can be used when you need alpha channel, for example
+                           * `'rgba(128, 128, 128, 0.5)'`.
+                           * You may also use hexadecimal format, for example `'#ccc'`.
+                           * Gradient color and texture are also supported besides
+                           * single colors.
+                           * >
+                           * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.itemStyle)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.color
+                           */
+                          color?: EChartOption.Color | undefined;
 
-                    /**
-                     * border color, whose format is similar to that of `color`.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderColor
-                     */
-                    borderColor?: EChartOption.Color | undefined;
+                          /**
+                           * border color, whose format is similar to that of `color`.
+                           *
+                           * @default
+                           * "#000"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderColor
+                           */
+                          borderColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * border width. No border when it is set to be 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                          /**
+                           * border width. No border when it is set to be 0.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderWidth
+                           */
+                          borderWidth?: number | undefined;
 
-                    /**
-                     * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                     * `'solid'` by default.
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderType
-                     */
-                    borderType?: string | undefined;
+                          /**
+                           * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                           * `'solid'` by default.
+                           *
+                           * @default
+                           * "solid"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.borderType
+                           */
+                          borderType?: string | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Size of shadow blur.
+                           * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                           * `shadowOffsetY` to set shadow to component.
+                           *
+                           * For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.itemStyle)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
+                          /**
+                           * Shadow color. Support same format as `color`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowColor
+                           */
+                          shadowColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * Offset distance on the horizontal direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Offset distance on the vertical direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
+                          /**
+                           * Opacity of the component.
+                           * Supports value from 0 to 1, and the component will not
+                           * be drawn when set to 0.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.itemStyle.opacity
+                           */
+                          opacity?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis
                  */
-                emphasis?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle
-                     */
-                    itemStyle?: {
-                        /**
-                         * color.
-                         *
-                         * > Color can be represented in RGB, for example `'rgb(128,
-                         * 128, 128)'`.
-                         * RGBA can be used when you need alpha channel, for
-                         * example `'rgba(128, 128, 128, 0.5)'`.
-                         * You may also use hexadecimal format, for example
-                         * `'#ccc'`.
-                         * Gradient color and texture are also supported besides
-                         * single colors.
-                         * >
-                         * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.emphasis.itemStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.color
-                         */
-                        color?: EChartOption.Color | undefined;
+                emphasis?:
+                    | {
+                          /**
+                           * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle
+                           */
+                          itemStyle?:
+                              | {
+                                    /**
+                                     * color.
+                                     *
+                                     * > Color can be represented in RGB, for example `'rgb(128,
+                                     * 128, 128)'`.
+                                     * RGBA can be used when you need alpha channel, for
+                                     * example `'rgba(128, 128, 128, 0.5)'`.
+                                     * You may also use hexadecimal format, for example
+                                     * `'#ccc'`.
+                                     * Gradient color and texture are also supported besides
+                                     * single colors.
+                                     * >
+                                     * > [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.emphasis.itemStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.color
+                                     */
+                                    color?: EChartOption.Color | undefined;
 
-                        /**
-                         * border color, whose format is similar to that of
-                         * `color`.
-                         *
-                         * @default
-                         * "#000"
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderColor
-                         */
-                        borderColor?: EChartOption.Color | undefined;
+                                    /**
+                                     * border color, whose format is similar to that of
+                                     * `color`.
+                                     *
+                                     * @default
+                                     * "#000"
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderColor
+                                     */
+                                    borderColor?:
+                                        | EChartOption.Color
+                                        | undefined;
 
-                        /**
-                         * border width. No border when it is set to be 0.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderWidth
-                         */
-                        borderWidth?: number | undefined;
+                                    /**
+                                     * border width. No border when it is set to be 0.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderWidth
+                                     */
+                                    borderWidth?: number | undefined;
 
-                        /**
-                         * Border type, which can be `'solid'`, `'dashed'`,
-                         * or `'dotted'`. `'solid'` by default.
-                         *
-                         * @default
-                         * "solid"
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderType
-                         */
-                        borderType?: string | undefined;
+                                    /**
+                                     * Border type, which can be `'solid'`, `'dashed'`,
+                                     * or `'dotted'`. `'solid'` by default.
+                                     *
+                                     * @default
+                                     * "solid"
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.borderType
+                                     */
+                                    borderType?: string | undefined;
 
-                        /**
-                         * Size of shadow blur.
-                         * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                         * `shadowOffsetY` to set shadow to component.
-                         *
-                         * For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.emphasis.itemStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Size of shadow blur.
+                                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                     * `shadowOffsetY` to set shadow to component.
+                                     *
+                                     * For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.data.emphasis.itemStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow color. Support same format as `color`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowColor
-                         */
-                        shadowColor?: EChartOption.Color | undefined;
+                                    /**
+                                     * Shadow color. Support same format as `color`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowColor
+                                     */
+                                    shadowColor?:
+                                        | EChartOption.Color
+                                        | undefined;
 
-                        /**
-                         * Offset distance on the horizontal direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Offset distance on the horizontal direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Offset distance on the vertical direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Offset distance on the vertical direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Opacity of the component.
-                         * Supports value from 0 to 1, and the component will
-                         * not be drawn when set to 0.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.opacity
-                         */
-                        opacity?: number | undefined;
-                    } | undefined;
-                } | undefined;
+                                    /**
+                                     * Opacity of the component.
+                                     * Supports value from 0 to 1, and the component will
+                                     * not be drawn when set to 0.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-custom.data.emphasis.itemStyle.opacity
+                                     */
+                                    opacity?: number | undefined;
+                                }
+                              | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * tooltip settings in this series data.
@@ -1206,7 +1222,10 @@ declare namespace echarts {
              * @see https://echarts.apache.org/en/option.html#series-custom.renderItem
              */
             interface RenderItem {
-                (params: RenderItemParams, api: RenderItemApi):
+                (
+                    params: RenderItemParams,
+                    api: RenderItemApi,
+                ):
                     | RenderItemReturnGroup
                     | RenderItemReturnPath
                     | RenderItemReturnImage
@@ -1465,7 +1484,13 @@ declare namespace echarts {
              * coordSys is variable by different types of coordinate systems.
              */
             interface CoordSys {
-                type?: "cartesian2d" | "calendar" | "geo" | "polar" | "singleAxis" | undefined;
+                type?:
+                    | "cartesian2d"
+                    | "calendar"
+                    | "geo"
+                    | "polar"
+                    | "singleAxis"
+                    | undefined;
 
                 /**
                  * x of grid rect, calendar rect, geo rect or singleAxis rect
@@ -2176,101 +2201,103 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape
                  */
-                shape?: {
-                    /**
-                     * [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)
-                     * .
-                     *
-                     * For example, `'M0,0 L0,-20 L30,-20 C42,-20 38,-1
-                     * 50,-1 L70,-1 L70,0 Z'`。
-                     *
-                     * If
-                     * [width](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width)
-                     * ,
-                     * [height](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height)
-                     * ,
-                     * [x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x)
-                     * and
-                     * [y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y)
-                     * specified, `pathData` will be transformed to fit
-                     * the defined rect.
-                     * If they are not specified, do not do that.
-                     *
-                     * [layout](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.layout)
-                     * can be used to specify the transform strategy.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.pathData
-                     */
-                    pathData?: string | undefined;
+                shape?:
+                    | {
+                          /**
+                           * [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)
+                           * .
+                           *
+                           * For example, `'M0,0 L0,-20 L30,-20 C42,-20 38,-1
+                           * 50,-1 L70,-1 L70,0 Z'`。
+                           *
+                           * If
+                           * [width](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width)
+                           * ,
+                           * [height](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height)
+                           * ,
+                           * [x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x)
+                           * and
+                           * [y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y)
+                           * specified, `pathData` will be transformed to fit
+                           * the defined rect.
+                           * If they are not specified, do not do that.
+                           *
+                           * [layout](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.layout)
+                           * can be used to specify the transform strategy.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.pathData
+                           */
+                          pathData?: string | undefined;
 
-                    /**
-                     * Alias of
-                     * [pathData](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.pathData)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.d
-                     */
-                    d?: string | undefined;
+                          /**
+                           * Alias of
+                           * [pathData](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.pathData)
+                           * .
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.d
+                           */
+                          d?: string | undefined;
 
-                    /**
-                     * If
-                     * [width](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width)
-                     * ,
-                     * [height](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height)
-                     * ,
-                     * [x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x)
-                     * and
-                     * [y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y)
-                     * specified, `pathData` will be transformed to fit
-                     * the defined rect.
-                     *
-                     * `layout` can be used to specify the transform strategy.
-                     *
-                     * Optional value:
-                     *
-                     * + `'center'`: Keep aspect ratio, put the path in
-                     * the center of the rect, expand as far as possible
-                     * but never overflow.
-                     * + `'cover'`: Transform the path according to the
-                     * aspect ratio of the rect, fill the rect and do not
-                     * overflow.
-                     *
-                     * @default
-                     * "center"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.layout
-                     */
-                    layout?: string | undefined;
+                          /**
+                           * If
+                           * [width](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width)
+                           * ,
+                           * [height](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height)
+                           * ,
+                           * [x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x)
+                           * and
+                           * [y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y)
+                           * specified, `pathData` will be transformed to fit
+                           * the defined rect.
+                           *
+                           * `layout` can be used to specify the transform strategy.
+                           *
+                           * Optional value:
+                           *
+                           * + `'center'`: Keep aspect ratio, put the path in
+                           * the center of the rect, expand as far as possible
+                           * but never overflow.
+                           * + `'cover'`: Transform the path according to the
+                           * aspect ratio of the rect, fill the rect and do not
+                           * overflow.
+                           *
+                           * @default
+                           * "center"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.layout
+                           */
+                          layout?: string | undefined;
 
-                    /**
-                     * The x value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x
-                     */
-                    x?: number | undefined;
+                          /**
+                           * The x value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.x
+                           */
+                          x?: number | undefined;
 
-                    /**
-                     * The y value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y
-                     */
-                    y?: number | undefined;
+                          /**
+                           * The y value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.y
+                           */
+                          y?: number | undefined;
 
-                    /**
-                     * The width of the shape of the element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width
-                     */
-                    width?: number | undefined;
+                          /**
+                           * The width of the shape of the element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.width
+                           */
+                          width?: number | undefined;
 
-                    /**
-                     * The height of the shape of the element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height
-                     */
-                    height?: number | undefined;
-                } | undefined;
+                          /**
+                           * The height of the shape of the element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.shape.height
+                           */
+                          height?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -2297,66 +2324,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_path.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -2628,127 +2657,129 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style
                  */
-                style?: {
-                    /**
-                     * Specify contant of the image, can be a URL, or
-                     * [dataURI](https://tools.ietf.org/html/rfc2397)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.image
-                     */
-                    image?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Specify contant of the image, can be a URL, or
+                           * [dataURI](https://tools.ietf.org/html/rfc2397)
+                           * .
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.image
+                           */
+                          image?: string | undefined;
 
-                    /**
-                     * The x value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.x
-                     */
-                    x?: number | undefined;
+                          /**
+                           * The x value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.x
+                           */
+                          x?: number | undefined;
 
-                    /**
-                     * The y value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.y
-                     */
-                    y?: number | undefined;
+                          /**
+                           * The y value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.y
+                           */
+                          y?: number | undefined;
 
-                    /**
-                     * The width of the shape of the element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.width
-                     */
-                    width?: number | undefined;
+                          /**
+                           * The width of the shape of the element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.width
+                           */
+                          width?: number | undefined;
 
-                    /**
-                     * The height of the shape of the element.
-                     *
-                     * More attributes in `style` (for example,
-                     * [rich text](https://echarts.apache.org/en/tutorial.html#Rich%20Text)
-                     * ), see the `style` related attributes in
-                     * [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable)
-                     * .
-                     *
-                     * Notice, the attribute names of the `style` of graphic
-                     * elements is derived from `zrender`, which may be
-                     * different from the attribute names in `echarts label`,
-                     * `echarts itemStyle`, etc.,
-                     * although they have the same meaning. For example:
-                     *
-                     * + [itemStyle.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.fill`
-                     * + [itemStyle.borderColor](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.stroke`
-                     * + [label.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.textFill`
-                     * + [label.textBorderColor](https://echarts.apache.org/en/option.html#series-scatter.label.textBorderColor)
-                     * => `style.textStroke`
-                     * + ...
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.height
-                     */
-                    height?: number | undefined;
+                          /**
+                           * The height of the shape of the element.
+                           *
+                           * More attributes in `style` (for example,
+                           * [rich text](https://echarts.apache.org/en/tutorial.html#Rich%20Text)
+                           * ), see the `style` related attributes in
+                           * [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable)
+                           * .
+                           *
+                           * Notice, the attribute names of the `style` of graphic
+                           * elements is derived from `zrender`, which may be
+                           * different from the attribute names in `echarts label`,
+                           * `echarts itemStyle`, etc.,
+                           * although they have the same meaning. For example:
+                           *
+                           * + [itemStyle.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.fill`
+                           * + [itemStyle.borderColor](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.stroke`
+                           * + [label.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.textFill`
+                           * + [label.textBorderColor](https://echarts.apache.org/en/option.html#series-scatter.label.textBorderColor)
+                           * => `style.textStroke`
+                           * + ...
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.height
+                           */
+                          height?: number | undefined;
 
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.fill
-                     */
-                    fill?: string | undefined;
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_image.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -3022,153 +3053,155 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style
                  */
-                style?: {
-                    /**
-                     * Text content. `\n` can be used as a line break.
-                     *
-                     * @default
-                     * ''
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.text
-                     */
-                    text?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Text content. `\n` can be used as a line break.
+                           *
+                           * @default
+                           * ''
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.text
+                           */
+                          text?: string | undefined;
 
-                    /**
-                     * The x value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.x
-                     */
-                    x?: number | undefined;
+                          /**
+                           * The x value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.x
+                           */
+                          x?: number | undefined;
 
-                    /**
-                     * The y value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.y
-                     */
-                    y?: number | undefined;
+                          /**
+                           * The y value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.y
+                           */
+                          y?: number | undefined;
 
-                    /**
-                     * Font size, font type, font weight, font color, follow
-                     * the form of
-                     * [css font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)
-                     * .
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.renderItem.return_text.style)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.font
-                     */
-                    font?: string | undefined;
+                          /**
+                           * Font size, font type, font weight, font color, follow
+                           * the form of
+                           * [css font](https://developer.mozilla.org/en-US/docs/Web/CSS/font)
+                           * .
+                           *
+                           * For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-custom.custom.renderItem.return_text.style)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.font
+                           */
+                          font?: string | undefined;
 
-                    /**
-                     * Text horizontal alignment.
-                     * Optional values: `'left'`, `'center'`, `'right'`.
-                     *
-                     * `'left'` means the left side of the text block is
-                     * specified by the
-                     * [style.x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.x)
-                     * , while `'right'` means the right side of the text
-                     * block is specified by
-                     * [style.y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.y)
-                     * .
-                     *
-                     * @default
-                     * "left"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.textAlign
-                     */
-                    textAlign?: string | undefined;
+                          /**
+                           * Text horizontal alignment.
+                           * Optional values: `'left'`, `'center'`, `'right'`.
+                           *
+                           * `'left'` means the left side of the text block is
+                           * specified by the
+                           * [style.x](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.x)
+                           * , while `'right'` means the right side of the text
+                           * block is specified by
+                           * [style.y](https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.y)
+                           * .
+                           *
+                           * @default
+                           * "left"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.textAlign
+                           */
+                          textAlign?: string | undefined;
 
-                    /**
-                     * Text vertical alignment.
-                     * Optional values: `'top'`, `'middle'`, `'bottom'`.
-                     *
-                     * More attributes in `style` (for example,
-                     * [rich text](https://echarts.apache.org/en/tutorial.html#Rich%20Text)
-                     * ), see the `style` related attributes in
-                     * [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable)
-                     * .
-                     *
-                     * Notice, the attribute names of the `style` of graphic
-                     * elements is derived from `zrender`, which may be
-                     * different from the attribute names in `echarts label`,
-                     * `echarts itemStyle`, etc.,
-                     * although they have the same meaning. For example:
-                     *
-                     * + [itemStyle.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.fill`
-                     * + [itemStyle.borderColor](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.stroke`
-                     * + [label.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
-                     * => `style.textFill`
-                     * + [label.textBorderColor](https://echarts.apache.org/en/option.html#series-scatter.label.textBorderColor)
-                     * => `style.textStroke`
-                     * + ...
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.textVerticalAlign
-                     */
-                    textVerticalAlign?: string | undefined;
+                          /**
+                           * Text vertical alignment.
+                           * Optional values: `'top'`, `'middle'`, `'bottom'`.
+                           *
+                           * More attributes in `style` (for example,
+                           * [rich text](https://echarts.apache.org/en/tutorial.html#Rich%20Text)
+                           * ), see the `style` related attributes in
+                           * [zrender/graphic/Displayable](https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable)
+                           * .
+                           *
+                           * Notice, the attribute names of the `style` of graphic
+                           * elements is derived from `zrender`, which may be
+                           * different from the attribute names in `echarts label`,
+                           * `echarts itemStyle`, etc.,
+                           * although they have the same meaning. For example:
+                           *
+                           * + [itemStyle.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.fill`
+                           * + [itemStyle.borderColor](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.stroke`
+                           * + [label.color](https://echarts.apache.org/en/option.html#series-scatter.label.color)
+                           * => `style.textFill`
+                           * + [label.textBorderColor](https://echarts.apache.org/en/option.html#series-scatter.label.textBorderColor)
+                           * => `style.textStroke`
+                           * + ...
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.textVerticalAlign
+                           */
+                          textVerticalAlign?: string | undefined;
 
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.fill
-                     */
-                    fill?: string | undefined;
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_text.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -3442,54 +3475,56 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape
                  */
-                shape?: {
-                    /**
-                     * The x value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.x
-                     */
-                    x?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * The x value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.x
+                           */
+                          x?: number | undefined;
 
-                    /**
-                     * The y value of the left-top corner of the element
-                     * in the coordinate system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.y
-                     */
-                    y?: number | undefined;
+                          /**
+                           * The y value of the left-top corner of the element
+                           * in the coordinate system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.y
+                           */
+                          y?: number | undefined;
 
-                    /**
-                     * The width of the shape of the element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.width
-                     */
-                    width?: number | undefined;
+                          /**
+                           * The width of the shape of the element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.width
+                           */
+                          width?: number | undefined;
 
-                    /**
-                     * The height of the shape of the element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.height
-                     */
-                    height?: number | undefined;
+                          /**
+                           * The height of the shape of the element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.height
+                           */
+                          height?: number | undefined;
 
-                    /**
-                     * Specify border radius of the rectangular here.
-                     * Generally, `r` should be `[topLeftRadius, topRightRadius,
-                     * BottomRightRadius, bottomLeftRadius]`, where each
-                     * item is a number.
-                     *
-                     * Abbreviation is enabled, for example:
-                     *
-                     * + `r`: `1` means `[1, 1, 1, 1]`
-                     * + `r`: `[1]` means `[1, 1, 1, 1]`
-                     * + `r`: `[1, 2]` means `[1, 2, 1, 2]`
-                     * + `r`: `[1, 2, 3]` means `[1, 2, 3, 2]`
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.r
-                     */
-                    r?: any[] | undefined;
-                } | undefined;
+                          /**
+                           * Specify border radius of the rectangular here.
+                           * Generally, `r` should be `[topLeftRadius, topRightRadius,
+                           * BottomRightRadius, bottomLeftRadius]`, where each
+                           * item is a number.
+                           *
+                           * Abbreviation is enabled, for example:
+                           *
+                           * + `r`: `1` means `[1, 1, 1, 1]`
+                           * + `r`: `[1]` means `[1, 1, 1, 1]`
+                           * + `r`: `[1, 2]` means `[1, 2, 1, 2]`
+                           * + `r`: `[1, 2, 3]` means `[1, 2, 3, 2]`
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.shape.r
+                           */
+                          r?: any[] | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -3516,66 +3551,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_rect.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -3849,30 +3886,32 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape
                  */
-                shape?: {
-                    /**
-                     * The x value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.cx
-                     */
-                    cx?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * The x value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.cx
+                           */
+                          cx?: number | undefined;
 
-                    /**
-                     * The y value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.cy
-                     */
-                    cy?: number | undefined;
+                          /**
+                           * The y value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.cy
+                           */
+                          cy?: number | undefined;
 
-                    /**
-                     * Outside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.r
-                     */
-                    r?: number | undefined;
-                } | undefined;
+                          /**
+                           * Outside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.shape.r
+                           */
+                          r?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -3899,66 +3938,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_circle.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -4232,37 +4273,39 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape
                  */
-                shape?: {
-                    /**
-                     * The x value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.cx
-                     */
-                    cx?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * The x value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.cx
+                           */
+                          cx?: number | undefined;
 
-                    /**
-                     * The y value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.cy
-                     */
-                    cy?: number | undefined;
+                          /**
+                           * The y value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.cy
+                           */
+                          cy?: number | undefined;
 
-                    /**
-                     * Outside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.r
-                     */
-                    r?: number | undefined;
+                          /**
+                           * Outside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.r
+                           */
+                          r?: number | undefined;
 
-                    /**
-                     * Inside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.r0
-                     */
-                    r0?: number | undefined;
-                } | undefined;
+                          /**
+                           * Inside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.shape.r0
+                           */
+                          r0?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -4289,66 +4332,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_ring.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -4622,62 +4667,64 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape
                  */
-                shape?: {
-                    /**
-                     * The x value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.cx
-                     */
-                    cx?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * The x value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.cx
+                           */
+                          cx?: number | undefined;
 
-                    /**
-                     * The y value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.cy
-                     */
-                    cy?: number | undefined;
+                          /**
+                           * The y value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.cy
+                           */
+                          cy?: number | undefined;
 
-                    /**
-                     * Outside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.r
-                     */
-                    r?: number | undefined;
+                          /**
+                           * Outside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.r
+                           */
+                          r?: number | undefined;
 
-                    /**
-                     * Inside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.r0
-                     */
-                    r0?: number | undefined;
+                          /**
+                           * Inside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.r0
+                           */
+                          r0?: number | undefined;
 
-                    /**
-                     * start angle, in radian.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.startAngle
-                     */
-                    startAngle?: number | undefined;
+                          /**
+                           * start angle, in radian.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.startAngle
+                           */
+                          startAngle?: number | undefined;
 
-                    /**
-                     * end anble, in radian.
-                     *
-                     * @default
-                     * "Math.PI * 2"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.endAngle
-                     */
-                    endAngle?: number | undefined;
+                          /**
+                           * end anble, in radian.
+                           *
+                           * @default
+                           * "Math.PI * 2"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.endAngle
+                           */
+                          endAngle?: number | undefined;
 
-                    /**
-                     * Whether draw clockwise.
-                     *
-                     * @default
-                     * "true"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.clockwise
-                     */
-                    clockwise?: boolean | undefined;
-                } | undefined;
+                          /**
+                           * Whether draw clockwise.
+                           *
+                           * @default
+                           * "true"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.shape.clockwise
+                           */
+                          clockwise?: boolean | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -4704,66 +4751,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_sector.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -5037,62 +5086,64 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape
                  */
-                shape?: {
-                    /**
-                     * The x value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.cx
-                     */
-                    cx?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * The x value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.cx
+                           */
+                          cx?: number | undefined;
 
-                    /**
-                     * The y value of the center of the element in the coordinate
-                     * system of its parent.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.cy
-                     */
-                    cy?: number | undefined;
+                          /**
+                           * The y value of the center of the element in the coordinate
+                           * system of its parent.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.cy
+                           */
+                          cy?: number | undefined;
 
-                    /**
-                     * Outside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.r
-                     */
-                    r?: number | undefined;
+                          /**
+                           * Outside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.r
+                           */
+                          r?: number | undefined;
 
-                    /**
-                     * Inside radius.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.r0
-                     */
-                    r0?: number | undefined;
+                          /**
+                           * Inside radius.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.r0
+                           */
+                          r0?: number | undefined;
 
-                    /**
-                     * start angle, in radian.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.startAngle
-                     */
-                    startAngle?: number | undefined;
+                          /**
+                           * start angle, in radian.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.startAngle
+                           */
+                          startAngle?: number | undefined;
 
-                    /**
-                     * end anble, in radian.
-                     *
-                     * @default
-                     * "Math.PI * 2"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.endAngle
-                     */
-                    endAngle?: number | undefined;
+                          /**
+                           * end anble, in radian.
+                           *
+                           * @default
+                           * "Math.PI * 2"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.endAngle
+                           */
+                          endAngle?: number | undefined;
 
-                    /**
-                     * Whether draw clockwise.
-                     *
-                     * @default
-                     * "true"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.clockwise
-                     */
-                    clockwise?: boolean | undefined;
-                } | undefined;
+                          /**
+                           * Whether draw clockwise.
+                           *
+                           * @default
+                           * "true"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.shape.clockwise
+                           */
+                          clockwise?: boolean | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -5119,68 +5170,70 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @default
+                           * "#000"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @default
-                     * 1
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @default
+                           * 1
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_arc.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -5454,40 +5507,42 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape
                  */
-                shape?: {
-                    /**
-                     * A list of points, which defines the shape, like `[[22,
-                     * 44], [44, 55], [11, 44], ...]`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.points
-                     */
-                    points?: any[] | undefined;
+                shape?:
+                    | {
+                          /**
+                           * A list of points, which defines the shape, like `[[22,
+                           * 44], [44, 55], [11, 44], ...]`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.points
+                           */
+                          points?: any[] | undefined;
 
-                    /**
-                     * Whether smooth the line.
-                     *
-                     * + If the value is number, bezier interpolation is
-                     * used, and the value specified the level of smooth,
-                     * which is in the range of `[0, 1]`.
-                     * + If the value is `'spline'`, Catmull-Rom spline
-                     * interpolation is used.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.smooth
-                     */
-                    smooth?: number | string | undefined;
+                          /**
+                           * Whether smooth the line.
+                           *
+                           * + If the value is number, bezier interpolation is
+                           * used, and the value specified the level of smooth,
+                           * which is in the range of `[0, 1]`.
+                           * + If the value is `'spline'`, Catmull-Rom spline
+                           * interpolation is used.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.smooth
+                           */
+                          smooth?: number | string | undefined;
 
-                    /**
-                     * Whether prevent the smooth process cause the line
-                     * out of the bounding box.
-                     *
-                     * Only works when `smooth` is `number` (bezier smooth).
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.smoothConstraint
-                     */
-                    smoothConstraint?: boolean | undefined;
-                } | undefined;
+                          /**
+                           * Whether prevent the smooth process cause the line
+                           * out of the bounding box.
+                           *
+                           * Only works when `smooth` is `number` (bezier smooth).
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.shape.smoothConstraint
+                           */
+                          smoothConstraint?: boolean | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -5514,66 +5569,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polygon.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -5847,40 +5904,42 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape
                  */
-                shape?: {
-                    /**
-                     * A list of points, which defines the shape, like `[[22,
-                     * 44], [44, 55], [11, 44], ...]`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.points
-                     */
-                    points?: any[] | undefined;
+                shape?:
+                    | {
+                          /**
+                           * A list of points, which defines the shape, like `[[22,
+                           * 44], [44, 55], [11, 44], ...]`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.points
+                           */
+                          points?: any[] | undefined;
 
-                    /**
-                     * Whether smooth the line.
-                     *
-                     * + If the value is number, bezier interpolation is
-                     * used, and the value specified the level of smooth,
-                     * which is in the range of `[0, 1]`.
-                     * + If the value is `'spline'`, Catmull-Rom spline
-                     * interpolation is used.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.smooth
-                     */
-                    smooth?: number | string | undefined;
+                          /**
+                           * Whether smooth the line.
+                           *
+                           * + If the value is number, bezier interpolation is
+                           * used, and the value specified the level of smooth,
+                           * which is in the range of `[0, 1]`.
+                           * + If the value is `'spline'`, Catmull-Rom spline
+                           * interpolation is used.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.smooth
+                           */
+                          smooth?: number | string | undefined;
 
-                    /**
-                     * Whether prevent the smooth process cause the line
-                     * out of the bounding box.
-                     *
-                     * Only works when `smooth` is `number` (bezier smooth).
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.smoothConstraint
-                     */
-                    smoothConstraint?: boolean | undefined;
-                } | undefined;
+                          /**
+                           * Whether prevent the smooth process cause the line
+                           * out of the bounding box.
+                           *
+                           * Only works when `smooth` is `number` (bezier smooth).
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.shape.smoothConstraint
+                           */
+                          smoothConstraint?: boolean | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -5907,68 +5966,70 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @default
+                           * "#000"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @default
-                     * 5
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @default
+                           * 5
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_polyline.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -6242,46 +6303,48 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape
                  */
-                shape?: {
-                    /**
-                     * x value of the start point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.x1
-                     */
-                    x1?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * x value of the start point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.x1
+                           */
+                          x1?: number | undefined;
 
-                    /**
-                     * y value of the start point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.y1
-                     */
-                    y1?: number | undefined;
+                          /**
+                           * y value of the start point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.y1
+                           */
+                          y1?: number | undefined;
 
-                    /**
-                     * x value of the end point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.x2
-                     */
-                    x2?: number | undefined;
+                          /**
+                           * x value of the end point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.x2
+                           */
+                          x2?: number | undefined;
 
-                    /**
-                     * y value of the end point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.y2
-                     */
-                    y2?: number | undefined;
+                          /**
+                           * y value of the end point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.y2
+                           */
+                          y2?: number | undefined;
 
-                    /**
-                     * Specify the percentage of drawing, useful in animation.
-                     *
-                     * Value range: \[0, 1\].
-                     *
-                     * @default
-                     * 1
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.percent
-                     */
-                    percent?: number | undefined;
-                } | undefined;
+                          /**
+                           * Specify the percentage of drawing, useful in animation.
+                           *
+                           * Value range: \[0, 1\].
+                           *
+                           * @default
+                           * 1
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.shape.percent
+                           */
+                          percent?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -6308,68 +6371,70 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @default
+                           * "#000"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @default
-                     * 5
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @default
+                           * 5
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_line.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure
@@ -6643,82 +6708,84 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape
                  */
-                shape?: {
-                    /**
-                     * x value of the start point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.x1
-                     */
-                    x1?: number | undefined;
+                shape?:
+                    | {
+                          /**
+                           * x value of the start point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.x1
+                           */
+                          x1?: number | undefined;
 
-                    /**
-                     * y value of the start point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.y1
-                     */
-                    y1?: number | undefined;
+                          /**
+                           * y value of the start point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.y1
+                           */
+                          y1?: number | undefined;
 
-                    /**
-                     * x value of the end point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.x2
-                     */
-                    x2?: number | undefined;
+                          /**
+                           * x value of the end point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.x2
+                           */
+                          x2?: number | undefined;
 
-                    /**
-                     * y value of the end point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.y2
-                     */
-                    y2?: number | undefined;
+                          /**
+                           * y value of the end point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.y2
+                           */
+                          y2?: number | undefined;
 
-                    /**
-                     * x of control point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpx1
-                     */
-                    cpx1?: number | undefined;
+                          /**
+                           * x of control point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpx1
+                           */
+                          cpx1?: number | undefined;
 
-                    /**
-                     * y of control point.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpy1
-                     */
-                    cpy1?: number | undefined;
+                          /**
+                           * y of control point.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpy1
+                           */
+                          cpy1?: number | undefined;
 
-                    /**
-                     * x of the second control point.
-                     * If specified, cubic bezier is used.
-                     *
-                     * If both `cpx2` and `cpy2` are not set, quatratic
-                     * bezier is used.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpx2
-                     */
-                    cpx2?: number | undefined;
+                          /**
+                           * x of the second control point.
+                           * If specified, cubic bezier is used.
+                           *
+                           * If both `cpx2` and `cpy2` are not set, quatratic
+                           * bezier is used.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpx2
+                           */
+                          cpx2?: number | undefined;
 
-                    /**
-                     * y of the second control point.
-                     * If specified, cubic bezier is used.
-                     *
-                     * If both `cpx2` and `cpy2` are not set, quatratic
-                     * bezier is used.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpy2
-                     */
-                    cpy2?: number | undefined;
+                          /**
+                           * y of the second control point.
+                           * If specified, cubic bezier is used.
+                           *
+                           * If both `cpx2` and `cpy2` are not set, quatratic
+                           * bezier is used.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.cpy2
+                           */
+                          cpy2?: number | undefined;
 
-                    /**
-                     * Specify the percentage of drawing, useful in animation.
-                     *
-                     * Value range: \[0, 1\].
-                     *
-                     * @default
-                     * 1
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.percent
-                     */
-                    percent?: number | undefined;
-                } | undefined;
+                          /**
+                           * Specify the percentage of drawing, useful in animation.
+                           *
+                           * Value range: \[0, 1\].
+                           *
+                           * @default
+                           * 1
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.shape.percent
+                           */
+                          percent?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * More attributes in `style` (for example,
@@ -6745,66 +6812,68 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style
                  */
-                style?: {
-                    /**
-                     * Color filled in this element.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.fill
-                     */
-                    fill?: string | undefined;
+                style?:
+                    | {
+                          /**
+                           * Color filled in this element.
+                           *
+                           * @default
+                           * '#000'
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.fill
+                           */
+                          fill?: string | undefined;
 
-                    /**
-                     * Color of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.stroke
-                     */
-                    stroke?: string | undefined;
+                          /**
+                           * Color of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.stroke
+                           */
+                          stroke?: string | undefined;
 
-                    /**
-                     * Width of stroke.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.lineWidth
-                     */
-                    lineWidth?: number | undefined;
+                          /**
+                           * Width of stroke.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.lineWidth
+                           */
+                          lineWidth?: number | undefined;
 
-                    /**
-                     * Width of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Width of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * X offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * X offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Y offset of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Y offset of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * color of shadow.
-                     *
-                     * @default
-                     * "undefined"
-                     * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowColor
-                     */
-                    shadowColor?: number | undefined;
-                } | undefined;
+                          /**
+                           * color of shadow.
+                           *
+                           * @default
+                           * "undefined"
+                           * @see https://echarts.apache.org/en/option.html#series-custom.renderItem.return_bezierCurve.style.shadowColor
+                           */
+                          shadowColor?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * Empahsis style of the graphic element, whose structure

@@ -7,7 +7,8 @@ declare module "react-with-styles" {
     }
 }
 
-const Component: React.FC<WithStylesProps> = ({ styles }) => React.createElement("div", { ...css(styles.wrapper) });
+const Component: React.FC<WithStylesProps> = ({ styles }) =>
+    React.createElement("div", { ...css(styles.wrapper) });
 
 const StyledComponent = withStyles(({ unit }) => ({
     wrapper: { borderRadius: unit },

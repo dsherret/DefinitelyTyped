@@ -42,7 +42,17 @@ const {
     statics,
 } = process;
 
-const { Graph, Element, Edge, Vertex, VertexProperty, Path, Property, Long, toLong } = structure;
+const {
+    Graph,
+    Element,
+    Edge,
+    Vertex,
+    VertexProperty,
+    Path,
+    Property,
+    Long,
+    toLong,
+} = structure;
 
 const { GraphSONReader, GraphSONWriter } = structure.io;
 
@@ -56,7 +66,10 @@ function constructorTests() {
     const client = new Client("test");
     const resultSet = new ResultSet([1, 2, 3]);
     const authenticator = new Authenticator();
-    const plainTextSaslAuthenticator = new PlainTextSaslAuthenticator("gremlin", "test");
+    const plainTextSaslAuthenticator = new PlainTextSaslAuthenticator(
+        "gremlin",
+        "test",
+    );
 
     remoteConnection.open();
     remoteConnection.submit(new Bytecode());
@@ -101,8 +114,16 @@ function processTests() {
     const traversalSideEffects = new TraversalSideEffects();
     const traversalStrategy = new TraversalStrategy();
     const traverser = new Traverser({});
-    const graphTraversal = new GraphTraversal(null, traversalStrategies, bytecode);
-    const graphTraversalSource = new GraphTraversalSource(null, traversalStrategies, bytecode);
+    const graphTraversal = new GraphTraversal(
+        null,
+        traversalStrategies,
+        bytecode,
+    );
+    const graphTraversalSource = new GraphTraversalSource(
+        null,
+        traversalStrategies,
+        bytecode,
+    );
     const transaction = new Transaction(graphTraversalSource);
     const translator = new Translator(graphTraversalSource);
     const translatorWithString = new Translator("g");
@@ -297,7 +318,7 @@ function dslTests() {
             if (!TestDSLTraversal._statics) {
                 // Should construct a proper statics object here that fits the return type
                 // ie. merge the newly defined DSL steps with the base Tinkerpop statics
-                TestDSLTraversal._statics = <TestDSLStatics> statics;
+                TestDSLTraversal._statics = <TestDSLStatics>statics;
             }
 
             return TestDSLTraversal._statics;

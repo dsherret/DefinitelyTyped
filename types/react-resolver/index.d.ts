@@ -1,9 +1,7 @@
 import { ComponentType, Factory, FunctionComponent } from "react";
 
 export interface Resolver {
-    resolve<P>(
-        factory: Factory<P>,
-    ): Promise<{
+    resolve<P>(factory: Factory<P>): Promise<{
         data: any;
         Resolved: FunctionComponent<P>;
     }>;
@@ -49,14 +47,12 @@ export function resolve<
     OwnProps,
     ResolvableProps = { [x: string]: any },
     MoreProps = { [x: string]: any },
->(
-    resolversMap: {
-        [K in keyof ResolvableProps]: ResolveFn<
-            OwnProps & MoreProps,
-            ResolvableProps[K]
-        >;
-    },
-): (
+>(resolversMap: {
+    [K in keyof ResolvableProps]: ResolveFn<
+        OwnProps & MoreProps,
+        ResolvableProps[K]
+    >;
+}): (
     component: ComponentType<
         OwnProps & { [K in keyof ResolvableProps]?: ResolvableProps[K] }
     >,

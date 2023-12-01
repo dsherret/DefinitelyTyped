@@ -27,50 +27,65 @@ export interface ResizeCallbackData {
     handle: ResizeHandle;
 }
 
-export type ResizableProps =
-    & {
-        children?: React.ReactNode;
-        className?: string | undefined;
-        handle?:
-            | React.ReactNode
-            | ((resizeHandle: ResizeHandle, ref: React.RefObject<any>) => React.ReactNode)
-            | undefined;
-        handleSize?: [number, number] | undefined;
-        lockAspectRatio?: boolean | undefined;
-        minConstraints?: [width: number, height: number] | undefined;
-        maxConstraints?: [width: number, height: number] | undefined;
-        onResizeStop?: ((e: React.SyntheticEvent, data: ResizeCallbackData) => any) | undefined;
-        onResizeStart?: ((e: React.SyntheticEvent, data: ResizeCallbackData) => any) | undefined;
-        onResize?: ((e: React.SyntheticEvent, data: ResizeCallbackData) => any) | undefined;
-        draggableOpts?: any;
-        resizeHandles?: ResizeHandle[] | undefined;
-        transformScale?: number;
-    }
-    & (
-        | {
-            width: number;
-            height?: number | undefined;
-            axis: "x";
-        }
-        | {
-            width?: number | undefined;
-            height: number;
-            axis: "y";
-        }
-        | {
-            width: number;
-            height: number;
-            axis?: "both";
-        }
-    );
+export type ResizableProps = {
+    children?: React.ReactNode;
+    className?: string | undefined;
+    handle?:
+        | React.ReactNode
+        | ((
+              resizeHandle: ResizeHandle,
+              ref: React.RefObject<any>,
+          ) => React.ReactNode)
+        | undefined;
+    handleSize?: [number, number] | undefined;
+    lockAspectRatio?: boolean | undefined;
+    minConstraints?: [width: number, height: number] | undefined;
+    maxConstraints?: [width: number, height: number] | undefined;
+    onResizeStop?:
+        | ((e: React.SyntheticEvent, data: ResizeCallbackData) => any)
+        | undefined;
+    onResizeStart?:
+        | ((e: React.SyntheticEvent, data: ResizeCallbackData) => any)
+        | undefined;
+    onResize?:
+        | ((e: React.SyntheticEvent, data: ResizeCallbackData) => any)
+        | undefined;
+    draggableOpts?: any;
+    resizeHandles?: ResizeHandle[] | undefined;
+    transformScale?: number;
+} & (
+    | {
+          width: number;
+          height?: number | undefined;
+          axis: "x";
+      }
+    | {
+          width?: number | undefined;
+          height: number;
+          axis: "y";
+      }
+    | {
+          width: number;
+          height: number;
+          axis?: "both";
+      }
+);
 
-export class Resizable extends React.Component<ResizableProps, ResizableState> {}
+export class Resizable extends React.Component<
+    ResizableProps,
+    ResizableState
+> {}
 
 export interface ResizableBoxState {
     height: number;
     width: number;
 }
 
-export type ResizableBoxProps = ResizableProps & { style?: React.CSSProperties };
+export type ResizableBoxProps = ResizableProps & {
+    style?: React.CSSProperties;
+};
 
-export class ResizableBox extends React.Component<ResizableBoxProps, ResizableBoxState> {}
+export class ResizableBox extends React.Component<
+    ResizableBoxProps,
+    ResizableBoxState
+> {}

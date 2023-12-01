@@ -45,7 +45,10 @@ declare namespace tv4 {
     export interface MultiResult extends BaseResult {
         errors: ValidationError[];
     }
-    export type FormatValidationFunction = (data: any, schema: JsonSchema) => null | string;
+    export type FormatValidationFunction = (
+        data: any,
+        schema: JsonSchema,
+    ) => null | string;
     // documentation doesnt agree with code in tv4, this type agrees with code
     export type KeywordValidationFunction = (
         data: any,
@@ -53,21 +56,41 @@ declare namespace tv4 {
         schema: JsonSchema,
         dataPointerPath: string,
     ) => null | string | ValidationError;
-    export type AsyncValidationCallback = (isValid: boolean, error: ValidationError) => void;
+    export type AsyncValidationCallback = (
+        isValid: boolean,
+        error: ValidationError,
+    ) => void;
     export interface TV4 {
         error: ErrorVar;
         missing: string[];
         // primary API
-        validate(data: any, schema: JsonSchema, checkRecursive?: boolean): boolean;
-        validate(data: any, schema: JsonSchema, checkRecursive: boolean, banUnknownProperties: boolean): boolean;
-        validateResult(data: any, schema: JsonSchema, checkRecursive?: boolean): SingleResult;
+        validate(
+            data: any,
+            schema: JsonSchema,
+            checkRecursive?: boolean,
+        ): boolean;
+        validate(
+            data: any,
+            schema: JsonSchema,
+            checkRecursive: boolean,
+            banUnknownProperties: boolean,
+        ): boolean;
+        validateResult(
+            data: any,
+            schema: JsonSchema,
+            checkRecursive?: boolean,
+        ): SingleResult;
         validateResult(
             data: any,
             schema: JsonSchema,
             checkRecursive: boolean,
             banUnknownProperties: boolean,
         ): SingleResult;
-        validateMultiple(data: any, schema: JsonSchema, checkRecursive?: boolean): MultiResult;
+        validateMultiple(
+            data: any,
+            schema: JsonSchema,
+            checkRecursive?: boolean,
+        ): MultiResult;
         validateMultiple(
             data: any,
             schema: JsonSchema,
@@ -75,7 +98,12 @@ declare namespace tv4 {
             banUnknownProperties: boolean,
         ): MultiResult;
         // from including: tv4.async-jquery.js
-        validate(data: any, schema: JsonSchema, callback: AsyncValidationCallback, checkRecursive?: boolean): void;
+        validate(
+            data: any,
+            schema: JsonSchema,
+            callback: AsyncValidationCallback,
+            checkRecursive?: boolean,
+        ): void;
         validate(
             data: any,
             schema: JsonSchema,
@@ -95,13 +123,31 @@ declare namespace tv4 {
         freshApi(): TV4;
         reset(): void;
         setErrorReporter(lang: string): void;
-        setErrorReporter(reporter: (error: ValidationError, data: any, schema: JsonSchema) => string): void;
+        setErrorReporter(
+            reporter: (
+                error: ValidationError,
+                data: any,
+                schema: JsonSchema,
+            ) => string,
+        ): void;
         language(code: string): void;
         addLanguage(code: string, map: ErrorMap): void;
-        addFormat(format: string, validationFunction: FormatValidationFunction): void;
-        addFormat(formats: { [formatName: string]: FormatValidationFunction }): void;
-        defineKeyword(keyword: string, validationFunction: KeywordValidationFunction): void;
-        defineError(codeName: string, codeNumber: number, defaultMessage: string): void;
+        addFormat(
+            format: string,
+            validationFunction: FormatValidationFunction,
+        ): void;
+        addFormat(formats: {
+            [formatName: string]: FormatValidationFunction;
+        }): void;
+        defineKeyword(
+            keyword: string,
+            validationFunction: KeywordValidationFunction,
+        ): void;
+        defineError(
+            codeName: string,
+            codeNumber: number,
+            defaultMessage: string,
+        ): void;
 
         // not documented
         normSchema(schema: JsonSchema, baseUri: string): any;

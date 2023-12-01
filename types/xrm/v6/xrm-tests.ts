@@ -21,7 +21,8 @@ grids.forEach((gridControl: Xrm.Page.GridControl) => {
     gridControl.refresh();
 });
 
-const lookupAttribute = Xrm.Page.getControl<Xrm.Page.LookupControl>("customerid");
+const lookupAttribute =
+    Xrm.Page.getControl<Xrm.Page.LookupControl>("customerid");
 
 lookupAttribute.addCustomFilter(
     `<filter type="and">
@@ -58,8 +59,8 @@ Xrm.Page.data.entity.addOnSave((context) => {
     const eventArgs = context.getEventArgs();
 
     if (
-        eventArgs.getSaveMode() === Xrm.Page.SaveMode.AutoSave
-        || eventArgs.getSaveMode() === Xrm.Page.SaveMode.SaveAndClose
+        eventArgs.getSaveMode() === Xrm.Page.SaveMode.AutoSave ||
+        eventArgs.getSaveMode() === Xrm.Page.SaveMode.SaveAndClose
     ) {
         eventArgs.preventDefault();
     }

@@ -10,4 +10,4 @@ const lookupTestDomain = async () => {
     }
 };
 
-Promise.resolve(lookupTestDomain()).then(result => {});
+Promise.resolve(lookupTestDomain()).then((result) => {});

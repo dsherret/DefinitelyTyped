@@ -35,16 +35,18 @@ export type TypeDefinition =
     | ArrayType
     | ObjectDefinition;
 
-export type Type = TypeDefinition & Documentable & {
-    id: string;
-};
+export type Type = TypeDefinition &
+    Documentable & {
+        id: string;
+    };
 
 export type Field = TypeDefinition | ObjectReference;
 
-export type Parameter = Field & Documentable & {
-    name: string;
-    optional?: boolean;
-};
+export type Parameter = Field &
+    Documentable & {
+        name: string;
+        optional?: boolean;
+    };
 
 export interface Command extends Documentable {
     name: string;

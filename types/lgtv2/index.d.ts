@@ -15,7 +15,12 @@ declare namespace LGTV {
         reconnect?: number | undefined;
         keyFile?: string | undefined;
         clientKey?: string | undefined;
-        saveKey?: ((key: string, callback: (error?: NodeJS.ErrnoException | null) => void) => void) | undefined;
+        saveKey?:
+            | ((
+                  key: string,
+                  callback: (error?: NodeJS.ErrnoException | null) => void,
+              ) => void)
+            | undefined;
     }
 }
 
@@ -32,16 +37,42 @@ declare class LGTV extends EventEmitter {
 
     disconnect(): void;
 
-    private send(type: string, uri: string, callback: (error: Error | null, result: any) => void): void;
-    private send(type: string, uri: string, payload?: any, callback?: (error: Error | null, result: any) => void): void;
+    private send(
+        type: string,
+        uri: string,
+        callback: (error: Error | null, result: any) => void,
+    ): void;
+    private send(
+        type: string,
+        uri: string,
+        payload?: any,
+        callback?: (error: Error | null, result: any) => void,
+    ): void;
 
-    getSocket(url: string, callback: (error: Error | null, socket: LGTV.SpecializedSocket) => void): void;
+    getSocket(
+        url: string,
+        callback: (error: Error | null, socket: LGTV.SpecializedSocket) => void,
+    ): void;
 
-    request(uri: string, callback: (error: Error | null, result: any) => void): void;
-    request(uri: string, payload?: any, callback?: (error: Error | null, result: any) => void): void;
+    request(
+        uri: string,
+        callback: (error: Error | null, result: any) => void,
+    ): void;
+    request(
+        uri: string,
+        payload?: any,
+        callback?: (error: Error | null, result: any) => void,
+    ): void;
 
-    subscribe(uri: string, callback: (error: Error | null, result: any) => void): void;
-    subscribe(uri: string, payload?: any, callback?: (error: Error | null, result: any) => void): void;
+    subscribe(
+        uri: string,
+        callback: (error: Error | null, result: any) => void,
+    ): void;
+    subscribe(
+        uri: string,
+        payload?: any,
+        callback?: (error: Error | null, result: any) => void,
+    ): void;
 
     on(event: "connecting", listener: (host: string) => void): this;
     on(event: "connect" | "prompt", listener: () => void): this;

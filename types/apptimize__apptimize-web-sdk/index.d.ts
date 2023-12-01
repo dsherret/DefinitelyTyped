@@ -34,7 +34,10 @@ export interface VariantInfo {
 type simpleData = string | number | boolean;
 type callback = () => void;
 type variantInfoCallback = (variantInfo: VariantInfo) => void;
-type unenrollmentCallback = (variantInfo: VariantInfo, unenrollmentReason: string) => void;
+type unenrollmentCallback = (
+    variantInfo: VariantInfo,
+    unenrollmentReason: string,
+) => void;
 
 interface Apptimize {
     flushTracking(): void;
@@ -43,21 +46,36 @@ interface Apptimize {
     getApptimizeSDKVersion(): string;
     getBool(name: string, defaultValue: boolean): boolean;
     getBoolArray(name: string, defaultValue: boolean[]): boolean[];
-    getBoolDictionary(name: string, defaultValue: Dictionary<boolean>): Dictionary<boolean>;
+    getBoolDictionary(
+        name: string,
+        defaultValue: Dictionary<boolean>,
+    ): Dictionary<boolean>;
     getCustomAttributes(): Dictionary<simpleData>;
     getCustomerUserId(): string;
     getDouble(name: string, defaultValue: number): number;
     getDoubleArray(name: string, defaultValue: number[]): number[];
-    getDoubleDictionary(name: string, defaultValue: Dictionary<number>): Dictionary<number>;
+    getDoubleDictionary(
+        name: string,
+        defaultValue: Dictionary<number>,
+    ): Dictionary<number>;
     getInt(name: string, defaultValue: number): number;
     getIntArray(name: string, defaultValue: number[]): number[];
-    getIntDictionary(name: string, defaultValue: Dictionary<number>): Dictionary<number>;
+    getIntDictionary(
+        name: string,
+        defaultValue: Dictionary<number>,
+    ): Dictionary<number>;
     getString(name: string, defaultValue: string): string;
     getStringArray(name: string, defaultValue: string[]): string[];
-    getStringDictionary(name: string, defaultValue: Dictionary<string>): Dictionary<string>;
+    getStringDictionary(
+        name: string,
+        defaultValue: Dictionary<string>,
+    ): Dictionary<string>;
     getVariantInfo(): VariantInfo[];
     isFeatureFlagEnabled(name: string): boolean;
-    runCodeBlock(codeBlockVariableName: string, callback: Dictionary<callback>): void;
+    runCodeBlock(
+        codeBlockVariableName: string,
+        callback: Dictionary<callback>,
+    ): void;
     setAppName(name: string): void;
     setAppVersion(version: string): void;
     setCustomAttributes(attributes: Dictionary<simpleData>): void;

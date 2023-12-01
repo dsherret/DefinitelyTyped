@@ -10,60 +10,60 @@ Although Simperium allows for unconstrainted data access it can be helpful to de
 ## Example
 
 ```ts
-import { default as createClient, Auth } from 'simperium';
+import { default as createClient, Auth } from "simperium";
 
 interface Project {
-    name: string;
-    authors: string[];
-    version: string;
-    includesTypes: boolean;
-    stars: number;
+  name: string;
+  authors: string[];
+  version: string;
+  includesTypes: boolean;
+  stars: number;
 }
 
 interface Language {
-    name: string;
-    projects: string[];
+  name: string;
+  projects: string[];
 }
 
 interface Buckets {
-    projects: Project;
-    languages: Language;
+  projects: Project;
+  languages: Language;
 }
 
-new Auth( 'my-app-id', 'my-api-key' )
-    .authorize( 'username', 'password' )
-    .then( ( { access_token } ) => {
-        const client = createClient<Buckets>( 'my-app-id', access_token );
-        const projectBucket = client.bucket('projects');
-        const languageBucket = client.bucket('languages');
+new Auth("my-app-id", "my-api-key")
+  .authorize("username", "password")
+  .then(({ access_token }) => {
+    const client = createClient<Buckets>("my-app-id", access_token);
+    const projectBucket = client.bucket("projects");
+    const languageBucket = client.bucket("languages");
 
-        projectBucket.add( {
-            name: 'simperium',
-            authors: [ 'beaucollins', 'roundhill', 'dmsnell', 'belcherj' ],
-            version: '1.1.1',
-            includesTypes: true,
-            stars: 65
-        } );
+    projectBucket.add({
+      name: "simperium",
+      authors: ["beaucollins", "roundhill", "dmsnell", "belcherj"],
+      version: "1.1.1",
+      includesTypes: true,
+      stars: 65,
+    });
 
-        languageBucket.add( {
-            name: 'flowtyped',
-            projects: [ 'simperium' ]
-        } );
+    languageBucket.add({
+      name: "flowtyped",
+      projects: ["simperium"],
+    });
 
-        languageBucket.add( {
-            name: 'typescript',
-            projects: [ 'simperium' ]
-        } );
+    languageBucket.add({
+      name: "typescript",
+      projects: ["simperium"],
+    });
 
-        projectBucket.on( 'update', ( id, project ) => {
-            console.log( `Discovered a new project: ${ project.name }` );
-        } );
+    projectBucket.on("update", (id, project) => {
+      console.log(`Discovered a new project: ${project.name}`);
+    });
 
-        client.on( 'unauthorized', () => {
-            console.log( 'All good things must come to an end.' );
-            process.exit( 0 );
-        } );
-    } );
+    client.on("unauthorized", () => {
+      console.log("All good things must come to an end.");
+      process.exit(0);
+    });
+  });
 ```
 
 ## Custom storage providers

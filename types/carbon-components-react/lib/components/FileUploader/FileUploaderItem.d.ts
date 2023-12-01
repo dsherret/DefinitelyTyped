@@ -34,7 +34,12 @@ export interface FileUploaderItemProps extends ReactAttr<HTMLSpanElement> {
      * The event handler signature looks like `onDelete(evt, { uuid })`
      */
     onDelete?:
-        | ((event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, content: { uuid: string }) => void)
+        | ((
+              event:
+                  | React.MouseEvent<HTMLElement>
+                  | React.KeyboardEvent<HTMLElement>,
+              content: { uuid: string },
+          ) => void)
         | undefined;
 
     /**

@@ -6,10 +6,12 @@ const camera = { matrixWorld: new YUKA.Matrix4() };
 
 // 3D assets are loaded, now load nav mesh
 const loader = new YUKA.NavMeshLoader();
-loader.load("./navmesh/navmesh.glb", { epsilonCoplanarTest: 0.25 }).then((navMesh) => {
-    player.navMesh = navMesh;
-    animate();
-});
+loader
+    .load("./navmesh/navmesh.glb", { epsilonCoplanarTest: 0.25 })
+    .then((navMesh) => {
+        player.navMesh = navMesh;
+        animate();
+    });
 
 // game setup
 const entityManager = new YUKA.EntityManager();
@@ -37,6 +39,9 @@ function animate() {
     entityManager.update(delta);
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrixWorld: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrixWorld: YUKA.Matrix4 },
+) {
     renderComponent.matrixWorld.copy(entity.worldMatrix);
 }

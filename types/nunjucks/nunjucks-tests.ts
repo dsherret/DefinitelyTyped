@@ -5,7 +5,10 @@ nunjucks.configure({ autoescape: false });
 let rendered = nunjucks.render("./noexists.html");
 
 nunjucks.render("foo.html", { username: "James" });
-nunjucks.render("async.html", (err: nunjucks.lib.TemplateError | null, res: string | null) => {});
+nunjucks.render(
+    "async.html",
+    (err: nunjucks.lib.TemplateError | null, res: string | null) => {},
+);
 
 const ctx = { items: ["Hello", "this", "is", "for", "testing"] };
 const src = "{% for item in items %}{{item}}{% endfor %}";
@@ -50,7 +53,7 @@ env.removeExtension("SpawnGlitter");
 env = env.addGlobal("key", "value");
 const value = env.getGlobal("key");
 
-env = env.addFilter("testFilter", arg => arg, false);
+env = env.addFilter("testFilter", (arg) => arg, false);
 const testFilter: (arg: any) => any = env.getFilter("testFilter");
 
 nunjucks.installJinjaCompat();

@@ -156,14 +156,17 @@ map.render([13.437524, 52.4945528], 15);
 
 // Save image
 map.image.save().then().catch();
-map.image.save("my-staticmap-image.png", { compressionLevel: 9 }).then().catch();
+map.image
+    .save("my-staticmap-image.png", { compressionLevel: 9 })
+    .then()
+    .catch();
 
 // Buffer image
 map.image
     .buffer()
-    .then(buffer => buffer.toString())
+    .then((buffer) => buffer.toString())
     .catch();
 map.image
     .buffer("image/jpeg", { quality: 75 })
-    .then(buffer => buffer.toString())
+    .then((buffer) => buffer.toString())
     .catch();

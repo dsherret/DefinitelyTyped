@@ -8,9 +8,10 @@
  *
  * Otherwise - if another call is pending - the original promise will be returned.
  */
-declare function debounce<A extends readonly any[], R extends PromiseLike<any>, T = undefined>(
-    fn: (this: T, ...args: A) => R,
-    ctx?: T,
-): (...args: A) => R;
+declare function debounce<
+    A extends readonly any[],
+    R extends PromiseLike<any>,
+    T = undefined,
+>(fn: (this: T, ...args: A) => R, ctx?: T): (...args: A) => R;
 
 export = debounce;

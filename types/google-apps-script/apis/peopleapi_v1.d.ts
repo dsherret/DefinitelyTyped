@@ -25,25 +25,37 @@ declare namespace GoogleAppsScript {
                     // connected profiles.
                     // <br>
                     // The request throws a 400 error if 'personFields' is not specified.
-                    list(resourceName: string, optionalArgs: object): Schema.ListConnectionsResponse;
+                    list(
+                        resourceName: string,
+                        optionalArgs: object,
+                    ): Schema.ListConnectionsResponse;
                 }
             }
             interface ContactGroupsCollection {
-                Members?: Collection.ContactGroups.MembersCollection | undefined;
+                Members?:
+                    | Collection.ContactGroups.MembersCollection
+                    | undefined;
                 // Get a list of contact groups owned by the authenticated user by specifying
                 // a list of contact group resource names.
                 batchGet(): Schema.BatchGetContactGroupsResponse;
                 // Get a list of contact groups owned by the authenticated user by specifying
                 // a list of contact group resource names.
-                batchGet(optionalArgs: object): Schema.BatchGetContactGroupsResponse;
+                batchGet(
+                    optionalArgs: object,
+                ): Schema.BatchGetContactGroupsResponse;
                 // Create a new contact group owned by the authenticated user.
-                create(resource: Schema.CreateContactGroupRequest): Schema.ContactGroup;
+                create(
+                    resource: Schema.CreateContactGroupRequest,
+                ): Schema.ContactGroup;
                 // Get a specific contact group owned by the authenticated user by specifying
                 // a contact group resource name.
                 get(resourceName: string): Schema.ContactGroup;
                 // Get a specific contact group owned by the authenticated user by specifying
                 // a contact group resource name.
-                get(resourceName: string, optionalArgs: object): Schema.ContactGroup;
+                get(
+                    resourceName: string,
+                    optionalArgs: object,
+                ): Schema.ContactGroup;
                 // List all contact groups owned by the authenticated user. Members of the
                 // contact groups are not populated.
                 list(): Schema.ListContactGroupsResponse;
@@ -58,14 +70,22 @@ declare namespace GoogleAppsScript {
                 remove(resourceName: string, optionalArgs: object): void;
                 // Update the name of an existing contact group owned by the authenticated
                 // user.
-                update(resource: Schema.UpdateContactGroupRequest, resourceName: string): Schema.ContactGroup;
+                update(
+                    resource: Schema.UpdateContactGroupRequest,
+                    resourceName: string,
+                ): Schema.ContactGroup;
             }
             interface PeopleCollection {
-                Connections?: Collection.People.ConnectionsCollection | undefined;
+                Connections?:
+                    | Collection.People.ConnectionsCollection
+                    | undefined;
                 // Create a new contact and return the person resource for that contact.
                 createContact(resource: Schema.Person): Schema.Person;
                 // Create a new contact and return the person resource for that contact.
-                createContact(resource: Schema.Person, optionalArgs: object): Schema.Person;
+                createContact(
+                    resource: Schema.Person,
+                    optionalArgs: object,
+                ): Schema.Person;
                 // Delete a contact person. Any non-contact data will not be deleted.
                 deleteContact(resourceName: string): void;
                 // Provides information about a person by specifying a resource name. Use
@@ -101,7 +121,10 @@ declare namespace GoogleAppsScript {
                 // different than the contact's etag, which indicates the contact has changed
                 // since its data was read. Clients should get the latest person and re-apply
                 // their updates to the latest person.
-                updateContact(resource: Schema.Person, resourceName: string): Schema.Person;
+                updateContact(
+                    resource: Schema.Person,
+                    resourceName: string,
+                ): Schema.Person;
                 // Update contact data for an existing contact person. Any non-contact data
                 // will not be modified.
                 // The request throws a 400 error if `updatePersonFields` is not specified.
@@ -113,7 +136,11 @@ declare namespace GoogleAppsScript {
                 // different than the contact's etag, which indicates the contact has changed
                 // since its data was read. Clients should get the latest person and re-apply
                 // their updates to the latest person.
-                updateContact(resource: Schema.Person, resourceName: string, optionalArgs: object): Schema.Person;
+                updateContact(
+                    resource: Schema.Person,
+                    resourceName: string,
+                    optionalArgs: object,
+                ): Schema.Person;
             }
         }
         namespace Schema {
@@ -246,7 +273,9 @@ declare namespace GoogleAppsScript {
                 value?: string | undefined;
             }
             interface Membership {
-                contactGroupMembership?: People.Schema.ContactGroupMembership | undefined;
+                contactGroupMembership?:
+                    | People.Schema.ContactGroupMembership
+                    | undefined;
                 domainMembership?: People.Schema.DomainMembership | undefined;
                 metadata?: People.Schema.FieldMetadata | undefined;
             }
@@ -322,8 +351,12 @@ declare namespace GoogleAppsScript {
                 phoneNumbers?: People.Schema.PhoneNumber[] | undefined;
                 photos?: People.Schema.Photo[] | undefined;
                 relations?: People.Schema.Relation[] | undefined;
-                relationshipInterests?: People.Schema.RelationshipInterest[] | undefined;
-                relationshipStatuses?: People.Schema.RelationshipStatus[] | undefined;
+                relationshipInterests?:
+                    | People.Schema.RelationshipInterest[]
+                    | undefined;
+                relationshipStatuses?:
+                    | People.Schema.RelationshipStatus[]
+                    | undefined;
                 residences?: People.Schema.Residence[] | undefined;
                 resourceName?: string | undefined;
                 sipAddresses?: People.Schema.SipAddress[] | undefined;

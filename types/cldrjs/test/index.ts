@@ -1,22 +1,22 @@
 Cldr.load({
-    "main": {
-        "en": {
-            "identity": {
-                "version": {
-                    "_cldrVersion": "25",
-                    "_number": "$Revision: 91 $",
+    main: {
+        en: {
+            identity: {
+                version: {
+                    _cldrVersion: "25",
+                    _number: "$Revision: 91 $",
                 },
-                "generation": {
-                    "_date": "$Date: 2014-03-13 22:27:12 -0500 (Thu, 13 Mar 2014) $",
+                generation: {
+                    _date: "$Date: 2014-03-13 22:27:12 -0500 (Thu, 13 Mar 2014) $",
                 },
-                "language": "en",
+                language: "en",
             },
-            "dates": {
-                "calendars": {
-                    "gregorian": {
-                        "months": {
-                            "format": {
-                                "abbreviated": {
+            dates: {
+                calendars: {
+                    gregorian: {
+                        months: {
+                            format: {
+                                abbreviated: {
                                     "1": "Jan",
                                     "2": "Feb",
                                     "3": "Mar",
@@ -32,31 +32,31 @@ Cldr.load({
                                 },
                             },
                         },
-                        "dayPeriods": {
-                            "format": {
-                                "wide": {
-                                    "am": "AM",
+                        dayPeriods: {
+                            format: {
+                                wide: {
+                                    am: "AM",
                                     "am-alt-variant": "am",
-                                    "noon": "noon",
-                                    "pm": "PM",
+                                    noon: "noon",
+                                    pm: "PM",
                                     "pm-alt-variant": "pm",
                                 },
                             },
                         },
-                        "dateFormats": {
-                            "medium": "MMM d, y",
+                        dateFormats: {
+                            medium: "MMM d, y",
                         },
-                        "timeFormats": {
-                            "medium": "h:mm:ss a",
+                        timeFormats: {
+                            medium: "h:mm:ss a",
                         },
-                        "dateTimeFormats": {
-                            "medium": "{1}, {0}",
+                        dateTimeFormats: {
+                            medium: "{1}, {0}",
                         },
                     },
                 },
-                "fields": {
-                    "second": {
-                        "displayName": "Second",
+                fields: {
+                    second: {
+                        displayName: "Second",
                         "relative-type-0": "now",
                         "relativeTime-type-future": {
                             "relativeTimePattern-count-one": "in {0} second",
@@ -64,56 +64,57 @@ Cldr.load({
                         },
                         "relativeTime-type-past": {
                             "relativeTimePattern-count-one": "{0} second ago",
-                            "relativeTimePattern-count-other": "{0} seconds ago",
+                            "relativeTimePattern-count-other":
+                                "{0} seconds ago",
                         },
                     },
                 },
             },
-            "numbers": {
-                "currencies": {
-                    "USD": {
-                        "symbol": "$",
+            numbers: {
+                currencies: {
+                    USD: {
+                        symbol: "$",
                     },
                 },
-                "defaultNumberingSystem": "latn",
+                defaultNumberingSystem: "latn",
                 "symbols-numberSystem-latn": {
-                    "decimal": ".",
-                    "exponential": "E",
-                    "group": ",",
-                    "infinity": "∞",
-                    "minusSign": "-",
-                    "nan": "NaN",
-                    "percentSign": "%",
-                    "perMille": "‰",
-                    "plusSign": "+",
-                    "timeSeparator": ":",
+                    decimal: ".",
+                    exponential: "E",
+                    group: ",",
+                    infinity: "∞",
+                    minusSign: "-",
+                    nan: "NaN",
+                    percentSign: "%",
+                    perMille: "‰",
+                    plusSign: "+",
+                    timeSeparator: ":",
                 },
                 "decimalFormats-numberSystem-latn": {
-                    "standard": "#,##0.###",
+                    standard: "#,##0.###",
                 },
                 "currencyFormats-numberSystem-latn": {
-                    "currencySpacing": {
-                        "beforeCurrency": {
-                            "currencyMatch": "[:^S:]",
-                            "surroundingMatch": "[:digit:]",
-                            "insertBetween": " ",
+                    currencySpacing: {
+                        beforeCurrency: {
+                            currencyMatch: "[:^S:]",
+                            surroundingMatch: "[:digit:]",
+                            insertBetween: " ",
                         },
-                        "afterCurrency": {
-                            "currencyMatch": "[:^S:]",
-                            "surroundingMatch": "[:digit:]",
-                            "insertBetween": " ",
+                        afterCurrency: {
+                            currencyMatch: "[:^S:]",
+                            surroundingMatch: "[:digit:]",
+                            insertBetween: " ",
                         },
                     },
-                    "standard": "¤#,##0.00",
+                    standard: "¤#,##0.00",
                 },
             },
-            "units": {
-                "short": {
-                    "per": {
-                        "compoundUnitPattern": "{0}/{1}",
+            units: {
+                short: {
+                    per: {
+                        compoundUnitPattern: "{0}/{1}",
                     },
                     "speed-mile-per-hour": {
-                        "displayName": "miles/hour",
+                        displayName: "miles/hour",
                         "unitPattern-count-one": "{0} mph",
                         "unitPattern-count-other": "{0} mph",
                     },
@@ -121,24 +122,24 @@ Cldr.load({
             },
         },
     },
-    "supplemental": {
-        "version": {
-            "_cldrVersion": "25",
-            "_number": "$Revision: 91 $",
+    supplemental: {
+        version: {
+            _cldrVersion: "25",
+            _number: "$Revision: 91 $",
         },
-        "currencyData": {
-            "fractions": {
-                "DEFAULT": {
-                    "_rounding": "0",
-                    "_digits": "2",
+        currencyData: {
+            fractions: {
+                DEFAULT: {
+                    _rounding: "0",
+                    _digits: "2",
                 },
             },
         },
-        "likelySubtags": {
-            "en": "en-Latn-US",
+        likelySubtags: {
+            en: "en-Latn-US",
         },
         "plurals-type-cardinal": {
-            "en": {
+            en: {
                 "pluralRule-count-one": "i = 1 and v = 0 @integer 1",
                 "pluralRule-count-other":
                     " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …",
@@ -148,14 +149,21 @@ Cldr.load({
 });
 
 const cldr = new Cldr("en");
-const getDecimalSeparator = cldr.get("/cldr/main/{languageId}/numbers/symbols-numberSystem-latn/decimal");
+const getDecimalSeparator = cldr.get(
+    "/cldr/main/{languageId}/numbers/symbols-numberSystem-latn/decimal",
+);
 const getDecimalSeparatorByArray = cldr.get([
     "/cldr/main",
     "{languageId}/numbers/symbols-numberSystem-latn",
     "decimal",
 ]);
-const mainDecimalSeparator = cldr.main("/{languageId}/numbers/symbols-numberSystem-latn/decimal");
-const mainDecimalSeparatorByArray = cldr.main(["/{languageId}/numbers", "/symbols-numberSystem-latn/decimal"]);
+const mainDecimalSeparator = cldr.main(
+    "/{languageId}/numbers/symbols-numberSystem-latn/decimal",
+);
+const mainDecimalSeparatorByArray = cldr.main([
+    "/{languageId}/numbers",
+    "/symbols-numberSystem-latn/decimal",
+]);
 const locale = cldr.locale;
 
 const attributes = cldr.attributes;

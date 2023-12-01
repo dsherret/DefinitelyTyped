@@ -24,8 +24,14 @@ export namespace JUnitXmlReporter {
         consolidate?: boolean;
         consolidateAll?: boolean;
         filePrefix?: string;
-        modifyReportFileName?: (reportFileName: string, suite: jasmine.SuiteResult) => string;
-        modifySuiteName?: (suiteName: string, suite: jasmine.SuiteResult) => string;
+        modifyReportFileName?: (
+            reportFileName: string,
+            suite: jasmine.SuiteResult,
+        ) => string;
+        modifySuiteName?: (
+            suiteName: string,
+            suite: jasmine.SuiteResult,
+        ) => string;
         package?: boolean | string | string[];
         savePath?: string;
         stylesheetPath?: boolean | string;
@@ -58,7 +64,10 @@ export class TeamCityReporter implements jasmine.CustomReporter {
 
 export namespace TeamCityReporter {
     interface ConstructorOptions {
-        modifySuiteName?: (suiteName: string, suite: jasmine.SuiteResult) => string;
+        modifySuiteName?: (
+            suiteName: string,
+            suite: jasmine.SuiteResult,
+        ) => string;
     }
 }
 

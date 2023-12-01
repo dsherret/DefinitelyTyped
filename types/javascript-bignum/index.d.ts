@@ -1,7 +1,13 @@
 // This version only includes typing for schemeNumber, not the full library
-declare type SchemeOperator = (...args: Array<string | SchemeNumber | number>) => SchemeNumber;
+declare type SchemeOperator = (
+    ...args: Array<string | SchemeNumber | number>
+) => SchemeNumber;
 declare var VERSION: number[];
-declare function raise(conditionType: string, message: string, ...irritants: any[]): void;
+declare function raise(
+    conditionType: string,
+    message: string,
+    ...irritants: any[]
+): void;
 declare var maxIntegerDigits: number;
 declare interface SchemeFn {
     [opname: string]: SchemeOperator;

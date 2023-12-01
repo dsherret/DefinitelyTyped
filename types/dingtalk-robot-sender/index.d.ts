@@ -18,10 +18,12 @@ declare namespace Message {
         text: {
             content: string;
         };
-        at?: {
-            atMobiles: string[];
-            isAtAll: boolean;
-        } | undefined;
+        at?:
+            | {
+                  atMobiles: string[];
+                  isAtAll: boolean;
+              }
+            | undefined;
     }
 
     interface Link {
@@ -55,9 +57,9 @@ declare namespace Message {
             btnOrientation: "0" | "1";
             btns?:
                 | Array<{
-                    title: string;
-                    actionURL: string;
-                }>
+                      title: string;
+                      actionURL: string;
+                  }>
                 | undefined;
         };
     }
@@ -72,7 +74,12 @@ declare namespace Message {
     }
 }
 
-type MessageType = Message.Text | Message.Link | Message.Markdown | Message.ActionCard | Message.FeedCardItem;
+type MessageType =
+    | Message.Text
+    | Message.Link
+    | Message.Markdown
+    | Message.ActionCard
+    | Message.FeedCardItem;
 
 declare class ChatBot {
     /**
@@ -120,7 +127,11 @@ declare class ChatBot {
      * @param text 消息内容(支持Markdown)
      * @return
      */
-    markdown(title: string, text: string, at: Message.Text["at"]): Promise<AxiosResponse>;
+    markdown(
+        title: string,
+        text: string,
+        at: Message.Text["at"],
+    ): Promise<AxiosResponse>;
 
     /**
      * 发送actionCard(动作卡片)

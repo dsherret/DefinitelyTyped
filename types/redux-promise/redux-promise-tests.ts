@@ -4,16 +4,9 @@ import promise = require("redux-promise");
 
 declare var userReducer: any;
 
-const appStore = createStore(
-    userReducer,
-    applyMiddleware(
-        promise,
-    ),
-);
+const appStore = createStore(userReducer, applyMiddleware(promise));
 
-appStore.dispatch(
-    listUsers(),
-);
+appStore.dispatch(listUsers());
 
 function listUsers(): PromiseAction<any> {
     return createAction("LIST_USERS", () => {

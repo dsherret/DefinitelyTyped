@@ -77,13 +77,13 @@ dialog.buttons(buttons, options, "");
 // @ts-expect-error
 dialog.on();
 // @ts-expect-error
-dialog.on("", event => event.target.$content);
+dialog.on("", (event) => event.target.$content);
 // $ExpectType Dialogify
-dialog.on("show", event => event.target.$content);
+dialog.on("show", (event) => event.target.$content);
 // $ExpectType Dialogify
-dialog.on("close", event => event.target.$content);
+dialog.on("close", (event) => event.target.$content);
 // $ExpectType Dialogify
-dialog.on("cancel", event => event.target.$content);
+dialog.on("cancel", (event) => event.target.$content);
 // @ts-expect-error
 dialog.on("", {});
 
@@ -168,7 +168,10 @@ new Dialogify("#demo1_template")
             text: "確定",
             type: Dialogify.BUTTON_PRIMARY,
             click(e) {
-                console.log("ok click, title value: " + this.$content.find("input.text-field").val());
+                console.log(
+                    "ok click, title value: " +
+                        this.$content.find("input.text-field").val(),
+                );
             },
         },
     ])
@@ -178,26 +181,28 @@ new Dialogify("#demo1_template")
 
 let example2_html =
     "<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a sapien lacus. Ut a eros quis lacus auctor aliquet eu.</b>";
-let example2_dialogify = new Dialogify(example2_html).title("Modal Dialogify").buttons(
-    [
-        {
-            type: Dialogify.BUTTON_DANGER,
-            click(e) {
-                console.log("danger-style button click");
-                this.close();
+let example2_dialogify = new Dialogify(example2_html)
+    .title("Modal Dialogify")
+    .buttons(
+        [
+            {
+                type: Dialogify.BUTTON_DANGER,
+                click(e) {
+                    console.log("danger-style button click");
+                    this.close();
+                },
             },
-        },
-        "<a class=\"btn btn-insert\" href=\"javascript:;\">other action</a>",
-    ],
-    { position: Dialogify.BUTTON_CENTER },
-);
+            '<a class="btn btn-insert" href="javascript:;">other action</a>',
+        ],
+        { position: Dialogify.BUTTON_CENTER },
+    );
 
 example2_dialogify
-    .on("show", function() {
+    .on("show", function () {
         this.$buttonList[1].disable();
         console.log("show: " + this.isOpen());
     })
-    .on("close", function() {
+    .on("close", function () {
         console.log("close: " + this.isOpen());
     })
     .on("cancel", () => {

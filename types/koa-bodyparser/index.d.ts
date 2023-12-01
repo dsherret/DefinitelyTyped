@@ -65,11 +65,13 @@ declare namespace bodyParser {
         /**
          * support extend types
          */
-        extendTypes?: {
-            json?: string[] | string | undefined;
-            form?: string[] | string | undefined;
-            text?: string[] | string | undefined;
-        } | undefined;
+        extendTypes?:
+            | {
+                  json?: string[] | string | undefined;
+                  form?: string[] | string | undefined;
+                  text?: string[] | string | undefined;
+              }
+            | undefined;
 
         /**
          * support custom error handle

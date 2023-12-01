@@ -78,7 +78,9 @@ export interface Options {
         /**
          * Exclude files
          */
-        shouldScanFile?: ((fileOrDirName: string, isDir: boolean) => boolean) | undefined;
+        shouldScanFile?:
+            | ((fileOrDirName: string, isDir: boolean) => boolean)
+            | undefined;
 
         /**
          * Scan a selected file.

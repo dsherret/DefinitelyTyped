@@ -1,4 +1,9 @@
-import { clearInterval, clearTimeout, setInterval, setTimeout } from "k6/experimental/timers";
+import {
+    clearInterval,
+    clearTimeout,
+    setInterval,
+    setTimeout,
+} from "k6/experimental/timers";
 
 // setTimeout
 

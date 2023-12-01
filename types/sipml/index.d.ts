@@ -9,12 +9,21 @@ declare namespace SIPml {
         public getSipResponseCode(): number;
     }
 
-    class EventTarget<EventSubscriptionType extends string, EventType extends Event> {
-        public addEventListener(type: EventSubscriptionType, listener: (e: EventType) => void): void;
+    class EventTarget<
+        EventSubscriptionType extends string,
+        EventType extends Event,
+    > {
+        public addEventListener(
+            type: EventSubscriptionType,
+            listener: (e: EventType) => void,
+        ): void;
         public removeEventListener(type: EventSubscriptionType): void;
     }
 
-    class Session extends EventTarget<Session.EventSubscriptionType, Session.Event> {
+    class Session extends EventTarget<
+        Session.EventSubscriptionType,
+        Session.Event
+    > {
         public accept(configuration?: Session.Configuration): number;
         public getId(): number;
         public getRemoteFriendlyName(): string;
@@ -49,27 +58,39 @@ declare namespace SIPml {
         interface Configuration {
             audio_remote?: HTMLElement | undefined;
             bandwidth?: { audio: number; video: number } | undefined;
-            events_listener?: {
-                events: EventSubscriptionType | EventSubscriptionType[];
-                listener: (e: Session.Event) => void;
-            } | undefined;
+            events_listener?:
+                | {
+                      events: EventSubscriptionType | EventSubscriptionType[];
+                      listener: (e: Session.Event) => void;
+                  }
+                | undefined;
             expires?: number | undefined;
             from?: string | undefined;
             sip_caps?: Object[] | undefined;
             sip_headers?: Object[] | undefined;
             video_local?: HTMLElement | undefined;
             video_remote?: HTMLElement | undefined;
-            video_size?: {
-                minWidth?: number | undefined;
-                maxWidth?: number | undefined;
-                minHeight?: number | undefined;
-                maxHeight?: number | undefined;
-            } | undefined;
+            video_size?:
+                | {
+                      minWidth?: number | undefined;
+                      maxWidth?: number | undefined;
+                      minHeight?: number | undefined;
+                      maxHeight?: number | undefined;
+                  }
+                | undefined;
         }
 
-        class Call extends Session implements EventTarget<Call.EventSubscriptionType, Session.Event> {
-            public acceptTransfer(configuration?: Session.Configuration): number;
-            public call(to: string, configuration?: Session.Configuration): number;
+        class Call
+            extends Session
+            implements EventTarget<Call.EventSubscriptionType, Session.Event>
+        {
+            public acceptTransfer(
+                configuration?: Session.Configuration,
+            ): number;
+            public call(
+                to: string,
+                configuration?: Session.Configuration,
+            ): number;
             public dtmf(): number;
             public hangup(configuration?: Session.Configuration): number;
             public hold(configuration?: Session.Configuration): number;
@@ -122,11 +143,20 @@ declare namespace SIPml {
         }
 
         class Message extends Session {
-            public send(to: string, content?: any, contentType?: string, configuration?: Session.Configuration): number;
+            public send(
+                to: string,
+                content?: any,
+                contentType?: string,
+                configuration?: Session.Configuration,
+            ): number;
         }
 
         class Publish extends Session {
-            public publish(content?: any, contentType?: string, configuration?: Session.Configuration): number;
+            public publish(
+                content?: any,
+                contentType?: string,
+                configuration?: Session.Configuration,
+            ): number;
 
             public unpublish(configuration?: Session.Configuration): void;
         }
@@ -136,8 +166,15 @@ declare namespace SIPml {
             public unregister(configuration?: Session.Configuration): void;
         }
 
-        class Subscribe extends Session implements EventTarget<Subscribe.EventSubscriptionType, Session.Event> {
-            public subscribe(to: string, configuration?: Session.Configuration): number;
+        class Subscribe
+            extends Session
+            implements
+                EventTarget<Subscribe.EventSubscriptionType, Session.Event>
+        {
+            public subscribe(
+                to: string,
+                configuration?: Session.Configuration,
+            ): number;
             public unsubscribe(configuration?: Session.Configuration): number;
         }
 
@@ -154,7 +191,10 @@ declare namespace SIPml {
     class Stack extends EventTarget<Stack.EventSubscriptionType, Stack.Event> {
         public constructor(configuration?: Stack.Configuration);
         public setConfiguration(configuration: Stack.Configuration): number;
-        public newSession(type: string, configuration?: Session.Configuration): any;
+        public newSession(
+            type: string,
+            configuration?: Session.Configuration,
+        ): any;
         public start(): number;
         public stop(timeout?: number): number;
     }
@@ -185,10 +225,12 @@ declare namespace SIPml {
             enable_early_ims?: boolean | undefined;
             enable_media_stream_cache?: boolean | undefined;
             enable_rtcweb_breaker?: boolean | undefined;
-            events_listener?: {
-                events: EventSubscriptionType | EventSubscriptionType[];
-                listener: (e: Stack.Event) => void;
-            } | undefined;
+            events_listener?:
+                | {
+                      events: EventSubscriptionType | EventSubscriptionType[];
+                      listener: (e: Stack.Event) => void;
+                  }
+                | undefined;
             ice_servers?: Object[] | undefined;
             impi?: string | undefined;
             impu?: string | undefined;
@@ -196,12 +238,14 @@ declare namespace SIPml {
             password?: string | undefined;
             realm?: string | undefined;
             sip_headers?: Object[] | undefined;
-            video_size?: {
-                minWidth?: number | undefined;
-                maxWidth?: number | undefined;
-                minHeight?: number | undefined;
-                maxHeight?: number | undefined;
-            } | undefined;
+            video_size?:
+                | {
+                      minWidth?: number | undefined;
+                      maxWidth?: number | undefined;
+                      minHeight?: number | undefined;
+                      maxHeight?: number | undefined;
+                  }
+                | undefined;
             websocket_proxy_url?: string | undefined;
         }
 
@@ -222,7 +266,10 @@ declare namespace SIPml {
 
     function haveMediaStream(): boolean;
 
-    function init(readyCallback?: (e: any) => any, errorCallback?: (e: any) => any): boolean;
+    function init(
+        readyCallback?: (e: any) => any,
+        errorCallback?: (e: any) => any,
+    ): boolean;
 
     function isInitialized(): boolean;
 

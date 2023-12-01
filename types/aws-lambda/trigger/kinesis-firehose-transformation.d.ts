@@ -1,7 +1,11 @@
 import { Callback, Handler } from "../handler";
 
-export type FirehoseTransformationHandler = Handler<FirehoseTransformationEvent, FirehoseTransformationResult>;
-export type FirehoseTransformationCallback = Callback<FirehoseTransformationResult>;
+export type FirehoseTransformationHandler = Handler<
+    FirehoseTransformationEvent,
+    FirehoseTransformationResult
+>;
+export type FirehoseTransformationCallback =
+    Callback<FirehoseTransformationResult>;
 
 // Kinesis Data Firehose Event
 // https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html#eventsources-kinesis-firehose
@@ -32,7 +36,10 @@ export interface FirehoseRecordMetadata {
     subsequenceNumber: string;
 }
 
-export type FirehoseRecordTransformationStatus = "Ok" | "Dropped" | "ProcessingFailed";
+export type FirehoseRecordTransformationStatus =
+    | "Ok"
+    | "Dropped"
+    | "ProcessingFailed";
 
 export interface FirehoseTransformationMetadata {
     partitionKeys: { [name: string]: string };

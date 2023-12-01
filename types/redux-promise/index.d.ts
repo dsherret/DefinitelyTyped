@@ -8,7 +8,10 @@ declare namespace ReduxPromise {
 }
 
 declare module "redux" {
-    type PromiseAction<S> = (dispatch: Redux.Dispatch<S>, getState?: () => S) => any;
+    type PromiseAction<S> = (
+        dispatch: Redux.Dispatch<S>,
+        getState?: () => S,
+    ) => any;
 
     interface Dispatch<S> {
         <R>(asyncAction: PromiseAction<S>): R;

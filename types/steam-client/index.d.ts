@@ -76,7 +76,10 @@ export class CMClient extends EventEmitter {
 
     // Events
 
-    on<T extends keyof CMEventCallback>(eventType: T, callback: CMEventCallback[T]): this;
+    on<T extends keyof CMEventCallback>(
+        eventType: T,
+        callback: CMEventCallback[T],
+    ): this;
 }
 
 /**
@@ -2306,7 +2309,14 @@ export enum EChatPermission {
     MemberDefault = Ban | Kick | Talk | Invite, // 282
 
     OfficerDefault = Ban | Kick | Talk | Invite, // 282
-    OwnerDefault = ChangeAccess | Ban | SetMetadata | Mute | Kick | Talk | Invite | Close, // 891
+    OwnerDefault = ChangeAccess |
+        Ban |
+        SetMetadata |
+        Mute |
+        Kick |
+        Talk |
+        Invite |
+        Close, // 891
 
     Mask = 1019,
 }
@@ -2968,7 +2978,7 @@ export enum ERegionCode {
     Australia = 0x05,
     MiddleEast = 0x06,
     Africa = 0x07,
-    World = 0xFF,
+    World = 0xff,
 }
 
 export enum ECurrencyCode {

@@ -1,6 +1,6 @@
 import auth, { Session } from "solid-auth-client";
 
-auth.trackSession(session => {
+auth.trackSession((session) => {
     if (!session) {
         console.log("The user is not logged in");
     } else {
@@ -8,7 +8,7 @@ auth.trackSession(session => {
     }
 });
 
-auth.stopTrackSession(session => {
+auth.stopTrackSession((session) => {
     if (!session) {
         console.log("The user is not logged in");
     } else {
@@ -73,4 +73,6 @@ async function greetUser() {
 
 auth.on("login", (session: Session) => console.log(session.webId));
 auth.once("logout", () => console.log("Logged out"));
-auth.addListener("session", (session: Session | null) => console.log("Might have logged out"));
+auth.addListener("session", (session: Session | null) =>
+    console.log("Might have logged out"),
+);

@@ -83,7 +83,8 @@ declare namespace Page {
         route?: string | undefined;
     }
 
-    interface PageInstance<D extends AnyObject = any, T extends AnyObject = any> extends PageInstanceBaseProps<D> {
+    interface PageInstance<D extends AnyObject = any, T extends AnyObject = any>
+        extends PageInstanceBaseProps<D> {
         /**
          * 生命周期回调 监听页面加载
          *
@@ -167,11 +168,15 @@ declare namespace Page {
         /**
          * 监听原生标题栏搜索输入框输入内容变化事件
          */
-        onNavigationBarSearchInputChanged?(event: NavigationBarSearchInputEvent): void;
+        onNavigationBarSearchInputChanged?(
+            event: NavigationBarSearchInputEvent,
+        ): void;
         /**
          * 监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。
          */
-        onNavigationBarSearchInputConfirmed?(event: NavigationBarSearchInputEvent): void;
+        onNavigationBarSearchInputConfirmed?(
+            event: NavigationBarSearchInputEvent,
+        ): void;
         /**
          * 监听原生标题栏搜索输入框点击事件
          */
@@ -182,7 +187,9 @@ declare namespace Page {
         options: PageInstance<AnyObject, T> & T,
     ) => void;
 
-    type GetCurrentPages = <T extends AnyObject = {}>() => Array<PageInstance<AnyObject, T> & T>;
+    type GetCurrentPages = <T extends AnyObject = {}>() => Array<
+        PageInstance<AnyObject, T> & T
+    >;
 }
 
 declare const getCurrentPages: Page.GetCurrentPages;

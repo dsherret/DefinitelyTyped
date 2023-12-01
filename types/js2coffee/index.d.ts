@@ -87,7 +87,10 @@ declare namespace js2coffee {
      * `source`.
      * @returns CoffeeScript output as a `CodeWithSourceMap` object.
      */
-    function generate(ast: Transform, options?: Options): sourceMap.CodeWithSourceMap;
+    function generate(
+        ast: Transform,
+        options?: Options,
+    ): sourceMap.CodeWithSourceMap;
 
     /**
      * Version number. Type defintions are written for JS2Coffee v1.9.2.
@@ -226,7 +229,9 @@ declare namespace js2coffee {
          * @param node Unconvertable node.
          * @returns Node with type "CoffeeEscapedExpression".
          */
-        escapeJs(node: estree.Node): CoffeeNode & { type: "CoffeeEscapedExpression" };
+        escapeJs(
+            node: estree.Node,
+        ): CoffeeNode & { type: "CoffeeEscapedExpression" };
         /**
          * Inspect a ESTree node for debugging.
          *
@@ -287,7 +292,9 @@ declare namespace js2coffee {
          * @param srcnode Either a ESTree node or a node array terminating with `\n`.
          * @returns ESTree node array terminating with `\n`.
          */
-        newline(srcnode: estree.BaseNode | [estree.BaseNode, "\n"]): [estree.BaseNode, "\n"];
+        newline(
+            srcnode: estree.BaseNode | [estree.BaseNode, "\n"],
+        ): [estree.BaseNode, "\n"];
         /**
          * Get the next ESTree node after `node` that is not a comment
          *
@@ -295,7 +302,10 @@ declare namespace js2coffee {
          * @param node Current node in JS2Coffee stack.
          * @returns Next non-comment stack, if one is available.
          */
-        nextNonComment(body: estree.BaseNode[], node: estree.BaseNode): estree.BaseNode | undefined;
+        nextNonComment(
+            body: estree.BaseNode[],
+            node: estree.BaseNode,
+        ): estree.BaseNode | undefined;
         /**
          * Iterate to the next ESTree node until `fn` returns true.
          *
@@ -334,7 +344,10 @@ declare namespace js2coffee {
          * @param newNode.name Name of the new node.
          * @returns Newly typed and named node with previous source location.
          */
-        replace(node: estree.BaseNode, newNode: estree.BaseNode): estree.BaseNode;
+        replace(
+            node: estree.BaseNode,
+            newNode: estree.BaseNode,
+        ): estree.BaseNode;
         /**
          * Delimit using spaces. This also accounts for times where one of the
          * statements begin with a new line, such as in the case of function

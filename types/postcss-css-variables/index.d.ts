@@ -1,7 +1,9 @@
 import { Declaration, PluginCreator } from "postcss";
 
 declare namespace cssvariables {
-    type Variable = string | { value: string; isImportant?: boolean | undefined };
+    type Variable =
+        | string
+        | { value: string; isImportant?: boolean | undefined };
 
     interface Options {
         /**
@@ -20,7 +22,11 @@ declare namespace cssvariables {
          *
          * @default false
          */
-        preserve?: boolean | "computed" | ((declaration: Declaration) => boolean | "computed") | undefined;
+        preserve?:
+            | boolean
+            | "computed"
+            | ((declaration: Declaration) => boolean | "computed")
+            | undefined;
         /**
          * Define an object map of variables in JavaScript that will be declared at the `:root` scope.
          *

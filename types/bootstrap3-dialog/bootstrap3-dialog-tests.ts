@@ -61,13 +61,15 @@ function BootstrapDialogStaticTests() {
     const instance1: BootstrapDialog.DialogInstance = BootstrapDialog.show({});
     // BUTTON_SIZES
     BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_NORMAL] = "";
-    const buttonSize: string = BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_NORMAL];
+    const buttonSize: string =
+        BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_NORMAL];
     // Buttons order
     BootstrapDialog.BUTTONS_ORDER_CANCEL_OK = "";
     BootstrapDialog.BUTTONS_ORDER_OK_CANCEL = "";
     // DEFAULT_TEXTS
     BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = "Information";
-    const defaultText: string = BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT];
+    const defaultText: string =
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT];
     // Miscellaneous
     BootstrapDialog.ICON_SPINNER = "";
     BootstrapDialog.NAMESPACE = "";

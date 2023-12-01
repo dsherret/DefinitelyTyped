@@ -1,9 +1,9 @@
 const aceTokenIteratorTests = {
-    "test: token iterator initialization in JavaScript document": function() {
+    "test: token iterator initialization in JavaScript document": function () {
         var lines = [
             "function foo(items) {",
             "    for (var i=0; i<items.length; i++) {",
-            "        alert(items[i] + \"juhu\");",
+            '        alert(items[i] + "juhu");',
             "    } // Real Tab.",
             "}",
         ];
@@ -53,7 +53,7 @@ const aceTokenIteratorTests = {
         assert.equal(iterator.getCurrentToken(), null);
     },
 
-    "test: token iterator initialization in text document": function() {
+    "test: token iterator initialization in text document": function () {
         var lines = [
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit,",
             "sed do eiusmod tempor incididunt ut labore et dolore magna",
@@ -77,7 +77,11 @@ const aceTokenIteratorTests = {
         assert.equal(iterator.getCurrentTokenRow(), 2);
         assert.equal(iterator.getCurrentTokenColumn(), 0);
 
-        var iterator = new AceAjax.TokenIterator(session, 3, lines[3].length - 1);
+        var iterator = new AceAjax.TokenIterator(
+            session,
+            3,
+            lines[3].length - 1,
+        );
         assert.equal(iterator.getCurrentToken().value, lines[3]);
         assert.equal(iterator.getCurrentTokenRow(), 3);
         assert.equal(iterator.getCurrentTokenColumn(), 0);
@@ -86,11 +90,11 @@ const aceTokenIteratorTests = {
         assert.equal(iterator.getCurrentToken(), null);
     },
 
-    "test: token iterator step forward in JavaScript document": function() {
+    "test: token iterator step forward in JavaScript document": function () {
         var lines = [
             "function foo(items) {",
             "    for (var i=0; i<items.length; i++) {",
-            "        alert(items[i] + \"juhu\");",
+            '        alert(items[i] + "juhu");',
             "    } // Real Tab.",
             "}",
         ];
@@ -110,11 +114,11 @@ const aceTokenIteratorTests = {
         assert.equal(iterator.getCurrentToken(), null);
     },
 
-    "test: token iterator step backward in JavaScript document": function() {
+    "test: token iterator step backward in JavaScript document": function () {
         var lines = [
             "function foo(items) {",
             "     for (var i=0; i<items.length; i++) {",
-            "         alert(items[i] + \"juhu\");",
+            '         alert(items[i] + "juhu");',
             "     } // Real Tab.",
             "}",
         ];
@@ -134,11 +138,11 @@ const aceTokenIteratorTests = {
         assert.equal(iterator.getCurrentToken(), null);
     },
 
-    "test: token iterator reports correct row and column": function() {
+    "test: token iterator reports correct row and column": function () {
         var lines = [
             "function foo(items) {",
             "    for (var i=0; i<items.length; i++) {",
-            "        alert(items[i] + \"juhu\");",
+            '        alert(items[i] + "juhu");',
             "    } // Real Tab.",
             "}",
         ];

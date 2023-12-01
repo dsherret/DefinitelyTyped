@@ -78,9 +78,19 @@ declare namespace BootstrapSwitch {
 interface JQuery {
     bootstrapSwitch(): JQuery;
     bootstrapSwitch(options: BootstrapSwitch.BootstrapSwitchOptions): JQuery;
-    bootstrapSwitch(method: "state" | "radioAllOff" | "animate" | "disabled" | "readonly"): boolean;
     bootstrapSwitch(
-        method: "size" | "onColor" | "offColor" | "onText" | "offText" | "labelText" | "baseClass" | "wrapperClass",
+        method: "state" | "radioAllOff" | "animate" | "disabled" | "readonly",
+    ): boolean;
+    bootstrapSwitch(
+        method:
+            | "size"
+            | "onColor"
+            | "offColor"
+            | "onText"
+            | "offText"
+            | "labelText"
+            | "baseClass"
+            | "wrapperClass",
     ): string;
     bootstrapSwitch(method: string): JQuery;
     bootstrapSwitch(method: string, param: any): JQuery;
@@ -89,40 +99,56 @@ interface JQuery {
     off(
         events: "init.bootstrapSwitch",
         selector?: string,
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchEventObject,
+        ) => any,
     ): JQuery;
     off(
         events: "init.bootstrapSwitch",
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchEventObject,
+        ) => any,
     ): JQuery;
 
     off(
         events: "switchChange.bootstrapSwitch",
         selector?: string,
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject,
+        ) => any,
     ): JQuery;
     off(
         events: "switchChange.bootstrapSwitch",
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject,
+        ) => any,
     ): JQuery;
 
     on(
         events: "init.bootstrapSwitch",
         selector?: string,
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchEventObject,
+        ) => any,
     ): JQuery;
     on(
         events: "init.bootstrapSwitch",
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchEventObject,
+        ) => any,
     ): JQuery;
 
     on(
         events: "switchChange.bootstrapSwitch",
         selector?: string,
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject,
+        ) => any,
     ): JQuery;
     on(
         events: "switchChange.bootstrapSwitch",
-        handler?: (eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject) => any,
+        handler?: (
+            eventobject: BootstrapSwitch.BootstrapSwitchChangeEventObject,
+        ) => any,
     ): JQuery;
 }

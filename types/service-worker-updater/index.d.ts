@@ -9,7 +9,10 @@ export interface CheckOptions {
     updateOnLoad?: boolean;
 }
 
-export type UpdateHookResult = [hasUpdate: boolean, updateHandler: UpdateHandler];
+export type UpdateHookResult = [
+    hasUpdate: boolean,
+    updateHandler: UpdateHandler,
+];
 export function useSWUpdateChecker(opts?: CheckOptions): UpdateHookResult;
 
 export interface InjectedUpdateProps {

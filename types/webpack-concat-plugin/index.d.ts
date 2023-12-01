@@ -8,11 +8,17 @@ import { Compiler, Plugin } from "webpack";
 declare class ConcatPlugin extends Plugin {
     constructor(options?: ConcatPlugin.Options);
     ensureTrailingSlash(str: string): string;
-    getFileName(file: string | { [file: string]: string }, filePath?: string): string;
+    getFileName(
+        file: string | { [file: string]: string },
+        filePath?: string,
+    ): string;
     hashFile(files: string | { [file: string]: string }): string;
     getRelativePathAsync(context: string): Promise<string>;
     resolveReadFiles(compiler: Compiler): void;
-    resolveConcatAndUglify(compilation: webpack.compilation.Compilation, files: string[]): void;
+    resolveConcatAndUglify(
+        compilation: webpack.compilation.Compilation,
+        files: string[],
+    ): void;
 }
 
 declare namespace ConcatPlugin {
@@ -61,9 +67,11 @@ declare namespace ConcatPlugin {
          */
         injectType?: "prepend" | "append" | "none" | undefined;
         /** if set, will be used as the extra attributes of the script tag. */
-        attributes?: {
-            [key: string]: any;
-        } | undefined;
+        attributes?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
     }
 }
 

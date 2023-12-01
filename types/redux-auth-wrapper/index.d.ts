@@ -1,8 +1,18 @@
-import { ComponentClass, ComponentType, ElementType, FunctionComponent } from "react";
+import {
+    ComponentClass,
+    ComponentType,
+    ElementType,
+    FunctionComponent,
+} from "react";
 
-export type StateSelector<State, OwnProps, R> = (state: State, props: OwnProps) => R;
+export type StateSelector<State, OwnProps, R> = (
+    state: State,
+    props: OwnProps,
+) => R;
 
-export type AuthWrapperDecorator<Props> = (component: ComponentType<Props>) => ComponentClass<Props>;
+export type AuthWrapperDecorator<Props> = (
+    component: ComponentType<Props>,
+) => ComponentClass<Props>;
 
 export interface AuthConfig {
     AuthenticatingComponent?: ElementType | undefined;
@@ -11,5 +21,7 @@ export interface AuthConfig {
 
 export interface AuthBaseConfig<OwnProps = {}, State = {}> extends AuthConfig {
     authenticatedSelector: StateSelector<State, OwnProps, boolean>;
-    authenticatingSelector?: StateSelector<State, OwnProps, boolean> | undefined;
+    authenticatingSelector?:
+        | StateSelector<State, OwnProps, boolean>
+        | undefined;
 }

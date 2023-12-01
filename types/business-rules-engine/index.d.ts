@@ -104,7 +104,9 @@ export interface IPropertyValidationRule<T> {
         [name: string]: any;
     };
     Validate(context: IValidationContext<T>): IValidationFailure[];
-    ValidateAsync(context: IValidationContext<T>): Q.Promise<IValidationFailure[]>;
+    ValidateAsync(
+        context: IValidationContext<T>,
+    ): Q.Promise<IValidationFailure[]>;
 }
 export interface IValidationContext<T> {
     Value: string;
@@ -175,7 +177,11 @@ export class AbstractValidator<T> implements IAbstractValidator<T> {
     public RuleFor(prop: string, validator: IPropertyValidator): void;
     public ValidationFor(prop: string, fce: IValidatorFce): void;
     public Validation(fce: IValidatorFce): void;
-    public ValidatorFor<K>(prop: string, validator: IAbstractValidator<K>, forList?: boolean): void;
+    public ValidatorFor<K>(
+        prop: string,
+        validator: IAbstractValidator<K>,
+        forList?: boolean,
+    ): void;
     public CreateAbstractRule(name: string): IAbstractValidationRule<T>;
     public CreateAbstractListRule(name: string): IAbstractValidationRule<T>;
     public CreateRule(name: string): IAbstractValidationRule<T>;
@@ -184,50 +190,50 @@ export class AbstractValidator<T> implements IAbstractValidator<T> {
 export class MessageLocalization {
     static customMsg: string;
     static defaultMessages: {
-        "required": string;
-        "remote": string;
-        "email": string;
-        "url": string;
-        "date": string;
-        "dateISO": string;
-        "number": string;
-        "digits": string;
-        "signedDigits": string;
-        "creditcard": string;
-        "equalTo": string;
-        "maxlength": string;
-        "minlength": string;
-        "rangelength": string;
-        "range": string;
-        "max": string;
-        "min": string;
-        "step": string;
-        "contains": string;
-        "mask": string;
-        "custom": string;
+        required: string;
+        remote: string;
+        email: string;
+        url: string;
+        date: string;
+        dateISO: string;
+        number: string;
+        digits: string;
+        signedDigits: string;
+        creditcard: string;
+        equalTo: string;
+        maxlength: string;
+        minlength: string;
+        rangelength: string;
+        range: string;
+        max: string;
+        min: string;
+        step: string;
+        contains: string;
+        mask: string;
+        custom: string;
     };
     static ValidationMessages: {
-        "required": string;
-        "remote": string;
-        "email": string;
-        "url": string;
-        "date": string;
-        "dateISO": string;
-        "number": string;
-        "digits": string;
-        "signedDigits": string;
-        "creditcard": string;
-        "equalTo": string;
-        "maxlength": string;
-        "minlength": string;
-        "rangelength": string;
-        "range": string;
-        "max": string;
-        "min": string;
-        "step": string;
-        "contains": string;
-        "mask": string;
-        "custom": string;
+        required: string;
+        remote: string;
+        email: string;
+        url: string;
+        date: string;
+        dateISO: string;
+        number: string;
+        digits: string;
+        signedDigits: string;
+        creditcard: string;
+        equalTo: string;
+        maxlength: string;
+        minlength: string;
+        rangelength: string;
+        range: string;
+        max: string;
+        min: string;
+        step: string;
+        contains: string;
+        mask: string;
+        custom: string;
     };
     static GetValidationMessage(validator: any): string;
 }

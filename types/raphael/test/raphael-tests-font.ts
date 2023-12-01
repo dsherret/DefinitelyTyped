@@ -1,6 +1,6 @@
 import R, { RaphaelFont } from "raphael";
 
-(() => {
+() => {
     const font: RaphaelFont = {
         w: 209,
         face: {
@@ -208,7 +208,7 @@ import R, { RaphaelFont } from "raphael";
                 d: "",
                 w: 183,
             },
-            "\/": {
+            "/": {
                 d: "",
                 w: 118,
             },
@@ -248,7 +248,7 @@ import R, { RaphaelFont } from "raphael";
                 d: "",
                 w: 66,
             },
-            "\"": {
+            '"': {
                 d: "",
                 w: 97,
             },
@@ -405,4 +405,4 @@ import R, { RaphaelFont } from "raphael";
 
     // $ExpectType RaphaelSet<"SVG" | "VML">
     R().print(0, 0, "foo", font);
-});
+};

@@ -1,4 +1,10 @@
-import { getAll, getAllData, getRandom, getRandomData, UserAgent } from "random-useragent";
+import {
+    getAll,
+    getAllData,
+    getRandom,
+    getRandomData,
+    UserAgent,
+} from "random-useragent";
 
 function filter(value: UserAgent) {
     return value.browserName !== "Chrome";

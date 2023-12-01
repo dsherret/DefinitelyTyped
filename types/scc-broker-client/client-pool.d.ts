@@ -34,10 +34,16 @@ declare class ClientPool extends AsyncStreamEmitter<any> {
     emit(eventName: "publishFail", data: ClientPool.PublishFailData): void;
 
     listener(eventName: "error"): ConsumableStream<{ error: Error }>;
-    listener(eventName: "subscribe"): ConsumableStream<ClientPool.SubscribeData>;
-    listener(eventName: "subscribeFail"): ConsumableStream<ClientPool.SubscribeFailData>;
+    listener(
+        eventName: "subscribe",
+    ): ConsumableStream<ClientPool.SubscribeData>;
+    listener(
+        eventName: "subscribeFail",
+    ): ConsumableStream<ClientPool.SubscribeFailData>;
     listener(eventName: "publish"): ConsumableStream<ClientPool.PublishData>;
-    listener(eventName: "publishFail"): ConsumableStream<ClientPool.PublishFailData>;
+    listener(
+        eventName: "publishFail",
+    ): ConsumableStream<ClientPool.PublishFailData>;
 
     breakDownURI(uri: string): BrokenDownURI;
 
@@ -47,7 +53,10 @@ declare class ClientPool extends AsyncStreamEmitter<any> {
 
     subscriptions(includePending?: boolean): string[];
 
-    subscribe(channelName: string, options?: AGClientSocket.SubscribeOptions): AGChannel<any>;
+    subscribe(
+        channelName: string,
+        options?: AGClientSocket.SubscribeOptions,
+    ): AGChannel<any>;
     unsubscribe(channelName: string): Promise<void>;
     isSubscribed(channelName: string, includePending?: boolean): boolean;
 

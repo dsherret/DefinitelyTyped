@@ -10,4 +10,7 @@ interface Callback {
     (statusCode: number, response: string, request: XMLHttpRequest): any;
 }
 
-export declare function ajax(params: RequestParameters, callback: Callback): XMLHttpRequest;
+export declare function ajax(
+    params: RequestParameters,
+    callback: Callback,
+): XMLHttpRequest;

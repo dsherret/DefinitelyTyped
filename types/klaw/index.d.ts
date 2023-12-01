@@ -23,7 +23,14 @@ declare module "klaw" {
             preserveSymlinks?: boolean | undefined;
         }
 
-        type Event = "close" | "data" | "end" | "error" | "pause" | "readable" | "resume";
+        type Event =
+            | "close"
+            | "data"
+            | "end"
+            | "error"
+            | "pause"
+            | "readable"
+            | "resume";
 
         interface Walker extends Readable, AsyncIterable<Item> {
             on(event: Event, listener: Function): this;

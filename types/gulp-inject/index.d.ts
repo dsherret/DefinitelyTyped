@@ -3,7 +3,10 @@
 
 import File = require("vinyl");
 
-declare function inject(sources: NodeJS.ReadableStream, options?: inject.IOptions): NodeJS.ReadWriteStream;
+declare function inject(
+    sources: NodeJS.ReadableStream,
+    options?: inject.IOptions,
+): NodeJS.ReadWriteStream;
 
 declare namespace inject {
     interface ITagFunction {
@@ -11,7 +14,13 @@ declare namespace inject {
     }
 
     interface ITransformFunction {
-        (filepath: string, file?: File, index?: number, length?: number, targetFile?: File): string;
+        (
+            filepath: string,
+            file?: File,
+            index?: number,
+            length?: number,
+            targetFile?: File,
+        ): string;
     }
 
     interface IOptions {

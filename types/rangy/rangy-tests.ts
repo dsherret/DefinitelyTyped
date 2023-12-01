@@ -8,8 +8,7 @@ declare function getRangyRange(): RangyRange;
 type TextRange = any; // ?
 
 function testRangyStatic() {
-    rangy.addInitListener((rangy: RangyStatic) => {
-    });
+    rangy.addInitListener((rangy: RangyStatic) => {});
 
     rangy.createMissingNativeApi();
     rangy.shim();
@@ -73,8 +72,10 @@ function testRangyRange() {
     rangyRange.splitBoundaries();
     assertString(rangyRange.toHtml());
     assertRangyRange(rangyRange.union(rangyRange));
-    let characterRange: { start: number; end: number } = rangyRange.toCharacterRange(new Node());
-    let characterRange2: { start: number; end: number } = rangyRange.toCharacterRange(new Node(), {});
+    let characterRange: { start: number; end: number } =
+        rangyRange.toCharacterRange(new Node());
+    let characterRange2: { start: number; end: number } =
+        rangyRange.toCharacterRange(new Node(), {});
 }
 
 function testSelection() {
@@ -104,7 +105,10 @@ function testSelection() {
 }
 
 function testRangyClassApplier() {
-    function elementCreateFunction(element: Element, classApplier: RangyClassApplier): number {
+    function elementCreateFunction(
+        element: Element,
+        classApplier: RangyClassApplier,
+    ): number {
         return 1;
     }
 
@@ -131,7 +135,10 @@ function testRangyClassApplier() {
     };
 
     let classApplier: RangyClassApplier;
-    classApplier = rangy.createClassApplier("test", options, ["test1", "test2"]);
+    classApplier = rangy.createClassApplier("test", options, [
+        "test1",
+        "test2",
+    ]);
     classApplier = rangy.createClassApplier("test", options, "test1, test2");
 
     let rangyRange: RangyRange = rangy.createRange();

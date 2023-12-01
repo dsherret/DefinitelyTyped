@@ -1,4 +1,11 @@
-import type { DefaultRouterOptions, NavigationState, ParamListBase, PartialState, Route, Router } from "./types";
+import type {
+    DefaultRouterOptions,
+    NavigationState,
+    ParamListBase,
+    PartialState,
+    Route,
+    Router,
+} from "./types";
 // tslint:disable:interface-over-type-literal
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type TabActionType = {
@@ -11,28 +18,33 @@ export declare type TabActionType = {
     target?: string | undefined;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type BackBehavior = "initialRoute" | "order" | "history" | "none";
+export declare type BackBehavior =
+    | "initialRoute"
+    | "order"
+    | "history"
+    | "none";
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type TabRouterOptions = DefaultRouterOptions & {
     backBehavior?: BackBehavior | undefined;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type TabNavigationState<ParamList extends ParamListBase> =
-    & Omit<NavigationState<ParamList>, "history">
-    & {
-        /**
-         * Type of the router, in this case, it's tab.
-         */
-        type: "tab";
-        /**
-         * List of previously visited route keys.
-         */
-        // tslint:disable-next-line array-type
-        history: Array<{
-            type: "route";
-            key: string;
-        }>;
-    };
+export declare type TabNavigationState<ParamList extends ParamListBase> = Omit<
+    NavigationState<ParamList>,
+    "history"
+> & {
+    /**
+     * Type of the router, in this case, it's tab.
+     */
+    type: "tab";
+    /**
+     * List of previously visited route keys.
+     */
+    // tslint:disable-next-line array-type
+    history: Array<{
+        type: "route";
+        key: string;
+    }>;
+};
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type TabActionHelpers<ParamList extends ParamListBase> = {
     /**
@@ -42,7 +54,8 @@ export declare type TabActionHelpers<ParamList extends ParamListBase> = {
      * @param [params] Params object for the route.
      */
     jumpTo<RouteName extends Extract<keyof ParamList, string>>(
-        ...args: undefined extends ParamList[RouteName] ? [RouteName] | [RouteName, ParamList[RouteName]]
+        ...args: undefined extends ParamList[RouteName]
+            ? [RouteName] | [RouteName, ParamList[RouteName]]
             : [RouteName, ParamList[RouteName]]
     ): void;
 };
@@ -51,93 +64,73 @@ export declare const TabActions: {
     // tslint:disable-next-line no-redundant-undefined
     jumpTo(name: string, params?: object): TabActionType;
 };
-export default function TabRouter(
-    { initialRouteName, backBehavior }: TabRouterOptions,
-): Router<
+export default function TabRouter({
+    initialRouteName,
+    backBehavior,
+}: TabRouterOptions): Router<
     TabNavigationState<Record<string, object | undefined>>,
-    {
-        type: "GO_BACK";
-        // tslint:disable-next-line no-redundant-undefined
-        source?: string | undefined;
-        // tslint:disable-next-line no-redundant-undefined
-        target?: string | undefined;
-    } | {
-        type: "NAVIGATE";
-        payload: {
-            key: string;
-            name?: undefined;
-            // tslint:disable-next-line no-redundant-undefined
-            params?: object | undefined;
-            // tslint:disable-next-line no-redundant-undefined
-            merge?: boolean | undefined;
-        } | {
-            name: string;
-            // tslint:disable-next-line no-redundant-undefined
-            key?: string | undefined;
-            // tslint:disable-next-line no-redundant-undefined
-            params?: object | undefined;
-            // tslint:disable-next-line no-redundant-undefined
-            merge?: boolean | undefined;
-        };
-        // tslint:disable-next-line no-redundant-undefined
-        source?: string | undefined;
-        // tslint:disable-next-line no-redundant-undefined
-        target?: string | undefined;
-    } | {
-        type: "RESET";
-        payload:
-            | Readonly<{
-                key: string;
-                index: number;
-                routeNames: string[];
-                // tslint:disable-next-line no-redundant-undefined array-type
-                history?: unknown[] | undefined;
-                // tslint:disable-next-line array-type
-                routes: Array<
-                    & Readonly<{
-                        key: string;
-                        name: string;
-                    }>
-                    & Readonly<{
-                        // tslint:disable-next-line no-redundant-undefined
-                        params?: object | undefined;
-                    }>
-                    & {
-                        // tslint:disable-next-line no-redundant-undefined
-                        state?: Readonly<any> | PartialState<Readonly<any>> | undefined;
-                    }
-                >;
-                type: string;
-                stale: false;
-            }>
-            | PartialState<
-                Readonly<{
+    | {
+          type: "GO_BACK";
+          // tslint:disable-next-line no-redundant-undefined
+          source?: string | undefined;
+          // tslint:disable-next-line no-redundant-undefined
+          target?: string | undefined;
+      }
+    | {
+          type: "NAVIGATE";
+          payload:
+              | {
+                    key: string;
+                    name?: undefined;
+                    // tslint:disable-next-line no-redundant-undefined
+                    params?: object | undefined;
+                    // tslint:disable-next-line no-redundant-undefined
+                    merge?: boolean | undefined;
+                }
+              | {
+                    name: string;
+                    // tslint:disable-next-line no-redundant-undefined
+                    key?: string | undefined;
+                    // tslint:disable-next-line no-redundant-undefined
+                    params?: object | undefined;
+                    // tslint:disable-next-line no-redundant-undefined
+                    merge?: boolean | undefined;
+                };
+          // tslint:disable-next-line no-redundant-undefined
+          source?: string | undefined;
+          // tslint:disable-next-line no-redundant-undefined
+          target?: string | undefined;
+      }
+    | {
+          type: "RESET";
+          payload:
+              | Readonly<{
                     key: string;
                     index: number;
                     routeNames: string[];
-                    // tslint:disable-next-line no-redundant-undefined
+                    // tslint:disable-next-line no-redundant-undefined array-type
                     history?: unknown[] | undefined;
                     // tslint:disable-next-line array-type
                     routes: Array<
-                        & Readonly<{
+                        Readonly<{
                             key: string;
                             name: string;
-                        }>
-                        & Readonly<{
-                            // tslint:disable-next-line no-redundant-undefined
-                            params?: object | undefined;
-                        }>
-                        & {
-                            // tslint:disable-next-line no-redundant-undefined
-                            state?: Readonly<any> | PartialState<Readonly<any>> | undefined;
-                        }
+                        }> &
+                            Readonly<{
+                                // tslint:disable-next-line no-redundant-undefined
+                                params?: object | undefined;
+                            }> & {
+                                // tslint:disable-next-line no-redundant-undefined
+                                state?:
+                                    | Readonly<any>
+                                    | PartialState<Readonly<any>>
+                                    | undefined;
+                            }
                     >;
                     type: string;
                     stale: false;
                 }>
-            >
-            | (
-                & Pick<
+              | PartialState<
                     Readonly<{
                         key: string;
                         index: number;
@@ -146,46 +139,86 @@ export default function TabRouter(
                         history?: unknown[] | undefined;
                         // tslint:disable-next-line array-type
                         routes: Array<
-                            & Readonly<{
+                            Readonly<{
                                 key: string;
                                 name: string;
-                            }>
-                            & Readonly<{
-                                // tslint:disable-next-line no-redundant-undefined
-                                params?: object | undefined;
-                            }>
-                            & {
-                                // tslint:disable-next-line no-redundant-undefined
-                                state?: Readonly<any> | PartialState<Readonly<any>> | undefined;
-                            }
+                            }> &
+                                Readonly<{
+                                    // tslint:disable-next-line no-redundant-undefined
+                                    params?: object | undefined;
+                                }> & {
+                                    // tslint:disable-next-line no-redundant-undefined
+                                    state?:
+                                        | Readonly<any>
+                                        | PartialState<Readonly<any>>
+                                        | undefined;
+                                }
+                        >;
+                        type: string;
+                        stale: false;
+                    }>
+                >
+              | (Pick<
+                    Readonly<{
+                        key: string;
+                        index: number;
+                        routeNames: string[];
+                        // tslint:disable-next-line no-redundant-undefined
+                        history?: unknown[] | undefined;
+                        // tslint:disable-next-line array-type
+                        routes: Array<
+                            Readonly<{
+                                key: string;
+                                name: string;
+                            }> &
+                                Readonly<{
+                                    // tslint:disable-next-line no-redundant-undefined
+                                    params?: object | undefined;
+                                }> & {
+                                    // tslint:disable-next-line no-redundant-undefined
+                                    state?:
+                                        | Readonly<any>
+                                        | PartialState<Readonly<any>>
+                                        | undefined;
+                                }
                         >;
                         type: string;
                         stale: false;
                     }>,
-                    "stale" | "key" | "index" | "routeNames" | "history" | "type"
-                >
-                & {
+                    | "stale"
+                    | "key"
+                    | "index"
+                    | "routeNames"
+                    | "history"
+                    | "type"
+                > & {
                     // tslint:disable-next-line no-redundant-undefined array-type use-default-type-parameter
-                    routes: Array<Pick<Route<string, object | undefined>, "name" | "params">>;
-                }
-            )
-            | undefined;
-        // tslint:disable-next-line no-redundant-undefined
-        source?: string | undefined;
-        // tslint:disable-next-line no-redundant-undefined
-        target?: string | undefined;
-    } | {
-        type: "SET_PARAMS";
-        /**
-         * List of previously visited route keys.
-         */
-        payload: {
-            // tslint:disable-next-line no-redundant-undefined
-            params?: object | undefined;
-        };
-        // tslint:disable-next-line no-redundant-undefined
-        source?: string | undefined;
-        // tslint:disable-next-line no-redundant-undefined
-        target?: string | undefined;
-    } | TabActionType
+                    routes: Array<
+                        Pick<
+                            Route<string, object | undefined>,
+                            "name" | "params"
+                        >
+                    >;
+                })
+              | undefined;
+          // tslint:disable-next-line no-redundant-undefined
+          source?: string | undefined;
+          // tslint:disable-next-line no-redundant-undefined
+          target?: string | undefined;
+      }
+    | {
+          type: "SET_PARAMS";
+          /**
+           * List of previously visited route keys.
+           */
+          payload: {
+              // tslint:disable-next-line no-redundant-undefined
+              params?: object | undefined;
+          };
+          // tslint:disable-next-line no-redundant-undefined
+          source?: string | undefined;
+          // tslint:disable-next-line no-redundant-undefined
+          target?: string | undefined;
+      }
+    | TabActionType
 >;

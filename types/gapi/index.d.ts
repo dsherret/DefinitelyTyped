@@ -57,28 +57,31 @@ declare namespace gapi.auth {
      * @param params A key/value map of parameters for the request. If the key is not one of the expected OAuth 2.0 parameters, it is added to the URI as a query parameter.
      * @param callback The function to call once the login process is complete. The function takes an OAuth 2.0 token object as its only parameter.
      */
-    export function authorize(params: {
-        /**
-         * The application's client ID.
-         */
-        client_id?: string | undefined;
-        /**
-         * If true, then login uses "immediate mode", which means that the token is refreshed behind the scenes, and no UI is shown to the user.
-         */
-        immediate?: boolean | undefined;
-        /**
-         * The OAuth 2.0 response type property. Default: token
-         */
-        response_type?: string | undefined;
-        /**
-         * The auth scope or scopes to authorize. Auth scopes for individual APIs can be found in their documentation.
-         */
-        scope?: any;
-        /**
-         * The user to sign in as. -1 to toggle a multi-account chooser, 0 to default to the user's current account, and 1 to automatically sign in if the user is signed into Google Plus.
-         */
-        authuser?: number | undefined;
-    }, callback: (token: GoogleApiOAuth2TokenObject) => any): void;
+    export function authorize(
+        params: {
+            /**
+             * The application's client ID.
+             */
+            client_id?: string | undefined;
+            /**
+             * If true, then login uses "immediate mode", which means that the token is refreshed behind the scenes, and no UI is shown to the user.
+             */
+            immediate?: boolean | undefined;
+            /**
+             * The OAuth 2.0 response type property. Default: token
+             */
+            response_type?: string | undefined;
+            /**
+             * The auth scope or scopes to authorize. Auth scopes for individual APIs can be found in their documentation.
+             */
+            scope?: any;
+            /**
+             * The user to sign in as. -1 to toggle a multi-account chooser, 0 to default to the user's current account, and 1 to automatically sign in if the user is signed into Google Plus.
+             */
+            authuser?: number | undefined;
+        },
+        callback: (token: GoogleApiOAuth2TokenObject) => any,
+    ): void;
     /**
      * Initializes the authorization feature. Call this when the client loads to prevent popup blockers from blocking the auth window on gapi.auth.authorize calls.
      * @param callback A callback to execute when the auth feature is ready to make authorization calls.
@@ -222,7 +225,12 @@ declare namespace gapi.client {
      * @param callback the function that is called once the API interface is loaded
      * @param url optional, the url of your app - if using Google's APIs, don't set it
      */
-    export function load(name: string, version: string, callback: () => any, url?: string): void;
+    export function load(
+        name: string,
+        version: string,
+        callback: () => any,
+        url?: string,
+    ): void;
     /**
      * Creates a HTTP request for making RESTful requests.
      * An object encapsulating the various arguments for this method.
@@ -234,7 +242,11 @@ declare namespace gapi.client {
      * @param version The version of the API which defines the method to be executed. Defaults to v1
      * @param rpcParams A key-value pair of the params to supply to this RPC
      */
-    export function rpcRequest(method: string, version?: string, rpcParams?: any): RpcRequest;
+    export function rpcRequest(
+        method: string,
+        version?: string,
+        rpcParams?: any,
+    ): RpcRequest;
     /**
      * Sets the API key for the application.
      * @param apiKey The API key to set
@@ -276,8 +288,16 @@ declare namespace gapi.client {
     class HttpRequestPromise<T> {
         // Taken and adapted from https://github.com/Microsoft/TypeScript/blob/v2.3.1/lib/lib.es5.d.ts#L1343
         then<TResult1 = T, TResult2 = never>(
-            onfulfilled?: ((response: HttpRequestFulfilled<T>) => TResult1 | PromiseLike<TResult1>) | null,
-            onrejected?: ((reason: HttpRequestRejected) => TResult2 | PromiseLike<TResult2>) | null,
+            onfulfilled?:
+                | ((
+                      response: HttpRequestFulfilled<T>,
+                  ) => TResult1 | PromiseLike<TResult1>)
+                | null,
+            onrejected?:
+                | ((
+                      reason: HttpRequestRejected,
+                  ) => TResult2 | PromiseLike<TResult2>)
+                | null,
             opt_context?: any,
         ): Promise<TResult1 | TResult2>;
     }
@@ -318,22 +338,25 @@ declare namespace gapi.client {
          * @param httpRequest The HTTP request to add to this batch.
          * @param opt_params extra parameters for this batch entry.
          */
-        add(httpRequest: HttpRequest<any>, opt_params?: {
-            /**
-             * Identifies the response for this request in the map of batch responses. If one is not provided, the system generates a random ID.
-             */
-            id: string;
-            callback: (
+        add(
+            httpRequest: HttpRequest<any>,
+            opt_params?: {
                 /**
-                 * is the response for this request only. Its format is defined by the API method being called.
+                 * Identifies the response for this request in the map of batch responses. If one is not provided, the system generates a random ID.
                  */
-                individualResponse: any,
-                /**
-                 * is the raw batch ID-response map as a string. It contains all responses to all requests in the batch.
-                 */
-                rawBatchResponse: any,
-            ) => any;
-        }): void;
+                id: string;
+                callback: (
+                    /**
+                     * is the response for this request only. Its format is defined by the API method being called.
+                     */
+                    individualResponse: any,
+                    /**
+                     * is the raw batch ID-response map as a string. It contains all responses to all requests in the batch.
+                     */
+                    rawBatchResponse: any,
+                ) => any;
+            },
+        ): void;
         /**
          * Executes all requests in the batch. The supplied callback is executed on success or failure.
          * @param callback The callback to execute when the batch returns.

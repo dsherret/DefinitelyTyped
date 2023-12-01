@@ -8,8 +8,10 @@ function test_options() {
         hiddenClass: "some-class",
         stoppable: true,
         start: true,
-        onStart: (loading: JQueryEasyLoading.LoadingObject) => console.log("starting"),
-        onStop: (loading: JQueryEasyLoading.LoadingObject) => console.log("stopping"),
+        onStart: (loading: JQueryEasyLoading.LoadingObject) =>
+            console.log("starting"),
+        onStop: (loading: JQueryEasyLoading.LoadingObject) =>
+            console.log("stopping"),
         onClick: (someVar1: any, someVar2: any) => console.log("some message"),
     });
 

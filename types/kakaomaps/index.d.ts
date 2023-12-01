@@ -17,7 +17,13 @@ declare namespace kakao.maps {
         constructor(container: HTMLElement, options?: MapOptions);
         setCenter(latlng: LatLng): void;
         getCenter(): LatLng;
-        setLevel(level: number, options?: { animate?: boolean | { duration?: number }; anchor?: LatLng }): void;
+        setLevel(
+            level: number,
+            options?: {
+                animate?: boolean | { duration?: number };
+                anchor?: LatLng;
+            },
+        ): void;
         getLevel(): number;
         setMapTypeId(mapTypeId: MapTypeId): void;
         getMapTypeId(): MapTypeId;
@@ -33,7 +39,10 @@ declare namespace kakao.maps {
         setMaxLevel(maxLevel: number): void;
         panBy(dx: number, dy: number): void;
         panTo(latlng_or_bounds: LatLng | LatLngBounds, padding?: number): void;
-        addControl(control: MapTypeControl | ZoomControl, position: ControlPosition): void;
+        addControl(
+            control: MapTypeControl | ZoomControl,
+            position: ControlPosition,
+        ): void;
         removeControl(control: MapTypeControl | ZoomControl): void;
         setDraggable(draggable: boolean): void;
         getDraggable(): boolean;
@@ -46,15 +55,16 @@ declare namespace kakao.maps {
         removeOverlayMapTypeId(mapTypeId: MapTypeId): void;
         setKeyboardShortcuts(active: boolean): void;
         getKeyboardShortcuts(): boolean;
-        setCopyrightPosition(copyrightPosition: CopyrightPosition, reversed?: boolean): void;
+        setCopyrightPosition(
+            copyrightPosition: CopyrightPosition,
+            reversed?: boolean,
+        ): void;
         getProjection(): MapProjection;
         setCursor(style: string): void;
         // event: center_changed, zoom_start, zoom_changed, bounds_changed, click, dblclick, rightclick, mousemove, dragstart, drag, dragend, idle, tilesloaded, maptypeid_changed
     }
-    class MapTypeControl {
-    }
-    class ZoomControl {
-    }
+    class MapTypeControl {}
+    class ZoomControl {}
     enum MAP_TYPE_ID {
         NORMAL = 1,
         ROADMAP = 1,
@@ -170,8 +180,16 @@ declare namespace kakao.maps {
         toString(): string;
     }
     namespace event {
-        function addListener(target: any, type: string, handler: EventListener | MouseEventListener): void;
-        function removeListener(target: any, type: string, handler: EventListener | MouseEventListener): void;
+        function addListener(
+            target: any,
+            type: string,
+            handler: EventListener | MouseEventListener,
+        ): void;
+        function removeListener(
+            target: any,
+            type: string,
+            handler: EventListener | MouseEventListener,
+        ): void;
         function trigger(target: any, type: string, data: any): void;
         function preventMap(): void;
     }
@@ -221,14 +239,18 @@ declare namespace kakao.maps {
     }
     // tslint:disable-next-line no-unnecessary-class
     class MarkerImage {
-        constructor(src: string, size: Size, options?: {
-            alt?: string;
-            coords?: string;
-            offset?: Point;
-            shape?: string;
-            spriteOrigin?: Point;
-            spriteSize?: Size;
-        });
+        constructor(
+            src: string,
+            size: Size,
+            options?: {
+                alt?: string;
+                coords?: string;
+                offset?: Point;
+                shape?: string;
+                spriteOrigin?: Point;
+                spriteSize?: Size;
+            },
+        );
     }
     interface InfoWindowOptions {
         content?: HTMLElement | string;
@@ -445,7 +467,11 @@ declare namespace kakao.maps {
     }
     class RoadviewClient {
         constructor();
-        getNearestPanoId(position: LatLng, radius: number, callback: (panoId: number) => void): void;
+        getNearestPanoId(
+            position: LatLng,
+            radius: number,
+            callback: (panoId: number) => void,
+        ): void;
     }
     class RoadviewOverlay {
         constructor();
@@ -526,7 +552,11 @@ declare namespace kakao.maps {
             setMap(map: Map | null): void;
             keywordSearch(
                 keyword: string,
-                callback: (result: any[], status: Status, pagination: Pagination) => void,
+                callback: (
+                    result: any[],
+                    status: Status,
+                    pagination: Pagination,
+                ) => void,
                 options?: {
                     category_group_code?: string;
                     location?: LatLng;
@@ -544,7 +574,11 @@ declare namespace kakao.maps {
             ): void;
             categorySearch(
                 code: string,
-                callback: (result: any[], status: Status, pagination: Pagination) => void,
+                callback: (
+                    result: any[],
+                    status: Status,
+                    pagination: Pagination,
+                ) => void,
                 options?: {
                     location?: LatLng;
                     x?: number;
@@ -564,24 +598,43 @@ declare namespace kakao.maps {
             constructor();
             addressSearch(
                 addr: string,
-                callback: (result: any[], status: Status, pagination: Pagination) => void,
+                callback: (
+                    result: any[],
+                    status: Status,
+                    pagination: Pagination,
+                ) => void,
                 options?: {
                     page?: number;
                     size?: number;
                     analyze_type?: AnalyzeType;
                 },
             ): void;
-            coord2Address(x: number, y: number, callback: (result: any[], status: Status) => void, options?: {
-                input_coord?: Coords;
-            }): void;
-            coord2RegionCode(x: number, y: number, callback: (result: any[], status: Status) => void, options?: {
-                input_coord?: Coords;
-                output_coord?: Coords;
-            }): void;
-            transCoord(x: number, y: number, callback: (result: any[], status: Status) => void, options?: {
-                input_coord?: Coords;
-                output_coord?: Coords;
-            }): void;
+            coord2Address(
+                x: number,
+                y: number,
+                callback: (result: any[], status: Status) => void,
+                options?: {
+                    input_coord?: Coords;
+                },
+            ): void;
+            coord2RegionCode(
+                x: number,
+                y: number,
+                callback: (result: any[], status: Status) => void,
+                options?: {
+                    input_coord?: Coords;
+                    output_coord?: Coords;
+                },
+            ): void;
+            transCoord(
+                x: number,
+                y: number,
+                callback: (result: any[], status: Status) => void,
+                options?: {
+                    input_coord?: Coords;
+                    output_coord?: Coords;
+                },
+            ): void;
         }
         class Pagination {
             totalCount: number;
@@ -762,7 +815,11 @@ declare namespace kakao.maps {
         }
         class DrawingManager {
             constructor(options?: DrawingManagerOptions);
-            setStyle(type: OverlayType, prop: string, value: string | number): void;
+            setStyle(
+                type: OverlayType,
+                prop: string,
+                value: string | number,
+            ): void;
             setStrokeWeight(strokeWeight: number): void;
             setStrokeColor(strokeColor: string): void;
             select(type: OverlayType, index?: number): void;
@@ -773,14 +830,16 @@ declare namespace kakao.maps {
             redoable(): boolean;
             getData(types?: OverlayType[]): object;
             getOverlays(types?: OverlayType[]): object;
-            put(overlayType: OverlayType, param1: LatLng | LatLngBounds | LatLng[] | LatLng[][], param2?: number): void;
+            put(
+                overlayType: OverlayType,
+                param1: LatLng | LatLngBounds | LatLng[] | LatLng[][],
+                param2?: number,
+            ): void;
             remove(overlay: any /*ExtendsOverlay*/): void;
             // event: select,drawstart,draw,drawend,drawnext,cancel,remove,state_changed
         }
         class Toolbox {
-            constructor(options?: {
-                drawingManager?: DrawingManager;
-            });
+            constructor(options?: { drawingManager?: DrawingManager });
             getElement(): any;
         }
         interface MouseEvent {

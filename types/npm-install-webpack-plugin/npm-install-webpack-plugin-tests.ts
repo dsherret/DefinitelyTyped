@@ -15,8 +15,11 @@ const _: Configuration = {
         new NpmInstallPlugin({
             dev: (module, path) => {
                 return (
-                    ["babel-preset-react-hmre", "webpack-dev-middleware", "webpack-hot-middleware"].indexOf(module)
-                        !== -1
+                    [
+                        "babel-preset-react-hmre",
+                        "webpack-dev-middleware",
+                        "webpack-hot-middleware",
+                    ].indexOf(module) !== -1
                 );
             },
         }),

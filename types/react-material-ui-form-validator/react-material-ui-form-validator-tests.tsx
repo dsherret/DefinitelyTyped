@@ -1,6 +1,11 @@
 import { MenuItem } from "material-ui";
 import * as React from "react";
-import { SelectValidator, TextValidator, ValidatorComponent, ValidatorForm } from "react-material-ui-form-validator";
+import {
+    SelectValidator,
+    TextValidator,
+    ValidatorComponent,
+    ValidatorForm,
+} from "react-material-ui-form-validator";
 
 class Test extends React.Component {
     textValidatorRef: React.RefObject<TextValidator> = React.createRef();
@@ -12,7 +17,7 @@ class Test extends React.Component {
     onValidate = (isValid: boolean) => {};
 
     componentDidMount() {
-        ValidatorForm.addValidationRule("isTruthy", value => value);
+        ValidatorForm.addValidationRule("isTruthy", (value) => value);
         const { textValidatorRef } = this;
         if (textValidatorRef && textValidatorRef.current) {
             textValidatorRef.current.validate("value");

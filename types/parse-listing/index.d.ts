@@ -44,7 +44,10 @@ export enum access {
  * @param listing FTP file entry lines.
  * @param callback Callback function with error or result.
  */
-export function parseFtpEntries(listing: string | readonly string[], callback: ParsingCallback): void;
+export function parseFtpEntries(
+    listing: string | readonly string[],
+    callback: ParsingCallback,
+): void;
 
 /**
  * Parses a list of entries from `ls`/`dir` either in a single string (entries will be split by newlines)
@@ -73,7 +76,10 @@ export function parseFtpEntries(listing: string | readonly string[], callback: P
  *   });
  * });
  */
-export function parseEntries(entries: string | readonly string[], callback: ParsingCallback): void;
+export function parseEntries(
+    entries: string | readonly string[],
+    callback: ParsingCallback,
+): void;
 
 /**
  * Parses a single string such as:

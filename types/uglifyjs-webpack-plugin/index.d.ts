@@ -40,7 +40,10 @@ declare namespace UglifyJsPlugin {
     }
 
     interface ExtractCommentsOptions {
-        condition?: RegExp | ((node: object, comment: string) => boolean) | undefined;
+        condition?:
+            | RegExp
+            | ((node: object, comment: string) => boolean)
+            | undefined;
         filename?: string | ((originalFileName: string) => string) | undefined;
         banner?: boolean | string | ((fileName: string) => string) | undefined;
     }

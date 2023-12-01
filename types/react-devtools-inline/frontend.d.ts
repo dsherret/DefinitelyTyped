@@ -14,7 +14,10 @@ export interface Config {
 }
 
 export function createStore(bridge: FrontendBridge, config?: Config): Store;
-export function createBridge(contentWindow: Window, wall?: Wall): FrontendBridge;
+export function createBridge(
+    contentWindow: Window,
+    wall?: Wall,
+): FrontendBridge;
 
 export function initialize(
     contentWindow: Window,

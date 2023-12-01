@@ -40,10 +40,16 @@ declare namespace massive {
 
     interface Table<T> {
         find(criteria: object | {}, queryOptions?: QueryOptions): Promise<T[]>;
-        findOne(criteria: number | object, queryOptions?: QueryOptions): Promise<T>;
+        findOne(
+            criteria: number | object,
+            queryOptions?: QueryOptions,
+        ): Promise<T>;
         count(criteria: object): Promise<string>;
         where(query: string, params: any[] | object): Promise<T[]>;
-        search(criteria: SearchCriteria, queryOptions?: QueryOptions): Promise<any>;
+        search(
+            criteria: SearchCriteria,
+            queryOptions?: QueryOptions,
+        ): Promise<any>;
         save(data: object): Promise<T>;
         insert(data: object): Promise<T>;
         insert(data: object[]): Promise<T[]>;
@@ -57,7 +63,11 @@ declare namespace massive {
         findDoc(criteria: number | string | object): Promise<object>;
         searchDoc(criteria: SearchCriteria): Promise<object[]>;
         saveDoc(doc: object): Promise<object>;
-        modify(docId: number | string, doc: object, fieldName?: string): Promise<object>;
+        modify(
+            docId: number | string,
+            doc: object,
+            fieldName?: string,
+        ): Promise<object>;
     }
 
     interface Database {

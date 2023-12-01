@@ -13,96 +13,123 @@ declare module "seneca" {
             timeout?: number | undefined; // milliseconds
             // Register (true) default plugins. Set false to not register when
             // using custom versions.
-            default_plugins?: {
-                basic?: boolean | undefined;
-                "mem-store"?: boolean | undefined;
-                transport?: boolean | undefined;
-                web?: boolean | undefined;
-            } | undefined;
+            default_plugins?:
+                | {
+                      basic?: boolean | undefined;
+                      "mem-store"?: boolean | undefined;
+                      transport?: boolean | undefined;
+                      web?: boolean | undefined;
+                  }
+                | undefined;
             // Settings for network REPL.
-            repl?: {
-                port?: number | undefined;
-                host?: string | undefined;
-            } | undefined;
+            repl?:
+                | {
+                      port?: number | undefined;
+                      host?: string | undefined;
+                  }
+                | undefined;
             // Debug settings.
-            debug?: {
-                // Throw (some) errors from seneca.act.
-                fragile?: boolean | undefined;
-                // Fatal errors ... aren't fatal. Not for production!
-                undead?: boolean | undefined;
-                // Print debug info to console
-                print?: {
-                    // Print options. Best used via --seneca.print.options.
-                    options?: boolean | undefined;
-                } | undefined;
-                // Trace action caller and place in args.caller$.
-                act_caller?: boolean | undefined;
-                // Shorten all identifiers to 2 characters.
-                short_logs?: boolean | undefined;
-                // Record and log callpoints (calling code locations).
-                callpoint?: boolean | undefined;
-            } | undefined;
+            debug?:
+                | {
+                      // Throw (some) errors from seneca.act.
+                      fragile?: boolean | undefined;
+                      // Fatal errors ... aren't fatal. Not for production!
+                      undead?: boolean | undefined;
+                      // Print debug info to console
+                      print?:
+                          | {
+                                // Print options. Best used via --seneca.print.options.
+                                options?: boolean | undefined;
+                            }
+                          | undefined;
+                      // Trace action caller and place in args.caller$.
+                      act_caller?: boolean | undefined;
+                      // Shorten all identifiers to 2 characters.
+                      short_logs?: boolean | undefined;
+                      // Record and log callpoints (calling code locations).
+                      callpoint?: boolean | undefined;
+                  }
+                | undefined;
             // Enforce strict behaviours. Relax when backwards compatibility needed.
-            strict?: {
-                // Action result must be a plain object.
-                result?: boolean | undefined;
-                // Delegate fixedargs override action args.
-                fixedargs?: boolean | undefined;
-                // Adding a pattern overrides existing pattern only if matches exactly.
-                add?: boolean | undefined;
-            } | undefined;
+            strict?:
+                | {
+                      // Action result must be a plain object.
+                      result?: boolean | undefined;
+                      // Delegate fixedargs override action args.
+                      fixedargs?: boolean | undefined;
+                      // Adding a pattern overrides existing pattern only if matches exactly.
+                      add?: boolean | undefined;
+                  }
+                | undefined;
             // Action cache. Makes inbound messages idempotent.
-            actcache?: {
-                active?: boolean | undefined;
-                size?: number | undefined;
-            } | undefined;
+            actcache?:
+                | {
+                      active?: boolean | undefined;
+                      size?: number | undefined;
+                  }
+                | undefined;
             // Action executor tracing. See gate-executor module.
-            trace?: {
-                act?: boolean | undefined;
-                stack?: boolean | undefined;
-                unknown?: string | undefined;
-            } | undefined;
+            trace?:
+                | {
+                      act?: boolean | undefined;
+                      stack?: boolean | undefined;
+                      unknown?: string | undefined;
+                  }
+                | undefined;
             // Action statistics settings. See rolling-stats module.
-            stats?: {
-                size?: number | undefined;
-                interval?: number | undefined;
-                running?: boolean | undefined;
-            } | undefined;
+            stats?:
+                | {
+                      size?: number | undefined;
+                      interval?: number | undefined;
+                      running?: boolean | undefined;
+                  }
+                | undefined;
             // Wait time for plugins to close gracefully.
             deathdelay?: number | undefined;
             // Default seneca-admin settings.
             // TODO: move to seneca-admin!
-            admin?: {
-                local?: boolean | undefined;
-                prefix?: string | undefined;
-            } | undefined;
+            admin?:
+                | {
+                      local?: boolean | undefined;
+                      prefix?: string | undefined;
+                  }
+                | undefined;
             // Plugin settings
             plugin?: any;
             // Internal settings.
-            internal?: {
-                // Close instance on these signals, if true.
-                close_signals?: {
-                    SIGHUP?: boolean | undefined;
-                    SIGTERM?: boolean | undefined;
-                    SIGINT?: boolean | undefined;
-                    SIGBREAK?: boolean | undefined;
-                } | undefined;
-                actrouter?: UnknownType | undefined;
-                clientrouter?: UnknownType | undefined;
-                subrouter?: UnknownType | undefined;
-            } | undefined;
+            internal?:
+                | {
+                      // Close instance on these signals, if true.
+                      close_signals?:
+                          | {
+                                SIGHUP?: boolean | undefined;
+                                SIGTERM?: boolean | undefined;
+                                SIGINT?: boolean | undefined;
+                                SIGBREAK?: boolean | undefined;
+                            }
+                          | undefined;
+                      actrouter?: UnknownType | undefined;
+                      clientrouter?: UnknownType | undefined;
+                      subrouter?: UnknownType | undefined;
+                  }
+                | undefined;
             // Log status at periodic intervals.
-            status?: {
-                interval?: number | undefined;
-                // By default, does not run.
-                running?: boolean | undefined;
-            } | undefined;
+            status?:
+                | {
+                      interval?: number | undefined;
+                      // By default, does not run.
+                      running?: boolean | undefined;
+                  }
+                | undefined;
             // zig module settings for seneca.start() chaining.
             zig?: any;
-            log?: LogSpec | {
-                level?: LogLevel | undefined;
-                short?: boolean | undefined;
-            } | undefined;
+            log?:
+                | LogSpec
+                | {
+                      level?: LogLevel | undefined;
+                      short?: boolean | undefined;
+                  }
+                | undefined;
             errhandler?: GlobalErrorHandler | undefined;
         }
 
@@ -112,25 +139,15 @@ declare module "seneca" {
         }
 
         type LogSpec =
-            | "quiet"
-            | // { level: 'none' }
-            "silent"
-            | // { level: 'none' }
-            "any"
-            | // { level: 'debug+' }
-            "all"
-            | // { level: 'debug+' }
-            "print"
-            | // { level: 'debug+' }
-            "standard"
-            | // { level: 'info+' }
-            "test"; // { level: 'warn+' }
+            | "quiet" // { level: 'none' }
+            | "silent" // { level: 'none' }
+            | "any" // { level: 'debug+' }
+            | "all" // { level: 'debug+' }
+            | "print" // { level: 'debug+' }
+            | "standard" // { level: 'info+' }
+            | "test"; // { level: 'warn+' }
 
-        type LogLevel =
-            | "none"
-            | "debug+"
-            | "info+"
-            | "warn+";
+        type LogLevel = "none" | "debug+" | "info+" | "warn+";
 
         interface Optioner {
             set: (input: string | Options) => Options;
@@ -149,15 +166,12 @@ declare module "seneca" {
             execute: UnknownType;
         }
 
-        interface PluginOptions {
-        }
+        interface PluginOptions {}
         type PluginModule = (options: any) => void;
 
-        interface ClientOptions {
-        }
+        interface ClientOptions {}
 
-        interface ListenOptions {
-        }
+        interface ListenOptions {}
 
         interface EntityDataWithQuery {
             [entityKey: string]: any;
@@ -181,7 +195,10 @@ declare module "seneca" {
             respond: (error: Error | null, msg?: any) => void,
         ) => void;
         type ActCallback = (error: Error | null, result?: any) => void;
-        type CloseCallback = (optional: any, done: (error: Error) => void) => void;
+        type CloseCallback = (
+            optional: any,
+            done: (error: Error) => void,
+        ) => void;
         type DatabaseID = string;
         type EntitySaveCallback = (error: Error, result: any) => void;
         type EntityLoadCallback = (error: Error, result: any) => void;
@@ -213,11 +230,23 @@ declare module "seneca" {
                 action: AddCallback<PatternType & CallbackParams>,
             ): this;
 
-            act<PatternWithArgs = Pattern>(pattern: PatternWithArgs, respond: ActCallback): void;
-            act<PatternWithArgs = Pattern>(pattern: PatternWithArgs, msg: any, respond: ActCallback): void;
+            act<PatternWithArgs = Pattern>(
+                pattern: PatternWithArgs,
+                respond: ActCallback,
+            ): void;
+            act<PatternWithArgs = Pattern>(
+                pattern: PatternWithArgs,
+                msg: any,
+                respond: ActCallback,
+            ): void;
             make(entity_canon: string, properties?: any): Entity;
             make(base: string, entity_canon: string, properties?: any): Entity;
-            make(zone: string, base: string, entity_canon: string, properties?: any): Entity;
+            make(
+                zone: string,
+                base: string,
+                entity_canon: string,
+                properties?: any,
+            ): Entity;
 
             // @param name reference to plugin provided object
             export(name: string): PluginModule;
@@ -240,10 +269,22 @@ declare module "seneca" {
             make$(zone: string, base: string, name: string): Entity;
 
             save$(callback: EntitySaveCallback): void;
-            save$(props: EntityDataWithQuery, callback: EntitySaveCallback): void;
-            load$(id: DatabaseID | EntityDataWithQuery, callback: EntityLoadCallback): void;
-            remove$(id: DatabaseID | EntityDataWithQuery, callback: EntityRemoveCallback): void;
-            list$(query: EntityDataWithQuery, callback: EntityListCallback): void;
+            save$(
+                props: EntityDataWithQuery,
+                callback: EntitySaveCallback,
+            ): void;
+            load$(
+                id: DatabaseID | EntityDataWithQuery,
+                callback: EntityLoadCallback,
+            ): void;
+            remove$(
+                id: DatabaseID | EntityDataWithQuery,
+                callback: EntityRemoveCallback,
+            ): void;
+            list$(
+                query: EntityDataWithQuery,
+                callback: EntityListCallback,
+            ): void;
         }
     }
 

@@ -64,7 +64,13 @@ declare namespace Aos {
         /**
          * Accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
          */
-        disable?: "phone" | "tablet" | "mobile" | boolean | (() => boolean) | undefined;
+        disable?:
+            | "phone"
+            | "tablet"
+            | "mobile"
+            | boolean
+            | (() => boolean)
+            | undefined;
         /**
          * Class applied after initialization
          */

@@ -1,4 +1,9 @@
-import RequestState, { FAILED, IN_PROGRESS, NOT_REQUESTED, SUCCEEDED } from "@eseb/request-state";
+import RequestState, {
+    FAILED,
+    IN_PROGRESS,
+    NOT_REQUESTED,
+    SUCCEEDED,
+} from "@eseb/request-state";
 
 const failed1 = new RequestState("FAILED");
 const failed2 = FAILED;
@@ -19,4 +24,6 @@ const shouldShowAsLoading = requestState.shouldShowAsLoading();
 const { attachment, state } = requestState;
 
 const missingRequest = FAILED.withAttachment(404);
-const complexRequest = FAILED.withAttachment({ errorMessage: "something has gone wrong!" });
+const complexRequest = FAILED.withAttachment({
+    errorMessage: "something has gone wrong!",
+});

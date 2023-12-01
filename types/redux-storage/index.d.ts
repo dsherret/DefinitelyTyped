@@ -33,7 +33,10 @@ declare module "redux-storage" {
      * @param reducer
      * @param merger
      */
-    export function reducer<TState>(reducer: Reducer<TState>, merger?: StateMerger): Reducer<TState>;
+    export function reducer<TState>(
+        reducer: Reducer<TState>,
+        merger?: StateMerger,
+    ): Reducer<TState>;
 
     /**
      * Callback that checks action type
@@ -90,7 +93,11 @@ declare module "redux-storage-decorator-filter" {
      *     ['nested', 'blacklisted-key']
      * ]);
      */
-    export default function(engine: StorageEngine, whitelist?: FilterList, blacklist?: FilterList): StorageEngine;
+    export default function (
+        engine: StorageEngine,
+        whitelist?: FilterList,
+        blacklist?: FilterList,
+    ): StorageEngine;
 }
 
 declare module "redux-storage-engine-reactnativeasyncstorage" {
@@ -102,7 +109,9 @@ declare module "redux-storage-engine-reactnativeasyncstorage" {
      * Create React Native Async Storage
      * @param key React Native Async Storage key
      */
-    export default function createEngine(key: string): ReactNativeAsyncStorageEngine;
+    export default function createEngine(
+        key: string,
+    ): ReactNativeAsyncStorageEngine;
 }
 
 declare module "redux-storage-merger-immutablejs" {

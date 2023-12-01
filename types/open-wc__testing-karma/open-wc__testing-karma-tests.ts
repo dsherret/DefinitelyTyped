@@ -17,8 +17,20 @@ module.exports = (config: karma.Config) => {
                 "test/unit/*.spec.js",
                 { pattern: "compiled/index.html", watched: false },
                 { pattern: "app/index.html", included: false, served: false },
-                { pattern: "compiled/app.js.map", included: false, served: true, watched: false, nocache: true },
-                { pattern: "test/images/*.jpg", watched: false, included: false, served: true, nocache: false },
+                {
+                    pattern: "compiled/app.js.map",
+                    included: false,
+                    served: true,
+                    watched: false,
+                    nocache: true,
+                },
+                {
+                    pattern: "test/images/*.jpg",
+                    watched: false,
+                    included: false,
+                    served: true,
+                    nocache: false,
+                },
             ],
             loggers: {
                 custom: { type: "file", filename: "log.txt" },

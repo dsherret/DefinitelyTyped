@@ -104,5 +104,12 @@ export class VisibleLayer extends Layer {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    distort(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    distort(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 }

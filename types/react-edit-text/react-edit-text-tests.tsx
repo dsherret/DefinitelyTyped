@@ -5,7 +5,9 @@ const onSaveTest = ({ name, value, previousValue }: onSaveProps) => {
     console.log(name + value + previousValue);
 };
 
-const onChangeTest = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+const onChangeTest = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+) => {
     console.log(event.target.value);
 };
 
@@ -37,12 +39,27 @@ const handleBlur = () => {
 <EditText inline />;
 <EditText style={{ margin: 0 }} />;
 <EditText readonly />;
-<EditText type="number" value="100" formatDisplayText={formatDisplayTextTest} />;
+<EditText
+    type="number"
+    value="100"
+    formatDisplayText={formatDisplayTextTest}
+/>;
 <EditText showEditButton />;
 <EditText showEditButton editButtonContent="Edit" />;
 <EditText showEditButton editButtonContent={<i className="editIcon" />} />;
-<EditText showEditButton editButtonProps={{ style: { marginTop: 10, padding: 0 }, id: "test", className: "test" }} />;
-<EditText showEditButton editButtonContent={TestEditButton} editButtonProps={{ autoFocus: true }} />;
+<EditText
+    showEditButton
+    editButtonProps={{
+        style: { marginTop: 10, padding: 0 },
+        id: "test",
+        className: "test",
+    }}
+/>;
+<EditText
+    showEditButton
+    editButtonContent={TestEditButton}
+    editButtonProps={{ autoFocus: true }}
+/>;
 <EditText onEditMode={handleEditMode} />;
 <EditText onBlur={handleBlur} />;
 

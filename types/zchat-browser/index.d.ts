@@ -5,8 +5,8 @@ export interface InitOptions {
     suppress_console_error?: boolean | undefined;
     authentication?:
         | {
-            jwt_fn?: ((callback: (jwt: string) => void) => void) | undefined;
-        }
+              jwt_fn?: ((callback: (jwt: string) => void) => void) | undefined;
+          }
         | undefined;
 }
 
@@ -18,9 +18,15 @@ export function getConnectionStatus(): "connected" | "connecting" | "closed";
 
 export function getVisitorInfo(): VisitorInfo;
 
-export function setVisitorInfo(options: Partial<VisitorInfo>, callback?: (err: Error) => void): void;
+export function setVisitorInfo(
+    options: Partial<VisitorInfo>,
+    callback?: (err: Error) => void,
+): void;
 
-export function sendVisitorPath(options: { title: string; url: string }, callback?: (err: Error) => void): void;
+export function sendVisitorPath(
+    options: { title: string; url: string },
+    callback?: (err: Error) => void,
+): void;
 
 export function getQueuePosition(): number;
 
@@ -30,9 +36,14 @@ export function getDepartment(id: number): Department;
 
 export function getVisitorDefaultDepartment(): number | undefined;
 
-export function setVisitorDefaultDepartment(id: number, callback?: (err: Error) => void): void;
+export function setVisitorDefaultDepartment(
+    id: number,
+    callback?: (err: Error) => void,
+): void;
 
-export function clearVisitorDefaultDepartment(callback?: (err: Error) => void): void;
+export function clearVisitorDefaultDepartment(
+    callback?: (err: Error) => void,
+): void;
 
 /**
  * If this method is used when none of the agents are available to pick up a chat,
@@ -66,7 +77,10 @@ export interface SendFileCallbackData {
  * @param file
  * @param callback
  */
-export function sendFile(file: File, callback?: (err: SendFileError, data: SendFileCallbackData) => void): void;
+export function sendFile(
+    file: File,
+    callback?: (err: SendFileError, data: SendFileCallbackData) => void,
+): void;
 
 export interface SendOfflineMsgOptions {
     name: string;
@@ -76,19 +90,37 @@ export interface SendOfflineMsgOptions {
     department?: number | undefined;
 }
 
-export function sendOfflineMsg(options: SendOfflineMsgOptions, callback?: (err: Error) => void): void;
+export function sendOfflineMsg(
+    options: SendOfflineMsgOptions,
+    callback?: (err: Error) => void,
+): void;
 
-export function addTags(tags: readonly string[], callback?: (err: Error) => void): void;
+export function addTags(
+    tags: readonly string[],
+    callback?: (err: Error) => void,
+): void;
 
-export function removeTags(tags: readonly string[], callback?: (err: Error) => void): void;
+export function removeTags(
+    tags: readonly string[],
+    callback?: (err: Error) => void,
+): void;
 
 export function sendTyping(is_typing: boolean): void;
 
-export function getChatInfo(): { rating: string | null; comment: string | null };
+export function getChatInfo(): {
+    rating: string | null;
+    comment: string | null;
+};
 
-export function sendChatRating(rating: "good" | "bad" | null, callback?: (err: Error) => void): void;
+export function sendChatRating(
+    rating: "good" | "bad" | null,
+    callback?: (err: Error) => void,
+): void;
 
-export function sendChatComment(comment: string, callback?: (err: Error) => void): void;
+export function sendChatComment(
+    comment: string,
+    callback?: (err: Error) => void,
+): void;
 
 export function isChatting(): boolean;
 
@@ -98,9 +130,14 @@ export function getServingAgentsInfo(): AgentInfo[];
 
 export function getOperatingHours(): OperatingHours | undefined;
 
-export function sendEmailTranscript(email: string, callback?: (err: Error) => void): void;
+export function sendEmailTranscript(
+    email: string,
+    callback?: (err: Error) => void,
+): void;
 
-export function fetchChatHistory(callback: (err: Error, data: { count: number; has_more: boolean }) => void): void;
+export function fetchChatHistory(
+    callback: (err: Error, data: { count: number; has_more: boolean }) => void,
+): void;
 
 export function markAsRead(): void;
 
@@ -115,23 +152,71 @@ export function logout(): void;
 
 export const EMAIL_REGEX: RegExp;
 
-export function on(event_name: "account_status", handler: (event_data: AccountsStatusEventData) => void): void;
-export function on(event_name: "connection_update", handler: (event_data: ConnectionUpdateEventData) => void): void;
-export function on(event_name: "department_update", handler: (event_data: Department) => void): void;
-export function on(event_name: "visitor_update", handler: (event_data: VisitorInfo) => void): void;
-export function on(event_name: "agent_update", handler: (event_data: AgentInfo) => void): void;
-export function on(event_name: "chat", handler: (event_data: ChatEventData) => void): void;
-export function on(event_name: "history", handler: (event_data: HistoryEventData) => void): void;
-export function on(event_name: "error", handler: (event_data: ErrorEventData) => void): void;
+export function on(
+    event_name: "account_status",
+    handler: (event_data: AccountsStatusEventData) => void,
+): void;
+export function on(
+    event_name: "connection_update",
+    handler: (event_data: ConnectionUpdateEventData) => void,
+): void;
+export function on(
+    event_name: "department_update",
+    handler: (event_data: Department) => void,
+): void;
+export function on(
+    event_name: "visitor_update",
+    handler: (event_data: VisitorInfo) => void,
+): void;
+export function on(
+    event_name: "agent_update",
+    handler: (event_data: AgentInfo) => void,
+): void;
+export function on(
+    event_name: "chat",
+    handler: (event_data: ChatEventData) => void,
+): void;
+export function on(
+    event_name: "history",
+    handler: (event_data: HistoryEventData) => void,
+): void;
+export function on(
+    event_name: "error",
+    handler: (event_data: ErrorEventData) => void,
+): void;
 
-export function un(event_name: "account_status", handler: (event_data: AccountsStatusEventData) => void): void;
-export function un(event_name: "connection_update", handler: (event_data: ConnectionUpdateEventData) => void): void;
-export function un(event_name: "department_update", handler: (event_data: Department) => void): void;
-export function un(event_name: "visitor_update", handler: (event_data: VisitorInfo) => void): void;
-export function un(event_name: "agent_update", handler: (event_data: AgentInfo) => void): void;
-export function un(event_name: "chat", handler: (event_data: ChatEventData) => void): void;
-export function un(event_name: "history", handler: (event_data: HistoryEventData) => void): void;
-export function un(event_name: "error", handler: (event_data: ErrorEventData) => void): void;
+export function un(
+    event_name: "account_status",
+    handler: (event_data: AccountsStatusEventData) => void,
+): void;
+export function un(
+    event_name: "connection_update",
+    handler: (event_data: ConnectionUpdateEventData) => void,
+): void;
+export function un(
+    event_name: "department_update",
+    handler: (event_data: Department) => void,
+): void;
+export function un(
+    event_name: "visitor_update",
+    handler: (event_data: VisitorInfo) => void,
+): void;
+export function un(
+    event_name: "agent_update",
+    handler: (event_data: AgentInfo) => void,
+): void;
+export function un(
+    event_name: "chat",
+    handler: (event_data: ChatEventData) => void,
+): void;
+export function un(
+    event_name: "history",
+    handler: (event_data: HistoryEventData) => void,
+): void;
+export function un(
+    event_name: "error",
+    handler: (event_data: ErrorEventData) => void,
+): void;
 
 export interface VisitorInfo {
     display_name: string;
@@ -152,12 +237,10 @@ export interface Department {
     status: "online" | "away" | "offline";
 }
 
-export type OperatingHours =
-    & { enabled: boolean; timezone: string }
-    & (
-        | { type: "account"; acount_schedule: Schedule }
-        | { type: "department"; department_schedule: { [id: number]: Schedule } }
-    );
+export type OperatingHours = { enabled: boolean; timezone: string } & (
+    | { type: "account"; acount_schedule: Schedule }
+    | { type: "department"; department_schedule: { [id: number]: Schedule } }
+);
 
 export interface Schedule {
     0: Period[];
@@ -189,7 +272,12 @@ export interface ChatMsgChatEventData {
 }
 
 export namespace StructuredMessage {
-    type Message = QuickReplies | ButtonTemplate | PanelTemplate | PanelTemplateCarousel | ListTemplate;
+    type Message =
+        | QuickReplies
+        | ButtonTemplate
+        | PanelTemplate
+        | PanelTemplateCarousel
+        | ListTemplate;
 
     interface QuickReplies {
         type: "QUICK_REPLIES";
@@ -231,7 +319,9 @@ export namespace StructuredMessage {
     interface ListTemplate {
         type: "LIST_TEMPLATE";
         items: ListItem[];
-        buttons?: Array<Button<"QUICK_REPLY_ACTION" | "LINK_ACTION">> | undefined;
+        buttons?:
+            | Array<Button<"QUICK_REPLY_ACTION" | "LINK_ACTION">>
+            | undefined;
     }
 
     interface Button<T extends "QUICK_REPLY_ACTION" | "LINK_ACTION"> {

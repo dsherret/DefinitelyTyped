@@ -15,7 +15,13 @@
 */
 
 import * as React from "react";
-import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 import { HmsLocalNotification } from "@hmscore/react-native-hms-push";
 
@@ -38,7 +44,7 @@ const defaultNotification = {
     [HmsLocalNotification.Attr.importance]: HmsLocalNotification.Importance.max,
     [HmsLocalNotification.Attr.dontNotifyInForeground]: false,
     [HmsLocalNotification.Attr.autoCancel]: false, // for Custom Actions, it should be false
-    [HmsLocalNotification.Attr.actions]: "[\"Yes\", \"No\"]",
+    [HmsLocalNotification.Attr.actions]: '["Yes", "No"]',
     [HmsLocalNotification.Attr.invokeApp]: false,
     // [HmsLocalNotification.Attr.channelId]: 'huawei-hms-rn-push-channel-id', // Please read the documentation before using this param
 };
@@ -79,14 +85,19 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.bigText]: this.state.bigText,
             [HmsLocalNotification.Attr.subText]: this.state.subText,
             [HmsLocalNotification.Attr.tag]: this.state.tag,
-            [HmsLocalNotification.Attr.fireDate]: new Date(Date.now() + 60 * 1000).getTime(), // in 1 min
+            [HmsLocalNotification.Attr.fireDate]: new Date(
+                Date.now() + 60 * 1000,
+            ).getTime(), // in 1 min
             [HmsLocalNotification.Attr.allowWhileIdle]: true,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Scheduled", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Scheduled] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Scheduled] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
 
@@ -99,11 +110,14 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.subText]: this.state.subText,
             [HmsLocalNotification.Attr.tag]: this.state.tag,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Default", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Default] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Default] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
 
@@ -118,11 +132,14 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.vibrate]: true,
             [HmsLocalNotification.Attr.vibrateDuration]: 5000,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Vibrate", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Vibrate] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Vibrate] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
 
@@ -134,13 +151,17 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.bigText]: this.state.bigText,
             [HmsLocalNotification.Attr.subText]: this.state.subText,
             [HmsLocalNotification.Attr.tag]: this.state.tag,
-            [HmsLocalNotification.Attr.repeatType]: HmsLocalNotification.RepeatType.minute,
+            [HmsLocalNotification.Attr.repeatType]:
+                HmsLocalNotification.RepeatType.minute,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Repeat", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Repeat] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Repeat] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
     localNotificationSound() {
@@ -154,11 +175,14 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.playSound]: true,
             [HmsLocalNotification.Attr.soundName]: "huawei_bounce.mp3",
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Sound", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Sound] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Sound] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
     localNotificationPriority() {
@@ -169,13 +193,17 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.bigText]: this.state.bigText,
             [HmsLocalNotification.Attr.subText]: this.state.subText,
             [HmsLocalNotification.Attr.tag]: this.state.tag,
-            [HmsLocalNotification.Attr.priority]: HmsLocalNotification.Priority.max,
+            [HmsLocalNotification.Attr.priority]:
+                HmsLocalNotification.Priority.max,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Priority", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Priority] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Priority] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
 
@@ -189,11 +217,14 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.tag]: this.state.tag,
             [HmsLocalNotification.Attr.ongoing]: true,
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification Ongoing", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification Ongoing] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification Ongoing] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
     localNotificationBigImage() {
@@ -207,11 +238,14 @@ export default class App extends React.Component<{}, State> {
             [HmsLocalNotification.Attr.bigPictureUrl]:
                 "https://www-file.huawei.com/-/media/corp/home/image/logo_400x200.png",
         })
-            .then(result => {
+            .then((result) => {
                 console.log("LocalNotification BigImage", result);
             })
-            .catch(err => {
-                console.log("[LocalNotification BigImage] Error/Exception: " + JSON.stringify(err));
+            .catch((err) => {
+                console.log(
+                    "[LocalNotification BigImage] Error/Exception: " +
+                        JSON.stringify(err),
+                );
             });
     }
 
@@ -223,12 +257,16 @@ export default class App extends React.Component<{}, State> {
                     <TextInput
                         value={this.state.title}
                         placeholder="title"
-                        onChangeText={e => this.changeNotificationValue("title", e)}
+                        onChangeText={(e) =>
+                            this.changeNotificationValue("title", e)
+                        }
                     />
                     <TextInput
                         value={this.state.tag}
                         placeholder="tag"
-                        onChangeText={e => this.changeNotificationValue("tag", e)}
+                        onChangeText={(e) =>
+                            this.changeNotificationValue("tag", e)
+                        }
                     />
                 </View>
                 <View>
@@ -236,7 +274,9 @@ export default class App extends React.Component<{}, State> {
                     <TextInput
                         value={this.state.message}
                         placeholder="message"
-                        onChangeText={e => this.changeNotificationValue("message", e)}
+                        onChangeText={(e) =>
+                            this.changeNotificationValue("message", e)
+                        }
                     />
                 </View>
                 <View>
@@ -244,7 +284,9 @@ export default class App extends React.Component<{}, State> {
                     <TextInput
                         value={this.state.bigText}
                         placeholder="bigText"
-                        onChangeText={e => this.changeNotificationValue("bigText", e)}
+                        onChangeText={(e) =>
+                            this.changeNotificationValue("bigText", e)
+                        }
                     />
                 </View>
                 <View>
@@ -252,7 +294,9 @@ export default class App extends React.Component<{}, State> {
                     <TextInput
                         value={this.state.subText}
                         placeholder="subText"
-                        onChangeText={e => this.changeNotificationValue("subText", e)}
+                        onChangeText={(e) =>
+                            this.changeNotificationValue("subText", e)
+                        }
                     />
                 </View>
 
@@ -263,25 +307,37 @@ export default class App extends React.Component<{}, State> {
                 </View>
 
                 <View>
-                    <TouchableOpacity onPress={() => this.localNotificationOngoing()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationOngoing()}
+                    >
                         <Text>+ Ongoing</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.localNotificationSound()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationSound()}
+                    >
                         <Text>+ Sound</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.localNotificationVibrate()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationVibrate()}
+                    >
                         <Text>+ Vibrate</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity onPress={() => this.localNotificationBigImage()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationBigImage()}
+                    >
                         <Text>+ BigImage</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.localNotificationRepeat()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationRepeat()}
+                    >
                         <Text>+ Repeat</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.localNotificationScheduled()}>
+                    <TouchableOpacity
+                        onPress={() => this.localNotificationScheduled()}
+                    >
                         <Text>+ Scheduled</Text>
                     </TouchableOpacity>
                 </View>
@@ -290,11 +346,17 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.cancelAllNotifications()
-                                .then(result => {
-                                    console.log("cancelAllNotifications", result);
+                                .then((result) => {
+                                    console.log(
+                                        "cancelAllNotifications",
+                                        result,
+                                    );
                                 })
-                                .catch(err => {
-                                    console.log("[cancelAllNotifications] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[cancelAllNotifications] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -303,11 +365,14 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.getNotifications()
-                                .then(result => {
+                                .then((result) => {
                                     console.log("getNotifications", result);
                                 })
-                                .catch(err => {
-                                    console.log("[getNotifications] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[getNotifications] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -318,12 +383,16 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.cancelScheduledNotifications()
-                                .then(result => {
-                                    console.log("cancelScheduledNotifications", result);
-                                })
-                                .catch(err => {
+                                .then((result) => {
                                     console.log(
-                                        "[cancelScheduledNotifications] Error/Exception: " + JSON.stringify(err),
+                                        "cancelScheduledNotifications",
+                                        result,
+                                    );
+                                })
+                                .catch((err) => {
+                                    console.log(
+                                        "[cancelScheduledNotifications] Error/Exception: " +
+                                            JSON.stringify(err),
                                     );
                                 });
                         }}
@@ -333,11 +402,17 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.getScheduledNotifications()
-                                .then(result => {
-                                    console.log("getScheduledNotifications", result);
+                                .then((result) => {
+                                    console.log(
+                                        "getScheduledNotifications",
+                                        result,
+                                    );
                                 })
-                                .catch(err => {
-                                    console.log("[getScheduledNotifications] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[getScheduledNotifications] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -347,12 +422,20 @@ export default class App extends React.Component<{}, State> {
                 <View>
                     <TouchableOpacity
                         onPress={() => {
-                            HmsLocalNotification.cancelNotificationsWithTag("tag")
-                                .then(result => {
-                                    console.log("cancelNotificationsWithTag", result);
+                            HmsLocalNotification.cancelNotificationsWithTag(
+                                "tag",
+                            )
+                                .then((result) => {
+                                    console.log(
+                                        "cancelNotificationsWithTag",
+                                        result,
+                                    );
                                 })
-                                .catch(err => {
-                                    console.log("[cancelNotificationsWithTag] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[cancelNotificationsWithTag] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -361,11 +444,14 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.getChannels()
-                                .then(result => {
+                                .then((result) => {
                                     console.log("getChannels", result);
                                 })
-                                .catch(err => {
-                                    console.log("[getChannels] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[getChannels] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -376,11 +462,14 @@ export default class App extends React.Component<{}, State> {
                     <TouchableOpacity
                         onPress={() => {
                             HmsLocalNotification.cancelNotifications()
-                                .then(result => {
+                                .then((result) => {
                                     console.log("cancelNotifications", result);
                                 })
-                                .catch(err => {
-                                    console.log("[cancelNotifications] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[cancelNotifications] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -388,12 +477,17 @@ export default class App extends React.Component<{}, State> {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            HmsLocalNotification.deleteChannel("hms-channel-custom")
-                                .then(result => {
+                            HmsLocalNotification.deleteChannel(
+                                "hms-channel-custom",
+                            )
+                                .then((result) => {
                                     console.log("deleteChannel", result);
                                 })
-                                .catch(err => {
-                                    console.log("[deleteChannel] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[deleteChannel] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -403,12 +497,17 @@ export default class App extends React.Component<{}, State> {
                 <View>
                     <TouchableOpacity
                         onPress={() => {
-                            HmsLocalNotification.channelBlocked("huawei-hms-rn-push-channel-id")
-                                .then(result => {
+                            HmsLocalNotification.channelBlocked(
+                                "huawei-hms-rn-push-channel-id",
+                            )
+                                .then((result) => {
                                     console.log("channelBlocked", result);
                                 })
-                                .catch(err => {
-                                    console.log("[channelBlocked] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[channelBlocked] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >
@@ -416,12 +515,17 @@ export default class App extends React.Component<{}, State> {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            HmsLocalNotification.channelExists("huawei-hms-rn-push-channel-id")
-                                .then(result => {
+                            HmsLocalNotification.channelExists(
+                                "huawei-hms-rn-push-channel-id",
+                            )
+                                .then((result) => {
                                     console.log("channelExists", result);
                                 })
-                                .catch(err => {
-                                    console.log("[channelExists] Error/Exception: " + JSON.stringify(err));
+                                .catch((err) => {
+                                    console.log(
+                                        "[channelExists] Error/Exception: " +
+                                            JSON.stringify(err),
+                                    );
                                 });
                         }}
                     >

@@ -30,7 +30,10 @@ declare namespace umzug {
          * See https://github.com/sequelize/umzug/tree/master/test/fixtures
          * for examples.
          */
-        customResolver?(path: string): { up: () => PromiseLike<any>; down?: (() => PromiseLike<any>) | undefined };
+        customResolver?(path: string): {
+            up: () => PromiseLike<any>;
+            down?: (() => PromiseLike<any>) | undefined;
+        };
     }
 
     /**
@@ -135,7 +138,12 @@ declare namespace umzug {
         /**
          * The options for the storage.
          */
-        storageOptions?: JSONStorageOptions | SequelizeStorageOptions | MongoDBStorageOptions | Object | undefined;
+        storageOptions?:
+            | JSONStorageOptions
+            | SequelizeStorageOptions
+            | MongoDBStorageOptions
+            | Object
+            | undefined;
 
         /**
          * The logging function.
@@ -220,14 +228,18 @@ declare namespace umzug {
          */
         up(migration?: string): Promise<Migration[]>;
         up(migrations?: string[]): Promise<Migration[]>;
-        up(options?: UpToOptions | UpDownMigrationsOptions): Promise<Migration[]>;
+        up(
+            options?: UpToOptions | UpDownMigrationsOptions,
+        ): Promise<Migration[]>;
 
         /**
          * The down method can be used to revert the last executed migration.
          */
         down(migration?: string): Promise<Migration[]>;
         down(migrations?: string[]): Promise<Migration[]>;
-        down(options?: DownToOptions | UpDownMigrationsOptions): Promise<Migration[]>;
+        down(
+            options?: DownToOptions | UpDownMigrationsOptions,
+        ): Promise<Migration[]>;
 
         on(
             eventName: "migrating" | "reverting" | "migrated" | "reverted",
@@ -244,8 +256,11 @@ declare namespace umzug {
     }
 
     interface UmzugStatic {
-        new(options?: UmzugOptions): Umzug;
-        migrationsList: (migrations: MigrationDefinitionWithName[], parameters?: any[]) => Migration[];
+        new (options?: UmzugOptions): Umzug;
+        migrationsList: (
+            migrations: MigrationDefinitionWithName[],
+            parameters?: any[],
+        ) => Migration[];
     }
 }
 

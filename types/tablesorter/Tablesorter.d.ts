@@ -84,7 +84,11 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param apply
      * A value indicating whether to apply the filter after setting the filter-text.
      */
-    setFilters(table: JQuery<TElement> | TElement, filter: readonly string[], apply?: boolean): void;
+    setFilters(
+        table: JQuery<TElement> | TElement,
+        filter: readonly string[],
+        apply?: boolean,
+    ): void;
 
     /**
      * Adds instance-methods to the tablesorter.
@@ -204,7 +208,7 @@ export interface Tablesorter<TElement = HTMLElement> {
      */
     sortOn(
         config: TablesorterConfigurationStore<TElement>,
-        sort: ReadonlyArray<(SortDefinition | RelativeSortDefinition)>,
+        sort: ReadonlyArray<SortDefinition | RelativeSortDefinition>,
         callback?: TriggerCallbackHandler<TElement>,
     ): void;
 
@@ -217,7 +221,10 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param callback
      * A callback for post-processing the table.
      */
-    sortReset(config: TablesorterConfigurationStore<TElement>, callback?: TriggerCallbackHandler<TElement>): void;
+    sortReset(
+        config: TablesorterConfigurationStore<TElement>,
+        callback?: TriggerCallbackHandler<TElement>,
+    ): void;
 
     /**
      * Compares two strings and returns a value indicating whether one is less than, equal to or greater than the other.
@@ -360,7 +367,11 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param reapply
      * A value indicating whether the widgets should be reapplied after removing them.
      */
-    refreshWidgets(table: JQuery<TElement> | TElement, removeAll?: boolean, reapply?: boolean): void;
+    refreshWidgets(
+        table: JQuery<TElement> | TElement,
+        removeAll?: boolean,
+        reapply?: boolean,
+    ): void;
 
     /**
      * Adds all cached table-rows back into the table.
@@ -449,7 +460,10 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param callback
      * A callback for post-processing the table.
      */
-    updateHeaders(config: TablesorterConfigurationStore<TElement>, callback?: TriggerCallbackHandler<TElement>): void;
+    updateHeaders(
+        config: TablesorterConfigurationStore<TElement>,
+        callback?: TriggerCallbackHandler<TElement>,
+    ): void;
 
     /**
      * Updates the data of the whole table.
@@ -488,7 +502,10 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param config
      * The tablesorter-configuration.
      */
-    computeColumnIndex(rows: JQuery, config?: TablesorterConfigurationStore<TElement>): void;
+    computeColumnIndex(
+        rows: JQuery,
+        config?: TablesorterConfigurationStore<TElement>,
+    ): void;
 
     /**
      * Adds a `colgroup`-element to the specified `table`.
@@ -534,7 +551,11 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @return
      * The settings inside the settings-`object` for the column with the specified `key`.
      */
-    getColumnData<T>(table: JQuery<TElement> | TElement, object: MappedSettings<T>, key: string | number): T;
+    getColumnData<T>(
+        table: JQuery<TElement> | TElement,
+        object: MappedSettings<T>,
+        key: string | number,
+    ): T;
 
     /**
      * Parses the text of a column.
@@ -562,7 +583,11 @@ export interface Tablesorter<TElement = HTMLElement> {
             | JQuery.Selector
             | JQuery.TypeOrArray<Element>
             | JQuery
-            | ((this: HTMLElement, index: number, element: HTMLElement) => boolean),
+            | ((
+                  this: HTMLElement,
+                  index: number,
+                  element: HTMLElement,
+              ) => boolean),
     ): ParsedData;
 
     /**
@@ -588,7 +613,11 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param options
      * Options for the event-handler.
      */
-    addHeaderResizeEvent(table: JQuery<TElement> | TElement, disable: boolean, options?: HeaderResizeOptions): void;
+    addHeaderResizeEvent(
+        table: JQuery<TElement> | TElement,
+        disable: boolean,
+        options?: HeaderResizeOptions,
+    ): void;
 
     /**
      * Adds a processing-icon to headers.
@@ -602,7 +631,11 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param headers
      * A jQuery-object containing the objects to apply the processing-icons to.
      */
-    isProcessing(table: JQuery<TElement> | TElement, state: boolean, headers?: JQuery): void;
+    isProcessing(
+        table: JQuery<TElement> | TElement,
+        state: boolean,
+        headers?: JQuery,
+    ): void;
 
     /**
      * Checks whether a `SortDefinition` for the specified `column` exists.
@@ -644,7 +677,12 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param options
      * The options for customizing the way to save the data to the storage.
      */
-    storage(table: JQuery<TElement> | TElement, key: string, value: any, options?: StorageConfiguration): void;
+    storage(
+        table: JQuery<TElement> | TElement,
+        key: string,
+        value: any,
+        options?: StorageConfiguration,
+    ): void;
 
     /**
      * Saves data to the storage.
@@ -661,7 +699,12 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param options
      * The options for customizing the way to save the data to the storage.
      */
-    storage(table: JQuery<TElement> | TElement, key: string, value?: null, options?: StorageConfiguration): any;
+    storage(
+        table: JQuery<TElement> | TElement,
+        key: string,
+        value?: null,
+        options?: StorageConfiguration,
+    ): any;
 
     /**
      * Removes the `tablesorter` from a table.
@@ -693,9 +736,17 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param detach
      * A value indicating whether the `tbody` should be detached.
      */
-    processTbody(table: JQuery<TElement> | TElement, tbody: JQuery, detach: true): JQuery;
+    processTbody(
+        table: JQuery<TElement> | TElement,
+        tbody: JQuery,
+        detach: true,
+    ): JQuery;
 
-    processTbody(table: JQuery<TElement> | TElement, tbody: JQuery, detach?: false): void;
+    processTbody(
+        table: JQuery<TElement> | TElement,
+        tbody: JQuery,
+        detach?: false,
+    ): void;
 
     /**
      * Resets the column-widths and optionally clears the locally stored column-widths.
@@ -706,5 +757,8 @@ export interface Tablesorter<TElement = HTMLElement> {
      * @param keepLocalSettings
      * A value indicating whether local settings should not be cleared.
      */
-    resizableReset(table: JQuery<TElement> | TElement, keepLocalSettings?: boolean): void;
+    resizableReset(
+        table: JQuery<TElement> | TElement,
+        keepLocalSettings?: boolean,
+    ): void;
 }

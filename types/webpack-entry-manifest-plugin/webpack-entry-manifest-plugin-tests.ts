@@ -7,7 +7,7 @@ const config: webpack.Configuration = {
             filename: "manifest.json",
             map: (path, chunk) => path,
             filter: (path, chunk) => true,
-            serialize: manifest => JSON.stringify(manifest),
+            serialize: (manifest) => JSON.stringify(manifest),
         }),
     ],
 };

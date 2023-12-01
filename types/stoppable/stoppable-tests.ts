@@ -12,16 +12,16 @@ stoppable(http.createServer(), 10000); // $ExpectType Server<typeof IncomingMess
 stoppable(https.createServer(), 10000); // $ExpectType Server<typeof IncomingMessage, typeof ServerResponse> & WithStop
 
 // check return type is actually a http.Server/https.Server
-httpServer.addListener("connection", socket => {
+httpServer.addListener("connection", (socket) => {
     socket; // $ExpectType Socket
 });
-httpServer.addListener("secureConnection", tlsSocket => {
+httpServer.addListener("secureConnection", (tlsSocket) => {
     tlsSocket; // $ExpectType any
 });
-httpsServer.addListener("secureConnection", tlsSocket => {
+httpsServer.addListener("secureConnection", (tlsSocket) => {
     tlsSocket; // $ExpectType TLSSocket
 });
-httpsServer.addListener("connection", socket => {
+httpsServer.addListener("connection", (socket) => {
     socket; // $ExpectType Duplex
 });
 

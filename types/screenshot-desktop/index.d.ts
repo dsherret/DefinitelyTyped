@@ -2,12 +2,15 @@
 
 export = screenshotDesktop;
 
-declare function screenshotDesktop(
-    options?: { format?: screenshotDesktop.ImageFormat; screen?: screenshotDesktop.DisplayID },
-): Promise<Buffer>;
-declare function screenshotDesktop(
-    options?: { filename: string; format?: screenshotDesktop.ImageFormat; screen?: screenshotDesktop.DisplayID },
-): Promise<string>;
+declare function screenshotDesktop(options?: {
+    format?: screenshotDesktop.ImageFormat;
+    screen?: screenshotDesktop.DisplayID;
+}): Promise<Buffer>;
+declare function screenshotDesktop(options?: {
+    filename: string;
+    format?: screenshotDesktop.ImageFormat;
+    screen?: screenshotDesktop.DisplayID;
+}): Promise<string>;
 
 declare namespace screenshotDesktop {
     type DisplayID = number;

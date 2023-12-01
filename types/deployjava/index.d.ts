@@ -225,7 +225,11 @@ declare namespace DeployJava {
          * @param {Object} parameters     Names and values of the <param> tags in the generated <applet> tag.
          * @param {string} minimumVersion A minimum version of the JRE software that is required to run this applet. Default value is : "1.1".
          */
-        runApplet(attributes: Object, parameters: Object, minimumVersion?: string): void;
+        runApplet(
+            attributes: Object,
+            parameters: Object,
+            minimumVersion?: string,
+        ): void;
 
         /**
          * @summary Sets additional package list.

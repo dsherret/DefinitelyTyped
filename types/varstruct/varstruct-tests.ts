@@ -8,20 +8,16 @@ type ObjectDescriptorTuple<T, T2> = vstruct.ObjectDescriptorTuple<T, T2>;
 type ObjectDescriptorMap<T, T2> = vstruct.ObjectDescriptorMap<T, T2>;
 
 // $ExpectType Codec<{ x: number; y: number; z: number; }>
-let Vector = vstruct<{ x: number; y: number; z: number }>(
-    [
-        { name: "x", type: vstruct.DoubleBE },
-        { name: "y", type: vstruct.DoubleBE },
-        { name: "z", type: vstruct.DoubleBE },
-    ] as const,
-);
-Vector = vstruct(
-    [
-        ["x", vstruct.DoubleBE],
-        ["y", vstruct.DoubleBE],
-        ["z", vstruct.DoubleBE],
-    ] as const,
-);
+let Vector = vstruct<{ x: number; y: number; z: number }>([
+    { name: "x", type: vstruct.DoubleBE },
+    { name: "y", type: vstruct.DoubleBE },
+    { name: "z", type: vstruct.DoubleBE },
+] as const);
+Vector = vstruct([
+    ["x", vstruct.DoubleBE],
+    ["y", vstruct.DoubleBE],
+    ["z", vstruct.DoubleBE],
+] as const);
 
 Vector.encode({ x: 93.1, y: 87.3, z: 10.39 }); // $ExpectType Buffer
 Vector.encode({ x: 93.1, y: 87.3, z: 10.39 }, Buffer.alloc(100)); // $ExpectType Buffer
@@ -62,7 +58,10 @@ vstruct.DoubleLE; // $ExpectType Codec<number>
 vstruct.Array(1, vstruct.String(10)); // $ExpectType Codec<string[]>
 vstruct.VarArray(vstruct.Int16BE, vstruct.Buffer(10)); // $ExpectType Codec<Buffer[]>
 // $ExpectType Codec<CodecTypes<readonly [Codec<number>, Codec<Buffer | undefined>]>>
-const seq = vstruct.Sequence([vstruct.UInt32LE, vstruct.Value(vstruct.Buffer(1), Buffer.alloc(1))] as const);
+const seq = vstruct.Sequence([
+    vstruct.UInt32LE,
+    vstruct.Value(vstruct.Buffer(1), Buffer.alloc(1)),
+] as const);
 seq.encode([1, Buffer.alloc(10)]);
 seq.encode([1, undefined]);
 // @ts-expect-error
@@ -81,7 +80,7 @@ vstruct.VarString(vstruct.Int8); // $ExpectType Codec<string>
 vstruct.VarString(vstruct.Int8, "utf8"); // $ExpectType Codec<string>
 
 // $ExpectType Codec<string>
-vstruct.Bound(vstruct.String(1), value => {
+vstruct.Bound(vstruct.String(1), (value) => {
     value; // $ExpectType string
     if (typeof value !== "string") {
         throw new Error();

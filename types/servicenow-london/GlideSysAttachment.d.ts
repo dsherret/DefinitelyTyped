@@ -10,7 +10,12 @@ declare class GlideSysAttachment {
     getContent(record: ScopedGlideRecord): any;
     getContentBase64(record: ScopedGlideRecord): string;
     getContentStream(sysId: string): object;
-    write(record: ScopedGlideRecord, fileName: string, contentType: string, data: any): string;
+    write(
+        record: ScopedGlideRecord,
+        fileName: string,
+        contentType: string,
+        data: any,
+    ): string;
     writeBase64(
         record: ScopedGlideRecord,
         fileName: string,

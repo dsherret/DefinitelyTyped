@@ -10,8 +10,7 @@ new Vue({
         "vue-cropperjs": VueCropperJs,
     },
     methods: {
-        zoom(option: any) {
-        },
+        zoom(option: any) {},
     },
     template: `
   <vue-cropperjs :value="value"

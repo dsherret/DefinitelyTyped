@@ -198,7 +198,13 @@ declare namespace npm {
         (args: string[], callback: CommandCallback): void;
     }
     export interface CommandCallback {
-        (err?: Error, result?: any, result2?: any, result3?: any, result4?: any): void;
+        (
+            err?: Error,
+            result?: any,
+            result2?: any,
+            result3?: any,
+            result4?: any,
+        ): void;
     }
 
     // #endregion
@@ -217,7 +223,7 @@ declare namespace npm {
     // #region Config Interfaces
 
     export interface ConfigStatic {
-        new(base: Config): Config;
+        new (base: Config): Config;
         (base: Config): Config;
     }
 
@@ -472,7 +478,7 @@ declare namespace npm {
         gangsta: any[];
         desc: any[];
         "no-desc": any[];
-        "local": any[];
+        local: any[];
         l: any[];
         m: any[];
         p: any[];

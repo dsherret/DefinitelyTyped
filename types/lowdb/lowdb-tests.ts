@@ -18,15 +18,11 @@ const result: ArrayLike<Post> = db
     .value();
 
 // $ExpectType Post
-db.get("posts")
-    .find({ id: 123 })
-    .value();
+db.get("posts").find({ id: 123 }).value();
 // $ExpectType Post & Promise<Post>
-db.get("posts")
-    .find({ id: 123 })
-    .write();
+db.get("posts").find({ id: 123 }).write();
 
-low(adapterAsync).then(dbAsync => {
+low(adapterAsync).then((dbAsync) => {
     const writeAction: Promise<Post> = dbAsync
         .get("posts")
         .push({ title: "async hello" })
@@ -39,24 +35,25 @@ low(adapterAsync).then(dbAsync => {
         .find({})
         .write();
 
-    const test2: Post | undefined = dbAsync
-        .get("posts")
-        .find({})
-        .value();
+    const test2: Post | undefined = dbAsync.get("posts").find({}).value();
 
-    const tuple: ArrayLike<boolean | number> & Promise<ArrayLike<boolean | number>> = dbAsync
+    const tuple: ArrayLike<boolean | number> &
+        Promise<ArrayLike<boolean | number>> = dbAsync
         .get("posts")
         .first()
         .get("tuple")
         .write();
 });
 
-(async () => {
-    const adapterSync: low.AdapterSync<ExampleSchema> = new FileSync("db.json", {
-        defaultValue: {
-            posts: [{ name: "baz" }],
+async () => {
+    const adapterSync: low.AdapterSync<ExampleSchema> = new FileSync(
+        "db.json",
+        {
+            defaultValue: {
+                posts: [{ name: "baz" }],
+            },
         },
-    });
+    );
 
     const adapterAsync: low.AdapterAsync<ExampleSchema> = new FileAsync(
         "db.json",
@@ -82,12 +79,14 @@ low(adapterAsync).then(dbAsync => {
         .defaults({ posts: [{ name: "baz" }] })
         .write();
 
-    const result: ArrayLike<{ name: string }> & Promise<ArrayLike<{ name: string }>> = dbAsync
+    const result: ArrayLike<{ name: string }> &
+        Promise<ArrayLike<{ name: string }>> = dbAsync
         .get("posts")
         .push({ name: "hello" })
         .write();
 
-    const resultSync: ArrayLike<{ name: string }> & Promise<ArrayLike<{ name: string }>> = dbSync
+    const resultSync: ArrayLike<{ name: string }> &
+        Promise<ArrayLike<{ name: string }>> = dbSync
         .get("posts")
         .push({ name: "hello" })
         .write();
@@ -103,7 +102,7 @@ low(adapterAsync).then(dbAsync => {
         .get("nested")
         .get("x")
         .write();
-});
+};
 
 declare const lodashChain: _.ObjectChain<ExampleSchema>;
 
@@ -114,7 +113,7 @@ const weDidNotBreakLodash: ArrayLike<{ name: string }> = lodashChain
     .value();
 
 // tests for lowdb/lib/fp:
-(() => {
+() => {
     const adapterLS = new LocalStorage<DbSchema>("test.json");
     const dbFP = lowfp(adapterLS);
     // Get posts
@@ -139,20 +138,20 @@ const weDidNotBreakLodash: ArrayLike<{ name: string }> = lodashChain
     const writeAction: Post[] = dbFP("posts").write(concat<Post>({ id: 123 }));
     const writeAction2: string = dbFP(["user", "name"]).write(() => "typicode");
 
-    (async () => {
+    async () => {
         const adapterAsync = new FileAsync<DbSchema>("test.json");
         const dbAsyncPromise = lowfp(adapterAsync);
         const dbAsync = await dbAsyncPromise;
         const postsWithDefault = dbAsync("posts", [{ title: "baz" }] as Post[]);
 
-        const func: Promise<Post[]> = postsWithDefault.write(post => [
+        const func: Promise<Post[]> = postsWithDefault.write((post) => [
             ...post,
             { title: "another" },
         ]);
-    });
+    };
 
     type PostsAction = (posts: Post[]) => Post[];
-});
+};
 
 interface DbSchema {
     posts: Post[];

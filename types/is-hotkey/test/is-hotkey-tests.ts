@@ -1,4 +1,12 @@
-import { compareHotkey, isCodeHotkey, isHotkey, isKeyHotkey, parseHotkey, toKeyCode, toKeyName } from "is-hotkey";
+import {
+    compareHotkey,
+    isCodeHotkey,
+    isHotkey,
+    isKeyHotkey,
+    parseHotkey,
+    toKeyCode,
+    toKeyName,
+} from "is-hotkey";
 
 const event = new KeyboardEvent("");
 

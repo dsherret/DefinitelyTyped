@@ -21,32 +21,32 @@ interface GridBaseProps extends GridBaseIsolatedProps {
     className?: ReactAttr["className"] | undefined;
 }
 
-export type GridDefaultProps =
-    & GridBaseProps
-    & ReactDivAttr
-    & {
+export type GridDefaultProps = GridBaseProps &
+    ReactDivAttr & {
         as?: undefined;
     };
 
 export type GridIntrinsicProps<K extends keyof JSX.IntrinsicElements> =
-    & GridBaseProps
-    & SafeProps<JSXIntrinsicElementProps<K>>
-    & {
-        as: K;
-    };
+    GridBaseProps &
+        SafeProps<JSXIntrinsicElementProps<K>> & {
+            as: K;
+        };
 
 export type GridCustomComponentProps<
     C extends ReactComponentConstructor<never>,
-> = C extends ReactComponentConstructor<infer P> ?
-        & GridBaseProps
-        & SafeProps<P>
-        & {
-            as: C;
-        }
+> = C extends ReactComponentConstructor<infer P>
+    ? GridBaseProps &
+          SafeProps<P> & {
+              as: C;
+          }
     : never;
 
 declare function Grid(props: GridDefaultProps): FCReturn;
-declare function Grid<T extends keyof JSX.IntrinsicElements>(props: GridIntrinsicProps<T>): FCReturn;
-declare function Grid<T extends ReactComponentConstructor<never>>(props: GridCustomComponentProps<T>): FCReturn;
+declare function Grid<T extends keyof JSX.IntrinsicElements>(
+    props: GridIntrinsicProps<T>,
+): FCReturn;
+declare function Grid<T extends ReactComponentConstructor<never>>(
+    props: GridCustomComponentProps<T>,
+): FCReturn;
 
 export default Grid;

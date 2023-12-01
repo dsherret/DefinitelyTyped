@@ -257,12 +257,24 @@ declare module "crypto" {
      * @since v0.1.94
      * @param options `stream.transform` options
      */
-    function createHmac(algorithm: string, key: BinaryLike | KeyObject, options?: stream.TransformOptions): Hmac;
+    function createHmac(
+        algorithm: string,
+        key: BinaryLike | KeyObject,
+        options?: stream.TransformOptions,
+    ): Hmac;
     // https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings
     type BinaryToTextEncoding = "base64" | "base64url" | "hex" | "binary";
-    type CharacterEncoding = "utf8" | "utf-8" | "utf16le" | "utf-16le" | "latin1";
+    type CharacterEncoding =
+        | "utf8"
+        | "utf-8"
+        | "utf16le"
+        | "utf-16le"
+        | "latin1";
     type LegacyCharacterEncoding = "ascii" | "binary" | "ucs2" | "ucs-2";
-    type Encoding = BinaryToTextEncoding | CharacterEncoding | LegacyCharacterEncoding;
+    type Encoding =
+        | BinaryToTextEncoding
+        | CharacterEncoding
+        | LegacyCharacterEncoding;
     type ECDHKeyFormat = "compressed" | "uncompressed" | "hybrid";
     /**
      * The `Hash` class is a utility for creating hash digests of data. It can be
@@ -650,7 +662,11 @@ declare module "crypto" {
          */
         type: KeyObjectType;
     }
-    type CipherCCMTypes = "aes-128-ccm" | "aes-192-ccm" | "aes-256-ccm" | "chacha20-poly1305";
+    type CipherCCMTypes =
+        | "aes-128-ccm"
+        | "aes-192-ccm"
+        | "aes-256-ccm"
+        | "chacha20-poly1305";
     type CipherGCMTypes = "aes-128-gcm" | "aes-192-gcm" | "aes-256-gcm";
     type CipherOCBTypes = "aes-128-ocb" | "aes-192-ocb" | "aes-256-ocb";
     type BinaryLike = string | NodeJS.ArrayBufferView;
@@ -701,11 +717,23 @@ declare module "crypto" {
      * @deprecated Since v10.0.0 - Use {@link createCipheriv} instead.
      * @param options `stream.transform` options
      */
-    function createCipher(algorithm: CipherCCMTypes, password: BinaryLike, options: CipherCCMOptions): CipherCCM;
+    function createCipher(
+        algorithm: CipherCCMTypes,
+        password: BinaryLike,
+        options: CipherCCMOptions,
+    ): CipherCCM;
     /** @deprecated since v10.0.0 use `createCipheriv()` */
-    function createCipher(algorithm: CipherGCMTypes, password: BinaryLike, options?: CipherGCMOptions): CipherGCM;
+    function createCipher(
+        algorithm: CipherGCMTypes,
+        password: BinaryLike,
+        options?: CipherGCMOptions,
+    ): CipherGCM;
     /** @deprecated since v10.0.0 use `createCipheriv()` */
-    function createCipher(algorithm: string, password: BinaryLike, options?: stream.TransformOptions): Cipher;
+    function createCipher(
+        algorithm: string,
+        password: BinaryLike,
+        options?: stream.TransformOptions,
+    ): Cipher;
     /**
      * Creates and returns a `Cipher` object, with the given `algorithm`, `key` and
      * initialization vector (`iv`).
@@ -897,8 +925,16 @@ declare module "crypto" {
          */
         update(data: BinaryLike): Buffer;
         update(data: string, inputEncoding: Encoding): Buffer;
-        update(data: NodeJS.ArrayBufferView, inputEncoding: undefined, outputEncoding: Encoding): string;
-        update(data: string, inputEncoding: Encoding | undefined, outputEncoding: Encoding): string;
+        update(
+            data: NodeJS.ArrayBufferView,
+            inputEncoding: undefined,
+            outputEncoding: Encoding,
+        ): string;
+        update(
+            data: string,
+            inputEncoding: Encoding | undefined,
+            outputEncoding: Encoding,
+        ): string;
         /**
          * Once the `cipher.final()` method has been called, the `Cipher` object can no
          * longer be used to encrypt data. Attempts to call `cipher.final()` more than
@@ -979,11 +1015,23 @@ declare module "crypto" {
      * @deprecated Since v10.0.0 - Use {@link createDecipheriv} instead.
      * @param options `stream.transform` options
      */
-    function createDecipher(algorithm: CipherCCMTypes, password: BinaryLike, options: CipherCCMOptions): DecipherCCM;
+    function createDecipher(
+        algorithm: CipherCCMTypes,
+        password: BinaryLike,
+        options: CipherCCMOptions,
+    ): DecipherCCM;
     /** @deprecated since v10.0.0 use `createDecipheriv()` */
-    function createDecipher(algorithm: CipherGCMTypes, password: BinaryLike, options?: CipherGCMOptions): DecipherGCM;
+    function createDecipher(
+        algorithm: CipherGCMTypes,
+        password: BinaryLike,
+        options?: CipherGCMOptions,
+    ): DecipherGCM;
     /** @deprecated since v10.0.0 use `createDecipheriv()` */
-    function createDecipher(algorithm: string, password: BinaryLike, options?: stream.TransformOptions): Decipher;
+    function createDecipher(
+        algorithm: string,
+        password: BinaryLike,
+        options?: stream.TransformOptions,
+    ): Decipher;
     /**
      * Creates and returns a `Decipher` object that uses the given `algorithm`, `key`and initialization vector (`iv`).
      *
@@ -1163,8 +1211,16 @@ declare module "crypto" {
          */
         update(data: NodeJS.ArrayBufferView): Buffer;
         update(data: string, inputEncoding: Encoding): Buffer;
-        update(data: NodeJS.ArrayBufferView, inputEncoding: undefined, outputEncoding: Encoding): string;
-        update(data: string, inputEncoding: Encoding | undefined, outputEncoding: Encoding): string;
+        update(
+            data: NodeJS.ArrayBufferView,
+            inputEncoding: undefined,
+            outputEncoding: Encoding,
+        ): string;
+        update(
+            data: string,
+            inputEncoding: Encoding | undefined,
+            outputEncoding: Encoding,
+        ): string;
         /**
          * Once the `decipher.final()` method has been called, the `Decipher` object can
          * no longer be used to decrypt data. Attempts to call `decipher.final()` more
@@ -1290,7 +1346,9 @@ declare module "crypto" {
      * of the passphrase is limited to 1024 bytes.
      * @since v11.6.0
      */
-    function createPrivateKey(key: PrivateKeyInput | string | Buffer | JsonWebKeyInput): KeyObject;
+    function createPrivateKey(
+        key: PrivateKeyInput | string | Buffer | JsonWebKeyInput,
+    ): KeyObject;
     /**
      * Creates and returns a new key object containing a public key. If `key` is a
      * string or `Buffer`, `format` is assumed to be `'pem'`; if `key` is a `KeyObject`with type `'private'`, the public key is derived from the given private key;
@@ -1305,7 +1363,9 @@ declare module "crypto" {
      * and it will be impossible to extract the private key from the returned object.
      * @since v11.6.0
      */
-    function createPublicKey(key: PublicKeyInput | string | Buffer | KeyObject | JsonWebKeyInput): KeyObject;
+    function createPublicKey(
+        key: PublicKeyInput | string | Buffer | KeyObject | JsonWebKeyInput,
+    ): KeyObject;
     /**
      * Creates and returns a new key object containing a secret key for symmetric
      * encryption or `Hmac`.
@@ -1326,7 +1386,10 @@ declare module "crypto" {
      * @since v0.1.92
      * @param options `stream.Writable` options
      */
-    function createSign(algorithm: string, options?: stream.WritableOptions): Sign;
+    function createSign(
+        algorithm: string,
+        options?: stream.WritableOptions,
+    ): Sign;
     type DSAEncoding = "der" | "ieee-p1363";
     interface SigningOptions {
         /**
@@ -1435,7 +1498,9 @@ declare module "crypto" {
          * called. Multiple calls to `sign.sign()` will result in an error being thrown.
          * @since v0.1.92
          */
-        sign(privateKey: KeyLike | SignKeyObjectInput | SignPrivateKeyInput): Buffer;
+        sign(
+            privateKey: KeyLike | SignKeyObjectInput | SignPrivateKeyInput,
+        ): Buffer;
         sign(
             privateKey: KeyLike | SignKeyObjectInput | SignPrivateKeyInput,
             outputFormat: BinaryToTextEncoding,
@@ -1454,7 +1519,10 @@ declare module "crypto" {
      * @since v0.1.92
      * @param options `stream.Writable` options
      */
-    function createVerify(algorithm: string, options?: stream.WritableOptions): Verify;
+    function createVerify(
+        algorithm: string,
+        options?: stream.WritableOptions,
+    ): Verify;
     /**
      * The `Verify` class is a utility for verifying signatures. It can be used in one
      * of two ways:
@@ -1503,11 +1571,19 @@ declare module "crypto" {
          * @since v0.1.92
          */
         verify(
-            object: KeyLike | VerifyKeyObjectInput | VerifyPublicKeyInput | VerifyJsonWebKeyInput,
+            object:
+                | KeyLike
+                | VerifyKeyObjectInput
+                | VerifyPublicKeyInput
+                | VerifyJsonWebKeyInput,
             signature: NodeJS.ArrayBufferView,
         ): boolean;
         verify(
-            object: KeyLike | VerifyKeyObjectInput | VerifyPublicKeyInput | VerifyJsonWebKeyInput,
+            object:
+                | KeyLike
+                | VerifyKeyObjectInput
+                | VerifyPublicKeyInput
+                | VerifyJsonWebKeyInput,
             signature: string,
             signature_format?: BinaryToTextEncoding,
         ): boolean;
@@ -1528,7 +1604,10 @@ declare module "crypto" {
      * @param [generator=2]
      * @param generatorEncoding The `encoding` of the `generator` string.
      */
-    function createDiffieHellman(primeLength: number, generator?: number): DiffieHellman;
+    function createDiffieHellman(
+        primeLength: number,
+        generator?: number,
+    ): DiffieHellman;
     function createDiffieHellman(
         prime: ArrayBuffer | NodeJS.ArrayBufferView,
         generator?: number | ArrayBuffer | NodeJS.ArrayBufferView,
@@ -1609,8 +1688,16 @@ declare module "crypto" {
          * @param inputEncoding The `encoding` of an `otherPublicKey` string.
          * @param outputEncoding The `encoding` of the return value.
          */
-        computeSecret(otherPublicKey: NodeJS.ArrayBufferView, inputEncoding?: null, outputEncoding?: null): Buffer;
-        computeSecret(otherPublicKey: string, inputEncoding: BinaryToTextEncoding, outputEncoding?: null): Buffer;
+        computeSecret(
+            otherPublicKey: NodeJS.ArrayBufferView,
+            inputEncoding?: null,
+            outputEncoding?: null,
+        ): Buffer;
+        computeSecret(
+            otherPublicKey: string,
+            inputEncoding: BinaryToTextEncoding,
+            outputEncoding?: null,
+        ): Buffer;
         computeSecret(
             otherPublicKey: NodeJS.ArrayBufferView,
             inputEncoding: null,
@@ -1717,11 +1804,14 @@ declare module "crypto" {
      */
     const DiffieHellmanGroup: DiffieHellmanGroupConstructor;
     interface DiffieHellmanGroupConstructor {
-        new(name: string): DiffieHellmanGroup;
+        new (name: string): DiffieHellmanGroup;
         (name: string): DiffieHellmanGroup;
         readonly prototype: DiffieHellmanGroup;
     }
-    type DiffieHellmanGroup = Omit<DiffieHellman, "setPublicKey" | "setPrivateKey">;
+    type DiffieHellmanGroup = Omit<
+        DiffieHellman,
+        "setPublicKey" | "setPrivateKey"
+    >;
     /**
      * Creates a predefined `DiffieHellmanGroup` key exchange object. The
      * supported groups are listed in the documentation for `DiffieHellmanGroup`.
@@ -1890,9 +1980,15 @@ declare module "crypto" {
      * @return if the `callback` function is not provided.
      */
     function randomBytes(size: number): Buffer;
-    function randomBytes(size: number, callback: (err: Error | null, buf: Buffer) => void): void;
+    function randomBytes(
+        size: number,
+        callback: (err: Error | null, buf: Buffer) => void,
+    ): void;
     function pseudoRandomBytes(size: number): Buffer;
-    function pseudoRandomBytes(size: number, callback: (err: Error | null, buf: Buffer) => void): void;
+    function pseudoRandomBytes(
+        size: number,
+        callback: (err: Error | null, buf: Buffer) => void,
+    ): void;
     /**
      * Return a random integer `n` such that `min <= n < max`.  This
      * implementation avoids [modulo bias](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias).
@@ -1941,8 +2037,15 @@ declare module "crypto" {
      */
     function randomInt(max: number): number;
     function randomInt(min: number, max: number): number;
-    function randomInt(max: number, callback: (err: Error | null, value: number) => void): void;
-    function randomInt(min: number, max: number, callback: (err: Error | null, value: number) => void): void;
+    function randomInt(
+        max: number,
+        callback: (err: Error | null, value: number) => void,
+    ): void;
+    function randomInt(
+        min: number,
+        max: number,
+        callback: (err: Error | null, value: number) => void,
+    ): void;
     /**
      * Synchronous version of {@link randomFill}.
      *
@@ -1984,7 +2087,11 @@ declare module "crypto" {
      * @param [size=buffer.length - offset]
      * @return The object passed as `buffer` argument.
      */
-    function randomFillSync<T extends NodeJS.ArrayBufferView>(buffer: T, offset?: number, size?: number): T;
+    function randomFillSync<T extends NodeJS.ArrayBufferView>(
+        buffer: T,
+        offset?: number,
+        size?: number,
+    ): T;
     /**
      * This function is similar to {@link randomBytes} but requires the first
      * argument to be a `Buffer` that will be filled. It also
@@ -2161,7 +2268,12 @@ declare module "crypto" {
      * ```
      * @since v10.5.0
      */
-    function scryptSync(password: BinaryLike, salt: BinaryLike, keylen: number, options?: ScryptOptions): Buffer;
+    function scryptSync(
+        password: BinaryLike,
+        salt: BinaryLike,
+        keylen: number,
+        options?: ScryptOptions,
+    ): Buffer;
     interface RsaPublicKey {
         key: KeyLike;
         padding?: number | undefined;
@@ -2187,7 +2299,10 @@ declare module "crypto" {
      * be passed instead of a public key.
      * @since v0.11.14
      */
-    function publicEncrypt(key: RsaPublicKey | RsaPrivateKey | KeyLike, buffer: NodeJS.ArrayBufferView): Buffer;
+    function publicEncrypt(
+        key: RsaPublicKey | RsaPrivateKey | KeyLike,
+        buffer: NodeJS.ArrayBufferView,
+    ): Buffer;
     /**
      * Decrypts `buffer` with `key`.`buffer` was previously encrypted using
      * the corresponding private key, for example using {@link privateEncrypt}.
@@ -2199,7 +2314,10 @@ declare module "crypto" {
      * be passed instead of a public key.
      * @since v1.1.0
      */
-    function publicDecrypt(key: RsaPublicKey | RsaPrivateKey | KeyLike, buffer: NodeJS.ArrayBufferView): Buffer;
+    function publicDecrypt(
+        key: RsaPublicKey | RsaPrivateKey | KeyLike,
+        buffer: NodeJS.ArrayBufferView,
+    ): Buffer;
     /**
      * Decrypts `buffer` with `privateKey`. `buffer` was previously encrypted using
      * the corresponding public key, for example using {@link publicEncrypt}.
@@ -2208,7 +2326,10 @@ declare module "crypto" {
      * object, the `padding` property can be passed. Otherwise, this function uses`RSA_PKCS1_OAEP_PADDING`.
      * @since v0.11.14
      */
-    function privateDecrypt(privateKey: RsaPrivateKey | KeyLike, buffer: NodeJS.ArrayBufferView): Buffer;
+    function privateDecrypt(
+        privateKey: RsaPrivateKey | KeyLike,
+        buffer: NodeJS.ArrayBufferView,
+    ): Buffer;
     /**
      * Encrypts `buffer` with `privateKey`. The returned data can be decrypted using
      * the corresponding public key, for example using {@link publicDecrypt}.
@@ -2217,7 +2338,10 @@ declare module "crypto" {
      * object, the `padding` property can be passed. Otherwise, this function uses`RSA_PKCS1_PADDING`.
      * @since v1.1.0
      */
-    function privateEncrypt(privateKey: RsaPrivateKey | KeyLike, buffer: NodeJS.ArrayBufferView): Buffer;
+    function privateEncrypt(
+        privateKey: RsaPrivateKey | KeyLike,
+        buffer: NodeJS.ArrayBufferView,
+    ): Buffer;
     /**
      * ```js
      * const {
@@ -2360,7 +2484,10 @@ declare module "crypto" {
          * @param [format='uncompressed']
          */
         generateKeys(): Buffer;
-        generateKeys(encoding: BinaryToTextEncoding, format?: ECDHKeyFormat): string;
+        generateKeys(
+            encoding: BinaryToTextEncoding,
+            format?: ECDHKeyFormat,
+        ): string;
         /**
          * Computes the shared secret using `otherPublicKey` as the other
          * party's public key and returns the computed shared secret. The supplied
@@ -2379,8 +2506,14 @@ declare module "crypto" {
          * @param outputEncoding The `encoding` of the return value.
          */
         computeSecret(otherPublicKey: NodeJS.ArrayBufferView): Buffer;
-        computeSecret(otherPublicKey: string, inputEncoding: BinaryToTextEncoding): Buffer;
-        computeSecret(otherPublicKey: NodeJS.ArrayBufferView, outputEncoding: BinaryToTextEncoding): string;
+        computeSecret(
+            otherPublicKey: string,
+            inputEncoding: BinaryToTextEncoding,
+        ): Buffer;
+        computeSecret(
+            otherPublicKey: NodeJS.ArrayBufferView,
+            outputEncoding: BinaryToTextEncoding,
+        ): string;
         computeSecret(
             otherPublicKey: string,
             inputEncoding: BinaryToTextEncoding,
@@ -2406,7 +2539,10 @@ declare module "crypto" {
          * @return The EC Diffie-Hellman public key in the specified `encoding` and `format`.
          */
         getPublicKey(encoding?: null, format?: ECDHKeyFormat): Buffer;
-        getPublicKey(encoding: BinaryToTextEncoding, format?: ECDHKeyFormat): string;
+        getPublicKey(
+            encoding: BinaryToTextEncoding,
+            format?: ECDHKeyFormat,
+        ): string;
         /**
          * Sets the EC Diffie-Hellman private key.
          * If `encoding` is provided, `privateKey` is expected
@@ -2454,8 +2590,19 @@ declare module "crypto" {
      * not introduce timing vulnerabilities.
      * @since v6.6.0
      */
-    function timingSafeEqual(a: NodeJS.ArrayBufferView, b: NodeJS.ArrayBufferView): boolean;
-    type KeyType = "rsa" | "rsa-pss" | "dsa" | "ec" | "ed25519" | "ed448" | "x25519" | "x448";
+    function timingSafeEqual(
+        a: NodeJS.ArrayBufferView,
+        b: NodeJS.ArrayBufferView,
+    ): boolean;
+    type KeyType =
+        | "rsa"
+        | "rsa-pss"
+        | "dsa"
+        | "ec"
+        | "ed25519"
+        | "ed448"
+        | "x25519"
+        | "x448";
     type KeyFormat = "pem" | "der" | "jwk";
     interface BasePrivateKeyEncodingOptions<T extends KeyFormat> {
         format: T;
@@ -2520,7 +2667,10 @@ declare module "crypto" {
          */
         divisorLength: number;
     }
-    interface RSAKeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface RSAKeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         /**
          * Key size in bits
          */
@@ -2538,7 +2688,10 @@ declare module "crypto" {
             type: "pkcs1" | "pkcs8";
         };
     }
-    interface RSAPSSKeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface RSAPSSKeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         /**
          * Key size in bits
          */
@@ -2568,7 +2721,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface DSAKeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface DSAKeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         /**
          * Key size in bits
          */
@@ -2585,7 +2741,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface ECKeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface ECKeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         /**
          * Name of the curve to use.
          */
@@ -2598,7 +2757,10 @@ declare module "crypto" {
             type: "sec1" | "pkcs8";
         };
     }
-    interface ED25519KeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface ED25519KeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         publicKeyEncoding: {
             type: "spki";
             format: PubF;
@@ -2607,7 +2769,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface ED448KeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface ED448KeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         publicKeyEncoding: {
             type: "spki";
             format: PubF;
@@ -2616,7 +2781,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface X25519KeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface X25519KeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         publicKeyEncoding: {
             type: "spki";
             format: PubF;
@@ -2625,7 +2793,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface X448KeyPairOptions<PubF extends KeyFormat, PrivF extends KeyFormat> {
+    interface X448KeyPairOptions<
+        PubF extends KeyFormat,
+        PrivF extends KeyFormat,
+    > {
         publicKeyEncoding: {
             type: "spki";
             format: PubF;
@@ -2634,7 +2805,10 @@ declare module "crypto" {
             type: "pkcs8";
         };
     }
-    interface KeyPairSyncResult<T1 extends string | Buffer, T2 extends string | Buffer> {
+    interface KeyPairSyncResult<
+        T1 extends string | Buffer,
+        T2 extends string | Buffer,
+    > {
         publicKey: T1;
         privateKey: T2;
     }
@@ -2695,7 +2869,10 @@ declare module "crypto" {
         type: "rsa",
         options: RSAKeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "rsa", options: RSAKeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "rsa",
+        options: RSAKeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"pem", "pem">,
@@ -2712,7 +2889,10 @@ declare module "crypto" {
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "rsa-pss", options: RSAPSSKeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "rsa-pss",
+        options: RSAPSSKeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "dsa",
         options: DSAKeyPairOptions<"pem", "pem">,
@@ -2729,7 +2909,10 @@ declare module "crypto" {
         type: "dsa",
         options: DSAKeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "dsa", options: DSAKeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "dsa",
+        options: DSAKeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "ec",
         options: ECKeyPairOptions<"pem", "pem">,
@@ -2746,7 +2929,10 @@ declare module "crypto" {
         type: "ec",
         options: ECKeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "ec", options: ECKeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "ec",
+        options: ECKeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "ed25519",
         options: ED25519KeyPairOptions<"pem", "pem">,
@@ -2763,7 +2949,10 @@ declare module "crypto" {
         type: "ed25519",
         options: ED25519KeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "ed25519", options?: ED25519KeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "ed25519",
+        options?: ED25519KeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "ed448",
         options: ED448KeyPairOptions<"pem", "pem">,
@@ -2780,7 +2969,10 @@ declare module "crypto" {
         type: "ed448",
         options: ED448KeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "ed448", options?: ED448KeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "ed448",
+        options?: ED448KeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "x25519",
         options: X25519KeyPairOptions<"pem", "pem">,
@@ -2797,7 +2989,10 @@ declare module "crypto" {
         type: "x25519",
         options: X25519KeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "x25519", options?: X25519KeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "x25519",
+        options?: X25519KeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     function generateKeyPairSync(
         type: "x448",
         options: X448KeyPairOptions<"pem", "pem">,
@@ -2814,7 +3009,10 @@ declare module "crypto" {
         type: "x448",
         options: X448KeyPairOptions<"der", "der">,
     ): KeyPairSyncResult<Buffer, Buffer>;
-    function generateKeyPairSync(type: "x448", options?: X448KeyPairKeyObjectOptions): KeyPairKeyObjectResult;
+    function generateKeyPairSync(
+        type: "x448",
+        options?: X448KeyPairKeyObjectOptions,
+    ): KeyPairKeyObjectResult;
     /**
      * Generates a new asymmetric key pair of the given `type`. RSA, RSA-PSS, DSA, EC,
      * Ed25519, Ed448, X25519, X448, and DH are currently supported.
@@ -2857,202 +3055,362 @@ declare module "crypto" {
     function generateKeyPair(
         type: "rsa",
         options: RSAKeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa",
         options: RSAKeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa",
         options: RSAKeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa",
         options: RSAKeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa",
         options: RSAKeyPairKeyObjectOptions,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa-pss",
         options: RSAPSSKeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "rsa-pss",
         options: RSAPSSKeyPairKeyObjectOptions,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "dsa",
         options: DSAKeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "dsa",
         options: DSAKeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "dsa",
         options: DSAKeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "dsa",
         options: DSAKeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "dsa",
         options: DSAKeyPairKeyObjectOptions,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ec",
         options: ECKeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ec",
         options: ECKeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ec",
         options: ECKeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ec",
         options: ECKeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ec",
         options: ECKeyPairKeyObjectOptions,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed25519",
         options: ED25519KeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed25519",
         options: ED25519KeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed25519",
         options: ED25519KeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed25519",
         options: ED25519KeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed25519",
         options: ED25519KeyPairKeyObjectOptions | undefined,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed448",
         options: ED448KeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed448",
         options: ED448KeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed448",
         options: ED448KeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed448",
         options: ED448KeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "ed448",
         options: ED448KeyPairKeyObjectOptions | undefined,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x25519",
         options: X25519KeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x25519",
         options: X25519KeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x25519",
         options: X25519KeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x25519",
         options: X25519KeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x25519",
         options: X25519KeyPairKeyObjectOptions | undefined,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x448",
         options: X448KeyPairOptions<"pem", "pem">,
-        callback: (err: Error | null, publicKey: string, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x448",
         options: X448KeyPairOptions<"pem", "der">,
-        callback: (err: Error | null, publicKey: string, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x448",
         options: X448KeyPairOptions<"der", "pem">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: string) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x448",
         options: X448KeyPairOptions<"der", "der">,
-        callback: (err: Error | null, publicKey: Buffer, privateKey: Buffer) => void,
+        callback: (
+            err: Error | null,
+            publicKey: Buffer,
+            privateKey: Buffer,
+        ) => void,
     ): void;
     function generateKeyPair(
         type: "x448",
         options: X448KeyPairKeyObjectOptions | undefined,
-        callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void,
+        callback: (
+            err: Error | null,
+            publicKey: KeyObject,
+            privateKey: KeyObject,
+        ) => void,
     ): void;
     namespace generateKeyPair {
         function __promisify__(
@@ -3083,7 +3441,10 @@ declare module "crypto" {
             publicKey: Buffer;
             privateKey: Buffer;
         }>;
-        function __promisify__(type: "rsa", options: RSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+        function __promisify__(
+            type: "rsa",
+            options: RSAKeyPairKeyObjectOptions,
+        ): Promise<KeyPairKeyObjectResult>;
         function __promisify__(
             type: "rsa-pss",
             options: RSAPSSKeyPairOptions<"pem", "pem">,
@@ -3144,7 +3505,10 @@ declare module "crypto" {
             publicKey: Buffer;
             privateKey: Buffer;
         }>;
-        function __promisify__(type: "dsa", options: DSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+        function __promisify__(
+            type: "dsa",
+            options: DSAKeyPairKeyObjectOptions,
+        ): Promise<KeyPairKeyObjectResult>;
         function __promisify__(
             type: "ec",
             options: ECKeyPairOptions<"pem", "pem">,
@@ -3173,7 +3537,10 @@ declare module "crypto" {
             publicKey: Buffer;
             privateKey: Buffer;
         }>;
-        function __promisify__(type: "ec", options: ECKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+        function __promisify__(
+            type: "ec",
+            options: ECKeyPairKeyObjectOptions,
+        ): Promise<KeyPairKeyObjectResult>;
         function __promisify__(
             type: "ed25519",
             options: ED25519KeyPairOptions<"pem", "pem">,
@@ -3234,7 +3601,10 @@ declare module "crypto" {
             publicKey: Buffer;
             privateKey: Buffer;
         }>;
-        function __promisify__(type: "ed448", options?: ED448KeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+        function __promisify__(
+            type: "ed448",
+            options?: ED448KeyPairKeyObjectOptions,
+        ): Promise<KeyPairKeyObjectResult>;
         function __promisify__(
             type: "x25519",
             options: X25519KeyPairOptions<"pem", "pem">,
@@ -3295,7 +3665,10 @@ declare module "crypto" {
             publicKey: Buffer;
             privateKey: Buffer;
         }>;
-        function __promisify__(type: "x448", options?: X448KeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+        function __promisify__(
+            type: "x448",
+            options?: X448KeyPairKeyObjectOptions,
+        ): Promise<KeyPairKeyObjectResult>;
     }
     /**
      * Calculates and returns the signature for `data` using the given private key and
@@ -3339,13 +3712,21 @@ declare module "crypto" {
     function verify(
         algorithm: string | null | undefined,
         data: NodeJS.ArrayBufferView,
-        key: KeyLike | VerifyKeyObjectInput | VerifyPublicKeyInput | VerifyJsonWebKeyInput,
+        key:
+            | KeyLike
+            | VerifyKeyObjectInput
+            | VerifyPublicKeyInput
+            | VerifyJsonWebKeyInput,
         signature: NodeJS.ArrayBufferView,
     ): boolean;
     function verify(
         algorithm: string | null | undefined,
         data: NodeJS.ArrayBufferView,
-        key: KeyLike | VerifyKeyObjectInput | VerifyPublicKeyInput | VerifyJsonWebKeyInput,
+        key:
+            | KeyLike
+            | VerifyKeyObjectInput
+            | VerifyPublicKeyInput
+            | VerifyJsonWebKeyInput,
         signature: NodeJS.ArrayBufferView,
         callback: (error: Error | null, result: boolean) => void,
     ): void;
@@ -3354,8 +3735,22 @@ declare module "crypto" {
      * Both keys must have the same `asymmetricKeyType`, which must be one of `'dh'`(for Diffie-Hellman), `'ec'` (for ECDH), `'x448'`, or `'x25519'` (for ECDH-ES).
      * @since v13.9.0, v12.17.0
      */
-    function diffieHellman(options: { privateKey: KeyObject; publicKey: KeyObject }): Buffer;
-    type CipherMode = "cbc" | "ccm" | "cfb" | "ctr" | "ecb" | "gcm" | "ocb" | "ofb" | "stream" | "wrap" | "xts";
+    function diffieHellman(options: {
+        privateKey: KeyObject;
+        publicKey: KeyObject;
+    }): Buffer;
+    type CipherMode =
+        | "cbc"
+        | "ccm"
+        | "cfb"
+        | "ctr"
+        | "ecb"
+        | "gcm"
+        | "ocb"
+        | "ofb"
+        | "stream"
+        | "wrap"
+        | "xts";
     interface CipherInfoOptions {
         /**
          * A test key length.
@@ -3405,7 +3800,10 @@ declare module "crypto" {
      * @since v15.0.0
      * @param nameOrNid The name or nid of the cipher to query.
      */
-    function getCipherInfo(nameOrNid: string | number, options?: CipherInfoOptions): CipherInfo | undefined;
+    function getCipherInfo(
+        nameOrNid: string | number,
+        options?: CipherInfoOptions,
+    ): CipherInfo | undefined;
     /**
      * HKDF is a simple key derivation function defined in RFC 5869\. The given `ikm`,`salt` and `info` are used with the `digest` to derive a key of `keylen` bytes.
      *
@@ -3682,7 +4080,10 @@ declare module "crypto" {
          * @since v15.6.0
          * @return Returns `email` if the certificate matches, `undefined` if it does not.
          */
-        checkEmail(email: string, options?: Pick<X509CheckOptions, "subject">): string | undefined;
+        checkEmail(
+            email: string,
+            options?: Pick<X509CheckOptions, "subject">,
+        ): string | undefined;
         /**
          * Checks whether the certificate matches the given host name.
          *
@@ -3752,7 +4153,11 @@ declare module "crypto" {
          */
         verify(publicKey: KeyObject): boolean;
     }
-    type LargeNumberLike = NodeJS.ArrayBufferView | SharedArrayBuffer | ArrayBuffer | bigint;
+    type LargeNumberLike =
+        | NodeJS.ArrayBufferView
+        | SharedArrayBuffer
+        | ArrayBuffer
+        | bigint;
     interface GeneratePrimeOptions {
         add?: LargeNumberLike | undefined;
         rem?: LargeNumberLike | undefined;
@@ -3795,7 +4200,10 @@ declare module "crypto" {
      * @since v15.8.0
      * @param size The size (in bits) of the prime to generate.
      */
-    function generatePrime(size: number, callback: (err: Error | null, prime: ArrayBuffer) => void): void;
+    function generatePrime(
+        size: number,
+        callback: (err: Error | null, prime: ArrayBuffer) => void,
+    ): void;
     function generatePrime(
         size: number,
         options: GeneratePrimeOptionsBigInt,
@@ -3839,9 +4247,18 @@ declare module "crypto" {
      * @param size The size (in bits) of the prime to generate.
      */
     function generatePrimeSync(size: number): ArrayBuffer;
-    function generatePrimeSync(size: number, options: GeneratePrimeOptionsBigInt): bigint;
-    function generatePrimeSync(size: number, options: GeneratePrimeOptionsArrayBuffer): ArrayBuffer;
-    function generatePrimeSync(size: number, options: GeneratePrimeOptions): ArrayBuffer | bigint;
+    function generatePrimeSync(
+        size: number,
+        options: GeneratePrimeOptionsBigInt,
+    ): bigint;
+    function generatePrimeSync(
+        size: number,
+        options: GeneratePrimeOptionsArrayBuffer,
+    ): ArrayBuffer;
+    function generatePrimeSync(
+        size: number,
+        options: GeneratePrimeOptions,
+    ): ArrayBuffer | bigint;
     interface CheckPrimeOptions {
         /**
          * The number of Miller-Rabin probabilistic primality iterations to perform.
@@ -3858,7 +4275,10 @@ declare module "crypto" {
      * @since v15.8.0
      * @param candidate A possible prime encoded as a sequence of big endian octets of arbitrary length.
      */
-    function checkPrime(value: LargeNumberLike, callback: (err: Error | null, result: boolean) => void): void;
+    function checkPrime(
+        value: LargeNumberLike,
+        callback: (err: Error | null, result: boolean) => void,
+    ): void;
     function checkPrime(
         value: LargeNumberLike,
         options: CheckPrimeOptions,
@@ -3870,7 +4290,10 @@ declare module "crypto" {
      * @param candidate A possible prime encoded as a sequence of big endian octets of arbitrary length.
      * @return `true` if the candidate is a prime with an error probability less than `0.25 ** options.checks`.
      */
-    function checkPrimeSync(candidate: LargeNumberLike, options?: CheckPrimeOptions): boolean;
+    function checkPrimeSync(
+        candidate: LargeNumberLike,
+        options?: CheckPrimeOptions,
+    ): boolean;
     /**
      * Load and set the `engine` for some or all OpenSSL functions (selected by flags).
      *
@@ -3900,7 +4323,9 @@ declare module "crypto" {
      * @since v17.4.0
      * @return Returns `typedArray`.
      */
-    function getRandomValues<T extends webcrypto.BufferSource>(typedArray: T): T;
+    function getRandomValues<T extends webcrypto.BufferSource>(
+        typedArray: T,
+    ): T;
     /**
      * A convenient alias for `crypto.webcrypto.subtle`.
      * @since v17.4.0
@@ -4065,7 +4490,14 @@ declare module "crypto" {
              * An error will be thrown if the given `typedArray` is larger than 65,536 bytes.
              * @since v15.0.0
              */
-            getRandomValues<T extends Exclude<NodeJS.TypedArray, Float32Array | Float64Array>>(typedArray: T): T;
+            getRandomValues<
+                T extends Exclude<
+                    NodeJS.TypedArray,
+                    Float32Array | Float64Array
+                >,
+            >(
+                typedArray: T,
+            ): T;
             /**
              * Generates a random {@link https://www.rfc-editor.org/rfc/rfc4122.txt RFC 4122} version 4 UUID.
              * The UUID is generated using a cryptographic pseudorandom number generator.
@@ -4153,7 +4585,12 @@ declare module "crypto" {
              * @since v15.0.0
              */
             decrypt(
-                algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
+                algorithm:
+                    | AlgorithmIdentifier
+                    | RsaOaepParams
+                    | AesCtrParams
+                    | AesCbcParams
+                    | AesGcmParams,
                 key: CryptoKey,
                 data: BufferSource,
             ): Promise<ArrayBuffer>;
@@ -4174,7 +4611,11 @@ declare module "crypto" {
              * - `'PBKDF2'`
              * @since v15.0.0
              */
-            deriveBits(algorithm: EcdhKeyDeriveParams, baseKey: CryptoKey, length: number | null): Promise<ArrayBuffer>;
+            deriveBits(
+                algorithm: EcdhKeyDeriveParams,
+                baseKey: CryptoKey,
+                length: number | null,
+            ): Promise<ArrayBuffer>;
             deriveBits(
                 algorithm: AlgorithmIdentifier | HkdfParams | Pbkdf2Params,
                 baseKey: CryptoKey,
@@ -4198,7 +4639,11 @@ declare module "crypto" {
              * @since v15.0.0
              */
             deriveKey(
-                algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params,
+                algorithm:
+                    | AlgorithmIdentifier
+                    | EcdhKeyDeriveParams
+                    | HkdfParams
+                    | Pbkdf2Params,
                 baseKey: CryptoKey,
                 derivedKeyAlgorithm:
                     | AlgorithmIdentifier
@@ -4223,7 +4668,10 @@ declare module "crypto" {
              * If `algorithm` is provided as an `<Object>`, it must have a `name` property whose value is one of the above.
              * @since v15.0.0
              */
-            digest(algorithm: AlgorithmIdentifier, data: BufferSource): Promise<ArrayBuffer>;
+            digest(
+                algorithm: AlgorithmIdentifier,
+                data: BufferSource,
+            ): Promise<ArrayBuffer>;
             /**
              * Using the method and parameters specified by `algorithm` and the keying material provided by `key`,
              * `subtle.encrypt()` attempts to encipher `data`. If successful,
@@ -4238,7 +4686,12 @@ declare module "crypto" {
              * @since v15.0.0
              */
             encrypt(
-                algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
+                algorithm:
+                    | AlgorithmIdentifier
+                    | RsaOaepParams
+                    | AesCtrParams
+                    | AesCbcParams
+                    | AesGcmParams,
                 key: CryptoKey,
                 data: BufferSource,
             ): Promise<ArrayBuffer>;
@@ -4257,7 +4710,10 @@ declare module "crypto" {
              * @since v15.0.0
              */
             exportKey(format: "jwk", key: CryptoKey): Promise<JsonWebKey>;
-            exportKey(format: Exclude<KeyFormat, "jwk">, key: CryptoKey): Promise<ArrayBuffer>;
+            exportKey(
+                format: Exclude<KeyFormat, "jwk">,
+                key: CryptoKey,
+            ): Promise<ArrayBuffer>;
             /**
              * Using the method and parameters provided in `algorithm`,
              * `subtle.generateKey()` attempts to generate new keying material.
@@ -4349,7 +4805,11 @@ declare module "crypto" {
              * @since v15.0.0
              */
             sign(
-                algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams | Ed448Params,
+                algorithm:
+                    | AlgorithmIdentifier
+                    | RsaPssParams
+                    | EcdsaParams
+                    | Ed448Params,
                 key: CryptoKey,
                 data: BufferSource,
             ): Promise<ArrayBuffer>;
@@ -4392,7 +4852,12 @@ declare module "crypto" {
                 format: KeyFormat,
                 wrappedKey: BufferSource,
                 unwrappingKey: CryptoKey,
-                unwrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
+                unwrapAlgorithm:
+                    | AlgorithmIdentifier
+                    | RsaOaepParams
+                    | AesCtrParams
+                    | AesCbcParams
+                    | AesGcmParams,
                 unwrappedKeyAlgorithm:
                     | AlgorithmIdentifier
                     | RsaHashedImportParams
@@ -4418,7 +4883,11 @@ declare module "crypto" {
              * @since v15.0.0
              */
             verify(
-                algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams | Ed448Params,
+                algorithm:
+                    | AlgorithmIdentifier
+                    | RsaPssParams
+                    | EcdsaParams
+                    | Ed448Params,
                 key: CryptoKey,
                 signature: BufferSource,
                 data: BufferSource,
@@ -4445,7 +4914,12 @@ declare module "crypto" {
                 format: KeyFormat,
                 key: CryptoKey,
                 wrappingKey: CryptoKey,
-                wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams,
+                wrapAlgorithm:
+                    | AlgorithmIdentifier
+                    | RsaOaepParams
+                    | AesCtrParams
+                    | AesCbcParams
+                    | AesGcmParams,
             ): Promise<ArrayBuffer>;
         }
     }

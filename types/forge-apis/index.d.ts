@@ -69,26 +69,31 @@ export interface AuthToken {
 }
 
 export class AuthClientTwoLegged {
-    constructor(clientId: string, clientSecret: string, scopes: Scope[], autoRefresh: boolean);
+    constructor(
+        clientId: string,
+        clientSecret: string,
+        scopes: Scope[],
+        autoRefresh: boolean,
+    );
 
     authenticate(): Promise<AuthToken>;
     getCredentials(): AuthToken;
-    setCredentials(
-        credentials: AuthToken,
-    ): void;
+    setCredentials(credentials: AuthToken): void;
     isAuthorized(): boolean;
 }
 
 export class AuthClientThreeLegged {
-    constructor(clientId: string, clientSecret: string, redirectUri: string, scopes: Scope[], autoRefresh: boolean);
+    constructor(
+        clientId: string,
+        clientSecret: string,
+        redirectUri: string,
+        scopes: Scope[],
+        autoRefresh: boolean,
+    );
 
-    generateAuthUrl(
-        state: string,
-    ): string;
+    generateAuthUrl(state: string): string;
 
-    getToken(
-        code: string,
-    ): Promise<AuthToken>;
+    getToken(code: string): Promise<AuthToken>;
 
     refreshToken(
         credentials: { refresh_token?: string | undefined },
@@ -97,26 +102,31 @@ export class AuthClientThreeLegged {
 }
 
 export class AuthClientTwoLeggedV2 {
-    constructor(clientId: string, clientSecret: string, scopes: Scope[], autoRefresh: boolean);
+    constructor(
+        clientId: string,
+        clientSecret: string,
+        scopes: Scope[],
+        autoRefresh: boolean,
+    );
 
     authenticate(): Promise<AuthToken>;
     getCredentials(): AuthToken;
-    setCredentials(
-        credentials: AuthToken,
-    ): void;
+    setCredentials(credentials: AuthToken): void;
     isAuthorized(): boolean;
 }
 
 export class AuthClientThreeLeggedV2 {
-    constructor(clientId: string, clientSecret: string, redirectUri: string, scopes: Scope[], autoRefresh: boolean);
+    constructor(
+        clientId: string,
+        clientSecret: string,
+        redirectUri: string,
+        scopes: Scope[],
+        autoRefresh: boolean,
+    );
 
-    generateAuthUrl(
-        state: string,
-    ): string;
+    generateAuthUrl(state: string): string;
 
-    getToken(
-        code: string,
-    ): Promise<AuthToken>;
+    getToken(code: string): Promise<AuthToken>;
 
     refreshToken(
         credentials: { refresh_token?: string | undefined },
@@ -173,7 +183,11 @@ export class BucketsApi {
      * This endpoint will return the buckets owned by the application. This endpoint supports pagination.
      */
     getBuckets(
-        opts: { region?: string | undefined; limit?: number | undefined; startAt?: string | undefined },
+        opts: {
+            region?: string | undefined;
+            limit?: number | undefined;
+            startAt?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -337,7 +351,10 @@ export class DerivativesApi {
     getDerivativeManifest(
         urn: string,
         derivativeUrn: string,
-        opts: { range?: number | undefined; acceptEncoding?: string | undefined },
+        opts: {
+            range?: number | undefined;
+            acceptEncoding?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -359,7 +376,10 @@ export class DerivativesApi {
      * Formats table for more details about supported translations. Note that we are constantly adding new file formats to the list of Forge translations.
      */
     getFormats(
-        opts: { ifModifiedSince?: Date | undefined; acceptEncoding?: string | undefined },
+        opts: {
+            ifModifiedSince?: Date | undefined;
+            acceptEncoding?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -439,7 +459,11 @@ export class DerivativesApi {
      */
     getThumbnail(
         urn: string,
-        opts: { width?: number | undefined; height?: number | undefined; guid?: string | undefined },
+        opts: {
+            width?: number | undefined;
+            height?: number | undefined;
+            guid?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -682,7 +706,10 @@ export class HubsApi {
      * Returns a collection of accessible hubs for this member. A Hub represents an A360 Team/Personal hub or a BIM 360 account.
      */
     getHubs(
-        opts: { filterId?: string[] | undefined; filterExtensionType?: string[] | undefined },
+        opts: {
+            filterId?: string[] | undefined;
+            filterExtensionType?: string[] | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -753,7 +780,12 @@ export class ItemsApi {
     /**
      * Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc.
      */
-    getItem(projectId: string, itemId: string, oauth2Client: AuthClient, credentials: AuthToken): Promise<ApiResponse>;
+    getItem(
+        projectId: string,
+        itemId: string,
+        oauth2Client: AuthClient,
+        credentials: AuthToken,
+    ): Promise<ApiResponse>;
 
     /**
      * Returns the 'parent' folder for the given item.
@@ -878,7 +910,12 @@ export interface UploadedResource {
     };
 }
 
-export type DownloadResponseType = "arraybuffer" | "document" | "json" | "text" | "stream";
+export type DownloadResponseType =
+    | "arraybuffer"
+    | "document"
+    | "json"
+    | "text"
+    | "stream";
 
 export interface DownloadedResource {
     objectKey: string;
@@ -934,10 +971,7 @@ export class ObjectsApi {
     /**
      * Delete a signed URL. A successful call to this endpoint requires bucket owner access.
      */
-    deleteSignedResource(
-        id: string,
-        region: string,
-    ): Promise<ApiResponse>;
+    deleteSignedResource(id: string, region: string): Promise<ApiResponse>;
 
     /**
      * @deprecated Use {@link getObjects} instead.
@@ -962,7 +996,10 @@ export class ObjectsApi {
     getObjectDetails(
         bucketKey: string,
         objectName: string,
-        opts: { ifModifiedSince?: Date | undefined; _with?: string | undefined },
+        opts: {
+            ifModifiedSince?: Date | undefined;
+            _with?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -972,7 +1009,11 @@ export class ObjectsApi {
      */
     getObjects(
         bucketKey: string,
-        opts: { limit?: number | undefined; beginsWith?: string | undefined; startAt?: string | undefined },
+        opts: {
+            limit?: number | undefined;
+            beginsWith?: string | undefined;
+            startAt?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -1014,7 +1055,10 @@ export class ObjectsApi {
         contentRange: string,
         sessionId: string,
         body: string | Buffer,
-        opts: { contentDisposition?: string | undefined; ifMatch?: string | undefined },
+        opts: {
+            contentDisposition?: string | undefined;
+            ifMatch?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -1029,7 +1073,10 @@ export class ObjectsApi {
         objectName: string,
         contentLength: number,
         body: string | Buffer,
-        opts: { contentDisposition?: string | undefined; ifMatch?: string | undefined },
+        opts: {
+            contentDisposition?: string | undefined;
+            ifMatch?: string | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;
@@ -1439,7 +1486,10 @@ export class ProjectsApi {
      */
     getHubProjects(
         hubId: string,
-        opts: { filterId?: string[] | undefined; filterExtensionType?: string[] | undefined },
+        opts: {
+            filterId?: string[] | undefined;
+            filterExtensionType?: string[] | undefined;
+        },
         oauth2Client: AuthClient,
         credentials: AuthToken,
     ): Promise<ApiResponse>;

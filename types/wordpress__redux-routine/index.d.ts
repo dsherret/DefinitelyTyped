@@ -9,6 +9,8 @@ import { AnyAction, Middleware } from "redux";
  *
  * @param controls - Object of control handlers.
  */
-declare function createMiddleware(controls?: Record<string, (action: AnyAction) => any>): Middleware;
+declare function createMiddleware(
+    controls?: Record<string, (action: AnyAction) => any>,
+): Middleware;
 
 export default createMiddleware;

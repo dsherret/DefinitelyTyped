@@ -1,8 +1,17 @@
-import { Edge, EdgeKind, Fact, FactName, JSONEdge, JSONFact, OrdinalEdge, VName } from "kythe";
+import {
+    Edge,
+    EdgeKind,
+    Fact,
+    FactName,
+    JSONEdge,
+    JSONFact,
+    OrdinalEdge,
+    VName,
+} from "kythe";
 
 function makeOrdinal(edgeKind: EdgeKind, ordinal: number): OrdinalEdge {
     const edge = `${edgeKind}.${ordinal}`;
-    return <OrdinalEdge> edge;
+    return <OrdinalEdge>edge;
 }
 
 const vname: VName = {

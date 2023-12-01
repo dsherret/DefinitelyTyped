@@ -3,7 +3,10 @@
 export = Snap;
 export as namespace Snap;
 
-declare function Snap(width: number | string, height: number | string): Snap.Paper;
+declare function Snap(
+    width: number | string,
+    height: number | string,
+): Snap.Paper;
 declare function Snap(query: string): Snap.Paper;
 declare function Snap(DOM: SVGElement): Snap.Paper;
 
@@ -13,22 +16,51 @@ declare namespace Snap {
 
     export function Matrix(): void;
     export function matrix(): Matrix;
-    export function matrix(a: number, b: number, c: number, d: number, e: number, f: number): Matrix;
+    export function matrix(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): Matrix;
     export function matrix(svgMatrix: SVGMatrix): Matrix;
 
-    export function ajax(url: string, postData: string, callback: Function, scope?: Object): XMLHttpRequest;
-    export function ajax(url: string, postData: Object, callback: Function, scope?: Object): XMLHttpRequest;
-    export function ajax(url: string, callback: Function, scope?: Object): XMLHttpRequest;
+    export function ajax(
+        url: string,
+        postData: string,
+        callback: Function,
+        scope?: Object,
+    ): XMLHttpRequest;
+    export function ajax(
+        url: string,
+        postData: Object,
+        callback: Function,
+        scope?: Object,
+    ): XMLHttpRequest;
+    export function ajax(
+        url: string,
+        callback: Function,
+        scope?: Object,
+    ): XMLHttpRequest;
     export function format(token: string, json: Object): string;
     export function fragment(varargs: any): Fragment;
     export function getElementByPoint(x: number, y: number): Snap.Element;
     export function is(o: any, type: string): boolean;
-    export function load(url: string, callback: (f: Fragment) => void, scope?: Object): void;
+    export function load(
+        url: string,
+        callback: (f: Fragment) => void,
+        scope?: Object,
+    ): void;
     export function plugin(f: Function): void;
     export function select(query: string): Snap.Element;
     export function selectAll(query: string): any;
     export function set(...els: Snap.Element[]): Snap.Set;
-    export function snapTo(values: number[] | number, value: number, tolerance?: number): number;
+    export function snapTo(
+        values: number[] | number,
+        value: number,
+        tolerance?: number,
+    ): number;
 
     export function animate(
         from: number | number[],
@@ -55,7 +87,14 @@ declare namespace Snap {
     export function rgb2hsb(r: number, g: number, b: number): HSB;
     export function rgb2hsl(r: number, g: number, b: number): HSL;
 
-    export function angle(x1: number, y1: number, x2: number, y2: number, x3?: number, y3?: number): number;
+    export function angle(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3?: number,
+        y3?: number,
+    ): number;
     export function rad(deg: number): number;
     export function deg(rad: number): number;
     export function sin(angle: number): number;
@@ -67,7 +106,12 @@ declare namespace Snap {
     export function atan2(angle: number): number;
 
     export function len(x1: number, y1: number, x2: number, y2: number): number;
-    export function len2(x1: number, y1: number, x2: number, y2: number): number;
+    export function len2(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+    ): number;
 
     export function parse(svg: string): Fragment;
     export function parsePathString(pathString: string): any[];
@@ -75,7 +119,12 @@ declare namespace Snap {
     export function parseTransformString(TString: string): any[];
     export function parseTransformString(TString: string[]): any[];
 
-    export function closest(x: number, y: number, X: number, Y: number): boolean;
+    export function closest(
+        x: number,
+        y: number,
+        X: number,
+        Y: number,
+    ): boolean;
 
     export interface RGB {
         r: number;
@@ -162,14 +211,20 @@ declare namespace Snap {
         asPX(attr: string, value?: string): number; // TODO: check what is really returned
         attr(param: "viewBox"): BBox;
         attr(param: string): string;
-        attr(params: { [attr: string]: string | number | boolean | BBox | any }): Snap.Element;
+        attr(params: {
+            [attr: string]: string | number | boolean | BBox | any;
+        }): Snap.Element;
         before(el: Snap.Element): Snap.Element;
         children(): Snap.Element[];
         clone(): Snap.Element;
         data(key: string, value?: any): any;
         getAlign(el: Snap.Element, way: string): string;
         getBBox(): BBox;
-        getPointAtLength(length: number): { x: number; y: number; alpha: number };
+        getPointAtLength(length: number): {
+            x: number;
+            y: number;
+            alpha: number;
+        };
         getSubpath(from: number, to: number): string;
         getTotalLength(): number;
         hasClass(value: string): boolean;
@@ -183,7 +238,14 @@ declare namespace Snap {
         innerSVG(): string;
         insertAfter(el: Snap.Element): Snap.Element;
         insertBefore(el: Snap.Element): Snap.Element;
-        marker(x: number, y: number, width: number, height: number, refX: number, refY: number): Snap.Element;
+        marker(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            refX: number,
+            refY: number,
+        ): Snap.Element;
         node: HTMLElement;
         outerSVG(): string;
         /** The top level element will included an reference to its Paper after it is rendered. */
@@ -210,17 +272,50 @@ declare namespace Snap {
         selectAll(): Snap.Set;
         selectAll(query: string): Snap.Set;
 
-        click(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        dblclick(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        mousedown(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        mousemove(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        mouseout(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        mouseover(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        mouseup(handler: (event: MouseEvent) => void, thisArg?: any): Snap.Element;
-        touchstart(handler: (event: TouchEvent) => void, thisArg?: any): Snap.Element;
-        touchmove(handler: (event: TouchEvent) => void, thisArg?: any): Snap.Element;
-        touchend(handler: (event: TouchEvent) => void, thisArg?: any): Snap.Element;
-        touchcancel(handler: (event: TouchEvent) => void, thisArg?: any): Snap.Element;
+        click(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        dblclick(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        mousedown(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        mousemove(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        mouseout(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        mouseover(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        mouseup(
+            handler: (event: MouseEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        touchstart(
+            handler: (event: TouchEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        touchmove(
+            handler: (event: TouchEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        touchend(
+            handler: (event: TouchEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
+        touchcancel(
+            handler: (event: TouchEvent) => void,
+            thisArg?: any,
+        ): Snap.Element;
 
         unclick(handler?: (event: MouseEvent) => void): Snap.Element;
         undblclick(handler?: (event: MouseEvent) => void): Snap.Element;
@@ -252,7 +347,13 @@ declare namespace Snap {
 
         drag(): Snap.Element;
         drag(
-            onMove: (dx: number, dy: number, x: number, y: number, event: MouseEvent) => void,
+            onMove: (
+                dx: number,
+                dy: number,
+                x: number,
+                y: number,
+                event: MouseEvent,
+            ) => void,
             onStart: (x: number, y: number, event: MouseEvent) => void,
             onEnd: (event: MouseEvent) => void,
             moveThisArg?: any,
@@ -282,7 +383,14 @@ declare namespace Snap {
     }
 
     export interface Matrix {
-        add(a: number, b: number, c: number, d: number, e: number, f: number): Matrix;
+        add(
+            a: number,
+            b: number,
+            c: number,
+            d: number,
+            e: number,
+            f: number,
+        ): Matrix;
         add(matrix: Matrix): Matrix;
         clone(): Matrix;
         determinant(): number;
@@ -341,17 +449,35 @@ declare namespace Snap {
 
         circle(x: number, y: number, r: number): Snap.Element;
         ellipse(x: number, y: number, rx: number, ry: number): Snap.Element;
-        image(src: string, x: number, y: number, width: number, height: number): Snap.Element;
+        image(
+            src: string,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): Snap.Element;
         line(x1: number, y1: number, x2: number, y2: number): Snap.Element;
         path(pathSpec: string | Array<Array<string | number>>): Snap.Element;
         polygon(varargs: any[]): Snap.Element;
         polygon(...varargs: any[]): Snap.Element;
         polyline(varargs: any[]): Snap.Element;
         polyline(...varargs: any[]): Snap.Element;
-        rect(x: number, y: number, width: number, height: number, rx?: number, ry?: number): Snap.Element;
+        rect(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            rx?: number,
+            ry?: number,
+        ): Snap.Element;
         text(x: number, y: number, text: string | number): Snap.Element;
         text(x: number, y: number, text: Array<string | number>): Snap.Element;
-        symbol(vbx: number, vby: number, vbw: number, vbh: number): Snap.Element;
+        symbol(
+            vbx: number,
+            vby: number,
+            vbw: number,
+            vbh: number,
+        ): Snap.Element;
     }
 
     export interface Set {
@@ -362,14 +488,18 @@ declare namespace Snap {
             callback?: () => void,
         ): Snap.Set;
         animate(
-            ...attrs: Array<[
-                { [attr: string]: string | number | boolean | any },
-                number?,
-                ((num: number) => number)?,
-                (() => void)?,
-            ]>
+            ...attrs: Array<
+                [
+                    { [attr: string]: string | number | boolean | any },
+                    number?,
+                    ((num: number) => number)?,
+                    (() => void)?,
+                ]
+            >
         ): Snap.Element;
-        attr(params: { [attr: string]: string | number | boolean | BBox | any }): Snap.Set;
+        attr(params: {
+            [attr: string]: string | number | boolean | BBox | any;
+        }): Snap.Set;
         attr(param: "viewBox"): Snap.Set;
         attr(param: string): Snap.Set;
         bind(attr: string, callback: Function): Snap.Set;
@@ -378,14 +508,21 @@ declare namespace Snap {
         clear(): void;
         exclude(el: Snap.Element): boolean;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        forEach(callback: (el: Snap.Element, index?: number) => void | boolean, thisArg?: Object): Snap.Set;
+        forEach(
+            callback: (el: Snap.Element, index?: number) => void | boolean,
+            thisArg?: Object,
+        ): Snap.Set;
         getBBox(): BBox;
         insertAfter(): Snap.Set;
         pop(): Snap.Element;
         push(el: Snap.Element): Snap.Set;
         push(...els: Snap.Element[]): Snap.Set;
         remove(): Snap.Set;
-        splice(index: number, count: number, ...insertion: Snap.Element[]): Snap.Set;
+        splice(
+            index: number,
+            count: number,
+            ...insertion: Snap.Element[]
+        ): Snap.Set;
     }
 
     interface Filter {
@@ -397,7 +534,13 @@ declare namespace Snap {
         invert(amount: number): string;
         saturate(amount: number): string;
         sepia(amount: number): string;
-        shadow(dx: number, dy: number, blur: number, color: string, opacity: number): string;
+        shadow(
+            dx: number,
+            dy: number,
+            blur: number,
+            color: string,
+            opacity: number,
+        ): string;
         shadow(dx: number, dy: number, color: string, opacity: number): string;
         shadow(dx: number, dy: number, opacity: number): string;
     }

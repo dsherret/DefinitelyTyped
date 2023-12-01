@@ -5,7 +5,7 @@ import { EventEmitter } from "events";
 export = localtunnel;
 
 declare function localtunnel(
-    port: number | localtunnel.TunnelConfig & { port: number },
+    port: number | (localtunnel.TunnelConfig & { port: number }),
 ): Promise<localtunnel.Tunnel>;
 
 declare function localtunnel(
@@ -25,10 +25,7 @@ declare function localtunnel(
 ): localtunnel.Tunnel;
 
 declare namespace localtunnel {
-    type TunnelCallback = (
-        err?: string,
-        tunnel?: Tunnel,
-    ) => void;
+    type TunnelCallback = (err?: string, tunnel?: Tunnel) => void;
 
     interface TunnelConfig {
         subdomain?: string | undefined;

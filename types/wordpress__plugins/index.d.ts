@@ -48,7 +48,10 @@ export function getPlugins(): Plugin[];
  * @param settings - The settings for this plugin.
  * @returns The final plugin settings object.
  */
-export function registerPlugin(name: string, settings: PluginSettings): PluginSettings;
+export function registerPlugin(
+    name: string,
+    settings: PluginSettings,
+): PluginSettings;
 
 /**
  * Unregisters a plugin by name.

@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/react-tracking",
-    "version": "8.1.9999",
-    "projects": [
-        "https://github.com/NYTimes/react-tracking"
-    ],
-    "dependencies": {
-        "@types/react": "*"
+  "private": true,
+  "name": "@types/react-tracking",
+  "version": "8.1.9999",
+  "projects": [
+    "https://github.com/NYTimes/react-tracking"
+  ],
+  "dependencies": {
+    "@types/react": "*"
+  },
+  "devDependencies": {
+    "@types/react-tracking": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Eloy Durán",
+      "githubUsername": "alloy"
     },
-    "devDependencies": {
-        "@types/react-tracking": "workspace:."
+    {
+      "name": "Christopher Pappas",
+      "githubUsername": "damassi"
     },
-    "owners": [
-        {
-            "name": "Eloy Durán",
-            "githubUsername": "alloy"
-        },
-        {
-            "name": "Christopher Pappas",
-            "githubUsername": "damassi"
-        },
-        {
-            "name": "Chen Asraf",
-            "githubUsername": "chenasraf"
-        }
-    ]
+    {
+      "name": "Chen Asraf",
+      "githubUsername": "chenasraf"
+    }
+  ]
 }

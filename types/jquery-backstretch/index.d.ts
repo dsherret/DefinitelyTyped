@@ -77,10 +77,16 @@ declare namespace JQueryBackStretch {
 }
 
 interface JQueryStatic {
-    backstretch(images: string[], config?: JQueryBackStretch.BackStretchOptions): JQueryBackStretch.BackStretch;
+    backstretch(
+        images: string[],
+        config?: JQueryBackStretch.BackStretchOptions,
+    ): JQueryBackStretch.BackStretch;
 }
 
 interface JQuery {
-    backstretch(images: string[], config?: JQueryBackStretch.BackStretchOptions): JQueryBackStretch.BackStretch;
+    backstretch(
+        images: string[],
+        config?: JQueryBackStretch.BackStretchOptions,
+    ): JQueryBackStretch.BackStretch;
     backstretch(method: string): JQuery;
 }

@@ -1,7 +1,11 @@
 export class kdTree<T> {
     // Create a new tree from a list of points, a distance function, and a
     // list of dimensions.
-    constructor(points: T[], distance: (a: T, b: T) => number, dimensions: Array<keyof T>);
+    constructor(
+        points: T[],
+        distance: (a: T, b: T) => number,
+        dimensions: Array<keyof T>,
+    );
 
     // Query the nearest *count* neighbors to a point, with an optional
     // maximal search distance.

@@ -1,6 +1,14 @@
 import Layout from "./document-layout";
 import { Diva } from "./index";
-import { Dimensions, Offset, Options, Region, Settings, SourceProvider, ViewerState } from "./interfaces";
+import {
+    Dimensions,
+    Offset,
+    Options,
+    Region,
+    Settings,
+    SourceProvider,
+    ViewerState,
+} from "./interfaces";
 
 export default class ViewerCore {
     parentObject: HTMLElement;
@@ -53,9 +61,7 @@ export default class ViewerCore {
     addPageOverlay(overlay: object): void;
     removePageOverlay(overlay: object): void;
     getPageRegion(pageIndex: number, options: object): Region;
-    getPagePositionAtViewportOffset(
-        coords: Offset,
-    ): {
+    getPagePositionAtViewportOffset(coords: Offset): {
         anchorPage: number;
         offset: Offset;
     };

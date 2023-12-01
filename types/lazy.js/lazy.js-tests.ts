@@ -43,14 +43,11 @@ var exp: RegExp;
 var strArr: string[];
 var numArr: string[];
 
-function fnCallback(): void {
-}
+function fnCallback(): void {}
 
-function fnErrorCallback(error: any): void {
-}
+function fnErrorCallback(error: any): void {}
 
-function fnValueCallback(value: Foo): void {
-}
+function fnValueCallback(value: Foo): void {}
 
 function fnGetKeyCallback(value: Foo): string {
     return str;

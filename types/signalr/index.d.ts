@@ -23,7 +23,11 @@ declare namespace SignalR {
         name: string;
         supportsKeepAlive(): boolean;
         send(connection: SignalR.Connection, data: any): void;
-        start(connection: SignalR.Connection, onSuccess: () => void, onFailed: (error?: ConnectionError) => void): void;
+        start(
+            connection: SignalR.Connection,
+            onSuccess: () => void,
+            onFailed: (error?: ConnectionError) => void,
+        ): void;
         reconnect(connection: SignalR.Connection): void;
         lostConnection(connection: SignalR.Connection): void;
         stop(connection: SignalR.Connection): void;
@@ -241,7 +245,10 @@ declare namespace SignalR {
          * @param options Options map
          * @param calback A callback function to execute when the connection has started
          */
-        start(options: ConnectionOptions, callback: () => void): JQueryPromise<any>;
+        start(
+            options: ConnectionOptions,
+            callback: () => void,
+        ): JQueryPromise<any>;
 
         /**
          * Adds a callback that will be invoked before anything is sent over the connection
@@ -323,7 +330,10 @@ declare namespace SignalR {
          * @param url The base URL
          * @param against An optional argument to compare the URL against, if not specified it will be set to window.location. If specified it must contain a protocol and a host property.
          */
-        isCrossDomain(url: string, against?: Location | SimplifyLocation): boolean;
+        isCrossDomain(
+            url: string,
+            against?: Location | SimplifyLocation,
+        ): boolean;
 
         hub: Hub.Connection;
 
@@ -340,9 +350,17 @@ interface SignalR {
      * @param queryString   [Optional] Custom querystring parameters to add to the connection URL. If an object, every non-function member will be added to the querystring. If a string, it's added to the QS as specified.
      * @param logging [Optional] A flag indicating whether connection logging is enabled to the browser console/log. Defaults to false.
      */
-    (url: string, queryString?: string | Object, logging?: boolean): SignalR.Connection;
+    (
+        url: string,
+        queryString?: string | Object,
+        logging?: boolean,
+    ): SignalR.Connection;
     ajaxDefaults: SignalR.AjaxDefaults;
-    changeState(connection: SignalR.Connection, expectedState: number, newState: number): void;
+    changeState(
+        connection: SignalR.Connection,
+        expectedState: number,
+        newState: number,
+    ): void;
     connectionState: SignalR.ConnectionStates;
     events: SignalR.AvailableEvents;
     transports: SignalR.Transports;

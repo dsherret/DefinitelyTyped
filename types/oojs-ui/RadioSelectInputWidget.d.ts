@@ -21,7 +21,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.RadioSelectInputWidget
      */
-    interface RadioSelectInputWidget extends RadioSelectInputWidget.Props, RadioSelectInputWidget.Prototype {}
+    interface RadioSelectInputWidget
+        extends RadioSelectInputWidget.Props,
+            RadioSelectInputWidget.Prototype {}
 
     namespace RadioSelectInputWidget {
         interface Option {
@@ -50,7 +52,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): RadioSelectInputWidget;
+            new (config?: ConfigOptions): RadioSelectInputWidget;
             prototype: Prototype;
             static: Static;
             super: InputWidget.Constructor;

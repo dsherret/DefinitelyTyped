@@ -17,9 +17,17 @@ declare namespace msgpack {
 
         worker: string;
 
-        upload(url: string, option: MsgPackUploadOption, callback: MsgPackUploadCallback): void;
+        upload(
+            url: string,
+            option: MsgPackUploadOption,
+            callback: MsgPackUploadCallback,
+        ): void;
 
-        download(url: string, option: MsgPackDownloadOption, callback: MsgPackDownloadCallback): void;
+        download(
+            url: string,
+            option: MsgPackDownloadOption,
+            callback: MsgPackDownloadCallback,
+        ): void;
     }
 
     interface MsgPackUploadOption {
@@ -38,13 +46,25 @@ declare namespace msgpack {
          */
         timeout?: number | undefined;
 
-        before?: ((xhr: XMLHttpRequest, option: MsgPackUploadOption) => void) | undefined;
+        before?:
+            | ((xhr: XMLHttpRequest, option: MsgPackUploadOption) => void)
+            | undefined;
 
-        after?: ((xhr: XMLHttpRequest, option: MsgPackUploadOption, result: MsgPackCallbackResult) => void) | undefined;
+        after?:
+            | ((
+                  xhr: XMLHttpRequest,
+                  option: MsgPackUploadOption,
+                  result: MsgPackCallbackResult,
+              ) => void)
+            | undefined;
     }
 
     interface MsgPackUploadCallback {
-        (data: string, option: MsgPackUploadOption, result: MsgPackCallbackResult): void;
+        (
+            data: string,
+            option: MsgPackUploadOption,
+            result: MsgPackCallbackResult,
+        ): void;
     }
 
     interface MsgPackDownloadOption {
@@ -58,10 +78,16 @@ declare namespace msgpack {
          */
         timeout?: number | undefined;
 
-        before?: ((xhr: XMLHttpRequest, option: MsgPackDownloadOption) => void) | undefined;
+        before?:
+            | ((xhr: XMLHttpRequest, option: MsgPackDownloadOption) => void)
+            | undefined;
 
         after?:
-            | ((xhr: XMLHttpRequest, option: MsgPackDownloadOption, result: MsgPackCallbackResult) => void)
+            | ((
+                  xhr: XMLHttpRequest,
+                  option: MsgPackDownloadOption,
+                  result: MsgPackCallbackResult,
+              ) => void)
             | undefined;
     }
 
@@ -69,7 +95,11 @@ declare namespace msgpack {
         /**
          * @param data string or ByteArray
          */
-        (data: any, option: MsgPackDownloadOption, result: MsgPackCallbackResult): void;
+        (
+            data: any,
+            option: MsgPackDownloadOption,
+            result: MsgPackCallbackResult,
+        ): void;
     }
 
     interface MsgPackCallbackResult {

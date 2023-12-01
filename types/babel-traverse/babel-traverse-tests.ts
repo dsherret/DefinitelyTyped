@@ -47,7 +47,11 @@ const v1: Visitor = {
             t.binaryExpression("**", path.node.left, t.numericLiteral(2)),
         );
         path.parentPath.replaceWith(
-            t.expressionStatement(t.stringLiteral("Anyway the wind blows, doesn't really matter to me, to me.")),
+            t.expressionStatement(
+                t.stringLiteral(
+                    "Anyway the wind blows, doesn't really matter to me, to me.",
+                ),
+            ),
         );
         path.parentPath.remove();
     },
@@ -65,7 +69,11 @@ const v1: Visitor = {
         path.replaceWithMultiple([
             t.expressionStatement(t.stringLiteral("Is this the real life?")),
             t.expressionStatement(t.stringLiteral("Is this just fantasy?")),
-            t.expressionStatement(t.stringLiteral("(Enjoy singing the rest of the song in your head)")),
+            t.expressionStatement(
+                t.stringLiteral(
+                    "(Enjoy singing the rest of the song in your head)",
+                ),
+            ),
         ]);
     },
 
@@ -74,8 +82,16 @@ const v1: Visitor = {
             return a + b;
         }`);
 
-        path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
-        path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
+        path.insertBefore(
+            t.expressionStatement(
+                t.stringLiteral("Because I'm easy come, easy go."),
+            ),
+        );
+        path.insertAfter(
+            t.expressionStatement(
+                t.stringLiteral("A little high, little low."),
+            ),
+        );
         path.remove();
 
         if (path.scope.hasBinding("n")) {

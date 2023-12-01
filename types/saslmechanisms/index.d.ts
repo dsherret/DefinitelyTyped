@@ -10,7 +10,7 @@ declare class Factory {
 
 declare namespace Factory {
     interface MechanismStatic {
-        new(): Mechanism;
+        new (): Mechanism;
         prototype: {
             [key: string]: any;
             name: string;

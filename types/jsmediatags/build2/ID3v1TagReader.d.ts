@@ -7,7 +7,10 @@ export default class ID3v1TagReader extends MediaTagReader {
 
     static canReadTagFormat(tagIdentifier: number[]): boolean;
 
-    _loadData(mediaFileReader: MediaFileReader, callbacks: LoadCallbackType): void;
+    _loadData(
+        mediaFileReader: MediaFileReader,
+        callbacks: LoadCallbackType,
+    ): void;
 
     _parseData(data: MediaFileReader, tags?: string[]): TagType;
 }

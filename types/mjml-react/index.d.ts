@@ -18,7 +18,10 @@ export interface MjmlError {
     formattedMessage: string;
 }
 
-export function render(email: React.ReactElement, options?: Mjml2HtmlOptions): { html: string; errors: MjmlError[] };
+export function render(
+    email: React.ReactElement,
+    options?: Mjml2HtmlOptions,
+): { html: string; errors: MjmlError[] };
 
 // Components
 
@@ -79,16 +82,31 @@ export class Mjml extends React.Component<MjmlProps> {}
 export class MjmlHead extends React.Component<{ children?: React.ReactNode }> {}
 
 // mj-attributes
-export class MjmlAttributes extends React.Component<{ children?: React.ReactNode }> {}
-export class MjmlAll extends React.Component<{ [key: string]: any; children?: React.ReactNode | undefined }> {}
-export class MjmlClass
-    extends React.Component<{ [key: string]: any; children?: React.ReactNode | undefined; name: string }>
-{}
+export class MjmlAttributes extends React.Component<{
+    children?: React.ReactNode;
+}> {}
+export class MjmlAll extends React.Component<{
+    [key: string]: any;
+    children?: React.ReactNode | undefined;
+}> {}
+export class MjmlClass extends React.Component<{
+    [key: string]: any;
+    children?: React.ReactNode | undefined;
+    name: string;
+}> {}
 
 // mj-html-attributes
-export class MjmlHtmlAttributes extends React.Component<{ children?: React.ReactNode }> {}
-export class MjmlSelector extends React.Component<{ children?: React.ReactNode | undefined; path: string }> {}
-export class MjmlHtmlAttribute extends React.Component<{ children?: React.ReactNode | undefined; name: string }> {}
+export class MjmlHtmlAttributes extends React.Component<{
+    children?: React.ReactNode;
+}> {}
+export class MjmlSelector extends React.Component<{
+    children?: React.ReactNode | undefined;
+    path: string;
+}> {}
+export class MjmlHtmlAttribute extends React.Component<{
+    children?: React.ReactNode | undefined;
+    name: string;
+}> {}
 
 // mj-breakpoint
 export interface MjmlBreakpointProps {
@@ -116,19 +134,28 @@ export interface MjmlFontProps {
 export class MjmlFont extends React.Component<MjmlFontProps> {}
 
 // mj-preview
-export class MjmlPreview extends React.Component<{ children?: string | undefined }> {}
+export class MjmlPreview extends React.Component<{
+    children?: string | undefined;
+}> {}
 
 // mj-style
-export class MjmlStyle extends React.Component<{ children?: string | undefined; inline?: boolean | undefined }> {}
+export class MjmlStyle extends React.Component<{
+    children?: string | undefined;
+    inline?: boolean | undefined;
+}> {}
 
 // mj-title
-export class MjmlTitle extends React.Component<{ children?: string | undefined }> {}
+export class MjmlTitle extends React.Component<{
+    children?: string | undefined;
+}> {}
 
 // mj-accordion
 export interface MjmlAccordionProps {
     children?: React.ReactNode;
     border?: string | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
     fontFamily?: string | undefined;
     iconAlign?: string | undefined;
     iconHeight?: string | undefined;
@@ -146,7 +173,9 @@ export interface MjmlAccordionProps {
     backgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
 }
 
-export class MjmlAccordion extends React.Component<MjmlAccordionProps & PaddingProps & ClassNameProps> {}
+export class MjmlAccordion extends React.Component<
+    MjmlAccordionProps & PaddingProps & ClassNameProps
+> {}
 
 export interface MjmlAccordionElementProps {
     children?: React.ReactNode;
@@ -163,7 +192,9 @@ export interface MjmlAccordionElementProps {
     backgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
 }
 
-export class MjmlAccordionElement extends React.Component<MjmlAccordionElementProps & ClassNameProps> {}
+export class MjmlAccordionElement extends React.Component<
+    MjmlAccordionElementProps & ClassNameProps
+> {}
 
 export interface MjmlAccordionTextProps {
     children?: React.ReactNode;
@@ -176,7 +207,9 @@ export interface MjmlAccordionTextProps {
     lineHeight?: string | number | undefined;
 }
 
-export class MjmlAccordionText extends React.Component<MjmlAccordionTextProps & PaddingProps & ClassNameProps> {}
+export class MjmlAccordionText extends React.Component<
+    MjmlAccordionTextProps & PaddingProps & ClassNameProps
+> {}
 
 export interface MjmlAccordionTitleProps {
     children?: React.ReactNode;
@@ -186,13 +219,17 @@ export interface MjmlAccordionTitleProps {
     fontSize?: string | number | undefined;
 }
 
-export class MjmlAccordionTitle extends React.Component<MjmlAccordionTitleProps & PaddingProps & ClassNameProps> {}
+export class MjmlAccordionTitle extends React.Component<
+    MjmlAccordionTitleProps & PaddingProps & ClassNameProps
+> {}
 
 // mj-button
 export interface MjmlButtonProps {
     backgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
     children?: React.ReactNode;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
     fontStyle?: string | undefined;
     fontSize?: string | number | undefined;
     fontWeight?: React.CSSProperties["fontWeight"] | undefined;
@@ -210,9 +247,9 @@ export interface MjmlButtonProps {
     height?: string | number | undefined;
 }
 
-export class MjmlButton
-    extends React.Component<MjmlButtonProps & PaddingProps & ClassNameProps & HrefProps & BorderProps>
-{}
+export class MjmlButton extends React.Component<
+    MjmlButtonProps & PaddingProps & ClassNameProps & HrefProps & BorderProps
+> {}
 
 // mj-carousel
 export interface MjmlCarouselProps {
@@ -231,7 +268,9 @@ export interface MjmlCarouselProps {
     iconWidth?: string | undefined;
 }
 
-export class MjmlCarousel extends React.Component<MjmlCarouselProps & ClassNameProps> {}
+export class MjmlCarousel extends React.Component<
+    MjmlCarouselProps & ClassNameProps
+> {}
 
 export interface MjmlCarouselImageProps {
     children?: React.ReactNode;
@@ -241,7 +280,9 @@ export interface MjmlCarouselImageProps {
     title?: string | undefined;
 }
 
-export class MjmlCarouselImage extends React.Component<MjmlCarouselImageProps & ClassNameProps & HrefProps> {}
+export class MjmlCarouselImage extends React.Component<
+    MjmlCarouselImageProps & ClassNameProps & HrefProps
+> {}
 
 export interface MjmlColumnProps {
     children?: React.ReactNode;
@@ -251,9 +292,13 @@ export interface MjmlColumnProps {
     innerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
 }
 
-export class MjmlColumn
-    extends React.Component<MjmlColumnProps & PaddingProps & ClassNameProps & BorderProps & InnerBorderProps>
-{}
+export class MjmlColumn extends React.Component<
+    MjmlColumnProps &
+        PaddingProps &
+        ClassNameProps &
+        BorderProps &
+        InnerBorderProps
+> {}
 
 // mj-divider
 export interface MjmlDividerProps {
@@ -262,10 +307,14 @@ export interface MjmlDividerProps {
     borderWidth?: string | number | undefined;
     children?: React.ReactNode;
     width?: string | number | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
 }
 
-export class MjmlDivider extends React.Component<MjmlDividerProps & ClassNameProps & PaddingProps> {}
+export class MjmlDivider extends React.Component<
+    MjmlDividerProps & ClassNameProps & PaddingProps
+> {}
 
 // mj-group
 export interface MjmlGroupProps {
@@ -276,7 +325,9 @@ export interface MjmlGroupProps {
     direction?: "ltr" | "rtl" | undefined;
 }
 
-export class MjmlGroup extends React.Component<MjmlGroupProps & ClassNameProps> {}
+export class MjmlGroup extends React.Component<
+    MjmlGroupProps & ClassNameProps
+> {}
 
 // mj-hero
 export interface MjmlHeroProps {
@@ -292,12 +343,16 @@ export interface MjmlHeroProps {
     backgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
 }
 
-export class MjmlHero extends React.Component<MjmlHeroProps & ClassNameProps & PaddingProps> {}
+export class MjmlHero extends React.Component<
+    MjmlHeroProps & ClassNameProps & PaddingProps
+> {}
 
 // mj-image
 export interface MjmlImageProps {
     children?: React.ReactNode;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
     border?: React.CSSProperties["border"] | undefined;
     borderRadius?: string | number | undefined;
     width?: string | number | undefined;
@@ -310,7 +365,9 @@ export interface MjmlImageProps {
     fluidOnMobile?: string | undefined;
 }
 
-export class MjmlImage extends React.Component<MjmlImageProps & PaddingProps & ClassNameProps & HrefProps> {}
+export class MjmlImage extends React.Component<
+    MjmlImageProps & PaddingProps & ClassNameProps & HrefProps
+> {}
 
 // mj-navbar
 export interface MjmlNavbarProps {
@@ -347,7 +404,9 @@ export interface MjmlNavbarLinkProps {
     textTransform?: string | undefined;
 }
 
-export class MjmlNavbarLink extends React.Component<MjmlNavbarLinkProps & HrefProps & PaddingProps> {}
+export class MjmlNavbarLink extends React.Component<
+    MjmlNavbarLinkProps & HrefProps & PaddingProps
+> {}
 
 // mj-raw
 export class MjmlRaw extends React.Component<{ children?: React.ReactNode }> {}
@@ -361,14 +420,20 @@ export interface MjmlSectionProps {
     backgroundRepeat?: React.CSSProperties["backgroundRepeat"] | undefined;
     backgroundSize?: React.CSSProperties["backgroundSize"] | undefined;
     backgroundPosition?: React.CSSProperties["backgroundPosition"] | undefined;
-    backgroundPositionX?: React.CSSProperties["backgroundPositionX"] | undefined;
-    backgroundPositionY?: React.CSSProperties["backgroundPositionY"] | undefined;
+    backgroundPositionX?:
+        | React.CSSProperties["backgroundPositionX"]
+        | undefined;
+    backgroundPositionY?:
+        | React.CSSProperties["backgroundPositionY"]
+        | undefined;
     verticalAlign?: React.CSSProperties["verticalAlign"] | undefined;
     textAlign?: React.CSSProperties["textAlign"] | undefined;
     direction?: "ltr" | "rtl" | undefined;
 }
 
-export class MjmlSection extends React.Component<MjmlSectionProps & BorderProps & PaddingProps & ClassNameProps> {}
+export class MjmlSection extends React.Component<
+    MjmlSectionProps & BorderProps & PaddingProps & ClassNameProps
+> {}
 
 // mj-social
 export interface MjmlSocialProps {
@@ -384,10 +449,14 @@ export interface MjmlSocialProps {
     align?: string | undefined;
     color?: React.CSSProperties["color"] | undefined;
     innerPadding?: string | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
 }
 
-export class MjmlSocial extends React.Component<MjmlSocialProps & PaddingProps & ClassNameProps> {}
+export class MjmlSocial extends React.Component<
+    MjmlSocialProps & PaddingProps & ClassNameProps
+> {}
 
 export interface MjmlSocialElementProps {
     borderRadius?: string | number | undefined;
@@ -433,18 +502,24 @@ export interface MjmlSocialElementProps {
     direction?: "ltr" | "rtl" | undefined;
 }
 
-export class MjmlSocialElement extends React.Component<MjmlSocialElementProps & HrefProps & PaddingProps> {}
+export class MjmlSocialElement extends React.Component<
+    MjmlSocialElementProps & HrefProps & PaddingProps
+> {}
 
 // mj-spacer
 export interface MjmlSpacerProps {
     children?: React.ReactNode;
     height?: string | number | undefined;
     width?: string | number | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
     verticalAlign?: React.CSSProperties["verticalAlign"] | undefined;
 }
 
-export class MjmlSpacer extends React.Component<MjmlSpacerProps & BorderProps & PaddingProps & ClassNameProps> {}
+export class MjmlSpacer extends React.Component<
+    MjmlSpacerProps & BorderProps & PaddingProps & ClassNameProps
+> {}
 
 // mj-table
 export interface MjmlTableProps {
@@ -456,7 +531,9 @@ export interface MjmlTableProps {
     fontSize?: string | number | undefined;
     fontStyle?: string | undefined;
     lineHeight?: string | number | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
     width?: string | number | undefined;
     tableLayout?: "auto" | "fixed" | "initial" | "inherit" | undefined;
     align?: "left" | "right" | "center" | undefined;
@@ -464,7 +541,9 @@ export interface MjmlTableProps {
     border?: React.CSSProperties["border"] | undefined;
 }
 
-export class MjmlTable extends React.Component<MjmlTableProps & PaddingProps & ClassNameProps> {}
+export class MjmlTable extends React.Component<
+    MjmlTableProps & PaddingProps & ClassNameProps
+> {}
 
 // mj-text
 export interface MjmlTextProps {
@@ -480,10 +559,14 @@ export interface MjmlTextProps {
     textDecoration?: string | undefined;
     textTransform?: string | undefined;
     align?: string | undefined;
-    containerBackgroundColor?: React.CSSProperties["backgroundColor"] | undefined;
+    containerBackgroundColor?:
+        | React.CSSProperties["backgroundColor"]
+        | undefined;
 }
 
-export class MjmlText extends React.Component<MjmlTextProps & PaddingProps & ClassNameProps> {}
+export class MjmlText extends React.Component<
+    MjmlTextProps & PaddingProps & ClassNameProps
+> {}
 
 // mj-wrapper
 export interface MjmlWrapperProps {
@@ -494,10 +577,16 @@ export interface MjmlWrapperProps {
     backgroundRepeat?: React.CSSProperties["backgroundRepeat"] | undefined;
     backgroundSize?: React.CSSProperties["backgroundSize"] | undefined;
     backgroundPosition?: React.CSSProperties["backgroundPosition"] | undefined;
-    backgroundPositionX?: React.CSSProperties["backgroundPositionX"] | undefined;
-    backgroundPositionY?: React.CSSProperties["backgroundPositionY"] | undefined;
+    backgroundPositionX?:
+        | React.CSSProperties["backgroundPositionX"]
+        | undefined;
+    backgroundPositionY?:
+        | React.CSSProperties["backgroundPositionY"]
+        | undefined;
     verticalAlign?: React.CSSProperties["verticalAlign"] | undefined;
     textAlign?: React.CSSProperties["textAlign"] | undefined;
 }
 
-export class MjmlWrapper extends React.Component<MjmlWrapperProps & BorderProps & PaddingProps & ClassNameProps> {}
+export class MjmlWrapper extends React.Component<
+    MjmlWrapperProps & BorderProps & PaddingProps & ClassNameProps
+> {}

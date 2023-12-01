@@ -2,9 +2,8 @@ import * as GoogleImages from "google-images";
 
 const client = new GoogleImages("CSE ID", "API KEY");
 
-client.search("Steve Angello")
-    .then(images => {
-        /*
+client.search("Steve Angello").then((images) => {
+    /*
         [{
             "url": "http://steveangello.com/boss.jpg",
             "type": "image/jpeg",
@@ -18,7 +17,7 @@ client.search("Steve Angello")
             }
         }]
          */
-    });
+});
 
 // paginate results
 client.search("Steve Angello", { page: 2 });

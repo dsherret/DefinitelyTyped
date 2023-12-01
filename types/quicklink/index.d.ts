@@ -95,7 +95,9 @@ interface ListenOptions {
     ignores:
         | RegExp
         | ((url: string, el: Element) => boolean)
-        | ReadonlyArray<string | RegExp | ((url: string, el: Element) => boolean)>;
+        | ReadonlyArray<
+              string | RegExp | ((url: string, el: Element) => boolean)
+          >;
     /**
      * An optional error handler that will receive any errors from prefetched requests.
      *
@@ -130,7 +132,10 @@ export function listen(options?: Partial<ListenOptions>): () => void;
  *                   `prefetch()` are low priority. **Note:** This behaves identically to `listen()`'s `priority`
  *                   option.
  */
-export function prefetch(urls: MaybeReadonlyArray<string>, isPriority?: boolean): Promise<unknown[]>;
+export function prefetch(
+    urls: MaybeReadonlyArray<string>,
+    isPriority?: boolean,
+): Promise<unknown[]>;
 /**
  * Prerenders a given URL.
  *

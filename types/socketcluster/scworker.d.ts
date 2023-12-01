@@ -7,7 +7,10 @@ import { SCServer, SCServerSocket } from "socketcluster-server";
 
 export = SCWorker;
 
-type middlewareFunction = (options: SCServer.SCServerOptions, next: (error?: string | Error) => void) => void;
+type middlewareFunction = (
+    options: SCServer.SCServerOptions,
+    next: (error?: string | Error) => void,
+) => void;
 
 declare class SCWorker extends EventEmitter {
     readonly EVENT_ERROR: "error";
@@ -52,7 +55,10 @@ declare class SCWorker extends EventEmitter {
         wsRPM: number;
     };
 
-    sendToMaster(data: any, callback: (err: Error | null, data: any) => void): void;
+    sendToMaster(
+        data: any,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
     respondToMaster(err: Error | null, data: any, rid: number): void;
 
     on(event: "connection", listener: (scSocket: SCServerSocket) => void): this;
@@ -61,6 +67,9 @@ declare class SCWorker extends EventEmitter {
     on(event: "warning", listener: (warning: Error) => void): this;
     on(
         event: "masterMessage",
-        listener: (data: any, respond: (err: Error | null, responseData: any) => void) => void,
+        listener: (
+            data: any,
+            respond: (err: Error | null, responseData: any) => void,
+        ) => void,
     ): this;
 }

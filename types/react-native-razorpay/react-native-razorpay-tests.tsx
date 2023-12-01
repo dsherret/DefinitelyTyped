@@ -42,7 +42,7 @@ const Test = () => {
                 title="Pay"
                 onPress={() => {
                     RazorpayCheckout.open(CheckoutOptions)
-                        .then(data => {
+                        .then((data) => {
                             // type should match SuccessResponse definition
                             console.log(data);
                         })

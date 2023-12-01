@@ -88,7 +88,13 @@ export type ImageType =
     | "image/vnd.microsoft.icon"
     | "image/webp";
 
-export type TextType = "text/calendar" | "text/css" | "text/csv" | "text/html" | "text/javascript" | "text/plain";
+export type TextType =
+    | "text/calendar"
+    | "text/css"
+    | "text/csv"
+    | "text/html"
+    | "text/javascript"
+    | "text/plain";
 
 export type VideoType =
     | "video/3gpp"
@@ -100,7 +106,13 @@ export type VideoType =
     | "video/webm"
     | "video/x-msvideo";
 
-export type MIMEType = ApplicationType | AudioType | FontType | ImageType | TextType | VideoType;
+export type MIMEType =
+    | ApplicationType
+    | AudioType
+    | FontType
+    | ImageType
+    | TextType
+    | VideoType;
 
 export interface MIMEHeader {
     custom: boolean;
@@ -135,7 +147,10 @@ declare class MIMEMessageContent {
     getHeaders(): Record<string, string>;
     getHeader(key: string): string | undefined;
     isAttachment(): boolean;
-    dump(envctx: Partial<EnvironmentContext>, boundaries: MailboxBoundaries): string;
+    dump(
+        envctx: Partial<EnvironmentContext>,
+        boundaries: MailboxBoundaries,
+    ): string;
     setHeader(key: string, value: string): this;
     setHeaders(headers: MessageHeaders): this;
 }
@@ -151,12 +166,23 @@ declare class MimeMessage {
     getRecipients(options?: RecipientOptions): Mailbox[];
     getSender(): Mailbox;
     getSubject(): string | undefined;
-    setAttachment(name: string, type: MIMEType, attachment: string): MIMEMessageContent;
+    setAttachment(
+        name: string,
+        type: MIMEType,
+        attachment: string,
+    ): MIMEMessageContent;
     setBcc(bcc: MailLocation | MailLocation[]): Mailbox[];
     setCc(cc: MailLocation | MailLocation[]): Mailbox[];
     setHeader(key: string, value: string): string;
-    setMessage(format: TextFormat, message: string, moreHeaders?: MessageHeaders): MIMEMessageContent;
-    setRecipient(recipient: MailLocation | MailLocation[], options?: RecipientOptions): Mailbox[];
+    setMessage(
+        format: TextFormat,
+        message: string,
+        moreHeaders?: MessageHeaders,
+    ): MIMEMessageContent;
+    setRecipient(
+        recipient: MailLocation | MailLocation[],
+        options?: RecipientOptions,
+    ): Mailbox[];
     setSender(sender: MailLocation | MailLocation[]): Mailbox;
     setSubject(subject: string): string;
     setTo(to: MailLocation | MailLocation[]): Mailbox[];

@@ -35,7 +35,9 @@ interface BaseResponse {
 
 type Callback<TResponse> = (err: Error, res: TResponse) => void;
 
-declare function giphyApi(apiKeyOrOptions?: string | giphyApi.GiphyOptions): giphyApi.Giphy;
+declare function giphyApi(
+    apiKeyOrOptions?: string | giphyApi.GiphyOptions,
+): giphyApi.Giphy;
 
 declare namespace giphyApi {
     interface GiphyOptions {
@@ -51,13 +53,24 @@ declare namespace giphyApi {
     }
 
     interface Giphy {
-        search(queryOrOptions: string | SearchOptions, cb: Callback<MultiResponse>): void;
+        search(
+            queryOrOptions: string | SearchOptions,
+            cb: Callback<MultiResponse>,
+        ): void;
         search(queryOrOptions: string | SearchOptions): Promise<MultiResponse>;
         id(ids: string | string[], cb: Callback<MultiResponse>): void;
         id(ids: string | string[]): Promise<MultiResponse>;
-        translate(termOrOptions: string | TranslateOptions, cb: Callback<SingleResponse>): void;
-        translate(termOrOptions: string | TranslateOptions): Promise<SingleResponse>;
-        random(tagOrOptions: string | RandomOptions, cb: Callback<SingleResponse>): void;
+        translate(
+            termOrOptions: string | TranslateOptions,
+            cb: Callback<SingleResponse>,
+        ): void;
+        translate(
+            termOrOptions: string | TranslateOptions,
+        ): Promise<SingleResponse>;
+        random(
+            tagOrOptions: string | RandomOptions,
+            cb: Callback<SingleResponse>,
+        ): void;
         random(tagOrOptions: string | RandomOptions): Promise<SingleResponse>;
         trending(options: TrendingOptions, cb: Callback<MultiResponse>): void;
         trending(cb: Callback<MultiResponse>): void;
@@ -152,14 +165,16 @@ declare namespace giphyApi {
         source: string;
         rating: Rating;
         content_url: string;
-        user?: {
-            avatar_url: string;
-            banner_url: string;
-            profile_url: string;
-            username: string;
-            display_name: string;
-            twitter: string;
-        } | undefined;
+        user?:
+            | {
+                  avatar_url: string;
+                  banner_url: string;
+                  profile_url: string;
+                  username: string;
+                  display_name: string;
+                  twitter: string;
+              }
+            | undefined;
         source_tld: string;
         source_post_url: string;
         update_datetime: string;

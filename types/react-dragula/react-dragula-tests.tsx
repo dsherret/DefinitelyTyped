@@ -24,7 +24,7 @@ function DraggableItemss() {
 
     React.useEffect(() => {
         if (drake) {
-            drake.on("dragend", e => {
+            drake.on("dragend", (e) => {
                 console.log("dragend");
             });
         }

@@ -3,7 +3,10 @@ declare var Device: AppleTVJS.Device;
 declare var navigationDocument: AppleTVJS.NavigationDocument;
 declare var Settings: AppleTVJS.Settings;
 
-declare function evaluateScripts(scripts: string[], complete: (success: boolean) => void): void;
+declare function evaluateScripts(
+    scripts: string[],
+    complete: (success: boolean) => void,
+): void;
 
 declare namespace AppleTVJS {
     interface App {
@@ -173,10 +176,16 @@ declare namespace AppleTVJS {
         resumeTime: number;
 
         /** A callback function used to load the asset identifier for an item. */
-        loadAssetID: (url: string, callback: (assetID: string, error: string) => void) => void;
+        loadAssetID: (
+            url: string,
+            callback: (assetID: string, error: string) => void,
+        ) => void;
 
         /** A callback function used to load the security certificate for an item. */
-        loadCertificate: (url: string, callback: (certificate: string, error: string) => void) => void;
+        loadCertificate: (
+            url: string,
+            callback: (certificate: string, error: string) => void,
+        ) => void;
 
         /** A callback function used to load the security key for an item. */
         loadKey: (
@@ -207,7 +216,10 @@ declare namespace AppleTVJS {
         /**
          * Inserts a new document directly before a document currently on the stack.
          */
-        insertBeforeDocument(document: Document, beforeDocument?: Document): void;
+        insertBeforeDocument(
+            document: Document,
+            beforeDocument?: Document,
+        ): void;
 
         /**
          * This function searches the stack for the first instance of the document

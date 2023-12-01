@@ -139,7 +139,10 @@ declare class Spinnies {
      * @returns full `SpinnerOptions` object for the given spinner, with
      * defaults applied
      */
-    add: (name: string, options?: Partial<Spinnies.SpinnerOptions>) => Spinnies.SpinnerOptions;
+    add: (
+        name: string,
+        options?: Partial<Spinnies.SpinnerOptions>,
+    ) => Spinnies.SpinnerOptions;
 
     /**
      * Get spinner by name.
@@ -164,7 +167,10 @@ declare class Spinnies {
      * @returns full `SpinnerOptions` object for the given spinner, with
      * defaults applied
      */
-    update: (name: string, options?: Partial<Spinnies.SpinnerOptions>) => Spinnies.SpinnerOptions;
+    update: (
+        name: string,
+        options?: Partial<Spinnies.SpinnerOptions>,
+    ) => Spinnies.SpinnerOptions;
 
     /**
      * Sets the specified spinner status as succeed.
@@ -172,7 +178,10 @@ declare class Spinnies {
      * @returns full `SpinnerOptions` object for the given spinner, with
      * defaults applied
      */
-    succeed: (name: string, options?: Partial<Spinnies.SpinnerOptions>) => Spinnies.SpinnerOptions;
+    succeed: (
+        name: string,
+        options?: Partial<Spinnies.SpinnerOptions>,
+    ) => Spinnies.SpinnerOptions;
 
     /**
      * Sets the specified spinner status as fail.
@@ -180,7 +189,10 @@ declare class Spinnies {
      * @returns full `SpinnerOptions` object for the given spinner, with
      * defaults applied
      */
-    fail: (name: string, options?: Partial<Spinnies.SpinnerOptions>) => Spinnies.SpinnerOptions;
+    fail: (
+        name: string,
+        options?: Partial<Spinnies.SpinnerOptions>,
+    ) => Spinnies.SpinnerOptions;
 
     /**
      * Stops the spinners and sets the non-succeeded and non-failed ones to the provided status.
@@ -188,7 +200,9 @@ declare class Spinnies {
      * @returns an object that maps spinner names to final `SpinnerOptions` objects for each spinner, with
      * defaults applied
      */
-    stopAll: (status?: Spinnies.StopAllStatus) => { [name: string]: Spinnies.SpinnerOptions };
+    stopAll: (status?: Spinnies.StopAllStatus) => {
+        [name: string]: Spinnies.SpinnerOptions;
+    };
 
     /**
      * @returns false if all spinners have succeeded, failed or have been stopped

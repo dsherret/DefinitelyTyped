@@ -59,19 +59,35 @@ peripheral.disconnect((): void => {});
 peripheral.updateRssi();
 peripheral.updateRssi((error: string, rssi: number): void => {});
 peripheral.discoverServices(["180d"]);
-peripheral.discoverServices(["180d"], (error: string, services: noble.Service[]): void => {});
+peripheral.discoverServices(
+    ["180d"],
+    (error: string, services: noble.Service[]): void => {},
+);
 peripheral.discoverAllServicesAndCharacteristics();
 peripheral.discoverAllServicesAndCharacteristics(
-    (error: string, services: noble.Service[], characteristics: noble.Characteristic[]): void => {},
+    (
+        error: string,
+        services: noble.Service[],
+        characteristics: noble.Characteristic[],
+    ): void => {},
 );
 peripheral.discoverSomeServicesAndCharacteristics(["180d"], ["2a38"]);
 peripheral.discoverSomeServicesAndCharacteristics(
     ["180d"],
     ["2a38"],
-    (error: string, services: noble.Service[], characteristics: noble.Characteristic[]): void => {},
+    (
+        error: string,
+        services: noble.Service[],
+        characteristics: noble.Characteristic[],
+    ): void => {},
 );
 peripheral.readHandle(new Buffer(1), (error: string, data: Buffer): void => {});
-peripheral.writeHandle(new Buffer(1), new Buffer(1), true, (error: string): void => {});
+peripheral.writeHandle(
+    new Buffer(1),
+    new Buffer(1),
+    true,
+    (error: string): void => {},
+);
 peripheral.on("connect", (error: string): void => {});
 peripheral.on("disconnect", (error: string): void => {});
 peripheral.on("rssiUpdate", (rssi: number): void => {});
@@ -83,11 +99,23 @@ service.name = "";
 service.type = "";
 service.includedServiceUuids = ["180d"];
 service.discoverIncludedServices(["180d"]);
-service.discoverIncludedServices(["180d"], (error: string, includedServiceUuids: string[]): void => {});
+service.discoverIncludedServices(
+    ["180d"],
+    (error: string, includedServiceUuids: string[]): void => {},
+);
 service.discoverCharacteristics(["2a38"]);
-service.discoverCharacteristics(["2a38"], (error: string, characteristics: noble.Characteristic[]): void => {});
-service.on("includedServicesDiscover", (includedServiceUuids: string[]): void => {});
-service.on("characteristicsDiscover", (characteristics: noble.Characteristic[]): void => {});
+service.discoverCharacteristics(
+    ["2a38"],
+    (error: string, characteristics: noble.Characteristic[]): void => {},
+);
+service.on(
+    "includedServicesDiscover",
+    (includedServiceUuids: string[]): void => {},
+);
+service.on(
+    "characteristicsDiscover",
+    (characteristics: noble.Characteristic[]): void => {},
+);
 
 const characteristic: noble.Characteristic = new noble.Characteristic();
 characteristic.uuid = "2a37";
@@ -103,12 +131,17 @@ characteristic.broadcast(true, (error: string): void => {});
 characteristic.notify(true);
 characteristic.notify(true, (error: string): void => {});
 characteristic.discoverDescriptors();
-characteristic.discoverDescriptors((error: string, descriptors: noble.Descriptor[]): void => {});
+characteristic.discoverDescriptors(
+    (error: string, descriptors: noble.Descriptor[]): void => {},
+);
 characteristic.on("read", (data: Buffer, isNotification: boolean): void => {});
 characteristic.on("write", true, (error: string): void => {});
 characteristic.on("broadcast", (state: string): void => {});
 characteristic.on("notify", (state: string): void => {});
-characteristic.on("descriptorsDiscover", (descriptors: noble.Descriptor[]): void => {});
+characteristic.on(
+    "descriptorsDiscover",
+    (descriptors: noble.Descriptor[]): void => {},
+);
 characteristic.subscribe();
 characteristic.subscribe((error: string) => {});
 characteristic.unsubscribe();

@@ -90,7 +90,13 @@ declare class Service extends EventEmitter {
      */
     abortOnError: boolean;
     on(
-        event: "install" | "alreadyinstalled" | "invalidinstallation" | "uninstall" | "start" | "stop",
+        event:
+            | "install"
+            | "alreadyinstalled"
+            | "invalidinstallation"
+            | "uninstall"
+            | "start"
+            | "stop",
         listener: () => void,
     ): this;
     on(event: "error", listener: (err: any) => void): this;

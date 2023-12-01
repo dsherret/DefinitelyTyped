@@ -75,7 +75,11 @@ declare class Serverless {
         /**
          * @deprecated starting from Serverless V3, this method is deprecated, see https://www.serverless.com/framework/docs/guides/plugins/cli-output
          */
-        log(message: string, entity?: string, options?: Serverless.LogOptions): null;
+        log(
+            message: string,
+            entity?: string,
+            options?: Serverless.LogOptions,
+        ): null;
     };
 
     providers: {};
@@ -98,11 +102,25 @@ declare class Serverless {
 
     configSchemaHandler: {
         defineCustomProperties(schema: unknown): void;
-        defineFunctionEvent(provider: string, event: string, schema: Record<string, unknown>): void;
-        defineFunctionEventProperties(provider: string, existingEvent: string, schema: unknown): void;
+        defineFunctionEvent(
+            provider: string,
+            event: string,
+            schema: Record<string, unknown>,
+        ): void;
+        defineFunctionEventProperties(
+            provider: string,
+            existingEvent: string,
+            schema: unknown,
+        ): void;
         defineFunctionProperties(provider: string, schema: unknown): void;
-        defineProvider(provider: string, options?: Record<string, unknown>): void;
-        defineTopLevelProperty(provider: string, schema: Record<string, unknown>): void;
+        defineProvider(
+            provider: string,
+            options?: Record<string, unknown>,
+        ): void;
+        defineTopLevelProperty(
+            provider: string,
+            schema: Record<string, unknown>,
+        ): void;
     };
 }
 

@@ -14,7 +14,7 @@ new Dropdown(element, {
 });
 // $ExpectType Dropdown
 new Dropdown(element, {
-    popperConfig: defaultBsPopperConfig => defaultBsPopperConfig,
+    popperConfig: (defaultBsPopperConfig) => defaultBsPopperConfig,
 });
 
 // $ExpectType Dropdown | null
@@ -43,19 +43,19 @@ Dropdown.DefaultType.popperConfig; // $ExpectType string
 // $ExpectType string
 Dropdown.DATA_KEY;
 
-element.addEventListener(Dropdown.Events.show, event => {
+element.addEventListener(Dropdown.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Dropdown.Events.shown, event => {
+element.addEventListener(Dropdown.Events.shown, (event) => {
     // do something…
 });
 
-element.addEventListener(Dropdown.Events.hide, event => {
+element.addEventListener(Dropdown.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Dropdown.Events.hidden, event => {
+element.addEventListener(Dropdown.Events.hidden, (event) => {
     // do something…
 });
 

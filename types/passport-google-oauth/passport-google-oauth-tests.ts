@@ -23,23 +23,24 @@ passport.use(
             consumerSecret: process.env.GOOGLE_CONSUMER_SECRET,
             callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK_URL,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: google.Profile,
             done: (error: any, user?: any, msg?: google.VerifyOptions) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(
-                err,
-                user,
-            ) {
-                if (err) {
-                    return done(err);
-                } else if (!user) {
-                    return done(null, false, { message: "not found user" });
-                }
-                return done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) {
+                        return done(err);
+                    } else if (!user) {
+                        return done(null, false, { message: "not found user" });
+                    }
+                    return done(null, user);
+                },
+            );
         },
     ),
 );
@@ -51,21 +52,22 @@ passport.use(
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK_URL,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: google.Profile,
             done: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(
-                err,
-                user,
-            ) {
-                if (err) {
-                    return done(err);
-                }
-                done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) {
+                        return done(err);
+                    }
+                    done(null, user);
+                },
+            );
         },
     ),
 );
@@ -78,22 +80,23 @@ passport.use(
             callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK_URL,
             passReqToCallback: true,
         },
-        function(
+        function (
             req: express.Request,
             accessToken: string,
             refreshToken: string,
             profile: google.Profile,
             done: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(
-                err,
-                user,
-            ) {
-                if (err) {
-                    return done(err);
-                }
-                done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) {
+                        return done(err);
+                    }
+                    done(null, user);
+                },
+            );
         },
     ),
 );

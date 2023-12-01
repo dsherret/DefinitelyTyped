@@ -4,10 +4,11 @@ var root = window;
 
 // Stub mocha functions
 const { describe, it, before, after, beforeEach, afterEach } = null as any as {
-    [s: string]: ((s: string, cb: (done: any) => void) => void) & ((cb: (done: any) => void) => void) & {
-        only: any;
-        skip: any;
-    };
+    [s: string]: ((s: string, cb: (done: any) => void) => void) &
+        ((cb: (done: any) => void) => void) & {
+            only: any;
+            skip: any;
+        };
 };
 
 describe("expect", () => {
@@ -20,7 +21,9 @@ describe("expect", () => {
                 expect(false).toEqual(true);
             } catch (err) {
                 if (err.message !== "expected false to equal true") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -34,8 +37,18 @@ describe("expect", () => {
             expect(undefined).toEqual(null);
         });
         it("Can expect a more complex object to equal another complex object", () => {
-            var obj1 = { "name": "someData", array: [1, 2, 3, { c: "hello" }], val2: "ing", val1: "test" };
-            var obj2 = { "name": "someData", array: [1, 2, 3, { c: "hello" }], val1: "test", val2: "ing" };
+            var obj1 = {
+                name: "someData",
+                array: [1, 2, 3, { c: "hello" }],
+                val2: "ing",
+                val1: "test",
+            };
+            var obj2 = {
+                name: "someData",
+                array: [1, 2, 3, { c: "hello" }],
+                val1: "test",
+                val2: "ing",
+            };
 
             expect(obj1).toEqual(obj2);
         });
@@ -43,8 +56,13 @@ describe("expect", () => {
             try {
                 expect(undefined).toEqual("Not undefined");
             } catch (err) {
-                if (err.message !== "expected undefined to equal \"Not undefined\"") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    'expected undefined to equal "Not undefined"'
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -59,15 +77,17 @@ describe("expect", () => {
                 expect(true).toNotEqual(true);
             } catch (err) {
                 if (err.message !== "expected true not to equal true") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
     });
 
     describe("toBe", () => {
-        var obj1 = { "abc": 123 };
-        var obj2 = { "abc": 123 };
+        var obj1 = { abc: 123 };
+        var obj2 = { abc: 123 };
         it("can expect an object to be the same object", () => {
             expect(obj1).toBe(obj1);
         });
@@ -75,8 +95,13 @@ describe("expect", () => {
             try {
                 expect(obj1).toBe(obj2);
             } catch (err) {
-                if (err.message !== "expected {\"abc\": 123} to equal {\"abc\": 123}") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    'expected {"abc": 123} to equal {"abc": 123}'
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -90,8 +115,10 @@ describe("expect", () => {
             try {
                 expect("abc").toMatch(/d/);
             } catch (err) {
-                if (err.message !== "expected \"abc\" to match /d/") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (err.message !== 'expected "abc" to match /d/') {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -105,8 +132,10 @@ describe("expect", () => {
             try {
                 expect("").toBeTruthy();
             } catch (err) {
-                if (err.message !== "expected \"\" to be truthy") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (err.message !== 'expected "" to be truthy') {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -121,29 +150,30 @@ describe("expect", () => {
                 expect([1, 2, 3, 4]).toContain(5);
             } catch (err) {
                 if (err.message !== "expected [1, 2, 3, 4] to contain 5") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
         it("can expect array of objects to contain object (passing)", () => {
-            expect([
-                { a: 1 },
-                { a: 2 },
-                { a: 3 },
-                { a: 4 },
-            ]).toContain({ a: 2 });
+            expect([{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }]).toContain({
+                a: 2,
+            });
         });
         it("can expect array of objects to contain object (failing)", () => {
             try {
-                expect([
-                    { a: 1 },
-                    { a: 2 },
-                    { a: 3 },
-                    { a: 4 },
-                ]).toContain({ a: 5 });
+                expect([{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }]).toContain({
+                    a: 5,
+                });
             } catch (err) {
-                if (err.message !== "expected [{\"a\": 1}, {\"a\": 2}, {\"a\": 3}, {\"a\": 4}] to contain {\"a\": 5}") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    'expected [{"a": 1}, {"a": 2}, {"a": 3}, {"a": 4}] to contain {"a": 5}'
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -157,8 +187,10 @@ describe("expect", () => {
             try {
                 expect("abc").toBeFalsy();
             } catch (err) {
-                if (err.message !== "expected \"abc\" to be falsey") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (err.message !== 'expected "abc" to be falsey') {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -173,7 +205,9 @@ describe("expect", () => {
                 expect(0).toBeGreaterThan(1);
             } catch (err) {
                 if (err.message !== "expected 0 to be greater than 1") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -188,7 +222,9 @@ describe("expect", () => {
                 expect(1).toBeLessThan(0);
             } catch (err) {
                 if (err.message !== "expected 1 to be less than 0") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -203,7 +239,9 @@ describe("expect", () => {
                 expect(undefined).toBeDefined();
             } catch (err) {
                 if (err.message !== "expected undefined to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -218,7 +256,9 @@ describe("expect", () => {
                 expect({}).toBeUndefined();
             } catch (err) {
                 if (err.message !== "expected {} to be undefined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -244,8 +284,12 @@ describe("expect", () => {
             if (error === undefined) {
                 throw new Error("Expected error was not thrown");
             }
-            if (error.message !== "expected function (){} to throw an exception") {
-                throw new Error("Expected error message is not correct: " + error.message);
+            if (
+                error.message !== "expected function (){} to throw an exception"
+            ) {
+                throw new Error(
+                    "Expected error message is not correct: " + error.message,
+                );
             }
         });
         it("throws when toThrow is called on a non-function", () => {
@@ -260,8 +304,10 @@ describe("expect", () => {
             if (error === undefined) {
                 throw new Error("Expected error was not thrown");
             }
-            if (error.message !== "expected \"bob\" to be a function") {
-                throw new Error("Expected error message is not correct: " + error.message);
+            if (error.message !== 'expected "bob" to be a function') {
+                throw new Error(
+                    "Expected error message is not correct: " + error.message,
+                );
             }
         });
     });
@@ -274,8 +320,10 @@ describe("expect", () => {
             try {
                 expect("abc").toBeDefined();
             } catch (err) {
-                if (err.message !== "expected \"abc\" to be null") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (err.message !== 'expected "abc" to be null') {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -293,7 +341,9 @@ describe("expect", () => {
                 expect({}).not.toBeDefined();
             } catch (err) {
                 if (err.message !== "expected {} not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -302,7 +352,9 @@ describe("expect", () => {
                 expect([]).not.toBeDefined();
             } catch (err) {
                 if (err.message !== "expected [] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -310,8 +362,13 @@ describe("expect", () => {
             try {
                 expect([1, { abc: "def" }]).not.toBeDefined();
             } catch (err) {
-                if (err.message !== "expected [1, {\"abc\": \"def\"}] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    'expected [1, {"abc": "def"}] not to be defined'
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -320,22 +377,25 @@ describe("expect", () => {
                 expect([1, [2]]).not.toBeDefined();
             } catch (err) {
                 if (err.message !== "expected [1, [2]] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
         it("can generate correct message for Function with custom toString()", () => {
-            function Obj() {
-            }
+            function Obj() {}
 
             Obj.prototype.toString = () => {
                 return "testing";
             };
             try {
-                expect(new (<any> Obj)()).not.toBeDefined();
+                expect(new (<any>Obj)()).not.toBeDefined();
             } catch (err) {
                 if (err.message !== "expected [testing] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -343,8 +403,12 @@ describe("expect", () => {
             try {
                 expect(new Error("text")).not.toBeDefined();
             } catch (err) {
-                if (err.message !== "expected [Error: text] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !== "expected [Error: text] not to be defined"
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -355,10 +419,12 @@ describe("expect", () => {
                 expect(obj).not.toBeDefined();
             } catch (err) {
                 if (
-                    err.message
-                        !== "expected {\"abc\": \"def\", \"obj\": {\"abc\": \"def\", \"obj\": [Circular]}} not to be defined"
+                    err.message !==
+                    'expected {"abc": "def", "obj": {"abc": "def", "obj": [Circular]}} not to be defined'
                 ) {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -378,10 +444,12 @@ describe("expect", () => {
                 expect(obj).not.toBeDefined();
             } catch (err) {
                 if (
-                    err.message
-                        !== "expected {\"a\": {\"b\": {\"c\": {\"d\": {\"e\": [object Object]}}}}} not to be defined"
+                    err.message !==
+                    'expected {"a": {"b": {"c": {"d": {"e": [object Object]}}}}} not to be defined'
                 ) {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -401,10 +469,12 @@ describe("expect", () => {
                 expect(obj).not.toBeDefined();
             } catch (err) {
                 if (
-                    err.message
-                        !== "expected {\"a\": {\"b\": {\"c\": {\"d\": {\"e\": [[object Object]]}}}}} not to be defined"
+                    err.message !==
+                    'expected {"a": {"b": {"c": {"d": {"e": [[object Object]]}}}}} not to be defined'
                 ) {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -412,28 +482,40 @@ describe("expect", () => {
             try {
                 expect({ a: 1, b: undefined }).toEqual({ a: 1 });
             } catch (err) {
-                if (err.message !== "expected {\"a\": 1, \"b\": undefined} to equal {\"a\": 1}") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    'expected {"a": 1, "b": undefined} to equal {"a": 1}'
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
         it("can generate correct message for anonymous functions", () => {
             try {
-                expect(() => {
-                }).not.toBeDefined();
+                expect(() => {}).not.toBeDefined();
             } catch (err) {
-                if (err.message !== "expected function (){} not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !== "expected function (){} not to be defined"
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
         it("can generate correct message for named functions", () => {
             try {
-                expect(function name() {
-                }).not.toBeDefined();
+                expect(function name() {}).not.toBeDefined();
             } catch (err) {
-                if (err.message !== "expected function name(){} not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    "expected function name(){} not to be defined"
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -441,8 +523,13 @@ describe("expect", () => {
             try {
                 expect(new Date(2012, 0, 1)).not.toBeDefined();
             } catch (err) {
-                if (err.message !== "expected [Date Sun, 01 Jan 2012 00:00:00 GMT] not to be defined") {
-                    throw new Error("Expected error message is not correct: " + err.message);
+                if (
+                    err.message !==
+                    "expected [Date Sun, 01 Jan 2012 00:00:00 GMT] not to be defined"
+                ) {
+                    throw new Error(
+                        "Expected error message is not correct: " + err.message,
+                    );
                 }
             }
         });
@@ -454,7 +541,10 @@ describe("expect", () => {
                     expect(el).toBeUndefined();
                 } catch (err) {
                     if (err.message !== "expected <div /> to be undefined") {
-                        throw new Error("Expected error message is not correct: " + err.message);
+                        throw new Error(
+                            "Expected error message is not correct: " +
+                                err.message,
+                        );
                     }
                 }
             });
@@ -463,14 +553,14 @@ describe("expect", () => {
 
     describe("extensibility", () => {
         it("allows you to add your own assertions", () => {
-            expect.addAssertion("toBeFoo", function() {
+            expect.addAssertion("toBeFoo", function () {
                 if (this.value === "foo") {
                     return this.pass();
                 }
-                this.fail("to be \"foo\"");
+                this.fail('to be "foo"');
             });
 
-            (<any> expect("foo")).toBeFoo();
+            (<any>expect("foo")).toBeFoo();
         });
     });
 });

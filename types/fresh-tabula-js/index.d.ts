@@ -15,7 +15,9 @@ declare class Tabula {
 
     getData(): Promise<{ output: string; error: string }>;
 
-    streamSections(callback: (err: Error | null, data: string | null) => void): void;
+    streamSections(
+        callback: (err: Error | null, data: string | null) => void,
+    ): void;
 
     stream(): Highland.Stream<Buffer>;
 }

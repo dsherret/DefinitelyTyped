@@ -77,7 +77,7 @@ parse(["--foo", "-bar"], {
 // coerce
 
 parse(["--foo", "-bar"], {
-    coerce: { foo: arg => arg },
+    coerce: { foo: (arg) => arg },
 });
 
 // count

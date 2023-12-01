@@ -13,19 +13,25 @@ declare namespace Sha512 {
     interface Sha512 {
         update(input: Uint8Array | readonly number[]): this;
         update(input: string, encoding?: string): this;
-        digest<TBuf extends Uint8Array = Uint8Array>(enc?: TBuf, offset?: number): TBuf;
+        digest<TBuf extends Uint8Array = Uint8Array>(
+            enc?: TBuf,
+            offset?: number,
+        ): TBuf;
         digest(enc: string): string;
     }
 
     interface HMACCtor {
         (key: Uint8Array): HMAC;
-        new(key: Uint8Array): HMAC;
+        new (key: Uint8Array): HMAC;
     }
 
     interface HMAC {
         update(input: Uint8Array | readonly number[]): this;
         update(input: string, encoding?: string): this;
-        digest<TBuf extends Uint8Array = Uint8Array>(enc?: TBuf, offset?: number): TBuf;
+        digest<TBuf extends Uint8Array = Uint8Array>(
+            enc?: TBuf,
+            offset?: number,
+        ): TBuf;
         digest(enc: string): string;
     }
 }

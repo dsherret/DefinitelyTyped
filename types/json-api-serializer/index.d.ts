@@ -4,7 +4,10 @@ declare namespace JSONAPISerializer {
         data: unknown,
     ) => unknown;
 
-    type LinksCallback = (data: unknown, extraData?: unknown) => string | LinksObject;
+    type LinksCallback = (
+        data: unknown,
+        extraData?: unknown,
+    ) => string | LinksObject;
 
     type MetaCallback = (data: unknown, extraData?: unknown) => unknown;
 
@@ -32,9 +35,11 @@ declare namespace JSONAPISerializer {
         topLevelLinks?: LinksCallback | LinksObject | undefined;
         topLevelMeta?: MetaCallback | unknown | undefined;
         meta?: MetaCallback | Meta | undefined;
-        relationships?: {
-            [key: string]: RelationshipOptions;
-        } | undefined;
+        relationships?:
+            | {
+                  [key: string]: RelationshipOptions;
+              }
+            | undefined;
         blacklistOnDeserialize?: string[] | undefined;
         whitelistOnDeserialize?: string[] | undefined;
         convertCase?: Case | undefined;
@@ -65,25 +70,30 @@ declare namespace JSONAPISerializer {
         id: string;
         type: string;
         attributes?: Omit<T, "id"> | undefined;
-        relationships?: {
-            [key: string]: Relationship;
-        } | undefined;
+        relationships?:
+            | {
+                  [key: string]: Relationship;
+              }
+            | undefined;
         links?: LinksObject | LinksCallback | undefined;
     }
 
-    type Relationship = {
-        links?: LinksObject | LinksCallback | undefined;
-        data: Linkage | Linkage[];
-        meta?: Meta;
-    } | {
-        links?: LinksObject | LinksCallback | undefined;
-        data?: Linkage | Linkage[];
-        meta: Meta;
-    } | {
-        links: LinksObject | LinksCallback | undefined;
-        data?: Linkage | Linkage[];
-        meta?: Meta;
-    };
+    type Relationship =
+        | {
+              links?: LinksObject | LinksCallback | undefined;
+              data: Linkage | Linkage[];
+              meta?: Meta;
+          }
+        | {
+              links?: LinksObject | LinksCallback | undefined;
+              data?: Linkage | Linkage[];
+              meta: Meta;
+          }
+        | {
+              links: LinksObject | LinksCallback | undefined;
+              data?: Linkage | Linkage[];
+              meta?: Meta;
+          };
 
     interface Meta {
         [name: string]: unknown;
@@ -102,9 +112,9 @@ declare namespace JSONAPISerializer {
     interface ErrorObject {
         id?: string | undefined;
         links?:
-            | LinksObject & {
-                about: LinkObject | string;
-            }
+            | (LinksObject & {
+                  about: LinkObject | string;
+              })
             | undefined;
         status?: string | undefined;
         code?: string | undefined;
@@ -117,7 +127,10 @@ declare namespace JSONAPISerializer {
     interface JSONAPIDocument {
         jsonapi?: JsonApiObject | undefined;
         links?: LinksObject | undefined;
-        data?: ResourceObject<unknown> | Array<ResourceObject<unknown>> | undefined;
+        data?:
+            | ResourceObject<unknown>
+            | Array<ResourceObject<unknown>>
+            | undefined;
         errors?: ErrorObject[] | undefined;
         meta?: Meta | undefined;
         included?: Array<ResourceObject<unknown>> | undefined;
@@ -127,9 +140,17 @@ declare namespace JSONAPISerializer {
 declare class JSONAPISerializer {
     constructor(opts?: JSONAPISerializer.Options);
 
-    register(type: string, schema?: string | JSONAPISerializer.Options, opts?: JSONAPISerializer.Options): void;
+    register(
+        type: string,
+        schema?: string | JSONAPISerializer.Options,
+        opts?: JSONAPISerializer.Options,
+    ): void;
 
-    serialize(type: string, data: unknown, topLevelMeta?: unknown): JSONAPISerializer.JSONAPIDocument;
+    serialize(
+        type: string,
+        data: unknown,
+        topLevelMeta?: unknown,
+    ): JSONAPISerializer.JSONAPIDocument;
 
     serialize(
         type: string,
@@ -162,7 +183,11 @@ declare class JSONAPISerializer {
     ): Promise<any>;
 
     serializeError(
-        error: JSONAPISerializer.ErrorObject | JSONAPISerializer.ErrorObject[] | Error | Error[],
+        error:
+            | JSONAPISerializer.ErrorObject
+            | JSONAPISerializer.ErrorObject[]
+            | Error
+            | Error[],
     ): JSONAPISerializer.ErrorObject;
 }
 

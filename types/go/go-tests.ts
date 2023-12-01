@@ -62,8 +62,8 @@ class CustomTreeLayout extends go.TreeLayout {
 
     commitLinks(): void {
         super.commitLinks();
-        this.network.edges.each(e => {
-            e.link.path.strokeWidth = (<CustomTreeEdge> e).anotherProp;
+        this.network.edges.each((e) => {
+            e.link.path.strokeWidth = (<CustomTreeEdge>e).anotherProp;
         });
     }
 }
@@ -97,10 +97,17 @@ function init() {
             initialContentAlignment: go.Spot.Center,
 
             // allow double-click in background to create a new node
-            "clickCreatingTool.archetypeNodeData": { text: "Node", color: "white" },
+            "clickCreatingTool.archetypeNodeData": {
+                text: "Node",
+                color: "white",
+            },
 
             // allow Ctrl-G to call groupSelection()
-            "commandHandler.archetypeGroupData": { text: "Group", isGroup: true, color: "blue" },
+            "commandHandler.archetypeGroupData": {
+                text: "Group",
+                isGroup: true,
+                color: "blue",
+            },
 
             layout: $(CustomTreeLayout, { angle: 90 }),
 
@@ -119,13 +126,15 @@ function init() {
         action: (e: go.InputEvent, obj: go.GraphObject) => void,
         visiblePredicate?: (obj: go.GraphObject) => boolean,
     ) {
-        if (visiblePredicate === undefined) visiblePredicate = o => true;
+        if (visiblePredicate === undefined) visiblePredicate = (o) => true;
         return $(
             "ContextMenuButton",
             $(go.TextBlock, text),
             { click: action },
             // don't bother with binding GraphObject.visible if there's no predicate
-            visiblePredicate ? new go.Binding("visible", "", visiblePredicate).ofObject() : {},
+            visiblePredicate
+                ? new go.Binding("visible", "", visiblePredicate).ofObject()
+                : {},
         );
     }
 
@@ -133,8 +142,9 @@ function init() {
     var partContextMenu = $(
         go.Adornment,
         "Vertical",
-        makeButton("Properties", (e, obj) => { // the OBJ is this Button
-            var contextmenu = <go.Adornment> obj.part; // the Button is in the context menu Adornment
+        makeButton("Properties", (e, obj) => {
+            // the OBJ is this Button
+            var contextmenu = <go.Adornment>obj.part; // the Button is in the context menu Adornment
             var part = contextmenu.adornedPart; // the adornedPart is the Part that the context menu adorns
             // now can do something with PART, or with its data, or with the Adornment (the context menu)
             if (part instanceof go.Link) alert(linkInfo(part.data));
@@ -144,38 +154,50 @@ function init() {
         makeButton(
             "Cut",
             (e, obj) => e.diagram.commandHandler.cutSelection(),
-            o => o.diagram.commandHandler.canCutSelection(),
+            (o) => o.diagram.commandHandler.canCutSelection(),
         ),
         makeButton(
             "Copy",
             (e, obj) => e.diagram.commandHandler.copySelection(),
-            o => o.diagram.commandHandler.canCopySelection(),
+            (o) => o.diagram.commandHandler.canCopySelection(),
         ),
         makeButton(
             "Paste",
-            (e, obj) => e.diagram.commandHandler.pasteSelection(e.diagram.lastInput.documentPoint),
-            o => o.diagram.commandHandler.canPasteSelection(),
+            (e, obj) =>
+                e.diagram.commandHandler.pasteSelection(
+                    e.diagram.lastInput.documentPoint,
+                ),
+            (o) => o.diagram.commandHandler.canPasteSelection(),
         ),
         makeButton(
             "Delete",
             (e, obj) => e.diagram.commandHandler.deleteSelection(),
-            o => o.diagram.commandHandler.canDeleteSelection(),
+            (o) => o.diagram.commandHandler.canDeleteSelection(),
         ),
-        makeButton("Undo", (e, obj) => e.diagram.commandHandler.undo(), o => o.diagram.commandHandler.canUndo()),
-        makeButton("Redo", (e, obj) => e.diagram.commandHandler.redo(), o => o.diagram.commandHandler.canRedo()),
+        makeButton(
+            "Undo",
+            (e, obj) => e.diagram.commandHandler.undo(),
+            (o) => o.diagram.commandHandler.canUndo(),
+        ),
+        makeButton(
+            "Redo",
+            (e, obj) => e.diagram.commandHandler.redo(),
+            (o) => o.diagram.commandHandler.canRedo(),
+        ),
         makeButton(
             "Group",
             (e, obj) => e.diagram.commandHandler.groupSelection(),
-            o => o.diagram.commandHandler.canGroupSelection(),
+            (o) => o.diagram.commandHandler.canGroupSelection(),
         ),
         makeButton(
             "Ungroup",
             (e, obj) => e.diagram.commandHandler.ungroupSelection(),
-            o => o.diagram.commandHandler.canUngroupSelection(),
+            (o) => o.diagram.commandHandler.canUngroupSelection(),
         ),
     );
 
-    function nodeInfo(d: any) { // Tooltip info for a node data object
+    function nodeInfo(d: any) {
+        // Tooltip info for a node data object
         var str = "Node " + d.key + ": " + d.text + "\n";
         if (d.group) {
             str += "member of " + d.group;
@@ -193,26 +215,36 @@ function init() {
         go.Node,
         "Auto",
         { locationSpot: go.Spot.Center },
-        $(go.Shape, "RoundedRectangle", {
-            fill: "white", // the default fill, if there is no data-binding
-            portId: "",
-            cursor: "pointer", // the Shape is the port, not the whole Node
-            // allow all kinds of links from and to this port
-            fromLinkable: true,
-            fromLinkableSelfNode: true,
-            fromLinkableDuplicates: true,
-            toLinkable: true,
-            toLinkableSelfNode: true,
-            toLinkableDuplicates: true,
-        }, new go.Binding("fill", "color")),
-        $(go.TextBlock, {
-            font: "bold 14px sans-serif",
-            stroke: "#333",
-            margin: 6, // make some extra space for the shape around the text
-            isMultiline: false, // don't allow newlines in text
-            editable: true, // allow in-place editing by user
-        }, new go.Binding("text", "text").makeTwoWay()), // the label shows the node data's text
-        { // this tooltip Adornment is shared by all nodes
+        $(
+            go.Shape,
+            "RoundedRectangle",
+            {
+                fill: "white", // the default fill, if there is no data-binding
+                portId: "",
+                cursor: "pointer", // the Shape is the port, not the whole Node
+                // allow all kinds of links from and to this port
+                fromLinkable: true,
+                fromLinkableSelfNode: true,
+                fromLinkableDuplicates: true,
+                toLinkable: true,
+                toLinkableSelfNode: true,
+                toLinkableDuplicates: true,
+            },
+            new go.Binding("fill", "color"),
+        ),
+        $(
+            go.TextBlock,
+            {
+                font: "bold 14px sans-serif",
+                stroke: "#333",
+                margin: 6, // make some extra space for the shape around the text
+                isMultiline: false, // don't allow newlines in text
+                editable: true, // allow in-place editing by user
+            },
+            new go.Binding("text", "text").makeTwoWay(),
+        ), // the label shows the node data's text
+        {
+            // this tooltip Adornment is shared by all nodes
             toolTip: $(
                 go.Adornment,
                 "Auto",
@@ -230,7 +262,8 @@ function init() {
 
     // Define the appearance and behavior for Links:
 
-    function linkInfo(d: any) { // Tooltip info for a link data object
+    function linkInfo(d: any) {
+        // Tooltip info for a link data object
         return "Link:\nfrom " + d.from + " to " + d.to;
     }
 
@@ -239,8 +272,13 @@ function init() {
         CustomLink,
         { relinkableFrom: true, relinkableTo: true }, // allow the user to relink existing links
         $(go.Shape, { strokeWidth: 2 }, new go.Binding("stroke", "color")),
-        $(go.Shape, { toArrow: "Standard", stroke: null }, new go.Binding("fill", "color")),
-        { // this tooltip Adornment is shared by all links
+        $(
+            go.Shape,
+            { toArrow: "Standard", stroke: null },
+            new go.Binding("fill", "color"),
+        ),
+        {
+            // this tooltip Adornment is shared by all links
             toolTip: $(
                 go.Adornment,
                 "Auto",
@@ -258,11 +296,22 @@ function init() {
 
     // Define the appearance and behavior for Groups:
 
-    function groupInfo(adornment: go.Adornment) { // takes the tooltip, not a group node data object
-        var g = <go.Group> adornment.adornedPart; // get the Group that the tooltip adorns
+    function groupInfo(adornment: go.Adornment) {
+        // takes the tooltip, not a group node data object
+        var g = <go.Group>adornment.adornedPart; // get the Group that the tooltip adorns
         var mems = g.memberParts.count;
-        var links = g.memberParts.filter(p => p instanceof go.Link).count;
-        return "Group " + g.data.key + ": " + g.data.text + "\n" + mems + " members including " + links + " links";
+        var links = g.memberParts.filter((p) => p instanceof go.Link).count;
+        return (
+            "Group " +
+            g.data.key +
+            ": " +
+            g.data.text +
+            "\n" +
+            mems +
+            " members including " +
+            links +
+            " links"
+        );
     }
 
     // Groups consist of a title in the color given by the group node data
@@ -292,11 +341,16 @@ function init() {
             $(
                 go.Shape,
                 "Rectangle", // the rectangular shape around the members
-                { fill: "rgba(128,128,128,0.2)", stroke: "gray", strokeWidth: 3 },
+                {
+                    fill: "rgba(128,128,128,0.2)",
+                    stroke: "gray",
+                    strokeWidth: 3,
+                },
             ),
             $(go.Placeholder, { padding: 5 }), // represents where the members are
         ),
-        { // this tooltip Adornment is shared by all groups
+        {
+            // this tooltip Adornment is shared by all groups
             toolTip: $(
                 go.Adornment,
                 "Auto",
@@ -315,8 +369,15 @@ function init() {
 
     // Define the behavior for the Diagram background:
 
-    function diagramInfo(model: go.GraphLinksModel) { // Tooltip info for the diagram's model
-        return "Model:\n" + model.nodeDataArray.length + " nodes, " + model.linkDataArray.length + " links";
+    function diagramInfo(model: go.GraphLinksModel) {
+        // Tooltip info for the diagram's model
+        return (
+            "Model:\n" +
+            model.nodeDataArray.length +
+            " nodes, " +
+            model.linkDataArray.length +
+            " links"
+        );
     }
 
     // provide a tooltip for the background of the Diagram, when not over any Part
@@ -333,11 +394,22 @@ function init() {
         "Vertical",
         makeButton(
             "Paste",
-            (e, obj) => e.diagram.commandHandler.pasteSelection(e.diagram.lastInput.documentPoint),
-            o => o.diagram.commandHandler.canPasteSelection(),
+            (e, obj) =>
+                e.diagram.commandHandler.pasteSelection(
+                    e.diagram.lastInput.documentPoint,
+                ),
+            (o) => o.diagram.commandHandler.canPasteSelection(),
         ),
-        makeButton("Undo", (e, obj) => e.diagram.commandHandler.undo(), o => o.diagram.commandHandler.canUndo()),
-        makeButton("Redo", (e, obj) => e.diagram.commandHandler.redo(), o => o.diagram.commandHandler.canRedo()),
+        makeButton(
+            "Undo",
+            (e, obj) => e.diagram.commandHandler.undo(),
+            (o) => o.diagram.commandHandler.canUndo(),
+        ),
+        makeButton(
+            "Redo",
+            (e, obj) => e.diagram.commandHandler.redo(),
+            (o) => o.diagram.commandHandler.canRedo(),
+        ),
     );
 
     // Create the Diagram's Model:

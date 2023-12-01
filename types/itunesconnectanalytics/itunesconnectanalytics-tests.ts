@@ -42,12 +42,16 @@ export class AppStoreConnect {
                     }
                 });
             } else {
-                reject("AppStoreConnect has not been properly initialized.  It is likely you did not login first.");
+                reject(
+                    "AppStoreConnect has not been properly initialized.  It is likely you did not login first.",
+                );
             }
         });
     }
 
-    queryMeasure(queryDesc: AppStoreConnectQueryDesc): Promise<itc.QueryResult> {
+    queryMeasure(
+        queryDesc: AppStoreConnectQueryDesc,
+    ): Promise<itc.QueryResult> {
         return new Promise((resolve, reject) => {
             if (this.instance) {
                 let query = itc.AnalyticsQuery.metrics(queryDesc.appId, {
@@ -59,13 +63,16 @@ export class AppStoreConnect {
                 if (queryDesc.start && queryDesc.end) {
                     query = query.date(queryDesc.start, queryDesc.end);
                 }
-                this.instance.request(query, (error: Error, result: itc.QueryResult) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        resolve(result);
-                    }
-                });
+                this.instance.request(
+                    query,
+                    (error: Error, result: itc.QueryResult) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(result);
+                        }
+                    },
+                );
             } else {
                 reject(
                     "Cannot query AppStoreConnect.  It appears it has not been properly initialized.  Perhaps you did not login first?",
@@ -74,7 +81,10 @@ export class AppStoreConnect {
         });
     }
 
-    static getValueFromDataPointForKey(dataPoint: itc.AnalyticsDataPoint, key: string): number {
+    static getValueFromDataPointForKey(
+        dataPoint: itc.AnalyticsDataPoint,
+        key: string,
+    ): number {
         let value: number | undefined;
         switch (key) {
             case itc.measures.activeDevices: {

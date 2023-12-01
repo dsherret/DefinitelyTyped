@@ -11,6 +11,8 @@ export interface GenerateImageOptions {
 }
 
 export function debug(element?: Element | Document): void;
-export function generateImage(options?: GenerateImageOptions): ReturnType<Page["screenshot"]>;
+export function generateImage(
+    options?: GenerateImageOptions,
+): ReturnType<Page["screenshot"]>;
 export function restoreDefaultOptions(): void;
 export function setDefaultOptions(options: GenerateImageOptions): void;

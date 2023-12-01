@@ -21,7 +21,9 @@ PetSchema.plugin(MongooseDelete, {
     overrideMethods: ["count", "countDocuments", "find"],
 });
 // @ts-expect-error (unrecognized method names are disallowed)
-PetSchema.plugin(MongooseDelete, { overrideMethods: ["count", "find", "errorXyz"] });
+PetSchema.plugin(MongooseDelete, {
+    overrideMethods: ["count", "find", "errorXyz"],
+});
 
 PetSchema.plugin(MongooseDelete, { overrideMethods: "all", deletedAt: true });
 PetSchema.plugin(MongooseDelete, { overrideMethods: "all", deletedBy: true });
@@ -29,18 +31,36 @@ PetSchema.plugin(MongooseDelete, {
     overrideMethods: "all",
     deletedByType: String,
 });
-PetSchema.plugin(MongooseDelete, { overrideMethods: "all", deletedBy: true, indexFields: ["deleted"] });
-PetSchema.plugin(MongooseDelete, { overrideMethods: "all", deletedBy: true, indexFields: "all" });
+PetSchema.plugin(MongooseDelete, {
+    overrideMethods: "all",
+    deletedBy: true,
+    indexFields: ["deleted"],
+});
+PetSchema.plugin(MongooseDelete, {
+    overrideMethods: "all",
+    deletedBy: true,
+    indexFields: "all",
+});
 // @ts-expect-error (unrecognized indexFields are disallowed)
-PetSchema.plugin(MongooseDelete, { overrideMethods: "all", deletedBy: true, indexFields: "invalid" });
+PetSchema.plugin(MongooseDelete, {
+    overrideMethods: "all",
+    deletedBy: true,
+    indexFields: "invalid",
+});
 PetSchema.plugin(MongooseDelete, { use$neOperator: true });
 PetSchema.plugin(MongooseDelete, { validateBeforeRestore: true });
 
 const idUser = new mongoose.Types.ObjectId("53da93b16b4a6670076b16bf");
 
-const Pet = mongoose.model<PetDocument, MongooseDelete.SoftDeleteModel<PetDocument>>("Pet", PetSchema);
+const Pet = mongoose.model<
+    PetDocument,
+    MongooseDelete.SoftDeleteModel<PetDocument>
+>("Pet", PetSchema);
 
-const Pet2 = mongoose.model("Pet", PetSchema) as MongooseDelete.SoftDeleteModel<PetDocument>;
+const Pet2 = mongoose.model(
+    "Pet",
+    PetSchema,
+) as MongooseDelete.SoftDeleteModel<PetDocument>;
 
 const fluffy = new Pet({ name: "Fluffy" });
 

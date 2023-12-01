@@ -32,7 +32,8 @@ declare namespace GoogleAdsScripts {
          *
          *      var negativeKeywordList = negativeKeywordListOperation.getResult();
          */
-        interface NegativeKeywordListBuilder extends Base.Builder<NegativeKeywordListOperation> {
+        interface NegativeKeywordListBuilder
+            extends Base.Builder<NegativeKeywordListOperation> {
             /** Sets the name of the new negative keyword list to the specified value. */
             withName(name: string): this;
         }
@@ -46,10 +47,12 @@ declare namespace GoogleAdsScripts {
          *        var negativeKeywordList = negativeKeywordListIterator.next();
          *      }
          */
-        interface NegativeKeywordListIterator extends Base.Iterator<NegativeKeywordListIterator> {}
+        interface NegativeKeywordListIterator
+            extends Base.Iterator<NegativeKeywordListIterator> {}
 
         /** An operation representing creation of a new negative keyword list. */
-        interface NegativeKeywordListOperation extends Base.Operation<NegativeKeywordList> {}
+        interface NegativeKeywordListOperation
+            extends Base.Operation<NegativeKeywordList> {}
 
         /**
          * Fetches negative keyword lists. Supports filtering and sorting.
@@ -69,12 +72,10 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface NegativeKeywordListSelector
-            extends
-                Base.Selector<NegativeKeywordListIterator>,
+            extends Base.Selector<NegativeKeywordListIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

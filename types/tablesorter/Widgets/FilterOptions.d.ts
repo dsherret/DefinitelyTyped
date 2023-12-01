@@ -30,7 +30,10 @@ export interface FilterOptions<TElement = HTMLElement> {
     /**
      * A value indicating whether a search should be performed without having to hit `Enter`.
      */
-    filter_liveSearch?: (boolean | number) | MappedSettings<(boolean | number)> | undefined;
+    filter_liveSearch?:
+        | (boolean | number)
+        | MappedSettings<boolean | number>
+        | undefined;
 
     /**
      * A value indicating whether only filtered rows should be considered while searching.
@@ -55,7 +58,10 @@ export interface FilterOptions<TElement = HTMLElement> {
     /**
      * A value indicating whether the filter should hide automatically.
      */
-    filter_hideFilters?: boolean | ((config: TablesorterConfigurationStore<TElement>) => boolean) | undefined;
+    filter_hideFilters?:
+        | boolean
+        | ((config: TablesorterConfigurationStore<TElement>) => boolean)
+        | undefined;
 
     /**
      * The default filters to apply.
@@ -115,7 +121,11 @@ export interface FilterOptions<TElement = HTMLElement> {
     /**
      * A set of filter-functions to apply for the columns.
      */
-    filter_functions?: MappedSettings<FilterFunctionCollection<TElement> | FilterFunction<TElement>> | undefined;
+    filter_functions?:
+        | MappedSettings<
+              FilterFunctionCollection<TElement> | FilterFunction<TElement>
+          >
+        | undefined;
 
     /**
      * The match-types to apply to the controls.
@@ -140,7 +150,10 @@ export interface FilterOptions<TElement = HTMLElement> {
     /**
      * The sources for the select-controls.
      */
-    filter_selectSource?: SelectSources<TElement> | MappedSettings<SelectSources<TElement>> | undefined;
+    filter_selectSource?:
+        | SelectSources<TElement>
+        | MappedSettings<SelectSources<TElement>>
+        | undefined;
 
     /**
      * The character for separating display-name and value inside the `filter_selectSource`.

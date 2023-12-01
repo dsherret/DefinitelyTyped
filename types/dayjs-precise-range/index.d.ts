@@ -16,9 +16,20 @@ declare module "dayjs" {
 
     interface Dayjs {
         preciseDiff(d2: Dayjs, returnValueObject?: false): string;
-        preciseDiff(d2: Dayjs, returnValueObject: true): PreciseRangeValueObject;
+        preciseDiff(
+            d2: Dayjs,
+            returnValueObject: true,
+        ): PreciseRangeValueObject;
     }
 
-    function preciseDiff(d1: Dayjs, d2: Dayjs, returnValueObject?: false): string;
-    function preciseDiff(d1: Dayjs, d2: Dayjs, returnValueObject: true): PreciseRangeValueObject;
+    function preciseDiff(
+        d1: Dayjs,
+        d2: Dayjs,
+        returnValueObject?: false,
+    ): string;
+    function preciseDiff(
+        d1: Dayjs,
+        d2: Dayjs,
+        returnValueObject: true,
+    ): PreciseRangeValueObject;
 }

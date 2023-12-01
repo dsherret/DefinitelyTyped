@@ -4,7 +4,11 @@
  * @param multiple The multiple to round to.
  * @param direction If no direction is supplied, the number will be rounded to the nearest direction, defaulting to up if the value is equidistant from the rounded values.
  */
-declare function round(value: number, multiple?: number, direction?: round.Direction): number;
+declare function round(
+    value: number,
+    multiple?: number,
+    direction?: round.Direction,
+): number;
 
 declare namespace round {
     type Direction = "up" | "down";

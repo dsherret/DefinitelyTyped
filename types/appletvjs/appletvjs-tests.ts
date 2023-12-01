@@ -1,14 +1,14 @@
 // test the global app events and functions
 function test_AppEvents() {
-    App.onError = function(options: any) {
+    App.onError = function (options: any) {
         // do something
     };
 
-    App.onExit = function(options: any) {
+    App.onExit = function (options: any) {
         // do something
     };
 
-    App.onLaunch = function(options: any) {
+    App.onLaunch = function (options: any) {
         // do something
     };
 
@@ -28,27 +28,28 @@ function test_DeviceProperties() {
 function test_FeatureElement() {
     var parser = new DOMParser();
     var document = parser.parseFromString(
-        "<menuBar id=\"menuBar\"></menuBar><textField id=\"textField\"></textField>",
+        '<menuBar id="menuBar"></menuBar><textField id="textField"></textField>',
         "application/xml",
     );
     var textField = document.getElementById("textField");
-    textField.addEventListener("change", function() {
+    textField.addEventListener("change", function () {
         change.call(this, textField);
     });
 
-    var change = function(textField: AppleTVJS.FeatureElement) {
+    var change = function (textField: AppleTVJS.FeatureElement) {
         var keyboard: AppleTVJS.Keyboard = textField.getFeature("Keyboard");
 
         var text = keyboard.text;
     };
 
     var menuBar = document.getElementById("menuBar");
-    textField.addEventListener("change", function() {
+    textField.addEventListener("change", function () {
         change.call(this, textField);
     });
 
-    var select = function(menuBar: AppleTVJS.FeatureElement) {
-        var menuBarDocument: AppleTVJS.MenuBarDocument = menuBar.getFeature("MenuBarDocument");
+    var select = function (menuBar: AppleTVJS.FeatureElement) {
+        var menuBarDocument: AppleTVJS.MenuBarDocument =
+            menuBar.getFeature("MenuBarDocument");
 
         var document = menuBarDocument.getDocument(menuBar);
         menuBarDocument.setDocument(document, menuBar);
@@ -57,7 +58,10 @@ function test_FeatureElement() {
 }
 
 function test_MediaItem() {
-    var mediaItem = new AppleTVJS.MediaItem("video", "http://www.vidme.com/abc123");
+    var mediaItem = new AppleTVJS.MediaItem(
+        "video",
+        "http://www.vidme.com/abc123",
+    );
     mediaItem.artworkImageURL = "http://google.com/artwork.png";
     mediaItem.contentRatingDomain = "movie";
     mediaItem.contentRatingRanking = 1;
@@ -86,32 +90,46 @@ function test_MediaItem() {
     mediaItem.resumeTime = 0;
     mediaItem.subtitle = "Subtitle";
 
-    var loadAssetIDCallback = function(assetID: string, error: string) {
+    var loadAssetIDCallback = function (assetID: string, error: string) {
         // do something
     };
 
-    mediaItem.loadAssetID = function(url: string, loadAssetIDCallback: (assetID: string, error: string) => void) {
+    mediaItem.loadAssetID = function (
+        url: string,
+        loadAssetIDCallback: (assetID: string, error: string) => void,
+    ) {
         // do something
     };
 
-    var loadCertificateCallback = function(certificate: string, error: string) {
+    var loadCertificateCallback = function (
+        certificate: string,
+        error: string,
+    ) {
         // do something
     };
 
-    mediaItem.loadCertificate = function(
+    mediaItem.loadCertificate = function (
         url: string,
         loadCertificateCallback: (certificate: string, error: string) => void,
     ) {
         // do something
     };
 
-    var loadKeyCallback = function(key: string, renewalDate: string, error: string) {
+    var loadKeyCallback = function (
+        key: string,
+        renewalDate: string,
+        error: string,
+    ) {
         // do something
     };
 
-    mediaItem.loadKey = function(
+    mediaItem.loadKey = function (
         url: string,
-        loadKeyCallback: (key: string, renewalDate: string, error: string) => void,
+        loadKeyCallback: (
+            key: string,
+            renewalDate: string,
+            error: string,
+        ) => void,
     ) {
         // do something
     };
@@ -120,7 +138,10 @@ function test_MediaItem() {
 // test the global navigation document object
 function test_navigationDocument() {
     var parser = new DOMParser();
-    var document = parser.parseFromString("<document></document>", "application/xml");
+    var document = parser.parseFromString(
+        "<document></document>",
+        "application/xml",
+    );
 
     var documents = navigationDocument.documents;
 
@@ -150,7 +171,10 @@ function test_Player() {
     player.playlist = playlist;
 
     var parser = new DOMParser();
-    var document = parser.parseFromString("<document></document>", "application/xml");
+    var document = parser.parseFromString(
+        "<document></document>",
+        "application/xml",
+    );
     player.overlayDocument = document;
 
     player.present();
@@ -166,35 +190,35 @@ function test_Player() {
     var nextMediaItem: AppleTVJS.MediaItem = player.nextMediaItem;
     var previousMediaItem: AppleTVJS.MediaItem = player.previousMediaItem;
 
-    player.mediaItemDidChange = function(reason: string) {
+    player.mediaItemDidChange = function (reason: string) {
         // do something
     };
 
-    player.requestSeekToTime = function(result) {
+    player.requestSeekToTime = function (result) {
         // do something
     };
 
-    player.shouldHandleStateChange = function(result: boolean) {
+    player.shouldHandleStateChange = function (result: boolean) {
         // do something
     };
 
-    player.stateDidChange = function() {
+    player.stateDidChange = function () {
         // do something
     };
 
-    player.stateWillChange = function() {
+    player.stateWillChange = function () {
         // do something
     };
 
-    player.timeBoundaryDidCross = function() {
+    player.timeBoundaryDidCross = function () {
         // do something
     };
 
-    player.timeDidChange = function() {
+    player.timeDidChange = function () {
         // do something
     };
 
-    player.timedMetadata = function() {
+    player.timedMetadata = function () {
         // do something
     };
 }
@@ -202,7 +226,7 @@ function test_Player() {
 // test the global settings object
 function test_Settings() {
     var language = Settings.language;
-    Settings.onRestrictionsChange = function() {
+    Settings.onRestrictionsChange = function () {
         // do something
     };
     var restrictions = Settings.restrictions;
@@ -210,7 +234,8 @@ function test_Settings() {
     var maxMovieRank = restrictions.maxMovieRank;
     var maxMovieRatingForCountry = restrictions.maxMovieRatingForCountry("US");
     var allowsExplmaxTVShowRankicit = restrictions.maxTVShowRank;
-    var maxTVShowRatingForCountry = restrictions.maxTVShowRatingForCountry("US");
+    var maxTVShowRatingForCountry =
+        restrictions.maxTVShowRatingForCountry("US");
     var storeFrontCountryCode = Settings.storefrontCountryCode;
 }
 

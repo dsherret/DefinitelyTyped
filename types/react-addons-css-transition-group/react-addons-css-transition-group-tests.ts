@@ -5,7 +5,7 @@ declare const ComponentClass: React.ClassicComponentClass;
 
 React.createFactory(CSSTransitionGroup)({
     component: ComponentClass,
-    childFactory: c => c,
+    childFactory: (c) => c,
     transitionName: "transition",
     transitionAppear: false,
     transitionEnter: true,

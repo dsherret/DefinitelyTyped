@@ -1,4 +1,5 @@
-export type ElementWithXAttributes<T extends Element = HTMLElement> = withXAttributes<T>;
+export type ElementWithXAttributes<T extends Element = HTMLElement> =
+    withXAttributes<T>;
 
 export type withXAttributes<T extends Element> = T & Partial<XAttributes>;
 
@@ -94,7 +95,13 @@ export interface DirectiveData {
     original: string;
 }
 
-type InterceptorCallback<T> = (initial: T, get: () => T, set: (val: T) => void, path: string, key: string) => T;
+type InterceptorCallback<T> = (
+    initial: T,
+    get: () => T,
+    set: (val: T) => void,
+    path: string,
+    key: string,
+) => T;
 
 export interface InterceptorObject<T> {
     initialValue: T;
@@ -102,11 +109,13 @@ export interface InterceptorObject<T> {
     initialize: (data: Record<string, unknown>, path: string, key: string) => T;
 }
 
-type InferInterceptor<T> = T extends InterceptorObject<infer U> ? U
-    : T extends Record<string | number | symbol, unknown> ? {
+type InferInterceptor<T> = T extends InterceptorObject<infer U>
+    ? U
+    : T extends Record<string | number | symbol, unknown>
+      ? {
             [K in keyof T]: InferInterceptor<T[K]>;
         }
-    : T;
+      : T;
 
 export type InferInterceptors<T> = {
     [K in keyof T]: InferInterceptor<T[K]>;
@@ -122,21 +131,40 @@ export interface DirectiveUtilities {
     effect: <T>(callback: () => T) => ReactiveEffect<T>;
     cleanup: (callback: () => void) => void;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    evaluateLater: <T>(expression: string) => (callback?: (value: T) => void, extras?: {}) => void;
-    evaluate: <T>(expression: string | (() => T), extras?: Record<string, unknown>, _?: boolean) => T;
+    evaluateLater: <T>(
+        expression: string,
+    ) => (callback?: (value: T) => void, extras?: {}) => void;
+    evaluate: <T>(
+        expression: string | (() => T),
+        extras?: Record<string, unknown>,
+        _?: boolean,
+    ) => T;
 }
 export type MagicUtilities = DirectiveUtilities & {
     interceptor: interceptor;
 };
 
 export interface DirectiveCallback {
-    (el: ElementWithXAttributes, directive: DirectiveData, utilities: DirectiveUtilities): void;
-    inline?: (el: ElementWithXAttributes, directive: DirectiveData, utilities: DirectiveUtilities) => void;
+    (
+        el: ElementWithXAttributes,
+        directive: DirectiveData,
+        utilities: DirectiveUtilities,
+    ): void;
+    inline?: (
+        el: ElementWithXAttributes,
+        directive: DirectiveData,
+        utilities: DirectiveUtilities,
+    ) => void;
 }
 
-export type WalkerCallback = (el: ElementWithXAttributes, skip: () => void) => void;
+export type WalkerCallback = (
+    el: ElementWithXAttributes,
+    skip: () => void,
+) => void;
 
-export type AlpineComponent<T> = T & XDataContext & ThisType<InferInterceptors<T> & XDataContext & Magics<T>>;
+export type AlpineComponent<T> = T &
+    XDataContext &
+    ThisType<InferInterceptors<T> & XDataContext & Magics<T>>;
 
 interface XDataContext {
     /**
@@ -201,7 +229,10 @@ export interface Magics<T> {
      * @param property the component property
      * @param callback a callback that will fire when a given property is changed
      */
-    $watch: <K extends keyof T | string, V extends K extends keyof T ? T[K] : any>(
+    $watch: <
+        K extends keyof T | string,
+        V extends K extends keyof T ? T[K] : any,
+    >(
         property: K,
         callback: (newValue: V, oldValue: V) => void,
     ) => void;
@@ -233,10 +264,19 @@ export interface Alpine {
         effect: (fn: () => any) => E;
         raw: <T>(obj: T) => T;
     }) => void;
-    onAttributeRemoved: (el: ElementWithXAttributes, name: string, callback: () => void) => void;
+    onAttributeRemoved: (
+        el: ElementWithXAttributes,
+        name: string,
+        callback: () => void,
+    ) => void;
     onAttributesAdded: (callback: AttrMutationCallback) => void;
-    closestDataStack: (node: ElementWithXAttributes) => Array<Record<string | symbol, unknown>>;
-    skipDuringClone: <T extends (...args: Parameters<T>) => ReturnType<T>>(callback: T, fallback?: T) => T;
+    closestDataStack: (
+        node: ElementWithXAttributes,
+    ) => Array<Record<string | symbol, unknown>>;
+    skipDuringClone: <T extends (...args: Parameters<T>) => ReturnType<T>>(
+        callback: T,
+        fallback?: T,
+    ) => T;
     onlyDuringClone: (callback: DirectiveCallback) => DirectiveCallback;
     addRootSelector: (selectorCallback: () => string) => void;
     addInitSelector: (selectorCallback: () => string) => void;
@@ -247,7 +287,10 @@ export interface Alpine {
     ) => () => void;
     deferMutations: () => void;
     mapAttributes: (
-        callback: (attribute: { name: string; value: string | (() => unknown) }) => {
+        callback: (attribute: {
+            name: string;
+            value: string | (() => unknown);
+        }) => {
             name: string;
             value: string | (() => unknown);
         },
@@ -275,7 +318,9 @@ export interface Alpine {
             },
         ) => void,
     ) => void;
-    mergeProxies: (objects: Array<Record<string, unknown>>) => Record<string, unknown>;
+    mergeProxies: (
+        objects: Array<Record<string, unknown>>,
+    ) => Record<string, unknown>;
     extractProp: <T_3 extends string | boolean>(
         el: ElementWithXAttributes,
         name: string,
@@ -286,21 +331,27 @@ export interface Alpine {
         el: ElementWithXAttributes,
         callback: (el: ElementWithXAttributes) => boolean,
     ) => ElementWithXAttributes;
-    closestRoot: (el: ElementWithXAttributes, includeInitSelectors?: boolean) => ElementWithXAttributes | undefined;
+    closestRoot: (
+        el: ElementWithXAttributes,
+        includeInitSelectors?: boolean,
+    ) => ElementWithXAttributes | undefined;
     destroyTree: (root: ElementWithXAttributes) => void;
     interceptor: interceptor;
     transition: (
         el: ElementWithXAttributes,
         setFunction:
             | ((
-                el: ElementWithXAttributes,
-                value:
-                    | string
-                    | boolean
-                    | Record<string, boolean>
-                    | (() => string | boolean | Record<string, boolean>),
-            ) => () => void)
-            | ((el: ElementWithXAttributes, value: string | Partial<CSSStyleDeclaration>) => () => void),
+                  el: ElementWithXAttributes,
+                  value:
+                      | string
+                      | boolean
+                      | Record<string, boolean>
+                      | (() => string | boolean | Record<string, boolean>),
+              ) => () => void)
+            | ((
+                  el: ElementWithXAttributes,
+                  value: string | Partial<CSSStyleDeclaration>,
+              ) => () => void),
         {
             during,
             start,
@@ -313,7 +364,10 @@ export interface Alpine {
         before?: () => void,
         after?: () => void,
     ) => void;
-    setStyles: (el: ElementWithXAttributes, value: string | Partial<CSSStyleDeclaration>) => () => void;
+    setStyles: (
+        el: ElementWithXAttributes,
+        value: string | Partial<CSSStyleDeclaration>,
+    ) => () => void;
     mutateDom: <T_5>(callback: () => T_5) => T_5;
     directive: (
         name: string,
@@ -341,8 +395,15 @@ export interface Alpine {
         func: T_7,
         limit?: number,
     ) => (...args: Parameters<T_7>) => void;
-    debounce: <T_8 extends (...args: Parameters<T_8>) => void>(func: T_8, wait?: number) => T_8;
-    evaluate: <T_9>(el: ElementWithXAttributes, expression: string | (() => T_9), extras?: {}) => T_9;
+    debounce: <T_8 extends (...args: Parameters<T_8>) => void>(
+        func: T_8,
+        wait?: number,
+    ) => T_8;
+    evaluate: <T_9>(
+        el: ElementWithXAttributes,
+        expression: string | (() => T_9),
+        extras?: {},
+    ) => T_9;
     initTree: (
         el: ElementWithXAttributes,
         walker?: (el: ElementWithXAttributes, callback: WalkerCallback) => any,
@@ -352,14 +413,27 @@ export interface Alpine {
     prefixed: (subject?: string) => string;
     prefix: (newPrefix: string) => void;
     plugin: (callbacks: PluginCallback | PluginCallback[]) => void;
-    magic: (name: string, callback: (el: ElementWithXAttributes, options: MagicUtilities) => unknown) => void;
+    magic: (
+        name: string,
+        callback: (
+            el: ElementWithXAttributes,
+            options: MagicUtilities,
+        ) => unknown,
+    ) => void;
     store: {
         <T extends keyof Stores>(name: T): Stores[T];
         <T extends keyof Stores>(name: T, value: Stores[T]): void;
     };
     start: () => void;
-    clone: (oldEl: ElementWithXAttributes, newEl: ElementWithXAttributes) => void;
-    bound: (el: ElementWithXAttributes, name: string, fallback?: unknown) => unknown;
+    clone: (
+        oldEl: ElementWithXAttributes,
+        newEl: ElementWithXAttributes,
+    ) => void;
+    bound: (
+        el: ElementWithXAttributes,
+        name: string,
+        fallback?: unknown,
+    ) => unknown;
     $data: (node: ElementWithXAttributes) => {};
     walk: (el: ElementWithXAttributes, callback: WalkerCallback) => any;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
@@ -367,7 +441,10 @@ export interface Alpine {
         name: string,
         callback: (...args: unknown[]) => AlpineComponent<T_12>, // Needed generic to properly autotype objects
     ) => void;
-    bind: (name: string | ElementWithXAttributes, bindings: Bindings | ((...args: unknown[]) => Bindings)) => void;
+    bind: (
+        name: string | ElementWithXAttributes,
+        bindings: Bindings | ((...args: unknown[]) => Bindings),
+    ) => void;
 }
 
 declare const Alpine: Alpine;

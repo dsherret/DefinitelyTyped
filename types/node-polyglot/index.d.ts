@@ -20,20 +20,30 @@ declare namespace Polyglot {
         phrases?: any;
         locale?: string | undefined;
         allowMissing?: boolean | undefined;
-        onMissingKey?: ((key: string, options: Polyglot.InterpolationOptions, locale: string) => string) | undefined;
+        onMissingKey?:
+            | ((
+                  key: string,
+                  options: Polyglot.InterpolationOptions,
+                  locale: string,
+              ) => string)
+            | undefined;
         warn?: ((message: string) => void) | undefined;
         interpolation?: InterpolationTokenOptions | undefined;
         pluralRules?: PluralRules | undefined;
         replace?:
             | ((
-                this: string,
-                interpolationRegex: RegExp,
-                replacer: (substring: string, ...args: any[]) => string,
-            ) => string | string[])
+                  this: string,
+                  interpolationRegex: RegExp,
+                  replacer: (substring: string, ...args: any[]) => string,
+              ) => string | string[])
             | undefined;
     }
 
-    function transformPhrase(phrase: string, options?: number | Polyglot.InterpolationOptions, locale?: string): string;
+    function transformPhrase(
+        phrase: string,
+        options?: number | Polyglot.InterpolationOptions,
+        locale?: string,
+    ): string;
 }
 
 declare class Polyglot {

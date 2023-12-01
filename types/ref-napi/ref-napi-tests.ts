@@ -489,7 +489,7 @@ buffer.type;
 // Override types test:
 declare module "ref-napi" {
     interface UnderlyingTypeOverrideRegistry {
-        "foo": number;
+        foo: number;
     }
 }
 

@@ -303,7 +303,14 @@ declare namespace jsrsasign {
          * crl = new X509CRL("-----BEGIN X509 CRL...");
          * x.verifySignature(pubKey) &rarr; true, false or raising exception
          */
-        verifySignature(pubKey: string | RSAKey | KJUR.crypto.DSA | KJUR.crypto.ECDSA | ECCPrivateKey): boolean;
+        verifySignature(
+            pubKey:
+                | string
+                | RSAKey
+                | KJUR.crypto.DSA
+                | KJUR.crypto.ECDSA
+                | ECCPrivateKey,
+        ): boolean;
 
         /**
          * get JSON object for CRL parameters<br/>

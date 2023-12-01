@@ -8,7 +8,10 @@ async function topLevel() {
     async function detectFace(videoFrame: VideoFrame): Promise<number[]> {
         return [];
     }
-    function blurBackground(videoFrame: VideoFrame, facePosition: number[]): VideoFrame {
+    function blurBackground(
+        videoFrame: VideoFrame,
+        facePosition: number[],
+    ): VideoFrame {
         return videoFrame;
     }
 
@@ -27,7 +30,9 @@ async function topLevel() {
 
     // After this, trackGenerator can be assigned to any sink such as a
     // peer connection, or media element.
-    trackProcessor.readable.pipeThrough(transformer).pipeTo(trackGenerator.writable);
+    trackProcessor.readable
+        .pipeThrough(transformer)
+        .pipeTo(trackGenerator.writable);
 
     // Forward Web-exposed signals to the original videoTrack.
     trackGenerator.readableControl.pipeTo(trackProcessor.writableControl);
@@ -78,10 +83,15 @@ async function topLevel() {
     }
 
     {
-        const capturedStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const capturedStream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+        });
         const upstreamTrack = capturedStream.getAudioTracks()[0];
 
-        const generator = new MediaStreamTrackGenerator({ signalTarget: upstreamTrack, kind: "audio" });
+        const generator = new MediaStreamTrackGenerator({
+            signalTarget: upstreamTrack,
+            kind: "audio",
+        });
 
         // $ExpectType "audio"
         generator.kind;
@@ -108,7 +118,10 @@ async function topLevel() {
 
     // MediaStreamTrackGenerator-video.https.html
 
-    const videoFrame = new VideoFrame(imageBitmap, { timestamp: 1, alpha: "discard" });
+    const videoFrame = new VideoFrame(imageBitmap, {
+        timestamp: 1,
+        alpha: "discard",
+    });
 
     {
         const generator = new MediaStreamTrackGenerator({ kind: "video" });
@@ -169,7 +182,9 @@ async function topLevel() {
     // MediaStreamTrackProcessor-audio.https.html
 
     {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+        });
         const track = stream.getTracks()[0] as MediaStreamAudioTrack;
         const processor = new MediaStreamTrackProcessor({ track });
 

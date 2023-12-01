@@ -5,7 +5,7 @@ import * as ProgressBar from "progress";
  * (in Typescript)
  */
 const usageBar = new ProgressBar(":bar", { total: 10 });
-const timer = setInterval(function() {
+const timer = setInterval(function () {
     usageBar.tick();
     if (usageBar.complete) {
         console.log("\ncomplete\n");
@@ -29,10 +29,13 @@ const list = [
     "image09.jpg",
     "image10.jpg",
 ];
-const customTokenBar = new ProgressBar(":percent eta: :eta downloading :current/:total :file", {
-    total: list.length,
-});
-const customInterval = setInterval(function() {
+const customTokenBar = new ProgressBar(
+    ":percent eta: :eta downloading :current/:total :file",
+    {
+        total: list.length,
+    },
+);
+const customInterval = setInterval(function () {
     customTokenBar.tick({
         file: list[customTokenBar.curr],
     });
@@ -46,12 +49,17 @@ const customInterval = setInterval(function() {
  * (in Typescript)
  */
 const interruptBar = new ProgressBar(":bar :current/:total", { total: 10 });
-const interruptTimer = setInterval(function() {
+const interruptTimer = setInterval(function () {
     interruptBar.tick();
     if (interruptBar.complete) {
         clearInterval(interruptTimer);
     } else if (interruptBar.curr === 5 || interruptBar.curr === 8) {
-        interruptBar.interrupt("interrupt: current progress is " + interruptBar.curr + "/" + interruptBar.total);
+        interruptBar.interrupt(
+            "interrupt: current progress is " +
+                interruptBar.curr +
+                "/" +
+                interruptBar.total,
+        );
     }
 }, 1000);
 

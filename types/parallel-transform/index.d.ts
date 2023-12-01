@@ -11,12 +11,26 @@ declare namespace ParallelTransform {
 }
 
 declare const ParallelTransform: {
-    (maxParallel: number, opts: ParallelTransform.Options | undefined | null, ontransform: OnTransform): Transform;
-    (opts: ParallelTransform.Options | number | undefined | null, ontransform: OnTransform): Transform;
+    (
+        maxParallel: number,
+        opts: ParallelTransform.Options | undefined | null,
+        ontransform: OnTransform,
+    ): Transform;
+    (
+        opts: ParallelTransform.Options | number | undefined | null,
+        ontransform: OnTransform,
+    ): Transform;
     (ontransform: OnTransform): Transform;
-    new(maxParallel: number, opts: ParallelTransform.Options | undefined | null, ontransform: OnTransform): Transform;
-    new(opts: ParallelTransform.Options | number | undefined | null, ontransform: OnTransform): Transform;
-    new(ontransform: OnTransform): Transform;
+    new (
+        maxParallel: number,
+        opts: ParallelTransform.Options | undefined | null,
+        ontransform: OnTransform,
+    ): Transform;
+    new (
+        opts: ParallelTransform.Options | number | undefined | null,
+        ontransform: OnTransform,
+    ): Transform;
+    new (ontransform: OnTransform): Transform;
 };
 
 export = ParallelTransform;

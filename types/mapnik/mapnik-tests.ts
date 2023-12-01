@@ -24,8 +24,13 @@ map.load("./test/stylesheet.xml", function xx(err: Error, map: mapnik.Map) {
 
 // new mapnik.Image.open("xxx").save("xx");
 
-mapnik.register_datasource(path.join(mapnik.settings.paths.input_plugins, "shape.input"));
-const ds: mapnik.Datasource = new mapnik.Datasource({ type: "shape", file: "test/data/world_merc.shp" });
+mapnik.register_datasource(
+    path.join(mapnik.settings.paths.input_plugins, "shape.input"),
+);
+const ds: mapnik.Datasource = new mapnik.Datasource({
+    type: "shape",
+    file: "test/data/world_merc.shp",
+});
 const featureset: mapnik.Featureset = ds.featureset();
 const geojson: any = {
     type: "FeatureCollection",

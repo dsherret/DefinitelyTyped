@@ -11,7 +11,7 @@ const basicTable = () => {
                     label: "ABC",
                 },
             ]}
-            getRowData={i => i}
+            getRowData={(i) => i}
         />
     );
 };
@@ -26,8 +26,8 @@ const overrideAllExceptComponents = () => {
                     label: "ABC",
                 },
             ]}
-            getRowData={i => i}
-            getKey={i => i}
+            getRowData={(i) => i}
+            getKey={(i) => i}
             getRowProps={() => {
                 return {
                     ref: React.createRef(),
@@ -53,7 +53,7 @@ const overrideComponentsOnly = () => {
                     label: "ABC",
                 },
             ]}
-            getRowData={i => i}
+            getRowData={(i) => i}
             components={components}
         />
     );
@@ -94,7 +94,17 @@ const components: Table.ComponentMap = {
         return <div className="cell">{props.children}</div>;
     },
 
-    Row: ({ i, i2, model, data }: { i: number; i2: number; model: Table.Model; data: Table.RowProps }) => {
+    Row: ({
+        i,
+        i2,
+        model,
+        data,
+    }: {
+        i: number;
+        i2: number;
+        model: Table.Model;
+        data: Table.RowProps;
+    }) => {
         return <div className="row" key={i}></div>;
     },
 
@@ -102,7 +112,13 @@ const components: Table.ComponentMap = {
         return <div className="cell">{props.data as string}</div>;
     },
 
-    HeaderCells: ({ columns, components }: { columns: Table.ColumnModel[]; components: Table.ComponentMap }) => {
+    HeaderCells: ({
+        columns,
+        components,
+    }: {
+        columns: Table.ColumnModel[];
+        components: Table.ComponentMap;
+    }) => {
         return columns.map((col, i) => {
             return col.key;
         });

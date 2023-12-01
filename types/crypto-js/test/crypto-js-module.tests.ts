@@ -82,7 +82,9 @@ decrypted = CryptoJS.RC4Drop.decrypt(encrypted, "Secret Passphrase", {
 });
 
 // .decrypt() returns WordArray
-CryptoJS.AES.decrypt("Message", "Secret Passphrase").toString(CryptoJS.enc.Utf8);
+CryptoJS.AES.decrypt("Message", "Secret Passphrase").toString(
+    CryptoJS.enc.Utf8,
+);
 
 // Custome Key and IV
 var key = CryptoJS.enc.Hex.parse("000102030405060708090a0b0c0d0e0f");
@@ -97,9 +99,11 @@ encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase", {
 
 // The Cipher Output
 var JsonFormatter = {
-    stringify: function(cipherParams: CryptoJS.lib.CipherParams) {
+    stringify: function (cipherParams: CryptoJS.lib.CipherParams) {
         // create json object with ciphertext
-        var jsonObj: any = { ct: cipherParams.ciphertext.toString(CryptoJS.enc.Base64) };
+        var jsonObj: any = {
+            ct: cipherParams.ciphertext.toString(CryptoJS.enc.Base64),
+        };
         // optionally add iv or salt
         if (cipherParams.iv) {
             jsonObj.iv = cipherParams.iv.toString();
@@ -110,7 +114,7 @@ var JsonFormatter = {
         // stringify json object
         return JSON.stringify(jsonObj);
     },
-    parse: function(jsonStr: string) {
+    parse: function (jsonStr: string) {
         // parse json string
         var jsonObj = JSON.parse(jsonStr);
         // extract ciphertext from json object, and create cipher params object

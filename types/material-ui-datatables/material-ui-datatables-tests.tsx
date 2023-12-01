@@ -26,7 +26,11 @@ const rowSize = 1;
 const rowSizeLabel = "";
 const rowSizeList: number[] = [1];
 const showRowSizeControls = false;
-const summaryLabelTemplate: (start: number, end: number, count: number) => any = (start, end, count) => "";
+const summaryLabelTemplate: (
+    start: number,
+    end: number,
+    count: number,
+) => any = (start, end, count) => "";
 const columns: Column[] = [{ key: "", render: (value, row: Book) => "" }];
 const book: Book = { author: "asdf", name: "asdf" };
 const data: Book[] = [book];

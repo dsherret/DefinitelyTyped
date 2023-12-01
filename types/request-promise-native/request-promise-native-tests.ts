@@ -3,9 +3,7 @@ import * as path from "path";
 import * as errors from "request-promise-native/errors";
 import constants = require("constants");
 
-rpn("http://www.google.com")
-    .then(console.dir)
-    .catch(console.error);
+rpn("http://www.google.com").then(console.dir).catch(console.error);
 
 let options: rpn.Options = {
     uri: "http://posttestserver.com/post.php",
@@ -16,9 +14,7 @@ let options: rpn.Options = {
 
 const j = rpn.jar();
 
-rpn(options)
-    .then(console.dir)
-    .catch(console.error);
+rpn(options).then(console.dir).catch(console.error);
 
 rpn("http://google.com").then(() => {});
 
@@ -28,10 +24,15 @@ rpn("http://google.com").catch(console.error);
 rpn("http://google.com").then(console.dir, console.error);
 rpn("http://google.com").promise().then(console.dir);
 
-rpn({ uri: "http://google.com", resolveWithFullResponse: true }).then((response) => {});
+rpn({ uri: "http://google.com", resolveWithFullResponse: true }).then(
+    (response) => {},
+);
 rpn({ uri: "http://google.com", simple: false }).catch((reason) => {});
 
-const rp: rpn.RequestPromise = rpn("http://google.com", { transform2xxOnly: true, json: true });
+const rp: rpn.RequestPromise = rpn("http://google.com", {
+    transform2xxOnly: true,
+    json: true,
+});
 
 const promiseLike: PromiseLike<any> = rpn("http://google.com");
 const promise: Promise<any> = rpn("http://google.com").promise();
@@ -45,7 +46,10 @@ const promise: Promise<any> = rpn("http://google.com").promise();
     const defaultUrlRequest = rpn.defaults({ url: githubUrl });
     defaultUrlRequest().then(() => {});
     defaultUrlRequest.get().then(() => {});
-    const defaultBodyRequest = defaultUrlRequest.defaults({ body: "{}", json: true });
+    const defaultBodyRequest = defaultUrlRequest.defaults({
+        body: "{}",
+        json: true,
+    });
     defaultBodyRequest.get().then(() => {});
     defaultBodyRequest.post().then(() => {});
     defaultBodyRequest.put().then(() => {});
@@ -79,16 +83,14 @@ fs.createReadStream("file.json").pipe(rpn.put("http://mysite.com/obj.json"));
 
 rpn.get("http://google.com/img.png").pipe(rpn.put("http://mysite.com/img.png"));
 
-rpn
-    .get("http://google.com/img.png")
+rpn.get("http://google.com/img.png")
     .on("response", (response: any) => {
         console.log(response.statusCode); // 200
         console.log(response.headers["content-type"]); // 'image/png'
     })
     .pipe(rpn.put("http://mysite.com/img.png"));
 
-rpn
-    .get("http://mysite.com/doodle.png")
+rpn.get("http://mysite.com/doodle.png")
     .on("error", (err: any) => {
         console.log(err);
     })
@@ -131,7 +133,12 @@ rpn.post("http://service.com/upload", { form: { key: "value" } });
 // or
 rpn.post("http://service.com/upload").form({ key: "value" });
 // or
-rpn.post({ url: "http://service.com/upload", form: { key: "value" } }, (err, httpResponse, body) => {/* ... */});
+rpn.post(
+    { url: "http://service.com/upload", form: { key: "value" } },
+    (err, httpResponse, body) => {
+        /* ... */
+    },
+);
 
 const data = {
     // Pass a simple key-value pair
@@ -156,68 +163,94 @@ const data = {
         },
     },
 };
-rpn.post({ url: "http://service.com/upload", formData: data }, function optionalCallback(err, httpResponse, body) {
-    if (err) {
-        console.error("upload failed:", err);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
+rpn.post(
+    { url: "http://service.com/upload", formData: data },
+    function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            console.error("upload failed:", err);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
 
-const requestMultipart = rpn.post("http://service.com/upload", function optionalCallback(err, httpResponse, body) {});
+const requestMultipart = rpn.post(
+    "http://service.com/upload",
+    function optionalCallback(err, httpResponse, body) {},
+);
 const form = requestMultipart.form();
 form.append("my_field", "my_value");
 form.append("my_buffer", new Buffer([1, 2, 3]));
-form.append("custom_file", fs.createReadStream(__dirname + "/unicycle.jpg"), { filename: "unicycle.jpg" });
+form.append("custom_file", fs.createReadStream(__dirname + "/unicycle.jpg"), {
+    filename: "unicycle.jpg",
+});
 
-rpn({
-    method: "PUT",
-    preambleCRLF: true,
-    postambleCRLF: true,
-    uri: "http://service.com/upload",
-    multipart: {
-        chunked: false,
-        data: [
+rpn(
+    {
+        method: "PUT",
+        preambleCRLF: true,
+        postambleCRLF: true,
+        uri: "http://service.com/upload",
+        multipart: {
+            chunked: false,
+            data: [
+                {
+                    "content-type": "application/json",
+                    body: JSON.stringify({
+                        foo: "bar",
+                        _attachments: {
+                            "message.txt": {
+                                follows: true,
+                                length: 18,
+                                content_type: "text/plain",
+                            },
+                        },
+                    }),
+                },
+                { body: "I am an attachment" },
+            ],
+        },
+    },
+    (error, response, body) => {
+        if (error) {
+            console.error("upload failed:", error);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
+rpn(
+    {
+        method: "PUT",
+        preambleCRLF: true,
+        postambleCRLF: true,
+        uri: "http://service.com/upload",
+        multipart: [
             {
-                "content-type": "application/json",
+                headers: { "content-type": "application/json" },
                 body: JSON.stringify({
                     foo: "bar",
-                    _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
+                    _attachments: {
+                        "message.txt": {
+                            follows: true,
+                            length: 18,
+                            content_type: "text/plain",
+                        },
+                    },
                 }),
             },
             { body: "I am an attachment" },
+            { body: fs.createReadStream("image.png") },
         ],
     },
-}, (error, response, body) => {
-    if (error) {
-        console.error("upload failed:", error);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
-rpn({
-    method: "PUT",
-    preambleCRLF: true,
-    postambleCRLF: true,
-    uri: "http://service.com/upload",
-    multipart: [
-        {
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                foo: "bar",
-                _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
-            }),
-        },
-        { body: "I am an attachment" },
-        { body: fs.createReadStream("image.png") },
-    ],
-}, (error, response, body) => {
-    if (error) {
-        console.error("upload failed:", error);
-        return;
-    }
-    console.log("Upload successful!  Server responded with:", body);
-});
+    (error, response, body) => {
+        if (error) {
+            console.error("upload failed:", error);
+            return;
+        }
+        console.log("Upload successful!  Server responded with:", body);
+    },
+);
 
 rpn.get("http://some.server.com/").auth("username", "password", false);
 // or
@@ -283,7 +316,9 @@ rpn.post({ url, oauth }, (e, r, body) => {
 
     // step 2
     const req_data = qs.parse(body);
-    const uri = `https://api.twitter.com/oauth/authenticate?${qs.stringify({ oauth_token: req_data.oauth_token })}`;
+    const uri = `https://api.twitter.com/oauth/authenticate?${qs.stringify({
+        oauth_token: req_data.oauth_token,
+    })}`;
     // redirect the user to the authorize uri
 
     // step 3
@@ -426,17 +461,28 @@ rpn(
     {
         method: "PUT",
         uri: "http://mikeal.iriscouch.com/testjs/" + rand,
-        multipart: [{
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                foo: "bar",
-                _attachments: { "message.txt": { follows: true, length: 18, content_type: "text/plain" } },
-            }),
-        }, { body: "I am an attachment" }],
+        multipart: [
+            {
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    foo: "bar",
+                    _attachments: {
+                        "message.txt": {
+                            follows: true,
+                            length: 18,
+                            content_type: "text/plain",
+                        },
+                    },
+                }),
+            },
+            { body: "I am an attachment" },
+        ],
     },
     (error, response, body) => {
         if (response.statusCode === 201) {
-            console.log("document saved as: http://mikeal.iriscouch.com/testjs/" + rand);
+            console.log(
+                "document saved as: http://mikeal.iriscouch.com/testjs/" + rand,
+            );
         } else {
             console.log("error: " + response.statusCode);
             console.log(body);
@@ -452,13 +498,17 @@ rpn(
     },
     (error, response, body) => {
         // body is the decompressed response body
-        console.log("server encoded the data as: " + (response.headers["content-encoding"] || "identity"));
+        console.log(
+            "server encoded the data as: " +
+                (response.headers["content-encoding"] || "identity"),
+        );
         console.log("the decoded data is: " + body);
     },
-).on("data", (data: any) => {
-    // decompressed data as it is received
-    console.log("decoded chunk: " + data);
-})
+)
+    .on("data", (data: any) => {
+        // decompressed data as it is received
+        console.log("decoded chunk: " + data);
+    })
     .on("response", (response: http.IncomingMessage) => {
         // unmodified http.IncomingMessage object
         response.on("data", (data: any[]) => {

@@ -21,7 +21,12 @@ ClearBlade.logoutUser(genericCallback);
 ClearBlade.loginAnon(genericCallback);
 ClearBlade.loginUser("test@test.com", "password", genericCallback);
 ClearBlade.loginUserMqtt("test@test.com", "password", genericCallback);
-ClearBlade.sendPush(["user1", "user2"], { data: "Test" }, "appId: string", genericCallback);
+ClearBlade.sendPush(
+    ["user1", "user2"],
+    { data: "Test" },
+    "appId: string",
+    genericCallback,
+);
 ClearBlade.getAllCollections(genericCallback);
 
 let coll1 = ClearBlade.Collection("collectionID");
@@ -29,7 +34,11 @@ let coll2 = ClearBlade.Collection({ collectionName: "collectionName" });
 let coll3 = ClearBlade.Collection({ collectionID: "collectionID" });
 
 let query1 = ClearBlade.Query("collectionID");
-let query2 = ClearBlade.Query({ offset: 5, limit: 5, collectionID: "collectionID" });
+let query2 = ClearBlade.Query({
+    offset: 5,
+    limit: 5,
+    collectionID: "collectionID",
+});
 let query3 = ClearBlade.Query({ collectionName: "collectionName" });
 
 let item1 = ClearBlade.Item({}, "collectionID");
@@ -120,7 +129,14 @@ user.count(query1.query, genericCallback);
 ///////////////////////////////////////
 // Messaging API invocations
 ///////////////////////////////////////
-messaging.getMessageHistoryWithTimeFrame("topic", 5, 10, 15, 20, genericCallback);
+messaging.getMessageHistoryWithTimeFrame(
+    "topic",
+    5,
+    10,
+    15,
+    20,
+    genericCallback,
+);
 messaging.getMessageHistory("topic", 5, 15, genericCallback);
 messaging.getAndDeleteMessageHistory("topic", 5, 10, 1, 20, genericCallback);
 messaging.currentTopics(genericCallback);
@@ -141,7 +157,11 @@ stats.getCurrentSubscribers("topic: string", genericCallback);
 ///////////////////////////////////////
 // Edge API invocations
 ///////////////////////////////////////
-edge.updateEdgeByName("edgename", { changedColumn: "New value" }, genericCallback);
+edge.updateEdgeByName(
+    "edgename",
+    { changedColumn: "New value" },
+    genericCallback,
+);
 edge.deleteEdgeByName("edgename", genericCallback);
 edge.create({ newEdge: Object }, "edgename", genericCallback);
 edge.columns(genericCallback);
@@ -160,7 +180,12 @@ metrics.getLogs(genericCallback);
 // Device API invocations
 ///////////////////////////////////////
 device.getDeviceByName("devicename", genericCallback);
-device.updateDeviceByName("devicename", { object: Object }, true, genericCallback);
+device.updateDeviceByName(
+    "devicename",
+    { object: Object },
+    true,
+    genericCallback,
+);
 device.deleteDeviceByName("devicename", genericCallback);
 device.fetch(query1.query, genericCallback);
 device.update(query1.query, { object: Object }, false, genericCallback);

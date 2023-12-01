@@ -36,7 +36,11 @@ proclaim.isNotTypeOf("same type", "same type", "values dont match");
 proclaim.isNotTypeOf("same type", "same type");
 proclaim.isInstanceOf("same instance", "same instance", "instance match");
 proclaim.isInstanceOf("same instance", "same instance");
-proclaim.isNotInstanceOf("same instance", "same instance", "instance dont match");
+proclaim.isNotInstanceOf(
+    "same instance",
+    "same instance",
+    "instance dont match",
+);
 proclaim.isNotInstanceOf("same instance", "same instance");
 proclaim.isArray([], "is array");
 proclaim.isArray([]);

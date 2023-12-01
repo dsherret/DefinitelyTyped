@@ -30,7 +30,12 @@ export interface AvueCrudColumn<T = any> extends AvueFormColumn<T> {
     /** 对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件 */
     sortable?: boolean | "custom";
     /** 用来格式化内容 */
-    formatter?: (row: T, value: any, label: string, column: Array<AvueCrudColumn<T>>) => string;
+    formatter?: (
+        row: T,
+        value: any,
+        label: string,
+        column: Array<AvueCrudColumn<T>>,
+    ) => string;
     /** 当内容过长被隐藏时显示 tooltip */
     overHidden?: boolean;
     /** 表格内容对齐方式 */
@@ -74,7 +79,11 @@ export interface AvueCrudColumn<T = any> extends AvueFormColumn<T> {
     /** 是否可以输入搜索。 */
     searchFilterable?: boolean;
     /** 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回true就会显示。 */
-    searchFilterMethod?: (value: any, row: T, column: Array<AvueCrudColumn<T>>) => boolean;
+    searchFilterMethod?: (
+        value: any,
+        row: T,
+        column: Array<AvueCrudColumn<T>>,
+    ) => boolean;
     /** 表单新增时是否禁止 */
     addDisabled?: boolean;
     /** 表单编辑时是否禁止 */
@@ -100,7 +109,11 @@ export interface AvueCrudColumn<T = any> extends AvueFormColumn<T> {
     /** 数据过滤的选项是否多选 */
     filterMultiple?: boolean;
     /** 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回true就会显示 */
-    filterMethod?: (value: any, row: T, column: Array<AvueCrudColumn<T>>) => boolean;
+    filterMethod?: (
+        value: any,
+        row: T,
+        column: Array<AvueCrudColumn<T>>,
+    ) => boolean;
     /** 是否加入动态现隐列 */
     showColumn?: boolean;
     /** 隐藏列 */
@@ -369,7 +382,9 @@ export interface AvueCrudProps<T = any> {
     /** 表格配置属性 */
     option?: AvueCrudOption<T>;
     /** 表格多个按钮权限控制，采用函数方式可以精确到行控制 */
-    permission?: AvueCrudOption<T> | ((key: string, row: T, index: number) => boolean);
+    permission?:
+        | AvueCrudOption<T>
+        | ((key: string, row: T, index: number) => boolean);
     /** 表格搜索的表单的变量 v-model */
     search?: any;
     /** 表格的分页数据 v-model */
@@ -400,21 +415,43 @@ export interface AvueCrudProps<T = any> {
         column: AvueCrudColumn<T>,
     ) => void;
     /** 图片上传后的回调，done用于结束操作，loading用于中断操作 */
-    "upload-after"?: (res: any, done: () => void, loading: () => void, column: AvueCrudColumn<T>) => void;
+    "upload-after"?: (
+        res: any,
+        done: () => void,
+        loading: () => void,
+        column: AvueCrudColumn<T>,
+    ) => void;
     /** 删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止删除 */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    "upload-delete"?: (file: UploadFile, column: AvueCrudColumn<T>) => boolean | Promise<any> | void;
+    "upload-delete"?: (
+        file: UploadFile,
+        column: AvueCrudColumn<T>,
+    ) => boolean | Promise<any> | void;
     /** 查看前的回调 */
-    "upload-preview"?: (file: UploadFile, column: AvueCrudColumn<T>, done: () => void) => void;
+    "upload-preview"?: (
+        file: UploadFile,
+        column: AvueCrudColumn<T>,
+        done: () => void,
+    ) => void;
     /** 上传失败错误回调 */
     "upload-error"?: (error: Error, column: AvueCrudColumn<T>) => void;
     /** 上传超过长度限制回调 */
-    "upload-exceed"?: (limit: number, files: File[], fileList: UploadUserFile[], column: AvueCrudColumn<T>) => void;
+    "upload-exceed"?: (
+        limit: number,
+        files: File[],
+        fileList: UploadUserFile[],
+        column: AvueCrudColumn<T>,
+    ) => void;
 
     /** 新增数据后点击确定触发该事件 */
     onRowSave?: (row: T, done: () => void, loading: () => void) => any;
     /** 编辑数据后确定触发该事件 */
-    onRowUpdate?: (row: T, index: number, done: () => void, loading: () => void) => any;
+    onRowUpdate?: (
+        row: T,
+        index: number,
+        done: () => void,
+        loading: () => void,
+    ) => any;
     /** 行数据删除时触发该事件 */
     onRowDel?: (row: T, index: number) => any;
     /** 点击刷新按钮触发该事件 */
@@ -456,9 +493,18 @@ export interface AvueCrudProps<T = any> {
     /** 当某一列的表头被鼠标右键点击时触发该事件 */
     onHeaderContextMenu?: HeaderEvent<T>;
     /** 当拖动表头改变了列的宽度的时候会触发该事件 */
-    onHeaderDragend?: (newWidth: number, oldWidth: number, column: TableColumnCtx<T>, event: Event) => any;
+    onHeaderDragend?: (
+        newWidth: number,
+        oldWidth: number,
+        column: TableColumnCtx<T>,
+        event: Event,
+    ) => any;
     /** 当表格的排序条件发生变化的时候会触发该事件 */
-    onSortChange?: (args: { column: TableColumnCtx<T>; prop: string; order: "ascsending" | "descending" }) => any;
+    onSortChange?: (args: {
+        column: TableColumnCtx<T>;
+        prop: string;
+        order: "ascsending" | "descending";
+    }) => any;
     /** 当表格的筛选条件发生变化的时候会触发该事件 */
     onFilterChange?: (filters: Record<string, any[]>) => any;
     /** 当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded） */
@@ -484,7 +530,9 @@ export interface AvueCrudMethods<T = any> {
     /** 获取prop的ref对象 */
     getPropRef: (props: string) => void;
     /** 对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，并传入两个参数：是否校验成功和未通过校验的字段。若不传入回调函数，则会返回一个 promise */
-    validate: (callback?: (valid: boolean, done: () => void, msg: string) => void) => Promise<boolean>;
+    validate: (
+        callback?: (valid: boolean, done: () => void, msg: string) => void,
+    ) => Promise<boolean>;
     /** 对部分表单字段进行校验的方法 */
     validateField: (props: string[]) => void;
     /** 对整个表单进行重置，将所有字段值重置为初始值并移除校验结果 */
@@ -541,8 +589,18 @@ export interface AvueCrudMethods<T = any> {
 export interface AvueCrudSlots<T = any> {
     empty: () => VNode[];
     expand: (scoped: { row: T; index: number }) => VNode[];
-    menu: (scoped: { row: T; type: string; disabled: boolean; size: Size; index: number }) => VNode[];
-    "menu-form": (scoped: { disabled: boolean; size: Size; type?: FormType }) => VNode[];
+    menu: (scoped: {
+        row: T;
+        type: string;
+        disabled: boolean;
+        size: Size;
+        index: number;
+    }) => VNode[];
+    "menu-form": (scoped: {
+        disabled: boolean;
+        size: Size;
+        type?: FormType;
+    }) => VNode[];
     header: () => VNode[];
     footer: () => VNode[];
     page: () => VNode[];
@@ -550,7 +608,12 @@ export interface AvueCrudSlots<T = any> {
     "menu-left": (scoped: { size: Size }) => VNode[];
     "menu-right": (scoped: { size: Size }) => VNode[];
     search: (scoped: { row: T; search: T; size: Size }) => VNode[];
-    "search-menu": (scoped: { row: T; search: T; disabled: boolean; size: Size }) => VNode[];
+    "search-menu": (scoped: {
+        row: T;
+        search: T;
+        disabled: boolean;
+        size: Size;
+    }) => VNode[];
     [x: `${string}-search`]: (scoped: {
         value: any;
         column: AvueCrudColumn<T>;
@@ -587,7 +650,7 @@ export interface AvueCrudSlots<T = any> {
 
 export type AvueCrudInstance = InstanceType<typeof AvueCrud> & AvueCrudMethods;
 
-export const AvueCrud: new() => {
+export const AvueCrud: new () => {
     $props: AvueCrudProps;
     $slots: AvueCrudSlots;
 };

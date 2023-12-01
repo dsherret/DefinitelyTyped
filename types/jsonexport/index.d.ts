@@ -53,7 +53,11 @@ declare namespace jsonexport {
      * @param index the index in the {parent} object
      * @param parent the parent object
      */
-    type TypeHandlerFunction = (value: any, index: string, parent: object | object[]) => any;
+    type TypeHandlerFunction = (
+        value: any,
+        index: string,
+        parent: object | object[],
+    ) => any;
 
     /** A key map of constructors used to match by instance to create a value using the defined function */
     interface TypeHandlers {
@@ -102,8 +106,14 @@ declare namespace jsonexport {
  *      if csv is created successfully, returning csv output to callback.
  */
 declare function jsonexport(userOptions?: jsonexport.UserOptions): Transform;
-declare function jsonexport(json: object | object[], userOptions?: jsonexport.UserOptionsWithHandlers): Promise<string>;
-declare function jsonexport(json: object | object[], cb: (err: Error, csv: string) => void): void;
+declare function jsonexport(
+    json: object | object[],
+    userOptions?: jsonexport.UserOptionsWithHandlers,
+): Promise<string>;
+declare function jsonexport(
+    json: object | object[],
+    cb: (err: Error, csv: string) => void,
+): void;
 declare function jsonexport(
     json: object | object[],
     userOptions: jsonexport.UserOptionsWithHandlers,

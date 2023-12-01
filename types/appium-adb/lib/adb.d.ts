@@ -49,7 +49,7 @@ interface ADB extends AdbMethods, Required<CreateAdbOptions> {
 
 declare const ADB: {
     prototype: ADB;
-    new(opts?: CreateAdbOptions): ADB;
+    new (opts?: CreateAdbOptions): ADB;
 
     createADB(opts?: CreateAdbOptions): Promise<ADB>;
 };

@@ -18,4 +18,6 @@ export = thunkyp;
  */
 declare function thunkyp<TFn extends (...args: any[]) => any>(
     fn: TFn,
-): ReturnType<TFn> extends Promise<any> ? TFn : (...args: Parameters<TFn>) => Promise<ReturnType<TFn>>;
+): ReturnType<TFn> extends Promise<any>
+    ? TFn
+    : (...args: Parameters<TFn>) => Promise<ReturnType<TFn>>;

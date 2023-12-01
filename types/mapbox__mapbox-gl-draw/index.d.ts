@@ -1,4 +1,13 @@
-import { BBox, Feature, FeatureCollection, GeoJSON, GeoJsonTypes, Geometry, Point, Position } from "geojson";
+import {
+    BBox,
+    Feature,
+    FeatureCollection,
+    GeoJSON,
+    GeoJsonTypes,
+    Geometry,
+    Point,
+    Position,
+} from "geojson";
 import {
     CircleLayer,
     FillLayer,
@@ -68,16 +77,22 @@ declare namespace MapboxDraw {
         toGeoJSON(): GeoJSON;
     }
 
-    interface DrawMultiFeature<Type extends "MultiPoint" | "MultiLineString" | "MultiPolygon"> extends
-        Omit<
+    interface DrawMultiFeature<
+        Type extends "MultiPoint" | "MultiLineString" | "MultiPolygon",
+    > extends Omit<
             DrawFeatureBase<
-                | (Type extends "MultiPoint" ? Array<DrawPoint["coordinates"]> : never)
-                | (Type extends "MultiLineString" ? Array<DrawLineString["coordinates"]> : never)
-                | (Type extends "MultiPolygon" ? Array<DrawPolygon["coordinates"]> : never)
+                | (Type extends "MultiPoint"
+                      ? Array<DrawPoint["coordinates"]>
+                      : never)
+                | (Type extends "MultiLineString"
+                      ? Array<DrawLineString["coordinates"]>
+                      : never)
+                | (Type extends "MultiPolygon"
+                      ? Array<DrawPolygon["coordinates"]>
+                      : never)
             >,
             "coordinates"
-        >
-    {
+        > {
         readonly type: Type;
         readonly features: Array<
             | (Type extends "MultiPoint" ? DrawPoint : never)
@@ -184,7 +199,9 @@ declare namespace MapboxDraw {
 
         setSelected(features?: string | string[]): void;
 
-        setSelectedCoordinates(coords: Array<{ coord_path: string; feature_id: string }>): void;
+        setSelectedCoordinates(
+            coords: Array<{ coord_path: string; feature_id: string }>,
+        ): void;
 
         getSelected(): DrawFeature[];
 
@@ -214,7 +231,11 @@ declare namespace MapboxDraw {
 
         activateUIButton(name?: string): void;
 
-        featuresAt(event: Event, bbox: BBox, bufferType: "click" | "tap"): DrawFeature[];
+        featuresAt(
+            event: Event,
+            bbox: BBox,
+            bufferType: "click" | "tap",
+        ): DrawFeature[];
 
         newFeature(geojson: GeoJSON): DrawFeature;
 
@@ -224,39 +245,96 @@ declare namespace MapboxDraw {
     }
 
     interface DrawCustomMode<CustomModeState = any, CustomModeOptions = any> {
-        onSetup?(this: DrawCustomModeThis & this, options: CustomModeOptions): CustomModeState;
+        onSetup?(
+            this: DrawCustomModeThis & this,
+            options: CustomModeOptions,
+        ): CustomModeState;
 
-        onDrag?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onDrag?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onClick?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onClick?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onMouseMove?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onMouseMove?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onMouseDown?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onMouseDown?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onMouseUp?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onMouseUp?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onMouseOut?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapMouseEvent): void;
+        onMouseOut?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapMouseEvent,
+        ): void;
 
-        onKeyUp?(this: DrawCustomModeThis & this, state: CustomModeState, e: KeyboardEvent): void;
+        onKeyUp?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: KeyboardEvent,
+        ): void;
 
-        onKeyDown?(this: DrawCustomModeThis & this, state: CustomModeState, e: KeyboardEvent): void;
+        onKeyDown?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: KeyboardEvent,
+        ): void;
 
-        onTouchStart?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapTouchEvent): void;
+        onTouchStart?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapTouchEvent,
+        ): void;
 
-        onTouchMove?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapTouchEvent): void;
+        onTouchMove?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapTouchEvent,
+        ): void;
 
-        onTouchEnd?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapTouchEvent): void;
+        onTouchEnd?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapTouchEvent,
+        ): void;
 
-        onTap?(this: DrawCustomModeThis & this, state: CustomModeState, e: MapTouchEvent): void;
+        onTap?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+            e: MapTouchEvent,
+        ): void;
 
         onStop?(this: DrawCustomModeThis & this, state: CustomModeState): void;
 
         onTrash?(this: DrawCustomModeThis & this, state: CustomModeState): void;
 
-        onCombineFeature?(this: DrawCustomModeThis & this, state: CustomModeState): void;
+        onCombineFeature?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+        ): void;
 
-        onUncombineFeature?(this: DrawCustomModeThis & this, state: CustomModeState): void;
+        onUncombineFeature?(
+            this: DrawCustomModeThis & this,
+            state: CustomModeState,
+        ): void;
 
         toDisplayFeatures(
             this: DrawCustomModeThis & this,
@@ -406,7 +484,11 @@ declare namespace MapboxDraw {
             delta: { lng: number; lat: number },
         ): { lng: number; lat: number };
 
-        createMidPoint(parent: string, startVertex: Feature, endVertex: Feature): Feature<Point> | null;
+        createMidPoint(
+            parent: string,
+            startVertex: Feature,
+            endVertex: Feature,
+        ): Feature<Point> | null;
 
         createSupplementaryPoints(
             geojson: Feature,
@@ -425,7 +507,12 @@ declare namespace MapboxDraw {
          * @param selected
          * @return GeoJSON Point
          */
-        createVertex(parentId: string, coordinates: Position, path: string, selected: boolean): Feature<Point>;
+        createVertex(
+            parentId: string,
+            coordinates: Position,
+            path: string,
+            selected: boolean,
+        ): Feature<Point>;
 
         // TODO: define a proper type for ctx since is not exposed correctly
         // https://github.com/mapbox/mapbox-gl-draw/issues/1156
@@ -436,21 +523,42 @@ declare namespace MapboxDraw {
         };
 
         featuresAt: {
-            click: (event: MapMouseEvent, bbox: BBox, ctx: DrawCustomModeThis) => Feature[]; // ?? ctx
-            touch: (event: MapTouchEvent, bbox: BBox, ctx: DrawCustomModeThis) => Feature[]; // ?? ctx
+            click: (
+                event: MapMouseEvent,
+                bbox: BBox,
+                ctx: DrawCustomModeThis,
+            ) => Feature[]; // ?? ctx
+            touch: (
+                event: MapTouchEvent,
+                bbox: BBox,
+                ctx: DrawCustomModeThis,
+            ) => Feature[]; // ?? ctx
         };
 
-        getFeatureAtAndSetCursors(event: MapMouseEvent, ctx: DrawCustomModeThis): Feature;
+        getFeatureAtAndSetCursors(
+            event: MapMouseEvent,
+            ctx: DrawCustomModeThis,
+        ): Feature;
 
-        euclideanDistance(a: { x: number; y: number }, b: { x: number; y: number }): number;
+        euclideanDistance(
+            a: { x: number; y: number },
+            b: { x: number; y: number },
+        ): number;
 
         isClick(
             start: { point?: { x: number; y: number }; time?: number },
             end: { point: { x: number; y: number }; time: number },
-            options?: { fineTolerance?: number; grossTolerance?: number; interval?: number },
+            options?: {
+                fineTolerance?: number;
+                grossTolerance?: number;
+                interval?: number;
+            },
         ): boolean;
 
-        isEventAtCoordinates(event: MapMouseEvent, coordinates: Position[]): boolean;
+        isEventAtCoordinates(
+            event: MapMouseEvent,
+            coordinates: Position[],
+        ): boolean;
 
         isTap(
             start: { point?: { x: number; y: number }; time?: number },
@@ -465,7 +573,10 @@ declare namespace MapboxDraw {
          * @param [buffer=0]
          * @return Bounding box.
          */
-        mapEventToBoundingBox(mapEvent: MapMouseEvent | MapTouchEvent, buffer?: number): Position[];
+        mapEventToBoundingBox(
+            mapEvent: MapMouseEvent | MapTouchEvent,
+            buffer?: number,
+        ): Position[];
 
         ModeHandler: (
             mode: any,
@@ -490,7 +601,10 @@ declare namespace MapboxDraw {
             tap: (event: any) => void;
         };
 
-        moveFeatures(features: DrawFeature[], delta: { lng: number; lat: number }): void;
+        moveFeatures(
+            features: DrawFeature[],
+            delta: { lng: number; lat: number },
+        ): void;
 
         /**
          * Sort features in the following order Point: 0, LineString: 1, MultiLineString: 1,
@@ -499,11 +613,16 @@ declare namespace MapboxDraw {
          */
         sortFeatures(features: DrawFeature[]): DrawFeature[];
 
-        stringSetsAreEqual(a: Array<Pick<Feature, "id">>, b: Array<Pick<Feature, "id">>): boolean;
+        stringSetsAreEqual(
+            a: Array<Pick<Feature, "id">>,
+            b: Array<Pick<Feature, "id">>,
+        ): boolean;
 
         StringSet(items?: Array<string | number>): StringSet;
 
-        theme: Array<(FillLayer | LineLayer | CircleLayer) & { id: ThemeLayerId }>;
+        theme: Array<
+            (FillLayer | LineLayer | CircleLayer) & { id: ThemeLayerId }
+        >;
 
         /**
          * Derive a dense array (no `undefined`s) from a single value or array.
@@ -588,10 +707,21 @@ declare class MapboxDraw implements IControl {
     changeMode(mode: "direct_select", options: { featureId: string }): this;
     changeMode(
         mode: "draw_line_string",
-        options?: { featureId: string; from: Feature<Point> | Point | number[] },
+        options?: {
+            featureId: string;
+            from: Feature<Point> | Point | number[];
+        },
     ): this;
-    changeMode(mode: Exclude<MapboxDraw.DrawMode, "direct_select" | "simple_select" | "draw_line_string">): this;
-    changeMode<T extends string>(mode: T & (T extends MapboxDraw.DrawMode ? never : T), options?: object): this;
+    changeMode(
+        mode: Exclude<
+            MapboxDraw.DrawMode,
+            "direct_select" | "simple_select" | "draw_line_string"
+        >,
+    ): this;
+    changeMode<T extends string>(
+        mode: T & (T extends MapboxDraw.DrawMode ? never : T),
+        options?: object,
+    ): this;
 
     setFeatureProperty(featureId: string, property: string, value: any): this;
 

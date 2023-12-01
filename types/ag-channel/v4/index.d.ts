@@ -14,7 +14,12 @@ declare class AGChannel<T> extends ConsumableStream<T> {
     state: AGChannel.ChannelState;
     options: object;
 
-    constructor(name: string, client: AGChannel.Client, eventDemux: StreamDemux<T>, dataDemux: StreamDemux<T>);
+    constructor(
+        name: string,
+        client: AGChannel.Client,
+        eventDemux: StreamDemux<T>,
+        dataDemux: StreamDemux<T>,
+    );
 
     createConsumer(timeout?: number): ConsumableStream.Consumer<T>;
 
@@ -26,8 +31,12 @@ declare class AGChannel<T> extends ConsumableStream<T> {
     killOutputConsumer(consumerId: number): void;
     killListenerConsumer(consumerId: number): void;
 
-    getOutputConsumerStats(consumerId: number): Consumer.ConsumerStats | undefined;
-    getListenerConsumerStats(consumerId: number): Consumer.ConsumerStats | undefined;
+    getOutputConsumerStats(
+        consumerId: number,
+    ): Consumer.ConsumerStats | undefined;
+    getListenerConsumerStats(
+        consumerId: number,
+    ): Consumer.ConsumerStats | undefined;
 
     getBackpressure(): number;
     getListenerConsumerBackpressure(consumerId: number): number;
@@ -72,8 +81,12 @@ declare namespace AGChannel {
         killChannelOutputConsumer(consumerId: number): void;
         killChannelListenerConsumer(consumerId: number): void;
 
-        getChannelOutputConsumerStats(consumerId: number): Consumer.ConsumerStats;
-        getChannelListenerConsumerStats(consumerId: number): Consumer.ConsumerStats;
+        getChannelOutputConsumerStats(
+            consumerId: number,
+        ): Consumer.ConsumerStats;
+        getChannelListenerConsumerStats(
+            consumerId: number,
+        ): Consumer.ConsumerStats;
 
         getChannelBackpressure(channelName: string): number;
 
@@ -88,17 +101,37 @@ declare namespace AGChannel {
         channelKillListener(channelName: string, eventName: string): void;
         channelKillAllListeners(channelName: string): void;
 
-        channelGetOutputConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
-        channelGetListenerConsumerStatsList(channelName: string, eventName: string): Consumer.ConsumerStats[];
-        channelGetAllListenersConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
+        channelGetOutputConsumerStatsList(
+            channelName: string,
+        ): Consumer.ConsumerStats[];
+        channelGetListenerConsumerStatsList(
+            channelName: string,
+            eventName: string,
+        ): Consumer.ConsumerStats[];
+        channelGetAllListenersConsumerStatsList(
+            channelName: string,
+        ): Consumer.ConsumerStats[];
 
         channelGetOutputBackpressure(channelName: string): number;
-        channelGetListenerBackpressure(channelName: string, eventName: string): number;
+        channelGetListenerBackpressure(
+            channelName: string,
+            eventName: string,
+        ): number;
         channelGetAllListenersBackpressure(channelName: string): number;
 
-        channelHasOutputConsumer(channelName: string, consumerId: number): boolean;
-        channelHasListenerConsumer(channelName: string, eventName: string, consumerId: number): boolean;
-        channelHasAnyListenerConsumer(channelName: string, consumerId: number): boolean;
+        channelHasOutputConsumer(
+            channelName: string,
+            consumerId: number,
+        ): boolean;
+        channelHasListenerConsumer(
+            channelName: string,
+            eventName: string,
+            consumerId: number,
+        ): boolean;
+        channelHasAnyListenerConsumer(
+            channelName: string,
+            consumerId: number,
+        ): boolean;
 
         getChannelState(channelName: string): ChannelState;
         getChannelOptions(channelName: string): object;

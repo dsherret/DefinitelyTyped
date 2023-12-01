@@ -19,7 +19,11 @@ const operator = ParNamesOperator.NamesPrefix;
 const { syntax } = sh;
 
 const node: Node = syntax
-    .NewParser(syntax.KeepComments(true), syntax.StopAt("$$"), syntax.Variant(variant))
+    .NewParser(
+        syntax.KeepComments(true),
+        syntax.StopAt("$$"),
+        syntax.Variant(variant),
+    )
     .Parse(`yarn`);
 
 syntax
@@ -37,10 +41,7 @@ syntax
 // Test the methods of Parser.
 // The following tests are ported from https://github.com/mvdan/sh/blob/master/_js/testmain.js
 const parser = syntax.NewParser();
-const lines = [
-    "foo\n",
-    "bar; baz\n",
-];
+const lines = ["foo\n", "bar; baz\n"];
 
 // Test parser.InteractiveStep
 for (const line of lines) {

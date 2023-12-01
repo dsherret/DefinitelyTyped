@@ -19,7 +19,7 @@ function MessageExample() {
     // contentScript
     for (let i = 0; i < 100; i++) {
         console.log(`How are you?`);
-        whale.runtime.sendMessage(`How are you?`, response => {
+        whale.runtime.sendMessage(`How are you?`, (response) => {
             console.log(response); // = I'm fine thank you and you?
         });
     }
@@ -27,7 +27,7 @@ function MessageExample() {
     // connect
     const port = whale.runtime.connect({ name: `greetings` });
 
-    port.onMessage.addListener(message => {
+    port.onMessage.addListener((message) => {
         console.log(message);
     });
 
@@ -36,9 +36,9 @@ function MessageExample() {
         port.postMessage(`How are you?`);
     }
 
-    whale.runtime.onConnect.addListener(port => {
+    whale.runtime.onConnect.addListener((port) => {
         if (port.name === `greetings`) {
-            port.onMessage.addListener(message => {
+            port.onMessage.addListener((message) => {
                 if (message === `How are you?`) {
                     port.postMessage(`I'm fine thank you and you?`);
                 }
@@ -52,7 +52,7 @@ function MessageExample() {
     window.addEventListener(`DOMContentLoaded`, () => {
         // 이 구문이 실행되기 전 이미 contentScript.js 의 sendMessage() 가 끝난 상태.
         // 그러므로 sidebarAction.show() 의 콜백에서 보내는 메시지는 이곳에 도달하지 않습니다.
-        whale.runtime.onMessage.addListener(message => {
+        whale.runtime.onMessage.addListener((message) => {
             console.log(message);
         });
     });
@@ -61,7 +61,7 @@ function MessageExample() {
 function StorageExample() {
     window.addEventListener(`DOMContentLoaded`, () => {
         // 처음 로딩 될 때: 메시지가 있는지 확인하고 삭제
-        whale.storage.local.get(`message`, storage => {
+        whale.storage.local.get(`message`, (storage) => {
             console.log(storage.message); // = Hello
             whale.storage.local.remove(`message`);
         });
@@ -77,7 +77,7 @@ function StorageExample() {
 
 // https://developers.whale.naver.com/tutorials/sidebarAction/
 function SidebarExample() {
-    whale.sidebarAction.onClicked.addListener(result => {
+    whale.sidebarAction.onClicked.addListener((result) => {
         // result.opened: 사이드바가 열렸는지 닫혔는지를 알려주는 boolean 값. 열렸으면 true.
     });
 
@@ -114,7 +114,7 @@ function DownloadExample() {
             filename: `download.zip`,
             saveAs: true,
         },
-        downloadId => {
+        (downloadId) => {
             // 만약 'downloadId' 가 undefined 라면 오류가 발생했다는 뜻입니다.
             // 그러므로 이후의 과정을 진행하기 전에 오류 여부를 확인해야 합니다.
             if (typeof downloadId !== `undefined`) {
@@ -128,8 +128,8 @@ function DownloadExample() {
             orderBy: ["-startTime"],
             limit: 5,
         },
-        downloadedItems => {
-            downloadedItems.forEach(item => {
+        (downloadedItems) => {
+            downloadedItems.forEach((item) => {
                 console.log(`
                 id: ${item.id}
                 filename: ${item.filename}
@@ -139,7 +139,7 @@ function DownloadExample() {
         },
     );
 
-    whale.downloads.onCreated.addListener(evt => {
+    whale.downloads.onCreated.addListener((evt) => {
         console.log(`
             다운로드가 시작되었습니다.
             - ID: ${evt.id}
@@ -167,17 +167,17 @@ function DownloadExample() {
 
 // https://developers.whale.naver.com/tutorials/bookmarks/
 function BookmarkExample() {
-    whale.bookmarks.getTree(function(bmTree) {
-        bmTree.forEach(function(node) {});
+    whale.bookmarks.getTree(function (bmTree) {
+        bmTree.forEach(function (node) {});
     });
 }
-whale.browserAction.onClicked.addListener(function() {
+whale.browserAction.onClicked.addListener(function () {
     whale.bookmarks.create(
         {
             title: `네이버 웨일`,
             parentId: `1`,
         },
-        function(newEntry) {
+        function (newEntry) {
             whale.bookmarks.create({
                 title: "웨일 홈",
                 url: "http://whale.naver.com/",
@@ -196,13 +196,13 @@ whale.browserAction.onClicked.addListener(function() {
 });
 
 // https://developers.whale.naver.com/tutorials/commands/
-whale.commands.onCommand.addListener(function(command) {
+whale.commands.onCommand.addListener(function (command) {
     if (command === `test`) {
         alert("컨트롤 쉬프트 제이를 누르셨군요!");
     }
 });
 
-whale.commands.onCommand.addListener(function(command) {
+whale.commands.onCommand.addListener(function (command) {
     if (command === `open-popup`) {
         whale.browserAction.setPopup({
             popup: whale.runtime.getManifest().browser_action.default_popup,
@@ -213,12 +213,12 @@ whale.commands.onCommand.addListener(function(command) {
 // https://developers.whale.naver.com/tutorials/history/
 var count = 0;
 
-whale.browserAction.onClicked.addListener(function(tab) {
+whale.browserAction.onClicked.addListener(function (tab) {
     whale.history.getVisits(
         {
             url: tab.url!,
         },
-        function(visitItem) {
+        function (visitItem) {
             count = visitItem.length;
 
             whale.browserAction.setBadgeBackgroundColor({
@@ -234,7 +234,7 @@ whale.browserAction.onClicked.addListener(function(tab) {
     );
 });
 
-whale.browserAction.onClicked.addListener(function(tab) {
+whale.browserAction.onClicked.addListener(function (tab) {
     whale.history.deleteUrl({
         url: tab.url!,
     });

@@ -35,7 +35,11 @@ declare namespace CharStreams {
      *
      * Invokes callback(error, result) on completion.
      */
-    function fromPath(path: any, encoding: string, callback: (err: any, is: InputStream) => void): void;
+    function fromPath(
+        path: any,
+        encoding: string,
+        callback: (err: any, is: InputStream) => void,
+    ): void;
 
     /**
      * Synchronously creates an InputStream given a path to a file

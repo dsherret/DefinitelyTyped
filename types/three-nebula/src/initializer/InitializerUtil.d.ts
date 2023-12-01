@@ -11,7 +11,11 @@ export namespace InitializerUtil {
      *
      * @see {@link '../emitter/Emitter'} setupParticle
      */
-    function initialize(emitter: Emitter, particle: Particle, initializers: Initializer[]): void;
+    function initialize(
+        emitter: Emitter,
+        particle: Particle,
+        initializers: Initializer[],
+    ): void;
 
     /**
      * Ensures that the emitter's position, velocity and accleration are added

@@ -13,4 +13,4 @@ opts = {
     output: { y: "thang" },
 };
 
-read(opts, function(error, result, isDefault) {});
+read(opts, function (error, result, isDefault) {});

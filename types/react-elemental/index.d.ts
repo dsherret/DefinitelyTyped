@@ -27,8 +27,7 @@ export interface AlertProps {
 /**
  * Educational status alerts.
  */
-export class Alert extends Component<AlertProps> {
-}
+export class Alert extends Component<AlertProps> {}
 
 export type ButtonSize = "alpha" | "beta" | "gamma";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -44,8 +43,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /**
  * Button component.
  */
-export class Button extends Component<ButtonProps> {
-}
+export class Button extends Component<ButtonProps> {}
 
 export interface CheckboxProps {
     readonly checked?: boolean | undefined;
@@ -63,8 +61,7 @@ export interface CheckboxState {
 /**
  * Styled checkbox element.
  */
-export class Checkbox extends Component<CheckboxProps, CheckboxState> {
-}
+export class Checkbox extends Component<CheckboxProps, CheckboxState> {}
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     readonly alt: string;
@@ -83,8 +80,7 @@ export interface ImageState {
 /**
  * Wrapper for external images.
  */
-export class Image extends Component<ImageProps, ImageState> {
-}
+export class Image extends Component<ImageProps, ImageState> {}
 
 export interface LabelProps {
     readonly label?: string | undefined;
@@ -108,8 +104,7 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 /**
  * Styled link element.
  */
-export class Link extends Component<LinkProps> {
-}
+export class Link extends Component<LinkProps> {}
 
 export interface LoadingBarProps {
     readonly color?: string | undefined;
@@ -125,8 +120,7 @@ export interface LoadingBarState {
 /**
  * Indeterminate loading bar component.
  */
-export class LoadingBar extends Component<LoadingBarProps, LoadingBarState> {
-}
+export class LoadingBar extends Component<LoadingBarProps, LoadingBarState> {}
 
 export type ModalSize = "alpha" | "beta" | "gamma";
 export interface ModalProps {
@@ -145,8 +139,7 @@ export interface ModalState {
 /**
  * Container for a full-page modal dialog.
  */
-export class Modal extends Component<ModalProps, ModalState> {
-}
+export class Modal extends Component<ModalProps, ModalState> {}
 
 export type PulsatorSize = "alpha" | "beta" | "gamma" | "delta";
 export interface PulsatorProps {
@@ -163,37 +156,41 @@ export interface PulsatorState {
 /**
  * Indeterminate progress indication spinner.
  */
-export class Pulsator extends Component<PulsatorProps, PulsatorState> {
-}
+export class Pulsator extends Component<PulsatorProps, PulsatorState> {}
 
 export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
     readonly options?:
         | Array<{
-            readonly value: string;
-            readonly label: string | ReactNode;
-            readonly disabled?: boolean | undefined;
-        }>
+              readonly value: string;
+              readonly label: string | ReactNode;
+              readonly disabled?: boolean | undefined;
+          }>
         | undefined;
     readonly value?: string | undefined;
     readonly accentColor?: string | undefined;
     readonly idleColor?: string | undefined;
-    readonly radioRenderer?: ((option: ReactElement, idx: number, options: ReactElement[]) => ReactElement) | undefined;
+    readonly radioRenderer?:
+        | ((
+              option: ReactElement,
+              idx: number,
+              options: ReactElement[],
+          ) => ReactElement)
+        | undefined;
     readonly onChange?: ((value: string) => void) | undefined;
 };
 
 /**
  * Group of individually selectable radio buttons.
  */
-export class RadioGroup extends Component<RadioGroupProps> {
-}
+export class RadioGroup extends Component<RadioGroupProps> {}
 
 export interface SelectListProps {
     readonly placeholder?: string | undefined;
     readonly options?:
         | Array<{
-            readonly label: string;
-            readonly value: string;
-        }>
+              readonly label: string;
+              readonly value: string;
+          }>
         | undefined;
     readonly width?: number | string | undefined;
     readonly height?: number | undefined;
@@ -215,8 +212,7 @@ export interface SelectListState {
 /**
  * Dropdown menu component.
  */
-export class SelectList extends Component<SelectListProps, SelectListState> {
-}
+export class SelectList extends Component<SelectListProps, SelectListState> {}
 
 export interface SpacingProps {
     readonly padding?: boolean | undefined;
@@ -248,15 +244,14 @@ export interface SpinnerProps {
 /**
  * Indeterminate progress indication spinner.
  */
-export class Spinner extends Component<SpinnerProps> {
-}
+export class Spinner extends Component<SpinnerProps> {}
 
 export interface TabsProps {
     readonly options?:
         | Array<{
-            readonly value: string;
-            readonly label: string | ReactNode;
-        }>
+              readonly value: string;
+              readonly label: string | ReactNode;
+          }>
         | undefined;
     readonly value?: string | undefined;
     readonly secondary?: boolean | undefined;
@@ -269,8 +264,7 @@ export interface TabsProps {
 /**
  * Horizontally organized segments of options.
  */
-export class Tabs extends Component<TabsProps> {
-}
+export class Tabs extends Component<TabsProps> {}
 
 export type TagSize = "alpha" | "beta";
 export interface TagProps {
@@ -304,8 +298,7 @@ export interface TextProps {
 /**
  * Text component with automatic typeface formatting.
  */
-export class Text extends Component<TextProps> {
-}
+export class Text extends Component<TextProps> {}
 
 export type TextAreaProps = TextFieldProps & {
     readonly error?: string | undefined;
@@ -320,18 +313,18 @@ export type TextAreaProps = TextFieldProps & {
  */
 export const TextArea: FunctionComponent<TextAreaProps>;
 
-export type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & InputHTMLAttributes<HTMLInputElement> & {
-    readonly error?: string | undefined;
-    readonly secondary?: boolean | undefined;
-    readonly textarea?: boolean | undefined;
-    readonly style?: CSSProperties | undefined;
-};
+export type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+    InputHTMLAttributes<HTMLInputElement> & {
+        readonly error?: string | undefined;
+        readonly secondary?: boolean | undefined;
+        readonly textarea?: boolean | undefined;
+        readonly style?: CSSProperties | undefined;
+    };
 
 /**
  * Input element for accepting user text input.
  */
-export class TextField extends Component<TextFieldProps> {
-}
+export class TextField extends Component<TextFieldProps> {}
 
 export interface ToastProps {
     readonly color?: string | undefined;
@@ -364,25 +357,32 @@ export interface TooltipState {
 /**
  * Wrap an arbitrary element with a tooltip next to the element on hover.
  */
-export class Tooltip extends Component<TooltipProps, TooltipState> {
-}
+export class Tooltip extends Component<TooltipProps, TooltipState> {}
 
 export interface ElementalProps {
-    readonly fontOpts?: {
-        readonly primary?: {
-            readonly regular?: string | undefined;
-            readonly bold?: string | undefined;
-        } | undefined;
-        readonly secondary?: {
-            readonly regular?: string | undefined;
-            readonly bold?: string | undefined;
-        } | undefined;
-    } | undefined;
-    readonly colorOpts?: {
-        readonly primary?: string | undefined;
-        readonly primaryLight?: string | undefined;
-        readonly primaryDark?: string | undefined;
-    } | undefined;
+    readonly fontOpts?:
+        | {
+              readonly primary?:
+                  | {
+                        readonly regular?: string | undefined;
+                        readonly bold?: string | undefined;
+                    }
+                  | undefined;
+              readonly secondary?:
+                  | {
+                        readonly regular?: string | undefined;
+                        readonly bold?: string | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
+    readonly colorOpts?:
+        | {
+              readonly primary?: string | undefined;
+              readonly primaryLight?: string | undefined;
+              readonly primaryDark?: string | undefined;
+          }
+        | undefined;
     readonly children: ReactNode;
 }
 
@@ -393,14 +393,18 @@ export interface ElementalProps {
 export class Elemental extends Component<ElementalProps> {}
 
 export interface FontOpts {
-    primary?: {
-        regular?: string | undefined;
-        bold?: string | undefined;
-    } | undefined;
-    secondary?: {
-        regular?: string | undefined;
-        bold?: string | undefined;
-    } | undefined;
+    primary?:
+        | {
+              regular?: string | undefined;
+              bold?: string | undefined;
+          }
+        | undefined;
+    secondary?:
+        | {
+              regular?: string | undefined;
+              bold?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface ColorOpts {

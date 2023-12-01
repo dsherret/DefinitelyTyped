@@ -46,11 +46,20 @@ export default class ParserATNSimulator extends ATNSimulator {
     dfa_debug: boolean;
     retry_debug: boolean;
 
-    constructor(parser: Parser, atn: ATN, decisionToDFA: DFA[], sharedContextCache: PredictionContextCache);
+    constructor(
+        parser: Parser,
+        atn: ATN,
+        decisionToDFA: DFA[],
+        sharedContextCache: PredictionContextCache,
+    );
 
     reset(): void;
 
-    adaptivePredict(input: TokenStream, decision: number, outerContext: ParserRuleContext): ParserATNSimulator;
+    adaptivePredict(
+        input: TokenStream,
+        decision: number,
+        outerContext: ParserRuleContext,
+    ): ParserATNSimulator;
 
     /**
      * Performs ATN simulation to compute a predicted alternative based
@@ -83,7 +92,13 @@ export default class ParserATNSimulator extends ATNSimulator {
      *    conflict
      *    conflict + preds
      */
-    execATN(dfa: DFA, s0: DFAState, input: TokenStream, startIndex: number, outerContext: ParserRuleContext): number;
+    execATN(
+        dfa: DFA,
+        s0: DFAState,
+        input: TokenStream,
+        startIndex: number,
+        outerContext: ParserRuleContext,
+    ): number;
 
     /**
      * Get an existing target state for an edge in the DFA. If the target state
@@ -122,7 +137,11 @@ export default class ParserATNSimulator extends ATNSimulator {
         outerContext: ParserRuleContext,
     ): number;
 
-    computeReachSet(closure: ATNConfigSet, t: number, fullCtx: boolean): ATNConfigSet;
+    computeReachSet(
+        closure: ATNConfigSet,
+        t: number,
+        fullCtx: boolean,
+    ): ATNConfigSet;
 
     /**
      * Return a configuration set containing only the configurations from
@@ -143,9 +162,16 @@ export default class ParserATNSimulator extends ATNSimulator {
      * rule stop state, otherwise return a new configuration set containing only
      * the configurations from `configs` which are in a rule stop state
      */
-    removeAllConfigsNotInRuleStopState(configs: ATNConfigSet, lookToEndOfRule: boolean): ATNConfigSet;
+    removeAllConfigsNotInRuleStopState(
+        configs: ATNConfigSet,
+        lookToEndOfRule: boolean,
+    ): ATNConfigSet;
 
-    computeStartState(p: ATNState, ctx: RuleContext, fullCtx: boolean): ATNConfigSet;
+    computeStartState(
+        p: ATNState,
+        ctx: RuleContext,
+        fullCtx: boolean,
+    ): ATNConfigSet;
 
     /**
      * This method transforms the start state computed by
@@ -199,9 +225,16 @@ export default class ParserATNSimulator extends ATNSimulator {
 
     getReachableTarget(trans: Transition, ttype: number): ATNState;
 
-    getPredsForAmbigAlts(ambigAlts: BitSet, configs: ATNConfigSet, nalts: number): SemanticContext[];
+    getPredsForAmbigAlts(
+        ambigAlts: BitSet,
+        configs: ATNConfigSet,
+        nalts: number,
+    ): SemanticContext[];
 
-    getPredicatePredictions(ambigAlts: BitSet, altToPred: SemanticContext[]): PredPrediction[] | null;
+    getPredicatePredictions(
+        ambigAlts: BitSet,
+        altToPred: SemanticContext[],
+    ): PredPrediction[] | null;
 
     /**
      * This method is used to improve the localization of error messages by
@@ -260,7 +293,10 @@ export default class ParserATNSimulator extends ATNSimulator {
      * Assumption: the input stream has been restored to the starting point
      * prediction, which is where predicates need to evaluate.
      */
-    splitAccordingToSemanticValidity(configs: ATNConfigSet, outerContext: ParserRuleContext): ATNConfigSet[];
+    splitAccordingToSemanticValidity(
+        configs: ATNConfigSet,
+        outerContext: ParserRuleContext,
+    ): ATNConfigSet[];
 
     /**
      * Look through a list of predicate/alt pairs, returning alts for the
@@ -269,7 +305,11 @@ export default class ParserATNSimulator extends ATNSimulator {
      * then we stop at the first predicate that evaluates to true. This
      * includes pairs with null predicates.
      */
-    evalSemanticContext(predPredictions: PredPrediction[], outerContext: ParserRuleContext, complete: boolean): BitSet;
+    evalSemanticContext(
+        predPredictions: PredPrediction[],
+        outerContext: ParserRuleContext,
+        complete: boolean,
+    ): BitSet;
 
     closure(
         config: ATNConfig,

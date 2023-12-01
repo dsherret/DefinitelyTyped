@@ -122,10 +122,16 @@ app.use("d", (req, res) => {
 
 app.use("formaccept", (req, res) => {
     const index = parseInt(req.data!.index, 10);
-    if ((!index && index !== 0) || (index < 0 || index >= students.length)) {
+    if ((!index && index !== 0) || index < 0 || index >= students.length) {
         res.send(`Invalid student index input: ${req.data!.index}`);
     } else {
-        res.send(`Data:\n${JSON.stringify(req.data, null, 4)}\nYou've selected student: ${students[index]}`);
+        res.send(
+            `Data:\n${JSON.stringify(
+                req.data,
+                null,
+                4,
+            )}\nYou've selected student: ${students[index]}`,
+        );
     }
 });
 

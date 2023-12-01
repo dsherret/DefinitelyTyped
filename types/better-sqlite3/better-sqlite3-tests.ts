@@ -2,7 +2,11 @@ import Sqlite = require("better-sqlite3");
 
 const err = new Sqlite.SqliteError("ok", "ok");
 const result: Sqlite.RunResult = { changes: 1, lastInsertRowid: 1 };
-const options: Sqlite.Options = { fileMustExist: true, readonly: true, nativeBinding: "/some/native/binding/path" };
+const options: Sqlite.Options = {
+    fileMustExist: true,
+    readonly: true,
+    nativeBinding: "/some/native/binding/path",
+};
 const registrationOptions: Sqlite.RegistrationOptions = {
     deterministic: true,
     safeIntegers: true,
@@ -12,8 +16,10 @@ const registrationOptions: Sqlite.RegistrationOptions = {
 
 let db: Sqlite.Database = Sqlite(":memory:");
 db = new Sqlite(":memory:", { verbose: () => {} });
-db.exec("CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL);");
-db.exec("INSERT INTO test(name) VALUES(\"name\");");
+db.exec(
+    "CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL);",
+);
+db.exec('INSERT INTO test(name) VALUES("name");');
 db.pragma("data_version", { simple: true });
 db.table("vtable", {
     columns: ["name"],
@@ -22,11 +28,15 @@ db.table("vtable", {
     },
 });
 db.function("noop", () => {});
-db.function("noop", {
-    deterministic: true,
-    varargs: true,
-    directOnly: true,
-}, () => {});
+db.function(
+    "noop",
+    {
+        deterministic: true,
+        varargs: true,
+        directOnly: true,
+    },
+    () => {},
+);
 db.aggregate("add", {
     start: 0,
     step: (t, n) => t + n,
@@ -39,13 +49,13 @@ db.aggregate("getAverage", {
     step: (array, nextValue) => {
         array.push(nextValue);
     },
-    result: array => array.reduce((t, v) => t + v) / array.length,
+    result: (array) => array.reduce((t, v) => t + v) / array.length,
 });
 db.aggregate("addAll", {
     start: 0,
     step: (total, nextValue) => total + nextValue,
     inverse: (total, droppedValue) => total - droppedValue,
-    result: total => Math.round(total),
+    result: (total) => Math.round(total),
 });
 db.defaultSafeIntegers();
 db.defaultSafeIntegers(true);
@@ -53,7 +63,9 @@ db.defaultSafeIntegers(true);
 const vtable: Sqlite.Statement = db.prepare("SELECT * FROM vtable");
 vtable.all();
 
-const stmt: Sqlite.Statement = db.prepare("SELECT * FROM test WHERE name == ?;");
+const stmt: Sqlite.Statement = db.prepare(
+    "SELECT * FROM test WHERE name == ?;",
+);
 stmt.busy; // $ExpectType boolean
 stmt.readonly; // $ExpectType boolean
 
@@ -78,7 +90,9 @@ for (col of stmt.columns()) {
     col.type;
 }
 type BindParameters = [string, number, bigint];
-const stmtWithBindTyped = db.prepare<BindParameters>("SELECT * FROM test WHERE name == ? and age = ? and id == ?");
+const stmtWithBindTyped = db.prepare<BindParameters>(
+    "SELECT * FROM test WHERE name == ? and age = ? and id == ?",
+);
 stmtWithBindTyped.run("alice", 20, BigInt(1234));
 // note the following is technically legal according to the docs, but we do not have a way to express both typed args
 // and variable tuples in typescript. If you want to group tuples, you must specify it that way in the prepare function
@@ -90,10 +104,12 @@ interface NamedBindParameters {
     age: number;
     id: bigint;
 }
-const stmtWithNamedBind = db.prepare<NamedBindParameters>("INSERT INTO test VALUES (@name, @age, @id)");
+const stmtWithNamedBind = db.prepare<NamedBindParameters>(
+    "INSERT INTO test VALUES (@name, @age, @id)",
+);
 stmtWithNamedBind.run({ name: "bob", age: 20, id: BigInt(1234) });
 
-const trans: Sqlite.Transaction = db.transaction(param => stmt.all(param));
+const trans: Sqlite.Transaction = db.transaction((param) => stmt.all(param));
 trans("name");
 trans(1);
 trans.default("name");
@@ -127,5 +143,7 @@ db.backup("backup-today.db", {
 const newDb = new Sqlite(db.serialize());
 db.close();
 
-const stmtWithNamedBindForNewDb = newDb.prepare<NamedBindParameters>("INSERT INTO test VALUES (@name, @age, @id)");
+const stmtWithNamedBindForNewDb = newDb.prepare<NamedBindParameters>(
+    "INSERT INTO test VALUES (@name, @age, @id)",
+);
 stmtWithNamedBindForNewDb.run({ name: "bob1", age: 201, id: BigInt(1234) });

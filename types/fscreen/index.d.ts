@@ -15,8 +15,16 @@ declare class Fscreen {
     onfullscreenchange: Handler;
     onfullscreenerror: Handler;
 
-    addEventListener(type: EventName, handler: Handler, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener(type: EventName, handler: Handler, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(
+        type: EventName,
+        handler: Handler,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
+    removeEventListener(
+        type: EventName,
+        handler: Handler,
+        options?: boolean | AddEventListenerOptions,
+    ): void;
     requestFullscreen(element: Element): void;
     requestFullscreenFunction(element: Element): RequestFullScreenFunction;
 }

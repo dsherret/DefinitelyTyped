@@ -12,7 +12,10 @@ declare class Awesomplete {
     };
     static FILTER_STARTSWITH: (text: string, input: string) => boolean;
     static FILTER_CONTAINS: (text: string, input: string) => boolean;
-    static SORT_BYLENGTH: (left: number | any[], right: number | any[]) => number;
+    static SORT_BYLENGTH: (
+        left: number | any[],
+        right: number | any[],
+    ) => number;
     static REPLACE: (text: string) => void;
     static DATA: (item: Awesomplete.Suggestion) => Awesomplete.Suggestion;
     next: () => void;
@@ -34,11 +37,20 @@ declare class Awesomplete {
 }
 
 declare namespace Awesomplete {
-    type Suggestion = string | { label: string | any; value: string | any } | [string, string];
+    type Suggestion =
+        | string
+        | { label: string | any; value: string | any }
+        | [string, string];
     type SortFunction = (left: number | any[], right: number | any[]) => number;
 
     interface Options {
-        list?: string | string[] | Element | Array<{ label: string; value: any }> | Array<[string, string]> | undefined;
+        list?:
+            | string
+            | string[]
+            | Element
+            | Array<{ label: string; value: any }>
+            | Array<[string, string]>
+            | undefined;
         minChars?: number | undefined;
         maxItems?: number | undefined;
         autoFirst?: boolean | undefined;

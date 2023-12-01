@@ -43,13 +43,17 @@ performance.measure("name");
 
 const timeOrigin: number = performance.timeOrigin;
 
-const performanceObserverCallback: PerformanceObserverCallback = (list, obs) => {
+const performanceObserverCallback: PerformanceObserverCallback = (
+    list,
+    obs,
+) => {
     const entries: PerformanceEntry[] = list.getEntries();
     const duration: number = entries[0].duration;
     const name: string = entries[0].name;
     const startTime: number = entries[0].startTime;
     const entryTypes: EntryType = entries[0].entryType;
-    const detail: NodeGCPerformanceDetail = entries[0].detail as NodeGCPerformanceDetail;
+    const detail: NodeGCPerformanceDetail = entries[0]
+        .detail as NodeGCPerformanceDetail;
     const kind: number | undefined = detail.kind;
     const flags: number | undefined = detail.flags;
 
@@ -87,12 +91,12 @@ const stddev: number = monitor.stddev;
 const exceeds: number = monitor.exceeds;
 
 // eventLoopUtilization isn't available in DOM environment, so use the import rather than the global
-const eventLoopUtilization1: EventLoopUtilization = NodePerf.eventLoopUtilization();
-const eventLoopUtilization2: EventLoopUtilization = NodePerf.eventLoopUtilization(eventLoopUtilization1);
-const eventLoopUtilization3: EventLoopUtilization = NodePerf.eventLoopUtilization(
-    eventLoopUtilization2,
-    eventLoopUtilization1,
-);
+const eventLoopUtilization1: EventLoopUtilization =
+    NodePerf.eventLoopUtilization();
+const eventLoopUtilization2: EventLoopUtilization =
+    NodePerf.eventLoopUtilization(eventLoopUtilization1);
+const eventLoopUtilization3: EventLoopUtilization =
+    NodePerf.eventLoopUtilization(eventLoopUtilization2, eventLoopUtilization1);
 
 let histogram: RecordableHistogram = createHistogram({
     figures: 123,

@@ -5,7 +5,11 @@ export type WITH_TONE_NUMBER = string;
 export type WITHOUT_TONE = string;
 export type WITH_TONE_MARK = string;
 export type FIRST_LETTER = string;
-export type format = WITH_TONE_NUMBER | WITHOUT_TONE | WITH_TONE_MARK | FIRST_LETTER;
+export type format =
+    | WITH_TONE_NUMBER
+    | WITHOUT_TONE
+    | WITH_TONE_MARK
+    | FIRST_LETTER;
 
 /**
  * pinyin4js
@@ -22,7 +26,11 @@ export const WITH_TONE_MARK: WITH_TONE_MARK;
 /** 首字母风格 */
 export const FIRST_LETTER: FIRST_LETTER;
 
-export function convertToPinyinString(str: string, separator: string, format: format): string;
+export function convertToPinyinString(
+    str: string,
+    separator: string,
+    format: format,
+): string;
 /**
  * 首字母风格
  * '厦门你好大厦厦门' ==> xmnhdsxm

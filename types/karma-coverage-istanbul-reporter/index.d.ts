@@ -72,6 +72,8 @@ export interface CoverageIstanbulReporter {
 declare module "karma" {
     interface ConfigOptions {
         /** {@link https://github.com/istanbuljs/istanbuljs/blob/aae256fb8b9a3d19414dcf069c592e88712c32c6/packages/istanbul-api/lib/config.js#L33-L39 Any of these options are valid}. */
-        readonly coverageIstanbulReporter?: CoverageIstanbulReporter | undefined;
+        readonly coverageIstanbulReporter?:
+            | CoverageIstanbulReporter
+            | undefined;
     }
 }

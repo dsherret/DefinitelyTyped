@@ -8,7 +8,10 @@
  * @internal
  * @license Modernizr 3.0.0pre (Custom Build) | MIT
  */
-declare function isEventSupported(eventNameSuffix: string, capture?: boolean): boolean;
+declare function isEventSupported(
+    eventNameSuffix: string,
+    capture?: boolean,
+): boolean;
 
 declare namespace isEventSupported {}
 

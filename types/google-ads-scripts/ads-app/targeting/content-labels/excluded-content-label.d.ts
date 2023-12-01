@@ -29,7 +29,8 @@ declare namespace GoogleAdsScripts {
          *        var excludedContentLabel = excludedContentLabelIterator.next();
          *      }
          */
-        interface ExcludedContentLabelIterator extends Base.Iterator<ExcludedContentLabel> {}
+        interface ExcludedContentLabelIterator
+            extends Base.Iterator<ExcludedContentLabel> {}
 
         /** A plain JavaScript objects to describe a content label. */
         interface ExcludedContentLabelObject {
@@ -37,7 +38,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new excluded content label. */
-        interface ExcludedContentLabelOperation extends Base.Operation<ExcludedContentLabel> {}
+        interface ExcludedContentLabelOperation
+            extends Base.Operation<ExcludedContentLabel> {}
 
         /**
          * Fetches excluded content labels. Supports filtering and sorting.
@@ -55,7 +57,8 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedContentLabelSelector
-            extends Base.Selector<ExcludedContentLabelIterator>, Base.SelectorWithIds, Base.SelectorWithLimit
-        {}
+            extends Base.Selector<ExcludedContentLabelIterator>,
+                Base.SelectorWithIds,
+                Base.SelectorWithLimit {}
     }
 }

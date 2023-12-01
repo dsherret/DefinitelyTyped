@@ -6,8 +6,8 @@ declare module "react" {
         childFactory?: ((child: ReactElement) => ReactElement) | undefined;
     }
 
-    export interface TransitionGroupProps extends HTMLTransitionGroupProps<ReactTransitionGroup> {
-    }
+    export interface TransitionGroupProps
+        extends HTMLTransitionGroupProps<ReactTransitionGroup> {}
 }
 
 declare var ReactTransitionGroup: ReactTransitionGroup;

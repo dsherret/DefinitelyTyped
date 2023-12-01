@@ -11,7 +11,11 @@ export = registry;
 declare namespace registry {
     interface RegistryModule {} // eslint-disable-line @typescript-eslint/no-empty-interface
 
-    interface NodeConstructor<TNode extends Node<TCred>, TNodeDef extends NodeDef, TCred extends {}> {
+    interface NodeConstructor<
+        TNode extends Node<TCred>,
+        TNodeDef extends NodeDef,
+        TCred extends {},
+    > {
         (this: TNode, nodeDef: TNodeDef): void;
     }
     interface NodeSetting<T> {
@@ -38,7 +42,12 @@ declare namespace registry {
          * @param opts - optional additional options for the node
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        registerType<TNode extends Node<TCreds>, TNodeDef extends NodeDef, TSets, TCreds extends {}>(
+        registerType<
+            TNode extends Node<TCreds>,
+            TNodeDef extends NodeDef,
+            TSets,
+            TCreds extends {},
+        >(
             type: string,
             constructor: NodeConstructor<TNode, TNodeDef, TCreds>, // eslint-disable-line @definitelytyped/no-unnecessary-generics
             opts?: {
@@ -107,7 +116,9 @@ declare namespace registry {
         /**
          * Returns an Express middleware function that ensures the user making a request has the necessary permission.
          */
-        needsPermission(permission: string): (req: Request, res: Response, next: NextFunction) => void;
+        needsPermission(
+            permission: string,
+        ): (req: Request, res: Response, next: NextFunction) => void;
     }
 
     interface NodeAPIPlugins {
@@ -128,7 +139,9 @@ declare namespace registry {
          * @returns the plugin definition
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        get<TPluginDef extends PluginDef = PluginDef>(id: string): PluginDefinition<TPluginDef>;
+        get<TPluginDef extends PluginDef = PluginDef>(
+            id: string,
+        ): PluginDefinition<TPluginDef>;
 
         /**
          * Returns the plugin definitions for the given type
@@ -136,7 +149,9 @@ declare namespace registry {
          * @returns the plugin definitions
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        getByType<TPluginDef extends PluginDef = PluginDef>(type: string): Array<PluginDefinition<TPluginDef>>;
+        getByType<TPluginDef extends PluginDef = PluginDef>(
+            type: string,
+        ): Array<PluginDefinition<TPluginDef>>;
     }
     interface PluginDefinition<TPluginDef> {
         id?: string;
@@ -154,7 +169,9 @@ declare namespace registry {
     /**
      * Runtime API provided to nodes by Node Registry
      */
-    interface NodeAPI<TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData> {
+    interface NodeAPI<
+        TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData,
+    > {
         nodes: NodeAPINodes;
         log: NodeApiLog;
         settings: TSets;
@@ -176,7 +193,9 @@ declare namespace registry {
     /**
      * Function called by Node Registry to init node.
      */
-    interface NodeInitializer<TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData> {
+    interface NodeInitializer<
+        TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData,
+    > {
         (RED: NodeAPI<TSets>): void | Promise<void>;
     }
 
@@ -232,7 +251,9 @@ declare namespace registry {
          * Send a message to the nodes wired.
          * @param msg A message or array of messages to send
          */
-        send(msg?: NodeMessage | Array<NodeMessage | NodeMessage[] | null>): void;
+        send(
+            msg?: NodeMessage | Array<NodeMessage | NodeMessage[] | null>,
+        ): void;
         /**
          * Receive a message.
          *
@@ -283,7 +304,11 @@ declare namespace registry {
             event: "input",
             listener: (
                 msg: NodeMessageInFlow,
-                send: (msg: NodeMessage | Array<NodeMessage | NodeMessage[] | null>) => void,
+                send: (
+                    msg:
+                        | NodeMessage
+                        | Array<NodeMessage | NodeMessage[] | null>,
+                ) => void,
                 done: (err?: Error) => void,
             ) => void,
         ): this;
@@ -308,7 +333,10 @@ declare namespace registry {
          * entirely, or that it is just being restarted.
          * More info: https://nodered.org/docs/creating-nodes/node-js#closing-the-node
          */
-        on(event: "close", listener: (removed: boolean, done: () => void) => void): this; // tslint:disable-line:unified-signatures
+        on(
+            event: "close",
+            listener: (removed: boolean, done: () => void) => void,
+        ): this; // tslint:disable-line:unified-signatures
     }
 
     type NodeStatusFill = "red" | "green" | "yellow" | "blue" | "grey";
@@ -355,11 +383,19 @@ declare namespace registry {
         /**
          * Get a value from context asynchronously, when multiple context stores are used
          */
-        get(key: string, storeName: string | undefined, cb: (err: Error, value: unknown) => void): void;
+        get(
+            key: string,
+            storeName: string | undefined,
+            cb: (err: Error, value: unknown) => void,
+        ): void;
         /**
          * Get multiple values from context asynchronously, when multiple context stores are used
          */
-        get(keys: string[], storeName: string | undefined, cb: (err: Error, value: unknown[]) => void): void;
+        get(
+            keys: string[],
+            storeName: string | undefined,
+            cb: (err: Error, value: unknown[]) => void,
+        ): void;
 
         /**
          * Set a value in context
@@ -383,7 +419,12 @@ declare namespace registry {
          * @param storeName
          * @param cb - callback for async calls
          */
-        set(key: string, value: unknown, storeName: string | undefined, cb?: (err: Error) => void): void;
+        set(
+            key: string,
+            value: unknown,
+            storeName: string | undefined,
+            cb?: (err: Error) => void,
+        ): void;
         /**
          * Set multiple values in context, when multiple context stores are used
          * @param keys
@@ -391,7 +432,12 @@ declare namespace registry {
          * @param storeName
          * @param cb - callback for async calls
          */
-        set(keys: string[], values: unknown[], storeName: string | undefined, cb?: (err: Error) => void): void;
+        set(
+            keys: string[],
+            values: unknown[],
+            storeName: string | undefined,
+            cb?: (err: Error) => void,
+        ): void;
 
         /**
          * Returns a list of all node-scoped context property keys
@@ -405,7 +451,10 @@ declare namespace registry {
         /**
          * Returns a list of all node-scoped context property keys asynchronously, when multiple context stores are used
          */
-        keys(storeName: string | undefined, cb: (err: Error, value: unknown[]) => void): void;
+        keys(
+            storeName: string | undefined,
+            cb: (err: Error, value: unknown[]) => void,
+        ): void;
     }
 
     interface NodeContext extends NodeContextData {

@@ -28,7 +28,8 @@ interface cssProps {
 }
 const cssPropsTheme = theme("mode", {
     dark: css`
-        visibility: ${(props: cssProps) => (props.visible ? "visible" : "hidden")};
+        visibility: ${(props: cssProps) =>
+            props.visible ? "visible" : "hidden"};
     `,
     light: css`
         background: white;
@@ -41,24 +42,20 @@ interface buttonProps {
 
 const button = theme.variants("mode", "kind", {
     primary: {
-        light: (props: buttonProps) =>
-            css`
-                background: ${props.hidden ? "transparent" : "blue"};
-            `,
-        dark: (props: buttonProps) =>
-            css`
-                background: ${props.hidden ? "transparent" : "black"};
-            `,
+        light: (props: buttonProps) => css`
+            background: ${props.hidden ? "transparent" : "blue"};
+        `,
+        dark: (props: buttonProps) => css`
+            background: ${props.hidden ? "transparent" : "black"};
+        `,
     },
     secondary: {
-        light: (props: buttonProps) =>
-            css`
-                background: ${props.hidden ? "transparent" : "skyblue"};
-            `,
-        dark: (props: buttonProps) =>
-            css`
-                background: ${props.hidden ? "transparent" : "grey"};
-            `,
+        light: (props: buttonProps) => css`
+            background: ${props.hidden ? "transparent" : "skyblue"};
+        `,
+        dark: (props: buttonProps) => css`
+            background: ${props.hidden ? "transparent" : "grey"};
+        `,
     },
 });
 
@@ -67,7 +64,9 @@ const Button = styled.button`
 `;
 
 const elementWithoutProp = React.createElement(Button);
-const elementWithCorrectProp = React.createElement(Button, { kind: "secondary" });
+const elementWithCorrectProp = React.createElement(Button, {
+    kind: "secondary",
+});
 // TODO(react): Unclear why this doesn't error. Probably picking an overload where excess props are fine.
 const element = React.createElement(Button, { kind: "wrong variant" });
 // @ts-expect-error

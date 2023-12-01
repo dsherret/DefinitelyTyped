@@ -1,7 +1,16 @@
 import * as React from "react";
 import { Text, TextInput, View } from "react-native";
 
-import { hook, Tester, TestHookStore, TestReport, TestScope, useCavy, WithTestHook, wrap } from "cavy";
+import {
+    hook,
+    Tester,
+    TestHookStore,
+    TestReport,
+    TestScope,
+    useCavy,
+    WithTestHook,
+    wrap,
+} from "cavy";
 
 type Props = WithTestHook<{
     foo: string;
@@ -39,13 +48,19 @@ class SampleComponent extends React.Component<Props> {
                     text="text"
                 />
 
-                <WrappedText accessibilityRole="button" ref={generateTestHook("WrappedText")}>
+                <WrappedText
+                    accessibilityRole="button"
+                    ref={generateTestHook("WrappedText")}
+                >
                     Wrapped text
                 </WrappedText>
 
                 <Text>{foo}</Text>
 
-                <TextInput ref={generateTestHook("Input", this.setTextInputRef)} onFocus={() => {}} />
+                <TextInput
+                    ref={generateTestHook("Input", this.setTextInputRef)}
+                    onFocus={() => {}}
+                />
             </View>
         );
     }
@@ -77,7 +92,9 @@ function sampleSpec(spec: TestScope) {
             // Test wrapped object like Text
             spec.containsText("WrappedText", "Wrapped text");
             // Test wrapped function component, access to props
-            const functionComponent = await spec.findComponent("WrappedFunctionComponent") as React.Component<FCProps>;
+            const functionComponent = (await spec.findComponent(
+                "WrappedFunctionComponent",
+            )) as React.Component<FCProps>;
             if (functionComponent.props.text !== "text") {
                 throw new Error();
             }

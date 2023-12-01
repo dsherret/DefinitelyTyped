@@ -34,12 +34,16 @@ declare module "fs" {
     export type BufferEncodingOption =
         | "buffer"
         | {
-            encoding: "buffer";
-        };
+              encoding: "buffer";
+          };
     export interface ObjectEncodingOptions {
         encoding?: BufferEncoding | null | undefined;
     }
-    export type EncodingOption = ObjectEncodingOptions | BufferEncoding | undefined | null;
+    export type EncodingOption =
+        | ObjectEncodingOptions
+        | BufferEncoding
+        | undefined
+        | null;
     export type OpenMode = number | string;
     export type Mode = number | string;
     export interface StatsBase<T> {
@@ -286,7 +290,12 @@ declare module "fs" {
          * @return containing {fs.Dirent|null}
          */
         read(): Promise<Dirent | null>;
-        read(cb: (err: NodeJS.ErrnoException | null, dirEnt: Dirent | null) => void): void;
+        read(
+            cb: (
+                err: NodeJS.ErrnoException | null,
+                dirEnt: Dirent | null,
+            ) => void,
+        ): void;
         /**
          * Synchronously read the next directory entry as an `fs.Dirent`. See the
          * POSIX [`readdir(3)`](http://man7.org/linux/man-pages/man3/readdir.3.html) documentation for more detail.
@@ -340,24 +349,48 @@ declare module "fs" {
          *   2. error
          */
         addListener(event: string, listener: (...args: any[]) => void): this;
-        addListener(event: "change", listener: (eventType: string, filename: string | Buffer) => void): this;
+        addListener(
+            event: "change",
+            listener: (eventType: string, filename: string | Buffer) => void,
+        ): this;
         addListener(event: "error", listener: (error: Error) => void): this;
         addListener(event: "close", listener: () => void): this;
         on(event: string, listener: (...args: any[]) => void): this;
-        on(event: "change", listener: (eventType: string, filename: string | Buffer) => void): this;
+        on(
+            event: "change",
+            listener: (eventType: string, filename: string | Buffer) => void,
+        ): this;
         on(event: "error", listener: (error: Error) => void): this;
         on(event: "close", listener: () => void): this;
         once(event: string, listener: (...args: any[]) => void): this;
-        once(event: "change", listener: (eventType: string, filename: string | Buffer) => void): this;
+        once(
+            event: "change",
+            listener: (eventType: string, filename: string | Buffer) => void,
+        ): this;
         once(event: "error", listener: (error: Error) => void): this;
         once(event: "close", listener: () => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
-        prependListener(event: "change", listener: (eventType: string, filename: string | Buffer) => void): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependListener(
+            event: "change",
+            listener: (eventType: string, filename: string | Buffer) => void,
+        ): this;
         prependListener(event: "error", listener: (error: Error) => void): this;
         prependListener(event: "close", listener: () => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
-        prependOnceListener(event: "change", listener: (eventType: string, filename: string | Buffer) => void): this;
-        prependOnceListener(event: "error", listener: (error: Error) => void): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependOnceListener(
+            event: "change",
+            listener: (eventType: string, filename: string | Buffer) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (error: Error) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
     }
     /**
@@ -391,7 +424,10 @@ declare module "fs" {
          *   3. ready
          */
         addListener(event: "close", listener: () => void): this;
-        addListener(event: "data", listener: (chunk: Buffer | string) => void): this;
+        addListener(
+            event: "data",
+            listener: (chunk: Buffer | string) => void,
+        ): this;
         addListener(event: "end", listener: () => void): this;
         addListener(event: "error", listener: (err: Error) => void): this;
         addListener(event: "open", listener: (fd: number) => void): this;
@@ -399,7 +435,10 @@ declare module "fs" {
         addListener(event: "readable", listener: () => void): this;
         addListener(event: "ready", listener: () => void): this;
         addListener(event: "resume", listener: () => void): this;
-        addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        addListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         on(event: "close", listener: () => void): this;
         on(event: "data", listener: (chunk: Buffer | string) => void): this;
         on(event: "end", listener: () => void): this;
@@ -421,7 +460,10 @@ declare module "fs" {
         once(event: "resume", listener: () => void): this;
         once(event: string | symbol, listener: (...args: any[]) => void): this;
         prependListener(event: "close", listener: () => void): this;
-        prependListener(event: "data", listener: (chunk: Buffer | string) => void): this;
+        prependListener(
+            event: "data",
+            listener: (chunk: Buffer | string) => void,
+        ): this;
         prependListener(event: "end", listener: () => void): this;
         prependListener(event: "error", listener: (err: Error) => void): this;
         prependListener(event: "open", listener: (fd: number) => void): this;
@@ -429,17 +471,32 @@ declare module "fs" {
         prependListener(event: "readable", listener: () => void): this;
         prependListener(event: "ready", listener: () => void): this;
         prependListener(event: "resume", listener: () => void): this;
-        prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
-        prependOnceListener(event: "data", listener: (chunk: Buffer | string) => void): this;
+        prependOnceListener(
+            event: "data",
+            listener: (chunk: Buffer | string) => void,
+        ): this;
         prependOnceListener(event: "end", listener: () => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
-        prependOnceListener(event: "open", listener: (fd: number) => void): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
+        prependOnceListener(
+            event: "open",
+            listener: (fd: number) => void,
+        ): this;
         prependOnceListener(event: "pause", listener: () => void): this;
         prependOnceListener(event: "readable", listener: () => void): this;
         prependOnceListener(event: "ready", listener: () => void): this;
         prependOnceListener(event: "resume", listener: () => void): this;
-        prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependOnceListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
     }
     /**
      * * Extends `stream.Writable`
@@ -484,10 +541,19 @@ declare module "fs" {
         addListener(event: "error", listener: (err: Error) => void): this;
         addListener(event: "finish", listener: () => void): this;
         addListener(event: "open", listener: (fd: number) => void): this;
-        addListener(event: "pipe", listener: (src: stream.Readable) => void): this;
+        addListener(
+            event: "pipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
         addListener(event: "ready", listener: () => void): this;
-        addListener(event: "unpipe", listener: (src: stream.Readable) => void): this;
-        addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        addListener(
+            event: "unpipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
+        addListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         on(event: "close", listener: () => void): this;
         on(event: "drain", listener: () => void): this;
         on(event: "error", listener: (err: Error) => void): this;
@@ -511,19 +577,43 @@ declare module "fs" {
         prependListener(event: "error", listener: (err: Error) => void): this;
         prependListener(event: "finish", listener: () => void): this;
         prependListener(event: "open", listener: (fd: number) => void): this;
-        prependListener(event: "pipe", listener: (src: stream.Readable) => void): this;
+        prependListener(
+            event: "pipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
         prependListener(event: "ready", listener: () => void): this;
-        prependListener(event: "unpipe", listener: (src: stream.Readable) => void): this;
-        prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "unpipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
+        prependListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
         prependOnceListener(event: "drain", listener: () => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
         prependOnceListener(event: "finish", listener: () => void): this;
-        prependOnceListener(event: "open", listener: (fd: number) => void): this;
-        prependOnceListener(event: "pipe", listener: (src: stream.Readable) => void): this;
+        prependOnceListener(
+            event: "open",
+            listener: (fd: number) => void,
+        ): this;
+        prependOnceListener(
+            event: "pipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
         prependOnceListener(event: "ready", listener: () => void): this;
-        prependOnceListener(event: "unpipe", listener: (src: stream.Readable) => void): this;
-        prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+        prependOnceListener(
+            event: "unpipe",
+            listener: (src: stream.Readable) => void,
+        ): this;
+        prependOnceListener(
+            event: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
     }
     /**
      * Asynchronously rename file at `oldPath` to the pathname provided
@@ -544,7 +634,11 @@ declare module "fs" {
      * ```
      * @since v0.0.2
      */
-    export function rename(oldPath: PathLike, newPath: PathLike, callback: NoParamCallback): void;
+    export function rename(
+        oldPath: PathLike,
+        newPath: PathLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace rename {
         /**
          * Asynchronous rename(2) - Change the name or location of a file or directory.
@@ -553,7 +647,10 @@ declare module "fs" {
          * @param newPath A path to a file. If a URL is provided, it must use the `file:` protocol.
          * URL support is _experimental_.
          */
-        function __promisify__(oldPath: PathLike, newPath: PathLike): Promise<void>;
+        function __promisify__(
+            oldPath: PathLike,
+            newPath: PathLike,
+        ): Promise<void>;
     }
     /**
      * Renames the file from `oldPath` to `newPath`. Returns `undefined`.
@@ -583,7 +680,11 @@ declare module "fs" {
      * @since v0.8.6
      * @param [len=0]
      */
-    export function truncate(path: PathLike, len: number | undefined | null, callback: NoParamCallback): void;
+    export function truncate(
+        path: PathLike,
+        len: number | undefined | null,
+        callback: NoParamCallback,
+    ): void;
     /**
      * Asynchronous truncate(2) - Truncate a file to a specified length.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
@@ -595,7 +696,10 @@ declare module "fs" {
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param len If not specified, defaults to `0`.
          */
-        function __promisify__(path: PathLike, len?: number | null): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            len?: number | null,
+        ): Promise<void>;
     }
     /**
      * Truncates the file. Returns `undefined`. A file descriptor can also be
@@ -650,7 +754,11 @@ declare module "fs" {
      * @since v0.8.6
      * @param [len=0]
      */
-    export function ftruncate(fd: number, len: number | undefined | null, callback: NoParamCallback): void;
+    export function ftruncate(
+        fd: number,
+        len: number | undefined | null,
+        callback: NoParamCallback,
+    ): void;
     /**
      * Asynchronous ftruncate(2) - Truncate a file to a specified length.
      * @param fd A file descriptor.
@@ -680,13 +788,22 @@ declare module "fs" {
      * See the POSIX [`chown(2)`](http://man7.org/linux/man-pages/man2/chown.2.html) documentation for more detail.
      * @since v0.1.97
      */
-    export function chown(path: PathLike, uid: number, gid: number, callback: NoParamCallback): void;
+    export function chown(
+        path: PathLike,
+        uid: number,
+        gid: number,
+        callback: NoParamCallback,
+    ): void;
     export namespace chown {
         /**
          * Asynchronous chown(2) - Change ownership of a file.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          */
-        function __promisify__(path: PathLike, uid: number, gid: number): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            uid: number,
+            gid: number,
+        ): Promise<void>;
     }
     /**
      * Synchronously changes owner and group of a file. Returns `undefined`.
@@ -703,13 +820,22 @@ declare module "fs" {
      * See the POSIX [`fchown(2)`](http://man7.org/linux/man-pages/man2/fchown.2.html) documentation for more detail.
      * @since v0.4.7
      */
-    export function fchown(fd: number, uid: number, gid: number, callback: NoParamCallback): void;
+    export function fchown(
+        fd: number,
+        uid: number,
+        gid: number,
+        callback: NoParamCallback,
+    ): void;
     export namespace fchown {
         /**
          * Asynchronous fchown(2) - Change ownership of a file.
          * @param fd A file descriptor.
          */
-        function __promisify__(fd: number, uid: number, gid: number): Promise<void>;
+        function __promisify__(
+            fd: number,
+            uid: number,
+            gid: number,
+        ): Promise<void>;
     }
     /**
      * Sets the owner of the file. Returns `undefined`.
@@ -726,13 +852,22 @@ declare module "fs" {
      *
      * See the POSIX [`lchown(2)`](http://man7.org/linux/man-pages/man2/lchown.2.html) documentation for more detail.
      */
-    export function lchown(path: PathLike, uid: number, gid: number, callback: NoParamCallback): void;
+    export function lchown(
+        path: PathLike,
+        uid: number,
+        gid: number,
+        callback: NoParamCallback,
+    ): void;
     export namespace lchown {
         /**
          * Asynchronous lchown(2) - Change ownership of a file. Does not dereference symbolic links.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          */
-        function __promisify__(path: PathLike, uid: number, gid: number): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            uid: number,
+            gid: number,
+        ): Promise<void>;
     }
     /**
      * Set the owner for the path. Returns `undefined`.
@@ -751,7 +886,12 @@ declare module "fs" {
      * callback.
      * @since v14.5.0, v12.19.0
      */
-    export function lutimes(path: PathLike, atime: TimeLike, mtime: TimeLike, callback: NoParamCallback): void;
+    export function lutimes(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace lutimes {
         /**
          * Changes the access and modification times of a file in the same way as `fsPromises.utimes()`,
@@ -761,7 +901,11 @@ declare module "fs" {
          * @param atime The last access time. If a string is provided, it will be coerced to number.
          * @param mtime The last modified time. If a string is provided, it will be coerced to number.
          */
-        function __promisify__(path: PathLike, atime: TimeLike, mtime: TimeLike): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            atime: TimeLike,
+            mtime: TimeLike,
+        ): Promise<void>;
     }
     /**
      * Change the file system timestamps of the symbolic link referenced by `path`.
@@ -769,7 +913,11 @@ declare module "fs" {
      * the operation fails. This is the synchronous version of {@link lutimes}.
      * @since v14.5.0, v12.19.0
      */
-    export function lutimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
+    export function lutimesSync(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+    ): void;
     /**
      * Asynchronously changes the permissions of a file. No arguments other than a
      * possible exception are given to the completion callback.
@@ -786,7 +934,11 @@ declare module "fs" {
      * ```
      * @since v0.1.30
      */
-    export function chmod(path: PathLike, mode: Mode, callback: NoParamCallback): void;
+    export function chmod(
+        path: PathLike,
+        mode: Mode,
+        callback: NoParamCallback,
+    ): void;
     export namespace chmod {
         /**
          * Asynchronous chmod(2) - Change permissions of a file.
@@ -810,7 +962,11 @@ declare module "fs" {
      * See the POSIX [`fchmod(2)`](http://man7.org/linux/man-pages/man2/fchmod.2.html) documentation for more detail.
      * @since v0.4.7
      */
-    export function fchmod(fd: number, mode: Mode, callback: NoParamCallback): void;
+    export function fchmod(
+        fd: number,
+        mode: Mode,
+        callback: NoParamCallback,
+    ): void;
     export namespace fchmod {
         /**
          * Asynchronous fchmod(2) - Change permissions of a file.
@@ -835,7 +991,11 @@ declare module "fs" {
      * See the POSIX [`lchmod(2)`](https://www.freebsd.org/cgi/man.cgi?query=lchmod&sektion=2) documentation for more detail.
      * @deprecated Since v0.4.7
      */
-    export function lchmod(path: PathLike, mode: Mode, callback: NoParamCallback): void;
+    export function lchmod(
+        path: PathLike,
+        mode: Mode,
+        callback: NoParamCallback,
+    ): void;
     /** @deprecated */
     export namespace lchmod {
         /**
@@ -936,13 +1096,16 @@ declare module "fs" {
      * ```
      * @since v0.0.2
      */
-    export function stat(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function stat(
+        path: PathLike,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
     export function stat(
         path: PathLike,
         options:
             | (StatOptions & {
-                bigint?: false | undefined;
-            })
+                  bigint?: false | undefined;
+              })
             | undefined,
         callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
     ): void;
@@ -951,12 +1114,18 @@ declare module "fs" {
         options: StatOptions & {
             bigint: true;
         },
-        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: BigIntStats,
+        ) => void,
     ): void;
     export function stat(
         path: PathLike,
         options: StatOptions | undefined,
-        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: Stats | BigIntStats,
+        ) => void,
     ): void;
     export namespace stat {
         /**
@@ -975,7 +1144,10 @@ declare module "fs" {
                 bigint: true;
             },
         ): Promise<BigIntStats>;
-        function __promisify__(path: PathLike, options?: StatOptions): Promise<Stats | BigIntStats>;
+        function __promisify__(
+            path: PathLike,
+            options?: StatOptions,
+        ): Promise<Stats | BigIntStats>;
     }
     export interface StatSyncFn extends Function {
         (path: PathLike, options?: undefined): Stats;
@@ -1012,7 +1184,10 @@ declare module "fs" {
                 throwIfNoEntry?: false | undefined;
             },
         ): Stats | BigIntStats;
-        (path: PathLike, options?: StatSyncOptions): Stats | BigIntStats | undefined;
+        (
+            path: PathLike,
+            options?: StatSyncOptions,
+        ): Stats | BigIntStats | undefined;
     }
     /**
      * Synchronous stat(2) - Get file status.
@@ -1025,13 +1200,16 @@ declare module "fs" {
      * See the POSIX [`fstat(2)`](http://man7.org/linux/man-pages/man2/fstat.2.html) documentation for more detail.
      * @since v0.1.95
      */
-    export function fstat(fd: number, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function fstat(
+        fd: number,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
     export function fstat(
         fd: number,
         options:
             | (StatOptions & {
-                bigint?: false | undefined;
-            })
+                  bigint?: false | undefined;
+              })
             | undefined,
         callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
     ): void;
@@ -1040,12 +1218,18 @@ declare module "fs" {
         options: StatOptions & {
             bigint: true;
         },
-        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: BigIntStats,
+        ) => void,
     ): void;
     export function fstat(
         fd: number,
         options: StatOptions | undefined,
-        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: Stats | BigIntStats,
+        ) => void,
     ): void;
     export namespace fstat {
         /**
@@ -1064,7 +1248,10 @@ declare module "fs" {
                 bigint: true;
             },
         ): Promise<BigIntStats>;
-        function __promisify__(fd: number, options?: StatOptions): Promise<Stats | BigIntStats>;
+        function __promisify__(
+            fd: number,
+            options?: StatOptions,
+        ): Promise<Stats | BigIntStats>;
     }
     /**
      * Retrieves the `fs.Stats` for the file descriptor.
@@ -1084,7 +1271,10 @@ declare module "fs" {
             bigint: true;
         },
     ): BigIntStats;
-    export function fstatSync(fd: number, options?: StatOptions): Stats | BigIntStats;
+    export function fstatSync(
+        fd: number,
+        options?: StatOptions,
+    ): Stats | BigIntStats;
     /**
      * Retrieves the `fs.Stats` for the symbolic link referred to by the path.
      * The callback gets two arguments `(err, stats)` where `stats` is a `fs.Stats` object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic
@@ -1093,13 +1283,16 @@ declare module "fs" {
      * See the POSIX [`lstat(2)`](http://man7.org/linux/man-pages/man2/lstat.2.html) documentation for more details.
      * @since v0.1.30
      */
-    export function lstat(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function lstat(
+        path: PathLike,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
     export function lstat(
         path: PathLike,
         options:
             | (StatOptions & {
-                bigint?: false | undefined;
-            })
+                  bigint?: false | undefined;
+              })
             | undefined,
         callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
     ): void;
@@ -1108,12 +1301,18 @@ declare module "fs" {
         options: StatOptions & {
             bigint: true;
         },
-        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: BigIntStats,
+        ) => void,
     ): void;
     export function lstat(
         path: PathLike,
         options: StatOptions | undefined,
-        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: Stats | BigIntStats,
+        ) => void,
     ): void;
     export namespace lstat {
         /**
@@ -1132,7 +1331,10 @@ declare module "fs" {
                 bigint: true;
             },
         ): Promise<BigIntStats>;
-        function __promisify__(path: PathLike, options?: StatOptions): Promise<Stats | BigIntStats>;
+        function __promisify__(
+            path: PathLike,
+            options?: StatOptions,
+        ): Promise<Stats | BigIntStats>;
     }
     /**
      * Asynchronous statfs(2). Returns information about the mounted file system which contains path. The callback gets two arguments (err, stats) where stats is an <fs.StatFs> object.
@@ -1140,13 +1342,16 @@ declare module "fs" {
      * @param path A path to an existing file or directory on the file system to be queried.
      * @param callback
      */
-    export function statfs(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: StatsFs) => void): void;
+    export function statfs(
+        path: PathLike,
+        callback: (err: NodeJS.ErrnoException | null, stats: StatsFs) => void,
+    ): void;
     export function statfs(
         path: PathLike,
         options:
             | (StatFsOptions & {
-                bigint?: false | undefined;
-            })
+                  bigint?: false | undefined;
+              })
             | undefined,
         callback: (err: NodeJS.ErrnoException | null, stats: StatsFs) => void,
     ): void;
@@ -1155,12 +1360,18 @@ declare module "fs" {
         options: StatFsOptions & {
             bigint: true;
         },
-        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStatsFs) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: BigIntStatsFs,
+        ) => void,
     ): void;
     export function statfs(
         path: PathLike,
         options: StatFsOptions | undefined,
-        callback: (err: NodeJS.ErrnoException | null, stats: StatsFs | BigIntStatsFs) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            stats: StatsFs | BigIntStatsFs,
+        ) => void,
     ): void;
     export namespace statfs {
         /**
@@ -1179,7 +1390,10 @@ declare module "fs" {
                 bigint: true;
             },
         ): Promise<BigIntStatsFs>;
-        function __promisify__(path: PathLike, options?: StatFsOptions): Promise<StatsFs | BigIntStatsFs>;
+        function __promisify__(
+            path: PathLike,
+            options?: StatFsOptions,
+        ): Promise<StatsFs | BigIntStatsFs>;
     }
 
     /**
@@ -1201,7 +1415,10 @@ declare module "fs" {
         },
     ): BigIntStatsFs;
 
-    export function statfsSync(path: PathLike, options?: StatFsOptions): StatsFs | BigIntStatsFs;
+    export function statfsSync(
+        path: PathLike,
+        options?: StatFsOptions,
+    ): StatsFs | BigIntStatsFs;
     /**
      * Synchronous lstat(2) - Get file status. Does not dereference symbolic links.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
@@ -1213,14 +1430,21 @@ declare module "fs" {
      * exception are given to the completion callback.
      * @since v0.1.31
      */
-    export function link(existingPath: PathLike, newPath: PathLike, callback: NoParamCallback): void;
+    export function link(
+        existingPath: PathLike,
+        newPath: PathLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace link {
         /**
          * Asynchronous link(2) - Create a new link (also known as a hard link) to an existing file.
          * @param existingPath A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param newPath A path to a file. If a URL is provided, it must use the `file:` protocol.
          */
-        function __promisify__(existingPath: PathLike, newPath: PathLike): Promise<void>;
+        function __promisify__(
+            existingPath: PathLike,
+            newPath: PathLike,
+        ): Promise<void>;
     }
     /**
      * Creates a new link from the `existingPath` to the `newPath`. See the POSIX [`link(2)`](http://man7.org/linux/man-pages/man2/link.2.html) documentation for more detail. Returns `undefined`.
@@ -1269,7 +1493,11 @@ declare module "fs" {
      * @param target A path to an existing file. If a URL is provided, it must use the `file:` protocol.
      * @param path A path to the new symlink. If a URL is provided, it must use the `file:` protocol.
      */
-    export function symlink(target: PathLike, path: PathLike, callback: NoParamCallback): void;
+    export function symlink(
+        target: PathLike,
+        path: PathLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace symlink {
         /**
          * Asynchronous symlink(2) - Create a new symbolic link to an existing file.
@@ -1278,7 +1506,11 @@ declare module "fs" {
          * @param type May be set to `'dir'`, `'file'`, or `'junction'` (default is `'file'`) and is only available on Windows (ignored on other platforms).
          * When using `'junction'`, the `target` argument will automatically be normalized to an absolute path.
          */
-        function __promisify__(target: PathLike, path: PathLike, type?: string | null): Promise<void>;
+        function __promisify__(
+            target: PathLike,
+            path: PathLike,
+            type?: string | null,
+        ): Promise<void>;
         type Type = "dir" | "file" | "junction";
     }
     /**
@@ -1288,7 +1520,11 @@ declare module "fs" {
      * this API: {@link symlink}.
      * @since v0.1.31
      */
-    export function symlinkSync(target: PathLike, path: PathLike, type?: symlink.Type | null): void;
+    export function symlinkSync(
+        target: PathLike,
+        path: PathLike,
+        type?: symlink.Type | null,
+    ): void;
     /**
      * Reads the contents of the symbolic link referred to by `path`. The callback gets
      * two arguments `(err, linkString)`.
@@ -1304,7 +1540,10 @@ declare module "fs" {
     export function readlink(
         path: PathLike,
         options: EncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, linkString: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            linkString: string,
+        ) => void,
     ): void;
     /**
      * Asynchronous readlink(2) - read value of a symbolic link.
@@ -1314,7 +1553,10 @@ declare module "fs" {
     export function readlink(
         path: PathLike,
         options: BufferEncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, linkString: Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            linkString: Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronous readlink(2) - read value of a symbolic link.
@@ -1324,7 +1566,10 @@ declare module "fs" {
     export function readlink(
         path: PathLike,
         options: EncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, linkString: string | Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            linkString: string | Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronous readlink(2) - read value of a symbolic link.
@@ -1332,7 +1577,10 @@ declare module "fs" {
      */
     export function readlink(
         path: PathLike,
-        callback: (err: NodeJS.ErrnoException | null, linkString: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            linkString: string,
+        ) => void,
     ): void;
     export namespace readlink {
         /**
@@ -1340,19 +1588,28 @@ declare module "fs" {
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options?: EncodingOption): Promise<string>;
+        function __promisify__(
+            path: PathLike,
+            options?: EncodingOption,
+        ): Promise<string>;
         /**
          * Asynchronous readlink(2) - read value of a symbolic link.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options: BufferEncodingOption): Promise<Buffer>;
+        function __promisify__(
+            path: PathLike,
+            options: BufferEncodingOption,
+        ): Promise<Buffer>;
         /**
          * Asynchronous readlink(2) - read value of a symbolic link.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options?: EncodingOption): Promise<string | Buffer>;
+        function __promisify__(
+            path: PathLike,
+            options?: EncodingOption,
+        ): Promise<string | Buffer>;
     }
     /**
      * Returns the symbolic link's string value.
@@ -1365,19 +1622,28 @@ declare module "fs" {
      * the link path returned will be passed as a `Buffer` object.
      * @since v0.1.31
      */
-    export function readlinkSync(path: PathLike, options?: EncodingOption): string;
+    export function readlinkSync(
+        path: PathLike,
+        options?: EncodingOption,
+    ): string;
     /**
      * Synchronous readlink(2) - read value of a symbolic link.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function readlinkSync(path: PathLike, options: BufferEncodingOption): Buffer;
+    export function readlinkSync(
+        path: PathLike,
+        options: BufferEncodingOption,
+    ): Buffer;
     /**
      * Synchronous readlink(2) - read value of a symbolic link.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function readlinkSync(path: PathLike, options?: EncodingOption): string | Buffer;
+    export function readlinkSync(
+        path: PathLike,
+        options?: EncodingOption,
+    ): string | Buffer;
     /**
      * Asynchronously computes the canonical pathname by resolving `.`, `..` and
      * symbolic links.
@@ -1407,7 +1673,10 @@ declare module "fs" {
     export function realpath(
         path: PathLike,
         options: EncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, resolvedPath: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            resolvedPath: string,
+        ) => void,
     ): void;
     /**
      * Asynchronous realpath(3) - return the canonicalized absolute pathname.
@@ -1417,7 +1686,10 @@ declare module "fs" {
     export function realpath(
         path: PathLike,
         options: BufferEncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, resolvedPath: Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            resolvedPath: Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronous realpath(3) - return the canonicalized absolute pathname.
@@ -1427,7 +1699,10 @@ declare module "fs" {
     export function realpath(
         path: PathLike,
         options: EncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, resolvedPath: string | Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            resolvedPath: string | Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronous realpath(3) - return the canonicalized absolute pathname.
@@ -1435,7 +1710,10 @@ declare module "fs" {
      */
     export function realpath(
         path: PathLike,
-        callback: (err: NodeJS.ErrnoException | null, resolvedPath: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            resolvedPath: string,
+        ) => void,
     ): void;
     export namespace realpath {
         /**
@@ -1443,19 +1721,28 @@ declare module "fs" {
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options?: EncodingOption): Promise<string>;
+        function __promisify__(
+            path: PathLike,
+            options?: EncodingOption,
+        ): Promise<string>;
         /**
          * Asynchronous realpath(3) - return the canonicalized absolute pathname.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options: BufferEncodingOption): Promise<Buffer>;
+        function __promisify__(
+            path: PathLike,
+            options: BufferEncodingOption,
+        ): Promise<Buffer>;
         /**
          * Asynchronous realpath(3) - return the canonicalized absolute pathname.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(path: PathLike, options?: EncodingOption): Promise<string | Buffer>;
+        function __promisify__(
+            path: PathLike,
+            options?: EncodingOption,
+        ): Promise<string | Buffer>;
         /**
          * Asynchronous [`realpath(3)`](http://man7.org/linux/man-pages/man3/realpath.3.html).
          *
@@ -1476,21 +1763,33 @@ declare module "fs" {
         function native(
             path: PathLike,
             options: EncodingOption,
-            callback: (err: NodeJS.ErrnoException | null, resolvedPath: string) => void,
+            callback: (
+                err: NodeJS.ErrnoException | null,
+                resolvedPath: string,
+            ) => void,
         ): void;
         function native(
             path: PathLike,
             options: BufferEncodingOption,
-            callback: (err: NodeJS.ErrnoException | null, resolvedPath: Buffer) => void,
+            callback: (
+                err: NodeJS.ErrnoException | null,
+                resolvedPath: Buffer,
+            ) => void,
         ): void;
         function native(
             path: PathLike,
             options: EncodingOption,
-            callback: (err: NodeJS.ErrnoException | null, resolvedPath: string | Buffer) => void,
+            callback: (
+                err: NodeJS.ErrnoException | null,
+                resolvedPath: string | Buffer,
+            ) => void,
         ): void;
         function native(
             path: PathLike,
-            callback: (err: NodeJS.ErrnoException | null, resolvedPath: string) => void,
+            callback: (
+                err: NodeJS.ErrnoException | null,
+                resolvedPath: string,
+            ) => void,
         ): void;
     }
     /**
@@ -1500,23 +1799,35 @@ declare module "fs" {
      * this API: {@link realpath}.
      * @since v0.1.31
      */
-    export function realpathSync(path: PathLike, options?: EncodingOption): string;
+    export function realpathSync(
+        path: PathLike,
+        options?: EncodingOption,
+    ): string;
     /**
      * Synchronous realpath(3) - return the canonicalized absolute pathname.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function realpathSync(path: PathLike, options: BufferEncodingOption): Buffer;
+    export function realpathSync(
+        path: PathLike,
+        options: BufferEncodingOption,
+    ): Buffer;
     /**
      * Synchronous realpath(3) - return the canonicalized absolute pathname.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function realpathSync(path: PathLike, options?: EncodingOption): string | Buffer;
+    export function realpathSync(
+        path: PathLike,
+        options?: EncodingOption,
+    ): string | Buffer;
     export namespace realpathSync {
         function native(path: PathLike, options?: EncodingOption): string;
         function native(path: PathLike, options: BufferEncodingOption): Buffer;
-        function native(path: PathLike, options?: EncodingOption): string | Buffer;
+        function native(
+            path: PathLike,
+            options?: EncodingOption,
+        ): string | Buffer;
     }
     /**
      * Asynchronously removes a file or symbolic link. No arguments other than a
@@ -1588,13 +1899,20 @@ declare module "fs" {
      * @since v0.0.2
      */
     export function rmdir(path: PathLike, callback: NoParamCallback): void;
-    export function rmdir(path: PathLike, options: RmDirOptions, callback: NoParamCallback): void;
+    export function rmdir(
+        path: PathLike,
+        options: RmDirOptions,
+        callback: NoParamCallback,
+    ): void;
     export namespace rmdir {
         /**
          * Asynchronous rmdir(2) - delete a directory.
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          */
-        function __promisify__(path: PathLike, options?: RmDirOptions): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            options?: RmDirOptions,
+        ): Promise<void>;
     }
     /**
      * Synchronous [`rmdir(2)`](http://man7.org/linux/man-pages/man2/rmdir.2.html). Returns `undefined`.
@@ -1640,12 +1958,19 @@ declare module "fs" {
      * @since v14.14.0
      */
     export function rm(path: PathLike, callback: NoParamCallback): void;
-    export function rm(path: PathLike, options: RmOptions, callback: NoParamCallback): void;
+    export function rm(
+        path: PathLike,
+        options: RmOptions,
+        callback: NoParamCallback,
+    ): void;
     export namespace rm {
         /**
          * Asynchronously removes files and directories (modeled on the standard POSIX `rm` utility).
          */
-        function __promisify__(path: PathLike, options?: RmOptions): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            options?: RmOptions,
+        ): Promise<void>;
     }
     /**
      * Synchronously removes files and directories (modeled on the standard POSIX `rm`utility). Returns `undefined`.
@@ -1718,8 +2043,8 @@ declare module "fs" {
         options:
             | Mode
             | (MakeDirectoryOptions & {
-                recursive?: false | undefined;
-            })
+                  recursive?: false | undefined;
+              })
             | null
             | undefined,
         callback: NoParamCallback,
@@ -1764,8 +2089,8 @@ declare module "fs" {
             options?:
                 | Mode
                 | (MakeDirectoryOptions & {
-                    recursive?: false | undefined;
-                })
+                      recursive?: false | undefined;
+                  })
                 | null,
         ): Promise<void>;
         /**
@@ -1803,8 +2128,8 @@ declare module "fs" {
         options?:
             | Mode
             | (MakeDirectoryOptions & {
-                recursive?: false | undefined;
-            })
+                  recursive?: false | undefined;
+              })
             | null,
     ): void;
     /**
@@ -1813,7 +2138,10 @@ declare module "fs" {
      * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
      * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
      */
-    export function mkdirSync(path: PathLike, options?: Mode | MakeDirectoryOptions | null): string | undefined;
+    export function mkdirSync(
+        path: PathLike,
+        options?: Mode | MakeDirectoryOptions | null,
+    ): string | undefined;
     /**
      * Creates a unique temporary directory.
      *
@@ -1886,8 +2214,8 @@ declare module "fs" {
         options:
             | "buffer"
             | {
-                encoding: "buffer";
-            },
+                  encoding: "buffer";
+              },
         callback: (err: NodeJS.ErrnoException | null, folder: Buffer) => void,
     ): void;
     /**
@@ -1898,7 +2226,10 @@ declare module "fs" {
     export function mkdtemp(
         prefix: string,
         options: EncodingOption,
-        callback: (err: NodeJS.ErrnoException | null, folder: string | Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            folder: string | Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously creates a unique temporary directory.
@@ -1914,19 +2245,28 @@ declare module "fs" {
          * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(prefix: string, options?: EncodingOption): Promise<string>;
+        function __promisify__(
+            prefix: string,
+            options?: EncodingOption,
+        ): Promise<string>;
         /**
          * Asynchronously creates a unique temporary directory.
          * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(prefix: string, options: BufferEncodingOption): Promise<Buffer>;
+        function __promisify__(
+            prefix: string,
+            options: BufferEncodingOption,
+        ): Promise<Buffer>;
         /**
          * Asynchronously creates a unique temporary directory.
          * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
          * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
          */
-        function __promisify__(prefix: string, options?: EncodingOption): Promise<string | Buffer>;
+        function __promisify__(
+            prefix: string,
+            options?: EncodingOption,
+        ): Promise<string | Buffer>;
     }
     /**
      * Returns the created directory path.
@@ -1938,19 +2278,28 @@ declare module "fs" {
      * object with an `encoding` property specifying the character encoding to use.
      * @since v5.10.0
      */
-    export function mkdtempSync(prefix: string, options?: EncodingOption): string;
+    export function mkdtempSync(
+        prefix: string,
+        options?: EncodingOption,
+    ): string;
     /**
      * Synchronously creates a unique temporary directory.
      * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function mkdtempSync(prefix: string, options: BufferEncodingOption): Buffer;
+    export function mkdtempSync(
+        prefix: string,
+        options: BufferEncodingOption,
+    ): Buffer;
     /**
      * Synchronously creates a unique temporary directory.
      * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    export function mkdtempSync(prefix: string, options?: EncodingOption): string | Buffer;
+    export function mkdtempSync(
+        prefix: string,
+        options?: EncodingOption,
+    ): string | Buffer;
     /**
      * Reads the contents of a directory. The callback gets two arguments `(err, files)`where `files` is an array of the names of the files in the directory excluding`'.'` and `'..'`.
      *
@@ -1968,10 +2317,10 @@ declare module "fs" {
         path: PathLike,
         options:
             | {
-                encoding: BufferEncoding | null;
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            }
+                  encoding: BufferEncoding | null;
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              }
             | BufferEncoding
             | undefined
             | null,
@@ -1986,10 +2335,10 @@ declare module "fs" {
         path: PathLike,
         options:
             | {
-                encoding: "buffer";
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            }
+                  encoding: "buffer";
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              }
             | "buffer",
         callback: (err: NodeJS.ErrnoException | null, files: Buffer[]) => void,
     ): void;
@@ -2002,13 +2351,16 @@ declare module "fs" {
         path: PathLike,
         options:
             | (ObjectEncodingOptions & {
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            })
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              })
             | BufferEncoding
             | undefined
             | null,
-        callback: (err: NodeJS.ErrnoException | null, files: string[] | Buffer[]) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            files: string[] | Buffer[],
+        ) => void,
     ): void;
     /**
      * Asynchronous readdir(3) - read a directory.
@@ -2041,10 +2393,10 @@ declare module "fs" {
             path: PathLike,
             options?:
                 | {
-                    encoding: BufferEncoding | null;
-                    withFileTypes?: false | undefined;
-                    recursive?: boolean | undefined;
-                }
+                      encoding: BufferEncoding | null;
+                      withFileTypes?: false | undefined;
+                      recursive?: boolean | undefined;
+                  }
                 | BufferEncoding
                 | null,
         ): Promise<string[]>;
@@ -2058,10 +2410,10 @@ declare module "fs" {
             options:
                 | "buffer"
                 | {
-                    encoding: "buffer";
-                    withFileTypes?: false | undefined;
-                    recursive?: boolean | undefined;
-                },
+                      encoding: "buffer";
+                      withFileTypes?: false | undefined;
+                      recursive?: boolean | undefined;
+                  },
         ): Promise<Buffer[]>;
         /**
          * Asynchronous readdir(3) - read a directory.
@@ -2072,9 +2424,9 @@ declare module "fs" {
             path: PathLike,
             options?:
                 | (ObjectEncodingOptions & {
-                    withFileTypes?: false | undefined;
-                    recursive?: boolean | undefined;
-                })
+                      withFileTypes?: false | undefined;
+                      recursive?: boolean | undefined;
+                  })
                 | BufferEncoding
                 | null,
         ): Promise<string[] | Buffer[]>;
@@ -2108,10 +2460,10 @@ declare module "fs" {
         path: PathLike,
         options?:
             | {
-                encoding: BufferEncoding | null;
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            }
+                  encoding: BufferEncoding | null;
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              }
             | BufferEncoding
             | null,
     ): string[];
@@ -2124,10 +2476,10 @@ declare module "fs" {
         path: PathLike,
         options:
             | {
-                encoding: "buffer";
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            }
+                  encoding: "buffer";
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              }
             | "buffer",
     ): Buffer[];
     /**
@@ -2139,9 +2491,9 @@ declare module "fs" {
         path: PathLike,
         options?:
             | (ObjectEncodingOptions & {
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            })
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              })
             | BufferEncoding
             | null,
     ): string[] | Buffer[];
@@ -2222,7 +2574,10 @@ declare module "fs" {
      * Asynchronous open(2) - open and possibly create a file. If the file is created, its mode will be `0o666`.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      */
-    export function open(path: PathLike, callback: (err: NodeJS.ErrnoException | null, fd: number) => void): void;
+    export function open(
+        path: PathLike,
+        callback: (err: NodeJS.ErrnoException | null, fd: number) => void,
+    ): void;
 
     export namespace open {
         /**
@@ -2230,7 +2585,11 @@ declare module "fs" {
          * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
          * @param mode A file mode. If a string is passed, it is parsed as an octal integer. If not supplied, defaults to `0o666`.
          */
-        function __promisify__(path: PathLike, flags: OpenMode, mode?: Mode | null): Promise<number>;
+        function __promisify__(
+            path: PathLike,
+            flags: OpenMode,
+            mode?: Mode | null,
+        ): Promise<number>;
     }
     /**
      * Returns an integer representing the file descriptor.
@@ -2241,7 +2600,11 @@ declare module "fs" {
      * @param [flags='r']
      * @param [mode=0o666]
      */
-    export function openSync(path: PathLike, flags: OpenMode, mode?: Mode | null): number;
+    export function openSync(
+        path: PathLike,
+        flags: OpenMode,
+        mode?: Mode | null,
+    ): number;
     /**
      * Change the file system timestamps of the object referenced by `path`.
      *
@@ -2251,7 +2614,12 @@ declare module "fs" {
      * * If the value can not be converted to a number, or is `NaN`, `Infinity` or`-Infinity`, an `Error` will be thrown.
      * @since v0.4.2
      */
-    export function utimes(path: PathLike, atime: TimeLike, mtime: TimeLike, callback: NoParamCallback): void;
+    export function utimes(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace utimes {
         /**
          * Asynchronously change file timestamps of the file referenced by the supplied path.
@@ -2259,7 +2627,11 @@ declare module "fs" {
          * @param atime The last access time. If a string is provided, it will be coerced to number.
          * @param mtime The last modified time. If a string is provided, it will be coerced to number.
          */
-        function __promisify__(path: PathLike, atime: TimeLike, mtime: TimeLike): Promise<void>;
+        function __promisify__(
+            path: PathLike,
+            atime: TimeLike,
+            mtime: TimeLike,
+        ): Promise<void>;
     }
     /**
      * Returns `undefined`.
@@ -2268,13 +2640,22 @@ declare module "fs" {
      * this API: {@link utimes}.
      * @since v0.4.2
      */
-    export function utimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
+    export function utimesSync(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+    ): void;
     /**
      * Change the file system timestamps of the object referenced by the supplied file
      * descriptor. See {@link utimes}.
      * @since v0.4.2
      */
-    export function futimes(fd: number, atime: TimeLike, mtime: TimeLike, callback: NoParamCallback): void;
+    export function futimes(
+        fd: number,
+        atime: TimeLike,
+        mtime: TimeLike,
+        callback: NoParamCallback,
+    ): void;
     export namespace futimes {
         /**
          * Asynchronously change file timestamps of the file referenced by the supplied file descriptor.
@@ -2282,13 +2663,21 @@ declare module "fs" {
          * @param atime The last access time. If a string is provided, it will be coerced to number.
          * @param mtime The last modified time. If a string is provided, it will be coerced to number.
          */
-        function __promisify__(fd: number, atime: TimeLike, mtime: TimeLike): Promise<void>;
+        function __promisify__(
+            fd: number,
+            atime: TimeLike,
+            mtime: TimeLike,
+        ): Promise<void>;
     }
     /**
      * Synchronous version of {@link futimes}. Returns `undefined`.
      * @since v0.4.2
      */
-    export function futimesSync(fd: number, atime: TimeLike, mtime: TimeLike): void;
+    export function futimesSync(
+        fd: number,
+        atime: TimeLike,
+        mtime: TimeLike,
+    ): void;
     /**
      * Request that all data for the open file descriptor is flushed to the storage
      * device. The specific implementation is operating system and device specific.
@@ -2341,7 +2730,11 @@ declare module "fs" {
         offset: number | undefined | null,
         length: number | undefined | null,
         position: number | undefined | null,
-        callback: (err: NodeJS.ErrnoException | null, written: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `buffer` to the file referenced by the supplied file descriptor.
@@ -2354,7 +2747,11 @@ declare module "fs" {
         buffer: TBuffer,
         offset: number | undefined | null,
         length: number | undefined | null,
-        callback: (err: NodeJS.ErrnoException | null, written: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `buffer` to the file referenced by the supplied file descriptor.
@@ -2365,7 +2762,11 @@ declare module "fs" {
         fd: number,
         buffer: TBuffer,
         offset: number | undefined | null,
-        callback: (err: NodeJS.ErrnoException | null, written: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `buffer` to the file referenced by the supplied file descriptor.
@@ -2374,7 +2775,11 @@ declare module "fs" {
     export function write<TBuffer extends NodeJS.ArrayBufferView>(
         fd: number,
         buffer: TBuffer,
-        callback: (err: NodeJS.ErrnoException | null, written: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `string` to the file referenced by the supplied file descriptor.
@@ -2388,7 +2793,11 @@ declare module "fs" {
         string: string,
         position: number | undefined | null,
         encoding: BufferEncoding | undefined | null,
-        callback: (err: NodeJS.ErrnoException | null, written: number, str: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            str: string,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `string` to the file referenced by the supplied file descriptor.
@@ -2400,7 +2809,11 @@ declare module "fs" {
         fd: number,
         string: string,
         position: number | undefined | null,
-        callback: (err: NodeJS.ErrnoException | null, written: number, str: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            str: string,
+        ) => void,
     ): void;
     /**
      * Asynchronously writes `string` to the file referenced by the supplied file descriptor.
@@ -2410,7 +2823,11 @@ declare module "fs" {
     export function write(
         fd: number,
         string: string,
-        callback: (err: NodeJS.ErrnoException | null, written: number, str: string) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            written: number,
+            str: string,
+        ) => void,
     ): void;
     export namespace write {
         /**
@@ -2488,7 +2905,8 @@ declare module "fs" {
          */
         position?: ReadPosition | null | undefined;
     }
-    export interface ReadAsyncOptions<TBuffer extends NodeJS.ArrayBufferView> extends ReadSyncOptions {
+    export interface ReadAsyncOptions<TBuffer extends NodeJS.ArrayBufferView>
+        extends ReadSyncOptions {
         buffer?: TBuffer;
     }
     /**
@@ -2514,7 +2932,11 @@ declare module "fs" {
         offset: number,
         length: number,
         position: ReadPosition | null,
-        callback: (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     /**
      * Similar to the above `fs.read` function, this version takes an optional `options` object.
@@ -2528,11 +2950,19 @@ declare module "fs" {
     export function read<TBuffer extends NodeJS.ArrayBufferView>(
         fd: number,
         options: ReadAsyncOptions<TBuffer>,
-        callback: (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: TBuffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: TBuffer,
+        ) => void,
     ): void;
     export function read(
         fd: number,
-        callback: (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: NodeJS.ArrayBufferView) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: NodeJS.ArrayBufferView,
+        ) => void,
     ): void;
     export namespace read {
         /**
@@ -2582,7 +3012,11 @@ declare module "fs" {
      * Similar to the above `fs.readSync` function, this version takes an optional `options` object.
      * If no `options` object is specified, it will default with the above values.
      */
-    export function readSync(fd: number, buffer: NodeJS.ArrayBufferView, opts?: ReadSyncOptions): number;
+    export function readSync(
+        fd: number,
+        buffer: NodeJS.ArrayBufferView,
+        opts?: ReadSyncOptions,
+    ): number;
     /**
      * Asynchronously reads the entire contents of a file.
      *
@@ -2653,9 +3087,9 @@ declare module "fs" {
         path: PathOrFileDescriptor,
         options:
             | ({
-                encoding?: null | undefined;
-                flag?: string | undefined;
-            } & Abortable)
+                  encoding?: null | undefined;
+                  flag?: string | undefined;
+              } & Abortable)
             | undefined
             | null,
         callback: (err: NodeJS.ErrnoException | null, data: Buffer) => void,
@@ -2671,9 +3105,9 @@ declare module "fs" {
         path: PathOrFileDescriptor,
         options:
             | ({
-                encoding: BufferEncoding;
-                flag?: string | undefined;
-            } & Abortable)
+                  encoding: BufferEncoding;
+                  flag?: string | undefined;
+              } & Abortable)
             | BufferEncoding,
         callback: (err: NodeJS.ErrnoException | null, data: string) => void,
     ): void;
@@ -2688,12 +3122,15 @@ declare module "fs" {
         path: PathOrFileDescriptor,
         options:
             | (ObjectEncodingOptions & {
-                flag?: string | undefined;
-            } & Abortable)
+                  flag?: string | undefined;
+              } & Abortable)
             | BufferEncoding
             | undefined
             | null,
-        callback: (err: NodeJS.ErrnoException | null, data: string | Buffer) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            data: string | Buffer,
+        ) => void,
     ): void;
     /**
      * Asynchronously reads the entire contents of a file.
@@ -2731,9 +3168,9 @@ declare module "fs" {
             path: PathOrFileDescriptor,
             options:
                 | {
-                    encoding: BufferEncoding;
-                    flag?: string | undefined;
-                }
+                      encoding: BufferEncoding;
+                      flag?: string | undefined;
+                  }
                 | BufferEncoding,
         ): Promise<string>;
         /**
@@ -2748,8 +3185,8 @@ declare module "fs" {
             path: PathOrFileDescriptor,
             options?:
                 | (ObjectEncodingOptions & {
-                    flag?: string | undefined;
-                })
+                      flag?: string | undefined;
+                  })
                 | BufferEncoding
                 | null,
         ): Promise<string | Buffer>;
@@ -2796,9 +3233,9 @@ declare module "fs" {
         path: PathOrFileDescriptor,
         options:
             | {
-                encoding: BufferEncoding;
-                flag?: string | undefined;
-            }
+                  encoding: BufferEncoding;
+                  flag?: string | undefined;
+              }
             | BufferEncoding,
     ): string;
     /**
@@ -2812,20 +3249,17 @@ declare module "fs" {
         path: PathOrFileDescriptor,
         options?:
             | (ObjectEncodingOptions & {
-                flag?: string | undefined;
-            })
+                  flag?: string | undefined;
+              })
             | BufferEncoding
             | null,
     ): string | Buffer;
     export type WriteFileOptions =
-        | (
-            & ObjectEncodingOptions
-            & Abortable
-            & {
-                mode?: Mode | undefined;
-                flag?: string | undefined;
-            }
-        )
+        | (ObjectEncodingOptions &
+              Abortable & {
+                  mode?: Mode | undefined;
+                  flag?: string | undefined;
+              })
         | BufferEncoding
         | null;
     /**
@@ -3005,7 +3439,11 @@ declare module "fs" {
      * If a file descriptor is provided, the underlying file will _not_ be closed automatically.
      * @param data The data to write. If something other than a Buffer or Uint8Array is provided, the value is coerced to a string.
      */
-    export function appendFile(file: PathOrFileDescriptor, data: string | Uint8Array, callback: NoParamCallback): void;
+    export function appendFile(
+        file: PathOrFileDescriptor,
+        data: string | Uint8Array,
+        callback: NoParamCallback,
+    ): void;
     export namespace appendFile {
         /**
          * Asynchronously append data to a file, creating the file if it does not exist.
@@ -3178,8 +3616,8 @@ declare module "fs" {
         filename: PathLike,
         options:
             | (WatchFileOptions & {
-                bigint?: false | undefined;
-            })
+                  bigint?: false | undefined;
+              })
             | undefined,
         listener: StatsListener,
     ): StatWatcher;
@@ -3187,8 +3625,8 @@ declare module "fs" {
         filename: PathLike,
         options:
             | (WatchFileOptions & {
-                bigint: true;
-            })
+                  bigint: true;
+              })
             | undefined,
         listener: BigIntStatsListener,
     ): StatWatcher;
@@ -3197,7 +3635,10 @@ declare module "fs" {
      * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
      * @param listener The callback listener will be called each time the file is accessed.
      */
-    export function watchFile(filename: PathLike, listener: StatsListener): StatWatcher;
+    export function watchFile(
+        filename: PathLike,
+        listener: StatsListener,
+    ): StatWatcher;
     /**
      * Stop watching for changes on `filename`. If `listener` is specified, only that
      * particular listener is removed. Otherwise, _all_ listeners are removed,
@@ -3210,17 +3651,29 @@ declare module "fs" {
      * @since v0.1.31
      * @param listener Optional, a listener previously attached using `fs.watchFile()`
      */
-    export function unwatchFile(filename: PathLike, listener?: StatsListener): void;
-    export function unwatchFile(filename: PathLike, listener?: BigIntStatsListener): void;
+    export function unwatchFile(
+        filename: PathLike,
+        listener?: StatsListener,
+    ): void;
+    export function unwatchFile(
+        filename: PathLike,
+        listener?: BigIntStatsListener,
+    ): void;
     export interface WatchOptions extends Abortable {
         encoding?: BufferEncoding | "buffer" | undefined;
         persistent?: boolean | undefined;
         recursive?: boolean | undefined;
     }
     export type WatchEventType = "rename" | "change";
-    export type WatchListener<T> = (event: WatchEventType, filename: T | null) => void;
+    export type WatchListener<T> = (
+        event: WatchEventType,
+        filename: T | null,
+    ) => void;
     export type StatsListener = (curr: Stats, prev: Stats) => void;
-    export type BigIntStatsListener = (curr: BigIntStats, prev: BigIntStats) => void;
+    export type BigIntStatsListener = (
+        curr: BigIntStats,
+        prev: BigIntStats,
+    ) => void;
     /**
      * Watch for changes on `filename`, where `filename` is either a file or a
      * directory.
@@ -3245,8 +3698,8 @@ declare module "fs" {
         filename: PathLike,
         options:
             | (WatchOptions & {
-                encoding: "buffer";
-            })
+                  encoding: "buffer";
+              })
             | "buffer",
         listener?: WatchListener<Buffer>,
     ): FSWatcher;
@@ -3280,7 +3733,10 @@ declare module "fs" {
      * Watch for changes on `filename`, where `filename` is either a file or a directory, returning an `FSWatcher`.
      * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
      */
-    export function watch(filename: PathLike, listener?: WatchListener<string>): FSWatcher;
+    export function watch(
+        filename: PathLike,
+        listener?: WatchListener<string>,
+    ): FSWatcher;
     /**
      * Test whether or not the given path exists by checking with the file system.
      * Then call the `callback` argument with either true or false:
@@ -3410,7 +3866,10 @@ declare module "fs" {
      * @since v0.0.2
      * @deprecated Since v1.0.0 - Use {@link stat} or {@link access} instead.
      */
-    export function exists(path: PathLike, callback: (exists: boolean) => void): void;
+    export function exists(
+        path: PathLike,
+        callback: (exists: boolean) => void,
+    ): void;
     /** @deprecated */
     export namespace exists {
         /**
@@ -3711,7 +4170,11 @@ declare module "fs" {
      * @since v0.11.15
      * @param [mode=fs.constants.F_OK]
      */
-    export function access(path: PathLike, mode: number | undefined, callback: NoParamCallback): void;
+    export function access(
+        path: PathLike,
+        mode: number | undefined,
+        callback: NoParamCallback,
+    ): void;
     /**
      * Asynchronously tests a user's permissions for the file specified by path.
      * @param path A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
@@ -3841,7 +4304,10 @@ declare module "fs" {
      * If `options` is a string, then it specifies the encoding.
      * @since v0.1.31
      */
-    export function createReadStream(path: PathLike, options?: BufferEncoding | ReadStreamOptions): ReadStream;
+    export function createReadStream(
+        path: PathLike,
+        options?: BufferEncoding | ReadStreamOptions,
+    ): ReadStream;
     /**
      * `options` may also include a `start` option to allow writing data at some
      * position past the beginning of the file, allowed values are in the
@@ -3869,7 +4335,10 @@ declare module "fs" {
      * If `options` is a string, then it specifies the encoding.
      * @since v0.1.31
      */
-    export function createWriteStream(path: PathLike, options?: BufferEncoding | WriteStreamOptions): WriteStream;
+    export function createWriteStream(
+        path: PathLike,
+        options?: BufferEncoding | WriteStreamOptions,
+    ): WriteStream;
     /**
      * Forces all currently queued I/O operations associated with the file to the
      * operating system's synchronized I/O completion state. Refer to the POSIX [`fdatasync(2)`](http://man7.org/linux/man-pages/man2/fdatasync.2.html) documentation for details. No arguments other
@@ -3930,10 +4399,23 @@ declare module "fs" {
      * @param dest destination filename of the copy operation
      * @param [mode=0] modifiers for copy operation.
      */
-    export function copyFile(src: PathLike, dest: PathLike, callback: NoParamCallback): void;
-    export function copyFile(src: PathLike, dest: PathLike, mode: number, callback: NoParamCallback): void;
+    export function copyFile(
+        src: PathLike,
+        dest: PathLike,
+        callback: NoParamCallback,
+    ): void;
+    export function copyFile(
+        src: PathLike,
+        dest: PathLike,
+        mode: number,
+        callback: NoParamCallback,
+    ): void;
     export namespace copyFile {
-        function __promisify__(src: PathLike, dst: PathLike, mode?: number): Promise<void>;
+        function __promisify__(
+            src: PathLike,
+            dst: PathLike,
+            mode?: number,
+        ): Promise<void>;
     }
     /**
      * Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it
@@ -3969,7 +4451,11 @@ declare module "fs" {
      * @param dest destination filename of the copy operation
      * @param [mode=0] modifiers for copy operation.
      */
-    export function copyFileSync(src: PathLike, dest: PathLike, mode?: number): void;
+    export function copyFileSync(
+        src: PathLike,
+        dest: PathLike,
+        mode?: number,
+    ): void;
     /**
      * Write an array of `ArrayBufferView`s to the file specified by `fd` using`writev()`.
      *
@@ -3992,13 +4478,21 @@ declare module "fs" {
     export function writev(
         fd: number,
         buffers: readonly NodeJS.ArrayBufferView[],
-        cb: (err: NodeJS.ErrnoException | null, bytesWritten: number, buffers: NodeJS.ArrayBufferView[]) => void,
+        cb: (
+            err: NodeJS.ErrnoException | null,
+            bytesWritten: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => void,
     ): void;
     export function writev(
         fd: number,
         buffers: readonly NodeJS.ArrayBufferView[],
         position: number,
-        cb: (err: NodeJS.ErrnoException | null, bytesWritten: number, buffers: NodeJS.ArrayBufferView[]) => void,
+        cb: (
+            err: NodeJS.ErrnoException | null,
+            bytesWritten: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => void,
     ): void;
     export interface WriteVResult {
         bytesWritten: number;
@@ -4017,7 +4511,11 @@ declare module "fs" {
      * @since v12.9.0
      * @return The number of bytes written.
      */
-    export function writevSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
+    export function writevSync(
+        fd: number,
+        buffers: readonly NodeJS.ArrayBufferView[],
+        position?: number,
+    ): number;
     /**
      * Read from a file specified by `fd` and write to an array of `ArrayBufferView`s
      * using `readv()`.
@@ -4035,13 +4533,21 @@ declare module "fs" {
     export function readv(
         fd: number,
         buffers: readonly NodeJS.ArrayBufferView[],
-        cb: (err: NodeJS.ErrnoException | null, bytesRead: number, buffers: NodeJS.ArrayBufferView[]) => void,
+        cb: (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => void,
     ): void;
     export function readv(
         fd: number,
         buffers: readonly NodeJS.ArrayBufferView[],
         position: number,
-        cb: (err: NodeJS.ErrnoException | null, bytesRead: number, buffers: NodeJS.ArrayBufferView[]) => void,
+        cb: (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => void,
     ): void;
     export interface ReadVResult {
         bytesRead: number;
@@ -4060,7 +4566,11 @@ declare module "fs" {
      * @since v13.13.0, v12.17.0
      * @return The number of bytes read.
      */
-    export function readvSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
+    export function readvSync(
+        fd: number,
+        buffers: readonly NodeJS.ArrayBufferView[],
+        position?: number,
+    ): number;
     export interface OpenDirOptions {
         encoding?: BufferEncoding | undefined;
         /**
@@ -4093,14 +4603,20 @@ declare module "fs" {
      * directory and subsequent read operations.
      * @since v12.12.0
      */
-    export function opendir(path: PathLike, cb: (err: NodeJS.ErrnoException | null, dir: Dir) => void): void;
+    export function opendir(
+        path: PathLike,
+        cb: (err: NodeJS.ErrnoException | null, dir: Dir) => void,
+    ): void;
     export function opendir(
         path: PathLike,
         options: OpenDirOptions,
         cb: (err: NodeJS.ErrnoException | null, dir: Dir) => void,
     ): void;
     export namespace opendir {
-        function __promisify__(path: PathLike, options?: OpenDirOptions): Promise<Dir>;
+        function __promisify__(
+            path: PathLike,
+            options?: OpenDirOptions,
+        ): Promise<Dir>;
     }
     export interface BigIntStats extends StatsBase<bigint> {
         atimeNs: bigint;
@@ -4162,7 +4678,10 @@ declare module "fs" {
          * Function to filter copied files/directories. Return
          * `true` to copy the item, `false` to ignore it.
          */
-        filter?(source: string, destination: string): boolean | Promise<boolean>;
+        filter?(
+            source: string,
+            destination: string,
+        ): boolean | Promise<boolean>;
     }
     export interface CopySyncOptions extends CopyOptionsBase {
         /**
@@ -4204,7 +4723,11 @@ declare module "fs" {
      * @param src source path to copy.
      * @param dest destination path to copy to.
      */
-    export function cpSync(source: string | URL, destination: string | URL, opts?: CopySyncOptions): void;
+    export function cpSync(
+        source: string | URL,
+        destination: string | URL,
+        opts?: CopySyncOptions,
+    ): void;
 }
 declare module "node:fs" {
     export * from "fs";

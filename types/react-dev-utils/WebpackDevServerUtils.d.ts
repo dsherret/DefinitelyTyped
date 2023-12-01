@@ -14,7 +14,10 @@ export interface Urls {
  * refused to use another port, or if the terminal is not interactive and can’t
  * present user with the choice, resolves to `null`.
  */
-export function choosePort(host: string, defaultPort: number): Promise<number | null>;
+export function choosePort(
+    host: string,
+    defaultPort: number,
+): Promise<number | null>;
 
 export interface CreateCompilerOptions {
     /**
@@ -68,7 +71,9 @@ export interface CreateCompilerOptionsTypescript extends CreateCompilerOptions {
 export function createCompiler(opts: CreateCompilerOptions): webpack.Compiler;
 // if the signatures are merged, TS will not enforce that both useTypeScript and devSocket are provided
 // tslint:disable-next-line:unified-signatures
-export function createCompiler(opts: CreateCompilerOptionsTypescript): webpack.Compiler;
+export function createCompiler(
+    opts: CreateCompilerOptionsTypescript,
+): webpack.Compiler;
 
 /**
  * Creates a WebpackDevServer `proxy` configuration object from the `proxy`

@@ -14,9 +14,13 @@ server.start({ port: 8080 }, function started() {
 const client = JsonRpcWs.createClient();
 
 client.connect("ws://localhost:8080", function connected() {
-    client.send("mirror", ["a param", "another param"], function mirrorReply(error, reply) {
-        console.log("mirror reply", reply);
-    });
+    client.send(
+        "mirror",
+        ["a param", "another param"],
+        function mirrorReply(error, reply) {
+            console.log("mirror reply", reply);
+        },
+    );
 });
 
 interface CustomConnection extends JsonRpcWs.Connection {
@@ -25,7 +29,7 @@ interface CustomConnection extends JsonRpcWs.Connection {
 
 const serverWithCustomConnection = JsonRpcWs.createServer<CustomConnection>();
 
-serverWithCustomConnection.expose("join", function(params: { room: string }) {
+serverWithCustomConnection.expose("join", function (params: { room: string }) {
     this.rooms = this.rooms || [];
     this.rooms.push(params.room);
     console.log(`${this.id} joined ${params.room}`);

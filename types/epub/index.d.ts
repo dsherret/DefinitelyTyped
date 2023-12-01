@@ -37,7 +37,11 @@ declare module "epub" {
     }
 
     class EPub extends EventEmitter {
-        constructor(epubfile: string, imagewebroot?: string, chapterwebroot?: string);
+        constructor(
+            epubfile: string,
+            imagewebroot?: string,
+            chapterwebroot?: string,
+        );
 
         metadata: Object;
         manifest: Object;
@@ -47,13 +51,25 @@ declare module "epub" {
 
         parse(): void;
 
-        getChapter(chapterId: string, callback: (error: Error, text: string) => void): void;
+        getChapter(
+            chapterId: string,
+            callback: (error: Error, text: string) => void,
+        ): void;
 
-        getChapterRaw(chapterId: string, callback: (error: Error, text: string) => void): void;
+        getChapterRaw(
+            chapterId: string,
+            callback: (error: Error, text: string) => void,
+        ): void;
 
-        getImage(id: string, callback: (error: Error, data: Buffer, mimeType: string) => void): void;
+        getImage(
+            id: string,
+            callback: (error: Error, data: Buffer, mimeType: string) => void,
+        ): void;
 
-        getFile(id: string, callback: (error: Error, data: Buffer, mimeType: string) => void): void;
+        getFile(
+            id: string,
+            callback: (error: Error, data: Buffer, mimeType: string) => void,
+        ): void;
     }
 
     export = EPub;

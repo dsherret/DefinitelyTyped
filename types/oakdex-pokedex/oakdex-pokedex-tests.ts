@@ -1,7 +1,17 @@
-import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType, Region } from "oakdex-pokedex";
+import {
+    Ability,
+    EggGroup,
+    Generation,
+    Item,
+    Move,
+    Nature,
+    Pokemon,
+    PokemonType,
+    Region,
+} from "oakdex-pokedex";
 
 // Pokemon
-(() => {
+() => {
     const pikachu: Pokemon = {
         names: {
             fr: "Pikachu",
@@ -10,9 +20,7 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             en: "Pikachu",
         },
         national_id: 25,
-        types: [
-            "Electric",
-        ],
+        types: ["Electric"],
         abilities: [
             {
                 name: "Static",
@@ -27,14 +35,8 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             female: 50,
         },
         catch_rate: 190,
-        egg_groups: [
-            "Field",
-            "Fairy",
-        ],
-        hatch_time: [
-            5355,
-            5609,
-        ],
+        egg_groups: ["Field", "Fairy"],
+        hatch_time: [5355, 5609],
         height_us: "1'04\"",
         height_eu: "0.4 m",
         weight_us: "13.2 lbs.",
@@ -86,9 +88,7 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
                     it: "Pikachu (Pokémon compagno)",
                     en: "Pikachu (Partner Pokémon)",
                 },
-                types: [
-                    "Electric",
-                ],
+                types: ["Electric"],
                 base_stats: {
                     hp: 45,
                     atk: 80,
@@ -110,34 +110,16 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             },
         },
         pokeathlon_stats: {
-            speed: [
-                3,
-                4,
-            ],
-            power: [
-                3,
-                4,
-            ],
-            stamina: [
-                3,
-                4,
-            ],
-            skill: [
-                3,
-                4,
-            ],
-            jump: [
-                3,
-                4,
-            ],
+            speed: [3, 4],
+            power: [3, 4],
+            stamina: [3, 4],
+            skill: [3, 4],
+            jump: [3, 4],
         },
         ultra_alola_id: 32,
         move_learnsets: [
             {
-                games: [
-                    "Red",
-                    "Blue",
-                ],
+                games: ["Red", "Blue"],
                 learnset: [
                     {
                         move: "Growl",
@@ -187,10 +169,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             },
         ],
     };
-});
+};
 
 // Move
-(() => {
+() => {
     const tackle: Move = {
         index_number: 33,
         pp: 35,
@@ -251,10 +233,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             },
         },
     };
-});
+};
 
 // Ability
-(() => {
+() => {
     const airLock: Ability = {
         index_number: 76,
         names: {
@@ -268,10 +250,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             de: "Example",
         },
     };
-});
+};
 
 // EggGroup
-(() => {
+() => {
     const bug: EggGroup = {
         names: {
             en: "Bug",
@@ -282,10 +264,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             es: "Bicho",
         },
     };
-});
+};
 
 // Generation
-(() => {
+() => {
     const gen1: Generation = {
         number: 1,
         dex_name: "kanto_id",
@@ -308,10 +290,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             },
         ],
     };
-});
+};
 
 // Item
-(() => {
+() => {
     const potion: Item = {
         names: {
             en: "Potion",
@@ -323,11 +305,7 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
         category: "Potions",
         descriptions: [
             {
-                games: [
-                    "Gold",
-                    "Silver",
-                    "Crystal",
-                ],
+                games: ["Gold", "Silver", "Crystal"],
                 translations: {
                     en: "Restores Pokémon HP by 20.",
                     de: "Füllt die KP um 20 auf.",
@@ -336,41 +314,23 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
         ],
         prices: [
             {
-                games: [
-                    "Red",
-                    "Blue",
-                    "Yellow",
-                ],
+                games: ["Red", "Blue", "Yellow"],
                 buying: 300,
                 selling: 150,
             },
             {
-                games: [
-                    "Sun",
-                    "Moon",
-                    "Ultra Sun",
-                    "Ultra Moon",
-                ],
+                games: ["Sun", "Moon", "Ultra Sun", "Ultra Moon"],
                 buying: 200,
                 selling: 100,
             },
         ],
         pockets: [
             {
-                generations: [
-                    1,
-                    2,
-                    3,
-                ],
+                generations: [1, 2, 3],
                 pocket: "Items",
             },
             {
-                generations: [
-                    4,
-                    5,
-                    6,
-                    7,
-                ],
+                generations: [4, 5, 6, 7],
                 pocket: "Medicine",
             },
         ],
@@ -388,10 +348,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
             },
         ],
     };
-});
+};
 
 // Nature
-(() => {
+() => {
     const bold: Nature = {
         names: {
             en: "Bold",
@@ -402,10 +362,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
         favorite_flavor: "Sour",
         disliked_flavor: "Spicy",
     };
-});
+};
 
 // PokemonType
-(() => {
+() => {
     const dragon: PokemonType = {
         names: {
             dk: "Drage",
@@ -438,10 +398,10 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
         },
         color: "#6F35FC",
     };
-});
+};
 
 // Region
-(() => {
+() => {
     const alola: Region = {
         names: {
             en: "Alola",
@@ -466,17 +426,11 @@ import { Ability, EggGroup, Generation, Item, Move, Nature, Pokemon, PokemonType
                         min_level: 2,
                         max_level: 3,
                         rarity: "common",
-                        games: [
-                            "Sun",
-                            "Moon",
-                        ],
-                        day_times: [
-                            "day",
-                            "night",
-                        ],
+                        games: ["Sun", "Moon"],
+                        day_times: ["day", "night"],
                     },
                 ],
             },
         ],
     };
-});
+};

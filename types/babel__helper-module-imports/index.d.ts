@@ -92,7 +92,11 @@ export interface ImportOptions {
     blockHoist?: number;
 }
 
-export function addDefault(path: NodePath, importedSource: string, opts?: Partial<ImportOptions>): t.Identifier;
+export function addDefault(
+    path: NodePath,
+    importedSource: string,
+    opts?: Partial<ImportOptions>,
+): t.Identifier;
 
 /**
  * add a named import to the program path of given path
@@ -108,7 +112,10 @@ export function addNamed(
     path: NodePath,
     name: string,
     importedSource: string,
-    opts?: Omit<Partial<ImportOptions>, "ensureLiveReference" | "ensureNoContext">,
+    opts?: Omit<
+        Partial<ImportOptions>,
+        "ensureLiveReference" | "ensureNoContext"
+    >,
 ): t.Identifier;
 export function addNamed(
     path: NodePath,
@@ -127,17 +134,39 @@ export function addNamed(
     },
 ): t.SequenceExpression;
 
-export function addNamespace(path: NodePath, importedSource: string, opts?: Partial<ImportOptions>): t.Identifier;
+export function addNamespace(
+    path: NodePath,
+    importedSource: string,
+    opts?: Partial<ImportOptions>,
+): t.Identifier;
 
-export function addSideEffect(path: NodePath, importedSource: string, opts?: Partial<ImportOptions>): void;
+export function addSideEffect(
+    path: NodePath,
+    importedSource: string,
+    opts?: Partial<ImportOptions>,
+): void;
 
 export function isModule(path: NodePath<t.Program>): boolean;
 
 export class ImportInjector {
-    constructor(path: NodePath, importedSource?: string, opts?: Partial<ImportOptions>);
+    constructor(
+        path: NodePath,
+        importedSource?: string,
+        opts?: Partial<ImportOptions>,
+    );
 
-    addDefault(importedSourceIn: string, opts: Partial<ImportOptions>): t.Identifier;
-    addNamed(importName: string, importedSourceIn: string, opts: Partial<ImportOptions>): t.Identifier;
-    addNamespace(importedSourceIn: string, opts: Partial<ImportOptions>): t.Identifier;
+    addDefault(
+        importedSourceIn: string,
+        opts: Partial<ImportOptions>,
+    ): t.Identifier;
+    addNamed(
+        importName: string,
+        importedSourceIn: string,
+        opts: Partial<ImportOptions>,
+    ): t.Identifier;
+    addNamespace(
+        importedSourceIn: string,
+        opts: Partial<ImportOptions>,
+    ): t.Identifier;
     addSideEffect(importedSourceIn: string, opts: Partial<ImportOptions>): void;
 }

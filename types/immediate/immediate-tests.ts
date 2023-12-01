@@ -2,7 +2,7 @@ import immediate = require("immediate");
 
 immediate(() => {});
 // @ts-expect-error
-immediate(arg1 => {});
+immediate((arg1) => {});
 
 immediate(
     (arg1, arg2) => {

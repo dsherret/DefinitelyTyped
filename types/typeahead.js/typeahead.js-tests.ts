@@ -30,16 +30,22 @@ function test_typeahead() {
         }
 
         function test_typeahead_option_classNames() {
-            $(".typeahead").typeahead({ classNames: { input: "tt-input" } }, dataset);
+            $(".typeahead").typeahead(
+                { classNames: { input: "tt-input" } },
+                dataset,
+            );
         }
 
         function test_typeahead_options_all() {
-            $(".typeahead").typeahead({
-                hint: true,
-                minLength: 1,
-                highlight: true,
-                classNames: { input: "tt-input" },
-            }, dataset);
+            $(".typeahead").typeahead(
+                {
+                    hint: true,
+                    minLength: 1,
+                    highlight: true,
+                    classNames: { input: "tt-input" },
+                },
+                dataset,
+            );
         }
     }
 
@@ -61,11 +67,15 @@ function test_typeahead() {
         }
 
         function test_typeahead_className_dataset() {
-            var className: Twitter.Typeahead.ClassNames = { dataset: "tt-dataset" };
+            var className: Twitter.Typeahead.ClassNames = {
+                dataset: "tt-dataset",
+            };
         }
 
         function test_typeahead_className_suggestion() {
-            var className: Twitter.Typeahead.ClassNames = { suggestion: "tt-suggestion" };
+            var className: Twitter.Typeahead.ClassNames = {
+                suggestion: "tt-suggestion",
+            };
         }
 
         function test_typeahead_className_empty() {
@@ -77,11 +87,15 @@ function test_typeahead() {
         }
 
         function test_typeahead_className_cursor() {
-            var className: Twitter.Typeahead.ClassNames = { cursor: "tt-cursor" };
+            var className: Twitter.Typeahead.ClassNames = {
+                cursor: "tt-cursor",
+            };
         }
 
         function test_typeahead_className_highlight() {
-            var className: Twitter.Typeahead.ClassNames = { highlight: "tt-highlight" };
+            var className: Twitter.Typeahead.ClassNames = {
+                highlight: "tt-highlight",
+            };
         }
 
         function test_typeahead_classNames_all() {
@@ -101,7 +115,10 @@ function test_typeahead() {
 
     function test_typeahead_datasets() {
         function test_typeahead_dataset_source_bloodhound() {
-            var bo: Bloodhound.BloodhoundOptions<string> = { datumTokenizer: null, queryTokenizer: null };
+            var bo: Bloodhound.BloodhoundOptions<string> = {
+                datumTokenizer: null,
+                queryTokenizer: null,
+            };
             var engine: Bloodhound<string> = new Bloodhound<string>(bo);
             var dataset: Twitter.Typeahead.Dataset<string> = { source: engine };
         }
@@ -160,7 +177,9 @@ function test_typeahead() {
         }
 
         function dataset_template_notfound_string() {
-            var templates: Twitter.Typeahead.Templates<string> = { notFound: "not found" };
+            var templates: Twitter.Typeahead.Templates<string> = {
+                notFound: "not found",
+            };
         }
 
         function dataset_template_notfound_function() {
@@ -172,7 +191,9 @@ function test_typeahead() {
         }
 
         function dataset_template_pending_string() {
-            var templates: Twitter.Typeahead.Templates<string> = { pending: "pending" };
+            var templates: Twitter.Typeahead.Templates<string> = {
+                pending: "pending",
+            };
         }
 
         function dataset_template_pending_function() {
@@ -184,7 +205,9 @@ function test_typeahead() {
         }
 
         function dataset_template_header_string() {
-            var templates: Twitter.Typeahead.Templates<string> = { header: "header" };
+            var templates: Twitter.Typeahead.Templates<string> = {
+                header: "header",
+            };
         }
 
         function dataset_template_header_function() {
@@ -196,7 +219,9 @@ function test_typeahead() {
         }
 
         function dataset_template_footer_string() {
-            var templates: Twitter.Typeahead.Templates<string> = { footer: "footer" };
+            var templates: Twitter.Typeahead.Templates<string> = {
+                footer: "footer",
+            };
         }
 
         function dataset_template_footer_function() {
@@ -218,7 +243,10 @@ function test_typeahead() {
 }
 
 function test_bloodhound() {
-    var options: Bloodhound.BloodhoundOptions<string> = { datumTokenizer: null, queryTokenizer: null };
+    var options: Bloodhound.BloodhoundOptions<string> = {
+        datumTokenizer: null,
+        queryTokenizer: null,
+    };
     var engine: Bloodhound<string> = new Bloodhound<string>(options);
 
     function test_bloodhound_static() {

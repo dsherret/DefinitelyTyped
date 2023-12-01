@@ -13,7 +13,12 @@ script-src 'self' 'unsafe-inline' 'nonce-2726c7f26c' *.test.com;
 style-src data:
 `);
 
-csp.newDirective("script-src", ["self", "unsafe-inline", "nonce-2726c7f26c", "*.test.com"]); // $ExpectType ContentSecurityPolicy
+csp.newDirective("script-src", [
+    "self",
+    "unsafe-inline",
+    "nonce-2726c7f26c",
+    "*.test.com",
+]); // $ExpectType ContentSecurityPolicy
 
 csp.newDirective("child-src", "self"); // $ExpectType ContentSecurityPolicy
 csp.newDirective("connect-src", "self"); // $ExpectType ContentSecurityPolicy

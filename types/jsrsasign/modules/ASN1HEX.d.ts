@@ -4,89 +4,89 @@ declare namespace jsrsasign {
 
     type ASN1HEXParseResult =
         | {
-            bool: boolean;
-        }
+              bool: boolean;
+          }
         | {
-            int: {
-                hex: string;
-            };
-        }
+              int: {
+                  hex: string;
+              };
+          }
         | {
-            bitstr: {
-                obj: ASN1HEXParseResult;
-            };
-        }
+              bitstr: {
+                  obj: ASN1HEXParseResult;
+              };
+          }
         | {
-            bitstr: {
-                hex: string;
-            };
-        }
+              bitstr: {
+                  hex: string;
+              };
+          }
         | {
-            bitstr: {
-                bin: string;
-            };
-        }
+              bitstr: {
+                  bin: string;
+              };
+          }
         | {
-            octstr: {
-                obj: ASN1HEXParseResult;
-            };
-        }
+              octstr: {
+                  obj: ASN1HEXParseResult;
+              };
+          }
         | {
-            octstr: {
-                hex: string;
-            };
-        }
+              octstr: {
+                  hex: string;
+              };
+          }
         | {
-            null: "";
-        }
+              null: "";
+          }
         | {
-            oid: string;
-        }
+              oid: string;
+          }
         | {
-            oid: string;
-        }
+              oid: string;
+          }
         | {
-            enum: {
-                hex: string;
-            };
-        }
+              enum: {
+                  hex: string;
+              };
+          }
         | {
-            enum: number;
-        }
+              enum: number;
+          }
         | {
-            [tagName: string]: ASN1HEXParseResult[];
-        }
+              [tagName: string]: ASN1HEXParseResult[];
+          }
         | {
-            [tagName: string]: {
-                str: string;
-            };
-        }
+              [tagName: string]: {
+                  str: string;
+              };
+          }
         | {
-            tag: {
-                tag: string;
-                explicit: boolean;
-                hex: string;
-            };
-        }
+              tag: {
+                  tag: string;
+                  explicit: boolean;
+                  hex: string;
+              };
+          }
         | {
-            tag: {
-                tag: string;
-                explicit: false;
-                str: string;
-            };
-        }
+              tag: {
+                  tag: string;
+                  explicit: false;
+                  str: string;
+              };
+          }
         | {
-            tag: {
-                tag: string;
-                explicit: true;
-                obj: ASN1HEXParseResult;
-            };
-        }
+              tag: {
+                  tag: string;
+                  explicit: true;
+                  obj: ASN1HEXParseResult;
+              };
+          }
         | {
-            asn1: {
-                tlv: string;
-            };
-        }
+              asn1: {
+                  tlv: string;
+              };
+          }
         | ASN1HEXParseResult[];
 
     type ErrorReturn = any;
@@ -281,7 +281,12 @@ declare namespace jsrsasign {
          *     IA5STRING 010     - [1, 0]
          *     UTF8STRING 011    - [1, 1]
          */
-        function getIdxbyList(h: string, currentIndex: number, nthList: number[], checkingTag: string): number;
+        function getIdxbyList(
+            h: string,
+            currentIndex: number,
+            nthList: number[],
+            checkingTag: string,
+        ): number;
 
         /**
          * get string index of nth child object of ASN.1 object refered by h, idx<br/>
@@ -355,7 +360,11 @@ declare namespace jsrsasign {
          * ASN1HEX.getInt("xxxx03020780xxxxxx", 4) &rarr 1 // DER BitStringx
          * ASN1HEX.getInt("xxxx030203c8xxxxxx", 4) &rarr 25 // DER BitStringx
          */
-        function getInt(h: string, idx: number, errorReturn?: ErrorReturn): number | ErrorReturn;
+        function getInt(
+            h: string,
+            idx: number,
+            errorReturn?: ErrorReturn,
+        ): number | ErrorReturn;
 
         /**
          * get hexadecimal string for ASN.1 L(length) bytes<br/>
@@ -420,7 +429,11 @@ declare namespace jsrsasign {
          * @example
          * ASN1HEX.getInt("xxxx06032a0304xxxxxx", 4) &rarr "1.2.3.4"
          */
-        function getOID(h: string, idx: number, errorReturn?: ErrorReturn): string | ErrorReturn;
+        function getOID(
+            h: string,
+            idx: number,
+            errorReturn?: ErrorReturn,
+        ): string | ErrorReturn;
 
         /**
          * get object identifier name from ASN.1 V(value)<br/>
@@ -439,7 +452,11 @@ declare namespace jsrsasign {
          * ASN1HEX.getOIDName("xxxx0609608648016503040201xxxxxx", 4) &rarr "sha256"
          * ASN1HEX.getOIDName("xxxx06032a0304xxxxxx", 4) &rarr "1.2.3.4"
          */
-        function getOIDName(h: string, idx: number, errorReturn?: ErrorReturn): string | ErrorReturn;
+        function getOIDName(
+            h: string,
+            idx: number,
+            errorReturn?: ErrorReturn,
+        ): string | ErrorReturn;
 
         /**
          * get raw string from ASN.1 V(value)<br/>
@@ -457,7 +474,11 @@ declare namespace jsrsasign {
          * ASN1HEX.getString("xxxx1303616161xxxxxx", 4) &rarr "aaa"
          * ASN1HEX.getString("xxxx0c03616161xxxxxx", 4) &rarr "aaa"
          */
-        function getString(h: string, idx: number, errorReturn?: ErrorReturn): string | ErrorReturn;
+        function getString(
+            h: string,
+            idx: number,
+            errorReturn?: ErrorReturn,
+        ): string | ErrorReturn;
 
         /**
          * get hexadecimal string of ASN.1 TLV at<br/>
@@ -500,7 +521,12 @@ declare namespace jsrsasign {
          * <br/>
          * When referring value can't be found, this returns null.
          */
-        function getTLVbyList(h: string, currentIndex: number, nthList: number[], checkingTag?: string): string | null;
+        function getTLVbyList(
+            h: string,
+            currentIndex: number,
+            nthList: number[],
+            checkingTag?: string,
+        ): string | null;
 
         /**
          * get ASN.1 TLV by nthList<br/>

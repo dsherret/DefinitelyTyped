@@ -1,6 +1,9 @@
 import { Callback, Handler } from "../handler";
 
-export type ConnectContactFlowHandler = Handler<ConnectContactFlowEvent, ConnectContactFlowResult>;
+export type ConnectContactFlowHandler = Handler<
+    ConnectContactFlowEvent,
+    ConnectContactFlowResult
+>;
 export type ConnectContactFlowCallback = Callback<ConnectContactFlowResult>;
 
 // Connect
@@ -31,7 +34,12 @@ export interface ConnectContactFlowEvent {
 
 export type ConnectContactFlowChannel = "VOICE" | "CHAT";
 
-export type ConnectContactFlowInitiationMethod = "INBOUND" | "OUTBOUND" | "TRANSFER" | "CALLBACK" | "API";
+export type ConnectContactFlowInitiationMethod =
+    | "INBOUND"
+    | "OUTBOUND"
+    | "TRANSFER"
+    | "CALLBACK"
+    | "API";
 
 export interface ConnectContactFlowEndpoint {
     Address: string;

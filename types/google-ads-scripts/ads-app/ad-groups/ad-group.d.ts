@@ -11,7 +11,9 @@ declare namespace GoogleAdsScripts {
             /** Adds a mobile app to this ad group. */
             addMobileApp(mobileAppExtension: MobileApp): MobileAppOperation;
             /** Adds a phone number to this ad group. */
-            addPhoneNumber(phoneNumberExtension: PhoneNumber): PhoneNumberOperation;
+            addPhoneNumber(
+                phoneNumberExtension: PhoneNumber,
+            ): PhoneNumberOperation;
             /** Adds a price extension to this ad group. */
             addPrice(priceExtension: Price): PriceOperation;
             /** Adds a sitelink to this ad group. */
@@ -154,7 +156,9 @@ declare namespace GoogleAdsScripts {
             /** Sets the CPM bid of the new ad group to the specified value. */
             withCpm(cpm: number): this;
             /** Sets the custom parameters of the new ad group to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the final URL suffix of the new ad group to the specified value. */
             withFinalUrlSuffix(suffix: string): this;
             /** Sets the name of the new ad group to the specified value. */
@@ -220,14 +224,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface AdGroupSelector
-            extends
-                Base.Selector<AdGroupIterator>,
+            extends Base.Selector<AdGroupIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /** Provides access to ad group-level targeting criteria: audiences. */
         interface AdGroupTargeting {
@@ -240,7 +242,10 @@ declare namespace GoogleAdsScripts {
             /** Returns a new user list builder for this ad group. */
             newUserListBuilder(): SearchAdGroupAudienceBuilder;
             /** Sets the targeting setting for this ad group. */
-            setTargetingSetting(criterionTypeGroup: string, targetingSetting: string): void;
+            setTargetingSetting(
+                criterionTypeGroup: string,
+                targetingSetting: string,
+            ): void;
         }
 
         /** Provides access to ad group URLs. */

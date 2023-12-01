@@ -27,7 +27,10 @@ interface DynaTree {
     isInitializing(): boolean;
     isReloading(): boolean;
     isUserEvent(): boolean;
-    loadKeyPath(keyPath: string, callback: (node: DynaTreeNode, status: string) => void): void;
+    loadKeyPath(
+        keyPath: string,
+        callback: (node: DynaTreeNode, status: string) => void,
+    ): void;
     reactivate(setFocus: boolean): void;
     redraw(): void;
     reload(): void;
@@ -80,12 +83,18 @@ interface DynaTreeNode {
     select(flag: boolean): void;
     setLazyNodeStatus(status: number): void;
     setTitle(title: string): void;
-    sortChildren(cmp?: (a: DynaTreeNode, b: DynaTreeNode) => number, deep?: boolean): void;
+    sortChildren(
+        cmp?: (a: DynaTreeNode, b: DynaTreeNode) => number,
+        deep?: boolean,
+    ): void;
     toDict(recursive: boolean, callback?: (node: any) => any): any;
     toggleExpand(): void;
     toggleSelect(): void;
     visit(fn: (node: DynaTreeNode) => boolean, includeSelf: boolean): void;
-    visitParents(fn: (node: DynaTreeNode) => boolean, includeSelf: boolean): void;
+    visitParents(
+        fn: (node: DynaTreeNode) => boolean,
+        includeSelf: boolean,
+    ): void;
 }
 
 interface DynatreeOptions {
@@ -129,7 +138,9 @@ interface DynatreeOptions {
     onBlur?: ((dtnode: DynaTreeNode, event: Event) => boolean) | undefined; // null: remove focus from node.
 
     // Pre-event handlers onQueryEvent(flag, dtnode): return false, to stop processing
-    onQueryActivate?: ((flag: string, dtnode: DynaTreeNode) => void) | undefined; // Callback(flag, dtnode) before a node is (de)activated.
+    onQueryActivate?:
+        | ((flag: string, dtnode: DynaTreeNode) => void)
+        | undefined; // Callback(flag, dtnode) before a node is (de)activated.
     onQuerySelect?: ((flag: string, dtnode: DynaTreeNode) => void) | undefined; // Callback(flag, dtnode) before a node is (de)selected.
     onQueryExpand?: ((flag: string, dtnode: DynaTreeNode) => void) | undefined; // Callback(flag, dtnode) before a node is expanded/collpsed.
 
@@ -179,8 +190,12 @@ interface DynaTreeDNDOptions {
     // Make tree nodes accept draggables
 
     onDragEnter?: ((targetNode: any, sourceNode: any) => void) | undefined; // Callback(targetNode, sourceNode)
-    onDragOver?: ((targetNode: any, sourceNode: any, hitMode: string) => void) | undefined; // Callback(targetNode, sourceNode, hitMode)
-    onDrop?: ((targetNode: any, sourceNode: any, hitMode: string) => void) | undefined; // Callback(targetNode, sourceNode, hitMode)
+    onDragOver?:
+        | ((targetNode: any, sourceNode: any, hitMode: string) => void)
+        | undefined; // Callback(targetNode, sourceNode, hitMode)
+    onDrop?:
+        | ((targetNode: any, sourceNode: any, hitMode: string) => void)
+        | undefined; // Callback(targetNode, sourceNode, hitMode)
     onDragLeave?: ((targetNode: any, sourceNode: any) => void) | undefined; // Callback(targetNode, sourceNode)
 }
 

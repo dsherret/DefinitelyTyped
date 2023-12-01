@@ -1,5 +1,12 @@
 import * as React from "react";
-import { AreaChart, BarChart, Legend, LineChart, PieChart, ScatterplotChart } from "react-easy-chart";
+import {
+    AreaChart,
+    BarChart,
+    Legend,
+    LineChart,
+    PieChart,
+    ScatterplotChart,
+} from "react-easy-chart";
 
 class BarChartData extends React.Component {
     render(): any {
@@ -343,7 +350,11 @@ class BarChartBarAndLine extends React.Component {
     render(): any {
         return (
             <BarChart
-                axisLabels={{ x: "My x Axis", y: "My y Axis", y2: "My second y Axis" }}
+                axisLabels={{
+                    x: "My x Axis",
+                    y: "My y Axis",
+                    y2: "My second y Axis",
+                }}
                 axes
                 grid
                 colorBars
@@ -377,14 +388,11 @@ class BarChartBarAndLine extends React.Component {
 }
 
 class BarChartMouseHandlers extends React.Component {
-    mouseOverHandler(d: any, e: any) {
-    }
+    mouseOverHandler(d: any, e: any) {}
 
-    mouseMoveHandler(e: any) {
-    }
+    mouseMoveHandler(e: any) {}
 
-    mouseOutHandler() {
-    }
+    mouseOutHandler() {}
 
     render(): any {
         return (
@@ -405,7 +413,11 @@ class BarChartMouseHandlers extends React.Component {
                         y: 26,
                     },
                 ]}
-                clickHandler={(d) => this.setState({ dataDisplay: `The value on the ${d.x} is ${d.y}` })}
+                clickHandler={(d) =>
+                    this.setState({
+                        dataDisplay: `The value on the ${d.x} is ${d.y}`,
+                    })
+                }
                 mouseOverHandler={this.mouseOverHandler}
                 mouseOutHandler={this.mouseOutHandler}
                 mouseMoveHandler={this.mouseMoveHandler}
@@ -500,7 +512,7 @@ class PieChartLabels extends React.Component {
                     { key: "C", value: 50, color: "#e3a51a" },
                 ]}
                 styles={{
-                    "<div className=\"cha\"></div>rt_text": {
+                    '<div className="cha"></div>rt_text': {
                         fontSize: "1em",
                         fill: "#fff",
                     },
@@ -1722,14 +1734,7 @@ class ScatterplotMargin extends React.Component {
 
 class ScatterplotAxes extends React.Component {
     render(): any {
-        return (
-            <ScatterplotChart
-                data={data}
-                axes
-                width={480}
-                height={270}
-            />
-        );
+        return <ScatterplotChart data={data} axes width={480} height={270} />;
     }
 }
 

@@ -10,20 +10,34 @@ vector1.clone().copy(vector2).toString();
 vector1.toArray();
 vector1.toObject();
 
-vector1.subtract(vector2).subtractX(vector2).subtractY(vector2)
-    .multiply(vector2).multiplyX(vector2).multiplyY(vector2)
-    .divide(vector2).divideX(vector2).divideY(vector2)
-    .invert().invertX().invertY()
-    .mix(vector2, 0.5).mixX(vector2, 0.5).mixY(vector2, 0.5)
-    .normalize().norm()
+vector1
+    .subtract(vector2)
+    .subtractX(vector2)
+    .subtractY(vector2)
+    .multiply(vector2)
+    .multiplyX(vector2)
+    .multiplyY(vector2)
+    .divide(vector2)
+    .divideX(vector2)
+    .divideY(vector2)
+    .invert()
+    .invertX()
+    .invertY()
+    .mix(vector2, 0.5)
+    .mixX(vector2, 0.5)
+    .mixY(vector2, 0.5)
+    .normalize()
+    .norm()
     .limit(100, 5)
     .unfloat()
     .rotate(10)
     .rotateDeg(10)
     .rotateBy(10)
     .rotateByDeg(10)
-    .randomize(new Victor(10, 10), new Victor(100, 100)).randomizeY(new Victor(10, 10), new Victor(100, 100))
-    .randomizeX(new Victor(10, 10), new Victor(100, 100)).randomizeAny(new Victor(10, 10), new Victor(100, 100))
+    .randomize(new Victor(10, 10), new Victor(100, 100))
+    .randomizeY(new Victor(10, 10), new Victor(100, 100))
+    .randomizeX(new Victor(10, 10), new Victor(100, 100))
+    .randomizeAny(new Victor(10, 10), new Victor(100, 100))
     .toFixed(2);
 
 vector2.dot(vector1);

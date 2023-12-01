@@ -29,13 +29,19 @@ export class Authentication {
      *
      * @param options: https://auth0.com/docs/api-auth/grant/password
      */
-    loginWithDefaultDirectory(options: DefaultDirectoryLoginOptions, callback: Auth0Callback<any>): void;
+    loginWithDefaultDirectory(
+        options: DefaultDirectoryLoginOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Makes a call to the `/ro` endpoint
      * @deprecated `loginWithResourceOwner` will be soon deprecated, user `login` instead.
      */
-    loginWithResourceOwner(options: ResourceOwnerLoginOptions, callback: Auth0Callback<any>): void;
+    loginWithResourceOwner(
+        options: ResourceOwnerLoginOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Makes a call to the `oauth/token` endpoint with `password-realm` grant type
@@ -55,19 +61,28 @@ export class Authentication {
     /**
      * Makes a call to the `/ssodata` endpoint
      */
-    getSSOData(withActiveDirectories: boolean, callback?: Auth0Callback<SsoDataResult | undefined>): void;
+    getSSOData(
+        withActiveDirectories: boolean,
+        callback?: Auth0Callback<SsoDataResult | undefined>,
+    ): void;
 
     /**
      * Makes a call to the `/userinfo` endpoint and returns the user profile
      */
-    userInfo(accessToken: string, callback: Auth0Callback<Auth0UserProfile>): void;
+    userInfo(
+        accessToken: string,
+        callback: Auth0Callback<Auth0UserProfile>,
+    ): void;
 
     /**
      * Makes a call to the `/delegation` endpoint
      *
      * @param options: https://auth0.com/docs/api/authentication#!#post--delegation
      */
-    delegation(options: DelegationOptions, callback: Auth0Callback<Auth0DelegationToken>): any;
+    delegation(
+        options: DelegationOptions,
+        callback: Auth0Callback<Auth0DelegationToken>,
+    ): any;
 
     /**
      * Fetches the user country based on the ip.
@@ -88,12 +103,18 @@ export class PasswordlessAuthentication {
      *
      * @param options: https://auth0.com/docs/api/authentication#passwordless
      */
-    start(options: PasswordlessStartOptions, callback: Auth0Callback<any>): void;
+    start(
+        options: PasswordlessStartOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Verifies the passwordless TOTP and returns an error if any.
      */
-    verify(options: PasswordlessVerifyOptions, callback: Auth0Callback<any>): void;
+    verify(
+        options: PasswordlessVerifyOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 }
 
 export class DBConnection {
@@ -103,14 +124,20 @@ export class DBConnection {
      * Creates a new user in a Auth0 Database connection
      * @param options https://auth0.com/docs/api/authentication#signup
      */
-    signup(options: DbSignUpOptions, callback: Auth0Callback<DbSignUpResults>): void;
+    signup(
+        options: DbSignUpOptions,
+        callback: Auth0Callback<DbSignUpResults>,
+    ): void;
 
     /**
      * Initializes the change password flow
      *
      * @param options: https://auth0.com/docs/api/authentication#!#post--dbconnections-change_password
      */
-    changePassword(options: ChangePasswordOptions, callback: Auth0Callback<any>): void;
+    changePassword(
+        options: ChangePasswordOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 }
 
 export class Management {
@@ -128,17 +155,29 @@ export class Management {
      * Updates the user metadata. It will patch the user metadata with the attributes sent.
      * https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id
      */
-    patchUserMetadata(userId: string, userMetadata: any, callback: Auth0Callback<Auth0UserProfile>): void;
+    patchUserMetadata(
+        userId: string,
+        userMetadata: any,
+        callback: Auth0Callback<Auth0UserProfile>,
+    ): void;
     /**
      * Updates the user attributes.
      * It will patch the root attributes that the server allows it.
      * {@link https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id}
      */
-    patchUserAttributes(userId: string, user: Auth0UserProfile, callback: Auth0Callback<Auth0UserProfile>): void;
+    patchUserAttributes(
+        userId: string,
+        user: Auth0UserProfile,
+        callback: Auth0Callback<Auth0UserProfile>,
+    ): void;
     /**
      * Link two users. https://auth0.com/docs/api/management/v2#!/Users/post_identities
      */
-    linkUser(userId: string, secondaryUserToken: string, callback: Auth0Callback<any>): void;
+    linkUser(
+        userId: string,
+        secondaryUserToken: string,
+        callback: Auth0Callback<any>,
+    ): void;
 }
 
 export class WebAuth {
@@ -164,7 +203,9 @@ export class WebAuth {
      *
      * @param callback: any(err, token_payload)
      */
-    parseHash(callback: Auth0Callback<Auth0DecodedHash | null, Auth0ParseHashError>): void;
+    parseHash(
+        callback: Auth0Callback<Auth0DecodedHash | null, Auth0ParseHashError>,
+    ): void;
 
     /**
      * Parse the url hash and extract the returned tokens depending on the transaction.
@@ -175,14 +216,21 @@ export class WebAuth {
      *
      * @param callback: any(err, token_payload)
      */
-    parseHash(options: ParseHashOptions, callback: Auth0Callback<Auth0DecodedHash | null, Auth0ParseHashError>): void;
+    parseHash(
+        options: ParseHashOptions,
+        callback: Auth0Callback<Auth0DecodedHash | null, Auth0ParseHashError>,
+    ): void;
 
     /**
      * Decodes the id_token and verifies  the nonce.
      *
      * @param callback: function(err, {payload, transaction})
      */
-    validateToken(token: string, nonce: string, callback: Auth0Callback<any>): void;
+    validateToken(
+        token: string,
+        nonce: string,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Executes a silent authentication transaction under the hood in order to fetch a new tokens for the current session.
@@ -199,7 +247,10 @@ export class WebAuth {
      *
      * @param options: https://auth0.com/docs/api/authentication#!#post--dbconnections-change_password
      */
-    changePassword(options: ChangePasswordOptions, callback: Auth0Callback<any>): void;
+    changePassword(
+        options: ChangePasswordOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Signs up a new user
@@ -214,7 +265,10 @@ export class WebAuth {
      *
      * @param options: https://auth0.com/docs/api/authentication#!#post--dbconnections-signup
      */
-    signupAndAuthorize(options: DbSignUpOptions, callback: Auth0Callback<any>): void;
+    signupAndAuthorize(
+        options: DbSignUpOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Logs in the user with username and password using the cross origin authentication (/co/authenticate) flow.
@@ -259,21 +313,30 @@ export class WebAuth {
      *
      * @param options: https://auth0.com/docs/api/authentication#passwordless
      */
-    passwordlessStart(options: PasswordlessStartOptions, callback: Auth0Callback<any>): void;
+    passwordlessStart(
+        options: PasswordlessStartOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Verifies the passwordless TOTP and redirects to finish the passwordless transaction
      *
      * @param options:
      */
-    passwordlessVerify(options: PasswordlessVerifyOptions, callback: Auth0Callback<any>): void;
+    passwordlessVerify(
+        options: PasswordlessVerifyOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Logs in a user with the verification code sent to the user
      * @param options
      * @param callback
      */
-    passwordlessLogin(options: PasswordlessLoginOptions, callback: Auth0Callback<any>): void;
+    passwordlessLogin(
+        options: PasswordlessLoginOptions,
+        callback: Auth0Callback<any>,
+    ): void;
 
     /**
      * Renews an existing session on Auth0's servers using `response_mode=web_message` (i.e. Auth0's hosted login page)
@@ -293,7 +356,11 @@ export class WebAuth {
      *
      * @see {@link https://auth0.github.io/auth0.js/WebAuth.html#renderCaptcha}
      */
-    renderCaptcha(element: HTMLElement, options?: CatpchaConfiguration, callback?: Auth0Callback<any>): Captcha;
+    renderCaptcha(
+        element: HTMLElement,
+        options?: CatpchaConfiguration,
+        callback?: Auth0Callback<any>,
+    ): Captcha;
 }
 
 export class Redirect {
@@ -502,7 +569,10 @@ export class CrossOriginAuthentication {
     callback(): void;
 }
 
-export type Auth0Callback<T, E = Auth0Error> = (error: null | E, result: T) => void;
+export type Auth0Callback<T, E = Auth0Error> = (
+    error: null | E,
+    result: T,
+) => void;
 
 export interface TokenProvider {
     enableCache?: boolean | undefined;
@@ -542,11 +612,13 @@ export interface AuthOptions {
     maxAge?: number | undefined;
     leeway?: number | undefined;
     jwksURI?: string | undefined;
-    overrides?: {
-        __tenant?: string | undefined;
-        __token_issuer?: string | undefined;
-        __jwks_uri?: string | undefined;
-    } | undefined;
+    overrides?:
+        | {
+              __tenant?: string | undefined;
+              __token_issuer?: string | undefined;
+              __jwks_uri?: string | undefined;
+          }
+        | undefined;
     plugins?: any;
     popupOrigin?: string | undefined;
     protocol?: string | undefined;

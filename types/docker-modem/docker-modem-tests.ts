@@ -6,7 +6,11 @@ import { Stream } from "stream";
 const modem = new DockerModem(); // defaults to above if env variables are not used
 const modem1 = new DockerModem({ socketPath: "/var/run/docker.sock" });
 const modem2 = new DockerModem({ host: "http://192.168.1.10", port: 3000 });
-const modem3 = new DockerModem({ protocol: "http", host: "127.0.0.1", port: 3000 });
+const modem3 = new DockerModem({
+    protocol: "http",
+    host: "127.0.0.1",
+    port: 3000,
+});
 const modem4 = new DockerModem({ host: "127.0.0.1", port: 3000 }); // defaults to http
 
 const modem5 = new DockerModem({
@@ -57,9 +61,12 @@ const modem10 = new DockerModem({ agent: customAgent });
 
 const abortController = new AbortController();
 
-modem.dial({ path: "/path", abortSignal: abortController.signal }, (err, result) => {
-    // NOOP;
-});
+modem.dial(
+    { path: "/path", abortSignal: abortController.signal },
+    (err, result) => {
+        // NOOP;
+    },
+);
 
 modem.demuxStream(new Stream.Readable(), process.stdout, process.stderr);
 
@@ -68,7 +75,7 @@ modem.followProgress(
     (error, result) => {
         // NOOP;
     },
-    obj => {
+    (obj) => {
         // NOOP;
     },
 );

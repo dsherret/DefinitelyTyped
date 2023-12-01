@@ -37,9 +37,7 @@ const geometryCollection: TopoJSON.GeometryCollection = {
         { type: "MultiPolygon", arcs: [[[0]]] },
         {
             type: "GeometryCollection",
-            geometries: [
-                { type: "Point", coordinates: [0, 0] },
-            ],
+            geometries: [{ type: "Point", coordinates: [0, 0] }],
         },
     ],
 };
@@ -87,7 +85,16 @@ topology = {
             arcs: [[0]],
         },
     },
-    arcs: [[[0, 0], [1, 1]], [[1, 1], [-1, -1]]],
+    arcs: [
+        [
+            [0, 0],
+            [1, 1],
+        ],
+        [
+            [1, 1],
+            [-1, -1],
+        ],
+    ],
 };
 
 topology = {
@@ -107,9 +114,23 @@ topology = {
         nullObject,
     },
     arcs: [
-        [[0, 0], [1, 0], [0, 1], [-1, 0], [0, -1]],
-        [[0, 0], [1, 0], [0, 1]],
-        [[1, 1], [-1, 0], [0, -1]],
+        [
+            [0, 0],
+            [1, 0],
+            [0, 1],
+            [-1, 0],
+            [0, -1],
+        ],
+        [
+            [0, 0],
+            [1, 0],
+            [0, 1],
+        ],
+        [
+            [1, 1],
+            [-1, 0],
+            [0, -1],
+        ],
         [[1, 1]],
         [[0, 0]],
     ],
@@ -150,8 +171,19 @@ topology = {
         },
     },
     arcs: [
-        [[102, 0], [103, 1], [104, 0], [105, 1]],
-        [[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]],
+        [
+            [102, 0],
+            [103, 1],
+            [104, 0],
+            [105, 1],
+        ],
+        [
+            [100, 0],
+            [101, 0],
+            [101, 1],
+            [100, 1],
+            [100, 0],
+        ],
     ],
 };
 
@@ -159,7 +191,11 @@ topology = {
 
 // must fail on "type"
 // @ts-expect-error
-topology = { type: "Topology", objects: { foo: { type: "hello", arcs: [[0]] } }, arcs: [] };
+topology = {
+    type: "Topology",
+    objects: { foo: { type: "hello", arcs: [[0]] } },
+    arcs: [],
+};
 
 // must fail:  Property 'coordinates' is missing in type '{ type: "Point"; }'.
 // @ts-expect-error

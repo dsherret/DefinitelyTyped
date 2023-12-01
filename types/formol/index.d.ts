@@ -50,7 +50,9 @@ export const FieldSet: React.ComponentType<FieldSetProps>;
 
 interface SwitchButtonProps {
     type?: string | undefined;
-    i18n?: { yes: React.ReactNode; no: React.ReactNode } & { [k: string]: any } | undefined;
+    i18n?:
+        | ({ yes: React.ReactNode; no: React.ReactNode } & { [k: string]: any })
+        | undefined;
     leftLabel?: React.ReactNode | undefined;
     rightLabel?: React.ReactNode | undefined;
     className?: string | undefined;
@@ -68,10 +70,19 @@ interface ConditionalProps<V = any> {
 
 export const Conditional: React.ComponentType<ConditionalProps>;
 
-export function ConditionalContextWrapper(e: React.Component<any>): React.Component<any>;
+export function ConditionalContextWrapper(
+    e: React.Component<any>,
+): React.Component<any>;
 
 interface FieldProps<V = any> {
-    register?: ((name: string, element: React.Ref<any>, validator: any, validityErrors: any) => void) | undefined;
+    register?:
+        | ((
+              name: string,
+              element: React.Ref<any>,
+              validator: any,
+              validityErrors: any,
+          ) => void)
+        | undefined;
     unregister?: ((name: string) => void) | undefined;
     name?: string | undefined;
     validator?: ((v: V) => string) | undefined;
@@ -107,13 +118,21 @@ export const Field: React.ComponentType<FieldProps>;
 
 export const NoRequestNeeded: Error;
 
-export function FormolContextWrapper(WrappedComponent: React.Component<any>): React.Component<any>;
+export function FormolContextWrapper(
+    WrappedComponent: React.Component<any>,
+): React.Component<any>;
 
-export function choicesAdapter(WrappedComponent: React.Component<any>): React.Component<any>;
+export function choicesAdapter(
+    WrappedComponent: React.Component<any>,
+): React.Component<any>;
 
-export function memoizedChoices(WrappedComponent: React.Component<any>): React.Component<any>;
+export function memoizedChoices(
+    WrappedComponent: React.Component<any>,
+): React.Component<any>;
 
-export function multipleAdapter(WrappedComponent: React.Component<any>): React.Component<any>;
+export function multipleAdapter(
+    WrappedComponent: React.Component<any>,
+): React.Component<any>;
 
 export function copy(o: any, names: readonly string[]): any;
 
@@ -125,9 +144,18 @@ export function fieldPropsAdapter(v: any): any;
 
 export function get(data: any, key: string): any;
 
-export function insert(transientItem: any, name: string, value: any, names: readonly string[]): any;
+export function insert(
+    transientItem: any,
+    name: string,
+    value: any,
+    names: readonly string[],
+): any;
 
-export function isModified(newItem: any, oldItem: any, names: readonly string[]): boolean;
+export function isModified(
+    newItem: any,
+    oldItem: any,
+    names: readonly string[],
+): boolean;
 
 export function nullishToEmptyString(v?: string): string;
 

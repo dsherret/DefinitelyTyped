@@ -7,7 +7,8 @@ export interface FacebookLoginInfo {
     email?: string | undefined;
 }
 
-export interface FacebookLoginProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FacebookLoginProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     socialId: string;
     xfbml?: boolean | undefined;
     version?: string | undefined;

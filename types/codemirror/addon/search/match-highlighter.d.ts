@@ -45,6 +45,9 @@ declare module "../../" {
          * Adds a highlightSelectionMatches option that can be enabled to highlight all instances of a currently selected word.
          * When enabled, it causes the current word to be highlighted when nothing is selected (defaults to off).
          */
-        highlightSelectionMatches?: HighlightSelectionMatches | boolean | undefined;
+        highlightSelectionMatches?:
+            | HighlightSelectionMatches
+            | boolean
+            | undefined;
     }
 }

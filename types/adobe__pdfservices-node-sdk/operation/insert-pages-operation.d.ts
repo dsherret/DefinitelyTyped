@@ -49,7 +49,11 @@ export class InsertPagesOperation {
      * If <code>pageRanges</code> is not provided, all the pages of the input PDF file will be inserted at the specified
      * page of the base PDF file.
      */
-    addPagesToInsertAt(basePage: number, inputFile: FileRef, pageRanges?: PageRanges): void;
+    addPagesToInsertAt(
+        basePage: number,
+        inputFile: FileRef,
+        pageRanges?: PageRanges,
+    ): void;
     /**
      * Executes this operation using the supplied context and returns a Promise which resolves to the operation result.
      *

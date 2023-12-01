@@ -26,9 +26,16 @@ declare function GlobWatcher(
 ): fs.FSWatcher;
 
 declare namespace GlobWatcher {
-    type AsyncType = NodeJS.EventEmitter | PromiseLike<any> | {
-        subscribe(next?: (value: any) => void, error?: (error: any) => void, complete?: () => void): any;
-    };
+    type AsyncType =
+        | NodeJS.EventEmitter
+        | PromiseLike<any>
+        | {
+              subscribe(
+                  next?: (value: any) => void,
+                  error?: (error: any) => void,
+                  complete?: () => void,
+              ): any;
+          };
 
     interface WatchOptions {
         /**

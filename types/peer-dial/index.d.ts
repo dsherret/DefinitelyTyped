@@ -8,7 +8,10 @@ export class Server extends events.EventEmitter {
     constructor(options: ServerOptions);
     start(): void;
     stop(): void;
-    corsOptionsAppsDelegate(req: string, callback: (err: any, data: CorsOptions) => void): void;
+    corsOptionsAppsDelegate(
+        req: string,
+        callback: (err: any, data: CorsOptions) => void,
+    ): void;
 }
 
 export interface CorsOptions {
@@ -34,8 +37,16 @@ export interface ServerOptions {
 
 export interface Delegate {
     getApp(appName: string): App;
-    launchApp(appName: string, launchData: string, callback: (data: string) => void): void;
-    stopApp(appName: string, pid: string, callback: (data: boolean) => void): void;
+    launchApp(
+        appName: string,
+        launchData: string,
+        callback: (data: string) => void,
+    ): void;
+    stopApp(
+        appName: string,
+        pid: string,
+        callback: (data: boolean) => void,
+    ): void;
 }
 
 export interface App {
@@ -59,7 +70,10 @@ export interface AppInfoOptions {
 }
 
 export class Client extends events.EventEmitter {
-    getDialDevice(deviceDescriptionUrl: string, callback?: (data: DialDevice, err: any) => void): void;
+    getDialDevice(
+        deviceDescriptionUrl: string,
+        callback?: (data: DialDevice, err: any) => void,
+    ): void;
     start(): void;
     refresh(): void;
     stop(): void;
@@ -67,15 +81,25 @@ export class Client extends events.EventEmitter {
 
 export class DialDevice {
     constructor(deviceInfo: DeviceInfo);
-    getAppInfoXml(appName: string, callback?: (data: string, err: any) => void): void;
-    getAppInfo(appName: string, callback?: (data: AppInfo, err: any) => void): void;
+    getAppInfoXml(
+        appName: string,
+        callback?: (data: string, err: any) => void,
+    ): void;
+    getAppInfo(
+        appName: string,
+        callback?: (data: AppInfo, err: any) => void,
+    ): void;
     launchApp(
         appName: string,
         launchData: string,
         contentType: string,
         callback?: (data: string, err: any) => void,
     ): void;
-    stopApp(appName: string, pid: string, callback?: (data: number, err: any) => void): void;
+    stopApp(
+        appName: string,
+        pid: string,
+        callback?: (data: number, err: any) => void,
+    ): void;
 }
 
 export interface DeviceInfo {
@@ -86,7 +110,9 @@ export interface DeviceInfo {
     manufacturer: string;
     modelName: string;
     UDN: string;
-    iconList: object[] | {
-        icon: object;
-    };
+    iconList:
+        | object[]
+        | {
+              icon: object;
+          };
 }

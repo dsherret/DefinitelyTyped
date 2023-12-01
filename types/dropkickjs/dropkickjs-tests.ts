@@ -77,7 +77,7 @@ const node6 = dk.selectOne(4, true);
 let fieldValue = "";
 const selectOptions: DropkickOptions = {
     open(this: Dropkick) {
-        const optionsList = (<any> this).data.elem.lastChild; // undocumented but useful data field
+        const optionsList = (<any>this).data.elem.lastChild; // undocumented but useful data field
         if (optionsList.scrollWidth > optionsList.offsetWidth) {
             optionsList.style.width = `${optionsList.scrollWidth + 25}px`;
         }

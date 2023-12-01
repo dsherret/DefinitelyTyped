@@ -2,11 +2,9 @@ import * as gulp from "gulp";
 import remember = require("gulp-remember");
 
 // Usage
-gulp.src("*.ts")
-    .pipe(remember());
+gulp.src("*.ts").pipe(remember());
 
-gulp.src("*.ts")
-    .pipe(remember("ts-cache"));
+gulp.src("*.ts").pipe(remember("ts-cache"));
 
 // Drops a file from a remember cache
 remember.forget("main.ts");

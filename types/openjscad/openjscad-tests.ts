@@ -5,25 +5,28 @@ function test() {
     OpenJsCad.AlertUserOfUncaughtExceptions();
 
     function onload() {
-        gProcessor = new OpenJsCad.Processor(<HTMLDivElement> document.getElementById("viewer"));
+        gProcessor = new OpenJsCad.Processor(
+            <HTMLDivElement>document.getElementById("viewer"),
+        );
         updateSolid();
     }
 
     function updateSolid() {
-        gProcessor.setJsCad((<HTMLTextAreaElement> document.getElementById("code")).value);
+        gProcessor.setJsCad(
+            (<HTMLTextAreaElement>document.getElementById("code")).value,
+        );
     }
 }
 
 function main() {
     // Main entry point; here we construct our solid:
-    var gear = involuteGear(
-        15,
-        10,
-        20,
-        0,
-        5,
-    );
-    var centerhole = CSG.cylinder({ start: [0, 0, -5], end: [0, 0, 5], radius: 2, resolution: 16 });
+    var gear = involuteGear(15, 10, 20, 0, 5);
+    var centerhole = CSG.cylinder({
+        start: [0, 0, -5],
+        end: [0, 0, 5],
+        radius: 2,
+        resolution: 16,
+    });
     gear = gear.subtract(centerhole);
     return gear;
 }
@@ -44,15 +47,19 @@ function involuteGear(
     var dedendum = addendum + clearance;
 
     // radiuses of the 4 circles:
-    var pitchRadius = numTeeth * circularPitch / (2 * Math.PI);
-    var baseRadius = pitchRadius * Math.cos(Math.PI * pressureAngle / 180);
+    var pitchRadius = (numTeeth * circularPitch) / (2 * Math.PI);
+    var baseRadius = pitchRadius * Math.cos((Math.PI * pressureAngle) / 180);
     var outerRadius = pitchRadius + addendum;
     var rootRadius = pitchRadius - dedendum;
 
-    var maxtanlength = Math.sqrt(outerRadius * outerRadius - baseRadius * baseRadius);
+    var maxtanlength = Math.sqrt(
+        outerRadius * outerRadius - baseRadius * baseRadius,
+    );
     var maxangle = maxtanlength / baseRadius;
 
-    var tl_at_pitchcircle = Math.sqrt(pitchRadius * pitchRadius - baseRadius * baseRadius);
+    var tl_at_pitchcircle = Math.sqrt(
+        pitchRadius * pitchRadius - baseRadius * baseRadius,
+    );
     var angle_at_pitchcircle = tl_at_pitchcircle / baseRadius;
     var diffangle = angle_at_pitchcircle - Math.atan(angle_at_pitchcircle);
     var angularToothWidthAtBase = Math.PI / numTeeth + 2 * diffangle;
@@ -62,7 +69,7 @@ function involuteGear(
     var points = [new CSG.Vector2D(0, 0)];
     for (var i = 0; i <= resolution; i++) {
         // first side of the tooth:
-        var angle = maxangle * i / resolution;
+        var angle = (maxangle * i) / resolution;
         var tanlength = angle * baseRadius;
         var radvector = CSG.Vector2D.fromAngle(angle);
         var tanvector = radvector.normal();
@@ -77,18 +84,20 @@ function involuteGear(
     }
 
     // create the polygon and extrude into 3D:
-    var tooth3d = new CSG.Polygon2D(points).extrude({ offset: [0, 0, thickness] });
+    var tooth3d = new CSG.Polygon2D(points).extrude({
+        offset: [0, 0, thickness],
+    });
 
     var allteeth = new CSG();
     for (var i = 0; i < numTeeth; i++) {
-        var angle = i * 360 / numTeeth;
-        var rotatedtooth = <CSG> tooth3d.rotateZ(angle);
+        var angle = (i * 360) / numTeeth;
+        var rotatedtooth = <CSG>tooth3d.rotateZ(angle);
         allteeth = allteeth.unionForNonIntersecting(rotatedtooth);
     }
 
     // build the root circle:
     points = [];
-    var toothAngle = 2 * Math.PI / numTeeth;
+    var toothAngle = (2 * Math.PI) / numTeeth;
     var toothCenterAngle = 0.5 * angularToothWidthAtBase;
     for (var i = 0; i < numTeeth; i++) {
         var angle = toothCenterAngle + i * toothAngle;
@@ -97,12 +106,14 @@ function involuteGear(
     }
 
     // create the polygon and extrude into 3D:
-    var rootcircle = new CSG.Polygon2D(points).extrude({ offset: [0, 0, thickness] });
+    var rootcircle = new CSG.Polygon2D(points).extrude({
+        offset: [0, 0, thickness],
+    });
 
     var result = rootcircle.union(allteeth);
 
     // center at origin:
-    result = <CSG> result.translate([0, 0, -thickness / 2]);
+    result = <CSG>result.translate([0, 0, -thickness / 2]);
 
     return result;
 }
@@ -130,7 +141,7 @@ function main2() {
         numteeth: 2,
     };
 
-    cylresolution = (params.quality == 1) ? 64 : 16;
+    cylresolution = params.quality == 1 ? 64 : 16;
 
     var outerdiameter = params.outerdiameter;
     outerdiameter = Math.max(outerdiameter, params.diameter1 + 0.5);
@@ -162,19 +173,34 @@ function main2() {
         params.screwdiameter2,
         params.numteeth,
     );
-    var spider = makeSpider(outerdiameter, spidercenterdiameter, params.spiderlength, params.numteeth);
+    var spider = makeSpider(
+        outerdiameter,
+        spidercenterdiameter,
+        params.spiderlength,
+        params.numteeth,
+    );
 
     if (params.spidermargin > 0) {
         spider = spider.contract(params.spidermargin, 4);
     }
 
     // rotate shaft parts for better 3d printing:
-    part1 = <CSG> part1.rotateX(180).translate([0, 0, params.outerlength1 + params.spiderlength]);
-    part2 = <CSG> part2.rotateX(180).translate([0, 0, params.outerlength2 + params.spiderlength]);
+    part1 = <CSG>(
+        part1
+            .rotateX(180)
+            .translate([0, 0, params.outerlength1 + params.spiderlength])
+    );
+    part2 = <CSG>(
+        part2
+            .rotateX(180)
+            .translate([0, 0, params.outerlength2 + params.spiderlength])
+    );
 
-    var result = <CSG> part1.translate([-outerdiameter - 5, 0, 0]);
-    result = result.union(<CSG> part2.translate([0, 0, 0]));
-    result = result.union(<CSG> spider.translate([outerdiameter + 5, 0, -params.spidermargin]));
+    var result = <CSG>part1.translate([-outerdiameter - 5, 0, 0]);
+    result = result.union(<CSG>part2.translate([0, 0, 0]));
+    result = result.union(
+        <CSG>spider.translate([outerdiameter + 5, 0, -params.spidermargin]),
+    );
     return result;
 }
 
@@ -198,9 +224,14 @@ function makeShaft(
     });
 
     for (var i = 0; i < numteeth; i++) {
-        var angle = i * 360 / numteeth;
-        var pie = makePie(outerdiameter / 2, spiderlength, angle - 45 / numteeth, angle + 45 / numteeth);
-        pie = <CSG> pie.translate([0, 0, outerlength]);
+        var angle = (i * 360) / numteeth;
+        var pie = makePie(
+            outerdiameter / 2,
+            spiderlength,
+            angle - 45 / numteeth,
+            angle + 45 / numteeth,
+        );
+        pie = <CSG>pie.translate([0, 0, outerlength]);
         result = result.union(pie);
     }
     var spidercylinder = CSG.cylinder({
@@ -220,15 +251,19 @@ function makeShaft(
 
     var screwz = shaftlength / 2;
     if (screwz < nutradius) screwz = nutradius;
-    var nutcutout = <CSG> hexagon(nutradius, nutthickness).translate([0, 0, -nutthickness / 2]);
-    var grubnutradiusAtFlatSide = nutradius * Math.cos(Math.PI / 180 * 30);
+    var nutcutout = <CSG>(
+        hexagon(nutradius, nutthickness).translate([0, 0, -nutthickness / 2])
+    );
+    var grubnutradiusAtFlatSide = nutradius * Math.cos((Math.PI / 180) * 30);
     var nutcutoutrectangle = CSG.cube({
         radius: [outerlength / 2, grubnutradiusAtFlatSide, nutthickness / 2],
         center: [outerlength / 2, 0, 0],
     });
     nutcutout = nutcutout.union(nutcutoutrectangle);
-    nutcutout = <CSG> nutcutout.rotateY(90);
-    nutcutout = <CSG> nutcutout.translate([(outerdiameter + innerdiameter) / 4, 0, screwz]);
+    nutcutout = <CSG>nutcutout.rotateY(90);
+    nutcutout = <CSG>(
+        nutcutout.translate([(outerdiameter + innerdiameter) / 4, 0, screwz])
+    );
     result = result.subtract(nutcutout);
 
     var screwcutout = CSG.cylinder({
@@ -245,16 +280,21 @@ function makeShaft(
     return result;
 }
 
-function makePie(radius: number, height: number, startangle: number, endangle: number) {
+function makePie(
+    radius: number,
+    height: number,
+    startangle: number,
+    endangle: number,
+) {
     var absangle = Math.abs(startangle - endangle);
     if (absangle >= 180) {
         throw new Error("Pie angle must be less than 180 degrees");
     }
-    var numsteps = cylresolution * absangle / 360;
+    var numsteps = (cylresolution * absangle) / 360;
     if (numsteps < 1) numsteps = 1;
     var points: CSG.Vector2D[] = [];
     for (var i = 0; i <= numsteps; i++) {
-        var angle = startangle + i / numsteps * (endangle - startangle);
+        var angle = startangle + (i / numsteps) * (endangle - startangle);
         var vec = CSG.Vector2D.fromAngleDegrees(angle).times(radius);
         points.push(vec);
     }
@@ -269,7 +309,9 @@ function makePie(radius: number, height: number, startangle: number, endangle: n
 function hexagon(radius: number, height: number) {
     var vertices: CSG.Vertex[] = [];
     for (var i = 0; i < 6; i++) {
-        var point = CSG.Vector2D.fromAngleDegrees(-i * 60).times(radius).toVector3D(0);
+        var point = CSG.Vector2D.fromAngleDegrees(-i * 60)
+            .times(radius)
+            .toVector3D(0);
         vertices.push(new CSG.Vertex(point));
     }
     var polygon = new CSG.Polygon(vertices);
@@ -277,13 +319,23 @@ function hexagon(radius: number, height: number) {
     return hexagon;
 }
 
-function makeSpider(outerdiameter: number, spidercenterdiameter: number, spiderlength: number, numteeth: number) {
+function makeSpider(
+    outerdiameter: number,
+    spidercenterdiameter: number,
+    spiderlength: number,
+    numteeth: number,
+) {
     var result = new CSG();
     var numspiderteeth = numteeth * 2; // spider has twice the number of teeth
     for (var i = 0; i < numspiderteeth; i++) {
-        var angle = i * 360 / numspiderteeth;
-        var pie = makePie(outerdiameter / 2, spiderlength, angle - 90 / numspiderteeth, angle + 90 / numspiderteeth);
-        pie = <CSG> pie.translate([0, 0, 0]);
+        var angle = (i * 360) / numspiderteeth;
+        var pie = makePie(
+            outerdiameter / 2,
+            spiderlength,
+            angle - 90 / numspiderteeth,
+            angle + 90 / numspiderteeth,
+        );
+        pie = <CSG>pie.translate([0, 0, 0]);
         result = result.union(pie);
     }
 

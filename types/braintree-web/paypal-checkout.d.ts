@@ -78,31 +78,31 @@ export interface PayPalCheckoutLoadPayPalSDKOptions {
      */
     dataAttributes?:
         | {
-            /**
-             * CSP nonce used for rendering the button.
-             */
-            "csp-nonce"?: string | undefined;
+              /**
+               * CSP nonce used for rendering the button.
+               */
+              "csp-nonce"?: string | undefined;
 
-            /**
-             * Client token used for identifying your buyers.
-             */
-            "data-client-token"?: string | undefined;
+              /**
+               * Client token used for identifying your buyers.
+               */
+              "data-client-token"?: string | undefined;
 
-            /**
-             * Order ID used for optimizing the funding that displays.
-             */
-            "data-order-id"?: string | undefined;
+              /**
+               * Order ID used for optimizing the funding that displays.
+               */
+              "data-order-id"?: string | undefined;
 
-            /**
-             * Log page type and interactions for the JavaScript SDK.
-             */
-            "data-page-type"?: string | undefined;
+              /**
+               * Log page type and interactions for the JavaScript SDK.
+               */
+              "data-page-type"?: string | undefined;
 
-            /**
-             * Partner attribution ID used for revenue attribution.
-             */
-            "data-partner-attribution-id"?: string | undefined;
-        }
+              /**
+               * Partner attribution ID used for revenue attribution.
+               */
+              "data-partner-attribution-id"?: string | undefined;
+          }
         | undefined;
     /**
      * Funding sources to disallow from showing in the checkout buttons.
@@ -155,8 +155,13 @@ export interface PayPalCheckout {
      *
      * @link https://braintree.github.io/braintree-web/current/PayPalCheckout.html#loadPayPalSDK
      */
-    loadPayPalSDK(options?: PayPalCheckoutLoadPayPalSDKOptions): Promise<PayPalCheckout>;
-    loadPayPalSDK(options?: PayPalCheckoutLoadPayPalSDKOptions, callback?: callback): void;
+    loadPayPalSDK(
+        options?: PayPalCheckoutLoadPayPalSDKOptions,
+    ): Promise<PayPalCheckout>;
+    loadPayPalSDK(
+        options?: PayPalCheckoutLoadPayPalSDKOptions,
+        callback?: callback,
+    ): void;
 
     /**
      * Creates a PayPal payment ID or billing token using the given options. This is meant to be passed to PayPal's checkout.js library.
@@ -272,7 +277,10 @@ export interface PayPalCheckout {
      * });
      * ```
      */
-    createPayment(options: PayPalCheckoutCreatePaymentOptions, callback?: callback): Promise<string>;
+    createPayment(
+        options: PayPalCheckoutCreatePaymentOptions,
+        callback?: callback,
+    ): Promise<string>;
 
     /**
      * Tokenizes the authorize data from PayPal's checkout.js library when completing a buyer approval flow.
@@ -295,8 +303,13 @@ export interface PayPalCheckout {
      *   // Add other options, e.g. onCancel, onError
      * }).render('#paypal-button');
      */
-    tokenizePayment(tokenizeOptions: PayPalCheckoutTokenizationOptions): Promise<paypal.TokenizePayload>;
-    tokenizePayment(tokenizeOptions: PayPalCheckoutTokenizationOptions, callback?: callback): void;
+    tokenizePayment(
+        tokenizeOptions: PayPalCheckoutTokenizationOptions,
+    ): Promise<paypal.TokenizePayload>;
+    tokenizePayment(
+        tokenizeOptions: PayPalCheckoutTokenizationOptions,
+        callback?: callback,
+    ): void;
 
     /**
      * Resolves with the PayPal client id to be used when loading the PayPal SDK.     * @example
@@ -337,8 +350,13 @@ export interface PayPalCheckout {
      *   // handle other errors
      * });
      */
-    startVaultInitiatedCheckout(options: { optOutOfModalBackdrop: boolean }): Promise<void>;
-    startVaultInitiatedCheckout(options: { optOutOfModalBackdrop: boolean }, callback: callback): void;
+    startVaultInitiatedCheckout(options: {
+        optOutOfModalBackdrop: boolean;
+    }): Promise<void>;
+    startVaultInitiatedCheckout(
+        options: { optOutOfModalBackdrop: boolean },
+        callback: callback,
+    ): void;
 
     /**
      * Cleanly tear down anything set up by {@link module:braintree-web/paypal-checkout.create|create}.

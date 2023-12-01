@@ -64,25 +64,29 @@ declare namespace simpleDiff {
 
     interface Options {
         idProp?: string | undefined;
-        idProps?: {
-            [path: string]: string;
-        } | undefined;
+        idProps?:
+            | {
+                  [path: string]: string;
+              }
+            | undefined;
         comparators?:
-            | Array<[
-                unknown,
-                (
-                    oldValue: unknown,
-                    newValue: unknown,
-                    options: { oldPath: Path; newPath: Path },
-                ) => boolean,
-            ]>
+            | Array<
+                  [
+                      unknown,
+                      (
+                          oldValue: unknown,
+                          newValue: unknown,
+                          options: { oldPath: Path; newPath: Path },
+                      ) => boolean,
+                  ]
+              >
             | undefined;
         ignore?:
             | ((
-                oldValue: unknown,
-                newValue: unknown,
-                options: { oldPath: Path; newPath: Path },
-            ) => boolean)
+                  oldValue: unknown,
+                  newValue: unknown,
+                  options: { oldPath: Path; newPath: Path },
+              ) => boolean)
             | undefined;
         callback?: ((event: Event) => void) | undefined;
         addEvent?: string | undefined;
@@ -94,7 +98,11 @@ declare namespace simpleDiff {
     }
 }
 
-declare function simpleDiff(oldObj: unknown, newObj: unknown, options?: simpleDiff.Options): simpleDiff.Event[];
+declare function simpleDiff(
+    oldObj: unknown,
+    newObj: unknown,
+    options?: simpleDiff.Options,
+): simpleDiff.Event[];
 
 export as namespace simpleDiff;
 export = simpleDiff;

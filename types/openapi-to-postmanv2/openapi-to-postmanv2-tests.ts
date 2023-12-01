@@ -1,21 +1,27 @@
-import { convert, getMetaData, getOptions, Input, mergeAndValidate, SchemaPack, validate } from "openapi-to-postmanv2";
+import {
+    convert,
+    getMetaData,
+    getOptions,
+    Input,
+    mergeAndValidate,
+    SchemaPack,
+    validate,
+} from "openapi-to-postmanv2";
 
 const input: Input = { type: "string", data: "" };
 
 {
     const schemaPack = new SchemaPack(input);
 
-    schemaPack.convert(
-        (err, result) => {
-            if (result.result) {
-                result.output[0].type; // $ExpectType "collection"
-                result.output[0].data; // $ExpectType CollectionDefinition
-            } else {
-                // @ts-expect-error
-                result.output;
-            }
-        },
-    );
+    schemaPack.convert((err, result) => {
+        if (result.result) {
+            result.output[0].type; // $ExpectType "collection"
+            result.output[0].data; // $ExpectType CollectionDefinition
+        } else {
+            // @ts-expect-error
+            result.output;
+        }
+    });
 
     schemaPack.getMetaData((err, result) => {
         if (result.result) {

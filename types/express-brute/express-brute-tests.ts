@@ -21,7 +21,9 @@ app.get(
             next(req.body.username);
         },
         failCallback: (req, res, next, nextValidRequestDate) => {
-            res.status(429).send(`Try again at ${nextValidRequestDate.toDateString()}`);
+            res.status(429).send(
+                `Try again at ${nextValidRequestDate.toDateString()}`,
+            );
         },
     }),
     (req, res, next) => {
@@ -29,6 +31,10 @@ app.get(
     },
 );
 
-app.post("/expensive", bruteforce.getMiddleware({ failCallback: ExpressBrute.FailMark }), (req, res, next) => {
-    res.send("Success!");
-});
+app.post(
+    "/expensive",
+    bruteforce.getMiddleware({ failCallback: ExpressBrute.FailMark }),
+    (req, res, next) => {
+        res.send("Success!");
+    },
+);

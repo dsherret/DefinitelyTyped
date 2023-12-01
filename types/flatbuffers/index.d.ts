@@ -96,19 +96,51 @@ declare global {
             addInt64(value: Long): void;
             addFloat32(value: number): void;
             addFloat64(value: number): void;
-            addFieldInt8(voffset: number, value: number, defaultValue: number): void;
-            addFieldInt16(voffset: number, value: number, defaultValue: number): void;
-            addFieldInt32(voffset: number, value: number, defaultValue: number): void;
-            addFieldInt64(voffset: number, value: Long, defaultValue: Long): void;
-            addFieldFloat32(voffset: number, value: number, defaultValue: number): void;
-            addFieldFloat64(voffset: number, value: number, defaultValue: number): void;
+            addFieldInt8(
+                voffset: number,
+                value: number,
+                defaultValue: number,
+            ): void;
+            addFieldInt16(
+                voffset: number,
+                value: number,
+                defaultValue: number,
+            ): void;
+            addFieldInt32(
+                voffset: number,
+                value: number,
+                defaultValue: number,
+            ): void;
+            addFieldInt64(
+                voffset: number,
+                value: Long,
+                defaultValue: Long,
+            ): void;
+            addFieldFloat32(
+                voffset: number,
+                value: number,
+                defaultValue: number,
+            ): void;
+            addFieldFloat64(
+                voffset: number,
+                value: number,
+                defaultValue: number,
+            ): void;
 
-            addFieldOffset(voffset: number, value: Offset, defaultValue: Offset): void;
+            addFieldOffset(
+                voffset: number,
+                value: Offset,
+                defaultValue: Offset,
+            ): void;
 
             /**
              * Structs are stored inline, so nothing additional is being added. `d` is always 0.
              */
-            addFieldStruct(voffset: number, value: Offset, defaultValue: Offset): void;
+            addFieldStruct(
+                voffset: number,
+                value: Offset,
+                defaultValue: Offset,
+            ): void;
 
             /**
              * Structures are always stored inline, they need to be created right
@@ -166,8 +198,15 @@ declare global {
              */
             endObject(): Offset;
 
-            finish(root_table: Offset, file_identifier?: string, size_prefix?: boolean): void;
-            finishSizePrefixed(root_table: Offset, file_identifier?: string): void;
+            finish(
+                root_table: Offset,
+                file_identifier?: string,
+                size_prefix?: boolean,
+            ): void;
+            finishSizePrefixed(
+                root_table: Offset,
+                file_identifier?: string,
+            ): void;
 
             /**
              * This checks a required field has been set in a given table that has
@@ -184,7 +223,11 @@ declare global {
              * @param num_elems The number of elements in the array
              * @param alignment The alignment of the array
              */
-            startVector(elem_size: number, num_elems: number, alignment: number): void;
+            startVector(
+                elem_size: number,
+                num_elems: number,
+                alignment: number,
+            ): void;
 
             /**
              * Finish off the creation of an array and all its elements. The array must be
@@ -273,7 +316,10 @@ declare global {
              *
              * @param optionalEncoding Defaults to UTF16_STRING
              */
-            __string(offset: number, optionalEncoding?: Encoding): string | Uint8Array;
+            __string(
+                offset: number,
+                optionalEncoding?: Encoding,
+            ): string | Uint8Array;
 
             /**
              * Retrieve the relative offset stored at "offset"

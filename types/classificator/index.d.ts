@@ -1,6 +1,8 @@
 export = Classificator;
 
-declare function Classificator(options?: Classificator.Options): Classificator.NaiveBayes;
+declare function Classificator(
+    options?: Classificator.Options,
+): Classificator.NaiveBayes;
 
 declare namespace Classificator {
     interface ClassificationResults {
@@ -93,7 +95,9 @@ declare namespace Classificator {
      *
      * Use this with NaiveBayes::toJson().
      */
-    function fromJson(jsonStrOrObject: string | { [key: string]: any }): NaiveBayes;
+    function fromJson(
+        jsonStrOrObject: string | { [key: string]: any },
+    ): NaiveBayes;
 
     /**
      * Used to serialize a classifier's state.

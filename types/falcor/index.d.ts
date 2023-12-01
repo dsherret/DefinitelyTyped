@@ -1,4 +1,11 @@
-import { JSONEnvelope, JSONGraph, JSONGraphEnvelope, Path, PathSet, PathValue } from "falcor-json-graph";
+import {
+    JSONEnvelope,
+    JSONGraph,
+    JSONGraphEnvelope,
+    Path,
+    PathSet,
+    PathValue,
+} from "falcor-json-graph";
 
 export as namespace falcor;
 
@@ -229,9 +236,19 @@ export class Model {
 export class ModelResponse<T> extends Observable<T> {
     constructor(observable: Observable<T>);
     progressively(): ModelResponse<T>;
-    forEach(onNext: (value: T) => void, onError?: (error: Error) => void, onCompleted?: () => void): Subscription;
-    then(onFulfilled?: (value: T) => any | Thenable<any>, onRejected?: (error: any) => void): Thenable<any>;
-    then<U>(onFulfilled?: (value: T) => U | Thenable<U>, onRejected?: (error: any) => void): Thenable<U>;
+    forEach(
+        onNext: (value: T) => void,
+        onError?: (error: Error) => void,
+        onCompleted?: () => void,
+    ): Subscription;
+    then(
+        onFulfilled?: (value: T) => any | Thenable<any>,
+        onRejected?: (error: any) => void,
+    ): Thenable<any>;
+    then<U>(
+        onFulfilled?: (value: T) => U | Thenable<U>,
+        onRejected?: (error: any) => void,
+    ): Thenable<U>;
 }
 
 export interface Thenable<T> {

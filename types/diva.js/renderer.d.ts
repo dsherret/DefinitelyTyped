@@ -1,5 +1,11 @@
 import DocumentLayout from "./document-layout";
-import { Dimensions, Offset, RendererConfig, SourceProvider, ViewportPosition } from "./interfaces";
+import {
+    Dimensions,
+    Offset,
+    RendererConfig,
+    SourceProvider,
+    ViewportPosition,
+} from "./interfaces";
 
 export default class Renderer {
     layout: DocumentLayout | null;

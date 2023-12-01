@@ -108,10 +108,7 @@ declare function rc<U extends object>(
      */
     parse?: (content: string) => object,
 ): U & RcResultType;
-declare function rc<
-    T extends object,
-    U extends object,
->(
+declare function rc<T extends object, U extends object>(
     /**
      * The name of the app to configure, rc will search for this files :
      * `/etc/${name}/config`,
@@ -177,7 +174,8 @@ declare function rc<
      * discovered configuration file, should return a parsed object dictionary.
      */
     parse?: (content: string) => object,
-): T extends string | null | undefined ? (U extends null | undefined ? minimist.ParsedArgs : U) & RcResultType
+): T extends string | null | undefined
+    ? (U extends null | undefined ? minimist.ParsedArgs : U) & RcResultType
     : T & (U extends null | undefined ? minimist.ParsedArgs : U) & RcResultType;
 
 export = rc;

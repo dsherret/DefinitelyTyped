@@ -137,9 +137,10 @@ declare class Arena {
          * If title is not set, an error will occur.
          * If status is not set, it will default to "public".
          */
-        update(
-            params: { title?: string | undefined; status?: Arena.ChannelStatus | undefined },
-        ): Promise<Arena.Channel>;
+        update(params: {
+            title?: string | undefined;
+            status?: Arena.ChannelStatus | undefined;
+        }): Promise<Arena.Channel>;
         /**
          * Add collaborators to a channel. Pass userIds as an Array or multiple arguments.
          */
@@ -191,7 +192,11 @@ declare class Arena {
          * Update a block. Pass an object with one or more of content,
          * title or description fields to update those fields.
          */
-        update(params: { content?: any; title?: string | undefined; description?: string | undefined }): Promise<void>;
+        update(params: {
+            content?: any;
+            title?: string | undefined;
+            description?: string | undefined;
+        }): Promise<void>;
     };
 
     /**
@@ -220,7 +225,9 @@ declare class Arena {
         /**
          * Get a list of users and/or blocks the user is following. Supports pagination.
          */
-        following(params?: PaginationParams): Promise<Array<Arena.Block | Arena.User>>;
+        following(
+            params?: PaginationParams,
+        ): Promise<Array<Arena.Block | Arena.User>>;
         /**
          * Get a list of the user's followers. Supports pagination.
          */
@@ -245,9 +252,7 @@ declare class Arena {
         /**
          * Search for channels, blocks, and users matching query.
          */
-        all(
-            params?: Params,
-        ): Promise<{
+        all(params?: Params): Promise<{
             channels?: Arena.Channel[] | undefined;
             blocks?: Arena.Block[] | undefined;
             users?: Arena.User[] | undefined;
@@ -292,7 +297,9 @@ declare namespace Arena {
      * Representation of a block's source
      */
     interface Source {
-        provider?: { name?: string | undefined; url?: string | undefined } | undefined;
+        provider?:
+            | { name?: string | undefined; url?: string | undefined }
+            | undefined;
         title?: string | undefined;
         url?: string | undefined;
     }

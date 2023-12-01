@@ -6,7 +6,9 @@ declare class TiffConverter {
     static createDir(target: string, filename: string): Promise<void>;
 
     static count(
-        converted: { [key: string]: unknown } | Array<{ [key: string]: unknown }>,
+        converted:
+            | { [key: string]: unknown }
+            | Array<{ [key: string]: unknown }>,
         key: string,
         value: unknown,
     ): number;
@@ -21,11 +23,21 @@ declare class TiffConverter {
 
     complete: TiffConverter.CompleteCallback;
 
-    convert(tiff: string, isArray: boolean, location: string): Promise<TiffConverter.SingleConvertResult>;
+    convert(
+        tiff: string,
+        isArray: boolean,
+        location: string,
+    ): Promise<TiffConverter.SingleConvertResult>;
 
-    convertOne(tiff: string, location: string): Promise<TiffConverter.ConvertResult>;
+    convertOne(
+        tiff: string,
+        location: string,
+    ): Promise<TiffConverter.ConvertResult>;
 
-    convertArray(tiffs: string[], location: string): Promise<TiffConverter.ConvertResult>;
+    convertArray(
+        tiffs: string[],
+        location: string,
+    ): Promise<TiffConverter.ConvertResult>;
 
     removePaths(): Promise<void>;
 

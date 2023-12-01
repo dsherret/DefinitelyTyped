@@ -2,7 +2,13 @@ import numeric = require("numeric");
 
 const vector = [2, 5];
 const matrix = [vector, vector];
-const threeDimensionalMatrix = [[[2, 3], [2, 3], [3, 5]]];
+const threeDimensionalMatrix = [
+    [
+        [2, 3],
+        [2, 3],
+        [3, 5],
+    ],
+];
 const sparseMatrix: [number[], number[], number[]] = [vector, vector, vector];
 
 numeric.bench(() => null, 150); // $ExpectType number
@@ -12,8 +18,14 @@ numeric.parseDate(["08-05-87", "08-05-75"]); // $ExpectType number[]
 numeric.parseFloat("55.24"); // $ExpectType number
 numeric.parseFloat(["25.15", "44.25", "as"]); // $ExpectType number[]
 numeric.parseCSV("car, bike"); // $ExpectType string[][]
-numeric.toCSV([[25, 52, 62, 66], ["car", "bad", "bike", {}]]); // $ExpectType string
-numeric.imageURL([[25, 50], [52, 52]]); // $ExpectType string
+numeric.toCSV([
+    [25, 52, 62, 66],
+    ["car", "bad", "bike", {}],
+]); // $ExpectType string
+numeric.imageURL([
+    [25, 50],
+    [52, 52],
+]); // $ExpectType string
 numeric.getURL("sdf"); // $ExpectType any
 
 numeric.dim(matrix); // $ExpectType number[] || Vector
@@ -606,9 +618,17 @@ const spline = numeric.spline(vector, matrix, "periodic", 3);
 spline.diff().roots(); // $ExpectType number[] || Vector
 spline.at(vector); // $ExpectType number | number[] || number | Vector
 
-numeric.uncmin((x: number[]) => 23, vector, 2, null, 3, () => undefined, {
-    Hinv: matrix,
-});
+numeric.uncmin(
+    (x: number[]) => 23,
+    vector,
+    2,
+    null,
+    3,
+    () => undefined,
+    {
+        Hinv: matrix,
+    },
+);
 numeric.gradient((x: number[]) => 44, vector); // $ExpectType number[] || Vector
 
 const dopri = numeric.dopri(
@@ -623,15 +643,11 @@ const dopri = numeric.dopri(
 dopri.at(vector); // $ExpectType number[] | number[][] || Vector | Matrix
 
 numeric.echelonize(matrix); // $ExpectType { I: number[][]; A: number[][]; P: number[]; } || { I: Matrix; A: Matrix; P: Vector; }
-const temp1: { solution: number | number[]; message: string; iterations: number } = numeric.solveLP(
-    vector,
-    matrix,
-    vector,
-    matrix,
-    matrix,
-    3,
-    4,
-);
+const temp1: {
+    solution: number | number[];
+    message: string;
+    iterations: number;
+} = numeric.solveLP(vector, matrix, vector, matrix, matrix, 3, 4);
 
 const temp2: {
     solution: number[];

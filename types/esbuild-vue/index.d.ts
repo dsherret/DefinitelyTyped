@@ -24,5 +24,7 @@ interface EsbuildVuePluginInstance {
     setup(build: any): void;
 }
 
-declare function vuePlugin(options?: Partial<EsbuildVuePluginOptions>): EsbuildVuePluginInstance;
+declare function vuePlugin(
+    options?: Partial<EsbuildVuePluginOptions>,
+): EsbuildVuePluginInstance;
 export = vuePlugin;

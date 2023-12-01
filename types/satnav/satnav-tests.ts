@@ -8,7 +8,7 @@ Satnav({})
         },
     })
     .otherwise("/product/1")
-    .change(function(hash, params, old) {
+    .change(function (hash, params, old) {
         // Logic for any change
         console.log(hash);
         console.log(params);

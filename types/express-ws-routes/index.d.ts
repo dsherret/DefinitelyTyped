@@ -13,7 +13,11 @@ declare namespace expressWsRoutes {
     }
     type WebSocketHandler = (socket: WebSocket) => void;
     type CbHandler = (connectHandler: WebSocketHandler | boolean) => void;
-    type WebSocketRouteHandler = (info: ClientInfo, cb: CbHandler, next: NextFunction) => void;
+    type WebSocketRouteHandler = (
+        info: ClientInfo,
+        cb: CbHandler,
+        next: NextFunction,
+    ) => void;
 
     interface Server extends httpServer {
         wsServer: WebSocket.Server;

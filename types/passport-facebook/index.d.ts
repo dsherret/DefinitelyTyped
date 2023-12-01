@@ -9,9 +9,9 @@ export interface Profile extends passport.Profile {
     gender?: string | undefined;
     ageRange?:
         | {
-            min: number;
-            max?: number | undefined;
-        }
+              min: number;
+              max?: number | undefined;
+          }
         | undefined;
     profileUrl?: string | undefined;
     username?: string | undefined;
@@ -55,7 +55,8 @@ export interface AuthorizationParamsOptions {
     authNonce?: string | undefined;
 }
 
-export interface StrategyOptionsWithRequest extends Omit<StrategyOptions, "passReqToCallback"> {
+export interface StrategyOptionsWithRequest
+    extends Omit<StrategyOptions, "passReqToCallback"> {
     passReqToCallback: true;
 }
 
@@ -76,7 +77,10 @@ export type VerifyFunctionWithRequest = (
 
 export class Strategy extends oauth2.Strategy {
     constructor(options: StrategyOptions, verify: VerifyFunction);
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
 
     name: string;
     authenticate(req: express.Request, options?: object): void;

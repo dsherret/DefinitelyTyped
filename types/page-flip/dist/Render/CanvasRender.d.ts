@@ -7,7 +7,11 @@ import { Render } from "./Render";
 export class CanvasRender extends Render {
     private readonly canvas;
     private readonly ctx;
-    constructor(app: PageFlip, setting: FlipSetting, inCanvas: HTMLCanvasElement);
+    constructor(
+        app: PageFlip,
+        setting: FlipSetting,
+        inCanvas: HTMLCanvasElement,
+    );
     getContext(): CanvasRenderingContext2D;
     protected drawFrame(): void;
     private drawBookShadow;

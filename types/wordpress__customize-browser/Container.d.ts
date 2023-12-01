@@ -50,7 +50,10 @@ export abstract class Container extends Class {
     _toggleActive(active: boolean, params?: Container_Arguments): boolean;
     activate(params?: Container_Arguments): boolean;
     deactivate(params?: Container_Arguments): boolean;
-    abstract onChangeExpanded(expanded: boolean, args: Container_Arguments): void | never;
+    abstract onChangeExpanded(
+        expanded: boolean,
+        args: Container_Arguments,
+    ): void | never;
     _toggleExpanded(expanded: boolean, params: Container_Arguments): boolean;
     expand(params: Container_Arguments): boolean;
     collapse(params: Container_Arguments): boolean;

@@ -244,7 +244,11 @@ declare namespace scaron_prettyPhoto {
          * @param title {Array} The title to be displayed with the picture, can also be an array containing all the titles.
          * @param description {Array} The description to be displayed with the picture, can also be an array containing all the descriptions.
          */
-        open(images: string[], titles: string[], descriptions: string[]): boolean;
+        open(
+            images: string[],
+            titles: string[],
+            descriptions: string[],
+        ): boolean;
 
         /**
          * Change page in the prettyPhoto modal box

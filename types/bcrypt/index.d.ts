@@ -25,7 +25,10 @@ export declare function genSaltSync(rounds?: number, minor?: "a" | "b"): string;
  *     const salt = await bcrypt.genSalt(saltRounds);
  * })();
  */
-export declare function genSalt(rounds?: number, minor?: "a" | "b"): Promise<string>;
+export declare function genSalt(
+    rounds?: number,
+    minor?: "a" | "b",
+): Promise<string>;
 
 /**
  * @param rounds The cost of processing the data. Default 10.
@@ -41,8 +44,13 @@ export declare function genSalt(rounds?: number, minor?: "a" | "b"): Promise<str
  *     // ...
  * });
  */
-export declare function genSalt(callback: (err: Error | undefined, salt: string) => any): void;
-export declare function genSalt(rounds: number, callback: (err: Error | undefined, salt: string) => any): void;
+export declare function genSalt(
+    callback: (err: Error | undefined, salt: string) => any,
+): void;
+export declare function genSalt(
+    rounds: number,
+    callback: (err: Error | undefined, salt: string) => any,
+): void;
 export declare function genSalt(
     rounds: number,
     minor: "a" | "b",
@@ -68,7 +76,10 @@ export declare function genSalt(
  * const hash2 = bcrypt.hashSync(myPlaintextPassword, saltRounds);
  * // Store hash in your password DB.
  */
-export declare function hashSync(data: string | Buffer, saltOrRounds: string | number): string;
+export declare function hashSync(
+    data: string | Buffer,
+    saltOrRounds: string | number,
+): string;
 
 /**
  * @param data The data to be encrypted.
@@ -92,7 +103,10 @@ export declare function hashSync(data: string | Buffer, saltOrRounds: string | n
  *     // Store hash in your password DB.
  * })();
  */
-export declare function hash(data: string | Buffer, saltOrRounds: string | number): Promise<string>;
+export declare function hash(
+    data: string | Buffer,
+    saltOrRounds: string | number,
+): Promise<string>;
 
 /**
  * @param data The data to be encrypted.
@@ -136,7 +150,10 @@ export declare function hash(
  * bcrypt.compareSync(myPlaintextPassword, hash); // true
  * bcrypt.compareSync(someOtherPlaintextPassword, hash); // false
  */
-export declare function compareSync(data: string | Buffer, encrypted: string): boolean;
+export declare function compareSync(
+    data: string | Buffer,
+    encrypted: string,
+): boolean;
 
 /**
  * @param data The data to be encrypted.
@@ -157,7 +174,10 @@ export declare function compareSync(data: string | Buffer, encrypted: string): b
  *     // result2 == false
  * })();
  */
-export declare function compare(data: string | Buffer, encrypted: string): Promise<boolean>;
+export declare function compare(
+    data: string | Buffer,
+    encrypted: string,
+): Promise<boolean>;
 
 /**
  * @param data The data to be encrypted.

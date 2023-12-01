@@ -19,19 +19,19 @@ Toast.VERSION;
 // $ExpectType Options
 Toast.Default;
 
-element.addEventListener(Toast.Events.hidden, event => {
+element.addEventListener(Toast.Events.hidden, (event) => {
     // do something…
 });
 
-element.addEventListener(Toast.Events.hide, event => {
+element.addEventListener(Toast.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Toast.Events.show, event => {
+element.addEventListener(Toast.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Toast.Events.shown, event => {
+element.addEventListener(Toast.Events.shown, (event) => {
     // do something…
 });
 

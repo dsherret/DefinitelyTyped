@@ -19,7 +19,7 @@ const service: KapShareService<Config> = {
         // @ts-expect-error
         greeting: { type: "string", default: true },
     },
-    action: async context => {
+    action: async (context) => {
         // $ExpectType string
         const name = context.config.get("name");
 

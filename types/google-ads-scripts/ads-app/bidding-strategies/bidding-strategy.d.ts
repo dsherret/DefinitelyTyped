@@ -35,7 +35,8 @@ declare namespace GoogleAdsScripts {
          *        var biddingStrategy = biddingStrategyIterator.next();
          *      }
          */
-        interface BiddingStrategyIterator extends Base.Iterator<BiddingStrategy> {}
+        interface BiddingStrategyIterator
+            extends Base.Iterator<BiddingStrategy> {}
 
         /**
          * Fetches bidding strategies. Supports filtering and sorting.
@@ -54,13 +55,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface BiddingStrategySelector
-            extends
-                Base.Selector<BiddingStrategyIterator>,
+            extends Base.Selector<BiddingStrategyIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

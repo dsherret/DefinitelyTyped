@@ -42,7 +42,12 @@ logger.log("short message", undefined, {
 logger.log("short message", undefined, { cool: "beans" }, Date.now());
 logger.log("short message", undefined, undefined, Date.now());
 logger.log(new Error("NotFoundError"));
-logger.log(new Error("NotFoundError"), undefined, { cool: "beans" }, Date.now());
+logger.log(
+    new Error("NotFoundError"),
+    undefined,
+    { cool: "beans" },
+    Date.now(),
+);
 logger.log(new Error("NotFoundError"), undefined, undefined, Date.now());
 
 const graylogLogMethods: GraylogLogMethod[] = [
@@ -81,15 +86,27 @@ for (const method of graylogLogMethods) {
     logger[method]("short message", undefined, { cool: "beans" }, Date.now());
     logger[method]("short message", undefined, undefined, Date.now());
     logger[method](new Error("NotFoundError"));
-    logger[method](new Error("NotFoundError"), undefined, { cool: "beans" }, Date.now());
-    logger[method](new Error("NotFoundError"), undefined, undefined, Date.now());
+    logger[method](
+        new Error("NotFoundError"),
+        undefined,
+        { cool: "beans" },
+        Date.now(),
+    );
+    logger[method](
+        new Error("NotFoundError"),
+        undefined,
+        undefined,
+        Date.now(),
+    );
 }
 
-logger.on("error", error => {
-    throw new Error(`Error while trying to write to graylog2: ${error.message}`);
+logger.on("error", (error) => {
+    throw new Error(
+        `Error while trying to write to graylog2: ${error.message}`,
+    );
 });
 
-logger.close(error => {
+logger.close((error) => {
     if (error != null) throw error;
 });
 

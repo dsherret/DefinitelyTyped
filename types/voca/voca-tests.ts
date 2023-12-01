@@ -31,7 +31,12 @@ str = v
     .thru((words: string[]) => words[0])
     .value();
 
-str = v.chain("Hello world").replace("Hello", "Hi").lowerCase().slugify().value();
+str = v
+    .chain("Hello world")
+    .replace("Hello", "Hi")
+    .lowerCase()
+    .slugify()
+    .value();
 str = v(" Space travel ").trim().truncate(8).value();
 
 // Chop

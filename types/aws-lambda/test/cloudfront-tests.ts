@@ -75,9 +75,21 @@ const requestHandler: CloudFrontRequestHandler = async (event, context, cb) => {
     // Result can be either nullish (use current request), a replaced request, or an immediate response
     result = undefined;
     result = null;
-    result = { clientIp: str, method: str, uri: str, querystring: str, headers: cloudFrontHeaders };
+    result = {
+        clientIp: str,
+        method: str,
+        uri: str,
+        querystring: str,
+        headers: cloudFrontHeaders,
+    };
     result = { status: str };
-    result = { status: str, statusDescription: str, headers: cloudFrontHeaders, bodyEncoding: "text", body: str };
+    result = {
+        status: str,
+        statusDescription: str,
+        headers: cloudFrontHeaders,
+        bodyEncoding: "text",
+        body: str,
+    };
     // @ts-expect-error
     result = {};
 
@@ -86,15 +98,31 @@ const requestHandler: CloudFrontRequestHandler = async (event, context, cb) => {
     return result;
 };
 
-const responseHandler: CloudFrontResponseHandler = async (event, context, callback) => {
+const responseHandler: CloudFrontResponseHandler = async (
+    event,
+    context,
+    callback,
+) => {
     let result: CloudFrontResponseResult;
     // Result can be either nullish (use current response) or a replaced response, but not a request
     result = undefined;
     result = null;
     result = { status: str };
     // @ts-expect-error
-    result = { clientIp: str, method: str, uri: str, querystring: str, headers: cloudFrontHeaders };
-    result = { status: str, statusDescription: str, headers: cloudFrontHeaders, bodyEncoding: "text", body: str };
+    result = {
+        clientIp: str,
+        method: str,
+        uri: str,
+        querystring: str,
+        headers: cloudFrontHeaders,
+    };
+    result = {
+        status: str,
+        statusDescription: str,
+        headers: cloudFrontHeaders,
+        bodyEncoding: "text",
+        body: str,
+    };
     result = { status: str, bodyEncoding: "base64", body: str };
     // @ts-expect-error
     result = { status: str, bodyEncoding: "invalid-encoding", body: str };
@@ -114,7 +142,8 @@ const requestWithCustomOriginEvent: CloudFrontRequestEvent = {
                     distributionDomainName: "d123.cloudfront.net",
                     distributionId: "EDFDVBD6EXAMPLE",
                     eventType: "viewer-request",
-                    requestId: "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE==",
+                    requestId:
+                        "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE==",
                 },
                 request: {
                     body: {
@@ -174,7 +203,8 @@ const requestWithS3OriginEvent: CloudFrontRequestEvent = {
                     distributionDomainName: "d123.cloudfront.net",
                     distributionId: "EDFDVBD6EXAMPLE",
                     eventType: "viewer-request",
-                    requestId: "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE==",
+                    requestId:
+                        "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE==",
                 },
                 request: {
                     body: {
@@ -231,7 +261,8 @@ const responseEvent: CloudFrontResponseEvent = {
                     distributionDomainName: "d123.cloudfront.net",
                     distributionId: "EDFDVBD6EXAMPLE",
                     eventType: "viewer-response",
-                    requestId: "xGN7KWpVEmB9Dp7ctcVFQC4E-nrcOcEKS3QyAez--06dV7TEXAMPLE==",
+                    requestId:
+                        "xGN7KWpVEmB9Dp7ctcVFQC4E-nrcOcEKS3QyAez--06dV7TEXAMPLE==",
                 },
                 request: {
                     clientIp: "2001:0db8:85a3:0:0:8a2e:0370:7334",
@@ -288,7 +319,8 @@ const originRequestEvent: CloudFrontRequestEvent = {
                     distributionDomainName: "d111111abcdef8.cloudfront.net",
                     distributionId: "EDFDVBD6EXAMPLE",
                     eventType: "origin-request",
-                    requestId: "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
+                    requestId:
+                        "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
                 },
                 request: {
                     clientIp: "203.0.113.178",
@@ -351,7 +383,8 @@ const originRequestEventRecord: CloudFrontRequestEventRecord = {
             distributionDomainName: "d111111abcdef8.cloudfront.net",
             distributionId: "EDFDVBD6EXAMPLE",
             eventType: "origin-request",
-            requestId: "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
+            requestId:
+                "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
         },
         request: {
             clientIp: "203.0.113.178",
@@ -414,7 +447,8 @@ const originResponseEvent: CloudFrontResponseEvent = {
                     distributionDomainName: "d111111abcdef8.cloudfront.net",
                     distributionId: "EDFDVBD6EXAMPLE",
                     eventType: "origin-response",
-                    requestId: "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
+                    requestId:
+                        "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ==",
                 },
                 request: {
                     clientIp: "203.0.113.178",
@@ -666,15 +700,18 @@ const cloudFrontFunctionsEvent: CloudFrontFunctionsEvent = {
             },
             cookie1: {
                 value: "val1",
-                attributes: "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
+                attributes:
+                    "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
                 multiValue: [
                     {
                         value: "val1",
-                        attributes: "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
+                        attributes:
+                            "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
                     },
                     {
                         value: "val2",
-                        attributes: "Path=/cat; Domain=example.com; Expires=Wed, 10 Jan 2021 07:28:00 GMT",
+                        attributes:
+                            "Path=/cat; Domain=example.com; Expires=Wed, 10 Jan 2021 07:28:00 GMT",
                     },
                 ],
             },

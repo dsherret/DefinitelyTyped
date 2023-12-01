@@ -12,7 +12,11 @@
  *
  * uint64be.encode(42) // returns a 8 byte buffer with 42 encoded
  */
-export function encode(number: number, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    number: number,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     /**
      * Number of bytes after encoding a number. Always returns `8`.

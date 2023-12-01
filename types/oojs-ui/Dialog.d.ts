@@ -90,7 +90,9 @@ declare namespace OO.ui {
 
         interface Props extends Window.Props, mixin.PendingElement.Props {}
 
-        interface Prototype extends Window.Prototype, mixin.PendingElement.Prototype {
+        interface Prototype
+            extends Window.Prototype,
+                mixin.PendingElement.Prototype {
             /**
              * Get the set of actions used by the dialog.
              *
@@ -123,7 +125,9 @@ declare namespace OO.ui {
              * @param actions Action widget configs
              * @return Action widgets
              */
-            getActionWidgets(actions: ActionWidget.ConfigOptions[]): ActionWidget[];
+            getActionWidgets(
+                actions: ActionWidget.ConfigOptions[],
+            ): ActionWidget[];
 
             /**
              * Get action widget from config
@@ -143,7 +147,9 @@ declare namespace OO.ui {
              * @param config Initial action widget config
              * @return Action widget config
              */
-            getActionWidgetConfig(config: ActionWidget.ConfigOptions): ActionWidget.ConfigOptions;
+            getActionWidgetConfig(
+                config: ActionWidget.ConfigOptions,
+            ): ActionWidget.ConfigOptions;
 
             /**
              * Execute an action.
@@ -156,7 +162,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): Dialog;
+            new (config?: ConfigOptions): Dialog;
             prototype: Prototype;
             static: Static;
             super: Window.Constructor;

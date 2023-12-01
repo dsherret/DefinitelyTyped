@@ -36,26 +36,30 @@ passport.use(
 );
 
 passport.use(
-    new rememberme.Strategy({
-        key: "remember-me",
-        cookie: {
-            path: "/",
-            httpOnly: true,
-            maxAge: 604800000,
+    new rememberme.Strategy(
+        {
+            key: "remember-me",
+            cookie: {
+                path: "/",
+                httpOnly: true,
+                maxAge: 604800000,
+            },
         },
-    }, (token: any, done: (err: any, user?: any) => void) => {
-        Token.consume(token, (err, user) => {
-            if (err) done(err);
-            else if (!user) done(null, false);
-            else done(null, user);
-        });
-    }, (user: any, done: (err: any, token?: any) => void) => {
-        const token = { id: "token" };
-        Token.save(token, { userId: user.id }, (err) => {
-            if (err) done(err);
-            else done(null, token);
-        });
-    }),
+        (token: any, done: (err: any, user?: any) => void) => {
+            Token.consume(token, (err, user) => {
+                if (err) done(err);
+                else if (!user) done(null, false);
+                else done(null, user);
+            });
+        },
+        (user: any, done: (err: any, token?: any) => void) => {
+            const token = { id: "token" };
+            Token.save(token, { userId: user.id }, (err) => {
+                if (err) done(err);
+                else done(null, token);
+            });
+        },
+    ),
 );
 
 const app = express();

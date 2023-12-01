@@ -49,14 +49,14 @@ OrderedSet.create<Dict<string>>().has({ bar: "baz" });
 
 // forEach() iterates over all entries
 const stringEntries: string[] = [];
-OrderedSet.create<string>().forEach(entry => stringEntries.push(entry));
+OrderedSet.create<string>().forEach((entry) => stringEntries.push(entry));
 
 // forEach() is called with no context by default
 const sansContext = OrderedSet.create<string>();
 
 sansContext.add("foo");
 
-sansContext.forEach(function(entry) {
+sansContext.forEach(function (entry) {
     assertType<string>(entry);
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     assertType<void>(this);
@@ -65,7 +65,7 @@ sansContext.forEach(function(entry) {
 // forEach() context can be set as second argument
 const withContext = OrderedSet.create<string>();
 const context = { bar: "baz" };
-withContext.forEach(function(entry) {
+withContext.forEach(function (entry) {
     assertType<string>(entry);
     assertType<Dict<string>>(this);
 }, context);

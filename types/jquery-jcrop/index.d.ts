@@ -52,7 +52,9 @@ declare namespace JQuery.Jcrop {
         trackDocument?: boolean | undefined;
 
         keySupport?: boolean | undefined;
-        createHandles?: Array<CardinalDirection | IntermediateDirection> | undefined;
+        createHandles?:
+            | Array<CardinalDirection | IntermediateDirection>
+            | undefined;
         createDragbars?: CardinalDirection[] | undefined;
         createBorders?: CardinalDirection[] | undefined;
         drawBorders?: boolean | undefined;
@@ -97,5 +99,8 @@ declare namespace JQuery.Jcrop {
 }
 
 interface JQuery {
-    Jcrop(options?: JQuery.Jcrop.Options, callback?: (this: JQuery.Jcrop.Api) => void): JQuery;
+    Jcrop(
+        options?: JQuery.Jcrop.Options,
+        callback?: (this: JQuery.Jcrop.Api) => void,
+    ): JQuery;
 }

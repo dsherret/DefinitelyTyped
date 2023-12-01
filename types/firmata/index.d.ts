@@ -60,15 +60,37 @@ declare class Board extends EventEmitter {
     // TODO untested --- TWW
     i2cWriteReg(address: number, register: number, byte: number): void;
     // TODO untested --- TWW
-    sendI2CReadRequest(address: number, numBytes: number, callback: () => void): void;
+    sendI2CReadRequest(
+        address: number,
+        numBytes: number,
+        callback: () => void,
+    ): void;
     // TODO untested --- TWW
-    i2cRead(address: number, register: number, bytesToRead: number, callback: (data: number[]) => void): void;
-    i2cRead(address: number, bytesToRead: number, callback: (data: number[]) => void): void;
+    i2cRead(
+        address: number,
+        register: number,
+        bytesToRead: number,
+        callback: (data: number[]) => void,
+    ): void;
+    i2cRead(
+        address: number,
+        bytesToRead: number,
+        callback: (data: number[]) => void,
+    ): void;
     // TODO untested --- TWW
     i2cStop(options: number | { bus: number; address: number }): void;
     // TODO untested --- TWW
-    i2cReadOnce(address: number, register: number, bytesToRead: number, callback: (data: number[]) => void): void;
-    i2cReadOnce(address: number, bytesToRead: number, callback: (data: number[]) => void): void;
+    i2cReadOnce(
+        address: number,
+        register: number,
+        bytesToRead: number,
+        callback: (data: number[]) => void,
+    ): void;
+    i2cReadOnce(
+        address: number,
+        bytesToRead: number,
+        callback: (data: number[]) => void,
+    ): void;
     // TODO untested --- TWW
     sendOneWireConfig(pin: number, enableParasiticPower: boolean): void;
     // TODO untested --- TWW
@@ -76,11 +98,20 @@ declare class Board extends EventEmitter {
     // TODO untested --- TWW
     sendOneWireAlarmsSearch(pin: number, callback: () => void): void;
     // TODO untested --- TWW
-    sendOneWireRead(pin: number, device: number, numBytesToRead: number, callback: () => void): void;
+    sendOneWireRead(
+        pin: number,
+        device: number,
+        numBytesToRead: number,
+        callback: () => void,
+    ): void;
     // TODO untested --- TWW
     sendOneWireReset(pin: number): void;
     // TODO untested --- TWW
-    sendOneWireWrite(pin: number, device: number, data: number | number[]): void;
+    sendOneWireWrite(
+        pin: number,
+        device: number,
+        data: number | number[],
+    ): void;
     // TODO untested --- TWW
     sendOneWireDelay(pin: number, delay: number): void;
     // TODO untested --- TWW
@@ -116,13 +147,20 @@ declare class Board extends EventEmitter {
         callback?: (bool?: boolean) => void,
     ): void;
     // TODO untested --- TWW
-    serialConfig(
-        options: { portId: Board.SERIAL_PORT_ID; baud: number; rxPin?: number | undefined; txPin?: number | undefined },
-    ): void;
+    serialConfig(options: {
+        portId: Board.SERIAL_PORT_ID;
+        baud: number;
+        rxPin?: number | undefined;
+        txPin?: number | undefined;
+    }): void;
     // TODO untested --- TWW
     serialWrite(portId: Board.SERIAL_PORT_ID, inBytes: number[]): void;
     // TODO untested --- TWW
-    serialRead(portId: Board.SERIAL_PORT_ID, maxBytesToRead: number, callback: () => void): void;
+    serialRead(
+        portId: Board.SERIAL_PORT_ID,
+        maxBytesToRead: number,
+        callback: () => void,
+    ): void;
     // TODO untested --- TWW
     serialStop(portId: Board.SERIAL_PORT_ID): void;
     // TODO untested --- TWW
@@ -143,7 +181,12 @@ declare class Board extends EventEmitter {
     // TODO untested --- TWW
     static decode(data: number[]): number[];
     // TODO untested/incomplete --- TWW
-    protected _sendOneWireSearch(type: any, event: any, pin: number, callback: () => void): void;
+    protected _sendOneWireSearch(
+        type: any,
+        event: any,
+        pin: number,
+        callback: () => void,
+    ): void;
     // TODO untested/incomplete --- TWW
     protected _sendOneWireRequest(
         pin: number,
@@ -280,9 +323,9 @@ declare namespace Board {
         I2C = 0x06,
         ONEWIRE = 0x07,
         STEPPER = 0x08,
-        SERIAL = 0x0A,
-        PULLUP = 0x0B,
-        IGNORE = 0x7F,
+        SERIAL = 0x0a,
+        PULLUP = 0x0b,
+        IGNORE = 0x7f,
         PING_READ = 0x75,
         UNKNOWN = 0x10,
     }

@@ -1,35 +1,39 @@
 const config_1: DataTables.Settings = {
     // Buttons extension options
-    buttons: [{
-        extend: "excel",
-        text: "Excel",
-        className: "class",
-        filename: "exported_file.csv",
-        exportOptions: {
-            columns: ":visible",
+    buttons: [
+        {
+            extend: "excel",
+            text: "Excel",
+            className: "class",
+            filename: "exported_file.csv",
+            exportOptions: {
+                columns: ":visible",
+            },
         },
-    }, {
-        extend: "excel",
-        text: "Excel",
-        className: "class",
-        filename: "exported_file.csv",
-        exportOptions: {
-            columns: [1, 6, 2, 3, 4],
+        {
+            extend: "excel",
+            text: "Excel",
+            className: "class",
+            filename: "exported_file.csv",
+            exportOptions: {
+                columns: [1, 6, 2, 3, 4],
+            },
         },
-    }, {
-        action(e, dt, node, config) {},
-        available(dt, config) {
-            return true;
+        {
+            action(e, dt, node, config) {},
+            available(dt, config) {
+                return true;
+            },
+            destroy(dt, node, config) {},
+            enabled: true,
+            init(dt, node, config) {},
+            key: "a",
+            name: "name",
+            namespace: "namespace",
+            titleAttr: "title",
+            title: "title",
         },
-        destroy(dt, node, config) {},
-        enabled: true,
-        init(dt, node, config) {},
-        key: "a",
-        name: "name",
-        namespace: "namespace",
-        titleAttr: "title",
-        title: "title",
-    }],
+    ],
 };
 
 const config_2: DataTables.Settings = {
@@ -73,7 +77,7 @@ const config_3: DataTables.ButtonsSettings = {
         {
             extend: "colvis",
             columnText(dt, idx, title) {
-                return (idx + 1) + title;
+                return idx + 1 + title;
             },
         },
         {
@@ -95,7 +99,14 @@ const config_3: DataTables.ButtonsSettings = {
             filename: "file_name",
             text: "Customized CSV",
             exportOptions: {
-                columns: [0, 1, $("#name_column"), $("#test_column"), $("#height_column"), $("#area_column")],
+                columns: [
+                    0,
+                    1,
+                    $("#name_column"),
+                    $("#test_column"),
+                    $("#height_column"),
+                    $("#area_column"),
+                ],
             },
             // Function which customize the CSV (input : csv is the object that you can preprocesss)
             customize(csv) {
@@ -107,21 +118,26 @@ const config_3: DataTables.ButtonsSettings = {
 
                 // Remove the row one to personnalize the headers
                 split_csv[0] =
-                    "\"Latitude\",\"Longitude\",\"Site Name\",\"Description\",\"Antenna Height\",\"Antenna gain\",\"Env loss\",\"Candidate\"";
+                    '"Latitude","Longitude","Site Name","Description","Antenna Height","Antenna gain","Env loss","Candidate"';
 
                 // For each row except the first one (header)
                 $.each(split_csv.slice(1), (index, csv_row) => {
                     // Split on quotes and comma to get each cell
-                    const csv_cell_array = csv_row.split("\",\"");
+                    const csv_cell_array = csv_row.split('","');
 
                     // Remove replace the two quotes which are left at the beginning and the end (first and last cell)
                     csv_cell_array[0] = csv_cell_array[0].replace(/"/g, "");
                     csv_cell_array[5] = csv_cell_array[5].replace(/"/g, "");
 
                     // RANDOM EXAMPLE : Make some test, special cutomizing depending of the value of the cell (if cell 5 is equal to a certain value, give a value to row 6)
-                    if (csv_cell_array[5].toLowerCase().trim() === "a certain value") {
+                    if (
+                        csv_cell_array[5].toLowerCase().trim() ===
+                        "a certain value"
+                    ) {
                         csv_cell_array[6] = "2";
-                    } else if (csv_cell_array[5].toLowerCase() === "another value") {
+                    } else if (
+                        csv_cell_array[5].toLowerCase() === "another value"
+                    ) {
                         csv_cell_array[6] = "5";
                     } else {
                         csv_cell_array[6] = "";
@@ -132,7 +148,9 @@ const config_3: DataTables.ButtonsSettings = {
                     csv_cell_array[7] = "true";
 
                     // Join the table on the quotes and comma; add back the quotes at the beginning and end
-                    const csv_cell_array_quotes = `"${csv_cell_array.join("\",\"")}"`;
+                    const csv_cell_array_quotes = `"${csv_cell_array.join(
+                        '","',
+                    )}"`;
 
                     // Insert the new row into the rows array at the previous index (index +1 because the header was sliced)
                     split_csv[index + 1] = csv_cell_array_quotes;
@@ -153,36 +171,40 @@ const config_3: DataTables.ButtonsSettings = {
 
 const config_4: DataTables.Settings = {
     // Buttons change text
-    buttons: [{
-        extend: "excel",
-        text: "Excel",
-        className: "class",
-        filename: "exported_file.csv",
-        exportOptions: {
-            columns: ":visible",
+    buttons: [
+        {
+            extend: "excel",
+            text: "Excel",
+            className: "class",
+            filename: "exported_file.csv",
+            exportOptions: {
+                columns: ":visible",
+            },
         },
-    }, {
-        extend: "excel",
-        text: "Excel",
-        className: "class",
-        filename: "exported_file.csv",
-        exportOptions: {
-            columns: [1, 6, 2, 3, 4],
+        {
+            extend: "excel",
+            text: "Excel",
+            className: "class",
+            filename: "exported_file.csv",
+            exportOptions: {
+                columns: [1, 6, 2, 3, 4],
+            },
         },
-    }, {
-        action(e, dt, node, config) {},
-        available(dt, config) {
-            return true;
+        {
+            action(e, dt, node, config) {},
+            available(dt, config) {
+                return true;
+            },
+            destroy(dt, node, config) {},
+            enabled: true,
+            init(dt, node, config) {},
+            key: "a",
+            name: "name",
+            namespace: "namespace",
+            titleAttr: "title",
+            title: "title",
         },
-        destroy(dt, node, config) {},
-        enabled: true,
-        init(dt, node, config) {},
-        key: "a",
-        name: "name",
-        namespace: "namespace",
-        titleAttr: "title",
-        title: "title",
-    }],
+    ],
     language: {
         buttons: {
             excel: "this is excel button",
@@ -220,9 +242,7 @@ dt.button().add(0, {
     text: "Reload table",
 });
 
-dt.button(0)
-    .nodes()
-    .css("background", "blue");
+dt.button(0).nodes().css("background", "blue");
 
 dt.buttons().destroy();
 

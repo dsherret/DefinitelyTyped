@@ -3,7 +3,7 @@ import { NamedNode } from "rdf-js";
 import LoaderRegistry = require("rdf-loaders-registry");
 
 const registry: LoaderRegistry = new LoaderRegistry();
-const node: GraphPointer = <any> {};
+const node: GraphPointer = <any>{};
 
 type IntegerLoader = LoaderRegistry.Loader<number>;
 interface Nebula {
@@ -13,17 +13,20 @@ interface Nebula {
 type NebulaLoader = LoaderRegistry.Loader<Nebula, { bar: string }>;
 
 async function basicLoading() {
-    const integer: NamedNode = <any> {};
-    const nebula: NamedNode = <any> {};
+    const integer: NamedNode = <any>{};
+    const nebula: NamedNode = <any>{};
 
     const integerLoader: IntegerLoader = (numberNode: GraphPointer): number => {
         return 0;
     };
 
-    const nebulaLoader: NebulaLoader = async (term: GraphPointer, { loaderRegistry, bar }): Promise<Nebula> => {
+    const nebulaLoader: NebulaLoader = async (
+        term: GraphPointer,
+        { loaderRegistry, bar },
+    ): Promise<Nebula> => {
         return {
             label: bar,
-            distance: await loaderRegistry.load<number>(term) || 0,
+            distance: (await loaderRegistry.load<number>(term)) || 0,
         };
     };
 

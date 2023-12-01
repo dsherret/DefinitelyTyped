@@ -44,14 +44,14 @@ emitter.on("connection", {
     once: true,
 });
 
-(async () => {
+async () => {
     const remote = await emitter.waitFor("connect");
 
     emitter.defineStates("connect");
     emitter.emit("connect", remote);
 
     // ... somewhere else or in another file...
-});
+};
 
 // Now we are sure that we are ready!
 // We can connect to the DB or whatever your emitter is for...

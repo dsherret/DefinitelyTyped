@@ -3,7 +3,10 @@ export interface Reduced<TResult> {
     ["@@transducer/value"]: TResult;
 }
 
-export type Reducer<TResult, TInput> = (result: TResult, input: TInput) => TResult;
+export type Reducer<TResult, TInput> = (
+    result: TResult,
+    input: TInput,
+) => TResult;
 
 // Common case: Transducer<TInput, TOutput> =
 //   Transformer<TResult, TOutput> => Transformer<TResult, TInput>.
@@ -17,11 +20,18 @@ export interface Transducer<TInput, TOutput> {
 export interface CompletingTransformer<TResult, TCompleteResult, TInput> {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ["@@transducer/init"](): TResult | void;
-    ["@@transducer/step"](result: TResult, input: TInput): TResult | Reduced<TResult>;
+    ["@@transducer/step"](
+        result: TResult,
+        input: TInput,
+    ): TResult | Reduced<TResult>;
     ["@@transducer/result"](result: TResult): TCompleteResult;
 }
 
-export type Transformer<TResult, TInput> = CompletingTransformer<TResult, TResult, TInput>;
+export type Transformer<TResult, TInput> = CompletingTransformer<
+    TResult,
+    TResult,
+    TInput
+>;
 
 /**
  * Return a reduced value. Reduced values short circuit transduce.
@@ -37,8 +47,15 @@ export function isReduced(x: any): boolean;
  * Function composition. Take N function and return their composition.
  */
 // 2-4 Transducers
-export function comp<A, B, C>(a: Transducer<A, B>, b: Transducer<B, C>): Transducer<A, C>;
-export function comp<A, B, C, D>(a: Transducer<A, B>, b: Transducer<B, C>, c: Transducer<C, D>): Transducer<A, D>;
+export function comp<A, B, C>(
+    a: Transducer<A, B>,
+    b: Transducer<B, C>,
+): Transducer<A, C>;
+export function comp<A, B, C, D>(
+    a: Transducer<A, B>,
+    b: Transducer<B, C>,
+    c: Transducer<C, D>,
+): Transducer<A, D>;
 export function comp<A, B, C, D, E>(
     a: Transducer<A, B>,
     b: Transducer<B, C>,
@@ -49,8 +66,17 @@ export function comp<A, B, C, D, E>(
 export function comp<A>(...args: Array<Transducer<A, A>>): Transducer<A, A>;
 // 2-4 arbitrary functions
 export function comp<A, B, C>(b: (b: B) => C, a: (a: A) => B): (a: A) => C;
-export function comp<A, B, C, D>(c: (c: C) => D, b: (b: B) => C, a: (a: A) => B): (a: A) => D;
-export function comp<A, B, C, D, E>(d: (d: D) => E, c: (c: C) => D, b: (b: B) => C, a: (a: A) => B): (a: A) => E;
+export function comp<A, B, C, D>(
+    c: (c: C) => D,
+    b: (b: B) => C,
+    a: (a: A) => B,
+): (a: A) => D;
+export function comp<A, B, C, D, E>(
+    d: (d: D) => E,
+    c: (c: C) => D,
+    b: (b: B) => C,
+    a: (a: A) => B,
+): (a: A) => E;
 // N identical functions
 export function comp<A>(...args: Array<(a: A) => A>): A;
 // Falls back to (any => any) when argument types differ.
@@ -66,7 +92,9 @@ export function complement<T>(f: (x: T) => boolean): (x: T) => boolean;
  */
 export function identity<T>(arg: T): T;
 
-export class Map<TResult, TInput, TOutput> implements Transformer<TResult, TInput> {
+export class Map<TResult, TInput, TOutput>
+    implements Transformer<TResult, TInput>
+{
     constructor(f: (x: TInput) => TOutput, xf: Transformer<TResult, TOutput>);
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
@@ -76,7 +104,9 @@ export class Map<TResult, TInput, TOutput> implements Transformer<TResult, TInpu
 /**
  * Mapping transducer constructor
  */
-export function map<TInput, TOutput>(f: (x: TInput) => TOutput): Transducer<TInput, TOutput>;
+export function map<TInput, TOutput>(
+    f: (x: TInput) => TOutput,
+): Transducer<TInput, TOutput>;
 
 export class Filter<TResult, TInput> implements Transformer<TResult, TInput> {
     constructor(pred: (x: TInput) => boolean, xf: Transformer<TResult, TInput>);
@@ -88,13 +118,17 @@ export class Filter<TResult, TInput> implements Transformer<TResult, TInput> {
 /**
  * Filtering transducer constructor
  */
-export function filter<TInput>(pred: (x: TInput) => boolean): Transducer<TInput, TInput>;
+export function filter<TInput>(
+    pred: (x: TInput) => boolean,
+): Transducer<TInput, TInput>;
 
 /**
  * Similar to filter except the predicate is used to
  * eliminate values.
  */
-export function remove<TInput>(pred: (x: TInput) => boolean): Transducer<TInput, TInput>;
+export function remove<TInput>(
+    pred: (x: TInput) => boolean,
+): Transducer<TInput, TInput>;
 
 export class Keep<TResult, TInput> implements Transformer<TResult, TInput> {
     constructor(f: (x: TInput) => any, xf: Transformer<TResult, TInput>);
@@ -109,8 +143,13 @@ export class Keep<TResult, TInput> implements Transformer<TResult, TInput> {
  */
 export function keep<TInput>(f: (x: TInput) => any): Transducer<TInput, TInput>;
 
-export class KeepIndexed<TResult, TInput> implements Transformer<TResult, TInput> {
-    constructor(f: (i: number, x: TInput) => any, xf: Transformer<TResult, TInput>);
+export class KeepIndexed<TResult, TInput>
+    implements Transformer<TResult, TInput>
+{
+    constructor(
+        f: (i: number, x: TInput) => any,
+        xf: Transformer<TResult, TInput>,
+    );
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
     ["@@transducer/result"](result: TResult): TResult;
@@ -120,12 +159,17 @@ export class KeepIndexed<TResult, TInput> implements Transformer<TResult, TInput
  * Like keep but the provided function will be passed the
  * index as the fist argument.
  */
-export function keepIndexed<TInput>(f: (i: number, x: TInput) => any): Transducer<TInput, TInput>;
+export function keepIndexed<TInput>(
+    f: (i: number, x: TInput) => any,
+): Transducer<TInput, TInput>;
 
 export class Take<TResult, TInput> implements Transformer<TResult, TInput> {
     constructor(n: number, xf: Transformer<TResult, TInput>);
     ["@@transducer/init"](): TResult;
-    ["@@transducer/step"](result: TResult, input: TInput): TResult | Reduced<TResult>;
+    ["@@transducer/step"](
+        result: TResult,
+        input: TInput,
+    ): TResult | Reduced<TResult>;
     ["@@transducer/result"](result: TResult): TResult;
 }
 
@@ -135,10 +179,15 @@ export class Take<TResult, TInput> implements Transformer<TResult, TInput> {
  */
 export function take<TInput>(n: number): Transducer<TInput, TInput>;
 
-export class TakeWhile<TResult, TInput> implements Transformer<TResult, TInput> {
+export class TakeWhile<TResult, TInput>
+    implements Transformer<TResult, TInput>
+{
     constructor(pred: (n: TInput) => boolean, xf: Transformer<TResult, TInput>);
     ["@@transducer/init"](): TResult;
-    ["@@transducer/step"](result: TResult, input: TInput): TResult | Reduced<TResult>;
+    ["@@transducer/step"](
+        result: TResult,
+        input: TInput,
+    ): TResult | Reduced<TResult>;
     ["@@transducer/result"](result: TResult): TResult;
 }
 
@@ -146,7 +195,9 @@ export class TakeWhile<TResult, TInput> implements Transformer<TResult, TInput> 
  * Like the take transducer except takes as long as the pred
  * return true for inputs.
  */
-export function takeWhile<TInput>(pred: (n: TInput) => boolean): Transducer<TInput, TInput>;
+export function takeWhile<TInput>(
+    pred: (n: TInput) => boolean,
+): Transducer<TInput, TInput>;
 
 export class TakeNth<TResult, TInput> implements Transformer<TResult, TInput> {
     constructor(n: number, xf: Transformer<TResult, TInput>);
@@ -172,8 +223,13 @@ export class Drop<TResult, TInput> implements Transformer<TResult, TInput> {
  */
 export function drop<TInput>(n: number): Transducer<TInput, TInput>;
 
-export class DropWhile<TResult, TInput> implements Transformer<TResult, TInput> {
-    constructor(pred: (input: TInput) => boolean, xf: Transformer<TResult, TInput>);
+export class DropWhile<TResult, TInput>
+    implements Transformer<TResult, TInput>
+{
+    constructor(
+        pred: (input: TInput) => boolean,
+        xf: Transformer<TResult, TInput>,
+    );
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
     ["@@transducer/result"](result: TResult): TResult;
@@ -183,9 +239,13 @@ export class DropWhile<TResult, TInput> implements Transformer<TResult, TInput> 
  * A dropping transducer that drop inputs as long as
  * pred is true.
  */
-export function dropWhile<TInput>(pred: (input: TInput) => boolean): Transducer<TInput, TInput>;
+export function dropWhile<TInput>(
+    pred: (input: TInput) => boolean,
+): Transducer<TInput, TInput>;
 
-export class PartitionBy<TResult, TInput> implements Transformer<TResult, TInput> {
+export class PartitionBy<TResult, TInput>
+    implements Transformer<TResult, TInput>
+{
     constructor(f: (input: TInput) => any, xf: Transformer<TResult, TInput[]>);
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
@@ -197,9 +257,13 @@ export class PartitionBy<TResult, TInput> implements Transformer<TResult, TInput
  * arrays as long as predicate remains true for contiguous
  * inputs.
  */
-export function partitionBy<TInput>(f: (input: TInput) => any): Transducer<TInput, TInput[]>;
+export function partitionBy<TInput>(
+    f: (input: TInput) => any,
+): Transducer<TInput, TInput[]>;
 
-export class PartitionAll<TResult, TInput> implements Transformer<TResult, TInput> {
+export class PartitionAll<TResult, TInput>
+    implements Transformer<TResult, TInput>
+{
     constructor(n: number, xf: Transformer<TResult, TInput[]>);
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
@@ -210,12 +274,17 @@ export class PartitionAll<TResult, TInput> implements Transformer<TResult, TInpu
  * A partitioning transducer. Collects inputs into
  * arrays of size N.
  */
-export function partitionAll<TResult, TInput>(n: number): Transducer<TInput, TInput[]>;
+export function partitionAll<TResult, TInput>(
+    n: number,
+): Transducer<TInput, TInput[]>;
 
 export class Completing<TResult, TCompleteResult, TInput>
     implements CompletingTransformer<TResult, TCompleteResult, TInput>
 {
-    constructor(cf: (result: TResult) => TCompleteResult, xf: Transformer<TResult, TInput>);
+    constructor(
+        cf: (result: TResult) => TCompleteResult,
+        xf: Transformer<TResult, TInput>,
+    );
     ["@@transducer/init"](): TResult;
     ["@@transducer/step"](result: TResult, input: TInput): TResult;
     ["@@transducer/result"](result: TResult): TCompleteResult;
@@ -242,17 +311,23 @@ export class Wrap<TResult, TInput> implements Transformer<TResult, TInput> {
  * accumluation and the second argument is the next input and convert
  * it into a transducer transformer object.
  */
-export function wrap<TResult, TInput>(stepFn: Reducer<TResult, TInput>): Transformer<TResult, TInput>;
+export function wrap<TResult, TInput>(
+    stepFn: Reducer<TResult, TInput>,
+): Transformer<TResult, TInput>;
 
 /**
  * Given a transformer return a concatenating transformer
  */
-export function cat<TResult, TInput>(xf: Transformer<TResult, TInput>): Transformer<TResult, Iterable<TInput>>;
+export function cat<TResult, TInput>(
+    xf: Transformer<TResult, TInput>,
+): Transformer<TResult, Iterable<TInput>>;
 
 /**
  * A mapping concatenating transformer
  */
-export function mapcat<TResult, TInput, TOutput>(f: (arr: TInput) => Iterable<TOutput>): Transducer<TInput, TOutput>;
+export function mapcat<TResult, TInput, TOutput>(
+    f: (arr: TInput) => Iterable<TOutput>,
+): Transducer<TInput, TOutput>;
 
 /**
  * Given a transducer, a builder function, an initial value
@@ -310,7 +385,9 @@ export function reduce<TResult, TCompleteResult, TInput>(
 ): TCompleteResult;
 // Overloads for object iteration.
 export function reduce<TResult, TInput>(
-    xf: Transformer<TResult, [string, TInput]> | Reducer<TResult, [string, TInput]>,
+    xf:
+        | Transformer<TResult, [string, TInput]>
+        | Reducer<TResult, [string, TInput]>,
     init: TResult,
     coll: { [key: string]: TInput },
 ): TResult;
@@ -373,7 +450,9 @@ export function first<TResult, TInput>(): Wrap<TResult, TInput>;
 /**
  * Ensure that a value is reduced. If already reduced will not re-wrap.
  */
-export function ensureReduced<TResult>(x: TResult | Reduced<TResult>): Reduced<TResult>;
+export function ensureReduced<TResult>(
+    x: TResult | Reduced<TResult>,
+): Reduced<TResult>;
 
 /**
  * Ensure a value is not reduced. Unwraps if reduced.

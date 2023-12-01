@@ -11,7 +11,7 @@ export interface EventSourcePolyfillInit {
     lastEventIdQueryParameterName?: string;
     heartbeatTimeout?: number;
     headers?: { [name: string]: string };
-    Transport?: new() => any;
+    Transport?: new () => any;
 }
 
 export interface Event {
@@ -27,12 +27,14 @@ export interface EventListenerObject {
     handleEvent(evt: Event): void;
 }
 
-export type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+export type EventListenerOrEventListenerObject =
+    | EventListener
+    | EventListenerObject;
 
 export interface EventSourceEventMap {
-    "error": Event;
-    "message": MessageEvent;
-    "open": Event;
+    error: Event;
+    message: MessageEvent;
+    open: Event;
 }
 
 export interface MessageEvent extends Event {
@@ -65,20 +67,28 @@ export class EventSourcePolyfill {
         listener: (this: EventSource, ev: EventSourceEventMap[K]) => any,
         options?: any,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: any): void;
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: any,
+    ): void;
     removeEventListener<K extends keyof EventSourceEventMap>(
         type: K,
         listener: (this: EventSource, ev: EventSourceEventMap[K]) => any,
         options?: any,
     ): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: any): void;
+    removeEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: any,
+    ): void;
 }
 
 // defined as `type` to be compatible with typescript's lib.dom.d.ts
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type EventSourceConstructor = {
     prototype: any;
-    new(url: string, eventSourceInitDict?: EventSourceInit): EventSource;
+    new (url: string, eventSourceInitDict?: EventSourceInit): EventSource;
     readonly CLOSED: number;
     readonly CONNECTING: number;
     readonly OPEN: number;

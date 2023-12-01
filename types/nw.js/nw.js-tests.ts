@@ -15,8 +15,18 @@ nw.App.crashRenderer();
 nw.App.getProxyForURL("https://github.com/alirdn");
 nw.App.setProxyConfig("http=foopy:80;ftp=foopy2");
 nw.App.quit();
-nw.App.addOriginAccessWhitelistEntry("https://github.com/", "chrome-extension", location.host, true);
-nw.App.removeOriginAccessWhitelistEntry("https://github.com/", "chrome-extension", location.host, true);
+nw.App.addOriginAccessWhitelistEntry(
+    "https://github.com/",
+    "chrome-extension",
+    location.host,
+    true,
+);
+nw.App.removeOriginAccessWhitelistEntry(
+    "https://github.com/",
+    "chrome-extension",
+    location.host,
+    true,
+);
 
 /*
  * Note:
@@ -24,11 +34,11 @@ nw.App.removeOriginAccessWhitelistEntry("https://github.com/", "chrome-extension
  * nw.App.unregisterGlobalHotKey() tested in Shortcut Tests
  */
 
-nw.App.on("open", function(args) {
+nw.App.on("open", function (args) {
     console.log(args);
 });
 
-nw.App.on("reopen", function() {
+nw.App.on("reopen", function () {
     console.log("reopened");
 });
 
@@ -109,7 +119,7 @@ item = new nw.MenuItem({ label: "Simple item" });
 // Bind a callback to item
 item = new nw.MenuItem({
     label: "Click me",
-    click: function() {
+    click: function () {
         console.log("I'm clicked");
     },
     key: "s",
@@ -125,7 +135,7 @@ item.submenu = submenu;
 
 // And everything can be changed at runtime
 item.label = "New label";
-item.click = function() {
+item.click = function () {
     console.log("New click callback");
 };
 
@@ -136,15 +146,15 @@ item.click = function() {
 nw.Screen.Init();
 
 var screenCB = {
-    onDisplayBoundsChanged: function(screen: any) {
+    onDisplayBoundsChanged: function (screen: any) {
         console.log("displayBoundsChanged", screen);
     },
 
-    onDisplayAdded: function(screen: any) {
+    onDisplayAdded: function (screen: any) {
         console.log("displayAdded", screen);
     },
 
-    onDisplayRemoved: function(screen: any) {
+    onDisplayRemoved: function (screen: any) {
         console.log("displayRemoved", screen);
     },
 };
@@ -158,7 +168,7 @@ nw.Screen.on("displayRemoved", screenCB.onDisplayRemoved);
  * nw.Screen.chooseDesktopMedia() Tests
  */
 nw.Screen.Init(); // you only need to call this once
-nw.Screen.chooseDesktopMedia(["window", "screen"], function(streamId) {
+nw.Screen.chooseDesktopMedia(["window", "screen"], function (streamId) {
     var vid_constraint = {
         mandatory: {
             chromeMediaSource: "desktop",
@@ -176,7 +186,7 @@ nw.Screen.chooseDesktopMedia(["window", "screen"], function(streamId) {
  */
 var dcm = nw.Screen.DesktopCaptureMonitor;
 nw.Screen.Init();
-dcm.on("added", function(id, name, order, type) {
+dcm.on("added", function (id, name, order, type) {
     // select first stream and shutdown
     var constraints = {
         audio: {
@@ -198,10 +208,10 @@ dcm.on("added", function(id, name, order, type) {
     dcm.stop();
 });
 
-dcm.on("removed", function(id) {});
-dcm.on("orderchanged", function(id, new_order, old_order) {});
-dcm.on("namechanged", function(id, name) {});
-dcm.on("thumbnailchanged", function(id, thumbnail) {});
+dcm.on("removed", function (id) {});
+dcm.on("orderchanged", function (id, new_order, old_order) {});
+dcm.on("namechanged", function (id, name) {});
+dcm.on("thumbnailchanged", function (id, thumbnail) {});
 dcm.start(true, true);
 
 /**
@@ -221,10 +231,12 @@ nw.Shell.showItemInFolder("test.txt");
  */
 var option = {
     key: "Ctrl+Shift+A",
-    active: function() {
-        console.log("Global desktop keyboard shortcut: " + this.key + " active.");
+    active: function () {
+        console.log(
+            "Global desktop keyboard shortcut: " + this.key + " active.",
+        );
     },
-    failed: function(msg: any) {
+    failed: function (msg: any) {
         // :(, fail to register the |key| or couldn't parse the |key|.
         console.log(msg);
     },
@@ -240,11 +252,11 @@ nw.App.registerGlobalHotKey(shortcut);
 // will get an "active" event.
 
 // You can also add listener to shortcut's active and failed event.
-shortcut.on("active", function() {
+shortcut.on("active", function () {
     console.log("Global desktop keyboard shortcut: " + this.key + " active.");
 });
 
-shortcut.on("failed", function(msg: any) {
+shortcut.on("failed", function (msg: any) {
     console.log(msg);
 });
 
@@ -259,7 +271,9 @@ var tray = new nw.Tray({ title: "Tray", icon: "img/icon.png" });
 
 // Give it a menu
 var menu = new nw.Menu();
-menu.append(new nw.MenuItem({ type: "checkbox", label: "box1", enabled: true }));
+menu.append(
+    new nw.MenuItem({ type: "checkbox", label: "box1", enabled: true }),
+);
 tray.menu = menu;
 
 // Remove the tray
@@ -273,7 +287,7 @@ tray = null;
 var win = nw.Window.get();
 
 // Listen to the minimize event
-win.on("minimize", function() {
+win.on("minimize", function () {
     console.log("Window is minimized");
 });
 
@@ -284,9 +298,9 @@ win.minimize();
 win.removeAllListeners("minimize");
 
 // Create a new window and get it
-nw.Window.open("https://github.com", {}, function(new_win) {
+nw.Window.open("https://github.com", {}, function (new_win) {
     // And listen to new window's focus event
-    new_win.on("focus", function() {
+    new_win.on("focus", function () {
         console.log("New window is focused");
     });
 });
@@ -295,15 +309,15 @@ nw.Window.open("https://github.com", {}, function(new_win) {
 var win = nw.Window.get();
 
 // Create a new window and get it
-nw.Window.open("https://github.com/nwjs/nw.js", {}, function(new_win) {
+nw.Window.open("https://github.com/nwjs/nw.js", {}, function (new_win) {
     // do something with the newly created window
 });
 
-nw.Window.getAll(function(windows: NWJS_Helpers.win[]) {
+nw.Window.getAll(function (windows: NWJS_Helpers.win[]) {
     console.log(`There are ${windows.length} windows open`);
 });
 
-win.on("close", function() {
+win.on("close", function () {
     this.hide(); // Pretend to be closed already
     console.log("We're closing...");
     this.close(true); // then close it forcely
@@ -313,7 +327,7 @@ win.close();
 
 // png as base64string
 win.capturePage(
-    function(base64string) {
+    function (base64string) {
         // do something with the base64string
     },
     { format: "png", datatype: "raw" },
@@ -321,21 +335,21 @@ win.capturePage(
 
 // png as node buffer
 win.capturePage(
-    function(buffer) {
+    function (buffer) {
         // do something with the buffer
     },
     { format: "png", datatype: "buffer" },
 );
 
 // Open a new window.
-nw.Window.open("popup.html", {}, function(win) {
+nw.Window.open("popup.html", {}, function (win) {
     // Release the 'win' object here after the new window is closed.
-    win.on("closed", function() {
+    win.on("closed", function () {
         win = null;
     });
 
     // Listen for window click event
-    win.window.addEventListener("on", function() {
+    win.window.addEventListener("on", function () {
         // Create div element notifying of click
         var el = win.window.document.createElement("div");
         el.innerText = "Window clicked!";
@@ -345,7 +359,7 @@ nw.Window.open("popup.html", {}, function(win) {
     });
 
     // Listen to main window's close event
-    nw.Window.get().on("close", function() {
+    nw.Window.get().on("close", function () {
         // Hide the window to give user the feeling of closing immediately
         this.hide();
 
@@ -357,7 +371,7 @@ nw.Window.open("popup.html", {}, function(win) {
     });
 });
 
-nw.Window.get().on("new-win-policy", function(frame, url, policy) {
+nw.Window.get().on("new-win-policy", function (frame, url, policy) {
     // do not open the window
     policy.ignore();
     // and open it in external browser

@@ -25,7 +25,9 @@ export interface History {
     navigate: NavigateFn;
 }
 
-export class Router extends React.Component<RouterProps & React.HTMLProps<HTMLDivElement>> {}
+export class Router extends React.Component<
+    RouterProps & React.HTMLProps<HTMLDivElement>
+> {}
 
 export interface RouterProps {
     basepath?: string | undefined;
@@ -45,7 +47,10 @@ export type RouteComponentProps<TParams = {}> = Partial<TParams> & {
 export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export type AnchorProps = Omit<
-    React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+    React.DetailedHTMLProps<
+        React.AnchorHTMLAttributes<HTMLAnchorElement>,
+        HTMLAnchorElement
+    >,
     "href" // remove href, as it's ignored by the router
 >;
 
@@ -67,13 +72,14 @@ export interface LinkGetProps {
 
 export function Link<TState>(
     // TODO: Define this as ...params: Parameters<Link<TState>> when only TypeScript >= 3.1 support is needed.
-    props: React.PropsWithoutRef<LinkProps<TState>> & React.RefAttributes<HTMLAnchorElement>,
+    props: React.PropsWithoutRef<LinkProps<TState>> &
+        React.RefAttributes<HTMLAnchorElement>,
 ): ReturnType<Link<TState>>;
-export interface Link<TState> extends
-    React.ForwardRefExoticComponent<
-        React.PropsWithoutRef<LinkProps<TState>> & React.RefAttributes<HTMLAnchorElement>
-    >
-{}
+export interface Link<TState>
+    extends React.ForwardRefExoticComponent<
+        React.PropsWithoutRef<LinkProps<TState>> &
+            React.RefAttributes<HTMLAnchorElement>
+    > {}
 
 export interface RedirectProps<TState> {
     from?: string | undefined;
@@ -83,14 +89,18 @@ export interface RedirectProps<TState> {
     replace?: boolean | undefined;
 }
 
-export class Redirect<TState> extends React.Component<RouteComponentProps<RedirectProps<TState>>> {}
+export class Redirect<TState> extends React.Component<
+    RouteComponentProps<RedirectProps<TState>>
+> {}
 
 export interface MatchProps<TParams> {
     path: string;
     children: MatchRenderFn<TParams>;
 }
 
-export type MatchRenderFn<TParams> = (props: MatchRenderProps<TParams>) => React.ReactNode;
+export type MatchRenderFn<TParams> = (
+    props: MatchRenderProps<TParams>,
+) => React.ReactNode;
 
 export interface MatchRenderProps<TParams> {
     match: null | ({ uri: string; path: string } & TParams);
@@ -121,7 +131,9 @@ export interface LocationProviderProps {
     children?: React.ReactNode | LocationProviderRenderFn | undefined;
 }
 
-export type LocationProviderRenderFn = (context: LocationContext) => React.ReactNode;
+export type LocationProviderRenderFn = (
+    context: LocationContext,
+) => React.ReactNode;
 
 export interface LocationContext {
     location: WindowLocation;
@@ -169,6 +181,10 @@ export function useNavigate(): NavigateFn;
 
 // TODO: In the next major release update we should update the type parameter default of TPrams from `any` to `{}`,
 // it is currently being keep for backwards compatibility with version 1.3.7 or below.
-export function useParams<TParams extends { [Param in keyof TParams]?: string } = any>(): TParams;
+export function useParams<
+    TParams extends { [Param in keyof TParams]?: string } = any,
+>(): TParams;
 
-export function useMatch(pathname: string): null | { uri: string; path: string; [param: string]: string };
+export function useMatch(
+    pathname: string,
+): null | { uri: string; path: string; [param: string]: string };

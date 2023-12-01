@@ -142,5 +142,8 @@ export type DefaultExtensionType =
     | "zip"
     | "zipx";
 
-export const defaultStyles: Record<DefaultExtensionType, Partial<FileIconProps>>;
+export const defaultStyles: Record<
+    DefaultExtensionType,
+    Partial<FileIconProps>
+>;
 export const FileIcon: React.FunctionComponent<FileIconProps>;

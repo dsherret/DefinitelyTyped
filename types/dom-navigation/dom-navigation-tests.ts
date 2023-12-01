@@ -23,7 +23,11 @@ if (transition) {
 }
 const canGoBack: boolean = navigation.canGoBack;
 const canGoForward: boolean = navigation.canGoForward;
-navigation.navigate("/url", { state: "" as unknown, history: "replace", info: "" as unknown });
+navigation.navigate("/url", {
+    state: "" as unknown,
+    history: "replace",
+    info: "" as unknown,
+});
 navigation.reload({ state: "" as unknown, info: "" as unknown });
 navigation.traverseTo("", { info: "" as unknown });
 navigation.back({ info: "" as unknown });
@@ -62,4 +66,7 @@ const currentEntryChangeListener = (e: NavigationCurrentEntryChangeEvent) => {
 };
 navigation.oncurrententrychange = currentEntryChangeListener;
 navigation.addEventListener("currententrychange", currentEntryChangeListener);
-navigation.removeEventListener("currententrychange", currentEntryChangeListener);
+navigation.removeEventListener(
+    "currententrychange",
+    currentEntryChangeListener,
+);

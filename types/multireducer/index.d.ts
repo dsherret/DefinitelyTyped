@@ -7,7 +7,11 @@ export interface ActionObject {
     [rest: string]: any;
 }
 
-export function bindActionCreators(actions: any, dispatch: any, reducerKey: string): any;
+export function bindActionCreators(
+    actions: any,
+    dispatch: any,
+    reducerKey: string,
+): any;
 export function wrapDispatch(dispatch: any, reducerKey: string): any;
 export function wrapAction(action: any, reducerKey: string): ActionObject;
 

@@ -60,8 +60,19 @@ declare namespace client_sessions {
     }
 
     interface Util {
-        computeHmac(options: any, iv: string, ciphertext: string, duration: number, createdAt: number): Buffer;
-        encode(options: SessionOptions, content: any, duration?: number, createdAt?: number): string;
+        computeHmac(
+            options: any,
+            iv: string,
+            ciphertext: string,
+            duration: number,
+            createdAt: number,
+        ): Buffer;
+        encode(
+            options: SessionOptions,
+            content: any,
+            duration?: number,
+            createdAt?: number,
+        ): string;
         decode(options: SessionOptions, encoded: string): DecodeResult;
     }
 

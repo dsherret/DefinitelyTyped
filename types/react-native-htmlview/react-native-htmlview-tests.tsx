@@ -74,11 +74,10 @@ const renderNode: HTMLViewProps["renderNode"] = (
 
         return (
             <Text
-                style={[
-                    { color: "#acacac" },
-                    node.attribs.style,
-                ]}
-                numberOfLines={numberOfLines ? Number(numberOfLines) : undefined}
+                style={[{ color: "#acacac" }, node.attribs.style]}
+                numberOfLines={
+                    numberOfLines ? Number(numberOfLines) : undefined
+                }
             >
                 {defaultRenderer(node.children, node)}
             </Text>

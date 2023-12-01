@@ -65,7 +65,10 @@ export class WebSocket {
      * @param event - the event to listen for
      * @param listener - the callback to invoke when the event is emitted
      */
-    addEventListener(event: EventName, listener: (event: MessageEvent | ErrorEvent) => void): void;
+    addEventListener(
+        event: EventName,
+        listener: (event: MessageEvent | ErrorEvent) => void,
+    ): void;
 
     /**
      * Closes the WebSocket connection or connection attempt, if any.

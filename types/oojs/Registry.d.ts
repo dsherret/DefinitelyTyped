@@ -43,7 +43,10 @@ declare namespace OO {
         // #region EventEmitter overloads
         on<K extends keyof RegistryEventMap, A extends ArgTuple = [], C = null>(
             event: K,
-            method: EventHandler<C, (this: C, ...args: [...A, ...RegistryEventMap[K]]) => void>,
+            method: EventHandler<
+                C,
+                (this: C, ...args: [...A, ...RegistryEventMap[K]]) => void
+            >,
             args?: A,
             context?: C,
         ): this;
@@ -65,7 +68,10 @@ declare namespace OO {
 
         off<K extends keyof RegistryEventMap, C = null>(
             event: K,
-            method?: EventHandler<C, (this: C, ...args: RegistryEventMap[K]) => void>,
+            method?: EventHandler<
+                C,
+                (this: C, ...args: RegistryEventMap[K]) => void
+            >,
             context?: C,
         ): this;
         off<K extends string, C = null>(
@@ -74,11 +80,23 @@ declare namespace OO {
             context?: C,
         ): this;
 
-        emit<K extends keyof RegistryEventMap>(event: K, ...args: RegistryEventMap[K]): boolean;
-        emit<K extends string>(event: K extends keyof RegistryEventMap ? never : K, ...args: any[]): boolean;
+        emit<K extends keyof RegistryEventMap>(
+            event: K,
+            ...args: RegistryEventMap[K]
+        ): boolean;
+        emit<K extends string>(
+            event: K extends keyof RegistryEventMap ? never : K,
+            ...args: any[]
+        ): boolean;
 
-        emitThrow<K extends keyof RegistryEventMap>(event: K, ...args: RegistryEventMap[K]): boolean;
-        emitThrow<K extends string>(event: K extends keyof RegistryEventMap ? never : K, ...args: any[]): boolean;
+        emitThrow<K extends keyof RegistryEventMap>(
+            event: K,
+            ...args: RegistryEventMap[K]
+        ): boolean;
+        emitThrow<K extends string>(
+            event: K extends keyof RegistryEventMap ? never : K,
+            ...args: any[]
+        ): boolean;
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
         connect<T extends Partial<Record<keyof RegistryEventMap, any>>, C>(
             context: C,
@@ -94,7 +112,7 @@ declare namespace OO {
     }
 
     interface RegistryConstructor {
-        new(): Registry;
+        new (): Registry;
         prototype: Registry;
         static: {};
     }

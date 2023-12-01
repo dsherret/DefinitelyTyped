@@ -59,9 +59,16 @@ export namespace PJV {
         options?: ValidationOptions,
     ): ValidationResult;
 
-    function validateType(name: string, field: FieldSpec, value: unknown): string[];
+    function validateType(
+        name: string,
+        field: FieldSpec,
+        value: unknown,
+    ): string[];
 
-    function validateDependencies(name: string, deps: Record<string, string>): string[];
+    function validateDependencies(
+        name: string,
+        deps: Record<string, string>,
+    ): string[];
 
     interface EmailAndUrl {
         email: string;
@@ -73,7 +80,10 @@ export namespace PJV {
         web: string;
     }
 
-    function validateUrlOrMailto(name: string, obj: string | EmailAndUrl | MailAndWeb): string[];
+    function validateUrlOrMailto(
+        name: string,
+        obj: string | EmailAndUrl | MailAndWeb,
+    ): string[];
 
     interface Person {
         email: string;
@@ -88,5 +98,8 @@ export namespace PJV {
         url: string;
     }
 
-    function validateUrlTypes(name: string, obj: string | TypeAndUrl | TypeAndUrl[]): unknown;
+    function validateUrlTypes(
+        name: string,
+        obj: string | TypeAndUrl | TypeAndUrl[],
+    ): unknown;
 }

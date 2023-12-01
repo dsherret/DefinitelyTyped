@@ -5,7 +5,10 @@ declare namespace GoogleAppsScript {
                 // Returns information about the authenticated user.
                 authinfo(): Content.Schema.AccountsAuthInfoResponse;
                 // Claims the website of a Merchant Center sub-account.
-                claimwebsite(merchantId: string, accountId: string): Content.Schema.AccountsClaimWebsiteResponse;
+                claimwebsite(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.AccountsClaimWebsiteResponse;
                 // Claims the website of a Merchant Center sub-account.
                 claimwebsite(
                     merchantId: string,
@@ -13,18 +16,30 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.AccountsClaimWebsiteResponse;
                 // Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.
-                custombatch(resource: Schema.AccountsCustomBatchRequest): Content.Schema.AccountsCustomBatchResponse;
+                custombatch(
+                    resource: Schema.AccountsCustomBatchRequest,
+                ): Content.Schema.AccountsCustomBatchResponse;
                 // Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.
                 custombatch(
                     resource: Schema.AccountsCustomBatchRequest,
                     optionalArgs: object,
                 ): Content.Schema.AccountsCustomBatchResponse;
                 // Retrieves a Merchant Center account.
-                get(merchantId: string, accountId: string): Content.Schema.Account;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.Account;
                 // Creates a Merchant Center sub-account.
-                insert(resource: Schema.Account, merchantId: string): Content.Schema.Account;
+                insert(
+                    resource: Schema.Account,
+                    merchantId: string,
+                ): Content.Schema.Account;
                 // Creates a Merchant Center sub-account.
-                insert(resource: Schema.Account, merchantId: string, optionalArgs: object): Content.Schema.Account;
+                insert(
+                    resource: Schema.Account,
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.Account;
                 // Performs an action on a link between a Merchant Center account and another account.
                 link(
                     resource: Schema.AccountsLinkRequest,
@@ -34,9 +49,16 @@ declare namespace GoogleAppsScript {
                 // Lists the sub-accounts in your Merchant Center account.
                 list(merchantId: string): Content.Schema.AccountsListResponse;
                 // Lists the sub-accounts in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.AccountsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.AccountsListResponse;
                 // Updates a Merchant Center account. This method supports patch semantics.
-                patch(resource: Schema.Account, merchantId: string, accountId: string): Content.Schema.Account;
+                patch(
+                    resource: Schema.Account,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.Account;
                 // Updates a Merchant Center account. This method supports patch semantics.
                 patch(
                     resource: Schema.Account,
@@ -47,9 +69,17 @@ declare namespace GoogleAppsScript {
                 // Deletes a Merchant Center sub-account.
                 remove(merchantId: string, accountId: string): void;
                 // Deletes a Merchant Center sub-account.
-                remove(merchantId: string, accountId: string, optionalArgs: object): void;
+                remove(
+                    merchantId: string,
+                    accountId: string,
+                    optionalArgs: object,
+                ): void;
                 // Updates a Merchant Center account.
-                update(resource: Schema.Account, merchantId: string, accountId: string): Content.Schema.Account;
+                update(
+                    resource: Schema.Account,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.Account;
                 // Updates a Merchant Center account.
                 update(
                     resource: Schema.Account,
@@ -64,13 +94,25 @@ declare namespace GoogleAppsScript {
                     resource: Schema.AccountstatusesCustomBatchRequest,
                 ): Content.Schema.AccountstatusesCustomBatchResponse;
                 // Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts.
-                get(merchantId: string, accountId: string): Content.Schema.AccountStatus;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.AccountStatus;
                 // Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts.
-                get(merchantId: string, accountId: string, optionalArgs: object): Content.Schema.AccountStatus;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                    optionalArgs: object,
+                ): Content.Schema.AccountStatus;
                 // Lists the statuses of the sub-accounts in your Merchant Center account.
-                list(merchantId: string): Content.Schema.AccountstatusesListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.AccountstatusesListResponse;
                 // Lists the statuses of the sub-accounts in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.AccountstatusesListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.AccountstatusesListResponse;
             }
             interface AccounttaxCollection {
                 // Retrieves and updates tax settings of multiple accounts in a single request.
@@ -83,13 +125,23 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.AccounttaxCustomBatchResponse;
                 // Retrieves the tax settings of the account.
-                get(merchantId: string, accountId: string): Content.Schema.AccountTax;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.AccountTax;
                 // Lists the tax settings of the sub-accounts in your Merchant Center account.
                 list(merchantId: string): Content.Schema.AccounttaxListResponse;
                 // Lists the tax settings of the sub-accounts in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.AccounttaxListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.AccounttaxListResponse;
                 // Updates the tax settings of the account. This method supports patch semantics.
-                patch(resource: Schema.AccountTax, merchantId: string, accountId: string): Content.Schema.AccountTax;
+                patch(
+                    resource: Schema.AccountTax,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.AccountTax;
                 // Updates the tax settings of the account. This method supports patch semantics.
                 patch(
                     resource: Schema.AccountTax,
@@ -98,7 +150,11 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.AccountTax;
                 // Updates the tax settings of the account.
-                update(resource: Schema.AccountTax, merchantId: string, accountId: string): Content.Schema.AccountTax;
+                update(
+                    resource: Schema.AccountTax,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.AccountTax;
                 // Updates the tax settings of the account.
                 update(
                     resource: Schema.AccountTax,
@@ -109,14 +165,19 @@ declare namespace GoogleAppsScript {
             }
             interface DatafeedsCollection {
                 // Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.
-                custombatch(resource: Schema.DatafeedsCustomBatchRequest): Content.Schema.DatafeedsCustomBatchResponse;
+                custombatch(
+                    resource: Schema.DatafeedsCustomBatchRequest,
+                ): Content.Schema.DatafeedsCustomBatchResponse;
                 // Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.
                 custombatch(
                     resource: Schema.DatafeedsCustomBatchRequest,
                     optionalArgs: object,
                 ): Content.Schema.DatafeedsCustomBatchResponse;
                 // Invokes a fetch for the datafeed in your Merchant Center account.
-                fetchnow(merchantId: string, datafeedId: string): Content.Schema.DatafeedsFetchNowResponse;
+                fetchnow(
+                    merchantId: string,
+                    datafeedId: string,
+                ): Content.Schema.DatafeedsFetchNowResponse;
                 // Invokes a fetch for the datafeed in your Merchant Center account.
                 fetchnow(
                     merchantId: string,
@@ -124,17 +185,34 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.DatafeedsFetchNowResponse;
                 // Retrieves a datafeed configuration from your Merchant Center account.
-                get(merchantId: string, datafeedId: string): Content.Schema.Datafeed;
+                get(
+                    merchantId: string,
+                    datafeedId: string,
+                ): Content.Schema.Datafeed;
                 // Registers a datafeed configuration with your Merchant Center account.
-                insert(resource: Schema.Datafeed, merchantId: string): Content.Schema.Datafeed;
+                insert(
+                    resource: Schema.Datafeed,
+                    merchantId: string,
+                ): Content.Schema.Datafeed;
                 // Registers a datafeed configuration with your Merchant Center account.
-                insert(resource: Schema.Datafeed, merchantId: string, optionalArgs: object): Content.Schema.Datafeed;
+                insert(
+                    resource: Schema.Datafeed,
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.Datafeed;
                 // Lists the configurations for datafeeds in your Merchant Center account.
                 list(merchantId: string): Content.Schema.DatafeedsListResponse;
                 // Lists the configurations for datafeeds in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.DatafeedsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.DatafeedsListResponse;
                 // Updates a datafeed configuration of your Merchant Center account. This method supports patch semantics.
-                patch(resource: Schema.Datafeed, merchantId: string, datafeedId: string): Content.Schema.Datafeed;
+                patch(
+                    resource: Schema.Datafeed,
+                    merchantId: string,
+                    datafeedId: string,
+                ): Content.Schema.Datafeed;
                 // Updates a datafeed configuration of your Merchant Center account. This method supports patch semantics.
                 patch(
                     resource: Schema.Datafeed,
@@ -145,9 +223,17 @@ declare namespace GoogleAppsScript {
                 // Deletes a datafeed configuration from your Merchant Center account.
                 remove(merchantId: string, datafeedId: string): void;
                 // Deletes a datafeed configuration from your Merchant Center account.
-                remove(merchantId: string, datafeedId: string, optionalArgs: object): void;
+                remove(
+                    merchantId: string,
+                    datafeedId: string,
+                    optionalArgs: object,
+                ): void;
                 // Updates a datafeed configuration of your Merchant Center account.
-                update(resource: Schema.Datafeed, merchantId: string, datafeedId: string): Content.Schema.Datafeed;
+                update(
+                    resource: Schema.Datafeed,
+                    merchantId: string,
+                    datafeedId: string,
+                ): Content.Schema.Datafeed;
                 // Updates a datafeed configuration of your Merchant Center account.
                 update(
                     resource: Schema.Datafeed,
@@ -162,17 +248,31 @@ declare namespace GoogleAppsScript {
                     resource: Schema.DatafeedstatusesCustomBatchRequest,
                 ): Content.Schema.DatafeedstatusesCustomBatchResponse;
                 // Retrieves the status of a datafeed from your Merchant Center account.
-                get(merchantId: string, datafeedId: string): Content.Schema.DatafeedStatus;
+                get(
+                    merchantId: string,
+                    datafeedId: string,
+                ): Content.Schema.DatafeedStatus;
                 // Retrieves the status of a datafeed from your Merchant Center account.
-                get(merchantId: string, datafeedId: string, optionalArgs: object): Content.Schema.DatafeedStatus;
+                get(
+                    merchantId: string,
+                    datafeedId: string,
+                    optionalArgs: object,
+                ): Content.Schema.DatafeedStatus;
                 // Lists the statuses of the datafeeds in your Merchant Center account.
-                list(merchantId: string): Content.Schema.DatafeedstatusesListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.DatafeedstatusesListResponse;
                 // Lists the statuses of the datafeeds in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.DatafeedstatusesListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.DatafeedstatusesListResponse;
             }
             interface InventoryCollection {
                 // Updates price and availability for multiple products or stores in a single request. This operation does not update the expiration date of the products.
-                custombatch(resource: Schema.InventoryCustomBatchRequest): Content.Schema.InventoryCustomBatchResponse;
+                custombatch(
+                    resource: Schema.InventoryCustomBatchRequest,
+                ): Content.Schema.InventoryCustomBatchResponse;
                 // Updates price and availability for multiple products or stores in a single request. This operation does not update the expiration date of the products.
                 custombatch(
                     resource: Schema.InventoryCustomBatchRequest,
@@ -205,20 +305,32 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.LiasettingsCustomBatchResponse;
                 // Retrieves the LIA settings of the account.
-                get(merchantId: string, accountId: string): Content.Schema.LiaSettings;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.LiaSettings;
                 // Retrieves the list of accessible Google My Business accounts.
                 getaccessiblegmbaccounts(
                     merchantId: string,
                     accountId: string,
                 ): Content.Schema.LiasettingsGetAccessibleGmbAccountsResponse;
                 // Lists the LIA settings of the sub-accounts in your Merchant Center account.
-                list(merchantId: string): Content.Schema.LiasettingsListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.LiasettingsListResponse;
                 // Lists the LIA settings of the sub-accounts in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.LiasettingsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.LiasettingsListResponse;
                 // Retrieves the list of POS data providers that have active settings for the all eiligible countries.
                 listposdataproviders(): Content.Schema.LiasettingsListPosDataProvidersResponse;
                 // Updates the LIA settings of the account. This method supports patch semantics.
-                patch(resource: Schema.LiaSettings, merchantId: string, accountId: string): Content.Schema.LiaSettings;
+                patch(
+                    resource: Schema.LiaSettings,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.LiaSettings;
                 // Updates the LIA settings of the account. This method supports patch semantics.
                 patch(
                     resource: Schema.LiaSettings,
@@ -261,7 +373,11 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.LiasettingsSetPosDataProviderResponse;
                 // Updates the LIA settings of the account.
-                update(resource: Schema.LiaSettings, merchantId: string, accountId: string): Content.Schema.LiaSettings;
+                update(
+                    resource: Schema.LiaSettings,
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.LiaSettings;
                 // Updates the LIA settings of the account.
                 update(
                     resource: Schema.LiaSettings,
@@ -338,11 +454,19 @@ declare namespace GoogleAppsScript {
             }
             interface OrderreturnsCollection {
                 // Retrieves an order return from your Merchant Center account.
-                get(merchantId: string, returnId: string): Content.Schema.MerchantOrderReturn;
+                get(
+                    merchantId: string,
+                    returnId: string,
+                ): Content.Schema.MerchantOrderReturn;
                 // Lists order returns in your Merchant Center account.
-                list(merchantId: string): Content.Schema.OrderreturnsListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.OrderreturnsListResponse;
                 // Lists order returns in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.OrderreturnsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.OrderreturnsListResponse;
             }
             interface OrdersCollection {
                 // Marks an order as acknowledged.
@@ -352,7 +476,10 @@ declare namespace GoogleAppsScript {
                     orderId: string,
                 ): Content.Schema.OrdersAcknowledgeResponse;
                 // Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".
-                advancetestorder(merchantId: string, orderId: string): Content.Schema.OrdersAdvanceTestOrderResponse;
+                advancetestorder(
+                    merchantId: string,
+                    orderId: string,
+                ): Content.Schema.OrdersAdvanceTestOrderResponse;
                 // Cancels all line items in an order, making a full refund.
                 cancel(
                     resource: Schema.OrdersCancelRequest,
@@ -383,7 +510,9 @@ declare namespace GoogleAppsScript {
                     orderId: string,
                 ): Content.Schema.OrdersCreateTestReturnResponse;
                 // Retrieves or modifies multiple orders in a single request.
-                custombatch(resource: Schema.OrdersCustomBatchRequest): Content.Schema.OrdersCustomBatchResponse;
+                custombatch(
+                    resource: Schema.OrdersCustomBatchRequest,
+                ): Content.Schema.OrdersCustomBatchResponse;
                 // Retrieves an order from your Merchant Center account.
                 get(merchantId: string, orderId: string): Content.Schema.Order;
                 // Retrieves an order using merchant order ID.
@@ -412,7 +541,10 @@ declare namespace GoogleAppsScript {
                 // Lists the orders in your Merchant Center account.
                 list(merchantId: string): Content.Schema.OrdersListResponse;
                 // Lists the orders in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.OrdersListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.OrdersListResponse;
                 // Deprecated, please use returnRefundLineItem instead.
                 refund(
                     resource: Schema.OrdersRefundRequest,
@@ -470,14 +602,20 @@ declare namespace GoogleAppsScript {
             }
             interface PosCollection {
                 // Batches multiple POS-related calls in a single request.
-                custombatch(resource: Schema.PosCustomBatchRequest): Content.Schema.PosCustomBatchResponse;
+                custombatch(
+                    resource: Schema.PosCustomBatchRequest,
+                ): Content.Schema.PosCustomBatchResponse;
                 // Batches multiple POS-related calls in a single request.
                 custombatch(
                     resource: Schema.PosCustomBatchRequest,
                     optionalArgs: object,
                 ): Content.Schema.PosCustomBatchResponse;
                 // Retrieves information about the given store.
-                get(merchantId: string, targetMerchantId: string, storeCode: string): Content.Schema.PosStore;
+                get(
+                    merchantId: string,
+                    targetMerchantId: string,
+                    storeCode: string,
+                ): Content.Schema.PosStore;
                 // Creates a store for the given merchant.
                 insert(
                     resource: Schema.PosStore,
@@ -505,11 +643,23 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.PosInventoryResponse;
                 // Lists the stores of the target merchant.
-                list(merchantId: string, targetMerchantId: string): Content.Schema.PosListResponse;
+                list(
+                    merchantId: string,
+                    targetMerchantId: string,
+                ): Content.Schema.PosListResponse;
                 // Deletes a store for the given merchant.
-                remove(merchantId: string, targetMerchantId: string, storeCode: string): void;
+                remove(
+                    merchantId: string,
+                    targetMerchantId: string,
+                    storeCode: string,
+                ): void;
                 // Deletes a store for the given merchant.
-                remove(merchantId: string, targetMerchantId: string, storeCode: string, optionalArgs: object): void;
+                remove(
+                    merchantId: string,
+                    targetMerchantId: string,
+                    storeCode: string,
+                    optionalArgs: object,
+                ): void;
                 // Submit a sale event for the given merchant.
                 sale(
                     resource: Schema.PosSaleRequest,
@@ -526,26 +676,45 @@ declare namespace GoogleAppsScript {
             }
             interface ProductsCollection {
                 // Retrieves, inserts, and deletes multiple products in a single request.
-                custombatch(resource: Schema.ProductsCustomBatchRequest): Content.Schema.ProductsCustomBatchResponse;
+                custombatch(
+                    resource: Schema.ProductsCustomBatchRequest,
+                ): Content.Schema.ProductsCustomBatchResponse;
                 // Retrieves, inserts, and deletes multiple products in a single request.
                 custombatch(
                     resource: Schema.ProductsCustomBatchRequest,
                     optionalArgs: object,
                 ): Content.Schema.ProductsCustomBatchResponse;
                 // Retrieves a product from your Merchant Center account.
-                get(merchantId: string, productId: string): Content.Schema.Product;
+                get(
+                    merchantId: string,
+                    productId: string,
+                ): Content.Schema.Product;
                 // Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this method updates that entry.
-                insert(resource: Schema.Product, merchantId: string): Content.Schema.Product;
+                insert(
+                    resource: Schema.Product,
+                    merchantId: string,
+                ): Content.Schema.Product;
                 // Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this method updates that entry.
-                insert(resource: Schema.Product, merchantId: string, optionalArgs: object): Content.Schema.Product;
+                insert(
+                    resource: Schema.Product,
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.Product;
                 // Lists the products in your Merchant Center account.
                 list(merchantId: string): Content.Schema.ProductsListResponse;
                 // Lists the products in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.ProductsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.ProductsListResponse;
                 // Deletes a product from your Merchant Center account.
                 remove(merchantId: string, productId: string): void;
                 // Deletes a product from your Merchant Center account.
-                remove(merchantId: string, productId: string, optionalArgs: object): void;
+                remove(
+                    merchantId: string,
+                    productId: string,
+                    optionalArgs: object,
+                ): void;
             }
             interface ProductstatusesCollection {
                 // Gets the statuses of multiple products in a single request.
@@ -558,13 +727,25 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.ProductstatusesCustomBatchResponse;
                 // Gets the status of a product from your Merchant Center account.
-                get(merchantId: string, productId: string): Content.Schema.ProductStatus;
+                get(
+                    merchantId: string,
+                    productId: string,
+                ): Content.Schema.ProductStatus;
                 // Gets the status of a product from your Merchant Center account.
-                get(merchantId: string, productId: string, optionalArgs: object): Content.Schema.ProductStatus;
+                get(
+                    merchantId: string,
+                    productId: string,
+                    optionalArgs: object,
+                ): Content.Schema.ProductStatus;
                 // Lists the statuses of the products in your Merchant Center account.
-                list(merchantId: string): Content.Schema.ProductstatusesListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.ProductstatusesListResponse;
                 // Lists the statuses of the products in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.ProductstatusesListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.ProductstatusesListResponse;
             }
             interface ShippingsettingsCollection {
                 // Retrieves and updates the shipping settings of multiple accounts in a single request.
@@ -577,15 +758,27 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): Content.Schema.ShippingsettingsCustomBatchResponse;
                 // Retrieves the shipping settings of the account.
-                get(merchantId: string, accountId: string): Content.Schema.ShippingSettings;
+                get(
+                    merchantId: string,
+                    accountId: string,
+                ): Content.Schema.ShippingSettings;
                 // Retrieves supported carriers and carrier services for an account.
-                getsupportedcarriers(merchantId: string): Content.Schema.ShippingsettingsGetSupportedCarriersResponse;
+                getsupportedcarriers(
+                    merchantId: string,
+                ): Content.Schema.ShippingsettingsGetSupportedCarriersResponse;
                 // Retrieves supported holidays for an account.
-                getsupportedholidays(merchantId: string): Content.Schema.ShippingsettingsGetSupportedHolidaysResponse;
+                getsupportedholidays(
+                    merchantId: string,
+                ): Content.Schema.ShippingsettingsGetSupportedHolidaysResponse;
                 // Lists the shipping settings of the sub-accounts in your Merchant Center account.
-                list(merchantId: string): Content.Schema.ShippingsettingsListResponse;
+                list(
+                    merchantId: string,
+                ): Content.Schema.ShippingsettingsListResponse;
                 // Lists the shipping settings of the sub-accounts in your Merchant Center account.
-                list(merchantId: string, optionalArgs: object): Content.Schema.ShippingsettingsListResponse;
+                list(
+                    merchantId: string,
+                    optionalArgs: object,
+                ): Content.Schema.ShippingsettingsListResponse;
                 // Updates the shipping settings of the account. This method supports patch semantics.
                 patch(
                     resource: Schema.ShippingSettings,
@@ -618,8 +811,12 @@ declare namespace GoogleAppsScript {
             interface Account {
                 adultContent?: boolean | undefined;
                 adwordsLinks?: Content.Schema.AccountAdwordsLink[] | undefined;
-                businessInformation?: Content.Schema.AccountBusinessInformation | undefined;
-                googleMyBusinessLink?: Content.Schema.AccountGoogleMyBusinessLink | undefined;
+                businessInformation?:
+                    | Content.Schema.AccountBusinessInformation
+                    | undefined;
+                googleMyBusinessLink?:
+                    | Content.Schema.AccountGoogleMyBusinessLink
+                    | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
@@ -627,7 +824,9 @@ declare namespace GoogleAppsScript {
                 sellerId?: string | undefined;
                 users?: Content.Schema.AccountUser[] | undefined;
                 websiteUrl?: string | undefined;
-                youtubeChannelLinks?: Content.Schema.AccountYouTubeChannelLink[] | undefined;
+                youtubeChannelLinks?:
+                    | Content.Schema.AccountYouTubeChannelLink[]
+                    | undefined;
             }
             interface AccountAddress {
                 country?: string | undefined;
@@ -642,7 +841,9 @@ declare namespace GoogleAppsScript {
             }
             interface AccountBusinessInformation {
                 address?: Content.Schema.AccountAddress | undefined;
-                customerService?: Content.Schema.AccountCustomerService | undefined;
+                customerService?:
+                    | Content.Schema.AccountCustomerService
+                    | undefined;
                 phoneNumber?: string | undefined;
             }
             interface AccountCustomerService {
@@ -660,8 +861,12 @@ declare namespace GoogleAppsScript {
             }
             interface AccountStatus {
                 accountId?: string | undefined;
-                accountLevelIssues?: Content.Schema.AccountStatusAccountLevelIssue[] | undefined;
-                dataQualityIssues?: Content.Schema.AccountStatusDataQualityIssue[] | undefined;
+                accountLevelIssues?:
+                    | Content.Schema.AccountStatusAccountLevelIssue[]
+                    | undefined;
+                dataQualityIssues?:
+                    | Content.Schema.AccountStatusDataQualityIssue[]
+                    | undefined;
                 kind?: string | undefined;
                 products?: Content.Schema.AccountStatusProducts[] | undefined;
                 websiteClaimed?: boolean | undefined;
@@ -680,7 +885,9 @@ declare namespace GoogleAppsScript {
                 destination?: string | undefined;
                 detail?: string | undefined;
                 displayedValue?: string | undefined;
-                exampleItems?: Content.Schema.AccountStatusExampleItem[] | undefined;
+                exampleItems?:
+                    | Content.Schema.AccountStatusExampleItem[]
+                    | undefined;
                 id?: string | undefined;
                 lastChecked?: string | undefined;
                 location?: string | undefined;
@@ -709,7 +916,9 @@ declare namespace GoogleAppsScript {
                 channel?: string | undefined;
                 country?: string | undefined;
                 destination?: string | undefined;
-                itemLevelIssues?: Content.Schema.AccountStatusItemLevelIssue[] | undefined;
+                itemLevelIssues?:
+                    | Content.Schema.AccountStatusItemLevelIssue[]
+                    | undefined;
                 statistics?: Content.Schema.AccountStatusStatistics | undefined;
             }
             interface AccountStatusStatistics {
@@ -742,21 +951,27 @@ declare namespace GoogleAppsScript {
                 status?: string | undefined;
             }
             interface AccountsAuthInfoResponse {
-                accountIdentifiers?: Content.Schema.AccountIdentifier[] | undefined;
+                accountIdentifiers?:
+                    | Content.Schema.AccountIdentifier[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccountsClaimWebsiteResponse {
                 kind?: string | undefined;
             }
             interface AccountsCustomBatchRequest {
-                entries?: Content.Schema.AccountsCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccountsCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface AccountsCustomBatchRequestEntry {
                 account?: Content.Schema.Account | undefined;
                 accountId?: string | undefined;
                 batchId?: number | undefined;
                 force?: boolean | undefined;
-                linkRequest?: Content.Schema.AccountsCustomBatchRequestEntryLinkRequest | undefined;
+                linkRequest?:
+                    | Content.Schema.AccountsCustomBatchRequestEntryLinkRequest
+                    | undefined;
                 merchantId?: string | undefined;
                 method?: string | undefined;
                 overwrite?: boolean | undefined;
@@ -767,7 +982,9 @@ declare namespace GoogleAppsScript {
                 linkedAccountId?: string | undefined;
             }
             interface AccountsCustomBatchResponse {
-                entries?: Content.Schema.AccountsCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccountsCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccountsCustomBatchResponseEntry {
@@ -791,7 +1008,9 @@ declare namespace GoogleAppsScript {
                 resources?: Content.Schema.Account[] | undefined;
             }
             interface AccountstatusesCustomBatchRequest {
-                entries?: Content.Schema.AccountstatusesCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccountstatusesCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface AccountstatusesCustomBatchRequestEntry {
                 accountId?: string | undefined;
@@ -801,7 +1020,9 @@ declare namespace GoogleAppsScript {
                 method?: string | undefined;
             }
             interface AccountstatusesCustomBatchResponse {
-                entries?: Content.Schema.AccountstatusesCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccountstatusesCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccountstatusesCustomBatchResponseEntry {
@@ -815,7 +1036,9 @@ declare namespace GoogleAppsScript {
                 resources?: Content.Schema.AccountStatus[] | undefined;
             }
             interface AccounttaxCustomBatchRequest {
-                entries?: Content.Schema.AccounttaxCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccounttaxCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface AccounttaxCustomBatchRequestEntry {
                 accountId?: string | undefined;
@@ -825,7 +1048,9 @@ declare namespace GoogleAppsScript {
                 method?: string | undefined;
             }
             interface AccounttaxCustomBatchResponse {
-                entries?: Content.Schema.AccounttaxCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.AccounttaxCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccounttaxCustomBatchResponseEntry {
@@ -879,7 +1104,9 @@ declare namespace GoogleAppsScript {
                 attributeLanguage?: string | undefined;
                 contentLanguage?: string | undefined;
                 contentType?: string | undefined;
-                fetchSchedule?: Content.Schema.DatafeedFetchSchedule | undefined;
+                fetchSchedule?:
+                    | Content.Schema.DatafeedFetchSchedule
+                    | undefined;
                 fileName?: string | undefined;
                 format?: Content.Schema.DatafeedFormat | undefined;
                 id?: string | undefined;
@@ -935,7 +1162,9 @@ declare namespace GoogleAppsScript {
                 language?: string | undefined;
             }
             interface DatafeedsCustomBatchRequest {
-                entries?: Content.Schema.DatafeedsCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.DatafeedsCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface DatafeedsCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -945,7 +1174,9 @@ declare namespace GoogleAppsScript {
                 method?: string | undefined;
             }
             interface DatafeedsCustomBatchResponse {
-                entries?: Content.Schema.DatafeedsCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.DatafeedsCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface DatafeedsCustomBatchResponseEntry {
@@ -962,7 +1193,9 @@ declare namespace GoogleAppsScript {
                 resources?: Content.Schema.Datafeed[] | undefined;
             }
             interface DatafeedstatusesCustomBatchRequest {
-                entries?: Content.Schema.DatafeedstatusesCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.DatafeedstatusesCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface DatafeedstatusesCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -973,7 +1206,9 @@ declare namespace GoogleAppsScript {
                 method?: string | undefined;
             }
             interface DatafeedstatusesCustomBatchResponse {
-                entries?: Content.Schema.DatafeedstatusesCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.DatafeedstatusesCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface DatafeedstatusesCustomBatchResponseEntry {
@@ -1007,7 +1242,9 @@ declare namespace GoogleAppsScript {
             }
             interface GmbAccounts {
                 accountId?: string | undefined;
-                gmbAccounts?: Content.Schema.GmbAccountsGmbAccount[] | undefined;
+                gmbAccounts?:
+                    | Content.Schema.GmbAccountsGmbAccount[]
+                    | undefined;
             }
             interface GmbAccountsGmbAccount {
                 email?: string | undefined;
@@ -1060,7 +1297,9 @@ declare namespace GoogleAppsScript {
                 sellOnGoogleQuantity?: number | undefined;
             }
             interface InventoryCustomBatchRequest {
-                entries?: Content.Schema.InventoryCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.InventoryCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface InventoryCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -1070,7 +1309,9 @@ declare namespace GoogleAppsScript {
                 storeCode?: string | undefined;
             }
             interface InventoryCustomBatchResponse {
-                entries?: Content.Schema.InventoryCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.InventoryCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface InventoryCustomBatchResponseEntry {
@@ -1103,7 +1344,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface InvoiceSummary {
-                additionalChargeSummaries?: Content.Schema.InvoiceSummaryAdditionalChargeSummary[] | undefined;
+                additionalChargeSummaries?:
+                    | Content.Schema.InvoiceSummaryAdditionalChargeSummary[]
+                    | undefined;
                 customerBalance?: Content.Schema.Amount | undefined;
                 googleBalance?: Content.Schema.Amount | undefined;
                 merchantBalance?: Content.Schema.Amount | undefined;
@@ -1123,7 +1366,9 @@ declare namespace GoogleAppsScript {
                 country?: string | undefined;
                 hostedLocalStorefrontActive?: boolean | undefined;
                 inventory?: Content.Schema.LiaInventorySettings | undefined;
-                onDisplayToOrder?: Content.Schema.LiaOnDisplayToOrderSettings | undefined;
+                onDisplayToOrder?:
+                    | Content.Schema.LiaOnDisplayToOrderSettings
+                    | undefined;
                 posDataProvider?: Content.Schema.LiaPosDataProvider | undefined;
                 storePickupActive?: boolean | undefined;
             }
@@ -1143,11 +1388,15 @@ declare namespace GoogleAppsScript {
             }
             interface LiaSettings {
                 accountId?: string | undefined;
-                countrySettings?: Content.Schema.LiaCountrySettings[] | undefined;
+                countrySettings?:
+                    | Content.Schema.LiaCountrySettings[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface LiasettingsCustomBatchRequest {
-                entries?: Content.Schema.LiasettingsCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.LiasettingsCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface LiasettingsCustomBatchRequestEntry {
                 accountId?: string | undefined;
@@ -1163,7 +1412,9 @@ declare namespace GoogleAppsScript {
                 posExternalAccountId?: string | undefined;
             }
             interface LiasettingsCustomBatchResponse {
-                entries?: Content.Schema.LiasettingsCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.LiasettingsCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface LiasettingsCustomBatchResponseEntry {
@@ -1172,16 +1423,22 @@ declare namespace GoogleAppsScript {
                 gmbAccounts?: Content.Schema.GmbAccounts | undefined;
                 kind?: string | undefined;
                 liaSettings?: Content.Schema.LiaSettings | undefined;
-                posDataProviders?: Content.Schema.PosDataProviders[] | undefined;
+                posDataProviders?:
+                    | Content.Schema.PosDataProviders[]
+                    | undefined;
             }
             interface LiasettingsGetAccessibleGmbAccountsResponse {
                 accountId?: string | undefined;
-                gmbAccounts?: Content.Schema.GmbAccountsGmbAccount[] | undefined;
+                gmbAccounts?:
+                    | Content.Schema.GmbAccountsGmbAccount[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface LiasettingsListPosDataProvidersResponse {
                 kind?: string | undefined;
-                posDataProviders?: Content.Schema.PosDataProviders[] | undefined;
+                posDataProviders?:
+                    | Content.Schema.PosDataProviders[]
+                    | undefined;
             }
             interface LiasettingsListResponse {
                 kind?: string | undefined;
@@ -1213,11 +1470,15 @@ declare namespace GoogleAppsScript {
                 merchantOrderId?: string | undefined;
                 orderId?: string | undefined;
                 orderReturnId?: string | undefined;
-                returnItems?: Content.Schema.MerchantOrderReturnItem[] | undefined;
+                returnItems?:
+                    | Content.Schema.MerchantOrderReturnItem[]
+                    | undefined;
                 returnShipments?: Content.Schema.ReturnShipment[] | undefined;
             }
             interface MerchantOrderReturnItem {
-                customerReturnReason?: Content.Schema.CustomerReturnReason | undefined;
+                customerReturnReason?:
+                    | Content.Schema.CustomerReturnReason
+                    | undefined;
                 itemId?: string | undefined;
                 merchantReturnReason?: Content.Schema.RefundReason | undefined;
                 product?: Content.Schema.OrderLineItemProduct | undefined;
@@ -1228,7 +1489,9 @@ declare namespace GoogleAppsScript {
                 acknowledged?: boolean | undefined;
                 channelType?: string | undefined;
                 customer?: Content.Schema.OrderCustomer | undefined;
-                deliveryDetails?: Content.Schema.OrderDeliveryDetails | undefined;
+                deliveryDetails?:
+                    | Content.Schema.OrderDeliveryDetails
+                    | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 lineItems?: Content.Schema.OrderLineItem[] | undefined;
@@ -1268,7 +1531,9 @@ declare namespace GoogleAppsScript {
                 email?: string | undefined;
                 explicitMarketingPreference?: boolean | undefined;
                 fullName?: string | undefined;
-                marketingRightsInfo?: Content.Schema.OrderCustomerMarketingRightsInfo | undefined;
+                marketingRightsInfo?:
+                    | Content.Schema.OrderCustomerMarketingRightsInfo
+                    | undefined;
             }
             interface OrderCustomerMarketingRightsInfo {
                 explicitMarketingPreference?: string | undefined;
@@ -1280,7 +1545,9 @@ declare namespace GoogleAppsScript {
                 phoneNumber?: string | undefined;
             }
             interface OrderLegacyPromotion {
-                benefits?: Content.Schema.OrderLegacyPromotionBenefit[] | undefined;
+                benefits?:
+                    | Content.Schema.OrderLegacyPromotionBenefit[]
+                    | undefined;
                 effectiveDates?: string | undefined;
                 genericRedemptionCode?: string | undefined;
                 id?: string | undefined;
@@ -1296,7 +1563,9 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface OrderLineItem {
-                annotations?: Content.Schema.OrderMerchantProvidedAnnotation[] | undefined;
+                annotations?:
+                    | Content.Schema.OrderMerchantProvidedAnnotation[]
+                    | undefined;
                 cancellations?: Content.Schema.OrderCancellation[] | undefined;
                 id?: string | undefined;
                 price?: Content.Schema.Price | undefined;
@@ -1309,7 +1578,9 @@ declare namespace GoogleAppsScript {
                 quantityShipped?: number | undefined;
                 returnInfo?: Content.Schema.OrderLineItemReturnInfo | undefined;
                 returns?: Content.Schema.OrderReturn[] | undefined;
-                shippingDetails?: Content.Schema.OrderLineItemShippingDetails | undefined;
+                shippingDetails?:
+                    | Content.Schema.OrderLineItemShippingDetails
+                    | undefined;
                 tax?: Content.Schema.Price | undefined;
             }
             interface OrderLineItemProduct {
@@ -1328,7 +1599,9 @@ declare namespace GoogleAppsScript {
                 shownImage?: string | undefined;
                 targetCountry?: string | undefined;
                 title?: string | undefined;
-                variantAttributes?: Content.Schema.OrderLineItemProductVariantAttribute[] | undefined;
+                variantAttributes?:
+                    | Content.Schema.OrderLineItemProductVariantAttribute[]
+                    | undefined;
             }
             interface OrderLineItemProductFee {
                 amount?: Content.Schema.Price | undefined;
@@ -1345,7 +1618,9 @@ declare namespace GoogleAppsScript {
             }
             interface OrderLineItemShippingDetails {
                 deliverByDate?: string | undefined;
-                method?: Content.Schema.OrderLineItemShippingDetailsMethod | undefined;
+                method?:
+                    | Content.Schema.OrderLineItemShippingDetailsMethod
+                    | undefined;
                 shipByDate?: string | undefined;
             }
             interface OrderLineItemShippingDetailsMethod {
@@ -1389,7 +1664,9 @@ declare namespace GoogleAppsScript {
                 merchantOrderId?: string | undefined;
                 orderId?: string | undefined;
                 productAmount?: Content.Schema.Amount | undefined;
-                productAmountWithRemittedTax?: Content.Schema.ProductAmount | undefined;
+                productAmountWithRemittedTax?:
+                    | Content.Schema.ProductAmount
+                    | undefined;
                 transactionDate?: string | undefined;
             }
             interface OrderReturn {
@@ -1404,7 +1681,9 @@ declare namespace GoogleAppsScript {
                 creationDate?: string | undefined;
                 deliveryDate?: string | undefined;
                 id?: string | undefined;
-                lineItems?: Content.Schema.OrderShipmentLineItemShipment[] | undefined;
+                lineItems?:
+                    | Content.Schema.OrderShipmentLineItemShipment[]
+                    | undefined;
                 status?: string | undefined;
                 trackingId?: string | undefined;
             }
@@ -1416,7 +1695,9 @@ declare namespace GoogleAppsScript {
             interface OrderinvoicesCreateChargeInvoiceRequest {
                 invoiceId?: string | undefined;
                 invoiceSummary?: Content.Schema.InvoiceSummary | undefined;
-                lineItemInvoices?: Content.Schema.ShipmentInvoiceLineItemInvoice[] | undefined;
+                lineItemInvoices?:
+                    | Content.Schema.ShipmentInvoiceLineItemInvoice[]
+                    | undefined;
                 operationId?: string | undefined;
                 shipmentGroupId?: string | undefined;
             }
@@ -1481,14 +1762,18 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface OrderreportsListDisbursementsResponse {
-                disbursements?: Content.Schema.OrderReportDisbursement[] | undefined;
+                disbursements?:
+                    | Content.Schema.OrderReportDisbursement[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface OrderreportsListTransactionsResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                transactions?: Content.Schema.OrderReportTransaction[] | undefined;
+                transactions?:
+                    | Content.Schema.OrderReportTransaction[]
+                    | undefined;
             }
             interface OrderreturnsListResponse {
                 kind?: string | undefined;
@@ -1545,35 +1830,59 @@ declare namespace GoogleAppsScript {
                 orderId?: string | undefined;
             }
             interface OrdersCreateTestReturnRequest {
-                items?: Content.Schema.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem[] | undefined;
+                items?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem[]
+                    | undefined;
             }
             interface OrdersCreateTestReturnResponse {
                 kind?: string | undefined;
                 returnId?: string | undefined;
             }
             interface OrdersCustomBatchRequest {
-                entries?: Content.Schema.OrdersCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.OrdersCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface OrdersCustomBatchRequestEntry {
                 batchId?: number | undefined;
-                cancel?: Content.Schema.OrdersCustomBatchRequestEntryCancel | undefined;
-                cancelLineItem?: Content.Schema.OrdersCustomBatchRequestEntryCancelLineItem | undefined;
-                inStoreRefundLineItem?: Content.Schema.OrdersCustomBatchRequestEntryInStoreRefundLineItem | undefined;
+                cancel?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryCancel
+                    | undefined;
+                cancelLineItem?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryCancelLineItem
+                    | undefined;
+                inStoreRefundLineItem?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryInStoreRefundLineItem
+                    | undefined;
                 merchantId?: string | undefined;
                 merchantOrderId?: string | undefined;
                 method?: string | undefined;
                 operationId?: string | undefined;
                 orderId?: string | undefined;
-                refund?: Content.Schema.OrdersCustomBatchRequestEntryRefund | undefined;
-                rejectReturnLineItem?: Content.Schema.OrdersCustomBatchRequestEntryRejectReturnLineItem | undefined;
-                returnLineItem?: Content.Schema.OrdersCustomBatchRequestEntryReturnLineItem | undefined;
-                returnRefundLineItem?: Content.Schema.OrdersCustomBatchRequestEntryReturnRefundLineItem | undefined;
-                setLineItemMetadata?: Content.Schema.OrdersCustomBatchRequestEntrySetLineItemMetadata | undefined;
-                shipLineItems?: Content.Schema.OrdersCustomBatchRequestEntryShipLineItems | undefined;
+                refund?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryRefund
+                    | undefined;
+                rejectReturnLineItem?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryRejectReturnLineItem
+                    | undefined;
+                returnLineItem?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryReturnLineItem
+                    | undefined;
+                returnRefundLineItem?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryReturnRefundLineItem
+                    | undefined;
+                setLineItemMetadata?:
+                    | Content.Schema.OrdersCustomBatchRequestEntrySetLineItemMetadata
+                    | undefined;
+                shipLineItems?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryShipLineItems
+                    | undefined;
                 updateLineItemShippingDetails?:
                     | Content.Schema.OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
                     | undefined;
-                updateShipment?: Content.Schema.OrdersCustomBatchRequestEntryUpdateShipment | undefined;
+                updateShipment?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryUpdateShipment
+                    | undefined;
             }
             interface OrdersCustomBatchRequestEntryCancel {
                 reason?: string | undefined;
@@ -1633,16 +1942,22 @@ declare namespace GoogleAppsScript {
                 reasonText?: string | undefined;
             }
             interface OrdersCustomBatchRequestEntrySetLineItemMetadata {
-                annotations?: Content.Schema.OrderMerchantProvidedAnnotation[] | undefined;
+                annotations?:
+                    | Content.Schema.OrderMerchantProvidedAnnotation[]
+                    | undefined;
                 lineItemId?: string | undefined;
                 productId?: string | undefined;
             }
             interface OrdersCustomBatchRequestEntryShipLineItems {
                 carrier?: string | undefined;
-                lineItems?: Content.Schema.OrderShipmentLineItemShipment[] | undefined;
+                lineItems?:
+                    | Content.Schema.OrderShipmentLineItemShipment[]
+                    | undefined;
                 shipmentGroupId?: string | undefined;
                 shipmentId?: string | undefined;
-                shipmentInfos?: Content.Schema.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[] | undefined;
+                shipmentInfos?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[]
+                    | undefined;
                 trackingId?: string | undefined;
             }
             interface OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
@@ -1664,7 +1979,9 @@ declare namespace GoogleAppsScript {
                 trackingId?: string | undefined;
             }
             interface OrdersCustomBatchResponse {
-                entries?: Content.Schema.OrdersCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.OrdersCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface OrdersCustomBatchResponseEntry {
@@ -1752,7 +2069,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface OrdersSetLineItemMetadataRequest {
-                annotations?: Content.Schema.OrderMerchantProvidedAnnotation[] | undefined;
+                annotations?:
+                    | Content.Schema.OrderMerchantProvidedAnnotation[]
+                    | undefined;
                 lineItemId?: string | undefined;
                 operationId?: string | undefined;
                 productId?: string | undefined;
@@ -1763,11 +2082,15 @@ declare namespace GoogleAppsScript {
             }
             interface OrdersShipLineItemsRequest {
                 carrier?: string | undefined;
-                lineItems?: Content.Schema.OrderShipmentLineItemShipment[] | undefined;
+                lineItems?:
+                    | Content.Schema.OrderShipmentLineItemShipment[]
+                    | undefined;
                 operationId?: string | undefined;
                 shipmentGroupId?: string | undefined;
                 shipmentId?: string | undefined;
-                shipmentInfos?: Content.Schema.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[] | undefined;
+                shipmentInfos?:
+                    | Content.Schema.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo[]
+                    | undefined;
                 trackingId?: string | undefined;
             }
             interface OrdersShipLineItemsResponse {
@@ -1806,7 +2129,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface PosCustomBatchRequest {
-                entries?: Content.Schema.PosCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.PosCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface PosCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -1819,7 +2144,9 @@ declare namespace GoogleAppsScript {
                 targetMerchantId?: string | undefined;
             }
             interface PosCustomBatchResponse {
-                entries?: Content.Schema.PosCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.PosCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface PosCustomBatchResponseEntry {
@@ -1832,7 +2159,9 @@ declare namespace GoogleAppsScript {
             }
             interface PosDataProviders {
                 country?: string | undefined;
-                posDataProviders?: Content.Schema.PosDataProvidersPosDataProvider[] | undefined;
+                posDataProviders?:
+                    | Content.Schema.PosDataProvidersPosDataProvider[]
+                    | undefined;
             }
             interface PosDataProvidersPosDataProvider {
                 displayName?: string | undefined;
@@ -1991,11 +2320,19 @@ declare namespace GoogleAppsScript {
                 salePriceEffectiveDate?: string | undefined;
                 sellOnGoogleQuantity?: string | undefined;
                 shipping?: Content.Schema.ProductShipping[] | undefined;
-                shippingHeight?: Content.Schema.ProductShippingDimension | undefined;
+                shippingHeight?:
+                    | Content.Schema.ProductShippingDimension
+                    | undefined;
                 shippingLabel?: string | undefined;
-                shippingLength?: Content.Schema.ProductShippingDimension | undefined;
-                shippingWeight?: Content.Schema.ProductShippingWeight | undefined;
-                shippingWidth?: Content.Schema.ProductShippingDimension | undefined;
+                shippingLength?:
+                    | Content.Schema.ProductShippingDimension
+                    | undefined;
+                shippingWeight?:
+                    | Content.Schema.ProductShippingWeight
+                    | undefined;
+                shippingWidth?:
+                    | Content.Schema.ProductShippingDimension
+                    | undefined;
                 sizeSystem?: string | undefined;
                 sizeType?: string | undefined;
                 sizes?: string[] | undefined;
@@ -2003,8 +2340,12 @@ declare namespace GoogleAppsScript {
                 targetCountry?: string | undefined;
                 taxes?: Content.Schema.ProductTax[] | undefined;
                 title?: string | undefined;
-                unitPricingBaseMeasure?: Content.Schema.ProductUnitPricingBaseMeasure | undefined;
-                unitPricingMeasure?: Content.Schema.ProductUnitPricingMeasure | undefined;
+                unitPricingBaseMeasure?:
+                    | Content.Schema.ProductUnitPricingBaseMeasure
+                    | undefined;
+                unitPricingMeasure?:
+                    | Content.Schema.ProductUnitPricingMeasure
+                    | undefined;
                 validatedDestinations?: string[] | undefined;
                 warnings?: Content.Schema.Error[] | undefined;
             }
@@ -2041,10 +2382,16 @@ declare namespace GoogleAppsScript {
             }
             interface ProductStatus {
                 creationDate?: string | undefined;
-                dataQualityIssues?: Content.Schema.ProductStatusDataQualityIssue[] | undefined;
-                destinationStatuses?: Content.Schema.ProductStatusDestinationStatus[] | undefined;
+                dataQualityIssues?:
+                    | Content.Schema.ProductStatusDataQualityIssue[]
+                    | undefined;
+                destinationStatuses?:
+                    | Content.Schema.ProductStatusDestinationStatus[]
+                    | undefined;
                 googleExpirationDate?: string | undefined;
-                itemLevelIssues?: Content.Schema.ProductStatusItemLevelIssue[] | undefined;
+                itemLevelIssues?:
+                    | Content.Schema.ProductStatusItemLevelIssue[]
+                    | undefined;
                 kind?: string | undefined;
                 lastUpdateDate?: string | undefined;
                 link?: string | undefined;
@@ -2096,7 +2443,9 @@ declare namespace GoogleAppsScript {
                 value?: number | undefined;
             }
             interface ProductsCustomBatchRequest {
-                entries?: Content.Schema.ProductsCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ProductsCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface ProductsCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -2106,7 +2455,9 @@ declare namespace GoogleAppsScript {
                 productId?: string | undefined;
             }
             interface ProductsCustomBatchResponse {
-                entries?: Content.Schema.ProductsCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ProductsCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface ProductsCustomBatchResponseEntry {
@@ -2121,7 +2472,9 @@ declare namespace GoogleAppsScript {
                 resources?: Content.Schema.Product[] | undefined;
             }
             interface ProductstatusesCustomBatchRequest {
-                entries?: Content.Schema.ProductstatusesCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ProductstatusesCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface ProductstatusesCustomBatchRequestEntry {
                 batchId?: number | undefined;
@@ -2132,7 +2485,9 @@ declare namespace GoogleAppsScript {
                 productId?: string | undefined;
             }
             interface ProductstatusesCustomBatchResponse {
-                entries?: Content.Schema.ProductstatusesCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ProductstatusesCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface ProductstatusesCustomBatchResponseEntry {
@@ -2167,7 +2522,9 @@ declare namespace GoogleAppsScript {
                 deliveryDate?: string | undefined;
                 returnMethodType?: string | undefined;
                 shipmentId?: string | undefined;
-                shipmentTrackingInfos?: Content.Schema.ShipmentTrackingInfo[] | undefined;
+                shipmentTrackingInfos?:
+                    | Content.Schema.ShipmentTrackingInfo[]
+                    | undefined;
                 shippingDate?: string | undefined;
                 state?: string | undefined;
             }
@@ -2186,7 +2543,9 @@ declare namespace GoogleAppsScript {
             }
             interface ShipmentInvoice {
                 invoiceSummary?: Content.Schema.InvoiceSummary | undefined;
-                lineItemInvoices?: Content.Schema.ShipmentInvoiceLineItemInvoice[] | undefined;
+                lineItemInvoices?:
+                    | Content.Schema.ShipmentInvoiceLineItemInvoice[]
+                    | undefined;
                 shipmentGroupId?: string | undefined;
             }
             interface ShipmentInvoiceLineItemInvoice {
@@ -2205,7 +2564,9 @@ declare namespace GoogleAppsScript {
                 services?: Content.Schema.Service[] | undefined;
             }
             interface ShippingsettingsCustomBatchRequest {
-                entries?: Content.Schema.ShippingsettingsCustomBatchRequestEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ShippingsettingsCustomBatchRequestEntry[]
+                    | undefined;
             }
             interface ShippingsettingsCustomBatchRequestEntry {
                 accountId?: string | undefined;
@@ -2215,7 +2576,9 @@ declare namespace GoogleAppsScript {
                 shippingSettings?: Content.Schema.ShippingSettings | undefined;
             }
             interface ShippingsettingsCustomBatchResponse {
-                entries?: Content.Schema.ShippingsettingsCustomBatchResponseEntry[] | undefined;
+                entries?:
+                    | Content.Schema.ShippingsettingsCustomBatchResponseEntry[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface ShippingsettingsCustomBatchResponseEntry {
@@ -2249,7 +2612,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
                 lineItems?: Content.Schema.TestOrderLineItem[] | undefined;
                 notificationMode?: string | undefined;
-                paymentMethod?: Content.Schema.TestOrderPaymentMethod | undefined;
+                paymentMethod?:
+                    | Content.Schema.TestOrderPaymentMethod
+                    | undefined;
                 predefinedDeliveryAddress?: string | undefined;
                 promotions?: Content.Schema.OrderLegacyPromotion[] | undefined;
                 shippingCost?: Content.Schema.Price | undefined;
@@ -2260,7 +2625,9 @@ declare namespace GoogleAppsScript {
                 email?: string | undefined;
                 explicitMarketingPreference?: boolean | undefined;
                 fullName?: string | undefined;
-                marketingRightsInfo?: Content.Schema.TestOrderCustomerMarketingRightsInfo | undefined;
+                marketingRightsInfo?:
+                    | Content.Schema.TestOrderCustomerMarketingRightsInfo
+                    | undefined;
             }
             interface TestOrderCustomerMarketingRightsInfo {
                 explicitMarketingPreference?: string | undefined;
@@ -2270,7 +2637,9 @@ declare namespace GoogleAppsScript {
                 product?: Content.Schema.TestOrderLineItemProduct | undefined;
                 quantityOrdered?: number | undefined;
                 returnInfo?: Content.Schema.OrderLineItemReturnInfo | undefined;
-                shippingDetails?: Content.Schema.OrderLineItemShippingDetails | undefined;
+                shippingDetails?:
+                    | Content.Schema.OrderLineItemShippingDetails
+                    | undefined;
                 unitTax?: Content.Schema.Price | undefined;
             }
             interface TestOrderLineItemProduct {
@@ -2286,7 +2655,9 @@ declare namespace GoogleAppsScript {
                 price?: Content.Schema.Price | undefined;
                 targetCountry?: string | undefined;
                 title?: string | undefined;
-                variantAttributes?: Content.Schema.OrderLineItemProductVariantAttribute[] | undefined;
+                variantAttributes?:
+                    | Content.Schema.OrderLineItemProductVariantAttribute[]
+                    | undefined;
             }
             interface TestOrderPaymentMethod {
                 expirationMonth?: number | undefined;
@@ -2301,21 +2672,29 @@ declare namespace GoogleAppsScript {
                 transitTimeLabels?: string[] | undefined;
             }
             interface TransitTableTransitTimeRow {
-                values?: Content.Schema.TransitTableTransitTimeRowTransitTimeValue[] | undefined;
+                values?:
+                    | Content.Schema.TransitTableTransitTimeRowTransitTimeValue[]
+                    | undefined;
             }
             interface TransitTableTransitTimeRowTransitTimeValue {
                 maxTransitTimeInDays?: number | undefined;
                 minTransitTimeInDays?: number | undefined;
             }
             interface UnitInvoice {
-                additionalCharges?: Content.Schema.UnitInvoiceAdditionalCharge[] | undefined;
+                additionalCharges?:
+                    | Content.Schema.UnitInvoiceAdditionalCharge[]
+                    | undefined;
                 promotions?: Content.Schema.Promotion[] | undefined;
                 unitPricePretax?: Content.Schema.Price | undefined;
-                unitPriceTaxes?: Content.Schema.UnitInvoiceTaxLine[] | undefined;
+                unitPriceTaxes?:
+                    | Content.Schema.UnitInvoiceTaxLine[]
+                    | undefined;
             }
             interface UnitInvoiceAdditionalCharge {
                 additionalChargeAmount?: Content.Schema.Amount | undefined;
-                additionalChargePromotions?: Content.Schema.Promotion[] | undefined;
+                additionalChargePromotions?:
+                    | Content.Schema.Promotion[]
+                    | undefined;
                 type?: string | undefined;
             }
             interface UnitInvoiceTaxLine {
@@ -2338,10 +2717,14 @@ declare namespace GoogleAppsScript {
     }
     interface Content {
         Accounts?: Content.Collection.AccountsCollection | undefined;
-        Accountstatuses?: Content.Collection.AccountstatusesCollection | undefined;
+        Accountstatuses?:
+            | Content.Collection.AccountstatusesCollection
+            | undefined;
         Accounttax?: Content.Collection.AccounttaxCollection | undefined;
         Datafeeds?: Content.Collection.DatafeedsCollection | undefined;
-        Datafeedstatuses?: Content.Collection.DatafeedstatusesCollection | undefined;
+        Datafeedstatuses?:
+            | Content.Collection.DatafeedstatusesCollection
+            | undefined;
         Inventory?: Content.Collection.InventoryCollection | undefined;
         Liasettings?: Content.Collection.LiasettingsCollection | undefined;
         Orderinvoices?: Content.Collection.OrderinvoicesCollection | undefined;
@@ -2351,8 +2734,12 @@ declare namespace GoogleAppsScript {
         Orders?: Content.Collection.OrdersCollection | undefined;
         Pos?: Content.Collection.PosCollection | undefined;
         Products?: Content.Collection.ProductsCollection | undefined;
-        Productstatuses?: Content.Collection.ProductstatusesCollection | undefined;
-        Shippingsettings?: Content.Collection.ShippingsettingsCollection | undefined;
+        Productstatuses?:
+            | Content.Collection.ProductstatusesCollection
+            | undefined;
+        Shippingsettings?:
+            | Content.Collection.ShippingsettingsCollection
+            | undefined;
         // Create a new instance of Account
         newAccount(): Content.Schema.Account;
         // Create a new instance of AccountAddress

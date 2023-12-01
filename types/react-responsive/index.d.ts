@@ -64,14 +64,19 @@ export interface MediaQueryFeatures extends MediaQueryMatchers {
     maxResolution?: number | string | undefined;
 }
 
-export interface MediaQueryAllQueryable extends MediaQueryFeatures, MediaQueryTypes {}
+export interface MediaQueryAllQueryable
+    extends MediaQueryFeatures,
+        MediaQueryTypes {}
 
 export interface MediaQueryProps extends MediaQueryAllQueryable {
     component?: React.ElementType | undefined;
     query?: string | undefined;
     style?: React.CSSProperties | undefined;
     className?: string | undefined;
-    children?: React.ReactNode | ((matches: boolean) => React.ReactNode) | undefined;
+    children?:
+        | React.ReactNode
+        | ((matches: boolean) => React.ReactNode)
+        | undefined;
     device?: MediaQueryMatchers | undefined;
     values?: Partial<MediaQueryMatchers> | undefined;
     onBeforeChange?: ((matches: boolean) => void) | undefined;

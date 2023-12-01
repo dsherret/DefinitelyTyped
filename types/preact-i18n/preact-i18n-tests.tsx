@@ -1,5 +1,12 @@
 import { Component, h, render } from "preact";
-import { IntlProvider, MarkupText, Text, translate, useText, withText } from "preact-i18n";
+import {
+    IntlProvider,
+    MarkupText,
+    Text,
+    translate,
+    useText,
+    withText,
+} from "preact-i18n";
 
 interface P {
     foo: string;

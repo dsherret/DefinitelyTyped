@@ -6,7 +6,8 @@ import {
 } from "selenium-webdriver/lib/virtual_authenticator";
 
 function TestVirtualAuthenticator() {
-    let vaOptions: VirtualAuthenticatorOptions = new VirtualAuthenticatorOptions();
+    let vaOptions: VirtualAuthenticatorOptions =
+        new VirtualAuthenticatorOptions();
     let protocol: string = vaOptions.getProtocol();
     vaOptions.setProtocol(Protocol["CTAP2"]);
     let transport: string = vaOptions.getTransport();
@@ -28,16 +29,18 @@ function TestVirtualAuthenticator() {
         0,
     );
 
-    let nonResidentCredential: Credential = Credential.createNonResidentCredential(
-        new Uint8Array([1, 2, 3, 4]),
-        "localhost",
-        "BASE64_ENCODED_PK",
-        0,
-    );
+    let nonResidentCredential: Credential =
+        Credential.createNonResidentCredential(
+            new Uint8Array([1, 2, 3, 4]),
+            "localhost",
+            "BASE64_ENCODED_PK",
+            0,
+        );
 
     let id: Uint8Array = residentCredential.id();
 
-    let isResidentCredential: boolean = residentCredential.isResidentCredential();
+    let isResidentCredential: boolean =
+        residentCredential.isResidentCredential();
 
     let rpId: string = residentCredential.rpId();
 

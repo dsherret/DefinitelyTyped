@@ -12,7 +12,11 @@
  * passed to `callback` will be the value at the time `mapObject` visits them.
  * Properties that are deleted before being visited are not visited.
  */
-declare function mapObject(obj: object | null | undefined, callback: any, context?: any): object | null | undefined;
+declare function mapObject(
+    obj: object | null | undefined,
+    callback: any,
+    context?: any,
+): object | null | undefined;
 
 declare namespace mapObject {}
 

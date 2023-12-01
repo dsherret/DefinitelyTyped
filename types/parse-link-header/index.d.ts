@@ -10,5 +10,7 @@ declare namespace parseLinkHeader {
     }
 }
 
-declare function parseLinkHeader(linkHeader: string | null | undefined): parseLinkHeader.Links | null;
+declare function parseLinkHeader(
+    linkHeader: string | null | undefined,
+): parseLinkHeader.Links | null;
 export = parseLinkHeader;

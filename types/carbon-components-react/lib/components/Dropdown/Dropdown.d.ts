@@ -1,5 +1,10 @@
 import * as React from "react";
-import { FCReturn, ForwardRefProps, InternationalProps, ReactDivAttr } from "../../../typings/shared";
+import {
+    FCReturn,
+    ForwardRefProps,
+    InternationalProps,
+    ReactDivAttr,
+} from "../../../typings/shared";
 import { ListBoxProps } from "../ListBox";
 import { ListBoxMenuIconTranslationKey } from "../ListBox/ListBoxMenuIcon";
 
@@ -8,8 +13,8 @@ export interface OnChangeData<ItemType = string> {
 }
 
 export interface DropdownProps<ItemType = string>
-    extends Omit<ReactDivAttr, "id" | "onChange">, InternationalProps<ListBoxMenuIconTranslationKey>
-{
+    extends Omit<ReactDivAttr, "id" | "onChange">,
+        InternationalProps<ListBoxMenuIconTranslationKey> {
     ariaLabel?: string | undefined;
     direction?: "bottom" | "top" | undefined;
     disabled?: boolean | undefined;
@@ -25,7 +30,9 @@ export interface DropdownProps<ItemType = string>
     hideLabel?: boolean | undefined;
     helperText?: React.ReactNode | undefined;
     items: readonly ItemType[];
-    itemToElement?: ItemType extends object ? React.JSXElementConstructor<ItemType> : never | undefined;
+    itemToElement?: ItemType extends object
+        ? React.JSXElementConstructor<ItemType>
+        : never | undefined;
     itemToString?(item: ItemType): string;
     label: NonNullable<React.ReactNode>;
     light?: boolean | undefined;

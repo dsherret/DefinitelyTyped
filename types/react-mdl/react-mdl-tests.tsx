@@ -78,7 +78,9 @@ class BadgeTests extends React.Component {
                 <Badge text="4">Inbox</Badge>
 
                 {/* Icon badge without background on text */}
-                <Badge text="♥" noBackground>Mood</Badge>
+                <Badge text="♥" noBackground>
+                    Mood
+                </Badge>
             </div>
         );
     }
@@ -92,7 +94,7 @@ class ChipTests extends React.Component {
                 <Chip>Basic chip</Chip>
 
                 <Chip
-                    onClose={e => {
+                    onClose={(e) => {
                         alert("Close icon clicked!");
                     }}
                 >
@@ -100,7 +102,7 @@ class ChipTests extends React.Component {
                 </Chip>
 
                 <Chip
-                    onClick={e => {
+                    onClick={(e) => {
                         alert("Clicked!");
                     }}
                 >
@@ -108,18 +110,23 @@ class ChipTests extends React.Component {
                 </Chip>
                 {/* Contact Chip */}
                 <Chip>
-                    <ChipContact className="mdl-color--teal mdl-color-text--white">A</ChipContact>
+                    <ChipContact className="mdl-color--teal mdl-color-text--white">
+                        A
+                    </ChipContact>
                     Contact chip
                 </Chip>
 
                 {/* User Contact Chip */}
                 <Chip
-                    onClose={e => {
+                    onClose={(e) => {
                         alert("Close icon clicked!");
                     }}
                 >
                     <ChipContact
-                        style={{ background: "url(\"https://placekitten.com/150/150\") 0 0 / cover" }}
+                        style={{
+                            background:
+                                'url("https://placekitten.com/150/150") 0 0 / cover',
+                        }}
                     />
                     Deletable user contact chip
                 </Chip>
@@ -172,19 +179,29 @@ class ButtonTests extends React.Component {
                 <Button raised>Button</Button>
 
                 {/* Raised button with ripple */}
-                <Button raised ripple>Button</Button>
+                <Button raised ripple>
+                    Button
+                </Button>
 
                 {/* Disabled Raised button */}
-                <Button raised disabled>Button</Button>
+                <Button raised disabled>
+                    Button
+                </Button>
 
                 {/* Colored Raised button */}
-                <Button raised colored>Button</Button>
+                <Button raised colored>
+                    Button
+                </Button>
 
                 {/* Accent-colored button without ripple */}
-                <Button raised accent>Button</Button>
+                <Button raised accent>
+                    Button
+                </Button>
 
                 {/* Accent-colored button with ripple */}
-                <Button raised accent ripple>Button</Button>
+                <Button raised accent ripple>
+                    Button
+                </Button>
 
                 {/* Flat button */}
                 <Button>Button</Button>
@@ -221,14 +238,15 @@ class CardTests extends React.Component {
                         style={{
                             color: "#fff",
                             height: "176px",
-                            background: "url(http://www.getmdl.io/assets/demos/welcome_card.jpg) center / cover",
+                            background:
+                                "url(http://www.getmdl.io/assets/demos/welcome_card.jpg) center / cover",
                         }}
                     >
                         Welcome
                     </CardTitle>
                     <CardText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus
-                        eleifend lacinia...
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris sagittis pellentesque lacus eleifend lacinia...
                     </CardText>
                     <CardActions border>
                         <Button colored>Get Started</Button>
@@ -238,7 +256,10 @@ class CardTests extends React.Component {
                     </CardMenu>
                 </Card>
 
-                <Card shadow={0} style={{ width: "320px", height: "320px", margin: "auto" }}>
+                <Card
+                    shadow={0}
+                    style={{ width: "320px", height: "320px", margin: "auto" }}
+                >
                     <CardTitle
                         expand
                         style={{
@@ -250,7 +271,8 @@ class CardTests extends React.Component {
                         Update
                     </CardTitle>
                     <CardText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenan convallis.
                     </CardText>
                     <CardActions border>
                         <Button colored>View Updates</Button>
@@ -262,23 +284,48 @@ class CardTests extends React.Component {
                     style={{
                         width: "256px",
                         height: "256px",
-                        background: "url(http://www.getmdl.io/assets/demos/image_card.jpg) center / cover",
+                        background:
+                            "url(http://www.getmdl.io/assets/demos/image_card.jpg) center / cover",
                         margin: "auto",
                     }}
                 >
                     <CardTitle expand />
-                    <CardActions style={{ height: "52px", padding: "16px", background: "rgba(0,0,0,0.2)" }}>
-                        <span style={{ color: "#fff", fontSize: "14px", fontWeight: 500 }}>
+                    <CardActions
+                        style={{
+                            height: "52px",
+                            padding: "16px",
+                            background: "rgba(0,0,0,0.2)",
+                        }}
+                    >
+                        <span
+                            style={{
+                                color: "#fff",
+                                fontSize: "14px",
+                                fontWeight: 500,
+                            }}
+                        >
                             Image.jpg
                         </span>
                     </CardActions>
                 </Card>
 
-                <Card shadow={0} style={{ width: "256px", height: "256px", background: "#3E4EB8" }}>
-                    <CardTitle expand style={{ alignItems: "flex-start", color: "#fff" }}>
+                <Card
+                    shadow={0}
+                    style={{
+                        width: "256px",
+                        height: "256px",
+                        background: "#3E4EB8",
+                    }}
+                >
+                    <CardTitle
+                        expand
+                        style={{ alignItems: "flex-start", color: "#fff" }}
+                    >
                         <h4 style={{ marginTop: "0" }}>
-                            Featured event:<br />
-                            May 24, 2016<br />
+                            Featured event:
+                            <br />
+                            May 24, 2016
+                            <br />
                             7-11pm
                         </h4>
                     </CardTitle>
@@ -292,7 +339,9 @@ class CardTests extends React.Component {
                             color: "#fff",
                         }}
                     >
-                        <Button colored style={{ color: "#fff" }}>Add to Calendar</Button>
+                        <Button colored style={{ color: "#fff" }}>
+                            Add to Calendar
+                        </Button>
                         <div className="mdl-layout-spacer"></div>
                         <Icon name="event" />
                     </CardActions>
@@ -323,13 +372,36 @@ class DataTableTests extends React.Component {
                 <DataTable
                     shadow={0}
                     rows={[
-                        { material: "Acrylic (Transparent)", quantity: 25, price: 2.90 },
-                        { material: "Plywood (Birch)", quantity: 50, price: 1.25 },
-                        { material: "Laminate (Gold on Blue)", quantity: 10, price: 2.35 },
+                        {
+                            material: "Acrylic (Transparent)",
+                            quantity: 25,
+                            price: 2.9,
+                        },
+                        {
+                            material: "Plywood (Birch)",
+                            quantity: 50,
+                            price: 1.25,
+                        },
+                        {
+                            material: "Laminate (Gold on Blue)",
+                            quantity: 10,
+                            price: 2.35,
+                        },
                     ]}
                 >
-                    <TableHeader name="material" tooltip="The amazing material name">Material</TableHeader>
-                    <TableHeader numeric name="quantity" tooltip="Number of materials">Quantity</TableHeader>
+                    <TableHeader
+                        name="material"
+                        tooltip="The amazing material name"
+                    >
+                        Material
+                    </TableHeader>
+                    <TableHeader
+                        numeric
+                        name="quantity"
+                        tooltip="Number of materials"
+                    >
+                        Quantity
+                    </TableHeader>
                     <TableHeader
                         numeric
                         name="price"
@@ -345,13 +417,39 @@ class DataTableTests extends React.Component {
                     shadow={0}
                     rowKeyColumn="id"
                     rows={[
-                        { id: 1001, material: "Acrylic (Transparent)", quantity: 25, price: 2.90 },
-                        { id: 1002, material: "Plywood (Birch)", quantity: 50, price: 1.25 },
-                        { id: 1003, material: "Laminate (Gold on Blue)", quantity: 10, price: 2.35 },
+                        {
+                            id: 1001,
+                            material: "Acrylic (Transparent)",
+                            quantity: 25,
+                            price: 2.9,
+                        },
+                        {
+                            id: 1002,
+                            material: "Plywood (Birch)",
+                            quantity: 50,
+                            price: 1.25,
+                        },
+                        {
+                            id: 1003,
+                            material: "Laminate (Gold on Blue)",
+                            quantity: 10,
+                            price: 2.35,
+                        },
                     ]}
                 >
-                    <TableHeader name="material" tooltip="The amazing material name">Material</TableHeader>
-                    <TableHeader numeric name="quantity" tooltip="Number of materials">Quantity</TableHeader>
+                    <TableHeader
+                        name="material"
+                        tooltip="The amazing material name"
+                    >
+                        Material
+                    </TableHeader>
+                    <TableHeader
+                        numeric
+                        name="quantity"
+                        tooltip="Number of materials"
+                    >
+                        Quantity
+                    </TableHeader>
                     <TableHeader
                         numeric
                         name="price"
@@ -366,16 +464,33 @@ class DataTableTests extends React.Component {
                     sortable
                     shadow={0}
                     rows={[
-                        { material: "Acrylic (Transparent)", quantity: 25, price: 2.90 },
-                        { material: "Plywood (Birch)", quantity: 50, price: 1.25 },
-                        { material: "Laminate (Gold on Blue)", quantity: 10, price: 2.35 },
+                        {
+                            material: "Acrylic (Transparent)",
+                            quantity: 25,
+                            price: 2.9,
+                        },
+                        {
+                            material: "Plywood (Birch)",
+                            quantity: 50,
+                            price: 1.25,
+                        },
+                        {
+                            material: "Laminate (Gold on Blue)",
+                            quantity: 10,
+                            price: 2.35,
+                        },
                     ]}
                 >
                     <TableHeader
                         name="material"
                         sortable
                         sortFn={(a, b, isAsc) =>
-                            (isAsc ? a : b).match(/\((.*)\)/)[1].localeCompare((isAsc ? b : a).match(/\((.*)\)/)[1])}
+                            (isAsc ? a : b)
+                                .match(/\((.*)\)/)[1]
+                                .localeCompare(
+                                    (isAsc ? b : a).match(/\((.*)\)/)[1],
+                                )
+                        }
                         tooltip="The amazing material name"
                     >
                         Material
@@ -411,45 +526,95 @@ class DialogTests extends React.Component<{}, { openDialog: boolean }> {
         return (
             <div>
                 <div>
-                    <Button colored onClick={this.handleOpenDialog} raised ripple>Show Dialog</Button>
+                    <Button
+                        colored
+                        onClick={this.handleOpenDialog}
+                        raised
+                        ripple
+                    >
+                        Show Dialog
+                    </Button>
                     <Dialog open={this.state.openDialog}>
                         <DialogTitle>Allow data collection?</DialogTitle>
                         <DialogContent>
-                            <p>Allowing us to collect data will let us get you the information you want faster.</p>
+                            <p>
+                                Allowing us to collect data will let us get you
+                                the information you want faster.
+                            </p>
                         </DialogContent>
                         <DialogActions>
                             <Button type="button">Agree</Button>
-                            <Button type="button" onClick={this.handleCloseDialog}>Disagree</Button>
+                            <Button
+                                type="button"
+                                onClick={this.handleCloseDialog}
+                            >
+                                Disagree
+                            </Button>
                         </DialogActions>
                     </Dialog>
                 </div>
 
                 <div>
-                    <Button colored onClick={this.handleOpenDialog} raised ripple>Show Modal</Button>
+                    <Button
+                        colored
+                        onClick={this.handleOpenDialog}
+                        raised
+                        ripple
+                    >
+                        Show Modal
+                    </Button>
                     <Dialog open={this.state.openDialog}>
-                        <DialogTitle>Allow this site to collect usage data to improve your experience?</DialogTitle>
+                        <DialogTitle>
+                            Allow this site to collect usage data to improve
+                            your experience?
+                        </DialogTitle>
                         <DialogContent>
-                            <p>Allowing us to collect data will let us get you the information you want faster.</p>
+                            <p>
+                                Allowing us to collect data will let us get you
+                                the information you want faster.
+                            </p>
                         </DialogContent>
                         <DialogActions fullWidth>
                             <Button type="button">Agree</Button>
-                            <Button type="button" onClick={this.handleCloseDialog}>Disagree</Button>
+                            <Button
+                                type="button"
+                                onClick={this.handleCloseDialog}
+                            >
+                                Disagree
+                            </Button>
                         </DialogActions>
                     </Dialog>
                 </div>
 
                 <div>
-                    <Button colored onClick={this.handleOpenDialog} onAbort={this.handleCloseDialog} raised ripple>
+                    <Button
+                        colored
+                        onClick={this.handleOpenDialog}
+                        onAbort={this.handleCloseDialog}
+                        raised
+                        ripple
+                    >
                         Show Dialog
                     </Button>
-                    <Dialog open={this.state.openDialog} onAbort={this.handleCloseDialog}>
+                    <Dialog
+                        open={this.state.openDialog}
+                        onAbort={this.handleCloseDialog}
+                    >
                         <DialogTitle>Allow data collection?</DialogTitle>
                         <DialogContent>
-                            <p>Allowing us to collect data will let us get you the information you want faster.</p>
+                            <p>
+                                Allowing us to collect data will let us get you
+                                the information you want faster.
+                            </p>
                         </DialogContent>
                         <DialogActions>
                             <Button type="button">Agree</Button>
-                            <Button type="button" onClick={this.handleCloseDialog}>Disagree</Button>
+                            <Button
+                                type="button"
+                                onClick={this.handleCloseDialog}
+                            >
+                                Disagree
+                            </Button>
                         </DialogActions>
                     </Dialog>
                 </div>
@@ -489,9 +654,15 @@ class GridTests extends React.Component {
                         <Cell col={2}>2</Cell>
                     </Grid>
                     <Grid className="demo-grid-3">
-                        <Cell col={6} tablet={8}>6 (8 tablet)</Cell>
-                        <Cell col={4} tablet={6}>4 (6 tablet)</Cell>
-                        <Cell col={2} phone={4}>2 (4 phone)</Cell>
+                        <Cell col={6} tablet={8}>
+                            6 (8 tablet)
+                        </Cell>
+                        <Cell col={4} tablet={6}>
+                            4 (6 tablet)
+                        </Cell>
+                        <Cell col={2} phone={4}>
+                            2 (4 phone)
+                        </Cell>
                     </Grid>
                 </div>
             </div>
@@ -504,7 +675,12 @@ class IconToggleTests extends React.Component {
     render() {
         return (
             <div>
-                <IconToggle ripple id="bold" name="format_bold" defaultChecked />
+                <IconToggle
+                    ripple
+                    id="bold"
+                    name="format_bold"
+                    defaultChecked
+                />
 
                 <IconToggle id="italic" name="format_italic" />
             </div>
@@ -520,9 +696,16 @@ class LayoutTests extends React.Component<{}, { activeTab: number }> {
                 {/* Uses a transparent header that draws on top of the layout's background */}
                 <div style={{ height: "300px", position: "relative" }}>
                     <Layout
-                        style={{ background: "url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover" }}
+                        style={{
+                            background:
+                                "url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover",
+                        }}
                     >
-                        <Header transparent title="Title" style={{ color: "white" }}>
+                        <Header
+                            transparent
+                            title="Title"
+                            style={{ color: "white" }}
+                        >
                             <Navigation>
                                 <a href="">Link</a>
                                 <a href="">Link</a>
@@ -563,7 +746,9 @@ class LayoutTests extends React.Component<{}, { activeTab: number }> {
                         <Header
                             title={
                                 <span>
-                                    <span style={{ color: "#ddd" }}>Area /</span>
+                                    <span style={{ color: "#ddd" }}>
+                                        Area /
+                                    </span>
                                     <strong>The Title</strong>
                                 </span>
                             }
@@ -712,7 +897,10 @@ class LayoutTests extends React.Component<{}, { activeTab: number }> {
                     <Layout fixedHeader>
                         <Header>
                             <HeaderRow title="Title" />
-                            <HeaderTabs activeTab={this.state.activeTab} onChange={(tabId) => {}}>
+                            <HeaderTabs
+                                activeTab={this.state.activeTab}
+                                onChange={(tabId) => {}}
+                            >
                                 <Tab>Tab1</Tab>
                                 <Tab>Tab2</Tab>
                                 <Tab>Tab3</Tab>
@@ -723,7 +911,9 @@ class LayoutTests extends React.Component<{}, { activeTab: number }> {
                         </Header>
                         <Drawer title="Title" />
                         <Content>
-                            <div className="page-content">Content for the tab: {this.state.activeTab}</div>
+                            <div className="page-content">
+                                Content for the tab: {this.state.activeTab}
+                            </div>
                         </Content>
                     </Layout>
                 </div>
@@ -742,8 +932,9 @@ class LayoutTests extends React.Component<{}, { activeTab: number }> {
                         <Drawer title="Title" />
                         <Content>
                             <div className="page-content">
-                                You can add logic to update the content of this container based on the "activeTab"
-                                receive in the `onChange` callback.
+                                You can add logic to update the content of this
+                                container based on the "activeTab" receive in
+                                the `onChange` callback.
                             </div>
                         </Content>
                     </Layout>
@@ -817,58 +1008,76 @@ class ListTests extends React.Component {
 
                 <List>
                     <ListItem>
-                        <ListItemContent icon="person">Bryan Cranston</ListItemContent>
+                        <ListItemContent icon="person">
+                            Bryan Cranston
+                        </ListItemContent>
                     </ListItem>
                     <ListItem>
-                        <ListItemContent icon="person">Aaron Paul</ListItemContent>
+                        <ListItemContent icon="person">
+                            Aaron Paul
+                        </ListItemContent>
                     </ListItem>
                     <ListItem>
-                        <ListItemContent icon="person">Bob Odenkirk</ListItemContent>
-                    </ListItem>
-                </List>
-
-                <List style={{ width: "300px" }}>
-                    <ListItem>
-                        <ListItemContent avatar="person">Bryan Cranston</ListItemContent>
-                        <ListItemAction>
-                            <a href="#">
-                                <Icon name="star" />
-                            </a>
-                        </ListItemAction>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemContent avatar="person">Aaron Paul</ListItemContent>
-                        <ListItemAction>
-                            <a href="#">
-                                <Icon name="star" />
-                            </a>
-                        </ListItemAction>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemContent avatar="person">Bob Odenkirk</ListItemContent>
-                        <ListItemAction>
-                            <a href="#">
-                                <Icon name="star" />
-                            </a>
-                        </ListItemAction>
+                        <ListItemContent icon="person">
+                            Bob Odenkirk
+                        </ListItemContent>
                     </ListItem>
                 </List>
 
                 <List style={{ width: "300px" }}>
                     <ListItem>
-                        <ListItemContent avatar="person">Bryan Cranston</ListItemContent>
+                        <ListItemContent avatar="person">
+                            Bryan Cranston
+                        </ListItemContent>
+                        <ListItemAction>
+                            <a href="#">
+                                <Icon name="star" />
+                            </a>
+                        </ListItemAction>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemContent avatar="person">
+                            Aaron Paul
+                        </ListItemContent>
+                        <ListItemAction>
+                            <a href="#">
+                                <Icon name="star" />
+                            </a>
+                        </ListItemAction>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemContent avatar="person">
+                            Bob Odenkirk
+                        </ListItemContent>
+                        <ListItemAction>
+                            <a href="#">
+                                <Icon name="star" />
+                            </a>
+                        </ListItemAction>
+                    </ListItem>
+                </List>
+
+                <List style={{ width: "300px" }}>
+                    <ListItem>
+                        <ListItemContent avatar="person">
+                            Bryan Cranston
+                        </ListItemContent>
                         <ListItemAction>
                             <Checkbox defaultChecked />
                         </ListItemAction>
                     </ListItem>
                     <ListItem>
-                        <ListItemContent avatar="person">Aaron Paul</ListItemContent>
+                        <ListItemContent avatar="person">
+                            Aaron Paul
+                        </ListItemContent>
                         <ListItemAction>
                             <Radio value={1} />
                         </ListItemAction>
                     </ListItem>
                     <ListItem>
-                        <ListItemContent avatar="person">Bob Odenkirk</ListItemContent>
+                        <ListItemContent avatar="person">
+                            Bob Odenkirk
+                        </ListItemContent>
                         <ListItemAction>
                             <Switch defaultChecked />
                         </ListItemAction>
@@ -877,7 +1086,9 @@ class ListTests extends React.Component {
 
                 <List style={{ width: "300px" }}>
                     <ListItem twoLine>
-                        <ListItemContent avatar="person" subtitle="62 episodes">Bryan Cranston</ListItemContent>
+                        <ListItemContent avatar="person" subtitle="62 episodes">
+                            Bryan Cranston
+                        </ListItemContent>
                         <ListItemAction info="Actor">
                             <a href="#">
                                 <Icon name="star" />
@@ -885,7 +1096,9 @@ class ListTests extends React.Component {
                         </ListItemAction>
                     </ListItem>
                     <ListItem twoLine>
-                        <ListItemContent avatar="person" subtitle="62 episodes">Aaron Paul</ListItemContent>
+                        <ListItemContent avatar="person" subtitle="62 episodes">
+                            Aaron Paul
+                        </ListItemContent>
                         <ListItemAction>
                             <a href="#">
                                 <Icon name="star" />
@@ -893,7 +1106,9 @@ class ListTests extends React.Component {
                         </ListItemAction>
                     </ListItem>
                     <ListItem twoLine>
-                        <ListItemContent avatar="person" subtitle="62 episodes">Bob Odenkirk</ListItemContent>
+                        <ListItemContent avatar="person" subtitle="62 episodes">
+                            Bob Odenkirk
+                        </ListItemContent>
                         <ListItemAction>
                             <a href="#">
                                 <Icon name="star" />
@@ -989,7 +1204,11 @@ class MenuTests extends React.Component {
                 {/* Top right */}
                 <div style={{ position: "relative" }}>
                     <IconButton name="more_vert" id="demo-menu-top-right" />
-                    <Menu target="demo-menu-top-right" valign="top" align="right">
+                    <Menu
+                        target="demo-menu-top-right"
+                        valign="top"
+                        align="right"
+                    >
                         <MenuItem>Some Action</MenuItem>
                         <MenuItem>Another Action</MenuItem>
                         <MenuItem disabled>Disabled Action</MenuItem>
@@ -1025,12 +1244,21 @@ class RadioTests extends React.Component {
         return (
             <div>
                 <RadioGroup name="demo" value="opt1">
-                    <Radio value="opt1" ripple>Ripple option</Radio>
+                    <Radio value="opt1" ripple>
+                        Ripple option
+                    </Radio>
                     <Radio value="opt2">Other option</Radio>
                 </RadioGroup>
 
-                <RadioGroup container="ul" childContainer="li" name="demo2" value="opt2">
-                    <Radio value="opt1" ripple>Ripple option</Radio>
+                <RadioGroup
+                    container="ul"
+                    childContainer="li"
+                    name="demo2"
+                    value="opt2"
+                >
+                    <Radio value="opt1" ripple>
+                        Ripple option
+                    </Radio>
                     <Radio value="opt2">Other option</Radio>
                 </RadioGroup>
             </div>
@@ -1063,7 +1291,11 @@ class SnackbarTests extends React.Component {
         return (
             <div>
                 <div>
-                    <Button raised style={{ backgroundColor: "#FF00FF" }} onClick={this.handleShowSnackbar}>
+                    <Button
+                        raised
+                        style={{ backgroundColor: "#FF00FF" }}
+                        onClick={this.handleShowSnackbar}
+                    >
                         Show a Snackbar
                     </Button>
                     <Snackbar
@@ -1077,15 +1309,20 @@ class SnackbarTests extends React.Component {
                 </div>
 
                 <div>
-                    <Button raised onClick={this.handleShowSnackbar}>Show a Toast</Button>
+                    <Button raised onClick={this.handleShowSnackbar}>
+                        Show a Toast
+                    </Button>
                     <Snackbar
                         active={true}
                         onTimeout={this.handleTimeoutSnackbar}
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius luctus quam. Fusce quis
-                        blandit libero. Donec accumsan nunc lectus, vel blandit diam bibendum ac. Integer faucibus,
-                        lorem et convallis fermentum, diam dolor imperdiet mi, nec iaculis risus mauris id elit. Vivamus
-                        vel eros dapibus, molestie ante ut, vestibulum sem.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Fusce varius luctus quam. Fusce quis blandit libero.
+                        Donec accumsan nunc lectus, vel blandit diam bibendum
+                        ac. Integer faucibus, lorem et convallis fermentum, diam
+                        dolor imperdiet mi, nec iaculis risus mauris id elit.
+                        Vivamus vel eros dapibus, molestie ante ut, vestibulum
+                        sem.
                     </Snackbar>
                 </div>
             </div>
@@ -1113,7 +1350,9 @@ class SwitchTest extends React.Component {
     render() {
         return (
             <div>
-                <Switch ripple id="switch1" defaultChecked>Ripple switch</Switch>
+                <Switch ripple id="switch1" defaultChecked>
+                    Ripple switch
+                </Switch>
 
                 <Switch id="switch2">Switch</Switch>
             </div>
@@ -1129,7 +1368,9 @@ class TabTests extends React.Component<{}, { activeTab: number }> {
                 <div className="demo-tabs">
                     <Tabs
                         activeTab={this.state.activeTab}
-                        onChange={(tabId) => this.setState({ activeTab: tabId })}
+                        onChange={(tabId) =>
+                            this.setState({ activeTab: tabId })
+                        }
                         ripple
                     >
                         <Tab>Starks</Tab>
@@ -1137,7 +1378,9 @@ class TabTests extends React.Component<{}, { activeTab: number }> {
                         <Tab>Targaryens</Tab>
                     </Tabs>
                     <section>
-                        <div className="content">Content for the tab: {this.state.activeTab}</div>
+                        <div className="content">
+                            Content for the tab: {this.state.activeTab}
+                        </div>
                     </section>
                 </div>
             </div>
@@ -1217,7 +1460,9 @@ class TooltipTests extends React.Component {
                 <Tooltip
                     label={
                         <span>
-                            Share your content<br />via social media
+                            Share your content
+                            <br />
+                            via social media
                         </span>
                     }
                 >

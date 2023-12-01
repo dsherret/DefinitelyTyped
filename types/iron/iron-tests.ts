@@ -42,37 +42,36 @@ const obj: object = {
     },
 };
 
-Iron.seal(obj, "password", options)
-    .then((sealed: string) => {
-        console.log(sealed);
-    });
+Iron.seal(obj, "password", options).then((sealed: string) => {
+    console.log(sealed);
+});
 
-Iron.unseal("data", "password", Iron.defaults)
-    .then((unsealed: object) => {
-        console.log(unsealed);
-    });
+Iron.unseal("data", "password", Iron.defaults).then((unsealed: object) => {
+    console.log(unsealed);
+});
 
-Iron.generateKey("password", options.encryption)
-    .then((value: Iron.Key) => {
-        console.log(value);
-    });
+Iron.generateKey("password", options.encryption).then((value: Iron.Key) => {
+    console.log(value);
+});
 
-Iron.generateKey("password", optionsGenerateKey)
-    .then((value: Iron.Key) => {
-        console.log(value);
-    });
+Iron.generateKey("password", optionsGenerateKey).then((value: Iron.Key) => {
+    console.log(value);
+});
 
-Iron.encrypt("password", Iron.defaults.encryption, "data")
-    .then((obj: { data: Buffer; key: Iron.Key }) => {
+Iron.encrypt("password", Iron.defaults.encryption, "data").then(
+    (obj: { data: Buffer; key: Iron.Key }) => {
         console.log(obj);
-    });
+    },
+);
 
-Iron.decrypt("password", Iron.defaults.encryption, "data")
-    .then((buffer: Buffer) => {
+Iron.decrypt("password", Iron.defaults.encryption, "data").then(
+    (buffer: Buffer) => {
         console.log(buffer);
-    });
+    },
+);
 
-Iron.hmacWithPassword("password", Iron.defaults.integrity, "data")
-    .then((value: Iron.HMacResult) => {
+Iron.hmacWithPassword("password", Iron.defaults.integrity, "data").then(
+    (value: Iron.HMacResult) => {
         console.log(value);
-    });
+    },
+);

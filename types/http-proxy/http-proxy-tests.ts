@@ -6,7 +6,7 @@ const proxy = new HttpProxy({
     changeOrigin: true,
 });
 
-proxy.on("error", err => {
+proxy.on("error", (err) => {
     console.error("An error occurred:", err);
 });
 
@@ -16,9 +16,10 @@ proxy.on("error", err => {
 proxy.on("start", (req, res, target) => {
     const headers = req.headers; // defined;
     const status = res.statusCode; // defined;
-    const partial = typeof target === "string"
-        ? target.substr(0) // defined;
-        : target.protocol; // defined;
+    const partial =
+        typeof target === "string"
+            ? target.substr(0) // defined;
+            : target.protocol; // defined;
 });
 
 http.createServer((req, res) => {
@@ -64,7 +65,10 @@ const start: HttpProxy.StartCallback = (req, res, target) => {
     res.status(200);
 };
 
-const startExpress: HttpProxy.StartCallback<express.Request, express.Response> = (req, res, target) => {
+const startExpress: HttpProxy.StartCallback<
+    express.Request,
+    express.Response
+> = (req, res, target) => {
     req.params;
     res.status(200);
 };
@@ -76,12 +80,11 @@ const proxyReq: HttpProxy.ProxyReqCallback = (proxyReq, req, res, options) => {
     res.status(200);
 };
 
-const proxyReqExpress: HttpProxy.ProxyReqCallback<http.ClientRequest, express.Request, express.Response> = (
-    proxyReq,
-    req,
-    res,
-    options,
-) => {
+const proxyReqExpress: HttpProxy.ProxyReqCallback<
+    http.ClientRequest,
+    express.Request,
+    express.Response
+> = (proxyReq, req, res, options) => {
     req.params;
     res.status(200);
 };
@@ -93,39 +96,49 @@ const proxyRes: HttpProxy.ProxyResCallback = (proxyRes, req, res) => {
     res.status(200);
 };
 
-const proxyResExpress: HttpProxy.ProxyResCallback<express.Request, express.Response> = (proxyRes, req, res) => {
+const proxyResExpress: HttpProxy.ProxyResCallback<
+    express.Request,
+    express.Response
+> = (proxyRes, req, res) => {
     req.params;
     res.status(200);
 };
 
-const proxyReqWsCallback: HttpProxy.ProxyReqWsCallback = (proxyReq, req, socket, options, head) => {
-    // @ts-expect-error
-    req.params;
-};
-
-const proxyReqWsCallbackExpress: HttpProxy.ProxyReqWsCallback<http.ClientRequest, express.Request> = (
+const proxyReqWsCallback: HttpProxy.ProxyReqWsCallback = (
     proxyReq,
     req,
     socket,
     options,
     head,
 ) => {
+    // @ts-expect-error
     req.params;
 };
 
-const econnresetCallback: HttpProxy.EconnresetCallback = (err, req, res, target) => {
+const proxyReqWsCallbackExpress: HttpProxy.ProxyReqWsCallback<
+    http.ClientRequest,
+    express.Request
+> = (proxyReq, req, socket, options, head) => {
+    req.params;
+};
+
+const econnresetCallback: HttpProxy.EconnresetCallback = (
+    err,
+    req,
+    res,
+    target,
+) => {
     // @ts-expect-error
     req.params;
     // @ts-expect-error
     res.status(200);
 };
 
-const econnresetCallbackExpress: HttpProxy.EconnresetCallback<Error, express.Request, express.Response> = (
-    err,
-    req,
-    res,
-    target,
-) => {
+const econnresetCallbackExpress: HttpProxy.EconnresetCallback<
+    Error,
+    express.Request,
+    express.Response
+> = (err, req, res, target) => {
     req.params;
     res.status(200);
 };
@@ -139,7 +152,10 @@ const endCallback: HttpProxy.EndCallback = (req, res, proxyRes) => {
     proxyRes.params;
 };
 
-const endCallbackExpress: HttpProxy.EndCallback<express.Request, express.Response> = (req, res, proxyRes) => {
+const endCallbackExpress: HttpProxy.EndCallback<
+    express.Request,
+    express.Response
+> = (req, res, proxyRes) => {
     req.params;
     res.status(200);
     proxyRes.params;
@@ -150,7 +166,10 @@ const closeCallback: HttpProxy.CloseCallback = (proxyRes, proxySocket) => {
     req.params;
 };
 
-const closeCallbackExpress: HttpProxy.CloseCallback<express.Request> = (proxyRes, proxySocket) => {
+const closeCallbackExpress: HttpProxy.CloseCallback<express.Request> = (
+    proxyRes,
+    proxySocket,
+) => {
     proxyRes.params;
 };
 
@@ -161,14 +180,13 @@ const errorCallback: HttpProxy.ErrorCallback = (err, req, res, target) => {
     res.status(200);
 };
 
-const errorCallbackExpress: HttpProxy.ErrorCallback<Error, express.Request, express.Response> = (
-    err,
-    req,
-    res,
-    target,
-) => {
+const errorCallbackExpress: HttpProxy.ErrorCallback<
+    Error,
+    express.Request,
+    express.Response
+> = (err, req, res, target) => {
     req.params;
-    ("status" in res) && res.status(200);
+    "status" in res && res.status(200);
 };
 
 /**
@@ -231,7 +249,10 @@ instance.once("close", (proxyRes, proxySocket, proxyHead) => {
 /**
  * Test createProxyServer() generics:
  */
-const proxyServerInstance = HttpProxy.createProxyServer<express.Request, express.Response>({
+const proxyServerInstance = HttpProxy.createProxyServer<
+    express.Request,
+    express.Response
+>({
     target: "http://localhost:9015",
 });
 
@@ -272,9 +293,12 @@ proxyServerInstance.once("proxyReq", (proxyReq, req, res, options) => {
 proxyServerInstance.once("proxyRes", (proxyRes, req, res) => {
     req.params && res.status(200).send("OK");
 });
-proxyServerInstance.once("proxyReqWs", (proxyReq, req, socket, options, head) => {
-    req.params;
-});
+proxyServerInstance.once(
+    "proxyReqWs",
+    (proxyReq, req, socket, options, head) => {
+        req.params;
+    },
+);
 proxyServerInstance.once("econnreset", (error, req, res, target) => {
     req.params && res.status(200).send("OK");
 });
@@ -288,7 +312,10 @@ proxyServerInstance.once("close", (proxyRes, proxySocket, proxyHead) => {
 /**
  * Test createServer() generics:
  */
-const serverInstance = HttpProxy.createServer<express.Request, express.Response>({
+const serverInstance = HttpProxy.createServer<
+    express.Request,
+    express.Response
+>({
     target: "http://localhost:9015",
 });
 

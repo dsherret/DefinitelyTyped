@@ -68,7 +68,15 @@ export interface ThreeDSecureAuthenticationResponse {
     enrollment_status: EnrollmentStatus;
 }
 
-export type AuthenticationStatus = "Y" | "N" | "U" | "A" | "C" | "R" | "D" | "I";
+export type AuthenticationStatus =
+    | "Y"
+    | "N"
+    | "U"
+    | "A"
+    | "C"
+    | "R"
+    | "D"
+    | "I";
 
 export type EnrollmentStatus = "Y" | "N" | "U" | "B";
 
@@ -295,7 +303,11 @@ export interface ModelCustomerServiceContact {
 }
 
 // https://developer.paypal.com/docs/api/orders/v2/#definition-model-enums-currency_receiving_type
-export type ModelEnumsCurrencyReceivingType = "ACCEPT" | "ACCEPT_OPEN" | "DENY" | "HOLD";
+export type ModelEnumsCurrencyReceivingType =
+    | "ACCEPT"
+    | "ACCEPT_OPEN"
+    | "DENY"
+    | "HOLD";
 
 // https://developer.paypal.com/docs/api/orders/v2/#definition-model-enums-disbursement_type
 export type ModelEnumsDisbursementType = "INSTANT" | "DELAYED";
@@ -460,7 +472,10 @@ export interface OrderApplicationContext {
 
 export type LandingPage = "LOGIN" | "BILLING" | "NO_PREFERENCE";
 
-export type ShippingPreference = "GET_FROM_FILE" | "NO_SHIPPING" | "SET_PROVIDED_ADDRESS";
+export type ShippingPreference =
+    | "GET_FROM_FILE"
+    | "NO_SHIPPING"
+    | "SET_PROVIDED_ADDRESS";
 
 export type UserAction = "CONTINUE" | "PAY_NOW";
 
@@ -507,7 +522,15 @@ export interface BaseOrderHeaders {
 
 export class BaseOrderRequest<H extends BaseOrderHeaders, B = null> {
     readonly path: string;
-    readonly verb: "CONNECT" | "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
+    readonly verb:
+        | "CONNECT"
+        | "DELETE"
+        | "GET"
+        | "HEAD"
+        | "OPTIONS"
+        | "PATCH"
+        | "POST"
+        | "PUT";
     readonly body: B;
     readonly headers: H;
 
@@ -530,7 +553,10 @@ export namespace OrdersAuthorize {
     }
 }
 
-export class OrdersAuthorizeRequest extends BaseOrderRequest<OrdersAuthorize.RequestHeaders, Order> {
+export class OrdersAuthorizeRequest extends BaseOrderRequest<
+    OrdersAuthorize.RequestHeaders,
+    Order
+> {
     payPalClientMetadataId(payPalClientMetadataId: string): this;
 
     payPalRequestId(payPalRequestId: string): this;
@@ -556,7 +582,10 @@ export namespace OrdersCapture {
     }
 }
 
-export class OrdersCaptureRequest extends BaseOrderRequest<OrdersCapture.RequestHeaders, Order> {
+export class OrdersCaptureRequest extends BaseOrderRequest<
+    OrdersCapture.RequestHeaders,
+    Order
+> {
     payPalClientMetadataId(payPalClientMetadataId: string): this;
 
     payPalRequestId(payPalRequestId: string): this;
@@ -584,7 +613,10 @@ export namespace OrdersCreate {
     }
 }
 
-export class OrdersCreateRequest extends BaseOrderRequest<OrdersCreate.RequestHeaders, Order> {
+export class OrdersCreateRequest extends BaseOrderRequest<
+    OrdersCreate.RequestHeaders,
+    Order
+> {
     constructor();
 
     payPalPartnerAttributionId(payPalPartnerAttributionId: string): this;
@@ -602,7 +634,10 @@ export namespace OrdersGet {
     type RequestHeaders = BaseOrderHeaders;
 }
 
-export class OrdersGetRequest extends BaseOrderRequest<OrdersGet.RequestHeaders, Order> {}
+export class OrdersGetRequest extends BaseOrderRequest<
+    OrdersGet.RequestHeaders,
+    Order
+> {}
 
 /**
  * Orders Patch

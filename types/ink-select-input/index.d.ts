@@ -6,7 +6,9 @@ export interface ItemOfSelectInput {
     key?: string | number | undefined;
 }
 
-export interface SelectInputProps<T extends ItemOfSelectInput = ItemOfSelectInput> {
+export interface SelectInputProps<
+    T extends ItemOfSelectInput = ItemOfSelectInput,
+> {
     focus?: boolean | undefined;
     indicatorComponent?: Component | undefined;
     itemComponent?: Component | undefined;

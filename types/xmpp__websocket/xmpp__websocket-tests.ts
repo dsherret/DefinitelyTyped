@@ -20,19 +20,19 @@ sock.socket; // $ExpectType WebSocket | undefined
 sock.connect("foo"); // $ExpectType void
 sock.connect(new URL("foo")); // $ExpectType void
 sock.end(); // $ExpectType void
-sock.write(new Uint8Array(10), err => {
+sock.write(new Uint8Array(10), (err) => {
     err; // $ExpectType Error | undefined
 });
-sock.write("foo", err => {
+sock.write("foo", (err) => {
     err; // $ExpectType Error | undefined
 });
 
 sock.addListener("connect", () => {});
-sock.addListener("data", data => {
+sock.addListener("data", (data) => {
     data; // $ExpectType Data
 });
 sock.addListener("close", () => {});
-sock.addListener("error", err => {
+sock.addListener("error", (err) => {
     err; // $ExpectType WebSocketError
     err.url; // $ExpectType string | URL
     err.event; // $ExpectType ErrorEvent
@@ -41,38 +41,38 @@ sock.addListener("error", err => {
 });
 
 sock.on("connect", () => {});
-sock.on("data", data => {
+sock.on("data", (data) => {
     data; // $ExpectType Data
 });
 sock.on("close", () => {});
-sock.on("error", err => {
+sock.on("error", (err) => {
     err; // $ExpectType WebSocketError
 });
 
 sock.once("connect", () => {});
-sock.once("data", data => {
+sock.once("data", (data) => {
     data; // $ExpectType Data
 });
 sock.once("close", () => {});
-sock.once("error", err => {
+sock.once("error", (err) => {
     err; // $ExpectType WebSocketError
 });
 
 sock.prependListener("connect", () => {});
-sock.prependListener("data", data => {
+sock.prependListener("data", (data) => {
     data; // $ExpectType Data
 });
 sock.prependListener("close", () => {});
-sock.prependListener("error", err => {
+sock.prependListener("error", (err) => {
     err; // $ExpectType WebSocketError
 });
 
 sock.prependOnceListener("connect", () => {});
-sock.prependOnceListener("data", data => {
+sock.prependOnceListener("data", (data) => {
     data; // $ExpectType Data
 });
 sock.prependOnceListener("close", () => {});
-sock.prependOnceListener("error", err => {
+sock.prependOnceListener("error", (err) => {
     err; // $ExpectType WebSocketError
 });
 

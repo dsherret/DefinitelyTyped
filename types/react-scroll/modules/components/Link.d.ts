@@ -22,6 +22,7 @@ export interface ReactScrollLinkProps {
     spyThrottle?: number | undefined;
 }
 
-export type LinkProps = ReactScrollLinkProps & React.HTMLProps<HTMLButtonElement>;
+export type LinkProps = ReactScrollLinkProps &
+    React.HTMLProps<HTMLButtonElement>;
 
 export default class Link extends React.Component<LinkProps> {}

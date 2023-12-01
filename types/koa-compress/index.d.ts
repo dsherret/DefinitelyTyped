@@ -16,7 +16,9 @@ import * as zlib from "zlib";
 /**
  * Compress middleware for Koa
  */
-declare function koaCompress(options?: koaCompress.CompressOptions): Koa.Middleware;
+declare function koaCompress(
+    options?: koaCompress.CompressOptions,
+): Koa.Middleware;
 
 declare namespace koaCompress {
     export interface CompressOptions {

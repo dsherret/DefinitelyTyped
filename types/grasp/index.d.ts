@@ -34,13 +34,32 @@ declare namespace grasp {
     // a bit of noise. Using generic currying will discard variable name
     // information, so we hand-roll it here
 
-    function search(engine: QueryEngineType, selector: string, input: string): Node[];
-    function search(engine: QueryEngineType, selector: string): (input: string) => Node[];
+    function search(
+        engine: QueryEngineType,
+        selector: string,
+        input: string,
+    ): Node[];
+    function search(
+        engine: QueryEngineType,
+        selector: string,
+    ): (input: string) => Node[];
     function search(engine: QueryEngineType): GraspSearchWithQueryEngine;
 
-    function replace(engine: QueryEngineType, selector: string, replacement: Replacement, input: string): string;
-    function replace(engine: QueryEngineType, selector: string, replacement: Replacement): (input: string) => string;
-    function replace(engine: QueryEngineType, selector: string): GraspReplaceWithSelector;
+    function replace(
+        engine: QueryEngineType,
+        selector: string,
+        replacement: Replacement,
+        input: string,
+    ): string;
+    function replace(
+        engine: QueryEngineType,
+        selector: string,
+        replacement: Replacement,
+    ): (input: string) => string;
+    function replace(
+        engine: QueryEngineType,
+        selector: string,
+    ): GraspReplaceWithSelector;
     function replace(engine: QueryEngineType): GraspReplaceWithQueryEngine;
 
     type QueryEngineType = "squery" | "equery";
@@ -48,22 +67,29 @@ declare namespace grasp {
     type Replacement =
         | string
         | ((
-            getRaw: (node: Node) => string,
-            node: Node,
-            query: (q: string) => Node[],
-            named: { [key: string]: string | Node },
-        ) => string);
+              getRaw: (node: Node) => string,
+              node: Node,
+              query: (q: string) => Node[],
+              named: { [key: string]: string | Node },
+          ) => string);
 
-    type GraspSearchWithQueryEngine =
-        & ((selector: string, input: string) => Node[])
-        & ((selector: string) => (input: string) => Node[]);
+    type GraspSearchWithQueryEngine = ((
+        selector: string,
+        input: string,
+    ) => Node[]) &
+        ((selector: string) => (input: string) => Node[]);
 
-    type GraspReplaceWithQueryEngine =
-        & ((selector: string) => GraspReplaceWithSelector)
-        & ((selector: string, replacement: Replacement) => (input: string) => string)
-        & ((selector: string, replacement: Replacement, input: string) => string);
+    type GraspReplaceWithQueryEngine = ((
+        selector: string,
+    ) => GraspReplaceWithSelector) &
+        ((
+            selector: string,
+            replacement: Replacement,
+        ) => (input: string) => string) &
+        ((selector: string, replacement: Replacement, input: string) => string);
 
-    type GraspReplaceWithSelector =
-        & ((replacement: Replacement) => (input: string) => string)
-        & ((replacement: Replacement, input: string) => string);
+    type GraspReplaceWithSelector = ((
+        replacement: Replacement,
+    ) => (input: string) => string) &
+        ((replacement: Replacement, input: string) => string);
 }

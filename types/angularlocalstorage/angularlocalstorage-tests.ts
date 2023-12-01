@@ -3,9 +3,15 @@ interface TestScope extends ng.IScope {
 }
 
 class TestController {
-    constructor(private readonly $scope: TestScope, private readonly storage: ng.localStorage.ILocalStorageService) {
+    constructor(
+        private readonly $scope: TestScope,
+        private readonly storage: ng.localStorage.ILocalStorageService,
+    ) {
         storage.bind($scope, "varName");
-        storage.bind($scope, "varName", { defaultValue: "randomValue123", storeName: "customStoreKey" });
+        storage.bind($scope, "varName", {
+            defaultValue: "randomValue123",
+            storeName: "customStoreKey",
+        });
         $scope.viewType = "ANYTHING";
         storage.unbind($scope, "viewType");
 
@@ -15,13 +21,13 @@ class TestController {
 
         storage.clearAll();
     }
-    $onInit() {
-    }
+    $onInit() {}
 }
 
 var app = angular.module("angularLocalStorageTests", ["angularLocalStorage"]);
 app.controller("testCtrl", [
     "$scope",
     "storage",
-    ($scope: TestScope, storage: ng.localStorage.ILocalStorageService) => new TestController($scope, storage),
+    ($scope: TestScope, storage: ng.localStorage.ILocalStorageService) =>
+        new TestController($scope, storage),
 ]);

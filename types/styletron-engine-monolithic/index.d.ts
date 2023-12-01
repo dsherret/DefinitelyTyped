@@ -1,4 +1,9 @@
-import { FontFace as FontFaceObject, KeyframesObject, StandardEngine, StyleObject } from "styletron-standard";
+import {
+    FontFace as FontFaceObject,
+    KeyframesObject,
+    StandardEngine,
+    StyleObject,
+} from "styletron-standard";
 
 export interface SequentialIDGenerator {
     prefix: string;
@@ -27,7 +32,10 @@ export interface MultiCache<T> {
     getSortedCacheKeys(): string[];
 }
 
-export type HydrateType = HTMLCollectionOf<HTMLStyleElement> | HTMLStyleElement[] | NodeListOf<HTMLStyleElement>;
+export type HydrateType =
+    | HTMLCollectionOf<HTMLStyleElement>
+    | HTMLStyleElement[]
+    | NodeListOf<HTMLStyleElement>;
 export interface Sheet {
     css: string;
     attrs: { [key: string]: string };

@@ -6,7 +6,12 @@ const userInfo = {
     state: "State/Province",
     zip: "postal/zip",
 };
-const licenseData = { info: userInfo, prodCode: "LEN100120", appVersion: "1.5", osType: "IOS8" };
+const licenseData = {
+    info: userInfo,
+    prodCode: "LEN100120",
+    appVersion: "1.5",
+    osType: "IOS8",
+};
 try {
     license.createLicense(licenseData);
 } catch {}

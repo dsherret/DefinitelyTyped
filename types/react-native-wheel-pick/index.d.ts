@@ -10,11 +10,13 @@ export interface DatePickerIOSProps extends ViewProps {
 }
 
 export interface DatePickerAndroidProps extends ViewProps {
-    labelUnit?: {
-        year?: string | undefined;
-        month?: string[] | undefined;
-        date?: string | undefined;
-    } | undefined;
+    labelUnit?:
+        | {
+              year?: string | undefined;
+              month?: string[] | undefined;
+              date?: string | undefined;
+          }
+        | undefined;
     order?: string | undefined;
     date?: Date | undefined;
     maximumDate?: Date | undefined;
@@ -27,7 +29,9 @@ export interface DatePickerAndroidProps extends ViewProps {
     itemSpace?: number | undefined;
 }
 
-export interface DatePickerProps extends DatePickerAndroidProps, DatePickerIOSProps {
+export interface DatePickerProps
+    extends DatePickerAndroidProps,
+        DatePickerIOSProps {
     date?: Date | undefined;
     maximumDate?: Date | undefined;
     minimumDate?: Date | undefined;

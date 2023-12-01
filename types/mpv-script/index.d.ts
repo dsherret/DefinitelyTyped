@@ -1,5 +1,12 @@
 declare namespace mp {
-    type LogLevel = "fatal" | "error" | "warn" | "info" | "v" | "debug" | "trace";
+    type LogLevel =
+        | "fatal"
+        | "error"
+        | "warn"
+        | "info"
+        | "v"
+        | "debug"
+        | "trace";
 
     interface AddKeyBindingFlags {
         repeatable?: boolean | undefined;
@@ -43,7 +50,11 @@ declare namespace mp {
 
     function command_native_async(
         table: unknown,
-        fn?: (success: boolean, result: unknown, error: string | undefined) => void,
+        fn?: (
+            success: boolean,
+            result: unknown,
+            error: string | undefined,
+        ) => void,
     ): unknown;
 
     function abort_async_command(t: unknown): void;
@@ -54,10 +65,16 @@ declare namespace mp {
     function get_property_osd(name: string, def?: string): string;
 
     function get_property_bool(name: string, def: boolean): boolean;
-    function get_property_bool(name: string, def?: boolean): boolean | undefined;
+    function get_property_bool(
+        name: string,
+        def?: boolean,
+    ): boolean | undefined;
 
     function get_property_number(name: string, def: number): number;
-    function get_property_number(name: string, def?: number): number | undefined;
+    function get_property_number(
+        name: string,
+        def?: number,
+    ): number | undefined;
 
     function get_property_native(name: string, def?: unknown): unknown;
 
@@ -67,22 +84,46 @@ declare namespace mp {
 
     function set_property_number(name: string, value: number): true | undefined;
 
-    function set_property_native(name: string, value: unknown): true | undefined;
+    function set_property_native(
+        name: string,
+        value: unknown,
+    ): true | undefined;
 
     function get_time(): number;
 
-    function add_key_binding(key: string, name?: string, fn?: () => void, flags?: AddKeyBindingFlags): void;
+    function add_key_binding(
+        key: string,
+        name?: string,
+        fn?: () => void,
+        flags?: AddKeyBindingFlags,
+    ): void;
 
-    function add_forced_key_binding(key: string, name?: string, fn?: () => void, flags?: AddKeyBindingFlags): void;
+    function add_forced_key_binding(
+        key: string,
+        name?: string,
+        fn?: () => void,
+        flags?: AddKeyBindingFlags,
+    ): void;
 
     function remove_key_binding(name: string): void;
 
-    function register_event(name: string, fn: (event: Record<string, unknown>) => void): void;
+    function register_event(
+        name: string,
+        fn: (event: Record<string, unknown>) => void,
+    ): void;
 
     function unregister_event(fn: (...args: unknown[]) => void): void;
 
-    function observe_property(name: string, type: "native", fn: (name: string, value: unknown) => void): void;
-    function observe_property(name: string, type: "bool", fn: (name: string, value: boolean | undefined) => void): void;
+    function observe_property(
+        name: string,
+        type: "native",
+        fn: (name: string, value: unknown) => void,
+    ): void;
+    function observe_property(
+        name: string,
+        type: "bool",
+        fn: (name: string, value: boolean | undefined) => void,
+    ): void;
     function observe_property(
         name: string,
         type: "string",
@@ -93,7 +134,11 @@ declare namespace mp {
         type: "number",
         fn: (name: string, value: number | undefined) => void,
     ): void;
-    function observe_property(name: string, type: "none" | undefined, fn: (name: string) => void): void;
+    function observe_property(
+        name: string,
+        type: "none" | undefined,
+        fn: (name: string) => void,
+    ): void;
 
     function unobserve_property(fn: (...args: unknown[]) => void): void;
 
@@ -109,7 +154,10 @@ declare namespace mp {
 
     function enable_messages(level: LogLevel): void;
 
-    function register_script_message(name: string, fn: (...args: unknown[]) => void): void;
+    function register_script_message(
+        name: string,
+        fn: (...args: unknown[]) => void,
+    ): void;
 
     function unregister_script_message(name: string): void;
 
@@ -156,7 +204,10 @@ declare namespace mp {
     namespace utils {
         function getcwd(): string | undefined;
 
-        function readdir(path: string, filter?: "files" | "dirs" | "normal" | "all"): string[] | undefined;
+        function readdir(
+            path: string,
+            filter?: "files" | "dirs" | "normal" | "all",
+        ): string[] | undefined;
 
         function file_info(path: string): FileInfo | undefined;
 
@@ -174,7 +225,10 @@ declare namespace mp {
 
         function write_file(fname: string, str: string): void;
 
-        function compile_js(fname: string, content_str: string): (...args: unknown[]) => unknown;
+        function compile_js(
+            fname: string,
+            content_str: string,
+        ): (...args: unknown[]) => unknown;
     }
 }
 

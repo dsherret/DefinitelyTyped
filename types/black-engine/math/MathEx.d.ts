@@ -5,7 +5,13 @@ export class MathEx {
     static distance(x1: number, y1: number, x2: number, y2: number): number;
     static distanceSqr(x1: number, y1: number, x2: number, y2: number): number;
     static angleBetween(x1: number, y1: number, x2: number, y2: number): number;
-    static mapRange(value: number, fromA: number, fromB: number, toA: number, toB: number): number;
+    static mapRange(
+        value: number,
+        fromA: number,
+        fromB: number,
+        toA: number,
+        toB: number,
+    ): number;
     static lerp(a: number, b: number, t: number): number;
     static equals(a: number, b: number, epsilon?: number): boolean;
 }

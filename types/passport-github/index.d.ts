@@ -99,7 +99,10 @@ declare namespace Strategy {
 
     type OAuth2StrategyOptionsWithoutRequiredURLs = Pick<
         oauth2._StrategyOptionsBase,
-        Exclude<keyof oauth2._StrategyOptionsBase, "authorizationURL" | "tokenURL">
+        Exclude<
+            keyof oauth2._StrategyOptionsBase,
+            "authorizationURL" | "tokenURL"
+        >
     >;
 }
 

@@ -115,7 +115,10 @@ export const socketProtocolIgnoreStatuses: SocketProtocolIgnoreStatuses;
  * Convert an error into a JSON-compatible type which can later be hydrated
  * back to its *original* form.
  */
-export function dehydrateError(error: any, includeStackTrace?: boolean): DehydratedError;
+export function dehydrateError(
+    error: any,
+    includeStackTrace?: boolean,
+): DehydratedError;
 
 /**
  * Convert a dehydrated error back to its *original* form.

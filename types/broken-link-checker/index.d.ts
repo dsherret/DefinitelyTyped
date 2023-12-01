@@ -49,7 +49,9 @@ export class HtmlUrlChecker {
             html?: ((tree: any, robots: any) => void) | undefined;
             junk?: ((result: any) => void) | undefined;
             link?: ((result: any) => void) | undefined;
-            page?: ((error: any, pageUrl: any, customData: any) => void) | undefined;
+            page?:
+                | ((error: any, pageUrl: any, customData: any) => void)
+                | undefined;
             end?: (() => void) | undefined;
         },
     );
@@ -79,8 +81,12 @@ export class SiteChecker {
             html?: ((tree: any, robots: any) => void) | undefined;
             junk?: ((result: any) => void) | undefined;
             link?: ((result: any) => void) | undefined;
-            page?: ((error: any, pageUrl: any, customData: any) => void) | undefined;
-            site?: ((error: any, siteUrl: any, customData: any) => void) | undefined;
+            page?:
+                | ((error: any, pageUrl: any, customData: any) => void)
+                | undefined;
+            site?:
+                | ((error: any, siteUrl: any, customData: any) => void)
+                | undefined;
             end?: (() => void) | undefined;
         },
     );

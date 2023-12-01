@@ -76,6 +76,8 @@ declare function ON_DEATH(options: {
     SIGTERM?: boolean | undefined;
     SIGQUIT?: boolean | undefined;
     uncaughtException: true;
-}): (callback: (signalOrErr: Signal | Error, origin?: string) => void) => () => void;
+}): (
+    callback: (signalOrErr: Signal | Error, origin?: string) => void,
+) => () => void;
 
 export = ON_DEATH;

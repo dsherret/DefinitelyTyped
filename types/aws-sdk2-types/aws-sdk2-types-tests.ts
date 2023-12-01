@@ -9,7 +9,11 @@ function dyn(u: AWS.DynamoDB.Update, doc: AWS.DynamoDB.DocumentClient) {
     if (u?.ExpressionAttributeNames) {
         u.ExpressionAttributeNames["#n"] = "name";
     }
-    doc.batchWrite({ RequestItems: { table: [{ PutRequest: { Item: { name: "Copilot" } } }] } });
+    doc.batchWrite({
+        RequestItems: {
+            table: [{ PutRequest: { Item: { name: "Copilot" } } }],
+        },
+    });
 }
 function s3(loc: AWS.S3.S3Location) {
     return loc.StorageClass === "STANDARD";

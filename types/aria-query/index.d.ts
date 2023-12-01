@@ -18,9 +18,15 @@ export interface DOMDefinition {
     interactive?: boolean | undefined;
 }
 export const dom: MapLike<string, DOMDefinition>;
-export const elementRoles: MapLike<ARIARoleRelationConcept, Set<ARIARoleDefinitionKey>>;
+export const elementRoles: MapLike<
+    ARIARoleRelationConcept,
+    Set<ARIARoleDefinitionKey>
+>;
 export const roles: MapLike<ARIARoleDefinitionKey, ARIARoleDefinition>;
-export const roleElements: MapLike<ARIARoleDefinitionKey, Set<ARIARoleRelationConcept>>;
+export const roleElements: MapLike<
+    ARIARoleDefinitionKey,
+    Set<ARIARoleRelationConcept>
+>;
 
 // types
 export type ARIAAbstractRole =
@@ -119,7 +125,12 @@ export type ARIALandmarkRole =
     | "region"
     | "search";
 
-export type ARIALiveRegionRole = "alert" | "log" | "marquee" | "status" | "timer";
+export type ARIALiveRegionRole =
+    | "alert"
+    | "log"
+    | "marquee"
+    | "status"
+    | "timer";
 
 export type ARIAWindowRole = "alertdialog" | "dialog";
 
@@ -304,12 +315,30 @@ export interface ARIAPropertyMap {
 }
 
 export interface ARIAPropertyDefinition {
-    type: "string" | "id" | "idlist" | "integer" | "number" | "boolean" | "token" | "tokenlist" | "tristate";
+    type:
+        | "string"
+        | "id"
+        | "idlist"
+        | "integer"
+        | "number"
+        | "boolean"
+        | "token"
+        | "tokenlist"
+        | "tristate";
     values?: Array<string | boolean> | undefined;
     allowundefined?: boolean | undefined;
 }
 
-export type ARIAPropertyCurrent = "page" | "step" | "location" | "date" | "time" | "true" | "false" | true | false;
+export type ARIAPropertyCurrent =
+    | "page"
+    | "step"
+    | "location"
+    | "date"
+    | "time"
+    | "true"
+    | "false"
+    | true
+    | false;
 
 export interface ARIARoleRelation {
     module?: string | undefined;
@@ -326,11 +355,11 @@ export interface ARIARoleRelationConcept {
     // https://www.w3.org/TR/html-aria
     constraints?:
         | Array<
-            | "direct descendant of document"
-            | "direct descendant of ol, ul or menu"
-            | "direct descendant of details element with the open attribute defined"
-            | "descendant of table"
-        >
+              | "direct descendant of document"
+              | "direct descendant of ol, ul or menu"
+              | "direct descendant of details element with the open attribute defined"
+              | "descendant of table"
+          >
         | undefined;
 }
 

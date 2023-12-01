@@ -59,12 +59,31 @@ declare module "angular" {
             error(title: string, content: string, userData: any): INotification;
             success(title: string): INotification;
             success(title: string, content: string): INotification;
-            success(title: string, content: string, userData: any): INotification;
+            success(
+                title: string,
+                content: string,
+                userData: any,
+            ): INotification;
             warning(title: string): INotification;
             warning(title: string, content: string): INotification;
-            warning(title: string, content: string, userData: any): INotification;
-            awesomeNotify(type: string, icon: string, title: string, content: string, userData: any): INotification;
-            notify(image: string, title: string, content: string, userData: any): INotification;
+            warning(
+                title: string,
+                content: string,
+                userData: any,
+            ): INotification;
+            awesomeNotify(
+                type: string,
+                icon: string,
+                title: string,
+                content: string,
+                userData: any,
+            ): INotification;
+            notify(
+                image: string,
+                title: string,
+                content: string,
+                userData: any,
+            ): INotification;
             makeNotification(
                 type: string,
                 image: string,

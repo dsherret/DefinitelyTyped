@@ -14,7 +14,7 @@ declare namespace go {
     type PropertyAccessor = string | ((data: any, newval: any) => any);
 
     /** A constructor */
-    type Constructor = new(...args: any[]) => Object;
+    type Constructor = new (...args: any[]) => Object;
 
     /**
      * An adornment is a special kind of Part that is associated with another Part,
@@ -718,7 +718,10 @@ declare namespace go {
          * @param {string} name the name is normally capitalized, but this method uses case-insensitive comparison.
          * @param {function(DiagramEvent)} listener a function that takes a DiagramEvent as its argument.
          */
-        addDiagramListener(name: string, listener: (e: DiagramEvent) => void): void;
+        addDiagramListener(
+            name: string,
+            listener: (e: DiagramEvent) => void,
+        ): void;
 
         /**
          * Register an event handler that is called when there is a ChangedEvent for the Diagram's Model.
@@ -1063,7 +1066,9 @@ declare namespace go {
             showTemporary?: boolean | undefined;
             showGrid?: boolean | undefined;
             document?: Document | undefined;
-            elementFinished?: ((obj: GraphObject, elt: SVGElement) => void) | undefined;
+            elementFinished?:
+                | ((obj: GraphObject, elt: SVGElement) => void)
+                | undefined;
         }): SVGElement;
 
         /**
@@ -1096,7 +1101,10 @@ declare namespace go {
          * @param {string} name the name is normally capitalized, but this method uses case-insensitive comparison.
          * @param {function(DiagramEvent)} listener a function that takes a DiagramEvent as its argument.
          */
-        removeDiagramListener(name: string, listener: (e: DiagramEvent) => void): void;
+        removeDiagramListener(
+            name: string,
+            listener: (e: DiagramEvent) => void,
+        ): void;
 
         /**
          * Unregister an event handler listener for the Diagram's Model.
@@ -1255,8 +1263,17 @@ declare namespace go {
         setInputOption(name: string, val: any): void; // undocumented
         maybeUpdate(): void; // undocumented
         reset(): void; // undocumented
-        simulatedMouseMove(e: Event, modelpt: Point, overdiag?: Diagram): boolean; // undocumented
-        simulatedMouseUp(e: Event, other: Diagram, modelpt: Point, curdiag?: Diagram): boolean; // undocumented
+        simulatedMouseMove(
+            e: Event,
+            modelpt: Point,
+            overdiag?: Diagram,
+        ): boolean; // undocumented
+        simulatedMouseUp(
+            e: Event,
+            other: Diagram,
+            modelpt: Point,
+            curdiag?: Diagram,
+        ): boolean; // undocumented
     }
 
     /**
@@ -1409,16 +1426,28 @@ declare namespace go {
         minSize: Size;
 
         /**Gets or sets the function to execute when the user moves the mouse into this stationary object during a DraggingTool drag.*/
-        mouseDragEnter: (e: InputEvent, obj: GraphObject, prev: GraphObject) => void;
+        mouseDragEnter: (
+            e: InputEvent,
+            obj: GraphObject,
+            prev: GraphObject,
+        ) => void;
 
         /**Gets or sets the function to execute when the user moves the mouse out of this stationary object during a DraggingTool drag.*/
-        mouseDragLeave: (e: InputEvent, obj: GraphObject, prev: GraphObject) => void;
+        mouseDragLeave: (
+            e: InputEvent,
+            obj: GraphObject,
+            prev: GraphObject,
+        ) => void;
 
         /**Gets or sets the function to execute when a user drops the selection on this object at the end of a DraggingTool drag.*/
         mouseDrop: (e: InputEvent, obj: GraphObject) => void;
 
         /**Gets or sets the function to execute when the user moves the mouse into this object without holding down any buttons.*/
-        mouseEnter: (e: InputEvent, obj: GraphObject, prev: GraphObject) => void;
+        mouseEnter: (
+            e: InputEvent,
+            obj: GraphObject,
+            prev: GraphObject,
+        ) => void;
 
         /**Gets or sets the function to execute when the user holds the mouse stationary in the background of the diagram while holding down a button over this object.*/
         mouseHold: (e: InputEvent, obj: GraphObject) => void;
@@ -1427,7 +1456,11 @@ declare namespace go {
         mouseHover: (e: InputEvent, obj: GraphObject) => void;
 
         /**Gets or sets the function to execute when the user moves the mouse into this object without holding down any buttons.*/
-        mouseLeave: (e: InputEvent, obj: GraphObject, prev: GraphObject) => void;
+        mouseLeave: (
+            e: InputEvent,
+            obj: GraphObject,
+            prev: GraphObject,
+        ) => void;
 
         /**Gets or sets the function to execute when the user moves the mouse over this object without holding down any buttons.*/
         mouseOver: (e: InputEvent, obj: GraphObject) => void;
@@ -1542,7 +1575,11 @@ declare namespace go {
          *        the default predicate checks whether the argument is a string
          * @return {*}
          */
-        static takeBuilderArgument(args: any[], defval?: any, pred?: (arg: any) => boolean): any;
+        static takeBuilderArgument(
+            args: any[],
+            defval?: any,
+            pred?: (arg: any) => boolean,
+        ): any;
 
         /**
          * Returns the effective angle that the object is drawn at, in document coordinates.
@@ -1623,7 +1660,11 @@ declare namespace go {
         /**GraphObjects with this as the value of GraphObject.stretch are scaled as much as possible in the y-axis*/
         static Vertical: EnumValue;
 
-        spanAllocation: (obj: GraphObject, r: RowColumnDefinition, n: number) => number; // undocumented
+        spanAllocation: (
+            obj: GraphObject,
+            r: RowColumnDefinition,
+            n: number,
+        ) => number; // undocumented
         protected cloneProtected(copy: GraphObject): void; // undocumented
         static getBuilders(): Map<string, (args: any[]) => Object>; // undocumented
     }
@@ -2181,14 +2222,22 @@ declare namespace go {
          * If the value is <code>NaN</code>, this will return the fromPort's GraphObject.fromEndSegmentLength
          * or the toPort's GraphObject.toEndSegmentLength.
          */
-        protected computeEndSegmentLength(node: Node, port: GraphObject, spot: Spot, from: boolean): number;
+        protected computeEndSegmentLength(
+            node: Node,
+            port: GraphObject,
+            spot: Spot,
+            from: boolean,
+        ): number;
 
         /**
          * Find the approximate point of the other end of the link.
          * This is useful when computing the connection point when there is no specific spot, to have an idea of which general direction the link should be going.
          * By default this will return the center of the other port.
          */
-        protected computeOtherPoint(othernode: Node, otherport: GraphObject): Point;
+        protected computeOtherPoint(
+            othernode: Node,
+            otherport: GraphObject,
+        ): Point;
 
         /**
          * The code that constructs a new route by modifying the points.
@@ -2435,7 +2484,13 @@ declare namespace go {
         linkDisconnected: (a: Node, b: Link, c: GraphObject) => void;
 
         /**Gets or sets a predicate that determines whether or not a Link may be connected with this node; any of the arguments may be null.*/
-        linkValidation: (from: Node, fromPort: GraphObject, to: Node, toPort: GraphObject, link: Link) => boolean;
+        linkValidation: (
+            from: Node,
+            fromPort: GraphObject,
+            to: Node,
+            toPort: GraphObject,
+            link: Link,
+        ) => boolean;
 
         /**This read-only property returns an iterator over all of the Links that are connected with this node.*/
         linksConnected: Iterator<Link>;
@@ -2476,7 +2531,11 @@ declare namespace go {
          * @param {string|null=} pid A port identifier string; if null the link's portId is ignored and all links are included in the search.
          * @param {string|null=} otherpid A port identifier string; if null the link's portId is ignored and all links are included in the search.
          */
-        findLinksBetween(othernode: Node, pid?: string, otherpid?: string): Iterator<Link>;
+        findLinksBetween(
+            othernode: Node,
+            pid?: string,
+            otherpid?: string,
+        ): Iterator<Link>;
 
         /**
          * Returns an iterator over all of the Links that connect with this node in either direction, perhaps limited to the given port id on this node.
@@ -2502,7 +2561,11 @@ declare namespace go {
          * @param {string|null=} pid A port identifier string; if null the link's portId is ignored and all links are included in the search.
          * @param {string|null=} otherpid A port identifier string; if null the link's portId is ignored and all links are included in the search.
          */
-        findLinksTo(othernode: Node, pid?: string, otherpid?: string): Iterator<Link>;
+        findLinksTo(
+            othernode: Node,
+            pid?: string,
+            otherpid?: string,
+        ): Iterator<Link>;
 
         /**
          * Returns an iterator over the Nodes that are connected with this node in either direction, perhaps limited to the given port id on this node.
@@ -2596,7 +2659,11 @@ declare namespace go {
         canAvoid(): boolean; // undocumented
         findVisibleNode(): Node; // undocumented
         getAvoidableRect(result: Rect): Rect; // undocumented
-        invalidateLinkBundle(other: Node, thisportid?: string, otherportid?: string): void; // undocumented
+        invalidateLinkBundle(
+            other: Node,
+            thisportid?: string,
+            otherportid?: string,
+        ): void; // undocumented
         invalidateConnectedLinks(): void; // undocumented
     }
 
@@ -2896,7 +2963,11 @@ declare namespace go {
         containingGroup: Group;
 
         /**Gets or sets the function that is called after this Part has changed which Group it belongs to, if any.*/
-        containingGroupChanged: (member: Part, oldgrp: Group, newgrp: Group) => void;
+        containingGroupChanged: (
+            member: Part,
+            oldgrp: Group,
+            newgrp: Group,
+        ) => void;
 
         /**Gets or sets whether the user may copy this part.*/
         copyable: boolean;
@@ -3434,7 +3505,10 @@ declare namespace go {
          * This static function returns a read-only Map of named geometry generators.
          * @return {Map} the keys are figure names; the values are either synonymed names or generator functions
          */
-        static getFigureGenerators(): Map<string, (shape: Shape, width: number, height: number) => Geometry>;
+        static getFigureGenerators(): Map<
+            string,
+            (shape: Shape, width: number, height: number) => Geometry
+        >;
 
         /**
          * This static function defines a named figure geometry generator for Shapes.
@@ -3485,7 +3559,11 @@ declare namespace go {
         editable: boolean;
 
         /**Gets or sets the function to call if a text edit made with the TextEditingTool is invalid.*/
-        errorFunction: (tool: TextEditingTool, oldstr: string, newstr: string) => void;
+        errorFunction: (
+            tool: TextEditingTool,
+            oldstr: string,
+            newstr: string,
+        ) => void;
 
         /**Gets or sets the current font settings.*/
         font: string;
@@ -3524,7 +3602,11 @@ declare namespace go {
         textEditor: HTMLElement;
 
         /**Gets or sets the predicate that determines whether or not a string of text is valid.*/
-        textValidation: (tb: TextBlock, oldstr: string, newstr: string) => boolean;
+        textValidation: (
+            tb: TextBlock,
+            oldstr: string,
+            newstr: string,
+        ) => boolean;
 
         /**Gets or sets whether the text should be wrapped if it is too long to fit on one line.*/
         wrap: EnumValue;
@@ -3886,7 +3968,12 @@ declare namespace go {
          * @param {boolean=} filled optional: whether the figure is filled (default is true).
          * @param {boolean=} shadowed optional: whether the figure may be drawn with a shadow (default is true).
          */
-        constructor(sx?: number, sy?: number, filled?: boolean, shadowed?: boolean);
+        constructor(
+            sx?: number,
+            sy?: number,
+            filled?: boolean,
+            shadowed?: boolean,
+        );
 
         /**Gets or sets whether this PathFigure is drawn filled.*/
         isFilled: boolean;
@@ -4071,7 +4158,12 @@ declare namespace go {
          * @param {number} qx
          * @param {number} qy
          */
-        static direction(px: number, py: number, qx: number, qy: number): number;
+        static direction(
+            px: number,
+            py: number,
+            qx: number,
+            qy: number,
+        ): number;
 
         /**
          * Compute the angle from this Point to a given (px,py) point.
@@ -4121,7 +4213,12 @@ declare namespace go {
          * @param {number} qx
          * @param {number} qy
          */
-        static distanceSquared(px: number, py: number, qx: number, qy: number): number;
+        static distanceSquared(
+            px: number,
+            py: number,
+            qx: number,
+            qy: number,
+        ): number;
 
         /**
          * Returns the square of the distance from this Point to a given Point.
@@ -4175,7 +4272,12 @@ declare namespace go {
          * @param {number} qx
          * @param {number} qy
          */
-        projectOntoLineSegment(px: number, py: number, qx: number, qy: number): Point;
+        projectOntoLineSegment(
+            px: number,
+            py: number,
+            qx: number,
+            qy: number,
+        ): Point;
 
         /**
          * Modify this point to be the closest point to this point that is on a finite line segment given by P and Q.
@@ -4239,7 +4341,12 @@ declare namespace go {
          * @param {number} cellwidth
          * @param {number} cellheight
          */
-        snapToGrid(originx: number, originy: number, cellwidth: number, cellheight: number): Point;
+        snapToGrid(
+            originx: number,
+            originy: number,
+            cellwidth: number,
+            cellheight: number,
+        ): Point;
 
         /**
          * Modify this point to be at the nearest point on an infinite grid,
@@ -4885,7 +4992,11 @@ declare namespace go {
          * @param {function(*,*=) | null=} conv A function converting the data property value to the value to set the target property.
          *   If the function is null or not supplied, no conversion takes place.
          */
-        constructor(targetprop?: string, sourceprop?: string, conv?: (a: any, b: any) => any);
+        constructor(
+            targetprop?: string,
+            sourceprop?: string,
+            conv?: (a: any, b: any) => any,
+        );
 
         /**
          * Gets or sets a converter function to apply to the GraphObject property value
@@ -4993,7 +5104,10 @@ declare namespace go {
          * @param {function()} ctor the class constructor that defines the enumerated values that are being parsed.
          * @param {EnumValue} defval the default enumerated value to return if it fails to parse the given string.
          */
-        static parseEnum(ctor: Constructor, defval: EnumValue): (a: string) => EnumValue;
+        static parseEnum(
+            ctor: Constructor,
+            defval: EnumValue,
+        ): (a: string) => EnumValue;
 
         /**
          * This static function can be used to convert an object to a string,
@@ -6246,12 +6360,12 @@ declare namespace go {
         static Reverse: EnumValue;
     }
 
-    class CircularNetwork extends LayoutNetwork { // undocumented
+    class CircularNetwork extends LayoutNetwork {
+        // undocumented
     }
 
     /** This holds CircularLayout-specific information about Links.*/
-    class CircularEdge extends LayoutEdge {
-    }
+    class CircularEdge extends LayoutEdge {}
 
     /** This holds CircularLayout-specific information about Nodes.*/
     class CircularVertex extends LayoutVertex {
@@ -6441,7 +6555,8 @@ declare namespace go {
         springStiffness(e: ForceDirectedEdge): number;
     }
 
-    class ForceDirectedNetwork extends LayoutNetwork { // undocumented
+    class ForceDirectedNetwork extends LayoutNetwork {
+        // undocumented
     }
 
     /** This holds ForceDirectedLayout-specific information about Links.*/
@@ -6683,11 +6798,18 @@ declare namespace go {
         static PackStraighten: number;
 
         linkSpacing: number; // undocumented
-        protected nodeMinLayerSpace(v: LayeredDigraphVertex, tl: boolean): number; // undocumented
-        protected nodeMinColumnSpace(v: LayeredDigraphVertex, tl: boolean): number; // undocumented
+        protected nodeMinLayerSpace(
+            v: LayeredDigraphVertex,
+            tl: boolean,
+        ): number; // undocumented
+        protected nodeMinColumnSpace(
+            v: LayeredDigraphVertex,
+            tl: boolean,
+        ): number; // undocumented
     }
 
-    class LayeredDigraphNetwork extends LayoutNetwork { // undocumented
+    class LayeredDigraphNetwork extends LayoutNetwork {
+        // undocumented
     }
 
     /** This holds LayeredDigraphLayout-specific information about Link s.*/
@@ -6866,7 +6988,11 @@ declare namespace go {
          *        if it returns false do not include Vertex or Edge in the network for that Part;
          *        default ignores link label nodes or links connecting with them
          */
-        addParts(parts: Iterable<Part>, toplevelonly?: boolean, pred?: (part: Part) => boolean): void;
+        addParts(
+            parts: Iterable<Part>,
+            toplevelonly?: boolean,
+            pred?: (part: Part) => boolean,
+        ): void;
 
         /**
          * Adds a LayoutVertex to the network.
@@ -6941,7 +7067,11 @@ declare namespace go {
          * @param {LayoutVertex} toVertex
          * @param {Link} link
          */
-        linkVertexes(fromVertex: LayoutVertex, toVertex: LayoutVertex, link: Link): LayoutEdge;
+        linkVertexes(
+            fromVertex: LayoutVertex,
+            toVertex: LayoutVertex,
+            link: Link,
+        ): LayoutEdge;
 
         /**
          * Reverses the direction of a LayoutEdge in the network.
@@ -7395,7 +7525,8 @@ declare namespace go {
         static StyleRootOnly: EnumValue;
     }
 
-    class TreeNetwork extends LayoutNetwork { // undocumented
+    class TreeNetwork extends LayoutNetwork {
+        // undocumented
     }
 
     /** This holds TreeLayout-specific information about Links.*/
@@ -7683,7 +7814,8 @@ declare namespace go {
     /**
      * This helper structure for DraggingTool holds the original location Point.
      */
-    interface DraggingInfo { // undocumented
+    interface DraggingInfo {
+        // undocumented
         point: Point;
     }
 
@@ -7750,7 +7882,9 @@ declare namespace go {
          * Find the actual collection of nodes and links to be moved or copied, given an initial collection.
          * @param {Iterable<Part>} parts A Set or List of Parts.
          */
-        computeEffectiveCollection(parts: Iterable<Part>): Map<Part, DraggingInfo>;
+        computeEffectiveCollection(
+            parts: Iterable<Part>,
+        ): Map<Part, DraggingInfo>;
 
         /**
          * This method computes the new location for a Node or simple Part, given a new desired location and an optional Map of dragged parts, taking any grid-snapping into consideration, any Part.dragComputation function, and any Part.minLocation and Part.maxLocation.
@@ -7759,7 +7893,12 @@ declare namespace go {
          * @param {Map=} draggedparts  an optional Map mapping Parts to JavaScript Objects that have a "point" property remembering the original location of that Part.
          * @param {Point=} result  an optional Point that is modified and returned
          */
-        computeMove(n: Part, newloc: Point, draggedparts?: Map<Part, DraggingInfo>, result?: Point): Point;
+        computeMove(
+            n: Part,
+            newloc: Point,
+            draggedparts?: Map<Part, DraggingInfo>,
+            result?: Point,
+        ): Point;
 
         /**
          * Start the dragging operation.
@@ -7839,7 +7978,11 @@ declare namespace go {
         * @param {Point} offset
         * @param {boolean} check  Whether to check Part.canMove on each part.
         */
-        moveParts(parts: Map<Part, DraggingInfo>, offset: Point, check: boolean): void;
+        moveParts(
+            parts: Map<Part, DraggingInfo>,
+            offset: Point,
+            check: boolean,
+        ): void;
 
         /**
          * This override prevents the Control modifier unselecting an already selected part.
@@ -8058,7 +8201,12 @@ declare namespace go {
          * If .linkValidation is a predicate and if it returns false, this predicate returns false.
          * Otherwise this predicate is true.
          */
-        isValidLink(fromnode: Node, fromport: GraphObject, tonode: Node, toport: GraphObject): boolean;
+        isValidLink(
+            fromnode: Node,
+            fromport: GraphObject,
+            tonode: Node,
+            toport: GraphObject,
+        ): boolean;
 
         /**
          * This predicate is true if it is permissible to connect a link to a given node/port.
@@ -8077,7 +8225,11 @@ declare namespace go {
          * @param {GraphObject} tempport
          * @param {boolean} toend
          */
-        setNoTargetPortProperties(tempnode: Node, tempport: GraphObject, toend: boolean): void;
+        setNoTargetPortProperties(
+            tempnode: Node,
+            tempport: GraphObject,
+            toend: boolean,
+        ): void;
     }
 
     /** */
@@ -8131,7 +8283,12 @@ declare namespace go {
          * @param {Node} tonode
          * @param {GraphObject} toport
          */
-        insertLink(fromnode: Node, fromport: GraphObject, tonode: Node, toport: GraphObject): Link;
+        insertLink(
+            fromnode: Node,
+            fromport: GraphObject,
+            tonode: Node,
+            toport: GraphObject,
+        ): Link;
 
         /**This value for LinkingTool.direction indicates that users may draw new links backwards only.*/
         static BackwardsOnly: EnumValue;
@@ -8348,7 +8505,12 @@ declare namespace go {
          * @param {GraphObject} newport the GraphObject port to connect to or from.
          * @param {boolean} toend If true, this modifies the link's "to" node and port; otherwise it modifies the "from" node and port.
          */
-        reconnectLink(existinglink: Link, newnode: Node, newport: GraphObject, toend: boolean): boolean;
+        reconnectLink(
+            existinglink: Link,
+            newnode: Node,
+            newport: GraphObject,
+            toend: boolean,
+        ): boolean;
 
         /**
          * Show an Adornment for each end of the Link that the user may reconnect.
@@ -8424,7 +8586,14 @@ declare namespace go {
          * @param {Size} cell the result of the call to .computeCellSize.
          * @param {boolean} reshape true if the new size may change the aspect ratio from that of the natural bounds of the .adornedObject.
          */
-        computeResize(newPoint: Point, spot: Spot, min: Size, max: Size, cell: Size, reshape: boolean): Rect;
+        computeResize(
+            newPoint: Point,
+            spot: Spot,
+            min: Size,
+            max: Size,
+            cell: Size,
+            reshape: boolean,
+        ): Rect;
 
         /**
          * Capture the mouse, remember the object's original bounds, and start a transaction.\
@@ -8567,7 +8736,11 @@ declare namespace go {
         textBlock: TextBlock;
 
         /**Gets or sets the predicate that determines whether or not a string of text is valid.*/
-        textValidation: (tb: TextBlock, oldstr: string, newstr: string) => boolean;
+        textValidation: (
+            tb: TextBlock,
+            oldstr: string,
+            newstr: string,
+        ) => boolean;
 
         /**
          * Finish editing by trying to accept the new text.
@@ -8617,7 +8790,11 @@ declare namespace go {
          * @param {string} oldstr the previous string value.
          * @param {string} newstr the proposed new string value.
          */
-        isValidText(textblock: TextBlock, oldstr: string, newstr: string): boolean;
+        isValidText(
+            textblock: TextBlock,
+            oldstr: string,
+            newstr: string,
+        ): boolean;
 
         /**The user has typed ENTER.*/
         static Enter: EnumValue;
@@ -8758,7 +8935,10 @@ declare namespace go {
          * function to find target objects.
          * @param {function(GraphObject):boolean | null=} pred An optional custom predicate
          */
-        standardMouseClick(navig?: (obj: GraphObject) => GraphObject, pred?: (obj: GraphObject) => boolean): void;
+        standardMouseClick(
+            navig?: (obj: GraphObject) => GraphObject,
+            pred?: (obj: GraphObject) => boolean,
+        ): void;
 
         /**
          * Implement the standard behavior for mouse enter, over, and leave events, where the mouse is moving but no button is pressed.
@@ -9273,7 +9453,8 @@ declare namespace go {
     /**
      * This is a structure used by Map to hold key-value pairs.
      */
-    interface KeyValuePair<K, V> { // undocumented
+    interface KeyValuePair<K, V> {
+        // undocumented
         key: K;
         value: V;
     }
@@ -9335,7 +9516,9 @@ declare namespace go {
          * Adds all of the key-value pairs of another Map to this Map.
          * @param {Iterable.<KeyValuePair.<K,V>>|Array} coll
          */
-        addAll(coll: Iterable<KeyValuePair<K, V>> | Array<KeyValuePair<K, V>>): Map<K, V>;
+        addAll(
+            coll: Iterable<KeyValuePair<K, V>> | Array<KeyValuePair<K, V>>,
+        ): Map<K, V>;
 
         /**
          * This is true if all invocations of the given predicate on key-value pairs in the collection are true.
@@ -9601,7 +9784,8 @@ declare namespace go {
         toList(): List<T>;
     }
 
-    class EnumValue { // undocumented
+    class EnumValue {
+        // undocumented
         // Rawr!
     }
 } // END go

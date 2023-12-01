@@ -18,14 +18,15 @@ const SelectInput: React.FunctionComponent<SelectInputComponentProps> = ({
 }) => (
     <input
         type="checkbox"
-        onClick={e => onClick(id, e.shiftKey, row)}
+        onClick={(e) => onClick(id, e.shiftKey, row)}
         checked={checked}
     />
 );
 
-const SelectAllInput: React.FunctionComponent<
-    SelectAllInputComponentProps
-> = ({ onClick, checked }) => <input type="checkbox" onClick={onClick} checked={checked} />;
+const SelectAllInput: React.FunctionComponent<SelectAllInputComponentProps> = ({
+    onClick,
+    checked,
+}) => <input type="checkbox" onClick={onClick} checked={checked} />;
 
 const selectTableAdditionalProps: SelectTableAdditionalProps = {
     isSelected: () => true,
@@ -39,7 +40,10 @@ const selectTableAdditionalProps: SelectTableAdditionalProps = {
     SelectAllInputComponent: SelectAllInput,
 };
 
-const data = [{ id: 1, name: "Foo" }, { id: 2, name: "Bar" }];
+const data = [
+    { id: 1, name: "Foo" },
+    { id: 2, name: "Bar" },
+];
 
 const columns: Column[] = [
     { Header: "ID", accessor: "id" },

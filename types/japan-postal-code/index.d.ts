@@ -11,7 +11,10 @@ declare namespace JapanPostalCode {
     }
 }
 
-declare function get(zip_code: string, callback: JapanPostalCode.Callback): void;
+declare function get(
+    zip_code: string,
+    callback: JapanPostalCode.Callback,
+): void;
 
 declare const JapanPostalCode: {
     get: typeof get;

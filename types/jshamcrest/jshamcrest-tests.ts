@@ -41,7 +41,11 @@ function test_appendLiteral() {
 
 function test_appendValueList() {
     var obj: JsHamcrest.SelfDescribing;
-    new JsHamcrest.Description().appendValueList("[", ",", "]", [obj, obj, obj]);
+    new JsHamcrest.Description().appendValueList("[", ",", "]", [
+        obj,
+        obj,
+        obj,
+    ]);
 }
 
 function test_get() {
@@ -52,7 +56,10 @@ function test_get() {
 // Matcher
 //
 
-function test_SimpleMatcher(actual: any, matcher: JsHamcrest.SimpleMatcher): JsHamcrest.Description {
+function test_SimpleMatcher(
+    actual: any,
+    matcher: JsHamcrest.SimpleMatcher,
+): JsHamcrest.Description {
     var description = new JsHamcrest.Description();
     description.append("Expected ");
     matcher.describeTo(description);
@@ -66,7 +73,9 @@ function test_SimpleMatcher(actual: any, matcher: JsHamcrest.SimpleMatcher): JsH
     return description;
 }
 
-function test_CombinableMatcher(matcher: JsHamcrest.CombinableMatcher): JsHamcrest.CombinableMatcher {
+function test_CombinableMatcher(
+    matcher: JsHamcrest.CombinableMatcher,
+): JsHamcrest.CombinableMatcher {
     return matcher.and(not(string())).or(bool());
 }
 
@@ -79,13 +88,21 @@ function test_isMatcher() {
 }
 
 function test_EqualTo() {
-    var hasSecondCharacter = JsHamcrest.EqualTo(function(matcher: JsHamcrest.Matcher) {
+    var hasSecondCharacter = JsHamcrest.EqualTo(function (
+        matcher: JsHamcrest.Matcher,
+    ) {
         return new JsHamcrest.SimpleMatcher({
-            matches: function(actual: any) {
-                return actual && actual.length >= 2 && matcher.matches(actual.charAt(2));
+            matches: function (actual: any) {
+                return (
+                    actual &&
+                    actual.length >= 2 &&
+                    matcher.matches(actual.charAt(2))
+                );
             },
-            describeTo: function(description: JsHamcrest.Description) {
-                description.append("string with second character ").appendDescriptionOf(matcher);
+            describeTo: function (description: JsHamcrest.Description) {
+                description
+                    .append("string with second character ")
+                    .appendDescriptionOf(matcher);
             },
         });
     });
@@ -107,10 +124,10 @@ function test_assert() {
     // options
     JsHamcrest.Operators.assert("foo", is("foo"), {
         message: "Name",
-        pass: function(result) {
+        pass: function (result) {
             alert("[PASS] " + result);
         },
-        fail: function(result) {
+        fail: function (result) {
             alert("[FAIL] " + result);
         },
     });
@@ -121,7 +138,7 @@ function test_filter() {
 }
 
 function test_callTo() {
-    var thrower = JsHamcrest.Operators.callTo(function(ok) {
+    var thrower = JsHamcrest.Operators.callTo(function (ok) {
         if (!ok) throw new Error();
     }, false);
 }
@@ -213,7 +230,7 @@ function test_not() {
 }
 
 function test_raises() {
-    var myFunction = function() {
+    var myFunction = function () {
         // Do something dangerous...
         throw new Error();
     };
@@ -222,7 +239,7 @@ function test_raises() {
 }
 
 function test_raisesAnything() {
-    var myFunction = function() {
+    var myFunction = function () {
         // Do something dangerous...
         throw "Some unexpected error";
     };
@@ -231,7 +248,8 @@ function test_raisesAnything() {
 }
 
 function test_sameAs() {
-    var number = 10, anotherNumber = number;
+    var number = 10,
+        anotherNumber = number;
     assertThat(number, sameAs(anotherNumber));
 }
 
@@ -303,13 +321,13 @@ function test_bool() {
 }
 
 function test_func() {
-    assertThat(function() {}, func());
+    assertThat(function () {}, func());
     assertThat("text", not(func()));
 }
 
 function test_hasFunction() {
     var greeter = {
-        sayHello: function(name: string) {
+        sayHello: function (name: string) {
             alert("Hello, " + name);
         },
     };
@@ -320,7 +338,7 @@ function test_hasFunction() {
 function test_hasMember() {
     var greeter = {
         marco: "polo",
-        sayHello: function(name: string) {
+        sayHello: function (name: string) {
             alert("Hello, " + name);
         },
     };
@@ -354,7 +372,7 @@ function test_typeOf() {
     assertThat(10, typeOf("number"));
     assertThat({}, typeOf("object"));
     assertThat("10", typeOf("string"));
-    assertThat(function() {}, typeOf("function"));
+    assertThat(function () {}, typeOf("function"));
 }
 
 //
@@ -396,8 +414,16 @@ JsHamcrest.Integration.copyMembers(JsHamcrest.Matchers, window);
 JsHamcrest.Integration.installMatchers({ truthy: JsHamcrest.Matchers.truth });
 
 JsHamcrest.Integration.installOperators({
-    assertNotThat: function(actual: any, matcher: JsHamcrest.Matcher, message?: string): JsHamcrest.Description {
-        return JsHamcrest.Operators.assert(actual, JsHamcrest.Matchers.not(matcher), { message: message });
+    assertNotThat: function (
+        actual: any,
+        matcher: JsHamcrest.Matcher,
+        message?: string,
+    ): JsHamcrest.Description {
+        return JsHamcrest.Operators.assert(
+            actual,
+            JsHamcrest.Matchers.not(matcher),
+            { message: message },
+        );
     },
 });
 

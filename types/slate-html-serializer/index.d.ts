@@ -1,9 +1,21 @@
 import * as React from "react";
-import { BlockProperties, Leaf, Mark, Node as SlateNode, Value, ValueJSON } from "slate";
+import {
+    BlockProperties,
+    Leaf,
+    Mark,
+    Node as SlateNode,
+    Value,
+    ValueJSON,
+} from "slate";
 
 export interface Rule {
     deserialize?:
-        | ((el: Element, next: (elements: Element[] | NodeList | Array<Node & ChildNode>) => any) => any)
+        | ((
+              el: Element,
+              next: (
+                  elements: Element[] | NodeList | Array<Node & ChildNode>,
+              ) => any,
+          ) => any)
         | undefined;
     serialize?: ((obj: any, children: string) => React.ReactNode) | undefined;
 }

@@ -1,5 +1,11 @@
 import { Component, FC, ReactNode } from "react";
-import { Animated, ImageSourcePropType, StyleProp, TextProps, ViewProps } from "react-native";
+import {
+    Animated,
+    ImageSourcePropType,
+    StyleProp,
+    TextProps,
+    ViewProps,
+} from "react-native";
 
 export interface ButtonProps {
     buttonStyle: StyleProp<ViewProps>;

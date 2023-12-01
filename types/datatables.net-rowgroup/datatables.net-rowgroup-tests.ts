@@ -35,6 +35,4 @@ dt.rowGroup().disable();
 dt.rowGroup().enable(true);
 
 // Chaining
-dt.rowGroup().dataSrc(12)
-    .rowGroup().disable()
-    .rowGroup().enable();
+dt.rowGroup().dataSrc(12).rowGroup().disable().rowGroup().enable();

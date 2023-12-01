@@ -5,4 +5,6 @@ bot.logOn({
     accountName: "username",
     password: "password",
 });
-bot.on("loggedOn", function() {/* ... */});
+bot.on("loggedOn", function () {
+    /* ... */
+});

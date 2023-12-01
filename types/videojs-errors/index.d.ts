@@ -12,8 +12,12 @@ interface VideoJSErrorsPlugin {
     (options?: Options): void;
     getAll(): Record<string | number, CustomError>;
     extend(options: Record<string | number, CustomError>): void;
-    timeout<T extends number | undefined = undefined>(value?: T): T extends number ? undefined : number;
-    backgroundTimeout<T extends number | undefined = undefined>(value?: T): T extends number ? undefined : number;
+    timeout<T extends number | undefined = undefined>(
+        value?: T,
+    ): T extends number ? undefined : number;
+    backgroundTimeout<T extends number | undefined = undefined>(
+        value?: T,
+    ): T extends number ? undefined : number;
 }
 
 interface Options {

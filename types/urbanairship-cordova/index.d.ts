@@ -24,7 +24,10 @@ declare namespace UrbanAirshipPlugin {
          * @param enabled Set to true to enable notifications, false to disable.
          * @param callback The function to call on completion.
          */
-        setUserNotificationsEnabled(enabled: boolean, callback: (status: string) => void): void;
+        setUserNotificationsEnabled(
+            enabled: boolean,
+            callback: (status: string) => void,
+        ): void;
 
         /**
          * Checks if user notifications are enabled or not.
@@ -50,7 +53,10 @@ declare namespace UrbanAirshipPlugin {
          * @param clear Set to true to clear the notification.
          * @param callback The function to call on completion.
          */
-        getLaunchNotification(clear: boolean, callback: (push: UrbanAirshipPlugin.PushEvent) => void): void;
+        getLaunchNotification(
+            clear: boolean,
+            callback: (push: UrbanAirshipPlugin.PushEvent) => void,
+        ): void;
 
         /**
          * Enables or disables quiet time.
@@ -92,7 +98,9 @@ declare namespace UrbanAirshipPlugin {
          *
          * @param callback The function to call on completion.
          */
-        getQuietTime(callback: (quietTime: UrbanAirshipPlugin.QuietTimeTimeSpan) => void): void;
+        getQuietTime(
+            callback: (quietTime: UrbanAirshipPlugin.QuietTimeTimeSpan) => void,
+        ): void;
 
         /**
          * Checks if quiet time is currently in effect.
@@ -329,7 +337,10 @@ declare namespace UrbanAirshipPlugin {
          * @param enabled Set to true to enable background location, false to disable.
          * @param callback The function to call on completion.
          */
-        setBackgroundLocationEnabled(enabled: boolean, callback: () => void): void;
+        setBackgroundLocationEnabled(
+            enabled: boolean,
+            callback: () => void,
+        ): void;
 
         /**
          * Checks if background location updates are enabled or not.
@@ -358,7 +369,10 @@ declare namespace UrbanAirshipPlugin {
          *
          * @returns The chainable API instance.
          */
-        addTags: (tagGroup: string, tags: string[]) => EditNamedUserTagGroupsApi;
+        addTags: (
+            tagGroup: string,
+            tags: string[],
+        ) => EditNamedUserTagGroupsApi;
 
         /**
          * Used to remove the given tags from the given tag group.
@@ -368,7 +382,10 @@ declare namespace UrbanAirshipPlugin {
          *
          * @returns The chainable API instance.
          */
-        removeTags: (tagGroup: string, tags: string[]) => EditNamedUserTagGroupsApi;
+        removeTags: (
+            tagGroup: string,
+            tags: string[],
+        ) => EditNamedUserTagGroupsApi;
 
         /**
          * Used to apply the changes from the chained API call.
@@ -400,7 +417,10 @@ declare namespace UrbanAirshipPlugin {
          *
          * @returns The chainable API instance.
          */
-        removeTags: (tagGroup: string, tags: string[]) => EditChannelTagGroupsApi;
+        removeTags: (
+            tagGroup: string,
+            tags: string[],
+        ) => EditChannelTagGroupsApi;
 
         /**
          * Used to apply the changes from the chained API call.

@@ -4,11 +4,7 @@ import * as React from "react";
 @Radium
 class TestComponent extends React.Component<{ a: number }> {
     render() {
-        return (
-            <div>
-                Test with Radium
-            </div>
-        );
+        return <div>Test with Radium</div>;
     }
 }
 
@@ -21,7 +17,9 @@ TestStatelessComponent = Radium(TestStatelessComponent);
     userAgent: "test",
     matchMedia: window.matchMedia,
 })
-class TestComponentWithConfig extends React.Component<{ a?: number | undefined }> {
+class TestComponentWithConfig extends React.Component<{
+    a?: number | undefined;
+}> {
     render() {
         return (
             <div>
@@ -50,7 +48,9 @@ class TestComponentWithConfig extends React.Component<{ a?: number | undefined }
 }
 <TestComponentWithConfig a={5} />;
 
-class TestComponentWithConfigInStyleRoot extends React.Component<{ a?: number | undefined }> {
+class TestComponentWithConfigInStyleRoot extends React.Component<{
+    a?: number | undefined;
+}> {
     render() {
         return (
             <div>

@@ -20,9 +20,15 @@ interface DateConstructor {
     /** Gets the number of days in the month, given a year and month value. Automatically corrects for leap year. */
     getDaysInMonth(year: number, month: number): number;
     /** Returns a culture-specific timezone abbreviation based on a given offset and a boolean indicating whether daylight savings time is in effect. */
-    getTimezoneAbbreviation(timezoneOffset: number, isDayLightSavingsTime: boolean): string;
+    getTimezoneAbbreviation(
+        timezoneOffset: number,
+        isDayLightSavingsTime: boolean,
+    ): string;
     /** Gets the timezone offset if given a culture-specific string which is a valid full or abbreviated timezone name and a boolean indicating whether daylight savings time is in effect. */
-    getTimezoneOffset(timezoneAbbreviation?: string, isDayLightSavingsTime?: boolean): number;
+    getTimezoneOffset(
+        timezoneAbbreviation?: string,
+        isDayLightSavingsTime?: boolean,
+    ): number;
     /** Converts the specified string value into its JavaScript Date equivalent using culture-specific format information. */
     parse(dateString: string): Date;
     /** Converts the specified string value into its JavaScript Date equivalent using the specified format. The format of the string value must match one of the supplied formats exactly. */

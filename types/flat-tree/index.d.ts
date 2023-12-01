@@ -17,7 +17,10 @@ export function sibling(index: number, depth?: number): number;
  * @returns an array [leftChild, rightChild] with the indexes of this elements children or
  *          null if this element does not have any children.
  */
-export function children(index: number, depth?: number): [number, number] | null;
+export function children(
+    index: number,
+    depth?: number,
+): [number, number] | null;
 
 /**
  * @returns the range (inclusive) the tree root at index spans.

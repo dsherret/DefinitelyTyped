@@ -29,7 +29,11 @@ const env = {};
 }
 
 {
-    const result = md.renderer.render(md.parseInline(src, env), md.options, env);
+    const result = md.renderer.render(
+        md.parseInline(src, env),
+        md.options,
+        env,
+    );
 }
 
 {
@@ -47,7 +51,11 @@ const env = {};
     let result = "";
     for (const token of tokens) {
         if (token.type === "image" && token.children) {
-            result += md.renderer.renderInlineAsText(token.children, md.options, env);
+            result += md.renderer.renderInlineAsText(
+                token.children,
+                md.options,
+                env,
+            );
         }
     }
 }

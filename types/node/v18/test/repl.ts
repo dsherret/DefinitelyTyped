@@ -8,8 +8,7 @@ import { Context } from "node:vm";
     let _boolean: boolean;
     const _ctx: Context = {};
 
-    server.setupHistory("hurr/durr", (err, repl) => {
-    });
+    server.setupHistory("hurr/durr", (err, repl) => {});
 
     server = server.addListener("exit", () => {});
     server = server.addListener("reset", () => {});
@@ -37,7 +36,7 @@ import { Context } from "node:vm";
     server.clearBufferedCommand();
     server.displayPrompt();
     server.displayPrompt(true);
-    server.defineCommand("cmd", function(text) {
+    server.defineCommand("cmd", function (text) {
         // $ExpectType string
         text;
         // $ExpectType REPLServer

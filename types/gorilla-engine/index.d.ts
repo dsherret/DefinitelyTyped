@@ -140,7 +140,9 @@ declare namespace GorillaEngine {
          * @param path The path to the value that should be retrieved.
          * @returns The value found at the given `path` or `false` if nothing was found.
          */
-        getValueAtPath(path: string): string | object | number | Int32Array | Float64Array | boolean;
+        getValueAtPath(
+            path: string,
+        ): string | object | number | Int32Array | Float64Array | boolean;
 
         /**
          * Method used to set a string at a certain path in the engine.
@@ -161,7 +163,12 @@ declare namespace GorillaEngine {
          * @param end A normalised value indicating  where in the sample waveform rendering should end.
          * @returns The waveform of the sample found at `zoneId`.
          */
-        getWaveformData(numPoints: number, zoneId: number, start: number, end: number): Uint8Array;
+        getWaveformData(
+            numPoints: number,
+            zoneId: number,
+            start: number,
+            end: number,
+        ): Uint8Array;
 
         /**
          * Method used to retrieve an array of integers from the Gorilla Engine.
@@ -180,7 +187,13 @@ declare namespace GorillaEngine {
          */
         setIntArrayAtPath(
             path: string,
-            value: Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array,
+            value:
+                | Int8Array
+                | Uint8Array
+                | Int16Array
+                | Uint16Array
+                | Int32Array
+                | Uint32Array,
         ): boolean;
 
         /**
@@ -198,7 +211,10 @@ declare namespace GorillaEngine {
          * @param value The float or double array that should be set at the given `path`.
          * @returns `true` if the value has been set succcessfully or `false` otherwise.
          */
-        setDoubleArrayAtPath(path: string, value: Float32Array | Float64Array): boolean;
+        setDoubleArrayAtPath(
+            path: string,
+            value: Float32Array | Float64Array,
+        ): boolean;
 
         /**
          * Method used to retrieve a double from the Gorilla Engine.
@@ -349,7 +365,10 @@ declare namespace GorillaEngine {
 
         getStringAtPath(path: string): string;
 
-        getSampleMetadata(filePath: string, overviewSize: number): { metadata: string; overview: Uint8Array };
+        getSampleMetadata(
+            filePath: string,
+            overviewSize: number,
+        ): { metadata: string; overview: Uint8Array };
     }
 
     interface Blob {
@@ -361,7 +380,9 @@ declare namespace GorillaEngine {
         on(eventName: string, callback: any): void;
     }
 
-    function registerUncaughtUIExceptionCallback(handler: (err: Error) => void): void;
+    function registerUncaughtUIExceptionCallback(
+        handler: (err: Error) => void,
+    ): void;
     function getResourcePath(): string;
     function getPluginName(): string;
     function getPluginType(): string;
@@ -384,7 +405,12 @@ declare namespace GorillaEngine {
         message: string;
         iconType: "info" | "question" | "warning";
     }): Promise<any>;
-    function calculateTextWidth(text: string, font: string, fontSize: number, fontKerning: number): Promise<number>;
+    function calculateTextWidth(
+        text: string,
+        font: string,
+        fontSize: number,
+        fontKerning: number,
+    ): Promise<number>;
     function checkLicense(): boolean;
     function checkBeatportRTO(): string;
     function isTrial(): boolean;
@@ -393,8 +419,14 @@ declare namespace GorillaEngine {
     function disposeInstrument(instrument: Instrument): void;
     function setActiveInstrument(instrument: Instrument): void;
     function createEmptyInstrument(): Instrument;
-    function setSessionSaveCallback(callback: (state: string) => string, instance: any): void;
-    function setSessionLoadCallback(callback: (state: string) => string, instance: any): void;
+    function setSessionSaveCallback(
+        callback: (state: string) => string,
+        instance: any,
+    ): void;
+    function setSessionLoadCallback(
+        callback: (state: string) => string,
+        instance: any,
+    ): void;
     function setParametersDirty(dirty: boolean): void;
     function areParametersDirty(): boolean;
     function shouldWaitForReadySignal(): void;
@@ -420,13 +452,19 @@ declare namespace GorillaEngine {
      * @param wavFilePath The path where the converted file should be stored
      * @returns `true` if the convertion was successful
      */
-    function convertMp3ToWav(mp3Filepath: string, wavFilePath: string): Promise<boolean>;
+    function convertMp3ToWav(
+        mp3Filepath: string,
+        wavFilePath: string,
+    ): Promise<boolean>;
     /**
      * Method to register opening and closing of the plugin editor
      * @param openCallback The callback when the plugin editor opens
      * @param closeCallback The callback when the plugin editor closes
      */
-    function registerEditorCallbacks(openCallback?: any, closeCallback?: any): void;
+    function registerEditorCallbacks(
+        openCallback?: any,
+        closeCallback?: any,
+    ): void;
     let sessionSaveLoadCallbackTimeoutMs: number;
 
     namespace UI {

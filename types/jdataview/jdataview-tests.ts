@@ -21,7 +21,7 @@ interface TARMetaData {
 }
 
 // Download the file
-$.get("jquery.tar", function(data) {
+$.get("jquery.tar", function (data) {
     // Make a view on the data
     var view = new jDataView(data);
 
@@ -45,7 +45,10 @@ $.get("jquery.tar", function(data) {
             ustar_version: parseInt(view.getString(2), 8),
             owner_name: view.getString(32).replace(/\0+$/, ""),
             group_name: view.getString(32).replace(/\0+$/, ""),
-            device: [parseInt(view.getString(8), 8), parseInt(view.getString(8), 8)],
+            device: [
+                parseInt(view.getString(8), 8),
+                parseInt(view.getString(8), 8),
+            ],
             name_prefix: view.getString(155).replace(/\0+$/, ""),
         };
 
@@ -66,7 +69,9 @@ $.get("jquery.tar", function(data) {
         }
 
         // Print the file
-        $(document.body).append($("<pre></pre>").html(JSON.stringify(metadata, null, "  ")));
+        $(document.body).append(
+            $("<pre></pre>").html(JSON.stringify(metadata, null, "  ")),
+        );
 
         if (metadata.size) {
             $("body").append($("<textarea></textarea>").val(content));

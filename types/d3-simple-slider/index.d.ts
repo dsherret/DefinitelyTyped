@@ -152,7 +152,9 @@ export interface Slider<Domain> {
  * This must be either scaleLinear or scaleTime. The domain will be used to calculate minimum and maximum values.
  * The range will be used to calculate the width or height of the slider. This means you do not need to set these if passing a scale.
  */
-export function sliderTop<Domain extends SliderDomain>(scale: SliderScale<Domain>): Slider<Domain>;
+export function sliderTop<Domain extends SliderDomain>(
+    scale: SliderScale<Domain>,
+): Slider<Domain>;
 
 /**
  * Constructs a new vertical slider generator. Ticks to the right.
@@ -161,7 +163,9 @@ export function sliderTop<Domain extends SliderDomain>(scale: SliderScale<Domain
  * This must be either scaleLinear or scaleTime. The domain will be used to calculate minimum and maximum values.
  * The range will be used to calculate the width or height of the slider. This means you do not need to set these if passing a scale.
  */
-export function sliderRight<Domain extends SliderDomain>(scale: SliderScale<Domain>): Slider<Domain>;
+export function sliderRight<Domain extends SliderDomain>(
+    scale: SliderScale<Domain>,
+): Slider<Domain>;
 
 /**
  * Constructs a new horizontal slider generator. Ticks on the bottom.
@@ -170,7 +174,9 @@ export function sliderRight<Domain extends SliderDomain>(scale: SliderScale<Doma
  * This must be either scaleLinear or scaleTime. The domain will be used to calculate minimum and maximum values.
  * The range will be used to calculate the width or height of the slider. This means you do not need to set these if passing a scale.
  */
-export function sliderBottom<Domain extends SliderDomain>(scale: SliderScale<Domain>): Slider<Domain>;
+export function sliderBottom<Domain extends SliderDomain>(
+    scale: SliderScale<Domain>,
+): Slider<Domain>;
 
 /**
  * Constructs a new vertical slider generator. Ticks to the left.
@@ -179,4 +185,6 @@ export function sliderBottom<Domain extends SliderDomain>(scale: SliderScale<Dom
  * This must be either scaleLinear or scaleTime. The domain will be used to calculate minimum and maximum values.
  * The range will be used to calculate the width or height of the slider. This means you do not need to set these if passing a scale.
  */
-export function sliderLeft<Domain extends SliderDomain>(scale: SliderScale<Domain>): Slider<Domain>;
+export function sliderLeft<Domain extends SliderDomain>(
+    scale: SliderScale<Domain>,
+): Slider<Domain>;

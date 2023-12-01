@@ -7,7 +7,9 @@ type GetArrayInnerType<T> = T extends Array<infer U> ? U : never;
 /** The webpack types don't export this so we have to derive it. */
 type ExternalItem = GetArrayInnerType<ExternalsPlugin["externals"]>;
 
-declare function webpackNodeExternals(options?: webpackNodeExternals.Options): ExternalItem;
+declare function webpackNodeExternals(
+    options?: webpackNodeExternals.Options,
+): ExternalItem;
 
 declare namespace webpackNodeExternals {
     type AllowlistOption = string | RegExp | AllowlistFunctionType;
@@ -39,7 +41,15 @@ declare namespace webpackNodeExternals {
          * 'commonjs' for node modules.
          * @default 'commonjs'
          */
-        importType?: "var" | "this" | "commonjs" | "amd" | "umd" | "module" | ImportTypeCallback | undefined;
+        importType?:
+            | "var"
+            | "this"
+            | "commonjs"
+            | "amd"
+            | "umd"
+            | "module"
+            | ImportTypeCallback
+            | undefined;
         /**
          * The folder in which to search for the node modules.
          * @default 'node_modules'

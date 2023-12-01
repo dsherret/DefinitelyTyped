@@ -80,7 +80,11 @@ declare namespace jsrsasign.KJUR.crypto {
          * @param keySize key bit length (ex. 1024)
          * @return hexadecimal string of PKCS#1 padded DigestInfo
          */
-        getPaddedDigestInfoHex(hHash: string, alg: string, keySize: number): string;
+        getPaddedDigestInfoHex(
+            hHash: string,
+            alg: string,
+            keySize: number,
+        ): string;
 
         /**
          * get hexadecimal hash of string with specified algorithm

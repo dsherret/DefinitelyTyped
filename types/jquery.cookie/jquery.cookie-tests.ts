@@ -29,7 +29,7 @@ $.cookie.json = true;
 
 $.cookie("test", testObject, cookieOptions);
 
-var result = <TestObject> $.cookie("test");
+var result = <TestObject>$.cookie("test");
 
 console.log(result.text);
 

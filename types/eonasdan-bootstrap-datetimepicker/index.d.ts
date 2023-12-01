@@ -554,9 +554,13 @@ export interface OptionsBase {
     parseInputDate?: ParseInputDateFunction | undefined;
 }
 
-export type IndexedDates = { [/** Dates as "YYYY-MM-DD keys */ date: string]: boolean };
+export type IndexedDates = {
+    [/** Dates as "YYYY-MM-DD keys */ date: string]: boolean;
+};
 
-export type IndexedHours = { [/** Hours as "0" - "23" keys */ hour: string]: boolean };
+export type IndexedHours = {
+    [/** Hours as "0" - "23" keys */ hour: string]: boolean;
+};
 
 export interface GetOptions extends OptionsBase {
     /**
@@ -1090,7 +1094,9 @@ export interface Datetimepicker {
      * disabledTimeIntervals: [[moment({ h: 0 }), moment({ h: 8 })], [moment({ h: 18 }), moment({ h: 24 })]]
      * Will disable times between 12-8am and 6-12pm today
      */
-    disabledTimeIntervals(disabledTimeIntervals: FromTo[] | boolean): Datetimepicker;
+    disabledTimeIntervals(
+        disabledTimeIntervals: FromTo[] | boolean,
+    ): Datetimepicker;
 
     /**
      * Returns the options.disabledHours option.
@@ -1206,39 +1212,134 @@ declare global {
 
         data(key: "DateTimePicker"): Datetimepicker;
 
-        off(events: "dp.change", selector?: string, handler?: (eventobject: ChangeEventObject) => any): JQuery;
-        off(events: "dp.change", handler: (eventobject: ChangeEventObject) => any): JQuery;
+        off(
+            events: "dp.change",
+            selector?: string,
+            handler?: (eventobject: ChangeEventObject) => any,
+        ): JQuery;
+        off(
+            events: "dp.change",
+            handler: (eventobject: ChangeEventObject) => any,
+        ): JQuery;
 
-        on(events: "dp.change", selector: string, data: any, handler?: (eventobject: ChangeEventObject) => any): JQuery;
-        on(events: "dp.change", selector: string, handler: (eventobject: ChangeEventObject) => any): JQuery;
-        on(events: "dp.change", handler: (eventObject: ChangeEventObject) => any): JQuery;
+        on(
+            events: "dp.change",
+            selector: string,
+            data: any,
+            handler?: (eventobject: ChangeEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.change",
+            selector: string,
+            handler: (eventobject: ChangeEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.change",
+            handler: (eventObject: ChangeEventObject) => any,
+        ): JQuery;
 
-        off(events: "dp.show", selector?: string, handler?: (eventobject: JQueryEventObject) => any): JQuery;
-        off(events: "dp.show", handler: (eventobject: JQueryEventObject) => any): JQuery;
+        off(
+            events: "dp.show",
+            selector?: string,
+            handler?: (eventobject: JQueryEventObject) => any,
+        ): JQuery;
+        off(
+            events: "dp.show",
+            handler: (eventobject: JQueryEventObject) => any,
+        ): JQuery;
 
-        on(events: "dp.show", selector: string, data: any, handler?: (eventobject: JQueryEventObject) => any): JQuery;
-        on(events: "dp.show", selector: string, handler: (eventobject: JQueryEventObject) => any): JQuery;
-        on(events: "dp.show", handler: (eventObject: JQueryEventObject) => any): JQuery;
+        on(
+            events: "dp.show",
+            selector: string,
+            data: any,
+            handler?: (eventobject: JQueryEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.show",
+            selector: string,
+            handler: (eventobject: JQueryEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.show",
+            handler: (eventObject: JQueryEventObject) => any,
+        ): JQuery;
 
-        off(events: "dp.hide", selector?: string, handler?: (eventobject: HideEventObject) => any): JQuery;
-        off(events: "dp.hide", handler: (eventobject: HideEventObject) => any): JQuery;
+        off(
+            events: "dp.hide",
+            selector?: string,
+            handler?: (eventobject: HideEventObject) => any,
+        ): JQuery;
+        off(
+            events: "dp.hide",
+            handler: (eventobject: HideEventObject) => any,
+        ): JQuery;
 
-        on(events: "dp.hide", selector: string, data: any, handler?: (eventobject: HideEventObject) => any): JQuery;
-        on(events: "dp.hide", selector: string, handler: (eventobject: HideEventObject) => any): JQuery;
-        on(events: "dp.hide", handler: (eventObject: HideEventObject) => any): JQuery;
+        on(
+            events: "dp.hide",
+            selector: string,
+            data: any,
+            handler?: (eventobject: HideEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.hide",
+            selector: string,
+            handler: (eventobject: HideEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.hide",
+            handler: (eventObject: HideEventObject) => any,
+        ): JQuery;
 
-        off(events: "dp.error", selector?: string, handler?: (eventobject: ErrorEventObject) => any): JQuery;
-        off(events: "dp.error", handler: (eventobject: ErrorEventObject) => any): JQuery;
+        off(
+            events: "dp.error",
+            selector?: string,
+            handler?: (eventobject: ErrorEventObject) => any,
+        ): JQuery;
+        off(
+            events: "dp.error",
+            handler: (eventobject: ErrorEventObject) => any,
+        ): JQuery;
 
-        on(events: "dp.error", selector: string, data: any, handler?: (eventobject: ErrorEventObject) => any): JQuery;
-        on(events: "dp.error", selector: string, handler: (eventobject: ErrorEventObject) => any): JQuery;
-        on(events: "dp.error", handler: (eventObject: ErrorEventObject) => any): JQuery;
+        on(
+            events: "dp.error",
+            selector: string,
+            data: any,
+            handler?: (eventobject: ErrorEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.error",
+            selector: string,
+            handler: (eventobject: ErrorEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.error",
+            handler: (eventObject: ErrorEventObject) => any,
+        ): JQuery;
 
-        off(events: "dp.update", selector?: string, handler?: (eventobject: UpdateEventObject) => any): JQuery;
-        off(events: "dp.update", handler: (eventobject: UpdateEventObject) => any): JQuery;
+        off(
+            events: "dp.update",
+            selector?: string,
+            handler?: (eventobject: UpdateEventObject) => any,
+        ): JQuery;
+        off(
+            events: "dp.update",
+            handler: (eventobject: UpdateEventObject) => any,
+        ): JQuery;
 
-        on(events: "dp.update", selector: string, data: any, handler?: (eventobject: UpdateEventObject) => any): JQuery;
-        on(events: "dp.update", selector: string, handler: (eventobject: UpdateEventObject) => any): JQuery;
-        on(events: "dp.update", handler: (eventObject: UpdateEventObject) => any): JQuery;
+        on(
+            events: "dp.update",
+            selector: string,
+            data: any,
+            handler?: (eventobject: UpdateEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.update",
+            selector: string,
+            handler: (eventobject: UpdateEventObject) => any,
+        ): JQuery;
+        on(
+            events: "dp.update",
+            handler: (eventObject: UpdateEventObject) => any,
+        ): JQuery;
     }
 }

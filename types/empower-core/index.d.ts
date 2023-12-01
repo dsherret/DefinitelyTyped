@@ -6,7 +6,10 @@
  * @param options Configuration options. If not passed, default options will be used.
  * @return Enhanced assert function/object.
  */
-declare function empowerCore<T>(originalAssert: T, options?: empowerCore.Options): T;
+declare function empowerCore<T>(
+    originalAssert: T,
+    options?: empowerCore.Options,
+): T;
 
 declare namespace empowerCore {
     interface Options {
@@ -35,7 +38,10 @@ declare namespace empowerCore {
         onSuccess?: ((event: any) => any) | undefined;
         // TODO: Add type for powerAssertContext.
         modifyMessageBeforeAssert?:
-            | ((params: { originalMessage: string; powerAssertContext: any }) => string)
+            | ((params: {
+                  originalMessage: string;
+                  powerAssertContext: any;
+              }) => string)
             | undefined;
         /**
          * Target patterns for power assert feature instrumentation.
@@ -74,7 +80,9 @@ declare namespace empowerCore {
     /**
      * Returns default options object for `empowerCore` function.
      */
-    function defaultOptions(): Required<Omit<Options, "modifyMessageBeforeAssert">>;
+    function defaultOptions(): Required<
+        Omit<Options, "modifyMessageBeforeAssert">
+    >;
 }
 
 export = empowerCore;

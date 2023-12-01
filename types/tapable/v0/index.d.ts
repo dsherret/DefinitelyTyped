@@ -13,7 +13,10 @@ declare abstract class Tapable {
      */
     plugin(names: string, handler: (this: this, ...args: any[]) => void): void;
 
-    plugin(names: string[], handler: (this: this, ...args: any[]) => void): void;
+    plugin(
+        names: string[],
+        handler: (this: this, ...args: any[]) => void,
+    ): void;
 
     /**
      * invoke all plugins with this attached.
@@ -104,7 +107,11 @@ declare abstract class Tapable {
      */
     applyPluginsAsyncSeries(name: string, ...args: any[]): void;
 
-    applyPluginsAsyncSeries1(name: string, param: any, callback: Tapable.CallbackFunction): void;
+    applyPluginsAsyncSeries1(
+        name: string,
+        param: any,
+        callback: Tapable.CallbackFunction,
+    ): void;
 
     /**
      * asynchronously applies all registered handlers for target name(event id).
@@ -131,7 +138,11 @@ declare abstract class Tapable {
      *       while `{@link applyPluginsAsyncSeriesBailResult1}` passes the arguments as single param(any type)
      *       and a callback for plugins
      */
-    applyPluginsAsyncSeriesBailResult1(name: string, param: any, callback: Tapable.CallbackFunction): void;
+    applyPluginsAsyncSeriesBailResult1(
+        name: string,
+        param: any,
+        callback: Tapable.CallbackFunction,
+    ): void;
 
     /**
      * Asynchronously applies all registered handlers for target name(event id).
@@ -147,7 +158,11 @@ declare abstract class Tapable {
      * If any handler invokes the (anonymous)callback with error, no more handlers will be called
      * and the real callback is call with that error.
      */
-    applyPluginsAsyncWaterfall(name: string, init: any, callback: Tapable.CallbackFunction): void;
+    applyPluginsAsyncWaterfall(
+        name: string,
+        init: any,
+        callback: Tapable.CallbackFunction,
+    ): void;
 
     /**
      * applies all registered handlers for target name(event id) in parallel.
@@ -186,7 +201,11 @@ declare abstract class Tapable {
      *       while `{@link applyPluginsParallelBailResult1}` passes the arguments as single param(any type)
      *       and a callback for plugins
      */
-    applyPluginsParallelBailResult1(name: string, param: any, callback: Tapable.CallbackFunction): void;
+    applyPluginsParallelBailResult1(
+        name: string,
+        param: any,
+        callback: Tapable.CallbackFunction,
+    ): void;
 
     static mixin(proto: any): void;
 }

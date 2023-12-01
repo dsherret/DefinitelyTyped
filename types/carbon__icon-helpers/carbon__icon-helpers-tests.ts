@@ -1,4 +1,10 @@
-import { defaultAttributes, formatAttributes, getAttributes, toString, toSVG } from "@carbon/icon-helpers";
+import {
+    defaultAttributes,
+    formatAttributes,
+    getAttributes,
+    toString,
+    toSVG,
+} from "@carbon/icon-helpers";
 
 defaultAttributes.focusable; // $Expect string
 defaultAttributes.preserveAspectRatio; // $Expect string
@@ -22,7 +28,10 @@ toString({
     content: [
         { elem: "path", attrs: { d: "" } },
         { elem: "circle", attrs: { cx: "", cy: "", r: "" } },
-        { elem: "rect", attrs: { width: "", height: "", x: "", y: "", rx: "" } },
+        {
+            elem: "rect",
+            attrs: { width: "", height: "", x: "", y: "", rx: "" },
+        },
     ],
 }); // $Expect string
 toSVG({
@@ -31,6 +40,9 @@ toSVG({
     content: [
         { elem: "path", attrs: { d: "" } },
         { elem: "circle", attrs: { cx: "", cy: "", r: "" } },
-        { elem: "rect", attrs: { width: "", height: "", x: "", y: "", rx: "" } },
+        {
+            elem: "rect",
+            attrs: { width: "", height: "", x: "", y: "", rx: "" },
+        },
     ],
 }); // $Expect SVGSVGElement

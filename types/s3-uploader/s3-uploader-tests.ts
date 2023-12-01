@@ -18,7 +18,7 @@ var s3Config = {
     awsAccessKeyId: "awsKeyId",
     awsSecretAccessKey: "awsSecretAccessKey",
     awsBucketPath: "",
-    awsBucketRegion: "us-east-1", /*Whatever region s3 is located*/
+    awsBucketRegion: "us-east-1" /*Whatever region s3 is located*/,
     awsBucketAcl: "public-read",
     awsHttpTimeout: 60000,
     versions: [s3VersionOriginal, s3VersionHeader],
@@ -26,7 +26,7 @@ var s3Config = {
 
 var client = new Upload("bucketName", s3Config);
 
-client.upload("/images/File.png", s3Config, function(err, images, meta) {
+client.upload("/images/File.png", s3Config, function (err, images, meta) {
     var returnVal: boolean = false;
     if (err) {
         console.log(err);
@@ -35,7 +35,12 @@ client.upload("/images/File.png", s3Config, function(err, images, meta) {
             var originalImageUrl = images[0].url;
             var headerImageUrl = images[1].url;
 
-            console.log("Original: " + originalImageUrl + " headerImageUrl: " + headerImageUrl);
+            console.log(
+                "Original: " +
+                    originalImageUrl +
+                    " headerImageUrl: " +
+                    headerImageUrl,
+            );
         }
     }
 });

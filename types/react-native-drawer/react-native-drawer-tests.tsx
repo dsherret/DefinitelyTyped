@@ -20,8 +20,7 @@ class DrawerTest extends React.Component<{}, { open: boolean }> {
                 side={"bottom"}
                 acceptPanOnDrawer={true}
                 onDragStart={() => {}}
-            >
-            </Drawer>
+            ></Drawer>
         );
     }
 

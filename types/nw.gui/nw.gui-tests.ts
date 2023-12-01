@@ -10,7 +10,7 @@ import gui = require("nw.gui");
 var win = gui.Window.get();
 
 // Listen to the minimize event
-win.on("minimize", function() {
+win.on("minimize", function () {
     console.log("Window is minimized");
 });
 
@@ -21,12 +21,10 @@ win.minimize();
 win.removeAllListeners("minimize");
 
 // Create a new window and get it
-var new_win = gui.Window.get(
-    window.open("https://github.com"),
-);
+var new_win = gui.Window.get(window.open("https://github.com"));
 
 // And listen to new window's focus event
-new_win.on("focus", function() {
+new_win.on("focus", function () {
     console.log("New window is focused");
 });
 
@@ -34,32 +32,34 @@ new_win.on("focus", function() {
 var win = gui.Window.get();
 
 // Create a new window and get it
-var new_win = gui.Window.get(
-    window.open("https://github.com"),
-);
+var new_win = gui.Window.get(window.open("https://github.com"));
 
 // png as base64string
-win.capturePage(function(base64string: string) {
-    // do something with the base64string
-}, { format: "png", datatype: "raw" });
-
-// png as node buffer
-win.capturePage(function(buffer: Buffer) {
-    // do something with the buffer
-}, { format: "png", datatype: "buffer" });
-
-// Open a new window.
-var win = gui.Window.get(
-    window.open("popup.html"),
+win.capturePage(
+    function (base64string: string) {
+        // do something with the base64string
+    },
+    { format: "png", datatype: "raw" },
 );
 
+// png as node buffer
+win.capturePage(
+    function (buffer: Buffer) {
+        // do something with the buffer
+    },
+    { format: "png", datatype: "buffer" },
+);
+
+// Open a new window.
+var win = gui.Window.get(window.open("popup.html"));
+
 // Release the 'win' object here after the new window is closed.
-win.on("closed", function() {
+win.on("closed", function () {
     win = null;
 });
 
 // Listen to main window's close event
-gui.Window.get().on("close", function() {
+gui.Window.get().on("close", function () {
     // Hide the window to give user the feeling of closing immediately
     this.hide();
 
@@ -124,7 +124,7 @@ itemc = new gui.MenuItem({ label: "Simple item" });
 // Bind a callback to item
 itemc = new gui.MenuItem({
     label: "Click me",
-    click: function() {
+    click: function () {
         console.log("I'm clicked");
     },
     key: "s",
@@ -140,7 +140,7 @@ itemc.submenu = submenu;
 
 // And everything can be changed at runtime
 itemc.label = "New label";
-itemc.click = function() {
+itemc.click = function () {
     console.log("New click callback");
 };
 
@@ -155,7 +155,12 @@ gui.App.quit();
 // Get the name field in manifest
 gui.App.manifest.name;
 
-gui.App.addOriginAccessWhitelistEntry("https://github.com/", "app", "myapp", true);
+gui.App.addOriginAccessWhitelistEntry(
+    "https://github.com/",
+    "app",
+    "myapp",
+    true,
+);
 
 /* CLIPBOARD */
 

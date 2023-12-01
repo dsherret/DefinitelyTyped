@@ -46,7 +46,9 @@ local(token).then(console.log);
 
 import RemoteTokenIntrospection = require("token-introspection/remote-introspection");
 
-const remote = RemoteTokenIntrospection({ endpoint: "https://example.com/introspect" });
+const remote = RemoteTokenIntrospection({
+    endpoint: "https://example.com/introspect",
+});
 remote(token).then(console.log);
 
 // Check the errors

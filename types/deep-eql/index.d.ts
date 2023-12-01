@@ -8,7 +8,10 @@ declare namespace deepEqual {
         /**
          * Override default algorithm, determining custom equality.
          */
-        comparator?: (leftHandOperand: T1, rightHandOperand: T2) => boolean | null;
+        comparator?: (
+            leftHandOperand: T1,
+            rightHandOperand: T2,
+        ) => boolean | null;
 
         /**
          * Provide a custom memoization object which will cache the results of

@@ -7,7 +7,10 @@ declare class PowerRadix {
     /**
      * Creates a new instance of PowerRadix
      */
-    constructor(digits: string | number | number[], sourceRadix: number | number[]);
+    constructor(
+        digits: string | number | number[],
+        sourceRadix: number | number[],
+    );
 
     /**
      * Convert to target radix, return as Array

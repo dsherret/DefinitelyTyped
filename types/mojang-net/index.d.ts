@@ -90,7 +90,10 @@ export class HttpHeader {
      * Value of the HTTP header.
      */
     "value": mojangminecraftserveradmin.SecretString | string;
-    constructor(key: string, value: mojangminecraftserveradmin.SecretString | string);
+    constructor(
+        key: string,
+        value: mojangminecraftserveradmin.SecretString | string,
+    );
 }
 /**
  * Main object for structuring a request.
@@ -125,7 +128,10 @@ export class HttpRequest {
      * @param key
      * @param value
      */
-    addHeader(key: string, value: mojangminecraftserveradmin.SecretString | string): HttpRequest;
+    addHeader(
+        key: string,
+        value: mojangminecraftserveradmin.SecretString | string,
+    ): HttpRequest;
     constructor(uri: string);
     setBody(body: string): HttpRequest;
     /**

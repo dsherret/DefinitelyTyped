@@ -28,7 +28,8 @@ declare namespace GoogleAdsScripts {
          *    .withParentType('PARENT_PARENT')     // required
          *    .build();                            // create the parental status
          */
-        interface VideoParentalStatusBuilder extends Base.Builder<VideoParentalStatusOperation> {
+        interface VideoParentalStatusBuilder
+            extends Base.Builder<VideoParentalStatusOperation> {
             /** Builds the excluded video parental status. */
             exclude(): ExcludedVideoParentalStatusOperation;
             /** Sets the parental status type. */
@@ -44,10 +45,12 @@ declare namespace GoogleAdsScripts {
          *        var videoParentalStatus = videoParentalStatusIterator.next();
          *      }
          */
-        interface VideoParentalStatusIterator extends Base.Iterator<VideoParentalStatus> {}
+        interface VideoParentalStatusIterator
+            extends Base.Iterator<VideoParentalStatus> {}
 
         /** An operation representing creation of a new video parental status. */
-        interface VideoParentalStatusOperation extends Base.Operation<VideoParentalStatus> {}
+        interface VideoParentalStatusOperation
+            extends Base.Operation<VideoParentalStatus> {}
 
         /**
          * Fetches video parental statuses. Supports filtering and sorting.
@@ -66,13 +69,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoParentalStatusSelector
-            extends
-                Base.Selector<VideoParentalStatusIterator>,
+            extends Base.Selector<VideoParentalStatusIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

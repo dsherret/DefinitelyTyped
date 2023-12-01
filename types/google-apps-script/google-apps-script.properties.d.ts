@@ -16,7 +16,10 @@ declare namespace GoogleAppsScript {
             getProperties(): { [key: string]: string };
             getProperty(key: string): string | null;
             setProperties(properties: { [key: string]: string }): Properties;
-            setProperties(properties: { [key: string]: string }, deleteAllOthers: boolean): Properties;
+            setProperties(
+                properties: { [key: string]: string },
+                deleteAllOthers: boolean,
+            ): Properties;
             setProperty(key: string, value: string): Properties;
         }
         /**
@@ -45,16 +48,27 @@ declare namespace GoogleAppsScript {
          */
         interface ScriptProperties {
             /** @deprecated DO NOT USE */ deleteAllProperties(): ScriptProperties;
-            /** @deprecated DO NOT USE */ deleteProperty(key: string): ScriptProperties;
+            /** @deprecated DO NOT USE */ deleteProperty(
+                key: string,
+            ): ScriptProperties;
             /** @deprecated DO NOT USE */ getKeys(): string[];
-            /** @deprecated DO NOT USE */ getProperties(): { [key: string]: string };
-            /** @deprecated DO NOT USE */ getProperty(key: string): string | null;
-            /** @deprecated DO NOT USE */ setProperties(properties: { [key: string]: string }): ScriptProperties;
+            /** @deprecated DO NOT USE */ getProperties(): {
+                [key: string]: string;
+            };
+            /** @deprecated DO NOT USE */ getProperty(
+                key: string,
+            ): string | null;
+            /** @deprecated DO NOT USE */ setProperties(properties: {
+                [key: string]: string;
+            }): ScriptProperties;
             /** @deprecated DO NOT USE */ setProperties(
                 properties: { [key: string]: string },
                 deleteAllOthers: boolean,
             ): ScriptProperties;
-            /** @deprecated DO NOT USE */ setProperty(key: string, value: string): ScriptProperties;
+            /** @deprecated DO NOT USE */ setProperty(
+                key: string,
+                value: string,
+            ): ScriptProperties;
         }
         /**
          * Deprecated. This class is deprecated and should not be used in new scripts.
@@ -63,16 +77,27 @@ declare namespace GoogleAppsScript {
          */
         interface UserProperties {
             /** @deprecated DO NOT USE */ deleteAllProperties(): UserProperties;
-            /** @deprecated DO NOT USE */ deleteProperty(key: string): UserProperties;
+            /** @deprecated DO NOT USE */ deleteProperty(
+                key: string,
+            ): UserProperties;
             /** @deprecated DO NOT USE */ getKeys(): string[];
-            /** @deprecated DO NOT USE */ getProperties(): { [key: string]: string };
-            /** @deprecated DO NOT USE */ getProperty(key: string): string | null;
-            /** @deprecated DO NOT USE */ setProperties(properties: { [key: string]: string }): UserProperties;
+            /** @deprecated DO NOT USE */ getProperties(): {
+                [key: string]: string;
+            };
+            /** @deprecated DO NOT USE */ getProperty(
+                key: string,
+            ): string | null;
+            /** @deprecated DO NOT USE */ setProperties(properties: {
+                [key: string]: string;
+            }): UserProperties;
             /** @deprecated DO NOT USE */ setProperties(
                 properties: { [key: string]: string },
                 deleteAllOthers: boolean,
             ): UserProperties;
-            /** @deprecated DO NOT USE */ setProperty(key: string, value: string): UserProperties;
+            /** @deprecated DO NOT USE */ setProperty(
+                key: string,
+                value: string,
+            ): UserProperties;
         }
     }
 }

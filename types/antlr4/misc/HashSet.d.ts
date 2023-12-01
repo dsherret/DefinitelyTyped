@@ -1,7 +1,10 @@
 export default class HashSet {
     readonly data: Record<string, any[]>;
 
-    constructor(hashFunction?: (a: any) => number, equalsFunction?: (a: any, b: any) => boolean);
+    constructor(
+        hashFunction?: (a: any) => number,
+        equalsFunction?: (a: any, b: any) => boolean,
+    );
 
     add(value: any): any;
 

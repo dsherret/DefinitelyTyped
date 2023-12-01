@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Button, Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+    Button,
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from "react-native";
 import Modal from "react-native-modalbox";
 
 interface State {
@@ -41,19 +48,34 @@ class Example extends React.Component<{}, State> {
         const list = [];
 
         for (let i = 0; i < 50; i++) {
-            list.push(<Text style={styles.text} key={i}>Elem {i}</Text>);
+            list.push(
+                <Text style={styles.text} key={i}>
+                    Elem {i}
+                </Text>,
+            );
         }
 
         return list;
     }
 
     render() {
-        const BContent = <Button title="X" onPress={() => this.setState({ isOpen: false })} />;
+        const BContent = (
+            <Button
+                title="X"
+                onPress={() => this.setState({ isOpen: false })}
+            />
+        );
 
         return (
             <View style={styles.wrapper}>
-                <Button title=" Basic modal" onPress={() => this.modal1!.open()} />
-                <Button title="Position top" onPress={() => this.modal2!.open()} />
+                <Button
+                    title=" Basic modal"
+                    onPress={() => this.modal1!.open()}
+                />
+                <Button
+                    title="Position top"
+                    onPress={() => this.modal2!.open()}
+                />
                 <Button
                     title="Position centered + backdrop + disable"
                     onPress={() => this.modal3!.open()}
@@ -82,11 +104,13 @@ class Example extends React.Component<{}, State> {
                     <Text style={styles.text}>Basic modal</Text>
                     <Button
                         title={`Disable swipeToClose(${
-                            this.state.swipeToClose
-                                ? "true"
-                                : "false"
+                            this.state.swipeToClose ? "true" : "false"
                         }`}
-                        onPress={() => this.setState({ swipeToClose: !this.state.swipeToClose })}
+                        onPress={() =>
+                            this.setState({
+                                swipeToClose: !this.state.swipeToClose,
+                            })
+                        }
                     />
                 </Modal>
 
@@ -96,7 +120,9 @@ class Example extends React.Component<{}, State> {
                     position={"top"}
                     ref={(ref: Modal | null) => (this.modal2 = ref)}
                 >
-                    <Text style={[styles.text, { color: "white" }]}>Modal on top</Text>
+                    <Text style={[styles.text, { color: "white" }]}>
+                        Modal on top
+                    </Text>
                 </Modal>
 
                 <Modal
@@ -107,8 +133,14 @@ class Example extends React.Component<{}, State> {
                 >
                     <Text style={styles.text}>Modal centered</Text>
                     <Button
-                        title={`Disable ${this.state.isDisabled ? "true" : "false"}`}
-                        onPress={() => this.setState({ isDisabled: !this.state.isDisabled })}
+                        title={`Disable ${
+                            this.state.isDisabled ? "true" : "false"
+                        }`}
+                        onPress={() =>
+                            this.setState({
+                                isDisabled: !this.state.isDisabled,
+                            })
+                        }
                     />
                 </Modal>
 

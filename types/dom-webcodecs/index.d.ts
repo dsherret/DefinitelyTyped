@@ -16,8 +16,7 @@
 
 /** Shim for OffscreenCanvas, which was removed in TS 4.4 */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface OffscreenCanvas extends EventTarget {
-}
+interface OffscreenCanvas extends EventTarget {}
 
 /**
  * Replaces CanvasImageSource; only applies if WebCodecs is available.
@@ -32,7 +31,13 @@ type CanvasImageSourceWebCodecs =
 
 interface CanvasRenderingContext2D {
     drawImage(image: CanvasImageSourceWebCodecs, dx: number, dy: number): void;
-    drawImage(image: CanvasImageSourceWebCodecs, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(
+        image: CanvasImageSourceWebCodecs,
+        dx: number,
+        dy: number,
+        dw: number,
+        dh: number,
+    ): void;
     drawImage(
         image: CanvasImageSourceWebCodecs,
         sx: number,
@@ -44,12 +49,21 @@ interface CanvasRenderingContext2D {
         dw: number,
         dh: number,
     ): void;
-    createPattern(image: CanvasImageSourceWebCodecs, repetition: string | null): CanvasPattern | null;
+    createPattern(
+        image: CanvasImageSourceWebCodecs,
+        repetition: string | null,
+    ): CanvasPattern | null;
 }
 
 interface OffscreenCanvasRenderingContext2D {
     drawImage(image: CanvasImageSourceWebCodecs, dx: number, dy: number): void;
-    drawImage(image: CanvasImageSourceWebCodecs, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(
+        image: CanvasImageSourceWebCodecs,
+        dx: number,
+        dy: number,
+        dw: number,
+        dh: number,
+    ): void;
     drawImage(
         image: CanvasImageSourceWebCodecs,
         sx: number,
@@ -61,7 +75,10 @@ interface OffscreenCanvasRenderingContext2D {
         dw: number,
         dh: number,
     ): void;
-    createPattern(image: CanvasImageSourceWebCodecs, repetition: string | null): CanvasPattern | null;
+    createPattern(
+        image: CanvasImageSourceWebCodecs,
+        repetition: string | null,
+    ): CanvasPattern | null;
 }
 
 /**

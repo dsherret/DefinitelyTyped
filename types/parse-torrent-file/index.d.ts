@@ -1,6 +1,8 @@
 /// <reference types="node" />
 
-declare function ParseTorrentFile(torrent: Buffer | ParseTorrentFile.Torrent): ParseTorrentFile.Instance;
+declare function ParseTorrentFile(
+    torrent: Buffer | ParseTorrentFile.Torrent,
+): ParseTorrentFile.Instance;
 
 declare namespace ParseTorrentFile {
     function decode(torrent: Buffer | Torrent): Instance;

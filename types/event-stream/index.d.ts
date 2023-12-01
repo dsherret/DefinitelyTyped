@@ -35,7 +35,9 @@ export declare function mapSync(syncFunction: Function): MapStream;
  * Filter elements of the stream.
  * @param syncFunction
  */
-export declare function filterSync(syncFunction: (value: any) => boolean): MapStream;
+export declare function filterSync(
+    syncFunction: (value: any) => boolean,
+): MapStream;
 
 /**
  * Break up a stream and reassemble it so that each line is a chunk. matcher may be a String, or a RegExp
@@ -92,7 +94,10 @@ export declare function merge(streamArray: MapStream[]): MapStream;
  * @param from
  * @param to
  */
-export declare function replace(from: string | RegExp, to: string | RegExp): MapStream;
+export declare function replace(
+    from: string | RegExp,
+    to: string | RegExp,
+): MapStream;
 
 /**
  * Convenience function for parsing JSON chunks. For newline separated JSON, use with es.split.
@@ -139,7 +144,10 @@ export declare function pause(): MapStream | void;
  * @param writeStream
  * @param readStream
  */
-export declare function duplex(writeStream: stream.Writable, readStream: stream.Readable): MapStream;
+export declare function duplex(
+    writeStream: stream.Writable,
+    readStream: stream.Readable,
+): MapStream;
 
 /**
  * Create a through stream from a child process

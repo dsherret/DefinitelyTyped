@@ -152,7 +152,9 @@ export interface RasaWebchatProps {
      * @returns The custom date string.
      * @default false
      */
-    showMessageDate?: boolean | ((timestamp: number, message: string) => string);
+    showMessageDate?:
+        | boolean
+        | ((timestamp: number, message: string) => string);
 
     /**
      * This prop is a function that takes a message string as an argument.
@@ -315,29 +317,27 @@ export interface RasaWebchatProps {
     /**
      * @default null
      */
-    rules?:
-        | Array<{
-            payload: string;
-            text?: string;
-            trigger: {
-                url?: string | string[];
-                timeOnPage?: number;
-                numberOfVisits?: number;
-                numberOfPageVisits?: number;
-                device?: string;
-                when?: "always" | "init";
-                queryString?: Array<{
-                    param?: string;
-                    value?: string;
-                    sendAsEntity?: boolean;
-                }>;
-                eventListeners?: Array<{
-                    selector: string;
-                    event: string;
-                }>;
-            };
-        }>
-        | null;
+    rules?: Array<{
+        payload: string;
+        text?: string;
+        trigger: {
+            url?: string | string[];
+            timeOnPage?: number;
+            numberOfVisits?: number;
+            numberOfPageVisits?: number;
+            device?: string;
+            when?: "always" | "init";
+            queryString?: Array<{
+                param?: string;
+                value?: string;
+                sendAsEntity?: boolean;
+            }>;
+            eventListeners?: Array<{
+                selector: string;
+                event: string;
+            }>;
+        };
+    }> | null;
 
     /**
      * @default 500

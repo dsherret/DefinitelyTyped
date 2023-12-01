@@ -10,15 +10,19 @@ interface JQueryContextMenuOptions {
     position?: ((opt: JQuery, x: number, y: number) => void) | undefined;
     positionSubmenu?: ((menu: JQuery) => void) | undefined;
     zIndex?: number | undefined;
-    animation?: {
-        duration?: number | undefined;
-        show?: string | undefined;
-        hide?: string | undefined;
-    } | undefined;
-    events?: {
-        show?: ((options: any) => boolean) | undefined;
-        hide?: ((options: any) => boolean) | undefined;
-    } | undefined;
+    animation?:
+        | {
+              duration?: number | undefined;
+              show?: string | undefined;
+              hide?: string | undefined;
+          }
+        | undefined;
+    events?:
+        | {
+              show?: ((options: any) => boolean) | undefined;
+              hide?: ((options: any) => boolean) | undefined;
+          }
+        | undefined;
     callback?: ((key: any, options: any) => any) | undefined;
     items?: any;
     build?: ((triggerElement: JQuery, e: Event) => any) | undefined;

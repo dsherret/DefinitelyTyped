@@ -1,4 +1,8 @@
-import { VectorTile, VectorTileFeature, VectorTileLayer } from "@mapbox/vector-tile";
+import {
+    VectorTile,
+    VectorTileFeature,
+    VectorTileLayer,
+} from "@mapbox/vector-tile";
 import Pbf = require("pbf");
 
 const pbf = new Pbf(new ArrayBuffer(8));

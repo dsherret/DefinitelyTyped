@@ -23,12 +23,7 @@ const GROUP_WITH_DEFAULTS = [
 
 const SPECIAL_DEFAULTS = ["seq"];
 
-const SPECIAL_DEFAULTS_OF_SEQ = [
-    "at",
-    "lodash",
-    "reverse",
-    "value",
-];
+const SPECIAL_DEFAULTS_OF_SEQ = ["at", "lodash", "reverse", "value"];
 
 const SRC_REGEXP = /default\s\{([^\}]+)}/;
 
@@ -39,7 +34,9 @@ async function main() {
 
     const results = await getDefaultsDefinitions(versionObject.fullVersion);
 
-    const extractedResults = results.map(extractDefaults).map(arr => arr.sort());
+    const extractedResults = results
+        .map(extractDefaults)
+        .map((arr) => arr.sort());
 
     const tsFiles = [];
 
@@ -47,7 +44,7 @@ async function main() {
         console.log(group);
 
         // output per file per module
-        extractedResults[index].forEach(module => {
+        extractedResults[index].forEach((module) => {
             console.log(`    ${module}`);
             // Generate local module
             const moduleFilename = `${module}.d.ts`;
@@ -66,8 +63,12 @@ async function main() {
 
         writeFileSync(
             path.join("..", defaultModule),
-            `${extractedResults[index].map(val => `import ${val} from "./${val}";`).join("\n")}\n
-declare const defaultExport: {\n${extractedResults[index].map(val => `${val}: typeof ${val};`).join("\n")} };
+            `${extractedResults[index]
+                .map((val) => `import ${val} from "./${val}";`)
+                .join("\n")}\n
+declare const defaultExport: {\n${extractedResults[index]
+                .map((val) => `${val}: typeof ${val};`)
+                .join("\n")} };
 export default defaultExport;\n`,
         );
 
@@ -79,12 +80,16 @@ export default defaultExport;\n`,
 
         writeFileSync(
             path.join("..", groupFilename),
-            `${extractedResults[index].map(val => `import { default as ${val} } from "./${val}";`).join("\n")}\n
+            `${extractedResults[index]
+                .map((val) => `import { default as ${val} } from "./${val}";`)
+                .join("\n")}\n
 export { default } from './${group}.default';\n`,
         );
     });
 
-    const flattenModules = extractedResults.reduce((acc, cur) => acc.concat(cur), []).sort();
+    const flattenModules = extractedResults
+        .reduce((acc, cur) => acc.concat(cur), [])
+        .sort();
 
     // output full
     console.log("index.d.ts");
@@ -93,7 +98,9 @@ export { default } from './${group}.default';\n`,
         globalDefinitionText(
             "lodash-es",
             versionObject.majorMinor,
-            `${flattenModules.map(val => `export { default as ${val} } from "./${val}";`).join("\n")}\n`,
+            `${flattenModules
+                .map((val) => `export { default as ${val} } from "./${val}";`)
+                .join("\n")}\n`,
         ),
     );
 
@@ -101,8 +108,12 @@ export { default } from './${group}.default';\n`,
     console.log("lodash-es-tests.ts");
     writeFileSync(
         path.join("..", "lodash-es-tests.ts"),
-        `${flattenModules.map(val => `import ${val} from "lodash-es/${val}";`).join("\n")}\n
-import { ${flattenModules.map(val => `${val} as ${val}1`).join(",")}} from 'lodash-es';\n`,
+        `${flattenModules
+            .map((val) => `import ${val} from "lodash-es/${val}";`)
+            .join("\n")}\n
+import { ${flattenModules
+            .map((val) => `${val} as ${val}1`)
+            .join(",")}} from 'lodash-es';\n`,
     );
 
     // output tsconfig
@@ -147,14 +158,24 @@ function writeFileSync(filePath: string, contents) {
 }
 
 function extractDefaults(source) {
-    return SRC_REGEXP.exec(source)[1].split(",").map((val) => val.trim());
+    return SRC_REGEXP.exec(source)[1]
+        .split(",")
+        .map((val) => val.trim());
 }
 
 async function getDefaultsDefinitions(fullVersion) {
-    return Promise.all(GROUP_WITH_DEFAULTS.map(
-        (group) => loadString(`https://unpkg.com/lodash-es@${fullVersion}/${group}.default.js`),
-        group => loadString(`https://unpkg.com/lodash-es@${fullVersion}/${group}.default.js`),
-    ));
+    return Promise.all(
+        GROUP_WITH_DEFAULTS.map(
+            (group) =>
+                loadString(
+                    `https://unpkg.com/lodash-es@${fullVersion}/${group}.default.js`,
+                ),
+            (group) =>
+                loadString(
+                    `https://unpkg.com/lodash-es@${fullVersion}/${group}.default.js`,
+                ),
+        ),
+    );
 }
 
 async function getPackageVersion() {
@@ -171,7 +192,8 @@ async function getPackageVersion() {
 }
 
 function globalDefinitionText(fullName, majorMinor, allModulesImports): string {
-    return `
+    return (
+        `
 // Type definitions for ${fullName} ${majorMinor}
 // Project: http://lodash.com/
 // Definitions by: Stephen Lautier <https://github.com/stephenlautier>, e-cloud <https://github.com/e-cloud>
@@ -179,34 +201,33 @@ function globalDefinitionText(fullName, majorMinor, allModulesImports): string {
 // TypeScript Version: 2.2
 
 ${allModulesImports}
-`.trim() + "\n";
+`.trim() + "\n"
+    );
 }
 
 function tsconfig(files) {
-    return JSON.stringify(
-        {
-            compilerOptions: {
-                module: "commonjs",
-                lib: [
-                    "es6",
-                ],
-                noImplicitAny: true,
-                noImplicitThis: true,
-                strictNullChecks: true,
-                strictFunctionTypes: true,
-                baseUrl: "../",
-                typeRoots: [
-                    "../",
-                ],
-                types: [],
-                noEmit: true,
-                forceConsistentCasingInFileNames: true,
+    return (
+        JSON.stringify(
+            {
+                compilerOptions: {
+                    module: "commonjs",
+                    lib: ["es6"],
+                    noImplicitAny: true,
+                    noImplicitThis: true,
+                    strictNullChecks: true,
+                    strictFunctionTypes: true,
+                    baseUrl: "../",
+                    typeRoots: ["../"],
+                    types: [],
+                    noEmit: true,
+                    forceConsistentCasingInFileNames: true,
+                },
+                files,
             },
-            files,
-        },
-        undefined,
-        4,
-    ) + "\n";
+            undefined,
+            4,
+        ) + "\n"
+    );
 }
 
 function tslint() {
@@ -215,14 +236,18 @@ function tslint() {
 
 function loadString(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
-        get(url, res => {
+        get(url, (res) => {
             if (res.statusCode !== 200) {
                 return reject(
-                    new Error(`HTTP Error ${res.statusCode}: ${STATUS_CODES[res.statusCode || 500]} for ${url}`),
+                    new Error(
+                        `HTTP Error ${res.statusCode}: ${
+                            STATUS_CODES[res.statusCode || 500]
+                        } for ${url}`,
+                    ),
                 );
             }
             let rawData = "";
-            res.on("data", chunk => rawData += chunk);
+            res.on("data", (chunk) => (rawData += chunk));
             res.on("end", () => resolve(rawData));
         }).on("error", reject);
     });

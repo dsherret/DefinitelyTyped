@@ -14,13 +14,22 @@ type Union = string | number | algebra.js.Fraction | Term;
 
 declare namespace algebra.js {
     function parse(input: string): Equation | Expression;
-    function toTex(input: Fraction | Expression | Equation | object | Array<Fraction | object>): string;
+    function toTex(
+        input:
+            | Fraction
+            | Expression
+            | Equation
+            | object
+            | Array<Fraction | object>,
+    ): string;
 
     class Equation {
         lhs: Expression;
         rhs: Expression;
         constructor(lhs: Expression, rhs: Expression | Fraction | number);
-        solveFor(variable: string): Fraction | Fraction[] | number[] | Expression | undefined;
+        solveFor(
+            variable: string,
+        ): Fraction | Fraction[] | number[] | Expression | undefined;
         toString(): string;
     }
 
@@ -36,7 +45,12 @@ declare namespace algebra.js {
         constant(): Fraction;
         simplify(): Expression;
         subtract(other: Union | Expression, simplify?: boolean): Expression;
-        summation(variable: string, lower: number, upper: number, simplify?: boolean): Expression;
+        summation(
+            variable: string,
+            lower: number,
+            upper: number,
+            simplify?: boolean,
+        ): Expression;
         toString(): string;
     }
 

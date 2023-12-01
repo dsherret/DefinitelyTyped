@@ -3,7 +3,10 @@ import * as L from "leaflet";
 declare module "leaflet" {
     namespace TileLayer {
         class Provider extends TileLayer {
-            constructor(provider: string, options?: TileLayerOptions | { [name: string]: string });
+            constructor(
+                provider: string,
+                options?: TileLayerOptions | { [name: string]: string },
+            );
         }
 
         namespace Provider {
@@ -16,7 +19,9 @@ declare module "leaflet" {
             interface ProviderConfig {
                 url: string;
                 options?: TileLayerOptions | undefined;
-                variants?: { [variantName: string]: string | ProviderConfig } | undefined;
+                variants?:
+                    | { [variantName: string]: string | ProviderConfig }
+                    | undefined;
             }
         }
     }

@@ -10,8 +10,8 @@ export interface Country {
 
 export type ServiceResponse =
     | {
-        code: string;
-    }
+          code: string;
+      }
     | Error;
 
 export interface ServiceOptions {
@@ -28,7 +28,10 @@ export type ServiceDefinition = (options: ServiceOptions) => {
     url: string;
     headers?: string[];
     isScript?: boolean;
-    callback: (done: (resp: ServiceResponse) => void, response: string) => ServiceResponse;
+    callback: (
+        done: (resp: ServiceResponse) => void,
+        response: string,
+    ) => ServiceResponse;
 };
 
 export interface ComplianceTypes {
@@ -83,7 +86,13 @@ export interface Options {
     type?: keyof ComplianceTypes;
     layouts?: LayoutTypes;
     layout?: LayoutTypes;
-    position?: "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right";
+    position?:
+        | "top"
+        | "bottom"
+        | "top-left"
+        | "top-right"
+        | "bottom-left"
+        | "bottom-right";
     theme?: "block" | "edgeless" | "classic";
     static?: boolean;
     palette?: {
@@ -147,8 +156,16 @@ export interface Popup {
 }
 
 export interface Consent {
-    initialise(options: Options, success?: (cb: Popup) => void, error?: (cb: Popup) => void): void;
-    getCountryCode(options: Options, success: (resp: { code?: string }) => void, error: (err: Error) => void): void;
+    initialise(
+        options: Options,
+        success?: (cb: Popup) => void,
+        error?: (cb: Popup) => void,
+    ): void;
+    getCountryCode(
+        options: Options,
+        success: (resp: { code?: string }) => void,
+        error: (err: Error) => void,
+    ): void;
     hasTransition: boolean;
     hasInitialised: boolean;
 }

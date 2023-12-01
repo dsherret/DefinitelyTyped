@@ -1,6 +1,6 @@
 // server post and response
 $("#username").editable({
-    success: function(response: any, newValue: any) {
+    success: function (response: any, newValue: any) {
         if (response.status == "error") return response.msg; // msg will be shown in editable form
     },
 });
@@ -9,7 +9,7 @@ $("#username").editable({
 $("#username").editable({
     type: "text",
     title: "Enter username",
-    success: function(response: any, newValue: any) {
+    success: function (response: any, newValue: any) {
         // update view model
     },
 });
@@ -92,29 +92,33 @@ $("#country").editable({
         placeholder: "Select Country",
         allowClear: true,
         minimumInputLength: 3,
-        id: function(item: any) {
+        id: function (item: any) {
             return item.CountryId;
         },
         ajax: {
             url: "/getCountries",
             dataType: "json",
-            data: function(term: any, page: any) {
+            data: function (term: any, page: any) {
                 return { query: term };
             },
-            results: function(data: any, page: any) {
+            results: function (data: any, page: any) {
                 return { results: data };
             },
         },
-        formatResult: function(item: any) {
+        formatResult: function (item: any) {
             return item.CountryName;
         },
-        formatSelection: function(item: any) {
+        formatSelection: function (item: any) {
             return item.CountryName;
         },
-        initSelection: function(element: any, callback: any) {
-            return $.get("/getCountryById", { query: element.val() }, function(data: any) {
-                callback(data);
-            });
+        initSelection: function (element: any, callback: any) {
+            return $.get(
+                "/getCountryById",
+                { query: element.val() },
+                function (data: any) {
+                    callback(data);
+                },
+            );
         },
     },
 });

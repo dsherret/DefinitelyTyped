@@ -6,7 +6,10 @@ export type KeyType<TData = unknown> = Readonly<{
     " $fragmentSpreads": FragmentType;
 }>;
 
-export type KeyTypeData<TKey extends KeyType<TData>, TData = unknown> = Required<TKey>[" $data"];
+export type KeyTypeData<
+    TKey extends KeyType<TData>,
+    TData = unknown,
+> = Required<TKey>[" $data"];
 
 export function readInlineData<TKey extends KeyType>(
     fragmentInput: GraphQLTaggedNode,

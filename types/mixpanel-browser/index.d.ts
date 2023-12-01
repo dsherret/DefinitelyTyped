@@ -89,13 +89,13 @@ export interface Config {
 
 export type VerboseResponse =
     | {
-        status: 1;
-        error: null;
-    }
+          status: 1;
+          error: null;
+      }
     | {
-        status: 0;
-        error: string;
-    };
+          status: 0;
+          error: string;
+      };
 
 export type NormalResponse = 1 | 0;
 
@@ -117,7 +117,11 @@ export interface People {
     append(prop: Dict, callback?: Callback): void;
     union(prop: string, value: any, callback?: Callback): void;
     union(prop: Dict, callback?: Callback): void;
-    track_charge(amount: number, propertiesOrCallback?: Dict | Callback, callback?: Callback): void;
+    track_charge(
+        amount: number,
+        propertiesOrCallback?: Dict | Callback,
+        callback?: Callback,
+    ): void;
     clear_charges(callback?: Callback): void;
     delete_user(): void;
 }
@@ -134,7 +138,11 @@ export interface Group {
         to?: Prop extends string ? string : undefined,
         callback?: Callback,
     ): Group;
-    union(list_name: string, values: Array<string | number>, callback?: Callback): Group;
+    union(
+        list_name: string,
+        values: Array<string | number>,
+        callback?: Callback,
+    ): Group;
     unset(prop: string, callback?: Callback): void;
 }
 
@@ -154,12 +162,27 @@ export interface Mixpanel {
     opt_in_tracking(options?: Partial<InTrackingOptions>): void;
     opt_out_tracking(options?: Partial<OutTrackingOptions>): void;
     push(item: PushItem): void;
-    register(props: Dict, days_or_options?: number | Partial<RegisterOptions>): void;
-    register_once(props: Dict, default_value?: any, days_or_options?: number | Partial<RegisterOptions>): void;
-    remove_group(group_key: string, group_ids: string | string[] | number | number[], callback?: Callback): void;
+    register(
+        props: Dict,
+        days_or_options?: number | Partial<RegisterOptions>,
+    ): void;
+    register_once(
+        props: Dict,
+        default_value?: any,
+        days_or_options?: number | Partial<RegisterOptions>,
+    ): void;
+    remove_group(
+        group_key: string,
+        group_ids: string | string[] | number | number[],
+        callback?: Callback,
+    ): void;
     reset(): void;
     set_config(config: Partial<Config>): void;
-    set_group(group_key: string, group_ids: string | string[] | number | number[], callback?: Callback): void;
+    set_group(
+        group_key: string,
+        group_ids: string | string[] | number | number[],
+        callback?: Callback,
+    ): void;
     time_event(event_name: string): void;
     track(
         event_name: string,
@@ -167,10 +190,23 @@ export interface Mixpanel {
         optionsOrCallback?: RequestOptions | Callback,
         callback?: Callback,
     ): void;
-    track_forms(query: Query, event_name: string, properties?: Dict | (() => void)): void;
-    track_links(query: Query, event_name: string, properties?: Dict | (() => void)): void;
+    track_forms(
+        query: Query,
+        event_name: string,
+        properties?: Dict | (() => void),
+    ): void;
+    track_links(
+        query: Query,
+        event_name: string,
+        properties?: Dict | (() => void),
+    ): void;
     track_pageview(properties?: Dict): void;
-    track_with_groups(event_name: string, properties: Dict, groups: Dict, callback?: Callback): void;
+    track_with_groups(
+        event_name: string,
+        properties: Dict,
+        groups: Dict,
+        callback?: Callback,
+    ): void;
     unregister(property: string, options?: Partial<RegisterOptions>): void;
     people: People;
 }
@@ -180,23 +216,40 @@ export interface OverridedMixpanel extends Mixpanel {
     init(token: string, config?: Partial<Config>): undefined;
 }
 
-export function add_group(group_key: string, group_id: string, callback?: Callback): void;
+export function add_group(
+    group_key: string,
+    group_id: string,
+    callback?: Callback,
+): void;
 export function alias(alias: string, original?: string): void;
-export function clear_opt_in_out_tracking(options?: Partial<ClearOptOutInOutOptions>): void;
+export function clear_opt_in_out_tracking(
+    options?: Partial<ClearOptOutInOutOptions>,
+): void;
 export function disable(events?: string[]): void;
 export function get_config(prop_name?: string): any;
 export function get_distinct_id(): any;
 export function get_group(group_key: string, group_id: string): Group;
 export function get_property(property_name: string): any;
-export function has_opted_in_tracking(options?: Partial<HasOptedInOutOptions>): boolean;
-export function has_opted_out_tracking(options?: Partial<HasOptedInOutOptions>): boolean;
+export function has_opted_in_tracking(
+    options?: Partial<HasOptedInOutOptions>,
+): boolean;
+export function has_opted_out_tracking(
+    options?: Partial<HasOptedInOutOptions>,
+): boolean;
 export function identify(unique_id?: string): any;
-export function init(token: string, config: Partial<Config>, name: string): Mixpanel;
+export function init(
+    token: string,
+    config: Partial<Config>,
+    name: string,
+): Mixpanel;
 export function init(token: string, config?: Partial<Config>): undefined;
 export function opt_in_tracking(options?: Partial<InTrackingOptions>): void;
 export function opt_out_tracking(options?: Partial<OutTrackingOptions>): void;
 export function push(item: PushItem): void;
-export function register(props: Dict, days_or_options?: number | Partial<RegisterOptions>): void;
+export function register(
+    props: Dict,
+    days_or_options?: number | Partial<RegisterOptions>,
+): void;
 export function register_once(
     props: Dict,
     default_value?: any,
@@ -221,10 +274,26 @@ export function track(
     optionsOrCallback?: RequestOptions | Callback,
     callback?: Callback,
 ): void;
-export function track_forms(query: Query, event_name: string, properties?: Dict | (() => void)): void;
-export function track_links(query: Query, event_name: string, properties?: Dict | (() => void)): void;
-export function track_with_groups(event_name: string, properties: Dict, groups: Dict, callback?: Callback): void;
-export function unregister(property: string, options?: Partial<RegisterOptions>): void;
+export function track_forms(
+    query: Query,
+    event_name: string,
+    properties?: Dict | (() => void),
+): void;
+export function track_links(
+    query: Query,
+    event_name: string,
+    properties?: Dict | (() => void),
+): void;
+export function track_with_groups(
+    event_name: string,
+    properties: Dict,
+    groups: Dict,
+    callback?: Callback,
+): void;
+export function unregister(
+    property: string,
+    options?: Partial<RegisterOptions>,
+): void;
 export const people: People;
 
 declare const mixpanel: OverridedMixpanel;

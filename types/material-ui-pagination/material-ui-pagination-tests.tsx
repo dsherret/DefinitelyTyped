@@ -30,7 +30,11 @@ class Pager extends React.Component<{}, PagerState> {
         const totalPage = Math.floor(length / perPage);
 
         const list: JSX.Element[] = [];
-        for (let i = pageIndex * perPage; i < (pageIndex * perPage + perPage); i++) {
+        for (
+            let i = pageIndex * perPage;
+            i < pageIndex * perPage + perPage;
+            i++
+        ) {
             list.push(<p key={`${i}`}>{`No.${i}`}</p>);
         }
 
@@ -44,9 +48,7 @@ class Pager extends React.Component<{}, PagerState> {
                         onChange={this.setPageIndex}
                     />
                 </ui.Card>
-                <div>
-                    {list}
-                </div>
+                <div>{list}</div>
                 <ui.Card>
                     <Pagination
                         total={totalPage}

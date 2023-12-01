@@ -133,7 +133,8 @@ interface ModalVideoBaseProps {
     aria: Aria;
 }
 
-export type ModalVideoProps = ModalVideoBaseProps & (Youtube | Vimeo | Youku | Custom);
+export type ModalVideoProps = ModalVideoBaseProps &
+    (Youtube | Vimeo | Youku | Custom);
 
 declare class ModalVideo extends React.Component<ModalVideoProps> {
     static defaultProps: {

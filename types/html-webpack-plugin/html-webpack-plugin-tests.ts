@@ -5,15 +5,17 @@ const plugin = new HtmlWebpackPlugin();
 
 const webpackCompilation: compilation.Compilation = {} as any;
 const templateFunction = () => "";
-plugin.evaluateCompilationResult(webpackCompilation, "").then(res => {
+plugin.evaluateCompilationResult(webpackCompilation, "").then((res) => {
     if (typeof res === "function") {
         res({});
     } else {
         res.trim();
     }
 });
-plugin.executeTemplate(templateFunction, undefined, undefined, webpackCompilation).then(res => res.trim());
-plugin.postProcessHtml("", undefined, undefined).then(res => res.trim());
+plugin
+    .executeTemplate(templateFunction, undefined, undefined, webpackCompilation)
+    .then((res) => res.trim());
+plugin.postProcessHtml("", undefined, undefined).then((res) => res.trim());
 
 const optionsArray: HtmlWebpackPlugin.Options[] = [
     {
@@ -119,17 +121,21 @@ const optionsArray: HtmlWebpackPlugin.Options[] = [
     },
 ];
 
-const plugins: HtmlWebpackPlugin[] = optionsArray.map(options => new HtmlWebpackPlugin(options));
+const plugins: HtmlWebpackPlugin[] = optionsArray.map(
+    (options) => new HtmlWebpackPlugin(options),
+);
 
 // Webpack plugin `apply` function
 function apply(compiler: Compiler) {
-    compiler.hooks.compilation.tap("SomeWebpackPlugin", (compilation: compilation.Compilation) => {
-        (compilation.hooks as HtmlWebpackPlugin.Hooks).htmlWebpackPluginAfterHtmlProcessing.tap(
-            "MyPlugin",
-            (data) => {
+    compiler.hooks.compilation.tap(
+        "SomeWebpackPlugin",
+        (compilation: compilation.Compilation) => {
+            (
+                compilation.hooks as HtmlWebpackPlugin.Hooks
+            ).htmlWebpackPluginAfterHtmlProcessing.tap("MyPlugin", (data) => {
                 data.html += "The Magic Footer";
                 return data;
-            },
-        );
-    });
+            });
+        },
+    );
 }

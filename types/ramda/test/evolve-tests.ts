@@ -1,9 +1,12 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     // No type transformation
 
-    const a1 = R.evolve({ elapsed: R.add(1), remaining: R.add(-1) }, { name: "Tomato", elapsed: 100, remaining: 1400 });
+    const a1 = R.evolve(
+        { elapsed: R.add(1), remaining: R.add(-1) },
+        { name: "Tomato", elapsed: 100, remaining: 1400 },
+    );
 
     const a1Test: { elapsed: number; remaining: number; name: string } = a1;
 
@@ -17,7 +20,10 @@ import * as R from "ramda";
 
     // Object doesn't have all evolver keys
 
-    const a3 = R.evolve({ age: R.add(1), name: R.trim }, { name: "Potato", elapsed: 100 });
+    const a3 = R.evolve(
+        { age: R.add(1), name: R.trim },
+        { name: "Potato", elapsed: 100 },
+    );
 
     const a3Test: { name: string; elapsed: number } = a3;
 
@@ -29,7 +35,10 @@ import * as R from "ramda";
 
     // Nested transformation:
 
-    const ex1 = R.evolve({ a: { b: R.toString, d: { e: R.toString } } }, { a: { b: 1, c: null, d: { e: 2 } } });
+    const ex1 = R.evolve(
+        { a: { b: R.toString, d: { e: R.toString } } },
+        { a: { b: 1, c: null, d: { e: 2 } } },
+    );
 
     const ex1Test: { a: { b: string; c: null; d: { e: string } } } = ex1;
 
@@ -56,7 +65,9 @@ import * as R from "ramda";
 
     // Evolver supports partial transformation:
 
-    const ev2: R.Evolver<{ a: string; b: boolean }> = { b: (b: boolean) => true };
+    const ev2: R.Evolver<{ a: string; b: boolean }> = {
+        b: (b: boolean) => true,
+    };
 
     // Evolver disallows unknown prop:
 
@@ -76,4 +87,4 @@ import * as R from "ramda";
 
     // @ts-expect-error
     const ev6: R.Evolver = { a: 1 };
-});
+};

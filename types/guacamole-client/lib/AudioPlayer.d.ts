@@ -30,7 +30,10 @@ export class AudioPlayer {
      * @return A Guacamole.AudioPlayer instance supporting the given mimetype and
      * reading from the given stream, or null if support for the given mimetype is absent.
      */
-    static getInstance(stream: InputStream, mimetype: Mimetype): AudioPlayer | null;
+    static getInstance(
+        stream: InputStream,
+        mimetype: Mimetype,
+    ): AudioPlayer | null;
 
     /**
      * Notifies this Guacamole.AudioPlayer that all audio up to the current

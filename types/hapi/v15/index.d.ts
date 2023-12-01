@@ -88,7 +88,8 @@ export interface ICatBoxCachePolicyOptions {
 }
 
 /** Any connections configuration server defaults can be included to override and customize the individual connection. */
-export interface IServerConnectionOptions extends IConnectionConfigurationServerDefaults {
+export interface IServerConnectionOptions
+    extends IConnectionConfigurationServerDefaults {
     /**  - the public hostname or IP address. Used only to set server.info.host and server.info.uri. If not configured, defaults to the operating system hostname and if not available, to 'localhost'.*/
     host?: string | undefined;
     /** - sets the host name or IP address the connection will listen on.If not configured, defaults to host if present, otherwise to all available network interfaces (i.e. '0.0.0.0').Set to 127.0.0.1 or localhost to restrict connection to only those coming from the same machine.*/
@@ -102,16 +103,22 @@ export interface IServerConnectionOptions extends IConnectionConfigurationServer
     /**  - indicates that the connection.listener will be started manually outside the framework.Cannot be specified with a port setting.Defaults to true.*/
     autoListen?: boolean | undefined;
     /**  caching headers configuration: */
-    cache?: {
-        /** - an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive.Defaults to [200]. */
-        statuses: number[];
-    } | undefined;
+    cache?:
+        | {
+              /** - an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive.Defaults to [200]. */
+              statuses: number[];
+          }
+        | undefined;
     /** - a string or string array of labels used to server.select() specific connections matching the specified labels.Defaults to an empty array [](no labels).*/
     labels?: string | string[] | undefined;
     /**  - used to create an HTTPS connection.The tls object is passed unchanged as options to the node.js HTTPS server as described in the node.js HTTPS documentation.Set to true when passing a listener object that has been configured to use TLS directly. */
     tls?:
         | boolean
-        | { key?: string | undefined; cert?: string | undefined; pfx?: string | undefined }
+        | {
+              key?: string | undefined;
+              cert?: string | undefined;
+              pfx?: string | undefined;
+          }
         | Object
         | undefined;
 }
@@ -122,23 +129,27 @@ export interface IConnectionConfigurationServerDefaults {
     /** if false, response content encoding is disabled. Defaults to true */
     compression?: boolean | undefined;
     /**  connection load limits configuration where:  */
-    load?: {
-        /**  maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxHeapUsedBytes?: number | undefined;
-        /**  maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxRssBytes?: number | undefined;
-        /**  maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxEventLoopDelay?: number | undefined;
-    } | undefined;
+    load?:
+        | {
+              /**  maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxHeapUsedBytes?: number | undefined;
+              /**  maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxRssBytes?: number | undefined;
+              /**  maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxEventLoopDelay?: number | undefined;
+          }
+        | undefined;
     /**  plugin-specific configuration which can later be accessed via connection.settings.plugins. Provides a place to store and pass connection-specific plugin configuration. plugins is an object where each key is a plugin name and the value is the configuration. Note the difference between connection.settings.plugins which is used to store configuration values and connection.plugins which is meant for storing run-time state. */
     plugins?: any;
     /**  controls how incoming request URIs are matched against the routing table: */
-    router?: {
-        /**  determines whether the paths '/example' and '/EXAMPLE' are considered different resources. Defaults to true.  */
-        isCaseSensitive: boolean;
-        /**  removes trailing slashes on incoming paths. Defaults to false.  */
-        stripTrailingSlash: boolean;
-    } | undefined;
+    router?:
+        | {
+              /**  determines whether the paths '/example' and '/EXAMPLE' are considered different resources. Defaults to true.  */
+              isCaseSensitive: boolean;
+              /**  removes trailing slashes on incoming paths. Defaults to false.  */
+              stripTrailingSlash: boolean;
+          }
+        | undefined;
     /** a route options object used to set the default configuration for every route. */
     routes?: IRouteAdditionalConfigurationOptions | undefined;
     state?: IServerState | undefined;
@@ -156,26 +167,38 @@ export interface IServerOptions {
      sharedif true, allows multiple cache users to share the same segment (e.g. multiple methods using the same cache storage container). Default to false.
      other options passed to the catbox strategy used.
      an array of the above object for configuring multiple cache instances, each with a unique name. When an array of objects is provided, multiple cache connections are established and each array item (except one) must include a name.  */
-    cache?: string | ICatBoxCacheOptions | ICatBoxCacheOptions[] | any | undefined;
+    cache?:
+        | string
+        | ICatBoxCacheOptions
+        | ICatBoxCacheOptions[]
+        | any
+        | undefined;
     /**  sets the default connections configuration which can be overridden by each connection where:  */
     connections?: IConnectionConfigurationServerDefaults | undefined;
     /** determines which logged events are sent to the console (this should only be used for development and does not affect which events are actually logged internally and recorded). Set to false to disable all console logging, or to an object*/
-    debug?: boolean | {
-        /** - a string array of server log tags to be displayed via console.error() when the events are logged via server.log() as well as internally generated server logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
-        log: string[];
-        /**  - a string array of request log tags to be displayed via console.error() when the events are logged via request.log() as well as internally generated request logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error.*/
-        request: string[];
-    } | undefined;
+    debug?:
+        | boolean
+        | {
+              /** - a string array of server log tags to be displayed via console.error() when the events are logged via server.log() as well as internally generated server logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
+              log: string[];
+              /**  - a string array of request log tags to be displayed via console.error() when the events are logged via request.log() as well as internally generated request logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error.*/
+              request: string[];
+          }
+        | undefined;
     /** file system related settings*/
-    files?: {
-        /**  sets the maximum number of file etag hash values stored in the etags cache. Defaults to 10000.*/
-        etagsCacheMaxSize?: number | undefined;
-    } | undefined;
+    files?:
+        | {
+              /**  sets the maximum number of file etag hash values stored in the etags cache. Defaults to 10000.*/
+              etagsCacheMaxSize?: number | undefined;
+          }
+        | undefined;
     /**  process load monitoring*/
-    load?: {
-        /**  the frequency of sampling in milliseconds. Defaults to 0 (no sampling).*/
-        sampleInterval?: number | undefined;
-    } | undefined;
+    load?:
+        | {
+              /**  the frequency of sampling in milliseconds. Defaults to 0 (no sampling).*/
+              sampleInterval?: number | undefined;
+          }
+        | undefined;
 
     /** options passed to the mimos module (https://github.com/hapijs/mimos) when generating the mime database used by the server and accessed via server.mime.*/
     mime?: any;
@@ -192,7 +215,11 @@ export interface IServerViewCompile {
         options: any,
         callback: (
             err: any,
-            compiled: (context: any, options: any, callback: (err: any, rendered: boolean) => void) => void,
+            compiled: (
+                context: any,
+                options: any,
+                callback: (err: any, rendered: boolean) => void,
+            ) => void,
         ) => void,
     ): void;
 }
@@ -234,17 +261,25 @@ export interface IServerViewsAdditionalOptions {
     context?: any;
 }
 
-export interface IServerViewsEnginesOptions extends IServerViewsAdditionalOptions {
+export interface IServerViewsEnginesOptions
+    extends IServerViewsAdditionalOptions {
     /** - the npm module used for rendering the templates.The module object must contain: "module", the rendering function. The required function signature depends on the compileMode settings.
      * If the compileMode is 'sync', the signature is compile(template, options), the return value is a function with signature function(context, options), and the method is allowed to throw errors.If the compileMode is 'async', the signature is compile(template, options, callback) where callback has the signature function(err, compiled) where compiled is a function with signature function(context, options, callback) and callback has the signature function(err, rendered). */
     module: {
-        compile?(template: any, options: any): (context: any, options: any) => void;
+        compile?(
+            template: any,
+            options: any,
+        ): (context: any, options: any) => void;
         compile?(
             template: any,
             options: any,
             callback: (
                 err: any,
-                compiled: (context: any, options: any, callback: (err: any, rendered: any) => void) => void,
+                compiled: (
+                    context: any,
+                    options: any,
+                    callback: (err: any, rendered: any) => void,
+                ) => void,
             ) => void,
         ): void;
     };
@@ -263,7 +298,8 @@ path: '/static/templates'
 });
  When server.views() is called within a plugin, the views manager is only available to plugins methods.
  */
-export interface IServerViewsConfiguration extends IServerViewsAdditionalOptions {
+export interface IServerViewsConfiguration
+    extends IServerViewsAdditionalOptions {
     /** - required object where each key is a file extension (e.g. 'html', 'hbr'), mapped to the npm module used for rendering the templates.Alternatively, the extension can be mapped to an object with the following options:*/
     engines: IDictionary<any> | IServerViewsEnginesOptions;
     /**  defines the default filename extension to append to template names when multiple engines are configured and not explicit extension is provided for a given template. No default value.*/
@@ -341,12 +377,28 @@ export interface IReplyMethods {
 export interface IReply extends IReplyMethods {
     <T>(
         err: Error,
-        result?: string | number | boolean | Buffer | stream.Stream | Promise<T> | T,
+        result?:
+            | string
+            | number
+            | boolean
+            | Buffer
+            | stream.Stream
+            | Promise<T>
+            | T,
         /**  Note that when used to return both an error and credentials in the authentication methods, reply() must be called with three arguments function(err, null, data) where data is the additional authentication information. */
         credentialData?: any,
     ): IBoom;
     /**  Note that if result is a Stream with a statusCode property, that status code will be used as the default response code.  */
-    <T>(result: string | number | boolean | Buffer | stream.Stream | Promise<T> | T): Response;
+    <T>(
+        result:
+            | string
+            | number
+            | boolean
+            | Buffer
+            | stream.Stream
+            | Promise<T>
+            | T,
+    ): Response;
 }
 
 /**  Concludes the handler activity by setting a response and returning control over to the framework where:
@@ -413,7 +465,14 @@ export interface IProxyHandlerConfig {
      err - internal error condition.
      uri - the absolute proxy URI.
      headers - optional object where each key is an HTTP request header and the value is the header content.*/
-    mapUri?(request: Request, callback: (err: any, uri: string, headers?: { [key: string]: string }) => void): void;
+    mapUri?(
+        request: Request,
+        callback: (
+            err: any,
+            uri: string,
+            headers?: { [key: string]: string },
+        ) => void,
+    ): void;
     /**  a custom function for processing the response from the upstream service before sending to the client. Useful for custom error handling of responses from the proxied endpoint or other payload manipulation. Function signature is function(err, res, request, reply, settings, ttl) where: - err - internal or upstream error returned from attempting to contact the upstream proxy. - res - the node response object received from the upstream service. res is a readable stream (use the wreck module read method to easily convert it to a Buffer or string). - request - is the incoming request object. - reply - the reply interface function. - settings - the proxy handler configuration. - ttl - the upstream TTL in milliseconds if proxy.ttl it set to 'upstream' and the upstream response included a valid 'Cache-Control' header with 'max-age'.*/
     onResponse?(
         err: any,
@@ -466,125 +525,146 @@ export interface IRouteAdditionalConfigurationOptions {
     /** authentication configuration.Value can be: false to disable authentication if a default strategy is set.
      a string with the name of an authentication strategy registered with server.auth.strategy().
      an object  */
-    auth?: boolean | string | {
-        /**  the authentication mode.Defaults to 'required' if a server authentication strategy is configured, otherwise defaults to no authentication.Available values:
+    auth?:
+        | boolean
+        | string
+        | {
+              /**  the authentication mode.Defaults to 'required' if a server authentication strategy is configured, otherwise defaults to no authentication.Available values:
          'required'authentication is required.
          'optional'authentication is optional (must be valid if present).
          'try'same as 'optional' but allows for invalid authentication. */
-        mode?: string | undefined;
-        /**  a string array of strategy names in order they should be attempted.If only one strategy is used, strategy can be used instead with the single string value.Defaults to the default authentication strategy which is available only when a single strategy is configured.  */
-        strategies?: string | string[] | undefined;
-        /**  if set, the payload (in requests other than 'GET' and 'HEAD') is authenticated after it is processed.Requires a strategy with payload authentication support (e.g.Hawk).Cannot be set to a value other than 'required' when the scheme sets the options.payload to true.Available values:
+              mode?: string | undefined;
+              /**  a string array of strategy names in order they should be attempted.If only one strategy is used, strategy can be used instead with the single string value.Defaults to the default authentication strategy which is available only when a single strategy is configured.  */
+              strategies?: string | string[] | undefined;
+              /**  if set, the payload (in requests other than 'GET' and 'HEAD') is authenticated after it is processed.Requires a strategy with payload authentication support (e.g.Hawk).Cannot be set to a value other than 'required' when the scheme sets the options.payload to true.Available values:
          falseno payload authentication.This is the default value.
          'required'payload authentication required.This is the default value when the scheme sets options.payload to true.
          'optional'payload authentication performed only when the client includes payload authentication information (e.g.hash attribute in Hawk). */
-        payload?: string | undefined;
-        /**  the application scope required to access the route.Value can be a scope string or an array of scope strings.The authenticated credentials object scope property must contain at least one of the scopes defined to access the route.Set to false to remove scope requirements.Defaults to no scope required.  */
-        scope?: string | string[] | boolean | undefined;
-        /** the required authenticated entity type.If set, must match the entity value of the authentication credentials.Available values:
+              payload?: string | undefined;
+              /**  the application scope required to access the route.Value can be a scope string or an array of scope strings.The authenticated credentials object scope property must contain at least one of the scopes defined to access the route.Set to false to remove scope requirements.Defaults to no scope required.  */
+              scope?: string | string[] | boolean | undefined;
+              /** the required authenticated entity type.If set, must match the entity value of the authentication credentials.Available values:
          anythe authentication can be on behalf of a user or application.This is the default value.
          userthe authentication must be on behalf of a user.
          appthe authentication must be on behalf of an application. */
-        entity?: string | undefined;
-        /**
-         * an object or array of objects specifying the route access rules. Each rule is evaluated against an incoming
-         * request and access is granted if at least one rule matches. Each rule object must include at least one of:
-         */
-        access?: IRouteAdditionalConfigurationAuthAccess | IRouteAdditionalConfigurationAuthAccess[] | undefined;
-    } | undefined;
+              entity?: string | undefined;
+              /**
+               * an object or array of objects specifying the route access rules. Each rule is evaluated against an incoming
+               * request and access is granted if at least one rule matches. Each rule object must include at least one of:
+               */
+              access?:
+                  | IRouteAdditionalConfigurationAuthAccess
+                  | IRouteAdditionalConfigurationAuthAccess[]
+                  | undefined;
+          }
+        | undefined;
     /** an object passed back to the provided handler (via this) when called. */
     bind?: any;
     /** if the route method is 'GET', the route can be configured to include caching directives in the response using the following options */
     cache?: IRouteAdditionalConfigurationCache | undefined;
     /** the Cross- Origin Resource Sharing protocol allows browsers to make cross- origin API calls.CORS is required by web applications running inside a browser which are loaded from a different domain than the API server.CORS headers are disabled by default. To enable, set cors to true, or to an object with the following options: */
-    cors?: {
-        /** a strings array of allowed origin servers ('Access-Control-Allow-Origin').The array can contain any combination of fully qualified origins along with origin strings containing a wildcard '' character, or a single `''origin string. Defaults to any origin['*']`. */
-        origin?: string[] | undefined;
-        /** if true, matches the value of the incoming 'Origin' header to the list of origin values ('*' matches anything) and if a match is found, uses that as the value of the 'Access-Control-Allow-Origin' response header.When false, the origin config is returned as- is.Defaults to true.  */
-        matchOrigin?: boolean | undefined;
-        /** if false, prevents the connection from returning the full list of non- wildcard origin values if the incoming origin header does not match any of the values.Has no impact if matchOrigin is set to false.Defaults to true. */
-        isOriginExposed?: boolean | undefined;
-        /**  number of seconds the browser should cache the CORS response ('Access-Control-Max-Age').The greater the value, the longer it will take before the browser checks for changes in policy.Defaults to 86400 (one day). */
-        maxAge?: number | undefined;
-        /**  a strings array of allowed headers ('Access-Control-Allow-Headers').Defaults to ['Authorization', 'Content-Type', 'If-None-Match']. */
-        headers?: string[] | undefined;
-        /**  a strings array of additional headers to headers.Use this to keep the default headers in place. */
-        additionalHeaders?: string[] | undefined;
-        /**  a strings array of allowed HTTP methods ('Access-Control-Allow-Methods').Defaults to ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS']. */
-        methods?: string[] | undefined;
-        /**  a strings array of additional methods to methods.Use this to keep the default methods in place. */
-        additionalMethods?: string[] | undefined;
-        /**  a strings array of exposed headers ('Access-Control-Expose-Headers').Defaults to ['WWW-Authenticate', 'Server-Authorization']. */
-        exposedHeaders?: string[] | undefined;
-        /**  a strings array of additional headers to exposedHeaders.Use this to keep the default headers in place. */
-        additionalExposedHeaders?: string[] | undefined;
-        /**  if true, allows user credentials to be sent ('Access-Control-Allow-Credentials').Defaults to false. */
-        credentials?: boolean | undefined;
-        /** if false, preserves existing CORS headers set manually before the response is sent.Defaults to true. */
-        override?: boolean | undefined;
-    } | undefined;
+    cors?:
+        | {
+              /** a strings array of allowed origin servers ('Access-Control-Allow-Origin').The array can contain any combination of fully qualified origins along with origin strings containing a wildcard '' character, or a single `''origin string. Defaults to any origin['*']`. */
+              origin?: string[] | undefined;
+              /** if true, matches the value of the incoming 'Origin' header to the list of origin values ('*' matches anything) and if a match is found, uses that as the value of the 'Access-Control-Allow-Origin' response header.When false, the origin config is returned as- is.Defaults to true.  */
+              matchOrigin?: boolean | undefined;
+              /** if false, prevents the connection from returning the full list of non- wildcard origin values if the incoming origin header does not match any of the values.Has no impact if matchOrigin is set to false.Defaults to true. */
+              isOriginExposed?: boolean | undefined;
+              /**  number of seconds the browser should cache the CORS response ('Access-Control-Max-Age').The greater the value, the longer it will take before the browser checks for changes in policy.Defaults to 86400 (one day). */
+              maxAge?: number | undefined;
+              /**  a strings array of allowed headers ('Access-Control-Allow-Headers').Defaults to ['Authorization', 'Content-Type', 'If-None-Match']. */
+              headers?: string[] | undefined;
+              /**  a strings array of additional headers to headers.Use this to keep the default headers in place. */
+              additionalHeaders?: string[] | undefined;
+              /**  a strings array of allowed HTTP methods ('Access-Control-Allow-Methods').Defaults to ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS']. */
+              methods?: string[] | undefined;
+              /**  a strings array of additional methods to methods.Use this to keep the default methods in place. */
+              additionalMethods?: string[] | undefined;
+              /**  a strings array of exposed headers ('Access-Control-Expose-Headers').Defaults to ['WWW-Authenticate', 'Server-Authorization']. */
+              exposedHeaders?: string[] | undefined;
+              /**  a strings array of additional headers to exposedHeaders.Use this to keep the default headers in place. */
+              additionalExposedHeaders?: string[] | undefined;
+              /**  if true, allows user credentials to be sent ('Access-Control-Allow-Credentials').Defaults to false. */
+              credentials?: boolean | undefined;
+              /** if false, preserves existing CORS headers set manually before the response is sent.Defaults to true. */
+              override?: boolean | undefined;
+          }
+        | undefined;
     /**   defines the behavior for serving static resources using the built-in route handlers for files and directories: */
-    files?: {
-        /** determines the folder relative paths are resolved against when using the file and directory handlers. */
-        relativeTo: string;
-    } | undefined;
+    files?:
+        | {
+              /** determines the folder relative paths are resolved against when using the file and directory handlers. */
+              relativeTo: string;
+          }
+        | undefined;
 
     /**  an alternative location for the route handler option. */
-    handler?: ISessionHandler | IStrictSessionHandler | string | IRouteHandlerConfig | undefined;
+    handler?:
+        | ISessionHandler
+        | IStrictSessionHandler
+        | string
+        | IRouteHandlerConfig
+        | undefined;
     /** an optional unique identifier used to look up the route using server.lookup(). */
     id?: number | undefined;
     /** optional arguments passed to JSON.stringify() when converting an object or error response to a string payload.Supports the following: */
-    json?: {
-        /** the replacer function or array.Defaults to no action. */
-        replacer?: Function | string[] | undefined;
-        /**  number of spaces to indent nested object keys.Defaults to no indentation. */
-        space?: number | string | undefined;
-        /** string suffix added after conversion to JSON string.Defaults to no suffix. */
-        suffix?: string | undefined;
-    } | undefined;
+    json?:
+        | {
+              /** the replacer function or array.Defaults to no action. */
+              replacer?: Function | string[] | undefined;
+              /**  number of spaces to indent nested object keys.Defaults to no indentation. */
+              space?: number | string | undefined;
+              /** string suffix added after conversion to JSON string.Defaults to no suffix. */
+              suffix?: string | undefined;
+          }
+        | undefined;
     /** enables JSONP support by setting the value to the query parameter name containing the function name used to wrap the response payload.For example, if the value is 'callback', a request comes in with 'callback=me', and the JSON response is '{ "a":"b" }', the payload will be 'me({ "a":"b" });'.Does not work with stream responses. */
     jsonp?: string | undefined;
     /** determines how the request payload is processed: */
-    payload?: {
-        /**  the type of payload representation requested. The value must be one of:
+    payload?:
+        | {
+              /**  the type of payload representation requested. The value must be one of:
          'data'the incoming payload is read fully into memory.If parse is true, the payload is parsed (JSON, formdecoded, multipart) based on the 'Content- Type' header.If parse is false, the raw Buffer is returned.This is the default value except when a proxy handler is used.
          'stream'the incoming payload is made available via a Stream.Readable interface.If the payload is 'multipart/form-data' and parse is true, fields values are presented as text while files are provided as streams.File streams from a 'multipart/form-data' upload will also have a property hapi containing filename and headers properties.
          'file'the incoming payload in written to temporary file in the directory specified by the server's payload.uploads settings. If the payload is 'multipart/ formdata' and parse is true, fields values are presented as text while files are saved. Note that it is the sole responsibility of the application to clean up the files generated by the framework. This can be done by keeping track of which files are used (e.g. using the request.app object), and listening to the server 'response' event to perform any needed cleaup. */
-        output?: string | undefined;
-        /**  can be true, false, or gunzip; determines if the incoming payload is processed or presented raw. true and gunzip includes gunzipping when the appropriate 'Content-Encoding' is specified on the received request. If parsing is enabled and the 'Content-Type' is known (for the whole payload as well as parts), the payload is converted into an object when possible. If the format is unknown, a Bad Request (400) error response is sent. Defaults to true, except when a proxy handler is used. The supported mime types are:
+              output?: string | undefined;
+              /**  can be true, false, or gunzip; determines if the incoming payload is processed or presented raw. true and gunzip includes gunzipping when the appropriate 'Content-Encoding' is specified on the received request. If parsing is enabled and the 'Content-Type' is known (for the whole payload as well as parts), the payload is converted into an object when possible. If the format is unknown, a Bad Request (400) error response is sent. Defaults to true, except when a proxy handler is used. The supported mime types are:
          'application/json'
          'application/x-www-form-urlencoded'
          'application/octet-stream'
          'text/ *'
          'multipart/form-data' */
-        parse?: string | boolean | undefined;
-        /** a string or an array of strings with the allowed mime types for the endpoint.Defaults to any of the supported mime types listed above.Note that allowing other mime types not listed will not enable them to be parsed, and that if parsing mode is 'parse', the request will result in an error response. */
-        allow?: string | string[] | undefined;
-        /** a mime type string overriding the 'Content-Type' header value received.Defaults to no override. */
-        override?: string | undefined;
-        /**  limits the size of incoming payloads to the specified byte count.Allowing very large payloads may cause the server to run out of memory.Defaults to 1048576 (1MB).  */
-        maxBytes?: number | undefined;
-        /** payload reception timeout in milliseconds.Sets the maximum time allowed for the client to transmit the request payload (body) before giving up and responding with a Request Timeout (408) error response.Set to false to disable.Defaults to 10000 (10 seconds). */
-        timeout?: number | undefined;
-        /**  the directory used for writing file uploads.Defaults to os.tmpDir(). */
-        uploads?: string | undefined;
-        /**  determines how to handle payload parsing errors. Allowed values are:
+              parse?: string | boolean | undefined;
+              /** a string or an array of strings with the allowed mime types for the endpoint.Defaults to any of the supported mime types listed above.Note that allowing other mime types not listed will not enable them to be parsed, and that if parsing mode is 'parse', the request will result in an error response. */
+              allow?: string | string[] | undefined;
+              /** a mime type string overriding the 'Content-Type' header value received.Defaults to no override. */
+              override?: string | undefined;
+              /**  limits the size of incoming payloads to the specified byte count.Allowing very large payloads may cause the server to run out of memory.Defaults to 1048576 (1MB).  */
+              maxBytes?: number | undefined;
+              /** payload reception timeout in milliseconds.Sets the maximum time allowed for the client to transmit the request payload (body) before giving up and responding with a Request Timeout (408) error response.Set to false to disable.Defaults to 10000 (10 seconds). */
+              timeout?: number | undefined;
+              /**  the directory used for writing file uploads.Defaults to os.tmpDir(). */
+              uploads?: string | undefined;
+              /**  determines how to handle payload parsing errors. Allowed values are:
          'error'return a Bad Request (400) error response. This is the default value.
          'log'report the error but continue processing the request.
          'ignore'take no action and continue processing the request. */
-        failAction?: string | undefined;
-    } | undefined;
+              failAction?: string | undefined;
+          }
+        | undefined;
     /** pluginspecific configuration.plugins is an object where each key is a plugin name and the value is the plugin configuration.  */
     plugins?: IDictionary<any> | undefined;
     /** an array with [route prerequisites] methods which are executed in serial or in parallel before the handler is called.  */
     pre?: any[] | undefined;
     /** validation rules for the outgoing response payload (response body).Can only validate object response: */
-    response?: {
-        /** the default HTTP status code when the payload is empty. Value can be 200 or 204.
+    response?:
+        | {
+              /** the default HTTP status code when the payload is empty. Value can be 200 or 204.
          Note that a 200 status code is converted to a 204 only at the time or response transmission
          (the response status code will remain 200 throughout the request lifecycle unless manually set). Defaults to 200. */
-        emptyStatusCode?: number | undefined;
-        /**   the default response object validation rules (for all non-error responses) expressed as one of:
+              emptyStatusCode?: number | undefined;
+              /**   the default response object validation rules (for all non-error responses) expressed as one of:
          true - any payload allowed (no validation performed). This is the default.
          false - no payload allowed.
          a Joi validation object.
@@ -592,58 +672,71 @@ export interface IRouteAdditionalConfigurationOptions {
          value - the object containing the response object.
          options - the server validation options.
          next(err) - the callback function called when validation is completed.  */
-        schema?: boolean | any | undefined;
-        /** HTTP status- codespecific validation rules.The status key is set to an object where each key is a 3 digit HTTP status code and the value has the same definition as schema.If a response status code is not present in the status object, the schema definition is used, expect for errors which are not validated by default.  */
-        status?: { [statusCode: number]: boolean | any } | undefined;
-        /** the percent of responses validated (0100).Set to 0 to disable all validation.Defaults to 100 (all responses). */
-        sample?: number | undefined;
-        /**  defines what to do when a response fails validation.Options are:
+              schema?: boolean | any | undefined;
+              /** HTTP status- codespecific validation rules.The status key is set to an object where each key is a 3 digit HTTP status code and the value has the same definition as schema.If a response status code is not present in the status object, the schema definition is used, expect for errors which are not validated by default.  */
+              status?: { [statusCode: number]: boolean | any } | undefined;
+              /** the percent of responses validated (0100).Set to 0 to disable all validation.Defaults to 100 (all responses). */
+              sample?: number | undefined;
+              /**  defines what to do when a response fails validation.Options are:
          errorreturn an Internal Server Error (500) error response.This is the default value.
          loglog the error but send the response.  */
-        failAction?: string | undefined;
-        /** if true, applies the validation rule changes to the response.Defaults to false. */
-        modify?: boolean | undefined;
-        /** options to pass to Joi.Useful to set global options such as stripUnknown or abortEarly (the complete list is available here: https://github.com/hapijs/joi#validatevalue-schema-options-callback ).Defaults to no options.  */
-        options?: any;
-    } | undefined;
+              failAction?: string | undefined;
+              /** if true, applies the validation rule changes to the response.Defaults to false. */
+              modify?: boolean | undefined;
+              /** options to pass to Joi.Useful to set global options such as stripUnknown or abortEarly (the complete list is available here: https://github.com/hapijs/joi#validatevalue-schema-options-callback ).Defaults to no options.  */
+              options?: any;
+          }
+        | undefined;
     /** sets common security headers (disabled by default).To enable set security to true or to an object with the following options */
-    security?: boolean | {
-        /** controls the 'Strict-Transport-Security' header.If set to true the header will be set to max- age=15768000, if specified as a number the maxAge parameter will be set to that number.Defaults to true.You may also specify an object with the following fields: */
-        hsts?: boolean | number | {
-            /** the max- age portion of the header, as a number.Default is 15768000. */
-            maxAge?: number | undefined;
-            /**  a boolean specifying whether to add the includeSubdomains flag to the header. */
-            includeSubdomains?: boolean | undefined;
-            /** a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header. */
-            preload?: boolean | undefined;
-        } | undefined;
-        /** controls the 'X-Frame-Options' header.When set to true the header will be set to DENY, you may also specify a string value of 'deny' or 'sameorigin'.To use the 'allow-from' rule, you must set this to an object with the following fields: */
-        xframe?: {
-            /** either 'deny', 'sameorigin', or 'allow-from' */
-            rule: string;
-            /** when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored.If rule is 'allow-from' but source is unset, the rule will be automatically changed to 'sameorigin'. */
-            source: string;
-        } | undefined;
-        /** boolean that controls the 'X-XSS-PROTECTION' header for IE.Defaults to true which sets the header to equal '1; mode=block'.NOTE: This setting can create a security vulnerability in versions of IE below 8, as well as unpatched versions of IE8.See here and here for more information.If you actively support old versions of IE, it may be wise to explicitly set this flag to false. */
-        xss?: boolean | undefined;
-        /**  boolean controlling the 'X-Download-Options' header for IE, preventing downloads from executing in your context.Defaults to true setting the header to 'noopen'. */
-        noOpen?: boolean | undefined;
-        /** boolean controlling the 'X-Content-Type-Options' header.Defaults to true setting the header to its only and default option, 'nosniff'. */
-        noSniff?: boolean | undefined;
-    } | undefined;
+    security?:
+        | boolean
+        | {
+              /** controls the 'Strict-Transport-Security' header.If set to true the header will be set to max- age=15768000, if specified as a number the maxAge parameter will be set to that number.Defaults to true.You may also specify an object with the following fields: */
+              hsts?:
+                  | boolean
+                  | number
+                  | {
+                        /** the max- age portion of the header, as a number.Default is 15768000. */
+                        maxAge?: number | undefined;
+                        /**  a boolean specifying whether to add the includeSubdomains flag to the header. */
+                        includeSubdomains?: boolean | undefined;
+                        /** a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header. */
+                        preload?: boolean | undefined;
+                    }
+                  | undefined;
+              /** controls the 'X-Frame-Options' header.When set to true the header will be set to DENY, you may also specify a string value of 'deny' or 'sameorigin'.To use the 'allow-from' rule, you must set this to an object with the following fields: */
+              xframe?:
+                  | {
+                        /** either 'deny', 'sameorigin', or 'allow-from' */
+                        rule: string;
+                        /** when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored.If rule is 'allow-from' but source is unset, the rule will be automatically changed to 'sameorigin'. */
+                        source: string;
+                    }
+                  | undefined;
+              /** boolean that controls the 'X-XSS-PROTECTION' header for IE.Defaults to true which sets the header to equal '1; mode=block'.NOTE: This setting can create a security vulnerability in versions of IE below 8, as well as unpatched versions of IE8.See here and here for more information.If you actively support old versions of IE, it may be wise to explicitly set this flag to false. */
+              xss?: boolean | undefined;
+              /**  boolean controlling the 'X-Download-Options' header for IE, preventing downloads from executing in your context.Defaults to true setting the header to 'noopen'. */
+              noOpen?: boolean | undefined;
+              /** boolean controlling the 'X-Content-Type-Options' header.Defaults to true setting the header to its only and default option, 'nosniff'. */
+              noSniff?: boolean | undefined;
+          }
+        | undefined;
     /** HTTP state management (cookies) allows the server to store information on the client which is sent back to the server with every request (as defined in RFC 6265).state supports the following options: */
-    state?: {
-        /** determines if incoming 'Cookie' headers are parsed and stored in the request.state object.Defaults to true. */
-        parse: boolean;
-        /** determines how to handle cookie parsing errors.Allowed values are:
+    state?:
+        | {
+              /** determines if incoming 'Cookie' headers are parsed and stored in the request.state object.Defaults to true. */
+              parse: boolean;
+              /** determines how to handle cookie parsing errors.Allowed values are:
          'error'return a Bad Request (400) error response.This is the default value.
          'log'report the error but continue processing the request.
          'ignore'take no action. */
-        failAction: string;
-    } | undefined;
+              failAction: string;
+          }
+        | undefined;
     /**  request input validation rules for various request components.When using a Joi validation object, the values of the other inputs (i.e.headers, query, params, payload, and auth) are made available under the validation context (accessible in rules as Joi.ref('$query.key')).Note that validation is performed in order(i.e.headers, params, query, payload) and if type casting is used (converting a string to number), the value of inputs not yet validated will reflect the raw, unvalidated and unmodified values.The validate object supports: */
-    validate?: {
-        /** validation rules for incoming request headers.Values allowed:
+    validate?:
+        | {
+              /** validation rules for incoming request headers.Values allowed:
          * trueany headers allowed (no validation performed).This is the default.
          falseno headers allowed (this will cause all valid HTTP requests to fail).
          a Joi validation object.
@@ -652,9 +745,9 @@ export interface IRouteAdditionalConfigurationOptions {
          optionsthe server validation options.
          next(err, value)the callback function called when validation is completed.
          */
-        headers?: boolean | IJoi | IValidationFunction | undefined;
+              headers?: boolean | IJoi | IValidationFunction | undefined;
 
-        /** validation rules for incoming request path parameters, after matching the path against the route and extracting any parameters then stored in request.params.Values allowed:
+              /** validation rules for incoming request path parameters, after matching the path against the route and extracting any parameters then stored in request.params.Values allowed:
          trueany path parameters allowed (no validation performed).This is the default.
          falseno path variables allowed.
          a Joi validation object.
@@ -662,8 +755,8 @@ export interface IRouteAdditionalConfigurationOptions {
          valuethe object containing the path parameters.
          optionsthe server validation options.
          next(err, value)the callback function called when validation is completed. */
-        params?: boolean | IJoi | IValidationFunction | undefined;
-        /** validation rules for an incoming request URI query component (the key- value part of the URI between '?' and '#').The query is parsed into its individual key- value pairs (using the qs module) and stored in request.query prior to validation.Values allowed:
+              params?: boolean | IJoi | IValidationFunction | undefined;
+              /** validation rules for an incoming request URI query component (the key- value part of the URI between '?' and '#').The query is parsed into its individual key- value pairs (using the qs module) and stored in request.query prior to validation.Values allowed:
          trueany query parameters allowed (no validation performed).This is the default.
          falseno query parameters allowed.
          a Joi validation object.
@@ -671,8 +764,8 @@ export interface IRouteAdditionalConfigurationOptions {
          valuethe object containing the query parameters.
          optionsthe server validation options.
          next(err, value)the callback function called when validation is completed. */
-        query?: boolean | IJoi | IValidationFunction | undefined;
-        /**  validation rules for an incoming request payload (request body).Values allowed:
+              query?: boolean | IJoi | IValidationFunction | undefined;
+              /**  validation rules for an incoming request payload (request body).Values allowed:
          trueany payload allowed (no validation performed).This is the default.
          falseno payload allowed.
          a Joi validation object.
@@ -680,10 +773,10 @@ export interface IRouteAdditionalConfigurationOptions {
          valuethe object containing the payload object.
          optionsthe server validation options.
          next(err, value)the callback function called when validation is completed.  */
-        payload?: boolean | IJoi | IValidationFunction | undefined;
-        /** an optional object with error fields copied into every validation error response. */
-        errorFields?: any;
-        /** determines how to handle invalid requests.Allowed values are:
+              payload?: boolean | IJoi | IValidationFunction | undefined;
+              /** an optional object with error fields copied into every validation error response. */
+              errorFields?: any;
+              /** determines how to handle invalid requests.Allowed values are:
          'error'return a Bad Request (400) error response.This is the default value.
          'log'log the error but continue processing the request.
          'ignore'take no action.
@@ -692,17 +785,20 @@ export interface IRouteAdditionalConfigurationOptions {
          replythe continuation reply interface.
          sourcethe source of the invalid field (e.g. 'path', 'query', 'payload').
          errorthe error object prepared for the client response (including the validation function error under error.data). */
-        failAction?: string | IRouteFailFunction | undefined;
-        /** options to pass to Joi.Useful to set global options such as stripUnknown or abortEarly (the complete list is available here: https://github.com/hapijs/joi#validatevalue-schema-options-callback ).Defaults to no options. */
-        options?: any;
-    } | undefined;
+              failAction?: string | IRouteFailFunction | undefined;
+              /** options to pass to Joi.Useful to set global options such as stripUnknown or abortEarly (the complete list is available here: https://github.com/hapijs/joi#validatevalue-schema-options-callback ).Defaults to no options. */
+              options?: any;
+          }
+        | undefined;
     /** define timeouts for processing durations: */
-    timeout?: {
-        /** response timeout in milliseconds.Sets the maximum time allowed for the server to respond to an incoming client request before giving up and responding with a Service Unavailable (503) error response.Disabled by default (false). */
-        server: boolean | number;
-        /** by default, node sockets automatically timeout after 2 minutes.Use this option to override this behavior.Defaults to undefined which leaves the node default unchanged.Set to false to disable socket timeouts. */
-        socket: boolean | number;
-    } | undefined;
+    timeout?:
+        | {
+              /** response timeout in milliseconds.Sets the maximum time allowed for the server to respond to an incoming client request before giving up and responding with a Service Unavailable (503) error response.Disabled by default (false). */
+              server: boolean | number;
+              /** by default, node sockets automatically timeout after 2 minutes.Use this option to override this behavior.Defaults to undefined which leaves the node default unchanged.Set to false to disable socket timeouts. */
+              socket: boolean | number;
+          }
+        | undefined;
 
     /**  ONLY WHEN ADDING NEW ROUTES (not when setting defaults).
      * route description used for generating documentation (string).
@@ -744,25 +840,27 @@ export interface IRouteAdditionalConfigurationAuthAccess {
     entity?: string | undefined;
 }
 
-export type IRouteAdditionalConfigurationCache =
-    & {
-        /** determines the privacy flag included in clientside caching using the 'Cache-Control' header. Values are:
+export type IRouteAdditionalConfigurationCache = {
+    /** determines the privacy flag included in clientside caching using the 'Cache-Control' header. Values are:
      'Default': no privacy flag.This is the default setting.
      'public': mark the response as suitable for public caching.
      'private': mark the response as suitable only for private caching.  */
-        privacy?: "default" | "public" | "private" | undefined;
-        /** an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive. Defaults to [200]. */
-        statuses?: number[] | undefined;
-        /** a string with the value of the 'Cache-Control' header when caching is disabled. Defaults to 'no-cache'. */
-        otherwise?: string | undefined;
-    }
-    & ({
-        /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
-        expiresIn: number;
-    } | {
-        /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
-        expiresAt: string;
-    } | {});
+    privacy?: "default" | "public" | "private" | undefined;
+    /** an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive. Defaults to [200]. */
+    statuses?: number[] | undefined;
+    /** a string with the value of the 'Cache-Control' header when caching is disabled. Defaults to 'no-cache'. */
+    otherwise?: string | undefined;
+} & (
+    | {
+          /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
+          expiresIn: number;
+      }
+    | {
+          /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
+          expiresAt: string;
+      }
+    | {}
+);
 
 /** server.realm http://hapijs.com/api#serverrealm
  The realm object contains server-wide or plugin-specific state that can be shared across various methods. For example, when calling server.bind(),
@@ -883,78 +981,92 @@ export interface IRouteHandlerConfig {
      redirectToSlash - optional boolean, determines if requests for a directory without a trailing slash are redirected to the same path with the missing slash. Useful for ensuring relative links inside the response are resolved correctly. Disabled when the server config router.stripTrailingSlash is true.Defaults to false.
      lookupCompressed - optional boolean, instructs the file processor to look for the same filename with the '.gz' suffix for a pre-compressed version of the file to serve if the request supports content encoding. Defaults to false.
      defaultExtension - optional string, appended to file requests if the requested file is not found. Defaults to no extension.*/
-    directory?: {
-        path: string | string[] | IRequestHandler<string> | IRequestHandler<string[]>;
-        index?: boolean | string | string[] | undefined;
-        listing?: boolean | undefined;
-        showHidden?: boolean | undefined;
-        redirectToSlash?: boolean | undefined;
-        lookupCompressed?: boolean | undefined;
-        defaultExtension?: string | undefined;
-    } | undefined;
+    directory?:
+        | {
+              path:
+                  | string
+                  | string[]
+                  | IRequestHandler<string>
+                  | IRequestHandler<string[]>;
+              index?: boolean | string | string[] | undefined;
+              listing?: boolean | undefined;
+              showHidden?: boolean | undefined;
+              redirectToSlash?: boolean | undefined;
+              lookupCompressed?: boolean | undefined;
+              defaultExtension?: string | undefined;
+          }
+        | undefined;
     proxy?: IProxyHandlerConfig | undefined;
-    view?: string | {
-        template: string;
-        context: {
-            payload: any;
-            params: any;
-            query: any;
-            pre: any;
-        };
-    } | undefined;
-    config?: {
-        handler: any;
-        bind: any;
-        app: any;
-        plugins: {
-            [name: string]: any;
-        };
-        pre: Array<() => void>;
-        validate: {
-            headers: any;
-            params: any;
-            query: any;
-            payload: any;
-            errorFields?: any;
-            failAction?: string | IFailAction | undefined;
-        };
-        payload: {
-            output: {
-                data: any;
-                stream: any;
-                file: any;
-            };
-            parse?: any;
-            allow?: string | string[] | undefined;
-            override?: string | undefined;
-            maxBytes?: number | undefined;
-            uploads?: number | undefined;
-            failAction?: string | undefined;
-        };
-        response: {
-            schema: any;
-            sample: number;
-            failAction: string;
-        };
-        cache: {
-            privacy: string;
-            expiresIn: number;
-            expiresAt: number;
-        };
-        auth: string | boolean | {
-            mode: string;
-            strategies: string[];
-            payload?: boolean | string | undefined;
-            tos?: boolean | string | undefined;
-            scope?: string | string[] | undefined;
-            entity: string;
-        };
-        cors?: boolean | undefined;
-        jsonp?: string | undefined;
-        description?: string | undefined;
-        notes?: string | string[] | undefined;
-        tags?: string[] | undefined;
-    } | undefined;
+    view?:
+        | string
+        | {
+              template: string;
+              context: {
+                  payload: any;
+                  params: any;
+                  query: any;
+                  pre: any;
+              };
+          }
+        | undefined;
+    config?:
+        | {
+              handler: any;
+              bind: any;
+              app: any;
+              plugins: {
+                  [name: string]: any;
+              };
+              pre: Array<() => void>;
+              validate: {
+                  headers: any;
+                  params: any;
+                  query: any;
+                  payload: any;
+                  errorFields?: any;
+                  failAction?: string | IFailAction | undefined;
+              };
+              payload: {
+                  output: {
+                      data: any;
+                      stream: any;
+                      file: any;
+                  };
+                  parse?: any;
+                  allow?: string | string[] | undefined;
+                  override?: string | undefined;
+                  maxBytes?: number | undefined;
+                  uploads?: number | undefined;
+                  failAction?: string | undefined;
+              };
+              response: {
+                  schema: any;
+                  sample: number;
+                  failAction: string;
+              };
+              cache: {
+                  privacy: string;
+                  expiresIn: number;
+                  expiresAt: number;
+              };
+              auth:
+                  | string
+                  | boolean
+                  | {
+                        mode: string;
+                        strategies: string[];
+                        payload?: boolean | string | undefined;
+                        tos?: boolean | string | undefined;
+                        scope?: string | string[] | undefined;
+                        entity: string;
+                    };
+              cors?: boolean | undefined;
+              jsonp?: string | undefined;
+              description?: string | undefined;
+              notes?: string | string[] | undefined;
+              tags?: string[] | undefined;
+          }
+        | undefined;
 }
 /** Route configuration
  The route configuration object*/
@@ -967,7 +1079,12 @@ export interface IRouteConfiguration {
     /**  - an optional domain string or an array of domain strings for limiting the route to only requests with a matching host header field.Matching is done against the hostname part of the header only (excluding the port).Defaults to all hosts.*/
     vhost?: string | undefined;
     /**  - (required) the function called to generate the response after successful authentication and validation.The handler function is described in Route handler.If set to a string, the value is parsed the same way a prerequisite server method string shortcut is processed.Alternatively, handler can be assigned an object with a single key using the name of a registered handler type and value with the options passed to the registered handler.*/
-    handler?: ISessionHandler | IStrictSessionHandler | string | IRouteHandlerConfig | undefined;
+    handler?:
+        | ISessionHandler
+        | IStrictSessionHandler
+        | string
+        | IRouteHandlerConfig
+        | undefined;
     /** - additional route options.*/
     config?: IRouteAdditionalConfigurationOptions | undefined;
 }
@@ -1035,10 +1152,12 @@ export interface IServerAuthScheme {
     response?(request: Request, reply: IReply): void;
     response?<T>(request: Request, reply: IStrictReply<T>): void;
     /** an optional object  */
-    options?: {
-        /**  if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false.*/
-        payload: boolean;
-    } | undefined;
+    options?:
+        | {
+              /**  if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false.*/
+              payload: boolean;
+          }
+        | undefined;
 }
 
 /**the response object where:
@@ -1065,7 +1184,10 @@ export interface IServerInjectResponse {
 }
 
 export interface IServerInject {
-    (options: string | IServerInjectOptions, callback: (res: IServerInjectResponse) => void): void;
+    (
+        options: string | IServerInjectOptions,
+        callback: (res: IServerInjectResponse) => void,
+    ): void;
     (options: string | IServerInjectOptions): Promise<IServerInjectResponse>;
 }
 
@@ -1094,11 +1216,13 @@ export interface IServerInjectOptions {
      error - if true, emits an 'error' event after payload transmission (if any). Defaults to false.
      close - if true, emits a 'close' event after payload transmission (if any). Defaults to false.
      end - if false, does not end the stream. Defaults to true.*/
-    simulate?: {
-        error: boolean;
-        close: boolean;
-        end: boolean;
-    } | undefined;
+    simulate?:
+        | {
+              error: boolean;
+              close: boolean;
+              end: boolean;
+          }
+        | undefined;
 }
 
 /** host - optional host to filter routes matching a specific virtual host. Defaults to all virtual hosts.
@@ -1243,8 +1367,7 @@ export class Request extends Events.EventEmitter {
         acceptEncoding: string;
         /**  if CORS is enabled for the route, contains the following: */
         cors: {
-            isOriginMatch:
-                boolean; /**  true if the request 'Origin' header matches the configured CORS restrictions. Set to false if no 'Origin' header is found or if it does not match. Note that this is only available after the 'onRequest' extension point as CORS is configured per-route and no routing decisions are made at that point in the request lifecycle. */
+            isOriginMatch: boolean /**  true if the request 'Origin' header matches the configured CORS restrictions. Set to false if no 'Origin' header is found or if it does not match. Note that this is only available after the 'onRequest' extension point as CORS is configured per-route and no routing decisions are made at that point in the request lifecycle. */;
         };
         /**  content of the HTTP 'Host' header (e.g. 'example.com:8080'). */
         host: string;
@@ -1546,10 +1669,13 @@ export class Response extends Events.EventEmitter {
      options - optional settings where:
      weak - if true, the tag will be prefixed with the 'W/' weak signifier. Weak tags will fail to match identical tags for the purpose of determining 304 response status. Defaults to false.
      vary - if true and content encoding is set or applied to the response (e.g 'gzip' or 'deflate'), the encoding name will be automatically added to the tag at transmission time (separated by a '-' character). Ignored when weak is true. Defaults to true.*/
-    etag(tag: string, options: {
-        weak: boolean;
-        vary: boolean;
-    }): Response;
+    etag(
+        tag: string,
+        options: {
+            weak: boolean;
+            vary: boolean;
+        },
+    ): Response;
 
     /**header(name, value, options) - sets an HTTP header where:
      name - the header name.
@@ -1657,7 +1783,13 @@ export interface IServerConnectionInfo {
  */
 export class ServerConnection extends Events.EventEmitter {
     domain: any;
-    _events: { route: Function; domain: Function; _events: Function; _eventsCount: Function; _maxListeners: Function };
+    _events: {
+        route: Function;
+        domain: Function;
+        _events: Function;
+        _eventsCount: Function;
+        _maxListeners: Function;
+    };
     _eventsCount: number;
     settings: IServerConnectionOptions;
     server: Server;
@@ -1676,7 +1808,13 @@ export class ServerConnection extends Events.EventEmitter {
         cookies: any;
         names: any[];
     };
-    auth: { connection: ServerConnection; _schemes: any; _strategies: any; settings: any; api: any };
+    auth: {
+        connection: ServerConnection;
+        _schemes: any;
+        _strategies: any;
+        settings: any;
+        api: any;
+    };
     _router: any;
     MSPluginsCollection: any;
     applicationCache: any;
@@ -1692,7 +1830,11 @@ export type RequestExtPoints =
     | "onPreHandler"
     | "onPostHandler"
     | "onPreResponse";
-export type ServerExtPoints = "onPreStart" | "onPostStart" | "onPreStop" | "onPostStop";
+export type ServerExtPoints =
+    | "onPreStart"
+    | "onPostStart"
+    | "onPreStop"
+    | "onPostStop";
 
 /** Server http://hapijs.com/api#server
  rver object is the main application container. The server manages all incoming connections along with all the facilities provided by the framework. A server can contain more than one connection (e.g. listen to port 80 and 8080).
@@ -1858,7 +2000,10 @@ export class Server extends Events.EventEmitter {
     // After method already executed
     });
      server.auth.default(options)*/
-    after(method: (plugin: any, next: (err: any) => void) => void, dependencies: string | string[]): void;
+    after(
+        method: (plugin: any, next: (err: any) => void) => void,
+        dependencies: string | string[],
+    ): void;
 
     auth: {
         /** server.auth.api
@@ -1961,7 +2106,12 @@ export class Server extends Events.EventEmitter {
          * }
          * });
          */
-        strategy(name: string, scheme: string, mode?: boolean | string, options?: any): void;
+        strategy(
+            name: string,
+            scheme: string,
+            mode?: boolean | string,
+            options?: any,
+        ): void;
         strategy(name: string, scheme: string, mode?: boolean | string): void;
         strategy(name: string, scheme: string, options?: any): void;
 
@@ -1989,7 +2139,11 @@ export class Server extends Events.EventEmitter {
         });
         }
         });*/
-        test(strategy: string, request: Request, next: (err: any, credentials: any) => void): void;
+        test(
+            strategy: string,
+            request: Request,
+            next: (err: any, credentials: any) => void,
+        ): void;
     };
 
     /** server.bind(context)
@@ -2068,7 +2222,12 @@ export class Server extends Events.EventEmitter {
     return reply.success();
     }
     });*/
-    decorate(type: string, property: string, method: Function, options?: { apply: boolean }): void;
+    decorate(
+        type: string,
+        property: string,
+        method: Function,
+        options?: { apply: boolean },
+    ): void;
 
     /** server.dependency(dependencies, [after])
      Used within a plugin to declares a required dependency on other plugins where:
@@ -2085,7 +2244,10 @@ export class Server extends Events.EventEmitter {
     // Additional plugin registration logic
     return next();
     };*/
-    dependency(dependencies: string | string[], after?: (server: Server, next: (err: any) => void) => void): void;
+    dependency(
+        dependencies: string | string[],
+        after?: (server: Server, next: (err: any) => void) => void,
+    ): void;
 
     /** server.expose(key, value)
      Used within a plugin to expose a property via server.plugins[name] where:
@@ -2134,17 +2296,29 @@ export class Server extends Events.EventEmitter {
     ext(
         event: RequestExtPoints,
         method: (request: Request, reply: IReply, bind?: any) => void,
-        options?: { before: string | string[]; after: string | string[]; bind?: any },
+        options?: {
+            before: string | string[];
+            after: string | string[];
+            bind?: any;
+        },
     ): void;
     ext<T>(
         event: RequestExtPoints,
         method: (request: Request, reply: IStrictReply<T>, bind?: any) => void,
-        options?: { before: string | string[]; after: string | string[]; bind?: any },
+        options?: {
+            before: string | string[];
+            after: string | string[];
+            bind?: any;
+        },
     ): void;
     ext(
         event: ServerExtPoints,
         method: (server: Server, next: (err?: any) => void, bind?: any) => void,
-        options?: { before: string | string[]; after: string | string[]; bind?: any },
+        options?: {
+            before: string | string[];
+            after: string | string[];
+            bind?: any;
+        },
     ): void;
 
     /** server.handler(name, method)
@@ -2185,7 +2359,10 @@ export class Server extends Events.EventEmitter {
     }
     };
      server.handler('test', handler);*/
-    handler<THandlerConfig>(name: string, method: (route: IRoute, options: THandlerConfig) => ISessionHandler): void;
+    handler<THandlerConfig>(
+        name: string,
+        method: (route: IRoute, options: THandlerConfig) => ISessionHandler,
+    ): void;
 
     /** server.initialize([callback])
      Initializes the server (starts the caches, finalizes plugin registration) but does not start listening
@@ -2344,15 +2521,15 @@ export class Server extends Events.EventEmitter {
     method(
         methods:
             | {
-                name: string;
-                method: IServerMethod;
-                options?: IServerMethodOptions | undefined;
-            }
+                  name: string;
+                  method: IServerMethod;
+                  options?: IServerMethodOptions | undefined;
+              }
             | Array<{
-                name: string;
-                method: IServerMethod;
-                options?: IServerMethodOptions | undefined;
-            }>,
+                  name: string;
+                  method: IServerMethod;
+                  options?: IServerMethodOptions | undefined;
+              }>,
     ): void;
 
     /**server.path(relativeTo)

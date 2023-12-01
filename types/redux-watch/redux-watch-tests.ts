@@ -20,9 +20,6 @@ const fieldBChangeHandler = (
     pathToField: any,
 ) => {};
 
-const fieldBWatchWrapper = watch(
-    dummyGetState,
-    ["fieldA", "fieldB"],
-);
+const fieldBWatchWrapper = watch(dummyGetState, ["fieldA", "fieldB"]);
 
 const fieldBWatch = fieldBWatchWrapper(fieldBChangeHandler);

@@ -76,21 +76,33 @@ logging("on");
 
 const { response, status } = httpGet("https://api.github.com/userss/", {});
 
-httpDelete("https://www.google.com", JSON.stringify({ name: "workerB" }), { "content-type": "application/json" });
+httpDelete("https://www.google.com", JSON.stringify({ name: "workerB" }), {
+    "content-type": "application/json",
+});
 
 httpDelete("https://api.delete.com/posts/1");
 
-httpPost("https://www.google.com", JSON.stringify({ name: "workerB" }), { "content-type": "application/json" });
+httpPost("https://www.google.com", JSON.stringify({ name: "workerB" }), {
+    "content-type": "application/json",
+});
 
-httpPut("https://www.google.com", JSON.stringify({ name: "workerB" }), { "content-type": "application/json" });
+httpPut("https://www.google.com", JSON.stringify({ name: "workerB" }), {
+    "content-type": "application/json",
+});
 
-setVars([{
-    name: "accessToken",
-    value: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-}, {
-    name: "accessKey",
-    value: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-}], { local: true });
+setVars(
+    [
+        {
+            name: "accessToken",
+            value: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        },
+        {
+            name: "accessKey",
+            value: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        },
+    ],
+    { local: true },
+);
 
 reIndex(["boards", "Board Name", "lists"]);
 

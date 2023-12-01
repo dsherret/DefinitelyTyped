@@ -55,6 +55,8 @@ declare module "jsreport-core" {
     }
 }
 
-declare function JsReportPhantomPdf(options?: Partial<JsReportPhantomPdf.Options>): ExtensionDefinition;
+declare function JsReportPhantomPdf(
+    options?: Partial<JsReportPhantomPdf.Options>,
+): ExtensionDefinition;
 
 export = JsReportPhantomPdf;

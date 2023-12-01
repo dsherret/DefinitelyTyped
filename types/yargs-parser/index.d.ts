@@ -70,7 +70,11 @@ declare namespace yargsParser {
          */
         array?:
             | string[]
-            | Array<{ key: string; boolean?: boolean | undefined; number?: boolean | undefined }>
+            | Array<{
+                  key: string;
+                  boolean?: boolean | undefined;
+                  number?: boolean | undefined;
+              }>
             | undefined;
         /** Arguments should be parsed as booleans: `{ boolean: ['x', 'y'] }`. */
         boolean?: string[] | undefined;

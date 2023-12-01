@@ -11,7 +11,11 @@ declare namespace GorillaEngine.UI {
         pause(): void;
         setFrame(frame: number): void;
         setTargetFrame(frame: number): void;
-        setFrameFromLinearTransform(value: number, min: number, max: number): void;
+        setFrameFromLinearTransform(
+            value: number,
+            min: number,
+            max: number,
+        ): void;
         setProperties(
             selector: string,
             settings: {

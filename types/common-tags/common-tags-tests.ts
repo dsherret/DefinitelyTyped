@@ -26,11 +26,15 @@ import {
     trimResultTransformer,
 } from "common-tags";
 
-const userMessages = ["hi", "what are you up to?", "<script>alert(\"something evil\")</script>"];
+const userMessages = [
+    "hi",
+    "what are you up to?",
+    '<script>alert("something evil")</script>',
+];
 html`
     <div class="chat-list">
         <ul>
-            ${userMessages.map(message => safeHtml`<li>${message}</li>`)}
+            ${userMessages.map((message) => safeHtml`<li>${message}</li>`)}
         </ul>
     </div>
 `;
@@ -113,7 +117,10 @@ stripIndent("  foo\n    bar");
 const doNothing = createTag();
 doNothing`foo bar`;
 
-const substitutionReplacer = (oldValue: string, newValue: string): TemplateTransformer => ({
+const substitutionReplacer = (
+    oldValue: string,
+    newValue: string,
+): TemplateTransformer => ({
     onSubstitution(substitution, resultSoFar) {
         if (substitution === oldValue) {
             return newValue;
@@ -127,12 +134,24 @@ replaceFizzWithBuzz`foo bar ${"fizz"}`;
 
 createTag();
 createTag(substitutionReplacer("fizz", "buzz"));
-createTag(substitutionReplacer("fizz", "buzz"), substitutionReplacer("foo", "bar"));
-createTag([substitutionReplacer("fizz", "buzz"), substitutionReplacer("foo", "bar")]);
+createTag(
+    substitutionReplacer("fizz", "buzz"),
+    substitutionReplacer("foo", "bar"),
+);
+createTag([
+    substitutionReplacer("fizz", "buzz"),
+    substitutionReplacer("foo", "bar"),
+]);
 new TemplateTag();
 new TemplateTag(substitutionReplacer("fizz", "buzz"));
-new TemplateTag(substitutionReplacer("fizz", "buzz"), substitutionReplacer("foo", "bar"));
-new TemplateTag([substitutionReplacer("fizz", "buzz"), substitutionReplacer("foo", "bar")]);
+new TemplateTag(
+    substitutionReplacer("fizz", "buzz"),
+    substitutionReplacer("foo", "bar"),
+);
+new TemplateTag([
+    substitutionReplacer("fizz", "buzz"),
+    substitutionReplacer("foo", "bar"),
+]);
 
 const tt: TemplateTransformer<{ foo: string }> = {
     getInitialContext() {
@@ -166,24 +185,24 @@ const tt: TemplateTransformer<{ foo: string }> = {
 createTag({});
 createTag(tt);
 createTag({
-    onString: str => `${str}!`,
+    onString: (str) => `${str}!`,
 });
 createTag({
-    onSubstitution: substitution => `${substitution}!`,
+    onSubstitution: (substitution) => `${substitution}!`,
 });
 createTag({
-    onEndResult: endResult => `${endResult}!`,
+    onEndResult: (endResult) => `${endResult}!`,
 });
 new TemplateTag({});
 new TemplateTag(tt);
 new TemplateTag({
-    onString: str => `${str}!`,
+    onString: (str) => `${str}!`,
 });
 new TemplateTag({
-    onSubstitution: substitution => `${substitution}!`,
+    onSubstitution: (substitution) => `${substitution}!`,
 });
 new TemplateTag({
-    onEndResult: endResult => `${endResult}!`,
+    onEndResult: (endResult) => `${endResult}!`,
 });
 
 createTag(trimResultTransformer());

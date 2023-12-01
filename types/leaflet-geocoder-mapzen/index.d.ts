@@ -6,7 +6,7 @@ declare module "leaflet" {
             /**
              * Creates a geocoder control.
              */
-            new(options?: GeocoderOptions): Geocoder;
+            new (options?: GeocoderOptions): Geocoder;
         }
 
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -165,6 +165,9 @@ declare module "leaflet" {
         /**
          * Creates a geocoder control.
          */
-        function geocoder(api_key: string, options?: Control.GeocoderOptions): Control.Geocoder;
+        function geocoder(
+            api_key: string,
+            options?: Control.GeocoderOptions,
+        ): Control.Geocoder;
     }
 }

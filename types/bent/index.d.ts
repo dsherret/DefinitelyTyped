@@ -3,7 +3,16 @@
 
 import { PassThrough, Stream } from "stream";
 
-type HttpMethod = "GET" | "POST" | "DELETE" | "PUT" | "PATCH" | "HEAD" | "OPTIONS" | "CONNECT" | "TRACE";
+type HttpMethod =
+    | "GET"
+    | "POST"
+    | "DELETE"
+    | "PUT"
+    | "PATCH"
+    | "HEAD"
+    | "OPTIONS"
+    | "CONNECT"
+    | "TRACE";
 type StatusCode = number;
 type BaseUrl = string;
 interface Headers {
@@ -11,13 +20,26 @@ interface Headers {
 }
 
 // Type first
-declare function bent(type: "string", ...args: bent.Options[]): bent.RequestFunction<string>;
-declare function bent(type: "buffer", ...args: bent.Options[]): bent.RequestFunction<Buffer | ArrayBuffer>;
+declare function bent(
+    type: "string",
+    ...args: bent.Options[]
+): bent.RequestFunction<string>;
+declare function bent(
+    type: "buffer",
+    ...args: bent.Options[]
+): bent.RequestFunction<Buffer | ArrayBuffer>;
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function bent<T extends bent.Json = any>(type: "json", ...args: bent.Options[]): bent.RequestFunction<T>;
+declare function bent<T extends bent.Json = any>(
+    type: "json",
+    ...args: bent.Options[]
+): bent.RequestFunction<T>;
 
 // Method or url first
-declare function bent(baseUrl: string, type: "string", ...args: bent.Options[]): bent.RequestFunction<string>;
+declare function bent(
+    baseUrl: string,
+    type: "string",
+    ...args: bent.Options[]
+): bent.RequestFunction<string>;
 declare function bent(
     baseUrl: string,
     type: "buffer",
@@ -29,10 +51,15 @@ declare function bent<T extends bent.Json = any>(
     type: "json",
     ...args: bent.Options[]
 ): bent.RequestFunction<T>;
-declare function bent(baseUrl: string, ...args: bent.Options[]): bent.RequestFunction<bent.ValidResponse>;
+declare function bent(
+    baseUrl: string,
+    ...args: bent.Options[]
+): bent.RequestFunction<bent.ValidResponse>;
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function bent<T extends bent.ValidResponse>(...args: bent.Options[]): bent.RequestFunction<T>;
+declare function bent<T extends bent.ValidResponse>(
+    ...args: bent.Options[]
+): bent.RequestFunction<T>;
 
 // If we get some sort of custom nominal types, or regex literals, we might be able to simplify to something similar to
 // declare function bent(...args: bent.Options[]): bent.RequestFunction<bent.BentResponse>;
@@ -41,7 +68,11 @@ declare function bent<T extends bent.ValidResponse>(...args: bent.Options[]): be
 // declare function bent<T extends bent.Json = any>(...args: (bent.Options | 'json')[]): bent.RequestFunction<T>;
 
 declare namespace bent {
-    type RequestFunction<T extends ValidResponse> = (url: string, body?: RequestBody, headers?: Headers) => Promise<T>;
+    type RequestFunction<T extends ValidResponse> = (
+        url: string,
+        body?: RequestBody,
+        headers?: Headers,
+    ) => Promise<T>;
     type Options = HttpMethod | StatusCode | Headers | BaseUrl;
     type RequestBody = string | Stream | Buffer | ArrayBuffer | Json;
     type NodeResponse = PassThrough & {

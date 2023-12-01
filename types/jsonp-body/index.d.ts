@@ -9,6 +9,10 @@ declare namespace jsonp {
     }
 }
 
-declare function jsonp(obj: any, callback?: string | string[], options?: jsonp.Options): string;
+declare function jsonp(
+    obj: any,
+    callback?: string | string[],
+    options?: jsonp.Options,
+): string;
 
 export = jsonp;

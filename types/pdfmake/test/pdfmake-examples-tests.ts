@@ -179,12 +179,10 @@ const columnsSimple: TDocumentDefinitions = {
             alignment: "justify",
             columns: [
                 {
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
             ],
         },
@@ -192,16 +190,13 @@ const columnsSimple: TDocumentDefinitions = {
         {
             columns: [
                 {
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
             ],
         },
@@ -210,23 +205,19 @@ const columnsSimple: TDocumentDefinitions = {
             columns: [
                 {
                     width: 90,
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
                     width: "*",
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
                     width: "*",
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
                 {
                     width: 90,
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                 },
             ],
         },
@@ -239,8 +230,7 @@ const columnsSimple: TDocumentDefinitions = {
                 },
                 {
                     width: "*",
-                    text:
-                        "This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.",
+                    text: "This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.",
                 },
                 {
                     width: 50,
@@ -252,8 +242,7 @@ const columnsSimple: TDocumentDefinitions = {
                 },
                 {
                     width: "*",
-                    text:
-                        "This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.",
+                    text: "This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.",
                 },
             ],
         },
@@ -284,8 +273,7 @@ const columnsSimple: TDocumentDefinitions = {
                 {
                     width: 100,
                     fontSize: 9,
-                    text:
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conveniunt quieti extremum severitatem disseretur virtute locum virtus declarant. Greges telos detrimenti persius possint eripuit appellat democrito suscipere existimant. Facere usus levitatibus confirmavit, provincia rutilius libris accommodare valetudinis ignota fugienda arbitramur falsarum commodius. Voluptas summis arbitrarer cognitio temperantiamque, fuit posidonium pro assueverit animos inferiorem, affecti honestum ferreum cum tot nemo ius partes dissensio opinor, tuum intellegunt numeris ignorant, odia diligenter licet, sublatum repellere, maior ficta severa quantum mortem. Aut evertitur impediri vivamus.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conveniunt quieti extremum severitatem disseretur virtute locum virtus declarant. Greges telos detrimenti persius possint eripuit appellat democrito suscipere existimant. Facere usus levitatibus confirmavit, provincia rutilius libris accommodare valetudinis ignota fugienda arbitramur falsarum commodius. Voluptas summis arbitrarer cognitio temperantiamque, fuit posidonium pro assueverit animos inferiorem, affecti honestum ferreum cum tot nemo ius partes dissensio opinor, tuum intellegunt numeris ignorant, odia diligenter licet, sublatum repellere, maior ficta severa quantum mortem. Aut evertitur impediri vivamus.",
                 },
                 [
                     "As you can see in the document definition - this column is not defined with an object, but an array, which means it's treated as an array of paragraphs rendered one below another.",
@@ -293,16 +281,13 @@ const columnsSimple: TDocumentDefinitions = {
                     {
                         columns: [
                             {
-                                text:
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                             },
                             {
-                                text:
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                             },
                             {
-                                text:
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
+                                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.",
                             },
                         ],
                     },
@@ -317,13 +302,11 @@ const columnsSimple: TDocumentDefinitions = {
                 "First column (BTW - it's defined as a single string value. pdfmake will turn it into appropriate structure automatically and make sure it inherits the styles",
                 {
                     fontSize: 20,
-                    text:
-                        "In this column, we've overriden fontSize to 20. It means the content should have italics=true (inherited from the style) and be a little bit bigger",
+                    text: "In this column, we've overriden fontSize to 20. It means the content should have italics=true (inherited from the style) and be a little bit bigger",
                 },
                 {
                     style: "header",
-                    text:
-                        "Last column does not override any styling properties, but applies a new style (header) to itself. Eventually - texts here have italics=true (from bigger) and derive fontSize from the style. OK, but which one? Both styles define it. As we already know from our styling examples, multiple styles can be applied to the element and their order is important. Because 'header' style has been set after 'bigger' its fontSize takes precedence over the fontSize from 'bigger'. This is how it works. You will find more examples in the unit tests.",
+                    text: "Last column does not override any styling properties, but applies a new style (header) to itself. Eventually - texts here have italics=true (from bigger) and derive fontSize from the style. OK, but which one? Both styles define it. As we already know from our styling examples, multiple styles can be applied to the element and their order is important. Because 'header' style has been set after 'bigger' its fontSize takes precedence over the fontSize from 'bigger'. This is how it works. You will find more examples in the unit tests.",
                 },
             ],
         },
@@ -371,16 +354,20 @@ const images: TDocumentDefinitions = {
         "You can also cover the image inside a rectangle",
         {
             image: "fonts/sampleImage.jpg",
-            cover: { width: 100, height: 100, valign: "bottom", align: "right" },
+            cover: {
+                width: 100,
+                height: 100,
+                valign: "bottom",
+                align: "right",
+            },
             pageBreak: "after",
         },
         "Images can be also provided in dataURL format\n(the one below was taken from http://www.clipartbest.com/clipart-dT7zx5rT9)",
         {
-            image:
-                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX/TQBcNTh/AAAACklEQVR4nGNiAAAABgADNjd8qAAAAABJRU5ErkJggg==",
+            image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX/TQBcNTh/AAAACklEQVR4nGNiAAAABgADNjd8qAAAAABJRU5ErkJggg==",
             width: 200,
         },
-        "or be defined in the \"images\" dictionary, which can be referenced by name:",
+        'or be defined in the "images" dictionary, which can be referenced by name:',
         {
             image: "bee",
             width: 200,
@@ -435,8 +422,7 @@ const links: TDocumentDefinitions = {
             pageBreak: "before",
         },
         {
-            text:
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sollicitudin. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Suspendisse nisl. Mauris elementum mauris vitae tortor. Phasellus et lorem id felis nonummy placerat. Aliquam erat volutpat. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Etiam bibendum elit eget erat. Nullam rhoncus aliquam metus. Proin mattis lacinia justo. Nullam sit amet magna in magna gravida vehicula. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Integer lacinia. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.",
+            text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sollicitudin. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Suspendisse nisl. Mauris elementum mauris vitae tortor. Phasellus et lorem id felis nonummy placerat. Aliquam erat volutpat. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Etiam bibendum elit eget erat. Nullam rhoncus aliquam metus. Proin mattis lacinia justo. Nullam sit amet magna in magna gravida vehicula. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Integer lacinia. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.",
         },
         "\n\n",
         { text: "Header 2", id: "header2", fontSize: 18, bold: true },
@@ -855,8 +841,7 @@ const margins: TDocumentDefinitions = {
 const pageReference: TDocumentDefinitions = {
     content: [
         {
-            text:
-                "This is a page reference example. Page number of text element marked id property will be located in pageReference element. See below.\n\n",
+            text: "This is a page reference example. Page number of text element marked id property will be located in pageReference element. See below.\n\n",
         },
         {
             table: {
@@ -918,33 +903,33 @@ const pageReference: TDocumentDefinitions = {
         },
         {
             text: [
-                "Chapter \"",
+                'Chapter "',
                 { textReference: "header1" },
-                "\" is on page number ",
+                '" is on page number ',
                 { pageReference: "header1" },
             ],
         },
         {
             text: [
-                "Chapter \"",
+                'Chapter "',
                 { textReference: "subheader1" },
-                "\" is on page number ",
+                '" is on page number ',
                 { pageReference: "subheader1" },
             ],
         },
         {
             text: [
-                "Chapter \"",
+                'Chapter "',
                 { textReference: "subheader2" },
-                "\" is on page number ",
+                '" is on page number ',
                 { pageReference: "subheader2" },
             ],
         },
         {
             text: [
-                "Chapter \"",
+                'Chapter "',
                 { textReference: "subheader3" },
-                "\" is on page number ",
+                '" is on page number ',
                 { pageReference: "subheader3" },
             ],
         },
@@ -973,8 +958,7 @@ const pageReference: TDocumentDefinitions = {
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.",
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.\n\n",
         {
-            text:
-                "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
+            text: "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
             style: ["quote", "small"],
         },
         {
@@ -1282,7 +1266,7 @@ const stylingInlines: TDocumentDefinitions = {
             italics: false,
             text: [
                 "We can also mix named-styles and style-overrides at both paragraph and inline level. ",
-                "For example, this paragraph uses the \"bigger\" style, which changes fontSize to 15 and sets italics to true. ",
+                'For example, this paragraph uses the "bigger" style, which changes fontSize to 15 and sets italics to true. ',
                 "Texts are not italics though. It's because we've overriden italics back to false at ",
                 "the paragraph level. \n\n",
                 "We can also change the style of a single inline. Let's use a named style called header: ",
@@ -1355,8 +1339,7 @@ const stylingNamedStyles: TDocumentDefinitions = {
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.",
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.\n\n",
         {
-            text:
-                "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
+            text: "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
             style: ["quote", "small"],
         },
     ],
@@ -1396,8 +1379,8 @@ const stylingProperties: TDocumentDefinitions = {
             preserveLeadingSpaces: true,
         },
         { text: "{", preserveLeadingSpaces: true },
-        { text: "    \"sample\": {", preserveLeadingSpaces: true },
-        { text: "        \"json\": \"nested\"", preserveLeadingSpaces: true },
+        { text: '    "sample": {', preserveLeadingSpaces: true },
+        { text: '        "json": "nested"', preserveLeadingSpaces: true },
         { text: "    }", preserveLeadingSpaces: true },
         { text: "}", preserveLeadingSpaces: true },
         "\n\nFor preserving trailing spaces use preserveTrailingSpaces property:",
@@ -1447,18 +1430,18 @@ const svgs: TDocumentDefinitions = {
         "\n",
         "Note that before you can use SVG nodes you must install svg-to-pdfkit as it is not included with pdfmake to keep bundle size down",
         {
-            svg: "<svg height=\"100\" width=\"100\"><circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" /></svg>",
+            svg: '<svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>',
             width: 600,
             height: 400,
         },
         "If you specify width, svg will scale proportionally",
         {
-            svg: "<svg height=\"100\" width=\"100\"><circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" /></svg>",
+            svg: '<svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>',
             width: 200,
         },
         "You can also fit the svg inside a rectangle",
         {
-            svg: "<svg height=\"100\" width=\"100\"><circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" /></svg>",
+            svg: '<svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>',
             fit: [100, 100],
         },
     ],
@@ -1484,7 +1467,10 @@ const tables: TDocumentDefinitions = {
     content: [
         { text: "Tables", style: "header" },
         "Official documentation is in progress, this document is just a glimpse of what is possible with pdfmake and its layout engine.",
-        { text: "A simple table (no headers, no width specified, no spans, no styling)", style: "subheader" },
+        {
+            text: "A simple table (no headers, no width specified, no spans, no styling)",
+            style: "subheader",
+        },
         "The following table has nothing more than a body array",
         {
             style: "tableExample",
@@ -1527,7 +1513,10 @@ const tables: TDocumentDefinitions = {
                             text: [
                                 "Inlines can be ",
                                 { text: "styled\n", italics: true },
-                                { text: "easily as everywhere else", fontSize: 10 },
+                                {
+                                    text: "easily as everywhere else",
+                                    fontSize: 10,
+                                },
                             ],
                         },
                     ],
@@ -1548,9 +1537,21 @@ const tables: TDocumentDefinitions = {
                     ["width=100", "star-sized", "width=200", "star-sized"],
                     [
                         "fixed-width cells have exactly the specified width",
-                        { text: "nothing interesting here", italics: true, color: "gray" },
-                        { text: "nothing interesting here", italics: true, color: "gray" },
-                        { text: "nothing interesting here", italics: true, color: "gray" },
+                        {
+                            text: "nothing interesting here",
+                            italics: true,
+                            color: "gray",
+                        },
+                        {
+                            text: "nothing interesting here",
+                            italics: true,
+                            color: "gray",
+                        },
+                        {
+                            text: "nothing interesting here",
+                            italics: true,
+                            color: "gray",
+                        },
                     ],
                 ],
             },
@@ -1628,21 +1629,41 @@ const tables: TDocumentDefinitions = {
                 keepWithHeaderRows: 1,
                 body: [
                     [
-                        { text: "Header with Colspan = 2", style: "tableHeader", colSpan: 2, alignment: "center" },
+                        {
+                            text: "Header with Colspan = 2",
+                            style: "tableHeader",
+                            colSpan: 2,
+                            alignment: "center",
+                        },
                         {},
-                        { text: "Header 3", style: "tableHeader", alignment: "center" },
+                        {
+                            text: "Header 3",
+                            style: "tableHeader",
+                            alignment: "center",
+                        },
                     ],
                     [
-                        { text: "Header 1", style: "tableHeader", alignment: "center" },
-                        { text: "Header 2", style: "tableHeader", alignment: "center" },
-                        { text: "Header 3", style: "tableHeader", alignment: "center" },
+                        {
+                            text: "Header 1",
+                            style: "tableHeader",
+                            alignment: "center",
+                        },
+                        {
+                            text: "Header 2",
+                            style: "tableHeader",
+                            alignment: "center",
+                        },
+                        {
+                            text: "Header 3",
+                            style: "tableHeader",
+                            alignment: "center",
+                        },
                     ],
                     ["Sample value 1", "Sample value 2", "Sample value 3"],
                     [
                         {
                             rowSpan: 3,
-                            text:
-                                "rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
+                            text: "rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
                         },
                         "Sample value 2",
                         "Sample value 3",
@@ -1651,7 +1672,11 @@ const tables: TDocumentDefinitions = {
                     ["Sample value 1", "Sample value 2", "Sample value 3"],
                     [
                         "Sample value 1",
-                        { colSpan: 2, rowSpan: 2, text: "Both:\nrowSpan and colSpan\ncan be defined at the same time" },
+                        {
+                            colSpan: 2,
+                            rowSpan: 2,
+                            text: "Both:\nrowSpan and colSpan\ncan be defined at the same time",
+                        },
                         "",
                     ],
                     ["Sample value 1", "", ""],
@@ -1693,7 +1718,13 @@ const tables: TDocumentDefinitions = {
             ul: ["line widths", "line colors", "cell paddings"],
         },
         "with more options coming soon...\n\npdfmake currently has a few predefined styles (see them on the next page)",
-        { text: "noBorders:", fontSize: 14, bold: true, pageBreak: "before", margin: [0, 0, 0, 8] },
+        {
+            text: "noBorders:",
+            fontSize: 14,
+            bold: true,
+            pageBreak: "before",
+            margin: [0, 0, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
@@ -1713,7 +1744,12 @@ const tables: TDocumentDefinitions = {
             },
             layout: "noBorders",
         },
-        { text: "headerLineOnly:", fontSize: 14, bold: true, margin: [0, 20, 0, 8] },
+        {
+            text: "headerLineOnly:",
+            fontSize: 14,
+            bold: true,
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
@@ -1733,7 +1769,12 @@ const tables: TDocumentDefinitions = {
             },
             layout: "headerLineOnly",
         },
-        { text: "lightHorizontalLines:", fontSize: 14, bold: true, margin: [0, 20, 0, 8] },
+        {
+            text: "lightHorizontalLines:",
+            fontSize: 14,
+            bold: true,
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
@@ -1753,7 +1794,10 @@ const tables: TDocumentDefinitions = {
             },
             layout: "lightHorizontalLines",
         },
-        { text: "but you can provide a custom styler as well", margin: [0, 20, 0, 8] },
+        {
+            text: "but you can provide a custom styler as well",
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
@@ -1779,10 +1823,14 @@ const tables: TDocumentDefinitions = {
                     return i === 0 || i === node.table.widths!.length ? 2 : 1;
                 },
                 hLineColor(i, node) {
-                    return i === 0 || i === node.table.body.length ? "black" : "gray";
+                    return i === 0 || i === node.table.body.length
+                        ? "black"
+                        : "gray";
                 },
                 vLineColor(i, node) {
-                    return i === 0 || i === node.table.widths!.length ? "black" : "gray";
+                    return i === 0 || i === node.table.widths!.length
+                        ? "black"
+                        : "gray";
                 },
                 hLineStyle(i, node) {
                     return { dash: { length: 10, space: 4 } };
@@ -1826,22 +1874,40 @@ const tables: TDocumentDefinitions = {
             },
         },
         { text: "handling fill color opacity...", margin: [0, 20, 0, 8] },
-        { text: "... just hardcoding values in the second row", margin: [0, 20, 0, 8] },
+        {
+            text: "... just hardcoding values in the second row",
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
                 body: [
                     ["Sample value 1", "Sample value 2", "Sample value 3"],
                     [
-                        { text: "Sample value 1", fillOpacity: 0.15, fillColor: "blue" },
-                        { text: "Sample value 2", fillOpacity: 0.6, fillColor: "blue" },
-                        { text: "Sample value 3", fillOpacity: 0.85, fillColor: "blue" },
+                        {
+                            text: "Sample value 1",
+                            fillOpacity: 0.15,
+                            fillColor: "blue",
+                        },
+                        {
+                            text: "Sample value 2",
+                            fillOpacity: 0.6,
+                            fillColor: "blue",
+                        },
+                        {
+                            text: "Sample value 3",
+                            fillOpacity: 0.85,
+                            fillColor: "blue",
+                        },
                     ],
                     ["Sample value 1", "Sample value 2", "Sample value 3"],
                 ],
             },
         },
-        { text: "... using a custom styler and overriding it in the second row", margin: [0, 20, 0, 8] },
+        {
+            text: "... using a custom styler and overriding it in the second row",
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableOpacityExample",
             table: {
@@ -1856,7 +1922,10 @@ const tables: TDocumentDefinitions = {
                 ],
             },
         },
-        { text: "... with a function (opacity at 0 means fully transparent, i.e no color)", margin: [0, 20, 0, 8] },
+        {
+            text: "... with a function (opacity at 0 means fully transparent, i.e no color)",
+            margin: [0, 20, 0, 8],
+        },
         {
             style: "tableExample",
             table: {
@@ -1938,7 +2007,13 @@ const tables: TDocumentDefinitions = {
                 },
             },
         },
-        { text: "Optional border", fontSize: 14, bold: true, pageBreak: "before", margin: [0, 0, 0, 8] },
+        {
+            text: "Optional border",
+            fontSize: 14,
+            bold: true,
+            pageBreak: "before",
+            margin: [0, 0, 0, 8],
+        },
         "Each cell contains an optional border property: an array of 4 booleans for left border, top border, right border, bottom border.",
         {
             style: "tableExample",
@@ -2086,7 +2161,11 @@ const tables: TDocumentDefinitions = {
                         "",
                         "",
                     ],
-                    ["border:\nundefined", "border:\nundefined", "border:\nundefined"],
+                    [
+                        "border:\nundefined",
+                        "border:\nundefined",
+                        "border:\nundefined",
+                    ],
                 ],
             },
         },
@@ -2109,7 +2188,11 @@ const tables: TDocumentDefinitions = {
                 ],
             },
         },
-        { text: "BorderColor per Cell with Column/row spans", pageBreak: "before", style: "subheader" },
+        {
+            text: "BorderColor per Cell with Column/row spans",
+            pageBreak: "before",
+            style: "subheader",
+        },
         "Each cell-element can set the borderColor (the cell above or left of the current cell has priority",
         {
             style: "tableExample",
@@ -2124,7 +2207,12 @@ const tables: TDocumentDefinitions = {
                             text: "Header with Colspan = 3",
                             style: "tableHeader",
                             colSpan: 3,
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
                             alignment: "center",
                         },
                         {},
@@ -2151,14 +2239,23 @@ const tables: TDocumentDefinitions = {
                     [
                         {
                             rowSpan: 3,
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
-                            text:
-                                "rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
+                            text: "rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
                         },
                         "Sample value 2",
                         {
                             text: "Sample value 3",
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
                         },
                     ],
                     ["", "Sample value 2", "Sample value 3"],
@@ -2168,7 +2265,12 @@ const tables: TDocumentDefinitions = {
                         {
                             colSpan: 2,
                             rowSpan: 2,
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
                             text: "Both:\nrowSpan and colSpan\ncan be defined at the same time",
                         },
                         "",
@@ -2177,11 +2279,21 @@ const tables: TDocumentDefinitions = {
                         "Sample value 1",
                         {
                             text: "a",
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
                         },
                         {
                             text: "",
-                            borderColor: ["#ff00ff", "#00ffff", "#ff00ff", "#00ffff"],
+                            borderColor: [
+                                "#ff00ff",
+                                "#00ffff",
+                                "#ff00ff",
+                                "#00ffff",
+                            ],
                         },
                     ],
                 ],
@@ -2281,8 +2393,7 @@ const textDecorations: TDocumentDefinitions = {
 const toc: TDocumentDefinitions = {
     content: [
         {
-            text:
-                "This is a TOC example. Text elements marked with tocItem: true will be located in the toc. See below.",
+            text: "This is a TOC example. Text elements marked with tocItem: true will be located in the toc. See below.",
             pageBreak: "after",
         },
         {
@@ -2321,8 +2432,7 @@ const toc: TDocumentDefinitions = {
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.",
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.\n\n",
         {
-            text:
-                "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
+            text: "It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties",
             style: ["quote", "small"],
         },
         {

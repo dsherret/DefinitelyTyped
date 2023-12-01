@@ -12,8 +12,15 @@ declare class Pbf {
     constructor(buffer?: Uint8Array | ArrayBuffer);
 
     destroy(): void;
-    readFields<T>(readField: (tag: number, result?: T, pbf?: Pbf) => void, result?: T, end?: number): T;
-    readMessage<T>(readField: (tag: number, result?: T, pbf?: Pbf) => void, result?: T): T;
+    readFields<T>(
+        readField: (tag: number, result?: T, pbf?: Pbf) => void,
+        result?: T,
+        end?: number,
+    ): T;
+    readMessage<T>(
+        readField: (tag: number, result?: T, pbf?: Pbf) => void,
+        result?: T,
+    ): T;
     readFixed32(): number;
     readSFixed32(): number;
     readFixed64(): number;
@@ -51,7 +58,11 @@ declare class Pbf {
     writeDouble(val: number): void;
     writeBytes(buffer: Uint8Array): void;
     writeRawMessage<T>(fn: (obj: T, pbf?: Pbf) => void, obj?: T): void;
-    writeMessage<T>(tag: number, fn: (obj: T, pbf?: Pbf) => void, obj?: T): void;
+    writeMessage<T>(
+        tag: number,
+        fn: (obj: T, pbf?: Pbf) => void,
+        obj?: T,
+    ): void;
     writePackedVarint(tag: number, arr: number[]): void;
     writePackedSVarint(tag: number, arr: number[]): void;
     writePackedBoolean(tag: number, arr: boolean[]): void;

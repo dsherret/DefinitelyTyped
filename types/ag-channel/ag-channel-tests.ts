@@ -5,7 +5,12 @@ import StreamDemux = require("stream-demux");
 const broker = new AGSimpleBroker();
 const exchange = broker.exchange();
 
-const channel = new AGChannel<number>("dummy", exchange, new StreamDemux(), new StreamDemux());
+const channel = new AGChannel<number>(
+    "dummy",
+    exchange,
+    new StreamDemux(),
+    new StreamDemux(),
+);
 
 (async () => {
     await channel.listener("subscribe").once();

@@ -14,7 +14,9 @@ type Fn<A, B> = (a: A) => B;
 type Fn2<A, B, C> = (a: A) => (b: B) => C;
 type Fn3<A, B, C, D> = (a: A) => (b: B) => (c: C) => D;
 type Fn4<A, B, C, D, E> = (a: A) => (b: B) => (c: C) => (d: D) => E;
-type Fn5<A, B, C, D, E, F> = (a: A) => (b: B) => (c: C) => (d: D) => (e: E) => F;
+type Fn5<A, B, C, D, E, F> = (
+    a: A,
+) => (b: B) => (c: C) => (d: D) => (e: E) => F;
 type Fn2_<A, B, C> = (a: A, b: B) => C;
 type Fn3_<A, B, C, D> = (a: A, b: B, c: C) => D;
 type Fn4_<A, B, C, D, E> = (a: A, b: B, c: C, d: D) => E;
@@ -111,19 +113,29 @@ declare namespace Sanctuary {
         concat(x: string): (y: string) => string;
         empty(p: TypeRep): Monoid<any>;
         invert<A>(g: Group<A>): Group<A>;
-        map<A, B>(p: Fn<A, B>): {
+        map<A, B>(
+            p: Fn<A, B>,
+        ): {
             <C>(q: Fn<C, A>): Fn<C, B>;
             (q: readonly A[]): B[];
             (q: StrMap<A>): StrMap<B>;
             (q: Functor<A>): Functor<B>;
         };
-        bimap<A, B>(p: Fn<A, B>): <C, D>(q: Fn<C, D>) => (r: Bifunctor<A, C>) => Bifunctor<B, D>;
-        mapLeft<A, B>(p: Fn<A, B>): {
+        bimap<A, B>(
+            p: Fn<A, B>,
+        ): <C, D>(q: Fn<C, D>) => (r: Bifunctor<A, C>) => Bifunctor<B, D>;
+        mapLeft<A, B>(
+            p: Fn<A, B>,
+        ): {
             <A, C>(q: Pair<A, C>): Pair<B, C>;
             <A, C>(q: Either<A, C>): Either<B, C>;
             <A, C>(q: Bifunctor<A, C>): Bifunctor<B, C>;
         };
-        promap<A, B>(p: Fn<A, B>): <C, D>(q: Fn<C, D>) => {
+        promap<A, B>(
+            p: Fn<A, B>,
+        ): <C, D>(
+            q: Fn<C, D>,
+        ) => {
             (r: Fn<B, C>): Fn<A, D>;
             (r: Profunctor<B, C>): Profunctor<A, D>;
         };
@@ -131,20 +143,48 @@ declare namespace Sanctuary {
         zero(p: TypeRep): Plus<any>;
         reduce<A, B>(
             p: Fn2<B, A, B>,
-        ): (q: B) => (r: readonly A[] | StrMap<A> | Maybe<A> | Either<any, A> | Foldable<A>) => B;
+        ): (
+            q: B,
+        ) => (
+            r:
+                | readonly A[]
+                | StrMap<A>
+                | Maybe<A>
+                | Either<any, A>
+                | Foldable<A>,
+        ) => B;
         reduce_<A, B>(
             p: Fn2<A, B, B>,
-        ): (q: B) => (r: readonly A[] | StrMap<A> | Maybe<A> | Either<any, A> | Foldable<A>) => B;
+        ): (
+            q: B,
+        ) => (
+            r:
+                | readonly A[]
+                | StrMap<A>
+                | Maybe<A>
+                | Either<any, A>
+                | Foldable<A>,
+        ) => B;
         traverse(
             typeRep: TypeRep,
-        ): <A, B>(f: Fn<A, Applicative<B>>) => (traversable: Traversable<A>) => Applicative<Traversable<B>>;
-        sequence(typeRep: TypeRep): <A>(traversable: Traversable<Applicative<A>>) => Applicative<Traversable<A>>;
+        ): <A, B>(
+            f: Fn<A, Applicative<B>>,
+        ) => (traversable: Traversable<A>) => Applicative<Traversable<B>>;
+        sequence(
+            typeRep: TypeRep,
+        ): <A>(
+            traversable: Traversable<Applicative<A>>,
+        ) => Applicative<Traversable<A>>;
         ap<A, B>(p: Apply<Fn<A, B>>): (q: Apply<A>) => Apply<B>;
-        lift2<A, B, C>(f: Fn2<A, B, C>): {
+        lift2<A, B, C>(
+            f: Fn2<A, B, C>,
+        ): {
             <X>(x: Fn<X, A>): (y: Fn<X, B>) => Fn<X, C>;
             (x: Apply<A>): (y: Apply<B>) => Apply<C>;
         };
-        lift3<A, B, C, D>(f: Fn3<A, B, C, D>): {
+        lift3<A, B, C, D>(
+            f: Fn3<A, B, C, D>,
+        ): {
             <X>(x: Fn<X, A>): (y: Fn<X, B>) => (z: Fn<X, C>) => Fn<X, D>;
             (x: Apply<A>): (y: Apply<B>) => (z: Apply<C>) => Apply<D>;
         };
@@ -168,7 +208,9 @@ declare namespace Sanctuary {
         duplicate<A, B>(comonad: Pair<A, B>): Pair<A, Pair<A, B>>;
         duplicate<A>(comonad: Comonad<A>): Comonad<Comonad<A>>;
         extract<A>(comonad: Comonad<A>): A;
-        contramap<A, B>(f: Fn<B, A>): {
+        contramap<A, B>(
+            f: Fn<B, A>,
+        ): {
             <X>(contravariant: Fn<A, X>): Fn<B, X>;
             (contravariant: Contravariant<A>): Contravariant<B>;
         };
@@ -184,8 +226,12 @@ declare namespace Sanctuary {
             (m: readonly A[]): A[];
             (m: Foldable<A>): Foldable<A>;
         };
-        takeWhile<A>(pred: Predicate<A>): (foldable: Foldable<A>) => Foldable<A>;
-        dropWhile<A>(pred: Predicate<A>): (foldable: Foldable<A>) => Foldable<A>;
+        takeWhile<A>(
+            pred: Predicate<A>,
+        ): (foldable: Foldable<A>) => Foldable<A>;
+        dropWhile<A>(
+            pred: Predicate<A>,
+        ): (foldable: Foldable<A>) => Foldable<A>;
         //  Combinator
         I<A>(x: A): A;
         K<A>(x: A): (y: any) => A;
@@ -200,18 +246,28 @@ declare namespace Sanctuary {
         curry2<A, B, C>(f: Fn2_<A, B, C>): Fn2<A, B, C>;
         curry3<A, B, C, D>(f: Fn3_<A, B, C, D>): Fn3<A, B, C, D>;
         curry4<A, B, C, D, E>(f: Fn4_<A, B, C, D, E>): Fn4<A, B, C, D, E>;
-        curry5<A, B, C, D, E, F>(f: Fn5_<A, B, C, D, E, F>): Fn5<A, B, C, D, E, F>;
+        curry5<A, B, C, D, E, F>(
+            f: Fn5_<A, B, C, D, E, F>,
+        ): Fn5<A, B, C, D, E, F>;
         flip<A, B, C>(f: Fn2<A, B, C>): Fn2<B, A, C>;
         //  Composition
         compose<B, C>(f: Fn<B, C>): <A>(g: Fn<A, B>) => Fn<A, C>;
-        compose<B, C>(x: Semigroupoid<B, C>): <A>(y: Semigroupoid<A, B>) => Semigroupoid<A, C>;
+        compose<B, C>(
+            x: Semigroupoid<B, C>,
+        ): <A>(y: Semigroupoid<A, B>) => Semigroupoid<A, C>;
         pipe<A, B>(fs: [Fn<A, B>]): (x: A) => B;
         pipe<A, B, C>(fs: [Fn<A, B>, Fn<B, C>]): (x: A) => C;
         pipe<A, B, C, D>(fs: [Fn<A, B>, Fn<B, C>, Fn<C, D>]): (x: A) => D;
-        pipe<A, B, C, D, E>(fs: [Fn<A, B>, Fn<B, C>, Fn<C, D>, Fn<D, E>]): (x: A) => E;
-        pipe<A, B, C, D, E, F>(fs: [Fn<A, B>, Fn<B, C>, Fn<C, D>, Fn<D, E>, Fn<E, F>]): (x: A) => F;
+        pipe<A, B, C, D, E>(
+            fs: [Fn<A, B>, Fn<B, C>, Fn<C, D>, Fn<D, E>],
+        ): (x: A) => E;
+        pipe<A, B, C, D, E, F>(
+            fs: [Fn<A, B>, Fn<B, C>, Fn<C, D>, Fn<D, E>, Fn<E, F>],
+        ): (x: A) => F;
         pipe(fs: ReadonlyArray<Fn<any, any>>): (x: any) => any;
-        pipeK<B>(fs: ReadonlyArray<Fn<any, Chain<any>>>): <A>(chain_: Chain<A>) => Chain<B>;
+        pipeK<B>(
+            fs: ReadonlyArray<Fn<any, Chain<any>>>,
+        ): <A>(chain_: Chain<A>) => Chain<B>;
         on<A, B, C>(p: Fn2<B, B, C>): (q: Fn<A, B>) => (r: A) => Fn<A, C>;
         //  Maybe
         isNothing<A>(p: Maybe<A>): boolean;
@@ -242,11 +298,15 @@ declare namespace Sanctuary {
         not(p: boolean): boolean;
         complement<A>(p: Predicate<A>): Predicate<A>;
         boolean<A>(p: A): (q: A) => (b: boolean) => A;
-        ifElse<A, B>(p: Predicate<A>): (q: Fn<A, B>) => (r: Fn<A, B>) => Fn<A, B>;
+        ifElse<A, B>(
+            p: Predicate<A>,
+        ): (q: Fn<A, B>) => (r: Fn<A, B>) => Fn<A, B>;
         when<A>(p: Predicate<A>): (q: Fn<A, A>) => Fn<A, A>;
         unless<A>(p: Predicate<A>): (q: Fn<A, A>) => Fn<A, A>;
         //  List
-        array<A, B>(p: B): (q: Fn2<A, readonly A[], B>) => (r: readonly A[]) => B;
+        array<A, B>(
+            p: B,
+        ): (q: Fn2<A, readonly A[], B>) => (r: readonly A[]) => B;
         head(xs: string): Maybe<string>;
         head<A>(xs: readonly A[]): Maybe<A>;
         last(xs: string): Maybe<string>;
@@ -272,9 +332,13 @@ declare namespace Sanctuary {
         };
         joinWith(p: string): (q: readonly string[]) => string;
         elem<A>(p: A): (q: Foldable<A> | StrMap<A> | readonly A[]) => boolean;
-        find<A>(p: Predicate<A>): (q: readonly A[] | StrMap<A> | Foldable<A>) => Maybe<A>;
+        find<A>(
+            p: Predicate<A>,
+        ): (q: readonly A[] | StrMap<A> | Foldable<A>) => Maybe<A>;
         intercalate<A>(p: A): (q: Foldable<A>) => A;
-        foldMap<A, M>(t: TypeRep): <A, M>(f: Fn<A, M>) => <A>(g: Foldable<A>) => M;
+        foldMap<A, M>(
+            t: TypeRep,
+        ): <A, M>(f: Fn<A, M>) => <A>(g: Foldable<A>) => M;
         unfoldr<A, B>(f: Fn<B, Maybe<Pair<A, B>>>): (x: B) => A[];
         range(from: Integer): (to: Integer) => Integer[];
         groupBy<A>(f: Fn2<A, A, boolean>): (xs: readonly A[]) => A[][];
@@ -286,8 +350,12 @@ declare namespace Sanctuary {
             (foldable: readonly A[]): A[];
             (foldable: Foldable<A>): Foldable<A>;
         };
-        zip<A>(p: readonly A[]): <B>(q: readonly B[]) => ReadonlyArray<Pair<A, B>>;
-        zipWith<A, B, C>(f: Fn2<A, B, C>): <A>(p: readonly A[]) => <B>(q: readonly B[]) => readonly C[];
+        zip<A>(
+            p: readonly A[],
+        ): <B>(q: readonly B[]) => ReadonlyArray<Pair<A, B>>;
+        zipWith<A, B, C>(
+            f: Fn2<A, B, C>,
+        ): <A>(p: readonly A[]) => <B>(q: readonly B[]) => readonly C[];
         all<A>(p: Predicate<A>): (q: Foldable<A>) => boolean;
         any<A>(p: Predicate<A>): (q: Foldable<A>) => boolean;
         none<A>(p: Predicate<A>): (q: Foldable<A>) => boolean;
@@ -295,7 +363,9 @@ declare namespace Sanctuary {
         prop(p: string): (q: any) => any;
         props(p: readonly string[]): (q: any) => any;
         get(p: Predicate<any>): (q: string) => (r: any) => Maybe<any>;
-        gets(p: Predicate<any>): (q: readonly string[]) => (r: any) => Maybe<any>;
+        gets(
+            p: Predicate<any>,
+        ): (q: readonly string[]) => (r: any) => Maybe<any>;
         //  StrMap
         value(p: string): <A>(p: StrMap<A>) => Maybe<A>;
         singleton(key: string): <A>(value: A) => StrMap<A>;
@@ -311,10 +381,14 @@ declare namespace Sanctuary {
         sum(p: Foldable<FiniteNumber> | readonly FiniteNumber[]): FiniteNumber;
         sub(p: FiniteNumber): (q: FiniteNumber) => FiniteNumber;
         mult(x: FiniteNumber): (q: FiniteNumber) => FiniteNumber;
-        product(p: Foldable<FiniteNumber> | readonly FiniteNumber[]): FiniteNumber;
+        product(
+            p: Foldable<FiniteNumber> | readonly FiniteNumber[],
+        ): FiniteNumber;
         div(p: NonZeroFiniteNumber): (q: FiniteNumber) => FiniteNumber;
         pow(p: FiniteNumber): (q: FiniteNumber) => FiniteNumber;
-        mean(p: Foldable<FiniteNumber> | readonly FiniteNumber[]): Maybe<FiniteNumber>;
+        mean(
+            p: Foldable<FiniteNumber> | readonly FiniteNumber[],
+        ): Maybe<FiniteNumber>;
         //  Integer
         even(n: Integer): boolean;
         odd(n: Integer): boolean;

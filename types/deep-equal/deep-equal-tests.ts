@@ -7,4 +7,11 @@ const isDeepEqual4: boolean = deepEqual(undefined, undefined);
 const isDeepEqual5: boolean = deepEqual(3, false);
 const isDeepEqual6: boolean = deepEqual("a-string", null);
 
-console.log(isDeepEqual1, isDeepEqual2, isDeepEqual3, isDeepEqual4, isDeepEqual5, isDeepEqual6);
+console.log(
+    isDeepEqual1,
+    isDeepEqual2,
+    isDeepEqual3,
+    isDeepEqual4,
+    isDeepEqual5,
+    isDeepEqual6,
+);

@@ -4,8 +4,8 @@ let testFile: File = new File([""], "filename");
 const testArchive = new Archive(testFile, { workerUrl: "test" });
 
 Archive.init({ workerUrl: "test" });
-Archive.open(testFile).then(e => void e);
-Archive.open(testFile, { workerUrl: "test" }).then(e => void e);
+Archive.open(testFile).then((e) => void e);
+Archive.open(testFile, { workerUrl: "test" }).then((e) => void e);
 
 const FilesObject1: { [key: string]: any } = {
     test2: testFile,
@@ -27,9 +27,11 @@ testArchive.getFilesObject().then((res) => {
 testArchive.getFilesArray().then((res) => {
     testArray = res;
 });
-testArchive.extractFiles((entry) => {
-    testArray.push(entry);
-}).then(() => {});
+testArchive
+    .extractFiles((entry) => {
+        testArray.push(entry);
+    })
+    .then(() => {});
 testArchive.extractFiles().then((res) => {
     FilesObject2 = res;
 });

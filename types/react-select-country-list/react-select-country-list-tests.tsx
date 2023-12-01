@@ -16,7 +16,9 @@ function CountrySelector() {
 
     return (
         <select>
-            {options.map(option => <option key={option.value}>{option.label}</option>)}
+            {options.map((option) => (
+                <option key={option.value}>{option.label}</option>
+            ))}
         </select>
     );
 }

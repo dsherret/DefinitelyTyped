@@ -1,7 +1,15 @@
 declare module "react-is-deprecated" {
-    import { ReactPropTypes, Requireable, ValidationMap, Validator } from "react";
+    import {
+        ReactPropTypes,
+        Requireable,
+        ValidationMap,
+        Validator,
+    } from "react";
 
-    export function deprecate<T>(validator: Validator<T>, message: string): Validator<T>;
+    export function deprecate<T>(
+        validator: Validator<T>,
+        message: string,
+    ): Validator<T>;
 
     interface Deprecatable<T> {
         isDeprecated: (message: string) => Validator<T>;
@@ -21,11 +29,15 @@ declare module "react-is-deprecated" {
         element: Requireable<any> & Deprecatable<any>;
         instanceOf(expectedClass: {}): Requireable<any> & Deprecatable<any>;
         oneOf(types: any[]): Requireable<any> & Deprecatable<any>;
-        oneOfType(types: Array<Validator<any>>): Requireable<any> & Deprecatable<any>;
+        oneOfType(
+            types: Array<Validator<any>>,
+        ): Requireable<any> & Deprecatable<any>;
         arrayOf(type: Validator<any>): Requireable<any> & Deprecatable<any>;
         objectOf(type: Validator<any>): Requireable<any> & Deprecatable<any>;
         shape(type: ValidationMap<any>): Requireable<any> & Deprecatable<any>;
     }
 
-    export function addIsDeprecated(propTypes: ReactPropTypes): DeprecatablePropTypes;
+    export function addIsDeprecated(
+        propTypes: ReactPropTypes,
+    ): DeprecatablePropTypes;
 }

@@ -114,7 +114,10 @@ QB.for("doc").in("my_collection").collect("x", "y").into("z");
 QB.for("doc").in("my_collection").collect("x", "y").into("z").options("opts");
 QB.for("doc").in("my_collection").collect("x", "y").options("opts");
 QB.for("doc").in("my_collection").collect("x", "y").keep("a", "b");
-QB.for("doc").in("my_collection").collect("x", "y").sort("x", "DESC", "y", "ASC");
+QB.for("doc")
+    .in("my_collection")
+    .collect("x", "y")
+    .sort("x", "DESC", "y", "ASC");
 QB.for("doc").in("my_collection").collect("x", "y").limit(20);
 QB.for("doc").in("my_collection").collect("x", "y").limit(20, 20);
 QB.for("doc").in("my_collection").remove("x");

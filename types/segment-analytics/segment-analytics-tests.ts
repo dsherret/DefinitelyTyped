@@ -20,7 +20,7 @@ var testOpts = {
     },
 };
 
-var testCb = function() {};
+var testCb = function () {};
 
 // mock integration
 const createMockIntegration = (name: string) => {
@@ -36,7 +36,12 @@ const createMockIntegration = (name: string) => {
 function test_init() {
     analytics.init();
     analytics.init(undefined, {
-        cookie: { maxage: 1000, secure: true, path: "/path", domain: "localhost" },
+        cookie: {
+            maxage: 1000,
+            secure: true,
+            path: "/path",
+            domain: "localhost",
+        },
         metrics: { sampleRate: 0 },
         localStorage: { enabled: true },
         user: { cookie: { key: "my_user_key", oldKey: "old_key" } },
@@ -70,7 +75,13 @@ function test_load() {
     analytics.load("YOUR_WRITE_KEY");
 
     // With options
-    analytics.load("writekey", { integrations: { All: false, "Google Analytics": true, "Segment.io": true } });
+    analytics.load("writekey", {
+        integrations: {
+            All: false,
+            "Google Analytics": true,
+            "Segment.io": true,
+        },
+    });
 }
 
 function test_identify() {
@@ -91,7 +102,7 @@ function test_identify() {
     });
 
     // Callback
-    analytics.identify("1e810c197e", function() {
+    analytics.identify("1e810c197e", function () {
         // Do something after the identify request has been sent, like
         // submit a form or redirect to a new page.
     });
@@ -176,14 +187,18 @@ function testTrackLink() {
     analytics.trackLink(links, "Clicked Free-Trial Link", testProps);
 
     // With function name and properties
-    analytics.trackLink(links, function(elm) {
-        return String(elm);
-    }, function(elm) {
-        return {
-            x: 123,
-            y: 456,
-        };
-    });
+    analytics.trackLink(
+        links,
+        function (elm) {
+            return String(elm);
+        },
+        function (elm) {
+            return {
+                x: 123,
+                y: 456,
+            };
+        },
+    );
 }
 
 function testTrackForm() {
@@ -194,37 +209,41 @@ function testTrackForm() {
     analytics.trackForm(form1, "Signed up");
     analytics.trackForm(form1, "Signed Up", {
         plan: "Premium",
-        revenue: 99.00,
+        revenue: 99.0,
     });
 
     analytics.trackForm([form1, form2], "Clicked Free-Trial Link", testProps);
     analytics.trackForm(forms, "Clicked Free-Trial Link", testProps);
 
     // With function name and properties
-    analytics.trackForm(forms, function(elm) {
-        return String(elm);
-    }, function(elm) {
-        return {
-            x: 123,
-            y: 456,
-        };
-    });
+    analytics.trackForm(
+        forms,
+        function (elm) {
+            return String(elm);
+        },
+        function (elm) {
+            return {
+                x: 123,
+                y: 456,
+            };
+        },
+    );
 }
 
 function testReady() {
-    analytics.ready(function() {
-        (<any> window).mixpanel.set_config({ verbose: true });
+    analytics.ready(function () {
+        (<any>window).mixpanel.set_config({ verbose: true });
     });
 }
 
 function testUserGroup() {
-    analytics.ready(function() {
+    analytics.ready(function () {
         var user = analytics.user();
         var id = user.id();
         var traits = user.traits();
     });
 
-    analytics.ready(function() {
+    analytics.ready(function () {
         var group = analytics.group();
         var id = group.id();
         var traits = group.traits();
@@ -250,19 +269,27 @@ function testAnonId() {
     analytics.user().anonymousId();
     analytics.user().anonymousId("ABC-123-XYZ");
 
-    analytics.identify("123", {
-        gender: "Male",
-    }, {
-        anonymousId: "ABC-123-XYZ",
-    });
+    analytics.identify(
+        "123",
+        {
+            gender: "Male",
+        },
+        {
+            anonymousId: "ABC-123-XYZ",
+        },
+    );
 
     analytics.page({}, { anonymousId: "ABC-123-XYZ" });
 
-    analytics.track("Clicked CTA", {
-        callToAction: "Signup",
-    }, {
-        anonymousId: "ABC-123-XYZ",
-    });
+    analytics.track(
+        "Clicked CTA",
+        {
+            callToAction: "Signup",
+        },
+        {
+            anonymousId: "ABC-123-XYZ",
+        },
+    );
 }
 
 function testDebug() {
@@ -272,7 +299,7 @@ function testDebug() {
 
 declare var bigdata: any;
 function testEmitter() {
-    analytics.on("track", function(event, properties, options) {
+    analytics.on("track", function (event, properties, options) {
         bigdata.push(["recordEvent", event]);
     });
 }

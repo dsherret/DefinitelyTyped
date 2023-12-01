@@ -6,7 +6,10 @@ declare const defaultExport: PluginFunc;
 export = defaultExport;
 
 interface Recurrence {
-    every(unit: number | string | number[] | string[], measurementType?: string): Recurrence;
+    every(
+        unit: number | string | number[] | string[],
+        measurementType?: string,
+    ): Recurrence;
     day(unit?: string): Recurrence;
     days(unit?: string): Recurrence;
     week(unit?: string): Recurrence;
@@ -37,10 +40,7 @@ interface Recurrence {
 }
 
 declare module "dayjs" {
-    function recur(
-        start?: string | Dayjs,
-        end?: string | Dayjs,
-    ): Recurrence;
+    function recur(start?: string | Dayjs, end?: string | Dayjs): Recurrence;
     function recur(options?: {
         start?: string | Dayjs;
         end?: string | Dayjs;

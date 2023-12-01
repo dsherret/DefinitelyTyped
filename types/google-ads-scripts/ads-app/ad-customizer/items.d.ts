@@ -72,16 +72,22 @@ declare namespace GoogleAdsScripts {
          *        .withMobilePreferred(true)                           // optional
          *        .build();                                            // create the ad customizer item
          */
-        interface AdCustomizerItemBuilder extends Base.Builder<AdCustomizerItemOperation> {
+        interface AdCustomizerItemBuilder
+            extends Base.Builder<AdCustomizerItemOperation> {
             /** Sets the value of the named attribute of the ad customizer item. */
-            withAttributeValue(name: string, value: string | number | null): this;
+            withAttributeValue(
+                name: string,
+                value: string | number | null,
+            ): this;
             /**
              * Sets the values of the ad customizer item's attributes.
              * Expects an object containing the name-value pairs of the attribute values to set. For instance,
              * `adCustomizerItemBuilder.withAttributeValues({numLeft: 5, lowCost: "$0.99"})` sets the attribute `numLeft` to have the value `5`,
              * and `lowCost` to have value `"$0.99"`.
              */
-            withAttributeValues(attributeValues: Record<string, string | number | null>): this;
+            withAttributeValues(
+                attributeValues: Record<string, string | number | null>,
+            ): this;
             /**
              * Sets the ad customizer item's end date from either an object containing year, month, and day fields, or an 8-digit string in YYYYMMDD format.
              * This field is optional.
@@ -143,14 +149,16 @@ declare namespace GoogleAdsScripts {
          *        var adCustomizerItem = adCustomizerItemIterator.next();
          *      }
          */
-        interface AdCustomizerItemIterator extends Base.Iterator<AdCustomizerItem> {}
+        interface AdCustomizerItemIterator
+            extends Base.Iterator<AdCustomizerItem> {}
 
         /**
          * An operation representing creation of a new ad customizer item.
          * Calling any method (getErrors, getResult, or isSuccessful) will cause the operation to execute and create the ad customizer item.
          * To make the script more efficient, it's recommended that you store the operations in an array and only call these methods once you've constructed all the operations you want.
          */
-        interface AdCustomizerItemOperation extends Base.Operation<AdCustomizerItem> {}
+        interface AdCustomizerItemOperation
+            extends Base.Operation<AdCustomizerItem> {}
 
         /**
          * Fetches ad customizer items. Supports filtering and sorting.
@@ -168,13 +176,11 @@ declare namespace GoogleAdsScripts {
          *       }
          */
         interface AdCustomizerItemSelector
-            extends
-                Base.Selector<AdCustomizerItemIterator>,
+            extends Base.Selector<AdCustomizerItemIterator>,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
                 Base.SelectorWithLimit,
                 Base.SelectorOrderBy,
-                Base.SelectorForDateRange
-        {}
+                Base.SelectorForDateRange {}
     }
 }

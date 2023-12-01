@@ -21,7 +21,10 @@ export interface Transport<T = any> {
     name: string;
     version: string;
 
-    send(mail: MailMessage<T>, callback: (err: Error | null, info: T) => void): void;
+    send(
+        mail: MailMessage<T>,
+        callback: (err: Error | null, info: T) => void,
+    ): void;
 
     verify?(callback: (err: Error | null, success: true) => void): void;
     verify?(): Promise<true>;
@@ -75,7 +78,11 @@ export function createTestAccount(
     apiUrl: string,
     callback: (err: Error | null, testAccount: TestAccount) => void,
 ): void;
-export function createTestAccount(callback: (err: Error | null, testAccount: TestAccount) => void): void;
+export function createTestAccount(
+    callback: (err: Error | null, testAccount: TestAccount) => void,
+): void;
 export function createTestAccount(apiUrl?: string): Promise<TestAccount>;
 
-export function getTestMessageUrl(info: SESTransport.SentMessageInfo | SMTPTransport.SentMessageInfo): string | false;
+export function getTestMessageUrl(
+    info: SESTransport.SentMessageInfo | SMTPTransport.SentMessageInfo,
+): string | false;

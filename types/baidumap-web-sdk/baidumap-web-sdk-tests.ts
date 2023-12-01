@@ -5,7 +5,10 @@ class TestFixture {
     createMap(container: string | HTMLElement) {
         navigator.geolocation.getCurrentPosition(
             (position: GeolocationPosition) => {
-                const point = new BMap.Point(position.coords.longitude, position.coords.latitude);
+                const point = new BMap.Point(
+                    position.coords.longitude,
+                    position.coords.latitude,
+                );
                 const map = new BMap.Map(container);
                 map.centerAndZoom(point, 15);
             },
@@ -16,8 +19,17 @@ class TestFixture {
     addControl(map: BMap.Map) {
         map.addControl(new BMap.ScaleControl({ anchor: BMAP_ANCHOR_TOP_LEFT }));
         map.addControl(new BMap.NavigationControl());
-        map.addControl(new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP] }));
-        map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));
+        map.addControl(
+            new BMap.MapTypeControl({
+                mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP],
+            }),
+        );
+        map.addControl(
+            new BMap.OverviewMapControl({
+                isOpen: true,
+                anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            }),
+        );
     }
     addMarker(map: BMap.Map, point: BMap.Point) {
         const marker = new BMap.Marker(point);

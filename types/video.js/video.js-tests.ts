@@ -65,8 +65,8 @@ const playerOptions: VideoJsPlayerOptions = {
     techOrder: ["html5", "anotherTech"],
     tracks: [],
     userActions: {
-        click: event => {},
-        doubleClick: event => {},
+        click: (event) => {},
+        doubleClick: (event) => {},
         hotkeys: true,
     },
     width: 10,
@@ -98,18 +98,18 @@ const playerOptions: VideoJsPlayerOptions = {
     retryOnError: true,
 };
 
-playerOptions.userActions!.hotkeys = event => {
+playerOptions.userActions!.hotkeys = (event) => {
     console.log(event.which);
 };
 
 playerOptions.userActions!.hotkeys = {
-    fullscreenKey: event => {
+    fullscreenKey: (event) => {
         return event.which === 42;
     },
-    muteKey: event => {
+    muteKey: (event) => {
         return event.which === 42;
     },
-    playPauseKey: event => {
+    playPauseKey: (event) => {
         return event.which === 42;
     },
 };
@@ -135,11 +135,17 @@ videojs("example_video_1", playerOptions).ready(function playerReady() {
 
     this.src("http://www.example.com/path/to/video.mp4");
 
-    this.src({ type: "video/mp4", src: "http://www.example.com/path/to/video.mp4" });
+    this.src({
+        type: "video/mp4",
+        src: "http://www.example.com/path/to/video.mp4",
+    });
 
     this.src([
         { type: "video/mp4", src: "http://www.example.com/path/to/video.mp4" },
-        { type: "video/webm", src: "http://www.example.com/path/to/video.webm" },
+        {
+            type: "video/webm",
+            src: "http://www.example.com/path/to/video.webm",
+        },
         { type: "video/ogg", src: "http://www.example.com/path/to/video.ogv" },
     ]);
 
@@ -151,7 +157,9 @@ videojs("example_video_1", playerOptions).ready(function playerReady() {
     const liveTracker = this.liveTracker;
     liveTracker.on("seekableendchange", () => {});
     liveTracker.on("liveedgechange", () => {});
-    const windowOrDuration = liveTracker.isLive() ? liveTracker.liveWindow() : this.duration();
+    const windowOrDuration = liveTracker.isLive()
+        ? liveTracker.liveWindow()
+        : this.duration();
     const liveCurrentTime: number = liveTracker.liveCurrentTime();
     const liveWindow: number = liveTracker.liveWindow();
     const seekableStart: number = liveTracker.seekableStart();
@@ -219,7 +227,7 @@ videojs("example_video_1", playerOptions).ready(function playerReady() {
 
     this.requestFullscreen();
 
-    this.requestPictureInPicture().then(pipWindow => {
+    this.requestPictureInPicture().then((pipWindow) => {
         // $ExpectType PictureInPictureWindow
         pipWindow;
     });
@@ -292,14 +300,14 @@ videojs("example_video_1", playerOptions).ready(function playerReady() {
 });
 
 function testEvents(player: videojs.Player) {
-    const myFunc = function(this: videojs.Player) {
+    const myFunc = function (this: videojs.Player) {
         // Do something when the event is fired
     };
     player.on("error", myFunc);
     // Removes the specified listener only.
     player.off("error", myFunc);
 
-    const myFuncWithArg = function(this: videojs.Player, e: Event) {
+    const myFuncWithArg = function (this: videojs.Player, e: Event) {
         // Do something when the event is fired
     };
     player.on("volumechange", myFuncWithArg);
@@ -345,7 +353,9 @@ function testComponents(player: videojs.Player) {
     myOtherWindow.myFunction(); // $ExpectType void
     myOtherWindow.myOtherFunction("test"); // $ExpectType string
 
-    const MyClickableComponent = videojs.extend(videojs.getComponent("clickablecomponent"));
+    const MyClickableComponent = videojs.extend(
+        videojs.getComponent("clickablecomponent"),
+    );
     const myClickable = new MyClickableComponent(player, {
         clickHandler: () => {},
     });
@@ -356,7 +366,7 @@ function testPlugin(player: videojs.Player, options: {}) {
         return;
     }
 
-    videojs.registerPlugin("uloztoExample", function({}: typeof options) {
+    videojs.registerPlugin("uloztoExample", function ({}: typeof options) {
         this.play();
         this.one("ended", () => {
             // do something

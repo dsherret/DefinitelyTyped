@@ -57,7 +57,10 @@ declare class XmlParser {
      * @param cb Callback function with error and the result (an Node)
      * @returns whenever or not there where any errors
      */
-    parseString(xml: string, cb: (err: null | Error[], xmlNode: Node) => void): boolean;
+    parseString(
+        xml: string,
+        cb: (err: null | Error[], xmlNode: Node) => void,
+    ): boolean;
     errors: Error[];
 
     /**

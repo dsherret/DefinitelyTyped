@@ -12,6 +12,9 @@ declare namespace jsontoxml {
     }
 }
 
-declare function jsontoxml(data: any, options?: jsontoxml.JsonToXmlOptions): string;
+declare function jsontoxml(
+    data: any,
+    options?: jsontoxml.JsonToXmlOptions,
+): string;
 
 export = jsontoxml;

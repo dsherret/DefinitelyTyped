@@ -7,8 +7,16 @@ export {};
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export type Callback = () => void | null | undefined;
-export type renderer = (c: JSX.Element, s: Blessed.Widgets.Screen, callback?: Callback) => React.Component | null;
-export function render(c: JSX.Element, s: Blessed.Widgets.Screen, callback?: Callback): React.Component | null;
+export type renderer = (
+    c: JSX.Element,
+    s: Blessed.Widgets.Screen,
+    callback?: Callback,
+) => React.Component | null;
+export function render(
+    c: JSX.Element,
+    s: Blessed.Widgets.Screen,
+    callback?: Callback,
+): React.Component | null;
 
 export function createBlessedRenderer(bls: any): renderer;
 
@@ -58,8 +66,14 @@ type EventHandlerProp<T extends string, E extends (...args: never) => void> = {
 // here.
 type ScreenElement = "click" | "mouseover" | "mouseout" | "mouseup";
 type ScreenElementPrefix = "element";
-type ExludedScreenEventNames = Prefix<ScreenElementPrefix, Prefix<" ", ScreenElement>>;
-type CamelCasedScreenEventNames = Prefix<ScreenElementPrefix, Capitalize<ScreenElement>>;
+type ExludedScreenEventNames = Prefix<
+    ScreenElementPrefix,
+    Prefix<" ", ScreenElement>
+>;
+type CamelCasedScreenEventNames = Prefix<
+    ScreenElementPrefix,
+    Capitalize<ScreenElement>
+>;
 
 type ScreenEventNames =
     | Exclude<Blessed.Widgets.NodeScreenEventType, ExludedScreenEventNames>
@@ -67,14 +81,22 @@ type ScreenEventNames =
 
 type GenericContentPrefix = "set" | "parsed";
 type GenericContent = "content";
-type ExludedGenericEventNames = Prefix<GenericContentPrefix, Prefix<" ", GenericContent>>;
-type CamelCasedGenericEventNames = Prefix<GenericContentPrefix, Capitalize<GenericContent>>;
+type ExludedGenericEventNames = Prefix<
+    GenericContentPrefix,
+    Prefix<" ", GenericContent>
+>;
+type CamelCasedGenericEventNames = Prefix<
+    GenericContentPrefix,
+    Capitalize<GenericContent>
+>;
 
 type GenericEventNames =
     | Exclude<Blessed.Widgets.NodeGenericEventType, ExludedGenericEventNames>
     | CamelCasedGenericEventNames;
 
-type ProgressBarEventNames = Parameters<Blessed.Widgets.ProgressBarElement["on"]>[0];
+type ProgressBarEventNames = Parameters<
+    Blessed.Widgets.ProgressBarElement["on"]
+>[0];
 
 type SpreadableArgs<T, K = T extends unknown[] ? T : [T]> = K;
 
@@ -93,13 +115,22 @@ type ScreenEventProps = EventHandlerProp<ScreenEventNames, ScreenEventHandler>;
 
 export type MouseEvent = Blessed.Widgets.Events.IMouseEventArg;
 export type MouseEventHandler = EventHandler<MouseEvent>;
-type MouseEventProps = EventHandlerProp<Blessed.Widgets.NodeMouseEventType, MouseEventHandler>;
+type MouseEventProps = EventHandlerProp<
+    Blessed.Widgets.NodeMouseEventType,
+    MouseEventHandler
+>;
 
 export type GenericEvent = undefined;
 export type GenericEventHandler = EventHandler<GenericEvent>;
-type GenericEventProps = EventHandlerProp<GenericEventNames, GenericEventHandler>;
+type GenericEventProps = EventHandlerProp<
+    GenericEventNames,
+    GenericEventHandler
+>;
 
-export type KeyPressEvent = [key: any, event: Blessed.Widgets.Events.IKeyEventArg];
+export type KeyPressEvent = [
+    key: any,
+    event: Blessed.Widgets.Events.IKeyEventArg,
+];
 export type KeyPressEventHandler = EventHandler<KeyPressEvent>;
 type KeyPressEventProps = EventHandlerProp<"keypress", KeyPressEventHandler>;
 
@@ -109,10 +140,16 @@ type WarningEventProps = EventHandlerProp<"warning", WarningEventHandler>;
 
 export type ProgressBarEvent = undefined;
 export type ProgressBarEventHandler = EventHandler<ProgressBarEvent>;
-type ProgressBarEventProps = EventHandlerProp<ProgressBarEventNames, ProgressBarEventHandler>;
+type ProgressBarEventProps = EventHandlerProp<
+    ProgressBarEventNames,
+    ProgressBarEventHandler
+>;
 interface EventProps
-    extends ScreenEventProps, GenericEventProps, MouseEventProps, KeyPressEventProps, WarningEventProps
-{}
+    extends ScreenEventProps,
+        GenericEventProps,
+        MouseEventProps,
+        KeyPressEventProps,
+        WarningEventProps {}
 
 /* BLESSED-REACT LOCALLY DEFINED PROPS **************************************/
 
@@ -148,24 +185,42 @@ interface ElementStyle extends ItemStyle {
     focus?: { bg?: string; fg?: string };
     hover?: { bg?: string; fg?: string };
     transparent?: boolean;
-    scrollbar?: { bg?: string; fg?: string; track?: { bg?: string; fg?: string } };
+    scrollbar?: {
+        bg?: string;
+        fg?: string;
+        track?: { bg?: string; fg?: string };
+    };
 }
 
 // remove indexers
 // https://stackoverflow.com/questions/51465182/how-to-remove-index-signature-using-mapped-types
 type KnownKeys<T> = {
-    [K in keyof T as string extends K ? never : number extends K ? never : K]: T[K];
+    [K in keyof T as string extends K
+        ? never
+        : number extends K
+          ? never
+          : K]: T[K];
 };
 
-type WithClassProp<T, K = T | undefined | false | null> = T & { class?: K | K[] };
-type ProgressBarProps<T> = T extends ProgressBarElement ? ProgressBarEventProps & { style?: ProgressBarStyle } : {};
-type ListProps<T> = T extends ListElement ? ProgressBarEventProps & { style?: ListStyle; selected?: number } : {};
+type WithClassProp<T, K = T | undefined | false | null> = T & {
+    class?: K | K[];
+};
+type ProgressBarProps<T> = T extends ProgressBarElement
+    ? ProgressBarEventProps & { style?: ProgressBarStyle }
+    : {};
+type ListProps<T> = T extends ListElement
+    ? ProgressBarEventProps & { style?: ListStyle; selected?: number }
+    : {};
 // layout does not require prop 'layout' in Blessed.Widgets.LayoutOptions--make it optional
-type LayoutProps<T> = T extends LayoutElement ? Partial<Blessed.Widgets.LayoutOptions> : {};
+type LayoutProps<T> = T extends LayoutElement
+    ? Partial<Blessed.Widgets.LayoutOptions>
+    : {};
 
 // remove {[key: string]: any} indexer defined in Blessed.Widgets.IOptions.
 // 'blessed' doesn't exist in a DOM so it probably doesn't make sense to allow any property
-type FilterOptions<T extends Record<any, any>> = Partial<Omit<KnownKeys<T>, "style" | "children">>;
+type FilterOptions<T extends Record<any, any>> = Partial<
+    Omit<KnownKeys<T>, "style" | "children">
+>;
 
 type ModifiedBlessedOptions<T extends Record<any, any>> = FilterOptions<T> & {
     children?: React.ReactNode;
@@ -187,14 +242,18 @@ type ModifiedBlessedOptions<T extends Record<any, any>> = FilterOptions<T> & {
  * @see React.HTMLAttributes
  */
 export type BlessedAttributes<E extends Element> = WithClassProp<
-    ModifiedBlessedOptions<E["options"]> & ProgressBarProps<E> & ListProps<E> & LayoutProps<E>
+    ModifiedBlessedOptions<E["options"]> &
+        ProgressBarProps<E> &
+        ListProps<E> &
+        LayoutProps<E>
 >;
 
 /**
  * mirrors react prop generation for HTML JSX.IntrinsicElements.
  * @see React.DetailedHTMLProps
  */
-export type DetailedBlessedProps<E extends Element> = BlessedAttributes<E> & React.ClassAttributes<E>;
+export type DetailedBlessedProps<E extends Element> = BlessedAttributes<E> &
+    React.ClassAttributes<E>;
 
 export interface BlessedIntrinsicElements {
     element: DetailedBlessedProps<Element>;
@@ -226,7 +285,10 @@ export interface BlessedIntrinsicElements {
 // a 'blessed-' prefix. see
 // https://github.com/Yomguithereal/react-blessed/blob/f5e1f791dea1788745695d557040b91f573f9ef5/src/fiber/fiber.js#L49
 export type BlessedIntrinsicElementsPrefixed = {
-    [Key in keyof BlessedIntrinsicElements as Prefix<"blessed-", Key>]: BlessedIntrinsicElements[Key];
+    [Key in keyof BlessedIntrinsicElements as Prefix<
+        "blessed-",
+        Key
+    >]: BlessedIntrinsicElements[Key];
 };
 
 // it isn't possible to use the global JSX namespace because some 'blessed'
@@ -235,68 +297,109 @@ export type BlessedIntrinsicElementsPrefixed = {
 // augment react JSX when old JSX transform is used
 declare module "react" {
     namespace JSX {
-        interface ButtonHTMLAttributes<T> extends
-            HTMLAttributes<T>,
-            Omit<
-                DetailedBlessedProps<ButtonElement>,
-                "draggable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "ref" | "style"
-            >
-        {}
+        interface ButtonHTMLAttributes<T>
+            extends HTMLAttributes<T>,
+                Omit<
+                    DetailedBlessedProps<ButtonElement>,
+                    | "draggable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "ref"
+                    | "style"
+                > {}
 
-        interface TableHTMLAttributes<T> extends
-            HTMLAttributes<T>,
-            Omit<
-                DetailedBlessedProps<TableElement>,
-                "border" | "draggable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "ref" | "style"
-            >
-        {}
+        interface TableHTMLAttributes<T>
+            extends HTMLAttributes<T>,
+                Omit<
+                    DetailedBlessedProps<TableElement>,
+                    | "border"
+                    | "draggable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "ref"
+                    | "style"
+                > {}
 
-        interface TextareaHTMLAttributes<T> extends
-            HTMLAttributes<T>,
-            Omit<
-                DetailedBlessedProps<TextElement>,
-                "draggable" | "fill" | "focusable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "ref" | "style"
-            >
-        {}
+        interface TextareaHTMLAttributes<T>
+            extends HTMLAttributes<T>,
+                Omit<
+                    DetailedBlessedProps<TextElement>,
+                    | "draggable"
+                    | "fill"
+                    | "focusable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "ref"
+                    | "style"
+                > {}
 
-        interface InputHTMLAttributes<T> extends
-            HTMLAttributes<T>,
-            Omit<
-                DetailedBlessedProps<InputElement>,
-                "draggable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "ref" | "style"
-            >
-        {}
+        interface InputHTMLAttributes<T>
+            extends HTMLAttributes<T>,
+                Omit<
+                    DetailedBlessedProps<InputElement>,
+                    | "draggable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "ref"
+                    | "style"
+                > {}
 
-        interface SVGLineElementAttributes<T> extends
-            SVGProps<T>,
-            Omit<
-                DetailedBlessedProps<LineElement>,
-                "focusable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "orientation" | "ref" | "style"
-            >
-        {}
+        interface SVGLineElementAttributes<T>
+            extends SVGProps<T>,
+                Omit<
+                    DetailedBlessedProps<LineElement>,
+                    | "focusable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "orientation"
+                    | "ref"
+                    | "style"
+                > {}
 
-        interface SVGTextElementAttributes<T> extends
-            SVGProps<T>,
-            Omit<
-                DetailedBlessedProps<TextElement>,
-                "fill" | "focusable" | "onBlur" | "onClick" | "onFocus" | "onResize" | "ref" | "style"
-            >
-        {}
+        interface SVGTextElementAttributes<T>
+            extends SVGProps<T>,
+                Omit<
+                    DetailedBlessedProps<TextElement>,
+                    | "fill"
+                    | "focusable"
+                    | "onBlur"
+                    | "onClick"
+                    | "onFocus"
+                    | "onResize"
+                    | "ref"
+                    | "style"
+                > {}
 
         // set IntrinsicElements to 'react-blessed' elements both with and without
         // 'blessed-' prefix
-        interface IntrinsicElements extends BlessedIntrinsicElementsPrefixed, BlessedIntrinsicElements {}
+        interface IntrinsicElements
+            extends BlessedIntrinsicElementsPrefixed,
+                BlessedIntrinsicElements {}
     }
 }
 
 // augment react/jsx-runtime JSX when new JSX transform is used
 declare module "react/jsx-runtime" {
     namespace JSX {
-        interface IntrinsicElements extends BlessedIntrinsicElementsPrefixed, BlessedIntrinsicElements {}
+        interface IntrinsicElements
+            extends BlessedIntrinsicElementsPrefixed,
+                BlessedIntrinsicElements {}
     }
 }
 declare module "react/jsx-dev-runtime" {
     namespace JSX {
-        interface IntrinsicElements extends BlessedIntrinsicElementsPrefixed, BlessedIntrinsicElements {}
+        interface IntrinsicElements
+            extends BlessedIntrinsicElementsPrefixed,
+                BlessedIntrinsicElements {}
     }
 }

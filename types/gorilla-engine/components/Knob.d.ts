@@ -1,5 +1,12 @@
 declare namespace GorillaEngine.UI {
-    interface KnobProps extends Common, Bounds, Clickable, Background, Skinnable, MIDILearn, Highlight {
+    interface KnobProps
+        extends Common,
+            Bounds,
+            Clickable,
+            Background,
+            Skinnable,
+            MIDILearn,
+            Highlight {
         text: string;
         min: number;
         max: number;

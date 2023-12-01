@@ -1,7 +1,16 @@
 import { SafeString } from "@ember/template/-private/handlebars";
 import Ember from "ember";
 
-const { dasherize, camelize, capitalize, classify, decamelize, htmlSafe, underscore, w } = Ember.String;
+const {
+    dasherize,
+    camelize,
+    capitalize,
+    classify,
+    decamelize,
+    htmlSafe,
+    underscore,
+    w,
+} = Ember.String;
 
 // @ts-expect-error
 dasherize();
@@ -45,7 +54,8 @@ capitalize("blue man group"); // $ExpectType string
 // @ts-expect-error
 capitalize("", "");
 
-const handlebarsSafeString: SafeString = Ember.String.htmlSafe("lorem ipsum...");
+const handlebarsSafeString: SafeString =
+    Ember.String.htmlSafe("lorem ipsum...");
 Ember.String.htmlSafe("lorem ipsum..."); // $ExpectType SafeString
 // @ts-expect-error
 const regularString: string = Ember.String.htmlSafe("lorem ipsum...");

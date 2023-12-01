@@ -19,7 +19,11 @@ export function compile(options?: HtmlToTextOptions): compiledFunction;
  * });
  * console.log(text); // HELLO WORLD
  */
-export function htmlToText(html: string, options?: HtmlToTextOptions, metadata?: metaData): string;
+export function htmlToText(
+    html: string,
+    options?: HtmlToTextOptions,
+    metadata?: metaData,
+): string;
 export { htmlToText as convert };
 
 export interface HtmlToTextOptions {
@@ -371,7 +375,10 @@ export type FormatCallback = (
  * A function to process child nodes.
  * Passed into a {@link FormatCallback} as an argument.
  */
-export type RecursiveCallback = (nodes: DomNode[], builder: BlockTextBuilder) => void;
+export type RecursiveCallback = (
+    nodes: DomNode[],
+    builder: BlockTextBuilder,
+) => void;
 
 /**
  * Type of object passed to tags in the options.

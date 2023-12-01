@@ -7,11 +7,29 @@ export interface FormAction extends Action {
     error?: any;
 }
 
-export declare function arrayInsert(form: string, field: string, index: number, value: any): FormAction;
-export declare function arrayMove(form: string, field: string, from: number, to: number): FormAction;
+export declare function arrayInsert(
+    form: string,
+    field: string,
+    index: number,
+    value: any,
+): FormAction;
+export declare function arrayMove(
+    form: string,
+    field: string,
+    from: number,
+    to: number,
+): FormAction;
 export declare function arrayPop(form: string, field: string): FormAction;
-export declare function arrayPush(form: string, field: string, value: any): FormAction;
-export declare function arrayRemove(form: string, field: string, index: number): FormAction;
+export declare function arrayPush(
+    form: string,
+    field: string,
+    value: any,
+): FormAction;
+export declare function arrayRemove(
+    form: string,
+    field: string,
+    index: number,
+): FormAction;
 export declare function arrayRemoveAll(form: string, field: string): FormAction;
 export declare function arrayShift(form: string, field: string): FormAction;
 export declare function arraySplice(
@@ -21,10 +39,28 @@ export declare function arraySplice(
     removeNum: number,
     value: any,
 ): FormAction;
-export declare function arraySwap(form: string, field: string, indexA: number, indexB: number): FormAction;
-export declare function arrayUnshift(form: string, field: string, value: any): FormAction;
-export declare function autofill(form: string, field: string, value: any): FormAction;
-export declare function blur(form: string, field: string, value: any, touch?: boolean): FormAction;
+export declare function arraySwap(
+    form: string,
+    field: string,
+    indexA: number,
+    indexB: number,
+): FormAction;
+export declare function arrayUnshift(
+    form: string,
+    field: string,
+    value: any,
+): FormAction;
+export declare function autofill(
+    form: string,
+    field: string,
+    value: any,
+): FormAction;
+export declare function blur(
+    form: string,
+    field: string,
+    value: any,
+    touch?: boolean,
+): FormAction;
 export declare function change(
     form: string,
     field: string,
@@ -48,20 +84,46 @@ export declare function initialize(
     keepDirty?: boolean,
     options?: Partial<InitializeOptions>,
 ): FormAction;
-export declare function initialize(form: string, data: any, options?: Partial<InitializeOptions>): FormAction;
-export declare function registerField(form: string, name: string, type: FieldType): FormAction;
+export declare function initialize(
+    form: string,
+    data: any,
+    options?: Partial<InitializeOptions>,
+): FormAction;
+export declare function registerField(
+    form: string,
+    name: string,
+    type: FieldType,
+): FormAction;
 export declare function reset(form: string): FormAction;
-export declare function resetSection(form: string, ...sections: string[]): FormAction;
+export declare function resetSection(
+    form: string,
+    ...sections: string[]
+): FormAction;
 export declare function startAsyncValidation(form: string): FormAction;
-export declare function stopAsyncValidation(form: string, errors?: FormErrors<FormData, any>): FormAction;
-export declare function setSubmitFailed(form: string, ...fields: string[]): FormAction;
-export declare function setSubmitSucceeded(form: string, ...fields: string[]): FormAction;
+export declare function stopAsyncValidation(
+    form: string,
+    errors?: FormErrors<FormData, any>,
+): FormAction;
+export declare function setSubmitFailed(
+    form: string,
+    ...fields: string[]
+): FormAction;
+export declare function setSubmitSucceeded(
+    form: string,
+    ...fields: string[]
+): FormAction;
 export declare function startSubmit(form: string): FormAction;
-export declare function stopSubmit(form: string, errors?: FormErrors<FormData, any>): FormAction;
+export declare function stopSubmit(
+    form: string,
+    errors?: FormErrors<FormData, any>,
+): FormAction;
 export declare function submit(form: string): FormAction;
 export declare function clearSubmit(form: string): FormAction;
 export declare function clearSubmitErrors(form: string): FormAction;
-export declare function clearAsyncError(form: string, field: string): FormAction;
+export declare function clearAsyncError(
+    form: string,
+    field: string,
+): FormAction;
 export declare function clearFields(
     form: string,
     keepTouched: boolean,

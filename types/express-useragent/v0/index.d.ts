@@ -59,7 +59,11 @@ declare namespace ExpressUseragent {
     }
 
     function parse(source: string): UserAgent;
-    function express(): (req: express.Request, res: express.Response, next?: Function) => void;
+    function express(): (
+        req: express.Request,
+        res: express.Response,
+        next?: Function,
+    ) => void;
 }
 
 // eslint-disable-next-line @definitelytyped/no-declare-current-package

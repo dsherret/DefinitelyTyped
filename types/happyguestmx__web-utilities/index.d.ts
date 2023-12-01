@@ -110,7 +110,9 @@ export interface ErrorsHandler {
 
 // paramsHandler
 export interface ParamsHandler {
-    requestHandler: (event: APIGatewayProxyEvent) => Promise<APIGatewayProxyResult>;
+    requestHandler: (
+        event: APIGatewayProxyEvent,
+    ) => Promise<APIGatewayProxyResult>;
 }
 
 // response
@@ -152,7 +154,12 @@ export interface FSP {
     FSP: (query: FspQuery) => FspPaginationOutput;
 }
 export interface FSPConstructor {
-    new(fullData: any[], filterColums: any[], filter: boolean, sort: boolean): FSP;
+    new (
+        fullData: any[],
+        filterColums: any[],
+        filter: boolean,
+        sort: boolean,
+    ): FSP;
 }
 
 // ddbHelper
@@ -280,15 +287,24 @@ export interface UserHandler {
     findUserInAdminUsers: (sub: string) => Promise<QueryOutput>;
     findUserInCoStaffUsers: (sub: string) => Promise<QueryOutput>;
     findUserInStaffUsers: (sub: string) => Promise<QueryOutput>;
-    permissionsValidate: (user: User, level: string, company_uuid?: string, hotel_uuid?: string) => Promise<string>;
+    permissionsValidate: (
+        user: User,
+        level: string,
+        company_uuid?: string,
+        hotel_uuid?: string,
+    ) => Promise<string>;
     cognitoAttributesToJson: (sub: AttributeType[]) => Promise<{}>;
     findUserByEmail: (email: string) => Promise<any>;
     findAdminUserByEmail: (email: string) => Promise<any>;
     findCoStaffUserByEmail: (email: string) => Promise<QueryOutput>;
     findStaffUserByEmail: (email: string) => Promise<QueryOutput>;
     findUserByEmployeeNumber: (employee_number: string) => Promise<any>;
-    findConciergeByEmplNumber: (employee_number: string) => Promise<QueryOutput>;
-    findCoStaffUserByEmplNumber: (employee_number: string) => Promise<QueryOutput>;
+    findConciergeByEmplNumber: (
+        employee_number: string,
+    ) => Promise<QueryOutput>;
+    findCoStaffUserByEmplNumber: (
+        employee_number: string,
+    ) => Promise<QueryOutput>;
 }
 
 /*************************************

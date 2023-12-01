@@ -3,7 +3,11 @@ import { ReactElement } from "react";
 
 export interface Transform {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    (node: DomElement, index: number, transform?: Transform): ReactElement | void | null;
+    (
+        node: DomElement,
+        index: number,
+        transform?: Transform,
+    ): ReactElement | void | null;
 }
 
 export interface Options {
@@ -18,6 +22,12 @@ export function convertNodeToElement(
     transform: Transform,
 ): ReactElement;
 
-export function processNodes(nodes: DomElement[], transform: Transform): ReactElement[];
+export function processNodes(
+    nodes: DomElement[],
+    transform: Transform,
+): ReactElement[];
 
-export default function HtmlParser(html: string, options?: Options): ReactElement[];
+export default function HtmlParser(
+    html: string,
+    options?: Options,
+): ReactElement[];

@@ -5,7 +5,10 @@ interface Each {
     done: number;
     total: number;
     on(eventName: string, onCallback: Function): Each;
-    on(eventName: "item", onItem: (item: any, next: (error?: Error) => void) => void): Each;
+    on(
+        eventName: "item",
+        onItem: (item: any, next: (error?: Error) => void) => void,
+    ): Each;
     on(eventName: "error", onError: (error: Error[]) => void): Each;
     on(eventName: "error", onError: (error: Error) => void): Each;
     on(eventName: "both", onBoth: (error?: Error[]) => void): Each;

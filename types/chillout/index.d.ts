@@ -10,7 +10,10 @@ export const version: string;
 export const StopIteration: unique symbol;
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type DefaultCallbackReturn = typeof StopIteration | void | Promise<unknown>;
+export type DefaultCallbackReturn =
+    | typeof StopIteration
+    | void
+    | Promise<unknown>;
 
 /**
  * Executes a provided function once per array/object element.
@@ -59,34 +62,36 @@ export type DefaultCallbackReturn = typeof StopIteration | void | Promise<unknow
  * // 'c:3'
  * // 'done'
  */
-export function forEach<TObject extends ArrayLike<unknown> | object, TContext = unknown>(
-    ...args: ForEachArgs<TObject, TContext>
-): Promise<null | undefined>;
+export function forEach<
+    TObject extends ArrayLike<unknown> | object,
+    TContext = unknown,
+>(...args: ForEachArgs<TObject, TContext>): Promise<null | undefined>;
 
 export type ForEachArgs<
     TObject extends ArrayLike<unknown> | object,
     TContext,
     TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn,
-> = TObject extends ArrayLike<unknown> ? [
-        arr: TObject,
-        callback: (
-            this: TContext,
-            value: TObject extends ArrayLike<infer T> ? T : never,
-            key: number,
-            arr: TObject,
-        ) => TCallbackReturn,
-        context?: TContext,
-    ]
+> = TObject extends ArrayLike<unknown>
+    ? [
+          arr: TObject,
+          callback: (
+              this: TContext,
+              value: TObject extends ArrayLike<infer T> ? T : never,
+              key: number,
+              arr: TObject,
+          ) => TCallbackReturn,
+          context?: TContext,
+      ]
     : [
-        obj: TObject,
-        callback: (
-            this: TContext,
-            value: TObject[keyof TObject],
-            key: keyof TObject,
-            obj: TObject,
-        ) => TCallbackReturn,
-        context?: TContext,
-    ];
+          obj: TObject,
+          callback: (
+              this: TContext,
+              value: TObject[keyof TObject],
+              key: keyof TObject,
+              obj: TObject,
+          ) => TCallbackReturn,
+          context?: TContext,
+      ];
 
 /**
  * Executes a provided function the specified number times.
@@ -129,9 +134,14 @@ export type ForEachArgs<
  * // 18
  * // 'done'
  */
-export function repeat<TContext = unknown>(...args: RepeatArgs<TContext>): Promise<null | undefined>;
+export function repeat<TContext = unknown>(
+    ...args: RepeatArgs<TContext>
+): Promise<null | undefined>;
 
-export type RepeatArgs<TContext, TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn> = [
+export type RepeatArgs<
+    TContext,
+    TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn,
+> = [
     count: number | RepeatDescriptor,
     callback: (this: TContext, i: number) => TCallbackReturn,
     context?: TContext,
@@ -182,12 +192,14 @@ export interface RepeatDescriptor {
  * // 4
  * // 'done'
  */
-export function until<TContext = unknown>(...args: UntilArgs<TContext>): Promise<null | undefined>;
+export function until<TContext = unknown>(
+    ...args: UntilArgs<TContext>
+): Promise<null | undefined>;
 
-export type UntilArgs<TContext, TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn> = [
-    callback: (this: TContext) => TCallbackReturn,
-    context?: TContext,
-];
+export type UntilArgs<
+    TContext,
+    TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn,
+> = [callback: (this: TContext) => TCallbackReturn, context?: TContext];
 
 /**
  * Executes a provided function until the `callback` returns `chillout.StopIteration`, or an error occurs.
@@ -210,7 +222,9 @@ export type UntilArgs<TContext, TCallbackReturn extends DefaultCallbackReturn = 
  *   document.body.innerHTML += 'body loaded';
  * });
  */
-export function waitUntil<TContext = unknown>(...args: UntilArgs<TContext>): Promise<null | undefined>;
+export function waitUntil<TContext = unknown>(
+    ...args: UntilArgs<TContext>
+): Promise<null | undefined>;
 
 /**
  * Iterates the iterable objects, similar to the `for-of` statement.
@@ -236,16 +250,24 @@ export function waitUntil<TContext = unknown>(...args: UntilArgs<TContext>): Pro
  * // 3
  * // 'done'
  */
-export function forOf<TValue, TContext = unknown>(...args: ForOfArgs<TValue, TContext>): Promise<null | undefined>;
+export function forOf<TValue, TContext = unknown>(
+    ...args: ForOfArgs<TValue, TContext>
+): Promise<null | undefined>;
 
-export type ForOfArgs<TValue, TContext, TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn> = [
+export type ForOfArgs<
+    TValue,
+    TContext,
+    TCallbackReturn extends DefaultCallbackReturn = DefaultCallbackReturn,
+> = [
     iterable: Iterable<TValue>,
     callback: (this: TContext, value: TValue) => TCallbackReturn,
     context?: TContext,
 ];
 
 export interface ChilloutIterator<TValue, TReturn = null> {
-    next(): readonly [false, typeof StopIteration | TValue] | readonly [true, TReturn];
+    next():
+        | readonly [false, typeof StopIteration | TValue]
+        | readonly [true, TReturn];
 }
 
 export function iterate<TReturn>(
@@ -267,7 +289,11 @@ export const iterator: {
     until<TCallbackReturn extends DefaultCallbackReturn, TContext = unknown>(
         ...args: UntilArgs<TContext, TCallbackReturn>
     ): ChilloutIterator<TCallbackReturn>;
-    forOf<TValue, TCallbackReturn extends DefaultCallbackReturn, TContext = unknown>(
+    forOf<
+        TValue,
+        TCallbackReturn extends DefaultCallbackReturn,
+        TContext = unknown,
+    >(
         ...args: ForOfArgs<TValue, TContext, TCallbackReturn>
     ): ChilloutIterator<TCallbackReturn>;
 };

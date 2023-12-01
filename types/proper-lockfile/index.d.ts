@@ -23,7 +23,10 @@ export interface CheckOptions {
     lockfilePath?: string | undefined; // default: `${file}.lock`
 }
 
-export function lock(file: string, options?: LockOptions): Promise<() => Promise<void>>;
+export function lock(
+    file: string,
+    options?: LockOptions,
+): Promise<() => Promise<void>>;
 export function unlock(file: string, options?: UnlockOptions): Promise<void>;
 export function check(file: string, options?: CheckOptions): Promise<boolean>;
 

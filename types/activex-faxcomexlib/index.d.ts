@@ -622,7 +622,10 @@ declare namespace FAXCOMEXLib {
         ConnectedSubmit(pFaxServer: IFaxServer): SafeArray<string>;
 
         /** Submit the fax document on the already connected server */
-        ConnectedSubmit2(pFaxServer: IFaxServer, pvFaxOutgoingJobIDs: SafeArray<string>): number;
+        ConnectedSubmit2(
+            pFaxServer: IFaxServer,
+            pvFaxOutgoingJobIDs: SafeArray<string>,
+        ): number;
 
         /** Cover page file path */
         CoverPage: string;
@@ -1158,7 +1161,10 @@ declare namespace FAXCOMEXLib {
         Item(lIndex: number): FaxOutboundRoutingRule;
 
         /** Get a rule by criteria */
-        ItemByCountryAndArea(lCountryCode: number, lAreaCode: number): FaxOutboundRoutingRule;
+        ItemByCountryAndArea(
+            lCountryCode: number,
+            lAreaCode: number,
+        ): FaxOutboundRoutingRule;
 
         /** Remove a rule */
         Remove(lIndex: number): void;
@@ -1897,7 +1903,9 @@ declare namespace FAXCOMEXLib {
         UnregisterDeviceProvider(bstrUniqueName: string): void;
 
         /** Unregister inbound routing extension */
-        UnregisterInboundRoutingExtension(bstrExtensionUniqueName: string): void;
+        UnregisterInboundRoutingExtension(
+            bstrExtensionUniqueName: string,
+        ): void;
     }
 
     namespace EventHelperTypes {
@@ -1987,14 +1995,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: FAXCOMEXLib.FaxAccount,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: FAXCOMEXLib.FaxAccount,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: FAXCOMEXLib.FaxAccount, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: FAXCOMEXLib.FaxAccount,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: FAXCOMEXLib.FaxAccount,
@@ -2007,11 +2022,18 @@ interface ActiveXObject {
     ): void;
     on(
         obj: FAXCOMEXLib.FaxAccount,
-        event: "OnIncomingJobAdded" | "OnIncomingJobRemoved" | "OnOutgoingJobAdded" | "OnOutgoingJobRemoved",
+        event:
+            | "OnIncomingJobAdded"
+            | "OnIncomingJobRemoved"
+            | "OnOutgoingJobAdded"
+            | "OnOutgoingJobRemoved",
         argNames: ["pFaxAccount", "bstrJobId"],
         handler: (
             this: FAXCOMEXLib.FaxAccount,
-            parameter: { readonly pFaxAccount: FAXCOMEXLib.FaxAccount; readonly bstrJobId: string },
+            parameter: {
+                readonly pFaxAccount: FAXCOMEXLib.FaxAccount;
+                readonly bstrJobId: string;
+            },
         ) => void,
     ): void;
     on(
@@ -2059,7 +2081,10 @@ interface ActiveXObject {
         argNames: ["pFaxAccount", "bstrMessageId"],
         handler: (
             this: FAXCOMEXLib.FaxAccount,
-            parameter: { readonly pFaxAccount: FAXCOMEXLib.FaxAccount; readonly bstrMessageId: string },
+            parameter: {
+                readonly pFaxAccount: FAXCOMEXLib.FaxAccount;
+                readonly bstrMessageId: string;
+            },
         ) => void,
     ): void;
     on(
@@ -2101,14 +2126,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: FAXCOMEXLib.FaxServer,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: FAXCOMEXLib.FaxServer,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: FAXCOMEXLib.FaxServer, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: FAXCOMEXLib.FaxServer,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: FAXCOMEXLib.FaxServer,
@@ -2135,7 +2167,10 @@ interface ActiveXObject {
             | "OnSecurityConfigChange"
             | "OnServerShutDown",
         argNames: ["pFaxServer"],
-        handler: (this: FAXCOMEXLib.FaxServer, parameter: { readonly pFaxServer: FAXCOMEXLib.FaxServer }) => void,
+        handler: (
+            this: FAXCOMEXLib.FaxServer,
+            parameter: { readonly pFaxServer: FAXCOMEXLib.FaxServer },
+        ) => void,
     ): void;
     on(
         obj: FAXCOMEXLib.FaxServer,
@@ -2148,11 +2183,18 @@ interface ActiveXObject {
     ): void;
     on(
         obj: FAXCOMEXLib.FaxServer,
-        event: "OnIncomingJobAdded" | "OnIncomingJobRemoved" | "OnOutgoingJobAdded" | "OnOutgoingJobRemoved",
+        event:
+            | "OnIncomingJobAdded"
+            | "OnIncomingJobRemoved"
+            | "OnOutgoingJobAdded"
+            | "OnOutgoingJobRemoved",
         argNames: ["pFaxServer", "bstrJobId"],
         handler: (
             this: FAXCOMEXLib.FaxServer,
-            parameter: { readonly pFaxServer: FAXCOMEXLib.FaxServer; readonly bstrJobId: string },
+            parameter: {
+                readonly pFaxServer: FAXCOMEXLib.FaxServer;
+                readonly bstrJobId: string;
+            },
         ) => void,
     ): void;
     on(
@@ -2178,7 +2220,10 @@ interface ActiveXObject {
         argNames: ["pFaxServer", "bstrMessageId"],
         handler: (
             this: FAXCOMEXLib.FaxServer,
-            parameter: { readonly pFaxServer: FAXCOMEXLib.FaxServer; readonly bstrMessageId: string },
+            parameter: {
+                readonly pFaxServer: FAXCOMEXLib.FaxServer;
+                readonly bstrMessageId: string;
+            },
         ) => void,
     ): void;
     on(
@@ -2198,7 +2243,12 @@ interface ActiveXObject {
     on(
         obj: FAXCOMEXLib.FaxServer,
         event: "OnQueuesStatusChange",
-        argNames: ["pFaxServer", "bOutgoingQueueBlocked", "bOutgoingQueuePaused", "bIncomingQueueBlocked"],
+        argNames: [
+            "pFaxServer",
+            "bOutgoingQueueBlocked",
+            "bOutgoingQueuePaused",
+            "bIncomingQueueBlocked",
+        ],
         handler: (
             this: FAXCOMEXLib.FaxServer,
             parameter: {
@@ -2212,7 +2262,13 @@ interface ActiveXObject {
     on(
         obj: FAXCOMEXLib.FaxServer,
         event: "OnServerActivityChange",
-        argNames: ["pFaxServer", "lIncomingMessages", "lRoutingMessages", "lOutgoingMessages", "lQueuedMessages"],
+        argNames: [
+            "pFaxServer",
+            "lIncomingMessages",
+            "lRoutingMessages",
+            "lOutgoingMessages",
+            "lQueuedMessages",
+        ],
         handler: (
             this: FAXCOMEXLib.FaxServer,
             parameter: {

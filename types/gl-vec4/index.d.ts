@@ -36,7 +36,12 @@ export function dot(a: number[], b: number[]): number;
 /**
  * Creates a new vec4 initialized with the given values.
  */
-export function fromValues(x: number, y: number, z: number, w: number): number[];
+export function fromValues(
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+): number[];
 
 /**
  * Returns the inverse of the components of a vec4.
@@ -51,7 +56,12 @@ export function length(a: number[]): number;
 /**
  * Performs a linear interpolation between two vec4's.
  */
-export function lerp(out: number[], a: number[], b: number[], t: number): number[];
+export function lerp(
+    out: number[],
+    a: number[],
+    b: number[],
+    t: number,
+): number[];
 
 /**
  * Returns the maximum of two vec4's.
@@ -91,12 +101,23 @@ export function scale(out: number[], a: number[], b: number): number[];
 /**
  * Adds two vec4's after scaling the second operand by a scalar value.
  */
-export function scaleAndAdd(out: number[], a: number[], b: number[], scale: number): number[];
+export function scaleAndAdd(
+    out: number[],
+    a: number[],
+    b: number[],
+    scale: number,
+): number[];
 
 /**
  * Set the components of a vec4 to the given values.
  */
-export function set(out: number[], x: number[], y: number[], z: number, w: number): number[];
+export function set(
+    out: number[],
+    x: number[],
+    y: number[],
+    z: number,
+    w: number,
+): number[];
 
 /**
  * Calculates the squared euclidian distance between two vec4's.
@@ -116,9 +137,17 @@ export function subtract(out: number[], a: number[], b: number[]): number[];
 /**
  * Transforms the vec4 with a mat4..
  */
-export function transformMat4(out: number[], a: number[], m: number[]): number[];
+export function transformMat4(
+    out: number[],
+    a: number[],
+    m: number[],
+): number[];
 
 /**
  * Transforms the vec4 with a quat.
  */
-export function transformQuat(out: number[], a: number[], q: number[]): number[];
+export function transformQuat(
+    out: number[],
+    a: number[],
+    q: number[],
+): number[];

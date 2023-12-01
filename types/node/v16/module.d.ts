@@ -182,7 +182,10 @@ declare module "module" {
         type LoadHook = (
             url: string,
             context: LoadHookContext,
-            nextLoad: (url: string, context?: LoadHookContext) => LoadFnOutput | Promise<LoadFnOutput>,
+            nextLoad: (
+                url: string,
+                context?: LoadHookContext,
+            ) => LoadFnOutput | Promise<LoadFnOutput>,
         ) => LoadFnOutput | Promise<LoadFnOutput>;
     }
     interface Module extends NodeModule {}

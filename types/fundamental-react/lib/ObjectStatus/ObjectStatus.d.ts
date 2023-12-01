@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export type ObjectStatusTypes = "negative" | "critical" | "positive" | "informative";
+export type ObjectStatusTypes =
+    | "negative"
+    | "critical"
+    | "positive"
+    | "informative";
 
 export type ObjectStatusProps = {
     glyph?: string | undefined;

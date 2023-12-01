@@ -124,15 +124,47 @@ declare namespace Flight {
          * @param eventPayload This is the payload of data that accompanies the event.
          */
         trigger(eventType: string): void;
-        trigger(selector: string, eventType: string, eventPayload?: Object): void;
-        trigger(selector: Document, eventType: string, eventPayload?: Object): void;
-        trigger(selector: Element, eventType: string, eventPayload?: Object): void;
-        trigger(selector: Element[], eventType: string, eventPayload?: Object): void;
+        trigger(
+            selector: string,
+            eventType: string,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Document,
+            eventType: string,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Element,
+            eventType: string,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Element[],
+            eventType: string,
+            eventPayload?: Object,
+        ): void;
         trigger(eventType: Object): void;
-        trigger(selector: string, eventType: Object, eventPayload?: Object): void;
-        trigger(selector: Document, eventType: Object, eventPayload?: Object): void;
-        trigger(selector: Element, eventType: Object, eventPayload?: Object): void;
-        trigger(selector: Element[], eventType: Object, eventPayload?: Object): void;
+        trigger(
+            selector: string,
+            eventType: Object,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Document,
+            eventType: Object,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Element,
+            eventType: Object,
+            eventPayload?: Object,
+        ): void;
+        trigger(
+            selector: Element[],
+            eventType: Object,
+            eventPayload?: Object,
+        ): void;
 
         /**
          * Remove a component instance and its event bindings.

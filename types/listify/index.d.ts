@@ -14,7 +14,10 @@ export = listify;
  * assert(listify([1, 2, 3], { finalWord: false }) === '1, 2, 3');
  * assert(listify([1, 2, 3], { separator: '… ', finalWord: 'or' }) === '1… 2… or 3');
  */
-declare function listify(list: ReadonlyArray<string | number>, options?: listify.Options): string;
+declare function listify(
+    list: ReadonlyArray<string | number>,
+    options?: listify.Options,
+): string;
 
 declare namespace listify {
     interface Options {

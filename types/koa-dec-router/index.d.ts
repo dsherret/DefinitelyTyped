@@ -8,7 +8,12 @@ export const ROUTES: symbol;
 
 export function controller(path: any, opts?: any, ...args: any[]): any;
 
-export function route(method: string, path: any, opts?: any, ...args: any[]): any;
+export function route(
+    method: string,
+    path: any,
+    opts?: any,
+    ...args: any[]
+): any;
 
 export function get(...args: any[]): any;
 
@@ -24,4 +29,4 @@ export function del(...args: any[]): any;
 
 export function all(...args: any[]): any;
 
-export default function(opts: any): any;
+export default function (opts: any): any;

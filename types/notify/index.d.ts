@@ -107,10 +107,12 @@ declare namespace Notify {
          * Defines the available classes in this style. The "base" property will be applied to every
          * notification with this style.
          */
-        classes?: {
-            [className: string]: ClassCSS;
-            base?: ClassCSS | undefined;
-        } | undefined;
+        classes?:
+            | {
+                  [className: string]: ClassCSS;
+                  base?: ClassCSS | undefined;
+              }
+            | undefined;
 
         /**
          * All notifications will have this CSS applied to it.

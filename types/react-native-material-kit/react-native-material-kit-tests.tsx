@@ -50,7 +50,7 @@ class MKTextFieldTest extends React.Component<any, MKTextFieldTestState> {
                 textInputStyle={{ color: MKColor.Orange }}
                 placeholder="Text"
                 value={this.state.value}
-                onTextChange={a => this.setState({ value: a })}
+                onTextChange={(a) => this.setState({ value: a })}
             />
         );
     }
@@ -64,7 +64,9 @@ const MKSwitchTest = () => (
         thumbOnColor={MKColor.Orange}
         rippleColor="rgba(255,152,0,.2)"
         onPress={() => console.log("orange switch pressed")}
-        onCheckedChange={checked => console.log("orange switch checked", checked)}
+        onCheckedChange={(checked) =>
+            console.log("orange switch checked", checked)
+        }
     />
 );
 
@@ -73,7 +75,9 @@ const MKSwitchTest = () => (
 const MKIconToggleTest = () => (
     <MKIconToggle
         checked={true}
-        onCheckedChange={checked => console.log("orange switch checked", checked)}
+        onCheckedChange={(checked) =>
+            console.log("orange switch checked", checked)
+        }
         onPress={() => console.log("pressed")}
     >
         <Text>Off</Text>
@@ -100,7 +104,7 @@ class MKSliderTest extends React.Component<null, MKSliderTestState> {
             <MKSlider
                 min={10}
                 max={100}
-                onChange={curValue => this.setState({ curValue })}
+                onChange={(curValue) => this.setState({ curValue })}
             />
         );
     }
@@ -129,7 +133,8 @@ class MKRangeSliderTest extends React.Component<null, MKRangeSliderTestState> {
                     this.setState({
                         min: curValue.min,
                         max: curValue.max,
-                    })}
+                    })
+                }
                 onConfirm={(curValue) => {
                     console.log("Slider drag ended");
                     console.log(curValue);
@@ -161,12 +166,7 @@ class MKRadioButtonTest extends React.Component<null, null> {
     }
 
     render() {
-        return (
-            <MKRadioButton
-                checked={true}
-                group={this.radioGroup}
-            />
-        );
+        return <MKRadioButton checked={true} group={this.radioGroup} />;
     }
 }
 

@@ -21,6 +21,9 @@ interface FormatObject {
  * @param format
  * @param opts
  */
-declare function json(format: string | FormatObject, opts?: Options): morgan.FormatFn;
+declare function json(
+    format: string | FormatObject,
+    opts?: Options,
+): morgan.FormatFn;
 
 export = json;

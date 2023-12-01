@@ -11,10 +11,14 @@ new Simmer(window, {
     selectorMaxLength: 4,
 });
 new Simmer(window, {
-    errorHandling: (error: any, element: Element) => console.error(error, element),
+    errorHandling: (error: any, element: Element) =>
+        console.error(error, element),
 });
 
-const queryEngine = (selector: string, onError: (error: any) => void): ArrayLike<Element> => [];
+const queryEngine = (
+    selector: string,
+    onError: (error: any) => void,
+): ArrayLike<Element> => [];
 new Simmer({ querySelectorAll: queryEngine });
 new Simmer({ document: { querySelectorAll: queryEngine } });
 new Simmer(window, { depth: 1 }, queryEngine);

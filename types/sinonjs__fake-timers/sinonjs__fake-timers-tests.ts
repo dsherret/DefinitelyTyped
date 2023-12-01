@@ -12,8 +12,10 @@ timers.clearTimeout(fakeTimeout);
 timers.clearInterval(fakeInterval);
 timers.clearImmediate(fakeImmediate);
 
-let browserClock: FakeTimers.BrowserClock = FakeTimers.createClock() as FakeTimers.BrowserClock;
-let nodeClock: FakeTimers.NodeClock = FakeTimers.createClock() as FakeTimers.NodeClock;
+let browserClock: FakeTimers.BrowserClock =
+    FakeTimers.createClock() as FakeTimers.BrowserClock;
+let nodeClock: FakeTimers.NodeClock =
+    FakeTimers.createClock() as FakeTimers.NodeClock;
 
 browserClock = FakeTimers.createClock() as FakeTimers.BrowserClock;
 nodeClock = FakeTimers.createClock() as FakeTimers.NodeClock;
@@ -29,7 +31,12 @@ const browserInstalledClock = FakeTimers.install({
     now: 0,
     shouldAdvanceTime: true,
     shouldClearNativeTimers: true,
-    toFake: ["setTimeout", "requestAnimationFrame", "queueMicrotask", "performance"],
+    toFake: [
+        "setTimeout",
+        "requestAnimationFrame",
+        "queueMicrotask",
+        "performance",
+    ],
 }) as FakeTimers.BrowserClock & FakeTimers.InstalledClock;
 
 const nodeInstalledClock = FakeTimers.install({
@@ -53,15 +60,24 @@ const nodeDate: Date = new nodeClock.Date();
 const browserTimeout: number = browserClock.setTimeout(() => {}, 7);
 const browserInterval: number = browserClock.setInterval(() => {}, 7);
 const browserImmediate: number = browserClock.setImmediate(() => {});
-const browserAnimationFrame: number = browserClock.requestAnimationFrame(() => {});
+const browserAnimationFrame: number = browserClock.requestAnimationFrame(
+    () => {},
+);
 const browserIdleCallback: number = browserClock.requestIdleCallback(() => {});
-const browserIdleCallbackWithTimeout: number = browserClock.requestIdleCallback(() => {}, 7);
+const browserIdleCallbackWithTimeout: number = browserClock.requestIdleCallback(
+    () => {},
+    7,
+);
 const nodeTimeout: FakeTimers.NodeTimer = nodeClock.setTimeout(() => {}, 7);
 const nodeInterval: FakeTimers.NodeTimer = nodeClock.setInterval(() => {}, 7);
 const nodeImmediate: FakeTimers.NodeTimer = nodeClock.setImmediate(() => {});
-const nodeAnimationFrame: FakeTimers.NodeTimer = nodeClock.requestAnimationFrame(() => {});
-const nodeIdleCallback: FakeTimers.NodeTimer = nodeClock.requestIdleCallback(() => {});
-const nodeIdleCallbackWithTimeout: FakeTimers.NodeTimer = nodeClock.requestIdleCallback(() => {}, 7);
+const nodeAnimationFrame: FakeTimers.NodeTimer =
+    nodeClock.requestAnimationFrame(() => {});
+const nodeIdleCallback: FakeTimers.NodeTimer = nodeClock.requestIdleCallback(
+    () => {},
+);
+const nodeIdleCallbackWithTimeout: FakeTimers.NodeTimer =
+    nodeClock.requestIdleCallback(() => {}, 7);
 
 nodeTimeout.ref().unref();
 nodeTimeout.unref().ref();
@@ -87,17 +103,17 @@ browserClock.tick("08");
 nodeClock.tick(7);
 nodeClock.tick("08:03");
 
-browserClock.tickAsync(7).then(val => val.toExponential());
-browserClock.tickAsync("08").then(val => val.toExponential());
+browserClock.tickAsync(7).then((val) => val.toExponential());
+browserClock.tickAsync("08").then((val) => val.toExponential());
 
-nodeClock.tickAsync(7).then(val => val.toExponential());
-nodeClock.tickAsync("08:03").then(val => val.toExponential());
+nodeClock.tickAsync(7).then((val) => val.toExponential());
+nodeClock.tickAsync("08:03").then((val) => val.toExponential());
 
 browserClock.next();
 nodeClock.next();
 
-browserClock.nextAsync().then(val => val.toExponential());
-nodeClock.nextAsync().then(val => val.toExponential());
+browserClock.nextAsync().then((val) => val.toExponential());
+nodeClock.nextAsync().then((val) => val.toExponential());
 
 browserClock.reset();
 nodeClock.reset();
@@ -105,8 +121,8 @@ nodeClock.reset();
 browserClock.runAll();
 nodeClock.runAll();
 
-browserClock.runAllAsync().then(val => val.toExponential());
-nodeClock.runAllAsync().then(val => val.toExponential());
+browserClock.runAllAsync().then((val) => val.toExponential());
+nodeClock.runAllAsync().then((val) => val.toExponential());
 
 nodeClock.runMicrotasks();
 
@@ -116,8 +132,8 @@ nodeClock.runToFrame();
 browserClock.runToLast();
 nodeClock.runToLast();
 
-browserClock.runToLastAsync().then(val => val.toExponential());
-nodeClock.runToLastAsync().then(val => val.toExponential());
+browserClock.runToLastAsync().then((val) => val.toExponential());
+nodeClock.runToLastAsync().then((val) => val.toExponential());
 
 browserClock.setSystemTime();
 browserClock.setSystemTime(7);

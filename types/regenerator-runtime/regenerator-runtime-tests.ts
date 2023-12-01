@@ -52,7 +52,10 @@ function IteratorMap<T, U, TNext = unknown>(
     // 2. Repeat,
     return regenerator.wrap(
         // This is roughly based on the output of `@babel/plugin-transform-regenerator`:
-        function IteratorMapBody(this: Iterator<T, unknown, TNext>, context: regenerator.Context<U, void, TNext>) {
+        function IteratorMapBody(
+            this: Iterator<T, unknown, TNext>,
+            context: regenerator.Context<U, void, TNext>,
+        ) {
             this; // $ExpectType Iterator<T, unknown, TNext>
             context; // $ExpectType Context<U, void, TNext>
 
@@ -132,7 +135,7 @@ declare const mappableIterator: IterableIterator<object> & {
 };
 
 // $ExpectType Generator<string | awrap<Promise<any>>, void, undefined>
-const mappedIterator = mappableIterator.map(value => {
+const mappedIterator = mappableIterator.map((value) => {
     value; // $ExpectType object
     return value instanceof Promise ? regenerator.awrap(value) : String(value);
 });
@@ -146,18 +149,24 @@ interface IteratorRecord<I extends Iterator<unknown, unknown, unknown>> {
     "[[Done]]": boolean;
 }
 
-declare function GetIteratorDirect<I extends Iterator<unknown, unknown, unknown>>(iterator: I): IteratorRecord<I>;
+declare function GetIteratorDirect<
+    I extends Iterator<unknown, unknown, unknown>,
+>(iterator: I): IteratorRecord<I>;
 
 declare function IteratorClose<T>(
     iteratorRecord: IteratorRecord<Iterator<unknown, unknown, unknown>>,
     completion: () => T,
 ): T;
-declare function IteratorStep<T>(IteratorRecord: IteratorRecord<Iterator<T>>): false | IteratorYieldResult<T>;
+declare function IteratorStep<T>(
+    IteratorRecord: IteratorRecord<Iterator<T>>,
+): false | IteratorYieldResult<T>;
 declare function IteratorStep<T, TNext = unknown>(
     IteratorRecord: IteratorRecord<Iterator<T, unknown, TNext>>,
     value: TNext,
 ): false | IteratorYieldResult<T>;
-declare function IteratorValue<T = never, TReturn = never>(result: IteratorResult<T, TReturn>): T | TReturn;
+declare function IteratorValue<T = never, TReturn = never>(
+    result: IteratorResult<T, TReturn>,
+): T | TReturn;
 
 declare function Call<T, R>(F: (this: T) => R, thisArg: T): R;
 declare function Call<T, A extends readonly unknown[], R>(

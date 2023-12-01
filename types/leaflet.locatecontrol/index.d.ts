@@ -36,9 +36,15 @@ declare module "leaflet" {
             textElementTag?: string | undefined;
             circlePadding?: number[] | undefined;
             metric?: boolean | undefined;
-            createButtonCallback?: ((container: HTMLDivElement, options: LocateOptions) => void) | undefined;
-            onLocationError?: ((event: ErrorEvent, control: Locate) => void) | undefined;
-            onLocationOutsideMapBounds?: ((control: Locate) => void) | undefined;
+            createButtonCallback?:
+                | ((container: HTMLDivElement, options: LocateOptions) => void)
+                | undefined;
+            onLocationError?:
+                | ((event: ErrorEvent, control: Locate) => void)
+                | undefined;
+            onLocationOutsideMapBounds?:
+                | ((control: Locate) => void)
+                | undefined;
             showPopup?: boolean | undefined;
             strings?: StringsOptions | undefined;
             locateOptions?: L.LocateOptions | undefined;

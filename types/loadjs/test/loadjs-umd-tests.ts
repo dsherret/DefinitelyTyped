@@ -18,5 +18,9 @@ loadjs.ready("foobar", {
 
 loadjs("/path/to/foo.js", { returnPromise: true }).then(() => {});
 loadjs("/path/to/foo.js", "foobar", { returnPromise: true }).then(() => {});
-loadjs(["/path/to/foo.js", "/path/to/bar.js"], { returnPromise: true }).then(() => {});
-loadjs(["/path/to/foo.js", "/path/to/bar.js"], "foobar", { returnPromise: true }).then(() => {});
+loadjs(["/path/to/foo.js", "/path/to/bar.js"], { returnPromise: true }).then(
+    () => {},
+);
+loadjs(["/path/to/foo.js", "/path/to/bar.js"], "foobar", {
+    returnPromise: true,
+}).then(() => {});

@@ -37,7 +37,13 @@ export class NativeAdView extends React.Component<{
         }
 
         return (
-            <View style={{ flexDirection: "column", borderWidth: 1, position: "relative" }}>
+            <View
+                style={{
+                    flexDirection: "column",
+                    borderWidth: 1,
+                    position: "relative",
+                }}
+            >
                 <TriggerableView
                     style={{
                         backgroundColor: "rgba(52, 52, 52, 0.5)",
@@ -51,8 +57,16 @@ export class NativeAdView extends React.Component<{
                 />
                 <View style={{ flexDirection: "row", padding: 10 }}>
                     <View style={{ flexDirection: "column", flex: 1 }}>
-                        {data?.headline && <Text style={{ fontSize: 18 }}>{data.headline}</Text>}
-                        {data?.bodyText && <Text style={{ fontSize: 10 }}>{data.bodyText}</Text>}
+                        {data?.headline && (
+                            <Text style={{ fontSize: 18 }}>
+                                {data.headline}
+                            </Text>
+                        )}
+                        {data?.bodyText && (
+                            <Text style={{ fontSize: 10 }}>
+                                {data.bodyText}
+                            </Text>
+                        )}
                         <View style={{ flexDirection: "row" }}>
                             <Text>{data?.advertiserName}</Text>
                             <Text>{data?.starRating}</Text>
@@ -60,11 +74,16 @@ export class NativeAdView extends React.Component<{
                             <Text>{data?.price}</Text>
                         </View>
                     </View>
-                    {data?.icon?.uri && <Image style={{ width: 80, height: 80 }} source={{ uri: data.icon.uri }} />}
+                    {data?.icon?.uri && (
+                        <Image
+                            style={{ width: 80, height: 80 }}
+                            source={{ uri: data.icon.uri }}
+                        />
+                    )}
                 </View>
                 {data?.callToActionText && (
                     <View style={{ alignItems: "center" }}>
-                        <View ref={el => (this._triggerView = el)}>
+                        <View ref={(el) => (this._triggerView = el)}>
                             <Text
                                 style={{
                                     fontSize: 15,

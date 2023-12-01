@@ -28,7 +28,11 @@ export function configure(options: Options): {
  *   data: Buffer.from('some data')
  * })
  */
-export function encode(packet: Packet, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    packet: Packet,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     /**
      * The amount of bytes used to encode the `Packet`. This property is set after each call to `encode()`.

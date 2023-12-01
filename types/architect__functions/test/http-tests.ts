@@ -4,7 +4,9 @@ import * as arc from "@architect/functions";
 
 exports.handler = arc.http.async(auth, handlerasync);
 
-async function auth(request: arc.HttpRequest): Promise<arc.HttpResponse | undefined> {
+async function auth(
+    request: arc.HttpRequest,
+): Promise<arc.HttpResponse | undefined> {
     if (!request.session || !request.session.account) {
         return { status: 403 };
     }
@@ -27,11 +29,15 @@ app.get("/cool", (req, res) => res.send("very cool"));
 
 ////////////////////
 // tests for arc.http.helpers: https://github.com/architect/functions/blob/master/src/http/index.js#L21-L26
-async function handlerhelpers(req: arc.HttpRequest): Promise<arc.HttpResponse | undefined> {
+async function handlerhelpers(
+    req: arc.HttpRequest,
+): Promise<arc.HttpResponse | undefined> {
     req = arc.http.helpers.interpolate(req);
     const data = arc.http.helpers.bodyParser(req);
     const image = arc.http.helpers.static("test.jpg");
-    const description = arc.http.helpers.static("test.txt", { stagePath: "/staging" });
+    const description = arc.http.helpers.static("test.txt", {
+        stagePath: "/staging",
+    });
     return {
         statusCode: 307,
         headers: { location: arc.http.helpers.url("test.txt") },
@@ -40,7 +46,9 @@ async function handlerhelpers(req: arc.HttpRequest): Promise<arc.HttpResponse | 
 
 ////////////////////
 // tests for arc.http.session: https://arc.codes/docs/en/reference/runtime/node#arc.http.session
-async function handlersession(req: arc.HttpRequest): Promise<arc.HttpResponse | undefined> {
+async function handlersession(
+    req: arc.HttpRequest,
+): Promise<arc.HttpResponse | undefined> {
     // read the session
     const session = await arc.http.session.read(req);
     // save the session into a cookie string

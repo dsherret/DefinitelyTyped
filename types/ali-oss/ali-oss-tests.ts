@@ -35,7 +35,7 @@ const sts = new OSS.STS({
     accessKeyId: "access key",
     accessKeySecret: "access secret",
 });
-sts.assumeRole("roleArn", undefined, 3600, "session name").then(token => {
+sts.assumeRole("roleArn", undefined, 3600, "session name").then((token) => {
     const { credentials } = token;
     const stsClient = new OSS({
         accessKeyId: credentials.AccessKeyId,
@@ -45,7 +45,12 @@ sts.assumeRole("roleArn", undefined, 3600, "session name").then(token => {
         region: "oss-cn-hangzhou",
         refreshSTSTokenInterval: 3000,
         refreshSTSToken: async () => {
-            const { credentials: cred } = await sts.assumeRole("roleArn", undefined, 3600, "session name");
+            const { credentials: cred } = await sts.assumeRole(
+                "roleArn",
+                undefined,
+                3600,
+                "session name",
+            );
             return {
                 accessKeyId: cred.AccessKeyId,
                 accessKeySecret: cred.AccessKeySecret,

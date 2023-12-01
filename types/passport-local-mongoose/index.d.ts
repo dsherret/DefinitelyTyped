@@ -13,29 +13,57 @@ declare module "mongoose" {
     export interface PassportLocalDocument extends Document {
         setPassword(password: string): Promise<PassportLocalDocument>;
         setPassword(password: string, cb: (err: any, res: any) => void): void;
-        changePassword(oldPassword: string, newPassword: string): Promise<PassportLocalDocument>;
-        changePassword(oldPassword: string, newPassword: string, cb: (err: any, res: any) => void): void;
+        changePassword(
+            oldPassword: string,
+            newPassword: string,
+        ): Promise<PassportLocalDocument>;
+        changePassword(
+            oldPassword: string,
+            newPassword: string,
+            cb: (err: any, res: any) => void,
+        ): void;
         authenticate(password: string): Promise<AuthenticationResult>;
-        authenticate(password: string, cb: (err: any, user: any, error: any) => void): void;
+        authenticate(
+            password: string,
+            cb: (err: any, user: any, error: any) => void,
+        ): void;
         resetAttempts(): Promise<PassportLocalDocument>;
         resetAttempts(cb: (err: any, res: any) => void): void;
     }
 
     interface AuthenticateMethod<T> {
         (username: string, password: string): Promise<AuthenticationResult>;
-        (username: string, password: string, cb: (err: any, user: T | boolean, error: any) => void): void;
+        (
+            username: string,
+            password: string,
+            cb: (err: any, user: T | boolean, error: any) => void,
+        ): void;
     }
 
     // statics
     interface PassportLocalModel<T extends Document> extends Model<T> {
         authenticate(): AuthenticateMethod<T>;
         serializeUser(): (user: T, cb: (err: any, id?: any) => void) => void;
-        deserializeUser(): (username: string, cb: (err: any, user?: any) => void) => void;
+        deserializeUser(): (
+            username: string,
+            cb: (err: any, user?: any) => void,
+        ) => void;
 
         register(user: T, password: string): Promise<T>;
-        register(user: T, password: string, cb: (err: any, account: any) => void): void;
-        findByUsername(username: string, selectHashSaltFields: boolean): Query<T, T>;
-        findByUsername(username: string, selectHashSaltFields: boolean, cb: (err: any, account: any) => void): any;
+        register(
+            user: T,
+            password: string,
+            cb: (err: any, account: any) => void,
+        ): void;
+        findByUsername(
+            username: string,
+            selectHashSaltFields: boolean,
+        ): Query<T, T>;
+        findByUsername(
+            username: string,
+            selectHashSaltFields: boolean,
+            cb: (err: any, account: any) => void,
+        ): any;
         createStrategy(): passportLocal.Strategy;
     }
 
@@ -58,7 +86,9 @@ declare module "mongoose" {
         keylen?: number | undefined;
         encoding?: string | undefined;
         digestAlgorithm?: string | undefined;
-        passwordValidator?: ((password: string, cb: (err: any) => void) => void) | undefined;
+        passwordValidator?:
+            | ((password: string, cb: (err: any) => void) => void)
+            | undefined;
 
         usernameField?: string | undefined;
         usernameUnique?: boolean | undefined;
@@ -85,12 +115,18 @@ declare module "mongoose" {
 
     export interface PassportLocalSchema extends Schema {
         plugin(
-            plugin: (schema: PassportLocalSchema, options?: PassportLocalOptions) => void,
+            plugin: (
+                schema: PassportLocalSchema,
+                options?: PassportLocalOptions,
+            ) => void,
             options?: PassportLocalOptions,
         ): this;
 
         // overload for the default mongoose plugin function
-        plugin(plugin: (schema: Schema, options?: Object) => void, opts?: Object): this;
+        plugin(
+            plugin: (schema: Schema, options?: Object) => void,
+            opts?: Object,
+        ): this;
     }
 
     export function model<T extends Document>(

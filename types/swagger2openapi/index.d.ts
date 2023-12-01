@@ -34,7 +34,12 @@ export interface ConvertInputOptions extends ConvertBaseOptions {
     /** Input Used to pass filename back to testRunner */
     file: string;
     /** Input Input filters for the resolver (e.g. to convert JSON schema dialects) */
-    filters: Array<(data: OpenAPIV2.Document, options: ConvertInputOptions) => OpenAPIV2.Document>;
+    filters: Array<
+        (
+            data: OpenAPIV2.Document,
+            options: ConvertInputOptions,
+        ) => OpenAPIV2.Document
+    >;
     /** Input Used to override the internal fetch implementation */
     fetch: typeof fetch;
     /** Input Additional options to be passed to fetch calls */
@@ -130,7 +135,9 @@ export interface ConvertInternalOptions {
     resolver: object;
 }
 
-export interface ConvertOutputOptions extends ConvertBaseOptions, ConvertInternalOptions {
+export interface ConvertOutputOptions
+    extends ConvertBaseOptions,
+        ConvertInternalOptions {
     /** Output The context stack of associated with errors in a validation step, you normally want the last entry only */
     context: any[];
     /** Output Information required to unresolve a resolved definition back into its component parts */
@@ -160,37 +167,64 @@ export function convertObj(
 export function convertObj(
     schema: OpenAPIV2.Document,
     options: Partial<ConvertInputOptions>,
-    callback: (err: S2OError | undefined, options: ConvertOutputOptions) => void,
+    callback: (
+        err: S2OError | undefined,
+        options: ConvertOutputOptions,
+    ) => void,
 ): void;
 
 export const convert: typeof convertObj;
 
-export function convertFile(filename: string, options: Partial<ConvertInputOptions>): Promise<ConvertOutputOptions>;
 export function convertFile(
     filename: string,
     options: Partial<ConvertInputOptions>,
-    callback: (err: S2OError | undefined, options: ConvertOutputOptions) => void,
+): Promise<ConvertOutputOptions>;
+export function convertFile(
+    filename: string,
+    options: Partial<ConvertInputOptions>,
+    callback: (
+        err: S2OError | undefined,
+        options: ConvertOutputOptions,
+    ) => void,
 ): void;
 
-export function convertUrl(url: string, options: Partial<ConvertInputOptions>): Promise<ConvertOutputOptions>;
 export function convertUrl(
     url: string,
     options: Partial<ConvertInputOptions>,
-    callback: (err: S2OError | undefined, options: ConvertOutputOptions) => void,
+): Promise<ConvertOutputOptions>;
+export function convertUrl(
+    url: string,
+    options: Partial<ConvertInputOptions>,
+    callback: (
+        err: S2OError | undefined,
+        options: ConvertOutputOptions,
+    ) => void,
 ): void;
 
-export function convertStr(str: string, options: Partial<ConvertInputOptions>): Promise<ConvertOutputOptions>;
 export function convertStr(
     str: string,
     options: Partial<ConvertInputOptions>,
-    callback: (err: S2OError | undefined, options: ConvertOutputOptions) => void,
+): Promise<ConvertOutputOptions>;
+export function convertStr(
+    str: string,
+    options: Partial<ConvertInputOptions>,
+    callback: (
+        err: S2OError | undefined,
+        options: ConvertOutputOptions,
+    ) => void,
 ): void;
 
-export function convertStream(readable: Readable, options: Partial<ConvertInputOptions>): Promise<ConvertOutputOptions>;
 export function convertStream(
     readable: Readable,
     options: Partial<ConvertInputOptions>,
-    callback: (err: S2OError | undefined, options: ConvertOutputOptions) => void,
+): Promise<ConvertOutputOptions>;
+export function convertStream(
+    readable: Readable,
+    options: Partial<ConvertInputOptions>,
+    callback: (
+        err: S2OError | undefined,
+        options: ConvertOutputOptions,
+    ) => void,
 ): void;
 export const targetVersion: string;
 

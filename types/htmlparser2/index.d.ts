@@ -5,7 +5,13 @@
 import { DomHandler } from "domhandler";
 import * as DomUtils from "domutils";
 import { Writable } from "stream";
-export { DomElement, DomHandler, DomHandlerOptions, Element, Node } from "domhandler";
+export {
+    DomElement,
+    DomHandler,
+    DomHandlerOptions,
+    Element,
+    Node,
+} from "domhandler";
 
 export interface ParserOptions {
     /***

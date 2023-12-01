@@ -25,7 +25,6 @@ class SearchQuery extends Component {
         return (
             <div>
                 Enter your query:
-
                 <TextInput
                     value={state.query}
                     onChange={this.handleChange}

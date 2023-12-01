@@ -1,5 +1,13 @@
 import { css } from "@webpack-blocks/assets";
-import { addPlugins, createConfig, entryPoint, env, setMode, setOutput, sourceMaps } from "@webpack-blocks/webpack";
+import {
+    addPlugins,
+    createConfig,
+    entryPoint,
+    env,
+    setMode,
+    setOutput,
+    sourceMaps,
+} from "@webpack-blocks/webpack";
 
 module.exports = createConfig([
     setMode(process.env.NODE_ENV || "development"),

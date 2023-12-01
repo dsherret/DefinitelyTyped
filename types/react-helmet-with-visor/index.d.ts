@@ -31,7 +31,13 @@ export interface HelmetProps {
     defer?: boolean | undefined;
     encodeSpecialCharacters?: boolean | undefined;
     htmlAttributes?: HtmlProps | undefined;
-    onChangeClientState?: ((newState: any, addedTags: HelmetTags, removedTags: HelmetTags) => void) | undefined;
+    onChangeClientState?:
+        | ((
+              newState: any,
+              addedTags: HelmetTags,
+              removedTags: HelmetTags,
+          ) => void)
+        | undefined;
     link?: LinkProps[] | undefined;
     meta?: MetaProps[] | undefined;
     noscript?: any[] | undefined;
@@ -84,5 +90,4 @@ export function renderStatic(): HelmetData;
 export const canUseDOM: boolean;
 export default Helmet;
 
-export class HelmetsOpenedVisor extends React.Component {
-}
+export class HelmetsOpenedVisor extends React.Component {}

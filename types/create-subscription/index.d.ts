@@ -25,6 +25,9 @@ export interface SubscriptionProps<S, T> {
     source: S;
 }
 
-export interface Subscription<S, T> extends React.ComponentClass<SubscriptionProps<S, T>> {}
+export interface Subscription<S, T>
+    extends React.ComponentClass<SubscriptionProps<S, T>> {}
 
-export function createSubscription<S, T>(config: SubscriptionConfig<S, T>): Subscription<S, T>;
+export function createSubscription<S, T>(
+    config: SubscriptionConfig<S, T>,
+): Subscription<S, T>;

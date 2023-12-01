@@ -1,4 +1,11 @@
-import Model, { AsyncBelongsTo, AsyncHasMany, attr, belongsTo, hasMany, SyncHasMany } from "@ember-data/model";
+import Model, {
+    AsyncBelongsTo,
+    AsyncHasMany,
+    attr,
+    belongsTo,
+    hasMany,
+    SyncHasMany,
+} from "@ember-data/model";
 import { computed } from "@ember/object";
 import DS, { ChangedAttributes } from "ember-data";
 import RSVP from "rsvp";
@@ -17,7 +24,7 @@ class Person extends Model.extend({
     title: attr({ defaultValue: "The default" }),
     title2: attr({ defaultValue: () => "The default" }),
 
-    fullName: computed("firstName", "lastName", function() {
+    fullName: computed("firstName", "lastName", function () {
         return `${this.get("firstName")} ${this.get("lastName")}`;
     }),
 }) {}
@@ -85,7 +92,9 @@ let destroyResult: RSVP.Promise<typeof user>;
 destroyResult = user.destroyRecord();
 destroyResult = user.destroyRecord({});
 destroyResult = user.destroyRecord({ adapterOptions: {} });
-destroyResult = user.destroyRecord({ adapterOptions: { waffles: "are yummy" } });
+destroyResult = user.destroyRecord({
+    adapterOptions: { waffles: "are yummy" },
+});
 
 user.deleteRecord(); // $ExpectType void
 

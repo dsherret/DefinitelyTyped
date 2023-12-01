@@ -10,7 +10,7 @@ SitemapGenerator("https://example.com/", {});
 const generator = SitemapGenerator("https://example.com/", {
     changeFreq: "always",
     filepath: "./sitemap.xml",
-    ignore: url => /foo/g.test(url),
+    ignore: (url) => /foo/g.test(url),
     ignoreAMP: true,
     lastMod: false,
     maxEntriesPerFile: 1000,
@@ -31,12 +31,12 @@ generator.on("ignore", (url: string) => {
     url.trim();
 });
 generator.on("ignore", () => {});
-generator.on("error", error => {
+generator.on("error", (error) => {
     error.message;
 });
 // @ts-expect-error
 generator.on("bar", () => {});
-generator.on("add", error => {
+generator.on("add", (error) => {
     // @ts-expect-error
     error.message;
 });

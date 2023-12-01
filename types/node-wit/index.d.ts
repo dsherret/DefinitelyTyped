@@ -67,6 +67,16 @@ export interface MessageResponse {
 export class Wit {
     constructor(option: WitOption);
     message(message: string, context: WitContext): Promise<MessageResponse>;
-    converse(sessionId: string, message: string, context: WitContext, reset?: boolean): Promise<MessageResponse>;
-    runActions(sessionId: string, message: string, context: WitContext, maxSteps?: number): Promise<WitContext>;
+    converse(
+        sessionId: string,
+        message: string,
+        context: WitContext,
+        reset?: boolean,
+    ): Promise<MessageResponse>;
+    runActions(
+        sessionId: string,
+        message: string,
+        context: WitContext,
+        maxSteps?: number,
+    ): Promise<WitContext>;
 }

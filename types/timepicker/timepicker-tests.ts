@@ -7,7 +7,7 @@ $("#timepicker").timepicker({
 });
 
 $("#timepicker").timepicker({
-    appendTo: clickedElement => clickedElement,
+    appendTo: (clickedElement) => clickedElement,
 });
 
 $("#timepicker").timepicker({
@@ -46,7 +46,16 @@ $("#timepicker").timepicker({
 });
 
 $("#timepicker").timepicker({
-    lang: { am: "am", pm: "pm", AM: "AM", PM: "PM", decimal: ".", mins: "mins", hr: "hr", hrs: "hrs" },
+    lang: {
+        am: "am",
+        pm: "pm",
+        AM: "AM",
+        PM: "PM",
+        decimal: ".",
+        mins: "mins",
+        hr: "hr",
+        hrs: "hrs",
+    },
 });
 
 $("#timepicker").timepicker({
@@ -100,7 +109,8 @@ $("#timepicker").timepicker({
 });
 
 $("#timepicker").timepicker({
-    roundingFunction: (seconds, {}) => (seconds && Number.isFinite(seconds) ? Number(seconds) : 0),
+    roundingFunction: (seconds, {}) =>
+        seconds && Number.isFinite(seconds) ? Number(seconds) : 0,
 });
 
 $("#timepicker").timepicker({

@@ -7,6 +7,10 @@ export interface SearchAnnotation {
 
 declare module "../../" {
     interface Editor {
-        showMatchesOnScrollbar(query: string | RegExp, caseFold?: boolean, className?: string): SearchAnnotation;
+        showMatchesOnScrollbar(
+            query: string | RegExp,
+            caseFold?: boolean,
+            className?: string,
+        ): SearchAnnotation;
     }
 }

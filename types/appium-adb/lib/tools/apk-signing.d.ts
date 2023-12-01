@@ -84,7 +84,11 @@ interface ApkSigning {
      * @param pgk - The name of application package.
      * @return True if given application is already signed.
      */
-    checkApkCert(appPath: string, pkg: string, opts?: CertCheckOptions): Promise<boolean>;
+    checkApkCert(
+        appPath: string,
+        pkg: string,
+        opts?: CertCheckOptions,
+    ): Promise<boolean>;
 
     /**
      * Retrieve the the hash of the given keystore.

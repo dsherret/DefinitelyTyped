@@ -8,10 +8,7 @@ Bagpipes.create({ CustomPipe: [] }, {});
 
 // test `PipeDefs` Pipe Definitions Object
 const perDefsMixed: Bagpipes.PipeDefMap = {
-    HelloWorld: [
-        { emit: "Hello, World!" },
-        "StringTypeDef",
-    ],
+    HelloWorld: [{ emit: "Hello, World!" }, "StringTypeDef"],
     xxx: "ddd",
 };
 const pipesDefsEmpty: Bagpipes.PipeDefMap = {};
@@ -70,9 +67,12 @@ pipeA.fit((context, cb) => {
 pipesA.play(pipeA, {});
 
 // test cb with err
-const pipesEnty = Bagpipes.create({
-    HelloWorld: [],
-}, {});
+const pipesEnty = Bagpipes.create(
+    {
+        HelloWorld: [],
+    },
+    {},
+);
 
 // test fit a registered pipe and return error
 const pipeErrTest = pipesEnty.pipes["any"].fit((context, cb) => {
@@ -96,5 +96,11 @@ bagpipesD.play(bagpipesD.getPipe("objPipe"), {});
 const userFittingsDirs = ["./fixtures/fittings"];
 const pipeWithString = ["emit"];
 const contextPlain = {};
-const bagpipesWithPipeAndFittings = Bagpipes.create({ myCustomPipe: pipeWithString }, { userFittingsDirs });
-bagpipesWithPipeAndFittings.play(bagpipesWithPipeAndFittings.getPipe("myCustomPipe"), contextPlain);
+const bagpipesWithPipeAndFittings = Bagpipes.create(
+    { myCustomPipe: pipeWithString },
+    { userFittingsDirs },
+);
+bagpipesWithPipeAndFittings.play(
+    bagpipesWithPipeAndFittings.getPipe("myCustomPipe"),
+    contextPlain,
+);

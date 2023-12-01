@@ -3,7 +3,8 @@ import { ReactLabelAttr } from "../../../typings/shared";
 import { ButtonKind } from "../Button";
 import { FileUploaderSize } from "./shared";
 
-export interface FileUploaderButtonProps extends Omit<ReactLabelAttr, "onChange"> {
+export interface FileUploaderButtonProps
+    extends Omit<ReactLabelAttr, "onChange"> {
     accept?: readonly string[] | undefined;
     buttonKind?: ButtonKind | undefined;
     disabled?: boolean | undefined;

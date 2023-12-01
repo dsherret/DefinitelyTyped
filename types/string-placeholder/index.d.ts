@@ -1,4 +1,8 @@
-declare function template(str: string, data: Readonly<unknown>, options?: Readonly<Options>): string;
+declare function template(
+    str: string,
+    data: Readonly<unknown>,
+    options?: Readonly<Options>,
+): string;
 
 interface Options {
     before?: string | undefined;

@@ -41,9 +41,17 @@ interface ITagsManager {
     backspace: number[];
     tagToManipulate: string;
 
-    initialize(context: JQuery, options?: ITagsManagerOptions, tagToManipulate?: string): void;
+    initialize(
+        context: JQuery,
+        options?: ITagsManagerOptions,
+        tagToManipulate?: string,
+    ): void;
     setupTypeahead(): void;
-    onTypeaheadAjaxSuccess(data: any, isSetTypeaheadSource: boolean, process?: Function): void;
+    onTypeaheadAjaxSuccess(
+        data: any,
+        isSetTypeaheadSource: boolean,
+        process?: Function,
+    ): void;
     ajaxPolling(query: string, process: Function): void;
     setTypeaheadSource(source: any): void;
     trimTag(tag: string): string;
@@ -55,8 +63,16 @@ interface ITagsManager {
 
     setOptions(options: ITagsManagerOptions): void;
     setContext(context: JQuery, tagToManipulate?: string): void;
-    processCommand(context: JQuery, command: string, tagToManipulate?: string): JQuery;
-    processTags(command?: string, context?: JQuery, tagToManipulate?: string): JQuery;
+    processCommand(
+        context: JQuery,
+        command: string,
+        tagToManipulate?: string,
+    ): JQuery;
+    processTags(
+        command?: string,
+        context?: JQuery,
+        tagToManipulate?: string,
+    ): JQuery;
 }
 
 interface JQuery {

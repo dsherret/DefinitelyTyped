@@ -1,4 +1,7 @@
-export type CountType = "words" | "characters_excluding_spaces" | "characters_including_spaces";
+export type CountType =
+    | "words"
+    | "characters_excluding_spaces"
+    | "characters_including_spaces";
 
 export interface Settings {
     HTMLEntityRegExp: RegExp;
@@ -32,4 +35,8 @@ export interface Settings {
  * const numberOfWords = count( 'Words to count', 'words' )
  * ```
  */
-export function count(text: string, type: CountType, userSettings?: Partial<Settings>): number;
+export function count(
+    text: string,
+    type: CountType,
+    userSettings?: Partial<Settings>,
+): number;

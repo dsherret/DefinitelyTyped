@@ -17,7 +17,10 @@ const simpleState: SimpleState = {
     numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 };
 
-const simpleAction = (state: SimpleState = simpleState, action: Action): SimpleState => {
+const simpleAction = (
+    state: SimpleState = simpleState,
+    action: Action,
+): SimpleState => {
     if (action.type === TO_FINISH_STATE) {
         return { ...state, currentState: "finish" };
     }
@@ -29,8 +32,11 @@ const simpleAction = (state: SimpleState = simpleState, action: Action): SimpleS
     return state;
 };
 
-const getNumbers = (state: SimpleState = simpleState, type: string): number[] => {
-    return state.numbers.filter(element => {
+const getNumbers = (
+    state: SimpleState = simpleState,
+    type: string,
+): number[] => {
+    return state.numbers.filter((element) => {
         const division = element % 2;
 
         if (division === 0 && type === EVEN_NUMBERS) {
@@ -67,10 +73,15 @@ const thunkAction = () => {
 };
 
 Reducer(simpleAction).expect({ type: "WRONG_TYPE" }).toStayTheSame();
-Reducer(simpleAction).withState(simpleState).expect({ type: TO_FINISH_STATE }).toChangeInState({
-    currentState: "finish",
-});
-Reducer(simpleAction).expect({ type: TO_INITIAL_STATE }).toReturnState(simpleState);
+Reducer(simpleAction)
+    .withState(simpleState)
+    .expect({ type: TO_FINISH_STATE })
+    .toChangeInState({
+        currentState: "finish",
+    });
+Reducer(simpleAction)
+    .expect({ type: TO_INITIAL_STATE })
+    .toReturnState(simpleState);
 
 Selector(getNumbers).expect(simpleState, EVEN_NUMBERS).toReturn([2, 4, 6, 8]);
 Selector(getNumbers).execute(simpleState, ODD_NUMBERS);

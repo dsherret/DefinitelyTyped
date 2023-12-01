@@ -26,7 +26,7 @@ google.accounts.id.storeCredential("", () => {});
 google.accounts.id.cancel();
 google.accounts.id.revoke("", (_: google.RevocationResponse) => {});
 
-google.accounts.id.prompt(promptMomentNotification => {
+google.accounts.id.prompt((promptMomentNotification) => {
     const isDisplayMoment: boolean = promptMomentNotification.isDisplayMoment();
     const isDisplayed: boolean = promptMomentNotification.isDisplayed();
     const isNotDisplayed: boolean = promptMomentNotification.isNotDisplayed();
@@ -45,12 +45,14 @@ google.accounts.id.prompt(promptMomentNotification => {
         | "user_cancel"
         | "tap_outside"
         | "issuing_failed" = promptMomentNotification.getSkippedReason();
-    const isDismissedMoment: boolean = promptMomentNotification.isDismissedMoment();
+    const isDismissedMoment: boolean =
+        promptMomentNotification.isDismissedMoment();
     const getDismissedReason:
         | "credential_returned"
         | "cancel_called"
         | "flow_restarted" = promptMomentNotification.getDismissedReason();
-    const getMomentType: "display" | "skipped" | "dismissed" = promptMomentNotification.getMomentType();
+    const getMomentType: "display" | "skipped" | "dismissed" =
+        promptMomentNotification.getMomentType();
 });
 
 const buttonOptions: google.GsiButtonConfiguration = {

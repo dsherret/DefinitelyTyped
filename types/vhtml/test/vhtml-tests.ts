@@ -17,7 +17,13 @@ h(
     { id: "some-id" },
     h("h1", null, "Title"),
     "List of items:",
-    h("ol", null, h("li", null, "First item"), h("li", null, "Second item"), h("li", null, "Third item")),
+    h(
+        "ol",
+        null,
+        h("li", null, "First item"),
+        h("li", null, "Second item"),
+        h("li", null, "Third item"),
+    ),
 );
 
 // Children can be of any type
@@ -70,7 +76,13 @@ h("main", { dangerouslySetInnerHTML: "foo bar" });
 
 // -------- Functional Pseudo-Components -------- //
 
-function Component({ prop1, prop2 }: { prop1: string; prop2?: number | undefined }): string {
+function Component({
+    prop1,
+    prop2,
+}: {
+    prop1: string;
+    prop2?: number | undefined;
+}): string {
     return h("div", { id: prop1 }, prop2);
 }
 

@@ -26,7 +26,12 @@ export interface DatasetExt extends Dataset<QuadExt> {
 
     map(callback: (quad: QuadExt) => Quad): DatasetExt;
 
-    match(subject?: Term | null, predicate?: Term | null, object?: Term | null, graph?: Term | null): DatasetExt;
+    match(
+        subject?: Term | null,
+        predicate?: Term | null,
+        object?: Term | null,
+        graph?: Term | null,
+    ): DatasetExt;
 
     merge(other: Iterable<Quad>): DatasetExt;
 
@@ -39,11 +44,21 @@ export interface DatasetExt extends Dataset<QuadExt> {
     equals(other: DatasetCore): boolean;
 
     reduce(
-        callbackfn: (previousValue: QuadExt, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => QuadExt,
+        callbackfn: (
+            previousValue: QuadExt,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => QuadExt,
         initialValue?: QuadExt,
     ): QuadExt;
     reduce<U>(
-        callbackfn: (previousValue: U, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => U,
+        callbackfn: (
+            previousValue: U,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => U,
         initialValue: U,
     ): U;
 }

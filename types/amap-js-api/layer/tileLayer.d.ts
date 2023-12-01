@@ -20,7 +20,10 @@ declare namespace AMap {
             /**
              * 获取图块取图地址
              */
-            getTileUrl?: string | ((x: number, y: number, level: number) => string) | undefined;
+            getTileUrl?:
+                | string
+                | ((x: number, y: number, level: number) => string)
+                | undefined;
             /**
              * 图层叠加的顺序值
              */
@@ -86,6 +89,8 @@ declare namespace AMap {
          * 设置图层的取图地址
          * @param url 取图地址
          */
-        setTileUrl(url: string | ((x: number, y: number, level: number) => string)): void;
+        setTileUrl(
+            url: string | ((x: number, y: number, level: number) => string),
+        ): void;
     }
 }

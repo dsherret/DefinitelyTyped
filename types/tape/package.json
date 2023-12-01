@@ -1,41 +1,41 @@
 {
-    "private": true,
-    "name": "@types/tape",
-    "version": "5.6.9999",
-    "projects": [
-        "https://github.com/ljharb/tape"
-    ],
-    "dependencies": {
-        "@types/node": "*",
-        "@types/through": "*"
+  "private": true,
+  "name": "@types/tape",
+  "version": "5.6.9999",
+  "projects": [
+    "https://github.com/ljharb/tape"
+  ],
+  "dependencies": {
+    "@types/node": "*",
+    "@types/through": "*"
+  },
+  "devDependencies": {
+    "@types/tape": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Bart van der Schoor",
+      "githubUsername": "Bartvds"
     },
-    "devDependencies": {
-        "@types/tape": "workspace:."
+    {
+      "name": "Haoqun Jiang",
+      "githubUsername": "sodatea"
     },
-    "owners": [
-        {
-            "name": "Bart van der Schoor",
-            "githubUsername": "Bartvds"
-        },
-        {
-            "name": "Haoqun Jiang",
-            "githubUsername": "sodatea"
-        },
-        {
-            "name": "Dennis Schwartz",
-            "githubUsername": "DennisSchwartz"
-        },
-        {
-            "name": "Michael Henretty",
-            "githubUsername": "mikehenrty"
-        },
-        {
-            "name": "Rafał Ostrowski",
-            "githubUsername": "rostrowski"
-        },
-        {
-            "name": "Jordan Harband",
-            "githubUsername": "ljharb"
-        }
-    ]
+    {
+      "name": "Dennis Schwartz",
+      "githubUsername": "DennisSchwartz"
+    },
+    {
+      "name": "Michael Henretty",
+      "githubUsername": "mikehenrty"
+    },
+    {
+      "name": "Rafał Ostrowski",
+      "githubUsername": "rostrowski"
+    },
+    {
+      "name": "Jordan Harband",
+      "githubUsername": "ljharb"
+    }
+  ]
 }

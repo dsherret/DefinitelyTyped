@@ -20,13 +20,13 @@ function help() {
     // Use custom help template instead of default help
     // [[OPTIONS]] is the placeholder for options list
     getopt.setHelp(
-        "Usage: node help.js [OPTION]\n"
-            + "node-getopt help demo.\n"
-            + "\n"
-            + "[[OPTIONS]]\n"
-            + "\n"
-            + "Installation: npm install node-getopt\n"
-            + "Respository:  https://github.com/jiangmiao/node-getopt",
+        "Usage: node help.js [OPTION]\n" +
+            "node-getopt help demo.\n" +
+            "\n" +
+            "[[OPTIONS]]\n" +
+            "\n" +
+            "Installation: npm install node-getopt\n" +
+            "Respository:  https://github.com/jiangmiao/node-getopt",
     );
 
     getopt.showHelp();

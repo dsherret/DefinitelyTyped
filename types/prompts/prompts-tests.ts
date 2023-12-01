@@ -18,12 +18,17 @@ type HasProperty<T, K> = K extends keyof T ? true : false;
         {
             type: "text",
             name: "language",
-            message: "What langauge is the next greatest thing since sliced bread?",
+            message:
+                "What langauge is the next greatest thing since sliced bread?",
         },
         {
             type: (prev, values) => {
-                const HasPromptName: HasProperty<typeof values, "language"> = true;
-                const DoesntHavePromptTypes: HasProperty<typeof values, "text"> = false;
+                const HasPromptName: HasProperty<typeof values, "language"> =
+                    true;
+                const DoesntHavePromptTypes: HasProperty<
+                    typeof values,
+                    "text"
+                > = false;
 
                 return prev === "javascript" ? "confirm" : null;
             },

@@ -23,7 +23,10 @@ export interface RequestAllConfig {
 export type SortDirection = "asc" | "desc";
 
 declare function apicalypseFactory(options?: ApicalypseConfig): Apicalypse;
-declare function apicalypseFactory(rawQueryString: string, options?: ApicalypseConfig): Apicalypse;
+declare function apicalypseFactory(
+    rawQueryString: string,
+    options?: ApicalypseConfig,
+): Apicalypse;
 
 export interface ApicalypseConfig extends AxiosRequestConfig {
     queryMethod?: QueryMethod | undefined;

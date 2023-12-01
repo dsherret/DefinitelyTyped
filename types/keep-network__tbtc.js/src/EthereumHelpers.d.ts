@@ -10,15 +10,34 @@ export namespace EthereumHelpers {
         value?: number | string | BN | undefined;
     }
     interface ContractCall {
-        send(options: ContractCallOptions, callback?: (err: Error, transactionHash: string) => void): Promise<any>;
-        estimateGas(options: ContractCallOptions, callback?: (err: Error, gas: number) => void): Promise<number>;
+        send(
+            options: ContractCallOptions,
+            callback?: (err: Error, transactionHash: string) => void,
+        ): Promise<any>;
+        estimateGas(
+            options: ContractCallOptions,
+            callback?: (err: Error, gas: number) => void,
+        ): Promise<number>;
         call(params: any): any;
     }
-    function readEventFromTransaction(web3: Web3, transaction: any, sourceContract: Contract, eventName: string): {
+    function readEventFromTransaction(
+        web3: Web3,
+        transaction: any,
+        sourceContract: Contract,
+        eventName: string,
+    ): {
         [key: string]: string;
     };
-    function getEvent(sourceContract: Contract, eventName: string, filter?: any): Promise<any>;
-    function getExistingEvent(source: Contract, eventName: string, filter?: any): Promise<any>;
+    function getEvent(
+        sourceContract: Contract,
+        eventName: string,
+        filter?: any,
+    ): Promise<any>;
+    function getExistingEvent(
+        source: Contract,
+        eventName: string,
+        filter?: any,
+    ): Promise<any>;
     function bytesToRaw(bytesString: string): string;
     function sendSafely(
         boundContractMethod: ContractCall,
@@ -40,5 +59,9 @@ export namespace EthereumHelpers {
         forceSend: boolean,
         totalAttempts: number,
     ): Promise<any>;
-    function getDeployedContract(artifact: Artifact, web3: Web3, networkId: string): Contract;
+    function getDeployedContract(
+        artifact: Artifact,
+        web3: Web3,
+        networkId: string,
+    ): Contract;
 }

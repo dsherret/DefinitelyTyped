@@ -98,7 +98,12 @@ export class Entry {
      *     current time will be used.
      * @param {string=} opt_type The log type, if known.
      */
-    constructor(level: Level | string | number, message: string, opt_timestamp?: number, opt_type?: string | IType);
+    constructor(
+        level: Level | string | number,
+        message: string,
+        opt_timestamp?: number,
+        opt_type?: string | IType,
+    );
 
     level: Level;
 

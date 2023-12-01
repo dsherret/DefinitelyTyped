@@ -17,7 +17,10 @@ declare module "../globalize" {
          * @param options form: [String] eg. "short" or "narrow". Or falsy for default long form.
          * @returns {Function} Returns a function that formats a relative time according to the given unit.
          */
-        relativeTimeFormatter(unit: string, options?: RelativeTimeFormatterOptions): (value: number) => string;
+        relativeTimeFormatter(
+            unit: string,
+            options?: RelativeTimeFormatterOptions,
+        ): (value: number) => string;
 
         /**
          * Return a relative time according to the given unit
@@ -26,7 +29,11 @@ declare module "../globalize" {
          * @param options form: [String] eg. "short" or "narrow". Or falsy for default long form.
          * @returns {string} Return a relative time according to the given unit.
          */
-        formatRelativeTime(value: number, unit: string, options?: RelativeTimeFormatterOptions): string;
+        formatRelativeTime(
+            value: number,
+            unit: string,
+            options?: RelativeTimeFormatterOptions,
+        ): string;
     }
 }
 

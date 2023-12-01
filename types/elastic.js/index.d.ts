@@ -309,7 +309,11 @@ declare namespace elasticjs {
         /*
      Constructs a query that can demote search results.  A negative boost.
      */
-        constructor(positiveQry: Object, negativeQry: Object, negativeBoost: number);
+        constructor(
+            positiveQry: Object,
+            negativeQry: Object,
+            negativeBoost: number,
+        );
 
         /*
      The type of ejs object.  For internal use only.
@@ -680,7 +684,10 @@ declare namespace elasticjs {
      want to include buckets that might be outside the bounds of indexed
      documents.
      */
-        extendedBounds(min: string | number, max: string | number): DateHistogramAggregation;
+        extendedBounds(
+            min: string | number,
+            max: string | number,
+        ): DateHistogramAggregation;
 
         /*
      Sets the field to gather terms from.
@@ -749,7 +756,9 @@ declare namespace elasticjs {
         /*
      Set to true to apply interval adjusts to day and above intervals.
      */
-        preZoneAdjustLargeInterval(trueFalse: boolean): DateHistogramAggregation;
+        preZoneAdjustLargeInterval(
+            trueFalse: boolean,
+        ): DateHistogramAggregation;
 
         /*
      Allows you generate or modify the terms using a script.
@@ -6573,7 +6582,10 @@ declare namespace elasticjs {
      is disabled.  Set the includes parameter to false to completely
      disable returning the source field.
      */
-        source(includes: string | boolean | string[], excludes: string | string[]): Request;
+        source(
+            includes: string | boolean | string[],
+            excludes: string | string[],
+        ): Request;
 
         /*
      Allows you to set the specified suggester on this request object.

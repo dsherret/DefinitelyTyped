@@ -169,7 +169,12 @@ export declare class Photoshop {
      * @param resolution The pixels per inch value to use when converting to and from pixel values.
      * @minVersion 23.4
      */
-    convertUnits(fromValue: number, fromUnits: Constants.Units, toUnits: Constants.Units, resolution?: number): number;
+    convertUnits(
+        fromValue: number,
+        fromUnits: Constants.Units,
+        toUnits: Constants.Units,
+        resolution?: number,
+    ): number;
     /**
      * The background color and color style for documents. [(24.2)](/ps_reference/changelog#other-fixes)
      *
@@ -193,7 +198,10 @@ export declare class Photoshop {
      * without updating the UI. This API is subject to change and may be accessible in other ways in the future.
      * @minVersion 23.0
      */
-    batchPlay(commands: any, options: any): Promise<Array<import("./CoreModules").ActionDescriptor>>;
+    batchPlay(
+        commands: any,
+        options: any,
+    ): Promise<Array<import("./CoreModules").ActionDescriptor>>;
     /**
      * Brings application to focus, useful when your script ends, or requires an input.
      * @minVersion 23.0

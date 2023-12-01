@@ -1,4 +1,10 @@
-import { ComponentType, FocusEvent, HTMLProps, ReactElement, ReactNode } from "react";
+import {
+    ComponentType,
+    FocusEvent,
+    HTMLProps,
+    ReactElement,
+    ReactNode,
+} from "react";
 // eslint-disable-next-line @definitelytyped/no-self-import
 import { Slot } from "@wordpress/components";
 
@@ -59,7 +65,9 @@ declare namespace Popover {
          * Function that should return a `DOMRect` of where to position the
          * popover.
          */
-        getAnchorRect?(currentAnchorElement: HTMLSpanElement | null): DOMRect | ClientRect | undefined;
+        getAnchorRect?(
+            currentAnchorElement: HTMLSpanElement | null,
+        ): DOMRect | ClientRect | undefined;
         /**
          * A callback invoked when the popover should be closed.
          */

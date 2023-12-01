@@ -11,7 +11,11 @@ BdApi.alert("foo", "bar"); // $ExpectType void
 BdApi.showToast("hello", { timeout: 2000 }); // $ExpectType void
 
 BdApi.ContextMenu; // $ExpectType ContextMenu
-BdApi.ContextMenu.buildItem({ type: "toggle", label: "Item Toggle", checked: false }); // $ExpectType object
+BdApi.ContextMenu.buildItem({
+    type: "toggle",
+    label: "Item Toggle",
+    checked: false,
+}); // $ExpectType object
 
 BdApi.DOM; // $ExpectType DOM
 BdApi.DOM.screenHeight; // $ExpectType number
@@ -71,6 +75,6 @@ BdApi.Webpack.Filters; // $ExpectType Filters
 BdApi.Webpack.Filters.byDisplayName("name"); // $ExpectType Filter
 BdApi.Webpack.Filters.byProps(["prop"]); // $ExpectType Filter
 BdApi.Webpack.Filters.byPrototypeFields(["prop"]); // $ExpectType Filter
-BdApi.Webpack.Filters.byRegex(/name/, module => true); // $ExpectType Filter
+BdApi.Webpack.Filters.byRegex(/name/, (module) => true); // $ExpectType Filter
 BdApi.Webpack.Filters.byStrings(["string"]); // $ExpectType Filter
-BdApi.Webpack.getModule(module => true); // $ExpectType object | null
+BdApi.Webpack.getModule((module) => true); // $ExpectType object | null

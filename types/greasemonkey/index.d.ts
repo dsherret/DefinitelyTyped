@@ -90,9 +90,11 @@ declare namespace GM {
          */
         data?: string | undefined;
         /** A set of headers to include in the request */
-        headers?: {
-            [header: string]: string;
-        } | undefined;
+        headers?:
+            | {
+                  [header: string]: string;
+              }
+            | undefined;
         /**
          * A MIME type to specify with the request (e.g.
          * "text/html; charset=ISO-8859-1")
@@ -120,12 +122,14 @@ declare namespace GM {
          * Object containing optional function callbacks to monitor the upload
          * of data.
          */
-        upload?: {
-            onabort?(response: Response<TContext>): void;
-            onerror?(response: Response<TContext>): void;
-            onload?(response: Response<TContext>): void;
-            onprogress?(response: ProgressResponse<TContext>): void;
-        } | undefined;
+        upload?:
+            | {
+                  onabort?(response: Response<TContext>): void;
+                  onerror?(response: Response<TContext>): void;
+                  onload?(response: Response<TContext>): void;
+                  onprogress?(response: ProgressResponse<TContext>): void;
+              }
+            | undefined;
 
         // Event handlers
 
@@ -210,9 +214,7 @@ declare var GM: {
      * // For structured data used `JSON.stringify()` to place an object into storage and then `JSON.parse()` to convert it back
      * const storedObject = JSON.parse(await GM.getValue('foo', '{}'));
      */
-    getValue(
-        name: string,
-    ): Promise<GM.Value | undefined>;
+    getValue(name: string): Promise<GM.Value | undefined>;
     getValue<TValue = GM.Value>(
         name: string,
         defaultValue: TValue,
@@ -285,7 +287,11 @@ declare var GM: {
      * item when the menu is open. It should be a letter in the caption.
      * @see {@link https://wiki.greasespot.net/GM.registerMenuCommand}
      */
-    registerMenuCommand(caption: string, commandFunc: () => void, accessKey?: string): void;
+    registerMenuCommand(
+        caption: string,
+        commandFunc: () => void,
+        accessKey?: string,
+    ): void;
 
     /**
      * Sets the current contents of the operating system's clipboard

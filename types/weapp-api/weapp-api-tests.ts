@@ -1,23 +1,33 @@
-import { App, clearInterval, clearTimeout, getApp, Page, setInterval, setTimeout, wx } from "weapp-api";
+import {
+    App,
+    clearInterval,
+    clearTimeout,
+    getApp,
+    Page,
+    setInterval,
+    setTimeout,
+    wx,
+} from "weapp-api";
 App({
-    onLaunch: function() {
+    onLaunch: function () {
         // 调用API从本地缓存中获取数据
-        let logs = wx.getStorageSync("logs") as any[] || [];
+        let logs = (wx.getStorageSync("logs") as any[]) || [];
         logs.unshift(Date.now());
         wx.setStorageSync("logs", logs);
     },
-    getUserInfo: function(cb: Function) {
+    getUserInfo: function (cb: Function) {
         let that = this;
         if (this.globalData.userInfo) {
             typeof cb == "function" && cb(this.globalData.userInfo);
         } else {
             // 调用登录接口
             wx.login({
-                success: function() {
+                success: function () {
                     wx.getUserInfo({
-                        success: function(res: any) {
+                        success: function (res: any) {
                             that.globalData.userInfo = res.userInfo;
-                            typeof cb == "function" && cb(that.globalData.userInfo);
+                            typeof cb == "function" &&
+                                cb(that.globalData.userInfo);
                         },
                     });
                 },
@@ -31,13 +41,12 @@ App({
 
 let app = getApp();
 let page = app.getCurrentPage();
-page.setData({ "foo": "bar" });
+page.setData({ foo: "bar" });
 Page({
     data: {
         foo: "bar",
     },
-    onLoad: function(options) {
-    },
+    onLoad: function (options) {},
 });
 
 wx.request({
@@ -49,20 +58,20 @@ wx.request({
     header: {
         "Content-Type": "application/json",
     },
-    success: function(res: any) {
+    success: function (res: any) {
         console.log(res.data);
     },
 });
 
 wx.chooseImage({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePaths = res.tempFilePaths;
         wx.uploadFile({
             url: "http://example.com/upload",
             filePath: tempFilePaths[0],
             name: "file",
             formData: {
-                "user": "test",
+                user: "test",
             },
         });
     },
@@ -71,7 +80,7 @@ wx.chooseImage({
 wx.downloadFile({
     url: "http://example.com/audio/123",
     type: "audio",
-    success: function(res: any) {
+    success: function (res: any) {
         wx.playVoice({
             filePath: res.tempFilePath,
         });
@@ -93,17 +102,17 @@ wx.connectSocket({
 wx.connectSocket({
     url: "test.php",
 });
-wx.onSocketOpen(function(res: any) {
+wx.onSocketOpen(function (res: any) {
     console.log("WebSocket连接已打开！");
 });
 
 wx.connectSocket({
     url: "test.php",
 });
-wx.onSocketOpen(function(res: any) {
+wx.onSocketOpen(function (res: any) {
     console.log("WebSocket连接已打开！");
 });
-wx.onSocketError(function(res: any) {
+wx.onSocketError(function (res: any) {
     console.log("WebSocket连接打开失败，请检查！");
 });
 
@@ -113,7 +122,7 @@ wx.connectSocket({
     url: "test.php",
 });
 
-wx.onSocketOpen(function(res: any) {
+wx.onSocketOpen(function (res: any) {
     socketOpen = true;
     for (var i = 0; i < socketMsgQueue.length; i++) {
         sendSocketMessage(socketMsgQueue[i]);
@@ -135,7 +144,7 @@ wx.connectSocket({
     url: "test.php",
 });
 
-wx.onSocketMessage(function(res: any) {
+wx.onSocketMessage(function (res: any) {
     console.log("收到服务器内容：" + res.data);
 });
 
@@ -146,11 +155,11 @@ wx.connectSocket({
 // 注意这里有时序问题，
 // 如果 wx.connectSocket 还没回调 wx.onSocketOpen，而先调用 wx.closeSocket，那么就做不到关闭 WebSocket 的目的。
 // 必须在 WebSocket 打开期间调用 wx.closeSocket 才能关闭。
-wx.onSocketOpen(function() {
+wx.onSocketOpen(function () {
     wx.closeSocket();
 });
 
-wx.onSocketClose(function(res: any) {
+wx.onSocketClose(function (res: any) {
     console.log("WebSocket 已关闭！");
 });
 
@@ -158,7 +167,7 @@ wx.chooseImage({
     count: 1, // 默认9
     sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
     sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
-    success: function(res: any) {
+    success: function (res: any) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
     },
@@ -170,37 +179,36 @@ wx.previewImage({
 });
 
 wx.startRecord({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePath = res.tempFilePath;
     },
-    fail: function(res: any) {
+    fail: function (res: any) {
         // 录音失败
     },
 });
-setTimeout(function() {
+setTimeout(function () {
     // 结束录音
     wx.stopRecord();
 }, 10000);
 
 wx.startRecord({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePath = res.tempFilePath;
         wx.playVoice({
             filePath: tempFilePath,
-            complete: function() {
-            },
+            complete: function () {},
         });
     },
 });
 
 wx.startRecord({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePath = res.tempFilePath;
         wx.playVoice({
             filePath: tempFilePath,
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             // 暂停播放
             wx.pauseVoice();
         }, 5000);
@@ -208,20 +216,20 @@ wx.startRecord({
 });
 
 wx.startRecord({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePath = res.tempFilePath;
         wx.playVoice({
             filePath: tempFilePath,
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             wx.stopVoice();
         }, 5000);
     },
 });
 
 wx.getBackgroundAudioPlayerState({
-    success: function(res: any) {
+    success: function (res: any) {
         var status = res.status;
         var dataUrl = res.dataUrl;
         var currentPosition = res.currentPosition;
@@ -244,11 +252,11 @@ wx.seekBackgroundAudio({
 wx.stopBackgroundAudio();
 
 wx.startRecord({
-    success: function(res: any) {
+    success: function (res: any) {
         var tempFilePath = res.tempFilePath;
         wx.saveFile({
             tempFilePath: tempFilePath,
-            success: function(res: any) {
+            success: function (res: any) {
                 var savedFilePath = res.savedFilePath;
             },
         });
@@ -256,13 +264,13 @@ wx.startRecord({
 });
 
 Page({
-    bindButtonTap: function() {
+    bindButtonTap: function () {
         var that = this;
         wx.chooseVideo({
             sourceType: ["album", "camera"],
             maxDuration: 60,
             camera: ["front", "back"],
-            success: function(res: any) {
+            success: function (res: any) {
                 that.setData({
                     src: res.tempFilePath,
                 });
@@ -278,12 +286,11 @@ wx.setStorage({
 
 try {
     wx.setStorageSync("key", "value");
-} catch (e) {
-}
+} catch (e) {}
 
 wx.getStorage({
     key: "key",
-    success: function(res: any) {
+    success: function (res: any) {
         console.log(res.data);
     },
 });
@@ -297,12 +304,11 @@ wx.clearStorage();
 
 try {
     wx.clearStorageSync();
-} catch (e) {
-}
+} catch (e) {}
 
 wx.getLocation({
     type: "wgs84",
-    success: function(res: any) {
+    success: function (res: any) {
         var latitude = res.latitude;
         var longitude = res.longitude;
         var speed = res.speed;
@@ -312,7 +318,7 @@ wx.getLocation({
 
 wx.getLocation({
     type: "gcj02", // 返回可以用于wx.openLocation的经纬度
-    success: function(res: any) {
+    success: function (res: any) {
         var latitude = res.latitude;
         var longitude = res.longitude;
         wx.openLocation({
@@ -324,13 +330,13 @@ wx.getLocation({
 });
 
 wx.getNetworkType({
-    success: function(res: any) {
+    success: function (res: any) {
         var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
     },
 });
 
 wx.getSystemInfo({
-    success: function(res: any) {
+    success: function (res: any) {
         console.log(res.model);
         console.log(res.pixelRatio);
         console.log(res.windowWidth);
@@ -347,7 +353,7 @@ const updateManager = wx.getUpdateManager();
 //     console.log(res.hasUpdate)
 // })
 
-updateManager.onUpdateReady(function() {
+updateManager.onUpdateReady(function () {
     // wx.showModal({
     //     title: '更新提示',
     //     content: '新版本已经准备好，是否重启应用？',
@@ -360,17 +366,17 @@ updateManager.onUpdateReady(function() {
     // })
 });
 
-updateManager.onUpdateFailed(function() {
+updateManager.onUpdateFailed(function () {
     // 新版本下载失败
 });
 
-wx.onAccelerometerChange(function(res: any) {
+wx.onAccelerometerChange(function (res: any) {
     console.log(res.x);
     console.log(res.y);
     console.log(res.z);
 });
 
-wx.onCompassChange(function(res: any) {
+wx.onCompassChange(function (res: any) {
     console.log(res.direction);
 });
 
@@ -397,7 +403,7 @@ Page({
     data: {
         animationData: {},
     },
-    onShow: function() {
+    onShow: function () {
         var animation = wx.createAnimation({
             duration: 1000,
             timingFunction: "ease",
@@ -411,21 +417,21 @@ Page({
             animationData: animation.export(),
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             animation.translate(30).step();
             this.setData({
                 animationData: animation.export(),
             });
         }, 1000);
     },
-    rotateAndScale: function() {
+    rotateAndScale: function () {
         // 旋转同时放大
         this.animation.rotate(45).scale(2, 2).step();
         this.setData({
             animationData: animation.export(),
         });
     },
-    rotateThenScale: function() {
+    rotateThenScale: function () {
         // 先旋转后放大
         this.animation.rotate(45).step();
         this.animation.scale(2, 2).step();
@@ -433,7 +439,7 @@ Page({
             animationData: animation.export(),
         });
     },
-    rotateAndScaleThenTranslate: function() {
+    rotateAndScaleThenTranslate: function () {
         // 先旋转同时放大，然后平移
         this.animation.rotate(45).scale(2, 2).step();
         this.animation.translate(100, 100).step({ duration: 1000 });
@@ -450,7 +456,7 @@ var canvas3Id = 3003;
 
 var context = wx.createContext();
 
-[canvas1Id, canvas2Id, canvas3Id].forEach(function(id) {
+[canvas1Id, canvas2Id, canvas3Id].forEach(function (id) {
     context.clearActions();
     // 在context上调用方法
     wx.drawCanvas({
@@ -460,7 +466,7 @@ var context = wx.createContext();
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
         context.rect(5, 5, 25, 15);
         context.stroke();
@@ -478,14 +484,14 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
         context.rect(50, 50, 200, 200);
         context.stroke();
-        context.rotate(5 * Math.PI / 180);
+        context.rotate((5 * Math.PI) / 180);
         context.rect(50, 50, 200, 200);
         context.stroke();
-        context.rotate(5 * Math.PI / 180);
+        context.rotate((5 * Math.PI) / 180);
         context.rect(50, 50, 200, 200);
         context.stroke();
 
@@ -497,7 +503,7 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
 
         context.rect(50, 50, 200, 200);
@@ -514,7 +520,7 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
 
         context.rect(50, 50, 200, 200);
@@ -529,10 +535,10 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
         wx.chooseImage({
-            success: function(res: any) {
+            success: function (res: any) {
                 context.drawImage(res.tempFilePaths[0], 0, 0);
                 wx.drawCanvas({
                     canvasId: 1,
@@ -544,7 +550,7 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
 
         context.setFontSize(14);
@@ -566,7 +572,7 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
 
         context.setFillStyle("#ff00ff");
@@ -583,7 +589,7 @@ Page({
 });
 
 Page({
-    onReady: function() {
+    onReady: function () {
         var context = wx.createContext();
 
         context.setLineWidth(10);
@@ -610,10 +616,10 @@ Page({
     },
 });
 Page({
-    canvasIdErrorCallback: function(e: any) {
+    canvasIdErrorCallback: function (e: any) {
         console.error(e.detail.errMsg);
     },
-    onReady: function() {
+    onReady: function () {
         // 使用wx.createContext获取绘图上下文context
         var context = wx.createContext();
 
@@ -642,9 +648,9 @@ Page({
 });
 
 App({
-    onLaunch: function() {
+    onLaunch: function () {
         wx.login({
-            success: function(res: any) {
+            success: function (res: any) {
                 if (res.code) {
                     // 发起网络请求
                     wx.request({
@@ -662,7 +668,7 @@ App({
 });
 
 wx.getUserInfo({
-    success: function(res: any) {
+    success: function (res: any) {
         var userInfo = res.userInfo;
         var nickName = userInfo.nickName;
         var avatarUrl = userInfo.avatarUrl;
@@ -674,15 +680,13 @@ wx.getUserInfo({
 });
 
 wx.requestPayment({
-    "timeStamp": "",
-    "nonceStr": "",
-    "package": "",
-    "signType": "MD5",
-    "paySign": "",
-    "success": function(res: any) {
-    },
-    "fail": function(res: any) {
-    },
+    timeStamp: "",
+    nonceStr: "",
+    package: "",
+    signType: "MD5",
+    paySign: "",
+    success: function (res: any) {},
+    fail: function (res: any) {},
 });
 
 App({

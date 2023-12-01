@@ -2,16 +2,18 @@ import AsyncPolling = require("async-polling");
 
 // Tests based on examples in https://github.com/cGuille/async-polling#readme
 
-AsyncPolling(end => {
+AsyncPolling((end) => {
     end();
 }, 3000).run();
 
-function someAsynchroneProcess(callback: (error?: Error, response?: any) => any): any {
+function someAsynchroneProcess(
+    callback: (error?: Error, response?: any) => any,
+): any {
     callback();
 }
 
-let polling = AsyncPolling(end => {
-    someAsynchroneProcess(function(error, response) {
+let polling = AsyncPolling((end) => {
+    someAsynchroneProcess(function (error, response) {
         if (error) {
             end(error);
             return;
@@ -25,14 +27,14 @@ polling.on("result", (result: any) => {});
 polling.run();
 polling.stop();
 
-AsyncPolling(function(end) {
+AsyncPolling(function (end) {
     this.stop();
     end();
 }, 3000).run();
 
 let i = 0;
 
-polling = AsyncPolling(function(end) {
+polling = AsyncPolling(function (end) {
     ++i;
     if (i === 3) {
         return end(new Error("i is " + i));
@@ -44,8 +46,14 @@ polling = AsyncPolling(function(end) {
     end(null, `#${i} wait a second...`);
 }, 1000);
 
-const eventNames: AsyncPolling.EventName[] = ["run", "start", "end", "schedule", "stop"];
-eventNames.forEach(eventName => {
+const eventNames: AsyncPolling.EventName[] = [
+    "run",
+    "start",
+    "end",
+    "schedule",
+    "stop",
+];
+eventNames.forEach((eventName) => {
     polling.on(eventName, () => {
         console.log("lifecycle:", eventName);
     });

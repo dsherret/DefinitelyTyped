@@ -60,20 +60,26 @@ const provider: AutocompleteProvider = {
         prefix,
         activatedManually,
     }: SuggestionsRequestedEvent): Promise<Suggestions> {
-        return new Promise(resolve => resolve([{ text: "something" }]));
+        return new Promise((resolve) => resolve([{ text: "something" }]));
     },
 
     getSuggestionDetailsOnSelect(suggestion) {
-        return new Promise(resolve => resolve(suggestion));
+        return new Promise((resolve) => resolve(suggestion));
     },
 
-    onDidInsertSuggestion({ editor, triggerPosition, suggestion }: SuggestionInsertedEvent) {},
+    onDidInsertSuggestion({
+        editor,
+        triggerPosition,
+        suggestion,
+    }: SuggestionInsertedEvent) {},
 
     dispose() {},
 };
 
 async function testFun() {
-    const suggestions = await provider.getSuggestions(suggestionsRequestedEvent);
+    const suggestions = await provider.getSuggestions(
+        suggestionsRequestedEvent,
+    );
 
     const suggestionInsertedEvent: SuggestionInsertedEvent = {
         editor: new TextEditor(),

@@ -31,7 +31,12 @@ export interface StructuredHeader {
 /**
  * Possible types of a header value.
  */
-export type HeaderValue = string | string[] | AddressObject | Date | StructuredHeader;
+export type HeaderValue =
+    | string
+    | string[]
+    | AddressObject
+    | Date
+    | StructuredHeader;
 
 /**
  * A Map object with lowercase header keys.
@@ -290,7 +295,10 @@ export class MailParser extends StreamModule.Transform {
     constructor(options?: MailParserOptions);
     on(event: string, callback: (any: any) => void): this;
     on(event: "headers", callback: (headers: Headers) => void): this;
-    on(event: "data" | "readable", callback: (data: AttachmentStream | MessageText) => void): this;
+    on(
+        event: "data" | "readable",
+        callback: (data: AttachmentStream | MessageText) => void,
+    ): this;
 }
 
 /**
@@ -323,7 +331,10 @@ export type SimpleParserOptions = MailParserOptions;
  * @param source A message source.
  * @param callback Function to get a structured email object.
  */
-export function simpleParser(source: Source, callback: (err: any, mail: ParsedMail) => void): void;
+export function simpleParser(
+    source: Source,
+    callback: (err: any, mail: ParsedMail) => void,
+): void;
 
 /**
  * Parse email message to structure object.
@@ -344,4 +355,7 @@ export function simpleParser(
  * @param source A message source.
  * @param options Transform options passed to MailParser's constructor
  */
-export function simpleParser(source: Source, options?: SimpleParserOptions): Promise<ParsedMail>;
+export function simpleParser(
+    source: Source,
+    options?: SimpleParserOptions,
+): Promise<ParsedMail>;

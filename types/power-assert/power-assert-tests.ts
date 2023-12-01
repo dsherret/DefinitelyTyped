@@ -87,7 +87,7 @@ const customizedAssert2 = assert.customize({
     },
 });
 
-((): typeof assert => assert.strict);
+(): typeof assert => assert.strict;
 
 declare const set: Set<number>;
 assert(set.size === 0);

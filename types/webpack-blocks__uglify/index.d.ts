@@ -3,11 +3,19 @@ import { Block } from "webpack-blocks";
 
 declare namespace uglify {
     type TestType = string | RegExp;
-    type ExtractCommentsFunction = (node: any, comment: any) => boolean | ExtractCommentsObject;
+    type ExtractCommentsFunction = (
+        node: any,
+        comment: any,
+    ) => boolean | ExtractCommentsObject;
     type FileNameFunction = (file: string) => string;
 
     interface ExtractCommentsObject {
-        condition?: boolean | string | RegExp | ExtractCommentsFunction | undefined;
+        condition?:
+            | boolean
+            | string
+            | RegExp
+            | ExtractCommentsFunction
+            | undefined;
         filename?: RegExp | FileNameFunction | undefined;
         banner?: boolean | string | FileNameFunction | undefined;
     }
@@ -23,12 +31,23 @@ declare namespace uglify {
         sourceMap?: boolean | undefined;
         minify?:
             | ((
-                file: any,
-                sourceMap: any,
-            ) => { error: any; map: any; code: any; warnings: any; extractedComments: any })
+                  file: any,
+                  sourceMap: any,
+              ) => {
+                  error: any;
+                  map: any;
+                  code: any;
+                  warnings: any;
+                  extractedComments: any;
+              })
             | undefined;
         uglifyOptions?: MinifyOptions | undefined;
-        extractComments?: boolean | string | RegExp | ExtractCommentsFunction | undefined;
+        extractComments?:
+            | boolean
+            | string
+            | RegExp
+            | ExtractCommentsFunction
+            | undefined;
         warningsFilter?: ((warning: any, source: any) => boolean) | undefined;
     }
 }

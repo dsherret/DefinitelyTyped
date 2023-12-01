@@ -27,7 +27,9 @@ export = memoryUsage;
  *   .pipe(csvWriter())
  *   .pipe(fs.createWriteStream('memory.csv'))
  */
-declare function memoryUsage(opts?: number | memoryUsage.Options): NodeJS.ReadableStream;
+declare function memoryUsage(
+    opts?: number | memoryUsage.Options,
+): NodeJS.ReadableStream;
 
 declare namespace memoryUsage {
     interface Options {

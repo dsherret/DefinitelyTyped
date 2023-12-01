@@ -27,7 +27,11 @@ export class ArrowKeyStepperExample extends PureComponent<any, any> {
         const { mode } = this.state;
 
         return (
-            <ArrowKeyStepper columnCount={100} mode={mode as "edges"} rowCount={100}>
+            <ArrowKeyStepper
+                columnCount={100}
+                mode={mode as "edges"}
+                rowCount={100}
+            >
                 {({ onSectionRendered, scrollToColumn, scrollToRow }) => (
                     <div>
                         <AutoSizer disableHeight>
@@ -38,7 +42,12 @@ export class ArrowKeyStepperExample extends PureComponent<any, any> {
                                     columnCount={100}
                                     height={200}
                                     onSectionRendered={onSectionRendered}
-                                    cellRenderer={({ columnIndex, key, rowIndex, style }) =>
+                                    cellRenderer={({
+                                        columnIndex,
+                                        key,
+                                        rowIndex,
+                                        style,
+                                    }) =>
                                         this._cellRenderer({
                                             columnIndex,
                                             key,
@@ -46,7 +55,8 @@ export class ArrowKeyStepperExample extends PureComponent<any, any> {
                                             scrollToColumn,
                                             scrollToRow,
                                             style,
-                                        })}
+                                        })
+                                    }
                                     rowHeight={this._getRowHeight}
                                     rowCount={100}
                                     scrollToColumn={scrollToColumn}
@@ -69,7 +79,14 @@ export class ArrowKeyStepperExample extends PureComponent<any, any> {
         return (1 + (index % 3)) * 30;
     }
 
-    _cellRenderer({ columnIndex, key, rowIndex, scrollToColumn, scrollToRow, style }: any) {
+    _cellRenderer({
+        columnIndex,
+        key,
+        rowIndex,
+        scrollToColumn,
+        scrollToRow,
+        style,
+    }: any) {
         return (
             <div className={"className"} key={key} style={style}>
                 {`r:${rowIndex}, c:${columnIndex}`}
@@ -83,7 +100,11 @@ export class ArrowKeyStepperCJSExample extends PureComponent<any, any> {
         const { mode } = this.state;
 
         return (
-            <ArrowKeyStepperCJS columnCount={100} mode={mode as "edges"} rowCount={100}>
+            <ArrowKeyStepperCJS
+                columnCount={100}
+                mode={mode as "edges"}
+                rowCount={100}
+            >
                 {({ onSectionRendered, scrollToColumn, scrollToRow }) => (
                     <div>
                         <AutoSizerCJS disableHeight>
@@ -94,7 +115,12 @@ export class ArrowKeyStepperCJSExample extends PureComponent<any, any> {
                                     columnCount={100}
                                     height={200}
                                     onSectionRendered={onSectionRendered}
-                                    cellRenderer={({ columnIndex, key, rowIndex, style }) =>
+                                    cellRenderer={({
+                                        columnIndex,
+                                        key,
+                                        rowIndex,
+                                        style,
+                                    }) =>
                                         this._cellRenderer({
                                             columnIndex,
                                             key,
@@ -102,7 +128,8 @@ export class ArrowKeyStepperCJSExample extends PureComponent<any, any> {
                                             scrollToColumn,
                                             scrollToRow,
                                             style,
-                                        })}
+                                        })
+                                    }
                                     rowHeight={this._getRowHeight}
                                     rowCount={100}
                                     scrollToColumn={scrollToColumn}
@@ -125,7 +152,14 @@ export class ArrowKeyStepperCJSExample extends PureComponent<any, any> {
         return (1 + (index % 3)) * 30;
     }
 
-    _cellRenderer({ columnIndex, key, rowIndex, scrollToColumn, scrollToRow, style }: any) {
+    _cellRenderer({
+        columnIndex,
+        key,
+        rowIndex,
+        scrollToColumn,
+        scrollToRow,
+        style,
+    }: any) {
         return (
             <div className={"className"} key={key} style={style}>
                 {`r:${rowIndex}, c:${columnIndex}`}
@@ -139,7 +173,11 @@ export class ArrowKeyStepperESMExample extends PureComponent<any, any> {
         const { mode } = this.state;
 
         return (
-            <ArrowKeyStepperESM columnCount={100} mode={mode as "edges"} rowCount={100}>
+            <ArrowKeyStepperESM
+                columnCount={100}
+                mode={mode as "edges"}
+                rowCount={100}
+            >
                 {({ onSectionRendered, scrollToColumn, scrollToRow }) => (
                     <div>
                         <AutoSizerESM disableHeight>
@@ -150,7 +188,12 @@ export class ArrowKeyStepperESMExample extends PureComponent<any, any> {
                                     columnCount={100}
                                     height={200}
                                     onSectionRendered={onSectionRendered}
-                                    cellRenderer={({ columnIndex, key, rowIndex, style }) =>
+                                    cellRenderer={({
+                                        columnIndex,
+                                        key,
+                                        rowIndex,
+                                        style,
+                                    }) =>
                                         this._cellRenderer({
                                             columnIndex,
                                             key,
@@ -158,7 +201,8 @@ export class ArrowKeyStepperESMExample extends PureComponent<any, any> {
                                             scrollToColumn,
                                             scrollToRow,
                                             style,
-                                        })}
+                                        })
+                                    }
                                     rowHeight={this._getRowHeight}
                                     rowCount={100}
                                     scrollToColumn={scrollToColumn}
@@ -181,7 +225,14 @@ export class ArrowKeyStepperESMExample extends PureComponent<any, any> {
         return (1 + (index % 3)) * 30;
     }
 
-    _cellRenderer({ columnIndex, key, rowIndex, scrollToColumn, scrollToRow, style }: any) {
+    _cellRenderer({
+        columnIndex,
+        key,
+        rowIndex,
+        scrollToColumn,
+        scrollToRow,
+        style,
+    }: any) {
         return (
             <div className={"className"} key={key} style={style}>
                 {`r:${rowIndex}, c:${columnIndex}`}
@@ -299,7 +350,11 @@ export class AutoSizerESMExample extends PureComponent<any, any> {
 }
 
 import {} from "react";
-import { CellMeasurer, CellMeasurerCache, ListRowProps } from "react-virtualized";
+import {
+    CellMeasurer,
+    CellMeasurerCache,
+    ListRowProps,
+} from "react-virtualized";
 
 export class DynamicHeightList extends PureComponent<any> {
     _cache: CellMeasurerCache;
@@ -342,9 +397,19 @@ export class DynamicHeightList extends PureComponent<any> {
         const source = `http://fillmurray.com/${imageWidth}/${imageHeight}`;
 
         return (
-            <CellMeasurer cache={this._cache} columnIndex={0} key={key} rowIndex={index} parent={parent}>
+            <CellMeasurer
+                cache={this._cache}
+                columnIndex={0}
+                key={key}
+                rowIndex={index}
+                parent={parent}
+            >
                 {({ measure, registerChild }) => (
-                    <div ref={registerChild as React.Ref<HTMLDivElement>} className={classNames} style={style}>
+                    <div
+                        ref={registerChild as React.Ref<HTMLDivElement>}
+                        className={classNames}
+                        style={style}
+                    >
                         <img
                             onLoad={measure}
                             src={source}
@@ -405,7 +470,9 @@ export class CollectionExample extends PureComponent<any, any> {
                     <Collection
                         cellCount={cellCount}
                         cellRenderer={this._cellRenderer}
-                        cellSizeAndPositionGetter={this._cellSizeAndPositionGetter}
+                        cellSizeAndPositionGetter={
+                            this._cellSizeAndPositionGetter
+                        }
                         className={"styles.collection"}
                         height={height}
                         horizontalOverscanSize={horizontalOverscanSize}
@@ -419,7 +486,12 @@ export class CollectionExample extends PureComponent<any, any> {
         );
     }
 
-    _cellRenderer({ index, isScrolling, key, style }: CollectionCellRendererParams) {
+    _cellRenderer({
+        index,
+        isScrolling,
+        key,
+        style,
+    }: CollectionCellRendererParams) {
         const { list } = this.context;
         const { showScrollingPlaceholder } = this.state;
 
@@ -481,7 +553,11 @@ export class ColumnSizerExample extends PureComponent<any, any> {
                             key="GridColumnSizer"
                             width={width}
                         >
-                            {({ adjustedWidth, getColumnWidth, registerChild }) => (
+                            {({
+                                adjustedWidth,
+                                getColumnWidth,
+                                registerChild,
+                            }) => (
                                 <div
                                     className={"styles.GridContainer"}
                                     style={{
@@ -494,7 +570,9 @@ export class ColumnSizerExample extends PureComponent<any, any> {
                                         columnWidth={getColumnWidth}
                                         columnCount={columnCount}
                                         height={50}
-                                        noContentRenderer={this._noContentRenderer}
+                                        noContentRenderer={
+                                            this._noContentRenderer
+                                        }
                                         cellRenderer={this._cellRenderer}
                                         rowHeight={50}
                                         rowCount={1}
@@ -514,7 +592,8 @@ export class ColumnSizerExample extends PureComponent<any, any> {
     }
 
     _cellRenderer({ columnIndex, key, rowIndex, style }: GridCellProps) {
-        const className = columnIndex === 0 ? "styles.firstCell" : "styles.cell";
+        const className =
+            columnIndex === 0 ? "styles.firstCell" : "styles.cell";
 
         return (
             <div className={className} key={key} style={style}>
@@ -563,7 +642,9 @@ export class GridExample extends PureComponent<any, any> {
                         noContentRenderer={this._noContentRenderer}
                         overscanColumnCount={overscanColumnCount}
                         overscanRowCount={overscanRowCount}
-                        rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
+                        rowHeight={
+                            useDynamicRowHeight ? this._getRowHeight : rowHeight
+                        }
                         rowCount={rowCount}
                         scrollToColumn={scrollToColumn}
                         scrollToRow={scrollToRow}
@@ -696,7 +777,9 @@ export class GridCJSExample extends PureComponent<any, any> {
                         noContentRenderer={this._noContentRenderer}
                         overscanColumnCount={overscanColumnCount}
                         overscanRowCount={overscanRowCount}
-                        rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
+                        rowHeight={
+                            useDynamicRowHeight ? this._getRowHeight : rowHeight
+                        }
                         rowCount={rowCount}
                         scrollToColumn={scrollToColumn}
                         scrollToRow={scrollToRow}
@@ -808,7 +891,11 @@ export class InfiniteLoaderExample extends PureComponent<any, any> {
         const { loadedRowCount, loadingRowCount } = this.state;
 
         return (
-            <InfiniteLoader isRowLoaded={this._isRowLoaded} loadMoreRows={this._loadMoreRows} rowCount={list.size}>
+            <InfiniteLoader
+                isRowLoaded={this._isRowLoaded}
+                loadMoreRows={this._loadMoreRows}
+                rowCount={list.size}
+            >
                 {({ onRowsRendered, registerChild }) => (
                     <AutoSizer disableHeight>
                         {({ width }) => (
@@ -846,28 +933,31 @@ export class InfiniteLoaderExample extends PureComponent<any, any> {
             loadingRowCount: loadingRowCount + increment,
         });
 
-        const timeoutId = setTimeout(() => {
-            const { loadedRowCount, loadingRowCount } = this.state;
+        const timeoutId = setTimeout(
+            () => {
+                const { loadedRowCount, loadingRowCount } = this.state;
 
-            this._timeoutIds.delete(timeoutId);
+                this._timeoutIds.delete(timeoutId);
 
-            for (let i = startIndex; i <= stopIndex; i++) {
-                loadedRowsMap[i] = STATUS_LOADED;
-            }
+                for (let i = startIndex; i <= stopIndex; i++) {
+                    loadedRowsMap[i] = STATUS_LOADED;
+                }
 
-            this.setState({
-                loadingRowCount: loadingRowCount - increment,
-                loadedRowCount: loadedRowCount + increment,
-            });
+                this.setState({
+                    loadingRowCount: loadingRowCount - increment,
+                    loadedRowCount: loadedRowCount + increment,
+                });
 
-            promiseResolver();
-        }, 1000 + Math.round(Math.random() * 2000));
+                promiseResolver();
+            },
+            1000 + Math.round(Math.random() * 2000),
+        );
 
         this._timeoutIds.add(timeoutId);
 
         let promiseResolver: () => void;
 
-        return new Promise<void>(resolve => {
+        return new Promise<void>((resolve) => {
             promiseResolver = resolve;
         });
     }
@@ -877,9 +967,15 @@ export class InfiniteLoaderExample extends PureComponent<any, any> {
         const { loadedRowsMap } = this.state;
 
         const row = list.get(index);
-        const content = loadedRowsMap[index] === STATUS_LOADED
-            ? row.name
-            : <div className={"styles.placeholder"} style={{ width: row.size }} />;
+        const content =
+            loadedRowsMap[index] === STATUS_LOADED ? (
+                row.name
+            ) : (
+                <div
+                    className={"styles.placeholder"}
+                    style={{ width: row.size }}
+                />
+            );
 
         return (
             <div className={"styles.row"} key={key} style={style}>
@@ -926,7 +1022,11 @@ export class ListExample extends PureComponent<any, any> {
                         overscanRowCount={overscanRowCount}
                         noRowsRenderer={this._noRowsRenderer}
                         rowCount={rowCount}
-                        rowHeight={useDynamicRowHeight ? this._getRowHeight : listRowHeight}
+                        rowHeight={
+                            useDynamicRowHeight
+                                ? this._getRowHeight
+                                : listRowHeight
+                        }
                         rowRenderer={this._rowRenderer}
                         scrollToIndex={scrollToIndex}
                         width={width}
@@ -955,7 +1055,11 @@ export class ListExample extends PureComponent<any, any> {
 
         if (showScrollingPlaceholder && isScrolling) {
             return (
-                <div className={"cn(styles.row, styles.isScrollingPlaceholder)"} key={key} style={style}>
+                <div
+                    className={"cn(styles.row, styles.isScrollingPlaceholder)"}
+                    key={key}
+                    style={style}
+                >
                     Scrolling...
                 </div>
             );
@@ -997,7 +1101,9 @@ export class ListExample extends PureComponent<any, any> {
                     <div className={"styles.index"}>This is row {index}</div>
                     {additionalContent}
                 </div>
-                {useDynamicRowHeight && <span className={"styles.height"}>{datum.size}px</span>}
+                {useDynamicRowHeight && (
+                    <span className={"styles.height"}>{datum.size}px</span>
+                )}
             </div>
         );
     }
@@ -1050,9 +1156,12 @@ export class GridExample2 extends PureComponent<any, any> {
     }
 
     render() {
-        const { columnWidth, height, gutterSize, windowScrollerEnabled } = this.state;
+        const { columnWidth, height, gutterSize, windowScrollerEnabled } =
+            this.state;
 
-        const child = windowScrollerEnabled ? <WindowScroller>{this._renderAutoSizer}</WindowScroller> : (
+        const child = windowScrollerEnabled ? (
+            <WindowScroller>{this._renderAutoSizer}</WindowScroller>
+        ) : (
             this._renderAutoSizer({ height })
         );
 
@@ -1062,7 +1171,9 @@ export class GridExample2 extends PureComponent<any, any> {
     _calculateColumnCount() {
         const { columnWidth, gutterSize } = this.state;
 
-        this._columnCount = Math.floor(this._width / (columnWidth + gutterSize));
+        this._columnCount = Math.floor(
+            this._width / (columnWidth + gutterSize),
+        );
     }
 
     _cellRenderer({ index, key, parent, style }: MasonryCellProps) {
@@ -1072,7 +1183,12 @@ export class GridExample2 extends PureComponent<any, any> {
         const datum = list.get(index % list.size);
 
         return (
-            <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
+            <CellMeasurer
+                cache={this._cache}
+                index={index}
+                key={key}
+                parent={parent}
+            >
                 <div
                     className={"styles.Cell"}
                     style={{
@@ -1117,7 +1233,13 @@ export class GridExample2 extends PureComponent<any, any> {
         this._masonry.recomputeCellPositions();
     }
 
-    _renderAutoSizer({ height, scrollTop }: { height: number; scrollTop?: number | undefined }) {
+    _renderAutoSizer({
+        height,
+        scrollTop,
+    }: {
+        height: number;
+        scrollTop?: number | undefined;
+    }) {
         this._height = height;
         this._scrollTop = scrollTop;
 
@@ -1260,15 +1382,35 @@ export class GridExample3 extends PureComponent<{}, any> {
 
         return (
             <ScrollSync>
-                {({ clientHeight, clientWidth, onScroll, scrollHeight, scrollLeft, scrollTop, scrollWidth }) => {
+                {({
+                    clientHeight,
+                    clientWidth,
+                    onScroll,
+                    scrollHeight,
+                    scrollLeft,
+                    scrollTop,
+                    scrollWidth,
+                }) => {
                     const x = scrollLeft / (scrollWidth - clientWidth);
                     const y = scrollTop / (scrollHeight - clientHeight);
 
-                    const leftBackgroundColor = mixColors(LEFT_COLOR_FROM, LEFT_COLOR_TO, y);
+                    const leftBackgroundColor = mixColors(
+                        LEFT_COLOR_FROM,
+                        LEFT_COLOR_TO,
+                        y,
+                    );
                     const leftColor = "#ffffff";
-                    const topBackgroundColor = mixColors(TOP_COLOR_FROM, TOP_COLOR_TO, x);
+                    const topBackgroundColor = mixColors(
+                        TOP_COLOR_FROM,
+                        TOP_COLOR_TO,
+                        x,
+                    );
                     const topColor = "#ffffff";
-                    const middleBackgroundColor = mixColors(leftBackgroundColor, topBackgroundColor, 0.5);
+                    const middleBackgroundColor = mixColors(
+                        leftBackgroundColor,
+                        topBackgroundColor,
+                        0.5,
+                    );
                     const middleColor = "#ffffff";
 
                     return (
@@ -1280,8 +1422,7 @@ export class GridExample3 extends PureComponent<{}, any> {
                                     left: 0,
                                     top: 0,
                                     color: leftColor,
-                                    backgroundColor:
-                                        `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
+                                    backgroundColor: `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
                                 }}
                             >
                                 <Grid
@@ -1302,8 +1443,7 @@ export class GridExample3 extends PureComponent<{}, any> {
                                     left: 0,
                                     top: rowHeight,
                                     color: leftColor,
-                                    backgroundColor:
-                                        `rgb(${leftBackgroundColor.r},${leftBackgroundColor.g},${leftBackgroundColor.b})`,
+                                    backgroundColor: `rgb(${leftBackgroundColor.r},${leftBackgroundColor.g},${leftBackgroundColor.b})`,
                                 }}
                             >
                                 <Grid
@@ -1326,44 +1466,59 @@ export class GridExample3 extends PureComponent<{}, any> {
                                         <div>
                                             <div
                                                 style={{
-                                                    backgroundColor:
-                                                        `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
+                                                    backgroundColor: `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
                                                     color: topColor,
                                                     height: rowHeight,
-                                                    width: width - scrollbarSize(),
+                                                    width:
+                                                        width - scrollbarSize(),
                                                 }}
                                             >
                                                 <Grid
-                                                    className={"styles.HeaderGrid"}
+                                                    className={
+                                                        "styles.HeaderGrid"
+                                                    }
                                                     columnWidth={columnWidth}
                                                     columnCount={columnCount}
                                                     height={rowHeight}
-                                                    overscanColumnCount={overscanColumnCount}
-                                                    cellRenderer={this._renderHeaderCell}
+                                                    overscanColumnCount={
+                                                        overscanColumnCount
+                                                    }
+                                                    cellRenderer={
+                                                        this._renderHeaderCell
+                                                    }
                                                     rowHeight={rowHeight}
                                                     rowCount={1}
                                                     scrollLeft={scrollLeft}
-                                                    width={width - scrollbarSize()}
+                                                    width={
+                                                        width - scrollbarSize()
+                                                    }
                                                 />
                                             </div>
                                             <div
                                                 style={{
-                                                    backgroundColor:
-                                                        `rgb(${middleBackgroundColor.r},${middleBackgroundColor.g},${middleBackgroundColor.b})`,
+                                                    backgroundColor: `rgb(${middleBackgroundColor.r},${middleBackgroundColor.g},${middleBackgroundColor.b})`,
                                                     color: middleColor,
                                                     height,
                                                     width,
                                                 }}
                                             >
                                                 <Grid
-                                                    className={"styles.BodyGrid"}
+                                                    className={
+                                                        "styles.BodyGrid"
+                                                    }
                                                     columnWidth={columnWidth}
                                                     columnCount={columnCount}
                                                     height={height}
                                                     onScroll={onScroll}
-                                                    overscanColumnCount={overscanColumnCount}
-                                                    overscanRowCount={overscanRowCount}
-                                                    cellRenderer={this._renderBodyCell}
+                                                    overscanColumnCount={
+                                                        overscanColumnCount
+                                                    }
+                                                    overscanRowCount={
+                                                        overscanRowCount
+                                                    }
+                                                    cellRenderer={
+                                                        this._renderBodyCell
+                                                    }
                                                     rowHeight={rowHeight}
                                                     rowCount={rowCount}
                                                     width={width}
@@ -1396,7 +1551,12 @@ export class GridExample3 extends PureComponent<{}, any> {
         return this._renderLeftHeaderCell(params);
     }
 
-    _renderLeftHeaderCell({ columnIndex, key, rowIndex, style }: GridCellProps) {
+    _renderLeftHeaderCell({
+        columnIndex,
+        key,
+        rowIndex,
+        style,
+    }: GridCellProps) {
         return (
             <div className={"styles.headerCell"} key={key} style={style}>
                 {`C${columnIndex}`}
@@ -1417,10 +1577,10 @@ function hexToRgb(hex: string) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
         ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16),
-        }
+              r: parseInt(result[1], 16),
+              g: parseInt(result[2], 16),
+              b: parseInt(result[3], 16),
+          }
         : null;
 }
 
@@ -1475,7 +1635,8 @@ export class TableExample extends PureComponent<{}, any> {
         const { list } = this.context;
         const sortedList = list;
 
-        const rowGetter = ({ index }: Index) => this._getDatum(sortedList, index);
+        const rowGetter = ({ index }: Index) =>
+            this._getDatum(sortedList, index);
 
         return (
             <div>
@@ -1490,7 +1651,11 @@ export class TableExample extends PureComponent<{}, any> {
                             noRowsRenderer={this._noRowsRenderer}
                             overscanRowCount={overscanRowCount}
                             rowClassName={this._rowClassName}
-                            rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
+                            rowHeight={
+                                useDynamicRowHeight
+                                    ? this._getRowHeight
+                                    : rowHeight
+                            }
                             rowGetter={rowGetter}
                             rowCount={rowCount}
                             scrollToIndex={scrollToIndex}
@@ -1502,7 +1667,11 @@ export class TableExample extends PureComponent<{}, any> {
                             {!hideIndexRow && (
                                 <Column
                                     label="Index"
-                                    cellDataGetter={({ columnData, dataKey, rowData }) => rowData.index}
+                                    cellDataGetter={({
+                                        columnData,
+                                        dataKey,
+                                        rowData,
+                                    }) => rowData.index}
                                     dataKey="index"
                                     disableSort={!this._isSortEnabled()}
                                     defaultSortDirection={SortDirection.DESC}
@@ -1522,7 +1691,13 @@ export class TableExample extends PureComponent<{}, any> {
                                 label="The description label is really long so that it will be truncated"
                                 dataKey="random"
                                 className={"styles.exampleColumn"}
-                                cellRenderer={({ cellData, columnData, dataKey, rowData, rowIndex }) => cellData}
+                                cellRenderer={({
+                                    cellData,
+                                    columnData,
+                                    dataKey,
+                                    rowData,
+                                    rowIndex,
+                                }) => cellData}
                                 flexGrow={1}
                             />
                         </Table>
@@ -1542,11 +1717,20 @@ export class TableExample extends PureComponent<{}, any> {
         return this._getDatum(list, index).size;
     }
 
-    _headerRenderer({ columnData, dataKey, disableSort, label, sortBy, sortDirection }: TableHeaderProps) {
+    _headerRenderer({
+        columnData,
+        dataKey,
+        disableSort,
+        label,
+        sortBy,
+        sortDirection,
+    }: TableHeaderProps) {
         return (
             <div>
                 Full Name
-                {sortBy === dataKey && <SortIndicator sortDirection={sortDirection} />}
+                {sortBy === dataKey && (
+                    <SortIndicator sortDirection={sortDirection} />
+                )}
             </div>
         );
     }
@@ -1570,7 +1754,13 @@ export class TableExample extends PureComponent<{}, any> {
         }
     }
 
-    _sort({ sortBy, sortDirection }: { sortBy: string; sortDirection: SortDirectionType }) {
+    _sort({
+        sortBy,
+        sortDirection,
+    }: {
+        sortBy: string;
+        sortDirection: SortDirectionType;
+    }) {
         this.setState({ sortBy, sortDirection });
     }
 }
@@ -1598,8 +1788,18 @@ export class DynamicHeightTableColumnExample extends PureComponent<any, any> {
                 rowCount={1000}
                 width={width}
             >
-                <Column className={"styles.tableColumn"} dataKey="name" label="Name" width={125} />
-                <Column className={"styles.tableColumn"} dataKey="color" label="Color" width={75} />
+                <Column
+                    className={"styles.tableColumn"}
+                    dataKey="name"
+                    label="Name"
+                    width={125}
+                />
+                <Column
+                    className={"styles.tableColumn"}
+                    dataKey="color"
+                    label="Color"
+                    width={75}
+                />
                 <Column
                     width={width - 200}
                     dataKey="random"
@@ -1656,7 +1856,12 @@ export class WindowScrollerExample extends PureComponent<{}, any> {
 
         return (
             <div className={"styles.WindowScrollerWrapper"}>
-                <WindowScroller ref={this._setRef} scrollElement={isScrollingCustomElement ? customElement : null}>
+                <WindowScroller
+                    ref={this._setRef}
+                    scrollElement={
+                        isScrollingCustomElement ? customElement : null
+                    }
+                >
                     {({ height, isScrolling, scrollTop, onChildScroll }) => (
                         <AutoSizer disableHeight>
                             {({ width }) => (
@@ -1669,11 +1874,12 @@ export class WindowScrollerExample extends PureComponent<{}, any> {
                                     overscanRowCount={2}
                                     rowCount={list.size}
                                     rowHeight={30}
-                                    rowRenderer={params =>
+                                    rowRenderer={(params) =>
                                         this._rowRenderer({
                                             ...params,
                                             isScrolling,
-                                        })}
+                                        })
+                                    }
                                     scrollTop={scrollTop}
                                     width={width}
                                 />
@@ -1701,7 +1907,12 @@ export class WindowScrollerExample extends PureComponent<{}, any> {
     }
 }
 
-import { GridCellProps, GridCellRangeProps, SortDirectionType, SortParams } from "react-virtualized";
+import {
+    GridCellProps,
+    GridCellRangeProps,
+    SortDirectionType,
+    SortParams,
+} from "react-virtualized";
 
 export class GridCellRangeRendererExample extends PureComponent<{}, any> {
     state = {
@@ -1713,7 +1924,8 @@ export class GridCellRangeRendererExample extends PureComponent<{}, any> {
     };
 
     render() {
-        const { columnCount, columnWidth, height, rowHeight, rowCount } = this.state;
+        const { columnCount, columnWidth, height, rowHeight, rowCount } =
+            this.state;
 
         return (
             <Grid
@@ -1755,13 +1967,25 @@ export class GridCellRangeRendererExample extends PureComponent<{}, any> {
         const renderedCells: React.ReactNode[] = [];
         const style: React.CSSProperties = {};
 
-        for (let rowIndex = rowStartIndex; rowIndex <= rowStopIndex; rowIndex++) {
+        for (
+            let rowIndex = rowStartIndex;
+            rowIndex <= rowStopIndex;
+            rowIndex++
+        ) {
             // This contains :offset (top) and :size (height) information for the cell
-            const rowDatum = rowSizeAndPositionManager.getSizeAndPositionOfCell(rowIndex);
+            const rowDatum =
+                rowSizeAndPositionManager.getSizeAndPositionOfCell(rowIndex);
 
-            for (let columnIndex = columnStartIndex; columnIndex <= columnStopIndex; columnIndex++) {
+            for (
+                let columnIndex = columnStartIndex;
+                columnIndex <= columnStopIndex;
+                columnIndex++
+            ) {
                 // This contains :offset (left) and :size (width) information for the cell
-                const columnDatum = columnSizeAndPositionManager.getSizeAndPositionOfCell(columnIndex);
+                const columnDatum =
+                    columnSizeAndPositionManager.getSizeAndPositionOfCell(
+                        columnIndex,
+                    );
 
                 // Be sure to adjust cell position in case the total set of cells is too large to be supported by the browser natively.
                 // In this case, Grid will shift cells as a user scrolls to increase cell density.
@@ -1773,10 +1997,11 @@ export class GridCellRangeRendererExample extends PureComponent<{}, any> {
                 const key = `${rowIndex}-${columnIndex}`;
                 const height = rowDatum.size;
                 const width = columnDatum.size;
-                const isVisible = columnIndex >= visibleColumnIndices.start
-                    && columnIndex <= visibleColumnIndices.stop
-                    && rowIndex >= visibleRowIndices.start
-                    && rowIndex <= visibleRowIndices.stop;
+                const isVisible =
+                    columnIndex >= visibleColumnIndices.start &&
+                    columnIndex <= visibleColumnIndices.stop &&
+                    rowIndex >= visibleRowIndices.start &&
+                    rowIndex <= visibleRowIndices.stop;
 
                 // Now render your cell and additional UI as you see fit.
                 // Add all rendered children to the :renderedCells Array.

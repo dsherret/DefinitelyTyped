@@ -13,7 +13,11 @@ declare module "needle" {
 
         type ReadableStream = NodeJS.ReadableStream;
 
-        type NeedleCallback = (error: Error, response: NeedleResponse, body: any) => void;
+        type NeedleCallback = (
+            error: Error,
+            response: NeedleResponse,
+            body: any,
+        ) => void;
 
         interface RequestOptions {
             timeout?: number | undefined;
@@ -55,21 +59,61 @@ declare module "needle" {
             defaults(options?: any): void;
 
             head(url: string, callback?: NeedleCallback): ReadableStream;
-            head(url: string, options?: RequestOptions, callback?: NeedleCallback): ReadableStream;
+            head(
+                url: string,
+                options?: RequestOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
             get(url: string, callback?: NeedleCallback): ReadableStream;
-            get(url: string, options?: RequestOptions, callback?: NeedleCallback): ReadableStream;
+            get(
+                url: string,
+                options?: RequestOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            post(url: string, data: any, callback?: NeedleCallback): ReadableStream;
-            post(url: string, data: any, options?: RequestOptions, callback?: NeedleCallback): ReadableStream;
+            post(
+                url: string,
+                data: any,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            post(
+                url: string,
+                data: any,
+                options?: RequestOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            put(url: string, data: any, callback?: NeedleCallback): ReadableStream;
-            put(url: string, data: any, options?: RequestOptions, callback?: NeedleCallback): ReadableStream;
+            put(
+                url: string,
+                data: any,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            put(
+                url: string,
+                data: any,
+                options?: RequestOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            delete(url: string, data: any, callback?: NeedleCallback): ReadableStream;
-            delete(url: string, data: any, options?: RequestOptions, callback?: NeedleCallback): ReadableStream;
+            delete(
+                url: string,
+                data: any,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            delete(
+                url: string,
+                data: any,
+                options?: RequestOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            request(method: string, url: string, data: any, callback?: NeedleCallback): ReadableStream;
+            request(
+                method: string,
+                url: string,
+                data: any,
+                callback?: NeedleCallback,
+            ): ReadableStream;
             request(
                 method: string,
                 url: string,

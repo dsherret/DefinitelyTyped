@@ -41,7 +41,11 @@ declare namespace plv8 {
     function quote_ident(ident: string): string;
     function quote_nullable(nullable: any): string | null;
     function execute(sql: string, ...args: any[]): SQLRow[];
-    function elog(level: LoggingLevel, message: string, ...messages: string[]): void;
+    function elog(
+        level: LoggingLevel,
+        message: string,
+        ...messages: string[]
+    ): void;
     function find_function(name: string): (...args: any[]) => SQLRow[];
     function memory_usage(): HeapStatistics;
     function run_script(source: string, name?: string): void;
@@ -79,8 +83,18 @@ interface WindowObject {
     get_partition_row_count(): number;
     set_mark_position(position: number): void;
     rows_are_peers(pos1: number, pos2: number): boolean;
-    get_func_arg_in_partition(arg: number, position: number, seekType: SeekType, mark: boolean): any;
-    get_func_arg_in_frame(arg: number, position: number, seekType: SeekType, mark: boolean): any;
+    get_func_arg_in_partition(
+        arg: number,
+        position: number,
+        seekType: SeekType,
+        mark: boolean,
+    ): any;
+    get_func_arg_in_frame(
+        arg: number,
+        position: number,
+        seekType: SeekType,
+        mark: boolean,
+    ): any;
     get_func_arg_current(arg: number): any;
     get_partition_local(size?: number): any;
     set_partition_local(obj: any): void;

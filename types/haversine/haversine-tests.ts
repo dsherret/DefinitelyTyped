@@ -97,7 +97,11 @@ const optionsGeoJSON: haversine.Options = {
 
 haversine(startGeoJSON, endGeoJSON, optionsGeoJSON); // $ExpectType number
 haversine(startGeoJSON, endGeoJSON, { format: "geojson", unit: "nmi" }); // $ExpectType number
-haversine(startGeoJSON, endGeoJSON, { format: "geojson", unit: "nmi", threshold: 2 }); // $ExpectType boolean
+haversine(startGeoJSON, endGeoJSON, {
+    format: "geojson",
+    unit: "nmi",
+    threshold: 2,
+}); // $ExpectType boolean
 
 // @ts-expect-error
 haversine(start, end, { format: "geojson" });

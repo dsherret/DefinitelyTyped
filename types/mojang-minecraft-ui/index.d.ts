@@ -175,7 +175,11 @@ export class ModalFormData {
      * @param options
      * @param defaultValueIndex
      */
-    dropdown(label: string, options: string[], defaultValueIndex?: number): ModalFormData;
+    dropdown(
+        label: string,
+        options: string[],
+        defaultValueIndex?: number,
+    ): ModalFormData;
     /**
      * @remarks
      * Adds an icon to the form using a graphic resource from a
@@ -216,7 +220,11 @@ export class ModalFormData {
      * @param placeholderText
      * @param defaultValue
      */
-    textField(label: string, placeholderText: string, defaultValue?: string): ModalFormData;
+    textField(
+        label: string,
+        placeholderText: string,
+        defaultValue?: string,
+    ): ModalFormData;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.

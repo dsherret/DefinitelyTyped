@@ -1,4 +1,6 @@
-import NavigationMenuPanel, { NavigationMenuPanelOptions } from "./navigation-menu-panel";
+import NavigationMenuPanel, {
+    NavigationMenuPanelOptions,
+} from "./navigation-menu-panel";
 
 interface ProductSwitcherOptions extends NavigationMenuPanelOptions {
     selectorInit: string;
@@ -8,7 +10,10 @@ interface ProductSwitcherOptions extends NavigationMenuPanelOptions {
 }
 
 declare class ProductSwitcher extends NavigationMenuPanel {
-    constructor(element: HTMLElement, options?: Partial<ProductSwitcherOptions>);
+    constructor(
+        element: HTMLElement,
+        options?: Partial<ProductSwitcherOptions>,
+    );
     current: string;
     static SELECT_NONE: string;
     triggerButtonIds: Set<unknown>;

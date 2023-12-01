@@ -55,7 +55,10 @@ declare class InCallManager {
 
     chooseAudioRoute(
         route: "EARPIECE" | "SPEAKER_PHONE" | "WIRED_HEADSET" | "BLUETOOTH",
-    ): Promise<{ availableAudioDeviceList: string; selectedAudioDevice: string }>;
+    ): Promise<{
+        availableAudioDeviceList: string;
+        selectedAudioDevice: string;
+    }>;
 
     requestAudioFocus(): Promise<string | undefined>;
 

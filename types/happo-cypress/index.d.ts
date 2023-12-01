@@ -32,7 +32,9 @@ declare global {
     namespace Cypress {
         interface Chainable {
             happoScreenshot(options?: HappoScreenshotOptions): void;
-            happoHideDynamicElements(options?: HappoHideDynamicElementsOptions): void;
+            happoHideDynamicElements(
+                options?: HappoHideDynamicElementsOptions,
+            ): void;
         }
     }
 }

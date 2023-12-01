@@ -11,7 +11,11 @@
  *
  * @returns Lc (lightness contrast) as a numeric value within ± 127
  */
-export function APCAcontrast(txtY: number, bgY: number, places?: number): number | string;
+export function APCAcontrast(
+    txtY: number,
+    bgY: number,
+    places?: number,
+): number | string;
 
 /**
  * @param [rgb]

@@ -14,5 +14,5 @@ const pattern = Trianglify({
 });
 
 const svg = pattern.svg({ includeNamespace: true });
-const result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + svg.outerHTML;
+const result = '<?xml version="1.0" encoding="UTF-8"?>\n' + svg.outerHTML;
 console.log(result);

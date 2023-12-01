@@ -37,7 +37,12 @@ function expectParsed(s: string | Buffer, evsExpected: any[]) {
     }
 }
 
-function expectWithParserAndStep(s: string | Buffer, evsExpected: any[], p: expat.Parser, step: number) {
+function expectWithParserAndStep(
+    s: string | Buffer,
+    evsExpected: any[],
+    p: expat.Parser,
+    step: number,
+) {
     const evsReceived: any[] = [];
     p.addListener("startElement", (name, attrs) => {
         evsReceived.push(["startElement", name, attrs]);
@@ -63,9 +68,29 @@ function expectWithParserAndStep(s: string | Buffer, evsExpected: any[], p: expa
     p.addListener("endCdata", () => {
         evsReceived.push(["endCdata"]);
     });
-    p.addListener("entityDecl", (entityName, isParameterEntity, value, base, systemId, publicId, notationName) => {
-        evsReceived.push(["entityDecl", entityName, isParameterEntity, value, base, systemId, publicId, notationName]);
-    });
+    p.addListener(
+        "entityDecl",
+        (
+            entityName,
+            isParameterEntity,
+            value,
+            base,
+            systemId,
+            publicId,
+            notationName,
+        ) => {
+            evsReceived.push([
+                "entityDecl",
+                entityName,
+                isParameterEntity,
+                value,
+                base,
+                systemId,
+                publicId,
+                notationName,
+            ]);
+        },
+    );
     p.addListener("error", (e) => {
         evsReceived.push(["error", e]);
     });
@@ -86,29 +111,60 @@ function expectWithParserAndStep(s: string | Buffer, evsExpected: any[], p: expa
 describe("node-expat", () => {
     // single elements
     it("should parse simple element", () => {
-        expectParsed("<r/>", [["startElement", "r", {}], ["endElement", "r"]]);
+        expectParsed("<r/>", [
+            ["startElement", "r", {}],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with attribute", () => {
-        expectParsed("<r foo='bar'/>", [["startElement", "r", { foo: "bar" }], ["endElement", "r"]]);
+        expectParsed("<r foo='bar'/>", [
+            ["startElement", "r", { foo: "bar" }],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with differently quoted attributes", () => {
-        expectParsed("<r foo='bar' baz=\"quux\" test=\"tset\"/>", [["startElement", "r", {
-            foo: "bar",
-            baz: "quux",
-            test: "tset",
-        }], ["endElement", "r"]]);
+        expectParsed('<r foo=\'bar\' baz="quux" test="tset"/>', [
+            [
+                "startElement",
+                "r",
+                {
+                    foo: "bar",
+                    baz: "quux",
+                    test: "tset",
+                },
+            ],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with namespaces", () => {
-        expectParsed("<r xmlns='http://localhost/' xmlns:x=\"http://example.com/\"></r>", [["startElement", "r", {
-            xmlns: "http://localhost/",
-            "xmlns:x": "http://example.com/",
-        }], ["endElement", "r"]]);
+        expectParsed(
+            "<r xmlns='http://localhost/' xmlns:x=\"http://example.com/\"></r>",
+            [
+                [
+                    "startElement",
+                    "r",
+                    {
+                        xmlns: "http://localhost/",
+                        "xmlns:x": "http://example.com/",
+                    },
+                ],
+                ["endElement", "r"],
+            ],
+        );
     });
     it("should parse single element with text content", () => {
-        expectParsed("<r>foo</r>", [["startElement", "r", {}], ["text", "foo"], ["endElement", "r"]]);
+        expectParsed("<r>foo</r>", [
+            ["startElement", "r", {}],
+            ["text", "foo"],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with text content and line break", () => {
-        expectParsed("<r>foo\nbar</r>", [["startElement", "r", {}], ["text", "foo\nbar"], ["endElement", "r"]]);
+        expectParsed("<r>foo\nbar</r>", [
+            ["startElement", "r", {}],
+            ["text", "foo\nbar"],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with CDATA content", () => {
         expectParsed("<r><![CDATA[<greeting>Hello, world!</greeting>]]></r>", [
@@ -120,24 +176,33 @@ describe("node-expat", () => {
         ]);
     });
     it("should parse single element with entity text", () => {
-        expectParsed("<r>foo&amp;bar</r>", [["startElement", "r", {}], ["text", "foo&bar"], ["endElement", "r"]]);
+        expectParsed("<r>foo&amp;bar</r>", [
+            ["startElement", "r", {}],
+            ["text", "foo&bar"],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse single element with umlaut text", () => {
-        expectParsed("<r>ß</r>", [["startElement", "r", {}], ["text", "ß"], ["endElement", "r"]]);
+        expectParsed("<r>ß</r>", [
+            ["startElement", "r", {}],
+            ["text", "ß"],
+            ["endElement", "r"],
+        ]);
     });
     it("should parse from buffer", () => {
-        expectParsed(Buffer.from("<foo>bar</foo>"), [["startElement", "foo", {}], ["text", "bar"], [
-            "endElement",
-            "foo",
-        ]]);
+        expectParsed(Buffer.from("<foo>bar</foo>"), [
+            ["startElement", "foo", {}],
+            ["text", "bar"],
+            ["endElement", "foo"],
+        ]);
     });
 
     // entity declaration
     it("should parse a billion laughs entity declaration", () => {
         expectParsed(
-            "<!DOCTYPE b [<!ELEMENT b (#PCDATA)>"
-                + "<!ENTITY l0 \"ha\"><!ENTITY l1 \"&l0;&l0;\"><!ENTITY l2 \"&l1;&l1;\">"
-                + "]><b>&l2;</b>",
+            "<!DOCTYPE b [<!ELEMENT b (#PCDATA)>" +
+                '<!ENTITY l0 "ha"><!ENTITY l1 "&l0;&l0;"><!ENTITY l2 "&l1;&l1;">' +
+                "]><b>&l2;</b>",
             [
                 ["entityDecl", "l0", false, "ha", null, null, null, null],
                 ["entityDecl", "l1", false, "&l0;&l0;", null, null, null, null],
@@ -151,13 +216,17 @@ describe("node-expat", () => {
 
     // processing instruction
     it("should parse processing instruction with parameters", () => {
-        expectParsed("<?i like xml?>", [["processingInstruction", "i", "like xml"]]);
+        expectParsed("<?i like xml?>", [
+            ["processingInstruction", "i", "like xml"],
+        ]);
     });
     it("should parse simple processing instruction", () => {
         expectParsed("<?dragons?>", [["processingInstruction", "dragons", ""]]);
     });
     it("should parse XML declaration with encoding", () => {
-        expectParsed("<?xml version='1.0' encoding='UTF-8'?>", [["xmlDecl", "1.0", "UTF-8", true]]);
+        expectParsed("<?xml version='1.0' encoding='UTF-8'?>", [
+            ["xmlDecl", "1.0", "UTF-8", true],
+        ]);
     });
     it("should parse XML declaration", () => {
         expectParsed("<?xml version='1.0'?>", [["xmlDecl", "1.0", null, true]]);
@@ -177,8 +246,8 @@ describe("node-expat", () => {
             for (let i = 0; i < 256; i++) {
                 map[i] = i;
             }
-            map[165] = 0x00A5; // ¥
-            map[128] = 0x20AC; // €
+            map[165] = 0x00a5; // ¥
+            map[128] = 0x20ac; // €
             map[36] = 0x0024; // $
             p.setUnknownEncoding(map);
             expect(encodingName).toEqual("Windows-1252");
@@ -199,7 +268,10 @@ describe("node-expat", () => {
         const p = new expat.Parser();
         p.addListener("unknownEncoding", (name) => {
             const encodingName = name;
-            const iconv = new Iconv(encodingName + "//TRANSLIT//IGNORE", "UTF-8");
+            const iconv = new Iconv(
+                encodingName + "//TRANSLIT//IGNORE",
+                "UTF-8",
+            );
             const map = [];
 
             for (let i = 0; i < 256; i++) {
@@ -296,7 +368,12 @@ describe("node-expat", () => {
     });
     it("should reset: parse twice with doc error", () => {
         const p = new expat.Parser("UTF-8");
-        expectWithParserAndStep("</end>", [["error", "not well-formed (invalid token)"]], p, 1000);
+        expectWithParserAndStep(
+            "</end>",
+            [["error", "not well-formed (invalid token)"]],
+            p,
+            1000,
+        );
         p.reset();
         expectWithParserAndStep(
             "<restart><third>moretext</third><fourth /></restart>",
@@ -351,7 +428,9 @@ describe("node-expat", () => {
             // finished parsing
             if (name === "wrap") {
                 // test elements received (count. naming, order)
-                expect(JSON.stringify(received)).toEqual(JSON.stringify(expected));
+                expect(JSON.stringify(received)).toEqual(
+                    JSON.stringify(expected),
+                );
 
                 // test timing (+-20%)
                 const now = new Date();
@@ -373,7 +452,11 @@ describe("node-expat", () => {
         expect(p.parse("")).toBeFalsy();
     });
     it("should handle escaping of ampersands", () => {
-        expectParsed("<e>foo &amp; bar</e>", [["startElement", "e", {}], ["text", "foo & bar"], ["endElement", "e"]]);
+        expectParsed("<e>foo &amp; bar</e>", [
+            ["startElement", "e", {}],
+            ["text", "foo & bar"],
+            ["endElement", "e"],
+        ]);
     });
     it("should parse twice the same document with the same parser instance without error", () => {
         const p = new expat.Parser("UTF-8");
@@ -445,7 +528,9 @@ describe("node-expat", () => {
             fail(error);
         });
 
-        const mystic = fs.createReadStream(path.join(__dirname, "mystic-library.xml"));
+        const mystic = fs.createReadStream(
+            path.join(__dirname, "mystic-library.xml"),
+        );
         mystic.pipe(streamParser);
     });
     it("should handle startElement and endElement events", () => {

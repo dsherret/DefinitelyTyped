@@ -32,7 +32,11 @@ declare class TradeOfferManager extends EventEmitter {
      * @param callback Will be called once the API key is retrieved and the module is ready for use. The first argument will be null on success or an Error object on failure.
      * You'll get an Access Denied error if your account is limited.
      */
-    setCookies(cookies: string[], familyViewPin?: string, callback?: (err: Error | null) => void): void;
+    setCookies(
+        cookies: string[],
+        familyViewPin?: string,
+        callback?: (err: Error | null) => void,
+    ): void;
     setCookies(cookies: string[], callback?: (err: Error | null) => void): void;
 
     /**
@@ -71,7 +75,10 @@ declare class TradeOfferManager extends EventEmitter {
      */
     getOffer(
         id: number | string,
-        callback: (err: TradeOfferManager.EResultError | null, offer: TradeOffer) => void,
+        callback: (
+            err: TradeOfferManager.EResultError | null,
+            offer: TradeOffer,
+        ) => void,
     ): void;
 
     /**
@@ -83,7 +90,11 @@ declare class TradeOfferManager extends EventEmitter {
      */
     getOffers(
         filter: number,
-        callback: (err: TradeOfferManager.EResultError | null, sent: TradeOffer[], received: TradeOffer[]) => void,
+        callback: (
+            err: TradeOfferManager.EResultError | null,
+            sent: TradeOffer[],
+            received: TradeOffer[],
+        ) => void,
     ): void;
 
     /**
@@ -98,7 +109,11 @@ declare class TradeOfferManager extends EventEmitter {
     getOffers(
         filter: number,
         historicalCutoff: Date | null,
-        callback: (err: TradeOfferManager.EResultError | null, sent: TradeOffer[], received: TradeOffer[]) => void,
+        callback: (
+            err: TradeOfferManager.EResultError | null,
+            sent: TradeOffer[],
+            received: TradeOffer[],
+        ) => void,
     ): void;
 
     /**
@@ -205,7 +220,10 @@ declare class TradeOfferManager extends EventEmitter {
      * @param callback Called on completion with an Error on failure (null on success), an array of TradeOffer objects for offers you sent which contain the item(s),
      * and an array of TradeOffer objects for offers you received which contain the item(s)
      */
-    getOffersContainingItem(items: CEconItem | CEconItem[], callback: TradeOfferManager.OfferCallback): void;
+    getOffersContainingItem(
+        items: CEconItem | CEconItem[],
+        callback: TradeOfferManager.OfferCallback,
+    ): void;
 
     /**
      * Immediately performs a poll. Can be used even if timed polling is disabled to poll on your own schedule. Don't worry about spamming this method,
@@ -242,27 +260,27 @@ declare namespace TradeOfferManager {
 
     interface ETradeOfferState {
         /* Invalid. */
-        "Invalid": 1;
+        Invalid: 1;
         /* This trade offer has been sent, neither party has acted on it yet. */
-        "Active": 2;
+        Active: 2;
         /* The trade offer was accepted by the recipient and items were exchanged. */
-        "Accepted": 3;
+        Accepted: 3;
         /* The recipient made a counter offer */
-        "Countered": 4;
+        Countered: 4;
         /* The trade offer was not accepted before the expiration date */
-        "Expired": 5;
+        Expired: 5;
         /* The sender cancelled the offer */
-        "Canceled": 6;
+        Canceled: 6;
         /* The recipient declined the offer */
-        "Declined": 7;
+        Declined: 7;
         /* Some of the items in the offer are no longer available (indicated by the missing flag in the output) */
-        "InvalidItems": 8;
+        InvalidItems: 8;
         /* The offer hasn't been sent yet and is awaiting further confirmation */
-        "CreatedNeedsConfirmation": 9;
+        CreatedNeedsConfirmation: 9;
         /* Either party canceled the offer via email/mobile confirmation */
-        "CanceledBySecondFactor": 10;
+        CanceledBySecondFactor: 10;
         /* The trade has been placed on hold */
-        "InEscrow": 11;
+        InEscrow: 11;
 
         "1": "Invalid";
         "2": "Active";
@@ -617,7 +635,10 @@ declare namespace TradeOfferManager {
          * @param offer TradeOffer object for the canceled offer
          * @param reason A string containing the reason why it was canceled ("cancelTime" - The cancelTime timeout was reached, "cancelOfferCount" - The cancelOfferCount limit was reached)
          */
-        sentOfferCanceled: (offer: TradeOffer, reason: "cancelTime" | "cancelOfferCount") => void;
+        sentOfferCanceled: (
+            offer: TradeOffer,
+            reason: "cancelTime" | "cancelOfferCount",
+        ) => void;
 
         /**
          * Emitted when the manager automatically cancels an offer due to your pendingCancelTime constructor option. sentOfferChanged will also be emitted on next poll.
@@ -685,7 +706,11 @@ declare namespace TradeOfferManager {
          * @param sent An array of TradeOffer objects for offers we sent
          * @param received An array of TradeOffer objects for offers we received
          */
-        offerList: (filter: number, sent: TradeOffer[], received: TradeOffer[]) => void;
+        offerList: (
+            filter: number,
+            sent: TradeOffer[],
+            received: TradeOffer[],
+        ) => void;
     }
 
     interface TradeOfferManagerOptions {

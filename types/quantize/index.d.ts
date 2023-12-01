@@ -52,6 +52,9 @@ declare namespace quantize {
     }
 }
 
-declare function quantize(pixels: quantize.RgbPixel[], colorCount: number): quantize.ColorMap | false;
+declare function quantize(
+    pixels: quantize.RgbPixel[],
+    colorCount: number,
+): quantize.ColorMap | false;
 
 export = quantize;

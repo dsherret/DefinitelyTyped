@@ -16,7 +16,11 @@ declare module "angular" {
              * @param {String} delimiter - The delimiter to use to separate the namespace and the keys.
              * @returns {INamespacedStoreService}
              */
-            getNamespacedStore(namespace: string, storage?: string, delimiter?: string): INamespacedStoreService;
+            getNamespacedStore(
+                namespace: string,
+                storage?: string,
+                delimiter?: string,
+            ): INamespacedStoreService;
         }
 
         interface INamespacedStoreService {

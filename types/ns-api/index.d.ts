@@ -7,7 +7,10 @@ interface nsApi {
      *
      * @param station - Station ID
      */
-    vertrektijden(station: string, callback: (err: string, data: {}) => void): void;
+    vertrektijden(
+        station: string,
+        callback: (err: string, data: {}) => void,
+    ): void;
 
     /**
      * Reisadvies - travel advise

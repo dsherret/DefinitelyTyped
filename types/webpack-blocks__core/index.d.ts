@@ -34,22 +34,36 @@ export interface Util {
 
 export namespace Core {
     function createConfig(configSetters: Block[]): Block;
-    function createConfig(initialContext: InitialContext, configSetters: Block[]): Block;
+    function createConfig(
+        initialContext: InitialContext,
+        configSetters: Block[],
+    ): Block;
     function group(configSetters: Block[]): Block;
     function env(envName: string, configSetters: Block[]): Block;
     function match(test: string | string[], configSetters: Block[]): Block;
-    function match(test: string | string[], options: MatchOptions, configSetters: Block[]): Block;
+    function match(
+        test: string | string[],
+        options: MatchOptions,
+        configSetters: Block[],
+    ): Block;
     function when(condition: boolean, configSetters: Block[]): Block;
 }
 
 export function createConfig(configSetters: Block[]): Block;
-export function createConfig(initialContext: InitialContext, configSetters: Block[]): Block;
+export function createConfig(
+    initialContext: InitialContext,
+    configSetters: Block[],
+): Block;
 
 export function group(configSetters: Block[]): Block;
 
 export function env(envName: string, configSetters: Block[]): Block;
 
 export function match(test: string | string[], configSetters: Block[]): Block;
-export function match(test: string | string[], options: MatchOptions, configSetters: Block[]): Block;
+export function match(
+    test: string | string[],
+    options: MatchOptions,
+    configSetters: Block[],
+): Block;
 
 export function when(condition: boolean, configSetters: Block[]): Block;

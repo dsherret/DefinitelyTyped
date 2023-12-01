@@ -47,7 +47,7 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
-          commit_author: 'TypeScript Bot <typescriptbot@microsoft.com>'
-          commit_message: '🤖 dprint fmt'
-          commit_user_email: 'typescriptbot@microsoft.com'
-          commit_user_name: 'TypeScript Bot'
+          commit_author: "TypeScript Bot <typescriptbot@microsoft.com>"
+          commit_message: "🤖 dprint fmt"
+          commit_user_email: "typescriptbot@microsoft.com"
+          commit_user_name: "TypeScript Bot"

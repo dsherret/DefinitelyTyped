@@ -6,7 +6,7 @@ var is = {
 
 // TreeView
 $(() => {
-    var treeview = <kendo.ui.TreeView> $("#treeview").data("kendoTreeView");
+    var treeview = <kendo.ui.TreeView>$("#treeview").data("kendoTreeView");
 
     is.string(treeview.text("#foo"));
 
@@ -15,7 +15,7 @@ $(() => {
 
 // Window
 $(() => {
-    var window = <kendo.ui.Window> $("#window").data("kendoWindow");
+    var window = <kendo.ui.Window>$("#window").data("kendoWindow");
 
     var dom = $("<em>Foo</em>");
 
@@ -25,13 +25,17 @@ $(() => {
 // Switch
 $(() => {
     var switchId = "switch";
-    var switchElement = $(`<div id="${switchId}-1"></div>`).kendoSwitch().appendTo($(document.body));
-    switchElement = $(`<div id="${switchId}-2"></div>`).kendoSwitch({
-        name: `${switchId}-2`,
-        messages: { checked: "Yes", unchecked: "No" },
-    }).appendTo($(document.body));
+    var switchElement = $(`<div id="${switchId}-1"></div>`)
+        .kendoSwitch()
+        .appendTo($(document.body));
+    switchElement = $(`<div id="${switchId}-2"></div>`)
+        .kendoSwitch({
+            name: `${switchId}-2`,
+            messages: { checked: "Yes", unchecked: "No" },
+        })
+        .appendTo($(document.body));
 
-    var $switch = <kendo.ui.Switch> $(switchElement).data("kendoSwitch");
+    var $switch = <kendo.ui.Switch>$(switchElement).data("kendoSwitch");
     $switch.readonly(true);
 });
 
@@ -47,6 +51,9 @@ $(() => {
             }),
         ],
     });
-    const occurrences = dataSource.expand(new Date("2021/4/1"), new Date("2021/5/1"));
+    const occurrences = dataSource.expand(
+        new Date("2021/4/1"),
+        new Date("2021/5/1"),
+    );
     const firstOccurence = occurrences[0];
 });

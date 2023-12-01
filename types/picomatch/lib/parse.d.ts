@@ -1,4 +1,7 @@
-declare function parse(input: string, options: { maxLength?: number | undefined }): parse.ParseState;
+declare function parse(
+    input: string,
+    options: { maxLength?: number | undefined },
+): parse.ParseState;
 
 declare namespace parse {
     interface Token {

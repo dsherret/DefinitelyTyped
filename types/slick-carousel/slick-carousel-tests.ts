@@ -120,12 +120,15 @@ $(".add-remove").slick({
     slidesToShow: 3,
     slidesToScroll: 3,
 });
-$(".js-add-slide").on("click", function() {
+$(".js-add-slide").on("click", function () {
     slideIndex++;
-    $(".add-remove").slick("slickAdd", "<div><h3>" + slideIndex + "</h3></div>");
+    $(".add-remove").slick(
+        "slickAdd",
+        "<div><h3>" + slideIndex + "</h3></div>",
+    );
 });
 
-$(".js-remove-slide").on("click", function() {
+$(".js-remove-slide").on("click", function () {
     $(".add-remove").slick("slickRemove", slideIndex - 1);
     if (slideIndex !== 0) {
         slideIndex--;
@@ -139,7 +142,7 @@ $(".filtering").slick({
 
 var filtered = false;
 
-$(".js-filter").on("click", function() {
+$(".js-filter").on("click", function () {
     if (filtered === false) {
         $(".filtering").slick("slickFilter", ":even");
         $(this).text("Unfilter Slides");
@@ -190,8 +193,8 @@ $("#diaporama").slick({
     asNavFor: "#slideshow",
     appendArrows: "",
     appendDots: "",
-    prevArrow: "<button type=\"button\" class=\"slick-prev\">Previous</button>",
-    nextArrow: "<button type=\"button\" class=\"slick-next\">Next</button>",
+    prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+    nextArrow: '<button type="button" class="slick-next">Next</button>',
     centerMode: false,
     centerPadding: "50px",
     cssEase: "ease",
@@ -242,23 +245,31 @@ $("#diaporama").slick({
 // $ExpectedType: JQuerySlick
 $("#diaporama").slick("getSlick");
 
-$("#diaporama").on("beforeChange", function(event, slick: JQuerySlick, currentSlide: number, nextSlide: number) {
-    slick.defaults; // $ExpectedType JQuerySlickOptions
-    slick.options; // $ExpectedType JQuerySlickOptions
-    slick.originalSettings; // $ExpectedType JQuerySlickOptions
-    slick.initials; // $ExpectedType JQuerySlickInitials
+$("#diaporama").on(
+    "beforeChange",
+    function (
+        event,
+        slick: JQuerySlick,
+        currentSlide: number,
+        nextSlide: number,
+    ) {
+        slick.defaults; // $ExpectedType JQuerySlickOptions
+        slick.options; // $ExpectedType JQuerySlickOptions
+        slick.originalSettings; // $ExpectedType JQuerySlickOptions
+        slick.initials; // $ExpectedType JQuerySlickInitials
 
-    // Some properties of `initials` object (that are merged to the Slick instance)
-    slick.animating; // $ExpectedType boolean
-    slick.initials.animating; // $ExpectedType boolean
-    slick.dragging; // $ExpectedType boolean
-    slick.initials.dragging; // $ExpectedType boolean
-    slick.scrolling; // $ExpectedType boolean
-    slick.initials.scrolling; // $ExpectedType boolean
-    slick.sliding; // $ExpectedType boolean
-    slick.initials.sliding; // $ExpectedType boolean
-    slick.swiping; // $ExpectedType boolean
-    slick.initials.swiping; // $ExpectedType boolean
-});
+        // Some properties of `initials` object (that are merged to the Slick instance)
+        slick.animating; // $ExpectedType boolean
+        slick.initials.animating; // $ExpectedType boolean
+        slick.dragging; // $ExpectedType boolean
+        slick.initials.dragging; // $ExpectedType boolean
+        slick.scrolling; // $ExpectedType boolean
+        slick.initials.scrolling; // $ExpectedType boolean
+        slick.sliding; // $ExpectedType boolean
+        slick.initials.sliding; // $ExpectedType boolean
+        slick.swiping; // $ExpectedType boolean
+        slick.initials.swiping; // $ExpectedType boolean
+    },
+);
 
 $("#diaporama").slick("slickGoTo", 0, true);

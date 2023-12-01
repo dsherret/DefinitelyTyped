@@ -1,6 +1,10 @@
 import requireDirectory = require("require-directory");
 import { defaults } from "require-directory";
-import { CheckPathFn, RequireDirectoryOptions, RequireDirectoryResult } from "require-directory";
+import {
+    CheckPathFn,
+    RequireDirectoryOptions,
+    RequireDirectoryResult,
+} from "require-directory";
 
 const requiredModules1 = requireDirectory(module);
 const requiredModules2 = requireDirectory(module, "subdirectory");
@@ -35,7 +39,8 @@ const requiredModules4 = requireDirectory(module, {
     extensions: ["js", "json", "ts"],
     recurse: false,
     rename: (name) => name,
-    visit: (obj: { foo: number; bar: number }) => new TestClass(obj.foo, obj.bar),
+    visit: (obj: { foo: number; bar: number }) =>
+        new TestClass(obj.foo, obj.bar),
 });
 const someModule2 = requiredModules4["someModule"];
 if (someModule2 instanceof TestClass) {

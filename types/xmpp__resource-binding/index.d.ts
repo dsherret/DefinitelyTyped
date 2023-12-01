@@ -23,5 +23,7 @@ declare function resourceBinding<TEntity extends Entity>(
 
 declare namespace resourceBinding {
     type Resource = ResourceFn | Node;
-    type ResourceFn = (bind: (resource: Node) => Promise<string>) => Promise<void>;
+    type ResourceFn = (
+        bind: (resource: Node) => Promise<string>,
+    ) => Promise<void>;
 }

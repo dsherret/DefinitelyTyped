@@ -11,7 +11,7 @@ const candidates = [
     "Application: Install Update",
     "Install",
 ];
-const objectCandidates = candidates.map(s => ({ foo: s }));
+const objectCandidates = candidates.map((s) => ({ foo: s }));
 const options: fz.IOptions = { allowErrors: true };
 const filterOptions: fz.IFilterOptions<string> = {
     allowErrors: true,
@@ -205,6 +205,12 @@ fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", { key: 1 });
 // @ts-expect-error
 fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", { key: "invalid key" });
 // @ts-expect-error
-fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", { allowErrors: "not a boolean", key: 1 });
+fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", {
+    allowErrors: "not a boolean",
+    key: 1,
+});
 // @ts-expect-error
-fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", { allowErrors: "not a boolean", key: "title" });
+fz.filter([{ title: "Maybe" }, { title: "Me" }], "me", {
+    allowErrors: "not a boolean",
+    key: "title",
+});

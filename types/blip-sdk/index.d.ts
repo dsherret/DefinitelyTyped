@@ -26,7 +26,10 @@ export namespace BlipSdk.Extensions {
             minScore?: string,
             maxScore?: string,
         ): Promise<object>;
-        setAnalysisFeedback(id: string, analysisFeedback: object): Promise<object>;
+        setAnalysisFeedback(
+            id: string,
+            analysisFeedback: object,
+        ): Promise<object>;
         setAnalysesFeedback(analyses: object[]): Promise<object>;
 
         // Analytics (Confusion Matrix)
@@ -38,7 +41,13 @@ export namespace BlipSdk.Extensions {
         // Intents
 
         getIntent(id: string, deep?: boolean): Promise<object>;
-        getIntents(skip?: number, take?: number, deep?: boolean, name?: string, ascending?: boolean): Promise<object[]>;
+        getIntents(
+            skip?: number,
+            take?: number,
+            deep?: boolean,
+            name?: string,
+            ascending?: boolean,
+        ): Promise<object[]>;
         setIntent(intent: object): Promise<object>;
         setIntents(intents: object[]): Promise<object>;
         mergeIntent(intent: object): Promise<object>;
@@ -48,7 +57,12 @@ export namespace BlipSdk.Extensions {
 
         // Answers
 
-        getIntentAnswers(id?: string, skip?: number, take?: number, ascending?: boolean): Promise<object[]>;
+        getIntentAnswers(
+            id?: string,
+            skip?: number,
+            take?: number,
+            ascending?: boolean,
+        ): Promise<object[]>;
         setIntentAnswers(id: string, answers: object[]): Promise<object>;
         deleteIntentAnswer(id: string, answerId: string): Promise<object>;
 
@@ -61,7 +75,12 @@ export namespace BlipSdk.Extensions {
         // Entity
 
         getEntity(id: string): Promise<object>;
-        getEntities(skip?: number, take?: number, ascending?: boolean, name?: string): Promise<object[]>;
+        getEntities(
+            skip?: number,
+            take?: number,
+            ascending?: boolean,
+            name?: string,
+        ): Promise<object[]>;
         setEntity(entity: object): Promise<object>;
         deleteEntity(id: string): Promise<object>;
         deleteEntities(): Promise<object>;
@@ -69,7 +88,11 @@ export namespace BlipSdk.Extensions {
         // Model
 
         getModel(id: string): Promise<object>;
-        getModels(skip?: number, take?: number, ascending?: boolean): Promise<object[]>;
+        getModels(
+            skip?: number,
+            take?: number,
+            ascending?: boolean,
+        ): Promise<object[]>;
         getModelSummary(): Promise<object>;
         trainModel(): Promise<object>;
         publishModel(id: string): Promise<object>;
@@ -101,7 +124,10 @@ export namespace BlipSdk.Extensions {
         setContent(content: object): Promise<object>;
         setContentResult(id: string, content: object): Promise<object>;
         setContentCombination(id: string, combination: object): Promise<object>;
-        setContentCombinations(id: string, combinations: object[]): Promise<object>;
+        setContentCombinations(
+            id: string,
+            combinations: object[],
+        ): Promise<object>;
         deleteContent(id: string): Promise<object>;
     }
 }

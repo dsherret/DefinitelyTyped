@@ -24,7 +24,11 @@ export { default as MediaUpload } from "./media-upload";
 export { default as MediaUploadCheck } from "./media-upload/check";
 export { default as PanelColorSettings } from "./panel-color-settings";
 export { default as PlainText } from "./plain-text";
-export { default as RichText, RichTextShortcut, RichTextToolbarButton } from "./rich-text";
+export {
+    default as RichText,
+    RichTextShortcut,
+    RichTextToolbarButton,
+} from "./rich-text";
 export { default as URLInput } from "./url-input";
 export { default as URLInputButton } from "./url-input/button";
 export { default as URLPopover } from "./url-popover";

@@ -13,7 +13,11 @@ export declare class ResizableView {
     windowIdentity: Identity;
     resizeObserver: ResizeObserver;
     container: GoldenLayout.Container;
-    constructor(fin: Fin, { container, componentState }: ViewComponent, viewObserver: ResizeObserver);
+    constructor(
+        fin: Fin,
+        { container, componentState }: ViewComponent,
+        viewObserver: ResizeObserver,
+    );
     renderIntoComponent(): Promise<void>;
     createOrAttachView(): Promise<void>;
 }

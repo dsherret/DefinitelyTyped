@@ -22,9 +22,19 @@ import NesClient = require("nes/client");
 declare module "hapi" {
     interface Server {
         broadcast(message: any, options?: nes.ServerBroadcastOptions): void;
-        subscription(path: string, options?: nes.ServerSubscriptionOptions): void;
-        publish(path: string, message: any, options?: nes.ServerPublishOptions): void;
-        eachSocket(each: (socket: nes.Socket) => void, options?: nes.ServerEachSocketOptions): void;
+        subscription(
+            path: string,
+            options?: nes.ServerSubscriptionOptions,
+        ): void;
+        publish(
+            path: string,
+            message: any,
+            options?: nes.ServerPublishOptions,
+        ): void;
+        eachSocket(
+            each: (socket: nes.Socket) => void,
+            options?: nes.ServerEachSocketOptions,
+        ): void;
     }
 }
 
@@ -58,22 +68,40 @@ declare namespace nes {
         index?: boolean | undefined;
     }
 
-    export type ServerOnSubscribeWithParams = (socket: Socket, path: string, params: any) => Promise<any>;
-    export type ServerOnSubscribeWithoutParams = (socket: Socket, path: string) => Promise<any>;
-    export type ServerOnSubscribe = ServerOnSubscribeWithParams | ServerOnSubscribeWithoutParams;
+    export type ServerOnSubscribeWithParams = (
+        socket: Socket,
+        path: string,
+        params: any,
+    ) => Promise<any>;
+    export type ServerOnSubscribeWithoutParams = (
+        socket: Socket,
+        path: string,
+    ) => Promise<any>;
+    export type ServerOnSubscribe =
+        | ServerOnSubscribeWithParams
+        | ServerOnSubscribeWithoutParams;
 
-    export type ServerOnUnSubscribeWithParams = (socket: Socket, path: string, params: any) => void;
-    export type ServerOnUnSubscribeWithoutParams = (socket: Socket, path: string) => void;
-    export type ServerOnUnSubscribe = ServerOnUnSubscribeWithParams | ServerOnUnSubscribeWithoutParams;
+    export type ServerOnUnSubscribeWithParams = (
+        socket: Socket,
+        path: string,
+        params: any,
+    ) => void;
+    export type ServerOnUnSubscribeWithoutParams = (
+        socket: Socket,
+        path: string,
+    ) => void;
+    export type ServerOnUnSubscribe =
+        | ServerOnUnSubscribeWithParams
+        | ServerOnUnSubscribeWithoutParams;
 
     interface ServerSubscriptionOptions {
         filter?:
             | ((
-                path: string,
-                message: any,
-                options: ServerSubscriptionOptionsFilterOptions,
-                next: (isMatch: boolean, override?: any) => void,
-            ) => void)
+                  path: string,
+                  message: any,
+                  options: ServerSubscriptionOptionsFilterOptions,
+                  next: (isMatch: boolean, override?: any) => void,
+              ) => void)
             | undefined;
         auth?: boolean | ServerSubscriptionOptionsAuthOptions | undefined;
         onSubscribe?: ServerOnSubscribe | undefined;
@@ -127,7 +155,7 @@ declare namespace nes {
 
 interface NesClassExports {
     Client: {
-        new(url: string, options?: NesClient.ClientOptions): NesClient;
+        new (url: string, options?: NesClient.ClientOptions): NesClient;
     };
 }
 

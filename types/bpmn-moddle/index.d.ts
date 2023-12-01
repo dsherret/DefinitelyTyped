@@ -46,9 +46,11 @@ declare namespace BPMNModdle {
          * Attributes that aren't defined by the BPMN Spec such
          * as Camunda properties
          */
-        $attrs?: {
-            [key: string]: any;
-        } | undefined;
+        $attrs?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -530,7 +532,9 @@ declare namespace BPMNModdle {
         calledChoreographyRef: Choreography;
         participantAssociations: ParticipantAssociation[];
     }
-    interface SubChoreography extends ChoreographyActivity, FlowElementsContainer {
+    interface SubChoreography
+        extends ChoreographyActivity,
+            FlowElementsContainer {
         artifacts: Artifact[];
     }
     interface ChoreographyTask extends ChoreographyActivity {
@@ -579,7 +583,10 @@ declare namespace BPMNModdle {
         implementation: string;
         operationRef: Operation;
     }
-    interface SubProcess extends Activity, FlowElementsContainer, InteractionNode {
+    interface SubProcess
+        extends Activity,
+            FlowElementsContainer,
+            InteractionNode {
         triggeredByEvent: boolean;
         artifacts: Artifact[];
     }
@@ -898,7 +905,7 @@ declare namespace BPMNModdle {
     }
 
     interface BPMNModdleConstructor {
-        new(packages?: any, options?: Option): BPMNModdle;
+        new (packages?: any, options?: Option): BPMNModdle;
     }
 
     type ImportFn = (

@@ -6,12 +6,12 @@ interface AsyncStringGetter {
 }
 
 const taskArray: AsyncStringGetter[] = [
-    callback => {
+    (callback) => {
         setTimeout(() => {
             callback(undefined, "one");
         }, 200);
     },
-    callback => {
+    (callback) => {
         setTimeout(() => {
             callback(undefined, "two");
         }, 100);
@@ -56,12 +56,12 @@ interface AsyncNumberGetter {
 }
 
 const taskDict: Lookup<AsyncNumberGetter> = {
-    one: callback => {
+    one: (callback) => {
         setTimeout(() => {
             callback(undefined, 1);
         }, 200);
     },
-    two: callback => {
+    two: (callback) => {
         setTimeout(() => {
             callback(undefined, 2);
         }, 100);

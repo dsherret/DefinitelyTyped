@@ -281,8 +281,18 @@ export interface SedFunction {
      * @param files       The files to process.
      * @return            The new string after replacement.
      */
-    (options: string, searchRegex: string | RegExp, replacement: string, files: string[]): ShellString;
-    (options: string, searchRegex: string | RegExp, replacement: string, ...files: string[]): ShellString;
+    (
+        options: string,
+        searchRegex: string | RegExp,
+        replacement: string,
+        files: string[],
+    ): ShellString;
+    (
+        options: string,
+        searchRegex: string | RegExp,
+        replacement: string,
+        ...files: string[]
+    ): ShellString;
 
     /**
      * Reads an input string from file and performs a JavaScript `replace()`
@@ -293,8 +303,16 @@ export interface SedFunction {
      * @param files       The files to process.
      * @return            The new string after replacement.
      */
-    (searchRegex: string | RegExp, replacement: string, files: string[]): ShellString;
-    (searchRegex: string | RegExp, replacement: string, ...files: string[]): ShellString;
+    (
+        searchRegex: string | RegExp,
+        replacement: string,
+        files: string[],
+    ): ShellString;
+    (
+        searchRegex: string | RegExp,
+        replacement: string,
+        ...files: string[]
+    ): ShellString;
 }
 
 /**
@@ -323,8 +341,16 @@ export interface GrepFunction {
      * @param files The files to process.
      * @return Returns a string containing all lines of the file that match the given regex_filter.
      */
-    (options: string, regex_filter: string | RegExp, files: string[]): ShellString;
-    (options: string, regex_filter: string | RegExp, ...files: string[]): ShellString;
+    (
+        options: string,
+        regex_filter: string | RegExp,
+        files: string[],
+    ): ShellString;
+    (
+        options: string,
+        regex_filter: string | RegExp,
+        ...files: string[]
+    ): ShellString;
 
     /**
      * Reads input string from given files and returns a string containing all lines
@@ -721,7 +747,10 @@ export interface ExecFunction {
      * @return        Returns an object containing the return code and output as string,
      *                or if `{async: true}` was passed, a `ChildProcess`.
      */
-    (command: string, options: ExecOptions & { async?: false | undefined }): ShellString;
+    (
+        command: string,
+        options: ExecOptions & { async?: false | undefined },
+    ): ShellString;
 
     /**
      * Executes the given command asynchronously.
@@ -731,7 +760,10 @@ export interface ExecFunction {
      * @return        Returns an object containing the return code and output as string,
      *                or if `{async: true}` was passed, a `ChildProcess`.
      */
-    (command: string, options: ExecOptions & { async: true }): child.ChildProcess;
+    (
+        command: string,
+        options: ExecOptions & { async: true },
+    ): child.ChildProcess;
 
     /**
      * Executes the given command.
@@ -750,7 +782,11 @@ export interface ExecFunction {
      * @param options Silence and synchronous options.
      * @param callback Receives code and output asynchronously.
      */
-    (command: string, options: ExecOptions, callback: ExecCallback): child.ChildProcess;
+    (
+        command: string,
+        options: ExecOptions,
+        callback: ExecCallback,
+    ): child.ChildProcess;
 
     /**
      * Executes the given command synchronously.
@@ -949,8 +985,8 @@ export interface ShellStringConstructor {
      * @param value     The string value to wrap.
      * @return                A string-like object with special methods.
      */
-    new(value: string): ShellString;
-    new(value: string[]): ShellArray;
+    new (value: string): ShellString;
+    new (value: string[]): ShellArray;
 
     /**
      * Wraps a string (or array) value. This has all the string (or array) methods,
@@ -1055,8 +1091,14 @@ export interface TouchOptionsArray {
 }
 
 export interface TouchFunction {
-    (options: TouchOptionsLiteral | TouchOptionsArray, files: string[]): ShellString;
-    (options: TouchOptionsLiteral | TouchOptionsArray, ...files: string[]): ShellString;
+    (
+        options: TouchOptionsLiteral | TouchOptionsArray,
+        files: string[],
+    ): ShellString;
+    (
+        options: TouchOptionsLiteral | TouchOptionsArray,
+        ...files: string[]
+    ): ShellString;
 
     (files: string[]): ShellString;
     (...files: string[]): ShellString;

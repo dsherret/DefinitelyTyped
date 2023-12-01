@@ -38,7 +38,10 @@ const radialBar = new ss.RadialBargraph(radBarCanvas, {
     niceScale: true,
     threshold: 18,
     thresholdRising: false,
-    section: [ss.Section(10, 15, "rgba(123, 56, 32, 0.2)"), ss.Section(15, 20, "rgba(65, 23, 134, 0.9)")],
+    section: [
+        ss.Section(10, 15, "rgba(123, 56, 32, 0.2)"),
+        ss.Section(15, 20, "rgba(65, 23, 134, 0.9)"),
+    ],
     useSectionColors: false,
     titleString: "test :)",
     unitString: "ANOTHER TEST! (:",
@@ -66,7 +69,11 @@ const radialBar = new ss.RadialBargraph(radBarCanvas, {
     useValueGradient: true,
     tickLabelOrientation: ss.TickLabelOrientation.HORIZONTAL,
     trendVisible: true,
-    trendColors: [ss.LedColor.GREEN_LED, ss.LedColor.ORANGE_LED, ss.LedColor.RED_LED],
+    trendColors: [
+        ss.LedColor.GREEN_LED,
+        ss.LedColor.ORANGE_LED,
+        ss.LedColor.RED_LED,
+    ],
     fullScaleDeflectionTime: 10,
 });
 
@@ -77,7 +84,14 @@ testCanvas.setAttribute("height", "25px");
 const testCtx = testCanvas.getContext("2d");
 if (testCtx) {
     ss.drawFrame(testCtx, ss.FrameDesign.BLACK_METAL, 25 / 2, 25 / 2, 25, 25);
-    ss.drawBackground(testCtx, ss.BackgroundColor.BEIGE, 25 / 2, 25 / 2, 25, 25);
+    ss.drawBackground(
+        testCtx,
+        ss.BackgroundColor.BEIGE,
+        25 / 2,
+        25 / 2,
+        25,
+        25,
+    );
     ss.drawForeground(testCtx, ss.ForegroundType.TYPE3, 25, 25, false);
 }
 
@@ -87,6 +101,9 @@ rgbaCol.getRgbColor(); // $ExpectType string
 
 const rgbaCol2 = new ss.rgbaColor(32, 213, 28, 0.6);
 const rgbaCol3 = new ss.rgbaColor(78, 99, 255, 0.9);
-const conGrad = new ss.ConicalGradient([1, 2, 3], [rgbaCol, rgbaCol2, rgbaCol3]); // $ExpectType ConicalGradient
+const conGrad = new ss.ConicalGradient(
+    [1, 2, 3],
+    [rgbaCol, rgbaCol2, rgbaCol3],
+); // $ExpectType ConicalGradient
 
 const sect = ss.Section(10, 15, "rgba(123, 56, 32, 0.2)"); // $ExpectType Section

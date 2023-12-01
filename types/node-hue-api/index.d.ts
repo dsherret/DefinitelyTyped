@@ -58,7 +58,12 @@ export class HueApi {
      * @param {number} [timeout]
      * @param {number} [port]
      */
-    constructor(host: string, username: string, timeout?: number, port?: number);
+    constructor(
+        host: string,
+        username: string,
+        timeout?: number,
+        port?: number,
+    );
 
     /**
      * Gets the version data for the Philips Hue Bridge.
@@ -236,7 +241,10 @@ export class HueApi {
      * @param cb An optional callback function to use if you do not want to use a promise for the results.
      * @return A promise that will set the specified state on the light, or {null} if a callback was provided.
      */
-    setLightState(id: string | number, stateValues: lightState.State | Object): Promise<boolean>;
+    setLightState(
+        id: string | number,
+        stateValues: lightState.State | Object,
+    ): Promise<boolean>;
     // setLightState(id: string|number, stateValues: lightState.State | Object, cb: (err: NodeJS.ErrnoException, data: boolean) => void): void;
 
     /**
@@ -247,7 +255,10 @@ export class HueApi {
      * @param cb An optional callback function to use if you do not want to use a promise for the results.
      * @return {Q.promise} A promise that will set the specified state on the group, or {null} if a callback was provided.
      */
-    setGroupLightState(id: string | number, stateValues: lightState.State | Object): Promise<boolean>;
+    setGroupLightState(
+        id: string | number,
+        stateValues: lightState.State | Object,
+    ): Promise<boolean>;
     // setGroupLightState(id: string|number, stateValues: lightState.State | Object, cb: (err: NodeJS.ErrnoException, data: boolean) => void): void;
 
     /**
@@ -318,7 +329,11 @@ export class HueApi {
      * @return A promise with a result of <true> if the update was successful, or null if a callback was provided.
      */
 
-    updateGroup(id: string | number, name: string, lightIds: string[]): Promise<boolean>;
+    updateGroup(
+        id: string | number,
+        name: string,
+        lightIds: string[],
+    ): Promise<boolean>;
     updateGroup(
         id: string | number,
         name: string,
@@ -402,7 +417,10 @@ export class HueApi {
      * @param cb An optional callback function to use if you do not want to deal with a promise for the results.
      * @return {Q.promise} A promise that will return the result, or <null> if a callback was provided.
      */
-    updateSchedule(id: string | number, schedule: ISchedule): Promise<ISchedule>;
+    updateSchedule(
+        id: string | number,
+        schedule: ISchedule,
+    ): Promise<ISchedule>;
     // updateSchedule(id: string | number, schedule: ISchedule, cb: (err: NodeJS.ErrnoException, data: ISchedule) => void): void;
 
     /**
@@ -464,7 +482,10 @@ export class HueApi {
      * @return {*} A promise that will return the id of the scene that was created (as well as the values that make up the scene),
      * or null if a callback was provided.
      */
-    createBasicScene(lightIds: string[] | number[], name: string): Promise<IScene>;
+    createBasicScene(
+        lightIds: string[] | number[],
+        name: string,
+    ): Promise<IScene>;
     // createBasicScene(lightIds: string[] | number[], name: string, cb: (err: NodeJS.ErrnoException, data: IScene) => void): void;
 
     /**
@@ -490,9 +511,17 @@ export class HueApi {
      * @return {*} A promise that will return the id of the scene that was updated and the light ids that are now set,
      * or null if a callback was provided.
      */
-    updateScene(sceneId: string | number, scene: IScene, storeLightState: boolean): Promise<IScene>;
+    updateScene(
+        sceneId: string | number,
+        scene: IScene,
+        storeLightState: boolean,
+    ): Promise<IScene>;
     // updateScene(sceneId: string | number, scene: IScene, storeLightState: boolean, cb: (err: NodeJS.ErrnoException, data: IScene) => void): void;
-    modifyScene(sceneId: string | number, scene: IScene, storeLightState: boolean): Promise<IScene>;
+    modifyScene(
+        sceneId: string | number,
+        scene: IScene,
+        storeLightState: boolean,
+    ): Promise<IScene>;
     // modifyScene(sceneId: string | number, scene: IScene, storeLightState: boolean, cb: (err: NodeJS.ErrnoException, data: IScene) => void): void;
 
     /**
@@ -534,9 +563,15 @@ export class HueApi {
      * @param cb An optional callback function to use if you do not want to use a promise for the results.
      * @return A promise that will set activate the scene, or {null} if a callback was provided.
      */
-    activateScene(sceneId: string | number, groupIdFilter?: string | number): Promise<boolean>;
+    activateScene(
+        sceneId: string | number,
+        groupIdFilter?: string | number,
+    ): Promise<boolean>;
     // activateScene(sceneId: string|number, groupIdFilter: string|number, cb: (err: NodeJS.ErrnoException, data: boolean) => void): void;
-    recallScene(sceneId: string | number, groupIdFilter?: string | number): Promise<boolean>;
+    recallScene(
+        sceneId: string | number,
+        groupIdFilter?: string | number,
+    ): Promise<boolean>;
     // recallScene(sceneId: string|number, groupIdFilter: string|number, cb: (err: NodeJS.ErrnoException, data: boolean) => void): void;
 
     /**
@@ -604,7 +639,12 @@ export interface IBridgeDescription {
     icons?: IBridgeIcon[] | undefined;
 }
 
-export type BackupStatus = "idle" | "startmigration" | "fileready_disabled" | "prepare_restore" | "restoring";
+export type BackupStatus =
+    | "idle"
+    | "startmigration"
+    | "fileready_disabled"
+    | "prepare_restore"
+    | "restoring";
 
 export interface IBridgeConfig {
     name: string;
@@ -682,7 +722,11 @@ export type LightEffect = "none" | "colorloop";
 /**
  * If not set when creating a group, default is LightGroup
  */
-export type LightGroupType = "LightGroup" | "Room" | "Luminaire" | "LightSource";
+export type LightGroupType =
+    | "LightGroup"
+    | "Room"
+    | "Luminaire"
+    | "LightSource";
 
 /**
  * If not set when creating a group, default is Other
@@ -718,16 +762,18 @@ export interface ILightGroup {
     name: string;
     type: LightGroupType;
     class?: RoomType | undefined;
-    action?: {
-        on: boolean;
-        bri: number;
-        hue: number;
-        sat: number;
-        xy: [number, number];
-        ct: number;
-        effect: LightEffect;
-        colormode: ColorMode;
-    } | undefined;
+    action?:
+        | {
+              on: boolean;
+              bri: number;
+              hue: number;
+              sat: number;
+              xy: [number, number];
+              ct: number;
+              effect: LightEffect;
+              colormode: ColorMode;
+          }
+        | undefined;
     lights?: string[] | undefined;
 }
 
@@ -752,16 +798,18 @@ export interface ILight {
     name: string;
     modelid: string;
     swversion: string;
-    pointsymbol?: {
-        "1": string;
-        "2": string;
-        "3": string;
-        "4": string;
-        "5": string;
-        "6": string;
-        "7": string;
-        "8": string;
-    } | undefined;
+    pointsymbol?:
+        | {
+              "1": string;
+              "2": string;
+              "3": string;
+              "4": string;
+              "5": string;
+              "6": string;
+              "7": string;
+              "8": string;
+          }
+        | undefined;
 }
 
 export interface ILightsApiResponse {

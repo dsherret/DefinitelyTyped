@@ -12,9 +12,7 @@ const ScrambleTest = () => {
                 text={"Scramble!"}
             />
             <Scramble
-                steps={[
-                    { action: "+" },
-                ]}
+                steps={[{ action: "+" }]}
                 autoStart={true}
                 bindMethod={({ start, pause }) => {
                     start(); // $ExpectType void

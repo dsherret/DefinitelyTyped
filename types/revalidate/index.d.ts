@@ -33,15 +33,25 @@ export interface ParsedField {
 }
 
 export type MessageCreator = ((field: any) => any) | string;
-export type ValidatorImpl = (message: any) => (value: any, allValues?: any) => any;
+export type ValidatorImpl = (
+    message: any,
+) => (value: any, allValues?: any) => any;
 export type Comparer = (a: any, b: any) => boolean;
 
 export type ConfiguredValidator = (value?: any, allValues?: any) => any;
-export type UnconfiguredValidator = (config?: string | Config, value?: any, allValues?: any) => any;
+export type UnconfiguredValidator = (
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+) => any;
 export type ConfiguredCombinedValidator = (value?: any, allValues?: any) => any;
 
-export type CurryableValidator = (config?: string | Config) => ConfiguredValidator;
-export type ComposedCurryableValidator = (config?: string | ComposeConfig) => ConfiguredValidator;
+export type CurryableValidator = (
+    config?: string | Config,
+) => ConfiguredValidator;
+export type ComposedCurryableValidator = (
+    config?: string | ComposeConfig,
+) => ConfiguredValidator;
 
 export type ConfigurableValidator = UnconfiguredValidator & CurryableValidator;
 
@@ -55,18 +65,51 @@ export function composeValidators(
     firstValidator: Validator | any,
     ...validators: Validator[]
 ): ComposedCurryableValidator;
-export function combineValidators(validators: any, options?: CombineValidatorsOptions): ConfiguredCombinedValidator;
+export function combineValidators(
+    validators: any,
+    options?: CombineValidatorsOptions,
+): ConfiguredCombinedValidator;
 
-export function hasLengthBetween(min: number, max: number): ConfigurableValidator;
+export function hasLengthBetween(
+    min: number,
+    max: number,
+): ConfigurableValidator;
 export function hasLengthGreaterThan(min: number): ConfigurableValidator;
 export function hasLengthLessThan(max: number): ConfigurableValidator;
 
-export function isAlphabetic(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
-export function isAlphaNumeric(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
-export function isNumeric(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
-export function isOneOf(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
-export function isRequired(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
-export function isRequiredIf(config?: string | Config, value?: any, allValues?: any): ConfiguredValidator | any;
+export function isAlphabetic(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
+export function isAlphaNumeric(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
+export function isNumeric(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
+export function isOneOf(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
+export function isRequired(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
+export function isRequiredIf(
+    config?: string | Config,
+    value?: any,
+    allValues?: any,
+): ConfiguredValidator | any;
 
-export function matchesField(otherField: string, otherFieldLabel: string): ConfigurableValidator;
+export function matchesField(
+    otherField: string,
+    otherFieldLabel: string,
+): ConfigurableValidator;
 export function matchesPattern(regex: RegExp): ConfigurableValidator;

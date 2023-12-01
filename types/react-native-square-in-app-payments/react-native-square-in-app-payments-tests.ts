@@ -1,10 +1,24 @@
-import { SQIPApplePay, SQIPCardEntry, SQIPCore, SQIPGooglePay } from "react-native-square-in-app-payments";
+import {
+    SQIPApplePay,
+    SQIPCardEntry,
+    SQIPCore,
+    SQIPGooglePay,
+} from "react-native-square-in-app-payments";
 
 SQIPCore.setSquareApplicationId("");
 
 SQIPCardEntry.setIOSCardEntryTheme({});
-SQIPCardEntry.startCardEntryFlow(null, () => {}, () => {});
-SQIPCardEntry.startCardEntryFlowWithBuyerVerification(null, () => {}, () => {}, () => {});
+SQIPCardEntry.startCardEntryFlow(
+    null,
+    () => {},
+    () => {},
+);
+SQIPCardEntry.startCardEntryFlowWithBuyerVerification(
+    null,
+    () => {},
+    () => {},
+    () => {},
+);
 SQIPCardEntry.showCardNonceProcessingError("");
 SQIPCardEntry.completeCardEntry(() => {});
 
@@ -25,7 +39,10 @@ SQIPApplePay.completeApplePayAuthorization(true);
 SQIPApplePay.completeApplePayAuthorization(true, "");
 
 SQIPGooglePay.canUseGooglePay();
-SQIPGooglePay.initializeGooglePay("", SQIPGooglePay.GooglePayEnvironment.EnvironmentTest);
+SQIPGooglePay.initializeGooglePay(
+    "",
+    SQIPGooglePay.GooglePayEnvironment.EnvironmentTest,
+);
 SQIPGooglePay.requestGooglePayNonce(
     {
         currencyCode: "",

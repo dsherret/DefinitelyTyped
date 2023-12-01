@@ -12,9 +12,16 @@ declare class Slack {
     composeUrl(): string;
     setWebhook(url: string): this;
     detectEmoji(emoji: string): { key: "icon_url" | "icon_emoji"; val: string };
-    webhook(options: Slack.WebhookOptions, callback: (err: any, response: Slack.WebhookResponse) => void): void;
+    webhook(
+        options: Slack.WebhookOptions,
+        callback: (err: any, response: Slack.WebhookResponse) => void,
+    ): void;
     api(method: string, callback: (err: any, response: any) => void): this;
-    api(method: string, options: any, callback: (err: any, response: any) => void): this;
+    api(
+        method: string,
+        options: any,
+        callback: (err: any, response: any) => void,
+    ): this;
 }
 
 declare namespace Slack {

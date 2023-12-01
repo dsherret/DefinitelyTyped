@@ -11,9 +11,9 @@ import { Readable } from "stream";
 
 const codePath = "";
 const path = "";
-const dataset: Dataset = <any> {};
-const graph: NamedNode = <any> {};
-const term: NamedNode = <any> {};
+const dataset: Dataset = <any>{};
+const graph: NamedNode = <any>{};
+const term: NamedNode = <any>{};
 
 function createApi(): Api<Dataset> {
     // no options
@@ -50,9 +50,9 @@ function appCustomConfig() {
     const app = express();
 
     const api: Api<Dataset> = createApi();
-    const loader: hydraBox.ResourceLoader = <any> {};
-    const store: Store = <any> {};
-    const handler: express.RequestHandler = <any> {};
+    const loader: hydraBox.ResourceLoader = <any>{};
+    const store: Store = <any>{};
+    const handler: express.RequestHandler = <any>{};
 
     app.use("empty-options", hydraBox.middleware(api, {}));
 
@@ -84,29 +84,33 @@ function appCustomConfig() {
 }
 
 async function testStoreResourceLoader() {
-    const store: Store = <any> {};
-    const req: express.Request = <any> {};
+    const store: Store = <any>{};
+    const req: express.Request = <any>{};
 
     const loader: StoreResourceLoader = new StoreResourceLoader({ store });
 
-    const forClassOperation: hydraBox.Resource[] = await loader.forClassOperation(term, req);
-    const forPropertyOperation: hydraBox.PropertyResource[] = await loader.forPropertyOperation(term, req);
+    const forClassOperation: hydraBox.Resource[] =
+        await loader.forClassOperation(term, req);
+    const forPropertyOperation: hydraBox.PropertyResource[] =
+        await loader.forPropertyOperation(term, req);
 }
 
 const handler: express.RequestHandler = async (req) => {
     const operations: hydraBox.PotentialOperation[] = req.hydra.operations;
     const dataset: DatasetCore = await req.hydra.resource.dataset();
     const quadStream: Stream & Readable = req.hydra.resource.quadStream();
-    const pointer: GraphPointer<NamedNode, DatasetExt> = await req.hydra.resource.clownface();
+    const pointer: GraphPointer<NamedNode, DatasetExt> =
+        await req.hydra.resource.clownface();
 };
 
 async function loader() {
-    const pointer: GraphPointer = <any> {};
+    const pointer: GraphPointer = <any>{};
     const api = createApi();
 
     interface LoadedFunction {
         (): string;
     }
 
-    const loader: LoadedFunction | undefined = await api.loaderRegistry.load<LoadedFunction>(pointer);
+    const loader: LoadedFunction | undefined =
+        await api.loaderRegistry.load<LoadedFunction>(pointer);
 }

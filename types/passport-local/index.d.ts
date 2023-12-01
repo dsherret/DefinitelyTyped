@@ -26,7 +26,11 @@ interface VerifyFunctionWithRequest {
         req: express.Request,
         username: string,
         password: string,
-        done: (error: any, user?: Express.User | false, options?: IVerifyOptions) => void,
+        done: (
+            error: any,
+            user?: Express.User | false,
+            options?: IVerifyOptions,
+        ) => void,
     ): void;
 }
 
@@ -34,12 +38,19 @@ interface VerifyFunction {
     (
         username: string,
         password: string,
-        done: (error: any, user?: Express.User | false, options?: IVerifyOptions) => void,
+        done: (
+            error: any,
+            user?: Express.User | false,
+            options?: IVerifyOptions,
+        ) => void,
     ): void;
 }
 
 declare class Strategy extends PassportStrategy {
-    constructor(options: IStrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: IStrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(options: IStrategyOptions, verify: VerifyFunction);
     constructor(verify: VerifyFunction);
 

@@ -1,15 +1,31 @@
 import * as React from "react";
 import Button, { ButtonTypes, ButtonVariants } from "terra-button";
 
-const buttonMouseEventHandler: React.MouseEventHandler<HTMLButtonElement> = () => {};
-const buttonFocusEventHanlder: React.FocusEventHandler<HTMLButtonElement> = () => {};
-const buttonKeyboardEventHandler: React.KeyboardEventHandler<HTMLButtonElement> = () => {};
-const buttonRefObject: { current: HTMLButtonElement | null } = { current: null };
+const buttonMouseEventHandler: React.MouseEventHandler<
+    HTMLButtonElement
+> = () => {};
+const buttonFocusEventHanlder: React.FocusEventHandler<
+    HTMLButtonElement
+> = () => {};
+const buttonKeyboardEventHandler: React.KeyboardEventHandler<
+    HTMLButtonElement
+> = () => {};
+const buttonRefObject: { current: HTMLButtonElement | null } = {
+    current: null,
+};
 
-const anchorMouseEventHandler: React.MouseEventHandler<HTMLAnchorElement> = () => {};
-const anchorFocusEventHanlder: React.FocusEventHandler<HTMLAnchorElement> = () => {};
-const anchorKeyboardEventHandler: React.KeyboardEventHandler<HTMLAnchorElement> = () => {};
-const anchorRefObject: { current: HTMLAnchorElement | null } = { current: null };
+const anchorMouseEventHandler: React.MouseEventHandler<
+    HTMLAnchorElement
+> = () => {};
+const anchorFocusEventHanlder: React.FocusEventHandler<
+    HTMLAnchorElement
+> = () => {};
+const anchorKeyboardEventHandler: React.KeyboardEventHandler<
+    HTMLAnchorElement
+> = () => {};
+const anchorRefObject: { current: HTMLAnchorElement | null } = {
+    current: null,
+};
 
 const AnchorAllProps = (
     <Button

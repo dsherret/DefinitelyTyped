@@ -7,13 +7,13 @@ $.soap({
         msg: "Hi!",
     },
 
-    success: function(soapResponse) {
+    success: function (soapResponse) {
         // do stuff with soapResponse
         // if you want to have the response as JSON use soapResponse.toJSON();
         // or soapResponse.toString() to get XML string
         // or soapResponse.toXML() to get XML DOM
     },
-    error: function(SOAPResponse) {
+    error: function (SOAPResponse) {
         // show error
     },
 });
@@ -30,15 +30,18 @@ $.soap({
     context: document.body, // Used to set this in beforeSend, success, error and data callback functions
 
     // addional headers and namespaces
-    envAttributes: { // additional attributes (like namespaces) for the Envelope:
+    envAttributes: {
+        // additional attributes (like namespaces) for the Envelope:
         "xmlns:another": "http://anotherNamespace.com/",
     },
-    HTTPHeaders: { // additional http headers send with the $.ajax call, will be given to $.ajax({ headers: })
-        "Authorization": "Basic " + btoa("user:pass"),
+    HTTPHeaders: {
+        // additional http headers send with the $.ajax call, will be given to $.ajax({ headers: })
+        Authorization: "Basic " + btoa("user:pass"),
     },
 
     // data can be XML DOM, XML String, JSON or a function
-    data: { // JSON structure used to build request XML - SHOULD be coupled with ('namespaceQualifier' AND 'namespaceURL') AND ('method' OR 'elementName')
+    data: {
+        // JSON structure used to build request XML - SHOULD be coupled with ('namespaceQualifier' AND 'namespaceURL') AND ('method' OR 'elementName')
         name: "Remy Blom",
         msg: "Hi!",
     },
@@ -50,14 +53,15 @@ $.soap({
     elementName: "requestElementName", // override 'method' as outer element (optional)
 
     // callback functions
-    beforeSend: function(SOAPEnvelope) {}, // callback function - SOAPEnvelope object is passed back prior to ajax call (optional)
-    success: function(SOAPResponse) {}, // callback function to handle successful return (optional)
-    error: function(SOAPResponse) {}, // callback function to handle fault return (optional)
-    statusCode: { // callback functions based on statusCode
-        404: function() {
+    beforeSend: function (SOAPEnvelope) {}, // callback function - SOAPEnvelope object is passed back prior to ajax call (optional)
+    success: function (SOAPResponse) {}, // callback function to handle successful return (optional)
+    error: function (SOAPResponse) {}, // callback function to handle fault return (optional)
+    statusCode: {
+        // callback functions based on statusCode
+        404: function () {
             console.log("404 Not Found");
         },
-        200: function() {
+        200: function () {
             console.log("200 OK");
         },
     },
@@ -74,17 +78,19 @@ $.soap({
     enableLogging: false, // to enable the local log function set to true, defaults to false (optional)
 });
 
-$.soap({}).done(function(data, textStatus, jqXHR) {
-    // do stuff on success here...
-}).fail(function(jqXHR, textStatus, errorThrown) {
-    // do stuff on error here...
-});
+$.soap({})
+    .done(function (data, textStatus, jqXHR) {
+        // do stuff on success here...
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        // do stuff on error here...
+    });
 
 $.soap({
     url: "http://my.server.com/soapservices/",
     namespaceQualifier: "myns",
     namespaceURL: "urn://service.my.server.com",
-    error: function(soapResponse) {
+    error: function (soapResponse) {
         // show error
     },
 });
@@ -95,7 +101,7 @@ $.soap({
         name: "Remy Blom",
         msg: "Hi!",
     },
-    success: function(soapResponse) {
+    success: function (soapResponse) {
         // do stuff with soapResponse
     },
 });
@@ -103,7 +109,7 @@ $.soap({
 $.soap({
     method: "doSomethingElse",
     data: {},
-    success: function(soapResponse) {
+    success: function (soapResponse) {
         // do stuff with soapResponse
     },
 });
@@ -115,10 +121,10 @@ $.soap({
         name: "Remy Blom",
         msg: "Hi!",
     },
-    success: function(soapResponse) {
+    success: function (soapResponse) {
         // do stuff with soapResponse
     },
-    error: function(soapResponse) {
+    error: function (soapResponse) {
         alert("that other server might be down...");
     },
 });
@@ -155,20 +161,20 @@ $.soap({
 });
 
 $.soap({
-    beforeSend: function(SOAPEnvelope) {
+    beforeSend: function (SOAPEnvelope) {
         console.log(SOAPEnvelope.toString());
     },
 });
 
 $.soap({
     context: document.body,
-    success: function(SOAPResponse) {
+    success: function (SOAPResponse) {
         console.log(this);
     },
 });
 
 var xml = [
-    "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope/\">",
+    '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope/">',
     "<soap:Body>",
     "<requestNode>",
     "</requestNode>",
@@ -204,14 +210,14 @@ $.soap({
 });
 
 $.soap({
-    error: function(SOAPResponse) {
+    error: function (SOAPResponse) {
         console.log(SOAPResponse.toString());
     },
 });
 
 $.soap({
     HTTPHeaders: {
-        "Authorization": "Basic " + btoa("user:pass"),
+        Authorization: "Basic " + btoa("user:pass"),
     },
 });
 
@@ -240,7 +246,7 @@ $.soap({
 });
 
 $.soap({
-    request: function(SOAPEnvelope) {
+    request: function (SOAPEnvelope) {
         console.log(SOAPEnvelope.toString());
     },
 });
@@ -263,17 +269,17 @@ $.soap({
 
 $.soap({
     statusCode: {
-        404: function() {
+        404: function () {
             console.log("404 Not Found");
         },
-        200: function() {
+        200: function () {
             console.log("200 OK");
         },
     },
 });
 
 $.soap({
-    success: function(SOAPResponse) {
+    success: function (SOAPResponse) {
         console.log(SOAPResponse.toString());
     },
 });

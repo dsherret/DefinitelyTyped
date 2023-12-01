@@ -1,12 +1,12 @@
 // tslint:disable:jsdoc-format
 
 /*!
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2019, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-*/
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2019, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ */
 
 /**
 
@@ -81,8 +81,16 @@ interface cornerPoints {
 }
 
 interface TaskQueue {
-    push(task: (bLoadingWhenPush: boolean) => void, context?: any, args?: []): void;
-    unshift(task: (bLoadingWhenPush: boolean) => void, context?: any, args?: []): void;
+    push(
+        task: (bLoadingWhenPush: boolean) => void,
+        context?: any,
+        args?: [],
+    ): void;
+    unshift(
+        task: (bLoadingWhenPush: boolean) => void,
+        context?: any,
+        args?: [],
+    ): void;
     next(): void;
 }
 
@@ -271,7 +279,12 @@ painter.addImageAsync(image, function(bSuccess){
 ```
      */
     addImageAsync(
-        imgData: Blob | HTMLCanvasElement | HTMLImageElement | string | string[],
+        imgData:
+            | Blob
+            | HTMLCanvasElement
+            | HTMLImageElement
+            | string
+            | string[],
         callback?: () => void,
     ): void;
 
@@ -451,7 +464,11 @@ painter.bindThumbnailBox(document.getElementById('div-thumbnailContainer'), func
 });
 ```
      */
-    bindThumbnailBox(container: HTMLElement, funWrap?: () => HTMLElement, maxWH?: number): boolean;
+    bindThumbnailBox(
+        container: HTMLElement,
+        funWrap?: () => HTMLElement,
+        maxWH?: number,
+    ): boolean;
 
     /**
      * Syntax:* `.unbindThumbnailBox(container)`
@@ -753,7 +770,11 @@ document.getElementById('btn-giveUpFreeTransform').addEventListener('click', fun
     | newHeight | `Number` | |
     | callback | `function(boolean bSuccess)` | |
      */
-    resizeAsync(newWidth: number, newHeight: number, callback: () => void): void;
+    resizeAsync(
+        newWidth: number,
+        newHeight: number,
+        callback: () => void,
+    ): void;
 
     /**
      * Get width of current editing canvas.
@@ -856,7 +877,12 @@ painter.onCropRectChange = function(){
     | right * (optional) * | `Number` | -0.5 ~0.5, default 0.5. |
     | bottom * (optional) * | `Number` | -0.5 ~0.5, default 0.5. |
      */
-    setCropRectArea(left: number, top: number, right: number, bottom: number): boolean;
+    setCropRectArea(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Syntax:* `.getCropRectArea(isAbsolute)`
@@ -956,7 +982,11 @@ painter.onFreeTransformCornerPosChange = function(){
     | cornerPoints * (optional) * | `Array` | A array of[[x0, y0], [x1, y1], [x2, y2], [x3, y3]].x0, y0...is from - 0.5 to 0.5. |
     | importSrc * (optional) * | | TUDO.Not show for user. |
      */
-    freeTransformAsync(callback?: () => void, cornerPoints?: cornerPoints[], importSrc?: any): any;
+    freeTransformAsync(
+        callback?: () => void,
+        cornerPoints?: cornerPoints[],
+        importSrc?: any,
+    ): any;
 
     /**
      *
@@ -997,7 +1027,10 @@ painter.onFreeTransformCornerPosChange = function(){
     | callback * (optional) * | `function(boolean bSuccess)` | |
     | videoSettings * (optional) * | `MediaStreamConstraints` | A[MediaStreamConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamConstraints). *reference:* [getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) |
      */
-    showVideo(callback?: () => void, videoSettings?: MediaStreamConstraints): boolean;
+    showVideo(
+        callback?: () => void,
+        videoSettings?: MediaStreamConstraints,
+    ): boolean;
 
     /**
      * Syntax:* `.grabVideo()`
@@ -1016,7 +1049,10 @@ painter.onFreeTransformCornerPosChange = function(){
     | callback * (optional) * | `function(boolean bSuccess)` | |
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    grabVideo(isAutoAdd?: boolean, callback?: () => void): HTMLCanvasElement | void;
+    grabVideo(
+        isAutoAdd?: boolean,
+        callback?: () => void,
+    ): HTMLCanvasElement | void;
 
     /**
      * Syntax:* `.hideVideo()`

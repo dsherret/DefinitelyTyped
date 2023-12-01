@@ -14,7 +14,13 @@ export class Interface extends readline.Interface {
 export type ReadLine = Interface;
 
 export type AsyncCompleter =
-    | ((line: string, callback: (err?: null | Error, result?: readline.CompleterResult) => void) => void)
+    | ((
+          line: string,
+          callback: (
+              err?: null | Error,
+              result?: readline.CompleterResult,
+          ) => void,
+      ) => void)
     | ((line: string) => Promise<readline.CompleterResult>);
 export type Completer = AsyncCompleter | readline.Completer;
 

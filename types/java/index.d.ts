@@ -31,15 +31,38 @@ declare namespace NodeJavaCore {
         asyncOptions: AsyncOptions;
         nativeBindingLocation: string;
 
-        callMethod(instance: any, methodName: string, args: any[], callback: Callback<any>): void;
+        callMethod(
+            instance: any,
+            methodName: string,
+            args: any[],
+            callback: Callback<any>,
+        ): void;
         callMethodSync(instance: any, methodName: string, ...args: any[]): any;
-        callStaticMethod(className: string, methodName: string, ...args: Array<any | Callback<any>>): void;
-        callStaticMethodSync(className: string, methodName: string, ...args: any[]): any;
+        callStaticMethod(
+            className: string,
+            methodName: string,
+            ...args: Array<any | Callback<any>>
+        ): void;
+        callStaticMethodSync(
+            className: string,
+            methodName: string,
+            ...args: any[]
+        ): any;
         getStaticFieldValue(className: string, fieldName: string): any;
-        setStaticFieldValue(className: string, fieldName: string, newValue: any): void;
+        setStaticFieldValue(
+            className: string,
+            fieldName: string,
+            newValue: any,
+        ): void;
         instanceOf(javaObject: any, className: string): boolean;
-        registerClient(before: (cb: Callback<void>) => void, after?: (cb: Callback<void>) => void): void;
-        registerClientP(beforeP: () => Promise<void>, afterP?: () => Promise<void>): void;
+        registerClient(
+            before: (cb: Callback<void>) => void,
+            after?: (cb: Callback<void>) => void,
+        ): void;
+        registerClientP(
+            beforeP: () => Promise<void>,
+            afterP?: () => Promise<void>,
+        ): void;
         ensureJvm(done: Callback<void>): void;
         ensureJvm(): Promise<void>;
         isJvmCreated(): boolean;

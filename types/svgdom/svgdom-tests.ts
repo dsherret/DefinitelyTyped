@@ -1,7 +1,11 @@
 // Common things we interface with from @svgdotjs/svg.js
 declare function registerWindow(win: Window, doc: Document): void;
 declare function SVG<T>(el: T): SVGTypeMapping<T>;
-type SVGTypeMapping<T> = T extends HTMLElement ? Dom : T extends SVGSVGElement ? Svg : never;
+type SVGTypeMapping<T> = T extends HTMLElement
+    ? Dom
+    : T extends SVGSVGElement
+      ? Svg
+      : never;
 interface Svg {
     _svg: "Svg";
 }

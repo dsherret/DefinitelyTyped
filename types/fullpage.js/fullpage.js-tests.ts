@@ -1,5 +1,5 @@
 function test_public_methods() {
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#fullpage").fullpage({
             // Navigation
             menu: "#menu",
@@ -56,7 +56,11 @@ function test_public_methods() {
             responsiveHeight: 0,
             responsiveSlides: false,
             parallax: false,
-            parallaxOptions: { type: "reveal", percentage: 62, property: "translate" },
+            parallaxOptions: {
+                type: "reveal",
+                percentage: 62,
+                property: "translate",
+            },
             cards: true,
             cardsOptions: {
                 fadeBackground: true,
@@ -71,13 +75,24 @@ function test_public_methods() {
             lazyLoading: true,
 
             // events
-            onLeave: function(index, nextIndex, direction) {},
-            afterLoad: function(anchorLink, index) {},
-            afterRender: function() {},
-            afterResize: function() {},
-            afterResponsive: function(isResponsive) {},
-            afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {},
-            onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex) {},
+            onLeave: function (index, nextIndex, direction) {},
+            afterLoad: function (anchorLink, index) {},
+            afterRender: function () {},
+            afterResize: function () {},
+            afterResponsive: function (isResponsive) {},
+            afterSlideLoad: function (
+                anchorLink,
+                index,
+                slideAnchor,
+                slideIndex,
+            ) {},
+            onSlideLeave: function (
+                anchorLink,
+                index,
+                slideIndex,
+                direction,
+                nextSlideIndex,
+            ) {},
         });
     });
 

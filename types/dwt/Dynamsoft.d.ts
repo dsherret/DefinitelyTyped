@@ -30,7 +30,11 @@ export interface DynamsoftLib {
      * @param type Specify the event
      * @param listener Specify the callback
      */
-    addEventListener(target: HTMLElement, type: string, listener: EventListenerOrEventListenerObject): void;
+    addEventListener(
+        target: HTMLElement,
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+    ): void;
     /**
      * Whether to enable debugging. Once enabled, debugging inforamtion is printed out in the browser console.
      */
@@ -388,7 +392,13 @@ export interface WebTwainEnv {
      * @param simple Whether to show a simple dialog with no header.
      * @param hideCloseButton Whether to hide the close button.
      */
-    ShowDialog(width: number, height: number, content: string, simple: boolean, hideCloseButton: boolean): void;
+    ShowDialog(
+        width: number,
+        height: number,
+        content: string,
+        simple: boolean,
+        hideCloseButton: boolean,
+    ): void;
     /**
      * Remove and destroy all WebTwain instances.
      */

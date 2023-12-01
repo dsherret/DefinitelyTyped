@@ -1,18 +1,17 @@
-nv.addGraph(function() {
-    var chart = nv.models.boxPlotChart()
-        .x(function(d) {
+nv.addGraph(function () {
+    var chart = nv.models
+        .boxPlotChart()
+        .x(function (d) {
             return d.label;
         })
-        .y(function(d) {
+        .y(function (d) {
             return d.values.Q3;
         })
         .staggerLabels(true)
         .maxBoxWidth(75) // prevent boxes from being incredibly wide
         .yDomain([0, 500]);
 
-    d3.select("#chart1 svg")
-        .datum(exampleData())
-        .call(chart);
+    d3.select("#chart1 svg").datum(exampleData()).call(chart);
 
     nv.utils.windowResize(chart.update);
 

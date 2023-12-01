@@ -10,7 +10,14 @@ if (playlist.isMasterPlaylist) {
     playlist.targetDuration;
 }
 
-const { MediaPlaylist, MasterPlaylist, Segment, PrefetchSegment, PartialSegment, RenditionReport } = HLS.types;
+const {
+    MediaPlaylist,
+    MasterPlaylist,
+    Segment,
+    PrefetchSegment,
+    PartialSegment,
+    RenditionReport,
+} = HLS.types;
 
 new MediaPlaylist({
     targetDuration: 9,
@@ -29,7 +36,12 @@ new MediaPlaylist({
 new MediaPlaylist({
     targetDuration: 9,
     playlistType: "VOD",
-    lowLatencyCompatibility: { canBlockReload: false, canSkipUntil: false, holdBack: 2, partHoldBack: 2 },
+    lowLatencyCompatibility: {
+        canBlockReload: false,
+        canSkipUntil: false,
+        holdBack: 2,
+        partHoldBack: 2,
+    },
     partTargetDuration: 0.333,
     segments: [
         new Segment({

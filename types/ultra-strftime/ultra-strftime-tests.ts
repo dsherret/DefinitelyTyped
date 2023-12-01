@@ -1,7 +1,15 @@
 import strftime = require("ultra-strftime");
 
 const it_IT = {
-    days: ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"],
+    days: [
+        "domenica",
+        "lunedi",
+        "martedi",
+        "mercoledi",
+        "giovedi",
+        "venerdi",
+        "sabato",
+    ],
     shortDays: ["dom", "lun", "mar", "mer", "gio", "ven", "sab"],
     months: [
         "gennaio",
@@ -17,7 +25,20 @@ const it_IT = {
         "novembre",
         "dicembre",
     ],
-    shortMonths: ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"],
+    shortMonths: [
+        "gen",
+        "feb",
+        "mar",
+        "apr",
+        "mag",
+        "giu",
+        "lug",
+        "ago",
+        "set",
+        "ott",
+        "nov",
+        "dic",
+    ],
     AM: "AM",
     PM: "PM",
     am: "am",
@@ -38,8 +59,12 @@ const it_IT = {
 strftime("%B %d, %Y %H:%M:%S");
 strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067));
 strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT);
-strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT, { timezone: -420 });
-strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT, { timezone: "-0700" });
+strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT, {
+    timezone: -420,
+});
+strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT, {
+    timezone: "-0700",
+});
 strftime("%B %d, %Y %H:%M:%S", new Date(1307472705067), it_IT, { utc: true });
 
 const strftimeIT = strftime.localizedStrftime(it_IT);

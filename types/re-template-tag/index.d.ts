@@ -11,7 +11,10 @@
  *
  * RE_DATE.test('2017-01-23'); // true
  */
-export function re(strs: TemplateStringsArray, ...substs: Array<string | RegExp>): RegExp;
+export function re(
+    strs: TemplateStringsArray,
+    ...substs: Array<string | RegExp>
+): RegExp;
 
 /**
  * All special characters are escaped, because you may want to quote several characters inside parentheses or square brackets.

@@ -14,7 +14,12 @@ export default class ConcreteMenuItem extends videojs.MenuItem {
      * @param qualityButton - The containing button.
      * @param plugin - This plugin instance.
      */
-    constructor(player: videojs.Player, item: Item, qualityButton: ConcreteButton, plugin: HlsQualitySelectorPlugin);
+    constructor(
+        player: videojs.Player,
+        item: Item,
+        qualityButton: ConcreteButton,
+        plugin: HlsQualitySelectorPlugin,
+    );
 
     /**
      * Click event for menu item.

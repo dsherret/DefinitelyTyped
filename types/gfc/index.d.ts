@@ -31,15 +31,23 @@ declare function gitFirstCommit(
 
 declare namespace gitFirstCommit {
     function sync(options?: Options<ExecSyncOptions>): string | Buffer;
-    function sync(cwd: string, options?: Options<ExecSyncOptions>): string | Buffer;
+    function sync(
+        cwd: string,
+        options?: Options<ExecSyncOptions>,
+    ): string | Buffer;
 
-    type ExecOptionsWithEncoding = { encoding?: BufferEncoding | "buffer" | null | undefined } & ExecOptions;
+    type ExecOptionsWithEncoding = {
+        encoding?: BufferEncoding | "buffer" | null | undefined;
+    } & ExecOptions;
 
     interface Options<TExecOptions> {
         cwd?: string | undefined;
         exec?: TExecOptions | undefined;
         message?: string | undefined;
-        file?: { path: string; contents?: string | undefined } | false | undefined;
+        file?:
+            | { path: string; contents?: string | undefined }
+            | false
+            | undefined;
         commit?: boolean | undefined;
         forceFile?: boolean | undefined;
         remote?: string | undefined;

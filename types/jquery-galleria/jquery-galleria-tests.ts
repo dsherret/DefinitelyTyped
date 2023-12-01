@@ -9,7 +9,7 @@ Galleria.run("galleria", gOptions);
 
 gOptions.lightbox = false;
 
-Galleria.ready(function() {
+Galleria.ready(function () {
     this.configure(gOptions).refreshImage();
 });
 

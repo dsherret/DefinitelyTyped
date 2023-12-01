@@ -90,7 +90,11 @@ declare namespace WinJS.Application {
      * @param listener The listener to invoke when the event is raised.
      * @param capture true to initiate capture, otherwise false.
      */
-    function addEventListener(type: string, listener: Function, capture?: boolean): void;
+    function addEventListener(
+        type: string,
+        listener: Function,
+        capture?: boolean,
+    ): void;
 
     /**
      * Queues a checkpoint event.
@@ -109,7 +113,11 @@ declare namespace WinJS.Application {
      * @param listener The listener to remove.
      * @param useCapture Specifies whether or not to initiate capture.
      */
-    function removeEventListener(type: string, listener: Function, useCapture?: any): void;
+    function removeEventListener(
+        type: string,
+        listener: Function,
+        useCapture?: any,
+    ): void;
 
     /**
      * Starts dispatching application events (the activated, checkpoint, error, loaded, ready, settings, and unload events).
@@ -350,7 +358,8 @@ declare namespace WinJS.Binding {
     /**
      * Do not instantiate. Sorts the underlying list by group key and within a group respects the position of the item in the underlying list. Returned by createGrouped.
      */
-    interface GroupedSortedListProjection<T, G> extends SortedListProjection<T> {
+    interface GroupedSortedListProjection<T, G>
+        extends SortedListProjection<T> {
         // #region Properties
 
         /**
@@ -431,7 +440,11 @@ declare namespace WinJS.Binding {
          * @param listener The listener to invoke when the event gets raised.
          * @param useCapture If true, initiates capture, otherwise false.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Links the specified action to the property specified in the name parameter. This function is invoked when the value of the property may have changed. It is not guaranteed that the action will be called only when a value has actually changed, nor is it guaranteed that the action will be called for every value change. The implementation of this function coalesces change notifications, such that multiple updates to a property value may result in only a single call to the specified action.
@@ -473,7 +486,9 @@ declare namespace WinJS.Binding {
          * @param sorter A function that accepts two arguments. The function is called with elements in the list. It must return one of the following numeric values: negative if the first argument is less than the second, zero if the two arguments are equivalent, positive if the first argument is greater than the second. This function must always return the same results, given the same inputs. The results should not depend on values that are subject to change. You must call notifyMutated each time an item changes. Do not batch change notifications.
          * @returns A sorted projection over the list.
          */
-        createSorted(sorter: (left: T, right: T) => number): SortedListProjection<T>;
+        createSorted(
+            sorter: (left: T, right: T) => number,
+        ): SortedListProjection<T>;
 
         /**
          * Raises an event of the specified type and with the specified additional properties.
@@ -489,7 +504,10 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns true if the callback returns true for all elements in the list.
          */
-        every(callback: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        every(
+            callback: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Returns the elements of a list that meet the condition specified in a callback function.
@@ -497,14 +515,20 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns An array containing the elements that meet the condition specified in the callback function.
          */
-        filter(callback: (value: T, index: number, array: T[]) => any, thisArg?: any): T[];
+        filter(
+            callback: (value: T, index: number, array: T[]) => any,
+            thisArg?: any,
+        ): T[];
 
         /**
          * Calls the specified callback function for each element in a list.
          * @param callback A function that accepts up to three arguments. The function is called for each element in the list. The arguments are as follows: value, index, array.
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          */
-        forEach(callback: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
+        forEach(
+            callback: (value: T, index: number, array: T[]) => void,
+            thisArg?: any,
+        ): void;
 
         /**
          * Gets the value at the specified index.
@@ -563,7 +587,10 @@ declare namespace WinJS.Binding {
          * @param thisArg n object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns An array containing the result of calling the callback function on each element in the list.
          */
-        map<G>(callback: (value: T, index: number, array: T[]) => G, thisArg?: any): G[];
+        map<G>(
+            callback: (value: T, index: number, array: T[]) => G,
+            thisArg?: any,
+        ): G[];
 
         /**
          * Moves the value at index to the specified position.
@@ -613,7 +640,12 @@ declare namespace WinJS.Binding {
          * @returns The return value from the last call to the callback function.
          */
         reduce(
-            callback: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => T,
+            callback: (
+                previousValue: any,
+                currentValue: any,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initiallValue?: T,
         ): T;
 
@@ -624,7 +656,12 @@ declare namespace WinJS.Binding {
          * @returns The return value from the last call to callback function.
          */
         reduceRight(
-            callback: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => T,
+            callback: (
+                previousValue: any,
+                currentValue: any,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initialValue?: T,
         ): T;
 
@@ -634,7 +671,11 @@ declare namespace WinJS.Binding {
          * @param listener The listener to remove.
          * @param useCapture true if capture is to be initiated, otherwise false.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Returns a list with the elements reversed. This method reverses the elements of a list object in place. It does not create a new list object during execution.
@@ -668,7 +709,10 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns true if callback returns true for any element in the list.
          */
-        some(callback: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        some(
+            callback: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Returns a list with the elements sorted. This method sorts the elements of a list object in place. It does not create a new list object during execution.
@@ -775,7 +819,11 @@ declare namespace WinJS.Binding {
          * @param listener The listener to invoke when the event gets raised.
          * @param useCapture If true, initiates capture, otherwise false.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Links the specified action to the property specified in the name parameter. This function is invoked when the value of the property may have changed. It is not guaranteed that the action will be called only when a value has actually changed, nor is it guaranteed that the action will be called for every value change. The implementation of this function coalesces change notifications, such that multiple updates to a property value may result in only a single call to the specified action.
@@ -817,7 +865,9 @@ declare namespace WinJS.Binding {
          * @param sorter A function that accepts two arguments. The function is called with elements in the list. It must return one of the following numeric values: negative if the first argument is less than the second, zero if the two arguments are equivalent, positive if the first argument is greater than the second. This function must always return the same results, given the same inputs. The results should not depend on values that are subject to change. You must call notifyMutated each time an item changes. Do not batch change notifications.
          * @returns A sorted projection over the list.
          */
-        createSorted(sorter: (left: T, right: T) => number): SortedListProjection<T>;
+        createSorted(
+            sorter: (left: T, right: T) => number,
+        ): SortedListProjection<T>;
 
         /**
          * Raises an event of the specified type and with the specified additional properties.
@@ -833,7 +883,10 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns true if the callback returns true for all elements in the list.
          */
-        every(callback: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        every(
+            callback: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Returns the elements of a list that meet the condition specified in a callback function.
@@ -841,14 +894,20 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns An array containing the elements that meet the condition specified in the callback function.
          */
-        filter(callback: (value: T, index: number, array: T[]) => any, thisArg?: any): T[];
+        filter(
+            callback: (value: T, index: number, array: T[]) => any,
+            thisArg?: any,
+        ): T[];
 
         /**
          * Calls the specified callback function for each element in a list.
          * @param callback A function that accepts up to three arguments. The function is called for each element in the list. The arguments are as follows: value, index, array.
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          */
-        forEach(callback: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
+        forEach(
+            callback: (value: T, index: number, array: T[]) => void,
+            thisArg?: any,
+        ): void;
 
         /**
          * Gets the value at the specified index.
@@ -886,7 +945,10 @@ declare namespace WinJS.Binding {
          * @param thisArg n object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns An array containing the result of calling the callback function on each element in the list.
          */
-        map<G>(callback: (value: T, index: number, array: T[]) => G, thisArg?: any): G[];
+        map<G>(
+            callback: (value: T, index: number, array: T[]) => G,
+            thisArg?: any,
+        ): G[];
 
         /**
          * Notifies listeners that a property value was updated.
@@ -909,7 +971,12 @@ declare namespace WinJS.Binding {
          * @returns The return value from the last call to the callback function.
          */
         reduce(
-            callback: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => T,
+            callback: (
+                previousValue: any,
+                currentValue: any,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initiallValue?: T,
         ): T;
 
@@ -920,7 +987,12 @@ declare namespace WinJS.Binding {
          * @returns The return value from the last call to callback function.
          */
         reduceRight(
-            callback: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => T,
+            callback: (
+                previousValue: any,
+                currentValue: any,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initialValue?: T,
         ): T;
 
@@ -930,7 +1002,11 @@ declare namespace WinJS.Binding {
          * @param listener The listener to remove.
          * @param useCapture true if capture is to be initiated, otherwise false.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Extracts a section of a list and returns a new list.
@@ -946,7 +1022,10 @@ declare namespace WinJS.Binding {
          * @param thisArg An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used.
          * @returns true if callback returns true for any element in the list.
          */
-        some(callback: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        some(
+            callback: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Removes one or more listeners from the notification list for a given property.
@@ -1222,7 +1301,10 @@ declare namespace WinJS.Binding {
         renderItem<T>(
             item: WinJS.Promise<T>,
             recyled: HTMLElement,
-        ): { element: WinJS.Promise<HTMLElement>; renderComplete: WinJS.Promise<any> };
+        ): {
+            element: WinJS.Promise<HTMLElement>;
+            renderComplete: WinJS.Promise<any>;
+        };
 
         /**
          * Renders a template based on the specified URI (static method).
@@ -1231,7 +1313,11 @@ declare namespace WinJS.Binding {
          * @param container The element to which to add this rendered template. If this parameter is omitted, a new DIV is created.
          * @returns A promise that is completed after binding has finished. The value is either the object in the container parameter or the created DIV.
          */
-        static render(href: string, dataContext: any, container?: HTMLElement): Promise<HTMLElement>;
+        static render(
+            href: string,
+            dataContext: any,
+            container?: HTMLElement,
+        ): Promise<HTMLElement>;
 
         // #endregion Methods
 
@@ -1291,7 +1377,11 @@ declare namespace WinJS.Binding {
      * @param sourceProperties The path on the source object to the source class.
      * @param dest The destination object.
      */
-    function addClassOneTime(source: any, sourceProperties: any[], dest: HTMLElement): void;
+    function addClassOneTime(
+        source: any,
+        sourceProperties: any[],
+        dest: HTMLElement,
+    ): void;
 
     /**
      * Returns an observable object. This may be an observable proxy for the specified object, an existing proxy, or the specified object itself if it directly supports observation.
@@ -1323,7 +1413,12 @@ declare namespace WinJS.Binding {
      * @param destProperties The path on the destination object to the destination property.
      * @returns An object with a cancel method that is used to coalesce bindings.
      */
-    function defaultBind(source: any, sourceProperties: any, dest: any, destProperties: any): any;
+    function defaultBind(
+        source: any,
+        sourceProperties: any,
+        dest: any,
+        destProperties: any,
+    ): any;
 
     /**
      * Creates a new constructor function that supports observability with the specified set of properties.
@@ -1359,7 +1454,12 @@ declare namespace WinJS.Binding {
      * @param destProperties The path on the destination object to the destination property.
      * @returns An object with a cancel method that is used to coalesce bindings.
      */
-    function oneTime(source: any, sourceProperties: any, dest: any, destProperties: any): any;
+    function oneTime(
+        source: any,
+        sourceProperties: any,
+        dest: any,
+        destProperties: any,
+    ): any;
 
     /**
      * Binds the values of an object to the values of a DOM element that has the data-win-bind attribute. If multiple DOM elements are to be bound, you must set the attribute on all of them. See the example below for details.
@@ -1386,7 +1486,12 @@ declare namespace WinJS.Binding {
      * @param destProperties The path on the destination object to the destination property. This must be a single name.
      * @returns An object with a cancel() method that is used to coalesce bindings.
      */
-    function setAttribute(source: any, sourceProperties: any[], dest: Element, destProperties: any[]): any;
+    function setAttribute(
+        source: any,
+        sourceProperties: any[],
+        dest: Element,
+        destProperties: any[],
+    ): any;
 
     /**
      * Sets an attribute on the destination element to the value of the source property.
@@ -1395,7 +1500,12 @@ declare namespace WinJS.Binding {
      * @param dest The destination object.
      * @param destProperties The path on the destination object to the destination property. This must be a single name.
      */
-    function setAttributeOneTime(source: any, sourceProperties: any[], dest: Element, destProperties: any[]): void;
+    function setAttributeOneTime(
+        source: any,
+        sourceProperties: any[],
+        dest: Element,
+        destProperties: any[],
+    ): void;
 
     /**
      * Returns the original (non-observable) object is returned if the specified object is an observable proxy,
@@ -1434,7 +1544,11 @@ declare namespace WinJS.Class {
      * @param staticMembers The set of static fields, properties, and methods made available on the type.
      * @returns The newly-defined type.
      */
-    function define(constructor?: Function, instanceMembers?: any, staticMembers?: any): any;
+    function define(
+        constructor?: Function,
+        instanceMembers?: any,
+        staticMembers?: any,
+    ): any;
 
     /**
      * Creates a sub-class based on the specified baseClass parameter, using prototype inheritance.
@@ -1444,7 +1558,12 @@ declare namespace WinJS.Class {
      * @param staticMembers The set of static fields, properties, and methods to be made available on the type.
      * @returns The newly-defined type.
      */
-    function derive(baseClass: any, constructor: Function, instanceMembers?: any, staticMembers?: any): any;
+    function derive(
+        baseClass: any,
+        constructor: Function,
+        instanceMembers?: any,
+        staticMembers?: any,
+    ): any;
 
     /**
      * Defines a class using the given constructor and the union of the set of instance members specified by all the mixin objects. The mixin parameter list is of variable length. For more information, see Adding functionality with WinJS mixins.
@@ -1562,7 +1681,11 @@ declare namespace WinJS {
          * @param onCancel The function to call if a consumer of this promise wants to cancel its undone work. Promises are not required to support cancellation.
          */
         constructor(
-            init?: (completeDispatch: any, errorDispatch: any, progressDispatch: any) => void,
+            init?: (
+                completeDispatch: any,
+                errorDispatch: any,
+                progressDispatch: any,
+            ) => void,
             onCancel?: Function,
         );
 
@@ -1586,7 +1709,11 @@ declare namespace WinJS {
          * @param listener The listener to invoke when the event is raised.
          * @param capture true to initiate capture, otherwise false.
          */
-        static addEventListener(type: string, listener: Function, capture?: boolean): void;
+        static addEventListener(
+            type: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
 
         /**
          * Returns a promise that is fulfilled when one of the input promises has been fulfilled.
@@ -1653,7 +1780,11 @@ declare namespace WinJS {
          * @param listener The listener to remove.
          * @param capture Specifies whether or not to initiate capture.
          */
-        static removeEventListener(eventType: string, listener: Function, capture?: boolean): void;
+        static removeEventListener(
+            eventType: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
 
         /**
          * Allows you to specify the work to be done on the fulfillment of the promised value, the error handling to be performed if the promise fails to fulfill a value, and the handling of progress notifications along the way. For more information about the differences between then and done, see the following topics: Quickstart: using promises in JavaScript How to handle errors when using promises in JavaScript Chaining promises in JavaScript.
@@ -1808,7 +1939,10 @@ declare namespace WinJS {
          * @param promise Optional. A promise that will be canceled if it doesn't complete within the timeout period.
          * @returns If the promise parameter is omitted, returns a promise that will be fulfilled after the timeout period. If the promise paramater is provided, the same promise is returned.
          */
-        static timeout(timeout?: number, promise?: IPromise<any>): IPromise<any>;
+        static timeout(
+            timeout?: number,
+            promise?: IPromise<any>,
+        ): IPromise<any>;
 
         /**
          * Wraps a non-promise value in a promise. This method is like wrapError, which allows you to produce a Promise in error conditions, in that it allows you to return a Promise in success conditions.
@@ -1868,7 +2002,9 @@ declare namespace WinJS {
         headers?: any;
         data?: any;
         responseType?: string | undefined;
-        customRequestInitializer?: ((request: XMLHttpRequest) => void) | undefined;
+        customRequestInitializer?:
+            | ((request: XMLHttpRequest) => void)
+            | undefined;
     }
 
     // #endregion Interfaces
@@ -1894,7 +2030,11 @@ declare namespace WinJS.Namespace {
      * @param members The members of the new namespace.
      * @returns The newly-defined namespace.
      */
-    function defineWithParent(parentNamespace?: any, name?: string, members?: any): any;
+    function defineWithParent(
+        parentNamespace?: any,
+        name?: string,
+        members?: any,
+    ): any;
 
     // #endregion Functions
 }
@@ -1939,7 +2079,11 @@ declare namespace WinJS.Navigation {
      * @param listener The listener to invoke when the event gets raised.
      * @param capture If true, specifies that capture should be initiated, otherwise false.
      */
-    function addEventListener(eventType: string, listener: Function, capture?: boolean): void;
+    function addEventListener(
+        eventType: string,
+        listener: Function,
+        capture?: boolean,
+    ): void;
 
     /**
      * Navigates backwards.
@@ -1969,7 +2113,11 @@ declare namespace WinJS.Navigation {
      * @param listener The listener to remove.
      * @param useCapture Specifies whether or not to initiate capture.
      */
-    function removeEventListener(eventType: string, listener: Function, useCapture?: boolean): void;
+    function removeEventListener(
+        eventType: string,
+        listener: Function,
+        useCapture?: boolean,
+    ): void;
 
     // #endregion Functions
 
@@ -2007,7 +2155,11 @@ declare namespace WinJS.Resources {
      * @param listener The listener (event handler function) to associate with the event.
      * @param useCapture Set to true to register the listener for the capturing phase; otherwise, set to false to register the listener for the bubbling phase.
      */
-    function addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+    function addEventListener(
+        type: string,
+        listener: Function,
+        useCapture?: boolean,
+    ): void;
 
     /**
      * Raises an event of the specified type and with the specified additional properties.
@@ -2021,7 +2173,11 @@ declare namespace WinJS.Resources {
      * @param resourceId The resource ID of the string to retrieve.
      * @returns An object that can contain these properties: value, empty, lang.
      */
-    function getString(resourceId: string): { value: string; empty?: boolean | undefined; lang?: string | undefined };
+    function getString(resourceId: string): {
+        value: string;
+        empty?: boolean | undefined;
+        lang?: string | undefined;
+    };
 
     /**
      * Processes data-win-res attributes on elements and replaces attributes and properties with resource strings.
@@ -2035,7 +2191,11 @@ declare namespace WinJS.Resources {
      * @param listener The listener (event handler function) to remove.
      * @param useCapture Set to true to remove the capturing phase listener; set to false to remove the bubbling phase listener.
      */
-    function removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+    function removeEventListener(
+        type: string,
+        listener: Function,
+        useCapture?: boolean,
+    ): void;
 
     // #endregion Functions
 
@@ -2061,7 +2221,10 @@ declare namespace WinJS.UI.Animation {
      * @param affected Element or elements affected by the added items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createAddToListAnimation(added: any, affected: any): IAnimationMethodResponse;
+    function createAddToListAnimation(
+        added: any,
+        affected: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an object that performs an animation that adds an item or items to a list of search results.
@@ -2069,7 +2232,10 @@ declare namespace WinJS.UI.Animation {
      * @param affected Element or elements affected by the added items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createAddToSearchListAnimation(added: any, affected: any): IAnimationMethodResponse;
+    function createAddToSearchListAnimation(
+        added: any,
+        affected: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an object that performs an animation that collapses a list.
@@ -2077,7 +2243,10 @@ declare namespace WinJS.UI.Animation {
      * @param affected Element or elements affected by the hidden items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createCollapseAnimation(hidden: any, affected: any): IAnimationMethodResponse;
+    function createCollapseAnimation(
+        hidden: any,
+        affected: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an object that performs an animation that removes an item or items from a list.
@@ -2085,7 +2254,10 @@ declare namespace WinJS.UI.Animation {
      * @param remaining Element or elements affected by the removal of the deleted items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createDeleteFromListAnimation(deleted: any, remaining: any): IAnimationMethodResponse;
+    function createDeleteFromListAnimation(
+        deleted: any,
+        remaining: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an object that performs an animation that removes an item or items from a list of search results.
@@ -2093,7 +2265,10 @@ declare namespace WinJS.UI.Animation {
      * @param remaining Element or elements affected by the removal of the deleted items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createDeleteFromSearchListAnimation(deleted: any, remaining: any): IAnimationMethodResponse;
+    function createDeleteFromSearchListAnimation(
+        deleted: any,
+        remaining: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an object that performs an animation that expands a list.
@@ -2101,7 +2276,10 @@ declare namespace WinJS.UI.Animation {
      * @param affected Element or elements affected by the newly revealed items. Typically, this is all other items displayed in the list.
      * @returns An object whose execute method is used to execute the animation. The execute method returns a Promise that completes when the animation is finished.
      */
-    function createExpandAnimation(revealed: any, affected: any): IAnimationMethodResponse;
+    function createExpandAnimation(
+        revealed: any,
+        affected: any,
+    ): IAnimationMethodResponse;
 
     /**
      * Creates an exit and entrance animation to play for a page navigation given the current and incoming pages'
@@ -2161,7 +2339,11 @@ declare namespace WinJS.UI.Animation {
      * @param affected Element or elements whose position the dropped object affects. Typically, this is all other items in a reorderable list. This should be the same element or element collection passed as the affected parameter in the dragSourceStart animation.
      * @returns An object that completes when the animation is finished.
      */
-    function dragSourceEnd(dragSource: any, offset?: any, affected?: any): Promise<any>;
+    function dragSourceEnd(
+        dragSource: any,
+        offset?: any,
+        affected?: any,
+    ): Promise<any>;
 
     /**
      * Performs an animation when the user begins to drag an object.
@@ -2206,7 +2388,11 @@ declare namespace WinJS.UI.Animation {
      * @param options Optional. Set this value to { mechanism: "transition" } to play the animation using CSS transitions instead of the default CSS animations. In some cases this can result in improved performance.
      * @returns An object that completes when the animation is finished.
      */
-    function enterContent(incoming: any, offset?: any, options?: any): Promise<any>;
+    function enterContent(
+        incoming: any,
+        offset?: any,
+        options?: any,
+    ): Promise<any>;
 
     /**
      * Performs an animation that shows a new page of content, either when transitioning between pages in a running app or when displaying the first content in a newly launched app.
@@ -2253,7 +2439,11 @@ declare namespace WinJS.UI.Animation {
      * @param options Optional. Set this value to { mechanism: "transition" } to play the animation using CSS transitions instead of the default CSS animations. In some cases this can result in improved performance.
      * @returns An object that completes when the animation is finished.
      */
-    function hideEdgeUI(element: any, offset?: any, options?: any): Promise<any>;
+    function hideEdgeUI(
+        element: any,
+        offset?: any,
+        options?: any,
+    ): Promise<any>;
 
     /**
      * Performs an animation that hides a panel.
@@ -2291,7 +2481,11 @@ declare namespace WinJS.UI.Animation {
      * @param options Optional. Set this value to { mechanism: "transition" } to play the animation using CSS transitions instead of the default CSS animations. In some cases this can result in improved performance.
      * @returns An object that completes when the animation is finished.
      */
-    function showEdgeUI(element: any, offset?: any, options?: any): Promise<any>;
+    function showEdgeUI(
+        element: any,
+        offset?: any,
+        options?: any,
+    ): Promise<any>;
 
     /**
      * Performs an animation that slides a large panel user interface (UI) into view.
@@ -2363,7 +2557,12 @@ declare namespace WinJS.UI.Animation {
      * @param third Third element or collection of elements to animate sliding in, which will be offset slightly farther than the second.
      * @returns A Promise that completes when the animation is finished.
      */
-    function slideLeftIn(page: any, first: any, second: any, third: any): Promise<any>;
+    function slideLeftIn(
+        page: any,
+        first: any,
+        second: any,
+        third: any,
+    ): Promise<any>;
 
     /**
      * Execute a slide out from right to left animation.
@@ -2373,7 +2572,12 @@ declare namespace WinJS.UI.Animation {
      * @param third Third element or collection of elements to animate sliding out, which will be offset slightly farther than the second.
      * @returns A Promise that completes when the animation is finished.
      */
-    function slideLeftOut(page: any, first: any, second: any, third: any): Promise<any>;
+    function slideLeftOut(
+        page: any,
+        first: any,
+        second: any,
+        third: any,
+    ): Promise<any>;
 
     /**
      * Execute a slide in from left to right animation.
@@ -2383,7 +2587,12 @@ declare namespace WinJS.UI.Animation {
      * @param third Third element or collection of elements to animate sliding in, which will be offset slightly farther than the second.
      * @returns A Promise that completes when the animation is finished.
      */
-    function slideRightIn(page: any, first: any, second: any, third: any): Promise<any>;
+    function slideRightIn(
+        page: any,
+        first: any,
+        second: any,
+        third: any,
+    ): Promise<any>;
 
     /**
      * Execute a slide out from left to right animation.
@@ -2393,7 +2602,12 @@ declare namespace WinJS.UI.Animation {
      * @param third Third element or collection of elements to animate sliding out, which will be offset slightly farther than the second.
      * @returns A Promise that completes when the animation is finished.
      */
-    function slideRightOut(page: any, first: any, second: any, third: any): Promise<any>;
+    function slideRightOut(
+        page: any,
+        first: any,
+        second: any,
+        third: any,
+    ): Promise<any>;
 
     /**
      * Execute a continuum animation, scaling up the incoming page while scaling, rotating, and translating the incoming item.
@@ -2402,7 +2616,11 @@ declare namespace WinJS.UI.Animation {
      * @param itemContent Content of the item that will be scaled and rotated as part of the continuum animation.
      * @returns A Promise that completes when the animation is finished.
      */
-    function continuumForwardIn(page: any, itemRoot: any, itemContent: any): Promise<any>;
+    function continuumForwardIn(
+        page: any,
+        itemRoot: any,
+        itemContent: any,
+    ): Promise<any>;
 
     /**
      * Execute a continuum animation, scaling down the outgoing page while scaling, rotating, and translating the outgoing item.
@@ -2918,7 +3136,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Releases resources held by this ICommand. Call this method when the ICommand is no longer needed. After calling this method, the ICommand becomes unusable.
@@ -2931,7 +3153,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -3188,7 +3414,12 @@ declare namespace WinJS.UI {
          * @param modifiedGroups An object that contains the old and new indexes of the group elements that have been modified in the tree.
          * @returns A Promise that executes after layout is complete, or an object that contains two Promise objects: realizedRangeComplete, layoutComplete.
          */
-        layout(tree: any, changedRange: any, modifiedItems: any, modifiedGroups: any): any;
+        layout(
+            tree: any,
+            changedRange: any,
+            modifiedItems: any,
+            modifiedGroups: any,
+        ): any;
 
         /**
          * Called when the ListView requests that the ILayout2 set up animations.
@@ -3398,7 +3629,12 @@ declare namespace WinJS.UI {
          * @param previousIndexHint The index of the item to insert the new data after, if known.
          * @returns A Promise that contains the IItem that was added or an EditError if an error was encountered.
          */
-        insertAfter(key: string, data: T, previousKey: string, previousIndexHint: number): Promise<IItem<T>>;
+        insertAfter(
+            key: string,
+            data: T,
+            previousKey: string,
+            previousIndexHint: number,
+        ): Promise<IItem<T>>;
 
         /**
          * Adds the specified key and data to the end of the IListDataAdapter object's data source.
@@ -3424,7 +3660,12 @@ declare namespace WinJS.UI {
          * @param nextIndexHint The index of the item to insert the new data before, if known.
          * @returns A Promise that contains the IItem that was added or an EditError if an error was encountered.
          */
-        insertBefore(key: string, data: T, nextKey: string, nextIndexHint: number): Promise<IItem<T>>;
+        insertBefore(
+            key: string,
+            data: T,
+            nextKey: string,
+            nextIndexHint: number,
+        ): Promise<IItem<T>>;
 
         /**
          * Retrieves the item that matches the specified description and also retrieves the specified number of items before and after the matched item.
@@ -3433,7 +3674,11 @@ declare namespace WinJS.UI {
          * @param countAfter The number of items after the matched item to retrieve.
          * @returns A Promise that provides an IFetchResult that contains the selected items or a FetchError if an error was encountered.
          */
-        itemsFromDescription(description: string, countBefore: number, countAfter: number): Promise<IFetchResult<T>>;
+        itemsFromDescription(
+            description: string,
+            countBefore: number,
+            countAfter: number,
+        ): Promise<IFetchResult<T>>;
 
         /**
          * Retrieves the specified number of items from the end of the IListDataAdapter object's data source.
@@ -3449,7 +3694,11 @@ declare namespace WinJS.UI {
          * @param countAfter The number of items to retrieve from after the selected item.
          * @returns A Promise that provides an IFetchResult that contains the selected items or a FetchError if an error was encountered.
          */
-        itemsFromIndex(index: number, countBefore: number, countAfter: number): Promise<IFetchResult<T>>;
+        itemsFromIndex(
+            index: number,
+            countBefore: number,
+            countAfter: number,
+        ): Promise<IFetchResult<T>>;
 
         /**
          * Retrieves the item that has the specified key and also retrieves the specified number of items before and after the selected item.
@@ -3458,7 +3707,11 @@ declare namespace WinJS.UI {
          * @param countAfter The number of items to retrieve from after the selected item.
          * @returns A Promise that provides an IFetchResult that contains the selected items or a FetchError if an error was encountered.
          */
-        itemsFromKey(key: string, countBefore: number, countAfter: number): Promise<IFetchResult<T>>;
+        itemsFromKey(
+            key: string,
+            countBefore: number,
+            countAfter: number,
+        ): Promise<IFetchResult<T>>;
 
         /**
          * Retrieves the specified number of items from the beginning of the IListDataAdapter object's data source.
@@ -3482,7 +3735,12 @@ declare namespace WinJS.UI {
          * @param previousIndexHint The index to move the item after, if known.
          * @returns A Promise that contains the IItem that was added or an EditError if an error was encountered.
          */
-        moveAfter(key: string, previousKey: any, indexHint: string, previousIndexHint: number): Promise<IItem<T>>;
+        moveAfter(
+            key: string,
+            previousKey: any,
+            indexHint: string,
+            previousIndexHint: number,
+        ): Promise<IItem<T>>;
 
         /**
          * Moves the specified item to just before another item.
@@ -3492,7 +3750,12 @@ declare namespace WinJS.UI {
          * @param nextIndexHint The index to move the item before, if known.
          * @returns A Promise that contains the IItem that was added or an EditError if an error was encountered.
          */
-        moveBefore(key: string, nextKey: any, indexHint: string, nextIndexHint: number): Promise<IItem<T>>;
+        moveBefore(
+            key: string,
+            nextKey: any,
+            indexHint: string,
+            nextIndexHint: number,
+        ): Promise<IItem<T>>;
 
         /**
          * Moves the specified item to the end of the IListDataAdapter object's data source.
@@ -3523,7 +3786,9 @@ declare namespace WinJS.UI {
          * Registers a notification handler. The IListDataAdapter uses the handler to notify listening objects when its data changes.
          * @param notificationHandler The notification handler that the IListDataAdapter will use to provide change notifications. .
          */
-        setNotificationHandler(notificationHandler: IListDataNotificationHandler<T>): void;
+        setNotificationHandler(
+            notificationHandler: IListDataNotificationHandler<T>,
+        ): void;
 
         // #endregion Methods
 
@@ -3566,7 +3831,12 @@ declare namespace WinJS.UI {
          * @param nextKey The key of the item that now follows the new item, or null if the item was inserted at the end of the list. If previousKey is provided, this parameter may be null.
          * @param index The index of the new item.
          */
-        inserted(newItem: IItem<T>, previousKey: string, nextKey: string, index?: number): void;
+        inserted(
+            newItem: IItem<T>,
+            previousKey: string,
+            nextKey: string,
+            index?: number,
+        ): void;
 
         /**
          * Indicates that all previous data obtained from the IListDataAdapter is invalid and should be refreshed.
@@ -3582,7 +3852,13 @@ declare namespace WinJS.UI {
          * @param oldIndex The item's original index.
          * @param newIndex The item's new index.
          */
-        moved(item: IItem<T>, previousKey: string, nextKey: string, oldIndex?: number, newIndex?: number): void;
+        moved(
+            item: IItem<T>,
+            previousKey: string,
+            nextKey: string,
+            oldIndex?: number,
+            newIndex?: number,
+        ): void;
 
         /**
          * Reloads data from the IListDataAdapter.
@@ -3633,7 +3909,9 @@ declare namespace WinJS.UI {
          * @param notificationHandler Enables the IListBinding to register for change notifications for individual items obtained from the IListDataSource. If you omit this parameter, change notifications won't be available.
          * @returns The new IListBinding.
          */
-        createListBinding(notificationHandler?: IListNotificationHandler<T>): IListBinding<T>;
+        createListBinding(
+            notificationHandler?: IListNotificationHandler<T>,
+        ): IListBinding<T>;
 
         /**
          * Notifies the IListDataSource that the batch of edits that began with the last beginEdits call has completed. The IListDataSource will submit notifications for any changes that occurred between the beginEdits and endEdits calls as a batch and resume normal change notifications.
@@ -3653,7 +3931,11 @@ declare namespace WinJS.UI {
          * @param previousKey The key for an item in the data source. The new item will be added after this item.
          * @returns A Promise that contains the IItem that was added or an EditError if an error was encountered.
          */
-        insertAfter(key: string, data: T, previousKey: string): Promise<IItem<T>>;
+        insertAfter(
+            key: string,
+            data: T,
+            previousKey: string,
+        ): Promise<IItem<T>>;
 
         /**
          * Adds an item to the end of the data source.
@@ -3792,7 +4074,11 @@ declare namespace WinJS.UI {
          * @param previousHandle The temporary ID of the item that precedes the new item.
          * @param nextHandle The temporary ID of the item that follows the new item.
          */
-        inserted(itemPromise: IItemPromise<T>, previousHandle: string, nextHandle: string): void;
+        inserted(
+            itemPromise: IItemPromise<T>,
+            previousHandle: string,
+            nextHandle: string,
+        ): void;
 
         /**
          * Indicates that an IItemPromise was fulfilled and that the item is now available.
@@ -3806,7 +4092,11 @@ declare namespace WinJS.UI {
          * @param previousHandle The temporary ID of the item that now precedes the moved item.
          * @param nextHandle The temporary ID of the item that now follows the moved item.
          */
-        moved(item: IItemPromise<T>, previousHandle: string, nextHandle: string): void;
+        moved(
+            item: IItemPromise<T>,
+            previousHandle: string,
+            nextHandle: string,
+        ): void;
 
         /**
          * Indicates that an item was removed.
@@ -4069,7 +4359,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Removes an event handler that the addEventListener method registered.
@@ -4077,7 +4371,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -4216,7 +4514,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Releases resources held by this AppBarCommand. Call this method when the AppBarCommand is no longer needed. After calling this method, the AppBarCommand becomes unusable.
@@ -4229,7 +4531,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -4374,7 +4680,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -4395,7 +4705,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Specifies whether suggestions based on local files are automatically displayed in the input field, and defines the criteria that
@@ -4480,7 +4794,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -4506,7 +4824,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -4592,7 +4914,12 @@ declare namespace WinJS.UI {
          * @param modifiedItems
          * @param modifiedGroups
          */
-        layout(tree: ILayoutSite2, changedRange: any, modifiedItems: any, modifiedGroups: any): void;
+        layout(
+            tree: ILayoutSite2,
+            changedRange: any,
+            modifiedItems: any,
+            modifiedGroups: any,
+        ): void;
 
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
@@ -4765,7 +5092,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Removes an event handler that the addEventListener method registered.
@@ -4773,7 +5104,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -4841,7 +5176,11 @@ declare namespace WinJS.UI {
          * @param listener The function that handles the event.
          * @param capture If true, specifies that capture should be initiated, otherwise false.
          */
-        addEventListener(type: string, listener: Function, capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -4859,7 +5198,12 @@ declare namespace WinJS.UI {
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code. Use render instead.
          */
-        static getInformation(startDate: any, endDate: any, calendar?: any, datePatterns?: any): any;
+        static getInformation(
+            startDate: any,
+            endDate: any,
+            calendar?: any,
+            datePatterns?: any,
+        ): any;
 
         /**
          * Removes a listener for the specified event.
@@ -4867,7 +5211,11 @@ declare namespace WinJS.UI {
          * @param listener The listener.
          * @param useCapture Optional. The same value that was passed to addEventListener for this listener. It may be omitted if it was omitted when calling addEventListener.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: any): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: any,
+        ): void;
 
         // #endregion Methods
 
@@ -4938,7 +5286,11 @@ declare namespace WinJS.UI {
          * @param listener The listener to invoke when the event gets raised.
          * @param useCapture true to initiate capture; otherwise, false.
          */
-        export function addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        export function addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type, adding the specified additional properties.
@@ -4946,7 +5298,10 @@ declare namespace WinJS.UI {
          * @param eventProperties The set of additional properties to be attached to the event object when the event is raised.
          * @returns true if preventDefault was called on the event, otherwise false.
          */
-        export function dispatchEvent(type: string, eventProperties: any): boolean;
+        export function dispatchEvent(
+            type: string,
+            eventProperties: any,
+        ): boolean;
 
         /**
          * Removes an event listener from the control.
@@ -4954,7 +5309,11 @@ declare namespace WinJS.UI {
          * @param listener The listener to remove.
          * @param useCapture true to initiate capture; otherwise, false.
          */
-        export function removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        export function removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
     }
@@ -5010,7 +5369,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Returns the number of items in the FlipView control's itemDataSource.
@@ -5054,7 +5417,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to remove.
          * @param useCapture Set to true to unregister the event handler for the capturing phase; otherwise, set to false to unregister the event handler for the bubbling phase.
          */
-        removeEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Sets custom animations for the FlipView to use when navigating between pages.
@@ -5175,7 +5542,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -5201,7 +5572,11 @@ declare namespace WinJS.UI {
          * @param placement The placement of the Flyout to the anchor: the string literal "top", "bottom", "left", or "right".
          * @param alignment For "top" or "bottom" placement, the alignment of the Flyout to the anchor's edge: the string literal "center", "left", or "right".
          */
-        show(anchor?: HTMLElement, placement?: string, alignment?: string): void;
+        show(
+            anchor?: HTMLElement,
+            placement?: string,
+            alignment?: string,
+        ): void;
 
         /**
          * Shows the Flyout, if hidden, regardless of other states, top and left aligned at the specified coordinates,
@@ -5221,7 +5596,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -5332,7 +5711,12 @@ declare namespace WinJS.UI {
          * @param modifiedItems
          * @param modifiedGroups
          */
-        layout(tree: any, changedRange: any, modifiedItems: any, modifiedGroups: any): void;
+        layout(
+            tree: any,
+            changedRange: any,
+            modifiedItems: any,
+            modifiedGroups: any,
+        ): void;
 
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
@@ -5446,7 +5830,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -5473,7 +5861,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -5702,7 +6094,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -5728,7 +6124,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -5852,7 +6252,12 @@ declare namespace WinJS.UI {
          * @param modifiedItems
          * @param modifiedGroups
          */
-        layout(tree: any, changedRange: any, modifiedItems: any, modifiedGroups: any): void;
+        layout(
+            tree: any,
+            changedRange: any,
+            modifiedItems: any,
+            modifiedGroups: any,
+        ): void;
 
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
@@ -6030,7 +6435,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -6086,7 +6495,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Triggers the ListView disposal service manually.
@@ -6335,7 +6748,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -6362,7 +6779,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -6521,7 +6942,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -6561,7 +6986,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Shows the Menu, if hidden, regardless of other states.
@@ -6667,7 +7096,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Disposes this control.
@@ -6680,7 +7113,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -6801,7 +7238,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -6834,7 +7275,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Opens the NavBar
@@ -6942,7 +7387,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -6963,7 +7412,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -7056,7 +7509,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7082,7 +7539,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -7176,7 +7637,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Releases resources held by this Rating. Call this method when the Rating is no longer needed. After calling this method, the Rating becomes unusable.
@@ -7189,7 +7654,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -7331,7 +7800,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7359,7 +7832,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -7449,7 +7926,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7470,7 +7951,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Specifies whether suggestions based on local files are automatically displayed in the search pane, and defines the criteria that Windows uses to locate and filter these suggestions.
@@ -7565,7 +8050,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7591,7 +8080,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
@@ -7696,7 +8189,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7728,7 +8225,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Shows the SettingsPane UI, if hidden.
@@ -7905,7 +8406,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Removes an event handler that the addEventListener method registered.
@@ -7913,7 +8418,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -7981,7 +8490,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Removes an event handler that the addEventListener method registered.
@@ -7989,7 +8502,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8044,7 +8561,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8065,7 +8586,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -8130,7 +8655,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(type: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8146,7 +8675,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Optional. The same value that was passed to addEventListener for this listener. It may be omitted if it was omitted when calling addEventListener.
          */
-        removeEventListener(type: string, eventHandler: Function, useCapture?: any): void;
+        removeEventListener(
+            type: string,
+            eventHandler: Function,
+            useCapture?: any,
+        ): void;
 
         // #endregion Methods
 
@@ -8233,7 +8766,11 @@ declare namespace WinJS.UI {
          * @param listener The function that handles the event.
          * @param capture If true, specifies that capture should be initiated, otherwise false.
          */
-        addEventListener(type: string, listener: Function, capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8251,7 +8788,11 @@ declare namespace WinJS.UI {
         /**
          * This API supports the WinJS infrastructure and is not intended to be used directly from your code. Use render instead.
          */
-        static getInformation(clock: any, minuteIncrement: any, timerPatterns?: any): any;
+        static getInformation(
+            clock: any,
+            minuteIncrement: any,
+            timerPatterns?: any,
+        ): any;
 
         /**
          * Removes a listener for the specified event.
@@ -8259,7 +8800,11 @@ declare namespace WinJS.UI {
          * @param listener The listener.
          * @param useCapture Optional. The same value that was passed to addEventListener for this listener. It may be omitted if it was omitted when calling addEventListener.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: any): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: any,
+        ): void;
 
         // #endregion Methods
 
@@ -8346,7 +8891,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8367,7 +8916,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -8524,7 +9077,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Removes an event handler that the addEventListener method registered.
@@ -8532,7 +9089,11 @@ declare namespace WinJS.UI {
          * @param listener The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8594,7 +9155,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Hides the Tooltip.
@@ -8618,7 +9183,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -8685,7 +9254,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8711,7 +9284,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -8764,7 +9341,11 @@ declare namespace WinJS.UI {
          * @param eventHandler The event handler function to associate with the event.
          * @param useCapture Set to true to register the event handler for the capturing phase; otherwise, set to false to register the event handler for the bubbling phase.
          */
-        addEventListener(eventName: string, eventHandler: Function, useCapture?: boolean): void;
+        addEventListener(
+            eventName: string,
+            eventHandler: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with additional properties.
@@ -8780,7 +9361,11 @@ declare namespace WinJS.UI {
          * @param eventCallback The event handler function to remove.
          * @param useCapture Set to true to remove the capturing phase event handler; set to false to remove the bubbling phase event handler.
          */
-        removeEventListener(eventName: string, eventCallback: Function, useCapture?: boolean): void;
+        removeEventListener(
+            eventName: string,
+            eventCallback: Function,
+            useCapture?: boolean,
+        ): void;
 
         // #endregion Methods
 
@@ -8836,7 +9421,10 @@ declare namespace WinJS.UI {
      * @param animation The animation description or an array of animation descriptions to apply to element. An animation description is a JavaScript object with specific properties, listed below. There are two types of animation descriptions: one for keyframe-based animations and one for explicit animations. These types are distinguished by whether the keyframe property has a defined value. The following properties are required for both types of animation descriptions: property (string), delay (number), duration (number), timing (string). If an animation has a keyframe property with a defined, non-null value, then the animation is a keyframe-based animation. A keyframe-based animation description requires the following property in addition to those mentioned above: keyframe (string). If an animation does not have a keyframe property, or if the value of the property is null or undefined, then the animation is an explicit animation. An explicit animation description requires the following properties in addition to the common properties mentioned above: from, to. The values given in the from and to properties must be valid for the CSS property specified by the property property. For example, if the CSS property is "opacity", then the from and to properties must be numbers between 0 and 1 (inclusive).
      * @returns Returns a Promise object that completes when the CSS animation is complete.
      */
-    function executeAnimation(element: HTMLElement, animation: any): Promise<any>;
+    function executeAnimation(
+        element: HTMLElement,
+        animation: any,
+    ): Promise<any>;
 
     /**
      * Asynchronously executes a collection of CSS transitions on a collection of elements. This is the underlying animation mechanism used by the Animations Library. Apps are encouraged to use the Animations Library to conform with the standard look and feel of the rest of the system, rather than calling this function directly.
@@ -8844,7 +9432,10 @@ declare namespace WinJS.UI {
      * @param transition The transition description or an array of transition descriptions to apply to element. A transition description is a JavaScript object with these properties: property (string), delay (number), duration (number), timing (string), from (optional), to. The values given in the from and to properties must be valid for the CSS property specified by the property property. For example, if the CSS property is "opacity", then the from and to properties must be numbers between 0 and 1 (inclusive).
      * @returns Returns a Promise that completes when the transition is finished.
      */
-    function executeTransition(element: HTMLElement, transition: any): Promise<any>;
+    function executeTransition(
+        element: HTMLElement,
+        transition: any,
+    ): Promise<any>;
 
     /**
      * Retrieves the items in the specified index range.
@@ -8852,7 +9443,10 @@ declare namespace WinJS.UI {
      * @param ranges An array of ISelectionRange objects that have firstIndex and lastIndex values.
      * @returns A Promise that contains an array of the requested IItem objects.
      */
-    function getItemsFromRanges<U>(dataSource: IListDataSource<U>, ranges: ISelectionRange[]): Promise<IItem<U>>;
+    function getItemsFromRanges<U>(
+        dataSource: IListDataSource<U>,
+        ranges: ISelectionRange[],
+    ): Promise<IItem<U>>;
 
     /**
      * Determines whether the Animations Library and ListView animations will be performed if called.
@@ -8863,7 +9457,11 @@ declare namespace WinJS.UI {
     /**
      * * This API supports the WinJS infrastructure and is not intended to be used directly from your code.
      */
-    function optionsParser(value: string, context?: any, functionContext?: any): any;
+    function optionsParser(
+        value: string,
+        context?: any,
+        functionContext?: any,
+    ): any;
 
     /**
      * Applies declarative control binding to all elements, starting at the specified root element.
@@ -8871,7 +9469,10 @@ declare namespace WinJS.UI {
      * @param skipRoot If true, the elements to be bound skip the specified root element and include only the children.
      * @returns A promise that is fulfilled when binding has been applied to all the controls.
      */
-    function processAll(rootElement?: Element, skipRoot?: boolean): Promise<any>;
+    function processAll(
+        rootElement?: Element,
+        skipRoot?: boolean,
+    ): Promise<any>;
 
     /**
      * Applies declarative control binding to the specified element.
@@ -8939,7 +9540,11 @@ declare namespace WinJS.UI.XYFocus {
     }
 
     export interface XYFocusEvent extends CustomEvent {
-        detail: { nextFocusElement: HTMLElement; keyCode: number; previousFocusElement: HTMLElement };
+        detail: {
+            nextFocusElement: HTMLElement;
+            keyCode: number;
+            previousFocusElement: HTMLElement;
+        };
     }
 
     /**
@@ -8982,7 +9587,10 @@ declare namespace WinJS.UI.XYFocus {
      * @param type The type (name) of the event.
      * @param listener The listener to invoke when the event gets raised.
      */
-    export function addEventListener(type: string, handler: EventListener): void;
+    export function addEventListener(
+        type: string,
+        handler: EventListener,
+    ): void;
 
     /**
      * Raises an event of the specified type and with additional properties.
@@ -8997,29 +9605,62 @@ declare namespace WinJS.UI.XYFocus {
      * @param type The type (name) of the event.
      * @param listener The listener to remove.
      */
-    export function removeEventListener(type: string, handler: EventListener): void;
+    export function removeEventListener(
+        type: string,
+        handler: EventListener,
+    ): void;
 
     /**
      * Returns the next focusable element from the current active element (or reference, if supplied) towards the specified direction.
      * @param direction The direction to search.
      * @param options An options object configuring the search.
      */
-    export function findNextFocusElement(direction: string, options?: XYFocusOptions): HTMLElement;
-    export function findNextFocusElement(direction: "left", options?: XYFocusOptions): HTMLElement;
-    export function findNextFocusElement(direction: "right", options?: XYFocusOptions): HTMLElement;
-    export function findNextFocusElement(direction: "up", options?: XYFocusOptions): HTMLElement;
-    export function findNextFocusElement(direction: "down", options?: XYFocusOptions): HTMLElement;
+    export function findNextFocusElement(
+        direction: string,
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function findNextFocusElement(
+        direction: "left",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function findNextFocusElement(
+        direction: "right",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function findNextFocusElement(
+        direction: "up",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function findNextFocusElement(
+        direction: "down",
+        options?: XYFocusOptions,
+    ): HTMLElement;
 
     /**
      * Moves focus to the next focusable element from the current active element (or reference, if supplied) towards the specific direction.
      * @param direction The direction to move.
      * @param options An options object configuring the focus move.
      */
-    export function moveFocus(direction: string, options?: XYFocusOptions): HTMLElement;
-    export function moveFocus(direction: "left", options?: XYFocusOptions): HTMLElement;
-    export function moveFocus(direction: "right", options?: XYFocusOptions): HTMLElement;
-    export function moveFocus(direction: "up", options?: XYFocusOptions): HTMLElement;
-    export function moveFocus(direction: "down", options?: XYFocusOptions): HTMLElement;
+    export function moveFocus(
+        direction: string,
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function moveFocus(
+        direction: "left",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function moveFocus(
+        direction: "right",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function moveFocus(
+        direction: "up",
+        options?: XYFocusOptions,
+    ): HTMLElement;
+    export function moveFocus(
+        direction: "down",
+        options?: XYFocusOptions,
+    ): HTMLElement;
 
     // #region Events
 
@@ -9072,8 +9713,14 @@ declare namespace WinJS.UI.Fragments {
      * @param target The element to which the fragment is appended.
      * @returns A promise that is fulfilled when the fragment has been loaded. If a target element is not specified, the copied fragment is the completed value. The fragment is added to the cache. See also render, where the element is not added to the cache.
      */
-    function renderCopy(href: string, target?: HTMLElement): Promise<HTMLElement>;
-    function renderCopy(href: HTMLElement, target?: HTMLElement): Promise<HTMLElement>;
+    function renderCopy(
+        href: string,
+        target?: HTMLElement,
+    ): Promise<HTMLElement>;
+    function renderCopy(
+        href: HTMLElement,
+        target?: HTMLElement,
+    ): Promise<HTMLElement>;
 
     // #endregion Functions
 }
@@ -9133,7 +9780,11 @@ declare namespace WinJS.UI.Pages {
          * @param options An object that contains one or more property/value pairs to apply to the PageControl. How these property/value pairs are used (or not used) depends on the implementation of that particular PageControl.
          * @param loadResult A Promise that contains the elements returned from the load method.
          */
-        render?(element: HTMLElement, options: any, loadResult: Promise<any>): void;
+        render?(
+            element: HTMLElement,
+            options: any,
+            loadResult: Promise<any>,
+        ): void;
 
         // #endregion Methods
     }
@@ -9155,7 +9806,12 @@ declare namespace WinJS.UI.Pages {
     function define(
         uri: string,
         members: IPageControlMembers,
-    ): (element?: HTMLElement, options?: any, complete?: (page: any) => void, parentedPromise?: Promise<any>) => void;
+    ): (
+        element?: HTMLElement,
+        options?: any,
+        complete?: (page: any) => void,
+        parentedPromise?: Promise<any>,
+    ) => void;
 
     /**
      * Gets an already-defined page control for the specified URI, or creates a new one.
@@ -9164,7 +9820,12 @@ declare namespace WinJS.UI.Pages {
      */
     function get(
         uri: string,
-    ): (element?: HTMLElement, options?: any, complete?: (page: any) => void, parentedPromise?: Promise<any>) => void;
+    ): (
+        element?: HTMLElement,
+        options?: any,
+        complete?: (page: any) => void,
+        parentedPromise?: Promise<any>,
+    ) => void;
 
     /**
      * Creates a PageControl from the specified URI and inserts it inside the specified element.
@@ -9174,7 +9835,12 @@ declare namespace WinJS.UI.Pages {
      * @param parentedPromise A Promise that is fulfilled when the new PageControl is done rendering and its contents becomes the child of element.
      * @returns A promise that is fulfilled when rendering is complete, if asynchronous processing is necessary. If not, returns nothing.
      */
-    function render(uri: string, element?: HTMLElement, options?: any, parentedPromise?: Promise<any>): Promise<any>;
+    function render(
+        uri: string,
+        element?: HTMLElement,
+        options?: any,
+        parentedPromise?: Promise<any>,
+    ): Promise<any>;
 
     // #endregion Functions
 }
@@ -9766,7 +10432,11 @@ declare namespace WinJS.Utilities {
          * @param listener The listener to invoke when the event gets raised.
          * @param useCapture If true, initiates capture, otherwise false.
          */
-        addEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
 
         /**
          * Raises an event of the specified type and with the specified additional properties.
@@ -9782,7 +10452,11 @@ declare namespace WinJS.Utilities {
          * @param listener The listener to remove.
          * @param useCapture true if capture is to be initiated, otherwise false.
          */
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void;
         // #endregion Methods
     };
 
@@ -9820,7 +10494,10 @@ declare namespace WinJS.Utilities {
          * @param thisArg The argument to bind to callbackFn.
          * @returns The QueryCollection.
          */
-        forEach(callbackFn: (value: T, index: number, array: T[]) => void, thisArg?: any): QueryCollection<T>;
+        forEach(
+            callbackFn: (value: T, index: number, array: T[]) => void,
+            thisArg?: any,
+        ): QueryCollection<T>;
 
         /**
          * Gets an item from the QueryCollection.
@@ -9890,7 +10567,11 @@ declare namespace WinJS.Utilities {
          * @param capture true if capture == true; otherwise, false.
          * @returns This QueryCollection object.
          */
-        removeEventListener(eventType: string, listener: Function, capture?: boolean): QueryCollection<T>;
+        removeEventListener(
+            eventType: string,
+            listener: Function,
+            capture?: boolean,
+        ): QueryCollection<T>;
 
         /**
          * Sets an attribute value on all the items in the collection.
@@ -9915,7 +10596,11 @@ declare namespace WinJS.Utilities {
          * @param renderDonePromiseCallback If supplied, this function is called each time the template gets rendered, and is passed a promise that is fulfilled when the template rendering is complete.
          * @returns The QueryCollection.
          */
-        template(templateElement: HTMLElement, data: any, renderDonePromiseCallback?: Function): QueryCollection<T>;
+        template(
+            templateElement: HTMLElement,
+            data: any,
+            renderDonePromiseCallback?: Function,
+        ): QueryCollection<T>;
 
         /**
          * Toggles (adds or removes) the specified class on all the elements in the collection. If the class is present, it is removed; if it is absent, it is added.
@@ -10023,14 +10708,20 @@ declare namespace WinJS.Utilities {
          * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        every(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        every(
+            callbackfn: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Determines whether the specified callback function returns true for any element of an array.
          * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        some(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): boolean;
+        some(
+            callbackfn: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): boolean;
 
         /**
          * Calls a defined callback function on each element of an array, and returns an array that contains the results.
@@ -10047,32 +10738,50 @@ declare namespace WinJS.Utilities {
          * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        map<U>(this: [T, T, T, T], callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): [U, U, U, U];
+        map<U>(
+            this: [T, T, T, T],
+            callbackfn: (value: T, index: number, array: T[]) => U,
+            thisArg?: any,
+        ): [U, U, U, U];
         /**
          * Calls a defined callback function on each element of an array, and returns an array that contains the results.
          * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        map<U>(this: [T, T, T], callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): [U, U, U];
+        map<U>(
+            this: [T, T, T],
+            callbackfn: (value: T, index: number, array: T[]) => U,
+            thisArg?: any,
+        ): [U, U, U];
         /**
          * Calls a defined callback function on each element of an array, and returns an array that contains the results.
          * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        map<U>(this: [T, T], callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): [U, U];
+        map<U>(
+            this: [T, T],
+            callbackfn: (value: T, index: number, array: T[]) => U,
+            thisArg?: any,
+        ): [U, U];
         /**
          * Calls a defined callback function on each element of an array, and returns an array that contains the results.
          * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+        map<U>(
+            callbackfn: (value: T, index: number, array: T[]) => U,
+            thisArg?: any,
+        ): U[];
 
         /**
          * Returns the elements of an array that meet the condition specified in a callback function.
          * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
          * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
          */
-        filter(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): T[];
+        filter(
+            callbackfn: (value: T, index: number, array: T[]) => boolean,
+            thisArg?: any,
+        ): T[];
 
         /**
          * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
@@ -10080,7 +10789,12 @@ declare namespace WinJS.Utilities {
          * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
          */
         reduce(
-            callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T,
+            callbackfn: (
+                previousValue: T,
+                currentValue: T,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initialValue?: T,
         ): T;
         /**
@@ -10089,7 +10803,12 @@ declare namespace WinJS.Utilities {
          * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
          */
         reduce<U>(
-            callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+            callbackfn: (
+                previousValue: U,
+                currentValue: T,
+                currentIndex: number,
+                array: T[],
+            ) => U,
             initialValue: U,
         ): U;
 
@@ -10099,7 +10818,12 @@ declare namespace WinJS.Utilities {
          * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
          */
         reduceRight(
-            callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T,
+            callbackfn: (
+                previousValue: T,
+                currentValue: T,
+                currentIndex: number,
+                array: T[],
+            ) => T,
             initialValue?: T,
         ): T;
         /**
@@ -10108,7 +10832,12 @@ declare namespace WinJS.Utilities {
          * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
          */
         reduceRight<U>(
-            callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+            callbackfn: (
+                previousValue: U,
+                currentValue: T,
+                currentIndex: number,
+                array: T[],
+            ) => U,
             initialValue: U,
         ): U;
 
@@ -10228,7 +10957,10 @@ declare namespace WinJS.Utilities {
      * @param parent The parent element.
      * @returns The relative left coordinate.
      */
-    function getRelativeLeft(element?: HTMLElement, parent?: HTMLElement): number;
+    function getRelativeLeft(
+        element?: HTMLElement,
+        parent?: HTMLElement,
+    ): number;
 
     /**
      * Gets the top coordinate of the element relative to the specified parent.
@@ -10236,14 +10968,20 @@ declare namespace WinJS.Utilities {
      * @param parent The parent element.
      * @returns The relative top coordinate.
      */
-    function getRelativeTop(element?: HTMLElement, parent?: HTMLElement): number;
+    function getRelativeTop(
+        element?: HTMLElement,
+        parent?: HTMLElement,
+    ): number;
 
     /**
      * Gets the scrollLeft and scrollTop of the specified element, adjusting the scrollLeft to change from browser specific coordinates to logical coordinates when in RTL.
      * @param element The element.
      * @returns An object with two properties: scrollLeft and scrollTop
      */
-    function getScrollPosition(element: HTMLElement): { scrollLeft: number; scrollTop: number };
+    function getScrollPosition(element: HTMLElement): {
+        scrollLeft: number;
+        scrollTop: number;
+    };
 
     /**
      * Gets the tab index of the specified element.
@@ -10287,7 +11025,11 @@ declare namespace WinJS.Utilities {
      * @param position The position relative to the element at which to insert the HTML. Possible values are: beforebegin, afterbegin, beforeend, afterend.
      * @param text The text to insert.
      */
-    function insertAdjacentHTML(element: HTMLElement, position: string, text: string): void;
+    function insertAdjacentHTML(
+        element: HTMLElement,
+        position: string,
+        text: string,
+    ): void;
 
     /**
      * Calls insertAdjacentHTML on the specified element in the context of MSApp.execUnsafeLocalFunction.
@@ -10295,7 +11037,11 @@ declare namespace WinJS.Utilities {
      * @param position The position relative to the element at which to insert the HTML. Possible values are: beforebegin, afterbegin, beforeend, afterend.
      * @param text Value to be provided to insertAdjacentHTML.
      */
-    function insertAdjacentHTMLUnsafe(element: HTMLElement, position: string, text: string): void;
+    function insertAdjacentHTMLUnsafe(
+        element: HTMLElement,
+        position: string,
+        text: string,
+    ): void;
 
     /**
      * Attaches the default dispose API wrapping the dispose implementation to the specified element.
@@ -10317,7 +11063,10 @@ declare namespace WinJS.Utilities {
      * @param element Optional. The root element at which to start the query. If this parameter is omitted, the scope of the query is the entire document.
      * @returns A QueryCollection with zero or one elements matching the specified selector query.
      */
-    function query(query: any, element?: HTMLElement): QueryCollection<HTMLElement>;
+    function query(
+        query: any,
+        element?: HTMLElement,
+    ): QueryCollection<HTMLElement>;
 
     /**
      * Ensures that the specified function executes only after the DOMContentLoaded event has fired for the current page. The DOMContentLoaded event occurs after the page has been parsed but before all the resources are loaded.
@@ -10375,7 +11124,10 @@ declare namespace WinJS.Utilities {
      * @param element The element.
      * @param position An object describing the position to set.
      */
-    function setScrollPosition(element: HTMLElement, position: { scrollLeft: number; scrollTop: number }): void;
+    function setScrollPosition(
+        element: HTMLElement,
+        position: { scrollLeft: number; scrollTop: number },
+    ): void;
 
     /**
      * Configures a logger that writes messages containing the specified tags to the JavaScript console.
@@ -10417,7 +11169,9 @@ declare namespace WinJS.Utilities {
 
     interface ILogOptions {
         type?: string | undefined;
-        action?: ((message: string, tags: string, type: string) => void) | undefined;
+        action?:
+            | ((message: string, tags: string, type: string) => void)
+            | undefined;
         excludeTags?: string | undefined;
         tags?: string | undefined;
     }
@@ -10625,7 +11379,12 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param name A description of the work item for diagnostics. The default value is an empty string.
      * @returns The job instance that represents this work item.
      */
-    function schedule(work: (jobInfo: IJobInfo) => any, priority?: Priority, thisArg?: any, name?: string): IJob;
+    function schedule(
+        work: (jobInfo: IJobInfo) => any,
+        priority?: Priority,
+        thisArg?: any,
+        name?: string,
+    ): IJob;
 
     /**
      * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.aboveNormal priority.
@@ -10633,7 +11392,10 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param jobName A string that describes the job for diagnostic purposes.
      * @returns A Promise that completes within a job of aboveNormal priority.
      */
-    function schedulePromiseAboveNormal<U>(promiseValue?: U, jobName?: string): Promise<U>;
+    function schedulePromiseAboveNormal<U>(
+        promiseValue?: U,
+        jobName?: string,
+    ): Promise<U>;
 
     /**
      * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.belowNormal priority.
@@ -10641,7 +11403,10 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param jobName A string that describes the job for diagnostic purposes.
      * @returns A Promise that completes within a job of belowNormal priority.
      */
-    function schedulePromiseBelowNormal<U>(promiseValue?: U, jobName?: string): Promise<U>;
+    function schedulePromiseBelowNormal<U>(
+        promiseValue?: U,
+        jobName?: string,
+    ): Promise<U>;
 
     /**
      * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.high priority.
@@ -10649,7 +11414,10 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param jobName A string that describes the job for diagnostic purposes.
      * @returns A Promise that completes within a job of high priority.
      */
-    function schedulePromiseHigh<U>(promiseValue?: U, jobName?: string): Promise<U>;
+    function schedulePromiseHigh<U>(
+        promiseValue?: U,
+        jobName?: string,
+    ): Promise<U>;
 
     /**
      * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.Idle priority.
@@ -10657,7 +11425,10 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param jobName A string that describes the job for diagnostic purposes.
      * @returns A Promise that completes within a job of idle priority.
      */
-    function schedulePromiseIdle<U>(promiseValue?: U, jobName?: string): Promise<U>;
+    function schedulePromiseIdle<U>(
+        promiseValue?: U,
+        jobName?: string,
+    ): Promise<U>;
 
     /**
      * Schedules a job to complete the returned Promise at WinJS.Utilities.Scheduler.Priority.normal priority.
@@ -10665,7 +11436,10 @@ declare namespace WinJS.Utilities.Scheduler {
      * @param jobName A string that describes the job for diagnostic purposes.
      * @returns A Promise that completes within a job of normal priority.
      */
-    function schedulePromiseNormal<U>(promiseValue?: U, jobName?: string): Promise<U>;
+    function schedulePromiseNormal<U>(
+        promiseValue?: U,
+        jobName?: string,
+    ): Promise<U>;
 
     // #endregion Functions
 }

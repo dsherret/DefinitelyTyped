@@ -6,6 +6,8 @@ declare namespace nodemailerSendgrid {
     }
 }
 
-declare function nodemailerSendgrid(options: nodemailerSendgrid.SendgridOptions): Transport;
+declare function nodemailerSendgrid(
+    options: nodemailerSendgrid.SendgridOptions,
+): Transport;
 
 export = nodemailerSendgrid;

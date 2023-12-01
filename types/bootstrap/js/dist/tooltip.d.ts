@@ -1,5 +1,8 @@
 import * as Popper from "@popperjs/core";
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Tooltip extends BaseComponent {
     static getInstance: GetInstanceFactory<Tooltip>;
@@ -88,7 +91,12 @@ declare class Tooltip extends BaseComponent {
     /**
      * Gives a way to change the tooltip’s content after its initialization.
      */
-    setContent(content?: Record<string, string | Element | Tooltip.SetContentFunction | null>): void;
+    setContent(
+        content?: Record<
+            string,
+            string | Element | Tooltip.SetContentFunction | null
+        >,
+    ): void;
 }
 
 declare namespace Tooltip {
@@ -129,7 +137,9 @@ declare namespace Tooltip {
 
     type PopoverPlacement = "auto" | "top" | "bottom" | "left" | "right";
 
-    type PopperConfigFunction = (defaultBsPopperConfig: Popper.Options) => Partial<Popper.Options>;
+    type PopperConfigFunction = (
+        defaultBsPopperConfig: Popper.Options,
+    ) => Partial<Popper.Options>;
 
     interface Options {
         /**
@@ -217,7 +227,11 @@ declare namespace Tooltip {
          *
          * @default ''
          */
-        title: string | Element | JQuery | ((this: HTMLElement) => string | Element | JQuery);
+        title:
+            | string
+            | Element
+            | JQuery
+            | ((this: HTMLElement) => string | Element | JQuery);
 
         /**
          * How tooltip is triggered - click | hover | focus | manual. You may
@@ -302,7 +316,10 @@ declare namespace Tooltip {
          *
          * @see {@link https://v5.getbootstrap.com/docs/5.0/getting-started/javascript/#sanitizer}
          */
-        allowList: Record<keyof HTMLElementTagNameMap | "*", Array<string | RegExp>>;
+        allowList: Record<
+            keyof HTMLElementTagNameMap | "*",
+            Array<string | RegExp>
+        >;
 
         /**
          * Here you can supply your own sanitize function. This can be useful if
@@ -328,7 +345,11 @@ declare namespace Tooltip {
         popperConfig: Partial<Popper.Options> | PopperConfigFunction | null;
     }
 
-    type SetContentFunction = () => string | Element | (() => string | Element | null) | null;
+    type SetContentFunction = () =>
+        | string
+        | Element
+        | (() => string | Element | null)
+        | null;
 
     type jQueryInterface = (
         config?:

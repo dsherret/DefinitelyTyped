@@ -104,10 +104,7 @@ declare module "angular" {
              * @param roleName {String} Name of defined role
              * @param permissions {Array} Set of permission names
              */
-            defineRole(
-                roleName: string,
-                permissions: string[],
-            ): void;
+            defineRole(roleName: string, permissions: string[]): void;
 
             /**
              * Checks if role is defined in store
@@ -177,13 +174,29 @@ declare module "angular" {
         }
 
         export interface DataWithPermissions {
-            permissions?: {
-                only?: (() => void) | string | string[] | angular.IPromise<any> | undefined;
-                except?: (() => void) | string | string[] | angular.IPromise<any> | undefined;
-                redirectTo: string | (() => string) | (() => PermissionRedirectConfigation) | {
-                    [index: string]: PermissionRedirectConfigation;
-                };
-            } | undefined;
+            permissions?:
+                | {
+                      only?:
+                          | (() => void)
+                          | string
+                          | string[]
+                          | angular.IPromise<any>
+                          | undefined;
+                      except?:
+                          | (() => void)
+                          | string
+                          | string[]
+                          | angular.IPromise<any>
+                          | undefined;
+                      redirectTo:
+                          | string
+                          | (() => string)
+                          | (() => PermissionRedirectConfigation)
+                          | {
+                                [index: string]: PermissionRedirectConfigation;
+                            };
+                  }
+                | undefined;
         }
 
         export interface PermissionRedirectConfigation {

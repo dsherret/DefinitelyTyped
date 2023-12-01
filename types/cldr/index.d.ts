@@ -68,7 +68,10 @@ declare class Cldr {
     readonly windowsZonesByMapZone: WindowsZone[];
 
     getDocument(fileName: string): Document;
-    getDocument(fileName: string, cb: (err: null | Error, document: Document) => void): void;
+    getDocument(
+        fileName: string,
+        cb: (err: null | Error, document: Document) => void,
+    ): void;
 
     resolveParentLocaleId(localeId: string): string;
 
@@ -78,7 +81,10 @@ declare class Cldr {
 
     expandLocaleIdToPrioritizedList(localeId: string): string[];
 
-    getPrioritizedDocumentsForLocale(localeId: string, type: string): Document[];
+    getPrioritizedDocumentsForLocale(
+        localeId: string,
+        type: string,
+    ): Document[];
 
     preload(cb: (err: undefined | Error) => void): void;
     preload(localeIds: string[], cb: (err: undefined | Error) => void): void;
@@ -101,7 +107,9 @@ declare class Cldr {
 
     extractTerritoryAliases(): Partial<Record<string, Alias>>;
 
-    extractCurrencyInfoById(localeId: string): Partial<Record<string, CurrencyInfo>>;
+    extractCurrencyInfoById(
+        localeId: string,
+    ): Partial<Record<string, CurrencyInfo>>;
 
     extractScriptDisplayNames(localeId: string): PartialStringRecord;
 
@@ -137,17 +145,35 @@ declare class Cldr {
         dateOrTime: "date" | "time",
     ): PartialStringRecord;
 
-    extractDateFormats(localeId: string, calendarId?: string): PartialStringRecord;
+    extractDateFormats(
+        localeId: string,
+        calendarId?: string,
+    ): PartialStringRecord;
 
-    extractTimeFormats(localeId: string, calendarId?: string): PartialStringRecord;
+    extractTimeFormats(
+        localeId: string,
+        calendarId?: string,
+    ): PartialStringRecord;
 
-    extractDateFormatItems(localeId: string, calendarId?: string): PartialStringRecord;
+    extractDateFormatItems(
+        localeId: string,
+        calendarId?: string,
+    ): PartialStringRecord;
 
-    extractDateIntervalFormats(localeId: string, calendarId?: string): PartialStringRecord;
+    extractDateIntervalFormats(
+        localeId: string,
+        calendarId?: string,
+    ): PartialStringRecord;
 
-    extractDateIntervalFallbackFormat(localeId: string, calendarId?: string): PartialStringRecord;
+    extractDateIntervalFallbackFormat(
+        localeId: string,
+        calendarId?: string,
+    ): PartialStringRecord;
 
-    extractNumberSymbols(localeId: string, numberSystemId?: string): PartialStringRecord;
+    extractNumberSymbols(
+        localeId: string,
+        numberSystemId?: string,
+    ): PartialStringRecord;
 
     extractNumberFormats(localeId: string, numberSystemId?: string): object;
 
@@ -161,9 +187,15 @@ declare class Cldr {
 
     extractCharacters(localeId: string): object;
 
-    extractPluralClasses(localeId: string, cardinalOrOrdinal: CardinalOrOrdinal): object;
+    extractPluralClasses(
+        localeId: string,
+        cardinalOrOrdinal: CardinalOrOrdinal,
+    ): object;
 
-    extractPluralRuleFunction(localeId: string, cardinalOrOrdinal: CardinalOrOrdinal): any;
+    extractPluralRuleFunction(
+        localeId: string,
+        cardinalOrOrdinal: CardinalOrOrdinal,
+    ): any;
 
     extractRbnfFunctionByType(localeId: string, types?: string[]): object;
 
@@ -189,9 +221,13 @@ declare class Cldr {
 
     extractTextToSpeechCharacterLabels(localeId?: string): PartialStringRecord;
 
-    extractDerivedTextToSpeechCharacterLabels(localeId?: string): PartialStringRecord;
+    extractDerivedTextToSpeechCharacterLabels(
+        localeId?: string,
+    ): PartialStringRecord;
 
-    extractAllTextToSpeechCharacterLabels(localeId?: string): PartialStringRecord;
+    extractAllTextToSpeechCharacterLabels(
+        localeId?: string,
+    ): PartialStringRecord;
 }
 
 declare const cldr: Cldr;

@@ -5,7 +5,8 @@
  * @param error - Error object.
  * @param value - passed value to any callback function.
  */
-type Callback<T> = ((error: Error, value?: undefined) => void) & ((error: null, value: T) => void);
+type Callback<T> = ((error: Error, value?: undefined) => void) &
+    ((error: null, value: T) => void);
 
 /**
  * Represents a timestamp based on the UNIX epoch (1970 Jan 1).
@@ -90,7 +91,9 @@ type rosPrimitiveTypes = Set<rosType>;
  * Given a raw message definition string, parse it into an object representation.
  * @param messageDefinition - ROSBAG message definition string.
  */
-declare function parseMessageDefinition(messageDefinition: string): RosMsgDefinition[];
+declare function parseMessageDefinition(
+    messageDefinition: string,
+): RosMsgDefinition[];
 
 declare class MessageReader {
     reader: (buffer: Buffer) => any;
@@ -241,7 +244,10 @@ declare class BagReader {
         fileOffset: number,
         connectionCount: number,
         chunkCount: number,
-        callback: Callback<{ connections: Connection[]; chunkInfos: ChunkInfo[] }>,
+        callback: Callback<{
+            connections: Connection[];
+            chunkInfos: ChunkInfo[];
+        }>,
     ): void;
 
     /**
@@ -298,7 +304,11 @@ declare class BagReader {
      * @param decompress
      * @param callback
      */
-    readChunk(chunkInfo: ChunkInfo, decompress: Decompress, callback: Callback<ChunkReadResult>): void;
+    readChunk(
+        chunkInfo: ChunkInfo,
+        decompress: Decompress,
+        callback: Callback<ChunkReadResult>,
+    ): void;
 
     /**
      * Reads count records from a buffer starting at fileOffset
@@ -320,7 +330,11 @@ declare class BagReader {
      * @param fileOffset
      * @param cls
      */
-    readRecordFromBuffer<T extends Record>(buffer: Buffer, fileOffset: number, cls: T & { opcode: number }): T;
+    readRecordFromBuffer<T extends Record>(
+        buffer: Buffer,
+        fileOffset: number,
+        cls: T & { opcode: number },
+    ): T;
 }
 
 interface ReadOptions {
@@ -369,7 +383,10 @@ declare class Bag {
      */
     open(): Promise<void>;
 
-    readMessages(opts: ReadOptions, callback: (msg: ReadResult<any>) => void): Promise<void>;
+    readMessages(
+        opts: ReadOptions,
+        callback: (msg: ReadResult<any>) => void,
+    ): Promise<void>;
 }
 
 declare class ReadResult<T> {

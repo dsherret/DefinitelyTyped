@@ -2,7 +2,10 @@
 
 import * as CodeMirror from "../../";
 
-export type FoldRangeFinder = (cm: CodeMirror.Editor, pos: CodeMirror.Position) => CodeMirror.FoldRange | undefined;
+export type FoldRangeFinder = (
+    cm: CodeMirror.Editor,
+    pos: CodeMirror.Position,
+) => CodeMirror.FoldRange | undefined;
 
 export interface FoldHelpers {
     combine: (...finders: FoldRangeFinder[]) => FoldRangeFinder;
@@ -45,7 +48,11 @@ declare module "../../" {
          * To dynamically generate the widget, this can be a function that returns a string or DOM node, which will then render as described.
          * The function will be invoked with parameters identifying the range to be folded.
          */
-        widget?: string | Element | ((from: Position, to: Position) => string | Element) | undefined;
+        widget?:
+            | string
+            | Element
+            | ((from: Position, to: Position) => string | Element)
+            | undefined;
 
         /**
          * When true (default is false), the addon will try to find foldable ranges on the lines above the current one if there isn't an eligible one on the given line.

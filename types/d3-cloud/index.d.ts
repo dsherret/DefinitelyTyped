@@ -35,28 +35,53 @@ declare module "d3" {
             size(size: [number, number]): Cloud<T>;
 
             font(): (datum: T, index: number) => string;
-            font(font: string | ((datum: T, index: number) => string)): Cloud<T>;
+            font(
+                font: string | ((datum: T, index: number) => string),
+            ): Cloud<T>;
 
             fontStyle(): (datum: T, index: number) => string;
-            fontStyle(style: string | ((datum: T, index: number) => string)): Cloud<T>;
+            fontStyle(
+                style: string | ((datum: T, index: number) => string),
+            ): Cloud<T>;
 
             fontWeight(): (datum: T, index: number) => string | number;
-            fontWeight(weight: string | number | ((datum: T, index: number) => string | number)): Cloud<T>;
+            fontWeight(
+                weight:
+                    | string
+                    | number
+                    | ((datum: T, index: number) => string | number),
+            ): Cloud<T>;
 
             rotate(): (datum: T, index: number) => number;
-            rotate(rotate: number | ((datum: T, index: number) => number)): Cloud<T>;
+            rotate(
+                rotate: number | ((datum: T, index: number) => number),
+            ): Cloud<T>;
 
             text(): (datum: T, index: number) => string;
-            text(text: string | ((datum: T, index: number) => string)): Cloud<T>;
+            text(
+                text: string | ((datum: T, index: number) => string),
+            ): Cloud<T>;
 
-            spiral(): (size: [number, number]) => (t: number) => [number, number];
-            spiral(name: string | ((size: [number, number]) => (t: number) => [number, number])): Cloud<T>;
+            spiral(): (
+                size: [number, number],
+            ) => (t: number) => [number, number];
+            spiral(
+                name:
+                    | string
+                    | ((
+                          size: [number, number],
+                      ) => (t: number) => [number, number]),
+            ): Cloud<T>;
 
             fontSize(): (datum: T, index: number) => number;
-            fontSize(size: number | ((datum: T, index: number) => number)): Cloud<T>;
+            fontSize(
+                size: number | ((datum: T, index: number) => number),
+            ): Cloud<T>;
 
             padding(): (datum: T, index: number) => number;
-            padding(padding: number | ((datum: T, index: number) => number)): Cloud<T>;
+            padding(
+                padding: number | ((datum: T, index: number) => number),
+            ): Cloud<T>;
 
             /**
              * If specified, sets the internal random number generator,used for selecting the initial position of each word,
@@ -76,11 +101,19 @@ declare module "d3" {
             canvas(canvasGenerator: () => HTMLCanvasElement): Cloud<T>;
 
             on(type: "word", listener: (word: T) => void): Cloud<T>;
-            on(type: "end", listener: (tags: T[], bounds: Array<{ x: number; y: number }>) => void): Cloud<T>;
+            on(
+                type: "end",
+                listener: (
+                    tags: T[],
+                    bounds: Array<{ x: number; y: number }>,
+                ) => void,
+            ): Cloud<T>;
             on(type: string, listener: (...args: any[]) => void): Cloud<T>;
 
             on(type: "word"): (word: T) => void;
-            on(type: "end"): (tags: T[], bounds: Array<{ x: number; y: number }>) => void;
+            on(
+                type: "end",
+            ): (tags: T[], bounds: Array<{ x: number; y: number }>) => void;
             on(type: string): (...args: any[]) => void;
         }
     }

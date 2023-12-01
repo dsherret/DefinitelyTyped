@@ -44,36 +44,36 @@ png.bitblt(pngs[1], 1);
 png.bitblt(pngs[1], 1, 1);
 png.bitblt(pngs[1], 1, 1, 1, 1, 1, 1);
 
-png.on("metadata", metadata => {
+png.on("metadata", (metadata) => {
     metadata.bpp === 1;
 });
-png.on("metadata", function(metadata) {
+png.on("metadata", function (metadata) {
     this; // $ExpectType PNG
     this.width === metadata.width;
     this.height === metadata.height;
 });
-png.on("parsed", data => {
+png.on("parsed", (data) => {
     data.byteLength === 1;
 });
-png.on("parsed", function(data) {
+png.on("parsed", function (data) {
     this; // $ExpectType PNG
     this.adjustGamma();
     this.pack().pipe(fs.createWriteStream("out.png"));
 });
-png.on("error", error => {
+png.on("error", (error) => {
     error === new Error("testing");
 });
-png.on("error", function(error) {
+png.on("error", function (error) {
     this; // $ExpectType PNG
 });
 png.on("closed", () => {
     // closed
 });
-png.on("closed", function() {
+png.on("closed", function () {
     this; // $ExpectType PNG
 });
 png.on("foo", () => {});
-png.on("foo", function() {
+png.on("foo", function () {
     this; // $ExpectType PNG
 });
 

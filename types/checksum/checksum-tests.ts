@@ -7,10 +7,18 @@ checksum.file("myfile.txt", (error: Error, hash: string): void => {
     // do nothing
 });
 
-checksum.file("myfile.txt", { algorithm: "sha1" }, (error: Error, hash: string): void => {
-    // do nothing
-});
+checksum.file(
+    "myfile.txt",
+    { algorithm: "sha1" },
+    (error: Error, hash: string): void => {
+        // do nothing
+    },
+);
 
-checksum.file("myfile.txt", { encoding: "base64" }, (error: Error, hash: string): void => {
-    // do nothing
-});
+checksum.file(
+    "myfile.txt",
+    { encoding: "base64" },
+    (error: Error, hash: string): void => {
+        // do nothing
+    },
+);

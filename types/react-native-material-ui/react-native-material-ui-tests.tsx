@@ -48,11 +48,15 @@ const Example = () => (
 
             <Card>
                 <ThemeContext.Consumer>
-                    {theme => <Text>Hello world!</Text>}
+                    {(theme) => <Text>Hello world!</Text>}
                 </ThemeContext.Consumer>
             </Card>
 
-            <Checkbox label="Select me" value="chicken" onCheck={a => console.log(a)} />
+            <Checkbox
+                label="Select me"
+                value="chicken"
+                onCheck={(a) => console.log(a)}
+            />
         </View>
     </ThemeContext.Provider>
 );
@@ -78,7 +82,10 @@ const DialogExample = () => (
     </Dialog>
 );
 
-class BottomNavigationExample extends React.Component<null, { active: string }> {
+class BottomNavigationExample extends React.Component<
+    null,
+    { active: string }
+> {
     state = {
         active: "today",
     };
@@ -148,5 +155,10 @@ class ToolbarExample extends React.Component<{}, { search: string }> {
 }
 
 const CheckboxExample = () => (
-    <Checkbox value="checked" onCheck={console.log} label="Check Me" style={{ icon: { color: "pink" } }} />
+    <Checkbox
+        value="checked"
+        onCheck={console.log}
+        label="Check Me"
+        style={{ icon: { color: "pink" } }}
+    />
 );

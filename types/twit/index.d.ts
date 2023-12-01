@@ -6,7 +6,12 @@ declare module "twit" {
     import { EventEmitter } from "events";
 
     namespace Twit {
-        export type StreamEndpoint = "statuses/filter" | "statuses/sample" | "statuses/firehose" | "user" | "site";
+        export type StreamEndpoint =
+            | "statuses/filter"
+            | "statuses/sample"
+            | "statuses/firehose"
+            | "user"
+            | "site";
 
         export namespace Twitter {
             export type ResultType = "mixed" | "popular" | "recent";
@@ -183,15 +188,19 @@ declare module "twit" {
                 contributors?: Contributors[] | undefined;
                 coordinates?: GeoJSON.Point | undefined;
                 created_at: string;
-                current_user_retweet?: {
-                    id: number;
-                    id_str: string;
-                } | undefined;
+                current_user_retweet?:
+                    | {
+                          id: number;
+                          id_str: string;
+                      }
+                    | undefined;
                 display_text_range?: [number, number] | undefined;
                 entities: Entities;
-                extended_entities?: {
-                    media: MediaEntity[];
-                } | undefined;
+                extended_entities?:
+                    | {
+                          media: MediaEntity[];
+                      }
+                    | undefined;
                 favorite_count?: number | undefined;
                 favorited?: boolean | undefined;
                 filter_level: "none" | "low" | "medium";
@@ -316,9 +325,11 @@ declare module "twit" {
             track?: string | string[] | undefined;
             media_id?: string | undefined;
             media_ids?: string[] | undefined;
-            alt_text?: {
-                text?: string | undefined;
-            } | undefined;
+            alt_text?:
+                | {
+                      text?: string | undefined;
+                  }
+                | undefined;
             media_data?: Buffer | string | undefined;
             screen_name?: string | undefined;
             id?: string | undefined;

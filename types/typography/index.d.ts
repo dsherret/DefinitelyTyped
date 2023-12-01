@@ -33,17 +33,17 @@ export interface TypographyOptions {
     includeNormalize?: boolean | undefined;
     overrideStyles?:
         | ((
-            VerticalRhythm: VerticalRhythm,
-            options: TypographyOptions,
-            styles: any,
-        ) => object)
+              VerticalRhythm: VerticalRhythm,
+              options: TypographyOptions,
+              styles: any,
+          ) => object)
         | undefined;
     overrideThemeStyles?:
         | ((
-            VerticalRhythm: VerticalRhythm,
-            options: TypographyOptions,
-            styles: any,
-        ) => object)
+              VerticalRhythm: VerticalRhythm,
+              options: TypographyOptions,
+              styles: any,
+          ) => object)
         | undefined;
     plugins?: any[] | undefined;
 }

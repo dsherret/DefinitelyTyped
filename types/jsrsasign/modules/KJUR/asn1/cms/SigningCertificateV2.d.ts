@@ -29,7 +29,9 @@ declare namespace jsrsasign.KJUR.asn1.cms {
      *                                             hashAlg: 'sha512'});
      */
     class SigningCertificateV2 extends Attribute {
-        constructor(params?: ArrayParam<string> | { array: string[]; hashalg: string });
+        constructor(
+            params?: ArrayParam<string> | { array: string[]; hashalg: string },
+        );
         setCerts(listPEM: string[], hashAlg: string): void;
     }
 }

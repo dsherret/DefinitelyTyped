@@ -83,7 +83,10 @@ declare class NoiseState extends SymmetricState {
     /**
      * Initialise the handshake state with a prologue and any preshared keys.
      */
-    initialise(prologue: Buffer | Uint8Array, remoteStatic?: Buffer | Uint8Array): void;
+    initialise(
+        prologue: Buffer | Uint8Array,
+        remoteStatic?: Buffer | Uint8Array,
+    ): void;
     /**
      * Send the next message in the handshake, add an optional payload buffer to be included in the message,
      * payload is a zero length buffer by default.

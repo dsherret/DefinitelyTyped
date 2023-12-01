@@ -15,7 +15,15 @@ export namespace Mouse {
          * @param up Whether the up mouse button is pressed (the fourth button, usually part of a scroll wheel).
          * @param down Whether the down mouse button is pressed (the fifth button, usually part of a scroll wheel).
          */
-        constructor(x: number, y: number, left: boolean, middle: boolean, right: boolean, up: boolean, down: boolean);
+        constructor(
+            x: number,
+            y: number,
+            left: boolean,
+            middle: boolean,
+            right: boolean,
+            up: boolean,
+            down: boolean,
+        );
 
         /**
          * The current X position of the mouse pointer.
@@ -66,7 +74,11 @@ export namespace Mouse {
          * @param clientX The X coordinate to translate, viewport-relative.
          * @param clientY The Y coordinate to translate, viewport-relative.
          */
-        fromClientPosition(element: HTMLElement | HTMLDocument, clientX: number, clientY: number): State;
+        fromClientPosition(
+            element: HTMLElement | HTMLDocument,
+            clientX: number,
+            clientY: number,
+        ): State;
     }
 
     class GuacTouchDevice {

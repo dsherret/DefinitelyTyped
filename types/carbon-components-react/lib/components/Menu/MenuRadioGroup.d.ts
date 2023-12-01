@@ -3,7 +3,9 @@ import { MenuGroupProps } from "./MenuGroup";
 import { MenuRadioGroupOptionsProps } from "./MenuRadioGroupOptions";
 
 export interface MenuRadioGroupProps {
-    initialSelectedItem?: MenuRadioGroupOptionsProps["initialSelectedItem"] | undefined;
+    initialSelectedItem?:
+        | MenuRadioGroupOptionsProps["initialSelectedItem"]
+        | undefined;
     items: MenuRadioGroupOptionsProps["items"];
     label: MenuGroupProps["label"];
 }

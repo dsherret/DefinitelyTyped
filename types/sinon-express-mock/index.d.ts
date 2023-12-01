@@ -46,6 +46,10 @@ export namespace mockRes {
     }
 }
 
-export function mockReq<T extends object>(options?: T): mockReq.MockReq & T & Request;
+export function mockReq<T extends object>(
+    options?: T,
+): mockReq.MockReq & T & Request;
 
-export function mockRes<T extends object>(options?: T): mockRes.MockRes & T & Response;
+export function mockRes<T extends object>(
+    options?: T,
+): mockRes.MockRes & T & Response;

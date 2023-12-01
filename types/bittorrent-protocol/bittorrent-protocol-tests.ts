@@ -6,7 +6,7 @@ class TestExtension implements Protocol.Extension {
     name = "extname";
 }
 
-net.createServer(socket => {
+net.createServer((socket) => {
     const wire = new Protocol();
 
     wire.use(TestExtension);

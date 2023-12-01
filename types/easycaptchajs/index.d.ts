@@ -20,7 +20,12 @@ export interface EasyCaptchaSettings {
     failure?: (error: string) => void;
 }
 
-export type EasyCaptchaMethod = "getTarget" | "verify" | "response" | "reset" | "destroy";
+export type EasyCaptchaMethod =
+    | "getTarget"
+    | "verify"
+    | "response"
+    | "reset"
+    | "destroy";
 
 export type EasyCaptchaElementData = Record<string, any>;
 
@@ -40,7 +45,10 @@ export interface EasyCaptchaResultResponse extends EasyCaptchaResultBaseTarget {
     token: string;
 }
 
-export type EasyCaptchaResult = EasyCaptchaResultTarget | EasyCaptchaResultVerify | EasyCaptchaResultResponse;
+export type EasyCaptchaResult =
+    | EasyCaptchaResultTarget
+    | EasyCaptchaResultVerify
+    | EasyCaptchaResultResponse;
 
 export type EasyCaptchaResults = EasyCaptchaResult[] | EasyCaptchaResult | null;
 

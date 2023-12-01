@@ -76,7 +76,10 @@ export default class DefaultErrorStrategy extends ErrorStrategy {
      * @param recognizer the parser instance
      * @param e the recognition exception
      */
-    reportNoViableAlternative(recognizer: Parser, e: NoViableAltException): void;
+    reportNoViableAlternative(
+        recognizer: Parser,
+        e: NoViableAltException,
+    ): void;
 
     /**
      * This is called by {@link reportError} when the exception is an
@@ -98,7 +101,10 @@ export default class DefaultErrorStrategy extends ErrorStrategy {
      * @param recognizer the parser instance
      * @param e the recognition exception
      */
-    reportFailedPredicate(recognizer: Parser, e: FailedPredicateException): void;
+    reportFailedPredicate(
+        recognizer: Parser,
+        e: FailedPredicateException,
+    ): void;
 
     /**
      * This method is called to report a syntax error which requires the removal
@@ -244,7 +250,9 @@ export default class DefaultErrorStrategy extends ErrorStrategy {
      */
     getMissingSymbol(recognizer: Parser): Token;
 
-    getExpectedTokens(recognizer: Parser): ReturnType<Parser["getExpectedTokens"]>;
+    getExpectedTokens(
+        recognizer: Parser,
+    ): ReturnType<Parser["getExpectedTokens"]>;
 
     /**
      * How should a token be displayed in an error message? The default

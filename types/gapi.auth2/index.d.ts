@@ -26,7 +26,9 @@ declare namespace gapi.auth2 {
          * Signs in the user using the specified options.
          * If no option specified here, fallback to the options specified to gapi.auth2.init().
          */
-        signIn(options?: SigninOptions | SigninOptionsBuilder): Promise<GoogleUser>;
+        signIn(
+            options?: SigninOptions | SigninOptionsBuilder,
+        ): Promise<GoogleUser>;
 
         /**
          * Signs out all accounts from the application.
@@ -41,7 +43,9 @@ declare namespace gapi.auth2 {
         /**
          * Get permission from the user to access the specified scopes offline.
          */
-        grantOfflineAccess(options?: OfflineAccessOptions): Promise<{ code: string }>;
+        grantOfflineAccess(
+            options?: OfflineAccessOptions,
+        ): Promise<{ code: string }>;
 
         /**
          * Attaches the sign-in flow to the specified container's click handler.
@@ -320,7 +324,9 @@ declare namespace gapi.auth2 {
          * When you use GoogleUser.grantOfflineAccess(), the sign-in flow skips the account chooser step.
          * See GoogleUser.grantOfflineAccess().
          */
-        grantOfflineAccess(options?: OfflineAccessOptions): Promise<{ code: string }>;
+        grantOfflineAccess(
+            options?: OfflineAccessOptions,
+        ): Promise<{ code: string }>;
 
         /**
          * Revokes all of the scopes that the user granted.
@@ -343,51 +349,57 @@ declare namespace gapi.auth2 {
      * Performs a one time OAuth 2.0 authorization.
      * Reference: https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2authorizeparams-callback
      */
-    function authorize(params: AuthorizeConfig, callback: (response: AuthorizeResponse) => void): void;
+    function authorize(
+        params: AuthorizeConfig,
+        callback: (response: AuthorizeResponse) => void,
+    ): void;
 }
 
 declare namespace gapi.signin2 {
-    function render(id: any, options: {
-        /**
-         * The auth scope or scopes to authorize. Auth scopes for individual APIs can be found in their documentation.
-         */
-        scope?: string | undefined;
+    function render(
+        id: any,
+        options: {
+            /**
+             * The auth scope or scopes to authorize. Auth scopes for individual APIs can be found in their documentation.
+             */
+            scope?: string | undefined;
 
-        /**
-         * The width of the button in pixels (default: 120).
-         */
-        width?: number | undefined;
+            /**
+             * The width of the button in pixels (default: 120).
+             */
+            width?: number | undefined;
 
-        /**
-         * The height of the button in pixels (default: 36).
-         */
-        height?: number | undefined;
+            /**
+             * The height of the button in pixels (default: 36).
+             */
+            height?: number | undefined;
 
-        /**
-         * Display long labels such as "Sign in with Google" rather than "Sign in" (default: false).
-         */
-        longtitle?: boolean | undefined;
+            /**
+             * Display long labels such as "Sign in with Google" rather than "Sign in" (default: false).
+             */
+            longtitle?: boolean | undefined;
 
-        /**
-         * The color theme of the button: either light or dark (default: light).
-         */
-        theme?: string | undefined;
+            /**
+             * The color theme of the button: either light or dark (default: light).
+             */
+            theme?: string | undefined;
 
-        /**
-         * The callback function to call when a user successfully signs in (default: none).
-         */
-        onsuccess?(user: auth2.GoogleUser): void;
+            /**
+             * The callback function to call when a user successfully signs in (default: none).
+             */
+            onsuccess?(user: auth2.GoogleUser): void;
 
-        /**
-         * The callback function to call when sign-in fails (default: none).
-         */
-        onfailure?(reason: { error: string }): void;
+            /**
+             * The callback function to call when sign-in fails (default: none).
+             */
+            onfailure?(reason: { error: string }): void;
 
-        /**
-         * The package name of the Android app to install over the air. See
-         * <a href="https://developers.google.com/identity/sign-in/web/android-app-installs">Android app installs from your web site</a>.
-         * Optional. (default: none)
-         */
-        app_package_name?: string | undefined;
-    }): void;
+            /**
+             * The package name of the Android app to install over the air. See
+             * <a href="https://developers.google.com/identity/sign-in/web/android-app-installs">Android app installs from your web site</a>.
+             * Optional. (default: none)
+             */
+            app_package_name?: string | undefined;
+        },
+    ): void;
 }

@@ -37,7 +37,9 @@ export default class SensorElement extends Entity {
      * @param sensorReportList - the sensorReports to remove
      * @return the objectEvent instance
      */
-    removeSensorReportList(sensorReportList: SensorReportElement[]): SensorElement;
+    removeSensorReportList(
+        sensorReportList: SensorReportElement[],
+    ): SensorElement;
     /**
      * Getter for the sensorReport property
      */

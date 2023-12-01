@@ -9,9 +9,7 @@ gulpResponsiveImages({}); // $ExpectType Transform
 gulpResponsiveImages({ 1: "abcd" });
 
 gulpResponsiveImages({
-    "hero.png": [
-        {},
-    ],
+    "hero.png": [{}],
 });
 
 gulpResponsiveImages({

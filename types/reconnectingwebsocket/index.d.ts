@@ -73,11 +73,11 @@ declare namespace ReconnectingWebSocket {
     }
 
     interface EventMap {
-        "open": OpenEvent;
-        "close": CloseEvent;
-        "connecting": ConnectingEvent;
-        "message": MessageEvent;
-        "error": ErrorEvent;
+        open: OpenEvent;
+        close: CloseEvent;
+        connecting: ConnectingEvent;
+        message: MessageEvent;
+        error: ErrorEvent;
     }
 }
 
@@ -118,7 +118,11 @@ declare class ReconnectingWebSocket extends EventTarget {
      * @param protocols Optional string or array of protocols.
      * @param options See `ReconnectingWebSocket.Options`
      */
-    constructor(url: string, protocols?: string | string[], options?: ReconnectingWebSocket.Options);
+    constructor(
+        url: string,
+        protocols?: string | string[],
+        options?: ReconnectingWebSocket.Options,
+    );
 
     /**
      * Whether all instances of ReconnectingWebSocket should log debug messages.
@@ -135,19 +139,37 @@ declare class ReconnectingWebSocket extends EventTarget {
      * An event listener to be called when the WebSocket connection's `readyState` changes to `OPEN`;
      * this indicates that the connection is ready to send and receive data.
      */
-    onopen: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.OpenEvent) => void;
+    onopen: (
+        this: ReconnectingWebSocket,
+        event: ReconnectingWebSocket.OpenEvent,
+    ) => void;
     /** An event listener to be called when the WebSocket connection's `readyState` changes to `CLOSED`. */
-    onclose: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.CloseEvent) => void;
+    onclose: (
+        this: ReconnectingWebSocket,
+        event: ReconnectingWebSocket.CloseEvent,
+    ) => void;
     /** An event listener to be called when a connection begins being attempted. */
-    onconnecting: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.ConnectingEvent) => void;
+    onconnecting: (
+        this: ReconnectingWebSocket,
+        event: ReconnectingWebSocket.ConnectingEvent,
+    ) => void;
     /** An event listener to be called when a message is received from the server. */
-    onmessage: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.MessageEvent) => void;
+    onmessage: (
+        this: ReconnectingWebSocket,
+        event: ReconnectingWebSocket.MessageEvent,
+    ) => void;
     /** An event listener to be called when an error occurs. */
-    onerror: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.ErrorEvent) => void;
+    onerror: (
+        this: ReconnectingWebSocket,
+        event: ReconnectingWebSocket.ErrorEvent,
+    ) => void;
 
     addEventListener<K extends keyof ReconnectingWebSocket.EventMap>(
         type: K,
-        listener: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.EventMap[K]) => any,
+        listener: (
+            this: ReconnectingWebSocket,
+            event: ReconnectingWebSocket.EventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -157,7 +179,10 @@ declare class ReconnectingWebSocket extends EventTarget {
     ): void;
     removeEventListener<K extends keyof ReconnectingWebSocket.EventMap>(
         type: K,
-        listener: (this: ReconnectingWebSocket, event: ReconnectingWebSocket.EventMap[K]) => any,
+        listener: (
+            this: ReconnectingWebSocket,
+            event: ReconnectingWebSocket.EventMap[K],
+        ) => any,
         options?: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -190,27 +215,37 @@ declare class ReconnectingWebSocket extends EventTarget {
      */
     debug: NonNullable<ReconnectingWebSocket.Options["debug"]>;
     /** The maximum number of reconnection attempts to make. Unlimited if `null`. */
-    maxReconnectAttempts: NonNullable<ReconnectingWebSocket.Options["maxReconnectAttempts"]> | null;
+    maxReconnectAttempts: NonNullable<
+        ReconnectingWebSocket.Options["maxReconnectAttempts"]
+    > | null;
     /**
      * The maximum number of milliseconds to delay a reconnection attempt.
      * Accepts integer.
      */
-    maxReconnectInterval: NonNullable<ReconnectingWebSocket.Options["maxReconnectInterval"]>;
+    maxReconnectInterval: NonNullable<
+        ReconnectingWebSocket.Options["maxReconnectInterval"]
+    >;
     /**
      * The rate of increase of the reconnect delay. Allows reconnect attempts to back off when problems persist.
      * Accepts integer or float.
      */
-    reconnectDecay: NonNullable<ReconnectingWebSocket.Options["reconnectDecay"]>;
+    reconnectDecay: NonNullable<
+        ReconnectingWebSocket.Options["reconnectDecay"]
+    >;
     /**
      * The number of milliseconds to delay before attempting to reconnect.
      * Accepts integer.
      */
-    reconnectInterval: NonNullable<ReconnectingWebSocket.Options["reconnectInterval"]>;
+    reconnectInterval: NonNullable<
+        ReconnectingWebSocket.Options["reconnectInterval"]
+    >;
     /**
      * The maximum time in milliseconds to wait for a connection to succeed before closing and retrying.
      * Accepts integer.
      */
-    timeoutInterval: NonNullable<ReconnectingWebSocket.Options["timeoutInterval"]>;
+    timeoutInterval: NonNullable<
+        ReconnectingWebSocket.Options["timeoutInterval"]
+    >;
 
     /** The number of attempted reconnects since starting, or the last successful connection. */
     readonly reconnectAttempts: number;

@@ -67,7 +67,13 @@ declare class Fontmin<SrcType extends ProbableAsSrc> extends EventEmitter {
 
     dest(dir: string): Fontmin<SrcType>;
 
-    run(cb: (err: Error, files: Array<{ _contents: stream.Readable }>, stream: any) => void): any;
+    run(
+        cb: (
+            err: Error,
+            files: Array<{ _contents: stream.Readable }>,
+            stream: any,
+        ) => void,
+    ): any;
 
     src(): SrcType;
 
@@ -90,11 +96,15 @@ declare class Fontmin<SrcType extends ProbableAsSrc> extends EventEmitter {
         woff2: string;
     };
 
-    static otf2ttf(opts?: PluginCloneOption & PluginHintOption): stream.Transform;
+    static otf2ttf(
+        opts?: PluginCloneOption & PluginHintOption,
+    ): stream.Transform;
 
     static plugins: string[];
 
-    static svg2ttf(opts?: PluginCloneOption & PluginHintOption): stream.Transform;
+    static svg2ttf(
+        opts?: PluginCloneOption & PluginHintOption,
+    ): stream.Transform;
 
     static svgs2ttf(file: string, opts?: PluginFromSVGOption): stream.Transform;
 

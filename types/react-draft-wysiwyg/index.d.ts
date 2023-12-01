@@ -66,10 +66,7 @@ export interface EditorProps {
         editorState: EditorState,
         onChange: (editorState: EditorState) => void,
     ): boolean;
-    handleReturn?(
-        e: SyntheticKeyboardEvent,
-        editorState: EditorState,
-    ): boolean;
+    handleReturn?(e: SyntheticKeyboardEvent, editorState: EditorState): boolean;
     customStyleMap?: object | undefined;
 }
 

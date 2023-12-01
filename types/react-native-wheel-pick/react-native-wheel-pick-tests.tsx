@@ -11,13 +11,21 @@ const PickerComponent = () => {
             <Picker
                 style={{ backgroundColor: "white", width: 300, height: 215 }}
                 selectedValue="item4"
-                pickerData={["item1", "item2", "item3", "item4", "item5", "item6", "item7"]}
-                onValueChange={value => {}}
+                pickerData={[
+                    "item1",
+                    "item2",
+                    "item3",
+                    "item4",
+                    "item5",
+                    "item6",
+                    "item7",
+                ]}
+                onValueChange={(value) => {}}
             />
             <DatePicker
                 style={{ height: 215, width: isIos ? 300 : undefined }}
                 date={new Date("2018-06-27")}
-                onDateChange={date => {}}
+                onDateChange={(date) => {}}
             />
         </>
     );

@@ -1,18 +1,33 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     const abcdObj: { a: 1; b: 2; c: 3; d: 4 } = { a: 1, b: 2, c: 3, d: 4 };
 
-    const a10: { a: number; d: number } = R.pick(["a", "d"], { a: 1, b: 2, c: 3, d: 4 }); // => {a: 1, d: 4}
+    const a10: { a: number; d: number } = R.pick(["a", "d"], {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+    }); // => {a: 1, d: 4}
     const a11: { a: 1; d: 4 } = R.pick(["a", "d"], abcdObj); // => {a: 1, d: 4}
 
     // @ts-expect-error
-    const a20: { a: number } = R.pick(["a", "e", "f"], { a: 1, b: 2, c: 3, d: 4 }); // => {a: 1}
+    const a20: { a: number } = R.pick(["a", "e", "f"], {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+    }); // => {a: 1}
     // @ts-expect-error
     const a21: { a: 1 } = R.pick(["a", "e", "f"], abcdObj); // => {a: 1}
 
     // @ts-expect-error
-    const a30: { a: number } = R.pick(["a", "e", "f"])({ a: 1, b: 2, c: 3, d: 4 }); // => {a: 1}
+    const a30: { a: number } = R.pick(["a", "e", "f"])({
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+    }); // => {a: 1}
     // @ts-expect-error
     const a31: { a: 1 } = R.pick(["a", "e", "f"])(abcdObj); // => {a: 1}
 
@@ -37,4 +52,4 @@ import * as R from "ramda";
     const sObj: { [s]: "a" } = { [s]: "a" };
     const a7: { [s]: string } = R.pick([s], { [s]: "a" }); // => {Symbol(s): 'a'}
     const a7_const: { [s]: "a" } = R.pick([s], sObj); // => {Symbol(s): 'a'}
-});
+};

@@ -16,8 +16,14 @@ declare namespace createHash {
         digest(target: encoding): string;
         digest(): Buffer;
 
-        update(data: string | Buffer | TypedArray | DataView, encoding?: string): this;
-        write(data: string | Buffer | TypedArray | DataView, encoding?: string): this;
+        update(
+            data: string | Buffer | TypedArray | DataView,
+            encoding?: string,
+        ): this;
+        write(
+            data: string | Buffer | TypedArray | DataView,
+            encoding?: string,
+        ): this;
 
         end(): void;
         read(): void;
@@ -36,6 +42,9 @@ declare namespace createHash {
         | "sha512";
 }
 
-declare function createHash(algorithm: createHash.algorithm, options?: any): createHash.HashAlgorithm;
+declare function createHash(
+    algorithm: createHash.algorithm,
+    options?: any,
+): createHash.HashAlgorithm;
 
 export = createHash;

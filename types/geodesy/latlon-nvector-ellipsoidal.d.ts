@@ -4,7 +4,11 @@
 
 import { Datum } from ".";
 
-import LatLonEllipsoidal, { Cartesian, Dms, Vector3d } from "./latlon-ellipsoidal";
+import LatLonEllipsoidal, {
+    Cartesian,
+    Dms,
+    Vector3d,
+} from "./latlon-ellipsoidal";
 
 declare class LatLon_NvectorEllipsoidal extends LatLonEllipsoidal {
     deltaTo(point: LatLon_NvectorEllipsoidal): Ned;
@@ -29,7 +33,11 @@ declare class Ned {
     get length(): number;
     get bearing(): number;
     get elevation(): number;
-    static fromDistanceBearingElevation(dist: number, brng: number, elev: number): Ned;
+    static fromDistanceBearingElevation(
+        dist: number,
+        brng: number,
+        elev: number,
+    ): Ned;
     toString(dp?: number): string;
 }
 

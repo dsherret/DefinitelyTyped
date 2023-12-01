@@ -1,6 +1,8 @@
 class Point {
-    constructor(public x: number, public y: number) {
-    }
+    constructor(
+        public x: number,
+        public y: number,
+    ) {}
 }
 
 function hashPoint(p: Point) {
@@ -20,7 +22,10 @@ points.add(new Point(6, 5));
 
 alert(points.size()); // Alerts 3
 
-var otherPoints = new HashSet<Point>({ hashCode: hashPoint, equals: pointsEqual });
+var otherPoints = new HashSet<Point>({
+    hashCode: hashPoint,
+    equals: pointsEqual,
+});
 
 otherPoints.add(new Point(4, 4));
 otherPoints.add(new Point(7, 9));

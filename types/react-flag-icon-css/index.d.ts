@@ -13,16 +13,20 @@ export interface FlagIconOptions {
     /**
      * An object literal whose keys are your custom codes.
      */
-    customCodes?: {
-        [key: string]: string;
-    } | undefined;
+    customCodes?:
+        | {
+              [key: string]: string;
+          }
+        | undefined;
     /**
      * Set this if useCssModules is true and a) you want to apply styles to FlagIcon
      * using .theme-base and/or b) you are using custom flags.
      */
-    themeStyles?: {
-        [key: string]: CSS.Properties & CSS.PropertiesHyphen;
-    } | undefined;
+    themeStyles?:
+        | {
+              [key: string]: CSS.Properties & CSS.PropertiesHyphen;
+          }
+        | undefined;
 }
 
 export interface FlagIconProps {
@@ -51,6 +55,12 @@ export interface FlagIconProps {
 
 export class FlagIcon extends PureComponent<FlagIconProps> {}
 
-export default function FlagIconFactory(react: any, opts?: Readonly<FlagIconOptions>): typeof FlagIcon;
+export default function FlagIconFactory(
+    react: any,
+    opts?: Readonly<FlagIconOptions>,
+): typeof FlagIcon;
 
-export function CustomFlagIconFactory(react: any, opts?: Readonly<FlagIconOptions>): typeof FlagIcon;
+export function CustomFlagIconFactory(
+    react: any,
+    opts?: Readonly<FlagIconOptions>,
+): typeof FlagIcon;

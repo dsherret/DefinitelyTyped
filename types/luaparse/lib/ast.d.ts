@@ -1,15 +1,17 @@
 export interface Base<TType extends string> {
     type: TType;
-    loc?: {
-        start: {
-            line: number;
-            column: number;
-        };
-        end: {
-            line: number;
-            column: number;
-        };
-    } | undefined;
+    loc?:
+        | {
+              start: {
+                  line: number;
+                  column: number;
+              };
+              end: {
+                  line: number;
+                  column: number;
+              };
+          }
+        | undefined;
 }
 
 export interface LabelStatement extends Base<"LabelStatement"> {
@@ -141,7 +143,8 @@ export interface TableValue extends Base<"TableValue"> {
     value: Expression;
 }
 
-export interface TableConstructorExpression extends Base<"TableConstructorExpression"> {
+export interface TableConstructorExpression
+    extends Base<"TableConstructorExpression"> {
     fields: Array<TableKey | TableKeyString | TableValue>;
 }
 

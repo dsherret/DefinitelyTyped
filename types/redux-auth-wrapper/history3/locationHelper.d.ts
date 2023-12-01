@@ -7,7 +7,12 @@ export interface LocationHelperConfig<Props> {
 
 export interface LocationHelper<Props> {
     getRedirectQueryParam(props: Props): string;
-    createRedirectLoc(props: Props, redirectPath: string): LocationDescriptorObject;
+    createRedirectLoc(
+        props: Props,
+        redirectPath: string,
+    ): LocationDescriptorObject;
 }
 
-export default function locationHelperBuilder<Props = {}>(config: LocationHelperConfig<Props>): LocationHelper<Props>;
+export default function locationHelperBuilder<Props = {}>(
+    config: LocationHelperConfig<Props>,
+): LocationHelper<Props>;

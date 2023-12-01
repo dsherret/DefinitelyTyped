@@ -19,9 +19,15 @@ declare class Parameter {
      * @param value
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    validate(rule: Parameter.ParameterRules, value: unknown): Parameter.ValidateError[] | void;
+    validate(
+        rule: Parameter.ParameterRules,
+        value: unknown,
+    ): Parameter.ValidateError[] | void;
 
-    static CONVERT_MAP: Record<string, Parameter.ParameterConvertType | undefined>;
+    static CONVERT_MAP: Record<
+        string,
+        Parameter.ParameterConvertType | undefined
+    >;
 
     /**
      * Add custom rules
@@ -44,7 +50,11 @@ declare class Parameter {
 }
 
 declare namespace Parameter {
-    type ParameterTranslateFunction = (this: Parameter, message: string, ...args: any[]) => string;
+    type ParameterTranslateFunction = (
+        this: Parameter,
+        message: string,
+        ...args: any[]
+    ) => string;
 
     interface ParameterOptions {
         /**
@@ -72,7 +82,13 @@ declare namespace Parameter {
         widelyUndefined?: boolean | undefined;
     }
 
-    type ParameterConvertType = "int" | "number" | "string" | "bool" | "boolean" | ((value: any) => any);
+    type ParameterConvertType =
+        | "int"
+        | "number"
+        | "string"
+        | "bool"
+        | "boolean"
+        | ((value: any) => any);
 
     type ParameterRuleAbbr =
         | "int"
@@ -173,7 +189,13 @@ declare namespace Parameter {
     }
 
     interface ParameterRuleDateTime extends ParameterRuleBase {
-        type: "date" | "date?" | "dateTime" | "dateTime?" | "datetime" | "datetime?";
+        type:
+            | "date"
+            | "date?"
+            | "dateTime"
+            | "dateTime?"
+            | "datetime"
+            | "datetime?";
         allowEmpty?: boolean | undefined;
     }
 
@@ -191,7 +213,8 @@ declare namespace Parameter {
 
     type ParameterRuleBoolean = ParameterRuleBase;
 
-    interface ParameterRulePassword extends Omit<ParameterRuleString, "type" | "format"> {
+    interface ParameterRulePassword
+        extends Omit<ParameterRuleString, "type" | "format"> {
         type: "password" | "password?";
         compare?: string | undefined;
     }

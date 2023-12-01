@@ -49,7 +49,13 @@ declare class DataTable extends DataTable_base {
     _selectAllToggle: ({ element }: { element: HTMLElement }) => void;
     _actionBarCancel: () => void;
     _actionBarToggle: (toggleOn: boolean) => void;
-    _rowExpandToggle: ({ element, forceExpand }: { element: HTMLElement; forceExpand: boolean }) => void;
+    _rowExpandToggle: ({
+        element,
+        forceExpand,
+    }: {
+        element: HTMLElement;
+        forceExpand: boolean;
+    }) => void;
     _rowExpandToggleAll: ({ element }: { element: HTMLElement }) => void;
     _expandableHoverToggle: (evt: MouseEvent) => void;
     _toggleState: (element: HTMLElement, evt: MouseEvent) => void;

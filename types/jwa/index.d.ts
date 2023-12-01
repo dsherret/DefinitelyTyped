@@ -16,7 +16,11 @@ type Algorithm =
 interface JWA {
     sign(input: string, secretOrPrivateKey: string): string;
 
-    verify(input: string, signature: string, secretOrPublicKey: string): boolean;
+    verify(
+        input: string,
+        signature: string,
+        secretOrPublicKey: string,
+    ): boolean;
 }
 
 declare function jwa(algorithm: Algorithm): JWA;

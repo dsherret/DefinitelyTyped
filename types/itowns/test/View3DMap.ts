@@ -19,7 +19,9 @@ const view = new itowns.GlobeView(viewerDiv, placement);
 
 // Add one imagery layer to the scene. This layer's properties are defined in a json file, but it could be
 // defined as a plain js object. See `Layer` documentation for more info.
-itowns.Fetcher.json("./layers/JSONLayers/Ortho.json").then(function _(json: Ortho) {
+itowns.Fetcher.json("./layers/JSONLayers/Ortho.json").then(function _(
+    json: Ortho,
+) {
     const config = {
         ...json,
         source: new itowns.WMTSSource(json.source),
@@ -38,8 +40,12 @@ function addElevationLayerFromConfig(json: IgnMNTHighres | WorldDTM) {
     };
     view.addLayer(new itowns.ElevationLayer(config.id, config));
 }
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(addElevationLayerFromConfig);
-itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(addElevationLayerFromConfig);
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(
+    addElevationLayerFromConfig,
+);
+itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(
+    addElevationLayerFromConfig,
+);
 
 // ---------- DISPLAY ATMOSPHERIC LIGHTING : ----------
 

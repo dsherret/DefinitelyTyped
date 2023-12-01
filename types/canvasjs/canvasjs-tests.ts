@@ -73,7 +73,13 @@ const lineChart = new CanvasJS.Chart("chartContainer", {
             dataPoints: [
                 { x: new Date(2012, 0, 1), y: 450 },
                 { x: new Date(2012, 1, 1), y: 414 },
-                { x: new Date(2012, 2, 1), y: 520, indexLabel: "highest", markerColor: "red", markerType: "triangle" },
+                {
+                    x: new Date(2012, 2, 1),
+                    y: 520,
+                    indexLabel: "highest",
+                    markerColor: "red",
+                    markerType: "triangle",
+                },
                 { x: new Date(2012, 3, 1), y: 460 },
                 { x: new Date(2012, 4, 1), y: 450 },
                 { x: new Date(2012, 5, 1), y: 500 },
@@ -152,7 +158,10 @@ const splineChart = new CanvasJS.Chart("chartContainer", {
     legend: {
         cursor: "pointer",
         itemclick: (e) => {
-            e.dataSeries.visible = !(typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible);
+            e.dataSeries.visible = !(
+                typeof e.dataSeries.visible === "undefined" ||
+                e.dataSeries.visible
+            );
             splineChart.render();
         },
     },
@@ -240,15 +249,18 @@ const pieChart = new CanvasJS.Chart("chartContainer", {
 });
 pieChart.render();
 
-CanvasJS.addColorSet("MyColorSet", [
-    "123456",
-    "blue",
-    "red",
-    "orange",
-]);
+CanvasJS.addColorSet("MyColorSet", ["123456", "blue", "red", "orange"]);
 
 CanvasJS.addCultureInfo("js", {
-    days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    days: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ],
 });
 
 CanvasJS.formatNumber(20);

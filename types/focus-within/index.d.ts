@@ -5,7 +5,10 @@ declare namespace focusWithin {
     }
 }
 
-declare function focusWithin(document: HTMLDocument, opts?: focusWithin.FocusWithinOpts): void;
+declare function focusWithin(
+    document: HTMLDocument,
+    opts?: focusWithin.FocusWithinOpts,
+): void;
 
 export as namespace focusWithin;
 export = focusWithin;

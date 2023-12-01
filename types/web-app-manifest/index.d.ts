@@ -1,5 +1,9 @@
 export type TextDirectionType = "ltr" | "rtl" | "auto";
-export type DisplayModeType = "fullscreen" | "standalone" | "minimal-ui" | "browser";
+export type DisplayModeType =
+    | "fullscreen"
+    | "standalone"
+    | "minimal-ui"
+    | "browser";
 
 /**
  * Each `ImageResource` represents an image that is used as part of a web application, suitable to use in

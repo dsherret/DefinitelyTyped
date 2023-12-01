@@ -37,5 +37,9 @@ export default class Formula {
 
     getExpressionString(): string;
 
-    static calc(formula: string, valueObj: object | object[], options?: { memoization?: boolean }): any;
+    static calc(
+        formula: string,
+        valueObj: object | object[],
+        options?: { memoization?: boolean },
+    ): any;
 }

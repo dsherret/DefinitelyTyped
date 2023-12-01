@@ -121,7 +121,14 @@ export interface RootResult {
     wasAlreadyRooted: boolean;
 }
 
-export type BinaryName = "aapt" | "aapt2" | "adb" | "apkanalyzer" | "apksigner.jar" | "bundletool" | "zipalign";
+export type BinaryName =
+    | "aapt"
+    | "aapt2"
+    | "adb"
+    | "apkanalyzer"
+    | "apksigner.jar"
+    | "bundletool"
+    | "zipalign";
 
 /**
  * Retrieve full path to the given binary.
@@ -197,7 +204,9 @@ interface SystemCalls {
      *                          no devices are connected.
      * @throws If there was an error while listing devices.
      */
-    getConnectedDevices(opts: ConnectedDevicesOptions & { verbose: true }): Promise<VerboseDevice[]>;
+    getConnectedDevices(
+        opts: ConnectedDevicesOptions & { verbose: true },
+    ): Promise<VerboseDevice[]>;
     getConnectedDevices(opts?: ConnectedDevicesOptions): Promise<Device[]>;
 
     /**
@@ -258,7 +267,10 @@ interface SystemCalls {
      * @return - Command's stdout.
      * @throws If the command returned non-zero exit code.
      */
-    adbExec(cmd: readonly string[], opts?: AdbExecOptions & { outputFormat: "full" }): Promise<ExecResult>;
+    adbExec(
+        cmd: readonly string[],
+        opts?: AdbExecOptions & { outputFormat: "full" },
+    ): Promise<ExecResult>;
     adbExec(cmd: readonly string[], opts?: AdbExecOptions): Promise<string>;
 
     /**
@@ -270,7 +282,10 @@ interface SystemCalls {
      * @return - Command's stdout.
      * @throws If the command returned non-zero exit code.
      */
-    shell(cmd: string | readonly string[], opts?: ShellExecOptions): Promise<string>;
+    shell(
+        cmd: string | readonly string[],
+        opts?: ShellExecOptions,
+    ): Promise<string>;
 
     createSubProcess(args?: readonly string[]): SubProcess;
 
@@ -344,7 +359,10 @@ interface SystemCalls {
      * @return Currently running emulator or _null_.
      * @throws If no device has been detected within the timeout.
      */
-    getRunningAVDWithRetry(avdName: string, timeoutMs?: number): Promise<Device | null>;
+    getRunningAVDWithRetry(
+        avdName: string,
+        timeoutMs?: number,
+    ): Promise<Device | null>;
 
     /**
      * Shutdown all running emulators by killing their processes.

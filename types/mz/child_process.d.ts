@@ -12,22 +12,44 @@ export * from "child_process";
 
 export function exec(
     command: string,
-    callback: (error: ExecException | null, stdout: string, stderr: string) => void,
+    callback: (
+        error: ExecException | null,
+        stdout: string,
+        stderr: string,
+    ) => void,
 ): ChildProcess;
 export function exec(
     command: string,
     options: { encoding: "buffer" | null | undefined } & ExecOptions,
-    callback: (error: ExecException | null, stdout: Buffer, stderr: Buffer) => void,
+    callback: (
+        error: ExecException | null,
+        stdout: Buffer,
+        stderr: Buffer,
+    ) => void,
 ): ChildProcess;
 export function exec(
     command: string,
-    options: ({ encoding?: BufferEncoding | undefined } & ExecOptions) | null | undefined,
-    callback: (error: ExecException | null, stdout: string, stderr: string) => void,
+    options:
+        | ({ encoding?: BufferEncoding | undefined } & ExecOptions)
+        | null
+        | undefined,
+    callback: (
+        error: ExecException | null,
+        stdout: string,
+        stderr: string,
+    ) => void,
 ): ChildProcess;
 export function exec(
     command: string,
-    options: ({ encoding?: string | null | undefined } & ExecOptions) | null | undefined,
-    callback: (error: ExecException | null, stdout: string | Buffer, stderr: string | Buffer) => void,
+    options:
+        | ({ encoding?: string | null | undefined } & ExecOptions)
+        | null
+        | undefined,
+    callback: (
+        error: ExecException | null,
+        stdout: string | Buffer,
+        stderr: string | Buffer,
+    ) => void,
 ): ChildProcess;
 
 export function exec(
@@ -95,13 +117,21 @@ export function execFile(
 export function execFile(
     file: string,
     options: ExecFileOptionsWithOtherEncoding | null | undefined,
-    callback: (error: Error | null, stdout: string | Buffer, stderr: string | Buffer) => void,
+    callback: (
+        error: Error | null,
+        stdout: string | Buffer,
+        stderr: string | Buffer,
+    ) => void,
 ): ChildProcess;
 export function execFile(
     file: string,
     args: readonly string[] | null | undefined,
     options: ExecFileOptionsWithOtherEncoding | null | undefined,
-    callback: (error: Error | null, stdout: string | Buffer, stderr: string | Buffer) => void,
+    callback: (
+        error: Error | null,
+        stdout: string | Buffer,
+        stderr: string | Buffer,
+    ) => void,
 ): ChildProcess;
 
 export function execFile(
@@ -109,7 +139,10 @@ export function execFile(
     args: string[] | null | undefined,
     options: ExecFileOptionsWithBufferEncoding,
 ): Promise<[Buffer, Buffer]>;
-export function execFile(file: string, options: ExecFileOptionsWithBufferEncoding): Promise<[Buffer, Buffer]>;
+export function execFile(
+    file: string,
+    options: ExecFileOptionsWithBufferEncoding,
+): Promise<[Buffer, Buffer]>;
 export function execFile(
     file: string,
     args?: string[] | null,

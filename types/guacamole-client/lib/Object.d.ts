@@ -43,7 +43,10 @@ export class Object {
      * and its mimetype as its two only arguments. If the onbody handler of
      * this object is overridden, this callback will not be invoked.
      */
-    requestInputStream(name: string, bodyCallback?: (stream: InputStream, mimetype: Mimetype) => void): void;
+    requestInputStream(
+        name: string,
+        bodyCallback?: (stream: InputStream, mimetype: Mimetype) => void,
+    ): void;
 
     /**
      * Creates a new output stream associated with this object and having the

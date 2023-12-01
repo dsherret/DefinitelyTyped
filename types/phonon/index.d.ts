@@ -14,7 +14,12 @@ declare namespace Phonon {
         onReady(callback: () => void): void;
         panel(id: string): PhononPanelComponent;
         sidePanel(id: string): PhononSidePanelComponent;
-        alert(text: string, title?: string, cancelable?: boolean, textOk?: string): PhononDialogComponent;
+        alert(
+            text: string,
+            title?: string,
+            cancelable?: boolean,
+            textOk?: string,
+        ): PhononDialogComponent;
         confirm(
             text: string,
             title?: string,
@@ -29,13 +34,24 @@ declare namespace Phonon {
             textOk?: string,
             textCancel?: string,
         ): PhononDialogComponent;
-        indicator(title: string, cancelable?: boolean): PhononIndicatorComponent;
+        indicator(
+            title: string,
+            cancelable?: boolean,
+        ): PhononIndicatorComponent;
         dialog(id: string): PhononCustomDialogComponent;
-        notif(textOrId: string, timeout?: number, showButton?: boolean, textButton?: string): PhononNotifComponent;
+        notif(
+            textOrId: string,
+            timeout?: number,
+            showButton?: boolean,
+            textButton?: string,
+        ): PhononNotifComponent;
         popover(id?: string): PhononPopoverComponent;
         preloader(element: string | Element): PhononPreloaderComponent;
         tab(): PhononTabComponent;
-        autocomplete(input: Element | HTMLElement | string, o?: Awesomplete.Options): Awesomplete;
+        autocomplete(
+            input: Element | HTMLElement | string,
+            o?: Awesomplete.Options,
+        ): Awesomplete;
     }
     interface PhononDeviceObject {
         os: string;
@@ -84,7 +100,10 @@ declare namespace Phonon {
         currentPage: string;
         previousPage: string;
         changePage(pageName: string, parameter?: string): void;
-        on(page: PhononPageObject, callback?: (activity: PhononActivity) => void): void;
+        on(
+            page: PhononPageObject,
+            callback?: (activity: PhononActivity) => void,
+        ): void;
         onPage(page: string): PhononPageEventObject;
         start(): void;
     }
@@ -139,7 +158,11 @@ declare namespace Phonon {
         timeout?: number | undefined;
         headers?: any;
         success(res: any, xhr: XMLHttpRequest): void;
-        error?(res: any, flagError: PhononAjaxErrorFlag, xhr: XMLHttpRequest): void;
+        error?(
+            res: any,
+            flagError: PhononAjaxErrorFlag,
+            xhr: XMLHttpRequest,
+        ): void;
     }
     interface PhononAjaxReturnObject {
         cancel(): void;
@@ -157,7 +180,10 @@ declare namespace Phonon {
         close(): void;
     }
     interface PhononDialogComponent {
-        on(event: string, callback: (value?: any) => void): PhononDialogComponent;
+        on(
+            event: string,
+            callback: (value?: any) => void,
+        ): PhononDialogComponent;
     }
     interface PhononCustomDialogComponent extends PhononDialogComponent {
         open(): void;
@@ -178,12 +204,20 @@ declare namespace Phonon {
     }
     interface PhononPopoverComponent {
         setList(list: string[] | PhononPopoverItem[]): PhononPopoverComponent;
-        setList(list: any[], itemBuilder?: (item: any) => void): PhononPopoverComponent;
-        attachButton(element: string | Element, autoBind?: boolean): PhononPopoverComponent;
+        setList(
+            list: any[],
+            itemBuilder?: (item: any) => void,
+        ): PhononPopoverComponent;
+        attachButton(
+            element: string | Element,
+            autoBind?: boolean,
+        ): PhononPopoverComponent;
         open(direction: PhononPopoverDirection): PhononPopoverComponent;
         openFrom(element: string | Element): PhononPopoverComponent;
         close(): void;
-        onItemChanged(callback: (data: PhononPopoverItem) => void): PhononPopoverComponent;
+        onItemChanged(
+            callback: (data: PhononPopoverItem) => void,
+        ): PhononPopoverComponent;
     }
     interface PhononPreloaderComponent {
         show(): void;
@@ -196,21 +230,53 @@ declare namespace Phonon {
 }
 
 interface Document {
-    on(event: string, callback: (event: Phonon.PhononCustomWindowEvent) => void, useCapture?: boolean): void;
-    off(event: string, callback: (event: Phonon.PhononCustomWindowEvent) => void, useCapture?: boolean): void;
+    on(
+        event: string,
+        callback: (event: Phonon.PhononCustomWindowEvent) => void,
+        useCapture?: boolean,
+    ): void;
+    off(
+        event: string,
+        callback: (event: Phonon.PhononCustomWindowEvent) => void,
+        useCapture?: boolean,
+    ): void;
 }
 interface Window {
-    on(event: string, callback: (event: Phonon.PhononCustomWindowEvent) => void, useCapture?: boolean): void;
-    off(event: string, callback: (event: Phonon.PhononCustomWindowEvent) => void, useCapture?: boolean): void;
+    on(
+        event: string,
+        callback: (event: Phonon.PhononCustomWindowEvent) => void,
+        useCapture?: boolean,
+    ): void;
+    off(
+        event: string,
+        callback: (event: Phonon.PhononCustomWindowEvent) => void,
+        useCapture?: boolean,
+    ): void;
     phonon: Phonon.Phonon;
 }
 interface Element {
-    on(event: string, callback: (event: any) => void, useCapture?: boolean): void;
-    off(event: string, callback: (event: any) => void, useCapture?: boolean): void;
+    on(
+        event: string,
+        callback: (event: any) => void,
+        useCapture?: boolean,
+    ): void;
+    off(
+        event: string,
+        callback: (event: any) => void,
+        useCapture?: boolean,
+    ): void;
 }
 interface NodeList {
-    on(event: string, callback: (event: any) => void, useCapture?: boolean): void;
-    off(event: string, callback: (event: any) => void, useCapture?: boolean): void;
+    on(
+        event: string,
+        callback: (event: any) => void,
+        useCapture?: boolean,
+    ): void;
+    off(
+        event: string,
+        callback: (event: any) => void,
+        useCapture?: boolean,
+    ): void;
 }
 
 declare const phonon: Phonon.Phonon;

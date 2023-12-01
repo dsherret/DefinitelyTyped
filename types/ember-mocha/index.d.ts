@@ -14,9 +14,18 @@ type mochaSuiteTeardown = typeof suiteTeardown;
 
 declare module "ember-mocha" {
     interface ContextDefinitionFunction {
-        (name: string, description: string, callbacks: ModuleCallbacks, tests: (this: Suite) => void): void;
+        (
+            name: string,
+            description: string,
+            callbacks: ModuleCallbacks,
+            tests: (this: Suite) => void,
+        ): void;
         (name: string, description: string, tests: (this: Suite) => void): void;
-        (name: string, callbacks: ModuleCallbacks, tests: (this: Suite) => void): void;
+        (
+            name: string,
+            callbacks: ModuleCallbacks,
+            tests: (this: Suite) => void,
+        ): void;
         (name: string, tests: (this: Suite) => void): void;
     }
 

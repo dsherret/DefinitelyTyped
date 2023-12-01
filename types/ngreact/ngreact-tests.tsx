@@ -5,25 +5,31 @@ import * as React from "react";
 
 const app = angular.module("app", ["react"]);
 
-app.directive("helloComponent", function(reactDirective: ReactDirective) {
+app.directive("helloComponent", function (reactDirective: ReactDirective) {
     return reactDirective(HelloComponent);
 });
 
-app.directive("helloComponent", function(reactDirective: ReactDirective) {
+app.directive("helloComponent", function (reactDirective: ReactDirective) {
     return reactDirective("HelloComponent");
 });
 
-app.directive("hello", function(reactDirective: ReactDirective) {
+app.directive("hello", function (reactDirective: ReactDirective) {
     return reactDirective(HelloComponent, ["fname", "lname"]);
 });
 
-app.directive("hello", function(reactDirective: ReactDirective) {
+app.directive("hello", function (reactDirective: ReactDirective) {
     return reactDirective(HelloComponent, undefined, { restrict: "C" });
 });
 
-app.directive("helloComponent", function(reactDirective: ReactDirective, $location: angular.ILocationService) {
-    return reactDirective(HelloComponent, undefined, {}, { $location });
-});
+app.directive(
+    "helloComponent",
+    function (
+        reactDirective: ReactDirective,
+        $location: angular.ILocationService,
+    ) {
+        return reactDirective(HelloComponent, undefined, {}, { $location });
+    },
+);
 
 interface HelloProps {
     fname: string;
@@ -37,7 +43,11 @@ class HelloComponent extends React.Component<HelloProps> {
     };
 
     render() {
-        return <span>Hello {this.props.fname} {this.props.lname}</span>;
+        return (
+            <span>
+                Hello {this.props.fname} {this.props.lname}
+            </span>
+        );
     }
 }
 

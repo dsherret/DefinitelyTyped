@@ -52,8 +52,11 @@ let app = new ActiveXObject("Outlook.Application");
     message.Display();
 
     // copying a contact from Outlook to Word
-    const currentItem = app.ActiveInspector().CurrentItem as Outlook.ContactItem;
+    const currentItem = app.ActiveInspector()
+        .CurrentItem as Outlook.ContactItem;
     const wdApp = new ActiveXObject("Word.Application");
     const doc = wdApp.Documents.Add();
-    doc.Range().InsertAfter(`${currentItem.FullName} from ${currentItem.CompanyName}`);
+    doc.Range().InsertAfter(
+        `${currentItem.FullName} from ${currentItem.CompanyName}`,
+    );
 })();

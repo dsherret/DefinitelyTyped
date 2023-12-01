@@ -11,12 +11,14 @@ remotedev({
     passphrase: "very-secret",
     protocol: "https",
     wsEngine: "ws",
-}).then(result => {
+}).then((result) => {
     if ("portAlreadyUsed" in result) {
         // Returned `PortUsedError` object
         result.on("any", () => console.log("port already in use :("));
     } else {
         // Returned `SocketCluster` instance
-        result.on("workerClusterReady", () => console.log("socketcluster ready!"));
+        result.on("workerClusterReady", () =>
+            console.log("socketcluster ready!"),
+        );
     }
 });

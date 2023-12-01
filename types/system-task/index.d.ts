@@ -36,8 +36,18 @@ declare class SystemTask {
     start(): void;
 }
 
-declare function asyncProcess(items: any[], executeAsyncCall: any, task: SystemTask, errors: any[]): Promise<any>;
-declare function syncProcess(items: any[], executeSyncCall: any, task: SystemTask, errors: any[]): Promise<any>;
+declare function asyncProcess(
+    items: any[],
+    executeAsyncCall: any,
+    task: SystemTask,
+    errors: any[],
+): Promise<any>;
+declare function syncProcess(
+    items: any[],
+    executeSyncCall: any,
+    task: SystemTask,
+    errors: any[],
+): Promise<any>;
 
 declare namespace SystemTask {
     /**

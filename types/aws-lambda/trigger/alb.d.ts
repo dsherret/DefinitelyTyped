@@ -32,7 +32,9 @@ export interface ALBEvent {
     path: string;
     queryStringParameters?: ALBEventQueryStringParameters | undefined; // URL encoded
     headers?: ALBEventHeaders | undefined;
-    multiValueQueryStringParameters?: ALBEventMultiValueQueryStringParameters | undefined; // URL encoded
+    multiValueQueryStringParameters?:
+        | ALBEventMultiValueQueryStringParameters
+        | undefined; // URL encoded
     multiValueHeaders?: ALBEventMultiValueHeaders | undefined;
     body: string | null;
     isBase64Encoded: boolean;
@@ -42,7 +44,9 @@ export interface ALBResult {
     statusCode: number;
     statusDescription?: string | undefined;
     headers?: { [header: string]: boolean | number | string } | undefined;
-    multiValueHeaders?: { [header: string]: Array<boolean | number | string> } | undefined;
+    multiValueHeaders?:
+        | { [header: string]: Array<boolean | number | string> }
+        | undefined;
     body?: string | undefined;
     isBase64Encoded?: boolean | undefined;
 }

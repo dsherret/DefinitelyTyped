@@ -1,4 +1,12 @@
-import { Font, Glyph, load, loadSync, parse, Path, PathCommand } from "opentype.js";
+import {
+    Font,
+    Glyph,
+    load,
+    loadSync,
+    parse,
+    Path,
+    PathCommand,
+} from "opentype.js";
 
 const x = 0;
 const y = 0;
@@ -76,7 +84,9 @@ const forEachWidth: number = font.forEachGlyph(
 );
 const fontPath: opentype.Path = font.getPath("text", x, y, fontSize, {});
 const fontPaths: opentype.Path[] = font.getPaths("text", x, y, fontSize, {});
-const fontWidth: number = font.getAdvanceWidth("text", fontSize, { yScale: 0.5 });
+const fontWidth: number = font.getAdvanceWidth("text", fontSize, {
+    yScale: 0.5,
+});
 font.draw(ctx, "text");
 font.drawPoints(ctx, "text", x, y, fontSize, { yScale: 0.5 });
 font.drawMetrics(ctx, "text", x, y, fontSize, { xScale: 1.1, yScale: 0.5 });
@@ -90,7 +100,13 @@ font.download("fileName.ttf");
 aGlyph.addUnicode(42);
 const glyphBBox: opentype.BoundingBox = aGlyph.getBoundingBox();
 const glyphPathBasic: opentype.Path = aGlyph.getPath();
-const glyphPathFull: opentype.Path = aGlyph.getPath(x, y, fontSize, { xScale: 1, yScale: 2 }, font);
+const glyphPathFull: opentype.Path = aGlyph.getPath(
+    x,
+    y,
+    fontSize,
+    { xScale: 1, yScale: 2 },
+    font,
+);
 const glyphContours: opentype.Contour = aGlyph.getContours();
 const glyphMetrics: opentype.Metrics = aGlyph.getMetrics();
 aGlyph.draw(ctx, x, y, fontSize, {});
@@ -131,13 +147,14 @@ const defaultGlyph = new Glyph({});
 defaultGlyph.name = undefined;
 let num: number = defaultGlyph.index + Math.min(...defaultGlyph.unicodes);
 // @ts-expect-error
-num = defaultGlyph.unicode
-    ?? defaultGlyph.xMin
-    ?? defaultGlyph.xMax
-    ?? defaultGlyph.yMin
-    ?? defaultGlyph.yMax
-    ?? defaultGlyph.advanceWidth
-    ?? defaultGlyph.leftSideBearing;
+num =
+    defaultGlyph.unicode ??
+    defaultGlyph.xMin ??
+    defaultGlyph.xMax ??
+    defaultGlyph.yMin ??
+    defaultGlyph.yMax ??
+    defaultGlyph.advanceWidth ??
+    defaultGlyph.leftSideBearing;
 const path: Path = defaultGlyph.path;
 // @ts-expect-error
 Glyph.bindConstructorValues({});

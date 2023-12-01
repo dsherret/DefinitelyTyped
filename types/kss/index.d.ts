@@ -138,7 +138,10 @@ declare namespace kss {
     function parse(input: string | File[], options: Options): KssStyleguide;
 
     /** Traverse a directory, parse its contents, and create a `KssStyleGuide`. */
-    function traverse(directory: string | string[], options: Options): Promise<KssStyleguide>;
+    function traverse(
+        directory: string | string[],
+        options: Options,
+    ): Promise<KssStyleguide>;
 }
 
 export = kss;

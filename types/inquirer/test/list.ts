@@ -31,6 +31,6 @@ inquirer
             },
         },
     ])
-    .then(answers => {
+    .then((answers) => {
         console.log(JSON.stringify(answers, null, "  "));
     });

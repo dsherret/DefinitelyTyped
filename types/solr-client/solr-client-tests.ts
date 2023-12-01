@@ -10,7 +10,7 @@ query.q({ id: "1" }); // $ExpectType Query
 
 client.search(query); // $ExpectType ClientRequest
 
-(() => {
+() => {
     client.search(query, (err, data) => {
         if (err) {
             console.log(err);
@@ -18,7 +18,7 @@ client.search(query); // $ExpectType ClientRequest
             console.log(data);
         }
     });
-});
+};
 
 const facetOptions1: FacetOptions = {
     on: true,

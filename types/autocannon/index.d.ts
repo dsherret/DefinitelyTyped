@@ -292,7 +292,12 @@ declare namespace autocannon {
          */
         on(
             event: "response",
-            listener: (client: Client, statusCode: number, resBytes: number, responseTime: number) => void,
+            listener: (
+                client: Client,
+                statusCode: number,
+                resBytes: number,
+                responseTime: number,
+            ) => void,
         ): this;
 
         /**
@@ -329,7 +334,10 @@ declare namespace autocannon {
          * @param headers - should be an `Object`, or `undefined` if you want to remove your headers.
          * @param body - should be a `String` or `Buffer`, or `undefined` if you want to remove the body.
          */
-        setHeadersAndBody(headers: IncomingHttpHeaders | undefined, body: string | Buffer | undefined): void;
+        setHeadersAndBody(
+            headers: IncomingHttpHeaders | undefined,
+            body: string | Buffer | undefined,
+        ): void;
 
         /**
          * Used to modify the both the entire request that this client iterator is currently on.
@@ -349,7 +357,10 @@ declare namespace autocannon {
         /**
          * Emitted when a request sent from this client has received the headers of its reply.
          */
-        on(event: "headers", listener: (headers: IncomingHttpHeaders) => void): this;
+        on(
+            event: "headers",
+            listener: (headers: IncomingHttpHeaders) => void,
+        ): this;
 
         /**
          * Emitted when a request sent from this client has received the body of a reply.
@@ -359,7 +370,14 @@ declare namespace autocannon {
         /**
          * Emitted when the client has received a completed response for a request it made.
          */
-        on(event: "response", listener: (statusCode: number, resBytes: number, responseTime: number) => void): this;
+        on(
+            event: "response",
+            listener: (
+                statusCode: number,
+                resBytes: number,
+                responseTime: number,
+            ) => void,
+        ): this;
     }
 
     /**
@@ -566,6 +584,8 @@ declare function autocannon(
     callback: (err: any, result: autocannon.Result) => any,
 ): autocannon.Instance;
 
-declare function autocannon(options: autocannon.Options): Promise<autocannon.Result>;
+declare function autocannon(
+    options: autocannon.Options,
+): Promise<autocannon.Result>;
 
 export = autocannon;

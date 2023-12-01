@@ -54,7 +54,10 @@ export function deflate(data: Uint8Array, options?: UZIPOptions): Uint8Array;
  * @param outputBuffer Optional additional buffer.
  * More details at https://github.com/photopea/uzip.js
  */
-export function inflate(file: Uint8Array, outputBuffer?: Uint8Array): Uint8Array;
+export function inflate(
+    file: Uint8Array,
+    outputBuffer?: Uint8Array,
+): Uint8Array;
 
 /**
  * Decompress buffer. Returns Uint8Array with decompressed bytes
@@ -62,4 +65,7 @@ export function inflate(file: Uint8Array, outputBuffer?: Uint8Array): Uint8Array
  * @param outputBuffer Optional additional buffer.
  * More details at https://github.com/photopea/uzip.js
  */
-export function inflateRaw(file: Uint8Array, outputBuffer?: Uint8Array): Uint8Array;
+export function inflateRaw(
+    file: Uint8Array,
+    outputBuffer?: Uint8Array,
+): Uint8Array;

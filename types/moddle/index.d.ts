@@ -35,7 +35,10 @@ export class Moddle {
     /**
      * Returns the descriptor of an elements named property
      */
-    getPropertyDescriptor(element: Moddle.Element, property: string): Moddle.PropertyDescriptor | undefined;
+    getPropertyDescriptor(
+        element: Moddle.Element,
+        property: string,
+    ): Moddle.PropertyDescriptor | undefined;
 
     /**
      * Returns true if the given descriptor or instance
@@ -53,7 +56,10 @@ export class Moddle {
      * var foo = moddle.create('my:Foo');
      * var bar = moddle.create('my:Bar', { id: 'BAR_1' });
      */
-    create(descriptor: Moddle.Descriptor | string, attrs?: { [key: string]: any }): Moddle.Element;
+    create(
+        descriptor: Moddle.Descriptor | string,
+        attrs?: { [key: string]: any },
+    ): Moddle.Element;
 
     /**
      * Returns the type representing a given descriptor
@@ -82,7 +88,11 @@ export class Moddle {
      *   any: [ foo ]
      * });
      */
-    createAny(name: string, nsUri: string, properties: { [key: string]: any }): Moddle.AnyElement;
+    createAny(
+        name: string,
+        nsUri: string,
+        properties: { [key: string]: any },
+    ): Moddle.AnyElement;
 
     /**
      * Returns a registered package by uri or prefix
@@ -240,7 +250,11 @@ export class Properties {
     /**
      * Define a property on the target element.
      */
-    define(target: Element, name: string, options: { [key: string]: any }): void;
+    define(
+        target: Element,
+        name: string,
+        options: { [key: string]: any },
+    ): void;
 
     /**
      * Define the descriptor for an element.
@@ -283,7 +297,10 @@ export class Registry {
      */
     registerType(type: TypeDefinition, pkg: PackageDefinition): void;
 
-    definePackage(target: TypeDefinition | Descriptor, pkg: PackageDefinition): void;
+    definePackage(
+        target: TypeDefinition | Descriptor,
+        pkg: PackageDefinition,
+    ): void;
 
     getPackage(uriOrPrefix: string): PackageDefinition;
 
@@ -316,7 +333,8 @@ export interface GenericDescriptor {
     };
 }
 
-export interface Descriptor extends Omit<GenericDescriptor, "isGeneric" | "ns"> {
+export interface Descriptor
+    extends Omit<GenericDescriptor, "isGeneric" | "ns"> {
     allTypes: TypeDefinition[];
     allTypesByName: Record<string, TypeDefinition>;
     bodyProperty?: PropertyDefinition;
@@ -343,19 +361,19 @@ export type BuiltInTypes =
     | "Element";
 
 interface ModdleTypesMap {
-    "String": string;
-    "Boolean": boolean;
-    "Integer": number;
-    "Real": number;
+    String: string;
+    Boolean: boolean;
+    Integer: number;
+    Real: number;
 }
 
 /**
  * Convert a type to its real representation
  */
-export function coerceType<
-    T extends BuiltInTypes | string,
-    V,
->(type: T, value: V): ModdleTypesMap extends Record<T, infer E> ? E : V;
+export function coerceType<T extends BuiltInTypes | string, V>(
+    type: T,
+    value: V,
+): ModdleTypesMap extends Record<T, infer E> ? E : V;
 
 /**
  * Return whether the given type is built-in

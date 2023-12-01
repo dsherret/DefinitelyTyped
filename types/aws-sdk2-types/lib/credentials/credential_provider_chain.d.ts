@@ -8,7 +8,9 @@ export class CredentialProviderChain {
     /**
      * Resolves the provider chain by searching for the first set of credentials in providers.
      */
-    resolve(callback: (err: AWSError | null, credentials?: Credentials) => void): CredentialProviderChain;
+    resolve(
+        callback: (err: AWSError | null, credentials?: Credentials) => void,
+    ): CredentialProviderChain;
     /**
      * Return a Promise on resolve() function
      */

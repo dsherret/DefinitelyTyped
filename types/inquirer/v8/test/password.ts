@@ -3,7 +3,7 @@ import inquirer = require("inquirer");
 /**
  * Password prompt example
  */
-const requireLetterAndNumber: inquirer.Validator = value => {
+const requireLetterAndNumber: inquirer.Validator = (value) => {
     if (/\w/.test(value) && /\d/.test(value)) {
         return true;
     }
@@ -27,4 +27,4 @@ inquirer
             validate: requireLetterAndNumber,
         },
     ])
-    .then(answers => console.log(JSON.stringify(answers, null, "  ")));
+    .then((answers) => console.log(JSON.stringify(answers, null, "  ")));

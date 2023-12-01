@@ -1,6 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import FlagIconFactory, { CustomFlagIconFactory, FlagIconSize } from "react-flag-icon-css";
+import FlagIconFactory, {
+    CustomFlagIconFactory,
+    FlagIconSize,
+} from "react-flag-icon-css";
 
 const FlagIcon = FlagIconFactory(React, { useCssModules: false });
 
@@ -47,7 +50,9 @@ const FlagIconCssModules = CustomFlagIconFactory(React, optionsCssModules);
 
 export class CustomFlagComponent extends React.PureComponent<SimpleFlagComponentProps> {
     render() {
-        return <FlagIconCssModules code={this.props.code} size={this.props.size} />;
+        return (
+            <FlagIconCssModules code={this.props.code} size={this.props.size} />
+        );
     }
 }
 
@@ -68,7 +73,13 @@ interface ChildrenFlagComponentProps {
 
 export class ChildrenFlagComponent extends React.PureComponent<ChildrenFlagComponentProps> {
     render() {
-        return <FlagIcon code={this.props.code} size={this.props.size} children={this.props.children} />;
+        return (
+            <FlagIcon
+                code={this.props.code}
+                size={this.props.size}
+                children={this.props.children}
+            />
+        );
     }
 }
 

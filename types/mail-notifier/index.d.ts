@@ -35,7 +35,10 @@ export = mailNotifier;
  *   .on('mail', mail => console.log(mail.from[0].address, mail.subject))
  *   .start();
  */
-declare function mailNotifier(config: mailNotifier.Config, customDbg?: mailNotifier.DebugFn): mailNotifier.Notifier;
+declare function mailNotifier(
+    config: mailNotifier.Config,
+    customDbg?: mailNotifier.DebugFn,
+): mailNotifier.Notifier;
 
 declare namespace mailNotifier {
     interface Notifier extends EventEmitter {
@@ -49,15 +52,39 @@ declare namespace mailNotifier {
         stop: () => this;
         scan: (callback: () => void) => this;
 
-        addListener<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        on<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        once<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        removeListener<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        off<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        prependListener<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
-        prependOnceListener<U extends keyof NotifierEvents>(event: U, listener: NotifierEvents[U]): this;
+        addListener<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        on<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        once<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        removeListener<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        off<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        prependListener<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
+        prependOnceListener<U extends keyof NotifierEvents>(
+            event: U,
+            listener: NotifierEvents[U],
+        ): this;
 
-        emit<U extends keyof NotifierEvents>(event: U, ...args: Parameters<NotifierEvents[U]>): boolean;
+        emit<U extends keyof NotifierEvents>(
+            event: U,
+            ...args: Parameters<NotifierEvents[U]>
+        ): boolean;
     }
 
     interface Config extends ImapConfig {

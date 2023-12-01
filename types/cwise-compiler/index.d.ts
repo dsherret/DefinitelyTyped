@@ -9,7 +9,14 @@ declare namespace cwise_compiler {
         offset: number[];
         array: number;
     }
-    type ArgType = "array" | "offset" | "shape" | "scalar" | "index" | BlockIndice | OffsetArg;
+    type ArgType =
+        | "array"
+        | "offset"
+        | "shape"
+        | "scalar"
+        | "index"
+        | BlockIndice
+        | OffsetArg;
     interface UserArgs {
         args: ArgType[];
         pre: CompiledRoutine;

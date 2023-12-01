@@ -15,7 +15,7 @@ const cy = cytoscape({
     ],
 });
 
-cy.nodes().forEach(node => {
+cy.nodes().forEach((node) => {
     node.popper({
         content: () => {
             const div = document.createElement("div");
@@ -24,7 +24,7 @@ cy.nodes().forEach(node => {
 
             return div;
         },
-        renderedDimensions: el => {
+        renderedDimensions: (el) => {
             return (el as cytoscape.NodeSingular).renderedBoundingBox({});
         },
         popper: {
@@ -43,7 +43,7 @@ cy.popper({
 
         return div;
     },
-    renderedPosition: el => {
+    renderedPosition: (el) => {
         return { x: 50, y: 50 };
     },
 });

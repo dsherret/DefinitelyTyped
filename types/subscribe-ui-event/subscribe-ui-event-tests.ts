@@ -1,4 +1,9 @@
-import { listen, subscribe, UIEventCallback, unsubscribe } from "subscribe-ui-event";
+import {
+    listen,
+    subscribe,
+    UIEventCallback,
+    unsubscribe,
+} from "subscribe-ui-event";
 
 const callback: UIEventCallback = (event, paylaod) => {
     const target = event.target;

@@ -22,12 +22,11 @@ const server = serve({
     ...serveConfig,
 });
 
-server
-    .then((server) => {
-        server.on("listening", () => {
-            server.close();
-        });
+server.then((server) => {
+    server.on("listening", () => {
+        server.close();
     });
+});
 
 const config2: webpack.Configuration = {
     ...config,
@@ -44,21 +43,19 @@ const server2 = serve({
     config: config2,
 });
 
-server2
-    .then((server) => {
-        server.on("listening", () => {
-            server.close();
-        });
+server2.then((server) => {
+    server.on("listening", () => {
+        server.close();
     });
+});
 
 const server3 = serve({
     logLevel: "silent",
     config: config2,
 });
 
-server3
-    .then((server) => {
-        server.on("listening", () => {
-            server.close();
-        });
+server3.then((server) => {
+    server.on("listening", () => {
+        server.close();
     });
+});

@@ -36,7 +36,7 @@ module.exports = (config: karma.Config) => {
 
             // post processing of browsers list
             // here you can edit the list of browsers used by karma
-            postDetection: availableBrowsers => {
+            postDetection: (availableBrowsers) => {
                 // Add IE Emulation
                 const result = availableBrowsers;
 
@@ -45,7 +45,10 @@ module.exports = (config: karma.Config) => {
                 }
 
                 // Remove PhantomJS if another browser has been detected
-                if (availableBrowsers.length > 1 && availableBrowsers.indexOf("PhantomJS") > -1) {
+                if (
+                    availableBrowsers.length > 1 &&
+                    availableBrowsers.indexOf("PhantomJS") > -1
+                ) {
                     const i = result.indexOf("PhantomJS");
                     if (i !== -1) {
                         result.splice(i, 1);

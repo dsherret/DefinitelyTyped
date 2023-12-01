@@ -258,7 +258,8 @@ const quality: YT.SuggestedVideoQuality = player.getPlaybackQuality();
 player.setPlaybackQuality(quality);
 player.setPlaybackQuality("medium");
 
-const qualities: YT.SuggestedVideoQuality[] = player.getAvailableQualityLevels();
+const qualities: YT.SuggestedVideoQuality[] =
+    player.getAvailableQualityLevels();
 
 for (const quality of player.getAvailableQualityLevels()) {
     player.setPlaybackQuality(quality);
@@ -276,14 +277,27 @@ const playlistIndex: number = player.getPlaylistIndex();
 
 player.addEventListener("onReady", (event: YT.PlayerEvent) => {});
 player.addEventListener("onStateChange", (event: YT.OnStateChangeEvent) => {});
-player.addEventListener("onPlaybackQualityChange", (event: YT.OnPlaybackQualityChangeEvent) => {});
-player.addEventListener("onPlaybackRateChange", (event: YT.OnPlaybackRateChangeEvent) => {});
+player.addEventListener(
+    "onPlaybackQualityChange",
+    (event: YT.OnPlaybackQualityChangeEvent) => {},
+);
+player.addEventListener(
+    "onPlaybackRateChange",
+    (event: YT.OnPlaybackRateChangeEvent) => {},
+);
 player.addEventListener("onError", (event: YT.OnErrorEvent) => {});
 player.addEventListener("onApiChange", (event: YT.PlayerEvent) => {});
 
 const frame: HTMLIFrameElement = player.getIframe();
 
-const sphericalProperties: YT.SphericalProperties = player.getSphericalProperties();
-player.setSphericalProperties({ yaw: 1, pitch: 2, roll: 3, fov: 50, enableOrientationSensor: true });
+const sphericalProperties: YT.SphericalProperties =
+    player.getSphericalProperties();
+player.setSphericalProperties({
+    yaw: 1,
+    pitch: 2,
+    roll: 3,
+    fov: 50,
+    enableOrientationSensor: true,
+});
 
 player.destroy();

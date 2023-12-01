@@ -27,10 +27,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedDisplayKeyword = excludedDisplayKeywordIterator.next();
          *      }
          */
-        interface ExcludedDisplayKeywordIterator extends Base.Iterator<ExcludedDisplayKeyword> {}
+        interface ExcludedDisplayKeywordIterator
+            extends Base.Iterator<ExcludedDisplayKeyword> {}
 
         /** An operation representing creation of a new excluded display keyword. */
-        interface ExcludedDisplayKeywordOperation extends Base.Operation<ExcludedDisplayKeyword> {}
+        interface ExcludedDisplayKeywordOperation
+            extends Base.Operation<ExcludedDisplayKeyword> {}
 
         /**
          * Fetches excluded display keywords. Supports filtering and sorting.
@@ -49,11 +51,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedDisplayKeywordSelector
-            extends
-                Base.Selector<ExcludedDisplayKeywordIterator>,
+            extends Base.Selector<ExcludedDisplayKeywordIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

@@ -13,5 +13,6 @@ declare module "karma" {
      * Default global variable name is by default `__json__`,
      * but you can override it with your own name in karma configuration:
      */
-    interface RollupPreprocessorOptions extends Exclude<RollupOptions, "input"> {}
+    interface RollupPreprocessorOptions
+        extends Exclude<RollupOptions, "input"> {}
 }

@@ -46,10 +46,14 @@ const { MAX_ENV, MESSAGE_TYPES, POST_LEVELS } = maxAPI;
             await maxAPI.post("received myHandler2 message");
         },
         myHandlerWithArgs: async (arg1: any, arg2: any) => {
-            await maxAPI.post(`received myHandlerWithArgs message with: ${arg1}, ${arg2}`);
+            await maxAPI.post(
+                `received myHandlerWithArgs message with: ${arg1}, ${arg2}`,
+            );
         },
         myHandlerWithTypedArgs: async (arg1: string, arg2: number) => {
-            await maxAPI.post(`received myHandlerWithTypedArgs message with: ${arg1}, ${arg2}`);
+            await maxAPI.post(
+                `received myHandlerWithTypedArgs message with: ${arg1}, ${arg2}`,
+            );
         },
         [MESSAGE_TYPES.ALL]: async (handled: boolean, ...args: any[]) => {
             if (handled) return;

@@ -31,12 +31,18 @@ if (options.semicolon === false && !options.prettier) {
                 after: true,
             },
         ];
-        options.rules["node/no-unsupported-features/es-builtins"] = ["error", { version: options.nodeVersion }];
+        options.rules["node/no-unsupported-features/es-builtins"] = [
+            "error",
+            { version: options.nodeVersion },
+        ];
         options.rules["node/no-unsupported-features/es-syntax"] = [
             "error",
             { version: options.nodeVersion, ignores: ["modules"] },
         ];
-        options.rules["node/no-unsupported-features/node-builtins"] = ["error", { version: options.nodeVersion }];
+        options.rules["node/no-unsupported-features/node-builtins"] = [
+            "error",
+            { version: options.nodeVersion },
+        ];
     }
     if (options.plugins) {
         options.plugins = options.plugins.concat("react");
@@ -44,8 +50,10 @@ if (options.semicolon === false && !options.prettier) {
     if (options.prettier && options.plugins) {
         options.plugins = options.plugins.concat("prettier");
         if (options.baseConfig && options.baseConfig.extends) {
-            options.baseConfig.extends = options.baseConfig.extends.concat("prettier");
-            options.baseConfig.extends = options.baseConfig.extends.concat("prettier/unicorn");
+            options.baseConfig.extends =
+                options.baseConfig.extends.concat("prettier");
+            options.baseConfig.extends =
+                options.baseConfig.extends.concat("prettier/unicorn");
         }
     }
 }
@@ -62,8 +70,12 @@ result.warningCount; // $ExpectType number
 result.results; // LintResult[]
 
 (async () => {
-    const moreExtensionsResults = await xo.lintFiles(glob, { extensions: ["md"] });
-    const { errorCount, results, warningCount } = await xo.lintFiles("**/*", { cwd: "fixtures/cwd" });
+    const moreExtensionsResults = await xo.lintFiles(glob, {
+        extensions: ["md"],
+    });
+    const { errorCount, results, warningCount } = await xo.lintFiles("**/*", {
+        cwd: "fixtures/cwd",
+    });
     const report = await xo.lintFiles("**/*", { cwd: "fixtures/cwd" });
     // only get the error messages
     const errorReport = xo.getErrorResults(result.results);

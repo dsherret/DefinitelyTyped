@@ -10,6 +10,8 @@ interface NativeAdWrapperProps extends BannerProps {
     adLoaderIndex?: string | undefined;
 }
 
-declare function withNativeAd<P>(Component: React.ComponentType<P>): React.ComponentClass<P & NativeAdWrapperProps>;
+declare function withNativeAd<P>(
+    Component: React.ComponentType<P>,
+): React.ComponentClass<P & NativeAdWrapperProps>;
 
 export = withNativeAd;

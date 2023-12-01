@@ -57,7 +57,11 @@ declare namespace jsf {
          * @param event The DOM event that triggered this Ajax request. The event argument is optional.
          * @param options The set of available options that can be sent as request parameters to control client and/or server side request processing.
          */
-        function request(source: any, event?: String, options?: RequestOptions): void;
+        function request(
+            source: any,
+            event?: String,
+            options?: RequestOptions,
+        ): void;
 
         /**
          * Receive an Ajax response from the server.

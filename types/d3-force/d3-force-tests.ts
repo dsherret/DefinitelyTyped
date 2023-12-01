@@ -39,9 +39,21 @@ const graph: Graph = {
     ],
     links: [
         { source: "Napoleon", target: "Myriel", value: 1, d: 60, s: 0.95 },
-        { source: "Mlle.Baptistine", target: "Myriel", value: 8, d: 100, s: 0.85 },
+        {
+            source: "Mlle.Baptistine",
+            target: "Myriel",
+            value: 8,
+            d: 100,
+            s: 0.85,
+        },
         { source: "Mme.Magloire", target: "Myriel", value: 10, d: 80, s: 0.85 },
-        { source: "Mme.Magloire", target: "Mlle.Baptistine", value: 6, d: 60, s: 0.95 },
+        {
+            source: "Mme.Magloire",
+            target: "Mlle.Baptistine",
+            value: 6,
+            d: 60,
+            s: 0.95,
+        },
     ],
 };
 
@@ -169,8 +181,14 @@ simLinks = forceLink.links();
 
 simLink = simLinks[0];
 
-simNode = (typeof simLink.source !== "number" && typeof simLink.source !== "string") ? simLink.source : undefined;
-simNode = (typeof simLink.target !== "number" && typeof simLink.target !== "string") ? simLink.target : undefined;
+simNode =
+    typeof simLink.source !== "number" && typeof simLink.source !== "string"
+        ? simLink.source
+        : undefined;
+simNode =
+    typeof simLink.target !== "number" && typeof simLink.target !== "string"
+        ? simLink.target
+        : undefined;
 
 const maybeNum: number | undefined = simLink.index; // Ex-ante type before initialization of links
 num = simLink.index!; // Ex-post after link initialization, use ! non-null assertion operator to narrow to number
@@ -241,7 +259,11 @@ forceCharge = d3Force.forceManyBody<SimNode>();
 
 // Configure ManyBody force -----------------------------------------------------------
 
-let simNodeNumberAccessor: (node: SimNode, i: number, nodes: SimNode[]) => number;
+let simNodeNumberAccessor: (
+    node: SimNode,
+    i: number,
+    nodes: SimNode[],
+) => number;
 
 // strength
 
@@ -606,9 +628,7 @@ nodeSimulation = nodeSimulation.force("posx", null);
 
 nodeLinkSimulation = nodeLinkSimulation.force("link", forceLink);
 
-nodeLinkSimulation
-    .force("charge", forceCharge)
-    .force("center", forceCenter);
+nodeLinkSimulation.force("charge", forceCharge).force("center", forceCenter);
 
 let maybeF: d3Force.Force<SimNode, SimLink> | undefined;
 let f: d3Force.Force<SimNode, SimLink>;
@@ -635,7 +655,9 @@ fLink = nodeLinkSimulation.force<d3Force.ForceLink<SimNode, SimLink>>("link")!;
 // This is mainly an issue for ForceLinks, if once wants to get the links from an initialized force
 // or re-set new links for an initialized force, e.g.:
 
-simLinks = nodeLinkSimulation.force<d3Force.ForceLink<SimNode, SimLink>>("link")!.links();
+simLinks = nodeLinkSimulation
+    .force<d3Force.ForceLink<SimNode, SimLink>>("link")!
+    .links();
 
 // fLink = nodeLinkSimulation.force('link')!; // fails, as ForceLink specific properties are missing from 'generic' force
 
@@ -644,9 +666,23 @@ simLinks = nodeLinkSimulation.force<d3Force.ForceLink<SimNode, SimLink>>("link")
 function drawLink(d: SimLink) {
     let source: SimNode | undefined;
     let target: SimNode | undefined;
-    source = (typeof d.source !== "string" && typeof d.source !== "number") ? d.source : undefined;
-    target = (typeof d.target !== "string" && typeof d.target !== "number") ? d.target : undefined;
-    if (context && source && source.x && source.y && target && target.x && target.y) {
+    source =
+        typeof d.source !== "string" && typeof d.source !== "number"
+            ? d.source
+            : undefined;
+    target =
+        typeof d.target !== "string" && typeof d.target !== "number"
+            ? d.target
+            : undefined;
+    if (
+        context &&
+        source &&
+        source.x &&
+        source.y &&
+        target &&
+        target.x &&
+        target.y
+    ) {
         context.moveTo(source.x, source.y);
         context.lineTo(target.x, target.y);
     }
@@ -682,7 +718,9 @@ nodeLinkSimulation = nodeLinkSimulation.on("tick", function ticked() {
 nodeSimulation = nodeSimulation.on("tick", null);
 
 // get listener
-const listener: ((this: d3Force.Simulation<SimNode, undefined>) => void) | undefined = nodeSimulation.on("tick");
+const listener:
+    | ((this: d3Force.Simulation<SimNode, undefined>) => void)
+    | undefined = nodeSimulation.on("tick");
 
 // Configure and Use Force Simulation ===================================================
 

@@ -31,7 +31,10 @@ export interface IconProps extends TextProps {
     color?: ColorValue | number | undefined;
 }
 
-export interface IconButtonProps extends IconProps, TouchableHighlightProps, TouchableNativeFeedbackProps {
+export interface IconButtonProps
+    extends IconProps,
+        TouchableHighlightProps,
+        TouchableNativeFeedbackProps {
     /**
      * Text and icon color
      * Use iconStyle or nest a Text component if you need different colors.
@@ -118,12 +121,8 @@ export class Icon extends React.Component<IconProps, any> {
     ): ImageSource;
     static getFontFamily(): string;
     static getRawGlyphMap(): { [name: string]: number };
-    static loadFont(
-        file?: string,
-    ): Promise<void>;
-    static hasIcon(
-        name: string,
-    ): boolean;
+    static loadFont(file?: string): Promise<void>;
+    static hasIcon(name: string): boolean;
 }
 
 export namespace Icon {

@@ -11,7 +11,11 @@ declare namespace prepare {
         (
             name: string,
             url: string,
-            callback: (error: ExecException | null, stdout: string, stderr: string) => void,
+            callback: (
+                error: ExecException | null,
+                stdout: string,
+                stderr: string,
+            ) => void,
         ): void;
 
         sync(name: string, url: string): void;

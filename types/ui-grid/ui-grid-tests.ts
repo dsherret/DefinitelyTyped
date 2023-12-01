@@ -10,19 +10,24 @@ var columnDef: uiGrid.IColumnDefOf<IMyEntity>;
 columnDef.aggregationHideLabel = true;
 columnDef.aggregationHideLabel = false;
 columnDef.aggregationType = 1;
-columnDef.aggregationType = function() {
+columnDef.aggregationType = function () {
     return 1;
 };
 columnDef.allowFloatWidth = true;
 columnDef.cellClass = "test";
 columnDef.cellClass = (grid, gridRow, gridCol, rowIndex, colIndex) => {
     // types of grid, gridRow, gridCol, rowIndex and colIndex are flowed in correctly
-    return `${grid.footerHeight}-${gridRow.entity.name}-${gridCol.field}-${rowIndex + 1}-${colIndex + 1}`;
+    return `${grid.footerHeight}-${gridRow.entity.name}-${gridCol.field}-${
+        rowIndex + 1
+    }-${colIndex + 1}`;
 };
 columnDef.cellFilter = "date";
-columnDef.cellTemplate = "<div blah=\"something\">hello</div>";
+columnDef.cellTemplate = '<div blah="something">hello</div>';
 columnDef.cellTooltip = "blah";
-columnDef.cellTooltip = function(gridRow: uiGrid.IGridRow, gridCol: uiGrid.IGridColumn) {
+columnDef.cellTooltip = function (
+    gridRow: uiGrid.IGridRow,
+    gridCol: uiGrid.IGridColumn,
+) {
     return `${gridRow.entity.unknownProperty}-${gridCol.displayName}`;
 };
 columnDef.defaultSort = {
@@ -63,22 +68,38 @@ columnDef.filter.condition = (searchTerm: string, cellValue: any): boolean => {
     return false;
 };
 columnDef.filterCellFiltered = false;
-columnDef.filterHeaderTemplate = "<div blah=\"test\"></div>";
+columnDef.filterHeaderTemplate = '<div blah="test"></div>';
 columnDef.filters = [columnDef.filter];
-columnDef.footerCellClass = (grid, gridRow, gridCol, rowRenderIndex, colRenderIndex) => {
+columnDef.footerCellClass = (
+    grid,
+    gridRow,
+    gridCol,
+    rowRenderIndex,
+    colRenderIndex,
+) => {
     // types for grid, gridRow, gridCol, rowRenderIndex, and colRenderIndex flow in properly
-    return `${grid.footerHeight}-${gridRow.entity.age}-${rowRenderIndex + 1}-${gridCol.field}-${colRenderIndex - 1}`;
+    return `${grid.footerHeight}-${gridRow.entity.age}-${rowRenderIndex + 1}-${
+        gridCol.field
+    }-${colRenderIndex - 1}`;
 };
 columnDef.footerCellClass = "theClass";
 columnDef.footerCellFilter = "currency:$";
-columnDef.footerCellTemplate = "<div class=\"yoshi\"></div>";
-columnDef.headerCellClass = (grid, gridRow, gridCol, rowRenderIndex, colRenderIndex) => {
+columnDef.footerCellTemplate = '<div class="yoshi"></div>';
+columnDef.headerCellClass = (
+    grid,
+    gridRow,
+    gridCol,
+    rowRenderIndex,
+    colRenderIndex,
+) => {
     // types for grid, gridRow, gridCol, rowRenderIndex, and colRenderIndex flow in properly
-    return `${grid.footerHeight}-${gridRow.entity.age}-${rowRenderIndex + 1}-${gridCol.field}-${colRenderIndex - 1}`;
+    return `${grid.footerHeight}-${gridRow.entity.age}-${rowRenderIndex + 1}-${
+        gridCol.field
+    }-${colRenderIndex - 1}`;
 };
 columnDef.headerCellClass = "classy";
 columnDef.headerCellFilter = "currency:$";
-columnDef.headerCellTemplate = "<div class=\"yoshi\"></div>";
+columnDef.headerCellTemplate = '<div class="yoshi"></div>';
 columnDef.headerTooltip = false;
 columnDef.headerTooltip = "The Tooltip";
 columnDef.headerTooltip = (col) => {
@@ -86,21 +107,23 @@ columnDef.headerTooltip = (col) => {
     return col.displayName;
 };
 columnDef.maxWidth = 200;
-columnDef.menuItems = [{
-    title: "title",
-    icon: "ico",
-    action: ($event: ng.IAngularEvent) => {
-        alert("click");
+columnDef.menuItems = [
+    {
+        title: "title",
+        icon: "ico",
+        action: ($event: ng.IAngularEvent) => {
+            alert("click");
+        },
+        shown: () => {
+            return true;
+        },
+        active: () => {
+            return false;
+        },
+        context: { a: "lala" },
+        leaveOpen: false,
     },
-    shown: () => {
-        return true;
-    },
-    active: () => {
-        return false;
-    },
-    context: { a: "lala" },
-    leaveOpen: false,
-}];
+];
 columnDef.minWidth = 100;
 columnDef.name = "MyColumn";
 columnDef.sort = {
@@ -174,7 +197,8 @@ anotherGridInstance.findRowByKey(true, 10, "42");
 anotherGridInstance.findRowByKey(true, "test", true);
 
 var selectedRowEntities: IMyEntity[] = gridApi.selection.getSelectedRows();
-var selectedGridRows: uiGrid.IGridRow[] = gridApi.selection.getSelectedGridRows();
+var selectedGridRows: uiGrid.IGridRow[] =
+    gridApi.selection.getSelectedGridRows();
 var row: IMyEntity = selectedRowEntities[0];
 var gridRow: uiGrid.IGridRow = selectedGridRows[0];
 

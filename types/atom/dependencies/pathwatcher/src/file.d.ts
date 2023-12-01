@@ -29,7 +29,9 @@ export class File {
      *  your callback has been invoked, the file will have unsubscribed from the
      *  file watches.
      */
-    onWillThrowWatchError(callback: (event: PathWatchErrorThrownEvent) => void): Disposable;
+    onWillThrowWatchError(
+        callback: (event: PathWatchErrorThrownEvent) => void,
+    ): Disposable;
 
     // File Metadata
     /** Returns a boolean, always true. */

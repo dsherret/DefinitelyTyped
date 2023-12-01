@@ -23,7 +23,10 @@ export interface ExecuteConfig {
     readonly operationTracker?: OperationTracker | null | undefined;
     readonly optimisticConfig: OptimisticResponseConfig | null | undefined;
     readonly publishQueue: PublishQueue;
-    readonly reactFlightPayloadDeserializer?: ReactFlightPayloadDeserializer | null | undefined;
+    readonly reactFlightPayloadDeserializer?:
+        | ReactFlightPayloadDeserializer
+        | null
+        | undefined;
     readonly scheduler?: TaskScheduler | null | undefined;
     readonly sink: Sink<GraphQLResponse>;
     readonly source: RelayObservable<GraphQLResponse>;

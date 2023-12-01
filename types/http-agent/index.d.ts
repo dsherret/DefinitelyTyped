@@ -22,7 +22,11 @@ export interface HttpAgentPrototype {
 
 export class HttpAgent extends EventEmitter {
     prototype: HttpAgentPrototype;
-    constructor(host: string | HttpAgentOptions, urls?: HttpAgentUrls, options?: HttpAgentOptions);
+    constructor(
+        host: string | HttpAgentOptions,
+        urls?: HttpAgentUrls,
+        options?: HttpAgentOptions,
+    );
     url: string;
     body: string;
     port: number;

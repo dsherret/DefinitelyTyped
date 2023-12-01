@@ -1,6 +1,15 @@
 import * as React from "react";
 
-import { Checkbox, Input, Label, Radio, Select, Slider, Switch, Textarea } from "@rebass/forms";
+import {
+    Checkbox,
+    Input,
+    Label,
+    Radio,
+    Select,
+    Slider,
+    Switch,
+    Textarea,
+} from "@rebass/forms";
 import {
     Checkbox as StyledCheckbox,
     Input as StyledInput,
@@ -17,7 +26,11 @@ export default () => (
         <StyledLabel fontWeight="bold" fontSize={1} htmlFor="styled-name">
             Bold Name
         </StyledLabel>
-        <StyledInput id="styled-name" name="styled-name" defaultValue="Jane Doe" />
+        <StyledInput
+            id="styled-name"
+            name="styled-name"
+            defaultValue="Jane Doe"
+        />
 
         <Label fontWeight="bold" fontSize={1} htmlFor="name">
             Bold Name
@@ -33,7 +46,11 @@ export default () => (
             <option>LA</option>
         </Select>
         <StyledLabel htmlFor="styled-location">Location</StyledLabel>
-        <StyledSelect id="styled-location" name="styled-location" defaultValue="NYC">
+        <StyledSelect
+            id="styled-location"
+            name="styled-location"
+            defaultValue="NYC"
+        >
             <option>NYC</option>
             <option>DC</option>
             <option>ATX</option>
@@ -49,7 +66,12 @@ export default () => (
             Boop
         </Label>
         <StyledLabel width={[1 / 2, 1 / 4]} p={2}>
-            <StyledRadio id="styled-beep" name="styled-beep" value="beep" defaultChecked />
+            <StyledRadio
+                id="styled-beep"
+                name="styled-beep"
+                value="beep"
+                defaultChecked
+            />
             Beep
         </StyledLabel>
         <StyledLabel width={[1 / 2, 1 / 4]} p={2}>
@@ -74,7 +96,11 @@ export default () => (
             <Slider id="remember" name="remember" value={50} />
         </Label>
         <StyledLabel width={[1 / 2, 1 / 4]} p={2}>
-            <StyledSlider id="styled-remember" name="styled-remember" value={50} />
+            <StyledSlider
+                id="styled-remember"
+                name="styled-remember"
+                value={50}
+            />
         </StyledLabel>
         <Label width={[1 / 2, 1 / 4]} p={2}>
             <Switch />

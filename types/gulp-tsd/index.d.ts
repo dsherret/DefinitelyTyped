@@ -9,7 +9,10 @@ interface IOptions {
     opts?: Object | undefined;
 }
 
-declare function tsd(opts?: IOptions, callback?: gulp.TaskCallback): NodeJS.ReadWriteStream;
+declare function tsd(
+    opts?: IOptions,
+    callback?: gulp.TaskCallback,
+): NodeJS.ReadWriteStream;
 
 declare namespace tsd {}
 

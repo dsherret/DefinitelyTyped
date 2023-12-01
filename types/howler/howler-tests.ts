@@ -16,7 +16,7 @@ const sound2 = new Howl({
     autoplay: true,
     loop: true,
     volume: 0.5,
-    onend: function() {
+    onend: function () {
         console.log("Finished!");
     },
 });
@@ -38,12 +38,12 @@ const sound4 = new Howl({
 });
 
 // Clear listener after first call.
-sound4.once("load", function() {
+sound4.once("load", function () {
     sound4.play();
 });
 
 // Fires when the sound finishes playing.
-sound4.on("end", function() {
+sound4.on("end", function () {
     console.log("Finished!");
 });
 

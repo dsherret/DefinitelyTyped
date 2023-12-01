@@ -1,7 +1,14 @@
 /// <reference types="node" />
 
 import * as events from "events";
-import { ConsumeMessage, GetMessage, Message, Options, Replies, ServerProperties } from "./properties";
+import {
+    ConsumeMessage,
+    GetMessage,
+    Message,
+    Options,
+    Replies,
+    ServerProperties,
+} from "./properties";
 export * from "./properties";
 
 export interface Connection extends events.EventEmitter {
@@ -18,14 +25,30 @@ export interface Channel extends events.EventEmitter {
 
     close(): Promise<void>;
 
-    assertQueue(queue: string, options?: Options.AssertQueue): Promise<Replies.AssertQueue>;
+    assertQueue(
+        queue: string,
+        options?: Options.AssertQueue,
+    ): Promise<Replies.AssertQueue>;
     checkQueue(queue: string): Promise<Replies.AssertQueue>;
 
-    deleteQueue(queue: string, options?: Options.DeleteQueue): Promise<Replies.DeleteQueue>;
+    deleteQueue(
+        queue: string,
+        options?: Options.DeleteQueue,
+    ): Promise<Replies.DeleteQueue>;
     purgeQueue(queue: string): Promise<Replies.PurgeQueue>;
 
-    bindQueue(queue: string, source: string, pattern: string, args?: any): Promise<Replies.Empty>;
-    unbindQueue(queue: string, source: string, pattern: string, args?: any): Promise<Replies.Empty>;
+    bindQueue(
+        queue: string,
+        source: string,
+        pattern: string,
+        args?: any,
+    ): Promise<Replies.Empty>;
+    unbindQueue(
+        queue: string,
+        source: string,
+        pattern: string,
+        args?: any,
+    ): Promise<Replies.Empty>;
 
     assertExchange(
         exchange: string,
@@ -34,13 +57,35 @@ export interface Channel extends events.EventEmitter {
     ): Promise<Replies.AssertExchange>;
     checkExchange(exchange: string): Promise<Replies.Empty>;
 
-    deleteExchange(exchange: string, options?: Options.DeleteExchange): Promise<Replies.Empty>;
+    deleteExchange(
+        exchange: string,
+        options?: Options.DeleteExchange,
+    ): Promise<Replies.Empty>;
 
-    bindExchange(destination: string, source: string, pattern: string, args?: any): Promise<Replies.Empty>;
-    unbindExchange(destination: string, source: string, pattern: string, args?: any): Promise<Replies.Empty>;
+    bindExchange(
+        destination: string,
+        source: string,
+        pattern: string,
+        args?: any,
+    ): Promise<Replies.Empty>;
+    unbindExchange(
+        destination: string,
+        source: string,
+        pattern: string,
+        args?: any,
+    ): Promise<Replies.Empty>;
 
-    publish(exchange: string, routingKey: string, content: Buffer, options?: Options.Publish): boolean;
-    sendToQueue(queue: string, content: Buffer, options?: Options.Publish): boolean;
+    publish(
+        exchange: string,
+        routingKey: string,
+        content: Buffer,
+        options?: Options.Publish,
+    ): boolean;
+    sendToQueue(
+        queue: string,
+        content: Buffer,
+        options?: Options.Publish,
+    ): boolean;
 
     consume(
         queue: string,
@@ -81,7 +126,10 @@ export interface ConfirmChannel extends Channel {
 }
 
 export const credentials: {
-    amqplain(username: string, password: string): {
+    amqplain(
+        username: string,
+        password: string,
+    ): {
         mechanism: string;
         response(): Buffer;
         username: string;
@@ -91,7 +139,10 @@ export const credentials: {
         mechanism: string;
         response(): Buffer;
     };
-    plain(username: string, password: string): {
+    plain(
+        username: string,
+        password: string,
+    ): {
         mechanism: string;
         response(): Buffer;
         username: string;
@@ -99,4 +150,7 @@ export const credentials: {
     };
 };
 
-export function connect(url: string | Options.Connect, socketOptions?: any): Promise<Connection>;
+export function connect(
+    url: string | Options.Connect,
+    socketOptions?: any,
+): Promise<Connection>;

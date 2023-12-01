@@ -6,7 +6,11 @@ export as namespace saveAs;
  * @param filename - The optional name of the file to be downloaded. If omitted, the name used in the file data will be used. If none is provided "download" will be used.
  * @param options - Optional FileSaver.js config
  */
-export function saveAs(data: Blob | string, filename?: string, options?: FileSaverOptions): void;
+export function saveAs(
+    data: Blob | string,
+    filename?: string,
+    options?: FileSaverOptions,
+): void;
 
 /**
  * FileSaver.js implements the saveAs() FileSaver interface in browsers that do not natively support it.
@@ -16,7 +20,11 @@ export function saveAs(data: Blob | string, filename?: string, options?: FileSav
  * @deprecated use `{ autoBom: false }` as the third argument
  */
 // tslint:disable-next-line:unified-signatures
-export function saveAs(data: Blob | string, filename?: string, disableAutoBOM?: boolean): void;
+export function saveAs(
+    data: Blob | string,
+    filename?: string,
+    disableAutoBOM?: boolean,
+): void;
 
 export interface FileSaverOptions {
     /**

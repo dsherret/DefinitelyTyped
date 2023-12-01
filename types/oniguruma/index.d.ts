@@ -56,7 +56,10 @@ export class OnigRegExp {
      * @return An array of CaptureIndex objects which have been augmented with
      *         the original text that triggered the match
      */
-    captureIndicesForMatch(string: any, match: Match): Array<CaptureIndex & { match: string }>;
+    captureIndicesForMatch(
+        string: any,
+        match: Match,
+    ): Array<CaptureIndex & { match: string }>;
     /**
      * Search the string for a match starting at the given position.
      * @param string The string to search.
@@ -65,7 +68,11 @@ export class OnigRegExp {
      *        be null if no matches were found. Otherwise, match will be an
      *        array of objects for each matched group.
      */
-    search(string: string, startPosition: number, callback: Callback<CaptureIndex[] | null>): void;
+    search(
+        string: string,
+        startPosition: number,
+        callback: Callback<CaptureIndex[] | null>,
+    ): void;
     /**
      * Search the string for a match starting at the beginning of the string.
      * @param string The string to search.
@@ -116,7 +123,11 @@ export class OnigScanner {
      * @param callback The (error, match) function to be called when done. Match
      *        will be null when there is no match.
      */
-    findNextMatch(string: string, startPosition: number, callback: Callback<Match | null>): void;
+    findNextMatch(
+        string: string,
+        startPosition: number,
+        callback: Callback<Match | null>,
+    ): void;
     /**
      * Find the next match from the beginning of a string
      * @param string The string to search

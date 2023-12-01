@@ -60,7 +60,9 @@ declare namespace InfiniteScroll {
         getScrollParent?(): HTMLElement | null;
     }
     class InfiniteScroll extends React.Component<InfiniteScrollProps> {
-        getParentElement(elem?: HTMLElement | null): HTMLElement | undefined | null;
+        getParentElement(
+            elem?: HTMLElement | null,
+        ): HTMLElement | undefined | null;
     }
     namespace InfiniteScroll {}
 }

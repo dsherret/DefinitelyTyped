@@ -107,8 +107,8 @@ export interface Options {
      */
     requestTransform?:
         | ((
-            requestOptions: RequiredUriUrl & CoreOptions,
-        ) => RequiredUriUrl & CoreOptions)
+              requestOptions: RequiredUriUrl & CoreOptions,
+          ) => RequiredUriUrl & CoreOptions)
         | undefined;
     /**
      * Allows to make changes to scripts before they are inlined, such as minifying.

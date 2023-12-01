@@ -40,7 +40,12 @@ declare namespace DataTables {
             /*
              * Programmatically reorder columns
              */
-            move(from: number, to: number, drop: boolean, invalidate: boolean): Api;
+            move(
+                from: number,
+                to: number,
+                drop: boolean,
+                invalidate: boolean,
+            ): Api;
             /*
              * Get / set column order
              */
@@ -54,7 +59,11 @@ declare namespace DataTables {
              */
             transpose(
                 idx?: number | number[],
-                direction?: "toCurrent" | "toOriginal" | "fromOriginal" | "fromCurrent",
+                direction?:
+                    | "toCurrent"
+                    | "toOriginal"
+                    | "fromOriginal"
+                    | "fromCurrent",
             ): Api;
         };
     }

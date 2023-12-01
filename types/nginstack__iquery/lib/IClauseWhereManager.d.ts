@@ -7,7 +7,11 @@ declare class IClauseWhereManager {
     private getWhereGroup;
     private fetch;
     getWhereSql(): string;
-    makeClauseWhere(iQuery: IQuery, literalClause: any, join?: boolean): IClauseWhere;
+    makeClauseWhere(
+        iQuery: IQuery,
+        literalClause: any,
+        join?: boolean,
+    ): IClauseWhere;
 }
 declare namespace IClauseWhereManager {
     export { IClauseWhere, IQuery };

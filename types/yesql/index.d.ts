@@ -14,11 +14,17 @@ declare namespace readSqlFiles {
     function pg<TParams extends object = AnyParams>(
         query: string,
         options?: Options,
-    ): (params: TParams) => { text: string; values: Array<TParams[keyof TParams]> };
+    ): (params: TParams) => {
+        text: string;
+        values: Array<TParams[keyof TParams]>;
+    };
     function mysql<TParams extends object = AnyParams>(
         query: string,
         options?: Options,
-    ): (params: TParams) => { sql: string; values: Array<TParams[keyof TParams]> };
+    ): (params: TParams) => {
+        sql: string;
+        values: Array<TParams[keyof TParams]>;
+    };
 }
 
 export = readSqlFiles;

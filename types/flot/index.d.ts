@@ -15,18 +15,55 @@ declare namespace jquery.flot {
     }
 
     interface hooks {
-        processOptions?: Array<{ (plot: plot, options: plotOptions): void }> | undefined;
-        processRawData?:
-            | Array<{ (plot: plot, series: dataSeries, data: any[], datapoints: datapoints): void }>
+        processOptions?:
+            | Array<{ (plot: plot, options: plotOptions): void }>
             | undefined;
-        processDatapoints?: Array<{ (plot: plot, series: dataSeries, datapoints: datapoints): void }> | undefined;
-        processOffset?: Array<{ (plot: plot, offset: canvasPoint): void }> | undefined;
-        drawBackground?: Array<{ (plot: plot, context: CanvasRenderingContext2D): void }> | undefined;
-        drawSeries?: Array<{ (plot: plot, context: CanvasRenderingContext2D, series: dataSeries): void }> | undefined;
-        draw?: Array<{ (plot: plot, context: CanvasRenderingContext2D): void }> | undefined;
-        bindEvents?: Array<{ (plot: plot, eventHolder: JQuery): void }> | undefined;
-        drawOverlay?: Array<{ (plot: plot, context: CanvasRenderingContext2D): void }> | undefined;
-        shutdown?: Array<{ (plot: plot, eventHolder: JQuery): void }> | undefined;
+        processRawData?:
+            | Array<{
+                  (
+                      plot: plot,
+                      series: dataSeries,
+                      data: any[],
+                      datapoints: datapoints,
+                  ): void;
+              }>
+            | undefined;
+        processDatapoints?:
+            | Array<{
+                  (
+                      plot: plot,
+                      series: dataSeries,
+                      datapoints: datapoints,
+                  ): void;
+              }>
+            | undefined;
+        processOffset?:
+            | Array<{ (plot: plot, offset: canvasPoint): void }>
+            | undefined;
+        drawBackground?:
+            | Array<{ (plot: plot, context: CanvasRenderingContext2D): void }>
+            | undefined;
+        drawSeries?:
+            | Array<{
+                  (
+                      plot: plot,
+                      context: CanvasRenderingContext2D,
+                      series: dataSeries,
+                  ): void;
+              }>
+            | undefined;
+        draw?:
+            | Array<{ (plot: plot, context: CanvasRenderingContext2D): void }>
+            | undefined;
+        bindEvents?:
+            | Array<{ (plot: plot, eventHolder: JQuery): void }>
+            | undefined;
+        drawOverlay?:
+            | Array<{ (plot: plot, context: CanvasRenderingContext2D): void }>
+            | undefined;
+        shutdown?:
+            | Array<{ (plot: plot, eventHolder: JQuery): void }>
+            | undefined;
     }
 
     interface interaction {

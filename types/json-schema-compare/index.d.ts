@@ -1,11 +1,23 @@
-import { JSONSchema4, JSONSchema6, JSONSchema6Definition, JSONSchema7, JSONSchema7Definition } from "json-schema";
+import {
+    JSONSchema4,
+    JSONSchema6,
+    JSONSchema6Definition,
+    JSONSchema7,
+    JSONSchema7Definition,
+} from "json-schema";
 
 export = compare;
 
-type JSONSchemaComparee = JSONSchema4 | JSONSchema6Definition | JSONSchema7Definition | undefined;
+type JSONSchemaComparee =
+    | JSONSchema4
+    | JSONSchema6Definition
+    | JSONSchema7Definition
+    | undefined;
 type KnownKeys<T> = {
     [K in keyof T]: string extends K ? never : K;
-} extends { [_ in keyof T]: infer U } ? U : never;
+} extends { [_ in keyof T]: infer U }
+    ? U
+    : never;
 /**
  * The `string & {''?: never}` is a workaround for
  * [Microsoft/TypeScript#29729](https://github.com/Microsoft/TypeScript/issues/29729).
@@ -15,7 +27,7 @@ type JSONSchemaKeys =
     | KnownKeys<JSONSchema4>
     | keyof JSONSchema6
     | keyof JSONSchema7
-    | string & { ""?: never | undefined };
+    | (string & { ""?: never | undefined });
 interface Options {
     /**
      * Ignores certain keywords, useful to exclude meta keywords like title,
@@ -37,4 +49,8 @@ interface Options {
  * - For minLength, minItems and minProperties `undefined` and `0` are equal
  * - For uniqueItems, `undefined` and `false` are equal
  */
-declare function compare(a: JSONSchemaComparee, b: JSONSchemaComparee, options?: Options): boolean;
+declare function compare(
+    a: JSONSchemaComparee,
+    b: JSONSchemaComparee,
+    options?: Options,
+): boolean;

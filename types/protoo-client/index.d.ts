@@ -11,7 +11,13 @@ export interface ProtooRequest {
 
 export type ProtooResponse =
     | { response: true; id: number; ok: true; data: any }
-    | { response: true; id: number; ok: false; errorCode: number; errorReason: string };
+    | {
+          response: true;
+          id: number;
+          ok: false;
+          errorCode: number;
+          errorReason: string;
+      };
 
 export interface ProtooNotification {
     notification: true;

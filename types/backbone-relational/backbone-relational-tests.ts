@@ -21,7 +21,8 @@ class House extends Backbone.RelationalModel {
 
 class Person extends Backbone.RelationalModel {
     relations = [
-        { // Create a (recursive) one-to-one relationship
+        {
+            // Create a (recursive) one-to-one relationship
             type: Backbone.HasOne,
             key: "user",
             relatedModel: "User",
@@ -37,8 +38,7 @@ class Person extends Backbone.RelationalModel {
     }
 }
 
-class User extends Backbone.RelationalModel {
-}
+class User extends Backbone.RelationalModel {}
 
 var paul = new Person({
     id: "person-1",
@@ -70,24 +70,26 @@ paul.get("livesIn"); // === ourHouse
 // You can control which relations get serialized to JSON, using the 'includeInJSON'
 // property on a Relation. Also, each object will only get serialized once to prevent loops.
 alert(JSON.stringify(paul.get("user").toJSON(), null, "\t"));
-alert(JSON.stringify(paul.get("user").toJSON({ option1: "value1" }), null, "\t"));
+alert(
+    JSON.stringify(paul.get("user").toJSON({ option1: "value1" }), null, "\t"),
+);
 // Load occupants 'person-2' and 'person-5', which don't exist yet, from the server
 ourHouse.fetchRelated("occupants");
 
 // Use the `add` and `remove` events to listen for additions/removals on a HasMany relation.
 // Here, we listen for changes to `ourHouse.occupants`.
 ourHouse
-    .on("add:occupants", function(model, coll) {
+    .on("add:occupants", function (model, coll) {
         console.log("add %o", model);
         // Do something. Create a View?
     })
-    .on("remove:occupants", function(model, coll) {
+    .on("remove:occupants", function (model, coll) {
         console.log("remove %o", model);
         // Do somehting. Destroy a View?
     });
 
 // Use the 'update' event to listen for changes on a HasOne relation (like 'Person.livesIn').
-paul.on("change:livesIn", function(model, attr) {
+paul.on("change:livesIn", function (model, attr) {
     console.log("change `livesIn` to %o", attr);
 });
 
@@ -100,7 +102,7 @@ alert("paul.livesIn=" + paul.get("livesIn"));
 // Move into `theirHouse`; triggers 'add:occupants' on ourHouse, and 'change:livesIn' on paul
 
 var theirHouse = new House({ id: "house-2" });
-paul.set({ "livesIn": theirHouse });
+paul.set({ livesIn: theirHouse });
 
 alert("theirHouse.occupants=" + theirHouse.get("occupants").pluck("name"));
 

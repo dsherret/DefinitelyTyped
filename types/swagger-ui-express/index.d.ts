@@ -45,7 +45,10 @@ export function setup(
 ): RequestHandler;
 
 /** @deprecated */
-export function setup(swaggerDoc?: JsonObject, isExplorer?: boolean): RequestHandler;
+export function setup(
+    swaggerDoc?: JsonObject,
+    isExplorer?: boolean,
+): RequestHandler;
 
 /**
  * Returns handlers for serving Swagger UI files.
@@ -88,7 +91,10 @@ export function generateHTML(
 ): string;
 
 /** @deprecated */
-export function generateHTML(swaggerDoc?: JsonObject, isExplorer?: boolean): RequestHandler;
+export function generateHTML(
+    swaggerDoc?: JsonObject,
+    isExplorer?: boolean,
+): RequestHandler;
 
 /**
  * Returns handlers for serving Swagger UI files.
@@ -99,4 +105,7 @@ export function generateHTML(swaggerDoc?: JsonObject, isExplorer?: boolean): Req
  * @param opts options to pass to Swagger UI.
  * @returns Express handlers that process requests and return files for Swagger UI.
  */
-export function serveFiles(swaggerDoc?: JsonObject, opts?: SwaggerUiOptions): RequestHandler[];
+export function serveFiles(
+    swaggerDoc?: JsonObject,
+    opts?: SwaggerUiOptions,
+): RequestHandler[];

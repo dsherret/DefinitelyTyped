@@ -23,7 +23,11 @@ interface Foo {
     bar: string | number;
 }
 
-deepEqual({ bar: 1 }, { bar: "1" }, { comparator: (a: Foo, b: Foo) => String(a.bar) === String(b.bar) });
+deepEqual(
+    { bar: 1 },
+    { bar: "1" },
+    { comparator: (a: Foo, b: Foo) => String(a.bar) === String(b.bar) },
+);
 
 deepEqual(
     1,

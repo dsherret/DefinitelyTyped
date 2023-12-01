@@ -1,6 +1,11 @@
 /// <reference types="node" />
 
-export type ColorObject = { r: number; g: number; b: number; a?: number | undefined };
+export type ColorObject = {
+    r: number;
+    g: number;
+    b: number;
+    a?: number | undefined;
+};
 export type Color = string | [number, number, number, number] | ColorObject;
 
 export interface ImageCallback {
@@ -22,21 +27,33 @@ export function open(source: string, callback: ImageCallback): void;
  * @param source The path to the image on disk.
  * @param type Optional type of the image. If omitted, the type will be inferred from the file extension. Type must be a string of the image type (i.e. "jpg").
  */
-export function open(source: string, type: string, callback: ImageCallback): void;
+export function open(
+    source: string,
+    type: string,
+    callback: ImageCallback,
+): void;
 
 /**
  * Open an image
  * @param source The path to the image on disk or an image buffer.
  * @param type Type of the image. If source is an encoded image buffer, type must be a string of the image type (i.e. "jpg"). If source is a raw pixels buffer type must be an object with type.width and type.height properties.
  */
-export function open(source: Buffer, type: string | { width: number; height: number }, callback: ImageCallback): any;
+export function open(
+    source: Buffer,
+    type: string | { width: number; height: number },
+    callback: ImageCallback,
+): any;
 
 /**
  * Create a new image
  * @param width The width of the new image.
  * @param height The height of the new image.
  */
-export function create(width: number, height: number, callback: ImageCallback): void;
+export function create(
+    width: number,
+    height: number,
+    callback: ImageCallback,
+): void;
 
 /**
  * Create a new image
@@ -44,7 +61,12 @@ export function create(width: number, height: number, callback: ImageCallback): 
  * @param height The height of the new image.
  * @param color Optional Color of the canvas.
  */
-export function create(width: number, height: number, color: Color, callback: ImageCallback): void;
+export function create(
+    width: number,
+    height: number,
+    color: Color,
+    callback: ImageCallback,
+): void;
 
 export type JpegBufferParams = {
     quality?: number | undefined;
@@ -92,7 +114,12 @@ export interface Image {
      * @param Height in pixels.
      * @param Interpolation method.
      */
-    resize(width: number, height: number, inter: string, callback: ImageCallback): void;
+    resize(
+        width: number,
+        height: number,
+        inter: string,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Scale
@@ -120,7 +147,12 @@ export interface Image {
      * @param hRatio Height scale ratio.
      * @param inter Interpolation method.
      */
-    scale(wRatio: number, hRatio: number, inter: string, callback: ImageCallback): void;
+    scale(
+        wRatio: number,
+        hRatio: number,
+        inter: string,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Contain the image in a colored canvas. The image will be resized to the largest possible size such that it's fully contained inside the canvas.
@@ -135,7 +167,12 @@ export interface Image {
      * @param height Canvas' height in pixels.
      * @param color Color of the canvas.
      */
-    contain(width: number, height: number, color: Color, callback: ImageCallback): void;
+    contain(
+        width: number,
+        height: number,
+        color: Color,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Contain the image in a colored canvas. The image will be resized to the largest possible size such that it's fully contained inside the canvas.
@@ -143,7 +180,12 @@ export interface Image {
      * @param height Canvas' height in pixels.
      * @param inter Interpolation method.
      */
-    contain(width: number, height: number, inter: string, callback: ImageCallback): void;
+    contain(
+        width: number,
+        height: number,
+        inter: string,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Contain the image in a colored canvas. The image will be resized to the largest possible size such that it's fully contained inside the canvas.
@@ -152,7 +194,13 @@ export interface Image {
      * @param color Color of the canvas.
      * @param inter Interpolation method.
      */
-    contain(width: number, height: number, color: Color, inter: string, callback: ImageCallback): void;
+    contain(
+        width: number,
+        height: number,
+        color: Color,
+        inter: string,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Cover a canvas with the image. The image will be resized to the smallest possible size such that both its dimensions are bigger than the canvas's dimensions. Margins of the image exceeding the canvas will be discarded.
@@ -167,7 +215,12 @@ export interface Image {
      * @param height Canvas' height in pixels.
      * @param inter Interpolation method.
      */
-    cover(width: number, height: number, inter: string, callback: ImageCallback): void;
+    cover(
+        width: number,
+        height: number,
+        inter: string,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Rotate
@@ -185,7 +238,13 @@ export interface Image {
     /**
      * Crop with rectangle coordinates
      */
-    crop(left: number, top: number, right: number, bottom: number, callback: ImageCallback): void;
+    crop(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Crop a rectangle from center
@@ -238,7 +297,13 @@ export interface Image {
      * @param right Number of pixels to add to right edge.
      * @param bottom Number of pixels to add to bottom edge.
      */
-    pad(left: number, top: number, right: number, bottom: number, callback: ImageCallback): void;
+    pad(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Pad image edges with colored pixels.
@@ -248,7 +313,14 @@ export interface Image {
      * @param bottom Number of pixels to add to bottom edge.
      * @param color Color of the padding.
      */
-    pad(left: number, top: number, right: number, bottom: number, color: Color, callback: ImageCallback): void;
+    pad(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        color: Color,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Adjust image saturation.
@@ -338,7 +410,12 @@ export interface Image {
      * @param top Coordinates of the pixel from the top corner of the image.
      * @param color Color of the pixel to set.
      */
-    setPixel(left: number, top: number, color: Color, callback: ImageCallback): void;
+    setPixel(
+        left: number,
+        top: number,
+        color: Color,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Set the metadata in an image. This is currently only supported for PNG files. Sets a tEXt chunk with the key lwip_data and comment as the given string. If called with a null parameter, removes existing metadata from the image, if present.
@@ -375,7 +452,13 @@ export interface Image {
      *
      * Note: The sub-image is extracted from the original image in the state it was at the time image.extract( ... ) was called, eventhough callback is called asynchronously.
      */
-    extract(left: number, top: number, right: number, bottom: number, callback: ImageCallback): void;
+    extract(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Get encoded binary image data as a NodeJS Buffer.
@@ -394,7 +477,11 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "jpg", params: JpegBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "jpg",
+        params: JpegBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Get encoded binary image data as a NodeJS Buffer.
@@ -413,7 +500,11 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "png", params: PngBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "png",
+        params: PngBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Get encoded binary image data as a NodeJS Buffer.
@@ -432,7 +523,11 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "gif", params: GifBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "gif",
+        params: GifBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Get encoded binary image data as a NodeJS Buffer.
@@ -491,7 +586,12 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "jpg", params: JpegBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "jpg",
+        params: JpegBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Write encoded binary image data directly to a file.
@@ -508,7 +608,12 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "png", params: PngBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "png",
+        params: PngBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Write encoded binary image data directly to a file.
@@ -525,7 +630,12 @@ export interface Image {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "gif", params: GifBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "gif",
+        params: GifBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Write encoded binary image data directly to a file.
@@ -747,7 +857,13 @@ export interface Batch {
      * @param bottom Number of pixels to add to bottom edge.
      * @param color Color of the padding.
      */
-    pad(left: number, top: number, right: number, bottom: number, color: Color): Batch;
+    pad(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        color: Color,
+    ): Batch;
 
     /**
      * Adjust image saturation.
@@ -869,7 +985,11 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "jpg", params: JpegBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "jpg",
+        params: JpegBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Execute batch and obtain a Buffer object
@@ -888,7 +1008,11 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "png", params: PngBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "png",
+        params: PngBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Execute batch and obtain a Buffer object
@@ -907,7 +1031,11 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    toBuffer(format: "gif", params: GifBufferParams, callback: BufferCallback): void;
+    toBuffer(
+        format: "gif",
+        params: GifBufferParams,
+        callback: BufferCallback,
+    ): void;
 
     /**
      * Execute batch and obtain a Buffer object
@@ -966,7 +1094,12 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "jpg", params: JpegBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "jpg",
+        params: JpegBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Execute batch and write to file
@@ -983,7 +1116,12 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "png", params: PngBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "png",
+        params: PngBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Execute batch and write to file
@@ -1000,7 +1138,12 @@ export interface Batch {
      * @param format Encoding format.
      * @param params Format-specific parameters.
      */
-    writeFile(path: string, format: "gif", params: GifBufferParams, callback: ImageCallback): void;
+    writeFile(
+        path: string,
+        format: "gif",
+        params: GifBufferParams,
+        callback: ImageCallback,
+    ): void;
 
     /**
      * Execute batch and write to file

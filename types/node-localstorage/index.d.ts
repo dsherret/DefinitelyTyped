@@ -103,7 +103,13 @@ export class StorageEvent {
      * @param url The current `process.pid` for the calling process.
      * @param storageArea The location of the storage area. Defaults to `localStorage`.
      */
-    constructor(key: string, oldValue: string, newValue: string, url: string, storageArea: string);
+    constructor(
+        key: string,
+        oldValue: string,
+        newValue: string,
+        url: string,
+        storageArea: string,
+    );
 }
 
 /**

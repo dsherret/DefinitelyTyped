@@ -18,20 +18,33 @@ const options = {
 };
 
 minimalRequestPromise(options)
-    .then(response => {
+    .then((response) => {
         console.log("got response", response.body, response.headers);
     })
-    .catch(response => {
-        console.log("got error", response.body, response.headers, response.statusCode, response.statusMessage);
+    .catch((response) => {
+        console.log(
+            "got error",
+            response.body,
+            response.headers,
+            response.statusCode,
+            response.statusMessage,
+        );
     });
 
 // GET method
-minimalRequestPromise.get("https://vacationtracker.io")
-    .then(response => {
+minimalRequestPromise
+    .get("https://vacationtracker.io")
+    .then((response) => {
         console.log("got response", response.body, response.headers);
     })
-    .catch(response => {
-        console.log("got error", response.body, response.headers, response.statusCode, response.statusMessage);
+    .catch((response) => {
+        console.log(
+            "got error",
+            response.body,
+            response.headers,
+            response.statusCode,
+            response.statusMessage,
+        );
     });
 
 // POST method
@@ -46,12 +59,22 @@ const postOptions = {
         message: "message",
     }),
 };
-minimalRequestPromise.post("https://graph.facebook.com/v2.6/me/messages?access_token=fbAccessToken", postOptions)
-    .then(response => {
+minimalRequestPromise
+    .post(
+        "https://graph.facebook.com/v2.6/me/messages?access_token=fbAccessToken",
+        postOptions,
+    )
+    .then((response) => {
         console.log("got response", response.body, response.headers);
     })
-    .catch(response => {
-        console.log("got error", response.body, response.headers, response.statusCode, response.statusMessage);
+    .catch((response) => {
+        console.log(
+            "got error",
+            response.body,
+            response.headers,
+            response.statusCode,
+            response.statusMessage,
+        );
     });
 
 // PUT method
@@ -63,19 +86,33 @@ const putOptions = {
         cool: true,
     }),
 };
-minimalRequestPromise.put("https://vacationtracker.io", putOptions)
-    .then(response => {
+minimalRequestPromise
+    .put("https://vacationtracker.io", putOptions)
+    .then((response) => {
         console.log("got response", response.body, response.headers);
     })
-    .catch(response => {
-        console.log("got error", response.body, response.headers, response.statusCode, response.statusMessage);
+    .catch((response) => {
+        console.log(
+            "got error",
+            response.body,
+            response.headers,
+            response.statusCode,
+            response.statusMessage,
+        );
     });
 
 // DELETE method
-minimalRequestPromise.delete("https://vacationtracker.io")
-    .then(response => {
+minimalRequestPromise
+    .delete("https://vacationtracker.io")
+    .then((response) => {
         console.log("got response", response.body, response.headers);
     })
-    .catch(response => {
-        console.log("got error", response.body, response.headers, response.statusCode, response.statusMessage);
+    .catch((response) => {
+        console.log(
+            "got error",
+            response.body,
+            response.headers,
+            response.statusCode,
+            response.statusMessage,
+        );
     });

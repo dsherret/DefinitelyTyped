@@ -1,10 +1,18 @@
 export function getComponentMetadata(name: string): Metadata | null;
-export function register(name: string, descriptor: {
-    metadata: Metadata;
-    view: string;
-    viewModel: (param0: ViewModelContext) => void | object;
-    parseFunction: (value: string, name: string, meta: object, defaultParseFunction: (value: string) => any) => any;
-}): void;
+export function register(
+    name: string,
+    descriptor: {
+        metadata: Metadata;
+        view: string;
+        viewModel: (param0: ViewModelContext) => void | object;
+        parseFunction: (
+            value: string,
+            name: string,
+            meta: object,
+            defaultParseFunction: (value: string) => any,
+        ) => any;
+    },
+): void;
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type Metadata = {
     name: string;
@@ -21,11 +29,13 @@ export type PropertyChangedContext = {
     value: any;
     previousValue: any;
     updatedFrom: "external" | "internal";
-    subproperty?: {
-        path: string;
-        value: any;
-        previousValue: any;
-    } | undefined;
+    subproperty?:
+        | {
+              path: string;
+              value: any;
+              previousValue: any;
+          }
+        | undefined;
 };
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type ViewModel = {

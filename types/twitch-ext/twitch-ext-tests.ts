@@ -1,9 +1,12 @@
 console.log(`Running ${Twitch.ext.version} on ${Twitch.ext.environment}`);
 
-Twitch.ext.onAuthorized(auth => {
+Twitch.ext.onAuthorized((auth) => {
     console.log("The JWT that will be passed to the EBS is", auth.token);
     console.log("The channel ID is", auth.channelId);
-    console.log("JWT that can be used for front end API requests is", auth.helixToken);
+    console.log(
+        "JWT that can be used for front end API requests is",
+        auth.helixToken,
+    );
 });
 
 Twitch.ext.onContext((context, changed) => {
@@ -23,7 +26,7 @@ Twitch.ext.onVisibilityChanged((isVisible, context) => {
     }
 });
 
-Twitch.ext.onHighlightChanged(isHighlighted => {
+Twitch.ext.onHighlightChanged((isHighlighted) => {
     if (isHighlighted) {
         console.log("Extension was highlighted");
     } else {
@@ -31,11 +34,11 @@ Twitch.ext.onHighlightChanged(isHighlighted => {
     }
 });
 
-Twitch.ext.onPositionChanged(position => {
+Twitch.ext.onPositionChanged((position) => {
     console.log(`Extension moved to x=${position.x}, y=${position.y}`);
 });
 
-Twitch.ext.onError(e => console.error(e));
+Twitch.ext.onError((e) => console.error(e));
 
 // Twitch Extension Actions
 Twitch.ext.actions.onFollow((didFollow, channelName) => {
@@ -67,10 +70,10 @@ Twitch.ext.configuration.onChanged(() => {
     }
 });
 
-Twitch.ext.configuration.set("broadcaster", "0.0.1", "{\"test\": \"test\"}");
+Twitch.ext.configuration.set("broadcaster", "0.0.1", '{"test": "test"}');
 
 // Twitch Extension Feature flags
-Twitch.ext.features.onChanged(changed => {
+Twitch.ext.features.onChanged((changed) => {
     if (changed.indexOf("isChatEnabled") !== -1) {
         if (Twitch.ext.features.isChatEnabled) {
             console.log("Chat is now enabled");
@@ -81,11 +84,15 @@ Twitch.ext.features.onChanged(changed => {
 // Twitch Extension Bits
 Twitch.ext.bits
     .getProducts()
-    .then(products => {
+    .then((products) => {
         console.log(`Got ${products.length} products`);
         for (const product of products) {
-            console.log(`Found product "${product.displayName}" with SKU ${product.sku}`);
-            console.log(`Product costs ${product.cost.amount} ${product.cost.type}`);
+            console.log(
+                `Found product "${product.displayName}" with SKU ${product.sku}`,
+            );
+            console.log(
+                `Product costs ${product.cost.amount} ${product.cost.type}`,
+            );
             if (typeof product.inDevelopment !== "undefined") {
                 if (product.inDevelopment) {
                     console.log("Product is in development");
@@ -97,12 +104,16 @@ Twitch.ext.bits
             }
         }
     })
-    .catch(error => {
+    .catch((error) => {
         console.error(`Got an error: ${error}`);
     });
-Twitch.ext.bits.onTransactionCancelled(() => console.log("Transaction cancelled"));
-Twitch.ext.bits.onTransactionComplete(transaction => {
-    console.log(`${transaction.initiator} (${transaction.userId}) bought ${transaction.product.displayName}`);
+Twitch.ext.bits.onTransactionCancelled(() =>
+    console.log("Transaction cancelled"),
+);
+Twitch.ext.bits.onTransactionComplete((transaction) => {
+    console.log(
+        `${transaction.initiator} (${transaction.userId}) bought ${transaction.product.displayName}`,
+    );
     console.log(`Transaction id was ${transaction.transactionID}`);
 });
 Twitch.ext.bits.setUseLoopback(true);

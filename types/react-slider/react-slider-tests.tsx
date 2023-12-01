@@ -9,7 +9,7 @@ class Slider extends React.Component<ReactSliderProps> {
                 trackClassName="classnameForBar"
                 withTracks={false}
                 marks={5}
-                renderMark={props => <div {...props} />}
+                renderMark={(props) => <div {...props} />}
                 {...this.props}
             />
         );
@@ -36,11 +36,11 @@ function SingleThumbSliders() {
                 onAfterChange={(value, index) => value > 1 && index === 0}
                 onBeforeChange={(value, index) => value > 1 && index === 0}
                 onChange={(value, index) => value > 1 && index === 0}
-                onSliderClick={value => value > 1}
+                onSliderClick={(value) => value > 1}
                 orientation="horizontal"
-                pageFn={step => step * 15}
+                pageFn={(step) => step * 15}
                 pearling
-                renderMark={props => <div {...props} />}
+                renderMark={(props) => <div {...props} />}
                 renderThumb={(props, { index, value, valueNow }) => {
                     return <div {...props}>{index + valueNow + value}</div>;
                 }}
@@ -56,7 +56,9 @@ function SingleThumbSliders() {
             />
 
             <ReactSlider
-                ariaValuetext={({ index, value, valueNow }) => `${index + valueNow + value}`}
+                ariaValuetext={({ index, value, valueNow }) =>
+                    `${index + valueNow + value}`
+                }
                 marks={5}
                 orientation="vertical"
                 renderMark={() => null}
@@ -80,9 +82,9 @@ function MultipleThumbSliders() {
                 defaultValue={[10, 50]}
                 ariaLabel={["foo", "bar"]}
                 ariaValuetext={({ value }) => `${value.join()}`}
-                onAfterChange={value => value.join()}
-                onBeforeChange={value => value.join()}
-                onChange={value => value.join()}
+                onAfterChange={(value) => value.join()}
+                onBeforeChange={(value) => value.join()}
+                onChange={(value) => value.join()}
                 renderThumb={({ ref, ...props }, { value }) => (
                     <div ref={ref} {...props}>
                         {value.join()}
@@ -93,7 +95,10 @@ function MultipleThumbSliders() {
                 }}
             />
 
-            <ReactSlider defaultValue={[10, 50] as const} ariaLabel={["foo", "bar"] as const} />
+            <ReactSlider
+                defaultValue={[10, 50] as const}
+                ariaLabel={["foo", "bar"] as const}
+            />
 
             <ReactSlider value={value} onChange={setValue} />
         </>
@@ -114,10 +119,12 @@ interface CustomThumbProps extends React.HTMLProps<HTMLDivElement> {
     show: boolean;
 }
 
-const CustomThumb = React.forwardRef<HTMLDivElement, CustomThumbProps>((props, ref) => {
-    const { show, ...otherProps } = props;
-    return show ? <div ref={ref} {...otherProps} /> : null;
-});
+const CustomThumb = React.forwardRef<HTMLDivElement, CustomThumbProps>(
+    (props, ref) => {
+        const { show, ...otherProps } = props;
+        return show ? <div ref={ref} {...otherProps} /> : null;
+    },
+);
 
 function SliderWithCustomThumb() {
     return (
@@ -149,7 +156,7 @@ function InvalidUses() {
 
             <ReactSlider
                 value={[0, 1] as readonly number[]}
-                onChange={value => {
+                onChange={(value) => {
                     // @ts-expect-error
                     value.push(2);
                 }}

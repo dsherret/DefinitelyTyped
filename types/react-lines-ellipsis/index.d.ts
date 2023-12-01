@@ -11,7 +11,13 @@ declare namespace LinesEllipsis {
         trimRight?: boolean;
         basedOn?: "letters" | "words";
         winWidth?: number;
-        onReflow?: ({ clamped, text }: { clamped: boolean; text: string }) => void;
+        onReflow?: ({
+            clamped,
+            text,
+        }: {
+            clamped: boolean;
+            text: string;
+        }) => void;
         component?: string;
     };
 

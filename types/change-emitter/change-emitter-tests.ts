@@ -43,10 +43,18 @@ function largerExample() {
 function untypedEmitter() {
     const { emit, listen } = createChangeEmitter();
 
-    const unlisten0 = listen(() => {/* do something */});
-    const unlisten1 = listen(value => {/* do something with value */});
-    const unlisten2 = listen((value1, value2) => {/* do something with values */});
-    const unlistenArgs = listen((...args: any[]) => {/* do something with values */});
+    const unlisten0 = listen(() => {
+        /* do something */
+    });
+    const unlisten1 = listen((value) => {
+        /* do something with value */
+    });
+    const unlisten2 = listen((value1, value2) => {
+        /* do something with values */
+    });
+    const unlistenArgs = listen((...args: any[]) => {
+        /* do something with values */
+    });
 
     emit();
     emit("hello");
@@ -74,7 +82,7 @@ function emitterOf0Args() {
 function emitterOf1Args() {
     const { emit, listen } = createChangeEmitter<string>();
 
-    const unlisten = listen(value => {
+    const unlisten = listen((value) => {
         value.length;
     });
 
@@ -108,7 +116,12 @@ function emitterOf3Args() {
 }
 
 function emitterOf4Args() {
-    const { emit, listen } = createChangeEmitter<string, boolean, number, Date>();
+    const { emit, listen } = createChangeEmitter<
+        string,
+        boolean,
+        number,
+        Date
+    >();
 
     const unlisten = listen((v1, v2, v3, v4) => {});
 
@@ -118,7 +131,13 @@ function emitterOf4Args() {
 }
 
 function emitterOf5Args() {
-    const { emit, listen } = createChangeEmitter<string, boolean, number, Date, string>();
+    const { emit, listen } = createChangeEmitter<
+        string,
+        boolean,
+        number,
+        Date,
+        string
+    >();
 
     const unlisten = listen((v1, v2, v3, v4, v5) => {});
 

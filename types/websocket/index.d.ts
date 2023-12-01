@@ -174,16 +174,26 @@ export class server extends events.EventEmitter {
 
     handleUpgrade(request: http.IncomingMessage, socket: net.Socket): void;
     handleRequestAccepted(connection: connection): void;
-    handleConnectionClose(connection: connection, closeReason: number, description: string): void;
+    handleConnectionClose(
+        connection: connection,
+        closeReason: number,
+        description: string,
+    ): void;
     handleRequestResolved(request: request): void;
 
     // Events
     on(event: "request", cb: (request: request) => void): this;
     on(event: "connect", cb: (connection: connection) => void): this;
-    on(event: "close", cb: (connection: connection, reason: number, desc: string) => void): this;
+    on(
+        event: "close",
+        cb: (connection: connection, reason: number, desc: string) => void,
+    ): this;
     addListener(event: "request", cb: (request: request) => void): this;
     addListener(event: "connect", cb: (connection: connection) => void): this;
-    addListener(event: "close", cb: (connection: connection, reason: number, desc: string) => void): this;
+    addListener(
+        event: "close",
+        cb: (connection: connection, reason: number, desc: string) => void,
+    ): this;
 }
 
 export interface ICookie {
@@ -251,7 +261,11 @@ export class request extends events.EventEmitter {
     _resolved: boolean;
     _socketIsClosing: boolean;
 
-    constructor(socket: net.Socket, httpRequest: http.IncomingMessage, config: IServerConfig);
+    constructor(
+        socket: net.Socket,
+        httpRequest: http.IncomingMessage,
+        config: IServerConfig,
+    );
 
     /**
      * After inspecting the `request` properties, call this function on the
@@ -260,7 +274,11 @@ export class request extends events.EventEmitter {
      *
      * @param [acceptedProtocol] case-insensitive value that was requested by the client
      */
-    accept(acceptedProtocol?: string | null, allowedOrigin?: string, cookies?: ICookie[]): connection;
+    accept(
+        acceptedProtocol?: string | null,
+        allowedOrigin?: string,
+        cookies?: ICookie[],
+    ): connection;
 
     /**
      * Reject connection.
@@ -272,10 +290,19 @@ export class request extends events.EventEmitter {
     reject(httpStatus?: number, reason?: string, extraHeaders?: object): void;
 
     // Events
-    on(event: "requestResolved" | "requestRejected", cb: (request: this) => void): this;
+    on(
+        event: "requestResolved" | "requestRejected",
+        cb: (request: this) => void,
+    ): this;
     on(event: "requestAccepted", cb: (connection: connection) => void): this;
-    addListener(event: "requestResolved" | "requestRejected", cb: (request: this) => void): this;
-    addListener(event: "requestAccepted", cb: (connection: connection) => void): this;
+    addListener(
+        event: "requestResolved" | "requestRejected",
+        cb: (request: this) => void,
+    ): this;
+    addListener(
+        event: "requestAccepted",
+        cb: (connection: connection) => void,
+    ): this;
 
     readHandshake(): void;
 
@@ -435,7 +462,11 @@ export class connection extends events.EventEmitter {
      * Send a close frame to the remote peer and immediately close the socket without
      * waiting for a response. This should generally be used only in error conditions.
      */
-    drop(reasonCode?: number, description?: string, skipCloseFrame?: boolean): void;
+    drop(
+        reasonCode?: number,
+        description?: string,
+        skipCloseFrame?: boolean,
+    ): void;
 
     /**
      * Immediately sends the specified string as a UTF-8 WebSocket message to the remote
@@ -497,7 +528,11 @@ export class connection extends events.EventEmitter {
     handleCloseTimer(): void;
     processFrame(frame: frame): void;
     fragmentAndSend(frame: frame, cb?: (err: Error) => void): void;
-    sendCloseFrame(reasonCode?: number, reasonText?: string, cb?: (err?: Error) => void): void;
+    sendCloseFrame(
+        reasonCode?: number,
+        reasonText?: string,
+        cb?: (err?: Error) => void,
+    ): void;
 
     _addSocketEventListeners(): void;
 
@@ -507,14 +542,20 @@ export class connection extends events.EventEmitter {
     on(event: "close", cb: (code: number, desc: string) => void): this;
     on(event: "error", cb: (err: Error) => void): this;
     on(event: "drain" | "pause" | "resume", cb: () => void): this;
-    on(event: "ping", cb: (cancel: () => void, binaryPayload: Buffer) => void): this;
+    on(
+        event: "ping",
+        cb: (cancel: () => void, binaryPayload: Buffer) => void,
+    ): this;
     on(event: "pong", cb: (binaryPayload: Buffer) => void): this;
     addListener(event: "message", cb: (data: Message) => void): this;
     addListener(event: "frame", cb: (frame: frame) => void): this;
     addListener(event: "close", cb: (code: number, desc: string) => void): this;
     addListener(event: "error", cb: (err: Error) => void): this;
     addListener(event: "drain" | "pause" | "resume", cb: () => void): this;
-    addListener(event: "ping", cb: (cancel: () => void, binaryPayload: Buffer) => void): this;
+    addListener(
+        event: "ping",
+        cb: (cancel: () => void, binaryPayload: Buffer) => void,
+    ): this;
     addListener(event: "pong", cb: (binaryPayload: Buffer) => void): this;
 }
 
@@ -644,10 +685,16 @@ export class client extends events.EventEmitter {
     // Events
     on(event: "connect", cb: (connection: connection) => void): this;
     on(event: "connectFailed", cb: (err: Error) => void): this;
-    on(event: "httpResponse", cb: (response: http.IncomingMessage, client: client) => void): this;
+    on(
+        event: "httpResponse",
+        cb: (response: http.IncomingMessage, client: client) => void,
+    ): this;
     addListener(event: "connect", cb: (connection: connection) => void): this;
     addListener(event: "connectFailed", cb: (err: Error) => void): this;
-    addListener(event: "httpResponse", cb: (response: http.IncomingMessage, client: client) => void): this;
+    addListener(
+        event: "httpResponse",
+        cb: (response: http.IncomingMessage, client: client) => void,
+    ): this;
 }
 
 export interface IRouterRequest extends events.EventEmitter {
@@ -689,7 +736,11 @@ export interface IRouterRequest extends events.EventEmitter {
      *
      * @param [acceptedProtocol] case-insensitive value that was requested by the client
      */
-    accept(acceptedProtocol?: string, allowedOrigin?: string, cookies?: ICookie[]): connection;
+    accept(
+        acceptedProtocol?: string,
+        allowedOrigin?: string,
+        cookies?: ICookie[],
+    ): connection;
 
     /**
      * Reject connection.
@@ -702,7 +753,10 @@ export interface IRouterRequest extends events.EventEmitter {
     // Events
     on(event: "requestAccepted", cb: (connection: connection) => void): this;
     on(event: "requestRejected", cb: (request: this) => void): this;
-    addListener(event: "requestAccepted", cb: (connection: connection) => void): this;
+    addListener(
+        event: "requestAccepted",
+        cb: (connection: connection) => void,
+    ): this;
     addListener(event: "requestRejected", cb: (request: this) => void): this;
 }
 
@@ -731,7 +785,11 @@ export class router extends events.EventEmitter {
     /** Detach from WebSocket server */
     detachServer(): void;
 
-    mount(path: string | RegExp, protocol: string | null, callback: (request: IRouterRequest) => void): void;
+    mount(
+        path: string | RegExp,
+        protocol: string | null,
+        callback: (request: IRouterRequest) => void,
+    ): void;
 
     unmount(path: string | RegExp, protocol?: string): void;
 

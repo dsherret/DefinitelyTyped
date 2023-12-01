@@ -1,6 +1,9 @@
 /// <reference types="node" />
 
-import { Handler as SwToolboxHanlder, Options as SwToolboxOptions } from "sw-toolbox";
+import {
+    Handler as SwToolboxHanlder,
+    Options as SwToolboxOptions,
+} from "sw-toolbox";
 
 export type Handler =
     | "networkFirst"
@@ -17,9 +20,11 @@ export interface Options {
     clientsClaim?: boolean | undefined;
     directoryIndex?: string | undefined;
     dontCacheBustUrlsMatching?: RegExp | undefined;
-    dynamicUrlToDependencies?: {
-        [url: string]: string | Buffer | string[];
-    } | undefined;
+    dynamicUrlToDependencies?:
+        | {
+              [url: string]: string | Buffer | string[];
+          }
+        | undefined;
     handleFetch?: boolean | undefined;
     ignoreUrlParametersMatching?: RegExp[] | undefined;
     importScripts?: string[] | undefined;
@@ -30,18 +35,20 @@ export interface Options {
     replacePrefix?: string | undefined;
     runtimeCaching?:
         | Array<{
-            urlPattern: RegExp | string;
-            handler: Handler;
-            method?: Method | undefined;
-            options?: SwToolboxOptions | undefined;
-        }>
+              urlPattern: RegExp | string;
+              handler: Handler;
+              method?: Method | undefined;
+              options?: SwToolboxOptions | undefined;
+          }>
         | undefined;
     skipWaiting?: boolean | undefined;
     staticFileGlobs?: string[] | undefined;
     stripPrefix?: string | undefined;
-    stripPrefixMulti?: {
-        [path: string]: string;
-    } | undefined;
+    stripPrefixMulti?:
+        | {
+              [path: string]: string;
+          }
+        | undefined;
     templateFilePath?: string | undefined;
     verbose?: boolean | undefined;
 }

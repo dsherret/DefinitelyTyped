@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/whatwg-mimetype",
-    "version": "3.0.9999",
-    "projects": [
-        "https://github.com/jsdom/whatwg-mimetype#readme"
-    ],
-    "devDependencies": {
-        "@types/whatwg-mimetype": "workspace:."
+  "private": true,
+  "name": "@types/whatwg-mimetype",
+  "version": "3.0.9999",
+  "projects": [
+    "https://github.com/jsdom/whatwg-mimetype#readme"
+  ],
+  "devDependencies": {
+    "@types/whatwg-mimetype": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Pete Johanson",
+      "githubUsername": "petejohanson"
     },
-    "owners": [
-        {
-            "name": "Pete Johanson",
-            "githubUsername": "petejohanson"
-        },
-        {
-            "name": "BendingBender",
-            "githubUsername": "BendingBender"
-        }
-    ]
+    {
+      "name": "BendingBender",
+      "githubUsername": "BendingBender"
+    }
+  ]
 }

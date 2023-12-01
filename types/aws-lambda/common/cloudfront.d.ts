@@ -44,11 +44,11 @@ export interface CloudFrontResponse {
 export interface CloudFrontRequest {
     body?:
         | {
-            action: "read-only" | "replace";
-            data: string;
-            encoding: "base64" | "text";
-            readonly inputTruncated: boolean;
-        }
+              action: "read-only" | "replace";
+              data: string;
+              encoding: "base64" | "text";
+              readonly inputTruncated: boolean;
+          }
         | undefined;
     readonly clientIp: string;
     readonly method: string;
@@ -62,7 +62,11 @@ export interface CloudFrontEvent {
     config: {
         readonly distributionDomainName: string;
         readonly distributionId: string;
-        readonly eventType: "origin-request" | "origin-response" | "viewer-request" | "viewer-response";
+        readonly eventType:
+            | "origin-request"
+            | "origin-response"
+            | "viewer-request"
+            | "viewer-response";
         readonly requestId: string;
     };
 }

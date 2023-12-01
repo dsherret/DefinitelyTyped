@@ -44,7 +44,10 @@ export class AudioRecorder {
      * @return A Guacamole.AudioRecorder instance supporting the given mimetype and
      * writing to the given stream, or null if support for the given mimetype is absent.
      */
-    static getInstance(stream: OutputStream, mimetype: Mimetype): AudioRecorder | null;
+    static getInstance(
+        stream: OutputStream,
+        mimetype: Mimetype,
+    ): AudioRecorder | null;
 
     /**
      * Callback which is invoked when the audio recording process has stopped

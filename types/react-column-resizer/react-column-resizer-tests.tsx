@@ -10,7 +10,10 @@ class TableComponent extends React.Component {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <ColumnResizer className="columnResizer" minWidth={0} />
+                            <ColumnResizer
+                                className="columnResizer"
+                                minWidth={0}
+                            />
                             <td>2</td>
                         </tr>
 

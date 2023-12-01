@@ -16,7 +16,7 @@ declare namespace anchorjs {
 
     interface AnchorJS {
         options: Options;
-        new(options?: Options): this;
+        new (options?: Options): this;
         add(selector?: string): this;
         remove(selector?: string): this;
         removeAll(): void;

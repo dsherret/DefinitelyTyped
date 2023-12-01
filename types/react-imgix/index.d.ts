@@ -186,27 +186,26 @@ interface WatermarkParams {
     mark?: ImgixParamType | undefined;
 }
 
-type ImgixParams =
-    & AdjustmentParams
-    & AutomaticParams
-    & BlendingParams
-    & BorderAndPaddingParams
-    & ColorPaletteParams
-    & FaceDetectionParams
-    & FillParams
-    & FocalPointCropParams
-    & FormatParams
-    & MaskImageParams
-    & NoiseReductionParams
-    & PDFParams
-    & PixelDensityParams
-    & RotationParams
-    & SizeParams
-    & StylizeParams
-    & TextParams
-    & TrimParams
-    & TypesettingEndpointParams
-    & WatermarkParams;
+type ImgixParams = AdjustmentParams &
+    AutomaticParams &
+    BlendingParams &
+    BorderAndPaddingParams &
+    ColorPaletteParams &
+    FaceDetectionParams &
+    FillParams &
+    FocalPointCropParams &
+    FormatParams &
+    MaskImageParams &
+    NoiseReductionParams &
+    PDFParams &
+    PixelDensityParams &
+    RotationParams &
+    SizeParams &
+    StylizeParams &
+    TextParams &
+    TrimParams &
+    TypesettingEndpointParams &
+    WatermarkParams;
 
 interface AttributeConfig {
     src?: string | undefined;
@@ -230,7 +229,11 @@ type ImgixHTMLAttributes =
 interface CommonProps {
     className?: string | undefined;
     onMounted?:
-        | ((ref?: React.RefObject<HTMLPictureElement | HTMLImageElement | HTMLSourceElement>) => void)
+        | ((
+              ref?: React.RefObject<
+                  HTMLPictureElement | HTMLImageElement | HTMLSourceElement
+              >,
+          ) => void)
         | undefined;
     htmlAttributes?: ImgixHTMLAttributes | undefined;
     domain?: string | undefined;
@@ -262,10 +265,18 @@ export interface ImgixProviderProps extends CommonProps {
     attributeConfig?: AttributeConfig | undefined;
 }
 
-export class Picture extends React.Component<React.PropsWithChildren<CommonProps>> {}
+export class Picture extends React.Component<
+    React.PropsWithChildren<CommonProps>
+> {}
 export class Source extends React.Component<SharedImgixAndSourceProps> {}
-export class ImgixProvider extends React.Component<React.PropsWithChildren<ImgixProviderProps>> {}
-export function buildURL(src: string, imgixParams?: ImgixParams, options?: SharedImgixAndSourceProps): string;
+export class ImgixProvider extends React.Component<
+    React.PropsWithChildren<ImgixProviderProps>
+> {}
+export function buildURL(
+    src: string,
+    imgixParams?: ImgixParams,
+    options?: SharedImgixAndSourceProps,
+): string;
 
 type Warnings = "fallbackImage" | "sizesAttribute" | "invalidARFormat";
 
@@ -282,7 +293,9 @@ export interface BackgroundProps {
     htmlAttributes?: ImgixHTMLAttributes | undefined;
 }
 
-export const Background: React.FunctionComponent<React.PropsWithChildren<BackgroundProps>>;
+export const Background: React.FunctionComponent<
+    React.PropsWithChildren<BackgroundProps>
+>;
 
 declare class Imgix extends React.Component<SharedImgixAndSourceProps> {}
 export default Imgix;

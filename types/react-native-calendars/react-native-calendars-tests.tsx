@@ -25,23 +25,23 @@ declare const Arrow: React.FC<unknown>;
     // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
     maxDate={"2012-05-30"}
     // Handler which gets executed on day press. Default = undefined
-    onDayPress={day => {
+    onDayPress={(day) => {
         console.log("selected day", day);
     }}
     // Handler which gets executed on day long press. Default = undefined
-    onDayLongPress={day => {
+    onDayLongPress={(day) => {
         console.log("selected day", day);
     }}
     // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
     monthFormat={"yyyy MM"}
     // Handler which gets executed when visible month changes in calendar. Default = undefined
-    onMonthChange={month => {
+    onMonthChange={(month) => {
         console.log("month changed", month);
     }}
     // Hide month navigation arrows. Default = false
     hideArrows={true}
     // Replace default arrows with custom ones (direction can be 'left' or 'right')
-    renderArrow={direction => <Arrow />}
+    renderArrow={(direction) => <Arrow />}
     // Do not show days of other months in month page. Default = false
     hideExtraDays={true}
     // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
@@ -54,9 +54,9 @@ declare const Arrow: React.FC<unknown>;
     // Show week numbers to the left. Default = false
     showWeekNumbers={true}
     // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-    onPressArrowLeft={substractMonth => substractMonth()}
+    onPressArrowLeft={(substractMonth) => substractMonth()}
     // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-    onPressArrowRight={addMonth => addMonth()}
+    onPressArrowRight={(addMonth) => addMonth()}
     // Disable left arrow. Default = false
     disableArrowLeft={true}
     // Disable right arrow. Default = false
@@ -71,23 +71,23 @@ declare const Arrow: React.FC<unknown>;
     // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
     maxDate={"2012-05-30"}
     // Handler which gets executed on day press. Default = undefined
-    onDayPress={date => {
+    onDayPress={(date) => {
         console.log("selected day", date.day);
     }}
     // Handler which gets executed on day long press. Default = undefined
-    onDayLongPress={date => {
+    onDayLongPress={(date) => {
         console.log("selected day", date.day);
     }}
     // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
     monthFormat={"yyyy MM"}
     // Handler which gets executed when visible month changes in calendar. Default = undefined
-    onMonthChange={date => {
+    onMonthChange={(date) => {
         console.log("month changed", date.month);
     }}
     // Hide month navigation arrows. Default = false
     hideArrows={true}
     // Replace default arrows with custom ones (direction can be 'left' or 'right')
-    renderArrow={direction => <View />}
+    renderArrow={(direction) => <View />}
     // Do not show days of other months in month page. Default = false
     hideExtraDays={true}
     // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
@@ -100,9 +100,9 @@ declare const Arrow: React.FC<unknown>;
     // Show week numbers to the left. Default = false
     showWeekNumbers={true}
     // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-    onPressArrowLeft={substractMonth => console.log(substractMonth)}
+    onPressArrowLeft={(substractMonth) => console.log(substractMonth)}
     // Handler which gets executed when press arrow icon left. It receive a callback can go next month
-    onPressArrowRight={addMonth => console.log(addMonth)}
+    onPressArrowRight={(addMonth) => console.log(addMonth)}
     markedDates={{
         "2012-05-16": { selected: true, marked: true, selectedColor: "blue" },
         "2012-05-17": { marked: true },
@@ -263,7 +263,7 @@ const workout = { key: "workout", color: "green" };
 
 <CalendarList
     // Callback which gets executed when visible months change in scroll view. Default = undefined
-    onVisibleMonthsChange={months => {
+    onVisibleMonthsChange={(months) => {
         console.log("now these months are visible", months);
     }}
     // Max amount of months allowed to scroll to the past. Default = 50
@@ -283,23 +283,23 @@ const workout = { key: "workout", color: "green" };
     // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
     maxDate={"2012-05-30"}
     // Handler which gets executed on day press. Default = undefined
-    onDayPress={day => {
+    onDayPress={(day) => {
         console.log("selected day", day);
     }}
     // Handler which gets executed on day long press. Default = undefined
-    onDayLongPress={day => {
+    onDayLongPress={(day) => {
         console.log("selected day", day);
     }}
     // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
     monthFormat={"yyyy MM"}
     // Handler which gets executed when visible month changes in calendar. Default = undefined
-    onMonthChange={month => {
+    onMonthChange={(month) => {
         console.log("month changed", month);
     }}
     // Hide month navigation arrows. Default = false
     hideArrows={true}
     // Replace default arrows with custom ones (direction can be 'left' or 'right')
-    renderArrow={direction => <View />}
+    renderArrow={(direction) => <View />}
     // Do not show days of other months in month page. Default = false
     hideExtraDays={true}
     // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
@@ -312,9 +312,9 @@ const workout = { key: "workout", color: "green" };
     // Show week numbers to the left. Default = false
     showWeekNumbers={true}
     // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-    onPressArrowLeft={substractMonth => console.log(substractMonth)}
+    onPressArrowLeft={(substractMonth) => console.log(substractMonth)}
     // Handler which gets executed when press arrow icon left. It receive a callback can go next month
-    onPressArrowRight={addMonth => console.log(addMonth)}
+    onPressArrowRight={(addMonth) => console.log(addMonth)}
     // Disable days by default. Default = false
     disabledByDefault={true}
     // Display loading indicator. Default = false
@@ -348,22 +348,25 @@ const workout = { key: "workout", color: "green" };
         "2012-05-22": [{ text: "item 1 - any js object" }],
         "2012-05-23": [{ text: "item 2 - any js object" }],
         "2012-05-24": [],
-        "2012-05-25": [{ text: "item 3 - any js object" }, { text: "any js object" }],
+        "2012-05-25": [
+            { text: "item 3 - any js object" },
+            { text: "any js object" },
+        ],
     }}
     // callback that gets called when items for a certain month should be loaded (month became visible)
-    loadItemsForMonth={month => {
+    loadItemsForMonth={(month) => {
         console.log("trigger items loading");
     }}
     // callback that fires when the calendar is opened or closed
-    onCalendarToggled={calendarOpened => {
+    onCalendarToggled={(calendarOpened) => {
         console.log(calendarOpened);
     }}
     // callback that gets called on day press
-    onDayPress={day => {
+    onDayPress={(day) => {
         console.log("day pressed");
     }}
     // callback that gets called when day changes while scrolling agenda list
-    onDayChange={day => {
+    onDayChange={(day) => {
         console.log("day changed");
     }}
     // initially selected day
@@ -434,7 +437,7 @@ const workout = { key: "workout", color: "green" };
 />;
 
 <Calendar
-    renderHeader={date => (
+    renderHeader={(date) => (
         <View>
             <Text>{date.toISOString()}</Text>
         </View>
@@ -470,7 +473,15 @@ LocaleConfig.locales["fr"] = {
         "Nov.",
         "Déc.",
     ],
-    dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+    dayNames: [
+        "Dimanche",
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+    ],
     dayNamesShort: ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."],
     today: "Aujourd'hui",
 };
@@ -502,7 +513,7 @@ const events = [
     // Array of events to render
     events={events}
     // Handler which gets executed when event tap
-    eventTapped={event => console.log("event tapped", event)}
+    eventTapped={(event) => console.log("event tapped", event)}
 />;
 
 <CalendarProvider
@@ -516,7 +527,7 @@ const events = [
 >
     <WeekCalendar
         // Callback which gets executed when visible months change in scroll view. Default = undefined
-        onVisibleMonthsChange={months => {
+        onVisibleMonthsChange={(months) => {
             console.log("now these months are visible", months);
         }}
         // Max amount of months allowed to scroll to the past. Default = 50
@@ -536,23 +547,23 @@ const events = [
         // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
         maxDate={"2012-05-30"}
         // Handler which gets executed on day press. Default = undefined
-        onDayPress={day => {
+        onDayPress={(day) => {
             console.log("selected day", day);
         }}
         // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={day => {
+        onDayLongPress={(day) => {
             console.log("selected day", day);
         }}
         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
         monthFormat={"yyyy MM"}
         // Handler which gets executed when visible month changes in calendar. Default = undefined
-        onMonthChange={month => {
+        onMonthChange={(month) => {
             console.log("month changed", month);
         }}
         // Hide month navigation arrows. Default = false
         hideArrows={true}
         // Replace default arrows with custom ones (direction can be 'left' or 'right')
-        renderArrow={direction => <View />}
+        renderArrow={(direction) => <View />}
         // Do not show days of other months in month page. Default = false
         hideExtraDays={true}
         // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
@@ -565,9 +576,9 @@ const events = [
         // Show week numbers to the left. Default = false
         showWeekNumbers={true}
         // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-        onPressArrowLeft={substractMonth => console.log(substractMonth)}
+        onPressArrowLeft={(substractMonth) => console.log(substractMonth)}
         // Handler which gets executed when press arrow icon left. It receive a callback can go next month
-        onPressArrowRight={addMonth => console.log(addMonth)}
+        onPressArrowRight={(addMonth) => console.log(addMonth)}
         // Disable days by default. Default = false
         disabledByDefault={true}
         // Display loading indicator. Default = false
@@ -596,7 +607,7 @@ const events = [
 
     <ExpandableCalendar
         // Callback which gets executed when visible months change in scroll view. Default = undefined
-        onVisibleMonthsChange={months => {
+        onVisibleMonthsChange={(months) => {
             console.log("now these months are visible", months);
         }}
         // Max amount of months allowed to scroll to the past. Default = 50
@@ -616,23 +627,23 @@ const events = [
         // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
         maxDate={"2012-05-30"}
         // Handler which gets executed on day press. Default = undefined
-        onDayPress={day => {
+        onDayPress={(day) => {
             console.log("selected day", day);
         }}
         // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={day => {
+        onDayLongPress={(day) => {
             console.log("selected day", day);
         }}
         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
         monthFormat={"yyyy MM"}
         // Handler which gets executed when visible month changes in calendar. Default = undefined
-        onMonthChange={month => {
+        onMonthChange={(month) => {
             console.log("month changed", month);
         }}
         // Hide month navigation arrows. Default = false
         hideArrows={true}
         // Replace default arrows with custom ones (direction can be 'left' or 'right')
-        renderArrow={direction => <View />}
+        renderArrow={(direction) => <View />}
         // Do not show days of other months in month page. Default = false
         hideExtraDays={true}
         // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
@@ -645,9 +656,9 @@ const events = [
         // Show week numbers to the left. Default = false
         showWeekNumbers={true}
         // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-        onPressArrowLeft={substractMonth => console.log(substractMonth)}
+        onPressArrowLeft={(substractMonth) => console.log(substractMonth)}
         // Handler which gets executed when press arrow icon left. It receive a callback can go next month
-        onPressArrowRight={addMonth => console.log(addMonth)}
+        onPressArrowRight={(addMonth) => console.log(addMonth)}
         // Disable days by default. Default = false
         disabledByDefault={true}
         // Display loading indicator. Default = false

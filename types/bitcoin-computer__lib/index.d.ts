@@ -72,7 +72,7 @@ type Transition = Encrypted & {
     root: string;
 };
 type Data = ProgramMetaData & Transition & JObject;
-type Class = new(...args: any) => any;
+type Class = new (...args: any) => any;
 type Query = Partial<{
     mod: string;
     publicKey: string;
@@ -122,10 +122,25 @@ declare class Tx {
     getOwners(): string[][];
     getAmounts(): number[];
     spendFromData(inputRevs: string[], restClient: RestClient): Promise<void>;
-    createDataOuts(objects: Array<Partial<ProgramMetaData>>, restClient?: RestClient): void;
+    createDataOuts(
+        objects: Array<Partial<ProgramMetaData>>,
+        restClient?: RestClient,
+    ): void;
     static fromTransaction(tx: any, restClient?: RestClient): Promise<Tx>;
-    static fromTxHex({ hex, restClient }: { hex?: string; restClient?: RestClient }): Promise<Tx>;
-    static fromTxId({ txId, restClient }: { txId?: string; restClient?: RestClient }): Promise<Tx>;
+    static fromTxHex({
+        hex,
+        restClient,
+    }: {
+        hex?: string;
+        restClient?: RestClient;
+    }): Promise<Tx>;
+    static fromTxId({
+        txId,
+        restClient,
+    }: {
+        txId?: string;
+        restClient?: RestClient;
+    }): Promise<Tx>;
     static getUtxosFromTx(tx: any): string[];
 }
 
@@ -136,17 +151,38 @@ declare class RestClient {
     readonly path: string;
     readonly passphrase: string;
     private bcn;
-    constructor({ chain, network, mnemonic, path, passphrase, url }?: ComputerOptions);
+    constructor({
+        chain,
+        network,
+        mnemonic,
+        path,
+        passphrase,
+        url,
+    }?: ComputerOptions);
     get privateKey(): any;
     getBalance(address: string): Promise<number>;
     getTransactions(txIds: string[]): Promise<any[]>;
     getRawTxs(txIds: string[]): Promise<string[]>;
     broadcast(txJSON: any): Promise<string>;
     getUtxosByAddress(address: string): Promise<any[]>;
-    query({ publicKey, classHash, limit, offset, order, ids, mod }: Partial<Query>): Promise<string[]>;
+    query({
+        publicKey,
+        classHash,
+        limit,
+        offset,
+        order,
+        ids,
+        mod,
+    }: Partial<Query>): Promise<string[]>;
     idsToRevs(outIds: string[]): Promise<string[]>;
     rpc(method: string, params: string): Promise<any>;
-    static getSecretOutput({ _url, privateKey }: { _url: string; privateKey: any }): Promise<{
+    static getSecretOutput({
+        _url,
+        privateKey,
+    }: {
+        _url: string;
+        privateKey: any;
+    }): Promise<{
         host: string;
         data: string;
     }>;
@@ -159,7 +195,13 @@ declare class RestClient {
         host: string;
         privateKey: any;
     }): Promise<Data & (Encrypted | Stored)>;
-    static deleteSecretOutput({ _url, privateKey }: { _url: string; privateKey: any }): Promise<void>;
+    static deleteSecretOutput({
+        _url,
+        privateKey,
+    }: {
+        _url: string;
+        privateKey: any;
+    }): Promise<void>;
     get url(): string;
 }
 
@@ -169,7 +211,10 @@ declare class Wallet {
     derive(subpath?: string): Wallet;
     getBalance(): Promise<number>;
     getUtxos(): Promise<any[]>;
-    getUtxosByEffectiveValue(amount: number, { include, exclude }?: Partial<SelectUtxos>): Promise<any[]>;
+    getUtxosByEffectiveValue(
+        amount: number,
+        { include, exclude }?: Partial<SelectUtxos>,
+    ): Promise<any[]>;
     fundTx(tx: any, selectUtxos?: Partial<SelectUtxos>): Promise<void>;
     /**
      * Given a transaction with inputs and outputs containing data, this function
@@ -252,7 +297,11 @@ declare class Computer {
     getLatestRev(id: string): Promise<string>;
     idsToRevs(ids: string[]): Promise<string[]>;
     read(rev: string): Promise<unknown>;
-    write(exp: string, env: Record<string, string>, mod: string): Promise<unknown>;
+    write(
+        exp: string,
+        env: Record<string, string>,
+        mod: string,
+    ): Promise<unknown>;
 }
 
 declare class Contract {

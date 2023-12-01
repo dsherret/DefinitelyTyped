@@ -3,7 +3,10 @@ export = toMarkdown;
 /**
  * Converts HTML to markdown.
  */
-declare function toMarkdown(input: string, options?: toMarkdown.Options): string;
+declare function toMarkdown(
+    input: string,
+    options?: toMarkdown.Options,
+): string;
 
 declare namespace toMarkdown {
     type Filter = string | string[] | ((node: HTMLElement) => boolean);

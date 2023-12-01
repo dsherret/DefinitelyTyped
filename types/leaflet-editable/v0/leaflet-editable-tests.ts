@@ -29,17 +29,22 @@ const map: L.Map = L.map("div", {
     },
 });
 
-const currentPoly: L.Polygon | L.Polyline | L.Marker = map.editTools.currentPolygon;
+const currentPoly: L.Polygon | L.Polyline | L.Marker =
+    map.editTools.currentPolygon;
 map.editTools.stopDrawing();
 map.editTools.commitDrawing();
 
-const marker: L.Marker = map.editTools.startMarker(L.latLng(0, 0), { draggable: true });
+const marker: L.Marker = map.editTools.startMarker(L.latLng(0, 0), {
+    draggable: true,
+});
 marker.disable();
 marker.enable();
 marker.toggleEdit();
 let enabled: boolean = marker.editEnabled();
 
-const polyline: L.Polyline = map.editTools.startPolyline(L.latLng(0, 0), { noClip: true });
+const polyline: L.Polyline = map.editTools.startPolyline(L.latLng(0, 0), {
+    noClip: true,
+});
 polyline.continueBackward();
 polyline.continueForward();
 polyline.disable();
@@ -48,7 +53,9 @@ enabled = polyline.editEnabled();
 polyline.reset();
 polyline.toggleEdit();
 
-const polygon: L.Polygon = map.editTools.startPolygon(L.latLng(0, 0), { noClip: true });
+const polygon: L.Polygon = map.editTools.startPolygon(L.latLng(0, 0), {
+    noClip: true,
+});
 polygon.continueBackward();
 polygon.continueForward();
 polygon.disable();

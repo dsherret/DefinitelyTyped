@@ -3,7 +3,7 @@
 type rand = { getByte: () => number };
 
 interface RandStatic {
-    new(rand: rand): RandInstance;
+    new (rand: rand): RandInstance;
 }
 
 interface RandInstance {

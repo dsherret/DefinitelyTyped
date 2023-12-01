@@ -11,12 +11,20 @@ declare module "react-easy-chart" {
         axes?: boolean | undefined;
 
         /** Labels for each of the axis */
-        axisLabels?: { x?: string | undefined; y?: string | undefined; y2?: string | undefined } | undefined;
+        axisLabels?:
+            | {
+                  x?: string | undefined;
+                  y?: string | undefined;
+                  y2?: string | undefined;
+              }
+            | undefined;
 
         /** The width of an individual bar in pixels */
         barWidth?: number | undefined;
 
-        clickHandler?: ((data: BarData, mouseEvent: MouseEvent) => any) | undefined;
+        clickHandler?:
+            | ((data: BarData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** Whether to automatically color the bars */
         colorBars?: boolean | undefined;
@@ -38,18 +46,26 @@ declare module "react-easy-chart" {
         lineData?: LineData[] | undefined;
 
         /** css margins */
-        margin?: {
-            top?: number | undefined;
-            right?: number | undefined;
-            bottom?: number | undefined;
-            left?: number | undefined;
-        } | undefined;
+        margin?:
+            | {
+                  top?: number | undefined;
+                  right?: number | undefined;
+                  bottom?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
 
-        mouseMoveHandler?: ((data: BarData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseMoveHandler?:
+            | ((data: BarData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOutHandler?: ((data: BarData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOutHandler?:
+            | ((data: BarData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOverHandler?: ((data: BarData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOverHandler?:
+            | ((data: BarData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** The d3 time format to be used for the x axis (when xType is 'time') */
         tickTimeDisplayFormat?: string | undefined;
@@ -78,8 +94,7 @@ declare module "react-easy-chart" {
         /** The amount of ticks to be shown on the y axis */
         yTickNumber?: number | undefined;
     }
-    class BarChart extends React.Component<BarChartProps> {
-    }
+    class BarChart extends React.Component<BarChartProps> {}
 
     interface PieData {
         key: string;
@@ -87,7 +102,9 @@ declare module "react-easy-chart" {
         color?: string | undefined;
     }
     interface PieChartProps {
-        clickHandler?: ((data: PieData, mouseEvent: MouseEvent) => any) | undefined;
+        clickHandler?:
+            | ((data: PieData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         data: Array<{ key: string; value: number; color?: string | undefined }>;
 
@@ -97,11 +114,17 @@ declare module "react-easy-chart" {
         /** Whether to add labels the to pie segments */
         labels?: boolean | undefined;
 
-        mouseMoveHandler?: ((data: PieData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseMoveHandler?:
+            | ((data: PieData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOutHandler?: ((data: PieData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOutHandler?:
+            | ((data: PieData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOverHandler?: ((data: PieData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOverHandler?:
+            | ((data: PieData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** Padding around the chart in pixels */
         padding?: number | undefined;
@@ -111,8 +134,7 @@ declare module "react-easy-chart" {
 
         styles?: { [cssSelector: string]: React.CSSProperties } | undefined;
     }
-    class PieChart extends React.Component<PieChartProps> {
-    }
+    class PieChart extends React.Component<PieChartProps> {}
 
     interface LineData {
         x: number | Date | string;
@@ -123,9 +145,13 @@ declare module "react-easy-chart" {
         axes?: boolean | undefined;
 
         /** Labels for each of the axis */
-        axisLabels?: { x?: string | undefined; y?: string | undefined } | undefined;
+        axisLabels?:
+            | { x?: string | undefined; y?: string | undefined }
+            | undefined;
 
-        clickHandler?: ((data: LineData, mouseEvent: MouseEvent) => any) | undefined;
+        clickHandler?:
+            | ((data: LineData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         data: LineData[][];
 
@@ -158,18 +184,26 @@ declare module "react-easy-chart" {
         lineColors?: string[] | undefined;
 
         /** css margins */
-        margin?: {
-            top?: number | undefined;
-            right?: number | undefined;
-            bottom?: number | undefined;
-            left?: number | undefined;
-        } | undefined;
+        margin?:
+            | {
+                  top?: number | undefined;
+                  right?: number | undefined;
+                  bottom?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
 
-        mouseMoveHandler?: ((data: LineData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseMoveHandler?:
+            | ((data: LineData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOutHandler?: ((data: LineData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOutHandler?:
+            | ((data: LineData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOverHandler?: ((data: LineData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOverHandler?:
+            | ((data: LineData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** The d3 time format to be used for the x axis (when xType is 'time') */
         tickTimeDisplayFormat?: string | undefined;
@@ -201,15 +235,13 @@ declare module "react-easy-chart" {
         /** What data type the x axis is */
         yType?: "time" | "text" | "linear" | undefined;
     }
-    class LineChart extends React.Component<LineChartProps> {
-    }
+    class LineChart extends React.Component<LineChartProps> {}
 
     interface AreaChartProps extends LineChartProps {
         /** Make the gradient area a solid fill rather than a gradient */
         noAreaGradient?: boolean | undefined;
     }
-    class AreaChart extends React.Component<AreaChartProps> {
-    }
+    class AreaChart extends React.Component<AreaChartProps> {}
 
     interface ScatterplotData {
         type: string | number;
@@ -222,12 +254,18 @@ declare module "react-easy-chart" {
         axes?: boolean | undefined;
 
         /** Labels for each of the axis */
-        axisLabels?: { x?: string | undefined; y?: string | undefined } | undefined;
+        axisLabels?:
+            | { x?: string | undefined; y?: string | undefined }
+            | undefined;
 
-        clickHandler?: ((data: ScatterplotData, mouseEvent: MouseEvent) => any) | undefined;
+        clickHandler?:
+            | ((data: ScatterplotData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** Allows styling of individual types of points */
-        config?: Array<{ type: string; color: string; stroke: string }> | undefined;
+        config?:
+            | Array<{ type: string; color: string; stroke: string }>
+            | undefined;
 
         data: ScatterplotData[];
 
@@ -241,18 +279,26 @@ declare module "react-easy-chart" {
         height?: number | undefined;
 
         /** css margins */
-        margin?: {
-            top?: number | undefined;
-            right?: number | undefined;
-            bottom?: number | undefined;
-            left?: number | undefined;
-        } | undefined;
+        margin?:
+            | {
+                  top?: number | undefined;
+                  right?: number | undefined;
+                  bottom?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
 
-        mouseMoveHandler?: ((data: ScatterplotData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseMoveHandler?:
+            | ((data: ScatterplotData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOutHandler?: ((data: ScatterplotData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOutHandler?:
+            | ((data: ScatterplotData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
-        mouseOverHandler?: ((data: ScatterplotData, mouseEvent: MouseEvent) => any) | undefined;
+        mouseOverHandler?:
+            | ((data: ScatterplotData, mouseEvent: MouseEvent) => any)
+            | undefined;
 
         /** Whether to show vertical grid lines on the chart */
         verticalGrid?: boolean | undefined;
@@ -275,8 +321,7 @@ declare module "react-easy-chart" {
         /** What data type the x axis is */
         yType?: "time" | "text" | "linear" | undefined;
     }
-    class ScatterplotChart extends React.Component<ScatterplotChartProps> {
-    }
+    class ScatterplotChart extends React.Component<ScatterplotChartProps> {}
 
     interface LegendProps {
         /** Override the color of the items */
@@ -292,6 +337,5 @@ declare module "react-easy-chart" {
         /** Override the css styles of individual components, see http://rma-consulting.github.io/react-easy-chart/legend/index.html */
         styles?: { [cssSelector: string]: React.CSSProperties } | undefined;
     }
-    class Legend extends React.Component<LegendProps> {
-    }
+    class Legend extends React.Component<LegendProps> {}
 }

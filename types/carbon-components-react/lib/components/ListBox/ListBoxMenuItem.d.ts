@@ -10,7 +10,11 @@ export interface ListBoxMenuItemForwardedRef {
     menuItemOptionRef?: React.Ref<HTMLDivElement> | undefined;
 }
 
-export interface ListBoxMenuItemComponent extends ForwardRefReturn<ListBoxMenuItemForwardedRef, ListBoxMenuItemProps> {}
+export interface ListBoxMenuItemComponent
+    extends ForwardRefReturn<
+        ListBoxMenuItemForwardedRef,
+        ListBoxMenuItemProps
+    > {}
 
 declare const ListBoxMenuItem: ListBoxMenuItemComponent;
 

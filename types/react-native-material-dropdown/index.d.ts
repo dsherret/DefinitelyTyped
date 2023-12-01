@@ -1,5 +1,11 @@
 import * as React from "react";
-import { LayoutChangeEvent, StyleProp, TextStyle, TouchableWithoutFeedbackProps, ViewStyle } from "react-native";
+import {
+    LayoutChangeEvent,
+    StyleProp,
+    TextStyle,
+    TouchableWithoutFeedbackProps,
+    ViewStyle,
+} from "react-native";
 
 /**
  * Dropdown component props

@@ -57,7 +57,10 @@ export class Printer {
     execute(
         operation: "Get-Printer-Attributes",
         message: GetPrinterAttributesRequest,
-        callback?: (error: Error, response: GetPrinterAttributesResponse) => void,
+        callback?: (
+            error: Error,
+            response: GetPrinterAttributesResponse,
+        ) => void,
     ): void;
     execute(
         operation: "Get-Jobs",
@@ -253,7 +256,9 @@ export interface GetPrinterAttributesRequest {
         "requesting-user-name": string;
         "attributes-natural-language"?: string | undefined;
         "document-format"?: MimeMediaType | undefined;
-        "requested-attributes"?: Array<RequestedPrinterAttributeGroups | keyof PrinterDescription> | undefined;
+        "requested-attributes"?:
+            | Array<RequestedPrinterAttributeGroups | keyof PrinterDescription>
+            | undefined;
         "printer-uri"?: string | undefined;
     };
 }
@@ -282,8 +287,10 @@ export interface GetJobsRequest {
         limit?: number | undefined;
         "requested-attributes"?:
             | Array<
-                RequestedJobAttributeGroups | keyof JobTemplateAttributes | keyof JobStatusAttributes
-            >
+                  | RequestedJobAttributeGroups
+                  | keyof JobTemplateAttributes
+                  | keyof JobStatusAttributes
+              >
             | undefined;
         "which-jobs"?: WhichJobs | undefined;
         "my-jobs"?: boolean | undefined;
@@ -302,7 +309,10 @@ export interface GetJobsResponse {
         "status-message"?: string | undefined;
     };
     "unsupported-attributes"?: string[] | undefined;
-    "job-attributes-tag"?: JobTemplateAttributes | JobTemplateAttributes[] | undefined;
+    "job-attributes-tag"?:
+        | JobTemplateAttributes
+        | JobTemplateAttributes[]
+        | undefined;
 }
 
 // SEND-DOCUMENT
@@ -389,8 +399,10 @@ export interface GetJobAttributesRequest {
         "job-uri"?: string | undefined;
         "requested-attributes"?:
             | Array<
-                RequestedJobAttributeGroups | keyof JobTemplateAttributes | keyof JobStatusAttributes
-            >
+                  | RequestedJobAttributeGroups
+                  | keyof JobTemplateAttributes
+                  | keyof JobStatusAttributes
+              >
             | undefined;
     };
 }
@@ -503,12 +515,12 @@ export interface OperationAttributes {
     "profile-uri-actual"?: string | undefined;
     "requested-attributes"?:
         | Array<
-            | RequestedJobAttributeGroups
-            | RequestedPrinterAttributeGroups
-            | keyof JobTemplateAttributes
-            | keyof JobStatusAttributes
-            | keyof PrinterDescription
-        >
+              | RequestedJobAttributeGroups
+              | RequestedPrinterAttributeGroups
+              | keyof JobTemplateAttributes
+              | keyof JobStatusAttributes
+              | keyof PrinterDescription
+          >
         | undefined;
     "requesting-user-name"?: string | undefined;
     "requesting-user-uri"?: string | undefined;
@@ -607,7 +619,9 @@ export interface JobTemplateAttributes {
     "pclm-source-resolution"?: Resolution | undefined;
     "pdl-init-file"?: PdlInitFile | undefined;
     "platform-temperature"?: number | undefined;
-    "presentation-direction-number-up"?: PresentationDirectionNumberUp | undefined;
+    "presentation-direction-number-up"?:
+        | PresentationDirectionNumberUp
+        | undefined;
     "print-accuracy"?: PrintAccuracy | undefined;
     "print-base"?: PrintBase | undefined;
     "print-color-mode"?: PrintColorMode | undefined;
@@ -647,7 +661,9 @@ export interface JobStatusAttributes {
     "date-time-at-processing"?: string | undefined;
     "destination-statuses"?: DestinationStatuses[] | undefined;
     "document-charset-supplied"?: string | undefined;
-    "document-digital-signature-supplied"?: DocumentDigitalSignature | undefined;
+    "document-digital-signature-supplied"?:
+        | DocumentDigitalSignature
+        | undefined;
     "document-format-details-supplied"?: DocumentFormatDetails | undefined;
     "document-format-ready"?: MimeMediaType[] | undefined;
     "document-format-supplied"?: MimeMediaType | undefined;
@@ -706,7 +722,9 @@ export interface JobStatusAttributes {
     "media-actual"?: string[] | undefined;
     "media-col-actual"?: MediaInterface[] | undefined;
     "media-input-tray-check-actual"?: string[] | undefined;
-    "multiple-document-handling-actual"?: MultipleDocumentHandling[] | undefined;
+    "multiple-document-handling-actual"?:
+        | MultipleDocumentHandling[]
+        | undefined;
     "multiple-object-handling-actual"?: MultipleObjectHandling | undefined;
     "number-of-documents"?: number | undefined;
     "number-of-intervening-jobs"?: number | undefined;
@@ -726,7 +744,9 @@ export interface JobStatusAttributes {
     "page-order-received-actual"?: PageOrder[] | undefined;
     "page-ranges-actual"?: number[] | undefined;
     "platform-temperature-actual"?: number[] | undefined;
-    "presentation-direction-number-up-actual"?: PresentationDirectionNumberUp[] | undefined;
+    "presentation-direction-number-up-actual"?:
+        | PresentationDirectionNumberUp[]
+        | undefined;
     "print-accuracy-actual"?: PrintAccuracy | undefined;
     "print-base-actual"?: PrintBase[] | undefined;
     "print-color-mode-actual"?: PrintColorMode[] | undefined;
@@ -788,7 +808,9 @@ export interface PrinterDescription {
     "document-charset-supported"?: string[] | undefined;
     "document-creation-attributes-supported"?: string[] | undefined;
     "document-digital-signature-default"?: DocumentDigitalSignature | undefined;
-    "document-digital-signature-supported"?: DocumentDigitalSignature[] | undefined;
+    "document-digital-signature-supported"?:
+        | DocumentDigitalSignature[]
+        | undefined;
     "document-format-default"?: MimeMediaType | undefined;
     "document-format-details-default"?: DocumentFormatDetails | undefined;
     "document-format-details-supported"?: string[] | undefined;
@@ -830,7 +852,9 @@ export interface PrinterDescription {
     "input-content-type-supported"?: InputContentType[] | undefined;
     "input-film-scan-mode-supported"?: InputFilmScanMode[] | undefined;
     "input-media-supported"?: Array<MediaName | MediaSizeName> | undefined;
-    "input-orientation-requested-supported"?: OrientationRequested[] | undefined;
+    "input-orientation-requested-supported"?:
+        | OrientationRequested[]
+        | undefined;
     "input-quality-supported"?: PrintQuality[] | undefined;
     "input-resolution-supported"?: Resolution[] | undefined;
     "input-scan-regions-supported"?: InputScanRegion | undefined;
@@ -842,21 +866,21 @@ export interface PrinterDescription {
     "insert-sheet-supported"?: Array<keyof InsertSheet> | undefined;
     "ipp-features-supported"?:
         | Array<
-            | "document-object"
-            | "faxout"
-            | "icc-color-matching"
-            | "infrastructure-printer"
-            | "ipp-3d"
-            | "ipp-everywhere"
-            | "job-save"
-            | "none"
-            | "page-overrides"
-            | "proof-print"
-            | "resource-object"
-            | "scan"
-            | "subscription-object"
-            | "system-object"
-        >
+              | "document-object"
+              | "faxout"
+              | "icc-color-matching"
+              | "infrastructure-printer"
+              | "ipp-3d"
+              | "ipp-everywhere"
+              | "job-save"
+              | "none"
+              | "page-overrides"
+              | "proof-print"
+              | "resource-object"
+              | "scan"
+              | "subscription-object"
+              | "system-object"
+          >
         | undefined;
     "ipp-versions-supported"?: IPPVersion[] | undefined;
     "ippget-event-life"?: number | undefined;
@@ -872,7 +896,9 @@ export interface PrinterDescription {
     "job-cancel-after-default"?: number | undefined;
     "job-cancel-after-supported"?: string | undefined;
     "job-constraints-supported"?: JobConstraintsSupported[] | undefined;
-    "job-creation-attributes-supported"?: Array<keyof JobTemplateAttributes> | undefined;
+    "job-creation-attributes-supported"?:
+        | Array<keyof JobTemplateAttributes>
+        | undefined;
     "job-delay-output-until-default"?: JobDelayOutputUntil | undefined;
     "job-delay-output-until-interval-supported"?: string | undefined;
     "job-delay-output-until-supported"?: JobDelayOutputUntil[] | undefined;
@@ -926,8 +952,15 @@ export interface PrinterDescription {
     "job-triggers-supported"?: JobTriggersSupported | undefined;
     "jpeg-features-supported"?:
         | Array<
-            "arithmetic" | "cmyk" | "deep" | "hierarchical" | "icc" | "lossless" | "none" | "progressive"
-        >
+              | "arithmetic"
+              | "cmyk"
+              | "deep"
+              | "hierarchical"
+              | "icc"
+              | "lossless"
+              | "none"
+              | "progressive"
+          >
         | undefined;
     "jpeg-k-octets-supported"?: string | undefined;
     "jpeg-x-dimension-supported"?: string | undefined;
@@ -988,12 +1021,18 @@ export interface PrinterDescription {
     "message-supported"?: number | undefined;
     "multiple-destination-uris-supported"?: boolean | undefined;
     "multiple-document-handling-default"?: MultipleDocumentHandling | undefined;
-    "multiple-document-handling-supported"?: MultipleDocumentHandling[] | undefined;
+    "multiple-document-handling-supported"?:
+        | MultipleDocumentHandling[]
+        | undefined;
     "multiple-document-jobs-supported"?: boolean | undefined;
     "multiple-object-handling-default"?: MultipleObjectHandling | undefined;
     "multiple-object-handling-supported"?: MultipleObjectHandling[] | undefined;
     "multiple-operation-time-out"?: number | undefined;
-    "multiple-operation-time-out-action"?: "abort-job" | "hold-job" | "process-job" | undefined;
+    "multiple-operation-time-out-action"?:
+        | "abort-job"
+        | "hold-job"
+        | "process-job"
+        | undefined;
     "natural-language-configured"?: string | undefined;
     "notify-attributes-supported"?: string[] | undefined;
     "notify-events-default"?: NotifyEvents[] | undefined;
@@ -1034,24 +1073,24 @@ export interface PrinterDescription {
     "pdf-k-octets-supported"?: string | undefined;
     "pdf-versions-supported"?:
         | Array<
-            | "adobe-1.3"
-            | "adobe-1.4"
-            | "adobe-1.5"
-            | "adobe-1.6"
-            | "iso-15930-1_2001"
-            | "iso-15930-3_2002"
-            | "iso-15930-4_2003"
-            | "iso-15930-6_2003"
-            | "iso-15930-7_2010"
-            | "iso-15930-8_2010"
-            | "iso-16612-2_2010"
-            | "iso-19005-1_2005"
-            | "iso-19005-2_2011"
-            | "iso-19005-3_2012"
-            | "iso-32000-1_2008"
-            | "none"
-            | "pwg-5102.3"
-        >
+              | "adobe-1.3"
+              | "adobe-1.4"
+              | "adobe-1.5"
+              | "adobe-1.6"
+              | "iso-15930-1_2001"
+              | "iso-15930-3_2002"
+              | "iso-15930-4_2003"
+              | "iso-15930-6_2003"
+              | "iso-15930-7_2010"
+              | "iso-15930-8_2010"
+              | "iso-16612-2_2010"
+              | "iso-19005-1_2005"
+              | "iso-19005-2_2011"
+              | "iso-19005-3_2012"
+              | "iso-32000-1_2008"
+              | "none"
+              | "pwg-5102.3"
+          >
         | undefined;
     "pdl-init-file-default"?: PdlInitFile | undefined;
     "pdl-init-file-entry-supported"?: string[] | undefined;
@@ -1059,16 +1098,28 @@ export interface PrinterDescription {
     "pdl-init-file-name-subdirectory-supported"?: boolean | undefined;
     "pdl-init-file-name-supported"?: string[] | undefined;
     "pdl-init-file-supported"?:
-        | Array<"pdl-init-file-entry" | "pdl-init-file-location" | "pdl-init-file-name">
+        | Array<
+              | "pdl-init-file-entry"
+              | "pdl-init-file-location"
+              | "pdl-init-file-name"
+          >
         | undefined;
     "pdl-override-guaranteed-supported"?: string[] | undefined;
-    "pdl-override-supported"?: "attempted" | "guaranteed" | "not-attempted" | undefined;
+    "pdl-override-supported"?:
+        | "attempted"
+        | "guaranteed"
+        | "not-attempted"
+        | undefined;
     "platform-shape"?: string | undefined;
     "platform-temperature-default"?: number | undefined;
     "platform-temperature-supported"?: Array<number | string> | undefined;
     "preferred-attributes-supported"?: boolean | undefined;
-    "presentation-direction-number-up-default"?: PresentationDirectionNumberUp | undefined;
-    "presentation-direction-number-up-supported"?: PresentationDirectionNumberUp[] | undefined;
+    "presentation-direction-number-up-default"?:
+        | PresentationDirectionNumberUp
+        | undefined;
+    "presentation-direction-number-up-supported"?:
+        | PresentationDirectionNumberUp[]
+        | undefined;
     "print-accuracy-supported"?: PrintAccuracySupported | undefined;
     "print-base-default"?: PrintBase | undefined;
     "print-base-supported"?: PrintBase[] | undefined;
@@ -1098,14 +1149,18 @@ export interface PrinterDescription {
     "printer-fax-modem-name"?: string[] | undefined;
     "printer-fax-modem-number"?: string[] | undefined;
     "printer-geo-location"?: string | undefined;
-    "printer-get-attributes-supported"?: Array<keyof JobTemplateAttributes | keyof JobStatusAttributes> | undefined;
+    "printer-get-attributes-supported"?:
+        | Array<keyof JobTemplateAttributes | keyof JobStatusAttributes>
+        | undefined;
     "printer-icc-profiles"?: PrinterIccProfiles[] | undefined;
     "printer-icons"?: string[] | undefined;
     "printer-info"?: string | undefined;
     "printer-kind"?: PrinterKind[] | undefined;
     "printer-location"?: string | undefined;
     "printer-make-and-model"?: string | undefined;
-    "printer-mandatory-job-attributes"?: Array<keyof JobTemplateAttributes | keyof JobStatusAttributes> | undefined;
+    "printer-mandatory-job-attributes"?:
+        | Array<keyof JobTemplateAttributes | keyof JobStatusAttributes>
+        | undefined;
     "printer-more-info-manufacturer"?: string | undefined;
     "printer-name"?: string | undefined;
     "printer-organization"?: string[] | undefined;
@@ -1120,14 +1175,23 @@ export interface PrinterDescription {
     "printer-volume-supported"?: PrinterVolumeSupported | undefined;
     "printer-xri-supported"?: PrinterXri[] | undefined;
     "proof-print-default"?: ProofPrint | undefined;
-    "proof-print-supported"?: Array<"media" | "media-col" | "proof-print-copies"> | undefined;
+    "proof-print-supported"?:
+        | Array<"media" | "media-col" | "proof-print-copies">
+        | undefined;
     "punching-hole-diameter-configured"?: number | undefined;
     "punching-locations-supported"?: Array<number | string> | undefined;
     "punching-offset-supported"?: Array<number | string> | undefined;
     "punching-reference-edge-supported"?: ReferenceEdge[] | undefined;
     "pwg-raster-document-resolution-supported"?: Resolution[] | undefined;
-    "pwg-raster-document-sheet-back"?: "flipped" | "manual-tumble" | "normal" | "rotated" | undefined;
-    "pwg-raster-document-type-supported"?: PwgRasterDocumentTypeSupported[] | undefined;
+    "pwg-raster-document-sheet-back"?:
+        | "flipped"
+        | "manual-tumble"
+        | "normal"
+        | "rotated"
+        | undefined;
+    "pwg-raster-document-type-supported"?:
+        | PwgRasterDocumentTypeSupported[]
+        | undefined;
     "pwg-safe-gcode-supported"?: string[] | undefined;
     "reference-uri-schemes-supported"?: UriSchemes[] | undefined;
     "repertoire-supported"?: string[] | undefined;
@@ -1169,8 +1233,13 @@ export interface PrinterDescription {
     "trimming-when-supported"?: string[] | undefined;
     "uri-authentication-supported"?:
         | Array<
-            "basic" | "certificate" | "digest" | "negotiate" | "none" | "requesting-user-name"
-        >
+              | "basic"
+              | "certificate"
+              | "digest"
+              | "negotiate"
+              | "none"
+              | "requesting-user-name"
+          >
         | undefined;
     "uri-security-supported"?: Array<"none" | "ssl3" | "tls"> | undefined;
     "user-defined-values-supported"?: string[] | undefined;
@@ -1198,8 +1267,12 @@ export interface PrinterStatus {
     "chamber-temperature-current"?: number | undefined;
     "device-service-count"?: number | undefined;
     "device-uuid"?: string | undefined;
-    "document-format-varying-attributes"?: Array<keyof JobTemplateAttributes | "none"> | undefined;
-    "job-settable-attributes-supported"?: Array<keyof JobTemplateAttributes> | undefined;
+    "document-format-varying-attributes"?:
+        | Array<keyof JobTemplateAttributes | "none">
+        | undefined;
+    "job-settable-attributes-supported"?:
+        | Array<keyof JobTemplateAttributes>
+        | undefined;
     "pages-per-minute"?: number | undefined;
     "pages-per-minute-color"?: number | undefined;
     "printer-alert"?: string[] | undefined;
@@ -1228,7 +1301,9 @@ export interface PrinterStatus {
     "printer-pages-completed"?: number | undefined;
     "printer-pages-completed-col"?: Pages | undefined;
     "printer-service-type"?: PrinterServiceType | undefined;
-    "printer-settable-attributes-supported"?: Array<keyof JobTemplateAttributes | "none"> | undefined;
+    "printer-settable-attributes-supported"?:
+        | Array<keyof JobTemplateAttributes | "none">
+        | undefined;
     "printer-state"?: PrinterState | undefined;
     "printer-state-change-date-time"?: string | undefined;
     "printer-state-change-time"?: number | undefined;
@@ -1861,9 +1936,19 @@ export type PrinterOpertaion =
 
 export type Compression = "compress" | "deflate" | "gzip" | "none";
 
-export type CoverType = "no-cover" | "print-back" | "print-both" | "print-front" | "print-none";
+export type CoverType =
+    | "no-cover"
+    | "print-back"
+    | "print-both"
+    | "print-front"
+    | "print-none";
 
-export type DocumentDigitalSignature = "dss" | "none" | "pgp" | "smime" | "xmldsig";
+export type DocumentDigitalSignature =
+    | "dss"
+    | "none"
+    | "pgp"
+    | "smime"
+    | "xmldsig";
 
 export type DocumentStateReasons =
     | "aborted-by-system"
@@ -1908,7 +1993,11 @@ export type IdentifyActions = "display" | "flash" | "sound" | "speak";
 
 export type ImpositionTemplate = "none" | "signature";
 
-export type JobErrorAction = "abort-job" | "cancel-job" | "continue-job" | "suspend-job";
+export type JobErrorAction =
+    | "abort-job"
+    | "cancel-job"
+    | "continue-job"
+    | "suspend-job";
 
 export type JobHoldUntil =
     | "day-time"
@@ -2018,7 +2107,13 @@ export type JobStateReasons =
     | "unsupported-document-format"
     | "warnings-detected";
 
-export type MediaCoating = "glossy" | "high-gloss" | "matte" | "none" | "satin" | "semi-gloss";
+export type MediaCoating =
+    | "glossy"
+    | "high-gloss"
+    | "matte"
+    | "none"
+    | "satin"
+    | "semi-gloss";
 
 export type MediaColSupported =
     | "media-bottom-margin"
@@ -2620,9 +2715,21 @@ export type MediaEnvelopeName =
     | "na-number-9-envelope"
     | "na-number-10-envelope";
 
-export type MediaIntputTray = "bottom" | "envelope" | "large-capacity" | "main" | "manual" | "middle" | "side" | "top";
+export type MediaIntputTray =
+    | "bottom"
+    | "envelope"
+    | "large-capacity"
+    | "main"
+    | "manual"
+    | "middle"
+    | "side"
+    | "top";
 
-export type Media = MediaName | MediaSizeName | MediaIntputTray | MediaEnvelopeName;
+export type Media =
+    | MediaName
+    | MediaSizeName
+    | MediaIntputTray
+    | MediaEnvelopeName;
 
 export type MediaSource =
     | "alternate"
@@ -2909,9 +3016,20 @@ export type PrintColorMode =
     | "process-bi-level"
     | "process-monochrome";
 
-export type PrintContentOptimize = "auto" | "graphic" | "photo" | "text" | "text-and-graphic";
+export type PrintContentOptimize =
+    | "auto"
+    | "graphic"
+    | "photo"
+    | "text"
+    | "text-and-graphic";
 
-export type PrintRenderingIntent = "absolute" | "auto" | "perceptual" | "relative" | "relative-bpc" | "saturation";
+export type PrintRenderingIntent =
+    | "absolute"
+    | "auto"
+    | "perceptual"
+    | "relative"
+    | "relative-bpc"
+    | "saturation";
 
 export type PrinterStateReasons =
     | "alert-removal-of-binary-change-entry"
@@ -3686,15 +3804,29 @@ export type PwgRasterDocumentTypeSupported =
 
 export type PrintQuality = "draft" | "normal" | "high";
 
-export type RequestedPrinterAttributeGroups = "all" | "job-template" | "printer-description";
+export type RequestedPrinterAttributeGroups =
+    | "all"
+    | "job-template"
+    | "printer-description";
 
-export type RequestedJobAttributeGroups = "all" | "job-description" | "job-template";
+export type RequestedJobAttributeGroups =
+    | "all"
+    | "job-description"
+    | "job-template";
 
 export type SaveDisposition = "none" | "print-save" | "save-only";
 
-export type SeparatorSheetsType = "both-sheets" | "end-sheet" | "none" | "slip-sheets" | "start-sheet";
+export type SeparatorSheetsType =
+    | "both-sheets"
+    | "end-sheet"
+    | "none"
+    | "slip-sheets"
+    | "start-sheet";
 
-export type Sides = "one-sided" | "two-sided-long-edge" | "two-sided-short-edge";
+export type Sides =
+    | "one-sided"
+    | "two-sided-long-edge"
+    | "two-sided-short-edge";
 
 export type WhichJobs =
     | "aborted"
@@ -4146,7 +4278,14 @@ export type UriSchemes =
     | "z39.50r"
     | "z39.50s";
 
-export type PrinterServiceType = "copy" | "faxin" | "faxout" | "print" | "print3d" | "scan" | "transform";
+export type PrinterServiceType =
+    | "copy"
+    | "faxin"
+    | "faxout"
+    | "print"
+    | "print3d"
+    | "scan"
+    | "transform";
 
 export type PrinterKind =
     | "disc"
@@ -4208,7 +4347,13 @@ export type PowerState =
     | "not-applicable"
     | "no-change";
 
-export type DocumentState = "pending" | "processing" | "processing-stopped" | "canceled" | "aborted" | "completed";
+export type DocumentState =
+    | "pending"
+    | "processing"
+    | "processing-stopped"
+    | "canceled"
+    | "aborted"
+    | "completed";
 
 export type JobState =
     | "pending"
@@ -4219,11 +4364,27 @@ export type JobState =
     | "aborted"
     | "completed";
 
-export type ResourceState = "pending" | "available" | "installed" | "canceled" | "aborted";
+export type ResourceState =
+    | "pending"
+    | "available"
+    | "installed"
+    | "canceled"
+    | "aborted";
 
-export type TransmissionStatus = "pending" | "pending-retry" | "processing" | "canceled" | "aborted" | "completed";
+export type TransmissionStatus =
+    | "pending"
+    | "pending-retry"
+    | "processing"
+    | "canceled"
+    | "aborted"
+    | "completed";
 
-export type OrientationRequested = "portrait" | "landscape" | "reverse-landscape" | "reverse-portrait" | "none";
+export type OrientationRequested =
+    | "portrait"
+    | "landscape"
+    | "reverse-landscape"
+    | "reverse-portrait"
+    | "none";
 
 export type AccuracyUnits = "mm" | "nm" | "um";
 
@@ -4231,11 +4392,22 @@ export type BalingType = "band" | "shrink-wrap" | "wrap";
 
 export type BalingWhen = "after-job" | "after-sets";
 
-export type XriAuthentication = "basic" | "certificate" | "digest" | "none" | "requesting-user-name";
+export type XriAuthentication =
+    | "basic"
+    | "certificate"
+    | "digest"
+    | "none"
+    | "requesting-user-name";
 
 export type XriSecurity = "none" | "ssl3" | "tls";
 
-export type TrimmingType = "draw-line" | "full" | "partial" | "perforate" | "score" | "tab";
+export type TrimmingType =
+    | "draw-line"
+    | "full"
+    | "partial"
+    | "perforate"
+    | "score"
+    | "tab";
 
 export type ReferenceEdge = "bottom" | "left" | "right" | "top";
 
@@ -4294,11 +4466,22 @@ export type MaterialPurpose = "all" | "base" | "in-fill" | "shell" | "support";
 
 export type MaterialAmountUnits = "g" | "kg" | "l" | "m" | "ml" | "mm";
 
-export type LaminatingType = "archival" | "glossy" | "high-gloss" | "matte" | "semi-gloss" | "translucent";
+export type LaminatingType =
+    | "archival"
+    | "glossy"
+    | "high-gloss"
+    | "matte"
+    | "semi-gloss"
+    | "translucent";
 
 export type FinishingSides = "back" | "both" | "front";
 
-export type JobRetainUntil = "end-of-day" | "end-of-month" | "end-of-week" | "indefinite" | "none";
+export type JobRetainUntil =
+    | "end-of-day"
+    | "end-of-month"
+    | "end-of-week"
+    | "indefinite"
+    | "none";
 
 export type JobPasswordRepertoire =
     | "iana_us-ascii_any"
@@ -4317,7 +4500,14 @@ export type InputFilmScanMode =
     | "color-slide-film"
     | "not-applicable";
 
-export type InputContentType = "auto" | "halftone" | "line-art" | "magazine" | "photo" | "text" | "text-and-photo";
+export type InputContentType =
+    | "auto"
+    | "halftone"
+    | "line-art"
+    | "magazine"
+    | "photo"
+    | "text"
+    | "text-and-photo";
 
 export type InputColorMode =
     | "auto"
@@ -4496,7 +4686,15 @@ export type Finishings =
     | "trim-after-job"
     | "trim-after-pages";
 
-export type BindingType = "adhesive" | "comb" | "flat" | "padding" | "perfect" | "spiral" | "tape" | "velo";
+export type BindingType =
+    | "adhesive"
+    | "comb"
+    | "flat"
+    | "padding"
+    | "perfect"
+    | "spiral"
+    | "tape"
+    | "velo";
 
 export type CoatingType =
     | "archival"
@@ -4514,8 +4712,17 @@ export type IPPVersion = "1.0" | "1.1" | "2.0" | "2.1" | "2.2";
 
 export type JobAccountType = "general" | "group" | "none";
 
-export type MultipleObjectHandling = "auto" | "best-fit" | "best-quality" | "best-speed" | "one-at-a-time";
+export type MultipleObjectHandling =
+    | "auto"
+    | "best-fit"
+    | "best-quality"
+    | "best-speed"
+    | "one-at-a-time";
 
-export type Overrides = keyof JobTemplateAttributes | "document-copies" | "document-numbers" | "pages";
+export type Overrides =
+    | keyof JobTemplateAttributes
+    | "document-copies"
+    | "document-numbers"
+    | "pages";
 
 export type Resolution = [number, number, string];

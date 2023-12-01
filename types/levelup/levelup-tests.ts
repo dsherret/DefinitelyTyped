@@ -22,8 +22,7 @@ db.open((error) => {
     }
 });
 
-db.close((error) => {
-});
+db.close((error) => {});
 
 db.put("key", {});
 db.put("key", {}, (error) => {});
@@ -42,11 +41,16 @@ db.getMany(["key1", "key2"], { keyEncoding: "json" }, (error, values) => {});
 db.getMany(["key1", "key2"], { fillCache: true }, (error, values) => {});
 db.getMany(["key1", "key2"], (error, values) => {});
 
-db.batch([{
-    type: "put",
-    key: [1, 2, 3],
-    value: { some: "json" },
-}], (error: Error | undefined) => {});
+db.batch(
+    [
+        {
+            type: "put",
+            key: [1, 2, 3],
+            value: { some: "json" },
+        },
+    ],
+    (error: Error | undefined) => {},
+);
 
 db.batch()
     .del("father")
@@ -83,10 +87,8 @@ db.createReadStream()
         console.log("Stream closed");
     });
 
-db.clear((error) => {
-});
+db.clear((error) => {});
 
-db.clear({ gt: "hello" }, (error) => {
-});
+db.clear({ gt: "hello" }, (error) => {});
 
 db.clear().then(() => console.log("cleared"));

@@ -1,4 +1,11 @@
-import { ConnectionOptions, Job, JobsHash, Queue, Scheduler, Worker } from "node-resque";
+import {
+    ConnectionOptions,
+    Job,
+    JobsHash,
+    Queue,
+    Scheduler,
+    Worker,
+} from "node-resque";
 
 class AddJob implements Job<number> {
     plugins: string[] = ["JobLock"];
@@ -21,7 +28,9 @@ class SubtractJob implements Job<number> {
 }
 
 const connection: ConnectionOptions = { host: "localhost", port: 6379 };
-const connectionWithCustomRedis: ConnectionOptions = { redis: "fake_redis_client" };
+const connectionWithCustomRedis: ConnectionOptions = {
+    redis: "fake_redis_client",
+};
 const queues = ["math", "otherQueue"];
 const jobs: JobsHash = {
     add: new AddJob(),
@@ -81,7 +90,9 @@ scheduler.on("master", () => {
     console.log("scheduler became master");
 });
 scheduler.on("cleanStuckWorker", (workerName, errorPayload, delta) => {
-    console.log(`failing ${workerName} (stuck for ${delta}s) and failing job ${errorPayload}`);
+    console.log(
+        `failing ${workerName} (stuck for ${delta}s) and failing job ${errorPayload}`,
+    );
 });
 scheduler.on("error", (error) => {
     console.log(`scheduler error >> ${error}`);
@@ -132,7 +143,11 @@ queue.connect().then(async () => {
     const failedJob = {
         worker: "busted-worker-3",
         queue: "busted-queue",
-        payload: { class: "busted_job", queue: "busted-queue", args: [1, 2, 3] },
+        payload: {
+            class: "busted_job",
+            queue: "busted-queue",
+            args: [1, 2, 3],
+        },
         exception: "ERROR_NAME",
         error: "I broke",
         failed_at: "Sun Apr 26 2015 14:00:44 GMT+0100 (BST)",

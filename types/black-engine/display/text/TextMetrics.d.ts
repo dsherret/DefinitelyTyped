@@ -14,9 +14,22 @@ export class TextSegmentMetricsData {
 }
 /* tslint:disable-next-line:no-unnecessary-class */
 export class TextMetricsEx {
-    static measure(text: string, lineHeight: number, ...styles: TextStyle[]): TextMetricsData;
-    static __measure(text: string, style: TextStyle, outBounds?: Rectangle | null): Rectangle;
-    static measureBitmap(text: string, data: BitmapFontData, lineHeight: number, outBounds: Rectangle): Rectangle;
+    static measure(
+        text: string,
+        lineHeight: number,
+        ...styles: TextStyle[]
+    ): TextMetricsData;
+    static __measure(
+        text: string,
+        style: TextStyle,
+        outBounds?: Rectangle | null,
+    ): Rectangle;
+    static measureBitmap(
+        text: string,
+        data: BitmapFontData,
+        lineHeight: number,
+        outBounds: Rectangle,
+    ): Rectangle;
 }
 import { BitmapFontData } from "../../assets/BitmapFontAsset";
 import { Rectangle } from "../../geom/Rectangle";

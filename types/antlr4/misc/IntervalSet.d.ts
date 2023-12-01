@@ -24,7 +24,11 @@ export default class IntervalSet {
 
     removeOne(value: number): void;
 
-    toString(literalNames?: string[], symbolicNames?: string[], elemsAreChar?: boolean): string;
+    toString(
+        literalNames?: string[],
+        symbolicNames?: string[],
+        elemsAreChar?: boolean,
+    ): string;
 
     toCharString(): string;
 
@@ -32,7 +36,11 @@ export default class IntervalSet {
 
     toTokenString(literalNames: string[], symbolicNames: string[]): string;
 
-    elementName(literalNames: string[], symbolicNames: string[], token: number): string;
+    elementName(
+        literalNames: string[],
+        symbolicNames: string[],
+        token: number,
+    ): string;
 
     get length(): number;
 }

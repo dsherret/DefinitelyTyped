@@ -21,6 +21,9 @@ export interface ShareAPIPolyfillOptions {
 
 declare global {
     interface Navigator {
-        share(data?: ShareAPIPolyfillData, configuration?: ShareAPIPolyfillOptions): Promise<void>;
+        share(
+            data?: ShareAPIPolyfillData,
+            configuration?: ShareAPIPolyfillOptions,
+        ): Promise<void>;
     }
 }

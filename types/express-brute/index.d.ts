@@ -25,7 +25,11 @@ declare class ExpressBrute {
      * @param {Function}    next        The next middleware.
      * @return {RequestHandler} The Request handler.
      */
-    prevent(request: express.Request, response: express.Response, next: express.NextFunction): express.RequestHandler;
+    prevent(
+        request: express.Request,
+        response: express.Response,
+        next: express.NextFunction,
+    ): express.RequestHandler;
 
     /**
      * @summary Resets the wait time between requests back to its initial value.
@@ -34,7 +38,11 @@ declare class ExpressBrute {
      * @param {Function}    next    The next middleware.
      * @return {RequestHandler} The Request handler.
      */
-    reset(ip: string, key: string, next: express.NextFunction): express.RequestHandler;
+    reset(
+        ip: string,
+        key: string,
+        next: express.NextFunction,
+    ): express.RequestHandler;
 }
 
 declare namespace ExpressBrute {
@@ -74,7 +82,13 @@ declare namespace ExpressBrute {
         /**
          * @summary Key.
          */
-        key?: ((req: express.Request, res: express.Response, next: express.NextFunction) => any) | undefined;
+        key?:
+            | ((
+                  req: express.Request,
+                  res: express.Response,
+                  next: express.NextFunction,
+              ) => any)
+            | undefined;
     }
 
     /**
@@ -139,7 +153,12 @@ declare namespace ExpressBrute {
          * @param {number}      lifetime The lifetime.
          * @param {Function}    callback The callback.
          */
-        set(key: string, value: any, lifetime: number, callback: (error: any) => void): void;
+        set(
+            key: string,
+            value: any,
+            lifetime: number,
+            callback: (error: any) => void,
+        ): void;
 
         /**
          * @summary Deletes the key.
@@ -167,9 +186,11 @@ declare namespace ExpressBrute {
 
 declare module "express-serve-static-core" {
     export interface Request {
-        brute?: {
-            reset?: ((callback?: () => void) => void) | undefined;
-        } | undefined;
+        brute?:
+            | {
+                  reset?: ((callback?: () => void) => void) | undefined;
+              }
+            | undefined;
     }
 }
 

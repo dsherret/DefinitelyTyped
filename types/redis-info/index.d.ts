@@ -84,10 +84,9 @@ export interface BasePersistenceInfo {
     aof_last_cow_size: string;
 }
 
-export type PersistenceInfo =
-    & BasePersistenceInfo
-    & (PersistenceAOFOnInfo | PersistenceAOFOffInfo)
-    & (PersistenceLoadingOnInfo | PersistenceLoadingOffInfo);
+export type PersistenceInfo = BasePersistenceInfo &
+    (PersistenceAOFOnInfo | PersistenceAOFOffInfo) &
+    (PersistenceLoadingOnInfo | PersistenceLoadingOffInfo);
 
 export interface PersistenceAOFOnInfo {
     aof_enabled: Flag.ON;
@@ -158,7 +157,8 @@ export interface BaseReplicationInfo {
     repl_backlog_histlen: string;
 }
 
-export type ReplicationInfo = BaseReplicationInfo & (ReplicationMasterInfo | ReplicationReplicaInfo);
+export type ReplicationInfo = BaseReplicationInfo &
+    (ReplicationMasterInfo | ReplicationReplicaInfo);
 
 export interface ReplicationMasterInfo {
     role: "master";
@@ -176,10 +176,9 @@ export interface BaseReplicationReplicaInfo {
     min_slaves_good_slaves: string;
 }
 
-export type ReplicationReplicaInfo =
-    & BaseReplicationReplicaInfo
-    & (ReplicationReplicaSyncOnInfo | ReplicationReplicaSyncOffInfo)
-    & (ReplicationReplicaLinkUpInfo | ReplicationReplicaLinkDownInfo);
+export type ReplicationReplicaInfo = BaseReplicationReplicaInfo &
+    (ReplicationReplicaSyncOnInfo | ReplicationReplicaSyncOffInfo) &
+    (ReplicationReplicaLinkUpInfo | ReplicationReplicaLinkDownInfo);
 
 export interface ReplicationReplicaSyncOnInfo {
     master_sync_in_progress: Flag.ON;
@@ -233,7 +232,14 @@ export interface GeneralStats {
 }
 
 export type RedisInfo = Readonly<
-    GeneralStats & ServerInfo & ClientsInfo & MemoryInfo & PersistenceInfo & Stats & ReplicationInfo & CPUInfo
+    GeneralStats &
+        ServerInfo &
+        ClientsInfo &
+        MemoryInfo &
+        PersistenceInfo &
+        Stats &
+        ReplicationInfo &
+        CPUInfo
 >;
 
 export function parse(info: string): RedisInfo;

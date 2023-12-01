@@ -6,17 +6,17 @@ declare namespace gapi.client.analytics.provisioning {
 }
 
 interface DataQuery {
-    "ids"?: string | undefined;
+    ids?: string | undefined;
     "start-date"?: string | undefined;
     "30daysAgo"?: string | undefined;
     "end-date"?: string | undefined;
-    "yesterday"?: string | undefined;
-    "metrics"?: string | undefined;
-    "dimensions"?: string | undefined;
-    "sort"?: string | undefined;
-    "filters"?: string | undefined;
-    "segment"?: string | undefined;
-    "samplingLevel"?: string | undefined;
+    yesterday?: string | undefined;
+    metrics?: string | undefined;
+    dimensions?: string | undefined;
+    sort?: string | undefined;
+    filters?: string | undefined;
+    segment?: string | undefined;
+    samplingLevel?: string | undefined;
     "include-empty-rows"?: string | undefined;
     "start-index"?: string | undefined;
     "max-results"?: string | undefined;
@@ -35,12 +35,12 @@ declare namespace gapi.client.analytics.data.realtime {
 declare namespace gapi.client.analytics.kB {}
 declare namespace gapi.client.analytics.kB.parameters {
     export interface AnalyticsParameter {
-        "type"?: string | undefined;
-        "description"?: string | undefined;
-        "default"?: string | undefined;
-        "enum"?: string[] | undefined;
-        "enumDescriptions"?: string[] | undefined;
-        "location"?: string | undefined;
+        type?: string | undefined;
+        description?: string | undefined;
+        default?: string | undefined;
+        enum?: string[] | undefined;
+        enumDescriptions?: string[] | undefined;
+        location?: string | undefined;
     }
     export interface alt extends AnalyticsParameter {}
     export class alt {}

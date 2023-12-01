@@ -67,18 +67,24 @@ declare namespace BScroll {
     }
 
     interface EaseOption {
-        swipe?: {
-            style: string;
-            fn: (t: number) => number;
-        } | undefined;
-        swipeBounce?: {
-            style: string;
-            fn: (t: number) => number;
-        } | undefined;
-        bounce?: {
-            style: string;
-            fn: (t: number) => number;
-        } | undefined;
+        swipe?:
+            | {
+                  style: string;
+                  fn: (t: number) => number;
+              }
+            | undefined;
+        swipeBounce?:
+            | {
+                  style: string;
+                  fn: (t: number) => number;
+              }
+            | undefined;
+        bounce?:
+            | {
+                  style: string;
+                  fn: (t: number) => number;
+              }
+            | undefined;
     }
 
     interface BsOption {
@@ -252,10 +258,7 @@ declare class BScroll {
     ): void;
 
     on(
-        type:
-            | "scroll"
-            | "scrollEnd"
-            | "touchEnd",
+        type: "scroll" | "scrollEnd" | "touchEnd",
         fn: (pos: BScroll.Position) => any,
     ): void;
 

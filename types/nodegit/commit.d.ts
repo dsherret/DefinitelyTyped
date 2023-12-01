@@ -41,7 +41,11 @@ export class Commit {
      * Retrieves the commit pointed to by the oid
      */
     static lookup(repo: Repository, id: string | Oid | Commit): Promise<Commit>;
-    static lookupPrefix(repo: Repository, id: Oid, len: number): Promise<Commit>;
+    static lookupPrefix(
+        repo: Repository,
+        id: Oid,
+        len: number,
+    ): Promise<Commit>;
     static createWithSignature(
         repo: Repository,
         commitContent: string,
@@ -64,11 +68,17 @@ export class Commit {
         messageEncoding: string,
         message: string,
         tree: Tree | Oid,
-        onSignature: (
-            data: string,
-        ) =>
-            | Promise<{ code: Error.CODE; field?: string | undefined; signedData: string }>
-            | { code: Error.CODE; field?: string | undefined; signedData: string },
+        onSignature: (data: string) =>
+            | Promise<{
+                  code: Error.CODE;
+                  field?: string | undefined;
+                  signedData: string;
+              }>
+            | {
+                  code: Error.CODE;
+                  field?: string | undefined;
+                  signedData: string;
+              },
     ): Promise<Oid>;
     author(): Signature;
     committer(): Signature;

@@ -19,9 +19,9 @@ export interface PayloadError {
     message: string;
     locations?:
         | Array<{
-            line: number;
-            column: number;
-        }>
+              line: number;
+              column: number;
+          }>
         | undefined;
     severity?: "CRITICAL" | "ERROR" | "WARNING" | undefined; // Not officially part of the spec, but used at Facebook
 }
@@ -66,7 +66,9 @@ export type GraphQLSingularResponse =
     | GraphQLResponseWithExtensionsOnly
     | GraphQLResponseWithoutData;
 
-export type GraphQLResponse = GraphQLSingularResponse | readonly GraphQLSingularResponse[];
+export type GraphQLResponse =
+    | GraphQLSingularResponse
+    | readonly GraphQLSingularResponse[];
 
 /**
  * A function that returns an Observable representing the response of executing

@@ -143,7 +143,10 @@ export class Actions {
 
     constructor(
         executor: Executor,
-        options?: { async: boolean; bridge: boolean } | { async: boolean } | { bridge: boolean },
+        options?:
+            | { async: boolean; bridge: boolean }
+            | { async: boolean }
+            | { bridge: boolean },
     );
 
     // endregion
@@ -203,7 +206,13 @@ export class Actions {
      */
     dragAndDrop(
         from: WebElement,
-        to?: WebElement | { x?: number | string | undefined; y?: number | string | undefined } | null,
+        to?:
+            | WebElement
+            | {
+                  x?: number | string | undefined;
+                  y?: number | string | undefined;
+              }
+            | null,
     ): Actions;
 
     /**

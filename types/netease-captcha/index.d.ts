@@ -84,7 +84,11 @@ type Lang =
     | "kn";
 
 declare namespace NeteaseCaptcha {
-    type InitFunction = (config: Config, onLoad?: onLoad, onError?: onError) => void;
+    type InitFunction = (
+        config: Config,
+        onLoad?: onLoad,
+        onError?: onError,
+    ) => void;
 
     interface Config {
         /**

@@ -17,15 +17,23 @@ import * as Request from "request";
 
     // Create HTTP server
 
-    const handler = async (req: Http.IncomingMessage, res: Http.ServerResponse) => {
+    const handler = async (
+        req: Http.IncomingMessage,
+        res: Http.ServerResponse,
+    ) => {
         let payload;
         let status;
-        const headers: Http.IncomingHttpHeaders = { "Content-Type": "text/plain" };
+        const headers: Http.IncomingHttpHeaders = {
+            "Content-Type": "text/plain",
+        };
 
         // Authenticate incoming request
 
         try {
-            const { credentials, artifacts } = await Hawk.server.authenticate(req, credentialsFunc);
+            const { credentials, artifacts } = await Hawk.server.authenticate(
+                req,
+                credentialsFunc,
+            );
             payload = `Hello ${credentials.user} ${artifacts.ext}`;
             status = 200;
 
@@ -65,7 +73,8 @@ import * as Request from "request";
 
     // Request options
 
-    const requestOptions: Request.RequiredUriUrl & Request.CoreOptions & { headers: Request.Headers } = {
+    const requestOptions: Request.RequiredUriUrl &
+        Request.CoreOptions & { headers: Request.Headers } = {
         uri: "http://example.com:8000/resource/1?b=1&a=2",
         method: "GET",
         headers: {},
@@ -73,10 +82,14 @@ import * as Request from "request";
 
     // Generate Authorization request header
 
-    const { header, artifacts } = Hawk.client.header("http://example.com:8000/resource/1?b=1&a=2", "GET", {
-        credentials,
-        ext: "some-app-data",
-    });
+    const { header, artifacts } = Hawk.client.header(
+        "http://example.com:8000/resource/1?b=1&a=2",
+        "GET",
+        {
+            credentials,
+            ext: "some-app-data",
+        },
+    );
     requestOptions.headers.Authorization = header;
 
     // Send authenticated request
@@ -84,11 +97,21 @@ import * as Request from "request";
     Request(requestOptions, (error, response, body) => {
         // Authenticate the server's response
 
-        const isValid = Hawk.client.authenticate(response, credentials, artifacts, { payload: body });
+        const isValid = Hawk.client.authenticate(
+            response,
+            credentials,
+            artifacts,
+            {
+                payload: body,
+            },
+        );
 
         // Output results
 
-        console.log(`${response.statusCode}: ${body}` + (isValid ? " (valid)" : " (invalid)"));
+        console.log(
+            `${response.statusCode}: ${body}` +
+                (isValid ? " (valid)" : " (invalid)"),
+        );
     });
 }
 

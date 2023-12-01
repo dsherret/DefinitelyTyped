@@ -18,31 +18,50 @@ export interface DocOptions {
     single?: boolean | undefined;
     debug?: boolean | undefined;
     colorize?: boolean | undefined;
-    filters?: Record<string, string> | {
-        [keys: string]: {
-            postFilter: (parsedFiles: ParsedFile[], parsedFilenames: string[]) => void;
-        };
-    } | undefined;
-    languages?: Record<string, string> | {
-        [language: string]: {
-            docBlocksRegExp: RegExp;
-            inlineRegExp: RegExp;
-        };
-    } | undefined;
-    parsers?: Record<string, string> | {
-        parse: (content: string, source: string, messages: string) => {
-            name: string;
-            title: string;
-            description: string;
-        };
-        path: string;
-        getGroup?: (() => string) | undefined;
-        markdownFields?: string[] | undefined;
-        markdownRemovePTags?: string[] | undefined;
-    } | undefined;
-    workers?: Record<string, string> | {
-        [keys: string]: any;
-    } | undefined;
+    filters?:
+        | Record<string, string>
+        | {
+              [keys: string]: {
+                  postFilter: (
+                      parsedFiles: ParsedFile[],
+                      parsedFilenames: string[],
+                  ) => void;
+              };
+          }
+        | undefined;
+    languages?:
+        | Record<string, string>
+        | {
+              [language: string]: {
+                  docBlocksRegExp: RegExp;
+                  inlineRegExp: RegExp;
+              };
+          }
+        | undefined;
+    parsers?:
+        | Record<string, string>
+        | {
+              parse: (
+                  content: string,
+                  source: string,
+                  messages: string,
+              ) => {
+                  name: string;
+                  title: string;
+                  description: string;
+              };
+              path: string;
+              getGroup?: (() => string) | undefined;
+              markdownFields?: string[] | undefined;
+              markdownRemovePTags?: string[] | undefined;
+          }
+        | undefined;
+    workers?:
+        | Record<string, string>
+        | {
+              [keys: string]: any;
+          }
+        | undefined;
     silent?: boolean | undefined;
     dryRun?: boolean | undefined;
     markdown?: boolean | undefined;

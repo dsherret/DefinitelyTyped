@@ -17,7 +17,11 @@ export function sign(options: SignOptions): string;
  * @param secretOrKey string or buffer containing either the secret
  * for HMAC algorithms, or the PEM encoded public key for RSA and ECDSA
  */
-export function verify(signature: string, algorithm: Algorithm, secretOrKey: string | Buffer): boolean;
+export function verify(
+    signature: string,
+    algorithm: Algorithm,
+    secretOrKey: string | Buffer,
+): boolean;
 
 /**
  * (Synchronous) Returns the decoded header, decoded payload,
@@ -167,7 +171,7 @@ export const ALGORITHMS: [
     "ES512",
 ];
 
-export type Algorithm = typeof ALGORITHMS[number] | "none";
+export type Algorithm = (typeof ALGORITHMS)[number] | "none";
 
 export interface Header extends CertificateProperties {
     alg: Algorithm;

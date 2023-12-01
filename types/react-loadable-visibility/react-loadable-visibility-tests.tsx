@@ -17,12 +17,10 @@ function Loading() {
     return <div>Loading...</div>;
 }
 
-const LoadableComponentAsDefaultImportComponent = LoadableComponentVisibilityAsDefaultImport(
-    () => testComponentModule,
-    {
+const LoadableComponentAsDefaultImportComponent =
+    LoadableComponentVisibilityAsDefaultImport(() => testComponentModule, {
         fallback: <Loading />,
-    },
-);
+    });
 
 const LoadableComponentComponent = LoadableComponentVisibility(
     () => testComponentModule,

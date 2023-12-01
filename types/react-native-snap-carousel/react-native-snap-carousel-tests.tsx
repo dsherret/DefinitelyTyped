@@ -9,7 +9,11 @@ import {
     View,
     ViewStyle,
 } from "react-native";
-import Carousel, { AdditionalParallaxProps, Pagination, ParallaxImage } from "react-native-snap-carousel";
+import Carousel, {
+    AdditionalParallaxProps,
+    Pagination,
+    ParallaxImage,
+} from "react-native-snap-carousel";
 
 class StringCarousel<T> extends Carousel<T> {}
 
@@ -62,7 +66,9 @@ class SnapCarouselTest extends React.Component {
         console.log("Snapped to: ", index);
     };
 
-    private readonly onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    private readonly onScroll = (
+        event: NativeSyntheticEvent<NativeScrollEvent>,
+    ) => {
         console.log("Scrolled: ", event);
     };
 
@@ -71,7 +77,10 @@ class SnapCarouselTest extends React.Component {
     };
 }
 
-class SnapCarouselWithPaginationTest extends React.Component<{}, { activeSlide: number }> {
+class SnapCarouselWithPaginationTest extends React.Component<
+    {},
+    { activeSlide: number }
+> {
     state = { activeSlide: 0 };
 
     renderItem({ item }: { item: string }) {
@@ -91,7 +100,9 @@ class SnapCarouselWithPaginationTest extends React.Component<{}, { activeSlide: 
                     itemWidth={75}
                     sliderWidth={300}
                     keyboardDismissMode="interactive"
-                    onSnapToItem={index => this.setState({ activeSlide: index })}
+                    onSnapToItem={(index) =>
+                        this.setState({ activeSlide: index })
+                    }
                 />
                 <Pagination
                     dotsLength={2}
@@ -119,7 +130,10 @@ class SnapCarouselWithPaginationTest extends React.Component<{}, { activeSlide: 
 class SnapCarouselWithParallaxTest extends React.Component {
     data = ["Item #1", "Item #2", "Item #3"];
 
-    renderParallaxItem({ item }: { item: string }, parallaxProps?: AdditionalParallaxProps) {
+    renderParallaxItem(
+        { item }: { item: string },
+        parallaxProps?: AdditionalParallaxProps,
+    ) {
         return (
             <ParallaxImage
                 source={{ uri: "http://via.placeholder.com/350x150" }}

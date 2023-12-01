@@ -2,7 +2,12 @@ import { FakeServer, fakeServer, fakeXhr, FakeXMLHttpRequest } from "nise";
 
 function testCreateFakeServer() {
     fakeServer.create();
-    fakeServer.create({ autoRespond: true, autoRespondAfter: 3, fakeHTTPMethods: true, respondImmediately: false });
+    fakeServer.create({
+        autoRespond: true,
+        autoRespondAfter: 3,
+        fakeHTTPMethods: true,
+        respondImmediately: false,
+    });
     fakeServer.create({ autoRespond: true, autoRespondAfter: 3 });
 }
 
@@ -19,11 +24,15 @@ function testFakeServer() {
 
     server.respondWith("http://test.com", "body");
     server.respondWith("http://test.com", []);
-    server.respondWith("http://test.com", (xhr: FakeXMLHttpRequest) => xhr.respond(200));
+    server.respondWith("http://test.com", (xhr: FakeXMLHttpRequest) =>
+        xhr.respond(200),
+    );
 
     server.respondWith("GET", "http://test.com", "body");
     server.respondWith("GET", "http://test.com", []);
-    server.respondWith("GET", "http://test.com", (xhr: FakeXMLHttpRequest) => xhr.respond(200));
+    server.respondWith("GET", "http://test.com", (xhr: FakeXMLHttpRequest) =>
+        xhr.respond(200),
+    );
 
     server.respondWith(/url/, "");
     server.respondWith(/url/, []);
@@ -31,7 +40,9 @@ function testFakeServer() {
 
     server.respondWith("GET", /url/, "");
     server.respondWith("GET", /url/, []);
-    server.respondWith("GET", /url/, (xhr: FakeXMLHttpRequest) => xhr.respond(200));
+    server.respondWith("GET", /url/, (xhr: FakeXMLHttpRequest) =>
+        xhr.respond(200),
+    );
     server.respondWith(...respondWith);
     server.respond();
     server.restore();
@@ -51,7 +62,9 @@ function testFakeXMLHttpRequest() {
 
 function testFakeXMLHttpRequestStatic() {
     fakeXhr.FakeXMLHttpRequest.useFilters = true;
-    fakeXhr.FakeXMLHttpRequest.addFilter((method, url, async, user, pass) => true);
+    fakeXhr.FakeXMLHttpRequest.addFilter(
+        (method, url, async, user, pass) => true,
+    );
     fakeXhr.FakeXMLHttpRequest.onCreate = (xhr: FakeXMLHttpRequest) => {};
     fakeXhr.FakeXMLHttpRequest.restore();
 }

@@ -9981,7 +9981,9 @@ fs.open({
         /** [FileSystemManager.getSavedFileList(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.getSavedFileList.html)
          *
          * 获取该小程序下已保存的本地缓存文件列表 */
-        getSavedFileList(option?: FileSystemManagerGetSavedFileListOption): void;
+        getSavedFileList(
+            option?: FileSystemManagerGetSavedFileListOption,
+        ): void;
         /** [FileSystemManager.mkdir(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.mkdir.html)
 *
 * 创建目录
@@ -13758,7 +13760,9 @@ wx.downloadFile({
          * 创建插屏广告组件。请通过 [wx.getSystemInfoSync()](https://developers.weixin.qq.com/miniprogram/dev/api/base/system/wx.getSystemInfoSync.html) 返回对象的 SDKVersion 判断基础库版本号后再使用该 API。每次调用该方法创建插屏广告都会返回一个全新的实例（小程序端的插屏广告实例不允许跨页面使用）。
          *
          * 最低基础库： `2.6.0` */
-        createInterstitialAd(option: CreateInterstitialAdOption): InterstitialAd;
+        createInterstitialAd(
+            option: CreateInterstitialAdOption,
+        ): InterstitialAd;
         /** [[LivePlayerContext](https://developers.weixin.qq.com/miniprogram/dev/api/media/live/LivePlayerContext.html) wx.createLivePlayerContext(string id, Object this)](https://developers.weixin.qq.com/miniprogram/dev/api/media/live/wx.createLivePlayerContext.html)
          *
          * 创建 [live-player](https://developers.weixin.qq.com/miniprogram/dev/component/live-player.html) 上下文 [LivePlayerContext](https://developers.weixin.qq.com/miniprogram/dev/api/media/live/LivePlayerContext.html) 对象。建议使用 [wx.createSelectorQuery](https://developers.weixin.qq.com/miniprogram/dev/api/wxml/wx.createSelectorQuery.html) 获取 context 对象。
@@ -14375,7 +14379,8 @@ wx.addCard({
          *
          * 最低基础库： `2.15.0` */
         addPhoneRepeatCalendar<
-            T extends AddPhoneRepeatCalendarOption = AddPhoneRepeatCalendarOption,
+            T extends
+                AddPhoneRepeatCalendarOption = AddPhoneRepeatCalendarOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, AddPhoneRepeatCalendarOption>;
@@ -14526,7 +14531,8 @@ wx.canvasGetImageData({
          *
          * 最低基础库： `2.13.0` */
         checkIsOpenAccessibility<
-            T extends CheckIsOpenAccessibilityOption = CheckIsOpenAccessibilityOption,
+            T extends
+                CheckIsOpenAccessibilityOption = CheckIsOpenAccessibilityOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, CheckIsOpenAccessibilityOption>;
@@ -14548,7 +14554,8 @@ wx.checkIsSoterEnrolledInDevice({
 *
 * 最低基础库： `1.6.0` */
         checkIsSoterEnrolledInDevice<
-            T extends CheckIsSoterEnrolledInDeviceOption = CheckIsSoterEnrolledInDeviceOption,
+            T extends
+                CheckIsSoterEnrolledInDeviceOption = CheckIsSoterEnrolledInDeviceOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, CheckIsSoterEnrolledInDeviceOption>;
@@ -14571,7 +14578,8 @@ wx.checkIsSupportSoterAuthentication({
 *
 * 最低基础库： `1.5.0` */
         checkIsSupportSoterAuthentication<
-            T extends CheckIsSupportSoterAuthenticationOption = CheckIsSupportSoterAuthenticationOption,
+            T extends
+                CheckIsSupportSoterAuthenticationOption = CheckIsSupportSoterAuthenticationOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, CheckIsSupportSoterAuthenticationOption>;
@@ -14968,7 +14976,8 @@ wx.createBLEConnection({
          *
          * 最低基础库： `2.10.3` */
         createBLEPeripheralServer<
-            T extends CreateBLEPeripheralServerOption = CreateBLEPeripheralServerOption,
+            T extends
+                CreateBLEPeripheralServerOption = CreateBLEPeripheralServerOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, CreateBLEPeripheralServerOption>;
@@ -15027,7 +15036,8 @@ wx.createBLEConnection({
          *
          * 最低基础库： `2.1.0` */
         getAvailableAudioSources<
-            T extends GetAvailableAudioSourcesOption = GetAvailableAudioSourcesOption,
+            T extends
+                GetAvailableAudioSourcesOption = GetAvailableAudioSourcesOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, GetAvailableAudioSourcesOption>;
@@ -15053,7 +15063,8 @@ wx.getBLEDeviceCharacteristics({
 *
 * 最低基础库： `1.1.0` */
         getBLEDeviceCharacteristics<
-            T extends GetBLEDeviceCharacteristicsOption = GetBLEDeviceCharacteristicsOption,
+            T extends
+                GetBLEDeviceCharacteristicsOption = GetBLEDeviceCharacteristicsOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, GetBLEDeviceCharacteristicsOption>;
@@ -15112,7 +15123,8 @@ wx.getBackgroundAudioPlayerState({
 * @deprecated 基础库版本 [1.2.0](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) 起已废弃，请使用 [wx.getBackgroundAudioManager](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.getBackgroundAudioManager.html) 替换
 *  */
         getBackgroundAudioPlayerState<
-            T extends GetBackgroundAudioPlayerStateOption = GetBackgroundAudioPlayerStateOption,
+            T extends
+                GetBackgroundAudioPlayerStateOption = GetBackgroundAudioPlayerStateOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, GetBackgroundAudioPlayerStateOption>;
@@ -15122,7 +15134,8 @@ wx.getBackgroundAudioPlayerState({
          *
          * 最低基础库： `2.8.0` */
         getBackgroundFetchData<
-            T extends GetBackgroundFetchDataOption = GetBackgroundFetchDataOption,
+            T extends
+                GetBackgroundFetchDataOption = GetBackgroundFetchDataOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, GetBackgroundFetchDataOption>;
@@ -15132,7 +15145,8 @@ wx.getBackgroundAudioPlayerState({
          *
          * 最低基础库： `2.8.0` */
         getBackgroundFetchToken<
-            T extends GetBackgroundFetchTokenOption = GetBackgroundFetchTokenOption,
+            T extends
+                GetBackgroundFetchTokenOption = GetBackgroundFetchTokenOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, GetBackgroundFetchTokenOption>;
@@ -15168,7 +15182,8 @@ wx.getBluetoothAdapterState({
 *
 * 最低基础库： `1.1.0` */
         getBluetoothAdapterState<
-            T extends GetBluetoothAdapterStateOption = GetBluetoothAdapterStateOption,
+            T extends
+                GetBluetoothAdapterStateOption = GetBluetoothAdapterStateOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, GetBluetoothAdapterStateOption>;
@@ -15259,7 +15274,8 @@ wx.getConnectedBluetoothDevices({
 *
 * 最低基础库： `1.1.0` */
         getConnectedBluetoothDevices<
-            T extends GetConnectedBluetoothDevicesOption = GetConnectedBluetoothDevicesOption,
+            T extends
+                GetConnectedBluetoothDevicesOption = GetConnectedBluetoothDevicesOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, GetConnectedBluetoothDevicesOption>;
@@ -16023,7 +16039,8 @@ wx.hideKeyboard({
          *
          * 在当前页面隐藏导航条加载动画 */
         hideNavigationBarLoading<
-            T extends HideNavigationBarLoadingOption = HideNavigationBarLoadingOption,
+            T extends
+                HideNavigationBarLoadingOption = HideNavigationBarLoadingOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, HideNavigationBarLoadingOption>;
@@ -16189,7 +16206,8 @@ wx.navigateBackMiniProgram({
 *
 * 最低基础库： `1.3.0` */
         navigateBackMiniProgram<
-            T extends NavigateBackMiniProgramOption = NavigateBackMiniProgramOption,
+            T extends
+                NavigateBackMiniProgramOption = NavigateBackMiniProgramOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, NavigateBackMiniProgramOption>;
@@ -16352,7 +16370,8 @@ wx.notifyBLECharacteristicValueChange({
 *
 * 最低基础库： `1.1.0` */
         notifyBLECharacteristicValueChange<
-            T extends NotifyBLECharacteristicValueChangeOption = NotifyBLECharacteristicValueChangeOption,
+            T extends
+                NotifyBLECharacteristicValueChangeOption = NotifyBLECharacteristicValueChangeOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, NotifyBLECharacteristicValueChangeOption>;
@@ -17599,7 +17618,8 @@ wx.readBLECharacteristicValue({
 *
 * 最低基础库： `1.1.0` */
         readBLECharacteristicValue<
-            T extends ReadBLECharacteristicValueOption = ReadBLECharacteristicValueOption,
+            T extends
+                ReadBLECharacteristicValueOption = ReadBLECharacteristicValueOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, ReadBLECharacteristicValueOption>;
@@ -17911,7 +17931,8 @@ wx.requestSubscribeMessage({
 *
 * 最低基础库： `2.4.4` */
         requestSubscribeMessage<
-            T extends RequestSubscribeMessageOption = RequestSubscribeMessageOption,
+            T extends
+                RequestSubscribeMessageOption = RequestSubscribeMessageOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, RequestSubscribeMessageOption>;
@@ -17988,7 +18009,8 @@ wx.saveImageToPhotosAlbum({
 *
 * 最低基础库： `1.2.0` */
         saveImageToPhotosAlbum<
-            T extends SaveImageToPhotosAlbumOption = SaveImageToPhotosAlbumOption,
+            T extends
+                SaveImageToPhotosAlbumOption = SaveImageToPhotosAlbumOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, SaveImageToPhotosAlbumOption>;
@@ -18010,7 +18032,8 @@ wx.saveVideoToPhotosAlbum({
 *
 * 最低基础库： `1.2.0` */
         saveVideoToPhotosAlbum<
-            T extends SaveVideoToPhotosAlbumOption = SaveVideoToPhotosAlbumOption,
+            T extends
+                SaveVideoToPhotosAlbumOption = SaveVideoToPhotosAlbumOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, SaveVideoToPhotosAlbumOption>;
@@ -18171,7 +18194,8 @@ wx.setBackgroundColor({
          *
          * 最低基础库： `2.8.0` */
         setBackgroundFetchToken<
-            T extends SetBackgroundFetchTokenOption = SetBackgroundFetchTokenOption,
+            T extends
+                SetBackgroundFetchTokenOption = SetBackgroundFetchTokenOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, SetBackgroundFetchTokenOption>;
@@ -18190,7 +18214,8 @@ wx.setBackgroundTextStyle({
 *
 * 最低基础库： `2.1.0` */
         setBackgroundTextStyle<
-            T extends SetBackgroundTextStyleOption = SetBackgroundTextStyleOption,
+            T extends
+                SetBackgroundTextStyleOption = SetBackgroundTextStyleOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, SetBackgroundTextStyleOption>;
@@ -18609,7 +18634,8 @@ wx.showModal({
          *
          * 在当前页面显示导航条加载动画 */
         showNavigationBarLoading<
-            T extends ShowNavigationBarLoadingOption = ShowNavigationBarLoadingOption,
+            T extends
+                ShowNavigationBarLoadingOption = ShowNavigationBarLoadingOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, ShowNavigationBarLoadingOption>;
@@ -18760,7 +18786,8 @@ wx.startBluetoothDevicesDiscovery({
 *
 * 最低基础库： `1.1.0` */
         startBluetoothDevicesDiscovery<
-            T extends StartBluetoothDevicesDiscoveryOption = StartBluetoothDevicesDiscoveryOption,
+            T extends
+                StartBluetoothDevicesDiscoveryOption = StartBluetoothDevicesDiscoveryOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, StartBluetoothDevicesDiscoveryOption>;
@@ -18785,7 +18812,8 @@ wx.startCompass()
          *
          * 最低基础库： `2.3.0` */
         startDeviceMotionListening<
-            T extends StartDeviceMotionListeningOption = StartDeviceMotionListeningOption,
+            T extends
+                StartDeviceMotionListeningOption = StartDeviceMotionListeningOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, StartDeviceMotionListeningOption>;
@@ -18828,7 +18856,8 @@ wx.startHCE({
          *
          * 最低基础库： `2.4.0` */
         startLocalServiceDiscovery<
-            T extends StartLocalServiceDiscoveryOption = StartLocalServiceDiscoveryOption,
+            T extends
+                StartLocalServiceDiscoveryOption = StartLocalServiceDiscoveryOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, StartLocalServiceDiscoveryOption>;
@@ -18858,7 +18887,8 @@ wx.startHCE({
          *
          * 最低基础库： `2.8.0` */
         startLocationUpdateBackground<
-            T extends StartLocationUpdateBackgroundOption = StartLocationUpdateBackgroundOption,
+            T extends
+                StartLocationUpdateBackgroundOption = StartLocationUpdateBackgroundOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, StartLocationUpdateBackgroundOption>;
@@ -18951,7 +18981,8 @@ wx.startSoterAuthentication({
 *
 * 最低基础库： `1.5.0` */
         startSoterAuthentication<
-            T extends StartSoterAuthenticationOption = StartSoterAuthenticationOption,
+            T extends
+                StartSoterAuthenticationOption = StartSoterAuthenticationOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, StartSoterAuthenticationOption>;
@@ -19037,7 +19068,8 @@ wx.stopBluetoothDevicesDiscovery({
 *
 * 最低基础库： `1.1.0` */
         stopBluetoothDevicesDiscovery<
-            T extends StopBluetoothDevicesDiscoveryOption = StopBluetoothDevicesDiscoveryOption,
+            T extends
+                StopBluetoothDevicesDiscoveryOption = StopBluetoothDevicesDiscoveryOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, StopBluetoothDevicesDiscoveryOption>;
@@ -19062,7 +19094,8 @@ wx.stopCompass()
          *
          * 最低基础库： `2.3.0` */
         stopDeviceMotionListening<
-            T extends StopDeviceMotionListeningOption = StopDeviceMotionListeningOption,
+            T extends
+                StopDeviceMotionListeningOption = StopDeviceMotionListeningOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, StopDeviceMotionListeningOption>;
@@ -19099,7 +19132,8 @@ wx.stopHCE({
          *
          * 最低基础库： `2.4.0` */
         stopLocalServiceDiscovery<
-            T extends StopLocalServiceDiscoveryOption = StopLocalServiceDiscoveryOption,
+            T extends
+                StopLocalServiceDiscoveryOption = StopLocalServiceDiscoveryOption,
         >(
             option?: T,
         ): PromisifySuccessResult<T, StopLocalServiceDiscoveryOption>;
@@ -19205,7 +19239,8 @@ wx.stopWifi({
          *
          * 最低基础库： `2.11.0` */
         subscribeVoIPVideoMembers<
-            T extends SubscribeVoIPVideoMembersOption = SubscribeVoIPVideoMembersOption,
+            T extends
+                SubscribeVoIPVideoMembersOption = SubscribeVoIPVideoMembersOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, SubscribeVoIPVideoMembersOption>;
@@ -19275,7 +19310,8 @@ wx.updateShareMenu({
          *
          * 最低基础库： `2.7.0` */
         updateVoIPChatMuteConfig<
-            T extends UpdateVoIPChatMuteConfigOption = UpdateVoIPChatMuteConfigOption,
+            T extends
+                UpdateVoIPChatMuteConfigOption = UpdateVoIPChatMuteConfigOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, UpdateVoIPChatMuteConfigOption>;
@@ -19344,7 +19380,8 @@ wx.writeBLECharacteristicValue({
 *
 * 最低基础库： `1.1.0` */
         writeBLECharacteristicValue<
-            T extends WriteBLECharacteristicValueOption = WriteBLECharacteristicValueOption,
+            T extends
+                WriteBLECharacteristicValueOption = WriteBLECharacteristicValueOption,
         >(
             option: T,
         ): PromisifySuccessResult<T, WriteBLECharacteristicValueOption>;
@@ -19365,7 +19402,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type AddCardFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type AddCardSuccessCallback = (result: AddCardSuccessCallbackResult) => void;
+    type AddCardSuccessCallback = (
+        result: AddCardSuccessCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type AddCustomLayerCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -19383,7 +19422,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type AddGroundOverlayCompleteCallback = (res: GeneralCallbackResult) => void;
+    type AddGroundOverlayCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type AddGroundOverlayFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -19395,7 +19436,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用成功的回调函数 */
     type AddMarkersSuccessCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type AddPhoneCalendarCompleteCallback = (res: GeneralCallbackResult) => void;
+    type AddPhoneCalendarCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type AddPhoneCalendarFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -19437,7 +19480,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type AppendFileCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
-    type AppendFileFailCallback = (result: AppendFileFailCallbackResult) => void;
+    type AppendFileFailCallback = (
+        result: AppendFileFailCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type AppendFileSuccessCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
@@ -19515,7 +19560,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type CanvasToTempFilePathFailCallback = (res: GeneralCallbackResult) => void;
+    type CanvasToTempFilePathFailCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type CanvasToTempFilePathSuccessCallback = (
         result: CanvasToTempFilePathSuccessCallbackResult,
@@ -19798,7 +19845,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type ExitPictureInPictureFailCallback = (res: GeneralCallbackResult) => void;
+    type ExitPictureInPictureFailCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type ExitPictureInPictureSuccessCallback = (
         res: GeneralCallbackResult,
@@ -19873,7 +19922,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type GetAtqaFailCallback = (res: Nfcrwerror) => void;
     /** 接口调用成功的回调函数 */
-    type GetAtqaSuccessCallback = (result: GetAtqaSuccessCallbackResult) => void;
+    type GetAtqaSuccessCallback = (
+        result: GetAtqaSuccessCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type GetAvailableAudioSourcesCompleteCallback = (
         res: GeneralCallbackResult,
@@ -19891,13 +19942,17 @@ wx.writeBLECharacteristicValue({
         res: BluetoothError,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type GetBLEDeviceCharacteristicsFailCallback = (res: BluetoothError) => void;
+    type GetBLEDeviceCharacteristicsFailCallback = (
+        res: BluetoothError,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type GetBLEDeviceCharacteristicsSuccessCallback = (
         result: GetBLEDeviceCharacteristicsSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetBLEDeviceRSSICompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetBLEDeviceRSSICompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetBLEDeviceRSSIFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20003,7 +20058,9 @@ wx.writeBLECharacteristicValue({
         result: GetChannelsLiveInfoSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetClipboardDataCompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetClipboardDataCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetClipboardDataFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20081,7 +20138,9 @@ wx.writeBLECharacteristicValue({
         result: GetImageInfoSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetLatestUserKeyCompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetLatestUserKeyCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetLatestUserKeyFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20143,7 +20202,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用成功的回调函数 */
     type GetSakSuccessCallback = (result: GetSakSuccessCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetSavedFileInfoCompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetSavedFileInfoCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetSavedFileInfoFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20151,7 +20212,9 @@ wx.writeBLECharacteristicValue({
         result: GetSavedFileInfoSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetSavedFileListCompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetSavedFileListCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetSavedFileListFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
@@ -20177,13 +20240,17 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type GetSelectedTextRangeFailCallback = (res: GeneralCallbackResult) => void;
+    type GetSelectedTextRangeFailCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type GetSelectedTextRangeSuccessCallback = (
         result: GetSelectedTextRangeSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type GetSelectionTextCompleteCallback = (res: GeneralCallbackResult) => void;
+    type GetSelectionTextCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type GetSelectionTextFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20211,7 +20278,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type GetSkewFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type GetSkewSuccessCallback = (result: GetSkewSuccessCallbackResult) => void;
+    type GetSkewSuccessCallback = (
+        result: GetSkewSuccessCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type GetStorageCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -20321,7 +20390,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type HideTabBarFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type HideTabBarRedDotCompleteCallback = (res: GeneralCallbackResult) => void;
+    type HideTabBarRedDotCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type HideTabBarRedDotFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -20347,7 +20418,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type InitMarkerClusterFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type InitMarkerClusterSuccessCallback = (res: GeneralCallbackResult) => void;
+    type InitMarkerClusterSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 音频播放错误事件的回调函数 */
     type InnerAudioContextOffErrorCallback = (
         result: InnerAudioContextOnErrorCallbackResult,
@@ -20434,7 +20507,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type MakeBluetoothPairFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type MakeBluetoothPairSuccessCallback = (res: GeneralCallbackResult) => void;
+    type MakeBluetoothPairSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type MakePhoneCallCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -20648,7 +20723,9 @@ wx.writeBLECharacteristicValue({
     /** 小程序切前台事件的回调函数 */
     type OnAppShowCallback = (result: OnAppShowCallbackResult) => void;
     /** 音频因为受到系统占用而被中断开始事件的回调函数 */
-    type OnAudioInterruptionBeginCallback = (res: GeneralCallbackResult) => void;
+    type OnAudioInterruptionBeginCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 音频中断结束事件的回调函数 */
     type OnAudioInterruptionEndCallback = (res: GeneralCallbackResult) => void;
     /** 低功耗蓝牙设备的特征值变化事件的回调函数 */
@@ -20678,7 +20755,9 @@ wx.writeBLECharacteristicValue({
         result: OnBeaconServiceChangeCallbackResult,
     ) => void;
     /** iBeacon 设备更新事件的回调函数 */
-    type OnBeaconUpdateCallback = (result: OnBeaconUpdateCallbackResult) => void;
+    type OnBeaconUpdateCallback = (
+        result: OnBeaconUpdateCallbackResult,
+    ) => void;
     /** 蓝牙适配器状态变化事件的回调函数 */
     type OnBluetoothAdapterStateChangeCallback = (
         result: OnBluetoothAdapterStateChangeCallbackResult,
@@ -20784,7 +20863,9 @@ wx.writeBLECharacteristicValue({
     /** WebSocket 连接打开事件的回调函数 */
     type OnOpenCallback = (result: OnOpenCallbackResult) => void;
     /** 小程序要打开的页面不存在事件的回调函数 */
-    type OnPageNotFoundCallback = (result: OnPageNotFoundCallbackResult) => void;
+    type OnPageNotFoundCallback = (
+        result: OnPageNotFoundCallbackResult,
+    ) => void;
     type OnPauseCallback = (res: GeneralCallbackResult) => void;
     type OnPlayCallback = (res: GeneralCallbackResult) => void;
     /** 用户在系统音乐播放面板点击上一曲事件的回调函数 */
@@ -20851,7 +20932,9 @@ wx.writeBLECharacteristicValue({
         result: OnWifiConnectedCallbackResult,
     ) => void;
     /** 窗口尺寸变化事件的回调函数 */
-    type OnWindowResizeCallback = (result: OnWindowResizeCallbackResult) => void;
+    type OnWindowResizeCallback = (
+        result: OnWindowResizeCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type OpenBluetoothAdapterCompleteCallback = (res: BluetoothError) => void;
     /** 接口调用失败的回调函数 */
@@ -20921,7 +21004,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type PauseBackgroundAudioFailCallback = (res: GeneralCallbackResult) => void;
+    type PauseBackgroundAudioFailCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type PauseBackgroundAudioSuccessCallback = (
         res: GeneralCallbackResult,
@@ -21011,7 +21096,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type ReadZipEntryCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
-    type ReadZipEntryFailCallback = (result: ReadFileFailCallbackResult) => void;
+    type ReadZipEntryFailCallback = (
+        result: ReadFileFailCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type ReadZipEntrySuccessCallback = (
         result: ReadZipEntrySuccessCallbackResult,
@@ -21021,7 +21108,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type ReaddirFailCallback = (result: ReaddirFailCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type ReaddirSuccessCallback = (result: ReaddirSuccessCallbackResult) => void;
+    type ReaddirSuccessCallback = (
+        result: ReaddirSuccessCallbackResult,
+    ) => void;
     /** 录音结束事件的回调函数 */
     type RecorderManagerOnStopCallback = (result: OnStopCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
@@ -21043,7 +21132,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type RemoveCustomLayerFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type RemoveCustomLayerSuccessCallback = (res: GeneralCallbackResult) => void;
+    type RemoveCustomLayerSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type RemoveFormatCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -21089,7 +21180,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type RemoveTabBarBadgeFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type RemoveTabBarBadgeSuccessCallback = (res: GeneralCallbackResult) => void;
+    type RemoveTabBarBadgeSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type RenameCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -21107,7 +21200,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type RequestFullScreenFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type RequestFullScreenSuccessCallback = (res: GeneralCallbackResult) => void;
+    type RequestFullScreenSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type RequestOrderPaymentCompleteCallback = (
         res: GeneralCallbackResult,
@@ -21276,7 +21371,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type SendSocketMessageFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type SendSocketMessageSuccessCallback = (res: GeneralCallbackResult) => void;
+    type SendSocketMessageSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type SendSuccessCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
@@ -21332,7 +21429,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用成功的回调函数 */
     type SetCenterOffsetSuccessCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type SetClipboardDataCompleteCallback = (res: GeneralCallbackResult) => void;
+    type SetClipboardDataCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type SetClipboardDataFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -21366,7 +21465,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用成功的回调函数 */
     type SetKeepScreenOnSuccessCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type SetLocMarkerIconCompleteCallback = (res: GeneralCallbackResult) => void;
+    type SetLocMarkerIconCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type SetLocMarkerIconFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -21464,9 +21565,13 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type SetZoomFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type SetZoomSuccessCallback = (result: SetZoomSuccessCallbackResult) => void;
+    type SetZoomSuccessCallback = (
+        result: SetZoomSuccessCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type ShareFileMessageCompleteCallback = (res: GeneralCallbackResult) => void;
+    type ShareFileMessageCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type ShareFileMessageFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -21484,7 +21589,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type ShareVideoMessageFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type ShareVideoMessageSuccessCallback = (res: GeneralCallbackResult) => void;
+    type ShareVideoMessageSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type ShowActionSheetCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -21546,7 +21653,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type ShowTabBarFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type ShowTabBarRedDotCompleteCallback = (res: GeneralCallbackResult) => void;
+    type ShowTabBarRedDotCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type ShowTabBarRedDotFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -21584,7 +21693,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type StartAdvertisingCompleteCallback = (res: GeneralCallbackResult) => void;
+    type StartAdvertisingCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type StartAdvertisingFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -21692,7 +21803,9 @@ wx.writeBLECharacteristicValue({
         res: GeneralCallbackResult,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type StartPullDownRefreshFailCallback = (res: GeneralCallbackResult) => void;
+    type StartPullDownRefreshFailCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type StartPullDownRefreshSuccessCallback = (
         res: GeneralCallbackResult,
@@ -21738,7 +21851,9 @@ wx.writeBLECharacteristicValue({
     /** 接口调用失败的回调函数 */
     type StopAccelerometerFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
-    type StopAccelerometerSuccessCallback = (res: GeneralCallbackResult) => void;
+    type StopAccelerometerSuccessCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     type StopAdvertisingCompleteCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用失败的回调函数 */
@@ -21916,7 +22031,9 @@ wx.writeBLECharacteristicValue({
         result: TakePhotoSuccessCallbackResult,
     ) => void;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
-    type ToScreenLocationCompleteCallback = (res: GeneralCallbackResult) => void;
+    type ToScreenLocationCompleteCallback = (
+        res: GeneralCallbackResult,
+    ) => void;
     /** 接口调用失败的回调函数 */
     type ToScreenLocationFailCallback = (res: GeneralCallbackResult) => void;
     /** 接口调用成功的回调函数 */
@@ -22054,7 +22171,9 @@ wx.writeBLECharacteristicValue({
         res: BluetoothError,
     ) => void;
     /** 接口调用失败的回调函数 */
-    type WriteBLECharacteristicValueFailCallback = (res: BluetoothError) => void;
+    type WriteBLECharacteristicValueFailCallback = (
+        res: BluetoothError,
+    ) => void;
     /** 接口调用成功的回调函数 */
     type WriteBLECharacteristicValueSuccessCallback = (
         res: BluetoothError,

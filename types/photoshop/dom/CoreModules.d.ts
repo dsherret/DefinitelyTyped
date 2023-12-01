@@ -9,7 +9,10 @@ import {
     RGBColorDescriptor,
 } from "../util/colorTypes";
 /** @ignore */
-declare type NotificationListener = (name: string, descriptor: ActionDescriptor) => void;
+declare type NotificationListener = (
+    name: string,
+    descriptor: ActionDescriptor,
+) => void;
 /** @ignore */
 export interface ActionReference {
     [index: string]: number | string;
@@ -245,7 +248,10 @@ export declare namespace photoshopAction {
      * ```
      * @minVersion 23.0
      */
-    function addNotificationListener(events: string[], notifier: NotificationListener): Promise<void>;
+    function addNotificationListener(
+        events: string[],
+        notifier: NotificationListener,
+    ): Promise<void>;
     /**
      * Detaches a listener from a Photoshop event.
      * See [addNotificationListener](#addNotificationListener)
@@ -254,7 +260,10 @@ export declare namespace photoshopAction {
      * ```
      * @minVersion 23.0
      */
-    function removeNotificationListener(events: string[], notifier: NotificationListener): Promise<void>;
+    function removeNotificationListener(
+        events: string[],
+        notifier: NotificationListener,
+    ): Promise<void>;
     /**
      * Synchronously validates the given action reference, returning true if it still
      * exists. For example, calling this with a closed document would return false.
@@ -278,7 +287,9 @@ export declare namespace photoshopAction {
      *
      * @minVersion 23.1
      */
-    function validateReference(ref: ActionReference | ActionReference[]): boolean;
+    function validateReference(
+        ref: ActionReference | ActionReference[],
+    ): boolean;
     /**
      * Return the identifier number assigned to an action string value.
      * If the string is not already registered, a new ID will be created and returned.
@@ -327,7 +338,9 @@ export declare namespace photoshopCore {
      * @minVersion 22.5
      * @async
      */
-    function performMenuCommand(options: MenuCommandOptions): Promise<PerformMenuCommandResult>;
+    function performMenuCommand(
+        options: MenuCommandOptions,
+    ): Promise<PerformMenuCommandResult>;
     /**
      * Returns whether a command menu item is available for invoking.
      * ```javascript
@@ -337,7 +350,9 @@ export declare namespace photoshopCore {
      * @minVersion 22.5
      * @async
      */
-    function getMenuCommandState(options: MenuCommandOptions): Promise<[boolean]>;
+    function getMenuCommandState(
+        options: MenuCommandOptions,
+    ): Promise<[boolean]>;
     /**
      * Returns the localized menu title of the menu command item.
      * ```javascript
@@ -423,9 +438,11 @@ export declare namespace photoshopCore {
      * @async
      */
     function showAlert(
-        options: string | {
-            message: string;
-        },
+        options:
+            | string
+            | {
+                  message: string;
+              },
     ): Promise<void>;
     /**
      * Returns the effective size of a dialog.
@@ -466,7 +483,10 @@ export declare namespace photoshopCore {
      * @async
      */
     function executeAsModal<T>(
-        targetFunction: (executionContext: ExecutionContext, descriptor?: object) => Promise<T>,
+        targetFunction: (
+            executionContext: ExecutionContext,
+            descriptor?: object,
+        ) => Promise<T>,
         options: ExecuteAsModalOptions,
     ): Promise<T>;
     /**
@@ -490,12 +510,18 @@ export declare namespace photoshopCore {
      * Convert to Lab
      * @minVersion 23.0
      */
-    function convertColor(sourceColor: ColorDescriptor, targetModel: ColorConversionModel.Lab): LabColorDescriptor;
+    function convertColor(
+        sourceColor: ColorDescriptor,
+        targetModel: ColorConversionModel.Lab,
+    ): LabColorDescriptor;
     /**
      * Convert to HSB
      * @minVersion 23.0
      */
-    function convertColor(sourceColor: ColorDescriptor, targetModel: ColorConversionModel.HSB): HSBColorDescriptor;
+    function convertColor(
+        sourceColor: ColorDescriptor,
+        targetModel: ColorConversionModel.HSB,
+    ): HSBColorDescriptor;
     /**
      * Convert to Grayscale
      * @minVersion 23.0
@@ -508,7 +534,10 @@ export declare namespace photoshopCore {
      * Convert to CMYK
      * @minVersion 23.0
      */
-    function convertColor(sourceColor: ColorDescriptor, targetModel: ColorConversionModel.CMYK): CMYKColorDescriptor;
+    function convertColor(
+        sourceColor: ColorDescriptor,
+        targetModel: ColorConversionModel.CMYK,
+    ): CMYKColorDescriptor;
     /**
      * The execution mode can be used while debugging a plugin. It is only available
      * when the developer mode is enabled.
@@ -569,7 +598,11 @@ export declare namespace photoshopCore {
      * @minVersion 23.3
      * @async
      */
-    function addNotificationListener(group: string, events: string[], notifier: NotificationListener): Promise<void>;
+    function addNotificationListener(
+        group: string,
+        events: string[],
+        notifier: NotificationListener,
+    ): Promise<void>;
     /**
      * Specifies the number of seconds a user must be idle on Photoshop before invoking the
      * userIdle event handler defined with [[addNotificationListener]]. An idleTime of 0
@@ -585,11 +618,15 @@ export declare namespace photoshopCore {
      * Changes visibility of resize gripper in bottom right corner of panel. This can be useful when resize gripper
      * is obstructing the view o panel content.
      */
-    function suppressResizeGripper(options: SuppressResizeGripperOptions): Promise<void>;
+    function suppressResizeGripper(
+        options: SuppressResizeGripperOptions,
+    ): Promise<void>;
     /**
      * Returns display configuration with information about each display
      */
-    function getDisplayConfiguration(options: DisplayConfigurationOptions): Promise<DisplayConfiguration[]>;
+    function getDisplayConfiguration(
+        options: DisplayConfigurationOptions,
+    ): Promise<DisplayConfiguration[]>;
     /**
      * Gets the number of seconds a user must be idle on Photoshop before invoking the
      * userIdle event handler defined with [[addNotificationListener]]. An idleTime of 0
@@ -647,12 +684,14 @@ interface GetLayerParentOptions {
 /**
  * @targetfolder objects/returnobjects
  */
-export declare type GetLayerParentResult = {} | {
-    index: number;
-    layerID: number;
-    layerKind: number;
-    name: string;
-};
+export declare type GetLayerParentResult =
+    | {}
+    | {
+          index: number;
+          layerID: number;
+          layerKind: number;
+          name: string;
+      };
 export interface DisplayConfigurationOptions {
     physicalResolution?: boolean;
 }
@@ -855,14 +894,19 @@ export interface ExecutionContext {
          * Call to suspend history on a target document, returns the suspension ID which can be used for resumeHistory.
          * @minVersion 23.0
          */
-        suspendHistory: (params: HistoryStateInfo) => Promise<HistorySuspension>;
+        suspendHistory: (
+            params: HistoryStateInfo,
+        ) => Promise<HistorySuspension>;
         /**
          * Call to resume history on a target document.
          * commit (optional): if false, the current modified document state is dropped, and the document returns to
          * the state when `suspendHistory` was invoked.
          * @minVersion 23.0
          */
-        resumeHistory: (params: ResumeHistorySuspensionOptions, commit?: boolean) => Promise<void>;
+        resumeHistory: (
+            params: ResumeHistorySuspensionOptions,
+            commit?: boolean,
+        ) => Promise<void>;
         /**
          * Register a document to be closed when the modal scope exits.
          * @param documentID

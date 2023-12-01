@@ -53,7 +53,9 @@ resource.add(SamplePackage);
 
 // EList find
 
-resource.eClass.get("AllStructuralFeatures").find((eObj: Ecore.EObject) => eObj.get("name") === "");
+resource.eClass
+    .get("AllStructuralFeatures")
+    .find((eObj: Ecore.EObject) => eObj.get("name") === "");
 
 // Resource
 

@@ -12,7 +12,9 @@ import {
     splitKanaString,
 } from "jskana";
 
-hiraganaToKatakana("「うまい もも こっちゃ こい。 にがい もも あっちゃ いけ。」 と いったら、 "); // $ExpectType string
+hiraganaToKatakana(
+    "「うまい もも こっちゃ こい。 にがい もも あっちゃ いけ。」 と いったら、 ",
+); // $ExpectType string
 isHiragana("かに さん。 にぎりめし より"); // $ExpectType boolean
 isKanji("日一大年中"); // $ExpectType boolean
 isKatakana("アメリカ XYZ"); // $ExpectType boolean

@@ -9,4 +9,9 @@ export interface Header {
 
 export type ArrowSize = number;
 export type DXFHeaderPropertyType = 10 | 20 | 30 | 40 | 70;
-export type DXFHeaderPropertyValue = "$MEASUREMENT" | "$INSUNITS" | "$EXTMIN" | "$EXTMAX" | "$DIMASZ";
+export type DXFHeaderPropertyValue =
+    | "$MEASUREMENT"
+    | "$INSUNITS"
+    | "$EXTMIN"
+    | "$EXTMAX"
+    | "$DIMASZ";

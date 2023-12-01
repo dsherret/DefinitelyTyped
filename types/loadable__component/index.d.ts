@@ -4,7 +4,9 @@ export interface DefaultImportedComponent<Props> {
     default: React.ComponentType<Props>;
 }
 
-export type DefaultComponent<Props> = React.ComponentType<Props> | DefaultImportedComponent<Props>;
+export type DefaultComponent<Props> =
+    | React.ComponentType<Props>
+    | DefaultImportedComponent<Props>;
 
 /**
  * Synchronous function that returns the component from the
@@ -23,11 +25,13 @@ export interface OptionsWithoutResolver<Props> {
     ssr?: boolean | undefined;
 }
 
-export interface Options<Props, Module = DefaultComponent<Props>> extends OptionsWithoutResolver<Props> {
+export interface Options<Props, Module = DefaultComponent<Props>>
+    extends OptionsWithoutResolver<Props> {
     resolveComponent?: ComponentResolver<Props, Module> | undefined;
 }
 
-export interface OptionsWithResolver<Props, Module = DefaultComponent<Props>> extends OptionsWithoutResolver<Props> {
+export interface OptionsWithResolver<Props, Module = DefaultComponent<Props>>
+    extends OptionsWithoutResolver<Props> {
     resolveComponent: ComponentResolver<Props, Module>;
 }
 
@@ -44,28 +48,30 @@ export interface ExtraComponentProps {
     fallback?: JSX.Element | undefined;
 }
 
-export type LoadableComponent<Props> =
-    & React.ComponentType<Props & ExtraComponentProps>
-    & LoadableComponentMethods<Props>;
+export type LoadableComponent<Props> = React.ComponentType<
+    Props & ExtraComponentProps
+> &
+    LoadableComponentMethods<Props>;
 
-export interface ExtraClassComponentProps<Component extends React.ComponentClass> extends ExtraComponentProps {
+export interface ExtraClassComponentProps<
+    Component extends React.ComponentClass,
+> extends ExtraComponentProps {
     ref?: React.LegacyRef<InstanceType<Component>> | undefined;
 }
 
 export type LoadableClassComponent<Component extends React.ComponentClass> =
-    & React.ComponentType<
+    React.ComponentType<
         React.ComponentProps<Component> & ExtraClassComponentProps<Component>
-    >
-    & LoadableComponentMethods<React.ComponentProps<Component>>;
+    > &
+        LoadableComponentMethods<React.ComponentProps<Component>>;
 
-export type LoadableLibrary<Module> =
-    & React.ComponentType<{
-        fallback?: JSX.Element | undefined;
-        children?: ((module: Module) => React.ReactNode) | undefined;
-        ref?: React.Ref<Module> | undefined;
-    }>
-    & Module
-    & LoadableComponentMethods<object>;
+export type LoadableLibrary<Module> = React.ComponentType<{
+    fallback?: JSX.Element | undefined;
+    children?: ((module: Module) => React.ReactNode) | undefined;
+    ref?: React.Ref<Module> | undefined;
+}> &
+    Module &
+    LoadableComponentMethods<object>;
 
 declare function lib<Props, Module>(
     loadFn: (props: Props) => Promise<Module>,
@@ -83,7 +89,9 @@ declare function loadableFunc<Props>(
 ): LoadableComponent<Props>;
 
 declare function loadableFunc<Component extends React.ComponentClass<any>>(
-    loadFn: (props: React.ComponentProps<Component>) => Promise<Component | { default: Component }>,
+    loadFn: (
+        props: React.ComponentProps<Component>,
+    ) => Promise<Component | { default: Component }>,
     options?: Options<React.ComponentProps<Component>, Component>,
 ): LoadableClassComponent<Component>;
 
@@ -92,9 +100,16 @@ declare const loadable: typeof loadableFunc & { lib: typeof lib };
 export default loadable;
 
 export namespace lazy {
-    function lib<Module>(loadFn: (props: object) => Promise<Module>): LoadableLibrary<Module>;
+    function lib<Module>(
+        loadFn: (props: object) => Promise<Module>,
+    ): LoadableLibrary<Module>;
 }
 
-export function lazy<Props>(loadFn: (props: Props) => Promise<DefaultComponent<Props>>): LoadableComponent<Props>;
+export function lazy<Props>(
+    loadFn: (props: Props) => Promise<DefaultComponent<Props>>,
+): LoadableComponent<Props>;
 
-export function loadableReady(done?: () => any, options?: LoadableReadyOptions): Promise<void>;
+export function loadableReady(
+    done?: () => any,
+    options?: LoadableReadyOptions,
+): Promise<void>;

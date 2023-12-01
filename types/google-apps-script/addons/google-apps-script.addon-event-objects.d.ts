@@ -18,7 +18,11 @@ declare namespace GoogleAppsScript {
             slides?: SlidesEventObject | undefined;
         }
 
-        type InvitationResponseStatus = "accepted" | "declined" | "needsAction" | "tentative";
+        type InvitationResponseStatus =
+            | "accepted"
+            | "declined"
+            | "needsAction"
+            | "tentative";
 
         /**
          * @summary Object with information on individual attendees to Calendar events
@@ -162,7 +166,13 @@ declare namespace GoogleAppsScript {
         }
 
         type Platform = "WEB" | "IOS" | "ANDROID";
-        type HostApplication = "GMAIL" | "CALENDAR" | "DRIVE" | "DOCS" | "SHEETS" | "SLIDES";
+        type HostApplication =
+            | "GMAIL"
+            | "CALENDAR"
+            | "DRIVE"
+            | "DOCS"
+            | "SHEETS"
+            | "SLIDES";
 
         /**
          * @summary Event object with host-independent information
@@ -170,10 +180,12 @@ declare namespace GoogleAppsScript {
          */
         interface CommonEventObject {
             userLocale?: string | undefined;
-            timeZone?: {
-                id: string;
-                offset: string;
-            } | undefined;
+            timeZone?:
+                | {
+                      id: string;
+                      offset: string;
+                  }
+                | undefined;
             platform: Platform;
             parameters: { [key: string]: string };
             hostApp: HostApplication;

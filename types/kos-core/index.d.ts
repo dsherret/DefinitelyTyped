@@ -3,7 +3,10 @@ import * as React from "react";
 type ReactComponent<P = any, S = any> = React.ComponentClass<P, S>;
 
 interface Util {
-    getActionType: (action: string) => { namespace: string | null; type: string };
+    getActionType: (action: string) => {
+        namespace: string | null;
+        type: string;
+    };
     getParam: () => any;
 }
 
@@ -16,7 +19,7 @@ interface WrapperConfig {
 
 interface Action<T = any> {
     type: string;
-    payload?: Partial<T> & { [x: string]: any } | undefined;
+    payload?: (Partial<T> & { [x: string]: any }) | undefined;
 }
 
 export interface KosProps<T = any> {
@@ -36,15 +39,23 @@ export interface KosModel<T = any> {
         [key: string]: (state: T, { payload }: { payload: T }) => void;
     };
     asyncs: {
-        [key: string]: (dispatch?: KosDispatch, getState?: GetKosState<T>, action?: { payload: T }) => void;
+        [key: string]: (
+            dispatch?: KosDispatch,
+            getState?: GetKosState<T>,
+            action?: { payload: T },
+        ) => void;
     };
     setup?:
-        | ((dispatch: KosDispatch, getState: GetKosState<T>, action: { payload: { param: any } }) => void)
+        | ((
+              dispatch: KosDispatch,
+              getState: GetKosState<T>,
+              action: { payload: { param: any } },
+          ) => void)
         | undefined;
     getAsync?:
         | ((
-            key: string,
-        ) => (dispatch: KosDispatch, getState?: GetKosState) => void)
+              key: string,
+          ) => (dispatch: KosDispatch, getState?: GetKosState) => void)
         | undefined;
 }
 

@@ -1,4 +1,12 @@
-import { Consent, Country, Options, Service, ServiceDefinition, ServiceOptions, ServiceResponse } from "cookieconsent";
+import {
+    Consent,
+    Country,
+    Options,
+    Service,
+    ServiceDefinition,
+    ServiceOptions,
+    ServiceResponse,
+} from "cookieconsent";
 
 {
     const country: Country = {
@@ -43,14 +51,18 @@ import { Consent, Country, Options, Service, ServiceDefinition, ServiceOptions, 
 }
 
 {
-    const ServiceDefinition1: ServiceDefinition = (options: ServiceOptions) => ({
+    const ServiceDefinition1: ServiceDefinition = (
+        options: ServiceOptions,
+    ) => ({
         url: "foo",
         callback(done, resp) {
             return { code: "us" };
         },
     });
 
-    const ServiceDefinition2: ServiceDefinition = (options: ServiceOptions) => ({
+    const ServiceDefinition2: ServiceDefinition = (
+        options: ServiceOptions,
+    ) => ({
         url: "foo",
         headers: ["Accept: application/json"],
         callback(done, resp) {

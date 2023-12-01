@@ -36,10 +36,16 @@ function TestCtorOverloads() {
         },
     };
     let pluginNumber: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Delete<number>, requestConfig: mock.requests.Delete<number>) => true,
+        match: (
+            mockRequest: mock.requests.Delete<number>,
+            requestConfig: mock.requests.Delete<number>,
+        ) => true,
     };
     let pluginBoolean: mock.Plugin1<boolean> = {
-        match: (mockRequest: mock.requests.Post<boolean>, requestConfig: mock.requests.Post<boolean>) => true,
+        match: (
+            mockRequest: mock.requests.Post<boolean>,
+            requestConfig: mock.requests.Post<boolean>,
+        ) => true,
     };
 
     let noParam: mock.ProtractorHttpMock = mock();
@@ -47,13 +53,30 @@ function TestCtorOverloads() {
     let mockFiles: mock.ProtractorHttpMock = mock(["mock1", "mock2"]);
     let mocks: mock.ProtractorHttpMock = mock([delNumber, putString]);
 
-    let mockFilesNpmPlugins: mock.ProtractorHttpMock = mock(["mock1"], ["plugin"]);
-    let mocksWithNpmPlugins: mock.ProtractorHttpMock = mock([delNumber, putString], ["plugin"]);
+    let mockFilesNpmPlugins: mock.ProtractorHttpMock = mock(
+        ["mock1"],
+        ["plugin"],
+    );
+    let mocksWithNpmPlugins: mock.ProtractorHttpMock = mock(
+        [delNumber, putString],
+        ["plugin"],
+    );
 
-    let pluginMocks: mock.ProtractorHttpMock = mock([delNumber, putString], [pluginNumber, pluginBoolean]);
+    let pluginMocks: mock.ProtractorHttpMock = mock(
+        [delNumber, putString],
+        [pluginNumber, pluginBoolean],
+    );
 
-    let mockFilesNpmPluginsSkipDefaults: mock.ProtractorHttpMock = mock(["mock1"], ["plugin"], true);
-    let skipDefaults: mock.ProtractorHttpMock = mock([delNumber, putString], [pluginNumber, pluginBoolean], true);
+    let mockFilesNpmPluginsSkipDefaults: mock.ProtractorHttpMock = mock(
+        ["mock1"],
+        ["plugin"],
+        true,
+    );
+    let skipDefaults: mock.ProtractorHttpMock = mock(
+        [delNumber, putString],
+        [pluginNumber, pluginBoolean],
+        true,
+    );
 }
 
 function TestCtorMockOverloads() {
@@ -146,7 +169,10 @@ function TestCtorMockOverloads() {
 
 function TestCtorPluginOverloads() {
     let get: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Get<number>, requestConfig: mock.requests.Get<number>) => true,
+        match: (
+            mockRequest: mock.requests.Get<number>,
+            requestConfig: mock.requests.Get<number>,
+        ) => true,
     };
     let postData: mock.Plugin2<number, string> = {
         match: (
@@ -155,13 +181,22 @@ function TestCtorPluginOverloads() {
         ) => true,
     };
     let post: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Post<number>, requestConfig: mock.requests.Post<number>) => true,
+        match: (
+            mockRequest: mock.requests.Post<number>,
+            requestConfig: mock.requests.Post<number>,
+        ) => true,
     };
     let head: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Head<number>, requestConfig: mock.requests.Head<number>) => true,
+        match: (
+            mockRequest: mock.requests.Head<number>,
+            requestConfig: mock.requests.Head<number>,
+        ) => true,
     };
     let del: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Delete<number>, requestConfig: mock.requests.Delete<number>) => true,
+        match: (
+            mockRequest: mock.requests.Delete<number>,
+            requestConfig: mock.requests.Delete<number>,
+        ) => true,
     };
     let putData: mock.Plugin2<number, string> = {
         match: (
@@ -170,13 +205,22 @@ function TestCtorPluginOverloads() {
         ) => true,
     };
     let put: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Put<number>, requestConfig: mock.requests.Put<number>) => true,
+        match: (
+            mockRequest: mock.requests.Put<number>,
+            requestConfig: mock.requests.Put<number>,
+        ) => true,
     };
     let patch: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Patch<number>, requestConfig: mock.requests.Patch<number>) => true,
+        match: (
+            mockRequest: mock.requests.Patch<number>,
+            requestConfig: mock.requests.Patch<number>,
+        ) => true,
     };
     let jsonp: mock.Plugin1<number> = {
-        match: (mockRequest: mock.requests.Jsonp<number>, requestConfig: mock.requests.Jsonp<number>) => true,
+        match: (
+            mockRequest: mock.requests.Jsonp<number>,
+            requestConfig: mock.requests.Jsonp<number>,
+        ) => true,
     };
 
     mock([], ["npm", get, postData, post, head, del, put, patch, jsonp]);
@@ -188,12 +232,12 @@ function TestTeardown() {
 
 function TestRequestsMade() {
     let values: mock.ReceivedRequest[];
-    mock.requestsMade().then(v => values = v);
+    mock.requestsMade().then((v) => (values = v));
 }
 
 function TestClearRequests() {
     let promiseValue: boolean;
-    mock.clearRequests().then(value => {
+    mock.clearRequests().then((value) => {
         promiseValue = value;
     });
 }
@@ -210,7 +254,7 @@ function TestDynamicAdd() {
         },
     };
     let resolved: boolean;
-    mock.add([put]).then(r => resolved = r);
+    mock.add([put]).then((r) => (resolved = r));
 }
 
 function TestDyanmicRemove() {
@@ -225,7 +269,7 @@ function TestDyanmicRemove() {
         },
     };
     let resolved: boolean;
-    mock.remove([put]).then(r => resolved = r);
+    mock.remove([put]).then((r) => (resolved = r));
 }
 
 function TestGetRequestDefinitions() {
@@ -448,33 +492,37 @@ function TestJsonpRequestDefinitions() {
 }
 
 function TestRuntimeMocks() {
-    mock.add([{
-        request: {
-            path: "/users",
-            method: "GET",
-            params: {
-                name: "Charlie",
+    mock.add([
+        {
+            request: {
+                path: "/users",
+                method: "GET",
+                params: {
+                    name: "Charlie",
+                },
+            },
+            response: {
+                data: {
+                    name: "Override",
+                },
             },
         },
-        response: {
-            data: {
-                name: "Override",
-            },
-        },
-    }]);
+    ]);
 
-    mock.remove([{
-        request: {
-            path: "/users",
-            method: "GET",
-            params: {
-                name: "Charlie",
+    mock.remove([
+        {
+            request: {
+                path: "/users",
+                method: "GET",
+                params: {
+                    name: "Charlie",
+                },
+            },
+            response: {
+                data: {
+                    name: "Override",
+                },
             },
         },
-        response: {
-            data: {
-                name: "Override",
-            },
-        },
-    }]);
+    ]);
 }

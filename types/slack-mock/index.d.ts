@@ -5,7 +5,9 @@ import * as WebSocket from "ws";
 
 export = SlackMock;
 
-declare function SlackMock(config?: SlackMock.ConfigOptions): SlackMock.Instance;
+declare function SlackMock(
+    config?: SlackMock.ConfigOptions,
+): SlackMock.Instance;
 
 declare namespace SlackMock {
     let instance: Instance;

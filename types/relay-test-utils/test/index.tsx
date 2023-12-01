@@ -1,9 +1,19 @@
 import { FragmentRefs, graphql } from "relay-runtime";
 import { readFragment } from "relay-runtime/lib/store/ResolverFragments";
-import { createMockEnvironment, MockPayloadGenerator, testResolver } from "relay-test-utils";
+import {
+    createMockEnvironment,
+    MockPayloadGenerator,
+    testResolver,
+} from "relay-test-utils";
 
 import React from "react";
-import { loadQuery, PreloadedQuery, RelayEnvironmentProvider, useFragment, usePreloadedQuery } from "react-relay";
+import {
+    loadQuery,
+    PreloadedQuery,
+    RelayEnvironmentProvider,
+    useFragment,
+    usePreloadedQuery,
+} from "react-relay";
 
 interface UserComponent_user {
     readonly id: string;
@@ -102,7 +112,7 @@ function environmentTests() {
 
     const queryRef = loadQuery(environment, userQuery, {});
 
-    environment.mock.queueOperationResolver(operation => {
+    environment.mock.queueOperationResolver((operation) => {
         return MockPayloadGenerator.generate(operation);
     });
 
@@ -111,7 +121,9 @@ function environmentTests() {
         <Modal queryRef={queryRef} />
     </RelayEnvironmentProvider>;
 
-    const operation = environment.mock.findOperation(operation => operation.root.node === userQuery);
+    const operation = environment.mock.findOperation(
+        (operation) => operation.root.node === userQuery,
+    );
 
     environment.mock.complete(operation);
 

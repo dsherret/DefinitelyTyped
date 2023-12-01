@@ -28,11 +28,7 @@ fixtures2.connect(uri, {});
 const fixtures3 = new Fixtures(options);
 declare const mongoOptions: MongoClientOptions;
 // $ExpectType Promise<Fixtures>
-fixtures3.connect(
-    uri,
-    mongoOptions,
-    "db",
-);
+fixtures3.connect(uri, mongoOptions, "db");
 // $ExpectType Promise<Fixtures>
 fixtures3.load();
 // $ExpectType Promise<Fixtures>

@@ -14,7 +14,10 @@ declare namespace RxNode {
      * @param {String} eventName The event name to emit onNext calls.
      * @returns {EventEmitter} An EventEmitter which emits the given eventName for each onNext call in addition to 'error' and 'end' events.
      */
-    function toEventEmitter<T>(observable: Rx.Observable<T>, eventName: string): RxNode.PublishableEventEmitter;
+    function toEventEmitter<T>(
+        observable: Rx.Observable<T>,
+        eventName: string,
+    ): RxNode.PublishableEventEmitter;
 
     /**
      * Converts a flowing stream to an Observable sequence.
@@ -35,21 +38,28 @@ declare namespace RxNode {
      * @param {String} [dataEventName] Event that notifies about incoming data. ("data" by default)
      * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'end' events.
      */
-    function fromReadableStream<T>(stream: NodeJS.ReadableStream, dataEventName?: string): Rx.Observable<T>;
+    function fromReadableStream<T>(
+        stream: NodeJS.ReadableStream,
+        dataEventName?: string,
+    ): Rx.Observable<T>;
 
     /**
      * Converts a flowing readline stream to an Observable sequence.
      * @param {Stream} stream A stream to convert to a observable sequence.
      * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'end' events.
      */
-    function fromReadLineStream<T>(stream: NodeJS.ReadableStream): Rx.Observable<T>;
+    function fromReadLineStream<T>(
+        stream: NodeJS.ReadableStream,
+    ): Rx.Observable<T>;
 
     /**
      * Converts a flowing writeable stream to an Observable sequence.
      * @param {Stream} stream A stream to convert to a observable sequence.
      * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'finish' events.
      */
-    function fromWritableStream<T>(stream: NodeJS.WritableStream): Rx.Observable<T>;
+    function fromWritableStream<T>(
+        stream: NodeJS.WritableStream,
+    ): Rx.Observable<T>;
 
     /**
      * Converts a flowing transform stream to an Observable sequence.
@@ -57,7 +67,10 @@ declare namespace RxNode {
      * @param {String} [dataEventName] Event that notifies about incoming data. ("data" by default)
      * @returns {Observable} An observable sequence which fires on each 'data' event as well as handling 'error' and 'finish' events.
      */
-    function fromTransformStream<T>(stream: NodeJS.ReadWriteStream, dataEventName?: string): Rx.Observable<T>;
+    function fromTransformStream<T>(
+        stream: NodeJS.ReadWriteStream,
+        dataEventName?: string,
+    ): Rx.Observable<T>;
 
     /**
      * Writes an observable sequence to a stream

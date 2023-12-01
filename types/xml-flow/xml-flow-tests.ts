@@ -4,7 +4,10 @@ import * as fs from "fs";
 import type { EventEmitter } from "events";
 
 // setup files to read as streams
-fs.writeFileSync("./test.xml", "<head><childOne>text</childOne><childTwo>text</childTwo></head>");
+fs.writeFileSync(
+    "./test.xml",
+    "<head><childOne>text</childOne><childTwo>text</childTwo></head>",
+);
 const readStreamOne = fs.createReadStream("./test.xml", "utf8");
 const readStreamTwo = fs.createReadStream("./test.xml", "utf8");
 

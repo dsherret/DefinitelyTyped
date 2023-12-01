@@ -79,8 +79,13 @@ declare namespace readJSON {
          *
          * @param key The key to get. If empty, the entire data will be returned.
          */
-        get(key: PropertyKey, callback?: (err: Error | null, value: unknown) => void): Promise<unknown>;
-        get(callback?: (err: Error | null, value: unknown) => void): Promise<unknown>;
+        get(
+            key: PropertyKey,
+            callback?: (err: Error | null, value: unknown) => void,
+        ): Promise<unknown>;
+        get(
+            callback?: (err: Error | null, value: unknown) => void,
+        ): Promise<unknown>;
         /**
          * Pass any plain object into "set" to merge in a deep copy.
          *
@@ -90,7 +95,10 @@ declare namespace readJSON {
         /**
          * Remove a specific key-value pair.
          */
-        remove(key: string | symbol, callback?: (err: Error | null) => void): Promise<void>;
+        remove(
+            key: string | symbol,
+            callback?: (err: Error | null) => void,
+        ): Promise<void>;
         stringify(): Buffer;
     }
 

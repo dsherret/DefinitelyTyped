@@ -11,7 +11,9 @@ interface IObservableWampStatic {
     fromConnection(
         options: autobahn.IConnectionOptions,
         keepReconnecting?: boolean,
-        factory?: (options?: autobahn.IConnectionOptions) => autobahn.Connection,
+        factory?: (
+            options?: autobahn.IConnectionOptions,
+        ) => autobahn.Connection,
     ): Rx.Observable<autobahn.Session>;
     fromPubSubPattern(
         session: autobahn.Session,
@@ -20,7 +22,9 @@ interface IObservableWampStatic {
         openObserver?: Rx.IObserver<autobahn.ISubscription>,
     ): IPubSubSubject;
 
-    subscriber(sessionOrObservable: autobahn.Session | Rx.Observable<any>): Subscriber;
+    subscriber(
+        sessionOrObservable: autobahn.Session | Rx.Observable<any>,
+    ): Subscriber;
     subscribeAsObservable(
         sessionOrObservable: autobahn.Session | Rx.Observable<autobahn.Session>,
         topic: string,
@@ -51,7 +55,9 @@ declare class Subscriber {
     to(
         topic: string,
         options: autobahn.ISubscribeOptions,
-        observerOrOnNext?: Rx.IObserver<IWampEvent> | ((value: IWampEvent) => void),
+        observerOrOnNext?:
+            | Rx.IObserver<IWampEvent>
+            | ((value: IWampEvent) => void),
         onError?: (exception: any) => void,
         onCompleted?: () => void,
     ): Subscriber;
@@ -59,7 +65,9 @@ declare class Subscriber {
     dispose(): void;
 }
 
-interface IPubSubSubject extends Rx.Observable<IWampEvent>, Rx.Observer<IWampEvent> {
+interface IPubSubSubject
+    extends Rx.Observable<IWampEvent>,
+        Rx.Observer<IWampEvent> {
     observable: Rx.Observable<IWampEvent>;
     observer: Rx.Observer<IWampEvent>;
     errors: Rx.IObservable<autobahn.IError>;

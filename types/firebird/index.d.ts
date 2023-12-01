@@ -33,7 +33,13 @@ declare module "firebird" {
          * @param database a database name in Firebird notation, i.e. <hostname>:<path to database file | alias>
          * @param callback function(err), where err is error object in case of error.
          */
-        connect(db: string, user: string, pass: string, role: string, callback: (err: Error | null) => void): void;
+        connect(
+            db: string,
+            user: string,
+            pass: string,
+            role: string,
+            callback: (err: Error | null) => void,
+        ): void;
 
         /**
          * A boolean readonly property indicating if Connection object is connected to database
@@ -54,7 +60,10 @@ declare module "firebird" {
          * @param sql an SQL query to execute.
          * @param callback function(err,res), err - is error object or null, res - FBResult object.
          */
-        query(sql: string, callback: (err: Error | null, res: FBResult) => void): void;
+        query(
+            sql: string,
+            callback: (err: Error | null, res: FBResult) => void,
+        ): void;
 
         /**
          * Registers connection to listen for firebird event name, called from PL\SQL (in stored procedures or triggers) with post_event 'name'.
@@ -167,7 +176,9 @@ declare module "firebird" {
          *
          * @param callback function(err, transaction), where err is error object in case of error, transaction - newly created transaction.
          */
-        startNewTransaction(callback: (err: Error | null, transaction: Transaction) => void): void;
+        startNewTransaction(
+            callback: (err: Error | null, transaction: Transaction) => void,
+        ): void;
     }
 
     /**
@@ -212,9 +223,15 @@ declare module "firebird" {
          * @param rowCount number of rows to fetch from results;
          * @param asObject format of returned rows. When false - methods returns array of array, when true - array of objects.
          */
-        fetchSync(rowCount: number | "all", asObject: boolean): DataType[][] | Array<{ [column: string]: DataType }>;
+        fetchSync(
+            rowCount: number | "all",
+            asObject: boolean,
+        ): DataType[][] | Array<{ [column: string]: DataType }>;
         fetchSync(rowCount: number | "all", asObject: false): DataType[][];
-        fetchSync(rowCount: number | "all", asObject: true): Array<{ [column: string]: DataType }>;
+        fetchSync(
+            rowCount: number | "all",
+            asObject: true,
+        ): Array<{ [column: string]: DataType }>;
         fetchSync<T extends {}>(rowCount: number | "all", asObject: true): T[];
 
         /**
@@ -228,7 +245,9 @@ declare module "firebird" {
         fetch(
             rowCount: number | "all",
             asObject: boolean,
-            rowCallback: (row: DataType[] | { [column: string]: DataType }) => void,
+            rowCallback: (
+                row: DataType[] | { [column: string]: DataType },
+            ) => void,
             eofCallback: (err: Error | null, eof: boolean) => void,
         ): void;
         fetch(
@@ -272,7 +291,10 @@ declare module "firebird" {
          * @param sql an SQL query to execute.
          * @param callback err - is error object or null, res - FBResult object.
          */
-        query(sql: string, callback: (err: Error | null, res: FBResult) => void): void;
+        query(
+            sql: string,
+            callback: (err: Error | null, res: FBResult) => void,
+        ): void;
 
         /**
          * Synchronously commits this transaction.
@@ -416,7 +438,10 @@ declare module "firebird" {
          * @param buffer Node buffer to fill with data.
          * @param callback function(err,buffer,len), err - Error object in case of error, or null;buffer - buffer filled with data; len - actual data length.
          */
-        _read(buffer: Buffer, callback: (err: Error | null, buffer: Buffer, len: number) => void): void;
+        _read(
+            buffer: Buffer,
+            callback: (err: Error | null, buffer: Buffer, len: number) => void,
+        ): void;
 
         /**
          * Asynchronously reads all data from BLOB field.
@@ -431,8 +456,13 @@ declare module "firebird" {
             chunkSize?: number,
             callback?: (err: Error | null, buffer: Buffer, len: number) => void,
         ): void;
-        _readAll(initialSize: number, callback: (err: Error | null, buffer: Buffer, len: number) => void): void;
-        _readAll(callback: (err: Error | null, buffer: Buffer, len: number) => void): void;
+        _readAll(
+            initialSize: number,
+            callback: (err: Error | null, buffer: Buffer, len: number) => void,
+        ): void;
+        _readAll(
+            callback: (err: Error | null, buffer: Buffer, len: number) => void,
+        ): void;
 
         /**
          * Synchronously writes BLOB segment (chunk) from buffer.
@@ -450,7 +480,11 @@ declare module "firebird" {
          * @param len optional length parameter, if specified only len bytes from buffer will be writen.
          * @param callback function(err), err - Error object in case of error, or null;
          */
-        _write(buffer: Buffer, len?: number, callback?: (err: Error | null) => void): void;
+        _write(
+            buffer: Buffer,
+            len?: number,
+            callback?: (err: Error | null) => void,
+        ): void;
     }
 
     /**

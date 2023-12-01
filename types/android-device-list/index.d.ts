@@ -21,7 +21,10 @@ export function getDevicesByName(name: string, options?: Options): Device[];
 /**
  * Returns a device list with matching build.os.DEVICE.
  */
-export function getDevicesByDeviceId(deviceId: string, options?: Options): Device[];
+export function getDevicesByDeviceId(
+    deviceId: string,
+    options?: Options,
+): Device[];
 
 /**
  * Returns a device list with matching build.os.MODEL.

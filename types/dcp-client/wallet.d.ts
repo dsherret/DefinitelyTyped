@@ -95,7 +95,7 @@ declare module "dcp/wallet" {
          * corresponds to a randomly-selected private key. This form will prompt the
          * user for a password to encrypt itself with.
          */
-        new(): Promise<Keystore>;
+        new (): Promise<Keystore>;
 
         /**
          * Constructs a locked keystore.
@@ -107,7 +107,7 @@ declare module "dcp/wallet" {
          * @param privateKey If null, a randomly private key will be used.
          * @param passphrase The passphrase to encrypt the private key.
          */
-        new(privateKey: null, passphrase: string): Promise<Keystore>;
+        new (privateKey: null, passphrase: string): Promise<Keystore>;
     }
 
     const Keystore: KeystoreConstructor;
@@ -154,7 +154,10 @@ declare module "dcp/wallet" {
          * @param messageBody The thing to verify the signature against.
          * @param signature The signature to verify.
          */
-        verifySignature(messageBody: string | object, signature: string): boolean;
+        verifySignature(
+            messageBody: string | object,
+            signature: string,
+        ): boolean;
     }
 
     /**

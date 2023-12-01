@@ -20,10 +20,16 @@ import { CSSProperties } from "react";
     const emptyOnTransitionEnd = <Recarousel onTransitionEnd={() => {}} />;
 
     const onTransitionEnd = (
-        frames: { next: HTMLDivElement; prev: HTMLDivElement; current: HTMLDivElement },
+        frames: {
+            next: HTMLDivElement;
+            prev: HTMLDivElement;
+            current: HTMLDivElement;
+        },
         duration: number,
     ) => {};
-    const notEmptyOnTransitionEnd = <Recarousel onTransitionEnd={onTransitionEnd} />;
+    const notEmptyOnTransitionEnd = (
+        <Recarousel onTransitionEnd={onTransitionEnd} />
+    );
 }
 
 // <Recarousel> passes in the `axis` value from its props to the widget props. If

@@ -25,7 +25,12 @@ export default class MediaElement extends WebAudioBackend {
     /** Used by wavesurfer.isPlaying() and wavesurfer.playPause(). */
     isPaused(): boolean;
     /** Create media element with url as its source, and append to container element. */
-    load(url: string, container: HTMLElement, peaks: Peaks, preload: string): void;
+    load(
+        url: string,
+        container: HTMLElement,
+        peaks: Peaks,
+        preload: string,
+    ): void;
     /** Load existing media element. */
     loadElt(elt: HTMLMediaElement, peaks: Peaks): void;
     /** Plays the loaded audio region. */

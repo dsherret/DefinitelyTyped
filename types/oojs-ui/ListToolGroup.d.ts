@@ -80,7 +80,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ListToolGroup
      */
-    interface ListToolGroup extends ListToolGroup.Props, ListToolGroup.Prototype {}
+    interface ListToolGroup
+        extends ListToolGroup.Props,
+            ListToolGroup.Prototype {}
 
     namespace ListToolGroup {
         interface ConfigOptions extends PopupToolGroup.ConfigOptions {
@@ -130,7 +132,7 @@ declare namespace OO.ui {
              * @param toolbar
              * @param config Configuration options
              */
-            new(toolbar: Toolbar, config?: ConfigOptions): ListToolGroup;
+            new (toolbar: Toolbar, config?: ConfigOptions): ListToolGroup;
             prototype: Prototype;
             static: Static;
             super: PopupToolGroup.Constructor;

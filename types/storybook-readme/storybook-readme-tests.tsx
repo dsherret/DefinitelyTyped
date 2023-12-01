@@ -1,6 +1,14 @@
 import { addDecorator, storiesOf } from "@storybook/react";
 import React, { Fragment } from "react";
-import { addFooter, addHeader, addReadme, configureReadme, doc, withDocs, withReadme } from "storybook-readme";
+import {
+    addFooter,
+    addHeader,
+    addReadme,
+    configureReadme,
+    doc,
+    withDocs,
+    withReadme,
+} from "storybook-readme";
 import Marked from "storybook-readme/components/Marked";
 import { addReadme as addHtmlReadme } from "storybook-readme/html";
 import registerWithPanelTitle from "storybook-readme/registerWithPanelTitle";
@@ -54,7 +62,9 @@ storiesOf("withReadme Example", module)
     )
     .add(
         "StoryName Here",
-        withReadme([DocExample1, DocExample2], () => <div>your react component</div>),
+        withReadme([DocExample1, DocExample2], () => (
+            <div>your react component</div>
+        )),
     );
 
 // withDocs usages.
@@ -76,7 +86,9 @@ storiesOf("withDocs Example", module)
     )
     .add(
         "StoryName Here",
-        withDocs([DocExample1, DocExample2], () => <div>your react component</div>),
+        withDocs([DocExample1, DocExample2], () => (
+            <div>your react component</div>
+        )),
     );
 
 // doc usage.

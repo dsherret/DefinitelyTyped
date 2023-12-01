@@ -8,7 +8,12 @@ export default class Life extends Initializer {
     /**
      * Constructs a Life property instance.
      */
-    constructor(min?: number, max?: number, center?: boolean, isEnabled?: boolean);
+    constructor(
+        min?: number,
+        max?: number,
+        center?: boolean,
+        isEnabled?: boolean,
+    );
     /**
      * Sets the particle's initial life.
      */

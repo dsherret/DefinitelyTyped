@@ -144,7 +144,11 @@ export interface VideoProperties extends ViewProps {
     /* Wrapper component */
     // Opaque type returned by require('./video.mp4')
     source:
-        | { uri?: string | undefined; headers?: { [key: string]: string } | undefined; type?: string | undefined }
+        | {
+              uri?: string | undefined;
+              headers?: { [key: string]: string } | undefined;
+              type?: string | undefined;
+          }
         | number;
     minLoadRetryCount?: number | undefined;
     maxBitRate?: number | undefined;
@@ -156,12 +160,14 @@ export interface VideoProperties extends ViewProps {
     paused?: boolean | undefined;
     muted?: boolean | undefined;
     volume?: number | undefined;
-    bufferConfig?: {
-        minBufferMs?: number | undefined;
-        maxBufferMs?: number | undefined;
-        bufferForPlaybackMs?: number | undefined;
-        bufferForPlaybackAfterRebufferMs?: number | undefined;
-    } | undefined;
+    bufferConfig?:
+        | {
+              minBufferMs?: number | undefined;
+              maxBufferMs?: number | undefined;
+              bufferForPlaybackMs?: number | undefined;
+              bufferForPlaybackAfterRebufferMs?: number | undefined;
+          }
+        | undefined;
     stereoPan?: number | undefined;
     rate?: number | undefined;
     pictureInPicture?: boolean | undefined;
@@ -206,25 +212,34 @@ export interface VideoProperties extends ViewProps {
     onPictureInPictureStatusChanged?(data: OnPictureInPictureStatusData): void;
     onRestoreUserInterfaceForPictureInPictureStop?(): void;
     onExternalPlaybackChange?(data: OnExternalPlaybackChangeData): void;
-    selectedAudioTrack?: {
-        type: "system" | "disabled" | "title" | "language" | "index";
-        value?: string | number | undefined;
-    } | undefined;
-    selectedTextTrack?: {
-        type: "system" | "disabled" | "title" | "language" | "index";
-        value?: string | number | undefined;
-    } | undefined;
-    selectedVideoTrack?: {
-        type: "auto" | "disabled" | "resolution" | "index";
-        value?: string | number | undefined;
-    } | undefined;
+    selectedAudioTrack?:
+        | {
+              type: "system" | "disabled" | "title" | "language" | "index";
+              value?: string | number | undefined;
+          }
+        | undefined;
+    selectedTextTrack?:
+        | {
+              type: "system" | "disabled" | "title" | "language" | "index";
+              value?: string | number | undefined;
+          }
+        | undefined;
+    selectedVideoTrack?:
+        | {
+              type: "auto" | "disabled" | "resolution" | "index";
+              value?: string | number | undefined;
+          }
+        | undefined;
     textTracks?:
         | Array<{
-            title?: string | undefined;
-            language?: string | undefined;
-            type: "application/x-subrip" | "application/ttml+xml" | "text/vtt";
-            uri: string;
-        }>
+              title?: string | undefined;
+              language?: string | undefined;
+              type:
+                  | "application/x-subrip"
+                  | "application/ttml+xml"
+                  | "text/vtt";
+              uri: string;
+          }>
         | undefined;
 
     /* Required by react-native */
@@ -238,7 +253,9 @@ export interface VideoProperties extends ViewProps {
 export default class Video extends React.Component<VideoProperties> {
     presentFullscreenPlayer(): void;
     dismissFullscreenPlayer(): void;
-    restoreUserInterfaceForPictureInPictureStopCompleted(restored: boolean): void;
+    restoreUserInterfaceForPictureInPictureStopCompleted(
+        restored: boolean,
+    ): void;
     save(): Promise<void>;
     seek(time: number, tolerance?: number): void;
 }

@@ -1,6 +1,9 @@
 import { PathLike } from "fs";
 
-export function fileExists(filePath: PathLike, callback: (exists: boolean) => void): void;
+export function fileExists(
+    filePath: PathLike,
+    callback: (exists: boolean) => void,
+): void;
 
 export function waitForFile(
     filePath: PathLike,

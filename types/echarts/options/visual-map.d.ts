@@ -24,10 +24,12 @@ declare namespace echarts {
             hoverLink?: boolean | undefined;
             inRange?: RangeObject | undefined;
             outOfRange?: RangeObject | undefined;
-            controller?: {
-                inRange?: RangeObject | undefined;
-                outOfRange?: RangeObject | undefined;
-            } | undefined;
+            controller?:
+                | {
+                      inRange?: RangeObject | undefined;
+                      outOfRange?: RangeObject | undefined;
+                  }
+                | undefined;
             zlevel?: number | undefined;
             z?: number | undefined;
             left?: number | string | undefined;
@@ -70,10 +72,12 @@ declare namespace echarts {
             hoverLink?: boolean | undefined;
             inRange?: RangeObject | undefined;
             outOfRange?: RangeObject | undefined;
-            controller?: {
-                inRange?: RangeObject | undefined;
-                outOfRange?: RangeObject | undefined;
-            } | undefined;
+            controller?:
+                | {
+                      inRange?: RangeObject | undefined;
+                      outOfRange?: RangeObject | undefined;
+                  }
+                | undefined;
             zlevel?: number | undefined;
             z?: number | undefined;
             left?: number | string | undefined;

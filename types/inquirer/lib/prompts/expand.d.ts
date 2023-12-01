@@ -14,7 +14,9 @@ type Question = ExpandQuestionOptions;
  * @template TQuestion
  * The options for the question.
  */
-declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class ExpandPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Resolves the value of the prompt.
      */
@@ -57,7 +59,11 @@ declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Renders the prompt to the screen.
@@ -97,7 +103,9 @@ declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt
      * @param eventArgs
      * An object which contains event-data.
      */
-    protected onSubmit(eventArgs: inquirer.prompts.SuccessfulPromptStateData): void;
+    protected onSubmit(
+        eventArgs: inquirer.prompts.SuccessfulPromptStateData,
+    ): void;
 
     /**
      * Handles the `error`-event of the prompt.
@@ -118,7 +126,9 @@ declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt
      * @param choices
      * The choices to validate.
      */
-    protected validateChoices(choices: ExpandPrompt<TQuestion>["opt"]["choices"]): void;
+    protected validateChoices(
+        choices: ExpandPrompt<TQuestion>["opt"]["choices"],
+    ): void;
 
     /**
      * Generates the string-representation of the choices.
@@ -132,7 +142,10 @@ declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt
      * @returns
      * The string-representations of the choices.
      */
-    protected generateChoicesString(choices: ExpandPrompt<TQuestion>["opt"]["choices"], defaultChoice: any): string;
+    protected generateChoicesString(
+        choices: ExpandPrompt<TQuestion>["opt"]["choices"],
+        defaultChoice: any,
+    ): string;
 
     /**
      * Renders the choices.
@@ -143,7 +156,10 @@ declare class ExpandPrompt<TQuestion extends Question = Question> extends Prompt
      * @param pointer
      * The value of the choice to select.
      */
-    protected renderChoices(choices: ExpandPrompt<TQuestion>["opt"]["choices"], pointer: string): string;
+    protected renderChoices(
+        choices: ExpandPrompt<TQuestion>["opt"]["choices"],
+        pointer: string,
+    ): string;
 }
 
 export default ExpandPrompt;

@@ -123,7 +123,11 @@ interface JSONEditorActionParams {
 }
 
 declare class JSONEditor {
-    constructor(container: HTMLElement, options?: JSONEditorOptions, json?: any);
+    constructor(
+        container: HTMLElement,
+        options?: JSONEditorOptions,
+        json?: any,
+    );
     set(json: Object, name?: string): void;
     setName(name?: string): void;
     get(): Object;
@@ -174,7 +178,11 @@ interface JSONFormatterOptions {
 }
 
 declare class JSONFormatter {
-    constructor(container: HTMLElement, options?: JSONFormatterOptions, json?: any);
+    constructor(
+        container: HTMLElement,
+        options?: JSONFormatterOptions,
+        json?: any,
+    );
     set(json: Object): void;
     get(): Object;
     setText(jsonString: string): void;

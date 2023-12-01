@@ -59,7 +59,13 @@ const vectorLiesOn = vector2.liesOn(new Line([1, 0], [0, 1]));
 const vectorLiesIn = vector2.liesIn(new Plane([1, 0], [0, 1]));
 const vectorRotate1 = vector2.rotate(1, vector1);
 const vectorRotate2 = vector2.rotate(1, new Line([1, 0], [0, 1]));
-const vectorRotate3 = vector2.rotate(new Matrix([[1, 0], [0, 1]]), new Line([1, 0], [0, 1]));
+const vectorRotate3 = vector2.rotate(
+    new Matrix([
+        [1, 0],
+        [0, 1],
+    ]),
+    new Line([1, 0], [0, 1]),
+);
 const vectorReflectionIn1 = vector2.reflectionIn(vector1);
 const vectorReflectionIn2 = vector2.reflectionIn(new Line([1, 0], [0, 1]));
 const vectorReflectionIn3 = vector2.reflectionIn(new Plane([1, 0], [0, 1]));
@@ -74,7 +80,10 @@ const vertex2 = new Vertex(vertex1);
 const vertexI = Vertex.i;
 const vertexJ = Vertex.j;
 const vertexK = Vertex.k;
-const vertexConvert1 = Vertex.convert([[1, 2], [2, 3]]);
+const vertexConvert1 = Vertex.convert([
+    [1, 2],
+    [2, 3],
+]);
 const vertexConvert2 = Vertex.convert([vector1, vector2]);
 const vertexZero = Vertex.Zero(1);
 const vertexE = vertex2.e(1);
@@ -119,18 +128,48 @@ const vertexTo3D = vertex2.to3D();
 const vertexInspect = vertex2.inspect();
 const vertexSetElements1 = vertex2.setElements(vertex1);
 const vertexSetElements2 = vertex2.setElements(vertex2);
-const vertexIsConvex = vertex2.isConvex(new Polygon([[1, 2], [2, 3]], new Plane([1, 2], [1, 2])));
-const vertexIsReflex = vertex2.isReflex(new Polygon([[1, 2], [2, 3]], new Plane([1, 2], [1, 2])));
-const vertexType = vertex2.type(new Polygon([[1, 2], [2, 3]], new Plane([1, 2], [1, 2])));
+const vertexIsConvex = vertex2.isConvex(
+    new Polygon(
+        [
+            [1, 2],
+            [2, 3],
+        ],
+        new Plane([1, 2], [1, 2]),
+    ),
+);
+const vertexIsReflex = vertex2.isReflex(
+    new Polygon(
+        [
+            [1, 2],
+            [2, 3],
+        ],
+        new Plane([1, 2], [1, 2]),
+    ),
+);
+const vertexType = vertex2.type(
+    new Polygon(
+        [
+            [1, 2],
+            [2, 3],
+        ],
+        new Plane([1, 2], [1, 2]),
+    ),
+);
 
 // Matrix
 const matrix1 = new Matrix([0, 1]);
-const matrix2 = new Matrix([[1, 0], [0, 1]]);
+const matrix2 = new Matrix([
+    [1, 0],
+    [0, 1],
+]);
 const matrix3 = new Matrix(vector1);
 const matrix4 = new Matrix(matrix2);
 const matrixI = Matrix.I(1);
 const matrixDiagonal1 = Matrix.Diagonal([0, 1]);
-const matrixDiagonal2 = Matrix.Diagonal([[1, 0], [0, 1]]);
+const matrixDiagonal2 = Matrix.Diagonal([
+    [1, 0],
+    [0, 1],
+]);
 const matrixDiagonal3 = Matrix.Diagonal(vector1);
 const matrixDiagonal4 = Matrix.Diagonal(matrix2);
 const matrixRotation1 = Matrix.Rotation(1);
@@ -148,7 +187,10 @@ const matrixDimensions = matrix2.dimensions();
 const matrixRows = matrix2.rows();
 const matrixcols = matrix2.cols();
 const matrixEql1 = matrix2.eql([0, 1]);
-const matrixEql2 = matrix2.eql([[1, 0], [0, 1]]);
+const matrixEql2 = matrix2.eql([
+    [1, 0],
+    [0, 1],
+]);
 const matrixEql3 = matrix2.eql(vector1);
 const matrixEql4 = matrix2.eql(matrix2);
 const matrixDup = matrix2.dup();
@@ -180,7 +222,10 @@ const matrixTr = matrix2.tr();
 const matrixRank = matrix2.rank();
 const matrixRk = matrix2.rk();
 const matrixAugment1 = matrix2.augment([0, 1]);
-const matrixAugment2 = matrix2.augment([[1, 0], [0, 1]]);
+const matrixAugment2 = matrix2.augment([
+    [1, 0],
+    [0, 1],
+]);
 const matrixAugment3 = matrix2.augment(vector1);
 const matrixAugment4 = matrix2.augment(matrix2);
 const matrixInverse = matrix2.inverse();
@@ -189,7 +234,10 @@ const matrixRound = matrix2.round();
 const matrixSnapTo = matrix2.snapTo(1);
 const matrixInspect = matrix2.inspect();
 const matrixSetElements1 = matrix2.setElements([0, 1]);
-const matrixSetElements2 = matrix2.setElements([[1, 0], [0, 1]]);
+const matrixSetElements2 = matrix2.setElements([
+    [1, 0],
+    [0, 1],
+]);
 const matrixSetElements3 = matrix2.setElements(vector1);
 const matrixSetElements4 = matrix2.setElements(matrix2);
 
@@ -242,17 +290,25 @@ const lineSegmentBisectingPlane = lineSegment2.bisectingPlane();
 const lineSegmentTranslate1 = lineSegment2.translate(vector1);
 const lineSegmentTranslate2 = lineSegment2.translate([1, 0]);
 const lineSegmentIsParallelTo1 = lineSegment2.isParallelTo(line2);
-const lineSegmentIsParallelTo2 = lineSegment2.isParallelTo(new Plane([1, 0], [0, 1]));
+const lineSegmentIsParallelTo2 = lineSegment2.isParallelTo(
+    new Plane([1, 0], [0, 1]),
+);
 const lineSegmentDistanceFrom1 = lineSegment2.distanceFrom(vector1);
 const lineSegmentDistanceFrom2 = lineSegment2.distanceFrom(line1);
-const lineSegmentDistanceFrom3 = lineSegment2.distanceFrom(new Plane([1, 0], [0, 1]));
+const lineSegmentDistanceFrom3 = lineSegment2.distanceFrom(
+    new Plane([1, 0], [0, 1]),
+);
 const lineSegmentContains1 = lineSegment2.contains(vector1);
 const lineSegmentContains2 = lineSegment2.contains(line1);
 const lineSegmentContains3 = lineSegment2.contains(new Plane([1, 0], [0, 1]));
 const lineSegmentIntersects1 = lineSegment2.intersects(line1);
-const lineSegmentIntersects2 = lineSegment2.intersects(new Plane([1, 0], [0, 1]));
+const lineSegmentIntersects2 = lineSegment2.intersects(
+    new Plane([1, 0], [0, 1]),
+);
 const lineSegmentIntersectionWith1 = lineSegment2.intersectionWith(line1);
-const lineSegmentIntersectionWith2 = lineSegment2.intersectionWith(new Plane([1, 0], [0, 1]));
+const lineSegmentIntersectionWith2 = lineSegment2.intersectionWith(
+    new Plane([1, 0], [0, 1]),
+);
 const lineSegmentPointClosestTo1 = lineSegment2.pointClosestTo(vector1);
 const lineSegmentPointClosestTo2 = lineSegment2.pointClosestTo(line1);
 const lineSegmentPointClosestTo3 = lineSegment2.pointClosestTo([1, 0]);
@@ -270,7 +326,10 @@ const planeXY = Plane.XY;
 const planeYZ = Plane.YZ;
 const planeZX = Plane.ZX;
 const planeYX = Plane.YX;
-const planeFromPoints1 = Plane.fromPoints([[1, 2], [2, 3]]);
+const planeFromPoints1 = Plane.fromPoints([
+    [1, 2],
+    [2, 3],
+]);
 const planeFromPoints2 = Plane.fromPoints([vector1, vector2]);
 const planeAnchor = plane1.anchor;
 const planeNormal = plane1.normal;
@@ -341,7 +400,13 @@ circularLinkedList1.remove(linkedListNode1);
 const circularLinkedListWithData = circularLinkedList1.withData(1);
 
 // Polygon
-const polygon1 = new Polygon([[1, 2], [2, 2]], plane1);
+const polygon1 = new Polygon(
+    [
+        [1, 2],
+        [2, 2],
+    ],
+    plane1,
+);
 const polygon2 = new Polygon([vector1, vector2], plane1);
 const polygonVertices = polygon1.vertices;
 const polygonV = polygon2.v(1);
@@ -353,20 +418,30 @@ const polygonRotate1 = polygon2.rotate(1, line1);
 const polygonScale = polygon2.scale(1, [1, 2]);
 polygon2.updateTrianglePlanes((plane) => plane);
 const polygonIsTriangle = polygon2.isTriangle();
-const polygonTrianglesForSurfaceIntegral = polygon2.trianglesForSurfaceIntegral();
+const polygonTrianglesForSurfaceIntegral =
+    polygon2.trianglesForSurfaceIntegral();
 const polygonArea = polygon2.area();
 const polygonCentroid = polygon2.centroid();
 const polygonProjectionOn = polygon2.projectionOn(plane1);
 const polygonRemoveVertex = polygon2.removeVertex(123);
 const polygonContains1 = polygon2.contains([1, 2]);
 const polygonContains2 = polygon2.contains(vector1);
-const polygonContainsByWindingNumber1 = polygon2.containsByWindingNumber([1, 2]);
-const polygonContainsByWindingNumber2 = polygon2.containsByWindingNumber(vector1);
+const polygonContainsByWindingNumber1 = polygon2.containsByWindingNumber([
+    1, 2,
+]);
+const polygonContainsByWindingNumber2 =
+    polygon2.containsByWindingNumber(vector1);
 const polygonHasEdgeContaining1 = polygon2.hasEdgeContaining([1, 2]);
 const polygonHasEdgeContaining2 = polygon2.hasEdgeContaining(vector1);
 const polygonToTriangles = polygon2.toTriangles();
 const polygonTriangulateByEarClipping = polygon2.triangulateByEarClipping();
-const polygonSetVertices1 = polygon2.setVertices([[1, 2], [2, 2]], plane1);
+const polygonSetVertices1 = polygon2.setVertices(
+    [
+        [1, 2],
+        [2, 2],
+    ],
+    plane1,
+);
 const polygonSetVertices2 = polygon2.setVertices([vector1, vector2], plane1);
 polygon2.populateVertexTypeLists();
 polygon2.copyVertices();

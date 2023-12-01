@@ -72,7 +72,7 @@ declare namespace Client {
         /**
          * A single character denoting the entry type: 'd' for directory, '-' for file (or 'l' for symlink on **\*NIX only**).
          */
-        "type": string;
+        type: string;
         /**
          * The name of the entry
          */
@@ -159,15 +159,30 @@ declare class Client extends events.EventEmitter {
         useCompression: boolean,
         callback: (error: Error, listing: Client.ListingElement[]) => void,
     ): void;
-    list(path: string, callback: (error: Error, listing: Client.ListingElement[]) => void): void;
-    list(useCompression: boolean, callback: (error: Error, listing: Client.ListingElement[]) => void): void;
-    list(callback: (error: Error, listing: Client.ListingElement[]) => void): void;
+    list(
+        path: string,
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
+    list(
+        useCompression: boolean,
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
+    list(
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
 
     /**
      * Retrieves a file at path from the server. useCompression defaults to false
      */
-    get(path: string, callback: (error: Error, stream: NodeJS.ReadableStream) => void): void;
-    get(path: string, useCompression: boolean, callback: (error: Error, stream: NodeJS.ReadableStream) => void): void;
+    get(
+        path: string,
+        callback: (error: Error, stream: NodeJS.ReadableStream) => void,
+    ): void;
+    get(
+        path: string,
+        useCompression: boolean,
+        callback: (error: Error, stream: NodeJS.ReadableStream) => void,
+    ): void;
 
     /**
      * Sends data to the server to be stored as destPath.
@@ -181,7 +196,11 @@ declare class Client extends events.EventEmitter {
         useCompression: boolean,
         callback: (error: Error) => void,
     ): void;
-    put(input: NodeJS.ReadableStream | Buffer | string, destPath: string, callback: (error: Error) => void): void;
+    put(
+        input: NodeJS.ReadableStream | Buffer | string,
+        destPath: string,
+        callback: (error: Error) => void,
+    ): void;
 
     /**
      * Same as put(), except if destPath already exists, it will be appended to instead of overwritten.
@@ -195,12 +214,20 @@ declare class Client extends events.EventEmitter {
         useCompression: boolean,
         callback: (error: Error) => void,
     ): void;
-    append(input: NodeJS.ReadableStream | Buffer | string, destPath: string, callback: (error: Error) => void): void;
+    append(
+        input: NodeJS.ReadableStream | Buffer | string,
+        destPath: string,
+        callback: (error: Error) => void,
+    ): void;
 
     /**
      * Renames oldPath to newPath on the server
      */
-    rename(oldPath: string, newPath: string, callback: (error: Error) => void): void;
+    rename(
+        oldPath: string,
+        newPath: string,
+        callback: (error: Error) => void,
+    ): void;
 
     /**
      * Logout the user from the server.
@@ -216,7 +243,10 @@ declare class Client extends events.EventEmitter {
      * Changes the current working directory to path. callback has 2 parameters: < Error >err, < string >currentDir.
      * Note: currentDir is only given if the server replies with the path in the response text.
      */
-    cwd(path: string, callback: (error: Error, currentDir?: string) => void): void;
+    cwd(
+        path: string,
+        callback: (error: Error, currentDir?: string) => void,
+    ): void;
 
     /**
      * Aborts the current data transfer (e.g. from get(), put(), or list())
@@ -227,7 +257,14 @@ declare class Client extends events.EventEmitter {
      * Sends command (e.g. 'CHMOD 755 foo', 'QUOTA') using SITE. callback has 3 parameters:
      * < Error >err, < _string >responseText, < integer >responseCode.
      */
-    site(command: string, callback: (error: Error, responseText: string, responseCode: number) => void): void;
+    site(
+        command: string,
+        callback: (
+            error: Error,
+            responseText: string,
+            responseCode: number,
+        ) => void,
+    ): void;
 
     /**
      * Retrieves human-readable information about the server's status.
@@ -248,14 +285,22 @@ declare class Client extends events.EventEmitter {
      * Optional "standard" commands (RFC 959)
      * Creates a new directory, path, on the server. recursive is for enabling a 'mkdir -p' algorithm and defaults to false
      */
-    mkdir(path: string, recursive: boolean, callback: (error: Error) => void): void;
+    mkdir(
+        path: string,
+        recursive: boolean,
+        callback: (error: Error) => void,
+    ): void;
     mkdir(path: string, callback: (error: Error) => void): void;
 
     /**
      * Optional "standard" commands (RFC 959)
      * Removes a directory, path, on the server. If recursive, this call will delete the contents of the directory if it is not empty
      */
-    rmdir(path: string, recursive: boolean, callback: (error: Error) => void): void;
+    rmdir(
+        path: string,
+        recursive: boolean,
+        callback: (error: Error) => void,
+    ): void;
     rmdir(path: string, callback: (error: Error) => void): void;
 
     /**
@@ -287,9 +332,17 @@ declare class Client extends events.EventEmitter {
         useCompression: boolean,
         callback: (error: Error, listing: Client.ListingElement[]) => void,
     ): void;
-    listSafe(path: string, callback: (error: Error, listing: Client.ListingElement[]) => void): void;
-    listSafe(useCompression: boolean, callback: (error: Error, listing: Client.ListingElement[]) => void): void;
-    listSafe(callback: (error: Error, listing: Client.ListingElement[]) => void): void;
+    listSafe(
+        path: string,
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
+    listSafe(
+        useCompression: boolean,
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
+    listSafe(
+        callback: (error: Error, listing: Client.ListingElement[]) => void,
+    ): void;
 
     /**
      * Extended commands (RFC 3659)
@@ -301,7 +354,10 @@ declare class Client extends events.EventEmitter {
      * Extended commands (RFC 3659)
      * Retrieves the last modified date and time for path
      */
-    lastMod(path: string, callback: (error: Error, lastMod: Date) => void): void;
+    lastMod(
+        path: string,
+        callback: (error: Error, lastMod: Date) => void,
+    ): void;
 
     /**
      * Extended commands (RFC 3659)

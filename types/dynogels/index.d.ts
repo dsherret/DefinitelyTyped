@@ -40,36 +40,71 @@ export interface DynogelsGlobalOptions {
 export interface CreateTablesOptions {
     readCapacity?: number | undefined;
     writeCapacity?: number | undefined;
-    streamSpecification?: {
-        streamEnabled: boolean;
-        streamViewType: string;
-    } | undefined;
+    streamSpecification?:
+        | {
+              streamEnabled: boolean;
+              streamViewType: string;
+          }
+        | undefined;
 }
 
 export type LifeCycleAction = "create" | "update" | "destroy";
 
 // Dynogels Model
 export interface Model {
-    new(attrs: { [key: string]: any }): Item;
+    new (attrs: { [key: string]: any }): Item;
 
-    get(hashKey: any, rangeKey: any, options: GetItemOptions, callback: DynogelsItemCallback): void;
-    get(haskKey: any, options: GetItemOptions, callback: DynogelsItemCallback): void;
+    get(
+        hashKey: any,
+        rangeKey: any,
+        options: GetItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
+    get(
+        haskKey: any,
+        options: GetItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
     get(hashKey: any, callback: DynogelsItemCallback): void;
     get(hashKey: any, rangeKey: any, callback: DynogelsItemCallback): void;
-    create(item: any, options: CreateItemOptions, callback: DynogelsItemCallback): void;
+    create(
+        item: any,
+        options: CreateItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
     create(item: any, callback: DynogelsItemCallback): void;
-    update(item: any, options: UpdateItemOptions, callback: DynogelsItemCallback): void;
+    update(
+        item: any,
+        options: UpdateItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
     update(item: any, callback: DynogelsItemCallback): void;
-    destroy(hashKey: any, rangeKey: any, options: DestroyItemOptions, callback: DynogelsItemCallback): void;
-    destroy(haskKey: any, options: DestroyItemOptions, callback: DynogelsItemCallback): void;
+    destroy(
+        hashKey: any,
+        rangeKey: any,
+        options: DestroyItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
+    destroy(
+        haskKey: any,
+        options: DestroyItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
     destroy(hashKey: any, callback: DynogelsItemCallback): void;
     destroy(hashKey: any, rangeKey: any, callback: DynogelsItemCallback): void;
-    destroy(item: any, options: DestroyItemOptions, callback: DynogelsItemCallback): void;
+    destroy(
+        item: any,
+        options: DestroyItemOptions,
+        callback: DynogelsItemCallback,
+    ): void;
     destroy(item: any, callback: DynogelsItemCallback): void;
     query(hashKey: any): Query;
     scan(): Scan;
     parallelScan(totalSegments: number): Scan;
-    getItems(items: string[] | Array<{ [key: string]: string }>, callback: (err: Error, items: any[]) => void): void;
+    getItems(
+        items: string[] | Array<{ [key: string]: string }>,
+        callback: (err: Error, items: any[]) => void,
+    ): void;
     getItems(
         items: string[] | Array<{ [key: string]: string }>,
         options: GetItemOptions,
@@ -88,15 +123,30 @@ export interface Model {
         options: CreateTablesOptions,
         callback: (err: Error, data: AWS.DynamoDB.CreateTableOutput) => void,
     ): void;
-    createTable(callback: (err: Error, data: AWS.DynamoDB.CreateTableOutput) => void): void;
-    updateTable(throughput: Throughput, callback: (err: Error, data: AWS.DynamoDB.UpdateTableOutput) => void): void;
-    updateTable(callback: (err: Error, data: AWS.DynamoDB.UpdateTableOutput) => void): void;
-    describeTable(callback: (err: Error, data: AWS.DynamoDB.DescribeTableOutput) => void): void;
+    createTable(
+        callback: (err: Error, data: AWS.DynamoDB.CreateTableOutput) => void,
+    ): void;
+    updateTable(
+        throughput: Throughput,
+        callback: (err: Error, data: AWS.DynamoDB.UpdateTableOutput) => void,
+    ): void;
+    updateTable(
+        callback: (err: Error, data: AWS.DynamoDB.UpdateTableOutput) => void,
+    ): void;
+    describeTable(
+        callback: (err: Error, data: AWS.DynamoDB.DescribeTableOutput) => void,
+    ): void;
     deleteTable(callback: (err: Error) => void): void;
     tableName(): string;
 
     after(action: LifeCycleAction, listner: (item: Item) => void): void;
-    before(action: LifeCycleAction, listner: (data: any, next: (err: Error | null, data: any) => void) => void): void;
+    before(
+        action: LifeCycleAction,
+        listner: (
+            data: any,
+            next: (err: Error | null, data: any) => void,
+        ) => void,
+    ): void;
     config(config: ModelConfig): { name: string };
 }
 
@@ -114,10 +164,14 @@ export interface CreateItemOptions {
     Expected?: AWS.DynamoDB.ExpectedAttributeMap | undefined;
     ReturnValues?: AWS.DynamoDB.ReturnValue | undefined;
     ReturnConsumedCapacity?: AWS.DynamoDB.ReturnConsumedCapacity | undefined;
-    ReturnItemCollectionMetrics?: AWS.DynamoDB.ReturnItemCollectionMetrics | undefined;
+    ReturnItemCollectionMetrics?:
+        | AWS.DynamoDB.ReturnItemCollectionMetrics
+        | undefined;
     ConditionalOperator?: AWS.DynamoDB.ConditionalOperator | undefined;
     ConditionExpression?: AWS.DynamoDB.ConditionExpression | undefined;
-    ExpressionAttributeNames?: AWS.DynamoDB.ExpressionAttributeNameMap | undefined;
+    ExpressionAttributeNames?:
+        | AWS.DynamoDB.ExpressionAttributeNameMap
+        | undefined;
     ExpressionAttributeValues?: { [key: string]: any } | undefined;
 }
 
@@ -129,10 +183,14 @@ export interface UpdateItemOptions {
     ConditionalOperator?: AWS.DynamoDB.ConditionalOperator | undefined;
     ReturnValues?: AWS.DynamoDB.ReturnValue | undefined;
     ReturnConsumedCapacity?: AWS.DynamoDB.ReturnConsumedCapacity | undefined;
-    ReturnItemCollectionMetrics?: AWS.DynamoDB.ReturnItemCollectionMetrics | undefined;
+    ReturnItemCollectionMetrics?:
+        | AWS.DynamoDB.ReturnItemCollectionMetrics
+        | undefined;
     UpdateExpression?: AWS.DynamoDB.UpdateExpression | undefined;
     ConditionExpression?: AWS.DynamoDB.ConditionExpression | undefined;
-    ExpressionAttributeNames?: AWS.DynamoDB.ExpressionAttributeNameMap | undefined;
+    ExpressionAttributeNames?:
+        | AWS.DynamoDB.ExpressionAttributeNameMap
+        | undefined;
     ExpressionAttributeValues?: { [key: string]: any } | undefined;
 }
 
@@ -141,9 +199,13 @@ export interface DestroyItemOptions {
     ConditionalOperator?: AWS.DynamoDB.ConditionalOperator | undefined;
     ReturnValues?: AWS.DynamoDB.ReturnValue | undefined;
     ReturnConsumedCapacity?: AWS.DynamoDB.ReturnConsumedCapacity | undefined;
-    ReturnItemCollectionMetrics?: AWS.DynamoDB.ReturnItemCollectionMetrics | undefined;
+    ReturnItemCollectionMetrics?:
+        | AWS.DynamoDB.ReturnItemCollectionMetrics
+        | undefined;
     ConditionExpression?: AWS.DynamoDB.ConditionExpression | undefined;
-    ExpressionAttributeNames?: AWS.DynamoDB.ExpressionAttributeNameMap | undefined;
+    ExpressionAttributeNames?:
+        | AWS.DynamoDB.ExpressionAttributeNameMap
+        | undefined;
     ExpressionAttributeValues?: { [key: string]: any } | undefined;
 }
 
@@ -152,7 +214,9 @@ export interface GetItemOptions {
     ConsistentRead?: AWS.DynamoDB.ConsistentRead | undefined;
     ReturnConsumedCapacity?: AWS.DynamoDB.ReturnConsumedCapacity | undefined;
     ProjectionExpression?: AWS.DynamoDB.ProjectionExpression | undefined;
-    ExpressionAttributeNames?: AWS.DynamoDB.ExpressionAttributeNameMap | undefined;
+    ExpressionAttributeNames?:
+        | AWS.DynamoDB.ExpressionAttributeNameMap
+        | undefined;
 }
 
 export interface ModelConfig {

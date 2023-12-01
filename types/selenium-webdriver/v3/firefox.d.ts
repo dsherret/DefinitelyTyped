@@ -134,7 +134,9 @@ export class Profile {
      * @return {!promise.Promise.<string>} A promise for the path to the new
      *     profile directory.
      */
-    writeToDisk(opt_excludeWebDriverExt?: boolean): webdriver.promise.Promise<string>;
+    writeToDisk(
+        opt_excludeWebDriverExt?: boolean,
+    ): webdriver.promise.Promise<string>;
 
     /**
      * Encodes this profile as a zipped, base64 encoded directory.

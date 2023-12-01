@@ -223,7 +223,11 @@ declare namespace grunt {
              * Adds a listener that will execute n times for the event before being removed.
              * The listener is invoked only the first time the event is fired, after which it is removed.
              */
-            many(event: string, timesToListen: number, listener: Function): EventModule;
+            many(
+                event: string,
+                timesToListen: number,
+                listener: Function,
+            ): EventModule;
 
             /**
              * Remove a listener from the listener array for the specified event.
@@ -353,7 +357,13 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
 };
             ```
             */
-            process?: ((contents: string, srcpath: string, destpath: string) => string | boolean) | undefined;
+            process?:
+                | ((
+                      contents: string,
+                      srcpath: string,
+                      destpath: string,
+                  ) => string | boolean)
+                | undefined;
         }
 
         /**
@@ -397,22 +407,37 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * @param contents If `contents` is a Buffer, encoding is ignored.
              * @param options If an encoding is not specified, default to grunt.file.defaultEncoding.
              */
-            write(filepath: string, contents: string, options?: IFileEncodedOption): void;
+            write(
+                filepath: string,
+                contents: string,
+                options?: IFileEncodedOption,
+            ): void;
             write(filepath: string, contents: Buffer): void;
 
             /**
              * Copy a source file to a destination path, creating intermediate directories if necessary.
              */
             copy(srcpath: string, destpath: string): void;
-            copy(srcpath: string, destpath: string, options: IFileWriteStringOption): void;
-            copy(srcpath: string, destpath: string, options: IFileWriteBufferOption): void;
+            copy(
+                srcpath: string,
+                destpath: string,
+                options: IFileWriteStringOption,
+            ): void;
+            copy(
+                srcpath: string,
+                destpath: string,
+                options: IFileWriteBufferOption,
+            ): void;
 
             /**
              * Delete the specified filepath. Will delete files and folders recursively.
              *
              * @return true if the files could be deleted, otherwise false.
              */
-            delete(filepath: string, options?: { force?: boolean | undefined }): boolean;
+            delete(
+                filepath: string,
+                options?: { force?: boolean | undefined },
+            ): boolean;
 
             /**
              * Works like mkdir -p. Create a directory along with any intermediate directories.
@@ -432,7 +457,12 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              */
             recurse(
                 rootdir: string,
-                callback: (abspath: string, rootdir: string, subdir: string, filename: string) => void,
+                callback: (
+                    abspath: string,
+                    rootdir: string,
+                    subdir: string,
+                    filename: string,
+                ) => void,
             ): void;
 
             /**
@@ -445,7 +475,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * grunt.file.setBase or the --base command-line option.
              */
             expand(patterns: string | string[]): string[];
-            expand(options: IFilesConfig, patterns: string | string[]): string[];
+            expand(
+                options: IFilesConfig,
+                patterns: string | string[],
+            ): string[];
 
             /**
              * Returns an array of src-dest file mapping objects.
@@ -455,7 +488,11 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * @see FileModule.expand method documentation for an explanation of how the patterns
              *      and options arguments may be specified.
              */
-            expandMapping(patterns: string[], dest: string, options: IExpandedFilesConfig): IFileMap[];
+            expandMapping(
+                patterns: string[],
+                dest: string,
+                options: IExpandedFilesConfig,
+            ): IFileMap[];
 
             /**
              * Match one or more globbing patterns against one or more file paths.
@@ -468,10 +505,26 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
             match(pattern: string, filepaths: string[]): string[];
             match(patterns: string[], filepath: string): string[];
             match(patterns: string[], filepaths: string[]): string[];
-            match(options: minimatch.IMinimatchOptions, pattern: string, filepath: string): string[];
-            match(options: minimatch.IMinimatchOptions, pattern: string, filepaths: string[]): string[];
-            match(options: minimatch.IMinimatchOptions, patterns: string[], filepath: string): string[];
-            match(options: minimatch.IMinimatchOptions, patterns: string[], filepaths: string[]): string[];
+            match(
+                options: minimatch.IMinimatchOptions,
+                pattern: string,
+                filepath: string,
+            ): string[];
+            match(
+                options: minimatch.IMinimatchOptions,
+                pattern: string,
+                filepaths: string[],
+            ): string[];
+            match(
+                options: minimatch.IMinimatchOptions,
+                patterns: string[],
+                filepath: string,
+            ): string[];
+            match(
+                options: minimatch.IMinimatchOptions,
+                patterns: string[],
+                filepaths: string[],
+            ): string[];
 
             /**
              * This method contains the same signature and logic as the grunt.file.match method,
@@ -483,10 +536,26 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
             isMatch(pattern: string, filepaths: string[]): boolean;
             isMatch(patterns: string[], filepath: string): boolean;
             isMatch(patterns: string[], filepaths: string[]): boolean;
-            isMatch(options: minimatch.IMinimatchOptions, pattern: string, filepath: string): boolean;
-            isMatch(options: minimatch.IMinimatchOptions, pattern: string, filepaths: string[]): boolean;
-            isMatch(options: minimatch.IMinimatchOptions, patterns: string[], filepath: string): boolean;
-            isMatch(options: minimatch.IMinimatchOptions, patterns: string[], filepaths: string[]): boolean;
+            isMatch(
+                options: minimatch.IMinimatchOptions,
+                pattern: string,
+                filepath: string,
+            ): boolean;
+            isMatch(
+                options: minimatch.IMinimatchOptions,
+                pattern: string,
+                filepaths: string[],
+            ): boolean;
+            isMatch(
+                options: minimatch.IMinimatchOptions,
+                patterns: string[],
+                filepath: string,
+            ): boolean;
+            isMatch(
+                options: minimatch.IMinimatchOptions,
+                patterns: string[],
+                filepaths: string[],
+            ): boolean;
 
             /*
              * Like the Node.js path.join method, the methods below will
@@ -526,7 +595,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
             /**
              * Are all descendant path(s) contained within the specified ancestor path?
              */
-            doesPathContain(ancestorPath: string, decendantPaths: string[]): boolean;
+            doesPathContain(
+                ancestorPath: string,
+                decendantPaths: string[],
+            ): boolean;
 
             /**
              * Is a given file path the current working directory (CWD)?
@@ -714,7 +786,8 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
          * @note all methods available under grunt.verbose work exactly like grunt.log methods,
          *       but only log if the --verbose command-line option was not specified.
          */
-        interface NotVerboseLogModule extends CommonLogging<NotVerboseLogModule> {
+        interface NotVerboseLogModule
+            extends CommonLogging<NotVerboseLogModule> {
             or: VerboseLogModule;
         }
 
@@ -768,7 +841,11 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * The taskList argument must be an array of tasks.
              */
             registerTask(taskName: string, taskList: string[]): void;
-            registerTask(taskName: string, description: string, taskList: string[]): void;
+            registerTask(
+                taskName: string,
+                description: string,
+                taskList: string[],
+            ): void;
 
             /**
              * If a description and taskFunction are passed, the specified function will be executed
@@ -780,7 +857,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              *
              * @note taskFunction.apply(scope: grunt.task.ITask, args: any[])
              */
-            registerTask(taskName: string, taskFunction: (this: ITask, ...args: any[]) => void): void;
+            registerTask(
+                taskName: string,
+                taskFunction: (this: ITask, ...args: any[]) => void,
+            ): void;
             registerTask(
                 taskName: string,
                 description: string,
@@ -795,7 +875,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              *
              * @note taskFunction.apply(scope: grunt.task.IMultiTask<any>, args: any[])
              */
-            registerMultiTask(taskName: string, taskFunction: (this: IMultiTask<any>, ...args: any[]) => void): void;
+            registerMultiTask(
+                taskName: string,
+                taskFunction: (this: IMultiTask<any>, ...args: any[]) => void,
+            ): void;
             registerMultiTask(
                 taskName: string,
                 taskDescription: string,
@@ -840,7 +923,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * Normalizes a task target configuration object into an array of src-dest file mappings.
              * This method is used internally by the multi task system this.files / grunt.task.current.files property.
              */
-            normalizeMultiTaskFiles(data: grunt.config.IProjectConfig, targetname?: string): grunt.file.IFileMap[];
+            normalizeMultiTaskFiles(
+                data: grunt.config.IProjectConfig,
+                targetname?: string,
+            ): grunt.file.IFileMap[];
 
             /**
              * The currently running task or multitask.
@@ -1012,7 +1098,9 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
         /**
          * @see ITaskOptions
          */
-        interface ITaskCompactOptions extends grunt.task.ITaskOptions, grunt.file.IFilesConfig {}
+        interface ITaskCompactOptions
+            extends grunt.task.ITaskOptions,
+                grunt.file.IFilesConfig {}
     }
 
     namespace template {
@@ -1138,7 +1226,11 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              */
             spawn(
                 options: ISpawnOptions,
-                done: (error: Error, result: ISpawnResult, code: number) => void,
+                done: (
+                    error: Error,
+                    result: ISpawnResult,
+                    code: number,
+                ) => void,
             ): ISpawnedChild;
 
             /**
@@ -1154,8 +1246,12 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
              * after all other predefined arguments. If the original function passed a value to a callback,
              * it will continue to do so.
              */
-            callbackify<R>(syncOrAsyncFunction: () => R): (callback: (result: R) => void) => void;
-            callbackify<A, R>(syncOrAsyncFunction: (a: A) => R): (a: A, callback: (result: R) => void) => void;
+            callbackify<R>(
+                syncOrAsyncFunction: () => R,
+            ): (callback: (result: R) => void) => void;
+            callbackify<A, R>(
+                syncOrAsyncFunction: (a: A) => R,
+            ): (a: A, callback: (result: R) => void) => void;
             callbackify<A, B, R>(
                 syncOrAsyncFunction: (a: A, b: B) => R,
             ): (a: A, b: B, callback: (result: R) => void) => void;
@@ -1195,13 +1291,15 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
             /**
              * Additional options for the Node.js child_process spawn method.
              */
-            opts?: {
-                cwd?: string | undefined;
-                stdio?: any;
-                custom?: any;
-                env?: any;
-                detached?: boolean | undefined;
-            } | undefined;
+            opts?:
+                | {
+                      cwd?: string | undefined;
+                      stdio?: any;
+                      custom?: any;
+                      env?: any;
+                      detached?: boolean | undefined;
+                  }
+                | undefined;
 
             /**
              * If this value is set and an error occurs, it will be used as the value
@@ -1295,7 +1393,10 @@ const copyOptions: grunt.file.IFileWriteStringOption = {
  *
  * {@link http://gruntjs.com/api/grunt}
  */
-interface IGrunt extends grunt.IConfigComponents, grunt.fail.FailModule, grunt.ITaskComponents {
+interface IGrunt
+    extends grunt.IConfigComponents,
+        grunt.fail.FailModule,
+        grunt.ITaskComponents {
     config: grunt.config.ConfigModule;
 
     event: grunt.event.EventModule;

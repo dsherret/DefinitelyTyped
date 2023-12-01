@@ -31,7 +31,11 @@ declare namespace gradient {
     const pastel: Gradient;
 }
 
-declare function gradient(colors: tinycolor.ColorInput[] | gradient.PositionedColorInput[]): gradient.Gradient;
+declare function gradient(
+    colors: tinycolor.ColorInput[] | gradient.PositionedColorInput[],
+): gradient.Gradient;
 declare function gradient(...colors: tinycolor.ColorInput[]): gradient.Gradient;
-declare function gradient(...colors: gradient.PositionedColorInput[]): gradient.Gradient;
+declare function gradient(
+    ...colors: gradient.PositionedColorInput[]
+): gradient.Gradient;
 export = gradient;

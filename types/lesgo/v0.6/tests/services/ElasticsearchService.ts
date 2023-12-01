@@ -40,11 +40,15 @@ elasticSearch.getClient(); // $ExpectType Client
     await elasticSearch.deleteIndices("twitter", { timeout: "30s" }); // $ExpectType Record<string, any>
     await elasticSearch.existIndices("twitter", { local: true }); // $ExpectType any
     // $ExpectType Record<string, any>
-    const mappingResponse = await elasticSearch.putMapping("index", "indextype", {
-        email: {
-            type: "keyword",
+    const mappingResponse = await elasticSearch.putMapping(
+        "index",
+        "indextype",
+        {
+            email: {
+                type: "keyword",
+            },
         },
-    });
+    );
     await elasticSearch.get("twitter"); // $ExpectType Record<string, any>
     // $ExpectType Record<string, any>
     const indexOrCreateResponse = await elasticSearch.indexOrCreateById(

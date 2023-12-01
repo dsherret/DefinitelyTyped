@@ -13,7 +13,13 @@ type ArrayType =
 
 declare class KDBush<T> {
     constructor(points: Points);
-    constructor(points: T[], getX: Get<T>, getY: Get<T>, nodeSize?: number, ArrayType?: ArrayType);
+    constructor(
+        points: T[],
+        getX: Get<T>,
+        getY: Get<T>,
+        nodeSize?: number,
+        ArrayType?: ArrayType,
+    );
     ids: number[];
     coords: number[];
     nodeSize: number;

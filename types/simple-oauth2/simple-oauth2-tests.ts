@@ -54,7 +54,14 @@ const oauth2ResourceOwnerPassword = new oauth2lib.ResourceOwnerPassword(
         auth: { tokenHost: "x" },
         http: {
             baseUrl: undefined,
-            beforeRedirect(redirectMethod, statusCode, location, resHeaders, redirectOptions, next) {
+            beforeRedirect(
+                redirectMethod,
+                statusCode,
+                location,
+                resHeaders,
+                redirectOptions,
+                next,
+            ) {
                 // noop
             },
             json: true,
@@ -128,7 +135,9 @@ const oauth2ResourceOwnerPassword = new oauth2lib.ResourceOwnerPassword(
         result = await oauth2ResourceOwnerPassword.getToken(tokenConfig2);
         result = await oauth2ResourceOwnerPassword.getToken(tokenConfig3);
 
-        const accessToken = oauth2ResourceOwnerPassword.createToken(result.token);
+        const accessToken = oauth2ResourceOwnerPassword.createToken(
+            result.token,
+        );
     } catch (error) {
         console.log("Access Token Error", error.message);
     }
@@ -181,9 +190,14 @@ async function TestFnAccessTokenObject(
 
             accessToken = await accessToken.refresh({ scope: "scope1" });
 
-            accessToken = await accessToken.refresh({ scope: ["<scope1>", "<scope2>"] });
+            accessToken = await accessToken.refresh({
+                scope: ["<scope1>", "<scope2>"],
+            });
 
-            accessToken = await accessToken.refresh({ scope: ["<scope1>", "<scope2>"] }, httpOptions);
+            accessToken = await accessToken.refresh(
+                { scope: ["<scope1>", "<scope2>"] },
+                httpOptions,
+            );
 
             console.log("Token refreshed");
         } catch (error) {
@@ -249,7 +263,9 @@ TestFnAccessTokenObject(oauth2ResourceOwnerPassword);
     // Save the access token
     try {
         const result = await oauth2ResourceOwnerPassword.getToken(tokenConfig);
-        const accessToken = oauth2ResourceOwnerPassword.createToken(result.token);
+        const accessToken = oauth2ResourceOwnerPassword.createToken(
+            result.token,
+        );
     } catch (error) {
         console.log("Access Token Error", error.message);
     }

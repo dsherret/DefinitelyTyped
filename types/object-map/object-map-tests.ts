@@ -13,6 +13,10 @@ const myThis = {
     mul: 2,
     count: 0,
 };
-objectMap(obj, function(val, key) {
-    this.count += this.mul * val;
-}, myThis);
+objectMap(
+    obj,
+    function (val, key) {
+        this.count += this.mul * val;
+    },
+    myThis,
+);

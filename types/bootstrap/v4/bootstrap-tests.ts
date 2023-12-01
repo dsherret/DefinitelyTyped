@@ -34,7 +34,7 @@ $("#carousel").carousel("pause");
 
 $("#carousel").carousel(100);
 
-$("#carousel").on("slide.bs.carousel", function(e) {
+$("#carousel").on("slide.bs.carousel", function (e) {
     const that: HTMLElement = this;
 
     const data: undefined = e.data;
@@ -171,7 +171,7 @@ $("#modal").modal({
     backdrop: "static",
 });
 
-$("#modal").on("hidePrevented.bs.modal", e => {
+$("#modal").on("hidePrevented.bs.modal", (e) => {
     const { data, target: modal } = e;
 });
 
@@ -195,8 +195,8 @@ $("#popover").popover({
     delay: { show: 500, hide: 100 },
     html: true,
     placement: "auto",
-    selector: "[rel=\"popover\"]",
-    template: "<div class=\"popover empty\" role=\"popover\"></div>",
+    selector: '[rel="popover"]',
+    template: '<div class="popover empty" role="popover"></div>',
     title: "Hello world",
     trigger: "hover focus",
     offset: 10,
@@ -276,7 +276,7 @@ $("#scrollspy").scrollspy({
 // $ExpectType JQuery<HTMLElement>
 $("#someListItem").tab("show");
 
-$("a[data-toggle=\"list\"]").on("shown.bs.tab", (e) => {
+$('a[data-toggle="list"]').on("shown.bs.tab", (e) => {
     const data: undefined = e.data;
     const newlyActivatedTab: HTMLElement = e.target;
     const previousActiveTab: HTMLElement = e.relatedTarget;
@@ -321,8 +321,8 @@ $("#tooltip").tooltip({
     delay: { show: 500, hide: 100 },
     html: true,
     placement: "auto",
-    selector: "[rel=\"tooltip\"]",
-    template: "<div class=\"tooltip empty\" role=\"tooltip\"></div>",
+    selector: '[rel="tooltip"]',
+    template: '<div class="tooltip empty" role="tooltip"></div>',
     title: "Hello world",
     trigger: "hover focus",
     offset: 10,

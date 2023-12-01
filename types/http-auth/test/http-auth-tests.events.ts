@@ -7,15 +7,15 @@ const basic = auth.basic({
 });
 
 // Adding event listeners.
-basic.on("success", result => {
+basic.on("success", (result) => {
     console.log(`User authenticated: ${result.user}`);
 });
 
-basic.on("fail", result => {
+basic.on("fail", (result) => {
     console.log(`User authentication failed: ${result.user}`);
 });
 
-basic.on("error", error => {
+basic.on("error", (error) => {
     console.log(`Authentication error: ${error.message}`);
 });
 

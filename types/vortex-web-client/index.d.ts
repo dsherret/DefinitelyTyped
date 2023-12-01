@@ -13,8 +13,7 @@ declare namespace DDS {
     /**
      * Base class for all policies
      */
-    interface Policy {
-    }
+    interface Policy {}
 
     /**
      * History policy
@@ -123,7 +122,7 @@ declare namespace DDS {
          *
          * @param policies - list of policies for the Qos entity
          */
-        new(...policies: Policy[]): EntityQos;
+        new (...policies: Policy[]): EntityQos;
 
         /**
          * Adds the given policy to this instance.
@@ -157,7 +156,13 @@ declare namespace DDS {
          * @param {string} ttype - topic type. If not specified, a generic type is used.
          * @param {string} tregtype - topic registered type name. If not specified, 'ttype' is used.
          */
-        constructor(did: number, tname: string, qos: EntityQos, ttype?: string, tregtype?: string);
+        constructor(
+            did: number,
+            tname: string,
+            qos: EntityQos,
+            ttype?: string,
+            tregtype?: string,
+        );
 
         /**
          * Called when topic gets registered in the runtime
@@ -387,7 +392,7 @@ declare namespace DDS {
          * maintains the connection with the server, re-establish the connection
          * if dropped and mediates the `DataReader` and `DataWriter` communication.
          */
-        new(): Runtime;
+        new (): Runtime;
 
         /**
          * Connect the runtime to the server. If the runtime is already connected an exception is thrown

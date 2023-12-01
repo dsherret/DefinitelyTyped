@@ -1,4 +1,11 @@
-import traverse, { Binding, Hub, NodePath, TraverseOptions, Visitor, visitors } from "@babel/traverse";
+import traverse, {
+    Binding,
+    Hub,
+    NodePath,
+    TraverseOptions,
+    Visitor,
+    visitors,
+} from "@babel/traverse";
 import * as t from "@babel/types";
 
 // Examples from: https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md
@@ -57,21 +64,31 @@ const v1: Visitor = {
             // ...
         }
         // $ExpectType [NodePath<BinaryExpression>]
-        path.replaceWith(t.binaryExpression("**", path.node.left, t.numericLiteral(2)));
+        path.replaceWith(
+            t.binaryExpression("**", path.node.left, t.numericLiteral(2)),
+        );
         path.parentPath.replaceWith(
-            t.expressionStatement(t.stringLiteral("Anyway the wind blows, doesn't really matter to me, to me.")),
+            t.expressionStatement(
+                t.stringLiteral(
+                    "Anyway the wind blows, doesn't really matter to me, to me.",
+                ),
+            ),
         );
         // $ExpectType [NodePath<BinaryExpression>]
-        path.replaceInline(t.binaryExpression("**", path.node.left, t.numericLiteral(2)));
+        path.replaceInline(
+            t.binaryExpression("**", path.node.left, t.numericLiteral(2)),
+        );
         // $ExpectType [NodePath<Node>]
         path.replaceWithSourceString("3 * 4") as [NodePath];
         // $ExpectType [NodePath<BinaryExpression>, NodePath<ExpressionStatement>]
-        path.replaceInline(
-            [
-                t.binaryExpression("**", path.node.left, t.numericLiteral(2)),
-                t.expressionStatement(t.stringLiteral("Anyway the wind blows, doesn't really matter to me, to me.")),
-            ] as const,
-        );
+        path.replaceInline([
+            t.binaryExpression("**", path.node.left, t.numericLiteral(2)),
+            t.expressionStatement(
+                t.stringLiteral(
+                    "Anyway the wind blows, doesn't really matter to me, to me.",
+                ),
+            ),
+        ] as const);
         path.parentPath.remove();
     },
 
@@ -90,13 +107,15 @@ const v1: Visitor = {
         path.type; // $ExpectType "ReturnStatement"
 
         // $ExpectType [NodePath<ExpressionStatement>, NodePath<ExpressionStatement>, NodePath<ExpressionStatement>]
-        path.replaceWithMultiple(
-            [
-                t.expressionStatement(t.stringLiteral("Is this the real life?")),
-                t.expressionStatement(t.stringLiteral("Is this just fantasy?")),
-                t.expressionStatement(t.stringLiteral("(Enjoy singing the rest of the song in your head)")),
-            ] as const,
-        );
+        path.replaceWithMultiple([
+            t.expressionStatement(t.stringLiteral("Is this the real life?")),
+            t.expressionStatement(t.stringLiteral("Is this just fantasy?")),
+            t.expressionStatement(
+                t.stringLiteral(
+                    "(Enjoy singing the rest of the song in your head)",
+                ),
+            ),
+        ] as const);
     },
 
     FunctionDeclaration(path, state) {
@@ -107,14 +126,28 @@ const v1: Visitor = {
         }`);
 
         // $ExpectType [NodePath<ExpressionStatement>]
-        path.get("body").unshiftContainer("body", t.expressionStatement(t.stringLiteral("Start of function")));
+        path.get("body").unshiftContainer(
+            "body",
+            t.expressionStatement(t.stringLiteral("Start of function")),
+        );
         // $ExpectType [NodePath<ExpressionStatement>]
-        path.get("body").pushContainer("body", t.expressionStatement(t.stringLiteral("End of function")));
+        path.get("body").pushContainer(
+            "body",
+            t.expressionStatement(t.stringLiteral("End of function")),
+        );
 
         // $ExpectType [NodePath<ExpressionStatement>]
-        path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
+        path.insertBefore(
+            t.expressionStatement(
+                t.stringLiteral("Because I'm easy come, easy go."),
+            ),
+        );
         // $ExpectType [NodePath<ExpressionStatement>]
-        path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
+        path.insertAfter(
+            t.expressionStatement(
+                t.stringLiteral("A little high, little low."),
+            ),
+        );
         path.remove();
 
         if (path.scope.hasBinding("n")) {
@@ -134,7 +167,11 @@ const v1: Visitor = {
         const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id!);
         path.remove();
         path.scope.parent.push({ id });
-        path.scope.parent.push({ id, init: t.stringLiteral("foo"), kind: "const" });
+        path.scope.parent.push({
+            id,
+            init: t.stringLiteral("foo"),
+            kind: "const",
+        });
 
         path.scope.rename("n", "x");
         path.scope.rename("n");
@@ -160,10 +197,9 @@ const v1: Visitor = {
             booleanPath;
         }
         {
-            const [stringPath, booleanPath] = path.replaceWithMultiple<[t.StringLiteral, t.BooleanLiteral]>([
-                t.stringLiteral("hello"),
-                t.booleanLiteral(false),
-            ]);
+            const [stringPath, booleanPath] = path.replaceWithMultiple<
+                [t.StringLiteral, t.BooleanLiteral]
+            >([t.stringLiteral("hello"), t.booleanLiteral(false)]);
             // $ExpectType NodePath<StringLiteral>
             stringPath;
             // $ExpectType NodePath<BooleanLiteral>
@@ -184,30 +220,36 @@ const v1: Visitor = {
         path.type; // $ExpectType "SequenceExpression"
 
         {
-            const [newPath] = path.unshiftContainer("expressions", t.stringLiteral("hello"));
-            // $ExpectType NodePath<StringLiteral>
-            newPath;
-        }
-        {
-            const [newPath] = path.pushContainer("expressions", t.stringLiteral("hello"));
-            // $ExpectType NodePath<StringLiteral>
-            newPath;
-        }
-        {
-            const [stringPath, booleanPath] = path.unshiftContainer("expressions", [
+            const [newPath] = path.unshiftContainer(
+                "expressions",
                 t.stringLiteral("hello"),
-                t.booleanLiteral(false),
-            ]);
+            );
+            // $ExpectType NodePath<StringLiteral>
+            newPath;
+        }
+        {
+            const [newPath] = path.pushContainer(
+                "expressions",
+                t.stringLiteral("hello"),
+            );
+            // $ExpectType NodePath<StringLiteral>
+            newPath;
+        }
+        {
+            const [stringPath, booleanPath] = path.unshiftContainer(
+                "expressions",
+                [t.stringLiteral("hello"), t.booleanLiteral(false)],
+            );
             // $ExpectType NodePath<StringLiteral>
             stringPath;
             // $ExpectType NodePath<BooleanLiteral>
             booleanPath;
         }
         {
-            const [stringPath, booleanPath] = path.pushContainer("expressions", [
-                t.stringLiteral("hello"),
-                t.booleanLiteral(false),
-            ]);
+            const [stringPath, booleanPath] = path.pushContainer(
+                "expressions",
+                [t.stringLiteral("hello"), t.booleanLiteral(false)],
+            );
             // $ExpectType NodePath<StringLiteral>
             stringPath;
             // $ExpectType NodePath<BooleanLiteral>
@@ -218,7 +260,10 @@ const v1: Visitor = {
                 t.SequenceExpression,
                 "expressions",
                 [t.StringLiteral, t.BooleanLiteral]
-            >("expressions", [t.stringLiteral("hello"), t.booleanLiteral(false)]);
+            >("expressions", [
+                t.stringLiteral("hello"),
+                t.booleanLiteral(false),
+            ]);
             // $ExpectType NodePath<StringLiteral>
             stringPath;
             // $ExpectType NodePath<BooleanLiteral>
@@ -229,7 +274,10 @@ const v1: Visitor = {
                 t.SequenceExpression,
                 "expressions",
                 [t.StringLiteral, t.BooleanLiteral]
-            >("expressions", [t.stringLiteral("hello"), t.booleanLiteral(false)]);
+            >("expressions", [
+                t.stringLiteral("hello"),
+                t.booleanLiteral(false),
+            ]);
             // $ExpectType NodePath<StringLiteral>
             stringPath;
             // $ExpectType NodePath<BooleanLiteral>
@@ -368,24 +416,22 @@ const optionsWithInvalidDenylist: TraverseOptions = {
     denylist: ["SomeRandomType"],
 };
 
-const objectTypeAnnotation: NodePath<t.ObjectTypeAnnotation> = new NodePath<t.ObjectTypeAnnotation>(
-    null as any,
-    {} as any,
-);
+const objectTypeAnnotation: NodePath<t.ObjectTypeAnnotation> =
+    new NodePath<t.ObjectTypeAnnotation>(null as any, {} as any);
 
 objectTypeAnnotation.get("indexers"); // $ExpectType NodePathResult<ObjectTypeIndexer[] | undefined>
 
 // Test that NodePath can be narrowed from union to single type
-const path: NodePath<t.ExportDefaultDeclaration | t.ExportNamedDeclaration> = new NodePath<t.ExportNamedDeclaration>(
-    null as any,
-    {} as any,
-);
+const path: NodePath<t.ExportDefaultDeclaration | t.ExportNamedDeclaration> =
+    new NodePath<t.ExportNamedDeclaration>(null as any, {} as any);
 
 if (path.isExportNamedDeclaration()) {
     path.type; // $ExpectType "ExportNamedDeclaration"
 }
 
-const nullPath: NodePath<t.Identifier | undefined> = new NodePath<t.Identifier | undefined>(null as any, {} as any);
+const nullPath: NodePath<t.Identifier | undefined> = new NodePath<
+    t.Identifier | undefined
+>(null as any, {} as any);
 
 nullPath.type; // $ExpectType "Identifier" | undefined
 
@@ -466,5 +512,6 @@ const outerIdentifierPathFalse = newPath.getOuterBindingIdentifierPaths(false);
 outerIdentifierPathFalse; // $ExpectType Record<string, NodePath<Identifier>>
 const outerIdentifierPathTrue = newPath.getOuterBindingIdentifierPaths(true);
 outerIdentifierPathTrue; // $ExpectType Record<string, NodePath<Identifier>[]>
-const outerIdentifierPathBoolean = newPath.getOuterBindingIdentifierPaths(booleanVar);
+const outerIdentifierPathBoolean =
+    newPath.getOuterBindingIdentifierPaths(booleanVar);
 outerIdentifierPathBoolean; // $ExpectType Record<string, NodePath<Identifier> | NodePath<Identifier>[]>

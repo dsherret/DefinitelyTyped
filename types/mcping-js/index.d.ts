@@ -10,9 +10,9 @@ export interface PingResponse {
         online: number;
         sample?:
             | Array<{
-                name: string;
-                id: string;
-            }>
+                  name: string;
+                  id: string;
+              }>
             | undefined;
     };
 

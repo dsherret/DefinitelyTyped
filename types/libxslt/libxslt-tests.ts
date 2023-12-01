@@ -1,7 +1,8 @@
 import * as libxmljs from "libxmljs";
 import * as libxslt from "libxslt";
 
-const document: libxmljs.Document = libxslt.libxmljs.parseXmlString("<xml></xml>");
+const document: libxmljs.Document =
+    libxslt.libxmljs.parseXmlString("<xml></xml>");
 
 let stylesheet: libxslt.Stylesheet;
 

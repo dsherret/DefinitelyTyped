@@ -4,11 +4,11 @@ interface Result {
     id: number;
 }
 
-request<Result>({ method: "GET", url: "/item" }).then(result => {
+request<Result>({ method: "GET", url: "/item" }).then((result) => {
     console.log(result.id);
 });
 
-request<{ a: string }>("/item", { method: "POST" }).then(result => {
+request<{ a: string }>("/item", { method: "POST" }).then((result) => {
     console.log(result.a);
 });
 
@@ -16,7 +16,7 @@ request<any>({
     method: "GET",
     url: "/item",
     params: { x: "y" },
-}).then(result => {
+}).then((result) => {
     console.log(result);
 });
 
@@ -24,7 +24,7 @@ request<any>({
     method: "GET",
     url: "/item",
     body: { x: "y" },
-}).then(result => {
+}).then((result) => {
     console.log(result);
 });
 
@@ -33,21 +33,21 @@ request<Result>({
     url: "/item",
     body: "5",
     serialize: (data: number) => "id=" + data.toString(),
-}).then(result => {
+}).then((result) => {
     console.log(result);
 });
 
 request<Result>("/item", {
     method: "GET",
-    deserialize: str => JSON.parse(str) as Result,
-}).then(result => {
+    deserialize: (str) => JSON.parse(str) as Result,
+}).then((result) => {
     console.log(result.id);
 });
 
 request<Result>("/id", {
     method: "GET",
-    extract: xhr => ({ id: Number(xhr.responseText) }),
-}).then(result => {
+    extract: (xhr) => ({ id: Number(xhr.responseText) }),
+}).then((result) => {
     console.log(result.id);
 });
 
@@ -59,7 +59,7 @@ request<Result>("/item", {
     },
     headers: { "Content-Type": "application/json" },
     background: true,
-}).then(result => {
+}).then((result) => {
     console.log(result.id);
 });
 
@@ -78,7 +78,7 @@ request<Item>("/item", {
     withCredentials: true,
     type: Item,
     useBody: false,
-}).then(item => {
+}).then((item) => {
     console.log(item.identifier);
 });
 

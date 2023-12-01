@@ -12,7 +12,12 @@ console.log(storage.getDataPath().length);
 
 storage.set("foo", { foo: "bar" }, (err: any) => {});
 storage.set("bar", { foo: "bar" }, (err: any) => {});
-storage.set("baz", { foo: "bar" }, { dataPath: NEW_DATA_PATH }, (err: any) => {});
+storage.set(
+    "baz",
+    { foo: "bar" },
+    { dataPath: NEW_DATA_PATH },
+    (err: any) => {},
+);
 
 storage.get("foo", (err: any, data: object) => {
     console.log(JSON.stringify(data));
@@ -29,9 +34,13 @@ console.log(storage.getSync("baz", { dataPath: NEW_DATA_PATH }));
 storage.getMany(["foo", "bar"], (err: any, data: object) => {
     console.log(JSON.stringify(data));
 });
-storage.getMany(["baz"], { dataPath: NEW_DATA_PATH }, (err: any, data: object) => {
-    console.log(JSON.stringify(data));
-});
+storage.getMany(
+    ["baz"],
+    { dataPath: NEW_DATA_PATH },
+    (err: any, data: object) => {
+        console.log(JSON.stringify(data));
+    },
+);
 
 storage.getAll((err: any, data: object) => {
     console.log(JSON.stringify(data));

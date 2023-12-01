@@ -8,7 +8,11 @@ new vis.DataSet([]);
 new vis.DataSet([], {});
 
 // Test Network constructor
-new vis.Network(new HTMLDivElement(), { nodes: new vis.DataSet(), edges: new vis.DataSet() }, {});
+new vis.Network(
+    new HTMLDivElement(),
+    { nodes: new vis.DataSet(), edges: new vis.DataSet() },
+    {},
+);
 
 //
 // Test code sample from http://visjs.org/docs/data/dataset.html#Example
@@ -30,7 +34,13 @@ let data = new vis.DataSet<TestData>(options);
 // add items
 // note that the data items can contain different properties and data formats
 data.add([
-    { id: 1, text: "item 1", date: new Date(2013, 6, 20), group: 1, first: true },
+    {
+        id: 1,
+        text: "item 1",
+        date: new Date(2013, 6, 20),
+        group: 1,
+        first: true,
+    },
     { id: 2, text: "item 2", date: "2013-06-23", group: 2 },
     { id: 3, text: "item 3", date: "2013-06-25", group: 2 },
     { id: 4, text: "item 4" },
@@ -81,7 +91,14 @@ data = new vis.DataSet<TestData>();
 
 // subscribe to any change in the DataSet
 data.on("*", (event: any, properties: any, senderId: any) => {
-    console.log("event:", event, "properties:", properties, "senderId:", senderId);
+    console.log(
+        "event:",
+        event,
+        "properties:",
+        properties,
+        "senderId:",
+        senderId,
+    );
 });
 
 // add an item
@@ -136,7 +153,7 @@ const dataset = new vis.DataSet<TestData>();
 // retrieve all items having a property group with value 2
 const group2 = dataset.get({
     filter: (item: any) => {
-        return (item.group === 2);
+        return item.group === 2;
     },
 });
 
@@ -151,10 +168,16 @@ const positiveBalance = dataset.get({
 const groups = [
     { id: "1", content: "group 1", visible: true },
     { id: "2", content: "group 2", visible: false },
-    { id: "3", content: "parent group", nestedGroups: ["1", "2"], visible: false, showNested: true },
+    {
+        id: "3",
+        content: "parent group",
+        nestedGroups: ["1", "2"],
+        visible: false,
+        showNested: true,
+    },
 ];
 
-const timelineContainer = <HTMLElement> document.getElementById("timeline");
+const timelineContainer = <HTMLElement>document.getElementById("timeline");
 const timeline = new vis.Timeline(timelineContainer, [], groups);
 
 //
@@ -179,7 +202,7 @@ const edges = new vis.DataSet([
 ]);
 
 // create a network
-const container = <HTMLElement> document.getElementById("mynetwork");
+const container = <HTMLElement>document.getElementById("mynetwork");
 
 // provide the data in the vis format
 const data2 = { nodes, edges };
@@ -217,8 +240,10 @@ const locales = {
         editNode: "Edit Node",
         editEdge: "Edit Edge",
         addDescription: "Click in an empty space to place a new node.",
-        edgeDescription: "Click on a node and drag the edge to another node to connect them.",
-        editEdgeDescription: "Click on the control points and drag them to a node to connect to it.",
+        edgeDescription:
+            "Click on a node and drag the edge to another node to connect them.",
+        editEdgeDescription:
+            "Click on the control points and drag them to a node to connect to it.",
         createEdgeError: "Cannot link edges to a cluster.",
         deleteClusterError: "Clusters cannot be deleted.",
         editClusterError: "Clusters cannot be edited.",

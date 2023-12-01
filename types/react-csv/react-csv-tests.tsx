@@ -30,7 +30,8 @@ const syncOnClickReturn = (
     window.console.log(event);
     return true;
 };
-const syncOnClickVoid = (event: React.MouseEventHandler<HTMLAnchorElement>) => window.console.log(event);
+const syncOnClickVoid = (event: React.MouseEventHandler<HTMLAnchorElement>) =>
+    window.console.log(event);
 const asyncOnClickReturn = (
     event: React.MouseEventHandler<HTMLAnchorElement>,
     done: (proceed?: boolean) => void,

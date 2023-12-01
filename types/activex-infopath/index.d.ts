@@ -302,7 +302,10 @@ declare namespace InfoPath {
         readonly QueryAdapter: any;
         Save(): void;
         SaveAs(bstrFileUrl: string): void;
-        SetDataVariable(lVariableNumber: number, bstrVariableValue: string): void;
+        SetDataVariable(
+            lVariableNumber: number,
+            bstrVariableValue: string,
+        ): void;
         readonly Solution: SolutionObject;
         Submit(): void;
         readonly UI: UI;
@@ -330,7 +333,11 @@ declare namespace InfoPath {
         private constructor();
         readonly ActiveWindow: Window;
         CacheSolution(bstrSolutionURI: string): void;
-        FormatString(varInput: any, bstrCategory: string, bstrOptions: string): string;
+        FormatString(
+            varInput: any,
+            bstrCategory: string,
+            bstrOptions: string,
+        ): string;
         IsDestinationReachable(bstrDestination: string): boolean;
         readonly LanguageSettings: any;
         readonly MachineOnlineState: XdMachineOnlineState;
@@ -557,7 +564,10 @@ declare namespace InfoPath {
         /** @param number [dwBehavior=1] */
         New(bstrDocumentURI: string, dwBehavior?: number): void;
         NewFromSolution(bstrSolutionURI: string): void;
-        NewFromSolutionWithInputParameters(bstrSolutionURI: string, bstrInputParameters: string): void;
+        NewFromSolutionWithInputParameters(
+            bstrSolutionURI: string,
+            bstrInputParameters: string,
+        ): void;
 
         /** @param number [dwBehavior=1] */
         Open(bstrDocumentURI: string, dwBehavior?: number): void;
@@ -591,7 +601,11 @@ declare namespace InfoPath {
     class IInitEventHandler {
         private "InfoPath.IInitEventHandler_typekey": IInitEventHandler;
         private constructor();
-        InitEventHandler(punkSender: any, pDocument: _XDocument, pROMode: XdReadOnlyViewMode): void;
+        InitEventHandler(
+            punkSender: any,
+            pDocument: _XDocument,
+            pROMode: XdReadOnlyViewMode,
+        ): void;
     }
 
     class InfoPathEditorObject {
@@ -605,7 +619,11 @@ declare namespace InfoPath {
         Load(bstrURL: string): void;
         LoadFromStream(punkStream: any): void;
         NewFromSolution(bstrSolutionURI: string): void;
-        NewFromSolutionWithData(bstrURLXSN: string, punkStream: any, dwBehavior: number): void;
+        NewFromSolutionWithData(
+            bstrURLXSN: string,
+            punkStream: any,
+            dwBehavior: number,
+        ): void;
         SetInitEventHandler(handler: IInitEventHandler): void;
         SetNotifyHostEventHandler(pHandler: INotifyHostEventHandler): void;
         SetSubmitToHostEventHandler(pHandler: ISubmitToHostEventHandler): void;
@@ -635,7 +653,11 @@ declare namespace InfoPath {
     class ISubmitToHostEventHandler {
         private "InfoPath.ISubmitToHostEventHandler_typekey": ISubmitToHostEventHandler;
         private constructor();
-        SubmitToHostEventHandler(punkSender: any, bstrAdapterName: string, pbstrErrorMessage: string): number;
+        SubmitToHostEventHandler(
+            punkSender: any,
+            bstrAdapterName: string,
+            pbstrErrorMessage: string,
+        ): number;
     }
 
     class MailEnvelopeObject {
@@ -652,7 +674,10 @@ declare namespace InfoPath {
         private "InfoPath.MathObject_typekey": MathObject;
         private constructor();
         Avg(pxmllistInput: MSXML2.IXMLDOMNodeList): any;
-        Eval(pxmllistContext: MSXML2.IXMLDOMNodeList, bstrExpression: string): any;
+        Eval(
+            pxmllistContext: MSXML2.IXMLDOMNodeList,
+            bstrExpression: string,
+        ): any;
         Max(pxmllistInput: MSXML2.IXMLDOMNodeList): any;
         Min(pxmllistInput: MSXML2.IXMLDOMNodeList): any;
         Nz(pxmllistInput: MSXML2.IXMLDOMNodeList): any;
@@ -672,7 +697,11 @@ declare namespace InfoPath {
     class PermissionObject {
         private "InfoPath.PermissionObject_typekey": PermissionObject;
         private constructor();
-        Add(bstrUserId: string, varPermission?: any, varExpirationDate?: any): UserPermissionObject;
+        Add(
+            bstrUserId: string,
+            varPermission?: any,
+            varExpirationDate?: any,
+        ): UserPermissionObject;
         ApplyPolicy(bstrFileName: string): void;
         readonly Count: number;
         DocumentAuthor: string;
@@ -837,7 +866,13 @@ declare namespace InfoPath {
         private "InfoPath.UI_typekey": UI;
         private constructor();
         Alert(bstrAlertString: string): void;
-        ShowMailItem(bstrTo: string, bstrCC: string, bstrBCC: string, bstrSubject: string, bstrBody: string): void;
+        ShowMailItem(
+            bstrTo: string,
+            bstrCC: string,
+            bstrBCC: string,
+            bstrSubject: string,
+            bstrBody: string,
+        ): void;
         ShowModalDialog(
             bstrName: string,
             varArguments?: any,
@@ -853,10 +888,19 @@ declare namespace InfoPath {
         private "InfoPath.UIObject_typekey": UIObject;
         private constructor();
         Alert(bstrAlertString: string): void;
-        Confirm(bstrPrompt: string, lButtons: XdConfirmButtons): XdConfirmChoice;
+        Confirm(
+            bstrPrompt: string,
+            lButtons: XdConfirmButtons,
+        ): XdConfirmChoice;
         SetSaveAsDialogFileName(bstrFileName: string): void;
         SetSaveAsDialogLocation(bstrLocation: string): void;
-        ShowMailItem(bstrTo: string, bstrCC: string, bstrBCC: string, bstrSubject: string, bstrBody: string): void;
+        ShowMailItem(
+            bstrTo: string,
+            bstrCC: string,
+            bstrBCC: string,
+            bstrSubject: string,
+            bstrBody: string,
+        ): void;
         ShowModalDialog(
             bstrName: string,
             varArguments?: any,
@@ -924,10 +968,17 @@ declare namespace InfoPath {
         ExecuteAction(bstrAction: string, varXmlToEdit?: any): void;
         Export(bstrURL: string, bstrFormat: string): void;
         ForceUpdate(): void;
-        GetContextNodes(varNode?: any, varViewContext?: any): XMLNodesCollection;
+        GetContextNodes(
+            varNode?: any,
+            varViewContext?: any,
+        ): XMLNodesCollection;
         GetSelectedNodes(): XMLNodesCollection;
         readonly Name: string;
-        SelectNodes(pxnStartNode: MSXML2.IXMLDOMNode, varEndNode?: any, varViewContext?: any): void;
+        SelectNodes(
+            pxnStartNode: MSXML2.IXMLDOMNode,
+            varEndNode?: any,
+            varViewContext?: any,
+        ): void;
         SelectText(pxnField: MSXML2.IXMLDOMNode, varViewContext?: any): void;
         SwitchView(bstrName: string): void;
         readonly Window: Window;
@@ -1011,7 +1062,11 @@ declare namespace InfoPath {
         readonly Extension: any;
         GetDataVariable(lVariableNumber: number): string;
         GetDOM(bstrName: string): MSXML2.IXMLDOMDocument;
-        GetNamedNodeProperty(varMainDOMNode: any, bstrPropertyName: string, bstrDefaultValue: string): string;
+        GetNamedNodeProperty(
+            varMainDOMNode: any,
+            bstrPropertyName: string,
+            bstrDefaultValue: string,
+        ): string;
         ImportDOM(pxDoc: MSXML2.IXMLDOMDocument): void;
         ImportFile(bstrFileURI: string): void;
         readonly IsDirty: boolean;
@@ -1027,9 +1082,16 @@ declare namespace InfoPath {
         Role: string;
         Save(): void;
         SaveAs(bstrFileUrl: string): void;
-        SetDataVariable(lVariableNumber: number, bstrVariableValue: string): void;
+        SetDataVariable(
+            lVariableNumber: number,
+            bstrVariableValue: string,
+        ): void;
         SetDirty(vfIsDirty: boolean): void;
-        SetNamedNodeProperty(pxmlMainDOMNode: MSXML2.IXMLDOMNode, bstrPropertyName: string, bstrValue: string): void;
+        SetNamedNodeProperty(
+            pxmlMainDOMNode: MSXML2.IXMLDOMNode,
+            bstrPropertyName: string,
+            bstrValue: string,
+        ): void;
         readonly SignedDataBlocks: SignedDataBlocksCollection;
         readonly Solution: SolutionObject;
         Submit(): void;
@@ -1067,7 +1129,11 @@ declare namespace InfoPath {
         NewFromSolution(varURI: any): _XDocument;
 
         /** @param number [dwBehavior=1] */
-        NewFromSolutionWithData(varXMLData: any, varSolutionURI: any, dwBehavior?: number): XDocument;
+        NewFromSolutionWithData(
+            varXMLData: any,
+            varSolutionURI: any,
+            dwBehavior?: number,
+        ): XDocument;
 
         /** @param number [dwBehavior=1] */
         Open(varURI: any, dwBehavior?: number): _XDocument;
@@ -1176,16 +1242,25 @@ interface ActiveXObject {
         argNames: ["pDocument", "pWindow"],
         handler: (
             this: InfoPath.ApplicationEvents,
-            parameter: { readonly pDocument: InfoPath._XDocument; readonly pWindow: InfoPath.Window },
+            parameter: {
+                readonly pDocument: InfoPath._XDocument;
+                readonly pWindow: InfoPath.Window;
+            },
         ) => void,
     ): void;
     on(
         obj: InfoPath.ApplicationEvents,
-        event: "XDocumentBeforeClose" | "XDocumentBeforePrint" | "XDocumentBeforeSave",
+        event:
+            | "XDocumentBeforeClose"
+            | "XDocumentBeforePrint"
+            | "XDocumentBeforeSave",
         argNames: ["pDocument", "pfCancel"],
         handler: (
             this: InfoPath.ApplicationEvents,
-            parameter: { readonly pDocument: InfoPath._XDocument; pfCancel: boolean },
+            parameter: {
+                readonly pDocument: InfoPath._XDocument;
+                pfCancel: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -1209,14 +1284,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: InfoPath.Button,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: InfoPath.Button,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: InfoPath.Button, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: InfoPath.Button,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.Button,
@@ -1231,13 +1313,19 @@ interface ActiveXObject {
         obj: InfoPath.Button,
         event: "OnClick",
         argNames: ["pEvent"],
-        handler: (this: InfoPath.Button, parameter: { readonly pEvent: InfoPath.DocActionEventObject }) => void,
+        handler: (
+            this: InfoPath.Button,
+            parameter: { readonly pEvent: InfoPath.DocActionEventObject },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.Button,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: InfoPath.Button, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: InfoPath.Button,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.DataDOM,
@@ -1260,14 +1348,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: InfoPath.DataDOM,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: InfoPath.DataDOM,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: InfoPath.DataDOM, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: InfoPath.DataDOM,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.DataDOM,
@@ -1291,7 +1386,10 @@ interface ActiveXObject {
         obj: InfoPath.DataDOM,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: InfoPath.DataDOM, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: InfoPath.DataDOM,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
@@ -1314,14 +1412,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: InfoPath.XDocument,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: InfoPath.XDocument, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
@@ -1347,7 +1452,9 @@ interface ActiveXObject {
         argNames: ["pEvent"],
         handler: (
             this: InfoPath.XDocument,
-            parameter: { readonly pEvent: InfoPath.DocContextChangeEventObject },
+            parameter: {
+                readonly pEvent: InfoPath.DocContextChangeEventObject;
+            },
         ) => void,
     ): void;
     on(
@@ -1363,31 +1470,46 @@ interface ActiveXObject {
         obj: InfoPath.XDocument,
         event: "OnMergeRequest",
         argNames: ["pEvent"],
-        handler: (this: InfoPath.XDocument, parameter: { readonly pEvent: InfoPath.MergeEventObject }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { readonly pEvent: InfoPath.MergeEventObject },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
         event: "OnSaveRequest",
         argNames: ["pEvent"],
-        handler: (this: InfoPath.XDocument, parameter: { readonly pEvent: InfoPath.SaveEventObject }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { readonly pEvent: InfoPath.SaveEventObject },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
         event: "OnSign",
         argNames: ["pEvent"],
-        handler: (this: InfoPath.XDocument, parameter: { readonly pEvent: InfoPath.SignEventObject }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { readonly pEvent: InfoPath.SignEventObject },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
         event: "OnVersionUpgrade",
         argNames: ["pEvent"],
-        handler: (this: InfoPath.XDocument, parameter: { readonly pEvent: InfoPath.VersionUpgradeEventObject }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { readonly pEvent: InfoPath.VersionUpgradeEventObject },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.XDocument,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: InfoPath.XDocument, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: InfoPath.XDocument,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: InfoPath.ApplicationEvents,
@@ -1418,19 +1540,37 @@ interface ActiveXObjectNameMap {
 }
 
 interface EnumeratorConstructor {
-    new(col: InfoPath.DataAdaptersCollection): Enumerator<any>; // tslint:disable-line:use-default-type-parameter
-    new(col: InfoPath.DataObjectsCollection): Enumerator<InfoPath.DataSourceObject>;
-    new(col: InfoPath.ErrorsCollection): Enumerator<ADODB.Error>;
-    new(col: InfoPath.InputParameterCollection): Enumerator<InfoPath.InputParameterObject>;
-    new(col: InfoPath.PermissionObject): Enumerator<InfoPath.UserPermissionObject>;
-    new(col: InfoPath.SignatureLinesCollection): Enumerator<InfoPath.SignatureLineObject>;
-    new(col: InfoPath.SignaturesCollection): Enumerator<InfoPath.SignatureObject>;
-    new(col: InfoPath.SignedDataBlocksCollection): Enumerator<InfoPath.SignedDataBlockObject>;
-    new(col: InfoPath.TaskPanesCollection): Enumerator<InfoPath.TaskPaneObject>;
-    new(col: InfoPath.ViewInfosCollection): Enumerator<InfoPath.ViewInfoObject>;
-    new(col: InfoPath.WindowsCollection): Enumerator<InfoPath.Window>;
-    new(col: InfoPath.XDocuments | InfoPath.XDocumentsCollection): Enumerator<InfoPath._XDocument>;
-    new(col: InfoPath.XMLNodesCollection): Enumerator<MSXML2.IXMLDOMNode>;
+    new (col: InfoPath.DataAdaptersCollection): Enumerator<any>; // tslint:disable-line:use-default-type-parameter
+    new (
+        col: InfoPath.DataObjectsCollection,
+    ): Enumerator<InfoPath.DataSourceObject>;
+    new (col: InfoPath.ErrorsCollection): Enumerator<ADODB.Error>;
+    new (
+        col: InfoPath.InputParameterCollection,
+    ): Enumerator<InfoPath.InputParameterObject>;
+    new (
+        col: InfoPath.PermissionObject,
+    ): Enumerator<InfoPath.UserPermissionObject>;
+    new (
+        col: InfoPath.SignatureLinesCollection,
+    ): Enumerator<InfoPath.SignatureLineObject>;
+    new (
+        col: InfoPath.SignaturesCollection,
+    ): Enumerator<InfoPath.SignatureObject>;
+    new (
+        col: InfoPath.SignedDataBlocksCollection,
+    ): Enumerator<InfoPath.SignedDataBlockObject>;
+    new (
+        col: InfoPath.TaskPanesCollection,
+    ): Enumerator<InfoPath.TaskPaneObject>;
+    new (
+        col: InfoPath.ViewInfosCollection,
+    ): Enumerator<InfoPath.ViewInfoObject>;
+    new (col: InfoPath.WindowsCollection): Enumerator<InfoPath.Window>;
+    new (
+        col: InfoPath.XDocuments | InfoPath.XDocumentsCollection,
+    ): Enumerator<InfoPath._XDocument>;
+    new (col: InfoPath.XMLNodesCollection): Enumerator<MSXML2.IXMLDOMNode>;
 }
 
 interface SafeArray<T = any> {

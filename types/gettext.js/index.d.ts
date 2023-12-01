@@ -24,14 +24,24 @@ declare namespace i18n {
     }
 
     interface Gettext {
-        setMessages(domain: string, locale: string, messages: JsonDataMessages, plural_forms?: PluralForm): Gettext;
+        setMessages(
+            domain: string,
+            locale: string,
+            messages: JsonDataMessages,
+            plural_forms?: PluralForm,
+        ): Gettext;
         loadJSON(jsonData: JsonData, domain?: string): Gettext;
         setLocale(locale: string): Gettext;
         getLocale(): string;
         textdomain(domain?: string): Gettext | string;
 
         gettext(msgid: string, ...args: any[]): string;
-        ngettext(msgid: string, msgid_plural: string, n: number, ...args: any[]): string;
+        ngettext(
+            msgid: string,
+            msgid_plural: string,
+            n: number,
+            ...args: any[]
+        ): string;
         pgettext(msgctxt: string, msgid: string, ...args: any[]): string;
         dcnpgettext(
             domain: Optionull<string>,
@@ -42,7 +52,12 @@ declare namespace i18n {
             ...args: any[]
         ): string;
         __(msgid: string, ...args: any[]): string;
-        _n(msgid: string, msgid_plural: string, n: number, ...args: any[]): string;
+        _n(
+            msgid: string,
+            msgid_plural: string,
+            n: number,
+            ...args: any[]
+        ): string;
         _p(msgctxt: string, msgid: string, ...args: any[]): string;
 
         strfmt(fmt: string, ...args: any[]): string;

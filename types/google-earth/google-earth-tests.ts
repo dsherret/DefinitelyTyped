@@ -1,4 +1,4 @@
-google.load("earth", "1", { "other_params": "sensor=true_or_false" });
+google.load("earth", "1", { other_params: "sensor=true_or_false" });
 
 google.earth.createInstance("map3d", initCB, failureCB);
 
@@ -23,13 +23,17 @@ function initCB(ge: google.earth.GEPlugin) {
     // Create normal style for style map.
     var normalStyle = ge.createStyle("");
     var normalIcon = ge.createIcon("");
-    normalIcon.setHref("http://maps.google.com/mapfiles/kml/paddle/red-circle.png");
+    normalIcon.setHref(
+        "http://maps.google.com/mapfiles/kml/paddle/red-circle.png",
+    );
     normalStyle.getIconStyle().setIcon(normalIcon);
 
     // Create highlight style for style map.
     var highlightStyle = ge.createStyle("");
     var highlightIcon = ge.createIcon("");
-    highlightIcon.setHref("http://google-maps-icons.googlecode.com/files/girlfriend.png");
+    highlightIcon.setHref(
+        "http://google-maps-icons.googlecode.com/files/girlfriend.png",
+    );
     highlightStyle.getIconStyle().setIcon(highlightIcon);
     highlightStyle.getIconStyle().setScale(5.0);
 
@@ -84,8 +88,9 @@ function initCB(ge: google.earth.GEPlugin) {
 
     // network link
     var link = ge.createLink("");
-    var href = "http://code.google.com/"
-        + "apis/earth/documentation/samples/kml_example.kml";
+    var href =
+        "http://code.google.com/" +
+        "apis/earth/documentation/samples/kml_example.kml";
     link.setHref(href);
 
     var networkLink = ge.createNetworkLink("");

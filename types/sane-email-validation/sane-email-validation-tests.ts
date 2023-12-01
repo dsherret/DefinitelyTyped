@@ -1,5 +1,9 @@
 import isEmail = require("sane-email-validation");
-import { isAsciiEmail, isNotAsciiEmail, isNotEmail } from "sane-email-validation";
+import {
+    isAsciiEmail,
+    isNotAsciiEmail,
+    isNotEmail,
+} from "sane-email-validation";
 
 // $ExpectType boolean
 isEmail("foo@bar.com");

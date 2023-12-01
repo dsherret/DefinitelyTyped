@@ -94,8 +94,14 @@ export function parseWithAttributeSchema(
     innerHTML: string,
     schema: Schema.Attribute | Schema.HTML | Schema.Text,
 ): string | undefined;
-export function parseWithAttributeSchema(innerHTML: string, schema: Schema.Children): ReactChild[];
-export function parseWithAttributeSchema(innerHTML: string, schema: Schema.Node): JSX.Element | null;
+export function parseWithAttributeSchema(
+    innerHTML: string,
+    schema: Schema.Children,
+): ReactChild[];
+export function parseWithAttributeSchema(
+    innerHTML: string,
+    schema: Schema.Node,
+): JSX.Element | null;
 export function parseWithAttributeSchema(
     innerHTML: string,
     schema: Schema.Tag,

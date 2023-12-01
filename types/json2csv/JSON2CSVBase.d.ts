@@ -19,7 +19,9 @@ declare abstract class JSON2CSVBase<T> {
      * or inferred from the data
      * @returns preprocessed FieldsInfo array
      */
-    preprocessFieldsInfo<T>(fields: Array<string | FieldInfo<T>>): Array<NormalizedFieldInfo<T>>;
+    preprocessFieldsInfo<T>(
+        fields: Array<string | FieldInfo<T>>,
+    ): Array<NormalizedFieldInfo<T>>;
 
     /**
      * Create the title row with all the provided fields as column headings

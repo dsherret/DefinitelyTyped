@@ -28,7 +28,7 @@ function insertRows() {
 function readAllRows() {
     console.log("readAllRows lorem");
     db.all("SELECT rowid AS id, info FROM lorem", (err, rows) => {
-        rows.forEach(row => {
+        rows.forEach((row) => {
             console.log(`${row.id}: ${row.info}`);
         });
         readSomeRows();
@@ -37,9 +37,14 @@ function readAllRows() {
 
 function readSomeRows() {
     console.log("readAllRows lorem");
-    db.each("SELECT rowid AS id, info FROM lorem WHERE rowid < ? ", 5, (err, row) => {
-        console.log(`${row.id}: ${row.info}`);
-    }, closeDb);
+    db.each(
+        "SELECT rowid AS id, info FROM lorem WHERE rowid < ? ",
+        5,
+        (err, row) => {
+            console.log(`${row.id}: ${row.info}`);
+        },
+        closeDb,
+    );
 }
 
 function closeDb() {
@@ -82,7 +87,7 @@ db.serialize(() => {
 db.serialize(() => {
     // These two queries will run sequentially.
     db.run("CREATE TABLE foo (num)");
-    db.run("INSERT INTO foo VALUES (?)", 1, err => {
+    db.run("INSERT INTO foo VALUES (?)", 1, (err) => {
         // These queries will run in parallel and the second query will probably
         // fail because the table might not exist yet.
         db.run("CREATE TABLE bar (num)");
@@ -101,14 +106,18 @@ db.run("UPDATE tbl SET name = $name WHERE id = $id", {
     $id: 2,
     $name: "bar",
 });
-db.run("UPDATE tbl SET name = $name WHERE id = $id", { $id: 2, $name: "bar" }, err => {});
+db.run(
+    "UPDATE tbl SET name = $name WHERE id = $id",
+    { $id: 2, $name: "bar" },
+    (err) => {},
+);
 
 db.run("UPDATE tbl SET name = ?5 WHERE id = ?", {
     1: 2,
     5: "bar",
 });
 
-db.each("select 1", err => {
+db.each("select 1", (err) => {
     db.interrupt();
 });
 

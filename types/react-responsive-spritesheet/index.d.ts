@@ -58,5 +58,12 @@ export interface Props {
 
 export type Callback = (spritesheet: ReactResponsiveSpritesheet) => void;
 export type Direction = "forward" | "rewind";
-export type NumberInfoType = "frame" | "fps" | "steps" | "width" | "height" | "scale" | "completeLoopCicles";
+export type NumberInfoType =
+    | "frame"
+    | "fps"
+    | "steps"
+    | "width"
+    | "height"
+    | "scale"
+    | "completeLoopCicles";
 export type BooleanInfoType = "isPlaying" | "isPaused";

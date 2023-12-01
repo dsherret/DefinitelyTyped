@@ -12,7 +12,12 @@ interface MorphOptions {
      * @param childrenOnly skip updating the Nodes itself but do update its children
      * @param skip skip updating this Nodes and its child tree
      */
-    updating: (from: Node, to: Node, childrenOnly: VoidFunction, skip: VoidFunction) => void;
+    updating: (
+        from: Node,
+        to: Node,
+        childrenOnly: VoidFunction,
+        skip: VoidFunction,
+    ) => void;
     /**
      * Callback called AFTER updating elements
      * @param from the Node that was updated
@@ -54,7 +59,11 @@ interface MorphOptions {
     lookahead: boolean;
 }
 
-type Morph = (from: Node, to: string | Node, options: Partial<MorphOptions>) => void;
+type Morph = (
+    from: Node,
+    to: string | Node,
+    options: Partial<MorphOptions>,
+) => void;
 
 export const morph: Morph;
 

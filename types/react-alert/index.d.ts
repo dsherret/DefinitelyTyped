@@ -4,7 +4,13 @@
 //
 // 1. `alert.removeAll()` has been added since `6.x`.
 
-import { Component, ComponentType, Context, CSSProperties, ReactNode } from "react";
+import {
+    Component,
+    ComponentType,
+    Context,
+    CSSProperties,
+    ReactNode,
+} from "react";
 
 export type AlertPositionV4 =
     | "top left"
@@ -13,7 +19,11 @@ export type AlertPositionV4 =
     | "bottom left"
     | "bottom center"
     | "bottom right";
-export type AlertPosition = AlertPositionV4 | "middle left" | "middle" | "middle right";
+export type AlertPosition =
+    | AlertPositionV4
+    | "middle left"
+    | "middle"
+    | "middle right";
 export type AlertType = "info" | "success" | "error";
 export type AlertTransition = "fade" | "scale";
 export interface Positions {
@@ -159,4 +169,6 @@ export function withAlert<P extends InjectedAlertProps = InjectedAlertProps>(
     context?: Context<P["alert"]>,
 ): (c: ComponentType<P>) => ComponentType<Omit<P, "alert">>;
 
-export function useAlert<T extends AlertContainer = AlertContainer>(context?: Context<T>): T;
+export function useAlert<T extends AlertContainer = AlertContainer>(
+    context?: Context<T>,
+): T;

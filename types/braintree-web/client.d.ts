@@ -75,7 +75,12 @@ export interface Client {
      * });
      */
     request(
-        options: { method: string; endpoint: string; data: any; timeout?: number | undefined },
+        options: {
+            method: string;
+            endpoint: string;
+            data: any;
+            timeout?: number | undefined;
+        },
         callback: callback,
     ): void;
 
@@ -107,4 +112,7 @@ export interface Client {
  * });
  */
 export function create(options: { authorization: string }): Promise<Client>;
-export function create(options: { authorization: string }, callback: callback): void;
+export function create(
+    options: { authorization: string },
+    callback: callback,
+): void;

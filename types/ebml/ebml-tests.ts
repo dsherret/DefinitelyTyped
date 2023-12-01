@@ -9,7 +9,11 @@ decoder.on("data", ([state, tagData]: StateAndTagData) => {
     console.log(tagData.dataSize === 0x01);
     console.log(tagData.type === "u");
     console.log((tagData as Tag<any>).data === Buffer.from([0x01]));
-    console.log(`${tagData.name} ${Decoder.getSchemaInfo(tagData.tag).webm ? "is" : "is not"} a WebM element type`);
+    console.log(
+        `${tagData.name} ${
+            Decoder.getSchemaInfo(tagData.tag).webm ? "is" : "is not"
+        } a WebM element type`,
+    );
 });
 decoder.write(Buffer.from([0x42, 0x86, 0x81, 0x01]));
 decoder.end();
@@ -22,7 +26,10 @@ const encoderStackItem = encoder.stack[0];
 console.log(encoderStackItem.data === null);
 console.log(encoderStackItem.id === 0x89);
 console.log(encoderStackItem.name === "ChapterTrackNumber");
-console.log(Array.isArray(encoderStackItem.children) && encoderStackItem.children.length === 0);
+console.log(
+    Array.isArray(encoderStackItem.children) &&
+        encoderStackItem.children.length === 0,
+);
 
 decoder.pipe(encoder);
 encoder.on("data", console.log);

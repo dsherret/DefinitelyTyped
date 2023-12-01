@@ -4,7 +4,7 @@ var merge = jmp.merge;
 var apply = jmp.apply;
 var generate = jmp.generate;
 var assert = {
-    deepEqual: function(a: Object, b: Object) {
+    deepEqual: function (a: Object, b: Object) {
         return JSON.stringify(a) === JSON.stringify(b);
     },
 };

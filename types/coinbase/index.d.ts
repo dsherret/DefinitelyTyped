@@ -315,13 +315,15 @@ export interface Price {
          */
         currency: string;
     };
-    warnings?: [
-        {
-            id: string;
-            message: string;
-            url: string;
-        },
-    ] | undefined;
+    warnings?:
+        | [
+              {
+                  id: string;
+                  message: string;
+                  url: string;
+              },
+          ]
+        | undefined;
 }
 
 /**
@@ -452,7 +454,10 @@ export class User implements Resource {
      * Change user properties
      * Scope: wallet:user:update
      */
-    update(opts: UpdateUserOpts, cb: (error: Error | null, result: User) => void): void;
+    update(
+        opts: UpdateUserOpts,
+        cb: (error: Error | null, result: User) => void,
+    ): void;
 }
 
 export interface Auth {
@@ -504,11 +509,20 @@ export class Address implements Resource {
      */
     getTransactions(
         pagination: Pagination | null,
-        cb: (error: Error | null, result: Transaction[], pagination: Pagination) => void,
+        cb: (
+            error: Error | null,
+            result: Transaction[],
+            pagination: Pagination,
+        ) => void,
     ): void;
 }
 
-export type AccountType = "wallet" | "fiat" | "multisig" | "vault" | "multisig_vault";
+export type AccountType =
+    | "wallet"
+    | "fiat"
+    | "multisig"
+    | "vault"
+    | "multisig_vault";
 
 /**
  * Account resource represents all of a user’s accounts, including bitcoin, litecoin and ethereum wallets, fiat currency accounts,
@@ -592,7 +606,10 @@ export class Account implements Resource {
      * Modifies user’s account.
      * Scope: wallet:accounts:update
      */
-    update(opts: UpdateAccountOpts, cb: (error: Error | null, result: Account) => void): void;
+    update(
+        opts: UpdateAccountOpts,
+        cb: (error: Error | null, result: Account) => void,
+    ): void;
 
     /**
      * Removes user’s account. In order to remove an account it can’t be:
@@ -616,7 +633,10 @@ export class Account implements Resource {
      * Scope: wallet:addresses:read
      * @param id resource id or a regular bitcoin, litecoin or ethereum address
      */
-    getAddress(id: string, cb: (error: Error | null, result: Address) => void): void;
+    getAddress(
+        id: string,
+        cb: (error: Error | null, result: Address) => void,
+    ): void;
 
     /**
      * Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new
@@ -625,7 +645,10 @@ export class Account implements Resource {
      * Scope: wallet:addresses:create
      * @param opts can be null, optional address name
      */
-    createAddress(opts: CreateAddressOpts | null, cb: (error: Error | null, result: Address) => void): void;
+    createAddress(
+        opts: CreateAddressOpts | null,
+        cb: (error: Error | null, result: Address) => void,
+    ): void;
 
     /**
      * Lists account’s transactions.
@@ -633,7 +656,11 @@ export class Account implements Resource {
      */
     getTransactions(
         pagination: Pagination | null,
-        cb: (error: Error | null, result: Transaction[], pagination: Pagination) => void,
+        cb: (
+            error: Error | null,
+            result: Transaction[],
+            pagination: Pagination,
+        ) => void,
     ): void;
 
     /**
@@ -641,7 +668,10 @@ export class Account implements Resource {
      * Scope: wallet:transactions:read
      * @param id resource id
      */
-    getTransaction(id: string, cb: (error: Error | null, result: Transaction) => void): void;
+    getTransaction(
+        id: string,
+        cb: (error: Error | null, result: Transaction) => void,
+    ): void;
 
     /**
      * Send funds to a bitcoin address, litecoin address, ethereum address, or email address. No transaction fees are required for off
@@ -659,7 +689,10 @@ export class Account implements Resource {
      *
      * Scope: wallet:transactions:send, wallet:transactions:send:bypass-2fa
      */
-    sendMoney(opts: SendMoneyOpts, cb: (error: Error | null, result: Transaction) => void): void;
+    sendMoney(
+        opts: SendMoneyOpts,
+        cb: (error: Error | null, result: Transaction) => void,
+    ): void;
 
     /**
      * Transfer bitcoin, litecoin or ethereum between two of a user’s accounts. Following transfers are allowed:
@@ -667,13 +700,19 @@ export class Account implements Resource {
      * - wallet to vault
      * Scope: wallet:transactions:transfer
      */
-    transferMoney(opts: TransferMoneyOpts, cb: (error: Error | null, result: Transaction) => void): void;
+    transferMoney(
+        opts: TransferMoneyOpts,
+        cb: (error: Error | null, result: Transaction) => void,
+    ): void;
 
     /**
      * Requests money from an email address.
      * Scope: wallet:transactions:request
      */
-    requestMoney(opts: RequestMoneyOpts, cb: (error: Error | null, result: Transaction) => void): void;
+    requestMoney(
+        opts: RequestMoneyOpts,
+        cb: (error: Error | null, result: Transaction) => void,
+    ): void;
 
     /**
      * Lists buys for an account.
@@ -681,7 +720,11 @@ export class Account implements Resource {
      */
     getBuys(
         pagination: Pagination | null,
-        cb: (error: Error | null, result: Buy[], pagination: Pagination) => void,
+        cb: (
+            error: Error | null,
+            result: Buy[],
+            pagination: Pagination,
+        ) => void,
     ): void;
 
     /**
@@ -717,7 +760,11 @@ export class Account implements Resource {
      */
     getSells(
         pagination: Pagination | null,
-        cb: (error: Error | null, result: Sell[], pagination: Pagination) => void,
+        cb: (
+            error: Error | null,
+            result: Sell[],
+            pagination: Pagination,
+        ) => void,
     ): void;
 
     /**
@@ -758,32 +805,46 @@ export class Account implements Resource {
      * Scope: wallet:deposits:read
      * @param id resource id
      */
-    getDeposit(id: string, cb: (error: Error | null, result: Deposit) => void): void;
+    getDeposit(
+        id: string,
+        cb: (error: Error | null, result: Deposit) => void,
+    ): void;
 
     /**
      * Deposits user-defined amount of funds to a fiat account.
      * Scope: wallet:deposits:create
      */
-    deposit(opts: DepositOpts, cb: (error: Error | null, result: Deposit) => void): void;
+    deposit(
+        opts: DepositOpts,
+        cb: (error: Error | null, result: Deposit) => void,
+    ): void;
 
     /**
      * Lists withdrawals for an account.
      * Scope: wallet:withdrawals:read
      */
-    getWithdrawals(cb: (error: Error | null, result: Withdrawal[]) => void): void;
+    getWithdrawals(
+        cb: (error: Error | null, result: Withdrawal[]) => void,
+    ): void;
 
     /**
      * Show an individual withdrawal.
      * Scope: wallet:withdrawals:read
      * @param id resource id
      */
-    getWithdrawal(id: string, cb: (error: Error | null, result: Withdrawal) => void): void;
+    getWithdrawal(
+        id: string,
+        cb: (error: Error | null, result: Withdrawal) => void,
+    ): void;
 
     /**
      * Withdraws user-defined amount of funds from a fiat account.
      * Scope: wallet:withdrawals:create
      */
-    withdraw(opts: WithdrawOpts, cb: (error: Error | null, result: Withdrawal) => void): void;
+    withdraw(
+        opts: WithdrawOpts,
+        cb: (error: Error | null, result: Withdrawal) => void,
+    ): void;
 }
 
 /**
@@ -909,29 +970,35 @@ export class Transaction implements Resource {
     /**
      * If record is a buy, includes reference to Buy resource
      */
-    buy?: {
-        id: string;
-        resource: "buy";
-        resource_path: string;
-    } | undefined;
+    buy?:
+        | {
+              id: string;
+              resource: "buy";
+              resource_path: string;
+          }
+        | undefined;
 
     /**
      * If record is a sell, includes reference to Sell resource
      */
-    sell?: {
-        id: string;
-        resource: "sell";
-        resource_path: string;
-    } | undefined;
+    sell?:
+        | {
+              id: string;
+              resource: "sell";
+              resource_path: string;
+          }
+        | undefined;
 
     /**
      * If record is a trade, includes reference to Trade resource
      */
-    trade?: {
-        id: string;
-        resource: "trade";
-        resource_path: string;
-    } | undefined;
+    trade?:
+        | {
+              id: string;
+              resource: "trade";
+              resource_path: string;
+          }
+        | undefined;
 
     /**
      * Lets the recipient of a money request complete the request by sending money to the user who requested the money.
@@ -1455,20 +1522,22 @@ export interface PaymentMethodLimit {
  * Currencies which have or had no representation in ISO 4217 may use a custom code (e.g. BTC).
  */
 export interface Currencies {
-    data: [{
-        /**
-         * Abbreviation e.g. "USD" or "BTC"
-         */
-        id: string;
-        /**
-         * Full name e.g. "United Arab Emirates Dirham"
-         */
-        name: string;
-        /**
-         * Floating-point number in a string
-         */
-        min_size: string;
-    }];
+    data: [
+        {
+            /**
+             * Abbreviation e.g. "USD" or "BTC"
+             */
+            id: string;
+            /**
+             * Full name e.g. "United Arab Emirates Dirham"
+             */
+            name: string;
+            /**
+             * Floating-point number in a string
+             */
+            min_size: string;
+        },
+    ];
 }
 
 export interface ExchangeRate {
@@ -1512,32 +1581,46 @@ export class Client {
      * Returns all accounts for the current user
      * Scope: wallet:accounts:read
      */
-    getAccounts(opts: {}, cb: (error: Error | null, result: Account[]) => void): void;
+    getAccounts(
+        opts: {},
+        cb: (error: Error | null, result: Account[]) => void,
+    ): void;
 
     /**
      * Get one account by its Resource ID
      * Scope: wallet:accounts:read
      * @param id resource ID or "primary"
      */
-    getAccount(id: string, cb: (error: Error | null, result: Account) => void): void;
+    getAccount(
+        id: string,
+        cb: (error: Error | null, result: Account) => void,
+    ): void;
 
     /**
      * Creates a new account for user.
      * Scopes: wallet:accounts:create
      */
-    createAccount(opts: CreateAccountOpts, cb: (error: Error | null, result: Account) => void): void;
+    createAccount(
+        opts: CreateAccountOpts,
+        cb: (error: Error | null, result: Account) => void,
+    ): void;
 
     /**
      * Lists current user’s payment methods
      * Scope: wallet:payment-methods:read
      */
-    getPaymentMethods(cb: (error: Error | null, result: PaymentMethod[]) => void): void;
+    getPaymentMethods(
+        cb: (error: Error | null, result: PaymentMethod[]) => void,
+    ): void;
 
     /**
      * Show current user’s payment method.
      * Scope: wallet:payment-methods:read
      */
-    getPaymentMethod(id: string, cb: (error: Error | null, result: PaymentMethod) => void): void;
+    getPaymentMethod(
+        id: string,
+        cb: (error: Error | null, result: PaymentMethod) => void,
+    ): void;
 
     /**
      * List known currencies. Currency codes will conform to the ISO 4217 standard where possible. Currencies which have or had no
@@ -1551,7 +1634,10 @@ export class Client {
      * Returned rates will define the exchange rate for one unit of the base currency.
      * Scope: none
      */
-    getExchangeRates(opts: GetExchangeRateOpts, cb: (error: Error | null, result: ExchangeRate) => void): void;
+    getExchangeRates(
+        opts: GetExchangeRateOpts,
+        cb: (error: Error | null, result: ExchangeRate) => void,
+    ): void;
 
     /**
      * Get the total price to buy one bitcoin or ether. Note that exchange rates fluctuates so the price is only correct for seconds at the time.
@@ -1559,7 +1645,10 @@ export class Client {
      * If you need more accurate price estimate for a specific payment method or amount, @see Account#buy() and `quote: true` option.
      * Scope: none
      */
-    getBuyPrice(opts: GetBuyPriceOpts, cb: (error: Error | null, result: Price) => void): void;
+    getBuyPrice(
+        opts: GetBuyPriceOpts,
+        cb: (error: Error | null, result: Price) => void,
+    ): void;
 
     /**
      * Get the total price to sell one bitcoin or ether. Note that exchange rates fluctuates so the price is only correct for seconds at the time.
@@ -1567,7 +1656,10 @@ export class Client {
      * estimate for a specific payment method or amount, see sell bitcoin endpoint and quote: true option.
      * Scope: none
      */
-    getSellPrice(opts: GetSellPriceOpts, cb: (error: Error | null, result: Price) => void): void;
+    getSellPrice(
+        opts: GetSellPriceOpts,
+        cb: (error: Error | null, result: Price) => void,
+    ): void;
 
     /**
      * Get the current market price for bitcoin. This is usually somewhere in between the buy and sell price.
@@ -1575,7 +1667,10 @@ export class Client {
      * You can also get historic prices with date parameter.
      * Scope: none
      */
-    getSpotPrice(opts: GetSpotPriceOpts, cb: (error: Error | null, result: Price) => void): void;
+    getSpotPrice(
+        opts: GetSpotPriceOpts,
+        cb: (error: Error | null, result: Price) => void,
+    ): void;
 
     /**
      * Get the API server time.

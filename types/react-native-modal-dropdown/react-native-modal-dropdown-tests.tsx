@@ -19,7 +19,9 @@ export const TestBasic: React.FC = () => {
     return <ModalDropdown options={["option 1", "option 2"]} />;
 };
 
-export const TestComponents: React.FC<{ useFunctional: boolean }> = ({ useFunctional }) => {
+export const TestComponents: React.FC<{ useFunctional: boolean }> = ({
+    useFunctional,
+}) => {
     const Comp = useFunctional ? FunctionComponent : ClassComponent;
 
     return (
@@ -28,12 +30,16 @@ export const TestComponents: React.FC<{ useFunctional: boolean }> = ({ useFuncti
             renderButtonComponent={Comp}
             renderRightComponent={Comp}
             renderSearch={() => <Comp />}
-            renderSeparator={(sectionId, index, adjacentRowHighlighted) => <Comp />}
+            renderSeparator={(sectionId, index, adjacentRowHighlighted) => (
+                <Comp />
+            )}
         />
     );
 };
 
-export const TestBooleans: React.FC<{ boolValue?: boolean }> = ({ boolValue }) => {
+export const TestBooleans: React.FC<{ boolValue?: boolean }> = ({
+    boolValue,
+}) => {
     return (
         <ModalDropdown
             disabled={boolValue}

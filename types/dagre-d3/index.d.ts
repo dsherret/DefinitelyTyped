@@ -14,32 +14,16 @@ export interface Point {
 export const intersect: {
     node: (node: dagre.Node, point: any) => any;
 
-    circle: (
-        node: dagre.Node,
-        rx: number,
-        point: Point,
-    ) => Point;
+    circle: (node: dagre.Node, rx: number, point: Point) => Point;
 
-    ellipse: (
-        node: dagre.Node,
-        rx: number,
-        ry: number,
-        point: Point,
-    ) => Point;
+    ellipse: (node: dagre.Node, rx: number, ry: number, point: Point) => Point;
 
-    polygon: (
-        node: dagre.Node,
-        polyPoints: Point[],
-        point: Point,
-    ) => Point;
+    polygon: (node: dagre.Node, polyPoints: Point[], point: Point) => Point;
 
-    rect: (
-        node: dagre.Node,
-        point: Point,
-    ) => Point;
+    rect: (node: dagre.Node, point: Point) => Point;
 };
 
-export const render: { new(): Render };
+export const render: { new (): Render };
 
 export const util: {
     isSubgraph: (g: dagre.graphlib.Graph<any>, v: string) => boolean;
@@ -57,7 +41,12 @@ export const util: {
         otherClasses: string,
     ) => void;
 
-    applyTransition: <GElement extends BaseType, Datum, PElement extends BaseType, PDatum>(
+    applyTransition: <
+        GElement extends BaseType,
+        Datum,
+        PElement extends BaseType,
+        PDatum,
+    >(
         selection: Selection<GElement, Datum, PElement, PDatum>,
         g: dagre.graphlib.Graph<any>,
     ) => SelectionOrTransition<GElement, Datum, PElement, PDatum>;
@@ -109,7 +98,10 @@ export interface Shapes {
 export interface Render {
     // see https://dagrejs.github.io/project/dagre-d3/latest/demo/user-defined.html for example usage
 
-    (selection: Selection<any, any, any, any>, g: dagre.graphlib.Graph<any>): void;
+    (
+        selection: Selection<any, any, any, any>,
+        g: dagre.graphlib.Graph<any>,
+    ): void;
 
     createNodes(): CreateNodes;
     createNodes(value: CreateNodes): Render;

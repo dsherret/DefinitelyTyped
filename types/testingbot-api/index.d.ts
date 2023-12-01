@@ -30,34 +30,68 @@ declare namespace TestingBot {
     }
 
     interface TestingBot {
-        getTestDetails(testID: string, callback?: (error: any, responseBody: any) => any): void;
+        getTestDetails(
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
-        getBrowsers(callback?: (error: any, responseBody: any) => any, type?: BrowserType): void;
+        getBrowsers(
+            callback?: (error: any, responseBody: any) => any,
+            type?: BrowserType,
+        ): void;
 
-        getLabTestDetails(testID: string, callback?: (error: any, responseBody: any) => any): void;
+        getLabTestDetails(
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
         getTunnel(callback?: (error: any, responseBody: any) => any): void;
 
         getUserInfo(callback?: (error: any, responseBody: any) => any): void;
 
-        getTests(callback?: (error: any, responseBody: any) => any, offset?: number, limit?: number): void;
+        getTests(
+            callback?: (error: any, responseBody: any) => any,
+            offset?: number,
+            limit?: number,
+        ): void;
 
-        getLabTests(callback?: (error: any, responseBody: any) => any, offset?: number, limit?: number): void;
+        getLabTests(
+            callback?: (error: any, responseBody: any) => any,
+            offset?: number,
+            limit?: number,
+        ): void;
 
-        updateUserInfo(data: UserInfo, callback?: (error: any, responseBody: any) => any): void;
+        updateUserInfo(
+            data: UserInfo,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
-        updateTest(data: TestData, testID: string, callback?: (error: any, responseBody: any) => any): void;
+        updateTest(
+            data: TestData,
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
-        updateLabTest(data: TestLabData, testID: string, callback?: (error: any, responseBody: any) => any): void;
+        updateLabTest(
+            data: TestLabData,
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
-        deleteTest(testID: string, callback?: (error: any, responseBody: any) => any): void;
+        deleteTest(
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
 
-        deleteLabTest(testID: string, callback?: (error: any, responseBody: any) => any): void;
+        deleteLabTest(
+            testID: string,
+            callback?: (error: any, responseBody: any) => any,
+        ): void;
     }
 }
 
 declare const TestingBot: {
-    new(options?: TestingBot.TestingBotOptions): TestingBot.TestingBot;
+    new (options?: TestingBot.TestingBotOptions): TestingBot.TestingBot;
 };
 
 export = TestingBot;

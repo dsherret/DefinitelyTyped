@@ -1,4 +1,11 @@
-import Button, { AvailableTargets, AvailableTypes, AvailableWidths, targets, types, widths } from "@hig/button";
+import Button, {
+    AvailableTargets,
+    AvailableTypes,
+    AvailableWidths,
+    targets,
+    types,
+    widths,
+} from "@hig/button";
 import * as React from "react";
 
 /** Button */

@@ -17,7 +17,13 @@ export class rgbaColor {
 
 export class ConicalGradient {
     constructor(fractions: number[], colors: rgbaColor[]);
-    fillCircle(cts: CanvasRenderingContext2D, centerX: number, centerY: number, innerX: number, outerX: number): void;
+    fillCircle(
+        cts: CanvasRenderingContext2D,
+        centerX: number,
+        centerY: number,
+        innerX: number,
+        outerX: number,
+    ): void;
     fillRect(
         ctx: CanvasRenderingContext2D,
         centerX: number,
@@ -30,7 +36,12 @@ export class ConicalGradient {
 }
 
 export class gradientWrapper {
-    constructor(start: number, end: number, fractions: number[], colors: rgbaColor[]);
+    constructor(
+        start: number,
+        end: number,
+        fractions: number[],
+        colors: rgbaColor[],
+    );
     getColorAt(fraction: number): rgbaColor | number[];
     getStart(): number;
     getEnd(): number;
@@ -390,7 +401,11 @@ interface LinearRadialCommon {
 
 /* Gauges */
 
-export interface RadialParams extends FrameStruct, PointKnob, Lcd, LinearRadialCommon {
+export interface RadialParams
+    extends FrameStruct,
+        PointKnob,
+        Lcd,
+        LinearRadialCommon {
     size?: number | undefined;
     gaugeType?: GaugeType | undefined;
     fractionalScaleDecimals?: number | undefined;
@@ -454,11 +469,14 @@ export class Radial {
 }
 
 export interface RadialBargraphParams
-    extends
-        FrameStruct,
+    extends FrameStruct,
         Lcd,
-        Omit<LinearRadialCommon, "minMeasuredValueVisible" | "maxMeasuredValueVisible" | "thresholdVisible">
-{
+        Omit<
+            LinearRadialCommon,
+            | "minMeasuredValueVisible"
+            | "maxMeasuredValueVisible"
+            | "thresholdVisible"
+        > {
     size?: number | undefined;
     gaugeType?: GaugeType | undefined;
     fractionalScaleDecimals?: number | undefined;
@@ -476,7 +494,10 @@ export interface RadialBargraphParams
     customLayer?: any;
 }
 export class RadialBargraph {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: RadialBargraphParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: RadialBargraphParams,
+    );
     setValue(newValue: number): this;
     getValue(): number;
     setValueAnimated(newValue: number, callback?: () => void): this;
@@ -512,14 +533,20 @@ export class RadialBargraph {
     repaint(): void;
 }
 
-export interface RadialVerticalParams extends FrameStruct, PointKnob, LinearRadialCommon {
+export interface RadialVerticalParams
+    extends FrameStruct,
+        PointKnob,
+        LinearRadialCommon {
     size?: number | undefined;
     orientation?: Orientation | undefined;
     section?: Section[] | undefined;
     area?: Section[] | undefined;
 }
 export class RadialVertical {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: RadialVerticalParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: RadialVerticalParams,
+    );
     setValue(newValue: number): this;
     getValue(): number;
     setValueAnimated(newValue: number, callback: () => void): this;
@@ -546,7 +573,10 @@ export class RadialVertical {
     repaint(): void;
 }
 
-export interface LinearParams extends Omit<FrameStruct, "foregroundType">, Lcd, LinearRadialCommon {
+export interface LinearParams
+    extends Omit<FrameStruct, "foregroundType">,
+        Lcd,
+        LinearRadialCommon {
     width?: number | undefined;
     height?: number | undefined;
     gaugeType?: GaugeType | undefined;
@@ -583,7 +613,10 @@ export class Linear {
     repaint(): void;
 }
 
-export interface LinearBargraphParams extends Omit<FrameStruct, "foregroundType">, Lcd, LinearRadialCommon {
+export interface LinearBargraphParams
+    extends Omit<FrameStruct, "foregroundType">,
+        Lcd,
+        LinearRadialCommon {
     width?: number | undefined;
     height?: number | undefined;
     section?: Section[] | undefined;
@@ -592,7 +625,10 @@ export interface LinearBargraphParams extends Omit<FrameStruct, "foregroundType"
     useValueGradient?: boolean | undefined;
 }
 export class LinearBargraph {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: LinearBargraphParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: LinearBargraphParams,
+    );
     setValue(newValue: number): this;
     getValue(): number;
     setValueAnimated(newValue: number, callback?: () => void): this;
@@ -640,7 +676,10 @@ export interface DisplaySingleParams extends Omit<Lcd, "lcdVisible"> {
     autoScroll?: boolean | undefined;
 }
 export class DisplaySingle {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: DisplaySingleParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: DisplaySingleParams,
+    );
     setValue(newValue: number | string): this;
     setLcdColor(newLcdColor: LcdColor): this;
     setSection(newSection: Section[]): this;
@@ -663,7 +702,10 @@ export interface DisplayMultiParams extends Omit<Lcd, "lcdVisible"> {
     altValue?: string | number | undefined;
 }
 export class DisplayMulti {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: DisplayMultiParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: DisplayMultiParams,
+    );
     setValue(newValue: number | string): this;
     setAltValue(altValueNew: number | string): this;
     setLcdColor(newLcdColor: LcdColor): this;
@@ -713,7 +755,10 @@ export class Compass {
     repaint(): void;
 }
 
-export interface WindDirectionParams extends FrameStruct, Omit<PointKnob, "pointerType">, Omit<Lcd, "lcdDecimals"> {
+export interface WindDirectionParams
+    extends FrameStruct,
+        Omit<PointKnob, "pointerType">,
+        Omit<Lcd, "lcdDecimals"> {
     size?: number | undefined;
     section?: Section[] | undefined;
     area?: Section[] | undefined;
@@ -733,7 +778,10 @@ export interface WindDirectionParams extends FrameStruct, Omit<PointKnob, "point
     customLayer?: any;
 }
 export class WindDirection {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: WindDirectionParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: WindDirectionParams,
+    );
     setValueLatest(newValue: number): this;
     getValueLatest(): number;
     setValueAverage(newValue: number): this;
@@ -755,7 +803,8 @@ export class WindDirection {
     repaint(): void;
 }
 
-export interface HorizonParams extends Omit<FrameStruct, "backgroundColor" | "backgroundVisible"> {
+export interface HorizonParams
+    extends Omit<FrameStruct, "backgroundColor" | "backgroundVisible"> {
     size?: number | undefined;
     pointerColor?: ColorDef | undefined;
 }
@@ -785,7 +834,9 @@ export class Led {
     blink(blink: boolean): this;
 }
 
-export interface ClockParams extends FrameStruct, Omit<PointKnob, "knobType" | "knobStyle"> {
+export interface ClockParams
+    extends FrameStruct,
+        Omit<PointKnob, "knobType" | "knobStyle"> {
     size: number;
     isAutomatic: boolean;
     hour: number;
@@ -841,7 +892,10 @@ export interface StopwatchParams extends FrameStruct {
     customLayer?: any;
 }
 export class Stopwatch {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: StopwatchParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: StopwatchParams,
+    );
     isRunning(): boolean;
     start(): this;
     stop(): this;
@@ -856,15 +910,19 @@ export class Stopwatch {
 }
 
 export interface AltimeterParams
-    extends FrameStruct, Omit<PointKnob, "pointerType" | "pointerColor">, Omit<Lcd, "lcdDecimals">
-{
+    extends FrameStruct,
+        Omit<PointKnob, "pointerType" | "pointerColor">,
+        Omit<Lcd, "lcdDecimals"> {
     size?: number | undefined;
     unitAltPos?: boolean | undefined;
 
     customLayer?: any;
 }
 export class Altimeter {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: AltimeterParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: AltimeterParams,
+    );
     setValue(newValue: number): void;
     getValue(): number;
     setValueAnimated(newValue: number, callback?: () => void): this;
@@ -882,7 +940,10 @@ export interface TrafficlightParams {
     height?: number | undefined;
 }
 export class Trafficlight {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: TrafficlightParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: TrafficlightParams,
+    );
     setRedOn(on: boolean): this;
     isRedOn(): boolean;
     setYellowOn(on: boolean): this;
@@ -898,7 +959,10 @@ export interface LightbulbParams {
     glowColor: string;
 }
 export class Lightbulb {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: LightbulbParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: LightbulbParams,
+    );
     setOn(on: boolean): this;
     isOn(): boolean;
     setAlpha(a: number): this;
@@ -922,7 +986,10 @@ export interface OdometerParams {
     wobbleFactor?: number | undefined;
 }
 export class Odometer {
-    constructor(canvas: HTMLCanvasElement | string, parameters?: OdometerParams);
+    constructor(
+        canvas: HTMLCanvasElement | string,
+        parameters?: OdometerParams,
+    );
     setValueAnimated(newValue: number, callback?: () => void): this;
     setValue(newValue: number): this;
     getValue(): number;

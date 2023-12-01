@@ -10,7 +10,7 @@ const freeDraw = new FreeDraw({
 
 map.addLayer(freeDraw);
 
-freeDraw.on("markers", event => {
+freeDraw.on("markers", (event) => {
     console.log(event.latLngs);
 
     if (event.eventType === "create") {
@@ -26,7 +26,7 @@ freeDraw.on("markers", event => {
     }
 });
 
-document.addEventListener("keydown", event => {
+document.addEventListener("keydown", (event) => {
     // Cancel the current action when the escape key is pressed.
     event.key === "Escape" && freeDraw.cancel();
 });

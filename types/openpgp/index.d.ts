@@ -33,7 +33,12 @@ export namespace cleartext {
          * @param userIds (optional) user IDs to sign with, e.g. [ { name:'Steve Sender', email:'steve@openpgp.org' }]
          * @returns new cleartext message with signed content
          */
-        sign(privateKeys: any[], signature: signature.Signature, date: Date, userIds: any[]): Promise<CleartextMessage>;
+        sign(
+            privateKeys: any[],
+            signature: signature.Signature,
+            date: Date,
+            userIds: any[],
+        ): Promise<CleartextMessage>;
 
         /**
          * Sign the cleartext message
@@ -56,7 +61,10 @@ export namespace cleartext {
          * @param date (optional) Verify the signature against the given date, i.e. check signature creation time < date < expiration time
          * @returns list of signer's keyid and validity of signature
          */
-        verify(keys: any[], date: Date): Promise<Array<{ keyid: type.keyid.Keyid; valid: boolean }>>;
+        verify(
+            keys: any[],
+            date: Date,
+        ): Promise<Array<{ keyid: type.keyid.Keyid; valid: boolean }>>;
 
         /**
          * Verify signatures of cleartext signed message
@@ -64,7 +72,10 @@ export namespace cleartext {
          * @param date (optional) Verify the signature against the given date, i.e. check signature creation time < date < expiration time
          * @returns list of signer's keyid and validity of signature
          */
-        verifyDetached(keys: any[], date: Date): Promise<Array<{ keyid: type.keyid.Keyid; valid: boolean }>>;
+        verifyDetached(
+            keys: any[],
+            date: Date,
+        ): Promise<Array<{ keyid: type.keyid.Keyid; valid: boolean }>>;
 
         /**
          * Get cleartext
@@ -84,7 +95,9 @@ export namespace cleartext {
      * @param armoredText text to be parsed
      * @returns new cleartext message object
      */
-    function readArmored(armoredText: string | ReadableStream<String>): Promise<CleartextMessage>;
+    function readArmored(
+        armoredText: string | ReadableStream<String>,
+    ): Promise<CleartextMessage>;
 
     /**
      * Creates a new CleartextMessage object from text
@@ -261,7 +274,12 @@ export namespace crypto {
 
     namespace cfb {
         function encrypt(algo: any, key: any, plaintext: any, iv: any): any;
-        function decrypt(algo: any, key: any, ciphertext: any, iv: any): Promise<any>;
+        function decrypt(
+            algo: any,
+            key: any,
+            ciphertext: any,
+            iv: any,
+        ): Promise<any>;
     }
 
     namespace cipher {
@@ -368,7 +386,9 @@ export namespace crypto {
          */
         function publicKeyEncrypt(
             algo: enums.publicKey,
-            pub_params: Array<type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams>,
+            pub_params: Array<
+                type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams
+            >,
             data: type.mpi.MPI,
             fingerprint: string,
         ): any[];
@@ -384,8 +404,12 @@ export namespace crypto {
          */
         function publicKeyDecrypt(
             algo: enums.publicKey,
-            key_params: Array<type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams>,
-            data_params: Array<type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams>,
+            key_params: Array<
+                type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams
+            >,
+            data_params: Array<
+                type.mpi.MPI | type.oid.OID | type.kdf_params.KDFParams
+            >,
             fingerprint: string,
         ): type.mpi.MPI;
 
@@ -417,7 +441,11 @@ export namespace crypto {
          * @param oid Object identifier for ECC keys
          * @returns The array of parameters
          */
-        function generateParams(algo: string, bits: Integer, oid: type.oid.OID): any[];
+        function generateParams(
+            algo: string,
+            bits: Integer,
+            oid: type.oid.OID,
+        ): any[];
 
         /**
          * Generates a random byte prefix for the specified algorithm
@@ -451,7 +479,11 @@ export namespace crypto {
          * @param adata Associated data to sign
          * @returns The ciphertext output
          */
-        function encrypt(plaintext: Uint8Array, nonce: Uint8Array, adata: Uint8Array): Promise<Uint8Array>;
+        function encrypt(
+            plaintext: Uint8Array,
+            nonce: Uint8Array,
+            adata: Uint8Array,
+        ): Promise<Uint8Array>;
 
         /**
          * Decrypt ciphertext input.
@@ -460,7 +492,11 @@ export namespace crypto {
          * @param adata Associated data to verify
          * @returns The plaintext output
          */
-        function decrypt(ciphertext: Uint8Array, nonce: Uint8Array, adata: Uint8Array): Promise<Uint8Array>;
+        function decrypt(
+            ciphertext: Uint8Array,
+            nonce: Uint8Array,
+            adata: Uint8Array,
+        ): Promise<Uint8Array>;
     }
 
     namespace gcm {
@@ -518,7 +554,10 @@ export namespace crypto {
          * @param data Data to be hashed
          * @returns hash value
          */
-        function digest(algo: enums.hash, data: Uint8Array): Promise<Uint8Array>;
+        function digest(
+            algo: enums.hash,
+            data: Uint8Array,
+        ): Promise<Uint8Array>;
 
         /**
          * Returns the hash size in bytes of the specified hash algorithm type
@@ -562,7 +601,11 @@ export namespace crypto {
          * @param adata Associated data to sign
          * @returns The ciphertext output
          */
-        function encrypt(plaintext: Uint8Array, nonce: Uint8Array, adata: Uint8Array): Promise<Uint8Array>;
+        function encrypt(
+            plaintext: Uint8Array,
+            nonce: Uint8Array,
+            adata: Uint8Array,
+        ): Promise<Uint8Array>;
 
         /**
          * Decrypt ciphertext input.
@@ -571,7 +614,11 @@ export namespace crypto {
          * @param adata Associated data to sign
          * @returns The ciphertext output
          */
-        function decrypt(ciphertext: Uint8Array, nonce: Uint8Array, adata: Uint8Array): Promise<Uint8Array>;
+        function decrypt(
+            ciphertext: Uint8Array,
+            nonce: Uint8Array,
+            adata: Uint8Array,
+        ): Promise<Uint8Array>;
     }
 
     /**
@@ -608,7 +655,11 @@ export namespace crypto {
              * @param emLen intended length in octets of the encoded message
              * @returns encoded message
              */
-            function encode(algo: Integer, hashed: Uint8Array, emLen: Integer): string;
+            function encode(
+                algo: Integer,
+                hashed: Uint8Array,
+                emLen: Integer,
+            ): string;
         }
 
         /**
@@ -630,7 +681,14 @@ export namespace crypto {
              * @param x
              * @returns
              */
-            function sign(hash_algo: Integer, hashed: Uint8Array, g: BN, p: BN, q: BN, x: BN): object;
+            function sign(
+                hash_algo: Integer,
+                hashed: Uint8Array,
+                g: BN,
+                p: BN,
+                q: BN,
+                x: BN,
+            ): object;
 
             /**
              * DSA Verify function
@@ -644,7 +702,16 @@ export namespace crypto {
              * @param y
              * @returns BN
              */
-            function verify(hash_algo: Integer, r: BN, s: BN, hashed: Uint8Array, g: BN, p: BN, q: BN, y: BN): any;
+            function verify(
+                hash_algo: Integer,
+                r: BN,
+                s: BN,
+                hashed: Uint8Array,
+                g: BN,
+                p: BN,
+                q: BN,
+                y: BN,
+            ): any;
         }
 
         namespace elgamal {
@@ -687,7 +754,10 @@ export namespace crypto {
                  * @param Q Recipient public key
                  * @returns Returns public part of ephemeral key and generated ephemeral secret
                  */
-                function genPublicEphemeralKey(curve: curve.Curve, Q: Uint8Array): Promise<{ V: Uint8Array; S: BN }>;
+                function genPublicEphemeralKey(
+                    curve: curve.Curve,
+                    Q: Uint8Array,
+                ): Promise<{ V: Uint8Array; S: BN }>;
 
                 /**
                  * Encrypt and wrap a session key
@@ -715,7 +785,11 @@ export namespace crypto {
                  * @param d Recipient private key
                  * @returns Generated ephemeral secret
                  */
-                function genPrivateEphemeralKey(curve: curve.Curve, V: Uint8Array, d: Uint8Array): Promise<BN>;
+                function genPrivateEphemeralKey(
+                    curve: curve.Curve,
+                    V: Uint8Array,
+                    d: Uint8Array,
+                ): Promise<BN>;
 
                 /**
                  * Decrypt and unwrap the value derived from session key
@@ -899,7 +973,15 @@ export namespace crypto {
              * @param u RSA private inverse of prime q
              * @returns RSA Plaintext
              */
-            function decrypt(m: BN, n: BN, e: BN, d: BN, p: BN, q: BN, u: BN): BN;
+            function decrypt(
+                m: BN,
+                n: BN,
+                e: BN,
+                d: BN,
+                p: BN,
+                q: BN,
+                u: BN,
+            ): BN;
 
             /**
              * Generate a new random private key B bits long with public exponent E.
@@ -1029,14 +1111,18 @@ export namespace encoding {
          * @param data Data to create a CRC-24 checksum for
          * @returns Base64 encoded checksum
          */
-        function getCheckSum(data: string | ReadableStream<String>): string | ReadableStream<String>;
+        function getCheckSum(
+            data: string | ReadableStream<String>,
+        ): string | ReadableStream<String>;
 
         /**
          * Internal function to calculate a CRC-24 checksum over a given string (data)
          * @param data Data to create a CRC-24 checksum for
          * @returns The CRC-24 checksum
          */
-        function createcrc24(data: string | ReadableStream<String>): Uint8Array | ReadableStream<Uint8Array>;
+        function createcrc24(
+            data: string | ReadableStream<String>,
+        ): Uint8Array | ReadableStream<Uint8Array>;
 
         /**
          * Splits a message into two parts, the body and the checksum. This is an internal function
@@ -1080,7 +1166,10 @@ export namespace encoding {
          * @param u if true, output is URL-safe
          * @returns radix-64 version of input string
          */
-        function s2r(t: Uint8Array | ReadableStream<Uint8Array>, u?: boolean): string | ReadableStream<String>;
+        function s2r(
+            t: Uint8Array | ReadableStream<Uint8Array>,
+            u?: boolean,
+        ): string | ReadableStream<String>;
 
         /**
          * Convert radix-64 to binary array
@@ -1088,7 +1177,10 @@ export namespace encoding {
          * @param u if true, input is interpreted as URL-safe
          * @returns binary array version of input string
          */
-        function r2s(t: string | ReadableStream<String>, u: boolean): Uint8Array | ReadableStream<Uint8Array>;
+        function r2s(
+            t: string | ReadableStream<String>,
+            u: boolean,
+        ): Uint8Array | ReadableStream<Uint8Array>;
     }
 }
 
@@ -1779,7 +1871,11 @@ export namespace key {
          * @param userId, optional user ID
          * @returns key or null if no signing key has been found
          */
-        getSigningKey(keyId: type.keyid.Keyid, date?: Date, userId?: object): Promise<Key | SubKey | null>;
+        getSigningKey(
+            keyId: type.keyid.Keyid,
+            date?: Date,
+            userId?: object,
+        ): Promise<Key | SubKey | null>;
 
         /**
          * Returns last created key or key by given keyId that is available for encryption or decryption
@@ -1788,7 +1884,11 @@ export namespace key {
          * @param userId, optional
          * @returns key or null if no encryption key has been found
          */
-        getEncryptionKey(keyId?: type.keyid.Keyid, date?: Date, userId?: string): Promise<Key | SubKey | null>;
+        getEncryptionKey(
+            keyId?: type.keyid.Keyid,
+            date?: Date,
+            userId?: string,
+        ): Promise<Key | SubKey | null>;
 
         /**
          * Encrypts all secret key and subkey packets matching keyId
@@ -1807,7 +1907,10 @@ export namespace key {
          * @param keyId
          * @returns true if all matching key and subkey packets decrypted successfully
          */
-        decrypt(passphrases: string | string[], keyId?: type.keyid.Keyid): Promise<Boolean>;
+        decrypt(
+            passphrases: string | string[],
+            keyId?: type.keyid.Keyid,
+        ): Promise<Boolean>;
 
         /**
          * Checks if a signature on a key is revoked
@@ -1819,7 +1922,11 @@ export namespace key {
          */
         isRevoked(
             signature: packet.Signature,
-            key?: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+            key?:
+                | packet.PublicSubkey
+                | packet.SecretSubkey
+                | packet.PublicKey
+                | packet.SecretKey,
             date?: Date,
         ): Promise<Boolean>;
 
@@ -1830,7 +1937,10 @@ export namespace key {
          * @param userId (optional) user ID
          * @returns The status of the primary key
          */
-        verifyPrimaryKey(date?: Date, userId?: object): Promise<enums.keyStatus>;
+        verifyPrimaryKey(
+            date?: Date,
+            userId?: object,
+        ): Promise<enums.keyStatus>;
 
         /**
          * Returns the latest date when the key can be used for encrypting, signing, or both, depending on the `capabilities` paramater.
@@ -1856,7 +1966,10 @@ export namespace key {
          * @param userId (optional) user ID to get instead of the primary user, if it exists
          * @returns The primary user and the self signature
          */
-        getPrimaryUser(date?: Date, userId?: object): Promise<{ user: User; selfCertification: packet.Signature }>;
+        getPrimaryUser(
+            date?: Date,
+            userId?: object,
+        ): Promise<{ user: User; selfCertification: packet.Signature }>;
 
         /**
          * Update key with new components from specified key with same key ID:
@@ -1877,7 +1990,10 @@ export namespace key {
          * @param date optional, override the creationtime of the revocation signature
          * @returns new key with revocation signature
          */
-        revoke(reasonForRevocation: revoke_reasonForRevocation, date: Date): Promise<Key>;
+        revoke(
+            reasonForRevocation: revoke_reasonForRevocation,
+            date: Date,
+        ): Promise<Key>;
 
         /**
          * Get revocation certificate from a revoked key.
@@ -1902,7 +2018,11 @@ export namespace key {
          * @param userId (optional) user ID to get instead of the primary user, if it exists
          * @returns new public key with new certificate signature
          */
-        signPrimaryUser(privateKey: any[], date: Date, userId: object): Promise<Key>;
+        signPrimaryUser(
+            privateKey: any[],
+            date: Date,
+            userId: object,
+        ): Promise<Key>;
 
         /**
          * Signs all users of key
@@ -1933,7 +2053,11 @@ export namespace key {
          * @param keys array of keys to verify certificate signatures
          * @returns list of userid, signer's keyid and validity of signature
          */
-        verifyAllUsers(keys: any[]): Promise<Array<{ userid: string; keyid: type.keyid.Keyid; valid: boolean }>>;
+        verifyAllUsers(
+            keys: any[],
+        ): Promise<
+            Array<{ userid: string; keyid: type.keyid.Keyid; valid: boolean }>
+        >;
 
         /**
          * Calculates the key id of the key
@@ -1978,7 +2102,10 @@ export namespace key {
      * @param date Use the given date instead of the current time
      * @returns The latest valid signature
      */
-    function getLatestValidSignature(signatures: any[], date: Date): Promise<packet.Signature>;
+    function getLatestValidSignature(
+        signatures: any[],
+        date: Date,
+    ): Promise<packet.Signature>;
 
     /**
      * Class that represents an user ID or attribute packet and the relevant signatures.
@@ -2000,7 +2127,10 @@ export namespace key {
          * @param privateKeys Decrypted private keys for signing
          * @returns New user with new certificate signatures
          */
-        sign(primaryKey: packet.SecretKey | packet.PublicKey, privateKeys: any[]): Promise<Key>;
+        sign(
+            primaryKey: packet.SecretKey | packet.PublicKey,
+            privateKeys: any[],
+        ): Promise<Key>;
 
         /**
          * Checks if a given certificate of the user is revoked
@@ -2013,7 +2143,11 @@ export namespace key {
         isRevoked(
             primaryKey: packet.SecretKey | packet.PublicKey,
             certificate: packet.Signature,
-            key: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+            key:
+                | packet.PublicSubkey
+                | packet.SecretSubkey
+                | packet.PublicKey
+                | packet.SecretKey,
             date: Date,
         ): Promise<Boolean>;
 
@@ -2052,7 +2186,10 @@ export namespace key {
          * @param date Use the given date instead of the current time
          * @returns Status of user
          */
-        verify(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<enums.keyStatus>;
+        verify(
+            primaryKey: packet.SecretKey | packet.PublicKey,
+            date: Date,
+        ): Promise<enums.keyStatus>;
 
         /**
          * Update user with new components from specified user
@@ -2060,7 +2197,10 @@ export namespace key {
          * @param primaryKey primary key used for validation
          * @returns
          */
-        update(user: User, primaryKey: packet.SecretKey | packet.SecretSubkey): Promise<undefined>;
+        update(
+            user: User,
+            primaryKey: packet.SecretKey | packet.SecretSubkey,
+        ): Promise<undefined>;
     }
 
     /**
@@ -2103,7 +2243,11 @@ export namespace key {
         isRevoked(
             primaryKey: packet.SecretKey | packet.PublicKey,
             signature: packet.Signature,
-            key: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+            key:
+                | packet.PublicSubkey
+                | packet.SecretSubkey
+                | packet.PublicKey
+                | packet.SecretKey,
             date: Date,
         ): Promise<Boolean>;
 
@@ -2114,7 +2258,10 @@ export namespace key {
          * @param date Use the given date instead of the current time
          * @returns The status of the subkey
          */
-        verify(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<enums.keyStatus>;
+        verify(
+            primaryKey: packet.SecretKey | packet.PublicKey,
+            date: Date,
+        ): Promise<enums.keyStatus>;
 
         /**
          * Returns the expiration time of the subkey or Infinity if key does not expire
@@ -2123,7 +2270,10 @@ export namespace key {
          * @param date Use the given date instead of the current time
          * @returns
          */
-        getExpirationTime(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<Date | Infinity | null>;
+        getExpirationTime(
+            primaryKey: packet.SecretKey | packet.PublicKey,
+            date: Date,
+        ): Promise<Date | Infinity | null>;
 
         /**
          * Update subkey with new components from specified subkey
@@ -2131,7 +2281,10 @@ export namespace key {
          * @param primaryKey primary key used for validation
          * @returns
          */
-        update(subKey: SubKey, primaryKey: packet.SecretKey | packet.SecretSubkey): Promise<undefined>;
+        update(
+            subKey: SubKey,
+            primaryKey: packet.SecretKey | packet.SecretSubkey,
+        ): Promise<undefined>;
 
         /**
          * Revokes the subkey
@@ -2190,7 +2343,9 @@ export namespace key {
      * @param data to be parsed
      * @returns result object with key and error arrays
      */
-    function read(data: Uint8Array): Promise<{ keys: Key[]; err: Error[] | null }>;
+    function read(
+        data: Uint8Array,
+    ): Promise<{ keys: Key[]; err: Error[] | null }>;
 
     interface KeyResult {
         keys: Key[];
@@ -2202,7 +2357,9 @@ export namespace key {
      * @param armoredText text to be parsed
      * @returns result object with key and error arrays
      */
-    function readArmored(armoredText: string | ReadableStream<String>): Promise<KeyResult>;
+    function readArmored(
+        armoredText: string | ReadableStream<String>,
+    ): Promise<KeyResult>;
 
     /**
      * Generates a new OpenPGP key. Supports RSA and ECC keys.
@@ -2251,7 +2408,11 @@ export namespace key {
         dataToVerify: object,
         revocations: any[],
         signature: packet.Signature,
-        key: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+        key:
+            | packet.PublicSubkey
+            | packet.SecretSubkey
+            | packet.PublicKey
+            | packet.SecretKey,
         date: Date,
     ): Promise<Boolean>;
 
@@ -2261,7 +2422,10 @@ export namespace key {
      * @param signature The certificate or signature to check
      * @param keyId Check only certificates or signatures from a certain issuer key ID
      */
-    function checkRevocationKey(signature: packet.Signature, keyId: type.keyid.Keyid): void;
+    function checkRevocationKey(
+        signature: packet.Signature,
+        keyId: type.keyid.Keyid,
+    ): void;
 
     /**
      * Returns the preferred signature hash algorithm of a key
@@ -2300,7 +2464,11 @@ export namespace key {
      * @param userIds (optional) user IDs
      * @returns
      */
-    function isAeadSupported(keys: any[], date: Date, userIds: any[]): Promise<Boolean>;
+    function isAeadSupported(
+        keys: any[],
+        date: Date,
+        userIds: any[],
+    ): Promise<Boolean>;
 }
 
 export interface revoke_reasonForRevocation {
@@ -2332,7 +2500,10 @@ export class User {
      * @param privateKeys Decrypted private keys for signing
      * @returns New user with new certificate signatures
      */
-    sign(primaryKey: packet.SecretKey | packet.PublicKey, privateKeys: any[]): Promise<key.Key>;
+    sign(
+        primaryKey: packet.SecretKey | packet.PublicKey,
+        privateKeys: any[],
+    ): Promise<key.Key>;
 
     /**
      * Checks if a given certificate of the user is revoked
@@ -2345,7 +2516,11 @@ export class User {
     isRevoked(
         primaryKey: packet.SecretKey | packet.PublicKey,
         certificate: packet.Signature,
-        key: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+        key:
+            | packet.PublicSubkey
+            | packet.SecretSubkey
+            | packet.PublicKey
+            | packet.SecretKey,
         date: Date,
     ): Promise<Boolean>;
 
@@ -2384,7 +2559,10 @@ export class User {
      * @param date Use the given date instead of the current time
      * @returns Status of user
      */
-    verify(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<enums.keyStatus>;
+    verify(
+        primaryKey: packet.SecretKey | packet.PublicKey,
+        date: Date,
+    ): Promise<enums.keyStatus>;
 
     /**
      * Update user with new components from specified user
@@ -2392,7 +2570,10 @@ export class User {
      * @param primaryKey primary key used for validation
      * @returns
      */
-    update(user: key.User, primaryKey: packet.SecretKey | packet.SecretSubkey): Promise<undefined>;
+    update(
+        user: key.User,
+        primaryKey: packet.SecretKey | packet.SecretSubkey,
+    ): Promise<undefined>;
 }
 
 /**
@@ -2418,7 +2599,11 @@ export class SubKey {
     isRevoked(
         primaryKey: packet.SecretKey | packet.PublicKey,
         signature: packet.Signature,
-        key: packet.PublicSubkey | packet.SecretSubkey | packet.PublicKey | packet.SecretKey,
+        key:
+            | packet.PublicSubkey
+            | packet.SecretSubkey
+            | packet.PublicKey
+            | packet.SecretKey,
         date: Date,
     ): Promise<Boolean>;
 
@@ -2429,7 +2614,10 @@ export class SubKey {
      * @param date Use the given date instead of the current time
      * @returns The status of the subkey
      */
-    verify(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<enums.keyStatus>;
+    verify(
+        primaryKey: packet.SecretKey | packet.PublicKey,
+        date: Date,
+    ): Promise<enums.keyStatus>;
 
     /**
      * Returns the expiration time of the subkey or Infinity if key does not expire
@@ -2438,7 +2626,10 @@ export class SubKey {
      * @param date Use the given date instead of the current time
      * @returns
      */
-    getExpirationTime(primaryKey: packet.SecretKey | packet.PublicKey, date: Date): Promise<Date | Infinity | null>;
+    getExpirationTime(
+        primaryKey: packet.SecretKey | packet.PublicKey,
+        date: Date,
+    ): Promise<Date | Infinity | null>;
 
     /**
      * Update subkey with new components from specified subkey
@@ -2446,7 +2637,10 @@ export class SubKey {
      * @param primaryKey primary key used for validation
      * @returns
      */
-    update(subKey: key.SubKey, primaryKey: packet.SecretKey | packet.SecretSubkey): Promise<undefined>;
+    update(
+        subKey: key.SubKey,
+        primaryKey: packet.SecretKey | packet.SecretSubkey,
+    ): Promise<undefined>;
 
     /**
      * Revokes the subkey
@@ -2666,7 +2860,12 @@ export namespace message {
          * @param streaming (optional) whether to process data as a stream
          * @returns new message with decrypted content
          */
-        decrypt(privateKeys?: any[], passwords?: any[], sessionKeys?: any[], streaming?: boolean): Promise<Message>;
+        decrypt(
+            privateKeys?: any[],
+            passwords?: any[],
+            sessionKeys?: any[],
+            streaming?: boolean,
+        ): Promise<Message>;
 
         /**
          * Decrypt encrypted session keys either with private keys or passwords.
@@ -2726,7 +2925,12 @@ export namespace message {
          * @param userIds (optional) user IDs to sign with, e.g. [ { name:'Steve Sender', email:'steve@openpgp.org' }]
          * @returns new message with signed content
          */
-        sign(privateKeys: any[], signature?: signature.Signature, date?: Date, userIds?: any[]): Promise<Message>;
+        sign(
+            privateKeys: any[],
+            signature?: signature.Signature,
+            date?: Date,
+            userIds?: any[],
+        ): Promise<Message>;
 
         /**
          * Compresses the message (the literal and -if signed- signature data packets of the message)
@@ -2872,7 +3076,9 @@ export namespace message {
      * @param armoredText text to be parsed
      * @returns new message object
      */
-    function readArmored(armoredText: string | ReadableStream<String>): Promise<Message>;
+    function readArmored(
+        armoredText: string | ReadableStream<String>,
+    ): Promise<Message>;
 
     /**
      * reads an OpenPGP message as byte array and returns a message object
@@ -2880,7 +3086,10 @@ export namespace message {
      * @param fromStream whether the message was created from a Stream
      * @returns new message object
      */
-    function read(input: Uint8Array | ReadableStream<Uint8Array>, fromStream?: boolean): Promise<Message>;
+    function read(
+        input: Uint8Array | ReadableStream<Uint8Array>,
+        fromStream?: boolean,
+    ): Promise<Message>;
 
     /**
      * creates new message object from text
@@ -3034,7 +3243,10 @@ export namespace packet {
          * @param text Any native javascript string
          * @param format (optional) The format of the string of bytes
          */
-        setText(text: string | ReadableStream<String>, format?: "utf8" | "binary" | "text" | "mime"): void;
+        setText(
+            text: string | ReadableStream<String>,
+            format?: "utf8" | "binary" | "text" | "mime",
+        ): void;
 
         /**
          * Returns literal data packets as native JavaScript string
@@ -3049,7 +3261,10 @@ export namespace packet {
          * @param bytes The string of bytes
          * @param format The format of the string of bytes
          */
-        setBytes(bytes: Uint8Array | ReadableStream<Uint8Array>, format: "utf8" | "binary" | "text" | "mime"): void;
+        setBytes(
+            bytes: Uint8Array | ReadableStream<Uint8Array>,
+            format: "utf8" | "binary" | "text" | "mime",
+        ): void;
 
         /**
          * Get the byte sequence representing the literal packet data
@@ -3403,7 +3618,11 @@ export namespace packet {
          *        input at position
          * @returns Object representation
          */
-        read(input: Uint8Array, position: Integer, len: Integer): PublicKeyEncryptedSessionKey;
+        read(
+            input: Uint8Array,
+            position: Integer,
+            len: Integer,
+        ): PublicKeyEncryptedSessionKey;
 
         /**
          * Create a string representation of a tag 1 packet
@@ -3981,7 +4200,11 @@ export namespace packet {
          * @param streaming Whether the top-level function will return a stream
          * @returns
          */
-        decrypt(sessionKeyAlgorithm: string, key: Uint8Array, streaming: boolean): boolean;
+        decrypt(
+            sessionKeyAlgorithm: string,
+            key: Uint8Array,
+            streaming: boolean,
+        ): boolean;
 
         /**
          * Encrypt the packet list payload.
@@ -3989,7 +4212,11 @@ export namespace packet {
          * @param key The session key used to encrypt the payload
          * @param streaming Whether the top-level function will return a stream
          */
-        encrypt(sessionKeyAlgorithm: string, key: Uint8Array, streaming: boolean): void;
+        encrypt(
+            sessionKeyAlgorithm: string,
+            key: Uint8Array,
+            streaming: boolean,
+        ): void;
 
         /**
          * En/decrypt the payload.
@@ -4038,7 +4265,11 @@ export namespace packet {
          * @param streaming Whether to set this.encrypted to a stream
          * @returns
          */
-        encrypt(sessionKeyAlgorithm: string, key: Uint8Array, streaming: boolean): Promise<Boolean>;
+        encrypt(
+            sessionKeyAlgorithm: string,
+            key: Uint8Array,
+            streaming: boolean,
+        ): Promise<Boolean>;
 
         /**
          * Decrypts the encrypted data contained in the packet.
@@ -4047,7 +4278,11 @@ export namespace packet {
          * @param streaming Whether to read this.encrypted as a stream
          * @returns
          */
-        decrypt(sessionKeyAlgorithm: string, key: Uint8Array, streaming: boolean): Promise<Boolean>;
+        decrypt(
+            sessionKeyAlgorithm: string,
+            key: Uint8Array,
+            streaming: boolean,
+        ): Promise<Boolean>;
     }
 
     class SymEncryptedSessionKey {
@@ -4076,7 +4311,11 @@ export namespace packet {
          *        input at position
          * @returns Object representation
          */
-        read(input: Uint8Array, position: Integer, len: Integer): SymEncryptedSessionKey;
+        read(
+            input: Uint8Array,
+            position: Integer,
+            len: Integer,
+        ): SymEncryptedSessionKey;
 
         /**
          * Decrypts the session key
@@ -4138,7 +4377,10 @@ export namespace packet {
          * @param key The key of cipher blocksize length to be used
          * @returns
          */
-        decrypt(sessionKeyAlgorithm: enums.symmetric, key: Uint8Array): Promise<Boolean>;
+        decrypt(
+            sessionKeyAlgorithm: enums.symmetric,
+            key: Uint8Array,
+        ): Promise<Boolean>;
 
         /**
          * Encrypt the symmetrically-encrypted packet data
@@ -4147,7 +4389,10 @@ export namespace packet {
          * @param key The key of cipher blocksize length to be used
          * @returns
          */
-        encrypt(sessionKeyAlgorithm: enums.symmetric, key: Uint8Array): Promise<Boolean>;
+        encrypt(
+            sessionKeyAlgorithm: enums.symmetric,
+            key: Uint8Array,
+        ): Promise<Boolean>;
     }
 
     class Trust {
@@ -4396,7 +4641,10 @@ export namespace packet {
          * @param callback Function to call with the parsed packet
          * @returns Returns false if the stream was empty and parsing is done, and true otherwise.
          */
-        function read(input: Uint8Array | ReadableStream<Uint8Array>, callback: Function): boolean;
+        function read(
+            input: Uint8Array | ReadableStream<Uint8Array>,
+            callback: Function,
+        ): boolean;
     }
 }
 
@@ -4426,14 +4674,18 @@ export namespace signature {
      * @param armoredText text to be parsed
      * @returns new signature object
      */
-    function readArmored(armoredText: string | ReadableStream<String>): Promise<Signature>;
+    function readArmored(
+        armoredText: string | ReadableStream<String>,
+    ): Promise<Signature>;
 
     /**
      * reads an OpenPGP signature as byte array and returns a signature object
      * @param input binary signature
      * @returns new signature object
      */
-    function read(input: Uint8Array | ReadableStream<Uint8Array>): Promise<Signature>;
+    function read(
+        input: Uint8Array | ReadableStream<Uint8Array>,
+    ): Promise<Signature>;
 }
 
 export namespace type {
@@ -4736,14 +4988,18 @@ export namespace util {
      * @param str The string to convert
      * @returns A valid squence of utf8 bytes
      */
-    function encode_utf8(str: string | ReadableStream<string>): Uint8Array | ReadableStream<string>;
+    function encode_utf8(
+        str: string | ReadableStream<string>,
+    ): Uint8Array | ReadableStream<string>;
 
     /**
      * Convert a Uint8Array of utf8 bytes to a native javascript string
      * @param utf8 A valid squence of utf8 bytes
      * @returns A native javascript string
      */
-    function decode_utf8(utf8: Uint8Array | ReadableStream<string>): string | ReadableStream<string>;
+    function decode_utf8(
+        utf8: Uint8Array | ReadableStream<string>,
+    ): string | ReadableStream<string>;
 
     /**
      * Concat a list of Uint8Arrays, Strings or Streams
@@ -4882,12 +5138,20 @@ export namespace util {
     /**
      * Format user id for internal use.
      */
-    function formatUserId(id: { name: string; email: string; comment: string }): string;
+    function formatUserId(id: {
+        name: string;
+        email: string;
+        comment: string;
+    }): string;
 
     /**
      * Parse user id.
      */
-    function parseUserId(userId: string): { name: string; email: string; comment: string };
+    function parseUserId(userId: string): {
+        name: string;
+        email: string;
+        comment: string;
+    };
 
     /**
      * Normalize line endings to \r\n
@@ -4926,9 +5190,10 @@ export namespace wkd {
          * @param options.rawBytes Returns Uint8Array instead of parsed key.
          * @returns The public key.
          */
-        lookup(
-            options: { email: string; rawBytes?: boolean | undefined },
-        ): Promise<Uint8Array | { keys: key.Key[]; err: Error[] | null }>;
+        lookup(options: {
+            email: string;
+            rawBytes?: boolean | undefined;
+        }): Promise<Uint8Array | { keys: key.Key[]; err: Error[] | null }>;
     }
 }
 
@@ -5102,9 +5367,12 @@ export interface KeyOptions {
  * @returns The generated key object in the form:
  *          { key:Key, privateKeyArmored:String, publicKeyArmored:String, revocationCertificate:String }
  */
-export function generateKey(
-    option: KeyOptions,
-): Promise<{ key: key.Key; privateKeyArmored: string; publicKeyArmored: string; revocationCertificate: string }>;
+export function generateKey(option: KeyOptions): Promise<{
+    key: key.Key;
+    privateKeyArmored: string;
+    publicKeyArmored: string;
+    revocationCertificate: string;
+}>;
 
 /**
  * Reformats signature packets for a key and rewraps key object.
@@ -5142,15 +5410,15 @@ export function revokeKey(
     reasonForRevocation?: revokeKey_reasonForRevocation,
 ): Promise<
     | {
-        privateKey: key.Key;
-        privateKeyArmored: string;
-        publicKey: key.Key;
-        publicKeyArmored: string;
-    }
+          privateKey: key.Key;
+          privateKeyArmored: string;
+          publicKey: key.Key;
+          publicKeyArmored: string;
+      }
     | {
-        publicKey: key.Key;
-        publicKeyArmored: string;
-    }
+          publicKey: key.Key;
+          publicKeyArmored: string;
+      }
 >;
 
 /**
@@ -5159,7 +5427,10 @@ export function revokeKey(
  * @param passphrase the user's passphrase(s) chosen during key generation
  * @returns the unlocked key object in the form: { key:Key }
  */
-export function decryptKey(privateKey: key.Key, passphrase: string | any[]): Promise<{ key: key.Key }>;
+export function decryptKey(
+    privateKey: key.Key,
+    passphrase: string | any[],
+): Promise<{ key: key.Key }>;
 
 /**
  * Lock a private key with your passphrase.
@@ -5167,7 +5438,10 @@ export function decryptKey(privateKey: key.Key, passphrase: string | any[]): Pro
  * @param passphrase the user's passphrase(s) chosen during key generation
  * @returns the locked key object in the form: { key:Key }
  */
-export function encryptKey(privateKey: key.Key, passphrase: string | any[]): Promise<{ key: key.Key }>;
+export function encryptKey(
+    privateKey: key.Key,
+    passphrase: string | any[],
+): Promise<{ key: key.Key }>;
 
 export interface EncryptOptions {
     /**
@@ -5250,7 +5524,10 @@ export interface EncryptResult {
  *          }
  */
 export function encrypt(
-    options: EncryptOptions & { armor?: true | undefined; detached?: false | undefined },
+    options: EncryptOptions & {
+        armor?: true | undefined;
+        detached?: false | undefined;
+    },
 ): Promise<EncryptResult & { data: string }>;
 export function encrypt(
     options: EncryptOptions & { armor?: true | undefined; detached: true },
@@ -5260,10 +5537,10 @@ export function encrypt(
 ): Promise<EncryptResult & { message: message.Message }>;
 export function encrypt(
     options: EncryptOptions & { armor: false; detached: true },
-): Promise<EncryptResult & { message: message.Message; signature: signature.Signature }>;
-export function encrypt(
-    options: EncryptOptions,
 ): Promise<
+    EncryptResult & { message: message.Message; signature: signature.Signature }
+>;
+export function encrypt(options: EncryptOptions): Promise<
     EncryptResult & {
         data: string | ReadableStream<String>;
         message: message.Message;
@@ -5287,7 +5564,10 @@ export interface DecryptOptions {
     /**
      * (optional) session keys in the form: { data:Uint8Array, algorithm:String }
      */
-    sessionKeys?: { data: Uint8Array; algorithm: string } | Array<{ data: Uint8Array; algorithm: string }> | undefined;
+    sessionKeys?:
+        | { data: Uint8Array; algorithm: string }
+        | Array<{ data: Uint8Array; algorithm: string }>
+        | undefined;
     /**
      * (optional) array of public keys or single key, to verify signatures
      */
@@ -5311,7 +5591,12 @@ export interface DecryptOptions {
 }
 
 export interface DecryptResult {
-    data: string | ReadableStream<String> | NodeStream | Uint8Array | ReadableStream<Uint8Array>;
+    data:
+        | string
+        | ReadableStream<String>
+        | NodeStream
+        | Uint8Array
+        | ReadableStream<Uint8Array>;
     filename: string;
     signatures: Array<{
         keyid: type.keyid.Keyid;
@@ -5340,10 +5625,16 @@ export interface DecryptResult {
  */
 export function decrypt(
     options: DecryptOptions & { format: "utf8" },
-): Promise<DecryptResult & { data: string | ReadableStream<String> | NodeStream }>;
+): Promise<
+    DecryptResult & { data: string | ReadableStream<String> | NodeStream }
+>;
 export function decrypt(
     options: DecryptOptions & { format: "binary" },
-): Promise<DecryptResult & { data: Uint8Array | ReadableStream<Uint8Array> | NodeStream }>;
+): Promise<
+    DecryptResult & {
+        data: Uint8Array | ReadableStream<Uint8Array> | NodeStream;
+    }
+>;
 export function decrypt(options: DecryptOptions): Promise<DecryptResult>;
 
 export interface SignOptions {
@@ -5380,7 +5671,11 @@ export interface SignOptions {
 export interface SignResult {
     data: string | ReadableStream<String> | NodeStream;
     message: message.Message;
-    signature: string | ReadableStream<String> | NodeStream | signature.Signature;
+    signature:
+        | string
+        | ReadableStream<String>
+        | NodeStream
+        | signature.Signature;
 }
 
 /**
@@ -5398,7 +5693,10 @@ export interface SignResult {
  *          }{
  */
 export function sign(
-    options: SignOptions & { armor?: true | undefined; detached?: false | undefined },
+    options: SignOptions & {
+        armor?: true | undefined;
+        detached?: false | undefined;
+    },
 ): Promise<{ data: string }>;
 export function sign(
     options: SignOptions & { armor: false; detached?: false | undefined },
@@ -5435,7 +5733,13 @@ export interface VerifyOptions {
 }
 
 export interface VerifyResult {
-    data: string | ReadableStream<String> | NodeStream | Uint8Array | ReadableStream<Uint8Array> | NodeStream;
+    data:
+        | string
+        | ReadableStream<String>
+        | NodeStream
+        | Uint8Array
+        | ReadableStream<Uint8Array>
+        | NodeStream;
     signatures: Array<{
         keyid: type.keyid.Keyid;
         verified: Promise<Boolean>;
@@ -5519,7 +5823,10 @@ export function toArray(param: object): any[] | undefined;
  * @param streaming (optional) whether to return a ReadableStream
  * @returns the data in the respective format
  */
-export function convertStream(data: object, streaming?: "web" | "node" | false): object;
+export function convertStream(
+    data: object,
+    streaming?: "web" | "node" | false,
+): object;
 
 /**
  * Convert object properties from Stream
@@ -5528,7 +5835,11 @@ export function convertStream(data: object, streaming?: "web" | "node" | false):
  * @param keys (optional) which keys to return as streams, if possible
  * @returns the data in the respective format
  */
-export function convertStreams(obj: object, streaming: "web" | "node" | false, keys: any[]): object;
+export function convertStreams(
+    obj: object,
+    streaming: "web" | "node" | false,
+    keys: any[],
+): object;
 
 /**
  * Link result.data to the message stream for cancellation.
@@ -5538,7 +5849,11 @@ export function convertStreams(obj: object, streaming: "web" | "node" | false, k
  * @param erroringStream (optional) stream which either errors or gets closed without data
  * @returns
  */
-export function linkStreams(result: object, message: message.Message, erroringStream: ReadableStream<string>): object;
+export function linkStreams(
+    result: object,
+    message: message.Message,
+    erroringStream: ReadableStream<string>,
+): object;
 
 /**
  * Wait until signature objects have been verified

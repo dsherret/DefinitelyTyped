@@ -2,7 +2,7 @@ import TX2 = require("tx2");
 
 TX2.event("foo", { bar: true });
 
-TX2.action("foo", callback => callback({ bar: true }));
+TX2.action("foo", (callback) => callback({ bar: true }));
 TX2.action("foo", { bar: true }, (data, callback) => callback(data.bar));
 
 TX2.issue("foo!");

@@ -16,8 +16,16 @@ declare namespace commangular {
          *                 It has to be something that implements ICommand. Same as angular syntax
          * @param commandConfig It's and object with paramaters to configure the command execution.
          */
-        create(commandName: string, commandFunction: Function, commandConfig?: ICommandConfig): void;
-        command(commandName: string, commandFunction: Function, commandConfig?: ICommandConfig): void;
+        create(
+            commandName: string,
+            commandFunction: Function,
+            commandConfig?: ICommandConfig,
+        ): void;
+        command(
+            commandName: string,
+            commandFunction: Function,
+            commandConfig?: ICommandConfig,
+        ): void;
 
         /**
          * This function allows you to hijack the execution before or after and
@@ -41,7 +49,11 @@ declare namespace commangular {
          * @param order You can chain any number of interceptors to the same command, so if you need to executed
          *         the interceptor in a specific order you can indicate it here. An order of 0 is assigned by default.
          */
-        aspect(aspectDescriptor: string, aspectFunction: ICommand, order: number): void;
+        aspect(
+            aspectDescriptor: string,
+            aspectFunction: ICommand,
+            order: number,
+        ): void;
 
         /**
          * Event aspects work the same way command aspects do, but they intercept all the command groups instead,
@@ -61,7 +73,11 @@ declare namespace commangular {
          * @param order You can chain any number of interceptors to the same command, so if you need to executed
          *         the interceptor in a specific order you can indicate it here. An order of 0 is assigned by default.
          */
-        eventAspect(aspectDescriptor: string, aspectFunction: ICommand, order: number): void;
+        eventAspect(
+            aspectDescriptor: string,
+            aspectFunction: ICommand,
+            order: number,
+        ): void;
 
         /**
          * TBD

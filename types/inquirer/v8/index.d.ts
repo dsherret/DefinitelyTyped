@@ -40,7 +40,10 @@ export interface PromptFunction {
     /**
      * Prompts the questions to the user.
      */
-    <T extends Answers = Answers>(questions: QuestionCollection<T>, initialAnswers?: Partial<T>): Promise<T>;
+    <T extends Answers = Answers>(
+        questions: QuestionCollection<T>,
+        initialAnswers?: Partial<T>,
+    ): Promise<T>;
 }
 
 /**
@@ -83,11 +86,17 @@ type RestoreFunction = PromptModuleBase["restoreDefaultPrompts"];
  * @template TChoiceMap
  * The valid choices for the question.
  */
-interface ListQuestionOptionsBase<T extends Answers, TChoiceMap> extends Question<T> {
+interface ListQuestionOptionsBase<T extends Answers, TChoiceMap>
+    extends Question<T> {
     /**
      * The choices of the prompt.
      */
-    choices?: AsyncDynamicQuestionProperty<ReadonlyArray<DistinctChoice<T, TChoiceMap>>, T> | undefined;
+    choices?:
+        | AsyncDynamicQuestionProperty<
+              ReadonlyArray<DistinctChoice<T, TChoiceMap>>,
+              T
+          >
+        | undefined;
 
     /**
      * The number of elements to show on each page.
@@ -109,7 +118,10 @@ export type KeyUnion<T> = LiteralUnion<Extract<keyof T, string>>;
  * @template U
  * The union to convert to an intersection.
  */
-export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I
+export type UnionToIntersection<U> = (
+    U extends any ? (k: U) => void : never
+) extends (k: infer I) => void
+    ? I
     : never;
 
 /**
@@ -131,7 +143,8 @@ export type Validator<T extends Answers = Answers> = Question<T>["validate"];
  * @template T
  * The type of the answers.
  */
-export type Transformer<T extends Answers = Answers> = InputQuestionOptions<T>["transformer"];
+export type Transformer<T extends Answers = Answers> =
+    InputQuestionOptions<T>["transformer"];
 
 /**
  * Represents a dynamic property for a question.
@@ -142,7 +155,9 @@ export type Transformer<T extends Answers = Answers> = InputQuestionOptions<T>["
  * @template TAnswers
  * The type of the answers.
  */
-export type DynamicQuestionProperty<T, TAnswers extends Answers = Answers> = T | ((answers: TAnswers) => T);
+export type DynamicQuestionProperty<T, TAnswers extends Answers = Answers> =
+    | T
+    | ((answers: TAnswers) => T);
 
 /**
  * Represents a dynamic property for a question which can be fetched asynchronously.
@@ -153,10 +168,10 @@ export type DynamicQuestionProperty<T, TAnswers extends Answers = Answers> = T |
  * @template TAnswers
  * The type of the answers.
  */
-export type AsyncDynamicQuestionProperty<T, TAnswers extends Answers = Answers> = DynamicQuestionProperty<
-    T | Promise<T>,
-    TAnswers
->;
+export type AsyncDynamicQuestionProperty<
+    T,
+    TAnswers extends Answers = Answers,
+> = DynamicQuestionProperty<T | Promise<T>, TAnswers>;
 
 /**
  * Represents a choice-item.
@@ -174,7 +189,8 @@ export interface ChoiceBase {
  * @template T
  * The type of the answers.
  */
-export interface ListChoiceOptions<T extends Answers = Answers> extends ChoiceOptions {
+export interface ListChoiceOptions<T extends Answers = Answers>
+    extends ChoiceOptions {
     /**
      * A value indicating whether the choice is disabled.
      */
@@ -187,7 +203,8 @@ export interface ListChoiceOptions<T extends Answers = Answers> extends ChoiceOp
  * @template T
  * The type of the answers.
  */
-export interface CheckboxChoiceOptions<T extends Answers = Answers> extends ListChoiceOptions<T> {
+export interface CheckboxChoiceOptions<T extends Answers = Answers>
+    extends ListChoiceOptions<T> {
     /**
      * A value indicating whether the choice should be initially checked.
      */
@@ -268,7 +285,8 @@ export interface BaseChoiceMap<T extends Answers = Answers> {
  * @template T
  * The type of the answers.
  */
-export interface ListChoiceMap<T extends Answers = Answers> extends BaseChoiceMap<T> {
+export interface ListChoiceMap<T extends Answers = Answers>
+    extends BaseChoiceMap<T> {
     ListChoiceOptions: ListChoiceOptions<T>;
 }
 
@@ -278,7 +296,8 @@ export interface ListChoiceMap<T extends Answers = Answers> extends BaseChoiceMa
  * @template T
  * The type of the answers.
  */
-export interface CheckboxChoiceMap<T extends Answers = Answers> extends BaseChoiceMap<T> {
+export interface CheckboxChoiceMap<T extends Answers = Answers>
+    extends BaseChoiceMap<T> {
     CheckboxChoiceOptions: CheckboxChoiceOptions<T>;
 }
 
@@ -288,7 +307,8 @@ export interface CheckboxChoiceMap<T extends Answers = Answers> extends BaseChoi
  * @template T
  * The type of the answers.
  */
-export interface ExpandChoiceMap<T extends Answers = Answers> extends BaseChoiceMap<T> {
+export interface ExpandChoiceMap<T extends Answers = Answers>
+    extends BaseChoiceMap<T> {
     ExpandChoiceOptions: ExpandChoiceOptions;
 }
 
@@ -314,9 +334,10 @@ export interface AllChoiceMap<T extends Answers = Answers> {
  * @template TChoiceMap
  * The choice-types to provide.
  */
-export type DistinctChoice<TAnswers extends Answers = Answers, TChoiceMap = AllChoiceMap<TAnswers>> =
-    | string
-    | TChoiceMap[keyof TChoiceMap];
+export type DistinctChoice<
+    TAnswers extends Answers = Answers,
+    TChoiceMap = AllChoiceMap<TAnswers>,
+> = string | TChoiceMap[keyof TChoiceMap];
 
 /**
  * Represents a set of choices.
@@ -324,7 +345,9 @@ export type DistinctChoice<TAnswers extends Answers = Answers, TChoiceMap = AllC
  * @template T
  * The type of the answers.
  */
-export type ChoiceCollection<T extends Answers = Answers> = Array<DistinctChoice<AllChoiceMap<T>>>;
+export type ChoiceCollection<T extends Answers = Answers> = Array<
+    DistinctChoice<AllChoiceMap<T>>
+>;
 
 /**
  * Provides options for a question.
@@ -391,7 +414,10 @@ export interface Question<T extends Answers = Answers> {
      * @returns
      * Either a value indicating whether the answer is valid or a {@link String `string`} which describes the error.
      */
-    validate?(input: any, answers?: T): boolean | string | Promise<boolean | string>;
+    validate?(
+        input: any,
+        answers?: T,
+    ): boolean | string | Promise<boolean | string>;
 
     /**
      * Force to prompt the question if the answer already exists.
@@ -415,7 +441,8 @@ export type QuestionAnswer<T extends Answers = Answers> = {
  * @template T
  * The type of the answers.
  */
-export interface InputQuestionOptions<T extends Answers = Answers> extends Question<T> {
+export interface InputQuestionOptions<T extends Answers = Answers>
+    extends Question<T> {
     /**
      * Transforms the value to display to the user.
      *
@@ -431,7 +458,11 @@ export interface InputQuestionOptions<T extends Answers = Answers> extends Quest
      * @returns
      * The value to display to the user.
      */
-    transformer?(input: any, answers: T, flags: { isFinal?: boolean | undefined }): string | Promise<string>;
+    transformer?(
+        input: any,
+        answers: T,
+        flags: { isFinal?: boolean | undefined },
+    ): string | Promise<string>;
 }
 
 /**
@@ -440,7 +471,8 @@ export interface InputQuestionOptions<T extends Answers = Answers> extends Quest
  * @template T
  * The type of the answers.
  */
-export interface InputQuestion<T extends Answers = Answers> extends InputQuestionOptions<T> {
+export interface InputQuestion<T extends Answers = Answers>
+    extends InputQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -453,7 +485,8 @@ export interface InputQuestion<T extends Answers = Answers> extends InputQuestio
  * @template T
  * The type of the answers.
  */
-export interface NumberQuestionOptions<T extends Answers = Answers> extends InputQuestionOptions<T> {}
+export interface NumberQuestionOptions<T extends Answers = Answers>
+    extends InputQuestionOptions<T> {}
 
 /**
  * Provides options for a question for the {@link NumberPrompt `NumberPrompt<TQuestion>`}.
@@ -461,7 +494,8 @@ export interface NumberQuestionOptions<T extends Answers = Answers> extends Inpu
  * @template T
  * The type of the answers.
  */
-export interface NumberQuestion<T extends Answers = Answers> extends NumberQuestionOptions<T> {
+export interface NumberQuestion<T extends Answers = Answers>
+    extends NumberQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -474,7 +508,8 @@ export interface NumberQuestion<T extends Answers = Answers> extends NumberQuest
  * @template T
  * The type of the answers.
  */
-export interface PasswordQuestionOptions<T extends Answers = Answers> extends InputQuestionOptions<T> {
+export interface PasswordQuestionOptions<T extends Answers = Answers>
+    extends InputQuestionOptions<T> {
     /**
      * The character to replace the user-input.
      */
@@ -487,7 +522,8 @@ export interface PasswordQuestionOptions<T extends Answers = Answers> extends In
  * @template T
  * The type of the answers.
  */
-export interface PasswordQuestion<T extends Answers = Answers> extends PasswordQuestionOptions<T> {
+export interface PasswordQuestion<T extends Answers = Answers>
+    extends PasswordQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -504,8 +540,7 @@ export interface PasswordQuestion<T extends Answers = Answers> extends PasswordQ
  * The valid choices for the question.
  */
 export interface LoopableListQuestionOptionsBase<T extends Answers, TChoiceMap>
-    extends ListQuestionOptionsBase<T, TChoiceMap>
-{
+    extends ListQuestionOptionsBase<T, TChoiceMap> {
     /**
      * A value indicating whether choices in a list should be looped.
      */
@@ -519,8 +554,7 @@ export interface LoopableListQuestionOptionsBase<T extends Answers, TChoiceMap>
  * The type of the answers.
  */
 export interface ListQuestionOptions<T extends Answers = Answers>
-    extends LoopableListQuestionOptionsBase<T, ListChoiceMap<T>>
-{}
+    extends LoopableListQuestionOptionsBase<T, ListChoiceMap<T>> {}
 
 /**
  * Provides options for a question for the {@link ListPrompt `ListPrompt<TQuestion>`}.
@@ -528,7 +562,8 @@ export interface ListQuestionOptions<T extends Answers = Answers>
  * @template T
  * The type of the answers.
  */
-export interface ListQuestion<T extends Answers = Answers> extends ListQuestionOptions<T> {
+export interface ListQuestion<T extends Answers = Answers>
+    extends ListQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -541,7 +576,8 @@ export interface ListQuestion<T extends Answers = Answers> extends ListQuestionO
  * @template T
  * The type of the answers.
  */
-export interface RawListQuestionOptions<T extends Answers = Answers> extends ListQuestionOptions<T> {}
+export interface RawListQuestionOptions<T extends Answers = Answers>
+    extends ListQuestionOptions<T> {}
 
 /**
  * Provides options for a question for the {@link RawListPrompt `RawListPrompt<TQuestion>`}.
@@ -549,7 +585,8 @@ export interface RawListQuestionOptions<T extends Answers = Answers> extends Lis
  * @template T
  * The type of the answers.
  */
-export interface RawListQuestion<T extends Answers = Answers> extends RawListQuestionOptions<T> {
+export interface RawListQuestion<T extends Answers = Answers>
+    extends RawListQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -563,8 +600,7 @@ export interface RawListQuestion<T extends Answers = Answers> extends RawListQue
  * The type of the answers.
  */
 export interface ExpandQuestionOptions<T extends Answers = Answers>
-    extends ListQuestionOptionsBase<T, ExpandChoiceMap<T>>
-{}
+    extends ListQuestionOptionsBase<T, ExpandChoiceMap<T>> {}
 
 /**
  * Provides options for a question for the {@link ExpandPrompt `ExpandPrompt<TQuestion>`}.
@@ -572,7 +608,8 @@ export interface ExpandQuestionOptions<T extends Answers = Answers>
  * @template T
  * The type of the answers.
  */
-export interface ExpandQuestion<T extends Answers = Answers> extends ExpandQuestionOptions<T> {
+export interface ExpandQuestion<T extends Answers = Answers>
+    extends ExpandQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -586,8 +623,7 @@ export interface ExpandQuestion<T extends Answers = Answers> extends ExpandQuest
  * The type of the answers.
  */
 export interface CheckboxQuestionOptions<T extends Answers = Answers>
-    extends LoopableListQuestionOptionsBase<T, CheckboxChoiceMap<T>>
-{}
+    extends LoopableListQuestionOptionsBase<T, CheckboxChoiceMap<T>> {}
 
 /**
  * Provides options for a question for the {@link CheckboxPrompt `CheckboxPrompt<TQuestion>`}.
@@ -595,7 +631,8 @@ export interface CheckboxQuestionOptions<T extends Answers = Answers>
  * @template T
  * The type of the answers.
  */
-export interface CheckboxQuestion<T extends Answers = Answers> extends CheckboxQuestionOptions<T> {
+export interface CheckboxQuestion<T extends Answers = Answers>
+    extends CheckboxQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -608,7 +645,8 @@ export interface CheckboxQuestion<T extends Answers = Answers> extends CheckboxQ
  * @template T
  * The type of the answers.
  */
-export interface ConfirmQuestionOptions<T extends Answers = Answers> extends Question<T> {}
+export interface ConfirmQuestionOptions<T extends Answers = Answers>
+    extends Question<T> {}
 
 /**
  * Provides options for a question for the {@link ConfirmPrompt `ConfirmPrompt<TQuestion>`}.
@@ -616,7 +654,8 @@ export interface ConfirmQuestionOptions<T extends Answers = Answers> extends Que
  * @template T
  * The type of the answers.
  */
-export interface ConfirmQuestion<T extends Answers = Answers> extends ConfirmQuestionOptions<T> {
+export interface ConfirmQuestion<T extends Answers = Answers>
+    extends ConfirmQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -629,7 +668,8 @@ export interface ConfirmQuestion<T extends Answers = Answers> extends ConfirmQue
  * @template T
  * The type of the answers.
  */
-export interface EditorQuestionOptions<T extends Answers = Answers> extends Question<T> {
+export interface EditorQuestionOptions<T extends Answers = Answers>
+    extends Question<T> {
     /**
      * The postfix of the file being edited.
      *
@@ -644,7 +684,8 @@ export interface EditorQuestionOptions<T extends Answers = Answers> extends Ques
  * @template T
  * The type of the answers.
  */
-export interface EditorQuestion<T extends Answers = Answers> extends EditorQuestionOptions<T> {
+export interface EditorQuestion<T extends Answers = Answers>
+    extends EditorQuestionOptions<T> {
     /**
      * @inheritdoc
      */
@@ -710,7 +751,8 @@ export interface QuestionMap<T extends Answers = Answers> {
  * @template T
  * The type of the answers.
  */
-export type DistinctQuestion<T extends Answers = Answers> = QuestionMap<T>[keyof QuestionMap<T>];
+export type DistinctQuestion<T extends Answers = Answers> =
+    QuestionMap<T>[keyof QuestionMap<T>];
 
 /**
  * Indicates the type of a question
@@ -727,7 +769,7 @@ export type QuestionCollection<T extends Answers = Answers> =
     | DistinctQuestion<T>
     | ReadonlyArray<DistinctQuestion<T>>
     | Observable<DistinctQuestion<T>>
-    | { [P in KeyUnion<T>]?: (DistinctQuestion<T> & { name?: never }) };
+    | { [P in KeyUnion<T>]?: DistinctQuestion<T> & { name?: never } };
 
 /**
  * Provides an input and an output-stream.
@@ -798,7 +840,9 @@ export namespace prompts {
     /**
      * Represents the state of a prompt.
      */
-    type PromptState = LiteralUnion<"pending" | "idle" | "loading" | "answered" | "done">;
+    type PromptState = LiteralUnion<
+        "pending" | "idle" | "loading" | "answered" | "done"
+    >;
 
     /**
      * Represents a prompt.
@@ -834,7 +878,11 @@ export namespace prompts {
          * @param answers
          * The answers provided by the user.
          */
-        new(question: any, readLine: ReadlineInterface, answers: Answers): PromptBase;
+        new (
+            question: any,
+            readLine: ReadlineInterface,
+            answers: Answers,
+        ): PromptBase;
     }
 
     /**

@@ -136,7 +136,6 @@ interface JSONInputProperties {
     theme?: string | undefined;
 }
 
-declare class JSONInput extends React.Component<JSONInputProperties> {
-}
+declare class JSONInput extends React.Component<JSONInputProperties> {}
 
 export default JSONInput;

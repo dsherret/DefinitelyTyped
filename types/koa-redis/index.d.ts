@@ -12,5 +12,7 @@ declare namespace redisStore {
     }
 }
 
-declare function redisStore(options: redisStore.RedisOptions): redisStore.RedisSessionStore;
+declare function redisStore(
+    options: redisStore.RedisOptions,
+): redisStore.RedisSessionStore;
 export = redisStore;

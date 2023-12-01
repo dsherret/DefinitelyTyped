@@ -20,10 +20,16 @@ export function onOriginRequest(request: EW.IngressOriginRequest) {
     const userLocation = request.userLocation;
 }
 
-export function onOriginResponse(request: EW.EgressOriginRequest, response: EW.EgressOriginResponse) {
+export function onOriginResponse(
+    request: EW.EgressOriginRequest,
+    response: EW.EgressOriginResponse,
+) {
     const userLocation = request.userLocation;
 }
 
-export function onClientResponse(request: EW.EgressClientRequest, response: EW.EgressClientResponse) {
+export function onClientResponse(
+    request: EW.EgressClientRequest,
+    response: EW.EgressClientResponse,
+) {
     const userLocation = request.userLocation;
 }

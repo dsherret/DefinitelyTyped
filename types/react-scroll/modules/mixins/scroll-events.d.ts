@@ -1,6 +1,9 @@
 declare namespace Events {
     interface ScrollEvent {
-        register(eventName: string, callback: (to: string, element: any) => void): void;
+        register(
+            eventName: string,
+            callback: (to: string, element: any) => void,
+        ): void;
         remove(eventName: string): void;
     }
 

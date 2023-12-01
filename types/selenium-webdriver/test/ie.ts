@@ -7,7 +7,10 @@ function TestIeDriver() {
     driver = ie.Driver.createSession();
     driver = ie.Driver.createSession(webdriver.Capabilities.ie());
     driver = ie.Driver.createSession(new ie.Options());
-    driver = ie.Driver.createSession(new ie.Options(), new remote.DriverService("/dev/null", {}));
+    driver = ie.Driver.createSession(
+        new ie.Options(),
+        new remote.DriverService("/dev/null", {}),
+    );
     driver.setFileDetector();
 
     let baseDriver: webdriver.WebDriver = driver;

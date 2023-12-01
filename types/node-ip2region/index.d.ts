@@ -5,7 +5,10 @@ type SearchResult = {
     region: string;
 } | null;
 
-type SearchCallback = (err: NodeJS.ErrnoException, result: SearchResult) => void;
+type SearchCallback = (
+    err: NodeJS.ErrnoException,
+    result: SearchResult,
+) => void;
 
 declare class IP2Region {
     // #region Static Functions

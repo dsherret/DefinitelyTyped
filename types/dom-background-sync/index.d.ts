@@ -9,7 +9,10 @@ interface SyncEvent extends ExtendableEvent {
     readonly tag: string;
 }
 
-declare var SyncEvent: { prototype: SyncEvent; new(type: string, init?: SyncEventInit): SyncEvent };
+declare var SyncEvent: {
+    prototype: SyncEvent;
+    new (type: string, init?: SyncEventInit): SyncEvent;
+};
 
 // https://wicg.github.io/background-sync/spec/#syncmanager
 interface SyncManager {
@@ -19,7 +22,7 @@ interface SyncManager {
 
 declare var SyncManager: {
     prototype: SyncManager;
-    new(): SyncManager;
+    new (): SyncManager;
 };
 
 interface ServiceWorkerRegistration {

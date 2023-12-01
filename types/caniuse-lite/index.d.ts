@@ -20,27 +20,37 @@ export function feature(packedFeature: PackedFeature): Feature;
  * @param packedRegion a packed version of regional usage data by agent OD.
  * @return the unpacked usage data indexed by agent ID and then version.
  */
-export function region(packedRegion: PackedRegion): { [agentID: string]: UsageByVersion };
+export function region(packedRegion: PackedRegion): {
+    [agentID: string]: UsageByVersion;
+};
 
 /**
  * Agents indexed by their ID. .
  */
-export type AgentsByID = Readonly<{ [id: string]: Readonly<Agent> | undefined }>;
+export type AgentsByID = Readonly<{
+    [id: string]: Readonly<Agent> | undefined;
+}>;
 
 /**
  * Feature support status by version indexed by agent ID.
  */
-export type StatsByAgentID = Readonly<{ [agentID: string]: SupportStatusByVersion }>;
+export type StatsByAgentID = Readonly<{
+    [agentID: string]: SupportStatusByVersion;
+}>;
 
 /**
  * Feature support status indexed by an agent's versions.
  */
-export type SupportStatusByVersion = Readonly<{ [version: string]: SupportStatus }>;
+export type SupportStatusByVersion = Readonly<{
+    [version: string]: SupportStatus;
+}>;
 
 /**
  * Usage (percentage/market share) indexed by an agent's versions.
  */
-export type UsageByVersion = Readonly<{ [version: string]: number | undefined }>;
+export type UsageByVersion = Readonly<{
+    [version: string]: number | undefined;
+}>;
 
 /**
  * The standardization status of a feature:
@@ -52,7 +62,15 @@ export type UsageByVersion = Readonly<{ [version: string]: number | undefined }>
  * * other - Non-W3C, but reputable
  * * unoff - Unofficial
  */
-export type FeatureStatus = "ls" | "rec" | "pr" | "cr" | "wd" | "other" | "unoff" | string;
+export type FeatureStatus =
+    | "ls"
+    | "rec"
+    | "pr"
+    | "cr"
+    | "wd"
+    | "other"
+    | "unoff"
+    | string;
 
 /**
  * Encoded support status:
@@ -67,7 +85,15 @@ export type FeatureStatus = "ls" | "rec" | "pr" | "cr" | "wd" | "other" | "unoff
  * The support status can additionally have one or more footnote references as `#<n>`, f.e.
  * `a x #1 #3`.
  */
-export type SupportStatus = "n" | "p" | "u" | "a x" | "a" | "y x" | "y" | string;
+export type SupportStatus =
+    | "n"
+    | "p"
+    | "u"
+    | "a x"
+    | "a"
+    | "y x"
+    | "y"
+    | string;
 
 /**
  * Provides information about the Agent.
@@ -86,7 +112,8 @@ export interface Agent {
     /**
      * Version matrix. See [caniuse](https://caniuse.com)
      */
-    versions: [ // Tuple of 70 version slots:
+    versions: [
+        // Tuple of 70 version slots:
         string | null,
         string | null,
         string | null,

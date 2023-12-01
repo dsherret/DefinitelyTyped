@@ -69,30 +69,49 @@ declare class Base {
     createDatabase(...options: any[]): void;
     switchDatabase(...options: any[]): void;
     dropDatabase(...options: any[]): void;
-    recurseCallbackArray(foreignKeys: string[], callback: Base.CallbackFunction): void;
+    recurseCallbackArray(
+        foreignKeys: string[],
+        callback: Base.CallbackFunction,
+    ): void;
     bindForeignKey(
         tableName: string,
         columnName: string,
         fkOptions: Base.ForeignKeySpec,
     ): (callback: Base.CallbackFunction) => void;
-    createColumnDef(name: string, spec: Base.ColumnSpec, options?: any): Base.ColumnDef; // TODO Figure out a type for `options`!
+    createColumnDef(
+        name: string,
+        spec: Base.ColumnSpec,
+        options?: any,
+    ): Base.ColumnDef; // TODO Figure out a type for `options`!
     // createColumnConstraint(spec: Base.ColumnSpec, options?: any, ...implementationDefinedOptions: any[]): string;
     createMigrationsTable(callback: Base.CallbackFunction): void;
     createSeedsTable(callback: Base.CallbackFunction): void;
-    createTable(tableName: string, options: any | Base.CreateTableOptions, callback: Base.CallbackFunction): void;
+    createTable(
+        tableName: string,
+        options: any | Base.CreateTableOptions,
+        callback: Base.CallbackFunction,
+    ): void;
     dropTable(
         tableName: string,
         optionsOrCb?: Base.DropTableOptions | Base.CallbackFunction,
         callback?: Base.CallbackFunction,
     ): void;
-    renameTable(tableName: string, newTableName: string, callback: Base.CallbackFunction): void;
+    renameTable(
+        tableName: string,
+        newTableName: string,
+        callback: Base.CallbackFunction,
+    ): void;
     addColumn(
         tableName: string,
         columnName: string,
         columnSpec: Base.ColumnSpec,
         callback: Base.CallbackFunction,
     ): void;
-    removeColumn(tableName: string, columnName: string, callback: Base.CallbackFunction): void;
+    removeColumn(
+        tableName: string,
+        columnName: string,
+        callback: Base.CallbackFunction,
+    ): void;
     renameColumn(
         tableName: string,
         oldColumnName: string,
@@ -127,7 +146,12 @@ declare class Base {
         idsOrCb?: any | Base.CallbackFunction,
         callback?: Base.CallbackFunction,
     ): void;
-    lookup(tableName: string, column: string, id?: any, callback?: Base.CallbackFunction): void;
+    lookup(
+        tableName: string,
+        column: string,
+        id?: any,
+        callback?: Base.CallbackFunction,
+    ): void;
     removeIndex(
         tableNameOrIndexName: string,
         indexNameOrCb?: string | Base.CallbackFunction,
@@ -152,14 +176,25 @@ declare class Base {
     addSeedRecord(name: string, callback: Base.CallbackFunction): void;
     startMigration(callback: Base.CallbackFunction): void;
     endMigration(callback: Base.CallbackFunction): void;
-    runSql(sql?: string, paramsOrCb?: any[] | Base.CallbackFunction, callback?: Base.CallbackFunction): void;
+    runSql(
+        sql?: string,
+        paramsOrCb?: any[] | Base.CallbackFunction,
+        callback?: Base.CallbackFunction,
+    ): void;
     allLoadedMigrations(callback: Base.CallbackFunction): void;
     allLoadedSeeds(callback: Base.CallbackFunction): void;
-    deleteMigration(migrationName: string, callback: Base.CallbackFunction): void;
+    deleteMigration(
+        migrationName: string,
+        callback: Base.CallbackFunction,
+    ): void;
     remove(table: string, ids: any, callback: Base.CallbackFunction): void; // TODO Make ids match the type of ids in buildWhereClause(ids);
     buildWhereClause(ids: any): string;
     deleteSeed(seedName: string, callback: Base.CallbackFunction): void;
-    all(sql: string, paramsOrCb?: any[] | Base.CallbackFunction, callback?: Base.CallbackFunction): void;
+    all(
+        sql: string,
+        paramsOrCb?: any[] | Base.CallbackFunction,
+        callback?: Base.CallbackFunction,
+    ): void;
     escape(str: string): string;
     escapeString(str: string): string;
     escapeDDL(str: string): string;
@@ -174,13 +209,31 @@ declare class Base {
     recurseCallbackArrayAsync(foreignKeys: string[]): Promise<any>;
     createMigrationsTableAsync(): Promise<any>;
     createSeedsTableAsync(): Promise<any>;
-    createTableAsync(tableName: string, options: any | Base.CreateTableOptions): Promise<any>;
-    dropTableAsync(tableName: string, options?: Base.DropTableOptions): Promise<any>;
+    createTableAsync(
+        tableName: string,
+        options: any | Base.CreateTableOptions,
+    ): Promise<any>;
+    dropTableAsync(
+        tableName: string,
+        options?: Base.DropTableOptions,
+    ): Promise<any>;
     renameTableAsync(tableName: string, newTableName: string): Promise<any>;
-    addColumnAsync(tableName: string, columnName: string, columnSpec: Base.ColumnSpec): Promise<any>;
+    addColumnAsync(
+        tableName: string,
+        columnName: string,
+        columnSpec: Base.ColumnSpec,
+    ): Promise<any>;
     removeColumnAsync(tableName: string, columnName: string): Promise<any>;
-    renameColumnAsync(tableName: string, oldColumnName: string, newColumnName: string): Promise<any>;
-    changeColumnAsync(tableName: string, columnName: string, columnSpec: Base.ColumnSpec): Promise<any>;
+    renameColumnAsync(
+        tableName: string,
+        oldColumnName: string,
+        newColumnName: string,
+    ): Promise<any>;
+    changeColumnAsync(
+        tableName: string,
+        columnName: string,
+        columnSpec: Base.ColumnSpec,
+    ): Promise<any>;
     addIndexAsync(
         tableName: string,
         indexName: string,
@@ -200,8 +253,16 @@ declare class Base {
         idsOrCb?: any | Base.CallbackFunction,
         callback?: Base.CallbackFunction,
     ): Promise<any>;
-    lookupAsync(tableName: string, column: string, id?: any, callback?: Base.CallbackFunction): Promise<any>;
-    removeIndexAsync(tableNameOrIndexName: string, indexName?: string): Promise<any>;
+    lookupAsync(
+        tableName: string,
+        column: string,
+        id?: any,
+        callback?: Base.CallbackFunction,
+    ): Promise<any>;
+    removeIndexAsync(
+        tableNameOrIndexName: string,
+        indexName?: string,
+    ): Promise<any>;
     addForeignKeyAsync(
         tableName: string,
         referencedTableName: string,
@@ -209,7 +270,11 @@ declare class Base {
         fieldMapping: any,
         rules: Base.ForeignKeyRules,
     ): Promise<any>;
-    removeForeignKeyAsync(tableName: string, keyName: string, options?: Base.RemoveForeignKeyOptions): Promise<any>;
+    removeForeignKeyAsync(
+        tableName: string,
+        keyName: string,
+        options?: Base.RemoveForeignKeyOptions,
+    ): Promise<any>;
     addMigrationRecordAsync(name: string): Promise<any>;
     addSeedRecordAsync(name: string): Promise<any>;
     startMigrationAsync(): Promise<any>;

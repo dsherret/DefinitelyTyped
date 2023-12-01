@@ -19,7 +19,11 @@ export enum VolumeType {
  * @param onError a callback when setting fails.
  * @returns void
  */
-export function setAudioMode(mode: AudioMode, onSuccess: () => void, onError: (error: any) => void): void;
+export function setAudioMode(
+    mode: AudioMode,
+    onSuccess: () => void,
+    onError: (error: any) => void,
+): void;
 
 /**
  * Gets the current `AudioManagement.AudioMode` of the device.
@@ -42,7 +46,12 @@ export function getAudioMode(
  * @param onError a callback when setting fails.
  * @returns void
  */
-export function setVolume(type: VolumeType, volume: number, onSuccess: () => void, onError: (error: any) => void): void;
+export function setVolume(
+    type: VolumeType,
+    volume: number,
+    onSuccess: () => void,
+    onError: (error: any) => void,
+): void;
 
 /**
  * Gets the specified `AudioManagement.VolumeType`'s `volume`.

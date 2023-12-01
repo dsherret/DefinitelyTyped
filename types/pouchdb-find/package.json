@@ -1,29 +1,29 @@
 {
-    "private": true,
-    "name": "@types/pouchdb-find",
-    "version": "7.3.9999",
-    "projects": [
-        "https://pouchdb.com/",
-        "https://github.com/pouchdb/pouchdb"
-    ],
-    "dependencies": {
-        "@types/pouchdb-core": "*"
+  "private": true,
+  "name": "@types/pouchdb-find",
+  "version": "7.3.9999",
+  "projects": [
+    "https://pouchdb.com/",
+    "https://github.com/pouchdb/pouchdb"
+  ],
+  "dependencies": {
+    "@types/pouchdb-core": "*"
+  },
+  "devDependencies": {
+    "@types/pouchdb-find": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Jakub Navratil",
+      "githubUsername": "trubit"
     },
-    "devDependencies": {
-        "@types/pouchdb-find": "workspace:."
+    {
+      "name": "Sebastian Ramirez",
+      "githubUsername": "tiangolo"
     },
-    "owners": [
-        {
-            "name": "Jakub Navratil",
-            "githubUsername": "trubit"
-        },
-        {
-            "name": "Sebastian Ramirez",
-            "githubUsername": "tiangolo"
-        },
-        {
-            "name": "Samuel Kerr",
-            "githubUsername": "kuzmatech"
-        }
-    ]
+    {
+      "name": "Samuel Kerr",
+      "githubUsername": "kuzmatech"
+    }
+  ]
 }

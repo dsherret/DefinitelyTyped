@@ -8,19 +8,18 @@ const header = `# This file is generated.
 async function main() {
     const { owners, maxPathLen } = getAllOwners();
     const codeOwnersPath = new URL("../.github/CODEOWNERS", import.meta.url);
-    const entries = mapDefined(owners, ([p, users]) => getEntry(p, users, maxPathLen));
-    await writeFile(
-        codeOwnersPath,
-        `${header}\n\n${entries.join("\n")}\n`,
-        { encoding: "utf-8" },
+    const entries = mapDefined(owners, ([p, users]) =>
+        getEntry(p, users, maxPathLen),
     );
+    await writeFile(codeOwnersPath, `${header}\n\n${entries.join("\n")}\n`, {
+        encoding: "utf-8",
+    });
 }
 
-main()
-    .catch(e => {
-        console.error(e);
-        process.exit(1);
-    });
+main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+});
 
 /**
  * @param {URL} dir
@@ -41,10 +40,11 @@ function getAllOwners() {
     /** @type {[string, string[]][]} */
     const owners = [];
     console.log("Reading headers...");
-    const rootPrefixLength = (new URL("../", import.meta.url)).pathname.length - 1;
+    const rootPrefixLength =
+        new URL("../", import.meta.url).pathname.length - 1;
     let maxPathLen = 0;
 
-    recurse(new URL("../types/", import.meta.url), subpath => {
+    recurse(new URL("../types/", import.meta.url), (subpath) => {
         const index = new URL("package.json", subpath);
         if (existsSync(index)) {
             const indexContent = readFileSync(index, "utf-8");
@@ -53,7 +53,10 @@ function getAllOwners() {
                 parsed = JSON.parse(indexContent);
             } catch (e) {}
             if (parsed && parsed.owners && Array.isArray(parsed.owners)) {
-                const usernames = mapDefined(parsed.owners, o => o.githubUsername);
+                const usernames = mapDefined(
+                    parsed.owners,
+                    (o) => o.githubUsername,
+                );
                 if (usernames.length > 0) {
                     const p = subpath.pathname.slice(rootPrefixLength);
                     maxPathLen = Math.max(maxPathLen, p.length);
@@ -74,7 +77,7 @@ function getAllOwners() {
  */
 function getEntry(p, users, maxPathLen) {
     const path = p.padEnd(maxPathLen);
-    return `${path} ${users.map(u => `@${u}`).join(" ")}`;
+    return `${path} ${users.map((u) => `@${u}`).join(" ")}`;
 }
 
 /**

@@ -44,7 +44,12 @@ class Customized extends Adapter {
 }
 
 const MixedIn = Adapter.extend(BuildURLMixin, {
-    findRecord(store: Store, type: typeof Model, id: string, snapshot: DS.Snapshot) {
+    findRecord(
+        store: Store,
+        type: typeof Model,
+        id: string,
+        snapshot: DS.Snapshot,
+    ) {
         let url = this.buildURL(type.modelName, id, snapshot, "findRecord");
         return $.ajax(url, { method: "GET" });
     },

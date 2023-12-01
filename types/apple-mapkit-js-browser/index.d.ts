@@ -83,7 +83,11 @@ declare namespace mapkit {
     type InitializationEventType = "configuration-change" | "error";
 
     interface InitializationEvent {
-        status: "Initialized" | "Refreshed" | "Unauthorized" | "Too Many Requests";
+        status:
+            | "Initialized"
+            | "Refreshed"
+            | "Unauthorized"
+            | "Too Many Requests";
     }
 
     /**
@@ -196,7 +200,10 @@ declare namespace mapkit {
         /**
          * Changes the map's camera boundary with an animated transition.
          */
-        setCameraBoundaryAnimated(coordinateRegionOrMapRect: CoordinateRegion | MapRect, animate?: boolean): this;
+        setCameraBoundaryAnimated(
+            coordinateRegionOrMapRect: CoordinateRegion | MapRect,
+            animate?: boolean,
+        ): this;
         /**
          * Sets the altitude of the camera above the center of the map.
          */
@@ -212,7 +219,10 @@ declare namespace mapkit {
         /**
          * Changes the map's camera zoom range with an animated transition.
          */
-        setCameraZoomRangeAnimated(cameraZoomRange: CameraZoomRange, animate?: boolean): this;
+        setCameraZoomRangeAnimated(
+            cameraZoomRange: CameraZoomRange,
+            animate?: boolean,
+        ): this;
 
         // Configuring the Map's Appearance
 
@@ -323,7 +333,10 @@ declare namespace mapkit {
          * Adjusts the maps visible region to bring the specified overlays and
          * annotations into view.
          */
-        showItems<I = Array<Annotation | Overlay>>(items: I, options?: MapShowItemsOptions): I;
+        showItems<I = Array<Annotation | Overlay>>(
+            items: I,
+            options?: MapShowItemsOptions,
+        ): I;
 
         // Annotating the Map
 
@@ -403,13 +416,17 @@ declare namespace mapkit {
          * Adds a collection of annotations, overlays, or other item collections to the map.
          */
         addItems(
-            items: Array<Annotation | Overlay | ItemCollection> | ItemCollection,
+            items:
+                | Array<Annotation | Overlay | ItemCollection>
+                | ItemCollection,
         ): Array<Annotation | Overlay | ItemCollection> | ItemCollection;
         /**
          * Removes a collection of annotations, overlays, or other item collections from the map.
          */
         removeItems(
-            items: Array<Annotation | Overlay | ItemCollection> | ItemCollection,
+            items:
+                | Array<Annotation | Overlay | ItemCollection>
+                | ItemCollection,
         ): Array<Annotation | Overlay | ItemCollection> | ItemCollection;
 
         // Adding and Removing Tile Overlays
@@ -617,16 +634,28 @@ declare namespace mapkit {
     }
     // Map Annotations Overlay Events
     interface MapAnnotationOverlayEvents<T> {
-        select: EventBase<T> & { annotation?: Annotation | undefined; overlay?: Overlay | undefined };
-        deselect: EventBase<T> & { annotation?: Annotation | undefined; overlay?: Overlay | undefined };
+        select: EventBase<T> & {
+            annotation?: Annotation | undefined;
+            overlay?: Overlay | undefined;
+        };
+        deselect: EventBase<T> & {
+            annotation?: Annotation | undefined;
+            overlay?: Overlay | undefined;
+        };
         "drag-start": EventBase<T> & { annotation: Annotation };
-        dragging: EventBase<T> & { annotation: Annotation; coordinate: Coordinate };
+        dragging: EventBase<T> & {
+            annotation: Annotation;
+            coordinate: Coordinate;
+        };
         "drag-end": EventBase<T> & { annotation: Annotation };
     }
 
     // User Location Events
     interface MapUserLocationEvents<T> {
-        "user-location-change": EventBase<T> & { coordinate: Coordinate; timestamp: Date };
+        "user-location-change": EventBase<T> & {
+            coordinate: Coordinate;
+            timestamp: Date;
+        };
         "user-location-error": EventBase<T> & { code: number; message: string };
     }
 
@@ -638,11 +667,10 @@ declare namespace mapkit {
     }
 
     // All map events
-    type MapEvents<T> =
-        & MapDisplayEvents<T>
-        & MapAnnotationOverlayEvents<T>
-        & MapUserLocationEvents<T>
-        & MapInteractionEvents<T>;
+    type MapEvents<T> = MapDisplayEvents<T> &
+        MapAnnotationOverlayEvents<T> &
+        MapUserLocationEvents<T> &
+        MapInteractionEvents<T>;
 
     /**
      * Options that determine map parameters used when showing items.
@@ -826,7 +854,12 @@ declare namespace mapkit {
          * @param left The amount of padding, in CSS pixels, to inset the map from
          * the left edge.
          */
-        constructor(top?: number, right?: number, bottom?: number, left?: number);
+        constructor(
+            top?: number,
+            right?: number,
+            bottom?: number,
+            left?: number,
+        );
         /**
          * Creates a padding object, and initializes its inset margin properties.
          *
@@ -884,7 +917,10 @@ declare namespace mapkit {
          */
         constructor(
             coordinate: Coordinate,
-            factory: (coordinate: Coordinate, options: AnnotationConstructorOptions) => Element,
+            factory: (
+                coordinate: Coordinate,
+                options: AnnotationConstructorOptions,
+            ) => Element,
             options?: AnnotationConstructorOptions,
         );
         /**
@@ -1117,7 +1153,10 @@ declare namespace mapkit {
         /**
          * Returns a point determining the callout's anchor offset.
          */
-        calloutAnchorOffsetForAnnotation?(annotation: Annotation, size: { width: number; height: number }): DOMPoint;
+        calloutAnchorOffsetForAnnotation?(
+            annotation: Annotation,
+            size: { width: number; height: number },
+        ): DOMPoint;
         /**
          * Determines whether the callout should appear for an annotation.
          */
@@ -1129,7 +1168,9 @@ declare namespace mapkit {
         /**
          * Returns a CSS animation used when the callout appears.
          */
-        calloutAppearanceAnimationForAnnotation?(annotation: Annotation): string;
+        calloutAppearanceAnimationForAnnotation?(
+            annotation: Annotation,
+        ): string;
         /**
          * Returns custom content for the callout bubble.
          */
@@ -1157,13 +1198,17 @@ declare namespace mapkit {
         /**
          * Initializes an image annotation with a URL to its image and a coordinate.
          */
-        constructor(coordinate: Coordinate, options: ImageAnnotationConstructorOptions);
+        constructor(
+            coordinate: Coordinate,
+            options: ImageAnnotationConstructorOptions,
+        );
     }
 
     /**
      * An object containing options for initializing an image annotation.
      */
-    interface ImageAnnotationConstructorOptions extends AnnotationConstructorOptions {
+    interface ImageAnnotationConstructorOptions
+        extends AnnotationConstructorOptions {
         /**
          * An object containing URLs for the image assets in multiple resolutions.
          */
@@ -1184,7 +1229,10 @@ declare namespace mapkit {
          * @param coordinate The coordinate at which this annotation should appear.
          * @param options A hash of properties with which to initialize the annotation.
          */
-        constructor(coordinate: Coordinate, options?: MarkerAnnotationConstructorOptions);
+        constructor(
+            coordinate: Coordinate,
+            options?: MarkerAnnotationConstructorOptions,
+        );
         /**
          * A value that determines the behavior of the subtitle's visibility.
          */
@@ -1218,7 +1266,8 @@ declare namespace mapkit {
     /**
      * An object containing the options that initialize a marker annotation.
      */
-    interface MarkerAnnotationConstructorOptions extends AnnotationConstructorOptions {
+    interface MarkerAnnotationConstructorOptions
+        extends AnnotationConstructorOptions {
         /**
          * The background color of the balloon.
          */
@@ -1236,10 +1285,10 @@ declare namespace mapkit {
          */
         glyphImage?:
             | {
-                1: string;
-                2?: string | undefined;
-                3?: string | undefined;
-            }
+                  1: string;
+                  2?: string | undefined;
+                  3?: string | undefined;
+              }
             | undefined;
         /**
          * The image to display in the balloon when the marker is selected.
@@ -1255,7 +1304,12 @@ declare namespace mapkit {
         titleVisibility?: string | undefined;
     }
 
-    type AnnotationEventType = "select" | "deselect" | "drag-start" | "dragging" | "drag-end";
+    type AnnotationEventType =
+        | "select"
+        | "deselect"
+        | "drag-start"
+        | "dragging"
+        | "drag-end";
 
     /**
      * An abstract base object that defines the methods and attributes for map overlays.
@@ -1264,11 +1318,19 @@ declare namespace mapkit {
         /**
          * Starts listening for the specified type of event.
          */
-        addEventListener(type: OverlayEventType, listener: (event: EventBase<this>) => void, thisObject?: any): void;
+        addEventListener(
+            type: OverlayEventType,
+            listener: (event: EventBase<this>) => void,
+            thisObject?: any,
+        ): void;
         /**
          * Stops listening for the specified type of event.
          */
-        removeEventListener(type: OverlayEventType, listener: (event: EventBase<this>) => void, thisObject?: any): void;
+        removeEventListener(
+            type: OverlayEventType,
+            listener: (event: EventBase<this>) => void,
+            thisObject?: any,
+        ): void;
         /**
          * Custom data to associate with this overlay.
          */
@@ -1308,7 +1370,11 @@ declare namespace mapkit {
          * @param options An object literal of Overlay properties used to initialize
          * the circle.
          */
-        constructor(coordinate: Coordinate, radius: number, options?: StylesOverlayOptions);
+        constructor(
+            coordinate: Coordinate,
+            radius: number,
+            options?: StylesOverlayOptions,
+        );
         /**
          * The coordinate of the circle overlay's center.
          */
@@ -1427,7 +1493,10 @@ declare namespace mapkit {
         /**
          * Creates a tile overlay with a URL template and style options.
          */
-        constructor(urlTemplate: string | URLTemplateCallback, options?: TileOverlayConstructorOptions);
+        constructor(
+            urlTemplate: string | URLTemplateCallback,
+            options?: TileOverlayConstructorOptions,
+        );
         /**
          * A string, or callback function that returns a string, with a URL that
          * provides the requested tile.
@@ -1479,7 +1548,13 @@ declare namespace mapkit {
         data?: object | undefined;
     }
 
-    type URLTemplateCallback = (x: number, y: number, z: number, scale: number, data: object) => string;
+    type URLTemplateCallback = (
+        x: number,
+        y: number,
+        z: number,
+        scale: number,
+        data: object,
+    ) => string;
 
     /**
      * A set of observable attributes for overlays, including color and opacity of
@@ -1952,7 +2027,10 @@ declare namespace mapkit {
         },
     ) => void;
 
-    type AutocompleteSearchCallback = (error: Error | null, data: SearchAutocompleteResponse) => void;
+    type AutocompleteSearchCallback = (
+        error: Error | null,
+        data: SearchAutocompleteResponse,
+    ) => void;
 
     /**
      * An object or callback function called when performing a search or autocomplete
@@ -2064,11 +2142,15 @@ declare namespace mapkit {
         /**
          * Creates a point of interest filter that includes categories from a list that you provide.
          */
-        static including(categoryList: PointOfInterestCategory[]): PointOfInterestFilter;
+        static including(
+            categoryList: PointOfInterestCategory[],
+        ): PointOfInterestFilter;
         /**
          * Creates a point of interest filter that excludes categories from a list that you provide.
          */
-        static excluding(categoryList: PointOfInterestCategory[]): PointOfInterestFilter;
+        static excluding(
+            categoryList: PointOfInterestCategory[],
+        ): PointOfInterestFilter;
         /**
          * A filter that includes all point of interest categories.
          */
@@ -2131,7 +2213,9 @@ declare namespace mapkit {
          * pending request.
          */
         search(
-            callback: PointsOfInterestSearchDelegate | PointsOfInterestSearchCallback,
+            callback:
+                | PointsOfInterestSearchDelegate
+                | PointsOfInterestSearchCallback,
             options?: PointsOfInterestSearchOptions,
         ): number;
         /**
@@ -2169,7 +2253,10 @@ declare namespace mapkit {
         pointOfInterestFilter?: PointOfInterestFilter | undefined;
     }
 
-    type PointsOfInterestSearchCallback = (error: Error | null, data: PointsOfInterestSearchResponse) => void;
+    type PointsOfInterestSearchCallback = (
+        error: Error | null,
+        data: PointsOfInterestSearchResponse,
+    ) => void;
 
     /**
      * An object or callback function that MapKit JS calls when fetching points of interest.
@@ -2380,7 +2467,10 @@ declare namespace mapkit {
          * @param callback A callback function that receives the estimated time response object, returned asynchronously.
          * @return A request ID, which you can pass to cancel to abort a pending request.
          */
-        eta(request: EtaRequestOptions, callback: (error: Error | null, data: EtaResponse) => void): number;
+        eta(
+            request: EtaRequestOptions,
+            callback: (error: Error | null, data: EtaResponse) => void,
+        ): number;
         /**
          * Retrieves directions and estimated travel time for the specified start
          * and end points.
@@ -2391,7 +2481,10 @@ declare namespace mapkit {
          * returned asynchronously.
          * @return A request ID, which you can pass to cancel to abort a pending request.
          */
-        route(request: DirectionsRequest, callback: (error: Error | null, data: DirectionsResponse) => void): number;
+        route(
+            request: DirectionsRequest,
+            callback: (error: Error | null, data: DirectionsResponse) => void,
+        ): number;
         /**
          * Cancels a previous request for route directions.
          *
@@ -2665,7 +2758,12 @@ declare namespace mapkit {
          * @param southLatitude The south latitude of the bounding region.
          * @param westLongitude The west longitude of the bounding region.
          */
-        constructor(northLatitude: number, eastLongitude: number, southLatitude: number, westLongitude: number);
+        constructor(
+            northLatitude: number,
+            eastLongitude: number,
+            southLatitude: number,
+            westLongitude: number,
+        );
         /**
          * The east longitude of the bounding region.
          */
@@ -2699,7 +2797,10 @@ declare namespace mapkit {
         /**
          * Describes the minimum and maximum camera distance in meters.
          */
-        constructor(minCameraDistance: CameraZoomRangeConstructorOptions | number, maxCameraDistance?: number);
+        constructor(
+            minCameraDistance: CameraZoomRangeConstructorOptions | number,
+            maxCameraDistance?: number,
+        );
         /**
          * The minimum allowed distance of the camera from the center of the map in meters.
          */
@@ -2794,7 +2895,10 @@ declare namespace mapkit {
          * @param geoJSON The original GeoJSON object for this Point. This object could
          * be a simple Point or a Feature with the Point geometry type.
          */
-        itemForPoint?(coordinate: Coordinate, geoJSON: object): Array<Annotation | Overlay>;
+        itemForPoint?(
+            coordinate: Coordinate,
+            geoJSON: object,
+        ): Array<Annotation | Overlay>;
         /**
          * Overrides a multipoint object.
          *
@@ -2813,7 +2917,10 @@ declare namespace mapkit {
          * or you could completely replace the overlay.
          * @param geoJSON The original GeoJSON object for this polygon.
          */
-        itemForPolygon?(overlay: PolygonOverlay, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForPolygon?(
+            overlay: PolygonOverlay,
+            geoJSON: object,
+        ): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a multipolygon.
          *

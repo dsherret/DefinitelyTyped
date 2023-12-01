@@ -39,7 +39,7 @@ interface DOMException extends Error {
 
 declare var DOMException: {
     prototype: DOMException;
-    new(message?: string, name?: string): DOMException;
+    new (message?: string, name?: string): DOMException;
     readonly ABORT_ERR: number;
     readonly DATA_CLONE_ERR: number;
     readonly DOMSTRING_SIZE_ERR: number;

@@ -2,23 +2,35 @@ import * as React from "react";
 
 type Alignment = "right" | "center" | "left";
 
-type Spacing = number | {
-    top?: number | undefined;
-    right?: number | undefined;
-    bottom?: number | undefined;
-    left?: number | undefined;
-};
+type Spacing =
+    | number
+    | {
+          top?: number | undefined;
+          right?: number | undefined;
+          bottom?: number | undefined;
+          left?: number | undefined;
+      };
 
 interface BoxProps {
     borderColor?: string | undefined;
-    borderStyle?: ("single" | "double" | "round" | "singleDouble" | "doubleSingle" | "classic") | {
-        topLeft?: string | undefined;
-        topRight?: string | undefined;
-        bottomLeft?: string | undefined;
-        bottomRight?: string | undefined;
-        horizontal?: string | undefined;
-        vertical?: string | undefined;
-    } | undefined;
+    borderStyle?:
+        | (
+              | "single"
+              | "double"
+              | "round"
+              | "singleDouble"
+              | "doubleSingle"
+              | "classic"
+          )
+        | {
+              topLeft?: string | undefined;
+              topRight?: string | undefined;
+              bottomLeft?: string | undefined;
+              bottomRight?: string | undefined;
+              horizontal?: string | undefined;
+              vertical?: string | undefined;
+          }
+        | undefined;
     children?: React.ReactNode;
     dimBorder?: boolean | undefined;
     padding?: Spacing | undefined;

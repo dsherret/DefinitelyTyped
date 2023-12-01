@@ -27,13 +27,19 @@ interface CanvasSize {
     test(options: CanvasSizeTestOptions): boolean;
 
     maxArea(options: CanvasSizeMaxOptions & { usePromise?: false }): void;
-    maxArea(options: CanvasSizeMaxOptions & { usePromise: true }): Promise<CanvasSizeMaxReturn>;
+    maxArea(
+        options: CanvasSizeMaxOptions & { usePromise: true },
+    ): Promise<CanvasSizeMaxReturn>;
 
     maxWidth(options: CanvasSizeMaxOptions & { usePromise?: false }): void;
-    maxWidth(options: CanvasSizeMaxOptions & { usePromise: true }): Promise<CanvasSizeMaxReturn>;
+    maxWidth(
+        options: CanvasSizeMaxOptions & { usePromise: true },
+    ): Promise<CanvasSizeMaxReturn>;
 
     maxHeight(options: CanvasSizeMaxOptions & { usePromise?: false }): void;
-    maxHeight(options: CanvasSizeMaxOptions & { usePromise: true }): Promise<CanvasSizeMaxReturn>;
+    maxHeight(
+        options: CanvasSizeMaxOptions & { usePromise: true },
+    ): Promise<CanvasSizeMaxReturn>;
 }
 
 declare const canvasSize: CanvasSize;

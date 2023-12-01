@@ -13,7 +13,10 @@ export function generateKeyPair(privKey?: Buffer | Uint8Array): KeyPair;
 /**
  * Perform DH between `publicKey` and `secretKey` and return the result.
  */
-export function dh(publicKey: Buffer | Uint8Array, secretKey: Pick<KeyPair, "secretKey">): Buffer;
+export function dh(
+    publicKey: Buffer | Uint8Array,
+    secretKey: Pick<KeyPair, "secretKey">,
+): Buffer;
 
 export interface KeyPair {
     publicKey: Buffer | Uint8Array;

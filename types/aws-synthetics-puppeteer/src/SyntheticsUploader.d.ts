@@ -19,7 +19,11 @@ declare module "SyntheticsUploader" {
         setUpDone: boolean;
         bucketLocationError: string;
         uploadedArtifacts: boolean;
-        setCanaryDetails(canaryName: any, s3BaseFilePath: any, dateTimeInUTC: any): void;
+        setCanaryDetails(
+            canaryName: any,
+            s3BaseFilePath: any,
+            dateTimeInUTC: any,
+        ): void;
         setUpUploader(): Promise<void>;
         reset(): void;
         getS3Client(): any;

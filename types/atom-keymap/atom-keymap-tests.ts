@@ -27,7 +27,9 @@ keymaps.add("/key/for/these/keymaps", {
 
 // When a keybinding is triggered, it will dispatch it on the node that was focused
 window.addEventListener("core:move-up", (event) => console.log("up", event));
-window.addEventListener("core:move-down", (event) => console.log("down", event));
+window.addEventListener("core:move-down", (event) =>
+    console.log("down", event),
+);
 
 // General Usage ==============================================================
 const manager = new KeymapManager();
@@ -81,7 +83,11 @@ bindings = manager.findKeyBindings({ command: "a" });
 bindings = manager.findKeyBindings({ keystrokes: "a" });
 bindings = manager.findKeyBindings({ target: element });
 bindings = manager.findKeyBindings({ command: "a", keystrokes: "b" });
-bindings = manager.findKeyBindings({ command: "a", keystrokes: "b", target: element });
+bindings = manager.findKeyBindings({
+    command: "a",
+    keystrokes: "b",
+    target: element,
+});
 
 // Managing Keymap Files
 manager.loadKeymap("Test.file");

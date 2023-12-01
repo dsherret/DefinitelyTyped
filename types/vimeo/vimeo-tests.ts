@@ -9,7 +9,10 @@ const completeHandler = (
     statusCode?: number,
     headers?: object,
 ) => {};
-const completeHandlerShort = (err: Error | null, result: undefined | object) => {};
+const completeHandlerShort = (
+    err: Error | null,
+    result: undefined | object,
+) => {};
 
 // $ExpectType Vimeo
 const client = new Vimeo("", "", "");
@@ -42,7 +45,10 @@ client.request("", completeHandlerShort);
 client.request("", (err: Error | null, result: string | undefined) => {});
 
 // $ExpectType void
-client.request("", (err: Error | null, result: { thing: string } | undefined) => {});
+client.request(
+    "",
+    (err: Error | null, result: { thing: string } | undefined) => {},
+);
 
 const requestOptions: RequestOptions = {
     method: "GET",
@@ -60,7 +66,10 @@ const requestOptionsFull: RequestOptions = {
 };
 
 // $ExpectType void
-client.request(requestOptionsFull, (err: Error | null, result: string | undefined) => {});
+client.request(
+    requestOptionsFull,
+    (err: Error | null, result: string | undefined) => {},
+);
 
 // $ExpectType Vimeo
 const clientWithoutAccessToken = new Vimeo("", "");

@@ -9,6 +9,9 @@ declare namespace coins {
 
     interface CoinsAPI {
         get(symbol: string): Coin | undefined;
-        get(symbol: string, property: "id" | "symbol" | "name"): string | undefined;
+        get(
+            symbol: string,
+            property: "id" | "symbol" | "name",
+        ): string | undefined;
     }
 }

@@ -19,7 +19,9 @@ declare namespace OO.ui.mixin {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.mixin.IndicatorElement
      */
-    interface IndicatorElement extends IndicatorElement.Props, IndicatorElement.Prototype {}
+    interface IndicatorElement
+        extends IndicatorElement.Props,
+            IndicatorElement.Prototype {}
 
     namespace IndicatorElement {
         interface ConfigOptions {
@@ -86,7 +88,7 @@ declare namespace OO.ui.mixin {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): IndicatorElement;
+            new (config?: ConfigOptions): IndicatorElement;
             prototype: Prototype;
             static: Static;
         }

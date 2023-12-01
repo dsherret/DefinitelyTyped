@@ -5,7 +5,7 @@ FBInstant.initializeAsync().then(() => {});
 FBInstant.setLoadingProgress(10);
 const supportedAPIs = FBInstant.getSupportedAPIs();
 const entryPointData = FBInstant.getEntryPointData();
-FBInstant.getEntryPointAsync().then(entryPointName => {});
+FBInstant.getEntryPointAsync().then((entryPointName) => {});
 FBInstant.setSessionData({ sessionData: "sessionData" });
 FBInstant.startGameAsync().then(() => {});
 
@@ -43,11 +43,14 @@ FBInstant.switchGameAsync("appID").then(() => {});
 FBInstant.canCreateShortcutAsync().then((canCreateShortcut: boolean) => {});
 FBInstant.createShortcutAsync().then(() => {});
 FBInstant.quit();
-const apiError = FBInstant.logEvent("eventName", 10, { key1: "value1", key2: "value2" });
+const apiError = FBInstant.logEvent("eventName", 10, {
+    key1: "value1",
+    key2: "value2",
+});
 FBInstant.onPause(() => {});
 
-FBInstant.getInterstitialAdAsync("placementID").then(adInstance => {});
-FBInstant.getRewardedVideoAsync("placementID").then(adInstance => {
+FBInstant.getInterstitialAdAsync("placementID").then((adInstance) => {});
+FBInstant.getRewardedVideoAsync("placementID").then((adInstance) => {
     const placementID: string = adInstance.getPlacementID();
     adInstance.loadAsync().then(() => {});
     adInstance.showAsync().then(() => {});
@@ -55,52 +58,63 @@ FBInstant.getRewardedVideoAsync("placementID").then(adInstance => {
 
 FBInstant.matchPlayerAsync("matchTag", false, false).then(() => {});
 FBInstant.checkCanPlayerMatchAsync().then((canPlayerMatchAsync: boolean) => {});
-FBInstant.getLeaderboardAsync("name").then((leaderboard: FBInstant.Leaderboard) => {
-    leaderboard.getConnectedPlayerEntriesAsync(10, 0).then(leaderboardEntries => {
-        const leaderboardEntry = leaderboardEntries[0];
-        const extraData: string = leaderboardEntry.getExtraData()!;
-        const formattedScore: string = leaderboardEntry.getFormattedScore();
+FBInstant.getLeaderboardAsync("name").then(
+    (leaderboard: FBInstant.Leaderboard) => {
+        leaderboard
+            .getConnectedPlayerEntriesAsync(10, 0)
+            .then((leaderboardEntries) => {
+                const leaderboardEntry = leaderboardEntries[0];
+                const extraData: string = leaderboardEntry.getExtraData()!;
+                const formattedScore: string =
+                    leaderboardEntry.getFormattedScore();
 
-        const leaderboardPlayer = leaderboardEntry.getPlayer();
-        const leaderboardPlayerID: string = leaderboardPlayer.getID()!;
-        const leaderboardPlayerName: string = leaderboardPlayer.getName();
-        const leaderboardPlayerPhoto: string = leaderboardPlayer.getPhoto()!;
+                const leaderboardPlayer = leaderboardEntry.getPlayer();
+                const leaderboardPlayerID: string = leaderboardPlayer.getID()!;
+                const leaderboardPlayerName: string =
+                    leaderboardPlayer.getName();
+                const leaderboardPlayerPhoto: string =
+                    leaderboardPlayer.getPhoto()!;
 
-        const rank: number = leaderboardEntry.getRank();
-        const score: number = leaderboardEntry.getScore();
-        const timestamp: number = leaderboardEntry.getTimestamp();
-    });
-    const contextID: string = leaderboard.getContextID()!;
-    leaderboard.getEntriesAsync(10, 10).then(entries => {});
-    leaderboard.getEntryCountAsync().then((entryCount: number) => {});
-    const name: string = leaderboard.getName();
-    leaderboard.getPlayerEntryAsync().then(playerEntry => {});
-    leaderboard.setScoreAsync(10).then(leaderboardEntry => {});
-});
+                const rank: number = leaderboardEntry.getRank();
+                const score: number = leaderboardEntry.getScore();
+                const timestamp: number = leaderboardEntry.getTimestamp();
+            });
+        const contextID: string = leaderboard.getContextID()!;
+        leaderboard.getEntriesAsync(10, 10).then((entries) => {});
+        leaderboard.getEntryCountAsync().then((entryCount: number) => {});
+        const name: string = leaderboard.getName();
+        leaderboard.getPlayerEntryAsync().then((playerEntry) => {});
+        leaderboard.setScoreAsync(10).then((leaderboardEntry) => {});
+    },
+);
 FBInstant.postSessionScoreAsync(10);
 
 FBInstant.player.canSubscribeBotAsync().then((canSubscribeBot: boolean) => {});
 FBInstant.player.flushDataAsync().then(() => {});
-FBInstant.player.getConnectedPlayersAsync().then((connectedPlayers: FBInstant.ConnectedPlayer[]) => {
-    const connectedPlayer: FBInstant.ConnectedPlayer = connectedPlayers[0];
-    const id: string = connectedPlayer.getID();
-    const name: string = connectedPlayer.getName()!;
-    const photo: string = connectedPlayer.getPhoto()!;
-});
-FBInstant.player.getDataAsync(["score"]).then(data => {
+FBInstant.player
+    .getConnectedPlayersAsync()
+    .then((connectedPlayers: FBInstant.ConnectedPlayer[]) => {
+        const connectedPlayer: FBInstant.ConnectedPlayer = connectedPlayers[0];
+        const id: string = connectedPlayer.getID();
+        const name: string = connectedPlayer.getName()!;
+        const photo: string = connectedPlayer.getPhoto()!;
+    });
+FBInstant.player.getDataAsync(["score"]).then((data) => {
     const score: number = data["score"] as number;
 });
 const playerID: string = FBInstant.player.getID()!;
 const playerName: string = FBInstant.player.getName()!;
 const playerPhoto: string = FBInstant.player.getPhoto()!;
-FBInstant.player.getSignedPlayerInfoAsync("metadata").then(signedPlayerInfo => {
-    const playerID: string = signedPlayerInfo.getPlayerID();
-    const signature: string = signedPlayerInfo.getSignature();
-});
-FBInstant.player.getStatsAsync(["score"]).then(result => {
+FBInstant.player
+    .getSignedPlayerInfoAsync("metadata")
+    .then((signedPlayerInfo) => {
+        const playerID: string = signedPlayerInfo.getPlayerID();
+        const signature: string = signedPlayerInfo.getSignature();
+    });
+FBInstant.player.getStatsAsync(["score"]).then((result) => {
     const score: number = result["score"];
 });
-FBInstant.player.incrementStatsAsync({ score: 1 }).then(result => {
+FBInstant.player.incrementStatsAsync({ score: 1 }).then((result) => {
     const incrementedScore: number = result["score"];
 });
 FBInstant.player.setDataAsync({ score: 10 }).then(() => {});
@@ -115,12 +129,14 @@ const contextOptions: FBInstant.ContextOptions = {
 FBInstant.context.chooseAsync(contextOptions);
 FBInstant.context.createAsync("playerID").then(() => {});
 const contextID: string = FBInstant.context.getID()!;
-FBInstant.context.getPlayersAsync().then((contextPlayers: FBInstant.ContextPlayer[]) => {
-    const contextPlayer: FBInstant.ContextPlayer = contextPlayers[0];
-    const id: string = contextPlayer.getID();
-    const name: string = contextPlayer.getName()!;
-    const photo: string = contextPlayer.getPhoto()!;
-});
+FBInstant.context
+    .getPlayersAsync()
+    .then((contextPlayers: FBInstant.ContextPlayer[]) => {
+        const contextPlayer: FBInstant.ContextPlayer = contextPlayers[0];
+        const id: string = contextPlayer.getID();
+        const name: string = contextPlayer.getName()!;
+        const photo: string = contextPlayer.getPhoto()!;
+    });
 const type = FBInstant.context.getType();
 const contextSizeResponse = FBInstant.context.isSizeBetween(1, 10)!;
 const sizeIsBetween: boolean = contextSizeResponse.answer;
@@ -145,14 +161,13 @@ FBInstant.payments.getCatalogAsync().then((products: FBInstant.Product[]) => {
 
 FBInstant.performHapticFeedbackAsync();
 
-FBInstant.getTournamentAsync()
-    .then((tournament) => {
-        const contextId: string = tournament.getContextID();
-        const endTime: number = tournament.getEndTime();
-        const title: string = tournament.getTitle()!;
-        const payload: any = tournament.getPayload();
-        const id: string = tournament.getID();
-    });
+FBInstant.getTournamentAsync().then((tournament) => {
+    const contextId: string = tournament.getContextID();
+    const endTime: number = tournament.getEndTime();
+    const title: string = tournament.getTitle()!;
+    const payload: any = tournament.getPayload();
+    const id: string = tournament.getID();
+});
 
 const createTournamentConfig: FBInstant.CreateTournamentConfig = {};
 
@@ -162,14 +177,13 @@ const createTournamentPayload: FBInstant.CreateTournamentPayload = {
     data: { name: "Eleonora" },
 };
 
-FBInstant.tournament.createAsync(createTournamentPayload)
-    .then(tournament => {
-        const contextId: string = tournament.getContextID();
-        const endTime: number = tournament.getEndTime();
-        const title: string = tournament.getTitle()!;
-        const payload: any = tournament.getPayload();
-        const id: string = tournament.getID();
-    });
+FBInstant.tournament.createAsync(createTournamentPayload).then((tournament) => {
+    const contextId: string = tournament.getContextID();
+    const endTime: number = tournament.getEndTime();
+    const title: string = tournament.getTitle()!;
+    const payload: any = tournament.getPayload();
+    const id: string = tournament.getID();
+});
 
 FBInstant.tournament.postScoreAsync(43);
 
@@ -180,25 +194,21 @@ const shareTournamentPayload: FBInstant.ShareTournamentPayload = {
 
 FBInstant.tournament.shareAsync(shareTournamentPayload);
 
-FBInstant.tournament.getTournamentsAsync()
-    .then(tournaments => {
-        tournaments.forEach(tournament => {
-            const contextId: string = tournament.getContextID();
-            const endTime: number = tournament.getEndTime();
-            const title: string = tournament.getTitle()!;
-            const payload: any = tournament.getPayload();
-            const id: string = tournament.getID();
-        });
+FBInstant.tournament.getTournamentsAsync().then((tournaments) => {
+    tournaments.forEach((tournament) => {
+        const contextId: string = tournament.getContextID();
+        const endTime: number = tournament.getEndTime();
+        const title: string = tournament.getTitle()!;
+        const payload: any = tournament.getPayload();
+        const id: string = tournament.getID();
     });
+});
 
-FBInstant.tournament.joinAsync("1122334455")
-    .then(() => {
-    });
+FBInstant.tournament.joinAsync("1122334455").then(() => {});
 
-FBInstant.canSwitchNativeGameAsync().then(canSwitchNativeGame => {
+FBInstant.canSwitchNativeGameAsync().then((canSwitchNativeGame) => {
     if (canSwitchNativeGame) {
-        FBInstant.switchNativeGameAsync({}).then(() => {
-        });
+        FBInstant.switchNativeGameAsync({}).then(() => {});
     }
 });
 
@@ -206,34 +216,36 @@ FBInstant.loadBannerAdAsync("my_placement_id").then(() => {
     // console.log('success');
 });
 
-FBInstant.hideBannerAdAsync().then(() => {
-});
+FBInstant.hideBannerAdAsync().then(() => {});
 
-FBInstant.getRewardedInterstitialAsync("my_placement_id").then(adInstance => {
+FBInstant.getRewardedInterstitialAsync("my_placement_id").then((adInstance) => {
     adInstance.getPlacementID(); // 'my_placement_id'
 });
 
-FBInstant.graphApi.requestAsync("/me?fields=id,name", "GET", {}).then(response => {
-});
+FBInstant.graphApi
+    .requestAsync("/me?fields=id,name", "GET", {})
+    .then((response) => {});
 
-FBInstant.player.getASIDAsync().then(asid => {
+FBInstant.player.getASIDAsync().then((asid) => {
     // console.log(asid);
 });
 
 // Version 7.1
 
-FBInstant.registerScreenshotProvider(submitAsync => {
+FBInstant.registerScreenshotProvider((submitAsync) => {
     submitAsync({
         image: "myBase64Image",
         text: "my awesome screenshot",
         data: {
             custom_field: "my awesome data",
         },
-    }).then(() => {
-        // resumeGame();
-    }).catch(error => {
-        // log(error);
-    });
+    })
+        .then(() => {
+            // resumeGame();
+        })
+        .catch((error) => {
+            // log(error);
+        });
 });
 
 FBInstant.shareLinkAsync({
@@ -246,57 +258,56 @@ FBInstant.shareLinkAsync({
     // continue with the game.
 });
 
-FBInstant.player.getSignedASIDAsync().then(signedAsid => {
+FBInstant.player.getSignedASIDAsync().then((signedAsid) => {
     if (signedAsid) {
         const asid: string = signedAsid.getASID();
         const signature: string = signedAsid.getSignature();
     }
 });
 
-FBInstant.room.getCurrentMatchAsync().then(async match => {
+FBInstant.room.getCurrentMatchAsync().then(async (match) => {
     const id: string = match.getID();
     const contextId: string = match.getContextID();
     const status: FBInstant.LiveMatchStatusType = await match.getStatusAsync();
-    const participants: FBInstant.LiveMatchPlayer[] = await match.getActiveParticipantsAsync().then(participants => {
-        for (const participant of participants) {
-            const id: string = participant.getID();
-            const name: string | null = participant.getName();
-            const photo: string | null = participant.getPhoto();
-        }
-        return participants;
-    });
-});
-
-FBInstant.room.loadCameraEffectAsync({ effectID: "123" }).then(effect => {
-    const id: string = effect.getID();
-    effect.showAsync().then(() => {
-    });
-});
-
-FBInstant.room.clearCameraEffectAsync().then(() => {
-});
-
-FBInstant.squads.createAsync({
-    name: "squad name",
-    image: "squad image",
-    squadTerm: "squad term",
-}).then(squad => {
-    squad.joinAsync({ squadTerm: "squad term" }).then(() => {
-    });
-    squad.addToSquadAsync({ squadTerm: "squad term" }).then(() => {
-    });
-});
-
-FBInstant.squads.getPlayerSquadsAsync().then(squads => {
-    for (const squad of squads) {
-        squad.leaveAsync({ squadTerm: "squad term" }).then(() => {
+    const participants: FBInstant.LiveMatchPlayer[] = await match
+        .getActiveParticipantsAsync()
+        .then((participants) => {
+            for (const participant of participants) {
+                const id: string = participant.getID();
+                const name: string | null = participant.getName();
+                const photo: string | null = participant.getPhoto();
+            }
+            return participants;
         });
+});
+
+FBInstant.room.loadCameraEffectAsync({ effectID: "123" }).then((effect) => {
+    const id: string = effect.getID();
+    effect.showAsync().then(() => {});
+});
+
+FBInstant.room.clearCameraEffectAsync().then(() => {});
+
+FBInstant.squads
+    .createAsync({
+        name: "squad name",
+        image: "squad image",
+        squadTerm: "squad term",
+    })
+    .then((squad) => {
+        squad.joinAsync({ squadTerm: "squad term" }).then(() => {});
+        squad.addToSquadAsync({ squadTerm: "squad term" }).then(() => {});
+    });
+
+FBInstant.squads.getPlayerSquadsAsync().then((squads) => {
+    for (const squad of squads) {
+        squad.leaveAsync({ squadTerm: "squad term" }).then(() => {});
     }
 });
 
-FBInstant.squads.canUseSquadsAsync().then(isEligible => {
+FBInstant.squads.canUseSquadsAsync().then((isEligible) => {
     if (isEligible) {
-        FBInstant.squads.getAsync("squad id").then(squad => {
+        FBInstant.squads.getAsync("squad id").then((squad) => {
             const id: string = squad.getID(); // 'squad id'
             const name: string = squad.getName();
             const image: string = squad.getImage();

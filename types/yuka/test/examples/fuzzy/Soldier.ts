@@ -74,10 +74,14 @@ export class Soldier extends GameEntity {
         fuzzyModuleShotGun.fuzzify("ammoStatus", this.ammoShotgun);
         fuzzyModuleAssaultRifle.fuzzify("ammoStatus", this.ammoAssaultRifle);
 
-        const desirabilityShotgun = (this.ammoShotgun === 0) ? 0 : fuzzyModuleShotGun.defuzzify("desirability");
-        const desirabilityAssaultRifle = (this.ammoAssaultRifle === 0)
-            ? 0
-            : fuzzyModuleAssaultRifle.defuzzify("desirability");
+        const desirabilityShotgun =
+            this.ammoShotgun === 0
+                ? 0
+                : fuzzyModuleShotGun.defuzzify("desirability");
+        const desirabilityAssaultRifle =
+            this.ammoAssaultRifle === 0
+                ? 0
+                : fuzzyModuleAssaultRifle.defuzzify("desirability");
 
         if (desirabilityShotgun > desirabilityAssaultRifle) {
             this.assaultRifle.visible = false;
@@ -152,30 +156,69 @@ export class Soldier extends GameEntity {
 
         // rules shotgun
 
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetClose, lowShot), desirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetClose, okayShot), veryDesirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetClose, loadsShot), veryDesirable));
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, lowShot), desirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, okayShot), veryDesirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, loadsShot), veryDesirable),
+        );
 
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetMedium, lowShot), desirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetMedium, okayShot), veryDesirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetMedium, loadsShot), veryDesirable));
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetMedium, lowShot), desirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetMedium, okayShot), veryDesirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetMedium, loadsShot), veryDesirable),
+        );
 
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetFar, lowShot), undesirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetFar, okayShot), undesirable));
-        fuzzyModuleShotGun.addRule(new FuzzyRule(new FuzzyAND(targetFar, loadsShot), undesirable));
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, lowShot), undesirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, okayShot), undesirable),
+        );
+        fuzzyModuleShotGun.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, loadsShot), undesirable),
+        );
 
         // rules assault rifle
 
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetClose, lowAssault), undesirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetClose, okayAssault), desirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetClose, loadsAssault), desirable));
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, lowAssault), undesirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, okayAssault), desirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetClose, loadsAssault), desirable),
+        );
 
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetMedium, lowAssault), desirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetMedium, okayAssault), desirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetMedium, loadsAssault), veryDesirable));
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetMedium, lowAssault), desirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetMedium, okayAssault), desirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(
+                new FuzzyAND(targetMedium, loadsAssault),
+                veryDesirable,
+            ),
+        );
 
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetFar, lowAssault), desirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetFar, okayAssault), veryDesirable));
-        fuzzyModuleAssaultRifle.addRule(new FuzzyRule(new FuzzyAND(targetFar, loadsAssault), veryDesirable));
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, lowAssault), desirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, okayAssault), veryDesirable),
+        );
+        fuzzyModuleAssaultRifle.addRule(
+            new FuzzyRule(new FuzzyAND(targetFar, loadsAssault), veryDesirable),
+        );
     }
 }

@@ -35,7 +35,10 @@ hash = RNCryptoJS.HmacSHA256("Message", "Secret Passphrase");
 hash = RNCryptoJS.HmacSHA512("Message", "Secret Passphrase");
 
 // Progressive HMAC Hasing
-const hmac = RNCryptoJS.algo.HMAC.create(RNCryptoJS.algo.SHA256, "Secret Passphrase");
+const hmac = RNCryptoJS.algo.HMAC.create(
+    RNCryptoJS.algo.SHA256,
+    "Secret Passphrase",
+);
 hmac.update("Message Part 1");
 hmac.update("Message Part 2");
 hmac.update("Message Part 3");
@@ -80,7 +83,9 @@ decrypted = RNCryptoJS.RC4Drop.decrypt(encrypted, "Secret Passphrase", {
 });
 
 // .decrypt() returns WordArray
-RNCryptoJS.AES.decrypt("Message", "Secret Passphrase").toString(RNCryptoJS.enc.Utf8);
+RNCryptoJS.AES.decrypt("Message", "Secret Passphrase").toString(
+    RNCryptoJS.enc.Utf8,
+);
 
 // Custome Key and IV
 let key = RNCryptoJS.enc.Hex.parse("000102030405060708090a0b0c0d0e0f");
@@ -97,7 +102,9 @@ encrypted = RNCryptoJS.AES.encrypt("Message", "Secret Passphrase", {
 const JsonFormatter = {
     stringify(cipherParams: RNCryptoJS.lib.CipherParams) {
         // create json object with ciphertext
-        const jsonObj: any = { ct: cipherParams.ciphertext.toString(RNCryptoJS.enc.Base64) };
+        const jsonObj: any = {
+            ct: cipherParams.ciphertext.toString(RNCryptoJS.enc.Base64),
+        };
         // optionally add iv or salt
         if (cipherParams.iv) {
             jsonObj.iv = cipherParams.iv.toString();

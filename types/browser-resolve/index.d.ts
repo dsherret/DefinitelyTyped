@@ -15,7 +15,11 @@ declare function resolve(id: string, cb: resolve.Callback): void;
  * @param options Options to use for resolving, optional.
  * @param callback
  */
-declare function resolve(id: string, opts: resolve.AsyncOpts, cb: resolve.Callback): void;
+declare function resolve(
+    id: string,
+    opts: resolve.AsyncOpts,
+    cb: resolve.Callback,
+): void;
 
 declare namespace resolve {
     interface Opts {

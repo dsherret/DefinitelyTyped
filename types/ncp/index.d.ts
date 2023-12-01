@@ -15,7 +15,13 @@ declare namespace ncp {
 
     interface Options {
         filter?: RegExp | ((filename: string) => boolean) | undefined;
-        transform?: ((read: NodeJS.ReadableStream, write: NodeJS.WritableStream, file: File) => void) | undefined;
+        transform?:
+            | ((
+                  read: NodeJS.ReadableStream,
+                  write: NodeJS.WritableStream,
+                  file: File,
+              ) => void)
+            | undefined;
         clobber?: boolean | undefined;
         dereference?: boolean | undefined;
         stopOnErr?: boolean | undefined;
@@ -25,7 +31,11 @@ declare namespace ncp {
 }
 
 declare const ncp: {
-    (source: string, destination: string, callback: (err: Error[] | null) => void): void;
+    (
+        source: string,
+        destination: string,
+        callback: (err: Error[] | null) => void,
+    ): void;
     (
         source: string,
         destination: string,
@@ -58,7 +68,11 @@ declare const ncp: {
      *
      * It does not exist at runtime.
      */
-    __promisify__(source: string, destination: string, options?: ncp.Options): Promise<void>;
+    __promisify__(
+        source: string,
+        destination: string,
+        options?: ncp.Options,
+    ): Promise<void>;
 };
 
 export = ncp;

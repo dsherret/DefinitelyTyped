@@ -1,6 +1,15 @@
 /// <reference types="node" />
 
-import Cldr, { Alias, CurrencyInfo, Finder, KeyType, load, NumberingSystem, WeekData, WindowsZone } from "cldr";
+import Cldr, {
+    Alias,
+    CurrencyInfo,
+    Finder,
+    KeyType,
+    load,
+    NumberingSystem,
+    WeekData,
+    WindowsZone,
+} from "cldr";
 
 import { promisify } from "util";
 

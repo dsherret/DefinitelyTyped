@@ -9,13 +9,15 @@ interface PurifyOptions {
     moduleExtensions?: string[] | undefined;
     minimize?: boolean | undefined;
     paths?: object | string[] | undefined;
-    purifyOptions?: {
-        minify?: boolean | undefined;
-        output?: string | boolean | undefined;
-        info?: boolean | undefined;
-        rejected?: boolean | undefined;
-        whitelist?: string[] | undefined;
-    } | undefined;
+    purifyOptions?:
+        | {
+              minify?: boolean | undefined;
+              output?: string | boolean | undefined;
+              info?: boolean | undefined;
+              rejected?: boolean | undefined;
+              whitelist?: string[] | undefined;
+          }
+        | undefined;
     verbose?: boolean | undefined;
 }
 

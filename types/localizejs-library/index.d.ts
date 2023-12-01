@@ -184,7 +184,9 @@ declare var Localize: {
      * Returns all available languages for the project.
      * @param callback Required.
      */
-    getAvailableLanguages(callback: (error: any, languages: string[]) => void): void;
+    getAvailableLanguages(
+        callback: (error: any, languages: string[]) => void,
+    ): void;
 
     /**
      * Calling this function will hide the widget if it's currently visible.
@@ -254,7 +256,13 @@ declare var Localize: {
      * @param fn Required. Event handler.
      */
     on(
-        eventName: "initialize" | "setLanguage" | "pluralize" | "translate" | "untranslatePage" | "updatedDictionary",
+        eventName:
+            | "initialize"
+            | "setLanguage"
+            | "pluralize"
+            | "translate"
+            | "untranslatePage"
+            | "updatedDictionary",
         fn: (event: Event) => void,
     ): void;
 
@@ -264,7 +272,13 @@ declare var Localize: {
      * @param fn Optional. The function to unbind from the event.
      */
     off(
-        eventName: "initialize" | "setLanguage" | "pluralize" | "translate" | "untranslatePage" | "updatedDictionary",
+        eventName:
+            | "initialize"
+            | "setLanguage"
+            | "pluralize"
+            | "translate"
+            | "untranslatePage"
+            | "updatedDictionary",
         fn?: (event: Event) => void,
     ): void;
 

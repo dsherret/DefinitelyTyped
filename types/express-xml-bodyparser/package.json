@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/express-xml-bodyparser",
-    "version": "0.3.9999",
-    "projects": [
-        "https://github.com/macedigital/express-xml-bodyparser"
-    ],
-    "dependencies": {
-        "@types/express": "*",
-        "@types/xml2js": "*"
+  "private": true,
+  "name": "@types/express-xml-bodyparser",
+  "version": "0.3.9999",
+  "projects": [
+    "https://github.com/macedigital/express-xml-bodyparser"
+  ],
+  "dependencies": {
+    "@types/express": "*",
+    "@types/xml2js": "*"
+  },
+  "devDependencies": {
+    "@types/express-xml-bodyparser": "workspace:."
+  },
+  "owners": [
+    {
+      "name": " Notice Maker",
+      "githubUsername": "noticeMaker"
     },
-    "devDependencies": {
-        "@types/express-xml-bodyparser": "workspace:."
-    },
-    "owners": [
-        {
-            "name": " Notice Maker",
-            "githubUsername": "noticeMaker"
-        },
-        {
-            "name": "Matthias Adler",
-            "githubUsername": "macedigital"
-        }
-    ]
+    {
+      "name": "Matthias Adler",
+      "githubUsername": "macedigital"
+    }
+  ]
 }

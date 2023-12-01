@@ -3,8 +3,13 @@ import * as PhotoSwipe from "../../index";
 /**
  * Default UI class for PhotoSwipe. This class is largely undocumented and doesn't seem to have a public facing API.
  */
-declare class PhotoSwipeUI_Default implements PhotoSwipe.UI<PhotoSwipeUI_Default.Options> {
-    constructor(pswp: PhotoSwipe<PhotoSwipeUI_Default.Options>, framework: PhotoSwipe.UIFramework);
+declare class PhotoSwipeUI_Default
+    implements PhotoSwipe.UI<PhotoSwipeUI_Default.Options>
+{
+    constructor(
+        pswp: PhotoSwipe<PhotoSwipeUI_Default.Options>,
+        framework: PhotoSwipe.UIFramework,
+    );
     init(): void;
 
     /**
@@ -69,7 +74,9 @@ declare namespace PhotoSwipeUI_Default {
          *     return true;
          * }
          */
-        addCaptionHTMLFn?: ((item: Item, captionEl: HTMLElement, isFake: boolean) => boolean) | undefined;
+        addCaptionHTMLFn?:
+            | ((item: Item, captionEl: HTMLElement, isFake: boolean) => boolean)
+            | undefined;
 
         /**
          * Whether to show the close button.
@@ -195,7 +202,9 @@ declare namespace PhotoSwipeUI_Default {
          *     return pswp.currItem.src || '';
          * }
          */
-        getImageURLForShare?: ((shareButtonData: ShareButtonData) => string) | undefined;
+        getImageURLForShare?:
+            | ((shareButtonData: ShareButtonData) => string)
+            | undefined;
 
         /**
          * A callback that should return the "Page" associated with the selected image. (e.g. on Facebook, the shared
@@ -208,7 +217,9 @@ declare namespace PhotoSwipeUI_Default {
          *     return window.location.href;
          * }
          */
-        getPageURLForShare?: ((shareButtonData: ShareButtonData) => string) | undefined;
+        getPageURLForShare?:
+            | ((shareButtonData: ShareButtonData) => string)
+            | undefined;
 
         /**
          * A callback that should return the Text associated with the selected image. The callback is passed
@@ -220,7 +231,9 @@ declare namespace PhotoSwipeUI_Default {
          *     return pswp.currItem.title || '';
          * }
          */
-        getTextForShare?: ((shareButtonData: ShareButtonData) => string) | undefined;
+        getTextForShare?:
+            | ((shareButtonData: ShareButtonData) => string)
+            | undefined;
 
         /**
          * A final output callback that you can use to further modify the share button's HTML. The callback is passed
@@ -232,7 +245,12 @@ declare namespace PhotoSwipeUI_Default {
          *     return shareButtonOut;
          * }
          */
-        parseShareButtonOut?: ((shareButtonData: ShareButtonData, shareButtonOut: string) => string) | undefined;
+        parseShareButtonOut?:
+            | ((
+                  shareButtonData: ShareButtonData,
+                  shareButtonOut: string,
+              ) => string)
+            | undefined;
     }
 
     export interface ShareButtonData {

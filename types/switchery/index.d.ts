@@ -4,7 +4,7 @@ export as namespace Switchery;
 
 declare namespace Switchery {
     interface SwitcheryStatic {
-        new(node: Node, options?: Options): Switchery;
+        new (node: Node, options?: Options): Switchery;
     }
 
     interface Options {

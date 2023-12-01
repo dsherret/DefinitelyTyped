@@ -19,4 +19,7 @@ const t = { test: ["hello", "one", "two"] };
 const opts = { bar: "foo" };
 Rivets.bind(document.getElementById("para1"), t);
 Rivets.bind(document.getElementById("para1"), t, opts);
-Rivets.bind([document.getElementById("para1"), document.getElementById("para2")], t);
+Rivets.bind(
+    [document.getElementById("para1"), document.getElementById("para2")],
+    t,
+);

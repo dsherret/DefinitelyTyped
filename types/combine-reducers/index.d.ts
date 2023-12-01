@@ -61,7 +61,10 @@ export interface AnyAction extends Action {
  * @template S The type of state consumed and produced by this reducer.
  * @template A The type of actions the reducer can potentially respond to.
  */
-export type Reducer<S = any, A extends Action = AnyAction> = (state: S | undefined, action: A) => S;
+export type Reducer<S = any, A extends Action = AnyAction> = (
+    state: S | undefined,
+    action: A,
+) => S;
 
 /**
  * Object whose values correspond to different reducer functions.
@@ -90,7 +93,9 @@ export type ReducersMapObject<S = any, A extends Action = Action> = {
  * @returns A reducer function that invokes every reducer inside the passed
  *   object, and builds a state object with the same shape.
  */
-export default function combineReducers<S>(reducers: ReducersMapObject<S, any>): Reducer<S>;
+export default function combineReducers<S>(
+    reducers: ReducersMapObject<S, any>,
+): Reducer<S>;
 export default function combineReducers<S, A extends Action = AnyAction>(
     reducers: ReducersMapObject<S, A>,
 ): Reducer<S, A>;

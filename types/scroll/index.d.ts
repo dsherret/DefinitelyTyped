@@ -29,7 +29,12 @@ interface Scroll {
      * @param cb Callback function to call after
      * @return Function to stop scrolling
      */
-    (el: HTMLElement, to: number, opts?: ScrollOptions | ScrollCallback, cb?: ScrollCallback): Cancel;
+    (
+        el: HTMLElement,
+        to: number,
+        opts?: ScrollOptions | ScrollCallback,
+        cb?: ScrollCallback,
+    ): Cancel;
 }
 
 declare const scroll: {

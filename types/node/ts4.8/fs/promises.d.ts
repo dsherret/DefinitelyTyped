@@ -109,7 +109,8 @@ declare module "fs/promises" {
         appendFile(
             data: string | Uint8Array,
             options?:
-                | (ObjectEncodingOptions & FlagAndOpenMode & { flush?: boolean | undefined })
+                | (ObjectEncodingOptions &
+                      FlagAndOpenMode & { flush?: boolean | undefined })
                 | BufferEncoding
                 | null,
         ): Promise<void>;
@@ -235,7 +236,9 @@ declare module "fs/promises" {
             length?: number | null,
             position?: number | null,
         ): Promise<FileReadResult<T>>;
-        read<T extends NodeJS.ArrayBufferView = Buffer>(options?: FileReadOptions<T>): Promise<FileReadResult<T>>;
+        read<T extends NodeJS.ArrayBufferView = Buffer>(
+            options?: FileReadOptions<T>,
+        ): Promise<FileReadResult<T>>;
         /**
          * Returns a `ReadableStream` that may be used to read the files data.
          *
@@ -290,9 +293,9 @@ declare module "fs/promises" {
         readFile(
             options:
                 | {
-                    encoding: BufferEncoding;
-                    flag?: OpenMode | undefined;
-                }
+                      encoding: BufferEncoding;
+                      flag?: OpenMode | undefined;
+                  }
                 | BufferEncoding,
         ): Promise<string>;
         /**
@@ -304,8 +307,8 @@ declare module "fs/promises" {
         readFile(
             options?:
                 | (ObjectEncodingOptions & {
-                    flag?: OpenMode | undefined;
-                })
+                      flag?: OpenMode | undefined;
+                  })
                 | BufferEncoding
                 | null,
         ): Promise<string | Buffer>;
@@ -395,7 +398,9 @@ declare module "fs/promises" {
         writeFile(
             data: string | Uint8Array,
             options?:
-                | (ObjectEncodingOptions & FlagAndOpenMode & Abortable & { flush?: boolean | undefined })
+                | (ObjectEncodingOptions &
+                      FlagAndOpenMode &
+                      Abortable & { flush?: boolean | undefined })
                 | BufferEncoding
                 | null,
         ): Promise<void>;
@@ -449,14 +454,20 @@ declare module "fs/promises" {
          * @param [position='null'] The offset from the beginning of the file where the data from `buffers` should be written. If `position` is not a `number`, the data will be written at the current
          * position.
          */
-        writev(buffers: readonly NodeJS.ArrayBufferView[], position?: number): Promise<WriteVResult>;
+        writev(
+            buffers: readonly NodeJS.ArrayBufferView[],
+            position?: number,
+        ): Promise<WriteVResult>;
         /**
          * Read from a file and write to an array of [ArrayBufferView](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView) s
          * @since v13.13.0, v12.17.0
          * @param [position='null'] The offset from the beginning of the file where the data should be read from. If `position` is not a `number`, the data will be read from the current position.
          * @return Fulfills upon success an object containing two properties:
          */
-        readv(buffers: readonly NodeJS.ArrayBufferView[], position?: number): Promise<ReadVResult>;
+        readv(
+            buffers: readonly NodeJS.ArrayBufferView[],
+            position?: number,
+        ): Promise<ReadVResult>;
         /**
          * Closes the file handle after waiting for any pending operation on the handle to
          * complete.
@@ -548,7 +559,11 @@ declare module "fs/promises" {
      * `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`)
      * @return Fulfills with `undefined` upon success.
      */
-    function copyFile(src: PathLike, dest: PathLike, mode?: number): Promise<void>;
+    function copyFile(
+        src: PathLike,
+        dest: PathLike,
+        mode?: number,
+    ): Promise<void>;
     /**
      * Opens a `FileHandle`.
      *
@@ -562,7 +577,11 @@ declare module "fs/promises" {
      * @param [mode=0o666] Sets the file mode (permission and sticky bits) if the file is created.
      * @return Fulfills with a {FileHandle} object.
      */
-    function open(path: PathLike, flags?: string | number, mode?: Mode): Promise<FileHandle>;
+    function open(
+        path: PathLike,
+        flags?: string | number,
+        mode?: Mode,
+    ): Promise<FileHandle>;
     /**
      * Renames `oldPath` to `newPath`.
      * @since v10.0.0
@@ -633,8 +652,8 @@ declare module "fs/promises" {
         options?:
             | Mode
             | (MakeDirectoryOptions & {
-                recursive?: false | undefined;
-            })
+                  recursive?: false | undefined;
+              })
             | null,
     ): Promise<void>;
     /**
@@ -643,7 +662,10 @@ declare module "fs/promises" {
      * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
      * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
      */
-    function mkdir(path: PathLike, options?: Mode | MakeDirectoryOptions | null): Promise<string | undefined>;
+    function mkdir(
+        path: PathLike,
+        options?: Mode | MakeDirectoryOptions | null,
+    ): Promise<string | undefined>;
     /**
      * Reads the contents of a directory.
      *
@@ -672,9 +694,9 @@ declare module "fs/promises" {
         path: PathLike,
         options?:
             | (ObjectEncodingOptions & {
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            })
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              })
             | BufferEncoding
             | null,
     ): Promise<string[]>;
@@ -687,10 +709,10 @@ declare module "fs/promises" {
         path: PathLike,
         options:
             | {
-                encoding: "buffer";
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            }
+                  encoding: "buffer";
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              }
             | "buffer",
     ): Promise<Buffer[]>;
     /**
@@ -702,9 +724,9 @@ declare module "fs/promises" {
         path: PathLike,
         options?:
             | (ObjectEncodingOptions & {
-                withFileTypes?: false | undefined;
-                recursive?: boolean | undefined;
-            })
+                  withFileTypes?: false | undefined;
+                  recursive?: boolean | undefined;
+              })
             | BufferEncoding
             | null,
     ): Promise<string[] | Buffer[]>;
@@ -731,19 +753,28 @@ declare module "fs/promises" {
      * @since v10.0.0
      * @return Fulfills with the `linkString` upon success.
      */
-    function readlink(path: PathLike, options?: ObjectEncodingOptions | BufferEncoding | null): Promise<string>;
+    function readlink(
+        path: PathLike,
+        options?: ObjectEncodingOptions | BufferEncoding | null,
+    ): Promise<string>;
     /**
      * Asynchronous readlink(2) - read value of a symbolic link.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    function readlink(path: PathLike, options: BufferEncodingOption): Promise<Buffer>;
+    function readlink(
+        path: PathLike,
+        options: BufferEncodingOption,
+    ): Promise<Buffer>;
     /**
      * Asynchronous readlink(2) - read value of a symbolic link.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    function readlink(path: PathLike, options?: ObjectEncodingOptions | string | null): Promise<string | Buffer>;
+    function readlink(
+        path: PathLike,
+        options?: ObjectEncodingOptions | string | null,
+    ): Promise<string | Buffer>;
     /**
      * Creates a symbolic link.
      *
@@ -757,7 +788,11 @@ declare module "fs/promises" {
      * @param [type='null']
      * @return Fulfills with `undefined` upon success.
      */
-    function symlink(target: PathLike, path: PathLike, type?: string | null): Promise<void>;
+    function symlink(
+        target: PathLike,
+        path: PathLike,
+        type?: string | null,
+    ): Promise<void>;
     /**
      * Equivalent to `fsPromises.stat()` unless `path` refers to a symbolic link,
      * in which case the link itself is stat-ed, not the file that it refers to.
@@ -777,7 +812,10 @@ declare module "fs/promises" {
             bigint: true;
         },
     ): Promise<BigIntStats>;
-    function lstat(path: PathLike, opts?: StatOptions): Promise<Stats | BigIntStats>;
+    function lstat(
+        path: PathLike,
+        opts?: StatOptions,
+    ): Promise<Stats | BigIntStats>;
     /**
      * @since v10.0.0
      * @return Fulfills with the {fs.Stats} object for the given `path`.
@@ -794,7 +832,10 @@ declare module "fs/promises" {
             bigint: true;
         },
     ): Promise<BigIntStats>;
-    function stat(path: PathLike, opts?: StatOptions): Promise<Stats | BigIntStats>;
+    function stat(
+        path: PathLike,
+        opts?: StatOptions,
+    ): Promise<Stats | BigIntStats>;
     /**
      * @since v19.6.0, v18.15.0
      * @return Fulfills with the {fs.StatFs} object for the given `path`.
@@ -811,7 +852,10 @@ declare module "fs/promises" {
             bigint: true;
         },
     ): Promise<BigIntStatsFs>;
-    function statfs(path: PathLike, opts?: StatFsOptions): Promise<StatsFs | BigIntStatsFs>;
+    function statfs(
+        path: PathLike,
+        opts?: StatFsOptions,
+    ): Promise<StatsFs | BigIntStatsFs>;
     /**
      * Creates a new link from the `existingPath` to the `newPath`. See the POSIX [`link(2)`](http://man7.org/linux/man-pages/man2/link.2.html) documentation for more detail.
      * @since v10.0.0
@@ -853,7 +897,11 @@ declare module "fs/promises" {
      * @since v14.5.0, v12.19.0
      * @return Fulfills with `undefined` upon success.
      */
-    function lutimes(path: PathLike, atime: TimeLike, mtime: TimeLike): Promise<void>;
+    function lutimes(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+    ): Promise<void>;
     /**
      * Changes the ownership of a file.
      * @since v10.0.0
@@ -871,7 +919,11 @@ declare module "fs/promises" {
      * @since v10.0.0
      * @return Fulfills with `undefined` upon success.
      */
-    function utimes(path: PathLike, atime: TimeLike, mtime: TimeLike): Promise<void>;
+    function utimes(
+        path: PathLike,
+        atime: TimeLike,
+        mtime: TimeLike,
+    ): Promise<void>;
     /**
      * Determines the actual location of `path` using the same semantics as the`fs.realpath.native()` function.
      *
@@ -888,13 +940,19 @@ declare module "fs/promises" {
      * @since v10.0.0
      * @return Fulfills with the resolved path upon success.
      */
-    function realpath(path: PathLike, options?: ObjectEncodingOptions | BufferEncoding | null): Promise<string>;
+    function realpath(
+        path: PathLike,
+        options?: ObjectEncodingOptions | BufferEncoding | null,
+    ): Promise<string>;
     /**
      * Asynchronous realpath(3) - return the canonicalized absolute pathname.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    function realpath(path: PathLike, options: BufferEncodingOption): Promise<Buffer>;
+    function realpath(
+        path: PathLike,
+        options: BufferEncodingOption,
+    ): Promise<Buffer>;
     /**
      * Asynchronous realpath(3) - return the canonicalized absolute pathname.
      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
@@ -933,19 +991,28 @@ declare module "fs/promises" {
      * @since v10.0.0
      * @return Fulfills with a string containing the file system path of the newly created temporary directory.
      */
-    function mkdtemp(prefix: string, options?: ObjectEncodingOptions | BufferEncoding | null): Promise<string>;
+    function mkdtemp(
+        prefix: string,
+        options?: ObjectEncodingOptions | BufferEncoding | null,
+    ): Promise<string>;
     /**
      * Asynchronously creates a unique temporary directory.
      * Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    function mkdtemp(prefix: string, options: BufferEncodingOption): Promise<Buffer>;
+    function mkdtemp(
+        prefix: string,
+        options: BufferEncodingOption,
+    ): Promise<Buffer>;
     /**
      * Asynchronously creates a unique temporary directory.
      * Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
      */
-    function mkdtemp(prefix: string, options?: ObjectEncodingOptions | BufferEncoding | null): Promise<string | Buffer>;
+    function mkdtemp(
+        prefix: string,
+        options?: ObjectEncodingOptions | BufferEncoding | null,
+    ): Promise<string | Buffer>;
     /**
      * Asynchronously writes data to a file, replacing the file if it already exists.`data` can be a string, a buffer, an
      * [AsyncIterable](https://tc39.github.io/ecma262/#sec-asynciterable-interface), or an
@@ -1006,9 +1073,9 @@ declare module "fs/promises" {
             | Stream,
         options?:
             | (ObjectEncodingOptions & {
-                mode?: Mode | undefined;
-                flag?: OpenMode | undefined;
-            } & Abortable)
+                  mode?: Mode | undefined;
+                  flag?: OpenMode | undefined;
+              } & Abortable)
             | BufferEncoding
             | null,
     ): Promise<void>;
@@ -1029,7 +1096,11 @@ declare module "fs/promises" {
     function appendFile(
         path: PathLike | FileHandle,
         data: string | Uint8Array,
-        options?: (ObjectEncodingOptions & FlagAndOpenMode & { flush?: boolean | undefined }) | BufferEncoding | null,
+        options?:
+            | (ObjectEncodingOptions &
+                  FlagAndOpenMode & { flush?: boolean | undefined })
+            | BufferEncoding
+            | null,
     ): Promise<void>;
     /**
      * Asynchronously reads the entire contents of a file.
@@ -1091,9 +1162,9 @@ declare module "fs/promises" {
         path: PathLike | FileHandle,
         options?:
             | ({
-                encoding?: null | undefined;
-                flag?: OpenMode | undefined;
-            } & Abortable)
+                  encoding?: null | undefined;
+                  flag?: OpenMode | undefined;
+              } & Abortable)
             | null,
     ): Promise<Buffer>;
     /**
@@ -1107,9 +1178,9 @@ declare module "fs/promises" {
         path: PathLike | FileHandle,
         options:
             | ({
-                encoding: BufferEncoding;
-                flag?: OpenMode | undefined;
-            } & Abortable)
+                  encoding: BufferEncoding;
+                  flag?: OpenMode | undefined;
+              } & Abortable)
             | BufferEncoding,
     ): Promise<string>;
     /**
@@ -1122,13 +1193,10 @@ declare module "fs/promises" {
     function readFile(
         path: PathLike | FileHandle,
         options?:
-            | (
-                & ObjectEncodingOptions
-                & Abortable
-                & {
-                    flag?: OpenMode | undefined;
-                }
-            )
+            | (ObjectEncodingOptions &
+                  Abortable & {
+                      flag?: OpenMode | undefined;
+                  })
             | BufferEncoding
             | null,
     ): Promise<string | Buffer>;
@@ -1195,8 +1263,8 @@ declare module "fs/promises" {
         filename: PathLike,
         options:
             | (WatchOptions & {
-                encoding: "buffer";
-            })
+                  encoding: "buffer";
+              })
             | "buffer",
     ): AsyncIterable<FileChangeInfo<Buffer>>;
     /**
@@ -1207,7 +1275,10 @@ declare module "fs/promises" {
      * If `persistent` is not supplied, the default of `true` is used.
      * If `recursive` is not supplied, the default of `false` is used.
      */
-    function watch(filename: PathLike, options?: WatchOptions | BufferEncoding): AsyncIterable<FileChangeInfo<string>>;
+    function watch(
+        filename: PathLike,
+        options?: WatchOptions | BufferEncoding,
+    ): AsyncIterable<FileChangeInfo<string>>;
     /**
      * Watch for changes on `filename`, where `filename` is either a file or a directory, returning an `FSWatcher`.
      * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
@@ -1219,7 +1290,9 @@ declare module "fs/promises" {
     function watch(
         filename: PathLike,
         options: WatchOptions | string,
-    ): AsyncIterable<FileChangeInfo<string>> | AsyncIterable<FileChangeInfo<Buffer>>;
+    ):
+        | AsyncIterable<FileChangeInfo<string>>
+        | AsyncIterable<FileChangeInfo<Buffer>>;
     /**
      * Asynchronously copies the entire directory structure from `src` to `dest`,
      * including subdirectories and files.
@@ -1232,7 +1305,11 @@ declare module "fs/promises" {
      * @param dest destination path to copy to.
      * @return Fulfills with `undefined` upon success.
      */
-    function cp(source: string | URL, destination: string | URL, opts?: CopyOptions): Promise<void>;
+    function cp(
+        source: string | URL,
+        destination: string | URL,
+        opts?: CopyOptions,
+    ): Promise<void>;
 }
 declare module "node:fs/promises" {
     export * from "fs/promises";

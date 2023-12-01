@@ -6,11 +6,11 @@ export interface CommandRegistryTargetMap extends HTMLElementTagNameMap {
 
 export type CommandRegistryListener<TargetType extends EventTarget> =
     | {
-        didDispatch(event: CommandEvent<TargetType>): void | Promise<void>;
-        displayName?: string | undefined;
-        description?: string | undefined;
-        hiddenInCommandPalette?: boolean | undefined;
-    }
+          didDispatch(event: CommandEvent<TargetType>): void | Promise<void>;
+          displayName?: string | undefined;
+          description?: string | undefined;
+          hiddenInCommandPalette?: boolean | undefined;
+      }
     | ((event: CommandEvent<TargetType>) => void | Promise<void>);
 
 /**
@@ -25,7 +25,11 @@ export interface CommandRegistry {
         listener: CommandRegistryListener<CommandRegistryTargetMap[T]>,
     ): Disposable;
     /** Register a single command. */
-    add<T extends Node>(target: T, commandName: string, listener: CommandRegistryListener<T>): Disposable;
+    add<T extends Node>(
+        target: T,
+        commandName: string,
+        listener: CommandRegistryListener<T>,
+    ): Disposable;
 
     /** Register multiple commands. */
     add<T extends keyof CommandRegistryTargetMap>(
@@ -43,9 +47,7 @@ export interface CommandRegistry {
     ): CompositeDisposable;
 
     /** Find all registered commands matching a query. */
-    findCommands(params: {
-        target: string | Node;
-    }): Array<{
+    findCommands(params: { target: string | Node }): Array<{
         name: string;
         displayName: string;
         description?: string | undefined;

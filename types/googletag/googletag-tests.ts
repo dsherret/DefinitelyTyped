@@ -14,7 +14,9 @@ if (window.googletag && googletag.apiReady) {
 
 // DEMO 2
 googletag.cmd.push(() => {
-    googletag.defineSlot("/1234567/sports", [160, 600]).addService(googletag.pubads());
+    googletag
+        .defineSlot("/1234567/sports", [160, 600])
+        .addService(googletag.pubads());
 });
 
 googletag.cmd.push(function testThis() {
@@ -26,7 +28,10 @@ googletag.cmd.push(function testThis() {
 googletag.defineOutOfPageSlot("/1234567/sports", "div-1");
 
 // Define a GPT managed web interstitial ad slot.
-googletag.defineOutOfPageSlot("/1234567/sports", googletag.enums.OutOfPageFormat.INTERSTITIAL);
+googletag.defineOutOfPageSlot(
+    "/1234567/sports",
+    googletag.enums.OutOfPageFormat.INTERSTITIAL,
+);
 
 // DEMO 4
 googletag.defineSlot("/1234567/sports", [728, 90], "div-1");
@@ -71,7 +76,9 @@ googletag.setAdIframeTitle("title");
 
 // DEMO 9
 googletag.cmd.push(() => {
-    googletag.defineSlot("/1234567/sports", [160, 600]).addService(googletag.pubads());
+    googletag
+        .defineSlot("/1234567/sports", [160, 600])
+        .addService(googletag.pubads());
 });
 
 // DEMO 10
@@ -191,10 +198,15 @@ googletag.pubads().setForceSafeFrame(true);
 
 // The following slot will be opted-out of the page-level force
 // safeframe instruction.
-googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.setForceSafeFrame(false).addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.setForceSafeFrame(false)
+    .addService(googletag.pubads());
 
 // The following slot will have safeframe forced.
-googletag.defineSlot("/1234567/news", [160, 600], "div-2")?.addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/news", [160, 600], "div-2")
+    ?.addService(googletag.pubads());
 
 // googletag.display();
 
@@ -254,7 +266,9 @@ googletag
 
 // The following slot will inherit the page level settings, and hence
 // would allow for expansion by overlay.
-googletag.defineSlot("/1234567/news", [160, 600], "div-2")?.addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/news", [160, 600], "div-2")
+    ?.addService(googletag.pubads());
 
 // googletag.display();
 
@@ -267,7 +281,7 @@ googletag.pubads().setTargeting("interests", ["sports", "music", "movies"]);
 
 // DEMO 34
 // 1. Adding an event listener for the PubAdsService.
-googletag.pubads().addEventListener("slotOnload", event => {
+googletag.pubads().addEventListener("slotOnload", (event) => {
     console.log("Slot has been loaded:");
     console.log(event);
 });
@@ -278,7 +292,7 @@ googletag.pubads().addEventListener("slotOnload", event => {
 // programmatically filter a listener to respond only to a certain ad slot,
 // using this pattern:
 let targetSlot = {};
-googletag.pubads().addEventListener("slotOnload", event => {
+googletag.pubads().addEventListener("slotOnload", (event) => {
     if (event.slot === targetSlot) {
         // Slot specific logic.
     }
@@ -291,7 +305,9 @@ const onViewableListener = (event: googletag.events.Event) => {
     }, 30000);
 
     // Remove the event listener after executing this callback once.
-    googletag.pubads().removeEventListener("impressionViewable", onViewableListener);
+    googletag
+        .pubads()
+        .removeEventListener("impressionViewable", onViewableListener);
 };
 // 2. Add an event listener to execute the callback.
 googletag.pubads().addEventListener("impressionViewable", onViewableListener);
@@ -317,7 +333,9 @@ let mapping2 = googletag
 // [640, 480] > size >= [0, 0]
 
 // DEMO 36
-googletag.defineSlot("/1234567/sports", [160, 600]).addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/sports", [160, 600])
+    .addService(googletag.pubads());
 
 // DEMO 37
 // Set category exclusion to exclude ads with 'AirlineAd' labels.
@@ -349,7 +367,9 @@ slot?.clearTargeting();
 // All targeting has been cleared.
 
 // DEMO 39
-slot = googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.addService(googletag.pubads());
+slot = googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.addService(googletag.pubads());
 let mapping = googletag
     .sizeMapping()
     .addSize([100, 100], [88, 31])
@@ -387,7 +407,9 @@ color = googletag.pubads().get("adsense_background_color");
 // color == '#FFFFFF'.
 
 // DEMO 41
-slot = googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.addService(googletag.pubads());
+slot = googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.addService(googletag.pubads());
 
 let path = slot?.getAdUnitPath();
 // path is '/1234567/sports'
@@ -413,7 +435,9 @@ let exclusions = slot?.getCategoryExclusions();
 // exclusions are ['AirlineAd', 'TrainAd']
 
 // DEMO 44
-slot = googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.addService(googletag.pubads());
+slot = googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.addService(googletag.pubads());
 
 let slotElementId = slot?.getSlotElementId();
 // slotElementId is 'div-1'
@@ -468,12 +492,18 @@ googletag
 // The above will cause the div for this slot to be collapsed
 // when the page is loaded, before ads are requested.
 
-googletag.defineSlot("/1234567/sports", [160, 600], "div-2")?.setCollapseEmptyDiv(true).addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-2")
+    ?.setCollapseEmptyDiv(true)
+    .addService(googletag.pubads());
 // The above will cause the div for this slot to be collapsed
 // only after GPT detects that no ads are available for the slot.
 
 // DEMO 51
-googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.setForceSafeFrame(true).addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.setForceSafeFrame(true)
+    .addService(googletag.pubads());
 
 // DEMO 52
 googletag.pubads().setForceSafeFrame(true);
@@ -485,12 +515,16 @@ googletag
     ?.setSafeFrameConfig({ sandbox: true })
     .addService(googletag.pubads());
 
-googletag.defineSlot("/1234567/news", [160, 600], "div-2")?.addService(googletag.pubads());
+googletag
+    .defineSlot("/1234567/news", [160, 600], "div-2")
+    ?.addService(googletag.pubads());
 
 // googletag.display();
 
 // DEMO 53
-slot = googletag.defineSlot("/1234567/sports", [160, 600], "div-1")?.addService(googletag.pubads());
+slot = googletag
+    .defineSlot("/1234567/sports", [160, 600], "div-1")
+    ?.addService(googletag.pubads());
 
 // Example with a single value for a key.
 slot?.setTargeting("allow_expandable", "true");
@@ -508,9 +542,13 @@ slot?.updateTargetingFromMap({
 // DEMO 55
 // This listener will be called when an impression becomes viewable.
 targetSlot = {};
-googletag.pubads().addEventListener("impressionViewable", event => {
+googletag.pubads().addEventListener("impressionViewable", (event) => {
     slot = event.slot;
-    console.log("Impression for slot", slot.getSlotElementId(), "became viewable.");
+    console.log(
+        "Impression for slot",
+        slot.getSlotElementId(),
+        "became viewable.",
+    );
 
     if (slot === targetSlot) {
         // Slot specific logic.
@@ -520,9 +558,13 @@ googletag.pubads().addEventListener("impressionViewable", event => {
 // DEMO 56
 // This listener will be called when a creative iframe load event fires.
 targetSlot = {};
-googletag.pubads().addEventListener("slotOnload", event => {
+googletag.pubads().addEventListener("slotOnload", (event) => {
     slot = event.slot;
-    console.log("Creative iframe for slot", slot.getSlotElementId(), "has loaded.");
+    console.log(
+        "Creative iframe for slot",
+        slot.getSlotElementId(),
+        "has loaded.",
+    );
 
     if (slot === targetSlot) {
         // Slot specific logic.
@@ -532,7 +574,7 @@ googletag.pubads().addEventListener("slotOnload", event => {
 // DEMO 57
 // This listener will be called when a slot has finished rendering.
 targetSlot = {};
-googletag.pubads().addEventListener("slotRenderEnded", event => {
+googletag.pubads().addEventListener("slotRenderEnded", (event) => {
     slot = event.slot;
     console.group("Slot", slot.getSlotElementId(), "finished rendering.");
 
@@ -549,7 +591,10 @@ googletag.pubads().addEventListener("slotRenderEnded", event => {
     console.log("Size:", event.size);
     console.log("Slot content changed?:", event.slotContentChanged);
     console.log("Source Agnostic Creative ID:", event.sourceAgnosticCreativeId);
-    console.log("Source Agnostic Line Item ID:", event.sourceAgnosticLineItemId);
+    console.log(
+        "Source Agnostic Line Item ID:",
+        event.sourceAgnosticLineItemId,
+    );
     console.log("Yield Group IDs:", event.yieldGroupIds);
     console.groupEnd();
 
@@ -564,7 +609,7 @@ googletag.pubads().addEventListener("slotRenderEnded", event => {
 // be batched together in a single request if single request architecture
 // (SRA) is enabled.
 targetSlot = {};
-googletag.pubads().addEventListener("slotRequested", event => {
+googletag.pubads().addEventListener("slotRequested", (event) => {
     slot = event.slot;
     console.log("Slot", slot.getSlotElementId(), "has been requested.");
 
@@ -577,7 +622,7 @@ googletag.pubads().addEventListener("slotRequested", event => {
 // This listener will be called when an ad response has been received for
 // a slot.
 targetSlot = {};
-googletag.pubads().addEventListener("slotResponseReceived", event => {
+googletag.pubads().addEventListener("slotResponseReceived", (event) => {
     slot = event.slot;
     console.log("Ad response for slot", slot.getSlotElementId(), "received.");
 
@@ -590,7 +635,7 @@ googletag.pubads().addEventListener("slotResponseReceived", event => {
 // This listener will be called whenever the on-screen percentage of an ad
 // slot's area changes.
 targetSlot = {};
-googletag.pubads().addEventListener("slotVisibilityChanged", event => {
+googletag.pubads().addEventListener("slotVisibilityChanged", (event) => {
     slot = event.slot;
     console.group("Visibility of slot", slot.getSlotElementId(), "changed.");
 
@@ -620,14 +665,14 @@ googletag.pubads().getName();
 googletag.pubads().getVersion();
 
 const slotIdMap = googletag.pubads().getSlotIdMap();
-Object.keys(slotIdMap).forEach(slotId => {
+Object.keys(slotIdMap).forEach((slotId) => {
     slot = slotIdMap[slotId];
     console.log(slotId, slot);
 });
 googletag
     .pubads()
     .getSlots()
-    .forEach(slot => {
+    .forEach((slot) => {
         console.log(
             slot.getClickUrl(),
             slot.getCollapseEmptyDiv(),
@@ -646,8 +691,10 @@ googletag
 // DEMO 62
 // Ensure you can push several arguments to `cmd`
 googletag.cmd.push(
-    ...[1, 2, 3, 4, 5].map(n => () => {
-        console.log(`successfully pushed ${n > 1 ? n + " arguments" : "one argument"}`);
+    ...[1, 2, 3, 4, 5].map((n) => () => {
+        console.log(
+            `successfully pushed ${n > 1 ? n + " arguments" : "one argument"}`,
+        );
     }),
 );
 
@@ -674,15 +721,24 @@ googletag.pubads().set("adsense_ad_format", "250x250_as");
 
 // Rewarded ads for web have launched.
 targetSlot = (
-    googletag.defineOutOfPageSlot("/1234567/sports", googletag.enums.OutOfPageFormat.REWARDED) as googletag.Slot
+    googletag.defineOutOfPageSlot(
+        "/1234567/sports",
+        googletag.enums.OutOfPageFormat.REWARDED,
+    ) as googletag.Slot
 ).addService(googletag.pubads());
 // This listener is called when the user closes a rewarded ad slot.
 function rewardedSlotClosed(event: googletag.events.Event) {
     const slot = event.slot;
-    console.log("Rewarded ad slot", slot.getSlotElementId(), "has been closed.");
+    console.log(
+        "Rewarded ad slot",
+        slot.getSlotElementId(),
+        "has been closed.",
+    );
     if (slot === targetSlot) {
         // Slot specific logic.
-        googletag.pubads().removeEventListener("rewardedSlotClosed", rewardedSlotClosed);
+        googletag
+            .pubads()
+            .removeEventListener("rewardedSlotClosed", rewardedSlotClosed);
     }
 }
 googletag.pubads().addEventListener("rewardedSlotGranted", rewardedSlotClosed);
@@ -696,14 +752,20 @@ function rewardedSlotGranted(event: googletag.events.RewardedSlotGrantedEvent) {
     console.groupEnd();
     if (slot === targetSlot) {
         // Slot specific logic.
-        googletag.pubads().removeEventListener("rewardedSlotGranted", rewardedSlotGranted);
+        googletag
+            .pubads()
+            .removeEventListener("rewardedSlotGranted", rewardedSlotGranted);
     }
 }
 googletag.pubads().addEventListener("rewardedSlotGranted", rewardedSlotGranted);
 // This listener is called when a rewarded ad slot becomes ready to be displayed.
-googletag.pubads().addEventListener("rewardedSlotReady", event => {
+googletag.pubads().addEventListener("rewardedSlotReady", (event) => {
     const slot = event.slot;
-    console.log("Rewarded ad slot", slot.getSlotElementId(), "is ready to be displayed.");
+    console.log(
+        "Rewarded ad slot",
+        slot.getSlotElementId(),
+        "is ready to be displayed.",
+    );
     // Display the ad.
     event.makeRewardedVisible();
     if (slot === targetSlot) {
@@ -723,8 +785,8 @@ const types: Array<keyof googletag.events.EventTypeMap> = [
     "slotOnload",
     "slotVisibilityChanged",
 ];
-types.forEach(type => {
-    googletag.pubads().addEventListener(type, event => {
+types.forEach((type) => {
+    googletag.pubads().addEventListener(type, (event) => {
         console.log(event);
     });
 });

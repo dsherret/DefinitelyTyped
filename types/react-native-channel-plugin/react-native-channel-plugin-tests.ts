@@ -1,7 +1,7 @@
 import { BootConfig, ChannelIO, UserData } from "react-native-channel-plugin";
 
 ChannelIO.boot({ pluginKey: "YOUR_PLUGIN_KEY" });
-ChannelIO.boot({ pluginKey: "YOUR_PLUGIN_KEY" }).then(result => {
+ChannelIO.boot({ pluginKey: "YOUR_PLUGIN_KEY" }).then((result) => {
     if (result.status === "SUCCESS") {
         // SUCCESS
     } else {
@@ -85,7 +85,7 @@ const user: UserData = {
     unsubscribeEmail: false,
     unsubscribeTexting: false,
 };
-ChannelIO.updateUser(user).then(result => {
+ChannelIO.updateUser(user).then((result) => {
     if (result.error) {
         // ERROR
     } else {
@@ -93,7 +93,7 @@ ChannelIO.updateUser(user).then(result => {
     }
 });
 
-ChannelIO.addTags(["1", "2", "3"]).then(result => {
+ChannelIO.addTags(["1", "2", "3"]).then((result) => {
     if (result.error) {
         // ERROR
     } else {
@@ -101,7 +101,7 @@ ChannelIO.addTags(["1", "2", "3"]).then(result => {
     }
 });
 
-ChannelIO.removeTags(["1", "2", "3"]).then(result => {
+ChannelIO.removeTags(["1", "2", "3"]).then((result) => {
     if (result.error) {
         // ERROR
     } else {
@@ -116,7 +116,7 @@ ChannelIO.resetPage();
 
 ChannelIO.initPushToken("PUSH_TOKEN");
 
-ChannelIO.isChannelPushNotification({}).then(result => {
+ChannelIO.isChannelPushNotification({}).then((result) => {
     if (result) {
         // Channel push notification
     } else {
@@ -126,7 +126,7 @@ ChannelIO.isChannelPushNotification({}).then(result => {
 
 ChannelIO.receivePushNotification({}).then(() => {});
 
-ChannelIO.hasStoredPushNotification().then(result => {
+ChannelIO.hasStoredPushNotification().then((result) => {
     if (result) {
         // Has stored push notification
     } else {
@@ -136,7 +136,7 @@ ChannelIO.hasStoredPushNotification().then(result => {
 
 ChannelIO.openStoredPushNotification();
 
-ChannelIO.isBooted().then(result => {
+ChannelIO.isBooted().then((result) => {
     if (result) {
         // Channel is booted
     } else {
@@ -159,7 +159,7 @@ ChannelIO.onBadgeChanged();
 ChannelIO.onBadgeChanged((count: number) => {});
 
 ChannelIO.onFollowUpChanged();
-ChannelIO.onFollowUpChanged(data => {});
+ChannelIO.onFollowUpChanged((data) => {});
 
 ChannelIO.onUrlClicked();
 ChannelIO.onUrlClicked((url: string, next: () => void) => {
@@ -170,7 +170,7 @@ ChannelIO.onUrlClicked((url: string, next: () => void) => {
 });
 
 ChannelIO.onPopupDataReceived();
-ChannelIO.onPopupDataReceived(data => {});
+ChannelIO.onPopupDataReceived((data) => {});
 
 ChannelIO.onPushNotificationClicked();
 ChannelIO.onPushNotificationClicked((chatId: string, next: () => void) => {

@@ -20,7 +20,11 @@ const padToEvenResult: string = padToEven("hoo");
 const intToHexResult: string = intToHex(1);
 const intToBufferResult: Buffer = intToBuffer(1);
 const getBinarySizeResult: number = getBinarySize("hoo");
-const arrayContainsArraySomeResult: boolean = arrayContainsArray([1], [1], true);
+const arrayContainsArraySomeResult: boolean = arrayContainsArray(
+    [1],
+    [1],
+    true,
+);
 const arrayContainsArrayResult: boolean = arrayContainsArray([1], [1]);
 const toUtf8Result: string = toUtf8("hoo");
 const toAsciiResult: string = toAscii("hoo");

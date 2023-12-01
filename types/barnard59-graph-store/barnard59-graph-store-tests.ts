@@ -11,7 +11,7 @@ function testGet() {
         endpoint,
     });
 
-    const defaultGraph: DefaultGraph = <any> {};
+    const defaultGraph: DefaultGraph = <any>{};
     const anonDefaultGraph2: Stream = get({
         endpoint,
         graph: defaultGraph,
@@ -24,7 +24,7 @@ function testGet() {
         password,
     });
 
-    const graph: NamedNode = <any> {};
+    const graph: NamedNode = <any>{};
     const auth2: Stream = get({
         endpoint,
         graph,

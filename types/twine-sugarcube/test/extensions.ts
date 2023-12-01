@@ -10,7 +10,11 @@ n = arNum.count(1, 1);
 // @ts-expect-error
 n = arNum.count("a", 1);
 
-declare function countPredicate(fruit: string, index: number, array: string[]): boolean;
+declare function countPredicate(
+    fruit: string,
+    index: number,
+    array: string[],
+): boolean;
 declare const fruits: string[] | readonly string[];
 
 fruits.countWith(countPredicate);
@@ -18,7 +22,7 @@ const fakeThis = {
     propA: "string",
 };
 
-fruits.countWith(function(value: string) {
+fruits.countWith(function (value: string) {
     this.propA = "s";
     return value === "Oranges";
 }, fakeThis);

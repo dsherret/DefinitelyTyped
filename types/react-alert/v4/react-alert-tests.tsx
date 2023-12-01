@@ -66,7 +66,7 @@ class AppUseAlertConsumer extends React.Component {
     render() {
         return (
             <Alert>
-                {alert => (
+                {(alert) => (
                     <button
                         onClick={() => {
                             alert.show("Oh look, an alert!");

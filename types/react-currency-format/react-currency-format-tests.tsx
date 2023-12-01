@@ -15,23 +15,32 @@ import CurrencyFormat = require("react-currency-format");
     value=""
     thousandSeparator
     prefix="$"
-    onValueChange={values => {
+    onValueChange={(values) => {
         const { formattedValue, value } = values;
         console.log(formattedValue, value);
     }}
 />;
-
-<CurrencyFormat value={2456981} displayType="text" thousandSeparator prefix="$" />;
 
 <CurrencyFormat
     value={2456981}
     displayType="text"
     thousandSeparator
     prefix="$"
-    renderText={value => <div>{value}</div>}
 />;
 
-<CurrencyFormat value={4111111111111111} displayType="text" format="#### #### #### ####" />;
+<CurrencyFormat
+    value={2456981}
+    displayType="text"
+    thousandSeparator
+    prefix="$"
+    renderText={(value) => <div>{value}</div>}
+/>;
+
+<CurrencyFormat
+    value={4111111111111111}
+    displayType="text"
+    format="#### #### #### ####"
+/>;
 
 <CurrencyFormat thousandSeparator prefix="$" />;
 
@@ -39,7 +48,11 @@ import CurrencyFormat = require("react-currency-format");
 
 <CurrencyFormat format="#### #### #### ####" mask="_" />;
 
-<CurrencyFormat format="##/##" placeholder="MM/YY" mask={["M", "M", "Y", "Y"]} />;
+<CurrencyFormat
+    format="##/##"
+    placeholder="MM/YY"
+    mask={["M", "M", "Y", "Y"]}
+/>;
 
 function limit(val: string, max: string) {
     if (val.length === 1 && val[0] > max[0]) {
@@ -72,7 +85,11 @@ const TextField = ({ title }: { title: string }) => <input title={title} />;
 
 TextField.displayName = "Custom Text Field";
 
-<CurrencyFormat title="Input title" customInput={TextField} format="#### #### #### ####" />;
+<CurrencyFormat
+    title="Input title"
+    customInput={TextField}
+    format="#### #### #### ####"
+/>;
 
 <CurrencyFormat
     title="Input title"

@@ -76,37 +76,67 @@ function testLogContext() {
 
 function testLogger() {
     // create
-    const logContext: logging.LogContext = logging.createAppContext().createLogContext();
-    const logger1: logging.Logger = logContext.getLogger("/Application/Network");
+    const logContext: logging.LogContext = logging
+        .createAppContext()
+        .createLogContext();
+    const logger1: logging.Logger = logContext.getLogger(
+        "/Application/Network",
+    );
     // @ts-expect-error without file path
     const logger2: logging.Logger = logContext.getLogger();
 
     const level: logging.LogLevels = logger1.getLevel();
     const willItBeLogged: boolean = logger1.isEnabled("error");
 
-    logger1.info("Successful login of user %s - ", { name: "user", id: 1 }, new Date());
-    logger1.warning("Job could not finish successfully. An app admin should retrigger it.");
+    logger1.info(
+        "Successful login of user %s - ",
+        { name: "user", id: 1 },
+        new Date(),
+    );
+    logger1.warning(
+        "Job could not finish successfully. An app admin should retrigger it.",
+    );
     logger1.error(new Error("Uups, an error has occurred"));
-    logger1.error(new Error("Uups, an error has occurred"), "Error during operation X");
+    logger1.error(
+        new Error("Uups, an error has occurred"),
+        "Error during operation X",
+    );
     logger1.fatal("We are in trouble");
 }
 
 function testTracer() {
     // create
-    const logContext: logging.LogContext = logging.createAppContext().createLogContext();
-    const tracer1: logging.Tracer = logContext.getTracer("/Application/Network");
+    const logContext: logging.LogContext = logging
+        .createAppContext()
+        .createLogContext();
+    const tracer1: logging.Tracer = logContext.getTracer(
+        "/Application/Network",
+    );
     // @ts-expect-error without file path
     const tracer2: logging.Tracer = logContext.getTracer();
 
     const level: logging.TraceLevels = tracer1.getLevel();
     const willItBeTraced: boolean = tracer1.isEnabled("path");
 
-    tracer1.debug("Job could not finish successfully. An app admin should retrigger it.");
-    tracer1.path("Job could not finish successfully. An app admin should retrigger it.");
-    tracer1.info("Successful login of user %s - ", { name: "user", id: 1 }, new Date());
-    tracer1.warning("Job could not finish successfully. An app admin should retrigger it.");
+    tracer1.debug(
+        "Job could not finish successfully. An app admin should retrigger it.",
+    );
+    tracer1.path(
+        "Job could not finish successfully. An app admin should retrigger it.",
+    );
+    tracer1.info(
+        "Successful login of user %s - ",
+        { name: "user", id: 1 },
+        new Date(),
+    );
+    tracer1.warning(
+        "Job could not finish successfully. An app admin should retrigger it.",
+    );
     tracer1.error(new Error("Uups, an error has occurred"));
-    tracer1.error(new Error("Uups, an error has occurred"), "Error during operation X");
+    tracer1.error(
+        new Error("Uups, an error has occurred"),
+        "Error during operation X",
+    );
     tracer1.fatal("We are in trouble");
 
     tracer1.entering("myFunction", "a", 1, { a: "1" });

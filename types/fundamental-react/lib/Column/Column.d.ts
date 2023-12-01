@@ -1,6 +1,10 @@
 import * as React from "react";
 
-type ScreenSize = "smallScreen" | "mediumScreen" | "largeScreen" | "xLargeScreen";
+type ScreenSize =
+    | "smallScreen"
+    | "mediumScreen"
+    | "largeScreen"
+    | "xLargeScreen";
 
 export type ColumnSpanOption = number | Record<ScreenSize, number>;
 

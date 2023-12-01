@@ -1,5 +1,10 @@
 export class Sound extends Component {
-    constructor(name: string, channel?: string, spatialEffect?: boolean, rolloff?: number);
+    constructor(
+        name: string,
+        channel?: string,
+        spatialEffect?: boolean,
+        rolloff?: number,
+    );
     private mSoundClip;
     private mRolloff;
     private mPlayOnAdded;

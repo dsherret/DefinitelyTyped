@@ -4,7 +4,11 @@ import Ari, { Channel } from "ari-client";
 
 export default async () => {
     try {
-        const client = await Ari.connect("http://ari.js:8088", "user", "secret");
+        const client = await Ari.connect(
+            "http://ari.js:8088",
+            "user",
+            "secret",
+        );
         const ENDPOINT = "PJSIP/sipphone";
 
         // Use once to start the application to ensure this listener will only run
@@ -34,7 +38,9 @@ export default async () => {
 
                 await outgoing.answer();
                 const mixingBridge = await bridge.create({ type: "mixing" });
-                await mixingBridge.addChannel({ channel: [incoming.id, outgoing.id] });
+                await mixingBridge.addChannel({
+                    channel: [incoming.id, outgoing.id],
+                });
             });
 
             const playback = client.Playback();

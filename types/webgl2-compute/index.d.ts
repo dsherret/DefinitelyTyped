@@ -115,17 +115,42 @@ interface WebGL2ComputeRenderingContext extends WebGL2RenderingContext {
         format: number,
     ): void;
 
-    dispatchCompute(num_groups_x: number, num_groups_y: number, num_groups_z: number): void;
+    dispatchCompute(
+        num_groups_x: number,
+        num_groups_y: number,
+        num_groups_z: number,
+    ): void;
     dispatchComputeIndirect(offset: number): void;
 
     drawArraysIndirect(mode: number, offset: number): void;
     drawElementsIndirect(mode: number, type: number, offset: number): void;
 
-    getProgramInterfaceParameter(program: WebGLProgram, programInterface: number, pname: number): any;
-    getProgramResource(program: WebGLProgram, programInterface: number, index: number, props: number): any;
-    getProgramResourceIndex(program: WebGLProgram, programInterface: number, name: string): number;
-    getProgramResourceLocation(program: WebGLProgram, programInterface: number, name: string): any;
-    getProgramResourceName(program: WebGLProgram, programInterface: number, index: number): string;
+    getProgramInterfaceParameter(
+        program: WebGLProgram,
+        programInterface: number,
+        pname: number,
+    ): any;
+    getProgramResource(
+        program: WebGLProgram,
+        programInterface: number,
+        index: number,
+        props: number,
+    ): any;
+    getProgramResourceIndex(
+        program: WebGLProgram,
+        programInterface: number,
+        name: string,
+    ): number;
+    getProgramResourceLocation(
+        program: WebGLProgram,
+        programInterface: number,
+        name: string,
+    ): any;
+    getProgramResourceName(
+        program: WebGLProgram,
+        programInterface: number,
+        index: number,
+    ): string;
 
     memoryBarrier(barriers: number): void;
     memoryBarrierByRegion(barriers: number): void;
@@ -189,7 +214,7 @@ interface WebGL2ComputeRenderingContext extends WebGL2RenderingContext {
 
 declare var WebGL2ComputeRenderingContext: {
     prototype: WebGL2ComputeRenderingContext;
-    new(): WebGL2ComputeRenderingContext;
+    new (): WebGL2ComputeRenderingContext;
 
     // WebGL constants
     readonly ACTIVE_ATTRIBUTES: number; // 35721

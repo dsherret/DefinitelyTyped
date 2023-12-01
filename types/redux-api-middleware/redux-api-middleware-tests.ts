@@ -119,14 +119,17 @@ import {
     createMiddleware(); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
     createMiddleware({}); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
     createMiddleware({ fetch }); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
-    createMiddleware({ ok: res => res.ok }); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
-    createMiddleware({ fetch, ok: res => res.ok }); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
+    createMiddleware({ ok: (res) => res.ok }); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
+    createMiddleware({ fetch, ok: (res) => res.ok }); // $ExpectType Middleware<{}, any, Dispatch<AnyAction>>
 }
 
 {
     // apiMiddleware
     // $ExpectType (next: Dispatch<AnyAction>) => (action: any) => any
-    apiMiddleware({ getState: () => undefined, dispatch: (action: any) => action });
+    apiMiddleware({
+        getState: () => undefined,
+        dispatch: (action: any) => action,
+    });
     // @ts-expect-error
     apiMiddleware();
 }
@@ -201,19 +204,27 @@ import {
     };
 
     store.dispatch(action);
-    store.dispatch(action).then((action: RSAAResultAction<string, number>) => Promise.resolve());
+    store
+        .dispatch(action)
+        .then((action: RSAAResultAction<string, number>) => Promise.resolve());
     store.dispatch(action).then(() => Promise.resolve());
     store
         .dispatch(action)
-        .then(action => (action.error ? Promise.reject() : Promise.resolve(action.payload)))
+        .then((action) =>
+            action.error ? Promise.reject() : Promise.resolve(action.payload),
+        )
         .then((payload: string) => payload);
     store
         .dispatch(action)
-        .then(action => (action.error ? Promise.reject() : Promise.resolve(action.meta)))
+        .then((action) =>
+            action.error ? Promise.reject() : Promise.resolve(action.meta),
+        )
         .then((payload: number) => Promise.resolve());
     store
         .dispatch(action)
-        .then(action => (action.error ? Promise.reject() : Promise.resolve(action.payload)))
+        .then((action) =>
+            action.error ? Promise.reject() : Promise.resolve(action.payload),
+        )
         // @ts-expect-error
         .then((payload: number) => Promise.resolve());
     // @ts-expect-error
@@ -221,17 +232,29 @@ import {
 }
 
 {
-    const requestDescriptor0: RSAARequestTypeDescriptor<number, number, number> = {
+    const requestDescriptor0: RSAARequestTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: "",
         payload: 0,
         meta: 0,
     };
-    const requestDescriptor1: RSAARequestTypeDescriptor<number, number, number> = {
+    const requestDescriptor1: RSAARequestTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
         payload: (action: RSAAAction, state: number) => state,
         meta: (action: RSAAAction, state: number) => state,
     };
-    const requestDescriptor2: RSAARequestTypeDescriptor<number, number, number> = {
+    const requestDescriptor2: RSAARequestTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         // @ts-expect-error
         type: 0,
         // @ts-expect-error
@@ -239,23 +262,39 @@ import {
         // @ts-expect-error
         meta: (action: RSAAAction, state: number) => "",
     };
-    const requestDescriptor3: RSAARequestTypeDescriptor<number, number, number> = {
+    const requestDescriptor3: RSAARequestTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
         payload: (action: RSAAAction, state: number) => Promise.resolve(state),
         meta: (action: RSAAAction, state: number) => Promise.resolve(state),
     };
 
-    const successDescriptor0: RSAASuccessTypeDescriptor<number, number, number> = {
+    const successDescriptor0: RSAASuccessTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: "",
         payload: 0,
         meta: 0,
     };
-    const successDescriptor1: RSAASuccessTypeDescriptor<number, number, number> = {
+    const successDescriptor1: RSAASuccessTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
         payload: (action: RSAAAction, state: number, res: Response) => state,
         meta: (action: RSAAAction, state: number, res: Response) => state,
     };
-    const successDescriptor2: RSAASuccessTypeDescriptor<number, number, number> = {
+    const successDescriptor2: RSAASuccessTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         // @ts-expect-error
         type: 0,
         // @ts-expect-error
@@ -263,23 +302,41 @@ import {
         // @ts-expect-error
         meta: (action: RSAAAction, state: number) => "",
     };
-    const successDescriptor3: RSAASuccessTypeDescriptor<number, number, number> = {
+    const successDescriptor3: RSAASuccessTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
-        payload: (action: RSAAAction, state: number, res: Response) => Promise.resolve(state),
-        meta: (action: RSAAAction, state: number, res: Response) => Promise.resolve(state),
+        payload: (action: RSAAAction, state: number, res: Response) =>
+            Promise.resolve(state),
+        meta: (action: RSAAAction, state: number, res: Response) =>
+            Promise.resolve(state),
     };
 
-    const failureDescriptor0: RSAAFailureTypeDescriptor<number, number, number> = {
+    const failureDescriptor0: RSAAFailureTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: "",
         payload: 0,
         meta: 0,
     };
-    const failureDescriptor1: RSAAFailureTypeDescriptor<number, number, number> = {
+    const failureDescriptor1: RSAAFailureTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
         payload: (action: RSAAAction, state: number, res: Response) => state,
         meta: (action: RSAAAction, state: number, res: Response) => state,
     };
-    const failureDescriptor2: RSAAFailureTypeDescriptor<number, number, number> = {
+    const failureDescriptor2: RSAAFailureTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         // @ts-expect-error
         type: 0,
         // @ts-expect-error
@@ -287,10 +344,16 @@ import {
         // @ts-expect-error
         meta: (action: RSAAAction, state: number) => "",
     };
-    const failureDescriptor3: RSAAFailureTypeDescriptor<number, number, number> = {
+    const failureDescriptor3: RSAAFailureTypeDescriptor<
+        number,
+        number,
+        number
+    > = {
         type: Symbol(),
-        payload: (action: RSAAAction, state: number, res: Response) => Promise.resolve(state),
-        meta: (action: RSAAAction, state: number, res: Response) => Promise.resolve(state),
+        payload: (action: RSAAAction, state: number, res: Response) =>
+            Promise.resolve(state),
+        meta: (action: RSAAAction, state: number, res: Response) =>
+            Promise.resolve(state),
     };
 }
 

@@ -27,7 +27,14 @@ declare const PlantUmlEncoder: {
      * @param puml The PlantUML code that should be encoded.
      * @returns The encoded PlantUML code.
      */
-    encode: (puml: string | Buffer | PlantUmlEncoder.TypedArray | DataView | ArrayBuffer) => string;
+    encode: (
+        puml:
+            | string
+            | Buffer
+            | PlantUmlEncoder.TypedArray
+            | DataView
+            | ArrayBuffer,
+    ) => string;
 
     /**
      * Decodes encoded PlantUML code.

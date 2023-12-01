@@ -26,7 +26,11 @@ declare global {
     /** additional range boost calculation */
     function getLinkAmpRangeBoost(d: IITC.PortalDataDetail): number;
 
-    function getAttackApGain(d: IITC.PortalDataDetail, fieldCount: number, linkCount: number): {
+    function getAttackApGain(
+        d: IITC.PortalDataDetail,
+        fieldCount: number,
+        linkCount: number,
+    ): {
         friendlyAp: number;
         deployCount: number;
         upgradeCount: number;
@@ -41,12 +45,18 @@ declare global {
 
     function fixPortalImageUrl(url: string): string;
 
-    function getPortalModsByType(d: IITC.PortalDataDetail, type: IITC.ModType): IITC.Mod[];
+    function getPortalModsByType(
+        d: IITC.PortalDataDetail,
+        type: IITC.ModType,
+    ): IITC.Mod[];
 
     function getPortalShieldMitigation(d: IITC.PortalDataDetail): number;
     function getPortalLinkDefenseBoost(d: IITC.PortalDataDetail): number;
     function getPortalLinksMitigation(linkCount: number): number;
-    function getPortalMitigationDetails(d: IITC.PortalDataDetail, linkCount: number): {
+    function getPortalMitigationDetails(
+        d: IITC.PortalDataDetail,
+        linkCount: number,
+    ): {
         shields: number;
         links: number;
         linkDefenseBoost: number;

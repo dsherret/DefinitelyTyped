@@ -67,7 +67,7 @@ router().route(spec4);
 const spec5: router.Spec = {
     method: "PUT",
     path: "/user",
-    handler: ctx => {
+    handler: (ctx) => {
         ctx.status = 201;
         ctx.body = ctx.request.body;
     },

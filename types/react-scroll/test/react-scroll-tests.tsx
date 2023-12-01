@@ -42,7 +42,7 @@ const linkTest1 = (
         smooth={true}
         offset={50}
         duration={500}
-        onSetActive={to => {
+        onSetActive={(to) => {
             console.log(to);
         }}
     >
@@ -51,7 +51,15 @@ const linkTest1 = (
 );
 
 const linkTest2 = (
-    <Link activeClass="active" to="test1" spy={true} smooth={true} offset={50} duration={500} delay={1000}>
+    <Link
+        activeClass="active"
+        to="test1"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+        delay={1000}
+    >
         Test 2 (delay)
     </Link>
 );
@@ -116,12 +124,7 @@ const linkTest5 = (
 );
 
 const linkTest6 = (
-    <Link
-        to="target"
-        saveHashHistory={true}
-        spy={true}
-        hashSpy={true}
-    >
+    <Link to="target" saveHashHistory={true} spy={true} hashSpy={true}>
         Test 7 (hash history)
     </Link>
 );
@@ -134,7 +137,7 @@ const linkTest7 = (
         smooth={true}
         offset={50}
         duration={500}
-        onSetActive={to => {
+        onSetActive={(to) => {
             console.log(to);
         }}
     >

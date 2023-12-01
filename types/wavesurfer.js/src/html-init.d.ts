@@ -24,5 +24,10 @@ export interface InitParams {
     /** URL template for the dynamic loading of plugins (default: '//localhost:8080/dist/plugin/wavesurfer.[name].js'). */
     pluginCdnTemplate?: string | undefined;
     /** If set overwrites the default request function, can be used to inject plugins differently. */
-    loadPlugin?: ((pluginName: string, callback: (plugin: WaveSurferPlugin) => void) => void) | undefined;
+    loadPlugin?:
+        | ((
+              pluginName: string,
+              callback: (plugin: WaveSurferPlugin) => void,
+          ) => void)
+        | undefined;
 }

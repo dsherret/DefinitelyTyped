@@ -103,7 +103,9 @@ export declare class Pool<T> {
      * start tasks, return a promise that will be fulfilled after all tasks accomplish if endless is false.
      * @param onProgress a callback that will be triggered every time when a single task is fulfilled.
      */
-    public start(onProgress?: (progress: IProgress) => void): Q.Promise<IResult>;
+    public start(
+        onProgress?: (progress: IProgress) => void,
+    ): Q.Promise<IResult>;
     private _start();
     private _process(data, index);
     private _notifyProgress(index, success, err, retries);

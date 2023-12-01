@@ -1,5 +1,11 @@
 declare namespace objectHash {
-    type NotUndefined = object | string | number | boolean | null | NotUndefined[];
+    type NotUndefined =
+        | object
+        | string
+        | number
+        | boolean
+        | null
+        | NotUndefined[];
 
     /**
      * @see https://github.com/puleos/object-hash#hashsha1value
@@ -36,8 +42,16 @@ declare namespace objectHash {
         | "utf8";
 
     interface Stream {
-        update?(chunk: any, encoding: BufferEncoding, callback: (error?: Error | null) => void): void;
-        write?(chunk: any, encoding: BufferEncoding, callback: (error?: Error | null) => void): void;
+        update?(
+            chunk: any,
+            encoding: BufferEncoding,
+            callback: (error?: Error | null) => void,
+        ): void;
+        write?(
+            chunk: any,
+            encoding: BufferEncoding,
+            callback: (error?: Error | null) => void,
+        ): void;
     }
 
     type HashName =
@@ -137,7 +151,13 @@ declare namespace objectHash {
 /**
  * @see https://github.com/puleos/object-hash#hashvalue-options
  */
-declare function objectHash(object: objectHash.NotUndefined, options?: objectHash.NormalOption): string;
-declare function objectHash(object: objectHash.NotUndefined, options?: objectHash.WithBufferOption): Buffer;
+declare function objectHash(
+    object: objectHash.NotUndefined,
+    options?: objectHash.NormalOption,
+): string;
+declare function objectHash(
+    object: objectHash.NotUndefined,
+    options?: objectHash.WithBufferOption,
+): Buffer;
 
 export = objectHash;

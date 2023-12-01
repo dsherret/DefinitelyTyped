@@ -1,6 +1,11 @@
 import jsonexport = require("jsonexport");
 import jsonexportDist = require("jsonexport/dist");
-import { createReadStream, createWriteStream, ReadStream, WriteStream } from "fs";
+import {
+    createReadStream,
+    createWriteStream,
+    ReadStream,
+    WriteStream,
+} from "fs";
 import { Transform } from "stream";
 
 // No user options
@@ -17,7 +22,11 @@ const userOptions: jsonexport.UserOptions = {
 const c: Transform = jsonexport(userOptions);
 const d: Promise<string> = jsonexport({ key: "value" }, userOptions);
 // $ExpectType void
-jsonexport({ key: "value" }, userOptions, (err: Error, csv: string) => undefined);
+jsonexport(
+    { key: "value" },
+    userOptions,
+    (err: Error, csv: string) => undefined,
+);
 
 // Test pipe
 const readStream: ReadStream = createReadStream("./tslint.json");
@@ -29,7 +38,8 @@ const optWithHandlers: jsonexport.UserOptionsWithHandlers = {
     ...userOptions,
     handleDate: (value: Date, item: string): string => value.toISOString(),
     typeHandlers: {
-        Number: (value: number, index: string, parent: object): string => value.toFixed(2),
+        Number: (value: number, index: string, parent: object): string =>
+            value.toFixed(2),
     },
 };
 const e: Promise<string> = jsonexport({ key: "value" }, optWithHandlers);

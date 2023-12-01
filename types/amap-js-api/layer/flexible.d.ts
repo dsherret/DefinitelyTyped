@@ -14,7 +14,9 @@ declare namespace AMap {
                     x: number,
                     y: number,
                     z: number,
-                    success: (tile: HTMLImageElement | HTMLCanvasElement) => void,
+                    success: (
+                        tile: HTMLImageElement | HTMLCanvasElement,
+                    ) => void,
                     fail: () => void,
                 ): void;
                 /**

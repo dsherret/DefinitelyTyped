@@ -167,7 +167,9 @@ declare namespace formidable {
          *
          * @default null
          */
-        fileWriteStreamHandler?: ((file?: VolatileFile) => Writable) | undefined;
+        fileWriteStreamHandler?:
+            | ((file?: VolatileFile) => Writable)
+            | undefined;
 
         /**
          * when you call the .parse method, the files argument (of the callback) will contain arrays of
@@ -191,7 +193,12 @@ declare namespace formidable {
          *
          * @default undefined
          */
-        filename?: (name: string, ext: string, part: Part, form: Formidable) => string;
+        filename?: (
+            name: string,
+            ext: string,
+            part: Part,
+            form: Formidable,
+        ) => string;
 
         enabledPlugins?: string[] | undefined;
 
@@ -215,8 +222,15 @@ declare namespace formidable {
      * @link https://github.com/node-formidable/formidable#file
      */
     interface FileJSON
-        extends Pick<File, "size" | "filepath" | "originalFilename" | "mimetype" | "hash" | "newFilename">
-    {
+        extends Pick<
+            File,
+            | "size"
+            | "filepath"
+            | "originalFilename"
+            | "mimetype"
+            | "hash"
+            | "newFilename"
+        > {
         length: number;
         mimetype: string | null;
         mtime: Date | null;
@@ -292,10 +306,13 @@ declare namespace formidable {
         value: string;
     }
 
-    type PluginFunction = (formidable: Formidable, options: Partial<Options>) => void;
+    type PluginFunction = (
+        formidable: Formidable,
+        options: Partial<Options>,
+    ) => void;
 
     type MappedParsers = {
-        [P in keyof typeof parsers]: typeof parsers[P];
+        [P in keyof typeof parsers]: (typeof parsers)[P];
     };
 
     type Plugins = ["octetstream", "querystring", "multipart", "json"];

@@ -1,7 +1,10 @@
 declare namespace DBus {
     type busType = "session" | "system";
     function getBus(type: busType): DBusConnection;
-    function registerService(busName: busType, serviceName?: string): DBusService;
+    function registerService(
+        busName: busType,
+        serviceName?: string,
+    ): DBusService;
     interface DBusConnection {
         /* eslint-disable-next-line @definitelytyped/no-unnecessary-generics */
         getInterface<T = AnyInterfaceMethod>(
@@ -12,7 +15,10 @@ declare namespace DBus {
         ): void;
         disconnect(): void;
         reconnect(callback: () => void): void;
-        getUniqueServiceName(serviceName: string, callback: (err: Error | null, uniqueName: string) => void): void;
+        getUniqueServiceName(
+            serviceName: string,
+            callback: (err: Error | null, uniqueName: string) => void,
+        ): void;
     }
 
     interface AnyInterfaceMethod {
@@ -27,9 +33,21 @@ declare namespace DBus {
         objectPath: string;
         interfaceName: string;
 
-        getProperty(name: string, callback: (err: Error | null, name: string) => void): void;
-        setProperty(name: string, value: any, callback: (err: Error | null) => void): void;
-        getProperties(callback: (err: Error | null, properties: { [name: string]: any }) => void): void;
+        getProperty(
+            name: string,
+            callback: (err: Error | null, name: string) => void,
+        ): void;
+        setProperty(
+            name: string,
+            value: any,
+            callback: (err: Error | null) => void,
+        ): void;
+        getProperties(
+            callback: (
+                err: Error | null,
+                properties: { [name: string]: any },
+            ) => void,
+        ): void;
         /**
          * ...args
          * options: {timeout: number}
@@ -60,13 +78,20 @@ declare namespace DBus {
         addMethod(
             method: string,
             opts: { in: string; out: string },
-            handler: (name: string, quality: any, callback: (res: any) => void) => void,
+            handler: (
+                name: string,
+                quality: any,
+                callback: (res: any) => void,
+            ) => void,
         ): void;
-        addProperty(name: string, opts: {
-            type: string;
-            getter: (cb: (val: string) => void) => void;
-            setter?: ((value: any, done: () => void) => void) | undefined;
-        }): void;
+        addProperty(
+            name: string,
+            opts: {
+                type: string;
+                getter: (cb: (val: string) => void) => void;
+                setter?: ((value: any, done: () => void) => void) | undefined;
+            },
+        ): void;
         addSignal(name: string, opts: { types: string[] }): void;
         emitSignal(name: string, ...values: any[]): void;
         update(): void;

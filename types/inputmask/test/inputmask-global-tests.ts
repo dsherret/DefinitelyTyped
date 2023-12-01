@@ -26,7 +26,8 @@ Inputmask({
         opts: Inputmask.Options,
     ) => {},
     onBeforeMask: (value: string, opts: Inputmask.Options) => "processed",
-    onBeforePaste: (pastedValue: string, opts: Inputmask.Options) => pastedValue,
+    onBeforePaste: (pastedValue: string, opts: Inputmask.Options) =>
+        pastedValue,
     onBeforeWrite: undefined,
     onUnMask: (maskedValue: string, unmaskedValue: string) => unmaskedValue,
     showMaskOnFocus: true,
@@ -41,40 +42,22 @@ Inputmask({
     tabThrough: false,
     supportsInputType: ["text", "tel", "url", "password", "search"],
     ignorables: [
-        8,
-        9,
-        13,
-        19,
-        27,
-        33,
-        34,
-        35,
-        36,
-        37,
-        38,
-        39,
-        40,
-        45,
-        46,
-        93,
-        112,
-        113,
-        114,
-        115,
-        116,
-        117,
-        118,
-        119,
-        120,
-        121,
-        122,
-        123,
-        0,
-        229,
+        8, 9, 13, 19, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 93, 112, 113,
+        114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 0, 229,
     ],
     isComplete: (buffer, opts) => true,
-    preValidation: (buffer, pos, c, isSelection, opts, maskset, caretPos, strict) => true,
-    postValidation: (buffer, pos, c, currentResult, opts, maskset, strict) => true,
+    preValidation: (
+        buffer,
+        pos,
+        c,
+        isSelection,
+        opts,
+        maskset,
+        caretPos,
+        strict,
+    ) => true,
+    postValidation: (buffer, pos, c, currentResult, opts, maskset, strict) =>
+        true,
     staticDefinitionSymbol: "*",
     jitMasking: false,
     nullable: true,
@@ -120,7 +103,7 @@ Inputmask({
 
 // roundingFN
 Inputmask("currency", {
-    roundingFN: n => n / 2,
+    roundingFN: (n) => n / 2,
 }).mask("");
 Inputmask("currency", {
     roundingFN: Math.floor,
@@ -216,7 +199,9 @@ Inputmask.extendDefinitions({
     z: {
         validator: (chrs: string, maskset: any, pos: number) => {
             const valExp3 = new RegExp("25[0-5]|2[0-4][0-9]|[01][0-9][0-9]");
-            return valExp3.test(maskset.buffer[pos - 2] + maskset.buffer[pos - 1] + chrs);
+            return valExp3.test(
+                maskset.buffer[pos - 2] + maskset.buffer[pos - 1] + chrs,
+            );
         },
         definitionSymbol: "i",
     },

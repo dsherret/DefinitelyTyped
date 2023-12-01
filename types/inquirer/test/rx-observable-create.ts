@@ -35,6 +35,6 @@ const observe = Observable.create((obs: Observer<DistinctQuestion>) => {
     obs.complete();
 });
 
-inquirer.prompt(observe).then(answers => {
+inquirer.prompt(observe).then((answers) => {
     console.log(JSON.stringify(answers, null, "  "));
 });

@@ -14,7 +14,10 @@ declare function KCLProcess(
 declare namespace KCLProcess {
     type Callback = () => void;
 
-    type CheckpointCallback = (error: string | undefined, checkpointedSequenceNumber: string) => void;
+    type CheckpointCallback = (
+        error: string | undefined,
+        checkpointedSequenceNumber: string,
+    ) => void;
 
     interface Checkpointer {
         /**
@@ -67,7 +70,10 @@ declare namespace KCLProcess {
          * @param completeCallback - The callback that must be invoked
          *          once the initialization operation is complete.
          */
-        initialize(initializeInput: InitializeInput, completeCallback: Callback): void;
+        initialize(
+            initializeInput: InitializeInput,
+            completeCallback: Callback,
+        ): void;
 
         /**
          * Called by KCL with a list of records to be processed and checkpointed.
@@ -85,7 +91,10 @@ declare namespace KCLProcess {
          *             once all records are processed and checkpoint (optional) is
          *             complete.
          */
-        processRecords(processRecordsInput: ProcessRecordsInput, completeCallback: Callback): void;
+        processRecords(
+            processRecordsInput: ProcessRecordsInput,
+            completeCallback: Callback,
+        ): void;
 
         /**
          * Called by the KCL to indicate that this record processor should shut down.
@@ -97,7 +106,10 @@ declare namespace KCLProcess {
          * @param completeCallback  The callback must be invoked once lease
          *             lost operations are completed.
          */
-        leaseLost(leaseLostInput: LeaseLossInput, completeCallback: Callback): void;
+        leaseLost(
+            leaseLostInput: LeaseLossInput,
+            completeCallback: Callback,
+        ): void;
         /**
          * Called by the KCL to indicate that this record processor should shutdown.
          * After the shard ended operation is complete, there will not be any more calls to
@@ -109,7 +121,10 @@ declare namespace KCLProcess {
          * @param completeCallback      The callback must be invoked once shard
          *               ended operations are completed.
          */
-        shardEnded(shardEndedInput: ShardEndedInput, completeCallback: Callback): void;
+        shardEnded(
+            shardEndedInput: ShardEndedInput,
+            completeCallback: Callback,
+        ): void;
     }
 
     interface KCLInput {

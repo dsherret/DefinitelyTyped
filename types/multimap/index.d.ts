@@ -45,7 +45,10 @@ declare class Multimap<K = any, V = any> {
     /**
      * @return all the keys in the map
      */
-    keys(): { [Symbol.iterator](): IterableIterator<K>; next: () => { value: K; done: boolean } };
+    keys(): {
+        [Symbol.iterator](): IterableIterator<K>;
+        next: () => { value: K; done: boolean };
+    };
 
     /**
      * @param key
@@ -56,7 +59,10 @@ declare class Multimap<K = any, V = any> {
     /**
      * @return all the values in the map
      */
-    values(): { [Symbol.iterator](): IterableIterator<V>; next: () => { value: V; done: boolean } };
+    values(): {
+        [Symbol.iterator](): IterableIterator<V>;
+        next: () => { value: V; done: boolean };
+    };
 }
 
 export = Multimap;

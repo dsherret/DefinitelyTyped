@@ -10,7 +10,9 @@ export interface ButtonPropsCommon extends FlexboxPropTypes {
     isDropdown?: boolean | undefined;
     isArrowOnly?: boolean | undefined;
 }
-export interface ButtonProps extends ButtonPropsCommon, React.HTMLAttributes<HTMLDivElement> {
+export interface ButtonProps
+    extends ButtonPropsCommon,
+        React.HTMLAttributes<HTMLDivElement> {
     color?: ButtonColors | undefined;
 }
 /**
@@ -21,7 +23,9 @@ export interface ButtonProps extends ButtonPropsCommon, React.HTMLAttributes<HTM
  * @returns {Object}
  */
 export declare const Button: React.FunctionComponent<ButtonProps>;
-export interface LinkProps extends ButtonPropsCommon, React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkProps
+    extends ButtonPropsCommon,
+        React.AnchorHTMLAttributes<HTMLAnchorElement> {
     color?: ButtonColors | undefined;
 }
 /**

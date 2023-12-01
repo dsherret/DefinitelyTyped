@@ -18,26 +18,38 @@ lgtv.on("connect", () => {
     lgtv.request(`ssap://media.controls/play`);
 
     // Request with payload
-    lgtv.request("ssap://system.notifications/createToast", { message: "Hello World!" });
+    lgtv.request("ssap://system.notifications/createToast", {
+        message: "Hello World!",
+    });
 
     // Request with callback
-    lgtv.request("ssap://com.webos.applicationManager/getForegroundAppInfo", (error, result) => {
-        console.log(result);
-    });
+    lgtv.request(
+        "ssap://com.webos.applicationManager/getForegroundAppInfo",
+        (error, result) => {
+            console.log(result);
+        },
+    );
 
     // Request with payload and callback
-    lgtv.request("ssap://tv/openChannel", { channelId: "1" }, (error, result) => {
-        console.log(result);
-    });
+    lgtv.request(
+        "ssap://tv/openChannel",
+        { channelId: "1" },
+        (error, result) => {
+            console.log(result);
+        },
+    );
 
     // getSocket with callback
-    lgtv.getSocket("ssap://com.webos.service.networkinput/getPointerInputSocket", (error, socket) => {
-        if (!error) {
-            pointerSocket = socket;
-            pointerSocket.send("button", { name: "HOME" });
-            pointerSocket.send("click");
-        }
-    });
+    lgtv.getSocket(
+        "ssap://com.webos.service.networkinput/getPointerInputSocket",
+        (error, socket) => {
+            if (!error) {
+                pointerSocket = socket;
+                pointerSocket.send("button", { name: "HOME" });
+                pointerSocket.send("click");
+            }
+        },
+    );
 });
 
 lgtv.on("prompt", () => {

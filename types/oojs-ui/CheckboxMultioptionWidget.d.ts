@@ -9,7 +9,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.CheckboxMultioptionWidget
      */
-    interface CheckboxMultioptionWidget extends CheckboxMultioptionWidget.Props, CheckboxMultioptionWidget.Prototype {}
+    interface CheckboxMultioptionWidget
+        extends CheckboxMultioptionWidget.Props,
+            CheckboxMultioptionWidget.Prototype {}
 
     namespace CheckboxMultioptionWidget {
         type ConfigOptions = MultioptionWidget.ConfigOptions;
@@ -27,7 +29,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): CheckboxMultioptionWidget;
+            new (config?: ConfigOptions): CheckboxMultioptionWidget;
             prototype: Prototype;
             static: Static;
             super: MultioptionWidget.Constructor;

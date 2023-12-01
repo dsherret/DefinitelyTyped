@@ -1,9 +1,23 @@
-import { createMacro, MacroError, MacroHandler, MacroParams, Options, References } from "babel-plugin-macros";
+import {
+    createMacro,
+    MacroError,
+    MacroHandler,
+    MacroParams,
+    Options,
+    References,
+} from "babel-plugin-macros";
 
 const macro = createMacro(
-    ({ references, state, babel, config, isBabelMacrosCall, source }: MacroParams) => {
+    ({
+        references,
+        state,
+        babel,
+        config,
+        isBabelMacrosCall,
+        source,
+    }: MacroParams) => {
         Object.keys(references).forEach(() => {});
-        references.default.forEach(reference => {
+        references.default.forEach((reference) => {
             reference; // $ExpectType NodePath<Node>
         });
 
@@ -11,7 +25,7 @@ const macro = createMacro(
         stateType.key = "macros";
 
         const CODE = "example code";
-        babel.parse(CODE, err => {
+        babel.parse(CODE, (err) => {
             err; // $ExpectType Error | null
         });
 

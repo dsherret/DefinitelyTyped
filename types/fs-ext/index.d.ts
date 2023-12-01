@@ -11,7 +11,11 @@ export function flock(
     flags: "sh" | "ex" | "shnb" | "exnb" | "un",
     callback: (err: NodeJS.ErrnoException | null) => void,
 ): void;
-export function flock(fd: number, flags: number, callback: (err: NodeJS.ErrnoException | null) => void): void;
+export function flock(
+    fd: number,
+    flags: number,
+    callback: (err: NodeJS.ErrnoException | null) => void,
+): void;
 
 /**
  * Synchronous flock(2). Throws an exception on error.
@@ -19,7 +23,10 @@ export function flock(fd: number, flags: number, callback: (err: NodeJS.ErrnoExc
  * @param flags Flags can be 'sh', 'ex', 'shnb', 'exnb', 'un' and correspond to the various LOCK_SH,
  *      LOCK_EX, LOCK_SH | LOCK_NB, etc.
  */
-export function flockSync(fd: number, flags: "sh" | "ex" | "shnb" | "exnb" | "un"): void;
+export function flockSync(
+    fd: number,
+    flags: "sh" | "ex" | "shnb" | "exnb" | "un",
+): void;
 export function flockSync(fd: number, flags: number): void;
 
 /**
@@ -64,7 +71,11 @@ export function fcntl(
  *      All other commands
  *          Zero.
  */
-export function fcntlSync(fd: number, cmd: "getfd" | "setfd" | "setlk" | "setlkw" | "getlk", arg?: number): number;
+export function fcntlSync(
+    fd: number,
+    cmd: "getfd" | "setfd" | "setlk" | "setlkw" | "getlk",
+    arg?: number,
+): number;
 export function fcntlSync(fd: number, cmd: number, arg?: number): number;
 
 /**
@@ -99,8 +110,13 @@ export function seekSync(fd: number, offset: number, whence: number): number;
  * Asynchronous/synchronous statvfs(2).
  * @param path Pathname of any file within the mounted file system. Default is `/`.
  */
-export function statVFS(path: string, callback: (err: NodeJS.ErrnoException | null, stat: StatFVS) => void): void;
-export function statVFS(callback: (err: NodeJS.ErrnoException | null, stat: StatFVS) => void): void;
+export function statVFS(
+    path: string,
+    callback: (err: NodeJS.ErrnoException | null, stat: StatFVS) => void,
+): void;
+export function statVFS(
+    callback: (err: NodeJS.ErrnoException | null, stat: StatFVS) => void,
+): void;
 export function statVFS(path?: string): StatFVS;
 
 /**

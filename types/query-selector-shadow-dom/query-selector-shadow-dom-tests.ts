@@ -1,4 +1,8 @@
-import { collectAllElementsDeep, querySelectorAllDeep, querySelectorDeep } from "query-selector-shadow-dom";
+import {
+    collectAllElementsDeep,
+    querySelectorAllDeep,
+    querySelectorDeep,
+} from "query-selector-shadow-dom";
 
 // $ExpectType HTMLElement | null
 const doc = querySelectorDeep("document");

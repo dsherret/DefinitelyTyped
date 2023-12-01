@@ -10,7 +10,11 @@
  * @param args - The arguments to be passed to the function.
  * @returns The timer id.
  */
-export function setTimeout(functionRef: (...args: any[]) => void, delay: number, ...args: any[]): TimeoutID;
+export function setTimeout(
+    functionRef: (...args: any[]) => void,
+    delay: number,
+    ...args: any[]
+): TimeoutID;
 
 /**
  * Cancels a timeout previously set with setTimeout().
@@ -27,7 +31,11 @@ export function clearTimeout(timeoutID: TimeoutID): void;
  * @param args - The arguments to be passed to the function.
  * @returns The interval id.
  */
-export function setInterval(functionRef: (...args: any[]) => void, delay: number, ...args: any[]): IntervalID;
+export function setInterval(
+    functionRef: (...args: any[]) => void,
+    delay: number,
+    ...args: any[]
+): IntervalID;
 
 /**
  * Cancels a interval previously set with setInterval().

@@ -16,7 +16,11 @@ declare class Socket extends EventEmitter {
     setCommandHandlers(handlers: Socket.CommandHandlers): void;
     setUnknownCommandHandler(handler: () => void): void;
 
-    sendFrame(command: string, headers?: any, streamOptions?: WritableOptions): Writable;
+    sendFrame(
+        command: string,
+        headers?: any,
+        streamOptions?: WritableOptions,
+    ): Writable;
 
     getHeartbeat(): Socket.Heartbeat;
     setHeartbeat(heartbeat: Socket.Heartbeat): void;

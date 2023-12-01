@@ -8,7 +8,9 @@ export default class Service extends EmberObject {}
  */
 export function inject(): ComputedProperty<Service>; // @inject() foo, foo: inject()
 export function inject(target: object, propertyKey: string | symbol): void; // @inject foo
-export function inject<K extends keyof Registry>(name: K): ComputedProperty<Registry[K]>; // @inject('store') foo      @inject() foo
+export function inject<K extends keyof Registry>(
+    name: K,
+): ComputedProperty<Registry[K]>; // @inject('store') foo      @inject() foo
 
 /**
  * Creates a property that lazily looks up a service in the container. There
@@ -16,7 +18,9 @@ export function inject<K extends keyof Registry>(name: K): ComputedProperty<Regi
  */
 export function service(): ComputedProperty<Service>; // @service() foo, foo: service()
 export function service(target: object, propertyKey: string | symbol): void; // @service foo
-export function service<K extends keyof Registry>(name: K): ComputedProperty<Registry[K]>; // @service('store') foo      @service() foo
+export function service<K extends keyof Registry>(
+    name: K,
+): ComputedProperty<Registry[K]>; // @service('store') foo      @service() foo
 
 // A type registry for Ember `Service`s. Meant to be declaration-merged so
 // string lookups resolve to the correct type.

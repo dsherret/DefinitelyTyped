@@ -24,7 +24,10 @@ class AccessTokenImpl implements AccessToken {
     id: string;
     userId: string;
 
-    static findOne(token: AccessToken, callback: (token: AccessTokenImpl, err?: Error) => void): void {
+    static findOne(
+        token: AccessToken,
+        callback: (token: AccessTokenImpl, err?: Error) => void,
+    ): void {
         callback(new AccessTokenImpl(), undefined);
     }
 
@@ -35,7 +38,10 @@ class AccessTokenImpl implements AccessToken {
 
 class UserImpl implements User {
     id: string;
-    static findOne(user: User, callback: (user: UserImpl, err?: Error) => void): void {
+    static findOne(
+        user: User,
+        callback: (user: UserImpl, err?: Error) => void,
+    ): void {
         callback(new UserImpl(), undefined);
     }
 }
@@ -83,49 +89,56 @@ passport.use(
 );
 
 passport.use(
-    new AuthTokenStrategy({ passReqToCallback: true }, (req, token: any, done: any) => {
-        AccessTokenImpl.findOne(
-            {
-                id: token,
-            },
-            (accessToken, error) => {
-                if (error) {
-                    return done(error);
-                }
-
-                if (accessToken) {
-                    if (!token.verifyToken(accessToken)) {
-                        return done(null, false);
+    new AuthTokenStrategy(
+        { passReqToCallback: true },
+        (req, token: any, done: any) => {
+            AccessTokenImpl.findOne(
+                {
+                    id: token,
+                },
+                (accessToken, error) => {
+                    if (error) {
+                        return done(error);
                     }
 
-                    UserImpl.findOne(
-                        {
-                            id: accessToken.userId,
-                        },
-                        (error, user) => {
-                            if (error) {
-                                return done(error);
-                            }
+                    if (accessToken) {
+                        if (!token.verifyToken(accessToken)) {
+                            return done(null, false);
+                        }
 
-                            if (!user) {
-                                return done(null, false);
-                            }
+                        UserImpl.findOne(
+                            {
+                                id: accessToken.userId,
+                            },
+                            (error, user) => {
+                                if (error) {
+                                    return done(error);
+                                }
 
-                            return done(null, user);
-                        },
-                    );
-                } else {
-                    return done(null);
-                }
-            },
-        );
-    }),
+                                if (!user) {
+                                    return done(null, false);
+                                }
+
+                                return done(null, user);
+                            },
+                        );
+                    } else {
+                        return done(null);
+                    }
+                },
+            );
+        },
+    ),
 );
 
 const app = new Koa();
 const route = new KoaRouter<Koa.DefaultState, Koa.Context>();
 // Sample from https://github.com/mbell8903/passport-auth-token#authenticate-requests
 app.use(route.routes());
-route.post("/login", passport.authenticate("authtoken", { session: false, optional: false }), async (ctx, next) => {
-    await next();
-});
+route.post(
+    "/login",
+    passport.authenticate("authtoken", { session: false, optional: false }),
+    async (ctx, next) => {
+        await next();
+    },
+);

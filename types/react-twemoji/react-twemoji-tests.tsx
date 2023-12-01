@@ -1,7 +1,7 @@
 import * as React from "react";
 import Twemoji from "react-twemoji";
 
-const ReactTwemojiTests: React.FC = _ => (
+const ReactTwemojiTests: React.FC = (_) => (
     <div>
         <Twemoji>
             <p>No params</p>

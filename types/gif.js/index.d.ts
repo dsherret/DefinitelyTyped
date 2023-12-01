@@ -39,7 +39,11 @@ declare class GIF extends EventEmitter {
     constructor(options?: GIF.Options);
 
     addFrame(
-        image: CanvasImageSource | CanvasRenderingContext2D | WebGLRenderingContext | ImageData,
+        image:
+            | CanvasImageSource
+            | CanvasRenderingContext2D
+            | WebGLRenderingContext
+            | ImageData,
         options?: GIF.AddFrameOptions,
     ): void;
 
@@ -47,11 +51,17 @@ declare class GIF extends EventEmitter {
     setOptions(options: GIF.Options): void;
 
     on(event: "abort" | "start", listener: () => void): this;
-    on(event: "finished", listener: (blob: Blob, data: Uint8Array) => void): this;
+    on(
+        event: "finished",
+        listener: (blob: Blob, data: Uint8Array) => void,
+    ): this;
     on(event: "progress", listener: (percent: number) => void): this;
 
     once(event: "abort" | "start", listener: () => void): this;
-    once(event: "finished", listener: (blob: Blob, data: Uint8Array) => void): this;
+    once(
+        event: "finished",
+        listener: (blob: Blob, data: Uint8Array) => void,
+    ): this;
     once(event: "progress", listener: (percent: number) => void): this;
 
     render(): void;

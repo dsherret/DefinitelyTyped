@@ -23,7 +23,10 @@ export interface Renderable {
 
     renderToString(data?: any): string;
 
-    renderToString(data: any, callback: (err: Error | null, result: string) => void): undefined;
+    renderToString(
+        data: any,
+        callback: (err: Error | null, result: string) => void,
+    ): undefined;
 
     renderSync(data?: any): RenderResult;
 
@@ -48,7 +51,12 @@ export default interface Template extends Renderable {
 
     (path: string, renderFunc: any, options: any): Template;
 
-    createOut(globalData?: any, writer?: any, parentOut?: any, buffer?: any): AsyncStream;
+    createOut(
+        globalData?: any,
+        writer?: any,
+        parentOut?: any,
+        buffer?: any,
+    ): AsyncStream;
 
     stream(data: any): Readable;
 }

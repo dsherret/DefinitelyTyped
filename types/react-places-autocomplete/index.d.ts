@@ -22,18 +22,33 @@ export interface Suggestion {
 export interface PropTypes {
     onChange?: ((value: string) => void) | undefined;
     value?: string | undefined;
-    onError?: ((status: string, clearSuggestion: () => void) => void) | undefined;
+    onError?:
+        | ((status: string, clearSuggestion: () => void) => void)
+        | undefined;
     onSelect?: ((address: string, placeID: string) => void) | undefined;
-    searchOptions?: {
-        bounds?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | undefined;
-        componentRestrictions?: google.maps.places.ComponentRestrictions | undefined;
-        location?: google.maps.LatLng | google.maps.LatLngLiteral | undefined;
-        offset?: number | string | undefined;
-        radius?: number | string | undefined;
-        sessionToken?: any;
-        types?: string[] | undefined;
-        locationRestriction?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | undefined;
-    } | undefined;
+    searchOptions?:
+        | {
+              bounds?:
+                  | google.maps.LatLngBounds
+                  | google.maps.LatLngBoundsLiteral
+                  | undefined;
+              componentRestrictions?:
+                  | google.maps.places.ComponentRestrictions
+                  | undefined;
+              location?:
+                  | google.maps.LatLng
+                  | google.maps.LatLngLiteral
+                  | undefined;
+              offset?: number | string | undefined;
+              radius?: number | string | undefined;
+              sessionToken?: any;
+              types?: string[] | undefined;
+              locationRestriction?:
+                  | google.maps.LatLngBounds
+                  | google.maps.LatLngBoundsLiteral
+                  | undefined;
+          }
+        | undefined;
     debounce?: number | undefined;
     highlightFirstSuggestion?: boolean | undefined;
     shouldFetchSuggestions?: boolean | undefined;
@@ -42,7 +57,9 @@ export interface PropTypes {
         opts: Readonly<{
             loading: boolean;
             suggestions: readonly Suggestion[];
-            getInputProps: <InputProps extends {}>(options?: InputProps) => {
+            getInputProps: <InputProps extends {}>(
+                options?: InputProps,
+            ) => {
                 type: "text";
                 autoComplete: "off";
                 role: "combobox";
@@ -55,7 +72,10 @@ export interface PropTypes {
                 value: string | undefined;
                 onChange: (ev: { target: { value: string } }) => void;
             } & InputProps;
-            getSuggestionItemProps: <SuggestionProps extends {}>(suggestion: Suggestion, options?: SuggestionProps) => {
+            getSuggestionItemProps: <SuggestionProps extends {}>(
+                suggestion: Suggestion,
+                options?: SuggestionProps,
+            ) => {
                 key: number;
                 id: string | undefined;
                 role: "option";
@@ -71,10 +91,16 @@ export interface PropTypes {
     ) => React.ReactNode;
 }
 
-export function geocodeByAddress(address: string): Promise<google.maps.GeocoderResult[]>;
+export function geocodeByAddress(
+    address: string,
+): Promise<google.maps.GeocoderResult[]>;
 
-export function geocodeByPlaceId(placeId: string): Promise<google.maps.GeocoderResult[]>;
+export function geocodeByPlaceId(
+    placeId: string,
+): Promise<google.maps.GeocoderResult[]>;
 
-export function getLatLng(results: google.maps.GeocoderResult): Promise<google.maps.LatLngLiteral>;
+export function getLatLng(
+    results: google.maps.GeocoderResult,
+): Promise<google.maps.LatLngLiteral>;
 
 export default class PlacesAutocomplete extends React.Component<PropTypes> {}

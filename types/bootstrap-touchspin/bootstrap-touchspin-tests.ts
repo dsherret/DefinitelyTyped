@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     // Example 1 from http://www.virtuosoft.eu/code/bootstrap-touchspin/
     $("input[name='demo1']").TouchSpin({
         min: 0,

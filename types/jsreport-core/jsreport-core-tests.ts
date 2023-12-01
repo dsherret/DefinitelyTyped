@@ -22,15 +22,20 @@ const jsreport = JsReport({
         dataDirectory: "data/storage",
     },
 });
-jsreport.init().then(() => {
-    return jsreport.render(request).then((resp) => {
-        // prints pdf with headline Hello world
-        console.log(resp.content.toString());
+jsreport
+    .init()
+    .then(() => {
+        return jsreport.render(request).then((resp) => {
+            // prints pdf with headline Hello world
+            console.log(resp.content.toString());
+        });
+    })
+    .catch((e) => {
+        console.log(e);
     });
-}).catch((e) => {
-    console.log(e);
-});
 
 const store = jsreport.documentStore;
-store.registerEntitySet("UserType", { test: { type: "Edm.String", key: true } });
+store.registerEntitySet("UserType", {
+    test: { type: "Edm.String", key: true },
+});
 store.init();

@@ -5,7 +5,11 @@ import * as passport from "passport";
 import { Strategy } from "passport-beam";
 
 var User = {
-    findOrCreate(id: string, provider: string, callback: (err: Error, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: Error, user: any) => void,
+    ): void {
         callback(null, { username: "Dany" });
     },
 };

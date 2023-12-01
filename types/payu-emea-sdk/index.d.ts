@@ -12,8 +12,12 @@ declare namespace payu {
     type tokenType = "SINGLE" | "SINGLE_LONGTERM" | "MULTI";
     interface PayU {
         secureForms(options?: SecureFormsOptions): SecureForms;
-        tokenize(type?: tokenType): Promise<TokenizeResultSuccess | TokenizeResultError>;
-        sendCvv(refReqId: string): Promise<SendCvvResultSuccess | SendCvvResultError>;
+        tokenize(
+            type?: tokenType,
+        ): Promise<TokenizeResultSuccess | TokenizeResultError>;
+        sendCvv(
+            refReqId: string,
+        ): Promise<SendCvvResultSuccess | SendCvvResultError>;
         extractRefReqId(input: string): string;
     }
 
@@ -26,7 +30,13 @@ declare namespace payu {
     interface FontOptions {
         family: string;
         src: string;
-        display?: "auto" | "block" | "swap" | "fallback" | "optional" | undefined;
+        display?:
+            | "auto"
+            | "block"
+            | "swap"
+            | "fallback"
+            | "optional"
+            | undefined;
         style?: "normal" | "italic" | "oblique" | undefined;
         weight?: "normal" | "bold" | fontWeightNumber | undefined;
         unicodeRange?: string | undefined;
@@ -45,31 +55,49 @@ declare namespace payu {
         cardIcon?: boolean | undefined;
     }
 
-    type fontWeight = "normal" | "bold" | "lighter" | "bolder" | "inherit" | "initial" | "unset" | fontWeightNumber;
+    type fontWeight =
+        | "normal"
+        | "bold"
+        | "lighter"
+        | "bolder"
+        | "inherit"
+        | "initial"
+        | "unset"
+        | fontWeightNumber;
     interface StyleOptions {
-        basic?: {
-            fontColor?: string | undefined;
-            fontSize?: string | undefined;
-            fontFamily?: string | undefined;
-            fontWeight?: fontWeight | undefined;
-            letterSpacing?: string | undefined;
-        } | undefined;
-        invalid?: {
-            fontColor?: string | undefined;
-            fontWeight?: fontWeight | undefined;
-        } | undefined;
-        focus?: {
-            fontColor?: string | undefined;
-            fontWeight?: fontWeight | undefined;
-        } | undefined;
-        placeholder?: {
-            fontColor?: string | undefined;
-            fontWeight?: fontWeight | undefined;
-        } | undefined;
-        disabled?: {
-            fontColor?: string | undefined;
-            fontWeight?: fontWeight | undefined;
-        } | undefined;
+        basic?:
+            | {
+                  fontColor?: string | undefined;
+                  fontSize?: string | undefined;
+                  fontFamily?: string | undefined;
+                  fontWeight?: fontWeight | undefined;
+                  letterSpacing?: string | undefined;
+              }
+            | undefined;
+        invalid?:
+            | {
+                  fontColor?: string | undefined;
+                  fontWeight?: fontWeight | undefined;
+              }
+            | undefined;
+        focus?:
+            | {
+                  fontColor?: string | undefined;
+                  fontWeight?: fontWeight | undefined;
+              }
+            | undefined;
+        placeholder?:
+            | {
+                  fontColor?: string | undefined;
+                  fontWeight?: fontWeight | undefined;
+              }
+            | undefined;
+        disabled?:
+            | {
+                  fontColor?: string | undefined;
+                  fontWeight?: fontWeight | undefined;
+              }
+            | undefined;
     }
 
     interface PlaceHolderOptions {
@@ -83,7 +111,10 @@ declare namespace payu {
         render(selector: string): SecureForm;
         update(options: SecureFormOptions): SecureForm;
         on(event: eventTypes, handler: () => void): SecureForm;
-        on(event: "change", handler: (body: SecureFormChangeResponse) => void): SecureForm;
+        on(
+            event: "change",
+            handler: (body: SecureFormChangeResponse) => void,
+        ): SecureForm;
         clear(): SecureForm;
         focus(): SecureForm;
         remove(): SecureForm;
@@ -107,9 +138,11 @@ declare namespace payu {
         type: "validation" | "technical";
         code: SecureFormErrorCode;
         message: string;
-        parameters?: {
-            error: string;
-        } | undefined;
+        parameters?:
+            | {
+                  error: string;
+              }
+            | undefined;
         source?: secureFormType | undefined;
     }
 

@@ -6,7 +6,11 @@ import BootstrapTable, {
     HeaderFormatter,
 } from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import ToolkitProvider, { CSVExport, InjectedSearchProps, Search } from "react-bootstrap-table2-toolkit";
+import ToolkitProvider, {
+    CSVExport,
+    InjectedSearchProps,
+    Search,
+} from "react-bootstrap-table2-toolkit";
 import { render } from "react-dom";
 
 interface Product {
@@ -31,7 +35,11 @@ const products: Product[] = [
     },
 ];
 
-const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, components) => {
+const priceHeaderFormatter: HeaderFormatter<Product> = (
+    column,
+    colIndex,
+    components,
+) => {
     return (
         <div>
             {column.text}
@@ -41,7 +49,11 @@ const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, compon
     );
 };
 
-const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (cell, row, rowIndex) => {
+const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (
+    cell,
+    row,
+    rowIndex,
+) => {
     return (
         <span>
             {rowIndex} - {cell}
@@ -85,7 +97,10 @@ const productColumns: Array<ColumnDescription<Product>> = [
 const CustomSearch = (props: InjectedSearchProps) => {
     return (
         <span>
-            <input value={props.searchText} onChange={e => props.onSearch(e.currentTarget.value)} />
+            <input
+                value={props.searchText}
+                onChange={(e) => props.onSearch(e.currentTarget.value)}
+            />
             <button onClick={props.onClear}>Clear Search</button>
         </span>
     );
@@ -96,7 +111,10 @@ render(
         {({ baseProps, searchProps }) => (
             <>
                 <CustomSearch {...searchProps} />
-                <BootstrapTable {...baseProps} pagination={paginationFactory({ sizePerPage: 10, page: 1 })} />
+                <BootstrapTable
+                    {...baseProps}
+                    pagination={paginationFactory({ sizePerPage: 10, page: 1 })}
+                />
             </>
         )}
     </ToolkitProvider>,
@@ -135,7 +153,7 @@ const csvColumns: Array<ColumnDescription<Product>> = [
         text: "Product Price",
         headerFormatter: priceHeaderFormatter,
         csvType: Number,
-        csvFormatter: value => value,
+        csvFormatter: (value) => value,
         csvText: "Price",
         csvExport: true,
     },
@@ -160,7 +178,10 @@ render(
         {({ baseProps, searchProps }) => (
             <>
                 <CustomSearch {...searchProps} />
-                <BootstrapTable {...baseProps} pagination={paginationFactory({ sizePerPage: 10, page: 1 })} />
+                <BootstrapTable
+                    {...baseProps}
+                    pagination={paginationFactory({ sizePerPage: 10, page: 1 })}
+                />
             </>
         )}
     </ToolkitProvider>,
@@ -174,7 +195,12 @@ render(
 const { SearchBar, ClearSearchButton } = Search;
 
 render(
-    <ToolkitProvider keyField="id" data={products} columns={productColumns} search>
+    <ToolkitProvider
+        keyField="id"
+        data={products}
+        columns={productColumns}
+        search
+    >
         {({ baseProps, searchProps }) => (
             <>
                 <SearchBar {...searchProps} />
@@ -193,7 +219,12 @@ render(
 const { ExportCSVButton } = CSVExport;
 
 render(
-    <ToolkitProvider keyField="id" data={products} columns={productColumns} search>
+    <ToolkitProvider
+        keyField="id"
+        data={products}
+        columns={productColumns}
+        search
+    >
         {({ baseProps, csvProps }) => (
             <>
                 <ExportCSVButton {...csvProps}>Export</ExportCSVButton>

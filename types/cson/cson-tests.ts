@@ -12,7 +12,7 @@ let obj: any = cson.parse(data);
 
 obj = cson.parseCSONString(data);
 
-obj = cson.parseJSONString("{\"hello\": \"world\"}");
+obj = cson.parseJSONString('{"hello": "world"}');
 
 obj = cson.parseString("hello: 'world'");
 

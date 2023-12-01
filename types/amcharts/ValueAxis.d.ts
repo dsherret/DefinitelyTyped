@@ -61,7 +61,11 @@ export default class ValueAxis extends AxisBase {
      * labelFunction(valueText, date, valueAxis)
      * Your function should return string.
      */
-    labelFunction(value: number, valueText: string, valueAxis: ValueAxis): string;
+    labelFunction(
+        value: number,
+        valueText: string,
+        valueAxis: ValueAxis,
+    ): string;
     labelFunction(valueText: string, data: Date, valueAxis: ValueAxis): string;
     /**
      * Specifies if this value axis' scale should be logarithmic.
@@ -233,14 +237,12 @@ export default class ValueAxis extends AxisBase {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                type: string;
-                startValue?: Date | undefined;
-                endValue?: Date | undefined;
-                chart: AmChart;
-            },
-        ) => void,
+        handler: (e: {
+            type: string;
+            startValue?: Date | undefined;
+            endValue?: Date | undefined;
+            chart: AmChart;
+        }) => void,
     ): void;
 
     /**

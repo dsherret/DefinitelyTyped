@@ -29,7 +29,7 @@ function testErrorHandlingCustomErrorMessage(): void {
     // be rendered when parsing fails:
     <BlockMath
         math="\\int_{"
-        renderError={error => {
+        renderError={(error) => {
             return <b>Fail: {error.name}</b>;
         }}
     />;

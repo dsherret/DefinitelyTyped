@@ -26,6 +26,7 @@ stringify(
         query: { third: "3", first: "1", fourth: "4", second: "2" },
     },
     {
-        compareFunction: (a, b) => (order.indexOf(a) > order.indexOf(b) ? 1 : -1),
+        compareFunction: (a, b) =>
+            order.indexOf(a) > order.indexOf(b) ? 1 : -1,
     },
 );

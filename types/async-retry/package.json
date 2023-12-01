@@ -1,32 +1,32 @@
 {
-    "private": true,
-    "name": "@types/async-retry",
-    "version": "1.4.9999",
-    "projects": [
-        "https://github.com/vercel/async-retry"
-    ],
-    "dependencies": {
-        "@types/retry": "*"
+  "private": true,
+  "name": "@types/async-retry",
+  "version": "1.4.9999",
+  "projects": [
+    "https://github.com/vercel/async-retry"
+  ],
+  "dependencies": {
+    "@types/retry": "*"
+  },
+  "devDependencies": {
+    "@types/async-retry": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Albert Wu",
+      "githubUsername": "albertywu"
     },
-    "devDependencies": {
-        "@types/async-retry": "workspace:."
+    {
+      "name": "Pablo Rodríguez",
+      "githubUsername": "MeLlamoPablo"
     },
-    "owners": [
-        {
-            "name": "Albert Wu",
-            "githubUsername": "albertywu"
-        },
-        {
-            "name": "Pablo Rodríguez",
-            "githubUsername": "MeLlamoPablo"
-        },
-        {
-            "name": "Rafał Sawicki",
-            "githubUsername": "rafsawicki"
-        },
-        {
-            "name": "BendingBender",
-            "githubUsername": "BendingBender"
-        }
-    ]
+    {
+      "name": "Rafał Sawicki",
+      "githubUsername": "rafsawicki"
+    },
+    {
+      "name": "BendingBender",
+      "githubUsername": "BendingBender"
+    }
+  ]
 }

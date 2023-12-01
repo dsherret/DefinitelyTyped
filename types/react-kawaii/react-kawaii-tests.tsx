@@ -15,9 +15,13 @@ import {
     SpeechBubble,
 } from "react-kawaii";
 
-const PlanetExample = () => <Planet size={200} mood="blissful" color="#FDA7DC" />;
+const PlanetExample = () => (
+    <Planet size={200} mood="blissful" color="#FDA7DC" />
+);
 const MugExample = () => <Mug size={200} mood="ko" color="rebeccapurple" />;
-const GhostExample = () => <Ghost size={200} mood="lovestruck" color="#E0E4E8" />;
+const GhostExample = () => (
+    <Ghost size={200} mood="lovestruck" color="#E0E4E8" />
+);
 const FileExample = () => <File size={200} mood="blissful" color="#83D1FB" />;
 const IceCreamExample = () => <IceCream mood="happy" />;
 const BrowserExample = () => <Browser size={500} />;

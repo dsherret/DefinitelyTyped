@@ -71,7 +71,11 @@ declare module "angular" {
              * @param  putFunction    The default to pass to function if doesn't already exist
              * @param  value  The value to add
              */
-            put(key: string, putFunction: ILockerServicePutFunction, value: any): ILockerService | boolean;
+            put(
+                key: string,
+                putFunction: ILockerServicePutFunction,
+                value: any,
+            ): ILockerService | boolean;
             /**
              * Remove specified item(s) from storage
              *
@@ -98,7 +102,11 @@ declare module "angular" {
              * @param  key     The key in storage to bind to
              * @param   def     The default value to initially bind
              */
-            bind(scope: IScope, property: string, defaultPropertyValue?: any): ILockerService;
+            bind(
+                scope: IScope,
+                property: string,
+                defaultPropertyValue?: any,
+            ): ILockerService;
             /**
              * Set the storage driver on a new instance to enable overriding defaults
              *
@@ -144,7 +152,7 @@ declare module "angular" {
 
         interface ILockerSettings {
             driver?: string | undefined;
-            "namespace"?: string | boolean | undefined;
+            namespace?: string | boolean | undefined;
             separator?: string | undefined;
             eventsEnabled?: boolean | undefined;
             extend?: Object | undefined;

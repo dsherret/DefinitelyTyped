@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Radio, RadioGroup } from "react-radio-group";
 
-const DefaultComponent: React.FC<React.HTMLProps<HTMLDivElement>> = ({ children, ...rest }) => {
+const DefaultComponent: React.FC<React.HTMLProps<HTMLDivElement>> = ({
+    children,
+    ...rest
+}) => {
     return (
         <div style={{ display: "flex" }} {...rest}>
             {children}
@@ -14,7 +17,10 @@ interface ReactRadioGroupState {
     selectedValueB: any;
 }
 
-class ReactRadioGroup extends React.Component<RadioGroup.RadioGroupProps, ReactRadioGroupState> {
+class ReactRadioGroup extends React.Component<
+    RadioGroup.RadioGroupProps,
+    ReactRadioGroupState
+> {
     state = {
         selectedValueA: 2,
         selectedValueB: true,
@@ -22,7 +28,7 @@ class ReactRadioGroup extends React.Component<RadioGroup.RadioGroupProps, ReactR
 
     handleChange = (key: keyof ReactRadioGroupState) => (value: any) => {
         console.log(key, value);
-        this.setState(state => {
+        this.setState((state) => {
             return {
                 ...state,
                 [key]: value,

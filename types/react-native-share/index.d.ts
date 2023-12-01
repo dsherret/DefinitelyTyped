@@ -25,8 +25,12 @@ declare namespace Share {
         SHARE_BACKGROUND_AND_STICKER_IMAGE = "shareBackgroundAndStickerImage",
     }
     function open(options: Options | MultipleOptions): Promise<OpenReturn>;
-    function shareSingle(options: Options & { social: Social }): Promise<ShareSingleReturn>;
-    function isPackageInstalled(packageName: string): Promise<ShareSingleReturn>;
+    function shareSingle(
+        options: Options & { social: Social },
+    ): Promise<ShareSingleReturn>;
+    function isPackageInstalled(
+        packageName: string,
+    ): Promise<ShareSingleReturn>;
 }
 
 export interface OpenReturn {

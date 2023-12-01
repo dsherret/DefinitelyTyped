@@ -18,7 +18,7 @@ var finder = new PF.AStarFinder({
 
 finder = new PF.BestFirstFinder({
     diagonalMovement: PF.DiagonalMovement.Never,
-    heuristic: function(dx, dy) {
+    heuristic: function (dx, dy) {
         return Math.min(dx, dy);
     },
 });

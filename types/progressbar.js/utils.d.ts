@@ -16,7 +16,10 @@ export function render(template: string, vars: { [key: string]: any }): string;
 
 export function setStyle(element: Element, style: string, value: unknown): void;
 
-export function setStyles(element: Element, styles: { [style: string]: unknown }): void;
+export function setStyles(
+    element: Element,
+    styles: { [style: string]: unknown },
+): void;
 
 export function capitalize(text: string): string;
 
@@ -28,7 +31,10 @@ export function isArray(obj: any): boolean;
 
 export function isObject(obj: any): boolean;
 
-export function forEachObject(obj: any, cb: (val: any, key: string) => void): void;
+export function forEachObject(
+    obj: any,
+    cb: (val: any, key: string) => void,
+): void;
 
 export function floatEquals(a: number, b: number): boolean;
 

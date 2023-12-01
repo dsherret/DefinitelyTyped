@@ -3,7 +3,9 @@ export as namespace userIDLEObserver;
 /**
  * This lib allows you to track user inactivity time.
  */
-declare function userIDLEObserver(opts?: userIDLEObserver.Options): userIDLEObserver.UserIDLEObserver;
+declare function userIDLEObserver(
+    opts?: userIDLEObserver.Options,
+): userIDLEObserver.UserIDLEObserver;
 
 declare namespace userIDLEObserver {
     /**

@@ -20,6 +20,9 @@ declare namespace mongo {
     }
 }
 
-declare function mongo(connOptions?: mongo.ConnectionOptions, confOptions?: MongoClientOptions): Middleware;
+declare function mongo(
+    connOptions?: mongo.ConnectionOptions,
+    confOptions?: MongoClientOptions,
+): Middleware;
 
 export = mongo;

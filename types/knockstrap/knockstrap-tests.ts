@@ -20,7 +20,8 @@ var stname = stringTemplate.templateName;
 
 ko.stringTemplateEngine.instance.allowTemplateRewriting = true;
 
-var templateSource = ko.stringTemplateEngine.instance.makeTemplateSource("template");
+var templateSource =
+    ko.stringTemplateEngine.instance.makeTemplateSource("template");
 ko.stringTemplateEngine.instance.addTemplate("test", {});
 ko.stringTemplateEngine.instance.removeTemplate("test");
 ko.stringTemplateEngine.instance.isTemplateExist("test");

@@ -44,9 +44,21 @@ declare namespace prompt {
 }
 
 declare class prompt extends EventEmitter {
-    on(event: "invalid", listener: (prop: prompt.RevalidatorSchema | string, line: number) => void): this;
-    on(event: "prompt", listener: (prop: prompt.RevalidatorSchema | string) => void): this;
-    on(event: "pause" | "resume" | "SIGINT" | "start" | "stop", listener: () => void): this;
+    on(
+        event: "invalid",
+        listener: (
+            prop: prompt.RevalidatorSchema | string,
+            line: number,
+        ) => void,
+    ): this;
+    on(
+        event: "prompt",
+        listener: (prop: prompt.RevalidatorSchema | string) => void,
+    ): this;
+    on(
+        event: "pause" | "resume" | "SIGINT" | "start" | "stop",
+        listener: () => void,
+    ): this;
 
     static colors: boolean;
     static delimiter: string;
@@ -54,17 +66,26 @@ declare class prompt extends EventEmitter {
     static override?: any;
     static version: string;
 
-    static addProperties(obj: any, values: Array<string | prompt.RevalidatorSchema>): Promise<void>;
+    static addProperties(
+        obj: any,
+        values: Array<string | prompt.RevalidatorSchema>,
+    ): Promise<void>;
     static addProperties(
         obj: any,
         values: Array<string | prompt.RevalidatorSchema>,
         callback: prompt.GetCallback<prompt.Properties>,
     ): void;
     static get<T extends prompt.Properties>(
-        values: Array<keyof T | prompt.Schema | prompt.RevalidatorSchema> | prompt.Schema | prompt.RevalidatorSchema,
+        values:
+            | Array<keyof T | prompt.Schema | prompt.RevalidatorSchema>
+            | prompt.Schema
+            | prompt.RevalidatorSchema,
     ): Promise<T>;
     static get<T extends prompt.Properties>(
-        values: Array<keyof T | prompt.Schema | prompt.RevalidatorSchema> | prompt.Schema | prompt.RevalidatorSchema,
+        values:
+            | Array<keyof T | prompt.Schema | prompt.RevalidatorSchema>
+            | prompt.Schema
+            | prompt.RevalidatorSchema,
         callback: prompt.GetCallback<T>,
     ): void;
     static history(name?: string | number): prompt.History | null;

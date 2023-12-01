@@ -47,8 +47,16 @@ export interface Logger {
 }
 
 export interface Serializer<TIn, TOut> {
-    serialize(opcode: number, value: TIn, extras: Buffer): { value: string | Buffer; extras: Buffer };
-    deserialize(opcode: number, value: Buffer | null, extras: Buffer): { value: TOut; extras: Buffer };
+    serialize(
+        opcode: number,
+        value: TIn,
+        extras: Buffer,
+    ): { value: string | Buffer; extras: Buffer };
+    deserialize(
+        opcode: number,
+        value: Buffer | null,
+        extras: Buffer,
+    ): { value: TOut; extras: Buffer };
 }
 
 export interface ServerOptions {
@@ -149,7 +157,14 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * If the key is not found, the callback is invoked with null for both arguments and no error.
      */
     get(key: string): Promise<{ value: TOut; flags: Buffer | null }>;
-    get(key: string, callback: (err: Error | null, value: TOut, flags: Buffer | null) => void): void;
+    get(
+        key: string,
+        callback: (
+            err: Error | null,
+            value: TOut,
+            flags: Buffer | null,
+        ) => void,
+    ): void;
 
     /**
      * SET
@@ -162,7 +177,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     set(key: string, value: TIn, options?: InsertOptions): Promise<boolean>;
-    set(key: string, value: TIn, callback: (err: Error | null, success: boolean | null) => void): void;
+    set(
+        key: string,
+        value: TIn,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
     set(
         key: string,
         value: TIn,
@@ -182,7 +201,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     add(key: string, value: TIn, options?: InsertOptions): Promise<boolean>;
-    add(key: string, value: TIn, callback: (err: Error | null, success: boolean | null) => void): void;
+    add(
+        key: string,
+        value: TIn,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
     add(
         key: string,
         value: TIn,
@@ -202,7 +225,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     replace(key: string, value: TIn, options?: InsertOptions): Promise<boolean>;
-    replace(key: string, value: TIn, callback: (err: Error | null, success: boolean | null) => void): void;
+    replace(
+        key: string,
+        value: TIn,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
     replace(
         key: string,
         value: TIn,
@@ -220,7 +247,10 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     delete(key: string): Promise<boolean>;
-    delete(key: string, callback: (err: Error | null, success: boolean | null) => void): void;
+    delete(
+        key: string,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
 
     /**
      * INCREMENT
@@ -240,13 +270,21 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
     increment(
         key: string,
         amount: number,
-        callback: (err: Error | null, success: boolean | null, value?: number | null) => void,
+        callback: (
+            err: Error | null,
+            success: boolean | null,
+            value?: number | null,
+        ) => void,
     ): void;
     increment(
         key: string,
         amount: number,
         options: IncrementDecrementOptions,
-        callback: (err: Error | null, success: boolean | null, value?: number | null) => void,
+        callback: (
+            err: Error | null,
+            success: boolean | null,
+            value?: number | null,
+        ) => void,
     ): void;
 
     /**
@@ -267,13 +305,21 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
     decrement(
         key: string,
         amount: number,
-        callback: (err: Error | null, success: boolean | null, value?: number | null) => void,
+        callback: (
+            err: Error | null,
+            success: boolean | null,
+            value?: number | null,
+        ) => void,
     ): void;
     decrement(
         key: string,
         amount: number,
         options: IncrementDecrementOptions,
-        callback: (err: Error | null, success: boolean | null, value?: number | null) => void,
+        callback: (
+            err: Error | null,
+            success: boolean | null,
+            value?: number | null,
+        ) => void,
     ): void;
 
     /**
@@ -287,7 +333,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     append(key: string, value: TIn): Promise<boolean>;
-    append(key: string, value: TIn, callback: (err: Error | null, success: boolean | null) => void): void;
+    append(
+        key: string,
+        value: TIn,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
 
     /**
      * PREPEND
@@ -300,7 +350,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     prepend(key: string, value: TIn): Promise<boolean>;
-    prepend(key: string, value: TIn, callback: (err: Error | null, success: boolean | null) => void): void;
+    prepend(
+        key: string,
+        value: TIn,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
 
     /**
      * TOUCH
@@ -312,8 +366,15 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      */
     touch(key: string, expires?: number): Promise<boolean>;
-    touch(key: string, callback: (err: Error | null, success: boolean | null) => void): void;
-    touch(key: string, expires: number, callback: (err: Error | null, success: boolean | null) => void): void;
+    touch(
+        key: string,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
+    touch(
+        key: string,
+        expires: number,
+        callback: (err: Error | null, success: boolean | null) => void,
+    ): void;
 
     /**
      * FLUSH
@@ -326,7 +387,12 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * `true` (if the operation was successful), or an error.
      */
     flush(): Promise<Record<string, boolean>>;
-    flush(callback: (lastErr: Error | null, results: Record<string, boolean | Error>) => void): void;
+    flush(
+        callback: (
+            lastErr: Error | null,
+            results: Record<string, boolean | Error>,
+        ) => void,
+    ): void;
 
     /**
      * STATS_WITH_KEY
@@ -340,7 +406,11 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      */
     statsWithKey(
         key: string,
-        callback?: (err: Error | null, server: string, stats: Record<string, string> | null) => void,
+        callback?: (
+            err: Error | null,
+            server: string,
+            stats: Record<string, string> | null,
+        ) => void,
     ): void;
 
     /**
@@ -352,7 +422,13 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * Its invoked **ONCE PER SERVER**, its _server_ parameter is the `"hostname:port"` of the server,
      * and _stats_ is a dictionary mapping the stat name to the value of the statistic as a string.
      */
-    stats(callback?: (err: Error | null, server: string, stats: Record<string, string> | null) => void): void;
+    stats(
+        callback?: (
+            err: Error | null,
+            server: string,
+            stats: Record<string, string> | null,
+        ) => void,
+    ): void;
 
     /**
      * RESET_STATS
@@ -364,7 +440,13 @@ export class Client<TIn = string | Buffer, TOut = Buffer | null> {
      * @param callback The callback invoked when a response is received or the request fails.
      * Its invoked **ONCE PER SERVER**, its _server_ parameter is the `"hostname:port"` of the server.
      */
-    resetStats(callback?: (err: Error | null, server: string, stats: Record<string, string> | null) => void): void;
+    resetStats(
+        callback?: (
+            err: Error | null,
+            server: string,
+            stats: Record<string, string> | null,
+        ) => void,
+    ): void;
 
     /**
      * QUIT
@@ -436,7 +518,13 @@ export class Server extends EventEmitter {
     readonly username: string | undefined;
     readonly password: string | undefined;
 
-    constructor(host: string, port: number, username?: string, password?: string, options?: ServerOptions);
+    constructor(
+        host: string,
+        port: number,
+        username?: string,
+        password?: string,
+        options?: ServerOptions,
+    );
 
     onConnect(fn: (socket: Socket) => void): void;
     onResponse(seq: number, fn: (response: Response) => void): void;
@@ -461,7 +549,11 @@ export const Utils: {
         value: string | Buffer,
         opaque: number,
     ): Buffer;
-    makeAmountInitialAndExpiration(amount: number, amountIfEmpty: number, expiration: number): Buffer;
+    makeAmountInitialAndExpiration(
+        amount: number,
+        amountIfEmpty: number,
+        expiration: number,
+    ): Buffer;
     makeExpiration(expiration: number): Buffer;
     hashCode(str: string): number;
     parseMessage(dataBuf: Buffer): Response;

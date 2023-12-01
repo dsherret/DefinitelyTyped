@@ -17,34 +17,34 @@ Modal.VERSION;
 // $ExpectType Options
 Modal.Default;
 
-element.addEventListener(Modal.Events.show, event => {
+element.addEventListener(Modal.Events.show, (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });
 
 // Ensure that using a string literal as the event type works the same as using
 // the `Modal.Events` enum.
-element.addEventListener("show.bs.modal", event => {
+element.addEventListener("show.bs.modal", (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });
 
-element.addEventListener(Modal.Events.shown, event => {
+element.addEventListener(Modal.Events.shown, (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });
 
-element.addEventListener(Modal.Events.hide, event => {
+element.addEventListener(Modal.Events.hide, (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });
 
-element.addEventListener(Modal.Events.hidden, event => {
+element.addEventListener(Modal.Events.hidden, (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });
 
-element.addEventListener(Modal.Events.hidePrevented, event => {
+element.addEventListener(Modal.Events.hidePrevented, (event) => {
     event.target; // $ExpectType HTMLElement
     event.relatedTarget; // $ExpectType HTMLElement | undefined
 });

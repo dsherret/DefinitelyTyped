@@ -4,18 +4,31 @@ import request = require("request");
 import http = require("http");
 
 declare namespace requestretry {
-    type RetryStrategy = (err: Error, response: http.IncomingMessage, body: any) => boolean;
-    type DelayStrategy = (err: Error, response: http.IncomingMessage, body: any) => number;
+    type RetryStrategy = (
+        err: Error,
+        response: http.IncomingMessage,
+        body: any,
+    ) => boolean;
+    type DelayStrategy = (
+        err: Error,
+        response: http.IncomingMessage,
+        body: any,
+    ) => number;
     interface RequestPromise extends request.Request {
         then: Promise<any>["then"];
         catch: Promise<any>["catch"];
         promise(): Promise<any>;
     }
-    interface RetryRequestAPI extends request.RequestAPI<RequestPromise, RequestRetryOptions, request.RequiredUriUrl> {
+    interface RetryRequestAPI
+        extends request.RequestAPI<
+            RequestPromise,
+            RequestRetryOptions,
+            request.RequiredUriUrl
+        > {
         RetryStrategies: {
-            "HttpError": RetryStrategy;
-            "HTTPOrNetworkError": RetryStrategy;
-            "NetworkError": RetryStrategy;
+            HttpError: RetryStrategy;
+            HTTPOrNetworkError: RetryStrategy;
+            NetworkError: RetryStrategy;
         };
     }
 

@@ -9,6 +9,6 @@ import Arborist = require("@npmcli/arborist");
     result = await packlist(tree);
     result = await packlist(tree, {});
     result = await packlist(tree, { path: "foo" });
-    packlist(tree, undefined, r => (result = r));
-    packlist(tree, { path: "foo" }, r => (result = r));
+    packlist(tree, undefined, (r) => (result = r));
+    packlist(tree, { path: "foo" }, (r) => (result = r));
 })();

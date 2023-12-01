@@ -12,9 +12,13 @@ import { substitute, trimRight } from "./utils";
 
 const httpsGet = (url: string) =>
     new Promise<string>((resolve, reject) => {
-        https.get(url, res => {
+        https.get(url, (res) => {
             if (res.statusCode !== 200) {
-                reject(new Error(`Failed to fetch ${url} w/ error code ${res.statusCode}`));
+                reject(
+                    new Error(
+                        `Failed to fetch ${url} w/ error code ${res.statusCode}`,
+                    ),
+                );
                 return;
             }
             const frames: Buffer[] = [];
@@ -60,9 +64,13 @@ function writeProtocolsToFile(jsonProtocols: string[]) {
         }
     }
     const substituteArgs = generateSubstituteArgs(combinedProtocol);
-    const template = readFileSync(`${__dirname}/inspector.d.ts.template`, "utf8");
+    const template = readFileSync(
+        `${__dirname}/inspector.d.ts.template`,
+        "utf8",
+    );
 
-    const inspectorDts = substitute(template, substituteArgs).split("\n")
+    const inspectorDts = substitute(template, substituteArgs)
+        .split("\n")
         .map(trimRight)
         .join("\n");
 
@@ -77,7 +85,9 @@ function writeProtocolsToFile(jsonProtocols: string[]) {
  */
 function convertPdlToJson(pdl: string): string {
     if (!existsSync(INSPECTOR_PROTOCOL_LOCAL_DIR)) {
-        execSync(`git clone ${INSPECTOR_PROTOCOL_REMOTE} ${INSPECTOR_PROTOCOL_LOCAL_DIR}`);
+        execSync(
+            `git clone ${INSPECTOR_PROTOCOL_REMOTE} ${INSPECTOR_PROTOCOL_LOCAL_DIR}`,
+        );
     }
     writeFileSync("/tmp/inspector_protocol.pdl", pdl);
     execSync(
@@ -90,5 +100,9 @@ function convertPdlToJson(pdl: string): string {
 // Node extensions, and then write this to inspector.d.ts.
 Promise.all([
     httpsGet(V8_PROTOCOL_URL),
-    httpsGet(NODE_PROTOCOL_URL).then(convertPdlToJson).catch(() => ""),
-]).then(writeProtocolsToFile).catch(console.error);
+    httpsGet(NODE_PROTOCOL_URL)
+        .then(convertPdlToJson)
+        .catch(() => ""),
+])
+    .then(writeProtocolsToFile)
+    .catch(console.error);

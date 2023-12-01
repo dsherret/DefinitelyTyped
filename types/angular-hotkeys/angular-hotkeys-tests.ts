@@ -1,22 +1,29 @@
 import { module } from "angular";
 import { Hotkey, HotkeysProvider } from "angular-hotkeys";
 
-module("myApp", ["cfp.hotkeys"])
-    .config((hotkeysProvider: HotkeysProvider) => {
-        hotkeysProvider.includeCheatSheet = false;
-        const somehotKeyObj: Hotkey = {
-            combo: "",
-            callback: () => {},
-        };
-    });
+module("myApp", ["cfp.hotkeys"]).config((hotkeysProvider: HotkeysProvider) => {
+    hotkeysProvider.includeCheatSheet = false;
+    const somehotKeyObj: Hotkey = {
+        combo: "",
+        callback: () => {},
+    };
+});
 
 function someInjectionService(
     scope: ng.IScope,
     hotkeyProvider: ng.hotkeys.HotkeysProvider,
     hotkeyObj: ng.hotkeys.Hotkey,
 ) {
-    hotkeyProvider.add("mod+s", "saves a file", (event: Event, hotkey: ng.hotkeys.Hotkey) => {});
-    hotkeyProvider.add(["mod+s"], "saves a file", (event: Event, hotkey: ng.hotkeys.Hotkey) => {});
+    hotkeyProvider.add(
+        "mod+s",
+        "saves a file",
+        (event: Event, hotkey: ng.hotkeys.Hotkey) => {},
+    );
+    hotkeyProvider.add(
+        ["mod+s"],
+        "saves a file",
+        (event: Event, hotkey: ng.hotkeys.Hotkey) => {},
+    );
     hotkeyProvider.add(hotkeyObj);
     hotkeyProvider.bindTo(scope);
     hotkeyProvider.del("mod+s");
@@ -25,9 +32,14 @@ function someInjectionService(
     hotkeyProvider.get(["mod+s"]);
     hotkeyProvider.toggleCheatSheet();
 
-    hotkeyProvider.add(hotkeyObj.combo, hotkeyObj.description, hotkeyObj.callback);
+    hotkeyProvider.add(
+        hotkeyObj.combo,
+        hotkeyObj.description,
+        hotkeyObj.callback,
+    );
 
-    hotkeyProvider.bindTo(scope)
+    hotkeyProvider
+        .bindTo(scope)
         .add(hotkeyObj)
         .add(hotkeyObj)
         .add({

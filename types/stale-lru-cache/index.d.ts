@@ -17,8 +17,15 @@ declare class Cache<K, V> {
 }
 
 declare namespace Cache {
-    type OptionsCallback<K, V> = (error: any, value?: V, options?: string | SetOptions<K, V>) => void;
-    type RevalidationCallback<K, V> = (key: K, callback: OptionsCallback<K, V>) => void;
+    type OptionsCallback<K, V> = (
+        error: any,
+        value?: V,
+        options?: string | SetOptions<K, V>,
+    ) => void;
+    type RevalidationCallback<K, V> = (
+        key: K,
+        callback: OptionsCallback<K, V>,
+    ) => void;
 
     interface CacheOptions<K, V> {
         maxAge?: number | undefined;

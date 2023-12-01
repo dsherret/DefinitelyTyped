@@ -31,7 +31,11 @@ export interface VinylFile extends File {
     isSymbolic: () => boolean;
 
     /** Returns a new Vinyl object with all attributes cloned. */
-    clone(opts?: { contents?: boolean | undefined; deep?: boolean | undefined } | boolean): this;
+    clone(
+        opts?:
+            | { contents?: boolean | undefined; deep?: boolean | undefined }
+            | boolean,
+    ): this;
 
     /** Returns a formatted-string interpretation of the Vinyl object */
     inspect: () => string;

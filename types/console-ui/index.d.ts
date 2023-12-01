@@ -54,7 +54,11 @@ declare class UI {
      * Optionally include a test. If falsy, the deprecation will be printed. By default deprecations
      * will be prepended with DEPRECATION text when printed.
      */
-    writeDeprecateLine(message: string, test?: boolean, prepend?: boolean): void;
+    writeDeprecateLine(
+        message: string,
+        test?: boolean,
+        prepend?: boolean,
+    ): void;
 
     /**
      * Unified mechanism to an Error to the console.
@@ -82,5 +86,8 @@ declare class UI {
      * Launch the prompt interface (inquiry session) with (Array of Questions || Question)
      * See [Inquirer.js#question](https://github.com/SBoudrias/Inquirer.js#question) for Question properties
      */
-    prompt<T extends Answers>(questions: QuestionCollection<T>, callback?: (answers: T) => void): Promise<T>;
+    prompt<T extends Answers>(
+        questions: QuestionCollection<T>,
+        callback?: (answers: T) => void,
+    ): Promise<T>;
 }

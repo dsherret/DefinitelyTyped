@@ -19,23 +19,27 @@ declare namespace YandexMoneySDK {
             currency: string;
             account_status: string;
             account_type: string;
-            avatar?: {
-                url: string;
-                ts: string;
-            } | undefined;
-            balance_details?: {
-                total: number;
-                available: number;
-                deposition_pending?: number | undefined;
-                blocked?: number | undefined;
-                debt?: number | undefined;
-                hold?: number | undefined;
-            } | undefined;
+            avatar?:
+                | {
+                      url: string;
+                      ts: string;
+                  }
+                | undefined;
+            balance_details?:
+                | {
+                      total: number;
+                      available: number;
+                      deposition_pending?: number | undefined;
+                      blocked?: number | undefined;
+                      debt?: number | undefined;
+                      hold?: number | undefined;
+                  }
+                | undefined;
             cards_linked?:
                 | Array<{
-                    pan_fragment?: string | undefined;
-                    type?: string | undefined;
-                }>
+                      pan_fragment?: string | undefined;
+                      type?: string | undefined;
+                  }>
                 | undefined;
         }
 
@@ -54,16 +58,16 @@ declare namespace YandexMoneySDK {
             next_record?: string | undefined;
             operations?:
                 | Array<{
-                    operation_id: string;
-                    status: string;
-                    datetime: string;
-                    title: string;
-                    pattern_id?: string | undefined;
-                    direction: string;
-                    amount: number;
-                    label?: string | undefined;
-                    type?: string | undefined;
-                }>
+                      operation_id: string;
+                      status: string;
+                      datetime: string;
+                      title: string;
+                      pattern_id?: string | undefined;
+                      direction: string;
+                      amount: number;
+                      label?: string | undefined;
+                      type?: string | undefined;
+                  }>
                 | undefined;
         }
 
@@ -90,17 +94,19 @@ declare namespace YandexMoneySDK {
             label?: string | undefined;
             details?: string | undefined;
             type?: string | undefined;
-            digital_goods?: {
-                article: Array<{
-                    merchantArticleId: string;
-                    serial: string;
-                    secret: string;
-                }>;
-                bonus: Array<{
-                    serial: string;
-                    secret: string;
-                }>;
-            } | undefined;
+            digital_goods?:
+                | {
+                      article: Array<{
+                          merchantArticleId: string;
+                          serial: string;
+                          secret: string;
+                      }>;
+                      bonus: Array<{
+                          serial: string;
+                          secret: string;
+                      }>;
+                  }
+                | undefined;
         }
 
         interface RequestPaymentOptions {
@@ -125,20 +131,26 @@ declare namespace YandexMoneySDK {
         interface RequestPaymentResult {
             status: string;
             error?: string | undefined;
-            money_source?: {
-                wallet?: {
-                    allowed: boolean;
-                } | undefined;
-                cards?: {
-                    allowed: boolean;
-                    csc_required: boolean;
-                    items: Array<{
-                        id: string;
-                        pan_fragment: string;
-                        type: string;
-                    }>;
-                } | undefined;
-            } | undefined;
+            money_source?:
+                | {
+                      wallet?:
+                          | {
+                                allowed: boolean;
+                            }
+                          | undefined;
+                      cards?:
+                          | {
+                                allowed: boolean;
+                                csc_required: boolean;
+                                items: Array<{
+                                    id: string;
+                                    pan_fragment: string;
+                                    type: string;
+                                }>;
+                            }
+                          | undefined;
+                  }
+                | undefined;
             request_id?: string | undefined;
             contract_amount?: number | undefined;
             balance?: number | undefined;
@@ -173,23 +185,27 @@ declare namespace YandexMoneySDK {
             account_unblock_uri?: string | undefined;
             hold_for_pickup_link?: string | undefined;
             acs_uri?: string | undefined;
-            acs_params?: {
-                MD: string;
-                PaReq: string;
-                [key: string]: any;
-            } | undefined;
+            acs_params?:
+                | {
+                      MD: string;
+                      PaReq: string;
+                      [key: string]: any;
+                  }
+                | undefined;
             next_retry?: number | undefined;
-            digital_goods?: {
-                article: Array<{
-                    merchantArticleId: string;
-                    serial: string;
-                    secret: string;
-                }>;
-                bonus: Array<{
-                    serial: string;
-                    secret: string;
-                }>;
-            } | undefined;
+            digital_goods?:
+                | {
+                      article: Array<{
+                          merchantArticleId: string;
+                          serial: string;
+                          secret: string;
+                      }>;
+                      bonus: Array<{
+                          serial: string;
+                          secret: string;
+                      }>;
+                  }
+                | undefined;
         }
 
         interface IncomingTransferAcceptResult {
@@ -244,17 +260,21 @@ declare namespace YandexMoneySDK {
             status: string;
             error?: string | undefined;
             acs_uri?: string | undefined;
-            acs_params?: {
-                MD: string;
-                PaReq: string;
-                [key: string]: any;
-            } | undefined;
-            money_source?: {
-                type: string;
-                payment_card_type: string;
-                pan_fragment?: string | undefined;
-                money_source_token?: string | undefined;
-            } | undefined;
+            acs_params?:
+                | {
+                      MD: string;
+                      PaReq: string;
+                      [key: string]: any;
+                  }
+                | undefined;
+            money_source?:
+                | {
+                      type: string;
+                      payment_card_type: string;
+                      pan_fragment?: string | undefined;
+                      money_source_token?: string | undefined;
+                  }
+                | undefined;
             next_retry?: number | undefined;
             invoice_id?: string | undefined;
         }
@@ -269,8 +289,12 @@ declare module "yandex-money-sdk" {
     }
 
     export interface WalletStatic {
-        new(accessToken: string): Wallet;
-        buildObtainTokenUrl(clientId: string, redirectURI: string, scope: string[]): string;
+        new (accessToken: string): Wallet;
+        buildObtainTokenUrl(
+            clientId: string,
+            redirectURI: string,
+            scope: string[],
+        ): string;
         getAccessToken(
             clientId: string,
             code: string,
@@ -278,7 +302,11 @@ declare module "yandex-money-sdk" {
             clientSecret: string,
             callback: ResponseCallback<YandexMoneySDK.Wallet.GetAccessTokenResult>,
         ): void;
-        revokeToken(token: string, revoke_all: any, callback: ResponseCallback<any>): void; // revoke_all missing in documentation
+        revokeToken(
+            token: string,
+            revoke_all: any,
+            callback: ResponseCallback<any>,
+        ): void; // revoke_all missing in documentation
     }
 
     export interface Wallet {
@@ -286,7 +314,9 @@ declare module "yandex-money-sdk" {
             params: YandexMoneySDK.Wallet.SendAuthenticatedRequestParams,
             callback: ResponseCallback<any>,
         ): void;
-        accountInfo(callback: ResponseCallback<YandexMoneySDK.Wallet.AccountInfoResult>): void;
+        accountInfo(
+            callback: ResponseCallback<YandexMoneySDK.Wallet.AccountInfoResult>,
+        ): void;
         operationHistory(
             options: YandexMoneySDK.Wallet.OperationHistoryOptions,
             callback: ResponseCallback<YandexMoneySDK.Wallet.OperationHistoryResult>,
@@ -315,7 +345,7 @@ declare module "yandex-money-sdk" {
     }
 
     export interface ExternalPaymentStatic {
-        new(instanceId: string): ExternalPayment;
+        new (instanceId: string): ExternalPayment;
         getInstanceId(
             clientId: string,
             callback: ResponseCallback<YandexMoneySDK.ExternalPayment.GetInstanceIdResult>,

@@ -31,7 +31,7 @@ const options: Options = {
     id: "some-id",
     open: true,
     template: "./dir/template.pug",
-    urlTransform: path => `./dir/${path}`,
+    urlTransform: (path) => `./dir/${path}`,
     openSimulator: true,
     simpleParser: {},
     returnHtml: true,

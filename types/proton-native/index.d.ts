@@ -223,12 +223,12 @@ export interface AreaProps extends AreaBaseProps {
      */
     onMouseMove?:
         | ((event: {
-            buttons: readonly string[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }) => void)
+              buttons: readonly string[];
+              height: number;
+              width: number;
+              x: number;
+              y: number;
+          }) => void)
         | undefined;
     /**
      * **Not working at the moment.**
@@ -363,12 +363,7 @@ export interface ColorButtonProps extends GridChildrenProps, Label, Stretchy {
      * Called when the color is changed for the ColorButton. The current color is passed as an object of RGBA.
      */
     onChange?:
-        | ((color: {
-            r: number;
-            g: number;
-            b: number;
-            a: number;
-        }) => void)
+        | ((color: { r: number; g: number; b: number; a: number }) => void)
         | undefined;
 }
 
@@ -404,10 +399,12 @@ export interface GridChildrenProps {
     /**
      * Whether the component is aligned with the other components in the column/row.
      */
-    align?: {
-        h: boolean;
-        v: boolean;
-    } | undefined;
+    align?:
+        | {
+              h: boolean;
+              v: boolean;
+          }
+        | undefined;
     /**
      * What column the component resides in.
      */
@@ -415,10 +412,12 @@ export interface GridChildrenProps {
     /**
      * Whether the component can expand in the direction.
      */
-    expand?: {
-        h: boolean;
-        v: boolean;
-    } | undefined;
+    expand?:
+        | {
+              h: boolean;
+              v: boolean;
+          }
+        | undefined;
     /**
      * What row the component resides in.
      */
@@ -426,10 +425,12 @@ export interface GridChildrenProps {
     /**
      * How many rows/columns the component takes off.
      */
-    span?: {
-        x: number;
-        y: number;
-    } | undefined;
+    span?:
+        | {
+              x: number;
+              y: number;
+          }
+        | undefined;
 }
 
 export interface GridProps {
@@ -517,7 +518,14 @@ export interface MenuItemProps {
      * - `Separator` - a Separator between menu items. This accepts no text.
      * - `Item` - a normal menu button. This is the default.
      */
-    type?: "Check" | "Quit" | "About" | "Preferences" | "Separator" | "Item" | undefined;
+    type?:
+        | "Check"
+        | "Quit"
+        | "About"
+        | "Preferences"
+        | "Separator"
+        | "Item"
+        | undefined;
     /**
      * Called when the menu item is clicked. If the type is `Check`, then it passes whether it is checked as an argument.
      */
@@ -730,77 +738,89 @@ export interface Stretchy {
 }
 
 export interface StyledTextProps {
-    style?: {
-        /**
-         * The background color, specified as a CSS color string.
-         */
-        backgroundColor?: string | undefined;
-        /**
-         * The text color, specified as a CSS color string.
-         */
-        color?: string | undefined;
-        /**
-         * The font family (only if available on the system).
-         */
-        fontFamily?: string | undefined;
-        /**
-         * The font size (in pt).
-         */
-        fontSize?: number | undefined;
-        /**
-         * Whether an italic font should be used.
-         */
-        fontStyle?: "normal" | "oblique" | "italic" | undefined;
-        /**
-         * Whether a bold font should be used (and the amount).
-         */
-        fontWeight?:
-            | "minimum"
-            | "thin"
-            | "ultraLight"
-            | "light"
-            | "book"
-            | "normal"
-            | "medium"
-            | "semiBold"
-            | "bold"
-            | "ultraBold"
-            | "heavy"
-            | "ultraHeavy"
-            | "maximum"
-            | number
-            | undefined;
-        /**
-         * Wheter the text should be aligned to the left, center or right.
-         *
-         * **Works only on a top level text component, not it's children!**
-         */
-        textAlign?: "left" | "center" | "right" | undefined;
-        /**
-         * How wide or narrow the characters should be.
-         */
-        textStretch?:
-            | "ultraCondensed"
-            | "extraCondensed"
-            | "condensed"
-            | "semiCondensed"
-            | "normal"
-            | "semiExpanded"
-            | "expanded"
-            | "extraExpanded"
-            | "ultraExpanded"
-            | undefined;
-        /**
-         * The text underline style.
-         */
-        textUnderline?: "none" | "single" | "double" | "suggestion" | undefined;
-        /**
-         * The text underline color.
-         *
-         * A color string | 'spelling' | 'grammar' | 'auxiliary'
-         */
-        textUnderlineColor?: "spelling" | "grammar" | "auxiliary" | string | undefined;
-    } | undefined;
+    style?:
+        | {
+              /**
+               * The background color, specified as a CSS color string.
+               */
+              backgroundColor?: string | undefined;
+              /**
+               * The text color, specified as a CSS color string.
+               */
+              color?: string | undefined;
+              /**
+               * The font family (only if available on the system).
+               */
+              fontFamily?: string | undefined;
+              /**
+               * The font size (in pt).
+               */
+              fontSize?: number | undefined;
+              /**
+               * Whether an italic font should be used.
+               */
+              fontStyle?: "normal" | "oblique" | "italic" | undefined;
+              /**
+               * Whether a bold font should be used (and the amount).
+               */
+              fontWeight?:
+                  | "minimum"
+                  | "thin"
+                  | "ultraLight"
+                  | "light"
+                  | "book"
+                  | "normal"
+                  | "medium"
+                  | "semiBold"
+                  | "bold"
+                  | "ultraBold"
+                  | "heavy"
+                  | "ultraHeavy"
+                  | "maximum"
+                  | number
+                  | undefined;
+              /**
+               * Wheter the text should be aligned to the left, center or right.
+               *
+               * **Works only on a top level text component, not it's children!**
+               */
+              textAlign?: "left" | "center" | "right" | undefined;
+              /**
+               * How wide or narrow the characters should be.
+               */
+              textStretch?:
+                  | "ultraCondensed"
+                  | "extraCondensed"
+                  | "condensed"
+                  | "semiCondensed"
+                  | "normal"
+                  | "semiExpanded"
+                  | "expanded"
+                  | "extraExpanded"
+                  | "ultraExpanded"
+                  | undefined;
+              /**
+               * The text underline style.
+               */
+              textUnderline?:
+                  | "none"
+                  | "single"
+                  | "double"
+                  | "suggestion"
+                  | undefined;
+              /**
+               * The text underline color.
+               *
+               * A color string | 'spelling' | 'grammar' | 'auxiliary'
+               */
+              textUnderlineColor?:
+                  | "spelling"
+                  | "grammar"
+                  | "auxiliary"
+                  | string
+                  | undefined;
+          }
+        | undefined;
     /**
      * The x coordinate of the text's top left corner. (Only in a top level text component.)
      */
@@ -916,18 +936,17 @@ export interface WindowProps {
      * Called when the window size is changed by the user. The new size is passed as an argument, in an object.
      */
     onContentSizeChange?:
-        | ((size: {
-            h: number;
-            y: number;
-        }) => void)
+        | ((size: { h: number; y: number }) => void)
         | undefined;
     /**
      * How big the window is when the application is first started.
      */
-    size?: {
-        h: number;
-        w: number;
-    } | undefined;
+    size?:
+        | {
+              h: number;
+              w: number;
+          }
+        | undefined;
     /**
      * The title of the window. Will be shown at the top left ribbon.
      */
@@ -957,13 +976,15 @@ export function render(element: JSX.Element): void;
  */
 export function Dialog(
     type: "Message" | "Error",
-    options?: {
-        title: string;
-        description?: string | undefined;
-    } | {
-        title?: string | undefined;
-        description: string;
-    },
+    options?:
+        | {
+              title: string;
+              description?: string | undefined;
+          }
+        | {
+              title?: string | undefined;
+              description: string;
+          },
 ): void;
 
 /**

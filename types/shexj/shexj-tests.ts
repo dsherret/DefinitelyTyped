@@ -162,12 +162,18 @@ function test_pieces() {
     const wi: Wildcard = { type: "Wildcard" };
     const la1: Language = { type: "Language", languageTag: "en" };
     const las1: LanguageStem = { type: "LanguageStem", stem: lt1 };
-    const languageRangeStems: languageRangeStem[] = ["en", { type: "Wildcard" }];
+    const languageRangeStems: languageRangeStem[] = [
+        "en",
+        { type: "Wildcard" },
+    ];
     // @ts-expect-error
     const languageRangeStem_ebool: languageRangeStem = true;
     // @ts-expect-error
     const languageRangeStem_emild: languageRangeStem = { type: "Mildcard" };
-    const languageRangeExclusions: languageRangeExclusion[] = ["en", { type: "LanguageStem", stem: "en" }];
+    const languageRangeExclusions: languageRangeExclusion[] = [
+        "en",
+        { type: "LanguageStem", stem: "en" },
+    ];
     // @ts-expect-error
     const languageRangeExclusion_ebool: languageRangeExclusion = true;
     const lasr1: LanguageStemRange = {
@@ -182,7 +188,10 @@ function test_pieces() {
     const literalRangeStem_ebool: literalRangeStem = true;
     // @ts-expect-error
     const literalRangeStem_emild: literalRangeStem = { type: "Mildcard" };
-    const literalRangeExclusions: literalRangeExclusion[] = ["abc", { type: "LiteralStem", stem: "abc" }];
+    const literalRangeExclusions: literalRangeExclusion[] = [
+        "abc",
+        { type: "LiteralStem", stem: "abc" },
+    ];
     // @ts-expect-error
     const literalRangeExclusion_ebool: literalRangeExclusion = true;
     const lis2: LiteralStemRange = {
@@ -192,15 +201,21 @@ function test_pieces() {
     };
 
     const irs1: IriStem = { type: "IriStem", stem: "abc" };
-    const iriRangeStems: iriRangeStem[] = ["http://a.example/", { type: "Wildcard" }];
+    const iriRangeStems: iriRangeStem[] = [
+        "http://a.example/",
+        { type: "Wildcard" },
+    ];
     // @ts-expect-error
     const iriRangeStem_ebool: iriRangeStem = true;
     // @ts-expect-error
     const iriRangeStem_emild: iriRangeStem = { type: "Mildcard" };
-    const iriRangeExclusions: iriRangeExclusion[] = ["http://a.example/", {
-        type: "IriStem",
-        stem: "http://a.example/",
-    }];
+    const iriRangeExclusions: iriRangeExclusion[] = [
+        "http://a.example/",
+        {
+            type: "IriStem",
+            stem: "http://a.example/",
+        },
+    ];
     // @ts-expect-error
     const iriRangeExclusion_ebool: iriRangeExclusion = true;
     const irs2: IriStemRange = {
@@ -241,7 +256,10 @@ function test_pieces() {
     // @ts-expect-error
     const nodeKind_e1: nodeKind = "iri999";
     // @ts-expect-error
-    const nc_e1: NodeConstraint = { type: "NodeConstraint", nodeKind: "iri999" };
+    const nc_e1: NodeConstraint = {
+        type: "NodeConstraint",
+        nodeKind: "iri999",
+    };
     const nc2: NodeConstraint = {
         type: "NodeConstraint",
         datatype: i2,
@@ -370,7 +388,8 @@ function test_kitchen_sink() {
                                             {
                                                 type: "TripleConstraint",
                                                 inverse: true,
-                                                predicate: "http://ex.example/#ref",
+                                                predicate:
+                                                    "http://ex.example/#ref",
                                                 valueExpr: {
                                                     type: "NodeConstraint",
                                                     values: [
@@ -388,7 +407,8 @@ function test_kitchen_sink() {
                                             {
                                                 type: "TripleConstraint",
                                                 inverse: true,
-                                                predicate: "http://ex.example/#miscRef",
+                                                predicate:
+                                                    "http://ex.example/#miscRef",
                                             },
                                         ],
                                     },
@@ -409,7 +429,8 @@ function test_kitchen_sink() {
                                     {
                                         type: "TripleConstraint",
                                         predicate: "http://ex.example/#says",
-                                        valueExpr: "http://ex.example/#EmployeeShape",
+                                        valueExpr:
+                                            "http://ex.example/#EmployeeShape",
                                         min: 0,
                                         max: -1,
                                     },
@@ -432,7 +453,8 @@ function test_kitchen_sink() {
                                 predicate: "http://xmlns.com/foaf/givenName",
                                 valueExpr: {
                                     type: "NodeConstraint",
-                                    datatype: "http://www.w3.org/2001/XMLSchema#string",
+                                    datatype:
+                                        "http://www.w3.org/2001/XMLSchema#string",
                                 },
                                 min: 1,
                                 max: -1,
@@ -442,7 +464,8 @@ function test_kitchen_sink() {
                                 predicate: "http://xmlns.com/foaf/familyName",
                                 valueExpr: {
                                     type: "NodeConstraint",
-                                    datatype: "http://www.w3.org/2001/XMLSchema#string",
+                                    datatype:
+                                        "http://www.w3.org/2001/XMLSchema#string",
                                 },
                             },
                             {
@@ -498,7 +521,8 @@ function test_kitchen_sink() {
                                         predicate: "http://xmlns.com/foaf/name",
                                         valueExpr: {
                                             type: "NodeConstraint",
-                                            datatype: "http://www.w3.org/2001/XMLSchema#string",
+                                            datatype:
+                                                "http://www.w3.org/2001/XMLSchema#string",
                                         },
                                     },
                                     {
@@ -506,20 +530,24 @@ function test_kitchen_sink() {
                                         expressions: [
                                             {
                                                 type: "TripleConstraint",
-                                                predicate: "http://xmlns.com/foaf/givenName",
+                                                predicate:
+                                                    "http://xmlns.com/foaf/givenName",
                                                 valueExpr: {
                                                     type: "NodeConstraint",
-                                                    datatype: "http://www.w3.org/2001/XMLSchema#string",
+                                                    datatype:
+                                                        "http://www.w3.org/2001/XMLSchema#string",
                                                 },
                                                 min: 1,
                                                 max: -1,
                                             },
                                             {
                                                 type: "TripleConstraint",
-                                                predicate: "http://xmlns.com/foaf/familyName",
+                                                predicate:
+                                                    "http://xmlns.com/foaf/familyName",
                                                 valueExpr: {
                                                     type: "NodeConstraint",
-                                                    datatype: "http://www.w3.org/2001/XMLSchema#string",
+                                                    datatype:
+                                                        "http://www.w3.org/2001/XMLSchema#string",
                                                 },
                                             },
                                         ],
@@ -563,12 +591,11 @@ function test_kitchen_sink() {
                         expressions: [
                             {
                                 type: "TripleConstraint",
-                                predicate: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                                predicate:
+                                    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
                                 valueExpr: {
                                     type: "NodeConstraint",
-                                    values: [
-                                        "http://ex.example/#Issue",
-                                    ],
+                                    values: ["http://ex.example/#Issue"],
                                 },
                                 min: 0,
                                 max: 1,
@@ -591,14 +618,16 @@ function test_kitchen_sink() {
                                 annotations: [
                                     {
                                         type: "Annotation",
-                                        predicate: "http://www.w3.org/2000/01/rdf-schem#label",
+                                        predicate:
+                                            "http://www.w3.org/2000/01/rdf-schem#label",
                                         object: {
                                             value: "State",
                                         },
                                     },
                                     {
                                         type: "Annotation",
-                                        predicate: "http://www.w3.org/2000/01/rdf-schem#description",
+                                        predicate:
+                                            "http://www.w3.org/2000/01/rdf-schem#description",
                                         object: {
                                             value: "the sit",
                                         },
@@ -624,7 +653,8 @@ function test_kitchen_sink() {
                                 predicate: "http://ex.example/#reportedOn",
                                 valueExpr: {
                                     type: "NodeConstraint",
-                                    datatype: "http://www.w3.org/2001/XMLSchema#dateTime",
+                                    datatype:
+                                        "http://www.w3.org/2001/XMLSchema#dateTime",
                                 },
                             },
                             {
@@ -632,7 +662,8 @@ function test_kitchen_sink() {
                                 expressions: [
                                     {
                                         type: "TripleConstraint",
-                                        predicate: "http://ex.example/#reproducedBy",
+                                        predicate:
+                                            "http://ex.example/#reproducedBy",
                                         valueExpr: {
                                             type: "ShapeAnd",
                                             shapeExprs: [
@@ -646,10 +677,12 @@ function test_kitchen_sink() {
                                     },
                                     {
                                         type: "TripleConstraint",
-                                        predicate: "http://ex.example/#reproducedOn",
+                                        predicate:
+                                            "http://ex.example/#reproducedOn",
                                         valueExpr: {
                                             type: "NodeConstraint",
-                                            datatype: "http://www.w3.org/2001/XMLSchema#dateTime",
+                                            datatype:
+                                                "http://www.w3.org/2001/XMLSchema#dateTime",
                                         },
                                     },
                                 ],
@@ -702,16 +735,46 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "0", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "1", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "2", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "3", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "4", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "5", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "6", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "7", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "8", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "9", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "0",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "1",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "2",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "3",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "4",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "5",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "6",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "7",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "8",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "9",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -738,15 +801,42 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "0", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "1", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "3", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "4", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "5", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "6", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "7", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "8", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "9", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "0",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "1",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "3",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "4",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "5",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "6",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "7",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "8",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "9",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -771,15 +861,42 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "0", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "1", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "2", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "4", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "5", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "6", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "7", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "8", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "9", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "0",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "1",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "2",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "4",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "5",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "6",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "7",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "8",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "9",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -807,15 +924,42 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "0", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "1", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "2", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "3", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "5", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "6", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "7", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "8", type: "http://www.w3.org/2001/XMLSchema#integer" },
-                                        { value: "9", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "0",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "1",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "2",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "3",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "5",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "6",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "7",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "8",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
+                                        {
+                                            value: "9",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -833,16 +977,17 @@ function test_Extend3G() {
                         { type: "NodeConstraint", pattern: "s....E......$" },
                         {
                             type: "Shape",
-                            extends: [
-                                "http://a.example/D",
-                            ],
+                            extends: ["http://a.example/D"],
                             expression: {
                                 type: "TripleConstraint",
                                 predicate: "http://a.example/p",
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "2", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "2",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -865,7 +1010,10 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "3", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "3",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },
@@ -892,7 +1040,10 @@ function test_Extend3G() {
                                 valueExpr: {
                                     type: "NodeConstraint",
                                     values: [
-                                        { value: "4", type: "http://www.w3.org/2001/XMLSchema#integer" },
+                                        {
+                                            value: "4",
+                                            type: "http://www.w3.org/2001/XMLSchema#integer",
+                                        },
                                     ],
                                 },
                             },

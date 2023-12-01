@@ -1,11 +1,12 @@
 import SSH = require("node-ssh");
 
 const client = new SSH();
-client.connect({
-    host: "127.0.0.1",
-    username: "steel",
-    password: "password",
-})
+client
+    .connect({
+        host: "127.0.0.1",
+        username: "steel",
+        password: "password",
+    })
     .then(async (client) => {
         // $ExpectType SSH
         client;

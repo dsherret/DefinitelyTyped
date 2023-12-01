@@ -1,4 +1,9 @@
-import inquirer, { Answers, DistinctChoice, DistinctQuestion, InputQuestionOptions } from "inquirer";
+import inquirer, {
+    Answers,
+    DistinctChoice,
+    DistinctQuestion,
+    InputQuestionOptions,
+} from "inquirer";
 import Choices from "inquirer/lib/objects/choices.js";
 import InputPrompt from "inquirer/lib/prompts/input.js";
 import incrementListIndex from "inquirer/lib/utils/incrementListIndex.js";
@@ -52,22 +57,20 @@ import { Subject } from "rxjs";
     );
 
     // Take note that the properties of the answer-hash `this`, `is`, `a` and `test` are showing up in the auto completion
-    inquirer.prompt<AnswerHash>(
-        {
-            this: {
-                message: "1st question",
-            },
-            is: {
-                message: "2nd question",
-            },
-            a: {
-                message: "3rd question",
-            },
-            test: {
-                message: "4th question",
-            },
+    inquirer.prompt<AnswerHash>({
+        this: {
+            message: "1st question",
         },
-    );
+        is: {
+            message: "2nd question",
+        },
+        a: {
+            message: "3rd question",
+        },
+        test: {
+            message: "4th question",
+        },
+    });
 }
 {
     new inquirer.ui.BottomBar();
@@ -123,17 +126,22 @@ import { Subject } from "rxjs";
         line: "This is a test",
     };
 
-    if (choice.type === "separator" && !(choice instanceof inquirer.Separator)) {
+    if (
+        choice.type === "separator" &&
+        !(choice instanceof inquirer.Separator)
+    ) {
         // $ExpectType SeparatorOptions
         choice;
     }
 }
 
-interface ChalkQuestionOptions<T extends Answers = Answers> extends InputQuestionOptions<T> {
+interface ChalkQuestionOptions<T extends Answers = Answers>
+    extends InputQuestionOptions<T> {
     previewColors: boolean;
 }
 
-interface ChalkQuestion<T extends Answers = Answers> extends ChalkQuestionOptions<T> {
+interface ChalkQuestion<T extends Answers = Answers>
+    extends ChalkQuestionOptions<T> {
     type: "chalk";
 }
 
@@ -177,7 +185,7 @@ fetchAsyncQuestionProperty(
     },
     "message",
     {},
-).pipe(source => {
+).pipe((source) => {
     return source;
 });
 
@@ -233,7 +241,8 @@ fetchAsyncQuestionProperty(
     });
     // dprint-ignore
     // @ts-expect-error
-    promptResult.ui.process.subscribe({ next: (value: {name_: string, answer: number}) => {
+    promptResult.ui.process.subscribe({
+        next: (value: { name_: string; answer: number }) => {
             // DO NOTHING
         },
     });
@@ -241,10 +250,16 @@ fetchAsyncQuestionProperty(
 }
 
 {
-    const prompts = new Subject<DistinctQuestion<{ str: string; num: number }>>();
+    const prompts = new Subject<
+        DistinctQuestion<{ str: string; num: number }>
+    >();
     const promptResult = inquirer.prompt(prompts);
     promptResult.ui.process.subscribe({
-        next: (value: { name: "str"; answer: string } | { name: "num"; answer: number }) => {
+        next: (
+            value:
+                | { name: "str"; answer: string }
+                | { name: "num"; answer: number },
+        ) => {
             // DO NOTHING
         },
     });
@@ -261,7 +276,8 @@ fetchAsyncQuestionProperty(
     });
     // dprint-ignore
     // @ts-expect-error
-    promptResult.ui.process.subscribe({ next: (value: {name: string, answer: number}) => {
+    promptResult.ui.process.subscribe({
+        next: (value: { name: string; answer: number }) => {
             // DO NOTHING
         },
     });

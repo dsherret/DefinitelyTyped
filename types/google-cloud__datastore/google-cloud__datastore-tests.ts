@@ -6,9 +6,23 @@ import {
     DatastoreKey,
     DatastoreKeyPath,
 } from "@google-cloud/datastore/entity";
-import { Query, QueryCallback, QueryInfo, QueryOptions, QueryResult } from "@google-cloud/datastore/query";
-import { AllocateIdsResult, CommitCallback, CommitResponse, CommitResult } from "@google-cloud/datastore/request";
-import { DatastoreTransaction, TransactionResult } from "@google-cloud/datastore/transaction";
+import {
+    Query,
+    QueryCallback,
+    QueryInfo,
+    QueryOptions,
+    QueryResult,
+} from "@google-cloud/datastore/query";
+import {
+    AllocateIdsResult,
+    CommitCallback,
+    CommitResponse,
+    CommitResult,
+} from "@google-cloud/datastore/request";
+import {
+    DatastoreTransaction,
+    TransactionResult,
+} from "@google-cloud/datastore/transaction";
 
 interface TestEntity {
     name?: string | undefined;
@@ -38,7 +52,10 @@ const isInt = ds.isInt(dsInt);
 const dsDouble: DatastoreDouble = ds.double("3.14");
 const isDouble = ds.isDouble(dsDouble);
 
-const dsGeopoint: DatastoreGeopoint = ds.geoPoint({ latitude: 0, longitude: 0 });
+const dsGeopoint: DatastoreGeopoint = ds.geoPoint({
+    latitude: 0,
+    longitude: 0,
+});
 const isGeoPoint = ds.isGeoPoint(dsGeopoint);
 
 // Keys creation:
@@ -53,15 +70,18 @@ const keyWithOptions: DatastoreKey = ds.key({
 const incompleteKey = ds.key([kind]);
 
 // ID allocation:
-ds.allocateIds(incompleteKey, 1, (err: Error, keys: DatastoreKey[]) => {
-});
-const allocationPromise: Promise<AllocateIdsResult> = ds.allocateIds(incompleteKey, 1);
+ds.allocateIds(incompleteKey, 1, (err: Error, keys: DatastoreKey[]) => {});
+const allocationPromise: Promise<AllocateIdsResult> = ds.allocateIds(
+    incompleteKey,
+    1,
+);
 
 // Query creation:
 const manuallyCreatedQuery = new Datastore.Query("scope", kind, "namespace");
 const options: QueryOptions = { consistency: "strong" };
 const query: Query = ds.createQuery(kind);
-const complexQuery = ds.createQuery("special_namespace", kind)
+const complexQuery = ds
+    .createQuery("special_namespace", kind)
     .hasAncestor(ancestorKey)
     .filter("aProp", "<", 0)
     .filter("location", dsGeopoint)
@@ -72,27 +92,30 @@ const complexQuery = ds.createQuery("special_namespace", kind)
     .offset(10);
 
 // Running queries:
-const queryCallback: QueryCallback = (err: Error, entities: TestEntity[]) => entities[0][ds.KEY];
+const queryCallback: QueryCallback = (err: Error, entities: TestEntity[]) =>
+    entities[0][ds.KEY];
 
 ds.runQuery(query, queryCallback);
 ds.runQuery(query, options, queryCallback);
 ds.runQuery(query, options);
 
 const queryStream: NodeJS.ReadableStream = complexQuery.runStream();
-const dsQueryStream: NodeJS.ReadableStream = ds.runQueryStream(complexQuery, options);
-complexQuery.run()
-    .then((data: QueryResult) => {
-        const { moreResults, endCursor } = data[1];
-        const frontEndResponse: any = {};
-        switch (moreResults) {
-            case Datastore.NO_MORE_RESULTS:
-                frontEndResponse.nextPageCursor = null;
-                break;
-            case Datastore.MORE_RESULTS_AFTER_CURSOR:
-            case Datastore.MORE_RESULTS_AFTER_LIMIT:
-                frontEndResponse.nextPageCursor = endCursor;
-        }
-    });
+const dsQueryStream: NodeJS.ReadableStream = ds.runQueryStream(
+    complexQuery,
+    options,
+);
+complexQuery.run().then((data: QueryResult) => {
+    const { moreResults, endCursor } = data[1];
+    const frontEndResponse: any = {};
+    switch (moreResults) {
+        case Datastore.NO_MORE_RESULTS:
+            frontEndResponse.nextPageCursor = null;
+            break;
+        case Datastore.MORE_RESULTS_AFTER_CURSOR:
+        case Datastore.MORE_RESULTS_AFTER_LIMIT:
+            frontEndResponse.nextPageCursor = endCursor;
+    }
+});
 
 query.run((err: Error, entities: TestEntity[], info: QueryInfo) => {
     if (err) {
@@ -112,7 +135,8 @@ query.run((err: Error, entities: TestEntity[], info: QueryInfo) => {
 });
 
 // Saving an entity:
-const saveCallback: CommitCallback = (err: Error, response: CommitResponse) => undefined;
+const saveCallback: CommitCallback = (err: Error, response: CommitResponse) =>
+    undefined;
 
 ds.insert(entityToCreate, saveCallback);
 ds.save(entityToCreate, saveCallback);
@@ -125,28 +149,21 @@ const updatePromise: Promise<CommitResult> = ds.update(entityToCreate);
 const upsertPromise: Promise<CommitResult> = ds.upsert(entityToCreate);
 
 // Getting entities:
-ds.get(key, (err, entity) => {
-});
+ds.get(key, (err, entity) => {});
 ds.get(key).then((data: [TestEntity]) => data[0]);
-ds.get(key, { maxApiCalls: 1 })
-    .then((data: [TestEntity]) => {
-        const blah: TestEntity = data[0];
-    });
-ds.get([key, key], { maxApiCalls: 1 })
-    .then((data: [TestEntity[]]) => {
-        const blah: TestEntity[] = data[0];
-    });
+ds.get(key, { maxApiCalls: 1 }).then((data: [TestEntity]) => {
+    const blah: TestEntity = data[0];
+});
+ds.get([key, key], { maxApiCalls: 1 }).then((data: [TestEntity[]]) => {
+    const blah: TestEntity[] = data[0];
+});
 ds.get(key, (err: Error, data: any[]) => data[0]);
 
 // We can verify the data was saved by using {module:datastore#get}.
-ds.get(
-    key,
-    (err, entity) => {
-    },
-);
+ds.get(key, (err, entity) => {});
 
 // Deleting entities:
-ds.delete(key, err => {
+ds.delete(key, (err) => {
     if (!err) {
         // Record deleted successfully.
     }
@@ -159,16 +176,17 @@ const manuallyCreatedTx = new Datastore.Transaction(ds);
 transaction.run((err, activeTx: DatastoreTransaction) => {
     transaction.get(key, (err: Error, entity: TestEntity) => {
         if (err) {
-            transaction.rollback(err => {
-            });
+            transaction.rollback((err) => {});
         }
 
         const queryInTx: Query = activeTx.createQuery(kind);
-        const namespacedQueryInTx: Query = activeTx.createQuery("special-namespace", kind);
+        const namespacedQueryInTx: Query = activeTx.createQuery(
+            "special-namespace",
+            kind,
+        );
 
         transaction.save(entity);
-        transaction.commit(err => {
-        });
+        transaction.commit((err) => {});
     });
 });
 

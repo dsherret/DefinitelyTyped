@@ -8,6 +8,8 @@ createConfig([match("*.scss", [css(), sass(), postcss({ plugins: [] })])]);
 
 createConfig([match("*.scss", [css.modules(), sass()])]);
 
-createConfig([match("*.scss", [css(), sass(), env("production", [extractText()])])]);
+createConfig([
+    match("*.scss", [css(), sass(), env("production", [extractText()])]),
+]);
 
 createConfig([match(["*.scss", "!*node_modules*"], [css(), sass()])]);

@@ -24,7 +24,10 @@ class ImportLesson {
     lessons: string[];
 }
 
-const importLessonAction = actionCreator<ImportLesson>(types.IMPORT_LESSONS, "lessons");
+const importLessonAction = actionCreator<ImportLesson>(
+    types.IMPORT_LESSONS,
+    "lessons",
+);
 var importLesson = importLessonAction(["lesson 1", "lesson 2"]);
 // → {type: 'IMPORT_LESSONS', lessons: ['lesson 1', 'lesson 2']}
 
@@ -38,7 +41,11 @@ class UpdateLesson {
     };
 }
 
-const updateLessonAction = optionsActionCreator<UpdateLesson>(types.UPDATE_LESSON, "id", "update");
+const updateLessonAction = optionsActionCreator<UpdateLesson>(
+    types.UPDATE_LESSON,
+    "id",
+    "update",
+);
 let updateLesson = updateLessonAction({
     id: 1,
     update: {

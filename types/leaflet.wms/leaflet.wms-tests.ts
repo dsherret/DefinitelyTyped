@@ -4,7 +4,7 @@ import * as WMS from "leaflet.wms";
 const baseUrl = "http://localhost:8080/geoserver/wms";
 
 const map: Map = new Map("map", {
-    center: [37.1259000, -4.7510700],
+    center: [37.1259, -4.75107],
     zoom: 3,
     minZoom: 8,
 });

@@ -6,7 +6,10 @@ declare namespace FluxReduceStore {}
  * This is the basic building block of a Flux application. All of your stores
  * should extend this class.
  */
-declare abstract class FluxReduceStore<TState, TPayload> extends Store<TPayload> {
+declare abstract class FluxReduceStore<
+    TState,
+    TPayload,
+> extends Store<TPayload> {
     /**
      * Getter that exposes the entire state of this store.
      * If your state is not immutable you should override this and not expose state directly.

@@ -25,7 +25,13 @@ declare namespace addressparser {
  *
  * @return An array of address objects
  */
-declare function addressparser(address: string, options: { flatten: true }): addressparser.Address[];
-declare function addressparser(address: string, options?: { flatten: false }): addressparser.AddressOrGroup[];
+declare function addressparser(
+    address: string,
+    options: { flatten: true },
+): addressparser.Address[];
+declare function addressparser(
+    address: string,
+    options?: { flatten: false },
+): addressparser.AddressOrGroup[];
 
 export = addressparser;

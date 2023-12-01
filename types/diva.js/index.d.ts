@@ -1,4 +1,10 @@
-import { Dimensions, Options, Settings, State, ViewerState } from "./interfaces";
+import {
+    Dimensions,
+    Options,
+    Settings,
+    State,
+    ViewerState,
+} from "./interfaces";
 import ViewerCore from "./viewer-core";
 
 interface DivaState {
@@ -268,11 +274,7 @@ export class Diva {
      * @param xAnchor - May be either "left", "right", or default "center".
      * @param yAnchor - May be either "top", "bottom", or default "center".
      */
-    gotoPageByLabel(
-        label: string,
-        xAnchor?: string,
-        yAnchor?: string,
-    ): boolean;
+    gotoPageByLabel(label: string, xAnchor?: string, yAnchor?: string): boolean;
 
     /**
      * Jumps to a page based on its filename. Use gotoPageByURI instead.
@@ -291,11 +293,7 @@ export class Diva {
      * @param xAnchor - May be either "left", "right", or default "center".
      * @param yAnchor - May be either "top", "bottom", or default "center".
      */
-    gotoPageByURI(
-        uri: string,
-        xAnchor?: string,
-        yAnchor?: string,
-    ): boolean;
+    gotoPageByURI(uri: string, xAnchor?: string, yAnchor?: string): boolean;
 
     /**
      * Whether the page has other images to display.

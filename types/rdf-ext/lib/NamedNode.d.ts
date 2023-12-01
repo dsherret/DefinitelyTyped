@@ -1,7 +1,8 @@
 import { NamedNode, Term } from "@rdfjs/types";
 import { PropType } from "./_PropType.js";
 
-export interface NamedNodeExt<Iri extends string = string> extends NamedNode<Iri> {
+export interface NamedNodeExt<Iri extends string = string>
+    extends NamedNode<Iri> {
     toCanonical(): string;
     toJSON(): {
         value: PropType<NamedNode, "value">;

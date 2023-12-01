@@ -2,7 +2,7 @@
 
 import type { stripType, stripTypeIds } from "./lib/constants";
 
-type StripType = typeof stripType[keyof typeof stripType];
+type StripType = (typeof stripType)[keyof typeof stripType];
 type StripTypeEnum = StripType | keyof typeof stripTypeIds;
 
 interface Channel {

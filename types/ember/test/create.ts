@@ -12,7 +12,9 @@ assertType<object>(o);
 assertType<boolean>(o.isDestroyed); // from instance
 assertType<boolean>(o.isDestroying); // from instance
 assertType<
-    <K extends keyof Ember.Object>(key: K) => UnwrapComputedPropertyGetter<Ember.Object[K]>
+    <K extends keyof Ember.Object>(
+        key: K,
+    ) => UnwrapComputedPropertyGetter<Ember.Object[K]>
 >(o.get); // from prototype
 
 /**
@@ -30,7 +32,7 @@ assertType<number>(obj.a);
 assertType<number>(obj.c);
 
 export class Person extends Ember.Object.extend({
-    fullName: Ember.computed("firstName", "lastName", function() {
+    fullName: Ember.computed("firstName", "lastName", function () {
         return [this.firstName + this.lastName].join(" ");
     }),
 }) {

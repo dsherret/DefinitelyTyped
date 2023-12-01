@@ -56,7 +56,10 @@ export class Face {
     send(encoding: Blob | Buffer): void;
     setCommandCertificateName(certificateName: Name): void;
     setCommandSigningInfo(keyChain: KeyChain, certificateName: Name): void;
-    setInterestFilter(filter: InterestFilter | Name, onInterest: OnInterestCallback): number;
+    setInterestFilter(
+        filter: InterestFilter | Name,
+        onInterest: OnInterestCallback,
+    ): number;
     unsetInterestFilter(id: number): void;
 }
 

@@ -75,21 +75,20 @@ type cssKeyName =
     | "-webkit-transitio";
 
 interface DirectPay {
-    setup(fields: {
-        number: elementObject;
-        expirationDate: elementObject;
-        ccv: elementObject;
-    }, styles?: {
-        [key: string]: {
-            [key in cssKeyName]?: string;
-        };
-    }): void;
-
-    onUpdate(
-        callback: (
-            update: UpdateResult,
-        ) => void,
+    setup(
+        fields: {
+            number: elementObject;
+            expirationDate: elementObject;
+            ccv: elementObject;
+        },
+        styles?: {
+            [key: string]: {
+                [key in cssKeyName]?: string;
+            };
+        },
     ): void;
+
+    onUpdate(callback: (update: UpdateResult) => void): void;
 
     getTappayFieldsStatus(): UpdateResult;
 

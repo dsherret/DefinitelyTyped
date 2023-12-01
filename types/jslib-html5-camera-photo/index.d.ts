@@ -62,8 +62,13 @@ declare class CameraPhoto {
     constructor(videoElement: HTMLVideoElement);
     getCameraSettings(): MediaTrackSettings | null;
     getInputVideoDeviceInfos(): MediaDeviceInfo[];
-    startCamera(idealFacingMode?: FacingMode, idealResolution?: Resolution): Promise<MediaStream>;
-    startCameraMaxResolution(idealFacingMode?: FacingMode | {}): Promise<MediaStream>;
+    startCamera(
+        idealFacingMode?: FacingMode,
+        idealResolution?: Resolution,
+    ): Promise<MediaStream>;
+    startCameraMaxResolution(
+        idealFacingMode?: FacingMode | {},
+    ): Promise<MediaStream>;
     getDataUri(userConfig: CaptureConfigOption): string;
     stopCamera(): Promise<void>;
 }

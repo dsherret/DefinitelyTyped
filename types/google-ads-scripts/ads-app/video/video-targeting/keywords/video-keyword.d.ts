@@ -51,7 +51,8 @@ declare namespace GoogleAdsScripts {
          *    .withCpv(0.11)           // optional
          *    .build();                // create the keyword
          */
-        interface VideoKeywordBuilder extends Base.Builder<VideoKeywordOperation> {
+        interface VideoKeywordBuilder
+            extends Base.Builder<VideoKeywordOperation> {
             /** Builds the excluded video keyword. */
             exclude(): ExcludedVideoKeywordOperation;
             /** Sets the max CPV bid of the new video keyword to the specified value. */
@@ -91,13 +92,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoKeywordSelector
-            extends
-                Base.Selector<VideoKeywordIterator>,
+            extends Base.Selector<VideoKeywordIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

@@ -34,13 +34,14 @@ const ReactGooglePlacesSuggestWithOnSelectSuggestPropTest: React.FC = () => (
     />
 );
 
-const ReactGooglePlacesSuggestWithCustomContainerRenderPropTest: React.FC = () => (
-    <ReactGooglePlacesSuggest
-        {...defaultProps}
-        customContainerRender={(
-            predictions: readonly ReactGooglePlacesSuggest.Prediction[],
-        ) => {
-            return "123";
-        }}
-    />
-);
+const ReactGooglePlacesSuggestWithCustomContainerRenderPropTest: React.FC =
+    () => (
+        <ReactGooglePlacesSuggest
+            {...defaultProps}
+            customContainerRender={(
+                predictions: readonly ReactGooglePlacesSuggest.Prediction[],
+            ) => {
+                return "123";
+            }}
+        />
+    );

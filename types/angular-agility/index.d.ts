@@ -2,7 +2,11 @@
 
 declare namespace aa {
     export interface ILabelStrategies {
-        [strategyName: string]: (element: ng.IAugmentedJQueryStatic, labelText: string, isRequired: boolean) => void;
+        [strategyName: string]: (
+            element: ng.IAugmentedJQueryStatic,
+            labelText: string,
+            isRequired: boolean,
+        ) => void;
     }
 
     export interface IFieldGroupStrategies {

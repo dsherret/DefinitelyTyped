@@ -26,5 +26,8 @@ declare namespace koaJoiRouterDocs {
 
 export class SwaggerAPI {
     addJoiRouter(router: Router, options?: koaJoiRouterDocs.RouterOptions): any;
-    generateSpec(config: koaJoiRouterDocs.SpecConfig, options?: koaJoiRouterDocs.SpecOptions): object;
+    generateSpec(
+        config: koaJoiRouterDocs.SpecConfig,
+        options?: koaJoiRouterDocs.SpecOptions,
+    ): object;
 }

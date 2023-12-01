@@ -16,7 +16,12 @@ import XOAuth2 = require("../xoauth2");
 
 declare namespace Mail {
     type Headers =
-        | { [key: string]: string | string[] | { prepared: boolean; value: string } }
+        | {
+              [key: string]:
+                  | string
+                  | string[]
+                  | { prepared: boolean; value: string };
+          }
         | Array<{ key: string; value: string }>;
 
     type ListHeader = string | { url: string; comment: string };
@@ -49,7 +54,12 @@ declare namespace Mail {
         /** optional content type for the attachment, if not set will be derived from the filename property */
         contentType?: string | undefined;
         /** optional transfer encoding for the attachment, if not set it will be derived from the contentType property. Example values: quoted-printable, base64. If it is unset then base64 encoding is used for the attachment. If it is set to false then previous default applies (base64 for most, 7bit for text). */
-        contentTransferEncoding?: "7bit" | "base64" | "quoted-printable" | false | undefined;
+        contentTransferEncoding?:
+            | "7bit"
+            | "base64"
+            | "quoted-printable"
+            | false
+            | undefined;
         /** optional content disposition type for the attachment, defaults to ‘attachment’ */
         contentDisposition?: "attachment" | "inline" | undefined;
         /** is an object of additional headers */
@@ -157,7 +167,10 @@ declare namespace Mail {
         attachDataUrls?: boolean | undefined;
     }
 
-    type PluginFunction<T = any> = (mail: MailMessage<T>, callback: (err?: Error | null) => void) => void;
+    type PluginFunction<T = any> = (
+        mail: MailMessage<T>,
+        callback: (err?: Error | null) => void,
+    ) => void;
 }
 
 /** Creates an object for exposing the Mail API */
@@ -171,7 +184,11 @@ declare class Mail<T = any> extends EventEmitter {
     /** Usage: typeof transporter.MailMessage */
     MailMessage: MailMessage<T>;
 
-    constructor(transporter: Transport<T>, options?: TransportOptions, defaults?: TransportOptions);
+    constructor(
+        transporter: Transport<T>,
+        options?: TransportOptions,
+        defaults?: TransportOptions,
+    );
 
     /** Closes all connections in the pool. If there is a message being sent, the connection is closed later */
     close(): void;
@@ -186,7 +203,10 @@ declare class Mail<T = any> extends EventEmitter {
     use(step: string, plugin: Mail.PluginFunction<T>): this;
 
     /** Sends an email using the preselected transport object */
-    sendMail(mailOptions: Mail.Options, callback: (err: Error | null, info: T) => void): void;
+    sendMail(
+        mailOptions: Mail.Options,
+        callback: (err: Error | null, info: T) => void,
+    ): void;
     sendMail(mailOptions: Mail.Options): Promise<T>;
 
     getVersionString(): string;
@@ -199,7 +219,11 @@ declare class Mail<T = any> extends EventEmitter {
         value: (
             user: string,
             renew: boolean,
-            callback: (err: Error | null, accessToken?: string, expires?: number) => void,
+            callback: (
+                err: Error | null,
+                accessToken?: string,
+                expires?: number,
+            ) => void,
         ) => void,
     ): Map<string, any>;
     set(
@@ -213,7 +237,10 @@ declare class Mail<T = any> extends EventEmitter {
         value: (
             proxy: Url,
             options: TransportOptions,
-            callback: (err: Error | null, socketOptions?: { connection: Socket }) => void,
+            callback: (
+                err: Error | null,
+                socketOptions?: { connection: Socket },
+            ) => void,
         ) => void,
     ): Map<string, any>;
     set(key: string, value: any): Map<string, any>;
@@ -223,7 +250,11 @@ declare class Mail<T = any> extends EventEmitter {
     ): (
         user: string,
         renew: boolean,
-        callback: (err: Error | null, accessToken: string, expires: number) => void,
+        callback: (
+            err: Error | null,
+            accessToken: string,
+            expires: number,
+        ) => void,
     ) => void;
     get(
         key:
@@ -236,7 +267,10 @@ declare class Mail<T = any> extends EventEmitter {
     ): (
         proxy: Url,
         options: TransportOptions,
-        callback: (err: Error | null, socketOptions: { connection: Socket }) => void,
+        callback: (
+            err: Error | null,
+            socketOptions: { connection: Socket },
+        ) => void,
     ) => void;
     get(key: string): any;
 
@@ -258,11 +292,17 @@ declare class Mail<T = any> extends EventEmitter {
 
     prependListener(event: "error", listener: (err: Error) => void): this;
     prependListener(event: "idle", listener: () => void): this;
-    prependListener(event: "end", listener: (token: XOAuth2.Token) => void): this;
+    prependListener(
+        event: "end",
+        listener: (token: XOAuth2.Token) => void,
+    ): this;
 
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
     prependOnceListener(event: "idle", listener: () => void): this;
-    prependOnceListener(event: "end", listener: (token: XOAuth2.Token) => void): this;
+    prependOnceListener(
+        event: "end",
+        listener: (token: XOAuth2.Token) => void,
+    ): this;
 
     listeners(event: "error"): Array<(err: Error) => void>;
     listeners(event: "idle"): Array<() => void>;

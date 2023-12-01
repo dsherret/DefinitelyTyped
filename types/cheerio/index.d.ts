@@ -90,13 +90,19 @@ declare namespace cheerio {
 
         removeClass(): Cheerio;
         removeClass(className: string): Cheerio;
-        removeClass(func: (index: number, className: string) => string): Cheerio;
+        removeClass(
+            func: (index: number, className: string) => string,
+        ): Cheerio;
 
         toggleClass(className: string): Cheerio;
         toggleClass(className: string, toggleSwitch: boolean): Cheerio;
         toggleClass(toggleSwitch?: boolean): Cheerio;
         toggleClass(
-            func: (index: number, className: string, toggleSwitch: boolean) => string,
+            func: (
+                index: number,
+                className: string,
+                toggleSwitch: boolean,
+            ) => string,
             toggleSwitch?: boolean,
         ): Cheerio;
 
@@ -244,8 +250,14 @@ declare namespace cheerio {
         css(propertyNames: string[]): string[];
         css(propertyName: string, value: string): Cheerio;
         css(propertyName: string, value: number): Cheerio;
-        css(propertyName: string, func: (index: number, value: string) => string): Cheerio;
-        css(propertyName: string, func: (index: number, value: string) => number): Cheerio;
+        css(
+            propertyName: string,
+            func: (index: number, value: string) => string,
+        ): Cheerio;
+        css(
+            propertyName: string,
+            func: (index: number, value: string) => number,
+        ): Cheerio;
         css(properties: Object): Cheerio;
 
         // Rendering
@@ -297,10 +309,17 @@ declare namespace cheerio {
         // JQuery http://api.jquery.com
         root(): Cheerio;
         contains(container: Element, contained: Element): boolean;
-        parseHTML(data: string, context?: Document | null, keepScripts?: boolean): Document[];
+        parseHTML(
+            data: string,
+            context?: Document | null,
+            keepScripts?: boolean,
+        ): Document[];
 
         html(options?: CheerioParserOptions): string;
-        html(dom: string | Cheerio | Element, options?: CheerioParserOptions): string;
+        html(
+            dom: string | Cheerio | Element,
+            options?: CheerioParserOptions,
+        ): string;
 
         xml(dom?: string | Cheerio | Element): string;
     }
@@ -308,7 +327,10 @@ declare namespace cheerio {
     interface CheerioAPI extends Root {
         version: string;
         load(html: string | Buffer, options?: CheerioParserOptions): Root;
-        load(element: Element | Element[], options?: CheerioParserOptions): Root;
+        load(
+            element: Element | Element[],
+            options?: CheerioParserOptions,
+        ): Root;
     }
 }
 

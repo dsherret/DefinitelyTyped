@@ -31,7 +31,11 @@ declare module "k6/x/sql" {
          *   console.log(`key: ${row.key}, value: ${row.value}`);
          * }
          */
-        function query(db: DatabaseConnection, query: string, ...args: Array<string | number | boolean>): any[];
+        function query(
+            db: DatabaseConnection,
+            query: string,
+            ...args: Array<string | number | boolean>
+        ): any[];
 
         interface DatabaseConnection {
             /**
@@ -81,7 +85,11 @@ declare module "xk6-sql" {
          *   console.log(`key: ${row.key}, value: ${row.value}`);
          * }
          */
-        function query(db: DatabaseConnection, query: string, ...args: Array<string | number | boolean>): any[];
+        function query(
+            db: DatabaseConnection,
+            query: string,
+            ...args: Array<string | number | boolean>
+        ): any[];
 
         interface DatabaseConnection {
             /**

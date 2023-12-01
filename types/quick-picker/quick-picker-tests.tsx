@@ -23,10 +23,10 @@ QuickPicker.open<CustomItem>({
         bar: 1,
     },
     items,
-    onChange: item => {
+    onChange: (item) => {
         // typeof item is CustomItem
     },
-    onPressDone: item => {
+    onPressDone: (item) => {
         // typeof item is CustomItem
     },
     display: "calendar",

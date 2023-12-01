@@ -38,11 +38,20 @@ export interface StripePaymentRequest {
      */
     on(event: "cancel", handler: () => void): void;
 
-    on(event: "token" | "source", handler: (event: StripePaymentResponse) => void): void;
+    on(
+        event: "token" | "source",
+        handler: (event: StripePaymentResponse) => void,
+    ): void;
 
-    on(event: "shippingaddresschange", handler: (event: NewShippingAddress) => void): void;
+    on(
+        event: "shippingaddresschange",
+        handler: (event: NewShippingAddress) => void,
+    ): void;
 
-    on(event: "shippingoptionchange", handler: (event: NewShippingOptions) => void): void;
+    on(
+        event: "shippingoptionchange",
+        handler: (event: NewShippingOptions) => void,
+    ): void;
 }
 
 export interface CanMakePaymentResult {

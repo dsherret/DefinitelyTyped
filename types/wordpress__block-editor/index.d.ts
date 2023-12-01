@@ -8,8 +8,12 @@ export { SETTINGS_DEFAULTS } from "./store/defaults";
 export * from "./utils";
 
 declare module "@wordpress/data" {
-    function dispatch(key: "core/block-editor"): typeof import("./store/actions");
-    function select(key: "core/block-editor"): typeof import("./store/selectors");
+    function dispatch(
+        key: "core/block-editor",
+    ): typeof import("./store/actions");
+    function select(
+        key: "core/block-editor",
+    ): typeof import("./store/selectors");
 }
 
 export const store: any;

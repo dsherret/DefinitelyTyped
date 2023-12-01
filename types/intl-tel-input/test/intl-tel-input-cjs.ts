@@ -8,7 +8,7 @@ const iti = intlTelInput(input, {
     },
     utilsScript: "node_modules/intl-tel-input/build/js/utils.js",
     initialCountry: "auto",
-    geoIpLookup: success => {
+    geoIpLookup: (success) => {
         //
     },
     nationalMode: true,

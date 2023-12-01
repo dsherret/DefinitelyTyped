@@ -1,4 +1,9 @@
-import { createAutoCorrectedDatePipe, createNumberMask, DatePipeYears, NumberMaskOptions } from "text-mask-addons";
+import {
+    createAutoCorrectedDatePipe,
+    createNumberMask,
+    DatePipeYears,
+    NumberMaskOptions,
+} from "text-mask-addons";
 
 function testCreateAutoCorrectedDatePipe() {
     const datePipeYears: DatePipeYears = { minYear: 1, maxYear: 1 };

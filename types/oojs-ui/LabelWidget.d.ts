@@ -35,11 +35,14 @@ declare namespace OO.ui {
     interface LabelWidget extends LabelWidget.Props, LabelWidget.Prototype {}
 
     namespace LabelWidget {
-        interface EventMap extends Widget.EventMap, mixin.LabelElement.EventMap {}
+        interface EventMap
+            extends Widget.EventMap,
+                mixin.LabelElement.EventMap {}
 
         interface ConfigOptions
-            extends Widget.ConfigOptions, mixin.LabelElement.ConfigOptions, mixin.TitledElement.ConfigOptions
-        {
+            extends Widget.ConfigOptions,
+                mixin.LabelElement.ConfigOptions,
+                mixin.TitledElement.ConfigOptions {
             /**
              * {@link OO.ui.InputWidget Input widget} that uses the label.
              * Clicking the label will focus the specified input field.
@@ -47,15 +50,27 @@ declare namespace OO.ui {
             input?: InputWidget;
         }
 
-        interface Static extends Widget.Static, mixin.LabelElement.Static, mixin.TitledElement.Static {}
+        interface Static
+            extends Widget.Static,
+                mixin.LabelElement.Static,
+                mixin.TitledElement.Static {}
 
-        interface Props extends Widget.Props, mixin.LabelElement.Props, mixin.TitledElement.Props {}
+        interface Props
+            extends Widget.Props,
+                mixin.LabelElement.Props,
+                mixin.TitledElement.Props {}
 
-        interface Prototype extends Widget.Prototype, mixin.LabelElement.Prototype, mixin.TitledElement.Prototype {
+        interface Prototype
+            extends Widget.Prototype,
+                mixin.LabelElement.Prototype,
+                mixin.TitledElement.Prototype {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -66,7 +81,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -74,7 +92,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -83,11 +104,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -103,7 +136,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): LabelWidget;
+            new (config?: ConfigOptions): LabelWidget;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

@@ -117,8 +117,8 @@ interface ValidationDef {
 export type ValidationsMap = Record<string, ValidationDef>;
 
 interface TypeDef {
-    type: { new(): unknown };
-    subtype: { new(): unknown } | null;
+    type: { new (): unknown };
+    subtype: { new (): unknown } | null;
 }
 
 export type TypesMap = Record<string, TypeDef>;
@@ -231,7 +231,9 @@ export class S3ExportTaskDefinition {
      * Reserved key names start with "$aws-gg-" prefix.
      * @returns
      */
-    withUserMetadata(value: Record<string, unknown> | null): S3ExportTaskDefinition;
+    withUserMetadata(
+        value: Record<string, unknown> | null,
+    ): S3ExportTaskDefinition;
 
     static fromMap(d: S3ExportTaskDefinitionMap): S3ExportTaskDefinition;
 
@@ -1300,7 +1302,10 @@ export class StatusConfig {
      * @param statusStreamName The name of the stream to which status messages are appended.
      * The status-stream should be created before associating it with another stream.
      */
-    constructor(statusLevel?: StatusLevel | null, statusStreamName?: string | null);
+    constructor(
+        statusLevel?: StatusLevel | null,
+        statusStreamName?: string | null,
+    );
 
     /**
      * Defines the verbosity of status messages in a status-stream.
@@ -1464,7 +1469,9 @@ export class S3ExportTaskExecutorConfig {
      */
     withStatusConfig(value: StatusConfig | null): this;
 
-    static fromMap(d: S3ExportTaskExecutorConfigMap): S3ExportTaskExecutorConfig;
+    static fromMap(
+        d: S3ExportTaskExecutorConfigMap,
+    ): S3ExportTaskExecutorConfig;
 
     asMap(): S3ExportTaskDefinitionMap;
 

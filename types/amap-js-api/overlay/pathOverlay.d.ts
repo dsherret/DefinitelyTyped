@@ -40,7 +40,9 @@ declare namespace AMap {
             lineCap?: StrokeLineCap | undefined;
         }
     }
-    abstract class PathOverlay<ExtraData = any> extends ShapeOverlay<ExtraData> {
+    abstract class PathOverlay<
+        ExtraData = any,
+    > extends ShapeOverlay<ExtraData> {
         constructor(options?: PathOverlay.Options<ExtraData>);
         /**
          * 获取范围

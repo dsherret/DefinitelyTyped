@@ -21,7 +21,8 @@ declare module "chart.js" {
 // This is called declaration merging: https://www.typescriptlang.org/docs/handbook/declaration-merging.html
 // It allows us import the plugin as: import * as ChartJsAnnotation from 'chartjs-plugin-annotation';
 // and use the interfaces and types as: ChartJsAnnotation.LineAnnotationOptions
-declare const ChartJsAnnotation: Chart.PluginServiceGlobalRegistration & Chart.PluginServiceRegistrationOptions;
+declare const ChartJsAnnotation: Chart.PluginServiceGlobalRegistration &
+    Chart.PluginServiceRegistrationOptions;
 
 // Note: the namespace should contain only interfaces
 // We do not want to expose in typings a class that is not actually accessible in the lib.
@@ -122,7 +123,8 @@ declare namespace ChartJsAnnotation {
 
 // Note: classes and enums need to be outside the namespace,
 // otherwise the merge with the constant ChartJsAnnotation fails
-declare class AnnotationElement { // TODO: this should extend Chart.Element, but that typing is not defined in chart.js
+declare class AnnotationElement {
+    // TODO: this should extend Chart.Element, but that typing is not defined in chart.js
     hidden: boolean;
     hovering: boolean;
     _model: any;
@@ -140,11 +142,15 @@ declare class AnnotationElement { // TODO: this should extend Chart.Element, but
 }
 
 declare class LineAnnotation extends AnnotationElement {
-    constructor(options: ChartJsAnnotation.AnnotationElementOptions<ChartJsAnnotation.LineAnnotationOptions>);
+    constructor(
+        options: ChartJsAnnotation.AnnotationElementOptions<ChartJsAnnotation.LineAnnotationOptions>,
+    );
 }
 
 declare class BoxAnnotation extends AnnotationElement {
-    constructor(options: ChartJsAnnotation.AnnotationElementOptions<ChartJsAnnotation.BoxAnnotationOptions>);
+    constructor(
+        options: ChartJsAnnotation.AnnotationElementOptions<ChartJsAnnotation.BoxAnnotationOptions>,
+    );
 }
 
 declare enum DrawTimeOptions {

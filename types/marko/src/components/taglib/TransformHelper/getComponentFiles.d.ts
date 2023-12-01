@@ -1,4 +1,6 @@
-declare function getComponentFiles(filename: string): getComponentFiles.ComponentFiles | null;
+declare function getComponentFiles(
+    filename: string,
+): getComponentFiles.ComponentFiles | null;
 
 declare namespace getComponentFiles {
     interface ComponentFiles {

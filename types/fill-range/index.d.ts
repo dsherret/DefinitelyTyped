@@ -8,8 +8,8 @@ declare namespace fill {
     }
 }
 
-type FilledArray<ValueType, TransformValueType> = ValueType extends TransformValueType ? ValueType[]
-    : TransformValueType[];
+type FilledArray<ValueType, TransformValueType> =
+    ValueType extends TransformValueType ? ValueType[] : TransformValueType[];
 
 declare function fill<
     ValueType = string | number,

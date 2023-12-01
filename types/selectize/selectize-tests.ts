@@ -22,32 +22,44 @@ var $select = $("#select-tools").selectize({
     labelField: "title",
     searchField: "title",
     options: [
-        { id: 1, title: "Spectrometer", url: "http://en.wikipedia.org/wiki/Spectrometers" },
-        { id: 2, title: "Star Chart", url: "http://en.wikipedia.org/wiki/Star_chart" },
-        { id: 3, title: "Electrical Tape", url: "http://en.wikipedia.org/wiki/Electrical_tape" },
+        {
+            id: 1,
+            title: "Spectrometer",
+            url: "http://en.wikipedia.org/wiki/Spectrometers",
+        },
+        {
+            id: 2,
+            title: "Star Chart",
+            url: "http://en.wikipedia.org/wiki/Star_chart",
+        },
+        {
+            id: 3,
+            title: "Electrical Tape",
+            url: "http://en.wikipedia.org/wiki/Electrical_tape",
+        },
     ],
     create: false,
 });
 
 var control = $select[0].selectize;
 
-$("#button-clear").on("click", function() {
+$("#button-clear").on("click", function () {
     control.clear();
 });
-$("#button-clearoptions").on("click", function() {
+$("#button-clearoptions").on("click", function () {
     control.clearOptions();
 });
-$("#button-addoption").on("click", function() {
+$("#button-addoption").on("click", function () {
     control.addOption({
         id: 4,
         title: "Something New",
         url: "http://google.com",
     });
 });
-$("#button-additem").on("click", function() {
+$("#button-additem").on("click", function () {
     control.addItem(2);
 });
-$("#button-setvalue").on("click", function() {
+$("#button-setvalue").on("click", function () {
     control.setValue([2, 3]);
 });
 
@@ -61,19 +73,22 @@ var $select_state: JQuery;
 var $select_city: JQuery;
 
 $select_state = $("#select-state").selectize({
-    onChange: function(value) {
+    onChange: function (value) {
         if (!value.length) return;
         select_city.disable();
         select_city.clearOptions();
-        select_city.load(function(callback) {
+        select_city.load(function (callback) {
             xhr && xhr.abort();
             xhr = $.ajax({
-                url: "http://www.corsproxy.com/api.sba.gov/geodata/primary_city_links_for_state_of/" + value + ".json",
-                success: function(results) {
+                url:
+                    "http://www.corsproxy.com/api.sba.gov/geodata/primary_city_links_for_state_of/" +
+                    value +
+                    ".json",
+                success: function (results) {
                     select_city.enable();
                     callback(results);
                 },
-                error: function() {
+                error: function () {
                     callback();
                 },
             });
@@ -97,11 +112,13 @@ select_city.disable();
 $("#input-tags").selectize({
     delimiter: ",",
     persist: false,
-    onDelete: function(values) {
+    onDelete: function (values) {
         return confirm(
             values.length > 1
-                ? "Are you sure you want to remove these " + values.length + " items?"
-                : "Are you sure you want to remove \"" + values[0] + "\"?",
+                ? "Are you sure you want to remove these " +
+                      values.length +
+                      " items?"
+                : 'Are you sure you want to remove "' + values[0] + '"?',
         );
     },
 });
@@ -115,8 +132,9 @@ interface Person {
     email: string;
 }
 
-var REGEX_EMAIL = "([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-    + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)";
+var REGEX_EMAIL =
+    "([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
+    "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)";
 var formatPerson = (name: Person) => {
     return $.trim((name.first_name || "") + " " + (name.last_name || ""));
 };
@@ -133,37 +151,53 @@ $("#select-to").selectize({
     ],
     options: [
         { email: "nikola@tesla.com", first_name: "Nikola", last_name: "Tesla" },
-        { email: "brian@thirdroute.com", first_name: "Brian", last_name: "Reavis" },
+        {
+            email: "brian@thirdroute.com",
+            first_name: "Brian",
+            last_name: "Reavis",
+        },
         { email: "someone@gmail.com" },
     ],
     render: {
-        item: function(item: Person, escape: (input: any) => string) {
+        item: function (item: Person, escape: (input: any) => string) {
             var name = formatPerson(item);
-            return "<div>"
-                + (name ? "<span class=\"name\">" + escape(name) + "</span>" : "")
-                + (item.email ? "<span class=\"email\">" + escape(item.email) + "</span>" : "")
-                + "</div>";
+            return (
+                "<div>" +
+                (name ? '<span class="name">' + escape(name) + "</span>" : "") +
+                (item.email
+                    ? '<span class="email">' + escape(item.email) + "</span>"
+                    : "") +
+                "</div>"
+            );
         },
-        option: function(item: Person, escape: (input: any) => string) {
+        option: function (item: Person, escape: (input: any) => string) {
             var name = formatPerson(item);
             var label = name || item.email;
             var caption = name ? item.email : null;
-            return "<div>"
-                + "<span class=\"label\">" + escape(label) + "</span>"
-                + (caption ? "<span class=\"caption\">" + escape(caption) + "</span>" : "")
-                + "</div>";
+            return (
+                "<div>" +
+                '<span class="label">' +
+                escape(label) +
+                "</span>" +
+                (caption
+                    ? '<span class="caption">' + escape(caption) + "</span>"
+                    : "") +
+                "</div>"
+            );
         },
     },
-    createFilter: function(input: string) {
+    createFilter: function (input: string) {
         var regexpA = new RegExp("^" + REGEX_EMAIL + "$", "i");
-        var regexpB = new RegExp("^([^<]*)\<" + REGEX_EMAIL + "\>$", "i");
+        var regexpB = new RegExp("^([^<]*)<" + REGEX_EMAIL + ">$", "i");
         return regexpA.test(input) || regexpB.test(input);
     },
-    create: function(input: string): any {
-        if ((new RegExp("^" + REGEX_EMAIL + "$", "i")).test(input)) {
+    create: function (input: string): any {
+        if (new RegExp("^" + REGEX_EMAIL + "$", "i").test(input)) {
             return { email: input };
         }
-        var match = input.match(new RegExp("^([^<]*)\<" + REGEX_EMAIL + "\>$", "i"));
+        var match = input.match(
+            new RegExp("^([^<]*)<" + REGEX_EMAIL + ">$", "i"),
+        );
         if (match) {
             var name = $.trim(match[1]);
             var pos_space = name.indexOf(" ");
@@ -189,17 +223,21 @@ $("#select-words-regex").selectize({
 });
 $("#select-words-length").selectize({
     create: true,
-    createFilter: function(input: string) {
+    createFilter: function (input: string) {
         return input.length >= parseInt($("#length").val(), 10);
     },
 });
-var unique: Selectize.IApi<string, string> = $("#select-words-unique").selectize({
+var unique: Selectize.IApi<string, string> = $(
+    "#select-words-unique",
+).selectize({
     create: true,
-    createFilter: function(input: string) {
+    createFilter: function (input: string) {
         input = input.toLowerCase();
-        return $.grep(<string[]> unique.getValue(), function(value) {
-            return value.toLowerCase() === input;
-        }).length == 0;
+        return (
+            $.grep(<string[]>unique.getValue(), function (value) {
+                return value.toLowerCase() === input;
+            }).length == 0
+        );
     },
 })[0].selectize;
 
@@ -222,17 +260,29 @@ $("#select-links").selectize({
         { id: 3, title: "Yahoo", url: "http://yahoo.com" },
     ],
     render: {
-        option: function(data: Link, escape: (input: any) => string) {
-            return "<div class=\"option\">"
-                + "<span class=\"title\">" + escape(data.title) + "</span>"
-                + "<span class=\"url\">" + escape(data.url) + "</span>"
-                + "</div>";
+        option: function (data: Link, escape: (input: any) => string) {
+            return (
+                '<div class="option">' +
+                '<span class="title">' +
+                escape(data.title) +
+                "</span>" +
+                '<span class="url">' +
+                escape(data.url) +
+                "</span>" +
+                "</div>"
+            );
         },
-        item: function(data: Link, escape: (input: any) => string) {
-            return "<div class=\"item\"><a href=\"" + escape(data.url) + "\">" + escape(data.title) + "</a></div>";
+        item: function (data: Link, escape: (input: any) => string) {
+            return (
+                '<div class="item"><a href="' +
+                escape(data.url) +
+                '">' +
+                escape(data.title) +
+                "</a></div>"
+            );
         },
     },
-    create: function(input: string) {
+    create: function (input: string) {
         return {
             id: 0,
             title: input,
@@ -244,10 +294,10 @@ $("#select-links").selectize({
 // Events
 // --------------------------------------------------------------------------------------------------------------------
 
-var eventHandler = function(name: string) {
-    return function() {
+var eventHandler = function (name: string) {
+    return function () {
         console.log(name, arguments);
-        $("#log").append("<div><span class=\"name\">" + name + "</span></div>");
+        $("#log").append('<div><span class="name">' + name + "</span></div>");
     };
 };
 var $select = $("#select-state").selectize({
@@ -282,37 +332,54 @@ $("#select-repo").selectize({
     options: [],
     create: false,
     render: {
-        option: function(item: Repository, escape: (input: any) => string) {
-            return "<div>"
-                + "<span class=\"title\">"
-                + "<span class=\"name\"><i class=\"icon " + (item.fork ? "fork" : "source") + "\"></i>"
-                + escape(item.name) + "</span>"
-                + "<span class=\"by\">" + escape(item.username) + "</span>"
-                + "</span>"
-                + "<span class=\"description\">" + escape(item.description) + "</span>"
-                + "<ul class=\"meta\">"
-                + (item.language ? "<li class=\"language\">" + escape(item.language) + "</li>" : "")
-                + "<li class=\"watchers\"><span>" + escape(item.watchers) + "</span> watchers</li>"
-                + "<li class=\"forks\"><span>" + escape(item.forks) + "</span> forks</li>"
-                + "</ul>"
-                + "</div>";
+        option: function (item: Repository, escape: (input: any) => string) {
+            return (
+                "<div>" +
+                '<span class="title">' +
+                '<span class="name"><i class="icon ' +
+                (item.fork ? "fork" : "source") +
+                '"></i>' +
+                escape(item.name) +
+                "</span>" +
+                '<span class="by">' +
+                escape(item.username) +
+                "</span>" +
+                "</span>" +
+                '<span class="description">' +
+                escape(item.description) +
+                "</span>" +
+                '<ul class="meta">' +
+                (item.language
+                    ? '<li class="language">' + escape(item.language) + "</li>"
+                    : "") +
+                '<li class="watchers"><span>' +
+                escape(item.watchers) +
+                "</span> watchers</li>" +
+                '<li class="forks"><span>' +
+                escape(item.forks) +
+                "</span> forks</li>" +
+                "</ul>" +
+                "</div>"
+            );
         },
     },
-    score: function(search) {
+    score: function (search) {
         var score = this.getScoreFunction(search);
-        return function(item: Repository) {
+        return function (item: Repository) {
             return score(item) * (1 + Math.min(item.watchers / 100, 1));
         };
     },
-    load: function(query, callback) {
+    load: function (query, callback) {
         if (!query.length) return callback();
         $.ajax({
-            url: "https://api.github.com/legacy/repos/search/" + encodeURIComponent(query),
+            url:
+                "https://api.github.com/legacy/repos/search/" +
+                encodeURIComponent(query),
             type: "GET",
-            error: function() {
+            error: function () {
                 callback();
             },
-            success: function(res) {
+            success: function (res) {
                 callback(res.repositories.slice(0, 10));
             },
         });
@@ -337,24 +404,36 @@ $("#select-movie").selectize({
     options: [],
     create: false,
     render: {
-        option: function(item, escape) {
+        option: function (item, escape) {
             var actors: any[] = [];
             for (var i = 0, n = item.abridged_cast.length; i < n; i++) {
-                actors.push("<span>" + escape(item.abridged_cast[i].name) + "</span>");
+                actors.push(
+                    "<span>" + escape(item.abridged_cast[i].name) + "</span>",
+                );
             }
-            return "<div>"
-                + "<img src=\"" + escape(item.posters.thumbnail) + "\" alt=\"\">"
-                + "<span class=\"title\">"
-                + "<span class=\"name\">" + escape(item.title) + "</span>"
-                + "</span>"
-                + "<span class=\"description\">" + escape(item.synopsis || "No synopsis available at this time.")
-                + "</span>"
-                + "<span class=\"actors\">" + (actors.length ? "Starring " + actors.join(", ") : "Actors unavailable")
-                + "</span>"
-                + "</div>";
+            return (
+                "<div>" +
+                '<img src="' +
+                escape(item.posters.thumbnail) +
+                '" alt="">' +
+                '<span class="title">' +
+                '<span class="name">' +
+                escape(item.title) +
+                "</span>" +
+                "</span>" +
+                '<span class="description">' +
+                escape(item.synopsis || "No synopsis available at this time.") +
+                "</span>" +
+                '<span class="actors">' +
+                (actors.length
+                    ? "Starring " + actors.join(", ")
+                    : "Actors unavailable") +
+                "</span>" +
+                "</div>"
+            );
         },
     },
-    load: function(query, callback) {
+    load: function (query, callback) {
         if (!query.length) return callback();
         $.ajax({
             url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json",
@@ -365,10 +444,10 @@ $("#select-movie").selectize({
                 page_limit: 10,
                 apikey: "3qqmdwbuswut94jv4eua3j85",
             },
-            error: function() {
+            error: function () {
                 callback();
             },
-            success: function(res) {
+            success: function (res) {
                 console.log(res.movies);
                 callback(res.movies);
             },
@@ -383,7 +462,11 @@ $("#select-car").selectize({
     options: [
         { id: "avenger", make: "dodge", model: "Avenger" },
         { id: "caliber", make: "dodge", model: "Caliber" },
-        { id: "caravan-grand-passenger", make: "dodge", model: "Caravan Grand Passenger" },
+        {
+            id: "caravan-grand-passenger",
+            make: "dodge",
+            model: "Caravan Grand Passenger",
+        },
         { id: "challenger", make: "dodge", model: "Challenger" },
         { id: "ram-1500", make: "dodge", model: "Ram 1500" },
         { id: "viper", make: "dodge", model: "Viper" },
@@ -425,15 +508,17 @@ $(".input-tags").selectize({
     persist: false,
     create: true,
     render: {
-        item: function(data, escape) {
-            return "<div>\"" + escape(data.text) + "\"</div>";
+        item: function (data, escape) {
+            return '<div>"' + escape(data.text) + '"</div>';
         },
     },
-    onDelete: function(values) {
+    onDelete: function (values) {
         return confirm(
             values.length > 1
-                ? "Are you sure you want to remove these " + values.length + " items?"
-                : "Are you sure you want to remove \"" + values[0] + "\"?",
+                ? "Are you sure you want to remove these " +
+                      values.length +
+                      " items?"
+                : 'Are you sure you want to remove "' + values[0] + '"?',
         );
     },
 });
@@ -454,7 +539,7 @@ $(".demo-code-language").selectize({
     sortField: "text",
     hideSelected: false,
     plugins: {
-        "dropdown_header": {
+        dropdown_header: {
             title: "Language",
         },
     },

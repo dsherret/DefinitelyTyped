@@ -8,22 +8,19 @@ wx.config({
     jsApiList: [""],
 });
 
-wx.ready(() => {
-});
+wx.ready(() => {});
 
-wx.error((res: any) => {
-});
+wx.error((res: any) => {});
 
 wx.checkJsApi({
     jsApiList: [""],
-    success: res => {
+    success: (res) => {
         res.checkResult;
         if (res.errMsg) {
             res.errMsg.msg;
         }
     },
-    complete: () => {
-    },
+    complete: () => {},
 });
 
 wx.onMenuShareAppMessage({
@@ -138,8 +135,7 @@ wx.updateAppMessageShareData({
     desc: "",
     link: "",
     imgUrl: "",
-    success: () => {
-    },
+    success: () => {},
 });
 
 wx.updateTimelineShareData({

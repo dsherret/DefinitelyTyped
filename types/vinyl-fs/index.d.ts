@@ -3,7 +3,10 @@
 declare global {
     namespace NodeJS {
         interface WritableStream {
-            write(buffer: any, /* Vinyl.File */ cb?: (err?: Error | null) => void): boolean;
+            write(
+                buffer: any,
+                /* Vinyl.File */ cb?: (err?: Error | null) => void,
+            ): boolean;
         }
     }
 }
@@ -83,7 +86,11 @@ export interface DestOptions {
      * Enables sourcemap support on files passed through the stream. Will write inline soucemaps if
      * specified as true. Specifying a string path will write external sourcemaps at the given path.
      */
-    sourcemaps?: boolean | string | ((file: File) => string | false | undefined) | undefined;
+    sourcemaps?:
+        | boolean
+        | string
+        | ((file: File) => string | false | undefined)
+        | undefined;
 
     /**
      * When creating a symlink, whether or not the created symlink should be relative. If false,
@@ -102,7 +109,10 @@ export interface DestOptions {
  * fs.src(['!b*.js', '*.js']) would not exclude any files, but this would: fs.src(['*.js', '!b*.js'])
  * @param opt Options Vinyl source options, changes the way the files are read, found, or stored in the vinyl stream
  */
-export function src(globs: string | string[], opt?: SrcOptions): NodeJS.ReadWriteStream;
+export function src(
+    globs: string | string[],
+    opt?: SrcOptions,
+): NodeJS.ReadWriteStream;
 
 /**
  * On write the stream will save the vinyl File to disk at the folder/cwd specified.
@@ -113,7 +123,10 @@ export function src(globs: string | string[], opt?: SrcOptions): NodeJS.ReadWrit
  * contents will have it's position reset to the beginning if it is a stream
  * @param folder destination folder or a function that takes in a file and returns a folder path
  */
-export function dest(folder: string | ((file: File) => string), opt?: DestOptions): NodeJS.ReadWriteStream;
+export function dest(
+    folder: string | ((file: File) => string),
+    opt?: DestOptions,
+): NodeJS.ReadWriteStream;
 
 /**
  * On write the stream will create a symbolic link (i.e. symlink) on disk at the folder/cwd specified.
@@ -121,28 +134,31 @@ export function dest(folder: string | ((file: File) => string), opt?: DestOption
  * The file will be modified after being written to this stream:
  * cwd, base, and path will be overwritten to match the folder
  */
-export function symlink(folder: string | ((File: File) => string), opts?: {
-    /**
-     * Specify the working directory the folder is relative to
-     * Default is process.cwd()
-     */
-    cwd?: string | ((file: File) => string) | undefined;
+export function symlink(
+    folder: string | ((File: File) => string),
+    opts?: {
+        /**
+         * Specify the working directory the folder is relative to
+         * Default is process.cwd()
+         */
+        cwd?: string | ((file: File) => string) | undefined;
 
-    /**
-     * Specify the mode the directory should be created with
-     * Default is the process mode
-     */
-    dirMode?: number | ((file: File) => number) | undefined;
+        /**
+         * Specify the mode the directory should be created with
+         * Default is the process mode
+         */
+        dirMode?: number | ((file: File) => number) | undefined;
 
-    /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
-    overwrite?: boolean | ((file: File) => boolean) | undefined;
+        /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
+        overwrite?: boolean | ((file: File) => boolean) | undefined;
 
-    /**
-     * Specify whether the symlink should be relative or absolute.
-     * Default is false.
-     */
-    relativeSymlinks?: boolean | ((file: File) => boolean) | undefined;
+        /**
+         * Specify whether the symlink should be relative or absolute.
+         * Default is false.
+         */
+        relativeSymlinks?: boolean | ((file: File) => boolean) | undefined;
 
-    /* When creating a symlink, whether or not a directory symlink should be created as a junction. */
-    useJunctions?: boolean | ((file: File) => boolean) | undefined;
-}): NodeJS.ReadWriteStream;
+        /* When creating a symlink, whether or not a directory symlink should be created as a junction. */
+        useJunctions?: boolean | ((file: File) => boolean) | undefined;
+    },
+): NodeJS.ReadWriteStream;

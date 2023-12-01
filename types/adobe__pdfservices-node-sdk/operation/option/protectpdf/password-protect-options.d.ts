@@ -79,8 +79,12 @@ export class PasswordProtectOptions {
 export class PasswordProtectOptionsBuilder {
     setUserPassword(userPassword: string): PasswordProtectOptionsBuilder;
     setOwnerPassword(ownerPassword: string): PasswordProtectOptionsBuilder;
-    setEncryptionAlgorithm(encryptionAlgorithm: keyof EncryptionAlgorithm): PasswordProtectOptionsBuilder;
-    setContentEncryption(contentEncryption: keyof ContentEncryption): PasswordProtectOptionsBuilder;
+    setEncryptionAlgorithm(
+        encryptionAlgorithm: keyof EncryptionAlgorithm,
+    ): PasswordProtectOptionsBuilder;
+    setContentEncryption(
+        contentEncryption: keyof ContentEncryption,
+    ): PasswordProtectOptionsBuilder;
     setPermissions(permissions: Permissions): PasswordProtectOptionsBuilder;
     build(): PasswordProtectOptions;
 }

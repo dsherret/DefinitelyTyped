@@ -147,7 +147,14 @@ export interface ProcessStatus {
     umask?: number;
 }
 
-export type ProcessFdinfoType = "regular" | "event" | "epoll" | "signal" | "inotify" | "fanotify" | "timer";
+export type ProcessFdinfoType =
+    | "regular"
+    | "event"
+    | "epoll"
+    | "signal"
+    | "inotify"
+    | "fanotify"
+    | "timer";
 
 export interface ProcessFdinfoEpollCounter {
     fd: number;

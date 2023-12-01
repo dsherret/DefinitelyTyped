@@ -46,11 +46,28 @@ declare module "node:test" {
      * @returns A {@link Promise} resolved with `undefined` once the test completes.
      */
     function test(name?: string, fn?: TestFn): Promise<void>;
-    function test(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function test(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function test(options?: TestOptions, fn?: TestFn): Promise<void>;
     function test(fn?: TestFn): Promise<void>;
     namespace test {
-        export { after, afterEach, before, beforeEach, describe, it, mock, only, run, skip, test, todo };
+        export {
+            after,
+            afterEach,
+            before,
+            beforeEach,
+            describe,
+            it,
+            mock,
+            only,
+            run,
+            skip,
+            test,
+            todo,
+        };
     }
     /**
      * @since v18.6.0
@@ -59,7 +76,11 @@ declare module "node:test" {
      * @param options Configuration options for the suite
      * @param fn The function under suite. Default: A no-op function.
      */
-    function describe(name?: string, options?: TestOptions, fn?: SuiteFn): Promise<void>;
+    function describe(
+        name?: string,
+        options?: TestOptions,
+        fn?: SuiteFn,
+    ): Promise<void>;
     function describe(name?: string, fn?: SuiteFn): Promise<void>;
     function describe(options?: TestOptions, fn?: SuiteFn): Promise<void>;
     function describe(fn?: SuiteFn): Promise<void>;
@@ -67,14 +88,22 @@ declare module "node:test" {
         /**
          * Shorthand for skipping a suite, same as `describe([name], { skip: true }[, fn])`.
          */
-        function skip(name?: string, options?: TestOptions, fn?: SuiteFn): Promise<void>;
+        function skip(
+            name?: string,
+            options?: TestOptions,
+            fn?: SuiteFn,
+        ): Promise<void>;
         function skip(name?: string, fn?: SuiteFn): Promise<void>;
         function skip(options?: TestOptions, fn?: SuiteFn): Promise<void>;
         function skip(fn?: SuiteFn): Promise<void>;
         /**
          * Shorthand for marking a suite as `TODO`, same as `describe([name], { todo: true }[, fn])`.
          */
-        function todo(name?: string, options?: TestOptions, fn?: SuiteFn): Promise<void>;
+        function todo(
+            name?: string,
+            options?: TestOptions,
+            fn?: SuiteFn,
+        ): Promise<void>;
         function todo(name?: string, fn?: SuiteFn): Promise<void>;
         function todo(options?: TestOptions, fn?: SuiteFn): Promise<void>;
         function todo(fn?: SuiteFn): Promise<void>;
@@ -82,7 +111,11 @@ declare module "node:test" {
          * Shorthand for marking a suite as `only`, same as `describe([name], { only: true }[, fn])`.
          * @since v18.15.0
          */
-        function only(name?: string, options?: TestOptions, fn?: SuiteFn): Promise<void>;
+        function only(
+            name?: string,
+            options?: TestOptions,
+            fn?: SuiteFn,
+        ): Promise<void>;
         function only(name?: string, fn?: SuiteFn): Promise<void>;
         function only(options?: TestOptions, fn?: SuiteFn): Promise<void>;
         function only(fn?: SuiteFn): Promise<void>;
@@ -96,7 +129,11 @@ declare module "node:test" {
      * @param fn The function under test. If the test uses callbacks, the callback function is
      *    passed as the second argument. Default: A no-op function.
      */
-    function it(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function it(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function it(name?: string, fn?: TestFn): Promise<void>;
     function it(options?: TestOptions, fn?: TestFn): Promise<void>;
     function it(fn?: TestFn): Promise<void>;
@@ -104,14 +141,22 @@ declare module "node:test" {
         /**
          * Shorthand for skipping a test, same as `it([name], { skip: true }[, fn])`.
          */
-        function skip(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+        function skip(
+            name?: string,
+            options?: TestOptions,
+            fn?: TestFn,
+        ): Promise<void>;
         function skip(name?: string, fn?: TestFn): Promise<void>;
         function skip(options?: TestOptions, fn?: TestFn): Promise<void>;
         function skip(fn?: TestFn): Promise<void>;
         /**
          * Shorthand for marking a test as `TODO`, same as `it([name], { todo: true }[, fn])`.
          */
-        function todo(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+        function todo(
+            name?: string,
+            options?: TestOptions,
+            fn?: TestFn,
+        ): Promise<void>;
         function todo(name?: string, fn?: TestFn): Promise<void>;
         function todo(options?: TestOptions, fn?: TestFn): Promise<void>;
         function todo(fn?: TestFn): Promise<void>;
@@ -119,7 +164,11 @@ declare module "node:test" {
          * Shorthand for marking a test as `only`, same as `it([name], { only: true }[, fn])`.
          * @since v18.15.0
          */
-        function only(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+        function only(
+            name?: string,
+            options?: TestOptions,
+            fn?: TestFn,
+        ): Promise<void>;
         function only(name?: string, fn?: TestFn): Promise<void>;
         function only(options?: TestOptions, fn?: TestFn): Promise<void>;
         function only(fn?: TestFn): Promise<void>;
@@ -128,7 +177,11 @@ declare module "node:test" {
      * Shorthand for skipping a test, same as `test([name], { skip: true }[, fn])`.
      * @since v18.17.0
      */
-    function skip(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function skip(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function skip(name?: string, fn?: TestFn): Promise<void>;
     function skip(options?: TestOptions, fn?: TestFn): Promise<void>;
     function skip(fn?: TestFn): Promise<void>;
@@ -136,7 +189,11 @@ declare module "node:test" {
      * Shorthand for marking a test as `TODO`, same as `test([name], { todo: true }[, fn])`.
      * @since v18.17.0
      */
-    function todo(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function todo(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function todo(name?: string, fn?: TestFn): Promise<void>;
     function todo(options?: TestOptions, fn?: TestFn): Promise<void>;
     function todo(fn?: TestFn): Promise<void>;
@@ -144,7 +201,11 @@ declare module "node:test" {
      * Shorthand for marking a test as `only`, same as `test([name], { only: true }[, fn])`.
      * @since v18.17.0
      */
-    function only(name?: string, options?: TestOptions, fn?: TestFn): Promise<void>;
+    function only(
+        name?: string,
+        options?: TestOptions,
+        fn?: TestFn,
+    ): Promise<void>;
     function only(name?: string, fn?: TestFn): Promise<void>;
     function only(options?: TestOptions, fn?: TestFn): Promise<void>;
     function only(fn?: TestFn): Promise<void>;
@@ -243,13 +304,34 @@ declare module "node:test" {
      * @since v18.9.0
      */
     interface TestsStream extends NodeJS.ReadableStream {
-        addListener(event: "test:diagnostic", listener: (data: DiagnosticData) => void): this;
-        addListener(event: "test:fail", listener: (data: TestFail) => void): this;
-        addListener(event: "test:pass", listener: (data: TestPass) => void): this;
-        addListener(event: "test:plan", listener: (data: TestPlan) => void): this;
-        addListener(event: "test:start", listener: (data: TestStart) => void): this;
-        addListener(event: "test:stderr", listener: (data: TestStderr) => void): this;
-        addListener(event: "test:stdout", listener: (data: TestStdout) => void): this;
+        addListener(
+            event: "test:diagnostic",
+            listener: (data: DiagnosticData) => void,
+        ): this;
+        addListener(
+            event: "test:fail",
+            listener: (data: TestFail) => void,
+        ): this;
+        addListener(
+            event: "test:pass",
+            listener: (data: TestPass) => void,
+        ): this;
+        addListener(
+            event: "test:plan",
+            listener: (data: TestPlan) => void,
+        ): this;
+        addListener(
+            event: "test:start",
+            listener: (data: TestStart) => void,
+        ): this;
+        addListener(
+            event: "test:stderr",
+            listener: (data: TestStderr) => void,
+        ): this;
+        addListener(
+            event: "test:stdout",
+            listener: (data: TestStdout) => void,
+        ): this;
         addListener(event: string, listener: (...args: any[]) => void): this;
         emit(event: "test:diagnostic", data: DiagnosticData): boolean;
         emit(event: "test:fail", data: TestFail): boolean;
@@ -259,7 +341,10 @@ declare module "node:test" {
         emit(event: "test:stderr", data: TestStderr): boolean;
         emit(event: "test:stdout", data: TestStdout): boolean;
         emit(event: string | symbol, ...args: any[]): boolean;
-        on(event: "test:diagnostic", listener: (data: DiagnosticData) => void): this;
+        on(
+            event: "test:diagnostic",
+            listener: (data: DiagnosticData) => void,
+        ): this;
         on(event: "test:fail", listener: (data: TestFail) => void): this;
         on(event: "test:pass", listener: (data: TestPass) => void): this;
         on(event: "test:plan", listener: (data: TestPlan) => void): this;
@@ -267,7 +352,10 @@ declare module "node:test" {
         on(event: "test:stderr", listener: (data: TestStderr) => void): this;
         on(event: "test:stdout", listener: (data: TestStdout) => void): this;
         on(event: string, listener: (...args: any[]) => void): this;
-        once(event: "test:diagnostic", listener: (data: DiagnosticData) => void): this;
+        once(
+            event: "test:diagnostic",
+            listener: (data: DiagnosticData) => void,
+        ): this;
         once(event: "test:fail", listener: (data: TestFail) => void): this;
         once(event: "test:pass", listener: (data: TestPass) => void): this;
         once(event: "test:plan", listener: (data: TestPlan) => void): this;
@@ -275,22 +363,70 @@ declare module "node:test" {
         once(event: "test:stderr", listener: (data: TestStderr) => void): this;
         once(event: "test:stdout", listener: (data: TestStdout) => void): this;
         once(event: string, listener: (...args: any[]) => void): this;
-        prependListener(event: "test:diagnostic", listener: (data: DiagnosticData) => void): this;
-        prependListener(event: "test:fail", listener: (data: TestFail) => void): this;
-        prependListener(event: "test:pass", listener: (data: TestPass) => void): this;
-        prependListener(event: "test:plan", listener: (data: TestPlan) => void): this;
-        prependListener(event: "test:start", listener: (data: TestStart) => void): this;
-        prependListener(event: "test:stderr", listener: (data: TestStderr) => void): this;
-        prependListener(event: "test:stdout", listener: (data: TestStdout) => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
-        prependOnceListener(event: "test:diagnostic", listener: (data: DiagnosticData) => void): this;
-        prependOnceListener(event: "test:fail", listener: (data: TestFail) => void): this;
-        prependOnceListener(event: "test:pass", listener: (data: TestPass) => void): this;
-        prependOnceListener(event: "test:plan", listener: (data: TestPlan) => void): this;
-        prependOnceListener(event: "test:start", listener: (data: TestStart) => void): this;
-        prependOnceListener(event: "test:stderr", listener: (data: TestStderr) => void): this;
-        prependOnceListener(event: "test:stdout", listener: (data: TestStdout) => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "test:diagnostic",
+            listener: (data: DiagnosticData) => void,
+        ): this;
+        prependListener(
+            event: "test:fail",
+            listener: (data: TestFail) => void,
+        ): this;
+        prependListener(
+            event: "test:pass",
+            listener: (data: TestPass) => void,
+        ): this;
+        prependListener(
+            event: "test:plan",
+            listener: (data: TestPlan) => void,
+        ): this;
+        prependListener(
+            event: "test:start",
+            listener: (data: TestStart) => void,
+        ): this;
+        prependListener(
+            event: "test:stderr",
+            listener: (data: TestStderr) => void,
+        ): this;
+        prependListener(
+            event: "test:stdout",
+            listener: (data: TestStdout) => void,
+        ): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:diagnostic",
+            listener: (data: DiagnosticData) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:fail",
+            listener: (data: TestFail) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:pass",
+            listener: (data: TestPass) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:plan",
+            listener: (data: TestPlan) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:start",
+            listener: (data: TestStart) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:stderr",
+            listener: (data: TestStderr) => void,
+        ): this;
+        prependOnceListener(
+            event: "test:stdout",
+            listener: (data: TestStdout) => void,
+        ): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
     }
 
     /**
@@ -569,8 +705,14 @@ declare module "node:test" {
          *  This is useful for creating mocks that exhibit one behavior for a specified number of calls and then restore the behavior of `original`.
          * @param options Optional configuration options for the mock function.
          */
-        fn<F extends Function = NoOpFunction>(original?: F, options?: MockFunctionOptions): Mock<F>;
-        fn<F extends Function = NoOpFunction, Implementation extends Function = F>(
+        fn<F extends Function = NoOpFunction>(
+            original?: F,
+            options?: MockFunctionOptions,
+        ): Mock<F>;
+        fn<
+            F extends Function = NoOpFunction,
+            Implementation extends Function = F,
+        >(
             original?: F,
             implementation?: Implementation,
             options?: MockFunctionOptions,
@@ -589,7 +731,8 @@ declare module "node:test" {
             object: MockedObject,
             methodName: MethodName,
             options?: MockFunctionOptions,
-        ): MockedObject[MethodName] extends Function ? Mock<MockedObject[MethodName]>
+        ): MockedObject[MethodName] extends Function
+            ? Mock<MockedObject[MethodName]>
             : never;
         method<
             MockedObject extends object,
@@ -600,7 +743,8 @@ declare module "node:test" {
             methodName: MethodName,
             implementation: Implementation,
             options?: MockFunctionOptions,
-        ): MockedObject[MethodName] extends Function ? Mock<MockedObject[MethodName] | Implementation>
+        ): MockedObject[MethodName] extends Function
+            ? Mock<MockedObject[MethodName] | Implementation>
             : never;
         method<MockedObject extends object>(
             object: MockedObject,
@@ -676,12 +820,16 @@ declare module "node:test" {
 
     interface MockFunctionCall<
         F extends Function,
-        ReturnType = F extends (...args: any) => infer T ? T
-            : F extends abstract new(...args: any) => infer T ? T
-            : unknown,
-        Args = F extends (...args: infer Y) => any ? Y
-            : F extends abstract new(...args: infer Y) => any ? Y
-            : unknown[],
+        ReturnType = F extends (...args: any) => infer T
+            ? T
+            : F extends abstract new (...args: any) => infer T
+              ? T
+              : unknown,
+        Args = F extends (...args: infer Y) => any
+            ? Y
+            : F extends abstract new (...args: infer Y) => any
+              ? Y
+              : unknown[],
     > {
         /**
          * An array of the arguments passed to the mock function.
@@ -705,7 +853,7 @@ declare module "node:test" {
          * If the mocked function is a constructor, this field contains the class being constructed.
          * Otherwise this will be `undefined`.
          */
-        target: F extends abstract new(...args: any) => any ? F : undefined;
+        target: F extends abstract new (...args: any) => any ? F : undefined;
         /**
          * The mocked function's `this` value.
          */
@@ -752,7 +900,11 @@ declare module "node:test" {
          */
         restore(): void;
     }
-    type Timer = "setInterval" | "clearInterval" | "setTimeout" | "clearTimeout";
+    type Timer =
+        | "setInterval"
+        | "clearInterval"
+        | "setTimeout"
+        | "clearTimeout";
     /**
      * Mocking timers is a technique commonly used in software testing to simulate and
      * control the behavior of timers, such as `setInterval` and `setTimeout`,
@@ -898,7 +1050,18 @@ declare module "node:test" {
         [Symbol.dispose](): void;
     }
 
-    export { after, afterEach, before, beforeEach, describe, it, mock, run, test, test as default };
+    export {
+        after,
+        afterEach,
+        before,
+        beforeEach,
+        describe,
+        it,
+        mock,
+        run,
+        test,
+        test as default,
+    };
 }
 
 interface TestLocationInfo {
@@ -1094,7 +1257,9 @@ declare module "node:test/reporters" {
      * where each passing test is represented by a `.`,
      * and each failing test is represented by a `X`.
      */
-    function dot(source: TestEventGenerator): AsyncGenerator<"\n" | "." | "X", void>;
+    function dot(
+        source: TestEventGenerator,
+    ): AsyncGenerator<"\n" | "." | "X", void>;
     /**
      * The `tap` reporter outputs the test results in the [TAP](https://testanything.org/) format.
      */

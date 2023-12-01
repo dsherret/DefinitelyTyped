@@ -36,7 +36,12 @@ declare namespace cabinet {
         noTypeDefinitions?: boolean | undefined;
     }
 
-    type Resolver = (partial: string, filename: string, directory: string, config?: any) => void;
+    type Resolver = (
+        partial: string,
+        filename: string,
+        directory: string,
+        config?: any,
+    ) => void;
 
     /**
      * Register a custom lookup resolver for a file extension

@@ -2,8 +2,10 @@
 interface ActiveXObjectNameMap {}
 
 interface ActiveXObject {
-    new<K extends keyof ActiveXObjectNameMap>(progid: K): ActiveXObjectNameMap[K];
-    new(s: string): any;
+    new <K extends keyof ActiveXObjectNameMap>(
+        progid: K,
+    ): ActiveXObjectNameMap[K];
+    new (s: string): any;
 }
 declare var ActiveXObject: ActiveXObject;
 
@@ -44,7 +46,7 @@ interface Enumerator<T = any> {
 }
 
 interface EnumeratorConstructor {
-    new<T = any>(collection: { Item(index: any): T }): Enumerator<T>;
+    new <T = any>(collection: { Item(index: any): T }): Enumerator<T>;
 }
 
 declare var Enumerator: EnumeratorConstructor;
@@ -84,7 +86,7 @@ interface VBArray<T = any> {
 }
 
 interface VBArrayConstructor {
-    new<T = any>(safeArray: SafeArray<T>): VBArray<T>;
+    new <T = any>(safeArray: SafeArray<T>): VBArray<T>;
 }
 
 declare var VBArray: VBArrayConstructor;
@@ -96,7 +98,7 @@ declare class VarDate {
 }
 
 interface DateConstructor {
-    new(vd: VarDate): Date;
+    new (vd: VarDate): Date;
 }
 
 interface Date {

@@ -1,5 +1,5 @@
 {
-    "rules": {
-        "no-duplicate-imports": "off"
-    }
+  "rules": {
+    "no-duplicate-imports": "off"
+  }
 }

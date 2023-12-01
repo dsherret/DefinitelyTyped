@@ -110,10 +110,7 @@ declare namespace Roles {
      *
      * @return {Array} Array of user's groups, unsorted. Roles.GLOBAL_GROUP will be omitted
      */
-    function getGroupsForUser(
-        user: string | Object,
-        role?: string,
-    ): string[];
+    function getGroupsForUser(user: string | Object, role?: string): string[];
 
     /**
      * Retrieve users roles
@@ -124,10 +121,7 @@ declare namespace Roles {
      *                         User's Roles.GLOBAL_GROUP will also be included.
      * @return {Array} Array of user's roles, unsorted.
      */
-    function getRolesForUser(
-        user: string | Object,
-        group?: string,
-    ): string[];
+    function getRolesForUser(user: string | Object, group?: string): string[];
 
     /**
      * Retrieve all users who are in target role.

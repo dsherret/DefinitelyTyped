@@ -52,7 +52,11 @@ declare class MpnsService {
         callback: ResponseCallback,
     ): void;
 
-    public createNativeRegistration(channel: string, tags: string | string[], callback: ResponseCallback): void;
+    public createNativeRegistration(
+        channel: string,
+        tags: string | string[],
+        callback: ResponseCallback,
+    ): void;
 
     public createNativeRegistration(
         channel: string,
@@ -125,7 +129,10 @@ declare class MpnsService {
         callback: ResponseCallback,
     ): void;
 
-    public listRegistrationsByChannel(channel: string, callback: ResponseCallback): void;
+    public listRegistrationsByChannel(
+        channel: string,
+        callback: ResponseCallback,
+    ): void;
 
     public listRegistrationsByChannel(
         channel: string,

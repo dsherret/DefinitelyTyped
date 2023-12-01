@@ -10,7 +10,18 @@ type DatepickerEvents =
     | "changeDecade"
     | "changeCentury";
 
-type DatepickerViewModes = 0 | "days" | 1 | "months" | 2 | "years" | 3 | "decades" | 4 | "centuries" | "millenium";
+type DatepickerViewModes =
+    | 0
+    | "days"
+    | 1
+    | "months"
+    | 2
+    | "years"
+    | 3
+    | "decades"
+    | 4
+    | "centuries"
+    | "millenium";
 
 type DatepickerOrientations =
     | "auto"
@@ -39,11 +50,31 @@ type DatepickerOrientations =
 interface DatepickerOptions {
     autoclose?: boolean | undefined;
     assumeNearbyYear?: boolean | number | undefined;
-    beforeShowDay?: ((date: Date) => undefined | string | boolean | DatepickerBeforeShowDayResponse) | undefined;
-    beforeShowMonth?: ((date: Date) => undefined | string | boolean | DatepickerBeforeShowResponse) | undefined;
-    beforeShowYear?: ((date: Date) => undefined | string | boolean | DatepickerBeforeShowResponse) | undefined;
-    beforeShowDecade?: ((date: Date) => undefined | string | boolean | DatepickerBeforeShowResponse) | undefined;
-    beforeShowCentury?: ((date: Date) => undefined | string | boolean | DatepickerBeforeShowResponse) | undefined;
+    beforeShowDay?:
+        | ((
+              date: Date,
+          ) => undefined | string | boolean | DatepickerBeforeShowDayResponse)
+        | undefined;
+    beforeShowMonth?:
+        | ((
+              date: Date,
+          ) => undefined | string | boolean | DatepickerBeforeShowResponse)
+        | undefined;
+    beforeShowYear?:
+        | ((
+              date: Date,
+          ) => undefined | string | boolean | DatepickerBeforeShowResponse)
+        | undefined;
+    beforeShowDecade?:
+        | ((
+              date: Date,
+          ) => undefined | string | boolean | DatepickerBeforeShowResponse)
+        | undefined;
+    beforeShowCentury?:
+        | ((
+              date: Date,
+          ) => undefined | string | boolean | DatepickerBeforeShowResponse)
+        | undefined;
     calendarWeeks?: boolean | undefined;
     clearBtn?: boolean | undefined;
     container?: string | undefined;
@@ -116,8 +147,15 @@ interface JQuery {
     datepicker(methodName: string, params: any): any;
     datepicker(options: DatepickerOptions): JQuery;
 
-    off(events: DatepickerEvents, selector?: string, handler?: (eventObject: DatepickerEventObject) => any): JQuery;
-    off(events: DatepickerEvents, handler: (eventObject: DatepickerEventObject) => any): JQuery;
+    off(
+        events: DatepickerEvents,
+        selector?: string,
+        handler?: (eventObject: DatepickerEventObject) => any,
+    ): JQuery;
+    off(
+        events: DatepickerEvents,
+        handler: (eventObject: DatepickerEventObject) => any,
+    ): JQuery;
 
     on(
         events: DatepickerEvents,
@@ -125,6 +163,13 @@ interface JQuery {
         data: any,
         handler?: (eventObject: DatepickerEventObject) => any,
     ): JQuery;
-    on(events: DatepickerEvents, selector: string, handler: (eventObject: DatepickerEventObject) => any): JQuery;
-    on(events: DatepickerEvents, handler: (eventObject: DatepickerEventObject) => any): JQuery;
+    on(
+        events: DatepickerEvents,
+        selector: string,
+        handler: (eventObject: DatepickerEventObject) => any,
+    ): JQuery;
+    on(
+        events: DatepickerEvents,
+        handler: (eventObject: DatepickerEventObject) => any,
+    ): JQuery;
 }

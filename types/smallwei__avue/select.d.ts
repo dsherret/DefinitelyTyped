@@ -11,11 +11,15 @@ export interface AvueSelectProps<T = any> {
     onChange?: (data: { value: T }) => void;
     "onUpdate:modelValue"?: (val: T) => any;
 }
-export const AvueSelect: new() => {
+export const AvueSelect: new () => {
     $props: AvueSelectProps;
 };
 export interface AvueSelectSlots {
-    default: (scoped: { label: string; value: string; item: DicItem }) => VNode[];
+    default: (scoped: {
+        label: string;
+        value: string;
+        item: DicItem;
+    }) => VNode[];
 }
 
 export type AvueSelectInstance = InstanceType<typeof AvueSelect>;

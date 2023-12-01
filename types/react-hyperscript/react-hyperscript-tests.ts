@@ -20,49 +20,60 @@ const FragmentComponent: React.FC = () => {
         $("div.example", [
             $("h1#heading", "This is hyperscript"),
             $("h2", "creating React.js markup"),
-            $(ClassComponent, {
-                az: "za",
-            }, [
-                $("li", [
-                    $("a", {
-                        href: "http://whatever.com",
-                    }, "One list item"),
-                ]),
-                $("li", "Another list item"),
-            ]),
-            $(FunctionComponent, {
-                az: "za",
-            }, [
-                $("li", [
-                    $("a", {
-                        href: "http://whatever.com",
-                    }, "One list item"),
-                ]),
-                $("li", "Another list item"),
-            ]),
+            $(
+                ClassComponent,
+                {
+                    az: "za",
+                },
+                [
+                    $("li", [
+                        $(
+                            "a",
+                            {
+                                href: "http://whatever.com",
+                            },
+                            "One list item",
+                        ),
+                    ]),
+                    $("li", "Another list item"),
+                ],
+            ),
+            $(
+                FunctionComponent,
+                {
+                    az: "za",
+                },
+                [
+                    $("li", [
+                        $(
+                            "a",
+                            {
+                                href: "http://whatever.com",
+                            },
+                            "One list item",
+                        ),
+                    ]),
+                    $("li", "Another list item"),
+                ],
+            ),
             $("img", {
                 src: "https://example.com/some-image",
             }),
             $(["text"]),
-            $([
-                $("span", "text"),
-            ]),
+            $([$("span", "text")]),
             $(["zero", "unit"]),
-            $([
-                $("span", "zero"),
-                $("span", "unit"),
-            ]),
+            $([$("span", "zero"), $("span", "unit")]),
             $("span", 1234),
         ]),
     ]);
 };
 
 const Component: React.FC = () => {
-    return $("div", {
-        className: "some class",
-    }, [
-        null,
-        $("span", "some tag"),
-        "some text node",
-    ]);
+    return $(
+        "div",
+        {
+            className: "some class",
+        },
+        [null, $("span", "some tag"), "some text node"],
+    );
 };

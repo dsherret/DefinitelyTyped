@@ -4,7 +4,11 @@
 /// <reference types="cheerio" />
 
 declare namespace Chai {
-    type EnzymeSelector = string | React.FunctionComponent<any> | React.ComponentClass<any> | { [key: string]: any };
+    type EnzymeSelector =
+        | string
+        | React.FunctionComponent<any>
+        | React.ComponentClass<any>
+        | { [key: string]: any };
 
     interface Match {
         /**
@@ -169,10 +173,14 @@ declare namespace Chai {
 declare module "chai-enzyme" {
     import { ReactWrapper, ShallowWrapper } from "enzyme";
 
-    type DebugWrapper = ShallowWrapper<any, any> | cheerio.Cheerio | ReactWrapper<any, any>;
-    function chaiEnzyMe(wrapper?: (debugWrapper: DebugWrapper) => string): Chai.ChaiPlugin;
+    type DebugWrapper =
+        | ShallowWrapper<any, any>
+        | cheerio.Cheerio
+        | ReactWrapper<any, any>;
+    function chaiEnzyMe(
+        wrapper?: (debugWrapper: DebugWrapper) => string,
+    ): Chai.ChaiPlugin;
 
-    namespace chaiEnzyMe {
-    }
+    namespace chaiEnzyMe {}
     export = chaiEnzyMe;
 }

@@ -6,7 +6,11 @@ declare class Recaptcha {
     static get_challenge(): string;
     static get_response(): string;
     static focus_response_field(): void;
-    static create(public_key: string, element: string, options: RecaptchaOptions): void;
+    static create(
+        public_key: string,
+        element: string,
+        options: RecaptchaOptions,
+    ): void;
     static destroy(): void;
 }
 

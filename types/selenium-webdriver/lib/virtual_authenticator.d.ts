@@ -101,7 +101,12 @@ export class Credential {
      * @param signCount initial value for a signature counter.
      * @returns A non-resident credential
      */
-    static createNonResidentCredential(id: Uint8Array, rpId: string, privateKey: string, signCount: number): Credential;
+    static createNonResidentCredential(
+        id: Uint8Array,
+        rpId: string,
+        privateKey: string,
+        signCount: number,
+    ): Credential;
 
     toDict(): Object;
 

@@ -9,7 +9,7 @@ draftToMarkdown(rawContent, {
     styleItems: {
         RED: {
             open() {
-                return "<span style=\"color: red\">";
+                return '<span style="color: red">';
             },
 
             close() {
@@ -24,7 +24,7 @@ draftToMarkdown(rawContent, {
     entityItems: {
         mention: {
             open: () => {
-                return "<span class=\"mention-item\">";
+                return '<span class="mention-item">';
             },
 
             close: () => {
@@ -68,7 +68,7 @@ convertFromRaw(rawDraftWithBlockEntities);
 // Handle options.blockEntities with argument
 const rawDraftWithBlockEntitiesArguments = markdownToDraft("# Test", {
     blockEntities: {
-        link_open: item => {
+        link_open: (item) => {
             const data = item && {
                 url: item.href,
                 href: item.href,
@@ -109,7 +109,7 @@ convertFromRaw(rawDraftWithBlockTypes);
 // Handle options.blockTypes with argument
 const rawDraftWithBlockTypesArguments = markdownToDraft("# Test", {
     blockTypes: {
-        paragraph_open: item => {
+        paragraph_open: (item) => {
             const text = item ? item.text : "";
             return {
                 type: "unstyled",

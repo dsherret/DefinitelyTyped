@@ -6,9 +6,9 @@ const replacer = (key: any, val: any) => {
 
 const replacerArray = ["a", "x"];
 
-CircularJSON.parse("{\"a\":\"b\"}");
+CircularJSON.parse('{"a":"b"}');
 
-CircularJSON.parse("{\"a\":\"b\"}", replacer);
+CircularJSON.parse('{"a":"b"}', replacer);
 
 // just stringify a value
 CircularJSON.stringify({ a: "b" });

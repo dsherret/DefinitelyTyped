@@ -6,4 +6,6 @@ export interface Props {
     environment: IEnvironment;
 }
 
-export function RelayEnvironmentProvider(props: Props): ReactElement<ProviderProps<RelayContext>>;
+export function RelayEnvironmentProvider(
+    props: Props,
+): ReactElement<ProviderProps<RelayContext>>;

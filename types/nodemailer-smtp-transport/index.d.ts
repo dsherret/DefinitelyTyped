@@ -153,32 +153,34 @@ declare namespace smtpTransport {
         /**
          * see Pooled SMTP for details about connection pooling
          */
-        pool?: {
-            /**
-             * set to true to use pooled connections (defaults to false) instead of creating a new connection for every email
-             */
-            pool?: boolean | undefined;
+        pool?:
+            | {
+                  /**
+                   * set to true to use pooled connections (defaults to false) instead of creating a new connection for every email
+                   */
+                  pool?: boolean | undefined;
 
-            /**
-             * is the count of maximum simultaneous connections to make against the SMTP server (defaults to 5)
-             */
-            maxConnections?: boolean | undefined;
+                  /**
+                   * is the count of maximum simultaneous connections to make against the SMTP server (defaults to 5)
+                   */
+                  maxConnections?: boolean | undefined;
 
-            /**
-             * limits the message count to be sent using a single connection (defaults to 100). After maxMessages is reached the connection is dropped and a new one is created for the following messages
-             */
-            maxMessages?: boolean | undefined;
+                  /**
+                   * limits the message count to be sent using a single connection (defaults to 100). After maxMessages is reached the connection is dropped and a new one is created for the following messages
+                   */
+                  maxMessages?: boolean | undefined;
 
-            /**
-             * defines the time measuring period in milliseconds (defaults to 1000, ie. to 1 second) for rate limiting
-             */
-            rateDelta?: boolean | undefined;
+                  /**
+                   * defines the time measuring period in milliseconds (defaults to 1000, ie. to 1 second) for rate limiting
+                   */
+                  rateDelta?: boolean | undefined;
 
-            /**
-             * limits the message count to be sent in rateDelta time. Once rateLimit is reached, sending is paused until the end of the measuring period.
-             */
-            rateLimit?: boolean | undefined;
-        } | undefined;
+                  /**
+                   * limits the message count to be sent in rateDelta time. Once rateLimit is reached, sending is paused until the end of the measuring period.
+                   */
+                  rateLimit?: boolean | undefined;
+              }
+            | undefined;
 
         /**
          * if true, then does not allow to use files as content. Use it when you want to use JSON data from untrusted source as the email. If an attachment or message node tries to fetch something from a file the sending returns an error
@@ -197,6 +199,8 @@ declare namespace smtpTransport {
     }
 }
 
-declare function smtpTransport(options: smtpTransport.SmtpOptions): nodemailer.Transport;
+declare function smtpTransport(
+    options: smtpTransport.SmtpOptions,
+): nodemailer.Transport;
 
 export = smtpTransport;

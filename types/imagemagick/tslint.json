@@ -1,7 +1,7 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-inferrable-types": false,
-        "no-var-keyword": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-inferrable-types": false,
+    "no-var-keyword": false
+  }
 }

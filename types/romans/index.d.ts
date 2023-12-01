@@ -16,7 +16,7 @@ declare const roman_map: {
 };
 
 export type RomanCharacter = keyof typeof roman_map;
-export type RomanNumeral = typeof roman_map[RomanCharacter];
+export type RomanNumeral = (typeof roman_map)[RomanCharacter];
 
 /**
  * property containing all roman numeral characters

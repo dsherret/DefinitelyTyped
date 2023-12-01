@@ -21,7 +21,12 @@ printers.forEach((value) => {
     value.name = "";
 });
 
-var testcolor: dymo.label.framework.Color = { alpha: 255, red: 0, green: 0, blue: 0 };
+var testcolor: dymo.label.framework.Color = {
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 0,
+};
 
 // Test createLabelRenderParamsXml
 var renderParamsXml: string = f.createLabelRenderParamsXml({
@@ -47,19 +52,29 @@ label.getLabelXml().charAt(0); // string
 label.getObjectNames()[0].charAt(0); // string[]
 label.getObjectText("").charAt(0); // string
 label.print("", "", "");
-label.printAndPollStatus("", "", "", (printJob, printJobStatusInfo) => {
-    // Test PrintJob
-    printJob.getStatus((printJobStatusInfoA) => {
-        // Test PrintJobStatusInfo
-        printJobStatusInfoA.status.toFixed(); // number
-        printJobStatusInfoA.statusMessage.charAt(0); // string
-    });
-    // Test callback (must return boolean)
-    return true;
-}, 0);
+label.printAndPollStatus(
+    "",
+    "",
+    "",
+    (printJob, printJobStatusInfo) => {
+        // Test PrintJob
+        printJob.getStatus((printJobStatusInfoA) => {
+            // Test PrintJobStatusInfo
+            printJobStatusInfoA.status.toFixed(); // number
+            printJobStatusInfoA.statusMessage.charAt(0); // string
+        });
+        // Test callback (must return boolean)
+        return true;
+    },
+    0,
+);
 label.render("", "").charAt(0); // string
 // Test chainable "set" methods
-label.setAddressBarcodePosition(0, dymo.label.framework.AddressBarcodePosition.AboveAddress)
+label
+    .setAddressBarcodePosition(
+        0,
+        dymo.label.framework.AddressBarcodePosition.AboveAddress,
+    )
     .setAddressText(0, "")
     .setObjectText("", "")
     .setAddressText(1, "");
@@ -72,7 +87,11 @@ lsb.getRecords().pop(); // array
 lsb.getRecords()[0].setText("", ""); // array of ILabelSetRecord
 
 // Test chainable ILabelSetRecord methods.
-lsbRec.setBase64Image("", "").setText("", "").setTextMarkup("", "").setText("", "");
+lsbRec
+    .setBase64Image("", "")
+    .setText("", "")
+    .setTextMarkup("", "")
+    .setText("", "");
 
 // Test static toXml
 f.LabelSetBuilder.toXml(lsb.getRecords());
@@ -91,7 +110,8 @@ var clwppxp: dymo.label.framework.CreateLabelWriterPrintParamsXmlParams = {
     copies: 0, // number
     flowDirection: dymo.label.framework.FlowDirection.LeftToRight, // enum
     jobTitle: "", // string
-    printQuality: dymo.label.framework.LabelWriterPrintQuality.BarcodeAndGraphics, // enum
+    printQuality:
+        dymo.label.framework.LabelWriterPrintQuality.BarcodeAndGraphics, // enum
     twinTurboRoll: dymo.label.framework.TwinTurboRoll.Left, // enum
 };
 f.createLabelWriterPrintParamsXml(clwppxp).charAt(0); // string

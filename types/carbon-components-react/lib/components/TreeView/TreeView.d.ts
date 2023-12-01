@@ -2,8 +2,14 @@ import * as React from "react";
 import { ReactAttr } from "../../../typings/shared";
 import TreeNode, { TreeNodeStandaloneProps } from "./TreeNode";
 
-type ExcludedAttributes = "aria-label" | "aria-labelledby" | "onSelect" | "ref" | "role";
-export interface TreeViewProps extends Omit<ReactAttr<HTMLUListElement>, ExcludedAttributes> {
+type ExcludedAttributes =
+    | "aria-label"
+    | "aria-labelledby"
+    | "onSelect"
+    | "ref"
+    | "role";
+export interface TreeViewProps
+    extends Omit<ReactAttr<HTMLUListElement>, ExcludedAttributes> {
     active?: number | string | undefined;
     hideLabel?: boolean | undefined;
     label: string;

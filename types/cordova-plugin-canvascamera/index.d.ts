@@ -50,29 +50,33 @@ interface CanvasCameraOptions {
      */
     height?: number | undefined;
 
-    canvas?: {
-        /**
-         * Number, optional, default: 352, width in pixels of the video to capture.
-         */
-        width?: number | undefined;
+    canvas?:
+        | {
+              /**
+               * Number, optional, default: 352, width in pixels of the video to capture.
+               */
+              width?: number | undefined;
 
-        /**
-         * Number, optional, default: 288, height in pixels of the video to capture.
-         */
-        height?: number | undefined;
-    } | undefined;
+              /**
+               * Number, optional, default: 288, height in pixels of the video to capture.
+               */
+              height?: number | undefined;
+          }
+        | undefined;
 
-    capture?: {
-        /**
-         * Number, optional, default: 352, output canvas width in pixels.
-         */
-        width?: number | undefined;
+    capture?:
+        | {
+              /**
+               * Number, optional, default: 352, output canvas width in pixels.
+               */
+              width?: number | undefined;
 
-        /**
-         * Number, optional, default: 288, output canvas height in pixels.
-         */
-        height?: number | undefined;
-    } | undefined;
+              /**
+               * Number, optional, default: 288, output canvas height in pixels.
+               */
+              height?: number | undefined;
+          }
+        | undefined;
 
     /**
      * Number, optional, default: 30, desired number of frames per second.

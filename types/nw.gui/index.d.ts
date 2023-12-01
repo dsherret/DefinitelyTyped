@@ -141,7 +141,10 @@ export declare class Window extends EventEmitter {
     requestAttention(attention: boolean): void;
     requestAttention(attention: number): void;
     capturePage(callback: Function, imageformat?: string): void;
-    capturePage(callback: Function, config_object: { format: string; datatype: string }): void;
+    capturePage(
+        callback: Function,
+        config_object: { format: string; datatype: string },
+    ): void;
     setProgressBar(progress: number): void;
     setBadgeLabel(label: string): void;
     eval(frame: HTMLIFrameElement, script: string): void;

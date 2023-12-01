@@ -16,5 +16,10 @@ export class WebServer {
     constructor(webConfigFile?: string, logConfigFile?: string);
     start(): Promise<void>;
     stop(): void;
-    respondError(error: string | Error, context: ServerContext, code?: number, message?: string): Promise<void>;
+    respondError(
+        error: string | Error,
+        context: ServerContext,
+        code?: number,
+        message?: string,
+    ): Promise<void>;
 }

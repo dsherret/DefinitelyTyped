@@ -162,7 +162,10 @@ declare namespace grpc {
          * @param event - the event to listen for
          * @param listener - the callback to invoke when the event is emitted
          */
-        on(event: StreamEvent, listener: (data: object | GrpcError | undefined) => void): void;
+        on(
+            event: StreamEvent,
+            listener: (data: object | GrpcError | undefined) => void,
+        ): void;
 
         /**
          * Writes a request to the stream.

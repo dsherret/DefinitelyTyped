@@ -156,7 +156,13 @@ function test_updateContents() {
 function test_setDeltaContents() {
     const quillEditor = new Quill("#editor");
     quillEditor.setContents(
-        new Delta({ ops: [{ insert: "Hello " }, { insert: "World!", attributes: { bold: true } }, { insert: "\n" }] }),
+        new Delta({
+            ops: [
+                { insert: "Hello " },
+                { insert: "World!", attributes: { bold: true } },
+                { insert: "\n" },
+            ],
+        }),
     );
 }
 
@@ -214,8 +220,16 @@ function test_addContainer() {
 }
 
 function test_on_Events() {
-    const textChangeHandler = (newDelta: Delta, oldDelta: Delta, source: string) => {};
-    const selectionChangeHandler = (newRange: RangeStatic, oldRange: RangeStatic, source: string) => {};
+    const textChangeHandler = (
+        newDelta: Delta,
+        oldDelta: Delta,
+        source: string,
+    ) => {};
+    const selectionChangeHandler = (
+        newRange: RangeStatic,
+        oldRange: RangeStatic,
+        source: string,
+    ) => {};
     const editorChangeHandler = (name: string, ...args: any[]) => {};
 
     const quillEditor = new Quill("#editor");
@@ -273,7 +287,9 @@ function test_DeltaMap() {
         .insert({ image: "https://octodex.github.com/images/labtocat.png" })
         .insert("World!");
 
-    const text = delta.map((op: any) => (typeof op.insert === "string" ? op.insert : "")).join("");
+    const text = delta
+        .map((op: any) => (typeof op.insert === "string" ? op.insert : ""))
+        .join("");
 }
 
 function test_DeltaPartition() {
@@ -293,7 +309,10 @@ function test_DeltaReduce() {
         .insert({ image: "https://octodex.github.com/images/labtocat.png" })
         .insert("World!");
 
-    const length = delta.reduce((length: number, op: any) => length + (op.insert.length || 1), 0);
+    const length = delta.reduce(
+        (length: number, op: any) => length + (op.insert.length || 1),
+        0,
+    );
 }
 
 function test_DeltaSlice() {
@@ -342,7 +361,9 @@ function test_DeltaEachLine() {
         .insert("\n", { align: "right" })
         .insert("!");
 
-    delta.eachLine((line: Delta, attributes: StringMap, i: number) => console.log(line, attributes, i));
+    delta.eachLine((line: Delta, attributes: StringMap, i: number) =>
+        console.log(line, attributes, i),
+    );
     // Should log:
     // { ops: [{ insert: 'Hello' }] }, {}, 0
     // { ops: [] }, {}, 1

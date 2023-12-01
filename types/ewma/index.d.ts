@@ -9,7 +9,11 @@ interface EwmaClass {
 }
 
 interface EwmaInstance {
-    new(halfLifeMs: number, initialValue: number, clock?: ClockLike): EwmaClass;
+    new (
+        halfLifeMs: number,
+        initialValue: number,
+        clock?: ClockLike,
+    ): EwmaClass;
     (halfLifeMs: number, initialValue: number, clock?: ClockLike): EwmaClass;
 }
 

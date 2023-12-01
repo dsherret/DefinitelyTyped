@@ -49,6 +49,8 @@ declare namespace visualizer {
     }
 }
 
-declare function visualizer(options?: visualizer.PluginVisualizerOptions): Plugin;
+declare function visualizer(
+    options?: visualizer.PluginVisualizerOptions,
+): Plugin;
 
 export = visualizer;

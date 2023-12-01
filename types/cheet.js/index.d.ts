@@ -20,7 +20,12 @@ export type Handler = (str: string, seq: string[]) => void;
  * @param num - A number representing the current progress of the sequence. (starts at 0)
  * @param seq - An array of key names representing the sequence that is in progress.
  */
-export type NextHandler = (str: string, key: string, num: number, seq: string[]) => void;
+export type NextHandler = (
+    str: string,
+    key: string,
+    num: number,
+    seq: string[],
+) => void;
 
 /**
  * Map a sequence of keypresses to a callback. This can be called multiple times.

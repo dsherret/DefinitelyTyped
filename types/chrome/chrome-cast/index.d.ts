@@ -135,14 +135,20 @@ declare namespace chrome.cast {
      * @param listener
      */
     export function addReceiverActionListener(
-        listener: (receiver: chrome.cast.Receiver, receiverAction: chrome.cast.ReceiverAction) => void,
+        listener: (
+            receiver: chrome.cast.Receiver,
+            receiverAction: chrome.cast.ReceiverAction,
+        ) => void,
     ): void;
 
     /**
      * @param listener
      */
     export function removeReceiverActionListener(
-        listener: (receiver: chrome.cast.Receiver, receiverAction: chrome.cast.ReceiverAction) => void,
+        listener: (
+            receiver: chrome.cast.Receiver,
+            receiverAction: chrome.cast.ReceiverAction,
+        ) => void,
     ): void;
 
     /**
@@ -190,14 +196,18 @@ declare namespace chrome.cast {
         constructor(
             sessionRequest: chrome.cast.SessionRequest,
             sessionListener: (session: chrome.cast.Session) => void,
-            receiverListener: (receiverAvailability: chrome.cast.ReceiverAvailability) => void,
+            receiverListener: (
+                receiverAvailability: chrome.cast.ReceiverAvailability,
+            ) => void,
             autoJoinPolicy?: chrome.cast.AutoJoinPolicy,
             defaultActionPolicy?: chrome.cast.DefaultActionPolicy,
         );
 
         sessionRequest: chrome.cast.SessionRequest;
         sessionListener: (session: chrome.cast.Session) => void;
-        receiverListener: (receiverAvailability: chrome.cast.ReceiverAvailability) => void;
+        receiverListener: (
+            receiverAvailability: chrome.cast.ReceiverAvailability,
+        ) => void;
         autoJoinPolicy: chrome.cast.AutoJoinPolicy;
         defaultActionPolicy: chrome.cast.DefaultActionPolicy;
     }
@@ -209,7 +219,11 @@ declare namespace chrome.cast {
          * @param opt_details
          * @see https://developers.google.com/cast/docs/reference/chrome/chrome.cast.Error
          */
-        constructor(code: chrome.cast.ErrorCode, description?: string, details?: Object);
+        constructor(
+            code: chrome.cast.ErrorCode,
+            description?: string,
+            details?: Object,
+        );
 
         code: chrome.cast.ErrorCode;
         description: string | null;
@@ -247,7 +261,11 @@ declare namespace chrome.cast {
          * @param opt_timeout
          * @see https://developers.google.com/cast/docs/reference/chrome/chrome.cast.SessionRequest
          */
-        constructor(appId: string, capabilities?: chrome.cast.Capability[], timeout?: number);
+        constructor(
+            appId: string,
+            capabilities?: chrome.cast.Capability[],
+            timeout?: number,
+        );
 
         appId: string;
         capabilities: chrome.cast.Capability[];
@@ -310,13 +328,19 @@ declare namespace chrome.cast {
          * @param successCallback
          * @param errorCallback
          */
-        leave(successCallback: Function, errorCallback: (error: chrome.cast.Error) => void): void;
+        leave(
+            successCallback: Function,
+            errorCallback: (error: chrome.cast.Error) => void,
+        ): void;
 
         /**
          * @param successCallback
          * @param errorCallback
          */
-        stop(successCallback: Function, errorCallback: (error: chrome.cast.Error) => void): void;
+        stop(
+            successCallback: Function,
+            errorCallback: (error: chrome.cast.Error) => void,
+        ): void;
 
         /**
          * @param namespace
@@ -345,23 +369,33 @@ declare namespace chrome.cast {
          * @param namespace
          * @param listener
          */
-        addMessageListener(namespace: string, listener: (namespace: string, message: string) => void): void;
+        addMessageListener(
+            namespace: string,
+            listener: (namespace: string, message: string) => void,
+        ): void;
 
         /**
          * @param namespace
          * @param listener
          */
-        removeMessageListener(namespace: string, listener: (namespace: string, message: string) => void): void;
+        removeMessageListener(
+            namespace: string,
+            listener: (namespace: string, message: string) => void,
+        ): void;
 
         /**
          * @param listener
          */
-        addMediaListener(listener: (media: chrome.cast.media.Media) => void): void;
+        addMediaListener(
+            listener: (media: chrome.cast.media.Media) => void,
+        ): void;
 
         /**
          * @param listener
          */
-        removeMediaListener(listener: (media: chrome.cast.media.Media) => void): void;
+        removeMediaListener(
+            listener: (media: chrome.cast.media.Media) => void,
+        ): void;
 
         /**
          * @param loadRequest
@@ -722,7 +756,10 @@ declare namespace chrome.cast.media {
          * @param opt_textTrackStyle
          * @see https://developers.google.com/cast/docs/reference/chrome/chrome.cast.media.EditTracksInfoRequest
          */
-        constructor(activeTrackIds?: number[], textTrackStyle?: chrome.cast.media.TextTrackStyle);
+        constructor(
+            activeTrackIds?: number[],
+            textTrackStyle?: chrome.cast.media.TextTrackStyle,
+        );
 
         activeTrackIds: number[];
         textTrackStyle: chrome.cast.media.TextTrackStyle;
@@ -1026,13 +1063,19 @@ declare namespace chrome.cast.media {
          * @param successCallback
          * @param errorCallback
          */
-        queueNext(successCallback: Function, errorCallback: (error: chrome.cast.Error) => void): void;
+        queueNext(
+            successCallback: Function,
+            errorCallback: (error: chrome.cast.Error) => void,
+        ): void;
 
         /**
          * @param successCallback
          * @param errorCallback
          */
-        queuePrev(successCallback: Function, errorCallback: (error: chrome.cast.Error) => void): void;
+        queuePrev(
+            successCallback: Function,
+            errorCallback: (error: chrome.cast.Error) => void,
+        ): void;
 
         /**
          * @param itemId
@@ -1125,7 +1168,12 @@ declare namespace chrome.cast.media {
          * @param isLiveDone
          * @see https://developers.google.com/cast/docs/reference/chrome/chrome.cast.media.LiveSeekableRange
          */
-        constructor(start?: number, end?: number, isMovingWindow?: boolean, isLiveDone?: boolean);
+        constructor(
+            start?: number,
+            end?: number,
+            isMovingWindow?: boolean,
+            isLiveDone?: boolean,
+        );
 
         start?: number | undefined;
         end?: number | undefined;

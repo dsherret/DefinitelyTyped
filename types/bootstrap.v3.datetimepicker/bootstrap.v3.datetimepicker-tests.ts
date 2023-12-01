@@ -15,20 +15,25 @@ function test_cases() {
 
     $("#datetimepicker2")
         .datetimepicker()
-        .on("dp.change", ev => {
+        .on("dp.change", (ev) => {
             if (ev.date.valueOf() > endDate.valueOf()) {
-                $("#alert").show().find("strong").text("The start date must be before the end date.");
+                $("#alert")
+                    .show()
+                    .find("strong")
+                    .text("The start date must be before the end date.");
             } else {
                 $("#alert").hide();
                 startDate = ev.date;
                 $("#date-start-display").text($("#date-start").data("date"));
             }
         })
-        .on("dp.error", ev => {
+        .on("dp.error", (ev) => {
             console.log(`Error: ${ev.date.format("YYYY-MM-DD")}`);
         })
-        .on("dp.update", ev => {
-            console.log(`Change: ${ev.change}, ${ev.viewDate.format("YYYY-MM-DD")}`);
+        .on("dp.update", (ev) => {
+            console.log(
+                `Change: ${ev.change}, ${ev.viewDate.format("YYYY-MM-DD")}`,
+            );
         });
 }
 
@@ -94,7 +99,9 @@ function test_extraFormats() {
     strFormats = dp.extraFormats() as string[];
 
     dp.extraFormats(mixFormats);
-    mixFormats = dp.extraFormats() as Array<(string | moment.MomentBuiltinFormat)>;
+    mixFormats = dp.extraFormats() as Array<
+        string | moment.MomentBuiltinFormat
+    >;
 }
 
 function test_timeZone() {

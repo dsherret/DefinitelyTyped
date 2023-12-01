@@ -51,15 +51,29 @@ cryptoAsync.E_TARGET_RANGE; // $ExpectType string
     const key = Buffer.alloc(32);
     const iv = Buffer.alloc(16);
     const plaintext = Buffer.alloc(128);
-    cryptoAsync.cipher(algorithm, encrypt, key, iv, plaintext, (error, ciphertext) => {
-        error; // $ExpectType Error | undefined
-        ciphertext; // $ExpectType Buffer
-    });
+    cryptoAsync.cipher(
+        algorithm,
+        encrypt,
+        key,
+        iv,
+        plaintext,
+        (error, ciphertext) => {
+            error; // $ExpectType Error | undefined
+            ciphertext; // $ExpectType Buffer
+        },
+    );
 
-    cryptoAsync.cipher(algorithm, decrypt, key, iv, plaintext, (error, plaintext) => {
-        error; // $ExpectType Error | undefined
-        plaintext; // $ExpectType Buffer
-    });
+    cryptoAsync.cipher(
+        algorithm,
+        decrypt,
+        key,
+        iv,
+        plaintext,
+        (error, plaintext) => {
+            error; // $ExpectType Error | undefined
+            plaintext; // $ExpectType Buffer
+        },
+    );
 }
 
 {
@@ -71,15 +85,33 @@ cryptoAsync.E_TARGET_RANGE; // $ExpectType string
     const plaintext = Buffer.alloc(128);
     const aad = Buffer.alloc(256);
     const tag = Buffer.alloc(16);
-    cryptoAsync.cipher(algorithm, encrypt, key, iv, plaintext, aad, tag, (error, ciphertext) => {
-        error; // $ExpectType Error | undefined
-        ciphertext; // $ExpectType Buffer
-    });
+    cryptoAsync.cipher(
+        algorithm,
+        encrypt,
+        key,
+        iv,
+        plaintext,
+        aad,
+        tag,
+        (error, ciphertext) => {
+            error; // $ExpectType Error | undefined
+            ciphertext; // $ExpectType Buffer
+        },
+    );
 
-    cryptoAsync.cipher(algorithm, decrypt, key, iv, plaintext, aad, tag, (error, plaintext) => {
-        error; // $ExpectType Error | undefined
-        plaintext; // $ExpectType Buffer
-    });
+    cryptoAsync.cipher(
+        algorithm,
+        decrypt,
+        key,
+        iv,
+        plaintext,
+        aad,
+        tag,
+        (error, plaintext) => {
+            error; // $ExpectType Error | undefined
+            plaintext; // $ExpectType Buffer
+        },
+    );
 }
 
 {
@@ -180,10 +212,18 @@ cryptoAsync.E_TARGET_RANGE; // $ExpectType string
     const sourceSize = 65536;
     const target = Buffer.alloc(1024 * 1024);
     const targetOffset = 32768;
-    cryptoAsync.hash(algorithm, source, sourceOffset, sourceSize, target, targetOffset, (error, targetSize) => {
-        error; // $ExpectType Error | undefined
-        targetSize; // $ExpectType number
-    });
+    cryptoAsync.hash(
+        algorithm,
+        source,
+        sourceOffset,
+        sourceSize,
+        target,
+        targetOffset,
+        (error, targetSize) => {
+            error; // $ExpectType Error | undefined
+            targetSize; // $ExpectType number
+        },
+    );
 }
 
 {

@@ -34,7 +34,9 @@ async function test_connecting() {
     const currentUser = await chatManager.connect();
 
     const joinableRooms = await currentUser.getJoinableRooms();
-    const joinedRoom = await currentUser.joinRoom({ roomId: joinableRooms[0].id });
+    const joinedRoom = await currentUser.joinRoom({
+        roomId: joinableRooms[0].id,
+    });
     await currentUser.updateRoom({
         roomId: joinedRoom.id,
         name: "Some updated name",
@@ -71,7 +73,10 @@ async function test_connecting() {
             onUserStoppedTyping: (user: PusherUser) => {},
             onUserJoined: (user: PusherUser) => {},
             onUserLeft: (user: PusherUser) => {},
-            onPresenceChanged: (state: UserPresenceState, user: PusherUser) => {},
+            onPresenceChanged: (
+                state: UserPresenceState,
+                user: PusherUser,
+            ) => {},
             onNewReadCursor: (cursor: PusherReadCursor) => {},
         },
         messageLimit: 10,
@@ -107,5 +112,5 @@ async function test_connecting() {
     await currentUser.isTypingIn({ roomId: room.id });
     await currentUser.deleteRoom({ roomId: room.id });
 
-    subscribedRoom.users.forEach(user => user.name);
+    subscribedRoom.users.forEach((user) => user.name);
 }

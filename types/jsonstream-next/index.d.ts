@@ -21,12 +21,22 @@ export function stringify(): stream.Transform;
  * Create a writable stream.
  * You may pass in custom open, close, and seperator strings.
  */
-export function stringify(open: string, sep: string, close: string): stream.Transform;
+export function stringify(
+    open: string,
+    sep: string,
+    close: string,
+): stream.Transform;
 
 /** Creates a writable stream where elements are only seperated by a newline. */
 export function stringify(newlineOnly: NewlineOnlyIndicator): stream.Transform;
 export type NewlineOnlyIndicator = false;
 
 export function stringifyObject(): stream.Transform;
-export function stringifyObject(open: string, sep: string, close: string): stream.Transform;
-export function stringifyObject(newlineOnly: NewlineOnlyIndicator): stream.Transform;
+export function stringifyObject(
+    open: string,
+    sep: string,
+    close: string,
+): stream.Transform;
+export function stringifyObject(
+    newlineOnly: NewlineOnlyIndicator,
+): stream.Transform;

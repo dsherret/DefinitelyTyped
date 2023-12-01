@@ -1,5 +1,15 @@
 import * as hapi from "hapi";
-import { cache, config, Controller, controller, get, post, put, route, validate } from "hapi-decorators";
+import {
+    cache,
+    config,
+    Controller,
+    controller,
+    get,
+    post,
+    put,
+    route,
+    validate,
+} from "hapi-decorators";
 
 @controller("/test")
 class TestController implements Controller {

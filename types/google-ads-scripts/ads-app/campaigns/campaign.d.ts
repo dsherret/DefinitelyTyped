@@ -84,34 +84,51 @@ declare namespace GoogleAdsScripts {
             /** Adds a callout extension to this campaign. */
             addCallout(calloutExtension: Callout): CalloutOperation;
             /** Adds a excluded placement list to this campaign. */
-            addExcludedPlacementList(excludedPlacementList: ExcludedPlacementList): void;
+            addExcludedPlacementList(
+                excludedPlacementList: ExcludedPlacementList,
+            ): void;
             /** Creates a location target in this campaign from a location ID. */
             addLocation(locationId: number): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location. */
             addLocation(location: TargetedLocation): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location JSON. */
-            addLocation(location: { id: number; bidModifier?: number | undefined }): TargetedLocationOperation;
+            addLocation(location: {
+                id: number;
+                bidModifier?: number | undefined;
+            }): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location ID and bid modifier. */
-            addLocation(locationId: number, bidModifier: number): TargetedLocationOperation;
+            addLocation(
+                locationId: number,
+                bidModifier: number,
+            ): TargetedLocationOperation;
             /** Adds a message extension to this campaign. */
             addMessage(messageExtension: Message): MessageOperation;
             /** Adds a mobile app extension to this campaign. */
             addMobileApp(mobileAppExtension: MobileApp): MobileAppOperation;
             /** Adds a negative keyword list to this campaign. */
-            addNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            addNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Adds a phone number extension to this campaign. */
-            addPhoneNumber(phoneNumberExtension: PhoneNumber): PhoneNumberOperation;
+            addPhoneNumber(
+                phoneNumberExtension: PhoneNumber,
+            ): PhoneNumberOperation;
             /** Adds a price extension to this campaign. */
             addPrice(priceExtension: Price): PriceOperation;
             /** Creates a proximity target in this campaign from a proximity object. */
-            addProximity(proximity: TargetedProximityObject): TargetedProximityOperation;
+            addProximity(
+                proximity: TargetedProximityObject,
+            ): TargetedProximityOperation;
             /** Creates a proximity target in this campaign. */
             addProximity(
                 latitude: number,
                 longitude: number,
                 radius: number,
                 radiusUnits: string,
-                optArgs?: { bidModifier?: number | undefined; address?: AddressObject | undefined },
+                optArgs?: {
+                    bidModifier?: number | undefined;
+                    address?: AddressObject | undefined;
+                },
             ): TargetedProximityOperation;
             /** Adds a sitelink extension to this campaign. */
             addSitelink(sitelinkExtension: Sitelink): SitelinkOperation;
@@ -134,11 +151,15 @@ declare namespace GoogleAdsScripts {
             /** Enables the campaign. */
             enable(): void;
             /** Creates a location exclusion in this campaign. */
-            excludeLocation(location: ExcludedLocation): ExcludedLocationOperation;
+            excludeLocation(
+                location: ExcludedLocation,
+            ): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign. */
             excludeLocation(locationId: number): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign for the specified JSON. */
-            excludeLocation(location: TargetedLocationObject): ExcludedLocationOperation;
+            excludeLocation(
+                location: TargetedLocationObject,
+            ): ExcludedLocationOperation;
             /** Returns a selector of excluded placement lists associated with this campaign. */
             excludedPlacementLists(): ExcludedPlacementListSelector;
             /** Returns a selector of experiment campaigns that have this campaign as their base campaign. */
@@ -194,7 +215,9 @@ declare namespace GoogleAdsScripts {
             /** Removes a callout extension from this campaign. */
             removeCallout(calloutExtension: Callout): void;
             /** Removes a excluded placement list from this campaign. */
-            removeExcludedPlacementList(excludedPlacementList: ExcludedPlacementList): void;
+            removeExcludedPlacementList(
+                excludedPlacementList: ExcludedPlacementList,
+            ): void;
             /** Removes a label from the campaign. */
             removeLabel(name: string): void;
             /** Removes a message extension from this campaign. */
@@ -202,7 +225,9 @@ declare namespace GoogleAdsScripts {
             /** Removes a mobile app extension from this campaign. */
             removeMobileApp(mobileAppExtension: MobileApp): void;
             /** Removes a negative keyword list from this campaign. */
-            removeNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            removeNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Removes a phone number extension from this campaign. */
             removePhoneNumber(phoneNumberExtension: PhoneNumber): void;
             /** Removes a price extension from this campaign. */
@@ -270,14 +295,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface CampaignSelector
-            extends
-                Base.Selector<CampaignIterator>,
+            extends Base.Selector<CampaignIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /**
          * Provides access to campaign-level targeting criteria: device targeting, ad scheduling, location targeting, and audiences.
@@ -310,7 +333,10 @@ declare namespace GoogleAdsScripts {
             /** Specializes this selector to return Platform criteria. */
             platforms(): PlatformSelector;
             /** Sets the targeting setting for this campaign. */
-            setTargetingSetting(criterionTypeGroup: string, targetingSetting: string): void;
+            setTargetingSetting(
+                criterionTypeGroup: string,
+                targetingSetting: string,
+            ): void;
             /** Specializes this selector to return TargetedLocation criteria. */
             targetedLocations(): TargetedLocationSelector;
             /** Specializes this selector to return TargetedProximity criteria. */

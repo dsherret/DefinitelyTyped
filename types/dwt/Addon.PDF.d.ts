@@ -13,10 +13,7 @@ export interface PDF {
         path: string,
         resolution: number,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Return the convert mode.

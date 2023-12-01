@@ -18,12 +18,24 @@ export = responseTime;
  */
 declare function responseTime(
     options?: responseTime.ResponseTimeOptions,
-): (request: http.IncomingMessage, response: http.ServerResponse, callback: (err: any) => void) => any;
+): (
+    request: http.IncomingMessage,
+    response: http.ServerResponse,
+    callback: (err: any) => void,
+) => any;
 declare function responseTime(
     fn: responseTime.ResponseTimeFunction,
-): (request: http.IncomingMessage, response: http.ServerResponse, callback: (err: any) => void) => any;
+): (
+    request: http.IncomingMessage,
+    response: http.ServerResponse,
+    callback: (err: any) => void,
+) => any;
 declare function responseTime(
-    fn: (request: express.Request, response: express.Response, time: number) => any,
+    fn: (
+        request: express.Request,
+        response: express.Response,
+        time: number,
+    ) => any,
 ): express.RequestHandler;
 
 declare namespace responseTime {
@@ -34,6 +46,10 @@ declare namespace responseTime {
     }
 
     export interface ResponseTimeFunction {
-        (request: http.IncomingMessage, response: http.ServerResponse, time: number): any;
+        (
+            request: http.IncomingMessage,
+            response: http.ServerResponse,
+            time: number,
+        ): any;
     }
 }

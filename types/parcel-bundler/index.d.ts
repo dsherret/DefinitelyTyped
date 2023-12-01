@@ -82,11 +82,7 @@ declare namespace ParcelBundler {
          *
          * Use true to generate one or false to use http
          */
-        https?:
-            | true
-            | false
-            | HttpsOptions
-            | undefined;
+        https?: true | false | HttpsOptions | undefined;
         /**
          * 3 = log everything, 2 = log warnings & errors, 1 = log errors
          *
@@ -208,7 +204,11 @@ declare class ParcelBundler {
 
     bundle(): Promise<ParcelBundler.ParcelBundle>;
 
-    middleware(): (req: express.Request, res: express.Response, next: express.NextFunction) => any;
+    middleware(): (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => any;
 
     serve(
         port?: number,
@@ -221,7 +221,10 @@ declare class ParcelBundler {
     on(name: "buildStart", cb: (entryPoints: string[]) => void): void;
     on(name: "buildError", cb: (error: Error) => void): void;
 
-    off(name: "buildEnd" | "bundled" | "buildStart" | "buildError", cb: (...any: any[]) => void): void;
+    off(
+        name: "buildEnd" | "bundled" | "buildStart" | "buildError",
+        cb: (...any: any[]) => void,
+    ): void;
 }
 
 export = ParcelBundler;

@@ -4,4 +4,8 @@ export type HKEY =
     | "HKEY_CLASSES_ROOT"
     | "HKEY_USERS"
     | "HKEY_CURRENT_CONFIG";
-export function GetStringRegKey(hive: HKEY, path: string, name: string): string | undefined;
+export function GetStringRegKey(
+    hive: HKEY,
+    path: string,
+    name: string,
+): string | undefined;

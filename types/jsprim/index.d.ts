@@ -1,4 +1,9 @@
-import { JSONSchema4, JSONSchema6, JSONSchema7, ValidationError } from "json-schema";
+import {
+    JSONSchema4,
+    JSONSchema6,
+    JSONSchema7,
+    ValidationError,
+} from "json-schema";
 import { WError } from "verror";
 
 /**
@@ -13,7 +18,10 @@ export function deepCopy<T>(obj: T): T;
 /**
  * Returns whether two objects are equal.
  */
-export function deepEqual(obj1: Readonly<unknown>, obj2: Readonly<unknown>): boolean;
+export function deepEqual(
+    obj1: Readonly<unknown>,
+    obj2: Readonly<unknown>,
+): boolean;
 
 /**
  * Returns true if the given string ends with the given suffix and false otherwise.
@@ -30,7 +38,10 @@ export function endsWith(str: string, suffix: string): boolean;
  * If no properties other than those
  * in the allowed list are present on the object, the returned array will be of zero length.
  */
-export function extraProperties(obj: Readonly<{ [key: string]: unknown }>, allowed: readonly string[]): string[];
+export function extraProperties(
+    obj: Readonly<{ [key: string]: unknown }>,
+    allowed: readonly string[],
+): string[];
 
 /**
  * This is similar to ```flattenObject``` except that instead of returning an array, this function invokes
@@ -43,13 +54,20 @@ export function extraProperties(obj: Readonly<{ [key: string]: unknown }>, allow
  * There's another difference between ```flattenObject``` and ```flattenIter``` that's related to the special case where ```depth === 0```.
  * In this case, ```flattenObject``` omits the array wrapping ```obj``` (which is regrettable).
  */
-export function flattenIter(data: Readonly<object>, depth: number, callback: (value: unknown[]) => void): never | void;
+export function flattenIter(
+    data: Readonly<object>,
+    depth: number,
+    callback: (value: unknown[]) => void,
+): never | void;
 
 /**
  * Flattens an object up to a given level of nesting, returning an array of arrays of length ```depth + 1```,
  * where the first ```depth``` elements correspond to flattened columns and the last element contains the remaining object.
  */
-export function flattenObject(data: Readonly<{ [key: string]: unknown }>, depth: number): unknown[];
+export function flattenObject(
+    data: Readonly<{ [key: string]: unknown }>,
+    depth: number,
+): unknown[];
 
 /**
  * Like ```Array.forEach```, but iterates enumerable, owned properties of an object rather than elements of an array.
@@ -63,7 +81,10 @@ export function flattenObject(data: Readonly<{ [key: string]: unknown }>, depth:
  *   }
  *   ```
  */
-export function forEachKey(obj: Readonly<object>, callback: (key: string, value: unknown) => void): void;
+export function forEachKey(
+    obj: Readonly<object>,
+    callback: (key: string, value: unknown) => void,
+): void;
 
 /**
  * Returns ```true``` if the given object has an enumerable, non-inherited property called key
@@ -75,14 +96,20 @@ export function hasKey(obj: Readonly<object>, key: string): boolean;
  *
  * This function overwrites (and returns) the first argument passed in.
  */
-export function hrtimeAccum(a: [number, number], b: Readonly<[number, number]>): [number, number] | never;
+export function hrtimeAccum(
+    a: [number, number],
+    b: Readonly<[number, number]>,
+): [number, number] | never;
 
 /**
  * Add two hrtime intervals (as from Node's ```process.hrtime()```), returning a new hrtime interval array.
  *
  * This function does not modify either input argument.
  */
-export function hrtimeAdd(a: Readonly<[number, number]>, b: Readonly<[number, number]>): [number, number] | never;
+export function hrtimeAdd(
+    a: Readonly<[number, number]>,
+    b: Readonly<[number, number]>,
+): [number, number] | never;
 
 /**
  * Given two hrtime readings (as from Node's ```process.hrtime()```), where ```timeA``` is later than ```timeB```,
@@ -90,7 +117,10 @@ export function hrtimeAdd(a: Readonly<[number, number]>, b: Readonly<[number, nu
  *
  * It is illegal to invoke this for a pair of times where ```timeB``` is newer than ```timeA```.
  */
-export function hrtimeDiff(a: Readonly<[number, number]>, b: Readonly<[number, number]>): [number, number] | never;
+export function hrtimeDiff(
+    a: Readonly<[number, number]>,
+    b: Readonly<[number, number]>,
+): [number, number] | never;
 
 /**
  * Given two hrtime readings (as from Node's ```process.hrtime()```), where ```timeA``` is later than ```timeB```,
@@ -98,7 +128,10 @@ export function hrtimeDiff(a: Readonly<[number, number]>, b: Readonly<[number, n
  *
  * It is illegal to invoke this for a pair of times where ```timeB``` is newer than ```timeA```.
  */
-export function hrtimediff(a: Readonly<[number, number]>, b: Readonly<[number, number]>): [number, number] | never;
+export function hrtimediff(
+    a: Readonly<[number, number]>,
+    b: Readonly<[number, number]>,
+): [number, number] | never;
 
 /**
  * Convert a hrtime reading from the array format returned by Node's
@@ -123,7 +156,9 @@ export function hrtimeNanosec(a: Readonly<[number, number]>): number | never;
 /**
  * Returns true if the given object has no properties and false otherwise.
  */
-export function isEmpty(obj: Readonly<string | object | undefined | null>): boolean;
+export function isEmpty(
+    obj: Readonly<string | object | undefined | null>,
+): boolean;
 
 /**
  * Converts a Date object to an ISO8601 date string of the form "YYYY-MM-DDTHH:MM:SS.sssZ".
@@ -246,7 +281,10 @@ export function parseInteger(str: string, uopts?: Uopts): number | never;
  * 2. If ```obj``` has property ```key``` directly (without traversing), the corresponding property is returned. For example, ```pluck({ 'foo.bar': 1 }, 'foo.bar')``` is ```1```, not ```undefined```.
  * This is also true recursively, so ```pluck({ 'a': { 'foo.bar': 1 } }, 'a.foo.bar')``` is also ```1```, not ```undefined```
  */
-export function pluck(obj: Readonly<{ [key: string]: unknown }>, key: string): unknown | undefined;
+export function pluck(
+    obj: Readonly<{ [key: string]: unknown }>,
+    key: string,
+): unknown | undefined;
 
 /**
  * Returns an element from ```arr``` selected uniformly at random.
@@ -278,7 +316,10 @@ export interface JsPrimError extends WError {
  *
  * On failure, returns (does not throw) a useful Error object.
  */
-export function validateJsonObject(schema: JSONSchema4 | JSONSchema6 | JSONSchema7, input: object): JsPrimError | null;
+export function validateJsonObject(
+    schema: JSONSchema4 | JSONSchema6 | JSONSchema7,
+    input: object,
+): JsPrimError | null;
 
 /**
  * Uses JSON validation (via JSV) to validate the given object against the given schema.

@@ -66,7 +66,11 @@ assert.equal(3, "3", "uses == comparator");
 
 assert.ifError(0);
 
-assert.notDeepStrictEqual({ x: { y: "3" } }, { x: { y: 3 } }, "uses !== comparator");
+assert.notDeepStrictEqual(
+    { x: { y: "3" } },
+    { x: { y: 3 } },
+    "uses !== comparator",
+);
 
 assert.notEqual(1, 2, "uses != comparator");
 
@@ -113,17 +117,17 @@ assert(1);
 assert.match("test", /test/, new Error("yeet"));
 assert.match("test", /test/, "yeet");
 
-(() => {
+() => {
     assert.fail("stuff broke"); // $ExpectType never
-});
+};
 
-(() => {
+() => {
     assert.fail("actual", "expected", "message"); // $ExpectType never
-});
+};
 
-(() => {
+() => {
     assert.fail(1, 2, undefined, ">"); // $ExpectType never
-});
+};
 
 assert(true, "it's working");
 

@@ -55,7 +55,11 @@ declare namespace amplify {
          *   cache: See the cache section for more details.
          *   decoder: See the decoder section for more details.
          */
-        define(resourceId: string, requestType: string, settings?: AjaxSettings): void;
+        define(
+            resourceId: string,
+            requestType: string,
+            settings?: AjaxSettings,
+        ): void;
 
         /***
          * Define a custom request.
@@ -66,7 +70,10 @@ declare namespace amplify {
          *   success: Callback to invoke on success.
          *   error: Callback to invoke on error.
          */
-        define(resourceId: string, resource: (settings: RequestSettings) => void): void;
+        define(
+            resourceId: string,
+            resource: (settings: RequestSettings) => void,
+        ): void;
 
         decoders: Decoders;
         cache: any;
@@ -87,7 +94,12 @@ declare namespace amplify {
          * callback: Function to invoke when the message is published.
          * [priority]: Priority relative to other subscriptions for the same message. Lower values have higher priority. Default is 10.
          */
-        (topic: string, context: any, callback: Function, priority?: number): void;
+        (
+            topic: string,
+            context: any,
+            callback: Function,
+            priority?: number,
+        ): void;
     }
     interface StorageTypeStore {
         /***

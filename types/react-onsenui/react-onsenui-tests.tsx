@@ -69,9 +69,7 @@ export class App extends React.Component<AppProps, AppState> {
                     onClose={() => this.hide()}
                     swipeable
                 >
-                    <Page>
-                        Menu content
-                    </Page>
+                    <Page>Menu content</Page>
                 </SplitterSide>
                 <SplitterContent>
                     <Page>
@@ -104,7 +102,12 @@ export class App extends React.Component<AppProps, AppState> {
                             modifier="material"
                             onChange={this.onCheckboxChange}
                         />
-                        <Select modifier="material" name="selectTest" className="left" onChange={this.onSelectChange}>
+                        <Select
+                            modifier="material"
+                            name="selectTest"
+                            className="left"
+                            onChange={this.onSelectChange}
+                        >
                             <option value="1">Option #1</option>
                             <option value="2">Option #2</option>
                             <option value="3">Option #3</option>
@@ -139,12 +142,31 @@ export class App extends React.Component<AppProps, AppState> {
                             index={0}
                             renderTabs={(activeIndex, tabbar) => [
                                 {
-                                    content: <div>Tab 2 {activeIndex === 0 ? "(Active)" : null}</div>,
+                                    content: (
+                                        <div>
+                                            Tab 2{" "}
+                                            {activeIndex === 0
+                                                ? "(Active)"
+                                                : null}
+                                        </div>
+                                    ),
                                     tab: <Tab label="Home" icon="md-home" />,
                                 },
                                 {
-                                    content: <div>Tab 2 {activeIndex === 1 ? "(Active)" : null}</div>,
-                                    tab: <Tab label="Settings" icon="md-settings" />,
+                                    content: (
+                                        <div>
+                                            Tab 2{" "}
+                                            {activeIndex === 1
+                                                ? "(Active)"
+                                                : null}
+                                        </div>
+                                    ),
+                                    tab: (
+                                        <Tab
+                                            label="Settings"
+                                            icon="md-settings"
+                                        />
+                                    ),
                                 },
                             ]}
                         />

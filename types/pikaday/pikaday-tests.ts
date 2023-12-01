@@ -7,7 +7,9 @@ new Pikaday({ field: document.getElementById("datepicker") });
 new Pikaday({ field: $("#datepicker")[0] });
 
 (() => {
-    const field: HTMLInputElement = <HTMLInputElement> document.getElementById("datepicker");
+    const field: HTMLInputElement = <HTMLInputElement>(
+        document.getElementById("datepicker")
+    );
     const picker = new Pikaday({
         onSelect: (date: Date) => {
             field.value = picker.toString();
@@ -76,7 +78,15 @@ new Pikaday({ field: $("#datepicker")[0] });
             "November",
             "December",
         ],
-        weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        weekdays: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ],
         weekdaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     };
     new Pikaday({ i18n });

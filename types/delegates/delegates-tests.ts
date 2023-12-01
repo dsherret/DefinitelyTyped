@@ -10,7 +10,12 @@ class Animal {
 
 class AnimalAPI {
     constructor() {
-        delegates(this, "_animal").access("age").method("getFood").getter("options").setter("options").fluent("env");
+        delegates(this, "_animal")
+            .access("age")
+            .method("getFood")
+            .getter("options")
+            .setter("options")
+            .fluent("env");
     }
 
     private readonly _animal = new Animal();

@@ -1,7 +1,11 @@
 Spreedly; // $ExpectType SpreedlyPaymentFrame
 const spreedly_iframe = new SpreedlyPaymentFrame();
 const spreedly_fields: spreedly.SpreedlyField[] = ["number", "cvv"];
-const spreedly_field_types: spreedly.SpreedlyFieldType[] = ["number", "text", "tel"];
+const spreedly_field_types: spreedly.SpreedlyFieldType[] = [
+    "number",
+    "text",
+    "tel",
+];
 const spreedly_card_types: spreedly.SpreedlyCardType[] = [
     "alelo",
     "alia",
@@ -21,10 +25,15 @@ const spreedly_card_types: spreedly.SpreedlyCardType[] = [
     "visa",
     "vr",
 ];
-const spreedly_number_formats: spreedly.SpreedlyNumberFormat[] = ["prettyFormat", "maskedFormat", "toggleMask"];
+const spreedly_number_formats: spreedly.SpreedlyNumberFormat[] = [
+    "prettyFormat",
+    "maskedFormat",
+    "toggleMask",
+];
 spreedly_iframe.init("key", { numberEl: "number", cvvEl: "cvv" }); // $ExpectType void
 spreedly_iframe.reload(); // $ExpectType void
-spreedly_iframe.tokenizeCreditCard({ // $ExpectType void
+spreedly_iframe.tokenizeCreditCard({
+    // $ExpectType void
     first_name: "First name",
     last_name: "Last name",
     month: "06",
@@ -47,7 +56,8 @@ spreedly_iframe.tokenizeCreditCard({ // $ExpectType void
     shipping_phone_number: "+15555555555",
     metadata: { test: "value" },
 });
-spreedly_iframe.tokenizeCreditCard({ // $ExpectType void
+spreedly_iframe.tokenizeCreditCard({
+    // $ExpectType void
     full_name: "Bob Clark",
     month: "06",
     year: "2020",
@@ -77,7 +87,10 @@ spreedly_iframe.tokenizeCreditCard({ first_name: "First name" });
 spreedly_iframe.tokenizeCreditCard({ last_name: "Last name" });
 spreedly_iframe.validate(); // $ExpectType void
 spreedly_card_types.forEach((spreedly_card_type) => {
-    spreedly_iframe.setRecache("token", { card_type: spreedly_card_type, last_four_digits: "1111" }); // $ExpectType void
+    spreedly_iframe.setRecache("token", {
+        card_type: spreedly_card_type,
+        last_four_digits: "1111",
+    }); // $ExpectType void
 });
 spreedly_iframe.recache(); // $ExpectType void
 spreedly_fields.forEach((spreedly_field) => {
@@ -93,9 +106,13 @@ spreedly_fields.forEach((spreedly_field) => {
 spreedly_number_formats.forEach((number_format) => {
     spreedly_iframe.setNumberFormat(number_format); // $ExpectType void
 });
-spreedly_iframe.on("consoleError", (error: spreedly.SpreedlyConsoleError) => {}); // $ExpectType void
+spreedly_iframe.on(
+    "consoleError",
+    (error: spreedly.SpreedlyConsoleError) => {},
+); // $ExpectType void
 spreedly_iframe.on("errors", (error: spreedly.SpreedlyError[]) => {}); // $ExpectType void
-spreedly_iframe.on( // $ExpectType void
+spreedly_iframe.on(
+    // $ExpectType void
     "fieldEvent",
     (
         name: spreedly.SpreedlyField,
@@ -104,8 +121,17 @@ spreedly_iframe.on( // $ExpectType void
         inputProperties: spreedly.SpreedlyFieldEventInputProperties,
     ) => {},
 );
-spreedly_iframe.on("paymentMethod", (token: string, paymentMethod: spreedly.SpreedlyPaymentMethod) => {}); // $ExpectType void
-spreedly_iframe.on("recache", (token: string, paymentMethod: spreedly.SpreedlyPaymentMethod) => {}); // $ExpectType void
+spreedly_iframe.on(
+    "paymentMethod",
+    (token: string, paymentMethod: spreedly.SpreedlyPaymentMethod) => {},
+); // $ExpectType void
+spreedly_iframe.on(
+    "recache",
+    (token: string, paymentMethod: spreedly.SpreedlyPaymentMethod) => {},
+); // $ExpectType void
 spreedly_iframe.on("ready", () => {}); // $ExpectType void
 spreedly_iframe.on("recacheReady", () => {}); // $ExpectType void
-spreedly_iframe.on("validation", (inputProperties: spreedly.SpreedlyFieldEventInputProperties) => {}); // $ExpectType void
+spreedly_iframe.on(
+    "validation",
+    (inputProperties: spreedly.SpreedlyFieldEventInputProperties) => {},
+); // $ExpectType void

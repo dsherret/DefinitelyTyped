@@ -20,7 +20,10 @@ interface TemplateFactory {
 // class definition and extension, it is used by external tools and should not
 // be removed.
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export default interface Component<S = unknown> extends ViewMixin, ClassNamesSupport, Opaque<S> {}
+export default interface Component<S = unknown>
+    extends ViewMixin,
+        ClassNamesSupport,
+        Opaque<S> {}
 export default class Component<S = unknown> extends CoreView {
     // methods
     readDOMAttr(name: string): string;
@@ -104,7 +107,10 @@ export default class Component<S = unknown> extends CoreView {
  * @param object the object to associate with the componetn manager
  * @return the same object passed in, now associated with the manager
  */
-export function setComponentManager<T>(managerFactory: (owner: unknown) => ComponentManager<unknown>, object: T): T;
+export function setComponentManager<T>(
+    managerFactory: (owner: unknown) => ComponentManager<unknown>,
+    object: T,
+): T;
 
 /**
  * Takes a component class and returns the template associated with the given component class,

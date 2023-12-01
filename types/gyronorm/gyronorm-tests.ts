@@ -5,7 +5,8 @@ const options: gyronorm.Options = {
     frequency: 100,
 };
 
-instance.init(options)
+instance
+    .init(options)
     .then(() => {
         instance.startLogging((data) => {
             const { message, code } = data;

@@ -133,7 +133,10 @@ declare module "." {
         permalink?: string,
     ): [state: Awaited<State>, dispatch: () => void];
     function useFormState<State, Payload>(
-        action: (state: Awaited<State>, payload: Payload) => State | Promise<State>,
+        action: (
+            state: Awaited<State>,
+            payload: Payload,
+        ) => State | Promise<State>,
         initialState: Awaited<State>,
         permalink?: string,
     ): [state: Awaited<State>, dispatch: (payload: Payload) => void];

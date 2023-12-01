@@ -8,12 +8,15 @@ var MyFuncFunc = Promise.async((a: boolean, b: number) => {
 
 MyFuncFunc(true, 10);
 
-Promise.all([Promise.waitAsync(10), Promise.waitAsync(20)]).then(() => {
-    return new Promise<String>((resolve, reject) => {
-        resolve("test");
+Promise.all([Promise.waitAsync(10), Promise.waitAsync(20)])
+    .then(() => {
+        return new Promise<String>((resolve, reject) => {
+            resolve("test");
+        });
+    })
+    .then(() => {
+        throw new Error();
+    })
+    .catch((e) => {
+        console.log(e.message);
     });
-}).then(() => {
-    throw (new Error());
-}).catch((e) => {
-    console.log(e.message);
-});

@@ -62,7 +62,12 @@ export default class LexerATNSimulator extends ATNSimulator {
      * then the ATN does the accept and the DFA simulator that invoked it
      * can simply return the predicted token type.
      */
-    constructor(recog: Lexer, atn: ATN, decisionToDFA: DFA[], sharedContextCache: PredictionContextCache);
+    constructor(
+        recog: Lexer,
+        atn: ATN,
+        decisionToDFA: DFA[],
+        sharedContextCache: PredictionContextCache,
+    );
 
     copyState(simulator: LexerATNSimulator): void;
 
@@ -101,13 +106,23 @@ export default class LexerATNSimulator extends ATNSimulator {
      */
     computeTargetState(input: InputStream, s: DFAState, t: number): DFAState;
 
-    failOrAccept(prevAccept: SimState, input: InputStream, reach: ATNConfigSet, t: number): number;
+    failOrAccept(
+        prevAccept: SimState,
+        input: InputStream,
+        reach: ATNConfigSet,
+        t: number,
+    ): number;
 
     /**
      * Given a starting configuration set, figure out all ATN configurations
      * we can reach upon input `t`. Parameter `reach` is a return parameter.
      */
-    getReachableConfigSet(input: InputStream, closure: ATNConfigSet, reach: ATNConfigSet, t: number): void;
+    getReachableConfigSet(
+        input: InputStream,
+        closure: ATNConfigSet,
+        reach: ATNConfigSet,
+        t: number,
+    ): void;
 
     accept(
         input: InputStream,
@@ -120,7 +135,10 @@ export default class LexerATNSimulator extends ATNSimulator {
 
     getReachableTarget(trans: Transition, t: number): ATNState;
 
-    computeStartState(input: InputStream, p: DecisionState): OrderedATNConfigSet;
+    computeStartState(
+        input: InputStream,
+        p: DecisionState,
+    ): OrderedATNConfigSet;
 
     /**
      * Since the alternatives within any lexer decision are ordered by
@@ -169,11 +187,25 @@ export default class LexerATNSimulator extends ATNSimulator {
      *
      * @return `true` if the specified predicate evaluates to `true`.
      */
-    evaluatePredicate(input: InputStream, ruleIndex: number, predIndex: number, speculative: boolean): boolean;
+    evaluatePredicate(
+        input: InputStream,
+        ruleIndex: number,
+        predIndex: number,
+        speculative: boolean,
+    ): boolean;
 
-    captureSimState(settings: SimState, input: InputStream, dfaState: DFAState): void;
+    captureSimState(
+        settings: SimState,
+        input: InputStream,
+        dfaState: DFAState,
+    ): void;
 
-    addDFAEdge(from_: DFAState, tk: number, to?: DFAState, cfgs?: ATNConfigSet): DFAState;
+    addDFAEdge(
+        from_: DFAState,
+        tk: number,
+        to?: DFAState,
+        cfgs?: ATNConfigSet,
+    ): DFAState;
 
     /**
      * Add a new DFA state if there isn't one with this set of

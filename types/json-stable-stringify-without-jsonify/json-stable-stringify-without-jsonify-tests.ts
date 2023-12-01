@@ -8,7 +8,11 @@ const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
 
 {
     // Second arg can be a stringify.Comparator function.
-    const s: string = stringify(obj, (a: stringify.Element, b: stringify.Element): number => a.key < b.key ? 1 : -1);
+    const s: string = stringify(
+        obj,
+        (a: stringify.Element, b: stringify.Element): number =>
+            a.key < b.key ? 1 : -1,
+    );
     console.log(s);
 }
 

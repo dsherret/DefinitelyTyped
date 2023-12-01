@@ -347,7 +347,13 @@ interface SchedulerTemplates {
      * @param cellDate the date of a day cell that a one-day event or a single occurrence of <br> the recurring event displays in
      * @param pos the position of a single occurrence in the recurring event: 'start' - the first occurrence, 'end' - the last occurrence, 'middle' - for remaining occurrences
      */
-    week_agenda_event_text(start: Date, end: Date, event: any, cellDate: Date, pos: string): string;
+    week_agenda_event_text(
+        start: Date,
+        end: Date,
+        event: any,
+        cellDate: Date,
+        pos: string,
+    ): string;
 
     /**
      * the date of a day cell of the view
@@ -1797,7 +1803,13 @@ interface SchedulerStatic {
      * @param path the path to the php file which generates a PDF file (<a href="pdf.md#configuringservice">details</a>)
      * @param color the color map in use
      */
-    toPDFRange(from: Date, to: Date, view: string, path: string, color: string): void;
+    toPDFRange(
+        from: Date,
+        to: Date,
+        view: string,
+        path: string,
+        color: string,
+    ): void;
 
     /**
      * converts scheduler's data into the XML format

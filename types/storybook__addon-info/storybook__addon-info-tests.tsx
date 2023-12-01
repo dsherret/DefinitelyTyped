@@ -1,8 +1,14 @@
-import { setDefaults, TableComponentOptionProps, withInfo } from "@storybook/addon-info";
+import {
+    setDefaults,
+    TableComponentOptionProps,
+    withInfo,
+} from "@storybook/addon-info";
 import { addDecorator, addParameters, storiesOf } from "@storybook/react";
 import React, { Component, FunctionComponent, HTMLAttributes } from "react";
 
-const TableComponent: FunctionComponent<TableComponentOptionProps> = ({ propDefinitions }) => (
+const TableComponent: FunctionComponent<TableComponentOptionProps> = ({
+    propDefinitions,
+}) => (
     <table>
         <thead>
             <tr>
@@ -14,11 +20,15 @@ const TableComponent: FunctionComponent<TableComponentOptionProps> = ({ propDefi
             </tr>
         </thead>
         <tbody>
-            {propDefinitions.map(row => (
+            {propDefinitions.map((row) => (
                 <tr key={row.property}>
                     <td>{row.property}</td>
                     <td>{row.required ? "yes" : "-"}</td>
-                    <td>{row.defaultValue === undefined ? "-" : row.defaultValue}</td>
+                    <td>
+                        {row.defaultValue === undefined
+                            ? "-"
+                            : row.defaultValue}
+                    </td>
                     <td>{row.description}</td>
                 </tr>
             ))}
@@ -26,11 +36,13 @@ const TableComponent: FunctionComponent<TableComponentOptionProps> = ({ propDefi
     </table>
 );
 
-const BaseButton: FunctionComponent<HTMLAttributes<HTMLButtonElement> & { label: string }> = ({ label }) => (
-    <button type="button">{label}</button>
-);
+const BaseButton: FunctionComponent<
+    HTMLAttributes<HTMLButtonElement> & { label: string }
+> = ({ label }) => <button type="button">{label}</button>;
 
-const CustomButton: FunctionComponent<HTMLAttributes<HTMLButtonElement> & { label: string }> = ({ label, style }) => (
+const CustomButton: FunctionComponent<
+    HTMLAttributes<HTMLButtonElement> & { label: string }
+> = ({ label, style }) => (
     <button type="button" style={style}>
         {label}
     </button>
@@ -92,11 +104,20 @@ setDefaults({
 });
 
 storiesOf("Component", module)
-    .add("no info", withInfo()(() => <Component>Click the "?" mark at top-right to view the info.</Component>))
+    .add(
+        "no info",
+        withInfo()(() => (
+            <Component>
+                Click the "?" mark at top-right to view the info.
+            </Component>
+        )),
+    )
     .add(
         "simple info",
         withInfo("doc string about my component")(() => (
-            <Component>Click the "?" mark at top-right to view the info.</Component>
+            <Component>
+                Click the "?" mark at top-right to view the info.
+            </Component>
         )),
     )
     .add(
@@ -115,5 +136,9 @@ storiesOf("Component", module)
             maxPropStringLength: 4,
             TableComponent,
             excludedPropTypes: [],
-        })(() => <Component>Click the "?" mark at top-right to view the info.</Component>),
+        })(() => (
+            <Component>
+                Click the "?" mark at top-right to view the info.
+            </Component>
+        )),
     );

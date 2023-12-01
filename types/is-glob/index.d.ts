@@ -1,4 +1,7 @@
-declare function isGlob(pattern?: string | string[] | null, options?: isGlob.Options): boolean;
+declare function isGlob(
+    pattern?: string | string[] | null,
+    options?: isGlob.Options,
+): boolean;
 
 declare namespace isGlob {
     interface Options {

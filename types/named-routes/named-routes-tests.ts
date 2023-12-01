@@ -18,9 +18,15 @@ expressRouter.post("/path/:id", "foo", () => {}); // $ExpectType Router
 // `RouteOptions`
 router.add("get", "/path/:id", () => {}); // $ExpectType void
 router.add("get", "/path/:id", () => {}, { name: "foo" }); // $ExpectType void
-router.add("get", "/path/:id", () => {}, { name: "foo", recursiveWildcard: true }); // $ExpectType void
+router.add("get", "/path/:id", () => {}, {
+    name: "foo",
+    recursiveWildcard: true,
+}); // $ExpectType void
 router.add("get", "/path/:id", () => {}, { name: "foo", caseSensitive: true }); // $ExpectType void
-router.add("get", "/path/:id", () => {}, { name: "foo", wildcardInPairs: true }); // $ExpectType void
+router.add("get", "/path/:id", () => {}, {
+    name: "foo",
+    wildcardInPairs: true,
+}); // $ExpectType void
 
 // `RouteParams`
 router.build("foo", { string: "a" }); // $ExpectType string

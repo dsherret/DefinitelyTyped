@@ -16,7 +16,11 @@ const someOptions2: humps.HumpsOptions = {
 };
 const someOptions3: humps.HumpsOptions = {
     separator: "-",
-    process(key: string, convert: humps.HumpsProcessorParameter, options?: humps.HumpsOptions) {
+    process(
+        key: string,
+        convert: humps.HumpsProcessorParameter,
+        options?: humps.HumpsOptions,
+    ) {
         return /^[A-Z0-9_]+$/.test(key) ? key : convert(key, options);
     },
 };
@@ -82,5 +86,9 @@ humps.depascalizeKeys<{ AttrOne: string; AttrTwo: string }>(somePascalObject); /
 
 const snakeObjectWithUnion = { a_o: "foo", a_tw: [{ a_th: "bar" }] };
 
-humps.camelizeKeys<{ a_o: string; a_tw: Array<{ a_th: string }> | null }>(snakeObjectWithUnion); // $ExpectType Camelized<{ a_o: string; a_tw: { a_th: string; }[] | null; }>
-humps.pascalizeKeys<{ a_o: string; a_tw: Array<{ a_th: string }> | null }>(snakeObjectWithUnion); // $ExpectType Pascalized<{ a_o: string; a_tw: { a_th: string; }[] | null; }>
+humps.camelizeKeys<{ a_o: string; a_tw: Array<{ a_th: string }> | null }>(
+    snakeObjectWithUnion,
+); // $ExpectType Camelized<{ a_o: string; a_tw: { a_th: string; }[] | null; }>
+humps.pascalizeKeys<{ a_o: string; a_tw: Array<{ a_th: string }> | null }>(
+    snakeObjectWithUnion,
+); // $ExpectType Pascalized<{ a_o: string; a_tw: { a_th: string; }[] | null; }>

@@ -32,14 +32,17 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.FieldLayout
      */
-    interface FieldLayout<T extends Widget = Widget> extends FieldLayout.Props, FieldLayout.Prototype<T> {}
+    interface FieldLayout<T extends Widget = Widget>
+        extends FieldLayout.Props,
+            FieldLayout.Prototype<T> {}
 
     namespace FieldLayout {
         type EventMap = mixin.LabelElement.EventMap;
 
         interface ConfigOptions
-            extends Layout.ConfigOptions, mixin.LabelElement.ConfigOptions, mixin.TitledElement.ConfigOptions
-        {
+            extends Layout.ConfigOptions,
+                mixin.LabelElement.ConfigOptions,
+                mixin.TitledElement.ConfigOptions {
             /** Alignment of the label: 'left', 'right', 'top' or 'inline' */
             align?: "left" | "right" | "top" | "inline";
 
@@ -84,9 +87,15 @@ declare namespace OO.ui {
             $overlay?: JQuery;
         }
 
-        interface Static extends Layout.Static, mixin.LabelElement.Static, mixin.TitledElement.Static {}
+        interface Static
+            extends Layout.Static,
+                mixin.LabelElement.Static,
+                mixin.TitledElement.Static {}
 
-        interface Props extends Layout.Props, mixin.LabelElement.Props, mixin.TitledElement.Props {
+        interface Props
+            extends Layout.Props,
+                mixin.LabelElement.Props,
+                mixin.TitledElement.Props {
             $field: JQuery;
             $messages: JQuery;
             $header: JQuery;
@@ -95,8 +104,9 @@ declare namespace OO.ui {
         }
 
         interface Prototype<T extends Widget = Widget>
-            extends Layout.Prototype, mixin.LabelElement.Prototype, mixin.TitledElement.Prototype
-        {
+            extends Layout.Prototype,
+                mixin.LabelElement.Prototype,
+                mixin.TitledElement.Prototype {
             /**
              * Handle click events on the field label, or inline help
              *
@@ -160,7 +170,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -171,7 +184,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -179,7 +195,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -188,11 +207,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -212,7 +243,10 @@ declare namespace OO.ui {
              * @param config Configuration options
              * @throws {Error} An error is thrown if no widget is specified
              */
-            new<T extends Widget>(fieldWidget: T, config?: ConfigOptions): FieldLayout<T>;
+            new <T extends Widget>(
+                fieldWidget: T,
+                config?: ConfigOptions,
+            ): FieldLayout<T>;
             prototype: Prototype;
             static: Static;
             super: Layout.Constructor;

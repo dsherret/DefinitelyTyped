@@ -10,9 +10,11 @@ import JsReportScripts = require("jsreport-scripts");
             content: "",
             recipe: "html",
             engine: "handlebars",
-            scripts: [{
-                content: `function beforeRender(req, res) {}`,
-            }],
+            scripts: [
+                {
+                    content: `function beforeRender(req, res) {}`,
+                },
+            ],
         },
     });
 

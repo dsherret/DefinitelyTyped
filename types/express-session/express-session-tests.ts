@@ -61,7 +61,10 @@ app.use(
 );
 
 // When constructed without arguments, `expires` and `originalMaxAge` are null.
-const emptyCookie: SessionData["cookie"] = { expires: null, originalMaxAge: null };
+const emptyCookie: SessionData["cookie"] = {
+    expires: null,
+    originalMaxAge: null,
+};
 
 app.use(
     session({
@@ -102,20 +105,35 @@ class MyStore extends Store {
         this.sessions = {};
     }
 
-    get = (sid: string, callback: (err: any, session?: SessionData | null) => void): void => {
+    get = (
+        sid: string,
+        callback: (err: any, session?: SessionData | null) => void,
+    ): void => {
         const sessionString: string | undefined = this.sessions[sid];
-        const sessionData: SessionData | null = sessionString ? JSON.parse(sessionString) : null;
+        const sessionData: SessionData | null = sessionString
+            ? JSON.parse(sessionString)
+            : null;
         callback(null, sessionData);
     };
 
-    set = (sid: string, session: SessionData, callback?: (err?: any) => void): void => {
+    set = (
+        sid: string,
+        session: SessionData,
+        callback?: (err?: any) => void,
+    ): void => {
         this.sessions[sid] = JSON.stringify(session);
         if (callback) callback();
     };
 
-    touch = (sid: string, session: SessionData, callback?: (err?: any) => void) => {
+    touch = (
+        sid: string,
+        session: SessionData,
+        callback?: (err?: any) => void,
+    ) => {
         const currentSession = this.sessions[sid];
-        const sessionData: SessionData | null = currentSession ? JSON.parse(currentSession) : null;
+        const sessionData: SessionData | null = currentSession
+            ? JSON.parse(currentSession)
+            : null;
 
         if (sessionData) {
             // Real case could compare cookie timestamps to determine if touch to Store backend is needed
@@ -151,10 +169,10 @@ app.use((req, res, next) => {
     let sess = req.session;
     const store = req.sessionStore;
     store.get(sess.id, (err, session) => {});
-    store.set(sess.id, { views: 0, cookie: sess.cookie }, err => {});
+    store.set(sess.id, { views: 0, cookie: sess.cookie }, (err) => {});
     sess = store.createSession(req, { views: 0, cookie: sess.cookie });
-    store.destroy(sess.id, err => {});
+    store.destroy(sess.id, (err) => {});
     store.generate(req);
-    store.regenerate(req, err => {});
+    store.regenerate(req, (err) => {});
     res.end();
 });

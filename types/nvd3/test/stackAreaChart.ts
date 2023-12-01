@@ -1,8 +1,8 @@
 namespace nvd3_test_stackAreaChart {
     var histcatexplong = [
         {
-            "key": "Consumer Discretionary",
-            "values": [
+            key: "Consumer Discretionary",
+            values: [
                 [1138683600000, 27.38478809681],
                 [1141102800000, 27.371377218208],
                 [1143781200000, 26.309915460827],
@@ -83,8 +83,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Consumer Staples",
-            "values": [
+            key: "Consumer Staples",
+            values: [
                 [1138683600000, 7.2800122043237],
                 [1141102800000, 7.1187787503354],
                 [1143781200000, 8.351887016482],
@@ -165,8 +165,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Energy",
-            "values": [
+            key: "Energy",
+            values: [
                 [1138683600000, 1.544303464167],
                 [1141102800000, 1.4387289432421],
                 [1143781200000, 0],
@@ -247,8 +247,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Financials",
-            "values": [
+            key: "Financials",
+            values: [
                 [1138683600000, 13.356778764352],
                 [1141102800000, 13.611196863271],
                 [1143781200000, 6.895903006119],
@@ -329,8 +329,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Health Care",
-            "values": [
+            key: "Health Care",
+            values: [
                 [1138683600000, 14.212410956029],
                 [1141102800000, 13.973193618249],
                 [1143781200000, 15.218233920665],
@@ -411,8 +411,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Industrials",
-            "values": [
+            key: "Industrials",
+            values: [
                 [1138683600000, 7.1590087090398],
                 [1141102800000, 7.1297210970108],
                 [1143781200000, 5.5774588290586],
@@ -493,8 +493,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Information Technology",
-            "values": [
+            key: "Information Technology",
+            values: [
                 [1138683600000, 13.242301508051],
                 [1141102800000, 12.863536342042],
                 [1143781200000, 21.034044171629],
@@ -575,8 +575,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Materials",
-            "values": [
+            key: "Materials",
+            values: [
                 [1138683600000, 5.5806167415681],
                 [1141102800000, 5.4539047069985],
                 [1143781200000, 7.6728842432362],
@@ -657,8 +657,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Telecommunication Services",
-            "values": [
+            key: "Telecommunication Services",
+            values: [
                 [1138683600000, 3.7056975170243],
                 [1141102800000, 3.7561118692318],
                 [1143781200000, 2.861913700854],
@@ -739,8 +739,8 @@ namespace nvd3_test_stackAreaChart {
             ],
         },
         {
-            "key": "Utilities",
-            "values": [
+            key: "Utilities",
+            values: [
                 [1138683600000, 0],
                 [1141102800000, 0],
                 [1143781200000, 0],
@@ -825,19 +825,20 @@ namespace nvd3_test_stackAreaChart {
     var colors = d3.scale.category20();
 
     var chart;
-    nv.addGraph(function() {
-        chart = nv.models.stackedAreaChart()
+    nv.addGraph(function () {
+        chart = nv.models
+            .stackedAreaChart()
             .useInteractiveGuideline(true)
-            .x(function(d) {
+            .x(function (d) {
                 return d[0];
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d[1];
             })
             .controlLabels({ stacked: "Stacked" })
             .duration(300);
 
-        chart.xAxis.tickFormat(function(d) {
+        chart.xAxis.tickFormat(function (d) {
             return d3.time.format("%x")(new Date(d));
         });
         chart.yAxis.tickFormat(d3.format(",.4f"));
@@ -846,11 +847,12 @@ namespace nvd3_test_stackAreaChart {
 
         d3.select("#chart1")
             .datum(histcatexplong)
-            .transition().duration(1000)
+            .transition()
+            .duration(1000)
             .call(chart)
-            .each("start", function() {
-                setTimeout(function() {
-                    d3.selectAll("#chart1 *").each(function() {
+            .each("start", function () {
+                setTimeout(function () {
+                    d3.selectAll("#chart1 *").each(function () {
                         if (this.__transition__) {
                             this.__transition__.duration = 1;
                         }

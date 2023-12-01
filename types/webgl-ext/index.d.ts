@@ -9,17 +9,33 @@ interface HTMLCanvasElement {
 }
 
 interface WebGL1Extensions {
-    getExtension(name: "EXT_color_buffer_half_float"): EXT_color_buffer_half_float;
+    getExtension(
+        name: "EXT_color_buffer_half_float",
+    ): EXT_color_buffer_half_float;
 
-    getExtension(name: "WEBGL_compressed_texture_atc"): WEBGL_compressed_texture_atc;
-    getExtension(name: "WEBGL_compressed_texture_etc1"): WEBGL_compressed_texture_etc1;
-    getExtension(name: "WEBGL_compressed_texture_pvrtc"): WEBKIT_WEBGL_compressed_texture_pvrtc;
+    getExtension(
+        name: "WEBGL_compressed_texture_atc",
+    ): WEBGL_compressed_texture_atc;
+    getExtension(
+        name: "WEBGL_compressed_texture_etc1",
+    ): WEBGL_compressed_texture_etc1;
+    getExtension(
+        name: "WEBGL_compressed_texture_pvrtc",
+    ): WEBKIT_WEBGL_compressed_texture_pvrtc;
 
     // Prefixed versions appearing in the wild as per February 2018
-    getExtension(name: "WEBKIT_EXT_texture_filter_anisotropic"): EXT_texture_filter_anisotropic; // Chrome
-    getExtension(name: "WEBKIT_WEBGL_compressed_texture_atc"): WEBGL_compressed_texture_atc; // Android
-    getExtension(name: "WEBKIT_WEBGL_compressed_texture_pvrtc"): WEBKIT_WEBGL_compressed_texture_pvrtc; // Safari iOS
-    getExtension(name: "WEBKIT_WEBGL_compressed_texture_s3tc"): WEBGL_compressed_texture_s3tc; // Chrome
+    getExtension(
+        name: "WEBKIT_EXT_texture_filter_anisotropic",
+    ): EXT_texture_filter_anisotropic; // Chrome
+    getExtension(
+        name: "WEBKIT_WEBGL_compressed_texture_atc",
+    ): WEBGL_compressed_texture_atc; // Android
+    getExtension(
+        name: "WEBKIT_WEBGL_compressed_texture_pvrtc",
+    ): WEBKIT_WEBGL_compressed_texture_pvrtc; // Safari iOS
+    getExtension(
+        name: "WEBKIT_WEBGL_compressed_texture_s3tc",
+    ): WEBGL_compressed_texture_s3tc; // Chrome
     getExtension(name: "WEBKIT_WEBGL_depth_texture"): WEBGL_depth_texture; // Chrome
     getExtension(name: "WEBKIT_WEBGL_lose_context"): WEBGL_lose_context; // Chrome
 }

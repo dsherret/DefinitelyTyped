@@ -1,12 +1,12 @@
 /*!
-* Based on Dynamsoft WebTwain JavaScript Intellisense
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2018, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-* Version: 13.4
-*/
+ * Based on Dynamsoft WebTwain JavaScript Intellisense
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2018, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ * Version: 13.4
+ */
 
 /**
  * @namespace Dynamsoft
@@ -112,7 +112,10 @@ declare namespace Dynamsoft {
 
         let PluginVersion: string;
         let ProductKey: string;
-        function RegisterEvent(event: string, fn: (...args: any[]) => void): void;
+        function RegisterEvent(
+            event: string,
+            fn: (...args: any[]) => void,
+        ): void;
         function RemoveAllAuthorizations(): void;
         let ResourcesPath: string;
         let ServerVersionInfo: string;
@@ -1373,7 +1376,7 @@ declare enum EnumDWT_TransferMode {
     /** Disk File Mode Transfers. */
     TWSX_FILE = 1,
     /** Buffered Memory Mode Transfers. */
-    TWSX_MEMORY = 2, /*,*/
+    TWSX_MEMORY = 2 /*,*/,
     /** added 1.91 , not supported in DWT yet*/
     /** TWSX_MEMFILE  = 4*/
 }
@@ -2190,7 +2193,10 @@ interface WebTwain {
     AcquireImage(
         optionalDeviceConfig?: object,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2278,10 +2284,10 @@ interface WebTwain {
     CapGetFrameTop(index: number): number;
 
     /* ignored
-    * CapGetHelp
-    * CapGetLabel
-    * CapGetLabels
-    */
+     * CapGetHelp
+     * CapGetLabel
+     * CapGetLabels
+     */
 
     /**
      * Queries whether the Source supports a particular operation on the capability.
@@ -2315,7 +2321,13 @@ interface WebTwain {
      * @param {number} bottom  the value (in Unit) of the bottom-most edge of the specified frame.
      * @return {boolean}
      */
-    CapSetFrame(index: number, left: number, top: number, right: number, bottom: number): boolean;
+    CapSetFrame(
+        index: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Changes the bitdepth of a specified image.
@@ -2325,7 +2337,11 @@ interface WebTwain {
      * @param {boolean} bHighQuality specifies whether or not to keep high quality while changing the bit depth. When it's true, it takes more time.
      * @return {boolean}
      */
-    ChangeBitDepth(sImageIndex: number, sBitDepth: number, bHighQuality: boolean): boolean;
+    ChangeBitDepth(
+        sImageIndex: number,
+        sBitDepth: number,
+        bHighQuality: boolean,
+    ): boolean;
 
     /**
      * Changes width and height of the image of a specified index in the buffer. Please note the file size of the image will be changed proportionately.
@@ -2491,7 +2507,13 @@ interface WebTwain {
      * @param {number} bottom specifies the y-coordinate of the lower-right corner of the rectangle.
      * @return {boolean}
      */
-    Crop(sImageIndex: number, left: number, top: number, right: number, bottom: number): boolean;
+    Crop(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Crops the image of a specified index in buffer to clipboard in DIB format.
@@ -2503,7 +2525,13 @@ interface WebTwain {
      * @param {number} bottom specifies the y-coordinate of the lower-right corner of the rectangle.
      * @return {boolean}
      */
-    CropToClipboard(sImageIndex: number, left: number, top: number, right: number, bottom: number): boolean;
+    CropToClipboard(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Cuts the image data in the specified area to the system clipboard in DIB format.
@@ -2515,7 +2543,13 @@ interface WebTwain {
      * @param {number} bottom specifies the y-coordinate of the lower-right corner of the rectangle.
      * @return {boolean}
      */
-    CutFrameToClipboard(sImageIndex: number, left: number, top: number, right: number, bottom: number): boolean;
+    CutFrameToClipboard(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Cuts the image of a specified index in buffer to clipboard in DIB format.
@@ -2549,7 +2583,13 @@ interface WebTwain {
      * @param {number} bottom specifies the y-coordinate of the lower-right corner of the rectangle.
      * @return {boolean}
      */
-    Erase(sImageIndex: number, left: number, top: number, right: number, bottom: number): boolean;
+    Erase(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Downloads an image from the FTP server.
@@ -2564,7 +2604,10 @@ interface WebTwain {
         FTPServer: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2582,7 +2625,10 @@ interface WebTwain {
         FTPRemoteFile: string,
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2600,7 +2646,10 @@ interface WebTwain {
         FTPRemoteFile: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2618,7 +2667,10 @@ interface WebTwain {
         sImageIndex: number,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2636,7 +2688,10 @@ interface WebTwain {
         localFile: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2656,7 +2711,10 @@ interface WebTwain {
         FTPRemoteFile: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2672,7 +2730,10 @@ interface WebTwain {
         FTPServer: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2688,7 +2749,10 @@ interface WebTwain {
         FTPServer: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2704,7 +2768,10 @@ interface WebTwain {
         FTPServer: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2720,7 +2787,10 @@ interface WebTwain {
         FTPServer: string,
         FTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2829,7 +2899,10 @@ interface WebTwain {
      * @param {EnumDWT_ImageType} sImageType specifies the type of an image file..
      * @return {number}
      */
-    GetImageSizeWithSpecifiedType(sImageIndex: number, sImageType: EnumDWT_ImageType): number;
+    GetImageSizeWithSpecifiedType(
+        sImageIndex: number,
+        sImageType: EnumDWT_ImageType,
+    ): number;
 
     /**
      * Returns the direct URL of an image specified by index, if iWidth or iHeight is set to -1, you get the original image, otherwise you get the image with specified iWidth or iHeight while keeping the same aspect ratio.
@@ -2905,7 +2978,13 @@ interface WebTwain {
      * @param {number} bottom specifies the y-coordinate of the lower-right corner of the rectangle.
      * @return {number}
      */
-    GetSkewAngleEx(sImageIndex: number, left: number, top: number, right: number, bottom: number): number;
+    GetSkewAngleEx(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): number;
 
     /**
      * Get the source name according to the source index.
@@ -2934,7 +3013,10 @@ interface WebTwain {
         HTTPServer: string,
         HTTPRemoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2952,7 +3034,10 @@ interface WebTwain {
         HTTPRemoteFile: string,
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -2970,7 +3055,10 @@ interface WebTwain {
         HTTPRemoteFile: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /*ignored
@@ -2993,7 +3081,11 @@ interface WebTwain {
         HTTPRemoteFile: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3007,7 +3099,11 @@ interface WebTwain {
     HTTPUpload(
         url: string,
         asyncSuccessFunc: (httppostresponsestring: string) => void,
-        asyncFailureFunc: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        asyncFailureFunc: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3027,7 +3123,11 @@ interface WebTwain {
         enumImageType: EnumDWT_ImageType,
         dataFormat: EnumDWT_UploadDataFormat,
         asyncSuccessFunc: (httppostresponsestring: string) => void,
-        asyncFailureFunc: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        asyncFailureFunc: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3045,7 +3145,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3063,7 +3167,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3079,7 +3187,10 @@ interface WebTwain {
         HTTPServer: string,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3095,7 +3206,10 @@ interface WebTwain {
         HTTPServer: string,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /*ignored
@@ -3119,7 +3233,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3137,7 +3255,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3155,7 +3277,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3175,7 +3301,11 @@ interface WebTwain {
         ActionPage: string,
         fileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3197,7 +3327,11 @@ interface WebTwain {
         fileName: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string, httppostresponsestring: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+            httppostresponsestring: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3215,7 +3349,10 @@ interface WebTwain {
         sImageIndex: number,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3231,7 +3368,10 @@ interface WebTwain {
         HTTPServer: string,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3247,7 +3387,10 @@ interface WebTwain {
         HTTPServer: string,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3265,7 +3408,10 @@ interface WebTwain {
         localFile: string,
         RemoteFileName: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3285,7 +3431,10 @@ interface WebTwain {
         RemoteFileName: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3333,7 +3482,10 @@ interface WebTwain {
      */
     LoadDibFromClipboard(
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3347,7 +3499,10 @@ interface WebTwain {
     LoadImage(
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3363,7 +3518,10 @@ interface WebTwain {
         localFile: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3377,7 +3535,10 @@ interface WebTwain {
         bry: string,
         lImageType: EnumDWT_ImageType,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3388,7 +3549,11 @@ interface WebTwain {
      * @param {EnumDWT_ImageType} lImageType Specifies the file format.
      * @return {boolean}
      */
-    LoadImageFromBytes(lBufferSize: number, buffer: number[], lImageType: EnumDWT_ImageType): boolean;
+    LoadImageFromBytes(
+        lBufferSize: number,
+        buffer: number[],
+        lImageType: EnumDWT_ImageType,
+    ): boolean;
 
     /**
      * Mirrors the image of a specified index in buffer.
@@ -3522,7 +3687,12 @@ interface WebTwain {
      * @param {EnumDWT_InterpolationMethod} newVal specifies the method to do interpolation.
      * @return {boolean}
      */
-    RotateEx(sImageIndex: number, fAngle: number, bKeepSize: boolean, newVal: EnumDWT_InterpolationMethod): boolean;
+    RotateEx(
+        sImageIndex: number,
+        fAngle: number,
+        bKeepSize: boolean,
+        newVal: EnumDWT_InterpolationMethod,
+    ): boolean;
 
     /**
      * Rotates the image of a specified index in buffer by 90 degrees counter-clockwise.
@@ -3551,7 +3721,10 @@ interface WebTwain {
     SaveAllAsMultiPageTIFF(
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3565,7 +3738,10 @@ interface WebTwain {
     SaveAllAsPDF(
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3579,7 +3755,10 @@ interface WebTwain {
         localFile: string,
         sImageIndex: number,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /*ignored
@@ -3597,7 +3776,10 @@ interface WebTwain {
         localFile: string,
         sImageIndex: number,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3611,7 +3793,10 @@ interface WebTwain {
         localFile: string,
         sImageIndex: number,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3625,7 +3810,10 @@ interface WebTwain {
         localFile: string,
         sImageIndex: number,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3639,7 +3827,10 @@ interface WebTwain {
         localFile: string,
         sImageIndex: number,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3653,7 +3844,10 @@ interface WebTwain {
     SaveSelectedImagesAsMultiPagePDF(
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3667,7 +3861,10 @@ interface WebTwain {
     SaveSelectedImagesAsMultiPageTIFF(
         localFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -3677,7 +3874,10 @@ interface WebTwain {
      */
     SaveSelectedImagesToBase64Binary(
         optionalAsyncSuccessFunc?: (result: string[]) => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): string | boolean;
 
     /**
@@ -3797,7 +3997,11 @@ interface WebTwain {
      * @param {string} optionalFileName specifies the file name for the blob
      * @return {boolean}
      */
-    SetHTTPFormField(FieldName: string, blobValue: Blob, optionalFileName?: string): boolean;
+    SetHTTPFormField(
+        FieldName: string,
+        blobValue: Blob,
+        optionalFileName?: string,
+    ): boolean;
 
     /**
      * Sets a header for the current HTTP Post request.
@@ -3817,7 +4021,12 @@ interface WebTwain {
      * @param {number} bottom specifies the floating point number for the bottom side of the image layout rectangle.
      * @return {boolean}
      */
-    SetImageLayout(left: number, top: number, right: number, bottom: number): boolean;
+    SetImageLayout(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * Change the width of an image in buffer.
@@ -3854,7 +4063,13 @@ interface WebTwain {
      * @param {number} bottom The Y axis of the bottom border.
      * @return {boolean}
      */
-    SetSelectedImageArea(sImageIndex: number, left: number, top: number, right: number, bottom: number): boolean;
+    SetSelectedImageArea(
+        sImageIndex: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
 
     /**
      * You can use the method to select images programatically which is ususally done by mouse clicking.
@@ -3882,7 +4097,10 @@ interface WebTwain {
      * @param {number} moduleSize specifies the size of each segment (in KB).
      * @return {boolean}
      */
-    SetUploadSegment(segmentUploadThreshold: number, moduleSize: number): boolean;
+    SetUploadSegment(
+        segmentUploadThreshold: number,
+        moduleSize: number,
+    ): boolean;
 
     /**
      * Sets the view mode that images are displayed in Dynamic Web TWAIN. You can use this method to display multiple images in Dynamic Web TWAIN.
@@ -3891,7 +4109,10 @@ interface WebTwain {
      * @param {number} sVerticalImageCount specifies how many rows can be displayed in Dynamic Web TWAIN..
      * @return {void}
      */
-    SetViewMode(sHorizontalImageCount: number, sVerticalImageCount: number): void;
+    SetViewMode(
+        sHorizontalImageCount: number,
+        sVerticalImageCount: number,
+    ): void;
 
     /**
      * Show save file dialog or show open file dialog.
@@ -3934,7 +4155,13 @@ interface WebTwain {
      * @param {number} nCmdShow specifices how the window should be shown.
      * @return {boolean}
      */
-    ShowImageEditorEx(x: number, y: number, cx: number, cy: number, nCmdShow: number): boolean;
+    ShowImageEditorEx(
+        x: number,
+        y: number,
+        cx: number,
+        cy: number,
+        nCmdShow: number,
+    ): boolean;
 
     /*ingored
     SourceNameItems

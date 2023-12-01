@@ -61,14 +61,18 @@ export type NonEmptyArray<T> = [T, ...T[]];
 
 export type Mode = Color["mode"];
 
-export type FindColorByMode<M extends Mode, C extends Color = Color> = C extends { mode: M } ? C : never;
+export type FindColorByMode<
+    M extends Mode,
+    C extends Color = Color,
+> = C extends { mode: M } ? C : never;
 
-export type TakeColorChannels<M extends Mode> = Omit<FindColorByMode<M>, "mode">;
+export type TakeColorChannels<M extends Mode> = Omit<
+    FindColorByMode<M>,
+    "mode"
+>;
 
 export type OverridesFunction = (values: number[], channel: string) => number;
 
-export type OverridesObject<M extends Mode> = Partial<
-    {
-        [P in keyof TakeColorChannels<M>]: OverridesFunction;
-    }
->;
+export type OverridesObject<M extends Mode> = Partial<{
+    [P in keyof TakeColorChannels<M>]: OverridesFunction;
+}>;

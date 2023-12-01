@@ -24,9 +24,18 @@ declare namespace bonjour {
         start(): void;
         update(): void;
         stop(): void;
-        on(event: "up" | "down", listener: (service: RemoteService) => void): this;
-        once(event: "up" | "down", listener: (service: RemoteService) => void): this;
-        removeListener(event: "up" | "down", listener: (service: RemoteService) => void): this;
+        on(
+            event: "up" | "down",
+            listener: (service: RemoteService) => void,
+        ): this;
+        once(
+            event: "up" | "down",
+            listener: (service: RemoteService) => void,
+        ): this;
+        removeListener(
+            event: "up" | "down",
+            listener: (service: RemoteService) => void,
+        ): this;
         removeAllListeners(event?: "up" | "down"): this;
     }
     interface BrowserOptions {
@@ -83,8 +92,14 @@ declare namespace bonjour {
         (opts?: BonjourOptions): Bonjour;
         publish(options: ServiceOptions): Service;
         unpublishAll(cb?: () => void): void;
-        find(options: BrowserOptions, onUp?: (service: RemoteService) => void): Browser;
-        findOne(options: BrowserOptions, cb?: (service: RemoteService) => void): Browser;
+        find(
+            options: BrowserOptions,
+            onUp?: (service: RemoteService) => void,
+        ): Browser;
+        findOne(
+            options: BrowserOptions,
+            cb?: (service: RemoteService) => void,
+        ): Browser;
         destroy(): void;
     }
 }

@@ -73,7 +73,10 @@ declare namespace numeral {
         constructor(input: any, value: number);
         prototype: Numeral;
         clone(): Numeral;
-        format(inputString?: string, roundingFunction?: RoundingFunction): string;
+        format(
+            inputString?: string,
+            roundingFunction?: RoundingFunction,
+        ): string;
         value(): number | null;
         input(): any;
         set(value: any): Numeral;
@@ -122,7 +125,11 @@ declare namespace numeral {
             format: RegExp;
             unformat: RegExp;
         };
-        format: (value: any, format: string, roundingFunction: RoundingFunction) => string;
+        format: (
+            value: any,
+            format: string,
+            roundingFunction: RoundingFunction,
+        ) => string;
         unformat: (value: string) => number;
     }
 
@@ -131,7 +138,11 @@ declare namespace numeral {
     }
 
     interface NumeralJSUtils {
-        numberToFormat: (value: number, format: string, roundingFunction?: RoundingFunction) => string;
+        numberToFormat: (
+            value: number,
+            format: string,
+            roundingFunction?: RoundingFunction,
+        ) => string;
         stringToNumber: (string: string) => number;
     }
 

@@ -1,6 +1,15 @@
 import * as React from "react";
-import { FCProps, FCReturn, ReactComponentConstructor } from "../../../typings/shared";
-import { ButtonAnchorProps, ButtonCustomComponentProps, ButtonDefaultProps, ButtonIntrinsicProps } from "../Button";
+import {
+    FCProps,
+    FCReturn,
+    ReactComponentConstructor,
+} from "../../../typings/shared";
+import {
+    ButtonAnchorProps,
+    ButtonCustomComponentProps,
+    ButtonDefaultProps,
+    ButtonIntrinsicProps,
+} from "../Button";
 
 declare function PrimaryButton(props: FCProps<ButtonDefaultProps>): FCReturn;
 // tslint:disable:unified-signatures breaks certain usages

@@ -39,6 +39,8 @@ declare namespace findNodeModules {
  * findNodeModules({ cwd: './someDir', relative: false });
  * //=> ['/path/to/something/node_modules', '/path/node_modules']
  */
-declare function findNodeModules(options?: string | findNodeModules.Options): string[];
+declare function findNodeModules(
+    options?: string | findNodeModules.Options,
+): string[];
 
 export = findNodeModules;

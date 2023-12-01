@@ -1,17 +1,22 @@
-function ConfigurationMethodChaining(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
-    AnalyticsProvider
-        .logAllCalls(true)
+function ConfigurationMethodChaining(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
+    AnalyticsProvider.logAllCalls(true)
         .startOffline(true)
         .useECommerce(true, true);
 }
 
-function EnableECommerce(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function EnableECommerce(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.useECommerce(true, false);
     AnalyticsProvider.useECommerce(true, true);
     AnalyticsProvider.setCurrency("CDN");
 }
 
-function SetGoogleAnalyticsAccounts(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function SetGoogleAnalyticsAccounts(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.setAccount("UA-XXXXX-xx");
     AnalyticsProvider.setAccount([
         { tracker: "UA-12345-12", name: "tracker1" },
@@ -19,24 +24,34 @@ function SetGoogleAnalyticsAccounts(AnalyticsProvider: angular.google.analytics.
     ]);
 }
 
-function UseClassicAnalytics(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function UseClassicAnalytics(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.useAnalytics(false);
 }
 
-function UseDisplayFeatures(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function UseDisplayFeatures(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.useDisplayFeatures(true);
 }
 
-function UseEnhancedLinkAttribution(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function UseEnhancedLinkAttribution(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.useEnhancedLinkAttribution(true);
 }
 
-function UseCrossDomainLinking(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function UseCrossDomainLinking(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.useCrossDomainLinker(true);
     AnalyticsProvider.setCrossLinkDomains(["domain-1.com", "domain-2.com"]);
 }
 
-function SetCookieConfiguration(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function SetCookieConfiguration(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.setCookieConfig({
         cookieDomain: "foo.example.com",
         cookieName: "myNewName",
@@ -44,7 +59,9 @@ function SetCookieConfiguration(AnalyticsProvider: angular.google.analytics.Anal
     });
 }
 
-function SetRouteTrackingBehaviors(AnalyticsProvider: angular.google.analytics.AnalyticsProvider) {
+function SetRouteTrackingBehaviors(
+    AnalyticsProvider: angular.google.analytics.AnalyticsProvider,
+) {
     AnalyticsProvider.trackPages(true);
     AnalyticsProvider.trackUrlParams(true);
     AnalyticsProvider.ignoreFirstPageLoad(true);
@@ -53,16 +70,22 @@ function SetRouteTrackingBehaviors(AnalyticsProvider: angular.google.analytics.A
     AnalyticsProvider.setRemoveRegExp(/\/\d+?$/);
 }
 
-function RetrieveCurrentURL(Analytics: angular.google.analytics.AnalyticsService) {
+function RetrieveCurrentURL(
+    Analytics: angular.google.analytics.AnalyticsService,
+) {
     var test = Analytics.getUrl();
 }
 
-function ManualScriptTagInjection(Analytics: angular.google.analytics.AnalyticsService) {
+function ManualScriptTagInjection(
+    Analytics: angular.google.analytics.AnalyticsService,
+) {
     Analytics.registerScriptTags();
     Analytics.registerTrackers();
 }
 
-function SetCustomDimensions(Analytics: angular.google.analytics.AnalyticsService) {
+function SetCustomDimensions(
+    Analytics: angular.google.analytics.AnalyticsService,
+) {
     Analytics.set("&uid", 1234);
     Analytics.set("dimension1", "Paid");
     Analytics.set("dimension2", "Paid", "accountName");
@@ -71,7 +94,10 @@ function SetCustomDimensions(Analytics: angular.google.analytics.AnalyticsServic
 function PageTracking(Analytics: angular.google.analytics.AnalyticsService) {
     Analytics.trackPage("/video/detail/XXX");
     Analytics.trackPage("/video/detail/XXX", "Video XXX");
-    Analytics.trackPage("/video/detail/XXX", "Video XXX", { dimension15: "My Custom Dimension", metric18: 8000 });
+    Analytics.trackPage("/video/detail/XXX", "Video XXX", {
+        dimension15: "My Custom Dimension",
+        metric18: 8000,
+    });
 }
 
 function EventTracking(Analytics: angular.google.analytics.AnalyticsService) {
@@ -84,8 +110,13 @@ function EventTracking(Analytics: angular.google.analytics.AnalyticsService) {
     });
 }
 
-function ExceptionTracking(Analytics: angular.google.analytics.AnalyticsService) {
-    Analytics.trackException("Function \"foo\" is undefined on object \"bar\"", true);
+function ExceptionTracking(
+    Analytics: angular.google.analytics.AnalyticsService,
+) {
+    Analytics.trackException(
+        'Function "foo" is undefined on object "bar"',
+        true,
+    );
 }
 
 function OfflineMode(Analytics: angular.google.analytics.AnalyticsService) {

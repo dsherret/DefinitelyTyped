@@ -100,7 +100,9 @@ declare namespace cytoscapeD3Force {
          * Sets the radius accessor to the specified number or function
          * @see {@link https://d3js.org/d3-force/collide#collide_radius}
          */
-        collideRadius?: number | ((node: any, i: number, nodes: any[]) => number);
+        collideRadius?:
+            | number
+            | ((node: any, i: number, nodes: any[]) => number);
 
         /**
          * Sets the force strength to the specified number in the range [0;1]
@@ -126,13 +128,17 @@ declare namespace cytoscapeD3Force {
          * @default 30
          * @see {@link https://d3js.org/d3-force/link#link_distance}
          */
-        linkDistance?: number | ((link: any, i: number, links: any[]) => number);
+        linkDistance?:
+            | number
+            | ((link: any, i: number, links: any[]) => number);
 
         /**
          * Sets the strength accessor to the specified number or function
          * @see {@link https://d3js.org/d3-force/link#link_strength}
          */
-        linkStrength?: number | ((link: any, i: number, links: any[]) => number);
+        linkStrength?:
+            | number
+            | ((link: any, i: number, links: any[]) => number);
 
         /**
          * Sets the number of iterations per application to the specified number
@@ -145,7 +151,9 @@ declare namespace cytoscapeD3Force {
          * Sets the strength accessor to the specified number or function
          * @see {@link https://d3js.org/d3-force/many-body#manyBody_strength}
          */
-        manyBodyStrength?: number | ((node: any, i: number, nodes: any[]) => number);
+        manyBodyStrength?:
+            | number
+            | ((node: any, i: number, nodes: any[]) => number);
 
         /**
          * Sets the Barnes–Hut approximation criterion to the specified number
@@ -196,13 +204,17 @@ declare namespace cytoscapeD3Force {
          * Sets the strength accessor to the specified number or function
          * @see {@link https://d3js.org/d3-force/position#radial_strength}
          */
-        radialStrength?: number | ((node: any, i: number, nodes: any[]) => number);
+        radialStrength?:
+            | number
+            | ((node: any, i: number, nodes: any[]) => number);
 
         /**
          * Sets the circle radius to the specified number or function
          * @see {@link https://d3js.org/d3-force/position#radial_radius}
          */
-        radialRadius?: number | ((node: any, i: number, nodes: any[]) => number);
+        radialRadius?:
+            | number
+            | ((node: any, i: number, nodes: any[]) => number);
 
         /**
          * Sets the x-coordinate of the circle center to the specified number

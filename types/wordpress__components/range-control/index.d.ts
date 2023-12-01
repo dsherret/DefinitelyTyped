@@ -5,8 +5,11 @@ import Dashicon from "../dashicon";
 
 declare namespace RangeControl {
     interface Props
-        extends Omit<HTMLProps<HTMLInputElement>, keyof BaseControl.ControlProps | "onChange">, BaseControl.ControlProps
-    {
+        extends Omit<
+                HTMLProps<HTMLInputElement>,
+                keyof BaseControl.ControlProps | "onChange"
+            >,
+            BaseControl.ControlProps {
         /**
          * If this property is added, a `DashIcon` component will be rendered
          * after the slider with the `icon` equal to `afterIcon`.

@@ -454,7 +454,9 @@ export namespace APIContracts {
         setAuthenticationIndicator(p_authenticationIndicator: any): void;
         authenticationIndicator: any;
         getAuthenticationIndicator(): any;
-        setCardholderAuthenticationValue(p_cardholderAuthenticationValue: any): void;
+        setCardholderAuthenticationValue(
+            p_cardholderAuthenticationValue: any,
+        ): void;
         cardholderAuthenticationValue: any;
         getCardholderAuthenticationValue(): any;
     }
@@ -478,10 +480,14 @@ export namespace APIContracts {
         setCustomerProfileId(p_customerProfileId: any): void;
         customerProfileId: any;
         getCustomerProfileId(): any;
-        setCustomerPaymentProfileIdList(p_customerPaymentProfileIdList: any): void;
+        setCustomerPaymentProfileIdList(
+            p_customerPaymentProfileIdList: any,
+        ): void;
         customerPaymentProfileIdList: any;
         getCustomerPaymentProfileIdList(): any;
-        setCustomerShippingAddressIdList(p_customerShippingAddressIdList: any): void;
+        setCustomerShippingAddressIdList(
+            p_customerShippingAddressIdList: any,
+        ): void;
         customerShippingAddressIdList: any;
         getCustomerShippingAddressIdList(): any;
     }
@@ -976,7 +982,9 @@ export namespace APIContracts {
         getSessionToken(): string;
         setPassword(p_password: string): void;
         getPassword(): string;
-        setImpersonationAuthentication(p_impersonationAuthentication: any): void;
+        setImpersonationAuthentication(
+            p_impersonationAuthentication: any,
+        ): void;
         getImpersonationAuthentication(): any;
         setFingerPrint(p_fingerPrint: any): void;
         getFingerPrint(): any;
@@ -1016,7 +1024,10 @@ export namespace APIContracts {
         getMerchantPhone(): string;
     }
     class MessagesType {
-        constructor(obj?: { resultCode: string; message: Array<{ text?: string; code?: string }> });
+        constructor(obj?: {
+            resultCode: string;
+            message: Array<{ text?: string; code?: string }>;
+        });
         setResultCode(p_resultCode: string): void;
         resultCode: string | null;
         getResultCode(): string | null;
@@ -1112,10 +1123,14 @@ export namespace APIContracts {
         setTotalTaxTypeCode(p_totalTaxTypeCode: any): void;
         totalTaxTypeCode: any;
         getTotalTaxTypeCode(): any;
-        setPurchaserVATRegistrationNumber(p_purchaserVATRegistrationNumber: any): void;
+        setPurchaserVATRegistrationNumber(
+            p_purchaserVATRegistrationNumber: any,
+        ): void;
         purchaserVATRegistrationNumber: any;
         getPurchaserVATRegistrationNumber(): any;
-        setMerchantVATRegistrationNumber(p_merchantVATRegistrationNumber: any): void;
+        setMerchantVATRegistrationNumber(
+            p_merchantVATRegistrationNumber: any,
+        ): void;
         merchantVATRegistrationNumber: any;
         getMerchantVATRegistrationNumber(): any;
         setVatInvoiceReferenceNumber(p_vatInvoiceReferenceNumber: any): void;
@@ -1413,7 +1428,9 @@ export namespace APIContracts {
         setProfileTransAuthOnly(p_profileTransAuthOnly: any): void;
         profileTransAuthOnly: any;
         getProfileTransAuthOnly(): any;
-        setProfileTransPriorAuthCapture(p_profileTransPriorAuthCapture: any): void;
+        setProfileTransPriorAuthCapture(
+            p_profileTransPriorAuthCapture: any,
+        ): void;
         profileTransPriorAuthCapture: any;
         getProfileTransPriorAuthCapture(): any;
         setProfileTransCaptureOnly(p_profileTransCaptureOnly: any): void;
@@ -2324,13 +2341,19 @@ export namespace APIContracts {
         setCustomerProfileId(p_customerProfileId: any): void;
         customerProfileId: any;
         getCustomerProfileId(): any;
-        setCustomerPaymentProfileIdList(p_customerPaymentProfileIdList: any): void;
+        setCustomerPaymentProfileIdList(
+            p_customerPaymentProfileIdList: any,
+        ): void;
         customerPaymentProfileIdList: any;
         getCustomerPaymentProfileIdList(): any;
-        setCustomerShippingAddressIdList(p_customerShippingAddressIdList: any): void;
+        setCustomerShippingAddressIdList(
+            p_customerShippingAddressIdList: any,
+        ): void;
         customerShippingAddressIdList: any;
         getCustomerShippingAddressIdList(): any;
-        setValidationDirectResponseList(p_validationDirectResponseList: any): void;
+        setValidationDirectResponseList(
+            p_validationDirectResponseList: any,
+        ): void;
         validationDirectResponseList: any;
         getValidationDirectResponseList(): any;
     }

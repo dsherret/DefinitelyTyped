@@ -252,9 +252,10 @@ export interface Options {
     outputDirectory?: string | undefined;
 }
 
-export type OptionalSpread<CombinedImage extends boolean> = CombinedImage extends true
-    ? [Options & { combinedImage: CombinedImage }]
-    : [] | [Options & { combinedImage?: CombinedImage | undefined }];
+export type OptionalSpread<CombinedImage extends boolean> =
+    CombinedImage extends true
+        ? [Options & { combinedImage: CombinedImage }]
+        : [] | [Options & { combinedImage?: CombinedImage | undefined }];
 
 export interface PDFInfo {
     Creator: string;

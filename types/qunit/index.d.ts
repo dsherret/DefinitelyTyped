@@ -273,7 +273,11 @@ declare global {
          * @param message Short description of the assertion
          */
         rejects(promise: Promise<any>, message?: string): Promise<void>;
-        rejects(promise: Promise<any>, expectedMatcher?: any, message?: string): Promise<void>;
+        rejects(
+            promise: Promise<any>,
+            expectedMatcher?: any,
+            message?: string,
+        ): Promise<void>;
 
         /**
          * Set how long to wait for async operations to finish.
@@ -445,8 +449,15 @@ declare global {
         beforeEach(fn: (assert: Assert) => void | Promise<void>): void;
     }
 
-    type moduleFunc1 = (name: string, hooks?: Hooks, nested?: (hooks: NestedHooks) => void) => void;
-    type moduleFunc2 = (name: string, nested?: (hooks: NestedHooks) => void) => void;
+    type moduleFunc1 = (
+        name: string,
+        hooks?: Hooks,
+        nested?: (hooks: NestedHooks) => void,
+    ) => void;
+    type moduleFunc2 = (
+        name: string,
+        nested?: (hooks: NestedHooks) => void,
+    ) => void;
     type ModuleOnly = { only: moduleFunc1 & moduleFunc2 };
     type ModuleSkip = { skip: moduleFunc1 & moduleFunc2 };
     type ModuleTodo = { todo: moduleFunc1 & moduleFunc2 };
@@ -538,7 +549,11 @@ declare global {
             // preserveTestEnvironment: () => unknown;
             // queue: () => void;
             // pushResult: (resultInfo: unknown) => void;
-            pushFailure: (message: string, source: string, actual: unknown) => void;
+            pushFailure: (
+                message: string,
+                source: string,
+                actual: unknown,
+            ) => void;
             skip?: true;
             // callback: ((assert: Assert) => void) | ((assert: Assert) => Promise<void>);
             todo?: boolean;
@@ -581,7 +596,9 @@ declare global {
          *
          * callback Callback to execute.
          */
-        begin(callback: (details: QUnit.BeginDetails) => void | Promise<void>): void;
+        begin(
+            callback: (details: QUnit.BeginDetails) => void | Promise<void>,
+        ): void;
 
         /**
          * Configuration for QUnit
@@ -596,7 +613,9 @@ declare global {
          *
          * @param callback Callback to execute
          */
-        done(callback: (details: QUnit.DoneDetails) => void | Promise<void>): void;
+        done(
+            callback: (details: QUnit.DoneDetails) => void | Promise<void>,
+        ): void;
 
         /**
          * Advanced and extensible data dumping for JavaScript.
@@ -695,21 +714,33 @@ declare global {
          * @param hookds Callbacks to run during test execution
          * @param nested A callback with grouped tests and nested modules to run under the current module label
          */
-        module: moduleFunc1 & moduleFunc2 & ModuleOnly & ModuleSkip & ModuleTodo;
+        module: moduleFunc1 &
+            moduleFunc2 &
+            ModuleOnly &
+            ModuleSkip &
+            ModuleTodo;
 
         /**
          * Register a callback to fire whenever a module ends.
          *
          * @param callback Callback to execute
          */
-        moduleDone(callback: (details: QUnit.ModuleDoneDetails) => void | Promise<void>): void;
+        moduleDone(
+            callback: (
+                details: QUnit.ModuleDoneDetails,
+            ) => void | Promise<void>,
+        ): void;
 
         /**
          * Register a callback to fire whenever a module begins.
          *
          * @param callback Callback to execute
          */
-        moduleStart(callback: (details: QUnit.ModuleStartDetails) => void | Promise<void>): void;
+        moduleStart(
+            callback: (
+                details: QUnit.ModuleStartDetails,
+            ) => void | Promise<void>,
+        ): void;
 
         /**
          * Adds a test to exclusively run, preventing all other tests from running.
@@ -727,7 +758,10 @@ declare global {
          * @param {string} name Title of unit being tested
          * @param callback Function to close over assertions
          */
-        only(name: string, callback: (assert: Assert) => void | Promise<void>): void;
+        only(
+            name: string,
+            callback: (assert: Assert) => void | Promise<void>,
+        ): void;
 
         /**
          * Handle a global error that should result in a failed test run.
@@ -752,7 +786,12 @@ declare global {
          *
          * @deprecated
          */
-        push(result: boolean, actual: any, expected: any, message: string): void;
+        push(
+            result: boolean,
+            actual: any,
+            expected: any,
+            message: string,
+        ): void;
 
         /**
          * Adds a test like object to be skipped.
@@ -766,7 +805,10 @@ declare global {
          *
          * @param {string} Title of unit being tested
          */
-        skip(name: string, callback?: (assert: Assert) => void | Promise<void>): void;
+        skip(
+            name: string,
+            callback?: (assert: Assert) => void | Promise<void>,
+        ): void;
 
         /**
          * Returns a single line string representing the stacktrace (call stack).
@@ -812,7 +854,10 @@ declare global {
          * @param {string} Title of unit being tested
          * @param callback Function to close over assertions
          */
-        test(name: string, callback: (assert: Assert) => void | Promise<void>): void;
+        test(
+            name: string,
+            callback: (assert: Assert) => void | Promise<void>,
+        ): void;
 
         /**
          * Register a callback to fire whenever a test ends.
@@ -835,7 +880,9 @@ declare global {
          *
          * @param callback Callback to execute
          */
-        testStart(callback: (details: QUnit.TestStartDetails) => void | Promise<void>): void;
+        testStart(
+            callback: (details: QUnit.TestStartDetails) => void | Promise<void>,
+        ): void;
 
         /**
          * Adds a test which expects at least one failing assertion during its run.
@@ -850,7 +897,10 @@ declare global {
          * @param {string} Title of unit being tested
          * @param callback Function to close over assertions
          */
-        todo(name: string, callback?: (assert: Assert) => void | Promise<void>): void;
+        todo(
+            name: string,
+            callback?: (assert: Assert) => void | Promise<void>,
+        ): void;
 
         /**
          * Compares two values. Returns true if they are equivalent.

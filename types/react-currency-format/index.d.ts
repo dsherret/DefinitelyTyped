@@ -1,4 +1,9 @@
-import { Component, ComponentType, HTMLAttributes, InputHTMLAttributes } from "react";
+import {
+    Component,
+    ComponentType,
+    HTMLAttributes,
+    InputHTMLAttributes,
+} from "react";
 
 declare namespace CurrencyFormat {
     /**
@@ -31,27 +36,26 @@ declare namespace CurrencyFormat {
      * Props accepted by the component.
      * @see {@link https://github.com/mohitgupta8888/react-currency-format#props}
      */
-    type StrictProps =
-        & Partial<{
-            thousandSeparator: string | boolean;
-            thousandSpacing: "2" | "2s" | "3" | "4";
-            decimalSeparator: string;
-            decimalScale: number;
-            fixedDecimalScale: boolean;
-            allowNegative: boolean;
-            prefix: string;
-            suffix: string;
-            value: number | string | null;
-            isNumericString: boolean;
-            type: InputType;
-            format: string | ((unformatedInput: string) => string);
-            removeFormatting: (formattedValue: string) => string;
-            mask: string | string[];
-            onValueChange: (values: Values) => void;
-            isAllowed: (values: Values) => boolean;
-            renderText: (formattedValue: string) => JSX.Element;
-        }>
-        & (DisplayTypeText | DisplayTypeInput);
+    type StrictProps = Partial<{
+        thousandSeparator: string | boolean;
+        thousandSpacing: "2" | "2s" | "3" | "4";
+        decimalSeparator: string;
+        decimalScale: number;
+        fixedDecimalScale: boolean;
+        allowNegative: boolean;
+        prefix: string;
+        suffix: string;
+        value: number | string | null;
+        isNumericString: boolean;
+        type: InputType;
+        format: string | ((unformatedInput: string) => string);
+        removeFormatting: (formattedValue: string) => string;
+        mask: string | string[];
+        onValueChange: (values: Values) => void;
+        isAllowed: (values: Values) => boolean;
+        renderText: (formattedValue: string) => JSX.Element;
+    }> &
+        (DisplayTypeText | DisplayTypeInput);
 
     /**
      * Props accepted by the component and any other prop of the customInput.

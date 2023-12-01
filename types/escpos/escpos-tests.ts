@@ -1,4 +1,15 @@
-import { command, Console, Image, Network, Printer, Printer2, Screen, Serial, Server, USB } from "escpos";
+import {
+    command,
+    Console,
+    Image,
+    Network,
+    Printer,
+    Printer2,
+    Screen,
+    Serial,
+    Server,
+    USB,
+} from "escpos";
 
 const usb = new USB();
 const serial = new Serial(0, { baudRate: 9600, autoOpen: false });
@@ -7,9 +18,13 @@ const consl = new Console();
 
 const image = new Image([]);
 
-Image.load("https://github.githubassets.com/images/modules/open_graph/github-logo.png", "image/png", (pixels: any) => {
-    console.log(pixels);
-});
+Image.load(
+    "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
+    "image/png",
+    (pixels: any) => {
+        console.log(pixels);
+    },
+);
 
 let printer = new Printer(usb, { encoding: "GB18030" });
 printer = new Printer(serial, { encoding: "GB18030" });
@@ -42,10 +57,13 @@ usb.open((error: any) => {
         .println("The quick brown fox jumps over the lazy dog")
         .pureText("The quick brown fox jumps over the lazy dog", "GB18030")
         .qrcode("123456789", 3, "L", 6)
-        .qrimage("https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/escpos", {
-            type: "png",
-            mode: "dhdw",
-        })
+        .qrimage(
+            "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/escpos",
+            {
+                type: "png",
+                mode: "dhdw",
+            },
+        )
         .raster(image, "dhdw")
         .size(1, 1)
         .spacing(0)

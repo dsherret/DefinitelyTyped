@@ -1,4 +1,8 @@
-import { DestinationAddress, Location, OnfleetDestination } from "./Destinations";
+import {
+    DestinationAddress,
+    Location,
+    OnfleetDestination,
+} from "./Destinations";
 
 declare class Hub {
     create(obj: Hub.CreateHubProps): Promise<Hub.OnfleetHub>;

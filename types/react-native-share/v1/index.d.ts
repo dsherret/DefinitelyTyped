@@ -2,7 +2,9 @@ import { Component, ReactNode } from "react";
 import { StyleProp, ViewProps } from "react-native";
 declare namespace Share {
     function open(options: Options | MultipleOptions): Promise<OpenReturn>;
-    function shareSingle(options: Options & { social: SupportedSocialApps }): Promise<ShareSingleReturn>;
+    function shareSingle(
+        options: Options & { social: SupportedSocialApps },
+    ): Promise<ShareSingleReturn>;
 }
 
 import Button from "./Button.d";

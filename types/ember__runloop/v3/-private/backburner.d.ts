@@ -8,7 +8,14 @@ export interface QueueItem {
 export interface DeferredActionQueues {
     [index: string]: any;
     queues: object;
-    schedule(queueName: string, target: any, method: any, args: any, onceFlag: boolean, stack: any): any;
+    schedule(
+        queueName: string,
+        target: any,
+        method: any,
+        args: any,
+        onceFlag: boolean,
+        stack: any,
+    ): any;
     flush(fromAutorun: boolean): any;
 }
 
@@ -24,7 +31,11 @@ export interface Backburner {
     on(...args: any[]): void;
     off(...args: any[]): void;
     scheduleOnce(...args: any[]): void;
-    schedule(queueName: string, target: object | null, method: () => void | string): void;
+    schedule(
+        queueName: string,
+        target: object | null,
+        method: () => void | string,
+    ): void;
     ensureInstance(): void;
     DEBUG: boolean;
     getDebugInfo(): DebugInfo;

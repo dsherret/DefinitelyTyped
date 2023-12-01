@@ -1,13 +1,23 @@
 import { MatchMetadata, OnfleetMetadata } from "../metadata";
-import { CreateDestinationProps, Location, OnfleetDestination } from "./Destinations";
+import {
+    CreateDestinationProps,
+    Location,
+    OnfleetDestination,
+} from "./Destinations";
 import { CreateRecipientProps, OnfleetRecipient } from "./Recipients";
 
 declare class Task {
-    autoAssign(tasks: Task.AutomaticallyAssignTaskProps): Promise<Task.AutomaticallyAssignTaskResult>;
+    autoAssign(
+        tasks: Task.AutomaticallyAssignTaskProps,
+    ): Promise<Task.AutomaticallyAssignTaskResult>;
 
-    batchCreate(tasks: Task.CreateMultipleTasksProps): Promise<Task.CreateMultipleTasksResult>;
+    batchCreate(
+        tasks: Task.CreateMultipleTasksProps,
+    ): Promise<Task.CreateMultipleTasksResult>;
 
-    batchCreateAsync(tasks: Task.CreateMultipleTasksProps): Promise<Task.CreateAsyncMultipleTaskResult>;
+    batchCreateAsync(
+        tasks: Task.CreateMultipleTasksProps,
+    ): Promise<Task.CreateAsyncMultipleTaskResult>;
 
     getBatch(jobId: string): Promise<Task.getBatchResult>;
 
@@ -17,14 +27,23 @@ declare class Task {
 
     deleteOne(id: string): Promise<number>;
 
-    forceComplete(id: string, details: { completionDetails: { success: boolean; notes?: string } }): Promise<void>;
+    forceComplete(
+        id: string,
+        details: { completionDetails: { success: boolean; notes?: string } },
+    ): Promise<void>;
 
-    get(queryOrId: string, queryKey?: Task.TaskQueryKey): Promise<Task.GetTaskResult>;
+    get(
+        queryOrId: string,
+        queryKey?: Task.TaskQueryKey,
+    ): Promise<Task.GetTaskResult>;
     get(queryParams?: Task.TaskQueryParam): Promise<Task.GetManyTaskResult>;
 
     matchMetadata: MatchMetadata<Task.OnfleetTask["metadata"]>;
 
-    update(id: string, task: Partial<Task.CreateTaskProps>): Promise<Task.UpdateTaskResult>;
+    update(
+        id: string,
+        task: Partial<Task.CreateTaskProps>,
+    ): Promise<Task.UpdateTaskResult>;
 }
 
 declare namespace Task {
@@ -98,11 +117,11 @@ declare namespace Task {
         worker: string | null;
         barcodes?:
             | {
-                /** The requested barcodes */
-                required: Barcode[];
-                /** Once a task is completed for which barcodes have been captured, the capture details can be found here */
-                captured: CapturedBarcode[];
-            }
+                  /** The requested barcodes */
+                  required: Barcode[];
+                  /** Once a task is completed for which barcodes have been captured, the capture details can be found here */
+                  captured: CapturedBarcode[];
+              }
             | undefined;
     }
 
@@ -166,7 +185,10 @@ declare namespace Task {
 
     type TasksAutoAssign = Omit<TaskAutoAssignOptions, "team">;
 
-    type TaskAutoAssign = Omit<TaskAutoAssignOptions, "teams" | "restrictAutoAssignmentToTeam">;
+    type TaskAutoAssign = Omit<
+        TaskAutoAssignOptions,
+        "teams" | "restrictAutoAssignmentToTeam"
+    >;
 
     interface Barcode {
         /** Whether the worker must capture this data prior to task completion, defaults to false */
@@ -214,15 +236,18 @@ declare namespace Task {
         includeMetadata: boolean;
         overrides?:
             | {
-                completeAfter?: number | undefined;
-                completeBefore?: number | undefined;
-                destination?: string | CreateDestinationProps | undefined;
-                metadata?: OnfleetMetadata[] | undefined;
-                notes?: string | undefined;
-                pickupTask?: boolean | undefined;
-                recipients?: OnfleetRecipient | OnfleetRecipient[] | undefined;
-                serviceTime?: number | undefined;
-            }
+                  completeAfter?: number | undefined;
+                  completeBefore?: number | undefined;
+                  destination?: string | CreateDestinationProps | undefined;
+                  metadata?: OnfleetMetadata[] | undefined;
+                  notes?: string | undefined;
+                  pickupTask?: boolean | undefined;
+                  recipients?:
+                      | OnfleetRecipient
+                      | OnfleetRecipient[]
+                      | undefined;
+                  serviceTime?: number | undefined;
+              }
             | undefined;
     }
 
@@ -277,7 +302,10 @@ declare namespace Task {
         taskData: OnfleetTask;
     }
 
-    type TaskContainer = WorkerTaskContainer | OrganizationTaskContainer | TeamTaskContainer;
+    type TaskContainer =
+        | WorkerTaskContainer
+        | OrganizationTaskContainer
+        | TeamTaskContainer;
 }
 
 export = Task;

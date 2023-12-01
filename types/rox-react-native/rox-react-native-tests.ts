@@ -1,7 +1,9 @@
 import * as Rox from "rox-react-native";
 
 const flags = {
-    superFlag: new Rox.Flag(false, { freeze: Rox.FreezeOptions.freezeOptionNone }),
+    superFlag: new Rox.Flag(false, {
+        freeze: Rox.FreezeOptions.freezeOptionNone,
+    }),
     superFlag2: new Rox.Flag(),
 };
 
@@ -55,13 +57,14 @@ function dynamicPropertyRuleHandler(propName: string, _context: unknown) {
     return propName === "myPropName";
 }
 
-function impressionHandler(
-    _reporting: Rox.RoxReporting,
-) {
+function impressionHandler(_reporting: Rox.RoxReporting) {
     // If _reporting.targeting is false, it mean there were no dashboard conditions, and default value was used
 }
 
 function configurationFetchedHandler(fetcherResult: Rox.RoxFetcherResult) {
-    if (fetcherResult.hasChanges && fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache) {
+    if (
+        fetcherResult.hasChanges &&
+        fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
+    ) {
     }
 }

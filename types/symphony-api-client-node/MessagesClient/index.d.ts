@@ -52,8 +52,21 @@ export function sendMessageWithAttachment(
 
 export function getMessage(messageId: string): Promise<Message>;
 
-export function getMessages(streamId: string, since: number, skip: number, limit: number): Promise<Message[]>;
+export function getMessages(
+    streamId: string,
+    since: number,
+    skip: number,
+    limit: number,
+): Promise<Message[]>;
 
-export function forwardMessage(conversationId: string, message: string, data: any): Promise<Message>;
+export function forwardMessage(
+    conversationId: string,
+    message: string,
+    data: any,
+): Promise<Message>;
 
-export function getAttachment(streamId: string, attachmentId: string, messageId: string): Promise<string>;
+export function getAttachment(
+    streamId: string,
+    attachmentId: string,
+    messageId: string,
+): Promise<string>;

@@ -11,7 +11,10 @@ export interface FeatureFlags {
     ENABLE_LOAD_QUERY_REQUEST_DEDUPING: boolean;
     ENABLE_DO_NOT_WRAP_LIVE_QUERY: boolean;
     ENABLE_NOTIFY_SUBSCRIPTION: boolean;
-    BATCH_ASYNC_MODULE_UPDATES_FN: null | undefined | ((arg: () => void) => Disposable);
+    BATCH_ASYNC_MODULE_UPDATES_FN:
+        | null
+        | undefined
+        | ((arg: () => void) => Disposable);
     ENABLE_CONTAINERS_SUBSCRIBE_ON_COMMIT: boolean;
     MAX_DATA_ID_LENGTH: number | null | undefined;
     STRING_INTERN_LEVEL: number;

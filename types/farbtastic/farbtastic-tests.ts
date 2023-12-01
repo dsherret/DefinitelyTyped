@@ -4,7 +4,7 @@ var domNode = document.createElement("div");
 // Basic usage
 
 // Can add a ready() handler to the document which initializes the color picker and links it to the text field
-$(document).ready(function() {
+$(document).ready(function () {
     $("#colorpicker").farbtastic("#color");
 });
 
@@ -15,7 +15,7 @@ $("#colorpicker").farbtastic();
 
 // Optional callback using a callback function
 $("#colorpicker").farbtastic(callback);
-$("#colourpicker").farbtastic(function(color) {
+$("#colourpicker").farbtastic(function (color) {
     console.log(typeof color === "string");
 });
 
@@ -88,9 +88,7 @@ $.farbtastic("#colorpicker").linked === $("#colorpicker");
 $.farbtastic("#colorpicker").linked === callback;
 
 // Can chain jQuery methods
-$("#colorpicker")
-    .farbtastic()
-    .addClass("color-picker");
+$("#colorpicker").farbtastic().addClass("color-picker");
 
 // Can chain Farbtastic methods
 $.farbtastic("#colorpicker")

@@ -333,8 +333,12 @@ export type Duration = "auto" | number;
 export type VegasInitEvent = "vegasinit";
 
 export interface VegasInitHnalder<TElement>
-    extends JQuery.TriggeredEvent<TElement, undefined, HTMLElement, HTMLElement>
-{}
+    extends JQuery.TriggeredEvent<
+        TElement,
+        undefined,
+        HTMLElement,
+        HTMLElement
+    > {}
 
 /** Function called when Vegas starts to play the slideshow. */
 export type VegasPlay = "vegasplay";
@@ -351,7 +355,10 @@ export type VegasEnd = "vegasend";
 declare global {
     interface JQuery<TElement = HTMLElement> {
         vegas: vegas.JQueryExtension;
-        on(events: VegasInitEvent, handler: (event: JQuery.Event, settings: Settings) => void): this;
+        on(
+            events: VegasInitEvent,
+            handler: (event: JQuery.Event, settings: Settings) => void,
+        ): this;
         on(
             events: VegasPlay | VegasPause | VegasWalk | VegasEnd,
             handler: (event: JQuery.Event, index: number, slide: Slide) => void,

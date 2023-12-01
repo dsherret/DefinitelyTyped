@@ -42,7 +42,10 @@ const defaultSettings: Settings = {
     initialSlide: 0,
     lazyLoad: "progressive",
     pauseOnHover: true,
-    responsive: [{ breakpoint: 1000, settings: "unslick" }, { breakpoint: 2000, settings: { arrows: false } }],
+    responsive: [
+        { breakpoint: 1000, settings: "unslick" },
+        { breakpoint: 2000, settings: { arrows: false } },
+    ],
     rtl: false,
     slide: "div",
     slidesToShow: 1,
@@ -70,9 +73,11 @@ class SliderTest extends React.Component {
     private slider: Slider | null = null;
 
     componentDidMount() {
-        const slides = this.slider?.innerSlider?.list?.querySelectorAll(".slick-slide");
+        const slides =
+            this.slider?.innerSlider?.list?.querySelectorAll(".slick-slide");
         slides?.forEach((slide, index) => {
-            const dataIndex = slide.getAttribute("data-test") || index.toString();
+            const dataIndex =
+                slide.getAttribute("data-test") || index.toString();
             slide.setAttribute("data-test", dataIndex);
         });
     }

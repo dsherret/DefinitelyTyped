@@ -11,7 +11,8 @@ const httpsTerminator = createHttpTerminator({
     gracefulTerminationTimeout: 10000,
 });
 
-httpTerminator.terminate()
+httpTerminator
+    .terminate()
     .then(() => httpsTerminator.terminate())
     .then(() => {
         // Terminated.

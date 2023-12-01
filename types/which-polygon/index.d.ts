@@ -4,7 +4,12 @@ import RBush from "rbush";
 declare namespace whichPolygon {
     type Coordinates = [lng: number, lat: number];
 
-    type BBox = [minLat: number, maxLat: number, minLng: number, maxLng: number];
+    type BBox = [
+        minLat: number,
+        maxLat: number,
+        minLng: number,
+        maxLng: number,
+    ];
 
     interface Query<Properties> {
         (coordinates: Coordinates, multi: true): Properties[] | null;

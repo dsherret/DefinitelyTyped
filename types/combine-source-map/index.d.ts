@@ -13,7 +13,10 @@ declare class Combiner {
      * @param opts the 'sourceFile' path/name and the file's 'source' contents
      * @param offset the source file 'line' number and 'column' number offsets
      */
-    addFile(opts: { sourceFile: string; source: string }, offset?: Combiner.Offset): Combiner;
+    addFile(
+        opts: { sourceFile: string; source: string },
+        offset?: Combiner.Offset,
+    ): Combiner;
 
     /**
      * output the combined source map in base64 format
@@ -27,9 +30,18 @@ declare class Combiner {
      */
     comment(): string;
 
-    _addGeneratedMap(sourceFile: string, source: string, offset?: Combiner.Offset): Combiner;
+    _addGeneratedMap(
+        sourceFile: string,
+        source: string,
+        offset?: Combiner.Offset,
+    ): Combiner;
 
-    _addExistingMap(sourceFile: string, source: string, existingMap: any, offset?: Combiner.Offset): Combiner;
+    _addExistingMap(
+        sourceFile: string,
+        source: string,
+        existingMap: any,
+        offset?: Combiner.Offset,
+    ): Combiner;
 }
 
 declare namespace Combiner {

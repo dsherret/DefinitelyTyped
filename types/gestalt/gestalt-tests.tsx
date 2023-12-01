@@ -107,7 +107,10 @@ const CheckUseReducedMotion = () => {
     }}
 />;
 <Avatar name="Nicolas" />;
-<AvatarGroup accessibilityLabel="test-example" collaborators={[{ name: "nicolas" }]} />;
+<AvatarGroup
+    accessibilityLabel="test-example"
+    collaborators={[{ name: "nicolas" }]}
+/>;
 <AvatarPair
     size="md"
     collaborators={[
@@ -129,24 +132,24 @@ const CheckUseReducedMotion = () => {
 <Box aria-colspan="foo" />;
 
 <Box
-    onDrag={event => {
+    onDrag={(event) => {
         event.movementX;
     }}
 />;
 
 <Box
-    onDrag={event => {
+    onDrag={(event) => {
         // @ts-expect-error
         event.__nonExistentProperty__;
     }}
 />;
 // Test Box accepts Ref.
-(() => {
+() => {
     const ref = React.useRef<HTMLDivElement>(null);
     return <Box ref={ref} />;
-});
+};
 // Test BoxProps can be forwarded to Box.
-((props: BoxProps) => <Box {...props} />);
+(props: BoxProps) => <Box {...props} />;
 
 <Button text="" />;
 <ButtonGroup>
@@ -160,17 +163,17 @@ const CheckUseReducedMotion = () => {
     label="combobox"
     noResultText="combobox"
     options={[{ label: "combobox", value: "combobox" }]}
-    onChange={args => {
+    onChange={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: Event = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onBlur={args => {
+    onBlur={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent | Event = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onFocus={args => {
+    onFocus={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: string = args.value;
@@ -181,15 +184,28 @@ const CheckUseReducedMotion = () => {
     iconAccessibilityLabel="Info icon"
     title="Your business account was successfully created!"
     message="Get a badge, show up in more shopping experiences and more. Apply to the Verified Merchant Program—it’s free!"
-    primaryAction={{ accessibilityLabel: "primary-callout", href: "https://pinterest.com", label: "Get started" }}
-    secondaryAction={{ accessibilityLabel: "secondary-callout", href: "https://pinterest.com", label: "Learn more" }}
+    primaryAction={{
+        accessibilityLabel: "primary-callout",
+        href: "https://pinterest.com",
+        label: "Get started",
+    }}
+    secondaryAction={{
+        accessibilityLabel: "secondary-callout",
+        href: "https://pinterest.com",
+        label: "Learn more",
+    }}
     dismissButton={{
         accessibilityLabel: "Dismiss banner",
         onDismiss: () => {},
     }}
 />;
 <Checkbox id={"1"} onChange={() => {}} />;
-<Collage columns={1} height={1} renderImage={({ height, index, width }) => null} width={1} />;
+<Collage
+    columns={1}
+    height={1}
+    renderImage={({ height, index, width }) => null}
+    width={1}
+/>;
 <ColorSchemeProvider colorScheme="dark" id="docsExample">
     <Box />
 </ColorSchemeProvider>;
@@ -208,7 +224,10 @@ const CheckUseReducedMotion = () => {
         >
             <Text>Dropdown</Text>
         </Dropdown.Item>
-        <Dropdown.Link href="#" option={{ value: "item 2", label: "Url Link" }}></Dropdown.Link>
+        <Dropdown.Link
+            href="#"
+            option={{ value: "item 2", label: "Url Link" }}
+        ></Dropdown.Link>
     </Dropdown.Section>
 </Dropdown>;
 <Fieldset legend="Fieldset Example">
@@ -242,7 +261,13 @@ const CheckUseReducedMotion = () => {
         idealDirection: "down",
     }}
 />;
-<Image alt="image" color="#ffff" naturalHeight={1} naturalWidth={1} src="http" />;
+<Image
+    alt="image"
+    color="#ffff"
+    naturalHeight={1}
+    naturalWidth={1}
+    src="http"
+/>;
 <Label htmlFor="id" />;
 <Layer>
     <div />
@@ -250,7 +275,11 @@ const CheckUseReducedMotion = () => {
 <Letterbox contentAspectRatio={1} height={1} width={1} />;
 <Link href="#" />;
 <Link href="#" externalLinkIcon={{ color: "light", size: "100" }} />;
-<List label={<Text weight="bold">Regular spacing</Text>} type="unordered" spacing="regular">
+<List
+    label={<Text weight="bold">Regular spacing</Text>}
+    type="unordered"
+    spacing="regular"
+>
     <List.Item text="List item text" />
     <List.Item text="List item text">
         <List.Item text="List item text">
@@ -265,9 +294,26 @@ const CheckUseReducedMotion = () => {
 </List>;
 <Mask />;
 <Masonry renderItem={MasonryComponent} items={[{}]} />;
-<Modal accessibilityModalLabel="modal" onDismiss={() => {}} heading={<Text>Header</Text>} subHeading="header" />;
-<Module id="foo" icon="add" iconAccessibilityLabel="hello" title="world" type="info" />;
-<Module id="foo" icon="add" iconAccessibilityLabel="hello" title="world" type="info">
+<Modal
+    accessibilityModalLabel="modal"
+    onDismiss={() => {}}
+    heading={<Text>Header</Text>}
+    subHeading="header"
+/>;
+<Module
+    id="foo"
+    icon="add"
+    iconAccessibilityLabel="hello"
+    title="world"
+    type="info"
+/>;
+<Module
+    id="foo"
+    icon="add"
+    iconAccessibilityLabel="hello"
+    title="world"
+    type="info"
+>
     <Flex />
 </Module>;
 <Module id="foo">
@@ -284,27 +330,27 @@ const CheckUseReducedMotion = () => {
             },
         ]}
         expandedIndex={1}
-        onExpandedChange={index => {}}
+        onExpandedChange={(index) => {}}
     />
 </Module>;
 <NumberField
     id="number"
     step={1}
-    onChange={args => {
+    onChange={(args) => {
         const nativeEvent: Event = args.event.nativeEvent;
         const value: number | undefined = args.value;
     }}
-    onBlur={args => {
+    onBlur={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: number | undefined = args.value;
     }}
-    onFocus={args => {
+    onFocus={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: number | undefined = args.value;
     }}
-    onKeyDown={args => {
+    onKeyDown={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: KeyboardEvent = args.event.nativeEvent;
         const value: number | undefined = args.value;
@@ -320,12 +366,24 @@ const CheckUseReducedMotion = () => {
     title="Posts"
     primaryAction={{
         component: <Button color="red" size="lg" text="Create" />,
-        dropdownItems: [<Dropdown.Item onSelect={() => undefined} option={{ value: "create", label: "Create" }} />],
+        dropdownItems: [
+            <Dropdown.Item
+                onSelect={() => undefined}
+                option={{ value: "create", label: "Create" }}
+            />,
+        ],
     }}
 />;
 <Pog />;
-<Popover onDismiss={() => {}} anchor={React.useRef<HTMLAnchorElement>().current} />;
-<Popovereducational accessibilityLabel="" anchor={null} onDismiss={() => undefined} />;
+<Popover
+    onDismiss={() => {}}
+    anchor={React.useRef<HTMLAnchorElement>().current}
+/>;
+<Popovereducational
+    accessibilityLabel=""
+    anchor={null}
+    onDismiss={() => undefined}
+/>;
 
 <Pulsar />;
 <RadioButton id="id" value="" onChange={() => {}} />;
@@ -338,12 +396,13 @@ const CheckUseReducedMotion = () => {
 <SearchField
     accessibilityLabel="Demo Search Field"
     id="searchField"
-    onChange={args => {
-        const currentTarget: HTMLInputElement = args.syntheticEvent.currentTarget;
+    onChange={(args) => {
+        const currentTarget: HTMLInputElement =
+            args.syntheticEvent.currentTarget;
         const nativeEvent: Event = args.syntheticEvent.nativeEvent;
         const value: string = args.value;
     }}
-    onKeyDown={args => {
+    onKeyDown={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: KeyboardEvent = args.event.nativeEvent;
         const value: string = args.value;
@@ -363,15 +422,19 @@ const CheckUseReducedMotion = () => {
     size="lg"
 >
     <SelectList.Group disabled={true} label="Family">
-        {["Bart", "Lisa", "Homer", "Marge", "Maggie"].map(name => (
+        {["Bart", "Lisa", "Homer", "Marge", "Maggie"].map((name) => (
             <SelectList.Option key={name} label={name} value={name} />
         ))}
     </SelectList.Group>
     <SelectList.Group label="Neighbors">
-        {["Ned", "Maude", "Rod", "Todd"].map(name => <SelectList.Option key={name} label={name} value={name} />)}
+        {["Ned", "Maude", "Rod", "Todd"].map((name) => (
+            <SelectList.Option key={name} label={name} value={name} />
+        ))}
     </SelectList.Group>
     <SelectList.Group label="Cartoons">
-        {["Itchy", "Scratchy", "Poochie"].map(name => <SelectList.Option key={name} label={name} value={name} />)}
+        {["Itchy", "Scratchy", "Poochie"].map((name) => (
+            <SelectList.Option key={name} label={name} value={name} />
+        ))}
     </SelectList.Group>
 </SelectList>;
 <OverlayPanel
@@ -442,8 +505,16 @@ const CheckUseReducedMotion = () => {
             display="static"
             badge={{ text: "hell", position: "middle", type: "darkWash" }}
         >
-            <SideNavigation.NestedItem href="#" onClick={({ event }) => event.preventDefault()} label="East Coast" />
-            <SideNavigation.NestedItem href="#" onClick={({ event }) => event.preventDefault()} label="West Coast" />
+            <SideNavigation.NestedItem
+                href="#"
+                onClick={({ event }) => event.preventDefault()}
+                label="East Coast"
+            />
+            <SideNavigation.NestedItem
+                href="#"
+                onClick={({ event }) => event.preventDefault()}
+                label="West Coast"
+            />
         </SideNavigation.Group>
     </SideNavigation.Section>
 </SideNavigation>;
@@ -475,7 +546,11 @@ const CheckUseReducedMotion = () => {
 <Table accessibilityLabel="complex table">
     <Table.Header>
         <Table.Row>
-            <Table.SortableHeaderCell onSortChange={() => {}} sortOrder={"asc"} status={"active"}>
+            <Table.SortableHeaderCell
+                onSortChange={() => {}}
+                sortOrder={"asc"}
+                status={"active"}
+            >
                 <Text weight="bold">Name</Text>
             </Table.SortableHeaderCell>
             <Table.HeaderCell>
@@ -505,7 +580,14 @@ const CheckUseReducedMotion = () => {
             onExpand={() => {}}
             expandedContents={
                 <Box maxWidth={236} padding={2} column={12}>
-                    <WashAnimated image={<Avatar name="luna avatar" src="https://i.ibb.co/QY9qR7h/luna.png" />}>
+                    <WashAnimated
+                        image={
+                            <Avatar
+                                name="luna avatar"
+                                src="https://i.ibb.co/QY9qR7h/luna.png"
+                            />
+                        }
+                    >
                         <Text align="center" weight="bold">
                             <Link href="https://pinterest.com">
                                 <Box paddingX={3} paddingY={2}>
@@ -562,22 +644,22 @@ const CheckUseReducedMotion = () => {
 <Text color="inverse" />;
 <TextArea
     id="id"
-    onChange={args => {
+    onChange={(args) => {
         const currentTarget: HTMLTextAreaElement = args.event.currentTarget;
         const nativeEvent: Event = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onBlur={args => {
+    onBlur={(args) => {
         const currentTarget: HTMLTextAreaElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onFocus={args => {
+    onFocus={(args) => {
         const currentTarget: HTMLTextAreaElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onKeyDown={args => {
+    onKeyDown={(args) => {
         const currentTarget: HTMLTextAreaElement = args.event.currentTarget;
         const nativeEvent: KeyboardEvent = args.event.nativeEvent;
         const value: string = args.value;
@@ -586,22 +668,22 @@ const CheckUseReducedMotion = () => {
 <TextField
     id="email"
     tags={[<Tag text="Foo" />, <Tag text="Bar" />]}
-    onChange={args => {
+    onChange={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: Event = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onBlur={args => {
+    onBlur={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onFocus={args => {
+    onFocus={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: FocusEvent = args.event.nativeEvent;
         const value: string = args.value;
     }}
-    onKeyDown={args => {
+    onKeyDown={(args) => {
         const currentTarget: HTMLInputElement = args.event.currentTarget;
         const nativeEvent: KeyboardEvent = args.event.nativeEvent;
         const value: string = args.value;
@@ -615,7 +697,14 @@ const CheckUseReducedMotion = () => {
 <Upsell
     message="Hello world"
     imageData={{
-        component: <Icon icon="pinterest" accessibilityLabel="Pin" color="dark" size={32} />,
+        component: (
+            <Icon
+                icon="pinterest"
+                accessibilityLabel="Pin"
+                color="dark"
+                size={32}
+            />
+        ),
     }}
 />;
 <Upsell
@@ -626,7 +715,14 @@ const CheckUseReducedMotion = () => {
         onDismiss: () => {},
     }}
     imageData={{
-        component: <Icon icon="pinterest" accessibilityLabel="Pin" color="dark" size={32} />,
+        component: (
+            <Icon
+                icon="pinterest"
+                accessibilityLabel="Pin"
+                color="dark"
+                size={32}
+            />
+        ),
     }}
 >
     <Upsell.Form
@@ -643,7 +739,11 @@ const CheckUseReducedMotion = () => {
     poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
     src="http://media.w3.org/2010/05/bunny/movie.mp4"
 />;
-<Icon accessibilityLabel={"sup"} icon={"add"} dangerouslySetSvgPath={{ __path: "something" }} />;
+<Icon
+    accessibilityLabel={"sup"}
+    icon={"add"}
+    dangerouslySetSvgPath={{ __path: "something" }}
+/>;
 <IconButton accessibilityLabel={"something"} icon={"add-pin"} />;
 <IconButtonFloating
     accessibilityControls="sections-dropdown-example"
@@ -655,7 +755,10 @@ const CheckUseReducedMotion = () => {
     selected={true}
 />;
 new FixedZIndex(1);
-new CompositeZIndex([new FixedZIndex(1), new CompositeZIndex([new FixedZIndex(1)])]);
+new CompositeZIndex([
+    new FixedZIndex(1),
+    new CompositeZIndex([new FixedZIndex(1)]),
+]);
 
 <Datapoint
     title="Test Value"

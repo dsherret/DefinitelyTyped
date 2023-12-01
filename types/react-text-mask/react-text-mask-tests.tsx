@@ -26,7 +26,7 @@ function Test() {
             {/* works fine */}
             <MaskedInput mask={false} />
             <MaskedInput
-                mask={value => {
+                mask={(value) => {
                     if (value.length) {
                         return mask.slice(-1);
                     }
@@ -41,12 +41,14 @@ function Test() {
                 value=""
                 placeholderChar="#"
                 render={(setRef, props) => {
-                    return <input {...props} ref={ref => ref && setRef(ref)} />;
+                    return (
+                        <input {...props} ref={(ref) => ref && setRef(ref)} />
+                    );
                 }}
             />
             <MaskedInput
                 mask={false}
-                pipe={conformedValue => {
+                pipe={(conformedValue) => {
                     if (conformedValue.includes("1")) {
                         return false;
                     }
@@ -56,7 +58,7 @@ function Test() {
             <MaskedInput
                 mask={mask}
                 value="2"
-                pipe={conformedValue => {
+                pipe={(conformedValue) => {
                     const newChar = {
                         index: 2,
                         value: "9",
@@ -64,7 +66,10 @@ function Test() {
                     const nextConformedValue = conformedValue.split("");
                     nextConformedValue.splice(newChar.index, 1, newChar.value);
 
-                    return { value: nextConformedValue.join(""), indexesOfPipedChars: [newChar.index] };
+                    return {
+                        value: nextConformedValue.join(""),
+                        indexesOfPipedChars: [newChar.index],
+                    };
                 }}
             />
         </div>

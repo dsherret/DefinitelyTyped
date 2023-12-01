@@ -52,7 +52,9 @@ function test_tableview() {
 }
 
 function test_fs() {
-    let imageDir = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory + "downloaded_images");
+    let imageDir = Ti.Filesystem.getFile(
+        Ti.Filesystem.applicationDataDirectory + "downloaded_images",
+    );
     if (!imageDir.exists()) {
         imageDir.createDirectory();
     }
@@ -93,7 +95,7 @@ function test_android_r() {
 
 function test_events() {
     const view = Ti.UI.createView();
-    view.addEventListener("click", e => {
+    view.addEventListener("click", (e) => {
         console.log(e.x, e.y);
     });
     view.fireEvent("click");

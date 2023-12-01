@@ -46,7 +46,9 @@ engine.timing.timestamp;
 // $ExpectType Engine
 Engine.create({ timing: {} });
 // $ExpectType Engine
-engine = Engine.create({ timing: { timeScale: 2, timestamp: 333, lastDelta: 1, lastElapsed: 4 } });
+engine = Engine.create({
+    timing: { timeScale: 2, timestamp: 333, lastDelta: 1, lastElapsed: 4 },
+});
 
 // Body
 // $ExpectType Body
@@ -119,9 +121,17 @@ var box4 = Bodies.rectangle(400, 200, 80, 80, {
 });
 
 // Composites
-var stack = Composites.stack(0, 100, 5, 1, 20, 0, function(x: number, y: number, column: number, row: number) {
-    return Bodies.circle(x, y, 75, { restitution: 0.9 });
-});
+var stack = Composites.stack(
+    0,
+    100,
+    5,
+    1,
+    20,
+    0,
+    function (x: number, y: number, column: number, row: number) {
+        return Bodies.circle(x, y, 75, { restitution: 0.9 });
+    },
+);
 
 const cradle = Composites.newtonsCradle(200, 50, 5, 20, 250);
 
@@ -144,7 +154,11 @@ var bodyB = constraint1.bodyB;
 
 // Query
 // $ExpectType Collision[]
-var collisions = Query.ray([box1, box2, circle1], { x: 1, y: 2 }, { x: 3, y: 4 });
+var collisions = Query.ray(
+    [box1, box2, circle1],
+    { x: 1, y: 2 },
+    { x: 3, y: 4 },
+);
 // $ExpectType Collision[]
 collisions = Query.collides(box1, [box2, circle1]);
 
@@ -361,7 +375,11 @@ Common.deprecated({ foo: "bar" }, "foo", "The 'bar' method is deprecated!");
 // $ExpectType void
 Common.deprecated(new Matter.Vector(), "x", "The 'x' method is deprecated!");
 // $ExpectType void
-Common.deprecated(Matter.Vector, "create", "The 'create' method is deprecated!");
+Common.deprecated(
+    Matter.Vector,
+    "create",
+    "The 'create' method is deprecated!",
+);
 
 // $ExpectType number
 Common.indexOf([1, 2, 3, 4], 2);
@@ -371,9 +389,13 @@ Common.indexOf(["a", "b", "c", "d"], "a");
 // $ExpectType string[]
 Common.map([1, 2, 3, 4], (value) => value.toString());
 // $ExpectType (string | number)[]
-Common.map(["a", "bc", "def", "ghij"], (value) => value.length > 1 ? value.length : value);
+Common.map(["a", "bc", "def", "ghij"], (value) =>
+    value.length > 1 ? value.length : value,
+);
 // $ExpectType (number | boolean)[]
-Common.map(["a", 1, "bcd", 2], (value) => typeof value === "string" ? value.length : value < 2);
+Common.map(["a", 1, "bcd", 2], (value) =>
+    typeof value === "string" ? value.length : value < 2,
+);
 
 // $ExpectType number
 Common.choose([1, 2, 3, 4]);

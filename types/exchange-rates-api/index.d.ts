@@ -1,7 +1,12 @@
 /**
  * Convert the given amount from one currency to another using the exchange rate of the given date
  */
-export function convert(amount: number, fromCurrency: string, toCurrency: string, date: Date | string): Promise<number>;
+export function convert(
+    amount: number,
+    fromCurrency: string,
+    toCurrency: string,
+    date: Date | string,
+): Promise<number>;
 
 export const currencies: {
     [key: string]: string;

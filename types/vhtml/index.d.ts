@@ -6,7 +6,11 @@ export = vhtml;
  * @param attrs Attributes
  * @param children Child elements
  */
-declare function vhtml<T extends string>(name: T, attrs?: HtmlElementAttr<T> | null, ...children: any[]): string;
+declare function vhtml<T extends string>(
+    name: T,
+    attrs?: HtmlElementAttr<T> | null,
+    ...children: any[]
+): string;
 
 /**
  * Converts Hyperscript/JSX to a plain string.
@@ -34,9 +38,9 @@ declare function vhtml<Props, Children extends any[]>(
  *    (see "Note" in https://www.typescriptlang.org/docs/handbook/jsx.html#attribute-type-checking)
  */
 type HtmlElementAttr<Tag extends string> =
-    & (Tag extends keyof vhtml.JSX.IntrinsicElements ? vhtml.JSX.IntrinsicElements[Tag]
-        : {})
-    & {
+    (Tag extends keyof vhtml.JSX.IntrinsicElements
+        ? vhtml.JSX.IntrinsicElements[Tag]
+        : {}) & {
         dangerouslySetInnerHTML?: { __html: string } | undefined;
         [attr: string]: any;
     };
@@ -72,15 +76,20 @@ type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
  * - Components with arbitrary number of children (props.children is an array)
  * - Forbidding components whose props.children is not an array
  */
-type ComponentPropTransform<TComp, TProps> =
-    & SafeEmptyType<Omit<TProps, "children">>
-    & (TProps extends { children: [] } ? {}
-        : TProps extends { children: [infer ChildType] } ? { children: ChildType }
-        : TProps extends { children: [(infer ChildType)?] } ? { children?: ChildType | undefined }
-        : TProps extends { children: Array<infer ChildrenType> }
-            ? { children?: ChildrenType | ChildrenType[] | undefined }
-        : TProps extends { children: any } ? never
-        : {});
+type ComponentPropTransform<TComp, TProps> = SafeEmptyType<
+    Omit<TProps, "children">
+> &
+    (TProps extends { children: [] }
+        ? {}
+        : TProps extends { children: [infer ChildType] }
+          ? { children: ChildType }
+          : TProps extends { children: [(infer ChildType)?] }
+            ? { children?: ChildType | undefined }
+            : TProps extends { children: Array<infer ChildrenType> }
+              ? { children?: ChildrenType | ChildrenType[] | undefined }
+              : TProps extends { children: any }
+                ? never
+                : {});
 
 declare namespace vhtml {
     namespace JSX {
@@ -91,7 +100,10 @@ declare namespace vhtml {
             children: {};
         }
 
-        type LibraryManagedAttributes<TComp, TProps> = ComponentPropTransform<TComp, TProps>;
+        type LibraryManagedAttributes<TComp, TProps> = ComponentPropTransform<
+            TComp,
+            TProps
+        >;
 
         interface IntrinsicAttributes {
             // This property is not used by vhtml, but is required to enforce
@@ -329,9 +341,11 @@ declare namespace vhtml {
         type SVGProps = SVGAttributes;
         interface DOMAttributes {
             children?: any;
-            dangerouslySetInnerHTML?: {
-                __html: string;
-            } | undefined;
+            dangerouslySetInnerHTML?:
+                | {
+                      __html: string;
+                  }
+                | undefined;
 
             // Clipboard Events
             oncopy?: string | undefined;
@@ -532,7 +546,12 @@ declare namespace vhtml {
              * Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
              * presented if they are made.
              */
-            "aria-autocomplete"?: "none" | "inline" | "list" | "both" | undefined;
+            "aria-autocomplete"?:
+                | "none"
+                | "inline"
+                | "list"
+                | "both"
+                | undefined;
             /** Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user. */
             "aria-busy"?: boolean | "false" | "true" | undefined;
             /**
@@ -564,7 +583,16 @@ declare namespace vhtml {
              */
             "aria-controls"?: string | undefined;
             /** Indicates the element that represents the current item within a container or set of related elements. */
-            "aria-current"?: boolean | "false" | "true" | "page" | "step" | "location" | "date" | "time" | undefined;
+            "aria-current"?:
+                | boolean
+                | "false"
+                | "true"
+                | "page"
+                | "step"
+                | "location"
+                | "date"
+                | "time"
+                | undefined;
             /**
              * Identifies the element (or elements) that describes the object.
              * @see aria-labelledby
@@ -585,7 +613,14 @@ declare namespace vhtml {
              * Indicates what functions can be performed when a dragged object is released on the drop target.
              * @deprecated in ARIA 1.1
              */
-            "aria-dropeffect"?: "none" | "copy" | "execute" | "link" | "move" | "popup" | undefined;
+            "aria-dropeffect"?:
+                | "none"
+                | "copy"
+                | "execute"
+                | "link"
+                | "move"
+                | "popup"
+                | undefined;
             /**
              * Identifies the element that provides an error message for the object.
              * @see aria-invalid
@@ -605,7 +640,16 @@ declare namespace vhtml {
              */
             "aria-grabbed"?: boolean | "false" | "true" | undefined;
             /** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
-            "aria-haspopup"?: boolean | "false" | "true" | "menu" | "listbox" | "tree" | "grid" | "dialog" | undefined;
+            "aria-haspopup"?:
+                | boolean
+                | "false"
+                | "true"
+                | "menu"
+                | "listbox"
+                | "tree"
+                | "grid"
+                | "dialog"
+                | undefined;
             /**
              * Indicates whether the element is exposed to an accessibility API.
              * @see aria-disabled.
@@ -615,7 +659,13 @@ declare namespace vhtml {
              * Indicates the entered value does not conform to the format expected by the application.
              * @see aria-errormessage.
              */
-            "aria-invalid"?: boolean | "false" | "true" | "grammar" | "spelling" | undefined;
+            "aria-invalid"?:
+                | boolean
+                | "false"
+                | "true"
+                | "grammar"
+                | "spelling"
+                | undefined;
             /** Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. */
             "aria-keyshortcuts"?: string | undefined;
             /**
@@ -716,7 +766,12 @@ declare namespace vhtml {
              */
             "aria-setsize"?: number | undefined;
             /** Indicates if items in a table or grid are sorted in ascending or descending order. */
-            "aria-sort"?: "none" | "ascending" | "descending" | "other" | undefined;
+            "aria-sort"?:
+                | "none"
+                | "ascending"
+                | "descending"
+                | "other"
+                | undefined;
             /** Defines the maximum allowed value for a range widget. */
             "aria-valuemax"?: number | undefined;
             /** Defines the minimum allowed value for a range widget. */
@@ -734,7 +789,10 @@ declare namespace vhtml {
             // Standard HTML Attributes
             accesskey?: string | undefined;
             className?: string | undefined;
-            contenteditable?: (boolean | "true" | "false") | "inherit" | undefined;
+            contenteditable?:
+                | (boolean | "true" | "false")
+                | "inherit"
+                | undefined;
             contextmenu?: string | undefined;
             dir?: string | undefined;
             draggable?: boolean | "true" | "false" | undefined;
@@ -784,7 +842,16 @@ declare namespace vhtml {
              * Hints at the type of data that might be entered by the user while editing the element or its contents
              * @see https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute
              */
-            inputmode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search" | undefined;
+            inputmode?:
+                | "none"
+                | "text"
+                | "tel"
+                | "url"
+                | "email"
+                | "numeric"
+                | "decimal"
+                | "search"
+                | undefined;
             /**
              * Specify that a standard HTML element should behave like a defined custom built-in element
              * @see https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
@@ -944,7 +1011,15 @@ declare namespace vhtml {
             checked?: boolean | undefined;
             crossorigin?: string | undefined;
             disabled?: boolean | undefined;
-            enterkeyhint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send" | undefined;
+            enterkeyhint?:
+                | "enter"
+                | "done"
+                | "go"
+                | "next"
+                | "previous"
+                | "search"
+                | "send"
+                | undefined;
             form?: string | undefined;
             formaction?: string | undefined;
             formenctype?: string | undefined;
@@ -1145,7 +1220,13 @@ declare namespace vhtml {
             onchange?: string | undefined;
         }
         interface TdHTMLAttributes extends HTMLAttributes {
-            align?: "left" | "center" | "right" | "justify" | "char" | undefined;
+            align?:
+                | "left"
+                | "center"
+                | "right"
+                | "justify"
+                | "char"
+                | undefined;
             colspan?: number | undefined;
             headers?: string | undefined;
             rowspan?: number | undefined;
@@ -1156,7 +1237,13 @@ declare namespace vhtml {
             valign?: "top" | "middle" | "bottom" | "baseline" | undefined;
         }
         interface ThHTMLAttributes extends HTMLAttributes {
-            align?: "left" | "center" | "right" | "justify" | "char" | undefined;
+            align?:
+                | "left"
+                | "center"
+                | "right"
+                | "justify"
+                | "char"
+                | undefined;
             colspan?: number | undefined;
             headers?: string | undefined;
             rowspan?: number | undefined;
@@ -1226,7 +1313,12 @@ declare namespace vhtml {
             allowreorder?: "no" | "yes" | undefined;
             alphabetic?: number | string | undefined;
             amplitude?: number | string | undefined;
-            arabicform?: "initial" | "medial" | "terminal" | "isolated" | undefined;
+            arabicform?:
+                | "initial"
+                | "medial"
+                | "terminal"
+                | "isolated"
+                | undefined;
             ascent?: number | string | undefined;
             attributename?: string | undefined;
             attributetype?: string | undefined;
@@ -1246,7 +1338,12 @@ declare namespace vhtml {
             clippathunits?: number | string | undefined;
             cliprule?: number | string | undefined;
             colorinterpolation?: number | string | undefined;
-            colorinterpolationfilters?: "auto" | "sRGB" | "linearRGB" | "inherit" | undefined;
+            colorinterpolationfilters?:
+                | "auto"
+                | "sRGB"
+                | "linearRGB"
+                | "inherit"
+                | undefined;
             colorprofile?: number | string | undefined;
             colorrendering?: number | string | undefined;
             contentscripttype?: number | string | undefined;
@@ -1398,7 +1495,12 @@ declare namespace vhtml {
             strokedasharray?: string | number | undefined;
             strokedashoffset?: string | number | undefined;
             strokelinecap?: "butt" | "round" | "square" | "inherit" | undefined;
-            strokelinejoin?: "miter" | "round" | "bevel" | "inherit" | undefined;
+            strokelinejoin?:
+                | "miter"
+                | "round"
+                | "bevel"
+                | "inherit"
+                | undefined;
             strokemiterlimit?: number | string | undefined;
             strokeopacity?: number | string | undefined;
             strokewidth?: number | string | undefined;

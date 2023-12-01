@@ -8,7 +8,10 @@ declare class NodeS7 {
      * @param options Contains options for the current connection only
      * @param callback err is either an error object, or undefined on successful connection.
      */
-    initiateConnection(options: NodeS7.ConnectionOptions, callback: (err?: Error) => void): void;
+    initiateConnection(
+        options: NodeS7.ConnectionOptions,
+        callback: (err?: Error) => void,
+    ): void;
 
     /**
      * Disconnects from a PLC. This simply terminates the TCP connection.
@@ -85,7 +88,11 @@ declare class NodeS7 {
      * @param value The corresponding value
      * @param callback err: `true` if ANY of the items have "bad quality"
      */
-    writeItems(item: string, value: NodeS7.S7Types, callback: (err: boolean) => void): number;
+    writeItems(
+        item: string,
+        value: NodeS7.S7Types,
+        callback: (err: boolean) => void,
+    ): number;
     /**
      * Writes items to the PLC using the corresponding values and calls callback when done.
      *
@@ -96,14 +103,20 @@ declare class NodeS7 {
      * @param values The corresponding values to the items
      * @param callback err: `true` if ANY of the items have "bad quality"
      */
-    writeItems(items: string[], values: NodeS7.S7Types[], callback: (err: boolean) => void): number;
+    writeItems(
+        items: string[],
+        values: NodeS7.S7Types[],
+        callback: (err: boolean) => void,
+    ): number;
 
     /**
      * Reads the internal polling list and calls `callback` when done
      *
      * @param callback err: `true` if ANY of the items have "bad quality" values: an object containing the values being read as keys and their value (from the PLC) as the value
      */
-    readAllItems(callback: (err: boolean, values: NodeS7.ReadValues) => void): void;
+    readAllItems(
+        callback: (err: boolean, values: NodeS7.ReadValues) => void,
+    ): void;
 }
 
 declare namespace NodeS7 {

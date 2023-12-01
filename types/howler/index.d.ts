@@ -153,10 +153,10 @@ export interface HowlOptions extends HowlListeners {
      */
     xhr?:
         | {
-            method?: string | undefined;
-            headers?: Record<string, string> | undefined;
-            withCredentials?: boolean | undefined;
-        }
+              method?: string | undefined;
+              headers?: Record<string, string> | undefined;
+              withCredentials?: boolean | undefined;
+          }
         | undefined;
 }
 
@@ -192,27 +192,77 @@ export class Howl {
     unload(): null;
 
     on(event: "load", callback: () => void, id?: number): this;
-    on(event: "loaderror" | "playerror", callback: HowlErrorCallback, id?: number): this;
     on(
-        event: "play" | "end" | "pause" | "stop" | "mute" | "volume" | "rate" | "seek" | "fade" | "unlock",
+        event: "loaderror" | "playerror",
+        callback: HowlErrorCallback,
+        id?: number,
+    ): this;
+    on(
+        event:
+            | "play"
+            | "end"
+            | "pause"
+            | "stop"
+            | "mute"
+            | "volume"
+            | "rate"
+            | "seek"
+            | "fade"
+            | "unlock",
         callback: HowlCallback,
         id?: number,
     ): this;
-    on(event: string, callback: HowlCallback | HowlErrorCallback, id?: number): this;
+    on(
+        event: string,
+        callback: HowlCallback | HowlErrorCallback,
+        id?: number,
+    ): this;
 
     once(event: "load", callback: () => void, id?: number): this;
-    once(event: "loaderror" | "playerror", callback: HowlErrorCallback, id?: number): this;
     once(
-        event: "play" | "end" | "pause" | "stop" | "mute" | "volume" | "rate" | "seek" | "fade" | "unlock",
+        event: "loaderror" | "playerror",
+        callback: HowlErrorCallback,
+        id?: number,
+    ): this;
+    once(
+        event:
+            | "play"
+            | "end"
+            | "pause"
+            | "stop"
+            | "mute"
+            | "volume"
+            | "rate"
+            | "seek"
+            | "fade"
+            | "unlock",
         callback: HowlCallback,
         id?: number,
     ): this;
-    once(event: string, callback: HowlCallback | HowlErrorCallback, id?: number): this;
+    once(
+        event: string,
+        callback: HowlCallback | HowlErrorCallback,
+        id?: number,
+    ): this;
 
     off(event: "load", callback?: () => void, id?: number): this;
-    off(event: "loaderror" | "playerror", callback?: HowlErrorCallback, id?: number): this;
     off(
-        event: "play" | "end" | "pause" | "stop" | "mute" | "volume" | "rate" | "seek" | "fade" | "unlock",
+        event: "loaderror" | "playerror",
+        callback?: HowlErrorCallback,
+        id?: number,
+    ): this;
+    off(
+        event:
+            | "play"
+            | "end"
+            | "pause"
+            | "stop"
+            | "mute"
+            | "volume"
+            | "rate"
+            | "seek"
+            | "fade"
+            | "unlock",
         callback?: HowlCallback,
         id?: number,
     ): this;
@@ -234,7 +284,11 @@ export class Howl {
             | "unlock",
         id: number,
     ): this;
-    off(event?: string, callback?: HowlCallback | HowlErrorCallback, id?: number): this;
+    off(
+        event?: string,
+        callback?: HowlCallback | HowlErrorCallback,
+        id?: number,
+    ): this;
 
     stereo(): number;
     stereo(pan: number, id?: number): number | this;
@@ -272,7 +326,14 @@ export interface HowlerGlobal {
     pos(x: number, y?: number, z?: number): this;
 
     orientation(): SpatialOrientation;
-    orientation(x: number, y?: number, z?: number, xUp?: number, yUp?: number, zUp?: number): this;
+    orientation(
+        x: number,
+        y?: number,
+        z?: number,
+        xUp?: number,
+        yUp?: number,
+        zUp?: number,
+    ): this;
 }
 
 import { Howl as _Howl, HowlerGlobal as _HowlerGlobal } from ".";
@@ -285,7 +346,7 @@ declare global {
     var Howl: typeof _Howl;
     var HowlerGlobal: {
         prototype: _HowlerGlobal;
-        new(): _HowlerGlobal;
+        new (): _HowlerGlobal;
     };
     var Howler: HowlerGlobal;
 }

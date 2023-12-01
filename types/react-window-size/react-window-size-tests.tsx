@@ -7,7 +7,11 @@ interface TestProps {
 
 type TestInnerProps = TestProps & WindowSizeProps;
 
-const TestComponent: React.ComponentType<TestInnerProps> = ({ foo, windowHeight, windowWidth }) => {
+const TestComponent: React.ComponentType<TestInnerProps> = ({
+    foo,
+    windowHeight,
+    windowWidth,
+}) => {
     foo; // $ExpectType string
     windowHeight; // $ExpectType number
     windowWidth; // $ExpectType number

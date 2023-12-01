@@ -25,14 +25,17 @@ app.use(
 
 app.use(
     "/form2",
-    expform({
-        encoding: "utf-8",
-        uploadDir: "./uploads",
-        keepExtensions: true,
-        type: "multipart",
-        maxFieldsSize: 3 * 1024 * 1024,
-        maxFields: 50,
-        hash: "sha1",
-        multiples: true,
-    }, [{ event: "error", action: (req, res, next, err) => next(err) }]),
+    expform(
+        {
+            encoding: "utf-8",
+            uploadDir: "./uploads",
+            keepExtensions: true,
+            type: "multipart",
+            maxFieldsSize: 3 * 1024 * 1024,
+            maxFields: 50,
+            hash: "sha1",
+            multiples: true,
+        },
+        [{ event: "error", action: (req, res, next, err) => next(err) }],
+    ),
 );

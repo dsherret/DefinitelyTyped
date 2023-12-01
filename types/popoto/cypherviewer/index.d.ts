@@ -38,7 +38,9 @@ export interface CypherViewer {
      * @param links
      * @returns an array of generated data
      */
-    generateData: (links: any[]) => Array<{ id: number; type: number; node: any }>;
+    generateData: (
+        links: any[],
+    ) => Array<{ id: number; type: number; node: any }>;
 
     mouseOverSpan: () => void;
     mouseOutSpan: () => void;

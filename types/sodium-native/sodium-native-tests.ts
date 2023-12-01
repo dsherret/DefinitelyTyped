@@ -1,38 +1,9 @@
 import sodium = require("sodium-native");
 
 const nonCanonicalP = Buffer.from([
-    0xf6,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0x7f,
+    0xf6, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f,
 ]);
 
 const h = sodium.sodium_malloc(sodium.crypto_core_ed25519_UNIFORMBYTES);
@@ -133,7 +104,14 @@ const publicKey = sodium.sodium_malloc(sodium.crypto_box_PUBLICKEYBYTES);
 const secretKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
 sodium.crypto_box_keypair(publicKey, secretKey);
 const message = sodium.sodium_malloc(4);
-const cipherText = sodium.sodium_malloc(message.length + sodium.crypto_box_SEALBYTES);
+const cipherText = sodium.sodium_malloc(
+    message.length + sodium.crypto_box_SEALBYTES,
+);
 sodium.crypto_box_seal(cipherText, message, publicKey);
 // $ExpectType boolean
-const success = sodium.crypto_box_seal_open(message, cipherText, publicKey, secretKey);
+const success = sodium.crypto_box_seal_open(
+    message,
+    cipherText,
+    publicKey,
+    secretKey,
+);

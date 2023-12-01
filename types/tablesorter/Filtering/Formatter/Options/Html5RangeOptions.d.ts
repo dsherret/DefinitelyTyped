@@ -11,13 +11,11 @@ import { TestableOptions } from "./TestableOptions";
  * Provides options for the html5 range control.
  */
 export interface Html5RangeOptions
-    extends
-        RangeOptions,
+    extends RangeOptions,
         ControlOptions,
         DefaultValueOptions<number>,
         ComparableOptions,
         StrictOptions,
         PreviewableOptions,
         DelayableOptions,
-        TestableOptions
-{}
+        TestableOptions {}

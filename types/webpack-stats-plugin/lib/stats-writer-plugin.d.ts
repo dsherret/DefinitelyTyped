@@ -48,7 +48,10 @@ declare namespace StatsWriterPlugin {
 declare class StatsWriterPlugin extends Plugin {
     constructor(opts?: StatsWriterPlugin.Options);
 
-    emitStats(curCompiler: webpack.compilation.Compilation, callback: StatsWriterPlugin.TransformFunc): Promise<void>;
+    emitStats(
+        curCompiler: webpack.compilation.Compilation,
+        callback: StatsWriterPlugin.TransformFunc,
+    ): Promise<void>;
     emitStats(curCompiler: webpack.compilation.Compilation): Promise<string>;
 }
 

@@ -20,12 +20,18 @@ function testGlobals() {
 }
 
 function testHelpers() {
-    var q0: webdriver.promise.IThenable<boolean> = helpers.not($(".foo").isDisplayed());
+    var q0: webdriver.promise.IThenable<boolean> = helpers.not(
+        $(".foo").isDisplayed(),
+    );
     // TODO - Check impl
-    var q1: webdriver.promise.IThenable<{ [key: string]: string }> = helpers.translate(["foo", "bar"]);
-    var q2: webdriver.promise.IThenable<{ [key: string]: string }> = helpers.translate(["foo", "bar"], { name: "foo" });
+    var q1: webdriver.promise.IThenable<{ [key: string]: string }> =
+        helpers.translate(["foo", "bar"]);
+    var q2: webdriver.promise.IThenable<{ [key: string]: string }> =
+        helpers.translate(["foo", "bar"], { name: "foo" });
     var q3: webdriver.promise.IThenable<string> = helpers.translate("foo");
-    var q4: webdriver.promise.IThenable<string> = helpers.translate("foo", { name: "foo" });
+    var q4: webdriver.promise.IThenable<string> = helpers.translate("foo", {
+        name: "foo",
+    });
 
     helpers.safeGet("https://foo/");
 
@@ -58,15 +64,32 @@ function testHelpers() {
 
     helpers.clearAndSetValue($("input"), "Foo");
 
-    var hc: webdriver.promise.IThenable<boolean> = helpers.hasClass($(".foo"), "foo");
+    var hc: webdriver.promise.IThenable<boolean> = helpers.hasClass(
+        $(".foo"),
+        "foo",
+    );
 
-    var hv: webdriver.promise.IThenable<boolean> = helpers.hasValue($("input[type=text]"), "foo");
-    var hv1: webdriver.promise.IThenable<boolean> = helpers.hasValue($("input[type=numeric]"), 12);
-    var hl: webdriver.promise.IThenable<boolean> = helpers.hasLink($("div"), "http://foo.com");
-    var disabled: webdriver.promise.IThenable<boolean> = helpers.isDisabled($("foo"));
-    var checked: webdriver.promise.IThenable<boolean> = helpers.isChecked($("foo"));
+    var hv: webdriver.promise.IThenable<boolean> = helpers.hasValue(
+        $("input[type=text]"),
+        "foo",
+    );
+    var hv1: webdriver.promise.IThenable<boolean> = helpers.hasValue(
+        $("input[type=numeric]"),
+        12,
+    );
+    var hl: webdriver.promise.IThenable<boolean> = helpers.hasLink(
+        $("div"),
+        "http://foo.com",
+    );
+    var disabled: webdriver.promise.IThenable<boolean> = helpers.isDisabled(
+        $("foo"),
+    );
+    var checked: webdriver.promise.IThenable<boolean> = helpers.isChecked(
+        $("foo"),
+    );
 
-    var q5: webdriver.promise.IThenable<string[]> = helpers.getFilteredConsoleErrors();
+    var q5: webdriver.promise.IThenable<string[]> =
+        helpers.getFilteredConsoleErrors();
 }
 
 function testLocators() {
@@ -89,7 +112,10 @@ function testMatchers() {
     expectResult = expect($(".foo")).toHaveText("bla");
     expectResult = expect($(".foo")).toMatchRegex(/bla/);
     expectResult = expect($(".foo").getText()).toMatchMoney(123, "£");
-    expectResult = expect($(".foo").getText()).toMatchMoneyWithFraction(123.45, "£");
+    expectResult = expect($(".foo").getText()).toMatchMoneyWithFraction(
+        123.45,
+        "£",
+    );
     expectResult = expect($("input")).toHaveValue(12);
     expectResult = expect($("input")).toHaveValue("bla");
     expectResult = expect($(".foo")).toHaveClass("foo");
@@ -102,5 +128,7 @@ function testMatchers() {
     expectResult = expect($(".foo")).toMatchTranslated("foo");
     expectResult = expect($(".foo")).toMatchTranslated("foo", { foo: "bar" });
     expectResult = expect($(".foo")).toMatchTranslated(["foo"]);
-    expectResult = expect($(".foo")).toMatchTranslated(["foo", "bla"], { foo: "bar" });
+    expectResult = expect($(".foo")).toMatchTranslated(["foo", "bla"], {
+        foo: "bar",
+    });
 }

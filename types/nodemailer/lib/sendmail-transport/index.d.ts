@@ -31,7 +31,9 @@ declare namespace SendmailTransport {
     }
 }
 
-declare class SendmailTransport implements Transport<SendmailTransport.SentMessageInfo> {
+declare class SendmailTransport
+    implements Transport<SendmailTransport.SentMessageInfo>
+{
     options: SendmailTransport.Options;
     logger: shared.Logger;
     mailer: Mail<SendmailTransport.SentMessageInfo>;
@@ -46,7 +48,10 @@ declare class SendmailTransport implements Transport<SendmailTransport.SentMessa
     /** Compiles a mailcomposer message and forwards it to handler that sends it */
     send(
         mail: MailMessage<SendmailTransport.SentMessageInfo>,
-        callback: (err: Error | null, info: SendmailTransport.SentMessageInfo) => void,
+        callback: (
+            err: Error | null,
+            info: SendmailTransport.SentMessageInfo,
+        ) => void,
     ): void;
 }
 

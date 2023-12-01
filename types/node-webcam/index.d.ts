@@ -32,10 +32,18 @@ export const NodeWebcam: {
 export const version: string;
 export const REVISION: number;
 
-export function create(options: WebcamOptions & { platform: "linux" | "fswebcam" }): FSWebcam;
-export function create(options: WebcamOptions & { platform: "win32" | "win64" }): WindowsWebcam;
-export function create(options: WebcamOptions & { platform: "darwin" }): ImageSnapWebcam;
-export function create(options: WebcamOptions): ImageSnapWebcam | FSWebcam | WindowsWebcam;
+export function create(
+    options: WebcamOptions & { platform: "linux" | "fswebcam" },
+): FSWebcam;
+export function create(
+    options: WebcamOptions & { platform: "win32" | "win64" },
+): WindowsWebcam;
+export function create(
+    options: WebcamOptions & { platform: "darwin" },
+): ImageSnapWebcam;
+export function create(
+    options: WebcamOptions,
+): ImageSnapWebcam | FSWebcam | WindowsWebcam;
 
 /**
  * Quick capture helper
@@ -54,9 +62,18 @@ export function list(callback?: (cams: string[]) => void): void;
 /**
  * Camera options helper
  */
-export function listControls(device: string, callback: (cameraControl: CameraControl[]) => void): void;
+export function listControls(
+    device: string,
+    callback: (cameraControl: CameraControl[]) => void,
+): void;
 
-export type IPlatformType = "linux" | "darwin" | "fswebcam" | "win32" | "win64" | string;
+export type IPlatformType =
+    | "linux"
+    | "darwin"
+    | "fswebcam"
+    | "win32"
+    | "win64"
+    | string;
 
 /**
  * Factory based on OS output
@@ -68,7 +85,10 @@ export class Factory {
 
     create(options: WebcamOptions, platform: "win32" | "win64"): WindowsWebcam;
 
-    create(options: WebcamOptions, platform?: IPlatformType): ImageSnapWebcam | FSWebcam | WindowsWebcam;
+    create(
+        options: WebcamOptions,
+        platform?: IPlatformType,
+    ): ImageSnapWebcam | FSWebcam | WindowsWebcam;
 
     Platform: IPlatformType;
 
@@ -151,7 +171,10 @@ export class FSWebcam extends Webcam {
      * Parse output of list camera controls shell command
      * camera controls
      */
-    parseListControls(stdout: string, callback: (cameraControl: CameraControl[]) => void): void;
+    parseListControls(
+        stdout: string,
+        callback: (cameraControl: CameraControl[]) => void,
+    ): void;
 
     /**
      * Data validations based on fs output
@@ -183,16 +206,16 @@ export class WindowsWebcam extends Webcam {
 
 export type CameraControl =
     | {
-        name: string;
-        type: "range";
-        min?: number;
-        max?: number;
-    }
+          name: string;
+          type: "range";
+          min?: number;
+          max?: number;
+      }
     | {
-        name: string;
-        type: "list";
-        opts?: string[];
-    };
+          name: string;
+          type: "list";
+          opts?: string[];
+      };
 
 export interface WebcamOptions {
     width?: number;
@@ -290,7 +313,10 @@ export abstract class Webcam {
      *
      * testing purposes)
      */
-    listControls(callback: (cams: any[] | Error) => void, stdoutOverride: string): void;
+    listControls(
+        callback: (cams: any[] | Error) => void,
+        stdoutOverride: string,
+    ): void;
 
     /**
      * Has camera
@@ -300,7 +326,10 @@ export abstract class Webcam {
     /**
      * Capture shot
      */
-    capture(location: string | null, callback: (err: Error | null, data: string | Buffer) => void): void;
+    capture(
+        location: string | null,
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
 
     /**
      * Generate cli command string
@@ -315,7 +344,10 @@ export abstract class Webcam {
     /**
      * Get shot instances from cache index
      */
-    getShot(index: number, callback: (err: Error | null, data: string | Buffer) => void): void;
+    getShot(
+        index: number,
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
 
     /**
      * Get last shot taken image data
@@ -326,29 +358,42 @@ export abstract class Webcam {
      * Get shot buffer from location
      * 0 indexed
      */
-    getShotBuffer(shot: number | Shot, callback: (err: Error | null, data: string | Buffer) => void): void;
+    getShotBuffer(
+        shot: number | Shot,
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
 
     /**
      * Get last shot buffer taken image data
      */
-    getLastShotBuffer(callback: (err: Error | null, data: string | Buffer) => void): void;
+    getLastShotBuffer(
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
 
     /**
      * Get shot base64 as image
      * if passed Number will return a base 64 in the callback
      */
-    getBase64(shot: number | Shot, callback: (err: Error | null, data: string | Buffer) => void): void;
+    getBase64(
+        shot: number | Shot,
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
     getBase64FromBuffer(shotBuffer: string | Buffer): string;
 
     /**
      * Get last shot taken base 64 string
      */
-    getLastShot64(callback: (err: Error | null, data: string | Buffer) => void): void;
+    getLastShot64(
+        callback: (err: Error | null, data: string | Buffer) => void,
+    ): void;
 
     /**
      * Get last shot taken image data
      */
-    handleCallbackReturnType(callback: (err: Error | null, data: string | Buffer) => void, shot: Shot): void;
+    handleCallbackReturnType(
+        callback: (err: Error | null, data: string | Buffer) => void,
+        shot: Shot,
+    ): void;
     abstract runCaptureValidations(data: string): Error | null;
 }
 
@@ -359,8 +404,14 @@ export abstract class Webcam {
 export class EventDispatcher {
     apply(obj: Webcam): Webcam & EventDispatcher;
     on(type: WebcamEventType, listener: (event: WebcamEvent) => void): void;
-    hasListener(type: WebcamEventType, listener: (event: WebcamEvent) => void): void;
-    removeListener(type: WebcamEventType, listener: (event: WebcamEvent) => void): void;
+    hasListener(
+        type: WebcamEventType,
+        listener: (event: WebcamEvent) => void,
+    ): void;
+    removeListener(
+        type: WebcamEventType,
+        listener: (event: WebcamEvent) => void,
+    ): void;
     dispatch(event: WebcamEvent): void;
 }
 

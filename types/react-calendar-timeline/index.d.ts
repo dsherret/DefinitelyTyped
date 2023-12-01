@@ -26,8 +26,12 @@ declare module "react-calendar-timeline" {
         itemProps?: React.HTMLAttributes<HTMLDivElement> | undefined;
     }
 
-    export type TimelineItem<CustomItemFields, DateType = number> = TimelineItemBase<DateType> & CustomItemFields;
-    export type TimelineGroup<CustomGroupFields> = TimelineGroupBase & CustomGroupFields;
+    export type TimelineItem<
+        CustomItemFields,
+        DateType = number,
+    > = TimelineItemBase<DateType> & CustomItemFields;
+    export type TimelineGroup<CustomGroupFields> = TimelineGroupBase &
+        CustomGroupFields;
 
     export interface TimelineContext {
         timelineWidth: number;
@@ -104,19 +108,25 @@ declare module "react-calendar-timeline" {
         style: React.CSSProperties;
     }
 
-    export type GetItemsProps = Partial<Omit<ItemRendererGetItemPropsReturnType, "key" | "ref">>;
+    export type GetItemsProps = Partial<
+        Omit<ItemRendererGetItemPropsReturnType, "key" | "ref">
+    >;
 
     export interface ItemRendererGetResizePropsReturnType {
-        left?: {
-            ref: React.Ref<any>;
-            className: string;
-            style: React.CSSProperties;
-        } | undefined;
-        right?: {
-            ref: React.Ref<any>;
-            className: string;
-            style: React.CSSProperties;
-        } | undefined;
+        left?:
+            | {
+                  ref: React.Ref<any>;
+                  className: string;
+                  style: React.CSSProperties;
+              }
+            | undefined;
+        right?:
+            | {
+                  ref: React.Ref<any>;
+                  className: string;
+                  style: React.CSSProperties;
+              }
+            | undefined;
     }
 
     export type GetResizeProps = {
@@ -131,9 +141,7 @@ declare module "react-calendar-timeline" {
     > {
         item: CustomItem;
         itemContext: ItemContext;
-        getItemProps: (
-            props: GetItemsProps,
-        ) => {
+        getItemProps: (props: GetItemsProps) => {
             key: Id;
             ref: React.Ref<any>;
             className: string;
@@ -145,10 +153,14 @@ declare module "react-calendar-timeline" {
             onContextMenu: React.ReactEventHandler;
             style: React.CSSProperties;
         };
-        getResizeProps: (propsOverride?: GetResizeProps) => ItemRendererGetResizePropsReturnType;
+        getResizeProps: (
+            propsOverride?: GetResizeProps,
+        ) => ItemRendererGetResizePropsReturnType;
     }
 
-    export interface ReactCalendarGroupRendererProps<CustomGroup extends TimelineGroupBase = TimelineGroupBase> {
+    export interface ReactCalendarGroupRendererProps<
+        CustomGroup extends TimelineGroupBase = TimelineGroupBase,
+    > {
         group: CustomGroup;
         isRightSidebar?: boolean | undefined;
     }
@@ -214,17 +226,43 @@ declare module "react-calendar-timeline" {
         itemTouchSendsClick?: boolean | undefined;
         timeSteps?: TimelineTimeSteps | undefined;
         scrollRef?: React.Ref<any> | undefined;
-        onItemDrag?(itemDragObject: OnItemDragObjectMove | OnItemDragObjectResize): void;
+        onItemDrag?(
+            itemDragObject: OnItemDragObjectMove | OnItemDragObjectResize,
+        ): void;
         onItemMove?(itemId: Id, dragTime: number, newGroupOrder: number): void;
-        onItemResize?(itemId: Id, endTimeOrStartTime: number, edge: "left" | "right"): void;
+        onItemResize?(
+            itemId: Id,
+            endTimeOrStartTime: number,
+            edge: "left" | "right",
+        ): void;
         onItemSelect?(itemId: Id, e: any, time: number): void;
         onItemDeselect?(e: React.SyntheticEvent): void;
         onItemClick?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-        onItemDoubleClick?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-        onItemContextMenu?(itemId: Id, e: React.SyntheticEvent, time: number): void;
-        onCanvasClick?(groupId: Id, time: number, e: React.SyntheticEvent): void;
-        onCanvasDoubleClick?(groupId: Id, time: number, e: React.SyntheticEvent): void;
-        onCanvasContextMenu?(groupId: Id, time: number, e: React.SyntheticEvent): void;
+        onItemDoubleClick?(
+            itemId: Id,
+            e: React.SyntheticEvent,
+            time: number,
+        ): void;
+        onItemContextMenu?(
+            itemId: Id,
+            e: React.SyntheticEvent,
+            time: number,
+        ): void;
+        onCanvasClick?(
+            groupId: Id,
+            time: number,
+            e: React.SyntheticEvent,
+        ): void;
+        onCanvasDoubleClick?(
+            groupId: Id,
+            time: number,
+            e: React.SyntheticEvent,
+        ): void;
+        onCanvasContextMenu?(
+            groupId: Id,
+            time: number,
+            e: React.SyntheticEvent,
+        ): void;
         onZoom?(timelineContext: TimelineContext, unit: Unit): void;
         moveResizeValidator?(
             action: "move" | "resize",
@@ -239,11 +277,23 @@ declare module "react-calendar-timeline" {
             unit: Unit,
         ): any;
         onBoundsChange?(canvasTimeStart: number, canvasTimeEnd: number): any;
-        itemRenderer?: ((props: ReactCalendarItemRendererProps<CustomItem>) => React.ReactNode) | undefined;
-        groupRenderer?: ((props: ReactCalendarGroupRendererProps<CustomGroup>) => React.ReactNode) | undefined;
+        itemRenderer?:
+            | ((
+                  props: ReactCalendarItemRendererProps<CustomItem>,
+              ) => React.ReactNode)
+            | undefined;
+        groupRenderer?:
+            | ((
+                  props: ReactCalendarGroupRendererProps<CustomGroup>,
+              ) => React.ReactNode)
+            | undefined;
         resizeDetector?: ((containerResizeDetector: any) => void) | undefined;
-        verticalLineClassNamesForTime?: ((start: number, end: number) => string[] | undefined) | undefined;
-        horizontalLineClassNamesForGroup?: ((group: CustomGroup) => string[]) | undefined;
+        verticalLineClassNamesForTime?:
+            | ((start: number, end: number) => string[] | undefined)
+            | undefined;
+        horizontalLineClassNamesForGroup?:
+            | ((group: CustomGroup) => string[])
+            | undefined;
         buffer?: number | undefined;
         // Fields that are in propTypes but not documented
         headerRef?: React.Ref<any> | undefined;
@@ -267,7 +317,9 @@ declare module "react-calendar-timeline" {
     }
     export interface MarkerProps {
         date: Date | number;
-        children?: ((props: CustomMarkerChildrenProps) => React.ReactNode) | undefined;
+        children?:
+            | ((props: CustomMarkerChildrenProps) => React.ReactNode)
+            | undefined;
     }
 
     export class CustomMarker extends React.Component<MarkerProps> {}
@@ -293,21 +345,40 @@ declare module "react-calendar-timeline" {
     export type TimelineHeaderProps = TimelineHeadersProps;
 
     export interface SidebarHeaderChildrenFnProps<Data> {
-        getRootProps: (propsToOverride?: { style: React.CSSProperties }) => { style: React.CSSProperties };
+        getRootProps: (propsToOverride?: { style: React.CSSProperties }) => {
+            style: React.CSSProperties;
+        };
         data: Data;
     }
 
     export interface SidebarHeaderProps<Data> {
         variant?: "left" | "right" | undefined;
         headerData?: Data | undefined;
-        children: (props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode;
+        children: (
+            props: SidebarHeaderChildrenFnProps<Data>,
+        ) => React.ReactNode;
     }
-    export class SidebarHeader<Data = any> extends React.Component<SidebarHeaderProps<Data>> {}
+    export class SidebarHeader<Data = any> extends React.Component<
+        SidebarHeaderProps<Data>
+    > {}
 
-    export type Unit = "second" | "minute" | "hour" | "day" | "week" | "isoWeek" | "month" | "year";
+    export type Unit =
+        | "second"
+        | "minute"
+        | "hour"
+        | "day"
+        | "week"
+        | "isoWeek"
+        | "month"
+        | "year";
 
     export interface IntervalContext {
-        interval: { startTime: number; endTime: number; labelWidth: number; left: number };
+        interval: {
+            startTime: number;
+            endTime: number;
+            labelWidth: number;
+            left: number;
+        };
         intervalText: string;
     }
     export interface GetIntervalProps {
@@ -317,7 +388,9 @@ declare module "react-calendar-timeline" {
     }
     export interface IntervalRenderer<Data> {
         intervalContext: IntervalContext;
-        getIntervalProps: (props?: GetIntervalProps) => Required<GetIntervalProps> & { key: string | number };
+        getIntervalProps: (
+            props?: GetIntervalProps,
+        ) => Required<GetIntervalProps> & { key: string | number };
         data?: Data | undefined;
     }
     export interface DateHeaderProps<Data> {
@@ -326,14 +399,24 @@ declare module "react-calendar-timeline" {
         unit?: Unit | "primaryHeader" | undefined;
         labelFormat?:
             | string
-            | (([startTime, endTime]: [Moment, Moment], unit: Unit, labelWidth: number) => string)
+            | ((
+                  [startTime, endTime]: [Moment, Moment],
+                  unit: Unit,
+                  labelWidth: number,
+              ) => string)
             | undefined;
-        intervalRenderer?: ((props?: IntervalRenderer<Data>) => React.ReactNode) | undefined;
+        intervalRenderer?:
+            | ((props?: IntervalRenderer<Data>) => React.ReactNode)
+            | undefined;
         headerData?: Data | undefined;
-        children?: ((props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode) | undefined;
+        children?:
+            | ((props: SidebarHeaderChildrenFnProps<Data>) => React.ReactNode)
+            | undefined;
         height?: number | undefined;
     }
-    export class DateHeader<Data = any> extends React.Component<DateHeaderProps<Data>> {}
+    export class DateHeader<Data = any> extends React.Component<
+        DateHeaderProps<Data>
+    > {}
     export interface Interval {
         startTime: Moment;
         endTime: Moment;
@@ -345,18 +428,29 @@ declare module "react-calendar-timeline" {
     export interface CustomHeaderPropsChildrenFnProps<Data> {
         timelineContext: TimelineContext;
         headerContext: HeaderContext;
-        getIntervalProps: (props?: GetIntervalProps) => Required<GetIntervalProps> & { key: string | number };
-        getRootProps: (propsToOverride?: { style: React.CSSProperties }) => { style: React.CSSProperties };
-        showPeriod: (startDate: Moment | number, endDate: Moment | number) => void;
+        getIntervalProps: (
+            props?: GetIntervalProps,
+        ) => Required<GetIntervalProps> & { key: string | number };
+        getRootProps: (propsToOverride?: { style: React.CSSProperties }) => {
+            style: React.CSSProperties;
+        };
+        showPeriod: (
+            startDate: Moment | number,
+            endDate: Moment | number,
+        ) => void;
         data: Data;
     }
     export interface CustomHeaderProps<Data> {
         unit?: Unit | undefined;
         headerData?: Data | undefined;
         height?: number | undefined;
-        children: (props?: CustomHeaderPropsChildrenFnProps<Data>) => React.ReactNode;
+        children: (
+            props?: CustomHeaderPropsChildrenFnProps<Data>,
+        ) => React.ReactNode;
     }
-    export class CustomHeader<Data = any> extends React.Component<CustomHeaderProps<Data>> {}
+    export class CustomHeader<Data = any> extends React.Component<
+        CustomHeaderProps<Data>
+    > {}
 
     export const defaultKeys: TimelineKeys;
     export const defaultTimeSteps: TimelineTimeSteps;
@@ -365,5 +459,7 @@ declare module "react-calendar-timeline" {
     export default class ReactCalendarTimeline<
         CustomItem extends TimelineItemBase<any> = TimelineItemBase<number>,
         CustomGroup extends TimelineGroupBase = TimelineGroupBase,
-    > extends React.Component<ReactCalendarTimelineProps<CustomItem, CustomGroup>> {}
+    > extends React.Component<
+        ReactCalendarTimelineProps<CustomItem, CustomGroup>
+    > {}
 }

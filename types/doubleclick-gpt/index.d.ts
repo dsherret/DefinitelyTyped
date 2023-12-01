@@ -97,7 +97,11 @@ declare namespace googletag {
         companionAds(): CompanionAdsService;
         content(): ContentService;
         defineOutOfPageSlot(adUnitPath: string, opt_div?: string): Slot;
-        defineSlot(adUnitPath: string, size: GeneralSize, opt_div?: string): Slot;
+        defineSlot(
+            adUnitPath: string,
+            size: GeneralSize,
+            opt_div?: string,
+        ): Slot;
         destroySlots(opt_slots?: Slot[]): boolean;
         disablePublisherConsole(): void;
         display(divOrSlot?: string | Element | Slot): void;
@@ -126,7 +130,10 @@ declare namespace googletag {
         set(key: string, value: string): Slot;
         setCategoryExclusion(categoryExclusion: string): Slot;
         setClickUrl(value: string): Slot;
-        setCollapseEmptyDiv(collapse: boolean, opt_collapseBeforeAdFetch?: boolean): Slot;
+        setCollapseEmptyDiv(
+            collapse: boolean,
+            opt_collapseBeforeAdFetch?: boolean,
+        ): Slot;
         setForceSafeFrame(forceSafeFrame: boolean): Slot;
         setSafeFrameConfig(config: SafeFrameConfig): Slot;
         setTargeting(key: string, value: string | string[]): Slot;
@@ -154,7 +161,12 @@ declare namespace googletag {
         defineOutOfPagePassback(adUnitPath: string): PassbackSlot;
         definePassback(adUnitPath: string, size: GeneralSize): PassbackSlot;
         disableInitialLoad(): void;
-        display(adUnitPath: string, size: GeneralSize, opt_div?: string | Element, opt_clickUrl?: string): Slot;
+        display(
+            adUnitPath: string,
+            size: GeneralSize,
+            opt_div?: string | Element,
+            opt_clickUrl?: string,
+        ): Slot;
         enableAsyncRendering(): boolean;
         enableLazyLoad(opt_config?: LazyLoadOptionsConfig): void;
         enableSingleRequest(): boolean;
@@ -164,13 +176,20 @@ declare namespace googletag {
         getAttributeKeys(): string[];
         getTargeting(key: string): string[];
         getTargetingKeys(): string[];
-        refresh(opt_slots?: Slot[], opt_options?: { changeCorrelator: boolean }): void;
+        refresh(
+            opt_slots?: Slot[],
+            opt_options?: { changeCorrelator: boolean },
+        ): void;
         set(key: string, value: string): PubAdsService;
         setCategoryExclusion(categoryExclusion: string): PubAdsService;
         setCentering(centerAds: boolean): void;
         setCookieOptions(cookieOptions: number): PubAdsService;
         setForceSafeFrame(forceSafeFrame: boolean): PubAdsService;
-        setLocation(latitudeOrAddress: string | number, opt_longitude?: number, opt_radius?: number): PubAdsService;
+        setLocation(
+            latitudeOrAddress: string | number,
+            opt_longitude?: number,
+            opt_radius?: number,
+        ): PubAdsService;
         setPublisherProvidedId(ppid: string): PubAdsService;
         setRequestNonPersonalizedAds(nonPersonalizedAds: 0 | 1): PubAdsService;
         setSafeFrameConfig(config: SafeFrameConfig): PubAdsService;
@@ -190,7 +209,10 @@ declare namespace googletag {
     }
 
     interface SizeMappingBuilder {
-        addSize(viewportSize: SingleSizeArray, slotSize: GeneralSize): SizeMappingBuilder;
+        addSize(
+            viewportSize: SingleSizeArray,
+            slotSize: GeneralSize,
+        ): SizeMappingBuilder;
         build(): SizeMappingArray;
     }
 

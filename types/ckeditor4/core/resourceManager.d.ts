@@ -2,7 +2,7 @@
 
 declare namespace CKEDITOR {
     interface resourceManagerStatic {
-        new(basePath: string, fileName: string): resourceManager;
+        new (basePath: string, fileName: string): resourceManager;
     }
     interface resourceManager {
         basePath: string;
@@ -21,6 +21,10 @@ declare namespace CKEDITOR {
 
         getPath(name: string): string;
 
-        load(name: string | string[], callback: (loaded: string[]) => void, scope?: { [key: string]: unknown }): void;
+        load(
+            name: string | string[],
+            callback: (loaded: string[]) => void,
+            scope?: { [key: string]: unknown },
+        ): void;
     }
 }

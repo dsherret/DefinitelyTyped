@@ -262,7 +262,11 @@ declare namespace WIA {
          * @param string [FormatID='{00000000-0000-0000-0000-000000000000}']
          * @param boolean [CancelError=false]
          */
-        ShowTransfer(Item: Item, FormatID?: string, CancelError?: boolean): ImageFile;
+        ShowTransfer(
+            Item: Item,
+            FormatID?: string,
+            CancelError?: boolean,
+        ): ImageFile;
     }
 
     /** The Device object represents an active connection to an imaging device. */
@@ -804,7 +808,11 @@ declare namespace WIA {
          * @param boolean [Resizable=true]
          * @param boolean [Unicode=true]
          */
-        SetFromString(Value: string, Resizable?: boolean, Unicode?: boolean): void;
+        SetFromString(
+            Value: string,
+            Resizable?: boolean,
+            Unicode?: boolean,
+        ): void;
 
         /**
          * Returns a Vector of Bytes as a String
@@ -824,10 +832,19 @@ interface ActiveXObject {
         argNames: ["EventID", "DeviceID", "ItemID"],
         handler: (
             this: WIA.DeviceManager,
-            parameter: { readonly EventID: string; readonly DeviceID: string; readonly ItemID: string },
+            parameter: {
+                readonly EventID: string;
+                readonly DeviceID: string;
+                readonly ItemID: string;
+            },
         ) => void,
     ): void;
-    set<TItem>(obj: WIA.Vector<TItem>, propertyName: "Item", parameterTypes: [number], newValue: TItem): void;
+    set<TItem>(
+        obj: WIA.Vector<TItem>,
+        propertyName: "Item",
+        parameterTypes: [number],
+        newValue: TItem,
+    ): void;
 }
 
 interface ActiveXObjectNameMap {

@@ -135,7 +135,9 @@ export namespace DriverService {
          *     current environment.
          * @return {!DriverService.Builder} A self reference.
          */
-        setEnvironment(env: Map<string, string> | { [name: string]: string } | null): this;
+        setEnvironment(
+            env: Map<string, string> | { [name: string]: string } | null,
+        ): this;
 
         /**
          * IO configuration for the spawned server process. For more information,
@@ -235,5 +237,8 @@ export class FileDetector extends webdriver.FileDetector {
      * @return {!webdriver.promise.Promise<string>} A promise for the processed
      *     file path.
      */
-    handleFile(driver: webdriver.WebDriver, file: string): webdriver.promise.Promise<string>;
+    handleFile(
+        driver: webdriver.WebDriver,
+        file: string,
+    ): webdriver.promise.Promise<string>;
 }

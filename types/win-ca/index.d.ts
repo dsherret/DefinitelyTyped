@@ -4,10 +4,16 @@ import { pki } from "node-forge";
 
 export = api;
 
-declare function api(params: api.Options & { generator: true; async: true }): AsyncGenerator<api.Certificate>;
-declare function api(params: api.Options & { generator: true }): Generator<api.Certificate>;
+declare function api(
+    params: api.Options & { generator: true; async: true },
+): AsyncGenerator<api.Certificate>;
+declare function api(
+    params: api.Options & { generator: true },
+): Generator<api.Certificate>;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-declare function api(params: api.Options): AsyncGenerator<api.Certificate> | Generator<api.Certificate> | void;
+declare function api(
+    params: api.Options,
+): AsyncGenerator<api.Certificate> | Generator<api.Certificate> | void;
 
 declare namespace api {
     const disabled: boolean;
@@ -24,7 +30,9 @@ declare namespace api {
          * const toPEM = ca.der2(ca.der2.pem)
          * const pem = toPEM(der)
          */
-        (format: CertificateFormat): (certificate: string | Buffer) => Certificate;
+        (
+            format: CertificateFormat,
+        ): (certificate: string | Buffer) => Certificate;
         (format: CertificateFormat, certificate: string | Buffer): Certificate;
 
         /** DER-format (binary, Node's [Buffer](https://nodejs.org/api/buffer.html)) */
@@ -52,7 +60,10 @@ declare namespace api {
      * const hasher = ca.hash()
      * console.log(hasher(der))
      */
-    function hash(version: 0 | 1 | undefined, certificate: string | Buffer): string;
+    function hash(
+        version: 0 | 1 | undefined,
+        certificate: string | Buffer,
+    ): string;
     function hash(version?: 0 | 1): (certificate: string | Buffer) => string;
 
     /**

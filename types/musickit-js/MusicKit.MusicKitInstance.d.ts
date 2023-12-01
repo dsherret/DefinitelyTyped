@@ -48,7 +48,10 @@ declare namespace MusicKit {
          * @param name The name of the event.
          * @param callback The callback function to invoke when the event occurs.
          */
-        addEventListener<T extends keyof Events>(name: T, callback: (event: Events[T]) => any): void;
+        addEventListener<T extends keyof Events>(
+            name: T,
+            callback: (event: Events[T]) => any,
+        ): void;
         /**
          * No description available.
          */

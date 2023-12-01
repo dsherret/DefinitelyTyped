@@ -18,8 +18,7 @@ gulp.task("connect", () => {
 });
 
 gulp.task("html", () => {
-    gulp.src("./app/*.html")
-        .pipe(connect.reload());
+    gulp.src("./app/*.html").pipe(connect.reload());
 });
 
 gulp.task("watch", () => {
@@ -58,8 +57,7 @@ gulp.task("connectDist", () => {
 });
 
 gulp.task("html", () => {
-    gulp.src("./app/*.html")
-        .pipe(connect.reload());
+    gulp.src("./app/*.html").pipe(connect.reload());
 });
 
 gulp.task("stylus", () => {
@@ -92,9 +90,7 @@ gulp.task("connect", () => {
 import express = require("express");
 
 gulp.task("connect", () => {
-    const middleware = [
-        express(),
-    ];
+    const middleware = [express()];
 
     connect.server({
         root: [__dirname],

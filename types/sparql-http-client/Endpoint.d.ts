@@ -18,7 +18,8 @@ interface StoreEndpoint {
 }
 
 declare namespace Endpoint {
-    type EndpointOptions = CommonEndpointOptions & (QueryEndpoint | UpdateEndpoint | StoreEndpoint);
+    type EndpointOptions = CommonEndpointOptions &
+        (QueryEndpoint | UpdateEndpoint | StoreEndpoint);
 
     interface RequestOptions {
         headers?: HeadersInit | undefined;
@@ -36,7 +37,10 @@ declare namespace Endpoint {
 
         get(query: string, options?: RequestOptions): Promise<Response>;
         postDirect(query: string, options?: RequestOptions): Promise<Response>;
-        postUrlencoded(query: string, options?: RequestOptions): Promise<Response>;
+        postUrlencoded(
+            query: string,
+            options?: RequestOptions,
+        ): Promise<Response>;
         mergeHeaders(args?: HeadersInit): Headers;
     }
 }

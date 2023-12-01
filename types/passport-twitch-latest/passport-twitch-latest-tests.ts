@@ -98,9 +98,15 @@ function verifyFunction2(
     verifyCallback(new Error("unimplemented"));
 }
 
-const strategy1: TwitchStrategy = new TwitchStrategy(strategyOptions1, verifyFunction1);
+const strategy1: TwitchStrategy = new TwitchStrategy(
+    strategyOptions1,
+    verifyFunction1,
+);
 
-const strategy2: TwitchStrategy = new TwitchStrategy(strategyOptions1, verifyFunction2);
+const strategy2: TwitchStrategy = new TwitchStrategy(
+    strategyOptions1,
+    verifyFunction2,
+);
 
 function verifyFunction3(
     _req: Request,
@@ -135,9 +141,21 @@ const strategy4 = new OtherStrategy(strategyOptions2, verifyFunction4);
 
 class MyStrategy extends TwitchStrategy {
     useProtectedProperty() {
-        this._oauth2.get("http://www.example.com/profile", "token", err => err.statusCode);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result) => result);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result, response) => response);
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err) => err.statusCode,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result) => result,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result, response) => response,
+        );
     }
 }
 
@@ -158,4 +176,7 @@ const strategyOptions3: StrategyOptions = {
     pkce: false,
 };
 
-const strategy5: TwitchStrategy = new TwitchStrategy(strategyOptions3, verifyFunction2);
+const strategy5: TwitchStrategy = new TwitchStrategy(
+    strategyOptions3,
+    verifyFunction2,
+);

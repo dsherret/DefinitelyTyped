@@ -19,7 +19,7 @@ import Renderer = require("markdown-it/lib/renderer");
         langPrefix: "language-",
         linkify: false,
         typographer: false,
-        quotes: "\u201c\u201d\u2018\u2019", /* “”‘’ */
+        quotes: "\u201c\u201d\u2018\u2019" /* “”‘’ */,
         highlight: null,
     };
 
@@ -31,7 +31,7 @@ import Renderer = require("markdown-it/lib/renderer");
         langPrefix: "language-",
         linkify: false,
         typographer: false,
-        quotes: "\u201c\u201d\u2018\u2019", /* “”‘’ */
+        quotes: "\u201c\u201d\u2018\u2019" /* “”‘’ */,
         highlight: null,
     };
 
@@ -43,7 +43,7 @@ import Renderer = require("markdown-it/lib/renderer");
         langPrefix: "language-",
         linkify: false,
         typographer: false,
-        quotes: "\u201c\u201d\u2018\u2019", /* “”‘’ */
+        quotes: "\u201c\u201d\u2018\u2019" /* “”‘’ */,
         highlight: null,
     };
 
@@ -55,7 +55,7 @@ import Renderer = require("markdown-it/lib/renderer");
         langPrefix: "language-",
         linkify: false,
         typographer: false,
-        quotes: "\u201c\u201d\u2018\u2019", /* “”‘’ */
+        quotes: "\u201c\u201d\u2018\u2019" /* “”‘’ */,
         highlight: (str, lang, attrs) => "",
     };
 }
@@ -105,8 +105,16 @@ import Renderer = require("markdown-it/lib/renderer");
     const plugin1 = (md: MarkdownIt, param?: boolean) => {};
     const plugin2 = (md: MarkdownIt, param1?: string, param2?: number) => {};
     const plugin3 = (md: MarkdownIt, ...params: any[]) => {};
-    const plugin4: MarkdownIt.PluginWithOptions<{ foo: boolean; bar: number }> = (md, options) => {};
-    const plugin5: MarkdownIt.PluginWithParams = (md, flag?: boolean, str?: string, num?: number) => {};
+    const plugin4: MarkdownIt.PluginWithOptions<{
+        foo: boolean;
+        bar: number;
+    }> = (md, options) => {};
+    const plugin5: MarkdownIt.PluginWithParams = (
+        md,
+        flag?: boolean,
+        str?: string,
+        num?: number,
+    ) => {};
 
     const md = MarkdownIt()
         .use(plugin)

@@ -11,7 +11,7 @@ const tiles = [
     [1, 0, 5],
 ];
 const quadkey = "00001033";
-const bbox = [-178.24, 84.70, -177.89, 84.73];
+const bbox = [-178.24, 84.7, -177.89, 84.73];
 
 tilebelt.tileToQuadkey(tile);
 tilebelt.tileToBBOX(tile);

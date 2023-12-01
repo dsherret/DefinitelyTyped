@@ -208,13 +208,21 @@ export function sign(
  * [options] - Options for the verification
  * returns - The decoded token.
  */
-export function verify(token: string, secretOrPublicKey: Secret, options: VerifyOptions & { complete: true }): Jwt;
+export function verify(
+    token: string,
+    secretOrPublicKey: Secret,
+    options: VerifyOptions & { complete: true },
+): Jwt;
 export function verify(
     token: string,
     secretOrPublicKey: Secret,
     options?: VerifyOptions & { complete?: false },
 ): JwtPayload | string;
-export function verify(token: string, secretOrPublicKey: Secret, options?: VerifyOptions): Jwt | JwtPayload | string;
+export function verify(
+    token: string,
+    secretOrPublicKey: Secret,
+    options?: VerifyOptions,
+): Jwt | JwtPayload | string;
 
 /**
  * Asynchronously verify given token using a secret or a public key to get a decoded token
@@ -255,6 +263,15 @@ export function verify(
  * [options] - Options for decoding
  * returns - The decoded Token
  */
-export function decode(token: string, options: DecodeOptions & { complete: true }): null | Jwt;
-export function decode(token: string, options: DecodeOptions & { json: true }): null | JwtPayload;
-export function decode(token: string, options?: DecodeOptions): null | JwtPayload | string;
+export function decode(
+    token: string,
+    options: DecodeOptions & { complete: true },
+): null | Jwt;
+export function decode(
+    token: string,
+    options: DecodeOptions & { json: true },
+): null | JwtPayload;
+export function decode(
+    token: string,
+    options?: DecodeOptions,
+): null | JwtPayload | string;

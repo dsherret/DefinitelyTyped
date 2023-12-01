@@ -50,7 +50,9 @@ export type ClientRegistration = {
     /**
      * Array of OAuth 2.0 grant type strings that the client can use at the token endpoint
      */
-    grant_types: Array<"client_credentials" | "authorization_code" | "refresh_token">;
+    grant_types: Array<
+        "client_credentials" | "authorization_code" | "refresh_token"
+    >;
     /**
      * JWE `alg` algorithm with which an id_token is to be encrypted. Required if OIDC Hybrid Flow (response type `code id_token`) is registered.
      */
@@ -210,7 +212,9 @@ export interface RegistrationProperties {
     /**
      * Array of OAuth 2.0 grant type strings that the client can use at the token endpoint
      */
-    grant_types: Array<"client_credentials" | "authorization_code" | "refresh_token">;
+    grant_types: Array<
+        "client_credentials" | "authorization_code" | "refresh_token"
+    >;
     /**
      * JWE `alg` algorithm with which an id_token is to be encrypted. Required if OIDC Hybrid Flow (response type `code id_token`) is registered.
      */

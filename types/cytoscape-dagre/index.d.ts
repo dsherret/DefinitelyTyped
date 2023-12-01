@@ -10,10 +10,16 @@ declare namespace cytoscapeDagre {
     type EdgeAssessmentFunction = (edge: cytoscape.EdgeSingular) => number;
 
     // function( node, i ){ return true; },
-    type AnimationFilterFunction = (node: cytoscape.NodeSingular, i: number) => boolean;
+    type AnimationFilterFunction = (
+        node: cytoscape.NodeSingular,
+        i: number,
+    ) => boolean;
 
     // function( node, pos ){ return pos; }
-    type TransformFunction = (node: cytoscape.NodeSingular, pos: cytoscape.Position) => cytoscape.Position;
+    type TransformFunction = (
+        node: cytoscape.NodeSingular,
+        pos: cytoscape.Position,
+    ) => cytoscape.Position;
 
     interface DagreLayoutOptions extends cytoscape.ShapedLayoutOptions {
         name: "dagre";

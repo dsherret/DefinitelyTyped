@@ -5,8 +5,13 @@ const myCldr = new Cldr("en");
 
 const supplemental = cldr.supplemental;
 
-const supplementalPath = supplemental("plurals-type-cardinal/{languageId}/pluralRule-count-one");
-const supplementalPathByArray = supplemental(["plurals-type-cardinal", "{languageId}/pluralRule-count-one"]);
+const supplementalPath = supplemental(
+    "plurals-type-cardinal/{languageId}/pluralRule-count-one",
+);
+const supplementalPathByArray = supplemental([
+    "plurals-type-cardinal",
+    "{languageId}/pluralRule-count-one",
+]);
 
 const timeData = supplemental.timeData;
 const allowed = timeData.allowed();

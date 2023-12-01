@@ -106,7 +106,10 @@ export class Neuron {
     /**
      * Hardcodes the behavior of the neuron into an optimized function.
      */
-    optimize(optimized?: any, layer?: any): {
+    optimize(
+        optimized?: any,
+        layer?: any,
+    ): {
         memory: any;
         neurons: any;
         inputs: any;
@@ -210,7 +213,11 @@ export class Layer {
      * A layer can project a connection to another layer. Layers can also self-connect.
      * @param connectionType If not specified, the connection type is always Layer.connectionType.ALL_TO_ALL when connecting two different layers, and is Layer.connectionType.ONE_TO_ONE when connecting a layer to itself (ie myLayer.project(myLayer)).
      */
-    project(layer: Layer | Network, connectionType?: Layer.connectionType, weights?: any): Layer.LayerConnection;
+    project(
+        layer: Layer | Network,
+        connectionType?: Layer.connectionType,
+        weights?: any,
+    ): Layer.LayerConnection;
 
     /**
      * A layer can gate a connection between two other layers, or a layers's self-connection.
@@ -298,14 +305,21 @@ export class Network {
      * A network can project a connection to another, or gate a connection between two others networks in the same way Layers do.
      * @param [connectionType=Layer.connectionType.ALL_TO_ALL]
      */
-    project(otherNetwork: Network | Layer, connectionType?: Layer.connectionType, weights?: any): Layer.LayerConnection;
+    project(
+        otherNetwork: Network | Layer,
+        connectionType?: Layer.connectionType,
+        weights?: any,
+    ): Layer.LayerConnection;
 
     /**
      * A Network can gate a connection between two other Networks or Layers, or a Layers's self-connection.
      * @param layerConnection
      * @param gateType
      */
-    gate(layerConnection: Layer.LayerConnection, gateType: Layer.gateType): void;
+    gate(
+        layerConnection: Layer.LayerConnection,
+        gateType: Layer.gateType,
+    ): void;
 
     /**
      * When a network is activated, an input must be provided to activate the input layer, then all the hidden layers are activated in order, and finally the output layer is activated and its activation is returned.
@@ -448,7 +462,13 @@ export namespace Architect {
          * @param connections The number of random connections in the pool.
          * @param gates The number of random gates among the connections.
          */
-        constructor(input: number, pool: number, output: number, connections: number, gates: number);
+        constructor(
+            input: number,
+            pool: number,
+            output: number,
+            connections: number,
+            gates: number,
+        );
     }
 
     /**
@@ -487,7 +507,11 @@ export namespace Trainer {
         /**
          * Learning rate to train the network. It can be a static rate (just a number), dynamic (an array of numbers, which will transition from one to the next one according to the number of iterations) or a callback function: (iterations, error) => rate.
          */
-        rate?: number | number[] | ((iterations: number, error: number) => number) | undefined;
+        rate?:
+            | number
+            | number[]
+            | ((iterations: number, error: number) => number)
+            | undefined;
 
         /**
          * Maximum number of iterations.
@@ -537,7 +561,10 @@ export namespace Trainer {
         do: (data: TrainingScheduleDoData) => boolean | void;
     }
 
-    type CostFunction = (targetValues: number[], outputValues: number[]) => number;
+    type CostFunction = (
+        targetValues: number[],
+        outputValues: number[],
+    ) => number;
 
     namespace cost {
         const CROSS_ENTROPY: CostFunction;
@@ -609,7 +636,10 @@ export class Trainer {
      * This method allows you to train any training set to a Network.
      * @returns When the training is done this method returns an object with the error, the iterations, and the elapsed time of the training.
      */
-    train(trainingSet: Trainer.TrainingSet, trainingOptions?: Trainer.TrainingOptions): Trainer.TrainingResult;
+    train(
+        trainingSet: Trainer.TrainingSet,
+        trainingOptions?: Trainer.TrainingOptions,
+    ): Trainer.TrainingResult;
 
     /**
      * This method allows you to train any training set to a Network.
@@ -624,7 +654,10 @@ export class Trainer {
      * This method accepts the same arguments as train(dataSet, options). It will iterate over the dataSet, activating the network.
      * @returns It returns the elapsed time and the error (by default, the MSE, but you can specify the cost function in the options, same way as in train()).
      */
-    test(trainingSet: Trainer.TrainingSet, trainingOptions?: Trainer.TrainingOptions): Trainer.TrainingResult;
+    test(
+        trainingSet: Trainer.TrainingSet,
+        trainingOptions?: Trainer.TrainingOptions,
+    ): Trainer.TrainingResult;
 
     /**
      * This method trains an XOR to the network, is useful when you are experimenting with different architectures and you want to test and compare their performances.

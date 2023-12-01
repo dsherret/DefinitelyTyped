@@ -29,7 +29,10 @@ declare namespace parseDecimalNumber {
      * Returns a function that will take a string as an argument and return a float or `NaN`,
      * just like {@link parseDecimalNumber}.
      */
-    function withOptions(options: Options, enforceGroupSize?: boolean): (string: string) => number;
+    function withOptions(
+        options: Options,
+        enforceGroupSize?: boolean,
+    ): (string: string) => number;
 }
 
 declare function parseDecimalNumber(

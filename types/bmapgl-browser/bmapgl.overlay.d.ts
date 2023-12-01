@@ -89,17 +89,52 @@ declare namespace BMapGL {
         addEventListener(event: string, handler: Callback): void;
         removeEventListener(event: string, handler: Callback): void;
         onclick: (event: { type: string; target: any }) => void;
-        ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmousedown: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseup: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseout: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseover: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmousedown: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseup: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseout: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseover: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onremove: (event: { type: string; target: any }) => void;
         oninfowindowclose: (event: { type: string; target: any }) => void;
         oninfowindowopen: (event: { type: string; target: any }) => void;
         ondragstart: (event: { type: string; target: any }) => void;
-        ondragging: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        ondragend: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondragging: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        ondragend: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onrightclick: (event: { type: string; target: any }) => void;
     }
     class Marker {
@@ -116,15 +151,28 @@ declare namespace BMapGL {
         strokeWeight?: number | undefined;
     }
     class IconSequence {
-        constructor(symbol: symbol, offset?: string, repeat?: string, fixedRotation?: boolean);
+        constructor(
+            symbol: symbol,
+            offset?: string,
+            repeat?: string,
+            fixedRotation?: boolean,
+        );
     }
     interface PointCollection extends Overlay {
         setPoints(points: Point[]): void;
         setStyles(styles: PointCollectionOption): void;
         clear(): void;
         onclick: (event: { type: string; target: any; point: Point }) => void;
-        onmouseover: (event: { type: string; target: any; point: Point }) => void;
-        onmouseout: (event: { type: string; target: any; point: Point }) => void;
+        onmouseover: (event: {
+            type: string;
+            target: any;
+            point: Point;
+        }) => void;
+        onmouseout: (event: {
+            type: string;
+            target: any;
+            point: Point;
+        }) => void;
     }
     class PointCollection {
         constructor(points: Point[], opts?: PointCollectionOption);
@@ -197,11 +245,36 @@ declare namespace BMapGL {
         addEventListener(event: string, handler: Callback): void;
         removeEventListener(event: string, handler: Callback): void;
         onclick: (event: { type: string; target: any }) => void;
-        ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmousedown: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseup: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseout: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseover: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmousedown: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseup: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseout: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseover: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onremove: (event: { type: string; target: any }) => void;
         onlineupdate: (event: { type: string; target: any }) => void;
     }
@@ -309,11 +382,36 @@ declare namespace BMapGL {
         addEventListener(event: string, handler: Callback): void;
         removeEventListener(event: string, handler: Callback): void;
         onclick: (event: { type: string; target: any }) => void;
-        ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmousedown: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseup: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseout: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseover: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmousedown: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseup: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseout: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseover: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onremove: (event: { type: string; target: any }) => void;
         onlineupdate: (event: { type: string; target: any }) => void;
     }
@@ -396,11 +494,36 @@ declare namespace BMapGL {
         addEventListener(event: string, handler: Callback): void;
         removeEventListener(event: string, handler: Callback): void;
         onclick: (event: { type: string; target: any }) => void;
-        ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmousedown: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseup: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseout: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onmouseover: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmousedown: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseup: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseout: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onmouseover: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onremove: (event: { type: string; target: any }) => void;
         onlineupdate: (event: { type: string; target: any }) => void;
     }

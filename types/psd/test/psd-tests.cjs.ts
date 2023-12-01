@@ -7,7 +7,7 @@ console.log(psd.tree().export());
 console.log(psd.tree().childrenAtPath("A/B/C")[0].export());
 
 PSD.open("path/to/file.psd")
-    .then(psd => {
+    .then((psd) => {
         return psd.image!.saveAsPng("./output.png");
     })
     .then(() => {

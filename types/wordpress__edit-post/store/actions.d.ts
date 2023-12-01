@@ -61,7 +61,9 @@ export function requestMetaBoxUpdates(): void;
  *
  * @param metaBoxesPerLocation - Meta boxes per location.
  */
-export function setAvailableMetaBoxesPerLocation(metaBoxesPerLocation: object): void;
+export function setAvailableMetaBoxesPerLocation(
+    metaBoxesPerLocation: object,
+): void;
 
 /**
  * Signals that block types by the given name(s) should be shown.

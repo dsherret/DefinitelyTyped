@@ -112,10 +112,7 @@ declare class Mark {
      * have a look at the `markRegExp()`
      * @param options Optional options
      */
-    mark(
-        keyword: string | readonly string[],
-        options?: Mark.MarkOptions,
-    ): void;
+    mark(keyword: string | readonly string[], options?: Mark.MarkOptions): void;
 
     /**
      * highlight custom regular expressions.

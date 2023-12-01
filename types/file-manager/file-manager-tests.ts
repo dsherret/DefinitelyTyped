@@ -32,15 +32,15 @@ manager1
 
 manager1
     .readFile("foo.txt")
-    .then(buf => {
+    .then((buf) => {
         console.log(buf.byteLength);
     })
     .catch(() => {});
 
 manager1
     .readFiles(["foo.txt", "bar.txt"])
-    .then(files => {
-        files.map(file => {
+    .then((files) => {
+        files.map((file) => {
             console.log(file.filename.charAt(0));
             if (file.contents) {
                 console.log(file.contents.byteLength);

@@ -1,14 +1,22 @@
 import * as React from "react";
 
 export interface ReactAttr<T = HTMLElement> extends React.HTMLAttributes<T> {}
-export interface ReactAnchorAttr<T = HTMLAnchorElement> extends React.AnchorHTMLAttributes<T> {}
-export interface ReactButtonAttr<T = HTMLButtonElement> extends React.ButtonHTMLAttributes<T> {}
+export interface ReactAnchorAttr<T = HTMLAnchorElement>
+    extends React.AnchorHTMLAttributes<T> {}
+export interface ReactButtonAttr<T = HTMLButtonElement>
+    extends React.ButtonHTMLAttributes<T> {}
 export interface ReactDivAttr extends ReactAttr<HTMLDivElement> {}
-export interface ReactInputAttr<T = HTMLInputElement> extends React.InputHTMLAttributes<T> {}
-export interface ReactLabelAttr<T = HTMLLabelElement> extends React.LabelHTMLAttributes<T> {}
-export interface ReactLIAttr<T = HTMLLIElement> extends React.LiHTMLAttributes<T> {}
+export interface ReactInputAttr<T = HTMLInputElement>
+    extends React.InputHTMLAttributes<T> {}
+export interface ReactLabelAttr<T = HTMLLabelElement>
+    extends React.LabelHTMLAttributes<T> {}
+export interface ReactLIAttr<T = HTMLLIElement>
+    extends React.LiHTMLAttributes<T> {}
 
-export type ShapeOf<B extends object, E extends object = { [key: string]: any }> = (E extends never ? {} : E) & B;
+export type ShapeOf<
+    B extends object,
+    E extends object = { [key: string]: any },
+> = (E extends never ? {} : E) & B;
 export type Overwrite<T, U> = [T] extends [never] ? U : Omit<T, keyof U> & U;
 
 export type VerticalDirection = "bottom" | "top";
@@ -30,7 +38,10 @@ export interface DownshiftTypedProps<ItemType> {
     itemToString?(item: ItemType): string;
 }
 
-export interface InternationalProps<MID = string, ARGS = Record<string, unknown>> {
+export interface InternationalProps<
+    MID = string,
+    ARGS = Record<string, unknown>,
+> {
     translateWithId?(messageId: MID, args?: ARGS): string;
 }
 
@@ -75,13 +86,22 @@ export interface SideNavSizingProps {
 //
 export type FCProps<P = {}> = Parameters<React.FC<P>>[0];
 export type FCReturn = ReturnType<React.FC>;
-export type ForwardRefProps<T, P = {}> = React.PropsWithoutRef<React.PropsWithChildren<P>> & React.RefAttributes<T>;
-export type ForwardRefReturn<T, P = {}> = React.ForwardRefExoticComponent<ForwardRefProps<T, P>>;
+export type ForwardRefProps<T, P = {}> = React.PropsWithoutRef<
+    React.PropsWithChildren<P>
+> &
+    React.RefAttributes<T>;
+export type ForwardRefReturn<T, P = {}> = React.ForwardRefExoticComponent<
+    ForwardRefProps<T, P>
+>;
 
 export type JSXIntrinsicElementProps<
     K extends keyof JSX.IntrinsicElements,
     REF extends boolean = false,
-> = REF extends true ? JSX.IntrinsicElements[K] : Omit<JSX.IntrinsicElements[K], "ref">;
+> = REF extends true
+    ? JSX.IntrinsicElements[K]
+    : Omit<JSX.IntrinsicElements[K], "ref">;
 
 // for "as" props
-export type ReactComponentConstructor<P> = ((props: P) => FCReturn) | (new(props: P) => React.Component<unknown, any>);
+export type ReactComponentConstructor<P> =
+    | ((props: P) => FCReturn)
+    | (new (props: P) => React.Component<unknown, any>);

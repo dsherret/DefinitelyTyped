@@ -35,10 +35,17 @@ declare namespace URITemplate {
     interface URITemplateStatic {
         (template: string): URITemplate;
 
-        new(template: string): URITemplate;
+        new (template: string): URITemplate;
     }
 
-    type URITemplateValue = string | readonly string[] | { [key: string]: string } | undefined | null;
+    type URITemplateValue =
+        | string
+        | readonly string[]
+        | { [key: string]: string }
+        | undefined
+        | null;
     type URITemplateCallback = (keyName: string) => URITemplateValue;
-    type URITemplateInput = { [key: string]: URITemplateValue | URITemplateCallback } | URITemplateCallback;
+    type URITemplateInput =
+        | { [key: string]: URITemplateValue | URITemplateCallback }
+        | URITemplateCallback;
 }

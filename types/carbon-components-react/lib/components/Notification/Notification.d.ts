@@ -3,7 +3,13 @@ import { ReactButtonAttr, ReactDivAttr } from "../../../typings/shared";
 import { ButtonProps } from "../Button";
 
 export type NotificationType = "inline" | "toast";
-export type NotificationKind = "error" | "info" | "info-square" | "success" | "warning" | "warning-alt";
+export type NotificationKind =
+    | "error"
+    | "info"
+    | "info-square"
+    | "success"
+    | "warning"
+    | "warning-alt";
 
 // NotificationActionButton
 
@@ -13,7 +19,8 @@ export declare const NotificationActionButton: React.FC<NotificationActionButton
 
 // NotificationButton
 
-export interface NotificationButtonProps extends Omit<ReactButtonAttr, "title"> {
+export interface NotificationButtonProps
+    extends Omit<ReactButtonAttr, "title"> {
     ariaLabel?: string | undefined;
     iconDescription?: string | undefined;
     name?: string | undefined;
@@ -27,7 +34,8 @@ export declare const NotificationButton: React.FC<NotificationButtonProps>;
 
 type ExcludedDetailDivAttributes = "className" | "title";
 
-export interface NotificationTextDetailsProps extends Omit<ReactDivAttr, ExcludedDetailDivAttributes> {
+export interface NotificationTextDetailsProps
+    extends Omit<ReactDivAttr, ExcludedDetailDivAttributes> {
     caption?: React.ReactNode | undefined;
     subtitle?: React.ReactNode | undefined;
     title?: React.ReactNode | undefined;

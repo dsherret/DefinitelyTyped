@@ -22,7 +22,8 @@ export default () => (
                 useNativeDriver: false,
                 toValue: value,
                 friction: 8,
-            })}
+            })
+        }
         animationStyle={() => ({
             transform: [{ translateX: 40 }],
         })}

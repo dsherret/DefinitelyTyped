@@ -1,6 +1,10 @@
 import { EventBridgeEvent, EventBridgeHandler, Handler } from "aws-lambda";
 
-const voidHandler: EventBridgeHandler<string, { message: string }, void> = async (event, context, callback) => {
+const voidHandler: EventBridgeHandler<
+    string,
+    { message: string },
+    void
+> = async (event, context, callback) => {
     const { message } = event.detail;
 
     const detailType = event["detail-type"];
@@ -15,9 +19,15 @@ const notVoidHandler: EventBridgeHandler<
 
     switch (event["detail-type"]) {
         case "com.acme.customEvent1":
-            return { sentence: "A great custom event 1", receivedMessage: message };
+            return {
+                sentence: "A great custom event 1",
+                receivedMessage: message,
+            };
         case "com.acme.customEvent2":
-            return { sentence: "A great custom event 2", receivedMessage: message };
+            return {
+                sentence: "A great custom event 2",
+                receivedMessage: message,
+            };
         default:
             throw new Error("Unexpected: " + event["detail-type"]);
     }
@@ -37,7 +47,10 @@ const event: EventBridgeEvent<string, { TestValue: string }> = {
     },
 };
 
-const nestedJsonEvent: EventBridgeEvent<string, { nested: { TestValue: string } }> = {
+const nestedJsonEvent: EventBridgeEvent<
+    string,
+    { nested: { TestValue: string } }
+> = {
     version: "0",
     id: "5a6adfad-1e1d-abe0-ffab-cb99acf3159b",
     "detail-type": "ApiKeyGenerated",

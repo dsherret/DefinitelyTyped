@@ -28,7 +28,11 @@ const finishSecretEvent: SecretsManagerRotationEvent = {
     ClientRequestToken: "51f72378-6a5d-5dc7-8fd8-29e4319f482a",
 };
 
-const handler: SecretsManagerRotationHandler = async (event, context, callback) => {
+const handler: SecretsManagerRotationHandler = async (
+    event,
+    context,
+    callback,
+) => {
     const step: SecretsManagerRotationEventStep = event.Step;
     const secretId: string = event.SecretId;
     const clientRequestToken: string = event.ClientRequestToken;

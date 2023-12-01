@@ -6,7 +6,7 @@ const StickyAllFeatures = () => (
     <Sticky
         mode="bottom"
         disabled
-        onFixedToggle={fixed => fixed}
+        onFixedToggle={(fixed) => fixed}
         wrapperCmp="div"
         holderCmp={<div />}
         holderProps={{ title: "a title" }}

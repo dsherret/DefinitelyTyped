@@ -1,23 +1,17 @@
 import type EmberArray from "@ember/array";
 import { ValidatorMapFunc } from "../index";
 
-export function getMessages(
-    options?: {
-        moduleMap: Record<string, unknown>;
-        useCache: boolean;
-    },
-): Record<string, unknown>;
+export function getMessages(options?: {
+    moduleMap: Record<string, unknown>;
+    useCache: boolean;
+}): Record<string, unknown>;
 
-export function handleMultipleValidations(
-    options?: {
-        validators: ValidatorMapFunc[];
-        options: Parameters<ValidatorMapFunc>;
-    },
-): Promise<unknown> | boolean;
+export function handleMultipleValidations(options?: {
+    validators: ValidatorMapFunc[];
+    options: Parameters<ValidatorMapFunc>;
+}): Promise<unknown> | boolean;
 
-export function toDate(
-    argument: Date | number,
-): Date;
+export function toDate(argument: Date | number): Date;
 
 export interface BuildMessageResult {
     message?: string;
@@ -36,6 +30,4 @@ export function withDefaults(
     defaults: Record<string, unknown>,
 ): Record<string, unknown>;
 
-export function wrapInArray(
-    value: unknown[],
-): EmberArray<unknown>;
+export function wrapInArray(value: unknown[]): EmberArray<unknown>;

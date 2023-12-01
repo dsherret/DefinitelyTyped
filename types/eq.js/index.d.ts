@@ -6,7 +6,12 @@ declare module "eq.js" {
 }
 
 declare namespace eq {
-    type AvailableElementType = HTMLElement | HTMLCollectionOf<Element> | HTMLElement[] | NodeList | JQuery;
+    type AvailableElementType =
+        | HTMLElement
+        | HTMLCollectionOf<Element>
+        | HTMLElement[]
+        | NodeList
+        | JQuery;
 
     interface EqjsStatic {
         /**

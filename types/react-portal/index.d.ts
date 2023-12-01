@@ -10,7 +10,9 @@ export const Portal: React.ComponentClass<PortalProps>;
 export interface PortalFunctionParams {
     openPortal: (event?: any) => void;
     closePortal: () => void;
-    portal: (children: React.ReactNode) => React.ReactElement<React.ComponentClass<PortalProps>>;
+    portal: (
+        children: React.ReactNode,
+    ) => React.ReactElement<React.ComponentClass<PortalProps>>;
     isOpen: boolean;
 }
 

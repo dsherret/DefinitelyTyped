@@ -17,13 +17,14 @@ const options: ProxyLists.Options = {
 };
 
 // `gettingProxies` is an event emitter object.
-let gettingProxies: ProxyLists.GetProxiesEventEmitter = ProxyLists.getProxies(options);
+let gettingProxies: ProxyLists.GetProxiesEventEmitter =
+    ProxyLists.getProxies(options);
 
-gettingProxies.on("data", proxies => {
+gettingProxies.on("data", (proxies) => {
     // Received some proxies.
 });
 
-gettingProxies.on("error", error => {
+gettingProxies.on("error", (error) => {
     // Some error has occurred.
     console.error(error);
 });
@@ -34,7 +35,7 @@ gettingProxies.once("end", () => {
 
 gettingProxies = ProxyLists.getProxiesFromSource("freeproxylists", options);
 
-gettingProxies.on("data", proxies => {
+gettingProxies.on("data", (proxies) => {
     // Received some proxies.
 });
 
@@ -52,4 +53,6 @@ const listSourcesOptions: ProxyLists.ListSourcesOptions = {
     sourcesBlackList: ["freeproxylists"],
 };
 
-ProxyLists.listSources(listSourcesOptions).forEach(source => console.log(source.name, source.homeUrl));
+ProxyLists.listSources(listSourcesOptions).forEach((source) =>
+    console.log(source.name, source.homeUrl),
+);

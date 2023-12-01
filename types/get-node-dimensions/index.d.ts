@@ -15,6 +15,9 @@ interface NodeDimensionsOptions {
     height?: string | undefined;
 }
 
-declare function getNodeDimensions(element: HTMLElement, options?: NodeDimensionsOptions): NodeDimensions;
+declare function getNodeDimensions(
+    element: HTMLElement,
+    options?: NodeDimensionsOptions,
+): NodeDimensions;
 
 export = getNodeDimensions;

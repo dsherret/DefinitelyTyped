@@ -49,16 +49,22 @@ declare namespace toJsonSchema {
 
         definitions?: JSONSchema4["definitions"] | undefined;
 
-        properties?: {
-            [k: string]: JSONSchema3or4;
-        } | undefined;
+        properties?:
+            | {
+                  [k: string]: JSONSchema3or4;
+              }
+            | undefined;
 
-        patternProperties?: {
-            [k: string]: JSONSchema3or4;
-        } | undefined;
-        dependencies?: {
-            [k: string]: JSONSchema3or4 | string | string[];
-        } | undefined;
+        patternProperties?:
+            | {
+                  [k: string]: JSONSchema3or4;
+              }
+            | undefined;
+        dependencies?:
+            | {
+                  [k: string]: JSONSchema3or4 | string | string[];
+              }
+            | undefined;
 
         enum?: JSONSchema4["enum"] | undefined;
         type?: JSONSchema4["type"] | undefined;
@@ -116,103 +122,112 @@ declare namespace toJsonSchema {
             ) => JSONSchema3or4,
         ): JSONSchema3or4;
 
-        arrays?: {
-            /**
-             * * `all` option causes parser to go through all array items, finding
-             *   the most compatible yet most descriptive schema possible. If
-             *   multiple types are found, the type is omitted so it can be
-             *   validated.
-             * * `first` option takes only first item in the array into account. If
-             *   performance is a concern, you may consider this option.
-             * * `uniform` option requires all items in array to have same structure
-             *   (to convert to the same schema). If not, error is thrown.
-             * * `tuple` option generates a
-             *   [tuple array](https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation)
-             *   (array of objects) from arrays.
-             *
-             * @default 'all'
-             */
-            mode?: "all" | "first" | "uniform" | "tuple" | undefined;
-        } | undefined;
-        objects?: {
-            /**
-             * By providing custom function you will be able to modify any object
-             * value (including nested ones) and pre-process it before it gets
-             * converted into schema or modify generated schema or do the schema
-             * conversion entirely by yourself.
-             *
-             * @param obj input object value that is supposed to be converted into
-             *            JSON schema
-             * @param defaultFunc standard function that is used to generate schema
-             *                    from object. Takes just the `obj` param.
-             */
-            preProcessFnc?(
-                obj: any,
-                defaultFunc: (obj: any) => JSONSchema3or4,
-            ): JSONSchema3or4;
-            /**
-             * By providing `postProcessFnc`, you can modify or replace generated
-             * schema. This function will be called recursively for all the
-             * properties and sub-properties and array items from leaves to the root
-             * of the `obj` object.
-             *
-             * @param schema Generated JSON schema
-             * @param obj input value
-             * @param defaultFunc standard function that is used to post-process
-             *                    generated schema. Takes the `schema`, `obj`
-             *                    params.
-             */
-            postProcessFnc?(
-                schema: JSONSchema3or4,
-                obj: any,
-                defaultFnc: (schema: JSONSchema3or4, obj: any) => JSONSchema3or4,
-            ): JSONSchema3or4;
-            /**
-             * if set to `false`, all object schemas will include JSON schema
-             * property `additionalProperties: false` which makes generated schema
-             * to perevent any extra properties.
-             *
-             * @default true
-             */
-            additionalProperties?: boolean | undefined;
-        } | undefined;
-        strings?: {
-            /**
-             * By providing custom function you will be able to modify any string
-             * value (including nested ones) and pre-process it before it gets
-             * converted to schema, modify generated schema or do the schema
-             * conversion entirely by yourself.
-             *
-             * @param value `string` to be converted into JSON schema
-             * @param defaultFnc default function that normally generates the
-             *                   schema. This function receives only `string` to be
-             *                   converted to JSON schema
-             */
-            preProcessFnc?(
-                value: string,
-                defaultFnc: (value: string) => JSONSchema3or4,
-            ): JSONSchema3or4;
-            /**
-             * When set to true format of the strings values may be detected based
-             * on it's content.
-             *
-             * These JSON schema string formats can be detected:
-             *
-             * * date-time
-             * * date
-             * * time
-             * * utc-millisec
-             * * color
-             * * style
-             * * phone
-             * * uri
-             * * email
-             * * ip-address
-             * * ipv6
-             *
-             * @default true
-             */
-            detectFormat?: boolean | undefined;
-        } | undefined;
+        arrays?:
+            | {
+                  /**
+                   * * `all` option causes parser to go through all array items, finding
+                   *   the most compatible yet most descriptive schema possible. If
+                   *   multiple types are found, the type is omitted so it can be
+                   *   validated.
+                   * * `first` option takes only first item in the array into account. If
+                   *   performance is a concern, you may consider this option.
+                   * * `uniform` option requires all items in array to have same structure
+                   *   (to convert to the same schema). If not, error is thrown.
+                   * * `tuple` option generates a
+                   *   [tuple array](https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation)
+                   *   (array of objects) from arrays.
+                   *
+                   * @default 'all'
+                   */
+                  mode?: "all" | "first" | "uniform" | "tuple" | undefined;
+              }
+            | undefined;
+        objects?:
+            | {
+                  /**
+                   * By providing custom function you will be able to modify any object
+                   * value (including nested ones) and pre-process it before it gets
+                   * converted into schema or modify generated schema or do the schema
+                   * conversion entirely by yourself.
+                   *
+                   * @param obj input object value that is supposed to be converted into
+                   *            JSON schema
+                   * @param defaultFunc standard function that is used to generate schema
+                   *                    from object. Takes just the `obj` param.
+                   */
+                  preProcessFnc?(
+                      obj: any,
+                      defaultFunc: (obj: any) => JSONSchema3or4,
+                  ): JSONSchema3or4;
+                  /**
+                   * By providing `postProcessFnc`, you can modify or replace generated
+                   * schema. This function will be called recursively for all the
+                   * properties and sub-properties and array items from leaves to the root
+                   * of the `obj` object.
+                   *
+                   * @param schema Generated JSON schema
+                   * @param obj input value
+                   * @param defaultFunc standard function that is used to post-process
+                   *                    generated schema. Takes the `schema`, `obj`
+                   *                    params.
+                   */
+                  postProcessFnc?(
+                      schema: JSONSchema3or4,
+                      obj: any,
+                      defaultFnc: (
+                          schema: JSONSchema3or4,
+                          obj: any,
+                      ) => JSONSchema3or4,
+                  ): JSONSchema3or4;
+                  /**
+                   * if set to `false`, all object schemas will include JSON schema
+                   * property `additionalProperties: false` which makes generated schema
+                   * to perevent any extra properties.
+                   *
+                   * @default true
+                   */
+                  additionalProperties?: boolean | undefined;
+              }
+            | undefined;
+        strings?:
+            | {
+                  /**
+                   * By providing custom function you will be able to modify any string
+                   * value (including nested ones) and pre-process it before it gets
+                   * converted to schema, modify generated schema or do the schema
+                   * conversion entirely by yourself.
+                   *
+                   * @param value `string` to be converted into JSON schema
+                   * @param defaultFnc default function that normally generates the
+                   *                   schema. This function receives only `string` to be
+                   *                   converted to JSON schema
+                   */
+                  preProcessFnc?(
+                      value: string,
+                      defaultFnc: (value: string) => JSONSchema3or4,
+                  ): JSONSchema3or4;
+                  /**
+                   * When set to true format of the strings values may be detected based
+                   * on it's content.
+                   *
+                   * These JSON schema string formats can be detected:
+                   *
+                   * * date-time
+                   * * date
+                   * * time
+                   * * utc-millisec
+                   * * color
+                   * * style
+                   * * phone
+                   * * uri
+                   * * email
+                   * * ip-address
+                   * * ipv6
+                   *
+                   * @default true
+                   */
+                  detectFormat?: boolean | undefined;
+              }
+            | undefined;
     }
 }

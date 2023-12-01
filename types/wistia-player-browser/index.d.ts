@@ -108,11 +108,11 @@ declare namespace WistiaPlayer {
         videoFoam?:
             | boolean
             | {
-                minWidth?: number;
-                maxWidth?: number;
-                minHeight?: number;
-                maxHeight?: number;
-            };
+                  minWidth?: number;
+                  maxWidth?: number;
+                  minHeight?: number;
+                  maxHeight?: number;
+              };
         volume?: number;
         volumeControl?: boolean;
         wmode?: "transparent" | "flash";
@@ -126,14 +126,20 @@ declare namespace WistiaPlayer {
 
     type BindCallback = () => void;
     type WithinIntervalCallback = (withinInterval: boolean) => void;
-    type CaptionsChangeCallback = (details: { visible: boolean; language: string }) => void;
+    type CaptionsChangeCallback = (details: {
+        visible: boolean;
+        language: string;
+    }) => void;
     type ConversionCallback = (
         type: "pre-roll-email" | "mid-roll-email" | "post-roll-email",
         email: string,
         firstName: string,
         lastName: string,
     ) => void;
-    type PercentWatchedCallback = (percent: number, lastPercent: number) => void;
+    type PercentWatchedCallback = (
+        percent: number,
+        lastPercent: number,
+    ) => void;
     type PlaybackRateCallback = (playbackRate: number) => void;
     type SecondChangeCallback = (time: number) => void;
     type SeekCallback = (currentTime: number, lastTime: number) => void;
@@ -148,7 +154,12 @@ declare namespace WistiaPlayer {
             position?: { before?: string; after?: string; index?: number },
         ): void;
         aspect(): number;
-        bind(name: "betweentimes", start: number, end: number, callback: WithinIntervalCallback): void;
+        bind(
+            name: "betweentimes",
+            start: number,
+            end: number,
+            callback: WithinIntervalCallback,
+        ): void;
         bind(name: "captionschange", callback: CaptionsChangeCallback): void;
         bind(name: "conversion", callback: ConversionCallback): void;
         bind(name: "crosstime", time: number, callback: BindCallback): void;
@@ -165,11 +176,17 @@ declare namespace WistiaPlayer {
                 | "end",
             callback: BindCallback,
         ): void;
-        bind(name: "percentwatchedchanged", callback: PercentWatchedCallback): void;
+        bind(
+            name: "percentwatchedchanged",
+            callback: PercentWatchedCallback,
+        ): void;
         bind(name: "playbackratechange", callback: PlaybackRateCallback): void;
         bind(name: "secondchange", callback: SecondChangeCallback): void;
         bind(name: "seek", callback: SeekCallback): void;
-        bind(name: "silentplaybackmodechange", callback: SilentPlaybackModeCallback): void;
+        bind(
+            name: "silentplaybackmodechange",
+            callback: SilentPlaybackModeCallback,
+        ): void;
         bind(name: "timechange", callback: TimeChangeCallback): void;
         bind(name: "volumechange", callback: VolumeChangeCallback): void;
         duration(): number;
@@ -198,21 +215,54 @@ declare namespace WistiaPlayer {
         secondsWatchedVector(): number[];
         state(): PlayState;
         time(time?: number): number;
-        unbind(name: "captionschange", callback: BindCallback | CaptionsChangeCallback): void;
-        unbind(name: "conversion", callback: BindCallback | ConversionCallback): void;
+        unbind(
+            name: "captionschange",
+            callback: BindCallback | CaptionsChangeCallback,
+        ): void;
+        unbind(
+            name: "conversion",
+            callback: BindCallback | ConversionCallback,
+        ): void;
         unbind(name: "crosstime", time: number, callback: BindCallback): void;
         unbind(
-            name: "heightchange" | "lookchange" | "mutechange" | "play" | "pause" | "end",
+            name:
+                | "heightchange"
+                | "lookchange"
+                | "mutechange"
+                | "play"
+                | "pause"
+                | "end",
             callback: BindCallback,
         ): void;
-        unbind(name: "percentwatchedchanged", callback: BindCallback | PercentWatchedCallback): void;
-        unbind(name: "playbackratechange", callback: BindCallback | PlaybackRateCallback): void;
-        unbind(name: "secondchange", callback: BindCallback | SecondChangeCallback): void;
+        unbind(
+            name: "percentwatchedchanged",
+            callback: BindCallback | PercentWatchedCallback,
+        ): void;
+        unbind(
+            name: "playbackratechange",
+            callback: BindCallback | PlaybackRateCallback,
+        ): void;
+        unbind(
+            name: "secondchange",
+            callback: BindCallback | SecondChangeCallback,
+        ): void;
         unbind(name: "seek", callback: BindCallback | SeekCallback): void;
-        unbind(name: "silentplaybackmodechange", callback: BindCallback | SilentPlaybackModeCallback): void;
-        unbind(name: "timechange", callback: BindCallback | TimeChangeCallback): void;
-        unbind(name: "volumechange", callback: BindCallback | VolumeChangeCallback): void;
-        unbind(name: "widthchange", callback: BindCallback | BindCallback): void;
+        unbind(
+            name: "silentplaybackmodechange",
+            callback: BindCallback | SilentPlaybackModeCallback,
+        ): void;
+        unbind(
+            name: "timechange",
+            callback: BindCallback | TimeChangeCallback,
+        ): void;
+        unbind(
+            name: "volumechange",
+            callback: BindCallback | VolumeChangeCallback,
+        ): void;
+        unbind(
+            name: "widthchange",
+            callback: BindCallback | BindCallback,
+        ): void;
         unmute(): void;
         videoHeight(height: number, options?: VideoDimensionOptions): number;
         videoWidth(width: number, options?: VideoDimensionOptions): number;

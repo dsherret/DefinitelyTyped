@@ -328,11 +328,23 @@ declare namespace GoogleAppsScript {
             createMenu(caption: string): Menu;
             prompt(prompt: string): PromptResponse;
             prompt(prompt: string, buttons: ButtonSet): PromptResponse;
-            prompt(title: string, prompt: string, buttons: ButtonSet): PromptResponse;
-            showModalDialog(userInterface: HTML.HtmlOutput, title: string): void;
-            showModelessDialog(userInterface: HTML.HtmlOutput, title: string): void;
+            prompt(
+                title: string,
+                prompt: string,
+                buttons: ButtonSet,
+            ): PromptResponse;
+            showModalDialog(
+                userInterface: HTML.HtmlOutput,
+                title: string,
+            ): void;
+            showModelessDialog(
+                userInterface: HTML.HtmlOutput,
+                title: string,
+            ): void;
             showSidebar(userInterface: HTML.HtmlOutput): void;
-            /** @deprecated DO NOT USE */ showDialog(userInterface: HTML.HtmlOutput): void;
+            /** @deprecated DO NOT USE */ showDialog(
+                userInterface: HTML.HtmlOutput,
+            ): void;
         }
         /**
          * Representation of a user, suitable for scripting.
@@ -488,7 +500,12 @@ declare namespace GoogleAppsScript {
              * @param sec A numeric value equal to the seconds value.
              * @param ms A numeric value equal to the milliseconds value.
              */
-            setHours(hours: number, min?: number, sec?: number, ms?: number): number;
+            setHours(
+                hours: number,
+                min?: number,
+                sec?: number,
+                ms?: number,
+            ): number;
             /**
              * Sets the hours value in the Date object using Universal Coordinated Time (UTC).
              * @param hours A numeric value equal to the hours value.
@@ -496,7 +513,12 @@ declare namespace GoogleAppsScript {
              * @param sec A numeric value equal to the seconds value.
              * @param ms A numeric value equal to the milliseconds value.
              */
-            setUTCHours(hours: number, min?: number, sec?: number, ms?: number): number;
+            setUTCHours(
+                hours: number,
+                min?: number,
+                sec?: number,
+                ms?: number,
+            ): number;
             /**
              * Sets the numeric day-of-the-month value of the Date object using local time.
              * @param date A numeric value equal to the day of the month.
@@ -542,9 +564,9 @@ declare namespace GoogleAppsScript {
         }
 
         interface DateConstructor {
-            new(): Date;
-            new(value: number | string): Date;
-            new(
+            new (): Date;
+            new (value: number | string): Date;
+            new (
                 year: number,
                 month: number,
                 date?: number,

@@ -65,7 +65,17 @@ declare namespace Tagger {
         | "currency"
         | "alien";
 
-    type PosTag = "PRP" | "VBD" | "DT" | "JJ" | "NN" | "NNP" | "NNS" | "IN" | "VBG" | ".";
+    type PosTag =
+        | "PRP"
+        | "VBD"
+        | "DT"
+        | "JJ"
+        | "NN"
+        | "NNP"
+        | "NNS"
+        | "IN"
+        | "VBG"
+        | ".";
 
     interface PosTaggedToken {
         value: string;

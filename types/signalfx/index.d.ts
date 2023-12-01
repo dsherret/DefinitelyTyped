@@ -21,7 +21,14 @@ export interface SignalReport {
     counters?: SignalMetric[] | undefined;
 }
 
-export type EventCategory = "USER_DEFINED" | "ALERT" | "AUDIT" | "JOB" | "COLLECTD" | "SERVICE_DISCOVERY" | "EXCEPTION";
+export type EventCategory =
+    | "USER_DEFINED"
+    | "ALERT"
+    | "AUDIT"
+    | "JOB"
+    | "COLLECTD"
+    | "SERVICE_DISCOVERY"
+    | "EXCEPTION";
 
 export interface SignalEvent {
     eventType: string;
@@ -138,9 +145,16 @@ export interface EventMessage {
     };
 }
 
-export type StreamMessage = MetadataMessage | EventMessage | ControlMessage | DataMessage;
+export type StreamMessage =
+    | MetadataMessage
+    | EventMessage
+    | ControlMessage
+    | DataMessage;
 
-export type StreamCallback = (err?: { error: any }, data?: StreamMessage) => void;
+export type StreamCallback = (
+    err?: { error: any },
+    data?: StreamMessage,
+) => void;
 
 export interface SignalfxHandle {
     close(): boolean;

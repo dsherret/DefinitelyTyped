@@ -1,32 +1,32 @@
 {
-    "private": true,
-    "name": "@types/ot",
-    "version": "0.0.9999",
-    "projects": [
-        "https://github.com/Operational-Transformation/ot.js"
-    ],
-    "dependencies": {
-        "@types/events": "*"
+  "private": true,
+  "name": "@types/ot",
+  "version": "0.0.9999",
+  "projects": [
+    "https://github.com/Operational-Transformation/ot.js"
+  ],
+  "dependencies": {
+    "@types/events": "*"
+  },
+  "devDependencies": {
+    "@types/ot": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Christian Alfoni",
+      "githubUsername": "christianalfoni"
     },
-    "devDependencies": {
-        "@types/ot": "workspace:."
+    {
+      "name": "Ives van Hoorne",
+      "githubUsername": "CompuIves"
     },
-    "owners": [
-        {
-            "name": "Christian Alfoni",
-            "githubUsername": "christianalfoni"
-        },
-        {
-            "name": "Ives van Hoorne",
-            "githubUsername": "CompuIves"
-        },
-        {
-            "name": "Michaël De Boey",
-            "githubUsername": "MichaelDeBoey"
-        },
-        {
-            "name": "Philippe Poulard",
-            "githubUsername": "ppoulard"
-        }
-    ]
+    {
+      "name": "Michaël De Boey",
+      "githubUsername": "MichaelDeBoey"
+    },
+    {
+      "name": "Philippe Poulard",
+      "githubUsername": "ppoulard"
+    }
+  ]
 }

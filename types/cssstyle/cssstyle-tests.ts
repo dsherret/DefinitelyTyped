@@ -1,7 +1,7 @@
 import { CSSStyleDeclaration } from "cssstyle";
 
 // $ExpectType CSSStyleDeclaration
-const style = new CSSStyleDeclaration(text => {
+const style = new CSSStyleDeclaration((text) => {
     text; // $ExpectType string
 });
 

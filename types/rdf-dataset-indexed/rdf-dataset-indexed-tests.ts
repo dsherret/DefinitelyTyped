@@ -1,6 +1,14 @@
 import datasetFactory = require("rdf-dataset-indexed");
 import { DatasetIndexed } from "rdf-dataset-indexed/dataset";
-import { BaseQuad, DataFactory, DatasetCore, DatasetCoreFactory, Quad, Stream, Term } from "rdf-js";
+import {
+    BaseQuad,
+    DataFactory,
+    DatasetCore,
+    DatasetCoreFactory,
+    Quad,
+    Stream,
+    Term,
+} from "rdf-js";
 
 interface QuadBnode extends BaseQuad {
     subject: Term;
@@ -10,7 +18,8 @@ interface QuadBnode extends BaseQuad {
 }
 
 const dataFactory1: DataFactory & DatasetCoreFactory = {} as any;
-const dataFactory2: DataFactory<QuadBnode> & DatasetCoreFactory<QuadBnode> = {} as any;
+const dataFactory2: DataFactory<QuadBnode> & DatasetCoreFactory<QuadBnode> =
+    {} as any;
 const term: Term = {} as any;
 const quad: Quad = {} as any;
 const quads1: Quad[] = [] as any;
@@ -21,9 +30,12 @@ const instance2: DatasetCore = datasetFactory(quads1);
 const instance3: DatasetCore = datasetFactory(quads1, dataFactory1);
 const instance4: DatasetCore<QuadBnode> = datasetFactory(quads2);
 const instance5: DatasetCore<QuadBnode> = datasetFactory<QuadBnode>(quads2);
-const instance6: DatasetCore<QuadBnode> = datasetFactory<QuadBnode>(quads2, dataFactory2);
+const instance6: DatasetCore<QuadBnode> = datasetFactory<QuadBnode>(
+    quads2,
+    dataFactory2,
+);
 
-const dataset: DatasetIndexed<QuadBnode> = <any> {};
+const dataset: DatasetIndexed<QuadBnode> = <any>{};
 
 let addAll: DatasetIndexed<QuadBnode> = dataset.addAll(quads1);
 addAll = dataset.addAll(quads2);
@@ -37,11 +49,13 @@ const diff: DatasetIndexed<QuadBnode> = dataset.difference(dataset);
 
 const every: boolean = dataset.every((q: QuadBnode) => true);
 
-const filter: DatasetIndexed<QuadBnode> = dataset.filter((q: QuadBnode) => true);
+const filter: DatasetIndexed<QuadBnode> = dataset.filter(
+    (q: QuadBnode) => true,
+);
 
 dataset.forEach((q: QuadBnode) => {});
 
-const stream: Stream = <any> {};
+const stream: Stream = <any>{};
 const imported: Promise<DatasetIndexed<QuadBnode>> = dataset.import(stream);
 
 const includes: boolean = dataset.includes(quad);
@@ -50,7 +64,7 @@ const intersection: DatasetIndexed<QuadBnode> = dataset.intersection(dataset);
 
 const length: number = dataset.length;
 
-const map: DatasetIndexed<QuadBnode> = dataset.map(q => q);
+const map: DatasetIndexed<QuadBnode> = dataset.map((q) => q);
 
 const merge: DatasetIndexed<QuadBnode> = dataset.merge(dataset);
 

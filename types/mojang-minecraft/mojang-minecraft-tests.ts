@@ -2,11 +2,17 @@ import * as mc from "mojang-minecraft";
 
 const overworld = mc.world.getDimension("overworld");
 
-export function createExplosion(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function createExplosion(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     overworld.createExplosion(targetLocation, 10, new mc.ExplosionOptions());
 }
 
-export function createNoBlockExplosion(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function createNoBlockExplosion(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     const explosionOptions = new mc.ExplosionOptions();
 
     // Start by exploding without breaking blocks
@@ -25,7 +31,11 @@ export function createFireAndWaterExplosions(
     log: (message: string, status?: number) => void,
     targetLocation: mc.Location,
 ) {
-    const explosionLoc = new mc.Location(targetLocation.x + 0.5, targetLocation.y + 0.5, targetLocation.z + 0.5);
+    const explosionLoc = new mc.Location(
+        targetLocation.x + 0.5,
+        targetLocation.y + 0.5,
+        targetLocation.z + 0.5,
+    );
 
     const fireExplosionOptions = new mc.ExplosionOptions();
 
@@ -38,18 +48,29 @@ export function createFireAndWaterExplosions(
     // Explode in water
     waterExplosionOptions.allowUnderwater = true;
 
-    const belowWaterLoc = new mc.Location(targetLocation.x + 3, targetLocation.y + 1, targetLocation.z + 3);
+    const belowWaterLoc = new mc.Location(
+        targetLocation.x + 3,
+        targetLocation.y + 1,
+        targetLocation.z + 3,
+    );
 
     overworld.createExplosion(belowWaterLoc, 10, waterExplosionOptions);
 }
 
-export function itemStacks(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function itemStacks(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     const oneItemLoc = new mc.BlockLocation(3, 2, 1);
     const fiveItemsLoc = new mc.BlockLocation(1, 2, 1);
     const diamondPickaxeLoc = new mc.BlockLocation(2, 2, 4);
 
     const oneEmerald = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 1, 0);
-    const onePickaxe = new mc.ItemStack(mc.MinecraftItemTypes.diamondPickaxe, 1, 0);
+    const onePickaxe = new mc.ItemStack(
+        mc.MinecraftItemTypes.diamondPickaxe,
+        1,
+        0,
+    );
     const fiveEmeralds = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 5, 0);
 
     overworld.spawnItem(oneEmerald, oneItemLoc);
@@ -57,40 +78,65 @@ export function itemStacks(log: (message: string, status?: number) => void, targ
     overworld.spawnItem(onePickaxe, diamondPickaxeLoc);
 }
 
-export function quickFoxLazyDog(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function quickFoxLazyDog(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     const fox = overworld.spawnEntity(
         "minecraft:fox",
-        new mc.BlockLocation(targetLocation.x + 1, targetLocation.y + 2, targetLocation.z + 3),
+        new mc.BlockLocation(
+            targetLocation.x + 1,
+            targetLocation.y + 2,
+            targetLocation.z + 3,
+        ),
     );
     fox.addEffect(mc.MinecraftEffectTypes.speed, 10, 20);
     log("Created a fox.");
 
     const wolf = overworld.spawnEntity(
         "minecraft:wolf",
-        new mc.BlockLocation(targetLocation.x + 4, targetLocation.y + 2, targetLocation.z + 3),
+        new mc.BlockLocation(
+            targetLocation.x + 4,
+            targetLocation.y + 2,
+            targetLocation.z + 3,
+        ),
     );
     wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, 20);
     wolf.isSneaking = true;
     log("Created a sneaking wolf.", 1);
 }
 
-export function runEntityCreatedEvent(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function runEntityCreatedEvent(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     // register a new function that is called when a new entity is created.
-    const entityCreatedCallback = mc.world.events.entityCreate.subscribe((entityEvent: mc.EntityCreateEvent) => {
-        if (entityEvent && entityEvent.entity) {
-            log(`New entity of type '${entityEvent.entity}' created!`, 1);
-        } else {
-            log(`The entity event didn't work as expected.`, -1);
-        }
-    });
+    const entityCreatedCallback = mc.world.events.entityCreate.subscribe(
+        (entityEvent: mc.EntityCreateEvent) => {
+            if (entityEvent && entityEvent.entity) {
+                log(`New entity of type '${entityEvent.entity}' created!`, 1);
+            } else {
+                log(`The entity event didn't work as expected.`, -1);
+            }
+        },
+    );
 }
 
-export function createOldHorse(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function createOldHorse(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     // create a horse and trigger the 'ageable_grow_up' event, ensuring the horse is created as an adult
-    overworld.spawnEntity("minecraft:horse<minecraft:ageable_grow_up>", targetLocation);
+    overworld.spawnEntity(
+        "minecraft:horse<minecraft:ageable_grow_up>",
+        targetLocation,
+    );
 }
 
-export function pistonEvent(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function pistonEvent(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     let canceled = false;
 
     const pistonLoc = new mc.BlockLocation(
@@ -110,7 +156,10 @@ export function pistonEvent(log: (message: string, status?: number) => void, tar
     );
 }
 
-export function spawnItem(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export function spawnItem(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     const featherItem = new mc.ItemStack(mc.MinecraftItemTypes.feather, 1, 0);
 
     overworld.spawnItem(featherItem, targetLocation);
@@ -151,12 +200,20 @@ export default class SampleManager {
     tickCount = 0;
 
     _availableFuncs: {
-        [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+        [name: string]: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >;
     };
 
     pendingFuncs: Array<{
         name: string;
-        func: (log: (message: string, status?: number) => void, location: mc.Location) => void;
+        func: (
+            log: (message: string, status?: number) => void,
+            location: mc.Location,
+        ) => void;
         location: mc.Location;
     }> = [];
 
@@ -179,12 +236,18 @@ export default class SampleManager {
         if (message.startsWith("howto") && chatEvent.sender) {
             const nearbyBlock = chatEvent.sender.getBlockFromViewVector();
             if (!nearbyBlock) {
-                this.gameplayLogger("Please look at the block where you want me to run this.");
+                this.gameplayLogger(
+                    "Please look at the block where you want me to run this.",
+                );
                 return;
             }
 
             const nearbyBlockLoc = nearbyBlock.location;
-            const nearbyLoc = new mc.Location(nearbyBlockLoc.x, nearbyBlockLoc.y + 1, nearbyBlockLoc.z);
+            const nearbyLoc = new mc.Location(
+                nearbyBlockLoc.x,
+                nearbyBlockLoc.y + 1,
+                nearbyBlockLoc.z,
+            );
 
             const sampleId = message.substring(5).trim();
 
@@ -201,7 +264,11 @@ export default class SampleManager {
                     if (sampleFuncKey.toLowerCase() === sampleId) {
                         const sampleFunc = this._availableFuncs[sampleFuncKey];
 
-                        this.runSample(sampleFuncKey + this.tickCount, sampleFunc, nearbyLoc);
+                        this.runSample(
+                            sampleFuncKey + this.tickCount,
+                            sampleFunc,
+                            nearbyLoc,
+                        );
 
                         return;
                     }
@@ -214,11 +281,20 @@ export default class SampleManager {
 
     runSample(
         sampleId: string,
-        snippetFunctions: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>,
+        snippetFunctions: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >,
         targetLocation: mc.Location,
     ) {
         for (let i = snippetFunctions.length - 1; i >= 0; i--) {
-            this.pendingFuncs.push({ name: sampleId, func: snippetFunctions[i], location: targetLocation });
+            this.pendingFuncs.push({
+                name: sampleId,
+                func: snippetFunctions[i],
+                location: targetLocation,
+            });
         }
     }
 
@@ -246,7 +322,12 @@ export default class SampleManager {
     }
 
     registerSamples(sampleSet: {
-        [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+        [name: string]: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >;
     }) {
         for (const sampleKey in sampleSet) {
             if (sampleKey.length > 1 && sampleSet[sampleKey]) {
@@ -257,7 +338,12 @@ export default class SampleManager {
 }
 
 const mojangMinecraftFuncs: {
-    [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+    [name: string]: Array<
+        (
+            log: (message: string, status?: number) => void,
+            location: mc.Location,
+        ) => void
+    >;
 } = {
     runEntityCreatedEvent: [runEntityCreatedEvent, createOldHorse],
     createOldHorse: [createOldHorse],

@@ -84,7 +84,14 @@ declare namespace StrongClusterControl {
         on(event: "setSize" | "resize", handler: (size: number) => any): this;
         on(event: "startWorker", handler: (worker: ClusterWorker) => any): this;
         on(event: "startRestart", handler: (workers: pid[]) => any): this;
-        on(event: "stopWorker", handler: (worker: ClusterWorker, code: number, signal: string) => any): this;
+        on(
+            event: "stopWorker",
+            handler: (
+                worker: ClusterWorker,
+                code: number,
+                signal: string,
+            ) => any,
+        ): this;
         on(event: "error", handler: (error: Error | Error[]) => any): this;
     }
 }

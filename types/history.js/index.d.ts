@@ -14,7 +14,12 @@ interface Historyjs {
     enabled: boolean;
 
     pushState(data: any, title: string, url: string, queue?: boolean): boolean;
-    replaceState(data: any, title: string, url: string, queue?: boolean): boolean;
+    replaceState(
+        data: any,
+        title: string,
+        url: string,
+        queue?: boolean,
+    ): boolean;
     getState(friendly?: boolean, create?: boolean): HistoryState;
     getStateId(passedState: HistoryState): string;
     getStateById(id: string): HistoryState;

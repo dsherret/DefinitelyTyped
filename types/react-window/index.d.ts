@@ -1,4 +1,12 @@
-import { Component, ComponentClass, ComponentType, CSSProperties, FunctionComponent, Key, Ref } from "react";
+import {
+    Component,
+    ComponentClass,
+    ComponentType,
+    CSSProperties,
+    FunctionComponent,
+    Key,
+    Ref,
+} from "react";
 
 export type CSSDirection = "ltr" | "rtl";
 export type Direction = "vertical" | "horizontal"; // TODO: deprecate in favour of Layout
@@ -375,7 +383,9 @@ export class FixedSizeList<T = any> extends Component<FixedSizeListProps<T>> {
     scrollToItem(index: number, align?: Align): void;
 }
 
-export class VariableSizeList<T = any> extends Component<VariableSizeListProps<T>> {
+export class VariableSizeList<T = any> extends Component<
+    VariableSizeListProps<T>
+> {
     /**
      * Scroll to the specified offset (scrollTop or scrollLeft, depending on the direction prop).
      */
@@ -437,7 +447,9 @@ export class FixedSizeGrid<T = any> extends Component<FixedSizeGridProps<T>> {
     }): void;
 }
 
-export class VariableSizeGrid<T = any> extends Component<VariableSizeGridProps<T>> {
+export class VariableSizeGrid<T = any> extends Component<
+    VariableSizeGridProps<T>
+> {
     /**
      * Scroll to the specified offsets.
      */

@@ -28,13 +28,13 @@ origin project:https://github.com/sentsin/layui/releases/tag/v2.6.8
 ```js
 //v2.5正确中可以这样用：
 //之前，第一个参数是字符串，第二个参数函数并没有限制参数
-layui.use('layer', function (a, b) {}); //v2.5正确，v2.6错误
+layui.use("layer", function (a, b) {}); //v2.5正确，v2.6错误
 
 //v2.6 修改为：
 //若第一个参数是字符串，则回调最多只有一个参数
-layui.use('layer', function () {}); //v2.6 正确
-layui.use('layer', function (a) {}); //v2.6 正确
-layui.use('layer', function (a, b) {}); //v2.6报错
+layui.use("layer", function () {}); //v2.6 正确
+layui.use("layer", function (a) {}); //v2.6 正确
+layui.use("layer", function (a, b) {}); //v2.6报错
 
 /*
  变更原因：use第一个参数是模块名和回调中的参数是对应的.....
@@ -45,11 +45,11 @@ layui.use('layer', function (a, b) {}); //v2.6报错
 
 ```js
 //v2.5
-table.exportFile('id', ''); //v2.5正确，v2.6错误
+table.exportFile("id", ""); //v2.5正确，v2.6错误
 
 //v2.6
-table.exportFile('id'); //v2.6 正确 v2.5错误，
-table.exportFile('id', []); //v2.6 正确
+table.exportFile("id"); //v2.6 正确 v2.5错误，
+table.exportFile("id", []); //v2.6 正确
 table.exportFile([], []); //v2.6 正确 v2.5错误，
 
 /*

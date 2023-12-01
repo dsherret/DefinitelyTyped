@@ -162,25 +162,58 @@ export declare namespace HelloSign {
 
         close: () => void;
 
-        on(name: Events["CLOSE"] | Events["CANCEL"] | Events["FINISH"], cb: () => void): void;
-        on(name: Events["CREATE_TEMPLATE"], cb: (data: CreateTemplateEventPyload) => void): void;
-        on(name: Events["DECLINE"], cb: (data: DeclineEventPyload) => void): void;
+        on(
+            name: Events["CLOSE"] | Events["CANCEL"] | Events["FINISH"],
+            cb: () => void,
+        ): void;
+        on(
+            name: Events["CREATE_TEMPLATE"],
+            cb: (data: CreateTemplateEventPyload) => void,
+        ): void;
+        on(
+            name: Events["DECLINE"],
+            cb: (data: DeclineEventPyload) => void,
+        ): void;
         on(name: Events["ERROR"], cb: (data: ErrorEventPyload) => void): void;
-        on(name: Events["MESSAGE"], cb: (data: MessageEventPayload) => void): void;
+        on(
+            name: Events["MESSAGE"],
+            cb: (data: MessageEventPayload) => void,
+        ): void;
         on(name: Events["OPEN"], cb: (data: OpenEventPayload) => void): void;
         on(name: Events["READY"], cb: (data: ReadyEventPayload) => void): void;
-        on(name: Events["REASSIGN"], cb: (data: ReassignEventPayload) => void): void;
+        on(
+            name: Events["REASSIGN"],
+            cb: (data: ReassignEventPayload) => void,
+        ): void;
         on(name: Events["SEND"], cb: (data: SendEventPayload) => void): void;
         on(name: Events["SIGN"], cb: (data: SignEventPayload) => void): void;
 
-        once(name: Events["CLOSE"] | Events["CANCEL"] | Events["FINISH"], cb: () => void): void;
-        once(name: Events["CREATE_TEMPLATE"], cb: (data: CreateTemplateEventPyload) => void): void;
-        once(name: Events["DECLINE"], cb: (data: DeclineEventPyload) => void): void;
+        once(
+            name: Events["CLOSE"] | Events["CANCEL"] | Events["FINISH"],
+            cb: () => void,
+        ): void;
+        once(
+            name: Events["CREATE_TEMPLATE"],
+            cb: (data: CreateTemplateEventPyload) => void,
+        ): void;
+        once(
+            name: Events["DECLINE"],
+            cb: (data: DeclineEventPyload) => void,
+        ): void;
         once(name: Events["ERROR"], cb: (data: ErrorEventPyload) => void): void;
-        once(name: Events["MESSAGE"], cb: (data: MessageEventPayload) => void): void;
+        once(
+            name: Events["MESSAGE"],
+            cb: (data: MessageEventPayload) => void,
+        ): void;
         once(name: Events["OPEN"], cb: (data: OpenEventPayload) => void): void;
-        once(name: Events["READY"], cb: (data: ReadyEventPayload) => void): void;
-        once(name: Events["REASSIGN"], cb: (data: ReassignEventPayload) => void): void;
+        once(
+            name: Events["READY"],
+            cb: (data: ReadyEventPayload) => void,
+        ): void;
+        once(
+            name: Events["REASSIGN"],
+            cb: (data: ReassignEventPayload) => void,
+        ): void;
         once(name: Events["SEND"], cb: (data: SendEventPayload) => void): void;
         once(name: Events["SIGN"], cb: (data: SignEventPayload) => void): void;
 

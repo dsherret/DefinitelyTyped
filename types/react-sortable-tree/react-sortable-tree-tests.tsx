@@ -42,12 +42,12 @@ class Test extends React.Component {
             height: 44,
             rowCount: 3,
             rowHeight: 44,
-            rowRenderer: ("test" as any) as ListRowRenderer,
+            rowRenderer: "test" as any as ListRowRenderer,
         };
-        const nodeRenderer: NodeRenderer = ("test" as any) as NodeRenderer;
-        const theme: ThemeProps = ({
+        const nodeRenderer: NodeRenderer = "test" as any as NodeRenderer;
+        const theme: ThemeProps = {
             nodeContentRenderer: nodeRenderer,
-        } as any) as ThemeProps;
+        } as any as ThemeProps;
         const maybeNode = getNodeAtPath({
             treeData,
             path: [0, 1],
@@ -72,10 +72,16 @@ class Test extends React.Component {
                         buttons: [data.node.title],
                     })}
                     getNodeKey={defaultGetNodeKey}
-                    onMoveNode={(data: NodeData & FullTree & OnMovePreviousAndNextLocation) => {}}
+                    onMoveNode={(
+                        data: NodeData &
+                            FullTree &
+                            OnMovePreviousAndNextLocation,
+                    ) => {}}
                     onVisibilityToggle={(data: OnVisibilityToggleData) => {}}
                     canDrag={true}
-                    canDrop={(data: OnDragPreviousAndNextLocation & NodeData) => true}
+                    canDrop={(data: OnDragPreviousAndNextLocation & NodeData) =>
+                        true
+                    }
                     reactVirtualizedListProps={reactVirtualizedListProps}
                     rowHeight={62}
                     slideRegionSize={100}
@@ -88,7 +94,9 @@ class Test extends React.Component {
                     shouldCopyOnOutsideDrop={true}
                 />
                 <SortableTreeWithoutDndContext
-                    treeData={[{ title: "Title", subtitle: "Subtitle", children: [] }]}
+                    treeData={[
+                        { title: "Title", subtitle: "Subtitle", children: [] },
+                    ]}
                     onChange={(treeData: TreeItem[]) => {}}
                     style={{ width: "100px" }}
                     shouldCopyOnOutsideDrop={() => false}
@@ -96,7 +104,11 @@ class Test extends React.Component {
                 <SortableTree
                     treeData={treeData}
                     onChange={(data: TreeItem[]) => {}}
-                    rowHeight={({ treeIndex, node, path }: NodeData & Index): number => treeIndex + path.length}
+                    rowHeight={({
+                        treeIndex,
+                        node,
+                        path,
+                    }: NodeData & Index): number => treeIndex + path.length}
                 />
                 <span>{maybeNode ? maybeNode.node.title : ""}</span>
             </div>
@@ -135,7 +147,9 @@ const testWithExtendedTreeItemAttributes = () => {
     return (
         <div>
             <SortableTreeWithoutDndContext
-                treeData={[{ title: "Title", subtitle: "Subtitle", children: [] }]}
+                treeData={[
+                    { title: "Title", subtitle: "Subtitle", children: [] },
+                ]}
                 onChange={(treeData) => {}}
                 style={{ width: "100px" }}
                 shouldCopyOnOutsideDrop={() => false}
@@ -143,8 +157,14 @@ const testWithExtendedTreeItemAttributes = () => {
             <SortableTree
                 treeData={treeData}
                 onChange={(data) => {}}
-                rowHeight={({ treeIndex, node, path }: NodeData & Index): number => treeIndex + path.length}
-                nodeContentRenderer={({ node: { extraKey } }) => <>{`extra key val: ${extraKey}`}</>}
+                rowHeight={({
+                    treeIndex,
+                    node,
+                    path,
+                }: NodeData & Index): number => treeIndex + path.length}
+                nodeContentRenderer={({ node: { extraKey } }) => (
+                    <>{`extra key val: ${extraKey}`}</>
+                )}
             />
         </div>
     );

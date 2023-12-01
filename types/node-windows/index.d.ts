@@ -409,7 +409,11 @@ export class EventLogger {
     info(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -425,7 +429,11 @@ export class EventLogger {
     information(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -441,7 +449,11 @@ export class EventLogger {
     error(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -457,7 +469,11 @@ export class EventLogger {
     warn(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -473,7 +489,11 @@ export class EventLogger {
     warning(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -489,7 +509,11 @@ export class EventLogger {
     auditSuccess(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 
     /**
@@ -505,7 +529,11 @@ export class EventLogger {
     auditFailure(
         message: string,
         code?: number,
-        callback?: (error: ExecException, stdout: Buffer, stderr: Buffer) => void,
+        callback?: (
+            error: ExecException,
+            stdout: Buffer,
+            stderr: Buffer,
+        ) => void,
     ): void;
 }
 
@@ -589,7 +617,12 @@ export function elevate(cmd: string, options: any, callback: () => void): void;
  * @param [callback]
  * The callback function passed to `require('child_process').exec(cmd,options,<CALLBACK>)`.
  */
-export function sudo(cmd: string, password: string, options: any, callback: () => void): void;
+export function sudo(
+    cmd: string,
+    password: string,
+    options: any,
+    callback: () => void,
+): void;
 
 export interface WinswConfig {
     id: string;

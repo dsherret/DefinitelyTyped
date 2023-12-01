@@ -296,10 +296,7 @@ const productNames: Plaid.Product[] = [
 ];
 
 // TransferStatus
-const transferStatuses: Plaid.TransferStatus[] = [
-    "COMPLETE",
-    "INCOMPLETE",
-];
+const transferStatuses: Plaid.TransferStatus[] = ["COMPLETE", "INCOMPLETE"];
 
 // VerificationMethod
 const verificationMethods: Plaid.VerificationMethod[] = [

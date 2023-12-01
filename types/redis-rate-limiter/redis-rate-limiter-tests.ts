@@ -9,14 +9,14 @@ var redisClient = redis.createClient(num, str, options);
 
 var limit = rateLimiter.create({
     redis: redisClient,
-    key: function(x) {
+    key: function (x) {
         return x.ip;
     },
     rate: "100/minute",
 });
 
 var request = {} as express.Request;
-limit(request, function(err, rate) {
+limit(request, function (err, rate) {
     if (err) {
         console.warn("Rate limiting not available");
     } else {
@@ -34,7 +34,8 @@ var middleware = rateLimiter.middleware({
     key: "ip",
     rate: "100/minute",
     deleteImmediatelyIfRaceCondition: true,
-    onPossibleRaceCondition: key => console.log(`A race condition has been detected for <${key}>!`),
+    onPossibleRaceCondition: (key) =>
+        console.log(`A race condition has been detected for <${key}>!`),
 });
 
 var app = express();

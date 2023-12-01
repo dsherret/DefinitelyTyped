@@ -1,4 +1,8 @@
-export type AwnPosition = "bottom-right" | "bottom-left" | "top-left" | "top-right";
+export type AwnPosition =
+    | "bottom-right"
+    | "bottom-left"
+    | "top-left"
+    | "top-right";
 
 export interface AwnDurations {
     global?: number;
@@ -222,5 +226,10 @@ export default class AWN {
      * @return          A new `HTMLElement` instance
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    confirm(message: string, onOk?: () => void, onCancel?: () => void | false, options?: AwnOptions): HTMLElement;
+    confirm(
+        message: string,
+        onOk?: () => void,
+        onCancel?: () => void | false,
+        options?: AwnOptions,
+    ): HTMLElement;
 }

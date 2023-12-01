@@ -1,5 +1,10 @@
 import { GraphQLSchema } from "graphql";
-import { DefaultContext, DefaultState, Middleware, ParameterizedContext } from "koa";
+import {
+    DefaultContext,
+    DefaultState,
+    Middleware,
+    ParameterizedContext,
+} from "koa";
 
 export interface ExecuteOptions {
     schema?: GraphQLSchema | undefined;
@@ -12,6 +17,8 @@ export function errorHandler(): Middleware;
 
 export function execute<StateT = DefaultState, ContextT = DefaultContext>(
     options: ExecuteOptions & {
-        override?: ((ctx: ParameterizedContext<StateT, ContextT>) => ExecuteOptions) | undefined;
+        override?:
+            | ((ctx: ParameterizedContext<StateT, ContextT>) => ExecuteOptions)
+            | undefined;
     },
 ): Middleware<StateT, ContextT>;

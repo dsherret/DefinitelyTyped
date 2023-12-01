@@ -73,11 +73,14 @@ anime.easings["hello"] = anime.bezier(0, 0, 1900, 3020);
 const runningAnims = anime.running;
 anime.remove(".tiny-divvy-div");
 
-anime.timeline().add({
-    targets: [],
-    duration: 1000,
-    easing: "linear",
-}, 0);
+anime.timeline().add(
+    {
+        targets: [],
+        duration: 1000,
+        easing: "linear",
+    },
+    0,
+);
 
 anime({
     targets: ".mizi",
@@ -103,12 +106,9 @@ anime({
         console.log("It surely had been read.");
     },
 });
-anime.set(
-    ".test-div",
-    {
-        height: "1000px",
-    },
-);
+anime.set(".test-div", {
+    height: "1000px",
+});
 
 anime.get(".test-div", "height");
 anime.get(".test-div", "height", "rem");

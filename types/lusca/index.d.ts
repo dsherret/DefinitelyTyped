@@ -31,7 +31,9 @@ declare namespace lusca {
         preload?: boolean | undefined;
     }
 
-    type csrfOptions = csrfOptionsBase & csrfOptionsAngularOrNonAngular & csrfOptionsBlocklistOrAllowlist;
+    type csrfOptions = csrfOptionsBase &
+        csrfOptionsAngularOrNonAngular &
+        csrfOptionsBlocklistOrAllowlist;
 
     interface csrfOptionsBase {
         /**
@@ -55,21 +57,29 @@ declare namespace lusca {
     }
 
     interface csrfOptionsAngular {
-        cookie?: string | {
-            options?: object | undefined;
-        } | undefined;
+        cookie?:
+            | string
+            | {
+                  options?: object | undefined;
+              }
+            | undefined;
         angular: true;
     }
 
     interface csrfOptionsNonAngular {
-        cookie?: string | {
-            name: string;
-            options?: object | undefined;
-        } | undefined;
+        cookie?:
+            | string
+            | {
+                  name: string;
+                  options?: object | undefined;
+              }
+            | undefined;
         angular?: false | undefined;
     }
 
-    type csrfOptionsAngularOrNonAngular = csrfOptionsAngular | csrfOptionsNonAngular;
+    type csrfOptionsAngularOrNonAngular =
+        | csrfOptionsAngular
+        | csrfOptionsNonAngular;
 
     interface csrfOptionsBlocklist {
         blocklist?: string[] | undefined;
@@ -81,7 +91,9 @@ declare namespace lusca {
         allowlist?: string[] | undefined;
     }
 
-    type csrfOptionsBlocklistOrAllowlist = csrfOptionsBlocklist | csrfOptionsAllowlist;
+    type csrfOptionsBlocklistOrAllowlist =
+        | csrfOptionsBlocklist
+        | csrfOptionsAllowlist;
 
     interface xssProtectionOptions {
         enabled?: boolean | undefined;
@@ -93,7 +105,9 @@ declare namespace lusca {
     function xframe(value: string): express.RequestHandler;
     function p3p(value: string): express.RequestHandler;
     function hsts(options?: hstsOptions): express.RequestHandler;
-    function xssProtection(options?: xssProtectionOptions | true): express.RequestHandler;
+    function xssProtection(
+        options?: xssProtectionOptions | true,
+    ): express.RequestHandler;
     function nosniff(): express.RequestHandler;
     function referrerPolicy(value: string): express.RequestHandler;
 }

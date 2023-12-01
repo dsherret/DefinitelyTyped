@@ -74,7 +74,10 @@ declare namespace Fancytree {
         /** [ext-filter] Dimm or hide nodes.
          * @returns {integer} count
          */
-        filterNodes(filter: (node: FancytreeNode) => boolean, leavesOnly?: boolean): number;
+        filterNodes(
+            filter: (node: FancytreeNode) => boolean,
+            leavesOnly?: boolean,
+        ): number;
 
         /** Find the next visible node that starts with `match`, starting at `startNode` and wrap-around at the end.
          *
@@ -86,13 +89,18 @@ declare namespace Fancytree {
          *
          * @returns matching node or null
          */
-        findNextNode(match: (node: FancytreeNode) => boolean, startNode?: FancytreeNode): FancytreeNode;
+        findNextNode(
+            match: (node: FancytreeNode) => boolean,
+            startNode?: FancytreeNode,
+        ): FancytreeNode;
 
         /** Find all nodes that matches condition.
          *
          * @returns array of nodes (may be empty)
          */
-        findAll(match: string | ((node: FancytreeNode) => boolean | undefined)): FancytreeNode[];
+        findAll(
+            match: string | ((node: FancytreeNode) => boolean | undefined),
+        ): FancytreeNode[];
 
         /** Generate INPUT elements that can be submitted with html forms. In selectMode 3 only the topmost selected nodes are considered. */
         generateFormElements(selected?: boolean, active?: boolean): void;
@@ -119,7 +127,10 @@ declare namespace Fancytree {
          *
          * @param rootNode optionally restrict results to descendants of this node.
          */
-        getNodesByRef(refKey: string, rootNode?: FancytreeNode): FancytreeNode[];
+        getNodesByRef(
+            refKey: string,
+            rootNode?: FancytreeNode,
+        ): FancytreeNode[];
 
         /** [ext-persist] Return persistence information from cookies Called like $("#tree").fancytree("getTree").getPersistData(); */
         getPersistData(): PersistData;
@@ -147,14 +158,20 @@ declare namespace Fancytree {
          * @param keyPathList one or more key paths  (e.g. '/3/2_1/7')
          * @param callback callback(node, status) is called for every visited node ('loading', 'loaded', 'ok', 'error')
          */
-        loadKeyPath(keyPathList: string[], callback: (node: FancytreeNode, status: string) => void): JQueryPromise<any>;
+        loadKeyPath(
+            keyPathList: string[],
+            callback: (node: FancytreeNode, status: string) => void,
+        ): JQueryPromise<any>;
 
         /** Make sure that a node with a given ID is loaded, by traversing - and loading - its parents. This method is ment for lazy hierarchies. A callback is executed for every node as we go.
          *
          * @param keyPath a key path (e.g. '/3/2_1/7')
          * @param callback callback(node, status) is called for every visited node ('loading', 'loaded', 'ok', 'error')
          */
-        loadKeyPath(keyPath: string, callback: (node: FancytreeNode, status: string) => void): JQueryPromise<any>;
+        loadKeyPath(
+            keyPath: string,
+            callback: (node: FancytreeNode, status: string) => void,
+        ): JQueryPromise<any>;
 
         /** Re-fire beforeActivate and activate events. */
         reactivate(): void;
@@ -180,7 +197,10 @@ declare namespace Fancytree {
          * @param callback Called for every node
          * @param includeRoot Returns the hidden system root node (and its children) (default = false)
          */
-        toDict(includeRoot?: boolean, callback?: (node: FancytreeNode) => void): any;
+        toDict(
+            includeRoot?: boolean,
+            callback?: (node: FancytreeNode) => void,
+        ): any;
 
         /** Call fn(node) for all nodes.
          *
@@ -247,7 +267,10 @@ declare namespace Fancytree {
          * @param insertBefore child node to insert nodes before. If omitted, the new children is appended.
          * @returns The first child added.
          */
-        addChildren(children: Fancytree.NodeData[], insertBefore?: FancytreeNode): FancytreeNode;
+        addChildren(
+            children: Fancytree.NodeData[],
+            insertBefore?: FancytreeNode,
+        ): FancytreeNode;
         /**
          * Append (or insert) a list of child nodes.
          *
@@ -255,7 +278,10 @@ declare namespace Fancytree {
          * @param insertBefore key of the child node to insert nodes before. If omitted, the new children is appended.
          * @returns The first child added.
          */
-        addChildren(children: Fancytree.NodeData[], insertBefore?: string): FancytreeNode;
+        addChildren(
+            children: Fancytree.NodeData[],
+            insertBefore?: string,
+        ): FancytreeNode;
         /**
          * Append (or insert) a list of child nodes.
          *
@@ -263,7 +289,10 @@ declare namespace Fancytree {
          * @param insertBefore index of the child node to insert nodes before. If omitted, the new children is appended.
          * @returns The first child added.
          */
-        addChildren(children: Fancytree.NodeData[], insertBefore?: number): FancytreeNode;
+        addChildren(
+            children: Fancytree.NodeData[],
+            insertBefore?: number,
+        ): FancytreeNode;
         /**
          * Append (or insert) a single child node.
          *
@@ -271,7 +300,10 @@ declare namespace Fancytree {
          * @param insertBefore child node to insert this node before. If omitted, the new child is appended.
          * @returns The child added.
          */
-        addChildren(child: Fancytree.NodeData, insertBefore?: FancytreeNode): FancytreeNode;
+        addChildren(
+            child: Fancytree.NodeData,
+            insertBefore?: FancytreeNode,
+        ): FancytreeNode;
         /**
          * Append (or insert) a single child node.
          *
@@ -279,7 +311,10 @@ declare namespace Fancytree {
          * @param insertBefore key of the child node to insert this node before. If omitted, the new child is appended.
          * @returns The child added.
          */
-        addChildren(child: Fancytree.NodeData, insertBefore?: string): FancytreeNode;
+        addChildren(
+            child: Fancytree.NodeData,
+            insertBefore?: string,
+        ): FancytreeNode;
         /**
          * Append (or insert) a single child node.
          *
@@ -287,7 +322,10 @@ declare namespace Fancytree {
          * @param insertBefore index of the child node to insert this node before. If omitted, the new child is appended.
          * @returns The child added.
          */
-        addChildren(child: Fancytree.NodeData, insertBefore?: number): FancytreeNode;
+        addChildren(
+            child: Fancytree.NodeData,
+            insertBefore?: number,
+        ): FancytreeNode;
 
         /** Add class to node's span tag and to .extraClasses.
          * @param className class name
@@ -314,7 +352,11 @@ declare namespace Fancytree {
          * @param map callback function(NodeData) that could modify the new node
          * @returns new node.
          */
-        copyTo(node: FancytreeNode, mode?: string, map?: (node: NodeData) => void): FancytreeNode;
+        copyTo(
+            node: FancytreeNode,
+            mode?: string,
+            map?: (node: NodeData) => void,
+        ): FancytreeNode;
 
         /** Count direct and indirect children.
          *
@@ -409,7 +451,10 @@ declare namespace Fancytree {
          * @param includeRoot Include the invisible system root node. (default=false)
          * @param includeSelf Include the node itself (default=false).
          */
-        getParentList(includeRoot: boolean, includeSelf: boolean): FancytreeNode[];
+        getParentList(
+            includeRoot: boolean,
+            includeSelf: boolean,
+        ): FancytreeNode[];
 
         /** Return the predecessor node (under the same parent) or null. */
         getPrevSibling(): FancytreeNode;
@@ -499,7 +544,11 @@ declare namespace Fancytree {
          *
          * @param map optional callback(FancytreeNode) to allow modifcations
          */
-        moveTo(targetNode: FancytreeNode, mode: string, map?: (node: FancytreeNode) => void): void;
+        moveTo(
+            targetNode: FancytreeNode,
+            mode: string,
+            map?: (node: FancytreeNode) => void,
+        ): void;
 
         /** Set focus relative to this node and optionally activate.
          *
@@ -600,7 +649,10 @@ declare namespace Fancytree {
          * @param cmp custom compare function(a, b) that returns -1, 0, or 1 (defaults to sort by title).
          * @param deep pass true to sort all descendant nodes
          */
-        sortChildren(cmp?: (a: FancytreeNode, b: FancytreeNode) => number, deep?: boolean): void;
+        sortChildren(
+            cmp?: (a: FancytreeNode, b: FancytreeNode) => number,
+            deep?: boolean,
+        ): void;
 
         /**
          * Convert node (or whole branch) into a plain object. The result is compatible with node.addChildren().
@@ -608,7 +660,10 @@ declare namespace Fancytree {
          * @param recursive include child nodes.
          * @param callback callback(dict) is called for every node, in order to allow modifications
          */
-        toDict(recursive?: boolean, callback?: (dict: NodeData) => void): NodeData;
+        toDict(
+            recursive?: boolean,
+            callback?: (dict: NodeData) => void,
+        ): NodeData;
 
         /** Set, clear, or toggle class of node's span tag and .extraClasses.
          * @param {string} className class name (separate multiple classes by space)
@@ -641,7 +696,10 @@ declare namespace Fancytree {
          * @param fn the callback function. Return false to stop iteration, return "skip" to skip this node and its children only.
          * @param includeSelf (default=false)
          */
-        visitAndLoad(fn: (node: FancytreeNode) => any, includeSelf?: boolean): JQueryPromise<any>;
+        visitAndLoad(
+            fn: (node: FancytreeNode) => any,
+            includeSelf?: boolean,
+        ): JQueryPromise<any>;
 
         /**
          * Call fn(node) for all parent nodes, bottom-up, including invisible system root.
@@ -651,7 +709,10 @@ declare namespace Fancytree {
          * @param fn the callback function. Return false to stop iteration, return "skip" to skip this node and its children only.
          * @param includeSelf (default=false)
          */
-        visitParents(fn: (node: FancytreeNode) => any, includeSelf?: boolean): boolean;
+        visitParents(
+            fn: (node: FancytreeNode) => any,
+            includeSelf?: boolean,
+        ): boolean;
 
         /**
          * Write warning to browser console (prepending node info)
@@ -760,20 +821,22 @@ declare namespace Fancytree {
         /** Make sure that the active node is always visible, i.e. its parents are expanded (default: true). */
         activeVisible?: boolean | undefined;
         /** Default options for ajax requests. */
-        ajax?: {
-            /**
-             * HTTP Method (default: 'GET')
-             */
-            type: string;
-            /**
-             * false: Append random '_' argument to the request url to prevent caching.
-             */
-            cache: boolean;
-            /**
-             * Default 'json' -> Expect json format and pass json object to callbacks.
-             */
-            dataType: string;
-        } | undefined;
+        ajax?:
+            | {
+                  /**
+                   * HTTP Method (default: 'GET')
+                   */
+                  type: string;
+                  /**
+                   * false: Append random '_' argument to the request url to prevent caching.
+                   */
+                  cache: boolean;
+                  /**
+                   * Default 'json' -> Expect json format and pass json object to callbacks.
+                   */
+                  dataType: string;
+              }
+            | undefined;
         /** (default: false) Add WAI-ARIA attributes to markup */
         aria?: boolean | undefined;
         /** Activate a node when focused with the keyboard (default: true) */
@@ -783,7 +846,11 @@ declare namespace Fancytree {
         /** Scroll node into visible area, when focused by keyboard (default: false). */
         autoScroll?: boolean | undefined;
         /** Display checkboxes to allow selection (default: false) */
-        checkbox?: boolean | string | ((event: JQueryEventObject, data: EventData) => boolean) | undefined;
+        checkbox?:
+            | boolean
+            | string
+            | ((event: JQueryEventObject, data: EventData) => boolean)
+            | undefined;
         /** Defines what happens, when the user click a folder node. (default: activate_dblclick_expands) */
         clickFolderMode?: FancytreeClickFolderMode | undefined;
         /** 0..4 (null: use global setting $.ui.fancytree.debugInfo) */
@@ -838,17 +905,26 @@ declare namespace Fancytree {
         /** (dynamic Option)Prevent (de-)selection using mouse or keyboard. */
         unselectable?:
             | boolean
-            | ((event: JQueryEventObject, data: Fancytree.EventData) => boolean | undefined)
+            | ((
+                  event: JQueryEventObject,
+                  data: Fancytree.EventData,
+              ) => boolean | undefined)
             | undefined;
         /** (dynamic Option)Ignore this node when calculating the partsel status of parent nodes in selectMode 3 propagation. */
         unselectableIgnore?:
             | boolean
-            | ((event: JQueryEventObject, data: Fancytree.EventData) => boolean | undefined)
+            | ((
+                  event: JQueryEventObject,
+                  data: Fancytree.EventData,
+              ) => boolean | undefined)
             | undefined;
         /** (dynamic Option)Use this as constant selected value (overriding selectMode 3 propagation). */
         unselectableStatus?:
             | boolean
-            | ((event: JQueryEventObject, data: Fancytree.EventData) => boolean | undefined)
+            | ((
+                  event: JQueryEventObject,
+                  data: Fancytree.EventData,
+              ) => boolean | undefined)
             | undefined;
 
         ////////////////
@@ -948,26 +1024,40 @@ declare namespace Fancytree {
             /**
              * Callback(sourceNode, data), return true, to enable dnd drag
              */
-            dragStart?: ((sourceNode: FancytreeNode, data: any) => void) | undefined;
-            dragDrag?: ((sourceNode: FancytreeNode, data: any) => void) | undefined;
-            dragEnd?: ((sourceNode: FancytreeNode, data: any) => void) | undefined;
+            dragStart?:
+                | ((sourceNode: FancytreeNode, data: any) => void)
+                | undefined;
+            dragDrag?:
+                | ((sourceNode: FancytreeNode, data: any) => void)
+                | undefined;
+            dragEnd?:
+                | ((sourceNode: FancytreeNode, data: any) => void)
+                | undefined;
             /**
              * Callback(targetNode, data), return true, to enable dnd drop
              */
-            dragEnter?: ((targetNode: FancytreeNode, data: any) => void) | undefined;
+            dragEnter?:
+                | ((targetNode: FancytreeNode, data: any) => void)
+                | undefined;
             /**
              * Events (drag over)
              */
-            dragOver?: ((targetNode: FancytreeNode, data: any) => void) | undefined;
+            dragOver?:
+                | ((targetNode: FancytreeNode, data: any) => void)
+                | undefined;
             /**
              * Callback(targetNode, data), return false to prevent autoExpand
              */
-            dragExpand?: ((targetNode: FancytreeNode, data: any) => void) | undefined;
+            dragExpand?:
+                | ((targetNode: FancytreeNode, data: any) => void)
+                | undefined;
             /**
              * Events (drag drop)
              */
             dragDrop?: ((node: FancytreeNode, data: any) => void) | undefined;
-            dragLeave?: ((targetNode: FancytreeNode, data: any) => void) | undefined;
+            dragLeave?:
+                | ((targetNode: FancytreeNode, data: any) => void)
+                | undefined;
             /**
              * Support misc options
              */
@@ -1113,7 +1203,12 @@ declare namespace Fancytree {
         assert(cond: boolean, msg: string): void;
 
         /** Return a function that executes *fn* at most every *timeout* ms. */
-        debounce<T extends (...args: any[]) => void>(timeout: number, fn: T, invokeAsap?: boolean, ctx?: any): T;
+        debounce<T extends (...args: any[]) => void>(
+            timeout: number,
+            fn: T,
+            invokeAsap?: boolean,
+            ctx?: any,
+        ): T;
 
         debug(msg: string): void;
 

@@ -41,7 +41,7 @@ VK.Auth.login();
 // @ts-expect-error
 VK.Auth.login(() => {});
 
-VK.Auth.login(status => {
+VK.Auth.login((status) => {
     // $ExpectType LoginStatus
     status;
     // $ExpectType "connected" | "not_authorized" | "unknown"
@@ -83,7 +83,7 @@ VK.Auth.logout(
     100,
 );
 
-VK.Auth.logout(status => {
+VK.Auth.logout((status) => {
     // $ExpectType EmptyLoginStatus
     status;
     // $ExpectType null
@@ -105,7 +105,7 @@ VK.Auth.revokeGrants(
     100,
 );
 
-VK.Auth.revokeGrants(status => {
+VK.Auth.revokeGrants((status) => {
     // $ExpectType EmptyLoginStatus
     status;
     // $ExpectType null
@@ -127,7 +127,7 @@ VK.Auth.getLoginStatus(
     100,
 );
 
-VK.Auth.getLoginStatus(status => {
+VK.Auth.getLoginStatus((status) => {
     // $ExpectType LoginStatus
     status;
 });
@@ -143,7 +143,7 @@ VK.Auth.getSession(
     100,
 );
 
-VK.Auth.getSession(session => {
+VK.Auth.getSession((session) => {
     // $ExpectType Session
     session;
     // $ExpectType number
@@ -278,13 +278,29 @@ VK.Widgets.Comments(
 VK.Widgets.Comments(
     "test",
     // @ts-expect-error
-    { width: "111", height: "222", limit: "no", attach: 111, autoPublish: 3, norealtime: "zzz", pageUrl: () => void 0 },
+    {
+        width: "111",
+        height: "222",
+        limit: "no",
+        attach: 111,
+        autoPublish: 3,
+        norealtime: "zzz",
+        pageUrl: () => void 0,
+    },
 );
 
 VK.Widgets.Comments(
     "test",
     // @ts-expect-error
-    { width: null, height: {}, limit: () => 1, attach: {}, autoPublish: "zzz", norealtime: 200, pageUrl: 1234 },
+    {
+        width: null,
+        height: {},
+        limit: () => 1,
+        attach: {},
+        autoPublish: "zzz",
+        norealtime: 200,
+        pageUrl: 1234,
+    },
 );
 
 VK.Widgets.Comments("test", {
@@ -408,7 +424,16 @@ VK.Widgets.Group("test", undefined, 100);
 VK.Widgets.Group(
     "test",
     // @ts-expect-error
-    { width: "test", no_cover: "false", wide: "wat", color1: 111, color2: 222, color3: 333, mode: 1, height: 333 },
+    {
+        width: "test",
+        no_cover: "false",
+        wide: "wat",
+        color1: 111,
+        color2: 222,
+        color3: 333,
+        mode: 1,
+        height: 333,
+    },
     100,
 );
 
@@ -458,7 +483,13 @@ VK.Widgets.Like(
 VK.Widgets.Like(
     "test",
     // @ts-expect-error
-    { height: "30", verb: "test", pageTitle: false, pageUrl: {}, pageImage: () => void 0 },
+    {
+        height: "30",
+        verb: "test",
+        pageTitle: false,
+        pageUrl: {},
+        pageImage: () => void 0,
+    },
 );
 
 VK.Widgets.Like("test", {
@@ -666,7 +697,7 @@ VK.Widgets.Auth("auth", {
 });
 
 VK.Widgets.Auth("auth", {
-    onAuth: authData => {
+    onAuth: (authData) => {
         // $ExpectType AuthUserData
         authData;
         // $ExpectType number
@@ -831,7 +862,7 @@ VK.Widgets.CommunityMessages("test", 123);
 VK.Widgets.CommunityMessages("test", 123, {});
 
 VK.Widgets.CommunityMessages("test", 123, {
-    onCanNotWrite: reason => {
+    onCanNotWrite: (reason) => {
         // $ExpectType: 'offline' | 'no_access' | 'disabled_messages' | 'cant_write'
         reason;
     },
@@ -850,22 +881,18 @@ VK.Widgets.CommunityMessages("test", 123, {
     disableTitleChange: 1,
 });
 
-VK.Widgets.CommunityMessages(
-    "test",
-    123,
-    {
-        // @ts-expect-error
-        expanded: 0,
-        // @ts-expect-error
-        disableButtonTooltip: 0,
-        // @ts-expect-error
-        disableNewMessagesSound: 0,
-        // @ts-expect-error
-        disableExpandChatSound: 0,
-        // @ts-expect-error
-        disableTitleChange: 0,
-    },
-);
+VK.Widgets.CommunityMessages("test", 123, {
+    // @ts-expect-error
+    expanded: 0,
+    // @ts-expect-error
+    disableButtonTooltip: 0,
+    // @ts-expect-error
+    disableNewMessagesSound: 0,
+    // @ts-expect-error
+    disableExpandChatSound: 0,
+    // @ts-expect-error
+    disableTitleChange: 0,
+});
 
 // ----------------------------------------------------------------------------
 // Widgets.Playlist
@@ -1878,22 +1905,22 @@ VK.Observer.subscribe("event.not.found", () => void 0);
 VK.Observer.unsubscribe("404");
 
 // @ts-expect-error
-VK.Observer.subscribe("auth.login", data => {
+VK.Observer.subscribe("auth.login", (data) => {
     data;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("auth.logout", data => {
+VK.Observer.subscribe("auth.logout", (data) => {
     data;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("auth.statusChange", data => {
+VK.Observer.subscribe("auth.statusChange", (data) => {
     data;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("auth.sessionChange", data => {
+VK.Observer.subscribe("auth.sessionChange", (data) => {
     data;
 });
 
@@ -1908,60 +1935,63 @@ VK.Observer.subscribe("widgets.comments.new_comment", (num, lc, date, sign) => {
     sign;
 });
 
-VK.Observer.subscribe("widgets.comments.delete_comment", (num, lc, date, sign) => {
-    // $ExpectType number
-    num;
-    // $ExpectType string
-    lc;
-    // $ExpectType string
-    date;
-    // $ExpectType string
-    sign;
-});
+VK.Observer.subscribe(
+    "widgets.comments.delete_comment",
+    (num, lc, date, sign) => {
+        // $ExpectType number
+        num;
+        // $ExpectType string
+        lc;
+        // $ExpectType string
+        date;
+        // $ExpectType string
+        sign;
+    },
+);
 
 // @ts-expect-error
-VK.Observer.subscribe("widgets.groups.joined", data => {
+VK.Observer.subscribe("widgets.groups.joined", (data) => {
     data;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("widgets.groups.leaved", data => {
+VK.Observer.subscribe("widgets.groups.leaved", (data) => {
     data;
 });
 
-VK.Observer.subscribe("widgets.like.liked", likes => {
+VK.Observer.subscribe("widgets.like.liked", (likes) => {
     // $ExpectType number
     likes;
 });
-VK.Observer.subscribe("widgets.like.unliked", likes => {
+VK.Observer.subscribe("widgets.like.unliked", (likes) => {
     // $ExpectType number
     likes;
 });
-VK.Observer.subscribe("widgets.like.shared", shares => {
+VK.Observer.subscribe("widgets.like.shared", (shares) => {
     // $ExpectType number
     shares;
 });
-VK.Observer.subscribe("widgets.like.unshared", shares => {
+VK.Observer.subscribe("widgets.like.unshared", (shares) => {
     // $ExpectType number
     shares;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("widgets.subscribed", data => {
+VK.Observer.subscribe("widgets.subscribed", (data) => {
     data;
 });
 
 // @ts-expect-error
-VK.Observer.subscribe("widgets.unsubscribed", data => {
+VK.Observer.subscribe("widgets.unsubscribed", (data) => {
     data;
 });
 
-VK.Observer.subscribe("widgets.allowMessagesFromCommunity.allowed", data => {
+VK.Observer.subscribe("widgets.allowMessagesFromCommunity.allowed", (data) => {
     // $ExpectType number
     data;
 });
 
-VK.Observer.subscribe("widgets.allowMessagesFromCommunity.denied", data => {
+VK.Observer.subscribe("widgets.allowMessagesFromCommunity.denied", (data) => {
     // $ExpectType number
     data;
 });

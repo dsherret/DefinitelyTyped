@@ -7,7 +7,7 @@ yauzl.open("path/to/file.zip", { lazyEntries: true }, (err, zipfile) => {
     }
     if (zipfile) {
         zipfile.readEntry();
-        zipfile.on("entry", entry => {
+        zipfile.on("entry", (entry) => {
             if (/\/$/.test(entry.fileName)) {
                 zipfile.readEntry();
             } else {

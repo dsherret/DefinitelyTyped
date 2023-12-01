@@ -23,10 +23,14 @@ const Container = (): JSX.Element => {
     useColorStyle({ colorMode });
     const portal = usePortalManager();
     portal.remove("fds");
-    portal(close => <div onClick={close} />, { appendToParentPortal: true });
+    portal((close) => <div onClick={close} />, { appendToParentPortal: true });
 
     return (
-        <TonicProvider colorMode={{ defaultValue: "light", value: "dark" }} theme={customTheme} useCSSBaseline={true}>
+        <TonicProvider
+            colorMode={{ defaultValue: "light", value: "dark" }}
+            theme={customTheme}
+            useCSSBaseline={true}
+        >
             <DarkMode>
                 <Modal autoFocus={true} size="md">
                     <ModalContent>
@@ -61,7 +65,10 @@ const Container = (): JSX.Element => {
                             mr={0}
                         />
                         {/* Responsive properties */}
-                        <ModalBody paddingY={{ sm: 4, md: 4 }} padding={{ sm: 1, lg: "4rem" }} />
+                        <ModalBody
+                            paddingY={{ sm: 4, md: 4 }}
+                            padding={{ sm: 1, lg: "4rem" }}
+                        />
                         <ModalFooter />
                     </ModalContent>
                 </Modal>

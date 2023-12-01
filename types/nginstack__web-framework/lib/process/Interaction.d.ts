@@ -6,7 +6,12 @@ declare function Interaction(
     onExitFunction: any,
 ): void;
 declare class Interaction {
-    constructor(process: any, name: any, functionOfInteraction: any, onExitFunction: any);
+    constructor(
+        process: any,
+        name: any,
+        functionOfInteraction: any,
+        onExitFunction: any,
+    );
     process: Process;
     functions: LegacyEvent;
     name: string;

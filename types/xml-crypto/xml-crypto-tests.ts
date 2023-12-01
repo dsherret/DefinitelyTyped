@@ -85,16 +85,13 @@ class MyCanonicalization extends TransformationAlgorithm {
         return "http://myCanonicalization";
     }
 }
-SignedXml.CanonicalizationAlgorithms[
-    "http://MyTransformation"
-] = MyTransformation;
-SignedXml.CanonicalizationAlgorithms[
-    "http://MyCanonicalization"
-] = MyCanonicalization;
+SignedXml.CanonicalizationAlgorithms["http://MyTransformation"] =
+    MyTransformation;
+SignedXml.CanonicalizationAlgorithms["http://MyCanonicalization"] =
+    MyCanonicalization;
 SignedXml.HashAlgorithms["http://myDigestAlgorithm"] = MyDigest;
-SignedXml.SignatureAlgorithms[
-    "http://mySigningAlgorithm"
-] = MySignatureAlgorithm;
+SignedXml.SignatureAlgorithms["http://mySigningAlgorithm"] =
+    MySignatureAlgorithm;
 const sig4 = new SignedXml();
 sig4.signatureAlgorithm = "http://mySignatureAlgorithm";
 sig4.keyInfoProvider = new MyKeyInfo();

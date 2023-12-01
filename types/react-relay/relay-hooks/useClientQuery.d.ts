@@ -1,4 +1,9 @@
-import { GraphQLTaggedNode, OperationType, RenderPolicy, VariablesOf } from "relay-runtime";
+import {
+    GraphQLTaggedNode,
+    OperationType,
+    RenderPolicy,
+    VariablesOf,
+} from "relay-runtime";
 
 export function useClientQuery<TQuery extends OperationType>(
     gqlQuery: GraphQLTaggedNode,

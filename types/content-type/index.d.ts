@@ -1,4 +1,6 @@
-export function parse(input: RequestLike | ResponseLike | string): ParsedMediaType;
+export function parse(
+    input: RequestLike | ResponseLike | string,
+): ParsedMediaType;
 export function format(obj: MediaType): string;
 
 export interface ParsedMediaType {

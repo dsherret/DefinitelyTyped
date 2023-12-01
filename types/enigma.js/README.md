@@ -1,7 +1,9 @@
 # Installation
+
 `npm install --save @types/enigma.js`
 
 # Summary
+
 This package contains type definitions for enigma.js (https://github.com/qlik-oss/enigma.js).
 
 # Example
@@ -18,7 +20,7 @@ let qixSchema = require("./node_modules/enigma.js/schemas/12.20.0.json");
 
 let enigmaConfig: enigmaJS.IConfig = {
     Promise: blubird,
-    schema: qixSchema,    
+    schema: qixSchema,
     url: "ws://localhost:4848/"
 };
 

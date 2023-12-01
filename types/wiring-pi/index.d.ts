@@ -22,7 +22,11 @@ declare module "wiring-pi" {
     export function millis(): number;
     export function micros(): number;
     // Interrupts
-    export function wiringPiISR(pin: number, edgeType: number, callback: (delta: number) => void): void;
+    export function wiringPiISR(
+        pin: number,
+        edgeType: number,
+        callback: (delta: number) => void,
+    ): void;
     export function wiringPiISRCancel(pin: number): void;
     export const INT_EDGE_FALLING: number;
     export const INT_EDGE_RISING: number;
@@ -110,19 +114,34 @@ declare module "wiring-pi" {
     export const FSEL_ALT5: number;
     // I2C
     export function wiringPiI2CSetup(devId: number): number;
-    export function wiringPiI2CSetupInterface(device: string, devId: number): number;
+    export function wiringPiI2CSetupInterface(
+        device: string,
+        devId: number,
+    ): number;
     export function wiringPiI2CClose(fd: number): void;
     export function wiringPiI2CRead(fd: number): number;
     export function wiringPiI2CReadReg8(fd: number, reg: number): number;
     export function wiringPiI2CReadReg16(fd: number, reg: number): number;
     export function wiringPiI2CWrite(fd: number, data: number): number;
-    export function wiringPiI2CWriteReg8(fd: number, reg: number, data: number): number;
-    export function wiringPiI2CWriteReg16(fd: number, reg: number, data: number): number;
+    export function wiringPiI2CWriteReg8(
+        fd: number,
+        reg: number,
+        data: number,
+    ): number;
+    export function wiringPiI2CWriteReg16(
+        fd: number,
+        reg: number,
+        data: number,
+    ): number;
     // SPI
     export function wiringPiSPIGetFd(channel: number): number;
     export function wiringPiSPIDataRW(channel: number, data: Buffer): number;
     export function wiringPiSPISetup(channel: number, speed: number): number;
-    export function wiringPiSPISetupMode(channel: number, speed: number, mode: number): number;
+    export function wiringPiSPISetupMode(
+        channel: number,
+        speed: number,
+        mode: number,
+    ): number;
     export function wiringPiSPIClose(fd: number): void;
     // Serial
     export function serialOpen(device: string, baudrate: number): number;
@@ -135,11 +154,20 @@ declare module "wiring-pi" {
     export function serialGetchar(fd: number): number;
     // Shift
     export function shiftIn(dPin: number, cPin: number, order: number): number;
-    export function shiftOut(dPin: number, cPin: number, order: number, value: number): void;
+    export function shiftOut(
+        dPin: number,
+        cPin: number,
+        order: number,
+        value: number,
+    ): void;
     export const LSBFIRST: number;
     export const MSBFIRST: number;
     // Soft PWM
-    export function softPwmCreate(pin: number, value: number, range: number): number;
+    export function softPwmCreate(
+        pin: number,
+        value: number,
+        range: number,
+    ): number;
     export function softPwmWrite(pin: number, value: number): void;
     export function softPwmStop(pin: number): void;
     // Soft Servo
@@ -160,14 +188,23 @@ declare module "wiring-pi" {
     export function softToneStop(pin: number): void;
     // Extentions
     // dac7678
-    export function dac7678Setup(pinBase: number, i2cAddress: number, vrefMode: number): number;
+    export function dac7678Setup(
+        pinBase: number,
+        i2cAddress: number,
+        vrefMode: number,
+    ): number;
     export const DAC7678_VREF_MODE_STATIC_ON: number;
     export const DAC7678_VREF_MODE_STATIC_OFF: number;
     export const DAC7678_VREF_MODE_FLEXIBLE_ON: number;
     export const DAC7678_VREF_MODE_FLEXIBLE_ALWAYS_ON: number;
     export const DAC7678_VREF_MODE_FLEXIBLE_ALWAYS_OFF: number;
     // drcSerial
-    export function drcSerialSetup(pinBase: number, numPins: number, device: string, baudrate: number): number;
+    export function drcSerialSetup(
+        pinBase: number,
+        numPins: number,
+        device: string,
+        baudrate: number,
+    ): number;
     // max31855
     export function max31855Setup(pinBase: number, spiChannel: number): number;
     // max5322
@@ -179,15 +216,28 @@ declare module "wiring-pi" {
     // mpc23017
     export function mpc23017Setup(pinBase: number, i2cAddress: number): number;
     // mcp23s08
-    export function mcp23s08Setup(pinBase: number, spiChannel: number, devId: number): number;
+    export function mcp23s08Setup(
+        pinBase: number,
+        spiChannel: number,
+        devId: number,
+    ): number;
     // mcp23s17
-    export function mcp23s17Setup(pinBase: number, spiChannel: number, devId: number): number;
+    export function mcp23s17Setup(
+        pinBase: number,
+        spiChannel: number,
+        devId: number,
+    ): number;
     // mcp3002
     export function mcp3002Setup(pinBase: number, spiChannel: number): number;
     // mcp3004/8
     export function mcp3004Setup(pinBase: number, spiChannel: number): number;
     // mcp3422
-    export function mcp3422Setup(pinBase: number, i2cAddress: number, sampleRate: number, gain: number): number;
+    export function mcp3422Setup(
+        pinBase: number,
+        i2cAddress: number,
+        sampleRate: number,
+        gain: number,
+    ): number;
     export const MCP3422_SR_3_75: number;
     export const MCP3422_SR_15: number;
     export const MCP3422_SR_60: number;
@@ -199,7 +249,11 @@ declare module "wiring-pi" {
     // mcp4802
     export function mcp4802Setup(pinBase: number, spiChannel: number): number;
     // pca9685
-    export function pca9685Setuo(pinBase: number, i2cAddress: number, frequency: number): number;
+    export function pca9685Setuo(
+        pinBase: number,
+        i2cAddress: number,
+        frequency: number,
+    ): number;
     // pcf8574
     export function pcf8574Setup(pinBase: number, i2cAddress: number): number;
     // pcf8591
@@ -216,14 +270,21 @@ declare module "wiring-pi" {
     ): number;
     // DevLib
     // ds1302
-    export function ds1302setup(clockPin: number, dataPin: number, csPin: number): void;
+    export function ds1302setup(
+        clockPin: number,
+        dataPin: number,
+        csPin: number,
+    ): void;
     export function ds1302rtcRead(reg: number): number;
     export function ds1302rtcWrite(reg: number, data: number): void;
     export function ds1302ramRead(address: number): number;
     export function ds1302ramWrite(address: number, data: number): void;
     export function ds1302clockRead(): number[];
     export function ds1302clockWrite(clcokData: number[]): void;
-    export function ds1302trickleCharge(diodes: number, resistors: number): void;
+    export function ds1302trickleCharge(
+        diodes: number,
+        resistors: number,
+    ): void;
     // GertBoard
     export function gertboardAnalogSetup(pinBase: number): number;
     // LCD
@@ -261,7 +322,13 @@ declare module "wiring-pi" {
     export function lcd128x64orientCoordinates(): number[];
     export function lcd128x64getScreenSize(): number[];
     export function lcd128x64point(x: number, y: number, color: number): void;
-    export function lcd128x64line(x0: number, y0: number, x1: number, y1: number, color: number): void;
+    export function lcd128x64line(
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+        color: number,
+    ): void;
     export function lcd128x64lineTo(x: number, y: number, color: number): void;
     export function lcd128x64rectangle(
         x1: number,
@@ -271,7 +338,13 @@ declare module "wiring-pi" {
         color: number,
         filled: number,
     ): void;
-    export function lcd128x64circle(x: number, y: number, r: number, color: number, filled: number): void;
+    export function lcd128x64circle(
+        x: number,
+        y: number,
+        r: number,
+        color: number,
+        filled: number,
+    ): void;
     export function lcd128x64ellipse(
         cx: number,
         cy: number,
@@ -280,8 +353,20 @@ declare module "wiring-pi" {
         color: number,
         filled: number,
     ): void;
-    export function lcd128x64putchar(x: number, y: number, c: number, bgColor: number, fgColor: number): void;
-    export function lcd128x64puts(x: number, y: number, data: string, bgColor: number, fgColor: number): void;
+    export function lcd128x64putchar(
+        x: number,
+        y: number,
+        c: number,
+        bgColor: number,
+        fgColor: number,
+    ): void;
+    export function lcd128x64puts(
+        x: number,
+        y: number,
+        data: string,
+        bgColor: number,
+        fgColor: number,
+    ): void;
     export function lcd128x64update(): void;
     export function lcd128x64clear(color: number): void;
     // cd128x64clear
@@ -302,7 +387,11 @@ declare module "wiring-pi" {
     export const PIGLOW_WHITE: number;
 
     // pinNes
-    export function setupNesJoystick(dPin: number, cPin: number, lPin: number): number;
+    export function setupNesJoystick(
+        dPin: number,
+        cPin: number,
+        lPin: number,
+    ): number;
     export function readNesJoystick(joystick: number): number;
     export const MAX_NES_JOYSTICKS: number;
     export const NES_RIGHT: number;
@@ -314,7 +403,11 @@ declare module "wiring-pi" {
     export const NES_A: number;
     export const NES_B: number;
     // tcs34725
-    export function tcs34725Setup(i2cAddress: number, integrationTime: number, gain: number): number;
+    export function tcs34725Setup(
+        i2cAddress: number,
+        integrationTime: number,
+        gain: number,
+    ): number;
 
     export interface tcs34725RGBC {
         r: number;
@@ -332,11 +425,23 @@ declare module "wiring-pi" {
     }
 
     export function tcs34725ReadHSV(id: number): tcs34725HSV;
-    export function tcs34725GetCorrelatedColorTemperature(r: number, g: number, b: number): void;
-    export function tcs34725GetIlluminance(r: number, g: number, b: number): void;
+    export function tcs34725GetCorrelatedColorTemperature(
+        r: number,
+        g: number,
+        b: number,
+    ): void;
+    export function tcs34725GetIlluminance(
+        r: number,
+        g: number,
+        b: number,
+    ): void;
     export function tcs34725SetInterrupt(id: number, aien: number): void;
     export function tcs34725ClearInterrupt(id: number): void;
-    export function tcs34725SetInterruptLimits(id: number, low: number, high: number): void;
+    export function tcs34725SetInterruptLimits(
+        id: number,
+        low: number,
+        high: number,
+    ): void;
     export function tcs34725Enable(id: number): void;
     export function tcs34725Disable(id: number): void;
     export const TCS34725_ATIME_2_4MS: number;

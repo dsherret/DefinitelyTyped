@@ -33,7 +33,12 @@ export interface Options {
      * Pass an additional capture option to buffer the result of stdout and/or stderr
      * Default: []
      */
-    capture?: [] | ["stdout" | "stderr"] | ["stdout", "stderr"] | ["stderr", "stdout"] | undefined;
+    capture?:
+        | []
+        | ["stdout" | "stderr"]
+        | ["stdout", "stderr"]
+        | ["stderr", "stdout"]
+        | undefined;
     /**
      * Array of the numbers that should be interpreted as successful execution codes
      * Default: [0]
@@ -47,11 +52,15 @@ export function exec(
 ): ChildProcessPromise<PromiseResult<Buffer>>;
 export function exec(
     command: Readonly<string>,
-    options: Readonly<Options & { encoding?: BufferEncoding | undefined } & ExecOptions>,
+    options: Readonly<
+        Options & { encoding?: BufferEncoding | undefined } & ExecOptions
+    >,
 ): ChildProcessPromise<PromiseResult<string>>;
 export function exec(
     command: Readonly<string>,
-    options: Readonly<Options & { encoding?: string | undefined } & ExecOptions>,
+    options: Readonly<
+        Options & { encoding?: string | undefined } & ExecOptions
+    >,
 ): ChildProcessPromise<PromiseResult<string | Buffer>>;
 export function exec(
     command: Readonly<string>,

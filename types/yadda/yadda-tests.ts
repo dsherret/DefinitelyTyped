@@ -32,90 +32,107 @@ const English = Yadda.localisation.English;
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given("a user called (\\w+)", (name: string) => {
+    const library = Yadda.localisation.English.library().given(
+        "a user called (\\w+)",
+        (name: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given("a user called $name", (name: string) => {
+    const library = Yadda.localisation.English.library().given(
+        "a user called $name",
+        (name: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
     const converter = Yadda.converters.pass_through;
-    const dictionary = new Yadda.Dictionary()
-        .define("csv", /([^\u0000]*)/, converter);
+    const dictionary = new Yadda.Dictionary().define(
+        "csv",
+        /([^\u0000]*)/,
+        converter,
+    );
 
-    const library = Yadda.localisation.English.library(dictionary)
-        .given("some csv\n$csv", (csv: string) => {
+    const library = Yadda.localisation.English.library(dictionary).given(
+        "some csv\n$csv",
+        (csv: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given(["$name has $num book", "$name has $num books"], (name: string, number_of_books: string) => {
+    const library = Yadda.localisation.English.library().given(
+        ["$name has $num book", "$name has $num books"],
+        (name: string, number_of_books: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = new Yadda.Library()
-        .define("Some step");
+    const library = new Yadda.Library().define("Some step");
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given("a user called $name", (name: string) => {
+    const library = Yadda.localisation.English.library().given(
+        "a user called $name",
+        (name: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given("a user called $name", (name: string, next: (err?: Error) => void) => {
+    const library = Yadda.localisation.English.library().given(
+        "a user called $name",
+        (name: string, next: (err?: Error) => void) => {
             // Code goes here
             next();
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const library = Yadda.localisation.English.library()
-        .given("a user called $name", (name: string) => {
+    const library = Yadda.localisation.English.library().given(
+        "a user called $name",
+        (name: string) => {
             return new Promise((resolve, reject) => {
                 // Code goes here
             });
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const dictionary = new Yadda.Dictionary()
-        .define("gender", /(male|female)/);
+    const dictionary = new Yadda.Dictionary().define("gender", /(male|female)/);
 
-    const library = Yadda.localisation.English.library(dictionary)
-        .given("A $gender user", (gender: string) => {
+    const library = Yadda.localisation.English.library(dictionary).given(
+        "A $gender user",
+        (gender: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
@@ -129,22 +146,29 @@ const English = Yadda.localisation.English;
             /((GIR &0AA)|((([A-PR-UWYZ][A-HK-Y]?[0-9][0-9]?)|(([A-PR-UWYZ][0-9][A-HJKSTUW])|([A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRV-Y]))) &[0-9][ABD-HJLNP-UW-Z]{2}))/,
         );
 
-    const library = Yadda.localisation.English.library(dictionary)
-        .given("An $address", (number: string, street: string, postcode: string) => {
+    const library = Yadda.localisation.English.library(dictionary).given(
+        "An $address",
+        (number: string, street: string, postcode: string) => {
             // Code goes here
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
 
 {
-    const dictionary = new Yadda.Dictionary()
-        .define("num", /(\d+)/, Yadda.converters.integer);
+    const dictionary = new Yadda.Dictionary().define(
+        "num",
+        /(\d+)/,
+        Yadda.converters.integer,
+    );
 
-    const library = Yadda.localisation.English.library(dictionary)
-        .given("A whole number $num", (number: number) => {
+    const library = Yadda.localisation.English.library(dictionary).given(
+        "A whole number $num",
+        (number: number) => {
             // Number will be an integer rather than a string
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
@@ -152,19 +176,27 @@ const English = Yadda.localisation.English;
 function quantity_converter(
     amount: string,
     units: string,
-    cb: (err: Error | null, quantity: { amount: number; units: string }) => void,
+    cb: (
+        err: Error | null,
+        quantity: { amount: number; units: string },
+    ) => void,
 ) {
     cb(null, { amount: parseInt(amount, 10), units });
 }
 
 {
-    const dictionary = new Yadda.Dictionary()
-        .define("quantity", /(\d+) (\w+)/, quantity_converter);
+    const dictionary = new Yadda.Dictionary().define(
+        "quantity",
+        /(\d+) (\w+)/,
+        quantity_converter,
+    );
 
-    const library = Yadda.localisation.English.library(dictionary)
-        .given("a delay of $quantity", (quantity: { amount: number; units: string }) => {
+    const library = Yadda.localisation.English.library(dictionary).given(
+        "a delay of $quantity",
+        (quantity: { amount: number; units: string }) => {
             // quantity will be an object with two fields "amount" and "units"
-        });
+        },
+    );
 
     Yadda.createInstance(library);
 }
@@ -185,18 +217,27 @@ class Wall {
 let wall: Wall;
 
 const bottlesLibrary = English.library()
-    .given("$NUM green bottles are standing on the wall", (number_of_bottles: string) => {
-        wall = new Wall(Number(number_of_bottles));
-        wall.printStatus();
-    })
-    .when("$NUM green bottle accidentally falls", (number_of_falling_bottles: string) => {
-        wall.fall(Number(number_of_falling_bottles));
-        console.log("%s bottle falls", number_of_falling_bottles);
-    })
-    .then("there are $NUM green bottles standing on the wall", (number_of_bottles: string) => {
-        assert.strictEqual(Number(number_of_bottles), wall.bottles);
-        wall.printStatus();
-    });
+    .given(
+        "$NUM green bottles are standing on the wall",
+        (number_of_bottles: string) => {
+            wall = new Wall(Number(number_of_bottles));
+            wall.printStatus();
+        },
+    )
+    .when(
+        "$NUM green bottle accidentally falls",
+        (number_of_falling_bottles: string) => {
+            wall.fall(Number(number_of_falling_bottles));
+            console.log("%s bottle falls", number_of_falling_bottles);
+        },
+    )
+    .then(
+        "there are $NUM green bottles standing on the wall",
+        (number_of_bottles: string) => {
+            assert.strictEqual(Number(number_of_bottles), wall.bottles);
+            wall.printStatus();
+        },
+    );
 
 {
     const library = Yadda.localisation.Pirate.library()
@@ -221,11 +262,11 @@ const bottlesLibrary = English.library()
 {
     Yadda.plugins.mocha.StepLevelPlugin.init();
 
-    new Yadda.FeatureFileSearch("./test/features").each(file => {
-        featureFile(file, feature => {
+    new Yadda.FeatureFileSearch("./test/features").each((file) => {
+        featureFile(file, (feature) => {
             const yadda = Yadda.createInstance(bottlesLibrary);
 
-            scenarios(feature.scenarios, scenario => {
+            scenarios(feature.scenarios, (scenario) => {
                 steps(scenario.steps, (step, done) => {
                     yadda.run(step, done);
                 });
@@ -240,10 +281,10 @@ function login(user: string) {
 
 {
     const library = Yadda.localisation.English.library()
-        .given("a user called $name", function(name) {
+        .given("a user called $name", function (name) {
             this.ctx[name] = name;
         })
-        .when("$name logs in", function(name) {
+        .when("$name logs in", function (name) {
             const user = this.ctx[name];
             login(user);
         });
@@ -269,7 +310,8 @@ function login(user: string) {
 }
 
 {
-    const specification = "@Pending\n@Browsers=chrome,safari\nFeature: Some title\n  ...";
+    const specification =
+        "@Pending\n@Browsers=chrome,safari\nFeature: Some title\n  ...";
 
     const feature = new Yadda.parsers.FeatureParser().parse(specification);
 

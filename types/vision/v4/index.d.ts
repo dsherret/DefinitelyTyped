@@ -29,17 +29,20 @@ declare module "hapi" {
          * The rendering context contains the `params`, `payload`, `query`, and `pre` values from the request by default (these can be overriden by values explicitly set via the options).
          * @see {@link https://github.com/hapijs/vision/blob/master/API.md#the-view-handler}
          */
-        view?: string | {
-            /** the template filename and path, relative to the templates path configured via the server views manager. */
-            template: string;
-            /** optional object used by the template to render context-specific result. Defaults to no context {}. */
-            context?: Object | undefined;
-            /**
-             * optional object used to override the server's views manager configuration for this response. Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
-             * TODO check if it can have `defaultExtension`.
-             */
-            options?: ViewHandlerOrReplyOptions | undefined;
-        } | undefined;
+        view?:
+            | string
+            | {
+                  /** the template filename and path, relative to the templates path configured via the server views manager. */
+                  template: string;
+                  /** optional object used by the template to render context-specific result. Defaults to no context {}. */
+                  context?: Object | undefined;
+                  /**
+                   * optional object used to override the server's views manager configuration for this response. Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
+                   * TODO check if it can have `defaultExtension`.
+                   */
+                  options?: ViewHandlerOrReplyOptions | undefined;
+              }
+            | undefined;
     }
 
     interface Base_Reply {
@@ -52,7 +55,11 @@ declare module "hapi" {
          * @param options  optional object used to override the server's views manager configuration for this response. Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
          * @see {@link https://github.com/hapijs/vision/blob/master/API.md#replyviewtemplate-context-options}
          */
-        view(templatePath: string, context?: any, options?: ViewHandlerOrReplyOptions): Response;
+        view(
+            templatePath: string,
+            context?: any,
+            options?: ViewHandlerOrReplyOptions,
+        ): Response;
     }
 }
 
@@ -70,14 +77,16 @@ export interface ServerViewsConfiguration extends ServerViewsAdditionalOptions {
 /**
  * Includes `module` and any of the views options listed below (@see ServerViewsAdditionalOptions) (except defaultExtension) to override the defaults for a specific engine.
  */
-export interface ServerViewsEnginesOptions extends ServerViewsAdditionalOptions {
+export interface ServerViewsEnginesOptions
+    extends ServerViewsAdditionalOptions {
     /**
      * The npm module used for rendering the templates. The module object must contain the compile() function
      * @see {@link https://github.com/hapijs/vision/blob/master/API.md#serverviewsoptions} > options > engines > module
      */
     module: NpmModule;
 }
-export interface ServerViewsAdditionalOptions extends ViewHandlerOrReplyOptions {
+export interface ServerViewsAdditionalOptions
+    extends ViewHandlerOrReplyOptions {
     /** the root file path, or array of file paths, where partials are located. Partials are small segments of template code that can be nested and reused throughout other templates. Defaults to no partials support (empty path). */
     partialsPath?: string | string[] | undefined;
     /** the directory path, or array of directory paths, where helpers are located. Helpers are functions used within templates to perform transformations and other data manipulations using the template context or other inputs. Each '.js' file in the helpers directory is loaded and the file name is used as the helper name. The files must export a single method with the signature function(context) and return a string. Sub-folders are not supported and are ignored. Defaults to no helpers support (empty path). Note that jade does not support loading helpers this way. */
@@ -162,7 +171,10 @@ interface NpmModule {
     /** the rendering function. The required function signature depends on the compileMode settings */
     compile: ServerViewCompile;
     /** initializes additional engine state. The config object is the engine configuration object allowing updates to be made. This is useful for engines like Nunjucks that rely on additional state for rendering. next has the signature function(err). */
-    prepare(config: EngineConfigurationObject, next: (err?: Error) => void): void;
+    prepare(
+        config: EngineConfigurationObject,
+        next: (err?: Error) => void,
+    ): void;
     /** registers a partial for use during template rendering. The name is the partial path that templates should use to reference the partial and src is the uncompiled template string for the partial. */
     registerPartial(name: string, src: string): void;
     /** registers a helper for use during template rendering. The name is the name that templates should use to reference the helper and helper is the function that will be invoked when the helper is called. */
@@ -184,11 +196,24 @@ export interface EngineConfigurationObject {}
  * @see {@link https://github.com/hapijs/vision/blob/master/API.md#managerrendertemplate-context-options-callback}
  */
 interface RenderMethod {
-    (template: string, context?: any, options?: ServerViewsAdditionalOptions, callback?: RenderCallBack): void;
-    (template: string, context?: any, options?: ServerViewsAdditionalOptions): Promise<string>;
+    (
+        template: string,
+        context?: any,
+        options?: ServerViewsAdditionalOptions,
+        callback?: RenderCallBack,
+    ): void;
+    (
+        template: string,
+        context?: any,
+        options?: ServerViewsAdditionalOptions,
+    ): Promise<string>;
 }
 export interface RenderCallBack {
-    (err: null | Error, rendered?: string, options?: ServerViewsAdditionalOptions): void;
+    (
+        err: null | Error,
+        rendered?: string,
+        options?: ServerViewsAdditionalOptions,
+    ): void;
 }
 
 /**

@@ -1,6 +1,5 @@
 export namespace Replies {
-    interface Empty {
-    }
+    interface Empty {}
     interface AssertQueue {
         queue: string;
         messageCount: number;

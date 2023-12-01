@@ -60,7 +60,7 @@ table
     .then(() => {
         // run code after table has been successfully updated
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error loading data
     });
 
@@ -85,7 +85,7 @@ table
     .then(() => {
         // run code after column has been scrolled to
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error scrolling to column
     });
 
@@ -94,11 +94,11 @@ table
         { id: 1, name: "bob" },
         { id: 3, name: "steve" },
     ])
-    .then(rows => {
+    .then((rows) => {
         // rows - array of the row components for the rows updated or added
         // run code after data has been updated
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error updating data
     });
 
@@ -107,11 +107,11 @@ table
         { id: 5, name: "jane" },
         { id: 7, name: "hayley" },
     ])
-    .then(rows => {
+    .then((rows) => {
         // rows - array of the row components for the rows updated or added
         // run code after data has been updated
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error updating data
     });
 
@@ -124,7 +124,7 @@ table
     .then(() => {
         // run code after data has been updated
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error updating data
     });
 
@@ -153,12 +153,12 @@ colDef.sorterParams = (col: ColumnComponent, dir: SortDirection) => {
 };
 colDef.sorterParams = { format: "DD/MM/YY" };
 colDef.formatterParams = {
-    invalidPlaceholder: val => {
+    invalidPlaceholder: (val) => {
         return "";
     },
 };
 
-colDef.formatterParams = cell => {
+colDef.formatterParams = (cell) => {
     // cell - the cell component
 
     // do some processing and return the param object
@@ -228,7 +228,7 @@ colDef.cellClick = (_e: UIEvent, cell) => {
 
 colDef.formatterParams = { stars: 3 };
 
-colDef.formatterParams = { url: cell => `${cell.getValue()}` };
+colDef.formatterParams = { url: (cell) => `${cell.getValue()}` };
 
 colDef.editorParams = {};
 colDef.editorParams = {
@@ -407,7 +407,11 @@ colDef.topCalcFormatter = (cell, formatterParams, onRendered) => {
     return "";
 };
 
-colDef.tooltip = (event: MouseEvent, cell: CellComponent, onRendered: (callback: () => void) => void) => {
+colDef.tooltip = (
+    event: MouseEvent,
+    cell: CellComponent,
+    onRendered: (callback: () => void) => void,
+) => {
     onRendered(() => {
         console.log("rendering occured");
     });
@@ -416,23 +420,23 @@ colDef.tooltip = (event: MouseEvent, cell: CellComponent, onRendered: (callback:
 
 // Cell Component
 
-let cell = <CellComponent> {};
+let cell = <CellComponent>{};
 
 let data = cell.getData();
 table = cell.getTable();
 
 // Row Component
-let row = <RowComponent> {};
+let row = <RowComponent>{};
 row.delete()
     .then(() => {
         // run code after row has been deleted
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error deleting row
     });
 
 // Options
-let options = <Options> {};
+let options = <Options>{};
 options.keybindings = {
     navPrev: "ctrl + 1",
     navNext: false,
@@ -516,11 +520,11 @@ options.groupHeader = [
     },
 ];
 
-options.clipboardPasteParser = clipboard => {
+options.clipboardPasteParser = (clipboard) => {
     return []; // return array
 };
 
-options.cellEditing = cell => {
+options.cellEditing = (cell) => {
     console.log(cell);
 };
 
@@ -535,12 +539,12 @@ colDef.editorParams = { search: true };
 table.getHtml("all", true, { columnCalcs: true });
 
 table.download("pdf", "data.pdf", {
-    documentProcessing: doc => {},
+    documentProcessing: (doc) => {},
 });
 
 table.download("pdf", "data.pdf", {
     orientation: "portrait",
-    autoTable: doc => {
+    autoTable: (doc) => {
         doc.text("SOME TEXT", 1, 1);
         return {
             styles: {
@@ -601,7 +605,7 @@ let field = group.getField();
 
 options.tabEndNewRow = true;
 options.tabEndNewRow = { name: "steve", age: 62 };
-options.tabEndNewRow = row => {
+options.tabEndNewRow = (row) => {
     return { name: "steve", age: 62 };
 };
 
@@ -682,7 +686,7 @@ table
     .then(() => {
         // run code after column has been scrolled to
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error scrolling to column
     });
 
@@ -692,7 +696,7 @@ table.download("csv", "data.csv", { delimiter: "." }, "visible");
 table.download("html", "data.html");
 table.download("html", "data.html", { style: true });
 table.download("xlsx", "data.xlsx", {
-    documentProcessing: workbook => {
+    documentProcessing: (workbook) => {
         return workbook;
     },
 });
@@ -713,7 +717,7 @@ const rowContextMenu: Array<MenuObject<RowComponent> | MenuSeparator> = [
     { separator: true },
     {
         disabled: true,
-        label: component => {
+        label: (component) => {
             return "Move Row";
         },
         action: (e, row) => {
@@ -732,7 +736,7 @@ const headerMenu: Array<MenuObject<ColumnComponent> | MenuSeparator> = [
     { separator: true },
     {
         disabled: true,
-        label: component => {
+        label: (component) => {
             return "Move Column";
         },
         action: (e, column) => {
@@ -778,8 +782,8 @@ table = new Tabulator("#example-table", {
     printRowRange: () => {
         return [];
     },
-    rowFormatterPrint: row => {},
-    rowFormatterHtmlOutput: row => {},
+    rowFormatterPrint: (row) => {},
+    rowFormatterHtmlOutput: (row) => {},
     headerFilterLiveFilterDelay: 600,
     columns: [
         {
@@ -804,7 +808,7 @@ table = new Tabulator("#example-table", {
 const filterVal = table.getHeaderFilterValue("name");
 table.recalc();
 const columns = table.getColumns(true);
-columns.forEach(col => col.getDefinition());
+columns.forEach((col) => col.getDefinition());
 
 // 4.7 updates
 
@@ -847,7 +851,10 @@ table.clearCellEdited();
 cell.clearEdited();
 table.getEditedCells();
 table.setFilter("colors", "keywords", "red green blue", { matchAll: true });
-row.addTreeChild({ name: "Billy Bob", age: "12", gender: "male", height: 1 }, true);
+row.addTreeChild(
+    { name: "Billy Bob", age: "12", gender: "male", height: 1 },
+    true,
+);
 column.isVisible();
 column.setWidth(true);
 table.getInvalidCells();
@@ -908,7 +915,9 @@ colDefs.push({
     },
 });
 
-const groupContextMenu: Array<MenuObject<GroupComponent> | MenuSeparator> = [{ separator: true }];
+const groupContextMenu: Array<MenuObject<GroupComponent> | MenuSeparator> = [
+    { separator: true },
+];
 
 table = new Tabulator("#example-table", {
     autoColumnsDefinitions: colDefs,
@@ -923,7 +932,7 @@ table = new Tabulator("#example-table", {
     dataTreeFilter: false,
     dataTreeSort: false,
     groupUpdateOnCellEdit: true,
-    dataChanged: data => {},
+    dataChanged: (data) => {},
 });
 
 table.setGroupValues([["male", "female", "smizmar"]]);
@@ -1043,7 +1052,7 @@ table.on("dataLoadError", () => {});
 table.on("dataProcessing", () => {});
 table.on("dataProcessed", () => {});
 table.on("rowMoving", () => {});
-table.on("rowMoveCancelled", row => {});
+table.on("rowMoveCancelled", (row) => {});
 table.on("rowSelectionChanged", (selectedData, selectedRows) => {});
 table.off("dataProcessed");
 table.off("dataProcessed", dataProcessedEvent);
@@ -1051,7 +1060,7 @@ table.off("rowMoving", () => {});
 table.on("cellClick", () => {});
 table.on("scrollHorizontal", (left, leftDir) => {});
 table.on("scrollVertical", (top, topDir) => {});
-table.on("pageSizeChanged", pageSize => {});
+table.on("pageSizeChanged", (pageSize) => {});
 table = Tabulator.findTable("#example-table")[0];
 table = TabulatorFull.findTable("#example-table")[0];
 
@@ -1126,7 +1135,7 @@ table = new Tabulator("#test", {
         {
             title: "id",
             field: "id",
-            download: _column => {
+            download: (_column) => {
                 // column - column component for current column
 
                 return true; // make column visible in download
@@ -1135,7 +1144,7 @@ table = new Tabulator("#test", {
         {
             title: "id",
             field: "id",
-            clipboard: _column => {
+            clipboard: (_column) => {
                 // column - column component for current column
 
                 return true; // make column visible in clipboard data
@@ -1144,7 +1153,7 @@ table = new Tabulator("#test", {
         {
             title: "id",
             field: "id",
-            print: _column => {
+            print: (_column) => {
                 // column - column component for current column
 
                 return true; // make column visible in clipboard data
@@ -1153,7 +1162,7 @@ table = new Tabulator("#test", {
         {
             title: "id",
             field: "id",
-            htmlOutput: _column => {
+            htmlOutput: (_column) => {
                 // column - column component for current column
 
                 return true; // make column visible in clipboard data
@@ -1171,7 +1180,9 @@ table = new Tabulator("#test", {
 });
 
 // 5.3 Testing ColumnDefinition.headerMenuIcon
-const headerMenuForIconTest: Array<MenuObject<ColumnComponent> | MenuSeparator> = [
+const headerMenuForIconTest: Array<
+    MenuObject<ColumnComponent> | MenuSeparator
+> = [
     {
         label: "Hide Column",
         action(e, column) {
@@ -1237,12 +1248,12 @@ table = new Tabulator("#test", {
 table.on("cellMouseDown", (e, cell) => {});
 
 // Testing popup event and menu event
-table.on("popupClosed", component => {});
-table.on("popupOpen", component => {});
-table.on("menuOpened", component => {});
-table.on("menuClosed", component => {});
-table.on("TooltipOpened", component => {});
-table.on("TooltipClosed", component => {});
+table.on("popupClosed", (component) => {});
+table.on("popupOpen", (component) => {});
+table.on("menuOpened", (component) => {});
+table.on("menuClosed", (component) => {});
+table.on("TooltipOpened", (component) => {});
+table.on("TooltipClosed", (component) => {});
 
 column.popup("test", "bottom");
 
@@ -1276,7 +1287,13 @@ table = new Tabulator("#testPagination", {
         },
     ],
     pagination: true,
-    paginationCounter: (pageSize, currentRow, currentPage, totalRows, totalPages) => {
+    paginationCounter: (
+        pageSize,
+        currentRow,
+        currentPage,
+        totalRows,
+        totalPages,
+    ) => {
         return `${pageSize}, ${currentRow}, ${currentPage}, ${totalRows}, ${totalPages}`;
     },
 });

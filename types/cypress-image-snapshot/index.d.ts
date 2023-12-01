@@ -1,11 +1,16 @@
-export interface Options extends
-    Partial<
+export interface Options
+    extends Partial<
         {
             blackout: string[];
             capture: "runner" | "viewport" | "fullPage";
             clip: { x: number; y: number; width: number; height: number };
             disableTimersAndAnimations: boolean;
-            padding: number | [number] | [number, number] | [number, number, number] | [number, number, number, number];
+            padding:
+                | number
+                | [number]
+                | [number, number]
+                | [number, number, number]
+                | [number, number, number, number];
             scale: boolean;
             beforeScreenshot(doc: Document): void;
             afterScreenshot(doc: Document): void;
@@ -24,10 +29,12 @@ export interface Options extends
             /**
              * Custom config passed to 'pixelmatch' or 'ssim'
              */
-            customDiffConfig?: {
-                readonly threshold?: number | undefined;
-                readonly includeAA?: boolean | undefined;
-            } | undefined;
+            customDiffConfig?:
+                | {
+                      readonly threshold?: number | undefined;
+                      readonly includeAA?: boolean | undefined;
+                  }
+                | undefined;
             /**
              * Custom snapshots directory.
              * Absolute path of a directory to keep the snapshot in.
@@ -44,11 +51,11 @@ export interface Options extends
              */
             customSnapshotIdentifier?:
                 | ((parameters: {
-                    testPath: string;
-                    currentTestName: string;
-                    counter: number;
-                    defaultIdentifier: string;
-                }) => string)
+                      testPath: string;
+                      currentTestName: string;
+                      counter: number;
+                      defaultIdentifier: string;
+                  }) => string)
                 | string
                 | undefined;
             /**
@@ -97,8 +104,7 @@ export interface Options extends
              */
             runInProcess?: boolean | undefined;
         }
-    >
-{}
+    > {}
 
 declare global {
     namespace Cypress {

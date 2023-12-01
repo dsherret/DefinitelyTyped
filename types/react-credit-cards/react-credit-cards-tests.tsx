@@ -1,5 +1,8 @@
 import * as React from "react";
-import Card, { CallbackArgument, ReactCreditCardProps } from "react-credit-cards";
+import Card, {
+    CallbackArgument,
+    ReactCreditCardProps,
+} from "react-credit-cards";
 
 const defaultProps: ReactCreditCardProps = {
     acceptedCards: [],

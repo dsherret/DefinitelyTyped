@@ -13,7 +13,7 @@ const errcb = (err: Error) => {
 
 readFile(
     "test.txt",
-    iferr(errcb, result => {
+    iferr(errcb, (result) => {
         Buffer.from("test", "utf8") === result;
     }),
 );
@@ -21,14 +21,14 @@ readFile(
 readFile(
     "test.txt",
     "utf8",
-    iferr(errcb, result => {
+    iferr(errcb, (result) => {
         "test" === result;
     }),
 );
 
 readFile(
     "test.txt",
-    tiferr(errcb, result => {
+    tiferr(errcb, (result) => {
         Buffer.from("test", "utf8") === result;
     }),
 );
@@ -36,14 +36,14 @@ readFile(
 readFile(
     "test.txt",
     "utf8",
-    tiferr(errcb, result => {
+    tiferr(errcb, (result) => {
         "test" === result;
     }),
 );
 
 readFile(
     "test.txt",
-    throwerr(result => {
+    throwerr((result) => {
         Buffer.from("test", "utf8") === result;
     }),
 );
@@ -51,7 +51,7 @@ readFile(
 readFile(
     "test.txt",
     "utf8",
-    throwerr(result => {
+    throwerr((result) => {
         "test" === result;
     }),
 );

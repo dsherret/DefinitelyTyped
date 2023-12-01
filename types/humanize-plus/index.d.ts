@@ -2,15 +2,27 @@
 export function formatNumber(number: number, decimals?: number): string;
 export function intComma(number: number, decimals?: number): string;
 export function compactInteger(number: number, decimals?: number): string;
-export function boundedNumber(number: number, bounds?: number, ending?: string): string;
+export function boundedNumber(
+    number: number,
+    bounds?: number,
+    ending?: string,
+): string;
 export function ordinal(value: number): string;
 export function times(value: number, overrides?: any): string;
 export function pace(value: number, intervalMs: number, unit?: string): string;
 export function fileSize(filesize: number, precision?: number): string;
-export function pluralize(number: number, singular?: string, plural?: string): string;
+export function pluralize(
+    number: number,
+    singular?: string,
+    plural?: string,
+): string;
 
 // Strings
-export function truncate(string: string, length?: number, ending?: string): string;
+export function truncate(
+    string: string,
+    length?: number,
+    ending?: string,
+): string;
 export function truncateWords(string: string, length?: number): string | null;
 export function capitalize(string: string, downCaseTail?: boolean): string;
 export function capitalizeAll(string: string): string;

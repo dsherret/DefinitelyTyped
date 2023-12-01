@@ -15,7 +15,8 @@ interface TResult {
 }
 
 const handler: Handler<any, TResult> = () => Promise.resolve({ data: "123" });
-const handlerReject: Handler<any, TResult> = () => Promise.reject({ data: "123" });
+const handlerReject: Handler<any, TResult> = () =>
+    Promise.reject({ data: "123" });
 
 const context: Context = {} as any;
 const clientContext: ClientContext = {} as any;

@@ -27,8 +27,7 @@ declare namespace __ReactFlexr {
         flexCells?: boolean | undefined;
     }
 
-    export class Grid extends React.Component<GridProps> {
-    }
+    export class Grid extends React.Component<GridProps> {}
 
     interface CellProps {
         children?: React.ReactNode;
@@ -78,8 +77,7 @@ declare namespace __ReactFlexr {
         desk?: string | number | undefined;
     }
 
-    export class Cell extends React.Component<CellProps> {
-    }
+    export class Cell extends React.Component<CellProps> {}
 
     /**
      * Simple resize event throttler. Usefull for force updating when the

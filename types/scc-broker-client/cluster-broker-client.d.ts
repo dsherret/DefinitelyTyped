@@ -37,9 +37,13 @@ declare class ClusterBrokerClient extends AsyncStreamEmitter<any> {
     listener(eventName: "updateWorkers"): ConsumableStream<UpdateWorkersData>;
     listener(eventName: "updateBrokers"): ConsumableStream<UpdateBrokersData>;
     listener(event: "subscribe"): ConsumableStream<ClientPool.SubscribeData>;
-    listener(event: "subscribeFail"): ConsumableStream<ClientPool.SubscribeFailData>;
+    listener(
+        event: "subscribeFail",
+    ): ConsumableStream<ClientPool.SubscribeFailData>;
     listener(eventName: "publish"): ConsumableStream<ClientPool.PublishData>;
-    listener(eventName: "publishFail"): ConsumableStream<ClientPool.PublishFailData>;
+    listener(
+        eventName: "publishFail",
+    ): ConsumableStream<ClientPool.PublishFailData>;
     listener(eventName: "message"): ConsumableStream<MessageData>;
 
     mapChannelNameToBrokerURI(channelName: string): string;

@@ -24,7 +24,7 @@ declare namespace jsgraph {
     }
 
     export interface DirectedGraph {
-        new(): DirectedGraph;
+        new (): DirectedGraph;
 
         setGraphName(name: string): JsGraphResponse;
 
@@ -148,11 +148,16 @@ declare namespace jsgraph {
 
         create(): { result: DirectedGraph };
 
-        createTraversalContext(req: { dirgaph: DirectedGraph }): TraversalContext;
+        createTraversalContext(req: {
+            dirgaph: DirectedGraph;
+        }): TraversalContext;
 
         depthFirstTraverse(params: TraversalParams): TraversalResult;
 
-        transpose(graph: DirectedGraph): { error?: any; result?: DirectedGraph | undefined };
+        transpose(graph: DirectedGraph): {
+            error?: any;
+            result?: DirectedGraph | undefined;
+        };
 
         directedGraph: DirectedGraph;
     }

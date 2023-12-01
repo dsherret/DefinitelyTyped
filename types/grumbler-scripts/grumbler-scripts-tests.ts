@@ -1,6 +1,13 @@
 import karma, { getKarmaConfig } from "grumbler-scripts/config/karma.conf";
-import { WebpackConfig, WebpackConfigOptions } from "grumbler-scripts/config/types";
-import { getCurrentVersion, getNextVersion, getWebpackConfig } from "grumbler-scripts/config/webpack.config";
+import {
+    WebpackConfig,
+    WebpackConfigOptions,
+} from "grumbler-scripts/config/types";
+import {
+    getCurrentVersion,
+    getNextVersion,
+    getWebpackConfig,
+} from "grumbler-scripts/config/webpack.config";
 
 // @ts-expect-error
 getCurrentVersion();
@@ -27,4 +34,5 @@ const BASE_CONFIG: WebpackConfigOptions = {
 getWebpackConfig(BASE_CONFIG);
 
 karma({});
-((k: any) => k.set(getKarmaConfig(k, { basePath: "foo", webpack: getWebpackConfig() })));
+(k: any) =>
+    k.set(getKarmaConfig(k, { basePath: "foo", webpack: getWebpackConfig() }));

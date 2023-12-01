@@ -186,7 +186,12 @@ declare namespace CanvasGauges {
 
         public static rules: rules;
 
-        constructor(rule?: string | AnimationRule, duration?: number, draw?: DrawEventCallback, end?: EndEventCallback);
+        constructor(
+            rule?: string | AnimationRule,
+            duration?: number,
+            draw?: DrawEventCallback,
+            end?: EndEventCallback,
+        );
 
         public animate(draw?: DrawEventCallback, end?: EndEventCallback): any;
         public destroy(): any;
@@ -205,7 +210,11 @@ declare namespace CanvasGauges {
         public width: number;
         public height: number;
 
-        constructor(element: HTMLCanvasElement, width?: number, height?: number);
+        constructor(
+            element: HTMLCanvasElement,
+            width?: number,
+            height?: number,
+        );
 
         public init(): any;
         public onRedraw(): any;
@@ -253,7 +262,10 @@ declare namespace CanvasGauges {
         public on(event: "render", listeners: () => void): void;
         public on(event: "destroy", listeners: () => void): void;
         public on(event: "animationStart", listeners: () => void): void;
-        public on(event: "animate", listeners: (percent: number, value: number) => void): void;
+        public on(
+            event: "animate",
+            listeners: (percent: number, value: number) => void,
+        ): void;
         public on(event: "animationEnd", listeners: () => void): void;
         public on(event: "beforePlate", listeners: () => void): void;
         public on(event: "beforeHighlights", listeners: () => void): void;

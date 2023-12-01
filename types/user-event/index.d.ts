@@ -6,9 +6,16 @@ declare const userEvent: {
     click: (element: Element | Window) => void;
     dblClick: (element: Element | Window) => void;
 
-    selectOptions: (element: Element | Window, values: string | string[]) => void;
+    selectOptions: (
+        element: Element | Window,
+        values: string | string[],
+    ) => void;
 
-    type: (element: Element | Window, text: string, userOpts?: UserOpts) => Promise<void>;
+    type: (
+        element: Element | Window,
+        text: string,
+        userOpts?: UserOpts,
+    ) => Promise<void>;
 };
 
 export default userEvent;

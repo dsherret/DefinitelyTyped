@@ -1,6 +1,12 @@
 import { Component, ComponentType, Consumer, ReactNode } from "react";
 
-export type AlertPosition = "top left" | "top center" | "top right" | "bottom left" | "bottom center" | "bottom right";
+export type AlertPosition =
+    | "top left"
+    | "top center"
+    | "top right"
+    | "bottom left"
+    | "bottom center"
+    | "bottom right";
 export type AlertType = "info" | "success" | "error";
 export type AlertTransition = "fade" | "scale";
 
@@ -106,6 +112,8 @@ export type AlertContainer = AlertContainerFactory<AlertCustomOptions>;
 export interface InjectedAlertProps {
     alert: AlertContainer;
 }
-export function withAlert<P extends InjectedAlertProps>(c: ComponentType<P>): ComponentType<Omit<P, "alert">>;
+export function withAlert<P extends InjectedAlertProps>(
+    c: ComponentType<P>,
+): ComponentType<Omit<P, "alert">>;
 
 export const Alert: Consumer<AlertContainer>;

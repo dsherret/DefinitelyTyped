@@ -8,7 +8,11 @@
 
 /// https://docs.nova.app/api-reference/assistants-registry/
 
-type AssistantsRegistrySelector = string | string[] | { syntax: string } | Array<{ syntax: string }>;
+type AssistantsRegistrySelector =
+    | string
+    | string[]
+    | { syntax: string }
+    | Array<{ syntax: string }>;
 
 interface AssistantsRegistry {
     registerColorAssistant(
@@ -25,13 +29,19 @@ interface AssistantsRegistry {
         object: IssueAssistant,
         options?: { event: "onChange" | "onSave" },
     ): Disposable;
-    registerTaskAssistant(object: TaskAssistant, options?: { identifier: string; name: string }): Disposable;
+    registerTaskAssistant(
+        object: TaskAssistant,
+        options?: { identifier: string; name: string },
+    ): Disposable;
 }
 
 type AssistantArray<T> = readonly T[] | Promise<readonly T[]>;
 
 interface ColorAssistant {
-    provideColors(editor: TextEditor, context: ColorInformationContext): AssistantArray<ColorInformation>;
+    provideColors(
+        editor: TextEditor,
+        context: ColorInformationContext,
+    ): AssistantArray<ColorInformation>;
     provideColorPresentations(
         color: Color,
         editor: TextEditor,
@@ -40,7 +50,10 @@ interface ColorAssistant {
 }
 
 interface CompletionAssistant {
-    provideCompletionItems(editor: TextEditor, context: CompletionContext): AssistantArray<CompletionItem>;
+    provideCompletionItems(
+        editor: TextEditor,
+        context: CompletionContext,
+    ): AssistantArray<CompletionItem>;
 }
 
 interface IssueAssistant {
@@ -95,9 +108,24 @@ declare class Color {
     constructor(format: ColorFormat, components: number[]);
 
     static rgb(red: number, green: number, blue: number, alpha?: number): any;
-    static hsl(hue: number, saturation: number, luminance: number, alpha?: number): any;
-    static hsb(hue: number, saturation: number, brightness: number, alpha?: number): any;
-    static displayP3(red: number, green: number, blue: number, alpha?: number): any;
+    static hsl(
+        hue: number,
+        saturation: number,
+        luminance: number,
+        alpha?: number,
+    ): any;
+    static hsb(
+        hue: number,
+        saturation: number,
+        brightness: number,
+        alpha?: number,
+    ): any;
+    static displayP3(
+        red: number,
+        green: number,
+        blue: number,
+        alpha?: number,
+    ): any;
 
     convert(format: ColorFormat): Color;
 
@@ -121,9 +149,17 @@ type Transferrable =
 
 interface CommandsRegistry {
     register(name: string, callable: (...params: any[]) => void): Disposable;
-    register<T>(name: string, callable: (this: T, ...params: any[]) => void, thisValue: T): Disposable;
+    register<T>(
+        name: string,
+        callable: (this: T, ...params: any[]) => void,
+        thisValue: T,
+    ): Disposable;
     invoke(name: string, ...arguments: Transferrable[]): Promise<unknown>;
-    invoke(name: string, textEditor: TextEditor, ...arguments: Transferrable[]): Promise<unknown>;
+    invoke(
+        name: string,
+        textEditor: TextEditor,
+        ...arguments: Transferrable[]
+    ): Promise<unknown>;
 }
 
 /// https://docs.nova.app/api-reference/color-information-context/
@@ -291,8 +327,15 @@ declare class CompositeDisposable extends Disposable {
 type ConfigurationValue = string | number | string[] | boolean;
 
 interface Configuration {
-    onDidChange<T>(key: string, callback: (newValue: T, oldValue: T) => void): Disposable;
-    observe<T, K>(key: string, callback: (this: K, newValue: T, oldValue: T) => void, thisValue?: K): Disposable;
+    onDidChange<T>(
+        key: string,
+        callback: (newValue: T, oldValue: T) => void,
+    ): Disposable;
+    observe<T, K>(
+        key: string,
+        callback: (this: K, newValue: T, oldValue: T) => void,
+        thisValue?: K,
+    ): Disposable;
     get(key: string): ConfigurationValue | null;
     get(key: string, coerce: "string"): string | null;
     get(key: string, coerce: "number"): number | null;
@@ -305,7 +348,11 @@ interface Configuration {
 /// https://docs.nova.app/api-reference/console/
 
 interface Console {
-    assert(condition: () => unknown, message: string, ...params: unknown[]): void;
+    assert(
+        condition: () => unknown,
+        message: string,
+        ...params: unknown[]
+    ): void;
     clear(): void;
     log(message: unknown, ...params: unknown[]): void;
     info(message: unknown, ...params: unknown[]): void;
@@ -376,7 +423,11 @@ interface Environment {
     isReleasedVersion(): boolean;
     inDevMode(): boolean;
     beep(): void;
-    localize(key: string | null, value?: string | null, tableName?: string | null): string;
+    localize(
+        key: string | null,
+        value?: string | null,
+        tableName?: string | null,
+    ): string;
     openConfig(identifier?: string): void;
     openURL(url: string, callback?: (success: boolean) => void): void;
 }
@@ -471,19 +522,36 @@ declare class FileSystem {
     access(path: string, modes: number): boolean;
     copy(src: string, dest: string): void;
     copyAsync(src: string, dest: string, callback: (err?: Error) => void): void;
-    copyAsync<T>(src: string, dest: string, callback: (this: T, err?: Error) => void, thisValue: T): void;
+    copyAsync<T>(
+        src: string,
+        dest: string,
+        callback: (this: T, err?: Error) => void,
+        thisValue: T,
+    ): void;
     listdir(path: string): string[];
     mkdir(path: string): void;
     move(src: string, dest: string): void;
     moveAsync(src: string, dest: string, callback: (err?: Error) => void): void;
-    moveAsync<T>(src: string, dest: string, callback: (this: T, err?: Error) => void, thisValue: T): void;
+    moveAsync<T>(
+        src: string,
+        dest: string,
+        callback: (this: T, err?: Error) => void,
+        thisValue: T,
+    ): void;
     remove(path: string): void;
     rmdir(path: string): void;
     stat(path: string): FileStats | null;
     eject(path: string): void;
     reveal(path: string): void;
-    open(path: string, mode?: string, encoding?: Encoding): FileBinaryMode | FileTextMode;
-    watch(pattern: string | null, callable: (path: string) => void): FileSystemWatcher;
+    open(
+        path: string,
+        mode?: string,
+        encoding?: Encoding,
+    ): FileBinaryMode | FileTextMode;
+    watch(
+        pattern: string | null,
+        callable: (path: string) => void,
+    ): FileSystemWatcher;
 }
 
 /// https://docs.nova.app/api-reference/file-system-watcher/
@@ -555,9 +623,15 @@ declare class LanguageClient {
     readonly name: string;
     readonly running: boolean;
 
-    onDidStop<T>(callback: (this: T, err?: Error) => void, thisValue?: T): Disposable;
+    onDidStop<T>(
+        callback: (this: T, err?: Error) => void,
+        thisValue?: T,
+    ): Disposable;
     onNotification(method: string, callback: (parameters: any) => void): void;
-    onRequest(method: string, callback: (parameters: any) => unknown | Promise<unknown>): void;
+    onRequest(
+        method: string,
+        callback: (parameters: any) => unknown | Promise<unknown>,
+    ): void;
     sendRequest(method: string, parameters?: unknown): Promise<unknown>;
     sendNotification(method: string, parameters?: unknown): void;
     start(): void;
@@ -628,7 +702,12 @@ declare class Process {
             args?: string[];
             env?: { [key: string]: string };
             cwd?: string;
-            stdio?: ["pipe" | "ignore", "pipe" | "ignore", "pipe" | "ignore"] | "pipe" | "ignore" | "jsonrpc" | number;
+            stdio?:
+                | ["pipe" | "ignore", "pipe" | "ignore", "pipe" | "ignore"]
+                | "pipe"
+                | "ignore"
+                | "jsonrpc"
+                | number;
             shell?: true | string;
         },
     );
@@ -656,8 +735,14 @@ declare class Process {
     // see no-unnecessary-generics for why these aren't stricter
     notify(methodName: string, params?: any): void;
     request(methodName: string, params?: any): Promise<any>;
-    onNotify(methodName: string, callback: (message: ProcessMessage<any, any, any>) => void): Disposable;
-    onRequest(methodName: string, callback: (message: ProcessMessage<any, any, any>) => any): Disposable;
+    onNotify(
+        methodName: string,
+        callback: (message: ProcessMessage<any, any, any>) => void,
+    ): Disposable;
+    onRequest(
+        methodName: string,
+        callback: (message: ProcessMessage<any, any, any>) => any,
+    ): Disposable;
 }
 
 /// https://docs.nova.app/api-reference/process-message/
@@ -806,9 +891,14 @@ declare class Task {
     image?: string;
 
     getAction(name: string): TaskProcessAction | undefined;
-    getAction<T extends Transferrable>(name: string): TaskResolvableAction<T> | undefined;
+    getAction<T extends Transferrable>(
+        name: string,
+    ): TaskResolvableAction<T> | undefined;
     setAction(name: string, action?: TaskProcessAction | null): void;
-    setAction<T extends Transferrable>(name: string, action?: TaskResolvableAction<T> | null): void;
+    setAction<T extends Transferrable>(
+        name: string,
+        action?: TaskResolvableAction<T> | null,
+    ): void;
 }
 
 /// https://docs.nova.app/api-reference/task-action-resolve-context/
@@ -837,7 +927,12 @@ declare class TaskProcessAction {
             args?: string[];
             env?: { [key: string]: string };
             cwd?: string;
-            stdio?: ["pipe" | "ignore", "pipe" | "ignore", "pipe" | "ignore"] | "pipe" | "ignore" | "jsonrpc" | number;
+            stdio?:
+                | ["pipe" | "ignore", "pipe" | "ignore", "pipe" | "ignore"]
+                | "pipe"
+                | "ignore"
+                | "jsonrpc"
+                | number;
             matchers?: readonly string[];
             shell?: boolean | string;
         },
@@ -868,8 +963,12 @@ interface TextDocument {
 
     getTextInRange(range: Range): string;
     getLineRangeForRange(range: Range): Range;
-    onDidChangePath(callback: (document: TextDocument, path: string | null) => void): Disposable;
-    onDidChangeSyntax(callback: (document: TextDocument, syntax: string | null) => void): Disposable;
+    onDidChangePath(
+        callback: (document: TextDocument, path: string | null) => void,
+    ): Disposable;
+    onDidChangeSyntax(
+        callback: (document: TextDocument, syntax: string | null) => void,
+    ): Disposable;
 }
 
 /// https://docs.nova.app/api-reference/text-edit/
@@ -900,16 +999,23 @@ declare class TextEditor {
     tabLength: number;
     readonly tabText: string;
 
-    edit(callback: (edit: TextEditorEdit) => void, options?: unknown): Promise<void>;
+    edit(
+        callback: (edit: TextEditorEdit) => void,
+        options?: unknown,
+    ): Promise<void>;
     insert(string: string, format?: InsertTextFormat): Promise<void>;
     save(): Promise<void>;
     getTextInRange(range: Range): string;
     getLineRangeForRange(range: Range): Range;
     onDidChange(callback: (textEditor: TextEditor) => void): Disposable;
     onDidStopChanging(callback: (textEditor: TextEditor) => void): Disposable;
-    onWillSave(callback: (textEditor: TextEditor) => void | Promise<void>): Disposable;
+    onWillSave(
+        callback: (textEditor: TextEditor) => void | Promise<void>,
+    ): Disposable;
     onDidSave(callback: (textEditor: TextEditor) => void): Disposable;
-    onDidChangeSelection(callback: (textEditor: TextEditor) => void): Disposable;
+    onDidChangeSelection(
+        callback: (textEditor: TextEditor) => void,
+    ): Disposable;
     onDidDestroy(callback: (textEditor: TextEditor) => void): Disposable;
     addSelectionForRange(range: Range): void;
     selectToPosition(position: number): void;
@@ -974,7 +1080,10 @@ declare enum TreeItemCollapsibleState {
 /// https://docs.nova.app/api-reference/tree-view/
 
 declare class TreeView<E> extends Disposable {
-    constructor(identifier: string, options?: { dataProvider: TreeDataProvider<E> });
+    constructor(
+        identifier: string,
+        options?: { dataProvider: TreeDataProvider<E> },
+    );
 
     readonly visible: boolean;
     readonly selection: E[];
@@ -984,7 +1093,10 @@ declare class TreeView<E> extends Disposable {
     onDidExpandElement(callback: (element: E) => void): Disposable;
     onDidCollapseElement(callback: (element: E) => void): Disposable;
     reload(element?: E | null): Promise<void>;
-    reveal(element: E | null, options?: { select?: boolean; focus?: boolean; reveal?: number }): void;
+    reveal(
+        element: E | null,
+        options?: { select?: boolean; focus?: boolean; reveal?: number },
+    ): void;
 }
 
 /// https://docs.nova.app/api-reference/workspace/
@@ -992,13 +1104,13 @@ declare class TreeView<E> extends Disposable {
 // The line is optional, unless a column is specified
 declare type FileLocation =
     | {
-        line?: number;
-        column?: never;
-    }
+          line?: number;
+          column?: never;
+      }
     | {
-        line: number;
-        column?: number;
-    };
+          line: number;
+          column?: number;
+      };
 
 interface Workspace {
     readonly path: string | null;
@@ -1009,7 +1121,9 @@ interface Workspace {
 
     onDidAddTextEditor(callback: (editor: TextEditor) => void): Disposable;
     onDidChangePath(callback: (newPath: TextEditor) => void): Disposable;
-    onDidOpenTextDocument(callback: (textDocument: TextDocument) => void): Disposable;
+    onDidOpenTextDocument(
+        callback: (textDocument: TextDocument) => void,
+    ): Disposable;
     contains(path: string): boolean;
     relativizePath(path: string): string;
     openConfig(identifier?: string): void;
@@ -1069,8 +1183,16 @@ interface Workspace {
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
 
-declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function setTimeout(
+    handler: TimerHandler,
+    timeout?: number,
+    ...arguments: any[]
+): number;
 declare function clearTimeout(handle?: number): void;
 
-declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function setInterval(
+    handler: TimerHandler,
+    timeout?: number,
+    ...arguments: any[]
+): number;
 declare function clearInterval(handle?: number): void;

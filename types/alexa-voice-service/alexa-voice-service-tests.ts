@@ -10,18 +10,16 @@ const options = {
 
 const avsInstance = new AVS(options);
 
-avsInstance.on(AVS.EventTypes.RECORD_START, () => {
-});
+avsInstance.on(AVS.EventTypes.RECORD_START, () => {});
 
-avsInstance.on(AVS.EventTypes.RECORD_STOP, () => {
-});
+avsInstance.on(AVS.EventTypes.RECORD_STOP, () => {});
 
-avsInstance.player.on(AVS.Player.EventTypes.PLAY, () => {
-});
+avsInstance.player.on(AVS.Player.EventTypes.PLAY, () => {});
 
-avsInstance.refreshToken().then((tokens) => {
-}).catch((error: Error) => {
-});
+avsInstance
+    .refreshToken()
+    .then((tokens) => {})
+    .catch((error: Error) => {});
 
 avsInstance.requestMic();
 

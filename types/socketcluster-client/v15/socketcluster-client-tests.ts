@@ -47,7 +47,10 @@ socket.transmitPublish("myChannel", "This is a message");
     } catch (error) {}
 
     try {
-        const response = await socket.invokePublish("myChannel", "This is a message");
+        const response = await socket.invokePublish(
+            "myChannel",
+            "This is a message",
+        );
 
         // $ExpectType string
         response.channel;
@@ -153,11 +156,15 @@ export class MyAuthEngine implements AuthEngine.AGAuthEngine {
         return Promise.resolve(token);
     }
 
-    removeToken(_name: string): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null> {
+    removeToken(
+        _name: string,
+    ): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null> {
         return Promise.resolve(null);
     }
 
-    loadToken(_name: string): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null> {
+    loadToken(
+        _name: string,
+    ): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null> {
         return Promise.resolve(null);
     }
 }

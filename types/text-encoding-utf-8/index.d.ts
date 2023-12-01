@@ -16,7 +16,10 @@ export namespace TextEncoding {
         encoding: string;
         fatal: boolean;
         ignoreBOM: boolean;
-        decode(input?: ArrayBuffer | ArrayBufferView, options?: TextDecodeOptions): string;
+        decode(
+            input?: ArrayBuffer | ArrayBufferView,
+            options?: TextDecodeOptions,
+        ): string;
     }
 
     interface TextEncoder {
@@ -30,12 +33,12 @@ export namespace TextEncoding {
 
     interface TextEncoderStatic {
         (utfLabel?: string, options?: TextEncoderOptions): TextEncoder;
-        new(utfLabel?: string, options?: TextEncoderOptions): TextEncoder;
+        new (utfLabel?: string, options?: TextEncoderOptions): TextEncoder;
     }
 
     interface TextDecoderStatic {
         (label?: string, options?: TextDecoderOptions): TextDecoder;
-        new(label?: string, options?: TextDecoderOptions): TextDecoder;
+        new (label?: string, options?: TextDecoderOptions): TextDecoder;
     }
 
     interface TextEncodingStatic {

@@ -707,7 +707,9 @@ declare global {
             publicKey: string;
             privateKey: string;
             urlEndpoint: string;
-            transformationPosition?: ImageKit.TransformationPosition | undefined;
+            transformationPosition?:
+                | ImageKit.TransformationPosition
+                | undefined;
         });
 
         /**
@@ -743,7 +745,9 @@ declare global {
          *
          * @param listFilesOptions
          */
-        listFiles(listFilesOptions: ImageKit.ListFileOptions): Promise<ImageKit.ListFileResponse>;
+        listFiles(
+            listFilesOptions: ImageKit.ListFileOptions,
+        ): Promise<ImageKit.ListFileResponse>;
 
         /**
          * You can upload files to ImageKit.io media library from your server-side using private API key authentication.
@@ -756,7 +760,10 @@ declare global {
          * @param uploadOptions
          * @param callback
          */
-        upload(uploadOptions: ImageKit.UploadOptions, callback: ImageKit.Callback<ImageKit.UploadResponse>): void;
+        upload(
+            uploadOptions: ImageKit.UploadOptions,
+            callback: ImageKit.Callback<ImageKit.UploadResponse>,
+        ): void;
 
         /**
          * You can upload files to ImageKit.io media library from your server-side using private API key authentication.
@@ -768,7 +775,9 @@ declare global {
          *
          * @param uploadOptions
          */
-        upload(uploadOptions: ImageKit.UploadOptions): Promise<ImageKit.UploadResponse>;
+        upload(
+            uploadOptions: ImageKit.UploadOptions,
+        ): Promise<ImageKit.UploadResponse>;
 
         /**
          * Get the file details such as tags, customCoordinates, and isPrivate properties using get file detail API.
@@ -778,7 +787,10 @@ declare global {
          * @param fileId
          * @param callback
          */
-        getFileDetails(fileId: string, callback: ImageKit.Callback<ImageKit.FileDetailsResponse>): void;
+        getFileDetails(
+            fileId: string,
+            callback: ImageKit.Callback<ImageKit.FileDetailsResponse>,
+        ): void;
 
         /**
          * Get the file details such as tags, customCoordinates, and isPrivate properties using get file detail API.
@@ -797,7 +809,10 @@ declare global {
          * @param fileId The unique fileId of the uploaded file. fileId is returned in list files API and upload API.
          * @param callback
          */
-        getFileMetadata(fileId: string, callback: ImageKit.Callback<ImageKit.FileMetadataResponse>): void;
+        getFileMetadata(
+            fileId: string,
+            callback: ImageKit.Callback<ImageKit.FileMetadataResponse>,
+        ): void;
 
         /**
          * Get image exif, pHash and other metadata for uploaded files in ImageKit.io media library using this API.
@@ -865,7 +880,10 @@ declare global {
          */
         bulkDeleteFiles(
             fileIds: string[],
-            callback: ImageKit.Callback<ImageKit.BulkDeleteFilesResponse, ImageKit.BulkDeleteFilesError>,
+            callback: ImageKit.Callback<
+                ImageKit.BulkDeleteFilesResponse,
+                ImageKit.BulkDeleteFilesError
+            >,
         ): void;
 
         /**
@@ -875,7 +893,9 @@ declare global {
          *
          * @param fileIds Each value should be a unique fileId of the uploaded file. fileId is returned in list files API and upload API
          */
-        bulkDeleteFiles(fileIds: string[]): Promise<ImageKit.BulkDeleteFilesResponse>;
+        bulkDeleteFiles(
+            fileIds: string[],
+        ): Promise<ImageKit.BulkDeleteFilesResponse>;
 
         /**
          * This will purge CDN and ImageKit.io internal cache.
@@ -885,7 +905,10 @@ declare global {
          * @param fullUrl The exact URL of the file to be purged. For example - https://ik.imageki.io/your_imagekit_id/rest-of-the-file-path.jpg
          * @param callback
          */
-        purgeCache(fullUrl: string, callback: ImageKit.Callback<ImageKit.PurgeCacheResponse>): void;
+        purgeCache(
+            fullUrl: string,
+            callback: ImageKit.Callback<ImageKit.PurgeCacheResponse>,
+        ): void;
 
         /**
          * This will purge CDN and ImageKit.io internal cache.
@@ -916,7 +939,9 @@ declare global {
          *
          * @param cacheRequestId The requestId returned in response of purge cache API.
          */
-        getPurgeCacheStatus(cacheRequestId: string): Promise<ImageKit.PurgeCacheStatusResponse>;
+        getPurgeCacheStatus(
+            cacheRequestId: string,
+        ): Promise<ImageKit.PurgeCacheStatusResponse>;
 
         /**
          * Authentication parameter generation

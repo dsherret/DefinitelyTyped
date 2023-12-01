@@ -1,10 +1,17 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import Drawer from "../drawer";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
 import RegionsPlugin from "./regions";
 
-export default class MinimapPlugin extends Observer implements WaveSurferPlugin {
+export default class MinimapPlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: MinimapPluginParams, ws: WaveSurfer);
     static create(params: MinimapPluginParams): PluginDefinition;
     destroy(): void;

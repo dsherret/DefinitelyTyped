@@ -37,7 +37,7 @@ function RenderCommand({ id, color, name }: Command) {
     commands={commands}
     placeholder="Try typing '?st', '>st' or 'st'"
     defaultInputValue=">"
-    filterSearchQuery={inputValue => inputValue.replace(/^(>|\?)/g, "")}
+    filterSearchQuery={(inputValue) => inputValue.replace(/^(>|\?)/g, "")}
     open
     onChange={(inputValue, userQuery) => {
         alert(`The input was changed to:\n
@@ -47,12 +47,12 @@ function RenderCommand({ id, color, name }: Command) {
             ${userQuery}
             `);
     }}
-    onHighlight={suggestion => {
+    onHighlight={(suggestion) => {
         console.log(`A suggested command was highlighted: \n
         ${JSON.stringify(suggestion)}
         `);
     }}
-    onSelect={command => {
+    onSelect={(command) => {
         alert(`A suggested command was selected: \n
         ${JSON.stringify(command)}
         `);

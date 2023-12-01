@@ -1,4 +1,6 @@
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+    useSpeechRecognition,
+} from "react-speech-recognition";
 
 const {
     finalTranscript, // $ExpectType string
@@ -16,7 +18,11 @@ useSpeechRecognition({
     commands: [
         {
             command: "Command",
-            callback: (command: string, spokenPhrase: string, similarityRatio: number) => {},
+            callback: (
+                command: string,
+                spokenPhrase: string,
+                similarityRatio: number,
+            ) => {},
         },
         {
             command: "Command",
@@ -27,7 +33,11 @@ useSpeechRecognition({
 
 SpeechRecognition.getRecognition(); // $ExpectType SpeechRecognition | null
 SpeechRecognition.startListening(); // $ExpectType Promise<void>
-SpeechRecognition.startListening({ continuous: true, interimResults: true, language: "en" }); // $ExpectType Promise<void>
+SpeechRecognition.startListening({
+    continuous: true,
+    interimResults: true,
+    language: "en",
+}); // $ExpectType Promise<void>
 SpeechRecognition.stopListening(); // $ExpectType Promise<void>
 SpeechRecognition.abortListening(); // $ExpectType Promise<void>
 SpeechRecognition.browserSupportsSpeechRecognition(); // $ExpectType boolean

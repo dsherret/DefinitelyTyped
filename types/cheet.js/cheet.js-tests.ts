@@ -23,12 +23,12 @@ cheet("f u l l m u l t i p l e h a n d l e r s", {
 
 cheet(sequences.cross);
 cheet(sequences.circle);
-cheet.done(seq => {
+cheet.done((seq) => {
     if (seq === sequences.cross) {
     } else {
     }
 });
-cheet.fail(seq => {
+cheet.fail((seq) => {
     if (seq === sequences.cross) {
     } else {
     }

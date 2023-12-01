@@ -16,7 +16,12 @@ scroller = new Scroller((left, top, zoom) => {}, {
 scroller.setDimensions(10, 10, 10, 10);
 scroller.setPosition(200, 300);
 scroller.setSnapSize(300, 300);
-scroller.activatePullToRefresh(200, () => {}, () => {}, () => {});
+scroller.activatePullToRefresh(
+    200,
+    () => {},
+    () => {},
+    () => {},
+);
 scroller.finishPullToRefresh();
 const data: {
     left: number;
@@ -26,10 +31,15 @@ const data: {
 scroller.zoomTo(10);
 scroller.zoomBy(10);
 scroller.doMouseZoom(10, 10, 10, 10);
-scroller.doTouchStart([{
-    pageX: 10,
-    pageY: 20,
-}], 200);
+scroller.doTouchStart(
+    [
+        {
+            pageX: 10,
+            pageY: 20,
+        },
+    ],
+    200,
+);
 scroller.doTouchEnd(300);
 
 declare const clientWidth: number;
@@ -39,8 +49,7 @@ declare function render(left: number, top: number, zoom: number): void;
 declare const Tiling: any; // TODO: What is this?
 
 function test_basic() {
-    const scrollerObj = new Scroller((left, top, zoom) => {
-    }, {
+    const scrollerObj = new Scroller((left, top, zoom) => {}, {
         scrollingY: false,
     });
     scrollerObj.setDimensions(1000, 1000, 3000, 3000);
@@ -58,15 +67,32 @@ function test_canvas() {
         content.width = clientWidth;
         content.height = clientHeight;
         context.clearRect(0, 0, clientWidth, clientHeight);
-        tiling.setup(clientWidth, clientHeight, contentWidth, contentHeight, cellWidth, cellHeight);
+        tiling.setup(
+            clientWidth,
+            clientHeight,
+            contentWidth,
+            contentHeight,
+            cellWidth,
+            cellHeight,
+        );
         tiling.render(left, top, zoom, paint);
     }
-    function paint(row: number, col: number, left: number, top: number, width: number, height: number, zoom: number) {
-        context.fillStyle = row % 2 + col % 2 > 0 ? "#ddd" : "#fff";
+    function paint(
+        row: number,
+        col: number,
+        left: number,
+        top: number,
+        width: number,
+        height: number,
+        zoom: number,
+    ) {
+        context.fillStyle = (row % 2) + (col % 2) > 0 ? "#ddd" : "#fff";
         context.fillRect(left, top, width, height);
         context.fillStyle = "black";
-        context.font = (14 * zoom).toFixed(2) + "px \"Helvetica Neue\", Helvetica, Arial, sans-serif";
-        context.fillText(`${row},${col}`, left + (6 * zoom), top + (18 * zoom));
+        context.font =
+            (14 * zoom).toFixed(2) +
+            'px "Helvetica Neue", Helvetica, Arial, sans-serif';
+        context.fillText(`${row},${col}`, left + 6 * zoom, top + 18 * zoom);
     }
 }
 
@@ -77,23 +103,37 @@ function test_domlist() {
     const scroller = new Scroller(render, {
         scrollingX: false,
     });
-    scroller.activatePullToRefresh(50, () => {
-        refreshElem.className += " active";
-        refreshElem.innerHTML = "Release to Refresh";
-    }, () => {
-        refreshElem.className = refreshElem.className.replace(" active", "");
-        refreshElem.innerHTML = "Pull to Refresh";
-    }, () => {
-        refreshElem.className += " running";
-        refreshElem.innerHTML = "Refreshing...";
-        setTimeout(() => {
-            refreshElem.className = refreshElem.className.replace(" running", "");
-            insertItems();
-            scroller.finishPullToRefresh();
-        }, 2000);
-    });
+    scroller.activatePullToRefresh(
+        50,
+        () => {
+            refreshElem.className += " active";
+            refreshElem.innerHTML = "Release to Refresh";
+        },
+        () => {
+            refreshElem.className = refreshElem.className.replace(
+                " active",
+                "",
+            );
+            refreshElem.innerHTML = "Pull to Refresh";
+        },
+        () => {
+            refreshElem.className += " running";
+            refreshElem.innerHTML = "Refreshing...";
+            setTimeout(() => {
+                refreshElem.className = refreshElem.className.replace(
+                    " running",
+                    "",
+                );
+                insertItems();
+                scroller.finishPullToRefresh();
+            }, 2000);
+        },
+    );
     const rect = container.getBoundingClientRect();
-    scroller.setPosition(rect.left + container.clientLeft, rect.top + container.clientTop);
+    scroller.setPosition(
+        rect.left + container.clientLeft,
+        rect.top + container.clientTop,
+    );
     const insertItems = () => {
         for (let i = 0; i < 15; i++) {
             const row = document.createElement("div");
@@ -115,49 +155,83 @@ function test_domlist() {
     };
     insertItems();
     if ("ontouchstart" in window) {
-        container.addEventListener("touchstart", e => {
-            // Don't react if initial down happens on a form element
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart((e as any).touches, e.timeStamp);
-            e.preventDefault();
-        }, false);
-        document.addEventListener("touchmove", e => {
-            scroller.doTouchMove((e as any).touches, e.timeStamp);
-        }, false);
-        document.addEventListener("touchend", e => {
-            scroller.doTouchEnd(e.timeStamp);
-        }, false);
+        container.addEventListener(
+            "touchstart",
+            (e) => {
+                // Don't react if initial down happens on a form element
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart((e as any).touches, e.timeStamp);
+                e.preventDefault();
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchmove",
+            (e) => {
+                scroller.doTouchMove((e as any).touches, e.timeStamp);
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchend",
+            (e) => {
+                scroller.doTouchEnd(e.timeStamp);
+            },
+            false,
+        );
     } else {
         let mousedown = false;
-        container.addEventListener("mousedown", e => {
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
-        document.addEventListener("mousemove", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchMove([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
-        document.addEventListener("mouseup", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchEnd(e.timeStamp);
-            mousedown = false;
-        }, false);
+        container.addEventListener(
+            "mousedown",
+            (e) => {
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
+        document.addEventListener(
+            "mousemove",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchMove(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
+        document.addEventListener(
+            "mouseup",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchEnd(e.timeStamp);
+                mousedown = false;
+            },
+            false,
+        );
     }
 }
 
@@ -179,52 +253,94 @@ function test_dompaging() {
         paging: true,
     });
     const rect = container.getBoundingClientRect();
-    scroller.setPosition(rect.left + container.clientLeft, rect.top + container.clientTop);
-    scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight);
+    scroller.setPosition(
+        rect.left + container.clientLeft,
+        rect.top + container.clientTop,
+    );
+    scroller.setDimensions(
+        container.clientWidth,
+        container.clientHeight,
+        content.offsetWidth,
+        content.offsetHeight,
+    );
     if ("ontouchstart" in window) {
-        container.addEventListener("touchstart", e => {
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart((e as any).touches, e.timeStamp);
-            e.preventDefault();
-        }, false);
-        document.addEventListener("touchmove", e => {
-            scroller.doTouchMove((e as any).touches, e.timeStamp);
-        }, false);
-        document.addEventListener("touchend", e => {
-            scroller.doTouchEnd(e.timeStamp);
-        }, false);
+        container.addEventListener(
+            "touchstart",
+            (e) => {
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart((e as any).touches, e.timeStamp);
+                e.preventDefault();
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchmove",
+            (e) => {
+                scroller.doTouchMove((e as any).touches, e.timeStamp);
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchend",
+            (e) => {
+                scroller.doTouchEnd(e.timeStamp);
+            },
+            false,
+        );
     } else {
         let mousedown = false;
-        container.addEventListener("mousedown", e => {
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
-        document.addEventListener("mousemove", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchMove([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
+        container.addEventListener(
+            "mousedown",
+            (e) => {
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
+        document.addEventListener(
+            "mousemove",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchMove(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
 
-        document.addEventListener("mouseup", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchEnd(e.timeStamp);
-            mousedown = false;
-        }, false);
+        document.addEventListener(
+            "mouseup",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchEnd(e.timeStamp);
+                mousedown = false;
+            },
+            false,
+        );
     }
 }
 
@@ -237,7 +353,8 @@ function test_domsnapping() {
         for (let cell = 0, cl = content.clientWidth / size; cell < cl; cell++) {
             const elem = document.createElement("div");
             elem.className = "cell";
-            elem.style.backgroundColor = row % 2 + cell % 2 > 0 ? "#ddd" : "";
+            elem.style.backgroundColor =
+                (row % 2) + (cell % 2) > 0 ? "#ddd" : "";
             elem.innerHTML = `${row},${cell}`;
             frag.appendChild(elem);
         }
@@ -247,51 +364,93 @@ function test_domsnapping() {
         snapping: true,
     });
     const rect = container.getBoundingClientRect();
-    scroller.setPosition(rect.left + container.clientLeft, rect.top + container.clientTop);
-    scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight);
+    scroller.setPosition(
+        rect.left + container.clientLeft,
+        rect.top + container.clientTop,
+    );
+    scroller.setDimensions(
+        container.clientWidth,
+        container.clientHeight,
+        content.offsetWidth,
+        content.offsetHeight,
+    );
     scroller.setSnapSize(100, 100);
     if ("ontouchstart" in window) {
-        container.addEventListener("touchstart", e => {
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart((e as any).touches, e.timeStamp);
-            e.preventDefault();
-        }, false);
-        document.addEventListener("touchmove", e => {
-            scroller.doTouchMove((e as any).touches, e.timeStamp);
-        }, false);
-        document.addEventListener("touchend", e => {
-            scroller.doTouchEnd(e.timeStamp);
-        }, false);
+        container.addEventListener(
+            "touchstart",
+            (e) => {
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart((e as any).touches, e.timeStamp);
+                e.preventDefault();
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchmove",
+            (e) => {
+                scroller.doTouchMove((e as any).touches, e.timeStamp);
+            },
+            false,
+        );
+        document.addEventListener(
+            "touchend",
+            (e) => {
+                scroller.doTouchEnd(e.timeStamp);
+            },
+            false,
+        );
     } else {
         let mousedown = false;
-        container.addEventListener("mousedown", e => {
-            if ((e.target as any).tagName.match(/input|textarea|select/i)) {
-                return;
-            }
-            scroller.doTouchStart([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
-        document.addEventListener("mousemove", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchMove([{
-                pageX: (e as any).pageX,
-                pageY: (e as any).pageY,
-            }], e.timeStamp);
-            mousedown = true;
-        }, false);
-        document.addEventListener("mouseup", e => {
-            if (!mousedown) {
-                return;
-            }
-            scroller.doTouchEnd(e.timeStamp);
-            mousedown = false;
-        }, false);
+        container.addEventListener(
+            "mousedown",
+            (e) => {
+                if ((e.target as any).tagName.match(/input|textarea|select/i)) {
+                    return;
+                }
+                scroller.doTouchStart(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
+        document.addEventListener(
+            "mousemove",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchMove(
+                    [
+                        {
+                            pageX: (e as any).pageX,
+                            pageY: (e as any).pageY,
+                        },
+                    ],
+                    e.timeStamp,
+                );
+                mousedown = true;
+            },
+            false,
+        );
+        document.addEventListener(
+            "mouseup",
+            (e) => {
+                if (!mousedown) {
+                    return;
+                }
+                scroller.doTouchEnd(e.timeStamp);
+                mousedown = false;
+            },
+            false,
+        );
     }
 }

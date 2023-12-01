@@ -18,7 +18,9 @@ export class ServiceAccountCredentialsBuilder {
     /**
      * Set Organization Id (format: org_ident@AdobeOrg) that has been configured for access to PDF Services API
      */
-    withOrganizationId(organizationId: string): ServiceAccountCredentialsBuilder;
+    withOrganizationId(
+        organizationId: string,
+    ): ServiceAccountCredentialsBuilder;
     organizationId: any;
     /**
      * Set Account Id (format: id@techacct.adobe.com)

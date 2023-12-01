@@ -13,32 +13,56 @@ interface WreckObject {
         callback?: (err: any, response: http.IncomingMessage) => void,
     ) => http.ClientRequest;
 
-    read: (response: http.IncomingMessage, options: any, callback: (err: any, payload: any) => void) => void;
+    read: (
+        response: http.IncomingMessage,
+        options: any,
+        callback: (err: any, payload: any) => void,
+    ) => void;
 
     get: (
         uri: string,
         options: any,
-        callback: (err: any, response: http.IncomingMessage, payload: any) => void,
+        callback: (
+            err: any,
+            response: http.IncomingMessage,
+            payload: any,
+        ) => void,
     ) => http.ClientRequest;
     post: (
         uri: string,
         options: any,
-        callback: (err: any, response: http.IncomingMessage, payload: any) => void,
+        callback: (
+            err: any,
+            response: http.IncomingMessage,
+            payload: any,
+        ) => void,
     ) => http.ClientRequest;
     patch: (
         uri: string,
         options: any,
-        callback: (err: any, response: http.IncomingMessage, payload: any) => void,
+        callback: (
+            err: any,
+            response: http.IncomingMessage,
+            payload: any,
+        ) => void,
     ) => http.ClientRequest;
     put: (
         uri: string,
         options: any,
-        callback: (err: any, response: http.IncomingMessage, payload: any) => void,
+        callback: (
+            err: any,
+            response: http.IncomingMessage,
+            payload: any,
+        ) => void,
     ) => http.ClientRequest;
     delete: (
         uri: string,
         options: any,
-        callback: (err: any, response: http.IncomingMessage, payload: any) => void,
+        callback: (
+            err: any,
+            response: http.IncomingMessage,
+            payload: any,
+        ) => void,
     ) => http.ClientRequest;
 
     toReadableStream: (payload: any, encoding?: string) => stream.Readable;

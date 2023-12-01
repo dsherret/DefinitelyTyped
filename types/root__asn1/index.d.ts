@@ -24,21 +24,46 @@ export type ArrBuffer = [number, Uint8Array | ArrBuffer[]];
 
 export type ArrInput = [string | number, string | Uint8Array | ArrInput[]];
 
-export function parseVerbose(buf: Uint8Array, opts?: { json?: false | undefined }): ElementBuffer;
+export function parseVerbose(
+    buf: Uint8Array,
+    opts?: { json?: false | undefined },
+): ElementBuffer;
 
 export function parseVerbose(buf: Uint8Array, opts: { json: true }): ElementHex;
 
-export function parse(opts: { der: Uint8Array; verbose?: false | undefined; json?: true | undefined }): ArrJson;
+export function parse(opts: {
+    der: Uint8Array;
+    verbose?: false | undefined;
+    json?: true | undefined;
+}): ArrJson;
 
-export function parse(opts: { der: Uint8Array; verbose?: false | undefined; json: false }): ArrBuffer;
+export function parse(opts: {
+    der: Uint8Array;
+    verbose?: false | undefined;
+    json: false;
+}): ArrBuffer;
 
-export function parse(opts: { der: Uint8Array; verbose: true; json?: true | undefined }): ElementHex;
+export function parse(opts: {
+    der: Uint8Array;
+    verbose: true;
+    json?: true | undefined;
+}): ElementHex;
 
-export function parse(opts: { der: Uint8Array; verbose: true; json: false }): ElementBuffer;
+export function parse(opts: {
+    der: Uint8Array;
+    verbose: true;
+    json: false;
+}): ElementBuffer;
 
-export function pack(asn1: ElementInput | ArrInput, opts?: { json?: false | undefined }): Uint8Array;
+export function pack(
+    asn1: ElementInput | ArrInput,
+    opts?: { json?: false | undefined },
+): Uint8Array;
 
-export function pack(asn1: ElementInput | ArrInput, opts: { json: true }): string;
+export function pack(
+    asn1: ElementInput | ArrInput,
+    opts: { json: true },
+): string;
 
 export function Any(hexType: string | number, ...hexBytes: string[]): string;
 

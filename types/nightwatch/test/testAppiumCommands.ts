@@ -4,19 +4,19 @@ import { isNightwatchAPI, isType } from "./utils";
 //
 // orientation
 //
-describe("orientation commands", function() {
-    it("tests orientation commands", function() {
+describe("orientation commands", function () {
+    it("tests orientation commands", function () {
         isNightwatchAPI(app);
         isType<boolean>(app.isAppiumClient());
 
-        app
-            .appium.getOrientation(function(result) {
+        app.appium
+            .getOrientation(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<"LANDSCAPE" | "PORTRAIT">(result.value);
                 }
             })
-            .appium.setOrientation("LANDSCAPE", function(result) {
+            .appium.setOrientation("LANDSCAPE", function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<"LANDSCAPE" | "PORTRAIT">(result.value);
@@ -24,7 +24,7 @@ describe("orientation commands", function() {
             });
     });
 
-    it("tests orientation commands with async/await", async function() {
+    it("tests orientation commands with async/await", async function () {
         isNightwatchAPI(app);
         isType<boolean>(app.isAppiumClient());
 
@@ -39,24 +39,24 @@ describe("orientation commands", function() {
 //
 // context commands
 //
-describe("context commands", function() {
-    it("tests context commands", function(app: NightwatchAPI) {
+describe("context commands", function () {
+    it("tests context commands", function (app: NightwatchAPI) {
         isType<boolean>(app.isAppiumClient());
 
-        app
-            .appium.getContexts(function(result) {
+        app.appium
+            .getContexts(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<string[]>(result.value);
                 }
             })
-            .appium.getContext(function(result) {
+            .appium.getContext(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<string | null>(result.value);
                 }
             })
-            .appium.setContext("something", function(result) {
+            .appium.setContext("something", function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<null>(result.value);
@@ -64,7 +64,7 @@ describe("context commands", function() {
             });
     });
 
-    it("tests context commands with async/await", async function(app: NightwatchAPI) {
+    it("tests context commands with async/await", async function (app: NightwatchAPI) {
         isType<boolean>(app.isAppiumClient());
 
         const contexts = await app.appium.getContexts();
@@ -81,25 +81,28 @@ describe("context commands", function() {
 //
 // activity commands
 //
-describe("activity commands", function() {
-    it("tests activity commands", function(app: NightwatchAPI) {
-        app
-            .appium.startActivity({
-                appPackage: "com.some.package",
-                appActivity: "some.activity",
-            }, function(result) {
-                isNightwatchAPI(this);
-                if (result.status === 0) {
-                    isType<null>(result.value);
-                }
-            })
-            .appium.getCurrentActivity(function(result) {
+describe("activity commands", function () {
+    it("tests activity commands", function (app: NightwatchAPI) {
+        app.appium
+            .startActivity(
+                {
+                    appPackage: "com.some.package",
+                    appActivity: "some.activity",
+                },
+                function (result) {
+                    isNightwatchAPI(this);
+                    if (result.status === 0) {
+                        isType<null>(result.value);
+                    }
+                },
+            )
+            .appium.getCurrentActivity(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<string>(result.value);
                 }
             })
-            .appium.getCurrentPackage(function(result) {
+            .appium.getCurrentPackage(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<string>(result.value);
@@ -107,7 +110,7 @@ describe("activity commands", function() {
             });
     });
 
-    it("tests activity commands with async/await", async function(app: NightwatchAPI) {
+    it("tests activity commands with async/await", async function (app: NightwatchAPI) {
         // @ts-expect-error
         await app.appium.startActivity({
             appPackage: "com.something",
@@ -131,24 +134,27 @@ describe("activity commands", function() {
 //
 // geolocation
 //
-describe("geolocation commands", function() {
-    it("tests geolocation commands", function(app: NightwatchAPI) {
-        app
-            .appium.getGeolocation(function(result) {
+describe("geolocation commands", function () {
+    it("tests geolocation commands", function (app: NightwatchAPI) {
+        app.appium
+            .getGeolocation(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<AppiumGeolocation>(result.value);
                 }
             })
-            .appium.setGeolocation({ latitude: 232, longitude: 2343, altitude: 5 }, function(result) {
-                isNightwatchAPI(this);
-                if (result.status === 0) {
-                    isType<AppiumGeolocation>(result.value);
-                }
-            });
+            .appium.setGeolocation(
+                { latitude: 232, longitude: 2343, altitude: 5 },
+                function (result) {
+                    isNightwatchAPI(this);
+                    if (result.status === 0) {
+                        isType<AppiumGeolocation>(result.value);
+                    }
+                },
+            );
     });
 
-    it("tests geolocation commands with async/await", async function(app: NightwatchAPI) {
+    it("tests geolocation commands with async/await", async function (app: NightwatchAPI) {
         const location = await app.appium.getGeolocation();
         isType<AppiumGeolocation>(location);
 
@@ -157,7 +163,10 @@ describe("geolocation commands", function() {
         // @ts-expect-error
         await app.appium.setGeolocation();
 
-        const result = await app.appium.setGeolocation({ latitude: 232, longitude: 2343 });
+        const result = await app.appium.setGeolocation({
+            latitude: 232,
+            longitude: 2343,
+        });
         isType<AppiumGeolocation>(result);
     });
 });
@@ -165,28 +174,28 @@ describe("geolocation commands", function() {
 //
 // keyboard interaction commands
 //
-describe("keyboard interaction commands", function() {
-    it("tests keyboard interaction commands", function(app: NightwatchAPI) {
-        app
-            .appium.pressKeyCode(35, function(result) {
+describe("keyboard interaction commands", function () {
+    it("tests keyboard interaction commands", function (app: NightwatchAPI) {
+        app.appium
+            .pressKeyCode(35, function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<null>(result.value);
                 }
             })
-            .appium.longPressKeyCode(31, function(result) {
+            .appium.longPressKeyCode(31, function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<null>(result.value);
                 }
             })
-            .appium.hideKeyboard(function(result) {
+            .appium.hideKeyboard(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<boolean>(result.value);
                 }
             })
-            .appium.isKeyboardShown(function(result) {
+            .appium.isKeyboardShown(function (result) {
                 isNightwatchAPI(this);
                 if (result.status === 0) {
                     isType<boolean>(result.value);
@@ -194,7 +203,7 @@ describe("keyboard interaction commands", function() {
             });
     });
 
-    it("tests keyboard interaction commands with async/await", async function(app: NightwatchAPI) {
+    it("tests keyboard interaction commands with async/await", async function (app: NightwatchAPI) {
         // @ts-expect-error
         await app.appium.pressKeyCode();
         // @ts-expect-error
@@ -203,7 +212,12 @@ describe("keyboard interaction commands", function() {
         await app.appium.pressKeyCode(56, () => {});
         await app.appium.pressKeyCode(44, undefined, undefined, () => {});
 
-        const result = await app.appium.pressKeyCode(34, 29474, undefined, () => {});
+        const result = await app.appium.pressKeyCode(
+            34,
+            29474,
+            undefined,
+            () => {},
+        );
         isType<null>(result);
 
         // @ts-expect-error
@@ -214,7 +228,12 @@ describe("keyboard interaction commands", function() {
         await app.appium.longPressKeyCode(56, () => {});
         await app.appium.longPressKeyCode(44, undefined, undefined, () => {});
 
-        const result2 = await app.appium.longPressKeyCode(34, 29474, undefined, () => {});
+        const result2 = await app.appium.longPressKeyCode(
+            34,
+            29474,
+            undefined,
+            () => {},
+        );
         isType<null>(result2);
 
         const result3 = await app.appium.hideKeyboard();

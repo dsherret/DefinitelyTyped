@@ -47,7 +47,10 @@ export type HighlightCallback = (element: Element) => void;
  * @param [async=false] Same as in {@link Prism.highlightAllUnder}.
  * @param [callback] Same as in {@link Prism.highlightAllUnder}.
  */
-export function highlightAll(async?: boolean, callback?: HighlightCallback): void;
+export function highlightAll(
+    async?: boolean,
+    callback?: HighlightCallback,
+): void;
 
 /**
  * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
@@ -61,7 +64,11 @@ export function highlightAll(async?: boolean, callback?: HighlightCallback): voi
  * @param [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
  * @param [callback] An optional callback to be invoked on each element after its highlighting is done.
  */
-export function highlightAllUnder(container: ParentNode, async?: boolean, callback?: HighlightCallback): void;
+export function highlightAllUnder(
+    container: ParentNode,
+    async?: boolean,
+    callback?: HighlightCallback,
+): void;
 
 /**
  * Highlights the code inside a single element.
@@ -86,7 +93,11 @@ export function highlightAllUnder(container: ParentNode, async?: boolean, callba
  * @param [callback] An optional callback to be invoked after the highlighting is done.
  * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
  */
-export function highlightElement(element: Element, async?: boolean, callback?: HighlightCallback): void;
+export function highlightElement(
+    element: Element,
+    async?: boolean,
+    callback?: HighlightCallback,
+): void;
 
 /**
  * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
@@ -107,7 +118,11 @@ export function highlightElement(element: Element, async?: boolean, callback?: H
  * @example
  * Prism.highlight('var foo = true;', Prism.languages.js, 'js');
  */
-export function highlight(text: string, grammar: Grammar, language: string): string;
+export function highlight(
+    text: string,
+    grammar: Grammar,
+    language: string,
+): string;
 
 /**
  * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
@@ -277,7 +292,12 @@ export interface LanguageMapProtocol {
      *     'style': { ... }
      * });
      */
-    insertBefore(inside: string, before: string, insert: Grammar, root?: LanguageMap): Grammar;
+    insertBefore(
+        inside: string,
+        before: string,
+        insert: Grammar,
+        root?: LanguageMap,
+    ): Grammar;
 }
 
 export namespace hooks {
@@ -300,15 +320,25 @@ export namespace hooks {
         "before-tokenize": TokenizeEnvironment;
         "after-tokenize": TokenizeEnvironment;
 
-        wrap: RequiredEnvironment<"type" | "content" | "tag" | "classes" | "attributes" | "language">;
+        wrap: RequiredEnvironment<
+            "type" | "content" | "tag" | "classes" | "attributes" | "language"
+        >;
     }
 
-    type RequiredEnvironment<T extends keyof Environment, U extends Environment = Environment> =
-        & U
-        & Required<Pick<U, T>>;
-    type ElementEnvironment = RequiredEnvironment<"element" | "language" | "grammar" | "code">;
-    type ElementHighlightedEnvironment = RequiredEnvironment<"highlightedCode", ElementEnvironment>;
-    type TokenizeEnvironment = RequiredEnvironment<"code" | "grammar" | "language">;
+    type RequiredEnvironment<
+        T extends keyof Environment,
+        U extends Environment = Environment,
+    > = U & Required<Pick<U, T>>;
+    type ElementEnvironment = RequiredEnvironment<
+        "element" | "language" | "grammar" | "code"
+    >;
+    type ElementHighlightedEnvironment = RequiredEnvironment<
+        "highlightedCode",
+        ElementEnvironment
+    >;
+    type TokenizeEnvironment = RequiredEnvironment<
+        "code" | "grammar" | "language"
+    >;
 
     interface RegisteredHooks {
         [hook: string]: HookCallback[];
@@ -327,7 +357,10 @@ export namespace hooks {
      * @param name The name of the hook.
      * @param callback The callback function which is given environment variables.
      */
-    function add<K extends keyof HookEnvironmentMap>(name: K, callback: (env: HookEnvironmentMap[K]) => void): void;
+    function add<K extends keyof HookEnvironmentMap>(
+        name: K,
+        callback: (env: HookEnvironmentMap[K]) => void,
+    ): void;
     function add(name: string, callback: HookCallback): void;
 
     /**
@@ -338,7 +371,10 @@ export namespace hooks {
      * @param name The name of the hook.
      * @param env The environment variables of the hook passed to all callbacks registered.
      */
-    function run<K extends keyof HookEnvironmentMap>(name: K, env: HookEnvironmentMap[K]): void;
+    function run<K extends keyof HookEnvironmentMap>(
+        name: K,
+        env: HookEnvironmentMap[K],
+    ): void;
     function run(name: string, env: Environment): void;
 }
 
@@ -354,7 +390,13 @@ export class Token {
      * @param [matchedStr=""] A copy of the full string this token was created from.
      * @param [greedy=false] See {@link Prism.Token#greedy greedy}
      */
-    constructor(type: string, content: TokenStream, alias?: string | string[], matchedStr?: string, greedy?: boolean);
+    constructor(
+        type: string,
+        content: TokenStream,
+        alias?: string | string[],
+        matchedStr?: string,
+        greedy?: boolean,
+    );
 
     /**
      * The type of the token.
@@ -400,5 +442,9 @@ export class Token {
      * @param [parent] The parent token stream, if any.
      * @return The HTML representation of the token or token stream.
      */
-    static stringify(token: TokenStream, language: string, parent?: Array<string | Token>): string;
+    static stringify(
+        token: TokenStream,
+        language: string,
+        parent?: Array<string | Token>,
+    ): string;
 }

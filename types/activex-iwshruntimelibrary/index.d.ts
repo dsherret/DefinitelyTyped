@@ -211,7 +211,11 @@ declare namespace IWshRuntimeLibrary {
          *
          * Unlike the **AddPrinterConnection** method, this method allows you to create a printer connection without directing it to a specific port, such as LPT1.
          */
-        AddWindowsPrinterConnection(PrinterName: string, DriverName?: string, Port?: string): void;
+        AddWindowsPrinterConnection(
+            PrinterName: string,
+            DriverName?: string,
+            Port?: string,
+        ): void;
         readonly ComputerName: string;
         EnumNetworkDrives(): WshCollection;
         EnumPrinterConnections(): WshCollection;
@@ -240,7 +244,11 @@ declare namespace IWshRuntimeLibrary {
          * @param Force [false] Remove the connections even if the resource is in use
          * @param UpdateProfile [false] Remove the mapping from the user's profile
          */
-        RemoveNetworkDrive(Name: string, Force?: boolean, UpdateProfile?: boolean): void;
+        RemoveNetworkDrive(
+            Name: string,
+            Force?: boolean,
+            UpdateProfile?: boolean,
+        ): void;
 
         /**
          * Removes a shared network printer connection from your computer system
@@ -252,7 +260,11 @@ declare namespace IWshRuntimeLibrary {
          * _Name_ must be the printer's local name. If the printer was connected using the **AddWindowsPrinterConnection** method or was added manually (using the Add Printer wizard),
          * then _Name_ must be the printer's UNC name.
          */
-        RemovePrinterConnection(Name: string, Force?: true, UpdateProfile?: true): void;
+        RemovePrinterConnection(
+            Name: string,
+            Force?: true,
+            UpdateProfile?: true,
+        ): void;
         SetDefaultPrinter(Name: string): void;
         readonly Site: string;
         readonly UserDomain: string;
@@ -302,7 +314,10 @@ declare namespace IWshRuntimeLibrary {
          *
          * will return an empty string, unless there is an environment variable named `System`
          */
-        Environment: WshEnvironment & ((Type: "System" | "User" | "Process" | "Volatile") => WshEnvironment);
+        Environment: WshEnvironment &
+            ((
+                Type: "System" | "User" | "Process" | "Volatile",
+            ) => WshEnvironment);
         Exec(Command: string): WshExec;
         ExpandEnvironmentStrings(Src: string): string;
 
@@ -328,7 +343,9 @@ declare namespace IWshRuntimeLibrary {
          * * **REG_EXPAND_SZ** -- an expandable string
          * * **REG_MULTI_SZ** -- an array of srings, as a COM SafeArray
          */
-        RegRead(Name: string): string | number | SafeArray<string> | SafeArray<number>;
+        RegRead(
+            Name: string,
+        ): string | number | SafeArray<string> | SafeArray<number>;
 
         /**
          * Creates a new key, adds another value-name to an existing key and assigns it a value, or changes the value of an existing value-name
@@ -338,7 +355,11 @@ declare namespace IWshRuntimeLibrary {
          * `REG_DWORD | REG_BINARY` will be converted to `integer`
          * @param Type
          */
-        RegWrite(Name: string, Value: any, Type?: "REG_SZ" | "REG_DWORD" | "REG_BINARY" | "REG_EXPAND_SZ"): void;
+        RegWrite(
+            Name: string,
+            Value: any,
+            Type?: "REG_SZ" | "REG_DWORD" | "REG_BINARY" | "REG_EXPAND_SZ",
+        ): void;
 
         /**
          * Runs a program in a new process.
@@ -368,7 +389,11 @@ declare namespace IWshRuntimeLibrary {
          * when restoring a minimized window.
          * * **10** -- Sets the show-state based on the state of the program that started the application.
          */
-        Run(Command: string, WindowStyle?: WindowStyle, WaitOnReturn?: boolean): number;
+        Run(
+            Command: string,
+            WindowStyle?: WindowStyle,
+            WaitOnReturn?: boolean,
+        ): number;
         SendKeys(Keys: string, Wait?: boolean): void;
         readonly SpecialFolders: WshCollection;
     }
@@ -423,7 +448,12 @@ declare namespace ScriptSigner {
         private constructor();
 
         /** @param Store [Store='my'] */
-        Sign(FileExtension: string, Text: string, Certificate: string, Store?: string): string;
+        Sign(
+            FileExtension: string,
+            Text: string,
+            Certificate: string,
+            Store?: string,
+        ): string;
 
         /** @param Store [Store='my'] */
         SignFile(FileName: string, Certificate: string, Store?: string): void;
@@ -437,12 +467,17 @@ declare namespace ScriptSigner {
 }
 
 interface ActiveXObjectNameMap {
-    "WSHController": WSHControllerLibrary.WSHController;
+    WSHController: WSHControllerLibrary.WSHController;
     "Scripting.Signer": ScriptSigner.Signer;
     "WScript.Network": IWshRuntimeLibrary.WshNetwork;
     "WScript.Shell": IWshRuntimeLibrary.WshShell;
 }
 
 interface ActiveXObject {
-    set(obj: IWshRuntimeLibrary.WshEnvironment, propertyName: "Item", parameterTypes: [string], newValue: string): void;
+    set(
+        obj: IWshRuntimeLibrary.WshEnvironment,
+        propertyName: "Item",
+        parameterTypes: [string],
+        newValue: string,
+    ): void;
 }

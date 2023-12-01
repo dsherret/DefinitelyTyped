@@ -43,8 +43,19 @@ export default class CookieJar extends EventEmitter {
         domain?: string,
         callback?: (error?: Error, cookiesRemoved?: Cookie[]) => void,
     ): Cookie[];
-    get(name?: string, domain?: string, callback?: (error?: Error, cookies?: Cookie[]) => void): Cookie[];
-    getAsHeader(name?: string, domain?: string, callback?: (error?: Error, cookies?: Cookie[]) => void): string[];
-    addFromHeaders(headers: string | string[], callback?: (error?: Error) => void): this;
+    get(
+        name?: string,
+        domain?: string,
+        callback?: (error?: Error, cookies?: Cookie[]) => void,
+    ): Cookie[];
+    getAsHeader(
+        name?: string,
+        domain?: string,
+        callback?: (error?: Error, cookies?: Cookie[]) => void,
+    ): string[];
+    addFromHeaders(
+        headers: string | string[],
+        callback?: (error?: Error) => void,
+    ): this;
     toString(): string;
 }

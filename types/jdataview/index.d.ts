@@ -1,17 +1,40 @@
 declare class jDataView implements DataView {
-    constructor(byteCount: number, offset?: number, length?: number, littleEndian?: boolean);
-    constructor(buffer: string, offset?: number, length?: number, littleEndian?: boolean);
-    constructor(buffer: jDataView.Bytes, offset?: number, length?: number, littleEndian?: boolean);
+    constructor(
+        byteCount: number,
+        offset?: number,
+        length?: number,
+        littleEndian?: boolean,
+    );
+    constructor(
+        buffer: string,
+        offset?: number,
+        length?: number,
+        littleEndian?: boolean,
+    );
+    constructor(
+        buffer: jDataView.Bytes,
+        offset?: number,
+        length?: number,
+        littleEndian?: boolean,
+    );
     buffer: any;
     byteOffset: number;
     byteLength: number;
 
     // 64 bit integers
     getInt64(byteOffset?: number, littleEndian?: boolean): jDataView.Int64;
-    setInt64(byteOffset: number, value: jDataView.Int64, littleEndian?: boolean): void;
+    setInt64(
+        byteOffset: number,
+        value: jDataView.Int64,
+        littleEndian?: boolean,
+    ): void;
     writeInt64(value: jDataView.Int64, littleEndian?: boolean): void;
     getUint64(byteOffset?: number, littleEndian?: boolean): jDataView.Uint64;
-    setUint64(byteOffset: number, value: jDataView.Uint64, littleEndian?: boolean): void;
+    setUint64(
+        byteOffset: number,
+        value: jDataView.Uint64,
+        littleEndian?: boolean,
+    ): void;
     writeUint64(value: jDataView.Uint64, littleEndian?: boolean): void;
 
     // Bitfields
@@ -58,10 +81,19 @@ declare class jDataView implements DataView {
     getChar(byteOffset?: number): string;
     setChar(byteOffset: number, char: string): void;
     writeChar(char: string): void;
-    getString(byteLength: number, byteOffset?: number, encoding?: string): string;
+    getString(
+        byteLength: number,
+        byteOffset?: number,
+        encoding?: string,
+    ): string;
     setString(byteOffset: number, chars: string, encoding?: string): void;
     writeString(chars: string, encoding?: string): void;
-    getBytes(length: number, byteOffset?: number, littleEndian?: boolean, toArray?: boolean): number[];
+    getBytes(
+        length: number,
+        byteOffset?: number,
+        littleEndian?: boolean,
+        toArray?: boolean,
+    ): number[];
     setBytes(byteOffset: number, bytes: number[], littleEndian?: boolean): void;
     writeBytes(bytes: number[], littleEndian?: boolean): void;
 

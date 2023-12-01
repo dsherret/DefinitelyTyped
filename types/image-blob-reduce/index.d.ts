@@ -10,16 +10,30 @@ interface InternalProperties {
     out_blob?: Blob;
 }
 
-type MethodNames = "_blob_to_image" | "_calculate_size" | "_transform" | "_create_blob" | "_cleanup";
+type MethodNames =
+    | "_blob_to_image"
+    | "_calculate_size"
+    | "_transform"
+    | "_create_blob"
+    | "_cleanup";
 
 declare namespace imageBlobReduce {
     interface ImageBlobReduce {
         init(): void;
         use(plugin: (args: any[]) => any, ...args: any[]): ImageBlobReduce;
         toBlob(blob: Blob, options?: ResizeOptions): Promise<Blob>;
-        toCanvas(blob: Blob, options?: ResizeOptions): Promise<HTMLCanvasElement>;
-        before(methodName: MethodNames, callback: (env: Env) => Promise<Env>): void;
-        after(methodName: MethodNames, callback: (env: Env) => Promise<Env>): void;
+        toCanvas(
+            blob: Blob,
+            options?: ResizeOptions,
+        ): Promise<HTMLCanvasElement>;
+        before(
+            methodName: MethodNames,
+            callback: (env: Env) => Promise<Env>,
+        ): void;
+        after(
+            methodName: MethodNames,
+            callback: (env: Env) => Promise<Env>,
+        ): void;
     }
 
     interface Options {
@@ -41,7 +55,7 @@ declare namespace imageBlobReduce {
     }
 
     interface ImageBlobReduceStatic {
-        new(options?: Options): ImageBlobReduce;
+        new (options?: Options): ImageBlobReduce;
         (options?: Options): ImageBlobReduce;
         pica: PicaStatic;
     }

@@ -1,4 +1,13 @@
-export type fingerEvent = "touch" | "tab" | "longPress" | "pan" | "swiper" | "pinch" | "input" | "scroll" | "switch";
+export type fingerEvent =
+    | "touch"
+    | "tab"
+    | "longPress"
+    | "pan"
+    | "swiper"
+    | "pinch"
+    | "input"
+    | "scroll"
+    | "switch";
 
 export interface viewRect {
     /**
@@ -98,7 +107,10 @@ interface rickTextProps {
     hrefColor?: string;
 }
 
-export type rickTextType = string | rickTextProps | Array<string | rickTextProps>;
+export type rickTextType =
+    | string
+    | rickTextProps
+    | Array<string | rickTextProps>;
 
 export interface buttonStatusProps {
     backgroundColor?: string;
@@ -190,7 +202,12 @@ export type animationType =
     | "width"
     | "height";
 
-export type animationEasing = "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out";
+export type animationEasing =
+    | "linear"
+    | "ease"
+    | "ease-in"
+    | "ease-out"
+    | "ease-in-out";
 
 export interface animationTypeMap {
     position: {

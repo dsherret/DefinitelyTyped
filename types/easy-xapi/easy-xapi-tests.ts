@@ -19,8 +19,8 @@ var xApi = eXapi.create({
     },
     port: 3000,
     name: "test",
-    mount: function(app) {
-        app.get("/", function(req, res) {
+    mount: function (app) {
+        app.get("/", function (req, res) {
             res.send("ok");
         });
     },

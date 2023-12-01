@@ -25,7 +25,7 @@ const options: SvgToPdf.SVGtoPDFOptions = {
         return family;
     },
     // https://github.com/alafr/SVG-to-PDFKit/blob/4d2d8746bda1e9335c47bbe9ad91277c51fd5a07/source.js#L2558
-    imageCallback: link => {
+    imageCallback: (link) => {
         link; // $ExpectType string
         return link;
     },
@@ -36,7 +36,7 @@ const options: SvgToPdf.SVGtoPDFOptions = {
         return [[255, 255, 255], 1];
     },
     // https://github.com/alafr/SVG-to-PDFKit/blob/4d2d8746bda1e9335c47bbe9ad91277c51fd5a07/source.js#L2494
-    warningCallback: str => {
+    warningCallback: (str) => {
         str; // $ExpectType string
         console.log(str);
     },

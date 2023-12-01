@@ -26,7 +26,11 @@ declare global {
     function currentURL(): string;
 
     // https://github.com/emberjs/ember.js/blob/master/packages/ember-testing/lib/helpers/fill_in.js
-    function fillIn(selector: string, context: Object, text: string): WaitResult<void>;
+    function fillIn(
+        selector: string,
+        context: Object,
+        text: string,
+    ): WaitResult<void>;
     function fillIn(selector: string, text: string): WaitResult<void>;
 
     // https://github.com/emberjs/ember.js/blob/master/packages/ember-testing/lib/helpers/find.js
@@ -36,7 +40,11 @@ declare global {
     function findWithAssert(selector: string, context?: Object): JQuery<Node>;
 
     // https://github.com/emberjs/ember.js/blob/master/packages/ember-testing/lib/helpers/key_event.js
-    function keyEvent(selector: string, type: KeyEventType, keyCode: number): WaitResult<void>;
+    function keyEvent(
+        selector: string,
+        type: KeyEventType,
+        keyCode: number,
+    ): WaitResult<void>;
 
     // https://github.com/emberjs/ember.js/blob/master/packages/ember-testing/lib/helpers/pause_test.js
     function pauseTest(): RSVP.Promise<{}>;
@@ -49,8 +57,16 @@ declare global {
         type: string,
         options: Object,
     ): WaitResult<void>;
-    function triggerEvent(selector: string, context: Object, type: string): WaitResult<void>;
-    function triggerEvent(selector: string, type: string, options: Object): WaitResult<void>;
+    function triggerEvent(
+        selector: string,
+        context: Object,
+        type: string,
+    ): WaitResult<void>;
+    function triggerEvent(
+        selector: string,
+        type: string,
+        options: Object,
+    ): WaitResult<void>;
     function triggerEvent(selector: string, type: string): WaitResult<void>;
 
     // https://github.com/emberjs/ember.js/blob/master/packages/ember-testing/lib/helpers/visit.js

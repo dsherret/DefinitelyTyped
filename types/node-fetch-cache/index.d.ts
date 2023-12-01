@@ -34,7 +34,9 @@ export class FileSystemCache implements Cache {
 }
 
 type FetchBuilder = (cache: Cache) => FetchCache;
-type FetchCache = ((...args: Parameters<typeof fetch>) => Promise<NFCResponse>) & {
+type FetchCache = ((
+    ...args: Parameters<typeof fetch>
+) => Promise<NFCResponse>) & {
     withCache: FetchBuilder;
 };
 

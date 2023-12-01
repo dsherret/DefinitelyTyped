@@ -13,12 +13,17 @@ class ExampleOfUsingReactModal extends React.Component {
     render() {
         const reactModalRef = React.useRef<ReactModal>();
         // typed params of `OnAfterOpen` callback
-        const onAfterOpenFn: ReactModal.OnAfterOpenCallback = ({ contentEl, overlayEl }) => {
+        const onAfterOpenFn: ReactModal.OnAfterOpenCallback = ({
+            contentEl,
+            overlayEl,
+        }) => {
             console.assert(contentEl === reactModalRef.current.portal.content);
             console.assert(overlayEl === reactModalRef.current.portal.overlay);
         };
         const onAfterCloseFn = () => {};
-        const onRequestCloseFn = (event: React.MouseEvent | React.KeyboardEvent) => {};
+        const onRequestCloseFn = (
+            event: React.MouseEvent | React.KeyboardEvent,
+        ) => {};
         const customStyle: ReactModal.Styles = {
             overlay: {
                 position: "fixed",
@@ -78,8 +83,8 @@ class ExampleOfUsingReactModal extends React.Component {
                 htmlOpenClassName={"htmlOpenClassName"}
                 aria={customAriaVariables}
                 data={customDataVariables}
-                contentRef={instance => this.contentRef = instance}
-                overlayRef={instance => this.overlayRef = instance}
+                contentRef={(instance) => (this.contentRef = instance)}
+                overlayRef={(instance) => (this.overlayRef = instance)}
                 testId="modal-content"
             >
                 <h1>Modal Content</h1>
@@ -103,8 +108,12 @@ const MyWrapperComponent: React.FC = () => {
         <ReactModal
             isOpen
             onAfterOpen={onAfterOpenOptionalObjFn}
-            overlayElement={(props, contentElement) => <StyledOverlay {...props}>{contentElement}</StyledOverlay>}
-            contentElement={(props, children) => <StyledContent {...props}>{children}</StyledContent>}
+            overlayElement={(props, contentElement) => (
+                <StyledOverlay {...props}>{contentElement}</StyledOverlay>
+            )}
+            contentElement={(props, children) => (
+                <StyledContent {...props}>{children}</StyledContent>
+            )}
             ref={reactModaRef}
         >
             Hello, World!
@@ -112,17 +121,27 @@ const MyWrapperComponent: React.FC = () => {
     );
 };
 
-const StyledContent = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<"div">>(
-    ({ children, className, ...props }, ref) => {
-        return <div {...props} className={`sc-content ${className}`} ref={ref}>{children}</div>;
-    },
-);
+const StyledContent = React.forwardRef<
+    HTMLDivElement,
+    React.ComponentPropsWithoutRef<"div">
+>(({ children, className, ...props }, ref) => {
+    return (
+        <div {...props} className={`sc-content ${className}`} ref={ref}>
+            {children}
+        </div>
+    );
+});
 
-const StyledOverlay = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<"div">>(
-    ({ children, className, ...props }, ref) => {
-        return <div {...props} className={`sc-overlay ${className}`} ref={ref}>{children}</div>;
-    },
-);
+const StyledOverlay = React.forwardRef<
+    HTMLDivElement,
+    React.ComponentPropsWithoutRef<"div">
+>(({ children, className, ...props }, ref) => {
+    return (
+        <div {...props} className={`sc-overlay ${className}`} ref={ref}>
+            {children}
+        </div>
+    );
+});
 
 // tests for `appElement`
 const el1 = document.createElement("div");
@@ -131,8 +150,12 @@ const el1Children = el1.children;
 const fooClassList = document.querySelectorAll(".foo");
 
 const appElementTestHtmlElement = <ReactModal isOpen appElement={el1} />;
-const appElementTestHtmlElementArray = <ReactModal isOpen appElement={[el1, el2]} />;
-const appElementTestHtmlCollection = <ReactModal isOpen appElement={el1Children} />;
+const appElementTestHtmlElementArray = (
+    <ReactModal isOpen appElement={[el1, el2]} />
+);
+const appElementTestHtmlCollection = (
+    <ReactModal isOpen appElement={el1Children} />
+);
 const appElementTestNodeList = <ReactModal isOpen appElement={fooClassList} />;
 // @ts-expect-error
 const appElementTestExpectError = <ReactModal isOpen appElement={{}} />;

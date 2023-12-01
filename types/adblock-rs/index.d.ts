@@ -24,7 +24,12 @@ export interface ParseOptions {
 export class Engine {
     constructor(rules: FilterSet, debug: boolean);
     addResource(resource: ResourceType): null;
-    check(url: string, source_url: string, request_type: string, debug?: boolean): boolean;
+    check(
+        url: string,
+        source_url: string,
+        request_type: string,
+        debug?: boolean,
+    ): boolean;
     clearTags(): null;
     deserialize(serialized_handle: ArrayBuffer): null;
     enableTag(tag: string): null;

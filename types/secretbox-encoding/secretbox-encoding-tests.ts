@@ -14,7 +14,9 @@ createCodec.MAC_BYTES; // $ExpectType 16
 
 const secretKey = crypto.randomBytes(32);
 const codec = createCodec(secretKey); // $ExpectType Codec<ValueToEncode, Buffer>
-createCodec(secretKey, { nonce: () => crypto.randomBytes(createCodec.NONCE_BYTES) }); // $ExpectType Codec<ValueToEncode, Buffer>
+createCodec(secretKey, {
+    nonce: () => crypto.randomBytes(createCodec.NONCE_BYTES),
+}); // $ExpectType Codec<ValueToEncode, Buffer>
 // $ExpectType Codec<string, string>
 const strCodec = createCodec(secretKey, {
     valueEncoding: {

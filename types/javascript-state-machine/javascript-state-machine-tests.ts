@@ -1,4 +1,8 @@
-import { create, StateMachine, StateMachineEvent } from "javascript-state-machine";
+import {
+    create,
+    StateMachine,
+    StateMachineEvent,
+} from "javascript-state-machine";
 
 interface StateMachineTest extends StateMachine {
     warn?: StateMachineEvent | undefined;

@@ -10,25 +10,31 @@ auth.use(
 );
 
 passport.use(
-    new WindowsStrategy({
-        ldap: {
-            url: "ldap://wellscordoba.wellscordobabank.com/DC=wellscordobabank,DC=com",
-            base: "DC=wellscordobabank,DC=com",
-            bindDN: "someAccount",
-            bindCredentials: "andItsPass",
+    new WindowsStrategy(
+        {
+            ldap: {
+                url: "ldap://wellscordoba.wellscordobabank.com/DC=wellscordobabank,DC=com",
+                base: "DC=wellscordobabank,DC=com",
+                bindDN: "someAccount",
+                bindCredentials: "andItsPass",
+            },
         },
-    }, (profile, done) => {
-        console.log("logged in", profile.id);
-        done(null, profile);
-    }),
+        (profile, done) => {
+            console.log("logged in", profile.id);
+            done(null, profile);
+        },
+    ),
 );
 
 passport.use(
-    new WindowsStrategy({
-        integrated: true,
-        passReqToCallback: true,
-    }, (req, profile, done) => {
-        console.log("logged in", req, profile.id);
-        done(null, profile);
-    }),
+    new WindowsStrategy(
+        {
+            integrated: true,
+            passReqToCallback: true,
+        },
+        (req, profile, done) => {
+            console.log("logged in", req, profile.id);
+            done(null, profile);
+        },
+    ),
 );

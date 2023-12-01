@@ -108,9 +108,13 @@ interface SortableGridProps {
      * Custom animation to override the default wiggle. Must be an object
      * containing a key transform, which is an array of transformations.
      */
-    dragStartAnimation?: {
-        transform: ReadonlyArray<{ [type: string]: Animated.AnimatedInterpolation }>;
-    } | undefined;
+    dragStartAnimation?:
+        | {
+              transform: ReadonlyArray<{
+                  [type: string]: Animated.AnimatedInterpolation;
+              }>;
+          }
+        | undefined;
 
     /**
      * Items to be rendered in the SortableGrid
@@ -118,7 +122,8 @@ interface SortableGridProps {
     children?: readonly SortableGridItem[] | undefined;
 }
 
-interface SortableGridStatic extends React.ClassicComponentClass<SortableGridProps> {
+interface SortableGridStatic
+    extends React.ClassicComponentClass<SortableGridProps> {
     /**
      * Calling this will toggle item deletion mode on/off.
      */

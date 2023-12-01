@@ -1,8 +1,12 @@
 $(() => {
     $("body")
         .vegas({
-            slides: [{ src: "img1.jpg" }, { src: "img2.jpg" }, { src: "img3.jpg" }],
-            init: settings => {},
+            slides: [
+                { src: "img1.jpg" },
+                { src: "img2.jpg" },
+                { src: "img3.jpg" },
+            ],
+            init: (settings) => {},
             end: (index, slide) => {},
             pause: (index, slide) => {},
             play: (index, slide) => {},
@@ -34,7 +38,12 @@ $(() => {
         firstTransitionDuration: 5000,
         transition: "slideDown2",
         transitionDuration: 2000,
-        animation: ["kenburnsUp", "kenburnsDown", "kenburnsLeft", "kenburnsRight"],
+        animation: [
+            "kenburnsUp",
+            "kenburnsDown",
+            "kenburnsLeft",
+            "kenburnsRight",
+        ],
         slides: [
             { src: "/img/slide1.jpg" },
             { src: "/img/slide2.jpg" },
@@ -48,7 +57,11 @@ $(() => {
             {
                 src: "/img/slide2.jpg",
                 video: {
-                    src: ["/videos/video.mp4", "/videos/video.webm", "/videos/video.ogv"],
+                    src: [
+                        "/videos/video.mp4",
+                        "/videos/video.webm",
+                        "/videos/video.ogv",
+                    ],
                     loop: false,
                     mute: true,
                 },
@@ -56,7 +69,8 @@ $(() => {
         ],
     });
     $.vegas.isVideoCompatible = () => {
-        const devices = /(Android|webOS|Phone|iPad|iPod|BlackBerry|Windows Phone)/i;
+        const devices =
+            /(Android|webOS|Phone|iPad|iPod|BlackBerry|Windows Phone)/i;
         return !devices.test(navigator.userAgent);
     };
 });

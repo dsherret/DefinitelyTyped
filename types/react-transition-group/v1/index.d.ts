@@ -6,9 +6,15 @@ export interface HTMLTransitionGroupProps<T> extends HTMLAttributes<T> {
 }
 
 import TransitionGroup = require("./TransitionGroup");
-export { TransitionGroupChildLifecycle, TransitionGroupProps } from "./TransitionGroup";
+export {
+    TransitionGroupChildLifecycle,
+    TransitionGroupProps,
+} from "./TransitionGroup";
 
 import CSSTransitionGroup = require("./CSSTransitionGroup");
-export { CSSTransitionGroupProps, CSSTransitionGroupTransitionName } from "./CSSTransitionGroup";
+export {
+    CSSTransitionGroupProps,
+    CSSTransitionGroupTransitionName,
+} from "./CSSTransitionGroup";
 
 export { CSSTransitionGroup, TransitionGroup };

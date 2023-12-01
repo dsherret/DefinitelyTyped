@@ -5,7 +5,11 @@ import { PackageGraphNode } from "./lib/package-graph-node";
 export type GraphType = "allDependencies" | "dependencies";
 export type NodeProperties = "localDependencies" | "localDependents";
 declare class PackageGraph extends Map {
-    constructor(packages: Package[], graphType?: GraphType, forceLocal?: boolean);
+    constructor(
+        packages: Package[],
+        graphType?: GraphType,
+        forceLocal?: boolean,
+    );
     get rawPackageList(): Package[];
     get(name: string): PackageGraphNode;
 

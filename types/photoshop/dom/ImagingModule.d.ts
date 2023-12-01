@@ -81,7 +81,9 @@ export declare namespace imaging {
      * @minVersion 24.4
      * @async
      */
-    function getLayerMask(options: GetLayerMaskOptions): Promise<GetLayerMaskResult>;
+    function getLayerMask(
+        options: GetLayerMaskOptions,
+    ): Promise<GetLayerMaskResult>;
     /**
      * This API allows JavaScript to edit the pixels of a layer's mask.  At this time, only pixel
      * masks are editable. In the UI, they are what is referred to as a "Layer Mask".
@@ -120,7 +122,9 @@ export declare namespace imaging {
      * @minVersion 24.4
      * @async
      */
-    function getSelection(options: GetSelectionOptions): Promise<GetSelectionResult>;
+    function getSelection(
+        options: GetSelectionOptions,
+    ): Promise<GetSelectionResult>;
     /**
      * This API allows JavaScript to change the selection itself using a provided pixel data representation.
      * Think of it like exiting [Quick Mask mode](https://helpx.adobe.com/photoshop/using/create-temporary-quick-mask.html).
@@ -228,7 +232,9 @@ export declare namespace imaging {
      * @minVersion 24.4
      * @async
      */
-    function encodeImageData(options: EncodeImageDataOptions): Promise<number[] | string>;
+    function encodeImageData(
+        options: EncodeImageDataOptions,
+    ): Promise<number[] | string>;
     /**
      * Image data is represented by a PhotoshopImageData instance.
      * @targetfolder objects/returnobjects
@@ -250,7 +256,9 @@ export declare namespace imaging {
          * ```
          * @param options
          */
-        getData: (options: GetDataOptions) => Promise<Uint8Array | Uint16Array | Float32Array>;
+        getData: (
+            options: GetDataOptions,
+        ) => Promise<Uint8Array | Uint16Array | Float32Array>;
         /**
          * Calling this synchronous method will release the contained image data. Doing so will reduce memory
          * usage faster then waiting for the JavaScript garbage collector to run.
@@ -537,7 +545,13 @@ export declare namespace imaging {
     /**
      * @minVersion 24.4
      */
-    type PixelFormat = "RGB" | "RGBA" | "Grayscale" | "GrayscaleAlpha" | "LAB" | "LABAlpha";
+    type PixelFormat =
+        | "RGB"
+        | "RGBA"
+        | "Grayscale"
+        | "GrayscaleAlpha"
+        | "LAB"
+        | "LABAlpha";
     /**
      * @minVersion 24.4
      */

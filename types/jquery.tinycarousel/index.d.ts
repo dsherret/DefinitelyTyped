@@ -54,7 +54,9 @@ interface JQuery {
      *
      * @param options The options
      */
-    tinycarousel(options?: JQueryTinyCarousel.JQueryTinyCarouselOptions): JQuery;
+    tinycarousel(
+        options?: JQueryTinyCarousel.JQueryTinyCarouselOptions,
+    ): JQuery;
     /**
      * Moves the tinycarousel to the specified block.
      *

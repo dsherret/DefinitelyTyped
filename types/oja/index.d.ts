@@ -4,20 +4,17 @@ import { EventEmitter } from "events";
 import { Readable } from "stream";
 export type ConsumerCallback = (payload: any, runtime: Flow) => void;
 
-export type Primitive =
-    | boolean
-    | number
-    | string
-    | symbol
-    | null
-    | undefined;
+export type Primitive = boolean | number | string | symbol | null | undefined;
 
 export interface State {
     queue: string[];
     pending: string[];
 }
 
-export type DefinitionFunction = (publisher: StageContext, runtime: Flow) => any;
+export type DefinitionFunction = (
+    publisher: StageContext,
+    runtime: Flow,
+) => any;
 
 export type AddableFunction = (runtime: Flow) => void;
 export type AddableToAction = Action | AddableFunction;
@@ -44,11 +41,12 @@ export class ReadableStream extends Readable {
 
 export class Flow {
     constructor(baseFlow?: Flow);
-    consume(topic: string | readonly string[], callback: ConsumerCallback): this;
-    consume(topic: string): Promise<any>;
     consume(
-        topics: readonly string[],
-    ): Promise<{
+        topic: string | readonly string[],
+        callback: ConsumerCallback,
+    ): this;
+    consume(topic: string): Promise<any>;
+    consume(topics: readonly string[]): Promise<{
         [key: string]: string;
     }>;
     consumeStream(
@@ -56,9 +54,7 @@ export class Flow {
         callback: (stream: ReadableStream) => void,
     ): this;
     consumeStream(topic: string): ReadableStream;
-    getReader(
-        topic: string,
-    ): {
+    getReader(topic: string): {
         next(): Promise<any>;
     };
     define(topics: string | readonly string[]): StageContext;

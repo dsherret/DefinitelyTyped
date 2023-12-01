@@ -28,7 +28,9 @@ function init() {
 
     entityManager.add(vehicle);
 
-    const obstacleAvoidanceBehavior = new YUKA.ObstacleAvoidanceBehavior(obstacles);
+    const obstacleAvoidanceBehavior = new YUKA.ObstacleAvoidanceBehavior(
+        obstacles,
+    );
     vehicle.steering.add(obstacleAvoidanceBehavior);
 
     const followPathBehavior = new YUKA.FollowPathBehavior(path);
@@ -47,7 +49,10 @@ function animate() {
     entityManager.update(delta);
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }
 

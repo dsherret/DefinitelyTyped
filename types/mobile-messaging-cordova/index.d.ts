@@ -28,40 +28,54 @@ declare namespace MobileMessagingCordova {
          */
         messageStorage?: string | undefined;
         defaultMessageStorage?: boolean | undefined;
-        ios?: {
-            notificationTypes?: string[] | undefined;
-            forceCleanup?: boolean | undefined;
-            logging?: boolean | undefined;
-        } | undefined;
-        android?: {
-            notificationIcon: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
-            multipleNotifications: boolean;
-            notificationAccentColor: string;
-        } | undefined;
-        privacySettings?: {
-            applicationCodePersistingDisabled?: boolean | undefined;
-            userDataPersistingDisabled?: boolean | undefined;
-            carrierInfoSendingDisabled?: boolean | undefined;
-            systemInfoSendingDisabled?: boolean | undefined;
-        } | undefined;
-        notificationCategories?: [
-            {
-                identifier?: string | undefined;
-                actions?: [
-                    {
-                        identifier?: string | undefined;
-                        title?: string | undefined;
-                        foreground?: boolean | undefined;
-                        authenticationRequired?: boolean | undefined;
-                        moRequired?: boolean | undefined;
-                        destructive?: boolean | undefined;
-                        icon?: string | undefined;
-                        textInputActionButtonTitle?: string | undefined;
-                        textInputPlaceholder?: string | undefined;
-                    },
-                ] | undefined;
-            },
-        ] | undefined;
+        ios?:
+            | {
+                  notificationTypes?: string[] | undefined;
+                  forceCleanup?: boolean | undefined;
+                  logging?: boolean | undefined;
+              }
+            | undefined;
+        android?:
+            | {
+                  notificationIcon: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
+                  multipleNotifications: boolean;
+                  notificationAccentColor: string;
+              }
+            | undefined;
+        privacySettings?:
+            | {
+                  applicationCodePersistingDisabled?: boolean | undefined;
+                  userDataPersistingDisabled?: boolean | undefined;
+                  carrierInfoSendingDisabled?: boolean | undefined;
+                  systemInfoSendingDisabled?: boolean | undefined;
+              }
+            | undefined;
+        notificationCategories?:
+            | [
+                  {
+                      identifier?: string | undefined;
+                      actions?:
+                          | [
+                                {
+                                    identifier?: string | undefined;
+                                    title?: string | undefined;
+                                    foreground?: boolean | undefined;
+                                    authenticationRequired?:
+                                        | boolean
+                                        | undefined;
+                                    moRequired?: boolean | undefined;
+                                    destructive?: boolean | undefined;
+                                    icon?: string | undefined;
+                                    textInputActionButtonTitle?:
+                                        | string
+                                        | undefined;
+                                    textInputPlaceholder?: string | undefined;
+                                },
+                            ]
+                          | undefined;
+                  },
+              ]
+            | undefined;
     }
 
     interface UserData {
@@ -74,7 +88,9 @@ declare namespace MobileMessagingCordova {
         phones?: string[] | undefined;
         emails?: string[] | undefined;
         tags?: string[] | undefined;
-        customAttributes?: Record<string, string | number | boolean | object[]> | undefined;
+        customAttributes?:
+            | Record<string, string | number | boolean | object[]>
+            | undefined;
     }
 
     interface Installation {
@@ -93,7 +109,9 @@ declare namespace MobileMessagingCordova {
         deviceTimezoneId?: string | undefined;
         applicationUserId?: string | undefined;
         deviceName?: string | undefined;
-        customAttributes?: Record<string, string | number | boolean> | undefined;
+        customAttributes?:
+            | Record<string, string | number | boolean>
+            | undefined;
     }
 
     interface UserIdentity {
@@ -104,7 +122,9 @@ declare namespace MobileMessagingCordova {
 
     interface PersonalizeContext {
         userIdentity: UserIdentity;
-        userAttributes?: Record<string, string | number | boolean | object[]> | undefined;
+        userAttributes?:
+            | Record<string, string | number | boolean | object[]>
+            | undefined;
         forceDepersonalize?: boolean | undefined;
     }
 
@@ -138,9 +158,11 @@ declare namespace MobileMessagingCordova {
     }
 
     interface ChatConfig {
-        ios?: {
-            showModally: boolean;
-        } | undefined;
+        ios?:
+            | {
+                  showModally: boolean;
+              }
+            | undefined;
     }
 
     interface DefaultMessageStorage {
@@ -160,7 +182,10 @@ declare namespace MobileMessagingCordova {
          * @param config. Configuration for Mobile Messaging
          * @param onInitError. Error callback
          */
-        init(config: Configuration, onInitError?: (error: MobileMessagingError) => void): void;
+        init(
+            config: Configuration,
+            onInitError?: (error: MobileMessagingError) => void,
+        ): void;
 
         /**
          * Register to event coming from MobileMessaging library.
@@ -216,7 +241,11 @@ declare namespace MobileMessagingCordova {
          * @param callback will be called on result
          * @param errorCallback will be called on error, you have to handle error and do retries yourself
          */
-        submitEventImmediately(eventData: CustomEvent, callback: () => void, errorCallback: () => void): void;
+        submitEventImmediately(
+            eventData: CustomEvent,
+            callback: () => void,
+            errorCallback: () => void,
+        ): void;
 
         /**
          * Saves user data to the server.
@@ -237,7 +266,10 @@ declare namespace MobileMessagingCordova {
          * @param callback will be called with fetched user data on success
          * @param errorCallback will be called on error
          */
-        fetchUser(callback: (userData: UserData) => void, errorCallback: (error: MobileMessagingError) => void): void;
+        fetchUser(
+            callback: (userData: UserData) => void,
+            errorCallback: (error: MobileMessagingError) => void,
+        ): void;
 
         /**
          * Gets user data from the locally stored cache.
@@ -245,7 +277,10 @@ declare namespace MobileMessagingCordova {
          * @param callback will be called with fetched user data on success
          * @param errorCallback will be called on error
          */
-        getUser(callback: (userData: UserData) => void, errorCallback: (error: MobileMessagingError) => void): void;
+        getUser(
+            callback: (userData: UserData) => void,
+            errorCallback: (error: MobileMessagingError) => void,
+        ): void;
 
         /**
          * Saves installation to the server.

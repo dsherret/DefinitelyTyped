@@ -24,6 +24,15 @@ interface ConcurrencyManagerInstance {
     detach: () => void;
 }
 
-declare function ConcurrencyManager(axios: AxiosInstance, MAX_CONCURRENT?: number): ConcurrencyManagerInstance;
+declare function ConcurrencyManager(
+    axios: AxiosInstance,
+    MAX_CONCURRENT?: number,
+): ConcurrencyManagerInstance;
 
-export { ConcurrencyManager, ConcurrencyManagerInstance, RequestHandler, ResponseErrorHandler, ResponseHandler };
+export {
+    ConcurrencyManager,
+    ConcurrencyManagerInstance,
+    RequestHandler,
+    ResponseErrorHandler,
+    ResponseHandler,
+};

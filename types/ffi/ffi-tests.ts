@@ -13,7 +13,10 @@ import TArray = require("ref-array");
     const libsqlite3 = ffi.Library("libsqlite3", {
         sqlite3_open: ["int", ["string", sqlite3PtrPtr]],
         sqlite3_close: ["int", [sqlite3PtrPtr]],
-        sqlite3_exec: ["int", [sqlite3PtrPtr, "string", "pointer", "pointer", stringPtr]],
+        sqlite3_exec: [
+            "int",
+            [sqlite3PtrPtr, "string", "pointer", "pointer", stringPtr],
+        ],
         sqlite3_changes: ["int", [sqlite3PtrPtr]],
     });
 
@@ -31,7 +34,9 @@ import TArray = require("ref-array");
 }
 {
     const printfPointer = ffi.DynamicLibrary().get("printf");
-    const printfGen = ffi.VariadicForeignFunction(printfPointer, "void", ["string"]);
+    const printfGen = ffi.VariadicForeignFunction(printfPointer, "void", [
+        "string",
+    ]);
     printfGen()("Hello World!\n");
     printfGen("int")("This is an int: %d\n", 10);
     printfGen("string")("This is a string: %s\n", "hello");

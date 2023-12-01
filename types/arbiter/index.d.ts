@@ -75,13 +75,22 @@ declare namespace ArbiterDef {
          *
          * @param msg comma separated messages or use wildcard like a/b/*
          */
-        subscribe(msg: string, options: SubscribeOptions, func: SubscribeHandler): any;
+        subscribe(
+            msg: string,
+            options: SubscribeOptions,
+            func: SubscribeHandler,
+        ): any;
 
         /**
          * Subscribes to messages. Can use comma separated or wildcards in message.
          * Returns: subscription id or [id1,id2] if subscribing to multiple messages
          */
-        subscribe(msg: string, options: SubscribeOptions, context: any, func: SubscribeHandler): any;
+        subscribe(
+            msg: string,
+            options: SubscribeOptions,
+            context: any,
+            func: SubscribeHandler,
+        ): any;
 
         /**
          * Subscribes to messages.
@@ -97,7 +106,11 @@ declare namespace ArbiterDef {
          *
          * @param msg comma separated messages or use wildcard like a/b/*
          */
-        subscribe(msg: string[], options: SubscribeOptions, func: SubscribeHandler): any;
+        subscribe(
+            msg: string[],
+            options: SubscribeOptions,
+            func: SubscribeHandler,
+        ): any;
 
         /**
          * Subscribes to messages.
@@ -105,7 +118,12 @@ declare namespace ArbiterDef {
          *
          * @param msg comma separated messages or use wildcard like a/b/*
          */
-        subscribe(msg: string[], options: SubscribeOptions, context: any, func: SubscribeHandler): any;
+        subscribe(
+            msg: string[],
+            options: SubscribeOptions,
+            context: any,
+            func: SubscribeHandler,
+        ): any;
 
         /**
          * Unsubscribing simply sets a flag which prevents the subscriber from executing, in case you want to re-subscribe later.

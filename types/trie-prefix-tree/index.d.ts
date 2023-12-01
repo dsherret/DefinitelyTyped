@@ -1,6 +1,4 @@
-export default function Trie(
-    strings: string[],
-): {
+export default function Trie(strings: string[]): {
     /**
      * Get a string representation of the trie
      */

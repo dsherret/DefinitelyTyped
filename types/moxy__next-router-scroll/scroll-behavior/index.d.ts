@@ -1,8 +1,13 @@
 /// <reference types="node" />
 /// <reference lib="dom" />
 
-export default class NextScrollBehavior extends ScrollBehavior<Location & LocationBase, NextScrollBehaviorContext> {
-    constructor(shouldUpdateScroll: ShouldUpdateScroll<NextScrollBehaviorContext>);
+export default class NextScrollBehavior extends ScrollBehavior<
+    Location & LocationBase,
+    NextScrollBehaviorContext
+> {
+    constructor(
+        shouldUpdateScroll: ShouldUpdateScroll<NextScrollBehaviorContext>,
+    );
     _context: NextScrollBehaviorContext;
     _prevContext: NextScrollBehaviorContext;
     _debounceSavePositionMap: Map<string, ScrollPosition>;
@@ -15,7 +20,11 @@ export default class NextScrollBehavior extends ScrollBehavior<Location & Locati
 }
 import { Location } from "history";
 import { ParsedUrlQuery } from "querystring";
-import ScrollBehavior, { LocationBase, ScrollPosition, ShouldUpdateScroll } from "scroll-behavior";
+import ScrollBehavior, {
+    LocationBase,
+    ScrollPosition,
+    ShouldUpdateScroll,
+} from "scroll-behavior";
 
 export interface NextScrollBehaviorContext {
     location: Location & LocationBase;

@@ -13,5 +13,10 @@ export class GLViewNative extends React.Component<GLViewNativeProps> {
     ref?: any;
     onRef: (ref: any) => void;
     onContextCreate: (gl: WebGLRenderingContext) => void;
-    capture(opt: any): Promise<{ uri: string; localUri: string; width: number; height: number }>;
+    capture(opt: any): Promise<{
+        uri: string;
+        localUri: string;
+        width: number;
+        height: number;
+    }>;
 }

@@ -172,7 +172,10 @@ export namespace sign {
          * Verifies that the given signature is correct for the given message.
          * The signature must have been produced using the matching private key.
          */
-        verify(message: BufferSource, signature: BufferSource): Promise<boolean>;
+        verify(
+            message: BufferSource,
+            signature: BufferSource,
+        ): Promise<boolean>;
     }
 
     /**
@@ -275,7 +278,12 @@ export class KEM {
      * calls the given callback with both keys when the key pair has been
      * generated, or when an error has occurred.
      */
-    keypair(callback: (err: Error | null, result: ClassicGenerateKeyPairResult) => void): void;
+    keypair(
+        callback: (
+            err: Error | null,
+            result: ClassicGenerateKeyPairResult,
+        ) => void,
+    ): void;
 
     /**
      * Generates a new symmetric key and encrypts (encapsulates) it using the
@@ -289,7 +297,10 @@ export class KEM {
      * callback with the key and the encrypted key when the operation has
      * completed, or when an error has occurred.
      */
-    generateKey(publicKey: Buffer, callback: (err: Error | null, result: ClassicGenerateKeyResult) => void): void;
+    generateKey(
+        publicKey: Buffer,
+        callback: (err: Error | null, result: ClassicGenerateKeyResult) => void,
+    ): void;
 
     /**
      * Decrypts (decapsulates) the encryptedKey using the given privateKey and
@@ -303,7 +314,11 @@ export class KEM {
      * decrypted key when the operation has completed, or when an error has
      * occurred.
      */
-    decryptKey(privateKey: Buffer, encryptedKey: Buffer, callback: (err: Error | null, result: Buffer) => void): void;
+    decryptKey(
+        privateKey: Buffer,
+        encryptedKey: Buffer,
+        callback: (err: Error | null, result: Buffer) => void,
+    ): void;
 }
 
 /**
@@ -349,7 +364,12 @@ export class Sign {
      * calls the given callback with both keys when the key pair has been
      * generated, or when an error has occurred.
      */
-    keypair(callback: (err: Error | null, result: ClassicGenerateKeyPairResult) => void): void;
+    keypair(
+        callback: (
+            err: Error | null,
+            result: ClassicGenerateKeyPairResult,
+        ) => void,
+    ): void;
 
     /**
      * Verifies a given signature against a given message and public key.
@@ -382,5 +402,9 @@ export class Sign {
      * Buffer when the signature has been computed, or when an error has
      * occurred.
      */
-    sign(privateKey: Buffer, message: Buffer, callback: (err: Error | null, signature: Buffer) => void): void;
+    sign(
+        privateKey: Buffer,
+        message: Buffer,
+        callback: (err: Error | null, signature: Buffer) => void,
+    ): void;
 }

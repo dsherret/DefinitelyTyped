@@ -7,8 +7,10 @@ new elasticjs.Request({})
 
 new elasticjs.Request({})
     .query(new elasticjs.MatchAllQuery())
-    .filter(new elasticjs.BoolFilter().must([
-        new elasticjs.TermFilter("a", "b"),
-        new elasticjs.TermFilter("c", "d"),
-    ]))
+    .filter(
+        new elasticjs.BoolFilter().must([
+            new elasticjs.TermFilter("a", "b"),
+            new elasticjs.TermFilter("c", "d"),
+        ]),
+    )
     .toJSON();

@@ -20,7 +20,9 @@ export function createConnectFile(serverUrl: string): any;
  * @param {!Object} desiredCapabilities .
  * @return {!Array<promise.Promise>} A list of promises for the deleted files.
  */
-export function cleanSession(desiredCapabilities: webdriver.Capabilities): any[];
+export function cleanSession(
+    desiredCapabilities: webdriver.Capabilities,
+): any[];
 
 /** @return {string} . */
 export function getRandomString(): string;

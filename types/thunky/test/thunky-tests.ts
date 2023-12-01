@@ -11,7 +11,7 @@ const test = thunky((callback: (num: number) => void) => {
 
 test; // $ExpectType (callback: (num: number) => void) => void
 
-test(num => {
+test((num) => {
     num; // $ExpectType number
 });
 

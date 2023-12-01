@@ -1,7 +1,9 @@
 ## Usage
+
 When writing MediaWiki [gadgets](https://www.mediawiki.org/wiki/Extension:Gadgets) or [user scripts](https://en.wikipedia.org/wiki/Wikipedia:User_scripts), please ensure `oojs` is a dependency of your script, then use `OO` globally.
 
 ## Credits
+
 This package uses JSDoc documentation from OOjs, which is licensed under the MIT License.
 
 ```

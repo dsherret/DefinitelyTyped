@@ -7,7 +7,8 @@ export interface GroupOverrideDetails {
     preferredRole?: string | undefined;
 }
 
-export interface BasePreTokenGenerationTriggerEvent<T extends string> extends BaseTriggerEvent<T> {
+export interface BasePreTokenGenerationTriggerEvent<T extends string>
+    extends BaseTriggerEvent<T> {
     request: {
         userAttributes: StringMap;
         groupConfiguration: GroupOverrideDetails;
@@ -22,23 +23,20 @@ export interface BasePreTokenGenerationTriggerEvent<T extends string> extends Ba
     };
 }
 
-export type PreTokenGenerationHostedAuthTriggerEvent = BasePreTokenGenerationTriggerEvent<"TokenGeneration_HostedAuth">;
+export type PreTokenGenerationHostedAuthTriggerEvent =
+    BasePreTokenGenerationTriggerEvent<"TokenGeneration_HostedAuth">;
 
-export type PreTokenGenerationAuthenticationTriggerEvent = BasePreTokenGenerationTriggerEvent<
-    "TokenGeneration_Authentication"
->;
+export type PreTokenGenerationAuthenticationTriggerEvent =
+    BasePreTokenGenerationTriggerEvent<"TokenGeneration_Authentication">;
 
-export type PreTokenGenerationNewPasswordChallengeTriggerEvent = BasePreTokenGenerationTriggerEvent<
-    "TokenGeneration_NewPasswordChallenge"
->;
+export type PreTokenGenerationNewPasswordChallengeTriggerEvent =
+    BasePreTokenGenerationTriggerEvent<"TokenGeneration_NewPasswordChallenge">;
 
-export type PreTokenGenerationAuthenticateDeviceTriggerEvent = BasePreTokenGenerationTriggerEvent<
-    "TokenGeneration_AuthenticateDevice"
->;
+export type PreTokenGenerationAuthenticateDeviceTriggerEvent =
+    BasePreTokenGenerationTriggerEvent<"TokenGeneration_AuthenticateDevice">;
 
-export type PreTokenGenerationRefreshTokensTriggerEvent = BasePreTokenGenerationTriggerEvent<
-    "TokenGeneration_RefreshTokens"
->;
+export type PreTokenGenerationRefreshTokensTriggerEvent =
+    BasePreTokenGenerationTriggerEvent<"TokenGeneration_RefreshTokens">;
 
 /**
  * @see https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-pre-token-generation.html
@@ -50,4 +48,5 @@ export type PreTokenGenerationTriggerEvent =
     | PreTokenGenerationAuthenticateDeviceTriggerEvent
     | PreTokenGenerationRefreshTokensTriggerEvent;
 
-export type PreTokenGenerationTriggerHandler = Handler<PreTokenGenerationTriggerEvent>;
+export type PreTokenGenerationTriggerHandler =
+    Handler<PreTokenGenerationTriggerEvent>;

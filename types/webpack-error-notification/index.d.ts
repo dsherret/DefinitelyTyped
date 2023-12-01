@@ -7,7 +7,10 @@ declare class WebpackErrorNotificationPlugin extends Plugin {
      * `darwin` and `linux` are supported out of the box now.
      * You can also supply function(msg) {} as a strategy that will use your notification CLI tool of choice.
      */
-    constructor(strategy?: WebpackErrorNotificationPlugin.Strategy, options?: WebpackErrorNotificationPlugin.Options);
+    constructor(
+        strategy?: WebpackErrorNotificationPlugin.Strategy,
+        options?: WebpackErrorNotificationPlugin.Options,
+    );
 
     compileMessage(stats: Stats): string;
     compilationDone(stats: Stats): void;

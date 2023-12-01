@@ -1,4 +1,8 @@
-declare function depthLimit(depthLimit: number, options?: depthLimit.Options, callback?: (obj: any) => void): any;
+declare function depthLimit(
+    depthLimit: number,
+    options?: depthLimit.Options,
+    callback?: (obj: any) => void,
+): any;
 export = depthLimit;
 
 declare namespace depthLimit {

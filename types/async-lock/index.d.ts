@@ -108,7 +108,9 @@ declare class AsyncLock {
      */
     acquire<T>(
         key: string | string[],
-        fn: (() => T | PromiseLike<T>) | ((done: AsyncLock.AsyncLockDoneCallback<T>) => any),
+        fn:
+            | (() => T | PromiseLike<T>)
+            | ((done: AsyncLock.AsyncLockDoneCallback<T>) => any),
         opts?: AsyncLock.AsyncLockOptions,
     ): Promise<T>;
     /**

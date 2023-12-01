@@ -10,7 +10,12 @@ export interface DraggabillyOptions {
     handle?: string | undefined;
 }
 
-export type DraggabillyClickEventName = "dragStart" | "dragEnd" | "pointerDown" | "pointerUp" | "staticClick";
+export type DraggabillyClickEventName =
+    | "dragStart"
+    | "dragEnd"
+    | "pointerDown"
+    | "pointerUp"
+    | "staticClick";
 
 export type DraggabillyMoveEventName = "dragMove" | "pointerMove";
 
@@ -26,7 +31,11 @@ export default class Draggabilly {
 
     on(
         eventName: DraggabillyMoveEventName,
-        listener: (event: Event, pointer: MouseEvent | Touch, moveVector: Position) => void,
+        listener: (
+            event: Event,
+            pointer: MouseEvent | Touch,
+            moveVector: Position,
+        ) => void,
     ): Draggabilly;
 
     off(
@@ -36,7 +45,11 @@ export default class Draggabilly {
 
     off(
         eventName: DraggabillyMoveEventName,
-        listener: (event: Event, pointer: MouseEvent | Touch, moveVector: Position) => void,
+        listener: (
+            event: Event,
+            pointer: MouseEvent | Touch,
+            moveVector: Position,
+        ) => void,
     ): Draggabilly;
 
     once(
@@ -46,7 +59,11 @@ export default class Draggabilly {
 
     once(
         eventName: DraggabillyMoveEventName,
-        listener: (event: Event, pointer: MouseEvent | Touch, moveVector: Position) => void,
+        listener: (
+            event: Event,
+            pointer: MouseEvent | Touch,
+            moveVector: Position,
+        ) => void,
     ): Draggabilly;
 
     enable(): void;

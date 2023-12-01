@@ -2,7 +2,9 @@ import * as CSS from "csstype";
 
 export function get(obj: any, ...paths: Array<string | number>): any;
 
-export type ObjectOrArray<T, K extends keyof any = keyof any> = T[] | Record<K, T | Record<K, T> | T[]>;
+export type ObjectOrArray<T, K extends keyof any = keyof any> =
+    | T[]
+    | Record<K, T | Record<K, T> | T[]>;
 
 export type Scale = ObjectOrArray<number | string>;
 

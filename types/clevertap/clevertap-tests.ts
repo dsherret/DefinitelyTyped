@@ -1,6 +1,10 @@
 import * as CleverTap from "clevertap";
 
-const clevertap = CleverTap.init("accountId", "accountPasscode", CleverTap.REGIONS.EUROPE);
+const clevertap = CleverTap.init(
+    "accountId",
+    "accountPasscode",
+    CleverTap.REGIONS.EUROPE,
+);
 
 const data: CleverTap.UploadData[] = [
     {
@@ -90,10 +94,17 @@ const createPayload = {
 };
 
 // callback style
-clevertap.targets(clevertap.TARGET_CREATE, createPayload, { debug: 1 }, (res: any) => {});
+clevertap.targets(
+    clevertap.TARGET_CREATE,
+    createPayload,
+    { debug: 1 },
+    (res: any) => {},
+);
 
 // or if you prefer Promises
-clevertap.targets(clevertap.TARGET_CREATE, createPayload, { debug: 1 }).then((res: any) => {});
+clevertap
+    .targets(clevertap.TARGET_CREATE, createPayload, { debug: 1 })
+    .then((res: any) => {});
 
 // Estimate a target compaigns
 const estimatePayload = {
@@ -129,31 +140,59 @@ const estimatePayload = {
     devices: ["android", "ios"],
 };
 // callback style
-clevertap.targets(clevertap.TARGET_ESTIMATE, estimatePayload, { debug: 1 }, (res: any) => {});
+clevertap.targets(
+    clevertap.TARGET_ESTIMATE,
+    estimatePayload,
+    { debug: 1 },
+    (res: any) => {},
+);
 
 // or if you prefer Promises
-clevertap.targets(clevertap.TARGET_ESTIMATE, estimatePayload, { debug: 1 }).then((res: any) => {});
+clevertap
+    .targets(clevertap.TARGET_ESTIMATE, estimatePayload, { debug: 1 })
+    .then((res: any) => {});
 
 // List all target compaigns in a date range
 const listPayload = { from: 20210101, to: 20210701 };
 // callback style
-clevertap.targets(clevertap.TARGET_LIST, listPayload, { debug: 1 }, (res: any) => {});
+clevertap.targets(
+    clevertap.TARGET_LIST,
+    listPayload,
+    { debug: 1 },
+    (res: any) => {},
+);
 
 // or if you prefer Promises
-clevertap.targets(clevertap.TARGET_LIST, listPayload, { debug: 1 }).then((res: any) => {});
+clevertap
+    .targets(clevertap.TARGET_LIST, listPayload, { debug: 1 })
+    .then((res: any) => {});
 
 // Stop a specific target compaign
 const stopPayload = { id: 1629904249 };
 // callback style
-clevertap.targets(clevertap.TARGET_STOP, stopPayload, { debug: 1 }, (res: any) => {});
+clevertap.targets(
+    clevertap.TARGET_STOP,
+    stopPayload,
+    { debug: 1 },
+    (res: any) => {},
+);
 
 // or if you prefer Promises
-clevertap.targets(clevertap.TARGET_STOP, stopPayload, { debug: 1 }).then((res: any) => {});
+clevertap
+    .targets(clevertap.TARGET_STOP, stopPayload, { debug: 1 })
+    .then((res: any) => {});
 
 // Resule out  a target compaign
 const resultPayload = { id: 1629904249 };
 // callback style
-clevertap.targets(clevertap.TARGET_RESULT, resultPayload, { debug: 1 }, (res: any) => {});
+clevertap.targets(
+    clevertap.TARGET_RESULT,
+    resultPayload,
+    { debug: 1 },
+    (res: any) => {},
+);
 
 // or if you prefer Promises
-clevertap.targets(clevertap.TARGET_RESULT, resultPayload, { debug: 1 }).then((res: any) => {});
+clevertap
+    .targets(clevertap.TARGET_RESULT, resultPayload, { debug: 1 })
+    .then((res: any) => {});

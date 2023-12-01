@@ -45,13 +45,21 @@ declare namespace ZarinPal {
     }
 
     interface ZarinPalInstance {
-        PaymentRequest(input: PaymentRequestInput): Promise<PaymentRequestOutput>;
-        PaymentVerification(input: PaymentVerificationInput): Promise<PaymentVerificationOutput>;
+        PaymentRequest(
+            input: PaymentRequestInput,
+        ): Promise<PaymentRequestOutput>;
+        PaymentVerification(
+            input: PaymentVerificationInput,
+        ): Promise<PaymentVerificationOutput>;
         UnverifiedTransactions(): Promise<UnverifiedTransactionsOutput>;
-        RefreshAuthority(input: RefreshAuthorityInput): Promise<RefreshAuthorityOutput>;
+        RefreshAuthority(
+            input: RefreshAuthorityInput,
+        ): Promise<RefreshAuthorityOutput>;
     }
 }
 
-declare const ZarinPal: { create(merchantID: string, sandbox: boolean): ZarinPal.ZarinPalInstance };
+declare const ZarinPal: {
+    create(merchantID: string, sandbox: boolean): ZarinPal.ZarinPalInstance;
+};
 
 export = ZarinPal;

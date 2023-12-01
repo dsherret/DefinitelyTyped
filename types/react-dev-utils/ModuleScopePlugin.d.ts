@@ -5,7 +5,10 @@ import webpack = require("webpack");
  * directories don't reach outside of it.
  */
 declare class ModuleScopePlugin extends webpack.Plugin {
-    constructor(appSrc: string | readonly string[], allowedFiles?: readonly string[]);
+    constructor(
+        appSrc: string | readonly string[],
+        allowedFiles?: readonly string[],
+    );
 }
 
 export = ModuleScopePlugin;

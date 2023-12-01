@@ -19,7 +19,8 @@
 {
     let $facebook: angular.ngFacebook.IFacebookService;
 
-    let customInit: facebook.InitParams = $facebook.config<facebook.InitParams>("customInit");
+    let customInit: facebook.InitParams =
+        $facebook.config<facebook.InitParams>("customInit");
     let version: string = $facebook.config<string>("version");
     let appId: string = $facebook.config<string>("appId");
 
@@ -34,16 +35,16 @@
 
     let authResponse: {} = $facebook.getAuthResponse();
 
-    $facebook.getLoginStatus().then(status => {});
-    $facebook.getLoginStatus(true).then(status => {});
+    $facebook.getLoginStatus().then((status) => {});
+    $facebook.getLoginStatus(true).then((status) => {});
 
     $facebook.logout().then(() => {});
     $facebook.login().then(() => {});
 
-    $facebook.api("/me").then(user => {});
+    $facebook.api("/me").then((user) => {});
     $facebook.api("/me", "get");
     $facebook.api("/me", { param: 1 });
     $facebook.api("/me", "get", { param: 1 });
 
-    $facebook.cachedApi("'/me/friends").then(friends => {});
+    $facebook.cachedApi("'/me/friends").then((friends) => {});
 }

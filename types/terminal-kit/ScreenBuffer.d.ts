@@ -29,10 +29,12 @@ declare class ScreenBuffer extends NextGenEvents {
         url: string,
         options: {
             terminal: Terminal;
-            shrink?: {
-                width: number;
-                height: number;
-            } | undefined;
+            shrink?:
+                | {
+                      width: number;
+                      height: number;
+                  }
+                | undefined;
         },
         calback: (error: any, image: ScreenBufferHD) => void,
     ): void;
@@ -63,10 +65,10 @@ declare class ScreenBuffer extends NextGenEvents {
         ...formatArgumets: any[]
     ): void;
 
-    get(options?: {
-        x: number;
-        y: number;
-    }): { char: string; attr: ScreenBuffer.Attributes };
+    get(options?: { x: number; y: number }): {
+        char: string;
+        attr: ScreenBuffer.Attributes;
+    };
 
     resize(fromRect: Rect | Rect.Options): void;
 

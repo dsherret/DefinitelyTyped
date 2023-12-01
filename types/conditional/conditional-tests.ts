@@ -59,7 +59,12 @@ conditional.checkContains("y", ["y", "n"], "message and callback", callback); //
 conditional.checkContains("y", ["y", "n"], callback); // $ExpectType void
 conditional.checkDoesNotContain("y", ["y", "n"]); // $ExpectType void
 conditional.checkDoesNotContain("y", ["y", "n"], "message"); // $ExpectType void
-conditional.checkDoesNotContain("y", ["y", "n"], "message and callback", callback); // $ExpectType void
+conditional.checkDoesNotContain(
+    "y",
+    ["y", "n"],
+    "message and callback",
+    callback,
+); // $ExpectType void
 conditional.checkDoesNotContain("y", ["y", "n"], callback); // $ExpectType void
 conditional.checkEquals("a", "b"); // $ExpectType void
 conditional.checkEquals("a", "b", "message"); // $ExpectType void

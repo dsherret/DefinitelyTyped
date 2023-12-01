@@ -48,10 +48,17 @@ declare class ReportVisualizationColumn {
     toString(): string;
 }
 declare namespace ReportVisualizationColumn {
-    export { AngleFormat, DateFormat, hasPathDimension, LatitudeFormat, LongitudeFormat };
+    export {
+        AngleFormat,
+        DateFormat,
+        hasPathDimension,
+        LatitudeFormat,
+        LongitudeFormat,
+    };
 }
 type DateFormat = typeof import("@nginstack/engine/lib/date/DateFormat");
 type LatitudeFormat = typeof import("@nginstack/engine/lib/geo/LatitudeFormat");
-type LongitudeFormat = typeof import("@nginstack/engine/lib/geo/LongitudeFormat");
+type LongitudeFormat =
+    typeof import("@nginstack/engine/lib/geo/LongitudeFormat");
 type AngleFormat = typeof import("@nginstack/engine/lib/geo/AngleFormat");
 declare function hasPathDimension(col: ReportVisualizationColumn): boolean;

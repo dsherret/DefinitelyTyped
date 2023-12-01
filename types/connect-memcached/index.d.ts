@@ -3,19 +3,31 @@ import Memcached = require("memcached");
 
 export = ConnectMemcachedSession;
 
-declare function ConnectMemcachedSession(expressSession: typeof session): typeof ConnectMemcachedSession.MemcachedStore;
+declare function ConnectMemcachedSession(
+    expressSession: typeof session,
+): typeof ConnectMemcachedSession.MemcachedStore;
 
 declare namespace ConnectMemcachedSession {
     class MemcachedStore extends session.Store {
-        constructor(options?: MemcachedSessionOptions, callback?: (error: Error) => void);
+        constructor(
+            options?: MemcachedSessionOptions,
+            callback?: (error: Error) => void,
+        );
 
         client: Memcached;
 
         /** Attempt to fetch session by the given `sid`. */
-        get(sid: string, callback: (err: any, session: session.SessionData | null) => void): void;
+        get(
+            sid: string,
+            callback: (err: any, session: session.SessionData | null) => void,
+        ): void;
 
         /** Commit the given `session` object associated with the given `sid`. */
-        set(sid: string, session: session.SessionData, callback?: (err?: any) => void): void;
+        set(
+            sid: string,
+            session: session.SessionData,
+            callback?: (err?: any) => void,
+        ): void;
 
         /** Destroy the session associated with the given `sid`. */
         destroy(sid: string, callback?: (err?: any) => void): void;
@@ -27,7 +39,11 @@ declare namespace ConnectMemcachedSession {
         clear(callback?: (err?: any) => void): void;
 
         /** Refresh the time-to-live for the session with the given `sid`. */
-        touch(sid: string, session: session.SessionData, callback?: (err?: any) => void): void;
+        touch(
+            sid: string,
+            session: session.SessionData,
+            callback?: (err?: any) => void,
+        ): void;
     }
 
     interface MemcachedSessionOptions extends Memcached.options {

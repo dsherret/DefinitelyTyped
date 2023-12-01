@@ -2,8 +2,7 @@
 // For answers, fixes and cutting edge version please see development repository.
 
 declare namespace BigInt {
-    export interface BigInt extends Array<number> {
-    }
+    export interface BigInt extends Array<number> {}
 
     export interface IRandom {
         (): number;
@@ -308,7 +307,12 @@ declare namespace BigInt {
      *
      * @return {BigInt} A parsed BigInt.
      */
-    export function str2bigInt(s: string, b: number, n?: number, m?: number): BigInt;
+    export function str2bigInt(
+        s: string,
+        b: number,
+        n?: number,
+        m?: number,
+    ): BigInt;
 
     /**
      * return a bigInt for number represented in string s in base b with at least n bits and m array
@@ -321,7 +325,12 @@ declare namespace BigInt {
      *
      * @return {BigInt} A parsed BigInt.
      */
-    export function str2bigInt(s: string, b: string, n?: number, m?: number): BigInt;
+    export function str2bigInt(
+        s: string,
+        b: string,
+        n?: number,
+        m?: number,
+    ): BigInt;
 
     /**
      * return (x-y) for bigInts x and y.
@@ -538,7 +547,13 @@ declare namespace BigInt {
      * @param {BigInt} a The BigInt to process.
      * @param {BigInt} b The BigInt to process.
      */
-    export function eGCD_(x: BigInt, y: BigInt, d: BigInt, a: BigInt, b: BigInt): void;
+    export function eGCD_(
+        x: BigInt,
+        y: BigInt,
+        d: BigInt,
+        a: BigInt,
+        b: BigInt,
+    ): void;
 
     /**
      * do x=floor(|x|/2)*sgn(x) for bigInt x in 2's complement.
@@ -582,7 +597,12 @@ declare namespace BigInt {
      * @param {number} b  The number to process.
      * @param {number} ys The number shift.
      */
-    export function linCombShift_(x: BigInt, y: BigInt, b: number, ys: number): void;
+    export function linCombShift_(
+        x: BigInt,
+        y: BigInt,
+        b: number,
+        ys: number,
+    ): void;
 
     /**
      * Montgomery multiplication (see comments where the function is defined)

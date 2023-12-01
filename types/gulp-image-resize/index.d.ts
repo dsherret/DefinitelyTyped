@@ -5,7 +5,9 @@ import * as stream from "stream";
 
 export = GulpImageResize;
 
-declare function GulpImageResize(options?: GulpImageResize.Options): stream.Transform;
+declare function GulpImageResize(
+    options?: GulpImageResize.Options,
+): stream.Transform;
 
 declare namespace GulpImageResize {
     type SamplingFactor = [number, number];

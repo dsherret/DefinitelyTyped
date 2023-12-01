@@ -4,7 +4,9 @@
 export type Id = number | string;
 export type Limit = number;
 export type ExportHandler<T> = (id: string | number, value: T) => void;
-export type AsyncCallback<T = undefined> = T extends undefined ? () => void : (result: T) => void;
+export type AsyncCallback<T = undefined> = T extends undefined
+    ? () => void
+    : (result: T) => void;
 export type UnknownFunction = (...x: unknown[]) => unknown;
 
 export type StoreOption = boolean | string | string[];
@@ -181,9 +183,21 @@ export class Index {
     import(id: Id, item: string): Promise<void>;
 
     // Async Methods
-    addAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
-    appendAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
-    updateAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
+    addAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
+    appendAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
+    updateAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
     removeAsync(target: Id, callback?: AsyncCallback<this>): Promise<this>;
     searchAsync(
         query: string,
@@ -224,9 +238,21 @@ export class Worker {
     search(options: SearchOptions): Promise<IndexSearchResult>;
 
     // Async Methods
-    addAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
-    appendAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
-    updateAsync(id: Id, item: string, callback?: AsyncCallback<this>): Promise<this>;
+    addAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
+    appendAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
+    updateAsync(
+        id: Id,
+        item: string,
+        callback?: AsyncCallback<this>,
+    ): Promise<this>;
     removeAsync(target: Id, callback?: AsyncCallback<this>): Promise<this>;
     searchAsync(
         query: string,
@@ -252,7 +278,10 @@ export class Worker {
 export interface DocumentOptions<T, Store extends StoreOption = false> {
     id: string;
     tag?: false | string;
-    index: string | string[] | Array<IndexOptions<T, Store> & { field: string }>;
+    index:
+        | string
+        | string[]
+        | Array<IndexOptions<T, Store> & { field: string }>;
     store?: Store;
 }
 
@@ -297,14 +326,16 @@ export type DocumentSearchResult<
     T,
     Store extends StoreOption = false,
     Enrich extends boolean = false,
-> = [Store, Enrich] extends [EnrichStoreOption, true] ? Array<EnrichedDocumentSearchResultSetUnit<T>>
+> = [Store, Enrich] extends [EnrichStoreOption, true]
+    ? Array<EnrichedDocumentSearchResultSetUnit<T>>
     : SimpleDocumentSearchResultSetUnit[];
 
 /**
  * **Document:**
  * * Document search options: https://github.com/nextapps-de/flexsearch#document-search-options
  */
-export interface DocumentSearchOptions<T extends boolean> extends SearchOptions {
+export interface DocumentSearchOptions<T extends boolean>
+    extends SearchOptions {
     index?: string | string[] | SearchOptions[];
     tag?: string | string[];
     enrich?: T;
@@ -318,10 +349,7 @@ export interface DocumentSearchOptions<T extends boolean> extends SearchOptions 
  * * Document store: https://github.com/nextapps-de/flexsearch#document-store
  */
 export class Document<T, Store extends StoreOption = false> {
-    constructor(
-        options: IndexOptionsForDocumentSearch<T, Store>,
-        typeHack?: T,
-    );
+    constructor(options: IndexOptionsForDocumentSearch<T, Store>, typeHack?: T);
     add(document: T): this;
     add(id: Id, document: T): this;
     append(document: T): this;
@@ -385,7 +413,4 @@ export class Document<T, Store extends StoreOption = false> {
 /************************************/
 export function create(options: IndexOptions<string>): Index;
 export function registerCharset(name: string, charset: CharsetOptions): void;
-export function registerLanguage(
-    name: string,
-    language: LanguageOptions,
-): void;
+export function registerLanguage(name: string, language: LanguageOptions): void;

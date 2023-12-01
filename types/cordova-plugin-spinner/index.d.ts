@@ -21,7 +21,10 @@ declare namespace SpinnerPlugin {
          * @param successCallback The success callback for this asynchronous function.
          * @param failureCallback The failure callback for this asynchronous function; receives an error string.
          */
-        activityStop(successCallback?: () => void, failureCallback?: (error: string) => void): void;
+        activityStop(
+            successCallback?: () => void,
+            failureCallback?: (error: string) => void,
+        ): void;
     }
 }
 

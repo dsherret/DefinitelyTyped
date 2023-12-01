@@ -2,7 +2,14 @@
  * The tests are based on tests from types/fixed-data-table
  */
 
-import { Cell, CellProps, Column, ColumnGroup, Plugins, Table } from "fixed-data-table-2";
+import {
+    Cell,
+    CellProps,
+    Column,
+    ColumnGroup,
+    Plugins,
+    Table,
+} from "fixed-data-table-2";
 import * as React from "react";
 
 // create your Table
@@ -153,7 +160,7 @@ class MyTable4 extends React.Component<{}, MyTable4State> {
                 width={1000}
                 height={500}
             >
-                {["name", "email"].map(field => (
+                {["name", "email"].map((field) => (
                     <Column
                         key={field}
                         header={<Cell>{field}</Cell>}
@@ -184,13 +191,34 @@ class MyTable5 extends React.Component {
                 onScrollStart={(x: number, y: number) => {}}
                 onScrollEnd={(x: number, y: number) => {}}
                 onContentHeightChange={(newHeight: number) => {}}
-                onRowClick={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowContextMenu={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowDoubleClick={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseDown={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseEnter={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseLeave={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onColumnResizeEndCallback={(newColumnWidth: number, columnKey: string) => {}}
+                onRowClick={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowContextMenu={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowDoubleClick={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseDown={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseEnter={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseLeave={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onColumnResizeEndCallback={(
+                    newColumnWidth: number,
+                    columnKey: string,
+                ) => {}}
             >
                 // add columns
             </Table>
@@ -202,11 +230,36 @@ class MyTable5 extends React.Component {
 class MyTable6 extends React.Component<{}, MyTable4State> {
     state = {
         tableData: [
-            { name: "Rylan", email: "Angelita_Weimann42@gmail.com", age: "18", address: "123 Collins Street" },
-            { name: "Amelia", email: "Dexter.Trantow57@hotmail.com", age: "54", address: "Herrengasse 12" },
-            { name: "Estevan", email: "Aimee7@hotmail.com", age: "36", address: "Rue du Fosse-aux-Loups 47" },
-            { name: "Florence", email: "Jarrod.Bernier13@yahoo.com", age: "68", address: "72 Liverpool St" },
-            { name: "Tressa", email: "Yadira1@hotmail.com", age: "45", address: "Hammerichsgade 1" },
+            {
+                name: "Rylan",
+                email: "Angelita_Weimann42@gmail.com",
+                age: "18",
+                address: "123 Collins Street",
+            },
+            {
+                name: "Amelia",
+                email: "Dexter.Trantow57@hotmail.com",
+                age: "54",
+                address: "Herrengasse 12",
+            },
+            {
+                name: "Estevan",
+                email: "Aimee7@hotmail.com",
+                age: "36",
+                address: "Rue du Fosse-aux-Loups 47",
+            },
+            {
+                name: "Florence",
+                email: "Jarrod.Bernier13@yahoo.com",
+                age: "68",
+                address: "72 Liverpool St",
+            },
+            {
+                name: "Tressa",
+                email: "Yadira1@hotmail.com",
+                age: "45",
+                address: "Hammerichsgade 1",
+            },
         ],
     };
 
@@ -289,13 +342,18 @@ class MyTable7 extends React.Component {
                     cellClassName="extra-cell-class"
                     header={
                         <Plugins.ReorderCell
-                            onColumnReorderEnd={(
-                                event: { columnBefore: string; columnAfter: string; reorderColumn: string },
-                            ) => {}}
+                            onColumnReorderEnd={(event: {
+                                columnBefore: string;
+                                columnAfter: string;
+                                reorderColumn: string;
+                            }) => {}}
                             touchEnabled={true}
                         >
                             <Plugins.ResizeCell
-                                onColumnResizeEnd={(newWidth: number, columnKey: string) => {}}
+                                onColumnResizeEnd={(
+                                    newWidth: number,
+                                    columnKey: string,
+                                ) => {}}
                                 touchEnabled={true}
                             >
                                 Cell title 2
@@ -309,13 +367,18 @@ class MyTable7 extends React.Component {
                     cellClassName="extra-cell-class"
                     header={
                         <Plugins.ReorderCell
-                            onColumnReorderEnd={(
-                                event: { columnBefore: string; columnAfter: string; reorderColumn: string },
-                            ) => {}}
+                            onColumnReorderEnd={(event: {
+                                columnBefore: string;
+                                columnAfter: string;
+                                reorderColumn: string;
+                            }) => {}}
                             touchEnabled={true}
                         >
                             <Plugins.ResizeCell
-                                onColumnResizeEnd={(newWidth: number, columnKey: string) => {}}
+                                onColumnResizeEnd={(
+                                    newWidth: number,
+                                    columnKey: string,
+                                ) => {}}
                                 touchEnabled={true}
                             >
                                 Cell title 2

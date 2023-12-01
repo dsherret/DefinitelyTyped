@@ -4,8 +4,19 @@ import BN = require("bn.js");
 export const utils: any;
 export const rand: any;
 
-export type BNInput = string | BN | number | Buffer | Uint8Array | readonly number[];
-export type SignatureInput = ec.Signature | ec.SignatureOptions | Uint8Array | readonly number[] | string;
+export type BNInput =
+    | string
+    | BN
+    | number
+    | Buffer
+    | Uint8Array
+    | readonly number[];
+export type SignatureInput =
+    | ec.Signature
+    | ec.SignatureOptions
+    | Uint8Array
+    | readonly number[]
+    | string;
 
 export const version: number;
 
@@ -182,7 +193,13 @@ export class ec {
         enc?: string,
     ): ec.KeyPair;
     keyFromPublic(
-        pub: Uint8Array | Buffer | string | number[] | { x: string; y: string } | ec.KeyPair,
+        pub:
+            | Uint8Array
+            | Buffer
+            | string
+            | number[]
+            | { x: string; y: string }
+            | ec.KeyPair,
         enc?: string,
     ): ec.KeyPair;
     genKeyPair(options?: ec.GenKeyPairOptions): ec.KeyPair;
@@ -259,10 +276,7 @@ export namespace ec {
         derive(pub: curve.base.BasePoint): BN;
         sign(msg: BNInput, enc: string, options?: SignOptions): Signature;
         sign(msg: BNInput, options?: SignOptions): Signature;
-        verify(
-            msg: BNInput,
-            signature: SignatureInput,
-        ): boolean;
+        verify(msg: BNInput, signature: SignatureInput): boolean;
         inspect(): string;
     }
 
@@ -301,7 +315,9 @@ export class eddsa {
         pub: eddsa.Bytes | eddsa.Point | eddsa.KeyPair,
     ): boolean;
     hashInt(): BN;
-    keyFromPublic(pub: eddsa.Bytes | eddsa.KeyPair | eddsa.Point): eddsa.KeyPair;
+    keyFromPublic(
+        pub: eddsa.Bytes | eddsa.KeyPair | eddsa.Point,
+    ): eddsa.KeyPair;
     keyFromSecret(secret: eddsa.Bytes): eddsa.KeyPair;
     makeSignature(sig: eddsa.Signature | Buffer | string): eddsa.Signature;
     encodePoint(point: eddsa.Point): Buffer;

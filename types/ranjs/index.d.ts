@@ -55,9 +55,7 @@ declare namespace _dist {
         aic(data: readonly number[]): number;
         bic(data: readonly number[]): number;
 
-        test(
-            values: readonly number[],
-        ): {
+        test(values: readonly number[]): {
             statistics: number;
             passed: boolean;
         };
@@ -98,7 +96,13 @@ declare namespace dist {
         constructor(alpha?: number, beta?: number);
     }
     class BetaRectangular extends _dist.Distribution<"BetaRectangular"> {
-        constructor(alpha?: number, beta?: number, theta?: number, a?: number, b?: number);
+        constructor(
+            alpha?: number,
+            beta?: number,
+            theta?: number,
+            a?: number,
+            b?: number,
+        );
     }
     class Beta extends _dist.Distribution<"Beta"> {
         constructor(alpha?: number, beta?: number);
@@ -158,10 +162,20 @@ declare namespace dist {
         constructor(lambda?: number, k?: number);
     }
     class DoublyNoncentralBeta extends _dist.Distribution<"DoublyNoncentralBeta"> {
-        constructor(alpha?: number, meta?: number, lambda1?: number, lambda2?: number);
+        constructor(
+            alpha?: number,
+            meta?: number,
+            lambda1?: number,
+            lambda2?: number,
+        );
     }
     class DoublyNoncentralF extends _dist.Distribution<"DoublyNoncentralF"> {
-        constructor(d1?: number, d2?: number, lambda1?: number, lambda2?: number);
+        constructor(
+            d1?: number,
+            d2?: number,
+            lambda1?: number,
+            lambda2?: number,
+        );
     }
     class DoublyNoncentralT extends _dist.Distribution<"DoublyNoncentralT"> {
         constructor(nu?: number, mu?: number, theta?: number);
@@ -266,10 +280,20 @@ declare namespace dist {
         constructor(n?: number);
     }
     class JohnsonSB extends _dist.Distribution<"JohnsonSB"> {
-        constructor(gamma?: number, delta?: number, lambda?: number, xi?: number);
+        constructor(
+            gamma?: number,
+            delta?: number,
+            lambda?: number,
+            xi?: number,
+        );
     }
     class JohnsonSU extends _dist.Distribution<"JohnsonSU"> {
-        constructor(gamma?: number, delta?: number, lambda?: number, xi?: number);
+        constructor(
+            gamma?: number,
+            delta?: number,
+            lambda?: number,
+            xi?: number,
+        );
     }
     class Kumaraswamy extends _dist.Distribution<"Kumaraswamy"> {
         constructor(alpha?: number, beta?: number);
@@ -509,8 +533,14 @@ declare namespace _mc {
             x: number[];
             accepted: boolean;
         };
-        warmUp(progress?: (percentage: number) => void, maxBatches?: number): void;
-        sample(progress?: (percentage: number) => void, size?: number): number[][];
+        warmUp(
+            progress?: (percentage: number) => void,
+            maxBatches?: number,
+        ): void;
+        sample(
+            progress?: (percentage: number) => void,
+            size?: number,
+        ): number[][];
     }
     abstract class MCMC {}
 }
@@ -519,7 +549,10 @@ declare namespace mc {
     type State = _mc.State;
     type MCMC = _mc.MCMC;
 
-    function gr(samples: ReadonlyArray<ReadonlyArray<readonly number[]>>, maxLength?: number): number[][];
+    function gr(
+        samples: ReadonlyArray<ReadonlyArray<readonly number[]>>,
+        maxLength?: number,
+    ): number[][];
 
     class RWM extends _mc.MCMC {
         constructor(
@@ -534,8 +567,14 @@ declare namespace mc {
 }
 
 declare namespace test {
-    function bartlett(dataSets: ReadonlyArray<readonly number[]>, alpha: number): { chi2: number; passed: boolean };
-    function mannWhitney(dataSets: ReadonlyArray<readonly number[]>, alpha: number): { U: number; passed: boolean };
+    function bartlett(
+        dataSets: ReadonlyArray<readonly number[]>,
+        alpha: number,
+    ): { chi2: number; passed: boolean };
+    function mannWhitney(
+        dataSets: ReadonlyArray<readonly number[]>,
+        alpha: number,
+    ): { U: number; passed: boolean };
 }
 
 declare namespace _ts {

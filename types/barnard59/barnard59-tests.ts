@@ -5,8 +5,8 @@ import { GraphPointer } from "clownface";
 import { Logger } from "winston";
 
 function testCreate() {
-    const dataset: DatasetCore = <any> {};
-    const iri: NamedNode = <any> {};
+    const dataset: DatasetCore = <any>{};
+    const iri: NamedNode = <any>{};
     let pipleine: GraphPointer;
 
     pipleine = findPipeline(dataset);
@@ -17,8 +17,8 @@ function testCreate() {
 async function testRunner() {
     let finished: Promise<void>;
     let pipeline: Pipeline;
-    const logger: Logger = <any> {};
-    const pointer: GraphPointer = <any> {};
+    const logger: Logger = <any>{};
+    const pointer: GraphPointer = <any>{};
 
     ({ finished, pipeline } = await runner(pointer));
     ({ finished, pipeline } = await runner(pointer, {

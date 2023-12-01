@@ -38,7 +38,9 @@ export interface Options {
 /**
  * The createWriteStream function creates a writestream that pino-multi-stream can use to send logs to. *This function is async because of compatibility reasons
  */
-export function createWriteStream(options: Options): Promise<NodeJS.WritableStream>;
+export function createWriteStream(
+    options: Options,
+): Promise<NodeJS.WritableStream>;
 
 /**
  * The createWriteStreamSync function creates a writestream that pino-multi-stream can use to send logs to.

@@ -1,6 +1,8 @@
 import * as React from "react";
 
-import PixiOverlay, { MarkersPropsPixiOverlay } from "react-leaflet-pixi-overlay";
+import PixiOverlay, {
+    MarkersPropsPixiOverlay,
+} from "react-leaflet-pixi-overlay";
 
 class PixiOverlayTest extends React.Component {
     markers: MarkersPropsPixiOverlay = [

@@ -35,11 +35,9 @@ declare namespace CADES_Plugin {
         readonly XmlDsigGost3411Url: "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr3411";
         readonly XmlDsigGost3411UrlObsolete: "http://www.w3.org/2001/04/xmldsig-more#gostr3411";
         readonly XmlDsigGost3411Url2012256: "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34112012-256";
-        readonly XmlDsigGost3410Url2012256:
-            "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-256";
+        readonly XmlDsigGost3410Url2012256: "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-256";
         readonly XmlDsigGost3411Url2012512: "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34112012-512";
-        readonly XmlDsigGost3410Url2012512:
-            "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-512";
+        readonly XmlDsigGost3410Url2012512: "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-512";
     }
 
     interface EncodingType {
@@ -50,8 +48,7 @@ declare namespace CADES_Plugin {
 }
 
 interface CADESPluginBase
-    extends
-        Promise<never>,
+    extends Promise<never>,
         CAPICOM.StoreLocationPlugin,
         CAdESCOM.StoreLocationPlugin,
         CAPICOM.StoreNamePlugin,
@@ -75,8 +72,7 @@ interface CADESPluginBase
         CAdESCOM.CADESCOM_DISPLAY_DATA,
         CAdESCOM.CADESCOM_ENCRYPTION_ALGORITHM,
         CAdESCOM.CADESCOM_HASH_ALGORITHM,
-        CAdESCOM.CADESCOM_InstallResponseRestrictionFlags
-{
+        CAdESCOM.CADESCOM_InstallResponseRestrictionFlags {
     readonly JSModuleVersion: string;
     readonly current_log_level: number;
 
@@ -100,7 +96,9 @@ interface CADESPluginAsync extends CADESPluginBase {
 }
 
 interface CADESPluginSync extends CADESPluginBase {
-    CreateObject<T extends keyof CADES_Plugin.ObjectNames>(objName: T): CADES_Plugin.ObjectNames[T];
+    CreateObject<T extends keyof CADES_Plugin.ObjectNames>(
+        objName: T,
+    ): CADES_Plugin.ObjectNames[T];
 }
 
 type CADESPlugin = CADESPluginAsync | CADESPluginSync;

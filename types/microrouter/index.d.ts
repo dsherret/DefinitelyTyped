@@ -1,6 +1,10 @@
 /// <reference types="node"/>
 
-import { IncomingMessage, Server, ServerResponse as HttpServerResponse } from "http";
+import {
+    IncomingMessage,
+    Server,
+    ServerResponse as HttpServerResponse,
+} from "http";
 import { RequestHandler } from "micro";
 import UrlPattern = require("url-pattern");
 
@@ -14,10 +18,15 @@ export type AugmentedRequestHandler = (
     res: ServerResponse,
 ) => any;
 
-export type RouteHandler = (path: string | UrlPattern, handler: AugmentedRequestHandler) => RequestHandler;
+export type RouteHandler = (
+    path: string | UrlPattern,
+    handler: AugmentedRequestHandler,
+) => RequestHandler;
 
 export function router(...routes: RequestHandler[]): RequestHandler;
-export function withNamespace(namespace: string): (...routes: RequestHandler[]) => RequestHandler;
+export function withNamespace(
+    namespace: string,
+): (...routes: RequestHandler[]) => RequestHandler;
 
 export const get: RouteHandler;
 export const post: RouteHandler;

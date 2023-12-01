@@ -34,7 +34,9 @@ declare const stateBlock: StateBlock;
 
 declare const stateInline: StateInline;
 {
-    const match = stateInline.src.slice(stateInline.pos).match(htmlRE.HTML_TAG_RE);
+    const match = stateInline.src
+        .slice(stateInline.pos)
+        .match(htmlRE.HTML_TAG_RE);
     if (match) {
         stateInline.pos += match[0].length;
     }

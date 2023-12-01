@@ -4,7 +4,8 @@ export interface DataTableSkeletonHeader {
     header?: string | undefined;
 }
 
-export interface DataTableSkeletonProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface DataTableSkeletonProps
+    extends React.TableHTMLAttributes<HTMLTableElement> {
     compact?: boolean | undefined;
     columnCount?: number | undefined;
     headers?: readonly DataTableSkeletonHeader[] | undefined;

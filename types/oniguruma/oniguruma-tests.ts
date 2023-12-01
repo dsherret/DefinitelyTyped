@@ -1,4 +1,10 @@
-import { CaptureIndex, Match, OnigRegExp, OnigScanner, OnigString } from "oniguruma";
+import {
+    CaptureIndex,
+    Match,
+    OnigRegExp,
+    OnigScanner,
+    OnigString,
+} from "oniguruma";
 
 // Test OnigRegExp
 let aString: string;
@@ -32,9 +38,7 @@ usPhoneNumber.test(phoneBook, testCallback);
 
 const foo = usPhoneNumber.captureIndicesForMatch(phoneBook, {
     index: 0,
-    captureIndices: [
-        { index: 0, start: 0, end: 15, length: 15 },
-    ],
+    captureIndices: [{ index: 0, start: 0, end: 15, length: 15 }],
 });
 for (const index of foo) {
     let bar: string;
@@ -52,11 +56,15 @@ scanner.findNextMatch("dcfedeabcedfdef", (err: Error, match: Match | null) => {
         aMatch = match;
     }
 });
-scanner.findNextMatch("dcfedeabcedfdef", 8, (err: Error, match: Match | null) => {
-    if (match !== null) {
-        aMatch = match;
-    }
-});
+scanner.findNextMatch(
+    "dcfedeabcedfdef",
+    8,
+    (err: Error, match: Match | null) => {
+        if (match !== null) {
+            aMatch = match;
+        }
+    },
+);
 let rv = scanner.findNextMatchSync("dcfedeabcedfdef");
 if (rv !== null) {
     aMatch = rv;

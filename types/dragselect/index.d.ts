@@ -6,7 +6,9 @@ declare class DragSelect {
     selectorClass: string;
     selectableClass: string;
     selectables: ArrayLike<HTMLElement | SVGElement> | HTMLElement | SVGElement;
-    multiSelectKeys: ReadonlyArray<"ctrlKey" | "shiftKey" | "metaKey" | "altKey">;
+    multiSelectKeys: ReadonlyArray<
+        "ctrlKey" | "shiftKey" | "metaKey" | "altKey"
+    >;
     multiSelectMode: boolean;
     autoScrollSpeed: number;
     selectCallback: (selected: HTMLElement | SVGElement) => void;
@@ -14,7 +16,10 @@ declare class DragSelect {
     onDragStartBegin: (event: MouseEvent | TouchEvent) => void;
     moveStartCallback: (event: MouseEvent | TouchEvent) => void;
     moveCallback: (event: MouseEvent | TouchEvent) => void;
-    callback: (selected: Array<HTMLElement | SVGElement>, event: MouseEvent | TouchEvent) => void;
+    callback: (
+        selected: Array<HTMLElement | SVGElement>,
+        event: MouseEvent | TouchEvent,
+    ) => void;
     area: HTMLElement | SVGElement | Document;
     customStyles: boolean;
     zoom: number;
@@ -48,10 +53,15 @@ declare class DragSelect {
         options?: Partial<{
             area: HTMLElement | SVGElement | Document;
             autoScrollSpeed: number;
-            callback: (selected: Array<HTMLElement | SVGElement>, event: MouseEvent | TouchEvent) => void;
+            callback: (
+                selected: Array<HTMLElement | SVGElement>,
+                event: MouseEvent | TouchEvent,
+            ) => void;
             customStyles: boolean;
             hoverClass: string;
-            multiSelectKeys: ReadonlyArray<"ctrlKey" | "shiftKey" | "metaKey" | "altKey">;
+            multiSelectKeys: ReadonlyArray<
+                "ctrlKey" | "shiftKey" | "metaKey" | "altKey"
+            >;
             multiSelectMode: boolean;
             onDragMove: (event: MouseEvent | TouchEvent) => void;
             onDragStart: (event: MouseEvent | TouchEvent) => void;
@@ -59,7 +69,10 @@ declare class DragSelect {
             onElementSelect: (selected: HTMLElement | SVGElement) => void;
             onElementUnselect: (selected: HTMLElement | SVGElement) => void;
             selectableClass: string;
-            selectables: ArrayLike<HTMLElement | SVGElement> | HTMLElement | SVGElement;
+            selectables:
+                | ArrayLike<HTMLElement | SVGElement>
+                | HTMLElement
+                | SVGElement;
             selectedClass: string;
             selector: HTMLElement;
             selectorClass: string;
@@ -125,7 +138,11 @@ declare class DragSelect {
      * @param [fromSelection=true] - if elements should also be added/removed to the selection.
      * @param [withCallback] - if elements should also be added/removed to the selection.
      */
-    stop(remove?: boolean, fromSelection?: boolean, withCallback?: boolean): void;
+    stop(
+        remove?: boolean,
+        fromSelection?: boolean,
+        withCallback?: boolean,
+    ): void;
     /**
      * Returns the current selected nodes
      */
@@ -138,7 +155,11 @@ declare class DragSelect {
      * @param [ignoreScroll] if true, the scroll will be ignored
      * @return cursor { x/y }
      */
-    getCursorPos(event?: MouseEvent | TouchEvent, _area?: HTMLElement | SVGElement | false, ignoreScroll?: boolean): {
+    getCursorPos(
+        event?: MouseEvent | TouchEvent,
+        _area?: HTMLElement | SVGElement | false,
+        ignoreScroll?: boolean,
+    ): {
         x: number;
         y: number;
     };

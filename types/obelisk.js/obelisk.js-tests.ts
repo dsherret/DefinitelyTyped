@@ -1,12 +1,14 @@
 import * as obelisk from "obelisk.js";
 
 function test_brick() {
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-demo");
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-demo");
 
     var point = new obelisk.Point(500, 20);
     var pixelView = new obelisk.PixelView(canvas, point);
 
-    var color = new obelisk.SideColor().getByInnerColor(obelisk.ColorPattern.PINK);
+    var color = new obelisk.SideColor().getByInnerColor(
+        obelisk.ColorPattern.PINK,
+    );
     var dimension = new obelisk.BrickDimension(300, 400);
     var brick = new obelisk.Brick(dimension, color);
 
@@ -16,37 +18,45 @@ function test_brick() {
 }
 
 function test_cube() {
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-demo");
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-demo");
 
     var point = new obelisk.Point(500, 240);
     var pixelView = new obelisk.PixelView(canvas, point);
 
     var dimension = new obelisk.CubeDimension(120, 200, 60);
-    var color = new obelisk.CubeColor().getByHorizontalColor(obelisk.ColorPattern.GRAY);
+    var color = new obelisk.CubeColor().getByHorizontalColor(
+        obelisk.ColorPattern.GRAY,
+    );
     var cube = new obelisk.Cube(dimension, color, false);
     pixelView.renderObject(cube);
 }
 
 function test_pyramid() {
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-demo");
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-demo");
 
     var point = new obelisk.Point(500, 240);
     var pixelView = new obelisk.PixelView(canvas, point);
 
     var dimension = new obelisk.PyramidDimension(120);
-    var color = new obelisk.PyramidColor().getByRightColor(obelisk.ColorPattern.YELLOW);
+    var color = new obelisk.PyramidColor().getByRightColor(
+        obelisk.ColorPattern.YELLOW,
+    );
     var pyramid = new obelisk.Pyramid(dimension, color);
     pixelView.renderObject(pyramid);
 }
 
 function test_side() {
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-demo");
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-demo");
 
     var point = new obelisk.Point(500, 200);
     var pixelView = new obelisk.PixelView(canvas, point);
 
-    var colorX = new obelisk.SideColor().getByInnerColor(obelisk.ColorPattern.PINK);
-    var colorY = new obelisk.SideColor().getByInnerColor(obelisk.ColorPattern.GRASS_GREEN);
+    var colorX = new obelisk.SideColor().getByInnerColor(
+        obelisk.ColorPattern.PINK,
+    );
+    var colorY = new obelisk.SideColor().getByInnerColor(
+        obelisk.ColorPattern.GRASS_GREEN,
+    );
     var dimensionX = new obelisk.SideXDimension(300, 100);
     var dimensionY = new obelisk.SideYDimension(300, 100);
     var sideX = new obelisk.SideX(dimensionX, colorX);
@@ -59,18 +69,22 @@ function test_side() {
 }
 
 function test_slope() {
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-demo");
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-demo");
 
     var point = new obelisk.Point(550, 50);
     var pixelView = new obelisk.PixelView(canvas, point);
 
-    var colorBrick = new obelisk.SideColor().getByInnerColor(obelisk.ColorPattern.GRAY);
+    var colorBrick = new obelisk.SideColor().getByInnerColor(
+        obelisk.ColorPattern.GRAY,
+    );
     var dimension = new obelisk.BrickDimension(150, 400);
     var brick = new obelisk.Brick(dimension, colorBrick);
 
     pixelView.renderObject(brick);
 
-    var color = new obelisk.SlopeColor().getByHorizontalColor(obelisk.ColorPattern.GRAY);
+    var color = new obelisk.SlopeColor().getByHorizontalColor(
+        obelisk.ColorPattern.GRAY,
+    );
 
     var dimensionNorth = new obelisk.SlopeDimension(50, 40);
     var dimensionEast = new obelisk.SlopeDimension(40, 50);
@@ -99,9 +113,11 @@ function test_gif_rendering() {
     var WIDTH = 64;
     var HEIGHT = 28;
 
-    var img = <HTMLCanvasElement> document.getElementById("animation");
-    var ctx = <CanvasRenderingContext2D> document.createElement("canvas").getContext("2d");
-    var canvas = <HTMLCanvasElement> document.getElementById("canvas-uncle");
+    var img = <HTMLCanvasElement>document.getElementById("animation");
+    var ctx = <CanvasRenderingContext2D>(
+        document.createElement("canvas").getContext("2d")
+    );
+    var canvas = <HTMLCanvasElement>document.getElementById("canvas-uncle");
 
     var stack: any[] = [];
     var size = 8;
@@ -115,7 +131,7 @@ function test_gif_rendering() {
         for (var y = HEIGHT - 1; y >= 0; y--) {
             for (var x = 0; x < WIDTH - 1; x++) {
                 var pixelColor = obelisk.CanvasTool.getPixel(imgData, x, y);
-                if (pixelColor !== 0xFFFFFF) {
+                if (pixelColor !== 0xffffff) {
                     var cube: obelisk.Cube;
                     var flag = false;
                     for (var i in stack) {
@@ -126,13 +142,27 @@ function test_gif_rendering() {
                         }
                     }
                     if (!flag) {
-                        var fixedColor = obelisk.ColorGeom.applyBrightness(pixelColor, 50);
-                        var color = new obelisk.CubeColor().getByHorizontalColor(fixedColor);
-                        var dimension = new obelisk.CubeDimension(size, size + 2, size);
+                        var fixedColor = obelisk.ColorGeom.applyBrightness(
+                            pixelColor,
+                            50,
+                        );
+                        var color =
+                            new obelisk.CubeColor().getByHorizontalColor(
+                                fixedColor,
+                            );
+                        var dimension = new obelisk.CubeDimension(
+                            size,
+                            size + 2,
+                            size,
+                        );
                         cube = new obelisk.Cube(dimension, color, false);
                         stack.push([cube, pixelColor]);
                     }
-                    var p3d = new obelisk.Point3D(x * (size - 2), 0, (HEIGHT - 1 - y) * size);
+                    var p3d = new obelisk.Point3D(
+                        x * (size - 2),
+                        0,
+                        (HEIGHT - 1 - y) * size,
+                    );
                     pixelView.renderObject(cube, p3d);
                 }
             }
@@ -140,10 +170,20 @@ function test_gif_rendering() {
     }
     window.setInterval(draw, 50);
 
-    var canvasFloor = <HTMLCanvasElement> document.getElementById("canvas-floor");
+    var canvasFloor = <HTMLCanvasElement>(
+        document.getElementById("canvas-floor")
+    );
     var pixelViewFloor = new obelisk.PixelView(canvasFloor, point);
-    var floorDimension = new obelisk.CubeDimension((size - 2) * (WIDTH + 2), (size - 2) * 9, size);
-    var floor = new obelisk.Cube(floorDimension, new obelisk.CubeColor(), false);
+    var floorDimension = new obelisk.CubeDimension(
+        (size - 2) * (WIDTH + 2),
+        (size - 2) * 9,
+        size,
+    );
+    var floor = new obelisk.Cube(
+        floorDimension,
+        new obelisk.CubeColor(),
+        false,
+    );
     pixelViewFloor.renderObject(floor, new obelisk.Point3D(-20, -30, 0));
 }
 

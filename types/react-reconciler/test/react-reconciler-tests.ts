@@ -25,16 +25,28 @@ function isEqual(target: number, value: number): boolean {
 }
 
 // $ExpectType boolean
-isEqual(Constants.CONTINUOUS_EVENT_PRIORITY, ReactReconcilerConstants.ContinuousEventPriority);
+isEqual(
+    Constants.CONTINUOUS_EVENT_PRIORITY,
+    ReactReconcilerConstants.ContinuousEventPriority,
+);
 
 // $ExpectType boolean
-isEqual(Constants.DISCRETE_EVENT_PRIORITY, ReactReconcilerConstants.DiscreteEventPriority);
+isEqual(
+    Constants.DISCRETE_EVENT_PRIORITY,
+    ReactReconcilerConstants.DiscreteEventPriority,
+);
 
 // $ExpectType boolean
-isEqual(Constants.DEFAULT_EVENT_PRIORITY, ReactReconcilerConstants.DefaultEventPriority);
+isEqual(
+    Constants.DEFAULT_EVENT_PRIORITY,
+    ReactReconcilerConstants.DefaultEventPriority,
+);
 
 // $ExpectType boolean
-isEqual(Constants.IDLE_EVENT_PRIORITY, ReactReconcilerConstants.IdleEventPriority);
+isEqual(
+    Constants.IDLE_EVENT_PRIORITY,
+    ReactReconcilerConstants.IdleEventPriority,
+);
 
 // $ExpectType boolean
 isEqual(Constants.LEGACY_ROOT, ReactReconcilerConstants.LegacyRoot);

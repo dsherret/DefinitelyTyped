@@ -18,7 +18,13 @@ declare module "../../" {
         cm: Editor,
         pos: Position,
         range: Range,
-    ): { open: XmlTag; close: XmlTag | null | undefined; at: "open" | "close" } | undefined;
+    ):
+        | {
+              open: XmlTag;
+              close: XmlTag | null | undefined;
+              at: "open" | "close";
+          }
+        | undefined;
 
     function findEnclosingTag(
         cm: Editor,
@@ -27,5 +33,10 @@ declare module "../../" {
         tag: string,
     ): { open: XmlTag; close: XmlTag } | undefined;
 
-    function scanForClosingTag(cm: Editor, pos: Position, name: string, end?: Position): XmlTag | null | undefined;
+    function scanForClosingTag(
+        cm: Editor,
+        pos: Position,
+        name: string,
+        end?: Position,
+    ): XmlTag | null | undefined;
 }

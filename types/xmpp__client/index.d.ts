@@ -1,4 +1,8 @@
-import { Client as ClientCore, jid as xmppJid, xml as xmppXml } from "@xmpp/client-core";
+import {
+    Client as ClientCore,
+    jid as xmppJid,
+    xml as xmppXml,
+} from "@xmpp/client-core";
 import { Options as ConnectionOptions } from "@xmpp/connection";
 import { IQCallee } from "@xmpp/iq/callee";
 import { IQCaller } from "@xmpp/iq/caller";
@@ -87,7 +91,11 @@ export interface Client extends ClientCore {
     starttls: koaCompose.Middleware<IncomingContext<Client>>;
     sasl: SASL;
     streamManagement: StreamManagement;
-    mechanisms: Array<{ scramsha1: undefined } | { plain: undefined } | { anonymous: undefined }>;
+    mechanisms: Array<
+        | { scramsha1: undefined }
+        | { plain: undefined }
+        | { anonymous: undefined }
+    >;
 }
 
 export const jid: typeof xmppJid;

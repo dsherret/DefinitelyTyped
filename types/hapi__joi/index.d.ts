@@ -59,21 +59,23 @@ declare namespace Joi {
          * Each key can be set to a string with one (same character before and after the value) or two characters (first character
          * before and second character after), or `false` to disable wrapping.
          */
-        wrap?: {
-            /**
-             * the characters used around `{#label}` references. Defaults to `'"'`.
-             *
-             * @default '"'
-             */
-            label?: string | false | undefined;
+        wrap?:
+            | {
+                  /**
+                   * the characters used around `{#label}` references. Defaults to `'"'`.
+                   *
+                   * @default '"'
+                   */
+                  label?: string | false | undefined;
 
-            /**
-             * the characters used around array avlues. Defaults to `'[]'`
-             *
-             * @default '[]'
-             */
-            array?: string | false | undefined;
-        } | undefined;
+                  /**
+                   * the characters used around array avlues. Defaults to `'[]'`
+                   *
+                   * @default '[]'
+                   */
+                  array?: string | false | undefined;
+              }
+            | undefined;
     }
 
     interface BaseValidationOptions {
@@ -159,7 +161,10 @@ declare namespace Joi {
          *
          * @default false
          */
-        stripUnknown?: boolean | { arrays?: boolean | undefined; objects?: boolean | undefined } | undefined;
+        stripUnknown?:
+            | boolean
+            | { arrays?: boolean | undefined; objects?: boolean | undefined }
+            | undefined;
     }
 
     interface ValidationOptions extends BaseValidationOptions {
@@ -506,28 +511,30 @@ declare namespace Joi {
         /**
          * overrides default prefix characters.
          */
-        prefix?: {
-            /**
-             * references to the globally provided context preference.
-             *
-             * @default '$'
-             */
-            global?: string | undefined;
+        prefix?:
+            | {
+                  /**
+                   * references to the globally provided context preference.
+                   *
+                   * @default '$'
+                   */
+                  global?: string | undefined;
 
-            /**
-             * references to error-specific or rule specific context.
-             *
-             * @default '#'
-             */
-            local?: string | undefined;
+                  /**
+                   * references to error-specific or rule specific context.
+                   *
+                   * @default '#'
+                   */
+                  local?: string | undefined;
 
-            /**
-             * references to the root value being validated.
-             *
-             * @default '/'
-             */
-            root?: string | undefined;
-        } | undefined;
+                  /**
+                   * references to the root value being validated.
+                   *
+                   * @default '/'
+                   */
+                  root?: string | undefined;
+              }
+            | undefined;
 
         /**
          * If set to a number, sets the reference relative starting point.
@@ -624,7 +631,9 @@ declare namespace Joi {
         context?: Context | undefined;
     }
 
-    type ValidationErrorFunction = (errors: ErrorReport[]) => string | ValidationErrorItem | Error;
+    type ValidationErrorFunction = (
+        errors: ErrorReport[],
+    ) => string | ValidationErrorItem | Error;
 
     interface ValidationResult {
         error?: ValidationError | undefined;
@@ -668,7 +677,14 @@ declare namespace Joi {
 
     type ExternalValidationFunction = (value: any) => any;
 
-    type SchemaLike = string | number | boolean | object | null | Schema | SchemaMap;
+    type SchemaLike =
+        | string
+        | number
+        | boolean
+        | object
+        | null
+        | Schema
+        | SchemaMap;
 
     type SchemaMap<TSchema = any> = {
         [key in keyof TSchema]?: SchemaLike | SchemaLike[];
@@ -692,9 +708,11 @@ declare namespace Joi {
 
     interface AddRuleOptions {
         name: string;
-        args?: {
-            [key: string]: any;
-        } | undefined;
+        args?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
     }
 
     interface GetRuleOptions {
@@ -786,7 +804,11 @@ declare namespace Joi {
         /**
          * Runs internal validations against given value.
          */
-        $_validate(value: any, state: State, prefs: ValidationOptions): ValidationResult;
+        $_validate(
+            value: any,
+            state: State,
+            prefs: ValidationOptions,
+        ): ValidationResult;
     }
 
     interface AnySchema extends SchemaInternals {
@@ -863,7 +885,15 @@ declare namespace Joi {
          * Note that if value is an object, any changes to the object after `default()` is called will change the
          *  reference and any future assignment.
          */
-        default(value?: BasicType | Reference | ((parent: any, helpers: CustomHelpers) => BasicType | Reference)): this;
+        default(
+            value?:
+                | BasicType
+                | Reference
+                | ((
+                      parent: any,
+                      helpers: CustomHelpers,
+                  ) => BasicType | Reference),
+        ): this;
 
         /**
          * Returns a plain object representing the schema's rules and properties
@@ -928,7 +958,10 @@ declare namespace Joi {
          * This means that any changes made to the value by the external rules are not available to any other validation rules during the non-external validation phase.
          * If schema validation failed, no external validation rules are called.
          */
-        external(method: ExternalValidationFunction, description?: string): this;
+        external(
+            method: ExternalValidationFunction,
+            description?: string,
+        ): this;
 
         /**
          * Returns a sub-schema based on a path of object keys or schema ids.
@@ -961,7 +994,10 @@ declare namespace Joi {
          * @param key - an array of key strings, a single key string, or an array of arrays of pre-split key strings.
          * @param adjuster - a function which must return a modified schema.
          */
-        fork(key: string | string[] | string[][], adjuster: SchemaFunction): this;
+        fork(
+            key: string | string[] | string[][],
+            adjuster: SchemaFunction,
+        ): this;
 
         /**
          * Sets a schema id for reaching into the schema via `any.extract()`.
@@ -1117,7 +1153,10 @@ declare namespace Joi {
         /**
          * Validates a value using the schema and options.
          */
-        validateAsync(value: any, options?: AsyncValidationOptions): Promise<any>;
+        validateAsync(
+            value: any,
+            options?: AsyncValidationOptions,
+        ): Promise<any>;
 
         /**
          * Same as `rule({ warn: true })`.
@@ -1434,7 +1473,11 @@ declare namespace Joi {
 
     interface SymbolSchema extends AnySchema {
         // TODO: support number and symbol index
-        map(iterable: Iterable<[string | number | boolean | symbol, symbol]> | { [key: string]: symbol }): this;
+        map(
+            iterable:
+                | Iterable<[string | number | boolean | symbol, symbol]>
+                | { [key: string]: symbol },
+        ): this;
     }
 
     interface ArraySortOptions {
@@ -1524,7 +1567,10 @@ declare namespace Joi {
          * Be aware that a deep equality is performed on elements of the array having a type of object,
          * a performance penalty is to be expected for this kind of operation.
          */
-        unique(comparator?: string | ComparatorFunction, options?: ArrayUniqueOptions): this;
+        unique(
+            comparator?: string | ComparatorFunction,
+            options?: ArrayUniqueOptions,
+        ): this;
     }
 
     interface ObjectPatternOptions {
@@ -1548,7 +1594,11 @@ declare namespace Joi {
         /**
          * Verifies an assertion where.
          */
-        assert(ref: string | Reference, schema: SchemaLike, message?: string): this;
+        assert(
+            ref: string | Reference,
+            schema: SchemaLike,
+            message?: string,
+        ): this;
 
         /**
          * Requires the object to be an instance of a given constructor.
@@ -1606,7 +1656,11 @@ declare namespace Joi {
          * @param pattern - a pattern that can be either a regular expression or a joi schema that will be tested against the unknown key names
          * @param schema - the schema object matching keys must validate against
          */
-        pattern(pattern: RegExp | SchemaLike, schema: SchemaLike, options?: ObjectPatternOptions): this;
+        pattern(
+            pattern: RegExp | SchemaLike,
+            schema: SchemaLike,
+            options?: ObjectPatternOptions,
+        ): this;
 
         /**
          * Requires the object to be a Joi reference.
@@ -1621,7 +1675,11 @@ declare namespace Joi {
         /**
          * Renames a key to another name (deletes the renamed key).
          */
-        rename(from: string | RegExp, to: string, options?: RenameOptions): this;
+        rename(
+            from: string | RegExp,
+            to: string,
+            options?: RenameOptions,
+        ): this;
 
         /**
          * Requires the object to be a Joi schema instance.
@@ -1636,12 +1694,20 @@ declare namespace Joi {
         /**
          * Requires the presence of other keys whenever the specified key is present.
          */
-        with(key: string, peers: string | string[], options?: HierarchySeparatorOptions): this;
+        with(
+            key: string,
+            peers: string | string[],
+            options?: HierarchySeparatorOptions,
+        ): this;
 
         /**
          * Forbids the presence of other keys whenever the specified is present.
          */
-        without(key: string, peers: string | string[], options?: HierarchySeparatorOptions): this;
+        without(
+            key: string,
+            peers: string | string[],
+            options?: HierarchySeparatorOptions,
+        ): this;
 
         /**
          * Defines an exclusive relationship between a set of keys. one of them is required but not at the same time.
@@ -1826,7 +1892,12 @@ declare namespace Joi {
         /**
          * validation function.
          */
-        validate?(value: any, helpers: any, args: Record<string, any>, options: any): any;
+        validate?(
+            value: any,
+            helpers: any,
+            args: Record<string, any>,
+            options: any,
+        ): any;
 
         /**
          * undocumented flags.
@@ -1862,7 +1933,9 @@ declare namespace Joi {
     interface ExtensionTerm {
         init: any[] | null;
         register?: any;
-        manifest?: Record<string, "schema" | "single" | ExtensionTermManifest> | undefined;
+        manifest?:
+            | Record<string, "schema" | "single" | ExtensionTermManifest>
+            | undefined;
     }
 
     interface Extension {
@@ -1871,22 +1944,39 @@ declare namespace Joi {
         base?: Schema | undefined;
         coerce?: CoerceFunction | CoerceObject | undefined;
         flags?: Record<string, ExtensionFlag> | undefined;
-        manifest?: {
-            build?(obj: ExtensionBoundSchema, desc: Record<string, any>): any;
-        } | undefined;
+        manifest?:
+            | {
+                  build?(
+                      obj: ExtensionBoundSchema,
+                      desc: Record<string, any>,
+                  ): any;
+              }
+            | undefined;
         messages?: LanguageMessages | string | undefined;
-        modifiers?: Record<string, (rule: any, enabled?: boolean) => any> | undefined;
+        modifiers?:
+            | Record<string, (rule: any, enabled?: boolean) => any>
+            | undefined;
         overrides?: Record<string, (value: any) => Schema> | undefined;
         prepare?(value: any, helpers: CustomHelpers): any;
         rebuild?(schema: ExtensionBoundSchema): void;
-        rules?: Record<string, ExtensionRule & ThisType<SchemaInternals>> | undefined;
+        rules?:
+            | Record<string, ExtensionRule & ThisType<SchemaInternals>>
+            | undefined;
         terms?: Record<string, ExtensionTerm> | undefined;
         validate?(value: any, helpers: CustomHelpers): any;
 
         /**
          * undocumented options
          */
-        cast?: Record<string, { from(value: any): any; to(value: any, helpers: CustomHelpers): any }> | undefined;
+        cast?:
+            | Record<
+                  string,
+                  {
+                      from(value: any): any;
+                      to(value: any, helpers: CustomHelpers): any;
+                  }
+              >
+            | undefined;
         properties?: Record<string, any> | undefined;
     }
 
@@ -1904,7 +1994,11 @@ declare namespace Joi {
          */
         version: string;
 
-        ValidationError: new(message: string, details: any, original: any) => ValidationError;
+        ValidationError: new (
+            message: string,
+            details: any,
+            original: any,
+        ) => ValidationError;
 
         /**
          * Generates a schema object that matches any data type.
@@ -1955,7 +2049,9 @@ declare namespace Joi {
          * Generates a schema object that matches an object data type (as well as JSON strings that have been parsed into objects).
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        object<TSchema = any, T = TSchema>(schema?: SchemaMap<T>): ObjectSchema<TSchema>;
+        object<TSchema = any, T = TSchema>(
+            schema?: SchemaMap<T>,
+        ): ObjectSchema<TSchema>;
 
         /**
          * Generates a schema object that matches a string data type. Note that empty strings are not allowed by default and must be enabled with allow('').
@@ -1997,8 +2093,17 @@ declare namespace Joi {
          * @param schema - the schema object.
          * @param message - optional message string prefix added in front of the error message. may also be an Error object.
          */
-        assert(value: any, schema: SchemaLike, options?: ValidationOptions): void;
-        assert(value: any, schema: SchemaLike, message: string | Error, options?: ValidationOptions): void;
+        assert(
+            value: any,
+            schema: SchemaLike,
+            options?: ValidationOptions,
+        ): void;
+        assert(
+            value: any,
+            schema: SchemaLike,
+            message: string | Error,
+            options?: ValidationOptions,
+        ): void;
 
         /**
          * Validates a value against a schema, returns valid object, and throws if validation fails.
@@ -2007,8 +2112,17 @@ declare namespace Joi {
          * @param schema - the schema object.
          * @param message - optional message string prefix added in front of the error message. may also be an Error object.
          */
-        attempt(value: any, schema: SchemaLike, options?: ValidationOptions): any;
-        attempt(value: any, schema: SchemaLike, message: string | Error, options?: ValidationOptions): any;
+        attempt(
+            value: any,
+            schema: SchemaLike,
+            options?: ValidationOptions,
+        ): any;
+        attempt(
+            value: any,
+            schema: SchemaLike,
+            message: string | Error,
+            options?: ValidationOptions,
+        ): any;
 
         cache: CacheConfiguration;
 

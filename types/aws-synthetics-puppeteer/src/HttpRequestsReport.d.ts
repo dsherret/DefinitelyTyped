@@ -26,7 +26,11 @@ declare module "HttpRequestsReport" {
         getStep(): any;
     }
     class HttpRequestResult {
-        static buildRequestResult(options: any, requestBody: any, syntheticsConfiguration: any): HttpRequestResult;
+        static buildRequestResult(
+            options: any,
+            requestBody: any,
+            syntheticsConfiguration: any,
+        ): HttpRequestResult;
         headers: any;
         path: any;
         body: any;
@@ -74,8 +78,14 @@ declare module "HttpRequestsReport" {
             headers: number;
             body: number;
         };
-        withHeaders(responseHeaders: any, syntheticsConfiguration: any): HttpResponseResult;
-        withBody(responseBody: any, syntheticsConfiguration: any): HttpResponseResult;
+        withHeaders(
+            responseHeaders: any,
+            syntheticsConfiguration: any,
+        ): HttpResponseResult;
+        withBody(
+            responseBody: any,
+            syntheticsConfiguration: any,
+        ): HttpResponseResult;
         withStatusCode(statusCode: any): HttpResponseResult;
         withStatusMessage(statusMessage: any): HttpResponseResult;
         withError(error: any): HttpResponseResult;

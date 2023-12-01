@@ -6,7 +6,9 @@ export interface ReduxRouterAction {
 export function routerDidChange(state: any): ReduxRouterAction;
 export function initRoutes(routes: any): ReduxRouterAction;
 export function replaceRoutes(routes: any): ReduxRouterAction;
-export function historyAPI(method: any): (...args: Object[]) => ReduxRouterAction;
+export function historyAPI(
+    method: any,
+): (...args: Object[]) => ReduxRouterAction;
 export const pushState: (...args: Object[]) => ReduxRouterAction;
 export const push: (...args: Object[]) => ReduxRouterAction;
 export const replaceState: (...args: Object[]) => ReduxRouterAction;

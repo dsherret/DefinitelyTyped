@@ -23,7 +23,10 @@ declare class Navigation extends EventTarget {
     readonly canGoBack: boolean;
     readonly canGoForward: boolean;
 
-    navigate(url: string, options?: NavigationNavigateOptions): NavigationResult;
+    navigate(
+        url: string,
+        options?: NavigationNavigateOptions,
+    ): NavigationResult;
     reload(options?: NavigationReloadOptions): NavigationResult;
 
     traverseTo(key: string, options?: NavigationOptions): NavigationResult;
@@ -33,7 +36,9 @@ declare class Navigation extends EventTarget {
     onnavigate: ((this: Navigation, ev: NavigateEvent) => any) | null;
     onnavigatesuccess: ((this: Navigation, ev: Event) => any) | null;
     onnavigateerror: ((this: Navigation, ev: ErrorEvent) => any) | null;
-    oncurrententrychange: ((this: Navigation, ev: NavigationCurrentEntryChangeEvent) => any) | null;
+    oncurrententrychange:
+        | ((this: Navigation, ev: NavigationCurrentEntryChangeEvent) => any)
+        | null;
 
     addEventListener<K extends keyof NavigationEventMap>(
         type: K,
@@ -80,7 +85,10 @@ declare class NavigationHistoryEntry extends EventTarget {
 
     addEventListener<K extends keyof NavigationHistoryEntryEventMap>(
         type: K,
-        listener: (this: NavigationHistoryEntry, ev: NavigationHistoryEntryEventMap[K]) => any,
+        listener: (
+            this: NavigationHistoryEntry,
+            ev: NavigationHistoryEntryEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -90,7 +98,10 @@ declare class NavigationHistoryEntry extends EventTarget {
     ): void;
     removeEventListener<K extends keyof NavigationHistoryEntryEventMap>(
         type: K,
-        listener: (this: NavigationHistoryEntry, ev: NavigationHistoryEntryEventMap[K]) => any,
+        listener: (
+            this: NavigationHistoryEntry,
+            ev: NavigationHistoryEntryEventMap[K],
+        ) => any,
         options?: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -120,7 +131,10 @@ interface NavigationReloadOptions extends NavigationOptions {
 }
 
 declare class NavigationCurrentEntryChangeEvent extends Event {
-    constructor(type: string, eventInit?: NavigationCurrentEntryChangeEventInit);
+    constructor(
+        type: string,
+        eventInit?: NavigationCurrentEntryChangeEventInit,
+    );
 
     readonly navigationType: NavigationTypeString | null;
     readonly from: NavigationHistoryEntry;

@@ -30,7 +30,13 @@ export type RTCIceConnectionState =
     | "disconnected"
     | "closed";
 
-export type RTCPeerConnectionState = "new" | "connecting" | "connected" | "disconnected" | "failed" | "closed";
+export type RTCPeerConnectionState =
+    | "new"
+    | "connecting"
+    | "connected"
+    | "disconnected"
+    | "failed"
+    | "closed";
 
 export class MediaStreamTrack {
     private _enabled: boolean;
@@ -144,7 +150,9 @@ export class RTCPeerConnection {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     onicecandidateerror: (error: Error) => void | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    oniceconnectionstatechange: (event: EventOnConnectionStateChange) => void | undefined;
+    oniceconnectionstatechange: (
+        event: EventOnConnectionStateChange,
+    ) => void | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     onicegatheringstatechange: () => void | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -172,13 +180,19 @@ export class RTCPeerConnection {
 
     createOffer(options?: RTCOfferOptions): Promise<RTCSessionDescriptionType>;
 
-    createAnswer(options?: RTCAnswerOptions): Promise<RTCSessionDescriptionType>;
+    createAnswer(
+        options?: RTCAnswerOptions,
+    ): Promise<RTCSessionDescriptionType>;
 
     setConfiguration(configuration: RTCPeerConnectionConfiguration): void;
 
-    setLocalDescription(sessionDescription: RTCSessionDescriptionType): Promise<void>;
+    setLocalDescription(
+        sessionDescription: RTCSessionDescriptionType,
+    ): Promise<void>;
 
-    setRemoteDescription(sessionDescription: RTCSessionDescriptionType): Promise<void>;
+    setRemoteDescription(
+        sessionDescription: RTCSessionDescriptionType,
+    ): Promise<void>;
 
     addIceCandidate(candidate: RTCIceCandidateType): Promise<void>;
 
@@ -190,7 +204,10 @@ export class RTCPeerConnection {
 
     close(): void;
 
-    private _getTrack(streamReactTag: string, trackId: string): MediaStreamTrack;
+    private _getTrack(
+        streamReactTag: string,
+        trackId: string,
+    ): MediaStreamTrack;
 
     private _unregisterEvents(): void;
 
@@ -248,7 +265,9 @@ export class mediaDevices {
 
     static enumerateDevices(): Promise<any>;
 
-    static getUserMedia(constraints: MediaStreamConstraints): Promise<MediaStream>;
+    static getUserMedia(
+        constraints: MediaStreamConstraints,
+    ): Promise<MediaStream>;
 }
 
 export function registerGlobals(): void;

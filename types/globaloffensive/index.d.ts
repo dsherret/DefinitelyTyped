@@ -43,7 +43,11 @@ declare class GlobalOffensive extends EventEmitter {
      * @param shareCodeOrDetails Either a share code as a string, or an object containing properties `matchId`, `outcomeId`, `token`.
      * @since v2.2
      */
-    requestGame(shareCodeOrDetails: string | { matchId: string; outcomeId: string; token: string }): void;
+    requestGame(
+        shareCodeOrDetails:
+            | string
+            | { matchId: string; outcomeId: string; token: string },
+    ): void;
 
     /**
      * Request a list of current live tournament games. This is the list you see in the client under Watch -> Live.
@@ -102,7 +106,10 @@ declare class GlobalOffensive extends EventEmitter {
      * @param callback Called if all parameters are valid when Steam responds to us.
      * @since v1.2
      */
-    requestPlayersProfile(steamid: SteamID | string, callback?: (profile: GlobalOffensive.Profile) => void): void;
+    requestPlayersProfile(
+        steamid: SteamID | string,
+        callback?: (profile: GlobalOffensive.Profile) => void,
+    ): void;
 
     /**
      * Renames a particular item in your inventory, using a given name tag.
@@ -161,7 +168,10 @@ declare class GlobalOffensive extends EventEmitter {
      */
     getCasketContents(
         casketId: string,
-        callback: (err: Error | null, items: GlobalOffensive.InventoryItem[]) => void,
+        callback: (
+            err: Error | null,
+            items: GlobalOffensive.InventoryItem[],
+        ) => void,
     ): void;
 
     /**
@@ -177,9 +187,18 @@ declare class GlobalOffensive extends EventEmitter {
     craft(items: number[], recipe: number): void;
 
     // EVENTS
-    on<K extends keyof GlobalOffensiveEvents>(event: K, listener: (...args: GlobalOffensiveEvents[K]) => void): this;
-    once<K extends keyof GlobalOffensiveEvents>(event: K, listener: (...args: GlobalOffensiveEvents[K]) => void): this;
-    off<K extends keyof GlobalOffensiveEvents>(event: K, listener: (...args: GlobalOffensiveEvents[K]) => void): this;
+    on<K extends keyof GlobalOffensiveEvents>(
+        event: K,
+        listener: (...args: GlobalOffensiveEvents[K]) => void,
+    ): this;
+    once<K extends keyof GlobalOffensiveEvents>(
+        event: K,
+        listener: (...args: GlobalOffensiveEvents[K]) => void,
+    ): this;
+    off<K extends keyof GlobalOffensiveEvents>(
+        event: K,
+        listener: (...args: GlobalOffensiveEvents[K]) => void,
+    ): this;
     removeListener<K extends keyof GlobalOffensiveEvents>(
         event: K,
         listener: (...args: GlobalOffensiveEvents[K]) => void,
@@ -194,14 +213,26 @@ interface GlobalOffensiveEvents {
     connectedToGC: [];
     disconnectedFromGC: [reason: ValueOf<typeof GCConnectionStatus>];
     accountData: [accountData: GlobalOffensive.AccountData];
-    connectionStatus: [status: ValueOf<typeof GCConnectionStatus>, data: unknown];
-    matchList: [matches: GlobalOffensive.Match[], data: GlobalOffensive.MatchesData];
+    connectionStatus: [
+        status: ValueOf<typeof GCConnectionStatus>,
+        data: unknown,
+    ];
+    matchList: [
+        matches: GlobalOffensive.Match[],
+        data: GlobalOffensive.MatchesData,
+    ];
     inspectItemInfo: [item: GlobalOffensive.ItemInfo];
     inspectItemTimedOut: [assetid: string];
     itemAcquired: [item: GlobalOffensive.InventoryItem];
-    itemChanged: [oldItem: GlobalOffensive.InventoryItem, item: GlobalOffensive.InventoryItem];
+    itemChanged: [
+        oldItem: GlobalOffensive.InventoryItem,
+        item: GlobalOffensive.InventoryItem,
+    ];
     itemRemoved: [item: GlobalOffensive.InventoryItem];
-    itemCustomizationNotification: [itemIds: string[], notificationType: ValueOf<typeof ItemCustomizationNotification>];
+    itemCustomizationNotification: [
+        itemIds: string[],
+        notificationType: ValueOf<typeof ItemCustomizationNotification>,
+    ];
     playersProfile: [profile: GlobalOffensive.Profile];
     craftingComplete: [recipe: number, itemsGained: string[]];
 }

@@ -30,7 +30,7 @@ interface IPathCore {
 }
 
 interface IPathRouteConstructor {
-    new(path: string): IPathRoute;
+    new (path: string): IPathRoute;
 }
 
 interface IPath {

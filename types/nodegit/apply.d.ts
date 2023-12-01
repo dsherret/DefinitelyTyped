@@ -17,6 +17,16 @@ export namespace Apply {
 }
 
 export class Apply {
-    static apply(repo: Repository, diff: Diff, location: Apply.LOCATION, options: ApplyOptions): Promise<number>;
-    static toTree(repo: Repository, preimage: Tree, diff: Diff, options: ApplyOptions): Promise<Index>;
+    static apply(
+        repo: Repository,
+        diff: Diff,
+        location: Apply.LOCATION,
+        options: ApplyOptions,
+    ): Promise<number>;
+    static toTree(
+        repo: Repository,
+        preimage: Tree,
+        diff: Diff,
+        options: ApplyOptions,
+    ): Promise<Index>;
 }

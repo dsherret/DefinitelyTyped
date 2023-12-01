@@ -40,7 +40,11 @@ export interface JalCalResult {
  * @param gm Gregorian Calendar month (1 to 12)
  * @param gd Gregorian Calendar day of the month (1 to 28/29/30/31)
  */
-export function toJalaali(gy: number, gm: number, gd: number): JalaaliDateObject;
+export function toJalaali(
+    gy: number,
+    gm: number,
+    gd: number,
+): JalaaliDateObject;
 
 /**
  * Converts a Gregorian Date object to Jalaali.
@@ -54,7 +58,11 @@ export function toJalaali(date: Date): JalaaliDateObject;
  * @param jm Jalaali Calendar month (1 to 12)
  * @param jd Jalaali Calendar day of the month (1 to 28/29/30/31)
  */
-export function toGregorian(jy: number, jm: number, jd: number): GregorianDateObject;
+export function toGregorian(
+    jy: number,
+    jm: number,
+    jd: number,
+): GregorianDateObject;
 
 /**
  * Checks whether a Jalaali date is valid or not.

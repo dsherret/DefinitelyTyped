@@ -11,7 +11,14 @@ import {
     WheelEventHandler,
 } from "react";
 
-export type Scale = "linear" | "ordinal" | "category" | "literal" | "log" | "time" | "time-utc";
+export type Scale =
+    | "linear"
+    | "ordinal"
+    | "category"
+    | "literal"
+    | "log"
+    | "time"
+    | "time-utc";
 
 export interface AbstractSeriesPoint {
     [key: string]: any;
@@ -21,16 +28,26 @@ export type RVMouseEventHandler = MouseEventHandler<HTMLElement>;
 export type RVTouchEventHandler = TouchEventHandler<HTMLElement>;
 export type RVWheelEventHandler = WheelEventHandler<HTMLElement>;
 
-export type RVItemEventHandler = (item: any, index: number, event: MouseEvent<HTMLElement>) => void;
+export type RVItemEventHandler = (
+    item: any,
+    index: number,
+    event: MouseEvent<HTMLElement>,
+) => void;
 
-export type RVValueEventHandler<T extends AbstractSeriesPoint> = (datapoint: T, event: MouseEvent<HTMLElement>) => void;
+export type RVValueEventHandler<T extends AbstractSeriesPoint> = (
+    datapoint: T,
+    event: MouseEvent<HTMLElement>,
+) => void;
 
 export interface RVNearestXData<T extends AbstractSeriesPoint> {
     event: MouseEvent<HTMLElement>;
     innerX: T["x"];
     index: number;
 }
-export type RVNearestXEventHandler<T extends AbstractSeriesPoint> = (datapoint: T, data: RVNearestXData<T>) => void;
+export type RVNearestXEventHandler<T extends AbstractSeriesPoint> = (
+    datapoint: T,
+    data: RVNearestXData<T>,
+) => void;
 
 export interface RVNearestXYData<T extends AbstractSeriesPoint> {
     event: MouseEvent<HTMLElement>;
@@ -38,11 +55,20 @@ export interface RVNearestXYData<T extends AbstractSeriesPoint> {
     innerY: T["y"];
     index: number;
 }
-export type RVNearestXYEventHandler<T extends AbstractSeriesPoint> = (datapoint: T, data: RVNearestXYData<T>) => void;
+export type RVNearestXYEventHandler<T extends AbstractSeriesPoint> = (
+    datapoint: T,
+    data: RVNearestXYData<T>,
+) => void;
 
-export type RVGet<T extends AbstractSeriesPoint, K extends keyof T> = (datapoint: T) => T[K];
+export type RVGet<T extends AbstractSeriesPoint, K extends keyof T> = (
+    datapoint: T,
+) => T[K];
 export type RVGetNull<T extends AbstractSeriesPoint> = (datapoint: T) => any;
-export type RVGetAlignStyle = (align: { horizontal: string; vertical: string }, x: number, y: number) => CSSProperties;
+export type RVGetAlignStyle = (
+    align: { horizontal: string; vertical: string },
+    x: number,
+    y: number,
+) => CSSProperties;
 
 export type RVTickFormat = (tick: any) => string;
 
@@ -281,44 +307,54 @@ export interface LineSeriesProps extends AbstractSeriesProps<LineSeriesPoint> {
 }
 export class LineSeries extends AbstractSeries<LineSeriesProps> {}
 
-export interface LineSeriesCanvasProps extends AbstractSeriesProps<LineSeriesPoint> {
+export interface LineSeriesCanvasProps
+    extends AbstractSeriesProps<LineSeriesPoint> {
     strokeWidth?: number | undefined; // default: 1
 }
 export class LineSeriesCanvas extends AbstractSeries<LineSeriesCanvasProps> {}
 
-export interface HorizontalBarSeriesProps extends AbstractSeriesProps<HorizontalBarSeriesPoint> {
+export interface HorizontalBarSeriesProps
+    extends AbstractSeriesProps<HorizontalBarSeriesPoint> {
     barWidth: number;
 }
 export class HorizontalBarSeries extends AbstractSeries<HorizontalBarSeriesProps> {}
 
-export interface HorizontalBarSeriesCanvasProps extends AbstractSeriesProps<HorizontalBarSeriesPoint> {
+export interface HorizontalBarSeriesCanvasProps
+    extends AbstractSeriesProps<HorizontalBarSeriesPoint> {
     barWidth: number;
 }
 export class HorizontalBarSeriesCanvas extends AbstractSeries<HorizontalBarSeriesCanvasProps> {}
 
-export interface VerticalBarSeriesProps extends AbstractSeriesProps<VerticalBarSeriesPoint> {
+export interface VerticalBarSeriesProps
+    extends AbstractSeriesProps<VerticalBarSeriesPoint> {
     barWidth: number;
 }
 export class VerticalBarSeries extends AbstractSeries<VerticalBarSeriesProps> {}
 
-export interface VerticalBarSeriesCanvasProps extends AbstractSeriesProps<VerticalBarSeriesPoint> {
+export interface VerticalBarSeriesCanvasProps
+    extends AbstractSeriesProps<VerticalBarSeriesPoint> {
     barWidth: number;
 }
 export class VerticalBarSeriesCanvas extends AbstractSeries<VerticalBarSeriesCanvasProps> {}
 
-export interface VerticalRectSeriesProps extends AbstractSeriesProps<VerticalRectSeriesPoint> {}
+export interface VerticalRectSeriesProps
+    extends AbstractSeriesProps<VerticalRectSeriesPoint> {}
 export class VerticalRectSeries extends AbstractSeries<VerticalRectSeriesProps> {}
 
-export interface VerticalRectSeriesCanvasProps extends AbstractSeriesProps<VerticalRectSeriesPoint> {}
+export interface VerticalRectSeriesCanvasProps
+    extends AbstractSeriesProps<VerticalRectSeriesPoint> {}
 export class VerticalRectSeriesCanvas extends AbstractSeries<VerticalRectSeriesCanvasProps> {}
 
-export interface HorizontalRectSeriesProps extends AbstractSeriesProps<HorizontalRectSeriesPoint> {}
+export interface HorizontalRectSeriesProps
+    extends AbstractSeriesProps<HorizontalRectSeriesPoint> {}
 export class HorizontalRectSeries extends AbstractSeries<HorizontalRectSeriesProps> {}
 
-export interface HorizontalRectSeriesCanvasProps extends AbstractSeriesProps<HorizontalRectSeriesPoint> {}
+export interface HorizontalRectSeriesCanvasProps
+    extends AbstractSeriesProps<HorizontalRectSeriesPoint> {}
 export class HorizontalRectSeriesCanvas extends AbstractSeries<HorizontalRectSeriesCanvasProps> {}
 
-export interface LabelSeriesProps extends AbstractSeriesProps<LabelSeriesPoint> {
+export interface LabelSeriesProps
+    extends AbstractSeriesProps<LabelSeriesPoint> {
     allowOffsetToBeReversed?: boolean | undefined;
     marginLeft?: number | undefined;
     marginTop?: number | undefined;
@@ -328,7 +364,8 @@ export interface LabelSeriesProps extends AbstractSeriesProps<LabelSeriesPoint> 
 }
 export class LabelSeries extends AbstractSeries<LabelSeriesProps> {}
 
-export interface PolygonSeriesProps extends AbstractSeriesProps<PolygonSeriesPoint> {}
+export interface PolygonSeriesProps
+    extends AbstractSeriesProps<PolygonSeriesPoint> {}
 export class PolygonSeries extends AbstractSeries<PolygonSeriesProps> {}
 
 export interface RectSeriesProps extends AbstractSeriesProps<RectSeriesPoint> {
@@ -339,7 +376,8 @@ export interface RectSeriesProps extends AbstractSeriesProps<RectSeriesPoint> {
 }
 export class RectSeries extends AbstractSeries<RectSeriesProps> {}
 
-export interface RectSeriesCanvasProps extends AbstractSeriesProps<RectSeriesPoint> {}
+export interface RectSeriesCanvasProps
+    extends AbstractSeriesProps<RectSeriesPoint> {}
 export class RectSeriesCanvas extends AbstractSeries<RectSeriesCanvasProps> {}
 
 export interface MarkSeriesProps extends AbstractSeriesProps<MarkSeriesPoint> {
@@ -348,18 +386,22 @@ export interface MarkSeriesProps extends AbstractSeriesProps<MarkSeriesPoint> {
 }
 export class MarkSeries extends AbstractSeries<MarkSeriesProps> {}
 
-export interface MarkSeriesCanvasProps extends AbstractSeriesProps<MarkSeriesPoint> {}
+export interface MarkSeriesCanvasProps
+    extends AbstractSeriesProps<MarkSeriesPoint> {}
 export class MarkSeriesCanvas extends AbstractSeries<MarkSeriesCanvasProps> {}
 
-export interface WhiskerSeriesProps extends AbstractSeriesProps<WhiskerSeriesPoint> {
+export interface WhiskerSeriesProps
+    extends AbstractSeriesProps<WhiskerSeriesPoint> {
     strokeWidth?: number | undefined; // default: 1
 }
 export class WhiskerSeries extends AbstractSeries<WhiskerSeriesProps> {}
 
-export interface HeatmapSeriesProps extends AbstractSeriesProps<HeatmapSeriesPoint> {}
+export interface HeatmapSeriesProps
+    extends AbstractSeriesProps<HeatmapSeriesPoint> {}
 export class HeatmapSeries extends AbstractSeries<HeatmapSeriesProps> {}
 
-export interface HexbinSeriesProps extends AbstractSeriesProps<ContourSeriesPoint> {
+export interface HexbinSeriesProps
+    extends AbstractSeriesProps<ContourSeriesPoint> {
     radius?: number | undefined;
     xOffset?: number | undefined;
     yOffset?: number | undefined;
@@ -367,14 +409,16 @@ export interface HexbinSeriesProps extends AbstractSeriesProps<ContourSeriesPoin
 }
 export class HexbinSeries extends AbstractSeries<HexbinSeriesProps> {}
 
-export interface ContourSeriesProps extends AbstractSeriesProps<ContourSeriesPoint> {
+export interface ContourSeriesProps
+    extends AbstractSeriesProps<ContourSeriesPoint> {
     bandwidth?: number | undefined; // default: 40
     marginLeft?: number | undefined;
     marginTop?: number | undefined;
 }
 export class ContourSeries extends AbstractSeries<ContourSeriesProps> {}
 
-export interface CustomSVGSeriesProps extends AbstractSeriesProps<CustomSVGSeriesPoint> {
+export interface CustomSVGSeriesProps
+    extends AbstractSeriesProps<CustomSVGSeriesPoint> {
     customComponent?: string | ((row: any) => any) | undefined; // default: 'circle'
     marginLeft?: number | undefined;
     marginTop?: number | undefined;
@@ -409,7 +453,8 @@ export interface ArcSeriesProps extends AbstractSeriesProps<ArcSeriesPoint> {
 }
 export class ArcSeries extends AbstractSeries<ArcSeriesProps> {}
 
-export interface LineMarkSeriesProps extends AbstractSeriesProps<LineMarkSeriesPoint> {
+export interface LineMarkSeriesProps
+    extends AbstractSeriesProps<LineMarkSeriesPoint> {
     size?: number;
     curve?: string | ((x: any) => any) | undefined; // default: null
     getNull?: RVGetNull<LineMarkSeriesPoint> | undefined;
@@ -420,7 +465,8 @@ export interface LineMarkSeriesProps extends AbstractSeriesProps<LineMarkSeriesP
 }
 export class LineMarkSeries extends AbstractSeries<LineMarkSeriesProps> {}
 
-export interface LineMarkSeriesCanvasProps extends AbstractSeriesProps<LineMarkSeriesPoint> {}
+export interface LineMarkSeriesCanvasProps
+    extends AbstractSeriesProps<LineMarkSeriesPoint> {}
 export class LineMarkSeriesCanvas extends AbstractSeries<LineMarkSeriesCanvasProps> {}
 
 export interface HighlightArea {
@@ -429,7 +475,8 @@ export interface HighlightArea {
     right?: number | undefined;
     top?: number | undefined;
 }
-export interface HighlightProps extends AbstractSeriesProps<LineMarkSeriesPoint> {
+export interface HighlightProps
+    extends AbstractSeriesProps<LineMarkSeriesPoint> {
     enableX?: boolean | undefined;
     enableY?: boolean | undefined;
     highlightHeight?: number | undefined;
@@ -457,12 +504,29 @@ export interface HintProps {
     style?: CSSProperties | undefined; // default: {}
     align?:
         | {
-            horizontal?: "auto" | "left" | "right" | "leftEdge" | "rightEdge" | undefined;
-            vertical?: "auto" | "bottom" | "top" | "bottomEdge" | "topEdge" | undefined;
-        }
+              horizontal?:
+                  | "auto"
+                  | "left"
+                  | "right"
+                  | "leftEdge"
+                  | "rightEdge"
+                  | undefined;
+              vertical?:
+                  | "auto"
+                  | "bottom"
+                  | "top"
+                  | "bottomEdge"
+                  | "topEdge"
+                  | undefined;
+          }
         | undefined; // default: {'horizontal':'auto','vertical':'auto'}
     getAlignStyle?: RVGetAlignStyle | undefined;
-    orientation?: "bottomleft" | "bottomright" | "topleft" | "topright" | undefined;
+    orientation?:
+        | "bottomleft"
+        | "bottomright"
+        | "topleft"
+        | "topright"
+        | undefined;
 }
 export class Hint<T = any> extends PureComponent<HintProps & T> {}
 
@@ -479,11 +543,11 @@ export class ChartLabel<T = any> extends PureComponent<ChartLabelProps & T> {}
 export interface BordersProps {
     style?:
         | {
-            bottom?: CSSProperties | undefined;
-            left?: CSSProperties | undefined;
-            right?: CSSProperties | undefined;
-            top?: CSSProperties | undefined;
-        }
+              bottom?: CSSProperties | undefined;
+              left?: CSSProperties | undefined;
+              right?: CSSProperties | undefined;
+              top?: CSSProperties | undefined;
+          }
         | undefined; // default: {'all':{},'bottom':{},'left':{},'right':{},'top':{}}
     marginTop?: number | undefined;
     marginBottom?: number | undefined;
@@ -507,10 +571,10 @@ export interface CrosshairProps {
     titleFormat?: ((x: any) => { title: any; value: any }) | undefined;
     style?:
         | {
-            line?: CSSProperties | undefined;
-            title?: CSSProperties | undefined;
-            box?: CSSProperties | undefined;
-        }
+              line?: CSSProperties | undefined;
+              title?: CSSProperties | undefined;
+              box?: CSSProperties | undefined;
+          }
         | undefined; // default: {'line':{},'title':{},'box':{}}
 }
 export class Crosshair<T = any> extends PureComponent<CrosshairProps & T> {}
@@ -539,7 +603,8 @@ export interface XYPlotProps {
 }
 export class XYPlot<T = any> extends Component<XYPlotProps & T> {}
 
-export interface DecorativeAxisProps extends AbstractSeriesProps<DecorativeAxisPoint> {
+export interface DecorativeAxisProps
+    extends AbstractSeriesProps<DecorativeAxisPoint> {
     axisDomain: number[];
     axisEnd: {
         x?: number | string | undefined;
@@ -566,11 +631,11 @@ export interface XAxisProps {
     title?: string | undefined;
     style?:
         | (CSSProperties & {
-            line?: CSSProperties | undefined;
-            ticks?: CSSProperties | undefined;
-            text?: CSSProperties | undefined;
-            title?: CSSProperties | undefined;
-        })
+              line?: CSSProperties | undefined;
+              ticks?: CSSProperties | undefined;
+              text?: CSSProperties | undefined;
+              title?: CSSProperties | undefined;
+          })
         | undefined;
     className?: string | undefined;
     hideTicks?: boolean | undefined;
@@ -604,11 +669,11 @@ export interface YAxisProps {
     title?: string | undefined;
     style?:
         | (CSSProperties & {
-            line?: CSSProperties | undefined;
-            ticks?: CSSProperties | undefined;
-            text?: CSSProperties | undefined;
-            title?: CSSProperties | undefined;
-        })
+              line?: CSSProperties | undefined;
+              ticks?: CSSProperties | undefined;
+              text?: CSSProperties | undefined;
+              title?: CSSProperties | undefined;
+          })
         | undefined;
     className?: string | undefined;
     hideTicks?: boolean | undefined;
@@ -650,7 +715,9 @@ export interface CircularGridLinesProps {
     innerWidth?: number | undefined;
     innerHeight?: number | undefined;
 }
-export class CircularGridLines<T = any> extends PureComponent<CircularGridLinesProps & T> {}
+export class CircularGridLines<T = any> extends PureComponent<
+    CircularGridLinesProps & T
+> {}
 
 export interface GridLinesProps {
     direction?: "vertical" | "horizontal" | undefined; // default: 'vertical'
@@ -675,7 +742,9 @@ export class GridLines<T = any> extends PureComponent<GridLinesProps & T> {}
 export interface GradientDefsProps {
     className?: string | undefined; // default: ''
 }
-export class GradientDefs<T = any> extends PureComponent<GradientDefsProps & T> {}
+export class GradientDefs<T = any> extends PureComponent<
+    GradientDefsProps & T
+> {}
 
 export interface VerticalGridLinesProps {
     direction?: "vertical" | undefined; // default: 'vertical'
@@ -735,13 +804,13 @@ export interface DiscreteColorLegendProps {
     className?: string | undefined; // default: ''
     items: Array<
         | {
-            title: string;
-            color?: string | undefined;
-            disabled?: boolean | undefined;
-            strokeDasharray?: string;
-            strokeStyle?: string;
-            strokeWidth?: number;
-        }
+              title: string;
+              color?: string | undefined;
+              disabled?: boolean | undefined;
+              strokeDasharray?: string;
+              strokeStyle?: string;
+              strokeWidth?: number;
+          }
         | string
         | ReactChild
     >;
@@ -758,10 +827,10 @@ export interface SearchableDiscreteColorLegendProps {
     className?: string | undefined; // default: ''
     items: Array<
         | {
-            title: string;
-            color?: string | undefined;
-            disabled?: boolean | undefined;
-        }
+              title: string;
+              color?: string | undefined;
+              disabled?: boolean | undefined;
+          }
         | string
         | ReactChild
     >;
@@ -836,7 +905,9 @@ export interface TreemapProps {
     onLeafMouseOut?: RVValueEventHandler<TreemapPoint> | undefined;
     useCirclePacking?: boolean | undefined;
     padding?: number | undefined; // default: 1
-    sortFunction?: ((a: any, b: any, getSize: RVGet<TreemapPoint, "size">) => number) | undefined;
+    sortFunction?:
+        | ((a: any, b: any, getSize: RVGet<TreemapPoint, "size">) => number)
+        | undefined;
     width: number;
     getSize?: RVGet<TreemapPoint, "size"> | undefined;
     getColor?: RVGet<TreemapPoint, "color"> | undefined;
@@ -891,10 +962,10 @@ export interface RadarChartProps {
     startingAngle?: number | undefined; // default: 1.5707963267948966
     style?:
         | {
-            axes?: CSSProperties | undefined;
-            labels?: CSSProperties | undefined;
-            polygons?: CSSProperties | undefined;
-        }
+              axes?: CSSProperties | undefined;
+              labels?: CSSProperties | undefined;
+              polygons?: CSSProperties | undefined;
+          }
         | undefined; // default: {'axes':{'line':{},'ticks':{},'text':{}},'labels':{'fontSize':10,'textAnchor':'middle'},'polygons':{'strokeWidth':0.5,'strokeOpacity':1,'fillOpacity':0.1}}
     tickFormat?: RVTickFormat | undefined;
     width: number;
@@ -916,16 +987,18 @@ export interface ParallelCoordinatesProps {
     margin?: Margin | number | undefined;
     style?:
         | {
-            axes?: CSSProperties | undefined;
-            labels?: CSSProperties | undefined;
-            lines?: CSSProperties | undefined;
-        }
+              axes?: CSSProperties | undefined;
+              labels?: CSSProperties | undefined;
+              lines?: CSSProperties | undefined;
+          }
         | undefined; // default: {'axes':{'line':{},'ticks':{},'text':{}},'labels':{'fontSize':10,'textAnchor':'middle'},'lines':{'strokeWidth':1,'strokeOpacity':1}}
     showMarks?: boolean | undefined;
     tickFormat?: RVTickFormat | undefined;
     width: number;
 }
-export class ParallelCoordinates<T = any> extends Component<ParallelCoordinatesProps & T> {}
+export class ParallelCoordinates<T = any> extends Component<
+    ParallelCoordinatesProps & T
+> {}
 
 export interface SankeyProps {
     align?: "justify" | "left" | "right" | "center" | undefined; // default: 'justify'
@@ -950,10 +1023,10 @@ export interface SankeyProps {
     onLinkMouseOut?: RVValueEventHandler<SankeyPoint> | undefined;
     style?:
         | {
-            links?: CSSProperties | undefined;
-            rects?: CSSProperties | undefined;
-            labels?: CSSProperties | undefined;
-        }
+              links?: CSSProperties | undefined;
+              rects?: CSSProperties | undefined;
+              labels?: CSSProperties | undefined;
+          }
         | undefined; // default: {'links':{},'rects':{},'labels':{}}
     width: number;
 }
@@ -977,7 +1050,16 @@ export interface SunburstProps {
 }
 export class Sunburst<T = any> extends Component<SunburstProps & T> {}
 
-export type StackDirections = "x" | "y" | "radius" | "angle" | "color" | "fill" | "stroke" | "opacity" | "size";
+export type StackDirections =
+    | "x"
+    | "y"
+    | "radius"
+    | "angle"
+    | "color"
+    | "fill"
+    | "stroke"
+    | "opacity"
+    | "size";
 export interface FlexibleXYPlotProps {
     animation?: string | AnimationParam | boolean | undefined;
     className?: string | undefined;
@@ -998,7 +1080,9 @@ export interface FlexibleXYPlotProps {
     stackBy?: StackDirections | undefined;
     style?: CSSProperties | undefined;
 }
-export class FlexibleXYPlot<T = any> extends Component<FlexibleXYPlotProps & T> {}
+export class FlexibleXYPlot<T = any> extends Component<
+    FlexibleXYPlotProps & T
+> {}
 
 export interface FlexibleWidthXYPlotProps {
     animation?: string | AnimationParam | boolean | undefined;
@@ -1020,7 +1104,9 @@ export interface FlexibleWidthXYPlotProps {
     stackBy?: StackDirections | undefined;
     style?: CSSProperties | undefined;
 }
-export class FlexibleWidthXYPlot<T = any> extends Component<FlexibleWidthXYPlotProps & T> {}
+export class FlexibleWidthXYPlot<T = any> extends Component<
+    FlexibleWidthXYPlotProps & T
+> {}
 
 export interface FlexibleHeightXYPlotProps {
     animation?: string | AnimationParam | boolean | undefined;
@@ -1042,7 +1128,9 @@ export interface FlexibleHeightXYPlotProps {
     stackBy?: StackDirections | undefined;
     style?: CSSProperties | undefined;
 }
-export class FlexibleHeightXYPlot<T = any> extends Component<FlexibleHeightXYPlotProps & T> {}
+export class FlexibleHeightXYPlot<T = any> extends Component<
+    FlexibleHeightXYPlotProps & T
+> {}
 
 export function makeHeightFlexible(component?: any): any;
 
@@ -1073,7 +1161,12 @@ export const ScaleUtils: {
     getAttributeFunctor: (props?: any, attr?: any) => any;
     getAttr0Functor: (props?: any, attr?: any) => any;
     getAttributeValue: (props?: any, attr?: any) => any;
-    getDomainByAccessor: (allData?: any, accessor?: any, accessor0?: any, type?: any) => any;
+    getDomainByAccessor: (
+        allData?: any,
+        accessor?: any,
+        accessor0?: any,
+        type?: any,
+    ) => any;
     getFontColorFromBackground: (background?: any) => any;
     getMissingScaleProps: (props?: any, data?: any, attributes?: any) => any;
     getOptionalScaleProps: (props?: any) => any;

@@ -119,25 +119,37 @@ window.addEventListener("obsRecordingUnpaused", (event: CustomEvent<null>) => {
     event.detail;
 });
 
-window.addEventListener("obsReplaybufferStarting", (event: CustomEvent<null>) => {
-    event;
-    event.detail;
-});
+window.addEventListener(
+    "obsReplaybufferStarting",
+    (event: CustomEvent<null>) => {
+        event;
+        event.detail;
+    },
+);
 
-window.addEventListener("obsReplaybufferStarted", (event: CustomEvent<null>) => {
-    event;
-    event.detail;
-});
+window.addEventListener(
+    "obsReplaybufferStarted",
+    (event: CustomEvent<null>) => {
+        event;
+        event.detail;
+    },
+);
 
-window.addEventListener("obsReplaybufferStopping", (event: CustomEvent<null>) => {
-    event;
-    event.detail;
-});
+window.addEventListener(
+    "obsReplaybufferStopping",
+    (event: CustomEvent<null>) => {
+        event;
+        event.detail;
+    },
+);
 
-window.addEventListener("obsReplaybufferStopped", (event: CustomEvent<null>) => {
-    event;
-    event.detail;
-});
+window.addEventListener(
+    "obsReplaybufferStopped",
+    (event: CustomEvent<null>) => {
+        event;
+        event.detail;
+    },
+);
 
 window.addEventListener("obsReplaybufferSaved", (event: CustomEvent<null>) => {
     event;
@@ -159,17 +171,23 @@ window.addEventListener("obsExit", (event: CustomEvent<null>) => {
     event.detail;
 });
 
-window.addEventListener("obsSourceActiveChanged", (event: CustomEvent<ActiveInfo>) => {
-    event;
-    event.detail;
-    event.detail.active;
-});
+window.addEventListener(
+    "obsSourceActiveChanged",
+    (event: CustomEvent<ActiveInfo>) => {
+        event;
+        event.detail;
+        event.detail.active;
+    },
+);
 
-window.addEventListener("obsSourceVisibleChanged", (event: CustomEvent<VisibleInfo>) => {
-    event;
-    event.detail;
-    event.detail.visible;
-});
+window.addEventListener(
+    "obsSourceVisibleChanged",
+    (event: CustomEvent<VisibleInfo>) => {
+        event;
+        event.detail;
+        event.detail.visible;
+    },
+);
 
 window.obsstudio.onVisibilityChange = (visibility: boolean) => {
     visibility;

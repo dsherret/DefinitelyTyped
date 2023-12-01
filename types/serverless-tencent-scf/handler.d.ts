@@ -24,4 +24,7 @@ export interface Context {
     tencentcloud_uin: string;
 }
 
-export type Callback<TResult> = (error?: Error | string | null, result?: TResult) => void;
+export type Callback<TResult> = (
+    error?: Error | string | null,
+    result?: TResult,
+) => void;

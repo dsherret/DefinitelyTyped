@@ -50,9 +50,14 @@ declare class GulpRunner extends Transform {
      * spawned taking that data as standard input, and a Vinyl file wrapping the
      * process's standard output is pushed downstream.
      */
-    exec(stdin?: any, callback?: (error: Error | null | undefined) => void): this;
+    exec(
+        stdin?: any,
+        callback?: (error: Error | null | undefined) => void,
+    ): this;
 }
 
-declare function GulpRunner(...args: ConstructorParameters<typeof GulpRunner>): GulpRunner;
+declare function GulpRunner(
+    ...args: ConstructorParameters<typeof GulpRunner>
+): GulpRunner;
 
 export = GulpRunner;

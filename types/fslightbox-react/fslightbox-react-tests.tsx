@@ -26,13 +26,28 @@ class Test extends React.Component {
                 thumbs={[null, "yt.jpg", "bbbunny.jpg", "vimeo.jpg"]}
                 thumbsIcons={[
                     null,
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="00 430.118 430.118">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28px"
+                        height="28px"
+                        viewBox="00 430.118 430.118"
+                    >
                         <path d="M0 0 H119.054 V119.054 H0 V0 z M158.946 0 H278 V119.054 H158.946 V0 z M158.946 158.946 H278 V278 H158.946 V158.946 z M0 158.946 H119.054 V278 H0 V158.946 z" />
                     </svg>,
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 512 512">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30px"
+                        height="30px"
+                        viewBox="0 0 512 512"
+                    >
                         <path d="M0 0 H119.054 V119.054 H0 V0 z M158.946 0 H278 V119.054 H158.946 V0 z M158.946 158.946 H278 V278 H158.946 V158.946 z M0 158.946 H119.054 V278 H0 V158.946 z" />
                     </svg>,
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="00 430.118 430.118">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28px"
+                        height="28px"
+                        viewBox="00 430.118 430.118"
+                    >
                         <path d="M0 0 H119.054 V119.054 H0 V0 z M158.946 0 H278 V119.054 H158.946 V0 z M158.946 158.946 H278 V278 H158.946 V158.946 z M0 158.946 H119.054 V278 H0 V158.946 z" />
                     </svg>,
                 ]}

@@ -8,7 +8,11 @@ export type PayloadType = "request" | "notification" | "success" | "error";
 
 export interface DeserializeObject {
     type: PayloadType;
-    payload: RequestPayloadObject | NotificationPayloadObject | SuccessPayloadObject | ErrorPayloadObject;
+    payload:
+        | RequestPayloadObject
+        | NotificationPayloadObject
+        | SuccessPayloadObject
+        | ErrorPayloadObject;
 }
 
 export interface PayloadObject {
@@ -47,15 +51,26 @@ export interface SerializerError extends Error {
     data?: any[] | undefined;
 }
 
-export function request(id: string | number, method: string, params?: any): string;
+export function request(
+    id: string | number,
+    method: string,
+    params?: any,
+): string;
 export function notification(method: string, params?: any): string;
 export function success(id: string | number, result: any): string;
 export function error(id: string | number, error: err.JsonRpcError): string;
 export function deserialize(msg: string): DeserializeObject;
-export function requestObject(id: string | number, method: string, params?: any): PayloadObject;
+export function requestObject(
+    id: string | number,
+    method: string,
+    params?: any,
+): PayloadObject;
 export function notificationObject(method: string, params?: any): PayloadObject;
 export function successObject(id: string | number, result: any): PayloadObject;
-export function errorObject(id: string | number, error: SerializerError): PayloadObject;
+export function errorObject(
+    id: string | number,
+    error: SerializerError,
+): PayloadObject;
 export function deserializeObject(msg: PayloadObject): DeserializeObject;
 
 export type errorHandler = (errors: string[] | null) => void;

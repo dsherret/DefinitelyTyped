@@ -1,17 +1,33 @@
-import { BlankNode, DatasetCore, DatasetCoreFactory, Literal, NamedNode, Quad_Graph, Term } from "rdf-js";
+import {
+    BlankNode,
+    DatasetCore,
+    DatasetCoreFactory,
+    Literal,
+    NamedNode,
+    Quad_Graph,
+    Term,
+} from "rdf-js";
 import Context from "./lib/Context.js";
 
 export type AnyContext = Term | Term[] | undefined;
 
 type TermOrClownface<X extends Term = Term> = MultiPointer<X> | X;
-type TermOrLiteral<X extends Term = Term> = TermOrClownface<X> | string | number | boolean;
+type TermOrLiteral<X extends Term = Term> =
+    | TermOrClownface<X>
+    | string
+    | number
+    | boolean;
 
-type AddCallback<D extends DatasetCore, X extends Term> = (added: AnyPointer<X, D>) => void;
+type AddCallback<D extends DatasetCore, X extends Term> = (
+    added: AnyPointer<X, D>,
+) => void;
 type SingleOrArray<T> = T | readonly T[];
 type SingleOrOneElementArray<T> = T | readonly [T];
 
 type SingleOrArrayOfTerms<X extends Term> = SingleOrArray<X> | MultiPointer<X>;
-type SingleOrArrayOfTermsOrLiterals<X extends Term> = SingleOrArray<TermOrLiteral<X>>;
+type SingleOrArrayOfTermsOrLiterals<X extends Term> = SingleOrArray<
+    TermOrLiteral<X>
+>;
 
 interface NodeOptions {
     type?: "BlankNode" | "Literal" | "NamedNode" | undefined;
@@ -20,20 +36,40 @@ interface NodeOptions {
 }
 
 export type ClownfaceInit<D extends DatasetCore = DatasetCore> = Partial<
-    Pick<AnyPointer<AnyContext, D>, "dataset" | "_context"> & { graph: Quad_Graph }
+    Pick<AnyPointer<AnyContext, D>, "dataset" | "_context"> & {
+        graph: Quad_Graph;
+    }
 >;
 
-type Iteratee<T extends AnyContext = undefined, D extends DatasetCore = DatasetCore> = T extends undefined ? never
-    : T extends any[] ? AnyPointer<T[0], D>
-    : AnyPointer<T, D>;
+type Iteratee<
+    T extends AnyContext = undefined,
+    D extends DatasetCore = DatasetCore,
+> = T extends undefined
+    ? never
+    : T extends any[]
+      ? AnyPointer<T[0], D>
+      : AnyPointer<T, D>;
 
-type Predicate<T extends AnyContext = undefined, D extends DatasetCore = DatasetCore> = T extends undefined ? never
-    : T extends any[] ? Iteratee<T[0], D>
-    : Iteratee<T, D>;
+type Predicate<
+    T extends AnyContext = undefined,
+    D extends DatasetCore = DatasetCore,
+> = T extends undefined
+    ? never
+    : T extends any[]
+      ? Iteratee<T[0], D>
+      : Iteratee<T, D>;
 
-type ExtractContext<T extends AnyContext> = T extends undefined ? never : T extends any[] ? T[0] : T;
+type ExtractContext<T extends AnyContext> = T extends undefined
+    ? never
+    : T extends any[]
+      ? T[0]
+      : T;
 
-export type FilterCallback<T extends AnyContext = AnyContext, D extends DatasetCore = DatasetCore, S extends T = T> = (
+export type FilterCallback<
+    T extends AnyContext = AnyContext,
+    D extends DatasetCore = DatasetCore,
+    S extends T = T,
+> = (
     ptr: Iteratee<T, D>,
     index: number,
     pointers: Array<GraphPointer<ExtractContext<T>>>,
@@ -43,11 +79,26 @@ interface OutOptions {
     language?: string | string[] | undefined;
 }
 
-export interface AnyPointer<T extends AnyContext = AnyContext, D extends DatasetCore = DatasetCore> {
-    readonly term: T extends undefined ? undefined : T extends any[] ? undefined | T[0] : T;
+export interface AnyPointer<
+    T extends AnyContext = AnyContext,
+    D extends DatasetCore = DatasetCore,
+> {
+    readonly term: T extends undefined
+        ? undefined
+        : T extends any[]
+          ? undefined | T[0]
+          : T;
     readonly terms: T extends undefined ? Term[] : T extends any[] ? T : [T];
-    readonly value: T extends undefined ? undefined : T extends any[] ? undefined | string[0] : string;
-    readonly values: T extends undefined ? string[] : T extends any[] ? string[] : [string];
+    readonly value: T extends undefined
+        ? undefined
+        : T extends any[]
+          ? undefined | string[0]
+          : string;
+    readonly values: T extends undefined
+        ? string[]
+        : T extends any[]
+          ? string[]
+          : [string];
     readonly dataset: D;
     readonly datasets: D[];
     readonly _context: Array<Context<D, Term>>;
@@ -56,49 +107,81 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
 
     list(): Iterable<GraphPointer<Term, D>> | null;
 
-    isList(): this is T extends BlankNode | NamedNode ? ListPointer<T, D> : never;
+    isList(): this is T extends BlankNode | NamedNode
+        ? ListPointer<T, D>
+        : never;
 
     toArray(): Array<AnyPointer<ExtractContext<T>, D>>;
 
     filter<S extends T>(cb: FilterCallback<T, D, S>): AnyPointer<S, D>;
 
     filter(
-        cb: (ptr: Iteratee<T, D>, index: number, pointers: Array<GraphPointer<ExtractContext<T>>>) => boolean,
+        cb: (
+            ptr: Iteratee<T, D>,
+            index: number,
+            pointers: Array<GraphPointer<ExtractContext<T>>>,
+        ) => boolean,
     ): AnyPointer<T, D>;
 
     forEach(cb: (quad: Iteratee<T, D>) => void): this;
 
     map<X>(cb: (quad: Iteratee<T, D>, index: number) => X): X[];
 
-    node(value: SingleOrOneElementArray<boolean | string | number>, options?: NodeOptions): AnyPointer<Literal, D>;
+    node(
+        value: SingleOrOneElementArray<boolean | string | number>,
+        options?: NodeOptions,
+    ): AnyPointer<Literal, D>;
 
-    node(values: Array<boolean | string | number>, options?: NodeOptions): AnyPointer<Literal[], D>;
+    node(
+        values: Array<boolean | string | number>,
+        options?: NodeOptions,
+    ): AnyPointer<Literal[], D>;
 
-    node<X extends Term>(value: SingleOrOneElementArray<X> | AnyPointer<X, D>, options?: NodeOptions): AnyPointer<X, D>;
+    node<X extends Term>(
+        value: SingleOrOneElementArray<X> | AnyPointer<X, D>,
+        options?: NodeOptions,
+    ): AnyPointer<X, D>;
 
-    node<X extends Term>(value: MultiPointer<X, D> | Iterable<X>, options?: NodeOptions): AnyPointer<X[], D>;
+    node<X extends Term>(
+        value: MultiPointer<X, D> | Iterable<X>,
+        options?: NodeOptions,
+    ): AnyPointer<X[], D>;
 
-    node<X extends Term>(value: Iterable<GraphPointer<X, D>>, options?: NodeOptions): MultiPointer<X, D>;
+    node<X extends Term>(
+        value: Iterable<GraphPointer<X, D>>,
+        options?: NodeOptions,
+    ): MultiPointer<X, D>;
 
     node<X extends Term[]>(values: X, options?: NodeOptions): AnyPointer<X, D>;
 
     node(value: null, options?: NodeOptions): AnyPointer<BlankNode, D>;
 
-    node(values: null[] | Iterable<BlankNode>, options?: NodeOptions): AnyPointer<BlankNode[], D>;
+    node(
+        values: null[] | Iterable<BlankNode>,
+        options?: NodeOptions,
+    ): AnyPointer<BlankNode[], D>;
 
     node(
         values: Array<boolean | string | number | Term | null> | Iterable<Term>,
         options?: NodeOptions,
     ): AnyPointer<Term[], D>;
 
-    blankNode(value?: SingleOrOneElementArray<string> | AnyPointer<BlankNode, D>): AnyPointer<BlankNode, D>;
+    blankNode(
+        value?: SingleOrOneElementArray<string> | AnyPointer<BlankNode, D>,
+    ): AnyPointer<BlankNode, D>;
 
     blankNode(
-        values: string[] | MultiPointer<BlankNode, D> | Iterable<BlankNode> | Iterable<GraphPointer<BlankNode, D>>,
+        values:
+            | string[]
+            | MultiPointer<BlankNode, D>
+            | Iterable<BlankNode>
+            | Iterable<GraphPointer<BlankNode, D>>,
     ): AnyPointer<BlankNode[], D>;
 
     literal(
-        value: SingleOrOneElementArray<boolean | string | number | Term | null> | AnyPointer<Literal, D>,
+        value:
+            | SingleOrOneElementArray<boolean | string | number | Term | null>
+            | AnyPointer<Literal, D>,
         languageOrDatatype?: string | NamedNode,
     ): AnyPointer<Literal, D>;
 
@@ -112,7 +195,9 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
     ): AnyPointer<Literal[], D>;
 
     namedNode<Iri extends string = string>(
-        value: SingleOrOneElementArray<string | NamedNode<Iri> | AnyPointer<NamedNode<Iri>, D>>,
+        value: SingleOrOneElementArray<
+            string | NamedNode<Iri> | AnyPointer<NamedNode<Iri>, D>
+        >,
     ): AnyPointer<NamedNode<Iri>, D>;
 
     namedNode(
@@ -123,9 +208,13 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
             | Iterable<GraphPointer<NamedNode, D>>,
     ): AnyPointer<NamedNode[], D>;
 
-    in(predicates?: SingleOrArrayOfTerms<Term>): MultiPointer<T extends undefined ? never : NamedNode | BlankNode, D>;
+    in(
+        predicates?: SingleOrArrayOfTerms<Term>,
+    ): MultiPointer<T extends undefined ? never : NamedNode | BlankNode, D>;
 
-    out(predicates?: SingleOrArrayOfTerms<Term>): MultiPointer<T extends undefined ? never : Term, D>;
+    out(
+        predicates?: SingleOrArrayOfTerms<Term>,
+    ): MultiPointer<T extends undefined ? never : Term, D>;
 
     out(
         predicates?: SingleOrArrayOfTerms<Term>,
@@ -137,7 +226,10 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
         objects?: SingleOrArrayOfTermsOrLiterals<Term>,
     ): AnyPointer<Array<NamedNode | BlankNode>, D>;
 
-    addIn(predicates: SingleOrArrayOfTerms<Term>, callback?: AddCallback<D, BlankNode>): AnyPointer<T, D>;
+    addIn(
+        predicates: SingleOrArrayOfTerms<Term>,
+        callback?: AddCallback<D, BlankNode>,
+    ): AnyPointer<T, D>;
 
     addIn(
         predicates: SingleOrArrayOfTerms<Term>,
@@ -151,7 +243,10 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
         callback?: AddCallback<D, X>,
     ): AnyPointer<T, D>;
 
-    addOut(predicates: SingleOrArrayOfTerms<Term>, callback?: AddCallback<D, BlankNode>): AnyPointer<T, D>;
+    addOut(
+        predicates: SingleOrArrayOfTerms<Term>,
+        callback?: AddCallback<D, BlankNode>,
+    ): AnyPointer<T, D>;
 
     addOut(
         predicates: SingleOrArrayOfTerms<Term>,
@@ -171,49 +266,79 @@ export interface AnyPointer<T extends AnyContext = AnyContext, D extends Dataset
         callback?: AddCallback<D, X>,
     ): AnyPointer<T, D>;
 
-    deleteIn(predicates?: SingleOrArrayOfTerms<Term>, subjects?: SingleOrArrayOfTerms<Term>): AnyPointer<T, D>;
+    deleteIn(
+        predicates?: SingleOrArrayOfTerms<Term>,
+        subjects?: SingleOrArrayOfTerms<Term>,
+    ): AnyPointer<T, D>;
 
-    deleteOut(predicates?: SingleOrArrayOfTerms<Term>, objects?: SingleOrArrayOfTerms<Term>): AnyPointer<T, D>;
+    deleteOut(
+        predicates?: SingleOrArrayOfTerms<Term>,
+        objects?: SingleOrArrayOfTerms<Term>,
+    ): AnyPointer<T, D>;
 
     deleteList(predicates: SingleOrArrayOfTerms<Term>): AnyPointer<T, D>;
 }
 
-export interface ListPointer<T extends Term = Term, D extends DatasetCore = DatasetCore> extends GraphPointer<T, D> {
+export interface ListPointer<
+    T extends Term = Term,
+    D extends DatasetCore = DatasetCore,
+> extends GraphPointer<T, D> {
     list(): Iterable<Iteratee<Term, D>>;
 }
 
-export type MultiPointer<T extends Term = Term, D extends DatasetCore = DatasetCore> = AnyPointer<T | T[], D>;
-export type GraphPointer<T extends Term = Term, D extends DatasetCore = DatasetCore> = AnyPointer<T, D>;
+export type MultiPointer<
+    T extends Term = Term,
+    D extends DatasetCore = DatasetCore,
+> = AnyPointer<T | T[], D>;
+export type GraphPointer<
+    T extends Term = Term,
+    D extends DatasetCore = DatasetCore,
+> = AnyPointer<T, D>;
 
-export type ClownfaceInitWithTerms<T extends Term | Term[], D extends DatasetCore> = ClownfaceInit<D> & { term: T };
-export type ClownfaceInitWithValue<D extends DatasetCore> = ClownfaceInit<D> & { value: string };
-export type ClownfaceInitWithValues<D extends DatasetCore> = ClownfaceInit<D> & { value: string[] };
+export type ClownfaceInitWithTerms<
+    T extends Term | Term[],
+    D extends DatasetCore,
+> = ClownfaceInit<D> & { term: T };
+export type ClownfaceInitWithValue<D extends DatasetCore> = ClownfaceInit<D> & {
+    value: string;
+};
+export type ClownfaceInitWithValues<D extends DatasetCore> =
+    ClownfaceInit<D> & { value: string[] };
 
 export interface InitClonePointer {
-    <D extends DatasetCore, T extends AnyContext>(other: AnyPointer<T, D>): AnyPointer<T, D>;
+    <D extends DatasetCore, T extends AnyContext>(
+        other: AnyPointer<T, D>,
+    ): AnyPointer<T, D>;
 }
 
 export interface InitLiteralPointer {
-    <D extends DatasetCore>(options: ClownfaceInitWithValue<D>): AnyPointer<Literal, D>;
+    <D extends DatasetCore>(
+        options: ClownfaceInitWithValue<D>,
+    ): AnyPointer<Literal, D>;
 }
 
 export interface InitLiteralMultiPointer {
-    <D extends DatasetCore>(options: ClownfaceInitWithValues<D>): AnyPointer<Literal[], D>;
+    <D extends DatasetCore>(
+        options: ClownfaceInitWithValues<D>,
+    ): AnyPointer<Literal[], D>;
 }
 
 export interface InitPointerFromTerms {
-    <D extends DatasetCore, T extends Term | Term[]>(options: ClownfaceInitWithTerms<T, D>): AnyPointer<T, D>;
+    <D extends DatasetCore, T extends Term | Term[]>(
+        options: ClownfaceInitWithTerms<T, D>,
+    ): AnyPointer<T, D>;
 }
 
 interface InitAnyPointer {
-    <D extends DatasetCore>(options: ClownfaceInit<D>): AnyPointer<AnyContext, D>;
+    <D extends DatasetCore>(
+        options: ClownfaceInit<D>,
+    ): AnyPointer<AnyContext, D>;
 }
 
-declare const clownface:
-    & InitClonePointer
-    & InitLiteralPointer
-    & InitLiteralMultiPointer
-    & InitPointerFromTerms
-    & InitAnyPointer;
+declare const clownface: InitClonePointer &
+    InitLiteralPointer &
+    InitLiteralMultiPointer &
+    InitPointerFromTerms &
+    InitAnyPointer;
 
 export default clownface;

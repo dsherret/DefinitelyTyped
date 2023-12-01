@@ -2,7 +2,9 @@
 
 import anyDB = require("any-db");
 
-var conn: anyDB.Connection = anyDB.createConnection("mysql://user:password@localhost/testdb");
+var conn: anyDB.Connection = anyDB.createConnection(
+    "mysql://user:password@localhost/testdb",
+);
 var sql: string = "SELECT * FROM questions";
 
 conn.query(sql, [1, "boo"]);
@@ -23,11 +25,13 @@ var poolConfig: anyDB.PoolConfig = {
     max: 200,
 };
 
-var pool: anyDB.ConnectionPool = anyDB.createPool("mysql://user:password@localhost/testdb", poolConfig);
+var pool: anyDB.ConnectionPool = anyDB.createPool(
+    "mysql://user:password@localhost/testdb",
+    poolConfig,
+);
 
 pool.query(sql).on("data", (row: Object[]): void => {
     // nothing
 });
 
-pool.close((error: Error): void => {
-});
+pool.close((error: Error): void => {});

@@ -1,4 +1,10 @@
-import { Application, NextFunction, Request, RequestHandler, Response } from "express";
+import {
+    Application,
+    NextFunction,
+    Request,
+    RequestHandler,
+    Response,
+} from "express";
 import * as mongoose from "mongoose";
 
 // Everything related to Forest initialization
@@ -19,7 +25,11 @@ export function init(options: LianaOptions): Promise<Application>;
 
 // Everything related to Forest Authentication
 
-export function ensureAuthenticated(request: Request, response: Response, next: NextFunction): void;
+export function ensureAuthenticated(
+    request: Request,
+    response: Response,
+    next: NextFunction,
+): void;
 
 // Everything related to Forest constants
 
@@ -172,13 +182,13 @@ export interface SmartActionOptions {
     type?: string | undefined;
     fields?:
         | Array<{
-            field: string;
-            type: string | string[];
-            reference?: string | undefined;
-            enums?: string[] | undefined;
-            description?: string | undefined;
-            isRequired?: boolean | undefined;
-        }>
+              field: string;
+              type: string | string[];
+              reference?: string | undefined;
+              enums?: string[] | undefined;
+              description?: string | undefined;
+              isRequired?: boolean | undefined;
+          }>
         | undefined;
     download?: boolean | undefined;
     endpoint?: string | undefined;

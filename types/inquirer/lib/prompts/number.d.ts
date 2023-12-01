@@ -13,7 +13,9 @@ type Question = NumberQuestionOptions;
  * @template TQuestion
  * The options for the question.
  */
-declare class NumberPrompt<TQuestion extends Question = Question> extends InputPrompt<TQuestion> {
+declare class NumberPrompt<
+    TQuestion extends Question = Question,
+> extends InputPrompt<TQuestion> {
     /**
      * Initializes a new instance of the {@link NumberPrompt `NumberPrompt<TQuestion>`} class.
      *
@@ -26,7 +28,11 @@ declare class NumberPrompt<TQuestion extends Question = Question> extends InputP
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: Answers,
+    );
 }
 
 export default NumberPrompt;

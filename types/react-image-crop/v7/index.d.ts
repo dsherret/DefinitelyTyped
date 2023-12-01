@@ -30,14 +30,20 @@ declare namespace ReactCrop {
         children?: ReactNode | undefined;
         style?: CSSProperties | undefined;
         imageStyle?: CSSProperties | undefined;
-        onImageError?: ((event: React.SyntheticEvent<HTMLImageElement>) => void) | undefined;
+        onImageError?:
+            | ((event: React.SyntheticEvent<HTMLImageElement>) => void)
+            | undefined;
         className?: string | undefined;
         locked?: boolean | undefined;
         renderSelectionAddon?: ((state: any) => ReactNode) | undefined;
     }
 
     function makeAspectCrop(crop: Crop, image: HTMLImageElement): Crop;
-    function containCrop(previousCrop: Crop, crop: Crop, image: HTMLImageElement): Crop;
+    function containCrop(
+        previousCrop: Crop,
+        crop: Crop,
+        image: HTMLImageElement,
+    ): Crop;
 }
 
 declare class ReactCrop extends Component<ReactCrop.ReactCropProps> {
@@ -52,7 +58,10 @@ declare class ReactCrop extends Component<ReactCrop.ReactCropProps> {
         width: number;
         height: number;
     };
-    resolveCrop: (crop: ReactCrop.Crop, image: HTMLImageElement) => ReactCrop.Crop;
+    resolveCrop: (
+        crop: ReactCrop.Crop,
+        image: HTMLImageElement,
+    ) => ReactCrop.Crop;
     dragCrop: () => ReactCrop.Crop;
     resizeCrop: () => ReactCrop.Crop;
     straightenYPath: (clientX: number) => number;

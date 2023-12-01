@@ -17,8 +17,7 @@ interface VariablesMapBase {
  * export { };
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SugarCubeSetupObject {
-}
+export interface SugarCubeSetupObject {}
 
 /**
  * This is a dummy interface for the story variables object. Its sole purpose is to be merged
@@ -35,12 +34,10 @@ export interface SugarCubeSetupObject {
  * export { };
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SugarCubeStoryVariables {
-}
+export interface SugarCubeStoryVariables {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SugarCubeTemporaryVariables extends VariablesMapBase {
-}
+export interface SugarCubeTemporaryVariables extends VariablesMapBase {}
 
 /**
  * This is a dummy interface for the game settings object. Its sole purpose is to be merged
@@ -57,7 +54,6 @@ export interface SugarCubeTemporaryVariables extends VariablesMapBase {
  * export { };
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SugarCubeSettingVariables {
-}
+export interface SugarCubeSettingVariables {}
 
 export {};

@@ -6,7 +6,10 @@ import { deepEqual, equal, notEqual } from "power-assert"; // compatible with 'a
 declare const sinon: any;
 declare const describe: any;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-declare function it(testName: string, test: (done: () => void) => void | Promise<any>): void;
+declare function it(
+    testName: string,
+    test: (done: () => void) => void | Promise<any>,
+): void;
 declare const beforeEach: any;
 declare const afterEach: any;
 
@@ -60,16 +63,18 @@ describe("moxios", () => {
 
             moxios.wait(() => {
                 const request = moxios.requests.mostRecent();
-                request.respondWith({
-                    status: 200,
-                    response: USER_FRED,
-                }).then(() => {
-                    const response = onFulfilled.getCall(0).args[0];
-                    equal(onFulfilled.called, true);
-                    equal(response.status, 200);
-                    deepEqual(response.data, USER_FRED);
-                    done();
-                });
+                request
+                    .respondWith({
+                        status: 200,
+                        response: USER_FRED,
+                    })
+                    .then(() => {
+                        const response = onFulfilled.getCall(0).args[0];
+                        equal(onFulfilled.called, true);
+                        equal(response.status, 200);
+                        deepEqual(response.data, USER_FRED);
+                        done();
+                    });
             });
         });
 
@@ -78,13 +83,15 @@ describe("moxios", () => {
 
             moxios.wait(() => {
                 const request = moxios.requests.mostRecent();
-                request.respondWith({
-                    status: 404,
-                }).then(() => {
-                    equal(onFulfilled.called, false);
-                    equal(onRejected.called, true);
-                    done();
-                });
+                request
+                    .respondWith({
+                        status: 404,
+                    })
+                    .then(() => {
+                        equal(onFulfilled.called, false);
+                        equal(onRejected.called, true);
+                        done();
+                    });
             });
         });
 
@@ -96,13 +103,15 @@ describe("moxios", () => {
 
                 moxios.wait(() => {
                     const request = moxios.requests.mostRecent();
-                    request.respondWith({
-                        status: 200,
-                        response: USER_FRED,
-                    }).then(() => {
-                        equal(onFulfilled.called, true);
-                        done();
-                    });
+                    request
+                        .respondWith({
+                            status: 200,
+                            response: USER_FRED,
+                        })
+                        .then(() => {
+                            equal(onFulfilled.called, true);
+                            done();
+                        });
                 });
             });
         });

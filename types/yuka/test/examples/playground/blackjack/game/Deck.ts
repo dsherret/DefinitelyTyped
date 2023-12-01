@@ -37,7 +37,21 @@ export class Deck {
 }
 
 const SUITS = ["♣", "♠", "♥", "♦"];
-const TYPES: CardType[] = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const TYPES: CardType[] = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+];
 
 function init(): Card[] {
     // 4 (suits) * 13 (card types) * 6 (decks) = 312 cards
@@ -45,8 +59,8 @@ function init(): Card[] {
 
     for (let i = 0; i < 6; i++) {
         const deck: Card[] = [];
-        SUITS.map(suit => {
-            return TYPES.map(type => {
+        SUITS.map((suit) => {
+            return TYPES.map((type) => {
                 deck.push(new Card(suit, type));
             });
         });

@@ -32,12 +32,8 @@ class DrawerTest extends React.Component<{}, DrawerTestState> {
             >
                 <View>
                     <Text>Screen content</Text>
-                    <Text>
-                        {DrawerLayout.positions.Left}
-                    </Text>
-                    <Text>
-                        {DrawerLayout.positions.Right}
-                    </Text>
+                    <Text>{DrawerLayout.positions.Left}</Text>
+                    <Text>{DrawerLayout.positions.Right}</Text>
                 </View>
             </DrawerLayout>
         );

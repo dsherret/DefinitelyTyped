@@ -4,7 +4,10 @@ import Channel = require("./Channel");
 import ConnectFailover = require("./ConnectFailover");
 
 declare class ChannelPool {
-    constructor(connectFailover: ConnectFailover, options?: ChannelPool.ChannelPoolOptions);
+    constructor(
+        connectFailover: ConnectFailover,
+        options?: ChannelPool.ChannelPoolOptions,
+    );
 
     channel(callback: (err: Error | null, channel: Channel) => void): void;
     close(): void;

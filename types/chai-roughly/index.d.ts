@@ -7,7 +7,10 @@ declare global {
             (tolerance?: number): Assertion;
         }
 
-        interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
+        interface Assertion
+            extends LanguageChains,
+                NumericComparison,
+                TypeComparison {
             roughly: Roughly;
         }
 

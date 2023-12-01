@@ -28,7 +28,11 @@ export class Service {
      * @param {string[]} versions - a list of versions that work with this service.
      * @param {Object} features - an object to attach to the prototype.
      */
-    defineService(serviceIdentifier: string, versions: string[], features?: any): typeof Service;
+    defineService(
+        serviceIdentifier: string,
+        versions: string[],
+        features?: any,
+    ): typeof Service;
     /**
      * Calls an operation on a service with the given input parameters.
      *
@@ -63,7 +67,10 @@ export class Service {
         params?: { [key: string]: any; $waiter?: WaiterConfiguration },
         callback?: (err: AWSError, data: any) => void,
     ): Request<any, AWSError>;
-    waitFor(state: string, callback?: (err: AWSError, data: any) => void): Request<any, AWSError>;
+    waitFor(
+        state: string,
+        callback?: (err: AWSError, data: any) => void,
+    ): Request<any, AWSError>;
 
     /**
      * The list of API versions supported by this service.

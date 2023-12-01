@@ -89,4 +89,6 @@ export interface LinterProvider {
     lint(editor: TextEditor): LintResult | Promise<LintResult>;
 }
 
-export type IndieProvider = (register: (config: Config) => IndieDelegate) => void;
+export type IndieProvider = (
+    register: (config: Config) => IndieDelegate,
+) => void;

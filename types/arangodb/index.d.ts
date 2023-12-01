@@ -83,7 +83,13 @@ declare namespace ArangoDB {
         | "network authentication required";
     type EdgeDirection = "any" | "inbound" | "outbound";
     type EngineType = "mmfiles" | "rocksdb";
-    type IndexType = "persistent" | "hash" | "skiplist" | "fulltext" | "geo" | "ttl";
+    type IndexType =
+        | "persistent"
+        | "hash"
+        | "skiplist"
+        | "fulltext"
+        | "geo"
+        | "ttl";
     type ViewType = "arangosearch";
     type KeyGeneratorType = "traditional" | "autoincrement" | "padded" | "uuid";
     type ErrorName =
@@ -463,12 +469,14 @@ declare namespace ArangoDB {
         journalSize?: number | undefined;
         isVolatile?: boolean | undefined;
         isSystem?: boolean | undefined;
-        keyOptions?: {
-            type?: KeyGeneratorType | undefined;
-            allowUserKeys?: boolean | undefined;
-            increment?: number | undefined;
-            offset?: number | undefined;
-        } | undefined;
+        keyOptions?:
+            | {
+                  type?: KeyGeneratorType | undefined;
+                  allowUserKeys?: boolean | undefined;
+                  increment?: number | undefined;
+                  offset?: number | undefined;
+              }
+            | undefined;
         numberOfShards?: number | undefined;
         shardKeys?: string[] | undefined;
         replicationFactor?: number | undefined;
@@ -479,12 +487,14 @@ declare namespace ArangoDB {
         journalSize: number;
         isSystem: boolean;
         isVolatile: boolean;
-        keyOptions?: {
-            type: KeyGeneratorType;
-            allowUserKeys: boolean;
-            increment?: number | undefined;
-            offset?: number | undefined;
-        } | undefined;
+        keyOptions?:
+            | {
+                  type: KeyGeneratorType;
+                  allowUserKeys: boolean;
+                  increment?: number | undefined;
+                  offset?: number | undefined;
+              }
+            | undefined;
         indexBuckets: number;
         numberOfShards?: number | undefined;
         shardKeys?: string[] | undefined;
@@ -549,16 +559,17 @@ declare namespace ArangoDB {
         _oldRev: string;
     }
 
-    type Document<T extends object = any> =
-        & { [K in keyof T]: T[K] }
-        & DocumentMetadata
-        & { _from?: string | undefined; _to?: string | undefined }
-        & {
+    type Document<T extends object = any> = {
+        [K in keyof T]: T[K];
+    } & DocumentMetadata & {
+            _from?: string | undefined;
+            _to?: string | undefined;
+        } & {
             [key: string]: any;
         };
-    type DocumentData<T extends object = any> =
-        & { [K in keyof T]: T[K] }
-        & Partial<DocumentMetadata>;
+    type DocumentData<T extends object = any> = {
+        [K in keyof T]: T[K];
+    } & Partial<DocumentMetadata>;
     type Edge<T extends object = any> = Document<T> & {
         _from: string;
         _to: string;
@@ -672,13 +683,22 @@ declare namespace ArangoDB {
             options?: InsertOptions,
         ): InsertResult<T>;
         edges(
-            vertex: string | ObjectWithId | ReadonlyArray<string | ObjectWithId>,
+            vertex:
+                | string
+                | ObjectWithId
+                | ReadonlyArray<string | ObjectWithId>,
         ): Array<Edge<T>>;
         inEdges(
-            vertex: string | ObjectWithId | ReadonlyArray<string | ObjectWithId>,
+            vertex:
+                | string
+                | ObjectWithId
+                | ReadonlyArray<string | ObjectWithId>,
         ): Array<Edge<T>>;
         outEdges(
-            vertex: string | ObjectWithId | ReadonlyArray<string | ObjectWithId>,
+            vertex:
+                | string
+                | ObjectWithId
+                | ReadonlyArray<string | ObjectWithId>,
         ): Array<Edge<T>>;
         iterate(iterator: DocumentIterator<T>, options?: IterateOptions): void;
         remove(
@@ -718,7 +738,10 @@ declare namespace ArangoDB {
         replaceByExample(
             example: Partial<Document<T>>,
             newValue: DocumentData<T>,
-            options?: { waitForSync?: boolean | undefined; limit?: number | undefined },
+            options?: {
+                waitForSync?: boolean | undefined;
+                limit?: number | undefined;
+            },
         ): number;
         save(data: DocumentData<T>, options?: InsertOptions): InsertResult<T>;
         save(
@@ -862,7 +885,9 @@ declare namespace ArangoDB {
 
     interface ArangoSearchViewCollectionLink {
         analyzers?: string[] | undefined;
-        fields?: { [key: string]: ArangoSearchViewCollectionLink | undefined } | undefined;
+        fields?:
+            | { [key: string]: ArangoSearchViewCollectionLink | undefined }
+            | undefined;
         includeAllFields?: boolean | undefined;
         trackListPositions?: boolean | undefined;
         storeValues?: "none" | "id" | undefined;
@@ -888,14 +913,18 @@ declare namespace ArangoDB {
     interface ArangoSearchViewPropertiesOptions {
         cleanupIntervalStep?: number | undefined;
         consolidationIntervalMsec?: number | undefined;
-        consolidationPolicy?: {
-            type?: ArangoSearchViewConsolidationType | undefined;
-            segmentThreshold?: number | undefined;
-            threshold?: number | undefined;
-        } | undefined;
-        links?: {
-            [key: string]: ArangoSearchViewCollectionLink | undefined;
-        } | undefined;
+        consolidationPolicy?:
+            | {
+                  type?: ArangoSearchViewConsolidationType | undefined;
+                  segmentThreshold?: number | undefined;
+                  threshold?: number | undefined;
+              }
+            | undefined;
+        links?:
+            | {
+                  [key: string]: ArangoSearchViewCollectionLink | undefined;
+              }
+            | undefined;
     }
 
     // Global
@@ -1069,28 +1098,20 @@ declare namespace Foxx {
 
     interface TypeDefinition {
         fromClient?:
-            | ((
-                body: string | Buffer,
-                req: Request,
-                type: MediaType,
-            ) => any)
+            | ((body: string | Buffer, req: Request, type: MediaType) => any)
             | undefined;
         forClient?:
-            | ((
-                body: any,
-            ) => {
-                data: string;
-                headers: { [key: string]: string | undefined };
-            })
+            | ((body: any) => {
+                  data: string;
+                  headers: { [key: string]: string | undefined };
+              })
             | undefined;
     }
 
-    type Ranges =
-        & Array<{
-            start: number;
-            end: number;
-        }>
-        & { type: string };
+    type Ranges = Array<{
+        start: number;
+        end: number;
+    }> & { type: string };
 
     type ConfigurationType =
         | "integer"
@@ -1186,7 +1207,12 @@ declare namespace Foxx {
         arangoVersion: number;
         auth: null | {
             bearer?: string | undefined;
-            basic?: { username?: string | undefined; password?: string | undefined } | undefined;
+            basic?:
+                | {
+                      username?: string | undefined;
+                      password?: string | undefined;
+                  }
+                | undefined;
         };
         baseUrl: string;
         body: any;
@@ -1222,7 +1248,10 @@ declare namespace Foxx {
         acceptsLanguages(...languages: string[]): string | false;
         cookie(
             name: string,
-            options?: { secret?: string | undefined; algorithm?: ArangoDB.HashAlgorithm | undefined },
+            options?: {
+                secret?: string | undefined;
+                algorithm?: ArangoDB.HashAlgorithm | undefined;
+            },
         ): string | null;
         get(name: string): string | undefined;
         header(name: string): string | undefined;
@@ -1537,7 +1566,16 @@ declare module "@arangodb/foxx/queues" {
     function deleteQueue(name: string): boolean;
     function get(name: string): Queue;
 
-    export { createQueue as create, deleteQueue as delete, get, Job, JobOptions, Queue, QueueItem, Script };
+    export {
+        createQueue as create,
+        deleteQueue as delete,
+        get,
+        Job,
+        JobOptions,
+        Queue,
+        QueueItem,
+        Script,
+    };
 }
 
 declare module "@arangodb/foxx/graphql" {
@@ -1671,7 +1709,9 @@ declare module "@arangodb/foxx/auth" {
         saltLength?: number | undefined;
         workFactor?: number | undefined;
     }
-    function createAuth(options?: AuthOptions | Pbkdf2AuthOptions): Authenticator;
+    function createAuth(
+        options?: AuthOptions | Pbkdf2AuthOptions,
+    ): Authenticator;
     export = createAuth;
 }
 
@@ -1767,7 +1807,10 @@ declare module "@arangodb/request" {
         body?: any;
         json?: boolean | undefined;
         form?: any;
-        auth?: { username: string; password?: string | undefined } | { bearer: string } | undefined;
+        auth?:
+            | { username: string; password?: string | undefined }
+            | { bearer: string }
+            | undefined;
         sslProtocol?: number | undefined;
         followRedirect?: boolean | undefined;
         maxRedirects?: number | undefined;
@@ -2022,9 +2065,7 @@ declare module "@arangodb/general-graph" {
         [key: string]: ArangoDB.Collection | undefined;
     };
     function _list(): string[];
-    function _graph(
-        name: string,
-    ): Graph & {
+    function _graph(name: string): Graph & {
         [key: string]: ArangoDB.Collection | undefined;
     };
     function _drop(name: string, dropCollections?: boolean): boolean;

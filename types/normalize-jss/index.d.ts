@@ -65,15 +65,13 @@ declare const normalize_jss: {
         "button, select": {
             textTransform: string;
         };
-        "button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring":
-            {
-                outline: string;
-            };
-        "button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner":
-            {
-                borderStyle: string;
-                padding: number;
-            };
+        "button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring": {
+            outline: string;
+        };
+        "button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner": {
+            borderStyle: string;
+            padding: number;
+        };
         canvas: {
             display: string;
         };

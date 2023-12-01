@@ -1,15 +1,17 @@
 declare class IotaClass {
     constructor(
-        settings: {
-            provider: string;
-            sandbox?: boolean | undefined;
-            token?: boolean | undefined;
-        } | {
-            host: string;
-            port: number;
-            sandbox?: boolean | undefined;
-            token?: boolean | undefined;
-        },
+        settings:
+            | {
+                  provider: string;
+                  sandbox?: boolean | undefined;
+                  token?: boolean | undefined;
+              }
+            | {
+                  host: string;
+                  port: number;
+                  sandbox?: boolean | undefined;
+                  token?: boolean | undefined;
+              },
     );
 
     api: IotaApi;
@@ -100,13 +102,9 @@ interface Neighbor {
 //
 
 interface IriApi {
-    getNodeInfo(
-        callback: (error: Error, info: NodeInfo) => void,
-    ): void;
+    getNodeInfo(callback: (error: Error, info: NodeInfo) => void): void;
 
-    getNeighbors(
-        callback: (error: Error, neighbors: Neighbor[]) => void,
-    ): void;
+    getNeighbors(callback: (error: Error, neighbors: Neighbor[]) => void): void;
 
     addNeighbors(
         uris: string[],
@@ -118,9 +116,7 @@ interface IriApi {
         callback: (error: Error, removedNeighbors: number[]) => void,
     ): void;
 
-    getTips(
-        callback: (error: Error, hashes: string[]) => void,
-    ): void;
+    getTips(callback: (error: Error, hashes: string[]) => void): void;
 
     findTransactions(
         searchValues: {
@@ -146,21 +142,27 @@ interface IriApi {
     getBalances(
         addresses: string[],
         treshold: number,
-        callback: (error: Error, response: {
-            balances: number[];
-            milestone: string;
-            milestoneIndex: number;
-            duration: number;
-        }) => void,
+        callback: (
+            error: Error,
+            response: {
+                balances: number[];
+                milestone: string;
+                milestoneIndex: number;
+                duration: number;
+            },
+        ) => void,
     ): void;
 
     getTransactionsToApprove(
         depth: number,
-        callback: (error: Error, response: {
-            trunkTransaction: string;
-            branchTransaction: string;
-            duration: number;
-        }) => void,
+        callback: (
+            error: Error,
+            response: {
+                trunkTransaction: string;
+                branchTransaction: string;
+                duration: number;
+            },
+        ) => void,
     ): void;
 
     attachToTangle(
@@ -236,9 +238,12 @@ interface IotaApi extends IriApi {
             security?: Security | undefined;
             threshold?: boolean | undefined;
         },
-        callback?: (error: Error, response: {
-            inputs: InputObject[];
-        }) => void,
+        callback?: (
+            error: Error,
+            response: {
+                inputs: InputObject[];
+            },
+        ) => void,
     ): void;
 
     prepareTransfers(
@@ -249,18 +254,24 @@ interface IotaApi extends IriApi {
             address?: string | undefined;
             security?: Security | undefined;
         },
-        callback?: (error: Error, response: {
-            trytes: string[];
-        }) => void,
+        callback?: (
+            error: Error,
+            response: {
+                trytes: string[];
+            },
+        ) => void,
     ): void;
 
     sendTrytes(
         trytes: string[],
         depth: number,
         minWeightMagnitude: number,
-        callback?: (error: Error, response: {
-            inputs: TransactionObject[];
-        }) => void,
+        callback?: (
+            error: Error,
+            response: {
+                inputs: TransactionObject[];
+            },
+        ) => void,
     ): void;
 
     sendTransfer(
@@ -272,9 +283,12 @@ interface IotaApi extends IriApi {
             inputs: string[];
             address: string;
         },
-        callback?: (error: Error, response: {
-            inputs: TransactionObject[];
-        }) => void,
+        callback?: (
+            error: Error,
+            response: {
+                inputs: TransactionObject[];
+            },
+        ) => void,
     ): void;
 
     replayBundle(
@@ -312,13 +326,16 @@ interface IotaApi extends IriApi {
             end: number;
             security?: Security | undefined;
         },
-        callback?: (error: Error, response: {
-            latestAddress: string;
-            addresses: string[];
-            transfers: string[];
-            inputs: InputObject[];
-            balance: number;
-        }) => void,
+        callback?: (
+            error: Error,
+            response: {
+                latestAddress: string;
+                addresses: string[];
+                transfers: string[];
+                inputs: InputObject[];
+                balance: number;
+            },
+        ) => void,
     ): void;
 
     isReattachable(
@@ -332,11 +349,7 @@ interface IotaApi extends IriApi {
 //
 
 interface IotaUtils {
-    convertUnits(
-        value: number,
-        fromUnit: IOTAUnit,
-        toUnit: IOTAUnit,
-    ): number;
+    convertUnits(value: number, fromUnit: IOTAUnit, toUnit: IOTAUnit): number;
 
     addChecksum(
         inputValue: string,
@@ -350,21 +363,13 @@ interface IotaUtils {
         isAddress?: boolean,
     ): string[];
 
-    noChecksum(
-        address: string,
-    ): string;
+    noChecksum(address: string): string;
 
-    isValidChecksum(
-        addressWithChecksum: string,
-    ): boolean;
+    isValidChecksum(addressWithChecksum: string): boolean;
 
-    transactionObject(
-        trytes: string,
-    ): TransactionObject;
+    transactionObject(trytes: string): TransactionObject;
 
-    transactionTrytes(
-        transaction: TransactionObject,
-    ): string;
+    transactionTrytes(transaction: TransactionObject): string;
 
     categorizeTransfers(
         transfers: TransactionObject[],
@@ -374,26 +379,15 @@ interface IotaUtils {
         received: TransactionObject[];
     };
 
-    toTrytes(
-        input: string,
-    ): string;
+    toTrytes(input: string): string;
 
-    fromTrytes(
-        trytes: string,
-    ): string;
+    fromTrytes(trytes: string): string;
 
-    extractJson(
-        bundle: TransactionObject[],
-    ): string;
+    extractJson(bundle: TransactionObject[]): string;
 
-    validateSignatures(
-        signedBundle: string[],
-        inputAddress: string,
-    ): boolean;
+    validateSignatures(signedBundle: string[], inputAddress: string): boolean;
 
-    isBundle(
-        bundle: TransactionObject[],
-    ): boolean;
+    isBundle(bundle: TransactionObject[]): boolean;
 }
 
 //
@@ -401,26 +395,13 @@ interface IotaUtils {
 //
 
 interface IotaMultisig {
-    getKey(
-        seed: string,
-        index: number,
-        security: Security,
-    ): string;
+    getKey(seed: string, index: number, security: Security): string;
 
-    getDigest(
-        seed: string,
-        index: number,
-        security: Security,
-    ): string;
+    getDigest(seed: string, index: number, security: Security): string;
 
-    address(
-        digestTrytes: string | string[],
-    ): MultisigAddress;
+    address(digestTrytes: string | string[]): MultisigAddress;
 
-    validateAddress(
-        multisigAddress: string,
-        digests: string[],
-    ): boolean;
+    validateAddress(multisigAddress: string, digests: string[]): boolean;
 
     initiateTransfer(
         securitySum: number,
@@ -439,9 +420,7 @@ interface IotaMultisig {
 }
 
 interface MultisigAddress {
-    absorb(
-        digest: string | string[],
-    ): MultisigAddress;
+    absorb(digest: string | string[]): MultisigAddress;
 
     finalize(): string;
 }

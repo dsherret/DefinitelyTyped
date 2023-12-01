@@ -36,9 +36,9 @@ const x = scaleTime()
                     // release date (unimportant?) but gives the visual impression
                     // of additional, unsupported versions?
                     new Date(
-                        Number(d.releaseDate)
+                        Number(d.releaseDate) +
                             // prettier-ignore
-                            + (/** @type {never} */ (d.endDate) - /** @type {never} */ (d.releaseDate)) / 4,
+                            (/** @type {never} */ (d.endDate) - /** @type {never} */ (d.releaseDate)) / 4,
                     ),
             )
         ),
@@ -79,8 +79,7 @@ const gy = axes.append("g");
 const yAxis = axisLeft(y).tickSize(margin.left - width - margin.right);
 yAxis(gy);
 gy.selectAll(".domain").remove();
-svg
-    .append("g")
+svg.append("g")
     .attr("shape-rendering", "crispEdges")
     .selectAll("rect")
     .data(supported)
@@ -104,12 +103,10 @@ texts
     .attr(
         "href",
         (d) =>
-            `https://www.typescriptlang.org/docs/handbook/release-notes/typescript-${
-                d.version.replace(
-                    /[^0-9]+/,
-                    "-",
-                )
-            }.html`,
+            `https://www.typescriptlang.org/docs/handbook/release-notes/typescript-${d.version.replace(
+                /[^0-9]+/,
+                "-",
+            )}.html`,
     )
     .attr("fill", "#ffffff")
     .append("text")

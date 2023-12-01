@@ -1,30 +1,64 @@
 import { CoreOptions as RequestOptions } from "request";
 
-export function testAll(proxy: Proxy, options: RequestOptions, cb: (error: any, result: AllResults) => void): void;
-export function testAll(proxy: Proxy, cb: (error: any, result: AllResults) => void): void;
+export function testAll(
+    proxy: Proxy,
+    options: RequestOptions,
+    cb: (error: any, result: AllResults) => void,
+): void;
+export function testAll(
+    proxy: Proxy,
+    cb: (error: any, result: AllResults) => void,
+): void;
 
-export function testProtocol(proxy: Proxy, options: RequestOptions, cb: (error: any, result: Result) => void): void;
-export function testProtocol(proxy: Proxy, cb: (error: any, result: Result) => void): void;
+export function testProtocol(
+    proxy: Proxy,
+    options: RequestOptions,
+    cb: (error: any, result: Result) => void,
+): void;
+export function testProtocol(
+    proxy: Proxy,
+    cb: (error: any, result: Result) => void,
+): void;
 
 export function testProtocols(
     proxy: Proxy,
     options: RequestOptions,
     cb: (error: any, result: ProtocolResult) => void,
 ): void;
-export function testProtocols(proxy: Proxy, cb: (error: any, result: ProtocolResult) => void): void;
+export function testProtocols(
+    proxy: Proxy,
+    cb: (error: any, result: ProtocolResult) => void,
+): void;
 
 export function testAnonymityLevel(
     proxy: Proxy,
     options: RequestOptions,
     cb: (error: any, result: string) => void,
 ): void;
-export function testAnonymityLevel(proxy: Proxy, cb: (error: any, result: string) => void): void;
+export function testAnonymityLevel(
+    proxy: Proxy,
+    cb: (error: any, result: string) => void,
+): void;
 
-export function testTunnel(proxy: Proxy, options: RequestOptions, cb: (error: any, result: Result) => void): void;
-export function testTunnel(proxy: Proxy, cb: (error: any, result: Result) => void): void;
+export function testTunnel(
+    proxy: Proxy,
+    options: RequestOptions,
+    cb: (error: any, result: Result) => void,
+): void;
+export function testTunnel(
+    proxy: Proxy,
+    cb: (error: any, result: Result) => void,
+): void;
 
-export function test(proxy: Proxy, options: TestOptions, cb: (error: any, result: CustomTestResult) => void): void;
-export function test(proxy: Proxy, cb: (error: any, result: CustomTestResult) => void): void;
+export function test(
+    proxy: Proxy,
+    options: TestOptions,
+    cb: (error: any, result: CustomTestResult) => void,
+): void;
+export function test(
+    proxy: Proxy,
+    cb: (error: any, result: CustomTestResult) => void,
+): void;
 
 export interface Proxy {
     ipAddress: string;
@@ -80,7 +114,9 @@ export interface CustomTestBaseResult {
     headers: Headers;
 }
 
-export type CustomTestResult = CustomTestWorkingResult | CustomTestNotWorkingResult;
+export type CustomTestResult =
+    | CustomTestWorkingResult
+    | CustomTestNotWorkingResult;
 
 export interface CustomTestWorkingResult extends CustomTestBaseResult {
     ok: true;

@@ -782,7 +782,10 @@ interface DebugLog {
  * `beforeSend` delegate will apply to the `formResponse` message sent when a [Prechat Capture](https://docs.smooch.io/guide/web-messenger/#prechat-capture) form is completed.
  */
 interface Delegate {
-    beforeDisplay?: (message: Message, data: ConversationData) => Message | null;
+    beforeDisplay?: (
+        message: Message,
+        data: ConversationData,
+    ) => Message | null;
     beforeSend?: (message: Message, data: ConversationData) => Message | null;
     beforePostbackSend?: (postback: unknown, data: ConversationData) => unknown;
     onInvalidAuth?: () => string | Promise<string>;

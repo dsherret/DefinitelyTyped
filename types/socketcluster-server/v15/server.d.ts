@@ -69,35 +69,79 @@ declare class AGServer extends AsyncStreamEmitter<any> {
     emit(eventName: "error", data: { error: Error }): void;
     emit(eventName: "warning", data: { warning: Error }): void;
     emit(eventName: "handshake", data: { socket: AGServerSocket }): void;
-    emit(eventName: "authenticationStateChange", data: AGServer.AuthStateChangeData): void;
+    emit(
+        eventName: "authenticationStateChange",
+        data: AGServer.AuthStateChangeData,
+    ): void;
     emit(eventName: "authentication", data: AGServer.AuthenticationData): void;
-    emit(eventName: "deauthentication", data: AGServer.DeauthenticationData): void;
-    emit(eventName: "badSocketAuthToken", data: AGServer.BadSocketAuthTokenData): void;
+    emit(
+        eventName: "deauthentication",
+        data: AGServer.DeauthenticationData,
+    ): void;
+    emit(
+        eventName: "badSocketAuthToken",
+        data: AGServer.BadSocketAuthTokenData,
+    ): void;
     emit(eventName: "connection", data: AGServer.ConnectionData): void;
     emit(eventName: "subscription", data: AGServer.SubscriptionData): void;
     emit(eventName: "unsubscription", data: AGServer.UnsubscriptionData): void;
-    emit(eventName: "connectionAbort", data: AGServer.ConnectionAbortData): void;
+    emit(
+        eventName: "connectionAbort",
+        data: AGServer.ConnectionAbortData,
+    ): void;
     emit(eventName: "disconnection", data: AGServer.DisconnectionData): void;
     emit(eventName: "closure", data: AGServer.ClosureData): void;
 
     listener(eventName: "error"): ConsumableStream<{ error: Error }>;
     listener(eventName: "warning"): ConsumableStream<{ warning: Error }>;
-    listener(eventName: "handshake"): ConsumableStream<{ socket: AGServerSocket }>;
-    listener(eventName: "authenticationStateChange"): ConsumableStream<AGServer.AuthStateChangeData>;
-    listener(eventName: "authentication"): ConsumableStream<AGServer.AuthenticationData>;
-    listener(eventName: "deauthentication"): ConsumableStream<AGServer.DeauthenticationData>;
-    listener(eventName: "badSocketAuthToken"): ConsumableStream<AGServer.BadSocketAuthTokenData>;
-    listener(eventName: "connection"): ConsumableStream<AGServer.ConnectionData>;
-    listener(eventName: "subscription"): ConsumableStream<AGServer.SubscriptionData>;
-    listener(eventName: "unsubscription"): ConsumableStream<AGServer.UnsubscriptionData>;
-    listener(eventName: "connectionAbort"): ConsumableStream<AGServer.ConnectionAbortData>;
-    listener(eventName: "disconnection"): ConsumableStream<AGServer.DisconnectionData>;
+    listener(
+        eventName: "handshake",
+    ): ConsumableStream<{ socket: AGServerSocket }>;
+    listener(
+        eventName: "authenticationStateChange",
+    ): ConsumableStream<AGServer.AuthStateChangeData>;
+    listener(
+        eventName: "authentication",
+    ): ConsumableStream<AGServer.AuthenticationData>;
+    listener(
+        eventName: "deauthentication",
+    ): ConsumableStream<AGServer.DeauthenticationData>;
+    listener(
+        eventName: "badSocketAuthToken",
+    ): ConsumableStream<AGServer.BadSocketAuthTokenData>;
+    listener(
+        eventName: "connection",
+    ): ConsumableStream<AGServer.ConnectionData>;
+    listener(
+        eventName: "subscription",
+    ): ConsumableStream<AGServer.SubscriptionData>;
+    listener(
+        eventName: "unsubscription",
+    ): ConsumableStream<AGServer.UnsubscriptionData>;
+    listener(
+        eventName: "connectionAbort",
+    ): ConsumableStream<AGServer.ConnectionAbortData>;
+    listener(
+        eventName: "disconnection",
+    ): ConsumableStream<AGServer.DisconnectionData>;
     listener(eventName: "closure"): ConsumableStream<AGServer.ClosureData>;
 
-    setMiddleware(type: typeof MIDDLEWARE_HANDSHAKE, middleware: AGServer.handshakeMiddlewareFunction): void;
-    setMiddleware(type: typeof MIDDLEWARE_INBOUND_RAW, middleware: AGServer.inboundRawMiddlewareFunction): void;
-    setMiddleware(type: typeof MIDDLEWARE_INBOUND, middleware: AGServer.inboundMiddlewareFunction): void;
-    setMiddleware(type: typeof MIDDLEWARE_OUTBOUND, middleware: AGServer.outboundMiddlewareFunction): void;
+    setMiddleware(
+        type: typeof MIDDLEWARE_HANDSHAKE,
+        middleware: AGServer.handshakeMiddlewareFunction,
+    ): void;
+    setMiddleware(
+        type: typeof MIDDLEWARE_INBOUND_RAW,
+        middleware: AGServer.inboundRawMiddlewareFunction,
+    ): void;
+    setMiddleware(
+        type: typeof MIDDLEWARE_INBOUND,
+        middleware: AGServer.inboundMiddlewareFunction,
+    ): void;
+    setMiddleware(
+        type: typeof MIDDLEWARE_OUTBOUND,
+        middleware: AGServer.outboundMiddlewareFunction,
+    ): void;
 
     removeMiddleware(type: AGServer.Middlewares): void;
 
@@ -278,9 +322,13 @@ declare namespace AGServer {
     }
 
     type handshakeMiddlewareFunction = (
-        stream: WritableConsumableStream<AGAction.AGActionHandshakeWS | AGAction.AGActionHandshakeSC>,
+        stream: WritableConsumableStream<
+            AGAction.AGActionHandshakeWS | AGAction.AGActionHandshakeSC
+        >,
     ) => void;
-    type inboundRawMiddlewareFunction = (stream: WritableConsumableStream<AGAction.AGActionMessage>) => void;
+    type inboundRawMiddlewareFunction = (
+        stream: WritableConsumableStream<AGAction.AGActionMessage>,
+    ) => void;
     type inboundMiddlewareFunction = (
         stream: WritableConsumableStream<
             | AGAction.AGActionTransmit
@@ -290,7 +338,9 @@ declare namespace AGServer {
             | AGAction.AGActionAuthenticate
         >,
     ) => void;
-    type outboundMiddlewareFunction = (stream: WritableConsumableStream<AGAction.AGActionPublishOut>) => void;
+    type outboundMiddlewareFunction = (
+        stream: WritableConsumableStream<AGAction.AGActionPublishOut>,
+    ) => void;
 
     type Middlewares =
         | typeof MIDDLEWARE_HANDSHAKE

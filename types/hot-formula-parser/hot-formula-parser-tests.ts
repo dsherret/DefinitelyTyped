@@ -18,7 +18,7 @@ const parser = new Parser();
 parser.parse("SUM(1, 2)");
 
 // $ExpectType Parser
-parser.setFunction("YIELD_5", _ => 5);
+parser.setFunction("YIELD_5", (_) => 5);
 
 // $ExpectType (params: unknown) => unknown
 parser.getFunction("YIELD_5");
@@ -60,7 +60,7 @@ const cjsParser = new p.Parser();
 cjsParser.parse("SUM(1, 2)");
 
 // $ExpectType Parser
-cjsParser.setFunction("YIELD_5", _ => 5);
+cjsParser.setFunction("YIELD_5", (_) => 5);
 
 // $ExpectType (params: unknown) => unknown
 cjsParser.getFunction("YIELD_5");

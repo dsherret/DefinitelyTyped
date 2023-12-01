@@ -29,10 +29,16 @@ export function isInlineDataFragment(node: GraphQLTaggedNode): boolean;
 
 export function getFragment(taggedNode: GraphQLTaggedNode): ReaderFragment;
 
-export function getPaginationFragment(taggedNode: GraphQLTaggedNode): ReaderPaginationFragment | null;
+export function getPaginationFragment(
+    taggedNode: GraphQLTaggedNode,
+): ReaderPaginationFragment | null;
 
-export function getRefetchableFragment(taggedNode: GraphQLTaggedNode): ReaderRefetchableFragment | null;
+export function getRefetchableFragment(
+    taggedNode: GraphQLTaggedNode,
+): ReaderRefetchableFragment | null;
 
 export function getRequest(taggedNode: GraphQLTaggedNode): ConcreteRequest;
 
-export function getInlineDataFragment(taggedNode: GraphQLTaggedNode): ReaderInlineDataFragment;
+export function getInlineDataFragment(
+    taggedNode: GraphQLTaggedNode,
+): ReaderInlineDataFragment;

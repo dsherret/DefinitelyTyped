@@ -8,15 +8,28 @@ export declare class Cidr {
 export declare class Valve {
     constructor(schema: IValveSchema, baton?: any);
     setSchema(schema: IValveSchema): Valve;
-    addFinalValidator(func: (obj: any, callback: (err: Error, cleaned: any) => void) => void): Valve;
+    addFinalValidator(
+        func: (obj: any, callback: (err: Error, cleaned: any) => void) => void,
+    ): Valve;
     addChainValidator(
         name: string,
         description: string,
-        func: (value: any, callback: (err: Error, cleaned: any) => void) => void,
+        func: (
+            value: any,
+            callback: (err: Error, cleaned: any) => void,
+        ) => void,
     ): void;
-    check(obj: any, options: ICheckOptions, callback: (err: any, cleaned: any) => void): void;
+    check(
+        obj: any,
+        options: ICheckOptions,
+        callback: (err: any, cleaned: any) => void,
+    ): void;
     check(obj: any, callback: (err: any, cleaned: any) => void): void;
-    checkUpdate(existing: any, obj: any, callback: (err: any, cleaned: any) => void): void;
+    checkUpdate(
+        existing: any,
+        obj: any,
+        callback: (err: any, cleaned: any) => void,
+    ): void;
     help(schema: IValveSchema): any;
 }
 
@@ -126,7 +139,12 @@ export declare class Swiz {
         metadata: any,
         callback: (err: any, result: string) => void,
     ): void;
-    deserialize(mode: SERIALIZATION, version: number, raw: string, callback: (err: any, result: any) => void): void;
+    deserialize(
+        mode: SERIALIZATION,
+        version: number,
+        raw: string,
+        callback: (err: any, result: any) => void,
+    ): void;
     getFieldDefinition(stype: string, name: string): struct.IField;
 }
 

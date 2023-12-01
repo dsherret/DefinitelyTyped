@@ -1,13 +1,11 @@
 declare namespace PubSubJS {
     interface Base<T = any, M = Message>
-        extends
-            CountSubscriptions,
+        extends CountSubscriptions,
             ClearAllSubscriptions,
             GetSubscriptions,
             Publish<T, M>,
             Subscribe<T, M>,
-            Unsubscribe<T>
-    {
+            Unsubscribe<T> {
         name: string;
         version: string;
     }
@@ -43,7 +41,9 @@ declare namespace PubSubJS {
     }
 
     interface Unsubscribe<T> {
-        unsubscribe(tokenOrFunction: Token | SubscriptionListener<T>): Token | boolean;
+        unsubscribe(
+            tokenOrFunction: Token | SubscriptionListener<T>,
+        ): Token | boolean;
     }
 }
 

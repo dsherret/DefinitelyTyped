@@ -5,6 +5,8 @@ import express = require("express");
  * that resets any previously set service worker configuration.
  * Useful for development.
  */
-declare function noopServiceWorkerMiddleware(servedPath: string): express.Handler;
+declare function noopServiceWorkerMiddleware(
+    servedPath: string,
+): express.Handler;
 
 export = noopServiceWorkerMiddleware;

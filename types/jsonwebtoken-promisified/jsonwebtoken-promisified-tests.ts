@@ -44,30 +44,36 @@ const secret = { key: privKey.toString(), passphrase: "keypwd" };
 token = jwt.sign(testObject, secret, { algorithm: "RS256" }); // the algorithm option is mandatory in this case
 
 // sign asynchronously
-jwt.sign(testObject, cert, { algorithm: "RS256" }, (
-    err: Error,
-    token: string,
-) => {
-    console.log(token);
-});
+jwt.sign(
+    testObject,
+    cert,
+    { algorithm: "RS256" },
+    (err: Error, token: string) => {
+        console.log(token);
+    },
+);
 
-jwt.signAsync(testObject, cert, { algorithm: "RS256" }).then(
-    (token: string) => console.log(token),
+jwt.signAsync(testObject, cert, { algorithm: "RS256" }).then((token: string) =>
+    console.log(token),
 );
 /**
  * jwt.verify
  * https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
  */
 // verify a token symmetric
-jwt.verify(token, "shhhhh", (
-    err: jwt.JsonWebTokenError | jwt.NotBeforeError | jwt.TokenExpiredError,
-    decoded: object | string,
-) => {
-    const result = decoded as TestObject;
+jwt.verify(
+    token,
+    "shhhhh",
+    (
+        err: jwt.JsonWebTokenError | jwt.NotBeforeError | jwt.TokenExpiredError,
+        decoded: object | string,
+    ) => {
+        const result = decoded as TestObject;
 
-    console.log(result.foo); // bar
-});
-jwt.verifyAsync(token, "shhhhh").then(decoded => {
+        console.log(result.foo); // bar
+    },
+);
+jwt.verifyAsync(token, "shhhhh").then((decoded) => {
     const result = decoded as TestObject;
 
     console.log(result.foo); // bar
@@ -79,7 +85,7 @@ jwt.verify(token, "shhhhh", { clockTimestamp: 1 }, (err, decoded) => {
 
     console.log(result.foo); // bar
 });
-jwt.verifyAsync(token, "shhhhh", { clockTimestamp: 1 }).then(decoded => {
+jwt.verifyAsync(token, "shhhhh", { clockTimestamp: 1 }).then((decoded) => {
     const result = decoded as TestObject;
 
     console.log(result.foo); // bar
@@ -99,7 +105,7 @@ jwt.verify(token, cert, (err, decoded) => {
     console.log(result.foo); // bar
 });
 
-jwt.verifyAsync(token, cert).then(decoded => {
+jwt.verifyAsync(token, cert).then((decoded) => {
     const result = decoded as TestObject;
     console.log(result.foo); // bar
 });
@@ -112,12 +118,14 @@ jwt.verify(token, cert, { audience: "urn:foo" }, (err, decoded) => {
 
 // verify issuer
 cert = fs.readFileSync("public.pem"); // get public key
-jwt.verify(token, cert, { audience: "urn:foo", issuer: "urn:issuer" }, (
-    err,
-    decoded,
-) => {
-    // if issuer mismatch, err == invalid issuer
-});
+jwt.verify(
+    token,
+    cert,
+    { audience: "urn:foo", issuer: "urn:issuer" },
+    (err, decoded) => {
+        // if issuer mismatch, err == invalid issuer
+    },
+);
 
 // verify algorithm
 cert = fs.readFileSync("public.pem"); // get public key

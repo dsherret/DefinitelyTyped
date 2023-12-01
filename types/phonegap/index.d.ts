@@ -10,7 +10,7 @@ interface Acceleration {
     timestamp: number; // DOMTimeStamp;
 }
 declare var Acceleration: {
-    new(): Acceleration;
+    new (): Acceleration;
 };
 
 interface AccelerometerOptions {
@@ -38,7 +38,13 @@ interface CameraPopoverOptions {
     arrowDir?: number | undefined;
 }
 declare var CameraPopoverOptions: {
-    new(x: number, y: number, width: number, height: number, arrowDir: number): CameraPopoverOptions;
+    new (
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        arrowDir: number,
+    ): CameraPopoverOptions;
 };
 
 interface CameraOptions {
@@ -97,7 +103,10 @@ interface Camera {
         cameraError: (message: string) => void,
         cameraOptions?: CameraOptions,
     ): void;
-    cleanup(cameraSuccess: (imageData: string) => void, cameraError: (message: string) => void): void;
+    cleanup(
+        cameraSuccess: (imageData: string) => void,
+        cameraError: (message: string) => void,
+    ): void;
 }
 
 interface CaptureAudioOptions {
@@ -145,7 +154,15 @@ interface Capture {
 }
 
 interface Connection extends EventTarget {
-    type: "bluetooth" | "cellular" | "ethernet" | "mixed" | "none" | "other" | "unknown" | "wifi";
+    type:
+        | "bluetooth"
+        | "cellular"
+        | "ethernet"
+        | "mixed"
+        | "none"
+        | "other"
+        | "unknown"
+        | "wifi";
     UNKNOWN: number;
     ETHERNET: number;
     WIFI: number;
@@ -208,7 +225,7 @@ interface ContactField {
     pref: boolean;
 }
 declare var ContactField: {
-    new(type: string, calue: string, perf: boolean): ContactField;
+    new (type: string, calue: string, perf: boolean): ContactField;
 };
 
 interface Contact {
@@ -227,8 +244,14 @@ interface Contact {
     categories: ContactField[];
     urls: ContactField[];
 
-    save(onSuccess?: (contacts: Contacts) => void, onError?: (contactError: ContactError) => void): void;
-    remove(onSuccess?: (contacts: Contacts) => void, onError?: (contactError: ContactError) => void): void;
+    save(
+        onSuccess?: (contacts: Contacts) => void,
+        onError?: (contactError: ContactError) => void,
+    ): void;
+    remove(
+        onSuccess?: (contacts: Contacts) => void,
+        onError?: (contactError: ContactError) => void,
+    ): void;
     clone(): Contact;
 }
 
@@ -237,7 +260,7 @@ interface ContactFindOptions {
     multiple?: boolean | undefined;
 }
 declare var ContactFindOptions: {
-    new(): ContactFindOptions;
+    new (): ContactFindOptions;
 };
 
 interface ContactName {
@@ -249,7 +272,7 @@ interface ContactName {
     honorificSuffix: string;
 }
 declare var ContactName: {
-    new(): ContactName;
+    new (): ContactName;
 };
 
 interface ContactOrganization {
@@ -328,7 +351,10 @@ interface FileSystem {
     readonly root: FileSystemDirectoryEntry;
 }
 declare var DirectoryEntry: {
-    new(name: string, root: FileSystemDirectoryEntry): FileSystemDirectoryEntry;
+    new (
+        name: string,
+        root: FileSystemDirectoryEntry,
+    ): FileSystemDirectoryEntry;
 };
 
 interface FileSystemEntry {
@@ -338,11 +364,21 @@ interface FileSystemEntry {
     readonly fullPath: string;
     readonly filesystem: FileSystem;
 
-    getMetadata(onSuccess?: (arg: Metadata) => void, onError?: (arg: FileError) => void): void;
-    setMetadata(onSuccess?: (arg: Metadata) => void, onError?: (arg: FileError) => void, options?: any): void;
+    getMetadata(
+        onSuccess?: (arg: Metadata) => void,
+        onError?: (arg: FileError) => void,
+    ): void;
+    setMetadata(
+        onSuccess?: (arg: Metadata) => void,
+        onError?: (arg: FileError) => void,
+        options?: any,
+    ): void;
     toURL(): string;
     remove(onSuccess?: () => void, onError?: (arg: FileError) => void): void;
-    getParent(onSuccess?: (arg: FileSystemDirectoryEntry) => void, onError?: (arg: FileError) => void): void;
+    getParent(
+        onSuccess?: (arg: FileSystemDirectoryEntry) => void,
+        onError?: (arg: FileError) => void,
+    ): void;
 }
 
 interface FileEntry extends FileSystemEntry {
@@ -358,8 +394,14 @@ interface FileEntry extends FileSystemEntry {
         onSuccess: (arg: FileSystemDirectoryEntry) => void,
         onError: (arg: FileError) => void,
     ): void;
-    createWriter(onSuccess?: (arg: FileWriter) => void, onError?: (arg: FileError) => void): void;
-    file(onSuccess?: (arg: File) => void, onError?: (arg: FileError) => void): void;
+    createWriter(
+        onSuccess?: (arg: FileWriter) => void,
+        onError?: (arg: FileError) => void,
+    ): void;
+    file(
+        onSuccess?: (arg: File) => void,
+        onError?: (arg: FileError) => void,
+    ): void;
 }
 
 interface FileSystemDirectoryEntry extends FileSystemEntry {
@@ -376,11 +418,17 @@ interface FileSystemDirectoryEntry extends FileSystemEntry {
         successCallback: (result: FileEntry) => void,
         errorCallback: (error: FileError) => void,
     ): void;
-    removeRecursively(successCallback: () => void, errorCallback: (error: FileError) => void): void;
+    removeRecursively(
+        successCallback: () => void,
+        errorCallback: (error: FileError) => void,
+    ): void;
 }
 
 interface DirectoryReader {
-    readEntries(successCallback: (entries: FileSystemEntry) => void, errorCallback: (error: FileError) => void): void;
+    readEntries(
+        successCallback: (entries: FileSystemEntry) => void,
+        errorCallback: (error: FileError) => void,
+    ): void;
 }
 
 interface FileTransfer {
@@ -404,7 +452,7 @@ interface FileTransfer {
     abort(): void;
 }
 declare var FileTransfer: {
-    new(): FileTransfer;
+    new (): FileTransfer;
 };
 
 interface FileUploadOptions {
@@ -416,7 +464,7 @@ interface FileUploadOptions {
     headers?: any;
 }
 declare var FileUploadOptions: {
-    new(): FileUploadOptions;
+    new (): FileUploadOptions;
 };
 
 interface FileUploadResult {
@@ -620,13 +668,16 @@ interface InAppBrowser {
 */
 
 interface Media {
-    new(
+    new (
         src: string,
         mediaSuccess: Function,
         mediaError?: (mediaError: MediaError) => any,
         mediaStatus?: Function,
     ): Media;
-    getCurrentPosition(mediaSuccess: Function, mediaError?: (mediaError: MediaError) => any): void;
+    getCurrentPosition(
+        mediaSuccess: Function,
+        mediaError?: (mediaError: MediaError) => any,
+    ): void;
     getDuration(): any;
     play(): void;
     pause(): void;
@@ -637,13 +688,32 @@ interface Media {
     stop(): void;
 }
 declare var Media: {
-    new(src: string, onSuccess: (arg: any) => any, onError: (error: any) => any): Media;
+    new (
+        src: string,
+        onSuccess: (arg: any) => any,
+        onError: (error: any) => any,
+    ): Media;
 };
 
 interface PhonegapNotification {
-    alert(message: string, alertCallback: Function, title?: string, buttonName?: string): void;
-    confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string): void;
-    confirm(message: string, confirmCallback: Function, title?: string, buttonLabels?: string[]): void;
+    alert(
+        message: string,
+        alertCallback: Function,
+        title?: string,
+        buttonName?: string,
+    ): void;
+    confirm(
+        message: string,
+        confirmCallback: Function,
+        title?: string,
+        buttonLabels?: string,
+    ): void;
+    confirm(
+        message: string,
+        confirmCallback: Function,
+        title?: string,
+        buttonLabels?: string[],
+    ): void;
     beep(times: number): void;
     vibrate(milliseconds: number): void;
 }
@@ -654,7 +724,11 @@ interface Splashscreen {
 }
 
 interface Database {
-    transaction(populateDB?: (tx: SQLTransaction) => any, errorCB?: (err: any) => any, successCB?: () => any): void;
+    transaction(
+        populateDB?: (tx: SQLTransaction) => any,
+        errorCB?: (err: any) => any,
+        successCB?: () => any,
+    ): void;
     changeVersion(var1: string, var2: string): void;
 }
 

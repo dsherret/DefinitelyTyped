@@ -1,6 +1,8 @@
 import { ReactNativeFile } from "apollo-upload-client";
 
-import createUploadLink, { UploadLinkOptions } from "apollo-upload-client/public/createUploadLink";
+import createUploadLink, {
+    UploadLinkOptions,
+} from "apollo-upload-client/public/createUploadLink";
 import formDataAppendFile from "apollo-upload-client/public/formDataAppendFile";
 import isExtractableFile from "apollo-upload-client/public/isExtractableFile";
 

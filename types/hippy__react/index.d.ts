@@ -272,7 +272,9 @@ interface ViewStyle {
 // interface RecursiveArray<T> extends Array<T | ReadonlyArray<T> | RecursiveArray<T>> {}
 type GenericStyleProp<T> = T | T[];
 // T | T[] -> T
-type FlattenGenericStyle<Type> = Type extends GenericStyleProp<infer X> ? X : never;
+type FlattenGenericStyle<Type> = Type extends GenericStyleProp<infer X>
+    ? X
+    : never;
 
 type ViewStyleProp = GenericStyleProp<ViewStyle>;
 
@@ -414,7 +416,10 @@ declare class Image extends React.Component<ImageProps> {
 }
 
 type DataItem = any;
-interface ListViewProps extends LayoutableProps, ClickableProps, TouchableProps {
+interface ListViewProps
+    extends LayoutableProps,
+        ClickableProps,
+        TouchableProps {
     /**
      * Render specific number of rows of data.
      * Set equal to dataShource.length in most case.
@@ -616,12 +621,21 @@ interface ListViewProps extends LayoutableProps, ClickableProps, TouchableProps 
     onDelete?: (nativeEvent: { index: number }) => void;
 }
 declare class ListView extends React.Component<ListViewProps> {
-    scrollToContentOffset: (xOffset: number, yOffset: number, animated: boolean) => void;
+    scrollToContentOffset: (
+        xOffset: number,
+        yOffset: number,
+        animated: boolean,
+    ) => void;
     scrollToIndex: (xIndex: number, yIndex: number, animated: boolean) => void;
     collapsePullHeader: () => void;
 }
 
-type ModalOrientation = "portrait" | "portrait-upside-down" | "landscape" | "landscape-left" | "landscape-right";
+type ModalOrientation =
+    | "portrait"
+    | "portrait-upside-down"
+    | "landscape"
+    | "landscape-left"
+    | "landscape-right";
 interface ModalProps extends LayoutableProps, ClickableProps, TouchableProps {
     /**
      * Show or hide
@@ -773,7 +787,10 @@ declare class PullHeader extends React.Component<PullHeaderProps> {
     collapsePullHeader(options: CollapsePullHeaderOptions): void;
 }
 
-interface RefreshWrapperProps extends LayoutableProps, ClickableProps, TouchableProps {
+interface RefreshWrapperProps
+    extends LayoutableProps,
+        ClickableProps,
+        TouchableProps {
     onRefresh?: () => void;
     getRefresh?: () => React.ReactElement;
     bounceTime?: number;
@@ -785,7 +802,10 @@ declare class RefreshWrapper extends React.Component<RefreshWrapperProps> {
     startRefresh: () => void;
 }
 
-interface ScrollViewProps extends LayoutableProps, ClickableProps, TouchableProps {
+interface ScrollViewProps
+    extends LayoutableProps,
+        ClickableProps,
+        TouchableProps {
     /**
      * When true, the scroll view's children are arranged horizontally in a row
      * instead of vertically in a column.
@@ -884,7 +904,12 @@ interface ScrollViewProps extends LayoutableProps, ClickableProps, TouchableProp
      */
     onScroll?(evt: {
         contentOffset: { x: number; y: number };
-        contentInset: { top: number; left: number; bottom: number; right: number };
+        contentInset: {
+            top: number;
+            left: number;
+            bottom: number;
+            right: number;
+        };
         contentSize: { width: number; height: number };
         layoutMeasurement: { width: number; height: number };
     }): void;
@@ -949,7 +974,10 @@ declare class Text extends React.Component<TextProps> {}
 interface KeyboardWillShowEvent {
     keyboardHeight: number;
 }
-interface TextInputProps extends LayoutableProps, ClickableProps, TouchableProps {
+interface TextInputProps
+    extends LayoutableProps,
+        ClickableProps,
+        TouchableProps {
     /**
      * add in 2.11.5
      */
@@ -991,7 +1019,13 @@ interface TextInputProps extends LayoutableProps, ClickableProps, TouchableProps
      * * `phone-pad`
      * * `search`
      */
-    keyboardType?: "default" | "numeric" | "password" | "email" | "phone-pad" | "search";
+    keyboardType?:
+        | "default"
+        | "numeric"
+        | "password"
+        | "email"
+        | "phone-pad"
+        | "search";
 
     /**
      * Determines how the return key should look.
@@ -1100,7 +1134,9 @@ interface TextInputProps extends LayoutableProps, ClickableProps, TouchableProps
      * @param {number} evt.nativeEvent.selection.start - Start index of selection
      * @param {number} evt.nativeEvent.selection.end - End index of selection.
      */
-    onSelectionChange?(evt: { nativeEvent: { selection: { start: number; end: number } } }): void;
+    onSelectionChange?(evt: {
+        nativeEvent: { selection: { start: number; end: number } };
+    }): void;
 }
 declare class TextInput extends React.Component<TextInputProps> {
     blur(): void;
@@ -1240,7 +1276,12 @@ interface WaterfallViewProps {
     numberOfItems: number;
 
     // Inner content padding
-    contentInset?: { top?: number; left?: number; bottom?: number; right?: number };
+    contentInset?: {
+        top?: number;
+        left?: number;
+        bottom?: number;
+        right?: number;
+    };
 
     // Horizontal space between columns
     columnSpacing: number;
@@ -1362,7 +1403,11 @@ interface WaterfallViewProps {
 }
 declare class WaterfallView extends React.Component<WaterfallViewProps> {
     scrollToIndex: (obj: { index: number; animated: boolean }) => void;
-    scrollToContentOffset: (obj: { xOffset: number; yOffset: number; animated: boolean }) => void;
+    scrollToContentOffset: (obj: {
+        xOffset: number;
+        yOffset: number;
+        animated: boolean;
+    }) => void;
 }
 
 interface LoadEvent {
@@ -1487,7 +1532,16 @@ interface AnimationOptions {
     /**
      * Animation interpolation type
      */
-    timingFunction?: "linear" | "ease" | "bezier" | "in" | "ease-in" | "out" | "ease-out" | "inOut" | "ease-in-out";
+    timingFunction?:
+        | "linear"
+        | "ease"
+        | "bezier"
+        | "in"
+        | "ease-in"
+        | "out"
+        | "ease-out"
+        | "inOut"
+        | "ease-in-out";
 
     /**
      * Animation repeat times, use 'loop' to be always repeating.
@@ -1573,8 +1627,16 @@ declare const ConsoleModule: ConsoleModule;
 
 interface Bridge {
     callNative(moduleName: string, methodName: string, ...args: any[]): void;
-    callNativeWithCallbackId(moduleName: string, methodName: string, ...args: any[]): number;
-    callNativeWithPromise<T>(moduleName: string, methodName: string, ...args: any[]): Promise<T>;
+    callNativeWithCallbackId(
+        moduleName: string,
+        methodName: string,
+        ...args: any[]
+    ): number;
+    callNativeWithPromise<T>(
+        moduleName: string,
+        methodName: string,
+        ...args: any[]
+    ): Promise<T>;
     removeNativeCallback(callbackId: number): void;
 }
 declare const callNative: Bridge["callNative"];
@@ -1603,7 +1665,11 @@ declare class HippyEventEmitter {
 
     sharedListeners(): EventListeners;
 
-    addListener(event: string, callback: (data?: any) => void, context?: any): void;
+    addListener(
+        event: string,
+        callback: (data?: any) => void,
+        context?: any,
+    ): void;
 
     removeAllListeners(event: string): void;
 
@@ -1619,9 +1685,15 @@ interface NetInfoRevoker {
     listener: NetworkInfoCallback | undefined;
 }
 interface NetInfo {
-    addEventListener(eventName: string, handler: (event: { network_info: string }) => void): NetInfoRevoker;
+    addEventListener(
+        eventName: string,
+        handler: (event: { network_info: string }) => void,
+    ): NetInfoRevoker;
     fetch(): Promise<any>;
-    removeEventListener(eventName: string, handler: NetInfoRevoker | (() => void)): void;
+    removeEventListener(
+        eventName: string,
+        handler: NetInfoRevoker | (() => void),
+    ): void;
 }
 export const NetInfo: NetInfo;
 
@@ -1638,7 +1710,10 @@ export const PixelRatio: PixelRatio;
 
 interface Route {
     routeName: string;
-    component?: string | React.FunctionComponent<any> | React.ComponentClass<any, any>;
+    component?:
+        | string
+        | React.FunctionComponent<any>
+        | React.ComponentClass<any, any>;
     initProps?: any;
     animated?: boolean;
 }
@@ -1706,9 +1781,15 @@ interface Element extends ViewNode {
     attributes: Attributes;
 }
 interface UIManagerModule {
-    getElementFromFiberRef(ref: ReactReconciler.Fiber | Element): Element | ReactReconciler.Fiber["stateNode"];
+    getElementFromFiberRef(
+        ref: ReactReconciler.Fiber | Element,
+    ): Element | ReactReconciler.Fiber["stateNode"];
     getNodeIdByRef(ref: string | ReactReconciler.Fiber | Element): number;
-    callUIFunction(ref: Element | ReactReconciler.Fiber, funcName: string, ...options: any[]): void;
+    callUIFunction(
+        ref: Element | ReactReconciler.Fiber,
+        funcName: string,
+        ...options: any[]
+    ): void;
     measureInWindowByMethod(
         method: string,
         ref: ReactReconciler.Fiber,
@@ -1735,7 +1816,10 @@ interface HippyReactConfig {
     /**
      * Entry component of Hippy app.
      */
-    entryPage: string | React.FunctionComponent<any> | React.ComponentClass<any, any>;
+    entryPage:
+        | string
+        | React.FunctionComponent<any>
+        | React.ComponentClass<any, any>;
 
     /**
      * Disable trace output

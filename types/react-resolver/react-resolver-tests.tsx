@@ -16,14 +16,14 @@ class Page extends React.Component<OwnProps & ResolvedProps> {
 }
 
 const ResolvedPageWithSingleProp = resolve("data", async () => {
-    return new Promise<string>(resolve => {
+    return new Promise<string>((resolve) => {
         setTimeout(() => resolve("World"), 500);
     });
 })(Page);
 
 const ResolvedPageWithPropMap = resolve({
     data: async () => {
-        return new Promise<string>(resolve => {
+        return new Promise<string>((resolve) => {
             setTimeout(() => resolve("World"), 500);
         });
     },

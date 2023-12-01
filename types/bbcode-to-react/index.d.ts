@@ -93,7 +93,10 @@ declare class Tag<T = { linkify: boolean }> {
      * A "TagType" object (without children attribute)
      * for initializing the class member "params"
      */
-    constructor(renderer: Renderer<T>, settings?: Partial<Omit<TagType, "children">>);
+    constructor(
+        renderer: Renderer<T>,
+        settings?: Partial<Omit<TagType, "children">>,
+    );
     /**
      * Tag name, with type string
      */

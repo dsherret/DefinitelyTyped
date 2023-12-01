@@ -4,7 +4,13 @@ import Mixin from "@ember/object/mixin";
 import NativeArray from "@ember/array/-private/native-array";
 // eslint-disable-next-line @definitelytyped/no-self-import
 import EmberArray from "@ember/array";
-import { AnyFn, MethodNamesOf, MethodParams, MethodReturns, MethodsOf } from "ember/-private/type-utils";
+import {
+    AnyFn,
+    MethodNamesOf,
+    MethodParams,
+    MethodReturns,
+    MethodsOf,
+} from "ember/-private/type-utils";
 
 /**
  * This mixin defines the common interface implemented by enumerable objects
@@ -63,7 +69,10 @@ interface Enumerable<T> {
      * Returns an array with all of the items in the enumeration where the passed
      * function returns false. This method is the inverse of filter().
      */
-    reject(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): NativeArray<T>;
+    reject(
+        callbackfn: (value: T, index: number, array: T[]) => unknown,
+        thisArg?: any,
+    ): NativeArray<T>;
     /**
      * Returns an array with just the items with the matched property. You
      * can pass an optional second argument with the target value. Otherwise
@@ -103,7 +112,10 @@ interface Enumerable<T> {
      * Returns `true` if the passed function returns true for any item in the
      * enumeration.
      */
-    any(callback: (value: T, index: number, array: T[]) => boolean, target?: {}): boolean;
+    any(
+        callback: (value: T, index: number, array: T[]) => boolean,
+        target?: {},
+    ): boolean;
     /**
      * Returns `true` if the passed property resolves to the value of the second
      * argument for any item in the enumerable. This method is often simpler/faster
@@ -121,7 +133,10 @@ interface Enumerable<T> {
      * implements it. This method corresponds to the implementation in
      * Prototype 1.6.
      */
-    invoke<M extends MethodNamesOf<T>>(methodName: M, ...args: MethodParams<T, M>): Array<MethodReturns<T, M>>;
+    invoke<M extends MethodNamesOf<T>>(
+        methodName: M,
+        ...args: MethodParams<T, M>
+    ): Array<MethodReturns<T, M>>;
     /**
      * Simply converts the enumerable into a genuine array. The order is not
      * guaranteed. Corresponds to the method implemented by Prototype.

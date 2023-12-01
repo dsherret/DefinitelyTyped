@@ -15,7 +15,11 @@ interface StoreJsAPI {
 }
 
 interface StoreJsEngine {
-    createStore(storages: any[], plugins?: any[], namespace?: string): StoreJsAPI;
+    createStore(
+        storages: any[],
+        plugins?: any[],
+        namespace?: string,
+    ): StoreJsAPI;
 }
 
 interface StoreJsStorage {

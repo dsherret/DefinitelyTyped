@@ -111,7 +111,7 @@ $("input.some").iCheck({
     // different options
 });
 
-$("input").on("ifChecked", function(event) {
+$("input").on("ifChecked", function (event) {
     console.log(this);
     alert(event.type + " callback");
 });

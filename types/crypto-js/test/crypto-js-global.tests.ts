@@ -93,9 +93,11 @@ encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase", {
 
 // The Cipher Output
 var JsonFormatter = {
-    stringify: function(cipherParams: CryptoJS.lib.CipherParams) {
+    stringify: function (cipherParams: CryptoJS.lib.CipherParams) {
         // create json object with ciphertext
-        var jsonObj: any = { ct: cipherParams.ciphertext.toString(CryptoJS.enc.Base64) };
+        var jsonObj: any = {
+            ct: cipherParams.ciphertext.toString(CryptoJS.enc.Base64),
+        };
         // optionally add iv or salt
         if (cipherParams.iv) {
             jsonObj.iv = cipherParams.iv.toString();
@@ -106,7 +108,7 @@ var JsonFormatter = {
         // stringify json object
         return JSON.stringify(jsonObj);
     },
-    parse: function(jsonStr: string) {
+    parse: function (jsonStr: string) {
         // parse json string
         var jsonObj = JSON.parse(jsonStr);
         // extract ciphertext from json object, and create cipher params object

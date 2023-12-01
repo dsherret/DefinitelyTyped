@@ -1,6 +1,9 @@
 export as namespace commonTags;
 
-export type JSTag = (literals: TemplateStringsArray, ...placeholders: any[]) => string;
+export type JSTag = (
+    literals: TemplateStringsArray,
+    ...placeholders: any[]
+) => string;
 
 export interface TemplateTag {
     (str: string): string;
@@ -121,7 +124,9 @@ export interface TemplateTransformer<TCtx = { [key: string]: any }> {
      * `substitution` is the value of the current substitution
      * `resultSoFar` is the end result up to the point of this substitution
      */
-    onSubstitution?: ((substitution: string, resultSoFar: string, context: TCtx) => string) | undefined;
+    onSubstitution?:
+        | ((substitution: string, resultSoFar: string, context: TCtx) => string)
+        | undefined;
     /**
      * Called when all substitutions have been parsed
      * `endResult` is the final value.
@@ -129,13 +134,20 @@ export interface TemplateTransformer<TCtx = { [key: string]: any }> {
     onEndResult?: ((endResult: string, context: TCtx) => string) | undefined;
 }
 
-export type PluginFunction = (oldValue: string, newValue: string) => TemplateTransformer<any>;
+export type PluginFunction = (
+    oldValue: string,
+    newValue: string,
+) => TemplateTransformer<any>;
 
 /**
  * New Tag factory
  */
-export function createTag(transformers?: Array<TemplateTransformer<any>>): TemplateTag;
-export function createTag(...transformers: Array<TemplateTransformer<any>>): TemplateTag;
+export function createTag(
+    transformers?: Array<TemplateTransformer<any>>,
+): TemplateTag;
+export function createTag(
+    ...transformers: Array<TemplateTransformer<any>>
+): TemplateTag;
 export function createTag(...pluginFunctions: PluginFunction[]): TemplateTag;
 
 export const TemplateTag: {
@@ -143,9 +155,9 @@ export const TemplateTag: {
      * New Tag Constructor
      * @deprecated
      */
-    new(transformers?: Array<TemplateTransformer<any>>): TemplateTag;
-    new(...transformers: Array<TemplateTransformer<any>>): TemplateTag;
-    new(...pluginFunctions: PluginFunction[]): TemplateTag;
+    new (transformers?: Array<TemplateTransformer<any>>): TemplateTag;
+    new (...transformers: Array<TemplateTransformer<any>>): TemplateTag;
+    new (...pluginFunctions: PluginFunction[]): TemplateTag;
 };
 
 /**
@@ -162,7 +174,9 @@ export function trimResultTransformer(
  * @param  [type='initial'] whether to remove all indentation or just leading indentation. can be 'all' or 'initial'
  * @return a TemplateTag transformer
  */
-export function stripIndentTransformer(type?: "initial" | "all"): TemplateTransformer;
+export function stripIndentTransformer(
+    type?: "initial" | "all",
+): TemplateTransformer;
 
 /**
  * Replaces a value or pattern in the end result with a new value.

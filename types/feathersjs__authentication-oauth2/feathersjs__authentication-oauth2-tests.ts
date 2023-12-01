@@ -17,7 +17,11 @@ class CustomVerifier extends Verifier {
     }
 }
 
-const handler: RequestHandler = (req: Request, res: Response, next: NextFunction) => {};
+const handler: RequestHandler = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {};
 
 class someStrategy extends Strategy {
     something = "foo";
@@ -39,7 +43,11 @@ interface VerifierOptions extends FeathersAuthenticationOAuth2Options {
 
 type IProfileType = GithubProfile | FacebookProfile;
 
-export default class TestVerifier extends Verifier<User, VerifierOptions, IProfileType> {}
+export default class TestVerifier extends Verifier<
+    User,
+    VerifierOptions,
+    IProfileType
+> {}
 
 const testVerifier = new TestVerifier(app, {
     name: "test",

@@ -6,6 +6,9 @@
  * @param aKana - corresponding JP string in hiragana / katakana symbols only
  * @return combinedGroups - array of string pairs of original-to-kana combinations.
  */
-export function combineOriginalAndKana(aOriginal: string, aKana: string): string[][];
+export function combineOriginalAndKana(
+    aOriginal: string,
+    aKana: string,
+): string[][];
 
 export {};

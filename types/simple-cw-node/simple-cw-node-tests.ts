@@ -6,18 +6,22 @@ var Deferred: any = client.Deferred;
 client.init({ token: "YOUR_TOKEN" });
 
 // get your info.
-client.get("me", function(err, res) {
+client.get("me", function (err, res) {
     console.log(arguments);
 });
 
 // create room.
-client.post("rooms", {
-    name: "room",
-    members_admin_ids: "123456789,987654321",
-    description: "description",
-}, (err, res) => {
-    console.log("created.");
-});
+client.post(
+    "rooms",
+    {
+        name: "room",
+        members_admin_ids: "123456789,987654321",
+        description: "description",
+    },
+    (err, res) => {
+        console.log("created.");
+    },
+);
 
 client
     .get("me")

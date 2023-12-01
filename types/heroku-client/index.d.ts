@@ -39,7 +39,9 @@ interface HerokuClientOptions extends Partial<RequestURL> {
     userAgent?: string;
 }
 
-interface Request extends Omit<HerokuClientOptions, keyof RequestURL>, RequestURL {}
+interface Request
+    extends Omit<HerokuClientOptions, keyof RequestURL>,
+        RequestURL {}
 declare class Request {
     options: HerokuClientOptions;
 
@@ -116,13 +118,18 @@ declare class Request {
      * 304 with a cached Next-Range), perform the next
      * request for more data.
      */
-    nextRequest(nextRange: string, body: Array<string | object | (string | object)>): void;
+    nextRequest(
+        nextRange: string,
+        body: Array<string | object | (string | object)>,
+    ): void;
 
     /**
      * If given an object, sets aggregate to object,
      * otherwise concats array onto aggregate.
      */
-    updateAggregate(aggregate: Array<string | object | (string | object)>): void;
+    updateAggregate(
+        aggregate: Array<string | object | (string | object)>,
+    ): void;
 }
 
 declare class Heroku {
@@ -132,15 +139,30 @@ declare class Heroku {
 
     request(options: HerokuClientOptions): ReturnType<Request["request"]>;
 
-    get(path: string, options?: HerokuClientOptions): ReturnType<Request["request"]>;
+    get(
+        path: string,
+        options?: HerokuClientOptions,
+    ): ReturnType<Request["request"]>;
 
-    put(path: string, options?: HerokuClientOptions): ReturnType<Request["request"]>;
+    put(
+        path: string,
+        options?: HerokuClientOptions,
+    ): ReturnType<Request["request"]>;
 
-    post(path: string, options?: HerokuClientOptions): ReturnType<Request["request"]>;
+    post(
+        path: string,
+        options?: HerokuClientOptions,
+    ): ReturnType<Request["request"]>;
 
-    patch(path: string, options?: HerokuClientOptions): ReturnType<Request["request"]>;
+    patch(
+        path: string,
+        options?: HerokuClientOptions,
+    ): ReturnType<Request["request"]>;
 
-    delete(path: string, options?: HerokuClientOptions): ReturnType<Request["request"]>;
+    delete(
+        path: string,
+        options?: HerokuClientOptions,
+    ): ReturnType<Request["request"]>;
 }
 
 export = Heroku;

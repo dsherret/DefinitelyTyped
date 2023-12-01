@@ -49,7 +49,9 @@ export function extractUrlsWithIndices(
 ): UrlWithIndices[];
 export function extractMentions(text: string): string[];
 export function extractMentionsWithIndices(text: string): MentionWithIndices[];
-export function extractMentionsOrListsWithIndices(text: string): MentionOrListWithIndices[];
+export function extractMentionsOrListsWithIndices(
+    text: string,
+): MentionOrListWithIndices[];
 export function extractReplies(text: string): string[];
 export function extractCashtags(text: string): string[];
 export function extractCashtagsWithIndices(text: string): CashtagWithIndices[];
@@ -57,17 +59,25 @@ export function extractEntitiesWithIndices(text: string): EntityWithIndices[];
 export interface HtmlAttributes {
     [name: string]: any;
 }
-export function extractHtmlAttrsFromOptions(options: HtmlAttributes): HtmlAttributes;
+export function extractHtmlAttrsFromOptions(
+    options: HtmlAttributes,
+): HtmlAttributes;
 
 /**
  * Modifies (in-place) entity indices meant for Unicode text for use with UTF-16 text.
  */
-export function modifyIndicesFromUnicodeToUTF16(text: string, entities: EntityWithIndices[]): void;
+export function modifyIndicesFromUnicodeToUTF16(
+    text: string,
+    entities: EntityWithIndices[],
+): void;
 
 /**
  * Modifies (in-place) entity indices meant for UTF-16 text for use with Unicode text.
  */
-export function modifyIndicesFromUTF16ToUnicode(text: string, entities: EntityWithIndices[]): void;
+export function modifyIndicesFromUTF16ToUnicode(
+    text: string,
+    entities: EntityWithIndices[],
+): void;
 
 export interface UrlEntity {
     url: string;
@@ -90,26 +100,49 @@ export interface AutoLinkOptions {
     suppressNoFollow?: boolean | undefined;
     urlEntities?: readonly UrlEntity[] | undefined;
     usernameIncludeSymbol?: boolean | undefined;
-    linkAttributeBlock?: ((entity: EntityWithIndices, attributes: Attributes) => void) | undefined;
-    linkTextBlock?: ((entity: EntityWithIndices, text: string) => void) | undefined;
+    linkAttributeBlock?:
+        | ((entity: EntityWithIndices, attributes: Attributes) => void)
+        | undefined;
+    linkTextBlock?:
+        | ((entity: EntityWithIndices, text: string) => void)
+        | undefined;
     symbolTag?: string | undefined;
     textWithSymbolTag?: string | undefined;
     htmlAttrs?: Attributes | undefined;
 }
 
 export function autoLink(text: string, options?: AutoLinkOptions): string;
-export function autoLinkUsernamesOrLists(text: string, options?: AutoLinkOptions): string;
-export function autoLinkHashtags(text: string, options?: AutoLinkOptions): string;
-export function autoLinkCashtags(text: string, options?: AutoLinkOptions): string;
-export function autoLinkUrlsCustom(text: string, options?: AutoLinkOptions): string;
+export function autoLinkUsernamesOrLists(
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function autoLinkHashtags(
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function autoLinkCashtags(
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function autoLinkUrlsCustom(
+    text: string,
+    options?: AutoLinkOptions,
+): string;
 export function autoLinkEntities(
     text: string,
     entities: readonly EntityWithIndices[],
     options?: AutoLinkOptions,
 ): string;
-export function autoLinkWithJSON(text: string, json: { [key: string]: any }, options?: AutoLinkOptions): string;
+export function autoLinkWithJSON(
+    text: string,
+    json: { [key: string]: any },
+    options?: AutoLinkOptions,
+): string;
 
-export function linkTextWithEntity(entity: UrlEntity, options?: AutoLinkOptions): string;
+export function linkTextWithEntity(
+    entity: UrlEntity,
+    options?: AutoLinkOptions,
+): string;
 
 export function linkToText(
     entity: EntityWithIndices,
@@ -124,10 +157,26 @@ export function linkToTextWithSymbol(
     attributes: HtmlAttributes,
     options?: AutoLinkOptions,
 ): string;
-export function linkToCashtag(entity: EntityWithIndices, text: string, options?: AutoLinkOptions): string;
-export function linkToHashtag(entity: EntityWithIndices, text: string, options?: AutoLinkOptions): string;
-export function linkToMentionAndList(entity: EntityWithIndices, text: string, options?: AutoLinkOptions): string;
-export function linkToUrl(entity: EntityWithIndices, text: string, options?: AutoLinkOptions): string;
+export function linkToCashtag(
+    entity: EntityWithIndices,
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function linkToHashtag(
+    entity: EntityWithIndices,
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function linkToMentionAndList(
+    entity: EntityWithIndices,
+    text: string,
+    options?: AutoLinkOptions,
+): string;
+export function linkToUrl(
+    entity: EntityWithIndices,
+    text: string,
+    options?: AutoLinkOptions,
+): string;
 
 export function removeOverlappingEntities(entities: EntityWithIndices[]): void;
 export function tagAttrs(attributes: HtmlAttributes): string;
@@ -136,16 +185,29 @@ export interface TweetLengthOptions {
     short_url_length: number;
     short_url_length_https: number;
 }
-export function getTweetLength(text: string, options?: TweetLengthOptions): number;
+export function getTweetLength(
+    text: string,
+    options?: TweetLengthOptions,
+): number;
 
 export function isValidUsername(username: string): boolean;
 export function isValidList(usernameList: string): boolean;
 export function isValidHashtag(hashtag: string): boolean;
 // Note: unicodeDomainsa and requireProtocol can be null
-export function isValidUrl(url: string, unicodeDomains: boolean, requireProtocol: boolean): boolean;
+export function isValidUrl(
+    url: string,
+    unicodeDomains: boolean,
+    requireProtocol: boolean,
+): boolean;
 export function hasInvalidCharacters(text: string): boolean;
-export function isInvalidTweet(text: string, options?: ParseTweetOptions): boolean;
-export function isValidTweet(text: string, options?: ParseTweetOptions): boolean;
+export function isInvalidTweet(
+    text: string,
+    options?: ParseTweetOptions,
+): boolean;
+export function isValidTweet(
+    text: string,
+    options?: ParseTweetOptions,
+): boolean;
 
 export function getUnicodeTextLength(text: string): number;
 // Note: This function directly modify entities" indices
@@ -169,10 +231,10 @@ export interface ParseTweetOptions {
     transformedURLLength?: number | undefined;
     ranges?:
         | Array<{
-            start: number;
-            end: number;
-            weight: number;
-        }>
+              start: number;
+              end: number;
+              weight: number;
+          }>
         | undefined;
     emojiParsingEnabled?: boolean | undefined;
 }
@@ -187,8 +249,15 @@ export interface ParsedTweet {
     validRangeStart: number;
 }
 
-export function parseTweet(text: string, options?: ParseTweetOptions): ParsedTweet;
-export function standardizeIndices(text: string, startIndex: number, endIndex: number): [number, number];
+export function parseTweet(
+    text: string,
+    options?: ParseTweetOptions,
+): ParsedTweet;
+export function standardizeIndices(
+    text: string,
+    startIndex: number,
+    endIndex: number,
+): [number, number];
 
 export const regexen: {
     astralLetterAndMarks: RegExp;

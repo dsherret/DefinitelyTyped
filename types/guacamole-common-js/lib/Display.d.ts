@@ -77,7 +77,15 @@ export class Display {
      * @param x The X coordinate of the endpoint of the curve.
      * @param y The Y coordinate of the endpoint of the curve.
      */
-    curveTo(layer: Layer, cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    curveTo(
+        layer: Layer,
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+    ): void;
 
     /**
      * Closes the current path by connecting the end point with the start point (if any) with a straight line.
@@ -154,7 +162,13 @@ export class Display {
      * @param thickness The line thickness in pixels.
      * @param srcLayer The layer to use as a repeating pattern within the stroke.
      */
-    strokeLayer(layer: Layer, cap: Layer.LineCap, join: Layer.LineJoin, thickness: number, srcLayer: Layer): void;
+    strokeLayer(
+        layer: Layer,
+        cap: Layer.LineCap,
+        join: Layer.LineJoin,
+        thickness: number,
+        srcLayer: Layer,
+    ): void;
 
     /**
      * Fills the current path with the image within the specified layer. The
@@ -195,7 +209,15 @@ export class Display {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    setTransform(layer: Layer, a: number, b: number, c: number, d: number, e: number, f: number): void;
+    setTransform(
+        layer: Layer,
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Applies the given affine transform (defined with six values from the transform's matrix).
@@ -207,7 +229,15 @@ export class Display {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    transform(layer: Layer, a: number, b: number, c: number, d: number, e: number, f: number): void;
+    transform(
+        layer: Layer,
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Sets the channel mask for future operations on this Layer.
@@ -248,7 +278,15 @@ export class Display {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    distort(layer: Layer, a: number, b: number, c: number, d: number, e: number, f: number): void;
+    distort(
+        layer: Layer,
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Moves the upper-left corner of the given layer to the given X and Y
@@ -260,7 +298,13 @@ export class Display {
      * @param y The Y coordinate to move to.
      * @param z The Z coordinate to move to.
      */
-    move(layer: VisibleLayer, parent: VisibleLayer, x: number, y: number, z: number): void;
+    move(
+        layer: VisibleLayer,
+        parent: VisibleLayer,
+        x: number,
+        y: number,
+        z: number,
+    ): void;
 
     /**
      * Sets the opacity of the given layer to the given value, where 255 is
@@ -404,7 +448,12 @@ export class Display {
      * @param y The destination Y coordinate.
      * @param image The image to draw. Note that this is an Image object - not a URL.
      */
-    drawImage(layer: Layer, x: number, y: number, image: HTMLImageElement): void;
+    drawImage(
+        layer: Layer,
+        x: number,
+        y: number,
+        image: HTMLImageElement,
+    ): void;
 
     /**
      * Draws the image contained within the specified Blob at the given
@@ -466,7 +515,10 @@ export class Display {
         dstLayer: Layer,
         x: number,
         y: number,
-        transferFunction: (srcPixel: Layer.Pixel, dstPixel: Layer.Pixel) => void,
+        transferFunction: (
+            srcPixel: Layer.Pixel,
+            dstPixel: Layer.Pixel,
+        ) => void,
     ): void;
 
     /**
@@ -551,5 +603,7 @@ export class Display {
      * @param x The X-coordinate of the cursor hotspot.
      * @param y The Y-coordinate of the cursor hotspot.
      */
-    oncursor: null | ((cursorCanvas: HTMLCanvasElement, x: number, y: number) => void);
+    oncursor:
+        | null
+        | ((cursorCanvas: HTMLCanvasElement, x: number, y: number) => void);
 }
