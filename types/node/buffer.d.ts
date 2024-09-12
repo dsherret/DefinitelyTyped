@@ -2,6 +2,11 @@
 // Otherwise, use the types from node.
 type _Blob = typeof globalThis extends { onmessage: any; Blob: any } ? {} : import("buffer").Blob;
 type _File = typeof globalThis extends { onmessage: any; File: any } ? {} : import("buffer").File;
+type _WithImplicitCoercion<T> =
+    | T
+    | {
+        valueOf(): T;
+    };
 
 /**
  * `Buffer` objects are used to represent a fixed-length sequence of bytes. Many
@@ -256,11 +261,6 @@ declare module "buffer" {
             | "latin1"
             | "binary"
             | "hex";
-        type WithImplicitCoercion<T> =
-            | T
-            | {
-                valueOf(): T;
-            };
         /**
          * Raw data is stored in instances of the Buffer class.
          * A Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.
@@ -333,7 +333,7 @@ declare module "buffer" {
              * @since v5.10.0
              */
             from(
-                arrayBuffer: WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>,
+                arrayBuffer: _WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>,
                 byteOffset?: number,
                 length?: number,
             ): Buffer;
@@ -342,7 +342,7 @@ declare module "buffer" {
              * @param data data to create a new Buffer
              */
             from(data: Uint8Array | readonly number[]): Buffer;
-            from(data: WithImplicitCoercion<Uint8Array | readonly number[] | string>): Buffer;
+            from(data: _WithImplicitCoercion<Uint8Array | readonly number[] | string>): Buffer;
             /**
              * Creates a new Buffer containing the given JavaScript string {str}.
              * If provided, the {encoding} parameter identifies the character encoding.
@@ -350,7 +350,7 @@ declare module "buffer" {
              */
             from(
                 str:
-                    | WithImplicitCoercion<string>
+                    | _WithImplicitCoercion<string>
                     | {
                         [Symbol.toPrimitive](hint: "string"): string;
                     },
